@@ -1,0 +1,75 @@
+[comment encoding = UTF-8 /]
+[module latex('http://www.obeo.fr/dsl/plugin','http://www.eclipse.org/emf/2002/Ecore')]
+
+[import fr::obeo::dsl::plugin::gen::query::services /]
+
+[template public generate(aLogicalArchitecture : LogicalArchitecture)]
+[comment @main/]
+
+[file ('logical-architecture.tex', false, 'UTF-8')]	
+
+\chapter{Logical Architecture}
+
+\section{Introduction}
+
+%[protected ('logical architecture introduction')]
+
+The logical architecture will be described with a model-based formalism describing components, required and Outputs and the corresponding business entities.\newline The following figure explains the diagram formalism ;
+
+\begin{figure}['['/]H]
+  \centering
+  \includegraphics['['/]width=0.6211111111111111\textwidth]{pictures/legend.png}
+%Start of user code pictures/legend.png
+  	\caption{Logical architecture diagram legend.}
+%End of user code
+\end{figure}
+
+%[/protected] 
+ 
+
+\section{Components}
+
+[for (comp : Component | aLogicalArchitecture.components)]
+[comp.generate()/]
+[/for]
+
+[/file]
+
+
+[/template]
+
+
+[template public generate(component : Component)]
+
+\subsection{[component.name/]}
+
+%[protected (component.name)]
+
+%[/protected]
+
+\subsubsection{Purpose}
+
+[component.description/] 
+
+[for (port : Port | component.ports->select(kind = PortKind::required))]
+\subsubsection{[port.name/] (input)}
+
+This component port requires the following inputs:
+[for (link : Link | port.links)]
+\newline  \textbf{[link.type.name/]} : [link.type.getDoc()/]
+[/for]	
+[/for]
+ 
+
+[for (port : Port | component.ports->select(kind = PortKind::provided))]
+\subsubsection{[port.name/] (output)}
+
+This component port provides the following APIs:
+[for (link : Link | port.links)]
+\newline  \textbf{[link.type.name/]} : [link.type.getDoc()/]
+[/for]
+[/for]
+ 
+
+[/template]
+

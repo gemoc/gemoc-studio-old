@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="fr.obeo.dsl.plugin.PhysicalArchitecture"
+            id="fr.obeo.dsl.plugin.synchronization.contribution1">
+         <menu
+               label="Synchronize"
+               path="additions"
+               id="fr.obeo.dsl.plugin.synchronization.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Compare"
+               class="fr.obeo.dsl.plugin.synchronization.popup.actions.ReloadPhysicalArchitecture"
+               menubarPath="fr.obeo.dsl.plugin.synchronization.menu1/group1"
+               enablesFor="1"
+               id="fr.obeo.dsl.plugin.synchronization.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

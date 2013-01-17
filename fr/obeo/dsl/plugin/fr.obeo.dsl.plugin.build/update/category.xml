@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://www.obeo.fr">
+      Viewpoint
+   </description>
+   <feature id="fr.obeo.dsl.plugin.feature" version="0.0.0">
+      <category name="Modeler"/>
+   </feature>
+   <category-def name="Modeler" label="Modeler">
+      <description>
+         Plugin Cartography
+      </description>
+   </category-def>
+</site>

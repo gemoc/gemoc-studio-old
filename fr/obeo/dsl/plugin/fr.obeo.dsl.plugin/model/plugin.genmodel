@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.obeo.dsl.plugin/src-gen"
+    editDirectory="/fr.obeo.dsl.plugin.edit/src-gen" editorDirectory="/fr.obeo.dsl.plugin.editor/src-gen"
+    modelPluginID="fr.obeo.dsl.plugin" modelName="Plugin" rootExtendsInterface="org.eclipse.emf.cdo.CDOObject"
+    rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl" importerID="org.eclipse.emf.importer.cdo"
+    featureDelegation="Dynamic" complianceLevel="5.0" copyrightFields="false" runtimeVersion="2.3"
+    usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>plugin.ecore</foreignModel>
+  <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
+  <genPackages prefix="Plugin" basePackage="fr.obeo.dsl" disposableProviderFactory="true"
+      ecorePackage="plugin.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="plugin.ecore#//PortKind">
+      <genEnumLiterals ecoreEnumLiteral="plugin.ecore#//PortKind/required"/>
+      <genEnumLiterals ecoreEnumLiteral="plugin.ecore#//PortKind/provided"/>
+    </genEnums>
+    <genClasses ecoreClass="plugin.ecore#//ExtensionLocation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//ExtensionLocation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//ExtensionLocation/ownedBundles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//ExtensionLocation/ownedGroups"/>
+    </genClasses>
+    <genClasses ecoreClass="plugin.ecore#//PhysicalArchitecture">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//PhysicalArchitecture/ownedBundles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//PhysicalArchitecture/rootFeature"/>
+    </genClasses>
+    <genClasses ecoreClass="plugin.ecore#//Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//Component/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//Component/subComponents"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//Component/referencedComponents"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//Component/bundles"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//Component/expectedDependencies"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//Component/expectedExtensions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//Component/ports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//Component/classifiers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//Component/description"/>
+    </genClasses>
+    <genClasses ecoreClass="plugin.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//Port/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//Port/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//Port/delegation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//Port/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//Port/links"/>
+    </genClasses>
+    <genClasses ecoreClass="plugin.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//Link/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//Link/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="plugin.ecore#//Bundle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//Bundle/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//Bundle/description"/>
+    </genClasses>
+    <genClasses ecoreClass="plugin.ecore#//Feature"/>
+    <genClasses ecoreClass="plugin.ecore#//Plugin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//Plugin/require"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//Plugin/ownedExtensionPoints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//Plugin/extensions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//Plugin/exportedPackages"/>
+    </genClasses>
+    <genClasses ecoreClass="plugin.ecore#//ExtensionPoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//ExtensionPoint/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//ExtensionPoint/xsd"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//ExtensionPoint/extendingPlugins"/>
+    </genClasses>
+    <genClasses ecoreClass="plugin.ecore#//Package">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//Package/name"/>
+    </genClasses>
+    <genClasses ecoreClass="plugin.ecore#//LogicalArchitecture">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//LogicalArchitecture/components"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference plugin.ecore#//LogicalArchitecture/states"/>
+    </genClasses>
+    <genClasses ecoreClass="plugin.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute plugin.ecore#//State/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference plugin.ecore#//State/eClass"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
