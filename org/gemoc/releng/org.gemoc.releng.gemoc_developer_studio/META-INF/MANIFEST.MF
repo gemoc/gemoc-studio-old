@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gemoc Developer Studio
+Bundle-SymbolicName: org.gemoc.releng.gemoc_developer_studio
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.gemoc.releng.gemoc_developer_studio.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
