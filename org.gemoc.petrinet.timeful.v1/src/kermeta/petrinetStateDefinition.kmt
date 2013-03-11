@@ -1,0 +1,104 @@
+/*
+ * ORIGINAL
+ * --------
+ * $Id:$ 
+ * Creation		: June 3, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec, University of Rennes 1, IRISA & Inria.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ *     	University of Rennes 1, IRISA & Inria
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ *     	Benoit.Combemale@irisa.fr
+ *     	Benoit.Baudry@inria.fr
+ *
+ * PETRINET
+ * --------
+ *
+ * February 2013
+ * Florent Latombe <florent.latombe@irit.fr>
+ */
+
+// This file contains the State Definition of the PetriNet elements. These elements are basic operations or attributes required for execution of the metamodel.
+
+package petrinet;
+
+require "platform:/resource/org.gemoc.petrinet.timeful.v1/metamodel/PetriNet.ecore"
+require kermeta
+
+using kermeta::standard
+using kermeta::exceptions
+
+/*** Top level element : PetriNet ***/
+
+aspect class PetriNet {
+	operation initialize(name : String) : PetriNet is do
+		self.name := name
+		result := self
+	end
+	
+	// Pretty print for the petri net model.
+	operation printCurrentState() : Void is do
+		stdio.writeln(self.toString())
+		self.nodes.each{node | stdio.writeln(node.toString())}
+	end
+}
+
+/*** Element : Node, Place, Transition, Arc ***/
+
+aspect abstract class Node {
+}
+
+aspect class Place inherits Node{
+	operation initialize(name : String, marking : Integer, net : PetriNet) : Place is do
+		self.name := name
+		self.net := net
+		self.marking := marking
+		result := self
+	end
+}
+
+aspect class Transition inherits Node{
+	
+	// Marks the time at which the MoC tried to call "Fire". Typically the transition had enough tokens and was on the list of triggers to process
+	attribute callTime : Integer
+	
+	operation initialize(name : String, minTime : Integer, maxTime : Integer, net : PetriNet) : Transition is do
+		self.name := name
+		self.net := net
+		self.minTime := minTime
+		self.maxTime := maxTime
+		self.callTime := void
+		result := self
+	end
+
+}
+
+aspect class Arc {
+	operation initialize(source : Node, target : Node, weight : Integer, kind : ArcKind) : Arc is do
+		self.source := source
+		self.target := target
+		self.weight := weight
+		self.kind := kind
+		result := self
+	end
+	
+	operation kindToString(kind : ArcKind) : String is do
+		if kind == ArcKind.normal then
+			result := "normal"
+		else if kind == ArcKind.read_arc then
+				result := "read_arc"
+			else
+				raise Exception.new
+			end
+		end
+	end
+}

@@ -1,0 +1,301 @@
+/* $Id:$ 
+ * Creation : January 28, 2013
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            flatombe
+ */
+
+package modhelx::mocs::more;
+
+require kermeta
+require "../core/abstractSemantics.kmt"
+require "../core/abstractSemanticsImpl.kmt"
+require "../core/utils.kmt"
+require "../mocs/abstractDEMoC.kmt"
+
+
+using modhelx::core
+using modhelx::utils
+using modhelx::mocs::de
+using kermeta::standard
+using kermeta::persistence
+using kermeta::exceptions
+using kermeta::utils
+
+class EventToProcess inherits UpdateTrigger {
+	reference democ : AbstractDEMoC
+	reference event : Token
+	
+	operation initialize(democ : AbstractDEMoC, event : Token) : EventToProcess is do
+		self.democ := democ
+		self.event := event
+		self.setEntityToUpdate(self.democ.getEventDestination(event).owner)
+		self.setTimeOfUpdate(self.democ.getEventTimestamp(event))
+		result := self
+	end
+
+	method prepareToTrigger() is do
+		self.democ.getEventDestination(self.event).addToken(self.event)
+	end
+	
+	method toString() : String is do
+		var s : String init super()
+		result := s + "(event="+self.event.toString()+")"
+	end
+}
+
+class StupidMoC inherits AbstractDEMoC {
+	reference triggersToProcess : oset UpdateTrigger[0..*]
+	reference processedTriggers : oset UpdateTrigger[0..*]
+
+		
+	method initialize() : ModelOfComputationImpl is do
+		super()
+		self.name := "StupidMoC"
+
+		self.eventTimestamps := Hashtable<Token,Integer>.new
+		self.eventDestinations := Hashtable<Token,Pin>.new
+		
+		result := self
+	end
+
+
+	//------------------
+	// Semantics of Sequential-DE
+	//------------------
+	method prep(s : BlockStructure) is do
+		super(s)
+
+	end
+	
+	method setup(s : BlockStructure) is do
+		super(s) // setup the model (hierarchical)
+		
+		// initialization of time
+		self.currentTime := 0
+
+		// static topological sort
+		self.navHelper := BlockStructureNavigationHelper.new.initialize(s)
+		self.blocks := navHelper.topoSort()
+	end
+	
+	method collectInitialSnapshotRequests(s : BlockStructure, sr : Sequence<SnapshotRequest>) is do
+		super(s,sr) // hierarchical collect + local storage of requests
+	end
+	
+	method startOfSnapshot(s : BlockStructure) is do
+		super(s)
+		stdio.write(">>>start of snapshot") self.snapshotRequests.each{sr | stdio.writeln(sr.toString())}
+		// add all the snapshot requests to the list of triggers (which may already contain events)
+		// QUESTION : do this in the collect requests ?
+		self.snapshotRequests.each{req|
+			self.triggers.add(req)
+		}
+		
+		if self.isLogLevelDEBUG() then 
+			stdio.write("triggers=[")
+			self.triggers.each{u|stdio.write(u.toString()+", ")}
+			stdio.writeln("]")
+		end
+		
+		// determine the new active block
+		
+
+			// else compute the minimum time from the list of triggers
+			if not self.triggers.empty() then
+				var minTimestamp : Integer init void
+				self.triggers.each{t|
+					var timeOfUpdate : Integer init t.getTimeOfUpdate()
+					if timeOfUpdate != void and (minTimestamp == void or timeOfUpdate < minTimestamp) then
+						minTimestamp := timeOfUpdate
+					end
+				}
+				self.currentTime := minTimestamp
+			else
+				var e : Exception init Exception.new
+				e.message := "Cannot compute time of snapshot in DE because the list of triggers is empty."
+				raise e
+			end
+	
+
+		if self.isLogLevelINFO() then stdio.writeln("[currentTime="+self.currentTime.toString()+"]") end
+
+		// save the state of the model in case of non validate (TODO)
+		
+	end
+
+	method reset(s : BlockStructure) is do
+		super(s)
+		// reset data to its value of the startOfSnashot (TODO)
+
+		// build the list of triggers to process at the current time
+		self.triggersToProcess.clear()
+		self.triggersToProcess.addAll(self.triggers)
+				
+		// clear the list of processed triggers
+		self.processedTriggers.clear()
+	end
+	
+	method schedule(s : BlockStructure) is do
+		super(s)
+				
+		// select all triggers concerning the current block
+		var tlist : Sequence<UpdateTrigger> init self.triggersToProcess.select{trigger | true}
+		stdio.writeln("***SCHEDULE***") tlist.each{t | stdio.writeln(t.toString())}
+		raise Exception.new
+		// if there are triggers for this block
+		// make each trigger deliver the necessary info for the block to be updated
+		tlist.each{u|
+			u.prepareToTrigger()
+			// and remove the triggers that have been processed
+			self.processedTriggers.add(u)
+			self.triggersToProcess.remove(u)
+		}
+	end
+	
+	method update(s : BlockStructure) is do
+		super(s)
+		// update the block chosen at schedule
+		s.blocks.each{block | block.update()}
+	end
+	
+	method propagate(s : BlockStructure) is do
+		super(s)
+		// create triggers from produced events		
+		// select the pins of the updated block which have successor(s)
+		// (those pins may also have predecessors in the case they are inputs/outputs, but we don't care)
+		var outputPinsOfUpdatedBlock : Sequence<Pin> init Sequence<Pin>.new
+		if self.currentTime == 0 then
+			self.blocks.each{block | block.interface.each{p|
+				if self.navHelper.getPinSuccessors(p).size() > 0 then
+					outputPinsOfUpdatedBlock.add(p)
+				end
+			}
+		}
+		end
+	
+		
+		// for all the produced events, create triggers and put them in the list of triggers to process (since they are produced at the current time !)
+		outputPinsOfUpdatedBlock.each{pin|
+			stdio.writeln(pin.toString())
+			self.createTriggersFromEvents(pin,self.triggersToProcess)
+		}
+	end
+	
+	operation createTriggersFromEvents(pin : Pin, trigList : Set<UpdateTrigger>) is do
+		pin.getTokens().each{t|
+			// each token has to be copied for each destination = each target of each a relation leaving the pin
+			self.navHelper.getPinSuccessors(pin).each{dest|
+				// make a copy of the value of the token
+				// [IMPORTANT CSQ => when tokens are put on the inputs of a model / outputs of a block, 
+
+				// then create a new event with this value at the current time
+				var copy : Token init self.createEventWithTimestamp(void, void)
+				
+				// set the right destination
+				self.setEventDestination(copy, dest)
+									
+				// put each copy in the list of events
+				trigList.add(EventToProcess.new.initialize(self,copy))
+			}
+			// forget about the data about the original token, just keep the copies
+			self.removeEventFromValueDestTimeTables(t)
+		}
+		// then remove all tokens from p (or wait for reset ??? in any case, data about these tokens have been removed already...)
+		pin.clearTokens()
+	
+	end
+	
+	method canGoFurther(s : BlockStructure) : Boolean is do
+		super(s)
+		
+		if self.isLogLevelDEBUG() then 
+			stdio.write("triggersToProcess=[")
+			self.triggersToProcess.each{u|stdio.write(u.toString()+", ")}
+			stdio.writeln("]")
+		end
+		// can go further if there are still triggers to process at the current time
+		// AND there is no active block (the latest execution is complete)
+		result := (not self.triggersToProcess.empty())
+		
+		if self.isLogLevelDEBUG() then
+			stdio.writeln("Can go further? " + result.toString())
+		end
+	end
+	
+	method validate(s : BlockStructure) : Boolean is do
+		var res : Boolean init super(s) // true
+		result := res
+	end
+	
+	method endOfSnapshot(s : BlockStructure) is do
+		super(s)
+/*		// put produced events on the outputs of the model ????
+		// CAUTION : in practice, this never happens ! it must be handled in the endOfUpdate operation...
+*/	
+		// update the state of the model (TODO)
+
+		// in the sequential MoC there may be some "triggersToProcess" that
+		// may not be processed at the current snapshot. So we need to add
+		// the triggers from "triggersToProcess" to the main trigger list
+		
+		self.triggers.addAll(self.triggersToProcess)
+
+		// remove all the triggers that have been processed from the global trigger list
+		var newTriggerList : Sequence<UpdateTrigger> init self.triggers.reject{u| self.processedTriggers.contains(u)}
+		// also remove all triggers that are Snapshot requests (since there will be a new collect of snapshot requests)
+		newTriggerList := newTriggerList.reject{u| u.isKindOf(SnapshotRequest)}
+		self.triggers.clear()
+		self.triggers.addAll(newTriggerList)
+
+		if isLogLevelDEBUG() then
+			stdio.write("triggers for next snapshot = [")
+			self.triggers.each{u|stdio.write(u.toString()+", ")}
+			stdio.writeln("]")
+		end
+	end
+	
+	method collectSnapshotRequests(s : BlockStructure, sr : Sequence<SnapshotRequest>) is do
+		super(s,sr) // hierarchical collect + local storage of requests 
+
+		// check that there are no more triggers at current time (should not happen)
+		if not self.triggers.select{t|t.getTimeOfUpdate()==self.currentTime}.empty() then
+			var e : Exception init Exception.new
+			e.message := "In the end of snapshot, all triggers at current time should have been processed."
+			raise e
+		end
+		
+		// in case there are events remaining in the list of triggers, they have a date in the future 
+		// -> post a snapshot request on the min date
+		// (this part should not be necessary because all events produced by blocks are at the current time so there should not be events with
+		// date in the future in the list...)
+		if not self.triggers.empty() then
+			// in the sequential MoC, some triggers may have no time
+			var minTrigger : UpdateTrigger init void
+			self.triggers.each{t|
+				if t.getTimeOfUpdate() != void then
+					if minTrigger == void then
+						minTrigger := t
+					else
+						if t.getTimeOfUpdate() < minTrigger.getTimeOfUpdate() then
+							minTrigger := t
+						end
+					end
+				end
+			}
+			
+			if minTrigger != void then
+				var request : SnapshotRequest init SnapshotRequest.new
+				request.setEntityToUpdate(minTrigger.getEntityToUpdate())
+				request.setTimeOfUpdate(minTrigger.getTimeOfUpdate())
+				sr.add(request)
+			end
+		end
+
+	end
+
+	method wrapup(s : BlockStructure) is do
+		super(s)
+	end
+}

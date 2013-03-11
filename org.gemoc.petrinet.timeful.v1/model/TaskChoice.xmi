@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinet="http://petrinet" xsi:schemaLocation="http://petrinet ../metamodel/PetriNet.ecore" name="TaskChoice">
+  <nodes xsi:type="petrinet:Place" name="Ready" outgoings="//@arcs.0 //@arcs.1" incomings="//@arcs.10 //@arcs.11" marking="1"/>
+  <nodes xsi:type="petrinet:Place" name="DoingTaskA" outgoings="//@arcs.4" incomings="//@arcs.2"/>
+  <nodes xsi:type="petrinet:Place" name="DoingTaskB" outgoings="//@arcs.5" incomings="//@arcs.3"/>
+  <nodes xsi:type="petrinet:Place" name="FinishedTaskA" outgoings="//@arcs.8" incomings="//@arcs.6"/>
+  <nodes xsi:type="petrinet:Place" name="FinishedTaskB" outgoings="//@arcs.9" incomings="//@arcs.7"/>
+  <nodes xsi:type="petrinet:Transition" name="ChooseTaskA" outgoings="//@arcs.2" incomings="//@arcs.0" minTime="2" maxTime="3"/>
+  <nodes xsi:type="petrinet:Transition" name="ChooseTaskB" outgoings="//@arcs.3" incomings="//@arcs.1" minTime="1" maxTime="4"/>
+  <nodes xsi:type="petrinet:Transition" name="FinishTaskA" outgoings="//@arcs.6" incomings="//@arcs.4" maxTime="2"/>
+  <nodes xsi:type="petrinet:Transition" name="FinishTaskB" outgoings="//@arcs.7" incomings="//@arcs.5" minTime="2" maxTime="4"/>
+  <nodes xsi:type="petrinet:Transition" name="ResetTaskA" outgoings="//@arcs.10" incomings="//@arcs.8" minTime="1" maxTime="1"/>
+  <nodes xsi:type="petrinet:Transition" name="ResetTaskB" outgoings="//@arcs.11" incomings="//@arcs.9" minTime="1" maxTime="1"/>
+  <arcs target="//@nodes.5" source="//@nodes.0"/>
+  <arcs target="//@nodes.6" source="//@nodes.0"/>
+  <arcs target="//@nodes.1" source="//@nodes.5"/>
+  <arcs target="//@nodes.2" source="//@nodes.6"/>
+  <arcs target="//@nodes.7" source="//@nodes.1"/>
+  <arcs target="//@nodes.8" source="//@nodes.2"/>
+  <arcs target="//@nodes.3" source="//@nodes.7"/>
+  <arcs target="//@nodes.4" source="//@nodes.8"/>
+  <arcs target="//@nodes.9" source="//@nodes.3"/>
+  <arcs target="//@nodes.10" source="//@nodes.4"/>
+  <arcs target="//@nodes.0" source="//@nodes.9"/>
+  <arcs target="//@nodes.0" source="//@nodes.10"/>
+</petrinet:PetriNet>

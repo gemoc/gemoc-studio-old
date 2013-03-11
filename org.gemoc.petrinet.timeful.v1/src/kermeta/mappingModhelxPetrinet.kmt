@@ -1,0 +1,218 @@
+/*
+ * ORIGINAL
+ * --------
+ * $Id:$ 
+ * Creation		: June 3, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec, University of Rennes 1, IRISA & Inria.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ *     	University of Rennes 1, IRISA & Inria
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ *     	Benoit.Combemale@irisa.fr
+ *     	Benoit.Baudry@inria.fr
+ *
+ * PETRINET
+ * --------
+ *
+ * February 2013
+ * Florent Latombe <florent.latombe@irit.fr>
+ */
+ 
+ // Mapping between the PetriNet world and ModHel'X's block structure world.
+ 
+package depetrinet;
+
+require kermeta
+
+require "./petrinetTriggers.kmt"
+require "./petrinetInducedSemantics.kmt"
+require "./petrinetObservables.kmt"
+
+require "./ModhelxAdaptor.kmt"
+
+require "platform:/resource/fr.supelec.modhelx/src/kermeta/core/abstractSemantics.kmt"
+require "platform:/resource/fr.supelec.modhelx/src/kermeta/mocs/abstractDEMoC.kmt"
+
+using kermeta::standard
+using kermeta::persistence
+using kermeta::exceptions
+using kermeta::utils
+using kermeta::io
+
+
+using modhelx::core
+using modhelx::mocs::de
+
+using petrinet
+
+class TransitionDEWrapper inherits AtomicBlock {
+	reference democ : AbstractDEMoC
+	reference receivedTokens : set modhelx::core::Token[0..*]
+
+	reference wrappedTransition : Transition
+	reference transitionWrapperTable : Hashtable<Transition,TransitionDEWrapper>
+	
+	// Time at which the MoC should consider the block for scheduling.
+	attribute timeOfExecution : Integer
+
+	// Each place linked to a transition leads to the creation of a Pin on the corresponding block wrapping the transition
+	reference pinToPlaceTable : Hashtable<Pin,Place>
+	reference placeToPinTable : Hashtable<Place,Pin>
+
+	operation initialize(transitionToWrap : Transition) : TransitionDEWrapper is do
+		self.wrappedTransition := transitionToWrap
+		
+		self.name := self.wrappedTransition.getName() + "Block"
+
+		self.pinToPlaceTable := Hashtable<Pin,Place>.new
+		self.placeToPinTable := Hashtable<Place,Pin>.new
+		self.timeOfExecution := 0
+
+		result := self
+	end
+	
+	// Creates a pin on the block corresponding to a given place.
+	operation addPinForPlace(place : Place) : Pin is do
+		result := addPinForPlaceWithSuffix(place, "")
+	end
+	
+	operation addPinForPlaceWithSuffix(place : Place, suffix : String) : Pin is do
+		var pin : Pin init self.addPin("PinFor" + place.name + suffix)
+		self.pinToPlaceTable.put(pin,place)
+		self.placeToPinTable.put(place,pin)
+		result := pin
+	end
+
+
+	method setup() is do
+		super()
+		self.democ := self.structure.model.moc.asType(AbstractDEMoC)
+	end
+
+	method reset() is do
+		super()
+		self.receivedTokens.clear()
+	end
+	
+	// Called when the block is on the agenda of the MoC
+	method update() is do
+		super()
+		
+		self.timeOfExecution := self.wrappedTransition.preFire(self.democ.currentTime)
+		var mayFire : Boolean init self.timeOfExecution == self.democ.currentTime
+		if democ.isLogLevelDEBUG() then stdio.writeln("{" + self.democ.currentTime.toString()+ "}" + "{" + self.name + "}" 
+			+ ">Time of Execution: " + self.timeOfExecution.toString() + "; Current Time: " + self.democ.currentTime.toString() + "; mayFire: " + mayFire.toString()) end
+		
+		if mayFire then
+			self.wrappedTransition.maintainFireableCoherence(self.democ.currentTime).each{transition |
+				var wrapper : TransitionDEWrapper init transitionWrapperTable.getValue(transition)
+				wrapper.interface.each{p | 
+					if wrapper.democ.navHelper.isInputPin(p) then
+						if democ.isLogLevelINFO() then stdio.writeln("{" + self.democ.currentTime.toString()+ "}" + "{" + self.name + "}" + ">Clearing tokens on " + p.toString() + " due to maintainFireableCoherence") end
+						p.clearTokens
+					end
+				}
+			}
+			self.wrappedTransition.fire(self.democ.currentTime)
+			self.__manageControlTokens()
+		else
+			if democ.isLogLevelINFO() then stdio.writeln("{" + self.democ.currentTime.toString()+ "}" + "{" + self.name + "}" + ">Not Firing.") end
+		end
+		
+		
+		
+	end
+	
+	operation __manageControlTokens() is do
+		self.interface.select{p | 
+			self.democ.navHelper.isInputPin(p)
+			and p.getTokens().size() > 0
+			and self.pinToPlaceTable.getValue(p).asType(Node).outgoings.select{outgoing | outgoing.target == self.wrappedTransition}.forAll{arc | arc.kind == ArcKind.normal}
+		}.each{p |
+			if democ.isLogLevelINFO() then stdio.writeln("{" + self.democ.currentTime.toString()+ "}" + "{" + self.name + "}" + ">Clearing tokens on " + p.toString() + " of place " + self.pinToPlaceTable.getValue(p).toString()) end
+			p.clearTokens()
+		}
+		self.wrappedTransition.asType(Node).getOutgoings().each{arc |
+			var place : Place init arc.getTarget().asType(Place)
+			//var pin : Pin init self.placeToPinTable.getValue(place)
+			//if democ.isLogLevelINFO() then stdio.writeln("{" + self.democ.currentTime.toString()+ "}" + "{" + self.name + "}" + ">Adding ControlToken on " + pin.toString() + " of place " + place.toString()) end
+			//pin.addToken(self.democ.createEvent("ControlToken"))
+			var pins : Collection<Pin> init self.structure.placeToInputPins.getValue(place) // It's "Input" seen from a Place so it's effectively outputs for transitions
+			if democ.isLogLevelINFO() then stdio.writeln("{" + self.democ.currentTime.toString()+ "}" + "{" + self.name + "}" + ">Adding ControlToken on " + pinsToString(pins) + " of place " + place.toString()) end
+			pins.each{pin |
+				pin.addToken(self.democ.createEvent("ControlToken"))
+			}
+		}
+	end
+	operation pinsToString(pins : Collection<Pin>) : String is do
+		var res : String init ""
+		if pins == void then
+			result := ""
+		else
+			pins.each{pin |
+				if res == "" then
+					res := res + pin.toString()
+				else 
+					res := res + ", " + pin.toString()
+				end
+			}
+			result := res 
+		end
+	end
+	
+
+	method endOfSnapshot() is do
+		super()
+		// remove the info on the consummed tokens from the moc tables (the tokens have already been removed from the list of events to process)
+		self.receivedTokens.each{t|
+			// KEEP THIS ? OR RELY ON RESET OP ?
+			self.democ.removeEventFromValueDestTimeTables(t)
+		}
+	end
+
+	method collectSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		super(sr)
+		stdio.writeln("{" + self.democ.currentTime.toString()+ "}" + "{" + self.name + "}" + ">Collecting Snapshot Requests...")
+		// If the transition has not been fired yet, it creates a snapshot request for its scheduled time of execution.
+		if self.timeOfExecution > self.democ.currentTime then
+			var myrequest : SnapshotRequest init SnapshotRequest.new
+			myrequest.setEntityToUpdate(self.asType(AtomicBlock))
+			myrequest.setTimeOfUpdate(self.timeOfExecution)
+			sr.add(myrequest)
+		end
+	end
+	
+	method toString() : String is do
+		result := "TransitionDEWrapper " + self.name + " wrapping " + self.wrappedTransition.toString()
+	end
+}
+
+
+class InitialTransitionWrapper inherits TransitionDEWrapper{
+
+	// Scheduling of the first block
+	method collectInitialSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		super(sr)
+		var myrequest : SnapshotRequest init SnapshotRequest.new
+		myrequest.setEntityToUpdate(self)
+	
+		// by default, the time of the first update is the first date of the de moc... (garder ?)
+		myrequest.setTimeOfUpdate(self.structure.model.moc.asType(AbstractDEMoC).currentTime)
+		
+		sr.add(myrequest)
+	end
+	
+	method toString() : String is do
+		result := "InitialTransitionWrapper " + self.name + " wrapping " + self.wrappedTransition.toString()
+	end
+}
+

@@ -1,0 +1,87 @@
+/*
+ * ORIGINAL
+ * --------
+ * $Id:$ 
+ * Creation		: June 3, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec, University of Rennes 1, IRISA & Inria.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ *     	University of Rennes 1, IRISA & Inria
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ *     	Benoit.Combemale@irisa.fr
+ *     	Benoit.Baudry@inria.fr
+ *
+ * PETRINET
+ * --------
+ *
+ * February 2013
+ * Florent Latombe <florent.latombe@irit.fr>
+ */
+ 
+ // Triggers are actions which change the state of the system. They are called by the MoC only if induced semantics are "verified"
+
+package petrinet;
+
+require "./petrinetStateDefinition.kmt"
+require kermeta
+
+using kermeta::standard
+using kermeta::exceptions
+
+
+aspect class Transition inherits Node{
+		
+	// fire : returns the time of execution of the transition.
+	//   -> currentTime if the transition is actually fired
+	//   -> next time to try a fire if the transition cannot be fired at this time
+	// Also checks for the fireability of the transition (tokens, etc) then creates/deletes tokens where necessary in the petrinet model
+	operation fire(currentTime : Integer) : Integer is do
+		stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">fire called on " + self.toString())
+	
+		// Actual execution. Return currentTime, increment and decrement tokens where needed.
+		stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Decrementing markings...")
+		__decrementRelevantMarkings(currentTime)
+		
+		stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Firing...")
+		
+		stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Incrementing markings...")
+		__incrementRelevantMarkings(currentTime)
+		
+		// Reset
+		self.callTime := void
+		
+		result := currentTime
+
+	end
+	
+	operation __decrementRelevantMarkings(currentTime : Integer) : Void is do
+		self.asType(Node).incomings.each{arc | 
+			if arc.kind == ArcKind.normal then
+				stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">" + arc.source.asType(Place).toString() + " ---> " + "(" + (arc.source.asType(Place).marking - arc.weight).toString() + ")")
+				arc.source.asType(Place).marking := arc.source.asType(Place).marking - arc.weight
+			else
+				// Read_arc
+				stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">" + arc.source.asType(Place).toString() + " ---> READ_ARC")
+			end
+		}
+	end
+	
+	operation __incrementRelevantMarkings(currentTime : Integer) : Void is do
+		self.asType(Node).outgoings.each{arc |
+			stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">" + arc.target.asType(Place).toString() + " ---> " + "(" + (arc.target.asType(Place).marking + arc.weight).toString() + ")")
+			arc.target.asType(Place).marking := arc.target.asType(Place).marking + arc.weight
+		}
+	end
+	
+	
+
+}

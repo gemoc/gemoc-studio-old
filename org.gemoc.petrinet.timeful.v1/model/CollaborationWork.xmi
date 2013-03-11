@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinet="http://petrinet" xsi:schemaLocation="http://petrinet ../metamodel/PetriNet.ecore" name="CollaborationWork">
+  <nodes xsi:type="petrinet:Place" name="Initial" outgoings="//@arcs.0" marking="1"/>
+  <nodes xsi:type="petrinet:Transition" name="CloneRepository" outgoings="//@arcs.1" incomings="//@arcs.0" maxTime="20"/>
+  <nodes xsi:type="petrinet:Place" name="ClonedRepository" outgoings="//@arcs.2" incomings="//@arcs.1"/>
+  <nodes xsi:type="petrinet:Transition" name="CreateBranch" outgoings="//@arcs.3 //@arcs.4" incomings="//@arcs.2" maxTime="2"/>
+  <nodes xsi:type="petrinet:Place" name="InitialBranchA" outgoings="//@arcs.5" incomings="//@arcs.3"/>
+  <nodes xsi:type="petrinet:Place" name="InitialBranchB" outgoings="//@arcs.6" incomings="//@arcs.4"/>
+  <nodes xsi:type="petrinet:Transition" name="CommitBranchA" outgoings="//@arcs.7" incomings="//@arcs.5" minTime="4" maxTime="10"/>
+  <nodes xsi:type="petrinet:Transition" name="CommitBranchB" outgoings="//@arcs.8" incomings="//@arcs.6" minTime="2" maxTime="4"/>
+  <nodes xsi:type="petrinet:Place" name="ChangedBranchA" outgoings="//@arcs.9" incomings="//@arcs.7"/>
+  <nodes xsi:type="petrinet:Place" name="ChangedBranchB" outgoings="//@arcs.10" incomings="//@arcs.8"/>
+  <nodes xsi:type="petrinet:Transition" name="Merge" outgoings="//@arcs.11" incomings="//@arcs.9 //@arcs.10" minTime="10" maxTime="20"/>
+  <nodes xsi:type="petrinet:Place" name="MergedBranches" outgoings="//@arcs.12" incomings="//@arcs.11"/>
+  <nodes xsi:type="petrinet:Transition" name="PushChanges" outgoings="//@arcs.13" incomings="//@arcs.12" minTime="10" maxTime="18"/>
+  <nodes xsi:type="petrinet:Place" name="UpdatedRepository" incomings="//@arcs.13"/>
+  <arcs target="//@nodes.1" source="//@nodes.0"/>
+  <arcs target="//@nodes.2" source="//@nodes.1"/>
+  <arcs target="//@nodes.3" source="//@nodes.2"/>
+  <arcs target="//@nodes.4" source="//@nodes.3"/>
+  <arcs target="//@nodes.5" source="//@nodes.3"/>
+  <arcs target="//@nodes.6" source="//@nodes.4"/>
+  <arcs target="//@nodes.7" source="//@nodes.5"/>
+  <arcs target="//@nodes.8" source="//@nodes.6"/>
+  <arcs target="//@nodes.9" source="//@nodes.7"/>
+  <arcs target="//@nodes.10" source="//@nodes.8"/>
+  <arcs target="//@nodes.10" source="//@nodes.9"/>
+  <arcs target="//@nodes.11" source="//@nodes.10"/>
+  <arcs target="//@nodes.12" source="//@nodes.11"/>
+  <arcs target="//@nodes.13" source="//@nodes.12"/>
+</petrinet:PetriNet>

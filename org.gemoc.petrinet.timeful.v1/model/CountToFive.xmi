@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinet="http://petrinet" xsi:schemaLocation="http://petrinet ../metamodel/PetriNet.ecore" name="CountToFive">
+  <nodes xsi:type="petrinet:Place" name="NotFive" outgoings="//@arcs.0 //@arcs.2" incomings="//@arcs.1" marking="1"/>
+  <nodes xsi:type="petrinet:Transition" name="Increment" outgoings="//@arcs.1" incomings="//@arcs.0" minTime="1" maxTime="3"/>
+  <nodes xsi:type="petrinet:Transition" name="TestForFive" outgoings="//@arcs.3" incomings="//@arcs.2" minTime="5" maxTime="15"/>
+  <nodes xsi:type="petrinet:Place" name="Five" incomings="//@arcs.3"/>
+  <arcs target="//@nodes.1" source="//@nodes.0" kind="read_arc"/>
+  <arcs target="//@nodes.0" source="//@nodes.1"/>
+  <arcs target="//@nodes.2" source="//@nodes.0" weight="5"/>
+  <arcs target="//@nodes.3" source="//@nodes.2"/>
+</petrinet:PetriNet>

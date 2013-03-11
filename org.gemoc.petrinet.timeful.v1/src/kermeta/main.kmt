@@ -1,0 +1,269 @@
+/*
+ * ORIGINAL
+ * --------
+ * $Id:$ 
+ * Creation		: June 3, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec, University of Rennes 1, IRISA & Inria.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ *     	University of Rennes 1, IRISA & Inria
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ *     	Benoit.Combemale@irisa.fr
+ *     	Benoit.Baudry@inria.fr
+ *
+ * PETRINET
+ * --------
+ *
+ * February 2013
+ * Florent Latombe <florent.latombe@irit.fr>
+ */
+ 
+ // Entry point of the program
+ 
+@mainClass "main::Main"
+@mainOperation "main"
+
+package main;
+
+require kermeta
+
+require "./mappingModhelxPetrinet.kmt"
+
+require "platform:/resource/fr.supelec.modhelx/src/kermeta/core/abstractSemantics.kmt"
+require "platform:/resource/fr.supelec.modhelx/src/kermeta/core/executionEngine.kmt"
+
+require "platform:/resource/fr.supelec.modhelx/src/kermeta/mocs/concurrentDEMoC.kmt"
+require "platform:/resource/fr.supelec.modhelx/src/kermeta/mocs/sequentialDEMoC.kmt"
+require "platform:/resource/fr.supelec.modhelx/src/kermeta/mocs/DELib.kmt"
+
+require "./ModhelxAdaptor.kmt"
+
+using kermeta::standard
+using kermeta::persistence
+using kermeta::exceptions
+using kermeta::utils
+using kermeta::io
+
+using modhelx::core
+using modhelx::mocs::de
+using modhelx::engine
+
+using petrinet
+using depetrinet
+
+class Main{
+
+	operation setup(filename : String, folder : String, moc : ModelOfComputation) : Model is do
+	// Builds a domain-specific model : here, a petri net model.
+		var petrinetmodel : PetriNet init buildPetrinetModel()
+		if(filename != "") then
+			petrinetmodel := loadPetrinetModel(filename, folder)
+		end
+		
+		/*******************************************************/
+		/*** You may use Debug log level for some more infos ***/
+		/*******************************************************/
+		moc.setLogLevel(LogLevel.info) // LogLevel.info or LogLevel.debug
+		
+		// Build the ModHel'X model corresponding to the petrinet model.
+		var model : Model init buildpetrinetModHelXWrappingModel(petrinetmodel, moc.asType(AbstractDEMoC))
+		result := model
+	end
+	
+	// Entry-point
+	operation main() : Void is do 
+		stdio.writeln("--- BEGIN ---")
+		
+		/****************************************************************************/
+		/** Uncomment the line of your choice to choose a combination of model/MoC **/
+		/****************************************************************************/
+		
+		// Loops infinitely, incrementing.
+		// The problem is that there is no "priority" so the MoC is fine with looping.
+		//var model : Model init setup("CountToFive", "../../model/", SequentialDEMoC.new)
+		
+		// Does not work with ConcurrentDEMoC because of the way the loop to choose the next triggers to consider is built.
+		// See method schedule in fr.supelec.modhelx/src/kermeta/mocs/concurrentDEMoC.kmt
+		// The while loop works incorrectly, because of the iterator, with small models (1 or 2 transitions)
+		//var model : Model init setup("CountToFive", "../../model/", ConcurrentDEMoC.new)
+		
+		// After some time because of the way snapshot requests are collected, it gets blocked
+		//var model : Model init setup("TaskChoice", "../../model/", SequentialDEMoC.new)
+		
+		// Does not work with ConcurrentDEMoC because of the way the loop to choose the next triggers to consider is built.
+		// See method schedule in fr.supelec.modhelx/src/kermeta/mocs/concurrentDEMoC.kmt
+		// The while loop works incorrectly, because of the iterator, with small models (1 or 2 transitions)
+		//var model : Model init setup("TaskChoice", "../../model/", ConcurrentDEMoC.new)
+		
+		// OK
+		//var model : Model init setup("CollaborationWork", "../../model/", SequentialDEMoC.new)
+		
+		// OK, a bit shorter than above !
+		var model : Model init setup("CollaborationWork", "../../model/", ConcurrentDEMoC.new)
+		
+		// Execute the model according to the chosen MoC.
+		var nbsnap : Integer init 15
+		var eng : Engine init Engine.new.initialize(model, nbsnap)
+		eng.setLogLevel(LogLevel.info) // Possible log levels: info, debug
+		eng.run()
+
+		stdio.writeln("--- END ---")
+	end
+	
+	operation buildpetrinetModHelXWrappingModel(petrinetmodel : PetriNet, democ : AbstractDEMoC) : Model is do
+        // Initialization of the ModHel'X model and block structure.
+        var model : Model init Model.new.initialize("Wrapped Petrinetmodel <" + petrinetmodel.name + ">")
+		democ.initialize()
+		model.moc := democ
+		//var struct : BlockStructure init BlockStructure.new
+		var struct : BlockStructure init BlockStructure.new
+		var placeToInputPins : Hashtable<Place, Collection<Pin>> init Hashtable<Place, Collection<Pin>>.new
+		struct.placeToInputPins := placeToInputPins
+		var placeToOutputPins : Hashtable<Place, Collection<Pin>> init Hashtable<Place, Collection<Pin>>.new
+		struct.placeToOutputPins := placeToOutputPins
+		model.structure := struct
+		
+		// Keep track of which petrinet Transition is transformed into which wrapper TransitionDEWrapper.
+		var transitionWrapperTable : Hashtable<Transition,TransitionDEWrapper> init Hashtable<Transition,TransitionDEWrapper>.new
+		
+		// Every transition is transformed into a ModHel'X block.
+		// Most transition are wrapped into a TransitionDEWRapper
+		// The starting transitions (the first to be fireable, so basically where all the tokens are in the places already) are wrapped in InitialTransitionWrapper
+		petrinetmodel.nodes.each{node|
+			if node.isKindOf(Transition) then
+				var transition : Transition init node.asType(Transition)
+				var wrapper : TransitionDEWrapper
+				// /!\ Sometimes for SequentialDEMoC we want only ONE initial block.
+				//if transition.name == "MyTransition" then
+				if transition.__hasEnoughTokens() then 
+				// For ConcurrentDEMoC we check, for a given transition, that its incoming arcs come from places which do not themselves have incomings.
+				// Note : Probably won't work for places without incomings and without initial tokens (but such places would be weird)
+				//if not transition.incomings.forAll{incoming | incoming.source.asType(Place).incomings.exists{inc | true}} then
+					if democ.isLogLevelDEBUG() then stdio.writeln("Initial transition: " + transition.toString()) end
+					wrapper := InitialTransitionWrapper.new.initialize(transition)
+				else
+					if democ.isLogLevelDEBUG() then stdio.writeln("Regular transition: " + transition.toString()) end
+					wrapper := TransitionDEWrapper.new.initialize(transition)
+				end
+				if democ.isLogLevelDEBUG() then stdio.writeln("Wrapping block: " + wrapper.toString()) end
+				
+				wrapper.transitionWrapperTable := transitionWrapperTable
+				struct.blocks.add(wrapper)
+				transitionWrapperTable.put(transition, wrapper)
+			end
+		}
+		
+		// Each place is transformed into a Pin
+		// Moreover, if two pins share the same name on different blocks, then a relation is created as it means there is a Transition->Arc->Place->Arc->Transition link
+		petrinetmodel.nodes.each{node|
+			if node.isKindOf(Place) then
+				var inputPins : Set<Pin> init Set<Pin>.new
+				var outputPins : Set<Pin> init Set<Pin>.new
+				node.incomings.each{incoming|
+					var wrapper : TransitionDEWrapper init transitionWrapperTable.getValue(incoming.source.asType(Transition))
+					var inputPin : Pin init wrapper.addPinForPlace(node.asType(Place))
+					inputPins.add(inputPin)
+				}	
+				node.outgoings.each{outgoing|
+					var wrapper : TransitionDEWrapper init transitionWrapperTable.getValue(outgoing.target.asType(Transition))
+					var outputPin : Pin init wrapper.addPinForPlace(node.asType(Place))
+					outputPins.add(outputPin)
+				}
+				inputPins.each{inputPin |
+					outputPins.each{outputPin |
+						if inputPin.name == outputPin.name then
+							if inputPin.owner == outputPin.owner then
+								inputPin.name := inputPin.name + "Input"
+								outputPin.name := outputPin.name + "Output"
+							end
+							struct.createRelation(inputPin, outputPin)
+						end
+					}
+				}
+				if democ.isLogLevelINFO() then stdio.writeln("Memorizing : <" + node.asType(Place).toString() + ", input<" + pinsToString(inputPins) + ">, output <" + pinsToString(outputPins) + ">>") end
+				// NB : "input" and "output" is relative to a place.
+				var allPins : Collection<Pin> init Set<Pin>.new
+				allPins.addAll(inputPins)
+				allPins.addAll(outputPins)
+				struct.placeToInputPins.put(node.asType(Place), inputPins)
+				struct.placeToOutputPins.put(node.asType(Place), outputPins)
+			end
+		}
+		
+		if democ.isLogLevelINFO() then stdio.writeln(petrinetmodel.toString()) stdio.writeln(struct.toString()) end
+		
+		result := model
+	end
+	
+	operation pinsToString(pins : Collection<Pin>) : String is do
+		var res : String init ""
+		pins.each{pin |
+			if res == "" then res := res + pin.toString()
+			else res := res + ", " + pin.toString() end
+		}
+		result := res
+	end
+	
+	// Load an instance of petrinet model conform to the metamodel.
+	operation loadPetrinetModel(filename : String, folder : String) : PetriNet is do
+        var petrinetmodel : PetriNet
+
+        // loading xmi model using EMFRepository (the metamodel must have been registered in it before use)
+        var repository : EMFRepository init EMFRepository.new
+        var resource : Resource init repository.createResource(folder + filename +".xmi", "../../metamodel/PetriNet.ecore")
+        resource.load
+		petrinetmodel ?= resource.one
+
+		result := petrinetmodel
+	end
+	
+	
+	
+	// Different examples of Petrinetmodel are built below.
+	
+	
+	// Modèle trivial pour développer
+	operation buildPetrinetModel() : PetriNet is do
+        var petrinetmodel : PetriNet init PetriNet.new.initialize("MinimalActivity")
+        
+        var placeReady : Place init Place.new.initialize("Ready", 1, petrinetmodel)
+        var placeFinished : Place init Place.new.initialize("Finished", 0, petrinetmodel)
+        var placeNotDone : Place init Place.new.initialize("Not Done", 1, petrinetmodel)
+        var placeDone : Place init Place.new.initialize("Done", 0, petrinetmodel)
+        
+        // t_min == t_max pour des raisons pratiques.
+        var transitionDo : Transition init Transition.new.initialize("Do", 1, 2, petrinetmodel)
+        var transitionSignalDo : Transition init Transition.new.initialize("SignalDo", 4, 8, petrinetmodel)
+        
+        var arcReadyToDo : Arc init Arc.new.initialize(placeReady, transitionDo, 1, ArcKind.normal)
+        var arcDoToFinished : Arc init Arc.new.initialize(transitionDo, placeFinished, 1, ArcKind.normal)
+        var arcNotDoneToSignalDo : Arc init Arc.new.initialize(placeNotDone, transitionSignalDo, 1, ArcKind.normal)
+        var arcSignalDoToDone : Arc init Arc.new.initialize(transitionSignalDo, placeDone, 1, ArcKind.normal)
+        var arcFinishedToSignalDo : Arc init Arc.new.initialize(placeFinished, transitionSignalDo, 1, ArcKind.read_arc)
+
+        petrinetmodel.nodes.add(placeReady)
+        petrinetmodel.nodes.add(placeFinished)
+        petrinetmodel.nodes.add(placeNotDone)
+        petrinetmodel.nodes.add(placeDone)
+        petrinetmodel.nodes.add(transitionDo)
+        petrinetmodel.nodes.add(transitionSignalDo)
+        
+        petrinetmodel.arcs.add(arcReadyToDo)
+        petrinetmodel.arcs.add(arcDoToFinished)
+        petrinetmodel.arcs.add(arcNotDoneToSignalDo)
+        petrinetmodel.arcs.add(arcSignalDoToDone)
+        petrinetmodel.arcs.add(arcFinishedToSignalDo)
+             
+		result := petrinetmodel
+	end	
+	
+}

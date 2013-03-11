@@ -1,0 +1,377 @@
+/*
+ * $Id:$ 
+ * Creation		: May 15, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ * Authors		: 
+ * 		hardebolle
+ */
+package modhelx::mocs::de;
+
+require kermeta
+require "../core/abstractSemantics.kmt"
+require "../core/abstractSemanticsImpl.kmt"
+require "abstractDEMoC.kmt"
+
+using kermeta::standard
+using kermeta::persistence
+using kermeta::exceptions
+using kermeta::utils
+
+using modhelx::core
+using modhelx::core::utils
+
+
+/*** DE Atomic Block : Constant Emitter ***/
+
+class DEConstant inherits AtomicBlock {
+	reference democ : AbstractDEMoC 
+	attribute timeOfNextUpdate : Integer
+	
+	operation initialize(val : Integer, timeStep : Integer) : DEConstant is do
+		self.name := "DEConstant"
+		self.setValue(val)
+		self.setTimeStep(timeStep)
+		self.addPin("out")
+		
+		self.setFirstTimeOfEmit(0)
+		self.timeOfNextUpdate := 0
+		
+		result := self
+	end
+	
+	//------------------
+	// Properties of the block
+	//------------------
+	operation setValue(val : Integer) is do
+		self.addProperty("value",val)
+	end
+	operation getValue() : Integer is do
+		result := self.getProperty("value").asType(Integer)
+	end
+	operation setFirstTimeOfEmit(val : Integer) is do
+		self.addProperty("firstTimeOfEmit",val)
+	end
+	operation getFirstTimeOfEmit() : Integer is do
+		result := self.getProperty("firstTimeOfEmit").asType(Integer)
+	end
+	operation setTimeStep(val : Integer) is do
+		self.addProperty("timeStep",val)
+	end
+	operation getTimeStep() : Integer is do
+		result := self.getProperty("timeStep").asType(Integer)
+	end
+
+	//------------------
+	// Semantics of the block
+	//------------------
+	method setup() is do
+		super()
+		self.democ := self.structure.model.moc.asType(AbstractDEMoC)
+	end
+	method collectInitialSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		super(sr)
+		stdio.writeln("#DEconstant")
+		var myrequest : SnapshotRequest init SnapshotRequest.new
+		myrequest.setEntityToUpdate(self)
+		myrequest.setTimeOfUpdate(self.getFirstTimeOfEmit())
+		sr.add(myrequest)
+	end
+	method update() is do
+		super()
+		// emit a token on each pin (all are outputs) 
+		// [all produced tokens are always processed at the current time -> no need to put a timestamp, the MoC handles this]
+		self.interface.each{p| 
+			p.addToken(self.democ.createEvent(self.getValue()))
+		}
+	end
+	method endOfSnapshot() is do
+		super()
+		// CAUTION : access to current time of snapshot in the moc... TO KEEP ?
+		self.timeOfNextUpdate := self.democ.currentTime + self.getTimeStep()
+	end
+	method collectSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		super(sr)
+		var myrequest : SnapshotRequest init SnapshotRequest.new
+		myrequest.setEntityToUpdate(self)
+		myrequest.setTimeOfUpdate(self.timeOfNextUpdate)
+		sr.add(myrequest)
+	end
+	
+}
+
+
+/*** DE Atomic Block : Printer ***/
+
+class DEPrinter inherits AtomicBlock {
+	reference democ : AbstractDEMoC 
+	reference receivedTokens : seq Token[0..*]
+
+	operation initialize() : DEPrinter is do
+		self.name := "DEPrinter"
+		self.addPin("in")
+		result := self
+	end
+	
+	method setup() is do
+		super()
+		self.democ := self.structure.model.moc.asType(AbstractDEMoC)
+	end
+	method reset() is do
+		super()
+		// clear the list of received tokens
+		self.receivedTokens.clear()
+	end
+	method update() is do
+		super()
+		// get the tokens on each pin (all are inputs), store them, then remove then from the pin
+		self.interface.each{p|
+			self.receivedTokens.addAll(p.tokens)
+			p.tokens.clear()
+		}
+	end
+	method endOfSnapshot() is do
+		super()
+		// print the tokens and remove the info on these tokens from the moc tables (the tokens have already been removed from the list of events to process)
+		self.receivedTokens.each{t|
+			stdio.writeln("Token received: [val="+self.democ.getEventValue(t).toString()+",timestamp="
+				+self.democ.getEventTimestamp(t).toString()
+				//+",dest="
+				//+self.democ.getEventDestination(t).toString
+				+"]")
+			
+			// KEEP THIS ? OR RELY ON RESET OP ?
+			self.democ.removeEventFromValueDestTimeTables(t)
+		}
+	end
+}
+
+/*** DE Atomic Block : Adder ***/
+
+class DEAdder inherits AtomicBlock {
+	reference democ : AbstractDEMoC 
+	reference receivedTokens : seq Token[0..*]
+
+	operation initialize() : DEAdder is do
+		self.name := "DEAdder"
+		self.addPin("in1")
+		self.addPin("in2")
+		self.addPin("out")
+		result := self
+	end
+	
+	method setup() is do
+		super()
+		self.democ := self.structure.model.moc.asType(AbstractDEMoC)
+	end
+	method reset() is do
+		super()
+		// clear the list of received tokens
+		self.receivedTokens.clear()
+	end
+	method update() is do
+		super()
+		// result of addition
+		var sum : Integer init 0
+		
+		// get the tokens on each input pin, compute the sum, then remove then from the pin
+		self.interface.select{p| democ.navHelper.isInputPin(p)}.each{p|
+			stdio.writeln("input pin p:"+p.toString())
+			p.tokens.each{t| 
+				stdio.writeln("token on p:"+t.toString())
+				sum := sum + democ.getTokenValue(t).asType(Integer)
+				self.receivedTokens.add(t)
+			}
+			p.tokens.clear()
+		}
+		
+		// produce a token on output pins with value sum
+		self.interface.select{p| democ.navHelper.isOutputPin(p)}.each{p| 
+			p.addToken(self.democ.createEvent(sum))
+		}
+		
+	end
+	method endOfSnapshot() is do
+		super()
+		// remove the info on the consummed tokens from the moc tables (the tokens have already been removed from the list of events to process)
+		self.receivedTokens.each{t|
+			// KEEP THIS ? OR RELY ON RESET OP ?
+			self.democ.removeEventFromValueDestTimeTables(t)
+		}
+	end
+}
+
+/*** DE Atomic Block : ScenarioPlayer ***/
+
+// a scenario is made of several events : at the given time, the value is produced on the specified pin
+class DEScenarioEvent inherits Comparable {
+	reference val : Object
+	reference pin : Pin
+	attribute time : Integer
+	
+	operation initialize(t : Integer, v : Object, p : Pin) : DEScenarioEvent is do
+		self.val := v
+		self.time := t
+		self.pin := p
+		result := self
+	end
+
+	method compareTo(other : Object) : Integer is do
+		var o : DEScenarioEvent init other.asType(DEScenarioEvent)
+		if self.time == o.time then
+			result := 0
+		else
+			if self.time < o.time then
+				result := -1
+			else //self.time > o.time
+				result := 1
+			end
+		end
+	end
+	
+	method toString() : String is do
+		result := "DEScenarioEvent{time="+self.time.toString()+",val="+self.val.toString()+",pin="+self.pin.name.toString()+"}"
+	end
+}
+
+// the scenario player produces the planned events at the specified time on the specified pins
+class DEScenarioPlayer inherits AtomicBlock {
+	reference democ : AbstractDEMoC 
+	reference plannedEvents : OrderedSet<DEScenarioEvent>
+	reference currentEventsToPlay : OrderedSet<DEScenarioEvent>
+
+	operation initialize() : DEScenarioPlayer is do
+		self.name := "DEScenarioPlayer"
+		self.plannedEvents := OrderedSet<DEScenarioEvent>.new
+		self.currentEventsToPlay := OrderedSet<DEScenarioEvent>.new
+		result := self
+	end
+	
+	operation addEventToScenario(time : Integer, val : Object, pinname : String) is do
+		var event : DEScenarioEvent init DEScenarioEvent.new.initialize(time,val,self.getPin(pinname))
+		self.plannedEvents.add(event)
+	end
+	
+	operation sortEvents() is do
+		var list : Sequence<DEScenarioEvent> init Sequence<DEScenarioEvent>.new
+
+		from var scenLength : Integer init self.plannedEvents.size() until scenLength==0
+		loop
+			// chercher l'evenement de time min dans le scenario
+			var minEvent : DEScenarioEvent init self.plannedEvents.first()
+			from var i : Integer init 1 until i == scenLength
+			loop
+				if self.plannedEvents.at(i) < minEvent then
+					minEvent := self.plannedEvents.at(i)
+				end
+				i := i+1
+			end
+			
+			// le mettre dans la liste, et le retirer du scenario retirer de l'oset, et inserer en fin de sequence
+			list.add(minEvent)
+			self.plannedEvents.remove(minEvent)
+			
+			scenLength := self.plannedEvents.size()
+		end
+		// remettre tous les evenements dans l'ordre dans le scenario 
+		self.plannedEvents.addAll(list)
+		//self.plannedEvents.each{e|stdio.write(e.toString()+",\n")}
+	end
+	
+	
+	method setup() is do
+		super()
+		self.democ := self.structure.model.moc.asType(AbstractDEMoC)
+		
+		// sort scenario events by time
+		self.sortEvents()
+		
+		stdio.writeln(self.toString()+"->"+self.scenarioToString())
+	end
+	method collectInitialSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		super(sr)
+		stdio.writeln("descenarplayer")
+		// if there are events to play in the scenario
+		if not self.plannedEvents.empty() then 
+			// get next scenario event to play
+			var nextevent : DEScenarioEvent init self.plannedEvents.first()
+	
+			// if there are several events to play at the same time, only the first one is necessary to create the snapshot request
+			
+			// create a request corresponding to the time of this event
+			var myrequest : SnapshotRequest init SnapshotRequest.new
+			myrequest.setEntityToUpdate(self)
+			myrequest.setTimeOfUpdate(nextevent.time)
+			sr.add(myrequest)
+		end
+	end
+
+	method startOfSnapshot() is do
+		super()
+		// clear all previously played events
+		self.currentEventsToPlay.clear()
+	end
+	method reset() is do
+		super()
+		// clear previous tokens from pins not necessary since they are consummed by the DE moc at propagate (?)
+
+		// determine which events are to be played at this time (time is computed at startOfSnapshot in DE)
+		self.currentEventsToPlay.addAll(self.plannedEvents.select{e| e.time==self.democ.currentTime})
+	end
+	method update() is do
+		super()
+		// if there are no events to play, then this block should not be updated (problem with time/snapshot requests ?)
+		if self.currentEventsToPlay.empty() then
+			var e : Exception init Exception.new
+			e.message := "Cannot update "+self.name.toString()+" : there are no events in the scenario to play at this time."
+			raise e
+		end
+		
+		// play event(s) (all are played at current time, which should normally be accurate with respect to e.time)
+		self.currentEventsToPlay.each{e|
+			e.pin.addToken(self.democ.createEvent(e.val))
+		}
+	end
+	method endOfSnapshot() is do
+		super()
+		// remove played events from scenario
+		self.currentEventsToPlay.each{e|
+			self.plannedEvents.remove(e)
+		}
+	end
+
+	method collectSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		super(sr)
+		// if there are events to play in the scenario
+		if not self.plannedEvents.empty() then 
+			// get next scenario event to play
+			var nextevent : DEScenarioEvent init self.plannedEvents.first()
+			
+			// if there are several events to play at the same time, only the first one is necessary to create the snapshot request
+	
+			// create a request corresponding to the time of this event
+			var myrequest : SnapshotRequest init SnapshotRequest.new
+			myrequest.setEntityToUpdate(self)
+			myrequest.setTimeOfUpdate(nextevent.time)
+			sr.add(myrequest)
+		end
+	end
+
+	operation scenarioToString() : String is do
+		var s : String init "scenario={\n"
+		self.plannedEvents.each{e|s := s+e.toString+",\n"}
+		result := s + "}"
+	end
+}
+

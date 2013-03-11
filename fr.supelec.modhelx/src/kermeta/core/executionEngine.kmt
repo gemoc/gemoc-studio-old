@@ -1,0 +1,113 @@
+/*
+ * $Id:$ 
+ * Creation		: May 15, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ * Authors		: 
+ * 		hardebolle
+ */
+package modhelx::engine;
+
+require kermeta
+require "./abstractSemantics.kmt"
+require "./abstractSemanticsImpl.kmt"
+
+using kermeta::standard
+using kermeta::persistence
+using kermeta::exceptions
+using kermeta::utils
+using kermeta::io
+
+using modhelx::core
+
+class Engine inherits NamedEntity {
+	reference rootModel : Model 
+	attribute maxNumberOfSnapshots : Integer
+	
+	operation initialize(model : Model, nbsnap : Integer) : Engine is	do 
+		self.rootModel := model
+		self.maxNumberOfSnapshots := nbsnap
+		
+		self.setLogLevel(LogLevel.info) // by default, log level is info		
+
+		result := self 
+	end
+
+	method setLogLevel(logLevel : LogLevel) is do
+		self.logLevel := logLevel
+		self.rootModel.setLogLevel(logLevel)
+	end
+
+	operation run() is do
+		if self.isLogLevelDEBUG() then 
+			// print the modhelx model
+			stdio.writeln(self.rootModel.toString())
+		end
+
+		// preparation of the model
+		self.rootModel.prep()
+
+		// execution setup
+		self.rootModel.setup()
+
+		// collect initial snapshot requests
+		var isr : Sequence<SnapshotRequest> init Sequence<SnapshotRequest>.new
+		self.rootModel.collectInitialSnapshotRequests(isr)
+		if self.isLogLevelDEBUG() then 
+			stdio.write("  -> (engine) Initial snapshot requests collected: ")
+			isr.each{s|
+				stdio.write(s.toString()+", ")
+			}
+			stdio.write("\n")
+		end
+		var nbsnaps : Integer init 0
+		// loop of successive snapshots
+		// snapshots are made if there are snapshot requests, in the limit of maxNumberOfSnapshots
+		from var snapshotRequested : Boolean init isr.size() > 0 until not snapshotRequested or nbsnaps >= self.maxNumberOfSnapshots
+		loop
+			// snapshot !
+			self.rootModel.startOfSnapshot()
+			from var snapValidated : Boolean init false until snapValidated
+			loop
+				self.rootModel.reset()
+				self.rootModel.update()
+				snapValidated := self.rootModel.validate()
+			end
+			self.rootModel.endOfSnapshot()
+			
+			// collect snapshot requests
+			var sr : Sequence<SnapshotRequest> init Sequence<SnapshotRequest>.new
+			self.rootModel.collectSnapshotRequests(sr)
+			if self.isLogLevelDEBUG() then 
+				stdio.write("  -> (engine) Snapshot requests collected: ")
+				sr.each{s|
+					stdio.write(s.toString()+", ")
+				}
+				stdio.write("\n")
+			end
+			
+			snapshotRequested := sr.size > 0
+			nbsnaps := nbsnaps + 1
+		end
+		// execution wrapup
+		self.rootModel.wrapup()
+	end
+	
+}
+
+
+
+
+
+

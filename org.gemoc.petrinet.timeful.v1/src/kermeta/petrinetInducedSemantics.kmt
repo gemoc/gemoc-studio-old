@@ -1,0 +1,126 @@
+/*
+ * ORIGINAL
+ * --------
+ * $Id:$ 
+ * Creation		: June 3, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec, University of Rennes 1, IRISA & Inria.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ *     	University of Rennes 1, IRISA & Inria
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ *     	Benoit.Combemale@irisa.fr
+ *     	Benoit.Baudry@inria.fr
+ *
+ * PETRINET
+ * --------
+ *
+ * February 2013
+ * Florent Latombe <florent.latombe@irit.fr>
+ */
+
+// Induced semantics are created by the language designer and limit the possibility of the language. One does not want a MoC designer
+// to interpret his language in any way possible. For example here we only allow the execution of petrinet if times on transitions
+// are respected as well as the availability of tokens.
+
+package petrinet;
+
+require "./petrinetStateDefinition.kmt"
+require kermeta
+
+using kermeta::standard
+using kermeta::exceptions
+
+aspect class Transition inherits Node{
+	operation preFire(currentTime : Integer) : Integer is do
+		if self.callTime == void then
+			// If no previous try is registered
+			if not self.__hasEnoughTokens() then
+				// Required tokens are not there so we tell the MoC to try another time (currentTime + 1, not optimal but works)
+				stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Not enough tokens. Telling MoC to try again at time " + (currentTime + 1).toString())
+				result := currentTime +1 
+			else
+				// Memorize the call. There are enough tokens.
+				stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Enough tokens. Memorizing call")
+				self.callTime := currentTime
+				result := __optimalTimeOfFire(currentTime)
+			end
+		else
+			// Already a callTime memorized
+			stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Previously called at time " + self.callTime.toString() + ", now let's see if we can fire")
+			if not __hasEnoughTokens() then
+				stdio.writeln("should never go there") // Should have broken with fireableCoherence
+			else if not (__minTimeReached(currentTime) and __maxTimeNotReached(currentTime)) then
+				stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Memorizing call")
+				self.callTime := currentTime
+				result := __optimalTimeOfFire(currentTime)
+			else
+				stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Giving the MoC actual date of execution")
+				result := currentTime
+			end
+			end
+		end
+		stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Induced semantics preFire returned " + result.toString())
+	end
+	
+	
+	// The result of this depends on the policy of execution time we want to lead.
+	// Here, instant execution !
+	operation __optimalTimeOfFire(currentTime : Integer) : Integer is do
+		result := currentTime + (self.minTime + self.maxTime)/2
+	end
+	
+		// Check we waited at least long enough to fire the transition
+	operation __minTimeReached(currentTime : Integer) : Boolean is do
+		result := currentTime - self.callTime >= self.minTime
+	end
+	
+	// Check we didn't wait too long to fire the transition
+	operation __maxTimeNotReached(currentTime : Integer) : Boolean is do
+		result := currentTime - self.callTime <= self.maxTime
+	end
+	
+	// Check we have the tokens in the places predecessing the transition
+	operation __hasEnoughTokens() : Boolean is do
+		result := self.asType(Node).incomings.forAll{arc | 
+			arc.source.asType(Place).marking >= arc.weight
+		}
+	end
+	
+	// When a transition is getting fired (fireable == true), it may disrupt the fireability of another transition (between its time of first call and time of execution).
+	// If another transition is rendered not fireable for one moment, we set its callTime to null to "reset" it.
+	// This is a logical way to do it since the creation or removal of tokens only happens when a transition is fired. If this was changed and (for example) some user
+	// input could create tokens, then this would have to be re-thought
+	operation maintainFireableCoherence(currentTime : Integer) : Collection<Transition> is do
+		stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">Maintaining fireablecoherence")
+		var res : Collection<Transition> init Set<Transition>.new
+		self.asType(Node).incomings.each{arc |
+			arc.source.asType(Node).outgoings.each{outgoing |
+				// We consider every place arriving to the transition self, and consider every outgoing arcs of these places
+				var transition : Transition init outgoing.target.asType(Transition)
+				// We want to consider outgoing arcs which are not going to the transition self (we check fireability coherence of all the other transitions)
+				if(transition != self) then
+					// We check that other transitions which would have gotten enough tokens will still have enough even after the transition self is fired
+					if((arc.kind == ArcKind.normal and outgoing.kind == ArcKind.normal and arc.weight + outgoing.weight > arc.source.asType(Place).marking) 
+						or (arc.kind == ArcKind.normal and outgoing.kind == ArcKind.read_arc and arc.weight > arc.source.asType(Place).marking)
+						or (arc.kind == ArcKind.read_arc and outgoing.kind == ArcKind.normal and outgoing.weight > arc.source.asType(Place).marking)
+						or (arc.kind == ArcKind.read_arc and outgoing.kind == ArcKind.read_arc and 0 > arc.source.asType(Place).marking)) then
+						transition.callTime := void
+						res.add(transition)
+						stdio.writeln("[" + currentTime.toString()+ "]" + "[" + self.name + "]" + ">" + transition.toString() + " is not fireable anymore due to " + self.toString() + " firing thanks to " + arc.weight.toString + " token(s) from " + arc.source.asType(Place).toString()) 
+					end					
+				end
+			}
+		}
+		result := res
+	end
+	
+}

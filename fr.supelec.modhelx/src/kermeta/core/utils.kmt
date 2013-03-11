@@ -1,0 +1,157 @@
+/*
+ * $Id:$ 
+ * Creation		: June 3, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ * Authors		: 
+ * 		hardebolle
+ */
+package modhelx::utils;
+
+require kermeta
+require "./abstractSemantics.kmt"
+
+
+using kermeta::standard
+using kermeta::persistence
+using kermeta::exceptions
+using kermeta::utils
+
+using modhelx::core
+
+/*** Utils ***/
+
+class BlockStructureNavigationHelper {
+	reference blocks : oset Block[0..*]
+	reference pinSuccessors : Hashtable<Pin, OrderedSet<Pin>>
+	reference pinPredecessors : Hashtable<Pin, OrderedSet<Pin>>
+	reference outgoingRels : Hashtable<Pin, OrderedSet<Relation>>
+	reference incomingRels : Hashtable<Pin, OrderedSet<Relation>>
+	reference blockSuccessors : Hashtable<Block, OrderedSet<Block>>
+	reference blockPredecessors : Hashtable<Block, OrderedSet<Block>>
+	reference filteredBlockSuccessors : Hashtable<Block, OrderedSet<Block>>
+	reference filteredBlockPredecessors : Hashtable<Block, OrderedSet<Block>>
+
+	operation initialize(struct : BlockStructure) : BlockStructureNavigationHelper is do
+		pinSuccessors := Hashtable<Pin, OrderedSet<Pin>>.new
+		pinPredecessors := Hashtable<Pin, OrderedSet<Pin>>.new
+		outgoingRels := Hashtable<Pin, OrderedSet<Relation>>.new
+		incomingRels := Hashtable<Pin, OrderedSet<Relation>>.new
+		blockSuccessors := Hashtable<Block, OrderedSet<Block>>.new
+		blockPredecessors := Hashtable<Block, OrderedSet<Block>>.new
+		filteredBlockSuccessors := Hashtable<Block, OrderedSet<Block>>.new
+		filteredBlockPredecessors := Hashtable<Block, OrderedSet<Block>>.new
+		
+		blocks.addAll(struct.blocks)
+		
+		var rels : Sequence<Relation> init struct.relations.reject{r| 
+			(not r.source.owner.isInstanceOf(Block)) or (not r.target.owner.isInstanceOf(Block)) 
+		}
+		/* OR use the following version
+		var rels : Sequence<Relation> init struct.relations.reject{r| 
+			r.source.owner.isKindOf(Model) or r.target.owner.isKindOf(Model) 
+		}
+		*/
+		rels.each{r|
+			// stdio.writeln(r.toString())
+			self.addToList(pinSuccessors, r.source, r.target)
+			self.addToList(pinPredecessors, r.target, r.source)
+			self.addToList(outgoingRels, r.source, r)
+			self.addToList(incomingRels, r.target, r)
+			self.addToList(blockSuccessors, r.source.owner.asType(Block), r.target.owner.asType(Block))
+			self.addToList(blockPredecessors, r.target.owner.asType(Block), r.source.owner.asType(Block))
+			// VOIR comment rendre indep de la propriété ?
+			if not r.source.hasProperty("NotInstantaneouslyDependent") and not r.target.hasProperty("NotInstantaneouslyDependent") then
+				self.addToList(filteredBlockSuccessors, r.source.owner.asType(Block), r.target.owner.asType(Block))
+				self.addToList(filteredBlockPredecessors, r.target.owner.asType(Block), r.source.owner.asType(Block))
+			end
+		}
+		
+		
+		result := self
+	end
+	
+	operation addToList<T,U>(map : Hashtable<T,OrderedSet<U>>, key : T, elem : U) is do
+		var list : OrderedSet<U> init map.getValue(key)
+		if list==void then
+			list := OrderedSet<U>.new
+			map.put(key,list)
+		end
+		list.add(elem)
+		//stdio.writeln("after addToList map=["+map.keys().each{k|stdio.write("("+k.toString()+":"+map.getValue(k).toString()+")")})
+	end
+	
+	operation getPinSuccessors(p : Pin) : OrderedSet<Pin> is do
+		var res : OrderedSet<Pin> init pinSuccessors.getValue(p)
+		result := if res != void then res else OrderedSet<Pin>.new end
+	end
+	operation getPinPredecessors(p : Pin) : OrderedSet<Pin> is do
+		var res : OrderedSet<Pin> init pinPredecessors.getValue(p)
+		result := if res != void then res else OrderedSet<Pin>.new end
+	end
+	operation getOutgoingRelations(p : Pin) : OrderedSet<Relation> is do
+		var res : OrderedSet<Relation> init outgoingRels.getValue(p)
+		result := if res != void then res else OrderedSet<Relation>.new end
+	end
+	operation getIncomingRelations(p : Pin) : OrderedSet<Relation> is do
+		var res : OrderedSet<Relation> init incomingRels.getValue(p)
+		result := if res != void then res else OrderedSet<Relation>.new end
+	end
+	operation getBlockSuccessors(b : Block) : OrderedSet<Block> is do
+		var res : OrderedSet<Block> init blockSuccessors.getValue(b)
+		result := if res != void then res else OrderedSet<Block>.new end
+	end
+	operation getBlockPredecessors(b : Block) : OrderedSet<Block> is do
+		var res : OrderedSet<Block> init blockPredecessors.getValue(b)
+		result := if res != void then res else OrderedSet<Block>.new end
+	end
+	operation getFilteredBlockSuccessors(b : Block) : OrderedSet<Block> is do
+		var res : OrderedSet<Block> init filteredBlockSuccessors.getValue(b)
+		result := if res != void then res else OrderedSet<Block>.new end
+	end
+	operation getFilteredBlockPredecessors(b : Block) : OrderedSet<Block> is do
+		var res : OrderedSet<Block> init filteredBlockPredecessors.getValue(b)
+		result := if res != void then res else OrderedSet<Block>.new end
+	end
+	
+	operation isInputPin(p : Pin) : Boolean is do
+		result := self.getPinPredecessors(p).size()>0 // input if it is the target of at least one relation
+	end
+	
+	operation isOutputPin(p : Pin) : Boolean is do
+		result := self.getPinSuccessors(p).size()>0 // output if it is the source of at least one relation
+	end
+
+	operation topoSort() : OrderedSet<Block> is do
+		var visitedBlocks : Set<Block> init Set<Block>.new
+		var orderedBlockList : OrderedSet<Block> init OrderedSet<Block>.new
+		var sinkBlocks :  Sequence<Block> init blocks.select{b|self.getFilteredBlockSuccessors(b).size()==0}
+		sinkBlocks.each{sinkBlock|
+			self.visit(sinkBlock, visitedBlocks,orderedBlockList)
+		}
+		result := orderedBlockList
+	end
+	
+	operation visit(b : Block, visitedBlocks : set Block[0..*], orderedBlocks : oset Block[0..*]) is do
+		if not visitedBlocks.contains(b) then
+			visitedBlocks.add(b)
+			self.getFilteredBlockPredecessors(b).each{pred|
+				self.visit(pred,visitedBlocks,orderedBlocks)
+			}
+			orderedBlocks.add(b)
+		end
+	end
+
+}
+
