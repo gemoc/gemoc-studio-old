@@ -2,7 +2,8 @@
 <feature
       id="org.gemoc.ide.branding.feature"
       label="Feature for the Gemoc branding"
-      version="1.0.0.qualifier">
+      version="1.0.0.qualifier"
+      plugin="org.gemoc.ide.branding">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
