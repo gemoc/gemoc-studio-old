@@ -18,7 +18,7 @@
    </license>
 
    <plugin
-         id="org.gemoc.ide.branding"
+         id="org.gemoc.gemoc_studio.branding"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
