@@ -30,22 +30,23 @@
       <feature id="org.eclipse.jgit"/>
       <feature id="org.eclipse.mylyn.wikitext_feature"/>
       <feature id="org.eclipse.mylyn.hudson"/>
-      <feature id="org.eclipse.sdk"/>      
+      <feature id="org.eclipse.sdk"/>
       <feature id="org.kermeta.language.feature"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
+      <feature id="fr.obeo.dsl.plugin.feature"/>
       <feature id="fr.obeo.dsl.feature.designer.gen.html"/>
       <feature id="org.polarion.eclipse.team.svn.connector"/>
       <feature id="org.polarion.eclipse.team.svn.connector.svnkit16"/>
-      <feature id="org.polarion.eclipse.team.svn.connector.svnkit17"/>      
+      <feature id="org.polarion.eclipse.team.svn.connector.svnkit17"/>
       <feature id="org.eclipse.m2e.feature"/>
       <feature id="org.eclipse.m2e.logback.feature"/>
-      <feature id="org.eclipse.mylyn.context_feature" />      
-      <feature id="org.eclipse.mylyn.monitor" />
-      <feature id="org.eclipse.mylyn.team_feature" />
-      <feature id="org.eclipse.mylyn_feature" />      
+      <feature id="org.eclipse.mylyn.context_feature"/>
+      <feature id="org.eclipse.mylyn.monitor"/>
+      <feature id="org.eclipse.mylyn.team_feature"/>
+      <feature id="org.eclipse.mylyn_feature"/>
    </features>
-   
-    <configurations>
+
+   <configurations>
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
@@ -54,7 +55,5 @@
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="3" />
    </configurations>
-
-
 
 </product>

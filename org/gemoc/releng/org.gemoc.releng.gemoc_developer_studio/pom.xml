@@ -49,6 +49,12 @@
             <layout>p2</layout>
             <url>http://www.kermeta.org/integration_build/kermeta2_snapshot/update/</url>
         </repository>	
+        <repository>
+            <id>gemoc-architecture-doc-builder-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/fr.obeo.dsl.plugin%20-ArchitectureDocBuilder-/lastSuccessfulBuild/artifact/fr/obeo/dsl/plugin/fr.obeo.dsl.plugin.build/update/target/repository/</url>
+        </repository>
+        
     </repositories>
 
     <build>
