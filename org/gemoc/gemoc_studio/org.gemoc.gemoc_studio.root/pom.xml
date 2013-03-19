@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <name>Gemoc Studio root build</name>
+    <groupId>org.gemoc.gemoc_studio</groupId>
+    <artifactId>org.gemoc.gemoc_studio.root</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <tycho-version>0.16.0</tycho-version>
+    </properties>
+
+    <modules>
+        <module>../org.gemoc.gemoc_studio.product</module>
+        <module>../org.gemoc.gemoc_studio.branding</module>
+        <module>../org.gemoc.gemoc_studio.branding.feature</module>		
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>latest-od-release</id>
+            <layout>p2</layout>
+            <url>http://www.obeo.fr/download/release/designer/6.1/latest/juno3/update</url>
+        </repository>
+        <repository>
+            <id>latest-od-marketplace-release</id>
+            <layout>p2</layout>
+            <url>http://marketplace.obeonetwork.com/updates/od61/</url>
+        </repository>
+        <repository>
+            <id>latest-egit-release</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/egit/updates</url>
+        </repository>
+        <repository>
+            <id>juno-with-no-platform4</id>
+            <layout>p2</layout>
+            <url>http://www.obeo.fr/download/eclipse/juno-3.8</url>
+        </repository>	
+        <repository>
+            <id>subversive-juno-connectors</id>
+            <layout>p2</layout>
+            <url>http://community.polarion.com/projects/subversive/download/eclipse/3.0/juno-site/</url>
+        </repository>
+        
+        <repository>
+            <id>kermeta2-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>http://www.kermeta.org/integration_build/kermeta2_snapshot/update/</url>
+        </repository>	
+        <repository>
+        	<id>gemoc.execution.trace-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.trace.master/lastSuccessfulBuild/artifact/org/gemoc/execution/trace/org.gemoc.execution.trace.p2updatesite/target/repository/</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    <!-- environments that will be built -->
+                    <environments>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>macosx</os>  
+                            <ws>cocoa</ws>  
+                            <arch>x86_64</arch> 
+                        </environment>
+                    </environments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project> 
