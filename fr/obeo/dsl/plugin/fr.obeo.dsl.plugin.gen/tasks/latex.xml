@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="latex" name="fr.obeo.dsl.plugin.gen">
-    <property name="ECLIPSE_HOME" value="../../../../bin/obeodesigner/6.1.0/ObeoDesigner"/>
-    <property name="ECLIPSE_WORKSPACE" value="../.."/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../../../../eclipses/gemoc_developper_studio-win32.x86"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../../../../../workspaces/gemoc_dev"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="fr.obeo.dsl.plugin.gen.libraryclasspath">

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.gemoc.gemoc_studio.branding.feature"
+      label="Feature for the Gemoc branding"
+      version="1.0.0.qualifier"
+      plugin="org.gemoc.gemoc_studio.branding">
+
+   <description url="http://www.gemoc.org">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="org.gemoc.gemoc_studio.branding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

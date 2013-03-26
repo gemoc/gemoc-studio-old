@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <modelVersion>4.0.0</modelVersion>
-    <name>Gemoc Developer Studio product build</name>
-    <groupId>org.gemoc.releng</groupId>
-    <artifactId>org.gemoc.releng.gemoc_developer_studio</artifactId>
+    <name>Gemoc Studio root build</name>
+    <groupId>org.gemoc.gemoc_studio</groupId>
+    <artifactId>org.gemoc.gemoc_studio.root</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -12,9 +12,9 @@
     </properties>
 
     <modules>
-        <module>products</module>
-        <module>plugins/org.gemoc.ide.branding</module>
-        <module>features/org.gemoc.ide.branding.feature</module>		
+        <module>../org.gemoc.gemoc_studio.product</module>
+        <module>../org.gemoc.gemoc_studio.branding</module>
+        <module>../org.gemoc.gemoc_studio.branding.feature</module>		
     </modules>
 
     <repositories>
@@ -50,27 +50,10 @@
             <url>http://www.kermeta.org/integration_build/kermeta2_snapshot/update/</url>
         </repository>	
         <repository>
-            <id>gemoc-architecture-doc-builder-latest-snapshot</id>
+        	<id>gemoc.execution.trace-latest-snapshot</id>
             <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/fr.obeo.dsl.plugin%20-ArchitectureDocBuilder-/lastSuccessfulBuild/artifact/fr/obeo/dsl/plugin/fr.obeo.dsl.plugin.build/update/target/repository/</url>
-        </repository>	
-        <repository>
-            <id>timesquare ECL</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/ecl/update_site</url>
-        </repository>	
-        <repository>
-            <id>timesquare</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/update_site</url>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.trace.master/lastSuccessfulBuild/artifact/org/gemoc/execution/trace/org.gemoc.execution.trace.p2updatesite/target/repository/</url>
         </repository>
-        <repository>
-            <id>Scala-IDE 3.0.0 Release Juno For Scala 2.9.x</id>
-            <layout>p2</layout>
-            <url>http://download.scala-ide.org/sdk/e38/scala29/stable/site</url>
-        </repository>
-        
-        
     </repositories>
 
     <build>
