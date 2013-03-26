@@ -31,8 +31,6 @@
       <feature id="org.eclipse.mylyn.wikitext_feature"/>
       <feature id="org.eclipse.mylyn.hudson"/>
       <feature id="org.eclipse.sdk"/>
-      <feature id="org.kermeta.language.feature"/>
-      <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
       <feature id="fr.obeo.dsl.plugin.feature"/>
       <feature id="fr.obeo.dsl.feature.designer.gen.html"/>
       <feature id="org.polarion.eclipse.team.svn.connector"/>
