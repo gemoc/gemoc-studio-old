@@ -3,6 +3,12 @@ addRepository(type:0,location:http${#58}//www.obeo.fr/download/release/designer/
 addRepository(type:1,location:http${#58}//www.obeo.fr/download/release/designer/6.1/latest/juno3/update,name:Obeo Designer 6.1);\
 addRepository(type:0,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
 addRepository(type:1,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
+addRepository(type:0,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
+addRepository(type:1,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
+addRepository(type:0,location:http${#58}//timesquare.inria.fr/update_site,name:Timesquare);\
+addRepository(type:1,location:http${#58}//timesquare.inria.fr/update_site,name:Timesquare);\
+addRepository(type:0,location:http${#58}//www.kermeta.org/integration_build/kermeta2_snapshot/update/,name:Kermeta 2 Snapshot);\
+addRepository(type:1,location:http${#58}//www.kermeta.org/integration_build/kermeta2_snapshot/update/,name:Kermeta 2 Snapshot);\
   mkdir(path:${installFolder}/dropins);
 
 requires.1.namespace=org.eclipse.equinox.p2.iu
