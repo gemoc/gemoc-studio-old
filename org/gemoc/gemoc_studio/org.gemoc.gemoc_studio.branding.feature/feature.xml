@@ -16,6 +16,10 @@
    <license url="http://www.example.com/license">
       [Enter License Description here.]
    </license>
+         
+   <includes
+         id="org.kermeta.language.feature"
+         version="0.0.0"/>
 
    <plugin
          id="org.gemoc.gemoc_studio.branding"
