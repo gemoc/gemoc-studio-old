@@ -42,6 +42,9 @@
       <feature id="org.eclipse.mylyn.monitor"/>
       <feature id="org.eclipse.mylyn.team_feature"/>
       <feature id="org.eclipse.mylyn_feature"/>
+      <feature id="org.scala-ide.sdt.feature"/>
+	  <feature id="org.scala-ide.sdt.dev.feature"/>
+	  <feature id="org.scala-ide.sdt.source.feature"/>
    </features>
 
    <configurations>

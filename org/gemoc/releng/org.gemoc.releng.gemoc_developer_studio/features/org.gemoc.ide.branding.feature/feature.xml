@@ -33,6 +33,19 @@
          id="org.eclipse.emf.ecoretools.registration.feature"
          version="0.0.0"/>
 
+  <!-- updatable third party tools -->
+  <includes
+         id="org.eclipse.m2m.qvt.oml.sdk"
+         version="0.0.0"/>
+         
+   <includes
+         id="org.eclipse.xtext.sdk"
+         version="0.0.0"/>
+         
+   <includes
+         id="org.eclipse.ocl.all.sdk"
+         version="0.0.0"/>
+  
    <plugin
          id="org.gemoc.ide.branding"
          download-size="0"
