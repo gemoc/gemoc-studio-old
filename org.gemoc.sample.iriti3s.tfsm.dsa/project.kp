@@ -1,0 +1,24 @@
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/language.library.standard/2.0.99-SNAPSHOT"
+
+importProject library_standard
+
+project org_gemoc_sample_iriti3s_tfsm_dsa {
+	mainClass "org_gemoc_sample_iriti3s_tfsm_dsa^tfsm::MainClass"
+	mainOperation "main"
+	
+	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
+    import "${project.baseUri}/metamodel/tfsm.ecore"
+    //import "${project.baseUri}/metamodel/test.ecore"
+	
+	import "${project.baseUri}/src/main/kmt/StateDefinition.kmt"
+	import "${project.baseUri}/src/main/kmt/Miscellaneous.kmt"
+	
+	import "${project.baseUri}/src/main/kmt/Observables.kmt"
+	import "${project.baseUri}/src/main/kmt/Triggers.kmt"
+	
+	import "${project.baseUri}/src/main/kmt/InducedSemantics.kmt"
+	import "${project.baseUri}/src/main/kmt/Triggerables.kmt"
+	
+
+	
+}

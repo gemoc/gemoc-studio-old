@@ -1,0 +1,156 @@
+using kermeta::standard::* 
+using kermeta::io::StdIO => stdio
+using tfsm::*
+
+package tfsm{
+    aspect class System{
+        method toString() : String is do
+            //result := "<System@[ownedTfsms=" + self.__ownedTfsmsToNiceString() + " ; globalEvents=" + self.__globalEventsToNiceString() + " ; globalClocks=" + self.__globalClocksToNiceString() + "]>"
+            result := "<System@[ownedTfsms=" + self.__ownedTfsmsToNiceString() + " ; globalEvents=" + self.__globalEventsToNiceString() + " ; globalClocks=" + self.__globalClocksToNiceString() + "]>"
+        end
+        
+        operation __ownedTfsmsToNiceString() : String is do
+            result := "{"
+            self.ownedTfsms.each{tfsm |
+                if result == "{" then
+                    result := result + tfsm.name
+                else
+                    result := result + ", " + tfsm.name
+                end
+            }
+            result := result + "}"
+        end
+        
+        operation __globalEventsToNiceString() : String is do
+            result := "{"
+            self.globalEvents.each{event |
+                if result == "{" then
+                    result := event.name
+                else
+                    result := result + ", " + event.name
+                end
+            }
+            result := result + "}"
+        end
+        
+        operation __globalClocksToNiceString() : String is do
+            result := "{"
+            self.globalClocks.each{clock |
+                if result == "{" then
+                    result := clock.name
+                else
+                    result := result + ", " + clock.name
+                end
+            }
+            result := result + "}"
+        end
+    }
+    
+    aspect class Tfsm{
+        method toString() : String is do
+            result := "<Tfsm@[name=" + self.name + " ; ownedStates=" + self.__ownedStatesToNiceString() + " ; initialState=" + self.initialState.name + " ; ownedEvents=" + self.__ownedEventsToNiceString() + " ; ownedClock=" + self.ownedClock.name + "]>"
+        end
+        
+        operation __ownedStatesToNiceString() : String is do
+            result := "{"
+            self.ownedStates.each{state |
+                if result == "{" then
+                    result := state.name
+                else
+                    result := result + ", " + state.name
+                end
+            }
+            result := result + "}"
+        end
+        
+        operation __ownedEventsToNiceString() : String is do
+            result := "{"
+            self.ownedEvents.each{event |
+                if result == "{" then
+                    result := event.name
+                else
+                    result := result + ", " + event.name
+                end
+            }
+            result := result + "}"
+        end
+    }
+    aspect class State{
+        method toString() : String is do
+            result := "<State@[name=" + self.name + " ; owningTfsm=" + self.owningTfsm.name + " ; outgoingTransitions=" + self.__outgoingTransitionsToNiceString() + "; incomingTransitions=" + self.__incomingTransitionsToNiceString() + "]>"
+        end
+        
+        operation __outgoingTransitionsToNiceString() : String is do
+            result := "{"
+            self.outgoingTransitions.each{transition |
+                if result == "{" then
+                    result := transition.name
+                else
+                    result := result + ", " + transition.name
+                end
+            }
+            result := result + "}"
+        end
+        
+        operation __incomingTransitionsToNiceString() : String is do
+            result := "{"
+            self.incomingTransitions.each{transition |
+                if result == "{" then
+                    result := transition.name
+                else
+                    result := result + ", " + transition.name
+                end
+            }
+            result := result + "}"
+        end
+    }
+    aspect class Transition{
+        method toString() : String is do
+            result := "<Transition@[name=" + self.name + " ; source=" + self.source.name + " ; target=" + self.target.name + " ; ownedGuard=" + self.ownedGuard.name + " ; generatedEvents=" + self.__generatedEventsToNiceString() + "]>"
+        end
+        
+        operation __generatedEventsToNiceString() : String is do
+            result := "{"
+            self.generatedEvents.each{event |
+                if result == "{" then
+                    result := event.name
+                else
+                    result := result + ", " + event.name
+                end
+            }
+            result := result + "}"
+        end
+    }
+    aspect class TemporalGuard{
+        method toString() : String is do
+            result := "<TemporalGuard@[name=" + self.name + " ; onClock=" + self.onClock.name + " ; afterDuration=" + self.afterDuration.toString() + "]>"
+        end
+    }
+    aspect class EventGuard{
+        method toString() : String is do
+            result := "<EventGuard@[name=" + self.name + " ; triggeringEvent=" + self.triggeringEvent.name + "]>"
+        end
+    }
+    aspect class TfsmEvent{
+        method toString() : String is do
+            result := "<TfsmEvent@[name=" + self.name + " ; generatedByTransitions=" + self.__generatedByTransitionsToNiceString() + "]>"
+        end
+        
+        operation __generatedByTransitionsToNiceString() : String is do
+            result := "{"
+            self.generatedByTransitions.each{transition |
+                if result == "{" then
+                    result := transition.name
+                else
+                    result := result + ", " + transition.name
+                end
+            }
+            result := result + "}"
+        end
+    }
+    aspect class TfsmClock{
+        method toString() : String is do
+            result := "<TfsmClock@[name=" + self.name + "]>"
+        end
+    }
+}

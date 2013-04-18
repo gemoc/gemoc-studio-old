@@ -1,0 +1,55 @@
+using kermeta::standard::*
+using kermeta::emfpersistence::*
+
+using kermeta::io::StdIO => stdio
+using tfsm::*
+
+
+package tfsm{
+    class MainClass
+    {
+        @main "" // declares that operation as a possible entry point of the program
+        operation main() : Void is do
+            var filename : String init "tfsm"
+            var system : System init loadModel(filename)
+            stdio.writeln("Super hello world!")
+            system.ownedTfsms.each{tfsm|
+                tfsm.doSetup()
+                stdio.writeln(tfsm.currentState.toString())
+               
+                var blackList : Collection<Transition>
+                var transitionToFire : Transition
+                
+                from tfsm.ownedClock.timeValue
+                until tfsm.ownedClock.timeValue == 10
+                loop
+                    do
+                       blackList := OrderedSet<Transition>.new
+                       transitionToFire := tfsm.currentState.outgoingTransitions.detect{transition | not blackList.exists{e | transitionToFire == e}}
+                       
+	                   tfsm.ownedClock.doTick()
+	                   stdio.writeln(tfsm.currentState.toString())
+	                rescue(preConditionError : kermeta::exceptions::ConstraintViolatedPre)
+	                   blackList.add(transitionToFire)
+	                end
+                end
+                
+            }
+        end     
+        
+        operation __launchTfsm(tfsm : Tfsm) : Void is do
+            
+        end
+		
+		operation loadModel(filename : String) : System is do
+			var inputRepository : ResourceSet init ResourceSet.new
+			var inputResource : Resource init inputRepository.createResource(
+                "platform:/resource/org.gemoc.sample.iriti3s.tfsm.dsa/model/" + filename + ".xmi",
+                "platform:/resource/org.gemoc.sample.iriti3s.tfsm.dsa/metamodel/" + filename + ".ecore"
+            )
+            inputResource.load(void)
+			
+			result ?= inputResource.getContents.one
+		end
+	}
+}

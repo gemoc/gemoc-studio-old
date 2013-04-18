@@ -1,0 +1,11 @@
+using kermeta::standard::* 
+using kermeta::io::StdIO => stdio
+using tfsm::*
+
+package tfsm{
+	aspect class Tfsm{
+		operation getCurrentState() : tfsm::State is do
+			result := self.currentState
+		end
+	}
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tfsm" nsURI="http://org.gemoc.sample.iriti3s.tfsm" nsPrefix="org.gemoc.sample.iriti3s.tfsm">
+  <eClassifiers xsi:type="ecore:EClass" name="System">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTfsms" upperBound="-1"
+        eType="#//Tfsm" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="globalEvents" upperBound="-1"
+        eType="#//TfsmEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="globalClocks" upperBound="-1"
+        eType="#//TfsmClock" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tfsm" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStates" lowerBound="1"
+        upperBound="-1" eType="#//State" containment="true" eOpposite="#//State/owningTfsm"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialState" lowerBound="1"
+        eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEvents" upperBound="-1"
+        eType="#//TfsmEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedClock" lowerBound="1"
+        eType="#//TfsmClock" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningTfsm" lowerBound="1"
+        eType="#//Tfsm" eOpposite="#//Tfsm/ownedStates"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingTransitions" upperBound="-1"
+        eType="#//Transition" containment="true" eOpposite="#//Transition/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingTransitions" upperBound="-1"
+        eType="#//Transition" eOpposite="#//Transition/target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//State" eOpposite="#//State/outgoingTransitions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//State" eOpposite="#//State/incomingTransitions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedGuard" lowerBound="1"
+        eType="#//Guard" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generatedEvents" upperBound="-1"
+        eType="#//TfsmEvent" eOpposite="#//TfsmEvent/generatedByTransitions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Guard" abstract="true" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TemporalGuard" eSuperTypes="#//Guard">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onClock" lowerBound="1"
+        eType="#//TfsmClock"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="afterDuration" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventGuard" eSuperTypes="#//Guard">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggeringEvent" lowerBound="1"
+        eType="#//TfsmEvent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TfsmEvent" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generatedByTransitions"
+        upperBound="-1" eType="#//Transition" eOpposite="#//Transition/generatedEvents"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TfsmClock" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+</ecore:EPackage>
