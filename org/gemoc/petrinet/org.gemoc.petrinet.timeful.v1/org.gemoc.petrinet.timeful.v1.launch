@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<launchConfiguration type="org.kermeta.debug.runConfiguration">
-<stringAttribute key="fr.irisa.triskell.kermeta.launching.KM_ARGUMENTS" value=""/>
-<stringAttribute key="fr.irisa.triskell.kermeta.launching.KM_CLASSQNAME" value="main::Main"/>
-<stringAttribute key="fr.irisa.triskell.kermeta.launching.KM_FILENAME" value="/org.gemoc.petrinet.timeful.v1/src/kermeta/main.kmt"/>
-<stringAttribute key="fr.irisa.triskell.kermeta.launching.KM_OPERATIONNAME" value="main"/>
-<stringAttribute key="fr.irisa.triskell.kermeta.launching.KM_PROJECTNAME" value="org.gemoc.petrinet.timeful.v1"/>
-<stringAttribute key="process_factory_id" value="org.kermeta.debug.processFactory"/>
-</launchConfiguration>
