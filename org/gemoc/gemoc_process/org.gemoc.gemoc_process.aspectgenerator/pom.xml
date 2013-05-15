@@ -1,0 +1,240 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>org.gemoc.gemoc_process.root</artifactId>
+        <groupId>org.gemoc.gemoc_process</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>org.gemoc.gemoc_process.aspectgenerator</artifactId>
+    <packaging>bundle</packaging>
+    <name>org.gemoc.gemoc_process.aspectgenerator</name>
+
+    <dependencies>   
+    	 <dependency>
+            <groupId>org.kermeta.language</groupId>
+            <artifactId>org.kermeta.language.model</artifactId>
+            <version>${kermeta.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>   
+    	 <dependency>
+            <groupId>org.kermeta.language</groupId>
+            <artifactId>org.kermeta.language.library.standard</artifactId>
+            <version>${kermeta.version}</version>
+            
+        </dependency>
+    </dependencies>
+    
+    <build>
+		<resources>
+		    <resource>
+		      <directory>${project.build.directory}/resources</directory>
+			</resource>
+		</resources>
+        <plugins>
+            <!-- Kermeta Compiler plugin -->
+            <plugin>
+                <groupId>org.kermeta.kp</groupId>
+                <artifactId>org.kermeta.kp.compiler.mavenplugin</artifactId>
+                <version>2.0.99-SNAPSHOT</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <kp>project.kp</kp>
+                            <resourceOutputDirectory>${project.build.directory}/resources</resourceOutputDirectory>
+                            <targetGroupId>${project.groupId}</targetGroupId>
+                            <targetArtifactId>${project.artifactId}</targetArtifactId>
+                            <checkingEnabled>true</checkingEnabled>
+                            <continueOnError>false</continueOnError>
+                            <useDefaultClasspath>true</useDefaultClasspath>
+                            <intermediateFilesRequired>true</intermediateFilesRequired>
+                            <stopAfterPhase>GENERATE_SCALA</stopAfterPhase>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin> 
+            <!-- Add generated source to build cycle -->
+	      <plugin>
+	        <groupId>org.codehaus.mojo</groupId>
+	        <artifactId>build-helper-maven-plugin</artifactId>
+	        <version>1.7</version>
+	        <executions>
+	          <execution>
+	            <id>add-source</id>
+	            <phase>generate-sources</phase>
+	            <goals>
+	              <goal>add-source</goal>
+	            </goals>
+	            <configuration>
+	              <sources>
+	                <source>${project.build.directory}/scala</source>
+	              </sources>
+	            </configuration>
+	          </execution>
+	        </executions>
+	      </plugin>
+             
+      		<!-- package into a jar for OSGI -->
+      		<plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.5</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                    	<Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
+		            	<Bundle-Name>${project.name}</Bundle-Name>
+		            	<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
+						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+		            	<Bundle-ClassPath>.</Bundle-ClassPath>
+						<Bundle-Version>${bundle.version}</Bundle-Version>
+						<Bundle-Activator>org.gemoc.gemoc_process.aspectgenerator.Activator</Bundle-Activator>
+                        <!-- Dependency used for compiling all the bundle (with dependency to org.eclipse.core.* -->
+                    	<Require-Bundle>
+		            	</Require-Bundle>
+		            
+		            	<!-- note: imports k2 to workaround problem about loading reflexivity.km
+		            	     and reexport it to allow an external plugin (ui for ex) to set the messagingsystem of stdio -->
+                        <Export-Package>org.gemoc.gemoc_process.aspectgenerator
+		            	</Export-Package>
+		            	<Private-Package>
+		            		gemoc_process_aspectgenerator.*,
+		            		gemoc_process_aspectgeneratorrunner.*,
+		            		ScalaImplicit.gemoc_process_aspectgenerator.*,
+		            		scalaUtil;-split-package:=merge-last,
+			            	org.gemoc.gemoc_process.aspectgenerator.impl,
+			            	kermeta_standard.*
+		            	</Private-Package>
+		            	<!--
+		              		specify the packages that should be imported to correctly build
+		              		the bundle (i.e <packaging>bundle<packaging> ".*" to also include
+		              		sub packages use the ! for avoiding to import some packages that
+		              		are already there with the Require-Bundle
+			            -->
+		            	<Import-Package>
+		            	*
+		            	</Import-Package>		            
+                    </instructions>
+                </configuration>
+            </plugin>
+       		<!-- copy the generated manifest to a place where eclipse expects it so it doesn't raise error -->
+            <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-antrun-plugin</artifactId>
+			    <version>1.6</version>
+			    <executions>
+			        <execution>
+			            <id>copy-manifest-for-eclipse-ide</id>
+			            <phase>install</phase>
+			            <configuration>
+			                <tasks>
+			                    <echo message="copy the generated manifest to a place where eclipse expects it so it doesn't raise error" />
+			                    <unzip src="${project.build.directory}/${project.artifactId}-${project.version}.jar" dest="" >
+			                    	<patternset>
+								        <include name="/META-INF/**"/>
+								        <exclude name="/META-INF/maven/**"/>
+								    </patternset>
+			                    </unzip>
+			                </tasks>
+			            </configuration>
+			            <goals>
+			                <goal>run</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
+            <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-eclipse-plugin</artifactId>
+			    <version>2.8</version>
+			    <!-- see http://maven.apache.org/plugins/maven-eclipse-plugin/eclipse-mojo.html for more information -->
+			    <configuration>
+			      <downloadSources>true</downloadSources>
+			      <downloadJavadocs>true</downloadJavadocs>
+			      <projectNameTemplate>[artifactId]</projectNameTemplate>
+			      <projectnatures>
+			        <projectnature>org.kermeta.language.texteditor.eclipse.nature.KermetaNatureID</projectnature>
+			        <projectnature>org.scala-ide.sdt.core.scalanature</projectnature>
+			        <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+			      </projectnatures>
+			      <buildcommands>
+			        <buildcommand>org.scala-ide.sdt.core.scalabuilder</buildcommand>
+			      </buildcommands>
+			      <classpathContainers>
+			        <classpathContainer>org.scala-ide.sdt.launching.SCALA_CONTAINER</classpathContainer>
+			        <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+			      </classpathContainers>
+			      <excludes>
+			        <exclude>org.scala-lang:scala-library</exclude>
+			        <!-- <exclude>org.scala-lang:scala-compiler</exclude> -->
+			      </excludes>
+			      <sourceIncludes>
+			        <sourceInclude>**/*.scala</sourceInclude>
+			        <sourceInclude>**/*.java</sourceInclude>
+			      </sourceIncludes>
+			      <useProjectReferences>false</useProjectReferences>
+			    </configuration>
+			</plugin>
+			<!-- make sure there is enough memory for scala compiler -->
+            <plugin>
+		        <groupId>org.scala-tools</groupId>
+		        <artifactId>maven-scala-plugin</artifactId>
+		        <configuration>
+		          <jvmArgs>
+		            <jvmArg>-Xss1m</jvmArg>
+		            <jvmArg>-Xmx1024m</jvmArg>
+		          </jvmArgs>
+		        </configuration>
+			</plugin>
+        </plugins>
+        
+        <pluginManagement>
+        	<plugins>
+        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        		<plugin>
+        			<groupId>org.eclipse.m2e</groupId>
+        			<artifactId>lifecycle-mapping</artifactId>
+        			<version>1.0.0</version>
+        			<configuration>
+        				<lifecycleMappingMetadata>
+        					<pluginExecutions>
+        						<pluginExecution>
+        							<pluginExecutionFilter>
+        								<groupId>
+        									org.kermeta.kp
+        								</groupId>
+        								<artifactId>
+        									kp.compiler.mavenplugin
+        								</artifactId>
+        								<versionRange>
+        									[2.0.99-SNAPSHOT,)
+        								</versionRange>
+        								<goals>
+        									<goal>generate</goal>
+        								</goals>
+        							</pluginExecutionFilter>
+        							<action>
+        								<ignore></ignore>
+        								<!-- <execute></execute> -->
+        							</action>
+        						</pluginExecution>
+        					</pluginExecutions>
+        				</lifecycleMappingMetadata>
+        			</configuration>
+        		</plugin>
+        	</plugins>
+        </pluginManagement>
+    </build>
+    <description>gemoc generator of aspect classes</description>
+    <groupId>org.gemoc.gemoc_process</groupId>
+</project>
+
