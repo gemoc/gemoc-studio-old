@@ -545,7 +545,7 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_r5WrMMboEeKe6cgNmFsFbw" client="_WRcHkMboEeKe6cgNmFsFbw" supplier="_GpujMLxxEeK4q7aZ2ZzLTw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_r5XSQMboEeKe6cgNmFsFbw" client="_WRcHkMboEeKe6cgNmFsFbw" supplier="_wqKroMbkEeKe6cgNmFsFbw"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_5xKIgMboEeKe6cgNmFsFbw" clientDependency="_rKkw0MdwEeKe6cgNmFsFbw" name="MOCC To Execution Model">
+  <packagedElement xmi:type="uml:Component" xmi:id="_5xKIgMboEeKe6cgNmFsFbw" clientDependency="_rKkw0MdwEeKe6cgNmFsFbw" name="Domain Specific MOCC To Execution Model">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_YqqMQMbpEeKe6cgNmFsFbw" name="in" type="_PzmE8MbpEeKe6cgNmFsFbw" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_bzkd8MbpEeKe6cgNmFsFbw" name="out" type="_Tq2qYMbpEeKe6cgNmFsFbw" aggregation="composite"/>
     <ownedConnector xmi:id="_ky-o8MbpEeKe6cgNmFsFbw" clientDependency="_Z4aqwMbnEeKe6cgNmFsFbw _i8TbMMbpEeKe6cgNmFsFbw" name="Concurrency Execution Model_Concurrency Execution Model_connector">
