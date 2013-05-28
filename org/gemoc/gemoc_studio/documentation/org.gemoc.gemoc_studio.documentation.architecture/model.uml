@@ -7,7 +7,6 @@
       <end xmi:id="_rLX4ALxtEeK4q7aZ2ZzLTw" role="_R4HrELxtEeKBVNTpoiWWdA"/>
     </ownedConnector>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_NYmLwLxtEeKBVNTpoiWWdA" name="Domain Specific Metamodel"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_PAIKQLxtEeKBVNTpoiWWdA" clientDependency="_TrAlALxtEeKBVNTpoiWWdA" name="Ecore">
     <interfaceRealization xmi:id="_TrAlALxtEeKBVNTpoiWWdA" clientDependency="_TrAlALxtEeKBVNTpoiWWdA" client="_PAIKQLxtEeKBVNTpoiWWdA _TrAlALxtEeKBVNTpoiWWdA _rLVbwLxtEeK4q7aZ2ZzLTw" supplier="_NYmLwLxtEeKBVNTpoiWWdA" contract="_NYmLwLxtEeKBVNTpoiWWdA"/>
   </packagedElement>
@@ -32,9 +31,6 @@
     <interfaceRealization xmi:id="_nd0LsLxuEeK4q7aZ2ZzLTw" clientDependency="_nd0LsLxuEeK4q7aZ2ZzLTw" client="_j1s1gLxuEeK4q7aZ2ZzLTw _nd0LsLxuEeK4q7aZ2ZzLTw" supplier="_itdbELxuEeK4q7aZ2ZzLTw" contract="_itdbELxuEeK4q7aZ2ZzLTw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_w2rYgLxuEeK4q7aZ2ZzLTw" name="Xtext Grammar"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_0xevQLxwEeK4q7aZ2ZzLTw" name="Kermeta Model Instance">
-    <generalization xmi:id="_E9bwgMblEeKe6cgNmFsFbw" general="_wqKroMbkEeKe6cgNmFsFbw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_1i_rwLxwEeK4q7aZ2ZzLTw" clientDependency="_4oqcMLxwEeK4q7aZ2ZzLTw" name="Kermeta">
     <interfaceRealization xmi:id="_4oqcMLxwEeK4q7aZ2ZzLTw" clientDependency="_4oqcMLxwEeK4q7aZ2ZzLTw" client="_1i_rwLxwEeK4q7aZ2ZzLTw _4oqcMLxwEeK4q7aZ2ZzLTw _9xRUwLxwEeK4q7aZ2ZzLTw _cYIswMarEeKe6cgNmFsFbw" supplier="_0xevQLxwEeK4q7aZ2ZzLTw" contract="_0xevQLxwEeK4q7aZ2ZzLTw"/>
   </packagedElement>
@@ -54,11 +50,7 @@
     </nestedClassifier>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_D3570LxxEeK4q7aZ2ZzLTw" client="__Xu8QLxwEeK4q7aZ2ZzLTw _cYIswMarEeKe6cgNmFsFbw" supplier="_0xevQLxwEeK4q7aZ2ZzLTw"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_GpujMLxxEeK4q7aZ2ZzLTw" name="MOCC"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_NUgZILxxEeK4q7aZ2ZzLTw" client="__Xu8QLxwEeK4q7aZ2ZzLTw _0goxcMblEeKe6cgNmFsFbw" supplier="_GpujMLxxEeK4q7aZ2ZzLTw"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_UEzBMLxxEeK4q7aZ2ZzLTw" name="ECL">
-    <generalization xmi:id="_TSY8gMboEeKe6cgNmFsFbw" general="_R-GDEMboEeKe6cgNmFsFbw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_UpkiMLxxEeK4q7aZ2ZzLTw" clientDependency="_XXkZgLxxEeK4q7aZ2ZzLTw" name="ECL">
     <interfaceRealization xmi:id="_XXkZgLxxEeK4q7aZ2ZzLTw" clientDependency="_XXkZgLxxEeK4q7aZ2ZzLTw" client="_UpkiMLxxEeK4q7aZ2ZzLTw _XXkZgLxxEeK4q7aZ2ZzLTw _yzBpELxxEeK4q7aZ2ZzLTw _WBIVkLxyEeK4q7aZ2ZzLTw" supplier="_UEzBMLxxEeK4q7aZ2ZzLTw" contract="_UEzBMLxxEeK4q7aZ2ZzLTw"/>
   </packagedElement>
@@ -91,15 +83,11 @@
       <end xmi:id="_cmBUAbx0EeK4q7aZ2ZzLTw" role="_JbFwMLx0EeK4q7aZ2ZzLTw"/>
     </ownedConnector>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_Bg4SsLx0EeK4q7aZ2ZzLTw" name="CCSL Model Instance">
-    <generalization xmi:id="_Xl8R0MbnEeKe6cgNmFsFbw" general="_US0UMMbnEeKe6cgNmFsFbw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_DFrGQLx0EeK4q7aZ2ZzLTw" client="_-KrL4LxzEeK4q7aZ2ZzLTw _AXxYwLx4EeK4q7aZ2ZzLTw" supplier="_Bg4SsLx0EeK4q7aZ2ZzLTw"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_HJ_3ULx0EeK4q7aZ2ZzLTw" name="Trace Event"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_QQRfULx0EeK4q7aZ2ZzLTw" clientDependency="_326WQMbQEeKe6cgNmFsFbw" name="Trace Editor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_avDyYLx0EeK4q7aZ2ZzLTw" name="in" type="_QQRfULx0EeK4q7aZ2ZzLTw" aggregation="composite"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_ZWjHULx0EeK4q7aZ2ZzLTw" client="_cmBUALx0EeK4q7aZ2ZzLTw" supplier="_HJ_3ULx0EeK4q7aZ2ZzLTw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_ZWjHULx0EeK4q7aZ2ZzLTw" client="_cmBUALx0EeK4q7aZ2ZzLTw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_qO49cLx0EeK4q7aZ2ZzLTw"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_va-n0Lx0EeK4q7aZ2ZzLTw" clientDependency="_yRoE0Lx0EeK4q7aZ2ZzLTw _kEgpYLx1EeK4q7aZ2ZzLTw" name="User Animation Viewer">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_xREmwLx0EeK4q7aZ2ZzLTw" name="in" type="_va-n0Lx0EeK4q7aZ2ZzLTw" aggregation="composite"/>
@@ -109,12 +97,10 @@
   <packagedElement xmi:type="uml:Component" xmi:id="_9miSILx1EeK4q7aZ2ZzLTw" clientDependency="_LBsPsLx2EeK4q7aZ2ZzLTw" name="Gemoc Process assistant">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_Jiu-YLx2EeK4q7aZ2ZzLTw" name="in" type="_9miSILx1EeK4q7aZ2ZzLTw" aggregation="composite"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_AA3mkLx2EeK4q7aZ2ZzLTw" name="Gemoc Project State"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_LBsPsLx2EeK4q7aZ2ZzLTw" client="_9miSILx1EeK4q7aZ2ZzLTw" supplier="_AA3mkLx2EeK4q7aZ2ZzLTw"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_O91VILx2EeK4q7aZ2ZzLTw" name="ModhelX"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_RJmpILx2EeK4q7aZ2ZzLTw" name="NEMO"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_SiaPILx2EeK4q7aZ2ZzLTw" name="CEP Engine"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_kedlALx2EeK4q7aZ2ZzLTw" name="Scenario"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_mNockLx2EeK4q7aZ2ZzLTw" supplier="_kedlALx2EeK4q7aZ2ZzLTw"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_jRY4cLx3EeK4q7aZ2ZzLTw" clientDependency="_pSFPkLx3EeK4q7aZ2ZzLTw _gd53oLyMEeK4q7aZ2ZzLTw _CrjDsMa0EeKe6cgNmFsFbw" name="Timesquare MOCC To Execution Model">
     <generalization xmi:id="_JBUqcMbqEeKe6cgNmFsFbw" general="_5xKIgMboEeKe6cgNmFsFbw"/>
@@ -141,21 +127,17 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_Ex1OoLyLEeK4q7aZ2ZzLTw" clientDependency="_YVRZELyLEeK4q7aZ2ZzLTw _aVCb8LyMEeK4q7aZ2ZzLTw _mvgaIMa0EeKe6cgNmFsFbw" name="Domain Specific Tree Editor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_IDfMoLyLEeK4q7aZ2ZzLTw" name="in" type="_Ex1OoLyLEeK4q7aZ2ZzLTw" aggregation="composite"/>
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_vjsngLyLEeK4q7aZ2ZzLTw" name="out" type="_DU9LgLyMEeK4q7aZ2ZzLTw" aggregation="composite"/>
-    <ownedConnector xmi:id="_2xEa4LyQEeK4q7aZ2ZzLTw" clientDependency="_gd53oLyMEeK4q7aZ2ZzLTw _O9Z1ULyMEeK4q7aZ2ZzLTw" name="User Model_User Model_connector">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_vjsngLyLEeK4q7aZ2ZzLTw" name="out" aggregation="composite"/>
+    <ownedConnector xmi:id="_2xEa4LyQEeK4q7aZ2ZzLTw" clientDependency="_gd53oLyMEeK4q7aZ2ZzLTw" name="User Model_User Model_connector">
       <end xmi:id="_2xFB8LyQEeK4q7aZ2ZzLTw" role="_vjsngLyLEeK4q7aZ2ZzLTw"/>
     </ownedConnector>
     <interfaceRealization xmi:id="_mvgaIMa0EeKe6cgNmFsFbw" client="_Ex1OoLyLEeK4q7aZ2ZzLTw" supplier="_wKxKMLxtEeK4q7aZ2ZzLTw" contract="_wKxKMLxtEeK4q7aZ2ZzLTw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_YVRZELyLEeK4q7aZ2ZzLTw" client="_Ex1OoLyLEeK4q7aZ2ZzLTw _ekLLULyLEeK4q7aZ2ZzLTw" supplier="_wKxKMLxtEeK4q7aZ2ZzLTw"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_DU9LgLyMEeK4q7aZ2ZzLTw" clientDependency="_O9Z1ULyMEeK4q7aZ2ZzLTw" name="UML Model">
-    <interfaceRealization xmi:id="_O9Z1ULyMEeK4q7aZ2ZzLTw" clientDependency="_O9Z1ULyMEeK4q7aZ2ZzLTw" client="_DU9LgLyMEeK4q7aZ2ZzLTw _O9Z1ULyMEeK4q7aZ2ZzLTw _2xEa4LyQEeK4q7aZ2ZzLTw" supplier="_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_aVCb8LyMEeK4q7aZ2ZzLTw" client="_Ex1OoLyLEeK4q7aZ2ZzLTw" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_gd53oLyMEeK4q7aZ2ZzLTw" client="_jRY4cLx3EeK4q7aZ2ZzLTw _2xEa4LyQEeK4q7aZ2ZzLTw">
     <name xsi:nil="true"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_uuBlwMPIEeKpJ4r0h0kRaQ" name="Domain Specific  Representation Definition"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_Lt3ZMMPJEeKpJ4r0h0kRaQ" name="Execution Engine">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_wilusMRMEeKpJ4r0h0kRaQ" name="out" type="_lh6PgMRMEeKpJ4r0h0kRaQ"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_ee1X4MbJEeKe6cgNmFsFbw" name="in" type="_bmLIsMbJEeKe6cgNmFsFbw" aggregation="composite"/>
@@ -181,24 +163,11 @@
       <end xmi:id="_GMR8gsbVEeKe6cgNmFsFbw" role="_AB-EsLx0EeK4q7aZ2ZzLTw"/>
     </ownedConnector>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_Ya2CIMPJEeKpJ4r0h0kRaQ" name="Domain Specific Model Instance"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_gobuoMPJEeKpJ4r0h0kRaQ" name="Modeling Project"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_17QzEMPJEeKpJ4r0h0kRaQ" name="Domain Specific Representation Definition Extension"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_Kn45EMRMEeKpJ4r0h0kRaQ" name="Runtime Controller"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_lh6PgMRMEeKpJ4r0h0kRaQ" clientDependency="_sY-N8MRMEeKpJ4r0h0kRaQ _fZOhYMa6EeKe6cgNmFsFbw _0N2vcMbREeKe6cgNmFsFbw _9m_hsMbUEeKe6cgNmFsFbw" name="Execution Engine Output">
-    <interfaceRealization xmi:id="_sY-N8MRMEeKpJ4r0h0kRaQ" client="_lh6PgMRMEeKpJ4r0h0kRaQ _yYWWcMRMEeKpJ4r0h0kRaQ _TJmO4cRhEeKjnL1-ylacNQ" supplier="_Kn45EMRMEeKpJ4r0h0kRaQ" contract="_Kn45EMRMEeKpJ4r0h0kRaQ"/>
-    <interfaceRealization xmi:id="_fZOhYMa6EeKe6cgNmFsFbw" clientDependency="_fZOhYMa6EeKe6cgNmFsFbw" client="_lh6PgMRMEeKpJ4r0h0kRaQ _fZOhYMa6EeKe6cgNmFsFbw _HPSQcMa7EeKe6cgNmFsFbw" supplier="_W0jKkMa6EeKe6cgNmFsFbw" contract="_W0jKkMa6EeKe6cgNmFsFbw"/>
-    <interfaceRealization xmi:id="_0N2vcMbREeKe6cgNmFsFbw" clientDependency="_0N2vcMbREeKe6cgNmFsFbw" client="_lh6PgMRMEeKpJ4r0h0kRaQ _0N2vcMbREeKe6cgNmFsFbw _62srsMbREeKe6cgNmFsFbw" supplier="_7GpBoMbQEeKe6cgNmFsFbw" contract="_7GpBoMbQEeKe6cgNmFsFbw"/>
-    <interfaceRealization xmi:id="_9m_hsMbUEeKe6cgNmFsFbw" clientDependency="_9m_hsMbUEeKe6cgNmFsFbw" client="_lh6PgMRMEeKpJ4r0h0kRaQ _9m_hsMbUEeKe6cgNmFsFbw _GMR8gMbVEeKe6cgNmFsFbw" supplier="_UzXXIMbUEeKe6cgNmFsFbw" contract="_UzXXIMbUEeKe6cgNmFsFbw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_5veVAMRMEeKpJ4r0h0kRaQ" name="Debug User Interface"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_BfO2AMRNEeKpJ4r0h0kRaQ" clientDependency="_r2R7IMRNEeKpJ4r0h0kRaQ _r2SiMMRNEeKpJ4r0h0kRaQ" name="Eclipse Debug">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_pTJ3EMRNEeKpJ4r0h0kRaQ" name="in" type="_h7T_cMRQEeKpJ4r0h0kRaQ" aggregation="composite"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_N7Rf8MRNEeKpJ4r0h0kRaQ" clientDependency="_FrBrkMROEeKpJ4r0h0kRaQ _NvkkQMRjEeKjnL1-ylacNQ _NvlLUMRjEeKjnL1-ylacNQ" name="User Graphical Editor Output">
-    <interfaceRealization xmi:id="_FrBrkMROEeKpJ4r0h0kRaQ" clientDependency="_FrBrkMROEeKpJ4r0h0kRaQ" client="_N7Rf8MRNEeKpJ4r0h0kRaQ _FrBrkMROEeKpJ4r0h0kRaQ" supplier="_AxQgQMROEeKpJ4r0h0kRaQ" contract="_AxQgQMROEeKpJ4r0h0kRaQ"/>
-    <interfaceRealization xmi:id="_NvkkQMRjEeKjnL1-ylacNQ" clientDependency="_NvkkQMRjEeKjnL1-ylacNQ" client="_N7Rf8MRNEeKpJ4r0h0kRaQ _NvkkQMRjEeKjnL1-ylacNQ _i49mkMRoEeKjnL1-ylacNQ" supplier="_5veVAMRMEeKpJ4r0h0kRaQ" contract="_5veVAMRMEeKpJ4r0h0kRaQ"/>
-    <interfaceRealization xmi:id="_NvlLUMRjEeKjnL1-ylacNQ" clientDependency="_NvlLUMRjEeKjnL1-ylacNQ" client="_N7Rf8MRNEeKpJ4r0h0kRaQ _NvlLUMRjEeKjnL1-ylacNQ _icdQwMRoEeKjnL1-ylacNQ" supplier="_dtA6YMRNEeKpJ4r0h0kRaQ" contract="_dtA6YMRNEeKpJ4r0h0kRaQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_dtA6YMRNEeKpJ4r0h0kRaQ" name="Launch Utilities"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_r2R7IMRNEeKpJ4r0h0kRaQ" client="_BfO2AMRNEeKpJ4r0h0kRaQ _uhs_kMRNEeKpJ4r0h0kRaQ" supplier="_5veVAMRMEeKpJ4r0h0kRaQ"/>
@@ -210,65 +179,23 @@
   <packagedElement xmi:type="uml:Interface" xmi:id="_PHzSkMRPEeKpJ4r0h0kRaQ" name="Execution Engine"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_OHwVYMRQEeKpJ4r0h0kRaQ" client="_pQciwMPIEeKpJ4r0h0kRaQ" supplier="_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_OHxjgMRQEeKpJ4r0h0kRaQ" client="_pQciwMPIEeKpJ4r0h0kRaQ" supplier="_Kn45EMRMEeKpJ4r0h0kRaQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_h7T_cMRQEeKpJ4r0h0kRaQ" clientDependency="_rVgpAMRQEeKpJ4r0h0kRaQ _rVgpAcRQEeKpJ4r0h0kRaQ" name="Eclipse Debug Input"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_rVgpAMRQEeKpJ4r0h0kRaQ" client="_h7T_cMRQEeKpJ4r0h0kRaQ _i49mkMRoEeKjnL1-ylacNQ" supplier="_5veVAMRMEeKpJ4r0h0kRaQ"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_rVgpAcRQEeKpJ4r0h0kRaQ" client="_h7T_cMRQEeKpJ4r0h0kRaQ _icdQwMRoEeKjnL1-ylacNQ" supplier="_dtA6YMRNEeKpJ4r0h0kRaQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_QTDS0MRREeKpJ4r0h0kRaQ" clientDependency="_iiSqcMRREeKpJ4r0h0kRaQ _T-NQwMRjEeKjnL1-ylacNQ _QDnnEMdvEeKe6cgNmFsFbw" name="Sirius Framework Output">
-    <interfaceRealization xmi:id="_iiSqcMRREeKpJ4r0h0kRaQ" clientDependency="_iiSqcMRREeKpJ4r0h0kRaQ" client="_QTDS0MRREeKpJ4r0h0kRaQ _iiSqcMRREeKpJ4r0h0kRaQ"/>
-    <interfaceRealization xmi:id="_T-NQwMRjEeKjnL1-ylacNQ" clientDependency="_T-NQwMRjEeKjnL1-ylacNQ" client="_QTDS0MRREeKpJ4r0h0kRaQ _T-NQwMRjEeKjnL1-ylacNQ" supplier="_QqjHoMRjEeKjnL1-ylacNQ" contract="_QqjHoMRjEeKjnL1-ylacNQ"/>
-    <interfaceRealization xmi:id="_QDnnEMdvEeKe6cgNmFsFbw" clientDependency="_QDnnEMdvEeKe6cgNmFsFbw" client="_QTDS0MRREeKpJ4r0h0kRaQ _QDnnEMdvEeKe6cgNmFsFbw" supplier="_7tch8MbbEeKe6cgNmFsFbw" contract="_7tch8MbbEeKe6cgNmFsFbw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_hIgXkMRSEeKpJ4r0h0kRaQ" clientDependency="_nZxhUMRSEeKpJ4r0h0kRaQ _nZyIYMRSEeKpJ4r0h0kRaQ" name="User Graphical Editor Input"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_nZxhUMRSEeKpJ4r0h0kRaQ" client="_hIgXkMRSEeKpJ4r0h0kRaQ _4P0NYMR-EeKz79a-Yu6qnQ" supplier="_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_nZyIYMRSEeKpJ4r0h0kRaQ" client="_hIgXkMRSEeKpJ4r0h0kRaQ _TJmO4cRhEeKjnL1-ylacNQ" supplier="_Kn45EMRMEeKpJ4r0h0kRaQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_J7bXgMRTEeKpJ4r0h0kRaQ" clientDependency="_U1JTEMRTEeKpJ4r0h0kRaQ _U1JTEcRTEeKpJ4r0h0kRaQ _U1J6IMRTEeKpJ4r0h0kRaQ _yovZUMaxEeKe6cgNmFsFbw" name="Sirius Framework Input"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_U1JTEMRTEeKpJ4r0h0kRaQ" client="_J7bXgMRTEeKpJ4r0h0kRaQ" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_U1JTEcRTEeKpJ4r0h0kRaQ" client="_J7bXgMRTEeKpJ4r0h0kRaQ _KDdGkMbOEeKe6cgNmFsFbw" supplier="_uuBlwMPIEeKpJ4r0h0kRaQ"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_U1J6IMRTEeKpJ4r0h0kRaQ" client="_J7bXgMRTEeKpJ4r0h0kRaQ _K3hAwMbOEeKe6cgNmFsFbw" supplier="_17QzEMPJEeKpJ4r0h0kRaQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_ODeNIMRiEeKjnL1-ylacNQ" clientDependency="_Zk96YMRiEeKjnL1-ylacNQ" name="Sirius Animator Framework Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_QbplcMRiEeKjnL1-ylacNQ" clientDependency="_03pEkMRmEeKjnL1-ylacNQ" name="Sirius Animator Framework Output">
-    <interfaceRealization xmi:id="_03pEkMRmEeKjnL1-ylacNQ" clientDependency="_03pEkMRmEeKjnL1-ylacNQ" client="_QbplcMRiEeKjnL1-ylacNQ _03pEkMRmEeKjnL1-ylacNQ _JRyNgMRnEeKjnL1-ylacNQ _md3wMMa3EeKe6cgNmFsFbw" supplier="_QqjHoMRjEeKjnL1-ylacNQ" contract="_QqjHoMRjEeKjnL1-ylacNQ"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_Zk96YMRiEeKjnL1-ylacNQ" client="_ODeNIMRiEeKjnL1-ylacNQ _lvlG0Ma3EeKe6cgNmFsFbw" supplier="_17QzEMPJEeKpJ4r0h0kRaQ"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_QqjHoMRjEeKjnL1-ylacNQ" name="Domain Specific Graphical Animator"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_71Jz0MRnEeKjnL1-ylacNQ" clientDependency="_JgvaEMRoEeKjnL1-ylacNQ _JgwoMMRoEeKjnL1-ylacNQ" name="User Graphical Animator Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_91GSUMRnEeKjnL1-ylacNQ" clientDependency="_Tb-7MMRoEeKjnL1-ylacNQ _TcAJUMRoEeKjnL1-ylacNQ" name="User Graphical Animator Output">
-    <interfaceRealization xmi:id="_Tb-7MMRoEeKjnL1-ylacNQ" clientDependency="_Tb-7MMRoEeKjnL1-ylacNQ" client="_91GSUMRnEeKjnL1-ylacNQ _Tb-7MMRoEeKjnL1-ylacNQ _TkGf8MRpEeKjnL1-ylacNQ" supplier="_5veVAMRMEeKpJ4r0h0kRaQ" contract="_5veVAMRMEeKpJ4r0h0kRaQ"/>
-    <interfaceRealization xmi:id="_TcAJUMRoEeKjnL1-ylacNQ" clientDependency="_TcAJUMRoEeKjnL1-ylacNQ" client="_91GSUMRnEeKjnL1-ylacNQ _TcAJUMRoEeKjnL1-ylacNQ _TEpj0MRpEeKjnL1-ylacNQ" supplier="_dtA6YMRNEeKpJ4r0h0kRaQ" contract="_dtA6YMRNEeKpJ4r0h0kRaQ"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_JgvaEMRoEeKjnL1-ylacNQ" client="_71Jz0MRnEeKjnL1-ylacNQ _KuwFUMRoEeKjnL1-ylacNQ" supplier="_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_JgwoMMRoEeKjnL1-ylacNQ" client="_71Jz0MRnEeKjnL1-ylacNQ _LQcdIMRoEeKjnL1-ylacNQ" supplier="_Kn45EMRMEeKpJ4r0h0kRaQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_3boYYMRzEeKz2JnhKFEG5Q" clientDependency="_GNbYwMR0EeKz2JnhKFEG5Q _tZQtoMa6EeKe6cgNmFsFbw" name="Trace Player Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_5LPU0MRzEeKz2JnhKFEG5Q" clientDependency="_C7DCAMR0EeKz2JnhKFEG5Q _GUJd4Ma7EeKe6cgNmFsFbw" name="Trace Player Output">
-    <interfaceRealization xmi:id="_C7DCAMR0EeKz2JnhKFEG5Q" clientDependency="_C7DCAMR0EeKz2JnhKFEG5Q" client="_5LPU0MRzEeKz2JnhKFEG5Q _C7DCAMR0EeKz2JnhKFEG5Q" supplier="_Kn45EMRMEeKpJ4r0h0kRaQ" contract="_Kn45EMRMEeKpJ4r0h0kRaQ"/>
-    <interfaceRealization xmi:id="_GUJd4Ma7EeKe6cgNmFsFbw" clientDependency="_GUJd4Ma7EeKe6cgNmFsFbw" client="_5LPU0MRzEeKz2JnhKFEG5Q _GUJd4Ma7EeKe6cgNmFsFbw _HPSQcMa7EeKe6cgNmFsFbw" supplier="_W0jKkMa6EeKe6cgNmFsFbw" contract="_W0jKkMa6EeKe6cgNmFsFbw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_GNbYwMR0EeKz2JnhKFEG5Q" client="_3boYYMRzEeKz2JnhKFEG5Q" supplier="_HJ_3ULx0EeK4q7aZ2ZzLTw"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_VlROoManEeKe6cgNmFsFbw" clientDependency="_h4t9QManEeKe6cgNmFsFbw _h4t9QcanEeKe6cgNmFsFbw" name="Xtext Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_XGE6EManEeKe6cgNmFsFbw" clientDependency="_rhnxMManEeKe6cgNmFsFbw" name="Xtext Output">
-    <interfaceRealization xmi:id="_rhnxMManEeKe6cgNmFsFbw" clientDependency="_rhnxMManEeKe6cgNmFsFbw" client="_XGE6EManEeKe6cgNmFsFbw _rhnxMManEeKe6cgNmFsFbw" supplier="_itdbELxuEeK4q7aZ2ZzLTw" contract="_itdbELxuEeK4q7aZ2ZzLTw"/>
-  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_GNbYwMR0EeKz2JnhKFEG5Q" client="_3boYYMRzEeKz2JnhKFEG5Q"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_h4t9QManEeKe6cgNmFsFbw" client="_VlROoManEeKe6cgNmFsFbw" supplier="_w2rYgLxuEeK4q7aZ2ZzLTw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_h4t9QcanEeKe6cgNmFsFbw" client="_VlROoManEeKe6cgNmFsFbw" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_wpbYgManEeKe6cgNmFsFbw" clientDependency="_58rskManEeKe6cgNmFsFbw" name="EMF Tree Editor Generator Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_y3ytgManEeKe6cgNmFsFbw" clientDependency="_-QYWYManEeKe6cgNmFsFbw" name="EMF Tree Editor Generator Output">
-    <interfaceRealization xmi:id="_-QYWYManEeKe6cgNmFsFbw" clientDependency="_-QYWYManEeKe6cgNmFsFbw" client="_y3ytgManEeKe6cgNmFsFbw _-QYWYManEeKe6cgNmFsFbw" supplier="_wKxKMLxtEeK4q7aZ2ZzLTw" contract="_wKxKMLxtEeK4q7aZ2ZzLTw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_58rskManEeKe6cgNmFsFbw" client="_wpbYgManEeKe6cgNmFsFbw" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_D9YVcMaoEeKe6cgNmFsFbw" clientDependency="_PXYTkMaoEeKe6cgNmFsFbw _D-3CsMbVEeKe6cgNmFsFbw" name="Timesquare Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_FL9ocMaoEeKe6cgNmFsFbw" clientDependency="_CBnwYMbJEeKe6cgNmFsFbw" name="Timesquare Output">
-    <interfaceRealization xmi:id="_CBnwYMbJEeKe6cgNmFsFbw" clientDependency="_CBnwYMbJEeKe6cgNmFsFbw" client="_FL9ocMaoEeKe6cgNmFsFbw _CBnwYMbJEeKe6cgNmFsFbw" supplier="_uOrxYMbIEeKe6cgNmFsFbw" contract="_uOrxYMbIEeKe6cgNmFsFbw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_PXYTkMaoEeKe6cgNmFsFbw" client="_D9YVcMaoEeKe6cgNmFsFbw" supplier="_Bg4SsLx0EeK4q7aZ2ZzLTw"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_gBwJsMapEeKe6cgNmFsFbw" clientDependency="_3axekMapEeKe6cgNmFsFbw _4R9RgMbmEeKe6cgNmFsFbw" name="User Model To Execution Model Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_h6cwsMapEeKe6cgNmFsFbw" clientDependency="_nrErgMapEeKe6cgNmFsFbw" name="User Model To Execution Model Output">
-    <interfaceRealization xmi:id="_nrErgMapEeKe6cgNmFsFbw" clientDependency="_nrErgMapEeKe6cgNmFsFbw" client="_h6cwsMapEeKe6cgNmFsFbw _nrErgMapEeKe6cgNmFsFbw" supplier="_Bg4SsLx0EeK4q7aZ2ZzLTw" contract="_Bg4SsLx0EeK4q7aZ2ZzLTw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_3axekMapEeKe6cgNmFsFbw" client="_gBwJsMapEeKe6cgNmFsFbw" supplier="_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_8ZA6MMapEeKe6cgNmFsFbw" clientDependency="_KsiqMMaqEeKe6cgNmFsFbw" name="ECL Engine Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_9i7voMapEeKe6cgNmFsFbw" clientDependency="_E8NDQMaqEeKe6cgNmFsFbw" name="ECL Engine Output">
-    <interfaceRealization xmi:id="_E8NDQMaqEeKe6cgNmFsFbw" clientDependency="_E8NDQMaqEeKe6cgNmFsFbw" client="_9i7voMapEeKe6cgNmFsFbw _E8NDQMaqEeKe6cgNmFsFbw" supplier="_tPrqYLxzEeK4q7aZ2ZzLTw" contract="_tPrqYLxzEeK4q7aZ2ZzLTw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_KsiqMMaqEeKe6cgNmFsFbw" client="_8ZA6MMapEeKe6cgNmFsFbw" supplier="_UEzBMLxxEeK4q7aZ2ZzLTw"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_wwipYLxwEeK4q7aZ2ZzLTw" name="Kermeta Editor">
     <generalization xmi:id="_eKUsMMbkEeKe6cgNmFsFbw" general="_IqMyoMbkEeKe6cgNmFsFbw"/>
@@ -291,10 +218,6 @@
       <end xmi:id="_YE35EcaxEeKe6cgNmFsFbw" role="_4FhdAMavEeKe6cgNmFsFbw"/>
       <end xmi:id="_YE35EsaxEeKe6cgNmFsFbw" role="_6f8RcLxxEeK4q7aZ2ZzLTw"/>
     </ownedConnector>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_uco3MMavEeKe6cgNmFsFbw" clientDependency="_3EMi4MavEeKe6cgNmFsFbw" name="EMF Gen Model Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_vxyFMMavEeKe6cgNmFsFbw" clientDependency="_JzhTUMaxEeKe6cgNmFsFbw" name="EMF Gen Model Output">
-    <interfaceRealization xmi:id="_JzhTUMaxEeKe6cgNmFsFbw" clientDependency="_JzhTUMaxEeKe6cgNmFsFbw" client="_vxyFMMavEeKe6cgNmFsFbw _JzhTUMaxEeKe6cgNmFsFbw _YE35EMaxEeKe6cgNmFsFbw" supplier="_Fw1hAMaxEeKe6cgNmFsFbw" contract="_Fw1hAMaxEeKe6cgNmFsFbw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_3EMi4MavEeKe6cgNmFsFbw" client="_uco3MMavEeKe6cgNmFsFbw" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_Fw1hAMaxEeKe6cgNmFsFbw" name="Domain Specific Metamodel Byte Code"/>
@@ -319,7 +242,6 @@
   <packagedElement xmi:type="uml:Component" xmi:id="_--SgEMa5EeKe6cgNmFsFbw" name="Random Policy">
     <generalization xmi:id="_0EAbcMbHEeKe6cgNmFsFbw" general="_xsH-EMbHEeKe6cgNmFsFbw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_W0jKkMa6EeKe6cgNmFsFbw" name="Trace Model"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_tZQtoMa6EeKe6cgNmFsFbw" client="_3boYYMRzEeKz2JnhKFEG5Q _HPSQcMa7EeKe6cgNmFsFbw" supplier="_W0jKkMa6EeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_bKAScMa7EeKe6cgNmFsFbw" name="Scenario Policy">
     <generalization xmi:id="_zufecMbHEeKe6cgNmFsFbw" general="_xsH-EMbHEeKe6cgNmFsFbw"/>
@@ -339,13 +261,7 @@
   <packagedElement xmi:type="uml:Component" xmi:id="_3PbOkMbHEeKe6cgNmFsFbw" name="Interactive Policy">
     <generalization xmi:id="_LIIeYMbIEeKe6cgNmFsFbw" general="_xsH-EMbHEeKe6cgNmFsFbw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_kOMj4MbIEeKe6cgNmFsFbw" clientDependency="_y5JVYMbIEeKe6cgNmFsFbw" name="Policy Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_lrqAYMbIEeKe6cgNmFsFbw" clientDependency="_4sRKkMbIEeKe6cgNmFsFbw" name="Policy Output">
-    <interfaceRealization xmi:id="_4sRKkMbIEeKe6cgNmFsFbw" clientDependency="_4sRKkMbIEeKe6cgNmFsFbw" client="_lrqAYMbIEeKe6cgNmFsFbw _4sRKkMbIEeKe6cgNmFsFbw _9BOjMMbJEeKe6cgNmFsFbw" supplier="_1WTUUMbIEeKe6cgNmFsFbw" contract="_1WTUUMbIEeKe6cgNmFsFbw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_uOrxYMbIEeKe6cgNmFsFbw" name="Domain Specific Event Vector"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_y5JVYMbIEeKe6cgNmFsFbw" client="_kOMj4MbIEeKe6cgNmFsFbw _RgMksMdtEeKe6cgNmFsFbw" supplier="_uOrxYMbIEeKe6cgNmFsFbw"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_1WTUUMbIEeKe6cgNmFsFbw" name="Domain Specific Event"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_7vdOwMbIEeKe6cgNmFsFbw" name="Solver">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_KnCHAMbJEeKe6cgNmFsFbw" name="out" type="_IC5WUMbJEeKe6cgNmFsFbw" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_QQj7UMbJEeKe6cgNmFsFbw" name="in" type="_HBqi0MbJEeKe6cgNmFsFbw" aggregation="composite"/>
@@ -355,11 +271,6 @@
       <end xmi:id="_RgNLwMdtEeKe6cgNmFsFbw" role="_KnCHAMbJEeKe6cgNmFsFbw"/>
     </ownedConnector>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_HBqi0MbJEeKe6cgNmFsFbw" clientDependency="_uwYvQMbTEeKe6cgNmFsFbw _Z4aqwMbnEeKe6cgNmFsFbw" name="Solver Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_IC5WUMbJEeKe6cgNmFsFbw" clientDependency="_Mk8lMMbJEeKe6cgNmFsFbw" name="Solver Output">
-    <interfaceRealization xmi:id="_Mk8lMMbJEeKe6cgNmFsFbw" clientDependency="_Mk8lMMbJEeKe6cgNmFsFbw" client="_IC5WUMbJEeKe6cgNmFsFbw _Mk8lMMbJEeKe6cgNmFsFbw _RgMksMdtEeKe6cgNmFsFbw" supplier="_uOrxYMbIEeKe6cgNmFsFbw" contract="_uOrxYMbIEeKe6cgNmFsFbw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_bmLIsMbJEeKe6cgNmFsFbw" clientDependency="_7l2KUMbJEeKe6cgNmFsFbw _Ek5I8MbKEeKe6cgNmFsFbw _cApowMbKEeKe6cgNmFsFbw _4xcPYMbREeKe6cgNmFsFbw" name="Execution Engine Input"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_7l2KUMbJEeKe6cgNmFsFbw" client="_bmLIsMbJEeKe6cgNmFsFbw _9BOjMMbJEeKe6cgNmFsFbw" supplier="_1WTUUMbIEeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_Ek5I8MbKEeKe6cgNmFsFbw" client="_bmLIsMbJEeKe6cgNmFsFbw _RgMksMdtEeKe6cgNmFsFbw" supplier="_uOrxYMbIEeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_cApowMbKEeKe6cgNmFsFbw" client="_bmLIsMbJEeKe6cgNmFsFbw" supplier="_Fw1hAMaxEeKe6cgNmFsFbw"/>
@@ -379,20 +290,10 @@
       <end xmi:id="_K3hn0cbOEeKe6cgNmFsFbw" role="__SjIwMbNEeKe6cgNmFsFbw"/>
     </ownedConnector>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_3KgDkMbNEeKe6cgNmFsFbw" clientDependency="_DK4FMMbOEeKe6cgNmFsFbw" name="Sirius Editor Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_42nAEMbNEeKe6cgNmFsFbw" clientDependency="_G3F4QMbOEeKe6cgNmFsFbw _G3T6sMbOEeKe6cgNmFsFbw" name="Sirius Editor Output">
-    <interfaceRealization xmi:id="_G3F4QMbOEeKe6cgNmFsFbw" clientDependency="_G3F4QMbOEeKe6cgNmFsFbw" client="_42nAEMbNEeKe6cgNmFsFbw _G3F4QMbOEeKe6cgNmFsFbw _KDdGkMbOEeKe6cgNmFsFbw" supplier="_uuBlwMPIEeKpJ4r0h0kRaQ" contract="_uuBlwMPIEeKpJ4r0h0kRaQ"/>
-    <interfaceRealization xmi:id="_G3T6sMbOEeKe6cgNmFsFbw" clientDependency="_G3T6sMbOEeKe6cgNmFsFbw" client="_42nAEMbNEeKe6cgNmFsFbw _G3T6sMbOEeKe6cgNmFsFbw _K3hAwMbOEeKe6cgNmFsFbw" supplier="_17QzEMPJEeKpJ4r0h0kRaQ" contract="_17QzEMPJEeKpJ4r0h0kRaQ"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_DK4FMMbOEeKe6cgNmFsFbw" client="_3KgDkMbNEeKe6cgNmFsFbw" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_lG3-sMbQEeKe6cgNmFsFbw" clientDependency="_vW3AwMbQEeKe6cgNmFsFbw" name="Replay Policy Input"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_vW3AwMbQEeKe6cgNmFsFbw" client="_lG3-sMbQEeKe6cgNmFsFbw" supplier="_W0jKkMa6EeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_326WQMbQEeKe6cgNmFsFbw" client="_QQRfULx0EeK4q7aZ2ZzLTw" supplier="_W0jKkMa6EeKe6cgNmFsFbw"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_7GpBoMbQEeKe6cgNmFsFbw" name="Execution Model"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_4xcPYMbREeKe6cgNmFsFbw" client="_bmLIsMbJEeKe6cgNmFsFbw _62srsMbREeKe6cgNmFsFbw" supplier="_7GpBoMbQEeKe6cgNmFsFbw"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_icS84MbSEeKe6cgNmFsFbw" clientDependency="_tKmSoMbSEeKe6cgNmFsFbw" name="DSA Compiler Output">
-    <interfaceRealization xmi:id="_tKmSoMbSEeKe6cgNmFsFbw" clientDependency="_tKmSoMbSEeKe6cgNmFsFbw" client="_icS84MbSEeKe6cgNmFsFbw _tKmSoMbSEeKe6cgNmFsFbw" supplier="_9kpYkLxxEeK4q7aZ2ZzLTw" contract="_9kpYkLxxEeK4q7aZ2ZzLTw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_uwYvQMbTEeKe6cgNmFsFbw" client="_HBqi0MbJEeKe6cgNmFsFbw" supplier="_1WTUUMbIEeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_Ih6MkMbUEeKe6cgNmFsFbw" name="Trigger Event Request"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_UzXXIMbUEeKe6cgNmFsFbw" name="Trigger Event Request"/>
@@ -512,20 +413,10 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_kCwfMMbkEeKe6cgNmFsFbw" name="CCSL Library Editor">
     <generalization xmi:id="_mX0SEMbkEeKe6cgNmFsFbw" general="_EtP04MbkEeKe6cgNmFsFbw"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_XdH1UMedEeKpyLjJ3hOE5w" name="out" type="_PiSFsMedEeKpyLjJ3hOE5w" aggregation="composite"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_wqKroMbkEeKe6cgNmFsFbw" name="DSA Model Instance">
-    <generalization xmi:id="_UH-X8MasEeKe6cgNmFsFbw" general="_NYmLwLxtEeKBVNTpoiWWdA"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_3v4KEMbkEeKe6cgNmFsFbw" clientDependency="_8675sMbkEeKe6cgNmFsFbw" name="DSA Editor Output">
-    <interfaceRealization xmi:id="_8675sMbkEeKe6cgNmFsFbw" clientDependency="_8675sMbkEeKe6cgNmFsFbw" client="_3v4KEMbkEeKe6cgNmFsFbw _8675sMbkEeKe6cgNmFsFbw _bfxVAMblEeKe6cgNmFsFbw" supplier="_wqKroMbkEeKe6cgNmFsFbw" contract="_wqKroMbkEeKe6cgNmFsFbw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_OY7akMblEeKe6cgNmFsFbw" clientDependency="_VuDOAMblEeKe6cgNmFsFbw" name="DSA Compiler Input"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_VuDOAMblEeKe6cgNmFsFbw" client="_OY7akMblEeKe6cgNmFsFbw _bfxVAMblEeKe6cgNmFsFbw" supplier="_wqKroMbkEeKe6cgNmFsFbw"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_gIZtAMblEeKe6cgNmFsFbw" clientDependency="_zSJlEMblEeKe6cgNmFsFbw" name="MOCC Editor Output">
-    <interfaceRealization xmi:id="_zSJlEMblEeKe6cgNmFsFbw" clientDependency="_zSJlEMblEeKe6cgNmFsFbw" client="_gIZtAMblEeKe6cgNmFsFbw _zSJlEMblEeKe6cgNmFsFbw _0goxcMblEeKe6cgNmFsFbw" supplier="_GpujMLxxEeK4q7aZ2ZzLTw" contract="_GpujMLxxEeK4q7aZ2ZzLTw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_4R9RgMbmEeKe6cgNmFsFbw" client="_gBwJsMapEeKe6cgNmFsFbw" supplier="_UEzBMLxxEeK4q7aZ2ZzLTw"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_US0UMMbnEeKe6cgNmFsFbw" name="Concurrency Execution Model"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_Z4aqwMbnEeKe6cgNmFsFbw" client="_HBqi0MbJEeKe6cgNmFsFbw _ky-o8MbpEeKe6cgNmFsFbw" supplier="_US0UMMbnEeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_kro8wMbnEeKe6cgNmFsFbw" name="DSA/MOCC Map Editor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_ivarMMboEeKe6cgNmFsFbw" name="in" type="_WRcHkMboEeKe6cgNmFsFbw" aggregation="composite"/>
@@ -534,14 +425,6 @@
       <end xmi:id="_gfA5YcbpEeKe6cgNmFsFbw" role="_YqqMQMbpEeKe6cgNmFsFbw"/>
       <end xmi:id="_gfA5YsbpEeKe6cgNmFsFbw" role="_lxQEgMboEeKe6cgNmFsFbw"/>
     </ownedConnector>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_3o_-oMbnEeKe6cgNmFsFbw" clientDependency="_9mX8AMbnEeKe6cgNmFsFbw" name="AS Editor Output">
-    <interfaceRealization xmi:id="_9mX8AMbnEeKe6cgNmFsFbw" clientDependency="_9mX8AMbnEeKe6cgNmFsFbw" client="_3o_-oMbnEeKe6cgNmFsFbw _9mX8AMbnEeKe6cgNmFsFbw" supplier="_NYmLwLxtEeKBVNTpoiWWdA" contract="_NYmLwLxtEeKBVNTpoiWWdA"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_R-GDEMboEeKe6cgNmFsFbw" name="DSE"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_WRcHkMboEeKe6cgNmFsFbw" clientDependency="_r5WrMMboEeKe6cgNmFsFbw _r5XSQMboEeKe6cgNmFsFbw" name="DSA/MOCC Map Editor Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_YUb6EMboEeKe6cgNmFsFbw" clientDependency="_wxyZwMboEeKe6cgNmFsFbw" name="DSA/MOCC Map Editor Output">
-    <interfaceRealization xmi:id="_wxyZwMboEeKe6cgNmFsFbw" clientDependency="_wxyZwMboEeKe6cgNmFsFbw" client="_YUb6EMboEeKe6cgNmFsFbw _wxyZwMboEeKe6cgNmFsFbw _gfA5YMbpEeKe6cgNmFsFbw" supplier="_R-GDEMboEeKe6cgNmFsFbw" contract="_R-GDEMboEeKe6cgNmFsFbw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_r5WrMMboEeKe6cgNmFsFbw" client="_WRcHkMboEeKe6cgNmFsFbw" supplier="_GpujMLxxEeK4q7aZ2ZzLTw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_r5XSQMboEeKe6cgNmFsFbw" client="_WRcHkMboEeKe6cgNmFsFbw" supplier="_wqKroMbkEeKe6cgNmFsFbw"/>
@@ -554,13 +437,137 @@
     </ownedConnector>
     <interfaceRealization xmi:id="_rKkw0MdwEeKe6cgNmFsFbw" client="_5xKIgMboEeKe6cgNmFsFbw" supplier="_tPrqYLxzEeK4q7aZ2ZzLTw" contract="_tPrqYLxzEeK4q7aZ2ZzLTw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_PzmE8MbpEeKe6cgNmFsFbw" clientDependency="_e2NvkMbpEeKe6cgNmFsFbw _vPjVgMbpEeKe6cgNmFsFbw" name="MOCC To Execution Model Input"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Tq2qYMbpEeKe6cgNmFsFbw" clientDependency="_i8TbMMbpEeKe6cgNmFsFbw" name="MOCC To Execution Model Output">
-    <interfaceRealization xmi:id="_i8TbMMbpEeKe6cgNmFsFbw" clientDependency="_i8TbMMbpEeKe6cgNmFsFbw" client="_Tq2qYMbpEeKe6cgNmFsFbw _i8TbMMbpEeKe6cgNmFsFbw _ky-o8MbpEeKe6cgNmFsFbw" supplier="_US0UMMbnEeKe6cgNmFsFbw" contract="_US0UMMbnEeKe6cgNmFsFbw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_e2NvkMbpEeKe6cgNmFsFbw" client="_PzmE8MbpEeKe6cgNmFsFbw _gfA5YMbpEeKe6cgNmFsFbw" supplier="_R-GDEMboEeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_vPjVgMbpEeKe6cgNmFsFbw" client="_PzmE8MbpEeKe6cgNmFsFbw _iAR9wMdrEeKe6cgNmFsFbw" supplier="_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Vm60YMdrEeKe6cgNmFsFbw" clientDependency="_fqmf0MdrEeKe6cgNmFsFbw" name="Domain Specific Editor Output">
-    <interfaceRealization xmi:id="_fqmf0MdrEeKe6cgNmFsFbw" clientDependency="_fqmf0MdrEeKe6cgNmFsFbw" client="_Vm60YMdrEeKe6cgNmFsFbw _fqmf0MdrEeKe6cgNmFsFbw _iAR9wMdrEeKe6cgNmFsFbw" supplier="_Ya2CIMPJEeKpJ4r0h0kRaQ" contract="_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_zxocgMeMEeKpyLjJ3hOE5w" name="metamodels">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_R-GDEMboEeKe6cgNmFsFbw" name="DSE Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_wqKroMbkEeKe6cgNmFsFbw" name="DSA Model">
+      <generalization xmi:id="_UH-X8MasEeKe6cgNmFsFbw" general="_NYmLwLxtEeKBVNTpoiWWdA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_W0jKkMa6EeKe6cgNmFsFbw" name="Trace Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_NYmLwLxtEeKBVNTpoiWWdA" name="Domain Specific Metamodel"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Ya2CIMPJEeKpJ4r0h0kRaQ" name="Domain Specific Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_US0UMMbnEeKe6cgNmFsFbw" name="Concurrency Execution Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_1WTUUMbIEeKe6cgNmFsFbw" name="Domain Specific Event Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_uOrxYMbIEeKe6cgNmFsFbw" name="Domain Specific Event Vector Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_7GpBoMbQEeKe6cgNmFsFbw" name="Execution Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_uuBlwMPIEeKpJ4r0h0kRaQ" name="Domain Specific  Representation Definition Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_17QzEMPJEeKpJ4r0h0kRaQ" name="Domain Specific Representation Definition Extension Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_0xevQLxwEeK4q7aZ2ZzLTw" name="Kermeta Model">
+      <generalization xmi:id="_E9bwgMblEeKe6cgNmFsFbw" general="_wqKroMbkEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_GpujMLxxEeK4q7aZ2ZzLTw" name="MOCC Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_UEzBMLxxEeK4q7aZ2ZzLTw" name="ECL Model">
+      <generalization xmi:id="_TSY8gMboEeKe6cgNmFsFbw" general="_R-GDEMboEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Bg4SsLx0EeK4q7aZ2ZzLTw" name="CCSL Model">
+      <generalization xmi:id="_Xl8R0MbnEeKe6cgNmFsFbw" general="_US0UMMbnEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_AA3mkLx2EeK4q7aZ2ZzLTw" name="Gemoc Project State Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_kedlALx2EeK4q7aZ2ZzLTw" name="Scenario Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_JuVDsMeVEeKpyLjJ3hOE5w" name="Ecore Model">
+      <generalization xmi:id="_YDMQcMeVEeKpyLjJ3hOE5w" general="_NYmLwLxtEeKBVNTpoiWWdA"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_wppicMeNEeKpyLjJ3hOE5w" name="component_inputs_outputs">
+    <packagedElement xmi:type="uml:Class" xmi:id="_3KgDkMbNEeKe6cgNmFsFbw" clientDependency="_DK4FMMbOEeKe6cgNmFsFbw" name="Sirius Editor Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_42nAEMbNEeKe6cgNmFsFbw" clientDependency="_G3F4QMbOEeKe6cgNmFsFbw _G3T6sMbOEeKe6cgNmFsFbw" name="Sirius Editor Output">
+      <interfaceRealization xmi:id="_G3F4QMbOEeKe6cgNmFsFbw" clientDependency="_G3F4QMbOEeKe6cgNmFsFbw" client="_42nAEMbNEeKe6cgNmFsFbw _G3F4QMbOEeKe6cgNmFsFbw _KDdGkMbOEeKe6cgNmFsFbw" supplier="_uuBlwMPIEeKpJ4r0h0kRaQ" contract="_uuBlwMPIEeKpJ4r0h0kRaQ"/>
+      <interfaceRealization xmi:id="_G3T6sMbOEeKe6cgNmFsFbw" clientDependency="_G3T6sMbOEeKe6cgNmFsFbw" client="_42nAEMbNEeKe6cgNmFsFbw _G3T6sMbOEeKe6cgNmFsFbw _K3hAwMbOEeKe6cgNmFsFbw" supplier="_17QzEMPJEeKpJ4r0h0kRaQ" contract="_17QzEMPJEeKpJ4r0h0kRaQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Tq2qYMbpEeKe6cgNmFsFbw" clientDependency="_i8TbMMbpEeKe6cgNmFsFbw" name="MOCC To Execution Model Output">
+      <interfaceRealization xmi:id="_i8TbMMbpEeKe6cgNmFsFbw" clientDependency="_i8TbMMbpEeKe6cgNmFsFbw" client="_Tq2qYMbpEeKe6cgNmFsFbw _i8TbMMbpEeKe6cgNmFsFbw _ky-o8MbpEeKe6cgNmFsFbw" supplier="_US0UMMbnEeKe6cgNmFsFbw" contract="_US0UMMbnEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PzmE8MbpEeKe6cgNmFsFbw" clientDependency="_e2NvkMbpEeKe6cgNmFsFbw _vPjVgMbpEeKe6cgNmFsFbw" name="MOCC To Execution Model Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_YUb6EMboEeKe6cgNmFsFbw" clientDependency="_wxyZwMboEeKe6cgNmFsFbw" name="DSA/MOCC Map Editor Output">
+      <interfaceRealization xmi:id="_wxyZwMboEeKe6cgNmFsFbw" clientDependency="_wxyZwMboEeKe6cgNmFsFbw" client="_YUb6EMboEeKe6cgNmFsFbw _wxyZwMboEeKe6cgNmFsFbw _gfA5YMbpEeKe6cgNmFsFbw" supplier="_R-GDEMboEeKe6cgNmFsFbw" contract="_R-GDEMboEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_WRcHkMboEeKe6cgNmFsFbw" clientDependency="_r5WrMMboEeKe6cgNmFsFbw _r5XSQMboEeKe6cgNmFsFbw" name="DSA/MOCC Map Editor Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gIZtAMblEeKe6cgNmFsFbw" clientDependency="_zSJlEMblEeKe6cgNmFsFbw" name="MOCC Editor Output">
+      <interfaceRealization xmi:id="_zSJlEMblEeKe6cgNmFsFbw" clientDependency="_zSJlEMblEeKe6cgNmFsFbw" client="_gIZtAMblEeKe6cgNmFsFbw _zSJlEMblEeKe6cgNmFsFbw _0goxcMblEeKe6cgNmFsFbw" supplier="_GpujMLxxEeK4q7aZ2ZzLTw" contract="_GpujMLxxEeK4q7aZ2ZzLTw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_3o_-oMbnEeKe6cgNmFsFbw" clientDependency="_9mX8AMbnEeKe6cgNmFsFbw" name="AS Editor Output">
+      <interfaceRealization xmi:id="_9mX8AMbnEeKe6cgNmFsFbw" clientDependency="_9mX8AMbnEeKe6cgNmFsFbw" client="_3o_-oMbnEeKe6cgNmFsFbw _9mX8AMbnEeKe6cgNmFsFbw" supplier="_NYmLwLxtEeKBVNTpoiWWdA" contract="_NYmLwLxtEeKBVNTpoiWWdA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_OY7akMblEeKe6cgNmFsFbw" clientDependency="_VuDOAMblEeKe6cgNmFsFbw" name="DSA Compiler Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_3v4KEMbkEeKe6cgNmFsFbw" clientDependency="_8675sMbkEeKe6cgNmFsFbw" name="DSA Editor Output">
+      <interfaceRealization xmi:id="_8675sMbkEeKe6cgNmFsFbw" clientDependency="_8675sMbkEeKe6cgNmFsFbw" client="_3v4KEMbkEeKe6cgNmFsFbw _8675sMbkEeKe6cgNmFsFbw _bfxVAMblEeKe6cgNmFsFbw" supplier="_wqKroMbkEeKe6cgNmFsFbw" contract="_wqKroMbkEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Vm60YMdrEeKe6cgNmFsFbw" clientDependency="_fqmf0MdrEeKe6cgNmFsFbw" name="Domain Specific Editor Output">
+      <interfaceRealization xmi:id="_fqmf0MdrEeKe6cgNmFsFbw" clientDependency="_fqmf0MdrEeKe6cgNmFsFbw" client="_Vm60YMdrEeKe6cgNmFsFbw _fqmf0MdrEeKe6cgNmFsFbw _iAR9wMdrEeKe6cgNmFsFbw" supplier="_Ya2CIMPJEeKpJ4r0h0kRaQ" contract="_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_icS84MbSEeKe6cgNmFsFbw" clientDependency="_tKmSoMbSEeKe6cgNmFsFbw" name="DSA Compiler Output">
+      <interfaceRealization xmi:id="_tKmSoMbSEeKe6cgNmFsFbw" clientDependency="_tKmSoMbSEeKe6cgNmFsFbw" client="_icS84MbSEeKe6cgNmFsFbw _tKmSoMbSEeKe6cgNmFsFbw" supplier="_9kpYkLxxEeK4q7aZ2ZzLTw" contract="_9kpYkLxxEeK4q7aZ2ZzLTw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_lG3-sMbQEeKe6cgNmFsFbw" clientDependency="_vW3AwMbQEeKe6cgNmFsFbw" name="Replay Policy Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_bmLIsMbJEeKe6cgNmFsFbw" clientDependency="_7l2KUMbJEeKe6cgNmFsFbw _Ek5I8MbKEeKe6cgNmFsFbw _cApowMbKEeKe6cgNmFsFbw _4xcPYMbREeKe6cgNmFsFbw" name="Execution Engine Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HBqi0MbJEeKe6cgNmFsFbw" clientDependency="_uwYvQMbTEeKe6cgNmFsFbw _Z4aqwMbnEeKe6cgNmFsFbw" name="Solver Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_IC5WUMbJEeKe6cgNmFsFbw" clientDependency="_Mk8lMMbJEeKe6cgNmFsFbw" name="Solver Output">
+      <interfaceRealization xmi:id="_Mk8lMMbJEeKe6cgNmFsFbw" clientDependency="_Mk8lMMbJEeKe6cgNmFsFbw" client="_IC5WUMbJEeKe6cgNmFsFbw _Mk8lMMbJEeKe6cgNmFsFbw _RgMksMdtEeKe6cgNmFsFbw" supplier="_uOrxYMbIEeKe6cgNmFsFbw" contract="_uOrxYMbIEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_lh6PgMRMEeKpJ4r0h0kRaQ" clientDependency="_sY-N8MRMEeKpJ4r0h0kRaQ _fZOhYMa6EeKe6cgNmFsFbw _0N2vcMbREeKe6cgNmFsFbw _9m_hsMbUEeKe6cgNmFsFbw" name="Execution Engine Output">
+      <interfaceRealization xmi:id="_sY-N8MRMEeKpJ4r0h0kRaQ" client="_lh6PgMRMEeKpJ4r0h0kRaQ _yYWWcMRMEeKpJ4r0h0kRaQ _TJmO4cRhEeKjnL1-ylacNQ" supplier="_Kn45EMRMEeKpJ4r0h0kRaQ" contract="_Kn45EMRMEeKpJ4r0h0kRaQ"/>
+      <interfaceRealization xmi:id="_fZOhYMa6EeKe6cgNmFsFbw" clientDependency="_fZOhYMa6EeKe6cgNmFsFbw" client="_lh6PgMRMEeKpJ4r0h0kRaQ _fZOhYMa6EeKe6cgNmFsFbw _HPSQcMa7EeKe6cgNmFsFbw" supplier="_W0jKkMa6EeKe6cgNmFsFbw" contract="_W0jKkMa6EeKe6cgNmFsFbw"/>
+      <interfaceRealization xmi:id="_0N2vcMbREeKe6cgNmFsFbw" clientDependency="_0N2vcMbREeKe6cgNmFsFbw" client="_lh6PgMRMEeKpJ4r0h0kRaQ _0N2vcMbREeKe6cgNmFsFbw _62srsMbREeKe6cgNmFsFbw" supplier="_7GpBoMbQEeKe6cgNmFsFbw" contract="_7GpBoMbQEeKe6cgNmFsFbw"/>
+      <interfaceRealization xmi:id="_9m_hsMbUEeKe6cgNmFsFbw" clientDependency="_9m_hsMbUEeKe6cgNmFsFbw" client="_lh6PgMRMEeKpJ4r0h0kRaQ _9m_hsMbUEeKe6cgNmFsFbw _GMR8gMbVEeKe6cgNmFsFbw" supplier="_UzXXIMbUEeKe6cgNmFsFbw" contract="_UzXXIMbUEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N7Rf8MRNEeKpJ4r0h0kRaQ" clientDependency="_FrBrkMROEeKpJ4r0h0kRaQ _NvkkQMRjEeKjnL1-ylacNQ _NvlLUMRjEeKjnL1-ylacNQ" name="User Graphical Editor Output">
+      <interfaceRealization xmi:id="_FrBrkMROEeKpJ4r0h0kRaQ" clientDependency="_FrBrkMROEeKpJ4r0h0kRaQ" client="_N7Rf8MRNEeKpJ4r0h0kRaQ _FrBrkMROEeKpJ4r0h0kRaQ" supplier="_AxQgQMROEeKpJ4r0h0kRaQ" contract="_AxQgQMROEeKpJ4r0h0kRaQ"/>
+      <interfaceRealization xmi:id="_NvkkQMRjEeKjnL1-ylacNQ" clientDependency="_NvkkQMRjEeKjnL1-ylacNQ" client="_N7Rf8MRNEeKpJ4r0h0kRaQ _NvkkQMRjEeKjnL1-ylacNQ _i49mkMRoEeKjnL1-ylacNQ" supplier="_5veVAMRMEeKpJ4r0h0kRaQ" contract="_5veVAMRMEeKpJ4r0h0kRaQ"/>
+      <interfaceRealization xmi:id="_NvlLUMRjEeKjnL1-ylacNQ" clientDependency="_NvlLUMRjEeKjnL1-ylacNQ" client="_N7Rf8MRNEeKpJ4r0h0kRaQ _NvlLUMRjEeKjnL1-ylacNQ _icdQwMRoEeKjnL1-ylacNQ" supplier="_dtA6YMRNEeKpJ4r0h0kRaQ" contract="_dtA6YMRNEeKpJ4r0h0kRaQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_h7T_cMRQEeKpJ4r0h0kRaQ" clientDependency="_rVgpAMRQEeKpJ4r0h0kRaQ _rVgpAcRQEeKpJ4r0h0kRaQ" name="Eclipse Debug Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QTDS0MRREeKpJ4r0h0kRaQ" clientDependency="_iiSqcMRREeKpJ4r0h0kRaQ _T-NQwMRjEeKjnL1-ylacNQ _QDnnEMdvEeKe6cgNmFsFbw" name="Sirius Framework Output">
+      <interfaceRealization xmi:id="_iiSqcMRREeKpJ4r0h0kRaQ" clientDependency="_iiSqcMRREeKpJ4r0h0kRaQ" client="_QTDS0MRREeKpJ4r0h0kRaQ _iiSqcMRREeKpJ4r0h0kRaQ"/>
+      <interfaceRealization xmi:id="_T-NQwMRjEeKjnL1-ylacNQ" clientDependency="_T-NQwMRjEeKjnL1-ylacNQ" client="_QTDS0MRREeKpJ4r0h0kRaQ _T-NQwMRjEeKjnL1-ylacNQ" supplier="_QqjHoMRjEeKjnL1-ylacNQ" contract="_QqjHoMRjEeKjnL1-ylacNQ"/>
+      <interfaceRealization xmi:id="_QDnnEMdvEeKe6cgNmFsFbw" clientDependency="_QDnnEMdvEeKe6cgNmFsFbw" client="_QTDS0MRREeKpJ4r0h0kRaQ _QDnnEMdvEeKe6cgNmFsFbw" supplier="_7tch8MbbEeKe6cgNmFsFbw" contract="_7tch8MbbEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hIgXkMRSEeKpJ4r0h0kRaQ" clientDependency="_nZxhUMRSEeKpJ4r0h0kRaQ _nZyIYMRSEeKpJ4r0h0kRaQ" name="User Graphical Editor Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_J7bXgMRTEeKpJ4r0h0kRaQ" clientDependency="_U1JTEMRTEeKpJ4r0h0kRaQ _U1JTEcRTEeKpJ4r0h0kRaQ _U1J6IMRTEeKpJ4r0h0kRaQ _yovZUMaxEeKe6cgNmFsFbw" name="Sirius Framework Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ODeNIMRiEeKjnL1-ylacNQ" clientDependency="_Zk96YMRiEeKjnL1-ylacNQ" name="Sirius Animator Framework Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QbplcMRiEeKjnL1-ylacNQ" clientDependency="_03pEkMRmEeKjnL1-ylacNQ" name="Sirius Animator Framework Output">
+      <interfaceRealization xmi:id="_03pEkMRmEeKjnL1-ylacNQ" clientDependency="_03pEkMRmEeKjnL1-ylacNQ" client="_QbplcMRiEeKjnL1-ylacNQ _03pEkMRmEeKjnL1-ylacNQ _JRyNgMRnEeKjnL1-ylacNQ _md3wMMa3EeKe6cgNmFsFbw" supplier="_QqjHoMRjEeKjnL1-ylacNQ" contract="_QqjHoMRjEeKjnL1-ylacNQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_kOMj4MbIEeKe6cgNmFsFbw" clientDependency="_y5JVYMbIEeKe6cgNmFsFbw" name="Policy Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_lrqAYMbIEeKe6cgNmFsFbw" clientDependency="_4sRKkMbIEeKe6cgNmFsFbw" name="Policy Output">
+      <interfaceRealization xmi:id="_4sRKkMbIEeKe6cgNmFsFbw" clientDependency="_4sRKkMbIEeKe6cgNmFsFbw" client="_lrqAYMbIEeKe6cgNmFsFbw _4sRKkMbIEeKe6cgNmFsFbw _9BOjMMbJEeKe6cgNmFsFbw" supplier="_1WTUUMbIEeKe6cgNmFsFbw" contract="_1WTUUMbIEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_uco3MMavEeKe6cgNmFsFbw" clientDependency="_3EMi4MavEeKe6cgNmFsFbw" name="EMF Gen Model Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_vxyFMMavEeKe6cgNmFsFbw" clientDependency="_JzhTUMaxEeKe6cgNmFsFbw" name="EMF Gen Model Output">
+      <interfaceRealization xmi:id="_JzhTUMaxEeKe6cgNmFsFbw" clientDependency="_JzhTUMaxEeKe6cgNmFsFbw" client="_vxyFMMavEeKe6cgNmFsFbw _JzhTUMaxEeKe6cgNmFsFbw _YE35EMaxEeKe6cgNmFsFbw" supplier="_Fw1hAMaxEeKe6cgNmFsFbw" contract="_Fw1hAMaxEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_wpbYgManEeKe6cgNmFsFbw" clientDependency="_58rskManEeKe6cgNmFsFbw" name="EMF Tree Editor Generator Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_y3ytgManEeKe6cgNmFsFbw" clientDependency="_-QYWYManEeKe6cgNmFsFbw" name="EMF Tree Editor Generator Output">
+      <interfaceRealization xmi:id="_-QYWYManEeKe6cgNmFsFbw" clientDependency="_-QYWYManEeKe6cgNmFsFbw" client="_y3ytgManEeKe6cgNmFsFbw _-QYWYManEeKe6cgNmFsFbw" supplier="_wKxKMLxtEeK4q7aZ2ZzLTw" contract="_wKxKMLxtEeK4q7aZ2ZzLTw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_D9YVcMaoEeKe6cgNmFsFbw" clientDependency="_PXYTkMaoEeKe6cgNmFsFbw _D-3CsMbVEeKe6cgNmFsFbw" name="Timesquare Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_FL9ocMaoEeKe6cgNmFsFbw" clientDependency="_CBnwYMbJEeKe6cgNmFsFbw" name="Timesquare Output">
+      <interfaceRealization xmi:id="_CBnwYMbJEeKe6cgNmFsFbw" clientDependency="_CBnwYMbJEeKe6cgNmFsFbw" client="_FL9ocMaoEeKe6cgNmFsFbw _CBnwYMbJEeKe6cgNmFsFbw" supplier="_uOrxYMbIEeKe6cgNmFsFbw" contract="_uOrxYMbIEeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gBwJsMapEeKe6cgNmFsFbw" clientDependency="_3axekMapEeKe6cgNmFsFbw _4R9RgMbmEeKe6cgNmFsFbw" name="User Model To Execution Model Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_h6cwsMapEeKe6cgNmFsFbw" clientDependency="_nrErgMapEeKe6cgNmFsFbw" name="User Model To Execution Model Output">
+      <interfaceRealization xmi:id="_nrErgMapEeKe6cgNmFsFbw" clientDependency="_nrErgMapEeKe6cgNmFsFbw" client="_h6cwsMapEeKe6cgNmFsFbw _nrErgMapEeKe6cgNmFsFbw" supplier="_Bg4SsLx0EeK4q7aZ2ZzLTw" contract="_Bg4SsLx0EeK4q7aZ2ZzLTw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_8ZA6MMapEeKe6cgNmFsFbw" clientDependency="_KsiqMMaqEeKe6cgNmFsFbw" name="ECL Engine Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9i7voMapEeKe6cgNmFsFbw" clientDependency="_E8NDQMaqEeKe6cgNmFsFbw" name="ECL Engine Output">
+      <interfaceRealization xmi:id="_E8NDQMaqEeKe6cgNmFsFbw" clientDependency="_E8NDQMaqEeKe6cgNmFsFbw" client="_9i7voMapEeKe6cgNmFsFbw _E8NDQMaqEeKe6cgNmFsFbw" supplier="_tPrqYLxzEeK4q7aZ2ZzLTw" contract="_tPrqYLxzEeK4q7aZ2ZzLTw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_71Jz0MRnEeKjnL1-ylacNQ" clientDependency="_JgvaEMRoEeKjnL1-ylacNQ _JgwoMMRoEeKjnL1-ylacNQ" name="User Graphical Animator Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_91GSUMRnEeKjnL1-ylacNQ" clientDependency="_Tb-7MMRoEeKjnL1-ylacNQ _TcAJUMRoEeKjnL1-ylacNQ" name="User Graphical Animator Output">
+      <interfaceRealization xmi:id="_Tb-7MMRoEeKjnL1-ylacNQ" clientDependency="_Tb-7MMRoEeKjnL1-ylacNQ" client="_91GSUMRnEeKjnL1-ylacNQ _Tb-7MMRoEeKjnL1-ylacNQ _TkGf8MRpEeKjnL1-ylacNQ" supplier="_5veVAMRMEeKpJ4r0h0kRaQ" contract="_5veVAMRMEeKpJ4r0h0kRaQ"/>
+      <interfaceRealization xmi:id="_TcAJUMRoEeKjnL1-ylacNQ" clientDependency="_TcAJUMRoEeKjnL1-ylacNQ" client="_91GSUMRnEeKjnL1-ylacNQ _TcAJUMRoEeKjnL1-ylacNQ _TEpj0MRpEeKjnL1-ylacNQ" supplier="_dtA6YMRNEeKpJ4r0h0kRaQ" contract="_dtA6YMRNEeKpJ4r0h0kRaQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_3boYYMRzEeKz2JnhKFEG5Q" clientDependency="_GNbYwMR0EeKz2JnhKFEG5Q _tZQtoMa6EeKe6cgNmFsFbw" name="Trace Player Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5LPU0MRzEeKz2JnhKFEG5Q" clientDependency="_C7DCAMR0EeKz2JnhKFEG5Q _GUJd4Ma7EeKe6cgNmFsFbw" name="Trace Player Output">
+      <interfaceRealization xmi:id="_C7DCAMR0EeKz2JnhKFEG5Q" clientDependency="_C7DCAMR0EeKz2JnhKFEG5Q" client="_5LPU0MRzEeKz2JnhKFEG5Q _C7DCAMR0EeKz2JnhKFEG5Q" supplier="_Kn45EMRMEeKpJ4r0h0kRaQ" contract="_Kn45EMRMEeKpJ4r0h0kRaQ"/>
+      <interfaceRealization xmi:id="_GUJd4Ma7EeKe6cgNmFsFbw" clientDependency="_GUJd4Ma7EeKe6cgNmFsFbw" client="_5LPU0MRzEeKz2JnhKFEG5Q _GUJd4Ma7EeKe6cgNmFsFbw _HPSQcMa7EeKe6cgNmFsFbw" supplier="_W0jKkMa6EeKe6cgNmFsFbw" contract="_W0jKkMa6EeKe6cgNmFsFbw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_VlROoManEeKe6cgNmFsFbw" clientDependency="_h4t9QManEeKe6cgNmFsFbw _h4t9QcanEeKe6cgNmFsFbw" name="Xtext Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XGE6EManEeKe6cgNmFsFbw" clientDependency="_rhnxMManEeKe6cgNmFsFbw" name="Xtext Output">
+      <interfaceRealization xmi:id="_rhnxMManEeKe6cgNmFsFbw" clientDependency="_rhnxMManEeKe6cgNmFsFbw" client="_XGE6EManEeKe6cgNmFsFbw _rhnxMManEeKe6cgNmFsFbw" supplier="_itdbELxuEeK4q7aZ2ZzLTw" contract="_itdbELxuEeK4q7aZ2ZzLTw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PiSFsMedEeKpyLjJ3hOE5w" clientDependency="_cjeEEMedEeKpyLjJ3hOE5w" name="CCSL Library editor Output">
+      <interfaceRealization xmi:id="_cjeEEMedEeKpyLjJ3hOE5w" clientDependency="_cjeEEMedEeKpyLjJ3hOE5w" client="_PiSFsMedEeKpyLjJ3hOE5w _cjeEEMedEeKpyLjJ3hOE5w" supplier="_Bg4SsLx0EeK4q7aZ2ZzLTw" contract="_Bg4SsLx0EeK4q7aZ2ZzLTw"/>
+    </packagedElement>
   </packagedElement>
 </uml:Model>
