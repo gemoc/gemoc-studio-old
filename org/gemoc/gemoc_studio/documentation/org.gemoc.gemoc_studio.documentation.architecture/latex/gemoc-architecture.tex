@@ -1,0 +1,1157 @@
+\documentclass{gemoc} %% no option needed, default is : 10pt, twoside, babel[ english] , graphicx
+\usepackage{color}
+
+\task{4.1.1}
+\title{Gemoc Architectural description}
+\docnumber{D4.1.1}
+\version{1.0}
+
+\companycopyright{Consortium GEMOC}  %% Appear in the foot page
+
+\begin{document}
+\maketitle
+
+%Start of user code revisions
+\begin{revisions}
+	\begin{revtable}
+		\dates{}{}{}{}{}
+		\writers{}{}{}{}{}
+		\approvers{}{}{}{}{}
+	\end{revtable}
+	\begin{revisionlabels}
+		\revlabel{}
+	\end{revisionlabels}
+\end{revisions}
+%End of user code
+
+%Start of user code tableofauthors
+\begin{tableofauthors}
+	\leadauthor{Didier Vojtisek}{INRIA}
+	\contributor{$<$Name$>$}{$<$Organisation$>$}
+\end{tableofauthors}
+%End of user code
+
+\tableofcontents
+\newpage
+
+\chapter{Introduction}
+%Start of user code Introduction
+
+%End of user code 
+
+\section{Purpose}
+%Start of user code IntroductionPurpose
+This document presents the architectural design of the Gemoc Studio. We focus on 
+the description of  Compoments and Metamodels integrated in the Gemoc Studio.
+%End of user code
+
+\section{Perimeter}
+%Start of user code IntroductionPerimeter
+
+%End of user code
+
+\section{Definitions, Acronyms and Abbreviations}
+%Start of user code IntroductionDefinitions
+\begin{itemize}
+	\item \textbf{Architecture}  : fundamental conception of a system in its environment
+ embodied in its elements, their relationships between each other and to its 
+environment, and the principles guiding its design and evolution
+\end{itemize}
+%End of user code
+
+\section{References}
+%Start of user code IntroductionReferences
+
+%End of user code
+
+\section{Summary}
+%Start of user code IntroductionSummary
+
+%End of user code
+ 
+\chapter{Architecture}
+%Start of user code Architecture
+
+%End of user code
+
+\section{Introduction}
+%Start of user code ArchitectureIntroduction
+
+%End of user code
+
+\section{Exchanges}
+%Start of user code ArchitectureExchanges
+
+%End of user code
+
+\section{Components}
+%Start of user code ArchitectureComponents
+
+%End of user code
+\subsection{Ecore Editor}
+%Start of user code Ecore Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Ecore EditorDescription
+
+%End of user code 
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_output_Description for Ecore Editor
+%End of user code 
+\end{itemize}
+
+\subsection{EMF Tree Editor Generator}
+%Start of user code EMF Tree Editor Generator
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code EMF Tree Editor GeneratorDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for EMF Tree Editor Generator
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Tree Editor} :
+%Start of user code Domain Specific Tree Editor_output_Description for EMF Tree Editor Generator
+%End of user code 
+\end{itemize}
+
+\subsection{Xtext}
+%Start of user code Xtext
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code XtextDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Xtext Grammar} :
+%Start of user code Xtext Grammar_input_Description for Xtext
+%End of user code 
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for Xtext
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Text Editor} :
+%Start of user code Domain Text Editor_output_Description for Xtext
+%End of user code 
+\end{itemize}
+
+\subsection{Timesquare DSA/MOCC Map Editor}
+%Start of user code Timesquare DSA/MOCC Map Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Timesquare DSA/MOCC Map EditorDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Kermeta Model} :
+%Start of user code Kermeta Model_input_Description for Timesquare DSA/MOCC Map Editor
+%End of user code 
+  \item \textbf{MOCC Model} :
+%Start of user code MOCC Model_input_Description for Timesquare DSA/MOCC Map Editor
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{ECL Model} :
+%Start of user code ECL Model_output_Description for Timesquare DSA/MOCC Map Editor
+%End of user code 
+\end{itemize}
+
+\subsection{ECL Editor}
+%Start of user code ECL Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code ECL EditorDescription
+
+%End of user code 
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{ECL Model} :
+%Start of user code ECL Model_output_Description for ECL Editor
+%End of user code 
+\end{itemize}
+
+\subsection{Kermeta Compiler}
+%Start of user code Kermeta Compiler
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Kermeta CompilerDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Kermeta Model} :
+%Start of user code Kermeta Model_input_Description for Kermeta Compiler
+%End of user code 
+  \item \textbf{Domain Specific Metamodel Byte Code} :
+%Start of user code Domain Specific Metamodel Byte Code_input_Description for Kermeta Compiler
+%End of user code 
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for Kermeta Compiler
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel Byte Code Extension} :
+%Start of user code Domain Specific Metamodel Byte Code Extension_output_Description for Kermeta Compiler
+%End of user code 
+\end{itemize}
+
+\subsection{Timesquare Solver}
+%Start of user code Timesquare Solver
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Timesquare SolverDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Trigger Event Request} :
+%Start of user code Trigger Event Request_input_Description for Timesquare Solver
+%End of user code 
+  \item \textbf{CCSL Model} :
+%Start of user code CCSL Model_input_Description for Timesquare Solver
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Vector Model} :
+%Start of user code Domain Specific Event Vector Model_output_Description for Timesquare Solver
+%End of user code 
+\end{itemize}
+
+\subsection{Trace Editor}
+%Start of user code Trace Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Trace EditorDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Trace Model} :
+%Start of user code Trace Model_input_Description for Trace Editor
+%End of user code 
+\end{itemize}
+
+
+\subsection{User Animation Viewer}
+%Start of user code User Animation Viewer
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code User Animation ViewerDescription
+
+%End of user code 
+
+
+\subsection{Gemoc Process assistant}
+%Start of user code Gemoc Process assistant
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Gemoc Process assistantDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Gemoc Project State Model} :
+%Start of user code Gemoc Project State Model_input_Description for Gemoc Process assistant
+%End of user code 
+\end{itemize}
+
+
+\subsection{ModhelX}
+%Start of user code ModhelX
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code ModhelXDescription
+
+%End of user code 
+
+
+\subsection{NEMO}
+%Start of user code NEMO
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code NEMODescription
+
+%End of user code 
+
+
+\subsection{CEP Engine}
+%Start of user code CEP Engine
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code CEP EngineDescription
+
+%End of user code 
+
+
+\subsection{Timesquare MOCC To Execution Model}
+%Start of user code Timesquare MOCC To Execution Model
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Timesquare MOCC To Execution ModelDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_input_Description for Timesquare MOCC To Execution Model
+%End of user code 
+  \item \textbf{ECL Model} :
+%Start of user code ECL Model_input_Description for Timesquare MOCC To Execution Model
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{CCSL Model} :
+%Start of user code CCSL Model_output_Description for Timesquare MOCC To Execution Model
+%End of user code 
+\end{itemize}
+
+\subsection{Execution Engine}
+%Start of user code Execution Engine
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Execution EngineDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Execution Model} :
+%Start of user code Execution Model_input_Description for Execution Engine
+%End of user code 
+  \item \textbf{Domain Specific Event Model} :
+%Start of user code Domain Specific Event Model_input_Description for Execution Engine
+%End of user code 
+  \item \textbf{Domain Specific Metamodel Byte Code} :
+%Start of user code Domain Specific Metamodel Byte Code_input_Description for Execution Engine
+%End of user code 
+  \item \textbf{Domain Specific Event Vector Model} :
+%Start of user code Domain Specific Event Vector Model_input_Description for Execution Engine
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Execution Model} :
+%Start of user code Execution Model_output_Description for Execution Engine
+%End of user code 
+  \item \textbf{Trigger Event Request} :
+%Start of user code Trigger Event Request_output_Description for Execution Engine
+%End of user code 
+  \item \textbf{Trace Model} :
+%Start of user code Trace Model_output_Description for Execution Engine
+%End of user code 
+  \item \textbf{Runtime Controller} :
+%Start of user code Runtime Controller_output_Description for Execution Engine
+%End of user code 
+\end{itemize}
+
+\subsection{Eclipse Debug}
+%Start of user code Eclipse Debug
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Eclipse DebugDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Launch Utilities} :
+%Start of user code Launch Utilities_input_Description for Eclipse Debug
+%End of user code 
+  \item \textbf{Debug User Interface} :
+%Start of user code Debug User Interface_input_Description for Eclipse Debug
+%End of user code 
+\end{itemize}
+
+
+\subsection{Kermeta Editor}
+%Start of user code Kermeta Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Kermeta EditorDescription
+
+%End of user code 
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Kermeta Model} :
+%Start of user code Kermeta Model_output_Description for Kermeta Editor
+%End of user code 
+\end{itemize}
+
+\subsection{EMF Gen Model}
+%Start of user code EMF Gen Model
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code EMF Gen ModelDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for EMF Gen Model
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel Byte Code} :
+%Start of user code Domain Specific Metamodel Byte Code_output_Description for EMF Gen Model
+%End of user code 
+\end{itemize}
+
+\subsection{Sirius Framework}
+%Start of user code Sirius Framework
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Sirius FrameworkDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel Byte Code} :
+%Start of user code Domain Specific Metamodel Byte Code_input_Description for Sirius Framework
+%End of user code 
+  \item \textbf{Domain Specific Representation Definition Extension Model} :
+%Start of user code Domain Specific Representation Definition Extension Model_input_Description for Sirius Framework
+%End of user code 
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for Sirius Framework
+%End of user code 
+  \item \textbf{Domain Specific  Representation Definition Model} :
+%Start of user code Domain Specific  Representation Definition Model_input_Description for Sirius Framework
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Graphical Animator} :
+%Start of user code Domain Specific Graphical Animator_output_Description for Sirius Framework
+%End of user code 
+  \item \textbf{Domain Specific Graphical Animated Editor} :
+%Start of user code Domain Specific Graphical Animated Editor_output_Description for Sirius Framework
+%End of user code 
+\end{itemize}
+
+\subsection{Sirius Animator Framework}
+%Start of user code Sirius Animator Framework
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Sirius Animator FrameworkDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Representation Definition Extension Model} :
+%Start of user code Domain Specific Representation Definition Extension Model_input_Description for Sirius Animator Framework
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Graphical Animator} :
+%Start of user code Domain Specific Graphical Animator_output_Description for Sirius Animator Framework
+%End of user code 
+\end{itemize}
+
+\subsection{Random Policy}
+%Start of user code Random Policy
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Random PolicyDescription
+
+%End of user code 
+
+
+\subsection{Scenario Policy}
+%Start of user code Scenario Policy
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Scenario PolicyDescription
+
+%End of user code 
+
+
+\subsection{Replay Policy}
+%Start of user code Replay Policy
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Replay PolicyDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Trace Model} :
+%Start of user code Trace Model_input_Description for Replay Policy
+%End of user code 
+\end{itemize}
+
+
+\subsection{Policy}
+%Start of user code Policy
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code PolicyDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Vector Model} :
+%Start of user code Domain Specific Event Vector Model_input_Description for Policy
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Model} :
+%Start of user code Domain Specific Event Model_output_Description for Policy
+%End of user code 
+\end{itemize}
+
+\subsection{Interactive Policy}
+%Start of user code Interactive Policy
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Interactive PolicyDescription
+
+%End of user code 
+
+
+\subsection{Solver}
+%Start of user code Solver
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code SolverDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Model} :
+%Start of user code Domain Specific Event Model_input_Description for Solver
+%End of user code 
+  \item \textbf{Concurrency Execution Model} :
+%Start of user code Concurrency Execution Model_input_Description for Solver
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Vector Model} :
+%Start of user code Domain Specific Event Vector Model_output_Description for Solver
+%End of user code 
+\end{itemize}
+
+\subsection{DSA Compiler}
+%Start of user code DSA Compiler
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code DSA CompilerDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{DSA Model} :
+%Start of user code DSA Model_input_Description for DSA Compiler
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel Byte Code Extension} :
+%Start of user code Domain Specific Metamodel Byte Code Extension_output_Description for DSA Compiler
+%End of user code 
+\end{itemize}
+
+\subsection{Sirius Editor}
+%Start of user code Sirius Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Sirius EditorDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for Sirius Editor
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Representation Definition Extension Model} :
+%Start of user code Domain Specific Representation Definition Extension Model_output_Description for Sirius Editor
+%End of user code 
+  \item \textbf{Domain Specific  Representation Definition Model} :
+%Start of user code Domain Specific  Representation Definition Model_output_Description for Sirius Editor
+%End of user code 
+\end{itemize}
+
+\subsection{Executable Modeling Tools}
+%Start of user code Executable Modeling Tools
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Executable Modeling ToolsDescription
+
+%End of user code 
+
+
+\subsection{Execution Engine for Heterogeneous Models}
+%Start of user code Execution Engine for Heterogeneous Models
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Execution Engine for Heterogeneous ModelsDescription
+
+%End of user code 
+
+
+\subsection{Language Definition Tools}
+%Start of user code Language Definition Tools
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Language Definition ToolsDescription
+
+%End of user code 
+
+
+\subsection{Eclipse Modeling}
+%Start of user code Eclipse Modeling
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Eclipse ModelingDescription
+
+%End of user code 
+
+
+\subsection{Eclipse}
+%Start of user code Eclipse
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code EclipseDescription
+
+%End of user code 
+
+
+\subsection{Reflexive Model Animators}
+%Start of user code Reflexive Model Animators
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Reflexive Model AnimatorsDescription
+
+%End of user code 
+
+
+\subsection{MOCC Editor}
+%Start of user code MOCC Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code MOCC EditorDescription
+
+%End of user code 
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{MOCC Model} :
+%Start of user code MOCC Model_output_Description for MOCC Editor
+%End of user code 
+\end{itemize}
+
+\subsection{DSA Editor}
+%Start of user code DSA Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code DSA EditorDescription
+
+%End of user code 
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{DSA Model} :
+%Start of user code DSA Model_output_Description for DSA Editor
+%End of user code 
+\end{itemize}
+
+\subsection{AS Editor}
+%Start of user code AS Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code AS EditorDescription
+
+%End of user code 
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_output_Description for AS Editor
+%End of user code 
+\end{itemize}
+
+\subsection{CCSL Library Editor}
+%Start of user code CCSL Library Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code CCSL Library EditorDescription
+
+%End of user code 
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{CCSL Model} :
+%Start of user code CCSL Model_output_Description for CCSL Library Editor
+%End of user code 
+\end{itemize}
+
+\subsection{DSA/MOCC Map Editor}
+%Start of user code DSA/MOCC Map Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code DSA/MOCC Map EditorDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{DSA Model} :
+%Start of user code DSA Model_input_Description for DSA/MOCC Map Editor
+%End of user code 
+  \item \textbf{MOCC Model} :
+%Start of user code MOCC Model_input_Description for DSA/MOCC Map Editor
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{DSE Model} :
+%Start of user code DSE Model_output_Description for DSA/MOCC Map Editor
+%End of user code 
+\end{itemize}
+
+\subsection{Language Composition tools}
+%Start of user code Language Composition tools
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Language Composition toolsDescription
+
+%End of user code 
+
+
+\subsection{Composition Operator Editor}
+%Start of user code Composition Operator Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Composition Operator EditorDescription
+
+%End of user code 
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{OperatorDefinition Model} :
+%Start of user code OperatorDefinition Model_output_Description for Composition Operator Editor
+%End of user code 
+\end{itemize}
+
+\subsection{Composition Operator Applicator}
+%Start of user code Composition Operator Applicator
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Composition Operator ApplicatorDescription
+
+%End of user code 
+
+
+\subsection{Scheduling Compiler}
+%Start of user code Scheduling Compiler
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Scheduling CompilerDescription
+
+%End of user code 
+
+
+\section{Domain Specific Components}
+%Start of user code DomainSpecificComponents
+
+%End of user code
+\subsection{Domain Specific Tree Editor}
+%Start of user code Domain Specific Tree Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Domain Specific Tree EditorDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for Domain Specific Tree Editor
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_output_Description for Domain Specific Tree Editor
+%End of user code 
+\end{itemize}
+
+\subsection{Domain Specific Graphical Animated Editor}
+%Start of user code Domain Specific Graphical Animated Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Domain Specific Graphical Animated EditorDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_input_Description for Domain Specific Graphical Animated Editor
+%End of user code 
+  \item \textbf{Runtime Controller} :
+%Start of user code Runtime Controller_input_Description for Domain Specific Graphical Animated Editor
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Launch Utilities} :
+%Start of user code Launch Utilities_output_Description for Domain Specific Graphical Animated Editor
+%End of user code 
+  \item \textbf{Debug User Interface} :
+%Start of user code Debug User Interface_output_Description for Domain Specific Graphical Animated Editor
+%End of user code 
+  \item \textbf{Modeling Project} :
+%Start of user code Modeling Project_output_Description for Domain Specific Graphical Animated Editor
+%End of user code 
+\end{itemize}
+
+\subsection{Domain Specific Graphical Animator}
+%Start of user code Domain Specific Graphical Animator
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Domain Specific Graphical AnimatorDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_input_Description for Domain Specific Graphical Animator
+%End of user code 
+  \item \textbf{Runtime Controller} :
+%Start of user code Runtime Controller_input_Description for Domain Specific Graphical Animator
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Launch Utilities} :
+%Start of user code Launch Utilities_output_Description for Domain Specific Graphical Animator
+%End of user code 
+  \item \textbf{Debug User Interface} :
+%Start of user code Debug User Interface_output_Description for Domain Specific Graphical Animator
+%End of user code 
+\end{itemize}
+
+\subsection{Domain Specific Text Editor}
+%Start of user code Domain Specific Text Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Domain Specific Text EditorDescription
+
+%End of user code 
+
+
+\subsection{Domain Specific Metamodel Byte Code}
+%Start of user code Domain Specific Metamodel Byte Code
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Domain Specific Metamodel Byte CodeDescription
+
+%End of user code 
+
+
+\subsection{Domain Specific Metamodel Byte Code Extension}
+%Start of user code Domain Specific Metamodel Byte Code Extension
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Domain Specific Metamodel Byte Code ExtensionDescription
+
+%End of user code 
+
+
+\subsection{Domain Specific Editor}
+%Start of user code Domain Specific Editor
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Domain Specific EditorDescription
+
+%End of user code 
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_output_Description for Domain Specific Editor
+%End of user code 
+\end{itemize}
+
+\subsection{Domain Specific Graphical Animator}
+%Start of user code Domain Specific Graphical Animator
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Domain Specific Graphical AnimatorDescription
+
+%End of user code 
+
+
+\subsection{Domain Specific MOCC To Execution Model}
+%Start of user code Domain Specific MOCC To Execution Model
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Domain Specific MOCC To Execution ModelDescription
+
+%End of user code 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{DSE Model} :
+%Start of user code DSE Model_input_Description for Domain Specific MOCC To Execution Model
+%End of user code 
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_input_Description for Domain Specific MOCC To Execution Model
+%End of user code 
+\end{itemize}
+
+This component port requires the following outputs:
+\begin{itemize}
+  \item \textbf{Concurrency Execution Model} :
+%Start of user code Concurrency Execution Model_output_Description for Domain Specific MOCC To Execution Model
+%End of user code 
+\end{itemize}
+
+\section{Metamodels}
+\subsection{Kermeta Model}
+%Start of user code Kermeta Model_interface
+
+%End of user code
+
+\subsection{Domain Specific Model}
+%Start of user code Domain Specific Model_interface
+
+%End of user code
+
+\subsection{Ecore Model}
+%Start of user code Ecore Model_interface
+
+%End of user code
+
+\subsection{Domain Specific Event Model}
+%Start of user code Domain Specific Event Model_interface
+
+%End of user code
+
+\subsection{Trace Model}
+%Start of user code Trace Model_interface
+
+%End of user code
+
+\subsection{Domain Specific Metamodel}
+%Start of user code Domain Specific Metamodel_interface
+
+%End of user code
+
+\subsection{DSA Model}
+%Start of user code DSA Model_interface
+
+%End of user code
+
+\subsection{Scenario Model}
+%Start of user code Scenario Model_interface
+
+%End of user code
+
+\subsection{OperatorDefinition Model}
+%Start of user code OperatorDefinition Model_interface
+
+%End of user code
+
+\subsection{GemocLanguage Model}
+%Start of user code GemocLanguage Model_interface
+
+%End of user code
+
+\subsection{Gemoc Project State Model}
+%Start of user code Gemoc Project State Model_interface
+
+%End of user code
+
+\subsection{Domain Specific Event Vector Model}
+%Start of user code Domain Specific Event Vector Model_interface
+
+%End of user code
+
+\subsection{DSE Model}
+%Start of user code DSE Model_interface
+
+%End of user code
+
+\subsection{Execution Model}
+%Start of user code Execution Model_interface
+
+%End of user code
+
+\subsection{Domain Specific Representation Definition Extension Model}
+%Start of user code Domain Specific Representation Definition Extension Model_interface
+
+%End of user code
+
+\subsection{ECL Model}
+%Start of user code ECL Model_interface
+
+%End of user code
+
+\subsection{Concurrency Execution Model}
+%Start of user code Concurrency Execution Model_interface
+
+%End of user code
+
+\subsection{Domain Specific  Representation Definition Model}
+%Start of user code Domain Specific  Representation Definition Model_interface
+
+%End of user code
+
+\subsection{MOCC Model}
+%Start of user code MOCC Model_interface
+
+%End of user code
+
+\subsection{CCSL Model}
+%Start of user code CCSL Model_interface
+
+%End of user code
+
+
+\chapter{Component integration process}
+%Start of user code Component integration process
+
+%End of user code
+\end{document}

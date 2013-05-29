@@ -95,7 +95,14 @@ environment, and the principles guiding its design and evolution
 %[protected ('ArchitectureComponents')]
 
 %[/protected]
-[for (comp : Component | aLogicalArchitecture.eAllContents(Component))]
+[for (comp : Component | aLogicalArchitecture.eAllContents(Component)->select(c | not c.name.startsWith('Domain Specific ')))]
+[comp.generate()/]
+[/for]
+\section{Domain Specific Components}
+%[protected ('DomainSpecificComponents')]
+
+%[/protected]
+[for (comp : Component | aLogicalArchitecture.eAllContents(Component)->select(c | c.name.startsWith('Domain Specific ')))]
 [comp.generate()/]
 [/for]
 \section{Metamodels}
@@ -127,7 +134,7 @@ This component port requires the following inputs:
 \begin{itemize}
 [for (interface : Interface | port.required)]  
   \item \textbf{[interface.name/]} :
-%[protected (interface.name+'Description')]
+%[protected (interface.name+'_input_Description for '+component.name)]
 %[/protected] 
 [/for]
 \end{itemize}
@@ -140,7 +147,7 @@ This component port requires the following outputs:
 \begin{itemize}
 [for (interface : Interface | port.provided)]  
   \item \textbf{[interface.name/]} :
-%[protected (interface.name+'Description')]
+%[protected (interface.name+'_output_Description for '+component.name)]
 %[/protected] 
 [/for]
 \end{itemize}
@@ -150,7 +157,7 @@ This component port requires the following outputs:
 
 [template public generate(interface : Interface)]
 \subsection{[interface.name/]}
-%[protected (interface.name)]
+%[protected (interface.name+'_interface')]
 
 %[/protected]
 
