@@ -43,6 +43,8 @@
 
    <features>
       <feature id="org.gemoc.gemoc_studio.branding.feature"/>
+      <feature id="fr.obeo.dsl.feature.designer.architect"/>
+      <feature id="org.obeonetwork.dsl.feature.uml2"/>
       <feature id="org.eclipse.team.svn.mylyn"/>
       <feature id="org.eclipse.team.svn.resource.ignore.rules.jdt"/>
       <feature id="org.eclipse.team.svn"/>
@@ -64,6 +66,9 @@
       <feature id="org.eclipse.mylyn.monitor"/>
       <feature id="org.eclipse.mylyn.team_feature"/>
       <feature id="org.eclipse.mylyn_feature"/>
+      <feature id="org.scala-ide.sdt.feature"/>
+	  <feature id="org.scala-ide.sdt.dev.feature"/>
+	  <feature id="org.scala-ide.sdt.source.feature"/>
    </features>
 
    <configurations>
