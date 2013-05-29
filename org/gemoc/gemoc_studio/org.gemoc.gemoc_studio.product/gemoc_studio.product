@@ -3,6 +3,13 @@
 
 <product name="Gemoc studio" uid="gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
+   <aboutInfo>
+      <image path="/images/icons/GeMoC_48x48x32.bmp"/>
+      <text>
+         Gemoc Studio
+      </text>
+   </aboutInfo>
+
    <configIni use="default">
    </configIni>
 
@@ -15,7 +22,7 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/images/icons/GeMoC_16x16x32.bmp" i32="/images/icons/GeMoC_32x32x32.bmp" i48="/images/icons/GeMoC_48x48x32.bmp"/>
 
 
    <launcher>
@@ -33,6 +40,7 @@
             winExtraLargeHigh="/images/icons/GeMoC_256x256x32.bmp"/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -66,8 +74,8 @@
       <feature id="org.eclipse.mylyn.team_feature"/>
       <feature id="org.eclipse.mylyn_feature"/>
       <feature id="org.scala-ide.sdt.feature"/>
-	  <feature id="org.scala-ide.sdt.dev.feature"/>
-	  <feature id="org.scala-ide.sdt.source.feature"/>
+      <feature id="org.scala-ide.sdt.dev.feature"/>
+      <feature id="org.scala-ide.sdt.source.feature"/>
    </features>
 
    <configurations>
