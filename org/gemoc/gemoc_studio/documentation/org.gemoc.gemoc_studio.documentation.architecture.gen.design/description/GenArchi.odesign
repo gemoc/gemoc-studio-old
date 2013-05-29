@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" name="GenArchi" version="6.5.0.201210011230">
+  <ownedViewpoints name="GenArchi" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="GenComponentDiagram" titleExpression="Generated_&lt;%name.trim()%>" initialisation="true" domainClass="uml.Component">
+      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="Component" semanticCandidatesExpression="&lt;%self%>" domainClass="uml.Component">
+          <borderedNodeMappings name="Input" semanticCandidatesExpression="[ownedPort->select(name = 'in')->collect(required)/]" domainClass="uml.Interface">
+            <style xsi:type="style:SquareDescription" labelSize="6" showIcon="false" sizeComputationExpression="1" width="1" height="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="Output" semanticCandidatesExpression="[ownedPort->select(name = 'out')->collect(provided)/]" domainClass="uml.Interface">
+            <style xsi:type="style:SquareDescription" labelSize="6" showIcon="false" sizeComputationExpression="1" width="1" height="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelFormat="bold" showIcon="false" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
