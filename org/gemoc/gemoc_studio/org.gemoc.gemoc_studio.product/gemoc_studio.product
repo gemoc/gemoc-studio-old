@@ -19,19 +19,18 @@
 
 
    <launcher>
-      <linux icon="/org.gemoc.gemoc_studio.product/images/icons/GeMoC.xpm"/>
-      <macosx icon="/org.gemoc.gemoc_studio.product/images/icons/GeMoC.icns"/>
+      <linux icon="/images/icons/GeMoC.xpm"/>
+      <macosx icon="/images/icons/GeMoC.icns"/>
       <solaris/>
       <win useIco="false">
-         <ico path="/org.gemoc.gemoc_studio.product/images/icons/GeMoC.ico"/>
          <bmp
-            winSmallHigh="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_16x16x32.bmp"
-            winSmallLow="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_16x16x8.bmp"
-            winMediumHigh="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_32x32x32.bmp"
-            winMediumLow="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_32x32x8.bmp"
-            winLargeHigh="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_48x48x32.bmp"
-            winLargeLow="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_48x48x8.bmp"
-            winExtraLargeHigh="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_256x256x32.bmp"/>
+            winSmallHigh="/images/icons/GeMoC_16x16x32.bmp"
+            winSmallLow="/images/icons/GeMoC_16x16x8.bmp"
+            winMediumHigh="/images/icons/GeMoC_32x32x32.bmp"
+            winMediumLow="/images/icons/GeMoC_32x32x8.bmp"
+            winLargeHigh="/images/icons/GeMoC_48x48x32.bmp"
+            winLargeLow="/images/icons/GeMoC_48x48x8.bmp"
+            winExtraLargeHigh="/images/icons/GeMoC_256x256x32.bmp"/>
       </win>
    </launcher>
 
