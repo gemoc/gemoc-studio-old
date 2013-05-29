@@ -3,7 +3,6 @@
 
 <product name="Gemoc studio" uid="gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -18,6 +17,26 @@
 
    <windowImages/>
 
+
+   <launcher>
+      <linux icon="/org.gemoc.gemoc_studio.product/images/icons/GeMoC.xpm"/>
+      <macosx icon="/org.gemoc.gemoc_studio.product/images/icons/GeMoC.icns"/>
+      <solaris/>
+      <win useIco="false">
+         <ico path="/org.gemoc.gemoc_studio.product/images/icons/GeMoC.ico"/>
+         <bmp
+            winSmallHigh="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_16x16x32.bmp"
+            winSmallLow="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_16x16x8.bmp"
+            winMediumHigh="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_32x32x32.bmp"
+            winMediumLow="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_32x32x8.bmp"
+            winLargeHigh="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_48x48x32.bmp"
+            winLargeLow="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_48x48x8.bmp"
+            winExtraLargeHigh="/org.gemoc.gemoc_studio.product/images/icons/GeMoC_256x256x32.bmp"/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
 
    <plugins>
    </plugins>
@@ -35,7 +54,7 @@
       <feature id="org.eclipse.sdk"/>
       <feature id="org.kermeta.language.feature"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
-      <feature id="org.gemoc.execution.trace.feature"/>	
+      <feature id="org.gemoc.execution.trace.feature"/>
       <feature id="org.polarion.eclipse.team.svn.connector"/>
       <feature id="org.polarion.eclipse.team.svn.connector.svnkit16"/>
       <feature id="org.polarion.eclipse.team.svn.connector.svnkit17"/>
