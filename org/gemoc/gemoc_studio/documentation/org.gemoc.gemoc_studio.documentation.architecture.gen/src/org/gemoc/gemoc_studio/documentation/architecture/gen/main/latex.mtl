@@ -7,6 +7,7 @@
 [file ('gemoc-architecture.tex', false, 'UTF-8')]
 \documentclass{gemoc} %% no option needed, default is : 10pt, twoside, babel['['/] english[']'/] , graphicx
 \usepackage{color}
+\usepackage['['/]colorlinks=true[']'/]{hyperref}
 
 \task{4.1.1}
 \title{Gemoc Architectural description}
@@ -63,7 +64,7 @@ the description of  Compoments and Metamodels integrated in the Gemoc Studio.
 	\item \textbf{Architecture}  : fundamental conception of a system in its environment
  embodied in its elements, their relationships between each other and to its 
 environment, and the principles guiding its design and evolution
-\end{itemize}
+\end{itemize}à
 %[/protected]
 
 \section{References}
@@ -135,6 +136,10 @@ environment, and the principles guiding its design and evolution
 %[protected (component.name+'Description')]
 
 %[/protected] 
+\begin{center}
+\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true[']'/]{../images/generated/Generated_[component.name.replaceAll(' ', '_')/].png}
+\end{center}
+
 [for (port : Port | component.ownedPort->select(name = 'in'))]
 [if (port.required->size()>0)]
 This component port requires the following inputs:
