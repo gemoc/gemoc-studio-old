@@ -34,7 +34,7 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_1i_rwLxwEeK4q7aZ2ZzLTw" clientDependency="_4oqcMLxwEeK4q7aZ2ZzLTw" name="Kermeta">
     <interfaceRealization xmi:id="_4oqcMLxwEeK4q7aZ2ZzLTw" clientDependency="_4oqcMLxwEeK4q7aZ2ZzLTw" client="_1i_rwLxwEeK4q7aZ2ZzLTw _4oqcMLxwEeK4q7aZ2ZzLTw _9xRUwLxwEeK4q7aZ2ZzLTw _cYIswMarEeKe6cgNmFsFbw" supplier="_0xevQLxwEeK4q7aZ2ZzLTw" contract="_0xevQLxwEeK4q7aZ2ZzLTw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="__Xu8QLxwEeK4q7aZ2ZzLTw" clientDependency="_D3570LxxEeK4q7aZ2ZzLTw _NUgZILxxEeK4q7aZ2ZzLTw" name="Timesquare DSA/MOCC Map Editor">
+  <packagedElement xmi:type="uml:Component" xmi:id="__Xu8QLxwEeK4q7aZ2ZzLTw" clientDependency="_D3570LxxEeK4q7aZ2ZzLTw _NUgZILxxEeK4q7aZ2ZzLTw" name="Timesquare DSA-MOCC Map Editor">
     <generalization xmi:id="_GUvvcMbqEeKe6cgNmFsFbw" general="_kro8wMbnEeKe6cgNmFsFbw"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_CqcDILxxEeK4q7aZ2ZzLTw" name="in" type="__Xu8QLxwEeK4q7aZ2ZzLTw" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_WFH6MLxxEeK4q7aZ2ZzLTw" name="out" type="_UpkiMLxxEeK4q7aZ2ZzLTw" aggregation="composite"/>
@@ -417,7 +417,7 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_VuDOAMblEeKe6cgNmFsFbw" client="_OY7akMblEeKe6cgNmFsFbw _bfxVAMblEeKe6cgNmFsFbw" supplier="_wqKroMbkEeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_4R9RgMbmEeKe6cgNmFsFbw" client="_gBwJsMapEeKe6cgNmFsFbw" supplier="_UEzBMLxxEeK4q7aZ2ZzLTw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_Z4aqwMbnEeKe6cgNmFsFbw" client="_HBqi0MbJEeKe6cgNmFsFbw _ky-o8MbpEeKe6cgNmFsFbw" supplier="_US0UMMbnEeKe6cgNmFsFbw"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_kro8wMbnEeKe6cgNmFsFbw" name="DSA/MOCC Map Editor">
+  <packagedElement xmi:type="uml:Component" xmi:id="_kro8wMbnEeKe6cgNmFsFbw" name="DSA-MOCC Map Editor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_ivarMMboEeKe6cgNmFsFbw" name="in" type="_WRcHkMboEeKe6cgNmFsFbw" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_lxQEgMboEeKe6cgNmFsFbw" name="out" type="_YUb6EMboEeKe6cgNmFsFbw" aggregation="composite"/>
     <ownedConnector xmi:id="_gfA5YMbpEeKe6cgNmFsFbw" clientDependency="_e2NvkMbpEeKe6cgNmFsFbw _wxyZwMboEeKe6cgNmFsFbw" name="DSE_DSE_connector">

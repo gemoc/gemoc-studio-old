@@ -15728,7 +15728,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_49olb8bpEeKe6cgNmFsFbw" name="Timesquare DSA/MOCC Map Editor">
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_49olb8bpEeKe6cgNmFsFbw" name="Timesquare DSA-MOCC Map Editor">
         <target xmi:type="uml:Component" href="model.uml#__Xu8QLxwEeK4q7aZ2ZzLTw"/>
         <semanticElements xmi:type="uml:Component" href="model.uml#__Xu8QLxwEeK4q7aZ2ZzLTw"/>
         <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_49olcMbpEeKe6cgNmFsFbw" name="in" incomingEdges="_1iLlYMeSEeKpyLjJ3hOE5w _1iLlY8eSEeKpyLjJ3hOE5w" width="2" height="2">
@@ -27641,7 +27641,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_FC2Ly8g0EeKF5dseaqVSHw" name="DSA/MOCC Map Editor">
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_FC2Ly8g0EeKF5dseaqVSHw" name="DSA-MOCC Map Editor">
         <target xmi:type="uml:Component" href="model.uml#_kro8wMbnEeKe6cgNmFsFbw"/>
         <semanticElements xmi:type="uml:Component" href="model.uml#_kro8wMbnEeKe6cgNmFsFbw"/>
         <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_FC2LzMg0EeKF5dseaqVSHw" name="in" incomingEdges="_FLSWGMg0EeKF5dseaqVSHw _FLSWG8g0EeKF5dseaqVSHw" width="2" height="2">
@@ -28428,7 +28428,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_FDazkMg0EeKF5dseaqVSHw" name="Timesquare DSA/MOCC Map Editor">
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_FDazkMg0EeKF5dseaqVSHw" name="Timesquare DSA-MOCC Map Editor">
         <target xmi:type="uml:Component" href="model.uml#__Xu8QLxwEeK4q7aZ2ZzLTw"/>
         <semanticElements xmi:type="uml:Component" href="model.uml#__Xu8QLxwEeK4q7aZ2ZzLTw"/>
         <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_FDazkcg0EeKF5dseaqVSHw" name="in" incomingEdges="_FK57kMg0EeKF5dseaqVSHw _FLDFgsg0EeKF5dseaqVSHw" width="2" height="2">
