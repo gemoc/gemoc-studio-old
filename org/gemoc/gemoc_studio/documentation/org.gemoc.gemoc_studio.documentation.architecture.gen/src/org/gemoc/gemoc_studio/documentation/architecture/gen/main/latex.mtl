@@ -123,31 +123,27 @@ environment, and the principles guiding its design and evolution
 [/template]
 
 [template public generate(component : Component)]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{[component.name/]}
 %[protected (component.name)]
 
 %[/protected]
-\begin{figure}['['/]htp[']'/]
-	\begin{center}
-	\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, scale=1.0[']'/]{../images/generated/Generated_[component.name/].jpg}
-	\caption{[component.name/] component}
-%	\label{fig:[component.name/]}
-	\end{center}
-\end{figure}
 
 \subsubsection{Purpose}
 %[protected (component.name+'Description')]
 
 %[/protected] 
+
 \begin{center}
-\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true[']'/]{../images/generated/Generated_[component.name.replaceAll(' ', '_')/].png}
+\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true[']'/]{../images/generated/Generated_[component.name.replaceAll(' ', '_').replaceAll('\'', '_')/].png}
 \end{center}
 
 [for (port : Port | component.ownedPort->select(name = 'in'))]
 [if (port.required->size()>0)]
 This component port requires the following inputs:
 \begin{itemize}
-[for (interface : Interface | port.required)]  
+[for (interface : Interface | port.required->sortedBy( i | i.name))]  
   \item \textbf{[interface.name/]} :
 %[protected (interface.name+'_input_Description for '+component.name)]
 %[/protected] 
@@ -160,7 +156,7 @@ This component port requires the following inputs:
 [if (port.provided->size()>0)]
 This component port provides the following outputs:
 \begin{itemize}
-[for (interface : Interface | port.provided)]  
+[for (interface : Interface | port.provided->sortedBy( i | i.name))]  
   \item \textbf{[interface.name/]} :
 %[protected (interface.name+'_output_Description for '+component.name)]
 %[/protected] 

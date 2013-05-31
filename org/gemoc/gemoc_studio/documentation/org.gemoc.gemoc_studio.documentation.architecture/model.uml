@@ -125,12 +125,13 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_zN9igLx6EeK4q7aZ2ZzLTw" clientDependency="_0ajRcLx6EeK4q7aZ2ZzLTw" name="Gemoc Project State">
     <interfaceRealization xmi:id="_0ajRcLx6EeK4q7aZ2ZzLTw" client="_zN9igLx6EeK4q7aZ2ZzLTw" supplier="_AA3mkLx2EeK4q7aZ2ZzLTw" contract="_AA3mkLx2EeK4q7aZ2ZzLTw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_Ex1OoLyLEeK4q7aZ2ZzLTw" clientDependency="_aVCb8LyMEeK4q7aZ2ZzLTw" name="Domain Specific Tree Editor">
+  <packagedElement xmi:type="uml:Component" xmi:id="_Ex1OoLyLEeK4q7aZ2ZzLTw" clientDependency="_aVCb8LyMEeK4q7aZ2ZzLTw _owEKgMoTEeKZK8Yj2802Vw" name="Domain Specific Tree Editor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_IDfMoLyLEeK4q7aZ2ZzLTw" name="in" type="_Ex1OoLyLEeK4q7aZ2ZzLTw" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_DLUlQMg7EeKF5dseaqVSHw" name="out" type="_59j1MMg6EeKF5dseaqVSHw" aggregation="composite"/>
     <ownedConnector xmi:id="_2xEa4LyQEeK4q7aZ2ZzLTw" clientDependency="_gd53oLyMEeK4q7aZ2ZzLTw" name="User Model_User Model_connector">
       <end xmi:id="_2xFB8LyQEeK4q7aZ2ZzLTw"/>
     </ownedConnector>
+    <interfaceRealization xmi:id="_owEKgMoTEeKZK8Yj2802Vw" client="_Ex1OoLyLEeK4q7aZ2ZzLTw" supplier="_wKxKMLxtEeK4q7aZ2ZzLTw" contract="_wKxKMLxtEeK4q7aZ2ZzLTw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_aVCb8LyMEeK4q7aZ2ZzLTw" client="_Ex1OoLyLEeK4q7aZ2ZzLTw" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_gd53oLyMEeK4q7aZ2ZzLTw" client="_jRY4cLx3EeK4q7aZ2ZzLTw _2xEa4LyQEeK4q7aZ2ZzLTw">
@@ -388,11 +389,7 @@
       <end xmi:id="_iASk0cdrEeKe6cgNmFsFbw" role="_YqqMQMbpEeKe6cgNmFsFbw"/>
     </ownedConnector>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_MNCuoMbhEeKe6cgNmFsFbw" name="Reflexive Model Animators">
-    <packagedElement xmi:type="uml:Component" xmi:id="_mYn5cMbbEeKe6cgNmFsFbw" clientDependency="_ts6mcMbbEeKe6cgNmFsFbw" name="Domain Specific Graphical Animator">
-      <interfaceRealization xmi:id="_ts6mcMbbEeKe6cgNmFsFbw" client="_mYn5cMbbEeKe6cgNmFsFbw" supplier="_QqjHoMRjEeKjnL1-ylacNQ" contract="_QqjHoMRjEeKjnL1-ylacNQ"/>
-    </packagedElement>
-  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_MNCuoMbhEeKe6cgNmFsFbw" name="Reflexive Model Animators"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_EtP04MbkEeKe6cgNmFsFbw" name="MOCC Editor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_j68KgMblEeKe6cgNmFsFbw" name="out" type="_gIZtAMblEeKe6cgNmFsFbw" aggregation="composite"/>
     <ownedConnector xmi:id="_0goxcMblEeKe6cgNmFsFbw" clientDependency="_NUgZILxxEeK4q7aZ2ZzLTw _zSJlEMblEeKe6cgNmFsFbw" name="MOCC_MOCC_connector">
