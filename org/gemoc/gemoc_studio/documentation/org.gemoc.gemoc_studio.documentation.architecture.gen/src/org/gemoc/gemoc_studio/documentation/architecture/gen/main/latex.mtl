@@ -96,18 +96,18 @@ environment, and the principles guiding its design and evolution
 %[protected ('ArchitectureComponents')]
 
 %[/protected]
-[for (comp : Component | aLogicalArchitecture.eAllContents(Component)->select(c | not c.name.startsWith('Domain Specific ')))]
+[for (comp : Component | aLogicalArchitecture.eAllContents(Component)->select(c | not c.name.startsWith('Domain Specific '))->sortedBy( c | c.name))]
 [comp.generate()/]
 [/for]
 \section{Domain Specific Components}
 %[protected ('DomainSpecificComponents')]
 
 %[/protected]
-[for (comp : Component | aLogicalArchitecture.eAllContents(Component)->select(c | c.name.startsWith('Domain Specific ')))]
+[for (comp : Component | aLogicalArchitecture.eAllContents(Component)->select(c | c.name.startsWith('Domain Specific '))->sortedBy( c | c.name))]
 [comp.generate()/]
 [/for]
 \section{Metamodels}
-[for (interface : Interface | aLogicalArchitecture.eContents(Package)->select(name='metamodels')->collect(packagedElement->selectByType(Interface)))]
+[for (interface : Interface | aLogicalArchitecture.eContents(Package)->select(name='metamodels')->collect(packagedElement->selectByType(Interface))->sortedBy( c | c.name))]
 [interface.generate()/]
 [/for]
 
