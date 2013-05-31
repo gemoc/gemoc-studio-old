@@ -706,7 +706,8 @@ The purpose of the Random Policy is to randomly explore the possible behaviors o
 \subsection{Scenario Policy}
 %Start of user code Scenario Policy
 The Scenario Policy is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
-\textcolor{red}{\textbf{FBO: A mon avis, il manque le modèle du scenario en input.}}
+\textcolor{red}{\textbf{FBO: A mon avis, il manque le modele du scenario en input.}}
+It inherits from Policy component and have all its input/outputs.
 %End of user code
 
 \subsubsection{Purpose}
@@ -722,6 +723,7 @@ The purpose of the Scenario Policy is to drive a simulation by choosing the DSE 
 \subsection{Replay Policy}
 %Start of user code Replay Policy
 The Replay Policy is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
+It inherits from Policy component and have all its input/outputs.
 %End of user code
 
 \subsubsection{Purpose}
@@ -744,6 +746,7 @@ the model of the trace to replay.
 \subsection{Policy}
 %Start of user code Policy
 A Policy is part of the description of the control in a language. It works in conjunction with a model of computation.
+The Policy component is an abstract componant whose implementations are responsible for selecting one Domain Specific Event from a vector of triggerable Domain Specific Event. Several selection strategies are provided in Gemoc.
 %End of user code
 
 \subsubsection{Purpose}
@@ -758,7 +761,7 @@ This component port requires the following inputs:
 \begin{itemize}
   \item \textbf{Domain Specific Event Vector Model} :
 %Start of user code Domain Specific Event Vector Model_input_Description for Policy
-\textbf{\textcolor{red}{FBO: pas sur de bien comprendre ce qu'est le DSEVM ou bien ce qu'il fait là . J'aurais plutôt dit que Policy avait besoin du Domain Specific Event Model}}
+\textbf{\textcolor{red}{FBO: pas sur de bien comprendre ce qu'est le DSEVM ou bien ce qu'il fait l\`a. J'aurais plut\^ot dit que Policy avait besoin du Domain Specific Event Model}}
 %End of user code 
 \end{itemize}
 
@@ -766,12 +769,14 @@ This component port requires the following outputs:
 \begin{itemize}
   \item \textbf{Domain Specific Event Model} :
 %Start of user code Domain Specific Event Model_output_Description for Policy
+The Policy component provides one Domain Specific Event selected out of the triggerable set.
 %End of user code 
 \end{itemize}
 
 \subsection{Interactive Policy}
 %Start of user code Interactive Policy
 The Interactive Policy is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
+It inherits from Policy component and have all its input/outputs.
 %End of user code
 
 \subsubsection{Purpose}
@@ -816,11 +821,11 @@ This component port requires the following outputs:
 
 \subsection{DSA Compiler}
 %Start of user code DSA Compiler
-
 %End of user code
 
 \subsubsection{Purpose}
 %Start of user code DSA CompilerDescription
+The DSA compiler is in charge of taking a model a DSA and produce the bytecode that implement the corresponding actions.
 
 %End of user code 
 \begin{center}
@@ -831,6 +836,7 @@ This component port requires the following inputs:
 \begin{itemize}
   \item \textbf{DSA Model} :
 %Start of user code DSA Model_input_Description for DSA Compiler
+A model of DSA.
 %End of user code 
 \end{itemize}
 
@@ -838,6 +844,7 @@ This component port requires the following outputs:
 \begin{itemize}
   \item \textbf{Domain Specific Metamodel Byte Code Extension} :
 %Start of user code Domain Specific Metamodel Byte Code Extension_output_Description for DSA Compiler
+The bytecode implementing the actions in the DSA.
 %End of user code 
 \end{itemize}
 
