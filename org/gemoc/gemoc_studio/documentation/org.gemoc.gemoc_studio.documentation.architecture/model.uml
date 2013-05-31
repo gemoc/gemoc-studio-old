@@ -98,7 +98,7 @@
     <ownedAttribute xmi:type="uml:Port" xmi:id="_Jiu-YLx2EeK4q7aZ2ZzLTw" name="in" type="_9miSILx1EeK4q7aZ2ZzLTw" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_LBsPsLx2EeK4q7aZ2ZzLTw" client="_9miSILx1EeK4q7aZ2ZzLTw" supplier="_AA3mkLx2EeK4q7aZ2ZzLTw"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_O91VILx2EeK4q7aZ2ZzLTw" name="ModhelX"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_O91VILx2EeK4q7aZ2ZzLTw" name="Modhel'X"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_RJmpILx2EeK4q7aZ2ZzLTw" name="NEMO"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_SiaPILx2EeK4q7aZ2ZzLTw" name="CEP Engine"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_mNockLx2EeK4q7aZ2ZzLTw" supplier="_kedlALx2EeK4q7aZ2ZzLTw"/>
@@ -243,6 +243,7 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_tZQtoMa6EeKe6cgNmFsFbw" client="_3boYYMRzEeKz2JnhKFEG5Q _HPSQcMa7EeKe6cgNmFsFbw" supplier="_W0jKkMa6EeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_bKAScMa7EeKe6cgNmFsFbw" name="Scenario Policy">
     <generalization xmi:id="_zufecMbHEeKe6cgNmFsFbw" general="_xsH-EMbHEeKe6cgNmFsFbw"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_p-r8kMnNEeKnM_PqPYw7EQ" name="in" type="_h6mKUMnNEeKnM_PqPYw7EQ" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_tIkJwMa7EeKe6cgNmFsFbw" name="Replay Policy">
     <generalization xmi:id="_zWE-cMbHEeKe6cgNmFsFbw" general="_xsH-EMbHEeKe6cgNmFsFbw"/>
@@ -603,6 +604,8 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_76S0YMhKEeKF5dseaqVSHw" clientDependency="_fdfAEMhLEeKF5dseaqVSHw" name="Composition Operator Editor Output">
       <interfaceRealization xmi:id="_fdfAEMhLEeKF5dseaqVSHw" clientDependency="_fdfAEMhLEeKF5dseaqVSHw" client="_76S0YMhKEeKF5dseaqVSHw _fdfAEMhLEeKF5dseaqVSHw" supplier="_AkmSQMhJEeKF5dseaqVSHw" contract="_AkmSQMhJEeKF5dseaqVSHw"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_h6mKUMnNEeKnM_PqPYw7EQ" clientDependency="_w5ucEMnNEeKnM_PqPYw7EQ" name="Scenario Policy Input"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_w5ucEMnNEeKnM_PqPYw7EQ" client="_h6mKUMnNEeKnM_PqPYw7EQ" supplier="_kedlALx2EeK4q7aZ2ZzLTw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_0zqswMhGEeKF5dseaqVSHw" name="Language Composition tools">
     <packagedElement xmi:type="uml:Component" xmi:id="_8xW8EMhGEeKF5dseaqVSHw" name="Composition Operator Editor">
