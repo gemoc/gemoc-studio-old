@@ -115,6 +115,9 @@ environment, and the principles guiding its design and evolution
 %[protected ('Component integration process')]
 
 %[/protected]
+
+%[protected ('additionnal chapters or annexes')]
+%[/protected]
 \end{document}
 [/file]
 [/template]
@@ -155,7 +158,7 @@ This component port requires the following inputs:
 
 [for (port : Port | component.ownedPort->select(name = 'out'))]
 [if (port.provided->size()>0)]
-This component port offers the following outputs:
+This component port provides the following outputs:
 \begin{itemize}
 [for (interface : Interface | port.provided)]  
   \item \textbf{[interface.name/]} :

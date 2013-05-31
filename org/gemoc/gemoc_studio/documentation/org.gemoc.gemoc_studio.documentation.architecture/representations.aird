@@ -4640,6 +4640,17 @@
               <styles xmi:type="notation:SortingStyle" xmi:id="_bOB21ca7EeKe6cgNmFsFbw"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_bOB21sa7EeKe6cgNmFsFbw"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="_VashBcoCEeKZK8Yj2802Vw" type="3012" element="_VTNY8MoCEeKZK8Yj2802Vw">
+              <children xmi:type="notation:Node" xmi:id="_VashCMoCEeKZK8Yj2802Vw" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_VashCcoCEeKZK8Yj2802Vw" x="21"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_VashCsoCEeKZK8Yj2802Vw" type="3004" element="_VTNY8coCEeKZK8Yj2802Vw">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_VashC8oCEeKZK8Yj2802Vw" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VashDMoCEeKZK8Yj2802Vw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_VashBsoCEeKZK8Yj2802Vw" fontName="Segoe UI" fontHeight="8" italic="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VashB8oCEeKZK8Yj2802Vw" x="-12" width="20" height="20"/>
+            </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_bOB20ca7EeKe6cgNmFsFbw" fontName="Ubuntu" fontHeight="10"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bOB20sa7EeKe6cgNmFsFbw" x="805" y="555"/>
           </children>
@@ -5490,6 +5501,17 @@
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_94hv0ceTEeKpyLjJ3hOE5w" fontName="Segoe UI" fontHeight="8" italic="true"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_94hv0seTEeKpyLjJ3hOE5w" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_VashAMoCEeKZK8Yj2802Vw" type="2001" element="_VR6_gMoCEeKZK8Yj2802Vw">
+            <children xmi:type="notation:Node" xmi:id="_VashA8oCEeKZK8Yj2802Vw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_VashBMoCEeKZK8Yj2802Vw" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_VavkUMoCEeKZK8Yj2802Vw" type="3014" element="_VR6_gcoCEeKZK8Yj2802Vw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_VavkUcoCEeKZK8Yj2802Vw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VavkUsoCEeKZK8Yj2802Vw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_VashAcoCEeKZK8Yj2802Vw" fontName="Segoe UI" fontHeight="8" italic="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VashAsoCEeKZK8Yj2802Vw" x="60" y="-280" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_iBNQQsRJEeKpJ4r0h0kRaQ"/>
           <edges xmi:type="notation:Edge" xmi:id="_rFoxGMatEeKe6cgNmFsFbw" type="4001" element="_rBvIg8atEeKe6cgNmFsFbw" source="_rFUA8satEeKe6cgNmFsFbw" target="_rE38FcatEeKe6cgNmFsFbw">
@@ -6514,70 +6536,6 @@
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__kPhRsk0EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__kPhR8k0EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_MvaiEMk1EeKQtrZQQ_SgaA" type="4001" element="_MlXOMMk1EeKQtrZQQ_SgaA" source="_hDBRQMbcEeKe6cgNmFsFbw" target="_nJoqMsbcEeKe6cgNmFsFbw">
-            <children xmi:type="notation:Node" xmi:id="_MvbJIMk1EeKQtrZQQ_SgaA" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvbJIck1EeKQtrZQQ_SgaA" y="-10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_MvbJIsk1EeKQtrZQQ_SgaA" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvbJI8k1EeKQtrZQQ_SgaA" y="10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_MvbJJMk1EeKQtrZQQ_SgaA" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvbJJck1EeKQtrZQQ_SgaA" y="10"/>
-            </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_MvaiEck1EeKQtrZQQ_SgaA"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_MvaiEsk1EeKQtrZQQ_SgaA" fontName="Ubuntu"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MvaiE8k1EeKQtrZQQ_SgaA" points="[1708, 200, 1708, 200]$[1505, 259, 1505, 259]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MvbJJsk1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MvbJJ8k1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
-          </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_MvbwMMk1EeKQtrZQQ_SgaA" type="4001" element="_MlX1Qsk1EeKQtrZQQ_SgaA" source="_hDBRQMbcEeKe6cgNmFsFbw" target="_nJoDIMbcEeKe6cgNmFsFbw">
-            <children xmi:type="notation:Node" xmi:id="_MvbwNMk1EeKQtrZQQ_SgaA" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvbwNck1EeKQtrZQQ_SgaA" y="-10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_MvbwNsk1EeKQtrZQQ_SgaA" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvbwN8k1EeKQtrZQQ_SgaA" y="10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_MvbwOMk1EeKQtrZQQ_SgaA" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvbwOck1EeKQtrZQQ_SgaA" y="10"/>
-            </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_MvbwMck1EeKQtrZQQ_SgaA"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_MvbwMsk1EeKQtrZQQ_SgaA" fontName="Ubuntu"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MvbwM8k1EeKQtrZQQ_SgaA" points="[1708, 200, 1708, 200]$[1500, 209, 1500, 209]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MvcXQMk1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MvcXQck1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
-          </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_MvcXQsk1EeKQtrZQQ_SgaA" type="4001" element="_MnPdgMk1EeKQtrZQQ_SgaA" source="_t4mk4MeSEeKpyLjJ3hOE5w" target="_hDB4UsbcEeKe6cgNmFsFbw">
-            <children xmi:type="notation:Node" xmi:id="_MvcXRsk1EeKQtrZQQ_SgaA" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvcXR8k1EeKQtrZQQ_SgaA" y="-10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_MvcXSMk1EeKQtrZQQ_SgaA" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvcXSck1EeKQtrZQQ_SgaA" y="10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_MvcXSsk1EeKQtrZQQ_SgaA" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvcXS8k1EeKQtrZQQ_SgaA" y="10"/>
-            </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_MvcXQ8k1EeKQtrZQQ_SgaA"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_MvcXRMk1EeKQtrZQQ_SgaA" fontName="Ubuntu"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MvcXRck1EeKQtrZQQ_SgaA" points="[1180, 180, 1180, 180]$[1138, 171, 1138, 171]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Mvc-UMk1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Mvc-Uck1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
-          </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_Mvc-Usk1EeKQtrZQQ_SgaA" type="4001" element="_MnQEksk1EeKQtrZQQ_SgaA" source="_nJp4UsbcEeKe6cgNmFsFbw" target="_hDB4UsbcEeKe6cgNmFsFbw">
-            <children xmi:type="notation:Node" xmi:id="_Mvc-Vsk1EeKQtrZQQ_SgaA" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mvc-V8k1EeKQtrZQQ_SgaA" y="-10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_Mvc-WMk1EeKQtrZQQ_SgaA" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mvc-Wck1EeKQtrZQQ_SgaA" y="10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_MvdlYMk1EeKQtrZQQ_SgaA" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvdlYck1EeKQtrZQQ_SgaA" y="10"/>
-            </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_Mvc-U8k1EeKQtrZQQ_SgaA"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_Mvc-VMk1EeKQtrZQQ_SgaA" fontName="Ubuntu"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Mvc-Vck1EeKQtrZQQ_SgaA" points="[1170, 264, 1170, 264]$[1138, 171, 1138, 171]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MvdlYsk1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MvdlY8k1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
-          </edges>
           <edges xmi:type="notation:Edge" xmi:id="_MvdlZMk1EeKQtrZQQ_SgaA" type="4001" element="_MnQroMk1EeKQtrZQQ_SgaA" source="_t4geQMeSEeKpyLjJ3hOE5w" target="_dgpWgsa3EeKe6cgNmFsFbw">
             <children xmi:type="notation:Node" xmi:id="_MvdlaMk1EeKQtrZQQ_SgaA" type="6001">
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mvdlack1EeKQtrZQQ_SgaA" y="-10"/>
@@ -7170,6 +7128,22 @@
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Mv5DMsk1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Mv5DM8k1EeKQtrZQQ_SgaA" id="(0.5,0.5)"/>
           </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_Va1q8MoCEeKZK8Yj2802Vw" type="4001" element="_VX1aQMoCEeKZK8Yj2802Vw" source="_VashAMoCEeKZK8Yj2802Vw" target="_VashBcoCEeKZK8Yj2802Vw">
+            <children xmi:type="notation:Node" xmi:id="_Va1q9MoCEeKZK8Yj2802Vw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Va1q9coCEeKZK8Yj2802Vw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Va1q9soCEeKZK8Yj2802Vw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Va1q98oCEeKZK8Yj2802Vw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Va1q-MoCEeKZK8Yj2802Vw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Va1q-coCEeKZK8Yj2802Vw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_Va1q8coCEeKZK8Yj2802Vw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_Va1q8soCEeKZK8Yj2802Vw" fontName="Segoe UI"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Va1q88oCEeKZK8Yj2802Vw" points="[865, 610, -788, -623]$[865, 670, -788, -563]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Va1q-soCEeKZK8Yj2802Vw" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Va1q-8oCEeKZK8Yj2802Vw" id="(0.5,0.5)"/>
+          </edges>
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_wJKCYMRJEeKpJ4r0h0kRaQ" name="Execution Engine">
@@ -7302,7 +7276,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_uWEIwMR4EeKz79a-Yu6qnQ" name="Timesquare DSA MOCC Map Editor">
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_uWEIwMR4EeKz79a-Yu6qnQ" name="Timesquare DSA-MOCC Map Editor">
         <target xmi:type="uml:Component" href="model.uml#__Xu8QLxwEeK4q7aZ2ZzLTw"/>
         <semanticElements xmi:type="uml:Component" href="model.uml#__Xu8QLxwEeK4q7aZ2ZzLTw"/>
         <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_rBR1gMatEeKe6cgNmFsFbw" name="in" incomingEdges="_t2E1UMeSEeKpyLjJ3hOE5w _t2H4oMeSEeKpyLjJ3hOE5w" width="2" height="2">
@@ -7431,7 +7405,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_uWOg0MR4EeKz79a-Yu6qnQ" name="ModhelX">
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_uWOg0MR4EeKz79a-Yu6qnQ" name="Modhel'X">
         <target xmi:type="uml:Component" href="model.uml#_O91VILx2EeK4q7aZ2ZzLTw"/>
         <semanticElements xmi:type="uml:Component" href="model.uml#_O91VILx2EeK4q7aZ2ZzLTw"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -7576,14 +7550,17 @@
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_IXrMEMeQEeKpyLjJ3hOE5w" name="Execution Model" outgoingEdges="__Mehgsk0EeKQtrZQQ_SgaA" incomingEdges="_IbD3YMeQEeKpyLjJ3hOE5w" width="2" height="2">
-        <target xmi:type="uml:Interface" href="model.uml#_7GpBoMbQEeKe6cgNmFsFbw"/>
-        <semanticElements xmi:type="uml:Interface" href="model.uml#_7GpBoMbQEeKe6cgNmFsFbw"/>
-        <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_IXrMEceQEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" shape="dot">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IXrMEseQEeKpyLjJ3hOE5w"/>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_9oCDgMbUEeKe6cgNmFsFbw" name="Trigger Event Request" outgoingEdges="__McsUMk0EeKQtrZQQ_SgaA" incomingEdges="_IbD3Y8eQEeKpyLjJ3hOE5w" width="2" height="2">
+        <target xmi:type="uml:Interface" href="model.uml#_UzXXIMbUEeKe6cgNmFsFbw"/>
+        <semanticElements xmi:type="uml:Interface" href="model.uml#_UzXXIMbUEeKe6cgNmFsFbw"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_9oCDgcbUEeKe6cgNmFsFbw" labelFormat="italic" showIcon="false" shape="dot">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_9oCDgsbUEeKe6cgNmFsFbw"/>
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IXrME8eQEeKpyLjJ3hOE5w" red="39" green="76" blue="114"/>
-          <color xmi:type="viewpoint:RGBValues" xmi:id="_IXrMFMeQEeKpyLjJ3hOE5w" red="114" green="159" blue="207"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9oCDg8bUEeKe6cgNmFsFbw" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_9oCDhMbUEeKe6cgNmFsFbw" red="114" green="159" blue="207"/>
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
       </ownedDiagramElements>
@@ -7601,6 +7578,17 @@
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
       </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_IXrMEMeQEeKpyLjJ3hOE5w" name="Execution Model" outgoingEdges="__Mehgsk0EeKQtrZQQ_SgaA" incomingEdges="_IbD3YMeQEeKpyLjJ3hOE5w" width="2" height="2">
+        <target xmi:type="uml:Interface" href="model.uml#_7GpBoMbQEeKe6cgNmFsFbw"/>
+        <semanticElements xmi:type="uml:Interface" href="model.uml#_7GpBoMbQEeKe6cgNmFsFbw"/>
+        <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_IXrMEceQEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" shape="dot">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IXrMEseQEeKpyLjJ3hOE5w"/>
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IXrME8eQEeKpyLjJ3hOE5w" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_IXrMFMeQEeKpyLjJ3hOE5w" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
+      </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_IXrMFceQEeKpyLjJ3hOE5w" name="Trace Model" outgoingEdges="__Md6csk0EeKQtrZQQ_SgaA" incomingEdges="_IbD3XceQEeKpyLjJ3hOE5w" width="2" height="2">
         <target xmi:type="uml:Interface" href="model.uml#_W0jKkMa6EeKe6cgNmFsFbw"/>
         <semanticElements xmi:type="uml:Interface" href="model.uml#_W0jKkMa6EeKe6cgNmFsFbw"/>
@@ -7609,20 +7597,6 @@
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IXrMGMeQEeKpyLjJ3hOE5w" red="39" green="76" blue="114"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_IXrMGceQEeKpyLjJ3hOE5w" red="114" green="159" blue="207"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_9oCDgMbUEeKe6cgNmFsFbw" name="Trigger Event Request" outgoingEdges="__McsUMk0EeKQtrZQQ_SgaA" incomingEdges="_IbD3Y8eQEeKpyLjJ3hOE5w" width="2" height="2">
-        <target xmi:type="uml:Interface" href="model.uml#_UzXXIMbUEeKe6cgNmFsFbw"/>
-        <semanticElements xmi:type="uml:Interface" href="model.uml#_UzXXIMbUEeKe6cgNmFsFbw"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_9oCDgcbUEeKe6cgNmFsFbw" labelFormat="italic" showIcon="false" shape="dot">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_9oCDgsbUEeKe6cgNmFsFbw"/>
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9oCDg8bUEeKe6cgNmFsFbw" red="39" green="76" blue="114"/>
-          <color xmi:type="viewpoint:RGBValues" xmi:id="_9oCDhMbUEeKe6cgNmFsFbw" red="114" green="159" blue="207"/>
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
       </ownedDiagramElements>
@@ -7764,17 +7738,6 @@
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyEfKceSEeKpyLjJ3hOE5w" name="Domain Specific Representation Definition Extension Model" outgoingEdges="__M9CoMk0EeKQtrZQQ_SgaA" incomingEdges="_tz4c-ceSEeKpyLjJ3hOE5w" width="2" height="2">
-        <target xmi:type="uml:Interface" href="model.uml#_17QzEMPJEeKpJ4r0h0kRaQ"/>
-        <semanticElements xmi:type="uml:Interface" href="model.uml#_17QzEMPJEeKpJ4r0h0kRaQ"/>
-        <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_tyHiYMeSEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" shape="dot">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tyHiYceSEeKpyLjJ3hOE5w"/>
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyHiYseSEeKpyLjJ3hOE5w" red="39" green="76" blue="114"/>
-          <color xmi:type="viewpoint:RGBValues" xmi:id="_tyHiY8eSEeKpyLjJ3hOE5w" red="114" green="159" blue="207"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
-      </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyHiZMeSEeKpyLjJ3hOE5w" name="Domain Specific  Representation Definition Model" outgoingEdges="__M8bkMk0EeKQtrZQQ_SgaA" incomingEdges="_tz4c9seSEeKpyLjJ3hOE5w" width="2" height="2">
         <target xmi:type="uml:Interface" href="model.uml#_uuBlwMPIEeKpJ4r0h0kRaQ"/>
         <semanticElements xmi:type="uml:Interface" href="model.uml#_uuBlwMPIEeKpJ4r0h0kRaQ"/>
@@ -7783,6 +7746,17 @@
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyHiZ8eSEeKpyLjJ3hOE5w" red="39" green="76" blue="114"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_tyHiaMeSEeKpyLjJ3hOE5w" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyEfKceSEeKpyLjJ3hOE5w" name="Domain Specific Representation Definition Extension Model" outgoingEdges="__M9CoMk0EeKQtrZQQ_SgaA" incomingEdges="_tz4c-ceSEeKpyLjJ3hOE5w" width="2" height="2">
+        <target xmi:type="uml:Interface" href="model.uml#_17QzEMPJEeKpJ4r0h0kRaQ"/>
+        <semanticElements xmi:type="uml:Interface" href="model.uml#_17QzEMPJEeKpJ4r0h0kRaQ"/>
+        <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_tyHiYMeSEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" shape="dot">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tyHiYceSEeKpyLjJ3hOE5w"/>
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyHiYseSEeKpyLjJ3hOE5w" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_tyHiY8eSEeKpyLjJ3hOE5w" red="114" green="159" blue="207"/>
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
       </ownedDiagramElements>
@@ -7800,20 +7774,6 @@
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_IYyMJMbcEeKe6cgNmFsFbw" name="Launch Utilities" outgoingEdges="__M-Qwsk0EeKQtrZQQ_SgaA" incomingEdges="_IbG6mMeQEeKpyLjJ3hOE5w" width="2" height="2">
-        <target xmi:type="uml:Interface" href="model.uml#_dtA6YMRNEeKpJ4r0h0kRaQ"/>
-        <semanticElements xmi:type="uml:Interface" href="model.uml#_dtA6YMRNEeKpJ4r0h0kRaQ"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_IYyMJcbcEeKe6cgNmFsFbw" labelFormat="italic" showIcon="false" shape="dot">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IYyMJsbcEeKe6cgNmFsFbw"/>
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IYyMJ8bcEeKe6cgNmFsFbw" red="39" green="76" blue="114"/>
-          <color xmi:type="viewpoint:RGBValues" xmi:id="_IYyMKMbcEeKe6cgNmFsFbw" red="114" green="159" blue="207"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
-      </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_IYxlEMbcEeKe6cgNmFsFbw" name="Modeling Project" incomingEdges="_IbG6kseQEeKpyLjJ3hOE5w" width="2" height="2">
         <target xmi:type="uml:Interface" href="model.uml#_AxQgQMROEeKpJ4r0h0kRaQ"/>
         <semanticElements xmi:type="uml:Interface" href="model.uml#_AxQgQMROEeKpJ4r0h0kRaQ"/>
@@ -7825,6 +7785,20 @@
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IYyMIsbcEeKe6cgNmFsFbw" red="39" green="76" blue="114"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_IYyMI8bcEeKe6cgNmFsFbw" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_IYyMJMbcEeKe6cgNmFsFbw" name="Launch Utilities" outgoingEdges="__M-Qwsk0EeKQtrZQQ_SgaA" incomingEdges="_IbG6mMeQEeKpyLjJ3hOE5w" width="2" height="2">
+        <target xmi:type="uml:Interface" href="model.uml#_dtA6YMRNEeKpJ4r0h0kRaQ"/>
+        <semanticElements xmi:type="uml:Interface" href="model.uml#_dtA6YMRNEeKpJ4r0h0kRaQ"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_IYyMJcbcEeKe6cgNmFsFbw" labelFormat="italic" showIcon="false" shape="dot">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IYyMJsbcEeKe6cgNmFsFbw"/>
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IYyMJ8bcEeKe6cgNmFsFbw" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_IYyMKMbcEeKe6cgNmFsFbw" red="114" green="159" blue="207"/>
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
       </ownedDiagramElements>
@@ -7883,16 +7857,6 @@
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_ProvidedInterface']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_IX0WAMeQEeKpyLjJ3hOE5w" name="Execution Model" outgoingEdges="_MpZZoMk1EeKQtrZQQ_SgaA" incomingEdges="__Mehgsk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="uml:Interface" href="model.uml#_7GpBoMbQEeKe6cgNmFsFbw"/>
-        <semanticElements xmi:type="uml:Interface" href="model.uml#_7GpBoMbQEeKe6cgNmFsFbw"/>
-        <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_IX0WAceQEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IX0WAseQEeKpyLjJ3hOE5w"/>
-          <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IX0WA8eQEeKpyLjJ3hOE5w"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
-      </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyKlsMeSEeKpyLjJ3hOE5w" name="Domain Specific Event Model" outgoingEdges="_MpVvQ8k1EeKQtrZQQ_SgaA _MpZZo8k1EeKQtrZQQ_SgaA" incomingEdges="__M5YQMk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="uml:Interface" href="model.uml#_1WTUUMbIEeKe6cgNmFsFbw"/>
         <semanticElements xmi:type="uml:Interface" href="model.uml#_1WTUUMbIEeKe6cgNmFsFbw"/>
@@ -7900,6 +7864,16 @@
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKlsseSEeKpyLjJ3hOE5w"/>
           <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKls8eSEeKpyLjJ3hOE5w"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyKltMeSEeKpyLjJ3hOE5w" name="Domain Specific Event Vector Model" outgoingEdges="_MpVvQMk1EeKQtrZQQ_SgaA _MpWWUsk1EeKQtrZQQ_SgaA" incomingEdges="__M7NcMk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Interface" href="model.uml#_uOrxYMbIEeKe6cgNmFsFbw"/>
+        <semanticElements xmi:type="uml:Interface" href="model.uml#_uOrxYMbIEeKe6cgNmFsFbw"/>
+        <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_tyKltceSEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKltseSEeKpyLjJ3hOE5w"/>
+          <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKlt8eSEeKpyLjJ3hOE5w"/>
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
       </ownedDiagramElements>
@@ -7916,13 +7890,13 @@
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyKltMeSEeKpyLjJ3hOE5w" name="Domain Specific Event Vector Model" outgoingEdges="_MpVvQMk1EeKQtrZQQ_SgaA _MpWWUsk1EeKQtrZQQ_SgaA" incomingEdges="__M7NcMk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="uml:Interface" href="model.uml#_uOrxYMbIEeKe6cgNmFsFbw"/>
-        <semanticElements xmi:type="uml:Interface" href="model.uml#_uOrxYMbIEeKe6cgNmFsFbw"/>
-        <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_tyKltceSEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKltseSEeKpyLjJ3hOE5w"/>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_IX0WAMeQEeKpyLjJ3hOE5w" name="Execution Model" outgoingEdges="_MpZZoMk1EeKQtrZQQ_SgaA" incomingEdges="__Mehgsk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Interface" href="model.uml#_7GpBoMbQEeKe6cgNmFsFbw"/>
+        <semanticElements xmi:type="uml:Interface" href="model.uml#_7GpBoMbQEeKe6cgNmFsFbw"/>
+        <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_IX0WAceQEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IX0WAseQEeKpyLjJ3hOE5w"/>
           <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKlt8eSEeKpyLjJ3hOE5w"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IX0WA8eQEeKpyLjJ3hOE5w"/>
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
       </ownedDiagramElements>
@@ -7952,16 +7926,6 @@
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyKluMeSEeKpyLjJ3hOE5w" name="CCSL Model" outgoingEdges="_MpSE4sk1EeKQtrZQQ_SgaA" incomingEdges="__Mfvosk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="uml:Interface" href="model.uml#_Bg4SsLx0EeK4q7aZ2ZzLTw"/>
-        <semanticElements xmi:type="uml:Interface" href="model.uml#_Bg4SsLx0EeK4q7aZ2ZzLTw"/>
-        <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_tyKluceSEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKluseSEeKpyLjJ3hOE5w"/>
-          <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKlu8eSEeKpyLjJ3hOE5w"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
-      </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_D_9O4MbVEeKe6cgNmFsFbw" name="Trigger Event Request" outgoingEdges="_MpaAssk1EeKQtrZQQ_SgaA" incomingEdges="__McsUMk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="uml:Interface" href="model.uml#_UzXXIMbUEeKe6cgNmFsFbw"/>
         <semanticElements xmi:type="uml:Interface" href="model.uml#_UzXXIMbUEeKe6cgNmFsFbw"/>
@@ -7972,6 +7936,16 @@
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_D_9O4sbVEeKe6cgNmFsFbw"/>
           <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_D_9O48bVEeKe6cgNmFsFbw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyKluMeSEeKpyLjJ3hOE5w" name="CCSL Model" outgoingEdges="_MpSE4sk1EeKQtrZQQ_SgaA" incomingEdges="__Mfvosk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Interface" href="model.uml#_Bg4SsLx0EeK4q7aZ2ZzLTw"/>
+        <semanticElements xmi:type="uml:Interface" href="model.uml#_Bg4SsLx0EeK4q7aZ2ZzLTw"/>
+        <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_tyKluceSEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKluseSEeKpyLjJ3hOE5w"/>
+          <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyKlu8eSEeKpyLjJ3hOE5w"/>
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
       </ownedDiagramElements>
@@ -8038,16 +8012,6 @@
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyNpBMeSEeKpyLjJ3hOE5w" name="Domain Specific Representation Definition Extension Model" outgoingEdges="_MpPoo8k1EeKQtrZQQ_SgaA" incomingEdges="__M9CoMk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="uml:Interface" href="model.uml#_17QzEMPJEeKpJ4r0h0kRaQ"/>
-        <semanticElements xmi:type="uml:Interface" href="model.uml#_17QzEMPJEeKpJ4r0h0kRaQ"/>
-        <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_tyNpBceSEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tyNpBseSEeKpyLjJ3hOE5w"/>
-          <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyNpB8eSEeKpyLjJ3hOE5w"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
-      </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyNpCMeSEeKpyLjJ3hOE5w" name="Domain Specific  Representation Definition Model" outgoingEdges="_MpPooMk1EeKQtrZQQ_SgaA" incomingEdges="__M8bkMk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="uml:Interface" href="model.uml#_uuBlwMPIEeKpJ4r0h0kRaQ"/>
         <semanticElements xmi:type="uml:Interface" href="model.uml#_uuBlwMPIEeKpJ4r0h0kRaQ"/>
@@ -8058,6 +8022,16 @@
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
       </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_tyNpBMeSEeKpyLjJ3hOE5w" name="Domain Specific Representation Definition Extension Model" outgoingEdges="_MpPoo8k1EeKQtrZQQ_SgaA" incomingEdges="__M9CoMk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Interface" href="model.uml#_17QzEMPJEeKpJ4r0h0kRaQ"/>
+        <semanticElements xmi:type="uml:Interface" href="model.uml#_17QzEMPJEeKpJ4r0h0kRaQ"/>
+        <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_tyNpBceSEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tyNpBseSEeKpyLjJ3hOE5w"/>
+          <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tyNpB8eSEeKpyLjJ3hOE5w"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
+      </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_IX0WEMeQEeKpyLjJ3hOE5w" name="Trace Model" outgoingEdges="_MpYLgMk1EeKQtrZQQ_SgaA _MpYykMk1EeKQtrZQQ_SgaA" incomingEdges="__Md6csk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="uml:Interface" href="model.uml#_W0jKkMa6EeKe6cgNmFsFbw"/>
         <semanticElements xmi:type="uml:Interface" href="model.uml#_W0jKkMa6EeKe6cgNmFsFbw"/>
@@ -8065,6 +8039,16 @@
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IX0WEseQEeKpyLjJ3hOE5w"/>
           <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IX0WE8eQEeKpyLjJ3hOE5w"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_VR6_gMoCEeKZK8Yj2802Vw" name="Scenario Model" outgoingEdges="_VX1aQMoCEeKZK8Yj2802Vw" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Interface" href="model.uml#_kedlALx2EeK4q7aZ2ZzLTw"/>
+        <semanticElements xmi:type="uml:Interface" href="model.uml#_kedlALx2EeK4q7aZ2ZzLTw"/>
+        <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_VR6_gcoCEeKZK8Yj2802Vw" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_VR6_gsoCEeKZK8Yj2802Vw"/>
+          <description xmi:type="style:CustomStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_VR6_g8oCEeKZK8Yj2802Vw"/>
         </ownedStyle>
         <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@nodeMappings[name='CS_RequiredInterface']"/>
       </ownedDiagramElements>
@@ -8342,6 +8326,17 @@
       <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_bKD80Ma7EeKe6cgNmFsFbw" name="Scenario Policy">
         <target xmi:type="uml:Component" href="model.uml#_bKAScMa7EeKe6cgNmFsFbw"/>
         <semanticElements xmi:type="uml:Component" href="model.uml#_bKAScMa7EeKe6cgNmFsFbw"/>
+        <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_VTNY8MoCEeKZK8Yj2802Vw" name="in" incomingEdges="_VX1aQMoCEeKZK8Yj2802Vw" width="2" height="2">
+          <target xmi:type="uml:Port" href="model.uml#_p-r8kMnNEeKnM_PqPYw7EQ"/>
+          <semanticElements xmi:type="uml:Port" href="model.uml#_p-r8kMnNEeKnM_PqPYw7EQ"/>
+          <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_VTNY8coCEeKZK8Yj2802Vw" labelFormat="italic" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_VTNY8soCEeKZK8Yj2802Vw"/>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_Port']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_VTNY88oCEeKZK8Yj2802Vw"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_VTNY9MoCEeKZK8Yj2802Vw" red="194" green="239" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_Port']"/>
+        </ownedBorderedNodes>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -8590,7 +8585,7 @@
       <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_g_OWYMbcEeKe6cgNmFsFbw" name="Domain Specific Graphical Animated Editor">
         <target xmi:type="uml:Component" href="model.uml#_pQciwMPIEeKpJ4r0h0kRaQ"/>
         <semanticElements xmi:type="uml:Component" href="model.uml#_pQciwMPIEeKpJ4r0h0kRaQ"/>
-        <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_g_OWYcbcEeKe6cgNmFsFbw" name="out" outgoingEdges="_IbG6kseQEeKpyLjJ3hOE5w _IbG6lceQEeKpyLjJ3hOE5w _IbG6mMeQEeKpyLjJ3hOE5w _MlXOMMk1EeKQtrZQQ_SgaA _MlX1Qsk1EeKQtrZQQ_SgaA" incomingEdges="__KaE8Mk0EeKQtrZQQ_SgaA __KasAsk0EeKQtrZQQ_SgaA" width="2" height="2">
+        <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_g_OWYcbcEeKe6cgNmFsFbw" name="out" outgoingEdges="_IbG6kseQEeKpyLjJ3hOE5w _IbG6lceQEeKpyLjJ3hOE5w _IbG6mMeQEeKpyLjJ3hOE5w" incomingEdges="__KaE8Mk0EeKQtrZQQ_SgaA __KasAsk0EeKQtrZQQ_SgaA" width="2" height="2">
           <target xmi:type="uml:Port" href="model.uml#_T52-QMRNEeKpJ4r0h0kRaQ"/>
           <semanticElements xmi:type="uml:Port" href="model.uml#_T52-QMRNEeKpJ4r0h0kRaQ"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -8604,7 +8599,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_Port']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_g_OWZsbcEeKe6cgNmFsFbw" name="in" outgoingEdges="__LYVUMk0EeKQtrZQQ_SgaA __LY8YMk0EeKQtrZQQ_SgaA __LaxkMk0EeKQtrZQQ_SgaA __Laxk8k0EeKQtrZQQ_SgaA" incomingEdges="_MnPdgMk1EeKQtrZQQ_SgaA _MnQEksk1EeKQtrZQQ_SgaA _MpNzcMk1EeKQtrZQQ_SgaA _MpOagMk1EeKQtrZQQ_SgaA" width="2" height="2">
+        <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_g_OWZsbcEeKe6cgNmFsFbw" name="in" outgoingEdges="__LYVUMk0EeKQtrZQQ_SgaA __LY8YMk0EeKQtrZQQ_SgaA __LaxkMk0EeKQtrZQQ_SgaA __Laxk8k0EeKQtrZQQ_SgaA" incomingEdges="_MpNzcMk1EeKQtrZQQ_SgaA _MpOagMk1EeKQtrZQQ_SgaA" width="2" height="2">
           <target xmi:type="uml:Port" href="model.uml#_jvlukMRSEeKpJ4r0h0kRaQ"/>
           <semanticElements xmi:type="uml:Port" href="model.uml#_jvlukMRSEeKpJ4r0h0kRaQ"/>
           <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_g_OWZ8bcEeKe6cgNmFsFbw" labelFormat="italic" showIcon="false">
@@ -8627,7 +8622,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_9hVRQMdmEeKe6cgNmFsFbw" red="166" green="193" blue="152"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']"/>
-        <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_nE-ztMbcEeKe6cgNmFsFbw" name="Debug User Interface" outgoingEdges="__KaE8Mk0EeKQtrZQQ_SgaA" incomingEdges="_Ib6y48eQEeKpyLjJ3hOE5w _MlXOMMk1EeKQtrZQQ_SgaA" width="2" height="2">
+        <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_nE-ztMbcEeKe6cgNmFsFbw" name="Debug User Interface" outgoingEdges="__KaE8Mk0EeKQtrZQQ_SgaA" incomingEdges="_Ib6y48eQEeKpyLjJ3hOE5w" width="2" height="2">
           <target xmi:type="uml:Interface" href="model.uml#_5veVAMRMEeKpJ4r0h0kRaQ"/>
           <semanticElements xmi:type="uml:Interface" href="model.uml#_5veVAMRMEeKpJ4r0h0kRaQ"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -8641,7 +8636,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subNodeMappings[name='CS_SubProvidedInterface']"/>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_nE-MoMbcEeKe6cgNmFsFbw" name="Launch Utilities" outgoingEdges="__KasAsk0EeKQtrZQQ_SgaA" incomingEdges="_Ib6y5seQEeKpyLjJ3hOE5w _MlX1Qsk1EeKQtrZQQ_SgaA" width="2" height="2">
+        <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_nE-MoMbcEeKe6cgNmFsFbw" name="Launch Utilities" outgoingEdges="__KasAsk0EeKQtrZQQ_SgaA" incomingEdges="_Ib6y5seQEeKpyLjJ3hOE5w" width="2" height="2">
           <target xmi:type="uml:Interface" href="model.uml#_dtA6YMRNEeKpJ4r0h0kRaQ"/>
           <semanticElements xmi:type="uml:Interface" href="model.uml#_dtA6YMRNEeKpJ4r0h0kRaQ"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -8696,7 +8691,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']"/>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_nE_axMbcEeKe6cgNmFsFbw" name="Runtime Controller" outgoingEdges="_MnQEksk1EeKQtrZQQ_SgaA _MnR5wMk1EeKQtrZQQ_SgaA" incomingEdges="__LYVUMk0EeKQtrZQQ_SgaA __Laxk8k0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
+        <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_nE_axMbcEeKe6cgNmFsFbw" name="Runtime Controller" outgoingEdges="_MnR5wMk1EeKQtrZQQ_SgaA" incomingEdges="__LYVUMk0EeKQtrZQQ_SgaA __Laxk8k0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="uml:Interface" href="model.uml#_Kn45EMRMEeKpJ4r0h0kRaQ"/>
           <semanticElements xmi:type="uml:Interface" href="model.uml#_Kn45EMRMEeKpJ4r0h0kRaQ"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -8709,7 +8704,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subNodeMappings[name='CS_SubRequiredInterface']"/>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_ty4XYMeSEeKpyLjJ3hOE5w" name="Domain Specific Model" outgoingEdges="_MnPdgMk1EeKQtrZQQ_SgaA _MnRSsMk1EeKQtrZQQ_SgaA" incomingEdges="__LY8YMk0EeKQtrZQQ_SgaA __LaxkMk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
+        <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_ty4XYMeSEeKpyLjJ3hOE5w" name="Domain Specific Model" outgoingEdges="_MnRSsMk1EeKQtrZQQ_SgaA" incomingEdges="__LY8YMk0EeKQtrZQQ_SgaA __LaxkMk0EeKQtrZQQ_SgaA" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="uml:Interface" href="model.uml#_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
           <semanticElements xmi:type="uml:Interface" href="model.uml#_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
           <ownedStyle xmi:type="viewpoint:CustomStyle" xmi:id="_ty4XYceSEeKpyLjJ3hOE5w" labelFormat="italic" showIcon="false" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
@@ -8862,7 +8857,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_krsAEMbnEeKe6cgNmFsFbw" name="DSA MOCC Map Editor">
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_krsAEMbnEeKe6cgNmFsFbw" name="DSA-MOCC Map Editor">
         <target xmi:type="uml:Component" href="model.uml#_kro8wMbnEeKe6cgNmFsFbw"/>
         <semanticElements xmi:type="uml:Component" href="model.uml#_kro8wMbnEeKe6cgNmFsFbw"/>
         <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_iyJPEMboEeKe6cgNmFsFbw" name="in" incomingEdges="_Mpcc8Mk1EeKQtrZQQ_SgaA _MpdEAMk1EeKQtrZQQ_SgaA" width="2" height="2">
@@ -9559,42 +9554,6 @@
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_ProvidedInterface2RequiredInterface']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_MlXOMMk1EeKQtrZQQ_SgaA" sourceNode="_g_OWYcbcEeKe6cgNmFsFbw" targetNode="_nE-ztMbcEeKe6cgNmFsFbw">
-        <target xmi:type="uml:InterfaceRealization" href="model.uml#_NvkkQMRjEeKjnL1-ylacNQ"/>
-        <semanticElements xmi:type="uml:InterfaceRealization" href="model.uml#_NvkkQMRjEeKjnL1-ylacNQ"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MlX1QMk1EeKQtrZQQ_SgaA" targetArrow="NoDecoration" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_IR_SubPort2ProvidedInterface']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MlX1Qck1EeKQtrZQQ_SgaA" red="114" green="159" blue="207"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_IR_SubPort2ProvidedInterface']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_MlX1Qsk1EeKQtrZQQ_SgaA" sourceNode="_g_OWYcbcEeKe6cgNmFsFbw" targetNode="_nE-MoMbcEeKe6cgNmFsFbw">
-        <target xmi:type="uml:InterfaceRealization" href="model.uml#_NvlLUMRjEeKjnL1-ylacNQ"/>
-        <semanticElements xmi:type="uml:InterfaceRealization" href="model.uml#_NvlLUMRjEeKjnL1-ylacNQ"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MlYcUMk1EeKQtrZQQ_SgaA" targetArrow="NoDecoration" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_IR_SubPort2ProvidedInterface']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MlYcUck1EeKQtrZQQ_SgaA" red="114" green="159" blue="207"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_IR_SubPort2ProvidedInterface']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_MnPdgMk1EeKQtrZQQ_SgaA" sourceNode="_ty4XYMeSEeKpyLjJ3hOE5w" targetNode="_g_OWZsbcEeKe6cgNmFsFbw">
-        <target xmi:type="uml:Usage" href="model.uml#_nZxhUMRSEeKpJ4r0h0kRaQ"/>
-        <semanticElements xmi:type="uml:Usage" href="model.uml#_nZxhUMRSEeKpJ4r0h0kRaQ"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MnQEkMk1EeKQtrZQQ_SgaA" targetArrow="NoDecoration" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_U_RequiredInterface2SubPort']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MnQEkck1EeKQtrZQQ_SgaA" red="173" green="127" blue="168"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_U_RequiredInterface2SubPort']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_MnQEksk1EeKQtrZQQ_SgaA" sourceNode="_nE_axMbcEeKe6cgNmFsFbw" targetNode="_g_OWZsbcEeKe6cgNmFsFbw">
-        <target xmi:type="uml:Usage" href="model.uml#_nZyIYMRSEeKpJ4r0h0kRaQ"/>
-        <semanticElements xmi:type="uml:Usage" href="model.uml#_nZyIYMRSEeKpJ4r0h0kRaQ"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MnQEk8k1EeKQtrZQQ_SgaA" targetArrow="NoDecoration" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_U_RequiredInterface2SubPort']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MnQElMk1EeKQtrZQQ_SgaA" red="173" green="127" blue="168"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_U_RequiredInterface2SubPort']"/>
-      </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_MnQroMk1EeKQtrZQQ_SgaA" sourceNode="_tysKIMeSEeKpyLjJ3hOE5w" targetNode="_denWMMa3EeKe6cgNmFsFbw">
         <target xmi:type="uml:Usage" href="model.uml#_Zk96YMRiEeKjnL1-ylacNQ"/>
         <semanticElements xmi:type="uml:Usage" href="model.uml#_Zk96YMRiEeKjnL1-ylacNQ"/>
@@ -9925,6 +9884,15 @@
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MpeSIMk1EeKQtrZQQ_SgaA" targetArrow="NoDecoration" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_U_RequiredInterface2Port']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MpeSIck1EeKQtrZQQ_SgaA" red="173" green="127" blue="168"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_U_RequiredInterface2Port']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_VX1aQMoCEeKZK8Yj2802Vw" sourceNode="_VR6_gMoCEeKZK8Yj2802Vw" targetNode="_VTNY8MoCEeKZK8Yj2802Vw">
+        <target xmi:type="uml:Usage" href="model.uml#_w5ucEMnNEeKnM_PqPYw7EQ"/>
+        <semanticElements xmi:type="uml:Usage" href="model.uml#_w5ucEMnNEeKnM_PqPYw7EQ"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_VX1aQcoCEeKZK8Yj2802Vw" targetArrow="NoDecoration" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_U_RequiredInterface2Port']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_VX1aQsoCEeKZK8Yj2802Vw" red="173" green="127" blue="168"/>
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_U_RequiredInterface2Port']"/>
       </ownedDiagramElements>
