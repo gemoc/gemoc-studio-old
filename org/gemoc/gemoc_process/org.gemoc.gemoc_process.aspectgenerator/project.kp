@@ -1,7 +1,9 @@
 resource library_standard = "platform:/plugin/org.kermeta.language.library.standard"  	alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
 resource aspect_generator = "platform:/resource/org.kermeta.language.aspectgenerator" 	alternative "mvn:org.kermeta.language/org.kermeta.language.aspectgenerator/2.0.99-SNAPSHOT"
+resource console_displayer = "mvn:ConsoleDisplayer/ConsoleDisplayer/0.0.1-SNAPSHOT"
 
 importProject library_standard
+importProject console_displayer
 
 project gemoc_process_aspectgenerator extends aspect_generator {
 	mainClass "gemoc_process_aspectgenerator^mainPackage::MainClass"
