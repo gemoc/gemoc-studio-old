@@ -210,14 +210,6 @@
     </ownedConnector>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_xH45UMarEeKe6cgNmFsFbw" client="_4Bq4MLxxEeK4q7aZ2ZzLTw" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_q03fQMavEeKe6cgNmFsFbw" name="EMF Gen Model">
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_znKbUMavEeKe6cgNmFsFbw" name="in" type="_uco3MMavEeKe6cgNmFsFbw" aggregation="composite"/>
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_4FhdAMavEeKe6cgNmFsFbw" name="out" type="_vxyFMMavEeKe6cgNmFsFbw" aggregation="composite"/>
-    <ownedConnector xmi:id="_YE35EMaxEeKe6cgNmFsFbw" clientDependency="_JzhTUMaxEeKe6cgNmFsFbw _UPBo4MaxEeKe6cgNmFsFbw" name="User Metamodel Byte Code_User Metamodel Byte Code_connector">
-      <end xmi:id="_YE35EcaxEeKe6cgNmFsFbw" role="_4FhdAMavEeKe6cgNmFsFbw"/>
-      <end xmi:id="_YE35EsaxEeKe6cgNmFsFbw" role="_6f8RcLxxEeK4q7aZ2ZzLTw"/>
-    </ownedConnector>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_3EMi4MavEeKe6cgNmFsFbw" client="_uco3MMavEeKe6cgNmFsFbw" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_Fw1hAMaxEeKe6cgNmFsFbw" name="Domain Specific Metamodel Byte Code"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_UPBo4MaxEeKe6cgNmFsFbw" client="_4Bq4MLxxEeK4q7aZ2ZzLTw _YE35EMaxEeKe6cgNmFsFbw" supplier="_Fw1hAMaxEeKe6cgNmFsFbw"/>
@@ -274,10 +266,6 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_7l2KUMbJEeKe6cgNmFsFbw" client="_bmLIsMbJEeKe6cgNmFsFbw _9BOjMMbJEeKe6cgNmFsFbw" supplier="_1WTUUMbIEeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_Ek5I8MbKEeKe6cgNmFsFbw" client="_bmLIsMbJEeKe6cgNmFsFbw _RgMksMdtEeKe6cgNmFsFbw" supplier="_uOrxYMbIEeKe6cgNmFsFbw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_cApowMbKEeKe6cgNmFsFbw" client="_bmLIsMbJEeKe6cgNmFsFbw" supplier="_Fw1hAMaxEeKe6cgNmFsFbw"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_0HaX8MbLEeKe6cgNmFsFbw" name="DSA Compiler">
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_o2BfEMbSEeKe6cgNmFsFbw" name="out" type="_icS84MbSEeKe6cgNmFsFbw" aggregation="composite"/>
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_RXhSoMblEeKe6cgNmFsFbw" name="in" type="_OY7akMblEeKe6cgNmFsFbw" aggregation="composite"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_z6Y9sMbNEeKe6cgNmFsFbw" name="Sirius Editor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_8_HtkMbNEeKe6cgNmFsFbw" name="in" type="_3KgDkMbNEeKe6cgNmFsFbw" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="__SjIwMbNEeKe6cgNmFsFbw" name="out" type="_42nAEMbNEeKe6cgNmFsFbw" aggregation="composite"/>
@@ -298,7 +286,7 @@
   <packagedElement xmi:type="uml:Interface" xmi:id="_Ih6MkMbUEeKe6cgNmFsFbw" name="Trigger Event Request"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_UzXXIMbUEeKe6cgNmFsFbw" name="Trigger Event Request"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_D-3CsMbVEeKe6cgNmFsFbw" client="_D9YVcMaoEeKe6cgNmFsFbw _GMR8gMbVEeKe6cgNmFsFbw" supplier="_UzXXIMbUEeKe6cgNmFsFbw"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_gly8AMbXEeKe6cgNmFsFbw" name="Executable Modeling Tools">
+  <packagedElement xmi:type="uml:Component" xmi:id="_gly8AMbXEeKe6cgNmFsFbw" clientDependency="_HW1hIMwlEeKztIfeS1zUgQ" name="Executable Modeling Tools">
     <nestedClassifier xmi:type="uml:Component" xmi:id="_pQciwMPIEeKpJ4r0h0kRaQ" clientDependency="_OHwVYMRQEeKpJ4r0h0kRaQ _OHxjgMRQEeKpJ4r0h0kRaQ _w5488MRjEeKjnL1-ylacNQ _xThO0MbdEeKe6cgNmFsFbw" name="Domain Specific Graphical Animated Editor">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_T52-QMRNEeKpJ4r0h0kRaQ" name="out" type="_N7Rf8MRNEeKpJ4r0h0kRaQ" aggregation="composite"/>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_jvlukMRSEeKpJ4r0h0kRaQ" name="in" type="_hIgXkMRSEeKpJ4r0h0kRaQ" aggregation="composite"/>
@@ -367,8 +355,12 @@
         <interfaceRealization xmi:id="_N1tkIMa2EeKe6cgNmFsFbw" client="_jz_EoMPJEeKpJ4r0h0kRaQ" supplier="_QqjHoMRjEeKjnL1-ylacNQ" contract="_QqjHoMRjEeKjnL1-ylacNQ"/>
       </packagedElement>
     </nestedClassifier>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_HW1hIMwlEeKztIfeS1zUgQ" name="&lt;&lt;dependency>>" client="_gly8AMbXEeKe6cgNmFsFbw" supplier="_e1lgAMwkEeKztIfeS1zUgQ"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_idv8IMbXEeKe6cgNmFsFbw" name="Execution Engine for Heterogeneous Models"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_idv8IMbXEeKe6cgNmFsFbw" clientDependency="_NlnXkMwlEeKztIfeS1zUgQ _SPo2sMwlEeKztIfeS1zUgQ" name="Execution Engine for Heterogeneous Models">
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_NlnXkMwlEeKztIfeS1zUgQ" name="&lt;&lt;dependency>>" client="_idv8IMbXEeKe6cgNmFsFbw" supplier="_gly8AMbXEeKe6cgNmFsFbw"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_SPo2sMwlEeKztIfeS1zUgQ" name="&lt;&lt;dependency>>" client="_idv8IMbXEeKe6cgNmFsFbw" supplier="_mTfeoMbXEeKe6cgNmFsFbw"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_mTfeoMbXEeKe6cgNmFsFbw" name="Language Definition Tools"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_ovDiIMbXEeKe6cgNmFsFbw" name="Eclipse Modeling"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_qNhEMMbXEeKe6cgNmFsFbw" name="Eclipse"/>
@@ -389,7 +381,9 @@
       <end xmi:id="_iASk0cdrEeKe6cgNmFsFbw" role="_YqqMQMbpEeKe6cgNmFsFbw"/>
     </ownedConnector>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_MNCuoMbhEeKe6cgNmFsFbw" name="Reflexive Model Animators"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_MNCuoMbhEeKe6cgNmFsFbw" clientDependency="_PpvygMwlEeKztIfeS1zUgQ" name="Reflexive Model Animators">
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_PpvygMwlEeKztIfeS1zUgQ" name="&lt;&lt;dependency>>" client="_MNCuoMbhEeKe6cgNmFsFbw" supplier="_idv8IMbXEeKe6cgNmFsFbw"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_EtP04MbkEeKe6cgNmFsFbw" name="MOCC Editor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_j68KgMblEeKe6cgNmFsFbw" name="out" type="_gIZtAMblEeKe6cgNmFsFbw" aggregation="composite"/>
     <ownedConnector xmi:id="_0goxcMblEeKe6cgNmFsFbw" clientDependency="_NUgZILxxEeK4q7aZ2ZzLTw _zSJlEMblEeKe6cgNmFsFbw" name="MOCC_MOCC_connector">
@@ -440,11 +434,11 @@
     <packagedElement xmi:type="uml:Interface" xmi:id="_wqKroMbkEeKe6cgNmFsFbw" name="DSA Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_W0jKkMa6EeKe6cgNmFsFbw" name="Trace Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_NYmLwLxtEeKBVNTpoiWWdA" name="Domain Specific Metamodel"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_Ya2CIMPJEeKpJ4r0h0kRaQ" name="Domain Specific Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Ya2CIMPJEeKpJ4r0h0kRaQ" clientDependency="_wafzIMwiEeKztIfeS1zUgQ" name="Domain Specific Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_US0UMMbnEeKe6cgNmFsFbw" name="Concurrency Execution Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_1WTUUMbIEeKe6cgNmFsFbw" name="Domain Specific Event Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_uOrxYMbIEeKe6cgNmFsFbw" name="Domain Specific Event Vector Model"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_7GpBoMbQEeKe6cgNmFsFbw" name="Execution Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_7GpBoMbQEeKe6cgNmFsFbw" clientDependency="_0RKDAMwfEeKztIfeS1zUgQ" name="Execution Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_uuBlwMPIEeKpJ4r0h0kRaQ" name="Domain Specific  Representation Definition Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_17QzEMPJEeKpJ4r0h0kRaQ" name="Domain Specific Representation Definition Extension Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_0xevQLxwEeK4q7aZ2ZzLTw" name="Kermeta Model">
@@ -455,7 +449,7 @@
       <generalization xmi:id="_TSY8gMboEeKe6cgNmFsFbw" general="_R-GDEMboEeKe6cgNmFsFbw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Interface" xmi:id="_Bg4SsLx0EeK4q7aZ2ZzLTw" name="CCSL Model">
-      <generalization xmi:id="_Xl8R0MbnEeKe6cgNmFsFbw" general="_US0UMMbnEeKe6cgNmFsFbw"/>
+      <generalization xmi:id="_Xl8R0MbnEeKe6cgNmFsFbw" general="_GpujMLxxEeK4q7aZ2ZzLTw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Interface" xmi:id="_AA3mkLx2EeK4q7aZ2ZzLTw" name="Gemoc Project State Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_kedlALx2EeK4q7aZ2ZzLTw" name="Scenario Model"/>
@@ -463,18 +457,8 @@
       <generalization xmi:id="_YDMQcMeVEeKpyLjJ3hOE5w" general="_NYmLwLxtEeKBVNTpoiWWdA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Interface" xmi:id="_cEK3sMhHEeKF5dseaqVSHw" name="GemocLanguage Model"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_Va190MhIEeKF5dseaqVSHw" name="dSA ModelsToDomain Specific Metamodels" memberEnd="_Va190chIEeKF5dseaqVSHw _Va191MhIEeKF5dseaqVSHw" navigableOwnedEnd="_Va190chIEeKF5dseaqVSHw _Va191MhIEeKF5dseaqVSHw">
-      <ownedEnd xmi:id="_Va190chIEeKF5dseaqVSHw" name="dSA Models" type="_wqKroMbkEeKe6cgNmFsFbw" association="_Va190MhIEeKF5dseaqVSHw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Va190shIEeKF5dseaqVSHw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Va1908hIEeKF5dseaqVSHw" value="*"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_Va191MhIEeKF5dseaqVSHw" name="domain Specific Metamodels" type="_NYmLwLxtEeKBVNTpoiWWdA" association="_Va190MhIEeKF5dseaqVSHw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Va191chIEeKF5dseaqVSHw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Va191shIEeKF5dseaqVSHw" value="*"/>
-      </ownedEnd>
-    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_XZcYgMhIEeKF5dseaqVSHw" name="gemocLanguage ModelsToDSA Models" memberEnd="_XZcYgchIEeKF5dseaqVSHw _XZcYhMhIEeKF5dseaqVSHw" navigableOwnedEnd="_XZcYgchIEeKF5dseaqVSHw _XZcYhMhIEeKF5dseaqVSHw">
-      <ownedEnd xmi:id="_XZcYgchIEeKF5dseaqVSHw" name="gemocLanguage Models" type="_cEK3sMhHEeKF5dseaqVSHw" association="_XZcYgMhIEeKF5dseaqVSHw">
+      <ownedEnd xmi:id="_XZcYgchIEeKF5dseaqVSHw" name="gemocLanguage Models" type="_cEK3sMhHEeKF5dseaqVSHw" aggregation="composite" association="_XZcYgMhIEeKF5dseaqVSHw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XZcYgshIEeKF5dseaqVSHw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XZcYg8hIEeKF5dseaqVSHw" value="*"/>
       </ownedEnd>
@@ -483,17 +467,49 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XZcYhshIEeKF5dseaqVSHw" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_acCm0MhIEeKF5dseaqVSHw" name="gemocLanguage ModelsToMOCC Models" memberEnd="_acCm0chIEeKF5dseaqVSHw _acFqIshIEeKF5dseaqVSHw" navigableOwnedEnd="_acCm0chIEeKF5dseaqVSHw _acFqIshIEeKF5dseaqVSHw">
-      <ownedEnd xmi:id="_acCm0chIEeKF5dseaqVSHw" name="gemocLanguage Models" type="_cEK3sMhHEeKF5dseaqVSHw" association="_acCm0MhIEeKF5dseaqVSHw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_acFqIMhIEeKF5dseaqVSHw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_acFqIchIEeKF5dseaqVSHw" value="*"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_AkmSQMhJEeKF5dseaqVSHw" name="OperatorDefinition Model"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_eAIGYMweEeKztIfeS1zUgQ" name="gemocLanguage ModelsToDomain Specific Metamodels" memberEnd="_eAIGYcweEeKztIfeS1zUgQ _eAIGZMweEeKztIfeS1zUgQ" navigableOwnedEnd="_eAIGZMweEeKztIfeS1zUgQ">
+      <ownedEnd xmi:id="_eAIGYcweEeKztIfeS1zUgQ" name="gemocLanguage Models" type="_cEK3sMhHEeKF5dseaqVSHw" aggregation="composite" association="_eAIGYMweEeKztIfeS1zUgQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eAIGYsweEeKztIfeS1zUgQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eAIGY8weEeKztIfeS1zUgQ" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_acFqIshIEeKF5dseaqVSHw" name="mOCC Models" type="_GpujMLxxEeK4q7aZ2ZzLTw" association="_acCm0MhIEeKF5dseaqVSHw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_acFqI8hIEeKF5dseaqVSHw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_acFqJMhIEeKF5dseaqVSHw" value="*"/>
+      <ownedEnd xmi:id="_eAIGZMweEeKztIfeS1zUgQ" name="domain Specific Metamodels" type="_NYmLwLxtEeKBVNTpoiWWdA" association="_eAIGYMweEeKztIfeS1zUgQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eAIGZcweEeKztIfeS1zUgQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eAIGZsweEeKztIfeS1zUgQ" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_AkmSQMhJEeKF5dseaqVSHw" name="OperatorDefinition Model"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_C_k0sMwfEeKztIfeS1zUgQ" name="gemocLanguage ModelsToMOCC Models" memberEnd="_C_k0scwfEeKztIfeS1zUgQ _C_n4AcwfEeKztIfeS1zUgQ" navigableOwnedEnd="_C_n4AcwfEeKztIfeS1zUgQ">
+      <ownedEnd xmi:id="_C_k0scwfEeKztIfeS1zUgQ" name="gemocLanguage Models" type="_cEK3sMhHEeKF5dseaqVSHw" aggregation="composite" association="_C_k0sMwfEeKztIfeS1zUgQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_C_k0sswfEeKztIfeS1zUgQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_C_n4AMwfEeKztIfeS1zUgQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_C_n4AcwfEeKztIfeS1zUgQ" name="mOCC Models" type="_GpujMLxxEeK4q7aZ2ZzLTw" association="_C_k0sMwfEeKztIfeS1zUgQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_C_n4AswfEeKztIfeS1zUgQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_C_n4A8wfEeKztIfeS1zUgQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_0RKDAMwfEeKztIfeS1zUgQ" client="_7GpBoMbQEeKe6cgNmFsFbw" supplier="_R-GDEMboEeKe6cgNmFsFbw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_4ASnMMwfEeKztIfeS1zUgQ" name="DSA Models" memberEnd="_4ASnMcwfEeKztIfeS1zUgQ _4ASnNMwfEeKztIfeS1zUgQ" navigableOwnedEnd="_4ASnNMwfEeKztIfeS1zUgQ">
+      <ownedEnd xmi:id="_4ASnMcwfEeKztIfeS1zUgQ" name="dSA Models" type="_wqKroMbkEeKe6cgNmFsFbw" association="_4ASnMMwfEeKztIfeS1zUgQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4ASnMswfEeKztIfeS1zUgQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4ASnM8wfEeKztIfeS1zUgQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_4ASnNMwfEeKztIfeS1zUgQ" name="domain Specific Metamodels" type="_NYmLwLxtEeKBVNTpoiWWdA" association="_4ASnMMwfEeKztIfeS1zUgQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4ASnNcwfEeKztIfeS1zUgQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4ASnNswfEeKztIfeS1zUgQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_wafzIMwiEeKztIfeS1zUgQ" client="_Ya2CIMPJEeKpJ4r0h0kRaQ" supplier="_NYmLwLxtEeKBVNTpoiWWdA"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_2ZikcMwiEeKztIfeS1zUgQ" name="Trace Models" memberEnd="_2ZikccwiEeKztIfeS1zUgQ _2ZlnwcwiEeKztIfeS1zUgQ" navigableOwnedEnd="_2ZlnwcwiEeKztIfeS1zUgQ">
+      <ownedEnd xmi:id="_2ZikccwiEeKztIfeS1zUgQ" name="trace Models" type="_W0jKkMa6EeKe6cgNmFsFbw" association="_2ZikcMwiEeKztIfeS1zUgQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2ZikcswiEeKztIfeS1zUgQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2ZlnwMwiEeKztIfeS1zUgQ" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_2ZlnwcwiEeKztIfeS1zUgQ" name="scenario Models" type="_kedlALx2EeK4q7aZ2ZzLTw" association="_2ZikcMwiEeKztIfeS1zUgQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2ZlnwswiEeKztIfeS1zUgQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2Zlnw8wiEeKztIfeS1zUgQ" value="*"/>
+      </ownedEnd>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_wppicMeNEeKpyLjJ3hOE5w" name="component_inputs_outputs">
     <packagedElement xmi:type="uml:Class" xmi:id="_3KgDkMbNEeKe6cgNmFsFbw" clientDependency="_DK4FMMbOEeKe6cgNmFsFbw" name="Sirius Editor Input"/>
@@ -610,5 +626,20 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_AhKOoMhHEeKF5dseaqVSHw" name="Composition Operator Applicator"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_Xqf6AMhNEeKF5dseaqVSHw" name="Scheduling Compiler"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_e1lgAMwkEeKztIfeS1zUgQ" clientDependency="_JY9w8MwlEeKztIfeS1zUgQ" name="Generative Tools">
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_0HaX8MbLEeKe6cgNmFsFbw" name="DSA Compiler">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_o2BfEMbSEeKe6cgNmFsFbw" name="out" type="_icS84MbSEeKe6cgNmFsFbw" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_RXhSoMblEeKe6cgNmFsFbw" name="in" type="_OY7akMblEeKe6cgNmFsFbw" aggregation="composite"/>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_Xqf6AMhNEeKF5dseaqVSHw" name="Scheduling Compiler"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_q03fQMavEeKe6cgNmFsFbw" name="EMF Gen Model">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_znKbUMavEeKe6cgNmFsFbw" name="in" type="_uco3MMavEeKe6cgNmFsFbw" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_4FhdAMavEeKe6cgNmFsFbw" name="out" type="_vxyFMMavEeKe6cgNmFsFbw" aggregation="composite"/>
+      <ownedConnector xmi:id="_YE35EMaxEeKe6cgNmFsFbw" clientDependency="_JzhTUMaxEeKe6cgNmFsFbw _UPBo4MaxEeKe6cgNmFsFbw" name="User Metamodel Byte Code_User Metamodel Byte Code_connector">
+        <end xmi:id="_YE35EcaxEeKe6cgNmFsFbw" role="_4FhdAMavEeKe6cgNmFsFbw"/>
+        <end xmi:id="_YE35EsaxEeKe6cgNmFsFbw" role="_6f8RcLxxEeK4q7aZ2ZzLTw"/>
+      </ownedConnector>
+    </nestedClassifier>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_JY9w8MwlEeKztIfeS1zUgQ" name="&lt;&lt;dependency>>" client="_e1lgAMwkEeKztIfeS1zUgQ" supplier="_mTfeoMbXEeKe6cgNmFsFbw"/>
+  </packagedElement>
 </uml:Model>
