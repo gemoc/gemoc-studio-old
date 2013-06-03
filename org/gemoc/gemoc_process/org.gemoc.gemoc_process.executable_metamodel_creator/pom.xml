@@ -6,9 +6,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.gemoc.gemoc_process.aspectgenerator</artifactId>
-    <packaging>bundle</packaging>
-    <name>org.gemoc.gemoc_process.aspectgenerator</name>
+    <artifactId>org.gemoc.gemoc_process.executable_metamodel_creator</artifactId>
+    <packaging>jar</packaging>
+    <name>org.gemoc.gemoc_process.executable_metamodel_creator</name>
 
     <dependencies>   
     	 <dependency>
@@ -27,6 +27,12 @@
             <groupId>org.kermeta.language</groupId>
             <artifactId>org.kermeta.language.library.standard</artifactId>
             <version>${kermeta.version}</version>
+        </dependency>
+        
+    	 <dependency>
+            <groupId>ConsoleDisplayer</groupId>
+            <artifactId>ConsoleDisplayer</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
     
@@ -97,22 +103,22 @@
 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 		            	<Bundle-ClassPath>.</Bundle-ClassPath>
 						<Bundle-Version>${bundle.version}</Bundle-Version>
-						<Bundle-Activator>org.gemoc.gemoc_process.aspectgenerator.Activator</Bundle-Activator>
+						<Bundle-Activator>org.gemoc.gemoc_process.executable_metamodel_creator.Activator</Bundle-Activator>
                         <!-- Dependency used for compiling all the bundle (with dependency to org.eclipse.core.* -->
                     	<Require-Bundle>
 		            	</Require-Bundle>
 		            
 		            	<!-- note: imports k2 to workaround problem about loading reflexivity.km
 		            	     and reexport it to allow an external plugin (ui for ex) to set the messagingsystem of stdio -->
-                        <Export-Package>org.gemoc.gemoc_process.aspectgenerator
+                        <Export-Package>org.gemoc.gemoc_process.executable_metamodel_creator
 		            	</Export-Package>
 		            	<Private-Package>
 		            		p1.*,
-		            		gemoc_process_aspectgenerator.*,
-		            		gemoc_process_aspectgeneratorrunner.*,
-		            		ScalaImplicit.gemoc_process_aspectgenerator.*,
+		            		gemoc_process_executable_metamodel_creator.*,
+		            		gemoc_process_executable_metamodel_creatorrunner.*,
+		            		ScalaImplicit.gemoc_process_executable_metamodel_creator.*,
 		            		scalaUtil;-split-package:=merge-last,
-			            	org.gemoc.gemoc_process.aspectgenerator.impl,
+			            	org.gemoc.gemoc_process.executable_metamodel_creator.impl,
 			            	kermeta_standard.*
 		            	</Private-Package>
 		            	<!--
@@ -235,7 +241,7 @@
         	</plugins>
         </pluginManagement>
     </build>
-    <description>gemoc generator of aspect classes</description>
+    <description>gemoc creator of executable metamodel</description>
     <groupId>org.gemoc.gemoc_process</groupId>
 </project>
 

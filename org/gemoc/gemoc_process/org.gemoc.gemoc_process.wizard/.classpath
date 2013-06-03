@@ -246,9 +246,9 @@
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.checker.api/2.0.99-SNAPSHOT/org.kermeta.language.checker.api-2.0.99-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/language/language.model/2.0.99-SNAPSHOT/language.model-2.0.99-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/kermeta/diagnostic/diagnostic.model/2.0.99-SNAPSHOT/diagnostic.model-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/diagnostic/org.kermeta.diagnostic.model/2.0.99-SNAPSHOT/org.kermeta.diagnostic.model-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.checker/2.0.99-SNAPSHOT/org.kermeta.language.checker-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/kermeta/diagnostic/diagnostic.model/2.0.99-SNAPSHOT/diagnostic.model-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/emf/emf.genmodel/2.0.99-SNAPSHOT/emf.genmodel-2.0.99-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.codegen/2.6.0.v20100914-1218/org.eclipse.emf.codegen-2.6.0.v20100914-1218.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.codegen.ecore/2.6.1.v20100914-1218/org.eclipse.emf.codegen.ecore-2.6.1.v20100914-1218.jar"/>
@@ -256,7 +256,9 @@
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.ecore/2.6.1.v20100914-1218/org.eclipse.emf.ecore-2.6.1.v20100914-1218.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/eclipse/org.eclipse.emf.ecore.xmi/2.5.0.v20100521-1846/org.eclipse.emf.ecore.xmi-2.5.0.v20100521-1846.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/eclipse/osgi/3.7.2-v20120110-1415/osgi-3.7.2-v20120110-1415.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/gemoc/org.gemoc.gemoc_process.aspectgenerator/0.0.1-SNAPSHOT/org.gemoc.gemoc_process.aspectgenerator-0.0.1-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/gemoc/gemoc_process/testtest/0.0.1-SNAPSHOT/testtest-0.0.1-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/gemoc/gemoc_process/org.gemoc.gemoc_process.executable_metamodel_creator/0.0.1-SNAPSHOT/org.gemoc.gemoc_process.executable_metamodel_creator-0.0.1-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/kermeta/language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT/org.kermeta.language.library.standard-2.0.99-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/ConsoleDisplayer/ConsoleDisplayer/0.0.1-SNAPSHOT/ConsoleDisplayer-0.0.1-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.8.1/junit-4.8.1.jar" sourcepath="M2_REPO/junit/junit/4.8.1/junit-4.8.1-sources.jar"/>
 </classpath>

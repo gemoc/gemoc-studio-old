@@ -7,8 +7,6 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.regex.Pattern;
 
-import k2.io.StdIO;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -93,35 +91,44 @@ public class KermetaProjectNewWizard extends Wizard implements INewWizard {
 	}
 
 	public void createKmtProjectWithEcore () {
-		//org.kermeta.language.aspectgenerator.KM2KMTAspectGenerator generator = Activator.getKM2KMTAspectGenerator();
-		org.gemoc.gemoc_process.aspectgenerator.KM2KMTAspectGenerator generator = Activator.getKM2KMTAspectGenerator();
-		generator.mainOperationScala();
-		if (generator != null) {
+		org.gemoc.gemoc_process.executable_metamodel_creator.KM2KMTexecutable_metamodel_creator creator = Activator.getKM2KMTexecutable_metamodel_creator();
+		if (creator != null) {
 			switch (this.context.indexTransfomation) {
 			case 0:
-				generator.generateNoneScala (this.context.nameProject,
+				creator.generateNoneScala (this.context.nameProject,
 											 "file:///" + this.context.locationProject,
 											 "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 											 this.context.ecoreIFile.getProject().getName());
 				break;
 			case 1:
-				generator.generateAspectProjectScala (this.context.nameProject,
+				creator.generateAspectProjectScala (this.context.nameProject,
 													  "file:///" + this.context.locationProject,
 						 							  "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 						 							  this.context.ecoreIFile.getProject().getName());
 				break; 
 			case 2:
-				generator.generateCustomizeProjectScala (this.context.nameProject,
+				/*generator.generateCustomizeProjectScala (this.context.nameProject,
 														 "file:///" + this.context.locationProject,
 						 								 "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 						 								 this.context.ecoreIFile.getProject().getName(),
 						 								 this.context.operationName,
 						 								 this.context.operationReturnType,
 						 								 this.context.operationParams,
-						 								 this.context.listNewClass);
+						 								 this.context.listNewClass);*/
+				
+				System.out.println("generateDynamicAttributeScala launched");
+				creator.generateDynamicAttributeScala (this.context.nameProject,
+						 "file:///" + this.context.locationProject,
+							 "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
+							 this.context.ecoreIFile.getProject().getName(),
+							 this.context.operationName,
+							 this.context.operationReturnType,
+							 this.context.operationParams,
+							 this.context.listNewClass);
+				System.out.println("generateDynamicAttributeScala ended");
 				break;
 			case 3:
-				generator.generateVisitorProjectScala (this.context.nameProject,
+				creator.generateVisitorProjectScala (this.context.nameProject,
 													   "file:///" + this.context.locationProject,
 						 							   "/" + this.context.ecoreIFile.getProjectRelativePath().toString(),
 						 							   this.context.ecoreIFile.getProject().getName());

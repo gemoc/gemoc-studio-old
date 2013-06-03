@@ -1,4 +1,4 @@
-resource library_standard ="platform:/plugin/org.kermeta.language.library.standard"  	alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
+resource library_standard = "platform:/plugin/org.kermeta.language.library.standard"  	alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
 resource aspect_generator = "platform:/resource/org.kermeta.language.aspectgenerator" 	alternative "mvn:org.kermeta.language/org.kermeta.language.aspectgenerator/2.0.99-SNAPSHOT"
 
 importProject library_standard
@@ -8,4 +8,5 @@ project gemoc_process_aspectgenerator extends aspect_generator {
 	mainOperation "mainOperation"
 
 	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
+	import "${project.baseUri}/src/main/kmt/aspect.kmt"
 }
