@@ -43,8 +43,8 @@
 
 \section{Purpose}
 %Start of user code IntroductionPurpose
-This document presents the architectural design of the Gemoc Studio. We focus on 
-the description of  Compoments and Metamodels integrated in the Gemoc Studio.
+This document presents the architectural design of the GEMOC Studio. We focus on 
+the description of  Compoments and Metamodels integrated in the GEMOC Studio.
 %End of user code
 
 \section{Perimeter}
@@ -76,17 +76,28 @@ environment, and the principles guiding its design and evolution
 
 \section{References}
 %Start of user code IntroductionReferences
-
+The basis of the GEMOC Studio architecture is described in the project proposal document. 
 %End of user code
 
 \section{Summary}
 %Start of user code IntroductionSummary
+This document describes the architecture of the GEMOC Studio, outlining every logical component along with its role and how it relates to the other components. We will detail all required and provided interfaces and define the exchanged data's format, thus describing how each individual piece of the studio is going to communicate with the others.
+This document also lists the requirements regarding the technical integration of these components and guides the GEMOC partners in providing their artifacts through specific tutorials.
+
 
 %End of user code
  
 \chapter{Architecture}
 %Start of user code Architecture
-\begin{figure}[bt]
+Starting from the project prososal view of the Studio (see figure \ref{fig:ProjectProposalView}), it is refined into a component based architecture as shown in figure \ref{fig:GlobalView}. 
+\begin{figure}[htp]
+	\begin{center}
+	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, width=1.0\linewidth]{../images/ProjectProposalView.jpg}
+	\caption{Project proposal view of the GEMOC Studio}
+	\label{fig:ProjectProposalView}
+	\end{center}
+\end{figure}
+\begin{figure}[htp]
 	\begin{center}
 	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, width=1.0\linewidth]{../images/Global View.jpg}
 	\caption{Architecture of the GEMOC Studio}
@@ -102,9 +113,9 @@ The logical architecture will be described with a model-based formalism describi
 We can identify 3 main groups of components and artefacts in the studio.
 
 \begin{itemize}
-	\item Gemoc components are the components offered by the studio that constitutes the base of the studio and provide the main functionalities (see figures \ref{fig:LogicalView} and \ref{fig:TimesquareImplementation}).
-	\item Metamodels this is the languages used by the gemoc component to exchange data between them. (see figure \ref{fig:MetamodelList}).
-	\item User component artefacts are the result of some of the Gemoc components and are specific to the user use case. They are used in the main process as input of other component or as a tool to produce other artefact. As they are specific to the user, these artifacts are prefixed with ``Domain Specific''. (see figure \ref{fig:DomainSpecificComponentList}).
+	\item \textbf{GEMOC components:} are the components offered by the studio that constitutes the base of the studio and provide the main functionalities (see figures \ref{fig:LogicalView} and \ref{fig:TimesquareImplementation}).
+	\item \textbf{Metamodels:} these elements are the languages used by the ``GEMOC components'' to exchange data between them. (see figure \ref{fig:MetamodelList}).
+	\item \textbf{Domain Specific Components:} These artefacts are the result of some of the GEMOC components and are specific to the domain. They are produced by the Domain Designers. Then, they are used by the Domain Experts in the main process as input of other component or as a tool to produce other artefact. As they are specific to the domain, these artifacts are prefixed with ``Domain Specific''. In a real domain application, this prefix would be replaced but the actual name of the domain. (see figure \ref{fig:DomainSpecificComponentList}).
 \end{itemize}
 
 \begin{figure}[htp]
@@ -469,7 +480,7 @@ This component produces a new component that we will reference as \emph{Domain S
 \subsection{Eclipse}
 \label{sec:Eclipse}
 %Start of user code Eclipse
-Eclipse is an integrated development environment composed of a runtime system and an plug-in mechanism used to extend and customize the environment. It is released under the terms of the Eclipse Public License, and is a free and open source software. The Gemoc studio will be based on and fully integrated to Eclipse. Consequently most of the end user Gemoc components will be released as Eclipse plugins.
+Eclipse is an integrated development environment composed of a runtime system and an plug-in mechanism used to extend and customize the environment. It is released under the terms of the Eclipse Public License, and is a free and open source software. The GEMOC studio will be based on and fully integrated to Eclipse. Consequently most of the end user GEMOC components will be released as Eclipse plugins.
 %End of user code
 
 \subsubsection{Purpose}
@@ -549,7 +560,7 @@ JAVA API to add launch configuration types to the platform. A launch configurati
 
 \subsubsection{Purpose}
 %Start of user code Eclipse ModelingDescription
-The Eclipse Modeling Project focuses on the evolution and promotion of model-based development technologies within the Eclipse community by providing a unified set of modeling frameworks, tooling, and standards implementations. The Gemoc studio is based on many different Eclipse modeling projects :
+The Eclipse Modeling Project focuses on the evolution and promotion of model-based development technologies within the Eclipse community by providing a unified set of modeling frameworks, tooling, and standards implementations. The GEMOC Studio is based on many different Eclipse modeling projects :
 \begin{itemize}
 \item EMF : a modeling framework and code generation facility for building tools and other applications based on a structured data model.
 \item GEF : provides technology to create rich graphical editors and views for the Eclipse Workbench UI.
@@ -608,7 +619,7 @@ This component produces an ecore model.
 
 \subsubsection{Purpose}
 %Start of user code Executable Modeling ToolsDescription
-This component is a logical component which contains all the domain specific components generated through the Gemoc workbench process:  
+This component is a logical component which contains all the domain specific components generated through the GEMOC workbench process:  
 \begin{itemize}
 \item Domain Specific Editor
 \item Domain Specific Metamodel Byte Code
@@ -714,7 +725,7 @@ the requests for DSE which are consequences of the execution of DSA
 
 \subsubsection{Purpose}
 %Start of user code Gemoc Process assistantDescription
-This component aims at proposing some guidance to the user in order to follow the Gemoc methodology. This component may be some kind of integrated tutorial and/or process wizard.
+This component aims at proposing some guidance to the user in order to follow the GEMOC methodology. This component may be some kind of integrated tutorial and/or process wizard.
 %End of user code 
 
 \begin{center}
@@ -725,7 +736,7 @@ This component port requires the following inputs:
 \begin{itemize}
   \item \textbf{Gemoc Project State Model} :
 %Start of user code Gemoc Project State Model_input_Description for Gemoc Process assistant
-If the component is presented as a wizard, it may take as input the current state of the current Gemoc project (GemocProjectState) so it can highlight the current step and propose the next steps to the user.
+If the component is presented as a wizard, it may take as input the current state of the current GEMOC project (GemocProjectState) so it can highlight the current step and propose the next steps to the user.
 %End of user code 
 (see section~\ref{sec:Gemoc_Project_State_Model}.)
 \end{itemize}
@@ -816,7 +827,7 @@ This component port provides the following outputs:
 \subsection{Kermeta Editor}
 \label{sec:Kermeta_Editor}
 %Start of user code Kermeta Editor
-Kermeta Editor is used in the context of Gemoc as a DSA editor.
+Kermeta Editor is used in the context of GEMOC as a DSA editor.
 %End of user code
 
 \subsubsection{Purpose}
@@ -833,7 +844,7 @@ This component port provides the following outputs:
 \begin{itemize}
   \item \textbf{Kermeta Model} :
 %Start of user code Kermeta Model_output_Description for Kermeta Editor
-This component produces a Kermeta model that will constitute the DSA part of Domain Specific Language according to Gemoc methodology 
+This component produces a Kermeta model that will constitute the DSA part of Domain Specific Language according to GEMOC methodology 
 %End of user code 
 (see section~\ref{sec:Kermeta_Model}.)
 \end{itemize}
@@ -900,7 +911,7 @@ ModHel'X supports only hierarchical heterogeneity through the use of interface b
 
 For modeling the relations between the occurrence of events and the time scales in different models of computation, ModHel'X relies on a time model and a solver for these relations. This time model is called TESL (Tagged Event Specification Language) and is inspired by the Tagged Signal Model by Lee and Sangiovanni, and the CCSL language developed by the AOSTE INRIA team. Contrary to CCSL, TESL and its solver can only construct one execution trace by applying causality relations and constraints on the tags (dates) of events. It has been designed for specifying how to execute an heterogeneous model, while CCSL is more suitable to specify constraints on all possible executions of an heterogeneous model. Thanks to its reduced expressive power with regard to the ordering of events, and to its reduced analysis possibilities, TESL is able to handle constraints on the tags which are associated to event occurrences, which makes it handy and efficient for executing heterogeneous models. It would theoretically be possible to model such relations in CCSL using infinitely fast clocks. There are currently discussions about the possibility to determine if a TESL model is a correct implementation of a CCSL specification. With such a possibility, we could use CCSL for specifying a model of computation and then use TESL to write an implementation of this model of computation. The specification would allow static verification of properties, while the implementation would allow efficient simulations.
 
-The current architecture of ModHel'X is not aligned on the Gemoc framework, and part of the contribution of Sup\'elec is to modify its structure to make it usable as an execution engine and a solver in the Gemoc framework.
+The current architecture of ModHel'X is not aligned on the GEMOC framework, and part of the contribution of Sup\'elec is to modify its structure to make it usable as an execution engine and a solver in the GEMOC framework.
 
 %End of user code 
 
@@ -935,7 +946,7 @@ The current architecture of ModHel'X is not aligned on the Gemoc framework, and 
 \label{sec:Policy}
 %Start of user code Policy
 A Policy is part of the description of the control in a language. It works in conjunction with a model of computation.
-The Policy component is an abstract componant whose implementations are responsible for selecting one Domain Specific Event from a vector of triggerable Domain Specific Event. Several selection strategies are provided in Gemoc.
+The Policy component is an abstract componant whose implementations are responsible for selecting one Domain Specific Event from a vector of triggerable Domain Specific Event. Several selection strategies are provided in GEMOC.
 %End of user code
 
 \subsubsection{Purpose}
@@ -994,7 +1005,7 @@ The purpose of the Random Policy is to randomly explore the possible behaviors o
 
 \subsubsection{Purpose}
 %Start of user code Reflexive Model AnimatorsDescription
-This component is a logical component which provides animation capability on the reflexive models. In the Gemoc workbench, this component will be implemented by the Sirius Animator.
+This component is a logical component which provides animation capability on the reflexive models. In the GEMOC workbench, this component will be implemented by the Sirius Animator.
 %End of user code 
 
 \begin{center}
@@ -1829,13 +1840,13 @@ The Execution Model is used to describe the state of a model during its executio
 \subsection{Gemoc Project State Model}
 \label{sec:Gemoc_Project_State_Model}
 %Start of user code Gemoc Project State Model_interface
-This structure is used to capture the state of the Gemoc process in the IDE. It is then used by the wizard component to drive the user in his xDSML design tasks.
+This structure is used to capture the state of the GEMOC process in the IDE. It is then used by the wizard component to drive the user in his xDSML design tasks.
 %End of user code
 
 \subsection{GemocLanguage Model}
 \label{sec:GemocLanguage_Model}
 %Start of user code GemocLanguage Model_interface
-This structure represents the definition of a language according to Gemoc methodology.
+This structure represents the definition of a language according to GEMOC methodology.
 
 It is composed of a DSE, a DSA and a Domain Specific Metamodel.
 
@@ -1844,7 +1855,7 @@ It is composed of a DSE, a DSA and a Domain Specific Metamodel.
 \subsection{Kermeta Model}
 \label{sec:Kermeta_Model}
 %Start of user code Kermeta Model_interface
-In Gemoc, Kermeta language is used as a DSA.
+In GEMOC, Kermeta language is used as a DSA.
 It is able to specify the actions of a Domain Specific Metamodel.
 
 Kermeta metamodel uses an operationnal semantics to weave the actions in the DSM.
@@ -1877,13 +1888,13 @@ The Trace Model is used to represent execution traces as sequences of domain spe
 
 \chapter{Component integration process}
 %Start of user code Component integration process
-In  order to create the Gemoc Studio, the components and metamodels must follow our development process.
+In  order to create the GEMOC Studio, the components and metamodels must follow our development process.
 
 \section{Providing and updating a contribution}
 \subsection{Minimum requirement for a component}
-A component should be integrated to the Gemoc studio if the component :
+A component should be integrated to the GEMOC Studio if the component :
 \begin{itemize}
-	\item is referenced in the Gemoc architecture model
+	\item is referenced in the GEMOC architecture model
 	\item is a set of eclipse plugins/OSGI bundles
 	\item has one feature referencing all plugins/bundles
 	\item compiles using a maven script
@@ -1893,11 +1904,11 @@ A component should be integrated to the Gemoc studio if the component :
 \end{itemize}
 \subsection{Minimum requirement for a metamodel}
 \begin{itemize}
-	\item is referenced in the Gemoc architecture model
+	\item is referenced in the GEMOC architecture model
 	\item is distributed as a part of an editor component (should follow the component minimal requirements)
 \end{itemize}
 \section{Continuous integration}
-The resulting Gemoc Studion is available via the continuous integration server at the link below :
+The resulting GEMOC Studio is available via the continuous integration server at the link below :
 \newline
 \url {http://ci.inria.fr/gemoc/job/org.gemoc.gemoc_studio.root/}
 %End of user code
@@ -1905,8 +1916,8 @@ The resulting Gemoc Studion is available via the continuous integration server a
 %Start of user code additionnal chapters or annexes
 
 \newpage
-\chapter{Appendix A : Tutorial "How to deliver a Gemoc Component distribution"}
-This annex presents some guidelines to help the partners building the Gemoc Studio components.
+\chapter{Appendix A : Tutorial "How to deliver a GEMOC Component distribution"}
+This annex presents some guidelines to help the partners building the GEMOC Studio components.
 \section{Sources}
 \subsection{SCM}
 The sources of the metamodels, components and samples developed for the project should be stored in the git repository available from the forge at link below :\newline
@@ -1932,8 +1943,8 @@ Every component should be built and distributed as a P2 repository. The recommen
 External tools and dependencies should be mirrored as P2 repositories in order to ensure their versions even if their original author update it without notice.
 \newline
 \textless TODO\textgreater
-\section{Gemoc Studio}
-Gemoc Studio should be used to design its plug-ins which will design all along the project.
+\section{GEMOC Studio}
+GEMOC Studio should be used to design its plug-ins which will design all along the project.
 
 It currently contains following tools :
 \begin{itemize}
@@ -1952,7 +1963,7 @@ It is downloading at link below :
 \newline
 \url {https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_studio.root/}
 \section{Required configuration}
-To launch Gemoc Studio, these components should setup on your computer :
+To launch GEMOC Studio, these components should setup on your computer :
 \begin{itemize}
 	\item JDK JAVA 1.6 minimum version, JDK should download to link below :
 	\newline
@@ -1971,10 +1982,10 @@ A new component should have some validation steps :
 	\item The new component should contain an example presenting its functionalities
 \end{itemize}
 \subsection{Minimum requirement for a component}
-A component should be integrated to the Gemoc studio if the component : 
+A component should be integrated to the GEMOC studio if the component : 
 \newline
 \begin{itemize}
-	\item is referenced in the Gemoc architecture model
+	\item is referenced in the GEMOC architecture model
 	\item is a set of eclipse plugins/OSGI bundles
 	\item has one feature referencing all plugins/bundles
 	\item compiles using a maven script
