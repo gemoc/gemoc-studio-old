@@ -54,6 +54,21 @@
             <layout>p2</layout>
             <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.trace.master/lastSuccessfulBuild/artifact/org/gemoc/execution/trace/org.gemoc.execution.trace.p2updatesite/target/repository/</url>
         </repository>
+        <repository>
+            <id>timesquare ECL</id>
+            <layout>p2</layout>
+            <url>http://timesquare.inria.fr/ecl/update_site</url>
+        </repository>	
+        <repository>
+            <id>timesquare</id>
+            <layout>p2</layout>
+            <url>http://timesquare.inria.fr/update_site</url>
+        </repository>
+        <repository>
+            <id>Scala-IDE 3.0.0 Release Juno For Scala 2.9.x</id>
+            <layout>p2</layout>
+            <url>http://download.scala-ide.org/sdk/e38/scala29/stable/site</url>
+        </repository>
     </repositories>
 
     <build>
