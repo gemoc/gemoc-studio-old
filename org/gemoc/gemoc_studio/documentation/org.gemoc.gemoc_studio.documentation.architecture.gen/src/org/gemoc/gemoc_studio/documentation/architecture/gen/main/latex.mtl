@@ -122,6 +122,7 @@ environment, and the principles guiding its design and evolution
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{[component.name/]}
+\label{sec:[component.name.replaceAll(' ', '_').replaceAll('\'', '_')/]}
 %[protected (component.name)]
 
 %[/protected]
@@ -143,6 +144,7 @@ This component port requires the following inputs:
   \item \textbf{[interface.name/]} :
 %[protected (interface.name+'_input_Description for '+component.name)]
 %[/protected] 
+(see section~\ref{sec:[interface.name.replaceAll(' ', '_').replaceAll('\'', '_')/]}.)
 [/for]
 \end{itemize}
 [/if]
@@ -156,6 +158,7 @@ This component port provides the following outputs:
   \item \textbf{[interface.name/]} :
 %[protected (interface.name+'_output_Description for '+component.name)]
 %[/protected] 
+(see section~\ref{sec:[interface.name.replaceAll(' ', '_').replaceAll('\'', '_')/]}.)
 [/for]
 \end{itemize}
 [/if]
@@ -164,6 +167,7 @@ This component port provides the following outputs:
 
 [template public generate(interface : Interface)]
 \subsection{[interface.name/]}
+\label{sec:[interface.name.replaceAll(' ', '_').replaceAll('\'', '_')/]}
 %[protected (interface.name+'_interface')]
 
 %[/protected]
