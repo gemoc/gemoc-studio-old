@@ -510,6 +510,16 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2Zlnw8wiEeKztIfeS1zUgQ" value="*"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_-HKh8MznEeKI8r6RYlgV5g" name="gemocLanguage ModelsToDSE Models" memberEnd="_-HKh8cznEeKI8r6RYlgV5g _-HKh9MznEeKI8r6RYlgV5g" navigableOwnedEnd="_-HKh9MznEeKI8r6RYlgV5g">
+      <ownedEnd xmi:id="_-HKh8cznEeKI8r6RYlgV5g" name="gemocLanguage Models" type="_cEK3sMhHEeKF5dseaqVSHw" aggregation="composite" association="_-HKh8MznEeKI8r6RYlgV5g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-HKh8sznEeKI8r6RYlgV5g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-HKh88znEeKI8r6RYlgV5g" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_-HKh9MznEeKI8r6RYlgV5g" name="dSE Models" type="_R-GDEMboEeKe6cgNmFsFbw" association="_-HKh8MznEeKI8r6RYlgV5g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-HKh9cznEeKI8r6RYlgV5g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-HKh9sznEeKI8r6RYlgV5g" value="*"/>
+      </ownedEnd>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_wppicMeNEeKpyLjJ3hOE5w" name="component_inputs_outputs">
     <packagedElement xmi:type="uml:Class" xmi:id="_3KgDkMbNEeKe6cgNmFsFbw" clientDependency="_DK4FMMbOEeKe6cgNmFsFbw" name="Sirius Editor Input"/>
@@ -615,16 +625,23 @@
       <interfaceRealization xmi:id="_L_Oq4Mg7EeKF5dseaqVSHw" clientDependency="_L_Oq4Mg7EeKF5dseaqVSHw" client="_59j1MMg6EeKF5dseaqVSHw _L_Oq4Mg7EeKF5dseaqVSHw" supplier="_Ya2CIMPJEeKpJ4r0h0kRaQ" contract="_Ya2CIMPJEeKpJ4r0h0kRaQ"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_76S0YMhKEeKF5dseaqVSHw" clientDependency="_fdfAEMhLEeKF5dseaqVSHw" name="Composition Operator Editor Output">
-      <interfaceRealization xmi:id="_fdfAEMhLEeKF5dseaqVSHw" clientDependency="_fdfAEMhLEeKF5dseaqVSHw" client="_76S0YMhKEeKF5dseaqVSHw _fdfAEMhLEeKF5dseaqVSHw" supplier="_AkmSQMhJEeKF5dseaqVSHw" contract="_AkmSQMhJEeKF5dseaqVSHw"/>
+      <interfaceRealization xmi:id="_fdfAEMhLEeKF5dseaqVSHw" clientDependency="_fdfAEMhLEeKF5dseaqVSHw" client="_76S0YMhKEeKF5dseaqVSHw _fdfAEMhLEeKF5dseaqVSHw _duCMkMzpEeKI8r6RYlgV5g" supplier="_AkmSQMhJEeKF5dseaqVSHw" contract="_AkmSQMhJEeKF5dseaqVSHw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_h6mKUMnNEeKnM_PqPYw7EQ" clientDependency="_w5ucEMnNEeKnM_PqPYw7EQ" name="Scenario Policy Input"/>
     <packagedElement xmi:type="uml:Usage" xmi:id="_w5ucEMnNEeKnM_PqPYw7EQ" client="_h6mKUMnNEeKnM_PqPYw7EQ" supplier="_kedlALx2EeK4q7aZ2ZzLTw"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_JdSssMzoEeKI8r6RYlgV5g" clientDependency="_Y_X6gMzoEeKI8r6RYlgV5g" name="Composition Operator Applicator Input"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_O_fJ8MzoEeKI8r6RYlgV5g" name="Composition Operator Applicator Output"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_Y_X6gMzoEeKI8r6RYlgV5g" client="_JdSssMzoEeKI8r6RYlgV5g _duCMkMzpEeKI8r6RYlgV5g" supplier="_AkmSQMhJEeKF5dseaqVSHw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_0zqswMhGEeKF5dseaqVSHw" name="Language Composition tools">
-    <packagedElement xmi:type="uml:Component" xmi:id="_8xW8EMhGEeKF5dseaqVSHw" name="Composition Operator Editor">
-      <ownedAttribute xmi:type="uml:Port" xmi:id="_C5tdkMhLEeKF5dseaqVSHw" name="out" type="_76S0YMhKEeKF5dseaqVSHw" aggregation="composite"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Component" xmi:id="_AhKOoMhHEeKF5dseaqVSHw" name="Composition Operator Applicator"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_8xW8EMhGEeKF5dseaqVSHw" name="Composition Operator Editor">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_C5tdkMhLEeKF5dseaqVSHw" name="out" type="_76S0YMhKEeKF5dseaqVSHw" aggregation="composite"/>
+    <ownedConnector xmi:id="_duCMkMzpEeKI8r6RYlgV5g" clientDependency="_Y_X6gMzoEeKI8r6RYlgV5g _fdfAEMhLEeKF5dseaqVSHw" name="OperatorDefinition Model_OperatorDefinition Model_connector">
+      <end xmi:id="_duCMkczpEeKI8r6RYlgV5g" role="_C5tdkMhLEeKF5dseaqVSHw"/>
+    </ownedConnector>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_AhKOoMhHEeKF5dseaqVSHw" name="Composition Operator Applicator">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_UNFQMMzoEeKI8r6RYlgV5g" name="in" type="_JdSssMzoEeKI8r6RYlgV5g" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_cEi7sMzoEeKI8r6RYlgV5g" name="out" type="_O_fJ8MzoEeKI8r6RYlgV5g" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_e1lgAMwkEeKztIfeS1zUgQ" clientDependency="_JY9w8MwlEeKztIfeS1zUgQ" name="Generative Tools">
     <nestedClassifier xmi:type="uml:Component" xmi:id="_0HaX8MbLEeKe6cgNmFsFbw" name="DSA Compiler">

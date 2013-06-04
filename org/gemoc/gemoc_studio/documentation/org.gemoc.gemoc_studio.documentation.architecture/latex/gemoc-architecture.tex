@@ -15,12 +15,12 @@
 %Start of user code revisions
 \begin{revisions}
 	\begin{revtable}
-		\dates{}{}{}{}{}
-		\writers{}{}{}{}{}
-		\approvers{}{}{}{}{}
+		\dates{03/06/2013}{}{}{}{}
+		\writers{Didier Vojtisek}{}{}{}{}
+		\approvers{Benoit Combemale}{}{}{}{}
 	\end{revtable}
 	\begin{revisionlabels}
-		\revlabel{}
+		\revlabel{Initial version}
 	\end{revisionlabels}
 \end{revisions}
 %End of user code
@@ -137,11 +137,6 @@ We can identify 3 main groups of components and artefacts in the studio.
 \end{figure}
 %End of user code
 
-\section{Exchanges}
-%Start of user code ArchitectureExchanges
-The components will exchange either models conforming to a given metamodel or will exchange/produce another component that will be used later in the process.
-
-%End of user code
 
 \section{Components}
 %Start of user code ArchitectureComponents
@@ -229,6 +224,12 @@ This component port provides the following outputs:
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Composition_Operator_Applicator.png}
 \end{center}
 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{OperatorDefinition Model} :
+%Start of user code OperatorDefinition Model_input_Description for Composition Operator Applicator
+%End of user code 
+\end{itemize}
 
 
 
@@ -686,6 +687,24 @@ If the component is presented as a wizard, it may take as input the current stat
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generative Tools}
+%Start of user code Generative Tools
+
+%End of user code
+
+\subsubsection{Purpose}
+%Start of user code Generative ToolsDescription
+
+%End of user code 
+
+%\begin{center}
+%\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Generative_Tools.png}
+%\end{center}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Interactive Policy}
 %Start of user code Interactive Policy
 The Interactive Policy is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
@@ -763,24 +782,6 @@ This component port provides the following outputs:
 This component produces a Kermeta model that will constitute the DSA part of Domain Specific Language according to Gemoc methodology 
 %End of user code 
 \end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Language Composition tools}
-%Start of user code Language Composition tools
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Language Composition toolsDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Language_Composition_tools.png}
-\end{center}
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
