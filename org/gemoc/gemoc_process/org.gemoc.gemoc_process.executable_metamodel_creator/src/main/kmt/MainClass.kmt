@@ -1,0 +1,64 @@
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+
+using kermeta::emfpersistence::*
+using ecore::*
+using org::kermeta::language::aspectgenerator::Context
+using org::kermeta::language::aspectgenerator::KmtFileGeneration
+
+package mainPackage{
+	class MainClass
+	{
+
+		@main "" 
+		operation mainOperation() : Void is do
+	        var ecoreFile		: String init "/src/test/ASMLogo.ecore"
+
+	        var userDefined		: OrderedSet[String] init OrderedSet[String].new
+	        var newClass		: OrderedSet[String] init OrderedSet[String].new
+	        var test			: OrderedSet[String] init OrderedSet[String].new
+	        
+	        userDefined.add("context : Context")
+	        userDefined.add("name : String")
+	      	newClass.add("Context")
+			
+			generateDynamicAttribute("userdefined", "platform:/resource/org.gemoc.gemoc_process.executable_metamodel_creator/target/result", ecoreFile, "org.gemoc.gemoc_process.executable_metamodel_creator", "userDefined", "Integer", userDefined, newClass)
+		end
+		
+		operation loadEcoreModel(ecoreFile : String) : Collection[EPackage] is do             
+			var repository : ResourceSet init ResourceSet.new
+			var resource : Resource init repository.createResource(ecoreFile, "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore")
+			
+			resource.load(void)      
+			result := OrderedSet[EPackage].new
+			resource.getContents.each{next |
+				if (next.isInstanceOf(EPackage)) then                 
+					result.add(next.asType(EPackage))
+				end
+			}			
+		end
+		
+		operation generateDynamicAttribute (nameProject : String, folderLocation : String, ecoreFile : String, ecoreProjectPath : String, operationName : String, operationReturnType : String, operationParams : OrderedSet[String], listNewClass : OrderedSet[String]) : Void is do
+			var inputPackages	: Collection[EPackage] init loadEcoreModel("platform:/resource/" + ecoreProjectPath + ecoreFile)
+	        var context 		: Context := Context.new
+	        var kmtFile 		: KmtFileGeneration init KmtFileGeneration.new.initialize(context)
+	        
+	        //customize
+	        context.initialize("userDefined", nameProject, folderLocation, ecoreFile, ecoreProjectPath, operationName,operationReturnType, operationParams, listNewClass)
+	        inputPackages.each{p | p.generateAspectGemoc(context)}
+	        context.listNewClass.each{ nc | kmtFile.writeNewClass(nc)}
+	        kmtFile.writeProjectKp
+		end
+		
+		operation listMetaClasses(ecoreProjectPath : String) : OrderedSet[String] is do
+			var inputPackages	: Collection[EPackage] init loadEcoreModel("platform:/resource/" + ecoreProjectPath)
+	        var context 		: Context := Context.new
+	        var fullPathClass	: String init ""
+	        
+	        context.initialize
+	        inputPackages.each{p | p.listMetaClasses (context, fullPathClass)}
+			
+			result := context.listClassEcore
+		end
+	}
+}

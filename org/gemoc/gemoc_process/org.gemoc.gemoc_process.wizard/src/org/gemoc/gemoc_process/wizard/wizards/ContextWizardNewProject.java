@@ -19,9 +19,11 @@ public class ContextWizardNewProject {
 	public String 	operationName;
 	public String 	operationReturnType;
 	public Integer	indexTransfomation;
+	public String	vincent;
 	
 	public k2.standard.KermetaOrderedSet<String> listNewClass;
 	public k2.standard.KermetaOrderedSet<String> operationParams; 
+	public k2.standard.KermetaOrderedSet<String> listMetaClass; 
 	
 	public ContextWizardNewProject () {
 		this.ecoreProject 			= false;
@@ -34,6 +36,8 @@ public class ContextWizardNewProject {
 		this.operationReturnType 	= "";
 		this.operationParams 		= new RichKermetaOrderedSet<String>(new ArrayList<String>());
 		this.listNewClass 			= new RichKermetaOrderedSet<String>(new ArrayList<String>());
+		this.listMetaClass 			= new RichKermetaOrderedSet<String>(new ArrayList<String>());
 		this.indexTransfomation		= 0;
+		vincent = "Vincent";
 	}
 }

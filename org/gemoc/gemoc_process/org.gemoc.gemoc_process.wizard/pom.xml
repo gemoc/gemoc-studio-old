@@ -9,15 +9,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.gemoc.gemoc_process.wizard</artifactId>
-    <groupId>org.gemoc.gemoc_process</groupId>
-    <packaging>bundle</packaging>
-    
+     
     <parent>
         <groupId>org.gemoc.gemoc_process</groupId>
         <artifactId>org.gemoc.gemoc_process.root</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    
+    <artifactId>org.gemoc.gemoc_process.wizard</artifactId>
+	<packaging>bundle</packaging>
     
     <build>
     	<sourceDirectory>src</sourceDirectory>
@@ -57,6 +57,7 @@
                         <Export-Package>
                         	org.gemoc.gemoc_process.wizard.*
                         </Export-Package>
+                        
                         <Require-Bundle>
 	                        org.eclipse.ui,
 							org.eclipse.core.runtime,
@@ -239,10 +240,10 @@
         	<version>${utils.version}</version>
         </dependency>-->
         <dependency>
-        	<groupId>org.gemoc</groupId>
-        	<artifactId>org.gemoc.gemoc_process.aspectgenerator</artifactId>      	
-        	<version>0.0.1-SNAPSHOT</version>
+  			<groupId>org.gemoc.gemoc_process</groupId>
+  			<artifactId>executable_metamodel_creator_KmtToPlugin</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-    <name>gemoc_process.wizard</name>
+    <name>org.gemoc.gemoc_process.wizard</name>
 </project>

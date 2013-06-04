@@ -15,6 +15,14 @@
             id="org.gemoc.gemoc_process.wizard.wizards.KermetaProjectNewWizard"
             name="Gemoc project"
             project="true">
+      </wizard>      
+      <wizard
+            category="org.gemoc.gemoc_process.wizard"
+            class="org.gemoc.gemoc_process.wizard.wizards.GemocProjectNewWizard"
+            icon="icons/gemoc-logo_16x16.png"
+            id="org.gemoc.gemoc_process.wizard.wizards.GemocProjectNewWizard"
+            name="DSML"
+            project="true">
       </wizard>
    </extension>  
    <extension
