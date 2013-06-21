@@ -22,11 +22,11 @@
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
         </dependency>   
+        
     	 <dependency>
             <groupId>org.kermeta.language</groupId>
             <artifactId>org.kermeta.language.library.standard</artifactId>
             <version>${kermeta.version}</version>
-            
         </dependency>
     </dependencies>
     
@@ -107,6 +107,7 @@
                         <Export-Package>org.gemoc.gemoc_process.aspectgenerator
 		            	</Export-Package>
 		            	<Private-Package>
+		            		p1.*,
 		            		gemoc_process_aspectgenerator.*,
 		            		gemoc_process_aspectgeneratorrunner.*,
 		            		ScalaImplicit.gemoc_process_aspectgenerator.*,

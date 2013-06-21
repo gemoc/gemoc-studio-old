@@ -1,0 +1,12 @@
+using kermeta::standard::*
+using kermeta::io::StdIO => stdio
+
+package org::kermeta::language::aspectgenerator {
+	aspect class Context {
+		attribute listClassEcore : OrderedSet[String]
+		
+		operation initialize () : Void is do
+			self.listClassEcore := OrderedSet[String].new
+		end
+	}
+}

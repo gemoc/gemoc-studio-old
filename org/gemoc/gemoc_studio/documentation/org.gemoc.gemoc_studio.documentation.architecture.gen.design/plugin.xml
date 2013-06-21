@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="fr.obeo.dsl.viewpoint.componentization">
+    <component class="org.gemoc.gemoc_studio.documentation.architecture.gen.design.Activator"
+               id="org.gemoc.gemoc_studio.documentation.architecture.gen.design"
+	       name="GenArchi">
+    </component>
+  </extension>
+</plugin>

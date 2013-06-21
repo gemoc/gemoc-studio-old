@@ -24,7 +24,7 @@
 		<slf4j.version>1.6.1</slf4j.version>
 		<bundle.vendor>IRISA/INRIA</bundle.vendor>
 		<tycho.version>0.11.0</tycho.version>
-		<eclipse.repository.version>indigo</eclipse.repository.version>
+		<eclipse.repository.version>juno</eclipse.repository.version>
 		<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
 		<buildNumber>${maven.build.timestamp}</buildNumber>
 	</properties>

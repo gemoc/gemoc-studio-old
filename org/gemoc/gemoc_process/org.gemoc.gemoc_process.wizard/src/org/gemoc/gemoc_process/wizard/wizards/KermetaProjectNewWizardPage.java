@@ -1,8 +1,11 @@
 package org.gemoc.gemoc_process.wizard.wizards;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import k2.standard.RichKermetaOrderedSet;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -30,6 +33,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
 import org.eclipse.emf.mapping.ecore2ecore.presentation.Ecore2EcoreEditorPlugin;
+import org.gemoc.gemoc_process.wizard.Activator;
 
 public class KermetaProjectNewWizardPage extends WizardPage {
 
@@ -42,6 +46,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 	private Composite 	container;
 	private Label 		lblProjectName;
 	private Label 		lblTemplateEcore;
+	private Text		text_3;
 	private Text 		txtProjectName;
 	private Text 		txtProjectLocation;
 	private Text 		txtPathEcore;
@@ -181,6 +186,7 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (workspaceDialog() || !txtPathEcore.getText().isEmpty()) {
+					text_3.setText(initText_3());
 					setPageComplete(true);
 				}
 			}
@@ -206,6 +212,10 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 				}
 			}
 		});
+		
+
+		text_3 = new Text(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
+		text_3.setBounds(10, 227, 585, 176);
 		
 		//-----------------------------------------------
 		
@@ -309,6 +319,21 @@ public class KermetaProjectNewWizardPage extends WizardPage {
 		else {
 			setErrorMessage(null);
 		}
+	}
+	
+	private String initText_3() {
+		org.gemoc.gemoc_process.executable_metamodel_creator.KM2KMTexecutable_metamodel_creator creator = Activator.getKM2KMTexecutable_metamodel_creator();
+		k2.standard.KermetaOrderedSet<String> listMetaClass = new RichKermetaOrderedSet<String>(new ArrayList<String>());
+		StringBuilder result = new StringBuilder();
+		
+		if (creator != null) {
+			listMetaClass = creator.listMetaClassesScala(this.context.ecoreIFile.getProject().getName() + "/" + this.context.ecoreIFile.getProjectRelativePath().toString());
+		}
+		
+		for (int i = 0; i < listMetaClass.size(); i++) {
+			result.append(listMetaClass.at(i) + "\n");
+		}
+		return result.toString();
 	}
 	
 	private void updateEcoreProject (boolean bState) {

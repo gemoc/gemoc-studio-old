@@ -7,7 +7,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.gemoc.gemoc_process.aspectgenerator.KM2KMTAspectGenerator;
+import org.gemoc.gemoc_process.executable_metamodel_creator.KM2KMTexecutable_metamodel_creator;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
@@ -21,13 +21,14 @@ import org.osgi.framework.ServiceReference;
 public class Activator extends AbstractUIPlugin implements BundleActivator, ServiceListener {
 
 	// The plug-in ID
+	//public static final String PLUGIN_ID = "org.kermeta.kp.wizard.eclipse"; //$NON-NLS-1$
 	public static final String PLUGIN_ID = "org.gemoc.gemoc_process.wizard"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
 	
 	ServiceReference serviceReference;
-	KM2KMTAspectGenerator aspectGeneratorService;
+	KM2KMTexecutable_metamodel_creator generatorService;
 	BundleContext bundleContext;
 	
 	
@@ -47,13 +48,13 @@ public class Activator extends AbstractUIPlugin implements BundleActivator, Serv
 		this.bundleContext = context;
 		// property for the service
 		Dictionary<String, ? extends Object> args = new Hashtable<String, Object>();
-		serviceReference = bundleContext.getServiceReference(KM2KMTAspectGenerator.class.getName());
-		aspectGeneratorService = (KM2KMTAspectGenerator) bundleContext.getService(serviceReference);
+		serviceReference = bundleContext.getServiceReference(KM2KMTexecutable_metamodel_creator.class.getName());
+		generatorService = (KM2KMTexecutable_metamodel_creator) bundleContext.getService(serviceReference);
 
 		//if (aspectGeneratorService != null)
 		//	System.err.println(aspectGeneratorService.sayHello("Toto"));
 
-		String filter = "(objectclass=" + KM2KMTAspectGenerator.class.getName() + ")";
+		String filter = "(objectclass=" + KM2KMTexecutable_metamodel_creator.class.getName() + ")";
 		//context.
 		context.addServiceListener(this, filter);
 	}
@@ -92,17 +93,17 @@ public class Activator extends AbstractUIPlugin implements BundleActivator, Serv
 	public void serviceChanged(ServiceEvent event) {
 		getDefault().getLog().log(new Status(IStatus.INFO, PLUGIN_ID, IStatus.INFO, "ServiceEvent received "+event.toString(), null));	
 		if (event.getType() == ServiceEvent.REGISTERED) {
-			aspectGeneratorService = (KM2KMTAspectGenerator) bundleContext.getService(event.getServiceReference());
+			generatorService = (KM2KMTexecutable_metamodel_creator) bundleContext.getService(event.getServiceReference());
 			//if (aspectGeneratorService != null)
 			//	System.err.println(aspectGeneratorService.sayHello("Toto"));
 		} else if (event.getType() == ServiceEvent.UNREGISTERING) {
 			bundleContext.ungetService(event.getServiceReference());
-			aspectGeneratorService = null;
+			generatorService = null;
 		}
 	}
 	
-	public static KM2KMTAspectGenerator getKM2KMTAspectGenerator(){
-		return getDefault().aspectGeneratorService;
+	public static KM2KMTexecutable_metamodel_creator getKM2KMTexecutable_metamodel_creator (){
+		return getDefault().generatorService;
 	}
 	
 	/**
