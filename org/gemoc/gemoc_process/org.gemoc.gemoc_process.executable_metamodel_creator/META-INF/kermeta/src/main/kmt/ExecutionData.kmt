@@ -1,0 +1,66 @@
+using kermeta::standard::*
+using org::kermeta::language::aspectgenerator::Context
+using org::kermeta::language::aspectgenerator::KmtFileGeneration
+
+package ecore{
+	aspect class EPackage {
+		operation generateAspectGemoc(context : Context) : Void is do
+			var iCounter 	: Integer 	init 1
+			var kmtFile 	: KmtFileGeneration
+			
+			kmtFile := KmtFileGeneration.new.initialize(context)
+			
+			addPackage (context)
+			
+			// Processing on the subpackages if it exists there
+			self.eSubpackages.each{ p | p.generateAspectGemoc(context)}
+			
+			// Processing on the class of the package if it exists there
+			if(self.eClassifiers.exists{c | c.isInstanceOf(EClass)}) then
+				context.packageCollection.each { pc |
+					context.kmtContent.append(context.counterTab(iCounter) + "package " + pc + " {\n\n")
+					iCounter := iCounter + 1}
+				self.eClassifiers.each{ c | 
+					if (c.isInstanceOf(EClass)) then
+						c.asType(EClass).generateAspectGemoc(context)
+					end}
+				kmtFile.writeKmtFile
+				context.kmtContent := StringBuffer.new
+			end
+			
+			deletePackage (context)
+			//TODO Florent
+		end
+		
+		operation listMetaClasses (context : Context, fullPathClass : String) : Void is do
+			
+			var pathClass : String init fullPathClass + self.name + "::"
+			
+			self.eSubpackages.each{ p | p.listMetaClasses(context, pathClass)}
+			
+			if(self.eClassifiers.exists{c | c.isInstanceOf(EClass)}) then
+				self.eClassifiers.each{ c | 
+					if (c.isInstanceOf(EClass)) then
+						do
+							var tmpFullPathClass : String init pathClass
+							tmpFullPathClass := tmpFullPathClass + c.name
+							context.listClassEcore.add(tmpFullPathClass)
+						end
+					end}
+			end
+		end
+	}
+	
+	
+	aspect class EClass	{
+		method generateAspectGemoc(context : Context) : Void is do
+			writeOpenClass (context)
+			writeAttributes (context)
+			writeCloseClass (context)
+		end
+		
+		operation writeAttributes (context : Context) : Void is do
+			context.kmtContent.append(context.counterTab(context.counterPackage + 2) + "attribute currentState : tsfm::State\n")
+		end
+	}
+}
