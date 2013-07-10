@@ -28,12 +28,6 @@
             <artifactId>org.kermeta.language.library.standard</artifactId>
             <version>${kermeta.version}</version>
         </dependency>
-        
-    	 <dependency>
-            <groupId>ConsoleDisplayer</groupId>
-            <artifactId>ConsoleDisplayer</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
     </dependencies>
     
     <build>
