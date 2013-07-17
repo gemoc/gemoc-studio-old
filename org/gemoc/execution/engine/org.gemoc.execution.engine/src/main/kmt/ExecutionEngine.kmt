@@ -5,14 +5,16 @@ using utils::*
 package engine{
 	class ExecutionEngine inherits Loggable
 	{
-		attribute clock : Integer
+		attribute round : Integer
 		attribute finished : Boolean
 		reference solver : Solver
-		reference eventMatcher : Matcher
+		reference eventMatcher : EventMatcher
 		
-		operation initialize(solver : Solver, level : LogLevel) : Void is do
+		operation initialize(solver : Solver, eventMatcher : EventMatcher, level : LogLevel) : Void is do
 			self.finished := false
-			self.clock := 0
+			self.round := 0
+			self.solver := solver
+			self.eventMatcher := eventMatcher
 			self.getLogger("ExecutionEngine", level)
 		end
 		
@@ -24,65 +26,29 @@ package engine{
 	        from self.finished
 	        until self.finished == true
 	        loop
-	        	from var currentEvents : OrderedCollection<DomainSpecificEvent> init self.eventMatcher.match(self.solver.getNext())
+	        	from var currentEvents : Collection<DomainSpecificEvent> init self.eventMatcher.match(self.solver.getNext())
 	        	until currentEvents.empty()
 	        	loop
-	        		var feedback : Feedback init currentEvents.first.consume()
-	        		dealWithFeedback(feedback)
+	        		var feedback : Feedback init currentEvents.any.consume()
+	        		__dealWithFeedback(feedback)
 	        	end
 	        
-	        	self.clock := self.clock + 1
-	        	if self.clock > 100 then self.finished := true end
+	        	self.round := self.round + 1
+	        	if self.round > 100 then self.finished := true end
 	        end
-	        logger.info("Shutting down the execution engine. Number of rounds: " + self.clock.toString())
+	        logger.info("Shutting down the execution engine. Number of rounds: " + self.round.toString())
 		end
 		
-		operation dealWithFeedback(feedback : Feedback) is do
-			//
+		operation __dealWithFeedback(feedback : Feedback) is do
+			
 		end
         
         
         method toString() : String is do
         	result := "<ExecutionEngine@["
-        			+ " ; clock=" + self.clock.toString()
+        			+ " ; round=" + self.round.toString()
         			+ "]>"
         end
 	}
 	
-	class Solver {
-		operation getNext() : Collection<ClockTick> is do
-			result := Sequence<ClockTick>.new
-		end
-	}
-	
-	class Matcher{
-		operation match(ticks : Collection<ClockTick>) : OrderedCollection<DomainSpecificEvent> is do
-			result := Sequence<DomainSpecificEvent>.new
-		end 
-	}
-	
-	class DomainSpecificEvent{
-		reference dsa : DomainSpecificAction
-		reference pattern : Sequence<ClockTick>
-		
-		operation consume() : Feedback is do
-			result := self.dsa.execute()
-		end
-	}
-	
-	class Feedback{
-		operation initialize() : Feedback is do
-			result := self
-		end
-	}
-	
-	class DomainSpecificAction{
-		operation execute() : Feedback is do
-			result := Feedback.new.initialize()
-		end
-	}
-	
-	class ClockTick{
-		
-	}
 }

@@ -10,4 +10,5 @@ project org_gemoc_execution_engine {
 	import "platform:/resource/org.gemoc.sample.irit.utils/src/main/kmt/printing/Printer.kmt"
 	import "platform:/resource/org.gemoc.sample.irit.utils/src/main/kmt/logging/Loggable.kmt"
 	import "platform:/resource/org.gemoc.sample.irit.utils/src/main/kmt/logging/Logger.kmt"
+	import "${project.baseUri}/src/main/kmt/Others.kmt"
 }
