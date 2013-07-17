@@ -6,12 +6,11 @@ package engine{
 	class ExecutionEngine inherits Loggable
 	{
 		attribute clock : Integer
+		attribute finished : Boolean
 		reference solver : Solver
 		reference eventMatcher : Matcher
-		reference currentEvents : OrderedCollection<ScheduledEvent>
 		
 		operation initialize(solver : Solver, level : LogLevel) : Void is do
-			self.moc := moc
 			self.finished := false
 			self.clock := 0
 			self.getLogger("ExecutionEngine", level)
@@ -25,7 +24,7 @@ package engine{
 	        from self.finished
 	        until self.finished == true
 	        loop
-	        	from var currentEvents : Collection<DomainSpecificEvent> init self.eventMatcher.match(self.solver.getNext())
+	        	from var currentEvents : OrderedCollection<DomainSpecificEvent> init self.eventMatcher.match(self.solver.getNext())
 	        	until currentEvents.empty()
 	        	loop
 	        		var feedback : Feedback init currentEvents.first.consume()
@@ -57,7 +56,7 @@ package engine{
 	}
 	
 	class Matcher{
-		operation match(ticks : Collection<ClockTick>) : Collection<DomainSpecificEvent> is do
+		operation match(ticks : Collection<ClockTick>) : OrderedCollection<DomainSpecificEvent> is do
 			result := Sequence<DomainSpecificEvent>.new
 		end 
 	}
