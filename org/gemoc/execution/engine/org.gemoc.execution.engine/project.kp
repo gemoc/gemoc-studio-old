@@ -1,0 +1,13 @@
+resource library_standard ="platform:/plugin/org.kermeta.language.library.standard" alternative "mvn:org.kermeta.language/org.kermeta.language.library.standard/2.0.99-SNAPSHOT"
+importProject library_standard
+project org_gemoc_execution_engine {
+	mainClass "org_gemoc_execution_engine^mainPackage::MainClass"
+	mainOperation "mainOperation"
+
+	import "${project.baseUri}/src/main/kmt/MainClass.kmt"
+	import "${project.baseUri}/src/main/kmt/ExecutionEngine.kmt"
+	import "platform:/resource/org.gemoc.sample.irit.utils/src/main/kmt/printing/Printable.kmt"
+	import "platform:/resource/org.gemoc.sample.irit.utils/src/main/kmt/printing/Printer.kmt"
+	import "platform:/resource/org.gemoc.sample.irit.utils/src/main/kmt/logging/Loggable.kmt"
+	import "platform:/resource/org.gemoc.sample.irit.utils/src/main/kmt/logging/Logger.kmt"
+}
