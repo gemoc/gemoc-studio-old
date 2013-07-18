@@ -45,9 +45,9 @@
         </repository>
         
         <repository>
-            <id>kermeta2-latest-snapshot</id>
+            <id>kermeta2-latest-stable</id>
             <layout>p2</layout>
-            <url>http://www.kermeta.org/integration_build/kermeta2_snapshot/update/</url>
+            <url>http://www.kermeta.org/k2/update/</url>
         </repository>	
         <repository>
         	<id>gemoc.execution.trace-latest-snapshot</id>
