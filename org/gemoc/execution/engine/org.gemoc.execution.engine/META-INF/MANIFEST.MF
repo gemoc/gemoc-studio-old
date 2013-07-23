@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Engine
+Bundle-SymbolicName: org.gemoc.execution.engine; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.gemoc.execution.engine.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.gemoc.execution.engine.emfexecution;bundle-version="1.2.2",
+ fr.inria.aoste.timesquare.ecl;bundle-version="1.0.0",
+ fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
+ fr.inria.aoste.timesquare.backend.manager;bundle-version="1.2.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
