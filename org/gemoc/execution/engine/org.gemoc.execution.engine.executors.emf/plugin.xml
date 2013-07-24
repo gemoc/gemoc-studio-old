@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="fr.inria.aoste.timesquare.backend.manager.behaviormanager">
+      <behaviormanager
+            BehaviorManager="org.gemoc.execution.engine.emfexecution.manager.EmfCodeExecutionManager"
+            BehaviorManagerGUI="org.gemoc.execution.engine.emfexecution.gui.EmfExecutionGUI"
+            name="emfexecution">
+      </behaviormanager>
+   </extension>
+
+</plugin>

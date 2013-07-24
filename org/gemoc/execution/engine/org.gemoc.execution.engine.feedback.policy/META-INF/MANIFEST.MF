@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Policy
+Bundle-SymbolicName: org.gemoc.execution.engine.feedback.policy
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.gemoc.execution.engine.feedback.policy.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.gemoc.execution.engine.feedback.data;bundle-version="1.0.0",
+ org.gemoc.execution.engine.solvers;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.gemoc.execution.engine.feedback.policy,
+ org.gemoc.execution.engine.feedback.policy.impl.easygoing

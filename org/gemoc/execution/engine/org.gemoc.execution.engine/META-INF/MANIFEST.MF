@@ -6,9 +6,14 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.gemoc.execution.engine.emfexecution;bundle-version="1.2.2",
+ org.gemoc.execution.engine.executors.emf;bundle-version="1.2.2",
  fr.inria.aoste.timesquare.ecl;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
- fr.inria.aoste.timesquare.backend.manager;bundle-version="1.2.0"
+ fr.inria.aoste.timesquare.backend.manager;bundle-version="1.2.0",
+ org.gemoc.execution.engine.executors;bundle-version="1.0.0",
+ org.gemoc.execution.engine.feedback.data;bundle-version="1.0.0",
+ org.gemoc.execution.engine.feedback.policy;bundle-version="1.0.0",
+ org.gemoc.execution.engine.solvers;bundle-version="1.0.0",
+ org.gemoc.execution.engine.events;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

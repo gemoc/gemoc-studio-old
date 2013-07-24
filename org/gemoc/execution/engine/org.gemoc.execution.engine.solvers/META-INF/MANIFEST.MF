@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Solvers
+Bundle-SymbolicName: org.gemoc.execution.engine.solvers
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.gemoc.execution.engine.solvers.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ fr.inria.aoste.trace;bundle-version="1.0.1",
+ fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.gemoc.execution.engine.solvers,
+ org.gemoc.execution.engine.solvers.impl.ccsl
