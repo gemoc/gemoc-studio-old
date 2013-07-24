@@ -14,7 +14,6 @@ import fr.inria.aoste.timesquare.ccslkernel.solver.TimeModel.SolverClock;
 public class BasicExecutionEngine implements ExecutionEngine {
 
     private BehaviorManager backend;
-    private EclInterpreter eclInterpreter;
     private boolean finished = false;
     private int rounds = 0;
     private CCSLKernelSolver solver;
@@ -22,11 +21,7 @@ public class BasicExecutionEngine implements ExecutionEngine {
     public BehaviorManager getBackend() {
         return backend;
     }
-
-    public EclInterpreter getEclInterpreter() {
-        return eclInterpreter;
-    }
-
+    
     public int getRounds() {
         return this.rounds;
     }
@@ -35,7 +30,7 @@ public class BasicExecutionEngine implements ExecutionEngine {
         return solver;
     }
 
-    private void integrateFeedback(Map<Integer, EObject> feedback) {
+    /*private void integrateFeedback(Map<Integer, EObject> feedback) {
         for (Integer value : feedback.keySet()) {
 
             // target est l'objet qui fait suite selon le bon chemin.
@@ -60,7 +55,7 @@ public class BasicExecutionEngine implements ExecutionEngine {
                 }
             }
         }
-    }
+    }*/
 
     private List<EclEvent> match(Truc clockInputs) {
         List<EclEvent> res = new ArrayList<EclEvent>();
@@ -82,7 +77,7 @@ public class BasicExecutionEngine implements ExecutionEngine {
 
             for (EclEvent event : events) {
                 Map<Integer, EObject> feedback = this.getBackend().execute(event);
-                integrateFeedback(feedback);
+                /*integrateFeedback(feedback);*/
             }
 
             finished = finished || this.rounds < maxRounds;
@@ -94,9 +89,6 @@ interface EclEvent {
     // Event from ECL
 }
 
-interface EclInterpreter {
-    // ECL Backend
-}
 
 interface Truc {
     // Trace fournie par CCSL ?
