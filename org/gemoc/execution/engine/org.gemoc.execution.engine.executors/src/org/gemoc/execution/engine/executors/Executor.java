@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.executors;
 
+import org.gemoc.execution.engine.actions.DomainSpecificAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
 
@@ -10,6 +11,14 @@ import org.gemoc.execution.engine.feedback.data.FeedbackData;
  * @author flatombe
  */
 public interface Executor {
+    /**
+     * Executes the Domain-Specific Action.
+     * 
+     * @param dsa
+     * @return
+     */
+    public FeedbackData execute(DomainSpecificAction dsa);
+
     /**
      * Executes the Domain-Specific Action(s) referenced by the given
      * Domain-Specific Event.

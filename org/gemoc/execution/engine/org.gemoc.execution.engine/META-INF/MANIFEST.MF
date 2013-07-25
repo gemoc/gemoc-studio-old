@@ -11,9 +11,10 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.backend.manager;bundle-version="1.2.0",
  org.gemoc.execution.engine.executors;bundle-version="1.0.0",
+ org.gemoc.execution.engine.solvers;bundle-version="1.0.0",
+ org.gemoc.execution.engine.events;bundle-version="1.0.0",
  org.gemoc.execution.engine.feedback.data;bundle-version="1.0.0",
  org.gemoc.execution.engine.feedback.policy;bundle-version="1.0.0",
- org.gemoc.execution.engine.solvers;bundle-version="1.0.0",
- org.gemoc.execution.engine.events;bundle-version="1.0.0"
+ org.gemoc.execution.engine.actions;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

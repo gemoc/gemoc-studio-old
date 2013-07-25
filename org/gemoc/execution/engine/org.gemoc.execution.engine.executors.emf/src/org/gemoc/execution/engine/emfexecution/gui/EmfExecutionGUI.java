@@ -1,16 +1,15 @@
-
 /*****************************************************************************
  * Copyright (c) 2013 AOSTE I3S/UNS/INRIA.
- *
- *    
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
+ * 
+ * 
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License v1.0 which
+ * accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *	Julien DeAntoni julien.deantoni@polytech.unice.fr (AOSTE I3S/UNS/INRIA) initial API and implementation
- *
+ * 
+ * Contributors: Julien DeAntoni julien.deantoni@polytech.unice.fr (AOSTE
+ * I3S/UNS/INRIA) initial API and implementation
+ * 
  *****************************************************************************/
 
 package org.gemoc.execution.engine.emfexecution.gui;
@@ -47,185 +46,191 @@ import fr.inria.aoste.timesquare.utils.ui.listeners.FileExtensionFilter;
 
 public class EmfExecutionGUI extends BehaviorManagerGUI {
 
-	private Composite container;
+    public final class SelectionConfFile implements ISelectionStatusValidator {
+        @Override
+        public IStatus validate(Object[] selection) {
+            boolean enableOK = false;
+            if (selection != null && selection.length != 0) {
+                if ((selection[0] instanceof IFile)) {
 
-	private String _confFilePath;
+                    enableOK = EmfExecutionGUI.this.getBehaviorManager().loadJarFile((IFile) selection[0]);
 
-//	private ILabelProvider fLabelProvider = new WorkbenchLabelProvider();
+                    return enableOK ? new Status(IStatus.OK, Activator.PLUGIN_ID, 0, "", null) : new Status(
+                            IStatus.ERROR, Activator.PLUGIN_ID, 0, "your file selection is incorrect", null);
+                }
+            }
+            return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, "please choose a file", null);
+        }
+    }
 
-	private ITreeContentProvider fContentProvider = new WorkbenchContentProvider();
+    private Composite container;
 
-	private String message = "choose emf execution configuration file";
+    // private ILabelProvider fLabelProvider = new WorkbenchLabelProvider();
 
-	private TreeViewer fViewer;
+    private String _confFilePath;
 
-	private IStatus fCurrStatus = Status.OK_STATUS;
+    private ITreeContentProvider fContentProvider = new WorkbenchContentProvider();
 
-	private ISelectionStatusValidator fValidator = null;
+    private String message = "choose emf execution configuration file";
 
-	boolean fIsEmpty = false;
+    private TreeViewer fViewer;
 
-	
-	
-	public EmfExecutionGUI() {
-	}
+    private IStatus fCurrStatus = Status.OK_STATUS;
 
-	protected Label createMessageArea(Composite composite) {
-		Label label = new Label(composite, SWT.NONE);
-		if (message != null) {
-			label.setText(message);
-		}
-		label.setFont(composite.getFont());
-		return label;
-	}
-	
-	public final class SelectionConfFile implements ISelectionStatusValidator {
-		public IStatus validate(Object[] selection) {
-			boolean enableOK = false;
-			if (selection!=null && selection.length != 0) {
-				if ((selection[0] instanceof IFile)) {
-					
-					enableOK = getBehaviorManager().loadJarFile((IFile)selection[0]);
+    private ISelectionStatusValidator fValidator = null;
 
-					return enableOK ?
-							new Status(IStatus.OK, Activator.PLUGIN_ID, 0, "", null) :
-							new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, "your file selection is incorrect", null);
-				}
-			}
-			return 	new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, "please choose a file", null);
-		}
-	}
+    boolean fIsEmpty = false;
 
-	protected TreeViewer createTreeViewer(Composite parent) {
-		int style = SWT.BORDER | (SWT.SINGLE);
+    private Object[] result;
 
-		fViewer = new TreeViewer(new Tree(parent, style));
-		fViewer.setContentProvider(fContentProvider);
-		fViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-			public void selectionChanged(SelectionChangedEvent event) {
-				result = (((IStructuredSelection) event.getSelection()).toList()).toArray();
-				updateOKStatus();
-			}
-		});
+    Label messageLabel = null;
 
-		fViewer.addFilter(new FileExtensionFilter(new String[] { "emfExecConf" }));
-		fValidator = new SelectionConfFile();
-		fViewer.addDoubleClickListener(new IDoubleClickListener() {
-			public void doubleClick(DoubleClickEvent event) {
-				updateOKStatus();
+    public EmfExecutionGUI() {
+    }
 
-				if (!(fCurrStatus.isOK())) {
-					ISelection selection = event.getSelection();
-					if (selection instanceof IStructuredSelection) {
-						Object item = ((IStructuredSelection) selection).getFirstElement();
-						if (fViewer.getExpandedState(item)) {
-							fViewer.collapseToLevel(item, 1);
-						} else {
-							fViewer.expandToLevel(item, 1);
-						}
-					}
-				}
-			}
-		});
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		fViewer.setInput(root);
+    public void addClockBehavior() throws Throwable {
+        if (this.getResult() != null && this.getResult().length != 0) {
+            this._confFilePath = ((IFile) this.getResult()[0]).getFullPath().toString();
+        }
+        if (this._confFilePath != null && this._confFilePath.length() != 0) {
+            this.getBehaviorManager().setConfigurationFileName(this._confFilePath);
+            this.getBehaviorManager().manageBehavior(this._configurationHelper);
+        } else {
+            System.err.println("Error in add");
+        }
+    }
 
-		return fViewer;
-	}
-	
-	@Override
-	public Point getMinimumSize() {	
-		return new Point(350, 250);
-	}
+    @Override
+    public void cancelPressed() {
+    }
 
-	@Override
-	public void updateOKStatus() {
-		if (!fIsEmpty) {
-			if (fValidator != null) {
-				fCurrStatus = fValidator.validate(getResult());
-				if (dialog != null)
-					dialog.updateStatus(fCurrStatus);
-			} else {
-				fCurrStatus = Status.OK_STATUS;
-			}
-		} else {
-			fCurrStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, IStatus.ERROR, "no file found", null);
-		}
-		if (dialog != null)
-			dialog.updateStatus(fCurrStatus);
-	}
+    /**
+     * @wbp.parser.entryPoint
+     */
+    @Override
+    public Control createDialogArea(Composite composite) {
+        try {
+            if (composite == null) {
+                return null;
+            }
+            this.container = composite;
+            this.messageLabel = this.createMessageArea(this.container);
+            TreeViewer treeViewer = this.createTreeViewer(this.container);
+            GridData data = new GridData(GridData.FILL_BOTH);
+            data.minimumHeight = 250;
+            data.minimumWidth = 450;
+            Tree treeWidget = treeViewer.getTree();
+            treeWidget.setLayoutData(data);
+            treeWidget.setFont(composite.getFont());
 
-	public Object[] getResult() {
-		return result;
-	}
+            this._confFilePath = "";
+            if (this.getBehaviorManager().getConfigurationIFile() != null) {
+                treeViewer.setSelection(new StructuredSelection(this.getBehaviorManager().getConfigurationIFile()));
+            }
+            return this.container;
+        } catch (Exception e) {
+            System.err.println("Error");
+        }
+        return composite;
+    }
 
-	private Object[] result;
+    protected Label createMessageArea(Composite composite) {
+        Label label = new Label(composite, SWT.NONE);
+        if (this.message != null) {
+            label.setText(this.message);
+        }
+        label.setFont(composite.getFont());
+        return label;
+    }
 
-	Label messageLabel = null;
+    protected TreeViewer createTreeViewer(Composite parent) {
+        int style = SWT.BORDER | (SWT.SINGLE);
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
-	public Control createDialogArea(Composite composite) {
-		try {
-			if (composite == null) {
-				return null;
-			}
-			container = composite;
-			messageLabel = createMessageArea(container);
-			TreeViewer treeViewer = createTreeViewer(container);
-			GridData data = new GridData(GridData.FILL_BOTH);
-			data.minimumHeight = 250;
-			data.minimumWidth = 450;
-			Tree treeWidget = treeViewer.getTree();
-			treeWidget.setLayoutData(data);
-			treeWidget.setFont(composite.getFont());
+        this.fViewer = new TreeViewer(new Tree(parent, style));
+        this.fViewer.setContentProvider(this.fContentProvider);
+        this.fViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+            @Override
+            public void selectionChanged(SelectionChangedEvent event) {
+                EmfExecutionGUI.this.result = (((IStructuredSelection) event.getSelection()).toList()).toArray();
+                EmfExecutionGUI.this.updateOKStatus();
+            }
+        });
 
-			_confFilePath = "";
-			if (getBehaviorManager().getConfigurationIFile() != null) {
-				treeViewer.setSelection(new StructuredSelection(getBehaviorManager().getConfigurationIFile()));
-			}
-			return container;
-		} catch (Exception e) {
-			System.err.println("Error");
-		}
-		return composite;
-	}
+        this.fViewer.addFilter(new FileExtensionFilter(new String[] { "emfExecConf" }));
+        this.fValidator = new SelectionConfFile();
+        this.fViewer.addDoubleClickListener(new IDoubleClickListener() {
+            @Override
+            public void doubleClick(DoubleClickEvent event) {
+                EmfExecutionGUI.this.updateOKStatus();
 
-	public void okPressed() {
-		try {
+                if (!(EmfExecutionGUI.this.fCurrStatus.isOK())) {
+                    ISelection selection = event.getSelection();
+                    if (selection instanceof IStructuredSelection) {
+                        Object item = ((IStructuredSelection) selection).getFirstElement();
+                        if (EmfExecutionGUI.this.fViewer.getExpandedState(item)) {
+                            EmfExecutionGUI.this.fViewer.collapseToLevel(item, 1);
+                        } else {
+                            EmfExecutionGUI.this.fViewer.expandToLevel(item, 1);
+                        }
+                    }
+                }
+            }
+        });
+        IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+        this.fViewer.setInput(root);
 
-			addClockBehavior();
-		} catch (Throwable e) {
-			e.printStackTrace();
-			System.err.print(e.getMessage());
-		}
-	}
+        return this.fViewer;
+    }
 
-	public void addClockBehavior() throws Throwable {
-		if (getResult() != null && getResult().length != 0) {
-			_confFilePath = ((IFile) getResult()[0]).getFullPath().toString();
-		}
-		if (_confFilePath != null && _confFilePath.length() != 0) {
-			getBehaviorManager().setConfigurationFileName(_confFilePath);			
-			getBehaviorManager().manageBehavior(_configurationHelper);
-		} else {
-			System.err.println("Error in add");
-		}
-	}
+    @Override
+    protected EmfCodeExecutionManager getBehaviorManager() {
+        return (EmfCodeExecutionManager) super.getBehaviorManager();
+    }
 
-	@Override
-	protected EmfCodeExecutionManager getBehaviorManager() {
-		return (EmfCodeExecutionManager) super.getBehaviorManager();
-	}
+    @Override
+    public Point getMinimumSize() {
+        return new Point(350, 250);
+    }
 
-	@Override
-	public void setBehaviorManager(BehaviorManager behaviorManager) {
-		if (behaviorManager instanceof EmfCodeExecutionManager)
-			super.setBehaviorManager(behaviorManager);
-	}
+    public Object[] getResult() {
+        return this.result;
+    }
 
-	public void cancelPressed() {
-	}
+    @Override
+    public void okPressed() {
+        try {
+
+            this.addClockBehavior();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            System.err.print(e.getMessage());
+        }
+    }
+
+    @Override
+    public void setBehaviorManager(BehaviorManager behaviorManager) {
+        if (behaviorManager instanceof EmfCodeExecutionManager) {
+            super.setBehaviorManager(behaviorManager);
+        }
+    }
+
+    @Override
+    public void updateOKStatus() {
+        if (!this.fIsEmpty) {
+            if (this.fValidator != null) {
+                this.fCurrStatus = this.fValidator.validate(this.getResult());
+                if (this.dialog != null) {
+                    this.dialog.updateStatus(this.fCurrStatus);
+                }
+            } else {
+                this.fCurrStatus = Status.OK_STATUS;
+            }
+        } else {
+            this.fCurrStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, IStatus.ERROR, "no file found", null);
+        }
+        if (this.dialog != null) {
+            this.dialog.updateStatus(this.fCurrStatus);
+        }
+    }
 
 }

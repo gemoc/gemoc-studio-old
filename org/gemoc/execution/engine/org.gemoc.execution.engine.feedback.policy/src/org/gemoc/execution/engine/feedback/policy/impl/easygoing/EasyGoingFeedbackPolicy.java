@@ -2,13 +2,12 @@ package org.gemoc.execution.engine.feedback.policy.impl.easygoing;
 
 import java.util.List;
 
-import org.gemoc.execution.engine.feedback.data.FeedbackData;
+import org.eclipse.emf.ecore.EObject;
+import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.feedback.data.impl.simple.BooleanAndReferenceFeedbackData;
 import org.gemoc.execution.engine.feedback.policy.FeedbackPolicy;
+import org.gemoc.execution.engine.feedback.policy.impl.easygoing.exceptions.CorrespondingDomainSpecificEventNotFoundException;
 import org.gemoc.execution.engine.solvers.Solver;
-
-import fr.inria.aoste.timesquare.ECL.EventKind;
-import fr.inria.aoste.timesquare.ccslkernel.solver.TimeModel.SolverClock;
 
 /**
  * An easy-going policy which forces the presence of all the clocks
@@ -20,6 +19,22 @@ import fr.inria.aoste.timesquare.ccslkernel.solver.TimeModel.SolverClock;
  */
 public class EasyGoingFeedbackPolicy implements FeedbackPolicy<BooleanAndReferenceFeedbackData> {
 
+    /**
+     * Searches in the list of possible events given if any of these events is
+     * "first" and has for target the eobject given. Throws an exception if no
+     * event is found as we expect the application to always the right list of
+     * possible events.
+     */
+    private DomainSpecificEvent findEventWhereTargetIs(EObject eobject, List<DomainSpecificEvent> possibleEvents)
+            throws CorrespondingDomainSpecificEventNotFoundException {
+        for (DomainSpecificEvent event : possibleEvents) {
+            if (event.getTarget().equals(eobject) && event.isFirst()) {
+                return event;
+            }
+        }
+        throw new CorrespondingDomainSpecificEventNotFoundException();
+    }
+
     /*
      * (non-Javadoc)
      * 
@@ -28,28 +43,21 @@ public class EasyGoingFeedbackPolicy implements FeedbackPolicy<BooleanAndReferen
      * (org.gemoc.execution.engine.feedback.data.FeedbackData)
      */
     @Override
-    public void processFeedback(BooleanAndReferenceFeedbackData feedbackData, Solver solver) {
-        for (Integer value : feedbackData.getMap().keySet()) {
-
-            // target est l'objet qui fait suite selon le bon chemin.
-            // Par exemple pour une decision node qui branche vers soit un
-            // State A soit un State B,
-            // target sera soit A soit B. EObject target = feedback.get(value);
-
-            // Ensemble des clocks liées à l'event de type Start qui a pour
-            // cible le EObject considéré.
-            List<SolverClock> clocksOfEvent = this.getEclInterpreter().getDomainSpecificEvents().whereTargetIs(target)
-                    .filterByKind(EventKind.START).getTruc().getClocks();
-            if (value.equals(1)) {
-                // Appeler l'API pour "forcer" les bonnes branches sur le MoC.
-                this.getSolver().forceClocksOfEvent()
-                for (SolverClock clock : clocksOfEvent) {
-                    this.getSolver().forceClockPresence(clock);
-                }
-            } else {
-                // API to cut some branches on the MoC.
-                for (SolverClock clock : clocksOfEvent) {
-                    this.getSolver().forceClockAbscence(clock);
+    public void processFeedback(BooleanAndReferenceFeedbackData feedbackData, Solver solver,
+            List<DomainSpecificEvent> possibleEvents) {
+        for (Boolean key : feedbackData.getMap().keySet()) {
+            for (EObject eobject : feedbackData.getMap().get(key)) {
+                try {
+                    DomainSpecificEvent eventToForce = this.findEventWhereTargetIs(eobject, possibleEvents);
+                    if (key) {
+                        solver.forceEventOccurrence(eventToForce);
+                    } else {
+                        solver.forceEventNonOccurrence(eventToForce);
+                    }
+                } catch (CorrespondingDomainSpecificEventNotFoundException e) {
+                    // TODO : Maybe do something, we were not able to match the
+                    // feedback information with a DSE.
+                    e.printStackTrace();
                 }
             }
         }

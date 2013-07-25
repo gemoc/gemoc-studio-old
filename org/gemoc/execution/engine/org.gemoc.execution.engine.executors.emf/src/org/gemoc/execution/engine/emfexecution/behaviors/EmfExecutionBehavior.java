@@ -22,230 +22,241 @@ import fr.inria.aoste.trace.ModelElementReference;
 
 public class EmfExecutionBehavior implements ClockBehavior {
 
-	transient private ArrayList<ModelElementReference> _mersToForce=null;
-    private ArrayList<String> _clockQualifiedNameToForce= null;
-    
-	protected Method _method;
-	protected String _methodName;
-	public ConfigurationHelper _confHelper = null;
-	protected CodeExecutionHelper ce = null;
-	protected EObject _o = null;
-
-
-	public final CodeExecutionHelper getCe() {
-		return ce;
-	}
-
-	public EObject getEObject(){
-		return _o;
-	}
-	
-	public final void setCe(CodeExecutionHelper ce) {
-		this.ce = ce;
-	}
-
-	public IStatus createStatusError(String message, Throwable throwable) {
-		IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message, throwable);
-		Activator.getDefault().getLog().log(status);
-		return status;
-	}
-
-	public EmfExecutionBehavior(EObject o, String methodName, ArrayList<ClockEntity> clocksToForce, ConfigurationHelper helper) {
-		_confHelper = helper;
-		try {
-			this._o = o;
-			this._methodName = methodName;
-			this._method = o.getClass().getMethod(methodName);
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
-		additionalInitiation(clocksToForce);		
-	}
-
-	private void additionalInitiation(ArrayList<ClockEntity> clocksToForce){
-		_mersToForce = new ArrayList<ModelElementReference>();
-		_clockQualifiedNameToForce = new ArrayList<String>();
-		if(clocksToForce != null){
-			for(ClockEntity ce: clocksToForce){
-				ModelElementReference mer = ce.getModelElementReference();
-				_mersToForce.add(mer);
-				_clockQualifiedNameToForce.add(ReferenceNameBuilder.buildQualifiedName(mer, "::"));
-			}
-		}
-	}
-	
-	public static class ExitException extends SecurityException {
-		/**
+    public static class ExitException extends SecurityException {
+        /**
 		 * 
 		 */
-		private static final long serialVersionUID = 1460964248465204534L;
-		public final int status;
+        private static final long serialVersionUID = 1460964248465204534L;
+        public final int status;
 
-		public ExitException(int status) {
-			super("from benoit: There is no escape !");
-			this.status = status;
-		}
-	}
+        public ExitException(int status) {
+            super("from benoit: There is no escape !");
+            this.status = status;
+        }
+    }
 
-	public static class NoExitSecurityManager extends SecurityManager {
+    public static class NoExitSecurityManager extends SecurityManager {
 
-		public Thread t = null;
+        public Thread t = null;
 
-		public NoExitSecurityManager(Thread thread) {
-			super();
-			t = thread;
+        public NoExitSecurityManager(Thread thread) {
+            super();
+            this.t = thread;
 
-		}
+        }
 
-		public void checkPermission(Permission perm, Object context) {
+        @Override
+        public void checkExit(int status) {
+            if (Thread.currentThread() == this.t) {
+                super.checkExit(status);
+                throw new ExitException(status);
+            }
+        }
 
-			// super.checkPermission(perm, context);
-		}
+        @Override
+        public void checkPermission(Permission perm) {
 
-		public void checkPermission(Permission perm) {
+            // super.checkPermission(perm);
+        }
 
-			// super.checkPermission(perm);
-		}
+        @Override
+        public void checkPermission(Permission perm, Object context) {
 
-		@Override
-		public void checkExit(int status) {
-			if (Thread.currentThread() == t) {
-				super.checkExit(status);
-				throw new ExitException(status);
-			}
-		}
-	}
+            // super.checkPermission(perm, context);
+        }
+    }
 
-	public void execute(ArrayList<ModelElementReference> mersToForce) {
+    transient private ArrayList<ModelElementReference> _mersToForce = null;
+    private ArrayList<String> _clockQualifiedNameToForce = null;
+    protected Method _method;
+    protected String _methodName;
+    public ConfigurationHelper _confHelper = null;
 
-		//SecurityManager security = System.getSecurityManager();
+    protected CodeExecutionHelper ce = null;
 
-	//	System.setSecurityManager(new NoExitSecurityManager(Thread.currentThread()));
-		try {
-			// it is possible to get the result here !
-			Object res = _method.invoke(_o);
-			ce.println(res.toString());
-			if (res instanceof Boolean){
-				Boolean boolRes = (Boolean)res;
-				if (boolRes.booleanValue()){
-					for(ModelElementReference mer : mersToForce){
-						ce.getSolver().forceClockAbsence(mer);
-					}
-				}else{
-					for(ModelElementReference mer : mersToForce){
-						ce.getSolver().forceClockPresence(mer);
-					}
-				}
-				//	System.out.println("res of "+m+ " is "+res);
-			}
+    protected EObject _o = null;
 
-		} catch (Throwable e) {
-			if (e instanceof InvocationTargetException) {
-				try {
-					_method = _o.getClass().getMethod("EMFRENAME"+_methodName); //bad fix due to kermeta bad fix
-				Object res =	_method.invoke(_o);
-				ce.println(res.toString());
-				ce.println(res.toString());
-				if (res instanceof Boolean){
-					Boolean boolRes = (Boolean)res;
-					if (boolRes.booleanValue()){
-						for(ModelElementReference mer : mersToForce){
-							ce.getSolver().forceClockAbsence(mer);
-						}
-					}else{
-						for(ModelElementReference mer : mersToForce){
-							ce.getSolver().forceClockPresence(mer);
-						}
-					}
-					//	System.out.println("res of "+m+ " is "+res);
-				}
-				} catch (SecurityException e1) {
-					e1.printStackTrace();
-				} catch (NoSuchMethodException e1) {
-					e1.printStackTrace();
-				} catch (IllegalArgumentException e1) {
-					e1.printStackTrace();
-				} catch (IllegalAccessException e1) {
-					e1.printStackTrace();
-				} catch (InvocationTargetException e1) {
-					e1.printStackTrace();
-				}
-			}
-		}
-	}
+    public EmfExecutionBehavior(EObject o, String methodName, ArrayList<ClockEntity> clocksToForce,
+            ConfigurationHelper helper) {
+        this._confHelper = helper;
+        try {
+            this._o = o;
+            this._methodName = methodName;
+            this._method = o.getClass().getMethod(methodName);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        this.additionalInitiation(clocksToForce);
+    }
 
-	public boolean behaviorEquals(Behavior behavior) {
-		if (behavior == this) {
-			return true;
-		}
-		if (behavior == null) {
-			return false;
-		}
-		if (behavior.getClass() != this.getClass()) {
-			return false;
-		}
-		try {
-			EmfExecutionBehavior ceb = (EmfExecutionBehavior) behavior;
-			String itsMethodName = null;
-			itsMethodName = ceb.getMethodName();
-			if (_methodName.compareTo((itsMethodName)) != 0){
-				return false;
-			}
-			if (CCSLKernelUtils.getQualifiedName(_o).compareTo(CCSLKernelUtils.getQualifiedName(ceb.getEObject())) != 0){
-				return false;
-			}
+    private void additionalInitiation(ArrayList<ClockEntity> clocksToForce) {
+        this._mersToForce = new ArrayList<ModelElementReference>();
+        this._clockQualifiedNameToForce = new ArrayList<String>();
+        if (clocksToForce != null) {
+            for (ClockEntity ce : clocksToForce) {
+                ModelElementReference mer = ce.getModelElementReference();
+                this._mersToForce.add(mer);
+                this._clockQualifiedNameToForce.add(ReferenceNameBuilder.buildQualifiedName(mer, "::"));
+            }
+        }
+    }
 
-		} catch (Throwable e) {
-			e.printStackTrace();
-			createStatusError("behavior comparison failled", e);
-		}
-		return true;
-	}
+    @Override
+    public boolean behaviorEquals(Behavior behavior) {
+        if (behavior == this) {
+            return true;
+        }
+        if (behavior == null) {
+            return false;
+        }
+        if (behavior.getClass() != this.getClass()) {
+            return false;
+        }
+        try {
+            EmfExecutionBehavior ceb = (EmfExecutionBehavior) behavior;
+            String itsMethodName = null;
+            itsMethodName = ceb.getMethodName();
+            if (this._methodName.compareTo((itsMethodName)) != 0) {
+                return false;
+            }
+            if (CCSLKernelUtils.getQualifiedName(this._o).compareTo(CCSLKernelUtils.getQualifiedName(ceb.getEObject())) != 0) {
+                return false;
+            }
 
-	public Method getMethod() {
-		return _method;
-	}
+        } catch (Throwable e) {
+            e.printStackTrace();
+            this.createStatusError("behavior comparison failled", e);
+        }
+        return true;
+    }
 
-	public void setMethod(Method method) {
-		_method = method;
-	}
+    public IStatus createStatusError(String message, Throwable throwable) {
+        IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message, throwable);
+        Activator.getDefault().getLog().log(status);
+        return status;
+    }
 
-	public String getMethodName() {
-		return _methodName;
-	}
+    public void execute(ArrayList<ModelElementReference> mersToForce) {
 
-	public void setMethodName(String _methodName) {
-		this._methodName = _methodName;
-	}
+        // SecurityManager security = System.getSecurityManager();
 
-	public final String getDescription() {
-		String name = getClass().getSimpleName();
+        // System.setSecurityManager(new
+        // NoExitSecurityManager(Thread.currentThread()));
+        try {
+            // it is possible to get the result here !
+            Object res = this._method.invoke(this._o);
+            this.ce.println(res.toString());
+            if (res instanceof Boolean) {
+                Boolean boolRes = (Boolean) res;
+                if (boolRes.booleanValue()) {
+                    for (ModelElementReference mer : mersToForce) {
+                        this.ce.getSolver().forceClockAbsence(mer);
+                    }
+                } else {
+                    for (ModelElementReference mer : mersToForce) {
+                        this.ce.getSolver().forceClockPresence(mer);
+                    }
+                }
+                // System.out.println("res of "+m+ " is "+res);
+            }
 
-		StringBuilder sb = new StringBuilder();
-		for (char c : name.toCharArray()) {
+        } catch (Throwable e) {
+            if (e instanceof InvocationTargetException) {
+                try {
+                    this._method = this._o.getClass().getMethod("EMFRENAME" + this._methodName); // bad
+                                                                                                 // fix
+                                                                                                 // due
+                                                                                                 // to
+                                                                                                 // kermeta
+                                                                                                 // bad
+                                                                                                 // fix
+                    Object res = this._method.invoke(this._o);
+                    this.ce.println(res.toString());
+                    this.ce.println(res.toString());
+                    if (res instanceof Boolean) {
+                        Boolean boolRes = (Boolean) res;
+                        if (boolRes.booleanValue()) {
+                            for (ModelElementReference mer : mersToForce) {
+                                this.ce.getSolver().forceClockAbsence(mer);
+                            }
+                        } else {
+                            for (ModelElementReference mer : mersToForce) {
+                                this.ce.getSolver().forceClockPresence(mer);
+                            }
+                        }
+                        // System.out.println("res of "+m+ " is "+res);
+                    }
+                } catch (SecurityException e1) {
+                    e1.printStackTrace();
+                } catch (NoSuchMethodException e1) {
+                    e1.printStackTrace();
+                } catch (IllegalArgumentException e1) {
+                    e1.printStackTrace();
+                } catch (IllegalAccessException e1) {
+                    e1.printStackTrace();
+                } catch (InvocationTargetException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
 
-			if (Character.isUpperCase(c))
-				sb.append(" ");
-			sb.append(c);
-		}
-		sb.append(" : ");
-		sb.append(_o.getClass().getName()).append(" ");
-		sb.append(_methodName);
-		return sb.toString();
-	}
+    public void finish() {
+    }
 
-	public void finish() {
-	}
+    public final CodeExecutionHelper getCe() {
+        return this.ce;
+    }
 
-	@Override
-	public void run(TraceHelper helper) {
-		execute(_mersToForce); //OJOJOJOJJOOJOJJOOJ
-	}
+    @Override
+    public final String getDescription() {
+        String name = this.getClass().getSimpleName();
 
-	@Override
-	public void runWithWrongActivationState(TraceHelper helper) {
-		// TODO Auto-generated method stub
-		
-	}
+        StringBuilder sb = new StringBuilder();
+        for (char c : name.toCharArray()) {
+
+            if (Character.isUpperCase(c)) {
+                sb.append(" ");
+            }
+            sb.append(c);
+        }
+        sb.append(" : ");
+        sb.append(this._o.getClass().getName()).append(" ");
+        sb.append(this._methodName);
+        return sb.toString();
+    }
+
+    public EObject getEObject() {
+        return this._o;
+    }
+
+    public Method getMethod() {
+        return this._method;
+    }
+
+    public String getMethodName() {
+        return this._methodName;
+    }
+
+    @Override
+    public void run(TraceHelper helper) {
+        this.execute(this._mersToForce); // OJOJOJOJJOOJOJJOOJ
+    }
+
+    @Override
+    public void runWithWrongActivationState(TraceHelper helper) {
+    }
+
+    public final void setCe(CodeExecutionHelper ce) {
+        this.ce = ce;
+    }
+
+    public void setMethod(Method method) {
+        this._method = method;
+    }
+
+    public void setMethodName(String _methodName) {
+        this._methodName = _methodName;
+    }
 
 }

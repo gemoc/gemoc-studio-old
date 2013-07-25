@@ -5,7 +5,12 @@ Bundle-SymbolicName: org.gemoc.execution.engine.events
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.events.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;bundle-version="2.9.0",
+ fr.inria.aoste.trace;bundle-version="1.0.1",
+ org.gemoc.execution.engine.actions;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.execution.engine.events
+Export-Package: org.gemoc.execution.engine.events,
+ org.gemoc.execution.engine.events.impl.ecl
+Import-Package: org.gemoc.execution.engine.events

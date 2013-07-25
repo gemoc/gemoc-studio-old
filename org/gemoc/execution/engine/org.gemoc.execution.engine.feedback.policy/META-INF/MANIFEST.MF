@@ -7,7 +7,9 @@ Bundle-Activator: org.gemoc.execution.engine.feedback.policy.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.gemoc.execution.engine.feedback.data;bundle-version="1.0.0",
- org.gemoc.execution.engine.solvers;bundle-version="1.0.0"
+ org.gemoc.execution.engine.solvers;bundle-version="1.0.0",
+ org.eclipse.emf.ecore;bundle-version="2.9.0",
+ org.gemoc.execution.engine.events;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.feedback.policy,

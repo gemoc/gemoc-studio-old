@@ -9,93 +9,94 @@ import org.gemoc.execution.engine.emfexecution.manager.ProjectClassLoader;
 
 import fr.inria.aoste.timesquare.backend.manager.visible.ConfigurationHelper;
 import fr.inria.aoste.timesquare.launcher.core.inter.ISolverForBackend;
+
 public class CodeExecutionHelper {
 
-	private ISolverForBackend _solver=null;
-	
-	public final void setConfigurationHelper(ConfigurationHelper ch,ISolverForBackend solver) {
-		this.configurationHelper = ch;
-		this._solver = solver;
-	}
+    private ISolverForBackend _solver = null;
 
-	public ConfigurationHelper getConfigurationHelper(){
-		return configurationHelper;
-	}
-	
-	public ISolverForBackend getSolver(){
-		return _solver;
-	}
-	
-	ConfigurationHelper configurationHelper = null;
-	
-	ProjectClassLoader pcl = new ProjectClassLoader();
+    ConfigurationHelper configurationHelper = null;
 
-	HashMap<String, Object> data = new HashMap<String, Object>();
+    ProjectClassLoader pcl = new ProjectClassLoader();
 
-	public HashMap<String, Object> getData() {
-		return data;
-	}
+    HashMap<String, Object> data = new HashMap<String, Object>();
 
-	public Object getData(String s) {
-		return data.get(s);
-	}
+    public CodeExecutionHelper(ConfigurationHelper _ch) {
+        super();
+        this.configurationHelper = _ch;
+    }
 
-	public Object putData(String s, Object o) {
-		return data.put(s, o);
-	}
+    public void clear() {
+        this.configurationHelper = null;
+        this.pcl.clearCaches();
+        this.pcl = null;
+        this.data = null;
+    }
 
-	public CodeExecutionHelper(ConfigurationHelper _ch) {
-		super();
-		configurationHelper = _ch;
-	}
+    public ConfigurationHelper getConfigurationHelper() {
+        return this.configurationHelper;
+    }
 
-	public final ProjectClassLoader getPcl() {
-		return pcl;
-	}
+    public HashMap<String, Object> getData() {
+        return this.data;
+    }
 
-	public void print(String s) {
-		if (configurationHelper != null) {
-			configurationHelper.print(s);
-		}
-	}
+    public Object getData(String s) {
+        return this.data.get(s);
+    }
 
-	public void println(String s) {
-		if (configurationHelper != null) {
-			configurationHelper.println(s);
-		}
-	}
+    public final ProjectClassLoader getPcl() {
+        return this.pcl;
+    }
 
-	public String read() {
-		String res="";
-		if (configurationHelper != null) {
-			InputStreamReader isr = new InputStreamReader(configurationHelper.getInputStream());
-			BufferedReader br = new BufferedReader(isr);
-			try {
-				res =br.readLine();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return res;
-	}
-	public void printlnError(String s) {
-		if (configurationHelper != null) {
-			configurationHelper.printlnError(s);
-		}
-	}
+    public ISolverForBackend getSolver() {
+        return this._solver;
+    }
 
-	public void printlnError(String s, Throwable e) {
-		if (configurationHelper != null) {
-			configurationHelper.printlnError(s, e);
-		}
-	}
+    public void print(String s) {
+        if (this.configurationHelper != null) {
+            this.configurationHelper.print(s);
+        }
+    }
 
-	public void clear() {
-		configurationHelper = null;
-		pcl.clearCaches();
-		pcl = null;
-		data = null;
-	}
+    public void println(String s) {
+        if (this.configurationHelper != null) {
+            this.configurationHelper.println(s);
+        }
+    }
+
+    public void printlnError(String s) {
+        if (this.configurationHelper != null) {
+            this.configurationHelper.printlnError(s);
+        }
+    }
+
+    public void printlnError(String s, Throwable e) {
+        if (this.configurationHelper != null) {
+            this.configurationHelper.printlnError(s, e);
+        }
+    }
+
+    public Object putData(String s, Object o) {
+        return this.data.put(s, o);
+    }
+
+    public String read() {
+        String res = "";
+        if (this.configurationHelper != null) {
+            InputStreamReader isr = new InputStreamReader(this.configurationHelper.getInputStream());
+            BufferedReader br = new BufferedReader(isr);
+            try {
+                res = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return res;
+    }
+
+    public final void setConfigurationHelper(ConfigurationHelper ch, ISolverForBackend solver) {
+        this.configurationHelper = ch;
+        this._solver = solver;
+    }
 
 }

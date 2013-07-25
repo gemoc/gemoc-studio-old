@@ -2,10 +2,10 @@ package org.gemoc.execution.engine.emfexecution;
 
 public interface ICodeExecutionAPI {
 
-	public void setHelper(CodeExecutionHelper ce);
+    public void finish();
 
-	// public void postTraitement();
+    // public void postTraitement();
 
-	public void finish();
+    public void setHelper(CodeExecutionHelper ce);
 
 }

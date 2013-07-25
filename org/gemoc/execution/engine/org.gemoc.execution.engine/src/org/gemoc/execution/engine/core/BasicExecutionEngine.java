@@ -10,43 +10,78 @@ import org.gemoc.execution.engine.feedback.policy.FeedbackPolicy;
 import org.gemoc.execution.engine.solvers.Solver;
 import org.gemoc.execution.engine.solvers.Step;
 
-import fr.inria.aoste.timesquare.ECL.EventKind;
-import fr.inria.aoste.timesquare.ccslkernel.solver.TimeModel.SolverClock;
-
+/**
+ * Basic abstract implementation of the ExecutionEngine, independent from the
+ * technologies used for the solver, the executor and the feedback protocol.
+ * 
+ * 
+ * @author flatombe
+ * 
+ */
 public abstract class BasicExecutionEngine implements ExecutionEngine {
 
-    private boolean finished = false;
-    private int rounds = 0;
+    private Boolean finished;
+    private Integer rounds;
     protected Solver solver;
     protected Executor executor;
+    protected List<DomainSpecificEvent> events;
+    @SuppressWarnings("rawtypes")
     protected FeedbackPolicy feedbackPolicy;
 
-    public FeedbackPolicy getFeedbackPolicy() {
-        return this.feedbackPolicy;
-    }
-
+    /**
+     * Basic constructor for the engine.
+     */
     public BasicExecutionEngine() {
+        this.finished = false;
+        this.rounds = 0;
     }
 
+    /**
+     * 
+     * @return the executor used by the engine implementation.
+     */
     public Executor getExecutor() {
         return this.executor;
     }
 
+    /**
+     * 
+     * @return the feedback policy used by the engine implementation.
+     */
+    @SuppressWarnings("rawtypes")
+    public FeedbackPolicy getFeedbackPolicy() {
+        return this.feedbackPolicy;
+    }
+
+    /**
+     * 
+     * @return the current round number.
+     */
     public int getRounds() {
         return this.rounds;
     }
 
+    /**
+     * 
+     * @return the solver used by the engine implementation.
+     */
     public Solver getSolver() {
         return this.solver;
     }
 
-    private void integrateFeedback(FeedbackData feedback) {
-        
-    }
-
+    /**
+     * 
+     * @param step
+     * @return the list of Domain Specific Event which are triggered by the
+     *         step.
+     */
     private List<DomainSpecificEvent> match(Step step) {
         List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
-
+        for (DomainSpecificEvent event : this.events) {
+            if (step.match(event)) {
+                res.add(event);
+            }
+        }
         return res;
     }
 
@@ -55,6 +90,13 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
         this.run(-1);
     }
 
+    /**
+     * Run the engine for a given number of rounds or until the execution is
+     * finished.
+     * 
+     * @param maxRounds
+     */
+    @SuppressWarnings("unchecked")
     public void run(int maxRounds) {
         while (!this.finished) {
             this.rounds++;
@@ -64,7 +106,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 
             for (DomainSpecificEvent event : events) {
                 FeedbackData feedback = this.getExecutor().execute(event);
-                this.getFeedbackPolicy().processFeedback(feedback, this.getSolver());
+                this.getFeedbackPolicy().processFeedback(feedback, this.getSolver(), events);
             }
 
             this.finished = this.finished || this.rounds < maxRounds;
