@@ -1,9 +1,13 @@
 package org.gemoc.execution.engine.events.impl.ecl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
+import org.gemoc.execution.engine.actions.impl.methodref.MethodReferenceAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 
 import fr.inria.aoste.trace.EventOccurrence;
@@ -17,7 +21,6 @@ import fr.inria.aoste.trace.EventOccurrence;
  */
 public class EclEvent implements DomainSpecificEvent {
     private DomainSpecificAction action;
-    private EObject target;
     private Boolean first;
 
     // TODO : not sure we need to use EventOccurrence here, maybe SolverClock ?
@@ -25,10 +28,70 @@ public class EclEvent implements DomainSpecificEvent {
     // on the ECL information.
     private List<EventOccurrence> pattern;
 
-    public EclEvent(DomainSpecificAction action, EObject target, Boolean first) {
+    public EclEvent(DomainSpecificAction action, Boolean first) {
         this.action = action;
-        this.target = target;
         this.first = first;
+    }
+
+    public EclEvent(Truc trucevent) {
+        this.action = this.createDSA(trucevent.getClockEntity());
+    }
+
+    private String getSimpleName(EObject eo) {
+        Object res = null;
+        res = this.invokeMethod(eo, "getName");
+        return (String) res;
+    }
+
+    private Object invokeMethod(EObject eo, String methodName) {
+        Method m = null;
+        Object res = null;
+        try {
+            m = eo.getClass().getMethod(methodName);
+            res = m.invoke(eo);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            try {
+                m = eo.getClass().getMethod("EMFRENAME" + methodName); // dirty
+                                                                       // fix
+                                                                       // due to
+                                                                       // kermeta
+                                                                       // dirty
+                                                                       // fix
+                                                                       // :-/
+                                                                       // ask
+                                                                       // Didier
+                res = m.invoke(eo);
+            } catch (SecurityException e1) {
+                e1.printStackTrace();
+            } catch (NoSuchMethodException e1) {
+                e1.printStackTrace();
+            } catch (IllegalArgumentException e1) {
+                e1.printStackTrace();
+            } catch (IllegalAccessException e1) {
+                e1.printStackTrace();
+            } catch (InvocationTargetException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        return res;
+    }
+
+    // TODO : comment fournir à l'instanciation d'une DSA les bons objets?
+    public DomainSpecificAction createDSA(ClockEntity ce) {
+        EObject linkedOperation = ce.getReferencedElement().get(1);
+        if (linkedOperation instanceof EOperation) {
+            String operationName = this.getSimpleName(linkedOperation);
+            MethodReferenceAction action = new MethodReferenceAction(ce.getModelElementReference(), operationName);
+        }
     }
 
     /*
@@ -58,7 +121,7 @@ public class EclEvent implements DomainSpecificEvent {
      */
     @Override
     public EObject getTarget() {
-        return this.target;
+        return this.action.getTarget();
     }
 
     /*

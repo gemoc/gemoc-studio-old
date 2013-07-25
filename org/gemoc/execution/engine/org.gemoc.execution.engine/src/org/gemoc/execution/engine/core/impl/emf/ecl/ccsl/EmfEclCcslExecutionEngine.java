@@ -32,63 +32,9 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 
         // TODO : création des DSE (et DSA) associées à partir des infos du ECL.
         this.events = new ArrayList<DomainSpecificEvent>();
-
-    }
-
-    private String getSimpleName(EObject eo) {
-        Object res = null;
-        res = this.invokeMethod(eo, "getName");
-        return (String) res;
-    }
-
-    private Object invokeMethod(EObject eo, String methodName) {
-        Method m = null;
-        Object res = null;
-        try {
-            m = eo.getClass().getMethod(methodName);
-            res = m.invoke(eo);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            try {
-                m = eo.getClass().getMethod("EMFRENAME" + methodName); // dirty
-                                                                       // fix
-                                                                       // due to
-                                                                       // kermeta
-                                                                       // dirty
-                                                                       // fix
-                                                                       // :-/
-                                                                       // ask
-                                                                       // Didier
-                res = m.invoke(eo);
-            } catch (SecurityException e1) {
-                e1.printStackTrace();
-            } catch (NoSuchMethodException e1) {
-                e1.printStackTrace();
-            } catch (IllegalArgumentException e1) {
-                e1.printStackTrace();
-            } catch (IllegalAccessException e1) {
-                e1.printStackTrace();
-            } catch (InvocationTargetException e1) {
-                e1.printStackTrace();
-            }
-        }
-
-        return res;
-    }
-
-    // TODO : comment fournir à l'instanciation d'une DSA les bons objets?
-    public void truc(ClockEntity ce) {
-        EObject linkedOperation = ce.getReferencedElement().get(1);
-        if (linkedOperation instanceof EOperation) {
-            String operationName = this.getSimpleName(linkedOperation);
-            MethodReferenceAction action = new MethodReferenceAction(eobject, operationName);
+        for(Truc truc : entréeECL){
+            EclEvent event = new EclEvent(truc)
+            events.add(event);
         }
     }
 }
