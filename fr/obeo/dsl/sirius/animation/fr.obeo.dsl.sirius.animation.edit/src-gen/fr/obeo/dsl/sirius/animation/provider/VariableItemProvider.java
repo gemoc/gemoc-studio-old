@@ -197,6 +197,7 @@ public class VariableItemProvider
 
 		switch (notification.getFeatureID(Variable.class)) {
 			case AnimationPackage.VARIABLE__NAME:
+			case AnimationPackage.VARIABLE__ELEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

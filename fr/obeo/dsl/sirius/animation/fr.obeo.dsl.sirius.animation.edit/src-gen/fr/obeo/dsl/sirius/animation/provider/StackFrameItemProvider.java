@@ -667,11 +667,6 @@ public class StackFrameItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AnimationPackage.Literals.STACK_FRAME__DATA,
-				 ViewpointFactory.eINSTANCE.createIndirectlyCollapseFilter()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnimationPackage.Literals.STACK_FRAME__DATA,
 				 ViewpointFactory.eINSTANCE.createSessionManagerEObject()));
 
 		newChildDescriptors.add
@@ -718,31 +713,6 @@ public class StackFrameItemProvider
 			(createChildParameter
 				(AnimationPackage.Literals.STACK_FRAME__DATA,
 				 ViewpointFactory.eINSTANCE.createBracketEdgeStyle()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnimationPackage.Literals.STACK_FRAME__DATA,
-				 ViewpointFactory.eINSTANCE.createComputedStyleDescriptionRegistry()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnimationPackage.Literals.STACK_FRAME__DATA,
-				 ViewpointFactory.eINSTANCE.create(ViewpointPackage.Literals.DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT)));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnimationPackage.Literals.STACK_FRAME__DATA,
-				 ViewpointFactory.eINSTANCE.create(ViewpointPackage.Literals.MODEL_ELEMENT2_VIEW_VARIABLE)));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnimationPackage.Literals.STACK_FRAME__DATA,
-				 ViewpointFactory.eINSTANCE.create(ViewpointPackage.Literals.VIEW_VARIABLE2_CONTAINER_VARIABLE)));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AnimationPackage.Literals.STACK_FRAME__DATA,
-				 ViewpointFactory.eINSTANCE.create(ViewpointPackage.Literals.CONTAINER_VARIABLE2_STYLE_DESCRIPTION)));
 
 		newChildDescriptors.add
 			(createChildParameter

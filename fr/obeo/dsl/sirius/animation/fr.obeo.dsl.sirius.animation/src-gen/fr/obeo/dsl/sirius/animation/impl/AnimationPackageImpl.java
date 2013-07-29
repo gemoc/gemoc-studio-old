@@ -508,38 +508,6 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 
 		// Create resource
 		createResource(eNS_URI);
-
-		// Create annotations
-		// http://www.obeo.fr/dsl/dnc/archetype
-		createArchetypeAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.obeo.fr/dsl/dnc/archetype</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createArchetypeAnnotations() {
-		String source = "http://www.obeo.fr/dsl/dnc/archetype";		
-		addAnnotation
-		  (animationTargetEClass, 
-		   source, 
-		   new String[] {
-			 "archetype", "Role"
-		   });		
-		addAnnotation
-		  (stackFrameEClass, 
-		   source, 
-		   new String[] {
-			 "archetype", "Thing"
-		   });		
-		addAnnotation
-		  (variableEClass, 
-		   source, 
-		   new String[] {
-			 "archetype", "Role"
-		   });
 	}
 
 } //AnimationPackageImpl

@@ -38,6 +38,7 @@ import com.google.common.collect.Lists;
 
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
 import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Thread;
 import fr.obeo.dsl.sirius.animation.util.AnimationAdapterFactory;
 
@@ -49,7 +50,6 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 	private Collection<Object> supportedTypes = Lists.newArrayList();
 
 	protected TransactionalEditingDomain domain;
-	
 
 	public DebugModelToEclipseDebugAdapterFactory(ILaunch launch,
 			TransactionalEditingDomain domain) {
@@ -83,9 +83,10 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 			Adapter adapter = createSettingTargetAdapter();
 			associate(adapter, target);
 			return adapter;
-		} else {
+		} else if (target != null) {
 			return super.adapt(target, type);
 		}
+		return null;
 	}
 
 	private Adapter createEObjectVariableAdapter() {
@@ -121,7 +122,6 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 		return new IVariableAnimationAdapter(this.launch, this);
 	}
 
-
 	@Override
 	public Adapter createEObjectAdapter() {
 		return new IValueEObjectAnimationAdapter(this.launch, this);
@@ -153,17 +153,74 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 					}
 
 				});
-
 	}
 
 	public abstract AnimationTarget start();
-	
+
 	public abstract void stepInto(StackFrame host);
 
 	public abstract void stepOver(StackFrame host);
-	
+
+	public abstract void stepReturn(StackFrame host);
+
+	public abstract void terminate(StackFrame host);
+
+	public abstract void stepInto(Thread host);
+
+	public abstract void stepOver(Thread host);
+
+	public abstract void stepReturn(Thread host);
 
 	public void stepOverViaCommand(final StackFrame host) {
+		ChangeObjectsVariableUpdater recorder = new ChangeObjectsVariableUpdater(
+				host);
+		domain.addResourceSetListener(recorder);
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Step Over") {
+
+					@Override
+					protected void doExecute() {
+						host.setIsStepping(true);
+						stepOver(host);
+						host.setIsStepping(false);
+					}
+
+				});
+		domain.removeResourceSetListener(recorder);
+	}
+
+	public void stepReturnViaCommand(final StackFrame host) {
+		ChangeObjectsVariableUpdater recorder = new ChangeObjectsVariableUpdater(
+				host);
+		domain.addResourceSetListener(recorder);
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Step Return") {
+
+					@Override
+					protected void doExecute() {
+						host.setIsStepping(true);
+						stepReturn(host);
+						host.setIsStepping(false);
+					}
+
+				});
+		domain.removeResourceSetListener(recorder);
+
+	}
+
+	public void stepReturnViaCommand(final Thread host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Step Return") {
+
+					@Override
+					protected void doExecute() {
+						stepReturn(host);
+					}
+
+				});
+	}
+
+	public void stepOverViaCommand(final Thread host) {
 		domain.getCommandStack().execute(
 				new RecordingCommand(domain, "Step Over") {
 
@@ -173,26 +230,126 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 					}
 
 				});
+	}
+
+	public void stepIntoViaCommand(final Thread host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Step Return") {
+
+					@Override
+					protected void doExecute() {
+						stepInto(host);
+					}
+
+				});
 
 	}
 
-	public void stepReturnViaCommand(StackFrame host) {
-		// TODO Auto-generated method stub
+	public void terminateViaCommand(final StackFrame host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Terminate") {
+
+					@Override
+					protected void doExecute() {
+						terminate(host);
+						host.getParent().getStackFrames().remove(host);
+					}
+
+				});
+	}
+
+	public void terminateViaCommand(final Thread host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Terminate") {
+
+					@Override
+					protected void doExecute() {
+						host.getStackFrames().clear();
+						if (host.getParent() != null)
+							host.getParent().setState(TargetState.TERMINATED);
+					}
+
+				});
+	}
+
+	public void resumeViaCommands(final Thread host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Resume") {
+
+					@Override
+					protected void doExecute() {
+						if (host.getParent() != null)
+							host.getParent().setState(TargetState.RUNNING);
+					}
+
+				});
 
 	}
 
-	public void stepReturnViaCommand(Thread host) {
-		// TODO Auto-generated method stub
+	public void suspendViaCommands(final Thread host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Suspend") {
+
+					@Override
+					protected void doExecute() {
+						if (host.getParent() != null)
+							host.getParent().setState(TargetState.SUSPENDED);
+					}
+
+				});
 
 	}
 
-	public void stepOverViaCommand(Thread host) {
-		// TODO Auto-generated method stub
+	public void terminateViaCommand(final AnimationTarget host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Terminate") {
+
+					@Override
+					protected void doExecute() {
+						host.setState(TargetState.TERMINATED);
+						host.getThreads().clear();
+					}
+
+				});
 
 	}
 
-	public void stepIntoViaCommand(Thread host) {
-		// TODO Auto-generated method stub
+	public void resumeViaCommand(final AnimationTarget host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Resume") {
+
+					@Override
+					protected void doExecute() {
+						host.setState(TargetState.RUNNING);
+					}
+
+				});
+
+	}
+
+	public void suspendViaCommand(final AnimationTarget host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Suspend") {
+
+					@Override
+					protected void doExecute() {
+						host.setState(TargetState.SUSPENDED);
+					}
+
+				});
+
+	}
+
+	public void disconnectViaCommand(final AnimationTarget host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Disconnect") {
+
+					@Override
+					protected void doExecute() {
+						host.setState(TargetState.DISCONNECTED);
+					}
+
+				});
 
 	}
 

@@ -54,8 +54,7 @@ public class IDebugTargetAnimationAdapter extends IDebugElementAnimationAdapter 
 	}
 
 	public void terminate() throws DebugException {
-		getHost().setState(TargetState.TERMINATED);
-
+		factory.terminateViaCommand(getHost());
 	}
 
 	public boolean canResume() {
@@ -77,11 +76,11 @@ public class IDebugTargetAnimationAdapter extends IDebugElementAnimationAdapter 
 	}
 
 	public void resume() throws DebugException {
-		getHost().setState(TargetState.RUNNING);
+		factory.resumeViaCommand(getHost());
 	}
 
 	public void suspend() throws DebugException {
-		getHost().setState(TargetState.SUSPENDED);
+		factory.suspendViaCommand(getHost());
 
 	}
 
@@ -90,7 +89,7 @@ public class IDebugTargetAnimationAdapter extends IDebugElementAnimationAdapter 
 	}
 
 	public void disconnect() throws DebugException {
-		getHost().setState(TargetState.DISCONNECTED);
+		factory.disconnectViaCommand(getHost());
 
 	}
 

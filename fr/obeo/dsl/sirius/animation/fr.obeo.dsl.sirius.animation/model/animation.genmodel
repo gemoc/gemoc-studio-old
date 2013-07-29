@@ -30,12 +30,12 @@
     </genClasses>
     <genClasses ecoreClass="animation.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//Variable/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//Variable/elements"/>
+      <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//Variable/elements"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//Variable/representationElements"/>
     </genClasses>
     <genClasses ecoreClass="animation.ecore#//Thread">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//Thread/stackFrames"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//Thread/topStackFrame"/>
+      <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//Thread/topStackFrame"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//Thread/name"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference animation.ecore#//Thread/parent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//Thread/data"/>

@@ -21,7 +21,6 @@ package fr.obeo.dsl.sirius.animation.uml;
 import java.util.Iterator;
 
 import org.eclipse.debug.core.ILaunch;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.uml2.uml.State;
@@ -33,6 +32,7 @@ import com.google.common.collect.Iterators;
 import fr.obeo.dsl.sirius.animation.AnimationFactory;
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
 import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.StackFrameSpec;
 import fr.obeo.dsl.sirius.animation.Thread;
 import fr.obeo.dsl.sirius.animation.Variable;
 import fr.obeo.dsl.sirius.animation.ide.debug.DebugModelToEclipseDebugAdapterFactory;
@@ -64,12 +64,15 @@ public class SimulateStateMachine extends
 			/*
 			 * pick the first state
 			 */
-			Variable currentState = getOrCreateVariable(curStack,
-					"currentState");
+			Variable currentState = new StackFrameSpec(curStack)
+					.getOrCreateVariable("currentState");
 			if (from.getSubmachineStates().size() > 0) {
 				currentState.getElements().add(
 						from.getSubmachineStates().get(0));
 			}
+
+			Variable modified = new StackFrameSpec(curStack)
+					.getOrCreateVariable("modified");
 
 			return thread1;
 
@@ -89,46 +92,41 @@ public class SimulateStateMachine extends
 	}
 
 	private void updateCurrentState(StackFrame host) {
-		Variable currentState = getOrCreateVariable(host, "currentState");
-		Variable machine = getOrCreateVariable(host, "statemachine");
-		EObject prevState = currentState.getElements().iterator().next();
+
+		Variable currentState = new StackFrameSpec(host)
+				.getOrCreateVariable("currentState");
+		Variable machine = new StackFrameSpec(host)
+				.getOrCreateVariable("statemachine");
+		State cur = null;
+		if (currentState.getElements().size() > 0) {
+			cur = (State) currentState.getElements().get(0);
+		}
 		currentState.getElements().clear();
 		State nextState = pickTheFirstDifferentState((StateMachine) machine
-				.getElements().get(0), (State) prevState);
+				.getElements().get(0), cur);
 		if (nextState != null) {
+			nextState.setName("some name " + System.currentTimeMillis());
 			currentState.getElements().add(nextState);
+		} else {
+			System.err.println("next step is null");
 		}
 	}
 
-	private State pickTheFirstDifferentState(StateMachine stateMachine, State prevState) {
-		for (State child : stateMachine.getSubmachineStates()) {
-			if (child!=prevState)
-			{
+	private State pickTheFirstDifferentState(StateMachine stateMachine,
+			State prevState) {
+		Iterator<State> it = Iterators.filter(stateMachine.eAllContents(),
+				State.class);
+		while (it.hasNext()) {
+			State child = it.next();
+			if (child != prevState) {
 				return child;
 			}
 		}
 		return null;
 	}
 
-	private Variable getOrCreateVariable(StackFrame host, String string) {
-		Variable found = null;
-		Iterator<Variable> it = host.getVariables().iterator();
-		while (found == null && it.hasNext()) {
-			Variable cur = it.next();
-			if (string.equals(cur.getName()))
-				found = cur;
-		}
-		if (found == null) {
-			Variable currentState = AnimationFactory.eINSTANCE.createVariable();
-			currentState.setName("currentState");
-			host.getVariables().add(currentState);
-		}
-		return found;
-	}
-
 	@Override
 	public AnimationTarget start() {
-
 		AnimationTarget result = AnimationFactory.eINSTANCE
 				.createAnimationTarget();
 		result.setName("execution");
@@ -140,5 +138,35 @@ public class SimulateStateMachine extends
 
 		}
 		return result;
+	}
+
+	@Override
+	public void stepReturn(StackFrame host) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void terminate(StackFrame host) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void stepInto(Thread host) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void stepOver(Thread host) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void stepReturn(Thread host) {
+		// TODO Auto-generated method stub
+
 	}
 }

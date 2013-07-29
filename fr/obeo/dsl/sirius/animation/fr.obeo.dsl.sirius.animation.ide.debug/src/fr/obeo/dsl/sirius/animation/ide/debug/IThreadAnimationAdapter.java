@@ -25,6 +25,7 @@ import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
 
 import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Thread;
 
 public class IThreadAnimationAdapter extends IDebugElementAnimationAdapter
@@ -34,8 +35,6 @@ public class IThreadAnimationAdapter extends IDebugElementAnimationAdapter
 			DebugModelToEclipseDebugAdapterFactory factory) {
 		super(launch, factory);
 	}
-
-	private boolean suspended = false;
 
 	@Override
 	public boolean isAdapterForType(Object type) {
@@ -47,29 +46,30 @@ public class IThreadAnimationAdapter extends IDebugElementAnimationAdapter
 	}
 
 	public boolean canResume() {
-		return true;
+		if (getHost().getParent() != null)
+			return getHost().getParent().getState() == TargetState.SUSPENDED;
+		return false;
 	}
 
 	public boolean canSuspend() {
-		return true;
+		if (getHost().getParent() != null)
+			return getHost().getParent().getState() == TargetState.RUNNING;
+		return false;
 	}
 
 	public boolean isSuspended() {
-		return suspended;
+		if (getHost().getParent() != null)
+			return getHost().getParent().getState() == TargetState.SUSPENDED;
+		return false;
 	}
 
 	public void resume() throws DebugException {
-		suspended = false;
-		for (IStackFrame sf : getStackFrames()) {
-			sf.resume();
-		}
+		this.factory.resumeViaCommands(getHost());
+
 	}
 
 	public void suspend() throws DebugException {
-		suspended = true;
-		for (IStackFrame sf : getStackFrames()) {
-			sf.suspend();
-		}
+		this.factory.suspendViaCommands(getHost());
 	}
 
 	public boolean canStepInto() {
@@ -107,11 +107,13 @@ public class IThreadAnimationAdapter extends IDebugElementAnimationAdapter
 	}
 
 	public boolean isTerminated() {
-		return getHost().getTopStackFrame() == null;
+		if (getHost().getParent() != null)
+			return getHost().getParent().getState() == TargetState.TERMINATED;
+		return true;
 	}
 
 	public void terminate() throws DebugException {
-		getHost().setTopStackFrame(null);
+		factory.terminateViaCommand(getHost());
 	}
 
 	public IStackFrame[] getStackFrames() throws DebugException {
@@ -134,8 +136,11 @@ public class IThreadAnimationAdapter extends IDebugElementAnimationAdapter
 	}
 
 	public IStackFrame getTopStackFrame() throws DebugException {
-		return (IStackFrame) factory.adapt(getHost().getTopStackFrame(),
-				IStackFrame.class);
+		if (getHost().getStackFrames() != null) {
+			return (IStackFrame) factory.adapt(getHost().getTopStackFrame(),
+					IStackFrame.class);
+		}
+		return null;
 	}
 
 	public String getName() throws DebugException {

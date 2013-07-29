@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame()
- * @model annotation="http://www.obeo.fr/dsl/dnc/archetype archetype='Thing'"
+ * @model
  * @generated
  */
 public interface StackFrame extends EObject {
