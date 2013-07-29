@@ -25,6 +25,7 @@ import fr.obeo.dsl.sirius.animation.StackFrame;
 
 import fr.obeo.dsl.viewpoint.ViewpointFactory;
 
+import fr.obeo.dsl.viewpoint.ViewpointPackage;
 import fr.obeo.dsl.viewpoint.description.DescriptionFactory;
 
 import fr.obeo.dsl.viewpoint.description.audit.AuditFactory;
@@ -208,11 +209,24 @@ public class StackFrameItemProvider
 	 * This returns StackFrame.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @not-generated
 	 */
 	@Override
 	public Object getImage(Object object) {
+		if (object instanceof StackFrame && ((StackFrame) object).isIsStepping()) {
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/StackFrame_running"));
+		}
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/StackFrame"));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
 	}
 
 	/**
@@ -653,6 +667,11 @@ public class StackFrameItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AnimationPackage.Literals.STACK_FRAME__DATA,
+				 ViewpointFactory.eINSTANCE.createIndirectlyCollapseFilter()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AnimationPackage.Literals.STACK_FRAME__DATA,
 				 ViewpointFactory.eINSTANCE.createSessionManagerEObject()));
 
 		newChildDescriptors.add
@@ -699,6 +718,31 @@ public class StackFrameItemProvider
 			(createChildParameter
 				(AnimationPackage.Literals.STACK_FRAME__DATA,
 				 ViewpointFactory.eINSTANCE.createBracketEdgeStyle()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AnimationPackage.Literals.STACK_FRAME__DATA,
+				 ViewpointFactory.eINSTANCE.createComputedStyleDescriptionRegistry()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AnimationPackage.Literals.STACK_FRAME__DATA,
+				 ViewpointFactory.eINSTANCE.create(ViewpointPackage.Literals.DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT)));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AnimationPackage.Literals.STACK_FRAME__DATA,
+				 ViewpointFactory.eINSTANCE.create(ViewpointPackage.Literals.MODEL_ELEMENT2_VIEW_VARIABLE)));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AnimationPackage.Literals.STACK_FRAME__DATA,
+				 ViewpointFactory.eINSTANCE.create(ViewpointPackage.Literals.VIEW_VARIABLE2_CONTAINER_VARIABLE)));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AnimationPackage.Literals.STACK_FRAME__DATA,
+				 ViewpointFactory.eINSTANCE.create(ViewpointPackage.Literals.CONTAINER_VARIABLE2_STYLE_DESCRIPTION)));
 
 		newChildDescriptors.add
 			(createChildParameter
