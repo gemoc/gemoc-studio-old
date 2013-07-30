@@ -12,7 +12,7 @@
         eType="#//Variable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subFrames" upperBound="-1"
         eType="#//StackFrame" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStepping" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//StackFrameState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Thread"
         eOpposite="#//Thread/stackFrames"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
@@ -46,5 +46,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="CurrentSessions">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
         eType="#//AnimationTarget" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StackFrameState">
+    <eLiterals name="stepingReturn" value="3"/>
+    <eLiterals name="stepingOver" value="2"/>
+    <eLiterals name="stepingInto" value="1"/>
+    <eLiterals name="done"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getVariables <em>Variables</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getSubFrames <em>Sub Frames</em>}</li>
- *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#isIsStepping <em>Is Stepping</em>}</li>
+ *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getState <em>State</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getParent <em>Parent</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getData <em>Data</em>}</li>
@@ -78,30 +78,33 @@ public interface StackFrame extends EObject {
 	EList<StackFrame> getSubFrames();
 
 	/**
-	 * Returns the value of the '<em><b>Is Stepping</b></em>' attribute.
+	 * Returns the value of the '<em><b>State</b></em>' attribute.
+	 * The literals are from the enumeration {@link fr.obeo.dsl.sirius.animation.StackFrameState}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Is Stepping</em>' attribute isn't clear,
+	 * If the meaning of the '<em>State</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Stepping</em>' attribute.
-	 * @see #setIsStepping(boolean)
-	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_IsStepping()
+	 * @return the value of the '<em>State</em>' attribute.
+	 * @see fr.obeo.dsl.sirius.animation.StackFrameState
+	 * @see #setState(StackFrameState)
+	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_State()
 	 * @model
 	 * @generated
 	 */
-	boolean isIsStepping();
+	StackFrameState getState();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.sirius.animation.StackFrame#isIsStepping <em>Is Stepping</em>}' attribute.
+	 * Sets the value of the '{@link fr.obeo.dsl.sirius.animation.StackFrame#getState <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Stepping</em>' attribute.
-	 * @see #isIsStepping()
+	 * @param value the new value of the '<em>State</em>' attribute.
+	 * @see fr.obeo.dsl.sirius.animation.StackFrameState
+	 * @see #getState()
 	 * @generated
 	 */
-	void setIsStepping(boolean value);
+	void setState(StackFrameState value);
 
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' container reference.

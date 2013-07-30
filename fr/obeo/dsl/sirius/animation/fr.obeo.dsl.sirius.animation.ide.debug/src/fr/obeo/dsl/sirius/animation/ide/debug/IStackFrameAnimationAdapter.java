@@ -27,6 +27,7 @@ import org.eclipse.debug.core.model.IVariable;
 
 import fr.obeo.dsl.sirius.animation.StackFrame;
 import fr.obeo.dsl.sirius.animation.StackFrameSpec;
+import fr.obeo.dsl.sirius.animation.StackFrameState;
 import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Variable;
 
@@ -55,7 +56,7 @@ public class IStackFrameAnimationAdapter extends IDebugElementAnimationAdapter
 	}
 
 	public boolean isStepping() {
-		return getHost().isIsStepping();
+		return getHost().getState() != StackFrameState.DONE;
 	}
 
 	public void stepInto() throws DebugException {

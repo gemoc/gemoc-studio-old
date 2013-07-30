@@ -34,6 +34,7 @@ import fr.obeo.dsl.sirius.animation.AnimationPackage;
 import fr.obeo.dsl.sirius.animation.StackFrame;
 import fr.obeo.dsl.sirius.animation.StackFrameSpec;
 import fr.obeo.dsl.sirius.animation.Variable;
+import fr.obeo.dsl.viewpoint.ViewpointPackage;
 
 public class ChangeObjectsVariableUpdater extends ResourceSetListenerImpl {
 
@@ -48,7 +49,7 @@ public class ChangeObjectsVariableUpdater extends ResourceSetListenerImpl {
 	public boolean isPrecommitOnly() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean isAggregatePrecommitListener() {
 		return true;
@@ -61,11 +62,12 @@ public class ChangeObjectsVariableUpdater extends ResourceSetListenerImpl {
 			if (!change.isTouch()) {
 				if (change.getNotifier() instanceof EObject
 						&& ((EObject) change.getNotifier()).eClass()
-								.getEPackage() != AnimationPackage.eINSTANCE)
+								.getEPackage() != AnimationPackage.eINSTANCE && ((EObject) change.getNotifier()).eClass()
+										.getEPackage() != ViewpointPackage.eINSTANCE)
 					changedObjects.add((EObject) change.getNotifier());
 			}
 		}
-		if (false && changedObjects.size() > 0) {
+		if (changedObjects.size() > 0) {
 
 			return new RecordingCommand(event.getEditingDomain()) {
 
@@ -75,6 +77,7 @@ public class ChangeObjectsVariableUpdater extends ResourceSetListenerImpl {
 							.getOrCreateVariable("modified");
 					changedObjs.getElements().clear();
 					changedObjs.getElements().addAll(changedObjects);
+					changedObjects.clear();
 				}
 			};
 		} else {

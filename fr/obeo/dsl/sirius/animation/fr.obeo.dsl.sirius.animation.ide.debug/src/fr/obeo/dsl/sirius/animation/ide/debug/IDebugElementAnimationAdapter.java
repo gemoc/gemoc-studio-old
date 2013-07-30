@@ -30,7 +30,9 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 
+import fr.obeo.dsl.sirius.animation.AnimationPackage;
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
+import fr.obeo.dsl.sirius.animation.StackFrameState;
 import fr.obeo.dsl.sirius.animation.TargetState;
 
 public class IDebugElementAnimationAdapter extends AdapterImpl implements
@@ -116,6 +118,19 @@ public class IDebugElementAnimationAdapter extends AdapterImpl implements
 				if (msg.getNewValue() == TargetState.SUSPENDED) {
 					debugEventKind = DebugEvent.SUSPEND;
 				}
+				if (msg.getNewValue() == StackFrameState.STEPING_INTO) {
+					debugEventKind = DebugEvent.STEP_INTO;
+				}
+				if (msg.getNewValue() == StackFrameState.STEPING_OVER) {
+					debugEventKind = DebugEvent.STEP_OVER;
+				}
+				if (msg.getNewValue() == StackFrameState.STEPING_RETURN) {
+					debugEventKind = DebugEvent.STEP_RETURN;
+				}
+				if (msg.getNewValue() == StackFrameState.DONE) {
+					debugEventKind = DebugEvent.STEP_END;
+				}
+
 				break;
 			case Notification.ADD:
 			case Notification.ADD_MANY:

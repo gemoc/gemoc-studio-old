@@ -38,6 +38,7 @@ import com.google.common.collect.Lists;
 
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
 import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.StackFrameState;
 import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Thread;
 import fr.obeo.dsl.sirius.animation.util.AnimationAdapterFactory;
@@ -143,17 +144,7 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 		return adapter;
 	}
 
-	public void stepIntoViaCommand(final StackFrame host) {
-		domain.getCommandStack().execute(
-				new RecordingCommand(domain, "Step Into") {
-
-					@Override
-					protected void doExecute() {
-						stepInto(host);
-					}
-
-				});
-	}
+	
 
 	public abstract AnimationTarget start();
 
@@ -180,13 +171,27 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 
 					@Override
 					protected void doExecute() {
-						host.setIsStepping(true);
+						host.setState(StackFrameState.STEPING_OVER);
 						stepOver(host);
-						host.setIsStepping(false);
+						host.setState(StackFrameState.DONE);
 					}
 
 				});
 		domain.removeResourceSetListener(recorder);
+	}
+	
+	public void stepIntoViaCommand(final StackFrame host) {
+		domain.getCommandStack().execute(
+				new RecordingCommand(domain, "Step Into") {
+
+					@Override
+					protected void doExecute() {
+						host.setState(StackFrameState.STEPING_INTO);
+						stepInto(host);
+						host.setState(StackFrameState.DONE);
+					}
+
+				});
 	}
 
 	public void stepReturnViaCommand(final StackFrame host) {
@@ -198,9 +203,9 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 
 					@Override
 					protected void doExecute() {
-						host.setIsStepping(true);
+						host.setState(StackFrameState.STEPING_RETURN);
 						stepReturn(host);
-						host.setIsStepping(false);
+						host.setState(StackFrameState.DONE);
 					}
 
 				});

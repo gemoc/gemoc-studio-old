@@ -22,6 +22,7 @@ package fr.obeo.dsl.sirius.animation.provider;
 import fr.obeo.dsl.sirius.animation.AnimationFactory;
 import fr.obeo.dsl.sirius.animation.AnimationPackage;
 import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.StackFrameState;
 
 import fr.obeo.dsl.viewpoint.ViewpointFactory;
 
@@ -100,7 +101,7 @@ public class StackFrameItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIsSteppingPropertyDescriptor(object);
+			addStatePropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addSourceElementPropertyDescriptor(object);
 		}
@@ -108,23 +109,23 @@ public class StackFrameItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Stepping feature.
+	 * This adds a property descriptor for the State feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIsSteppingPropertyDescriptor(Object object) {
+	protected void addStatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_StackFrame_isStepping_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StackFrame_isStepping_feature", "_UI_StackFrame_type"),
-				 AnimationPackage.Literals.STACK_FRAME__IS_STEPPING,
+				 getString("_UI_StackFrame_state_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_StackFrame_state_feature", "_UI_StackFrame_type"),
+				 AnimationPackage.Literals.STACK_FRAME__STATE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -213,7 +214,7 @@ public class StackFrameItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		if (object instanceof StackFrame && ((StackFrame) object).isIsStepping()) {
+		if (object instanceof StackFrame && ((StackFrame) object).getState() != StackFrameState.DONE) {
 			return overlayImage(object, getResourceLocator().getImage("full/obj16/StackFrame_running"));
 		}
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/StackFrame"));
@@ -255,7 +256,7 @@ public class StackFrameItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(StackFrame.class)) {
-			case AnimationPackage.STACK_FRAME__IS_STEPPING:
+			case AnimationPackage.STACK_FRAME__STATE:
 			case AnimationPackage.STACK_FRAME__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

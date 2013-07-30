@@ -14,6 +14,12 @@
       <genEnumLiterals ecoreEnumLiteral="animation.ecore#//TargetState/terminated"/>
       <genEnumLiterals ecoreEnumLiteral="animation.ecore#//TargetState/running"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="animation.ecore#//StackFrameState">
+      <genEnumLiterals ecoreEnumLiteral="animation.ecore#//StackFrameState/stepingReturn"/>
+      <genEnumLiterals ecoreEnumLiteral="animation.ecore#//StackFrameState/stepingOver"/>
+      <genEnumLiterals ecoreEnumLiteral="animation.ecore#//StackFrameState/stepingInto"/>
+      <genEnumLiterals ecoreEnumLiteral="animation.ecore#//StackFrameState/done"/>
+    </genEnums>
     <genClasses ecoreClass="animation.ecore#//AnimationTarget">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//AnimationTarget/threads"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//AnimationTarget/name"/>
@@ -22,7 +28,7 @@
     <genClasses ecoreClass="animation.ecore#//StackFrame">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/variables"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/subFrames"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//StackFrame/isStepping"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//StackFrame/state"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/parent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//StackFrame/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/data"/>

@@ -147,13 +147,13 @@ public interface AnimationPackage extends EPackage {
 	int STACK_FRAME__SUB_FRAMES = 1;
 
 	/**
-	 * The feature id for the '<em><b>Is Stepping</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME__IS_STEPPING = 2;
+	int STACK_FRAME__STATE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -350,6 +350,17 @@ public interface AnimationPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link fr.obeo.dsl.sirius.animation.StackFrameState <em>Stack Frame State</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.obeo.dsl.sirius.animation.StackFrameState
+	 * @see fr.obeo.dsl.sirius.animation.impl.AnimationPackageImpl#getStackFrameState()
+	 * @generated
+	 */
+	int STACK_FRAME_STATE = 6;
+
+
+	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.sirius.animation.AnimationTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -425,15 +436,15 @@ public interface AnimationPackage extends EPackage {
 	EReference getStackFrame_SubFrames();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.sirius.animation.StackFrame#isIsStepping <em>Is Stepping</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.sirius.animation.StackFrame#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Stepping</em>'.
-	 * @see fr.obeo.dsl.sirius.animation.StackFrame#isIsStepping()
+	 * @return the meta object for the attribute '<em>State</em>'.
+	 * @see fr.obeo.dsl.sirius.animation.StackFrame#getState()
 	 * @see #getStackFrame()
 	 * @generated
 	 */
-	EAttribute getStackFrame_IsStepping();
+	EAttribute getStackFrame_State();
 
 	/**
 	 * Returns the meta object for the container reference '{@link fr.obeo.dsl.sirius.animation.StackFrame#getParent <em>Parent</em>}'.
@@ -619,6 +630,16 @@ public interface AnimationPackage extends EPackage {
 	EEnum getTargetState();
 
 	/**
+	 * Returns the meta object for enum '{@link fr.obeo.dsl.sirius.animation.StackFrameState <em>Stack Frame State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Stack Frame State</em>'.
+	 * @see fr.obeo.dsl.sirius.animation.StackFrameState
+	 * @generated
+	 */
+	EEnum getStackFrameState();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -701,12 +722,12 @@ public interface AnimationPackage extends EPackage {
 		EReference STACK_FRAME__SUB_FRAMES = eINSTANCE.getStackFrame_SubFrames();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Stepping</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STACK_FRAME__IS_STEPPING = eINSTANCE.getStackFrame_IsStepping();
+		EAttribute STACK_FRAME__STATE = eINSTANCE.getStackFrame_State();
 
 		/**
 		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
@@ -851,6 +872,16 @@ public interface AnimationPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum TARGET_STATE = eINSTANCE.getTargetState();
+
+		/**
+		 * The meta object literal for the '{@link fr.obeo.dsl.sirius.animation.StackFrameState <em>Stack Frame State</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.obeo.dsl.sirius.animation.StackFrameState
+		 * @see fr.obeo.dsl.sirius.animation.impl.AnimationPackageImpl#getStackFrameState()
+		 * @generated
+		 */
+		EEnum STACK_FRAME_STATE = eINSTANCE.getStackFrameState();
 
 	}
 

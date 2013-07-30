@@ -20,6 +20,7 @@ package fr.obeo.dsl.sirius.animation.impl;
 
 import fr.obeo.dsl.sirius.animation.AnimationPackage;
 import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.StackFrameState;
 import fr.obeo.dsl.sirius.animation.Variable;
 
 import java.util.Collection;
@@ -49,7 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getVariables <em>Variables</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getSubFrames <em>Sub Frames</em>}</li>
- *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#isIsStepping <em>Is Stepping</em>}</li>
+ *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getState <em>State</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getData <em>Data</em>}</li>
@@ -81,24 +82,24 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	protected EList<StackFrame> subFrames;
 
 	/**
-	 * The default value of the '{@link #isIsStepping() <em>Is Stepping</em>}' attribute.
+	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsStepping()
+	 * @see #getState()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_STEPPING_EDEFAULT = false;
+	protected static final StackFrameState STATE_EDEFAULT = StackFrameState.STEPING_RETURN;
 
 	/**
-	 * The cached value of the '{@link #isIsStepping() <em>Is Stepping</em>}' attribute.
+	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsStepping()
+	 * @see #getState()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isStepping = IS_STEPPING_EDEFAULT;
+	protected StackFrameState state = STATE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -188,8 +189,8 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsStepping() {
-		return isStepping;
+	public StackFrameState getState() {
+		return state;
 	}
 
 	/**
@@ -197,11 +198,11 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsStepping(boolean newIsStepping) {
-		boolean oldIsStepping = isStepping;
-		isStepping = newIsStepping;
+	public void setState(StackFrameState newState) {
+		StackFrameState oldState = state;
+		state = newState == null ? STATE_EDEFAULT : newState;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnimationPackage.STACK_FRAME__IS_STEPPING, oldIsStepping, isStepping));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnimationPackage.STACK_FRAME__STATE, oldState, state));
 	}
 
 	/**
@@ -409,8 +410,8 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 				return getVariables();
 			case AnimationPackage.STACK_FRAME__SUB_FRAMES:
 				return getSubFrames();
-			case AnimationPackage.STACK_FRAME__IS_STEPPING:
-				return isIsStepping();
+			case AnimationPackage.STACK_FRAME__STATE:
+				return getState();
 			case AnimationPackage.STACK_FRAME__PARENT:
 				return getParent();
 			case AnimationPackage.STACK_FRAME__NAME:
@@ -441,8 +442,8 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 				getSubFrames().clear();
 				getSubFrames().addAll((Collection<? extends StackFrame>)newValue);
 				return;
-			case AnimationPackage.STACK_FRAME__IS_STEPPING:
-				setIsStepping((Boolean)newValue);
+			case AnimationPackage.STACK_FRAME__STATE:
+				setState((StackFrameState)newValue);
 				return;
 			case AnimationPackage.STACK_FRAME__PARENT:
 				setParent((fr.obeo.dsl.sirius.animation.Thread)newValue);
@@ -474,8 +475,8 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 			case AnimationPackage.STACK_FRAME__SUB_FRAMES:
 				getSubFrames().clear();
 				return;
-			case AnimationPackage.STACK_FRAME__IS_STEPPING:
-				setIsStepping(IS_STEPPING_EDEFAULT);
+			case AnimationPackage.STACK_FRAME__STATE:
+				setState(STATE_EDEFAULT);
 				return;
 			case AnimationPackage.STACK_FRAME__PARENT:
 				setParent((fr.obeo.dsl.sirius.animation.Thread)null);
@@ -505,8 +506,8 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 				return variables != null && !variables.isEmpty();
 			case AnimationPackage.STACK_FRAME__SUB_FRAMES:
 				return subFrames != null && !subFrames.isEmpty();
-			case AnimationPackage.STACK_FRAME__IS_STEPPING:
-				return isStepping != IS_STEPPING_EDEFAULT;
+			case AnimationPackage.STACK_FRAME__STATE:
+				return state != STATE_EDEFAULT;
 			case AnimationPackage.STACK_FRAME__PARENT:
 				return getParent() != null;
 			case AnimationPackage.STACK_FRAME__NAME:
@@ -529,8 +530,8 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isStepping: ");
-		result.append(isStepping);
+		result.append(" (state: ");
+		result.append(state);
 		result.append(", name: ");
 		result.append(name);
 		result.append(')');
