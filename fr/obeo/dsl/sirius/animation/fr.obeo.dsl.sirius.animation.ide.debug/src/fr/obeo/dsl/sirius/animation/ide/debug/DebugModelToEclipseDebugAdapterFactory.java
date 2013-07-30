@@ -347,6 +347,7 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 					@Override
 					protected void doExecute() {
 						host.setState(TargetState.DISCONNECTED);
+						host.getThreads().clear();
 					}
 
 				});
