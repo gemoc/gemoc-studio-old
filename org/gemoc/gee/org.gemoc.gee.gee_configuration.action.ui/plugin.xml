@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.gemoc.gee.gee_configuration.action.ui.contribution1"
+            nameFilter="*.gee_configuration"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               icon="icons/gemoc-logo-32.png"
+               id="org.gemoc.gee.gee_configuration.action.ui.menu1"
+               label="Gemoc"
+               path="additions">
+            <separator
+                  name="dsa_group">
+            </separator>
+         </menu>
+         <action
+               label="Create new DSA Model (with Kermeta)"
+               class="org.gemoc.gee.gee_configuration.action.ui.popup.actions.CreateKermetaDSAModelAction"
+               menubarPath="org.gemoc.gee.gee_configuration.action.ui.menu1/dsa_group"
+               enablesFor="1"
+               id="org.gemoc.gee.gee_configuration.action.ui.CreateDSAModelAction">
+         </action>
+         <action
+               label="Select existing DSA Model"
+               class="org.gemoc.gee.gee_configuration.action.ui.popup.actions.SelectDSAModelAction"
+               menubarPath="org.gemoc.gee.gee_configuration.action.ui.menu1/dsa_group"
+               enablesFor="1"
+               id="org.gemoc.gee.gee_configuration.action.ui.SelectDSAModelAction">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="true"
+            id="org.gemoc.gee.gee_configuration.action.ui.contribution2"
+            nameFilter="*.gee_configuration"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               icon="icons/gemoc-logo-32.png"
+               id="org.gemoc.gee.gee_configuration.action.ui.menu1"
+               label="Gemoc"
+               path="additions">
+            <separator
+                  name="ds_mm_group">
+            </separator>
+         </menu>
+         <action
+               label="Create new DomainSpecific Metamodel"
+               class="org.gemoc.gee.gee_configuration.action.ui.popup.actions.CreateDomainSpecificMetamodelAction"
+               menubarPath="org.gemoc.gee.gee_configuration.action.ui.menu1/ds_mm_group"
+               enablesFor="1"
+               id="org.gemoc.gee.gee_configuration.action.ui.CreateDomainSpecificMetamodelAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
