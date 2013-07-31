@@ -35,6 +35,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.gee.gee_configuration.action.ui.Activator;
+import org.kermeta.kp.wizard.eclipse.wizards.KermetaProjectNewWizard;
 
 public class CreateKermetaDSAModelAction implements IObjectActionDelegate {
 
@@ -102,7 +103,9 @@ public class CreateKermetaDSAModelAction implements IObjectActionDelegate {
 						// Then if we have a wizard, open it.
 						if (descriptor != null) {
 							IWizard wizard = descriptor.createWizard();
+							KermetaProjectNewWizard kwizard = (KermetaProjectNewWizard) wizard;
 							//((KermetaProjectNewWizard)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) selection);
+							//((KermetaProjectNewWizard)wizard).getContext(). TODO initialize with current ecore file
 							WizardDialog wd = new WizardDialog(shell, wizard);
 							wd.create();
 							wd.setTitle(wizard.getWindowTitle());
@@ -110,41 +113,7 @@ public class CreateKermetaDSAModelAction implements IObjectActionDelegate {
 							if(res == WizardDialog.OK){
 								DSAModel dsaModel = Gee_configurationFactoryImpl.eINSTANCE
 										.createDSAModel();
-								//dsMetamodel.setLocation(((EcoreModelWizard)wizard).getModelFile().getLocationURI().toString()); // cannot get info that way dialog already disposed
-								// get the new current selection								
-								/*IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-							      IWorkbenchPage page = workbenchWindow.getActivePage();
-							      
-							      
-							    		          if (page != null) {
-							    		              IEditorPart editor = page.getActiveEditor();
-							    		              if (editor != null) {
-							    		                  IEditorInput input = editor.getEditorInput();
-							    		                  if (input instanceof IFileEditorInput) {
-							    		                	  dsaModel.setLocation("platform:/resource"+(((IFileEditorInput)input).getFile().getFullPath().toString()));
-							    		                  }
-							    		              }
-							    		          }*/
-							      //final IWorkbenchPart activePart = page.getActivePart(); //org.eclipse.emf.ecore.presentation.EcoreEditor
-							     /* ISelection currentsel = page.getSelection();
-							      if (currentsel instanceof IStructuredSelection) {
-							          IStructuredSelection ssel = (IStructuredSelection) currentsel;
-							          Object obj = ssel.getFirstElement(); 
-							          IFile createdfile = (IFile) Platform.getAdapterManager().getAdapter(obj, IFile.class);
-							          if (createdfile == null) {
-							              if (obj instanceof IAdaptable) {
-							            	  createdfile = (IFile) ((IAdaptable) obj).getAdapter(IFile.class);
-							              }
-							          }
-							          if (createdfile != null) {
-							        	  dsMetamodel.setLocation(createdfile.getLocationURI().toString());
-							          }
-							          
-							      }*/
-								MessageDialog.openInformation(
-										shell,
-										"Generic Execution Engine action Ui",
-										"Create DSA Model : TODO find a way to retreive the created kermeta project and update the configuration.");
+								dsaModel.setLocation(kwizard.getContext().locationProject);							    							
 								
 								myConf.getDsaModels().add(dsaModel);
 								resource.save(null);
@@ -155,8 +124,6 @@ public class CreateKermetaDSAModelAction implements IObjectActionDelegate {
 						Activator.error(e.getMessage(), e);
 					} catch (IOException e) {
 						Activator.error(e.getMessage(), e);
-					/*} catch (InterruptedException e) {
-						Activator.error(e.getMessage(), e);*/
 					}
 				}
 			}

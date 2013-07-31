@@ -4,6 +4,9 @@
   <models xmi:type="genmodel:GenModel" href="gee_configuration.genmodel#/"/>
   <models xmi:type="gee_configuration:GemocConfiguration" href="../test_models/GemocConfiguration.xmi#/"/>
   <models xmi:type="modisco.xml:Root" href="../plugin.xml#/"/>
+  <models xmi:type="modisco.xml:Root" href="../pom.xml#/"/>
+  <models xmi:type="modisco.xml:Root" href="../target/p2artifacts.xml#/"/>
+  <models xmi:type="modisco.xml:Root" href="../target/p2content.xml#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_JybX8PkWEeKgAJYEWXJiVQ" initialized="true">
     <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_Jz0fEPkWEeKgAJYEWXJiVQ" name="gee_configuration package entities">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Jz0fEvkWEeKgAJYEWXJiVQ" source="GMF_DIAGRAMS">
