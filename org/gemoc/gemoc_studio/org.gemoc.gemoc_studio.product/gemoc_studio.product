@@ -4,7 +4,7 @@
 <product name="Gemoc studio" uid="gemoc_studio" id="org.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/images/icons/GeMoC_48x48x32.bmp"/>
+      <image path="/org.gemoc.gemoc_studio.branding/images/GemocStudioAboutImage.png"/>
       <text>
          Gemoc Studio
       </text>
@@ -22,7 +22,7 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/images/icons/GeMoC_16x16x32.bmp" i32="/images/icons/GeMoC_32x32x32.bmp" i48="/images/icons/GeMoC_48x48x32.bmp"/>
+   <windowImages i16="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask16.png" i32="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask32.png" i48="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask48.png" i64="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask64.png" i128="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask128.png"/>
 
    <splash
       location="org.gemoc.gemoc_studio.branding"
@@ -35,15 +35,16 @@
       <solaris/>
       <win useIco="false">
          <bmp
-            winSmallHigh="/images/icons/GeMoC_16x16x32.bmp"
-            winSmallLow="/images/icons/GeMoC_16x16x8.bmp"
-            winMediumHigh="/images/icons/GeMoC_32x32x32.bmp"
-            winMediumLow="/images/icons/GeMoC_32x32x8.bmp"
-            winLargeHigh="/images/icons/GeMoC_48x48x32.bmp"
-            winLargeLow="/images/icons/GeMoC_48x48x8.bmp"
-            winExtraLargeHigh="/images/icons/GeMoC_256x256x32.bmp"/>
+            winSmallHigh="/org.gemoc.gemoc_studio.branding/images/icons/GeMoC_16x16x32.bmp"
+            winSmallLow="/org.gemoc.gemoc_studio.branding/images/icons/GeMoC_16x16x8.bmp"
+            winMediumHigh="/org.gemoc.gemoc_studio.branding/images/icons/GeMoC_32x32x32.bmp"
+            winMediumLow="/org.gemoc.gemoc_studio.branding/images/icons/GeMoC_32x32x8.bmp"
+            winLargeHigh="/org.gemoc.gemoc_studio.branding/images/icons/GeMoC_48x48x32.bmp"
+            winLargeLow="/org.gemoc.gemoc_studio.branding/images/icons/GeMoC_48x48x8.bmp"
+            winExtraLargeHigh="/org.gemoc.gemoc_studio.branding/images/icons/GeMoC_256x256x32.bmp"/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
