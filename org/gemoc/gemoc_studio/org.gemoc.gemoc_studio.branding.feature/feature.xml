@@ -21,11 +21,7 @@
          id="org.kermeta.language.feature"
          version="0.0.0"
          search-location="both"/>
-
-   <includes
-         id="org.gemoc.gemoc_language_designer.feature"
-         version="0.0.0"
-         search-location="both"/>
+   
 
    <requires>
       <import feature="org.kermeta.language.feature" version="2.0.0" match="greaterOrEqual"/>
@@ -36,6 +32,7 @@
       <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.ecoretools.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.gemoc_language_designer.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

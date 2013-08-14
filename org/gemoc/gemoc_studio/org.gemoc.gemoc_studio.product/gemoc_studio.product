@@ -80,7 +80,6 @@
       <feature id="org.scala-ide.sdt.feature"/>
       <feature id="org.scala-ide.sdt.dev.feature"/>
       <feature id="org.scala-ide.sdt.source.feature"/>
-      <feature id="org.gemoc.gemoc_language_designer.feature" version="0.1.0.qualifier"/>
    </features>
 
    <configurations>
