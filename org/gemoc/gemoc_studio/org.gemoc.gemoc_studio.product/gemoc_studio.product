@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Gemoc studio" uid="gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Gemoc studio" uid="gemoc_studio" id="org.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/images/icons/GeMoC_48x48x32.bmp"/>
@@ -24,7 +24,11 @@
 
    <windowImages i16="/images/icons/GeMoC_16x16x32.bmp" i32="/images/icons/GeMoC_32x32x32.bmp" i48="/images/icons/GeMoC_48x48x32.bmp"/>
 
-
+   <splash
+      location="org.gemoc.gemoc_studio.branding"
+      startupProgressRect="5,275,445,15"
+      startupMessageRect="7,252,445,20"
+      startupForegroundColor="000000" />
    <launcher>
       <linux icon="/images/icons/GeMoC.xpm"/>
       <macosx icon="/images/icons/GeMoC.icns"/>
@@ -44,6 +48,7 @@
 
    <vm>
    </vm>
+
 
    <plugins>
    </plugins>
