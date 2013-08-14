@@ -55,6 +55,11 @@
             <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.trace.master/lastSuccessfulBuild/artifact/org/gemoc/execution/trace/org.gemoc.execution.trace.p2updatesite/target/repository/</url>
         </repository>
         <repository>
+        	<id>gemoc_language_designer-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_designer.rootr/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_designer/org.gemoc.gemoc_language_designer.p2updatesite/target/repository/</url>
+        </repository>
+        <repository>
             <id>timesquare ECL</id>
             <layout>p2</layout>
             <url>http://timesquare.inria.fr/ecl/update_site</url>

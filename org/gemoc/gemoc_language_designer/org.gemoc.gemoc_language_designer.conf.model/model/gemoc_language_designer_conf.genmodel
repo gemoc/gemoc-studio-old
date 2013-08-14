@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.gemoc_language_designer.conf.model/src"
+    modelPluginID="org.gemoc.gemoc_language_designer.conf.model" modelName="Gemoc_language_designer_conf"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false">
+  <foreignModel>gemoc_language_designer_conf.ecore</foreignModel>
+  <genPackages prefix="Gemoc_language_designer_conf" disposableProviderFactory="true"
+      ecorePackage="gemoc_language_designer_conf.ecore#/">
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//GemocLanguageDesignerConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_designer_conf.ecore#//GemocLanguageDesignerConfiguration/languageDefinitions"/>
+    </genClasses>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//ProjectResource"/>
+    <genClasses image="false" ecoreClass="gemoc_language_designer_conf.ecore#//DSAProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//Kermeta2DSAProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//LanguageDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_designer_conf.ecore#//LanguageDefinition/dsaProjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_designer_conf.ecore#//LanguageDefinition/domainModelProject"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_designer_conf.ecore#//LanguageDefinition/editorProjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_designer_conf.ecore#//LanguageDefinition/moCModelProjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_designer_conf.ecore#//LanguageDefinition/animatorProjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_designer_conf.ecore#//LanguageDefinition/dSEProjects"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="gemoc_language_designer_conf.ecore#//EditorProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//DomainModelProject"/>
+    <genClasses image="false" ecoreClass="gemoc_language_designer_conf.ecore#//MoCProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//CCSLMoCProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//AnimatorProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//EMFEcoreProject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_designer_conf.ecore#//EMFEcoreProject/ecoreModel"/>
+    </genClasses>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//ODProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//SiriusAnimatorProject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gemoc_language_designer_conf.ecore#//SiriusAnimatorProject/oDProject"/>
+    </genClasses>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//ModHelXMoCProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//DSEProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//ECLProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//TreeEditorProject"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//EcoreModel"/>
+    <genClasses ecoreClass="gemoc_language_designer_conf.ecore#//FileResource"/>
+  </genPackages>
+</genmodel:GenModel>
