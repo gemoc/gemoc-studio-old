@@ -1676,12 +1676,12 @@
       <ownedDiagramElements xmi:type="viewpoint:DNodeList" xmi:id="_7odrtwTeEeOr-oEtVLrZMw" name="ProjectResource" tooltipText="gemoc_language_designer_conf.ProjectResource" incomingEdges="_7odr-wTeEeOr-oEtVLrZMw _AgACYATfEeOr-oEtVLrZMw _BC9lgATfEeOr-oEtVLrZMw _BvJ9IATfEeOr-oEtVLrZMw _xt4VEATiEeOr-oEtVLrZMw _1DN5MATiEeOr-oEtVLrZMw">
         <target xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//ProjectResource"/>
         <semanticElements xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//ProjectResource"/>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_7odruATeEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7odruQTeEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7odrugTeEeOr-oEtVLrZMw"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_7odruwTeEeOr-oEtVLrZMw" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_7odrvATeEeOr-oEtVLrZMw" red="209" green="209" blue="209"/>
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_ao0pQAisEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ao0pQQisEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ao0pQgisEeOX_L6Mi048cw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ao0pQwisEeOX_L6Mi048cw" red="204" green="242" blue="166"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ao0pRAisEeOX_L6Mi048cw" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
@@ -1743,12 +1743,12 @@
       <ownedDiagramElements xmi:type="viewpoint:DNodeList" xmi:id="_7odr1QTeEeOr-oEtVLrZMw" name="DomainModelProject" tooltipText="gemoc_language_designer_conf.DomainModelProject" outgoingEdges="_AgACYATfEeOr-oEtVLrZMw" incomingEdges="_7odr8QTeEeOr-oEtVLrZMw _MbzbIAThEeOr-oEtVLrZMw">
         <target xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//DomainModelProject"/>
         <semanticElements xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//DomainModelProject"/>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_7odr1gTeEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_WLZbsQisEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
           <customFeatures>backgroundColor</customFeatures>
           <customFeatures>foregroundColor</customFeatures>
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7odr1wTeEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7odr2ATeEeOr-oEtVLrZMw"/>
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_WLZbsgisEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_WLZbswisEeOX_L6Mi048cw"/>
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_shZJcATfEeOr-oEtVLrZMw" red="166" green="193" blue="152"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
@@ -1905,12 +1905,12 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_3i7HwQTgEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_YLmY4AisEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
           <customFeatures>backgroundColor</customFeatures>
           <customFeatures>foregroundColor</customFeatures>
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3i7HwgTgEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3i7HwwTgEeOr-oEtVLrZMw"/>
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_YLmY4QisEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_YLmY4gisEeOX_L6Mi048cw"/>
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_PP6PkQTjEeOr-oEtVLrZMw" red="166" green="193" blue="152"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
@@ -2050,12 +2050,12 @@
       <ownedDiagramElements xmi:type="viewpoint:DNodeList" xmi:id="_CJjSwATiEeOr-oEtVLrZMw" name="DSEProject" tooltipText="gemoc_language_designer_conf.DSEProject" outgoingEdges="_1DN5MATiEeOr-oEtVLrZMw" incomingEdges="_K0xWcATiEeOr-oEtVLrZMw _VTwd0ATiEeOr-oEtVLrZMw">
         <target xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//DSEProject"/>
         <semanticElements xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//DSEProject"/>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_CJjSwQTiEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_XOP_0AisEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
           <customFeatures>backgroundColor</customFeatures>
           <customFeatures>foregroundColor</customFeatures>
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_CJjSwgTiEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CJjSwwTiEeOr-oEtVLrZMw"/>
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XOP_0QisEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XOP_0gisEeOX_L6Mi048cw"/>
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_PQDZgQTjEeOr-oEtVLrZMw" red="166" green="193" blue="152"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
@@ -2183,12 +2183,12 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="__-TtwQTiEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="__-TtwgTiEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="__-TtwwTiEeOr-oEtVLrZMw"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="__-TtxATiEeOr-oEtVLrZMw" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="__-TtxQTiEeOr-oEtVLrZMw" red="209" green="209" blue="209"/>
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_cHAegAisEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_cHAegQisEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_cHAeggisEeOX_L6Mi048cw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_cHAegwisEeOX_L6Mi048cw" red="204" green="242" blue="166"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_cHAehAisEeOX_L6Mi048cw" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
@@ -2799,12 +2799,12 @@
         <target xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//ProjectResource"/>
         <semanticElements xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//ProjectResource"/>
         <graphicalFilters xmi:type="viewpoint:HideFilter" xmi:id="_m-ik4ATfEeOr-oEtVLrZMw"/>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_dG0R2ATfEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_dG0R2QTfEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_dG0R2gTfEeOr-oEtVLrZMw"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_dG0R2wTfEeOr-oEtVLrZMw" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_dG0R3ATfEeOr-oEtVLrZMw" red="209" green="209" blue="209"/>
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_BsOMUAitEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BsOMUQitEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BsOMUgitEeOX_L6Mi048cw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BsOMUwitEeOX_L6Mi048cw" red="204" green="242" blue="166"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BsOMVAitEeOX_L6Mi048cw" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
@@ -2877,12 +2877,12 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_dG0R9gTfEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_BsRPoAitEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
           <customFeatures>backgroundColor</customFeatures>
           <customFeatures>foregroundColor</customFeatures>
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_dG0R9wTfEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_dG0R-ATfEeOr-oEtVLrZMw"/>
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BsRPoQitEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BsRPogitEeOX_L6Mi048cw"/>
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zoXMIATfEeOr-oEtVLrZMw" red="166" green="193" blue="152"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
@@ -3036,12 +3036,12 @@
       <ownedDiagramElements xmi:type="viewpoint:DNodeList" xmi:id="_3iUq0ATgEeOr-oEtVLrZMw" name="AnimatorProject" tooltipText="gemoc_language_designer_conf.AnimatorProject" outgoingEdges="_xun78ATiEeOr-oEtVLrZMw" incomingEdges="_gLgf8AThEeOr-oEtVLrZMw _yjarYAThEeOr-oEtVLrZMw">
         <target xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//AnimatorProject"/>
         <semanticElements xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//AnimatorProject"/>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_3iUq0QTgEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_BsSdwAitEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
           <customFeatures>backgroundColor</customFeatures>
           <customFeatures>foregroundColor</customFeatures>
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3iUq0gTgEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3iUq0wTgEeOr-oEtVLrZMw"/>
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BsSdwQitEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BsSdwgitEeOX_L6Mi048cw"/>
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_NpxDEQThEeOr-oEtVLrZMw" red="166" green="193" blue="152"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
@@ -3184,12 +3184,12 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_CJGm0QTiEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_BsVhEAitEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
           <customFeatures>backgroundColor</customFeatures>
           <customFeatures>foregroundColor</customFeatures>
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_CJGm0gTiEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CJGm0wTiEeOr-oEtVLrZMw"/>
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BsVhEQitEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BsVhEgitEeOX_L6Mi048cw"/>
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fFKGcATiEeOr-oEtVLrZMw" red="166" green="193" blue="152"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
@@ -3314,12 +3314,12 @@
         <target xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//FileResource"/>
         <semanticElements xmi:type="ecore:EClass" href="gemoc_language_designer_conf.ecore#//FileResource"/>
         <graphicalFilters xmi:type="viewpoint:HideFilter" xmi:id="_kftOIATjEeOr-oEtVLrZMw"/>
-        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="___DUoQTiEeOr-oEtVLrZMw" backgroundStyle="GradientTopToBottom">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="___DUogTiEeOr-oEtVLrZMw"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="___DUowTiEeOr-oEtVLrZMw"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="___DUpATiEeOr-oEtVLrZMw" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="___DUpQTiEeOr-oEtVLrZMw" red="209" green="209" blue="209"/>
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_BsX9UAitEeOX_L6Mi048cw" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BsX9UQitEeOX_L6Mi048cw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BsX9UgitEeOX_L6Mi048cw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BsX9UwitEeOX_L6Mi048cw" red="204" green="242" blue="166"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BsX9VAitEeOX_L6Mi048cw" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>

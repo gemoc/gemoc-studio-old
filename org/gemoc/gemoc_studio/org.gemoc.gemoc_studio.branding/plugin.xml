@@ -9,16 +9,21 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="brandingGemoc.application"
-            description="Gemoc Studio description (todo)"
+            description="%productBlurb"
             name="Gemoc Studio">
+         <property name="aboutText" value="%productBlurb"/>
+         <property name="aboutImage" value="/images/GemocStudioAboutImage.png"/> 
+         <property name="appName" value="Gemoc Studio"/> 
+         <property name="windowImages" value="images/icons/GemocIconStudioMask16.png,images/icons/GemocIconStudioMask32.png,images/icons/GemocIconStudioMask48.png,images/icons/GemocIconStudioMask64.png,images/icons/GemocIconStudioMask128.png"/> 
          <property
-               name="aboutText"
-               value="Gemoc Studio">
-         </property>
-         <property
-               name="aboutImage"
-               value="/images/GemocStudioAboutImage.png">
-         </property>
+                name="startupForegroundColor"
+                value="C8D5EA"/>
+          <property
+                name="startupMessageRect"
+                value="7,220,441,20"/>
+          <property
+                name="startupProgressRect"
+                value="0,280,455,15"/>
       </product>
    </extension>
 </plugin>

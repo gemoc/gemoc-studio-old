@@ -25,10 +25,7 @@
    <windowImages i16="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask16.png" i32="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask32.png" i48="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask48.png" i64="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask64.png" i128="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask128.png"/>
 
    <splash
-      location="org.gemoc.gemoc_studio.branding"
-      startupProgressRect="5,275,445,15"
-      startupMessageRect="7,252,445,20"
-      startupForegroundColor="000000" />
+      location="org.gemoc.gemoc_studio.branding" />
    <launcher>
       <linux icon="/images/icons/GeMoC.xpm"/>
       <macosx icon="/images/icons/GeMoC.icns"/>
@@ -44,7 +41,6 @@
             winExtraLargeHigh="/org.gemoc.gemoc_studio.branding/images/icons/GeMoC_256x256x32.bmp"/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>

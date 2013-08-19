@@ -6,7 +6,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="languageDefinitions" upperBound="-1"
         eType="#//LanguageDefinition" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProjectResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectResource" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="DSAProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="Kermeta2DSAProject" eSuperTypes="#//DSAProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="LanguageDefinition">
@@ -24,10 +24,11 @@
         eType="#//DSEProject" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EditorProject" abstract="true" eSuperTypes="#//ProjectResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DomainModelProject" eSuperTypes="#//ProjectResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainModelProject" abstract="true"
+      eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="MoCProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="CCSLMoCProject" eSuperTypes="#//MoCProject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AnimatorProject" eSuperTypes="#//ProjectResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AnimatorProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="EMFEcoreProject" eSuperTypes="#//DomainModelProject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ecoreModel" lowerBound="1"
         eType="#//EcoreModel" containment="true"/>
@@ -38,9 +39,9 @@
         eType="#//ODProject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModHelXMoCProject" eSuperTypes="#//MoCProject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DSEProject" eSuperTypes="#//ProjectResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DSEProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="ECLProject" eSuperTypes="#//DSEProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="TreeEditorProject" eSuperTypes="#//EditorProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="EcoreModel" eSuperTypes="#//FileResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FileResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true"/>
 </ecore:EPackage>
