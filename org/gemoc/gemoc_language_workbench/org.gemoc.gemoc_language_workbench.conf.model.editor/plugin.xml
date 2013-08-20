@@ -11,24 +11,24 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="org.gemoc.gemoc_language_workbench_conf.presentation.gemoc_language_workbench_confModelWizardID"
-            name="%_UI_gemoc_language_workbench_confModelWizard_label"
-            class="org.gemoc.gemoc_language_workbench_conf.presentation.gemoc_language_workbench_confModelWizard"
+            id="org.gemoc.gemoc_language_workbench.conf.presentation.confModelWizardID"
+            name="%_UI_confModelWizard_label"
+            class="org.gemoc.gemoc_language_workbench.conf.presentation.confModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/gemoc_language_workbench_confModelFile.gif">
-         <description>%_UI_gemoc_language_workbench_confModelWizard_description</description>
+            icon="icons/full/obj16/confModelFile.gif">
+         <description>%_UI_confModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
 
    <extension point="org.eclipse.ui.editors">
       <editor
-            id="org.gemoc.gemoc_language_workbench_conf.presentation.gemoc_language_workbench_confEditorID"
-            name="%_UI_gemoc_language_workbench_confEditor_label"
-            icon="icons/full/obj16/gemoc_language_workbench_confModelFile.gif"
-            extensions="gemoc_language_workbench_conf"
-            class="org.gemoc.gemoc_language_workbench_conf.presentation.gemoc_language_workbench_confEditor"
-            contributorClass="org.gemoc.gemoc_language_workbench_conf.presentation.gemoc_language_workbench_confActionBarContributor">
+            id="org.gemoc.gemoc_language_workbench.conf.presentation.confEditorID"
+            name="%_UI_confEditor_label"
+            icon="icons/full/obj16/confModelFile.gif"
+            extensions="gemoc_language_conf"
+            class="org.gemoc.gemoc_language_workbench.conf.presentation.confEditor"
+            contributorClass="org.gemoc.gemoc_language_workbench.conf.presentation.confActionBarContributor">
       </editor>
    </extension>
 

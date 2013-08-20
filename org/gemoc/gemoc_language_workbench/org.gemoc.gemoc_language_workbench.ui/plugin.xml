@@ -96,5 +96,96 @@
             natureId="org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerNature">
       </image>
    </extension>
+   <!-- definitions of commands -->
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.gemoc.gemoc_language_workbench.ui.commands.CreateDomainModelProjectHandler"
+            id="org.gemoc.gemoc_language_workbench.ui.commands.CreateDomainModelProject"
+            name="CreateDomainModelProject">
+      </command>
+      <command
+            defaultHandler="org.gemoc.gemoc_language_workbench.ui.commands.ShowDomainModelProjectHandler"
+            id="org.gemoc.gemoc_language_workbench.ui.commands.ShowDomainModelProject"
+            name="ShowDomainModelProject">
+      </command>
+   </extension>
+   <!-- contributions to popup menus -->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               icon="icons/gemoc-logo-16.png"
+               id="GemocLanguage.menu"
+               label="Gemoc Language">
+            <menu
+                  id="domainModel.submenu"
+                  label="Domain Model">
+               <command
+                     commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateDomainModelProject"
+                     label="Create Domain Model Project"
+                     style="push">
+                  <visibleWhen
+                        checkEnabled="false">
+                     <reference
+                           definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                     </reference>
+                  </visibleWhen>
+               </command>
+               <command
+                     commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowDomainModelProject"
+                     label="Show Domain Model Project"
+                     style="push">
+                  <visibleWhen
+                        checkEnabled="false">
+                     <reference
+                           definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                     </reference>
+                  </visibleWhen>
+               </command>
+            </menu>
+         </menu>
+      </menuContribution>
+   </extension>
+   <!-- expression definitions for simplifying the filtering of command and menu contributions -->
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.gemoc.gemoc_language_workbench.ui.definitions.IsSelectionInGemocLanguageProject">
+         <iterate
+               operator="or">
+            <adapt
+                  type="org.eclipse.core.resources.IResource">
+               <test
+                     property="org.eclipse.core.resources.projectNature "
+                     value="org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerNature">
+               </test>
+            </adapt>
+         </iterate>
+      </definition>
+      <definition
+            id="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+         <or>
+            <with
+                  variable="activeEditorInput">
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+                  <test
+                        property="org.eclipse.core.resources.projectNature "
+                        value="org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerNature">
+                  </test>
+               </adapt>
+            </with>
+            <with
+                  variable="selection">
+               <reference
+                     definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsGemocLanguageProject">
+               </reference>
+            </with>
+         </or>
+      </definition>
+   </extension>
 
 </plugin>

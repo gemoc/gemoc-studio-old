@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.gemoc.gemoc_language_workbench.conf.model.editor;singleton:=true
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.gemoc.gemoc_language_workbench_conf.presentation.gemoc_language_workbench_confEditorPlugin$Implementation
+Bundle-Activator: org.gemoc.gemoc_language_workbench.conf.presentation.gemoc_language_workbench_confEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.gemoc_language_workbench_conf.presentation
+Export-Package: org.gemoc.gemoc_language_workbench.conf.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.gemoc.gemoc_language_workbench.conf.model.edit;visibility:=reexport,

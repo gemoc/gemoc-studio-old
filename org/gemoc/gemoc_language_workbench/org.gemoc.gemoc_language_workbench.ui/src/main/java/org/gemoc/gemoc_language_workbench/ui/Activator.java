@@ -1,5 +1,6 @@
 package org.gemoc.gemoc_language_workbench.ui;
 
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -58,4 +59,18 @@ public class Activator extends AbstractUIPlugin {
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
+	
+	public static void warn(String msg, Throwable e){
+		Activator.getDefault().getLog().log(new Status(Status.WARNING, PLUGIN_ID,
+                Status.OK, 
+                msg, 
+                e));
+	}
+	public static void error(String msg, Throwable e){
+		Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID,
+                Status.OK, 
+                msg, 
+                e));
+	}
+	
 }
