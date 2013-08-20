@@ -32,7 +32,7 @@
       <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.ecoretools.sdk" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gemoc_language_designer.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.gemoc_language_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
