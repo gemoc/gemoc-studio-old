@@ -8,6 +8,8 @@
   <modules>
   	<!-- plugins  -->
     <module>../org.gemoc.gemoc_language_designer.conf.model</module>
+    <module>../org.gemoc.gemoc_language_designer.conf.model.edit</module>
+    <module>../org.gemoc.gemoc_language_designer.conf.model.editor</module>
     <module>../org.gemoc.gemoc_language_designer.ui</module>
     
   	<!-- feature and update site  -->
