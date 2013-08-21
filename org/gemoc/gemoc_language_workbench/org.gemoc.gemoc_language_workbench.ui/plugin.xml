@@ -91,7 +91,7 @@
    <extension
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
-            icon="icons/gemoc-logo-12.png"
+            icon="icons/xL_icon-12.png"
             id="org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerNature.image"
             natureId="org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerNature">
       </image>
@@ -172,6 +172,7 @@
                label="Gemoc Language">
             <command
                   commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateDomainModelProject"
+                  icon="icons/plus-16.png"
                   label="Create Domain Model Project"
                   style="push">
                <visibleWhen
@@ -190,6 +191,7 @@
             </command>
             <command
                   commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowDomainModelProject"
+                  icon="icons/eye-16.png"
                   label="Show Domain Model Project"
                   style="push">
                <visibleWhen
@@ -200,112 +202,157 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateDSAProject"
-                  label="Create DSA Project"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
-                  </reference>
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowDSAProject"
-                  label="Show DSA Project"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
-                  </reference>
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateMoCProject"
-                  label="Create MoC Project"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
-                  </reference>
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowMoCProject"
-                  label="Show MoC Project"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
-                  </reference>
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateDSEProject"
-                  label="Create DSE Project"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
-                  </reference>
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowDSEProject"
-                  label="Show DSE Project"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
-                  </reference>
-               </visibleWhen>
-            </command>
-            <command
                   commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateEditorProject"
+                  icon="icons/plus-16.png"
                   label="Create Editor Project"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
-                  <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
-                  </reference>
+                  <and>
+                     <not>
+                        <reference
+                              definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasEditorProject">
+                        </reference>
+                     </not>
+                     <reference
+                           definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                     </reference>
+                  </and>
                </visibleWhen>
             </command>
             <command
                   commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowEditorProject"
+                  icon="icons/eye-16.png"
                   label="Show Editor Project"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasEditorProject">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateDSAProject"
+                  icon="icons/plus-16.png"
+                  label="Create DSA Project"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <and>
+                     <not>
+                        <reference
+                              definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasDSAProject">
+                        </reference>
+                     </not>
+                     <reference
+                           definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                     </reference>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowDSAProject"
+                  icon="icons/eye-16.png"
+                  label="Show DSA Project"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasDSAProject">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateMoCProject"
+                  icon="icons/plus-16.png"
+                  label="Create MoC Project"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <and>
+                     <not>
+                        <reference
+                              definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasMoCProject">
+                        </reference>
+                     </not>
+                     <reference
+                           definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                     </reference>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowMoCProject"
+                  icon="icons/eye-16.png"
+                  label="Show MoC Project"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasMoCProject">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateDSEProject"
+                  icon="icons/plus-16.png"
+                  label="Create DSE Project"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <and>
+                     <not>
+                        <reference
+                              definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasDSEProject">
+                        </reference>
+                     </not>
+                     <reference
+                           definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                     </reference>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowDSEProject"
+                  icon="icons/eye-16.png"
+                  label="Show DSE Project"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasDSEProject">
                   </reference>
                </visibleWhen>
             </command>
             <command
                   commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateAnimatorProject"
+                  icon="icons/plus-16.png"
                   label="Create Animator Project"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
-                  <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
-                  </reference>
+                  <and>
+                     <not>
+                        <reference
+                              definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasAnimatorProject">
+                        </reference>
+                     </not>
+                     <reference
+                           definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                     </reference>
+                  </and>
                </visibleWhen>
             </command>
             <command
                   commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowAnimatorProject"
+                  icon="icons/eye-16.png"
                   label="Show Animator Project"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasAnimatorProject">
                   </reference>
                </visibleWhen>
             </command>
@@ -371,6 +418,146 @@
                      <test
                            property="org.eclipse.core.resources.projectPersistentProperty"
                            value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_DomainModel">
+                     </test>
+                  </adapt>
+               </iterate>
+            </with>
+         </or>
+      </definition>
+      <definition
+            id="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasEditorProject">
+         <or>
+            <with
+                  variable="activeEditorInput">
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+                  <test
+                        property="org.eclipse.core.resources.projectPersistentProperty"
+                        value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_editor">
+                  </test>
+               </adapt>
+            </with>
+            <with
+                  variable="selection">
+               <iterate
+                     operator="or">
+                  <adapt
+                        type="org.eclipse.core.resources.IResource">
+                     <test
+                           property="org.eclipse.core.resources.projectPersistentProperty"
+                           value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_editor">
+                     </test>
+                  </adapt>
+               </iterate>
+            </with>
+         </or>
+      </definition>
+      <definition
+            id="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasDSAProject">
+         <or>
+            <with
+                  variable="activeEditorInput">
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+                  <test
+                        property="org.eclipse.core.resources.projectPersistentProperty"
+                        value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_DSA">
+                  </test>
+               </adapt>
+            </with>
+            <with
+                  variable="selection">
+               <iterate
+                     operator="or">
+                  <adapt
+                        type="org.eclipse.core.resources.IResource">
+                     <test
+                           property="org.eclipse.core.resources.projectPersistentProperty"
+                           value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_DSA">
+                     </test>
+                  </adapt>
+               </iterate>
+            </with>
+         </or>
+      </definition>
+      <definition
+            id="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasDSEProject">
+         <or>
+            <with
+                  variable="activeEditorInput">
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+                  <test
+                        property="org.eclipse.core.resources.projectPersistentProperty"
+                        value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_DSE">
+                  </test>
+               </adapt>
+            </with>
+            <with
+                  variable="selection">
+               <iterate
+                     operator="or">
+                  <adapt
+                        type="org.eclipse.core.resources.IResource">
+                     <test
+                           property="org.eclipse.core.resources.projectPersistentProperty"
+                           value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_DSE">
+                     </test>
+                  </adapt>
+               </iterate>
+            </with>
+         </or>
+      </definition>
+      <definition
+            id="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasMoCProject">
+         <or>
+            <with
+                  variable="activeEditorInput">
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+                  <test
+                        property="org.eclipse.core.resources.projectPersistentProperty"
+                        value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_MoC">
+                  </test>
+               </adapt>
+            </with>
+            <with
+                  variable="selection">
+               <iterate
+                     operator="or">
+                  <adapt
+                        type="org.eclipse.core.resources.IResource">
+                     <test
+                           property="org.eclipse.core.resources.projectPersistentProperty"
+                           value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_MoC">
+                     </test>
+                  </adapt>
+               </iterate>
+            </with>
+         </or>
+      </definition>
+      <definition
+            id="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasAnimatorProject">
+         <or>
+            <with
+                  variable="activeEditorInput">
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+                  <test
+                        property="org.eclipse.core.resources.projectPersistentProperty"
+                        value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_animator">
+                  </test>
+               </adapt>
+            </with>
+            <with
+                  variable="selection">
+               <iterate
+                     operator="or">
+                  <adapt
+                        type="org.eclipse.core.resources.IResource">
+                     <test
+                           property="org.eclipse.core.resources.projectPersistentProperty"
+                           value="org.gemoc.gemoc_language_workbench.ui.gemoc_project_has_animator">
                      </test>
                   </adapt>
                </iterate>

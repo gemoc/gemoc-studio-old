@@ -155,16 +155,23 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				    TreeIterator<EObject> it = modelresource.getAllContents();
 				    while (it.hasNext()) {
 						EObject eObject = (EObject) it.next();
-						String s = new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL).toString();
 						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DomainModelProject){
 							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
-							/*project.setPersistentProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
-							project.setSessionProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
-							project.setSessionProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
-							file.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
-							file.setPersistentProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
-							file.setSessionProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
-							file.setSessionProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");*/
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSAProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DSA), "true");
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSEProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DSE), "true");
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.MoCProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_MOC), "true");
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.EditorProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_EDITOR), "true");
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.AnimatorProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR), "true");
 						}
 					}
 				}
@@ -183,9 +190,11 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	private void resetPersistentProperties(IProject project ){
 		try {
 			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), null);
-			/*project.setPersistentProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), null);
-			project.setSessionProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), null);
-			project.setSessionProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), null);*/
+			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DSA), null);
+			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DSE), null);
+			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_MOC), null);
+			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_EDITOR), null);
+			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR), null);
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
