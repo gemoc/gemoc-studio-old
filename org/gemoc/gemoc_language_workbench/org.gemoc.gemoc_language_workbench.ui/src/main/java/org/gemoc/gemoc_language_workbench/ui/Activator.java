@@ -12,7 +12,18 @@ public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.ui"; //$NON-NLS-1$
+	
+	public static final String GEMOC_PROJECT_CONFIGURATION_FILE = "project.gemoc_language_conf";
 
+	
+	// be careful do not use "." in the property name !!! because it is used to rebuild the qualified name from a string by ResourcePropertyTester
+	public static final String GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL = "gemoc_project_has_DomainModel";
+	public static final String GEMOC_PROJECT_PROPERTY_HAS_DSA = "gemoc_project_has_DSA";
+	public static final String GEMOC_PROJECT_PROPERTY_HAS_DSE = "gemoc_project_has_DSE";
+	public static final String GEMOC_PROJECT_PROPERTY_HAS_MOC = "gemoc_project_has_MoC";
+	public static final String GEMOC_PROJECT_PROPERTY_HAS_EDITOR = "gemoc_project_has_editor";
+	public static final String GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR = "gemoc_project_has_animator";
+	
 	// The shared instance
 	private static Activator plugin;
 	

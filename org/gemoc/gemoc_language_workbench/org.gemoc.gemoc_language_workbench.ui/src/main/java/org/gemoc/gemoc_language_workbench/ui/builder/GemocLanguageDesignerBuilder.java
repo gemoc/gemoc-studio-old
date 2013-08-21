@@ -16,6 +16,15 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.QualifiedName;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -33,14 +42,15 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			switch (delta.getKind()) {
 			case IResourceDelta.ADDED:
 				// handle added resource
-				checkXML(resource);
+				updateProjectPersistentProperties(resource);
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
+				removePersistentProperties(resource);
 				break;
 			case IResourceDelta.CHANGED:
 				// handle changed resource
-				checkXML(resource);
+				updateProjectPersistentProperties(resource);
 				break;
 			}
 			//return true to continue visiting children.
@@ -50,7 +60,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
 	class SampleResourceVisitor implements IResourceVisitor {
 		public boolean visit(IResource resource) {
-			checkXML(resource);
+			updateProjectPersistentProperties(resource);
 			//return true to continue visiting children.
 			return true;
 		}
@@ -123,6 +133,66 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		return null;
 	}
 
+	
+	private void updateProjectPersistentProperties(IResource resource){
+		if (resource instanceof IFile && resource.getName().equals(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)) {
+			IFile file = (IFile) resource;
+			IProject project = file.getProject();
+			try {
+				if(file.exists()){
+
+					resetPersistentProperties(project);
+					
+					Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+				    Map<String, Object> m = reg.getExtensionToFactoryMap();
+				    m.put("gemoc_language_conf", new XMIResourceFactoryImpl());
+
+				    // Obtain a new resource set
+				    ResourceSet resSet = new ResourceSetImpl();
+
+				    // Create the resource
+				    Resource modelresource = resSet.getResource(URI.createURI(file.getLocationURI().toString()), true);
+				    TreeIterator<EObject> it = modelresource.getAllContents();
+				    while (it.hasNext()) {
+						EObject eObject = (EObject) it.next();
+						String s = new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL).toString();
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DomainModelProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
+							/*project.setPersistentProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
+							project.setSessionProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
+							project.setSessionProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
+							file.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
+							file.setPersistentProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
+							file.setSessionProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
+							file.setSessionProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");*/
+						}
+					}
+				}
+			} catch (CoreException e) {
+				Activator.error(e.getMessage(), e);
+			}
+			
+		}
+	}
+	private void removePersistentProperties(IResource resource){
+		if (resource instanceof IFile && resource.getName().equals(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)) {
+			IFile file = (IFile) resource;
+			resetPersistentProperties(file.getProject());
+		}
+	}
+	private void resetPersistentProperties(IProject project ){
+		try {
+			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), null);
+			/*project.setPersistentProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), null);
+			project.setSessionProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), null);
+			project.setSessionProperty(new QualifiedName(null, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), null);*/
+		} catch (CoreException e) {
+			Activator.error(e.getMessage(), e);
+		}
+	}
+	
+	
+	/*
 	void checkXML(IResource resource) {
 		if (resource instanceof IFile && resource.getName().endsWith(".xml")) {
 			IFile file = (IFile) resource;
@@ -134,7 +204,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			}
 		}
 	}
-
+	*/
 	private void deleteMarkers(IFile file) {
 		try {
 			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
@@ -150,13 +220,13 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
-	private SAXParser getParser() throws ParserConfigurationException,
+	/*private SAXParser getParser() throws ParserConfigurationException,
 			SAXException {
 		if (parserFactory == null) {
 			parserFactory = SAXParserFactory.newInstance();
 		}
 		return parserFactory.newSAXParser();
-	}
+	}*/
 
 	protected void incrementalBuild(IResourceDelta delta,
 			IProgressMonitor monitor) throws CoreException {
