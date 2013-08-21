@@ -113,7 +113,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		if(!configFile.exists()){
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		    Map<String, Object> m = reg.getExtensionToFactoryMap();
-		    m.put("gemoc_language_conf", new XMIResourceFactoryImpl());
+		    m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
 
 		    // Obtain a new resource set
 		    ResourceSet resSet = new ResourceSetImpl();

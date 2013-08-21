@@ -12,8 +12,9 @@ public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.ui"; //$NON-NLS-1$
-	
-	public static final String GEMOC_PROJECT_CONFIGURATION_FILE = "project.gemoc_language_conf";
+
+	public static final String GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION = "gemoc_language_conf";
+	public static final String GEMOC_PROJECT_CONFIGURATION_FILE = "project."+GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION;
 
 	
 	// be careful do not use "." in the property name !!! because it is used to rebuild the qualified name from a string by ResourcePropertyTester
