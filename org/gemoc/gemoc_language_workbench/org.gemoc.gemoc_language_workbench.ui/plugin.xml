@@ -388,12 +388,9 @@
                   </test>
                </adapt>
             </with>
-            <with
-                  variable="selection">
-               <reference
-                     definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsGemocLanguageProject">
-               </reference>
-            </with>
+            <reference
+                  definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsSelectionInGemocLanguageProject">
+            </reference>
          </or>
       </definition>
       <definition
