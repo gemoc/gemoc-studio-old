@@ -9,8 +9,8 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContext;
-import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContext.CreateDomainModelAction;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction.CreateDomainModelAction;
 
 
 
@@ -24,11 +24,11 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardCont
 public class CreateDomainModelWizardPage  extends WizardPage {
 
 	
-	protected CreateDomainModelWizardContext context;
+	protected CreateDomainModelWizardContextAction context;
 	
 	private Composite 	container;
 	
-	public CreateDomainModelWizardPage(String pageName, CreateDomainModelWizardContext context) {
+	public CreateDomainModelWizardPage(String pageName, CreateDomainModelWizardContextAction context) {
 		super(pageName);
 		this.setDescription("Select the wizard you wish to use to create a Domain Model project for your executable language.");
 		this.setTitle(pageName);

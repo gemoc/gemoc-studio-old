@@ -25,6 +25,8 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 
 import fr.obeo.mda.ecore.design.wizard.EcoreModelerWizard;
@@ -35,7 +37,7 @@ import fr.obeo.mda.ecore.design.wizard.EcoreModelerWizard;
  * @author dvojtise
  *
  */
-public class CreateDomainModelWizardContext {
+public class CreateDomainModelWizardContextAction {
 
 	public enum CreateDomainModelAction {CREATE_NEW_EMF_PROJECT, SELECT_EXISTING_EMF_PROJECT};
 	
@@ -43,7 +45,7 @@ public class CreateDomainModelWizardContext {
 	
 	protected IProject gemocLanguageIProject; 
 	
-	public CreateDomainModelWizardContext(IProject updatedGemocLanguageProject) {
+	public CreateDomainModelWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
 	}
 
@@ -112,9 +114,12 @@ public class CreateDomainModelWizardContext {
 	
 	protected void selectExistingEMFProject(){
 		// launch the appropriate wizard
-			// TODO
-		// update the project model
-		addEMFProjectToConf("");
+		SelectEMFIProjectDialog dialog = new SelectEMFIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		int res = dialog.open();
+		if(res == WizardDialog.OK){
+			// update the project model
+			addEMFProjectToConf(((IResource)dialog.getResult()[0]).getName());
+		}
 	}
 	
 	protected void addEMFProjectToConf(String projectName){

@@ -8,13 +8,13 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.pages.CreateDomainModelWiza
 public class CreateDomainModelWizard extends Wizard {
 
 	
-	protected CreateDomainModelWizardContext context;
+	protected CreateDomainModelWizardContextAction context;
 	
 
 	public CreateDomainModelWizard(IProject updatedGemocLanguageProject) {
 		super();
 		this.setWindowTitle("Create Domain Model");
-		context = new CreateDomainModelWizardContext(updatedGemocLanguageProject);
+		context = new CreateDomainModelWizardContextAction(updatedGemocLanguageProject);
 		addPage(new CreateDomainModelWizardPage("Create Domain Model", context));
 	}
 
