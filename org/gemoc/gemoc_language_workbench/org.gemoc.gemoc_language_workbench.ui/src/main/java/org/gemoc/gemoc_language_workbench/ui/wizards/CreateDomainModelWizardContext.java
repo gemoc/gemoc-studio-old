@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -24,6 +25,7 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
+import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 
 import fr.obeo.mda.ecore.design.wizard.EcoreModelerWizard;
 
@@ -73,6 +75,9 @@ public class CreateDomainModelWizardContext {
 		
 		// Then if we have a wizard, open it.
 		if (descriptor != null) {
+			// add a listener to capture the creation of the resulting project
+			NewProjectWorkspaceListener workspaceListener = new NewProjectWorkspaceListener();
+			ResourcesPlugin.getWorkspace().addResourceChangeListener(workspaceListener);
 			try {
 				IWizard wizard;
 				wizard = descriptor.createWizard();
@@ -82,13 +87,25 @@ public class CreateDomainModelWizardContext {
 				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 				wd.create();
 				wd.setTitle(wizard.getWindowTitle());
+				
 				int res = wd.open();
 				if(res == WizardDialog.OK){
-					// update the project model
-					addEMFProjectToConf();
+					ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
+					IProject createdProject = workspaceListener.getLastCreatedProject();
+					// update the project configuration model
+					if(createdProject != null){
+						addEMFProjectToConf(createdProject.getName());
+					}
+					else{
+						addEMFProjectToConf("");
+					}
 				}
 			} catch (CoreException e) {
 				Activator.error(e.getMessage(), e);
+			}
+			finally{
+				// make sure to remove listener in all situations
+				ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
 			}
 		}
 	}
@@ -97,10 +114,10 @@ public class CreateDomainModelWizardContext {
 		// launch the appropriate wizard
 			// TODO
 		// update the project model
-		addEMFProjectToConf();
+		addEMFProjectToConf("");
 	}
 	
-	protected void addEMFProjectToConf(){
+	protected void addEMFProjectToConf(String projectName){
 		IFile configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
 		if(configFile.exists()){
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -120,6 +137,7 @@ public class CreateDomainModelWizardContext {
 		    
 		    // create missing data
 		    EMFEcoreProject emfEcoreProject = confFactoryImpl.eINSTANCE.createEMFEcoreProject();
+		    emfEcoreProject.setProjectName(projectName);
 		    langage.setDomainModelProject(emfEcoreProject);
 		    			
 			

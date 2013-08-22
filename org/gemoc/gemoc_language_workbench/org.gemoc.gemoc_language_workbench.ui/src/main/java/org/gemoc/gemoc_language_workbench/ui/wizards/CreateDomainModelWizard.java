@@ -13,6 +13,7 @@ public class CreateDomainModelWizard extends Wizard {
 
 	public CreateDomainModelWizard(IProject updatedGemocLanguageProject) {
 		super();
+		this.setWindowTitle("Create Domain Model");
 		context = new CreateDomainModelWizardContext(updatedGemocLanguageProject);
 		addPage(new CreateDomainModelWizardPage("Create Domain Model", context));
 	}
