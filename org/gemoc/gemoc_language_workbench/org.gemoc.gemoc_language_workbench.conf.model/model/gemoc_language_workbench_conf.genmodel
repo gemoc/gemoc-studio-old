@@ -9,7 +9,9 @@
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/languageDefinitions"/>
     </genClasses>
-    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ProjectResource"/>
+    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ProjectResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectName"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//DSAProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//Kermeta2DSAProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//LanguageDefinition">
@@ -37,6 +39,8 @@
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//TreeEditorProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//EcoreModel"/>
-    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//FileResource"/>
+    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//FileResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//FileResource/locationURI"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -15,6 +15,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject} object.
@@ -74,7 +75,10 @@ public class ModHelXMoCProjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ModHelXMoCProject_type");
+		String label = ((ModHelXMoCProject)object).getProjectName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ModHelXMoCProject_type") :
+			getString("_UI_ModHelXMoCProject_type") + " " + label;
 	}
 
 	/**

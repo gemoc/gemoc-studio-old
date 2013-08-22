@@ -2,6 +2,7 @@
  */
 package org.gemoc.gemoc_language_workbench.conf.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -264,6 +265,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProjectResource_ProjectName() {
+		return (EAttribute)projectResourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDSAProject() {
 		return dsaProjectEClass;
 	}
@@ -489,6 +499,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getFileResource_LocationURI() {
+		return (EAttribute)fileResourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public confFactory getconfFactory() {
 		return (confFactory)getEFactoryInstance();
 	}
@@ -516,6 +535,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		createEReference(gemocLanguageWorkbenchConfigurationEClass, GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITIONS);
 
 		projectResourceEClass = createEClass(PROJECT_RESOURCE);
+		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_NAME);
 
 		dsaProjectEClass = createEClass(DSA_PROJECT);
 
@@ -558,6 +578,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		ecoreModelEClass = createEClass(ECORE_MODEL);
 
 		fileResourceEClass = createEClass(FILE_RESOURCE);
+		createEAttribute(fileResourceEClass, FILE_RESOURCE__LOCATION_URI);
 	}
 
 	/**
@@ -609,6 +630,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEReference(getGemocLanguageWorkbenchConfiguration_LanguageDefinitions(), this.getLanguageDefinition(), null, "languageDefinitions", null, 0, -1, GemocLanguageWorkbenchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(projectResourceEClass, ProjectResource.class, "ProjectResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProjectResource_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dsaProjectEClass, DSAProject.class, "DSAProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -651,6 +673,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEClass(ecoreModelEClass, EcoreModel.class, "EcoreModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(fileResourceEClass, FileResource.class, "FileResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFileResource_LocationURI(), ecorePackage.getEString(), "locationURI", null, 0, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

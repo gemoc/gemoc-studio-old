@@ -15,6 +15,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.gemoc_language_workbench.conf.DSEProject} object.
@@ -74,7 +75,10 @@ public class DSEProjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_DSEProject_type");
+		String label = ((DSEProject)object).getProjectName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DSEProject_type") :
+			getString("_UI_DSEProject_type") + " " + label;
 	}
 
 	/**

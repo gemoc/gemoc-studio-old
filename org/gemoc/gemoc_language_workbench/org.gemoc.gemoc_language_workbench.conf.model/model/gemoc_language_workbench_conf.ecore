@@ -6,7 +6,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="languageDefinitions" upperBound="-1"
         eType="#//LanguageDefinition" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProjectResource" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectResource" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DSAProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="Kermeta2DSAProject" eSuperTypes="#//DSAProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="LanguageDefinition">
@@ -43,5 +45,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ECLProject" eSuperTypes="#//DSEProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="TreeEditorProject" eSuperTypes="#//EditorProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="EcoreModel" eSuperTypes="#//FileResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="locationURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

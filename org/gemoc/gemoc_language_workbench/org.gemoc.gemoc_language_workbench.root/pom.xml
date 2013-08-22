@@ -39,11 +39,6 @@
 			<url>http://marketplace.obeonetwork.com/updates/od61/</url>
 		</repository>
 		<repository>
-			<id>latest-egit-release</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/egit/updates</url>
-		</repository>
-		<repository>
 			<id>juno-with-no-platform4</id>
 			<layout>p2</layout>
 			<url>http://www.obeo.fr/download/eclipse/juno-3.8</url>

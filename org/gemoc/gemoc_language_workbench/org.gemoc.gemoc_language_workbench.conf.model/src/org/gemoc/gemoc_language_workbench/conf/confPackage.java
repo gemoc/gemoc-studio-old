@@ -2,6 +2,7 @@
  */
 package org.gemoc.gemoc_language_workbench.conf;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -93,13 +94,22 @@ public interface confPackage extends EPackage {
 	int PROJECT_RESOURCE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_RESOURCE__PROJECT_NAME = 0;
+
+	/**
 	 * The number of structural features of the '<em>Project Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_RESOURCE_FEATURE_COUNT = 0;
+	int PROJECT_RESOURCE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DSAProjectImpl <em>DSA Project</em>}' class.
@@ -110,6 +120,15 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	int DSA_PROJECT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DSA_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
 
 	/**
 	 * The number of structural features of the '<em>DSA Project</em>' class.
@@ -129,6 +148,15 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	int KERMETA2_DSA_PROJECT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KERMETA2_DSA_PROJECT__PROJECT_NAME = DSA_PROJECT__PROJECT_NAME;
 
 	/**
 	 * The number of structural features of the '<em>Kermeta2 DSA Project</em>' class.
@@ -223,6 +251,15 @@ public interface confPackage extends EPackage {
 	int EDITOR_PROJECT = 5;
 
 	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITOR_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
+
+	/**
 	 * The number of structural features of the '<em>Editor Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -240,6 +277,15 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	int DOMAIN_MODEL_PROJECT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_MODEL_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
 
 	/**
 	 * The number of structural features of the '<em>Domain Model Project</em>' class.
@@ -261,6 +307,15 @@ public interface confPackage extends EPackage {
 	int MO_CPROJECT = 7;
 
 	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MO_CPROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
+
+	/**
 	 * The number of structural features of the '<em>Mo CProject</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -278,6 +333,15 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	int CCSL_MO_CPROJECT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CCSL_MO_CPROJECT__PROJECT_NAME = MO_CPROJECT__PROJECT_NAME;
 
 	/**
 	 * The number of structural features of the '<em>CCSL Mo CProject</em>' class.
@@ -299,6 +363,15 @@ public interface confPackage extends EPackage {
 	int ANIMATOR_PROJECT = 9;
 
 	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANIMATOR_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
+
+	/**
 	 * The number of structural features of the '<em>Animator Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -316,6 +389,15 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	int EMF_ECORE_PROJECT = 10;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_ECORE_PROJECT__PROJECT_NAME = DOMAIN_MODEL_PROJECT__PROJECT_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Model</b></em>' containment reference.
@@ -346,6 +428,15 @@ public interface confPackage extends EPackage {
 	int OD_PROJECT = 11;
 
 	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OD_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
+
+	/**
 	 * The number of structural features of the '<em>OD Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -363,6 +454,15 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	int SIRIUS_ANIMATOR_PROJECT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIRIUS_ANIMATOR_PROJECT__PROJECT_NAME = ANIMATOR_PROJECT__PROJECT_NAME;
 
 	/**
 	 * The feature id for the '<em><b>OD Project</b></em>' reference.
@@ -393,6 +493,15 @@ public interface confPackage extends EPackage {
 	int MOD_HEL_XMO_CPROJECT = 13;
 
 	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD_HEL_XMO_CPROJECT__PROJECT_NAME = MO_CPROJECT__PROJECT_NAME;
+
+	/**
 	 * The number of structural features of the '<em>Mod Hel XMo CProject</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -410,6 +519,15 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	int DSE_PROJECT = 14;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DSE_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
 
 	/**
 	 * The number of structural features of the '<em>DSE Project</em>' class.
@@ -431,6 +549,15 @@ public interface confPackage extends EPackage {
 	int ECL_PROJECT = 15;
 
 	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_PROJECT__PROJECT_NAME = DSE_PROJECT__PROJECT_NAME;
+
+	/**
 	 * The number of structural features of the '<em>ECL Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -448,6 +575,15 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	int TREE_EDITOR_PROJECT = 16;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_EDITOR_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
 
 	/**
 	 * The number of structural features of the '<em>Tree Editor Project</em>' class.
@@ -469,13 +605,22 @@ public interface confPackage extends EPackage {
 	int FILE_RESOURCE = 18;
 
 	/**
+	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_RESOURCE__LOCATION_URI = 0;
+
+	/**
 	 * The number of structural features of the '<em>File Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_RESOURCE_FEATURE_COUNT = 0;
+	int FILE_RESOURCE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EcoreModelImpl <em>Ecore Model</em>}' class.
@@ -486,6 +631,15 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	int ECORE_MODEL = 17;
+
+	/**
+	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_MODEL__LOCATION_URI = FILE_RESOURCE__LOCATION_URI;
 
 	/**
 	 * The number of structural features of the '<em>Ecore Model</em>' class.
@@ -527,6 +681,17 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getProjectResource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.ProjectResource#getProjectName <em>Project Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Project Name</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.ProjectResource#getProjectName()
+	 * @see #getProjectResource()
+	 * @generated
+	 */
+	EAttribute getProjectResource_ProjectName();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.DSAProject <em>DSA Project</em>}'.
@@ -787,6 +952,17 @@ public interface confPackage extends EPackage {
 	EClass getFileResource();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.FileResource#getLocationURI <em>Location URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location URI</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.FileResource#getLocationURI()
+	 * @see #getFileResource()
+	 * @generated
+	 */
+	EAttribute getFileResource_LocationURI();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -835,6 +1011,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PROJECT_RESOURCE = eINSTANCE.getProjectResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Project Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_RESOURCE__PROJECT_NAME = eINSTANCE.getProjectResource_ProjectName();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DSAProjectImpl <em>DSA Project</em>}' class.
@@ -1069,6 +1253,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FILE_RESOURCE = eINSTANCE.getFileResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Location URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FILE_RESOURCE__LOCATION_URI = eINSTANCE.getFileResource_LocationURI();
 
 	}
 

@@ -111,7 +111,10 @@ public class EMFEcoreProjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_EMFEcoreProject_type");
+		String label = ((EMFEcoreProject)object).getProjectName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_EMFEcoreProject_type") :
+			getString("_UI_EMFEcoreProject_type") + " " + label;
 	}
 
 	/**
