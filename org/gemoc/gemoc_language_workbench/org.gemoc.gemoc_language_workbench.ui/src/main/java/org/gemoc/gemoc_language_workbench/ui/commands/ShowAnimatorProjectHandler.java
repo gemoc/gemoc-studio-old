@@ -23,10 +23,10 @@ public class ShowAnimatorProjectHandler extends AbstractHandler implements
 		      for (Iterator<Object> iterator = strucSelection.iterator(); iterator
 		          .hasNext();) {
 		        Object element = iterator.next();
-		        MessageDialog.openInformation(
+		        MessageDialog.openWarning(
 						HandlerUtil.getActiveWorkbenchWindow(event).getShell(),
 						"Gemoc Language Workbench UI",
-						"Show Animator Project command was executed. Selected elment ="+element.toString());
+						"Show Animator Project command was executed. Action not implemented yet, Selected elment ="+element.toString());
 		        //System.out.println(element.toString());
 		      }
 		    }

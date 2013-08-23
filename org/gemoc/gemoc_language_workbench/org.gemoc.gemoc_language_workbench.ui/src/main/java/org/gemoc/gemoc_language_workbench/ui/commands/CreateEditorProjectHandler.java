@@ -1,38 +1,26 @@
 package org.gemoc.gemoc_language_workbench.ui.commands;
 
-import java.util.Iterator;
-
-import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizard;
 
-public class CreateEditorProjectHandler extends AbstractHandler implements
+public class CreateEditorProjectHandler extends AbstractGemocLanguageProjectHandler implements
 		IHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		 ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event)
-			        .getActivePage().getSelection();
-			    if (selection != null & selection instanceof IStructuredSelection) {
-			      IStructuredSelection strucSelection = (IStructuredSelection) selection;
-			      for (Iterator<Object> iterator = strucSelection.iterator(); iterator
-			          .hasNext();) {
-			        Object element = iterator.next();
-			        MessageDialog.openInformation(
-							HandlerUtil.getActiveWorkbenchWindow(event).getShell(),
-							"Gemoc Language Workbench UI",
-							"Create Editor Project command was executed. Selected elment ="+element.toString());
-			        //System.out.println(element.toString());
-			      }
-			    }
-		
-		//HandlerUtil.
+		// get the optional selection and eventually project data to preset the wizard
+		IProject updatedGemocLanguageProject = getUpdateGemocLanguageProjectFromSelection(event);
+
+		// launch the wizard that will select the action and do the job
+		WizardDialog wizardDialog = new WizardDialog(HandlerUtil.getActiveWorkbenchWindow(event).getShell(),
+													 new CreateEditorProjectWizard(updatedGemocLanguageProject));
+		wizardDialog.open();
 		return null;
 	}
 

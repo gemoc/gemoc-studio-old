@@ -6,7 +6,6 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -15,20 +14,16 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.IWizard;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
+import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
-import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
-
-import fr.obeo.mda.ecore.design.wizard.EcoreModelerWizard;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIProjectDialog;
 
 
 /**
@@ -36,25 +31,32 @@ import fr.obeo.mda.ecore.design.wizard.EcoreModelerWizard;
  * @author dvojtise
  *
  */
-public class CreateDomainModelWizardContextAction {
+public class CreateEditorProjectWizardContextAction {
 
-	public enum CreateDomainModelAction {CREATE_NEW_EMF_PROJECT, SELECT_EXISTING_EMF_PROJECT};
+	public enum CreateEditorProjectAction {CREATE_NEW_EMFTREE_PROJECT, CREATE_NEW_XTEXT_PROJECT, CREATE_NEW_OD_PROJECT, SELECT_EXISTING_PROJECT};
 	
-	public CreateDomainModelAction actionToExecute = CreateDomainModelAction.CREATE_NEW_EMF_PROJECT;
+	public CreateEditorProjectAction actionToExecute = CreateEditorProjectAction.CREATE_NEW_EMFTREE_PROJECT;
 	
 	protected IProject gemocLanguageIProject; 
 	
-	public CreateDomainModelWizardContextAction(IProject updatedGemocLanguageProject) {
+	public CreateEditorProjectWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
 	}
 
 	public void execute() {
 		switch (actionToExecute) {
-		case CREATE_NEW_EMF_PROJECT:
-			createNewEMFProject();
+		case CREATE_NEW_EMFTREE_PROJECT:
+			createNewEMFTreeProject();
 			break;
-		case SELECT_EXISTING_EMF_PROJECT:
-			selectExistingEMFProject();
+		case CREATE_NEW_XTEXT_PROJECT:
+			createNewXTextProject();
+			break;
+
+		case CREATE_NEW_OD_PROJECT:
+			createNewODProject();
+			break;
+		case SELECT_EXISTING_PROJECT:
+			selectExistingProject();
 			break;
 
 		default:
@@ -63,11 +65,12 @@ public class CreateDomainModelWizardContextAction {
 		
 	}
 
-	protected void createNewEMFProject(){
+
+	protected void createNewEMFTreeProject(){
 		// launch the appropriate wizard
 		
 		// "org.eclipse.emf.importer.ui.EMFProjectWizard" = create EMFProject from existing Ecore file
-		
+		/*
 		IWizardDescriptor descriptor = PlatformUI
 				.getWorkbench()
 				.getNewWizardRegistry()
@@ -109,19 +112,49 @@ public class CreateDomainModelWizardContextAction {
 				ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
 			}
 		}
+		*/
+		MessageDialog.openWarning(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				"Gemoc Language Workbench UI",
+				"Action not implemented yet");
+	}
+
+	protected void createNewXTextProject() {
+		// TODO Auto-generated method stub
+
+		MessageDialog.openWarning(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				"Gemoc Language Workbench UI",
+				"Action not implemented yet");
+	}
+	protected void createNewODProject() {
+		// TODO Auto-generated method stub
+
+		MessageDialog.openWarning(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				"Gemoc Language Workbench UI",
+				"Action not implemented yet");
 	}
 	
-	protected void selectExistingEMFProject(){
+	protected void selectExistingProject(){
 		// launch the appropriate wizard
-		SelectEMFIProjectDialog dialog = new SelectEMFIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		SelectAnyIProjectDialog dialog = new SelectAnyIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model
-			addEMFProjectToConf(((IResource)dialog.getResult()[0]).getName());
+			String projectName = ((IResource)dialog.getResult()[0]).getName();
+			// TODO detect selected project nature to create the correct element
+			MessageDialog.openWarning(
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+					"Gemoc Language Workbench UI",
+					"Fine detection of project nature not implemented yet, considered as a tree editor for the moment :-(");
+			TreeEditorProject editorProject = confFactoryImpl.eINSTANCE.createTreeEditorProject();
+			editorProject.setProjectName(projectName);
+			addProjectToConf(editorProject);
 		}
 	}
 	
-	protected void addEMFProjectToConf(String projectName){
+	protected void addProjectToConf( EditorProject editorProject){
 		IFile configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
 		if(configFile.exists()){
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -137,14 +170,12 @@ public class CreateDomainModelWizardContextAction {
 		    
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
 		    // consider only one language :-/
-		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinitions().get(0);
+		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinitions().get(0);
 		    
-		    // create missing data
-		    EMFEcoreProject emfEcoreProject = confFactoryImpl.eINSTANCE.createEMFEcoreProject();
-		    emfEcoreProject.setProjectName(projectName);
-		    langage.setDomainModelProject(emfEcoreProject);
-		    			
-			
+		    // add missing data to conf
+		    
+		    language.getEditorProjects().add(editorProject);
+		    
 			try {
 				resource.save(null);
 			} catch (IOException e) {
