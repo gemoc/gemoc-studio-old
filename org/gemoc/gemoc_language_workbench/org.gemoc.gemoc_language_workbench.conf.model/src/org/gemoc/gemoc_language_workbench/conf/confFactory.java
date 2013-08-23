@@ -121,6 +121,15 @@ public interface confFactory extends EFactory {
 	EcoreModel createEcoreModel();
 
 	/**
+	 * Returns a new object of class '<em>XText Editor Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>XText Editor Project</em>'.
+	 * @generated
+	 */
+	XTextEditorProject createXTextEditorProject();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

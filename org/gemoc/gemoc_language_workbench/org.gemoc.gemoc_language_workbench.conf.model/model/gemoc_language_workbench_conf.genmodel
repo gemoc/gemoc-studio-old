@@ -42,5 +42,6 @@
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//FileResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//FileResource/locationURI"/>
     </genClasses>
+    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//XTextEditorProject"/>
   </genPackages>
 </genmodel:GenModel>

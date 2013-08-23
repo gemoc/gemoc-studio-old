@@ -29,6 +29,7 @@ import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.ProjectResource;
 import org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
+import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.confFactory;
 import org.gemoc.gemoc_language_workbench.conf.confPackage;
 
@@ -171,6 +172,13 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * @generated
 	 */
 	private EClass fileResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass xTextEditorProjectEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -508,6 +516,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getXTextEditorProject() {
+		return xTextEditorProjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public confFactory getconfFactory() {
 		return (confFactory)getEFactoryInstance();
 	}
@@ -579,6 +596,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		fileResourceEClass = createEClass(FILE_RESOURCE);
 		createEAttribute(fileResourceEClass, FILE_RESOURCE__LOCATION_URI);
+
+		xTextEditorProjectEClass = createEClass(XTEXT_EDITOR_PROJECT);
 	}
 
 	/**
@@ -624,6 +643,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		eclProjectEClass.getESuperTypes().add(this.getDSEProject());
 		treeEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
 		ecoreModelEClass.getESuperTypes().add(this.getFileResource());
+		xTextEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(gemocLanguageWorkbenchConfigurationEClass, GemocLanguageWorkbenchConfiguration.class, "GemocLanguageWorkbenchConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -674,6 +694,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		initEClass(fileResourceEClass, FileResource.class, "FileResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFileResource_LocationURI(), ecorePackage.getEString(), "locationURI", null, 0, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(xTextEditorProjectEClass, XTextEditorProject.class, "XTextEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

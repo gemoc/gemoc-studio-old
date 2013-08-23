@@ -67,6 +67,7 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 			case confPackage.ECL_PROJECT: return createECLProject();
 			case confPackage.TREE_EDITOR_PROJECT: return createTreeEditorProject();
 			case confPackage.ECORE_MODEL: return createEcoreModel();
+			case confPackage.XTEXT_EDITOR_PROJECT: return createXTextEditorProject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -180,6 +181,16 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	public EcoreModel createEcoreModel() {
 		EcoreModelImpl ecoreModel = new EcoreModelImpl();
 		return ecoreModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public XTextEditorProject createXTextEditorProject() {
+		XTextEditorProjectImpl xTextEditorProject = new XTextEditorProjectImpl();
+		return xTextEditorProject;
 	}
 
 	/**

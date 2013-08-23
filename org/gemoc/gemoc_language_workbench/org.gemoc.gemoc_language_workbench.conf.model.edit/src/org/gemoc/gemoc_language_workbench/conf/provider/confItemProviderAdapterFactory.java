@@ -325,6 +325,29 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.XTextEditorProject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected XTextEditorProjectItemProvider xTextEditorProjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.XTextEditorProject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createXTextEditorProjectAdapter() {
+		if (xTextEditorProjectItemProvider == null) {
+			xTextEditorProjectItemProvider = new XTextEditorProjectItemProvider(this);
+		}
+
+		return xTextEditorProjectItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -434,6 +457,7 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 		if (eclProjectItemProvider != null) eclProjectItemProvider.dispose();
 		if (treeEditorProjectItemProvider != null) treeEditorProjectItemProvider.dispose();
 		if (ecoreModelItemProvider != null) ecoreModelItemProvider.dispose();
+		if (xTextEditorProjectItemProvider != null) xTextEditorProjectItemProvider.dispose();
 	}
 
 }

@@ -652,6 +652,35 @@ public interface confPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.XTextEditorProjectImpl <em>XText Editor Project</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.XTextEditorProjectImpl
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getXTextEditorProject()
+	 * @generated
+	 */
+	int XTEXT_EDITOR_PROJECT = 19;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XTEXT_EDITOR_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
+
+	/**
+	 * The number of structural features of the '<em>XText Editor Project</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XTEXT_EDITOR_PROJECT_FEATURE_COUNT = EDITOR_PROJECT_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration <em>Gemoc Language Workbench Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -963,6 +992,16 @@ public interface confPackage extends EPackage {
 	EAttribute getFileResource_LocationURI();
 
 	/**
+	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.XTextEditorProject <em>XText Editor Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>XText Editor Project</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.XTextEditorProject
+	 * @generated
+	 */
+	EClass getXTextEditorProject();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1261,6 +1300,16 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FILE_RESOURCE__LOCATION_URI = eINSTANCE.getFileResource_LocationURI();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.XTextEditorProjectImpl <em>XText Editor Project</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.XTextEditorProjectImpl
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getXTextEditorProject()
+		 * @generated
+		 */
+		EClass XTEXT_EDITOR_PROJECT = eINSTANCE.getXTextEditorProject();
 
 	}
 

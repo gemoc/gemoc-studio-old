@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -15,15 +16,22 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
+import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
+
+import fr.obeo.mda.ecore.design.wizard.EcoreModelerWizard;
 
 
 /**
@@ -120,12 +128,59 @@ public class CreateEditorProjectWizardContextAction {
 	}
 
 	protected void createNewXTextProject() {
-		// TODO Auto-generated method stub
-
-		MessageDialog.openWarning(
+		/*MessageDialog.openWarning(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
 				"Gemoc Language Workbench UI",
-				"Action not implemented yet");
+				"Action not completly implemented yet");*/
+		// create xtext project from existing ecore model
+		// wizard id = org.eclipse.xtext.xtext.ui.wizard.ecore2xtext.NewXtextProjectFromEcoreWizard
+		// launch the appropriate wizard
+					
+		IWizardDescriptor descriptor = PlatformUI
+				.getWorkbench()
+				.getNewWizardRegistry()
+				.findWizard(
+						"org.eclipse.xtext.xtext.ui.wizard.ecore2xtext.NewXtextProjectFromEcoreWizard");
+		// Then if we have a wizard, open it.
+		if (descriptor != null) {
+			// add a listener to capture the creation of the resulting project
+			NewProjectWorkspaceListener workspaceListener = new NewProjectWorkspaceListener();
+			ResourcesPlugin.getWorkspace().addResourceChangeListener(workspaceListener);
+			try {
+				IWizard wizard;
+				wizard = descriptor.createWizard();
+				// this wizard need some dedicated initialization
+				//((EcoreModelerWizard )wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
+				//((EcoreModelWizard)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) selection);
+				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+				wd.create();
+				wd.setTitle(wizard.getWindowTitle());
+				
+				int res = wd.open();
+				if(res == WizardDialog.OK){
+					ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
+					IProject createdProject = workspaceListener.getLastCreatedProject();
+					// update the project configuration model
+					if(createdProject != null){
+						XTextEditorProject editorProject = confFactoryImpl.eINSTANCE.createXTextEditorProject();
+						editorProject.setProjectName(createdProject.getName());
+						addProjectToConf(editorProject);
+					}
+					else{
+						Activator.error("not able to detect which project was created by wizard", null);
+					}
+				}
+			} catch (CoreException e) {
+				Activator.error(e.getMessage(), e);
+			}
+			finally{
+				// make sure to remove listener in all situations
+				ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
+			}
+		}
+		else{
+			Activator.error("wizard with id=org.eclipse.xtext.xtext.ui.wizard.ecore2xtext.NewXtextProjectFromEcoreWizard not found", null);
+		}
 	}
 	protected void createNewODProject() {
 		// TODO Auto-generated method stub

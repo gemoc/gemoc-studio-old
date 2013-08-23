@@ -179,6 +179,11 @@ public class LanguageDefinitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(confPackage.Literals.LANGUAGE_DEFINITION__EDITOR_PROJECTS,
+				 confFactory.eINSTANCE.createXTextEditorProject()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS,
 				 confFactory.eINSTANCE.createCCSLMoCProject()));
 

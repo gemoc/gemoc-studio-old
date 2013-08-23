@@ -208,16 +208,9 @@
                   style="push">
                <visibleWhen
                      checkEnabled="false">
-                  <and>
-                     <not>
-                        <reference
-                              definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasEditorProject">
-                        </reference>
-                     </not>
-                     <reference
-                           definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
-                     </reference>
-                  </and>
+                  <reference
+                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.IsEditorOrSelectionInGemocLanguageProject">
+                  </reference>
                </visibleWhen>
             </command>
             <command
