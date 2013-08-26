@@ -5,8 +5,9 @@ package org.gemoc.execution.engine.actions.impl.methodref;
 
 import java.lang.reflect.Method;
 
-import org.eclipse.emf.ecore.EObject;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
+
+import fr.inria.aoste.trace.Reference;
 
 /**
  * Basic implementation of DomainSpecificAction, contains the EObject and a
@@ -20,10 +21,10 @@ import org.gemoc.execution.engine.actions.DomainSpecificAction;
 public class MethodReferenceAction implements DomainSpecificAction {
     private Method method;
 
-    private EObject target;
+    private Reference target;
 
-    public MethodReferenceAction(EObject target, String methodName) {
-        this.target = target;
+    public MethodReferenceAction(Reference target, Reference method) {
+        /*this.target = target;
         try {
             this.method = target.getClass().getMethod(methodName);
         } catch (NoSuchMethodException e) {
@@ -33,6 +34,16 @@ public class MethodReferenceAction implements DomainSpecificAction {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
+
+        // TODO : comment fournir à l'instanciation d'une DSA les bons objets?
+        public DomainSpecificAction createDSA(ClockEntity ce) {
+            EObject linkedOperation = ce.getReferencedElement().get(1);
+            if (linkedOperation instanceof EOperation) {
+                String operationName = this.getSimpleName(linkedOperation);
+                MethodReferenceAction action = new MethodReferenceAction(ce.getModelElementReference(), operationName);
+            }
+        }*/
     }
 
     @Override
@@ -41,7 +52,7 @@ public class MethodReferenceAction implements DomainSpecificAction {
     }
 
     @Override
-    public EObject getTarget() {
+    public Reference getTarget() {
         return this.target;
     }
 }

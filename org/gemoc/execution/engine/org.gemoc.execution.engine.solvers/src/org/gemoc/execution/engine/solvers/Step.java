@@ -1,6 +1,8 @@
 package org.gemoc.execution.engine.solvers;
 
-import org.gemoc.execution.engine.events.DomainSpecificEvent;
+import java.util.List;
+
+import fr.inria.aoste.trace.EventOccurrence;
 
 /**
  * A Step is an atomical unit of the solver which contains informations about
@@ -9,5 +11,5 @@ import org.gemoc.execution.engine.events.DomainSpecificEvent;
  * @author flatombe
  */
 public interface Step {
-    public Boolean match(DomainSpecificEvent event);
+    public List<EventOccurrence> getEventOccurrences();
 }

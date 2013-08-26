@@ -6,11 +6,12 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.solvers.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- fr.inria.aoste.trace;bundle-version="1.0.1",
  fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
  org.gemoc.execution.engine.events;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.utils.timedsystem;bundle-version="1.0.0",
- fr.inria.aoste.timesquare.trace.util;bundle-version="1.0.0"
+ fr.inria.aoste.timesquare.trace.util;bundle-version="1.0.0",
+ org.eclipse.emf.ecore;bundle-version="2.9.0",
+ fr.inria.aoste.trace;bundle-version="1.0.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.solvers,

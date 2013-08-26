@@ -21,14 +21,14 @@ public class EasyGoingFeedbackPolicy implements FeedbackPolicy<BooleanAndReferen
 
     /**
      * Searches in the list of possible events given if any of these events is
-     * "first" and has for target the eobject given. Throws an exception if no
-     * event is found as we expect the application to always the right list of
-     * possible events.
+     * "first" (entryPoint) and has for target the EObject given. Throws an
+     * exception if no event is found as we expect the application to always the
+     * right list of possible events.
      */
     private DomainSpecificEvent findEventWhereTargetIs(EObject eobject, List<DomainSpecificEvent> possibleEvents)
             throws CorrespondingDomainSpecificEventNotFoundException {
         for (DomainSpecificEvent event : possibleEvents) {
-            if (event.getTarget().equals(eobject) && event.isFirst()) {
+            if (event.getTarget().equals(eobject) && event.isEntryPoint()) {
                 return event;
             }
         }

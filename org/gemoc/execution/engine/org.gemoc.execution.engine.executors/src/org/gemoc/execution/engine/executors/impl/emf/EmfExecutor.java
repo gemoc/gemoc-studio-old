@@ -18,7 +18,7 @@ public class EmfExecutor implements Executor {
     @Override
     public FeedbackData execute(DomainSpecificAction dsa) {
         try {
-            return (FeedbackData) dsa.getMethod().invoke(dsa.getTarget());
+            return (FeedbackData) dsa.getMethod().invoke(/* dsa.getTarget() */"toto");
         } catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
             e.printStackTrace();
             return null;

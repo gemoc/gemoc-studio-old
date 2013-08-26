@@ -1,6 +1,5 @@
 package org.gemoc.execution.engine.core;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
@@ -24,7 +23,6 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
     private Integer rounds;
     protected Solver solver;
     protected Executor executor;
-    protected List<DomainSpecificEvent> events;
     @SuppressWarnings("rawtypes")
     protected FeedbackPolicy feedbackPolicy;
 
@@ -72,18 +70,10 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
     /**
      * 
      * @param step
-     * @return the list of Domain Specific Event which are triggered by the
-     *         step.
+     * @return the list of the DomainSpecificEvent corresponding to the
+     *         EventOccurrence present in the Step
      */
-    private List<DomainSpecificEvent> match(Step step) {
-        List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
-        for (DomainSpecificEvent event : this.events) {
-            if (step.match(event)) {
-                res.add(event);
-            }
-        }
-        return res;
-    }
+    protected abstract List<DomainSpecificEvent> match(Step step);
 
     @Override
     public void run() {
