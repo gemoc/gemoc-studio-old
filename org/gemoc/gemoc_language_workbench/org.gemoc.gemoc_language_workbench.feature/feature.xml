@@ -5,8 +5,8 @@
       version="0.1.0.qualifier"
       provider-name="INRIA">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://gemoc.org/studio/">
+      The Gemoc Language Workbench offers tools for defining the execution semantic of model by following the Gemoc guidelines.
    </description>
 
    <copyright url="http://www.example.com/copyright">

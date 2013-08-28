@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="gemocReflectiveModelBuilder"
+         name="Gemoc Reflective Modeling Project"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder.GemocReflectiveModelBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="gemocReflectiveModelNature"
+         name="Gemoc Reflective Modeling Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder.GemocReflectiveModelNature">
+         </run>
+      </runtime>
+      <builder
+            id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelBuilder">
+      </builder>
+   </extension>
+   <extension
+         id="gemocReflectiveModelProblem"
+         name="Gemoc Reflective Model Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/xM_icon-12.png"
+            id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelNature.image"
+            natureId="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelNature">
+      </image>
+   </extension>
+   <!-- definitions of commands -->
+   <!-- contributions to popup menus -->
+   <!-- expression definitions for simplifying the filtering of command and menu contributions -->
+
+</plugin>
