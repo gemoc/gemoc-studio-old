@@ -144,8 +144,6 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 		return adapter;
 	}
 
-	
-
 	public abstract AnimationTarget start();
 
 	public abstract void stepInto(StackFrame host);
@@ -179,7 +177,7 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 				});
 		domain.removeResourceSetListener(recorder);
 	}
-	
+
 	public void stepIntoViaCommand(final StackFrame host) {
 		domain.getCommandStack().execute(
 				new RecordingCommand(domain, "Step Into") {
@@ -231,6 +229,9 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 
 					@Override
 					protected void doExecute() {
+						if (host.getTopStackFrame() != null) {
+							stepOverViaCommand(host.getTopStackFrame());
+						}
 						stepOver(host);
 					}
 
@@ -243,6 +244,9 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 
 					@Override
 					protected void doExecute() {
+						if (host.getTopStackFrame() != null) {
+							stepIntoViaCommand(host.getTopStackFrame());
+						}
 						stepInto(host);
 					}
 
