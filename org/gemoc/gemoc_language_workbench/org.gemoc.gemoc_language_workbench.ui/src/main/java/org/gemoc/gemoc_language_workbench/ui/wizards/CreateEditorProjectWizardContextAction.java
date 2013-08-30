@@ -24,6 +24,7 @@ import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
@@ -183,12 +184,51 @@ public class CreateEditorProjectWizardContextAction {
 		}
 	}
 	protected void createNewODProject() {
-		// TODO Auto-generated method stub
-
-		MessageDialog.openWarning(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				"Gemoc Language Workbench UI",
-				"Action not implemented yet");
+		IWizardDescriptor descriptor = PlatformUI
+				.getWorkbench()
+				.getNewWizardRegistry()
+				.findWizard(
+						"fr.obeo.dsl.viewpoint.ui.specificationproject.wizard");
+		// Then if we have a wizard, open it.
+		if (descriptor != null) {
+			// add a listener to capture the creation of the resulting project
+			NewProjectWorkspaceListener workspaceListener = new NewProjectWorkspaceListener();
+			ResourcesPlugin.getWorkspace().addResourceChangeListener(workspaceListener);
+			try {
+				IWizard wizard;
+				wizard = descriptor.createWizard();
+				// this wizard need some dedicated initialization
+				//((EcoreModelerWizard )wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
+				//((EcoreModelWizard)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) selection);
+				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+				wd.create();
+				wd.setTitle(wizard.getWindowTitle());
+				
+				int res = wd.open();
+				if(res == WizardDialog.OK){
+					ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
+					IProject createdProject = workspaceListener.getLastCreatedProject();
+					// update the project configuration model
+					if(createdProject != null){
+						ODProject editorProject = confFactoryImpl.eINSTANCE.createODProject();
+						editorProject.setProjectName(createdProject.getName());
+						addProjectToConf(editorProject);
+					}
+					else{
+						Activator.error("not able to detect which project was created by wizard", null);
+					}
+				}
+			} catch (CoreException e) {
+				Activator.error(e.getMessage(), e);
+			}
+			finally{
+				// make sure to remove listener in all situations
+				ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
+			}
+		}
+		else{
+			Activator.error("wizard with id=fr.obeo.dsl.viewpoint.ui.specificationproject.wizard not found", null);
+		}
 	}
 	
 	protected void selectExistingProject(){
