@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.NotEnabledException;
+import org.eclipse.core.commands.NotHandledException;
+import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -22,6 +28,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.services.IServiceLocator;
 import org.gemoc.gemoc_modeling_workbench.reflective_model.ui.Activator;
 
 public class ToggleNatureAction implements IObjectActionDelegate {
@@ -95,15 +104,43 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				}
 			}
 
+			//  add the obeo.dsl.viewpoint nature (not removed)
+			if(!project.hasNature("fr.obeo.dsl.viewpoint.nature.modelingproject")){
+				
+				// call the real command so it will also create the aird file
+				IServiceLocator serviceLocator = PlatformUI.getWorkbench();
+				ICommandService commandService = (ICommandService) serviceLocator.getService(ICommandService.class);
+
+				// Lookup commmand with its ID
+			    Command command = commandService.getCommand("fr.obeo.dsl.viewpoint.ui.tools.internal.actions.nature.addRemoveNatureCommand");
+
+			    // Optionally pass a ExecutionEvent instance, default no-param arg creates blank event
+			    try {
+					command.executeWithChecks(new ExecutionEvent());
+				} catch (ExecutionException | NotDefinedException
+						| NotEnabledException | NotHandledException e) {
+					Activator.error("cannot add fr.obeo.dsl.viewpoint.nature.modelingproject nature to project due to "+e.getMessage(), e);
+				}
+				
+			}
 			// Add the nature
-			String[] newNatures = new String[natures.length + 1];
-			System.arraycopy(natures, 0, newNatures, 0, natures.length);
-			newNatures[natures.length] = GemocReflectiveModelNature.NATURE_ID;
-			description.setNatureIds(newNatures);
-			project.setDescription(description, null);
+			addAsMainNature(project, GemocReflectiveModelNature.NATURE_ID);
+						
+			
 			addMissingResourcesToNature(project);
 		} catch (CoreException e) {
 		}
+	}
+	
+	// add the nature making sure this will be the first
+	private void addAsMainNature(IProject project, String natureID) throws CoreException{
+		IProjectDescription description = project.getDescription();
+		String[] natures = description.getNatureIds();
+		String[] newNatures = new String[natures.length + 1];
+		System.arraycopy(natures, 0, newNatures, 1, natures.length);
+		newNatures[0] = natureID;
+		description.setNatureIds(newNatures);
+		project.setDescription(description, null);
 	}
 	
 	private void addMissingResourcesToNature(IProject project) {
