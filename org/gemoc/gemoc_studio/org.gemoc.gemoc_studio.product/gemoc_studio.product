@@ -77,6 +77,8 @@
       <feature id="org.scala-ide.sdt.feature"/>
       <feature id="org.scala-ide.sdt.dev.feature"/>
       <feature id="org.scala-ide.sdt.source.feature"/>
+      <feature id="org.eclipse.xtend.sdk"/>
+      <feature id="org.eclipse.xtend.m2e"/>
    </features>
 
    <configurations>
