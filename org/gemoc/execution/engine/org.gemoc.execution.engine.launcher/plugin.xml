@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.gemoc.execution.engine.launcher.contribution1"
+            nameFilter="*.extendedCCSL"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="GEMOC Engine"
+               path="additions"
+               id="org.gemoc.execution.engine.launcher.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Create and Run"
+               class="org.gemoc.execution.engine.launcher.popup.actions.NewAction"
+               menubarPath="org.gemoc.execution.engine.launcher.menu1/group1"
+               enablesFor="1"
+               id="org.gemoc.execution.engine.launcher.newAction">
+         </action>
+         <action
+               class="org.gemoc.execution.engine.launcher.popup.actions.DummyAction"
+               enablesFor="1"
+               id="org.gemoc.execution.engine.launcher.DummyAction"
+               label="Dummy"
+               menubarPath="org.gemoc.execution.engine.launcher.menu1/group1">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

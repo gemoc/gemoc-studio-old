@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.core;
 
 import java.util.List;
 
+import org.eclipse.ui.console.MessageConsoleStream;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.Executor;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
@@ -25,6 +26,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
     protected Executor executor;
     @SuppressWarnings("rawtypes")
     protected FeedbackPolicy feedbackPolicy;
+    protected MessageConsoleStream out;
 
     /**
      * Basic constructor for the engine.
@@ -88,11 +90,15 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
      */
     @SuppressWarnings("unchecked")
     public void run(int maxRounds) {
+        out.println("--- Beginning of run ---");
         while (!this.finished) {
             this.rounds++;
+            out.println("Round : " + this.rounds);
 
             Step step = this.getSolver().getNextStep();
+            out.println("Step : " + step);
             List<DomainSpecificEvent> events = this.match(step);
+            out.println("Events matched : " + events);
 
             for (DomainSpecificEvent event : events) {
                 FeedbackData feedback = this.getExecutor().execute(event);
@@ -101,6 +107,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 
             this.finished = this.finished || this.rounds < maxRounds;
         } // end while
+        out.println("--- End of run ---");
     }
 
 }
