@@ -36,9 +36,9 @@
          <action
                class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder.ToggleNatureAction"
                enablesFor="+"
-               icon="icons/gemoc-logo-16.png"
+               icon="icons/IconeGemocModel-16.png"
                id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.addRemoveNatureAction"
-               label="Add Gemoc Modeling Nature (Reflective)"
+               label="Add Gemoc Modeling Nature"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
          </action>
          <visibility>
@@ -58,7 +58,7 @@
          <action
                class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder.ToggleNatureAction"
                enablesFor="+"
-               icon="icons/gemoc-logo-16.png"
+               icon="icons/IconeGemocModel-16.png"
                id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.addRemoveNatureAction"
                label="Remove Gemoc Modeling Nature (Reflective)"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
@@ -91,7 +91,7 @@
    <extension
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
-            icon="icons/xM_icon-12.png"
+            icon="icons/IconeGemocModel-10.png"
             id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelNature.image"
             natureId="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelNature">
       </image>

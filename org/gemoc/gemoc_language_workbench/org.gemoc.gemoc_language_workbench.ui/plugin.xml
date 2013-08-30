@@ -36,9 +36,9 @@
          <action
                class="org.gemoc.gemoc_language_workbench.ui.builder.ToggleNatureAction"
                enablesFor="+"
-               icon="icons/gemoc-logo-16.png"
+               icon="icons/IconeGemocLanguage-16.png"
                id="org.gemoc.gemoc_language_workbench.ui.addRemoveNatureAction"
-               label="Add Gemoc Language Designer Nature"
+               label="Add Gemoc Language Nature"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
          </action>
          <visibility>
@@ -58,9 +58,9 @@
          <action
                class="org.gemoc.gemoc_language_workbench.ui.builder.ToggleNatureAction"
                enablesFor="+"
-               icon="icons/gemoc-logo-16.png"
+               icon="icons/IconeGemocLanguage-16.png"
                id="org.gemoc.gemoc_language_workbench.ui.addRemoveNatureAction"
-               label="Remove Gemoc Language Designer Nature"
+               label="Remove Gemoc Language Nature"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
          </action>
          
@@ -91,7 +91,7 @@
    <extension
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
-            icon="icons/xL_icon-12.png"
+            icon="icons/IconeGemocLanguage-10.png"
             id="org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerNature.image"
             natureId="org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerNature">
       </image>
