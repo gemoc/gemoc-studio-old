@@ -125,7 +125,7 @@
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
             class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.launcher.GemocReflectiveModelLauncherShortcut"
-            icon="icons/xM_icon.png"
+            icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocExecutableReflectiveModel"
             label="Gemoc eXecutable Reflective Model"
             modes="run, debug">

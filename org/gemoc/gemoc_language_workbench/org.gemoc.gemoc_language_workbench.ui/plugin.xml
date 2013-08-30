@@ -167,7 +167,7 @@
             allPopups="true"
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <menu
-               icon="icons/gemoc-logo-16.png"
+               icon="icons/IconeGemocLanguage-16.png"
                id="GemocLanguage.menu"
                label="Gemoc Language">
             <command
