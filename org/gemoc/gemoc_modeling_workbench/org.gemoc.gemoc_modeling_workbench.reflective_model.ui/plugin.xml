@@ -109,7 +109,7 @@
    </extension>
    <extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
     <launchConfigurationTypeImage
-        icon="icons/xM_icon.png"
+        icon="icons/IconeGemocModel-16.png"
         configTypeID="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocReflectiveModelLauncherID"
         id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocReflectiveModelLauncherImageID">
     </launchConfigurationTypeImage>
