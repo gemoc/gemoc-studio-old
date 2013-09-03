@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.executors.impl.emf;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.ui.console.MessageConsoleStream;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.Executor;
@@ -14,6 +15,10 @@ import org.gemoc.execution.engine.feedback.data.FeedbackData;
  * @author flatombe
  */
 public class EmfExecutor implements Executor {
+
+    public EmfExecutor(MessageConsoleStream out) {
+        out.println("Creating :" + this);
+    }
 
     @Override
     public FeedbackData execute(DomainSpecificAction dsa) {
@@ -35,6 +40,10 @@ public class EmfExecutor implements Executor {
     @Override
     public FeedbackData execute(DomainSpecificEvent dse) {
         return this.execute(dse.getAction());
+    }
+
+    public String toString() {
+        return "EmfExecutor@[]";
     }
 
 }

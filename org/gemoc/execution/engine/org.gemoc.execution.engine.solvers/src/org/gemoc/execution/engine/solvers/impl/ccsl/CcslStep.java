@@ -30,4 +30,8 @@ public class CcslStep implements Step {
         return this.step.getEventOccurrences();
     }
 
+    public String toString() {
+        return "CcslStep@[" + this.getEventOccurrences().toString() + "]";
+    }
+
 }

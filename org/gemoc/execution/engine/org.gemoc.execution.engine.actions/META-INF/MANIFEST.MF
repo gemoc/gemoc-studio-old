@@ -7,6 +7,7 @@ Bundle-Activator: org.gemoc.execution.engine.actions.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;bundle-version="2.9.0",
+ org.eclipse.ui.console;bundle-version="3.5.100",
  org.gemoc.execution.engine.feedback.data;bundle-version="1.0.0",
  fr.inria.aoste.trace;bundle-version="1.0.1"
 Bundle-ActivationPolicy: lazy

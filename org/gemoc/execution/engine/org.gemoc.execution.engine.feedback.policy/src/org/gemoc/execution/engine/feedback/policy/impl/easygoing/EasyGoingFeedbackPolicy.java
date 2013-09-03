@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.feedback.policy.impl.easygoing;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.ui.console.MessageConsoleStream;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.feedback.data.impl.simple.BooleanAndReferenceFeedbackData;
 import org.gemoc.execution.engine.feedback.policy.FeedbackPolicy;
@@ -18,6 +19,10 @@ import org.gemoc.execution.engine.solvers.Solver;
  * @author flatombe
  */
 public class EasyGoingFeedbackPolicy implements FeedbackPolicy<BooleanAndReferenceFeedbackData> {
+
+    public EasyGoingFeedbackPolicy(MessageConsoleStream out) {
+        out.println("Creating :" + this);
+    }
 
     /**
      * Searches in the list of possible events given if any of these events is
@@ -61,5 +66,9 @@ public class EasyGoingFeedbackPolicy implements FeedbackPolicy<BooleanAndReferen
                 }
             }
         }
+    }
+
+    public String toString() {
+        return "EasyGoingFeedbackPolicy@[]";
     }
 }

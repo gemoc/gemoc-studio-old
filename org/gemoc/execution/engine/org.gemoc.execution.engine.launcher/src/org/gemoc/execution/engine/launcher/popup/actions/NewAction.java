@@ -60,12 +60,14 @@ public class NewAction implements IObjectActionDelegate {
 
         MessageConsole myConsole = findConsole(consoleName);
         MessageConsoleStream out = myConsole.newMessageStream();
-        out.println("truc");
 
+        out.println("About to create the engine...");
         this.engine = new EmfEclCcslExecutionEngine(file, out);
-        out.println(this.engine.toString());
-        
+        out.println("Engine created: " + this.engine.toString());
+
+        out.println("About to run the engine...");
         this.engine.run();
+        out.println("DONE");
     }
 
     /**

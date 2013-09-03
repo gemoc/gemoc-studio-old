@@ -120,4 +120,8 @@ public class EclEvent implements DomainSpecificEvent {
         return this.isEntryPoint;
     }
 
+    public String toString() {
+        return "EclEvent@[" + this.action.toString() + " ; isEntryPoint:" + this.isEntryPoint + "]";
+    }
+
 }

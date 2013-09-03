@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.core.impl.emf.ecl.ccsl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
@@ -16,6 +17,8 @@ import org.gemoc.execution.engine.feedback.policy.impl.easygoing.EasyGoingFeedba
 import org.gemoc.execution.engine.solvers.Step;
 import org.gemoc.execution.engine.solvers.impl.ccsl.CcslSolver;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.TimeModelPackage;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.impl.TimeModelFactoryImpl;
 import fr.inria.aoste.trace.EventOccurrence;
 
 /**
@@ -29,16 +32,32 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 
     public EmfEclCcslExecutionEngine(IFile file, MessageConsoleStream out) {
         super();
-        
-        URI xtextURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+        TimeModelPackage.eINSTANCE.eClass();
+
+        // Register the XMI resource factory for the .website extension
+
+        Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+        Map<String, Object> m = reg.getExtensionToFactoryMap();
+        m.put("extendedCCSL", new TimeModelFactoryImpl());
+
+        URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
         XtextResourceSet resourceSet = new XtextResourceSet();
 
         // Create new resource for this file
-        Resource xtextResource = resourceSet.createResource(xtextURI);
-        
-        this.solver = new CcslSolver(xtextResource);
-        this.executor = new EmfExecutor();
-        this.feedbackPolicy = new EasyGoingFeedbackPolicy();
+        Resource resource = resourceSet.createResource(uri);
+
+        out.println("Resource loaded is: " + resource.toString());
+        out.println("Resource contents: " + resource.getContents().toString());
+
+        this.solver = new CcslSolver(resource, out);
+        out.println("After solver initialization");
+
+        this.executor = new EmfExecutor(out);
+        out.println("After executor initialization");
+
+        this.feedbackPolicy = new EasyGoingFeedbackPolicy(out);
+        out.println("After policy initialization");
+
         this.out = out;
 
         // TODO : création des DSE (et DSA) associées à partir des infos du ECL.
@@ -64,5 +83,9 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             res.add(new EclEvent(eventOccurrence));
         }
         return res;
+    }
+
+    public String toString() {
+        return "EmfEclCcslExecutionEngine@[rounds=" + this.getRounds() + "]";
     }
 }

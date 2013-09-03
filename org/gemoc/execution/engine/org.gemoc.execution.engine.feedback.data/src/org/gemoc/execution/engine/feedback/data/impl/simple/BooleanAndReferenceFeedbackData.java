@@ -23,4 +23,8 @@ public class BooleanAndReferenceFeedbackData implements FeedbackData {
     public Map<Boolean, List<EObject>> getMap() {
         return this.map;
     }
+
+    public String toString() {
+        return "BooleanAndReferenceFeedbackData@[" + this.map.toString() + "]";
+    }
 }

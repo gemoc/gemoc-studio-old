@@ -110,4 +110,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
         out.println("--- End of run ---");
     }
 
+    public String toString() {
+        return "BasicExecutionEngine@[rounds=" + this.getRounds() + "]";
+    }
 }

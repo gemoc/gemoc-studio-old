@@ -24,26 +24,22 @@ public class MethodReferenceAction implements DomainSpecificAction {
     private Reference target;
 
     public MethodReferenceAction(Reference target, Reference method) {
-        /*this.target = target;
-        try {
-            this.method = target.getClass().getMethod(methodName);
-        } catch (NoSuchMethodException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (SecurityException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
-
-        // TODO : comment fournir à l'instanciation d'une DSA les bons objets?
-        public DomainSpecificAction createDSA(ClockEntity ce) {
-            EObject linkedOperation = ce.getReferencedElement().get(1);
-            if (linkedOperation instanceof EOperation) {
-                String operationName = this.getSimpleName(linkedOperation);
-                MethodReferenceAction action = new MethodReferenceAction(ce.getModelElementReference(), operationName);
-            }
-        }*/
+        /*
+         * this.target = target; try { this.method =
+         * target.getClass().getMethod(methodName); } catch
+         * (NoSuchMethodException e) { // TODO Auto-generated catch block
+         * e.printStackTrace(); } catch (SecurityException e) { // TODO
+         * Auto-generated catch block e.printStackTrace(); }
+         * 
+         * 
+         * // TODO : comment fournir à l'instanciation d'une DSA les bons
+         * objets? public DomainSpecificAction createDSA(ClockEntity ce) {
+         * EObject linkedOperation = ce.getReferencedElement().get(1); if
+         * (linkedOperation instanceof EOperation) { String operationName =
+         * this.getSimpleName(linkedOperation); MethodReferenceAction action =
+         * new MethodReferenceAction(ce.getModelElementReference(),
+         * operationName); } }
+         */
     }
 
     @Override
@@ -54,5 +50,9 @@ public class MethodReferenceAction implements DomainSpecificAction {
     @Override
     public Reference getTarget() {
         return this.target;
+    }
+
+    public String toString() {
+        return "MethodReferenceAction@[" + this.target.toString() + " ; " + this.method.getName() + "]";
     }
 }

@@ -1,5 +1,7 @@
 package org.gemoc.execution.engine.solvers.impl.ccsl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.ui.console.MessageConsoleStream;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.solvers.Solver;
 import org.gemoc.execution.engine.solvers.Step;
@@ -18,8 +20,20 @@ public class CcslSolver implements Solver {
 
     CCSLKernelSolverWrapper solverWrapper;
 
-    public CcslSolver() {
+    public CcslSolver(Resource resource, MessageConsoleStream out) {
+
         this.solverWrapper = new CCSLKernelSolverWrapper();
+        try {
+            this.solverWrapper.getSolver().loadModel(resource);
+            out.println("Creating: " + this.toString());
+        } catch (Exception e) {
+            out.println("\t" + e.getMessage());
+            for (StackTraceElement element : e.getStackTrace()) {
+                out.println("\t" + element.toString());
+            }
+
+        }
+
     }
 
     /*
@@ -57,6 +71,10 @@ public class CcslSolver implements Solver {
         // rien dans le corps de la méthode ...
 
         return new CcslStep(this.solverWrapper.solveNextSimulationStep(new TimedSystem()));
+    }
+
+    public String toString() {
+        return "CcslSolver@[" + this.solverWrapper.toString() + "]";
     }
 
 }
