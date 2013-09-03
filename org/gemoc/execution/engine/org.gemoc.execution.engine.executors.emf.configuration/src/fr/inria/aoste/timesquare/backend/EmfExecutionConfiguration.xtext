@@ -1,0 +1,20 @@
+grammar fr.inria.aoste.timesquare.backend.EmfExecutionConfiguration with org.eclipse.xtext.common.Terminals
+//import "http://fr.inria.aoste.timemodel" as TimeModel
+import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore" as TimeModel
+generate emfExecutionConfiguration "http://www.inria.fr/aoste/timesquare/backend/EmfExecutionConfiguration"
+
+EMFExecutionConfiguration:
+	(imports+=ImportStatement)+ 
+	
+	jarImportStatement = JarImportStatement
+	
+	(forcedClockMappings+=ForcedClockMapping)*;
+	
+ForcedClockMapping:
+	'When' clock=[TimeModel::Clock|ID] "DSA" "returns" "true" "avoid" clockToAvoidWhenTrue=[TimeModel::Clock|ID]";";
+
+ImportStatement:
+	'import' importURI=STRING";";
+	
+JarImportStatement:
+	'importJar' pathToJar = STRING";";
