@@ -26,7 +26,6 @@ import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IVariable;
 
 import fr.obeo.dsl.sirius.animation.StackFrame;
-import fr.obeo.dsl.sirius.animation.StackFrameSpec;
 import fr.obeo.dsl.sirius.animation.StackFrameState;
 import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Variable;
@@ -73,11 +72,11 @@ public class IStackFrameAnimationAdapter extends IDebugElementAnimationAdapter
 	}
 
 	public boolean canResume() {
-		return new StackFrameSpec(getHost()).isState(TargetState.SUSPENDED);
+		return getHost().is(TargetState.SUSPENDED);
 	}
 
 	public boolean canSuspend() {
-		return new StackFrameSpec(getHost()).isState(TargetState.RUNNING);
+		return getHost().is(TargetState.RUNNING);
 	}
 
 	public boolean isSuspended() {
@@ -104,7 +103,7 @@ public class IStackFrameAnimationAdapter extends IDebugElementAnimationAdapter
 	}
 
 	public boolean isTerminated() {
-		return new StackFrameSpec(getHost()).isState(TargetState.TERMINATED);
+		return getHost().is(TargetState.TERMINATED);
 	}
 
 	public void terminate() throws DebugException {

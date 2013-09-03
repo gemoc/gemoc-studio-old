@@ -8,6 +8,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//TargetState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StackFrame">
+    <eOperations name="getOrCreateVariable" eType="#//Variable">
+      <eParameters name="varName" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eOperations>
+    <eOperations name="newFrame" eType="#//StackFrame">
+      <eParameters name="executionEnvironment" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    </eOperations>
+    <eOperations name="popFrame" eType="#//StackFrame"/>
+    <eOperations name="is" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="state" eType="#//TargetState"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
         eType="#//Variable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subFrames" upperBound="-1"
@@ -18,14 +28,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceElement" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentInstruction" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parentStack" eType="#//StackFrame"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executionEnvironment" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Variable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" lowerBound="1"
         upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="representationElements"
-        upperBound="-1" eType="ecore:EClass platform:/plugin/fr.obeo.dsl.viewpoint/model/viewpoint.ecore#//DRepresentationElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Thread">
     <eStructuralFeatures xsi:type="ecore:EReference" name="stackFrames" upperBound="-1"

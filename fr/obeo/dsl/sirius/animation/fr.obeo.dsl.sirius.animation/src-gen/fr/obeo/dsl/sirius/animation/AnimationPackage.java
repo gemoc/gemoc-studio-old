@@ -183,13 +183,31 @@ public interface AnimationPackage extends EPackage {
 	int STACK_FRAME__DATA = 5;
 
 	/**
-	 * The feature id for the '<em><b>Source Element</b></em>' reference.
+	 * The feature id for the '<em><b>Current Instruction</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME__SOURCE_ELEMENT = 6;
+	int STACK_FRAME__CURRENT_INSTRUCTION = 6;
+
+	/**
+	 * The feature id for the '<em><b>Parent Stack</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STACK_FRAME__PARENT_STACK = 7;
+
+	/**
+	 * The feature id for the '<em><b>Execution Environment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STACK_FRAME__EXECUTION_ENVIRONMENT = 8;
 
 	/**
 	 * The number of structural features of the '<em>Stack Frame</em>' class.
@@ -198,7 +216,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME_FEATURE_COUNT = 7;
+	int STACK_FRAME_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.sirius.animation.impl.VariableImpl <em>Variable</em>}' class.
@@ -229,22 +247,13 @@ public interface AnimationPackage extends EPackage {
 	int VARIABLE__ELEMENTS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Representation Elements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__REPRESENTATION_ELEMENTS = 2;
-
-	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = 3;
+	int VARIABLE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.sirius.animation.impl.ThreadImpl <em>Thread</em>}' class.
@@ -480,15 +489,37 @@ public interface AnimationPackage extends EPackage {
 	EReference getStackFrame_Data();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.obeo.dsl.sirius.animation.StackFrame#getSourceElement <em>Source Element</em>}'.
+	 * Returns the meta object for the reference '{@link fr.obeo.dsl.sirius.animation.StackFrame#getCurrentInstruction <em>Current Instruction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source Element</em>'.
-	 * @see fr.obeo.dsl.sirius.animation.StackFrame#getSourceElement()
+	 * @return the meta object for the reference '<em>Current Instruction</em>'.
+	 * @see fr.obeo.dsl.sirius.animation.StackFrame#getCurrentInstruction()
 	 * @see #getStackFrame()
 	 * @generated
 	 */
-	EReference getStackFrame_SourceElement();
+	EReference getStackFrame_CurrentInstruction();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.obeo.dsl.sirius.animation.StackFrame#getParentStack <em>Parent Stack</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Parent Stack</em>'.
+	 * @see fr.obeo.dsl.sirius.animation.StackFrame#getParentStack()
+	 * @see #getStackFrame()
+	 * @generated
+	 */
+	EReference getStackFrame_ParentStack();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.obeo.dsl.sirius.animation.StackFrame#getExecutionEnvironment <em>Execution Environment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Execution Environment</em>'.
+	 * @see fr.obeo.dsl.sirius.animation.StackFrame#getExecutionEnvironment()
+	 * @see #getStackFrame()
+	 * @generated
+	 */
+	EReference getStackFrame_ExecutionEnvironment();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.sirius.animation.Variable <em>Variable</em>}'.
@@ -521,17 +552,6 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getVariable_Elements();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.sirius.animation.Variable#getRepresentationElements <em>Representation Elements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Representation Elements</em>'.
-	 * @see fr.obeo.dsl.sirius.animation.Variable#getRepresentationElements()
-	 * @see #getVariable()
-	 * @generated
-	 */
-	EReference getVariable_RepresentationElements();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.sirius.animation.Thread <em>Thread</em>}'.
@@ -754,12 +774,28 @@ public interface AnimationPackage extends EPackage {
 		EReference STACK_FRAME__DATA = eINSTANCE.getStackFrame_Data();
 
 		/**
-		 * The meta object literal for the '<em><b>Source Element</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Current Instruction</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STACK_FRAME__SOURCE_ELEMENT = eINSTANCE.getStackFrame_SourceElement();
+		EReference STACK_FRAME__CURRENT_INSTRUCTION = eINSTANCE.getStackFrame_CurrentInstruction();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent Stack</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STACK_FRAME__PARENT_STACK = eINSTANCE.getStackFrame_ParentStack();
+
+		/**
+		 * The meta object literal for the '<em><b>Execution Environment</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STACK_FRAME__EXECUTION_ENVIRONMENT = eINSTANCE.getStackFrame_ExecutionEnvironment();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.sirius.animation.impl.VariableImpl <em>Variable</em>}' class.
@@ -786,14 +822,6 @@ public interface AnimationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VARIABLE__ELEMENTS = eINSTANCE.getVariable_Elements();
-
-		/**
-		 * The meta object literal for the '<em><b>Representation Elements</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference VARIABLE__REPRESENTATION_ELEMENTS = eINSTANCE.getVariable_RepresentationElements();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.sirius.animation.impl.ThreadImpl <em>Thread</em>}' class.

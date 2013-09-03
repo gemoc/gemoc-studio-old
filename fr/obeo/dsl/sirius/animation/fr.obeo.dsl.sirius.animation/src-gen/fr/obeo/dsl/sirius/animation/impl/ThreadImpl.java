@@ -205,7 +205,7 @@ public class ThreadImpl extends EObjectImpl implements fr.obeo.dsl.sirius.animat
 	 */
 	public AnimationTarget getParent() {
 		if (eContainerFeatureID() != AnimationPackage.THREAD__PARENT) return null;
-		return (AnimationTarget)eContainer();
+		return (AnimationTarget)eInternalContainer();
 	}
 
 	/**

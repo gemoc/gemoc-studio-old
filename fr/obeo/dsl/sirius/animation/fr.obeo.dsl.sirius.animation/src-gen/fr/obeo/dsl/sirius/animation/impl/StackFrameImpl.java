@@ -21,6 +21,7 @@ package fr.obeo.dsl.sirius.animation.impl;
 import fr.obeo.dsl.sirius.animation.AnimationPackage;
 import fr.obeo.dsl.sirius.animation.StackFrame;
 import fr.obeo.dsl.sirius.animation.StackFrameState;
+import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Variable;
 
 import java.util.Collection;
@@ -54,7 +55,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getData <em>Data</em>}</li>
- *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getSourceElement <em>Source Element</em>}</li>
+ *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getCurrentInstruction <em>Current Instruction</em>}</li>
+ *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getParentStack <em>Parent Stack</em>}</li>
+ *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getExecutionEnvironment <em>Execution Environment</em>}</li>
  * </ul>
  * </p>
  *
@@ -132,14 +135,34 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	protected EObject data;
 
 	/**
-	 * The cached value of the '{@link #getSourceElement() <em>Source Element</em>}' reference.
+	 * The cached value of the '{@link #getCurrentInstruction() <em>Current Instruction</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSourceElement()
+	 * @see #getCurrentInstruction()
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject sourceElement;
+	protected EObject currentInstruction;
+
+	/**
+	 * The cached value of the '{@link #getParentStack() <em>Parent Stack</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParentStack()
+	 * @generated
+	 * @ordered
+	 */
+	protected StackFrame parentStack;
+
+	/**
+	 * The cached value of the '{@link #getExecutionEnvironment() <em>Execution Environment</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutionEnvironment()
+	 * @generated
+	 * @ordered
+	 */
+	protected EObject executionEnvironment;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -212,7 +235,7 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	 */
 	public fr.obeo.dsl.sirius.animation.Thread getParent() {
 		if (eContainerFeatureID() != AnimationPackage.STACK_FRAME__PARENT) return null;
-		return (fr.obeo.dsl.sirius.animation.Thread)eContainer();
+		return (fr.obeo.dsl.sirius.animation.Thread)eInternalContainer();
 	}
 
 	/**
@@ -315,16 +338,16 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject getSourceElement() {
-		if (sourceElement != null && sourceElement.eIsProxy()) {
-			InternalEObject oldSourceElement = (InternalEObject)sourceElement;
-			sourceElement = eResolveProxy(oldSourceElement);
-			if (sourceElement != oldSourceElement) {
+	public EObject getCurrentInstruction() {
+		if (currentInstruction != null && currentInstruction.eIsProxy()) {
+			InternalEObject oldCurrentInstruction = (InternalEObject)currentInstruction;
+			currentInstruction = eResolveProxy(oldCurrentInstruction);
+			if (currentInstruction != oldCurrentInstruction) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnimationPackage.STACK_FRAME__SOURCE_ELEMENT, oldSourceElement, sourceElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnimationPackage.STACK_FRAME__CURRENT_INSTRUCTION, oldCurrentInstruction, currentInstruction));
 			}
 		}
-		return sourceElement;
+		return currentInstruction;
 	}
 
 	/**
@@ -332,8 +355,8 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject basicGetSourceElement() {
-		return sourceElement;
+	public EObject basicGetCurrentInstruction() {
+		return currentInstruction;
 	}
 
 	/**
@@ -341,11 +364,131 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSourceElement(EObject newSourceElement) {
-		EObject oldSourceElement = sourceElement;
-		sourceElement = newSourceElement;
+	public void setCurrentInstruction(EObject newCurrentInstruction) {
+		EObject oldCurrentInstruction = currentInstruction;
+		currentInstruction = newCurrentInstruction;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnimationPackage.STACK_FRAME__SOURCE_ELEMENT, oldSourceElement, sourceElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, AnimationPackage.STACK_FRAME__CURRENT_INSTRUCTION, oldCurrentInstruction, currentInstruction));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StackFrame getParentStack() {
+		if (parentStack != null && parentStack.eIsProxy()) {
+			InternalEObject oldParentStack = (InternalEObject)parentStack;
+			parentStack = (StackFrame)eResolveProxy(oldParentStack);
+			if (parentStack != oldParentStack) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnimationPackage.STACK_FRAME__PARENT_STACK, oldParentStack, parentStack));
+			}
+		}
+		return parentStack;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StackFrame basicGetParentStack() {
+		return parentStack;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParentStack(StackFrame newParentStack) {
+		StackFrame oldParentStack = parentStack;
+		parentStack = newParentStack;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AnimationPackage.STACK_FRAME__PARENT_STACK, oldParentStack, parentStack));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject getExecutionEnvironment() {
+		if (executionEnvironment != null && executionEnvironment.eIsProxy()) {
+			InternalEObject oldExecutionEnvironment = (InternalEObject)executionEnvironment;
+			executionEnvironment = eResolveProxy(oldExecutionEnvironment);
+			if (executionEnvironment != oldExecutionEnvironment) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnimationPackage.STACK_FRAME__EXECUTION_ENVIRONMENT, oldExecutionEnvironment, executionEnvironment));
+			}
+		}
+		return executionEnvironment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject basicGetExecutionEnvironment() {
+		return executionEnvironment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExecutionEnvironment(EObject newExecutionEnvironment) {
+		EObject oldExecutionEnvironment = executionEnvironment;
+		executionEnvironment = newExecutionEnvironment;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AnimationPackage.STACK_FRAME__EXECUTION_ENVIRONMENT, oldExecutionEnvironment, executionEnvironment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Variable getOrCreateVariable(String varName) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StackFrame newFrame(EObject executionEnvironment) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StackFrame popFrame() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean is(TargetState state) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -418,9 +561,15 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 				return getName();
 			case AnimationPackage.STACK_FRAME__DATA:
 				return getData();
-			case AnimationPackage.STACK_FRAME__SOURCE_ELEMENT:
-				if (resolve) return getSourceElement();
-				return basicGetSourceElement();
+			case AnimationPackage.STACK_FRAME__CURRENT_INSTRUCTION:
+				if (resolve) return getCurrentInstruction();
+				return basicGetCurrentInstruction();
+			case AnimationPackage.STACK_FRAME__PARENT_STACK:
+				if (resolve) return getParentStack();
+				return basicGetParentStack();
+			case AnimationPackage.STACK_FRAME__EXECUTION_ENVIRONMENT:
+				if (resolve) return getExecutionEnvironment();
+				return basicGetExecutionEnvironment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -454,8 +603,14 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 			case AnimationPackage.STACK_FRAME__DATA:
 				setData((EObject)newValue);
 				return;
-			case AnimationPackage.STACK_FRAME__SOURCE_ELEMENT:
-				setSourceElement((EObject)newValue);
+			case AnimationPackage.STACK_FRAME__CURRENT_INSTRUCTION:
+				setCurrentInstruction((EObject)newValue);
+				return;
+			case AnimationPackage.STACK_FRAME__PARENT_STACK:
+				setParentStack((StackFrame)newValue);
+				return;
+			case AnimationPackage.STACK_FRAME__EXECUTION_ENVIRONMENT:
+				setExecutionEnvironment((EObject)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -487,8 +642,14 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 			case AnimationPackage.STACK_FRAME__DATA:
 				setData((EObject)null);
 				return;
-			case AnimationPackage.STACK_FRAME__SOURCE_ELEMENT:
-				setSourceElement((EObject)null);
+			case AnimationPackage.STACK_FRAME__CURRENT_INSTRUCTION:
+				setCurrentInstruction((EObject)null);
+				return;
+			case AnimationPackage.STACK_FRAME__PARENT_STACK:
+				setParentStack((StackFrame)null);
+				return;
+			case AnimationPackage.STACK_FRAME__EXECUTION_ENVIRONMENT:
+				setExecutionEnvironment((EObject)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -514,8 +675,12 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AnimationPackage.STACK_FRAME__DATA:
 				return data != null;
-			case AnimationPackage.STACK_FRAME__SOURCE_ELEMENT:
-				return sourceElement != null;
+			case AnimationPackage.STACK_FRAME__CURRENT_INSTRUCTION:
+				return currentInstruction != null;
+			case AnimationPackage.STACK_FRAME__PARENT_STACK:
+				return parentStack != null;
+			case AnimationPackage.STACK_FRAME__EXECUTION_ENVIRONMENT:
+				return executionEnvironment != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -68,8 +68,9 @@ public class AnimationDebugModelPresentation implements IDebugModelPresentation 
 
 		adapterFactory
 				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		AnimationItemProviderAdapterFactory animationFactory = new AnimationItemProviderAdapterFactory();
 		adapterFactory
-				.addAdapterFactory(new AnimationItemProviderAdapterFactory());
+				.addAdapterFactory(animationFactory);
 		adapterFactory
 				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		this.labelProvider = new AdapterFactoryLabelProvider(adapterFactory);

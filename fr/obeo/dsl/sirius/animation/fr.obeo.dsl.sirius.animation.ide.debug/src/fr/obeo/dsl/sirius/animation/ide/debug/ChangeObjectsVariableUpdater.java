@@ -32,17 +32,16 @@ import com.google.common.collect.Sets;
 
 import fr.obeo.dsl.sirius.animation.AnimationPackage;
 import fr.obeo.dsl.sirius.animation.StackFrame;
-import fr.obeo.dsl.sirius.animation.StackFrameSpec;
 import fr.obeo.dsl.sirius.animation.Variable;
 import fr.obeo.dsl.viewpoint.ViewpointPackage;
 
 public class ChangeObjectsVariableUpdater extends ResourceSetListenerImpl {
 
 	private Set<EObject> changedObjects = Sets.newLinkedHashSet();
-	private StackFrameSpec frame;
+	private StackFrame frame;
 
 	public ChangeObjectsVariableUpdater(StackFrame frame) {
-		this.frame = new StackFrameSpec(frame);
+		this.frame = frame;
 	}
 
 	@Override
@@ -62,8 +61,9 @@ public class ChangeObjectsVariableUpdater extends ResourceSetListenerImpl {
 			if (!change.isTouch()) {
 				if (change.getNotifier() instanceof EObject
 						&& ((EObject) change.getNotifier()).eClass()
-								.getEPackage() != AnimationPackage.eINSTANCE && ((EObject) change.getNotifier()).eClass()
-										.getEPackage() != ViewpointPackage.eINSTANCE)
+								.getEPackage() != AnimationPackage.eINSTANCE
+						&& ((EObject) change.getNotifier()).eClass()
+								.getEPackage() != ViewpointPackage.eINSTANCE)
 					changedObjects.add((EObject) change.getNotifier());
 			}
 		}

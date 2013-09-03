@@ -46,7 +46,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.VariableImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.VariableImpl#getElements <em>Elements</em>}</li>
- *   <li>{@link fr.obeo.dsl.sirius.animation.impl.VariableImpl#getRepresentationElements <em>Representation Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,16 +81,6 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * @ordered
 	 */
 	protected EList<EObject> elements;
-
-	/**
-	 * The cached value of the '{@link #getRepresentationElements() <em>Representation Elements</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRepresentationElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<DRepresentationElement> representationElements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,18 +139,6 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DRepresentationElement> getRepresentationElements() {
-		if (representationElements == null) {
-			representationElements = new EObjectResolvingEList<DRepresentationElement>(DRepresentationElement.class, this, AnimationPackage.VARIABLE__REPRESENTATION_ELEMENTS);
-		}
-		return representationElements;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -169,8 +146,6 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				return getName();
 			case AnimationPackage.VARIABLE__ELEMENTS:
 				return getElements();
-			case AnimationPackage.VARIABLE__REPRESENTATION_ELEMENTS:
-				return getRepresentationElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,10 +166,6 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				getElements().clear();
 				getElements().addAll((Collection<? extends EObject>)newValue);
 				return;
-			case AnimationPackage.VARIABLE__REPRESENTATION_ELEMENTS:
-				getRepresentationElements().clear();
-				getRepresentationElements().addAll((Collection<? extends DRepresentationElement>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -213,9 +184,6 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case AnimationPackage.VARIABLE__ELEMENTS:
 				getElements().clear();
 				return;
-			case AnimationPackage.VARIABLE__REPRESENTATION_ELEMENTS:
-				getRepresentationElements().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -232,8 +200,6 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AnimationPackage.VARIABLE__ELEMENTS:
 				return elements != null && !elements.isEmpty();
-			case AnimationPackage.VARIABLE__REPRESENTATION_ELEMENTS:
-				return representationElements != null && !representationElements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

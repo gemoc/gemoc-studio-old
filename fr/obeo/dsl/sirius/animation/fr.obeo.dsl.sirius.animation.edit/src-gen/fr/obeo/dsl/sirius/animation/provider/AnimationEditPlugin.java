@@ -58,7 +58,6 @@ public final class AnimationEditPlugin extends EMFPlugin {
 	public AnimationEditPlugin() {
 		super
 		  (new ResourceLocator [] {
-		     ViewpointEditPlugin.INSTANCE,
 		     EcoreEditPlugin.INSTANCE,
 		   });
 	}
