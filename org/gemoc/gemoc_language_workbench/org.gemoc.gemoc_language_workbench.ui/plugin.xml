@@ -566,7 +566,7 @@
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
-            name="New Gemoc Language"
+            name="New Gemoc Language Project"
             project="true">
       </wizard>
    </extension>
