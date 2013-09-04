@@ -17,3 +17,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.codegen.ecore.ui;bundle-version="2.8.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Import-Package: k2.standard,
+ org.kermeta.kp.wizard.eclipse,
+ org.kermeta.kp.wizard.eclipse.wizards
