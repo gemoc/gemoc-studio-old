@@ -23,6 +23,7 @@ import fr.obeo.dsl.sirius.animation.AnimationPackage;
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
 import fr.obeo.dsl.sirius.animation.CurrentSessions;
 import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.StackFrameState;
 import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Variable;
 
@@ -31,6 +32,7 @@ import fr.obeo.dsl.viewpoint.ViewpointPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -87,6 +89,13 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	private EEnum targetStateEEnum = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum stackFrameStateEEnum = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -133,7 +142,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		isInited = true;
 
 		// Initialize simple dependencies
-		ViewpointPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theAnimationPackage.createPackageContents();
@@ -218,7 +227,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStackFrame_IsStepping() {
+	public EAttribute getStackFrame_State() {
 		return (EAttribute)stackFrameEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -254,8 +263,26 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStackFrame_SourceElement() {
+	public EReference getStackFrame_CurrentInstruction() {
 		return (EReference)stackFrameEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStackFrame_ParentStack() {
+		return (EReference)stackFrameEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStackFrame_ExecutionEnvironment() {
+		return (EReference)stackFrameEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -283,15 +310,6 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 */
 	public EReference getVariable_Elements() {
 		return (EReference)variableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getVariable_RepresentationElements() {
-		return (EReference)variableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -380,6 +398,15 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getStackFrameState() {
+		return stackFrameStateEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AnimationFactory getAnimationFactory() {
 		return (AnimationFactory)getEFactoryInstance();
 	}
@@ -411,16 +438,17 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		stackFrameEClass = createEClass(STACK_FRAME);
 		createEReference(stackFrameEClass, STACK_FRAME__VARIABLES);
 		createEReference(stackFrameEClass, STACK_FRAME__SUB_FRAMES);
-		createEAttribute(stackFrameEClass, STACK_FRAME__IS_STEPPING);
+		createEAttribute(stackFrameEClass, STACK_FRAME__STATE);
 		createEReference(stackFrameEClass, STACK_FRAME__PARENT);
 		createEAttribute(stackFrameEClass, STACK_FRAME__NAME);
 		createEReference(stackFrameEClass, STACK_FRAME__DATA);
-		createEReference(stackFrameEClass, STACK_FRAME__SOURCE_ELEMENT);
+		createEReference(stackFrameEClass, STACK_FRAME__CURRENT_INSTRUCTION);
+		createEReference(stackFrameEClass, STACK_FRAME__PARENT_STACK);
+		createEReference(stackFrameEClass, STACK_FRAME__EXECUTION_ENVIRONMENT);
 
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__NAME);
 		createEReference(variableEClass, VARIABLE__ELEMENTS);
-		createEReference(variableEClass, VARIABLE__REPRESENTATION_ELEMENTS);
 
 		threadEClass = createEClass(THREAD);
 		createEReference(threadEClass, THREAD__STACK_FRAMES);
@@ -434,6 +462,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 
 		// Create enums
 		targetStateEEnum = createEEnum(TARGET_STATE);
+		stackFrameStateEEnum = createEEnum(STACK_FRAME_STATE);
 	}
 
 	/**
@@ -461,7 +490,6 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 
 		// Obtain other dependent packages
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-		ViewpointPackage theViewpointPackage = (ViewpointPackage)EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -478,16 +506,28 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		initEClass(stackFrameEClass, StackFrame.class, "StackFrame", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStackFrame_Variables(), this.getVariable(), null, "variables", null, 0, -1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStackFrame_SubFrames(), this.getStackFrame(), null, "subFrames", null, 0, -1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStackFrame_IsStepping(), ecorePackage.getEBoolean(), "isStepping", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStackFrame_State(), this.getStackFrameState(), "state", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStackFrame_Parent(), this.getThread(), this.getThread_StackFrames(), "parent", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStackFrame_Name(), theEcorePackage.getEString(), "name", null, 1, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStackFrame_Data(), ecorePackage.getEObject(), null, "data", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStackFrame_SourceElement(), ecorePackage.getEObject(), null, "sourceElement", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStackFrame_CurrentInstruction(), ecorePackage.getEObject(), null, "currentInstruction", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStackFrame_ParentStack(), this.getStackFrame(), null, "parentStack", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStackFrame_ExecutionEnvironment(), ecorePackage.getEObject(), null, "executionEnvironment", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		EOperation op = addEOperation(stackFrameEClass, this.getVariable(), "getOrCreateVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEString(), "varName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stackFrameEClass, this.getStackFrame(), "newFrame", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEObject(), "executionEnvironment", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(stackFrameEClass, this.getStackFrame(), "popFrame", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stackFrameEClass, ecorePackage.getEBoolean(), "is", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTargetState(), "state", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariable_Elements(), theEcorePackage.getEObject(), null, "elements", null, 1, -1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariable_RepresentationElements(), theViewpointPackage.getDRepresentationElement(), null, "representationElements", null, 0, -1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(threadEClass, fr.obeo.dsl.sirius.animation.Thread.class, "Thread", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getThread_StackFrames(), this.getStackFrame(), this.getStackFrame_Parent(), "stackFrames", null, 0, -1, fr.obeo.dsl.sirius.animation.Thread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -505,6 +545,12 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		addEEnumLiteral(targetStateEEnum, TargetState.DISCONNECTED);
 		addEEnumLiteral(targetStateEEnum, TargetState.TERMINATED);
 		addEEnumLiteral(targetStateEEnum, TargetState.RUNNING);
+
+		initEEnum(stackFrameStateEEnum, StackFrameState.class, "StackFrameState");
+		addEEnumLiteral(stackFrameStateEEnum, StackFrameState.STEPING_RETURN);
+		addEEnumLiteral(stackFrameStateEEnum, StackFrameState.STEPING_OVER);
+		addEEnumLiteral(stackFrameStateEEnum, StackFrameState.STEPING_INTO);
+		addEEnumLiteral(stackFrameStateEEnum, StackFrameState.DONE);
 
 		// Create resource
 		createResource(eNS_URI);

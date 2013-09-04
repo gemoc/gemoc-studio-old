@@ -32,11 +32,13 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getVariables <em>Variables</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getSubFrames <em>Sub Frames</em>}</li>
- *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#isIsStepping <em>Is Stepping</em>}</li>
+ *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getState <em>State</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getParent <em>Parent</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getData <em>Data</em>}</li>
- *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getSourceElement <em>Source Element</em>}</li>
+ *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getCurrentInstruction <em>Current Instruction</em>}</li>
+ *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getParentStack <em>Parent Stack</em>}</li>
+ *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getExecutionEnvironment <em>Execution Environment</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,30 +80,33 @@ public interface StackFrame extends EObject {
 	EList<StackFrame> getSubFrames();
 
 	/**
-	 * Returns the value of the '<em><b>Is Stepping</b></em>' attribute.
+	 * Returns the value of the '<em><b>State</b></em>' attribute.
+	 * The literals are from the enumeration {@link fr.obeo.dsl.sirius.animation.StackFrameState}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Is Stepping</em>' attribute isn't clear,
+	 * If the meaning of the '<em>State</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Stepping</em>' attribute.
-	 * @see #setIsStepping(boolean)
-	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_IsStepping()
+	 * @return the value of the '<em>State</em>' attribute.
+	 * @see fr.obeo.dsl.sirius.animation.StackFrameState
+	 * @see #setState(StackFrameState)
+	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_State()
 	 * @model
 	 * @generated
 	 */
-	boolean isIsStepping();
+	StackFrameState getState();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.sirius.animation.StackFrame#isIsStepping <em>Is Stepping</em>}' attribute.
+	 * Sets the value of the '{@link fr.obeo.dsl.sirius.animation.StackFrame#getState <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Stepping</em>' attribute.
-	 * @see #isIsStepping()
+	 * @param value the new value of the '<em>State</em>' attribute.
+	 * @see fr.obeo.dsl.sirius.animation.StackFrameState
+	 * @see #getState()
 	 * @generated
 	 */
-	void setIsStepping(boolean value);
+	void setState(StackFrameState value);
 
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
@@ -184,29 +189,113 @@ public interface StackFrame extends EObject {
 	void setData(EObject value);
 
 	/**
-	 * Returns the value of the '<em><b>Source Element</b></em>' reference.
+	 * Returns the value of the '<em><b>Current Instruction</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source Element</em>' reference isn't clear,
+	 * If the meaning of the '<em>Current Instruction</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source Element</em>' reference.
-	 * @see #setSourceElement(EObject)
-	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_SourceElement()
+	 * @return the value of the '<em>Current Instruction</em>' reference.
+	 * @see #setCurrentInstruction(EObject)
+	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_CurrentInstruction()
 	 * @model
 	 * @generated
 	 */
-	EObject getSourceElement();
+	EObject getCurrentInstruction();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.sirius.animation.StackFrame#getSourceElement <em>Source Element</em>}' reference.
+	 * Sets the value of the '{@link fr.obeo.dsl.sirius.animation.StackFrame#getCurrentInstruction <em>Current Instruction</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source Element</em>' reference.
-	 * @see #getSourceElement()
+	 * @param value the new value of the '<em>Current Instruction</em>' reference.
+	 * @see #getCurrentInstruction()
 	 * @generated
 	 */
-	void setSourceElement(EObject value);
+	void setCurrentInstruction(EObject value);
+
+	/**
+	 * Returns the value of the '<em><b>Parent Stack</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent Stack</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent Stack</em>' reference.
+	 * @see #setParentStack(StackFrame)
+	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_ParentStack()
+	 * @model
+	 * @generated
+	 */
+	StackFrame getParentStack();
+
+	/**
+	 * Sets the value of the '{@link fr.obeo.dsl.sirius.animation.StackFrame#getParentStack <em>Parent Stack</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent Stack</em>' reference.
+	 * @see #getParentStack()
+	 * @generated
+	 */
+	void setParentStack(StackFrame value);
+
+	/**
+	 * Returns the value of the '<em><b>Execution Environment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Execution Environment</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Execution Environment</em>' reference.
+	 * @see #setExecutionEnvironment(EObject)
+	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_ExecutionEnvironment()
+	 * @model
+	 * @generated
+	 */
+	EObject getExecutionEnvironment();
+
+	/**
+	 * Sets the value of the '{@link fr.obeo.dsl.sirius.animation.StackFrame#getExecutionEnvironment <em>Execution Environment</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Execution Environment</em>' reference.
+	 * @see #getExecutionEnvironment()
+	 * @generated
+	 */
+	void setExecutionEnvironment(EObject value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Variable getOrCreateVariable(String varName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	StackFrame newFrame(EObject executionEnvironment);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	StackFrame popFrame();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean is(TargetState state);
 
 } // StackFrame

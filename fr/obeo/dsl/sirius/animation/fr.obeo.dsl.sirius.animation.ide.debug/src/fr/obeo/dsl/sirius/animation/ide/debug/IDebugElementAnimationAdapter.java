@@ -18,20 +18,29 @@
  */
 package fr.obeo.dsl.sirius.animation.ide.debug;
 
+import org.eclipse.debug.core.DebugEvent;
+import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.model.IDebugElement;
 import org.eclipse.debug.core.model.IDebugTarget;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.EReference;
 
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
+import fr.obeo.dsl.sirius.animation.StackFrameState;
+import fr.obeo.dsl.sirius.animation.TargetState;
 
 public class IDebugElementAnimationAdapter extends AdapterImpl implements
 		IDebugElement {
 	protected ILaunch launch;
 
 	protected DebugModelToEclipseDebugAdapterFactory factory;
+
+	private IDebugTarget debugTarget;
 
 	public IDebugElementAnimationAdapter(ILaunch launch,
 			DebugModelToEclipseDebugAdapterFactory factory) {
@@ -49,13 +58,24 @@ public class IDebugElementAnimationAdapter extends AdapterImpl implements
 		return type == factory || type == IDebugElement.class;
 	}
 
-	public String getModelIdentifier() {		
+	public String getModelIdentifier() {
 		return "fr.obeo.dsl.sirius.modelAnimation";
 	}
 
-	public IDebugTarget getDebugTarget() {
-		return (IDebugTarget) factory.adapt(findParentTarget(),
+	@Override
+	public void setTarget(Notifier newTarget) {
+		super.setTarget(newTarget);
+		/*
+		 * We have to keep the debug target around as we might be asked by the
+		 * Eclipse framework to return it even when the runtime model element
+		 * has been detached to its root.
+		 */
+		this.debugTarget = (IDebugTarget) factory.adapt(findParentTarget(),
 				IDebugTarget.class);
+	}
+
+	public IDebugTarget getDebugTarget() {
+		return this.debugTarget;
 	}
 
 	protected AnimationTarget findParentTarget() {
@@ -80,6 +100,79 @@ public class IDebugElementAnimationAdapter extends AdapterImpl implements
 
 	public ILaunch getLaunch() {
 		return this.launch;
+	}
+
+	/**
+	 * Fires a debug event
+	 * 
+	 * @param event
+	 *            the event to be fired
+	 */
+	protected void fireEvent(DebugEvent event) {
+		DebugPlugin.getDefault().fireDebugEventSet(new DebugEvent[] { event });
+	}
+
+	@Override
+	public void notifyChanged(Notification msg) {
+		super.notifyChanged(msg);
+		if (!msg.isTouch()) {
+
+			int debugEventKind = DebugEvent.CHANGE;
+			switch (msg.getEventType()) {
+			case Notification.SET:
+				debugEventKind = DebugEvent.CHANGE;
+				if (msg.getNewValue() == TargetState.TERMINATED) {
+					debugEventKind = DebugEvent.TERMINATE;
+				}
+				if (msg.getNewValue() == TargetState.RUNNING) {
+					debugEventKind = DebugEvent.RESUME;
+				}
+				if (msg.getNewValue() == TargetState.SUSPENDED) {
+					debugEventKind = DebugEvent.SUSPEND;
+				}
+				if (msg.getNewValue() == StackFrameState.STEPING_INTO) {
+					debugEventKind = DebugEvent.STEP_INTO;
+				}
+				if (msg.getNewValue() == StackFrameState.STEPING_OVER) {
+					debugEventKind = DebugEvent.STEP_OVER;
+				}
+				if (msg.getNewValue() == StackFrameState.STEPING_RETURN) {
+					debugEventKind = DebugEvent.STEP_RETURN;
+				}
+				if (msg.getNewValue() == StackFrameState.DONE) {
+					debugEventKind = DebugEvent.STEP_END;
+				}
+
+				break;
+			case Notification.ADD:
+			case Notification.ADD_MANY:
+				if (msg.getFeature() instanceof EReference
+						&& ((EReference) msg.getFeature()).isContainment()) {
+					debugEventKind = DebugEvent.CREATE;
+				} else {
+					debugEventKind = DebugEvent.CHANGE;
+				}
+				break;
+			case Notification.REMOVE:
+			case Notification.REMOVE_MANY:
+				if (msg.getFeature() instanceof EReference
+						&& ((EReference) msg.getFeature()).isContainment()) {
+					/*
+					 * no remove event ?
+					 */
+				} else {
+					debugEventKind = DebugEvent.CHANGE;
+				}
+				break;
+			}
+			if (msg.getNotifier() instanceof Notifier)
+				for (Adapter adapter : ((Notifier) msg.getNotifier())
+						.eAdapters()) {
+					if (adapter instanceof IDebugElement) {
+						fireEvent(new DebugEvent(adapter, debugEventKind));
+					}
+				}
+		}
 	}
 
 }

@@ -117,8 +117,13 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			    // Optionally pass a ExecutionEvent instance, default no-param arg creates blank event
 			    try {
 					command.executeWithChecks(new ExecutionEvent());
-				} catch (ExecutionException | NotDefinedException
-						| NotEnabledException | NotHandledException e) {
+				} catch (ExecutionException  e) {
+					Activator.error("cannot add fr.obeo.dsl.viewpoint.nature.modelingproject nature to project due to "+e.getMessage(), e);
+				} catch ( NotDefinedException e) {
+					Activator.error("cannot add fr.obeo.dsl.viewpoint.nature.modelingproject nature to project due to "+e.getMessage(), e);
+				} catch ( NotEnabledException  e) {
+					Activator.error("cannot add fr.obeo.dsl.viewpoint.nature.modelingproject nature to project due to "+e.getMessage(), e);
+				} catch (NotHandledException e) {
 					Activator.error("cannot add fr.obeo.dsl.viewpoint.nature.modelingproject nature to project due to "+e.getMessage(), e);
 				}
 				

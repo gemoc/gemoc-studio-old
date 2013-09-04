@@ -4,7 +4,7 @@
     modelDirectory="/fr.obeo.dsl.sirius.animation/src-gen" creationIcons="false" editDirectory="/fr.obeo.dsl.sirius.animation.edit/src-gen"
     editorDirectory="/fr.obeo.dsl.sirius.animation.editor/src-gen" modelPluginID="fr.obeo.dsl.sirius.animation"
     modelName="Animation" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    copyrightFields="false" usedGenPackages="platform:/plugin/fr.obeo.dsl.viewpoint/model/contribution.genmodel#//contribution platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/fr.obeo.dsl.viewpoint/model/viewpoint.genmodel#//viewpoint">
+    copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>animation.ecore</foreignModel>
   <genPackages prefix="Animation" basePackage="fr.obeo.dsl.sirius" disposableProviderFactory="true"
       ecorePackage="animation.ecore#/">
@@ -14,6 +14,12 @@
       <genEnumLiterals ecoreEnumLiteral="animation.ecore#//TargetState/terminated"/>
       <genEnumLiterals ecoreEnumLiteral="animation.ecore#//TargetState/running"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="animation.ecore#//StackFrameState">
+      <genEnumLiterals ecoreEnumLiteral="animation.ecore#//StackFrameState/stepingReturn"/>
+      <genEnumLiterals ecoreEnumLiteral="animation.ecore#//StackFrameState/stepingOver"/>
+      <genEnumLiterals ecoreEnumLiteral="animation.ecore#//StackFrameState/stepingInto"/>
+      <genEnumLiterals ecoreEnumLiteral="animation.ecore#//StackFrameState/done"/>
+    </genEnums>
     <genClasses ecoreClass="animation.ecore#//AnimationTarget">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//AnimationTarget/threads"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//AnimationTarget/name"/>
@@ -22,16 +28,27 @@
     <genClasses ecoreClass="animation.ecore#//StackFrame">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/variables"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/subFrames"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//StackFrame/isStepping"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//StackFrame/state"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/parent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//StackFrame/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/data"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/sourceElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/currentInstruction"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/parentStack"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/executionEnvironment"/>
+      <genOperations ecoreOperation="animation.ecore#//StackFrame/getOrCreateVariable">
+        <genParameters ecoreParameter="animation.ecore#//StackFrame/getOrCreateVariable/varName"/>
+      </genOperations>
+      <genOperations ecoreOperation="animation.ecore#//StackFrame/newFrame">
+        <genParameters ecoreParameter="animation.ecore#//StackFrame/newFrame/executionEnvironment"/>
+      </genOperations>
+      <genOperations ecoreOperation="animation.ecore#//StackFrame/popFrame"/>
+      <genOperations ecoreOperation="animation.ecore#//StackFrame/is">
+        <genParameters ecoreParameter="animation.ecore#//StackFrame/is/state"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="animation.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//Variable/name"/>
       <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//Variable/elements"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference animation.ecore#//Variable/representationElements"/>
     </genClasses>
     <genClasses ecoreClass="animation.ecore#//Thread">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//Thread/stackFrames"/>

@@ -23,6 +23,8 @@ import fr.obeo.dsl.sirius.animation.AnimationPackage;
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
 import fr.obeo.dsl.sirius.animation.CurrentSessions;
 import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.StackFrameCustomImpl;
+import fr.obeo.dsl.sirius.animation.StackFrameState;
 import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Variable;
 
@@ -30,9 +32,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -50,7 +50,7 @@ public class AnimationFactoryImpl extends EFactoryImpl implements AnimationFacto
 	 */
 	public static AnimationFactory init() {
 		try {
-			AnimationFactory theAnimationFactory = (AnimationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.obeo.fr/dsl/sirius/animation"); 
+			AnimationFactory theAnimationFactory = (AnimationFactory)EPackage.Registry.INSTANCE.getEFactory(AnimationPackage.eNS_URI);
 			if (theAnimationFactory != null) {
 				return theAnimationFactory;
 			}
@@ -99,6 +99,8 @@ public class AnimationFactoryImpl extends EFactoryImpl implements AnimationFacto
 		switch (eDataType.getClassifierID()) {
 			case AnimationPackage.TARGET_STATE:
 				return createTargetStateFromString(eDataType, initialValue);
+			case AnimationPackage.STACK_FRAME_STATE:
+				return createStackFrameStateFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -114,6 +116,8 @@ public class AnimationFactoryImpl extends EFactoryImpl implements AnimationFacto
 		switch (eDataType.getClassifierID()) {
 			case AnimationPackage.TARGET_STATE:
 				return convertTargetStateToString(eDataType, instanceValue);
+			case AnimationPackage.STACK_FRAME_STATE:
+				return convertStackFrameStateToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -132,10 +136,10 @@ public class AnimationFactoryImpl extends EFactoryImpl implements AnimationFacto
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @not-generated
 	 */
 	public StackFrame createStackFrame() {
-		StackFrameImpl stackFrame = new StackFrameImpl();
+		StackFrameImpl stackFrame = new StackFrameCustomImpl();
 		return stackFrame;
 	}
 
@@ -186,6 +190,26 @@ public class AnimationFactoryImpl extends EFactoryImpl implements AnimationFacto
 	 * @generated
 	 */
 	public String convertTargetStateToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StackFrameState createStackFrameStateFromString(EDataType eDataType, String initialValue) {
+		StackFrameState result = StackFrameState.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertStackFrameStateToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

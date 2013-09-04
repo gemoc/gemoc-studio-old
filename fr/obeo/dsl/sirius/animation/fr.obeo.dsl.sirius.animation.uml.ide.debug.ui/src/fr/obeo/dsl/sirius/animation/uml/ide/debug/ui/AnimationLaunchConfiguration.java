@@ -71,7 +71,7 @@ public class AnimationLaunchConfiguration implements
 								sess.addSemanticResource(res, false);
 								IDebugTargetAnimationAdapter animationDebugTarget = (IDebugTargetAnimationAdapter) simulator
 										.adapt(animModel,
-												IDebugTargetAnimationAdapter.class);
+												IDebugTargetAnimationAdapter.class);								
 								launch.addDebugTarget(animationDebugTarget);
 							}
 						});

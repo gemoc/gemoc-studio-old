@@ -18,35 +18,23 @@
  */
 package fr.obeo.dsl.sirius.animation.ide.debug;
 
-import java.util.Set;
-
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.IPersistableSourceLocator;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-
-import com.google.common.collect.Sets;
 
 import fr.obeo.dsl.sirius.animation.StackFrame;
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.DRepresentationElement;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.query.DRepresentationElementQuery;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
 
 public class EObjectSourceLocator implements IPersistableSourceLocator {
 
 	public Object getSourceElement(IStackFrame stackFrame) {
 		if (stackFrame instanceof IStackFrameAnimationAdapter) {
-			StackFrame sourceElement = ((IStackFrameAnimationAdapter) stackFrame)
+			StackFrame stack = ((IStackFrameAnimationAdapter) stackFrame)
 					.getHost();
-			EObject elementToOpenElement = sourceElement.getSourceElement();
-
+			EObject elementToOpenElement = stack.getCurrentInstruction();
+			if (elementToOpenElement==null)
+				elementToOpenElement = stack.getExecutionEnvironment();
 			return elementToOpenElement;
 		} else {
 			return null;

@@ -22,10 +22,8 @@ import java.util.List;
 
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.ILaunch;
-import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import com.google.common.collect.Iterables;
@@ -47,7 +45,7 @@ public class IValueEListAdapter extends IDebugElementAnimationAdapter implements
 
 	public String getValueString() throws DebugException {
 		if (this.host instanceof List) {
-			return "[...]";
+			return "["+ ((List) this.host).size() +"]";
 		} else if (this.host != null) {
 			return this.host.toString();
 		}

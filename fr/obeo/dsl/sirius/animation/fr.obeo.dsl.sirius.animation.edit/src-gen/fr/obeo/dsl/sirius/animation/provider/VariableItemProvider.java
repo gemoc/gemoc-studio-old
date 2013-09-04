@@ -78,7 +78,6 @@ public class VariableItemProvider
 
 			addNamePropertyDescriptor(object);
 			addElementsPropertyDescriptor(object);
-			addRepresentationElementsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -119,28 +118,6 @@ public class VariableItemProvider
 				 getString("_UI_Variable_elements_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Variable_elements_feature", "_UI_Variable_type"),
 				 AnimationPackage.Literals.VARIABLE__ELEMENTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Representation Elements feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRepresentationElementsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Variable_representationElements_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Variable_representationElements_feature", "_UI_Variable_type"),
-				 AnimationPackage.Literals.VARIABLE__REPRESENTATION_ELEMENTS,
 				 true,
 				 false,
 				 true,

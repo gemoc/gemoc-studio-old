@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.obeo.dsl.sirius.animation.Variable#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.Variable#getElements <em>Elements</em>}</li>
- *   <li>{@link fr.obeo.dsl.sirius.animation.Variable#getRepresentationElements <em>Representation Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,21 +83,5 @@ public interface Variable extends EObject {
 	 * @generated
 	 */
 	EList<EObject> getElements();
-
-	/**
-	 * Returns the value of the '<em><b>Representation Elements</b></em>' reference list.
-	 * The list contents are of type {@link fr.obeo.dsl.viewpoint.DRepresentationElement}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Representation Elements</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Representation Elements</em>' reference list.
-	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getVariable_RepresentationElements()
-	 * @model
-	 * @generated
-	 */
-	EList<DRepresentationElement> getRepresentationElements();
 
 } // Variable
