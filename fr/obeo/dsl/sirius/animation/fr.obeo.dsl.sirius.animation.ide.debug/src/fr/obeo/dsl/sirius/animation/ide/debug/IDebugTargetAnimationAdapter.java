@@ -35,7 +35,7 @@ public class IDebugTargetAnimationAdapter extends IDebugElementAnimationAdapter 
 
 	public IDebugTargetAnimationAdapter(
 			ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory debugModelToEclipseDebugAdapterFactory) {
+			AnimatorEclipseDebugIntegration debugModelToEclipseDebugAdapterFactory) {
 		super(launch, debugModelToEclipseDebugAdapterFactory);
 	}
 

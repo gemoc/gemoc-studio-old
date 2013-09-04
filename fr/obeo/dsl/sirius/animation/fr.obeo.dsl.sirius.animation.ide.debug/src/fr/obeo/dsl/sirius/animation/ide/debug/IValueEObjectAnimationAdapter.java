@@ -33,7 +33,7 @@ public class IValueEObjectAnimationAdapter extends
 		IDebugElementAnimationAdapter implements IValue {
 
 	public IValueEObjectAnimationAdapter(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory) {
+			AnimatorEclipseDebugIntegration factory) {
 		super(launch, factory);
 	}
 

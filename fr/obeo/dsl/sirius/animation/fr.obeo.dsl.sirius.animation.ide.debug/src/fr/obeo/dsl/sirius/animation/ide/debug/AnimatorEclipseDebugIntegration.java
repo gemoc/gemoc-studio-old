@@ -41,6 +41,7 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
+import fr.obeo.dsl.sirius.animation.Animator;
 import fr.obeo.dsl.sirius.animation.StackFrame;
 import fr.obeo.dsl.sirius.animation.StackFrameState;
 import fr.obeo.dsl.sirius.animation.TargetState;
@@ -48,19 +49,21 @@ import fr.obeo.dsl.sirius.animation.Thread;
 import fr.obeo.dsl.sirius.animation.provider.AnimationItemProviderAdapterFactory;
 import fr.obeo.dsl.sirius.animation.util.AnimationAdapterFactory;
 
-public abstract class DebugModelToEclipseDebugAdapterFactory extends
+public  class AnimatorEclipseDebugIntegration extends
 		AnimationAdapterFactory {
 
 	private ILaunch launch;
 
 	private Collection<Object> supportedTypes = Lists.newArrayList();
-	
+
 	private AdapterFactory genericLabelFactory;
 
 	protected TransactionalEditingDomain domain;
 
-	public DebugModelToEclipseDebugAdapterFactory(ILaunch launch,
-			TransactionalEditingDomain domain) {
+	private Animator animator;
+
+	public AnimatorEclipseDebugIntegration(ILaunch launch,
+			TransactionalEditingDomain domain, Animator animator) {
 		this.launch = launch;
 		supportedTypes.add(IThread.class);
 		supportedTypes.add(IDebugTarget.class);
@@ -68,20 +71,20 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 		supportedTypes.add(IVariable.class);
 		supportedTypes.add(IValue.class);
 		this.domain = domain;
-		
+		this.animator = animator;
+
 		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
 				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory
 				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		AnimationItemProviderAdapterFactory animationFactory = new AnimationItemProviderAdapterFactory();
-		adapterFactory
-				.addAdapterFactory(animationFactory);
+		adapterFactory.addAdapterFactory(animationFactory);
 		adapterFactory
 				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		genericLabelFactory = adapterFactory;
 	}
-	
+
 	public AdapterFactory getLabelFactory() {
 		return genericLabelFactory;
 	}
@@ -167,21 +170,6 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 		return adapter;
 	}
 
-	public abstract AnimationTarget start();
-
-	public abstract void stepInto(StackFrame host);
-
-	public abstract void stepOver(StackFrame host);
-
-	public abstract void stepReturn(StackFrame host);
-
-	public abstract void terminate(StackFrame host);
-
-	public abstract void stepInto(Thread host);
-
-	public abstract void stepOver(Thread host);
-
-	public abstract void stepReturn(Thread host);
 
 	public void stepOverViaCommand(final StackFrame host) {
 		ChangeObjectsVariableUpdater recorder = new ChangeObjectsVariableUpdater(
@@ -193,7 +181,7 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 					@Override
 					protected void doExecute() {
 						host.setState(StackFrameState.STEPING_OVER);
-						stepOver(host);
+						animator.stepOver(host);
 						host.setState(StackFrameState.DONE);
 					}
 
@@ -208,7 +196,7 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 					@Override
 					protected void doExecute() {
 						host.setState(StackFrameState.STEPING_INTO);
-						stepInto(host);
+						animator.stepInto(host);
 						host.setState(StackFrameState.DONE);
 					}
 
@@ -225,7 +213,7 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 					@Override
 					protected void doExecute() {
 						host.setState(StackFrameState.STEPING_RETURN);
-						stepReturn(host);
+						animator.stepReturn(host);
 						host.setState(StackFrameState.DONE);
 					}
 
@@ -240,7 +228,7 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 
 					@Override
 					protected void doExecute() {
-						stepReturn(host);
+						animator.stepReturn(host);
 					}
 
 				});
@@ -253,9 +241,9 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 					@Override
 					protected void doExecute() {
 						if (host.getTopStackFrame() != null) {
-							stepOverViaCommand(host.getTopStackFrame());
+							animator.stepOver(host.getTopStackFrame());
 						}
-						stepOver(host);
+						animator.stepOver(host);
 					}
 
 				});
@@ -268,9 +256,9 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 					@Override
 					protected void doExecute() {
 						if (host.getTopStackFrame() != null) {
-							stepIntoViaCommand(host.getTopStackFrame());
+							animator.stepInto(host.getTopStackFrame());
 						}
-						stepInto(host);
+						animator.stepInto(host);
 					}
 
 				});
@@ -283,7 +271,7 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 
 					@Override
 					protected void doExecute() {
-						terminate(host);
+						animator.terminate(host);
 						host.getParent().getStackFrames().remove(host);
 					}
 

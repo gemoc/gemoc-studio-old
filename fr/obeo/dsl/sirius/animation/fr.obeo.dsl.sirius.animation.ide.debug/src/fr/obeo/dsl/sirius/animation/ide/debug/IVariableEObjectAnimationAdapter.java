@@ -31,7 +31,7 @@ public class IVariableEObjectAnimationAdapter extends
 		IDebugElementAnimationAdapter implements IVariable {
 
 	public IVariableEObjectAnimationAdapter(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory) {
+			AnimatorEclipseDebugIntegration factory) {
 		super(launch, factory);
 	}
 

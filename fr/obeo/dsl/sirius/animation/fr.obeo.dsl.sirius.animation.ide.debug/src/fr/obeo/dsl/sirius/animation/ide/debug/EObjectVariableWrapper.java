@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 public class EObjectVariableWrapper extends IDebugElementAnimationAdapter implements IVariable {
 
 	public EObjectVariableWrapper(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory) {
+			AnimatorEclipseDebugIntegration factory) {
 		super(launch, factory);
 	}
 

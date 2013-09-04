@@ -1,28 +1,9 @@
-/**
- * 
- * Copyright  2013 Obeo. All Rights Reserved.
- * 
- *  This file is part of Obeo Designer.
- * This software and the attached documentation are the exclusive ownership of its authors and was conceded to the profit of Obeo SARL.
- * This software and the attached documentation are protected under the rights of intellectual ownership, including the section "Titre II  Droits des auteurs (Articles L121-1, L123-12)"
- * By installing this software, you acknowledge being aware of this rights and accept them, and as a consequence you must:
- * - be in possession of a valid license of use conceded by Obeo only.
- * - agree that you have read, understood, and will comply with the license terms and conditions.
- * - agree not to do anything that could conflict with intellectual ownership owned by Obeo or its beneficiaries
- * or the authors of this software
- * 
- * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
- * 
- * Obeo is a  trademark owned by Obeo.
- * 
- */
 package fr.obeo.dsl.sirius.animation.uml;
 
 import java.util.Iterator;
 
-import org.eclipse.debug.core.ILaunch;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.PseudostateKind;
 import org.eclipse.uml2.uml.State;
@@ -36,20 +17,13 @@ import com.google.common.collect.Iterators;
 
 import fr.obeo.dsl.sirius.animation.AnimationFactory;
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
+import fr.obeo.dsl.sirius.animation.Animator;
 import fr.obeo.dsl.sirius.animation.StackFrame;
 import fr.obeo.dsl.sirius.animation.Thread;
 import fr.obeo.dsl.sirius.animation.Variable;
-import fr.obeo.dsl.sirius.animation.ide.debug.DebugModelToEclipseDebugAdapterFactory;
 
-public class SimulateStateMachine extends
-		DebugModelToEclipseDebugAdapterFactory {
-
+public class AnimateUMLStateMachine implements Animator {
 	private static final String SM_ACTIVETRANSITIONS = "transitions";
-
-	public SimulateStateMachine(ILaunch launch,
-			TransactionalEditingDomain domain) {
-		super(launch, domain);
-	}
 
 	private Predicate<Pseudostate> INITIAL_STATE = new Predicate<Pseudostate>() {
 
@@ -104,7 +78,6 @@ public class SimulateStateMachine extends
 		}
 	}
 
-	@Override
 	public void stepInto(StackFrame host) {
 		if (host.getExecutionEnvironment() instanceof State) {
 			State st = (State) host.getExecutionEnvironment();
@@ -120,7 +93,6 @@ public class SimulateStateMachine extends
 		}
 	}
 
-	@Override
 	public void stepOver(StackFrame host) {
 		if (host.getExecutionEnvironment() instanceof StateMachine) {
 			Variable possibleTransitions = host
@@ -174,14 +146,14 @@ public class SimulateStateMachine extends
 		/*
 		 * always add a "this" variable for the current execution context
 		 */
-		Variable currentExecutionContext = host.getParent().getTopStackFrame().getOrCreateVariable("this");
+		Variable currentExecutionContext = host.getParent().getTopStackFrame()
+				.getOrCreateVariable("this");
 		currentExecutionContext.getElements().clear();
-		currentExecutionContext.getElements().add(host.getExecutionEnvironment());
-		
+		currentExecutionContext.getElements().add(
+				host.getExecutionEnvironment());
 
 	}
 
-	@Override
 	public void stepReturn(StackFrame host) {
 		if (host.getExecutionEnvironment() instanceof State) {
 			State st = (State) host.getExecutionEnvironment();
@@ -232,13 +204,12 @@ public class SimulateStateMachine extends
 		return null;
 	}
 
-	@Override
-	public AnimationTarget start() {
+	public AnimationTarget start(ResourceSet set) {
 		AnimationTarget result = AnimationFactory.eINSTANCE
 				.createAnimationTarget();
 		result.setName("execution");
 		// TODO filter UML resources
-		for (Resource resource : domain.getResourceSet().getResources()) {
+		for (Resource resource : set.getResources()) {
 			Iterators.addAll(result.getThreads(), Iterators.transform(Iterators
 					.filter(resource.getAllContents(), StateMachine.class),
 					machineToStack));
@@ -247,27 +218,23 @@ public class SimulateStateMachine extends
 		return result;
 	}
 
-	@Override
 	public void terminate(StackFrame host) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void stepInto(Thread host) {
 		if (host.getTopStackFrame() != null)
 			stepInto(host.getTopStackFrame());
 
 	}
 
-	@Override
 	public void stepOver(Thread host) {
 		if (host.getTopStackFrame() != null)
 			stepOver(host.getTopStackFrame());
 
 	}
 
-	@Override
 	public void stepReturn(Thread host) {
 		if (host.getTopStackFrame() != null)
 			stepReturn(host.getTopStackFrame());
