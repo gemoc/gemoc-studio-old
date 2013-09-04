@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <tycho-version>0.16.0</tycho-version>
+        <tycho-version>0.18.0</tycho-version>
     </properties>
 
     <modules>
@@ -45,14 +45,29 @@
         </repository>
         
         <repository>
-            <id>kermeta2-latest-snapshot</id>
+            <id>kermeta2-latest-stable</id>
             <layout>p2</layout>
-            <url>http://www.kermeta.org/integration_build/kermeta2_snapshot/update/</url>
+            <url>http://www.kermeta.org/k2/update/</url>
         </repository>	
+        <repository>
+            <id>kermeta3</id>
+            <layout>p2</layout>
+            <url>http://gemoc-dev.gforge.inria.fr/k3updatesite/</url>
+        </repository>
         <repository>
         	<id>gemoc.execution.trace-latest-snapshot</id>
             <layout>p2</layout>
             <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.trace.master/lastSuccessfulBuild/artifact/org/gemoc/execution/trace/org.gemoc.execution.trace.p2updatesite/target/repository/</url>
+        </repository>
+        <repository>
+        	<id>gemoc_language_workbench-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository/</url>
+        </repository>
+        <repository>
+        	<id>gemoc_modeling_workbench-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_modeling_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_modeling_workbench/org.gemoc.gemoc_modeling_workbench.p2updatesite/target/repository/</url>
         </repository>
         <repository>
             <id>timesquare ECL</id>
@@ -68,6 +83,11 @@
             <id>Scala-IDE 3.0.0 Release Juno For Scala 2.9.x</id>
             <layout>p2</layout>
             <url>http://download.scala-ide.org/sdk/e38/scala29/stable/site</url>
+        </repository>
+        <repository>
+            <id>Xtext All In One - Releases</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
         </repository>
     </repositories>
 

@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getAnimationTarget()
- * @model annotation="http://www.obeo.fr/dsl/dnc/archetype archetype='Role'"
+ * @model
  * @generated
  */
 public interface AnimationTarget extends EObject {

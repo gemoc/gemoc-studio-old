@@ -26,6 +26,8 @@ import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IVariable;
 
 import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.StackFrameState;
+import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Variable;
 
 public class IStackFrameAnimationAdapter extends IDebugElementAnimationAdapter
@@ -53,7 +55,7 @@ public class IStackFrameAnimationAdapter extends IDebugElementAnimationAdapter
 	}
 
 	public boolean isStepping() {
-		return getHost().isIsStepping();
+		return getHost().getState() != StackFrameState.DONE;
 	}
 
 	public void stepInto() throws DebugException {
@@ -64,22 +66,21 @@ public class IStackFrameAnimationAdapter extends IDebugElementAnimationAdapter
 		this.factory.stepOverViaCommand(getHost());
 	}
 
-
 	public void stepReturn() throws DebugException {
 		this.factory.stepReturnViaCommand(getHost());
 
 	}
 
 	public boolean canResume() {
-		return true;
+		return getHost().is(TargetState.SUSPENDED);
 	}
 
 	public boolean canSuspend() {
-		return true;
+		return getHost().is(TargetState.RUNNING);
 	}
 
 	public boolean isSuspended() {
-		return false;
+		return canResume();
 	}
 
 	public void resume() throws DebugException {
@@ -98,18 +99,15 @@ public class IStackFrameAnimationAdapter extends IDebugElementAnimationAdapter
 	}
 
 	public boolean canTerminate() {
-		// TODO Auto-generated method stub
-		return false;
+		return !isTerminated();
 	}
 
 	public boolean isTerminated() {
-		// TODO Auto-generated method stub
-		return false;
+		return getHost().is(TargetState.TERMINATED);
 	}
 
 	public void terminate() throws DebugException {
-		// TODO Auto-generated method stub
-
+		this.factory.terminateViaCommand(getHost());
 	}
 
 	public IThread getThread() {

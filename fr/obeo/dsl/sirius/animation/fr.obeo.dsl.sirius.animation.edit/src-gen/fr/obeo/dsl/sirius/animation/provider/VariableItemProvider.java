@@ -78,7 +78,6 @@ public class VariableItemProvider
 
 			addNamePropertyDescriptor(object);
 			addElementsPropertyDescriptor(object);
-			addRepresentationElementsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -128,28 +127,6 @@ public class VariableItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Representation Elements feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRepresentationElementsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Variable_representationElements_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Variable_representationElements_feature", "_UI_Variable_type"),
-				 AnimationPackage.Literals.VARIABLE__REPRESENTATION_ELEMENTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns Variable.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,6 +135,16 @@ public class VariableItemProvider
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/Variable"));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
 	}
 
 	/**
@@ -187,6 +174,7 @@ public class VariableItemProvider
 
 		switch (notification.getFeatureID(Variable.class)) {
 			case AnimationPackage.VARIABLE__NAME:
+			case AnimationPackage.VARIABLE__ELEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gemoc Reflective Model UI
+Bundle-SymbolicName: org.gemoc.gemoc_modeling_workbench.reflective_model.ui;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.gemoc.gemoc_modeling_workbench.reflective_model.ui.Activator
+Bundle-Vendor: INRIA
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.ide,
+ org.eclipse.core.expressions;bundle-version="3.4.400",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.8.1",
+ org.eclipse.debug.ui;bundle-version="3.8.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
