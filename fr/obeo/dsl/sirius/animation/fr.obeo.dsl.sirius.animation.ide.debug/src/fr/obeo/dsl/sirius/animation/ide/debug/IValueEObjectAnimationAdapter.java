@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 
 public class IValueEObjectAnimationAdapter extends
 		IDebugElementAnimationAdapter implements IValue {
@@ -39,16 +41,21 @@ public class IValueEObjectAnimationAdapter extends
 	public boolean isAdapterForType(Object type) {
 		return super.isAdapterForType(type) || type == IValue.class;
 	}
-	
+
 	private EObject getHost() {
 		return (EObject) getTarget();
 	}
 
 	public String getReferenceTypeName() throws DebugException {
-		return  getHost().eClass().getName();
+		return getHost().eClass().getName();
 	}
 
 	public String getValueString() throws DebugException {
+		Object obj = factory.getLabelFactory().adapt((Object) getHost(),
+				IItemLabelProvider.class);
+		if (obj instanceof IItemLabelProvider) {
+			return ((IItemLabelProvider) obj).getText(getHost());
+		}
 		return getHost().toString();
 	}
 
@@ -57,11 +64,14 @@ public class IValueEObjectAnimationAdapter extends
 	}
 
 	public IVariable[] getVariables() throws DebugException {
-		IVariable[] result = new IVariable[getHost().eClass().getEAllStructuralFeatures().size()];
+		IVariable[] result = new IVariable[getHost().eClass()
+				.getEAllStructuralFeatures().size()];
 		int i = 0;
-		for (EStructuralFeature feat :getHost().eClass().getEAllStructuralFeatures()) {
-			Setting setting = ((InternalEObject) getHost()).eSetting(feat);			
-			result[i] = (IVariable) factory.adapt(new SettingWrapper(setting), IVariable.class);
+		for (EStructuralFeature feat : getHost().eClass()
+				.getEAllStructuralFeatures()) {
+			Setting setting = ((InternalEObject) getHost()).eSetting(feat);
+			result[i] = (IVariable) factory.adapt(new SettingWrapper(setting),
+					IVariable.class);
 			i++;
 		}
 		return result;

@@ -5,10 +5,10 @@ Bundle-SymbolicName: fr.obeo.dsl.sirius.animation.uml.tests
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.junit,
- org.eclipse.uml2;bundle-version="4.1.0",
- org.eclipse.uml2.uml;bundle-version="4.1.1",
+ org.eclipse.uml2;bundle-version="4.0.0",
+ org.eclipse.uml2.uml;bundle-version="4.0.0",
  fr.obeo.dsl.sirius.animation;bundle-version="1.0.0",
  fr.obeo.dsl.sirius.animation.uml;bundle-version="1.0.0",
  org.eclipse.emf.transaction;bundle-version="1.4.0",
- org.eclipse.debug.core;bundle-version="3.8.0",
+ org.eclipse.debug.core;bundle-version="3.7.0",
  fr.obeo.dsl.sirius.animation.ide.debug;bundle-version="1.0.0"

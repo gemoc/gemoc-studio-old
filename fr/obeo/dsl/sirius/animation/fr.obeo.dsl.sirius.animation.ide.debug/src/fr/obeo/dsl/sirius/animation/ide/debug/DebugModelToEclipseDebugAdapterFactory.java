@@ -28,8 +28,12 @@ import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
@@ -41,6 +45,7 @@ import fr.obeo.dsl.sirius.animation.StackFrame;
 import fr.obeo.dsl.sirius.animation.StackFrameState;
 import fr.obeo.dsl.sirius.animation.TargetState;
 import fr.obeo.dsl.sirius.animation.Thread;
+import fr.obeo.dsl.sirius.animation.provider.AnimationItemProviderAdapterFactory;
 import fr.obeo.dsl.sirius.animation.util.AnimationAdapterFactory;
 
 public abstract class DebugModelToEclipseDebugAdapterFactory extends
@@ -49,6 +54,8 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 	private ILaunch launch;
 
 	private Collection<Object> supportedTypes = Lists.newArrayList();
+	
+	private AdapterFactory genericLabelFactory;
 
 	protected TransactionalEditingDomain domain;
 
@@ -61,6 +68,22 @@ public abstract class DebugModelToEclipseDebugAdapterFactory extends
 		supportedTypes.add(IVariable.class);
 		supportedTypes.add(IValue.class);
 		this.domain = domain;
+		
+		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
+				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+
+		adapterFactory
+				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		AnimationItemProviderAdapterFactory animationFactory = new AnimationItemProviderAdapterFactory();
+		adapterFactory
+				.addAdapterFactory(animationFactory);
+		adapterFactory
+				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+		genericLabelFactory = adapterFactory;
+	}
+	
+	public AdapterFactory getLabelFactory() {
+		return genericLabelFactory;
 	}
 
 	@Override

@@ -40,6 +40,8 @@ public class IDebugElementAnimationAdapter extends AdapterImpl implements
 
 	protected DebugModelToEclipseDebugAdapterFactory factory;
 
+	private IDebugTarget debugTarget;
+
 	public IDebugElementAnimationAdapter(ILaunch launch,
 			DebugModelToEclipseDebugAdapterFactory factory) {
 		super();
@@ -60,9 +62,20 @@ public class IDebugElementAnimationAdapter extends AdapterImpl implements
 		return "fr.obeo.dsl.sirius.modelAnimation";
 	}
 
-	public IDebugTarget getDebugTarget() {
-		return (IDebugTarget) factory.adapt(findParentTarget(),
+	@Override
+	public void setTarget(Notifier newTarget) {
+		super.setTarget(newTarget);
+		/*
+		 * We have to keep the debug target around as we might be asked by the
+		 * Eclipse framework to return it even when the runtime model element
+		 * has been detached to its root.
+		 */
+		this.debugTarget = (IDebugTarget) factory.adapt(findParentTarget(),
 				IDebugTarget.class);
+	}
+
+	public IDebugTarget getDebugTarget() {
+		return this.debugTarget;
 	}
 
 	protected AnimationTarget findParentTarget() {

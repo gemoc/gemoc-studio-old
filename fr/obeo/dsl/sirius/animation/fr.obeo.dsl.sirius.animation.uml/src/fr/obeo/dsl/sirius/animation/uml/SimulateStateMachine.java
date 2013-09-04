@@ -95,7 +95,7 @@ public class SimulateStateMachine extends
 
 	};
 
-	public void enterState(StackFrame parent, State st) {
+	private void enterState(StackFrame parent, State st) {
 		StackFrame ctx = parent.newFrame(st);
 		if (st.getEntry() != null) {
 			ctx.setCurrentInstruction(st.getEntry());
@@ -143,14 +143,6 @@ public class SimulateStateMachine extends
 				 */
 				StackFrame vertexFrame = host.newFrame(t.getTarget());
 
-			} else {
-				/*
-				 * quit transition and go up to the state machine.
-				 */
-				Variable possibleTransitions = host.getParentStack()
-						.getOrCreateVariable(SM_ACTIVETRANSITIONS);
-				possibleTransitions.getElements().remove(t);
-				host.popFrame();
 			}
 
 		}
@@ -160,6 +152,18 @@ public class SimulateStateMachine extends
 			 * TODO : move the behavior pointer forward.
 			 */
 			StackFrame parentFrame = host.popFrame();
+			if (parentFrame.getExecutionEnvironment() instanceof Transition) {
+				Transition t = (Transition) parentFrame
+						.getExecutionEnvironment();
+				/*
+				 * quit transition and go up to the state machine.
+				 */
+				Variable possibleTransitions = parentFrame.getParentStack()
+						.getOrCreateVariable(SM_ACTIVETRANSITIONS);
+				possibleTransitions.getElements().remove(t);
+				host.popFrame();
+
+			}
 			if (parentFrame.getParentStack().getExecutionEnvironment() instanceof StateMachine) {
 				Variable possibleTransitions = parentFrame.getParentStack()
 						.getOrCreateVariable(SM_ACTIVETRANSITIONS);
@@ -167,6 +171,14 @@ public class SimulateStateMachine extends
 			}
 
 		}
+		/*
+		 * always add a "this" variable for the current execution context
+		 */
+		Variable currentExecutionContext = host.getParent().getTopStackFrame().getOrCreateVariable("this");
+		currentExecutionContext.getElements().clear();
+		currentExecutionContext.getElements().add(host.getExecutionEnvironment());
+		
+
 	}
 
 	@Override
