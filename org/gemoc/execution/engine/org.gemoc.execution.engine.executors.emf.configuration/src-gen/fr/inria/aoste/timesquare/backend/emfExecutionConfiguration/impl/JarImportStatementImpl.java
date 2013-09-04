@@ -59,8 +59,9 @@ public class JarImportStatementImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.JAR_IMPORT_STATEMENT__PATH_TO_JAR:
                 return this.getPathToJar();
@@ -73,8 +74,9 @@ public class JarImportStatementImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public boolean eIsSet(int featureID) {
+	public boolean eIsSet(int featureID) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.JAR_IMPORT_STATEMENT__PATH_TO_JAR:
                 return JarImportStatementImpl.PATH_TO_JAR_EDEFAULT == null ? this.pathToJar != null
@@ -88,8 +90,9 @@ public class JarImportStatementImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public void eSet(int featureID, Object newValue) {
+	public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.JAR_IMPORT_STATEMENT__PATH_TO_JAR:
                 this.setPathToJar((String) newValue);
@@ -103,8 +106,9 @@ public class JarImportStatementImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    protected EClass eStaticClass() {
+	protected EClass eStaticClass() {
         return EmfExecutionConfigurationPackage.Literals.JAR_IMPORT_STATEMENT;
     }
 
@@ -113,8 +117,9 @@ public class JarImportStatementImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public void eUnset(int featureID) {
+	public void eUnset(int featureID) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.JAR_IMPORT_STATEMENT__PATH_TO_JAR:
                 this.setPathToJar(JarImportStatementImpl.PATH_TO_JAR_EDEFAULT);
@@ -128,8 +133,9 @@ public class JarImportStatementImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public String getPathToJar() {
+	public String getPathToJar() {
         return this.pathToJar;
     }
 
@@ -138,8 +144,9 @@ public class JarImportStatementImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public void setPathToJar(String newPathToJar) {
+	public void setPathToJar(String newPathToJar) {
         String oldPathToJar = this.pathToJar;
         this.pathToJar = newPathToJar;
         if (this.eNotificationRequired()) {
@@ -153,8 +160,9 @@ public class JarImportStatementImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public String toString() {
+	public String toString() {
         if (this.eIsProxy()) {
             return super.toString();
         }

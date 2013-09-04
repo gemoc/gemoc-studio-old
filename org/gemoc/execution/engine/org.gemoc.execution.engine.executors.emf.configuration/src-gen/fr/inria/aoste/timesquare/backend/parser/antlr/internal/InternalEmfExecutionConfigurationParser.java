@@ -306,12 +306,12 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalAnt
     }
 
     // $ANTLR end "entryRuleJarImportStatement"
-    @Override
+    
     protected String getFirstRuleName() {
         return "EMFExecutionConfiguration";
     }
 
-    @Override
+    
     protected EmfExecutionConfigurationGrammarAccess getGrammarAccess() {
         return this.grammarAccess;
     }

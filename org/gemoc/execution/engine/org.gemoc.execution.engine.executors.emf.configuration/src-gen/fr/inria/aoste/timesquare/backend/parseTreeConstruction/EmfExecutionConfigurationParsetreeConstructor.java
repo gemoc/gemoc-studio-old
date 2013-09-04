@@ -25,7 +25,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -35,7 +35,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public AbstractToken createFollowerAfterReturn(AbstractToken next, int actIndex, int index,
                 IEObjectConsumer inst) {
             if (this.value == inst.getEObject() && !inst.isConsumed()) {
@@ -53,13 +53,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Assignment getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess
                     .getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_2();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if ((this.value = this.eObjectConsumer.getConsumable("forcedClockMappings", false)) == null) {
                 return null;
@@ -100,7 +100,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -114,13 +114,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Group getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess
                     .getEMFExecutionConfigurationAccess().getGroup();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if (this.getEObject().eClass() != EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess
                     .getEMFExecutionConfigurationRule().getType().getClassifier()) {
@@ -139,7 +139,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -149,7 +149,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public AbstractToken createFollowerAfterReturn(AbstractToken next, int actIndex, int index,
                 IEObjectConsumer inst) {
             if (this.value == inst.getEObject() && !inst.isConsumed()) {
@@ -164,13 +164,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Assignment getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess
                     .getEMFExecutionConfigurationAccess().getImportsAssignment_0();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if ((this.value = this.eObjectConsumer.getConsumable("imports", true)) == null) {
                 return null;
@@ -200,7 +200,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -210,7 +210,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public AbstractToken createFollowerAfterReturn(AbstractToken next, int actIndex, int index,
                 IEObjectConsumer inst) {
             if (this.value == inst.getEObject() && !inst.isConsumed()) {
@@ -225,13 +225,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Assignment getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess
                     .getEMFExecutionConfigurationAccess().getJarImportStatementAssignment_1();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if ((this.value = this.eObjectConsumer.getConsumable("jarImportStatement", true)) == null) {
                 return null;
@@ -262,7 +262,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -272,7 +272,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getForcedClockMappingAccess()
                     .getAvoidKeyword_5();
@@ -288,7 +288,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -298,13 +298,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Assignment getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getForcedClockMappingAccess()
                     .getClockAssignment_1();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if ((this.value = this.eObjectConsumer.getConsumable("clock", true)) == null) {
                 return null;
@@ -334,7 +334,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -344,13 +344,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Assignment getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getForcedClockMappingAccess()
                     .getClockToAvoidWhenTrueAssignment_6();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if ((this.value = this.eObjectConsumer.getConsumable("clockToAvoidWhenTrue", true)) == null) {
                 return null;
@@ -383,7 +383,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -393,7 +393,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getForcedClockMappingAccess()
                     .getDSAKeyword_2();
@@ -418,7 +418,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -428,13 +428,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Group getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getForcedClockMappingAccess()
                     .getGroup();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if (this.getEObject().eClass() != EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess
                     .getForcedClockMappingRule().getType().getClassifier()) {
@@ -453,7 +453,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -463,7 +463,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getForcedClockMappingAccess()
                     .getReturnsKeyword_3();
@@ -479,7 +479,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -490,7 +490,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getForcedClockMappingAccess()
                     .getSemicolonKeyword_7();
@@ -506,7 +506,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -516,7 +516,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getForcedClockMappingAccess()
                     .getTrueKeyword_4();
@@ -532,7 +532,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 default:
@@ -540,7 +540,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getForcedClockMappingAccess()
                     .getWhenKeyword_0();
@@ -563,7 +563,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -573,13 +573,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Group getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getImportStatementAccess()
                     .getGroup();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if (this.getEObject().eClass() != EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess
                     .getImportStatementRule().getType().getClassifier()) {
@@ -598,7 +598,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 default:
@@ -606,7 +606,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getImportStatementAccess()
                     .getImportKeyword_0();
@@ -622,7 +622,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -632,13 +632,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Assignment getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getImportStatementAccess()
                     .getImportURIAssignment_1();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if ((this.value = this.eObjectConsumer.getConsumable("importURI", true)) == null) {
                 return null;
@@ -667,7 +667,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -677,7 +677,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getImportStatementAccess()
                     .getSemicolonKeyword_2();
@@ -700,7 +700,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -710,13 +710,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Group getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getJarImportStatementAccess()
                     .getGroup();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if (this.getEObject().eClass() != EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess
                     .getJarImportStatementRule().getType().getClassifier()) {
@@ -735,7 +735,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 default:
@@ -743,7 +743,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getJarImportStatementAccess()
                     .getImportJarKeyword_0();
@@ -759,7 +759,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -769,13 +769,13 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Assignment getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getJarImportStatementAccess()
                     .getPathToJarAssignment_1();
         }
 
-        @Override
+        
         public IEObjectConsumer tryConsume() {
             if ((this.value = this.eObjectConsumer.getConsumable("pathToJar", true)) == null) {
                 return null;
@@ -804,7 +804,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -814,7 +814,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             }
         }
 
-        @Override
+        
         public Keyword getGrammarElement() {
             return EmfExecutionConfigurationParsetreeConstructor.this.grammarAccess.getJarImportStatementAccess()
                     .getSemicolonKeyword_2();
@@ -827,7 +827,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
             super(inst);
         }
 
-        @Override
+        
         public AbstractToken createFollower(int index, IEObjectConsumer inst) {
             switch (index) {
                 case 0:
@@ -847,7 +847,7 @@ public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParse
     @Inject
     private EmfExecutionConfigurationGrammarAccess grammarAccess;
 
-    @Override
+    
     protected AbstractToken getRootToken(IEObjectConsumer inst) {
         return new ThisRootNode(inst);
     }

@@ -102,7 +102,7 @@ public abstract class AbstractEmfExecutionConfigurationRuntimeModule extends Def
         return fr.inria.aoste.timesquare.backend.parser.antlr.internal.InternalEmfExecutionConfigurationLexer.class;
     }
 
-    @Override
+    
     public void configure(Binder binder) {
         this.properties = this.tryBindProperties(binder,
                 "fr/inria/aoste/timesquare/backend/EmfExecutionConfiguration.properties");

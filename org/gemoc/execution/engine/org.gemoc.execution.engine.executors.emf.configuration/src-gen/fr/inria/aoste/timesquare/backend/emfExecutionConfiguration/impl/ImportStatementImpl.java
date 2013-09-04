@@ -59,8 +59,9 @@ public class ImportStatementImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    
     @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.IMPORT_STATEMENT__IMPORT_URI:
                 return this.getImportURI();
@@ -73,8 +74,9 @@ public class ImportStatementImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    
     @Override
-    public boolean eIsSet(int featureID) {
+	public boolean eIsSet(int featureID) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.IMPORT_STATEMENT__IMPORT_URI:
                 return ImportStatementImpl.IMPORT_URI_EDEFAULT == null ? this.importURI != null
@@ -88,8 +90,9 @@ public class ImportStatementImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    
     @Override
-    public void eSet(int featureID, Object newValue) {
+	public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.IMPORT_STATEMENT__IMPORT_URI:
                 this.setImportURI((String) newValue);
@@ -103,8 +106,9 @@ public class ImportStatementImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    
     @Override
-    protected EClass eStaticClass() {
+	protected EClass eStaticClass() {
         return EmfExecutionConfigurationPackage.Literals.IMPORT_STATEMENT;
     }
 
@@ -113,8 +117,9 @@ public class ImportStatementImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    
     @Override
-    public void eUnset(int featureID) {
+	public void eUnset(int featureID) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.IMPORT_STATEMENT__IMPORT_URI:
                 this.setImportURI(ImportStatementImpl.IMPORT_URI_EDEFAULT);
@@ -128,8 +133,9 @@ public class ImportStatementImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    
     @Override
-    public String getImportURI() {
+	public String getImportURI() {
         return this.importURI;
     }
 
@@ -138,8 +144,9 @@ public class ImportStatementImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    
     @Override
-    public void setImportURI(String newImportURI) {
+	public void setImportURI(String newImportURI) {
         String oldImportURI = this.importURI;
         this.importURI = newImportURI;
         if (this.eNotificationRequired()) {
@@ -153,8 +160,9 @@ public class ImportStatementImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    
     @Override
-    public String toString() {
+	public String toString() {
         if (this.eIsProxy()) {
             return super.toString();
         }

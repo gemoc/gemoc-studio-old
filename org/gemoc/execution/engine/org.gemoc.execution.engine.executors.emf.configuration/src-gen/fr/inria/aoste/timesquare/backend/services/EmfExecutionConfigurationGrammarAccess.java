@@ -78,8 +78,9 @@ public class EmfExecutionConfigurationGrammarAccess extends AbstractGrammarEleme
         // EMFExecutionConfiguration:
         // imports+=ImportStatement+ jarImportStatement=JarImportStatement
         // forcedClockMappings+=ForcedClockMapping*;
+        
         @Override
-        public ParserRule getRule() {
+		public ParserRule getRule() {
             return this.rule;
         }
     }
@@ -159,8 +160,9 @@ public class EmfExecutionConfigurationGrammarAccess extends AbstractGrammarEleme
         // ForcedClockMapping:
         // "When" clock=[TimeModel::Clock] "DSA" "returns" "true" "avoid"
         // clockToAvoidWhenTrue=[TimeModel::Clock] ";";
+        
         @Override
-        public ParserRule getRule() {
+		public ParserRule getRule() {
             return this.rule;
         }
 
@@ -212,8 +214,9 @@ public class EmfExecutionConfigurationGrammarAccess extends AbstractGrammarEleme
 
         // ImportStatement:
         // "import" importURI=STRING ";";
+        
         @Override
-        public ParserRule getRule() {
+		public ParserRule getRule() {
             return this.rule;
         }
 
@@ -255,8 +258,9 @@ public class EmfExecutionConfigurationGrammarAccess extends AbstractGrammarEleme
 
         // JarImportStatement:
         // "importJar" pathToJar=STRING ";";
+        
         @Override
-        public ParserRule getRule() {
+		public ParserRule getRule() {
             return this.rule;
         }
 
@@ -311,8 +315,9 @@ public class EmfExecutionConfigurationGrammarAccess extends AbstractGrammarEleme
         return this.getForcedClockMappingAccess().getRule();
     }
 
+    
     @Override
-    public Grammar getGrammar() {
+	public Grammar getGrammar() {
         return this.grammar;
     }
 

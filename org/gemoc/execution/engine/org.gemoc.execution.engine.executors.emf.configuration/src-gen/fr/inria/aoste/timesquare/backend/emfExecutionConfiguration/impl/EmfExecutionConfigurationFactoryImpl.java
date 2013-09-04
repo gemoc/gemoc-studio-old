@@ -67,8 +67,9 @@ public class EmfExecutionConfigurationFactoryImpl extends EFactoryImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EObject create(EClass eClass) {
+	public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case EmfExecutionConfigurationPackage.EMF_EXECUTION_CONFIGURATION:
                 return this.createEMFExecutionConfiguration();
@@ -88,8 +89,9 @@ public class EmfExecutionConfigurationFactoryImpl extends EFactoryImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EMFExecutionConfiguration createEMFExecutionConfiguration() {
+	public EMFExecutionConfiguration createEMFExecutionConfiguration() {
         EMFExecutionConfigurationImpl emfExecutionConfiguration = new EMFExecutionConfigurationImpl();
         return emfExecutionConfiguration;
     }
@@ -99,8 +101,9 @@ public class EmfExecutionConfigurationFactoryImpl extends EFactoryImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public ForcedClockMapping createForcedClockMapping() {
+	public ForcedClockMapping createForcedClockMapping() {
         ForcedClockMappingImpl forcedClockMapping = new ForcedClockMappingImpl();
         return forcedClockMapping;
     }
@@ -110,8 +113,9 @@ public class EmfExecutionConfigurationFactoryImpl extends EFactoryImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public ImportStatement createImportStatement() {
+	public ImportStatement createImportStatement() {
         ImportStatementImpl importStatement = new ImportStatementImpl();
         return importStatement;
     }
@@ -121,8 +125,9 @@ public class EmfExecutionConfigurationFactoryImpl extends EFactoryImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public JarImportStatement createJarImportStatement() {
+	public JarImportStatement createJarImportStatement() {
         JarImportStatementImpl jarImportStatement = new JarImportStatementImpl();
         return jarImportStatement;
     }
@@ -132,8 +137,9 @@ public class EmfExecutionConfigurationFactoryImpl extends EFactoryImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EmfExecutionConfigurationPackage getEmfExecutionConfigurationPackage() {
+	public EmfExecutionConfigurationPackage getEmfExecutionConfigurationPackage() {
         return (EmfExecutionConfigurationPackage) this.getEPackage();
     }
 

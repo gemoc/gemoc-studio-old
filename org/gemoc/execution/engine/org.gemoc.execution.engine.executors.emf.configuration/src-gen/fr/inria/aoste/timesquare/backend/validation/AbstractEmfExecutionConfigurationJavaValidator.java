@@ -8,8 +8,9 @@ import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 
 public class AbstractEmfExecutionConfigurationJavaValidator extends AbstractDeclarativeValidator {
 
+    
     @Override
-    protected List<EPackage> getEPackages() {
+	protected List<EPackage> getEPackages() {
         List<EPackage> result = new ArrayList<EPackage>();
         result.add(fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EmfExecutionConfigurationPackage.eINSTANCE);
         return result;

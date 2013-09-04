@@ -124,8 +124,9 @@ public class EmfExecutionConfigurationSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject)
      * @generated
      */
+    
     @Override
-    public T defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
         return null;
     }
 
@@ -138,8 +139,9 @@ public class EmfExecutionConfigurationSwitch<T> extends Switch<T> {
      *         call.
      * @generated
      */
+    
     @Override
-    protected T doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
         switch (classifierID) {
             case EmfExecutionConfigurationPackage.EMF_EXECUTION_CONFIGURATION: {
                 EMFExecutionConfiguration emfExecutionConfiguration = (EMFExecutionConfiguration) theEObject;
@@ -186,8 +188,9 @@ public class EmfExecutionConfigurationSwitch<T> extends Switch<T> {
      * @return whether this is a switch for the given package.
      * @generated
      */
+    
     @Override
-    protected boolean isSwitchFor(EPackage ePackage) {
+	protected boolean isSwitchFor(EPackage ePackage) {
         return ePackage == EmfExecutionConfigurationSwitch.modelPackage;
     }
 

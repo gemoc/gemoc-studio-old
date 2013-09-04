@@ -23,7 +23,7 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.ccslkernel.library.xtext;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine,
  org.gemoc.execution.engine.core,
  org.gemoc.execution.engine.core.impl.emf.ecl.ccsl

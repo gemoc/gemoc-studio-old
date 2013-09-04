@@ -179,8 +179,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EClass getEMFExecutionConfiguration() {
+	public EClass getEMFExecutionConfiguration() {
         return this.emfExecutionConfigurationEClass;
     }
 
@@ -189,8 +190,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EReference getEMFExecutionConfiguration_ForcedClockMappings() {
+	public EReference getEMFExecutionConfiguration_ForcedClockMappings() {
         return (EReference) this.emfExecutionConfigurationEClass.getEStructuralFeatures().get(2);
     }
 
@@ -199,8 +201,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EReference getEMFExecutionConfiguration_Imports() {
+	public EReference getEMFExecutionConfiguration_Imports() {
         return (EReference) this.emfExecutionConfigurationEClass.getEStructuralFeatures().get(0);
     }
 
@@ -209,8 +212,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EReference getEMFExecutionConfiguration_JarImportStatement() {
+	public EReference getEMFExecutionConfiguration_JarImportStatement() {
         return (EReference) this.emfExecutionConfigurationEClass.getEStructuralFeatures().get(1);
     }
 
@@ -219,8 +223,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EmfExecutionConfigurationFactory getEmfExecutionConfigurationFactory() {
+	public EmfExecutionConfigurationFactory getEmfExecutionConfigurationFactory() {
         return (EmfExecutionConfigurationFactory) this.getEFactoryInstance();
     }
 
@@ -229,8 +234,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EClass getForcedClockMapping() {
+	public EClass getForcedClockMapping() {
         return this.forcedClockMappingEClass;
     }
 
@@ -239,8 +245,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EReference getForcedClockMapping_Clock() {
+	public EReference getForcedClockMapping_Clock() {
         return (EReference) this.forcedClockMappingEClass.getEStructuralFeatures().get(0);
     }
 
@@ -249,8 +256,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EReference getForcedClockMapping_ClockToAvoidWhenTrue() {
+	public EReference getForcedClockMapping_ClockToAvoidWhenTrue() {
         return (EReference) this.forcedClockMappingEClass.getEStructuralFeatures().get(1);
     }
 
@@ -259,8 +267,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EClass getImportStatement() {
+	public EClass getImportStatement() {
         return this.importStatementEClass;
     }
 
@@ -269,8 +278,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EAttribute getImportStatement_ImportURI() {
+	public EAttribute getImportStatement_ImportURI() {
         return (EAttribute) this.importStatementEClass.getEStructuralFeatures().get(0);
     }
 
@@ -279,8 +289,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EClass getJarImportStatement() {
+	public EClass getJarImportStatement() {
         return this.jarImportStatementEClass;
     }
 
@@ -289,8 +300,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
      * 
      * @generated
      */
+    
     @Override
-    public EAttribute getJarImportStatement_PathToJar() {
+	public EAttribute getJarImportStatement_PathToJar() {
         return (EAttribute) this.jarImportStatementEClass.getEStructuralFeatures().get(0);
     }
 

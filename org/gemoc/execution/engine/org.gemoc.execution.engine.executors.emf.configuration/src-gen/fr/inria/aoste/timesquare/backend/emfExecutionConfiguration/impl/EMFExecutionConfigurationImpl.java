@@ -108,8 +108,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
+    
     @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.EMF_EXECUTION_CONFIGURATION__IMPORTS:
                 return this.getImports();
@@ -126,8 +127,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
+    
     @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.EMF_EXECUTION_CONFIGURATION__IMPORTS:
                 return ((InternalEList<?>) this.getImports()).basicRemove(otherEnd, msgs);
@@ -144,8 +146,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
+    
     @Override
-    public boolean eIsSet(int featureID) {
+	public boolean eIsSet(int featureID) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.EMF_EXECUTION_CONFIGURATION__IMPORTS:
                 return this.imports != null && !this.imports.isEmpty();
@@ -162,8 +165,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
-    @SuppressWarnings("unchecked")
     @Override
+	@SuppressWarnings("unchecked")
+    
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.EMF_EXECUTION_CONFIGURATION__IMPORTS:
@@ -186,8 +190,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
+    
     @Override
-    protected EClass eStaticClass() {
+	protected EClass eStaticClass() {
         return EmfExecutionConfigurationPackage.Literals.EMF_EXECUTION_CONFIGURATION;
     }
 
@@ -196,8 +201,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
+    
     @Override
-    public void eUnset(int featureID) {
+	public void eUnset(int featureID) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.EMF_EXECUTION_CONFIGURATION__IMPORTS:
                 this.getImports().clear();
@@ -217,8 +223,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
+    
     @Override
-    public EList<ForcedClockMapping> getForcedClockMappings() {
+	public EList<ForcedClockMapping> getForcedClockMappings() {
         if (this.forcedClockMappings == null) {
             this.forcedClockMappings = new EObjectContainmentEList<ForcedClockMapping>(ForcedClockMapping.class, this,
                     EmfExecutionConfigurationPackage.EMF_EXECUTION_CONFIGURATION__FORCED_CLOCK_MAPPINGS);
@@ -231,8 +238,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
+    
     @Override
-    public EList<ImportStatement> getImports() {
+	public EList<ImportStatement> getImports() {
         if (this.imports == null) {
             this.imports = new EObjectContainmentEList<ImportStatement>(ImportStatement.class, this,
                     EmfExecutionConfigurationPackage.EMF_EXECUTION_CONFIGURATION__IMPORTS);
@@ -245,8 +253,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
+    
     @Override
-    public JarImportStatement getJarImportStatement() {
+	public JarImportStatement getJarImportStatement() {
         return this.jarImportStatement;
     }
 
@@ -255,8 +264,9 @@ public class EMFExecutionConfigurationImpl extends MinimalEObjectImpl.Container 
      * 
      * @generated
      */
+    
     @Override
-    public void setJarImportStatement(JarImportStatement newJarImportStatement) {
+	public void setJarImportStatement(JarImportStatement newJarImportStatement) {
         if (newJarImportStatement != this.jarImportStatement) {
             NotificationChain msgs = null;
             if (this.jarImportStatement != null) {

@@ -9,8 +9,9 @@ import org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider;
 
 public class EmfExecutionConfigurationAntlrTokenFileProvider implements IAntlrTokenFileProvider {
 
+    
     @Override
-    public InputStream getAntlrTokenFile() {
+	public InputStream getAntlrTokenFile() {
         ClassLoader classLoader = this.getClass().getClassLoader();
         return classLoader
                 .getResourceAsStream("fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.tokens");
