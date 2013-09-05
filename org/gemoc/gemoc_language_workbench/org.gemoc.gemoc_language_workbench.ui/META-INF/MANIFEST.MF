@@ -18,5 +18,6 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: k2.standard,
+ org.eclipse.core.filesystem,
  org.kermeta.kp.wizard.eclipse,
  org.kermeta.kp.wizard.eclipse.wizards
