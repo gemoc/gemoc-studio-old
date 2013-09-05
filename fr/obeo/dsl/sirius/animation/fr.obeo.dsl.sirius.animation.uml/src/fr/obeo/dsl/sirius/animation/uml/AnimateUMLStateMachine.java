@@ -40,7 +40,6 @@ public class AnimateUMLStateMachine implements Animator {
 			thread1.setName(from.getName() + " execution");
 
 			StackFrame curStack = AnimationFactory.eINSTANCE.createStackFrame();
-			curStack.setName(from.getName() + " execution stack");
 			thread1.getStackFrames().add(curStack);
 			thread1.setTopStackFrame(curStack);
 			curStack.setExecutionEnvironment(from);
@@ -49,18 +48,8 @@ public class AnimateUMLStateMachine implements Animator {
 			self.setName("statemachine");
 			self.getElements().add(from);
 			curStack.getVariables().add(self);
+			curStack.setCurrentInstruction(from);
 
-			Iterator<Pseudostate> it = Iterators.filter(
-					Iterators.filter(from.eAllContents(), Pseudostate.class),
-					INITIAL_STATE);
-
-			Variable transitions = curStack
-					.getOrCreateVariable(SM_ACTIVETRANSITIONS);
-			if (it.hasNext()) {
-				Pseudostate st = it.next();
-				transitions.getElements().addAll(st.getOutgoings());
-				curStack.setCurrentInstruction(st);
-			}
 			Variable modified = curStack.getOrCreateVariable("modified");
 
 			return thread1;
@@ -68,6 +57,12 @@ public class AnimateUMLStateMachine implements Animator {
 		}
 
 	};
+
+	/*
+	 * steping over a statemachine SO : first instruction : initial state.
+	 * update possible next states SO : pick the next state, add new possible
+	 * states.
+	 */
 
 	private void enterState(StackFrame parent, State st) {
 		StackFrame ctx = parent.newFrame(st);
@@ -94,63 +89,53 @@ public class AnimateUMLStateMachine implements Animator {
 	}
 
 	public void stepOver(StackFrame host) {
+
+		/*
+		 * SM / SM -> SM/InitialState + candidate transitions -> SM/une
+		 * transition + candidate transition-- -> SM/State + candidate
+		 * transitions++ -> SM/une transition + candidate transition--
+		 */
 		if (host.getExecutionEnvironment() instanceof StateMachine) {
 			Variable possibleTransitions = host
 					.getOrCreateVariable(SM_ACTIVETRANSITIONS);
-			if (possibleTransitions.getElements().size() > 0) {
-				Iterator<Transition> it = Iterators.filter(possibleTransitions
-						.getElements().iterator(), Transition.class);
+
+			if (host.getCurrentInstruction() instanceof Vertex) {
+				Vertex v = (Vertex) host.getCurrentInstruction();
+				possibleTransitions.getElements().addAll(v.getOutgoings());
+				if (possibleTransitions.getElements().size() > 0) {
+					Transition t = (Transition) possibleTransitions
+							.getElements().get(0);
+					host.setCurrentInstruction(t);
+					possibleTransitions.getElements().remove(t);
+				}
+			} else if (host.getCurrentInstruction() instanceof Transition) {
+				Transition t = (Transition) host.getCurrentInstruction();
+				host.setCurrentInstruction(t.getTarget());
+			} else if (host.getCurrentInstruction() != null) {
+				Iterator<Pseudostate> it = Iterators.filter(Iterators.filter(
+						host.getCurrentInstruction().eAllContents(),
+						Pseudostate.class), INITIAL_STATE);
 				if (it.hasNext()) {
-					Transition nxt = it.next();
-					StackFrame transitionFrame = host.newFrame(nxt);
+					host.setCurrentInstruction(it.next());
 				}
 			}
-		}
-		if (host.getExecutionEnvironment() instanceof Transition) {
-			Transition t = (Transition) host.getExecutionEnvironment();
-			if (host.getCurrentInstruction() == t
-					&& t.getTarget() instanceof Vertex) {
-				/*
-				 * we did not execute the state already.
-				 */
-				StackFrame vertexFrame = host.newFrame(t.getTarget());
 
-			}
-
-		}
-		if (host.getExecutionEnvironment() instanceof Vertex) {
-			Vertex state = (Vertex) host.getExecutionEnvironment();
 			/*
-			 * TODO : move the behavior pointer forward.
+			 * always add a "this" variable for the current execution context
 			 */
-			StackFrame parentFrame = host.popFrame();
-			if (parentFrame.getExecutionEnvironment() instanceof Transition) {
-				Transition t = (Transition) parentFrame
-						.getExecutionEnvironment();
-				/*
-				 * quit transition and go up to the state machine.
-				 */
-				Variable possibleTransitions = parentFrame.getParentStack()
-						.getOrCreateVariable(SM_ACTIVETRANSITIONS);
-				possibleTransitions.getElements().remove(t);
-				host.popFrame();
+			Variable currentExecutionContext = host.getParent()
+					.getTopStackFrame().getOrCreateVariable("this");
+			currentExecutionContext.getElements().clear();
+			currentExecutionContext.getElements().add(
+					host.getExecutionEnvironment());
 
-			}
-			if (parentFrame.getParentStack().getExecutionEnvironment() instanceof StateMachine) {
-				Variable possibleTransitions = parentFrame.getParentStack()
-						.getOrCreateVariable(SM_ACTIVETRANSITIONS);
-				possibleTransitions.getElements().addAll(state.getOutgoings());
-			}
+			Variable instruction = host.getParent().getTopStackFrame()
+					.getOrCreateVariable("current");
+			currentExecutionContext.getElements().clear();
+			currentExecutionContext.getElements().add(
+					host.getCurrentInstruction());
 
 		}
-		/*
-		 * always add a "this" variable for the current execution context
-		 */
-		Variable currentExecutionContext = host.getParent().getTopStackFrame()
-				.getOrCreateVariable("this");
-		currentExecutionContext.getElements().clear();
-		currentExecutionContext.getElements().add(
-				host.getExecutionEnvironment());
 
 	}
 
