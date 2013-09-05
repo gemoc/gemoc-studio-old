@@ -44,10 +44,15 @@
             <url>http://community.polarion.com/projects/subversive/download/eclipse/3.0/juno-site/</url>
         </repository>
         
-        <repository>
+       <!--  <repository>
             <id>kermeta2-latest-stable</id>
             <layout>p2</layout>
             <url>http://www.kermeta.org/k2/update/</url>
+        </repository>-->
+        <repository>
+            <id>kermeta2-latest-release-candidate</id>
+            <layout>p2</layout>
+            <url>http://www.kermeta.org/k2/update_2.1.1.RC/</url>
         </repository>	
         <repository>
             <id>kermeta3</id>

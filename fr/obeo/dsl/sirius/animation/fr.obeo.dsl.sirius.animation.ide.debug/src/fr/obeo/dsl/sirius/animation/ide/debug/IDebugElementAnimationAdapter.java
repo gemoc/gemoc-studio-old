@@ -38,12 +38,12 @@ public class IDebugElementAnimationAdapter extends AdapterImpl implements
 		IDebugElement {
 	protected ILaunch launch;
 
-	protected DebugModelToEclipseDebugAdapterFactory factory;
+	protected AnimatorEclipseDebugIntegration factory;
 
 	private IDebugTarget debugTarget;
 
 	public IDebugElementAnimationAdapter(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory) {
+			AnimatorEclipseDebugIntegration factory) {
 		super();
 		this.launch = launch;
 		this.factory = factory;

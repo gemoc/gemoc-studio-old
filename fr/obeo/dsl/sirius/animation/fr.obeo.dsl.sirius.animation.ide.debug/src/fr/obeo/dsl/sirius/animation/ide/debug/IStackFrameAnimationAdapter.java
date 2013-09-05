@@ -34,7 +34,7 @@ public class IStackFrameAnimationAdapter extends IDebugElementAnimationAdapter
 		implements IStackFrame {
 
 	public IStackFrameAnimationAdapter(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory) {
+			AnimatorEclipseDebugIntegration factory) {
 		super(launch, factory);
 	}
 

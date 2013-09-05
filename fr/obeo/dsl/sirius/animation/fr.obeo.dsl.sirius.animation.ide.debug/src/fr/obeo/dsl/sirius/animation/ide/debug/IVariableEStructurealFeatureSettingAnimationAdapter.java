@@ -27,7 +27,7 @@ public class IVariableEStructurealFeatureSettingAnimationAdapter extends
 		IDebugElementAnimationAdapter implements IVariable {
 
 	public IVariableEStructurealFeatureSettingAnimationAdapter(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory) {
+			AnimatorEclipseDebugIntegration factory) {
 		super(launch, factory);
 	}
 

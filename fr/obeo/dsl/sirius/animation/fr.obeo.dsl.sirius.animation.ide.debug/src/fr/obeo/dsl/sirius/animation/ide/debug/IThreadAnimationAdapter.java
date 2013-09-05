@@ -33,7 +33,7 @@ public class IThreadAnimationAdapter extends IDebugElementAnimationAdapter
 		implements IThread {
 
 	public IThreadAnimationAdapter(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory) {
+			AnimatorEclipseDebugIntegration factory) {
 		super(launch, factory);
 	}
 

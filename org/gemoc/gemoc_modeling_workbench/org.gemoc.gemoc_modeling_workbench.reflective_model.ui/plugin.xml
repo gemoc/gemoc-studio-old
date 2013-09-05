@@ -171,7 +171,7 @@
           class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.wizards.CreateNewGemocModelingProject"
           icon="icons/IconeGemocModel-16.png"
           id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.wizards.CreateNewGemocModelingProject"
-          name="New Gemoc Modeling"
+          name="New Gemoc Modeling Project"
           project="true">
     </wizard>
  </extension>

@@ -34,7 +34,7 @@ public class IValueEListAdapter extends IDebugElementAnimationAdapter implements
 	private Object host;
 
 	public IValueEListAdapter(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory, Object object) {
+			AnimatorEclipseDebugIntegration factory, Object object) {
 		super(launch, factory);
 		this.host = object;
 	}

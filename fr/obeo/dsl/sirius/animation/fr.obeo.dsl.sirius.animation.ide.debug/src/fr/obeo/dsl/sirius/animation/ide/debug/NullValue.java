@@ -26,7 +26,7 @@ import org.eclipse.debug.core.model.IVariable;
 public class NullValue extends IDebugElementAnimationAdapter implements IValue {
 
 	public NullValue(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory) {
+			AnimatorEclipseDebugIntegration factory) {
 		super(launch, factory);
 	}
 

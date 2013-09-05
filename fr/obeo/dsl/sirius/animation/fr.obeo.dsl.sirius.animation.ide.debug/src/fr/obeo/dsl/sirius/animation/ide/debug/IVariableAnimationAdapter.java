@@ -32,7 +32,7 @@ public class IVariableAnimationAdapter extends IDebugElementAnimationAdapter
 	private boolean hasChanged = false;
 
 	public IVariableAnimationAdapter(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory) {
+			AnimatorEclipseDebugIntegration factory) {
 		super(launch, factory);
 	}
 
