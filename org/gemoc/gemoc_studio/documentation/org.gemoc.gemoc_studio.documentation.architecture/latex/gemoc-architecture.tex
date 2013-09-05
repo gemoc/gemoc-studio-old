@@ -153,19 +153,15 @@ We can identify 3 main groups of components and artefacts in the studio.
 %Start of user code ArchitectureComponents
 
 %End of user code
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{AS Editor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:AS_Editor}
 %Start of user code AS Editor
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code AS EditorDescription
 
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_AS_Editor.png}
 \end{center}
@@ -179,45 +175,46 @@ This component port provides the following outputs:
 (see section~\ref{sec:Domain_Specific_Metamodel}.)
 \end{itemize}
 
-
+\subsubsection{Ecore Editor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{CCSL Library Editor}
-\label{sec:CCSL_Library_Editor}
-%Start of user code CCSL Library Editor
+\label{sec:Ecore_Editor}
+%Start of user code Ecore Editor
 
 %End of user code
-
-\subsubsection{Purpose}
-%Start of user code CCSL Library EditorDescription
-
+%Start of user code Ecore EditorDescription
+This component allows to create and edit an ecore model in order to specify the DSML domain concepts as planned by the WP1 process.
+\begin{figure}[h]
+	\begin{center}
+	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, width=1.0\linewidth]{../images/EcoreDiagramOverview.png}
+	\caption{Ecore editor screenshot}
+	\end{center}
+\end{figure}
 %End of user code 
-
 \begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_CCSL_Library_Editor.png}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Ecore_Editor.png}
 \end{center}
 
 
 This component port provides the following outputs:
 \begin{itemize}
-  \item \textbf{CCSL Model} :
-%Start of user code CCSL Model_output_Description for CCSL Library Editor
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_output_Description for Ecore Editor
+This component produces an ecore model.
 %End of user code 
-(see section~\ref{sec:CCSL_Model}.)
+(see section~\ref{sec:Domain_Specific_Metamodel}.)
 \end{itemize}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{CEP Engine}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:CEP_Engine}
 %Start of user code CEP Engine
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code CEP EngineDescription
 
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_CEP_Engine.png}
 \end{center}
@@ -225,18 +222,13 @@ This component port provides the following outputs:
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Composition Operator Applicator}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Composition_Operator_Applicator}
 %Start of user code Composition Operator Applicator
-
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Composition Operator ApplicatorDescription
-
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Composition_Operator_Applicator.png}
 \end{center}
@@ -251,18 +243,13 @@ This component port requires the following inputs:
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Composition Operator Editor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Composition_Operator_Editor}
 %Start of user code Composition Operator Editor
-
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Composition Operator EditorDescription
-
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Composition_Operator_Editor.png}
 \end{center}
@@ -277,185 +264,17 @@ This component port provides the following outputs:
 \end{itemize}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{DSA Compiler}
-\label{sec:DSA_Compiler}
-%Start of user code DSA Compiler
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code DSA CompilerDescription
-The DSA compiler is in charge of taking a model a DSA and produce the bytecode that implement the corresponding actions.
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSA_Compiler.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{DSA Model} :
-%Start of user code DSA Model_input_Description for DSA Compiler
-A model of DSA.
-%End of user code 
-(see section~\ref{sec:DSA_Model}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Metamodel Byte Code Extension} :
-%Start of user code Domain Specific Metamodel Byte Code Extension_output_Description for DSA Compiler
-The bytecode implementing the actions in the DSA.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Metamodel_Byte_Code_Extension}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{DSA Editor}
-\label{sec:DSA_Editor}
-%Start of user code DSA Editor
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code DSA EditorDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSA_Editor.png}
-\end{center}
-
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{DSA Model} :
-%Start of user code DSA Model_output_Description for DSA Editor
-%End of user code 
-(see section~\ref{sec:DSA_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{DSA-MOCC Map Editor}
-\label{sec:DSA-MOCC_Map_Editor}
-%Start of user code DSA-MOCC Map Editor
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code DSA-MOCC Map EditorDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSA-MOCC_Map_Editor.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{DSA Model} :
-%Start of user code DSA Model_input_Description for DSA-MOCC Map Editor
-%End of user code 
-(see section~\ref{sec:DSA_Model}.)
-  \item \textbf{MOCC Model} :
-%Start of user code MOCC Model_input_Description for DSA-MOCC Map Editor
-%End of user code 
-(see section~\ref{sec:MOCC_Model}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{DSE Model} :
-%Start of user code DSE Model_output_Description for DSA-MOCC Map Editor
-%End of user code 
-(see section~\ref{sec:DSE_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{ECL Editor}
-\label{sec:ECL_Editor}
-%Start of user code ECL Editor
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code ECL EditorDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_ECL_Editor.png}
-\end{center}
-
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{ECL Model} :
-%Start of user code ECL Model_output_Description for ECL Editor
-%End of user code 
-(see section~\ref{sec:ECL_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{EMF Gen Model}
-\label{sec:EMF_Gen_Model}
-%Start of user code EMF Gen Model
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code EMF Gen ModelDescription
-This component is in charge of generating the bytecode implementing the structure of the Domain Specific Metamodel. Eclipse Modeling Framework provides such component. It uses the Domain Specific metamodel provided as an ecore model and a genmodel configuration.
-\begin{figure}[h]
-	\begin{center}
-	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, width=1.0\linewidth]{../images/EMFGenModel.png}
-	\caption{Gemomodel generation screenshot}
-	\end{center}
-\end{figure}
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_EMF_Gen_Model.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Metamodel} :
-%Start of user code Domain Specific Metamodel_input_Description for EMF Gen Model
-An ecore model representing the domain concepts of the user DSML.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Metamodel}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Metamodel Byte Code} :
-%Start of user code Domain Specific Metamodel Byte Code_output_Description for EMF Gen Model
-The bytecode that is able to support the serialization and deserialization of models conforming to the Domain Specific Metamodel.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Metamodel_Byte_Code}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{EMF Tree Editor Generator}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:EMF_Tree_Editor_Generator}
 %Start of user code EMF Tree Editor Generator
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code EMF Tree Editor GeneratorDescription
 This component is in charge of generating a Domain Specific Editor. More specifically it generates a tree editor component for the xDSML. 
 
 Eclipse Modeling Framework provides such component. It uses the Domain Specific metamodel provided as an ecore model and a genmodel configuration.
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_EMF_Tree_Editor_Generator.png}
 \end{center}
@@ -479,18 +298,15 @@ This component produces a new component that we will reference as \emph{Domain S
 \end{itemize}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Eclipse}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Eclipse}
 %Start of user code Eclipse
 Eclipse is an integrated development environment composed of a runtime system and an plug-in mechanism used to extend and customize the environment. It is released under the terms of the Eclipse Public License, and is a free and open source software. The GEMOC studio will be based on and fully integrated to Eclipse. Consequently most of the end user GEMOC components will be released as Eclipse plugins.
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code EclipseDescription
 
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Eclipse.png}
 \end{center}
@@ -498,14 +314,12 @@ Eclipse is an integrated development environment composed of a runtime system an
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Eclipse Debug}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Eclipse_Debug}
 %Start of user code Eclipse Debug
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Eclipse DebugDescription
 The Debug component of the Eclipse platform defines language independent facilities and mechanisms for:
 \begin{itemize}
@@ -535,35 +349,32 @@ Eclipse provides a special Debug perspective with default views and actions avai
 \item \textbf{Expressions} view : get the current value of an expression from the current executing stack
 \end{itemize}
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Eclipse_Debug.png}
 \end{center}
 
 This component port requires the following inputs:
 \begin{itemize}
-  \item \textbf{Debug User Interface} :
-%Start of user code Debug User Interface_input_Description for Eclipse Debug
-Java API to provide a new debugging framework. It defines interfaces for a language independent debug model, which abstract common debugging features of many languages. 
-%End of user code 
-(see section~\ref{sec:Debug_User_Interface}.)
   \item \textbf{Launch Utilities} :
 %Start of user code Launch Utilities_input_Description for Eclipse Debug
 JAVA API to add launch configuration types to the platform. A launch configuration is a description of how to launch a program. Launching in Eclipse is closely tied to the infrastructure for debugging.
 %End of user code 
 (see section~\ref{sec:Launch_Utilities}.)
+  \item \textbf{Debug User Interface} :
+%Start of user code Debug User Interface_input_Description for Eclipse Debug
+Java API to provide a new debugging framework. It defines interfaces for a language independent debug model, which abstract common debugging features of many languages. 
+%End of user code 
+(see section~\ref{sec:Debug_User_Interface}.)
 \end{itemize}
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Eclipse Modeling}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Eclipse_Modeling}
 %Start of user code Eclipse Modeling
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Eclipse ModelingDescription
 The Eclipse Modeling Project focuses on the evolution and promotion of model-based development technologies within the Eclipse community by providing a unified set of modeling frameworks, tooling, and standards implementations. The GEMOC Studio is based on many different Eclipse modeling projects :
 \begin{itemize}
@@ -577,7 +388,6 @@ The Eclipse Modeling Project focuses on the evolution and promotion of model-bas
 \item ...
 \end{itemize}
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Eclipse_Modeling.png}
 \end{center}
@@ -585,157 +395,282 @@ The Eclipse Modeling Project focuses on the evolution and promotion of model-bas
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Ecore Editor}
-\label{sec:Ecore_Editor}
-%Start of user code Ecore Editor
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Ecore EditorDescription
-This component allows to create and edit an ecore model in order to specify the DSML domain concepts as planned by the WP1 process.
-\begin{figure}[h]
-	\begin{center}
-	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, width=1.0\linewidth]{../images/EcoreDiagramOverview.png}
-	\caption{Ecore editor screenshot}
-	\end{center}
-\end{figure}
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Ecore_Editor.png}
-\end{center}
-
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Metamodel} :
-%Start of user code Domain Specific Metamodel_output_Description for Ecore Editor
-This component produces an ecore model.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Metamodel}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Executable Modeling Tools}
-\label{sec:Executable_Modeling_Tools}
-%Start of user code Executable Modeling Tools
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Executable Modeling ToolsDescription
-This component is a logical component which contains all the domain specific components generated through the GEMOC workbench process:  
-\begin{itemize}
-\item Domain Specific Editor
-\item Domain Specific Metamodel Byte Code
-\item Domain Specific Metamodel Byte Code Extension
-\end{itemize}
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Executable_Modeling_Tools.png}
-\end{center}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Execution Engine}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Execution_Engine}
 %Start of user code Execution Engine
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Execution EngineDescription
 The Execution Engine acts on the execution state of models under the direction of the Solver and Policy.
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Execution_Engine.png}
+\end{center}
+
+
+
+\subsubsection{Composition Operator Applicator}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Composition_Operator_Applicator}
+%Start of user code Composition Operator Applicator
+%End of user code
+%Start of user code Composition Operator ApplicatorDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Composition_Operator_Applicator.png}
+\end{center}
+
+
+
+
+\subsubsection{DSE Compiler}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:DSE_Compiler}
+%Start of user code DSE Compiler
+%End of user code
+%Start of user code DSE CompilerDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSE_Compiler.png}
+\end{center}
+
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_input_Description for DSE Compiler
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Model}.)
+  \item \textbf{DSE Model} :
+%Start of user code DSE Model_input_Description for DSE Compiler
+%End of user code 
+(see section~\ref{sec:DSE_Model}.)
+\end{itemize}
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{Concurrency Execution Model} :
+%Start of user code Concurrency Execution Model_output_Description for DSE Compiler
+%End of user code 
+(see section~\ref{sec:Concurrency_Execution_Model}.)
+\end{itemize}
+
+\paragraph{Timesquare MOCC To Execution Model}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Timesquare_MOCC_To_Execution_Model}
+%Start of user code Timesquare MOCC To Execution Model
+
+%End of user code
+%Start of user code Timesquare MOCC To Execution ModelDescription
+
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Timesquare_MOCC_To_Execution_Model.png}
+\end{center}
+
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{ECL Model} :
+%Start of user code ECL Model_input_Description for Timesquare MOCC To Execution Model
+%End of user code 
+(see section~\ref{sec:ECL_Model}.)
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_input_Description for Timesquare MOCC To Execution Model
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Model}.)
+\end{itemize}
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{CCSL Model} :
+%Start of user code CCSL Model_output_Description for Timesquare MOCC To Execution Model
+%End of user code 
+(see section~\ref{sec:CCSL_Model}.)
+\end{itemize}
+
+
+
+\subsubsection{DSE Engine}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:DSE_Engine}
+%Start of user code DSE Engine
+%End of user code
+%Start of user code DSE EngineDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSE_Engine.png}
 \end{center}
 
 This component port requires the following inputs:
 \begin{itemize}
   \item \textbf{Domain Specific Event Model} :
-%Start of user code Domain Specific Event Model_input_Description for Execution Engine
-the model of the events produced by the model of computation.
+%Start of user code Domain Specific Event Model_input_Description for DSE Engine
 %End of user code 
 (see section~\ref{sec:Domain_Specific_Event_Model}.)
-  \item \textbf{Domain Specific Event Vector Model} :
-%Start of user code Domain Specific Event Vector Model_input_Description for Execution Engine
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Event_Vector_Model}.)
   \item \textbf{Domain Specific Metamodel Byte Code} :
-%Start of user code Domain Specific Metamodel Byte Code_input_Description for Execution Engine
-the model of the code that implements the DSA.
+%Start of user code Domain Specific Metamodel Byte Code_input_Description for DSE Engine
 %End of user code 
 (see section~\ref{sec:Domain_Specific_Metamodel_Byte_Code}.)
+  \item \textbf{Domain Specific Event Vector Model} :
+%Start of user code Domain Specific Event Vector Model_input_Description for DSE Engine
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Event_Vector_Model}.)
   \item \textbf{Execution Model} :
-%Start of user code Execution Model_input_Description for Execution Engine
-the model of the state of the model before handling the DSE by executing a DSA (current state of an automaton, current value of an attribute etc.)
+%Start of user code Execution Model_input_Description for DSE Engine
 %End of user code 
 (see section~\ref{sec:Execution_Model}.)
 \end{itemize}
 
 This component port provides the following outputs:
 \begin{itemize}
-  \item \textbf{Execution Model} :
-%Start of user code Execution Model_output_Description for Execution Engine
-the model of the state of the model after the execution of the DSA (current state of an automaton, current value of an attribute etc.)
-%End of user code 
-(see section~\ref{sec:Execution_Model}.)
-  \item \textbf{Runtime Controller} :
-%Start of user code Runtime Controller_output_Description for Execution Engine
-%End of user code 
-(see section~\ref{sec:Runtime_Controller}.)
   \item \textbf{Trace Model} :
-%Start of user code Trace Model_output_Description for Execution Engine
-the updated trace of the execution of the model after performing the DSA
+%Start of user code Trace Model_output_Description for DSE Engine
 %End of user code 
 (see section~\ref{sec:Trace_Model}.)
+  \item \textbf{Runtime Controller} :
+%Start of user code Runtime Controller_output_Description for DSE Engine
+%End of user code 
+(see section~\ref{sec:Runtime_Controller}.)
   \item \textbf{Trigger Event Request} :
-%Start of user code Trigger Event Request_output_Description for Execution Engine
-the requests for DSE which are consequences of the execution of DSA
+%Start of user code Trigger Event Request_output_Description for DSE Engine
 %End of user code 
 (see section~\ref{sec:Trigger_Event_Request}.)
+  \item \textbf{Execution Model} :
+%Start of user code Execution Model_output_Description for DSE Engine
+%End of user code 
+(see section~\ref{sec:Execution_Model}.)
 \end{itemize}
 
 
+\subsubsection{MOCC Compiler}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Execution Engine for Heterogeneous Models}
-\label{sec:Execution_Engine_for_Heterogeneous_Models}
-%Start of user code Execution Engine for Heterogeneous Models
-
+\label{sec:MOCC_Compiler}
+%Start of user code MOCC Compiler
 %End of user code
-
-\subsubsection{Purpose}
-%Start of user code Execution Engine for Heterogeneous ModelsDescription
-
+%Start of user code MOCC CompilerDescription
 %End of user code 
-
 \begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Execution_Engine_for_Heterogeneous_Models.png}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_MOCC_Compiler.png}
 \end{center}
 
 
 
 
+\subsubsection{Policy}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Policy}
+%Start of user code Policy
+A Policy is part of the description of the control in a language. It works in conjunction with a model of computation.
+The Policy component is an abstract componant whose implementations are responsible for selecting one Domain Specific Event from a vector of triggerable Domain Specific Event. Several selection strategies are provided in GEMOC.
+%End of user code
+%Start of user code PolicyDescription
+The purpose of a Policy is to select a DSE among the possible DSE occurrences allowed by the model of computation. It can be considered as a refinement of the model of computation.
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Policy.png}
+\end{center}
+
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Vector Model} :
+%Start of user code Domain Specific Event Vector Model_input_Description for Policy
+\textbf{\textcolor{red}{FBO: pas sur de bien comprendre ce qu'est le DSEVM ou bien ce qu'il fait l\`a. J'aurais plut\^ot dit que Policy avait besoin du Domain Specific Event Model}}
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Event_Vector_Model}.)
+\end{itemize}
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Model} :
+%Start of user code Domain Specific Event Model_output_Description for Policy
+The Policy component provides one Domain Specific Event selected out of the triggerable set.
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Event_Model}.)
+\end{itemize}
+
+
+\subsubsection{Solver}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Solver}
+%Start of user code Solver
+
+%End of user code
+%Start of user code SolverDescription
+
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Solver.png}
+\end{center}
+
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Model} :
+%Start of user code Domain Specific Event Model_input_Description for Solver
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Event_Model}.)
+  \item \textbf{} :
+%Start of user code _input_Description for Solver
+%End of user code 
+(see section~\ref{sec:}.)
+  \item \textbf{Concurrency Execution Model} :
+%Start of user code Concurrency Execution Model_input_Description for Solver
+%End of user code 
+(see section~\ref{sec:Concurrency_Execution_Model}.)
+\end{itemize}
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Vector Model} :
+%Start of user code Domain Specific Event Vector Model_output_Description for Solver
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Event_Vector_Model}.)
+\end{itemize}
+
+\paragraph{Timesquare Solver}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Timesquare_Solver}
+%Start of user code Timesquare Solver
+
+%End of user code
+%Start of user code Timesquare SolverDescription
+
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Timesquare_Solver.png}
+\end{center}
+
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{CCSL Model} :
+%Start of user code CCSL Model_input_Description for Timesquare Solver
+%End of user code 
+(see section~\ref{sec:CCSL_Model}.)
+  \item \textbf{Trigger Event Request} :
+%Start of user code Trigger Event Request_input_Description for Timesquare Solver
+%End of user code 
+(see section~\ref{sec:Trigger_Event_Request}.)
+\end{itemize}
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Event Vector Model} :
+%Start of user code Domain Specific Event Vector Model_output_Description for Timesquare Solver
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Event_Vector_Model}.)
+\end{itemize}
+
+
+
+
 \subsection{Gemoc Process assistant}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Gemoc_Process_assistant}
 %Start of user code Gemoc Process assistant
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Gemoc Process assistantDescription
 This component aims at proposing some guidance to the user in order to follow the GEMOC methodology. This component may be some kind of integrated tutorial and/or process wizard.
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Gemoc_Process_assistant.png}
 \end{center}
@@ -747,42 +682,24 @@ This component port requires the following inputs:
 If the component is presented as a wizard, it may take as input the current state of the current GEMOC project (GemocProjectState) so it can highlight the current step and propose the next steps to the user.
 %End of user code 
 (see section~\ref{sec:Gemoc_Project_State_Model}.)
+  \item \textbf{Gemoc Project State} :
+%Start of user code Gemoc Project State_input_Description for Gemoc Process assistant
+%End of user code 
+(see section~\ref{sec:Gemoc_Project_State}.)
 \end{itemize}
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Generative Tools}
-\label{sec:Generative_Tools}
-%Start of user code Generative Tools
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Generative ToolsDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Generative_Tools.png}
-\end{center}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Interactive Policy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Interactive_Policy}
 %Start of user code Interactive Policy
 The Interactive Policy is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
 It inherits from Policy component and have all its input/outputs.
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Interactive PolicyDescription
 The purpose of the Interactive Policy is to let the user explore the possible behaviors of a model by choosing the DSE he wants when several DSE are allowed to occur according to the model of computation.
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Interactive_Policy.png}
 \end{center}
@@ -790,18 +707,119 @@ The purpose of the Interactive Policy is to let the user explore the possible be
 
 
 
+\subsection{Language Workbench}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Kermeta Compiler}
+\label{sec:Language_Workbench}
+%Start of user code Language Workbench
+%End of user code
+%Start of user code Language WorkbenchDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Language_Workbench.png}
+\end{center}
+
+
+
+\subsubsection{AS Compiler}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:AS_Compiler}
+%Start of user code AS Compiler
+%End of user code
+%Start of user code AS CompilerDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_AS_Compiler.png}
+\end{center}
+
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for AS Compiler
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Metamodel}.)
+\end{itemize}
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel Byte Code} :
+%Start of user code Domain Specific Metamodel Byte Code_output_Description for AS Compiler
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Metamodel_Byte_Code}.)
+\end{itemize}
+
+
+\subsubsection{Composition Operator Editor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Composition_Operator_Editor}
+%Start of user code Composition Operator Editor
+%End of user code
+%Start of user code Composition Operator EditorDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Composition_Operator_Editor.png}
+\end{center}
+
+
+
+
+\subsubsection{Concrete Syntax Configurator}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Concrete_Syntax_Configurator}
+%Start of user code Concrete Syntax Configurator
+%End of user code
+%Start of user code Concrete Syntax ConfiguratorDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Concrete_Syntax_Configurator.png}
+\end{center}
+
+
+
+
+\subsubsection{DSA Compiler}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:DSA_Compiler}
+%Start of user code DSA Compiler
+%End of user code
+%Start of user code DSA CompilerDescription
+The DSA compiler is in charge of taking a model a DSA and produce the bytecode that implement the corresponding actions.
+
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSA_Compiler.png}
+\end{center}
+
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{DSA Model} :
+%Start of user code DSA Model_input_Description for DSA Compiler
+A model of DSA.
+%End of user code 
+(see section~\ref{sec:DSA_Model}.)
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for DSA Compiler
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Metamodel}.)
+\end{itemize}
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel Byte Code Extension} :
+%Start of user code Domain Specific Metamodel Byte Code Extension_output_Description for DSA Compiler
+The bytecode implementing the actions in the DSA.
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Metamodel_Byte_Code_Extension}.)
+\end{itemize}
+
+\paragraph{Kermeta Compiler}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Kermeta_Compiler}
 %Start of user code Kermeta Compiler
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Kermeta CompilerDescription
 
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Kermeta_Compiler.png}
 \end{center}
@@ -831,18 +849,38 @@ This component port provides the following outputs:
 \end{itemize}
 
 
+
+\subsubsection{DSA Editor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Kermeta Editor}
+\label{sec:DSA_Editor}
+%Start of user code DSA Editor
+
+%End of user code
+%Start of user code DSA EditorDescription
+
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSA_Editor.png}
+\end{center}
+
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{DSA Model} :
+%Start of user code DSA Model_output_Description for DSA Editor
+%End of user code 
+(see section~\ref{sec:DSA_Model}.)
+\end{itemize}
+
+\paragraph{Kermeta Editor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Kermeta_Editor}
 %Start of user code Kermeta Editor
 Kermeta Editor is used in the context of GEMOC as a DSA editor.
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Kermeta EditorDescription
 Kermeta Editor allows to create and edit kermeta models. These models defines the operationnal semantics of the actions in the DSM.
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Kermeta_Editor.png}
 \end{center}
@@ -858,37 +896,64 @@ This component produces a Kermeta model that will constitute the DSA part of Dom
 \end{itemize}
 
 
+
+\subsubsection{DSE Editor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Language Definition Tools}
-\label{sec:Language_Definition_Tools}
-%Start of user code Language Definition Tools
+\label{sec:DSE_Editor}
+%Start of user code DSE Editor
+%End of user code
+%Start of user code DSE EditorDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSE_Editor.png}
+\end{center}
+
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{DSA Model} :
+%Start of user code DSA Model_input_Description for DSE Editor
+%End of user code 
+(see section~\ref{sec:DSA_Model}.)
+  \item \textbf{MOCC Model} :
+%Start of user code MOCC Model_input_Description for DSE Editor
+%End of user code 
+(see section~\ref{sec:MOCC_Model}.)
+\end{itemize}
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{DSE Model} :
+%Start of user code DSE Model_output_Description for DSE Editor
+%End of user code 
+(see section~\ref{sec:DSE_Model}.)
+\end{itemize}
+
+\paragraph{ECL Editor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:ECL_Editor}
+%Start of user code ECL Editor
 
 %End of user code
-
-\subsubsection{Purpose}
-%Start of user code Language Definition ToolsDescription
+%Start of user code ECL EditorDescription
 
 %End of user code 
-
 \begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Language_Definition_Tools.png}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_ECL_Editor.png}
 \end{center}
 
 
 
 
+
+\subsubsection{MOCC Editor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{MOCC Editor}
 \label{sec:MOCC_Editor}
 %Start of user code MOCC Editor
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code MOCC EditorDescription
 
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_MOCC_Editor.png}
 \end{center}
@@ -902,46 +967,125 @@ This component port provides the following outputs:
 (see section~\ref{sec:MOCC_Model}.)
 \end{itemize}
 
-
+\paragraph{CCSL Library Editor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Modhel'X}
-\label{sec:Modhel_X}
-%Start of user code Modhel'X
-ModHel'X is both a meta model and an execution engine for heterogeneous models which is developed at the Computer Science Department of Sup\'elec.
+\label{sec:CCSL_Library_Editor}
+%Start of user code CCSL Library Editor
 
 %End of user code
-
-\subsubsection{Purpose}
-%Start of user code Modhel'XDescription
-The purpose of ModHel'X is the modeling of hierarchical heterogeneous models. In order to handle heterogeneous components in a model, ModHel'X relies on a generic meta-model based on black boxes (called blocks) with observable ports (called pins). A ModHel'X model is composed of a structure (blocks with relations between their pins) and a model of computation which implements the rules for combining the behavior of the blocks as observed at their pins.
-
-ModHel'X supports only hierarchical heterogeneity through the use of interface blocks. An interface block is a block used according to an external model of computation, and the behavior of this block is defined by a model which uses an internal model of computation. The interface block, is responsible for adapting the execution semantics between the external and the internal models of computation. This adaptation is decomposed along three axis: transforming input and output data, synchronizing the control (occurrence of events) in both models of computation, and maintaining relations between the time scales inside and outside the interface block.
-
-For modeling the relations between the occurrence of events and the time scales in different models of computation, ModHel'X relies on a time model and a solver for these relations. This time model is called TESL (Tagged Event Specification Language) and is inspired by the Tagged Signal Model by Lee and Sangiovanni, and the CCSL language developed by the AOSTE INRIA team. Contrary to CCSL, TESL and its solver can only construct one execution trace by applying causality relations and constraints on the tags (dates) of events. It has been designed for specifying how to execute an heterogeneous model, while CCSL is more suitable to specify constraints on all possible executions of an heterogeneous model. Thanks to its reduced expressive power with regard to the ordering of events, and to its reduced analysis possibilities, TESL is able to handle constraints on the tags which are associated to event occurrences, which makes it handy and efficient for executing heterogeneous models. It would theoretically be possible to model such relations in CCSL using infinitely fast clocks. There are currently discussions about the possibility to determine if a TESL model is a correct implementation of a CCSL specification. With such a possibility, we could use CCSL for specifying a model of computation and then use TESL to write an implementation of this model of computation. The specification would allow static verification of properties, while the implementation would allow efficient simulations.
-
-The current architecture of ModHel'X is not aligned on the GEMOC framework, and part of the contribution of Sup\'elec is to modify its structure to make it usable as an execution engine and a solver in the GEMOC framework.
+%Start of user code CCSL Library EditorDescription
 
 %End of user code 
-
 \begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Modhel_X.png}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_CCSL_Library_Editor.png}
+\end{center}
+
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{CCSL Model} :
+%Start of user code CCSL Model_output_Description for CCSL Library Editor
+%End of user code 
+(see section~\ref{sec:CCSL_Model}.)
+\end{itemize}
+
+
+
+
+\subsection{Modeling Workbench}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Modeling_Workbench}
+%Start of user code Modeling Workbench
+%End of user code
+%Start of user code Modeling WorkbenchDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Modeling_Workbench.png}
+\end{center}
+
+
+
+\subsubsection{Model Animator}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Model_Animator}
+%Start of user code Model Animator
+%End of user code
+%Start of user code Model AnimatorDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Model_Animator.png}
 \end{center}
 
 
 
 
+\subsubsection{Model Editor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Model_Editor}
+%Start of user code Model Editor
+%End of user code
+%Start of user code Model EditorDescription
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Model_Editor.png}
+\end{center}
+
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_output_Description for Model Editor
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Model}.)
+\end{itemize}
+
+\paragraph{Sirius Editor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Sirius_Editor}
+%Start of user code Sirius Editor
+%End of user code
+%Start of user code Sirius EditorDescription
+The Sirius editor provides tools to specify modeling workbenches. A graphical designer allows users to create or visualize models of a given domain specific model defined with EMF (Ecore model) using the Ecore graphical designer. Then the user has to describe its graphical designer. This is done thanks to a model which is interpreted by Sirius. This model contains viewpoints which define representations (diagrams, tables, matrix and trees). Each representation defines how the model elements can be graphically represented (shape, color, font, ...) and edited (palette, tools, ...).
+The Sirius editor is a graphical editor used to edit this viewpoint specification model.
+%End of user code 
+\begin{center}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Sirius_Editor.png}
+\end{center}
+
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for Sirius Editor
+The EMF meta-model which describes the structure of the domain specific model.
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Metamodel}.)
+\end{itemize}
+
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Representation Definition Extension Model} :
+%Start of user code Domain Specific Representation Definition Extension Model_output_Description for Sirius Editor
+Configuration file which extends and refines existing diagram descriptions and mappings.
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Representation_Definition_Extension_Model}.)
+  \item \textbf{Domain Specific Representation Definition Model} :
+%Start of user code Domain Specific Representation Definition Model_output_Description for Sirius Editor
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Representation_Definition_Model}.)
+\end{itemize}
+
+
+
+
 \subsection{NEMO}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:NEMO}
 %Start of user code NEMO
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code NEMODescription
 
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_NEMO.png}
 \end{center}
@@ -949,54 +1093,15 @@ The current architecture of ModHel'X is not aligned on the GEMOC framework, and 
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Policy}
-\label{sec:Policy}
-%Start of user code Policy
-A Policy is part of the description of the control in a language. It works in conjunction with a model of computation.
-The Policy component is an abstract componant whose implementations are responsible for selecting one Domain Specific Event from a vector of triggerable Domain Specific Event. Several selection strategies are provided in GEMOC.
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code PolicyDescription
-The purpose of a Policy is to select a DSE among the possible DSE occurrences allowed by the model of computation. It can be considered as a refinement of the model of computation.
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Policy.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Event Vector Model} :
-%Start of user code Domain Specific Event Vector Model_input_Description for Policy
-\textbf{\textcolor{red}{FBO: pas sur de bien comprendre ce qu'est le DSEVM ou bien ce qu'il fait l\`a. J'aurais plut\^ot dit que Policy avait besoin du Domain Specific Event Model}}
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Event_Vector_Model}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Event Model} :
-%Start of user code Domain Specific Event Model_output_Description for Policy
-The Policy component provides one Domain Specific Event selected out of the triggerable set.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Event_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Random Policy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Random_Policy}
 %Start of user code Random Policy
 The Random Policy is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Random PolicyDescription
 The purpose of the Random Policy is to randomly explore the possible behaviors of a model by making a random choice among all possible DSE occurrences. For instance, when executing a non deterministic automata, the random policy will randomly choose one transition among all the fireable transitions determined by the model of computation.
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Random_Policy.png}
 \end{center}
@@ -1004,38 +1109,16 @@ The purpose of the Random Policy is to randomly explore the possible behaviors o
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Reflexive Model Animators}
-\label{sec:Reflexive_Model_Animators}
-%Start of user code Reflexive Model Animators
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Reflexive Model AnimatorsDescription
-This component is a logical component which provides animation capability on the reflexive models. In the GEMOC workbench, this component will be implemented by the Sirius Animator.
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Reflexive_Model_Animators.png}
-\end{center}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Replay Policy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Replay_Policy}
 %Start of user code Replay Policy
 The Replay Policy is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
 It inherits from Policy component and have all its input/outputs.
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Replay PolicyDescription
 The purpose of the Replay Policy is to replay a simulation by choosing the DSE indicated in a trace model when several DSE when several DSE are allowed to occur according to the model of computation. It should also raise an error when the DSE which is indicated at a given point in the trace model is not among the DSE allowed by the model of computation (the trace model is not compatible with the behavior of the model).
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Replay_Policy.png}
 \end{center}
@@ -1051,20 +1134,17 @@ the model of the trace to replay.
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scenario Policy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Scenario_Policy}
 %Start of user code Scenario Policy
 The Scenario Policy is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
 \textcolor{red}{\textbf{FBO: A mon avis, il manque le modele du scenario en input.}}
 It inherits from Policy component and have all its input/outputs.
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Scenario PolicyDescription
 The purpose of the Scenario Policy is to drive a simulation by choosing the DSE indicated in a scenario when several DSE when several DSE are allowed to occur according to the model of computation.
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Scenario_Policy.png}
 \end{center}
@@ -1079,33 +1159,73 @@ This component port requires the following inputs:
 
 
 
+\subsection{Sirius Framework}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Scheduling Compiler}
-\label{sec:Scheduling_Compiler}
-%Start of user code Scheduling Compiler
+\label{sec:Sirius_Framework}
+%Start of user code Sirius Framework
 
 %End of user code
-
-\subsubsection{Purpose}
-%Start of user code Scheduling CompilerDescription
-
+%Start of user code Sirius FrameworkDescription
+The \href{http://www.eclipse.org/proposals/modeling.sirius/}{Sirius} framework is an Eclipse project which allows to define multi-view workbenches through graphical, table or tree modeling editors.
+From the specifier/developer perspective, Sirius provides:
+\begin{itemize}
+\item The ability to define workbenches providing editors including diagrams, tables or trees.
+\item The ability to integrate and deploy the aforementioned environment into Eclipse IDE's or RCP applications.
+\item The ability to customize existing environments by specialization and extension.
+\end{itemize}
+From the end user perspective, Sirius provides:
+\begin{itemize}
+\item Rich and specialized modeling editors to design their models.
+\item Synchronization between these different editors.
+\end{itemize}
 %End of user code 
-
 \begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Scheduling_Compiler.png}
+\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Sirius_Framework.png}
 \end{center}
 
+This component port requires the following inputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Metamodel} :
+%Start of user code Domain Specific Metamodel_input_Description for Sirius Framework
+Eclipse EMF is used to model the domain model. The meta-model describes the structure of the domain specific model.
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Metamodel}.)
+  \item \textbf{Domain Specific Representation Definition Extension Model} :
+%Start of user code Domain Specific Representation Definition Extension Model_input_Description for Sirius Framework
+Sirius has specific support for extending and refining diagram descriptions and mappings without modifying the original. The extensions are applied transparently when the viewpoint they are defined in are enabled, and removed when the viewpoint is disabled.  The purpose is to augment the base diagram with new graphical elements related to the animation feature.
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Representation_Definition_Extension_Model}.)
+  \item \textbf{Domain Specific Metamodel Byte Code} :
+%Start of user code Domain Specific Metamodel Byte Code_input_Description for Sirius Framework
+Once the EMF meta-model is specified it is possible to generate the corresponding Java implementations classes from this model. As Sirius relies on the EMF reflexive API, it is able to work with any kind of metamodel byte code which implements this API.
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Metamodel_Byte_Code}.)
+  \item \textbf{Domain Specific Representation Definition Model} :
+%Start of user code Domain Specific Representation Definition Model_input_Description for Sirius Framework
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Representation_Definition_Model}.)
+\end{itemize}
 
+This component port provides the following outputs:
+\begin{itemize}
+  \item \textbf{Domain Specific Graphical Animator} :
+%Start of user code Domain Specific Graphical Animator_output_Description for Sirius Framework
+Sirius will provide an animator integrated to the domain specific graphical editor which allows to animate and debug a model. 
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Graphical_Animator}.)
+  \item \textbf{Domain Specific Graphical Animated Editor} :
+%Start of user code Domain Specific Graphical Animated Editor_output_Description for Sirius Framework
+Sirius provides a completely customized graphical editor dedicated to a domain specific languages (DSL). The graphical designers created with Sirius provide diagrams, tables, matrix or trees to create and edit models according to the domain specific vocabulary and process.
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Graphical_Animated_Editor}.)
+\end{itemize}
 
-
+\subsubsection{Sirius Animator Framework}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sirius Animator Framework}
 \label{sec:Sirius_Animator_Framework}
 %Start of user code Sirius Animator Framework
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Sirius Animator FrameworkDescription
 The Sirius animator framework is a part of the Sirius project which allows to animate graphical editors created with Sirius.
 From the specifier/developer perspective, Sirius animator provides:
@@ -1117,7 +1237,6 @@ From the end user perspective, Sirius provides:
 \item Graphical editor enhanced with animation features.
 \end{itemize}
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Sirius_Animator_Framework.png}
 \end{center}
@@ -1141,274 +1260,18 @@ The Sirius animator framework allows to provide to domain specific graphical edi
 \end{itemize}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sirius Editor}
-\label{sec:Sirius_Editor}
-%Start of user code Sirius Editor
-%End of user code
 
-\subsubsection{Purpose}
-%Start of user code Sirius EditorDescription
-The Sirius editor provides tools to specify modeling workbenches. A graphical designer allows users to create or visualize models of a given domain specific model defined with EMF (Ecore model) using the Ecore graphical designer. Then the user has to describe its graphical designer. This is done thanks to a model which is interpreted by Sirius. This model contains viewpoints which define representations (diagrams, tables, matrix and trees). Each representation defines how the model elements can be graphically represented (shape, color, font, ...) and edited (palette, tools, ...).
-The Sirius editor is a graphical editor used to edit this viewpoint specification model.
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Sirius_Editor.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Metamodel} :
-%Start of user code Domain Specific Metamodel_input_Description for Sirius Editor
-The EMF meta-model which describes the structure of the domain specific model.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Metamodel}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific  Representation Definition Model} :
-%Start of user code Domain Specific  Representation Definition Model_output_Description for Sirius Editor
-The configuration file which describes the representations (diagrams, tables, matrix and trees). Each representation description defines the model elements which will be visible, how they will be dispayed (which schape, color, etc) and how they can be edited (through a palette for example).
-%End of user code 
-(see section~\ref{sec:Domain_Specific__Representation_Definition_Model}.)
-  \item \textbf{Domain Specific Representation Definition Extension Model} :
-%Start of user code Domain Specific Representation Definition Extension Model_output_Description for Sirius Editor
-Configuration file which extends and refines existing diagram descriptions and mappings.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Representation_Definition_Extension_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sirius Framework}
-\label{sec:Sirius_Framework}
-%Start of user code Sirius Framework
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Sirius FrameworkDescription
-The \href{http://www.eclipse.org/proposals/modeling.sirius/}{Sirius} framework is an Eclipse project which allows to define multi-view workbenches through graphical, table or tree modeling editors.
-From the specifier/developer perspective, Sirius provides:
-\begin{itemize}
-\item The ability to define workbenches providing editors including diagrams, tables or trees.
-\item The ability to integrate and deploy the aforementioned environment into Eclipse IDE's or RCP applications.
-\item The ability to customize existing environments by specialization and extension.
-\end{itemize}
-From the end user perspective, Sirius provides:
-\begin{itemize}
-\item Rich and specialized modeling editors to design their models.
-\item Synchronization between these different editors.
-\end{itemize}
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Sirius_Framework.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{Domain Specific  Representation Definition Model} :
-%Start of user code Domain Specific  Representation Definition Model_input_Description for Sirius Framework
-Sirius enables the specification of a modeling workbench in termes of graphical, table or tree editors with validation rules and actions using declarative descriptions. The representations (diagrams, tables, matrix and trees) are described in a configuration file which can be edited with the Sirius Editor. Each representation description defines the model elements which will be visible, how they will be dispayed (which schape, color, etc) and how they can be edited (through a palette for example). This description is dynamically interpreted to materialize the workbench within the Eclipse IDE. No code generation is involved, the specifier of the workbench can have instant feedback while adapting the description.  
-%End of user code 
-(see section~\ref{sec:Domain_Specific__Representation_Definition_Model}.)
-  \item \textbf{Domain Specific Metamodel} :
-%Start of user code Domain Specific Metamodel_input_Description for Sirius Framework
-Eclipse EMF is used to model the domain model. The meta-model describes the structure of the domain specific model.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Metamodel}.)
-  \item \textbf{Domain Specific Metamodel Byte Code} :
-%Start of user code Domain Specific Metamodel Byte Code_input_Description for Sirius Framework
-Once the EMF meta-model is specified it is possible to generate the corresponding Java implementations classes from this model. As Sirius relies on the EMF reflexive API, it is able to work with any kind of metamodel byte code which implements this API.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Metamodel_Byte_Code}.)
-  \item \textbf{Domain Specific Representation Definition Extension Model} :
-%Start of user code Domain Specific Representation Definition Extension Model_input_Description for Sirius Framework
-Sirius has specific support for extending and refining diagram descriptions and mappings without modifying the original. The extensions are applied transparently when the viewpoint they are defined in are enabled, and removed when the viewpoint is disabled.  The purpose is to augment the base diagram with new graphical elements related to the animation feature.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Representation_Definition_Extension_Model}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Graphical Animated Editor} :
-%Start of user code Domain Specific Graphical Animated Editor_output_Description for Sirius Framework
-Sirius provides a completely customized graphical editor dedicated to a domain specific languages (DSL). The graphical designers created with Sirius provide diagrams, tables, matrix or trees to create and edit models according to the domain specific vocabulary and process.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Graphical_Animated_Editor}.)
-  \item \textbf{Domain Specific Graphical Animator} :
-%Start of user code Domain Specific Graphical Animator_output_Description for Sirius Framework
-Sirius will provide an animator integrated to the domain specific graphical editor which allows to animate and debug a model. 
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Graphical_Animator}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Solver}
-\label{sec:Solver}
-%Start of user code Solver
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code SolverDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Solver.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{Concurrency Execution Model} :
-%Start of user code Concurrency Execution Model_input_Description for Solver
-%End of user code 
-(see section~\ref{sec:Concurrency_Execution_Model}.)
-  \item \textbf{Domain Specific Event Model} :
-%Start of user code Domain Specific Event Model_input_Description for Solver
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Event_Model}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Event Vector Model} :
-%Start of user code Domain Specific Event Vector Model_output_Description for Solver
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Event_Vector_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Timesquare DSA-MOCC Map Editor}
-\label{sec:Timesquare_DSA-MOCC_Map_Editor}
-%Start of user code Timesquare DSA-MOCC Map Editor
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Timesquare DSA-MOCC Map EditorDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Timesquare_DSA-MOCC_Map_Editor.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{Kermeta Model} :
-%Start of user code Kermeta Model_input_Description for Timesquare DSA-MOCC Map Editor
-%End of user code 
-(see section~\ref{sec:Kermeta_Model}.)
-  \item \textbf{MOCC Model} :
-%Start of user code MOCC Model_input_Description for Timesquare DSA-MOCC Map Editor
-%End of user code 
-(see section~\ref{sec:MOCC_Model}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{ECL Model} :
-%Start of user code ECL Model_output_Description for Timesquare DSA-MOCC Map Editor
-%End of user code 
-(see section~\ref{sec:ECL_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Timesquare MOCC To Execution Model}
-\label{sec:Timesquare_MOCC_To_Execution_Model}
-%Start of user code Timesquare MOCC To Execution Model
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Timesquare MOCC To Execution ModelDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Timesquare_MOCC_To_Execution_Model.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Model} :
-%Start of user code Domain Specific Model_input_Description for Timesquare MOCC To Execution Model
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Model}.)
-  \item \textbf{ECL Model} :
-%Start of user code ECL Model_input_Description for Timesquare MOCC To Execution Model
-%End of user code 
-(see section~\ref{sec:ECL_Model}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{CCSL Model} :
-%Start of user code CCSL Model_output_Description for Timesquare MOCC To Execution Model
-%End of user code 
-(see section~\ref{sec:CCSL_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Timesquare Solver}
-\label{sec:Timesquare_Solver}
-%Start of user code Timesquare Solver
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Timesquare SolverDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Timesquare_Solver.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{CCSL Model} :
-%Start of user code CCSL Model_input_Description for Timesquare Solver
-%End of user code 
-(see section~\ref{sec:CCSL_Model}.)
-  \item \textbf{Trigger Event Request} :
-%Start of user code Trigger Event Request_input_Description for Timesquare Solver
-%End of user code 
-(see section~\ref{sec:Trigger_Event_Request}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Event Vector Model} :
-%Start of user code Domain Specific Event Vector Model_output_Description for Timesquare Solver
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Event_Vector_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Trace Editor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Trace_Editor}
 %Start of user code Trace Editor
 The trace editor takes as input a trace model and allows the analysis of this trace by the user.
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Trace EditorDescription
 The purpose of the Trace Editor is to present different views on a trace by masking some events, highlighting relations between event occurrences in the trace (coincidence for instance) and searching for occurrence patterns (for instance, looking for all occurrences of C that follow an occurrence of A without an occurrence of B in between).
  
 If the trace model supports a notion of date associated to an occurrence, the trace editor should also allow searching for sequences in a trace that have timing properties (for instance, two consecutive occurrences of A with dates separated by more than some duration).
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Trace_Editor.png}
 \end{center}
@@ -1424,40 +1287,18 @@ the model of the trace to be edited.
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{User Animation Viewer}
-\label{sec:User_Animation_Viewer}
-%Start of user code User Animation Viewer
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code User Animation ViewerDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_User_Animation_Viewer.png}
-\end{center}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Xtext}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Xtext}
 %Start of user code Xtext
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code XtextDescription
 \href{http://www.eclipse.org/Xtext}{Xtext} is an open source framework available in Eclipse for development of domain specific languages.
 It covers all aspects of a complete language infrastructure, from parsers, over linker, compiler or interpreter and provides an easy way to generate textual editor fully integrated in Eclipse.
 Xtext uses EMF models as the in-memory representation of any parsed text files. This in-memory object graph is called the Abstract Syntax Tree (AST).
 It is possible to give to Xtext as input an existing domain specific metamodel or a grammar.
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Xtext.png}
 \end{center}
@@ -1485,6 +1326,7 @@ The generated textual editor which provides syntax coloring, content assists, va
 (see section~\ref{sec:Domain_Text_Editor}.)
 \end{itemize}
 
+
 \section{Domain Specific Components}
 %Start of user code DomainSpecificComponents
 \begin{figure}[htp]
@@ -1496,66 +1338,45 @@ The generated textual editor which provides syntax coloring, content assists, va
 \end{figure}
 The Domains Specific Components are components produced by the DSML designer by using the tools provided in GEMOC. The figure~\ref{fig:DomainSpecificComponentList} illustrates the point that they are output of some other component.
 %End of user code
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Domain Specific Editor}
-\label{sec:Domain_Specific_Editor}
-%Start of user code Domain Specific Editor
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Domain Specific EditorDescription
-This component is a logical component which represents all the editors which manage domain specific models. More concrete editors will typically be graphical, textual or tree view editors.
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Domain_Specific_Editor.png}
-\end{center}
-
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Model} :
-%Start of user code Domain Specific Model_output_Description for Domain Specific Editor
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Domain Specific Graphical Animated Editor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Domain_Specific_Graphical_Animated_Editor}
 %Start of user code Domain Specific Graphical Animated Editor
 
 %End of user code
-
-\subsubsection{Purpose}
 %Start of user code Domain Specific Graphical Animated EditorDescription
 Sirius provides a completely customized graphical editor dedicated to a domain specific languages (DSL). The graphical designers created with Sirius
 provide diagrams, tables, matrix or trees to create and edit models according to the domain specific vocabulary and process.
 %End of user code 
-
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Domain_Specific_Graphical_Animated_Editor.png}
 \end{center}
 
 This component port requires the following inputs:
 \begin{itemize}
-  \item \textbf{Domain Specific Model} :
-%Start of user code Domain Specific Model_input_Description for Domain Specific Graphical Animated Editor
-Instance of the domain specific metamodel.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Model}.)
   \item \textbf{Runtime Controller} :
 %Start of user code Runtime Controller_input_Description for Domain Specific Graphical Animated Editor
 This interface allows the integration with the Eclipse Debug component. This interfaces is detailed in the Domain Specific Graphical Animator section.
 %End of user code 
 (see section~\ref{sec:Runtime_Controller}.)
+  \item \textbf{Domain Specific Model} :
+%Start of user code Domain Specific Model_input_Description for Domain Specific Graphical Animated Editor
+Instance of the domain specific metamodel.
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Model}.)
 \end{itemize}
 
 This component port provides the following outputs:
 \begin{itemize}
+  \item \textbf{Domain Specific Graphical Animated Editor} :
+%Start of user code Domain Specific Graphical Animated Editor_output_Description for Domain Specific Graphical Animated Editor
+%End of user code 
+(see section~\ref{sec:Domain_Specific_Graphical_Animated_Editor}.)
+  \item \textbf{Modeling Project} :
+%Start of user code Modeling Project_output_Description for Domain Specific Graphical Animated Editor
+Sirius provides a runtime that works with models within the Eclipse IDE, providing the notion of \em{Modeling Project}, an integration with the Project Explorer, handling the synchronization of workspace resources and in memory instances and the sharing of command stacks and editing domains across editors.
+%End of user code 
+(see section~\ref{sec:Modeling_Project}.)
   \item \textbf{Debug User Interface} :
 %Start of user code Debug User Interface_output_Description for Domain Specific Graphical Animated Editor
 The Eclipse Debug classical interface.
@@ -1566,205 +1387,8 @@ The Eclipse Debug classical interface.
 The Eclipse launch framework.
 %End of user code 
 (see section~\ref{sec:Launch_Utilities}.)
-  \item \textbf{Modeling Project} :
-%Start of user code Modeling Project_output_Description for Domain Specific Graphical Animated Editor
-Sirius provides a runtime that works with models within the Eclipse IDE, providing the notion of \em{Modeling Project}, an integration with the Project Explorer, handling the synchronization of workspace resources and in memory instances and the sharing of command stacks and editing domains across editors.
-%End of user code 
-(see section~\ref{sec:Modeling_Project}.)
 \end{itemize}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Domain Specific Graphical Animator}
-\label{sec:Domain_Specific_Graphical_Animator}
-%Start of user code Domain Specific Graphical Animator
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Domain Specific Graphical AnimatorDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Domain_Specific_Graphical_Animator.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Model} :
-%Start of user code Domain Specific Model_input_Description for Domain Specific Graphical Animator
-Instance of the domain specific metamodel.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Model}.)
-  \item \textbf{Runtime Controller} :
-%Start of user code Runtime Controller_input_Description for Domain Specific Graphical Animator
-It is a Java API which provides :
-\begin{itemize}
-\item Debug actions :
-\begin{itemize}
-\item Start
-\item Step into
-\item Step over
-\item Suspend
-\item Resume
-\item Terminate
-\item ...
-\end{itemize}
-\item Get current system state :
-\begin{itemize}
-\item Variables
-\item Stack frame
-\item ...
-\end{itemize}
-\item Set values
-\end{itemize}
-%End of user code 
-(see section~\ref{sec:Runtime_Controller}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Debug User Interface} :
-%Start of user code Debug User Interface_output_Description for Domain Specific Graphical Animator
-The Eclipse Debug classical interface.
-%End of user code 
-(see section~\ref{sec:Debug_User_Interface}.)
-  \item \textbf{Launch Utilities} :
-%Start of user code Launch Utilities_output_Description for Domain Specific Graphical Animator
-The Eclipse launch framework.
-%End of user code 
-(see section~\ref{sec:Launch_Utilities}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Domain Specific MOCC To Execution Model}
-\label{sec:Domain_Specific_MOCC_To_Execution_Model}
-%Start of user code Domain Specific MOCC To Execution Model
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Domain Specific MOCC To Execution ModelDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Domain_Specific_MOCC_To_Execution_Model.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{DSE Model} :
-%Start of user code DSE Model_input_Description for Domain Specific MOCC To Execution Model
-%End of user code 
-(see section~\ref{sec:DSE_Model}.)
-  \item \textbf{Domain Specific Model} :
-%Start of user code Domain Specific Model_input_Description for Domain Specific MOCC To Execution Model
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Model}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Concurrency Execution Model} :
-%Start of user code Concurrency Execution Model_output_Description for Domain Specific MOCC To Execution Model
-%End of user code 
-(see section~\ref{sec:Concurrency_Execution_Model}.)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Domain Specific Metamodel Byte Code}
-\label{sec:Domain_Specific_Metamodel_Byte_Code}
-%Start of user code Domain Specific Metamodel Byte Code
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Domain Specific Metamodel Byte CodeDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Domain_Specific_Metamodel_Byte_Code.png}
-\end{center}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Domain Specific Metamodel Byte Code Extension}
-\label{sec:Domain_Specific_Metamodel_Byte_Code_Extension}
-%Start of user code Domain Specific Metamodel Byte Code Extension
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Domain Specific Metamodel Byte Code ExtensionDescription
-
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Domain_Specific_Metamodel_Byte_Code_Extension.png}
-\end{center}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Domain Specific Text Editor}
-\label{sec:Domain_Specific_Text_Editor}
-%Start of user code Domain Specific Text Editor
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Domain Specific Text EditorDescription
-This component provides a textual editor to create and modify domain specific models.
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Domain_Specific_Text_Editor.png}
-\end{center}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Domain Specific Tree Editor}
-\label{sec:Domain_Specific_Tree_Editor}
-%Start of user code Domain Specific Tree Editor
-
-%End of user code
-
-\subsubsection{Purpose}
-%Start of user code Domain Specific Tree EditorDescription
-This component is generated by EMF. EMF generates plug-ins which provide wizards for creating new model instances and an editor which allows to create a new domain specific model. This generated component is a tree based editor.
-%End of user code 
-
-\begin{center}
-\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Domain_Specific_Tree_Editor.png}
-\end{center}
-
-This component port requires the following inputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Metamodel} :
-%Start of user code Domain Specific Metamodel_input_Description for Domain Specific Tree Editor
-Eclipse EMF is used to model the domain model. The meta-model describes the structure of the domain specific model.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Metamodel}.)
-\end{itemize}
-
-This component port provides the following outputs:
-\begin{itemize}
-  \item \textbf{Domain Specific Model} :
-%Start of user code Domain Specific Model_output_Description for Domain Specific Tree Editor
-The tree based editor is used to create domain specific model.
-%End of user code 
-(see section~\ref{sec:Domain_Specific_Model}.)
-\end{itemize}
 
 \section{Metamodels}
 \subsection{CCSL Model}
@@ -1789,12 +1413,6 @@ The tree based editor is used to create domain specific model.
 \label{sec:DSE_Model}
 %Start of user code DSE Model_interface
 
-%End of user code
-
-\subsection{Domain Specific  Representation Definition Model}
-\label{sec:Domain_Specific__Representation_Definition_Model}
-%Start of user code Domain Specific  Representation Definition Model_interface
-Sirius enables the specification of a modeling workbench in termes of graphical, table or tree editors with validation rules and actions using declarative descriptions. The representations (diagrams, tables, matrix and trees) are described in a configuration file which can be edited with the Sirius Editor.
 %End of user code
 
 \subsection{Domain Specific Event Model}
@@ -1825,6 +1443,12 @@ Sirius enables the specification of a modeling workbench in termes of graphical,
 \label{sec:Domain_Specific_Representation_Definition_Extension_Model}
 %Start of user code Domain Specific Representation Definition Extension Model_interface
 Sirius has specific support for extending and refining diagram descriptions and mappings without modifying the original. The purpose is to augment the base diagram with new graphical elements. In fact this metamodel is just a subpart of the domain specific representation definition metamodel.
+%End of user code
+
+\subsection{Domain Specific Representation Definition Model}
+\label{sec:Domain_Specific_Representation_Definition_Model}
+%Start of user code Domain Specific Representation Definition Model_interface
+
 %End of user code
 
 \subsection{ECL Model}
