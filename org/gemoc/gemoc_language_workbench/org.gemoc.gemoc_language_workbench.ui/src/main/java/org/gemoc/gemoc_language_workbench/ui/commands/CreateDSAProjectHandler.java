@@ -7,6 +7,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDSAWizard;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateKermeta2DSAWizardContextAction;
 
 public class CreateDSAProjectHandler extends AbstractGemocLanguageProjectHandler implements IHandler {
 
@@ -18,7 +19,7 @@ public class CreateDSAProjectHandler extends AbstractGemocLanguageProjectHandler
 
 		// launch the wizard that will select the action and do the job
 		WizardDialog wizardDialog = new WizardDialog(HandlerUtil.getActiveWorkbenchWindow(event).getShell(),
-													 new CreateDSAWizard(updatedGemocLanguageProject));
+													 new CreateDSAWizard(new CreateKermeta2DSAWizardContextAction(updatedGemocLanguageProject)));
 		wizardDialog.open();
 		
 		return null;

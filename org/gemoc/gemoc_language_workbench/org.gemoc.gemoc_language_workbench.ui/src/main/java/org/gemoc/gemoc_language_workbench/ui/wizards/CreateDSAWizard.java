@@ -9,10 +9,11 @@ public class CreateDSAWizard extends Wizard {
 	protected CreateDSAWizardContextAction context;
 	
 
-	public CreateDSAWizard(IProject updatedGemocLanguageProject) {
+	public CreateDSAWizard(CreateDSAWizardContextAction context) {
 		super();
 		this.setWindowTitle("Create DSA");
-		context = new CreateDSAWizardContextAction(updatedGemocLanguageProject);
+		//context = new CreateDSAWizardContextAction(updatedGemocLanguageProject);
+		this.context = context;
 		addPage(new CreateDSAWizardPage("Create DSA", context));
 	}
 
