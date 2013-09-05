@@ -37,8 +37,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-public class ShowDomainModelProjectHandler extends AbstractHandler implements
-		IHandler {
+public class ShowDomainModelProjectHandler extends AbstractHandler implements IHandler {
 
 	private IProject gemocLanguageIProject;
 	

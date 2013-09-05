@@ -1,6 +1,5 @@
 package org.gemoc.gemoc_language_workbench.ui.wizards;
 
-import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.wizard.Wizard;
 import org.gemoc.gemoc_language_workbench.ui.wizards.pages.CreateDSAWizardPage;
 

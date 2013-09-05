@@ -21,7 +21,7 @@ public class SelectDSAIprojectDialog extends SelectAnyIProjectDialog {
 			KpFileFinderResourceVisitor kpProjectVisitor = new KpFileFinderResourceVisitor();
 			try {
 				resource.accept(kpProjectVisitor);
-				result = result && kpProjectVisitor.kpFiles.size() > 0;
+				result = result && kpProjectVisitor.kpFiles != null;
 			} catch (CoreException e) {
 				Activator.error(e.getMessage(), e);
 			}
