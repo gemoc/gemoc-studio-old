@@ -116,7 +116,7 @@ public class IStackFrameAnimationAdapter extends IDebugElementAnimationAdapter
 
 	@Override
 	public boolean isAdapterForType(Object type) {
-		return super.isAdapterForType(type) || type == IThread.class;
+		return super.isAdapterForType(type) || type == IStackFrame.class;
 	}
 
 	public IVariable[] getVariables() throws DebugException {
