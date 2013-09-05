@@ -62,6 +62,7 @@
       <feature id="org.eclipse.mylyn.wikitext_feature"/>
       <feature id="org.eclipse.mylyn.hudson"/>
       <feature id="org.eclipse.sdk"/>
+      <feature id="org.eclipse.emf.query.sdk"/>
       <feature id="org.kermeta.language.feature"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
       <feature id="org.gemoc.execution.trace.feature"/>
