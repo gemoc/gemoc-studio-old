@@ -65,7 +65,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 	private MessageConsoleStream out;
 
 	public EmfEclCcslExecutionEngine(String ccslFilePath,
-			MessageConsoleStream out, String dsajarFilePath, String modelPath,
+			MessageConsoleStream out, String jarsFolderPath, String modelPath,
 			String MMpath) throws IOException, UnfoldingException,
 			SolverException {
 		super();
@@ -76,7 +76,6 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		_metamodelURI = URI.createPlatformResourceURI(MMpath, true);
 		out.println("mmURI = " + _metamodelURI.toString());
 		try {
-
 			URI uri = URI.createPlatformResourceURI(ccslFilePath, false);
 			ResourceSet resourceSet = new ResourceSetImpl();
 			Resource resource = resourceSet.getResource(uri, true);
@@ -97,7 +96,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		out.println("...solver OK : " + solver.toString());
 
 		out.println("Loading ALL THE jar files...");
-		setJarFile(dsajarFilePath);
+		setJarFile(jarsFolderPath);
 		// Path path = new Path(dsajarFilePath);
 		// IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 		// out.println("ifile du jar : " + file.toString());
@@ -108,14 +107,13 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		out.println("end of constructor.");
 	}
 
-	private boolean setJarFile(String jarFileName) {
+	private boolean setJarFile(String folderName) {
 		// URLClassLoader loader = (URLClassLoader)
 		// ClassLoader.getSystemClassLoader();
 		List<URL> urls = new ArrayList<URL>();
 		try {
 			out.println("gonna iterate on the folder");
 			// urls.add(new URL(jarFileName));
-			String folderName = "/fr.inria.aoste.timesquare.backend.emfexecution/kermeta_libs/mesdep";
 			IFolder folder = ResourcesPlugin.getWorkspace().getRoot()
 					.getFolder(new Path(folderName));
 			try {
@@ -151,14 +149,20 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 
 	}
 
-	public void runOneStep() throws NotContextException, SolverException {
+	public boolean runOneStep() throws NotContextException, SolverException {
 		LogicalStep currentStep = solver.doOneSimulationStep();
+		out.println("***** INSIDE runOneStep *****");
+		out.println("current step : " + currentStep.toString());
+		out.println("event occurrences : "
+				+ currentStep.getEventOccurrences().toString());
 		for (EventOccurrence eventOcc : currentStep.getEventOccurrences()) {
 			if (eventOcc.getFState() != FiredStateKind.TICK) {
 				continue;
 			}
+			out.println("current event occurrence : " + eventOcc.toString());
 
 			Clock c = getClock(eventOcc);
+			out.println("clock of the event occurrence : " + c.toString());
 
 			if (c == null) {
 				continue;
@@ -168,6 +172,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 			// manipulation
 			EList<EObject> linkedObjects = c.getTickingEvent()
 					.getReferencedObjectRefs();
+			out.println("list of linked objects : " + linkedObjects.toString());
 			if (linkedObjects.size() != 2) {
 				continue;
 			}
@@ -175,6 +180,8 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 			// first object is the object, second is the method
 			EObject eo = linkedObjects.get(0);
 			EObject method = linkedObjects.get(1);
+			out.println("What should be a method : " + method.toString()
+					+ " and what should be object : " + eo.toString());
 			String methodName = "";
 			if (method instanceof EOperation) {
 				methodName = getSimpleName(method);
@@ -182,9 +189,13 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 				throw new NotContextException("ouch");
 			}
 
-			invokeMethod(eo, methodName);
+			out.println("Trying to invoke method : " + methodName
+					+ " on object " + eo.toString());
 
+			invokeMethod(eo, methodName);
+			return true;
 		}
+		return false;
 	}
 
 	private EObject createAndInitializeModelLoader() {
@@ -210,7 +221,8 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 						(Object[]) null);
 			} catch (InvocationTargetException e) {
 				out.println("invocation target exception : " + e.getCause());
-				out.println("ExceptionInInitializerError : " + e.getCause().getCause());
+				out.println("ExceptionInInitializerError : "
+						+ e.getCause().getCause());
 			}
 			out.println("just called init4eclipse");
 			Class<?> fact = _kerLoader.loadClass(prop.get("mainFactory")

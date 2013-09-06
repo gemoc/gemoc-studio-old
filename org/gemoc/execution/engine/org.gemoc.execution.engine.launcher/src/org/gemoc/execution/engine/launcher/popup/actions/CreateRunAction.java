@@ -7,7 +7,6 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
@@ -17,12 +16,13 @@ import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
+import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.emf.ecl.ccsl.EmfEclCcslExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 
-public class NewAction implements IObjectActionDelegate {
+public class CreateRunAction implements IObjectActionDelegate {
 
 	private Shell shell;
 	private IFile file;
@@ -32,7 +32,7 @@ public class NewAction implements IObjectActionDelegate {
 	/**
 	 * Constructor for Action1.
 	 */
-	public NewAction() {
+	public CreateRunAction() {
 		super();
 		this.consoleName = "debug";
 	}
@@ -61,35 +61,45 @@ public class NewAction implements IObjectActionDelegate {
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
-		MessageDialog.openInformation(shell, "Launcher",
-				"New Action was executed.");
-
 		MessageConsole myConsole = findConsole(consoleName);
 		MessageConsoleStream out = myConsole.newMessageStream();
 
-		out.println("About to create the engine...");
-		String ccslFilePath = "/fr.inria.aoste.gemoc.example.trafficcontrol/TrafficControl/TrafficControl_MoCC-rendevous.extendedCCSL";
-		String dsajarFilePath = "platform:/resource/fr.inria.aoste.timesquare.backend.emfexecution/kermeta_libs/mesdep/org.gemoc.sample.i3s.fsm.dsa-0.0.1-SNAPSHOT.jar";
-		String modelPath = "/fr.inria.aoste.gemoc.example.trafficcontrol/TrafficControl/TrafficControl.tfsm";
+		String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC-rendevous.extendedCCSL";
+		String jarsFolderPath = "/org.gemoc.execution.engine.example/my_jars";
+		String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
 		String MMpath = "/fr.inria.aoste.gemoc.example.tfsm.model/model/tfsm.ecore";
-		try {
-			this.engine = new EmfEclCcslExecutionEngine(ccslFilePath, out,
-					dsajarFilePath, modelPath, MMpath);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} // this.engine = new EmfEclCcslExecutionEngine(file, out, );
-		out.println("Engine created: " + this.engine.toString());
 
-		out.println("About to run the engine...");
+		String information = "";
+
+		if (engine == null) {
+			out.println("Creating the engine...");
+			try {
+				this.engine = new EmfEclCcslExecutionEngine(ccslFilePath, out,
+						jarsFolderPath, modelPath, MMpath);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			out.println("...Engine created.");
+			information += "Engine created";
+		}
+
+		out.println("Running the engine...");
 		try {
 			((EmfEclCcslExecutionEngine) this.engine).runOneStep();
 		} catch (NotContextException e) {
 			out.println("not context exception");
+			Activator.error("not context exception", e);
 			e.printStackTrace();
 		} catch (SolverException e) {
 			out.println("solver exception");
+			Activator.error("solver exception", e);
 			e.printStackTrace();
 		}
+		if (!information.equals("")) {
+			information += ", ";
+		}
+		information += "Engine ran.";
+		MessageDialog.openInformation(shell, "Launcher", information);
 
 		out.println("DONE");
 	}
@@ -98,10 +108,6 @@ public class NewAction implements IObjectActionDelegate {
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
-		// StructuredSelection structuredSelection = (StructuredSelection)
-		// selection;
-		// this.file = (IFile) structuredSelection.getFirstElement();
-
 		if (selection instanceof IStructuredSelection) {
 			if (((IStructuredSelection) selection).size() == 1) {
 				Object selected = ((IStructuredSelection) selection)
