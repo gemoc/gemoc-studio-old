@@ -3,7 +3,7 @@ ClockConstraintSystem SemaphoreControl {
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel ;
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as CCSL ;
 		import "./TFSMMoC.ccslLib" as TFSMMoC ;
-		import "platform:/resource/fr.inria.aoste.gemoc.example.trafficcontrol/TrafficControl/TrafficControl.tfsm" as System ;
+		import "platform:/resource/org.gemoc.execution.engine.example/model/TrafficControl.tfsm" as System ;
 	}
 	entryBlock mainBlock
 	Block mainBlock {
@@ -301,9 +301,9 @@ ClockConstraintSystem SemaphoreControl {
 		Clock GuardIsNight_evaluate : clock -> evt_GuardIsNight_evaluate
 		( "System->GuardIsNight" , "System->GuardIsNight::evaluate()" )
 		Clock guardIsDay_evaluate : clock -> evt_guardIsDay_evaluate
-		( "System->guardIsDay" , "System->guardIsDay::evaluate()" )
+		 ( "System->guardIsDay" , "System->guardIsDay::evaluate()" )
 		Clock GuardIsNight_evaluatedTrue : clock -> evt_GuardIsNight_evaluatedTrue
-		( "System->GuardIsNight" )
+		 ( "System->GuardIsNight" )
 		Clock guardIsDay_evaluatedTrue : clock -> evt_guardIsDay_evaluatedTrue
 		( "System->guardIsDay" )
 		Clock GuardIsNight_evaluatedFalse : clock -> evt_GuardIsNight_evaluatedFalse
