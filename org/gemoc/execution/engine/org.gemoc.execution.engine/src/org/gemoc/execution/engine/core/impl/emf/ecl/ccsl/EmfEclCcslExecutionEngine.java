@@ -1,6 +1,5 @@
 package org.gemoc.execution.engine.core.impl.emf.ecl.ccsl;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -9,7 +8,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -33,7 +31,6 @@ import org.eclipse.ui.console.MessageConsoleStream;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.BasicExecutionEngine;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
-import org.gemoc.execution.engine.executors.MyURLClassLoader;
 import org.gemoc.execution.engine.solvers.Step;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -67,7 +64,9 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 	public EmfEclCcslExecutionEngine(String ccslFilePath,
 			MessageConsoleStream out, String jarsFolderPath, String modelPath,
 			String MMpath) throws IOException, UnfoldingException,
-			SolverException, ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+			SolverException, ClassNotFoundException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException,
+			NoSuchMethodException, SecurityException {
 		super();
 		this.out = out;
 		_modelURI = URI.createPlatformResourceURI(modelPath, true); // "platform:/resource/
@@ -174,7 +173,10 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		}
 	}
 
-	private EObject createAndInitializeModelLoader() throws IOException, ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	private EObject createAndInitializeModelLoader() throws IOException,
+			ClassNotFoundException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException,
+			NoSuchMethodException, SecurityException {
 		if (_kerLoader == null) {
 			out.println("kerloader is null");
 			throw new NullPointerException("the _kerLoader is null");
@@ -205,15 +207,18 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 	 * @param a
 	 *            configuration helper
 	 * @return
-	 * @throws IOException 
-	 * @throws SecurityException 
-	 * @throws NoSuchMethodException 
-	 * @throws InvocationTargetException 
-	 * @throws IllegalArgumentException 
-	 * @throws IllegalAccessException 
-	 * @throws ClassNotFoundException 
+	 * @throws IOException
+	 * @throws SecurityException
+	 * @throws NoSuchMethodException
+	 * @throws InvocationTargetException
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 * @throws ClassNotFoundException
 	 */
-	private EObject loadModel() throws ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException {
+	private EObject loadModel() throws ClassNotFoundException,
+			IllegalAccessException, IllegalArgumentException,
+			InvocationTargetException, NoSuchMethodException,
+			SecurityException, IOException {
 		createAndInitializeModelLoader();
 		try {
 			Method load = _modelLoader.getClass().getDeclaredMethod(
@@ -232,6 +237,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		try {
 			m = eo.getClass().getMethod(methodName);
 			res = m.invoke(eo);
+			out.println(res.toString());
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {

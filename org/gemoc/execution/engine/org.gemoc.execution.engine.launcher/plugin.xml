@@ -21,14 +21,7 @@
                class="org.gemoc.execution.engine.launcher.popup.actions.CreateRunAction"
                menubarPath="org.gemoc.execution.engine.launcher.menu1/group1"
                enablesFor="1"
-               id="org.gemoc.execution.engine.launcher.newAction">
-         </action>
-         <action
-               class="org.gemoc.execution.engine.launcher.popup.actions.CreateAction"
-               enablesFor="1"
-               id="org.gemoc.execution.engine.launcher.DummyAction"
-               label="Dummy"
-               menubarPath="org.gemoc.execution.engine.launcher.menu1/group1">
+               id="org.gemoc.execution.engine.launcher.CreateRunAction">
          </action>
       </objectContribution>
    </extension>

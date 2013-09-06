@@ -88,7 +88,9 @@ public class CreateRunAction implements IObjectActionDelegate {
 
 		out.println("Running the engine...");
 		try {
-			((EmfEclCcslExecutionEngine) this.engine).runOneStep();
+			for (int i = 0; i < 100; i++) {
+				((EmfEclCcslExecutionEngine) this.engine).runOneStep();
+			}
 		} catch (NotContextException e) {
 			out.println("not context exception");
 			Activator.error("not context exception", e);
