@@ -237,14 +237,17 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		try {
 			m = eo.getClass().getMethod(methodName);
 			res = m.invoke(eo);
-			out.println(res.toString());
 		} catch (SecurityException e) {
+			Activator.error("exception", e);
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
+			Activator.error("exception", e);
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
+			Activator.error("exception", e);
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
+			Activator.error("exception", e);
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			try {
@@ -260,18 +263,23 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 																		// Didier
 				res = m.invoke(eo);
 			} catch (SecurityException e1) {
+				Activator.error("exception", e);
 				e1.printStackTrace();
 			} catch (NoSuchMethodException e1) {
+				Activator.error("exception", e);
 				e1.printStackTrace();
 			} catch (IllegalArgumentException e1) {
+				Activator.error("exception", e);
 				e1.printStackTrace();
 			} catch (IllegalAccessException e1) {
+				Activator.error("exception", e);
 				e1.printStackTrace();
 			} catch (InvocationTargetException e1) {
+				Activator.error("exception", e);
 				e1.printStackTrace();
 			}
 		}
-
+		out.println("Result of calling " + methodName + " on " + eo.toString() + " : " + res.toString());
 		return res;
 	}
 
