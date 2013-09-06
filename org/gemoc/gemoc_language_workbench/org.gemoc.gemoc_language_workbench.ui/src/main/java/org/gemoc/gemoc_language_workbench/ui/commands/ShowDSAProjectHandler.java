@@ -1,9 +1,7 @@
 package org.gemoc.gemoc_language_workbench.ui.commands;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -11,19 +9,9 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchPage;
@@ -32,22 +20,20 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.ide.IDE;
 
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
-import org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject;
-import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.ui.resourcevisitors.KpFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
+import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileKp;
 
 public class ShowDSAProjectHandler extends AbstractHandler implements IHandler {
 	
-	private IProject gemocLanguageIProject;
+	//private IProject gemocLanguageIProject;
+	ActiveFile activeFilekp;
 	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		this.gemocLanguageIProject = getUpdateGemocLanguageProjectFromSelection(event);
+		this.activeFilekp = new ActiveFileKp(this.getUpdateGemocLanguageProjectFromSelection(event));
 		
-		File fileToOpen = new File(getkpFile(getDSAProject()).getLocation().toOSString());		
+		File fileToOpen = new File(this.activeFilekp.getActiveFile().getLocation().toOSString());
 		if (fileToOpen.exists() && fileToOpen.isFile()) {
 		    IFileStore fileStore = EFS.getLocalFileSystem().getStore(fileToOpen.toURI());
 		    IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
@@ -62,61 +48,6 @@ public class ShowDSAProjectHandler extends AbstractHandler implements IHandler {
 		}
 		
 		return null;
-	}
-	
-	private IProject getDSAProject() {
-		
-		IProject projectDSA = null; 
-		IFile configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
-		if(configFile.exists()){
-			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		    Map<String, Object> m = reg.getExtensionToFactoryMap();
-		    m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
-
-		    // Obtain a new resource set
-		    ResourceSet resSet = new ResourceSetImpl();
-
-		    // get the resource
-		    Resource resource = resSet.getResource(URI.createURI(configFile.getLocationURI().toString()),true);
-		    
-		    
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
-		    // consider only one language :-/
-		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinitions().get(0);
-		    
-		    // create missing data
-		    Kermeta2DSAProject k2Project = (Kermeta2DSAProject) langage.getDsaProjects().get(0);
-		    projectDSA = ResourcesPlugin.getWorkspace().getRoot().getProject(k2Project.getProjectName());
-			try {
-				resource.save(null);
-			} catch (IOException e) {
-				Activator.error(e.getMessage(), e);
-			}
-		}
-		try {
-			configFile.refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
-		} catch (CoreException e) {
-			Activator.error(e.getMessage(), e);
-		}
-		return projectDSA;
-	}
-	
-	private IFile getkpFile(IProject projectWithEcore) {
-
-		KpFileFinderResourceVisitor kpFinder = new KpFileFinderResourceVisitor();
-		
-		try {
-
-			projectWithEcore.accept(kpFinder);
-		} catch (CoreException e) {
-			Activator.error(e.getMessage(), e);
-		}
-
-		if(kpFinder.kpFiles != null){
-			return kpFinder.kpFiles;
-		} else {
-			return null;
-		}
 	}
 	
 	private IProject getUpdateGemocLanguageProjectFromSelection(ExecutionEvent event) {
