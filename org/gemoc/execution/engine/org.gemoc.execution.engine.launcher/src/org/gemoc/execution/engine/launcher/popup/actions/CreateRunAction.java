@@ -70,14 +70,16 @@ public class CreateRunAction implements IObjectActionDelegate {
 		String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
 		String MMpath = "/fr.inria.aoste.gemoc.example.tfsm.model/model/tfsm.ecore";
 
-		
-
 		if (engine == null) {
 			out.println("Creating the engine...");
 			try {
 				this.engine = new EmfEclCcslExecutionEngine(ccslFilePath, out,
 						jarsFolderPath, modelPath, MMpath);
 			} catch (Exception e) {
+				out.println("Got an exception, checkout the error log");
+				Activator.error(
+						"Exception in the initialization of the engine", e);
+				this.engine = null;
 				e.printStackTrace();
 			}
 			out.println("...Engine created.");

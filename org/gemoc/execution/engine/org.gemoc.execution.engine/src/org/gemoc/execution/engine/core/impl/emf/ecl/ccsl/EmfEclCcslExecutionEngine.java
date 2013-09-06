@@ -67,7 +67,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 	public EmfEclCcslExecutionEngine(String ccslFilePath,
 			MessageConsoleStream out, String jarsFolderPath, String modelPath,
 			String MMpath) throws IOException, UnfoldingException,
-			SolverException {
+			SolverException, ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		super();
 		this.out = out;
 		_modelURI = URI.createPlatformResourceURI(modelPath, true); // "platform:/resource/
@@ -174,38 +174,23 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		}
 	}
 
-	private EObject createAndInitializeModelLoader() {
+	private EObject createAndInitializeModelLoader() throws IOException, ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		if (_kerLoader == null) {
 			out.println("kerloader is null");
 			throw new NullPointerException("the _kerLoader is null");
 		}
 		Properties prop = new Properties();
 		InputStream in = _kerLoader.getResourceAsStream("main.properties");
-		try {
-			prop.load(in);
+		prop.load(in);
 
-			String s = prop.get("mainRunner").toString();
-			Class<?> init = _kerLoader.loadClass(prop.get("mainRunner")
-					.toString());
-			try {
-				init.getDeclaredMethod("init4eclipse").invoke(null,
-						(Object[]) null);
-			} catch (InvocationTargetException e) {
-				out.println("invocation target exception : " + e.getCause());
-				out.println("ExceptionInInitializerError : "
-						+ e.getCause().getCause());
-			}
-			Class<?> fact = _kerLoader.loadClass(prop.get("mainFactory")
-					.toString());
-			_modelLoader = (EObject) fact.getDeclaredMethod(
-					"create" + prop.get("mainClass")).invoke(fact);
-			in.close();
-		} catch (Exception e) {
-			out.println("exception in createAndInitializeModelLoader "
-					+ e.getMessage());
-			Activator.error("test", e);
-			e.printStackTrace();
-		}
+		String s = prop.get("mainRunner").toString();
+		Class<?> init = _kerLoader.loadClass(prop.get("mainRunner").toString());
+		init.getDeclaredMethod("init4eclipse").invoke(null, (Object[]) null);
+		Class<?> fact = _kerLoader
+				.loadClass(prop.get("mainFactory").toString());
+		_modelLoader = (EObject) fact.getDeclaredMethod(
+				"create" + prop.get("mainClass")).invoke(fact);
+		in.close();
 
 		return _modelLoader;
 
@@ -220,8 +205,15 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 	 * @param a
 	 *            configuration helper
 	 * @return
+	 * @throws IOException 
+	 * @throws SecurityException 
+	 * @throws NoSuchMethodException 
+	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException 
+	 * @throws IllegalAccessException 
+	 * @throws ClassNotFoundException 
 	 */
-	private EObject loadModel() {
+	private EObject loadModel() throws ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException {
 		createAndInitializeModelLoader();
 		try {
 			Method load = _modelLoader.getClass().getDeclaredMethod(
