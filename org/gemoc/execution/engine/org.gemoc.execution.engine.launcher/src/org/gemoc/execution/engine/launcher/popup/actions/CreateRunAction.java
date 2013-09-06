@@ -63,13 +63,14 @@ public class CreateRunAction implements IObjectActionDelegate {
 	public void run(IAction action) {
 		MessageConsole myConsole = findConsole(consoleName);
 		MessageConsoleStream out = myConsole.newMessageStream();
+		String information = "";
 
 		String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC-rendevous.extendedCCSL";
 		String jarsFolderPath = "/org.gemoc.execution.engine.example/my_jars";
 		String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
 		String MMpath = "/fr.inria.aoste.gemoc.example.tfsm.model/model/tfsm.ecore";
 
-		String information = "";
+		
 
 		if (engine == null) {
 			out.println("Creating the engine...");

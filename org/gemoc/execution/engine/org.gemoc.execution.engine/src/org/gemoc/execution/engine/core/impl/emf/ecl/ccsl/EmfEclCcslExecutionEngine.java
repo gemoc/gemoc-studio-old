@@ -70,11 +70,8 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 			SolverException {
 		super();
 		this.out = out;
-		out.println("Entering engine construtor...");
 		_modelURI = URI.createPlatformResourceURI(modelPath, true); // "platform:/resource/
-		out.println("modelURI = " + _modelURI.toString());
 		_metamodelURI = URI.createPlatformResourceURI(MMpath, true);
-		out.println("mmURI = " + _metamodelURI.toString());
 		try {
 			URI uri = URI.createPlatformResourceURI(ccslFilePath, false);
 			ResourceSet resourceSet = new ResourceSetImpl();
@@ -104,7 +101,6 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		out.println("... jar OK");
 
 		loadModel();
-		out.println("end of constructor.");
 	}
 
 	private boolean setJarFile(String folderName) {
@@ -112,7 +108,6 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		// ClassLoader.getSystemClassLoader();
 		List<URL> urls = new ArrayList<URL>();
 		try {
-			out.println("gonna iterate on the folder");
 			// urls.add(new URL(jarFileName));
 			IFolder folder = ResourcesPlugin.getWorkspace().getRoot()
 					.getFolder(new Path(folderName));
@@ -121,10 +116,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 					if (resource instanceof IFile) {
 						IFile file = (IFile) resource;
 						if (file.getFileExtension().equals("jar")) {
-							out.print("adding " + file.toString()
-									+ " to the list of urls...");
 							urls.add(file.getLocationURI().toURL());
-							out.println("..added!");
 						}
 					}
 				}
@@ -137,32 +129,21 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 			Activator.error("malformed url", e);
 			e.printStackTrace();
 		}
-		out.println(Arrays.asList(urls).toString());
-		out.println("kerloader supposedly done");
 		URL[] turls = (URL[]) urls.toArray(new URL[urls.size()]);
-		for (int i = 0; i <= turls.length - 1; i++) {
-			out.println(turls[i].toString());
-		}
 		_kerLoader = new URLClassLoader(turls, Activator.class.getClassLoader());
-		out.println("kerloader really done");
 		return true;
 
 	}
 
-	public boolean runOneStep() throws NotContextException, SolverException {
+	public void runOneStep() throws NotContextException, SolverException {
 		LogicalStep currentStep = solver.doOneSimulationStep();
 		out.println("***** INSIDE runOneStep *****");
-		out.println("current step : " + currentStep.toString());
-		out.println("event occurrences : "
-				+ currentStep.getEventOccurrences().toString());
 		for (EventOccurrence eventOcc : currentStep.getEventOccurrences()) {
 			if (eventOcc.getFState() != FiredStateKind.TICK) {
 				continue;
 			}
-			out.println("current event occurrence : " + eventOcc.toString());
 
 			Clock c = getClock(eventOcc);
-			out.println("clock of the event occurrence : " + c.toString());
 
 			if (c == null) {
 				continue;
@@ -172,7 +153,6 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 			// manipulation
 			EList<EObject> linkedObjects = c.getTickingEvent()
 					.getReferencedObjectRefs();
-			out.println("list of linked objects : " + linkedObjects.toString());
 			if (linkedObjects.size() != 2) {
 				continue;
 			}
@@ -180,8 +160,6 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 			// first object is the object, second is the method
 			EObject eo = linkedObjects.get(0);
 			EObject method = linkedObjects.get(1);
-			out.println("What should be a method : " + method.toString()
-					+ " and what should be object : " + eo.toString());
 			String methodName = "";
 			if (method instanceof EOperation) {
 				methodName = getSimpleName(method);
@@ -193,13 +171,10 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 					+ " on object " + eo.toString());
 
 			invokeMethod(eo, methodName);
-			return true;
 		}
-		return false;
 	}
 
 	private EObject createAndInitializeModelLoader() {
-		out.println("Entering createAndInitializeModelLoader...");
 		if (_kerLoader == null) {
 			out.println("kerloader is null");
 			throw new NullPointerException("the _kerLoader is null");
@@ -207,15 +182,11 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		Properties prop = new Properties();
 		InputStream in = _kerLoader.getResourceAsStream("main.properties");
 		try {
-			out.println("Trying to load the inputstream...");
 			prop.load(in);
 
 			String s = prop.get("mainRunner").toString();
 			Class<?> init = _kerLoader.loadClass(prop.get("mainRunner")
 					.toString());
-			out.println("mainrunner : " + init.toString());
-			out.println("methode init4eclipse : "
-					+ init.getDeclaredMethod("init4eclipse").toString());
 			try {
 				init.getDeclaredMethod("init4eclipse").invoke(null,
 						(Object[]) null);
@@ -224,13 +195,10 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 				out.println("ExceptionInInitializerError : "
 						+ e.getCause().getCause());
 			}
-			out.println("just called init4eclipse");
 			Class<?> fact = _kerLoader.loadClass(prop.get("mainFactory")
 					.toString());
-			out.println("factory : " + fact.toString());
 			_modelLoader = (EObject) fact.getDeclaredMethod(
 					"create" + prop.get("mainClass")).invoke(fact);
-			out.println("modelloader : " + _modelLoader.toString());
 			in.close();
 		} catch (Exception e) {
 			out.println("exception in createAndInitializeModelLoader "
@@ -238,7 +206,6 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 			Activator.error("test", e);
 			e.printStackTrace();
 		}
-		out.println("...returning modelLoader : " + _modelLoader.toString());
 
 		return _modelLoader;
 
@@ -255,18 +222,15 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 	 * @return
 	 */
 	private EObject loadModel() {
-		out.println("Entering loadModel()");
 		createAndInitializeModelLoader();
 		try {
 			Method load = _modelLoader.getClass().getDeclaredMethod(
 					"loadModel", String.class, String.class);
 			_modelRoot = (EObject) load.invoke(_modelLoader,
 					_modelURI.toString(), _metamodelURI.toString());
-			System.out.println(_modelRoot);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		out.println("...returning modelRoot : " + _modelRoot.toString());
 		return _modelRoot;
 	}
 
@@ -311,41 +275,6 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 		}
 
 		return res;
-	}
-
-	public boolean loadJarFile(IFile iFile) {
-		out.println("Entering loadjarfile...");
-		URLClassLoader loader = (URLClassLoader) ClassLoader
-				.getSystemClassLoader();
-		MyURLClassLoader l = new MyURLClassLoader(loader.getURLs(),
-				Activator.class.getClassLoader());
-		out.println("got the classloaders");
-		try {
-			out.println(iFile.getLocationURI().toString());
-			l.addURL(iFile.getLocationURI().toURL());
-			out.println("added url");
-			try {
-				l.close();
-			} catch (IOException e) {
-				out.println("loadjarfile exception");
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			out.println("...Leaving loadjarfile with true");
-			return true;
-		} catch (MalformedURLException e) {
-			out.println("loadjarfile exception");
-			e.printStackTrace();
-		}
-		try {
-			l.close();
-		} catch (IOException e) {
-			out.println("loadjarfile exception");
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		out.println("...Leaving loadjarfile with false");
-		return false;
 	}
 
 	private String getSimpleName(EObject eo) {
