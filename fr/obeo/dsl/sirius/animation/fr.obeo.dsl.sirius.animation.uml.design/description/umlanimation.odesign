@@ -51,7 +51,7 @@
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%self.~.filter(&quot;Variable&quot;)[name==&quot;transitions&quot;].nSize() > 0%>">
             <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="strokeColor">
               <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition']/@style"/>
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
         </customization>

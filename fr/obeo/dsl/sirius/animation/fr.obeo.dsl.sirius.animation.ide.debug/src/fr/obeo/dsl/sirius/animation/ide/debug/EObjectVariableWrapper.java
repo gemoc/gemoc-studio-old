@@ -26,8 +26,10 @@ import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 
-public class EObjectVariableWrapper extends IDebugElementAnimationAdapter implements IVariable {
+public class EObjectVariableWrapper extends IDebugElementAnimationAdapter
+		implements IVariable {
 
 	public EObjectVariableWrapper(ILaunch launch,
 			AnimatorEclipseDebugIntegration factory) {
@@ -36,22 +38,20 @@ public class EObjectVariableWrapper extends IDebugElementAnimationAdapter implem
 
 	private EObject wrapped;
 
-
 	public EObject getWrapped() {
 		return this.wrapped;
 	}
 
-//	public static EObjectVariableWrapper getOrCreate(EObject child) {
-//		Iterator<EObjectVariableWrapper> it = Iterators.filter(child
-//				.eAdapters().iterator(), EObjectVariableWrapper.class);
-//		if (!it.hasNext()) {
-//			EObjectVariableWrapper created = new EObjectVariableWrapper(child);
-//			child.eAdapters().add(created);
-//			return created;
-//		}
-//		return it.next();
-//	}
-
+	// public static EObjectVariableWrapper getOrCreate(EObject child) {
+	// Iterator<EObjectVariableWrapper> it = Iterators.filter(child
+	// .eAdapters().iterator(), EObjectVariableWrapper.class);
+	// if (!it.hasNext()) {
+	// EObjectVariableWrapper created = new EObjectVariableWrapper(child);
+	// child.eAdapters().add(created);
+	// return created;
+	// }
+	// return it.next();
+	// }
 
 	private EObject getHost() {
 		return (EObject) getTarget();
@@ -84,13 +84,20 @@ public class EObjectVariableWrapper extends IDebugElementAnimationAdapter implem
 	public String getName() throws DebugException {
 		String name = "";
 		EObject host = getHost();
-		if (host.eContainer() != null
-				&& host.eContainingFeature() != null) {
+		if (host.eContainer() != null && host.eContainingFeature() != null) {
 			EStructuralFeature contFeature = host.eContainingFeature();
 			if (contFeature.isMany()) {
 				List contlist = (List) host.eContainer().eGet(contFeature);
 				return "[" + contlist.indexOf(host) + "]";
 			} else {
+				Object value = host.eContainer().eGet(contFeature);
+				if (value != null) {
+					Object obj = factory.getLabelFactory().adapt(value,
+							IItemLabelProvider.class);
+					if (obj instanceof IItemLabelProvider) {
+						return ((IItemLabelProvider) obj).getText(getHost());
+					}
+				}
 				return "[0]";
 			}
 		}

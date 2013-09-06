@@ -106,7 +106,7 @@ public class AnimatorEclipseDebugIntegration extends AnimationAdapterFactory {
 	}
 
 	@Override
-	public Adapter adapt(Notifier target, Object type) {
+	public synchronized Adapter adapt(Notifier target, Object type) {
 		if (target instanceof SettingWrapper) {
 			Adapter adapter = createSettingTargetAdapter();
 			associate(adapter, target);

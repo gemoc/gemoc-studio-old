@@ -50,7 +50,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getVariables <em>Variables</em>}</li>
- *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getSubFrames <em>Sub Frames</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getState <em>State</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.impl.StackFrameImpl#getName <em>Name</em>}</li>
@@ -73,16 +72,6 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	 * @ordered
 	 */
 	protected EList<Variable> variables;
-
-	/**
-	 * The cached value of the '{@link #getSubFrames() <em>Sub Frames</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubFrames()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<StackFrame> subFrames;
 
 	/**
 	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
@@ -193,18 +182,6 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 			variables = new EObjectContainmentEList<Variable>(Variable.class, this, AnimationPackage.STACK_FRAME__VARIABLES);
 		}
 		return variables;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<StackFrame> getSubFrames() {
-		if (subFrames == null) {
-			subFrames = new EObjectContainmentEList<StackFrame>(StackFrame.class, this, AnimationPackage.STACK_FRAME__SUB_FRAMES);
-		}
-		return subFrames;
 	}
 
 	/**
@@ -517,8 +494,6 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 		switch (featureID) {
 			case AnimationPackage.STACK_FRAME__VARIABLES:
 				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
-			case AnimationPackage.STACK_FRAME__SUB_FRAMES:
-				return ((InternalEList<?>)getSubFrames()).basicRemove(otherEnd, msgs);
 			case AnimationPackage.STACK_FRAME__PARENT:
 				return basicSetParent(null, msgs);
 			case AnimationPackage.STACK_FRAME__DATA:
@@ -551,8 +526,6 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 		switch (featureID) {
 			case AnimationPackage.STACK_FRAME__VARIABLES:
 				return getVariables();
-			case AnimationPackage.STACK_FRAME__SUB_FRAMES:
-				return getSubFrames();
 			case AnimationPackage.STACK_FRAME__STATE:
 				return getState();
 			case AnimationPackage.STACK_FRAME__PARENT:
@@ -586,10 +559,6 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 			case AnimationPackage.STACK_FRAME__VARIABLES:
 				getVariables().clear();
 				getVariables().addAll((Collection<? extends Variable>)newValue);
-				return;
-			case AnimationPackage.STACK_FRAME__SUB_FRAMES:
-				getSubFrames().clear();
-				getSubFrames().addAll((Collection<? extends StackFrame>)newValue);
 				return;
 			case AnimationPackage.STACK_FRAME__STATE:
 				setState((StackFrameState)newValue);
@@ -627,9 +596,6 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 			case AnimationPackage.STACK_FRAME__VARIABLES:
 				getVariables().clear();
 				return;
-			case AnimationPackage.STACK_FRAME__SUB_FRAMES:
-				getSubFrames().clear();
-				return;
 			case AnimationPackage.STACK_FRAME__STATE:
 				setState(STATE_EDEFAULT);
 				return;
@@ -665,8 +631,6 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 		switch (featureID) {
 			case AnimationPackage.STACK_FRAME__VARIABLES:
 				return variables != null && !variables.isEmpty();
-			case AnimationPackage.STACK_FRAME__SUB_FRAMES:
-				return subFrames != null && !subFrames.isEmpty();
 			case AnimationPackage.STACK_FRAME__STATE:
 				return state != STATE_EDEFAULT;
 			case AnimationPackage.STACK_FRAME__PARENT:

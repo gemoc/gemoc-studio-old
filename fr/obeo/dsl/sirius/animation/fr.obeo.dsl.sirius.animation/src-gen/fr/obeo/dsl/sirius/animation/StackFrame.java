@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getVariables <em>Variables</em>}</li>
- *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getSubFrames <em>Sub Frames</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getState <em>State</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getParent <em>Parent</em>}</li>
  *   <li>{@link fr.obeo.dsl.sirius.animation.StackFrame#getName <em>Name</em>}</li>
@@ -62,22 +61,6 @@ public interface StackFrame extends EObject {
 	 * @generated
 	 */
 	EList<Variable> getVariables();
-
-	/**
-	 * Returns the value of the '<em><b>Sub Frames</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.obeo.dsl.sirius.animation.StackFrame}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sub Frames</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub Frames</em>' containment reference list.
-	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_SubFrames()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<StackFrame> getSubFrames();
 
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
@@ -199,7 +182,7 @@ public interface StackFrame extends EObject {
 	 * @return the value of the '<em>Current Instruction</em>' reference.
 	 * @see #setCurrentInstruction(EObject)
 	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_CurrentInstruction()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EObject getCurrentInstruction();
@@ -251,7 +234,7 @@ public interface StackFrame extends EObject {
 	 * @return the value of the '<em>Execution Environment</em>' reference.
 	 * @see #setExecutionEnvironment(EObject)
 	 * @see fr.obeo.dsl.sirius.animation.AnimationPackage#getStackFrame_ExecutionEnvironment()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EObject getExecutionEnvironment();

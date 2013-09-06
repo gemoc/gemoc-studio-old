@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.PseudostateKind;
 import org.eclipse.uml2.uml.State;
@@ -58,43 +59,38 @@ public class AnimateUMLStateMachine implements Animator {
 
 	};
 
-	/*
-	 * steping over a statemachine SO : first instruction : initial state.
-	 * update possible next states SO : pick the next state, add new possible
-	 * states.
-	 */
-
-	private void enterState(StackFrame parent, State st) {
-		StackFrame ctx = parent.newFrame(st);
-		if (st.getEntry() != null) {
-			ctx.setCurrentInstruction(st.getEntry());
-		} else {
-			ctx.setCurrentInstruction(st);
-		}
-	}
 
 	public void stepInto(StackFrame host) {
-		if (host.getExecutionEnvironment() instanceof State) {
-			State st = (State) host.getExecutionEnvironment();
-			if (st.getDoActivity() != null
-					&& host.getCurrentInstruction() != st.getDoActivity()) {
-				host.setCurrentInstruction(st.getDoActivity());
-			} else {
-				/*
-				 * we did the do, now let's go to the transitions
-				 */
-
+		if (host.getExecutionEnvironment() instanceof StateMachine) {
+			/*
+			 * if Env is statemachine and instruction is state, we have to go into the state.
+			 */
+			if (host.getCurrentInstruction() instanceof State) {
+				State st = (State) host.getCurrentInstruction();
+				StackFrame stateFrame = host.newFrame(st);
+				stateFrame.setCurrentInstruction(st);
 			}
+		} else if (host.getExecutionEnvironment() instanceof State) {
+			if (host.getCurrentInstruction() instanceof State) {
+				State st = (State) host.getCurrentInstruction();
+				/*
+				 * we are into the state, we should do the doActivity.
+				 */
+				if (st.getDoActivity()!=null) {
+					 host.setCurrentInstruction(st.getDoActivity());
+					 host.getOrCreateVariable("behavior").getElements().add(st.getDoActivity());
+				}
+			} else if (host.getCurrentInstruction() instanceof Behavior) {
+				/*
+				 * we did the doBehavior, lets pop the context
+				 */
+				host.popFrame();
+			}
+			
 		}
 	}
 
 	public void stepOver(StackFrame host) {
-
-		/*
-		 * SM / SM -> SM/InitialState + candidate transitions -> SM/une
-		 * transition + candidate transition-- -> SM/State + candidate
-		 * transitions++ -> SM/une transition + candidate transition--
-		 */
 		if (host.getExecutionEnvironment() instanceof StateMachine) {
 			Variable possibleTransitions = host
 					.getOrCreateVariable(SM_ACTIVETRANSITIONS);
@@ -104,7 +100,7 @@ public class AnimateUMLStateMachine implements Animator {
 				possibleTransitions.getElements().addAll(v.getOutgoings());
 				if (possibleTransitions.getElements().size() > 0) {
 					Transition t = (Transition) possibleTransitions
-							.getElements().get(0);
+							.getElements().get(possibleTransitions.getElements().size() -1);
 					host.setCurrentInstruction(t);
 					possibleTransitions.getElements().remove(t);
 				}
@@ -124,16 +120,15 @@ public class AnimateUMLStateMachine implements Animator {
 			 * always add a "this" variable for the current execution context
 			 */
 			Variable currentExecutionContext = host.getParent()
-					.getTopStackFrame().getOrCreateVariable("this");
+					.getTopStackFrame().getOrCreateVariable("context");
 			currentExecutionContext.getElements().clear();
 			currentExecutionContext.getElements().add(
 					host.getExecutionEnvironment());
 
 			Variable instruction = host.getParent().getTopStackFrame()
 					.getOrCreateVariable("current");
-			currentExecutionContext.getElements().clear();
-			currentExecutionContext.getElements().add(
-					host.getCurrentInstruction());
+			instruction.getElements().clear();
+			instruction.getElements().add(host.getCurrentInstruction());
 
 		}
 
@@ -144,49 +139,6 @@ public class AnimateUMLStateMachine implements Animator {
 			State st = (State) host.getExecutionEnvironment();
 		}
 
-	}
-
-	private void updateCurrentState(StackFrame host) {
-		Variable currentState = host.getOrCreateVariable("currentState");
-		Variable machine = host.getOrCreateVariable("statemachine");
-		State cur = null;
-		if (currentState.getElements().size() > 0) {
-			cur = (State) currentState.getElements().get(0);
-		}
-		currentState.getElements().clear();
-		State nextState = pickTheFirstDifferentState((StateMachine) machine
-				.getElements().get(0), cur);
-		if (nextState != null) {
-			nextState.setName("some name " + System.currentTimeMillis());
-			currentState.getElements().add(nextState);
-		} else {
-			System.err.println("next step is null");
-		}
-	}
-
-	private State pickTheFirstDifferentState(StateMachine stateMachine,
-			State prevState) {
-		Iterator<State> it = Iterators.filter(stateMachine.eAllContents(),
-				State.class);
-		while (it.hasNext()) {
-			State child = it.next();
-			if (child != prevState) {
-				return child;
-			}
-		}
-		return null;
-	}
-
-	private State nextState(StateMachine stateMachine, State prevState) {
-		Iterator<State> it = Iterators.filter(stateMachine.eAllContents(),
-				State.class);
-		while (it.hasNext()) {
-			State child = it.next();
-			if (child != prevState) {
-				return child;
-			}
-		}
-		return null;
 	}
 
 	public AnimationTarget start(ResourceSet set) {

@@ -141,9 +141,6 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 
 		isInited = true;
 
-		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
-
 		// Create package meta-data objects
 		theAnimationPackage.createPackageContents();
 
@@ -218,17 +215,8 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStackFrame_SubFrames() {
-		return (EReference)stackFrameEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getStackFrame_State() {
-		return (EAttribute)stackFrameEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)stackFrameEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -237,7 +225,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * @generated
 	 */
 	public EReference getStackFrame_Parent() {
-		return (EReference)stackFrameEClass.getEStructuralFeatures().get(3);
+		return (EReference)stackFrameEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -246,7 +234,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * @generated
 	 */
 	public EAttribute getStackFrame_Name() {
-		return (EAttribute)stackFrameEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)stackFrameEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -255,7 +243,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * @generated
 	 */
 	public EReference getStackFrame_Data() {
-		return (EReference)stackFrameEClass.getEStructuralFeatures().get(5);
+		return (EReference)stackFrameEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -264,7 +252,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * @generated
 	 */
 	public EReference getStackFrame_CurrentInstruction() {
-		return (EReference)stackFrameEClass.getEStructuralFeatures().get(6);
+		return (EReference)stackFrameEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -273,7 +261,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * @generated
 	 */
 	public EReference getStackFrame_ParentStack() {
-		return (EReference)stackFrameEClass.getEStructuralFeatures().get(7);
+		return (EReference)stackFrameEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -282,7 +270,7 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 	 * @generated
 	 */
 	public EReference getStackFrame_ExecutionEnvironment() {
-		return (EReference)stackFrameEClass.getEStructuralFeatures().get(8);
+		return (EReference)stackFrameEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -437,7 +425,6 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 
 		stackFrameEClass = createEClass(STACK_FRAME);
 		createEReference(stackFrameEClass, STACK_FRAME__VARIABLES);
-		createEReference(stackFrameEClass, STACK_FRAME__SUB_FRAMES);
 		createEAttribute(stackFrameEClass, STACK_FRAME__STATE);
 		createEReference(stackFrameEClass, STACK_FRAME__PARENT);
 		createEAttribute(stackFrameEClass, STACK_FRAME__NAME);
@@ -488,9 +475,6 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -500,22 +484,21 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 		// Initialize classes and features; add operations and parameters
 		initEClass(animationTargetEClass, AnimationTarget.class, "AnimationTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAnimationTarget_Threads(), this.getThread(), this.getThread_Parent(), "threads", null, 0, -1, AnimationTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnimationTarget_Name(), theEcorePackage.getEString(), "name", null, 1, 1, AnimationTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnimationTarget_Name(), ecorePackage.getEString(), "name", null, 1, 1, AnimationTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnimationTarget_State(), this.getTargetState(), "state", null, 0, 1, AnimationTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stackFrameEClass, StackFrame.class, "StackFrame", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStackFrame_Variables(), this.getVariable(), null, "variables", null, 0, -1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStackFrame_SubFrames(), this.getStackFrame(), null, "subFrames", null, 0, -1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStackFrame_State(), this.getStackFrameState(), "state", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStackFrame_Parent(), this.getThread(), this.getThread_StackFrames(), "parent", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStackFrame_Name(), theEcorePackage.getEString(), "name", null, 1, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStackFrame_Name(), ecorePackage.getEString(), "name", null, 1, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStackFrame_Data(), ecorePackage.getEObject(), null, "data", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStackFrame_CurrentInstruction(), ecorePackage.getEObject(), null, "currentInstruction", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStackFrame_CurrentInstruction(), ecorePackage.getEObject(), null, "currentInstruction", null, 1, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStackFrame_ParentStack(), this.getStackFrame(), null, "parentStack", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStackFrame_ExecutionEnvironment(), ecorePackage.getEObject(), null, "executionEnvironment", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStackFrame_ExecutionEnvironment(), ecorePackage.getEObject(), null, "executionEnvironment", null, 1, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(stackFrameEClass, this.getVariable(), "getOrCreateVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theEcorePackage.getEString(), "varName", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "varName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(stackFrameEClass, this.getStackFrame(), "newFrame", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEObject(), "executionEnvironment", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -527,12 +510,12 @@ public class AnimationPackageImpl extends EPackageImpl implements AnimationPacka
 
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariable_Elements(), theEcorePackage.getEObject(), null, "elements", null, 1, -1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariable_Elements(), ecorePackage.getEObject(), null, "elements", null, 1, -1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(threadEClass, fr.obeo.dsl.sirius.animation.Thread.class, "Thread", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getThread_StackFrames(), this.getStackFrame(), this.getStackFrame_Parent(), "stackFrames", null, 0, -1, fr.obeo.dsl.sirius.animation.Thread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getThread_TopStackFrame(), this.getStackFrame(), null, "topStackFrame", null, 0, 1, fr.obeo.dsl.sirius.animation.Thread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getThread_Name(), theEcorePackage.getEString(), "name", null, 1, 1, fr.obeo.dsl.sirius.animation.Thread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThread_Name(), ecorePackage.getEString(), "name", null, 1, 1, fr.obeo.dsl.sirius.animation.Thread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getThread_Parent(), this.getAnimationTarget(), this.getAnimationTarget_Threads(), "parent", null, 0, 1, fr.obeo.dsl.sirius.animation.Thread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getThread_Data(), ecorePackage.getEObject(), null, "data", null, 0, 1, fr.obeo.dsl.sirius.animation.Thread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
