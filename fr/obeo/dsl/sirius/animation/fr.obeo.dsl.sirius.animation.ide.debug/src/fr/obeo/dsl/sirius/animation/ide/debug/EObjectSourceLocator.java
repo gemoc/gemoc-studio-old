@@ -30,11 +30,12 @@ public class EObjectSourceLocator implements IPersistableSourceLocator {
 
 	public Object getSourceElement(IStackFrame stackFrame) {
 		if (stackFrame instanceof IStackFrameAnimationAdapter) {
-			StackFrame sourceElement = ((IStackFrameAnimationAdapter) stackFrame)
+			StackFrame stack = ((IStackFrameAnimationAdapter) stackFrame)
 					.getHost();
-			EObject elementToOpenElement = sourceElement.getSourceElement();
-			// TODO let's open the related diagrams and select the element.
-			return null;
+			EObject elementToOpenElement = stack.getCurrentInstruction();
+			if (elementToOpenElement==null)
+				elementToOpenElement = stack.getExecutionEnvironment();
+			return elementToOpenElement;
 		} else {
 			return null;
 		}

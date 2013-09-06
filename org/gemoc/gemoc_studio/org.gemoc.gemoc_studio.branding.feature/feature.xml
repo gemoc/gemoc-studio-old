@@ -16,21 +16,37 @@
    <license url="http://www.example.com/license">
       [Enter License Description here.]
    </license>
-         
+
    <includes
          id="org.kermeta.language.feature"
+         version="0.0.0"
+         search-location="both"/>
+
+   <includes
+         id="org.gemoc.gemoc_language_workbench.feature"
          version="0.0.0"/>
+
+   <includes
+         id="org.gemoc.gemoc_modeling_workbench.feature"
+         version="0.0.0"/>
+   <includes
+         id="K3Feature"
+         version="0.0.0"/>   
 
    <requires>
       <import feature="org.kermeta.language.feature" version="2.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
       <import feature="fr.inria.aoste.timesquare.feature" version="0.0.0" match="greaterOrEqual"/>
-   	  <import feature="fr.inria.aoste.timesquare.ecl.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.ecl.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtend.sdk" version="2.4.2.v201306120542" match="greaterOrEqual"/>
       <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
-   	  <import feature="org.eclipse.emf.ecoretools.sdk" version="0.0.0" match="greaterOrEqual"/>   
+      <import feature="org.eclipse.emf.ecoretools.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.gemoc_language_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.gemoc_modeling_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
+
    <plugin
          id="org.gemoc.gemoc_studio.branding"
          download-size="0"

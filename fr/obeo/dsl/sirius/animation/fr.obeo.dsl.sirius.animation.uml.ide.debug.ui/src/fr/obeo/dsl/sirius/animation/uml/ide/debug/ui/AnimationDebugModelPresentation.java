@@ -18,7 +18,9 @@
  */
 package fr.obeo.dsl.sirius.animation.uml.ide.debug.ui;
 
-import org.eclipse.debug.core.model.IDebugElement;
+import java.util.Set;
+
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.ui.IDebugModelPresentation;
 import org.eclipse.debug.ui.IValueDetailListener;
@@ -26,6 +28,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
@@ -35,9 +38,18 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 
+import com.google.common.collect.Sets;
+
 import fr.obeo.dsl.sirius.animation.provider.AnimationItemProviderAdapterFactory;
+import fr.obeo.dsl.viewpoint.DRepresentation;
+import fr.obeo.dsl.viewpoint.DRepresentationElement;
+import fr.obeo.dsl.viewpoint.business.api.query.DRepresentationElementQuery;
+import fr.obeo.dsl.viewpoint.business.api.session.Session;
+import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
+import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
 
 public class AnimationDebugModelPresentation implements IDebugModelPresentation {
 
@@ -56,8 +68,9 @@ public class AnimationDebugModelPresentation implements IDebugModelPresentation 
 
 		adapterFactory
 				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		AnimationItemProviderAdapterFactory animationFactory = new AnimationItemProviderAdapterFactory();
 		adapterFactory
-				.addAdapterFactory(new AnimationItemProviderAdapterFactory());
+				.addAdapterFactory(animationFactory);
 		adapterFactory
 				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		this.labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
@@ -65,6 +78,35 @@ public class AnimationDebugModelPresentation implements IDebugModelPresentation 
 
 	public IEditorInput getEditorInput(Object element) {
 		if (element instanceof EObject) {
+			EObject elementToOpenElement = (EObject) element;
+			Session session = SessionManager.INSTANCE
+					.getSession(elementToOpenElement);
+			if (session != null) {
+				Set<DRepresentation> representations = Sets.newLinkedHashSet();
+				for (Setting setting : session.getSemanticCrossReferencer()
+						.getInverseReferences(elementToOpenElement)) {
+					System.out.println(setting.getEObject());
+					if (setting.getEObject() instanceof DRepresentationElement) {
+						representations.add(new DRepresentationElementQuery(
+								(DRepresentationElement) setting.getEObject())
+								.getParentRepresentation());
+					}
+					if (setting.getEObject() instanceof DRepresentation) {
+						representations.add((DRepresentation) setting
+								.getEObject());
+					}
+				}
+				IEditorPart last = null;
+				for (DRepresentation dRepresentation : representations) {
+					last = DialectUIManager.INSTANCE.openEditor(session,
+							dRepresentation);
+				}
+				if (last != null) {
+					return last.getEditorInput();
+				}
+
+			}
+
 			URIEditorInput input = new URIEditorInput(
 					EcoreUtil.getURI((EObject) element));
 			return input;
@@ -75,15 +117,16 @@ public class AnimationDebugModelPresentation implements IDebugModelPresentation 
 
 	public String getEditorId(IEditorInput input, Object element) {
 		if (element instanceof EObject) {
-			URI uri = EcoreUtil.getURI((EObject) element);
+			URI uri = EcoreUtil.getURI((EObject) element);			
 			/*
 			 * FIXME : easy but broken way to find the editor id from an
 			 * EObject.
 			 */
-			IEditorDescriptor descriptor = PlatformUI.getWorkbench()
-					.getEditorRegistry()
-					.getDefaultEditor("some name." + uri.fileExtension());
-			return descriptor.getId();
+//			IEditorDescriptor descriptor = PlatformUI.getWorkbench()
+//					.getEditorRegistry()
+//					.getDefaultEditor("some name." + uri.fileExtension());
+//			return descriptor.getId();
+			return null;
 		} else {
 			return null;
 		}

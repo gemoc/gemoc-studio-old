@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
+import org.gemoc.execution.engine.executors.Activator;
 import org.gemoc.execution.engine.executors.Executor;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
 
@@ -24,8 +25,16 @@ public class EmfExecutor implements Executor {
     public FeedbackData execute(DomainSpecificAction dsa) {
         try {
             return (FeedbackData) dsa.getMethod().invoke(/* dsa.getTarget() */"toto");
-        } catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
-            e.printStackTrace();
+        }
+        catch (InvocationTargetException e) {
+            Activator.error(e.getMessage(), e);
+            return null;
+        } 
+        catch ( IllegalAccessException e) {
+            Activator.error(e.getMessage(), e);
+            return null;
+        }catch ( IllegalArgumentException e) {
+            Activator.error(e.getMessage(), e);
             return null;
         }
     }

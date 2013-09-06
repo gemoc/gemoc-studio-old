@@ -36,28 +36,33 @@ public class EmfExecutionConfigurationAdapterFactory extends AdapterFactoryImpl 
      * @generated
      */
     protected EmfExecutionConfigurationSwitch<Adapter> modelSwitch = new EmfExecutionConfigurationSwitch<Adapter>() {
+        
         @Override
-        public Adapter caseEMFExecutionConfiguration(EMFExecutionConfiguration object) {
+		public Adapter caseEMFExecutionConfiguration(EMFExecutionConfiguration object) {
             return EmfExecutionConfigurationAdapterFactory.this.createEMFExecutionConfigurationAdapter();
         }
 
+        
         @Override
-        public Adapter caseForcedClockMapping(ForcedClockMapping object) {
+		public Adapter caseForcedClockMapping(ForcedClockMapping object) {
             return EmfExecutionConfigurationAdapterFactory.this.createForcedClockMappingAdapter();
         }
 
+        
         @Override
-        public Adapter caseImportStatement(ImportStatement object) {
+		public Adapter caseImportStatement(ImportStatement object) {
             return EmfExecutionConfigurationAdapterFactory.this.createImportStatementAdapter();
         }
 
+        
         @Override
-        public Adapter caseJarImportStatement(JarImportStatement object) {
+		public Adapter caseJarImportStatement(JarImportStatement object) {
             return EmfExecutionConfigurationAdapterFactory.this.createJarImportStatementAdapter();
         }
 
+        
         @Override
-        public Adapter defaultCase(EObject object) {
+		public Adapter defaultCase(EObject object) {
             return EmfExecutionConfigurationAdapterFactory.this.createEObjectAdapter();
         }
     };
@@ -83,8 +88,9 @@ public class EmfExecutionConfigurationAdapterFactory extends AdapterFactoryImpl 
      * @return the adapter for the <code>target</code>.
      * @generated
      */
+    
     @Override
-    public Adapter createAdapter(Notifier target) {
+	public Adapter createAdapter(Notifier target) {
         return this.modelSwitch.doSwitch((EObject) target);
     }
 
@@ -172,8 +178,9 @@ public class EmfExecutionConfigurationAdapterFactory extends AdapterFactoryImpl 
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
+    
     @Override
-    public boolean isFactoryForType(Object object) {
+	public boolean isFactoryForType(Object object) {
         if (object == EmfExecutionConfigurationAdapterFactory.modelPackage) {
             return true;
         }

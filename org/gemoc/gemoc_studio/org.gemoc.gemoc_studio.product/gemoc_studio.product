@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Gemoc studio" uid="gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Gemoc studio" uid="gemoc_studio" id="org.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/images/icons/GeMoC_48x48x32.bmp"/>
+      <image path="/org.gemoc.gemoc_studio.branding/images/GemocStudioAboutImage.png"/>
       <text>
          Gemoc Studio
       </text>
@@ -22,9 +22,11 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/images/icons/GeMoC_16x16x32.bmp" i32="/images/icons/GeMoC_32x32x32.bmp" i48="/images/icons/GeMoC_48x48x32.bmp"/>
+   <windowImages i16="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask16.png" i32="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask32.png" i48="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask48.png" i64="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask64.png" i128="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask128.png"/>
 
-
+   <splash
+      location="org.gemoc.gemoc_studio.branding"
+      startupProgressRect="5,275,445,15" />
    <launcher>
       <linux icon="/images/icons/GeMoC.xpm"/>
       <macosx icon="/images/icons/GeMoC.icns"/>
@@ -40,7 +42,6 @@
             winExtraLargeHigh="/images/icons/GeMoC_256x256x32.bmp"/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -76,6 +77,8 @@
       <feature id="org.scala-ide.sdt.feature"/>
       <feature id="org.scala-ide.sdt.dev.feature"/>
       <feature id="org.scala-ide.sdt.source.feature"/>
+      <feature id="org.eclipse.xtend.sdk"/>
+      <feature id="org.eclipse.xtend.m2e"/>
    </features>
 
    <configurations>

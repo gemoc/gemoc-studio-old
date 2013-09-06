@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.executors;
 
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -54,5 +55,18 @@ public class Activator extends AbstractUIPlugin {
         Activator.plugin = null;
         super.stop(context);
     }
+    
+    public static void warn(String msg, Throwable e){
+		Activator.getDefault().getLog().log(new Status(Status.WARNING, PLUGIN_ID,
+                Status.OK, 
+                msg, 
+                e));
+	}
+	public static void error(String msg, Throwable e){
+		Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID,
+                Status.OK, 
+                msg, 
+                e));
+	}
 
 }

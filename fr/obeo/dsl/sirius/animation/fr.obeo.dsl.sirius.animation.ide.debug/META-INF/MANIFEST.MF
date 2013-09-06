@@ -8,6 +8,8 @@ Require-Bundle: org.eclipse.debug.core;bundle-version="3.7.100",
  org.eclipse.core.runtime;bundle-version="3.8.0",
  fr.obeo.dsl.sirius.animation;bundle-version="1.0.0",
  com.google.guava;bundle-version="11.0.1",
- org.eclipse.emf.transaction;bundle-version="1.4.0"
+ org.eclipse.emf.transaction;bundle-version="1.4.0",
+ fr.obeo.dsl.viewpoint.ui;bundle-version="4.1.0",
+ org.eclipse.ui;bundle-version="3.8.2"
 Bundle-Activator: fr.obeo.dsl.sirius.animation.ide.debug.AnimationDebugIDEPlugin
 Export-Package: fr.obeo.dsl.sirius.animation.ide.debug

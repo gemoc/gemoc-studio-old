@@ -26,7 +26,6 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IMemoryBlock;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IThread;
-import org.eclipse.debug.core.model.IValue;
 
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
 import fr.obeo.dsl.sirius.animation.TargetState;
@@ -54,8 +53,7 @@ public class IDebugTargetAnimationAdapter extends IDebugElementAnimationAdapter 
 	}
 
 	public void terminate() throws DebugException {
-		getHost().setState(TargetState.TERMINATED);
-
+		factory.terminateViaCommand(getHost());
 	}
 
 	public boolean canResume() {
@@ -77,11 +75,11 @@ public class IDebugTargetAnimationAdapter extends IDebugElementAnimationAdapter 
 	}
 
 	public void resume() throws DebugException {
-		getHost().setState(TargetState.RUNNING);
+		factory.resumeViaCommand(getHost());
 	}
 
 	public void suspend() throws DebugException {
-		getHost().setState(TargetState.SUSPENDED);
+		factory.suspendViaCommand(getHost());
 
 	}
 
@@ -90,7 +88,7 @@ public class IDebugTargetAnimationAdapter extends IDebugElementAnimationAdapter 
 	}
 
 	public void disconnect() throws DebugException {
-		getHost().setState(TargetState.DISCONNECTED);
+		factory.disconnectViaCommand(getHost());
 
 	}
 

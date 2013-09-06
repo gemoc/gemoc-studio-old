@@ -14,15 +14,17 @@ public class EmfExecutionConfigurationParser extends org.eclipse.xtext.parser.an
     @Inject
     private EmfExecutionConfigurationGrammarAccess grammarAccess;
 
+    
     @Override
-    protected fr.inria.aoste.timesquare.backend.parser.antlr.internal.InternalEmfExecutionConfigurationParser createParser(
+	protected fr.inria.aoste.timesquare.backend.parser.antlr.internal.InternalEmfExecutionConfigurationParser createParser(
             XtextTokenStream stream) {
         return new fr.inria.aoste.timesquare.backend.parser.antlr.internal.InternalEmfExecutionConfigurationParser(
                 stream, this.getGrammarAccess());
     }
 
+    
     @Override
-    protected String getDefaultRuleName() {
+	protected String getDefaultRuleName() {
         return "EMFExecutionConfiguration";
     }
 
@@ -34,8 +36,9 @@ public class EmfExecutionConfigurationParser extends org.eclipse.xtext.parser.an
         this.grammarAccess = grammarAccess;
     }
 
+    
     @Override
-    protected void setInitialHiddenTokens(XtextTokenStream tokenStream) {
+	protected void setInitialHiddenTokens(XtextTokenStream tokenStream) {
         tokenStream.setInitialHiddenTokens("RULE_WS", "RULE_ML_COMMENT", "RULE_SL_COMMENT");
     }
 

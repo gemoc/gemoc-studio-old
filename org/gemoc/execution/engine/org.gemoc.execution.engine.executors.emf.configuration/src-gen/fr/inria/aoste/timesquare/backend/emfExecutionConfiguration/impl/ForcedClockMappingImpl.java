@@ -83,8 +83,9 @@ public class ForcedClockMappingImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.FORCED_CLOCK_MAPPING__CLOCK:
                 if (resolve) {
@@ -105,8 +106,9 @@ public class ForcedClockMappingImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public boolean eIsSet(int featureID) {
+	public boolean eIsSet(int featureID) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.FORCED_CLOCK_MAPPING__CLOCK:
                 return this.clock != null;
@@ -121,8 +123,9 @@ public class ForcedClockMappingImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public void eSet(int featureID, Object newValue) {
+	public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.FORCED_CLOCK_MAPPING__CLOCK:
                 this.setClock((Clock) newValue);
@@ -139,8 +142,9 @@ public class ForcedClockMappingImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    protected EClass eStaticClass() {
+	protected EClass eStaticClass() {
         return EmfExecutionConfigurationPackage.Literals.FORCED_CLOCK_MAPPING;
     }
 
@@ -149,8 +153,9 @@ public class ForcedClockMappingImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public void eUnset(int featureID) {
+	public void eUnset(int featureID) {
         switch (featureID) {
             case EmfExecutionConfigurationPackage.FORCED_CLOCK_MAPPING__CLOCK:
                 this.setClock((Clock) null);
@@ -167,8 +172,9 @@ public class ForcedClockMappingImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public Clock getClock() {
+	public Clock getClock() {
         if (this.clock != null && this.clock.eIsProxy()) {
             InternalEObject oldClock = (InternalEObject) this.clock;
             this.clock = (Clock) this.eResolveProxy(oldClock);
@@ -187,8 +193,9 @@ public class ForcedClockMappingImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public Clock getClockToAvoidWhenTrue() {
+	public Clock getClockToAvoidWhenTrue() {
         if (this.clockToAvoidWhenTrue != null && this.clockToAvoidWhenTrue.eIsProxy()) {
             InternalEObject oldClockToAvoidWhenTrue = (InternalEObject) this.clockToAvoidWhenTrue;
             this.clockToAvoidWhenTrue = (Clock) this.eResolveProxy(oldClockToAvoidWhenTrue);
@@ -208,8 +215,9 @@ public class ForcedClockMappingImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public void setClock(Clock newClock) {
+	public void setClock(Clock newClock) {
         Clock oldClock = this.clock;
         this.clock = newClock;
         if (this.eNotificationRequired()) {
@@ -223,8 +231,9 @@ public class ForcedClockMappingImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    
     @Override
-    public void setClockToAvoidWhenTrue(Clock newClockToAvoidWhenTrue) {
+	public void setClockToAvoidWhenTrue(Clock newClockToAvoidWhenTrue) {
         Clock oldClockToAvoidWhenTrue = this.clockToAvoidWhenTrue;
         this.clockToAvoidWhenTrue = newClockToAvoidWhenTrue;
         if (this.eNotificationRequired()) {

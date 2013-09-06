@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package uri="http://www.gemoc.org/gee_configuration" class="gee_configuration.Gee_configurationPackage" genModel="model/gee_configuration.genmodel"></package>
+   </extension>
+
+</plugin>
