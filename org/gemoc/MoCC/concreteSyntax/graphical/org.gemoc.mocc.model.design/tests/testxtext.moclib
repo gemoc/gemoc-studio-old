@@ -1,0 +1,22 @@
+Library zaz{
+	imports{
+		 // import statements
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0; 
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1; 
+		
+	}
+	RelationLibrary zazaz{
+		RelationDeclaration rel1(firstParam:clock, secondParam:clock)
+		StateBasedRelationDefinition myDef[rel1]{
+			init initS ;
+			State initS ;
+			State zaza;
+			from initS to zaza : init2zaza(
+				when firstParam		
+			)
+			from zaza to zaza : selfzazaLoop(
+				when secondParam
+			)
+		}
+	}
+}
