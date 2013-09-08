@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated MoCCMetamodel -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.gemoc.mocc.model.moccmetamodel.presentation.MoccmetamodelModelWizardID"
+            name="%_UI_MoccmetamodelModelWizard_label"
+            class="org.gemoc.mocc.model.moccmetamodel.presentation.MoccmetamodelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MoccmetamodelModelFile.gif">
+         <description>%_UI_MoccmetamodelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated MoCCMetamodel -->
+      <editor
+            id="org.gemoc.mocc.model.moccmetamodel.presentation.MoccmetamodelEditorID"
+            name="%_UI_MoccmetamodelEditor_label"
+            icon="icons/full/obj16/MoccmetamodelModelFile.gif"
+            extensions="moc"
+            class="org.gemoc.mocc.model.moccmetamodel.presentation.MoccmetamodelEditor"
+            contributorClass="org.gemoc.mocc.model.moccmetamodel.presentation.MoccmetamodelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

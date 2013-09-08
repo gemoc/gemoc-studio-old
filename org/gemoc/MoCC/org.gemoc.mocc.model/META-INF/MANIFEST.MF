@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.gemoc.mocc.model;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.gemoc.mocc.model.moccmetamodel,
+ org.gemoc.mocc.model.moccmetamodel.impl,
+ org.gemoc.mocc.model.moccmetamodel.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport
+Bundle-ActivationPolicy: lazy

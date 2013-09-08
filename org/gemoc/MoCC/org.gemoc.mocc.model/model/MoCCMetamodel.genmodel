@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.mocc.model/src-gen" editDirectory="/org.gemoc.mocc.model.edit/src-gen"
+    editorDirectory="/org.gemoc.mocc.model.editor/src-gen" modelPluginID="org.gemoc.mocc.model"
+    modelName="MoCCMetamodel" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false" editPluginID="org.gemoc.mocc.model.edit" editorPluginID="org.gemoc.mocc.model.editor"
+    usedGenPackages="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel">
+  <foreignModel>MoCCMetamodel.ecore</foreignModel>
+  <genPackages prefix="Moccmetamodel" basePackage="org.gemoc.mocc.model" disposableProviderFactory="true"
+      fileExtensions="moc" ecorePackage="MoCCMetamodel.ecore#/">
+    <genClasses ecoreClass="MoCCMetamodel.ecore#//StateMachineRelationDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//StateMachineRelationDefinition/ownedStates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//StateMachineRelationDefinition/ownedTransitions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//StateMachineRelationDefinition/initialState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//StateMachineRelationDefinition/finalState"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//StateMachineRelationDefinition/classicalExpressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//StateMachineRelationDefinition/concreteEntities"/>
+    </genClasses>
+    <genClasses ecoreClass="MoCCMetamodel.ecore#//State">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//State/outputTransitions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//State/inputTransitions"/>
+    </genClasses>
+    <genClasses ecoreClass="MoCCMetamodel.ecore#//Transition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//Transition/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//Transition/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//Transition/guard"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//Transition/trigger"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//Transition/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="MoCCMetamodel.ecore#//StateBaseRelationLibrary"/>
+    <genClasses ecoreClass="MoCCMetamodel.ecore#//IntegerAssignment"/>
+  </genPackages>
+</genmodel:GenModel>
