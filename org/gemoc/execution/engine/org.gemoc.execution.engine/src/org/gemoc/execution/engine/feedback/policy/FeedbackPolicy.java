@@ -13,5 +13,6 @@ import org.gemoc.execution.engine.solvers.Solver;
  * @author flatombe
  */
 public interface FeedbackPolicy<F extends FeedbackData> {
-    public void processFeedback(F feedback, Solver solver, List<DomainSpecificEvent> possibleEvents);
+	public void processFeedback(F feedback, Solver solver,
+			List<DomainSpecificEvent> possibleEvents);
 }

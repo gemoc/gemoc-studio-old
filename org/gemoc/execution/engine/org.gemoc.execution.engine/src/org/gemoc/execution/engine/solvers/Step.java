@@ -11,5 +11,5 @@ import fr.inria.aoste.trace.EventOccurrence;
  * @author flatombe
  */
 public interface Step {
-    public List<EventOccurrence> getEventOccurrences();
+	public List<EventOccurrence> getEventOccurrences();
 }

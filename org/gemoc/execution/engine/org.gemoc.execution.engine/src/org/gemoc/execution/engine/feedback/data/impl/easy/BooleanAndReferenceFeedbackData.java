@@ -12,19 +12,19 @@ import org.gemoc.execution.engine.feedback.data.FeedbackData;
  * @author flatombe
  * */
 public class BooleanAndReferenceFeedbackData implements FeedbackData {
-    Map<Boolean, List<EObject>> map;
+	Map<Boolean, List<EObject>> map;
 
-    public BooleanAndReferenceFeedbackData() {
-        // TODO : constructeur à partir du format renvoyé par les DSAs ... donc
-        // ça va être un mix de EList etc. A settle avec le DSA-designer qui
-        // devra comply à la structure utilisée ici.
-    }
+	public BooleanAndReferenceFeedbackData() {
+		// TODO : constructeur à partir du format renvoyé par les DSAs ... donc
+		// ça va être un mix de EList etc. A settle avec le DSA-designer qui
+		// devra comply à la structure utilisée ici.
+	}
 
-    public Map<Boolean, List<EObject>> getMap() {
-        return this.map;
-    }
+	public Map<Boolean, List<EObject>> getMap() {
+		return this.map;
+	}
 
-    public String toString() {
-        return "BooleanAndReferenceFeedbackData@[" + this.map.toString() + "]";
-    }
+	public String toString() {
+		return "BooleanAndReferenceFeedbackData@[" + this.map.toString() + "]";
+	}
 }

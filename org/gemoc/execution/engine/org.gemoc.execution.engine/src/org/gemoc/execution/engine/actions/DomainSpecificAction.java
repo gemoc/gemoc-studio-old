@@ -16,7 +16,7 @@ import fr.inria.aoste.trace.Reference;
  * 
  */
 public interface DomainSpecificAction {
-    public Method getMethod();
+	public Method getMethod();
 
-    public Reference getTarget();
+	public Reference getTarget();
 }

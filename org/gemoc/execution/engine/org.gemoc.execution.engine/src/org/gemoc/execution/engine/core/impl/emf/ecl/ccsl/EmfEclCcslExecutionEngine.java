@@ -279,7 +279,8 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 				e1.printStackTrace();
 			}
 		}
-		out.println("Result of calling " + methodName + " on " + eo.toString() + " : " + res.toString());
+		out.println("Result of calling " + methodName + " on " + eo.toString()
+				+ " : " + res.toString());
 		return res;
 	}
 

@@ -14,9 +14,9 @@ import org.gemoc.execution.engine.actions.DomainSpecificAction;
  * @author flatombe
  */
 public interface DomainSpecificEvent {
-    public DomainSpecificAction getAction();
+	public DomainSpecificAction getAction();
 
-    public EObject getTarget();
+	public EObject getTarget();
 
-    public Boolean isEntryPoint();
+	public Boolean isEntryPoint();
 }

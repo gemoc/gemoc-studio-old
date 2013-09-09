@@ -17,42 +17,41 @@ import org.gemoc.execution.engine.feedback.data.FeedbackData;
  */
 public class EmfExecutor implements Executor {
 
-    public EmfExecutor(MessageConsoleStream out) {
-        out.println("Creating :" + this);
-    }
+	public EmfExecutor(MessageConsoleStream out) {
+		out.println("Creating :" + this);
+	}
 
-    @Override
-    public FeedbackData execute(DomainSpecificAction dsa) {
-        try {
-            return (FeedbackData) dsa.getMethod().invoke(/* dsa.getTarget() */"toto");
-        }
-        catch (InvocationTargetException e) {
-            Activator.error(e.getMessage(), e);
-            return null;
-        } 
-        catch ( IllegalAccessException e) {
-            Activator.error(e.getMessage(), e);
-            return null;
-        }catch ( IllegalArgumentException e) {
-            Activator.error(e.getMessage(), e);
-            return null;
-        }
-    }
+	@Override
+	public FeedbackData execute(DomainSpecificAction dsa) {
+		try {
+			return (FeedbackData) dsa.getMethod().invoke(
+					/* dsa.getTarget() */"toto");
+		} catch (InvocationTargetException e) {
+			Activator.error(e.getMessage(), e);
+			return null;
+		} catch (IllegalAccessException e) {
+			Activator.error(e.getMessage(), e);
+			return null;
+		} catch (IllegalArgumentException e) {
+			Activator.error(e.getMessage(), e);
+			return null;
+		}
+	}
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.gemoc.execution.engine.executors.Executor#execute(org.gemoc.execution
-     * .engine.executors.DomainSpecificEvent)
-     */
-    @Override
-    public FeedbackData execute(DomainSpecificEvent dse) {
-        return this.execute(dse.getAction());
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.gemoc.execution.engine.executors.Executor#execute(org.gemoc.execution
+	 * .engine.executors.DomainSpecificEvent)
+	 */
+	@Override
+	public FeedbackData execute(DomainSpecificEvent dse) {
+		return this.execute(dse.getAction());
+	}
 
-    public String toString() {
-        return "EmfExecutor@[]";
-    }
+	public String toString() {
+		return "EmfExecutor@[]";
+	}
 
 }
