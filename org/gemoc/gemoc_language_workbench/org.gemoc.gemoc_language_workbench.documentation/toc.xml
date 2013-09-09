@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Sample Table of Contents">
+	<topic label="Table of content"  href="html/maintopic.html"/> 
+	<topic label="Gemoc Project"  href="html/GemocProject.html"> 
+		<topic label="Gemoc Language Project" href="html/GemocLanguageProject.html">
+			<topic label="EMF Project" href="html/EMFProject.html"/>
+			<topic label="Editor Project" href="html/EditorProject.html"/>
+			<topic label="DSA Project" href="html/DSAProject.html"/>
+			<topic label="MOCC Project" href="html/MOCProject.html"/>
+			<topic label="DSE Project" href="html/DSEProject.html"/>
+			<topic label="Animator Project" href="html/AnimatorProject.html"/>
+		</topic>
+		<topic label="Gemoc Modeling Project" href="html/GemocModelingProject.html"/> 
+	</topic>
+	<topic label="Main Topic 2"/>
+</toc>
