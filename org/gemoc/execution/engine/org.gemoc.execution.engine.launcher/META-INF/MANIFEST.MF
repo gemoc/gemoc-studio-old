@@ -13,4 +13,4 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.execution.engine;bundle-version="1.0.0",
  org.eclipse.emf.common;bundle-version="2.9.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
