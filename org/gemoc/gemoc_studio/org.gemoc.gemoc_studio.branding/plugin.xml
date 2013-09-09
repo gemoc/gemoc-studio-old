@@ -11,7 +11,7 @@
             application="brandingGemoc.application"
             description="%productBlurb%"
             name="Gemoc Studio">
-         <property name="aboutText" value="%productBlurb%"/>
+         <property name="aboutText" value="%productBlurb"/>
          <property name="aboutImage" value="/images/GemocStudioAboutImage.png"/> 
          <property name="appName" value="Gemoc Studio"/> 
          <property name="windowImages" value="images/icons/IconeGemoc_studiocompletv2-16.png,images/icons/IconeGemoc_studiocompletv2-32.png,images/icons/IconeGemoc_studiocompletv2-48.png,images/icons/IconeGemoc_studiocompletv2-64.png,images/icons/IconeGemoc_studiocompletv2-128.png"/> 
