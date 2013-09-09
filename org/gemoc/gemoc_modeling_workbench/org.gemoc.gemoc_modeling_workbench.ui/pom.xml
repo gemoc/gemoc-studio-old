@@ -9,6 +9,6 @@
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>org.gemoc.gemoc_modeling_workbench.reflective_model.ui</artifactId>
+  <artifactId>org.gemoc.gemoc_modeling_workbench.ui</artifactId>
   <packaging>eclipse-plugin</packaging>
 </project>

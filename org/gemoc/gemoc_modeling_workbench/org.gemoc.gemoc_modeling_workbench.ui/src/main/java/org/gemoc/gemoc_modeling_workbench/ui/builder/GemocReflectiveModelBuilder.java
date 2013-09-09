@@ -1,9 +1,7 @@
-package org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder;
+package org.gemoc.gemoc_modeling_workbench.ui.builder;
 
 import java.util.Map;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.eclipse.core.resources.IFile;
@@ -16,15 +14,6 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.QualifiedName;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.gemoc.gemoc_modeling_workbench.reflective_model.ui.Activator;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -92,9 +81,9 @@ public class GemocReflectiveModelBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
-	public static final String BUILDER_ID = "org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelBuilder";
+	public static final String BUILDER_ID = "org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelBuilder";
 
-	private static final String MARKER_TYPE = "org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelProblem";
+	private static final String MARKER_TYPE = "org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelProblem";
 
 	private SAXParserFactory parserFactory;
 

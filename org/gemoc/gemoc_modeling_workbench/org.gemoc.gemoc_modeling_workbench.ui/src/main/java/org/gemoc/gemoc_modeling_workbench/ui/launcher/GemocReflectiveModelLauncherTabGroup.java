@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.reflective_model.ui.launcher;
+package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup;
 import org.eclipse.debug.ui.CommonTab;

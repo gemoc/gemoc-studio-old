@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder;
+package org.gemoc.gemoc_modeling_workbench.ui.builder;
 
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IProject;
@@ -11,7 +11,7 @@ public class GemocReflectiveModelNature implements IProjectNature {
 	/**
 	 * ID of this project nature
 	 */
-	public static final String NATURE_ID = "org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelNature";
+	public static final String NATURE_ID = "org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelNature";
 
 	private IProject project;
 

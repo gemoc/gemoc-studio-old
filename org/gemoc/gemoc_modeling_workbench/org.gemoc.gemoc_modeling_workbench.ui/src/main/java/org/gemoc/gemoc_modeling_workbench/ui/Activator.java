@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.reflective_model.ui;
+package org.gemoc.gemoc_modeling_workbench.ui;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -11,7 +11,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.gemoc_modeling_workbench.reflective_model.ui"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.gemoc_modeling_workbench.ui"; //$NON-NLS-1$
 
 	
 	// The shared instance

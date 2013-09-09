@@ -1,8 +1,6 @@
-package org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder;
+package org.gemoc.gemoc_modeling_workbench.ui.builder;
 
-import java.io.IOException;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -10,19 +8,10 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.NotEnabledException;
 import org.eclipse.core.commands.NotHandledException;
 import org.eclipse.core.commands.common.NotDefinedException;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -31,7 +20,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.services.IServiceLocator;
-import org.gemoc.gemoc_modeling_workbench.reflective_model.ui.Activator;
+import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
 public class ToggleNatureAction implements IObjectActionDelegate {
 
@@ -128,6 +117,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				}
 				
 			}
+			
 			// Add the nature
 			addAsMainNature(project, GemocReflectiveModelNature.NATURE_ID);
 						

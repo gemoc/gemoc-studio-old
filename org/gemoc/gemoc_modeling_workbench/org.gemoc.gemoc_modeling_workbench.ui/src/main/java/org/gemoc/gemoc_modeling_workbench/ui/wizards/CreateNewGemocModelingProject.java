@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.reflective_model.ui.wizards;
+package org.gemoc.gemoc_modeling_workbench.ui.wizards;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -12,8 +12,8 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
-import org.gemoc.gemoc_modeling_workbench.reflective_model.ui.Activator;
-import org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder.ToggleNatureAction;
+import org.gemoc.gemoc_modeling_workbench.ui.Activator;
+import org.gemoc.gemoc_modeling_workbench.ui.builder.ToggleNatureAction;
 
 public class CreateNewGemocModelingProject extends Wizard implements INewWizard {
 

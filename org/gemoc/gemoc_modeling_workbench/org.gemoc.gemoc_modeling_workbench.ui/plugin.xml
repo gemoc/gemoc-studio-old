@@ -9,7 +9,7 @@
       <builder
             hasNature="true">
          <run
-               class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder.GemocReflectiveModelBuilder">
+               class="org.gemoc.gemoc_modeling_workbench.ui.builder.GemocReflectiveModelBuilder">
          </run>
       </builder>
    </extension>
@@ -19,11 +19,11 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder.GemocReflectiveModelNature">
+               class="org.gemoc.gemoc_modeling_workbench.ui.builder.GemocReflectiveModelNature">
          </run>
       </runtime>
       <builder
-            id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelBuilder">
+            id="org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelBuilder">
       </builder>
    </extension>
    <extension
@@ -34,17 +34,17 @@
             nameFilter="*"
             id="org.gemoc.gemoc_modeling_workbench.ui.addnature.contribution">
          <action
-               class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder.ToggleNatureAction"
+               class="org.gemoc.gemoc_modeling_workbench.ui.builder.ToggleNatureAction"
                enablesFor="+"
                icon="icons/IconeGemocModel-16.png"
-               id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.addRemoveNatureAction"
+               id="org.gemoc.gemoc_modeling_workbench.ui.addRemoveNatureAction"
                label="Add Gemoc Modeling Nature"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
          </action>
          <visibility>
          <and>
             <not>
-                <objectState name="projectNature" value="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelNature"/>
+                <objectState name="projectNature" value="org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelNature"/>
             </not>
             <objectClass name="org.eclipse.core.resources.IProject" />
           </and>
@@ -56,10 +56,10 @@
             nameFilter="*"
             id="org.gemoc.gemoc_modeling_workbench.ui.removenature.contribution">
          <action
-               class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.builder.ToggleNatureAction"
+               class="org.gemoc.gemoc_modeling_workbench.ui.builder.ToggleNatureAction"
                enablesFor="+"
                icon="icons/IconeGemocModel-16.png"
-               id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.addRemoveNatureAction"
+               id="org.gemoc.gemoc_modeling_workbench.ui.addRemoveNatureAction"
                label="Remove Gemoc Modeling Nature (Reflective)"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
          </action>
@@ -71,7 +71,7 @@
 	          </objectClass>
 	          <objectState
 	                name="projectNature"
-	                value="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelNature">
+	                value="org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelNature">
 	          </objectState>
 	       </and>
 	    </visibility>
@@ -92,16 +92,16 @@
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
             icon="icons/IconeGemocModel-10.png"
-            id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelNature.image"
-            natureId="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.gemocReflectiveModelNature">
+            id="org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelNature.image"
+            natureId="org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelNature">
       </image>
    </extension>
    <!-- definitions of launch menu -->
    	<extension
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
-            delegate="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.launcher.GemocReflectiveModelLauncher"
-            id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocReflectiveModelLauncherID"
+            delegate="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncher"
+            id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID"
             modes="run"
             name="Gemoc eXecutable Reflective Model"
             public="true">
@@ -110,27 +110,27 @@
    <extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
     <launchConfigurationTypeImage
         icon="icons/IconeGemocModel-16.png"
-        configTypeID="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocReflectiveModelLauncherID"
-        id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocReflectiveModelLauncherImageID">
+        configTypeID="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID"
+        id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherImageID">
     </launchConfigurationTypeImage>
 	</extension>
 	   <extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
 	    <launchConfigurationTabGroup
-	        type="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocReflectiveModelLauncherID"
-	        class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.launcher.GemocReflectiveModelLauncherTabGroup"
-	        id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocReflectiveModelLauncherTabGroupID">
+	        type="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID"
+	        class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncherTabGroup"
+	        id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherTabGroupID">
 	    </launchConfigurationTabGroup>
 	</extension>
 	<extension
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
-            class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.launcher.GemocReflectiveModelLauncherShortcut"
+            class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncherShortcut"
             icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocExecutableReflectiveModel"
+            id="org.gemoc.gemoc_modeling_workbench.ui.GemocExecutableReflectiveModel"
             label="Gemoc eXecutable Reflective Model"
             modes="run, debug">
          <configurationType
-               id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.GemocReflectiveModelLauncherID">
+               id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID">
          </configurationType>
          <contextualLaunch>
             <enablement>
@@ -168,9 +168,9 @@
        point="org.eclipse.ui.newWizards">
     <wizard
           category="org.gemoc.gemoc_language_workbench.ui"
-          class="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.wizards.CreateNewGemocModelingProject"
+          class="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject"
           icon="icons/IconeGemocModel-16.png"
-          id="org.gemoc.gemoc_modeling_workbench.reflective_model.ui.wizards.CreateNewGemocModelingProject"
+          id="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject"
           name="New Gemoc Modeling Project"
           project="true">
     </wizard>
