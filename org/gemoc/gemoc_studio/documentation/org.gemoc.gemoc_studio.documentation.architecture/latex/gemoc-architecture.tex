@@ -160,7 +160,7 @@ We can identify 3 main groups of components and artefacts in the studio.
 
 %End of user code
 %Start of user code AS EditorDescription
-
+An AS Editor is a tool to display and edit an abstract syntax.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_AS_Editor.png}
@@ -210,9 +210,18 @@ This component produces an ecore model.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:CEP_Engine}
 %Start of user code CEP Engine
-
+This component allows to synchronize two sets of steps events of various models from one coordination model.
 %End of user code
 %Start of user code CEP EngineDescription
+\newline the CEP Engine has 3 imputs :
+\begin{itemize}
+\item 2 set of steps events
+\item 1 coordination model
+\end{itemize}
+The CEP Engine has 1 output :
+\begin{itemize}
+\item 1 synchronization model from the 2 set of steps event provided in inputs
+\end{itemize}
 
 %End of user code 
 \begin{center}
@@ -228,6 +237,16 @@ This component produces an ecore model.
 %Start of user code Composition Operator Applicator
 %End of user code
 %Start of user code Composition Operator ApplicatorDescription
+The component Composition Operator Applicator is a compiler of Composition Operator for specifics models (in compliance with DSMLs).
+\newline It has in inputs :
+\begin{itemize}
+\item 1 Operator Definition Model
+\item 2 DSML models
+\end{itemize}
+It provides :
+\begin{itemize}
+\item 1 coordination model
+\end{itemize}
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Composition_Operator_Applicator.png}
@@ -249,6 +268,7 @@ This component port requires the following inputs:
 %Start of user code Composition Operator Editor
 %End of user code
 %Start of user code Composition Operator EditorDescription
+A Composition Operator Editor is a tool to display and edit Operator Definition Model.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Composition_Operator_Editor.png}
@@ -416,6 +436,16 @@ The Execution Engine acts on the execution state of models under the direction o
 %Start of user code Composition Operator Applicator
 %End of user code
 %Start of user code Composition Operator ApplicatorDescription
+The component Composition Operator Applicator is a compiler of Composition Operator for specifics models (in compliance with DSMLs).
+\newline It has in inputs :
+\begin{itemize}
+\item 1 Operator Definition Model
+\item 2 DSML models
+\end{itemize}
+It provides :
+\begin{itemize}
+\item 1 coordination model
+\end{itemize}
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Composition_Operator_Applicator.png}
@@ -430,6 +460,7 @@ The Execution Engine acts on the execution state of models under the direction o
 %Start of user code DSE Compiler
 %End of user code
 %Start of user code DSE CompilerDescription
+DSE Compiler provides a Concurrency Execution Model from a Domain Specific Model and from a DSE Model.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSE_Compiler.png}
@@ -496,6 +527,8 @@ This component port provides the following outputs:
 %Start of user code DSE Engine
 %End of user code
 %Start of user code DSE EngineDescription
+DSE engine allows to execute an Execution Model.
+It allows to obtain a scenario (trace) of the execution.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSE_Engine.png}
@@ -548,6 +581,7 @@ This component port provides the following outputs:
 %Start of user code MOCC Compiler
 %End of user code
 %Start of user code MOCC CompilerDescription
+MOCC compiler takes specifications of a MOCC model to provide an implementation of this model.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_MOCC_Compiler.png}
@@ -713,6 +747,7 @@ The purpose of the Interactive Policy is to let the user explore the possible be
 %Start of user code Language Workbench
 %End of user code
 %Start of user code Language WorkbenchDescription
+
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Language_Workbench.png}
@@ -724,6 +759,7 @@ The purpose of the Interactive Policy is to let the user explore the possible be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:AS_Compiler}
 %Start of user code AS Compiler
+AS compiler takes specifications of an AS model to provide an implementation of this model.
 %End of user code
 %Start of user code AS CompilerDescription
 %End of user code 
@@ -754,6 +790,7 @@ This component port provides the following outputs:
 %Start of user code Composition Operator Editor
 %End of user code
 %Start of user code Composition Operator EditorDescription
+A Composition Operator Editor is a tool to display and design Operator Definition Model.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Composition_Operator_Editor.png}
@@ -768,6 +805,7 @@ This component port provides the following outputs:
 %Start of user code Concrete Syntax Configurator
 %End of user code
 %Start of user code Concrete Syntax ConfiguratorDescription
+Concrete Syntax Configurator is a tool which allows to design a concrete syntax for a domain specific modeling language.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Concrete_Syntax_Configurator.png}
@@ -782,7 +820,7 @@ This component port provides the following outputs:
 %Start of user code DSA Compiler
 %End of user code
 %Start of user code DSA CompilerDescription
-The DSA compiler is in charge of taking a model a DSA and produce the bytecode that implement the corresponding actions.
+DSA compiler takes specifications of a DSA model to provide an implementation of this model.
 
 %End of user code 
 \begin{center}
@@ -857,7 +895,8 @@ This component port provides the following outputs:
 
 %End of user code
 %Start of user code DSA EditorDescription
-
+A DSA Editor is a tool to display and design DSA Models.
+These models define the behavorial semantics of the actions in the Domain Specific Metamodel.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSA_Editor.png}
@@ -903,6 +942,8 @@ This component produces a Kermeta model that will constitute the DSA part of Dom
 %Start of user code DSE Editor
 %End of user code
 %Start of user code DSE EditorDescription
+A DSE Editor is a tool to display and design DSE Models.
+\newline To design a DSE Model, DSE Editor needs to know the model of the MOCC and the DSA associated.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_DSE_Editor.png}
@@ -949,11 +990,10 @@ This component port provides the following outputs:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:MOCC_Editor}
 %Start of user code MOCC Editor
-
 %End of user code
 %Start of user code MOCC EditorDescription
-
-%End of user code 
+MOCC Editor allows to design and edit an MOCC model that defined operational semantics.
+%End of user code
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_MOCC_Editor.png}
 \end{center}
@@ -1011,6 +1051,7 @@ This component port provides the following outputs:
 %Start of user code Model Animator
 %End of user code
 %Start of user code Model AnimatorDescription
+Model Animator is a model of a visual animation which consists to display at run time the behavior of an Execution Model.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Model_Animator.png}
@@ -1025,6 +1066,7 @@ This component port provides the following outputs:
 %Start of user code Model Editor
 %End of user code
 %Start of user code Model EditorDescription
+Model Editor is a tool to display and design Domain Specific Models.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Model_Editor.png}
@@ -1084,7 +1126,15 @@ Configuration file which extends and refines existing diagram descriptions and m
 
 %End of user code
 %Start of user code NEMODescription
-
+NEMO is a specific MOCC based on a state machin. It interprets one concurrency model to schedule events.
+\newline It have in inputs :
+\begin{itemize}
+\item a concurrency model
+\end{itemize}
+It provides :
+\begin{itemize}
+\item one set of steps events
+\end{itemize}
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_NEMO.png}
@@ -1394,7 +1444,8 @@ The Eclipse launch framework.
 \subsection{CCSL Model}
 \label{sec:CCSL_Model}
 %Start of user code CCSL Model_interface
-
+A CCSL (Clock Constraint Specification Language) model specifies the causal and temporal relationships between the events of a DSML model
+\newline A CCSL model represents the acceptable scheduling of the events of a specific DSML model, by applying the constraints from a MoCC, as specified by an ECL model.
 %End of user code
 
 \subsection{Concurrency Execution Model}
@@ -1454,7 +1505,9 @@ Sirius has specific support for extending and refining diagram descriptions and 
 \subsection{ECL Model}
 \label{sec:ECL_Model}
 %Start of user code ECL Model_interface
-
+An ECL (Event Constraint Language) model is defining the link between the couple AS/DSA and the MoCC.
+\newline It gets the definitions from the MoCC library and specify how they are actually used according to the AS. It also specifies (in a very crude way for now) how some events are associated to the DSA functions.
+\newline It is specified at the language level.
 %End of user code
 
 \subsection{Ecore Model}
@@ -1496,7 +1549,6 @@ Kermeta metamodel uses an operationnal semantics to weave the actions in the DSM
 \subsection{MOCC Model}
 \label{sec:MOCC_Model}
 %Start of user code MOCC Model_interface
-
 %End of user code
 
 \subsection{OperatorDefinition Model}
