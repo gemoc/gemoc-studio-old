@@ -57,7 +57,8 @@ public class CreateKermeta2DSAWizardContextAction extends CreateDSAWizardContext
 				
 				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 				wd.create();
-				wd.setTitle(wizard.getWindowTitle());
+				//wd.setTitle(wizard.getWindowTitle());
+				wd.setTitle("New Kermeta project");
 				int res = wd.open();
 				if(res == WizardDialog.OK){
 					//((KermetaProjectNewWizard )wizard).performFinish();
