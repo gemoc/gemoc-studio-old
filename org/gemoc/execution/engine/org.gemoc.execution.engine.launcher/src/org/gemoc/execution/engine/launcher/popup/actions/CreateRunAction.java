@@ -9,11 +9,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.console.ConsolePlugin;
-import org.eclipse.ui.console.IConsole;
-import org.eclipse.ui.console.IConsoleManager;
-import org.eclipse.ui.console.MessageConsole;
-import org.eclipse.ui.console.MessageConsoleStream;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.emf.ecl.ccsl.EmfEclCcslExecutionEngine;
@@ -62,14 +57,16 @@ public class CreateRunAction implements IObjectActionDelegate {
         String information = "";
 
         String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC-rendevous.extendedCCSL";
-        String jarsFolderPath = "/org.gemoc.execution.engine.example/my_jars";
+        String jarDsaFolderPath = "/org.gemoc.execution.engine.example/my_jars/dsa";
+        String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
         String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
         String MMpath = "/fr.inria.aoste.gemoc.example.tfsm.model/model/tfsm.ecore";
 
         if (engine == null) {
             // out.println("Creating the engine...");
             try {
-                this.engine = new EmfEclCcslExecutionEngine(ccslFilePath, jarsFolderPath, modelPath, MMpath);
+                this.engine = new EmfEclCcslExecutionEngine(ccslFilePath, jarDsaFolderPath, jarDependenciesFolderPath,
+                        modelPath, MMpath);
             } catch (Exception e) {
                 // out.println("Got an exception, checkout the error log");
                 Activator.error("Exception in the initialization of the engine", e);

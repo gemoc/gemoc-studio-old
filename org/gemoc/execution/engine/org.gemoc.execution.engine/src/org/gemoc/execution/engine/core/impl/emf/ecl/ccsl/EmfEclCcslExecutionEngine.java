@@ -54,7 +54,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
     private URI modelURI = null;
     private URI metamodelURI = null;
 
-    public EmfEclCcslExecutionEngine(String ccslFilePath, String jarsFolderPath, String modelPath, String MMpath) {
+    public EmfEclCcslExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath, String modelPath, String MMpath) {
 
         super();
 
@@ -95,9 +95,9 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
         }
 
         Activator.getMessaggingSystem().debug(
-                "Adding all the JAR files from folder " + jarsFolderPath + " to the current ClassLoader",
+                "Adding all the JAR files from folder " + jarDependenciesFolderPath + " and " + jarDsaFolderPath + " to the current ClassLoader",
                 Activator.PLUGIN_ID);
-        ClassLoader customizedClassLoader = this.customizeClassLoader(jarsFolderPath);
+        ClassLoader customizedClassLoader = this.customizeClassLoader(jarDsaFolderPath, jarDependenciesFolderPath);
         Activator.getMessaggingSystem().debug("Initializing the model loader", Activator.PLUGIN_ID);
         EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
         Activator.getMessaggingSystem().debug("Loading the model", Activator.PLUGIN_ID);
@@ -204,18 +204,25 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 
     }
 
-    private ClassLoader customizeClassLoader(String jarsFolderPath) {
+    private List<URL> getJarUrlsFromFolder(String folderPath) throws MalformedURLException, CoreException {
         List<URL> urls = new ArrayList<URL>();
-        try {
-            IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(jarsFolderPath));
-            for (IResource resource : folder.members()) {
-                if (resource instanceof IFile) {
-                    IFile file = (IFile) resource;
-                    if (file.getFileExtension().equals("jar")) {
-                        urls.add(file.getLocationURI().toURL());
-                    }
+        IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(folderPath));
+        for (IResource resource : folder.members()) {
+            if (resource instanceof IFile) {
+                IFile file = (IFile) resource;
+                if (file.getFileExtension().equals("jar")) {
+                    urls.add(file.getLocationURI().toURL());
                 }
             }
+        }
+        return urls;
+    }
+
+    private ClassLoader customizeClassLoader(String jarDsaFolderPath, String jarDependenciesFolderPath) {
+        List<URL> urls = new ArrayList<URL>();
+        try {
+            urls = this.getJarUrlsFromFolder(jarDependenciesFolderPath);
+            urls.addAll(this.getJarUrlsFromFolder(jarDsaFolderPath));
         } catch (CoreException e) {
             String errorMessage = "CoreException while customizing the ClassLoader";
             Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
