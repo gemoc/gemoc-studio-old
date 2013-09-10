@@ -15,7 +15,7 @@ public class GemocReflectiveModelLauncherTabGroup extends
 	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
 		ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] { 
-				//new KermetaTabConfiguration(),
+				new GemocModelLauncherMainTab(),
                 new CommonTab()
 		};
 		setTabs(tabs);

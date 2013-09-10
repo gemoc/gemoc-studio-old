@@ -103,7 +103,7 @@
             delegate="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncher"
             id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID"
             modes="run"
-            name="Gemoc eXecutable Reflective Model"
+            name="Gemoc eXecutable Model"
             public="true">
       </launchConfigurationType>
    </extension>
@@ -127,7 +127,7 @@
             class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncherShortcut"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.gemoc_modeling_workbench.ui.GemocExecutableReflectiveModel"
-            label="Gemoc eXecutable Reflective Model"
+            label="Gemoc eXecutable Model"
             modes="run, debug">
          <configurationType
                id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID">
