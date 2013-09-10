@@ -1,0 +1,1294 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:OccurrenceRelationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel="http://fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel" xmlns:trace="http://www.inria.fr/sophia/aoste/trace/1.0.0">
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.32"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.32"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.10"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.32"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.10"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.32"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.10"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.66"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.66"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.30"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.22"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.66"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.30"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.113"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.88"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.23"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.88"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.23"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.88"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.23"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.115"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.105"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.20"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.105"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.20"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.116"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.5"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.20"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.5"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.5"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.20"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.20"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.84"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.84"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.5"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.117"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.20"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.84"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.20"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.118"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.47"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.9"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.47"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.9"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.104"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.104"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.72"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.104"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.72"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.72"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.72"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.5"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.4"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.4"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.5"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.72"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.5"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.119"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.66"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.19"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.66"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.19"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.105"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.105"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.15"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.105"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.15"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.105"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.15"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.76"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.76"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.22"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.120"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.36"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.10"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.36"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.10"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.122"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.14"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.26"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.14"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.14"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.26"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.26"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.77"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.77"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.14"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.123"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.26"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.77"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.26"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.124"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.41"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.6"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.41"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.41"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.6"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.6"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.41"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.41"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.25/@eventOccurrences.6"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.25/@eventOccurrences.6"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.125"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.73"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.1"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.73"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.73"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.34"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.34"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.10"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.3"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.34"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.10"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.34"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.3"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.88"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.88"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.1"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.88"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.88"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.88"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.88"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.41"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.41"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.1"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.41"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.41"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.41"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.41"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.1"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.127"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.18"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.53"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.128"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.67"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.63"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.107"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.107"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.97"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.59"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.59"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.63"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.97"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.97"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.59"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.67"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.67"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.63"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.95"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.53"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.53"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.49"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.81"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.81"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.67"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.49"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.49"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.81"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.63"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.63"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.17"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.11"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.11"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.15/@eventOccurrences.17"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.47"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.47"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.22"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.28"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.47"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.28"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.101"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.101"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.15"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.22"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.101"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.15"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.80"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.80"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.58"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.80"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.58"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.99"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.99"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.93"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.102"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.99"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.93"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.93"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.93"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.24"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.93"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.24"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.131"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.12"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.44"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.12"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.12"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.44"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.44"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.79"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.79"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.12"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.132"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.44"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.79"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.44"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.44"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.44"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.31"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.8"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.44"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.31"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.111"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.111"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.3"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.111"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.3"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.111"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.3"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.82"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.82"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.30"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.18"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.82"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.30"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.96"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.96"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.50"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.96"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.50"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.39"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.39"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.19"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.6"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.19"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.39"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.6"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.19"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.19"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.25/@eventOccurrences.6"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.50"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.50"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.39"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.50"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.39"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.136"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.34"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.16"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.34"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.34"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.16"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.16"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.34"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.16"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.34"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.16"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.100"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.100"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.40"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.100"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.40"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.91"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.91"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.83"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.91"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.83"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.91"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.83"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.40"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.40"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.91"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.40"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.91"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.83"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.83"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.94"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.61"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.83"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.94"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.69"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.69"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.98"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.69"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.98"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.65"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.65"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.94"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.65"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.94"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.65"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.94"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.98"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.98"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.65"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.98"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.65"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.94"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.94"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.11"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.4"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.4"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.11"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.7/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.94"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.4"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.138"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.83"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.94"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.83"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.94"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.139"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.30"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.100"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.30"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.100"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.95"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.95"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.30"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.95"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.30"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.95"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.30"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.140"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.29"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.92"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.29"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.92"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.73"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.73"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.54"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.73"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.54"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.73"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.54"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.54"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.54"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.16"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.4"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.4"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.16"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.16"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.54"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.12/@eventOccurrences.4"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.16"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.16"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.54"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.142"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.24"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.14"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.24"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.14"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.144"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.82"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.27"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.82"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.27"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.112"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.112"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.28"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.112"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.28"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.112"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.28"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.146"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.0"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.110"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.0"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.0"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.6/@eventOccurrences.110"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.6/@eventOccurrences.110"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.0"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.0"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.15/@eventOccurrences.110"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.15/@eventOccurrences.110"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.75"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.75"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.0"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.75"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.0"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.147"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.110"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.75"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.6/@eventOccurrences.110"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.6/@eventOccurrences.110"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.75"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.75"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.15/@eventOccurrences.110"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.110"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.110"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.17"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.21"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.6/@eventOccurrences.110"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.6/@eventOccurrences.21"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.15/@eventOccurrences.110"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.15/@eventOccurrences.17"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.148"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.0"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.11"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.0"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.0"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.92"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.92"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.109"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.92"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.109"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.62"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.62"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.103"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.57"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.62"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.103"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.103"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.103"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.29"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.103"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.29"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.150"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.11"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.27"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.11"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.27"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.27"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.42"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.42"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.11"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.42"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.151"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.27"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.42"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.27"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.27"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.42"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.42"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.152"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.28"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.108"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.28"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.108"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.153"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.90"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.37"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.90"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.37"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.51"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.51"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.89"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.51"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.89"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.78"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.78"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.37"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.78"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.37"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.78"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.37"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.89"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.89"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.78"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.89"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.78"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.90"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.90"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.37"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.76"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.90"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.37"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.108"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.108"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.64"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.108"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.64"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.86"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.86"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.90"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.86"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.90"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.86"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.90"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.64"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.64"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.86"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.64"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.86"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.37"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.37"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.31"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.25"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.31"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.37"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.25"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.31"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.43"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.43"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.28"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.30"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.43"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.28"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.43"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.30"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.155"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.25"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.9"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.25"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.25"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.9"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.9"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.52"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.52"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.25"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.156"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.9"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.52"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.9"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.157"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.104"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.15"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.104"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.15"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.158"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.96"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.3"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.96"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.3"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.159"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.12"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.25"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.12"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.25"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.74"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.74"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.101"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.18"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.74"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.101"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.36"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.36"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.45"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.36"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.45"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.45"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.45"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.14"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.4"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.45"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.14"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.164"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.24"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.80"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.24"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.0/@eventOccurrences.80"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.167"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.74"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.25"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.74"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.25"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.74"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.25"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.61"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.61"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.18"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.46"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.46"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.35"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.60"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.60"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.106"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.35"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.35"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.60"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.106"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.106"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.71"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.112"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.56"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.56"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.87"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.48"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.48"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.71"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.87"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.87"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.48"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.71"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.71"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.25"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.4"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.4"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.25"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.3/@eventOccurrences.25"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.4"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.168"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.106"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.71"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.169"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.22"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.46"/>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.170"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.16"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.23"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.16"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.16"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.23"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.23"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.16"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.16"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.23"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.23"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.68"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.68"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.16"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.68"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.16"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.171"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.23"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.68"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.23"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.4/@eventOccurrences.23"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.68"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.68"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.21/@eventOccurrences.23"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.172"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.111"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.13"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.111"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.13"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.173"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.43"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.11"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.43"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.43"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.43"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.43"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.14/@eventOccurrences.11"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.174"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.32"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.26"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.32"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.1/@eventOccurrences.26"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.176"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.6"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.13"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.6"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.5/@eventOccurrences.6"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.13"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.13"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.25/@eventOccurrences.6"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.85"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.85"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.6"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.25/@eventOccurrences.85"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.25/@eventOccurrences.6"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.177"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.13"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.85"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.13"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Precedence" isStrict="true">
+      <source href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.13/@eventOccurrences.13"/>
+      <target href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.25/@eventOccurrences.85"/>
+    </relatedOccurrenceRelations>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Packet">
+      <occurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.25/@eventOccurrences.85"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+  <refsToCCSLConstraints>
+    <ccslConstraint xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.178"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.29"/>
+    <ccslElements xsi:type="trace:ModelElementReference" href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@references.5"/>
+    <relatedOccurrenceRelations xsi:type="fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:Coincidence">
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.29"/>
+      <coincidentOccurrences href="TrafficControl_MoCC-rendevous2013_0910_173433.trace#//@logicalSteps.2/@eventOccurrences.5"/>
+    </relatedOccurrenceRelations>
+  </refsToCCSLConstraints>
+</fr.inria.aoste.timesquare.instantrelation.CCSLRelationModel:OccurrenceRelationModel>
