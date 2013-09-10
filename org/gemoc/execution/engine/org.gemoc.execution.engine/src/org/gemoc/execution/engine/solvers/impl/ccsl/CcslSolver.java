@@ -1,10 +1,9 @@
 package org.gemoc.execution.engine.solvers.impl.ccsl;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.ui.console.MessageConsoleStream;
+import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.solvers.Solver;
 import org.gemoc.execution.engine.solvers.Step;
@@ -23,11 +22,8 @@ import fr.inria.aoste.timesquare.trace.util.HelperFactory;
 public class CcslSolver implements Solver {
 
     CCSLKernelSolverWrapper solverWrapper;
-    Logger logger;
 
-    public CcslSolver(String parentLoggerName, Resource ccslResource) throws IOException, UnfoldingException,
-            SolverException {
-        this.logger = Logger.getLogger(parentLoggerName + "." + this.getClass().getName());
+    public CcslSolver(Resource ccslResource) throws IOException, UnfoldingException, SolverException {
 
         this.solverWrapper = new CCSLKernelSolverWrapper();
         this.solverWrapper.getSolver().loadModel(ccslResource);
@@ -49,7 +45,9 @@ public class CcslSolver implements Solver {
         try {
             return new CcslStep(this.solverWrapper.getSolver().doOneSimulationStep());
         } catch (SolverException e) {
-            e.printStackTrace();
+            String errorMessage = "SolverException while trying to get next Ccsl step";
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
             return null;
         }
     }

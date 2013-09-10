@@ -19,7 +19,9 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.utils.timedsystem;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.trace.util;bundle-version="1.0.0",
- fr.inria.aoste.timesquare.backend.manager;bundle-version="1.2.0"
+ fr.inria.aoste.timesquare.backend.manager;bundle-version="1.2.0",
+ org.kermeta.utils.systemservices.eclipse;bundle-version="2.1.0",
+ org.kermeta.utils.systemservices.api;bundle-version="2.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine,

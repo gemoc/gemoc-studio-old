@@ -23,28 +23,28 @@ public class CreateRunAction implements IObjectActionDelegate {
     private Shell shell;
     private IFile file;
     private ExecutionEngine engine;
-    private String consoleName;
+
+    // private String consoleName;
 
     /**
      * Constructor for Action1.
      */
     public CreateRunAction() {
         super();
-        this.consoleName = "debug";
     }
 
-    private MessageConsole findConsole(String name) {
-        ConsolePlugin plugin = ConsolePlugin.getDefault();
-        IConsoleManager conMan = plugin.getConsoleManager();
-        IConsole[] existing = conMan.getConsoles();
-        for (int i = 0; i < existing.length; i++)
-            if (name.equals(existing[i].getName()))
-                return (MessageConsole) existing[i];
-        // no console found, so create a new one
-        MessageConsole myConsole = new MessageConsole(name, null);
-        conMan.addConsoles(new IConsole[] { myConsole });
-        return myConsole;
-    }
+    // private MessageConsole findConsole(String name) {
+    // ConsolePlugin plugin = ConsolePlugin.getDefault();
+    // IConsoleManager conMan = plugin.getConsoleManager();
+    // IConsole[] existing = conMan.getConsoles();
+    // for (int i = 0; i < existing.length; i++)
+    // if (name.equals(existing[i].getName()))
+    // return (MessageConsole) existing[i];
+    // // no console found, so create a new one
+    // MessageConsole myConsole = new MessageConsole(name, null);
+    // conMan.addConsoles(new IConsole[] { myConsole });
+    // return myConsole;
+    // }
 
     /**
      * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
@@ -57,8 +57,8 @@ public class CreateRunAction implements IObjectActionDelegate {
      * @see IActionDelegate#run(IAction)
      */
     public void run(IAction action) {
-        MessageConsole myConsole = findConsole(consoleName);
-        MessageConsoleStream out = myConsole.newMessageStream();
+        // MessageConsole myConsole = findConsole(consoleName);
+        // MessageConsoleStream out = myConsole.newMessageStream();
         String information = "";
 
         String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC-rendevous.extendedCCSL";
@@ -67,30 +67,29 @@ public class CreateRunAction implements IObjectActionDelegate {
         String MMpath = "/fr.inria.aoste.gemoc.example.tfsm.model/model/tfsm.ecore";
 
         if (engine == null) {
-            out.println("Creating the engine...");
+            // out.println("Creating the engine...");
             try {
                 this.engine = new EmfEclCcslExecutionEngine(ccslFilePath, jarsFolderPath, modelPath, MMpath);
             } catch (Exception e) {
-                out.println("Got an exception, checkout the error log");
+                // out.println("Got an exception, checkout the error log");
                 Activator.error("Exception in the initialization of the engine", e);
                 this.engine = null;
                 e.printStackTrace();
             }
-            out.println("...Engine created.");
+            // out.println("...Engine created.");
             information += "Engine created";
         }
 
-        out.println("Running the engine...");
-        for (int i = 0; i < 100; i++) {
-            ((EmfEclCcslExecutionEngine) this.engine).runOneStep();
-        }
+        // out.println("Running the engine...");
+        ((EmfEclCcslExecutionEngine) this.engine).run(1);
+
         if (!information.equals("")) {
             information += ", ";
         }
         information += "Engine ran.";
         MessageDialog.openInformation(shell, "Launcher", information);
 
-        out.println("DONE");
+        // out.println("DONE");
     }
 
     /**

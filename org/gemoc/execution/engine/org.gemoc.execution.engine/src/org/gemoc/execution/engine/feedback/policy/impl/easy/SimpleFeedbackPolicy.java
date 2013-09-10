@@ -1,7 +1,6 @@
 package org.gemoc.execution.engine.feedback.policy.impl.easy;
 
-import java.util.logging.Logger;
-
+import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.feedback.data.impl.easy.EObjectFeedbackData;
 import org.gemoc.execution.engine.feedback.policy.FeedbackPolicy;
 import org.gemoc.execution.engine.solvers.Solver;
@@ -13,15 +12,12 @@ import org.gemoc.execution.engine.solvers.Solver;
  */
 public class SimpleFeedbackPolicy implements FeedbackPolicy<EObjectFeedbackData> {
 
-    Logger logger;
-
-    public SimpleFeedbackPolicy(String parentLoggerName) {
-        this.logger = Logger.getLogger(parentLoggerName + "." + this.getClass().getName());
+    public SimpleFeedbackPolicy() {
     }
 
     @Override
     public void processFeedback(EObjectFeedbackData feedbackData, Solver solver) {
-
+        Activator.getMessaggingSystem().warn("You need to complete processFeedback", Activator.PLUGIN_ID);
     }
 
     public String toString() {

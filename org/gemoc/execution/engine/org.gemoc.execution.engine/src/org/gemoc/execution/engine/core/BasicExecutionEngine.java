@@ -1,13 +1,11 @@
 package org.gemoc.execution.engine.core;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.Executor;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
-import org.gemoc.execution.engine.feedback.data.impl.easy.EObjectFeedbackData;
 import org.gemoc.execution.engine.feedback.policy.FeedbackPolicy;
 import org.gemoc.execution.engine.solvers.Solver;
 import org.gemoc.execution.engine.solvers.Step;
@@ -25,11 +23,8 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
     protected Solver solver;
     protected Executor executor;
     protected FeedbackPolicy feedbackPolicy;
-    protected Logger logger;
 
     public BasicExecutionEngine() {
-        this.logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
     }
 
     /**
@@ -43,28 +38,32 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 
     @Override
     public void run() {
-        logger.info("Starting running indefinitely");
+        Activator.getMessaggingSystem().info("Starting running indefinitely", Activator.PLUGIN_ID);
         this.run(-1);
-        logger.info("Stopped running indefinitely");
+        Activator.getMessaggingSystem().info("Stopped running indefinitely", Activator.PLUGIN_ID);
     }
 
     @Override
     public void run(int numberOfSteps) {
-        logger.info("Running " + numberOfSteps + " steps");
+        Activator.getMessaggingSystem().info("Running " + numberOfSteps + " steps", Activator.PLUGIN_ID);
         for (int i = 0; i < numberOfSteps; i++) {
             this.runOneStep();
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void runOneStep() {
-        logger.info("Running one step");
+        Activator.getMessaggingSystem().info("### Running one step", Activator.PLUGIN_ID);
         Step step = this.solver.getNextStep();
+        Activator.getMessaggingSystem().debug("The solver has correctly returned a step to the engine", Activator.PLUGIN_ID);
         List<DomainSpecificEvent> events = this.match(step);
+        Activator.getMessaggingSystem().info("Number of events matched : " + events.size(), Activator.PLUGIN_ID);
         for (DomainSpecificEvent event : events) {
             FeedbackData feedback = this.executor.execute(event);
             this.feedbackPolicy.processFeedback(feedback, solver);
         }
+        Activator.getMessaggingSystem().info("### Step finished", Activator.PLUGIN_ID);
     }
 
     public String toString() {

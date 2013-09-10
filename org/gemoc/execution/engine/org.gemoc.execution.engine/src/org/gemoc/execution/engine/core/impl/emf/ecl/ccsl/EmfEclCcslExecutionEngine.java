@@ -10,9 +10,6 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -20,6 +17,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -31,17 +29,18 @@ import org.gemoc.execution.engine.core.BasicExecutionEngine;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.events.impl.ecl.EclEvent;
 import org.gemoc.execution.engine.executors.impl.emf.EmfExecutor;
-import org.gemoc.execution.engine.feedback.data.impl.easy.EObjectFeedbackData;
-import org.gemoc.execution.engine.feedback.policy.FeedbackPolicy;
 import org.gemoc.execution.engine.feedback.policy.impl.easy.SimpleFeedbackPolicy;
 import org.gemoc.execution.engine.solvers.Step;
 import org.gemoc.execution.engine.solvers.impl.ccsl.CcslSolver;
 import org.gemoc.execution.engine.solvers.impl.ccsl.CcslStep;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
+import fr.inria.aoste.trace.ModelElementReference;
+import fr.inria.aoste.trace.Reference;
 
 /**
  * An implementation of the engine using the EMF Executor, the ECL events, the
@@ -52,18 +51,15 @@ import fr.inria.aoste.trace.FiredStateKind;
  */
 public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 
-    private CcslSolver solver;
-    private FeedbackPolicy<EObjectFeedbackData> feedbackPolicy;
-
     private URI modelURI = null;
     private URI metamodelURI = null;
 
     public EmfEclCcslExecutionEngine(String ccslFilePath, String jarsFolderPath, String modelPath, String MMpath) {
 
         super();
-        LogManager.getLogManager().getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.FINEST);
 
-        this.feedbackPolicy = new SimpleFeedbackPolicy(logger.getName());
+        this.feedbackPolicy = new SimpleFeedbackPolicy();
+        this.executor = new EmfExecutor();
 
         this.modelURI = URI.createPlatformResourceURI(modelPath, true);
         this.metamodelURI = URI.createPlatformResourceURI(MMpath, true);
@@ -77,36 +73,36 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             EcoreUtil.resolveAll(resourceSet);
         } catch (IOException e) {
             String errorMessage = "IOException while loading CCSL file";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
 
-        logger.log(Level.FINEST, "Instantiating CcslSolver");
+        Activator.getMessaggingSystem().debug("Instantiating CcslSolver", Activator.PLUGIN_ID);
         try {
-            this.solver = new CcslSolver(logger.getName(), ccslResource);
+            this.solver = new CcslSolver(ccslResource);
         } catch (IOException e) {
             String errorMessage = "IOException while instantiating the CcslSolver";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (UnfoldingException e) {
             String errorMessage = "UnfoldingException while instantiating the CcslSolver";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (SolverException e) {
             String errorMessage = "SolverException while instantiating the CcslSolver";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
 
-        logger.log(Level.FINEST, "Adding all the JAR files from folder " + jarsFolderPath
-                + " to the current ClassLoader");
+        Activator.getMessaggingSystem().debug(
+                "Adding all the JAR files from folder " + jarsFolderPath + " to the current ClassLoader",
+                Activator.PLUGIN_ID);
         ClassLoader customizedClassLoader = this.customizeClassLoader(jarsFolderPath);
-        logger.log(Level.FINEST, "Initializing the model loader");
+        Activator.getMessaggingSystem().debug("Initializing the model loader", Activator.PLUGIN_ID);
         EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
-        logger.log(Level.FINEST, "Loading the model");
+        Activator.getMessaggingSystem().debug("Loading the model", Activator.PLUGIN_ID);
         EObject modelRoot = this.loadModel(modelLoader, this.modelURI, this.metamodelURI);
 
-        this.executor = new EmfExecutor(logger.getName());
     }
 
     /**
@@ -134,23 +130,23 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             modelRoot = (EObject) loadModelMethod.invoke(modelLoader, modelURI.toString(), metamodelURI.toString());
         } catch (NoSuchMethodException e) {
             String errorMessage = "NoSuchMethodException while trying to load the model";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (SecurityException e) {
             String errorMessage = "SecurityException while trying to load the model";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (IllegalAccessException e) {
             String errorMessage = "IllegalAccessException while trying to load the model";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (IllegalArgumentException e) {
             String errorMessage = "IllegalArgumentException while trying to load the model";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (InvocationTargetException e) {
             String errorMessage = "InvocationTargetException while trying to load the model";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
         return modelRoot;
@@ -176,31 +172,31 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             in.close();
         } catch (IOException e) {
             String errorMessage = "IOException while creating the custom ClassLoader";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (ClassNotFoundException e) {
             String errorMessage = "ClassNotFoundException while creating the custom ClassLoader";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (IllegalAccessException e) {
             String errorMessage = "IllegalAccessException while creating the custom ClassLoader";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (IllegalArgumentException e) {
             String errorMessage = "IllegalArgumentException while creating the custom ClassLoader";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (InvocationTargetException e) {
             String errorMessage = "InvocationTargetException while creating the custom ClassLoader";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (NoSuchMethodException e) {
             String errorMessage = "NoSuchMethodException while creating the custom ClassLoader";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (SecurityException e) {
             String errorMessage = "SecurityException while creating the custom ClassLoader";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
 
@@ -222,11 +218,11 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             }
         } catch (CoreException e) {
             String errorMessage = "CoreException while customizing the ClassLoader";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (MalformedURLException e) {
             String errorMessage = "MalformedURLException while customizing the ClassLoader";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
 
@@ -237,21 +233,47 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 
     @Override
     protected List<DomainSpecificEvent> match(Step step) {
+        Activator.getMessaggingSystem().debug("Matching the given step : " + step.toString(), Activator.PLUGIN_ID);
         List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
         try {
             CcslStep ccslStep = (CcslStep) step;
             for (EventOccurrence eventOccurrence : ccslStep.getEventOccurrences()) {
                 if (eventOccurrence.getFState() == FiredStateKind.TICK) {
-                    res.add(new EclEvent(eventOccurrence));
+                    Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
+                    if (c != null) {
+                        // is c a DSA caller --> should be replaced with mapping
+                        // manipulation
+                        EList<EObject> linkedObjects = c.getTickingEvent().getReferencedObjectRefs();
+                        if (linkedObjects.size() == 2) {
+                            res.add(new EclEvent(linkedObjects.get(0), linkedObjects.get(1)));
+                        }
+                    }
                 }
 
             }
         } catch (ClassCastException e) {
             String errorMessage = "ClassCastException while casting Step as CcslStep";
-            logger.log(Level.SEVERE, errorMessage, e);
+            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
         return res;
 
+    }
+
+    private Clock getClockLinkedToOccurrence(EventOccurrence eventOcc) {
+        Reference ref = eventOcc.getReferedElement();
+        if (ref instanceof ModelElementReference) {
+            ModelElementReference mer = (ModelElementReference) ref;
+            EList<EObject> eobjects = mer.getElementRef();
+            EObject actualObject = eobjects.get(eobjects.size() - 1);
+            if (actualObject instanceof Clock) {
+                // you got the clock that ticked
+                return (Clock) actualObject;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 }
