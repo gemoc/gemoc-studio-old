@@ -1,14 +1,18 @@
 package org.gemoc.execution.engine.solvers.impl.ccsl;
 
+import java.io.IOException;
+import java.util.logging.Logger;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.solvers.Solver;
 import org.gemoc.execution.engine.solvers.Step;
 
+import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
+import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.launch.CCSLKernelSolverWrapper;
 import fr.inria.aoste.timesquare.trace.util.HelperFactory;
-import fr.inria.aoste.timesquare.utils.timedsystem.TimedSystem;
 
 /**
  * The interface of the CCSLKernelSolver as seen by the Execution Engine.
@@ -18,66 +22,40 @@ import fr.inria.aoste.timesquare.utils.timedsystem.TimedSystem;
  */
 public class CcslSolver implements Solver {
 
-	CCSLKernelSolverWrapper solverWrapper;
+    CCSLKernelSolverWrapper solverWrapper;
+    Logger logger;
 
-	public CcslSolver(Resource resource, MessageConsoleStream out) {
+    public CcslSolver(String parentLoggerName, Resource ccslResource) throws IOException, UnfoldingException,
+            SolverException {
+        this.logger = Logger.getLogger(parentLoggerName + "." + this.getClass().getName());
 
-		this.solverWrapper = new CCSLKernelSolverWrapper();
-		try {
-			this.solverWrapper.getSolver().loadModel(resource);
-			out.println("Creating: " + this.toString());
-		} catch (Exception e) {
-			out.println("\t" + e.getMessage());
-			for (StackTraceElement element : e.getStackTrace()) {
-				out.println("\t" + element.toString());
-			}
+        this.solverWrapper = new CCSLKernelSolverWrapper();
+        this.solverWrapper.getSolver().loadModel(ccslResource);
+        this.solverWrapper.getSolver().initSimulation();
+    }
 
-		}
+    @Override
+    public void forceEventNonOccurrence(DomainSpecificEvent event) {
+        this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(event.getAction().getTarget()));
+    }
 
-	}
+    @Override
+    public void forceEventOccurrence(DomainSpecificEvent event) {
+        this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(event.getAction().getTarget()));
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.gemoc.execution.engine.solvers.Solver#forceEventNonOccurrence(org
-	 * .gemoc.execution.engine.events.DomainSpecificEvent)
-	 */
-	@Override
-	public void forceEventNonOccurrence(DomainSpecificEvent event) {
-		this.solverWrapper.forceClockPresence(HelperFactory
-				.createModelElementReference(event.getTarget()));
-	}
+    @Override
+    public Step getNextStep() {
+        try {
+            return new CcslStep(this.solverWrapper.getSolver().doOneSimulationStep());
+        } catch (SolverException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.gemoc.execution.engine.solvers.Solver#forceEventOccurrence(org.gemoc
-	 * .execution.engine.events.DomainSpecificEvent)
-	 */
-	@Override
-	public void forceEventOccurrence(DomainSpecificEvent event) {
-		this.solverWrapper.forceClockPresence(HelperFactory
-				.createModelElementReference(event.getTarget()));
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.gemoc.execution.engine.solver.Solver#getNextStep()
-	 */
-	@Override
-	public Step getNextStep() {
-		// TODO : Est-ce qu'on a besoin de TimedSystem dans l'API ? Il ne sert à
-		// rien dans le corps de la méthode ...
-
-		return new CcslStep(
-				this.solverWrapper.solveNextSimulationStep(new TimedSystem()));
-	}
-
-	public String toString() {
-		return "CcslSolver@[" + this.solverWrapper.toString() + "]";
-	}
+    public String toString() {
+        return this.getClass().getName() + "@[" + this.solverWrapper.toString() + "]";
+    }
 
 }

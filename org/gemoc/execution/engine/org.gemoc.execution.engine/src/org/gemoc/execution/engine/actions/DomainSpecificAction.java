@@ -3,9 +3,7 @@
  */
 package org.gemoc.execution.engine.actions;
 
-import java.lang.reflect.Method;
-
-import fr.inria.aoste.trace.Reference;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * DomainSpecificAction is what a DomainSpecificEvent references. Its
@@ -16,7 +14,7 @@ import fr.inria.aoste.trace.Reference;
  * 
  */
 public interface DomainSpecificAction {
-	public Method getMethod();
+    public String getMethodFullName();
 
-	public Reference getTarget();
+    public EObject getTarget();
 }

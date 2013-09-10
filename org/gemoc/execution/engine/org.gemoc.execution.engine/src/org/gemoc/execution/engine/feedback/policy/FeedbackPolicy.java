@@ -1,8 +1,5 @@
 package org.gemoc.execution.engine.feedback.policy;
 
-import java.util.List;
-
-import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
 import org.gemoc.execution.engine.solvers.Solver;
 
@@ -13,6 +10,5 @@ import org.gemoc.execution.engine.solvers.Solver;
  * @author flatombe
  */
 public interface FeedbackPolicy<F extends FeedbackData> {
-	public void processFeedback(F feedback, Solver solver,
-			List<DomainSpecificEvent> possibleEvents);
+    public void processFeedback(F feedback, Solver solver);
 }

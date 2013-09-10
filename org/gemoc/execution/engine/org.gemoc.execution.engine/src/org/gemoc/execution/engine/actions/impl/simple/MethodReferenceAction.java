@@ -3,11 +3,8 @@
  */
 package org.gemoc.execution.engine.actions.impl.simple;
 
-import java.lang.reflect.Method;
-
+import org.eclipse.emf.ecore.EObject;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
-
-import fr.inria.aoste.trace.Reference;
 
 /**
  * Basic implementation of DomainSpecificAction, contains the EObject and a
@@ -19,41 +16,26 @@ import fr.inria.aoste.trace.Reference;
  * 
  */
 public class MethodReferenceAction implements DomainSpecificAction {
-	private Method method;
+    private String methodFullName;
 
-	private Reference target;
+    private EObject target;
 
-	public MethodReferenceAction(Reference target, Reference method) {
-		/*
-		 * this.target = target; try { this.method =
-		 * target.getClass().getMethod(methodName); } catch
-		 * (NoSuchMethodException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } catch (SecurityException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 * 
-		 * 
-		 * // TODO : comment fournir à l'instanciation d'une DSA les bons
-		 * objets? public DomainSpecificAction createDSA(ClockEntity ce) {
-		 * EObject linkedOperation = ce.getReferencedElement().get(1); if
-		 * (linkedOperation instanceof EOperation) { String operationName =
-		 * this.getSimpleName(linkedOperation); MethodReferenceAction action =
-		 * new MethodReferenceAction(ce.getModelElementReference(),
-		 * operationName); } }
-		 */
-	}
+    public MethodReferenceAction(EObject target, String methodFullName) {
+        this.target = target;
+        this.methodFullName = methodFullName;
+    }
 
-	@Override
-	public Method getMethod() {
-		return this.method;
-	}
+    @Override
+    public String getMethodFullName() {
+        return this.methodFullName;
+    }
 
-	@Override
-	public Reference getTarget() {
-		return this.target;
-	}
+    @Override
+    public EObject getTarget() {
+        return this.target;
+    }
 
-	public String toString() {
-		return "MethodReferenceAction@[" + this.target.toString() + " ; "
-				+ this.method.getName() + "]";
-	}
+    public String toString() {
+        return this.getClass().getName() + "@[" + this.target.toString() + " ; " + this.methodFullName + "]";
+    }
 }

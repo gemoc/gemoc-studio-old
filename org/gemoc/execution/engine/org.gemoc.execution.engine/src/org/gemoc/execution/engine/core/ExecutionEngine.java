@@ -6,9 +6,12 @@ package org.gemoc.execution.engine.core;
  * @author flatombe
  * 
  */
-public interface ExecutionEngine extends Runnable {
+public interface ExecutionEngine {
+    
+    public void run();
 
-	@Override
-	public void run();
+	public void run(int numberOfSteps);
+	
+	public void runOneStep();
 
 }

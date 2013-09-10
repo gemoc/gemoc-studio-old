@@ -1,11 +1,13 @@
 package org.gemoc.execution.engine.core;
 
 import java.util.List;
+import java.util.logging.Logger;
 
-import org.eclipse.ui.console.MessageConsoleStream;
+import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.Executor;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
+import org.gemoc.execution.engine.feedback.data.impl.easy.EObjectFeedbackData;
 import org.gemoc.execution.engine.feedback.policy.FeedbackPolicy;
 import org.gemoc.execution.engine.solvers.Solver;
 import org.gemoc.execution.engine.solvers.Step;
@@ -20,98 +22,52 @@ import org.gemoc.execution.engine.solvers.Step;
  */
 public abstract class BasicExecutionEngine implements ExecutionEngine {
 
-	private Boolean finished;
-	private Integer rounds;
-	protected Solver solver;
-	protected Executor executor;
-	@SuppressWarnings("rawtypes")
-	protected FeedbackPolicy feedbackPolicy;
-	protected MessageConsoleStream out;
+    protected Solver solver;
+    protected Executor executor;
+    protected FeedbackPolicy feedbackPolicy;
+    protected Logger logger;
 
-	/**
-	 * Basic constructor for the engine.
-	 */
-	public BasicExecutionEngine() {
-		this.finished = false;
-		this.rounds = 0;
-	}
+    public BasicExecutionEngine() {
+        this.logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-	/**
-	 * 
-	 * @return the executor used by the engine implementation.
-	 */
-	public Executor getExecutor() {
-		return this.executor;
-	}
+    }
 
-	/**
-	 * 
-	 * @return the feedback policy used by the engine implementation.
-	 */
-	@SuppressWarnings("rawtypes")
-	public FeedbackPolicy getFeedbackPolicy() {
-		return this.feedbackPolicy;
-	}
+    /**
+     * Instantiates a list of Domain Specific Events depending on which event
+     * occurrences are in the Step returned by the Solver.
+     * 
+     * @param step
+     * @return
+     */
+    protected abstract List<DomainSpecificEvent> match(Step step);
 
-	/**
-	 * 
-	 * @return the current round number.
-	 */
-	public int getRounds() {
-		return this.rounds;
-	}
+    @Override
+    public void run() {
+        logger.info("Starting running indefinitely");
+        this.run(-1);
+        logger.info("Stopped running indefinitely");
+    }
 
-	/**
-	 * 
-	 * @return the solver used by the engine implementation.
-	 */
-	public Solver getSolver() {
-		return this.solver;
-	}
+    @Override
+    public void run(int numberOfSteps) {
+        logger.info("Running " + numberOfSteps + " steps");
+        for (int i = 0; i < numberOfSteps; i++) {
+            this.runOneStep();
+        }
+    }
 
-	/**
-	 * 
-	 * @param step
-	 * @return the list of the DomainSpecificEvent corresponding to the
-	 *         EventOccurrence present in the Step
-	 */
-	protected abstract List<DomainSpecificEvent> match(Step step);
+    @Override
+    public void runOneStep() {
+        logger.info("Running one step");
+        Step step = this.solver.getNextStep();
+        List<DomainSpecificEvent> events = this.match(step);
+        for (DomainSpecificEvent event : events) {
+            FeedbackData feedback = this.executor.execute(event);
+            this.feedbackPolicy.processFeedback(feedback, solver);
+        }
+    }
 
-	@Override
-	public void run() {
-		this.run(-1);
-	}
-
-	/**
-	 * Run the engine for a given number of rounds or until the execution is
-	 * finished.
-	 * 
-	 * @param maxRounds
-	 */
-	@SuppressWarnings("unchecked")
-	public void run(int maxRounds) {
-		out.println("--- Beginning of run ---");
-		while (!this.finished) {
-			this.rounds++;
-			out.println("Round : " + this.rounds);
-
-			Step step = this.getSolver().getNextStep();
-			out.println("Step : " + step);
-			List<DomainSpecificEvent> events = this.match(step);
-			out.println("Events matched : " + events);
-
-			for (DomainSpecificEvent event : events) {
-				FeedbackData feedback = this.getExecutor().execute(event);
-				this.getFeedbackPolicy().processFeedback(feedback,
-						this.getSolver(), events);
-			}
-
-			this.finished = this.finished || this.rounds < maxRounds;
-		} // end while
-		out.println("--- End of run ---");
-	}
-
-	public String toString() {
-		return "BasicExecutionEngine@[rounds=" + this.getRounds() + "]";
-	}
+    public String toString() {
+        return this.getClass().getName() + "@[" + "]";
+    }
 }

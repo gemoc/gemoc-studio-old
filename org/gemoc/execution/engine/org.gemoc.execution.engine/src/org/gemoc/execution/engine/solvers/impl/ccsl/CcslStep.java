@@ -14,24 +14,18 @@ import fr.inria.aoste.trace.LogicalStep;
  * 
  */
 public class CcslStep implements Step {
-	LogicalStep step;
+    LogicalStep step;
 
-	public CcslStep(LogicalStep step) {
-		this.step = step;
-	}
+    public CcslStep(LogicalStep step) {
+        this.step = step;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.gemoc.execution.engine.solvers.Step#getEventOccurrences()
-	 */
-	@Override
-	public List<EventOccurrence> getEventOccurrences() {
-		return this.step.getEventOccurrences();
-	}
+    public List<EventOccurrence> getEventOccurrences() {
+        return this.step.getEventOccurrences();
+    }
 
-	public String toString() {
-		return "CcslStep@[" + this.getEventOccurrences().toString() + "]";
-	}
+    public String toString() {
+        return this.getClass().getName() + "@[" + this.getEventOccurrences().toString() + "]";
+    }
 
 }
