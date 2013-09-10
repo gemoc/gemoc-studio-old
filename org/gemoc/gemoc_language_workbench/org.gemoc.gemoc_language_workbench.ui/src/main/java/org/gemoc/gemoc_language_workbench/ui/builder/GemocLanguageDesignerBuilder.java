@@ -145,7 +145,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 					
 					Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 				    Map<String, Object> m = reg.getExtensionToFactoryMap();
-				    m.put("gemoc_language_conf", new XMIResourceFactoryImpl());
+				    m.put("xdsml", new XMIResourceFactoryImpl());
 
 				    // Obtain a new resource set
 				    ResourceSet resSet = new ResourceSetImpl();

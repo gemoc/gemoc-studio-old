@@ -26,7 +26,7 @@
             id="org.gemoc.gemoc_language_workbench.conf.presentation.confEditorID"
             name="%_UI_confEditor_label"
             icon="icons/full/obj16/confModelFile.gif"
-            extensions="gemoc_language_conf"
+            extensions="xdsml"
             class="org.gemoc.gemoc_language_workbench.conf.presentation.confEditor"
             contributorClass="org.gemoc.gemoc_language_workbench.conf.presentation.confActionBarContributor">
       </editor>

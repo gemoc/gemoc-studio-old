@@ -5,7 +5,7 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false">
   <foreignModel>gemoc_language_workbench_conf.ecore</foreignModel>
   <genPackages prefix="conf" basePackage="org.gemoc.gemoc_language_workbench" disposableProviderFactory="true"
-      ecorePackage="gemoc_language_workbench_conf.ecore#/">
+      fileExtensions="xdsml" ecorePackage="gemoc_language_workbench_conf.ecore#/">
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/languageDefinitions"/>
     </genClasses>

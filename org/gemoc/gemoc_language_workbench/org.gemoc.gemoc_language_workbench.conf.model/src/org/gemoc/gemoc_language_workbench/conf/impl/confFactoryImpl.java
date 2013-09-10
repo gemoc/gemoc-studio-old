@@ -27,7 +27,7 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 */
 	public static confFactory init() {
 		try {
-			confFactory theconfFactory = (confFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.gemoc.org/gemoc_language_workbench_conf"); 
+			confFactory theconfFactory = (confFactory)EPackage.Registry.INSTANCE.getEFactory(confPackage.eNS_URI);
 			if (theconfFactory != null) {
 				return theconfFactory;
 			}
