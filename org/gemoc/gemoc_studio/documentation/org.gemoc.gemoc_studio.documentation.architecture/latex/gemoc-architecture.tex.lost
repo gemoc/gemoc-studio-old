@@ -606,3 +606,45 @@ This component is a logical component which provides animation capability on the
 Start of user code Execution Model_output_Description for Execution Engine
 the model of the state of the model after the execution of the DSA (current state of an automaton, current value of an attribute etc.)
 %End of user code
+
+Tue Sep 10 11:14:13 CEST 2013
+================================================================================
+Start of user code Gemoc Project State Model_input_Description for Gemoc Process assistant
+If the component is presented as a wizard, it may take as input the current state of the current GEMOC project (GemocProjectState) so it can highlight the current step and propose the next steps to the user.
+%End of user code
+Start of user code Domain Specific Graphical Animated EditorDescription
+Sirius provides a completely customized graphical editor dedicated to a domain specific languages (DSL). The graphical designers created with Sirius
+provide diagrams, tables, matrix or trees to create and edit models according to the domain specific vocabulary and process.
+%End of user code
+Start of user code Modeling Project_output_Description for Domain Specific Graphical Animated Editor
+Sirius provides a runtime that works with models within the Eclipse IDE, providing the notion of \em{Modeling Project}, an integration with the Project Explorer, handling the synchronization of workspace resources and in memory instances and the sharing of command stacks and editing domains across editors.
+%End of user code
+Start of user code Runtime Controller_input_Description for Domain Specific Graphical Animated Editor
+This interface allows the integration with the Eclipse Debug component. This interfaces is detailed in the Domain Specific Graphical Animator section.
+%End of user code
+Start of user code Gemoc Process assistant
+
+%End of user code
+Start of user code OperatorDefinition Model_output_Description for Composition Operator Editor
+%End of user code
+Start of user code Debug User Interface_output_Description for Domain Specific Graphical Animated Editor
+The Eclipse Debug classical interface.
+%End of user code
+Start of user code Gemoc Project State_input_Description for Gemoc Process assistant
+%End of user code
+Start of user code Domain Specific Graphical Animated Editor
+
+%End of user code
+Start of user code Gemoc Process assistantDescription
+This component aims at proposing some guidance to the user in order to follow the GEMOC methodology. This component may be some kind of integrated tutorial and/or process wizard.
+%End of user code
+Start of user code Domain Specific Graphical Animated Editor_output_Description for Domain Specific Graphical Animated Editor
+%End of user code
+Start of user code Domain Specific Model_input_Description for Domain Specific Graphical Animated Editor
+Instance of the domain specific metamodel.
+%End of user code
+Start of user code Launch Utilities_output_Description for Domain Specific Graphical Animated Editor
+The Eclipse launch framework.
+%End of user code
+Start of user code OperatorDefinition Model_input_Description for Composition Operator Applicator
+%End of user code
