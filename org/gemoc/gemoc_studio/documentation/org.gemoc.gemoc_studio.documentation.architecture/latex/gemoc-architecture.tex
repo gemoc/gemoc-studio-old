@@ -21,7 +21,7 @@
 	\end{revtable}
 	\begin{revisionlabels}
 		\revlabel{Initial version}
-		\revlabel{Intermediate version}
+		\revlabel{Update of the global architecture}
 	\end{revisionlabels}
 \end{revisions}
 %End of user code
@@ -29,8 +29,8 @@
 %Start of user code tableofauthors
 \begin{tableofauthors}
 	\leadauthor{Didier Vojtisek}{INRIA}
-	\leadauthor{M\'elanie Bats}{OBEO}
-	\leadauthor{Fontanella Vincent}{INRIA}
+	\redactor{M\'elanie Bats}{OBEO}
+	\redactor{Vincent Fontanella}{INRIA}
 	\contributor{All}{All}
 \end{tableofauthors}
 %End of user code
@@ -67,13 +67,13 @@ environment, and the principles guiding its design and evolution
 	\item \textbf{Model} : model which contributes to the convent of a View
 	\item \textbf{Update-Site} : an update-site is an aggregation of deployment units which might be used to provision a target platform
 	\item \textbf{Stakeholder} : (of a system) individual, team, organization, or classes thereof, having concerns with respect to a system 
-	\item \textbf{Language Workbench} : a language workbench is a tool to design a language.
-	\item \textbf{Language designer} : a language designer is the user of the langage workbench.
-	\item \textbf{modeling workbench} : a modeling workbench is a part where the language is run.
-	\item \textbf{domain engineer} :
-	\item \textbf{GEMOC Studio} : Integrated Development Environment to design and animate some languages defined for one system.
+	\item \textbf{Language workbench} : a language workbench offers the facilities for designing and implementing modeling languages.
+	\item \textbf{Language Designer} : a language designer is the user of the langage workbench.
+	\item \textbf{Modeling workbench} : a modeling workbench offers all the required facilities for editing and animating domain specific models according to a given modeling language.
+	\item \textbf{Domain engineer} :
+	\item \textbf{GEMOC Studio} : Eclipse-based studio integrating both the language workbench and the modeling workbench.
 	\item \textbf{DSML} : Domain Specific Modeling Language
-	\item \textbf{xDSML} : Executable Domain Specific Language
+	\item \textbf{xDSML} : Executable Domain Specific Modeling Language
 	\item \textbf{AS} : Abstract Syntax
 	\item \textbf{MOCC} : Model of Computation and Communication
 	\item \textbf{DSA} : Domain Specific Action (Language)
@@ -106,7 +106,7 @@ Starting from the project prososal view of the Studio (see figure \ref{fig:Proje
 \end{figure}
 \begin{figure}[htp]
 	\begin{center}
-	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, width=1.0\linewidth]{../images/generated/Global View.png}
+	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, width=1.0\linewidth]{../images/generated/GlobalView.png}
 	\caption{Architecture of the GEMOC Studio}
 	\label{fig:GlobalView}
 	\end{center}
@@ -127,14 +127,14 @@ We can identify 3 main groups of components and artefacts in the studio.
 
 \begin{figure}[htp]
 	\begin{center}
-	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, angle=90, totalheight=0.9\textheight]{../images/generated/Logical View.png}
+	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, angle=90, totalheight=0.9\textheight]{../images/generated/LogicalView.png}
 	\caption{Logical View of the GEMOC Studio}
 	\label{fig:LogicalView}
 	\end{center}
 \end{figure}
 \begin{figure}[htp]
 	\begin{center}
-	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, angle=90, totalheight=0.9\textheight]{../images/generated/Timesquare Implementation.png}
+	\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true, angle=90, totalheight=0.9\textheight]{../images/generated/TimesquareImplementation.png}
 	\caption{Implemetation view of the Execution Engine of the GEMOC Studio}
 	\label{fig:TimesquareImplementation}
 	\end{center}
@@ -337,15 +337,6 @@ This component port requires the following inputs:
 %End of user code
 %Start of user code CEP EngineDescription
 A \texttt{CEP Engine} provides a synchronization of two sets of steps events of various models from one coordination model.
-\newline the CEP Engine has 3 imputs :
-\begin{itemize}
-\item 2 set of steps events
-\item 1 coordination model
-\end{itemize}
-The CEP Engine has 1 output :
-\begin{itemize}
-\item 1 synchronization model from the 2 set of steps event provided in inputs
-\end{itemize}
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_CEP_Engine.png}
@@ -499,14 +490,6 @@ A \texttt{MOCC compiler} takes the specification of a \texttt{MOCC Model} to pro
 %End of user code
 %Start of user code NEMODescription
 \texttt{NEMO} is a specific MOCC based on a state machin. It interprets one concurrency model to schedule events.
-\newline It have in inputs :
-\begin{itemize}
-\item a concurrency model
-\end{itemize}
-It provides :
-\begin{itemize}
-\item one set of steps events
-\end{itemize}
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_NEMO.png}
@@ -609,8 +592,7 @@ the model of the trace to replay.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Scenario_Policy}
 %Start of user code Scenario Policy
-The Scenario Policy is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
-\textcolor{red}{\textbf{FBO: A mon avis, il manque le modele du scenario en input.}}
+The \texttt{Scenario Policy} is a policy for selecting a DSE among the all the DSE that are allowed to occur according to the model of computation.
 It inherits from Policy component and have all its input/outputs.
 %End of user code
 %Start of user code Scenario PolicyDescription
@@ -928,10 +910,10 @@ This component port provides the following outputs:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:Kermeta_Editor}
 %Start of user code Kermeta Editor
-Kermeta Editor is used in the context of GEMOC as a DSA editor.
 %End of user code
 %Start of user code Kermeta EditorDescription
-Kermeta Editor allows to create and edit kermeta models. These models defines the operationnal semantics of the actions in the DSM.
+A \texttt{Kermeta Editor} is used in the context of GEMOC as a \texttt{DSA editor}.
+\texttt{Kermeta Editor} is a tool to design \texttt{Kermeta models}. These models defines the operationnal semantics of the actions in the DSM.
 %End of user code 
 \begin{center}
 \includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{../images/generated/Generated_Kermeta_Editor.png}
@@ -1628,13 +1610,12 @@ The naming convention for a component contributions plug-in projects is the foll
 \textit{\textless qualified name \textgreater.\textless component contribution name\textgreater .\textless contribution part\textgreater }
 \newline
 
-It depends to the kind of knowledge of the contributions :
+the qualified name depends to the kind of knowledge of the contributions :
 \begin{itemize}
-	\item New knowledge : For instance, the naming of the core of the GEMOC Studio is \textit{org.gemoc.gemoc\_studio}
-	\item Appropriate knowledge : Notice that "fr.obeo" is the partner qualified name, "dsl.viewpoint" is the component contribution name, and core is the contribution part
+	\item New knowledge : the qualified name shall be \textbf{org} and the component contribution name shall be \textbf{gemoc} : \textit{org.gemoc} (\textit{followed by the contribution part})
+	\item Appropriate knowledge : the qualified name shall be the one of partners
 \end{itemize}
 
-Distinguer connaissances propres (fr.partner.) et connaissances nouvelles (org.gemoc)
 \subsection{Proiect organization}
 \section{Continuous Integration}
 The GEMOC Studio is built with the continuous integration at the link below :

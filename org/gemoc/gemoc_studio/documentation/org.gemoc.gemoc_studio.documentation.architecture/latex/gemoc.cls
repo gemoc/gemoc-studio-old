@@ -274,6 +274,7 @@
 	\newpage}
 	
 \newcommand{\leadauthor}[2]{#1 & #2 & Lead author  \\ \hline }
+\newcommand{\redactor}[2]{#1 & #2 & Author  \\ \hline }
 \newcommand{\contributor}[2]{#1 & #2 & Contributor \\ \hline }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
