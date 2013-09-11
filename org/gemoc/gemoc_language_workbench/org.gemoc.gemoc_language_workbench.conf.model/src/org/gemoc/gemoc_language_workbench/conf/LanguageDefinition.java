@@ -14,12 +14,13 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDsaProjects <em>Dsa Projects</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDsaProject <em>Dsa Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDomainModelProject <em>Domain Model Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getEditorProjects <em>Editor Projects</em>}</li>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProjects <em>Mo CModel Projects</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProject <em>Mo CModel Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getAnimatorProjects <em>Animator Projects</em>}</li>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProjects <em>DSE Projects</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProject <em>DSE Project</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,20 +30,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface LanguageDefinition extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Dsa Projects</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.gemoc_language_workbench.conf.DSAProject}.
+	 * Returns the value of the '<em><b>Dsa Project</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Dsa Projects</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Dsa Project</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Dsa Projects</em>' containment reference list.
-	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_DsaProjects()
+	 * @return the value of the '<em>Dsa Project</em>' containment reference.
+	 * @see #setDsaProject(DSAProject)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_DsaProject()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<DSAProject> getDsaProjects();
+	DSAProject getDsaProject();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDsaProject <em>Dsa Project</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Dsa Project</em>' containment reference.
+	 * @see #getDsaProject()
+	 * @generated
+	 */
+	void setDsaProject(DSAProject value);
 
 	/**
 	 * Returns the value of the '<em><b>Domain Model Project</b></em>' containment reference.
@@ -87,20 +98,30 @@ public interface LanguageDefinition extends EObject {
 	EList<EditorProject> getEditorProjects();
 
 	/**
-	 * Returns the value of the '<em><b>Mo CModel Projects</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.gemoc_language_workbench.conf.MoCProject}.
+	 * Returns the value of the '<em><b>Mo CModel Project</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Mo CModel Projects</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Mo CModel Project</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mo CModel Projects</em>' containment reference list.
-	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_MoCModelProjects()
+	 * @return the value of the '<em>Mo CModel Project</em>' containment reference.
+	 * @see #setMoCModelProject(MoCProject)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_MoCModelProject()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<MoCProject> getMoCModelProjects();
+	MoCProject getMoCModelProject();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProject <em>Mo CModel Project</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mo CModel Project</em>' containment reference.
+	 * @see #getMoCModelProject()
+	 * @generated
+	 */
+	void setMoCModelProject(MoCProject value);
 
 	/**
 	 * Returns the value of the '<em><b>Animator Projects</b></em>' containment reference list.
@@ -119,19 +140,55 @@ public interface LanguageDefinition extends EObject {
 	EList<AnimatorProject> getAnimatorProjects();
 
 	/**
-	 * Returns the value of the '<em><b>DSE Projects</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.gemoc_language_workbench.conf.DSEProject}.
+	 * Returns the value of the '<em><b>DSE Project</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>DSE Projects</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>DSE Project</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>DSE Projects</em>' containment reference list.
-	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_DSEProjects()
-	 * @model containment="true"
+	 * @return the value of the '<em>DSE Project</em>' containment reference.
+	 * @see #setDSEProject(DSEProject)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_DSEProject()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<DSEProject> getDSEProjects();
+	DSEProject getDSEProject();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProject <em>DSE Project</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>DSE Project</em>' containment reference.
+	 * @see #getDSEProject()
+	 * @generated
+	 */
+	void setDSEProject(DSEProject value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_Name()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // LanguageDefinition

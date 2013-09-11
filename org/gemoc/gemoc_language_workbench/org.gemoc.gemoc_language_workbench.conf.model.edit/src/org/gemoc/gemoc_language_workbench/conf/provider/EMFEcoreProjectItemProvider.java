@@ -74,7 +74,7 @@ public class EMFEcoreProjectItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(confPackage.Literals.EMF_ECORE_PROJECT__ECORE_MODEL);
+			childrenFeatures.add(confPackage.Literals.EMF_ECORE_PROJECT__EMF_GENMODEL);
 		}
 		return childrenFeatures;
 	}
@@ -129,7 +129,7 @@ public class EMFEcoreProjectItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EMFEcoreProject.class)) {
-			case confPackage.EMF_ECORE_PROJECT__ECORE_MODEL:
+			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -149,8 +149,8 @@ public class EMFEcoreProjectItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(confPackage.Literals.EMF_ECORE_PROJECT__ECORE_MODEL,
-				 confFactory.eINSTANCE.createEcoreModel()));
+				(confPackage.Literals.EMF_ECORE_PROJECT__EMF_GENMODEL,
+				 confFactory.eINSTANCE.createEMFGenmodel()));
 	}
 
 }

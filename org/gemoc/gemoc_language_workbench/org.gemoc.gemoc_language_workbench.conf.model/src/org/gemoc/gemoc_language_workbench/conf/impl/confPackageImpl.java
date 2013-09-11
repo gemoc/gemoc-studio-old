@@ -16,11 +16,10 @@ import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.conf.EcoreModel;
+import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.FileResource;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageDesignerConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.MoCProject;
@@ -164,7 +163,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass ecoreModelEClass = null;
+	private EClass emfGenmodelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -309,7 +308,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLanguageDefinition_DsaProjects() {
+	public EReference getLanguageDefinition_DsaProject() {
 		return (EReference)languageDefinitionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -336,7 +335,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLanguageDefinition_MoCModelProjects() {
+	public EReference getLanguageDefinition_MoCModelProject() {
 		return (EReference)languageDefinitionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -354,8 +353,17 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLanguageDefinition_DSEProjects() {
+	public EReference getLanguageDefinition_DSEProject() {
 		return (EReference)languageDefinitionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLanguageDefinition_Name() {
+		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -365,6 +373,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 */
 	public EClass getEditorProject() {
 		return editorProjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEditorProject_FileExtension() {
+		return (EAttribute)editorProjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -417,7 +434,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEMFEcoreProject_EcoreModel() {
+	public EReference getEMFEcoreProject_EmfGenmodel() {
 		return (EReference)emfEcoreProjectEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -489,8 +506,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getEcoreModel() {
-		return ecoreModelEClass;
+	public EClass getEMFGenmodel() {
+		return emfGenmodelEClass;
 	}
 
 	/**
@@ -559,14 +576,16 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		kermeta2DSAProjectEClass = createEClass(KERMETA2_DSA_PROJECT);
 
 		languageDefinitionEClass = createEClass(LANGUAGE_DEFINITION);
-		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DSA_PROJECTS);
+		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DSA_PROJECT);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__EDITOR_PROJECTS);
-		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS);
+		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__MO_CMODEL_PROJECT);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__ANIMATOR_PROJECTS);
-		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DSE_PROJECTS);
+		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DSE_PROJECT);
+		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__NAME);
 
 		editorProjectEClass = createEClass(EDITOR_PROJECT);
+		createEAttribute(editorProjectEClass, EDITOR_PROJECT__FILE_EXTENSION);
 
 		domainModelProjectEClass = createEClass(DOMAIN_MODEL_PROJECT);
 
@@ -577,7 +596,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		animatorProjectEClass = createEClass(ANIMATOR_PROJECT);
 
 		emfEcoreProjectEClass = createEClass(EMF_ECORE_PROJECT);
-		createEReference(emfEcoreProjectEClass, EMF_ECORE_PROJECT__ECORE_MODEL);
+		createEReference(emfEcoreProjectEClass, EMF_ECORE_PROJECT__EMF_GENMODEL);
 
 		odProjectEClass = createEClass(OD_PROJECT);
 
@@ -592,7 +611,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		treeEditorProjectEClass = createEClass(TREE_EDITOR_PROJECT);
 
-		ecoreModelEClass = createEClass(ECORE_MODEL);
+		emfGenmodelEClass = createEClass(EMF_GENMODEL);
 
 		fileResourceEClass = createEClass(FILE_RESOURCE);
 		createEAttribute(fileResourceEClass, FILE_RESOURCE__LOCATION_URI);
@@ -642,7 +661,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		dseProjectEClass.getESuperTypes().add(this.getProjectResource());
 		eclProjectEClass.getESuperTypes().add(this.getDSEProject());
 		treeEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
-		ecoreModelEClass.getESuperTypes().add(this.getFileResource());
+		emfGenmodelEClass.getESuperTypes().add(this.getFileResource());
 		xTextEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
 
 		// Initialize classes and features; add operations and parameters
@@ -657,14 +676,16 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEClass(kermeta2DSAProjectEClass, Kermeta2DSAProject.class, "Kermeta2DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(languageDefinitionEClass, LanguageDefinition.class, "LanguageDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLanguageDefinition_DsaProjects(), this.getDSAProject(), null, "dsaProjects", null, 1, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLanguageDefinition_DsaProject(), this.getDSAProject(), null, "dsaProject", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLanguageDefinition_DomainModelProject(), this.getDomainModelProject(), null, "domainModelProject", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLanguageDefinition_EditorProjects(), this.getEditorProject(), null, "editorProjects", null, 1, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLanguageDefinition_MoCModelProjects(), this.getMoCProject(), null, "moCModelProjects", null, 1, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLanguageDefinition_MoCModelProject(), this.getMoCProject(), null, "moCModelProject", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLanguageDefinition_AnimatorProjects(), this.getAnimatorProject(), null, "animatorProjects", null, 1, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLanguageDefinition_DSEProjects(), this.getDSEProject(), null, "dSEProjects", null, 0, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLanguageDefinition_DSEProject(), this.getDSEProject(), null, "dSEProject", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLanguageDefinition_Name(), ecorePackage.getEString(), "name", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(editorProjectEClass, EditorProject.class, "EditorProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEditorProject_FileExtension(), ecorePackage.getEString(), "fileExtension", null, 1, -1, EditorProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(domainModelProjectEClass, DomainModelProject.class, "DomainModelProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -675,7 +696,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEClass(animatorProjectEClass, AnimatorProject.class, "AnimatorProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(emfEcoreProjectEClass, EMFEcoreProject.class, "EMFEcoreProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEMFEcoreProject_EcoreModel(), this.getEcoreModel(), null, "ecoreModel", null, 1, 1, EMFEcoreProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEMFEcoreProject_EmfGenmodel(), this.getEMFGenmodel(), null, "emfGenmodel", null, 1, 1, EMFEcoreProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(odProjectEClass, ODProject.class, "ODProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -690,7 +711,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		initEClass(treeEditorProjectEClass, TreeEditorProject.class, "TreeEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ecoreModelEClass, EcoreModel.class, "EcoreModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(emfGenmodelEClass, EMFGenmodel.class, "EMFGenmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(fileResourceEClass, FileResource.class, "FileResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFileResource_LocationURI(), ecorePackage.getEString(), "locationURI", null, 0, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

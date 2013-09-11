@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.ui.resourcevisitors;
+package org.gemoc.gemoc_language_workbench.utils.resourcevisitors;
 
 import java.util.ArrayList;
 import java.util.List;

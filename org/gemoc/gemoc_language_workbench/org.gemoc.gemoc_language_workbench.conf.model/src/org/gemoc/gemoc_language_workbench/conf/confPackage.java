@@ -178,13 +178,13 @@ public interface confPackage extends EPackage {
 	int LANGUAGE_DEFINITION = 4;
 
 	/**
-	 * The feature id for the '<em><b>Dsa Projects</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Dsa Project</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LANGUAGE_DEFINITION__DSA_PROJECTS = 0;
+	int LANGUAGE_DEFINITION__DSA_PROJECT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Domain Model Project</b></em>' containment reference.
@@ -205,13 +205,13 @@ public interface confPackage extends EPackage {
 	int LANGUAGE_DEFINITION__EDITOR_PROJECTS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Mo CModel Projects</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Mo CModel Project</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS = 3;
+	int LANGUAGE_DEFINITION__MO_CMODEL_PROJECT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Animator Projects</b></em>' containment reference list.
@@ -223,13 +223,22 @@ public interface confPackage extends EPackage {
 	int LANGUAGE_DEFINITION__ANIMATOR_PROJECTS = 4;
 
 	/**
-	 * The feature id for the '<em><b>DSE Projects</b></em>' containment reference list.
+	 * The feature id for the '<em><b>DSE Project</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LANGUAGE_DEFINITION__DSE_PROJECTS = 5;
+	int LANGUAGE_DEFINITION__DSE_PROJECT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANGUAGE_DEFINITION__NAME = 6;
 
 	/**
 	 * The number of structural features of the '<em>Language Definition</em>' class.
@@ -238,7 +247,7 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LANGUAGE_DEFINITION_FEATURE_COUNT = 6;
+	int LANGUAGE_DEFINITION_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EditorProjectImpl <em>Editor Project</em>}' class.
@@ -260,13 +269,22 @@ public interface confPackage extends EPackage {
 	int EDITOR_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITOR_PROJECT__FILE_EXTENSION = PROJECT_RESOURCE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Editor Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDITOR_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
+	int EDITOR_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DomainModelProjectImpl <em>Domain Model Project</em>}' class.
@@ -400,13 +418,13 @@ public interface confPackage extends EPackage {
 	int EMF_ECORE_PROJECT__PROJECT_NAME = DOMAIN_MODEL_PROJECT__PROJECT_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Ecore Model</b></em>' containment reference.
+	 * The feature id for the '<em><b>Emf Genmodel</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_ECORE_PROJECT__ECORE_MODEL = DOMAIN_MODEL_PROJECT_FEATURE_COUNT + 0;
+	int EMF_ECORE_PROJECT__EMF_GENMODEL = DOMAIN_MODEL_PROJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>EMF Ecore Project</em>' class.
@@ -435,6 +453,15 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int OD_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OD_PROJECT__FILE_EXTENSION = EDITOR_PROJECT__FILE_EXTENSION;
 
 	/**
 	 * The number of structural features of the '<em>OD Project</em>' class.
@@ -586,6 +613,15 @@ public interface confPackage extends EPackage {
 	int TREE_EDITOR_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_EDITOR_PROJECT__FILE_EXTENSION = EDITOR_PROJECT__FILE_EXTENSION;
+
+	/**
 	 * The number of structural features of the '<em>Tree Editor Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -623,14 +659,14 @@ public interface confPackage extends EPackage {
 	int FILE_RESOURCE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EcoreModelImpl <em>Ecore Model</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFGenmodelImpl <em>EMF Genmodel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.EcoreModelImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEcoreModel()
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.EMFGenmodelImpl
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFGenmodel()
 	 * @generated
 	 */
-	int ECORE_MODEL = 17;
+	int EMF_GENMODEL = 17;
 
 	/**
 	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
@@ -639,17 +675,16 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_MODEL__LOCATION_URI = FILE_RESOURCE__LOCATION_URI;
+	int EMF_GENMODEL__LOCATION_URI = FILE_RESOURCE__LOCATION_URI;
 
 	/**
-	 * The number of structural features of the '<em>Ecore Model</em>' class.
+	 * The number of structural features of the '<em>EMF Genmodel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_MODEL_FEATURE_COUNT = FILE_RESOURCE_FEATURE_COUNT + 0;
-
+	int EMF_GENMODEL_FEATURE_COUNT = FILE_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.XTextEditorProjectImpl <em>XText Editor Project</em>}' class.
@@ -669,6 +704,15 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int XTEXT_EDITOR_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XTEXT_EDITOR_PROJECT__FILE_EXTENSION = EDITOR_PROJECT__FILE_EXTENSION;
 
 	/**
 	 * The number of structural features of the '<em>XText Editor Project</em>' class.
@@ -753,15 +797,15 @@ public interface confPackage extends EPackage {
 	EClass getLanguageDefinition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDsaProjects <em>Dsa Projects</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDsaProject <em>Dsa Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Dsa Projects</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDsaProjects()
+	 * @return the meta object for the containment reference '<em>Dsa Project</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDsaProject()
 	 * @see #getLanguageDefinition()
 	 * @generated
 	 */
-	EReference getLanguageDefinition_DsaProjects();
+	EReference getLanguageDefinition_DsaProject();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDomainModelProject <em>Domain Model Project</em>}'.
@@ -786,15 +830,15 @@ public interface confPackage extends EPackage {
 	EReference getLanguageDefinition_EditorProjects();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProjects <em>Mo CModel Projects</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProject <em>Mo CModel Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Mo CModel Projects</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProjects()
+	 * @return the meta object for the containment reference '<em>Mo CModel Project</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProject()
 	 * @see #getLanguageDefinition()
 	 * @generated
 	 */
-	EReference getLanguageDefinition_MoCModelProjects();
+	EReference getLanguageDefinition_MoCModelProject();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getAnimatorProjects <em>Animator Projects</em>}'.
@@ -808,15 +852,26 @@ public interface confPackage extends EPackage {
 	EReference getLanguageDefinition_AnimatorProjects();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProjects <em>DSE Projects</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProject <em>DSE Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>DSE Projects</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProjects()
+	 * @return the meta object for the containment reference '<em>DSE Project</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProject()
 	 * @see #getLanguageDefinition()
 	 * @generated
 	 */
-	EReference getLanguageDefinition_DSEProjects();
+	EReference getLanguageDefinition_DSEProject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getName()
+	 * @see #getLanguageDefinition()
+	 * @generated
+	 */
+	EAttribute getLanguageDefinition_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.EditorProject <em>Editor Project</em>}'.
@@ -827,6 +882,17 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEditorProject();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.gemoc.gemoc_language_workbench.conf.EditorProject#getFileExtension <em>File Extension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>File Extension</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.EditorProject#getFileExtension()
+	 * @see #getEditorProject()
+	 * @generated
+	 */
+	EAttribute getEditorProject_FileExtension();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.DomainModelProject <em>Domain Model Project</em>}'.
@@ -879,15 +945,15 @@ public interface confPackage extends EPackage {
 	EClass getEMFEcoreProject();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEcoreModel <em>Ecore Model</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEmfGenmodel <em>Emf Genmodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Ecore Model</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEcoreModel()
+	 * @return the meta object for the containment reference '<em>Emf Genmodel</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEmfGenmodel()
 	 * @see #getEMFEcoreProject()
 	 * @generated
 	 */
-	EReference getEMFEcoreProject_EcoreModel();
+	EReference getEMFEcoreProject_EmfGenmodel();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ODProject <em>OD Project</em>}'.
@@ -961,14 +1027,14 @@ public interface confPackage extends EPackage {
 	EClass getTreeEditorProject();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.EcoreModel <em>Ecore Model</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.EMFGenmodel <em>EMF Genmodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Ecore Model</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.EcoreModel
+	 * @return the meta object for class '<em>EMF Genmodel</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.EMFGenmodel
 	 * @generated
 	 */
-	EClass getEcoreModel();
+	EClass getEMFGenmodel();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.FileResource <em>File Resource</em>}'.
@@ -1090,12 +1156,12 @@ public interface confPackage extends EPackage {
 		EClass LANGUAGE_DEFINITION = eINSTANCE.getLanguageDefinition();
 
 		/**
-		 * The meta object literal for the '<em><b>Dsa Projects</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Dsa Project</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LANGUAGE_DEFINITION__DSA_PROJECTS = eINSTANCE.getLanguageDefinition_DsaProjects();
+		EReference LANGUAGE_DEFINITION__DSA_PROJECT = eINSTANCE.getLanguageDefinition_DsaProject();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Model Project</b></em>' containment reference feature.
@@ -1114,12 +1180,12 @@ public interface confPackage extends EPackage {
 		EReference LANGUAGE_DEFINITION__EDITOR_PROJECTS = eINSTANCE.getLanguageDefinition_EditorProjects();
 
 		/**
-		 * The meta object literal for the '<em><b>Mo CModel Projects</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Mo CModel Project</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS = eINSTANCE.getLanguageDefinition_MoCModelProjects();
+		EReference LANGUAGE_DEFINITION__MO_CMODEL_PROJECT = eINSTANCE.getLanguageDefinition_MoCModelProject();
 
 		/**
 		 * The meta object literal for the '<em><b>Animator Projects</b></em>' containment reference list feature.
@@ -1130,12 +1196,20 @@ public interface confPackage extends EPackage {
 		EReference LANGUAGE_DEFINITION__ANIMATOR_PROJECTS = eINSTANCE.getLanguageDefinition_AnimatorProjects();
 
 		/**
-		 * The meta object literal for the '<em><b>DSE Projects</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>DSE Project</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LANGUAGE_DEFINITION__DSE_PROJECTS = eINSTANCE.getLanguageDefinition_DSEProjects();
+		EReference LANGUAGE_DEFINITION__DSE_PROJECT = eINSTANCE.getLanguageDefinition_DSEProject();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LANGUAGE_DEFINITION__NAME = eINSTANCE.getLanguageDefinition_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EditorProjectImpl <em>Editor Project</em>}' class.
@@ -1146,6 +1220,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EDITOR_PROJECT = eINSTANCE.getEditorProject();
+
+		/**
+		 * The meta object literal for the '<em><b>File Extension</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EDITOR_PROJECT__FILE_EXTENSION = eINSTANCE.getEditorProject_FileExtension();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DomainModelProjectImpl <em>Domain Model Project</em>}' class.
@@ -1198,12 +1280,12 @@ public interface confPackage extends EPackage {
 		EClass EMF_ECORE_PROJECT = eINSTANCE.getEMFEcoreProject();
 
 		/**
-		 * The meta object literal for the '<em><b>Ecore Model</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Emf Genmodel</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EMF_ECORE_PROJECT__ECORE_MODEL = eINSTANCE.getEMFEcoreProject_EcoreModel();
+		EReference EMF_ECORE_PROJECT__EMF_GENMODEL = eINSTANCE.getEMFEcoreProject_EmfGenmodel();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ODProjectImpl <em>OD Project</em>}' class.
@@ -1274,14 +1356,14 @@ public interface confPackage extends EPackage {
 		EClass TREE_EDITOR_PROJECT = eINSTANCE.getTreeEditorProject();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EcoreModelImpl <em>Ecore Model</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFGenmodelImpl <em>EMF Genmodel</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.EcoreModelImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEcoreModel()
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.EMFGenmodelImpl
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFGenmodel()
 		 * @generated
 		 */
-		EClass ECORE_MODEL = eINSTANCE.getEcoreModel();
+		EClass EMF_GENMODEL = eINSTANCE.getEMFGenmodel();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.FileResourceImpl <em>File Resource</em>}' class.

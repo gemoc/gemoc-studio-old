@@ -10,6 +10,7 @@
 		<module>../org.gemoc.gemoc_language_workbench.conf.model</module>
 		<module>../org.gemoc.gemoc_language_workbench.conf.model.edit</module>
 		<module>../org.gemoc.gemoc_language_workbench.conf.model.editor</module>
+		<module>../org.gemoc.gemoc_language_workbench.utils</module>
 		<module>../org.gemoc.gemoc_language_workbench.ui</module>
 		<module>../org.gemoc.gemoc_language_workbench.documentation</module>
 
@@ -49,6 +50,17 @@
 			<layout>p2</layout>
 			<url>http://www.kermeta.org/k2/update/</url>
 		</repository>
+		
+		
+		
+		 <repository>
+            <id>emf2.9.x</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
+        </repository>
+        
+		
+		
 	</repositories>
 
 	<build>

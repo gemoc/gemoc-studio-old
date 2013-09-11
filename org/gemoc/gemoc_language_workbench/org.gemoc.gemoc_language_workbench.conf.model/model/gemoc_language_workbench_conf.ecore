@@ -12,28 +12,32 @@
   <eClassifiers xsi:type="ecore:EClass" name="DSAProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="Kermeta2DSAProject" eSuperTypes="#//DSAProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="LanguageDefinition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dsaProjects" lowerBound="1"
-        upperBound="-1" eType="#//DSAProject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dsaProject" lowerBound="1"
+        eType="#//DSAProject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainModelProject" lowerBound="1"
         eType="#//DomainModelProject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="editorProjects" lowerBound="1"
         upperBound="-1" eType="#//EditorProject" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="moCModelProjects" lowerBound="1"
-        upperBound="-1" eType="#//MoCProject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moCModelProject" lowerBound="1"
+        eType="#//MoCProject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="animatorProjects" lowerBound="1"
         upperBound="-1" eType="#//AnimatorProject" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dSEProjects" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dSEProject" lowerBound="1"
         eType="#//DSEProject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EditorProject" abstract="true" eSuperTypes="#//ProjectResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EditorProject" abstract="true" eSuperTypes="#//ProjectResource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainModelProject" abstract="true"
       eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="MoCProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="CCSLMoCProject" eSuperTypes="#//MoCProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="AnimatorProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="EMFEcoreProject" eSuperTypes="#//DomainModelProject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ecoreModel" lowerBound="1"
-        eType="#//EcoreModel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="emfGenmodel" lowerBound="1"
+        eType="#//EMFGenmodel" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ODProject" eSuperTypes="#//EditorProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="SiriusAnimatorProject" eSuperTypes="#//AnimatorProject">
@@ -44,7 +48,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="DSEProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="ECLProject" eSuperTypes="#//DSEProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="TreeEditorProject" eSuperTypes="#//EditorProject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EcoreModel" eSuperTypes="#//FileResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EMFGenmodel" eSuperTypes="#//FileResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="locationURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

@@ -57,6 +57,8 @@ public interface confFactory extends EFactory {
 	 */
 	CCSLMoCProject createCCSLMoCProject();
 
+	
+
 	/**
 	 * Returns a new object of class '<em>EMF Ecore Project</em>'.
 	 * <!-- begin-user-doc -->
@@ -112,13 +114,13 @@ public interface confFactory extends EFactory {
 	TreeEditorProject createTreeEditorProject();
 
 	/**
-	 * Returns a new object of class '<em>Ecore Model</em>'.
+	 * Returns a new object of class '<em>EMF Genmodel</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Ecore Model</em>'.
+	 * @return a new object of class '<em>EMF Genmodel</em>'.
 	 * @generated
 	 */
-	EcoreModel createEcoreModel();
+	EMFGenmodel createEMFGenmodel();
 
 	/**
 	 * Returns a new object of class '<em>XText Editor Project</em>'.

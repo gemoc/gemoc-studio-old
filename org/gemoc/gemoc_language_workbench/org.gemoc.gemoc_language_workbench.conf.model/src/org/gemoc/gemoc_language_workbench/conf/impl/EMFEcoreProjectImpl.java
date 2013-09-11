@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.conf.EcoreModel;
+import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
 import org.gemoc.gemoc_language_workbench.conf.confPackage;
 
 /**
@@ -21,7 +21,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFEcoreProjectImpl#getEcoreModel <em>Ecore Model</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFEcoreProjectImpl#getEmfGenmodel <em>Emf Genmodel</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,15 +29,14 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  */
 public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEcoreProject {
 	/**
-	 * The cached value of the '{@link #getEcoreModel() <em>Ecore Model</em>}' containment reference.
+	 * The cached value of the '{@link #getEmfGenmodel() <em>Emf Genmodel</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEcoreModel()
+	 * @see #getEmfGenmodel()
 	 * @generated
 	 * @ordered
 	 */
-	protected EcoreModel ecoreModel;
-
+	protected EMFGenmodel emfGenmodel;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,8 +61,8 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EcoreModel getEcoreModel() {
-		return ecoreModel;
+	public EMFGenmodel getEmfGenmodel() {
+		return emfGenmodel;
 	}
 
 	/**
@@ -71,11 +70,11 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEcoreModel(EcoreModel newEcoreModel, NotificationChain msgs) {
-		EcoreModel oldEcoreModel = ecoreModel;
-		ecoreModel = newEcoreModel;
+	public NotificationChain basicSetEmfGenmodel(EMFGenmodel newEmfGenmodel, NotificationChain msgs) {
+		EMFGenmodel oldEmfGenmodel = emfGenmodel;
+		emfGenmodel = newEmfGenmodel;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, confPackage.EMF_ECORE_PROJECT__ECORE_MODEL, oldEcoreModel, newEcoreModel);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL, oldEmfGenmodel, newEmfGenmodel);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -86,18 +85,18 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEcoreModel(EcoreModel newEcoreModel) {
-		if (newEcoreModel != ecoreModel) {
+	public void setEmfGenmodel(EMFGenmodel newEmfGenmodel) {
+		if (newEmfGenmodel != emfGenmodel) {
 			NotificationChain msgs = null;
-			if (ecoreModel != null)
-				msgs = ((InternalEObject)ecoreModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - confPackage.EMF_ECORE_PROJECT__ECORE_MODEL, null, msgs);
-			if (newEcoreModel != null)
-				msgs = ((InternalEObject)newEcoreModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - confPackage.EMF_ECORE_PROJECT__ECORE_MODEL, null, msgs);
-			msgs = basicSetEcoreModel(newEcoreModel, msgs);
+			if (emfGenmodel != null)
+				msgs = ((InternalEObject)emfGenmodel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL, null, msgs);
+			if (newEmfGenmodel != null)
+				msgs = ((InternalEObject)newEmfGenmodel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL, null, msgs);
+			msgs = basicSetEmfGenmodel(newEmfGenmodel, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.EMF_ECORE_PROJECT__ECORE_MODEL, newEcoreModel, newEcoreModel));
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL, newEmfGenmodel, newEmfGenmodel));
 	}
 
 	/**
@@ -108,8 +107,8 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case confPackage.EMF_ECORE_PROJECT__ECORE_MODEL:
-				return basicSetEcoreModel(null, msgs);
+			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
+				return basicSetEmfGenmodel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -122,8 +121,8 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case confPackage.EMF_ECORE_PROJECT__ECORE_MODEL:
-				return getEcoreModel();
+			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
+				return getEmfGenmodel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,8 +135,8 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case confPackage.EMF_ECORE_PROJECT__ECORE_MODEL:
-				setEcoreModel((EcoreModel)newValue);
+			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
+				setEmfGenmodel((EMFGenmodel)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -151,8 +150,8 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case confPackage.EMF_ECORE_PROJECT__ECORE_MODEL:
-				setEcoreModel((EcoreModel)null);
+			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
+				setEmfGenmodel((EMFGenmodel)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -166,8 +165,8 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case confPackage.EMF_ECORE_PROJECT__ECORE_MODEL:
-				return ecoreModel != null;
+			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
+				return emfGenmodel != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -19,7 +19,7 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.ui.resourcevisitors.KpFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.KpFileFinderResourceVisitor;
 
 public class ActiveFileKp extends ActiveFile {
 
@@ -68,7 +68,7 @@ public class ActiveFileKp extends ActiveFile {
 		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinitions().get(0);
 		    
 		    // create missing data
-		    Kermeta2DSAProject k2Project = (Kermeta2DSAProject) langage.getDsaProjects().get(0);
+		    Kermeta2DSAProject k2Project = (Kermeta2DSAProject) langage.getDsaProject();
 		    projectDSA = ResourcesPlugin.getWorkspace().getRoot().getProject(k2Project.getProjectName());
 			try {
 				resource.save(null);

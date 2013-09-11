@@ -66,7 +66,7 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 			case confPackage.MOD_HEL_XMO_CPROJECT: return createModHelXMoCProject();
 			case confPackage.ECL_PROJECT: return createECLProject();
 			case confPackage.TREE_EDITOR_PROJECT: return createTreeEditorProject();
-			case confPackage.ECORE_MODEL: return createEcoreModel();
+			case confPackage.EMF_GENMODEL: return createEMFGenmodel();
 			case confPackage.XTEXT_EDITOR_PROJECT: return createXTextEditorProject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -112,6 +112,7 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 		CCSLMoCProjectImpl ccslMoCProject = new CCSLMoCProjectImpl();
 		return ccslMoCProject;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,9 +179,9 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EcoreModel createEcoreModel() {
-		EcoreModelImpl ecoreModel = new EcoreModelImpl();
-		return ecoreModel;
+	public EMFGenmodel createEMFGenmodel() {
+		EMFGenmodelImpl emfGenmodel = new EMFGenmodelImpl();
+		return emfGenmodel;
 	}
 
 	/**

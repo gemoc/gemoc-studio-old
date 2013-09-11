@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.ui.resourcevisitors;
+package org.gemoc.gemoc_language_workbench.utils.resourcevisitors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;

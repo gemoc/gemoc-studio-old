@@ -9,6 +9,6 @@
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>org.gemoc.gemoc_language_workbench.conf.model</artifactId>
+  <artifactId>org.gemoc.gemoc_language_workbench.utils</artifactId>
   <packaging>eclipse-plugin</packaging>
 </project>

@@ -136,8 +136,8 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createTreeEditorProjectAdapter();
 			}
 			@Override
-			public Adapter caseEcoreModel(EcoreModel object) {
-				return createEcoreModelAdapter();
+			public Adapter caseEMFGenmodel(EMFGenmodel object) {
+				return createEMFGenmodelAdapter();
 			}
 			@Override
 			public Adapter caseFileResource(FileResource object) {
@@ -406,16 +406,16 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.EcoreModel <em>Ecore Model</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.EMFGenmodel <em>EMF Genmodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.EcoreModel
+	 * @see org.gemoc.gemoc_language_workbench.conf.EMFGenmodel
 	 * @generated
 	 */
-	public Adapter createEcoreModelAdapter() {
+	public Adapter createEMFGenmodelAdapter() {
 		return null;
 	}
 

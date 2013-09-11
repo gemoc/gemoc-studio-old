@@ -34,12 +34,13 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getDsaProjects <em>Dsa Projects</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getDsaProject <em>Dsa Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getDomainModelProject <em>Domain Model Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getEditorProjects <em>Editor Projects</em>}</li>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getMoCModelProjects <em>Mo CModel Projects</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getMoCModelProject <em>Mo CModel Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getAnimatorProjects <em>Animator Projects</em>}</li>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getDSEProjects <em>DSE Projects</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getDSEProject <em>DSE Project</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,14 +48,14 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  */
 public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefinition {
 	/**
-	 * The cached value of the '{@link #getDsaProjects() <em>Dsa Projects</em>}' containment reference list.
+	 * The cached value of the '{@link #getDsaProject() <em>Dsa Project</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDsaProjects()
+	 * @see #getDsaProject()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DSAProject> dsaProjects;
+	protected DSAProject dsaProject;
 
 	/**
 	 * The cached value of the '{@link #getDomainModelProject() <em>Domain Model Project</em>}' containment reference.
@@ -77,14 +78,14 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	protected EList<EditorProject> editorProjects;
 
 	/**
-	 * The cached value of the '{@link #getMoCModelProjects() <em>Mo CModel Projects</em>}' containment reference list.
+	 * The cached value of the '{@link #getMoCModelProject() <em>Mo CModel Project</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMoCModelProjects()
+	 * @see #getMoCModelProject()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<MoCProject> moCModelProjects;
+	protected MoCProject moCModelProject;
 
 	/**
 	 * The cached value of the '{@link #getAnimatorProjects() <em>Animator Projects</em>}' containment reference list.
@@ -97,14 +98,34 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	protected EList<AnimatorProject> animatorProjects;
 
 	/**
-	 * The cached value of the '{@link #getDSEProjects() <em>DSE Projects</em>}' containment reference list.
+	 * The cached value of the '{@link #getDSEProject() <em>DSE Project</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDSEProjects()
+	 * @see #getDSEProject()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DSEProject> dSEProjects;
+	protected DSEProject dSEProject;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -130,11 +151,42 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DSAProject> getDsaProjects() {
-		if (dsaProjects == null) {
-			dsaProjects = new EObjectContainmentEList<DSAProject>(DSAProject.class, this, confPackage.LANGUAGE_DEFINITION__DSA_PROJECTS);
+	public DSAProject getDsaProject() {
+		return dsaProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDsaProject(DSAProject newDsaProject, NotificationChain msgs) {
+		DSAProject oldDsaProject = dsaProject;
+		dsaProject = newDsaProject;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__DSA_PROJECT, oldDsaProject, newDsaProject);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return dsaProjects;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDsaProject(DSAProject newDsaProject) {
+		if (newDsaProject != dsaProject) {
+			NotificationChain msgs = null;
+			if (dsaProject != null)
+				msgs = ((InternalEObject)dsaProject).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - confPackage.LANGUAGE_DEFINITION__DSA_PROJECT, null, msgs);
+			if (newDsaProject != null)
+				msgs = ((InternalEObject)newDsaProject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - confPackage.LANGUAGE_DEFINITION__DSA_PROJECT, null, msgs);
+			msgs = basicSetDsaProject(newDsaProject, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__DSA_PROJECT, newDsaProject, newDsaProject));
 	}
 
 	/**
@@ -197,11 +249,42 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<MoCProject> getMoCModelProjects() {
-		if (moCModelProjects == null) {
-			moCModelProjects = new EObjectContainmentEList<MoCProject>(MoCProject.class, this, confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS);
+	public MoCProject getMoCModelProject() {
+		return moCModelProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMoCModelProject(MoCProject newMoCModelProject, NotificationChain msgs) {
+		MoCProject oldMoCModelProject = moCModelProject;
+		moCModelProject = newMoCModelProject;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT, oldMoCModelProject, newMoCModelProject);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return moCModelProjects;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMoCModelProject(MoCProject newMoCModelProject) {
+		if (newMoCModelProject != moCModelProject) {
+			NotificationChain msgs = null;
+			if (moCModelProject != null)
+				msgs = ((InternalEObject)moCModelProject).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT, null, msgs);
+			if (newMoCModelProject != null)
+				msgs = ((InternalEObject)newMoCModelProject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT, null, msgs);
+			msgs = basicSetMoCModelProject(newMoCModelProject, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT, newMoCModelProject, newMoCModelProject));
 	}
 
 	/**
@@ -221,11 +304,63 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DSEProject> getDSEProjects() {
-		if (dSEProjects == null) {
-			dSEProjects = new EObjectContainmentEList<DSEProject>(DSEProject.class, this, confPackage.LANGUAGE_DEFINITION__DSE_PROJECTS);
+	public DSEProject getDSEProject() {
+		return dSEProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDSEProject(DSEProject newDSEProject, NotificationChain msgs) {
+		DSEProject oldDSEProject = dSEProject;
+		dSEProject = newDSEProject;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__DSE_PROJECT, oldDSEProject, newDSEProject);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return dSEProjects;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDSEProject(DSEProject newDSEProject) {
+		if (newDSEProject != dSEProject) {
+			NotificationChain msgs = null;
+			if (dSEProject != null)
+				msgs = ((InternalEObject)dSEProject).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - confPackage.LANGUAGE_DEFINITION__DSE_PROJECT, null, msgs);
+			if (newDSEProject != null)
+				msgs = ((InternalEObject)newDSEProject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - confPackage.LANGUAGE_DEFINITION__DSE_PROJECT, null, msgs);
+			msgs = basicSetDSEProject(newDSEProject, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__DSE_PROJECT, newDSEProject, newDSEProject));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__NAME, oldName, name));
 	}
 
 	/**
@@ -236,18 +371,18 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECTS:
-				return ((InternalEList<?>)getDsaProjects()).basicRemove(otherEnd, msgs);
+			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECT:
+				return basicSetDsaProject(null, msgs);
 			case confPackage.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT:
 				return basicSetDomainModelProject(null, msgs);
 			case confPackage.LANGUAGE_DEFINITION__EDITOR_PROJECTS:
 				return ((InternalEList<?>)getEditorProjects()).basicRemove(otherEnd, msgs);
-			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS:
-				return ((InternalEList<?>)getMoCModelProjects()).basicRemove(otherEnd, msgs);
+			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
+				return basicSetMoCModelProject(null, msgs);
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
 				return ((InternalEList<?>)getAnimatorProjects()).basicRemove(otherEnd, msgs);
-			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECTS:
-				return ((InternalEList<?>)getDSEProjects()).basicRemove(otherEnd, msgs);
+			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECT:
+				return basicSetDSEProject(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -260,18 +395,20 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECTS:
-				return getDsaProjects();
+			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECT:
+				return getDsaProject();
 			case confPackage.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT:
 				return getDomainModelProject();
 			case confPackage.LANGUAGE_DEFINITION__EDITOR_PROJECTS:
 				return getEditorProjects();
-			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS:
-				return getMoCModelProjects();
+			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
+				return getMoCModelProject();
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
 				return getAnimatorProjects();
-			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECTS:
-				return getDSEProjects();
+			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECT:
+				return getDSEProject();
+			case confPackage.LANGUAGE_DEFINITION__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -285,9 +422,8 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECTS:
-				getDsaProjects().clear();
-				getDsaProjects().addAll((Collection<? extends DSAProject>)newValue);
+			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECT:
+				setDsaProject((DSAProject)newValue);
 				return;
 			case confPackage.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT:
 				setDomainModelProject((DomainModelProject)newValue);
@@ -296,17 +432,18 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				getEditorProjects().clear();
 				getEditorProjects().addAll((Collection<? extends EditorProject>)newValue);
 				return;
-			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS:
-				getMoCModelProjects().clear();
-				getMoCModelProjects().addAll((Collection<? extends MoCProject>)newValue);
+			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
+				setMoCModelProject((MoCProject)newValue);
 				return;
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
 				getAnimatorProjects().clear();
 				getAnimatorProjects().addAll((Collection<? extends AnimatorProject>)newValue);
 				return;
-			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECTS:
-				getDSEProjects().clear();
-				getDSEProjects().addAll((Collection<? extends DSEProject>)newValue);
+			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECT:
+				setDSEProject((DSEProject)newValue);
+				return;
+			case confPackage.LANGUAGE_DEFINITION__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -320,8 +457,8 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECTS:
-				getDsaProjects().clear();
+			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECT:
+				setDsaProject((DSAProject)null);
 				return;
 			case confPackage.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT:
 				setDomainModelProject((DomainModelProject)null);
@@ -329,14 +466,17 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 			case confPackage.LANGUAGE_DEFINITION__EDITOR_PROJECTS:
 				getEditorProjects().clear();
 				return;
-			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS:
-				getMoCModelProjects().clear();
+			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
+				setMoCModelProject((MoCProject)null);
 				return;
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
 				getAnimatorProjects().clear();
 				return;
-			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECTS:
-				getDSEProjects().clear();
+			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECT:
+				setDSEProject((DSEProject)null);
+				return;
+			case confPackage.LANGUAGE_DEFINITION__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -350,20 +490,38 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECTS:
-				return dsaProjects != null && !dsaProjects.isEmpty();
+			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECT:
+				return dsaProject != null;
 			case confPackage.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT:
 				return domainModelProject != null;
 			case confPackage.LANGUAGE_DEFINITION__EDITOR_PROJECTS:
 				return editorProjects != null && !editorProjects.isEmpty();
-			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS:
-				return moCModelProjects != null && !moCModelProjects.isEmpty();
+			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
+				return moCModelProject != null;
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
 				return animatorProjects != null && !animatorProjects.isEmpty();
-			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECTS:
-				return dSEProjects != null && !dSEProjects.isEmpty();
+			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECT:
+				return dSEProject != null;
+			case confPackage.LANGUAGE_DEFINITION__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //LanguageDefinitionImpl

@@ -25,8 +25,8 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
+import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectEMFIProjectDialog;
 
 import fr.obeo.mda.ecore.design.wizard.EcoreModelerWizard;
 

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Utils
+Bundle-SymbolicName: org.gemoc.gemoc_language_workbench.utils
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.gemoc.gemoc_language_workbench.utils.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ org.eclipse.core.resources,
+ org.eclipse.ui.ide
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.gemoc.gemoc_language_workbench.utils,
+ org.gemoc.gemoc_language_workbench.utils.resourcevisitors,
+ org.gemoc.gemoc_language_workbench.utils.ui.dialogs

@@ -1,12 +1,12 @@
-package org.gemoc.gemoc_language_workbench.ui.dialogs;
+package org.gemoc.gemoc_language_workbench.utils.ui.dialogs;
 
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Shell;
-import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.ui.resourcevisitors.EcoreFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.utils.Activator;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.EcoreFileFinderResourceVisitor;
 
 /**
  * Dialog that allow to select an IProject that can be used as an EMF project

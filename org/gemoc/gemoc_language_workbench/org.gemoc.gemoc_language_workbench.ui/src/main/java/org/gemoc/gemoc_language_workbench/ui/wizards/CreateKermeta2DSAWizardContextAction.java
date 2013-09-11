@@ -25,8 +25,8 @@ import org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIprojectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
+import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectDSAIprojectDialog;
 
 import org.kermeta.kp.wizard.eclipse.wizards.KermetaProjectNewWizard;
 
@@ -113,7 +113,7 @@ public class CreateKermeta2DSAWizardContextAction extends CreateDSAWizardContext
 		    // Add the DSA project At the configuration of the Gemoc Language Project
 			Kermeta2DSAProject DSAProject = confFactoryImpl.eINSTANCE.createKermeta2DSAProject();
 			DSAProject.setProjectName(projectName);
-			langage.getDsaProjects().add(DSAProject);
+			langage.setDsaProject(DSAProject);
 		    
 			try {
 				resource.save(null);
