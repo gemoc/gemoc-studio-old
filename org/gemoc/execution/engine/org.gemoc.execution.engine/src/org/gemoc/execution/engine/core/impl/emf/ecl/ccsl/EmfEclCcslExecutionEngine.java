@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -54,7 +55,8 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
     private URI modelURI = null;
     private URI metamodelURI = null;
 
-    public EmfEclCcslExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath, String modelPath, String MMpath) {
+    public EmfEclCcslExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath,
+            String modelPath, String MMpath) {
 
         super();
 
@@ -73,34 +75,34 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             EcoreUtil.resolveAll(resourceSet);
         } catch (IOException e) {
             String errorMessage = "IOException while loading CCSL file";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
 
-        Activator.getMessaggingSystem().debug("Instantiating CcslSolver", Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug("Instantiating CcslSolver", Activator.PLUGIN_ID);
         try {
             this.solver = new CcslSolver(ccslResource);
         } catch (IOException e) {
             String errorMessage = "IOException while instantiating the CcslSolver";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (UnfoldingException e) {
             String errorMessage = "UnfoldingException while instantiating the CcslSolver";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (SolverException e) {
             String errorMessage = "SolverException while instantiating the CcslSolver";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
 
-        Activator.getMessaggingSystem().debug(
-                "Adding all the JAR files from folder " + jarDependenciesFolderPath + " and " + jarDsaFolderPath + " to the current ClassLoader",
-                Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug(
+                "Adding all the JAR files from folder " + jarDependenciesFolderPath + " and " + jarDsaFolderPath
+                        + " to the current ClassLoader", Activator.PLUGIN_ID);
         ClassLoader customizedClassLoader = this.customizeClassLoader(jarDsaFolderPath, jarDependenciesFolderPath);
-        Activator.getMessaggingSystem().debug("Initializing the model loader", Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug("Initializing the model loader", Activator.PLUGIN_ID);
         EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
-        Activator.getMessaggingSystem().debug("Loading the model", Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug("Loading the model", Activator.PLUGIN_ID);
         EObject modelRoot = this.loadModel(modelLoader, this.modelURI, this.metamodelURI);
 
     }
@@ -130,23 +132,23 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             modelRoot = (EObject) loadModelMethod.invoke(modelLoader, modelURI.toString(), metamodelURI.toString());
         } catch (NoSuchMethodException e) {
             String errorMessage = "NoSuchMethodException while trying to load the model";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (SecurityException e) {
             String errorMessage = "SecurityException while trying to load the model";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (IllegalAccessException e) {
             String errorMessage = "IllegalAccessException while trying to load the model";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (IllegalArgumentException e) {
             String errorMessage = "IllegalArgumentException while trying to load the model";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (InvocationTargetException e) {
             String errorMessage = "InvocationTargetException while trying to load the model";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
         return modelRoot;
@@ -165,38 +167,44 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             prop.load(in);
             Class<?> init;
             init = classLoader.loadClass(prop.get("mainRunner").toString());
+            Activator.getMessagingSystem().debug("ClassLoader : " + Arrays.asList(((URLClassLoader)classLoader).getURLs()).toString(), Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug("Method init4eclipse : " + init.getDeclaredMethod("init4eclipse").toString(), Activator.PLUGIN_ID);
             init.getDeclaredMethod("init4eclipse").invoke(null, (Object[]) null);
             Class<?> fact;
             fact = classLoader.loadClass(prop.get("mainFactory").toString());
             modelLoader = (EObject) fact.getDeclaredMethod("create" + prop.get("mainClass")).invoke(fact);
             in.close();
         } catch (IOException e) {
-            String errorMessage = "IOException while creating the custom ClassLoader";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            String errorMessage = "IOException while initializing the model loader";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (ClassNotFoundException e) {
-            String errorMessage = "ClassNotFoundException while creating the custom ClassLoader";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            String errorMessage = "ClassNotFoundException while initializing the model loader";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (IllegalAccessException e) {
-            String errorMessage = "IllegalAccessException while creating the custom ClassLoader";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            String errorMessage = "IllegalAccessException while initializing the model loader";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (IllegalArgumentException e) {
-            String errorMessage = "IllegalArgumentException while creating the custom ClassLoader";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            String errorMessage = "IllegalArgumentException while initializing the model loader";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (InvocationTargetException e) {
-            String errorMessage = "InvocationTargetException while creating the custom ClassLoader";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            String errorMessage = "InvocationTargetException while initializing the model loader : ";
+            for (StackTraceElement element : e.getCause().getStackTrace()) {
+                errorMessage += "\n" + element.toString();
+            }
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
+            Activator.error(e.getCause().getMessage(), e.getCause());
         } catch (NoSuchMethodException e) {
-            String errorMessage = "NoSuchMethodException while creating the custom ClassLoader";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            String errorMessage = "NoSuchMethodException while initializing the model loader";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (SecurityException e) {
-            String errorMessage = "SecurityException while creating the custom ClassLoader";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            String errorMessage = "SecurityException while initializing the model loader";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
 
@@ -220,18 +228,20 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 
     private ClassLoader customizeClassLoader(String jarDsaFolderPath, String jarDependenciesFolderPath) {
         List<URL> urls = new ArrayList<URL>();
-        try {
-            urls = this.getJarUrlsFromFolder(jarDependenciesFolderPath);
+        try {;
             urls.addAll(this.getJarUrlsFromFolder(jarDsaFolderPath));
+            urls.addAll(this.getJarUrlsFromFolder(jarDependenciesFolderPath));
         } catch (CoreException e) {
             String errorMessage = "CoreException while customizing the ClassLoader";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (MalformedURLException e) {
             String errorMessage = "MalformedURLException while customizing the ClassLoader";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
+
+        Activator.getMessagingSystem().debug("URLs added to the ClassLoader : " + urls.toString(), Activator.PLUGIN_ID);
 
         URL[] turls = (URL[]) urls.toArray(new URL[urls.size()]);
         ClassLoader res = new URLClassLoader(turls, Activator.class.getClassLoader());
@@ -240,7 +250,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 
     @Override
     protected List<DomainSpecificEvent> match(Step step) {
-        Activator.getMessaggingSystem().debug("Matching the given step : " + step.toString(), Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug("Matching the given step : " + step.toString(), Activator.PLUGIN_ID);
         List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
         try {
             CcslStep ccslStep = (CcslStep) step;
@@ -260,7 +270,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             }
         } catch (ClassCastException e) {
             String errorMessage = "ClassCastException while casting Step as CcslStep";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
         return res;

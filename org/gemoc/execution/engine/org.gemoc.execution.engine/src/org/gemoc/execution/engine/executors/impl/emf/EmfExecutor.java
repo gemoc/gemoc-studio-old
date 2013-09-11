@@ -22,20 +22,19 @@ public class EmfExecutor implements Executor {
     }
 
     public FeedbackData execute(EObject eo, String methodFullName) {
-        Activator.getMessaggingSystem().info("Executing method " + methodFullName + " on eobject " + eo.toString(),
+        Activator.getMessagingSystem().info("Executing method " + methodFullName + " on eobject " + eo.toString(),
                 Activator.PLUGIN_ID);
         try {
             Method method = this.getMethod(eo, methodFullName);
             return (FeedbackData) method.invoke(eo);
-
         } catch (IllegalAccessException e) {
             String errorMessage = "IllegalAccessException when trying to invoke a Domain Specific Action";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
             return null;
         } catch (IllegalArgumentException e) {
             String errorMessage = "IllegalArgumentException when trying to invoke a Domain Specific Action";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
             return null;
         } catch (InvocationTargetException e) {
@@ -44,17 +43,17 @@ public class EmfExecutor implements Executor {
                 return (FeedbackData) method.invoke(eo);
             } catch (IllegalArgumentException e1) {
                 String errorMessage = "IllegalArgumentException when trying to invoke a Domain Specific Action";
-                Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+                Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
                 Activator.error(errorMessage, e1);
                 return null;
             } catch (IllegalAccessException e1) {
                 String errorMessage = "IllegalAccessException when trying to invoke a Domain Specific Action";
-                Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+                Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
                 Activator.error(errorMessage, e1);
                 return null;
             } catch (InvocationTargetException e1) {
                 String errorMessage = "InvocationTargetException when trying to invoke a Domain Specific Action";
-                Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+                Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
                 Activator.error(errorMessage, e1);
                 return null;
             }
@@ -64,7 +63,7 @@ public class EmfExecutor implements Executor {
     @Override
     public FeedbackData execute(DomainSpecificAction dsa) {
 
-        Activator.getMessaggingSystem().debug(
+        Activator.getMessagingSystem().debug(
                 "Executing Domain Specific Action : " + dsa.getTarget().getClass().getName() + "."
                         + dsa.getMethodFullName(), Activator.PLUGIN_ID);
         return this.execute(dsa.getTarget(), dsa.getMethodFullName());
@@ -77,12 +76,12 @@ public class EmfExecutor implements Executor {
         } catch (NoSuchMethodException e) {
             String errorMessage = "NoSuchMethodException when trying to retrieve method from its full name : "
                     + eo.toString() + "." + methodFullName;
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (SecurityException e) {
             String errorMessage = "SecurityException when trying to retrieve method from its full name" + eo.toString()
                     + "." + methodFullName;
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         }
         return method;

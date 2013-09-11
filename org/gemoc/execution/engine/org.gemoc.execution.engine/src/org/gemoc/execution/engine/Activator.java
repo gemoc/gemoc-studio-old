@@ -18,14 +18,14 @@ public class Activator extends AbstractUIPlugin {
     // The shared instance
     private static Activator plugin;
 
-    protected static EclipseMessagingSystem messaggingSystem = null;
+    protected static EclipseMessagingSystem messagingSystem = null;
 
-    public static EclipseMessagingSystem getMessaggingSystem() {
-        if (messaggingSystem == null) {
-            messaggingSystem = new EclipseMessagingSystem(PLUGIN_ID, "GEMOC Execution Engine Debug");
-            ((EclipseMessagingSystem) messaggingSystem).setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
+    public static EclipseMessagingSystem getMessagingSystem() {
+        if (messagingSystem == null) {
+            messagingSystem = new EclipseMessagingSystem(PLUGIN_ID, "GEMOC Execution Engine Debug");
+            ((EclipseMessagingSystem) messagingSystem).setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
         }
-        return messaggingSystem;
+        return messagingSystem;
     }
 
     /**

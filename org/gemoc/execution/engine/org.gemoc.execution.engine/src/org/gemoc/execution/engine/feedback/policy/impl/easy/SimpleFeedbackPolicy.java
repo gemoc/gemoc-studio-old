@@ -17,7 +17,7 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy<EObjectFeedbackData>
 
     @Override
     public void processFeedback(EObjectFeedbackData feedbackData, Solver solver) {
-        Activator.getMessaggingSystem().warn("You need to complete processFeedback", Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().warn("You need to complete processFeedback", Activator.PLUGIN_ID);
     }
 
     public String toString() {

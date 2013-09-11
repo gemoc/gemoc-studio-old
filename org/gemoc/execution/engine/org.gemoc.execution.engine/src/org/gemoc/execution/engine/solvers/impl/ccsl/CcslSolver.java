@@ -46,7 +46,7 @@ public class CcslSolver implements Solver {
             return new CcslStep(this.solverWrapper.getSolver().doOneSimulationStep());
         } catch (SolverException e) {
             String errorMessage = "SolverException while trying to get next Ccsl step";
-            Activator.getMessaggingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
             return null;
         }
