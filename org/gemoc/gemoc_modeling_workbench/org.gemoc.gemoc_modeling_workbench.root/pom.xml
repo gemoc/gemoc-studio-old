@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<!-- plugins -->
-		<module>../org.gemoc.gemoc_modeling_workbench.reflective_model.ui</module>
+		<module>../org.gemoc.gemoc_modeling_workbench.ui</module>
 
 		<!-- feature and update site -->
 		<module>../org.gemoc.gemoc_modeling_workbench.feature</module>
