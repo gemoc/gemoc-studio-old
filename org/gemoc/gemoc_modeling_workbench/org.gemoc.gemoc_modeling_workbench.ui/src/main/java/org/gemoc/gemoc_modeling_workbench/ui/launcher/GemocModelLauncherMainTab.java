@@ -1,5 +1,9 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
+import java.util.ArrayList;
+
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
@@ -174,7 +178,17 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		// Create the project selector button
 
 		languageCombo = new Combo (parent, SWT.NONE);
-		languageCombo.setItems (new String [] {"", "sampleLanguage"});
+		
+		ArrayList<String> xdsmlNames = new ArrayList<String>();
+		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor("org.gemoc.gemoc_language_workbench.xdsml");
+		for (int i = 0; i < confElements.length; i++) {
+			xdsmlNames.add(confElements[i].getAttribute("name"));
+		}
+		if(confElements.length == 0){
+			xdsmlNames.add("<No xdml available>");
+		}
+		String[] empty = {};
+		languageCombo.setItems (xdsmlNames.toArray(empty));
 		languageCombo.addModifyListener(fBasicModifyListener);
 		/*languageCombo.addListener (SWT.DefaultSelection, new Listener () {
 			public void handleEvent (Event e) {

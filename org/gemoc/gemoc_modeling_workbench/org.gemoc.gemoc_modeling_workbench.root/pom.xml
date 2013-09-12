@@ -45,6 +45,13 @@
 			<layout>p2</layout>
 			<url>http://www.kermeta.org/k2/update/</url>
 		</repository>
+		
+        <repository>
+        	<id>gemoc_language_workbench-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository/</url>
+        </repository>
+        
 	</repositories>
 
 	<build>

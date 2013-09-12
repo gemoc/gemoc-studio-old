@@ -1,9 +1,16 @@
 package org.gemoc.gemoc_language_workbench.ui.builder;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.NotEnabledException;
+import org.eclipse.core.commands.NotHandledException;
+import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -18,10 +25,16 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.pde.internal.ui.PDEPlugin;
+import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.services.IServiceLocator;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
@@ -97,15 +110,37 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				}
 			}
 
+			//  add the plugin nature (not removed)
+			if(!project.hasNature("org.eclipse.pde.PluginNature")){
+
+				IRunnableWithProgress convertOperation;
+				convertOperation = new ConvertProjectToPluginOperation(new IProject[]{project}, false);
+				try {
+					convertOperation.run(new NullProgressMonitor());
+				} catch (InvocationTargetException e) {
+					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+				} catch (InterruptedException e) {
+					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+				}					
+			}
+					
 			// Add the nature
-			String[] newNatures = new String[natures.length + 1];
-			System.arraycopy(natures, 0, newNatures, 0, natures.length);
-			newNatures[natures.length] = GemocLanguageDesignerNature.NATURE_ID;
-			description.setNatureIds(newNatures);
-			project.setDescription(description, null);
+			addAsMainNature(project, GemocLanguageDesignerNature.NATURE_ID);
 			addMissingResourcesToNature(project);
 		} catch (CoreException e) {
+			Activator.warn("Problem while adding Gemoc Language nature to project. "+e.getMessage(), e);
 		}
+	}
+	
+	// add the nature making sure this will be the first
+	private void addAsMainNature(IProject project, String natureID) throws CoreException{
+		IProjectDescription description = project.getDescription();
+		String[] natures = description.getNatureIds();
+		String[] newNatures = new String[natures.length + 1];
+		System.arraycopy(natures, 0, newNatures, 1, natures.length);
+		newNatures[0] = natureID;
+		description.setNatureIds(newNatures);
+		project.setDescription(description, null);
 	}
 	
 	private void addMissingResourcesToNature(IProject project) {

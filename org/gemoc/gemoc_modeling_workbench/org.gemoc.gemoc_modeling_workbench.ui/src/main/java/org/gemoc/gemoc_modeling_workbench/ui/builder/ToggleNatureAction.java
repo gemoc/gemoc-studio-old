@@ -124,6 +124,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			
 			addMissingResourcesToNature(project);
 		} catch (CoreException e) {
+			Activator.warn("Problem while adding Gemoc Model nature to project. "+e.getMessage(), e);
 		}
 	}
 	
