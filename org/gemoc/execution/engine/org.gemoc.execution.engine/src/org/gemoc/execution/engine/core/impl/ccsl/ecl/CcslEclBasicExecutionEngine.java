@@ -101,10 +101,9 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
         ClassLoader customizedClassLoader = this.customizeClassLoader(jarDsaFolderPath, jarDependenciesFolderPath);
         Activator.getMessagingSystem().debug("Initializing the model loader", Activator.PLUGIN_ID);
         EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
-        // Activator.getMessagingSystem().debug("Loading the model",
-        // Activator.PLUGIN_ID);
-        // EObject modelRoot = this.loadModel(modelLoader, this.modelURI,
-        // this.metamodelURI);
+        Activator.getMessagingSystem().debug("Model Loader returned : " + modelLoader.toString(), Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug("Loading the model", Activator.PLUGIN_ID);
+        EObject modelRoot = this.loadModel(modelLoader, this.modelURI, this.metamodelURI);
 
     }
 
@@ -154,7 +153,7 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
             String errorMessage = "InvocationTargetException while trying to load the model";
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
-            Activator.error("Exception within InvocationTargetException", e.getCause());
+            Activator.error(e.getCause().getMessage(), e.getCause());
         }
         return modelRoot;
     }
@@ -199,10 +198,7 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
         } catch (InvocationTargetException e) {
-            String errorMessage = "InvocationTargetException while initializing the model loader : ";
-            for (StackTraceElement element : e.getCause().getStackTrace()) {
-                errorMessage += "\n" + element.toString();
-            }
+            String errorMessage = "InvocationTargetException while initializing the model loader";
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
             Activator.error(e.getCause().getMessage(), e.getCause());

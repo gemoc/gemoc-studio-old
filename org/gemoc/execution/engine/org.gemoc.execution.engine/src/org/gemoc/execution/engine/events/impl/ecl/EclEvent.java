@@ -1,6 +1,5 @@
 package org.gemoc.execution.engine.events.impl.ecl;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.Activator;
@@ -10,11 +9,6 @@ import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.impl.emf.EmfExecutor;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
 import org.gemoc.execution.engine.feedback.data.impl.easy.ObjectFeedbackData;
-
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-import fr.inria.aoste.trace.EventOccurrence;
-import fr.inria.aoste.trace.ModelElementReference;
-import fr.inria.aoste.trace.Reference;
 
 /**
  * 
