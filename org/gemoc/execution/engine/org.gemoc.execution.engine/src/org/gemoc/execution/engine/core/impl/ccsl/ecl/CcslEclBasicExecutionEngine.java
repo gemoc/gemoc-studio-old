@@ -1,4 +1,7 @@
-package org.gemoc.execution.engine.core.impl.emf.ecl.ccsl;
+/**
+ * 
+ */
+package org.gemoc.execution.engine.core.impl.ccsl.ecl;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,18 +47,14 @@ import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.Reference;
 
 /**
- * An implementation of the engine using the EMF Executor, the ECL events, the
- * CCSL solver and the EasyGoing Feedback Policy.
- * 
  * @author flatombe
  * 
  */
-public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
-
+public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
     private URI modelURI = null;
     private URI metamodelURI = null;
 
-    public EmfEclCcslExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath,
+    public CcslEclBasicExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath,
             String modelPath, String MMpath) {
 
         super();
@@ -102,8 +101,10 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
         ClassLoader customizedClassLoader = this.customizeClassLoader(jarDsaFolderPath, jarDependenciesFolderPath);
         Activator.getMessagingSystem().debug("Initializing the model loader", Activator.PLUGIN_ID);
         EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
-        //Activator.getMessagingSystem().debug("Loading the model", Activator.PLUGIN_ID);
-        //EObject modelRoot = this.loadModel(modelLoader, this.modelURI, this.metamodelURI);
+        // Activator.getMessagingSystem().debug("Loading the model",
+        // Activator.PLUGIN_ID);
+        // EObject modelRoot = this.loadModel(modelLoader, this.modelURI,
+        // this.metamodelURI);
 
     }
 
@@ -130,7 +131,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             Method loadModelMethod;
             loadModelMethod = modelLoader.getClass().getDeclaredMethod("loadModel", String.class, String.class);
             modelRoot = (EObject) loadModelMethod.invoke(modelLoader, modelURI.toString(), metamodelURI.toString());
-            for (EObject eo : modelRoot.eContents()){
+            for (EObject eo : modelRoot.eContents()) {
                 Activator.getMessagingSystem().warn(eo.toString(), Activator.PLUGIN_ID);
             }
         } catch (NoSuchMethodException e) {

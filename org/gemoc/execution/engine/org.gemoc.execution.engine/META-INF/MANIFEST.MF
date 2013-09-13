@@ -27,4 +27,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine,
  org.gemoc.execution.engine.core,
- org.gemoc.execution.engine.core.impl.emf.ecl.ccsl
+ org.gemoc.execution.engine.core.impl.ccsl.ecl.emf

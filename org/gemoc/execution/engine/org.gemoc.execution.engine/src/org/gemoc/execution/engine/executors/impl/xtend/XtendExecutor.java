@@ -18,11 +18,11 @@ import org.gemoc.execution.engine.feedback.data.FeedbackData;
  * @author flatombe
  * 
  */
-public class K3Executor implements Executor {
+public class XtendExecutor implements Executor {
 
     private DomainSpecificAction lastExecutedAction;
 
-    public K3Executor() {
+    public XtendExecutor() {
         this.lastExecutedAction = null;
     }
 
