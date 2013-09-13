@@ -9,7 +9,7 @@
         eType="#//State"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEvents" upperBound="-1"
         eType="#//TfsmEvent" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedClocks" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedClock" lowerBound="1"
         eType="#//TfsmClock" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTransitions" upperBound="-1"
         eType="#//Transition" containment="true"/>

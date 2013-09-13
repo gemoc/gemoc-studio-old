@@ -34,7 +34,7 @@ import tfsm.Transition;
  *   <li>{@link tfsm.impl.TfsmImpl#getOwnedStates <em>Owned States</em>}</li>
  *   <li>{@link tfsm.impl.TfsmImpl#getInitialState <em>Initial State</em>}</li>
  *   <li>{@link tfsm.impl.TfsmImpl#getOwnedEvents <em>Owned Events</em>}</li>
- *   <li>{@link tfsm.impl.TfsmImpl#getOwnedClocks <em>Owned Clocks</em>}</li>
+ *   <li>{@link tfsm.impl.TfsmImpl#getOwnedClock <em>Owned Clock</em>}</li>
  *   <li>{@link tfsm.impl.TfsmImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
  * </ul>
  * </p>
@@ -73,14 +73,14 @@ public class TfsmImpl extends NamedElementImpl implements Tfsm {
     protected EList<TfsmEvent> ownedEvents;
 
     /**
-     * The cached value of the '{@link #getOwnedClocks() <em>Owned Clocks</em>}' containment reference.
+     * The cached value of the '{@link #getOwnedClock() <em>Owned Clock</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getOwnedClocks()
+     * @see #getOwnedClock()
      * @generated
      * @ordered
      */
-    protected TfsmClock ownedClocks;
+    protected TfsmClock ownedClock;
 
     /**
      * The cached value of the '{@link #getOwnedTransitions() <em>Owned Transitions</em>}' containment reference list.
@@ -178,8 +178,8 @@ public class TfsmImpl extends NamedElementImpl implements Tfsm {
      * <!-- end-user-doc -->
      * @generated
      */
-    public TfsmClock getOwnedClocks() {
-        return ownedClocks;
+    public TfsmClock getOwnedClock() {
+        return ownedClock;
     }
 
     /**
@@ -187,11 +187,11 @@ public class TfsmImpl extends NamedElementImpl implements Tfsm {
      * <!-- end-user-doc -->
      * @generated
      */
-    public NotificationChain basicSetOwnedClocks(TfsmClock newOwnedClocks, NotificationChain msgs) {
-        TfsmClock oldOwnedClocks = ownedClocks;
-        ownedClocks = newOwnedClocks;
+    public NotificationChain basicSetOwnedClock(TfsmClock newOwnedClock, NotificationChain msgs) {
+        TfsmClock oldOwnedClock = ownedClock;
+        ownedClock = newOwnedClock;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TfsmPackage.TFSM__OWNED_CLOCKS, oldOwnedClocks, newOwnedClocks);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TfsmPackage.TFSM__OWNED_CLOCK, oldOwnedClock, newOwnedClock);
             if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
@@ -202,18 +202,18 @@ public class TfsmImpl extends NamedElementImpl implements Tfsm {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setOwnedClocks(TfsmClock newOwnedClocks) {
-        if (newOwnedClocks != ownedClocks) {
+    public void setOwnedClock(TfsmClock newOwnedClock) {
+        if (newOwnedClock != ownedClock) {
             NotificationChain msgs = null;
-            if (ownedClocks != null)
-                msgs = ((InternalEObject)ownedClocks).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TfsmPackage.TFSM__OWNED_CLOCKS, null, msgs);
-            if (newOwnedClocks != null)
-                msgs = ((InternalEObject)newOwnedClocks).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TfsmPackage.TFSM__OWNED_CLOCKS, null, msgs);
-            msgs = basicSetOwnedClocks(newOwnedClocks, msgs);
+            if (ownedClock != null)
+                msgs = ((InternalEObject)ownedClock).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TfsmPackage.TFSM__OWNED_CLOCK, null, msgs);
+            if (newOwnedClock != null)
+                msgs = ((InternalEObject)newOwnedClock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TfsmPackage.TFSM__OWNED_CLOCK, null, msgs);
+            msgs = basicSetOwnedClock(newOwnedClock, msgs);
             if (msgs != null) msgs.dispatch();
         }
         else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TFSM__OWNED_CLOCKS, newOwnedClocks, newOwnedClocks));
+            eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TFSM__OWNED_CLOCK, newOwnedClock, newOwnedClock));
     }
 
     /**
@@ -240,8 +240,8 @@ public class TfsmImpl extends NamedElementImpl implements Tfsm {
                 return ((InternalEList<?>)getOwnedStates()).basicRemove(otherEnd, msgs);
             case TfsmPackage.TFSM__OWNED_EVENTS:
                 return ((InternalEList<?>)getOwnedEvents()).basicRemove(otherEnd, msgs);
-            case TfsmPackage.TFSM__OWNED_CLOCKS:
-                return basicSetOwnedClocks(null, msgs);
+            case TfsmPackage.TFSM__OWNED_CLOCK:
+                return basicSetOwnedClock(null, msgs);
             case TfsmPackage.TFSM__OWNED_TRANSITIONS:
                 return ((InternalEList<?>)getOwnedTransitions()).basicRemove(otherEnd, msgs);
         }
@@ -263,8 +263,8 @@ public class TfsmImpl extends NamedElementImpl implements Tfsm {
                 return basicGetInitialState();
             case TfsmPackage.TFSM__OWNED_EVENTS:
                 return getOwnedEvents();
-            case TfsmPackage.TFSM__OWNED_CLOCKS:
-                return getOwnedClocks();
+            case TfsmPackage.TFSM__OWNED_CLOCK:
+                return getOwnedClock();
             case TfsmPackage.TFSM__OWNED_TRANSITIONS:
                 return getOwnedTransitions();
         }
@@ -291,8 +291,8 @@ public class TfsmImpl extends NamedElementImpl implements Tfsm {
                 getOwnedEvents().clear();
                 getOwnedEvents().addAll((Collection<? extends TfsmEvent>)newValue);
                 return;
-            case TfsmPackage.TFSM__OWNED_CLOCKS:
-                setOwnedClocks((TfsmClock)newValue);
+            case TfsmPackage.TFSM__OWNED_CLOCK:
+                setOwnedClock((TfsmClock)newValue);
                 return;
             case TfsmPackage.TFSM__OWNED_TRANSITIONS:
                 getOwnedTransitions().clear();
@@ -319,8 +319,8 @@ public class TfsmImpl extends NamedElementImpl implements Tfsm {
             case TfsmPackage.TFSM__OWNED_EVENTS:
                 getOwnedEvents().clear();
                 return;
-            case TfsmPackage.TFSM__OWNED_CLOCKS:
-                setOwnedClocks((TfsmClock)null);
+            case TfsmPackage.TFSM__OWNED_CLOCK:
+                setOwnedClock((TfsmClock)null);
                 return;
             case TfsmPackage.TFSM__OWNED_TRANSITIONS:
                 getOwnedTransitions().clear();
@@ -343,8 +343,8 @@ public class TfsmImpl extends NamedElementImpl implements Tfsm {
                 return initialState != null;
             case TfsmPackage.TFSM__OWNED_EVENTS:
                 return ownedEvents != null && !ownedEvents.isEmpty();
-            case TfsmPackage.TFSM__OWNED_CLOCKS:
-                return ownedClocks != null;
+            case TfsmPackage.TFSM__OWNED_CLOCK:
+                return ownedClock != null;
             case TfsmPackage.TFSM__OWNED_TRANSITIONS:
                 return ownedTransitions != null && !ownedTransitions.isEmpty();
         }

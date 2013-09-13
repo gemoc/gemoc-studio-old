@@ -141,13 +141,13 @@ public interface TfsmPackage extends EPackage {
     int TFSM__OWNED_EVENTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Owned Clocks</b></em>' containment reference.
+     * The feature id for the '<em><b>Owned Clock</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int TFSM__OWNED_CLOCKS = NAMED_ELEMENT_FEATURE_COUNT + 3;
+    int TFSM__OWNED_CLOCK = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Owned Transitions</b></em>' containment reference list.
@@ -743,15 +743,15 @@ public interface TfsmPackage extends EPackage {
     EReference getTfsm_OwnedEvents();
 
     /**
-     * Returns the meta object for the containment reference '{@link tfsm.Tfsm#getOwnedClocks <em>Owned Clocks</em>}'.
+     * Returns the meta object for the containment reference '{@link tfsm.Tfsm#getOwnedClock <em>Owned Clock</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the containment reference '<em>Owned Clocks</em>'.
-     * @see tfsm.Tfsm#getOwnedClocks()
+     * @return the meta object for the containment reference '<em>Owned Clock</em>'.
+     * @see tfsm.Tfsm#getOwnedClock()
      * @see #getTfsm()
      * @generated
      */
-    EReference getTfsm_OwnedClocks();
+    EReference getTfsm_OwnedClock();
 
     /**
      * Returns the meta object for the containment reference list '{@link tfsm.Tfsm#getOwnedTransitions <em>Owned Transitions</em>}'.
@@ -1159,12 +1159,12 @@ public interface TfsmPackage extends EPackage {
         EReference TFSM__OWNED_EVENTS = eINSTANCE.getTfsm_OwnedEvents();
 
         /**
-         * The meta object literal for the '<em><b>Owned Clocks</b></em>' containment reference feature.
+         * The meta object literal for the '<em><b>Owned Clock</b></em>' containment reference feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        EReference TFSM__OWNED_CLOCKS = eINSTANCE.getTfsm_OwnedClocks();
+        EReference TFSM__OWNED_CLOCK = eINSTANCE.getTfsm_OwnedClock();
 
         /**
          * The meta object literal for the '<em><b>Owned Transitions</b></em>' containment reference list feature.

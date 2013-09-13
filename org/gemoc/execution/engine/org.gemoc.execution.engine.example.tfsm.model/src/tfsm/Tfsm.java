@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link tfsm.Tfsm#getOwnedStates <em>Owned States</em>}</li>
  *   <li>{@link tfsm.Tfsm#getInitialState <em>Initial State</em>}</li>
  *   <li>{@link tfsm.Tfsm#getOwnedEvents <em>Owned Events</em>}</li>
- *   <li>{@link tfsm.Tfsm#getOwnedClocks <em>Owned Clocks</em>}</li>
+ *   <li>{@link tfsm.Tfsm#getOwnedClock <em>Owned Clock</em>}</li>
  *   <li>{@link tfsm.Tfsm#getOwnedTransitions <em>Owned Transitions</em>}</li>
  * </ul>
  * </p>
@@ -84,30 +84,30 @@ public interface Tfsm extends NamedElement {
     EList<TfsmEvent> getOwnedEvents();
 
     /**
-     * Returns the value of the '<em><b>Owned Clocks</b></em>' containment reference.
+     * Returns the value of the '<em><b>Owned Clock</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Owned Clocks</em>' containment reference isn't clear,
+     * If the meaning of the '<em>Owned Clock</em>' containment reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Owned Clocks</em>' containment reference.
-     * @see #setOwnedClocks(TfsmClock)
-     * @see tfsm.TfsmPackage#getTfsm_OwnedClocks()
+     * @return the value of the '<em>Owned Clock</em>' containment reference.
+     * @see #setOwnedClock(TfsmClock)
+     * @see tfsm.TfsmPackage#getTfsm_OwnedClock()
      * @model containment="true" required="true"
      * @generated
      */
-    TfsmClock getOwnedClocks();
+    TfsmClock getOwnedClock();
 
     /**
-     * Sets the value of the '{@link tfsm.Tfsm#getOwnedClocks <em>Owned Clocks</em>}' containment reference.
+     * Sets the value of the '{@link tfsm.Tfsm#getOwnedClock <em>Owned Clock</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Owned Clocks</em>' containment reference.
-     * @see #getOwnedClocks()
+     * @param value the new value of the '<em>Owned Clock</em>' containment reference.
+     * @see #getOwnedClock()
      * @generated
      */
-    void setOwnedClocks(TfsmClock value);
+    void setOwnedClock(TfsmClock value);
 
     /**
      * Returns the value of the '<em><b>Owned Transitions</b></em>' containment reference list.

@@ -209,7 +209,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EReference getTfsm_OwnedClocks() {
+    public EReference getTfsm_OwnedClock() {
         return (EReference)tfsmEClass.getEStructuralFeatures().get(3);
     }
 
@@ -542,7 +542,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
         createEReference(tfsmEClass, TFSM__OWNED_STATES);
         createEReference(tfsmEClass, TFSM__INITIAL_STATE);
         createEReference(tfsmEClass, TFSM__OWNED_EVENTS);
-        createEReference(tfsmEClass, TFSM__OWNED_CLOCKS);
+        createEReference(tfsmEClass, TFSM__OWNED_CLOCK);
         createEReference(tfsmEClass, TFSM__OWNED_TRANSITIONS);
 
         stateEClass = createEClass(STATE);
@@ -632,7 +632,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
         initEReference(getTfsm_OwnedStates(), this.getState(), null, "ownedStates", null, 0, -1, Tfsm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getTfsm_InitialState(), this.getState(), null, "initialState", null, 1, 1, Tfsm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getTfsm_OwnedEvents(), this.getTfsmEvent(), null, "ownedEvents", null, 0, -1, Tfsm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTfsm_OwnedClocks(), this.getTfsmClock(), null, "ownedClocks", null, 1, 1, Tfsm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getTfsm_OwnedClock(), this.getTfsmClock(), null, "ownedClock", null, 1, 1, Tfsm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getTfsm_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, Tfsm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

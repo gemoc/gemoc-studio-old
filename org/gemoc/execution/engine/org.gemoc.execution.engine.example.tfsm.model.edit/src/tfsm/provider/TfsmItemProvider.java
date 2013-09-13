@@ -100,7 +100,7 @@ public class TfsmItemProvider
             super.getChildrenFeatures(object);
             childrenFeatures.add(TfsmPackage.Literals.TFSM__OWNED_STATES);
             childrenFeatures.add(TfsmPackage.Literals.TFSM__OWNED_EVENTS);
-            childrenFeatures.add(TfsmPackage.Literals.TFSM__OWNED_CLOCKS);
+            childrenFeatures.add(TfsmPackage.Literals.TFSM__OWNED_CLOCK);
             childrenFeatures.add(TfsmPackage.Literals.TFSM__OWNED_TRANSITIONS);
         }
         return childrenFeatures;
@@ -158,7 +158,7 @@ public class TfsmItemProvider
         switch (notification.getFeatureID(Tfsm.class)) {
             case TfsmPackage.TFSM__OWNED_STATES:
             case TfsmPackage.TFSM__OWNED_EVENTS:
-            case TfsmPackage.TFSM__OWNED_CLOCKS:
+            case TfsmPackage.TFSM__OWNED_CLOCK:
             case TfsmPackage.TFSM__OWNED_TRANSITIONS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
@@ -189,7 +189,7 @@ public class TfsmItemProvider
 
         newChildDescriptors.add
             (createChildParameter
-                (TfsmPackage.Literals.TFSM__OWNED_CLOCKS,
+                (TfsmPackage.Literals.TFSM__OWNED_CLOCK,
                  TfsmFactory.eINSTANCE.createTfsmClock()));
 
         newChildDescriptors.add
