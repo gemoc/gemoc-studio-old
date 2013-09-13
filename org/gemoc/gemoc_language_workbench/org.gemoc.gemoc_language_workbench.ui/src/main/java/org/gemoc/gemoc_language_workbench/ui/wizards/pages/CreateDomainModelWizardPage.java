@@ -37,7 +37,6 @@ public class CreateDomainModelWizardPage  extends WizardPage {
 
 	@Override
 	public void performHelp(){
-		//PlatformUI.getWorkbench().getHelpSystem().displayHelp();
 		PlatformUI.getWorkbench().getHelpSystem().displayHelpResource("/org.gemoc.gemoc_language_workbench.documentation/html/ASProject.html");
 	}
 
