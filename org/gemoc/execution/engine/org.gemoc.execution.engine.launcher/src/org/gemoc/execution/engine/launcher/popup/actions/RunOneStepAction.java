@@ -9,11 +9,11 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.emf.ecl.ccsl.EmfEclCcslExecutionEngine;
+import org.gemoc.execution.engine.launcher.Activator;
 
-public class CreateRunAction implements IObjectActionDelegate {
+public class RunOneStepAction implements IObjectActionDelegate {
 
     private Shell shell;
     private IFile file;
@@ -24,8 +24,9 @@ public class CreateRunAction implements IObjectActionDelegate {
     /**
      * Constructor for Action1.
      */
-    public CreateRunAction() {
+    public RunOneStepAction() {
         super();
+        this.engine = Activator.engine;
     }
 
     // private MessageConsole findConsole(String name) {
@@ -52,41 +53,17 @@ public class CreateRunAction implements IObjectActionDelegate {
      * @see IActionDelegate#run(IAction)
      */
     public void run(IAction action) {
-        // MessageConsole myConsole = findConsole(consoleName);
-        // MessageConsoleStream out = myConsole.newMessageStream();
         String information = "";
 
-        String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC-rendevous.extendedCCSL";
-        String jarDsaFolderPath = "/org.gemoc.execution.engine.example/my_jars/dsa";
-        String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
-        String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
-        String MMpath = "/fr.inria.aoste.gemoc.example.tfsm.model/model/tfsm.ecore";
-
         if (engine == null) {
-            // out.println("Creating the engine...");
-            try {
-                this.engine = new EmfEclCcslExecutionEngine(ccslFilePath, jarDsaFolderPath, jarDependenciesFolderPath,
-                        modelPath, MMpath);
-            } catch (Exception e) {
-                // out.println("Got an exception, checkout the error log");
-                Activator.error("Exception in the initialization of the engine", e);
-                this.engine = null;
-                e.printStackTrace();
-            }
-            // out.println("...Engine created.");
-            information += "Engine created";
-        }
+            information += "Engine is null. Please initialize engine before running.";
+        } else {
+            int numberOfSteps = 1;
+            ((EmfEclCcslExecutionEngine) this.engine).run(numberOfSteps);
 
-        // out.println("Running the engine...");
-        ((EmfEclCcslExecutionEngine) this.engine).run(1);
-
-        if (!information.equals("")) {
-            information += ", ";
+            information += "Engine ran " + numberOfSteps + " step(s).";
         }
-        information += "Engine ran.";
         MessageDialog.openInformation(shell, "Launcher", information);
-
-        // out.println("DONE");
     }
 
     /**

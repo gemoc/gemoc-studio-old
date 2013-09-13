@@ -17,11 +17,18 @@
             </separator>
          </menu>
          <action
-               label="Create and Run"
-               class="org.gemoc.execution.engine.launcher.popup.actions.CreateRunAction"
+               label="Initialize"
+               class="org.gemoc.execution.engine.launcher.popup.actions.InitializeAction"
                menubarPath="org.gemoc.execution.engine.launcher.menu1/group1"
                enablesFor="1"
-               id="org.gemoc.execution.engine.launcher.CreateRunAction">
+               id="org.gemoc.execution.engine.launcher.InitializeAction">
+         </action>
+         <action
+               class="org.gemoc.execution.engine.launcher.popup.actions.RunOneStepAction"
+               enablesFor="1"
+               id="org.gemoc.execution.engine.launcher.RunOneStepAction"
+               label="RunOneStep"
+               menubarPath="org.gemoc.execution.engine.launcher.menu1/group1">
          </action>
       </objectContribution>
    </extension>
