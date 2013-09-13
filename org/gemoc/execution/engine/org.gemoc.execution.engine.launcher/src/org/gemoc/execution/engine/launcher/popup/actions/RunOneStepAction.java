@@ -10,7 +10,7 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.execution.engine.core.ExecutionEngine;
-import org.gemoc.execution.engine.core.impl.emf.ecl.ccsl.EmfEclCcslExecutionEngine;
+import org.gemoc.execution.engine.core.impl.ccsl.ecl.emf.CcslEclEmfExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
 
 public class RunOneStepAction implements IObjectActionDelegate {
@@ -59,7 +59,7 @@ public class RunOneStepAction implements IObjectActionDelegate {
             information += "Engine is null. Please initialize engine before running.";
         } else {
             int numberOfSteps = 1;
-            ((EmfEclCcslExecutionEngine) this.engine).run(numberOfSteps);
+            this.engine.run(numberOfSteps);
 
             information += "Engine ran " + numberOfSteps + " step(s).";
         }

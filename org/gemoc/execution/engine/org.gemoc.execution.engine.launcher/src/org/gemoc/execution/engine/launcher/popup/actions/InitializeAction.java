@@ -10,7 +10,7 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.execution.engine.core.ExecutionEngine;
-import org.gemoc.execution.engine.core.impl.emf.ecl.ccsl.EmfEclCcslExecutionEngine;
+import org.gemoc.execution.engine.core.impl.ccsl.ecl.emf.CcslEclEmfExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
 
 public class InitializeAction implements IObjectActionDelegate {
@@ -43,10 +43,10 @@ public class InitializeAction implements IObjectActionDelegate {
         String jarDsaFolderPath = "/org.gemoc.execution.engine.example/my_jars/dsa";
         String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
         String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
-        String MMpath = "/fr.inria.aoste.gemoc.example.tfsm.model/model/tfsm.ecore";
+        String MMpath = "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
 
         try {
-            this.engine = new EmfEclCcslExecutionEngine(ccslFilePath, jarDsaFolderPath, jarDependenciesFolderPath,
+            this.engine = new CcslEclEmfExecutionEngine(ccslFilePath, jarDsaFolderPath, jarDependenciesFolderPath,
                     modelPath, MMpath);
             information += "Engine Initialized.";
         } catch (Exception e) {
