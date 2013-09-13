@@ -8,6 +8,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDSAWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDSAWizardContextAction.CreateDSAAction;
 
@@ -25,7 +26,11 @@ public class CreateDSAWizardPage extends WizardPage {
 		this.context = context;
 	}
 	
-
+	@Override
+	public void performHelp(){
+		//PlatformUI.getWorkbench().getHelpSystem().displayHelp();
+		PlatformUI.getWorkbench().getHelpSystem().displayHelpResource("/org.gemoc.gemoc_language_workbench.documentation/html/DSAProject.html");
+	}
 
 	@Override
 	public void createControl(Composite parent) {
