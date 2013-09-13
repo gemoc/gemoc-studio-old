@@ -129,8 +129,21 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
         try {
             Method loadModelMethod;
             loadModelMethod = modelLoader.getClass().getDeclaredMethod("loadModel", String.class, String.class);
-            modelRoot = (EObject) loadModelMethod.invoke(modelLoader, modelURI.toString(), metamodelURI.toString());
-            for (EObject eo : modelRoot.eContents()) {
+
+            Activator.getMessagingSystem().info("Méthode loadModel obtenue : " + loadModelMethod.toString(),
+                    Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().info(modelURI.toString(), Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().info(metamodelURI.toString(), Activator.PLUGIN_ID);
+
+            Object res = loadModelMethod.invoke((Object)modelLoader, modelURI.toString(), metamodelURI.toString());
+            Activator.getMessagingSystem().info("res = " + res.toString(), Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().info((new Boolean(res instanceof EObject)).toString(), Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().info((new Boolean(res instanceof System)).toString(), Activator.PLUGIN_ID);
+
+            modelRoot = (EObject) res;
+            Activator.getMessagingSystem().info("ModelRoot obtenu : " + modelRoot.toString(), Activator.PLUGIN_ID);
+
+            for (EObject eo : modelRoot.eResource().getContents()) {
                 Activator.getMessagingSystem().warn(eo.toString(), Activator.PLUGIN_ID);
             }
         } catch (NoSuchMethodException e) {
