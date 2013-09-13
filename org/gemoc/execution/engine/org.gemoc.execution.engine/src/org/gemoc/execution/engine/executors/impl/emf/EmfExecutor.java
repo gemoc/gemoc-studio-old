@@ -8,7 +8,9 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.Executor;
+import org.gemoc.execution.engine.executors.impl.DataConverter;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
+import org.gemoc.execution.engine.feedback.data.impl.easy.ObjectFeedbackData;
 
 /**
  * An executor that can call methods contained in compiled EMF code (like
@@ -17,8 +19,11 @@ import org.gemoc.execution.engine.feedback.data.FeedbackData;
  * @author flatombe
  */
 public class EmfExecutor implements Executor {
+    
+    private DomainSpecificAction lastExecutedAction;
 
     public EmfExecutor() {
+        lastExecutedAction = null;
     }
 
     public FeedbackData execute(EObject eo, String methodFullName) {
@@ -26,7 +31,7 @@ public class EmfExecutor implements Executor {
                 Activator.PLUGIN_ID);
         try {
             Method method = this.getMethod(eo, methodFullName);
-            return (FeedbackData) method.invoke(eo);
+            return DataConverter.convertToFeedbackData(method.invoke(eo));
         } catch (IllegalAccessException e) {
             String errorMessage = "IllegalAccessException when trying to invoke a Domain Specific Action";
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
@@ -39,6 +44,12 @@ public class EmfExecutor implements Executor {
             return null;
         } catch (InvocationTargetException e) {
             try {
+                Activator.getMessagingSystem().debug("InvocationTargetException : " + e.getCause().getMessage(),
+                        Activator.PLUGIN_ID);
+                Activator.error("InvocationTargetException on " + methodFullName, e.getCause());
+                Activator.getMessagingSystem().debug(
+                        "Could not find method " + methodFullName + " so let's try with the EMF hack!",
+                        Activator.PLUGIN_ID);
                 Method method = this.getMethodEmfHack(eo, methodFullName);
                 return (FeedbackData) method.invoke(eo);
             } catch (IllegalArgumentException e1) {
@@ -60,16 +71,20 @@ public class EmfExecutor implements Executor {
         }
     }
 
+
+
     @Override
     public FeedbackData execute(DomainSpecificAction dsa) {
 
         Activator.getMessagingSystem().debug(
                 "Executing Domain Specific Action : " + dsa.getTarget().getClass().getName() + "."
                         + dsa.getMethodFullName(), Activator.PLUGIN_ID);
-        return this.execute(dsa.getTarget(), dsa.getMethodFullName());
+        FeedbackData feedback = this.execute(dsa.getTarget(), dsa.getMethodFullName());
+        this.lastExecutedAction = dsa;
+        return feedback;
     }
 
-    public Method getMethod(EObject eo, String methodFullName) {
+    private Method getMethod(EObject eo, String methodFullName) {
         Method method = null;
         try {
             method = eo.getClass().getMethod(methodFullName);
@@ -97,7 +112,7 @@ public class EmfExecutor implements Executor {
     }
 
     public String toString() {
-        return this.getClass().getName() + "@[]";
+        return this.getClass().getName() + "@[lastExecutedAction=" + lastExecutedAction.toString() + "]";
     }
 
 }

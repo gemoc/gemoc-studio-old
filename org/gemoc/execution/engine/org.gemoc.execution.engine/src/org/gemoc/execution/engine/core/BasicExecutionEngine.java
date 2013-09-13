@@ -56,11 +56,14 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
     public void runOneStep() {
         Activator.getMessagingSystem().info("### Running one step", Activator.PLUGIN_ID);
         Step step = this.solver.getNextStep();
-        Activator.getMessagingSystem().debug("The solver has correctly returned a step to the engine", Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug("The solver has correctly returned a step to the engine",
+                Activator.PLUGIN_ID);
         List<DomainSpecificEvent> events = this.match(step);
         Activator.getMessagingSystem().info("Number of events matched : " + events.size(), Activator.PLUGIN_ID);
         for (DomainSpecificEvent event : events) {
             FeedbackData feedback = this.executor.execute(event);
+            Activator.getMessagingSystem().info(
+                    "Feedback from event " + event.toString() + " is : " + feedback.toString(), Activator.PLUGIN_ID);
             this.feedbackPolicy.processFeedback(feedback, solver);
         }
         Activator.getMessagingSystem().info("### Step finished", Activator.PLUGIN_ID);

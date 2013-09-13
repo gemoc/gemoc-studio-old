@@ -9,7 +9,7 @@ import org.gemoc.execution.engine.actions.impl.simple.MethodReferenceAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.impl.emf.EmfExecutor;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
-import org.gemoc.execution.engine.feedback.data.impl.easy.EObjectFeedbackData;
+import org.gemoc.execution.engine.feedback.data.impl.easy.ObjectFeedbackData;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.trace.EventOccurrence;
@@ -29,8 +29,8 @@ public class EclEvent implements DomainSpecificEvent {
         try {
             if (eObjectMethod instanceof EOperation) {
                 FeedbackData feedback = (new EmfExecutor()).execute(eObjectMethod, "getName");
-                if (feedback instanceof EObjectFeedbackData) {
-                    Object result = (Object) ((EObjectFeedbackData) feedback).getEObject();
+                if (feedback instanceof ObjectFeedbackData) {
+                    Object result = (Object) ((ObjectFeedbackData) feedback).getObject();
                     if (result instanceof String) {
                         methodName = (String) result;
                         this.action = new MethodReferenceAction(eObject, methodName);

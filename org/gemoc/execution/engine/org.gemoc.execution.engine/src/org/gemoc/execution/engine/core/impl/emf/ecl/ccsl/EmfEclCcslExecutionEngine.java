@@ -102,8 +102,8 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
         ClassLoader customizedClassLoader = this.customizeClassLoader(jarDsaFolderPath, jarDependenciesFolderPath);
         Activator.getMessagingSystem().debug("Initializing the model loader", Activator.PLUGIN_ID);
         EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
-        Activator.getMessagingSystem().debug("Loading the model", Activator.PLUGIN_ID);
-        EObject modelRoot = this.loadModel(modelLoader, this.modelURI, this.metamodelURI);
+        //Activator.getMessagingSystem().debug("Loading the model", Activator.PLUGIN_ID);
+        //EObject modelRoot = this.loadModel(modelLoader, this.modelURI, this.metamodelURI);
 
     }
 
@@ -130,6 +130,9 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             Method loadModelMethod;
             loadModelMethod = modelLoader.getClass().getDeclaredMethod("loadModel", String.class, String.class);
             modelRoot = (EObject) loadModelMethod.invoke(modelLoader, modelURI.toString(), metamodelURI.toString());
+            for (EObject eo : modelRoot.eContents()){
+                Activator.getMessagingSystem().warn(eo.toString(), Activator.PLUGIN_ID);
+            }
         } catch (NoSuchMethodException e) {
             String errorMessage = "NoSuchMethodException while trying to load the model";
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
@@ -150,6 +153,7 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             String errorMessage = "InvocationTargetException while trying to load the model";
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
             Activator.error(errorMessage, e);
+            Activator.error("Exception within InvocationTargetException", e.getCause());
         }
         return modelRoot;
     }
@@ -167,8 +171,11 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
             prop.load(in);
             Class<?> init;
             init = classLoader.loadClass(prop.get("mainRunner").toString());
-            Activator.getMessagingSystem().debug("ClassLoader : " + Arrays.asList(((URLClassLoader)classLoader).getURLs()).toString(), Activator.PLUGIN_ID);
-            Activator.getMessagingSystem().debug("Method init4eclipse : " + init.getDeclaredMethod("init4eclipse").toString(), Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug(
+                    "ClassLoader : " + Arrays.asList(((URLClassLoader) classLoader).getURLs()).toString(),
+                    Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug(
+                    "Method init4eclipse : " + init.getDeclaredMethod("init4eclipse").toString(), Activator.PLUGIN_ID);
             init.getDeclaredMethod("init4eclipse").invoke(null, (Object[]) null);
             Class<?> fact;
             fact = classLoader.loadClass(prop.get("mainFactory").toString());
@@ -228,9 +235,9 @@ public class EmfEclCcslExecutionEngine extends BasicExecutionEngine {
 
     private ClassLoader customizeClassLoader(String jarDsaFolderPath, String jarDependenciesFolderPath) {
         List<URL> urls = new ArrayList<URL>();
-        try {;
-            urls.addAll(this.getJarUrlsFromFolder(jarDsaFolderPath));
+        try {
             urls.addAll(this.getJarUrlsFromFolder(jarDependenciesFolderPath));
+            urls.addAll(this.getJarUrlsFromFolder(jarDsaFolderPath));
         } catch (CoreException e) {
             String errorMessage = "CoreException while customizing the ClassLoader";
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
