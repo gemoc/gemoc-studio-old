@@ -33,10 +33,10 @@ query identifyUserRelations() {
 	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
 	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
 	kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::BasicType::Type];
-	seqOfRelationDeclaration		+= getLibObjects("./TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
-	seqOfAbstractEntity				+= getLibObjects("./TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
-	seqOfExpressionDeclaration		+= getLibObjects("./TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
-	kernelTypes 					+= getLibObjects("./TFSMMoC.ccslLib")[TimeModel::BasicType::Type];
+	seqOfRelationDeclaration		+= getLibObjects("platform:/resource/org.gemoc.execution.engine.example/model/TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+	seqOfAbstractEntity				+= getLibObjects("platform:/resource/org.gemoc.execution.engine.example/model/TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+	seqOfExpressionDeclaration		+= getLibObjects("platform:/resource/org.gemoc.execution.engine.example/model/TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+	kernelTypes 					+= getLibObjects("platform:/resource/org.gemoc.execution.engine.example/model/TFSMMoC.ccslLib")[TimeModel::BasicType::Type];
 
 	Kernel_Integer 					:= kernelTypes[name='int']->asSequence()->first();
 	Kernel_Clock_Type				:= kernelTypes[name='clock']->asSequence()->first();	
@@ -83,7 +83,7 @@ main() {
 			
 		}; 
 		imports+= object TimeModel::ImportStatement{
-			importURI := './TFSMMoC.ccslLib';
+			importURI := 'platform:/resource/org.gemoc.execution.engine.example/model/TFSMMoC.ccslLib';
 			alias := 'TFSMMoC';
 			
 		}; 
@@ -788,7 +788,7 @@ main() {
 			name:= self.name+'_entering';
 			
 			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.oclAsType(EObject);
+ 				referencedObjectRefs += self.onEnter().oclAsType(EObject);
 				name := 'evt_'+self.name+'_entering';
 				kind := TimeModel::EventKind::start;
 						
@@ -804,7 +804,7 @@ main() {
 			name:= self.name+'_leaving';
 			
 			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.oclAsType(EObject);
+ 				referencedObjectRefs += self.onLeave().oclAsType(EObject);
 				name := 'evt_'+self.name+'_leaving';
 				kind := TimeModel::EventKind::finish;
 						
@@ -822,7 +822,7 @@ main() {
 			name:= self.name+'_evaluate';
 			
 			tickingEvent := object TimeModel::Event{
- 				referencedObjectRefs += self.oclAsType(EObject);
+ 				referencedObjectRefs += self.evaluate().oclAsType(EObject);
 				name := 'evt_'+self.name+'_evaluate';
 				kind := TimeModel::EventKind::undefined;
 						
@@ -909,16 +909,16 @@ main() {
 				
 }
 		{
-		 	name := self.name+"Coincides_occursWhenSolicitate";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
+		 	name := self.name+"FSMEventSendReceive_occursWhenSolicitate";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "FSMEventSendReceive")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 				
 						bindable := self -> map AllTriggeringOccurrences2Expression()->asSequence()->first();
-					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
+					_abstract := seqOfAbstractEntity[name = 'ClockA']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_occurs']->first();
-					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
+					_abstract := seqOfAbstractEntity[name = 'ClockB']->first();
 				};
 		
 		theMainBlock.relations += result;

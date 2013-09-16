@@ -2,7 +2,7 @@ import 'http://org.gemoc.execution.engine.example.tfsm'
 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
-ECLimport "./TFSMMoC.ccslLib"
+ECLimport "platform:/resource/org.gemoc.execution.engine.example/model/TFSMMoC.ccslLib"
 
 
 package tfsm
