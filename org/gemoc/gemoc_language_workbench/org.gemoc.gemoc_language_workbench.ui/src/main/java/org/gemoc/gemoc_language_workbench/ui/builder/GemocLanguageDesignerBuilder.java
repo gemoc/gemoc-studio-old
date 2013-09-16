@@ -17,10 +17,7 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.QualifiedName;
-import org.eclipse.core.runtime.SubMonitor;
-import org.eclipse.egf.core.pde.helper.ExtensionHelper;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -28,18 +25,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.pde.core.IBaseModel;
-import org.eclipse.pde.core.plugin.IPluginElement;
-import org.eclipse.pde.core.plugin.IPluginExtension;
-import org.eclipse.pde.core.plugin.IPluginModel;
-import org.eclipse.pde.core.plugin.IPluginObject;
-import org.eclipse.pde.internal.core.ICoreConstants;
-import org.eclipse.pde.internal.core.ibundle.IBundlePluginModelBase;
-import org.eclipse.pde.internal.core.text.plugin.PluginModel;
-import org.eclipse.pde.internal.ui.util.ModelModification;
-import org.eclipse.pde.internal.ui.util.PDEModelUtility;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
+import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
+import org.jdom2.Element;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -273,47 +262,15 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		}
 	}
 	
-	// TODO: maybe switch to a full xml (jdom ?) manuipulation instead of relying on eclipse internal pde.core
-	@SuppressWarnings("restriction")
+	
 	private void changePluginLanguageName(IProject project, final String languageName){
-		PDEModelUtility.modifyModel(new ModelModification(project.getFile(ICoreConstants.PLUGIN_FILENAME_DESCRIPTOR)) {
-			@Override
-            protected void modifyModel(IBaseModel model, IProgressMonitor innerMonitor) throws CoreException {
-                SubMonitor subMonitor = SubMonitor.convert(innerMonitor, "", 200);
-                if (model instanceof PluginModel == false) {
-                    return;
-                }
-                
-                IPluginExtension[] languageExtensions= ExtensionHelper.getPluginExtension(((IPluginModel)model).getExtensions(), Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
-				IPluginExtension languageExtension;
-				if(languageExtensions.length > 0){
-					languageExtension =  languageExtensions[0];
-				}
-				else{
-					// create one
-					languageExtension = ExtensionHelper.createExtension((IBundlePluginModelBase) model, Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
-				}
-				IPluginObject[] extChilds = languageExtension.getChildren();
-				IPluginElement xdsmlDefinition = null;
-				for (int i = 0; i < extChilds.length; i++) {
-					if(extChilds[i].getName().equals(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF)){
-						if(extChilds[i] instanceof IPluginElement){
-							xdsmlDefinition =(IPluginElement) extChilds[i];
-						}
-					}
-				}
-				if(xdsmlDefinition == null){
-					xdsmlDefinition = ExtensionHelper.createPluginElement(languageExtension, Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF);
-					languageExtension.add(xdsmlDefinition);
-				}
-				xdsmlDefinition.setAttribute("name", languageName);
-				if (model instanceof PluginModel){
-					(( PluginModel)model).save();
-				}
-                subMonitor.worked(100);
-	            }
-
-	        }, new NullProgressMonitor());
+		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
+		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
+		PluginXMLHelper helper = new PluginXMLHelper();
+		helper.loadDocument(pluginfile);
+		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+		helper.updateXDSMLDefinitionInExtensionPoint(gemocExtensionPoint, languageName);
+		helper.saveDocument(pluginfile);		
 	}
 	
 	private void deleteMarkers(IFile file) {

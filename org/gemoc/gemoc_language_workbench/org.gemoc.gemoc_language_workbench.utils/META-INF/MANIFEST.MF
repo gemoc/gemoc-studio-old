@@ -16,3 +16,4 @@ Export-Package: org.gemoc.gemoc_language_workbench.utils,
  org.gemoc.gemoc_language_workbench.utils.resource,
  org.gemoc.gemoc_language_workbench.utils.resourcevisitors,
  org.gemoc.gemoc_language_workbench.utils.ui.dialogs
+Bundle-ClassPath: .

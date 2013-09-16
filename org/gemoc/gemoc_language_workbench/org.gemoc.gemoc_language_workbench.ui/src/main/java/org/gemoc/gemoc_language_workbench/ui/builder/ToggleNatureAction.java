@@ -35,6 +35,7 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
+import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.gemoc.gemoc_language_workbench.utils.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
 import org.osgi.framework.BundleException;
@@ -134,6 +135,8 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 					mfChanger.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
 					
 					mfChanger.writeManifest(manifestFile);
+					
+					PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);
 					
 				} catch (InvocationTargetException e) {
 					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
@@ -255,6 +258,8 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			}
 		}
 	}
+	
+
 	
 
 }
