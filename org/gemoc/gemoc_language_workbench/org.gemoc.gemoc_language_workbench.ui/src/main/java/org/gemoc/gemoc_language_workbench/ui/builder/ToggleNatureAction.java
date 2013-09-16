@@ -35,7 +35,7 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.utils.manifest.ManifestChanger;
+import org.gemoc.gemoc_language_workbench.utils.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
 import org.osgi.framework.BundleException;
 
@@ -143,7 +143,8 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
 				} catch (BundleException e) {
 					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
-				}					
+				}
+				
 				
 			}
 			

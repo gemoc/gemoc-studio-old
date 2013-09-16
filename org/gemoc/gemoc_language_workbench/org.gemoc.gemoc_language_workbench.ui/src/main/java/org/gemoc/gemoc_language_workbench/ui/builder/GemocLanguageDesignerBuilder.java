@@ -1,9 +1,10 @@
 package org.gemoc.gemoc_language_workbench.ui.builder;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.eclipse.core.resources.IFile;
@@ -16,7 +17,10 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.QualifiedName;
+import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.egf.core.pde.helper.ExtensionHelper;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -24,6 +28,17 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.pde.core.IBaseModel;
+import org.eclipse.pde.core.plugin.IPluginElement;
+import org.eclipse.pde.core.plugin.IPluginExtension;
+import org.eclipse.pde.core.plugin.IPluginModel;
+import org.eclipse.pde.core.plugin.IPluginObject;
+import org.eclipse.pde.internal.core.ICoreConstants;
+import org.eclipse.pde.internal.core.ibundle.IBundlePluginModelBase;
+import org.eclipse.pde.internal.core.text.plugin.PluginModel;
+import org.eclipse.pde.internal.ui.util.ModelModification;
+import org.eclipse.pde.internal.ui.util.PDEModelUtility;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -31,7 +46,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
-	class SampleDeltaVisitor implements IResourceDeltaVisitor {
+	class LanguageProjectDeltaVisitor implements IResourceDeltaVisitor {
 		/*
 		 * (non-Javadoc)
 		 * 
@@ -43,6 +58,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			case IResourceDelta.ADDED:
 				// handle added resource
 				updateProjectPersistentProperties(resource);
+				updateProjectPluginConfiguration(resource);
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
@@ -51,6 +67,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			case IResourceDelta.CHANGED:
 				// handle changed resource
 				updateProjectPersistentProperties(resource);
+				updateProjectPluginConfiguration(resource);
 				break;
 			}
 			//return true to continue visiting children.
@@ -58,9 +75,10 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
-	class SampleResourceVisitor implements IResourceVisitor {
+	class LanguageProjectResourceVisitor implements IResourceVisitor {
 		public boolean visit(IResource resource) {
 			updateProjectPersistentProperties(resource);
+			updateProjectPluginConfiguration(resource);
 			//return true to continue visiting children.
 			return true;
 		}
@@ -145,7 +163,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 					
 					Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 				    Map<String, Object> m = reg.getExtensionToFactoryMap();
-				    m.put("xdsml", new XMIResourceFactoryImpl());
+				    m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
 
 				    // Obtain a new resource set
 				    ResourceSet resSet = new ResourceSetImpl();
@@ -181,6 +199,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			
 		}
 	}
+	
 	private void removePersistentProperties(IResource resource){
 		if (resource instanceof IFile && resource.getName().equals(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)) {
 			IFile file = (IFile) resource;
@@ -200,20 +219,103 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		}
 	}
 	
-	
-	/*
-	void checkXML(IResource resource) {
-		if (resource instanceof IFile && resource.getName().endsWith(".xml")) {
+	/**
+	 * Update plugin.xml according to the model
+	 * @param resource
+	 */
+	private void updateProjectPluginConfiguration(IResource resource){
+		if (resource instanceof IFile && resource.getName().equals(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)) {
 			IFile file = (IFile) resource;
-			deleteMarkers(file);
-			XMLErrorHandler reporter = new XMLErrorHandler(file);
-			try {
-				getParser().parse(file.getContents(), reporter);
-			} catch (Exception e1) {
-			}
+			IProject project = file.getProject();
+		//	try {
+				if(file.exists()){
+
+					
+					Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+				    Map<String, Object> m = reg.getExtensionToFactoryMap();
+				    m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
+
+				    // Obtain a new resource set
+				    ResourceSet resSet = new ResourceSetImpl();
+
+				    // Create the resource
+				    Resource modelresource = resSet.getResource(URI.createURI(file.getLocationURI().toString()), true);
+				    TreeIterator<EObject> it = modelresource.getAllContents();
+				    while (it.hasNext()) {
+						EObject eObject = (EObject) it.next();
+						/*if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DomainModelProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSAProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DSA), "true");
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSEProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DSE), "true");
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.MoCProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_MOC), "true");
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.EditorProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_EDITOR), "true");
+						}
+						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.AnimatorProject){
+							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR), "true");
+						}*/
+						if(eObject instanceof LanguageDefinition){
+							changePluginLanguageName(project, ((LanguageDefinition)eObject).getName());
+						}
+					}
+				}
+			/*} catch (CoreException e) {
+				Activator.error(e.getMessage(), e);
+			}*/
+			
 		}
 	}
-	*/
+	
+	// TODO: maybe switch to a full xml (jdom ?) manuipulation instead of relying on eclipse internal pde.core
+	@SuppressWarnings("restriction")
+	private void changePluginLanguageName(IProject project, final String languageName){
+		PDEModelUtility.modifyModel(new ModelModification(project.getFile(ICoreConstants.PLUGIN_FILENAME_DESCRIPTOR)) {
+			@Override
+            protected void modifyModel(IBaseModel model, IProgressMonitor innerMonitor) throws CoreException {
+                SubMonitor subMonitor = SubMonitor.convert(innerMonitor, "", 200);
+                if (model instanceof PluginModel == false) {
+                    return;
+                }
+                
+                IPluginExtension[] languageExtensions= ExtensionHelper.getPluginExtension(((IPluginModel)model).getExtensions(), Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+				IPluginExtension languageExtension;
+				if(languageExtensions.length > 0){
+					languageExtension =  languageExtensions[0];
+				}
+				else{
+					// create one
+					languageExtension = ExtensionHelper.createExtension((IBundlePluginModelBase) model, Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+				}
+				IPluginObject[] extChilds = languageExtension.getChildren();
+				IPluginElement xdsmlDefinition = null;
+				for (int i = 0; i < extChilds.length; i++) {
+					if(extChilds[i].getName().equals(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF)){
+						if(extChilds[i] instanceof IPluginElement){
+							xdsmlDefinition =(IPluginElement) extChilds[i];
+						}
+					}
+				}
+				if(xdsmlDefinition == null){
+					xdsmlDefinition = ExtensionHelper.createPluginElement(languageExtension, Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF);
+					languageExtension.add(xdsmlDefinition);
+				}
+				xdsmlDefinition.setAttribute("name", languageName);
+				if (model instanceof PluginModel){
+					(( PluginModel)model).save();
+				}
+                subMonitor.worked(100);
+	            }
+
+	        }, new NullProgressMonitor());
+	}
+	
 	private void deleteMarkers(IFile file) {
 		try {
 			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
@@ -224,22 +326,39 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	protected void fullBuild(final IProgressMonitor monitor)
 			throws CoreException {
 		try {
-			getProject().accept(new SampleResourceVisitor());
+			// need to check if build is realy required because it seems to be called on each eclipse startup ? more debug analysis required ...
+			getProject().accept(new LanguageProjectResourceVisitor());
 		} catch (CoreException e) {
 		}
 	}
 
-	/*private SAXParser getParser() throws ParserConfigurationException,
-			SAXException {
-		if (parserFactory == null) {
-			parserFactory = SAXParserFactory.newInstance();
-		}
-		return parserFactory.newSAXParser();
-	}*/
 
 	protected void incrementalBuild(IResourceDelta delta,
 			IProgressMonitor monitor) throws CoreException {
 		// the visitor does the work.
-		delta.accept(new SampleDeltaVisitor());
+		delta.accept(new LanguageProjectDeltaVisitor());
 	}
+	
+	
+	
+	//TODO move to othe place
+	public String readFully(InputStream inputStream, String encoding)
+	        throws IOException {
+	    return new String(readFully(inputStream), encoding);
+	}    
+
+	private byte[] readFully(InputStream inputStream)
+	        throws IOException {
+	    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    byte[] buffer = new byte[1024];
+	    int length = 0;
+	    while ((length = inputStream.read(buffer)) != -1) {
+	        baos.write(buffer, 0, length);
+	    }
+	    return baos.toByteArray();
+	}
+
+
+	
+	
 }

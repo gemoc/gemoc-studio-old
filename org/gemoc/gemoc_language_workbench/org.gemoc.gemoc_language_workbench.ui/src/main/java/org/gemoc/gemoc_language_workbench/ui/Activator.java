@@ -25,6 +25,11 @@ public class Activator extends AbstractUIPlugin {
 	public static final String GEMOC_PROJECT_PROPERTY_HAS_EDITOR = "gemoc_project_has_editor";
 	public static final String GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR = "gemoc_project_has_animator";
 	
+	// extension point constants
+
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_NAME = "org.gemoc.gemoc_language_workbench.xdsml";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF = "XDSML_Definition";
+	
 	// The shared instance
 	private static Activator plugin;
 	

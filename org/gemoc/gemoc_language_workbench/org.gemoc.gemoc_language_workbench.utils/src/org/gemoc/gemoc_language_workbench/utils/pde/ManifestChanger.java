@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.utils.manifest;
+package org.gemoc.gemoc_language_workbench.utils.pde;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
