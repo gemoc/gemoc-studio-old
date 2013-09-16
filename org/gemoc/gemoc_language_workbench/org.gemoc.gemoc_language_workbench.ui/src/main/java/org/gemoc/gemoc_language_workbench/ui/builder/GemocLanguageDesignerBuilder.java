@@ -17,6 +17,7 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -25,10 +26,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
+import org.gemoc.gemoc_language_workbench.utils.pde.ManifestChanger;
 import org.jdom2.Element;
+import org.osgi.framework.BundleException;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -232,10 +236,11 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				    TreeIterator<EObject> it = modelresource.getAllContents();
 				    while (it.hasNext()) {
 						EObject eObject = (EObject) it.next();
-						/*if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DomainModelProject){
-							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
+						if(eObject instanceof DomainModelProject){
+							DomainModelProject domainModelProject = (DomainModelProject) eObject;
+							updateDependenciesWithDomainProject(project, domainModelProject);
 						}
-						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSAProject){
+						/*if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSAProject){
 							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DSA), "true");
 						}
 						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSEProject){
@@ -263,7 +268,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	}
 	
 	
-	private void changePluginLanguageName(IProject project, final String languageName){
+	protected void changePluginLanguageName(IProject project, final String languageName){
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
 		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
 		PluginXMLHelper helper = new PluginXMLHelper();
@@ -271,6 +276,27 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		helper.updateXDSMLDefinitionInExtensionPoint(gemocExtensionPoint, languageName);
 		helper.saveDocument(pluginfile);		
+	}
+	
+	protected void updateDependenciesWithDomainProject(IProject project, DomainModelProject domainModelProject){
+		IFile manifestFile = project.getFile(new Path("META-INF/MANIFEST.MF"));
+		
+		try {
+			ManifestChanger mfChanger = new ManifestChanger(manifestFile);
+			// TODO find a way to remove possible old domain model dependencies
+			mfChanger.addPluginDependency(domainModelProject.getProjectName(), "0.0.0", true, true);
+			
+			mfChanger.writeManifest(manifestFile);
+		} catch (IOException e) {
+			Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+		} catch (CoreException e) {
+			Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+		} catch (BundleException e) {
+			Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+		}	
+		
+		
+				
 	}
 	
 	private void deleteMarkers(IFile file) {

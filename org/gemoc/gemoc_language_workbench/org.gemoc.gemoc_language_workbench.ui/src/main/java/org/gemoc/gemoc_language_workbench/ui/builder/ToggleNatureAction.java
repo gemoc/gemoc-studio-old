@@ -116,7 +116,8 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				IJavaProject javaProject = JavaCore.create(project);
 				addNature(project, JavaCore.NATURE_ID, null);
 				//CoreUtility.createFolder(project.getFolder(new Path("src"));, true, true, new SubProgressMonitor(monitor, 2));*
-				ResourceUtil.createFolder(project.getFolder(new Path("src")), true, true, new NullProgressMonitor());
+				ResourceUtil.createFolder(project.getFolder(new Path("src/main/java")), true, true, new NullProgressMonitor());
+				ResourceUtil.createFolder(project.getFolder(new Path("src/main/xdsml-java-gen")), true, true, new NullProgressMonitor());
 				addJavaResources(project);
 			}
 				
@@ -131,7 +132,9 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 					IFile manifestFile = project.getFile(new Path("META-INF/MANIFEST.MF"));
 					ManifestChanger mfChanger = new ManifestChanger(manifestFile);	
 					
-					mfChanger.addPluginDependency(Activator.PLUGIN_ID, "0.1.0", true, false);
+					mfChanger.addPluginDependency(Activator.PLUGIN_ID, "0.1.0", true, true);
+					mfChanger.addPluginDependency("org.eclipse.emf.ecore.xmi", "2.8.0", true, true);
+					mfChanger.addSingleton();
 					mfChanger.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
 					
 					mfChanger.writeManifest(manifestFile);
@@ -235,7 +238,8 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 	
 	public static final String CLASSPATH_TEMPLATE= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
 "<classpath>\n"+
-"	<classpathentry kind=\"src\" path=\"src\"/>\n"+
+"	<classpathentry kind=\"src\" path=\"src/main/java\"/>\n"+
+"	<classpathentry kind=\"src\" path=\"src/main/xdsml-java-gen\"/>\n"+
 "	<classpathentry kind=\"con\" path=\"org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6\"/>\n"+
 "	<classpathentry kind=\"output\" path=\"bin\"/>\n"+
 "</classpath>";

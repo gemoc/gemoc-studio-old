@@ -52,8 +52,38 @@
          <attribute name="name" type="string" use="required">
             <annotation>
                <documentation>
-                  
+                  Name of the XDSML language
                </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="loadModel_class" type="string">
+            <annotation>
+               <documentation>
+                  Class in charge of loading model
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.ui.api.IXDSMLModelLoader"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="executor_class" type="string">
+            <annotation>
+               <documentation>
+                  Class offering execution API on the XDSML
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.ui.api.IXDSMLExecutor"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="initializer_class" type="string">
+            <annotation>
+               <documentation>
+                  Class in charge of initializing the XDSML for correct loading and execution
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.ui.api.IXDSMLInitializer"/>
+               </appinfo>
             </annotation>
          </attribute>
       </complexType>

@@ -32,9 +32,9 @@ public class ManifestChanger {
 	
 	public void addPluginDependency(String plugin, String version,
 			boolean reexport, boolean overwrite) throws BundleException {
-		String requireBundleHeader = "Require-Bundle";
-		String bundleVersionAttr = "bundle-version";
-		String rexportDirective = "visibility";
+		final String requireBundleHeader = "Require-Bundle";
+		final String bundleVersionAttr = "bundle-version";
+		final String rexportDirective = "visibility";
 
 		assert (manifest != null);
 		assert (plugin != null);
@@ -111,7 +111,7 @@ public class ManifestChanger {
 						// so just write out the whole of this component without
 						// editing it, and carry on looking
 						strBuilder.append((firstElement ? "" : " ")
-								+ manifestElement.getValue()
+								+ manifestElement
 								+ (lastElement ? "" : ",\n"));
 						continue;
 					} else {
@@ -182,7 +182,7 @@ public class ManifestChanger {
 					}
 					if (!foundDirective) {
 						strBuilder.append(rexportDirective + ":="
-								+ (reexport ? "rexport" : "private"));
+								+ (reexport ? "reexport" : "private"));
 					}
 					if (!lastElement) {
 						strBuilder.append(",\n");
@@ -197,7 +197,7 @@ public class ManifestChanger {
 					requireBundleHeader,
 					plugin + ";" + bundleVersionAttr + "=" + version + ";"
 							+ rexportDirective + ":="
-							+ (reexport ? "rexport" : "private"));
+							+ (reexport ? "reexport" : "private"));
 		} else if (overwrite) {
 			// found it and wish to edit it...
 			if (hasValuesForPlugin) {
@@ -212,8 +212,8 @@ public class ManifestChanger {
 				boolean areExistingValues = existingValues.trim().length() != 0;
 				String newValue = plugin + ";" + bundleVersionAttr + "="
 						+ version + ";" + rexportDirective + ":="
-						+ (reexport ? "rexport" : "private");
-				newValue = (areExistingValues) ? (existingValues + ",\n" + newValue)
+						+ (reexport ? "reexport" : "private");
+				newValue = (areExistingValues) ? (existingValues + ",\n " + newValue)
 						: newValue;
 				manifest.getMainAttributes().putValue(requireBundleHeader,
 						newValue);
@@ -221,6 +221,37 @@ public class ManifestChanger {
 		}
 	}
 
+	public void addSingleton() throws BundleException{
+		final String bundleSymbolicNameHeader = "Bundle-SymbolicName";
+		Attributes mainAttrs = manifest.getMainAttributes();
+		String value = null;
+		for (Object entryName : mainAttrs.keySet()) {
+			String header;
+
+			// Get the values safely
+			if (entryName instanceof String) {
+				header = (String) entryName;
+				value = mainAttrs.getValue(header);
+			} else if (entryName instanceof Attributes.Name) {
+				header = (String) ((Attributes.Name) entryName).toString();
+				value = mainAttrs.getValue((Attributes.Name) entryName);
+			} else {
+				throw new BundleException("Unknown Main Attribute Key type: "
+						+ entryName.getClass() + " (" + entryName + ")");
+			}
+
+			// loop to the next header if we don't find ours
+			if (bundleSymbolicNameHeader.equals(header)){
+				break;
+			}
+		}
+		if(value != null && !value.endsWith( ";singleton:=true")){
+			// doesn't exist or already have it, so do not try to add the singleton ...
+			manifest.getMainAttributes().putValue(bundleSymbolicNameHeader,
+					value + ";singleton:=true");
+		}
+	}
+	
 	public void addAttributes(String attributeName, String value){
 		manifest.getMainAttributes().putValue(attributeName, value);
 	}

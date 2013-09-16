@@ -28,4 +28,5 @@ Bundle-ClassPath: lib/jaxen-1.1.6.jar,
  lib/jdom-2.0.5.jar,
  lib/xercesImpl.jar,
  .
-Export-Package: org.gemoc.gemoc_language_workbench.ui
+Export-Package: org.gemoc.gemoc_language_workbench.ui,
+ org.gemoc.gemoc_language_workbench.ui.api
