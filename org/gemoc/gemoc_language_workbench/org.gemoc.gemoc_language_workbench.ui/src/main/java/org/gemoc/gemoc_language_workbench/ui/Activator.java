@@ -29,6 +29,13 @@ public class Activator extends AbstractUIPlugin {
 
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_NAME = "org.gemoc.gemoc_language_workbench.xdsml";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF = "XDSML_Definition";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT = "loadModel_class";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT = "initializer_class";
+	
+
+	public static final String MODEL_LOADER_CLASS_NAMEPART = "ModelLoader";
+	public static final String INITIALIZER_CLASS_NAMEPART = "Initializer";
+	public static final String EXTENSION_GENERATED_CLASS_FOLDER_NAME = "src/main/xdsml-java-gen/";
 	
 	// The shared instance
 	private static Activator plugin;

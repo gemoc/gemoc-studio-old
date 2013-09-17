@@ -102,6 +102,20 @@ public class PluginXMLHelper {
 		result.setAttribute("name", xDSMLName);
 		return result;
 	}
+	public Element updateXDSMLDefinitionAttributeInExtensionPoint(Element extensionPoint, String atributeName, String value){
+		Element result;
+		List<Element> elements = extensionPoint.getContent(new ElementFilter(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF));
+		if(elements.size() == 0){
+			// create extension point
+			result = new Element(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF);
+			extensionPoint.addContent(result);
+		}
+		else{
+			result = elements.get(0);
+		}
+		result.setAttribute(atributeName, value);
+		return result;
+	}
 	
 	public Element getOrCreateExtensionPoint(String extensionPointName){
 		Element result;

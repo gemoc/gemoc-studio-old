@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.SAXParserFactory;
 
@@ -33,6 +34,7 @@ import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.gemoc.gemoc_language_workbench.utils.pde.ManifestChanger;
+import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
 import org.jdom2.Element;
 import org.osgi.framework.BundleException;
 import org.xml.sax.SAXException;
@@ -259,7 +261,10 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR), "true");
 						}*/
 						if(eObject instanceof LanguageDefinition){
-							changePluginLanguageName(project, ((LanguageDefinition)eObject).getName());
+							LanguageDefinition ld = (LanguageDefinition)eObject;
+							changePluginLanguageName(project, ld.getName());
+							updateModelLoaderClass(project,ld);
+							updateInitializerClass(project,ld);
 						}
 					}
 				}
@@ -319,6 +324,81 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		} catch (BundleException e) {
 			Activator.error(e.getMessage(), e);
 		}			
+	}
+	
+	
+	/**
+	 * create or replace existing ModelLoaderClass by an implementation that is able to load models of the domain 
+	 * @param project
+	 * @param ld
+	 */
+	protected void updateModelLoaderClass(IProject project, LanguageDefinition ld){
+		// TODO remove possible previous classes
+		// create the java class
+		String languageToUpperFirst = ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
+		String packageName = project.getName()+".xdsml.api.impl";
+		String folderName = packageName.replaceAll("\\.", "/");
+		if(ld.getDomainModelProject()!= null){
+			String fileContent = BuilderTemplates.MODEL_LOADER_CLASS_TEMPLATE;
+			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
+			fileContent = fileContent.replaceAll(Pattern.quote("${language.name.toupperfirst}"), languageToUpperFirst);
+			StringBuilder sb = new StringBuilder();
+			sb.append("if(modelFileUri.endsWith(\".xmi\")){\n"+
+"			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;\n"+
+"		    Map<String, Object> m = reg.getExtensionToFactoryMap();\n"+
+"		    m.put(\"xmi\", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());\n"+
+"		    // Obtain a new resource set\n"+
+"		    ResourceSet resSet = new org.eclipse.emf.ecore.resource.impl.ResourceSetImpl();\n"+
+"		    // Create the resource\n"+
+"		    result = resSet.getResource(URI.createURI(modelFileUri), true);\n"+
+"		}");
+			fileContent = fileContent.replaceAll(Pattern.quote("${loadModel.content}"), sb.toString());
+			IFile file = project.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME+folderName+"/"+languageToUpperFirst+Activator.MODEL_LOADER_CLASS_NAMEPART+".java");
+			ResourceUtil.writeFile(file, fileContent);
+		}
+		// update plugin.xml
+		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
+		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
+		PluginXMLHelper helper = new PluginXMLHelper();
+		helper.loadDocument(pluginfile);
+		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint, Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT,
+				packageName+"."+languageToUpperFirst+Activator.MODEL_LOADER_CLASS_NAMEPART);
+		helper.saveDocument(pluginfile);
+				
+	}
+	
+	/**
+	 * create or replace existing ModelLoaderClass by an implementation that is able to load models of the domain 
+	 * @param project
+	 * @param ld
+	 */
+	protected void updateInitializerClass(IProject project, LanguageDefinition ld){
+		// TODO remove possible previous classes
+		// create the java class
+		String languageToUpperFirst = ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
+		String packageName = project.getName()+".xdsml.api.impl";
+		String folderName = packageName.replaceAll("\\.", "/");
+		if(ld.getDomainModelProject()!= null){
+			String fileContent = BuilderTemplates.INITIALIZER_CLASS_TEMPLATE;
+			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
+			fileContent = fileContent.replaceAll(Pattern.quote("${language.name.toupperfirst}"), languageToUpperFirst);
+			StringBuilder sb = new StringBuilder();
+			sb.append("// TODO");
+			fileContent = fileContent.replaceAll(Pattern.quote("${initializer.content}"), sb.toString());
+			IFile file = project.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME+folderName+"/"+languageToUpperFirst+Activator.INITIALIZER_CLASS_NAMEPART+".java");
+			ResourceUtil.writeFile(file, fileContent);
+		}
+		// update plugin.xml
+		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
+		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
+		PluginXMLHelper helper = new PluginXMLHelper();
+		helper.loadDocument(pluginfile);
+		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint, Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT,
+				packageName+"."+languageToUpperFirst+Activator.INITIALIZER_CLASS_NAMEPART);
+		helper.saveDocument(pluginfile);
+				
 	}
 	
 	private void deleteMarkers(IFile file) {
