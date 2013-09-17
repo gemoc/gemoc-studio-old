@@ -39,7 +39,7 @@ public class InitializeAction implements IObjectActionDelegate {
     public void run(IAction action) {
         String information = "";
 
-        String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC-rendevous.extendedCCSL";
+        String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC_new.extendedCCSL";
         String jarDsaFolderPath = "/org.gemoc.execution.engine.example/my_jars/dsa";
         String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
         String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";

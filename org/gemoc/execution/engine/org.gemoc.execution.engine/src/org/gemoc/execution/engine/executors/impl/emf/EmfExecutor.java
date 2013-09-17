@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.Activator;
@@ -28,21 +29,17 @@ public class EmfExecutor implements Executor {
         this.lastExecutedAction = null;
         this.modelRoot = modelRoot;
     }
-
-    public FeedbackData execute(EObject eObject, EOperation operation) {
-        Activator.getMessagingSystem().info(
-                "Executing EOperation of name " + operation.getName() + " on eobject " + eObject.toString()
-                        + " or on one of its heirs if the method is not implemented in EMF.", Activator.PLUGIN_ID);
+    
+    private Object executeWithEInvoke(EObject eObject, EOperation operation){
         EObject richEObject = null;
+        Object eInvokeResult = null;
         FeedbackData res = null;
-        Object invokeResult = null;
 
         try {
             Activator.getMessagingSystem()
                     .debug("Trying to einvoke the EOperation (" + operation.toString() + ") on the EObject (" + eObject.toString() + ")", Activator.PLUGIN_ID);
-            invokeResult = eObject.eInvoke(operation, null);
+            eInvokeResult = eObject.eInvoke(operation, null);
             
-
         } catch (InvocationTargetException e) {
             Activator.getMessagingSystem().debug("Caught an InvocationTargetException", Activator.PLUGIN_ID);
             if (e.getCause() instanceof UnsupportedOperationException) {
@@ -61,7 +58,7 @@ public class EmfExecutor implements Executor {
                     }
                 }
                 try {
-                    invokeResult = richEObject.eInvoke(operation, null);
+                    eInvokeResult = richEObject.eInvoke(operation, null);
                 } catch (InvocationTargetException f) {
                     Activator
                             .getMessagingSystem()
@@ -79,13 +76,77 @@ public class EmfExecutor implements Executor {
         }
         Activator
         .getMessagingSystem()
+        .debug("Result of the eInvokation: " + eInvokeResult.toString(),
+                Activator.PLUGIN_ID);
+
+        //res = DataConverter.convertToFeedbackData(eInvokeResult);
+        return eInvokeResult;
+    }
+    
+    private Object executeWithInvoke(EObject eObject, EOperation operation){
+        Object res = null;
+        Method method = null;
+        try{try{
+            method = eObject.getClass().getMethod("EMFRENAME"+ operation.getName());
+            Activator.getMessagingSystem().debug("méthode de nom hacked : " + method.toString(), Activator.PLUGIN_ID);
+
+        } catch (NoSuchMethodException e) {
+            String errorMessage = "NoSuchMethodException when trying to execute the method corresponding to an EOperation";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            try {
+                method = eObject.getClass().getMethod(operation.getName());
+                Activator.getMessagingSystem().debug("méthode de nom normal : " + method.toString(), Activator.PLUGIN_ID);
+            } catch (NoSuchMethodException e1) {
+                Activator.getMessagingSystem().error("suchmethodexception balbal", Activator.PLUGIN_ID);
+            }
+        }
+            res = method.invoke(eObject, (Object[]) null);
+            
+            
+         
+            return res;
+            } catch (SecurityException e) {
+      String errorMessage = "SecurityException when trying to execute the method corresponding to an EOperation";
+      Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+      Activator.error(errorMessage, e);
+      return null;
+  } catch (IllegalArgumentException e) {
+      String errorMessage = "IllegalArgumentException when trying to execute the method corresponding to an EOperation";
+      Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+      Activator.error(errorMessage, e);
+      return null;
+  } catch (IllegalAccessException e) {
+      String errorMessage = "IllegalAccessException when trying to execute the method corresponding to an EOperation";
+      Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+      Activator.error(errorMessage, e);
+      return null;
+  } catch (InvocationTargetException e) {
+      String errorMessage = "InvocationTargetException when trying to execute the method corresponding to an EOperation";
+      Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+      Activator.error(errorMessage, e);
+      Activator.error("Nested Exception", e.getCause());
+      return null;
+}
+        
+    }
+    
+    
+    public FeedbackData execute(EObject eObject, EOperation operation) {
+        Activator.getMessagingSystem().info(
+                "Executing EOperation of name " + operation.getName() + " on eobject " + eObject.toString()
+                        + " or on one of its heirs if the method is not implemented in EMF.", Activator.PLUGIN_ID);
+        
+        FeedbackData res = null;
+        //Object eInvokeResult = this.executeWithEInvoke(eObject, operation);
+        Object invokeResult = this.executeWithInvoke(eObject, operation);
+        Activator
+        .getMessagingSystem()
         .debug("Result of the invokation: " + invokeResult.toString(),
                 Activator.PLUGIN_ID);
-        res = DataConverter.convertToFeedbackData(invokeResult);
+        
         return res;
         
-        
-        
+
         
         
         /*try {
@@ -159,26 +220,34 @@ public class EmfExecutor implements Executor {
         }*/
     }
 
+    
+    
     @Override
     public FeedbackData execute(DomainSpecificAction dsa) {
         Activator.getMessagingSystem().debug(
                 "Executing Domain Specific Action : " + dsa.toString(), Activator.PLUGIN_ID);
-        
         Activator.getMessagingSystem().debug(
-                "Gonna try to retrieve EObject of name: " + dsa.getTargetQualifiedName(), Activator.PLUGIN_ID);
+                "Retrieving EObject in the DSA with the name: " + dsa.getTargetQualifiedName(), Activator.PLUGIN_ID);
+        
         EObject eObject = getEObjectFromName(dsa.getTargetQualifiedName());
+        
         Activator.getMessagingSystem().debug(
                 "EObject found: " + eObject.toString(), Activator.PLUGIN_ID);
         Activator.getMessagingSystem().debug(
-                "Gonna try to retrieve EOperation of name: " + dsa.getMethodQualifiedName(), Activator.PLUGIN_ID);
+                "Retrieving EOperation in the DSA with the name: " + dsa.getMethodQualifiedName(), Activator.PLUGIN_ID);
+        
         EOperation eOperation = getEOperationFromName(eObject, dsa.getMethodQualifiedName());
+        
         Activator.getMessagingSystem().debug(
                 "EOperation found: " + eOperation.toString(), Activator.PLUGIN_ID);
+        
         FeedbackData feedback = this.execute(eObject, eOperation);
         
         this.lastExecutedAction = dsa;
         return feedback;
     }
+    
+    
     
     private EObject getEObjectFromName(String name){
         Iterator<EObject> modelIterator = this.modelRoot.eAllContents();
@@ -202,7 +271,17 @@ public class EmfExecutor implements Executor {
             String modelElementEMFHackedQualifiedName = this.getEmfHackQualifiedNameFromQualifiedName(modelElementQualifiedName);
             Activator.getMessagingSystem().debug(
                     "modelElementEMFHackedQualifiedName: " + modelElementEMFHackedQualifiedName, Activator.PLUGIN_ID);
-            if (modelElementQualifiedName.equals(name) | modelElementEMFHackedQualifiedName.equals(name)) {
+            String linkedElementEMFHackedQualifiedName = this.getEmfHackQualifiedNameFromQualifiedName(name);
+            Activator.getMessagingSystem().debug(
+                    "linkedElementEMFHackedQualifiedName " + linkedElementEMFHackedQualifiedName, Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug(modelElementEMFHackedQualifiedName + " == " + linkedElementEMFHackedQualifiedName + " ? : " + modelElementEMFHackedQualifiedName.equals(linkedElementEMFHackedQualifiedName), Activator.PLUGIN_ID);
+            if (modelElementEMFHackedQualifiedName.equals(linkedElementEMFHackedQualifiedName)) {
+                return eOperation;
+            }
+        }
+        for(EOperation eOperation : eObject.eClass().getEAllOperations()) {
+            String modelElementQualifiedName = this.getQualifiedName(eOperation);
+            if (modelElementQualifiedName.equals(name)) {
                 return eOperation;
             }
         }
