@@ -6,11 +6,16 @@
   <foreignModel>gemoc_language_workbench_conf.ecore</foreignModel>
   <genPackages prefix="conf" basePackage="org.gemoc.gemoc_language_workbench" disposableProviderFactory="true"
       fileExtensions="xdsml" ecorePackage="gemoc_language_workbench_conf.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gemoc_language_workbench_conf.ecore#//ProjectKind">
+      <genEnumLiterals ecoreEnumLiteral="gemoc_language_workbench_conf.ecore#//ProjectKind/eclipsePlugin"/>
+      <genEnumLiterals ecoreEnumLiteral="gemoc_language_workbench_conf.ecore#//ProjectKind/mavenJar"/>
+    </genEnums>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/languageDefinitions"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ProjectResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectKind"/>
     </genClasses>
     <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//DSAProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//Kermeta2DSAProject"/>

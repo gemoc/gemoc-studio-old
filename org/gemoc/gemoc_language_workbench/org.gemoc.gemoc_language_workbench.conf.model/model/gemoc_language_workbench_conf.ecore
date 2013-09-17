@@ -8,6 +8,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectResource" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectKind" lowerBound="1"
+        eType="#//ProjectKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DSAProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="Kermeta2DSAProject" eSuperTypes="#//DSAProject"/>
@@ -53,4 +55,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="locationURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XTextEditorProject" eSuperTypes="#//EditorProject"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ProjectKind">
+    <eLiterals name="eclipsePlugin"/>
+    <eLiterals name="mavenJar" value="1"/>
+  </eClassifiers>
 </ecore:EPackage>

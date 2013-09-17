@@ -4,6 +4,7 @@ package org.gemoc.gemoc_language_workbench.conf.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -25,6 +26,7 @@ import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.MoCProject;
 import org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject;
 import org.gemoc.gemoc_language_workbench.conf.ODProject;
+import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
 import org.gemoc.gemoc_language_workbench.conf.ProjectResource;
 import org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
@@ -180,6 +182,13 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	private EClass xTextEditorProjectEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum projectKindEEnum = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -274,6 +283,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 */
 	public EAttribute getProjectResource_ProjectName() {
 		return (EAttribute)projectResourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectResource_ProjectKind() {
+		return (EAttribute)projectResourceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -542,6 +560,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getProjectKind() {
+		return projectKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public confFactory getconfFactory() {
 		return (confFactory)getEFactoryInstance();
 	}
@@ -570,6 +597,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		projectResourceEClass = createEClass(PROJECT_RESOURCE);
 		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_NAME);
+		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_KIND);
 
 		dsaProjectEClass = createEClass(DSA_PROJECT);
 
@@ -617,6 +645,9 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		createEAttribute(fileResourceEClass, FILE_RESOURCE__LOCATION_URI);
 
 		xTextEditorProjectEClass = createEClass(XTEXT_EDITOR_PROJECT);
+
+		// Create enums
+		projectKindEEnum = createEEnum(PROJECT_KIND);
 	}
 
 	/**
@@ -670,6 +701,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		initEClass(projectResourceEClass, ProjectResource.class, "ProjectResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProjectResource_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectResource_ProjectKind(), this.getProjectKind(), "projectKind", null, 1, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dsaProjectEClass, DSAProject.class, "DSAProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -717,6 +749,11 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEAttribute(getFileResource_LocationURI(), ecorePackage.getEString(), "locationURI", null, 0, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xTextEditorProjectEClass, XTextEditorProject.class, "XTextEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(projectKindEEnum, ProjectKind.class, "ProjectKind");
+		addEEnumLiteral(projectKindEEnum, ProjectKind.ECLIPSE_PLUGIN);
+		addEEnumLiteral(projectKindEEnum, ProjectKind.MAVEN_JAR);
 
 		// Create resource
 		createResource(eNS_URI);

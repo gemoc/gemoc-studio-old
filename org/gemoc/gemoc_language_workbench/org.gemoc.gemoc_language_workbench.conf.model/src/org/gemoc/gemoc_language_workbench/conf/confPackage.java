@@ -4,6 +4,7 @@ package org.gemoc.gemoc_language_workbench.conf;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -103,13 +104,22 @@ public interface confPackage extends EPackage {
 	int PROJECT_RESOURCE__PROJECT_NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_RESOURCE__PROJECT_KIND = 1;
+
+	/**
 	 * The number of structural features of the '<em>Project Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_RESOURCE_FEATURE_COUNT = 1;
+	int PROJECT_RESOURCE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DSAProjectImpl <em>DSA Project</em>}' class.
@@ -129,6 +139,15 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int DSA_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DSA_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
 
 	/**
 	 * The number of structural features of the '<em>DSA Project</em>' class.
@@ -157,6 +176,15 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int KERMETA2_DSA_PROJECT__PROJECT_NAME = DSA_PROJECT__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KERMETA2_DSA_PROJECT__PROJECT_KIND = DSA_PROJECT__PROJECT_KIND;
 
 	/**
 	 * The number of structural features of the '<em>Kermeta2 DSA Project</em>' class.
@@ -269,6 +297,15 @@ public interface confPackage extends EPackage {
 	int EDITOR_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITOR_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
+
+	/**
 	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -306,6 +343,15 @@ public interface confPackage extends EPackage {
 	int DOMAIN_MODEL_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_MODEL_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
+
+	/**
 	 * The number of structural features of the '<em>Domain Model Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -332,6 +378,15 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int MO_CPROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MO_CPROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
 
 	/**
 	 * The number of structural features of the '<em>Mo CProject</em>' class.
@@ -362,6 +417,15 @@ public interface confPackage extends EPackage {
 	int CCSL_MO_CPROJECT__PROJECT_NAME = MO_CPROJECT__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CCSL_MO_CPROJECT__PROJECT_KIND = MO_CPROJECT__PROJECT_KIND;
+
+	/**
 	 * The number of structural features of the '<em>CCSL Mo CProject</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -390,6 +454,15 @@ public interface confPackage extends EPackage {
 	int ANIMATOR_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANIMATOR_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
+
+	/**
 	 * The number of structural features of the '<em>Animator Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -416,6 +489,15 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int EMF_ECORE_PROJECT__PROJECT_NAME = DOMAIN_MODEL_PROJECT__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_ECORE_PROJECT__PROJECT_KIND = DOMAIN_MODEL_PROJECT__PROJECT_KIND;
 
 	/**
 	 * The feature id for the '<em><b>Emf Genmodel</b></em>' containment reference.
@@ -455,6 +537,15 @@ public interface confPackage extends EPackage {
 	int OD_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OD_PROJECT__PROJECT_KIND = EDITOR_PROJECT__PROJECT_KIND;
+
+	/**
 	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -490,6 +581,15 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIRIUS_ANIMATOR_PROJECT__PROJECT_NAME = ANIMATOR_PROJECT__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIRIUS_ANIMATOR_PROJECT__PROJECT_KIND = ANIMATOR_PROJECT__PROJECT_KIND;
 
 	/**
 	 * The feature id for the '<em><b>OD Project</b></em>' reference.
@@ -529,6 +629,15 @@ public interface confPackage extends EPackage {
 	int MOD_HEL_XMO_CPROJECT__PROJECT_NAME = MO_CPROJECT__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD_HEL_XMO_CPROJECT__PROJECT_KIND = MO_CPROJECT__PROJECT_KIND;
+
+	/**
 	 * The number of structural features of the '<em>Mod Hel XMo CProject</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -555,6 +664,15 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int DSE_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DSE_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
 
 	/**
 	 * The number of structural features of the '<em>DSE Project</em>' class.
@@ -585,6 +703,15 @@ public interface confPackage extends EPackage {
 	int ECL_PROJECT__PROJECT_NAME = DSE_PROJECT__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_PROJECT__PROJECT_KIND = DSE_PROJECT__PROJECT_KIND;
+
+	/**
 	 * The number of structural features of the '<em>ECL Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -611,6 +738,15 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int TREE_EDITOR_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_EDITOR_PROJECT__PROJECT_KIND = EDITOR_PROJECT__PROJECT_KIND;
 
 	/**
 	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
@@ -706,6 +842,15 @@ public interface confPackage extends EPackage {
 	int XTEXT_EDITOR_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XTEXT_EDITOR_PROJECT__PROJECT_KIND = EDITOR_PROJECT__PROJECT_KIND;
+
+	/**
 	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -722,6 +867,17 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int XTEXT_EDITOR_PROJECT_FEATURE_COUNT = EDITOR_PROJECT_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.gemoc_language_workbench.conf.ProjectKind
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getProjectKind()
+	 * @generated
+	 */
+	int PROJECT_KIND = 20;
 
 
 	/**
@@ -765,6 +921,17 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProjectResource_ProjectName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.ProjectResource#getProjectKind <em>Project Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Project Kind</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.ProjectResource#getProjectKind()
+	 * @see #getProjectResource()
+	 * @generated
+	 */
+	EAttribute getProjectResource_ProjectKind();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.DSAProject <em>DSA Project</em>}'.
@@ -1068,6 +1235,16 @@ public interface confPackage extends EPackage {
 	EClass getXTextEditorProject();
 
 	/**
+	 * Returns the meta object for enum '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Project Kind</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.ProjectKind
+	 * @generated
+	 */
+	EEnum getProjectKind();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1124,6 +1301,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROJECT_RESOURCE__PROJECT_NAME = eINSTANCE.getProjectResource_ProjectName();
+
+		/**
+		 * The meta object literal for the '<em><b>Project Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_RESOURCE__PROJECT_KIND = eINSTANCE.getProjectResource_ProjectKind();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DSAProjectImpl <em>DSA Project</em>}' class.
@@ -1392,6 +1577,16 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass XTEXT_EDITOR_PROJECT = eINSTANCE.getXTextEditorProject();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.gemoc_language_workbench.conf.ProjectKind
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getProjectKind()
+		 * @generated
+		 */
+		EEnum PROJECT_KIND = eINSTANCE.getProjectKind();
 
 	}
 
