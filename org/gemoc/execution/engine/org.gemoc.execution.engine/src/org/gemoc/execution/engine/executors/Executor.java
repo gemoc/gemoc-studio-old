@@ -1,7 +1,6 @@
 package org.gemoc.execution.engine.executors;
 
-import java.lang.reflect.Method;
-
+import org.eclipse.emf.ecore.EObject;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;

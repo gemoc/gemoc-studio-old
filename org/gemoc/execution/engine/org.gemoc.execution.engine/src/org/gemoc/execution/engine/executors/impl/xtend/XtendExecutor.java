@@ -6,7 +6,6 @@ package org.gemoc.execution.engine.executors.impl.xtend;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import org.eclipse.emf.ecore.EObject;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
@@ -30,18 +29,15 @@ public class XtendExecutor implements Executor {
     public FeedbackData execute(DomainSpecificAction dsa) {
         Activator.getMessagingSystem().debug("Executing action : " + dsa.toString(), Activator.PLUGIN_ID);
 
-        String methodFullName = dsa.getMethodFullName();
-        EObject eo = dsa.getTarget();
+        String methodFullName = null;
+        Object o = null;
 
         try {
             Method method = null;
-
-            // 
-            // Here fill in K3 specific methodology to retrieve a method from
-            // its name.
+            
             //
             
-            FeedbackData feedback = DataConverter.convertToFeedbackData(method.invoke(eo));
+            FeedbackData feedback = DataConverter.convertToFeedbackData(method.invoke(o));
             this.lastExecutedAction = dsa;
             return feedback;
         } catch (IllegalArgumentException e) {

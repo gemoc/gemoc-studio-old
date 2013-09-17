@@ -3,8 +3,6 @@
  */
 package org.gemoc.execution.engine.actions;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * DomainSpecificAction is what a DomainSpecificEvent references. Its
  * implementation should contain information so as to call a real method (like
@@ -14,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * 
  */
 public interface DomainSpecificAction {
-    public String getMethodFullName();
+    public String getMethodQualifiedName();
 
-    public EObject getTarget();
+    public String getTargetQualifiedName();
 }

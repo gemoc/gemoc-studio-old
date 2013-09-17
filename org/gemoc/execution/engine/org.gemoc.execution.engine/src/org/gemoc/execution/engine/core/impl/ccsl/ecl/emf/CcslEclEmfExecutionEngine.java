@@ -15,7 +15,7 @@ public class CcslEclEmfExecutionEngine extends CcslEclBasicExecutionEngine {
     public CcslEclEmfExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath,
             String modelPath, String MMpath) {
         super(ccslFilePath, jarDsaFolderPath, jarDependenciesFolderPath, modelPath, MMpath);
-        this.executor = new EmfExecutor();
+        this.executor = new EmfExecutor(this.modelRoot);
     }
 
 }

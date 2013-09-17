@@ -2,15 +2,16 @@ package org.gemoc.execution.engine.executors.impl.emf;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.Executor;
 import org.gemoc.execution.engine.executors.impl.DataConverter;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
-import org.gemoc.execution.engine.feedback.data.impl.easy.ObjectFeedbackData;
 
 /**
  * An executor that can call methods contained in compiled EMF code (like
@@ -19,19 +20,97 @@ import org.gemoc.execution.engine.feedback.data.impl.easy.ObjectFeedbackData;
  * @author flatombe
  */
 public class EmfExecutor implements Executor {
-    
-    private DomainSpecificAction lastExecutedAction;
 
-    public EmfExecutor() {
-        lastExecutedAction = null;
+    private DomainSpecificAction lastExecutedAction;
+    private EObject modelRoot;
+
+    public EmfExecutor(EObject modelRoot) {
+        this.lastExecutedAction = null;
+        this.modelRoot = modelRoot;
     }
 
-    public FeedbackData execute(EObject eo, String methodFullName) {
-        Activator.getMessagingSystem().info("Executing method " + methodFullName + " on eobject " + eo.toString(),
-                Activator.PLUGIN_ID);
+    public FeedbackData execute(EObject eObject, EOperation operation) {
+        Activator.getMessagingSystem().info(
+                "Executing EOperation of name " + operation.getName() + " on eobject " + eObject.toString()
+                        + " or on one of its heirs if the method is not implemented in EMF.", Activator.PLUGIN_ID);
+        EObject richEObject = null;
+        FeedbackData res = null;
+        Object invokeResult = null;
+
         try {
-            Method method = this.getMethod(eo, methodFullName);
-            return DataConverter.convertToFeedbackData(method.invoke(eo));
+            Activator.getMessagingSystem()
+                    .debug("Trying to einvoke the EOperation (" + operation.toString() + ") on the EObject (" + eObject.toString() + ")", Activator.PLUGIN_ID);
+            invokeResult = eObject.eInvoke(operation, null);
+            
+
+        } catch (InvocationTargetException e) {
+            Activator.getMessagingSystem().debug("Caught an InvocationTargetException", Activator.PLUGIN_ID);
+            if (e.getCause() instanceof UnsupportedOperationException) {
+                Activator
+                        .getMessagingSystem()
+                        .debug("Cause of the InvocationTargetException is an UnsupportedOperationException, let's find the richEObject",
+                                Activator.PLUGIN_ID);
+                String linkedElementQualifiedName = this.getQualifiedName(eObject);
+                Iterator<EObject> modelIterator = this.modelRoot.eAllContents();
+                while (modelIterator.hasNext()) {
+                    EObject modelElement = modelIterator.next();
+                    String modelElementQualifiedName = this.getQualifiedName(modelElement);
+                    if (modelElementQualifiedName.equals(linkedElementQualifiedName)) {
+                        richEObject = modelElement;
+                        break;
+                    }
+                }
+                try {
+                    invokeResult = richEObject.eInvoke(operation, null);
+                } catch (InvocationTargetException f) {
+                    Activator
+                            .getMessagingSystem()
+                            .debug("Caught an InvocationTargetException while trying to call the EOperation on the richEObject. Please fix your DSA implementation. The cause exception stacktrace is available in the error log view.",
+                                    Activator.PLUGIN_ID);
+                    Activator.error("Nested exception thrown by the DSA implementation", f.getCause());
+                }
+            } else {
+                Activator
+                        .getMessagingSystem()
+                        .debug("Caught an InvocationTargetException while trying to call the EOperation on the EObject. Please fix your DSA implementation. The cause exception stacktrace is available in the error log view.",
+                                Activator.PLUGIN_ID);
+                Activator.error("Nested exception thrown by the DSA implementation", e.getCause());
+            }
+        }
+        Activator
+        .getMessagingSystem()
+        .debug("Result of the invokation: " + invokeResult.toString(),
+                Activator.PLUGIN_ID);
+        res = DataConverter.convertToFeedbackData(invokeResult);
+        return res;
+        
+        
+        
+        
+        
+        /*try {
+            realObject = this.getMethod(eObject, operation);
+            Method method = realObject.getClass().getMethod(operation);
+            Activator.getMessagingSystem().debug("The real object which we will use: " + realObject.toString(),
+                    Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug("The method is the following: " + method.toString(),
+                    Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug("-Declaring Class: " + method.getDeclaringClass().toString(),
+                    Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug("-Class: " + method.getClass().toString(), Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug("-Return type: " + method.getReturnType().toString(),
+                    Activator.PLUGIN_ID);
+            return DataConverter.convertToFeedbackData(method.invoke(realObject));
+        } catch (SecurityException e) {
+            String errorMessage = "SecurityException when trying to invoke a Domain Specific Action";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
+        } catch (NoSuchMethodException e) {
+            String errorMessage = "NoSuchMethodException when trying to invoke a Domain Specific Action";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
         } catch (IllegalAccessException e) {
             String errorMessage = "IllegalAccessException when trying to invoke a Domain Specific Action";
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
@@ -46,12 +125,21 @@ public class EmfExecutor implements Executor {
             try {
                 Activator.getMessagingSystem().debug("InvocationTargetException : " + e.getCause().getMessage(),
                         Activator.PLUGIN_ID);
-                Activator.error("InvocationTargetException on " + methodFullName, e.getCause());
+                Activator.error("InvocationTargetException on " + operation, e.getCause());
                 Activator.getMessagingSystem().debug(
-                        "Could not find method " + methodFullName + " so let's try with the EMF hack!",
+                        "Could not find method " + operation + " so let's try with the EMF hack!", Activator.PLUGIN_ID);
+                Method method = this.getMethodEmfHack(realObject, operation);
+                Activator.getMessagingSystem().debug(
+                        "EMFHACK::The real object which we will use: " + realObject.toString(), Activator.PLUGIN_ID);
+                Activator.getMessagingSystem().debug("EMFHACK::The method is the following: " + method.toString(),
                         Activator.PLUGIN_ID);
-                Method method = this.getMethodEmfHack(eo, methodFullName);
-                return (FeedbackData) method.invoke(eo);
+                Activator.getMessagingSystem().debug(
+                        "EMFHACK::-Declaring Class: " + method.getDeclaringClass().toString(), Activator.PLUGIN_ID);
+                Activator.getMessagingSystem().debug("EMFHACK::-Class: " + method.getClass().toString(),
+                        Activator.PLUGIN_ID);
+                Activator.getMessagingSystem().debug("EMFHACK::-Return type: " + method.getReturnType().toString(),
+                        Activator.PLUGIN_ID);
+                return (FeedbackData) method.invoke(realObject);
             } catch (IllegalArgumentException e1) {
                 String errorMessage = "IllegalArgumentException when trying to invoke a Domain Specific Action";
                 Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
@@ -68,51 +156,172 @@ public class EmfExecutor implements Executor {
                 Activator.error(errorMessage, e1);
                 return null;
             }
-        }
+        }*/
     }
-
-
 
     @Override
     public FeedbackData execute(DomainSpecificAction dsa) {
-
         Activator.getMessagingSystem().debug(
-                "Executing Domain Specific Action : " + dsa.getTarget().getClass().getName() + "."
-                        + dsa.getMethodFullName(), Activator.PLUGIN_ID);
-        FeedbackData feedback = this.execute(dsa.getTarget(), dsa.getMethodFullName());
+                "Executing Domain Specific Action : " + dsa.toString(), Activator.PLUGIN_ID);
+        
+        Activator.getMessagingSystem().debug(
+                "Gonna try to retrieve EObject of name: " + dsa.getTargetQualifiedName(), Activator.PLUGIN_ID);
+        EObject eObject = getEObjectFromName(dsa.getTargetQualifiedName());
+        Activator.getMessagingSystem().debug(
+                "EObject found: " + eObject.toString(), Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug(
+                "Gonna try to retrieve EOperation of name: " + dsa.getMethodQualifiedName(), Activator.PLUGIN_ID);
+        EOperation eOperation = getEOperationFromName(eObject, dsa.getMethodQualifiedName());
+        Activator.getMessagingSystem().debug(
+                "EOperation found: " + eOperation.toString(), Activator.PLUGIN_ID);
+        FeedbackData feedback = this.execute(eObject, eOperation);
+        
         this.lastExecutedAction = dsa;
         return feedback;
     }
-
-    private Method getMethod(EObject eo, String methodFullName) {
-        Method method = null;
-        try {
-            method = eo.getClass().getMethod(methodFullName);
-        } catch (NoSuchMethodException e) {
-            String errorMessage = "NoSuchMethodException when trying to retrieve method from its full name : "
-                    + eo.toString() + "." + methodFullName;
-            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-            Activator.error(errorMessage, e);
-        } catch (SecurityException e) {
-            String errorMessage = "SecurityException when trying to retrieve method from its full name" + eo.toString()
-                    + "." + methodFullName;
-            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-            Activator.error(errorMessage, e);
+    
+    private EObject getEObjectFromName(String name){
+        Iterator<EObject> modelIterator = this.modelRoot.eAllContents();
+        while (modelIterator.hasNext()) {
+            EObject modelElement = modelIterator.next();
+            String modelElementQualifiedName = this.getQualifiedName(modelElement);
+            if (modelElementQualifiedName.equals(name)) {
+                return modelElement;
+            }
         }
-        return method;
+        Activator.getMessagingSystem().warn(
+                "Returning Null in getEObjectFromName for name: " + name, Activator.PLUGIN_ID);
+        return null;
+    }
+    
+    private EOperation getEOperationFromName(EObject eObject, String name){
+        for(EOperation eOperation : eObject.eClass().getEAllOperations()) {
+            String modelElementQualifiedName = this.getQualifiedName(eOperation);
+            Activator.getMessagingSystem().debug(
+                    "modelElementQualifiedName: " + modelElementQualifiedName, Activator.PLUGIN_ID);
+            String modelElementEMFHackedQualifiedName = this.getEmfHackQualifiedNameFromQualifiedName(modelElementQualifiedName);
+            Activator.getMessagingSystem().debug(
+                    "modelElementEMFHackedQualifiedName: " + modelElementEMFHackedQualifiedName, Activator.PLUGIN_ID);
+            if (modelElementQualifiedName.equals(name) | modelElementEMFHackedQualifiedName.equals(name)) {
+                return eOperation;
+            }
+        }
+        
+        Activator.getMessagingSystem().warn(
+                "Returning Null in getEOperationFromName for name: " + name, Activator.PLUGIN_ID);
+        return null;
+    }
+    
+    private String getEmfHackQualifiedNameFromQualifiedName(String qualifiedName){
+        String[] splits = qualifiedName.split("::");
+        splits[splits.length-1] = "EMFRENAME" + splits[splits.length-1];
+        String res = splits[0];
+        for(int i = 1; i<splits.length; i++){
+            res += "::" + splits[i];
+        }
+        return res;
     }
 
-    public Method getMethodEmfHack(EObject eo, String methodFullName) {
-        return this.getMethod(eo, "EMFRENAME" + methodFullName);
+    /*private EObject getMethod(Object object, String methodFullName) {
+        try {
+            String linkedElementQualifiedName = this.getQualifiedName(object);
+            Iterator<EObject> modelIterator = this.modelRoot.eAllContents();
+            while (modelIterator.hasNext()) {
+                EObject modelElement = modelIterator.next();
+                String modelElementQualifiedName = this.getQualifiedName(modelElement);
+                if (modelElementQualifiedName.equals(linkedElementQualifiedName)) {
+                    return modelElement;
+                }
+            }
+            // method = eo.getClass().getMethod(methodFullName);
+            return null;
+        } catch (SecurityException e) {
+            String errorMessage = "SecurityException when trying to retrieve method from its full name"
+                    + object.toString() + "." + methodFullName;
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
+        }
+    }*/
+
+    private String getQualifiedName(EObject eo) {
+        String res = getSimpleName(eo);
+        EObject tmp = eo.eContainer();
+        while (tmp != null) {
+            res = getSimpleName(tmp) + "::" + res;
+            tmp = tmp.eContainer();
+        }
+        return res;
     }
+
+    private String getSimpleName(EObject eo) {
+        return this.invokeGetNameOnEObject(eo);
+    }
+
+    private String invokeGetNameOnEObject(EObject eObjectMethod) {
+        Method method;
+        try {
+            method = eObjectMethod.getClass().getMethod("getName");
+            Object res = method.invoke(eObjectMethod);
+            if (res instanceof String) {
+                return (String) res;
+            } else {
+                return null;
+            }
+        } catch (SecurityException e) {
+            String errorMessage = "SecurityException when trying to get the qualified name of an object";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
+        } catch (IllegalArgumentException e) {
+            String errorMessage = "IllegalArgumentException when trying to get the qualified name of an object";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
+        } catch (NoSuchMethodException e) {
+            String errorMessage = "NoSuchMethodException when trying to get the qualified name of an object";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
+        } catch (IllegalAccessException e) {
+            String errorMessage = "IllegalAccessException when trying to get the qualified name of an object";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
+        } catch (InvocationTargetException e) {
+            String errorMessage = "InvocationTargetException when trying to get the qualified name of an object";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
+        }
+    }
+
+    /*public Method getMethodEmfHack(EObject eo, String methodFullName) {
+        try {
+            return this.getMethod(eo, "EMFRENAME" + methodFullName).getClass().getMethod(methodFullName);
+        } catch (SecurityException e) {
+            String errorMessage = "SecurityException when trying to use EmfHack";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
+        } catch (NoSuchMethodException e) {
+            String errorMessage = "NoSuchMethodException when trying to use EmfHack";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+            return null;
+        }
+    }*/
 
     @Override
     public FeedbackData execute(DomainSpecificEvent dse) {
+        Activator.getMessagingSystem().debug("EMFExecuting the action from DomainSpecificEvent " + dse.toString(),
+                Activator.PLUGIN_ID);
         return this.execute(dse.getAction());
     }
 
     public String toString() {
-        return this.getClass().getName() + "@[lastExecutedAction=" + lastExecutedAction.toString() + "]";
+        return this.getClass().getName() + "@[lastExecutedAction=" + lastExecutedAction.toString() + " ; modelRoot="
+                + modelRoot.toString() + "]";
     }
 
 }

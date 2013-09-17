@@ -24,15 +24,16 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.actions.impl.method.EmfAction;
 import org.gemoc.execution.engine.core.BasicExecutionEngine;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.events.impl.ecl.EclEvent;
-import org.gemoc.execution.engine.executors.impl.emf.EmfExecutor;
 import org.gemoc.execution.engine.feedback.policy.impl.easy.SimpleFeedbackPolicy;
 import org.gemoc.execution.engine.solvers.Step;
 import org.gemoc.execution.engine.solvers.impl.ccsl.CcslSolver;
@@ -54,13 +55,14 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
     private URI modelURI = null;
     private URI metamodelURI = null;
 
+    protected EObject modelRoot = null;
+
     public CcslEclBasicExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath,
             String modelPath, String MMpath) {
 
         super();
 
         this.feedbackPolicy = new SimpleFeedbackPolicy();
-        this.executor = new EmfExecutor();
 
         this.modelURI = URI.createPlatformResourceURI(modelPath, true);
         this.metamodelURI = URI.createPlatformResourceURI(MMpath, true);
@@ -105,6 +107,13 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
         Activator.getMessagingSystem().debug("Loading the model", Activator.PLUGIN_ID);
         EObject modelRoot = this.loadModel(modelLoader, this.modelURI, this.metamodelURI);
 
+        Activator.getMessagingSystem().info("Contents of the loaded model:", Activator.PLUGIN_ID);
+        for (EObject eo : modelRoot.eResource().getContents()) {
+            Activator.getMessagingSystem().info(eo.toString(), Activator.PLUGIN_ID);
+        }
+
+        this.modelRoot = modelRoot;
+
     }
 
     /**
@@ -130,22 +139,13 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
             Method loadModelMethod;
             loadModelMethod = modelLoader.getClass().getDeclaredMethod("loadModel", String.class, String.class);
 
-            Activator.getMessagingSystem().info("Méthode loadModel obtenue : " + loadModelMethod.toString(),
+            Activator.getMessagingSystem().debug("loadModel method retrieved : " + loadModelMethod.toString(),
                     Activator.PLUGIN_ID);
-            Activator.getMessagingSystem().info(modelURI.toString(), Activator.PLUGIN_ID);
-            Activator.getMessagingSystem().info(metamodelURI.toString(), Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug(modelURI.toString(), Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug(metamodelURI.toString(), Activator.PLUGIN_ID);
 
-            Object res = loadModelMethod.invoke((Object)modelLoader, modelURI.toString(), metamodelURI.toString());
-            Activator.getMessagingSystem().info("res = " + res.toString(), Activator.PLUGIN_ID);
-            Activator.getMessagingSystem().info((new Boolean(res instanceof EObject)).toString(), Activator.PLUGIN_ID);
-            Activator.getMessagingSystem().info((new Boolean(res instanceof System)).toString(), Activator.PLUGIN_ID);
-
-            modelRoot = (EObject) res;
-            Activator.getMessagingSystem().info("ModelRoot obtenu : " + modelRoot.toString(), Activator.PLUGIN_ID);
-
-            for (EObject eo : modelRoot.eResource().getContents()) {
-                Activator.getMessagingSystem().warn(eo.toString(), Activator.PLUGIN_ID);
-            }
+            modelRoot = (EObject) loadModelMethod.invoke((Object) modelLoader, modelURI.toString(),
+                    metamodelURI.toString());
         } catch (NoSuchMethodException e) {
             String errorMessage = "NoSuchMethodException while trying to load the model";
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
@@ -275,11 +275,12 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
                 if (eventOccurrence.getFState() == FiredStateKind.TICK) {
                     Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
                     if (c != null) {
-                        // is c a DSA caller --> should be replaced with mapping
-                        // manipulation
                         EList<EObject> linkedObjects = c.getTickingEvent().getReferencedObjectRefs();
                         if (linkedObjects.size() == 2) {
-                            res.add(new EclEvent(linkedObjects.get(0), linkedObjects.get(1)));
+                            if (linkedObjects.get(1) instanceof EOperation) {
+                                res.add(new EclEvent(new EmfAction(linkedObjects.get(0), (EOperation) linkedObjects
+                                        .get(1))));
+                            }
                         }
                     }
                 }

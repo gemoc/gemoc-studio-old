@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.actions.impl.method.EmfAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.solvers.Solver;
 import org.gemoc.execution.engine.solvers.Step;
@@ -32,12 +33,26 @@ public class CcslSolver implements Solver {
 
     @Override
     public void forceEventNonOccurrence(DomainSpecificEvent event) {
-        this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(event.getAction().getTarget()));
+        try {
+            EmfAction action = (EmfAction) event.getAction();
+            this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(action.getTarget()));
+        } catch (ClassCastException e) {
+            String errorMessage = "ClassCastException while trying to force an event non occurrence. You should use EmfActions.";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+        }
     }
 
     @Override
     public void forceEventOccurrence(DomainSpecificEvent event) {
-        this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(event.getAction().getTarget()));
+        try {
+            EmfAction action = (EmfAction) event.getAction();
+            this.solverWrapper.forceClockAbsence(HelperFactory.createModelElementReference(action.getTarget()));
+        } catch (ClassCastException e) {
+            String errorMessage = "ClassCastException while trying to force an event non occurrence. You should use EmfActions.";
+            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+            Activator.error(errorMessage, e);
+        }
     }
 
     @Override
