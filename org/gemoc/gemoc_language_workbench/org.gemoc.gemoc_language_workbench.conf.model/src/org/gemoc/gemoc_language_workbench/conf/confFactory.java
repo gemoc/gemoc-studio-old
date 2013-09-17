@@ -132,6 +132,15 @@ public interface confFactory extends EFactory {
 	XTextEditorProject createXTextEditorProject();
 
 	/**
+	 * Returns a new object of class '<em>K3DSA Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>K3DSA Project</em>'.
+	 * @generated
+	 */
+	K3DSAProject createK3DSAProject();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

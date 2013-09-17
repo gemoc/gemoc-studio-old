@@ -348,6 +348,29 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected K3DSAProjectItemProvider k3DSAProjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createK3DSAProjectAdapter() {
+		if (k3DSAProjectItemProvider == null) {
+			k3DSAProjectItemProvider = new K3DSAProjectItemProvider(this);
+		}
+
+		return k3DSAProjectItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -458,6 +481,7 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 		if (treeEditorProjectItemProvider != null) treeEditorProjectItemProvider.dispose();
 		if (emfGenmodelItemProvider != null) emfGenmodelItemProvider.dispose();
 		if (xTextEditorProjectItemProvider != null) xTextEditorProjectItemProvider.dispose();
+		if (k3DSAProjectItemProvider != null) k3DSAProjectItemProvider.dispose();
 	}
 
 }

@@ -211,6 +211,14 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case confPackage.K3DSA_PROJECT: {
+				K3DSAProject k3DSAProject = (K3DSAProject)theEObject;
+				T result = caseK3DSAProject(k3DSAProject);
+				if (result == null) result = caseDSAProject(k3DSAProject);
+				if (result == null) result = caseProjectResource(k3DSAProject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -512,6 +520,21 @@ public class confSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseXTextEditorProject(XTextEditorProject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>K3DSA Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>K3DSA Project</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseK3DSAProject(K3DSAProject object) {
 		return null;
 	}
 

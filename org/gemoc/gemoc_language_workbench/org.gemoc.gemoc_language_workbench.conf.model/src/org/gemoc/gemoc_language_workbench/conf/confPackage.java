@@ -870,6 +870,43 @@ public interface confPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl <em>K3DSA Project</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getK3DSAProject()
+	 * @generated
+	 */
+	int K3DSA_PROJECT = 20;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int K3DSA_PROJECT__PROJECT_NAME = DSA_PROJECT__PROJECT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int K3DSA_PROJECT__PROJECT_KIND = DSA_PROJECT__PROJECT_KIND;
+
+	/**
+	 * The number of structural features of the '<em>K3DSA Project</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int K3DSA_PROJECT_FEATURE_COUNT = DSA_PROJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -877,7 +914,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getProjectKind()
 	 * @generated
 	 */
-	int PROJECT_KIND = 20;
+	int PROJECT_KIND = 21;
 
 
 	/**
@@ -1235,6 +1272,16 @@ public interface confPackage extends EPackage {
 	EClass getXTextEditorProject();
 
 	/**
+	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject <em>K3DSA Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>K3DSA Project</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.K3DSAProject
+	 * @generated
+	 */
+	EClass getK3DSAProject();
+
+	/**
 	 * Returns the meta object for enum '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1577,6 +1624,16 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass XTEXT_EDITOR_PROJECT = eINSTANCE.getXTextEditorProject();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl <em>K3DSA Project</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getK3DSAProject()
+		 * @generated
+		 */
+		EClass K3DSA_PROJECT = eINSTANCE.getK3DSAProject();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.

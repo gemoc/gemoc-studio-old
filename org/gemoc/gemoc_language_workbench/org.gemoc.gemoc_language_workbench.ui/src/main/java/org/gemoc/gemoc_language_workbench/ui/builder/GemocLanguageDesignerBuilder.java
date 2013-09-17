@@ -26,8 +26,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.gemoc.gemoc_language_workbench.utils.pde.ManifestChanger;
@@ -240,10 +242,11 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 							DomainModelProject domainModelProject = (DomainModelProject) eObject;
 							updateDependenciesWithDomainProject(project, domainModelProject);
 						}
-						/*if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSAProject){
-							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DSA), "true");
+						if(eObject instanceof DSAProject){
+							DSAProject dsaProject = (DSAProject) eObject;
+							updateDependenciesWithDSAProject(project, dsaProject);
 						}
-						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSEProject){
+						/*if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSEProject){
 							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, Activator.GEMOC_PROJECT_PROPERTY_HAS_DSE), "true");
 						}
 						if(eObject instanceof org.gemoc.gemoc_language_workbench.conf.MoCProject){
@@ -288,15 +291,34 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			
 			mfChanger.writeManifest(manifestFile);
 		} catch (IOException e) {
-			Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+			Activator.error(e.getMessage(), e);
 		} catch (CoreException e) {
-			Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+			Activator.error(e.getMessage(), e);
 		} catch (BundleException e) {
-			Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
-		}	
+			Activator.error(e.getMessage(), e);
+		}			
+	}
+	protected void updateDependenciesWithDSAProject(IProject project, DSAProject dsaPoject){
+		IFile manifestFile = project.getFile(new Path("META-INF/MANIFEST.MF"));
 		
-		
+		try {
+			if(dsaPoject.getProjectKind().equals(ProjectKind.ECLIPSE_PLUGIN)){
+				ManifestChanger mfChanger = new ManifestChanger(manifestFile);
+				// TODO find a way to remove possible old domain model dependencies
+				mfChanger.addPluginDependency(dsaPoject.getProjectName(), "0.0.0", true, true);
 				
+				mfChanger.writeManifest(manifestFile);
+			}
+			else{
+				// TODO deal with maven project (ie. ensure copy of the jar and use it as internal lib in  manifest) 
+			}
+		} catch (IOException e) {
+			Activator.error(e.getMessage(), e);
+		} catch (CoreException e) {
+			Activator.error(e.getMessage(), e);
+		} catch (BundleException e) {
+			Activator.error(e.getMessage(), e);
+		}			
 	}
 	
 	private void deleteMarkers(IFile file) {

@@ -43,13 +43,21 @@ public class CreateDSAWizardPage extends WizardPage {
 		actionSelection.setText("Select action");
 		//actionSelection.setBounds(10, 10, 193, 85);
 	    
-	    Button createDSAProject = new Button(actionSelection, SWT.RADIO);
-	    createDSAProject.setText("Create new DSA project");
-	    createDSAProject.setSelection(true);
-	    createDSAProject.addListener (SWT.Selection, new Listener () {
+	    Button createK2DSAProject = new Button(actionSelection, SWT.RADIO);
+	    createK2DSAProject.setText("Create new K2 DSA project");
+	    createK2DSAProject.setSelection(true);
+	    createK2DSAProject.addListener (SWT.Selection, new Listener () {
 			public void handleEvent (Event event) {
 				// update context and potentially add new pages ?
-				context.actionToExecute = CreateDSAAction.CREATE_NEW_DSA_PROJECT;
+				context.actionToExecute = CreateDSAAction.CREATE_NEW_K2_DSA_PROJECT;
+			}
+		});
+	    Button createK3DSAProject = new Button(actionSelection, SWT.RADIO);
+	    createK3DSAProject.setText("Create new K3 DSA project");
+	    createK3DSAProject.addListener (SWT.Selection, new Listener () {
+			public void handleEvent (Event event) {
+				// update context and potentially add new pages ?
+				context.actionToExecute = CreateDSAAction.CREATE_NEW_K3_DSA_PROJECT;
 			}
 		});
 	    Button selectExistingDSAProject = new Button(actionSelection, SWT.RADIO);

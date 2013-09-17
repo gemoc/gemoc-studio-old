@@ -69,6 +69,7 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 			case confPackage.TREE_EDITOR_PROJECT: return createTreeEditorProject();
 			case confPackage.EMF_GENMODEL: return createEMFGenmodel();
 			case confPackage.XTEXT_EDITOR_PROJECT: return createXTextEditorProject();
+			case confPackage.K3DSA_PROJECT: return createK3DSAProject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -223,6 +224,16 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	public XTextEditorProject createXTextEditorProject() {
 		XTextEditorProjectImpl xTextEditorProject = new XTextEditorProjectImpl();
 		return xTextEditorProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public K3DSAProject createK3DSAProject() {
+		K3DSAProjectImpl k3DSAProject = new K3DSAProjectImpl();
+		return k3DSAProject;
 	}
 
 	/**

@@ -1,6 +1,8 @@
 package org.gemoc.gemoc_language_workbench.ui.wizards;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.PlatformUI;
 
 public class CreateDSEWizardContextAction {
 
@@ -17,10 +19,10 @@ public class CreateDSEWizardContextAction {
 	public void execute() {
 		switch (actionToExecute) {
 		case CREATE_NEW_DSE_PROJECT:
-			createNewMOCCProject();
+			createNewDSEProject();
 			break;
 		case SELECT_EXISTING_DSE_PROJECT:
-			selectExistingMOCCProject();
+			selectExistingDSEProject();
 			break;
 
 		default:
@@ -28,13 +30,25 @@ public class CreateDSEWizardContextAction {
 		}
 	}
 
-	protected void createNewMOCCProject(){
+	protected void createNewDSEProject(){
+		MessageDialog.openWarning(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				"Gemoc Language Workbench UI",
+				"createNewDSEProject. Action not implemented yet");
 	}
 	
-	protected void selectExistingMOCCProject(){
+	protected void selectExistingDSEProject(){
+		MessageDialog.openWarning(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				"Gemoc Language Workbench UI",
+				"selectExistingDSEProject. Action not implemented yet");
 	}
 	
-	protected void addMOCCProjectToConf(String projectName){
+	protected void addDSEProjectToConf(String projectName){
+		MessageDialog.openWarning(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				"Gemoc Language Workbench UI",
+				"addDSEProjectToConf. Action not implemented yet");
 	}
 	
 

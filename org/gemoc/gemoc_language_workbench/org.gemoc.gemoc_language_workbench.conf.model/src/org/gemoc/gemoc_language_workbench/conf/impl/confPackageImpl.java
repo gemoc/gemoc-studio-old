@@ -21,6 +21,7 @@ import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.FileResource;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.MoCProject;
@@ -180,6 +181,13 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * @generated
 	 */
 	private EClass xTextEditorProjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass k3DSAProjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -560,6 +568,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getK3DSAProject() {
+		return k3DSAProjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getProjectKind() {
 		return projectKindEEnum;
 	}
@@ -646,6 +663,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		xTextEditorProjectEClass = createEClass(XTEXT_EDITOR_PROJECT);
 
+		k3DSAProjectEClass = createEClass(K3DSA_PROJECT);
+
 		// Create enums
 		projectKindEEnum = createEEnum(PROJECT_KIND);
 	}
@@ -694,6 +713,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		treeEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
 		emfGenmodelEClass.getESuperTypes().add(this.getFileResource());
 		xTextEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
+		k3DSAProjectEClass.getESuperTypes().add(this.getDSAProject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(gemocLanguageWorkbenchConfigurationEClass, GemocLanguageWorkbenchConfiguration.class, "GemocLanguageWorkbenchConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -749,6 +769,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEAttribute(getFileResource_LocationURI(), ecorePackage.getEString(), "locationURI", null, 0, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xTextEditorProjectEClass, XTextEditorProject.class, "XTextEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(k3DSAProjectEClass, K3DSAProject.class, "K3DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(projectKindEEnum, ProjectKind.class, "ProjectKind");

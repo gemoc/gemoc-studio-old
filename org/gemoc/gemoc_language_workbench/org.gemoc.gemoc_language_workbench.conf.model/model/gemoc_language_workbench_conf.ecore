@@ -59,4 +59,5 @@
     <eLiterals name="eclipsePlugin"/>
     <eLiterals name="mavenJar" value="1"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="K3DSAProject" eSuperTypes="#//DSAProject"/>
 </ecore:EPackage>

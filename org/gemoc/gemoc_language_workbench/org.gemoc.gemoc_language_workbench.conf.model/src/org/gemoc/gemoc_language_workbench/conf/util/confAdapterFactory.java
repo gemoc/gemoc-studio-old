@@ -148,6 +148,10 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createXTextEditorProjectAdapter();
 			}
 			@Override
+			public Adapter caseK3DSAProject(K3DSAProject object) {
+				return createK3DSAProjectAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -444,6 +448,20 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXTextEditorProjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject <em>K3DSA Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.gemoc_language_workbench.conf.K3DSAProject
+	 * @generated
+	 */
+	public Adapter createK3DSAProjectAdapter() {
 		return null;
 	}
 
