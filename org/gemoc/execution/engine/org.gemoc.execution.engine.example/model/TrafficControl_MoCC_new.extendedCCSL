@@ -6,7 +6,11 @@ ClockConstraintSystem TrafficControl {
 		import "platform:/resource/org.gemoc.execution.engine.example/model/TrafficControl.tfsm" as System ;
 	}
 	entryBlock mainBlock
-	Block mainBlock {
+	Block mainBlock {	
+		Clock minutes_ticks : clock -> evt_minutes_ticks
+		("System->minutes" , "System->minutes::ticks()")
+		
+		/*
 		Expression switchintermediate_AllTriggeringOccurrences1 = Union
 		( Clock1 -> Day_to_Day_fire,
 		Clock2 -> Night_to_Night_fire )
@@ -71,6 +75,8 @@ ClockConstraintSystem TrafficControl {
 		( OneTickAndNoMoreClock -> Semaphore0_start )
 		Expression Controlintermediate_onlyOneFirst1 = OneTickAndNoMore
 		( OneTickAndNoMoreClock -> Control_start )
+		
+		
 		Relation switchFSMEventSendReceive_occursWhenSolicitate [ FSMEventSendReceive ]
 		( ClockA -> switchintermediate_AllTriggeringOccurrences1,
 		ClockB -> switch_occurs )
@@ -239,6 +245,8 @@ ClockConstraintSystem TrafficControl {
 		Relation ControlCoincides_firstOnlyOnce [ Coincides ]
 		( Clock2 -> Control_start,
 		Clock1 -> Controlintermediate_onlyOneFirst1 )
+		
+		
 		Clock switch_occurs : clock -> evt_switch_occurs
 		( "System->switch" )
 		Clock minutes_ticks : clock -> evt_minutes_ticks
@@ -319,6 +327,6 @@ ClockConstraintSystem TrafficControl {
 		Integer Day_to_DayguardDayDayguardDelay_afterDuration : int = 4
 		Integer Red0_to_Green0guardRed0Green0_afterDuration : int = 2
 		Integer initControl_to_DayguardInitControl_afterDuration : int = 1
-		Integer initSema0_to_Red0guardInitSema0Red0_afterDuration : int = 1
+		Integer initSema0_to_Red0guardInitSema0Red0_afterDuration : int = 1 */	
 	}
 }
