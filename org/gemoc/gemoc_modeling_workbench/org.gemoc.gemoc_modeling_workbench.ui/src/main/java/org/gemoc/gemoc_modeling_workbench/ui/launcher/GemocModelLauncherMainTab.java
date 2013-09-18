@@ -2,11 +2,14 @@ package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
 import java.util.ArrayList;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -26,6 +29,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
+import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAnyIFileDialog;
+import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
 public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
@@ -79,8 +84,18 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
 	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
-		// TODO Auto-generated method stub
-
+		try {
+			this.modelLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MODEL_PATH, ""));
+			this.languageCombo.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE, ""));
+			this.metamodelLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MM_PATH, ""));
+			this.ccslLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_CCSL_FILE_PATH, ""));
+			this.jarFolderLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_JARS_FOLDER_PATH, ""));
+			this.k2MainOperationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.KM_LAUNCH_MAIN_OPERATION, ""));
+			this.k2ProjectNameText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.KM_LAUNCH_PROJECT, ""));
+			this.k2PortText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.KM_LAUNCH_PORT, ""));
+		} catch (CoreException e) {
+			Activator.error(e.getMessage(), e);
+		}
 	}
 
 	@Override
@@ -153,11 +168,13 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 			public void widgetSelected(SelectionEvent evt) {
 				//handleModelLocationButtonSelected();
 				// TODO launch the appropriate selector
-				MessageDialog.openWarning(
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-						"Browse model to execute",
-						"Action not implemented yet");
-				updateLaunchConfigurationDialog();
+				
+				SelectAnyIFileDialog dialog = new SelectAnyIFileDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+				if(dialog.open() == Dialog.OK){
+					String modelPath = ((IResource)dialog.getResult()[0]).getFullPath().toPortableString();
+					modelLocationText.setText(modelPath);
+					updateLaunchConfigurationDialog();
+				}				
 			}
 		});
 		return parent;

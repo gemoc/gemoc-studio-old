@@ -265,6 +265,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 							changePluginLanguageName(project, ld.getName());
 							updateModelLoaderClass(project,ld);
 							updateInitializerClass(project,ld);
+							updateDSAExecutorClass(project,ld);
 						}
 					}
 				}
@@ -343,7 +344,8 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
 			fileContent = fileContent.replaceAll(Pattern.quote("${language.name.toupperfirst}"), languageToUpperFirst);
 			StringBuilder sb = new StringBuilder();
-			sb.append("if(modelFileUri.endsWith(\".xmi\")){\n"+
+			sb.append("System.out.println(\"["+languageToUpperFirst+Activator.MODEL_LOADER_CLASS_NAMEPART+"] loading model from uri \"+modelFileUri);\n");
+			sb.append("			if(modelFileUri.endsWith(\".xmi\")){\n"+
 "			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;\n"+
 "		    Map<String, Object> m = reg.getExtensionToFactoryMap();\n"+
 "		    m.put(\"xmi\", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());\n"+
@@ -369,7 +371,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	}
 	
 	/**
-	 * create or replace existing ModelLoaderClass by an implementation that is able to load models of the domain 
+	 * create or replace existing InitializerClass by an implementation that is able to initialize all required components 
 	 * @param project
 	 * @param ld
 	 */
@@ -397,6 +399,39 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint, Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT,
 				packageName+"."+languageToUpperFirst+Activator.INITIALIZER_CLASS_NAMEPART);
+		helper.saveDocument(pluginfile);
+				
+	}
+	
+	/**
+	 * create or replace existing DSAExecutorClass by an implementation that is able to execute method from the concrete DSA 
+	 * @param project
+	 * @param ld
+	 */
+	protected void updateDSAExecutorClass(IProject project, LanguageDefinition ld){
+		// TODO remove possible previous classes
+		// create the java class
+		String languageToUpperFirst = ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
+		String packageName = project.getName()+".xdsml.api.impl";
+		String folderName = packageName.replaceAll("\\.", "/");
+		if(ld.getDomainModelProject()!= null){
+			String fileContent = BuilderTemplates.EXECUTOR_CLASS_TEMPLATE;
+			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
+			fileContent = fileContent.replaceAll(Pattern.quote("${language.name.toupperfirst}"), languageToUpperFirst);
+			StringBuilder sb = new StringBuilder();
+			sb.append("// TODO");
+			fileContent = fileContent.replaceAll(Pattern.quote("${execute.content}"), sb.toString());
+			IFile file = project.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME+folderName+"/"+languageToUpperFirst+Activator.EXECUTOR_CLASS_NAMEPART+".java");
+			ResourceUtil.writeFile(file, fileContent);
+		}
+		// update plugin.xml
+		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
+		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
+		PluginXMLHelper helper = new PluginXMLHelper();
+		helper.loadDocument(pluginfile);
+		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint, Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT,
+				packageName+"."+languageToUpperFirst+Activator.EXECUTOR_CLASS_NAMEPART);
 		helper.saveDocument(pluginfile);
 				
 	}

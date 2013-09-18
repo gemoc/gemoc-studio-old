@@ -3,6 +3,7 @@ package org.gemoc.gemoc_modeling_workbench.ui;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -16,6 +17,8 @@ public class Activator extends AbstractUIPlugin {
 	
 	// The shared instance
 	private static Activator plugin;
+	
+	protected EclipseMessagingSystem messaggingSystem = null;
 	
 	/**
 	 * The constructor
@@ -72,6 +75,13 @@ public class Activator extends AbstractUIPlugin {
                 Status.OK, 
                 msg, 
                 e));
+	}
+	
+	public EclipseMessagingSystem getMessaggingSystem() {
+		if(messaggingSystem ==  null){
+			messaggingSystem = new EclipseMessagingSystem(PLUGIN_ID, "Modeling workbench console");
+		}
+		return messaggingSystem;
 	}
 	
 }
