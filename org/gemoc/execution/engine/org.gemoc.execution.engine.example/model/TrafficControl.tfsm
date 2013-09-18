@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<org.gemoc.execution.engine.example:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gemoc.execution.engine.example="http://org.gemoc.execution.engine.example.tfsm" name="TrafficControl">
+<org.gemoc.execution.engine.example:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gemoc.execution.engine.example="http://org.gemoc.execution.engine.example.tfsm" name="TrafficControl2">
   <tfsms name="Control" initialState="//@tfsms.0/@ownedStates.0">
     <ownedStates name="initControl" owningTfsm="//@tfsms.0" outgoingTransitions="//@tfsms.0/@ownedTransitions.0"/>
     <ownedStates name="Day" owningTfsm="//@tfsms.0" outgoingTransitions="//@tfsms.0/@ownedTransitions.3 //@tfsms.0/@ownedTransitions.2" incomingTransitions="//@tfsms.0/@ownedTransitions.0 //@tfsms.0/@ownedTransitions.1 //@tfsms.0/@ownedTransitions.2"/>
@@ -36,6 +36,6 @@
       <ownedGuard xsi:type="org.gemoc.execution.engine.example:EventGuard" name="guardGreen0Red0" triggeringEvent="//@globalEvents.0"/>
     </ownedTransitions>
   </tfsms>
-  <globalClocks name="minutes"/>
+  <globalClocks name="minutesToto"/>
   <globalEvents name="switch" sollicitingTransitions="//@tfsms.0/@ownedTransitions.4 //@tfsms.0/@ownedTransitions.2"/>
 </org.gemoc.execution.engine.example:System>
