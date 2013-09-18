@@ -19,13 +19,8 @@ public class GemocReflectiveModelLauncher implements
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
-		// TODO Auto-generated method stub
 		
-		/*MessageDialog.openWarning(
-				new Shell(PlatformUI.getWorkbench().getDisplay()),
-				"Gemoc Modeling Workbench UI",
-				"Run Gemoc Model using MiniEngine for test, need to connect the real generic execution engine here");
-				*/
+		Activator.getDefault().getMessaggingSystem().showConsole();
 		Activator.getDefault().getMessaggingSystem().warn("Run Gemoc Model using MiniEngine for test, need to connect the real generic execution engine here","");
 		String modelPath = configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MODEL_PATH,"");
 		String languageName = configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,"");
