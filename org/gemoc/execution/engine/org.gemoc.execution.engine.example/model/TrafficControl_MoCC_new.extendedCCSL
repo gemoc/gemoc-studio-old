@@ -9,8 +9,8 @@ ClockConstraintSystem TrafficControl {
 	Block mainBlock {
 		Clock minutes_Init : clock -> evt_minutes_Init
 		("System->minutes", "System->minutes::Init()")
-		Clock minutes_ticks : clock -> evt_minutes_ticks
-		("System->minutes" , "System->minutes::ticks()")
+		//Clock minutes_ticks : clock -> evt_minutes_ticks
+		//("System->minutes" , "System->minutes::ticks()")
 		
 		/*
 		Expression switchintermediate_AllTriggeringOccurrences1 = Union
