@@ -27,7 +27,7 @@
    <splash
       location="org.gemoc.gemoc_studio.branding"
       startupProgressRect="5,275,445,15" />
-   <launcher>
+   <launcher name="GemocStudio">
       <linux icon="/images/icons/IconeGemocStudio-text/xpm/IconeGemocStudio-text.xpm"/>
       <macosx icon="/images/icons/IconeGemocStudio-text/icns/IconeGemocStudio-text.icns"/>
       <solaris/>
@@ -42,7 +42,6 @@
             winExtraLargeHigh="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_256x256x32.bmp"/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
