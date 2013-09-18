@@ -6,7 +6,9 @@ ClockConstraintSystem TrafficControl {
 		import "platform:/resource/org.gemoc.execution.engine.example/model/TrafficControl.tfsm" as System ;
 	}
 	entryBlock mainBlock
-	Block mainBlock {	
+	Block mainBlock {
+		Clock minutes_Init : clock -> evt_minutes_Init
+		("System->minutes", "System->minutes::Init()")
 		Clock minutes_ticks : clock -> evt_minutes_ticks
 		("System->minutes" , "System->minutes::ticks()")
 		
@@ -245,8 +247,7 @@ ClockConstraintSystem TrafficControl {
 		Relation ControlCoincides_firstOnlyOnce [ Coincides ]
 		( Clock2 -> Control_start,
 		Clock1 -> Controlintermediate_onlyOneFirst1 )
-		
-		
+				
 		Clock switch_occurs : clock -> evt_switch_occurs
 		( "System->switch" )
 		Clock minutes_ticks : clock -> evt_minutes_ticks
