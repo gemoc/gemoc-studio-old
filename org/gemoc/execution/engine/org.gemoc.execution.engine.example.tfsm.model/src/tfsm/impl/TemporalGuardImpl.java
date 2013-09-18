@@ -28,197 +28,197 @@ import tfsm.TfsmPackage;
  * @generated
  */
 public class TemporalGuardImpl extends GuardImpl implements TemporalGuard {
-    /**
-     * The cached value of the '{@link #getOnClock() <em>On Clock</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getOnClock()
-     * @generated
-     * @ordered
-     */
-    protected TfsmClock onClock;
+	/**
+	 * The cached value of the '{@link #getOnClock() <em>On Clock</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOnClock()
+	 * @generated
+	 * @ordered
+	 */
+	protected TfsmClock onClock;
 
-    /**
-     * The default value of the '{@link #getAfterDuration() <em>After Duration</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getAfterDuration()
-     * @generated
-     * @ordered
-     */
-    protected static final int AFTER_DURATION_EDEFAULT = 0;
+	/**
+	 * The default value of the '{@link #getAfterDuration() <em>After Duration</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAfterDuration()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int AFTER_DURATION_EDEFAULT = 0;
 
-    /**
-     * The cached value of the '{@link #getAfterDuration() <em>After Duration</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getAfterDuration()
-     * @generated
-     * @ordered
-     */
-    protected int afterDuration = AFTER_DURATION_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getAfterDuration() <em>After Duration</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAfterDuration()
+	 * @generated
+	 * @ordered
+	 */
+	protected int afterDuration = AFTER_DURATION_EDEFAULT;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected TemporalGuardImpl() {
-        super();
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TemporalGuardImpl() {
+		super();
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    protected EClass eStaticClass() {
-        return TfsmPackage.Literals.TEMPORAL_GUARD;
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return TfsmPackage.Literals.TEMPORAL_GUARD;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public TfsmClock getOnClock() {
-        if (onClock != null && onClock.eIsProxy()) {
-            InternalEObject oldOnClock = (InternalEObject)onClock;
-            onClock = (TfsmClock)eResolveProxy(oldOnClock);
-            if (onClock != oldOnClock) {
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, TfsmPackage.TEMPORAL_GUARD__ON_CLOCK, oldOnClock, onClock));
-            }
-        }
-        return onClock;
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TfsmClock getOnClock() {
+		if (onClock != null && onClock.eIsProxy()) {
+			InternalEObject oldOnClock = (InternalEObject)onClock;
+			onClock = (TfsmClock)eResolveProxy(oldOnClock);
+			if (onClock != oldOnClock) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TfsmPackage.TEMPORAL_GUARD__ON_CLOCK, oldOnClock, onClock));
+			}
+		}
+		return onClock;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public TfsmClock basicGetOnClock() {
-        return onClock;
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TfsmClock basicGetOnClock() {
+		return onClock;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void setOnClock(TfsmClock newOnClock) {
-        TfsmClock oldOnClock = onClock;
-        onClock = newOnClock;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TEMPORAL_GUARD__ON_CLOCK, oldOnClock, onClock));
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOnClock(TfsmClock newOnClock) {
+		TfsmClock oldOnClock = onClock;
+		onClock = newOnClock;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TEMPORAL_GUARD__ON_CLOCK, oldOnClock, onClock));
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public int getAfterDuration() {
-        return afterDuration;
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getAfterDuration() {
+		return afterDuration;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void setAfterDuration(int newAfterDuration) {
-        int oldAfterDuration = afterDuration;
-        afterDuration = newAfterDuration;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION, oldAfterDuration, afterDuration));
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAfterDuration(int newAfterDuration) {
+		int oldAfterDuration = afterDuration;
+		afterDuration = newAfterDuration;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION, oldAfterDuration, afterDuration));
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case TfsmPackage.TEMPORAL_GUARD__ON_CLOCK:
-                if (resolve) return getOnClock();
-                return basicGetOnClock();
-            case TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION:
-                return getAfterDuration();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case TfsmPackage.TEMPORAL_GUARD__ON_CLOCK:
+				if (resolve) return getOnClock();
+				return basicGetOnClock();
+			case TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION:
+				return getAfterDuration();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case TfsmPackage.TEMPORAL_GUARD__ON_CLOCK:
-                setOnClock((TfsmClock)newValue);
-                return;
-            case TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION:
-                setAfterDuration((Integer)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case TfsmPackage.TEMPORAL_GUARD__ON_CLOCK:
+				setOnClock((TfsmClock)newValue);
+				return;
+			case TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION:
+				setAfterDuration((Integer)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public void eUnset(int featureID) {
-        switch (featureID) {
-            case TfsmPackage.TEMPORAL_GUARD__ON_CLOCK:
-                setOnClock((TfsmClock)null);
-                return;
-            case TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION:
-                setAfterDuration(AFTER_DURATION_EDEFAULT);
-                return;
-        }
-        super.eUnset(featureID);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case TfsmPackage.TEMPORAL_GUARD__ON_CLOCK:
+				setOnClock((TfsmClock)null);
+				return;
+			case TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION:
+				setAfterDuration(AFTER_DURATION_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case TfsmPackage.TEMPORAL_GUARD__ON_CLOCK:
-                return onClock != null;
-            case TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION:
-                return afterDuration != AFTER_DURATION_EDEFAULT;
-        }
-        return super.eIsSet(featureID);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case TfsmPackage.TEMPORAL_GUARD__ON_CLOCK:
+				return onClock != null;
+			case TfsmPackage.TEMPORAL_GUARD__AFTER_DURATION:
+				return afterDuration != AFTER_DURATION_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (eIsProxy()) return super.toString();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (afterDuration: ");
-        result.append(afterDuration);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (afterDuration: ");
+		result.append(afterDuration);
+		result.append(')');
+		return result.toString();
+	}
 
 } //TemporalGuardImpl

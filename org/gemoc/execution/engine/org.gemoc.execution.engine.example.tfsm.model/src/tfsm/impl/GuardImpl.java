@@ -17,23 +17,23 @@ import tfsm.TfsmPackage;
  * @generated
  */
 public abstract class GuardImpl extends NamedElementImpl implements Guard {
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected GuardImpl() {
-        super();
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GuardImpl() {
+		super();
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    protected EClass eStaticClass() {
-        return TfsmPackage.Literals.GUARD;
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return TfsmPackage.Literals.GUARD;
+	}
 
 } //GuardImpl

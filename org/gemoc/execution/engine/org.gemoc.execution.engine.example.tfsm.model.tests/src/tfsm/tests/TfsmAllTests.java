@@ -15,33 +15,33 @@ import junit.textui.TestRunner;
  */
 public class TfsmAllTests extends TestSuite {
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public static void main(String[] args) {
-        TestRunner.run(suite());
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static void main(String[] args) {
+		TestRunner.run(suite());
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public static Test suite() {
-        TestSuite suite = new TfsmAllTests("Tfsm Tests");
-        suite.addTest(TfsmTests.suite());
-        return suite;
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Test suite() {
+		TestSuite suite = new TfsmAllTests("Tfsm Tests");
+		suite.addTest(TfsmTests.suite());
+		return suite;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public TfsmAllTests(String name) {
-        super(name);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TfsmAllTests(String name) {
+		super(name);
+	}
 
 } //TfsmAllTests

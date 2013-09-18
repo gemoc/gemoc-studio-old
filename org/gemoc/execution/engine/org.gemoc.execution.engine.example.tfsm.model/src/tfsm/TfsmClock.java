@@ -14,12 +14,20 @@ package tfsm;
  * @generated
  */
 public interface TfsmClock extends NamedElement {
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @model required="true"
-     * @generated
-     */
-    String ticks();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	String ticks();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	String Init();
 
 } // TfsmClock

@@ -33,383 +33,383 @@ import tfsm.util.TfsmAdapterFactory;
  * @generated
  */
 public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
-    /**
-     * This keeps track of the root adapter factory that delegates to this adapter factory.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected ComposedAdapterFactory parentAdapterFactory;
+	/**
+	 * This keeps track of the root adapter factory that delegates to this adapter factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComposedAdapterFactory parentAdapterFactory;
 
-    /**
-     * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected IChangeNotifier changeNotifier = new ChangeNotifier();
+	/**
+	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-    /**
-     * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected Collection<Object> supportedTypes = new ArrayList<Object>();
+	/**
+	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
-    /**
-     * This constructs an instance.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public TfsmItemProviderAdapterFactory() {
-        supportedTypes.add(IEditingDomainItemProvider.class);
-        supportedTypes.add(IStructuredItemContentProvider.class);
-        supportedTypes.add(ITreeItemContentProvider.class);
-        supportedTypes.add(IItemLabelProvider.class);
-        supportedTypes.add(IItemPropertySource.class);
-    }
+	/**
+	 * This constructs an instance.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TfsmItemProviderAdapterFactory() {
+		supportedTypes.add(IEditingDomainItemProvider.class);
+		supportedTypes.add(IStructuredItemContentProvider.class);
+		supportedTypes.add(ITreeItemContentProvider.class);
+		supportedTypes.add(IItemLabelProvider.class);
+		supportedTypes.add(IItemPropertySource.class);
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.Tfsm} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected TfsmItemProvider tfsmItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.Tfsm} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TfsmItemProvider tfsmItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.Tfsm}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createTfsmAdapter() {
-        if (tfsmItemProvider == null) {
-            tfsmItemProvider = new TfsmItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.Tfsm}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTfsmAdapter() {
+		if (tfsmItemProvider == null) {
+			tfsmItemProvider = new TfsmItemProvider(this);
+		}
 
-        return tfsmItemProvider;
-    }
+		return tfsmItemProvider;
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.State} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected StateItemProvider stateItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.State} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StateItemProvider stateItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.State}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createStateAdapter() {
-        if (stateItemProvider == null) {
-            stateItemProvider = new StateItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.State}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStateAdapter() {
+		if (stateItemProvider == null) {
+			stateItemProvider = new StateItemProvider(this);
+		}
 
-        return stateItemProvider;
-    }
+		return stateItemProvider;
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.Transition} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected TransitionItemProvider transitionItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.Transition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransitionItemProvider transitionItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.Transition}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createTransitionAdapter() {
-        if (transitionItemProvider == null) {
-            transitionItemProvider = new TransitionItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.Transition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTransitionAdapter() {
+		if (transitionItemProvider == null) {
+			transitionItemProvider = new TransitionItemProvider(this);
+		}
 
-        return transitionItemProvider;
-    }
+		return transitionItemProvider;
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.NamedElement} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected NamedElementItemProvider namedElementItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.NamedElement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NamedElementItemProvider namedElementItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.NamedElement}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createNamedElementAdapter() {
-        if (namedElementItemProvider == null) {
-            namedElementItemProvider = new NamedElementItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.NamedElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNamedElementAdapter() {
+		if (namedElementItemProvider == null) {
+			namedElementItemProvider = new NamedElementItemProvider(this);
+		}
 
-        return namedElementItemProvider;
-    }
+		return namedElementItemProvider;
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.TemporalGuard} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected TemporalGuardItemProvider temporalGuardItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.TemporalGuard} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TemporalGuardItemProvider temporalGuardItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.TemporalGuard}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createTemporalGuardAdapter() {
-        if (temporalGuardItemProvider == null) {
-            temporalGuardItemProvider = new TemporalGuardItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.TemporalGuard}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTemporalGuardAdapter() {
+		if (temporalGuardItemProvider == null) {
+			temporalGuardItemProvider = new TemporalGuardItemProvider(this);
+		}
 
-        return temporalGuardItemProvider;
-    }
+		return temporalGuardItemProvider;
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.EventGuard} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected EventGuardItemProvider eventGuardItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.EventGuard} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EventGuardItemProvider eventGuardItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.EventGuard}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createEventGuardAdapter() {
-        if (eventGuardItemProvider == null) {
-            eventGuardItemProvider = new EventGuardItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.EventGuard}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEventGuardAdapter() {
+		if (eventGuardItemProvider == null) {
+			eventGuardItemProvider = new EventGuardItemProvider(this);
+		}
 
-        return eventGuardItemProvider;
-    }
+		return eventGuardItemProvider;
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.TfsmEvent} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected TfsmEventItemProvider tfsmEventItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.TfsmEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TfsmEventItemProvider tfsmEventItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.TfsmEvent}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createTfsmEventAdapter() {
-        if (tfsmEventItemProvider == null) {
-            tfsmEventItemProvider = new TfsmEventItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.TfsmEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTfsmEventAdapter() {
+		if (tfsmEventItemProvider == null) {
+			tfsmEventItemProvider = new TfsmEventItemProvider(this);
+		}
 
-        return tfsmEventItemProvider;
-    }
+		return tfsmEventItemProvider;
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.TfsmClock} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected TfsmClockItemProvider tfsmClockItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.TfsmClock} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TfsmClockItemProvider tfsmClockItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.TfsmClock}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createTfsmClockAdapter() {
-        if (tfsmClockItemProvider == null) {
-            tfsmClockItemProvider = new TfsmClockItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.TfsmClock}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTfsmClockAdapter() {
+		if (tfsmClockItemProvider == null) {
+			tfsmClockItemProvider = new TfsmClockItemProvider(this);
+		}
 
-        return tfsmClockItemProvider;
-    }
+		return tfsmClockItemProvider;
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.System} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected SystemItemProvider systemItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.System} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SystemItemProvider systemItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.System}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createSystemAdapter() {
-        if (systemItemProvider == null) {
-            systemItemProvider = new SystemItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.System}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSystemAdapter() {
+		if (systemItemProvider == null) {
+			systemItemProvider = new SystemItemProvider(this);
+		}
 
-        return systemItemProvider;
-    }
+		return systemItemProvider;
+	}
 
-    /**
-     * This keeps track of the one adapter used for all {@link tfsm.EvaluateGuard} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected EvaluateGuardItemProvider evaluateGuardItemProvider;
+	/**
+	 * This keeps track of the one adapter used for all {@link tfsm.EvaluateGuard} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EvaluateGuardItemProvider evaluateGuardItemProvider;
 
-    /**
-     * This creates an adapter for a {@link tfsm.EvaluateGuard}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createEvaluateGuardAdapter() {
-        if (evaluateGuardItemProvider == null) {
-            evaluateGuardItemProvider = new EvaluateGuardItemProvider(this);
-        }
+	/**
+	 * This creates an adapter for a {@link tfsm.EvaluateGuard}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEvaluateGuardAdapter() {
+		if (evaluateGuardItemProvider == null) {
+			evaluateGuardItemProvider = new EvaluateGuardItemProvider(this);
+		}
 
-        return evaluateGuardItemProvider;
-    }
+		return evaluateGuardItemProvider;
+	}
 
-    /**
-     * This returns the root adapter factory that contains this factory.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public ComposeableAdapterFactory getRootAdapterFactory() {
-        return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-    }
+	/**
+	 * This returns the root adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComposeableAdapterFactory getRootAdapterFactory() {
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+	}
 
-    /**
-     * This sets the composed adapter factory that contains this factory.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-        this.parentAdapterFactory = parentAdapterFactory;
-    }
+	/**
+	 * This sets the composed adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+		this.parentAdapterFactory = parentAdapterFactory;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public boolean isFactoryForType(Object type) {
-        return supportedTypes.contains(type) || super.isFactoryForType(type);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isFactoryForType(Object type) {
+		return supportedTypes.contains(type) || super.isFactoryForType(type);
+	}
 
-    /**
-     * This implementation substitutes the factory itself as the key for the adapter.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter adapt(Notifier notifier, Object type) {
-        return super.adapt(notifier, this);
-    }
+	/**
+	 * This implementation substitutes the factory itself as the key for the adapter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter adapt(Notifier notifier, Object type) {
+		return super.adapt(notifier, this);
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Object adapt(Object object, Object type) {
-        if (isFactoryForType(type)) {
-            Object adapter = super.adapt(object, type);
-            if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-                return adapter;
-            }
-        }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object adapt(Object object, Object type) {
+		if (isFactoryForType(type)) {
+			Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+				return adapter;
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    /**
-     * This adds a listener.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void addListener(INotifyChangedListener notifyChangedListener) {
-        changeNotifier.addListener(notifyChangedListener);
-    }
+	/**
+	 * This adds a listener.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void addListener(INotifyChangedListener notifyChangedListener) {
+		changeNotifier.addListener(notifyChangedListener);
+	}
 
-    /**
-     * This removes a listener.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void removeListener(INotifyChangedListener notifyChangedListener) {
-        changeNotifier.removeListener(notifyChangedListener);
-    }
+	/**
+	 * This removes a listener.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void removeListener(INotifyChangedListener notifyChangedListener) {
+		changeNotifier.removeListener(notifyChangedListener);
+	}
 
-    /**
-     * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void fireNotifyChanged(Notification notification) {
-        changeNotifier.fireNotifyChanged(notification);
+	/**
+	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void fireNotifyChanged(Notification notification) {
+		changeNotifier.fireNotifyChanged(notification);
 
-        if (parentAdapterFactory != null) {
-            parentAdapterFactory.fireNotifyChanged(notification);
-        }
-    }
+		if (parentAdapterFactory != null) {
+			parentAdapterFactory.fireNotifyChanged(notification);
+		}
+	}
 
-    /**
-     * This disposes all of the item providers created by this factory. 
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void dispose() {
-        if (tfsmItemProvider != null) tfsmItemProvider.dispose();
-        if (stateItemProvider != null) stateItemProvider.dispose();
-        if (transitionItemProvider != null) transitionItemProvider.dispose();
-        if (namedElementItemProvider != null) namedElementItemProvider.dispose();
-        if (temporalGuardItemProvider != null) temporalGuardItemProvider.dispose();
-        if (eventGuardItemProvider != null) eventGuardItemProvider.dispose();
-        if (tfsmEventItemProvider != null) tfsmEventItemProvider.dispose();
-        if (tfsmClockItemProvider != null) tfsmClockItemProvider.dispose();
-        if (systemItemProvider != null) systemItemProvider.dispose();
-        if (evaluateGuardItemProvider != null) evaluateGuardItemProvider.dispose();
-    }
+	/**
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void dispose() {
+		if (tfsmItemProvider != null) tfsmItemProvider.dispose();
+		if (stateItemProvider != null) stateItemProvider.dispose();
+		if (transitionItemProvider != null) transitionItemProvider.dispose();
+		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
+		if (temporalGuardItemProvider != null) temporalGuardItemProvider.dispose();
+		if (eventGuardItemProvider != null) eventGuardItemProvider.dispose();
+		if (tfsmEventItemProvider != null) tfsmEventItemProvider.dispose();
+		if (tfsmClockItemProvider != null) tfsmClockItemProvider.dispose();
+		if (systemItemProvider != null) systemItemProvider.dispose();
+		if (evaluateGuardItemProvider != null) evaluateGuardItemProvider.dispose();
+	}
 
 }

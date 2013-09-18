@@ -20,30 +20,30 @@ package tfsm;
  * @generated
  */
 public interface EventGuard extends Guard {
-    /**
-     * Returns the value of the '<em><b>Triggering Event</b></em>' reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Triggering Event</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * @return the value of the '<em>Triggering Event</em>' reference.
-     * @see #setTriggeringEvent(TfsmEvent)
-     * @see tfsm.TfsmPackage#getEventGuard_TriggeringEvent()
-     * @model required="true"
-     * @generated
-     */
-    TfsmEvent getTriggeringEvent();
+	/**
+	 * Returns the value of the '<em><b>Triggering Event</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Triggering Event</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Triggering Event</em>' reference.
+	 * @see #setTriggeringEvent(TfsmEvent)
+	 * @see tfsm.TfsmPackage#getEventGuard_TriggeringEvent()
+	 * @model required="true"
+	 * @generated
+	 */
+	TfsmEvent getTriggeringEvent();
 
-    /**
-     * Sets the value of the '{@link tfsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Triggering Event</em>' reference.
-     * @see #getTriggeringEvent()
-     * @generated
-     */
-    void setTriggeringEvent(TfsmEvent value);
+	/**
+	 * Sets the value of the '{@link tfsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Triggering Event</em>' reference.
+	 * @see #getTriggeringEvent()
+	 * @generated
+	 */
+	void setTriggeringEvent(TfsmEvent value);
 
 } // EventGuard

@@ -56,6 +56,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TfsmClock" eSuperTypes="#//NamedElement">
     <eOperations name="ticks" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="Init" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tfsms" upperBound="-1"

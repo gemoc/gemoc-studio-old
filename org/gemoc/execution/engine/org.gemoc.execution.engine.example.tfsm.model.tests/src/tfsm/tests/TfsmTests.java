@@ -15,36 +15,36 @@ import junit.textui.TestRunner;
  */
 public class TfsmTests extends TestSuite {
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public static void main(String[] args) {
-        TestRunner.run(suite());
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static void main(String[] args) {
+		TestRunner.run(suite());
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public static Test suite() {
-        TestSuite suite = new TfsmTests("tfsm Tests");
-        suite.addTestSuite(StateTest.class);
-        suite.addTestSuite(TransitionTest.class);
-        suite.addTestSuite(TfsmClockTest.class);
-        suite.addTestSuite(EvaluateGuardTest.class);
-        return suite;
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Test suite() {
+		TestSuite suite = new TfsmTests("tfsm Tests");
+		suite.addTestSuite(StateTest.class);
+		suite.addTestSuite(TransitionTest.class);
+		suite.addTestSuite(TfsmClockTest.class);
+		suite.addTestSuite(EvaluateGuardTest.class);
+		return suite;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public TfsmTests(String name) {
-        super(name);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TfsmTests(String name) {
+		super(name);
+	}
 
 } //TfsmTests
