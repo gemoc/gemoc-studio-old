@@ -443,7 +443,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTfsmClock__Ticks() {
+	public EOperation getTfsmClock__Tick() {
 		return tfsmClockEClass.getEOperations().get(0);
 	}
 
@@ -452,7 +452,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTfsmClock__Init() {
+	public EOperation getTfsmClock__Initialize() {
 		return tfsmClockEClass.getEOperations().get(1);
 	}
 
@@ -585,8 +585,8 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		createEReference(tfsmEventEClass, TFSM_EVENT__SOLLICITING_TRANSITIONS);
 
 		tfsmClockEClass = createEClass(TFSM_CLOCK);
-		createEOperation(tfsmClockEClass, TFSM_CLOCK___TICKS);
-		createEOperation(tfsmClockEClass, TFSM_CLOCK___INIT);
+		createEOperation(tfsmClockEClass, TFSM_CLOCK___TICK);
+		createEOperation(tfsmClockEClass, TFSM_CLOCK___INITIALIZE);
 
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__TFSMS);
@@ -680,9 +680,9 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 
 		initEClass(tfsmClockEClass, TfsmClock.class, "TfsmClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsmClock__Ticks(), ecorePackage.getEString(), "ticks", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTfsmClock__Tick(), ecorePackage.getEString(), "tick", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getTfsmClock__Init(), ecorePackage.getEString(), "Init", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTfsmClock__Initialize(), ecorePackage.getEString(), "initialize", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(systemEClass, tfsm.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_Tfsms(), this.getTfsm(), null, "tfsms", null, 0, -1, tfsm.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

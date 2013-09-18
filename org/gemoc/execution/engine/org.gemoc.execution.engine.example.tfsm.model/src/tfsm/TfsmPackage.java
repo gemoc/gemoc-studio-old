@@ -562,22 +562,22 @@ public interface TfsmPackage extends EPackage {
 	int TFSM_CLOCK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Ticks</em>' operation.
+	 * The operation id for the '<em>Tick</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_CLOCK___TICKS = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int TFSM_CLOCK___TICK = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Init</em>' operation.
+	 * The operation id for the '<em>Initialize</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_CLOCK___INIT = NAMED_ELEMENT_OPERATION_COUNT + 1;
+	int TFSM_CLOCK___INITIALIZE = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Clock</em>' class.
@@ -1027,24 +1027,24 @@ public interface TfsmPackage extends EPackage {
 	EClass getTfsmClock();
 
 	/**
-	 * Returns the meta object for the '{@link tfsm.TfsmClock#ticks() <em>Ticks</em>}' operation.
+	 * Returns the meta object for the '{@link tfsm.TfsmClock#tick() <em>Tick</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Ticks</em>' operation.
-	 * @see tfsm.TfsmClock#ticks()
+	 * @return the meta object for the '<em>Tick</em>' operation.
+	 * @see tfsm.TfsmClock#tick()
 	 * @generated
 	 */
-	EOperation getTfsmClock__Ticks();
+	EOperation getTfsmClock__Tick();
 
 	/**
-	 * Returns the meta object for the '{@link tfsm.TfsmClock#Init() <em>Init</em>}' operation.
+	 * Returns the meta object for the '{@link tfsm.TfsmClock#initialize() <em>Initialize</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Init</em>' operation.
-	 * @see tfsm.TfsmClock#Init()
+	 * @return the meta object for the '<em>Initialize</em>' operation.
+	 * @see tfsm.TfsmClock#initialize()
 	 * @generated
 	 */
-	EOperation getTfsmClock__Init();
+	EOperation getTfsmClock__Initialize();
 
 	/**
 	 * Returns the meta object for class '{@link tfsm.System <em>System</em>}'.
@@ -1402,20 +1402,20 @@ public interface TfsmPackage extends EPackage {
 		EClass TFSM_CLOCK = eINSTANCE.getTfsmClock();
 
 		/**
-		 * The meta object literal for the '<em><b>Ticks</b></em>' operation.
+		 * The meta object literal for the '<em><b>Tick</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation TFSM_CLOCK___TICKS = eINSTANCE.getTfsmClock__Ticks();
+		EOperation TFSM_CLOCK___TICK = eINSTANCE.getTfsmClock__Tick();
 
 		/**
-		 * The meta object literal for the '<em><b>Init</b></em>' operation.
+		 * The meta object literal for the '<em><b>Initialize</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation TFSM_CLOCK___INIT = eINSTANCE.getTfsmClock__Init();
+		EOperation TFSM_CLOCK___INITIALIZE = eINSTANCE.getTfsmClock__Initialize();
 
 		/**
 		 * The meta object literal for the '{@link tfsm.impl.SystemImpl <em>System</em>}' class.

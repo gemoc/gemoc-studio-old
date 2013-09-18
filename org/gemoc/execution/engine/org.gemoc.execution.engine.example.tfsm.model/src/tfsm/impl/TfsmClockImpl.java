@@ -45,7 +45,7 @@ public class TfsmClockImpl extends NamedElementImpl implements TfsmClock {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String ticks() {
+	public String tick() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -56,7 +56,7 @@ public class TfsmClockImpl extends NamedElementImpl implements TfsmClock {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String Init() {
+	public String initialize() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -70,10 +70,10 @@ public class TfsmClockImpl extends NamedElementImpl implements TfsmClock {
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case TfsmPackage.TFSM_CLOCK___TICKS:
-				return ticks();
-			case TfsmPackage.TFSM_CLOCK___INIT:
-				return Init();
+			case TfsmPackage.TFSM_CLOCK___TICK:
+				return tick();
+			case TfsmPackage.TFSM_CLOCK___INITIALIZE:
+				return initialize();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

@@ -3,6 +3,7 @@
  */
 package org.gemoc.execution.engine.core.impl.ccsl.ecl;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -10,8 +11,10 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -25,10 +28,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.EcoreUtil2;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.actions.impl.method.EmfAction;
 import org.gemoc.execution.engine.core.BasicExecutionEngine;
@@ -54,6 +59,7 @@ import fr.inria.aoste.trace.Reference;
 public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
     private URI modelURI = null;
     private URI metamodelURI = null;
+    private EPackage metamodelPackage = null;
 
     protected EObject modelRoot = null;
 
@@ -74,6 +80,7 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
             ccslResource = resourceSet.getResource(uri, true);
             ccslResource.load(null);
             EcoreUtil.resolveAll(resourceSet);
+            this.metamodelPackage = ccslResource.getContents().get(0).eClass().getEPackage();
         } catch (IOException e) {
             String errorMessage = "IOException while loading CCSL file";
             Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
@@ -110,6 +117,13 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
         Activator.getMessagingSystem().info("Contents of the loaded model:", Activator.PLUGIN_ID);
         for (EObject eo : modelRoot.eResource().getContents()) {
             Activator.getMessagingSystem().info(eo.toString(), Activator.PLUGIN_ID);
+            Iterator<EObject> it = eo.eAllContents();
+            while(it.hasNext()){
+            	EObject truc = it.next();
+            	Activator.getMessagingSystem().info(truc.toString(), Activator.PLUGIN_ID);
+            	Activator.getMessagingSystem().info(truc.eClass().toString(), Activator.PLUGIN_ID);
+            	Activator.getMessagingSystem().info(truc.eClass().getEAllOperations().toString(), Activator.PLUGIN_ID);
+            }
         }
 
         this.modelRoot = modelRoot;
@@ -141,8 +155,14 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
 
             Activator.getMessagingSystem().debug("loadModel method retrieved : " + loadModelMethod.toString(),
                     Activator.PLUGIN_ID);
-            Activator.getMessagingSystem().debug(modelURI.toString(), Activator.PLUGIN_ID);
+            File f = new File(modelURI.toPlatformString(true));
+            Activator.getMessagingSystem().debug(f.toString() + " - " + f.lastModified() + " - " + f.exists(), Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug(modelURI.toString() + " ## " + new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(f.lastModified()), Activator.PLUGIN_ID);
             Activator.getMessagingSystem().debug(metamodelURI.toString(), Activator.PLUGIN_ID);
+            
+            Activator.getMessagingSystem().debug(new File(URI.createPlatformResourceURI(("platform:/resource/org.gemoc.execution.engine.example"),true).toPlatformString(true)).exists() + "", Activator.PLUGIN_ID);
+            Activator.getMessagingSystem().debug(Arrays.asList(ResourcesPlugin.getWorkspace().getRoot().getProjects()).toString(), Activator.PLUGIN_ID);
+            
 
             modelRoot = (EObject) loadModelMethod.invoke((Object) modelLoader, modelURI.toString(),
                     metamodelURI.toString());
@@ -277,9 +297,14 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
                     if (c != null) {
                         EList<EObject> linkedObjects = c.getTickingEvent().getReferencedObjectRefs();
                         if (linkedObjects.size() == 2) {
-                            if (linkedObjects.get(1) instanceof EOperation) {
-                                res.add(new EclEvent(new EmfAction(linkedObjects.get(0), (EOperation) linkedObjects
-                                        .get(1))));
+                        	Activator.getMessagingSystem().debug("Linked objects are : \n\t" + linkedObjects.get(0).toString() + "\n\t && " + linkedObjects.get(1).toString(), Activator.PLUGIN_ID);
+                        	EObject linkedOperation = linkedObjects.get(1);
+                        	if(linkedOperation.eIsProxy()){
+                    			linkedOperation = EcoreUtil2.resolve(linkedOperation, this.metamodelPackage.eResource());
+                    		}
+                        	Activator.getMessagingSystem().debug("Is the second object an EOperation ?: " + (linkedOperation instanceof EOperation), Activator.PLUGIN_ID);
+                            if (linkedOperation instanceof EOperation) {
+                                res.add(new EclEvent(new EmfAction(linkedObjects.get(0), (EOperation) linkedOperation)));
                             }
                         }
                     }

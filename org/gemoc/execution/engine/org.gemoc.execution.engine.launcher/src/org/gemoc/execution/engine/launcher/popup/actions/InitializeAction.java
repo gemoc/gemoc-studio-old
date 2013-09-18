@@ -53,7 +53,6 @@ public class InitializeAction implements IObjectActionDelegate {
             Activator.error("Exception in the initialization of the engine", e);
             this.engine = null;
             information += "Error during the initialization of the engine.";
-            e.printStackTrace();
         }
         Activator.engine = this.engine;
         MessageDialog.openInformation(shell, "Launcher", information);

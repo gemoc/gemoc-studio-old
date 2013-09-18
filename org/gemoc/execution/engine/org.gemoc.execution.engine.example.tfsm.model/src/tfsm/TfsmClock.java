@@ -20,7 +20,7 @@ public interface TfsmClock extends NamedElement {
 	 * @model required="true"
 	 * @generated
 	 */
-	String ticks();
+	String tick();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -28,6 +28,6 @@ public interface TfsmClock extends NamedElement {
 	 * @model required="true"
 	 * @generated
 	 */
-	String Init();
+	String initialize();
 
 } // TfsmClock

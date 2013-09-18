@@ -14,8 +14,8 @@ import tfsm.TfsmFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link tfsm.TfsmClock#ticks() <em>Ticks</em>}</li>
- *   <li>{@link tfsm.TfsmClock#Init() <em>Init</em>}</li>
+ *   <li>{@link tfsm.TfsmClock#tick() <em>Tick</em>}</li>
+ *   <li>{@link tfsm.TfsmClock#initialize() <em>Initialize</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -75,26 +75,26 @@ public class TfsmClockTest extends NamedElementTest {
 	}
 
 	/**
-	 * Tests the '{@link tfsm.TfsmClock#ticks() <em>Ticks</em>}' operation.
+	 * Tests the '{@link tfsm.TfsmClock#tick() <em>Tick</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see tfsm.TfsmClock#ticks()
+	 * @see tfsm.TfsmClock#tick()
 	 * @generated
 	 */
-	public void testTicks() {
+	public void testTick() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}
 
 	/**
-	 * Tests the '{@link tfsm.TfsmClock#Init() <em>Init</em>}' operation.
+	 * Tests the '{@link tfsm.TfsmClock#initialize() <em>Initialize</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see tfsm.TfsmClock#Init()
+	 * @see tfsm.TfsmClock#initialize()
 	 * @generated
 	 */
-	public void testInit() {
+	public void testInitialize() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

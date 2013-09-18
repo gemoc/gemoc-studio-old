@@ -43,8 +43,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tfsm.ecore#//TfsmEvent/sollicitingTransitions"/>
     </genClasses>
     <genClasses ecoreClass="Tfsm.ecore#//TfsmClock">
-      <genOperations ecoreOperation="Tfsm.ecore#//TfsmClock/ticks"/>
-      <genOperations ecoreOperation="Tfsm.ecore#//TfsmClock/Init"/>
+      <genOperations ecoreOperation="Tfsm.ecore#//TfsmClock/tick"/>
+      <genOperations ecoreOperation="Tfsm.ecore#//TfsmClock/initialize"/>
     </genClasses>
     <genClasses ecoreClass="Tfsm.ecore#//System">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tfsm.ecore#//System/tfsms"/>

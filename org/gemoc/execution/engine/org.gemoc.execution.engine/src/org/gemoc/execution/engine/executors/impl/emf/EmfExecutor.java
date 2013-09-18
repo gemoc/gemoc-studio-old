@@ -4,14 +4,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
+import org.gemoc.execution.engine.actions.impl.method.EmfAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.Executor;
-import org.gemoc.execution.engine.executors.impl.DataConverter;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
 
 /**
@@ -227,6 +226,23 @@ public class EmfExecutor implements Executor {
         Activator.getMessagingSystem().debug(
                 "Executing Domain Specific Action : " + dsa.toString(), Activator.PLUGIN_ID);
         Activator.getMessagingSystem().debug(
+                "EObj: " + ((EmfAction) dsa).getTarget().toString(), Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug(
+                "EObj: " + ((EmfAction) dsa).getTarget().eClass().toString(), Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug(
+                "EObj: " + ((EmfAction) dsa).getTarget().eClass().getEAllOperations().toString(), Activator.PLUGIN_ID);
+        
+        
+        Activator.getMessagingSystem().debug(
+                "EOp: " + ((EmfAction) dsa).getOperation().toString(), Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug(
+                "EOp: " + ((EmfAction) dsa).getOperation().getEContainingClass().toString(), Activator.PLUGIN_ID);
+        Activator.getMessagingSystem().debug(
+                "EOp: " + ((EmfAction) dsa).getOperation().getEContainingClass().getEAllOperations().toString(), Activator.PLUGIN_ID);
+        
+        
+        
+        Activator.getMessagingSystem().debug(
                 "Retrieving EObject in the DSA with the name: " + dsa.getTargetQualifiedName(), Activator.PLUGIN_ID);
         
         EObject eObject = getEObjectFromName(dsa.getTargetQualifiedName());
@@ -264,6 +280,14 @@ public class EmfExecutor implements Executor {
     }
     
     private EOperation getEOperationFromName(EObject eObject, String name){
+    	Activator.getMessagingSystem().debug("Analyzing the content of the EObject:", Activator.PLUGIN_ID);
+    	Activator.getMessagingSystem().debug(eObject.toString(), Activator.PLUGIN_ID);
+    	Activator.getMessagingSystem().debug(eObject.eClass().toString(), Activator.PLUGIN_ID);
+    	Activator.getMessagingSystem().debug(eObject.eClass().getInstanceClassName(), Activator.PLUGIN_ID);
+    	Activator.getMessagingSystem().debug(eObject.eClass().getInstanceTypeName(), Activator.PLUGIN_ID);
+    	Activator.getMessagingSystem().debug(eObject.eClass().getEOperations().toString(), Activator.PLUGIN_ID);
+    	Activator.getMessagingSystem().debug(eObject.eClass().getOperationCount() + "", Activator.PLUGIN_ID);
+    	Activator.getMessagingSystem().debug(eObject.eClass().getEAllOperations().toString(), Activator.PLUGIN_ID);
         for(EOperation eOperation : eObject.eClass().getEAllOperations()) {
             String modelElementQualifiedName = this.getQualifiedName(eOperation);
             Activator.getMessagingSystem().debug(

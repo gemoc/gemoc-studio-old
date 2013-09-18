@@ -56,6 +56,8 @@ public class RunOneStepAction implements IObjectActionDelegate {
         String information = "";
 
         if (engine == null) {
+            this.engine = Activator.engine;
+        	
             information += "Engine is null. Please initialize engine before running.";
         } else {
             int numberOfSteps = 1;
