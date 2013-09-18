@@ -386,7 +386,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
 			fileContent = fileContent.replaceAll(Pattern.quote("${language.name.toupperfirst}"), languageToUpperFirst);
 			StringBuilder sb = new StringBuilder();
-			sb.append("// TODO");
+			sb.append("// TODO\n");
 			fileContent = fileContent.replaceAll(Pattern.quote("${initializer.content}"), sb.toString());
 			IFile file = project.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME+folderName+"/"+languageToUpperFirst+Activator.INITIALIZER_CLASS_NAMEPART+".java");
 			ResourceUtil.writeFile(file, fileContent);
@@ -419,7 +419,8 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
 			fileContent = fileContent.replaceAll(Pattern.quote("${language.name.toupperfirst}"), languageToUpperFirst);
 			StringBuilder sb = new StringBuilder();
-			sb.append("// TODO");
+			sb.append("// TODO\n");
+			sb.append("\t\tSystem.out.println(\"will call \"+ methodName + \" on \"+ target.toString());");
 			fileContent = fileContent.replaceAll(Pattern.quote("${execute.content}"), sb.toString());
 			IFile file = project.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME+folderName+"/"+languageToUpperFirst+Activator.EXECUTOR_CLASS_NAMEPART+".java");
 			ResourceUtil.writeFile(file, fileContent);

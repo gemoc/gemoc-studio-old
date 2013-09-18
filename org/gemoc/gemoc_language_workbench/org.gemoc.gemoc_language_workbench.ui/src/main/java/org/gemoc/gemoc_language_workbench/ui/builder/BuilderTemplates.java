@@ -37,7 +37,7 @@ public class BuilderTemplates {
 "import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLExecutor;\n"+
 "public class ${language.name.toupperfirst}DSAExecutor implements IXDSMLExecutor {\n"+
 "	@Override\n"+
-"	public Object execute(String methodName) {\n"+
+"	public Object execute(Object target, String methodName) {\n"+
 "		Object result = null;\n"+
 "	    ${execute.content}\n"+
 "		return result;\n"+

@@ -5,6 +5,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.SafeRunner;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLExecutor;
 import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLInitializer;
 import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLModelLoader;
@@ -54,8 +55,9 @@ public class MiniEngine {
 		      @Override
 		      public void run() throws Exception {
 		    	  languageInitializer.initialize();
-		    	  modelLoader.loadModel(modelURI);
-		    	  languageDSAExecutor.execute("");
+		    	  Resource res = modelLoader.loadModel(modelURI);
+		    	  Object o = res.getContents().get(0);
+		    	  languageDSAExecutor.execute(o, "start");
 		      }
 		    };
 		    SafeRunner.run(runnable);
