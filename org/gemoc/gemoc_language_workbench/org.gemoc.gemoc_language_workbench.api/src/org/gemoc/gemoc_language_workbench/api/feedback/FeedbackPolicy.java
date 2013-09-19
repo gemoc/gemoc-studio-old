@@ -1,6 +1,6 @@
-package org.gemoc.gemoc_modeling_workbench.api.feedback;
+package org.gemoc.gemoc_language_workbench.api.feedback;
 
-import org.gemoc.gemoc_modeling_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 /**
  * A FeedbackPolicy is in charge of interpreting some FeedbackData in order to

@@ -1,6 +1,6 @@
-package org.gemoc.gemoc_modeling_workbench.api.moc;
+package org.gemoc.gemoc_language_workbench.api.moc;
 
-import org.gemoc.gemoc_modeling_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 
 /**
  * A solver is the visible interface of a constraint system that defines the

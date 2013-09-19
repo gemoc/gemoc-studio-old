@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.gemoc.gemoc_modeling_workbench.api.dsa;
+package org.gemoc.gemoc_language_workbench.api.dsa;
 
 /**
  * DomainSpecificAction is what a DomainSpecificEvent references. Its

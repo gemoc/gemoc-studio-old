@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.api.moc;
+package org.gemoc.gemoc_language_workbench.api.moc;
 
 
 /**

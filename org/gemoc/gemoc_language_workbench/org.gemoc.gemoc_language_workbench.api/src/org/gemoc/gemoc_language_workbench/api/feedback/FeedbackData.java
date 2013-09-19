@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.api.feedback;
+package org.gemoc.gemoc_language_workbench.api.feedback;
 
 /**
  * FeedbackData is the format of the data returned by the Domain-Specific

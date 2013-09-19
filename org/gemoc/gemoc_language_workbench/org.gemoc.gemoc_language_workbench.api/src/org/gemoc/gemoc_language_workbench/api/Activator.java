@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.api;
+package org.gemoc.gemoc_language_workbench.api;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

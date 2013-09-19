@@ -1,6 +1,6 @@
-package org.gemoc.gemoc_modeling_workbench.api.dse;
+package org.gemoc.gemoc_language_workbench.api.dse;
 
-import org.gemoc.gemoc_modeling_workbench.api.dsa.DomainSpecificAction;
+import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
 
 /**
  * For now DomainSpecificEvents are wrappers for DomainSpecificActions since we

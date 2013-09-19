@@ -1,7 +1,7 @@
-package org.gemoc.gemoc_modeling_workbench.api.dsa;
+package org.gemoc.gemoc_language_workbench.api.dsa;
 
-import org.gemoc.gemoc_modeling_workbench.api.dse.DomainSpecificEvent;
-import org.gemoc.gemoc_modeling_workbench.api.feedback.FeedbackData;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 /**
  * An Executor is responsible for executing the Domain-Specific Action(s)
