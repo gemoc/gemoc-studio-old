@@ -48,7 +48,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModHelXMoCProject" eSuperTypes="#//MoCProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="DSEProject" abstract="true" eSuperTypes="#//ProjectResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ECLProject" eSuperTypes="#//DSEProject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ECLProject" eSuperTypes="#//DSEProject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eclFile" lowerBound="1"
+        eType="#//ECLFile" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TreeEditorProject" eSuperTypes="#//EditorProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="EMFGenmodel" eSuperTypes="#//FileResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true">
@@ -60,4 +63,5 @@
     <eLiterals name="mavenJar" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="K3DSAProject" eSuperTypes="#//DSAProject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ECLFile"/>
 </ecore:EPackage>

@@ -44,7 +44,9 @@
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ModHelXMoCProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//DSEProject"/>
-    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLProject"/>
+    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLProject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//ECLProject/eclFile"/>
+    </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//TreeEditorProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//EMFGenmodel"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//FileResource">
@@ -52,5 +54,6 @@
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//XTextEditorProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//K3DSAProject"/>
+    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLFile"/>
   </genPackages>
 </genmodel:GenModel>
