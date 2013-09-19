@@ -7,6 +7,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<!-- plugins -->
+		<module>../org.gemoc.gemoc_language_workbench.api</module>
 		<module>../org.gemoc.gemoc_language_workbench.conf.model</module>
 		<module>../org.gemoc.gemoc_language_workbench.conf.model.edit</module>
 		<module>../org.gemoc.gemoc_language_workbench.conf.model.editor</module>
