@@ -8,7 +8,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
  * 
  * @author flatombe
  */
-public interface FeedbackPolicy<F extends FeedbackData> {
+public interface FeedbackPolicy {
 	/**
 	 * Using the data contained in the FeedbackData, calls the solver API to
 	 * influence the constraints.
@@ -16,5 +16,5 @@ public interface FeedbackPolicy<F extends FeedbackData> {
 	 * @param feedback
 	 * @param solver
 	 */
-	public void processFeedback(F feedback, Solver solver);
+	public void processFeedback(FeedbackData feedback, Solver solver);
 }
