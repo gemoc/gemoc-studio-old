@@ -10,7 +10,6 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.execution.engine.core.ExecutionEngine;
-import org.gemoc.execution.engine.core.impl.ccsl.ecl.emf.CcslEclEmfExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
 
 public class RunOneStepAction implements IObjectActionDelegate {

@@ -46,6 +46,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 
 	// Dependency towards
 	// fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock
+	// Ask Julien to improve the API of EventOccurrence etc.
 	@Override
 	protected List<DomainSpecificEvent> match(Step step) {
 		Activator.getMessagingSystem().debug("Matching the given step : " + step.toString(), Activator.PLUGIN_ID);

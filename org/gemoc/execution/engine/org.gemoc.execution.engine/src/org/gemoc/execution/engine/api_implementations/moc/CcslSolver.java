@@ -22,53 +22,53 @@ import fr.inria.aoste.timesquare.trace.util.HelperFactory;
  */
 public class CcslSolver implements Solver {
 
-    CCSLKernelSolverWrapper solverWrapper;
+	CCSLKernelSolverWrapper solverWrapper;
 
-    public CcslSolver(Resource ccslResource) throws IOException, UnfoldingException, SolverException {
+	public CcslSolver(Resource ccslResource) throws IOException, UnfoldingException, SolverException {
 
-        this.solverWrapper = new CCSLKernelSolverWrapper();
-        this.solverWrapper.getSolver().loadModel(ccslResource);
-        this.solverWrapper.getSolver().initSimulation();
-    }
+		this.solverWrapper = new CCSLKernelSolverWrapper();
+		this.solverWrapper.getSolver().loadModel(ccslResource);
+		this.solverWrapper.getSolver().initSimulation();
+	}
 
-    @Override
-    public void forceEventNonOccurrence(DomainSpecificEvent event) {
-        try {
-            EmfAction action = (EmfAction) event.getAction();
-            this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(action.getTarget()));
-        } catch (ClassCastException e) {
-            String errorMessage = "ClassCastException while trying to force an event non occurrence. You should use EmfActions.";
-            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-            Activator.error(errorMessage, e);
-        }
-    }
+	@Override
+	public void forceEventNonOccurrence(DomainSpecificEvent event) {
+		try {
+			EmfAction action = (EmfAction) event.getAction();
+			this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(action.getTarget()));
+		} catch (ClassCastException e) {
+			String errorMessage = "ClassCastException while trying to force an event non occurrence. You should use EmfActions.";
+			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.error(errorMessage, e);
+		}
+	}
 
-    @Override
-    public void forceEventOccurrence(DomainSpecificEvent event) {
-        try {
-            EmfAction action = (EmfAction) event.getAction();
-            this.solverWrapper.forceClockAbsence(HelperFactory.createModelElementReference(action.getTarget()));
-        } catch (ClassCastException e) {
-            String errorMessage = "ClassCastException while trying to force an event non occurrence. You should use EmfActions.";
-            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-            Activator.error(errorMessage, e);
-        }
-    }
+	@Override
+	public void forceEventOccurrence(DomainSpecificEvent event) {
+		try {
+			EmfAction action = (EmfAction) event.getAction();
+			this.solverWrapper.forceClockAbsence(HelperFactory.createModelElementReference(action.getTarget()));
+		} catch (ClassCastException e) {
+			String errorMessage = "ClassCastException while trying to force an event non occurrence. You should use EmfActions.";
+			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.error(errorMessage, e);
+		}
+	}
 
-    @Override
-    public Step getNextStep() {
-        try {
-            return new CcslStep(this.solverWrapper.getSolver().doOneSimulationStep());
-        } catch (SolverException e) {
-            String errorMessage = "SolverException while trying to get next Ccsl step";
-            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-            Activator.error(errorMessage, e);
-            return null;
-        }
-    }
+	@Override
+	public Step getNextStep() {
+		try {
+			return new CcslStep(this.solverWrapper.getSolver().doOneSimulationStep());
+		} catch (SolverException e) {
+			String errorMessage = "SolverException while trying to get next Ccsl step";
+			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.error(errorMessage, e);
+			return null;
+		}
+	}
 
-    public String toString() {
-        return this.getClass().getName() + "@[" + this.solverWrapper.toString() + "]";
-    }
+	public String toString() {
+		return this.getClass().getName() + "@[" + this.solverWrapper.toString() + "]";
+	}
 
 }
