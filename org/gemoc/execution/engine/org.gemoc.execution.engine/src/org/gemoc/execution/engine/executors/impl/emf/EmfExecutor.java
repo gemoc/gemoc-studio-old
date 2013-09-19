@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
-import org.gemoc.execution.engine.actions.impl.method.EmfAction;
+import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.executors.Executor;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;

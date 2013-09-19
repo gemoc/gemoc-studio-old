@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.events.impl.ecl;
+package org.gemoc.execution.engine.api_implementations.dse;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.actions.DomainSpecificAction;
-import org.gemoc.execution.engine.actions.impl.method.EmfAction;
+import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 
 /**

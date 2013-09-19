@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.actions.impl.method.EmfAction;
+import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
 import org.gemoc.execution.engine.solvers.Solver;
 import org.gemoc.execution.engine.solvers.Step;

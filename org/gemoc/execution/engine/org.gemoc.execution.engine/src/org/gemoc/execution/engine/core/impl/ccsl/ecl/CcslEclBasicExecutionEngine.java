@@ -23,7 +23,11 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -35,14 +39,17 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.actions.impl.method.EmfAction;
+import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
+import org.gemoc.execution.engine.api_implementations.dse.EclEvent;
 import org.gemoc.execution.engine.core.BasicExecutionEngine;
 import org.gemoc.execution.engine.events.DomainSpecificEvent;
-import org.gemoc.execution.engine.events.impl.ecl.EclEvent;
 import org.gemoc.execution.engine.feedback.policy.impl.easy.SimpleFeedbackPolicy;
 import org.gemoc.execution.engine.solvers.Step;
 import org.gemoc.execution.engine.solvers.impl.ccsl.CcslSolver;
 import org.gemoc.execution.engine.solvers.impl.ccsl.CcslStep;
+import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLExecutor;
+import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLInitializer;
+import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLModelLoader;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
@@ -62,6 +69,49 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
     private EPackage metamodelPackage = null;
 
     protected EObject modelRoot = null;
+    
+    protected IXDSMLModelLoader modelLoader;
+	protected IXDSMLInitializer languageInitializer;
+	protected IXDSMLExecutor languageDSAExecutor;
+	
+    
+    public CcslEclBasicExecutionEngine(String languageName) throws CoreException{
+    	super();
+    	
+    	initializeXdsmlElements(languageName);
+    	
+    	
+    }
+    
+    private void initializeXdsmlElements(String languageName) throws CoreException{
+    	IConfigurationElement confElement = null;
+		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor("org.gemoc.gemoc_language_workbench.xdsml");
+		// retrieve the extension for the chosen language
+		for (int i = 0; i < confElements.length; i++) {
+			if(confElements[i].getAttribute("name").equals(languageName)){
+				confElement =confElements[i];
+			}
+		}
+		// get the extension objects
+		if(confElement != null){
+			final Object omodelLoader = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
+			if(omodelLoader instanceof IXDSMLModelLoader){
+				this.modelLoader = (IXDSMLModelLoader) omodelLoader;
+			}
+			final Object oinitializer = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT);
+			if(oinitializer instanceof IXDSMLInitializer){
+				this.languageInitializer = (IXDSMLInitializer) oinitializer;
+			}
+
+			final Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT);
+			if(oexecutor instanceof IXDSMLExecutor){
+				this.languageDSAExecutor = (IXDSMLExecutor) oexecutor;
+			}
+		}
+    }
+    
+    
+    
 
     public CcslEclBasicExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath,
             String modelPath, String MMpath) {

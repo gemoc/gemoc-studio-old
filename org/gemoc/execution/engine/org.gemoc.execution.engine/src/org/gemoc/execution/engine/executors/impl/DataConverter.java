@@ -4,8 +4,8 @@
 package org.gemoc.execution.engine.executors.impl;
 
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.api_implementations.feedback.ObjectFeedbackData;
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
-import org.gemoc.execution.engine.feedback.data.impl.easy.ObjectFeedbackData;
 
 /**
  * @author flatombe

@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.feedback.data.impl.easy;
+package org.gemoc.execution.engine.api_implementations.feedback;
 
 import org.gemoc.execution.engine.feedback.data.FeedbackData;
 
