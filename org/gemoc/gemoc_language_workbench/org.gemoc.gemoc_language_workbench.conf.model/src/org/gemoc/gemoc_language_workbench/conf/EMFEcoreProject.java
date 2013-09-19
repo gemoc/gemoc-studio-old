@@ -11,7 +11,7 @@ package org.gemoc.gemoc_language_workbench.conf;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEcoreModel <em>Ecore Model</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEmfGenmodel <em>Emf Genmodel</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,29 +21,29 @@ package org.gemoc.gemoc_language_workbench.conf;
  */
 public interface EMFEcoreProject extends DomainModelProject {
 	/**
-	 * Returns the value of the '<em><b>Ecore Model</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Emf Genmodel</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ecore Model</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Emf Genmodel</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ecore Model</em>' containment reference.
-	 * @see #setEcoreModel(EcoreModel)
-	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getEMFEcoreProject_EcoreModel()
+	 * @return the value of the '<em>Emf Genmodel</em>' containment reference.
+	 * @see #setEmfGenmodel(EMFGenmodel)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getEMFEcoreProject_EmfGenmodel()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EcoreModel getEcoreModel();
+	EMFGenmodel getEmfGenmodel();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEcoreModel <em>Ecore Model</em>}' containment reference.
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEmfGenmodel <em>Emf Genmodel</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ecore Model</em>' containment reference.
-	 * @see #getEcoreModel()
+	 * @param value the new value of the '<em>Emf Genmodel</em>' containment reference.
+	 * @see #getEmfGenmodel()
 	 * @generated
 	 */
-	void setEcoreModel(EcoreModel value);
+	void setEmfGenmodel(EMFGenmodel value);
 
 } // EMFEcoreProject

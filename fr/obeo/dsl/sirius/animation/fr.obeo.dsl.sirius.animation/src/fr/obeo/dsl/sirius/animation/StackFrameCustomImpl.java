@@ -25,7 +25,7 @@ public class StackFrameCustomImpl extends StackFrameImpl {
 	public StackFrame popFrame() {
 		if (getParent() != null) {
 			getParent().setTopStackFrame(getParentStack());
-			getParent().getStackFrames().remove(this);
+//			getParent().getStackFrames().remove(this);
 		}
 		return getParentStack();
 	}

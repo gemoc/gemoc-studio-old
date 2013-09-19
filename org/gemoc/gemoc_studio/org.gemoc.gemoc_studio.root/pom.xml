@@ -9,6 +9,7 @@
 
     <properties>
         <tycho-version>0.18.0</tycho-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <modules>
@@ -44,10 +45,15 @@
             <url>http://community.polarion.com/projects/subversive/download/eclipse/3.0/juno-site/</url>
         </repository>
         
-        <repository>
+       <!--  <repository>
             <id>kermeta2-latest-stable</id>
             <layout>p2</layout>
             <url>http://www.kermeta.org/k2/update/</url>
+        </repository>-->
+        <repository>
+            <id>kermeta2-latest-release-candidate</id>
+            <layout>p2</layout>
+            <url>http://www.kermeta.org/k2/update_2.1.1.RC/</url>
         </repository>	
         <repository>
             <id>kermeta3</id>
@@ -134,6 +140,17 @@
                     </environments>
                 </configuration>
             </plugin>
+            <!-- Java compiler plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 </project> 

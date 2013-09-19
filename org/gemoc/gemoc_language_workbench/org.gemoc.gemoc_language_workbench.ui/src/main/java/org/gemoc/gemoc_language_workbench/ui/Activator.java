@@ -13,7 +13,7 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.ui"; //$NON-NLS-1$
 
-	public static final String GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION = "gemoc_language_conf";
+	public static final String GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION = "xdsml";
 	public static final String GEMOC_PROJECT_CONFIGURATION_FILE = "project."+GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION;
 
 	
@@ -24,6 +24,20 @@ public class Activator extends AbstractUIPlugin {
 	public static final String GEMOC_PROJECT_PROPERTY_HAS_MOC = "gemoc_project_has_MoC";
 	public static final String GEMOC_PROJECT_PROPERTY_HAS_EDITOR = "gemoc_project_has_editor";
 	public static final String GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR = "gemoc_project_has_animator";
+	
+	// extension point constants
+
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_NAME = "org.gemoc.gemoc_language_workbench.xdsml";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF = "XDSML_Definition";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT = "loadModel_class";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT = "initializer_class";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT = "executor_class";
+	
+
+	public static final String MODEL_LOADER_CLASS_NAMEPART = "ModelLoader";
+	public static final String INITIALIZER_CLASS_NAMEPART = "Initializer";
+	public static final String EXECUTOR_CLASS_NAMEPART = "DSAExecutor";
+	public static final String EXTENSION_GENERATED_CLASS_FOLDER_NAME = "src/main/xdsml-java-gen/";
 	
 	// The shared instance
 	private static Activator plugin;

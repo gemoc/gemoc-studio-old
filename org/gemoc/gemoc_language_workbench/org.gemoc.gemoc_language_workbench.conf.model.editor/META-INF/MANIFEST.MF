@@ -10,9 +10,9 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.gemoc_language_workbench.conf.presentation
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.core.resources;visibility:=reexport,
+ org.eclipse.core.resources;visibility:=reexport;bundle-version="3.8.0",
  org.gemoc.gemoc_language_workbench.conf.model.edit;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport;bundle-version="2.9.1",
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport
 Bundle-ActivationPolicy: lazy

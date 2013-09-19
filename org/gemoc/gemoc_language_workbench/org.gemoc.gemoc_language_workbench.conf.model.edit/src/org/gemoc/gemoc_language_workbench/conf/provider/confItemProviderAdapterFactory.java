@@ -302,26 +302,26 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.EcoreModel} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.EMFGenmodel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EcoreModelItemProvider ecoreModelItemProvider;
+	protected EMFGenmodelItemProvider emfGenmodelItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.EcoreModel}.
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.EMFGenmodel}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createEcoreModelAdapter() {
-		if (ecoreModelItemProvider == null) {
-			ecoreModelItemProvider = new EcoreModelItemProvider(this);
+	public Adapter createEMFGenmodelAdapter() {
+		if (emfGenmodelItemProvider == null) {
+			emfGenmodelItemProvider = new EMFGenmodelItemProvider(this);
 		}
 
-		return ecoreModelItemProvider;
+		return emfGenmodelItemProvider;
 	}
 
 	/**
@@ -345,6 +345,29 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 		}
 
 		return xTextEditorProjectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected K3DSAProjectItemProvider k3DSAProjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createK3DSAProjectAdapter() {
+		if (k3DSAProjectItemProvider == null) {
+			k3DSAProjectItemProvider = new K3DSAProjectItemProvider(this);
+		}
+
+		return k3DSAProjectItemProvider;
 	}
 
 	/**
@@ -456,8 +479,9 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 		if (modHelXMoCProjectItemProvider != null) modHelXMoCProjectItemProvider.dispose();
 		if (eclProjectItemProvider != null) eclProjectItemProvider.dispose();
 		if (treeEditorProjectItemProvider != null) treeEditorProjectItemProvider.dispose();
-		if (ecoreModelItemProvider != null) ecoreModelItemProvider.dispose();
+		if (emfGenmodelItemProvider != null) emfGenmodelItemProvider.dispose();
 		if (xTextEditorProjectItemProvider != null) xTextEditorProjectItemProvider.dispose();
+		if (k3DSAProjectItemProvider != null) k3DSAProjectItemProvider.dispose();
 	}
 
 }

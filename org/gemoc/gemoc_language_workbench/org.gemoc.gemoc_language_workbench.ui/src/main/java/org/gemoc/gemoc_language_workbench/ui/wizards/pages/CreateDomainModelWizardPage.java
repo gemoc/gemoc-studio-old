@@ -8,6 +8,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction.CreateDomainModelAction;
 
@@ -33,8 +34,11 @@ public class CreateDomainModelWizardPage  extends WizardPage {
 		this.setTitle(pageName);
 		this.context = context;
 	}
-	
 
+	@Override
+	public void performHelp(){
+		PlatformUI.getWorkbench().getHelpSystem().displayHelpResource("/org.gemoc.gemoc_language_workbench.documentation/html/ASProject.html");
+	}
 
 	@Override
 	public void createControl(Composite parent) {

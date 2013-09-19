@@ -34,7 +34,7 @@ public class IValueEListAdapter extends IDebugElementAnimationAdapter implements
 	private Object host;
 
 	public IValueEListAdapter(ILaunch launch,
-			DebugModelToEclipseDebugAdapterFactory factory, Object object) {
+			AnimatorEclipseDebugIntegration factory, Object object) {
 		super(launch, factory);
 		this.host = object;
 	}
@@ -45,7 +45,7 @@ public class IValueEListAdapter extends IDebugElementAnimationAdapter implements
 
 	public String getValueString() throws DebugException {
 		if (this.host instanceof List) {
-			return "[...]";
+			return "["+ ((List) this.host).size() +"]";
 		} else if (this.host != null) {
 			return this.host.toString();
 		}

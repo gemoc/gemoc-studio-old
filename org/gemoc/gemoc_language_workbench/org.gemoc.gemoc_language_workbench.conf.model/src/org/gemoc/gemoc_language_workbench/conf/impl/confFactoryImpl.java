@@ -3,6 +3,7 @@
 package org.gemoc.gemoc_language_workbench.conf.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -27,7 +28,7 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 */
 	public static confFactory init() {
 		try {
-			confFactory theconfFactory = (confFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.gemoc.org/gemoc_language_workbench_conf"); 
+			confFactory theconfFactory = (confFactory)EPackage.Registry.INSTANCE.getEFactory(confPackage.eNS_URI);
 			if (theconfFactory != null) {
 				return theconfFactory;
 			}
@@ -66,10 +67,41 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 			case confPackage.MOD_HEL_XMO_CPROJECT: return createModHelXMoCProject();
 			case confPackage.ECL_PROJECT: return createECLProject();
 			case confPackage.TREE_EDITOR_PROJECT: return createTreeEditorProject();
-			case confPackage.ECORE_MODEL: return createEcoreModel();
+			case confPackage.EMF_GENMODEL: return createEMFGenmodel();
 			case confPackage.XTEXT_EDITOR_PROJECT: return createXTextEditorProject();
+			case confPackage.K3DSA_PROJECT: return createK3DSAProject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case confPackage.PROJECT_KIND:
+				return createProjectKindFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case confPackage.PROJECT_KIND:
+				return convertProjectKindToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -112,6 +144,7 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 		CCSLMoCProjectImpl ccslMoCProject = new CCSLMoCProjectImpl();
 		return ccslMoCProject;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,9 +211,9 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EcoreModel createEcoreModel() {
-		EcoreModelImpl ecoreModel = new EcoreModelImpl();
-		return ecoreModel;
+	public EMFGenmodel createEMFGenmodel() {
+		EMFGenmodelImpl emfGenmodel = new EMFGenmodelImpl();
+		return emfGenmodel;
 	}
 
 	/**
@@ -191,6 +224,36 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	public XTextEditorProject createXTextEditorProject() {
 		XTextEditorProjectImpl xTextEditorProject = new XTextEditorProjectImpl();
 		return xTextEditorProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public K3DSAProject createK3DSAProject() {
+		K3DSAProjectImpl k3DSAProject = new K3DSAProjectImpl();
+		return k3DSAProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProjectKind createProjectKindFromString(EDataType eDataType, String initialValue) {
+		ProjectKind result = ProjectKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertProjectKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

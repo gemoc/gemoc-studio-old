@@ -60,6 +60,7 @@ public class ProjectResourceItemProvider
 			super.getPropertyDescriptors(object);
 
 			addProjectNamePropertyDescriptor(object);
+			addProjectKindPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -78,6 +79,28 @@ public class ProjectResourceItemProvider
 				 getString("_UI_ProjectResource_projectName_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProjectResource_projectName_feature", "_UI_ProjectResource_type"),
 				 confPackage.Literals.PROJECT_RESOURCE__PROJECT_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Project Kind feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addProjectKindPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProjectResource_projectKind_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProjectResource_projectKind_feature", "_UI_ProjectResource_type"),
+				 confPackage.Literals.PROJECT_RESOURCE__PROJECT_KIND,
 				 true,
 				 false,
 				 false,
@@ -124,6 +147,7 @@ public class ProjectResourceItemProvider
 
 		switch (notification.getFeatureID(ProjectResource.class)) {
 			case confPackage.PROJECT_RESOURCE__PROJECT_NAME:
+			case confPackage.PROJECT_RESOURCE__PROJECT_KIND:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

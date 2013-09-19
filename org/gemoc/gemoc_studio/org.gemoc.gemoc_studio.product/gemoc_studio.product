@@ -22,24 +22,24 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask16.png" i32="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask32.png" i48="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask48.png" i64="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask64.png" i128="/org.gemoc.gemoc_studio.branding/images/icons/GemocIconStudioMask128.png"/>
+   <windowImages i16="images/icons/IconeGemocStudio/png/IconeGemocStudio_16x16x32.png" i32="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_32x32x32.png" i48="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_48x48x32.png" i64="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_64x64x32.png" i128="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_128x128x32.png"/>
 
    <splash
       location="org.gemoc.gemoc_studio.branding"
       startupProgressRect="5,275,445,15" />
-   <launcher>
-      <linux icon="/images/icons/GeMoC.xpm"/>
-      <macosx icon="/images/icons/GeMoC.icns"/>
+   <launcher name="GemocStudio">
+      <linux icon="/images/icons/IconeGemocStudio-text/xpm/IconeGemocStudio-text.xpm"/>
+      <macosx icon="/images/icons/IconeGemocStudio-text/icns/IconeGemocStudio-text.icns"/>
       <solaris/>
       <win useIco="false">
          <bmp
-            winSmallHigh="/images/icons/GeMoC_16x16x32.bmp"
-            winSmallLow="/images/icons/GeMoC_16x16x8.bmp"
-            winMediumHigh="/images/icons/GeMoC_32x32x32.bmp"
-            winMediumLow="/images/icons/GeMoC_32x32x8.bmp"
-            winLargeHigh="/images/icons/GeMoC_48x48x32.bmp"
-            winLargeLow="/images/icons/GeMoC_48x48x8.bmp"
-            winExtraLargeHigh="/images/icons/GeMoC_256x256x32.bmp"/>
+            winSmallHigh="/images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x32.bmp"
+            winSmallLow="/images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x8.bmp"
+            winMediumHigh="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x32.bmp"
+            winMediumLow="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x8.bmp"
+            winLargeHigh="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_48x48x32.bmp"
+            winLargeLow="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_48x48x8.bmp"
+            winExtraLargeHigh="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_256x256x32.bmp"/>
       </win>
    </launcher>
 
@@ -62,6 +62,7 @@
       <feature id="org.eclipse.mylyn.wikitext_feature"/>
       <feature id="org.eclipse.mylyn.hudson"/>
       <feature id="org.eclipse.sdk"/>
+      <feature id="org.eclipse.emf.query.sdk"/>
       <feature id="org.kermeta.language.feature"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
       <feature id="org.gemoc.execution.trace.feature"/>

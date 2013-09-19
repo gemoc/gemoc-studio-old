@@ -24,21 +24,16 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.uml2.uml.StateMachine;
 
-import com.google.common.collect.Iterators;
-
-import fr.obeo.dsl.sirius.animation.AnimationFactory;
 import fr.obeo.dsl.sirius.animation.AnimationTarget;
-import fr.obeo.dsl.sirius.animation.StackFrame;
+import fr.obeo.dsl.sirius.animation.Animator;
 import fr.obeo.dsl.sirius.animation.ide.debug.AnimationResource;
-import fr.obeo.dsl.sirius.animation.ide.debug.DebugModelToEclipseDebugAdapterFactory;
+import fr.obeo.dsl.sirius.animation.ide.debug.AnimatorEclipseDebugIntegration;
 import fr.obeo.dsl.sirius.animation.ide.debug.IDebugTargetAnimationAdapter;
 import fr.obeo.dsl.sirius.animation.ide.debug.ProtocolParser;
-import fr.obeo.dsl.sirius.animation.uml.SimulateStateMachine;
+import fr.obeo.dsl.sirius.animation.uml.AnimateUMLStateMachine;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 
@@ -63,15 +58,19 @@ public class AnimationLaunchConfiguration implements
 										.getOrCreateDebugResource(sess
 												.getTransactionalEditingDomain()
 												.getResourceSet());
-								SimulateStateMachine simulator = new SimulateStateMachine(
+								Animator animator = new AnimateUMLStateMachine();
+								AnimatorEclipseDebugIntegration simulator = new AnimatorEclipseDebugIntegration(
 										launch,
-										sess.getTransactionalEditingDomain());
-								AnimationTarget animModel = simulator.start();
+										sess.getTransactionalEditingDomain(),
+										animator);
+								AnimationTarget animModel = animator.start(sess
+										.getTransactionalEditingDomain()
+										.getResourceSet());
 								res.getRootObject().getTargets().add(animModel);
 								sess.addSemanticResource(res, false);
 								IDebugTargetAnimationAdapter animationDebugTarget = (IDebugTargetAnimationAdapter) simulator
 										.adapt(animModel,
-												IDebugTargetAnimationAdapter.class);								
+												IDebugTargetAnimationAdapter.class);
 								launch.addDebugTarget(animationDebugTarget);
 							}
 						});

@@ -24,6 +24,12 @@
          version="0.0.0"/>
 
    <plugin
+         id="org.gemoc.gemoc_language_workbench.documentation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
          id="org.gemoc.gemoc_language_workbench.conf.model"
          download-size="0"
          install-size="0"
@@ -39,6 +45,13 @@
 
    <plugin
          id="org.gemoc.gemoc_language_workbench.conf.model.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.gemoc_language_workbench.utils"
          download-size="0"
          install-size="0"
          version="0.0.0"

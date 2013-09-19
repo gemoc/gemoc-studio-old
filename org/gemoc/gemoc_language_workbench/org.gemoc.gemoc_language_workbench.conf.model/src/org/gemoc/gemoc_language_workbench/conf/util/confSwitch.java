@@ -190,10 +190,10 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case confPackage.ECORE_MODEL: {
-				EcoreModel ecoreModel = (EcoreModel)theEObject;
-				T result = caseEcoreModel(ecoreModel);
-				if (result == null) result = caseFileResource(ecoreModel);
+			case confPackage.EMF_GENMODEL: {
+				EMFGenmodel emfGenmodel = (EMFGenmodel)theEObject;
+				T result = caseEMFGenmodel(emfGenmodel);
+				if (result == null) result = caseFileResource(emfGenmodel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -208,6 +208,14 @@ public class confSwitch<T> extends Switch<T> {
 				T result = caseXTextEditorProject(xTextEditorProject);
 				if (result == null) result = caseEditorProject(xTextEditorProject);
 				if (result == null) result = caseProjectResource(xTextEditorProject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case confPackage.K3DSA_PROJECT: {
+				K3DSAProject k3DSAProject = (K3DSAProject)theEObject;
+				T result = caseK3DSAProject(k3DSAProject);
+				if (result == null) result = caseDSAProject(k3DSAProject);
+				if (result == null) result = caseProjectResource(k3DSAProject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -471,17 +479,17 @@ public class confSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Ecore Model</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EMF Genmodel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Ecore Model</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EMF Genmodel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEcoreModel(EcoreModel object) {
+	public T caseEMFGenmodel(EMFGenmodel object) {
 		return null;
 	}
 
@@ -512,6 +520,21 @@ public class confSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseXTextEditorProject(XTextEditorProject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>K3DSA Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>K3DSA Project</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseK3DSAProject(K3DSAProject object) {
 		return null;
 	}
 

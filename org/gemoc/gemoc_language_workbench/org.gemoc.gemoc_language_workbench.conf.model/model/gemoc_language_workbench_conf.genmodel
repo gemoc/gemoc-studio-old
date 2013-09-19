@@ -5,30 +5,38 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false">
   <foreignModel>gemoc_language_workbench_conf.ecore</foreignModel>
   <genPackages prefix="conf" basePackage="org.gemoc.gemoc_language_workbench" disposableProviderFactory="true"
-      ecorePackage="gemoc_language_workbench_conf.ecore#/">
+      fileExtensions="xdsml" ecorePackage="gemoc_language_workbench_conf.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gemoc_language_workbench_conf.ecore#//ProjectKind">
+      <genEnumLiterals ecoreEnumLiteral="gemoc_language_workbench_conf.ecore#//ProjectKind/eclipsePlugin"/>
+      <genEnumLiterals ecoreEnumLiteral="gemoc_language_workbench_conf.ecore#//ProjectKind/mavenJar"/>
+    </genEnums>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/languageDefinitions"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ProjectResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectKind"/>
     </genClasses>
     <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//DSAProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//Kermeta2DSAProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//LanguageDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/dsaProjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/dsaProject"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/domainModelProject"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/editorProjects"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/moCModelProjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/moCModelProject"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/animatorProjects"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/dSEProjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/dSEProject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//LanguageDefinition/name"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//EditorProject"/>
+    <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//EditorProject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//EditorProject/fileExtension"/>
+    </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//DomainModelProject"/>
     <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//MoCProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//CCSLMoCProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//AnimatorProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//EMFEcoreProject">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//EMFEcoreProject/ecoreModel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//EMFEcoreProject/emfGenmodel"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ODProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//SiriusAnimatorProject">
@@ -38,10 +46,11 @@
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//DSEProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//TreeEditorProject"/>
-    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//EcoreModel"/>
+    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//EMFGenmodel"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//FileResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//FileResource/locationURI"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//XTextEditorProject"/>
+    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//K3DSAProject"/>
   </genPackages>
 </genmodel:GenModel>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="org.gemoc.gemoc_language_workbench.xdsml" name="Gemoc Language Definition" schema="schema/org.gemoc.gemoc_language_workbench.xdsml.exsd"/>
 
    <extension
          id="gemocLanguageDesignerBuilder"
@@ -566,7 +567,7 @@
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
-            name="New Gemoc Language"
+            name="New Gemoc Language Project"
             project="true">
       </wizard>
    </extension>

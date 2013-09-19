@@ -13,12 +13,14 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -61,8 +63,31 @@ public class LanguageDefinitionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LanguageDefinition_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LanguageDefinition_name_feature", "_UI_LanguageDefinition_type"),
+				 confPackage.Literals.LANGUAGE_DEFINITION__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -77,12 +102,12 @@ public class LanguageDefinitionItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__DSA_PROJECTS);
+			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__DSA_PROJECT);
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT);
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__EDITOR_PROJECTS);
-			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS);
+			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT);
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS);
-			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__DSE_PROJECTS);
+			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__DSE_PROJECT);
 		}
 		return childrenFeatures;
 	}
@@ -119,7 +144,10 @@ public class LanguageDefinitionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_LanguageDefinition_type");
+		String label = ((LanguageDefinition)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_LanguageDefinition_type") :
+			getString("_UI_LanguageDefinition_type") + " " + label;
 	}
 
 	/**
@@ -134,12 +162,15 @@ public class LanguageDefinitionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LanguageDefinition.class)) {
-			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECTS:
+			case confPackage.LANGUAGE_DEFINITION__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECT:
 			case confPackage.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT:
 			case confPackage.LANGUAGE_DEFINITION__EDITOR_PROJECTS:
-			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS:
+			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
-			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECTS:
+			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -159,8 +190,13 @@ public class LanguageDefinitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(confPackage.Literals.LANGUAGE_DEFINITION__DSA_PROJECTS,
+				(confPackage.Literals.LANGUAGE_DEFINITION__DSA_PROJECT,
 				 confFactory.eINSTANCE.createKermeta2DSAProject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(confPackage.Literals.LANGUAGE_DEFINITION__DSA_PROJECT,
+				 confFactory.eINSTANCE.createK3DSAProject()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -184,12 +220,12 @@ public class LanguageDefinitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS,
+				(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT,
 				 confFactory.eINSTANCE.createCCSLMoCProject()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECTS,
+				(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT,
 				 confFactory.eINSTANCE.createModHelXMoCProject()));
 
 		newChildDescriptors.add
@@ -199,7 +235,7 @@ public class LanguageDefinitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(confPackage.Literals.LANGUAGE_DEFINITION__DSE_PROJECTS,
+				(confPackage.Literals.LANGUAGE_DEFINITION__DSE_PROJECT,
 				 confFactory.eINSTANCE.createECLProject()));
 	}
 
