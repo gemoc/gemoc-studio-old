@@ -1,14 +1,15 @@
 package org.gemoc.execution.engine.core;
 
 import java.util.List;
+import java.util.concurrent.Executor;
 
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.events.DomainSpecificEvent;
-import org.gemoc.execution.engine.executors.Executor;
-import org.gemoc.execution.engine.feedback.data.FeedbackData;
-import org.gemoc.execution.engine.feedback.policy.FeedbackPolicy;
-import org.gemoc.execution.engine.solvers.Solver;
-import org.gemoc.execution.engine.solvers.Step;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+
+import com.sun.org.apache.xerces.internal.impl.xpath.XPath.Step;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the

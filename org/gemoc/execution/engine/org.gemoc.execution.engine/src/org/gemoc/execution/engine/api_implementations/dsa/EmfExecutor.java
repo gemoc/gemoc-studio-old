@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.executors.impl.emf;
+package org.gemoc.execution.engine.api_implementations.dsa;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -7,11 +7,10 @@ import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.actions.DomainSpecificAction;
-import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
-import org.gemoc.execution.engine.events.DomainSpecificEvent;
-import org.gemoc.execution.engine.executors.Executor;
-import org.gemoc.execution.engine.feedback.data.FeedbackData;
+import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
+import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 /**
  * An executor that can call methods contained in compiled EMF code (like

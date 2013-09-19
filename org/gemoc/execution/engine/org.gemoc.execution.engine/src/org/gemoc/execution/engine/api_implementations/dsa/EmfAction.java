@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.actions.DomainSpecificAction;
+import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
 
 /**
  * Basic implementation of DomainSpecificAction, contains the Object and a

@@ -1,13 +1,13 @@
-package org.gemoc.execution.engine.solvers.impl.ccsl;
+package org.gemoc.execution.engine.api_implementations.moc;
 
 import java.io.IOException;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
-import org.gemoc.execution.engine.events.DomainSpecificEvent;
-import org.gemoc.execution.engine.solvers.Solver;
-import org.gemoc.execution.engine.solvers.Step;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.Step;
 
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;

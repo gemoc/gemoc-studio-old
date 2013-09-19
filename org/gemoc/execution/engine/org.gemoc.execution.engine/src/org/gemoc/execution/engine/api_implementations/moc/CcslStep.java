@@ -1,8 +1,8 @@
-package org.gemoc.execution.engine.solvers.impl.ccsl;
+package org.gemoc.execution.engine.api_implementations.moc;
 
 import java.util.List;
 
-import org.gemoc.execution.engine.solvers.Step;
+import org.gemoc.gemoc_language_workbench.api.moc.Step;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;

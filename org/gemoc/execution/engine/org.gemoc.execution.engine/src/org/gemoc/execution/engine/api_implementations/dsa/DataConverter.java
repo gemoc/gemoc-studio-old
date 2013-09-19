@@ -1,11 +1,11 @@
 /**
  * 
  */
-package org.gemoc.execution.engine.executors.impl;
+package org.gemoc.execution.engine.api_implementations.dsa;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_implementations.feedback.ObjectFeedbackData;
-import org.gemoc.execution.engine.feedback.data.FeedbackData;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 /**
  * @author flatombe

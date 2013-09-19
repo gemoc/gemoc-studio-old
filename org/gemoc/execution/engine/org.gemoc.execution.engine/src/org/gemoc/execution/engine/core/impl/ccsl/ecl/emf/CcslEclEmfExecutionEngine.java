@@ -5,8 +5,8 @@ import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.api_implementations.dsa.EmfExecutor;
 import org.gemoc.execution.engine.core.impl.ccsl.ecl.CcslEclBasicExecutionEngine;
-import org.gemoc.execution.engine.executors.impl.emf.EmfExecutor;
 
 /**
  * An implementation of the engine using the EMF Executor, the ECL events, the

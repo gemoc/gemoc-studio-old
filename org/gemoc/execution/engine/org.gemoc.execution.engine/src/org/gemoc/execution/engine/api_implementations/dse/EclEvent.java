@@ -5,9 +5,9 @@ import java.lang.reflect.Method;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
-import org.gemoc.execution.engine.actions.DomainSpecificAction;
 import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
-import org.gemoc.execution.engine.events.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 
 /**
  * 

@@ -1,9 +1,8 @@
-package org.gemoc.execution.engine.feedback.policy.impl.easy;
+package org.gemoc.execution.engine.api_implementations.feedback;
 
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.api_implementations.feedback.ObjectFeedbackData;
-import org.gemoc.execution.engine.feedback.policy.FeedbackPolicy;
-import org.gemoc.execution.engine.solvers.Solver;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 /**
  * 
