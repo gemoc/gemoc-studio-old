@@ -1,5 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
@@ -32,5 +33,14 @@ public interface Executor {
 	 *         appropriate FeedbackData object.
 	 */
 	public FeedbackData execute(DomainSpecificEvent dse);
+
+	/**
+	 * An Executor needs to have a model against which it will look for the
+	 * actual object(s) and operation(s) designated by the Domain Specific
+	 * Action(s) to execute.
+	 * 
+	 * @param modelResource
+	 */
+	public void setModel(Resource modelResource);
 
 }

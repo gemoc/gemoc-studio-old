@@ -35,6 +35,7 @@ public class Activator extends AbstractUIPlugin {
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT = "solver_class";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT = "executor_class";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_FEEDBACKPOLICY_ATT = "feedbackPolicy_class";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_ECL_ATT = "eclFilePath";
 
 	public static final String MODEL_LOADER_CLASS_NAMEPART = "ModelLoader";
 	public static final String INITIALIZER_CLASS_NAMEPART = "Initializer";

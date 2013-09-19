@@ -3,6 +3,8 @@
  */
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
+import java.util.List;
+
 /**
  * A DomainSpecificAction (DSA) captures references sufficient enough for the
  * Executor to compute the actual Object and Method that are concerned by this
@@ -33,4 +35,12 @@ public interface DomainSpecificAction {
 	 *         Domain Specific Action must be executed).
 	 */
 	public String getTargetQualifiedName();
+
+	/**
+	 * Returns the list of the fully qualified names of the parameters for this
+	 * action.
+	 * 
+	 * @return
+	 */
+	public List<String> getParametersQualifiedNames();
 }

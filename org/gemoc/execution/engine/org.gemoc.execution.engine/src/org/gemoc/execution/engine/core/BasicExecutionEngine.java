@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.core;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
@@ -27,6 +28,8 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected Solver solver = null;
 	protected Executor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
+	
+	protected Resource modelResource = null;
 
 	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, Solver solver,
 			Executor executor, FeedbackPolicy feedbackPolicy) {
@@ -35,6 +38,8 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 		this.solver = solver;
 		this.executor = executor;
 		this.feedbackPolicy = feedbackPolicy;
+		
+		this.languageInitializer.initialize();
 	}
 
 	/**
@@ -48,6 +53,11 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	 * @return
 	 */
 	protected abstract List<DomainSpecificEvent> match(Step step);
+
+	@Override
+	public void initialize(String modelURI, String dseFilePath) {
+		this.modelResource = this.modelLoader.loadModel(modelURI);
+	}
 
 	@Override
 	public void run() {

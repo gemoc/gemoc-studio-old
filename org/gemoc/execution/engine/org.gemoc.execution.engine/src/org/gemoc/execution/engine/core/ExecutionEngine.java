@@ -1,6 +1,5 @@
 package org.gemoc.execution.engine.core;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -22,7 +21,7 @@ public interface ExecutionEngine {
 	 * loading the model and instantiating the Model of Computation to the
 	 * model.
 	 */
-	public void initialize(Resource model);
+	public void initialize(String modelURI, String dseFilePath);
 
 	/**
 	 * Runs the engine indefinitely. Equivalent as running the engine -1 number

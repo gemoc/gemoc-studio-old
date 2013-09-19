@@ -86,6 +86,33 @@
                </appinfo>
             </annotation>
          </attribute>
+         <attribute name="eclFilePath" type="string">
+            <annotation>
+               <documentation>
+                  The path for the ECL file.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="solver_class" type="string">
+            <annotation>
+               <documentation>
+                  An implementation of the Solver.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.moc.Solver"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="feedbackPolicy_class" type="string">
+            <annotation>
+               <documentation>
+                  An implementation of the FeedbackPolicy interface.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy"/>
+               </appinfo>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

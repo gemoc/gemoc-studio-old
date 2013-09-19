@@ -1,6 +1,5 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
-import java.util.concurrent.Executor;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -11,6 +10,7 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
@@ -48,6 +48,7 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 		Solver solver = null;
 		Executor executor = null;
 		FeedbackPolicy feedbackPolicy = null;
+		String eclFilePath = null;
 
 		// get the extension objects
 		if (confElement != null) {
@@ -80,10 +81,17 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 			if (oFeedbackPolicy instanceof FeedbackPolicy) {
 				feedbackPolicy = (FeedbackPolicy) oFeedbackPolicy;
 			}
+			
+			final Object oEclFilePath = confElement
+					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_ECL_ATT);
+			if (oEclFilePath instanceof String) {
+				eclFilePath = (String) oEclFilePath;
+			}
+			
 		}
 
 		if (languageInitializer == null | modelLoader == null | solver == null | executor == null
-				| feedbackPolicy == null) {
+				| feedbackPolicy == null | eclFilePath == null) {
 			Activator.warn("One of the API elements is null", new NullPointerException());
 		}
 
@@ -91,7 +99,7 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 		// engine.launchEngine(modelPath);
 		try {
 			ExecutionEngine engine = new GemocExecutionEngine(languageInitializer, modelLoader, solver, executor, feedbackPolicy);
-			engine.launchEngine(modelPath);
+			engine.initialize(modelPath, eclFilePath);
 
 		} catch (Throwable e) {
 			Activator.error("Exception in the initialization of the engine", e);

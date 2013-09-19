@@ -33,13 +33,15 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 	private URI modelURI = null;
 	private URI metamodelURI = null;
 	private EPackage metamodelPackage = null;
-	private EObject modelRoot = null;
 
 	public GemocExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, Solver solver,
 			Executor executor, FeedbackPolicy feedbackPolicy) throws CoreException {
 		super(languageInitializer, modelLoader, solver, executor, feedbackPolicy);
-		
-				
+	}
+
+	@Override
+	public void initialize(String modelURI, String dseFilePath) {
+		super.initialize(modelURI, dseFilePath);
 	}
 
 	// Dependency towards

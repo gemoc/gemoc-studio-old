@@ -27,5 +27,9 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine,
+ org.gemoc.execution.engine.api_implementations.dsa,
+ org.gemoc.execution.engine.api_implementations.dse,
+ org.gemoc.execution.engine.api_implementations.feedback,
+ org.gemoc.execution.engine.api_implementations.moc,
  org.gemoc.execution.engine.core,
- org.gemoc.execution.engine.core.impl.ccsl.ecl.emf
+ org.gemoc.execution.engine.core.impl
