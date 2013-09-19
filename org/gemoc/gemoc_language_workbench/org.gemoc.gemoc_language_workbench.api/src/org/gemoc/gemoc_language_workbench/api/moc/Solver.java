@@ -3,8 +3,9 @@ package org.gemoc.gemoc_language_workbench.api.moc;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 
 /**
- * A solver is the visible interface of a constraint system that defines the
- * Model of Computation.
+ * A Solver is the visible interface of any constraint solver system that runs
+ * on the Model of Execution of a model, returns Steps upon requests and
+ * provides an API to influence the constraint-solving.
  * 
  * @author flatombe
  */
