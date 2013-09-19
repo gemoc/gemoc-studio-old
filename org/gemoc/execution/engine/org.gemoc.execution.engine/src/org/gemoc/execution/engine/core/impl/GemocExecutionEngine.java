@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.core.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -14,8 +15,13 @@ import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
 import org.gemoc.execution.engine.api_implementations.dse.EclEvent;
 import org.gemoc.execution.engine.api_implementations.moc.CcslStep;
 import org.gemoc.execution.engine.core.BasicExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.moc.Step;
+import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
+import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.trace.EventOccurrence;
@@ -29,8 +35,11 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 	private EPackage metamodelPackage = null;
 	private EObject modelRoot = null;
 
-	public GemocExecutionEngine(String languageName) {
-
+	public GemocExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, Solver solver,
+			Executor executor, FeedbackPolicy feedbackPolicy) throws CoreException {
+		super(languageInitializer, modelLoader, solver, executor, feedbackPolicy);
+		
+				
 	}
 
 	// Dependency towards

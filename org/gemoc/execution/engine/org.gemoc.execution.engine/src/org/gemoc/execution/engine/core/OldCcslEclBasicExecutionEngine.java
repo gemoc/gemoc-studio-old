@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.gemoc.execution.engine.core.impl.ccsl.ecl;
+package org.gemoc.execution.engine.core;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,7 +59,7 @@ import fr.inria.aoste.trace.Reference;
  * @author flatombe
  * 
  */
-public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
+public class OldCcslEclBasicExecutionEngine extends BasicExecutionEngine {
     private URI modelURI = null;
     private URI metamodelURI = null;
     private EPackage metamodelPackage = null;
@@ -71,7 +71,7 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
 	protected IXDSMLExecutor languageDSAExecutor;
 	
     
-    public CcslEclBasicExecutionEngine(String languageName) throws CoreException{
+    public OldCcslEclBasicExecutionEngine(String languageName) throws CoreException{
     	super();
     	
     	initializeXdsmlElements(languageName);
@@ -331,6 +331,11 @@ public class CcslEclBasicExecutionEngine extends BasicExecutionEngine {
         return res;
     }
 
+    
+    
+    
+    
+    
     @Override
     protected List<DomainSpecificEvent> match(Step step) {
         Activator.getMessagingSystem().debug("Matching the given step : " + step.toString(), Activator.PLUGIN_ID);

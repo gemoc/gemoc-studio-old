@@ -22,13 +22,19 @@ import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
  */
 public abstract class BasicExecutionEngine implements ExecutionEngine {
 
+	protected LanguageInitializer languageInitializer = null;
+	protected ModelLoader modelLoader = null;
 	protected Solver solver = null;
 	protected Executor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
-	protected ModelLoader modelLoader = null;
-	protected LanguageInitializer languageInitializer = null;
 
-	public BasicExecutionEngine() {
+	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, Solver solver,
+			Executor executor, FeedbackPolicy feedbackPolicy) {
+		this.languageInitializer = languageInitializer;
+		this.modelLoader = modelLoader;
+		this.solver = solver;
+		this.executor = executor;
+		this.feedbackPolicy = feedbackPolicy;
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core.impl.ccsl.ecl.emf;
+package org.gemoc.execution.engine.core;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ISafeRunnable;
@@ -15,15 +15,15 @@ import org.gemoc.execution.engine.core.impl.ccsl.ecl.CcslEclBasicExecutionEngine
  * @author flatombe
  * 
  */
-public class CcslEclEmfExecutionEngine extends CcslEclBasicExecutionEngine {
+public class OldCcslEclEmfExecutionEngine extends CcslEclBasicExecutionEngine {
 
-    public CcslEclEmfExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath,
+    public OldCcslEclEmfExecutionEngine(String ccslFilePath, String jarDsaFolderPath, String jarDependenciesFolderPath,
             String modelPath, String MMpath) {
         super(ccslFilePath, jarDsaFolderPath, jarDependenciesFolderPath, modelPath, MMpath);
         this.executor = new EmfExecutor(this.modelRoot);
     }
     
-    public CcslEclEmfExecutionEngine(String languageName) throws CoreException{
+    public OldCcslEclEmfExecutionEngine(String languageName) throws CoreException{
     	super(languageName);
     }
     
