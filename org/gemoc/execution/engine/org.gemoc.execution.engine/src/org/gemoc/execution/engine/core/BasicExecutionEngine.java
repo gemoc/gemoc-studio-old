@@ -9,6 +9,8 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.moc.Step;
+import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
+import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -23,6 +25,8 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected Solver solver = null;
 	protected Executor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
+	protected ModelLoader modelLoader = null;
+	protected LanguageInitializer languageInitializer = null;
 
 	public BasicExecutionEngine() {
 	}
@@ -30,6 +34,9 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	/**
 	 * Instantiates a list of Domain Specific Events depending on which event
 	 * occurrences are in the Step returned by the Solver.
+	 * 
+	 * Depends on the implementation used for the Solver, Step and Domain
+	 * Specific Event.
 	 * 
 	 * @param step
 	 * @return
@@ -83,6 +90,16 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	@Override
 	public FeedbackPolicy getFeedbackPolicy() {
 		return this.feedbackPolicy;
+	}
+
+	@Override
+	public ModelLoader getModelLoader() {
+		return this.modelLoader;
+	}
+
+	@Override
+	public LanguageInitializer getLanguageInitializer() {
+		return this.languageInitializer;
 	}
 
 	@Override

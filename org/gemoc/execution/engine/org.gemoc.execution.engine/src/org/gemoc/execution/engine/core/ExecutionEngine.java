@@ -3,6 +3,8 @@ package org.gemoc.execution.engine.core;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
+import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 
 /**
  * The visible face of the Execution Engine.
@@ -31,14 +33,14 @@ public interface ExecutionEngine {
 	public void runOneStep();
 
 	/**
-	 * Returns the executor used by the engine.
+	 * Returns the Executor used by the engine.
 	 * 
 	 * @return
 	 */
 	public Executor getExecutor();
 
 	/**
-	 * Returns the solver used by the engine.
+	 * Returns the Solver used by the engine.
 	 * 
 	 * @return
 	 */
@@ -52,5 +54,19 @@ public interface ExecutionEngine {
 	 * @return
 	 */
 	public FeedbackPolicy getFeedbackPolicy();
+
+	/**
+	 * Returns the ModelLoader used by the engine.
+	 * 
+	 * @return
+	 */
+	public ModelLoader getModelLoader();
+
+	/**
+	 * Returns the LanguageInitializer used by the engine.
+	 * 
+	 * @return
+	 */
+	public LanguageInitializer getLanguageInitializer();
 
 }
