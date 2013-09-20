@@ -14,5 +14,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface ECLFile extends EObject {
+public interface ECLFile extends FileResource {
 } // ECLFile

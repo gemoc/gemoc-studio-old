@@ -222,6 +222,7 @@ public class confSwitch<T> extends Switch<T> {
 			case confPackage.ECL_FILE: {
 				ECLFile eclFile = (ECLFile)theEObject;
 				T result = caseECLFile(eclFile);
+				if (result == null) result = caseFileResource(eclFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

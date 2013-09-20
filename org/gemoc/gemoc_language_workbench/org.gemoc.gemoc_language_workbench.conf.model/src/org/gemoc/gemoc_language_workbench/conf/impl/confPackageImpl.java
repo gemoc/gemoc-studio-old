@@ -743,6 +743,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		emfGenmodelEClass.getESuperTypes().add(this.getFileResource());
 		xTextEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
 		k3DSAProjectEClass.getESuperTypes().add(this.getDSAProject());
+		eclFileEClass.getESuperTypes().add(this.getFileResource());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(gemocLanguageWorkbenchConfigurationEClass, GemocLanguageWorkbenchConfiguration.class, "GemocLanguageWorkbenchConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
