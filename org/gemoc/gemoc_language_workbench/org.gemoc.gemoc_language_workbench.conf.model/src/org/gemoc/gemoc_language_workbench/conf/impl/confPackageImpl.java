@@ -15,6 +15,7 @@ import org.gemoc.gemoc_language_workbench.conf.CCSLMoCProject;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
+import org.gemoc.gemoc_language_workbench.conf.ECLFile;
 import org.gemoc.gemoc_language_workbench.conf.ECLProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
@@ -188,6 +189,13 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * @generated
 	 */
 	private EClass k3DSAProjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclFileEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -523,6 +531,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getECLProject_EclFile() {
+		return (EReference)eclProjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTreeEditorProject() {
 		return treeEditorProjectEClass;
 	}
@@ -570,6 +587,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 */
 	public EClass getK3DSAProject() {
 		return k3DSAProjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getECLFile() {
+		return eclFileEClass;
 	}
 
 	/**
@@ -653,6 +679,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		dseProjectEClass = createEClass(DSE_PROJECT);
 
 		eclProjectEClass = createEClass(ECL_PROJECT);
+		createEReference(eclProjectEClass, ECL_PROJECT__ECL_FILE);
 
 		treeEditorProjectEClass = createEClass(TREE_EDITOR_PROJECT);
 
@@ -664,6 +691,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		xTextEditorProjectEClass = createEClass(XTEXT_EDITOR_PROJECT);
 
 		k3DSAProjectEClass = createEClass(K3DSA_PROJECT);
+
+		eclFileEClass = createEClass(ECL_FILE);
 
 		// Create enums
 		projectKindEEnum = createEEnum(PROJECT_KIND);
@@ -760,6 +789,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEClass(dseProjectEClass, DSEProject.class, "DSEProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(eclProjectEClass, ECLProject.class, "ECLProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getECLProject_EclFile(), this.getECLFile(), null, "eclFile", null, 1, 1, ECLProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(treeEditorProjectEClass, TreeEditorProject.class, "TreeEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -771,6 +801,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEClass(xTextEditorProjectEClass, XTextEditorProject.class, "XTextEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(k3DSAProjectEClass, K3DSAProject.class, "K3DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(eclFileEClass, ECLFile.class, "ECLFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(projectKindEEnum, ProjectKind.class, "ProjectKind");

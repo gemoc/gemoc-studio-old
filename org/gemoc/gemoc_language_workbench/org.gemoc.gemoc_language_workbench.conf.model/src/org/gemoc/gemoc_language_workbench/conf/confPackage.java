@@ -712,13 +712,22 @@ public interface confPackage extends EPackage {
 	int ECL_PROJECT__PROJECT_KIND = DSE_PROJECT__PROJECT_KIND;
 
 	/**
+	 * The feature id for the '<em><b>Ecl File</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_PROJECT__ECL_FILE = DSE_PROJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>ECL Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_PROJECT_FEATURE_COUNT = DSE_PROJECT_FEATURE_COUNT + 0;
+	int ECL_PROJECT_FEATURE_COUNT = DSE_PROJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl <em>Tree Editor Project</em>}' class.
@@ -907,6 +916,25 @@ public interface confPackage extends EPackage {
 	int K3DSA_PROJECT_FEATURE_COUNT = DSA_PROJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ECLFileImpl <em>ECL File</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.ECLFileImpl
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLFile()
+	 * @generated
+	 */
+	int ECL_FILE = 21;
+
+	/**
+	 * The number of structural features of the '<em>ECL File</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_FILE_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -914,7 +942,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getProjectKind()
 	 * @generated
 	 */
-	int PROJECT_KIND = 21;
+	int PROJECT_KIND = 22;
 
 
 	/**
@@ -1221,6 +1249,17 @@ public interface confPackage extends EPackage {
 	EClass getECLProject();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.ECLProject#getEclFile <em>Ecl File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Ecl File</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.ECLProject#getEclFile()
+	 * @see #getECLProject()
+	 * @generated
+	 */
+	EReference getECLProject_EclFile();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject <em>Tree Editor Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1280,6 +1319,16 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getK3DSAProject();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ECLFile <em>ECL File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ECL File</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.ECLFile
+	 * @generated
+	 */
+	EClass getECLFile();
 
 	/**
 	 * Returns the meta object for enum '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}'.
@@ -1578,6 +1627,14 @@ public interface confPackage extends EPackage {
 		EClass ECL_PROJECT = eINSTANCE.getECLProject();
 
 		/**
+		 * The meta object literal for the '<em><b>Ecl File</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ECL_PROJECT__ECL_FILE = eINSTANCE.getECLProject_EclFile();
+
+		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl <em>Tree Editor Project</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1634,6 +1691,16 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass K3DSA_PROJECT = eINSTANCE.getK3DSAProject();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ECLFileImpl <em>ECL File</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.ECLFileImpl
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLFile()
+		 * @generated
+		 */
+		EClass ECL_FILE = eINSTANCE.getECLFile();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
