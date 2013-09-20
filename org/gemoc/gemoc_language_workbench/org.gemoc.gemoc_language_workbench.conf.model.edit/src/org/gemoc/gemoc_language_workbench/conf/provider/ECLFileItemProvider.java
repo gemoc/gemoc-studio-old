@@ -9,26 +9,25 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.gemoc.gemoc_language_workbench.conf.ECLProject;
-import org.gemoc.gemoc_language_workbench.conf.confFactory;
-import org.gemoc.gemoc_language_workbench.conf.confPackage;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.gemoc.gemoc_language_workbench.conf.ECLFile;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.gemoc_language_workbench.conf.ECLProject} object.
+ * This is the item provider adapter for a {@link org.gemoc.gemoc_language_workbench.conf.ECLFile} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ECLProjectItemProvider
-	extends DSEProjectItemProvider
+public class ECLFileItemProvider
+	extends FileResourceItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -41,7 +40,7 @@ public class ECLProjectItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ECLProjectItemProvider(AdapterFactory adapterFactory) {
+	public ECLFileItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,44 +60,14 @@ public class ECLProjectItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(confPackage.Literals.ECL_PROJECT__ECL_FILE);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns ECLProject.gif.
+	 * This returns ECLFile.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ECLProject"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ECLFile"));
 	}
 
 	/**
@@ -109,10 +78,10 @@ public class ECLProjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ECLProject)object).getProjectName();
+		String label = ((ECLFile)object).getLocationURI();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ECLProject_type") :
-			getString("_UI_ECLProject_type") + " " + label;
+			getString("_UI_ECLFile_type") :
+			getString("_UI_ECLFile_type") + " " + label;
 	}
 
 	/**
@@ -125,12 +94,6 @@ public class ECLProjectItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(ECLProject.class)) {
-			case confPackage.ECL_PROJECT__ECL_FILE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 
@@ -144,11 +107,6 @@ public class ECLProjectItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(confPackage.Literals.ECL_PROJECT__ECL_FILE,
-				 confFactory.eINSTANCE.createECLFile()));
 	}
 
 }

@@ -152,6 +152,10 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createK3DSAProjectAdapter();
 			}
 			@Override
+			public Adapter caseECLFile(ECLFile object) {
+				return createECLFileAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -462,6 +466,20 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createK3DSAProjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.ECLFile <em>ECL File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.gemoc_language_workbench.conf.ECLFile
+	 * @generated
+	 */
+	public Adapter createECLFileAdapter() {
 		return null;
 	}
 

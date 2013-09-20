@@ -141,6 +141,15 @@ public interface confFactory extends EFactory {
 	K3DSAProject createK3DSAProject();
 
 	/**
+	 * Returns a new object of class '<em>ECL File</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>ECL File</em>'.
+	 * @generated
+	 */
+	ECLFile createECLFile();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

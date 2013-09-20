@@ -219,6 +219,13 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case confPackage.ECL_FILE: {
+				ECLFile eclFile = (ECLFile)theEObject;
+				T result = caseECLFile(eclFile);
+				if (result == null) result = caseFileResource(eclFile);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -535,6 +542,21 @@ public class confSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseK3DSAProject(K3DSAProject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ECL File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ECL File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseECLFile(ECLFile object) {
 		return null;
 	}
 
