@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
@@ -21,11 +22,11 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 public class EmfExecutor implements Executor {
 
     private DomainSpecificAction lastExecutedAction;
-    private EObject modelRoot;
+    private Resource modelResource;
 
-    public EmfExecutor(EObject modelRoot) {
+    public EmfExecutor(Resource modelResource) {
         this.lastExecutedAction = null;
-        this.modelRoot = modelRoot;
+        this.modelResource = modelResource;
     }
     
     private Object executeWithEInvoke(EObject eObject, EOperation operation){
@@ -46,7 +47,7 @@ public class EmfExecutor implements Executor {
                         .debug("Cause of the InvocationTargetException is an UnsupportedOperationException, let's find the richEObject",
                                 Activator.PLUGIN_ID);
                 String linkedElementQualifiedName = this.getQualifiedName(eObject);
-                Iterator<EObject> modelIterator = this.modelRoot.eAllContents();
+                Iterator<EObject> modelIterator = this.modelResource.getContents().get(0).eAllContents();
                 while (modelIterator.hasNext()) {
                     EObject modelElement = modelIterator.next();
                     String modelElementQualifiedName = this.getQualifiedName(modelElement);
@@ -265,7 +266,7 @@ public class EmfExecutor implements Executor {
     
     
     private EObject getEObjectFromName(String name){
-        Iterator<EObject> modelIterator = this.modelRoot.eAllContents();
+        Iterator<EObject> modelIterator = this.modelResource.getContents().get(0).eAllContents();
         while (modelIterator.hasNext()) {
             EObject modelElement = modelIterator.next();
             String modelElementQualifiedName = this.getQualifiedName(modelElement);
@@ -423,7 +424,12 @@ public class EmfExecutor implements Executor {
 
     public String toString() {
         return this.getClass().getName() + "@[lastExecutedAction=" + lastExecutedAction.toString() + " ; modelRoot="
-                + modelRoot.toString() + "]";
+                + modelResource.toString() + "]";
     }
+
+	@Override
+	public void setModel(Resource modelResource) {
+		this.modelResource = modelResource;		
+	}
 
 }
