@@ -33,7 +33,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 
 	protected Resource modelResource = null;
 
-	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, Solver solver,
+	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, Solver solver, 
 			Executor executor, FeedbackPolicy feedbackPolicy) {
 		if (languageInitializer == null | modelLoader == null | solver == null | executor == null
 				| feedbackPolicy == null) {
@@ -62,9 +62,10 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected abstract List<DomainSpecificEvent> match(Step step);
 
 	@Override
-	public void initialize(String modelURI, String dseFilePath) {
+	public void initialize(String modelURI) {
 		this.modelResource = this.modelLoader.loadModel(modelURI);
 		// TODO: do something with the DSE file.
+		// Programatically generate the .extendendCCSL.
 	}
 
 	@Override

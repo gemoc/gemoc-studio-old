@@ -38,11 +38,8 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 			Executor executor, FeedbackPolicy feedbackPolicy) throws CoreException {
 		super(languageInitializer, modelLoader, solver, executor, feedbackPolicy);
 	}
-
-	@Override
-	public void initialize(String modelURI, String dseFilePath) {
-		super.initialize(modelURI, dseFilePath);
-	}
+	
+	
 
 	// Dependency towards
 	// fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock

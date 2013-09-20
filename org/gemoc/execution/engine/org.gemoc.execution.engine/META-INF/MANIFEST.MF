@@ -11,19 +11,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ocl.examples.interpreter,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
- fr.inria.aoste.trace,
- fr.inria.aoste.timesquare.ecl,
- fr.inria.aoste.timesquare.ccslkernel.solver.launch,
- fr.inria.aoste.timesquare.ccslkernel.library.xtext,
- fr.inria.aoste.timesquare.ccslkernel.model,
- fr.inria.aoste.timesquare.ccslkernel.modelunfolding,
- fr.inria.aoste.timesquare.ccslkernel.solver,
- fr.inria.aoste.timesquare.utils.timedsystem,
- fr.inria.aoste.timesquare.trace.util,
- fr.inria.aoste.timesquare.backend.manager,
  org.kermeta.utils.systemservices.eclipse,
  org.kermeta.utils.systemservices.api,
- org.gemoc.gemoc_language_workbench.api;bundle-version="1.0.0"
+ org.gemoc.gemoc_language_workbench.api,
+ fr.inria.aoste.trace;bundle-version="1.0.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine,
