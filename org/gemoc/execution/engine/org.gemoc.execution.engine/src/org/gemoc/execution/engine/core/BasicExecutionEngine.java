@@ -2,6 +2,8 @@ package org.gemoc.execution.engine.core;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.ISafeRunnable;
+import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
@@ -28,18 +30,23 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected Solver solver = null;
 	protected Executor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
-	
+
 	protected Resource modelResource = null;
 
 	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, Solver solver,
 			Executor executor, FeedbackPolicy feedbackPolicy) {
-		this.languageInitializer = languageInitializer;
-		this.modelLoader = modelLoader;
-		this.solver = solver;
-		this.executor = executor;
-		this.feedbackPolicy = feedbackPolicy;
-		
-		this.languageInitializer.initialize();
+		if (languageInitializer == null | modelLoader == null | solver == null | executor == null
+				| feedbackPolicy == null) {
+			throw new NullPointerException();
+		} else {
+			this.languageInitializer = languageInitializer;
+			this.modelLoader = modelLoader;
+			this.solver = solver;
+			this.executor = executor;
+			this.feedbackPolicy = feedbackPolicy;
+
+			this.languageInitializer.initialize();
+		}
 	}
 
 	/**
@@ -57,6 +64,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	@Override
 	public void initialize(String modelURI, String dseFilePath) {
 		this.modelResource = this.modelLoader.loadModel(modelURI);
+		// TODO: do something with the DSE file.
 	}
 
 	@Override
@@ -76,21 +84,42 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 
 	@Override
 	public void runOneStep() {
-		Activator.getMessagingSystem().info(">>Running one step", Activator.PLUGIN_ID);
+		ISafeRunnable runnable = new ISafeRunnable() {
+			@Override
+			public void handleException(Throwable e) {
+				Activator.error(e.getMessage(), e);
+			}
+
+			@Override
+			public void run() throws Exception {
+				Activator.getMessagingSystem().info(">>Running one step", Activator.PLUGIN_ID);
+				BasicExecutionEngine.this.doOneStep();
+				Activator.getMessagingSystem().info("<<Step finished", Activator.PLUGIN_ID);
+			}
+		};
+		SafeRunner.run(runnable);
+
+	}
+
+	private void doOneStep() {
+		// Retrieve information from the solver.
 		Step step = this.solver.getNextStep();
 		Activator.getMessagingSystem().debug("The solver has correctly returned a step to the engine",
 				Activator.PLUGIN_ID);
 
+		// Create the Domain Specific Events according to the information
+		// returned to us by the solver.
 		List<DomainSpecificEvent> events = this.match(step);
 		Activator.getMessagingSystem().info("Number of events matched : " + events.size(), Activator.PLUGIN_ID);
 
+		// For each event, execute its action(s) and take into account the
+		// feedback the Domain Specific Action returns.
 		for (DomainSpecificEvent event : events) {
 			FeedbackData feedback = this.executor.execute(event);
 			Activator.getMessagingSystem().info(
 					"Feedback from event " + event.toString() + " is : " + feedback.toString(), Activator.PLUGIN_ID);
 			this.feedbackPolicy.processFeedback(feedback, solver);
 		}
-		Activator.getMessagingSystem().info("<<Step finished", Activator.PLUGIN_ID);
 	}
 
 	@Override
