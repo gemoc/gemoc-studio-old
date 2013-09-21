@@ -16,17 +16,26 @@ Library stateBasedTest{
 		StateBasedRelationDefinition myDef[rel1]{
 			init initS;
 			State initS (
-				out : init2loop ;
+				out : init2intermediate ;
 			)
-			State loop (
-				in : init2loop, selfzazaLoop;
-				out : selfzazaLoop;
+			State interMediate(
+				in : init2intermediate;
+				out : intermediate2loop;
 			)
 			
-			from initS to loop : init2loop(
+			State loop (
+				in : intermediate2loop, selfLoop;
+				out : selfLoop;
+			)
+			
+			from interMediate to loop : intermediate2loop(
 				when firstParam		
 			)
-			from loop to loop: selfzazaLoop(
+			
+			from initS to interMediate : init2intermediate(
+				when firstParam		
+			)
+			from loop to loop: selfLoop(
 				when secondParam
 				do kill (firstParam)
 			)
