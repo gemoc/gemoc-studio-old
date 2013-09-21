@@ -5,20 +5,21 @@
       <ownedStates name="init" outputTransitions="//@relationLibraries.0/@relationDefinitions.0/@ownedTransitions.2"/>
       <ownedStates name="waitLeft" outputTransitions="//@relationLibraries.0/@relationDefinitions.0/@ownedTransitions.0" inputTransitions="//@relationLibraries.0/@relationDefinitions.0/@ownedTransitions.1"/>
       <ownedStates name="waitRight" outputTransitions="//@relationLibraries.0/@relationDefinitions.0/@ownedTransitions.1" inputTransitions="//@relationLibraries.0/@relationDefinitions.0/@ownedTransitions.0 //@relationLibraries.0/@relationDefinitions.0/@ownedTransitions.2"/>
-      <ownedTransitions name="leftOccurs" source="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.1" target="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.2" trigger="//@relationLibraries.0/@relationDeclarations.0/@parameters.0" actions="//@relationLibraries.0/@relationDefinitions.0/@concreteEntities.0"/>
-      <ownedTransitions name="rightOccurs" source="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.2" target="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.1" trigger="//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
-      <ownedTransitions name="leftOccurs" source="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.0" target="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.2" trigger="//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
+      <ownedTransitions name="leftOccurs" source="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.1" target="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.2">
+        <actions xsi:type="moccmetamodel:IntegerAssignment" name="i_is_i_plus_one">
+          <leftValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntegerRef" name="i_ref" integerElem="//@relationLibraries.0/@elements.0"/>
+          <rightValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntPlus">
+            <leftValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntegerRef" name="i_ref" integerElem="//@relationLibraries.0/@elements.0"/>
+            <rightValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntegerRef" name="one_ref"/>
+          </rightValue>
+        </actions>
+      </ownedTransitions>
+      <ownedTransitions name="rightOccurs" source="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.2" target="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.1"/>
+      <ownedTransitions name="leftOccurs" source="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.0" target="//@relationLibraries.0/@relationDefinitions.0/@ownedStates.2"/>
       <classicalExpressions xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntPlus" name="i_plus_one">
         <leftValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntegerRef" name="i_ref" integerElem="//@relationLibraries.0/@elements.0"/>
-        <rightValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntegerRef" name="one_ref" integerElem="//@relationLibraries.0/@relationDefinitions.0/@concreteEntities.1"/>
+        <rightValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntegerRef" name="one_ref"/>
       </classicalExpressions>
-      <concreteEntities xsi:type="moccmetamodel:IntegerAssignment" name="i_is_i_plus_one">
-        <leftValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntegerRef" name="i_ref" integerElem="//@relationLibraries.0/@elements.0"/>
-        <rightValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntPlus">
-          <leftValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntegerRef" name="i_ref" integerElem="//@relationLibraries.0/@elements.0"/>
-          <rightValue xsi:type="fr.inria.aoste.timemodel.classicalexpression:IntegerRef" name="one_ref" integerElem="//@relationLibraries.0/@relationDefinitions.0/@concreteEntities.1"/>
-        </rightValue>
-      </concreteEntities>
       <concreteEntities xsi:type="fr.inria.aoste.timemodel.basicTypes:IntegerElement" name="one" value="1"/>
     </relationDefinitions>
     <elements xsi:type="fr.inria.aoste.timemodel.basicTypes:IntegerElement" name="i" value="12"/>

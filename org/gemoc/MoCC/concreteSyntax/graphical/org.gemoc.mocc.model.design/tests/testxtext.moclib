@@ -1,21 +1,34 @@
-Library zaz{
+/*
+ * CCSL specification
+ * @author:  Julien Deantoni
+ * date :  Tue September 20 2013  09:56:50 CEST 
+ */
+
+Library stateBasedTest{
 	imports{
 		 // import statements
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0; 
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1; 
 		
 	}
-	RelationLibrary zazaz{
+	RelationLibrary stateBasedRelations{
 		RelationDeclaration rel1(firstParam:clock, secondParam:clock)
 		StateBasedRelationDefinition myDef[rel1]{
-			init initS ;
-			State initS ;
-			State zaza;
-			from initS to zaza : init2zaza(
+			init initS;
+			State initS (
+				out : init2loop ;
+			)
+			State loop (
+				in : init2loop, selfzazaLoop;
+				out : selfzazaLoop;
+			)
+			
+			from initS to loop : init2loop(
 				when firstParam		
 			)
-			from zaza to zaza : selfzazaLoop(
+			from loop to loop: selfzazaLoop(
 				when secondParam
+				do kill (firstParam)
 			)
 		}
 	}

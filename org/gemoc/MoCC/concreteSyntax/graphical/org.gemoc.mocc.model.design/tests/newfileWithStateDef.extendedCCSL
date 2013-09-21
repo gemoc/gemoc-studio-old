@@ -1,6 +1,6 @@
 /*
  * CCSL specification
- * @author:  jdeanton
+ * @author:  Julien DeAntoni
  * date :  Tue September 3 2013  05:56:50 CEST 
  */
 ClockConstraintSystem MySpec {

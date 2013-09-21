@@ -34,10 +34,20 @@
         eType="#//State" eOpposite="#//State/inputTransitions"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/BooleanExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" lowerBound="1"
-        upperBound="-1" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"/>
+        eType="#//Trigger" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
-        eType="#//IntegerAssignment"/>
+        eType="#//Action" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateBaseRelationLibrary" eSuperTypes="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/Library"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IntegerAssignment" eSuperTypes="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/BinaryIntegerExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerAssignment" eSuperTypes="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/BinaryIntegerExpression #//Action"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Trigger">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trueTriggers" upperBound="-1"
+        eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="falseTriggers" upperBound="-1"
+        eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Action" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FinishClock" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" lowerBound="1" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"/>
+  </eClassifiers>
 </ecore:EPackage>

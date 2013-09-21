@@ -254,13 +254,46 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cStateKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Group cGroup_4_0 = (Group)cGroup_4.eContents().get(0);
+		private final Keyword cInKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
+		private final Keyword cColonKeyword_4_0_1 = (Keyword)cGroup_4_0.eContents().get(1);
+		private final Assignment cInputTransitionsAssignment_4_0_2 = (Assignment)cGroup_4_0.eContents().get(2);
+		private final CrossReference cInputTransitionsTransitionCrossReference_4_0_2_0 = (CrossReference)cInputTransitionsAssignment_4_0_2.eContents().get(0);
+		private final RuleCall cInputTransitionsTransitionEStringParserRuleCall_4_0_2_0_1 = (RuleCall)cInputTransitionsTransitionCrossReference_4_0_2_0.eContents().get(1);
+		private final Group cGroup_4_1 = (Group)cGroup_4.eContents().get(1);
+		private final Keyword cCommaKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
+		private final Assignment cInputTransitionsAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
+		private final CrossReference cInputTransitionsTransitionCrossReference_4_1_1_0 = (CrossReference)cInputTransitionsAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cInputTransitionsTransitionEStringParserRuleCall_4_1_1_0_1 = (RuleCall)cInputTransitionsTransitionCrossReference_4_1_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Group cGroup_5_0 = (Group)cGroup_5.eContents().get(0);
+		private final Keyword cOutKeyword_5_0_0 = (Keyword)cGroup_5_0.eContents().get(0);
+		private final Keyword cColonKeyword_5_0_1 = (Keyword)cGroup_5_0.eContents().get(1);
+		private final Assignment cOutputTransitionsAssignment_5_0_2 = (Assignment)cGroup_5_0.eContents().get(2);
+		private final CrossReference cOutputTransitionsTransitionCrossReference_5_0_2_0 = (CrossReference)cOutputTransitionsAssignment_5_0_2.eContents().get(0);
+		private final RuleCall cOutputTransitionsTransitionEStringParserRuleCall_5_0_2_0_1 = (RuleCall)cOutputTransitionsTransitionCrossReference_5_0_2_0.eContents().get(1);
+		private final Group cGroup_5_1 = (Group)cGroup_5.eContents().get(1);
+		private final Keyword cCommaKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
+		private final Assignment cOutputTransitionsAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
+		private final CrossReference cOutputTransitionsTransitionCrossReference_5_1_1_0 = (CrossReference)cOutputTransitionsAssignment_5_1_1.eContents().get(0);
+		private final RuleCall cOutputTransitionsTransitionEStringParserRuleCall_5_1_1_0_1 = (RuleCall)cOutputTransitionsTransitionCrossReference_5_1_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
+		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//State returns moccmetamodel::State:
-		//	{moccmetamodel::State} "State" name=EString ";";
+		//	{moccmetamodel::State} "State" name=EString "(" (("in" ":" inputTransitions+=[moccmetamodel::Transition|EString])?
+		//	("," inputTransitions+=[moccmetamodel::Transition|EString])* ";")? (("out" ":"
+		//	outputTransitions+=[moccmetamodel::Transition|EString])? ("," outputTransitions+=[moccmetamodel::Transition|EString])*
+		//	";")? ")";
 		public ParserRule getRule() { return rule; }
 
-		//{moccmetamodel::State} "State" name=EString ";"
+		//{moccmetamodel::State} "State" name=EString "(" (("in" ":" inputTransitions+=[moccmetamodel::Transition|EString])? (","
+		//inputTransitions+=[moccmetamodel::Transition|EString])* ";")? (("out" ":"
+		//outputTransitions+=[moccmetamodel::Transition|EString])? ("," outputTransitions+=[moccmetamodel::Transition|EString])*
+		//";")? ")"
 		public Group getGroup() { return cGroup; }
 
 		//{moccmetamodel::State}
@@ -275,8 +308,91 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 
+		//"("
+		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
+
+		//(("in" ":" inputTransitions+=[moccmetamodel::Transition|EString])? (","
+		//inputTransitions+=[moccmetamodel::Transition|EString])* ";")?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//("in" ":" inputTransitions+=[moccmetamodel::Transition|EString])?
+		public Group getGroup_4_0() { return cGroup_4_0; }
+
+		//"in"
+		public Keyword getInKeyword_4_0_0() { return cInKeyword_4_0_0; }
+
+		//":"
+		public Keyword getColonKeyword_4_0_1() { return cColonKeyword_4_0_1; }
+
+		//inputTransitions+=[moccmetamodel::Transition|EString]
+		public Assignment getInputTransitionsAssignment_4_0_2() { return cInputTransitionsAssignment_4_0_2; }
+
+		//[moccmetamodel::Transition|EString]
+		public CrossReference getInputTransitionsTransitionCrossReference_4_0_2_0() { return cInputTransitionsTransitionCrossReference_4_0_2_0; }
+
+		//EString
+		public RuleCall getInputTransitionsTransitionEStringParserRuleCall_4_0_2_0_1() { return cInputTransitionsTransitionEStringParserRuleCall_4_0_2_0_1; }
+
+		//("," inputTransitions+=[moccmetamodel::Transition|EString])*
+		public Group getGroup_4_1() { return cGroup_4_1; }
+
+		//","
+		public Keyword getCommaKeyword_4_1_0() { return cCommaKeyword_4_1_0; }
+
+		//inputTransitions+=[moccmetamodel::Transition|EString]
+		public Assignment getInputTransitionsAssignment_4_1_1() { return cInputTransitionsAssignment_4_1_1; }
+
+		//[moccmetamodel::Transition|EString]
+		public CrossReference getInputTransitionsTransitionCrossReference_4_1_1_0() { return cInputTransitionsTransitionCrossReference_4_1_1_0; }
+
+		//EString
+		public RuleCall getInputTransitionsTransitionEStringParserRuleCall_4_1_1_0_1() { return cInputTransitionsTransitionEStringParserRuleCall_4_1_1_0_1; }
+
 		//";"
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+		public Keyword getSemicolonKeyword_4_2() { return cSemicolonKeyword_4_2; }
+
+		//(("out" ":" outputTransitions+=[moccmetamodel::Transition|EString])? (","
+		//outputTransitions+=[moccmetamodel::Transition|EString])* ";")?
+		public Group getGroup_5() { return cGroup_5; }
+
+		//("out" ":" outputTransitions+=[moccmetamodel::Transition|EString])?
+		public Group getGroup_5_0() { return cGroup_5_0; }
+
+		//"out"
+		public Keyword getOutKeyword_5_0_0() { return cOutKeyword_5_0_0; }
+
+		//":"
+		public Keyword getColonKeyword_5_0_1() { return cColonKeyword_5_0_1; }
+
+		//outputTransitions+=[moccmetamodel::Transition|EString]
+		public Assignment getOutputTransitionsAssignment_5_0_2() { return cOutputTransitionsAssignment_5_0_2; }
+
+		//[moccmetamodel::Transition|EString]
+		public CrossReference getOutputTransitionsTransitionCrossReference_5_0_2_0() { return cOutputTransitionsTransitionCrossReference_5_0_2_0; }
+
+		//EString
+		public RuleCall getOutputTransitionsTransitionEStringParserRuleCall_5_0_2_0_1() { return cOutputTransitionsTransitionEStringParserRuleCall_5_0_2_0_1; }
+
+		//("," outputTransitions+=[moccmetamodel::Transition|EString])*
+		public Group getGroup_5_1() { return cGroup_5_1; }
+
+		//","
+		public Keyword getCommaKeyword_5_1_0() { return cCommaKeyword_5_1_0; }
+
+		//outputTransitions+=[moccmetamodel::Transition|EString]
+		public Assignment getOutputTransitionsAssignment_5_1_1() { return cOutputTransitionsAssignment_5_1_1; }
+
+		//[moccmetamodel::Transition|EString]
+		public CrossReference getOutputTransitionsTransitionCrossReference_5_1_1_0() { return cOutputTransitionsTransitionCrossReference_5_1_1_0; }
+
+		//EString
+		public RuleCall getOutputTransitionsTransitionEStringParserRuleCall_5_1_1_0_1() { return cOutputTransitionsTransitionEStringParserRuleCall_5_1_1_0_1; }
+
+		//";"
+		public Keyword getSemicolonKeyword_5_2() { return cSemicolonKeyword_5_2; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
 	}
 
 	public class TransitionElements extends AbstractParserRuleElementFinder {
@@ -301,36 +417,20 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cGuardBooleanExpressionEStringParserRuleCall_7_1_0_1 = (RuleCall)cGuardBooleanExpressionCrossReference_7_1_0.eContents().get(1);
 		private final Keyword cWhenKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		private final Assignment cTriggerAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final CrossReference cTriggerClockCrossReference_9_0 = (CrossReference)cTriggerAssignment_9.eContents().get(0);
-		private final RuleCall cTriggerClockEStringParserRuleCall_9_0_1 = (RuleCall)cTriggerClockCrossReference_9_0.eContents().get(1);
+		private final RuleCall cTriggerTriggerParserRuleCall_9_0 = (RuleCall)cTriggerAssignment_9.eContents().get(0);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cAndKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Assignment cTriggerAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
-		private final CrossReference cTriggerClockCrossReference_10_1_0 = (CrossReference)cTriggerAssignment_10_1.eContents().get(0);
-		private final RuleCall cTriggerClockEStringParserRuleCall_10_1_0_1 = (RuleCall)cTriggerClockCrossReference_10_1_0.eContents().get(1);
-		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cDoKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Assignment cActionsAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
-		private final CrossReference cActionsIntegerAssignmentCrossReference_11_1_0 = (CrossReference)cActionsAssignment_11_1.eContents().get(0);
-		private final RuleCall cActionsIntegerAssignmentEStringParserRuleCall_11_1_0_1 = (RuleCall)cActionsIntegerAssignmentCrossReference_11_1_0.eContents().get(1);
-		private final Group cGroup_11_2 = (Group)cGroup_11.eContents().get(2);
-		private final Keyword cCommaKeyword_11_2_0 = (Keyword)cGroup_11_2.eContents().get(0);
-		private final Assignment cActionsAssignment_11_2_1 = (Assignment)cGroup_11_2.eContents().get(1);
-		private final CrossReference cActionsIntegerAssignmentCrossReference_11_2_1_0 = (CrossReference)cActionsAssignment_11_2_1.eContents().get(0);
-		private final RuleCall cActionsIntegerAssignmentEStringParserRuleCall_11_2_1_0_1 = (RuleCall)cActionsIntegerAssignmentCrossReference_11_2_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Keyword cDoKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Assignment cActionsAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final RuleCall cActionsActionParserRuleCall_10_1_0 = (RuleCall)cActionsAssignment_10_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
 		//Transition returns moccmetamodel::Transition:
 		//	"from" source=[moccmetamodel::State|EString] "to" target=[moccmetamodel::State|EString] ":" name=EString "(" ("if"
-		//	guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger+=[TimeModel::Clock|EString] ("and"
-		//	trigger+=[TimeModel::Clock|EString])* ("do " actions+=[moccmetamodel::IntegerAssignment|EString] (","
-		//	actions+=[moccmetamodel::IntegerAssignment|EString])*)* ")";
+		//	guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger=Trigger ("do " actions+=Action)* ")";
 		public ParserRule getRule() { return rule; }
 
 		//"from" source=[moccmetamodel::State|EString] "to" target=[moccmetamodel::State|EString] ":" name=EString "(" ("if"
-		//guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger+=[TimeModel::Clock|EString] ("and"
-		//trigger+=[TimeModel::Clock|EString])* ("do " actions+=[moccmetamodel::IntegerAssignment|EString] (","
-		//actions+=[moccmetamodel::IntegerAssignment|EString])*)* ")"
+		//guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger=Trigger ("do " actions+=Action)* ")"
 		public Group getGroup() { return cGroup; }
 
 		//"from"
@@ -387,62 +487,201 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 		//"when"
 		public Keyword getWhenKeyword_8() { return cWhenKeyword_8; }
 
-		//trigger+=[TimeModel::Clock|EString]
+		//trigger=Trigger
 		public Assignment getTriggerAssignment_9() { return cTriggerAssignment_9; }
 
-		//[TimeModel::Clock|EString]
-		public CrossReference getTriggerClockCrossReference_9_0() { return cTriggerClockCrossReference_9_0; }
+		//Trigger
+		public RuleCall getTriggerTriggerParserRuleCall_9_0() { return cTriggerTriggerParserRuleCall_9_0; }
 
-		//EString
-		public RuleCall getTriggerClockEStringParserRuleCall_9_0_1() { return cTriggerClockEStringParserRuleCall_9_0_1; }
-
-		//("and" trigger+=[TimeModel::Clock|EString])*
+		//("do " actions+=Action)*
 		public Group getGroup_10() { return cGroup_10; }
 
-		//"and"
-		public Keyword getAndKeyword_10_0() { return cAndKeyword_10_0; }
-
-		//trigger+=[TimeModel::Clock|EString]
-		public Assignment getTriggerAssignment_10_1() { return cTriggerAssignment_10_1; }
-
-		//[TimeModel::Clock|EString]
-		public CrossReference getTriggerClockCrossReference_10_1_0() { return cTriggerClockCrossReference_10_1_0; }
-
-		//EString
-		public RuleCall getTriggerClockEStringParserRuleCall_10_1_0_1() { return cTriggerClockEStringParserRuleCall_10_1_0_1; }
-
-		//("do " actions+=[moccmetamodel::IntegerAssignment|EString] ("," actions+=[moccmetamodel::IntegerAssignment|EString])*)*
-		public Group getGroup_11() { return cGroup_11; }
-
 		//"do "
-		public Keyword getDoKeyword_11_0() { return cDoKeyword_11_0; }
+		public Keyword getDoKeyword_10_0() { return cDoKeyword_10_0; }
 
-		//actions+=[moccmetamodel::IntegerAssignment|EString]
-		public Assignment getActionsAssignment_11_1() { return cActionsAssignment_11_1; }
+		//actions+=Action
+		public Assignment getActionsAssignment_10_1() { return cActionsAssignment_10_1; }
 
-		//[moccmetamodel::IntegerAssignment|EString]
-		public CrossReference getActionsIntegerAssignmentCrossReference_11_1_0() { return cActionsIntegerAssignmentCrossReference_11_1_0; }
-
-		//EString
-		public RuleCall getActionsIntegerAssignmentEStringParserRuleCall_11_1_0_1() { return cActionsIntegerAssignmentEStringParserRuleCall_11_1_0_1; }
-
-		//("," actions+=[moccmetamodel::IntegerAssignment|EString])*
-		public Group getGroup_11_2() { return cGroup_11_2; }
-
-		//","
-		public Keyword getCommaKeyword_11_2_0() { return cCommaKeyword_11_2_0; }
-
-		//actions+=[moccmetamodel::IntegerAssignment|EString]
-		public Assignment getActionsAssignment_11_2_1() { return cActionsAssignment_11_2_1; }
-
-		//[moccmetamodel::IntegerAssignment|EString]
-		public CrossReference getActionsIntegerAssignmentCrossReference_11_2_1_0() { return cActionsIntegerAssignmentCrossReference_11_2_1_0; }
-
-		//EString
-		public RuleCall getActionsIntegerAssignmentEStringParserRuleCall_11_2_1_0_1() { return cActionsIntegerAssignmentEStringParserRuleCall_11_2_1_0_1; }
+		//Action
+		public RuleCall getActionsActionParserRuleCall_10_1_0() { return cActionsActionParserRuleCall_10_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_12() { return cRightParenthesisKeyword_12; }
+		public Keyword getRightParenthesisKeyword_11() { return cRightParenthesisKeyword_11; }
+	}
+
+	public class ActionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Action");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIntegerAssignemntParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cFinishClockParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Action returns moccmetamodel::Action:
+		//	IntegerAssignemnt | FinishClock;
+		public ParserRule getRule() { return rule; }
+
+		//IntegerAssignemnt | FinishClock
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//IntegerAssignemnt
+		public RuleCall getIntegerAssignemntParserRuleCall_0() { return cIntegerAssignemntParserRuleCall_0; }
+
+		//FinishClock
+		public RuleCall getFinishClockParserRuleCall_1() { return cFinishClockParserRuleCall_1; }
+	}
+
+	public class FinishClockElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FinishClock");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cKillKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cClockAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cClockClockCrossReference_2_0 = (CrossReference)cClockAssignment_2.eContents().get(0);
+		private final RuleCall cClockClockEStringParserRuleCall_2_0_1 = (RuleCall)cClockClockCrossReference_2_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//FinishClock returns moccmetamodel::FinishClock:
+		//	"kill" "(" clock=[TimeModel::Clock|EString] ")";
+		public ParserRule getRule() { return rule; }
+
+		//"kill" "(" clock=[TimeModel::Clock|EString] ")"
+		public Group getGroup() { return cGroup; }
+
+		//"kill"
+		public Keyword getKillKeyword_0() { return cKillKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//clock=[TimeModel::Clock|EString]
+		public Assignment getClockAssignment_2() { return cClockAssignment_2; }
+
+		//[TimeModel::Clock|EString]
+		public CrossReference getClockClockCrossReference_2_0() { return cClockClockCrossReference_2_0; }
+
+		//EString
+		public RuleCall getClockClockEStringParserRuleCall_2_0_1() { return cClockClockEStringParserRuleCall_2_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+	}
+
+	public class TriggerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Trigger");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cTrueTriggersAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final CrossReference cTrueTriggersClockCrossReference_0_0_0 = (CrossReference)cTrueTriggersAssignment_0_0.eContents().get(0);
+		private final RuleCall cTrueTriggersClockEStringParserRuleCall_0_0_0_1 = (RuleCall)cTrueTriggersClockCrossReference_0_0_0.eContents().get(1);
+		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
+		private final Group cGroup_0_1_0 = (Group)cGroup_0_1.eContents().get(0);
+		private final Keyword cNotKeyword_0_1_0_0 = (Keyword)cGroup_0_1_0.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0_1_0_1 = (Keyword)cGroup_0_1_0.eContents().get(1);
+		private final Assignment cFalseTriggersAssignment_0_1_0_2 = (Assignment)cGroup_0_1_0.eContents().get(2);
+		private final CrossReference cFalseTriggersClockCrossReference_0_1_0_2_0 = (CrossReference)cFalseTriggersAssignment_0_1_0_2.eContents().get(0);
+		private final RuleCall cFalseTriggersClockEStringParserRuleCall_0_1_0_2_0_1 = (RuleCall)cFalseTriggersClockCrossReference_0_1_0_2_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cFullStopKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Assignment cTrueTriggersAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final CrossReference cTrueTriggersClockCrossReference_1_0_1_0 = (CrossReference)cTrueTriggersAssignment_1_0_1.eContents().get(0);
+		private final RuleCall cTrueTriggersClockEStringParserRuleCall_1_0_1_0_1 = (RuleCall)cTrueTriggersClockCrossReference_1_0_1_0.eContents().get(1);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Group cGroup_1_1_0 = (Group)cGroup_1_1.eContents().get(0);
+		private final Keyword cNotKeyword_1_1_0_0 = (Keyword)cGroup_1_1_0.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1_1_0_1 = (Keyword)cGroup_1_1_0.eContents().get(1);
+		private final Assignment cFalseTriggersAssignment_1_1_0_2 = (Assignment)cGroup_1_1_0.eContents().get(2);
+		private final CrossReference cFalseTriggersClockCrossReference_1_1_0_2_0 = (CrossReference)cFalseTriggersAssignment_1_1_0_2.eContents().get(0);
+		private final RuleCall cFalseTriggersClockEStringParserRuleCall_1_1_0_2_0_1 = (RuleCall)cFalseTriggersClockCrossReference_1_1_0_2_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		
+		////('and' trigger+=[TimeModel::Clock|EString])*
+		//Trigger returns moccmetamodel::Trigger:
+		//	(trueTriggers+=[TimeModel::Clock|EString] | ("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")")+ ("."
+		//	trueTriggers+=[TimeModel::Clock|EString] | ("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")")*;
+		public ParserRule getRule() { return rule; }
+
+		//(trueTriggers+=[TimeModel::Clock|EString] | ("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")")+ ("."
+		//trueTriggers+=[TimeModel::Clock|EString] | ("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")")*
+		public Group getGroup() { return cGroup; }
+
+		//(trueTriggers+=[TimeModel::Clock|EString] | ("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")")+
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
+		//trueTriggers+=[TimeModel::Clock|EString]
+		public Assignment getTrueTriggersAssignment_0_0() { return cTrueTriggersAssignment_0_0; }
+
+		//[TimeModel::Clock|EString]
+		public CrossReference getTrueTriggersClockCrossReference_0_0_0() { return cTrueTriggersClockCrossReference_0_0_0; }
+
+		//EString
+		public RuleCall getTrueTriggersClockEStringParserRuleCall_0_0_0_1() { return cTrueTriggersClockEStringParserRuleCall_0_0_0_1; }
+
+		//("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")"
+		public Group getGroup_0_1() { return cGroup_0_1; }
+
+		//"not" "(" falseTriggers+=[TimeModel::Clock|EString]
+		public Group getGroup_0_1_0() { return cGroup_0_1_0; }
+
+		//"not"
+		public Keyword getNotKeyword_0_1_0_0() { return cNotKeyword_0_1_0_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_0_1_0_1() { return cLeftParenthesisKeyword_0_1_0_1; }
+
+		//falseTriggers+=[TimeModel::Clock|EString]
+		public Assignment getFalseTriggersAssignment_0_1_0_2() { return cFalseTriggersAssignment_0_1_0_2; }
+
+		//[TimeModel::Clock|EString]
+		public CrossReference getFalseTriggersClockCrossReference_0_1_0_2_0() { return cFalseTriggersClockCrossReference_0_1_0_2_0; }
+
+		//EString
+		public RuleCall getFalseTriggersClockEStringParserRuleCall_0_1_0_2_0_1() { return cFalseTriggersClockEStringParserRuleCall_0_1_0_2_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_0_1_1() { return cRightParenthesisKeyword_0_1_1; }
+
+		//("." trueTriggers+=[TimeModel::Clock|EString] | ("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")")*
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//"." trueTriggers+=[TimeModel::Clock|EString]
+		public Group getGroup_1_0() { return cGroup_1_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_0_0() { return cFullStopKeyword_1_0_0; }
+
+		//trueTriggers+=[TimeModel::Clock|EString]
+		public Assignment getTrueTriggersAssignment_1_0_1() { return cTrueTriggersAssignment_1_0_1; }
+
+		//[TimeModel::Clock|EString]
+		public CrossReference getTrueTriggersClockCrossReference_1_0_1_0() { return cTrueTriggersClockCrossReference_1_0_1_0; }
+
+		//EString
+		public RuleCall getTrueTriggersClockEStringParserRuleCall_1_0_1_0_1() { return cTrueTriggersClockEStringParserRuleCall_1_0_1_0_1; }
+
+		//("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")"
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//"not" "(" falseTriggers+=[TimeModel::Clock|EString]
+		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
+
+		//"not"
+		public Keyword getNotKeyword_1_1_0_0() { return cNotKeyword_1_1_0_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1_1_0_1() { return cLeftParenthesisKeyword_1_1_0_1; }
+
+		//falseTriggers+=[TimeModel::Clock|EString]
+		public Assignment getFalseTriggersAssignment_1_1_0_2() { return cFalseTriggersAssignment_1_1_0_2; }
+
+		//[TimeModel::Clock|EString]
+		public CrossReference getFalseTriggersClockCrossReference_1_1_0_2_0() { return cFalseTriggersClockCrossReference_1_1_0_2_0; }
+
+		//EString
+		public RuleCall getFalseTriggersClockEStringParserRuleCall_1_1_0_2_0_1() { return cFalseTriggersClockEStringParserRuleCall_1_1_0_2_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_1_1_1() { return cRightParenthesisKeyword_1_1_1; }
 	}
 
 	public class IntegerExpressionElements extends AbstractParserRuleElementFinder {
@@ -537,6 +776,9 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 	private StateMachineRelationDefinitionElements pStateMachineRelationDefinition;
 	private StateElements pState;
 	private TransitionElements pTransition;
+	private ActionElements pAction;
+	private FinishClockElements pFinishClock;
+	private TriggerElements pTrigger;
 	private IntegerExpressionElements pIntegerExpression;
 	private IntegerAssignemntElements pIntegerAssignemnt;
 	
@@ -613,7 +855,10 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//State returns moccmetamodel::State:
-	//	{moccmetamodel::State} "State" name=EString ";";
+	//	{moccmetamodel::State} "State" name=EString "(" (("in" ":" inputTransitions+=[moccmetamodel::Transition|EString])?
+	//	("," inputTransitions+=[moccmetamodel::Transition|EString])* ";")? (("out" ":"
+	//	outputTransitions+=[moccmetamodel::Transition|EString])? ("," outputTransitions+=[moccmetamodel::Transition|EString])*
+	//	";")? ")";
 	public StateElements getStateAccess() {
 		return (pState != null) ? pState : (pState = new StateElements());
 	}
@@ -624,15 +869,45 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Transition returns moccmetamodel::Transition:
 	//	"from" source=[moccmetamodel::State|EString] "to" target=[moccmetamodel::State|EString] ":" name=EString "(" ("if"
-	//	guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger+=[TimeModel::Clock|EString] ("and"
-	//	trigger+=[TimeModel::Clock|EString])* ("do " actions+=[moccmetamodel::IntegerAssignment|EString] (","
-	//	actions+=[moccmetamodel::IntegerAssignment|EString])*)* ")";
+	//	guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger=Trigger ("do " actions+=Action)* ")";
 	public TransitionElements getTransitionAccess() {
 		return (pTransition != null) ? pTransition : (pTransition = new TransitionElements());
 	}
 	
 	public ParserRule getTransitionRule() {
 		return getTransitionAccess().getRule();
+	}
+
+	//Action returns moccmetamodel::Action:
+	//	IntegerAssignemnt | FinishClock;
+	public ActionElements getActionAccess() {
+		return (pAction != null) ? pAction : (pAction = new ActionElements());
+	}
+	
+	public ParserRule getActionRule() {
+		return getActionAccess().getRule();
+	}
+
+	//FinishClock returns moccmetamodel::FinishClock:
+	//	"kill" "(" clock=[TimeModel::Clock|EString] ")";
+	public FinishClockElements getFinishClockAccess() {
+		return (pFinishClock != null) ? pFinishClock : (pFinishClock = new FinishClockElements());
+	}
+	
+	public ParserRule getFinishClockRule() {
+		return getFinishClockAccess().getRule();
+	}
+
+	////('and' trigger+=[TimeModel::Clock|EString])*
+	//Trigger returns moccmetamodel::Trigger:
+	//	(trueTriggers+=[TimeModel::Clock|EString] | ("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")")+ ("."
+	//	trueTriggers+=[TimeModel::Clock|EString] | ("not" "(" falseTriggers+=[TimeModel::Clock|EString]) ")")*;
+	public TriggerElements getTriggerAccess() {
+		return (pTrigger != null) ? pTrigger : (pTrigger = new TriggerElements());
+	}
+	
+	public ParserRule getTriggerRule() {
+		return getTriggerAccess().getRule();
 	}
 
 	//IntegerExpression returns ClassicalExpression::IntegerExpression:
