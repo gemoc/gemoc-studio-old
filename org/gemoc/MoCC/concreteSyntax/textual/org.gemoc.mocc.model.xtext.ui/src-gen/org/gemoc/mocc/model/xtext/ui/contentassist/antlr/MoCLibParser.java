@@ -39,7 +39,7 @@ public class MoCLibParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getStateBaseRelationLibraryAccess().getAlternatives_4_1(), "rule__StateBaseRelationLibrary__Alternatives_4_1");
 					put(grammarAccess.getRelationDefinitionAccess().getAlternatives(), "rule__RelationDefinition__Alternatives");
-					put(grammarAccess.getStateMachineRelationDefinitionAccess().getAlternatives_9(), "rule__StateMachineRelationDefinition__Alternatives_9");
+					put(grammarAccess.getStateMachineRelationDefinitionAccess().getAlternatives_11(), "rule__StateMachineRelationDefinition__Alternatives_11");
 					put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
 					put(grammarAccess.getTriggerAccess().getAlternatives_0(), "rule__Trigger__Alternatives_0");
 					put(grammarAccess.getTriggerAccess().getAlternatives_1(), "rule__Trigger__Alternatives_1");
@@ -78,7 +78,7 @@ public class MoCLibParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStateBaseRelationLibraryAccess().getGroup_4(), "rule__StateBaseRelationLibrary__Group_4__0");
 					put(grammarAccess.getStateBaseRelationLibraryAccess().getGroup_4_0(), "rule__StateBaseRelationLibrary__Group_4_0__0");
 					put(grammarAccess.getStateMachineRelationDefinitionAccess().getGroup(), "rule__StateMachineRelationDefinition__Group__0");
-					put(grammarAccess.getStateMachineRelationDefinitionAccess().getGroup_7(), "rule__StateMachineRelationDefinition__Group_7__0");
+					put(grammarAccess.getStateMachineRelationDefinitionAccess().getGroup_9(), "rule__StateMachineRelationDefinition__Group_9__0");
 					put(grammarAccess.getStateAccess().getGroup(), "rule__State__Group__0");
 					put(grammarAccess.getStateAccess().getGroup_4(), "rule__State__Group_4__0");
 					put(grammarAccess.getStateAccess().getGroup_4_0(), "rule__State__Group_4_0__0");
@@ -97,6 +97,8 @@ public class MoCLibParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTriggerAccess().getGroup_1_1(), "rule__Trigger__Group_1_1__0");
 					put(grammarAccess.getTriggerAccess().getGroup_1_1_0(), "rule__Trigger__Group_1_1_0__0");
 					put(grammarAccess.getIntegerAssignemntAccess().getGroup(), "rule__IntegerAssignemnt__Group__0");
+					put(grammarAccess.getIntEqualAccess().getGroup(), "rule__IntEqual__Group__0");
+					put(grammarAccess.getIntEqualAccess().getGroup_1(), "rule__IntEqual__Group_1__0");
 					put(grammarAccess.getLibraryAccess().getGroup(), "rule__Library__Group__0");
 					put(grammarAccess.getLibraryAccess().getGroup_3(), "rule__Library__Group_3__0");
 					put(grammarAccess.getLibraryAccess().getGroup_3_0(), "rule__Library__Group_3_0__0");
@@ -174,8 +176,6 @@ public class MoCLibParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRealInfAccess().getGroup_2(), "rule__RealInf__Group_2__0");
 					put(grammarAccess.getRealSupAccess().getGroup(), "rule__RealSup__Group__0");
 					put(grammarAccess.getRealSupAccess().getGroup_2(), "rule__RealSup__Group_2__0");
-					put(grammarAccess.getIntEqualAccess().getGroup(), "rule__IntEqual__Group__0");
-					put(grammarAccess.getIntEqualAccess().getGroup_0(), "rule__IntEqual__Group_0__0");
 					put(grammarAccess.getIntInfAccess().getGroup(), "rule__IntInf__Group__0");
 					put(grammarAccess.getIntInfAccess().getGroup_2(), "rule__IntInf__Group_2__0");
 					put(grammarAccess.getIntSupAccess().getGroup(), "rule__IntSup__Group__0");
@@ -266,9 +266,11 @@ public class MoCLibParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStateBaseRelationLibraryAccess().getPredefinedTypesAssignment_4_1_2(), "rule__StateBaseRelationLibrary__PredefinedTypesAssignment_4_1_2");
 					put(grammarAccess.getStateMachineRelationDefinitionAccess().getNameAssignment_2(), "rule__StateMachineRelationDefinition__NameAssignment_2");
 					put(grammarAccess.getStateMachineRelationDefinitionAccess().getDeclarationAssignment_4(), "rule__StateMachineRelationDefinition__DeclarationAssignment_4");
-					put(grammarAccess.getStateMachineRelationDefinitionAccess().getInitialStateAssignment_7_1(), "rule__StateMachineRelationDefinition__InitialStateAssignment_7_1");
-					put(grammarAccess.getStateMachineRelationDefinitionAccess().getOwnedStatesAssignment_9_0(), "rule__StateMachineRelationDefinition__OwnedStatesAssignment_9_0");
-					put(grammarAccess.getStateMachineRelationDefinitionAccess().getOwnedTransitionsAssignment_9_1(), "rule__StateMachineRelationDefinition__OwnedTransitionsAssignment_9_1");
+					put(grammarAccess.getStateMachineRelationDefinitionAccess().getConcreteEntitiesAssignment_7(), "rule__StateMachineRelationDefinition__ConcreteEntitiesAssignment_7");
+					put(grammarAccess.getStateMachineRelationDefinitionAccess().getClassicalExpressionsAssignment_8(), "rule__StateMachineRelationDefinition__ClassicalExpressionsAssignment_8");
+					put(grammarAccess.getStateMachineRelationDefinitionAccess().getInitialStateAssignment_9_1(), "rule__StateMachineRelationDefinition__InitialStateAssignment_9_1");
+					put(grammarAccess.getStateMachineRelationDefinitionAccess().getOwnedStatesAssignment_11_0(), "rule__StateMachineRelationDefinition__OwnedStatesAssignment_11_0");
+					put(grammarAccess.getStateMachineRelationDefinitionAccess().getOwnedTransitionsAssignment_11_1(), "rule__StateMachineRelationDefinition__OwnedTransitionsAssignment_11_1");
 					put(grammarAccess.getStateAccess().getNameAssignment_2(), "rule__State__NameAssignment_2");
 					put(grammarAccess.getStateAccess().getInputTransitionsAssignment_4_0_2(), "rule__State__InputTransitionsAssignment_4_0_2");
 					put(grammarAccess.getStateAccess().getInputTransitionsAssignment_4_1_1(), "rule__State__InputTransitionsAssignment_4_1_1");
@@ -285,8 +287,12 @@ public class MoCLibParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTriggerAccess().getFalseTriggersAssignment_0_1_0_2(), "rule__Trigger__FalseTriggersAssignment_0_1_0_2");
 					put(grammarAccess.getTriggerAccess().getTrueTriggersAssignment_1_0_1(), "rule__Trigger__TrueTriggersAssignment_1_0_1");
 					put(grammarAccess.getTriggerAccess().getFalseTriggersAssignment_1_1_0_2(), "rule__Trigger__FalseTriggersAssignment_1_1_0_2");
-					put(grammarAccess.getIntegerAssignemntAccess().getLeftValueAssignment_0(), "rule__IntegerAssignemnt__LeftValueAssignment_0");
-					put(grammarAccess.getIntegerAssignemntAccess().getRightValueAssignment_2(), "rule__IntegerAssignemnt__RightValueAssignment_2");
+					put(grammarAccess.getIntegerAssignemntAccess().getNameAssignment_1(), "rule__IntegerAssignemnt__NameAssignment_1");
+					put(grammarAccess.getIntegerAssignemntAccess().getLeftValueAssignment_3(), "rule__IntegerAssignemnt__LeftValueAssignment_3");
+					put(grammarAccess.getIntegerAssignemntAccess().getRightValueAssignment_5(), "rule__IntegerAssignemnt__RightValueAssignment_5");
+					put(grammarAccess.getIntEqualAccess().getNameAssignment_1_1(), "rule__IntEqual__NameAssignment_1_1");
+					put(grammarAccess.getIntEqualAccess().getLeftValueAssignment_3(), "rule__IntEqual__LeftValueAssignment_3");
+					put(grammarAccess.getIntEqualAccess().getRightValueAssignment_5(), "rule__IntEqual__RightValueAssignment_5");
 					put(grammarAccess.getLibraryAccess().getNameAssignment_1(), "rule__Library__NameAssignment_1");
 					put(grammarAccess.getLibraryAccess().getImportsAssignment_3_0_2(), "rule__Library__ImportsAssignment_3_0_2");
 					put(grammarAccess.getLibraryAccess().getExpressionLibrariesAssignment_3_1_0(), "rule__Library__ExpressionLibrariesAssignment_3_1_0");
@@ -421,9 +427,6 @@ public class MoCLibParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRealSupAccess().getNameAssignment_2_1(), "rule__RealSup__NameAssignment_2_1");
 					put(grammarAccess.getRealSupAccess().getLeftValueAssignment_4(), "rule__RealSup__LeftValueAssignment_4");
 					put(grammarAccess.getRealSupAccess().getRightValueAssignment_6(), "rule__RealSup__RightValueAssignment_6");
-					put(grammarAccess.getIntEqualAccess().getNameAssignment_0_1(), "rule__IntEqual__NameAssignment_0_1");
-					put(grammarAccess.getIntEqualAccess().getLeftValueAssignment_2(), "rule__IntEqual__LeftValueAssignment_2");
-					put(grammarAccess.getIntEqualAccess().getRightValueAssignment_4(), "rule__IntEqual__RightValueAssignment_4");
 					put(grammarAccess.getIntInfAccess().getNameAssignment_2_1(), "rule__IntInf__NameAssignment_2_1");
 					put(grammarAccess.getIntInfAccess().getLeftValueAssignment_4(), "rule__IntInf__LeftValueAssignment_4");
 					put(grammarAccess.getIntInfAccess().getRightValueAssignment_6(), "rule__IntInf__RightValueAssignment_6");

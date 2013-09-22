@@ -32,6 +32,8 @@ StateMachineRelationDefinition returns moccmetamodel::StateMachineRelationDefini
 	{moccmetamodel::StateMachineRelationDefinition}
 	'StateBasedRelationDefinition'name=ID '['declaration=[ClockExpressionAndRelation::RelationDeclaration|EString]']'
 	'{'
+		(concreteEntities+=ConcreteEntity)*
+		(classicalExpressions+=BooleanExpression)*
 		('init' initialState= [moccmetamodel::State|EString])';'
 		((ownedStates+=State)|
 		(ownedTransitions+=Transition))+
@@ -50,7 +52,7 @@ Transition returns moccmetamodel::Transition:
 	'from' source=[moccmetamodel::State|EString] 'to' target=[moccmetamodel::State|EString]':'name=EString'('
 		('if' guard=[ClassicalExpression::BooleanExpression|EString])?
 		'when' trigger=Trigger
-		('do ' (actions+=Action))*
+		('do' (actions+=Action))*
 	')';
 
 Action returns moccmetamodel::Action:
@@ -74,6 +76,10 @@ IntegerRef | UnaryIntPlus | UnaryIntMinus | IntPlus | IntMinus | IntMultiply | I
 
 
 IntegerAssignemnt returns moccmetamodel::IntegerAssignment:
-	leftValue=IntegerRef':=' rightValue=IntegerExpression
+	'Assign' name=EString '('leftValue=IntegerRef ':=' rightValue=IntegerExpression ')'
 ;
 
+IntEqual returns ClassicalExpression::IntEqual:
+	'IntEqual' ('name' name=ID)?'('leftValue=IntegerExpression
+		'==' rightValue=IntegerExpression
+    ')';

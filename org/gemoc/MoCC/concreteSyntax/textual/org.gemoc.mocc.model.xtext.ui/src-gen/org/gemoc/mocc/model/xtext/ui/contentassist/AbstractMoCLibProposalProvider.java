@@ -37,6 +37,12 @@ public class AbstractMoCLibProposalProvider extends fr.inria.aoste.timesquare.cc
 	public void completeStateMachineRelationDefinition_Declaration(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeStateMachineRelationDefinition_ConcreteEntities(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeStateMachineRelationDefinition_ClassicalExpressions(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeStateMachineRelationDefinition_InitialState(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
@@ -82,10 +88,22 @@ public class AbstractMoCLibProposalProvider extends fr.inria.aoste.timesquare.cc
 	public void completeTrigger_FalseTriggers(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeIntegerAssignemnt_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeIntegerAssignemnt_LeftValue(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeIntegerAssignemnt_RightValue(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeIntEqual_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeIntEqual_LeftValue(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeIntEqual_RightValue(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
     
@@ -117,6 +135,9 @@ public class AbstractMoCLibProposalProvider extends fr.inria.aoste.timesquare.cc
 		// subclasses may override
 	}
 	public void complete_IntegerAssignemnt(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
+	public void complete_IntEqual(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
 }

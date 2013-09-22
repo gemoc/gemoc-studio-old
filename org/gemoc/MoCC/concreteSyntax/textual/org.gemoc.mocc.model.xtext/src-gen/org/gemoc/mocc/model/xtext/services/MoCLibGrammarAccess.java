@@ -156,28 +156,34 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDeclarationRelationDeclarationEStringParserRuleCall_4_0_1 = (RuleCall)cDeclarationRelationDeclarationCrossReference_4_0.eContents().get(1);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cLeftCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cInitKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cInitialStateAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final CrossReference cInitialStateStateCrossReference_7_1_0 = (CrossReference)cInitialStateAssignment_7_1.eContents().get(0);
-		private final RuleCall cInitialStateStateEStringParserRuleCall_7_1_0_1 = (RuleCall)cInitialStateStateCrossReference_7_1_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Alternatives cAlternatives_9 = (Alternatives)cGroup.eContents().get(9);
-		private final Assignment cOwnedStatesAssignment_9_0 = (Assignment)cAlternatives_9.eContents().get(0);
-		private final RuleCall cOwnedStatesStateParserRuleCall_9_0_0 = (RuleCall)cOwnedStatesAssignment_9_0.eContents().get(0);
-		private final Assignment cOwnedTransitionsAssignment_9_1 = (Assignment)cAlternatives_9.eContents().get(1);
-		private final RuleCall cOwnedTransitionsTransitionParserRuleCall_9_1_0 = (RuleCall)cOwnedTransitionsAssignment_9_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cConcreteEntitiesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cConcreteEntitiesConcreteEntityParserRuleCall_7_0 = (RuleCall)cConcreteEntitiesAssignment_7.eContents().get(0);
+		private final Assignment cClassicalExpressionsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cClassicalExpressionsBooleanExpressionParserRuleCall_8_0 = (RuleCall)cClassicalExpressionsAssignment_8.eContents().get(0);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cInitKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Assignment cInitialStateAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final CrossReference cInitialStateStateCrossReference_9_1_0 = (CrossReference)cInitialStateAssignment_9_1.eContents().get(0);
+		private final RuleCall cInitialStateStateEStringParserRuleCall_9_1_0_1 = (RuleCall)cInitialStateStateCrossReference_9_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Alternatives cAlternatives_11 = (Alternatives)cGroup.eContents().get(11);
+		private final Assignment cOwnedStatesAssignment_11_0 = (Assignment)cAlternatives_11.eContents().get(0);
+		private final RuleCall cOwnedStatesStateParserRuleCall_11_0_0 = (RuleCall)cOwnedStatesAssignment_11_0.eContents().get(0);
+		private final Assignment cOwnedTransitionsAssignment_11_1 = (Assignment)cAlternatives_11.eContents().get(1);
+		private final RuleCall cOwnedTransitionsTransitionParserRuleCall_11_1_0 = (RuleCall)cOwnedTransitionsAssignment_11_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//StateMachineRelationDefinition returns moccmetamodel::StateMachineRelationDefinition:
 		//	{moccmetamodel::StateMachineRelationDefinition} "StateBasedRelationDefinition" name=ID "["
-		//	declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]" "{" ("init"
-		//	initialState=[moccmetamodel::State|EString]) ";" (ownedStates+=State | ownedTransitions+=Transition)+ "}";
+		//	declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]" "{" concreteEntities+=ConcreteEntity*
+		//	classicalExpressions+=BooleanExpression* ("init" initialState=[moccmetamodel::State|EString]) ";" (ownedStates+=State
+		//	| ownedTransitions+=Transition)+ "}";
 		public ParserRule getRule() { return rule; }
 
 		//{moccmetamodel::StateMachineRelationDefinition} "StateBasedRelationDefinition" name=ID "["
-		//declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]" "{" ("init"
-		//initialState=[moccmetamodel::State|EString]) ";" (ownedStates+=State | ownedTransitions+=Transition)+ "}"
+		//declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]" "{" concreteEntities+=ConcreteEntity*
+		//classicalExpressions+=BooleanExpression* ("init" initialState=[moccmetamodel::State|EString]) ";" (ownedStates+=State |
+		//ownedTransitions+=Transition)+ "}"
 		public Group getGroup() { return cGroup; }
 
 		//{moccmetamodel::StateMachineRelationDefinition}
@@ -210,41 +216,53 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_6() { return cLeftCurlyBracketKeyword_6; }
 
+		//concreteEntities+=ConcreteEntity*
+		public Assignment getConcreteEntitiesAssignment_7() { return cConcreteEntitiesAssignment_7; }
+
+		//ConcreteEntity
+		public RuleCall getConcreteEntitiesConcreteEntityParserRuleCall_7_0() { return cConcreteEntitiesConcreteEntityParserRuleCall_7_0; }
+
+		//classicalExpressions+=BooleanExpression*
+		public Assignment getClassicalExpressionsAssignment_8() { return cClassicalExpressionsAssignment_8; }
+
+		//BooleanExpression
+		public RuleCall getClassicalExpressionsBooleanExpressionParserRuleCall_8_0() { return cClassicalExpressionsBooleanExpressionParserRuleCall_8_0; }
+
 		//"init" initialState=[moccmetamodel::State|EString]
-		public Group getGroup_7() { return cGroup_7; }
+		public Group getGroup_9() { return cGroup_9; }
 
 		//"init"
-		public Keyword getInitKeyword_7_0() { return cInitKeyword_7_0; }
+		public Keyword getInitKeyword_9_0() { return cInitKeyword_9_0; }
 
 		//initialState=[moccmetamodel::State|EString]
-		public Assignment getInitialStateAssignment_7_1() { return cInitialStateAssignment_7_1; }
+		public Assignment getInitialStateAssignment_9_1() { return cInitialStateAssignment_9_1; }
 
 		//[moccmetamodel::State|EString]
-		public CrossReference getInitialStateStateCrossReference_7_1_0() { return cInitialStateStateCrossReference_7_1_0; }
+		public CrossReference getInitialStateStateCrossReference_9_1_0() { return cInitialStateStateCrossReference_9_1_0; }
 
 		//EString
-		public RuleCall getInitialStateStateEStringParserRuleCall_7_1_0_1() { return cInitialStateStateEStringParserRuleCall_7_1_0_1; }
+		public RuleCall getInitialStateStateEStringParserRuleCall_9_1_0_1() { return cInitialStateStateEStringParserRuleCall_9_1_0_1; }
 
 		//";"
-		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
+		public Keyword getSemicolonKeyword_10() { return cSemicolonKeyword_10; }
 
 		//(ownedStates+=State | ownedTransitions+=Transition)+
-		public Alternatives getAlternatives_9() { return cAlternatives_9; }
+		public Alternatives getAlternatives_11() { return cAlternatives_11; }
 
 		//ownedStates+=State
-		public Assignment getOwnedStatesAssignment_9_0() { return cOwnedStatesAssignment_9_0; }
+		public Assignment getOwnedStatesAssignment_11_0() { return cOwnedStatesAssignment_11_0; }
 
 		//State
-		public RuleCall getOwnedStatesStateParserRuleCall_9_0_0() { return cOwnedStatesStateParserRuleCall_9_0_0; }
+		public RuleCall getOwnedStatesStateParserRuleCall_11_0_0() { return cOwnedStatesStateParserRuleCall_11_0_0; }
 
 		//ownedTransitions+=Transition
-		public Assignment getOwnedTransitionsAssignment_9_1() { return cOwnedTransitionsAssignment_9_1; }
+		public Assignment getOwnedTransitionsAssignment_11_1() { return cOwnedTransitionsAssignment_11_1; }
 
 		//Transition
-		public RuleCall getOwnedTransitionsTransitionParserRuleCall_9_1_0() { return cOwnedTransitionsTransitionParserRuleCall_9_1_0; }
+		public RuleCall getOwnedTransitionsTransitionParserRuleCall_11_1_0() { return cOwnedTransitionsTransitionParserRuleCall_11_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 
 	public class StateElements extends AbstractParserRuleElementFinder {
@@ -426,11 +444,11 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Transition returns moccmetamodel::Transition:
 		//	"from" source=[moccmetamodel::State|EString] "to" target=[moccmetamodel::State|EString] ":" name=EString "(" ("if"
-		//	guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger=Trigger ("do " actions+=Action)* ")";
+		//	guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger=Trigger ("do" actions+=Action)* ")";
 		public ParserRule getRule() { return rule; }
 
 		//"from" source=[moccmetamodel::State|EString] "to" target=[moccmetamodel::State|EString] ":" name=EString "(" ("if"
-		//guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger=Trigger ("do " actions+=Action)* ")"
+		//guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger=Trigger ("do" actions+=Action)* ")"
 		public Group getGroup() { return cGroup; }
 
 		//"from"
@@ -493,10 +511,10 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 		//Trigger
 		public RuleCall getTriggerTriggerParserRuleCall_9_0() { return cTriggerTriggerParserRuleCall_9_0; }
 
-		//("do " actions+=Action)*
+		//("do" actions+=Action)*
 		public Group getGroup_10() { return cGroup_10; }
 
-		//"do "
+		//"do"
 		public Keyword getDoKeyword_10_0() { return cDoKeyword_10_0; }
 
 		//actions+=Action
@@ -741,33 +759,113 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 	public class IntegerAssignemntElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntegerAssignemnt");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cLeftValueAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cLeftValueIntegerRefParserRuleCall_0_0 = (RuleCall)cLeftValueAssignment_0.eContents().get(0);
-		private final Keyword cColonEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cRightValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRightValueIntegerExpressionParserRuleCall_2_0 = (RuleCall)cRightValueAssignment_2.eContents().get(0);
+		private final Keyword cAssignKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cLeftValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cLeftValueIntegerRefParserRuleCall_3_0 = (RuleCall)cLeftValueAssignment_3.eContents().get(0);
+		private final Keyword cColonEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cRightValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cRightValueIntegerExpressionParserRuleCall_5_0 = (RuleCall)cRightValueAssignment_5.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//IntegerAssignemnt returns moccmetamodel::IntegerAssignment:
-		//	leftValue=IntegerRef ":=" rightValue=IntegerExpression;
+		//	"Assign" name=EString "(" leftValue=IntegerRef ":=" rightValue=IntegerExpression ")";
 		public ParserRule getRule() { return rule; }
 
-		//leftValue=IntegerRef ":=" rightValue=IntegerExpression
+		//"Assign" name=EString "(" leftValue=IntegerRef ":=" rightValue=IntegerExpression ")"
 		public Group getGroup() { return cGroup; }
 
+		//"Assign"
+		public Keyword getAssignKeyword_0() { return cAssignKeyword_0; }
+
+		//name=EString
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
 		//leftValue=IntegerRef
-		public Assignment getLeftValueAssignment_0() { return cLeftValueAssignment_0; }
+		public Assignment getLeftValueAssignment_3() { return cLeftValueAssignment_3; }
 
 		//IntegerRef
-		public RuleCall getLeftValueIntegerRefParserRuleCall_0_0() { return cLeftValueIntegerRefParserRuleCall_0_0; }
+		public RuleCall getLeftValueIntegerRefParserRuleCall_3_0() { return cLeftValueIntegerRefParserRuleCall_3_0; }
 
 		//":="
-		public Keyword getColonEqualsSignKeyword_1() { return cColonEqualsSignKeyword_1; }
+		public Keyword getColonEqualsSignKeyword_4() { return cColonEqualsSignKeyword_4; }
 
 		//rightValue=IntegerExpression
-		public Assignment getRightValueAssignment_2() { return cRightValueAssignment_2; }
+		public Assignment getRightValueAssignment_5() { return cRightValueAssignment_5; }
 
 		//IntegerExpression
-		public RuleCall getRightValueIntegerExpressionParserRuleCall_2_0() { return cRightValueIntegerExpressionParserRuleCall_2_0; }
+		public RuleCall getRightValueIntegerExpressionParserRuleCall_5_0() { return cRightValueIntegerExpressionParserRuleCall_5_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
+	}
+
+	public class IntEqualElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntEqual");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cIntEqualKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cNameKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cLeftValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cLeftValueIntegerExpressionParserRuleCall_3_0 = (RuleCall)cLeftValueAssignment_3.eContents().get(0);
+		private final Keyword cEqualsSignEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cRightValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cRightValueIntegerExpressionParserRuleCall_5_0 = (RuleCall)cRightValueAssignment_5.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//IntEqual returns ClassicalExpression::IntEqual:
+		//	"IntEqual" ("name" name=ID)? "(" leftValue=IntegerExpression "==" rightValue=IntegerExpression ")";
+		public ParserRule getRule() { return rule; }
+
+		//"IntEqual" ("name" name=ID)? "(" leftValue=IntegerExpression "==" rightValue=IntegerExpression ")"
+		public Group getGroup() { return cGroup; }
+
+		//"IntEqual"
+		public Keyword getIntEqualKeyword_0() { return cIntEqualKeyword_0; }
+
+		//("name" name=ID)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"name"
+		public Keyword getNameKeyword_1_0() { return cNameKeyword_1_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+
+		//leftValue=IntegerExpression
+		public Assignment getLeftValueAssignment_3() { return cLeftValueAssignment_3; }
+
+		//IntegerExpression
+		public RuleCall getLeftValueIntegerExpressionParserRuleCall_3_0() { return cLeftValueIntegerExpressionParserRuleCall_3_0; }
+
+		//"=="
+		public Keyword getEqualsSignEqualsSignKeyword_4() { return cEqualsSignEqualsSignKeyword_4; }
+
+		//rightValue=IntegerExpression
+		public Assignment getRightValueAssignment_5() { return cRightValueAssignment_5; }
+
+		//IntegerExpression
+		public RuleCall getRightValueIntegerExpressionParserRuleCall_5_0() { return cRightValueIntegerExpressionParserRuleCall_5_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
 	}
 	
 	
@@ -781,6 +879,7 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 	private TriggerElements pTrigger;
 	private IntegerExpressionElements pIntegerExpression;
 	private IntegerAssignemntElements pIntegerAssignemnt;
+	private IntEqualElements pIntEqual;
 	
 	private final Grammar grammar;
 
@@ -844,8 +943,9 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 
 	//StateMachineRelationDefinition returns moccmetamodel::StateMachineRelationDefinition:
 	//	{moccmetamodel::StateMachineRelationDefinition} "StateBasedRelationDefinition" name=ID "["
-	//	declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]" "{" ("init"
-	//	initialState=[moccmetamodel::State|EString]) ";" (ownedStates+=State | ownedTransitions+=Transition)+ "}";
+	//	declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]" "{" concreteEntities+=ConcreteEntity*
+	//	classicalExpressions+=BooleanExpression* ("init" initialState=[moccmetamodel::State|EString]) ";" (ownedStates+=State
+	//	| ownedTransitions+=Transition)+ "}";
 	public StateMachineRelationDefinitionElements getStateMachineRelationDefinitionAccess() {
 		return (pStateMachineRelationDefinition != null) ? pStateMachineRelationDefinition : (pStateMachineRelationDefinition = new StateMachineRelationDefinitionElements());
 	}
@@ -869,7 +969,7 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Transition returns moccmetamodel::Transition:
 	//	"from" source=[moccmetamodel::State|EString] "to" target=[moccmetamodel::State|EString] ":" name=EString "(" ("if"
-	//	guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger=Trigger ("do " actions+=Action)* ")";
+	//	guard=[ClassicalExpression::BooleanExpression|EString])? "when" trigger=Trigger ("do" actions+=Action)* ")";
 	public TransitionElements getTransitionAccess() {
 		return (pTransition != null) ? pTransition : (pTransition = new TransitionElements());
 	}
@@ -922,13 +1022,23 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntegerAssignemnt returns moccmetamodel::IntegerAssignment:
-	//	leftValue=IntegerRef ":=" rightValue=IntegerExpression;
+	//	"Assign" name=EString "(" leftValue=IntegerRef ":=" rightValue=IntegerExpression ")";
 	public IntegerAssignemntElements getIntegerAssignemntAccess() {
 		return (pIntegerAssignemnt != null) ? pIntegerAssignemnt : (pIntegerAssignemnt = new IntegerAssignemntElements());
 	}
 	
 	public ParserRule getIntegerAssignemntRule() {
 		return getIntegerAssignemntAccess().getRule();
+	}
+
+	//IntEqual returns ClassicalExpression::IntEqual:
+	//	"IntEqual" ("name" name=ID)? "(" leftValue=IntegerExpression "==" rightValue=IntegerExpression ")";
+	public IntEqualElements getIntEqualAccess() {
+		return (pIntEqual != null) ? pIntEqual : (pIntEqual = new IntEqualElements());
+	}
+	
+	public ParserRule getIntEqualRule() {
+		return getIntEqualAccess().getRule();
 	}
 
 	//Library returns ClockExpressionAndRelation::Library:
@@ -1555,16 +1665,6 @@ public class MoCLibGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getRealSupRule() {
 		return getRealSupAccess().getRule();
-	}
-
-	//IntEqual returns ClassicalExpression::IntEqual:
-	//	("name" name=ID)? "(" leftValue=IntegerExpression "==" rightValue=IntegerExpression ")";
-	public CCSLLibraryGrammarAccess.IntEqualElements getIntEqualAccess() {
-		return gaCCSLLibrary.getIntEqualAccess();
-	}
-	
-	public ParserRule getIntEqualRule() {
-		return getIntEqualAccess().getRule();
 	}
 
 	//IntInf returns ClassicalExpression::IntInf:

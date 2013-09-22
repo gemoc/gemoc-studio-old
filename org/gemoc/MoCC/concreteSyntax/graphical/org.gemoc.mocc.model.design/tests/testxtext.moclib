@@ -12,8 +12,17 @@ Library stateBasedTest{
 		
 	}
 	RelationLibrary stateBasedRelations{
-		RelationDeclaration rel1(firstParam:clock, secondParam:clock)
-		StateBasedRelationDefinition myDef[rel1]{
+		RelationDeclaration firstTest(firstParam : clock, secondParam:clock)
+		StateBasedRelationDefinition firstTestDef[firstTest]{
+			Integer i = 0 
+			
+			IntEqual name  iEquals5 (IntegerRef name refi3[i] == IntegerRef name ref5 [five])
+			IntInf {
+				name  iInfTo5 
+				leftValue IntegerRef name refi4[i] 
+				rightValue IntegerRef name ref5 [five]
+				}
+			
 			init initS;
 			State initS (
 				out : init2intermediate ;
@@ -25,7 +34,21 @@ Library stateBasedTest{
 			
 			State loop (
 				in : intermediate2loop, selfLoop;
-				out : selfLoop;
+				out : selfLoop, loop2c1again;
+			)
+			
+			State c1again(
+				in: loop2c1again, selfC1again;
+				out:selfC1again;
+			)
+			
+			from c1again to c1again : selfC1again(
+				when firstParam
+			)
+			
+			from loop to c1again : loop2c1again(
+				if iEquals5
+				when secondParam
 			)
 			
 			from interMediate to loop : intermediate2loop(
@@ -34,11 +57,12 @@ Library stateBasedTest{
 			
 			from initS to interMediate : init2intermediate(
 				when firstParam		
-			)
+			) 
 			from loop to loop: selfLoop(
+				if iInfTo5
 				when secondParam
-				do kill (firstParam)
-			)
+				do Assign a1 (IntegerRef name refi[i] := IntPlus iPlusOne( IntegerRef name refi2[i] , IntegerRef name refone[one]))
+			) 
 		}
 	}
 }
