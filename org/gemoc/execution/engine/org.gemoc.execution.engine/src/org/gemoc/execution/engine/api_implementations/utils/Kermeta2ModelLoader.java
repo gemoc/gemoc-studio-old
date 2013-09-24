@@ -30,10 +30,11 @@ public class Kermeta2ModelLoader implements ModelLoader{
 
 	@Override
 	public Resource loadModel(String modelFileUri) {
-		EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
+		/* DVK EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
         Activator.getMessagingSystem().debug("Model Loader returned : " + modelLoader.toString(), Activator.PLUGIN_ID);
         Activator.getMessagingSystem().debug("Loading the model", Activator.PLUGIN_ID);
-        EObject modelRoot = this.loadModel(modelLoader, this.modelURI, this.metamodelURI);
+        EObject modelRoot = this.loadModel(modelLoader, this.modelURI, this.metamodelURI);*/
+		return null;
 	}
 	
 	private List<URL> getJarUrlsFromFolder(String folderPath) throws MalformedURLException, CoreException {

@@ -62,7 +62,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected abstract List<DomainSpecificEvent> match(Step step);
 
 	@Override
-	public void initialize(String modelURI) {
+	public void initialize(String modelURI, String dseFilePath) {
 		this.modelResource = this.modelLoader.loadModel(modelURI);
 		// TODO: do something with the DSE file.
 		// Programatically generate the .extendendCCSL.

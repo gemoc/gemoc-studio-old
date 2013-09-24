@@ -25,12 +25,14 @@ public class Kermeta2LanguageInitializer implements LanguageInitializer {
 
 	@Override
 	public void initialize() {		
-		Activator.getMessagingSystem().debug(
+		/* DVK Activator.getMessagingSystem().debug(
                 "Adding all the JAR files from folder " + jarDependenciesFolderPath + " and " + jarDsaFolderPath
                         + " to the current ClassLoader", Activator.PLUGIN_ID);
         ClassLoader customizedClassLoader = this.customizeClassLoader(jarDsaFolderPath, jarDependenciesFolderPath);
+        
         Activator.getMessagingSystem().debug("Initializing the model loader", Activator.PLUGIN_ID);
         EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
+        */
 	}
 	
 	private List<URL> getJarUrlsFromFolder(String folderPath) throws MalformedURLException, CoreException {
