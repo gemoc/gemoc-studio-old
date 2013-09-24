@@ -8,7 +8,7 @@
 	<modules>
 		<!-- plugins -->
 		<module>../org.gemoc.execution.engine</module>
-		<module>../org.gemoc.execution.engine.actions</module>
+		<!-- <module>../org.gemoc.execution.engine.actions</module>
 		<module>../org.gemoc.execution.engine.events</module>
 		<module>../org.gemoc.execution.engine.executors</module>
 		<module>../org.gemoc.execution.engine.executors.emf</module>
@@ -17,7 +17,7 @@
 		<module>../org.gemoc.execution.engine.feedback.data</module>
 		<module>../org.gemoc.execution.engine.feedback.policy</module>
 		<module>../org.gemoc.execution.engine.launcher</module>
-		<module>../org.gemoc.execution.engine.solvers</module>
+		<module>../org.gemoc.execution.engine.solvers</module> -->
 
 		<!-- feature and update site -->
 		<module>../org.gemoc.execution.engine.feature</module>
@@ -64,6 +64,12 @@
             <id>timesquare</id>
             <layout>p2</layout>
             <url>http://timesquare.inria.fr/update_site</url>
+        </repository>
+        
+        <repository>
+        	<id>gemoc_language_workbench-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository/</url>
         </repository>
 	</repositories>
 
