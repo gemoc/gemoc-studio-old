@@ -83,7 +83,7 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 			}
 			
 			final Object oEclFilePath = confElement
-					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_ECL_ATT);
+					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_ECL_FILE_PATH_ATT);
 			if (oEclFilePath instanceof String) {
 				eclFilePath = (String) oEclFilePath;
 			}
