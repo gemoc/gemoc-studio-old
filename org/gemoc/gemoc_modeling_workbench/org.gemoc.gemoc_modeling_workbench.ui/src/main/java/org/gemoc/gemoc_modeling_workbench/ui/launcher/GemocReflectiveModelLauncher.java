@@ -100,7 +100,7 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 		try {
 			ExecutionEngine engine = new GemocExecutionEngine(languageInitializer, modelLoader, solver, executor, feedbackPolicy);
 			engine.initialize(modelPath, eclFilePath);
-
+			engine.run(1);
 		} catch (Throwable e) {
 			Activator.error("Exception in the initialization of the engine", e);
 		}

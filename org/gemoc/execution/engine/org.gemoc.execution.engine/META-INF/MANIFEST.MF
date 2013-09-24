@@ -23,7 +23,8 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.backend.manager,
  org.kermeta.utils.systemservices.eclipse,
  org.kermeta.utils.systemservices.api,
- org.gemoc.gemoc_language_workbench.api;bundle-version="0.1.0"
+ org.gemoc.gemoc_language_workbench.api,
+ fr.inria.aoste.trace;bundle-version="1.0.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine,
