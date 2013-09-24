@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.gemoc.execution.engine.example:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gemoc.execution.engine.example="http://org.gemoc.execution.engine.example.tfsm" name="TrafficControl">
+  <tfsms name="Control" initialState="//@tfsms.0/@ownedStates.0">
+    <ownedStates name="initControl" owningTfsm="//@tfsms.0" outgoingTransitions="//@tfsms.0/@ownedTransitions.0"/>
+    <ownedStates name="Day" owningTfsm="//@tfsms.0" outgoingTransitions="//@tfsms.0/@ownedTransitions.2 //@tfsms.0/@ownedTransitions.3" incomingTransitions="//@tfsms.0/@ownedTransitions.2 //@tfsms.0/@ownedTransitions.1"/>
+    <ownedStates name="Night" owningTfsm="//@tfsms.0" outgoingTransitions="//@tfsms.0/@ownedTransitions.1 //@tfsms.0/@ownedTransitions.4" incomingTransitions="//@tfsms.0/@ownedTransitions.3 //@tfsms.0/@ownedTransitions.4"/>
+    <ownedClock name="ControlClock"/>
+    <ownedTransitions name="initControl_to_Day" source="//@tfsms.0/@ownedStates.0" target="//@tfsms.0/@ownedStates.1" action="dosomething">
+      <ownedGuard xsi:type="org.gemoc.execution.engine.example:TemporalGuard" name="guardInitControl" onClock="//@globalClocks.0" afterDuration="1"/>
+    </ownedTransitions>
+    <ownedTransitions name="Night_to_Day" source="//@tfsms.0/@ownedStates.2" target="//@tfsms.0/@ownedStates.1" action="doDay">
+      <ownedGuard xsi:type="org.gemoc.execution.engine.example:EvaluateGuard" name="guardIsDay" condition="isDay"/>
+    </ownedTransitions>
+    <ownedTransitions name="Day_to_Day" source="//@tfsms.0/@ownedStates.1" target="//@tfsms.0/@ownedStates.1" generatedEvents="//@globalEvents.0" action="dosomething">
+      <ownedGuard xsi:type="org.gemoc.execution.engine.example:TemporalGuard" name="guardDayDay" onClock="//@globalClocks.0" afterDuration="4"/>
+    </ownedTransitions>
+    <ownedTransitions name="Day_to_Night" source="//@tfsms.0/@ownedStates.1" target="//@tfsms.0/@ownedStates.2" generatedEvents="//@globalEvents.0" action="doNight">
+      <ownedGuard xsi:type="org.gemoc.execution.engine.example:EvaluateGuard" name="GuardIsNight" condition="isNight"/>
+    </ownedTransitions>
+    <ownedTransitions name="Night_to_Night" source="//@tfsms.0/@ownedStates.2" target="//@tfsms.0/@ownedStates.2" generatedEvents="//@globalEvents.0" action="dosomething">
+      <ownedGuard xsi:type="org.gemoc.execution.engine.example:TemporalGuard" name="guardNightNight" onClock="//@globalClocks.0" afterDuration="6"/>
+    </ownedTransitions>
+  </tfsms>
+  <tfsms name="Semaphore0" initialState="//@tfsms.1/@ownedStates.0">
+    <ownedStates name="initSema0" owningTfsm="//@tfsms.1" outgoingTransitions="//@tfsms.1/@ownedTransitions.0"/>
+    <ownedStates name="Red0" owningTfsm="//@tfsms.1" outgoingTransitions="//@tfsms.1/@ownedTransitions.1" incomingTransitions="//@tfsms.1/@ownedTransitions.2"/>
+    <ownedStates name="Green0" owningTfsm="//@tfsms.1" outgoingTransitions="//@tfsms.1/@ownedTransitions.2" incomingTransitions="//@tfsms.1/@ownedTransitions.1"/>
+    <ownedClock name="Semaphore0Clock"/>
+    <ownedTransitions name="initSema0_to_Red0" source="//@tfsms.1/@ownedStates.0" target="//@tfsms.1/@ownedStates.1" action="dosomething">
+      <ownedGuard xsi:type="org.gemoc.execution.engine.example:TemporalGuard" name="guardInitSema0Red0" onClock="//@globalClocks.0" afterDuration="1"/>
+    </ownedTransitions>
+    <ownedTransitions name="Red0_to_Green0" source="//@tfsms.1/@ownedStates.1" target="//@tfsms.1/@ownedStates.2" action="doGreen">
+      <ownedGuard xsi:type="org.gemoc.execution.engine.example:TemporalGuard" name="guardRed0Green0" onClock="//@globalClocks.0" afterDuration="2"/>
+    </ownedTransitions>
+    <ownedTransitions name="Green0_to_Red0" source="//@tfsms.1/@ownedStates.2" target="//@tfsms.1/@ownedStates.1" action="doRed">
+      <ownedGuard xsi:type="org.gemoc.execution.engine.example:EventGuard" name="guardGreen0Red0" triggeringEvent="//@globalEvents.0"/>
+    </ownedTransitions>
+  </tfsms>
+  <globalClocks name="minutes"/>
+  <globalEvents name="switch" sollicitingTransitions="//@tfsms.0/@ownedTransitions.2 //@tfsms.0/@ownedTransitions.4"/>
+</org.gemoc.execution.engine.example:System>

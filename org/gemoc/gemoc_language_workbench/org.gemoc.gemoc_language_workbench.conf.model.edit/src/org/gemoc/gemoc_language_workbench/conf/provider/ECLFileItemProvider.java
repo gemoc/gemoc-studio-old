@@ -18,6 +18,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.gemoc.gemoc_language_workbench.conf.ECLFile;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.gemoc_language_workbench.conf.ECLFile} object.
@@ -26,7 +27,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * @generated
  */
 public class ECLFileItemProvider
-	extends ItemProviderAdapter
+	extends FileResourceItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -77,7 +78,10 @@ public class ECLFileItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ECLFile_type");
+		String label = ((ECLFile)object).getLocationURI();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ECLFile_type") :
+			getString("_UI_ECLFile_type") + " " + label;
 	}
 
 	/**
@@ -103,17 +107,6 @@ public class ECLFileItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return gemoc_language_workbench_confEditPlugin.INSTANCE;
 	}
 
 }

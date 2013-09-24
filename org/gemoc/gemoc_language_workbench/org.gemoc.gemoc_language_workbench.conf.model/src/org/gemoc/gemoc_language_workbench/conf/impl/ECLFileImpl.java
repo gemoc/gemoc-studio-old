@@ -18,7 +18,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  *
  * @generated
  */
-public class ECLFileImpl extends EObjectImpl implements ECLFile {
+public class ECLFileImpl extends FileResourceImpl implements ECLFile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

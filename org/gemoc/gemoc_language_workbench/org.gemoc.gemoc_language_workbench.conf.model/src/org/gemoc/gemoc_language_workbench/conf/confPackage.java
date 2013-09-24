@@ -926,13 +926,22 @@ public interface confPackage extends EPackage {
 	int ECL_FILE = 21;
 
 	/**
+	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_FILE__LOCATION_URI = FILE_RESOURCE__LOCATION_URI;
+
+	/**
 	 * The number of structural features of the '<em>ECL File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_FILE_FEATURE_COUNT = 0;
+	int ECL_FILE_FEATURE_COUNT = FILE_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.

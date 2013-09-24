@@ -63,5 +63,5 @@
     <eLiterals name="mavenJar" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="K3DSAProject" eSuperTypes="#//DSAProject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ECLFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ECLFile" eSuperTypes="#//FileResource"/>
 </ecore:EPackage>

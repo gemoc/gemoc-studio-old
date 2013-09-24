@@ -15,6 +15,8 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.gemoc_language_workbench.utils;bundle-version="0.1.0",
  org.gemoc.gemoc_language_workbench.ui;bundle-version="0.1.0",
  org.kermeta.utils.systemservices.eclipse;bundle-version="2.1.0",
- org.kermeta.utils.systemservices.api;bundle-version="2.1.0"
+ org.kermeta.utils.systemservices.api;bundle-version="2.1.0",
+ org.gemoc.execution.engine,
+ org.gemoc.gemoc_language_workbench.api
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

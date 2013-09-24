@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.gemoc.execution.engine.feature"
+      label="Gemoc Execution Engine"
+      version="1.0.0.qualifier"
+      provider-name="INRIA">
+
+   <description url="http://gemoc.org/studio/">
+      The Gemoc Modeling Workbench provides the basic support
+for creating and running executables models defined with the
+Gemoc Language Workbench.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="org.gemoc.execution.engine"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.actions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.events"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.executors"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.executors.emf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.feedback.data"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.feedback.policy"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.launcher"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.solvers"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
