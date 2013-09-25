@@ -1,11 +1,13 @@
 package org.gemoc.execution.engine.core;
 
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
@@ -32,6 +34,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected FeedbackPolicy feedbackPolicy = null;
 
 	protected Resource modelResource = null;
+//	protected Map<InstanciatedEvent, DomainSpecificAction> semanticMapping = null;
 
 	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, Solver solver, 
 			Executor executor, FeedbackPolicy feedbackPolicy) {
@@ -65,7 +68,20 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	public void initialize(String modelURI) {
 		this.modelResource = this.modelLoader.loadModel(modelURI);
 		// TODO: do something with the DSE file.
-		// Programatically generate the .extendendCCSL.
+		// Programatically generate the .extendedCCSL.
+		String modelOfExecutionURI = "";
+		
+		// Create the semantic mapping by reading the generated extendedCCSL file.
+//		ModelOfExecutionLoader modelOfExecutionLoader = new ModelOfExecutionLoader();
+//		Resource modelOfExecutionResource = modelOfExecutionLoader.load(modelOfExecutionURI);
+//		
+//		ModelOfExecution modelOfExecution = (ModelOfExecution) modelOfExecutionResource.getContents().get(0);
+//		for(Iterator<InstanciatedEvent> iterator : modelOfExecution.getInstanciatedEvents().iterator(); iterator.hasNext()){
+//			InstanciatedEvent event = iterator.next();
+//			this.semanticMapping.put(event, new EmfAction(...))
+//		}
+		
+//} 
 	}
 
 	@Override

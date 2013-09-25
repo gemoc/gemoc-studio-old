@@ -21,7 +21,7 @@ public interface ExecutionEngine {
 	 * loading the model and instantiating the Model of Computation to the
 	 * model.
 	 */
-	public void initialize(String modelURI, String dseFilePath);
+	public void initialize(String modelURI);
 
 	/**
 	 * Runs the engine indefinitely. Equivalent as running the engine -1 number

@@ -38,45 +38,44 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 			Executor executor, FeedbackPolicy feedbackPolicy) throws CoreException {
 		super(languageInitializer, modelLoader, solver, executor, feedbackPolicy);
 	}
-	
-	
 
 	// Dependency towards
 	// fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock
 	// Ask Julien to improve the API of EventOccurrence etc.
-	@Override
-	protected List<DomainSpecificEvent> match(Step step) {
-		Activator.getMessagingSystem().debug("Matching the given step : " + step.toString(), Activator.PLUGIN_ID);
-		List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
-		try {
-			CcslStep ccslStep = (CcslStep) step;
-			for (EventOccurrence eventOccurrence : ccslStep.getEventOccurrences()) {
-				if (eventOccurrence.getFState() == FiredStateKind.TICK) {
-					Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
-					if (c != null) {
-						EList<EObject> linkedObjects = c.getTickingEvent().getReferencedObjectRefs();
-						if (linkedObjects.size() == 2) {
-							EObject linkedOperation = linkedObjects.get(1);
-							if (linkedOperation.eIsProxy()) {
-								linkedOperation = EcoreUtil2
-										.resolve(linkedOperation, this.metamodelPackage.eResource());
-							}
-							if (linkedOperation instanceof EOperation) {
-								res.add(new EclEvent(new EmfAction(linkedObjects.get(0), (EOperation) linkedOperation)));
-							}
-						}
-					}
-				}
+	 @Override
+	    protected List<DomainSpecificEvent> match(Step step) {
+	        Activator.getMessagingSystem().debug("Matching the given step : " + step.toString(), Activator.PLUGIN_ID);
+	        List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
+	        try {
+	            CcslStep ccslStep = (CcslStep) step;
+	            for (EventOccurrence eventOccurrence : ccslStep.getEventOccurrences()) {
+	                if (eventOccurrence.getFState() == FiredStateKind.TICK) {
+	                    Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
+	                    if (c != null) {
+	                        EList<EObject> linkedObjects = c.getTickingEvent().getReferencedObjectRefs();
+	                        if (linkedObjects.size() == 2) {
+	                        	Activator.getMessagingSystem().debug("Linked objects are : \n\t" + linkedObjects.get(0).toString() + "\n\t && " + linkedObjects.get(1).toString(), Activator.PLUGIN_ID);
+	                        	EObject linkedOperation = linkedObjects.get(1);
+	                        	if(linkedOperation.eIsProxy()){
+	                    			linkedOperation = EcoreUtil2.resolve(linkedOperation, this.metamodelPackage.eResource());
+	                    		}
+	                        	Activator.getMessagingSystem().debug("Is the second object an EOperation ?: " + (linkedOperation instanceof EOperation), Activator.PLUGIN_ID);
+	                            if (linkedOperation instanceof EOperation) {
+	                                res.add(new EclEvent(new EmfAction(linkedObjects.get(0), (EOperation) linkedOperation)));
+	                            }
+	                        }
+	                    }
+	                }
 
-			}
-		} catch (ClassCastException e) {
-			String errorMessage = "ClassCastException while casting Step as CcslStep";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
-		}
-		return res;
+	            }
+	        } catch (ClassCastException e) {
+	            String errorMessage = "ClassCastException while casting Step as CcslStep";
+	            Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+	            Activator.error(errorMessage, e);
+	        }
+	        return res;
 
-	}
+	    }
 
 	private Clock getClockLinkedToOccurrence(EventOccurrence eventOcc) {
 		Reference ref = eventOcc.getReferedElement();

@@ -22,6 +22,7 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 
 public class Kermeta2LanguageInitializer implements LanguageInitializer {
+	
 
 	@Override
 	public void initialize() {		
