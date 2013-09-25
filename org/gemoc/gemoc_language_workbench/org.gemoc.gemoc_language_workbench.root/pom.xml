@@ -46,11 +46,16 @@
 			<layout>p2</layout>
 			<url>http://www.obeo.fr/download/eclipse/juno-3.8</url>
 		</repository>
-		<repository>
+		<!-- <repository>
 			<id>kermeta2-latest-stable</id>
 			<layout>p2</layout>
 			<url>http://www.kermeta.org/k2/update/</url>
-		</repository>
+		</repository>-->
+		<repository>
+            <id>kermeta2-latest-release-candidate</id>
+            <layout>p2</layout>
+            <url>http://www.kermeta.org/k2/update_2.1.1.RC/</url>
+        </repository>
 		
 		
         <repository>
