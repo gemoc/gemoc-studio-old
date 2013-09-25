@@ -53,6 +53,16 @@
 		</repository>
 		
 		
+        <repository>
+            <id>timesquare ECL</id>
+            <layout>p2</layout>
+            <url>http://timesquare.inria.fr/ecl/update_site</url>
+        </repository>	
+        <repository>
+            <id>timesquare</id>
+            <layout>p2</layout>
+            <url>http://timesquare.inria.fr/update_site</url>
+        </repository>
 		
 		 <repository>
             <id>emf2.9.x</id>
