@@ -1,24 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-   Copyright (C) 2013 Obeo
+<!-- Copyright (C) 2013 Obeo Cedric Brun <cedric.brun@obeo.fr> -->
 
-   Cedric Brun <cedric.brun@obeo.fr>
--->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.gemoc.gemoc_studio</groupId>
+		<artifactId>org.gemoc.gemoc_studio.root</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../org.gemoc.gemoc_studio.root</relativePath>
+	</parent>
 
-    <parent>
-        <groupId>org.gemoc.gemoc_studio</groupId>
-        <artifactId>org.gemoc.gemoc_studio.root</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../org.gemoc.gemoc_studio.root</relativePath>
-    </parent>
+	<artifactId>org.gemoc.gemoc_studio.branding</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<version>1.0.0-SNAPSHOT</version>
 
-    <artifactId>org.gemoc.gemoc_studio.branding</artifactId>
-    <packaging>eclipse-plugin</packaging>
-    <version>1.0.0-SNAPSHOT</version>
-
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/filtered-resources</directory>
+				<filtering>true</filtering>
+				<targetPath>${basedir}/</targetPath>
+			</resource>
+		</resources>
+		<plugins>
+			<!-- create a timestamp for the filter -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<doCheck>false</doCheck>
+					<doUpdate>false</doUpdate>
+					<revisionOnScmFailure>false</revisionOnScmFailure>
+					<format>{0,date,yyyy-MM-dd HH:mm}</format>
+					<items>
+						<item>timestamp</item>
+					</items>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<!-- used by buildnumber-maven-plugin -->
+	<scm>
+		<connection>scm:svn:http://127.0.0.1/dummy</connection>
+		<developerConnection>scm:svn:https://127.0.0.1/dummy</developerConnection>
+		<tag>HEAD</tag>
+		<url>http://127.0.0.1/dummy</url>
+	</scm>
 </project>

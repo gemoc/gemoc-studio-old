@@ -9,8 +9,8 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="brandingGemoc.application"
-            description="%productBlurb%"
-            name="Gemoc Studio">
+            description="%productBlurb"
+            name="%product.name">
          <property name="aboutText" value="%productBlurb"/>
          <property name="aboutImage" value="/images/GemocStudioAboutImage.png"/> 
          <property name="appName" value="Gemoc Studio"/> 
