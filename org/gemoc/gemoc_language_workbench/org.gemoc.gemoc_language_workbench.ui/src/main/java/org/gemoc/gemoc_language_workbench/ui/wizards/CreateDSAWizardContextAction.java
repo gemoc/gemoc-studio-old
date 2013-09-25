@@ -28,6 +28,8 @@ import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
+import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
+import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectDSAIprojectDialog;
 import org.kermeta.kp.wizard.eclipse.wizards.KermetaProjectNewWizard;
@@ -80,10 +82,13 @@ public class CreateDSAWizardContextAction {
 						// this wizard need some dedicated initialization
 						((KermetaProjectNewWizard)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
 						
+						
 						WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+						
 						wd.create();
-						//wd.setTitle(wizard.getWindowTitle());
+						getEcoreFile((KermetaProjectNewWizard)wizard);
 						wd.setTitle("New Kermeta 2 project");
+						
 						int res = wd.open();
 						if(res == WizardDialog.OK){
 							//((KermetaProjectNewWizard )wizard).performFinish();
@@ -179,6 +184,12 @@ public class CreateDSAWizardContextAction {
 		}
 	}
 	
-
+	private void getEcoreFile(KermetaProjectNewWizard wizard) {
+		ActiveFile activeFileEcore = new ActiveFileEcore(this.gemocLanguageIProject);
+		IFile ecoreFile = activeFileEcore.getActiveFile();
+		if (ecoreFile != null) {
+			wizard.getPageProject().setEcoreLoaded(ecoreFile);
+		}
+	}
 
 }
