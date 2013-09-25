@@ -26,7 +26,7 @@ Gemoc Language Workbench.
          version="0.0.0"
          unpack="false"/>
 
-   <plugin
+   <!--<plugin
          id="org.gemoc.execution.engine.actions"
          download-size="0"
          install-size="0"
@@ -81,5 +81,5 @@ Gemoc Language Workbench.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+-->
 </feature>
