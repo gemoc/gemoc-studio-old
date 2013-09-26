@@ -1,5 +1,9 @@
 package org.gemoc.gemoc_language_workbench.api.moc;
 
+import java.util.List;
+
+import fr.inria.aoste.trace.EventOccurrence;
+
 /**
  * A Step is an atomical unit of the solver which contains informations about
  * clocks
@@ -8,7 +12,9 @@ package org.gemoc.gemoc_language_workbench.api.moc;
  */
 public interface Step {
 	/**
-	 * We might want to add some things here, like EventOccurrences (depending
-	 * on how we consider a Solver).
+	 * Returns the list of EventOccurrences contained by this step.
+	 * 
+	 * @return
 	 */
+	public List<EventOccurrence> getEventOccurrences();
 }
