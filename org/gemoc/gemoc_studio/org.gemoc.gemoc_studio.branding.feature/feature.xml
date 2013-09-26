@@ -29,9 +29,6 @@
    <includes
          id="org.gemoc.gemoc_modeling_workbench.feature"
          version="0.0.0"/>
-   <includes
-         id="K3Feature"
-         version="0.0.0"/>   
 
    <requires>
       <import feature="org.kermeta.language.feature" version="2.0.0" match="greaterOrEqual"/>
@@ -45,6 +42,7 @@
       <import feature="org.eclipse.emf.ecoretools.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_language_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_modeling_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="K3Feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
