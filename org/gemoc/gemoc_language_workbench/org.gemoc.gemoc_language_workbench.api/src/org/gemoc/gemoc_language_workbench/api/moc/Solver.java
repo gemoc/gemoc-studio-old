@@ -34,4 +34,12 @@ public interface Solver {
 	 * @return
 	 */
 	public LogicalStep getNextStep();
+
+	/**
+	 * Sets the model of execution (constraints instanciated for the model) for
+	 * this solver. We use a file URI to allow different formats.
+	 * 
+	 * @param modelOfExecutionURI
+	 */
+	public void setModelOfExecutionFile(String modelOfExecutionURI);
 }
