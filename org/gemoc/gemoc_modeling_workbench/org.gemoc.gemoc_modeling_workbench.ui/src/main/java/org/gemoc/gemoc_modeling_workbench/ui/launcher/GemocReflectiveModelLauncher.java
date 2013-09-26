@@ -1,6 +1,5 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -24,11 +23,9 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 			throws CoreException {
 
 		Activator.getDefault().getMessaggingSystem().showConsole();
-		Activator
-				.getDefault()
-				.getMessaggingSystem()
-				.warn("Run Gemoc Model using MiniEngine for test, need to connect the real generic execution engine here",
-						"");
+		Activator.getDefault().getMessaggingSystem()
+				.warn("About to initialize and run the GEMOC Execution Engine...", "");
+
 		String modelPath = configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MODEL_PATH, "");
 		String languageName = configuration.getAttribute(
 				GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE, "");
@@ -43,6 +40,8 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 			}
 		}
 
+		// All these elements are required to construct the engine. They are
+		// retrieved from the Extension Points of the xDSML.
 		LanguageInitializer languageInitializer = null;
 		ModelLoader modelLoader = null;
 		Solver solver = null;
@@ -81,28 +80,43 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 			if (oFeedbackPolicy instanceof FeedbackPolicy) {
 				feedbackPolicy = (FeedbackPolicy) oFeedbackPolicy;
 			}
-			
+
 			final Object oEclFilePath = confElement
-					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_ECL_ATT);
+					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_ECL_FILE_PATH_ATT);
 			if (oEclFilePath instanceof String) {
 				eclFilePath = (String) oEclFilePath;
 			}
-			
 		}
 
-		if (languageInitializer == null | modelLoader == null | solver == null | executor == null
-				| feedbackPolicy == null | eclFilePath == null) {
-			Activator.warn("One of the API elements is null", new NullPointerException());
-		}
+		// Ugly calls to check if all the elements have been provided as
+		// required.
+		this.reactToNull(languageInitializer, "Language Initializer");
+		this.reactToNull(modelLoader, "Model Loader");
+		this.reactToNull(solver, "Solver");
+		this.reactToNull(executor, "Executor");
+		this.reactToNull(feedbackPolicy, "Feedback Policy");
+		this.reactToNull(eclFilePath, "ECL File path");
 
-		// MiniEngine engine = new MiniEngine(languageName);
-		// engine.launchEngine(modelPath);
 		try {
-			ExecutionEngine engine = new GemocExecutionEngine(languageInitializer, modelLoader, solver, executor, feedbackPolicy);
-			engine.initialize(modelPath, eclFilePath);
+			// Language-level instanciation of the engine
+			ExecutionEngine engine = new GemocExecutionEngine(languageInitializer, modelLoader, eclFilePath, solver,
+					executor, feedbackPolicy);
+			
+			// Model-level initialization of the engine
+			engine.initialize(modelPath);
+			
+			// Run the engine for just one step...
 			engine.run(1);
+			
 		} catch (Throwable e) {
 			Activator.error("Exception in the initialization of the engine", e);
+		}
+	}
+
+	private void reactToNull(Object o, String name) {
+		if (o == null) {
+			Activator.getDefault().getMessaggingSystem().warn("WARNING: " + name + " is null !", "");
+			Activator.warn(name + " is null", new NullPointerException(name));
 		}
 	}
 }
