@@ -1,21 +1,20 @@
 package org.gemoc.execution.engine.core;
 
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
-import org.gemoc.gemoc_language_workbench.api.moc.Step;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
+
+import fr.inria.aoste.trace.LogicalStep;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -34,13 +33,46 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected FeedbackPolicy feedbackPolicy = null;
 
 	protected Resource modelResource = null;
-//	protected Map<InstanciatedEvent, DomainSpecificAction> semanticMapping = null;
 
-	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, Solver solver, 
-			Executor executor, FeedbackPolicy feedbackPolicy) {
-		if (languageInitializer == null | modelLoader == null | solver == null | executor == null
+	// protected Map<InstanciatedEvent, DomainSpecificAction> semanticMapping =
+	// null;
+
+	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, String eclFilePath,
+			Solver solver, Executor executor, FeedbackPolicy feedbackPolicy) {
+		Activator.getMessagingSystem().info("Instantiating BasicExecutionEngine with...", Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tLanguageInitializer=" + languageInitializer, Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tModelLoader=" + modelLoader, Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tEclFilePath=" + eclFilePath, Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tSolver=" + solver, Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tExecutor=" + executor, Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tFeedbackPolicy=" + feedbackPolicy, Activator.PLUGIN_ID);
+
+		// If one of the components is null we throw a null pointer exception.
+		if (languageInitializer == null | modelLoader == null | eclFilePath == null | solver == null | executor == null
 				| feedbackPolicy == null) {
-			throw new NullPointerException();
+			String exceptionMessage = "";
+			if (languageInitializer == null) {
+				exceptionMessage += "languageInitializer is null,";
+			}
+			if (modelLoader == null) {
+				exceptionMessage += "modelLoader is null,";
+			}
+			if (eclFilePath == null) {
+				exceptionMessage += "eclFilePath is null,";
+			}
+			if (solver == null) {
+				exceptionMessage += "solver is null,";
+			}
+			if (executor == null) {
+				exceptionMessage += "executor is null,";
+			}
+			if (feedbackPolicy == null) {
+				exceptionMessage += "feedbackPolicy is null,";
+			}
+			if (exceptionMessage.endsWith(",")) {
+				exceptionMessage = exceptionMessage.substring(0, exceptionMessage.length() - 2);
+			}
+			throw new NullPointerException(exceptionMessage);
 		} else {
 			this.languageInitializer = languageInitializer;
 			this.modelLoader = modelLoader;
@@ -62,27 +94,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	 * @param step
 	 * @return
 	 */
-	protected abstract List<DomainSpecificEvent> match(Step step);
-
-	@Override
-	public void initialize(String modelURI) {
-		this.modelResource = this.modelLoader.loadModel(modelURI);
-		// TODO: do something with the DSE file.
-		// Programatically generate the .extendedCCSL.
-		String modelOfExecutionURI = "";
-		
-		// Create the semantic mapping by reading the generated extendedCCSL file.
-//		ModelOfExecutionLoader modelOfExecutionLoader = new ModelOfExecutionLoader();
-//		Resource modelOfExecutionResource = modelOfExecutionLoader.load(modelOfExecutionURI);
-//		
-//		ModelOfExecution modelOfExecution = (ModelOfExecution) modelOfExecutionResource.getContents().get(0);
-//		for(Iterator<InstanciatedEvent> iterator : modelOfExecution.getInstanciatedEvents().iterator(); iterator.hasNext()){
-//			InstanciatedEvent event = iterator.next();
-//			this.semanticMapping.put(event, new EmfAction(...))
-//		}
-		
-//} 
-	}
+	protected abstract List<DomainSpecificEvent> match(LogicalStep step);
 
 	@Override
 	public void run() {
@@ -120,7 +132,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 
 	private void doOneStep() {
 		// Retrieve information from the solver.
-		Step step = this.solver.getNextStep();
+		LogicalStep step = this.solver.getNextStep();
 		Activator.getMessagingSystem().debug("The solver has correctly returned a step to the engine",
 				Activator.PLUGIN_ID);
 
