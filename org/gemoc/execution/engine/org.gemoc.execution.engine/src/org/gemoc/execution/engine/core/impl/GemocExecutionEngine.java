@@ -33,6 +33,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 	public GemocExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, String eclFilePath,
 			Solver solver, Executor executor, FeedbackPolicy feedbackPolicy) throws CoreException {
 		super(languageInitializer, modelLoader, eclFilePath, solver, executor, feedbackPolicy);
+		Activator.getMessagingSystem().info("*** Engine construction done. ***", Activator.PLUGIN_ID);
 	}
 
 	@Override
@@ -44,74 +45,19 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		Activator.getMessagingSystem().info("Model was successfully loaded: " + modelResource.toString(),
 				Activator.PLUGIN_ID);
 
-		// TODO: do something with the DSE file.
+		// TODO: do something with the DSE file and the model.
 		// Programatically generate the .extendedCCSL.
 		String modelOfExecutionURI = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC_new.extendedCCSL";
 
 		this.solver.setModelOfExecutionFile(modelOfExecutionURI);
-		
-		// Create the semantic mapping by reading the generated extendedCCSL
-		// file.
-		// ModelOfExecutionLoader modelOfExecutionLoader = new
-		// ModelOfExecutionLoader();
-		// Resource modelOfExecutionResource =
-		// modelOfExecutionLoader.load(modelOfExecutionURI);
-		//
-		// ModelOfExecution modelOfExecution = (ModelOfExecution)
-		// modelOfExecutionResource.getContents().get(0);
-		// for(Iterator<InstanciatedEvent> iterator :
-		// modelOfExecution.getInstanciatedEvents().iterator();
-		// iterator.hasNext()){
-		// InstanciatedEvent event = iterator.next();
-		// this.semanticMapping.put(event, new EmfAction(...))
-		// }
 
-		// }
+		Activator.getMessagingSystem().info("*** Engine initialization done. ***", Activator.PLUGIN_ID);
 	}
 
 	@Override
 	protected List<DomainSpecificEvent> match(LogicalStep step) {
 		Activator.getMessagingSystem().debug("Matching the given step : " + step.toString(), Activator.PLUGIN_ID);
 		List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
-		// try {
-		// CcslStep ccslStep = (CcslStep) step;
-		// for (EventOccurrence eventOccurrence :
-		// ccslStep.getEventOccurrences()) {
-		// if (eventOccurrence.getFState() == FiredStateKind.TICK) {
-		// Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
-		// if (c != null) {
-		// EList<EObject> linkedObjects =
-		// c.getTickingEvent().getReferencedObjectRefs();
-		// if (linkedObjects.size() == 2) {
-		// Activator.getMessagingSystem().debug(
-		// "Linked objects are : \n\t" + linkedObjects.get(0).toString() +
-		// "\n\t && "
-		// + linkedObjects.get(1).toString(), Activator.PLUGIN_ID);
-		// EObject linkedOperation = linkedObjects.get(1);
-		// if (linkedOperation.eIsProxy()) {
-		// linkedOperation = EcoreUtil2
-		// .resolve(linkedOperation, this.metamodelPackage.eResource());
-		// }
-		// Activator.getMessagingSystem().debug(
-		// "Is the second object an EOperation ?: " + (linkedOperation
-		// instanceof EOperation),
-		// Activator.PLUGIN_ID);
-		// if (linkedOperation instanceof EOperation) {
-		// res.add(new EclEvent(new EmfAction(linkedObjects.get(0), (EOperation)
-		// linkedOperation)));
-		// }
-		// }
-		// }
-		// }
-		//
-		// }
-		// } catch (ClassCastException e) {
-		// String errorMessage =
-		// "ClassCastException while casting Step as CcslStep";
-		// Activator.getMessagingSystem().error(errorMessage,
-		// Activator.PLUGIN_ID);
-		// Activator.error(errorMessage, e);
-		// }
 		for (EventOccurrence eventOccurrence : step.getEventOccurrences()) {
 			if (eventOccurrence.getFState() == FiredStateKind.TICK) {
 				EObject target = this.getEObjectFromReference(eventOccurrence.getContext());
@@ -139,7 +85,6 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 					return eo;
 				}
 			}
-
 		} else {
 			throw new RuntimeException(
 					"Context reference is neither a ModelElementReference nor a NamedElementReference");

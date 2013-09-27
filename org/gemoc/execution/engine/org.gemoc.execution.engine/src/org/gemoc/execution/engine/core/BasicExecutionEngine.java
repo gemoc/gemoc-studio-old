@@ -34,9 +34,6 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 
 	protected Resource modelResource = null;
 
-	// protected Map<InstanciatedEvent, DomainSpecificAction> semanticMapping =
-	// null;
-
 	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, String eclFilePath,
 			Solver solver, Executor executor, FeedbackPolicy feedbackPolicy) {
 		Activator.getMessagingSystem().info("Instantiating BasicExecutionEngine with...", Activator.PLUGIN_ID);
