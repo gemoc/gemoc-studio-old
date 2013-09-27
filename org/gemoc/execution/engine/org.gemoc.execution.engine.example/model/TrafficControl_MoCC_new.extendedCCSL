@@ -7,13 +7,12 @@ ClockConstraintSystem TrafficControl {
 	}
 	entryBlock mainBlock
 	Block mainBlock {
-		//Clock minutes_initialize : clock -> evt_minutes_initialize
-		//("System->minutesToto", "System->minutesToto::initialize()")
-		
+		Clock minutes_initialize : clock -> evt_minutes_initialize
+		("System->minutesToto", "System->minutesToto::initialize()")
 		//Clock minutes_ticks : clock -> evt_minutes_ticks
 		//("System->minutes" , "System->minutes::ticks()")
 		
-		
+		/*
 		Expression switchintermediate_AllTriggeringOccurrences1 = Union
 		( Clock1 -> Day_to_Day_fire,
 		Clock2 -> Night_to_Night_fire )
@@ -34,15 +33,15 @@ ClockConstraintSystem TrafficControl {
 		Clock2 -> Day_to_Night_fire )
 		Expression Red0_to_Green0_DelayFor_delayIsExpired_wrt_StateEntering = DelayFor
 		( DelayForClockToDelay -> Red0_entering,
-		DelayForClockForCounting -> minutes_tick,
+		DelayForClockForCounting -> minutes_ticks,
 		DelayForDelay -> Red0_to_Green0guardRed0Green0_afterDuration )
 		Expression initControl_to_Day_DelayFor_delayIsExpired_wrt_StateEntering = DelayFor
 		( DelayForClockToDelay -> initControl_entering,
-		DelayForClockForCounting -> minutes_tick,
+		DelayForClockForCounting -> minutes_ticks,
 		DelayForDelay -> initControl_to_DayguardInitControl_afterDuration )
 		Expression initSema0_to_Red0_DelayFor_delayIsExpired_wrt_StateEntering = DelayFor
 		( DelayForClockToDelay -> initSema0_entering,
-		DelayForClockForCounting -> minutes_tick,
+		DelayForClockForCounting -> minutes_ticks,
 		DelayForDelay -> initSema0_to_Red0guardInitSema0Red0_afterDuration )
 		Expression initSema0intermediate_allFiredoutgoingTransition1 = Union
 		( Clock1 -> initSema0_to_Red0_fire,
@@ -98,13 +97,13 @@ ClockConstraintSystem TrafficControl {
 		Clock1 -> Green0_to_Red0_fire )
 		Relation Night_to_NightTemporalTransition_fireWhenTemporalGuardHoldsVariousTransition [ TemporalTransition ]
 		( TemporalTransition_MakeFireable -> Night_entering,
-		TemporalTransition_RefClock -> minutes_tick,
+		TemporalTransition_RefClock -> minutes_ticks,
 		TemporalTransition_Reset -> Night_to_Nightintermediate_otherFireFromTheSameState1,
 		TemporalTransition_delay -> Night_to_NightguardNightNightguardDelay_afterDuration,
 		TemporalTransition_Fire -> Night_to_Night_fire )
 		Relation Day_to_DayTemporalTransition_fireWhenTemporalGuardHoldsVariousTransition [ TemporalTransition ]
 		( TemporalTransition_MakeFireable -> Day_entering,
-		TemporalTransition_RefClock -> minutes_tick,
+		TemporalTransition_RefClock -> minutes_ticks,
 		TemporalTransition_Reset -> Day_to_Dayintermediate_otherFireFromTheSameState1,
 		TemporalTransition_delay -> Day_to_DayguardDayDayguardDelay_afterDuration,
 		TemporalTransition_Fire -> Day_to_Day_fire )
@@ -251,8 +250,8 @@ ClockConstraintSystem TrafficControl {
 				
 		Clock switch_occurs : clock -> evt_switch_occurs
 		( "System->switch" )
-		Clock minutes_tick : clock -> evt_minutes_tick
-		("System->minutes", "System->minutes::tick()")
+		Clock minutes_ticks : clock -> evt_minutes_ticks
+		("System->minutes" , "System->minutes::ticks()")
 		Clock Night_to_Day_fire : clock -> evt_Night_to_Day_fire
 		( "System->Night_to_Day" ,  "System->Night_to_Day::fire()")
 		Clock Day_to_Day_fire : clock -> evt_Day_to_Day_fire
@@ -329,7 +328,6 @@ ClockConstraintSystem TrafficControl {
 		Integer Day_to_DayguardDayDayguardDelay_afterDuration : int = 4
 		Integer Red0_to_Green0guardRed0Green0_afterDuration : int = 2
 		Integer initControl_to_DayguardInitControl_afterDuration : int = 1
-		Integer initSema0_to_Red0guardInitSema0Red0_afterDuration : int = 1
-		
+		Integer initSema0_to_Red0guardInitSema0Red0_afterDuration : int = 1 */	
 	}
 }
