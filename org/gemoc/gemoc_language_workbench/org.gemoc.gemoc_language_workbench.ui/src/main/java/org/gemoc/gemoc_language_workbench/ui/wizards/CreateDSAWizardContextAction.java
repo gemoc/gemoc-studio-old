@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -33,6 +32,7 @@ import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectDSAIprojectDialog;
 import org.kermeta.kp.wizard.eclipse.wizards.KermetaProjectNewWizard;
+import org.k3.language.ui.wizards.WizardNewProjectK3Plugin;
 
 public class CreateDSAWizardContextAction {
 
@@ -86,7 +86,7 @@ public class CreateDSAWizardContextAction {
 						WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 						
 						wd.create();
-						getEcoreFile((KermetaProjectNewWizard)wizard);
+						getEcoreDSAK2File((KermetaProjectNewWizard)wizard);
 						wd.setTitle("New Kermeta 2 project");
 						
 						int res = wd.open();
@@ -113,12 +113,53 @@ public class CreateDSAWizardContextAction {
 	}
 	
 	protected void createNewK3DSAProject(){
-		
-		MessageDialog.openWarning(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				"Gemoc Language Workbench UI",
-				"createNewK3DSAProject. Action not implemented yet");
-		
+
+		// launch DSA Kermeta New wizard		
+				IWizardDescriptor descriptor = PlatformUI
+						.getWorkbench()
+						.getNewWizardRegistry()
+						.findWizard(
+								"org.k3.language.ui.wizards.WizardNewProjectK3Plugin");
+				
+				// Then if we have a wizard, open it.
+ 				if (descriptor != null) {
+					// add a listener to capture the creation of the resulting project
+					NewProjectWorkspaceListener workspaceListener = new NewProjectWorkspaceListener();
+					ResourcesPlugin.getWorkspace().addResourceChangeListener(workspaceListener);
+					try {
+						IWizard wizard;
+						wizard = descriptor.createWizard();
+						// this wizard need some dedicated initialization
+						((WizardNewProjectK3Plugin)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
+						
+						
+						WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+						
+						wd.create();
+						getEcoreDSAK3File((WizardNewProjectK3Plugin)wizard);
+						wd.setTitle("New Kermeta 3 project");
+						
+						int res = wd.open();
+						if(res == WizardDialog.OK){
+							//((KermetaProjectNewWizard )wizard).performFinish();
+							ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
+							IProject createdProject = workspaceListener.getLastCreatedProject();
+							// update the project configuration model
+							if(createdProject != null){
+								addDSAProjectToConf(createdProject.getName());
+							}
+							else{
+								addDSAProjectToConf("");
+							}
+						}
+					} catch (CoreException e) {
+						Activator.error(e.getMessage(), e);
+					}
+					finally{
+						// make sure to remove listener in all situations
+						ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
+					}
+				}
 	}
 	
 	protected void selectExistingDSAProject(){
@@ -184,7 +225,15 @@ public class CreateDSAWizardContextAction {
 		}
 	}
 	
-	private void getEcoreFile(KermetaProjectNewWizard wizard) {
+	private void getEcoreDSAK2File(KermetaProjectNewWizard wizard) {
+		ActiveFile activeFileEcore = new ActiveFileEcore(this.gemocLanguageIProject);
+		IFile ecoreFile = activeFileEcore.getActiveFile();
+		if (ecoreFile != null) {
+			wizard.getPageProject().setEcoreLoaded(ecoreFile);
+		}
+	}
+	
+	private void getEcoreDSAK3File(WizardNewProjectK3Plugin wizard) {
 		ActiveFile activeFileEcore = new ActiveFileEcore(this.gemocLanguageIProject);
 		IFile ecoreFile = activeFileEcore.getActiveFile();
 		if (ecoreFile != null) {
