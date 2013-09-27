@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated animationtemplate -->
+      <factory
+            uri="http://www.obeo.fr/dsl/sirius/animation/template"
+            class="fr.obeo.dsl.sirius.animationtemplate.provider.AnimationtemplateItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+   <extension
+         point="fr.obeo.dsl.viewpoint.ui.representationTemplateEdit">
+      <dialectUI
+            class="fr.obeo.dsl.sirius.animationtemplate.FreeDiagramTemplateEdit">
+      </dialectUI>
+   </extension>
+
+</plugin>

@@ -1,0 +1,7 @@
+-> Errors in file : plugin.xml
+Position 129 : EVAL : Empty feature evaluation, in file : /fr.obeo.pim.ecore.gen.editor/src/fr/obeo/pim/ecore/gen/editor/pluginxml_porpertyPart.mt, at line : 14, at column : 5, for object : fragment=/ file=/resource/fr.obeo.dsl.sirius.animation.template/model/animationtemplate.genmodel
+
+
+-> Errors in file : plugin.xml
+Position 129 : EVAL : Empty feature evaluation, in file : /fr.obeo.pim.ecore.gen.editor/src/fr/obeo/pim/ecore/gen/editor/pluginxml_porpertyPart.mt, at line : 14, at column : 5, for object : fragment=/ file=/resource/fr.obeo.dsl.sirius.animation.template/model/animationtemplate.genmodel
+

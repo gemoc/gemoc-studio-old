@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="animationtemplate" nsURI="http://www.obeo.fr/dsl/sirius/animation/template"
+    nsPrefix="animationtemplate">
+  <eClassifiers xsi:type="ecore:EClass" name="AnimationTemplate" eSuperTypes="../../fr.obeo.dsl.viewpoint/model/viewpoint.ecore#//description/RepresentationTemplate #//TTransformer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="animate" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ../../fr.obeo.dsl.viewpoint/model/viewpoint.ecore#//description/RepresentationDescription"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FreeDiagramTemplate" eSuperTypes="../../fr.obeo.dsl.viewpoint/model/viewpoint.ecore#//description/RepresentationTemplate #//TTransformer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainClass" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TTransformer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+</ecore:EPackage>
