@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.gemoc.gemoc_studio.additions.feature"
-      label="Studio Additional Feature"
+      label="Gemoc Studio Additional Features"
       version="1.0.0.qualifier">
 
    <description url="http://www.gemoc.org">
