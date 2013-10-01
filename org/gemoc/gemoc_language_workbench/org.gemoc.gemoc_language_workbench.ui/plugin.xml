@@ -111,6 +111,11 @@
             name="ShowDomainModelProject">
       </command>
       <command
+            defaultHandler="org.gemoc.gemoc_language_workbench.ui.commands.SetRootEObjectHandler"
+            id="org.gemoc.gemoc_language_workbench.ui.commands.SetRootEObject"
+            name="SetRootEObject">
+      </command>
+      <command
             defaultHandler="org.gemoc.gemoc_language_workbench.ui.commands.CreateDSAProjectHandler"
             id="org.gemoc.gemoc_language_workbench.ui.commands.CreateDSAProject"
             name="CreateDSAProject">
@@ -194,6 +199,18 @@
                   commandId="org.gemoc.gemoc_language_workbench.ui.commands.ShowDomainModelProject"
                   icon="icons/eye-16.png"
                   label="Show Domain Model Project"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasDomainModelProject">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.SetRootEObject"
+                  icon="icons/plus-16.png"
+                  label="Set root EObject"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
