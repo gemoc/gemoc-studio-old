@@ -22,6 +22,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFEcoreProjectImpl#getEmfGenmodel <em>Emf Genmodel</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFEcoreProjectImpl#getDefaultRootEObjectQualifiedName <em>Default Root EObject Qualified Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,6 +38,24 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	 * @ordered
 	 */
 	protected EMFGenmodel emfGenmodel;
+	/**
+	 * The default value of the '{@link #getDefaultRootEObjectQualifiedName() <em>Default Root EObject Qualified Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultRootEObjectQualifiedName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getDefaultRootEObjectQualifiedName() <em>Default Root EObject Qualified Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultRootEObjectQualifiedName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String defaultRootEObjectQualifiedName = DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,6 +123,27 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDefaultRootEObjectQualifiedName() {
+		return defaultRootEObjectQualifiedName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultRootEObjectQualifiedName(String newDefaultRootEObjectQualifiedName) {
+		String oldDefaultRootEObjectQualifiedName = defaultRootEObjectQualifiedName;
+		defaultRootEObjectQualifiedName = newDefaultRootEObjectQualifiedName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME, oldDefaultRootEObjectQualifiedName, defaultRootEObjectQualifiedName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -123,6 +163,8 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 		switch (featureID) {
 			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
 				return getEmfGenmodel();
+			case confPackage.EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME:
+				return getDefaultRootEObjectQualifiedName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -137,6 +179,9 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 		switch (featureID) {
 			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
 				setEmfGenmodel((EMFGenmodel)newValue);
+				return;
+			case confPackage.EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME:
+				setDefaultRootEObjectQualifiedName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -153,6 +198,9 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
 				setEmfGenmodel((EMFGenmodel)null);
 				return;
+			case confPackage.EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME:
+				setDefaultRootEObjectQualifiedName(DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -167,8 +215,26 @@ public class EMFEcoreProjectImpl extends DomainModelProjectImpl implements EMFEc
 		switch (featureID) {
 			case confPackage.EMF_ECORE_PROJECT__EMF_GENMODEL:
 				return emfGenmodel != null;
+			case confPackage.EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME:
+				return DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME_EDEFAULT == null ? defaultRootEObjectQualifiedName != null : !DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME_EDEFAULT.equals(defaultRootEObjectQualifiedName);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (defaultRootEObjectQualifiedName: ");
+		result.append(defaultRootEObjectQualifiedName);
+		result.append(')');
+		return result.toString();
 	}
 
 } //EMFEcoreProjectImpl

@@ -37,6 +37,7 @@
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//AnimatorProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//EMFEcoreProject">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//EMFEcoreProject/emfGenmodel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//EMFEcoreProject/defaultRootEObjectQualifiedName"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ODProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//SiriusAnimatorProject">

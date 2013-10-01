@@ -2623,11 +2623,14 @@
           <children xmi:type="notation:Node" xmi:id="_J_l3YAThEeOr-oEtVLrZMw" type="2003" element="_J-ZkkAThEeOr-oEtVLrZMw">
             <children xmi:type="notation:Node" xmi:id="_J_l3YwThEeOr-oEtVLrZMw" type="5007"/>
             <children xmi:type="notation:Node" xmi:id="_J_l3ZAThEeOr-oEtVLrZMw" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_m6aKwCqaEeOVI4gilhDX-Q" type="3010" element="_m4NLUSqaEeOVI4gilhDX-Q">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_m6aKwSqaEeOVI4gilhDX-Q"/>
+              </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_J_l3ZQThEeOr-oEtVLrZMw"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_J_l3ZgThEeOr-oEtVLrZMw"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_J_l3YQThEeOr-oEtVLrZMw" fontName="Segoe UI" fontHeight="8" fillColor="10011046"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_l3YgThEeOr-oEtVLrZMw" x="-30" y="340"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_l3YgThEeOr-oEtVLrZMw" x="-150" y="340"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_QzDvQAThEeOr-oEtVLrZMw" type="2003" element="_QyKXYAThEeOr-oEtVLrZMw">
             <children xmi:type="notation:Node" xmi:id="_QzDvQwThEeOr-oEtVLrZMw" type="5007"/>
@@ -2690,7 +2693,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_i67eJgTiEeOr-oEtVLrZMw"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_i67eIQTiEeOr-oEtVLrZMw" fontName="Segoe UI" fontHeight="8" fillColor="13420443"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i67eIgTiEeOr-oEtVLrZMw" x="-225" y="345"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i67eIgTiEeOr-oEtVLrZMw" x="-415" y="355"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="___NFrgTiEeOr-oEtVLrZMw" visible="false" type="2003" element="___DUoATiEeOr-oEtVLrZMw">
             <children xmi:type="notation:Node" xmi:id="___NFsQTiEeOr-oEtVLrZMw" type="5007"/>
@@ -3532,6 +3535,17 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_NpxDEAThEeOr-oEtVLrZMw" red="166" green="193" blue="152"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+        <ownedElements xmi:type="viewpoint:DNodeListElement" xmi:id="_m4NLUSqaEeOVI4gilhDX-Q" name="defaultRootEObjectQualifiedName : EString">
+          <target xmi:type="ecore:EAttribute" href="gemoc_language_workbench_conf.ecore#//EMFEcoreProject/defaultRootEObjectQualifiedName"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="gemoc_language_workbench_conf.ecore#//EMFEcoreProject/defaultRootEObjectQualifiedName"/>
+          <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_m4NLUiqaEeOVI4gilhDX-Q" labelAlignment="LEFT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_m4NLUyqaEeOVI4gilhDX-Q"/>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_m4NLVCqaEeOVI4gilhDX-Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_m4NLVSqaEeOVI4gilhDX-Q"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+        </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_MbWvMAThEeOr-oEtVLrZMw" sourceNode="_J-ZkkAThEeOr-oEtVLrZMw" targetNode="_dG0R9QTfEeOr-oEtVLrZMw">
         <target xmi:type="ecore:EClass" href="gemoc_language_workbench_conf.ecore#//EMFEcoreProject"/>

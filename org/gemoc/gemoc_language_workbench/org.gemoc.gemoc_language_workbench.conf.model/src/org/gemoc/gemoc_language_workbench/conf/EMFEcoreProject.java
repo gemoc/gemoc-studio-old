@@ -12,6 +12,7 @@ package org.gemoc.gemoc_language_workbench.conf;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEmfGenmodel <em>Emf Genmodel</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getDefaultRootEObjectQualifiedName <em>Default Root EObject Qualified Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,5 +46,31 @@ public interface EMFEcoreProject extends DomainModelProject {
 	 * @generated
 	 */
 	void setEmfGenmodel(EMFGenmodel value);
+
+	/**
+	 * Returns the value of the '<em><b>Default Root EObject Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Default Root EObject Qualified Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Default Root EObject Qualified Name</em>' attribute.
+	 * @see #setDefaultRootEObjectQualifiedName(String)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getEMFEcoreProject_DefaultRootEObjectQualifiedName()
+	 * @model
+	 * @generated
+	 */
+	String getDefaultRootEObjectQualifiedName();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getDefaultRootEObjectQualifiedName <em>Default Root EObject Qualified Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Root EObject Qualified Name</em>' attribute.
+	 * @see #getDefaultRootEObjectQualifiedName()
+	 * @generated
+	 */
+	void setDefaultRootEObjectQualifiedName(String value);
 
 } // EMFEcoreProject

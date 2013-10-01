@@ -40,6 +40,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="EMFEcoreProject" eSuperTypes="#//DomainModelProject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="emfGenmodel" lowerBound="1"
         eType="#//EMFGenmodel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultRootEObjectQualifiedName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ODProject" eSuperTypes="#//EditorProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="SiriusAnimatorProject" eSuperTypes="#//AnimatorProject">
