@@ -18,7 +18,7 @@ public interface Solver {
 	 * 
 	 * @param event
 	 */
-	public void forceEventNonOccurrence(DomainSpecificEvent event);
+	public void forbidEventOccurrence(DomainSpecificEvent event);
 
 	/**
 	 * Forces the underlying MoC structure to trigger the given Domain Specific

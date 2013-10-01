@@ -32,7 +32,7 @@ public class CcslSolver implements Solver {
 	}
 
 	@Override
-	public void forceEventNonOccurrence(DomainSpecificEvent event) {
+	public void forbidEventOccurrence(DomainSpecificEvent event) {
 		try {
 			EmfAction action = (EmfAction) event.getAction();
 			this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(action.getTarget()));
