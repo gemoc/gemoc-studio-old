@@ -1,5 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api.feedback;
 
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 /**
@@ -16,5 +17,5 @@ public interface FeedbackPolicy {
 	 * @param feedback
 	 * @param solver
 	 */
-	public void processFeedback(FeedbackData feedback, Solver solver);
+	public void processFeedback(FeedbackData feedback, DomainSpecificEvent causalEvent, Solver solver);
 }

@@ -144,7 +144,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 			FeedbackData feedback = this.executor.execute(event);
 			Activator.getMessagingSystem().info(
 					"Feedback from event " + event.toString() + " is : " + feedback.toString(), Activator.PLUGIN_ID);
-			this.feedbackPolicy.processFeedback(feedback, solver);
+			this.feedbackPolicy.processFeedback(feedback, event, solver);
 		}
 	}
 
