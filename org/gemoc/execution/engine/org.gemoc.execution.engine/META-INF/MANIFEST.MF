@@ -28,5 +28,6 @@ Export-Package: org.gemoc.execution.engine,
  org.gemoc.execution.engine.api_implementations.dse,
  org.gemoc.execution.engine.api_implementations.feedback,
  org.gemoc.execution.engine.api_implementations.moc,
+ org.gemoc.execution.engine.api_implementations.utils,
  org.gemoc.execution.engine.core,
  org.gemoc.execution.engine.core.impl
