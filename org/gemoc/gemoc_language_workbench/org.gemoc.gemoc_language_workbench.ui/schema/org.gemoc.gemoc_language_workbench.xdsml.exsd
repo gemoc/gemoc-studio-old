@@ -62,17 +62,17 @@
                   Class in charge of loading model
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.ui.api.IXDSMLModelLoader"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.ModelLoader"/>
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="executor_class" type="string">
+         <attribute name="executor_class" type="string" use="required">
             <annotation>
                <documentation>
                   Class offering execution API on the XDSML
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.ui.api.IXDSMLExecutor"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.Executor"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -82,7 +82,7 @@
                   Class in charge of initializing the XDSML for correct loading and execution
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.ui.api.IXDSMLInitializer"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -93,7 +93,7 @@
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="solver_class" type="string">
+         <attribute name="solver_class" type="string" use="required">
             <annotation>
                <documentation>
                   An implementation of the Solver.
