@@ -3,13 +3,14 @@ package org.gemoc.execution.engine.api_implementations.moc;
 import java.io.IOException;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
@@ -32,27 +33,15 @@ public class CcslSolver implements Solver {
 	}
 
 	@Override
-	public void forbidEventOccurrence(DomainSpecificEvent event) {
-		try {
-			EmfAction action = (EmfAction) event.getAction();
-			this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(action.getTarget()));
-		} catch (ClassCastException e) {
-			String errorMessage = "ClassCastException while trying to force an event non occurrence. You should use EmfActions.";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
-		}
+	public void forbidEventOccurrenceReferencing(EObject target) {
+		// TODO: Julien complete the code so as to force the correct clocks.
+		this.solverWrapper.forceClockAbsence(HelperFactory.createModelElementReference(target));
 	}
 
 	@Override
-	public void forceEventOccurrence(DomainSpecificEvent event) {
-		try {
-			EmfAction action = (EmfAction) event.getAction();
-			this.solverWrapper.forceClockAbsence(HelperFactory.createModelElementReference(action.getTarget()));
-		} catch (ClassCastException e) {
-			String errorMessage = "ClassCastException while trying to force an event non occurrence. You should use EmfActions.";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
-		}
+	public void forceEventOccurrenceReferencing(EObject target) {
+		// TODO: Julien complete the code so as to force the correct clocks.
+		this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(target));
 	}
 
 	@Override

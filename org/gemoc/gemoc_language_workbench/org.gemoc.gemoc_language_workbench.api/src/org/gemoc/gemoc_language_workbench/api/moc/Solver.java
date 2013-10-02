@@ -1,6 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api.moc;
 
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.eclipse.emf.ecore.EObject;
 
 import fr.inria.aoste.trace.LogicalStep;
 
@@ -18,7 +18,7 @@ public interface Solver {
 	 * 
 	 * @param event
 	 */
-	public void forbidEventOccurrence(DomainSpecificEvent event);
+	public void forbidEventOccurrenceReferencing(EObject target);
 
 	/**
 	 * Forces the underlying MoC structure to trigger the given Domain Specific
@@ -26,7 +26,7 @@ public interface Solver {
 	 * 
 	 * @param event
 	 */
-	public void forceEventOccurrence(DomainSpecificEvent event);
+	public void forceEventOccurrenceReferencing(EObject target);
 
 	/**
 	 * Returns the next step on the MoC's agenda.
