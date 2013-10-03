@@ -1,6 +1,5 @@
 package org.gemoc.execution.engine.api_implementations.utils;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -8,9 +7,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -32,17 +29,20 @@ public class Kermeta2ModelLoader implements ModelLoader {
 
 	@Override
 	public Resource loadModel(String modelFileUri) {
-		String MMpath = "";
-		URI modelURI = URI.createPlatformResourceURI(modelFileUri, true);
+		String MMpath = "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
+		URI modelURI = URI.createPlatformResourceURI(modelFileUri, true); 
+		Activator.getMessagingSystem().debug("modelURI: " + modelURI.toString(), Activator.PLUGIN_ID);
 		URI metamodelURI = URI.createPlatformResourceURI(MMpath, true);
-		String jarDsaFolderPath = "";
-		String jarDependenciesFolderPath = "";
+		Activator.getMessagingSystem().debug("metamodelURI: " + metamodelURI.toString(), Activator.PLUGIN_ID);
+		String jarDsaFolderPath = "/org.gemoc.execution.engine.example/my_jars/dsa";
+		String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
 
 		ClassLoader customizedClassLoader = this.customizeClassLoader(jarDsaFolderPath, jarDependenciesFolderPath);
 		EObject modelLoader = this.createAndInitializeModelLoader(customizedClassLoader);
 		Activator.getMessagingSystem().debug("Model Loader returned : " + modelLoader.toString(), Activator.PLUGIN_ID);
 		Activator.getMessagingSystem().debug("Loading the model", Activator.PLUGIN_ID);
 		EObject modelRoot = this.loadModel(modelLoader, modelURI, metamodelURI);
+		Activator.getMessagingSystem().debug("modelRoot returned: " + modelRoot.toString(), Activator.PLUGIN_ID);
 
 		return modelRoot.eResource();
 	}
@@ -91,25 +91,37 @@ public class Kermeta2ModelLoader implements ModelLoader {
 
 			Activator.getMessagingSystem().debug("loadModel method retrieved : " + loadModelMethod.toString(),
 					Activator.PLUGIN_ID);
-			File f = new File(modelURI.toPlatformString(true));
-			Activator.getMessagingSystem().debug(f.toString() + " - " + f.lastModified() + " - " + f.exists(),
-					Activator.PLUGIN_ID);
-			Activator
-					.getMessagingSystem()
-					.debug(modelURI.toString() + " ## "
-							+ new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(f.lastModified()), Activator.PLUGIN_ID);
-			Activator.getMessagingSystem().debug(metamodelURI.toString(), Activator.PLUGIN_ID);
-
+			// File f = new File(modelURI.toPlatformString(true));
+			// Activator.getMessagingSystem().debug(f.toString() + " - " +
+			// f.lastModified() + " - " + f.exists(),
+			// Activator.PLUGIN_ID);
+			// Activator
+			// .getMessagingSystem()
+			// .debug(modelURI.toString() + " ## "
+			// + new
+			// SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(f.lastModified()),
+			// Activator.PLUGIN_ID);
+			// Activator.getMessagingSystem().debug(metamodelURI.toString(),
+			// Activator.PLUGIN_ID);
+			//
+			// Activator.getMessagingSystem().debug(
+			// new
+			// File(URI.createPlatformResourceURI(("platform:/resource/org.gemoc.execution.engine.example"),
+			// true).toPlatformString(true)).exists()
+			// + "", Activator.PLUGIN_ID);
+			// Activator.getMessagingSystem().debug(
+			// Arrays.asList(ResourcesPlugin.getWorkspace().getRoot().getProjects()).toString(),
+			// Activator.PLUGIN_ID);
 			Activator.getMessagingSystem().debug(
-					new File(URI.createPlatformResourceURI(("platform:/resource/org.gemoc.execution.engine.example"),
-							true).toPlatformString(true)).exists()
-							+ "", Activator.PLUGIN_ID);
-			Activator.getMessagingSystem().debug(
-					Arrays.asList(ResourcesPlugin.getWorkspace().getRoot().getProjects()).toString(),
+					"Calling method " + loadModelMethod.toString() + " on object " + modelLoader.toString()
+							+ " with arguments " + modelURI.toString() + " ; " + metamodelURI.toString(),
 					Activator.PLUGIN_ID);
-
+			Activator.getMessagingSystem().debug(loadModelMethod.getReturnType().toString(), Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().debug(loadModelMethod.getTypeParameters().toString(), Activator.PLUGIN_ID);
 			modelRoot = (EObject) loadModelMethod.invoke((Object) modelLoader, modelURI.toString(),
 					metamodelURI.toString());
+
+			Activator.getMessagingSystem().debug((modelRoot == null) + "", Activator.PLUGIN_ID);
 		} catch (NoSuchMethodException e) {
 			String errorMessage = "NoSuchMethodException while trying to load the model";
 			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
@@ -131,6 +143,8 @@ public class Kermeta2ModelLoader implements ModelLoader {
 			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			Activator.error(e.getCause().getMessage(), e.getCause());
+		} catch (Throwable e) {
+			Activator.error("ALLO", e);
 		}
 		return modelRoot;
 	}

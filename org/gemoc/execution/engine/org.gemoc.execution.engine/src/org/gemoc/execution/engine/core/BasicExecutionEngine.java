@@ -44,29 +44,16 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 		Activator.getMessagingSystem().info("\tExecutor=" + executor, Activator.PLUGIN_ID);
 		Activator.getMessagingSystem().info("\tFeedbackPolicy=" + feedbackPolicy, Activator.PLUGIN_ID);
 
-		// If one of the components is null we throw a null pointer exception.
-		if (languageInitializer == null | modelLoader == null | eclFilePath == null | solver == null | executor == null
-				| feedbackPolicy == null) {
+		// The engine needs AT LEAST a Solver and an Executor.
+		if (solver == null | executor == null) {
 			String exceptionMessage = "";
-			if (languageInitializer == null) {
-				exceptionMessage += "languageInitializer is null,";
-			}
-			if (modelLoader == null) {
-				exceptionMessage += "modelLoader is null,";
-			}
-			if (eclFilePath == null) {
-				exceptionMessage += "eclFilePath is null,";
-			}
 			if (solver == null) {
-				exceptionMessage += "solver is null,";
+				exceptionMessage += "solver is null, ";
 			}
 			if (executor == null) {
-				exceptionMessage += "executor is null,";
+				exceptionMessage += "executor is null, ";
 			}
-			if (feedbackPolicy == null) {
-				exceptionMessage += "feedbackPolicy is null,";
-			}
-			if (exceptionMessage.endsWith(",")) {
+			if (exceptionMessage.endsWith(", ")) {
 				exceptionMessage = exceptionMessage.substring(0, exceptionMessage.length() - 2);
 			}
 			throw new NullPointerException(exceptionMessage);
@@ -77,7 +64,25 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 			this.executor = executor;
 			this.feedbackPolicy = feedbackPolicy;
 
-			this.languageInitializer.initialize();
+			if (languageInitializer != null) {
+				this.languageInitializer.initialize();
+			}
+		}
+		if (languageInitializer == null) {
+			String msg = "LanguageInitializer is null";
+			Activator.warn(msg, new NullPointerException(msg));
+		}
+		if (modelLoader == null) {
+			String msg = "ModelLoader is null";
+			Activator.warn(msg, new NullPointerException(msg));
+		}
+		if (eclFilePath == null) {
+			String msg = "String eclFilePath is null";
+			Activator.warn(msg, new NullPointerException(msg));
+		}
+		if (feedbackPolicy == null) {
+			String msg = "FeedbackPolicy is null";
+			Activator.warn(msg, new NullPointerException(msg));
 		}
 	}
 
@@ -144,7 +149,9 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 			FeedbackData feedback = this.executor.execute(event);
 			Activator.getMessagingSystem().info(
 					"Feedback from event " + event.toString() + " is : " + feedback.toString(), Activator.PLUGIN_ID);
-			this.feedbackPolicy.processFeedback(feedback, event, solver);
+			if (this.feedbackPolicy != null) {
+				this.feedbackPolicy.processFeedback(feedback, event, solver);
+			}
 		}
 	}
 
@@ -176,6 +183,6 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	@Override
 	public String toString() {
 		return this.getClass().getName() + "@[Executor=" + this.executor + " ; Solver=" + this.solver
-				+ " ; FeedbackPolicy=" + this.feedbackPolicy + "]";
+				+ " ; ModelResource=" + this.modelResource + "]";
 	}
 }

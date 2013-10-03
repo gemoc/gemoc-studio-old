@@ -21,6 +21,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
@@ -42,6 +43,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		Activator.getMessagingSystem().info("\tmodelURI: " + modelURI, Activator.PLUGIN_ID);
 
 		this.modelResource = this.modelLoader.loadModel(modelURI);
+		this.executor.setModel(this.modelResource);
 		Activator.getMessagingSystem().info("Model was successfully loaded: " + modelResource.toString(),
 				Activator.PLUGIN_ID);
 
@@ -56,16 +58,53 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 
 	@Override
 	protected List<DomainSpecificEvent> match(LogicalStep step) {
-		Activator.getMessagingSystem().debug("Matching the given step : " + step.toString(), Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().debug(
+				"Matching the given step : " + step.toString() + " containing: \n"
+						+ step.getEventOccurrences().toString(), Activator.PLUGIN_ID);
 		List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
 		for (EventOccurrence eventOccurrence : step.getEventOccurrences()) {
 			if (eventOccurrence.getFState() == FiredStateKind.TICK) {
-				EObject target = this.getEObjectFromReference(eventOccurrence.getContext());
-				EOperation operation = (EOperation) this.getEObjectFromReference(eventOccurrence.getReferedElement());
+				// EObject target =
+				// this.getEObjectFromReference(eventOccurrence.getContext());
+				// EOperation operation = (EOperation)
+				// this.getEObjectFromReference(eventOccurrence.getReferedElement());
+
+				// En attendant que la couche d'adaptation du solveur CCSL soit
+				// faite...
+				EObject target = null;
+				EOperation operation = null;
+				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
+				if (c != null) {
+					// is c a DSA caller --> should be replaced with mapping
+					// manipulation
+					EList<EObject> linkedObjects = c.getTickingEvent().getReferencedObjectRefs();
+					if (linkedObjects.size() == 2) {
+						target = linkedObjects.get(0);
+						operation = (EOperation) linkedObjects.get(1);
+					}
+				}
+
 				res.add(new EclEvent(new EmfAction(target, operation)));
 			}
 		}
 		return res;
+	}
+
+	private Clock getClockLinkedToOccurrence(EventOccurrence eventOcc) {
+		Reference ref = eventOcc.getReferedElement();
+		if (ref instanceof ModelElementReference) {
+			ModelElementReference mer = (ModelElementReference) ref;
+			EList<EObject> eobjects = mer.getElementRef();
+			EObject actualObject = eobjects.get(eobjects.size() - 1);
+			if (actualObject instanceof Clock) {
+				// you got the clock that ticked
+				return (Clock) actualObject;
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
 	}
 
 	private EObject getEObjectFromReference(Reference reference) {

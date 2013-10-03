@@ -9,67 +9,74 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.gemoc.execution.engine.api_implementations.dsa.EmfExecutor;
+import org.gemoc.execution.engine.api_implementations.moc.CcslSolver;
+import org.gemoc.execution.engine.api_implementations.utils.TfsmModelLoader;
 import org.gemoc.execution.engine.core.ExecutionEngine;
+import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
+import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 
 public class InitializeAction implements IObjectActionDelegate {
 
-    private Shell shell;
-    private IFile file;
-    private ExecutionEngine engine;
+	private Shell shell;
+	private IFile file;
+	private ExecutionEngine engine;
 
-    /**
-     * Constructor for Action1.
-     */
-    public InitializeAction() {
-        super();
-    }
+	/**
+	 * Constructor for Action1.
+	 */
+	public InitializeAction() {
+		super();
+	}
 
-    /**
-     * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
-     */
-    public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-        shell = targetPart.getSite().getShell();
-    }
+	/**
+	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
+	 */
+	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
+		shell = targetPart.getSite().getShell();
+	}
 
-    /**
-     * @see IActionDelegate#run(IAction)
-     */
-    public void run(IAction action) {
-        String information = "";
+	/**
+	 * @see IActionDelegate#run(IAction)
+	 */
+	public void run(IAction action) {
+		String information = "";
 
-        String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC_new.extendedCCSL";
-        String jarDsaFolderPath = "/org.gemoc.execution.engine.example/my_jars/dsa";
-        String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
-        String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
-        String MMpath = "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
+		String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC_new.extendedCCSL";
+		String jarDsaFolderPath = "/org.gemoc.execution.engine.example/my_jars/dsa";
+		String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
+		String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
+		String MMpath = "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
 
-        try {
-            this.engine = new CcslEclEmfExecutionEngine(ccslFilePath, jarDsaFolderPath, jarDependenciesFolderPath,
-                    modelPath, MMpath);
-            information += "Engine Initialized.";
-        } catch (Exception e) {
-            Activator.error("Exception in the initialization of the engine", e);
-            this.engine = null;
-            information += "Error during the initialization of the engine.";
-        }
-        Activator.engine = this.engine;
-        MessageDialog.openInformation(shell, "Launcher", information);
-    }
+		try {
+			this.engine = new GemocExecutionEngine((LanguageInitializer) null, new TfsmModelLoader(), (String) null,
+					new CcslSolver(), new EmfExecutor(), (FeedbackPolicy) null);
+			this.engine.initialize(modelPath);
+			information += "Engine Initialized.";
+		} catch (Exception e) {
+			Activator.error("Exception in the initialization of the engine", e);
+			this.engine = null;
+			information += "Error during the initialization of the engine.";
+		}
+		Activator.engine = this.engine;
+		MessageDialog.openInformation(shell, "Launcher", information);
+	}
 
-    /**
-     * @see IActionDelegate#selectionChanged(IAction, ISelection)
-     */
-    public void selectionChanged(IAction action, ISelection selection) {
-        if (selection instanceof IStructuredSelection) {
-            if (((IStructuredSelection) selection).size() == 1) {
-                Object selected = ((IStructuredSelection) selection).getFirstElement();
-                if (selected instanceof IFile) {
-                    this.file = (IFile) selected;
-                }
-            }
-        }
+	/**
+	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
+	 */
+	public void selectionChanged(IAction action, ISelection selection) {
+		if (selection instanceof IStructuredSelection) {
+			if (((IStructuredSelection) selection).size() == 1) {
+				Object selected = ((IStructuredSelection) selection).getFirstElement();
+				if (selected instanceof IFile) {
+					this.file = (IFile) selected;
+				}
+			}
+		}
 
-    }
+	}
 
 }

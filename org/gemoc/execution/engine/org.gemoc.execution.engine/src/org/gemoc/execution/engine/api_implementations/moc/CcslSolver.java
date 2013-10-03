@@ -4,13 +4,11 @@ import java.io.IOException;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
@@ -28,6 +26,7 @@ import fr.inria.aoste.trace.LogicalStep;
 public class CcslSolver implements Solver {
 
 	CCSLKernelSolverWrapper solverWrapper = null;
+	String modelOfExecutionURI = "";
 
 	public CcslSolver() {
 	}
@@ -57,11 +56,12 @@ public class CcslSolver implements Solver {
 	}
 
 	public String toString() {
-		return this.getClass().getName() + "@[" + this.solverWrapper.toString() + "]";
+		return this.getClass().getName() + "@[modelOfExecutionURI=" + this.modelOfExecutionURI + "]";
 	}
 
 	@Override
 	public void setModelOfExecutionFile(String modelOfExecutionURI) {
+		this.modelOfExecutionURI = modelOfExecutionURI;
 		try {
 			URI uri = URI.createPlatformResourceURI(modelOfExecutionURI, false);
 			ResourceSet resourceSet = new ResourceSetImpl();
