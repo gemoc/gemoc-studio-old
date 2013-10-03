@@ -10,6 +10,7 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.execution.engine.api_implementations.dsa.EmfExecutor;
+import org.gemoc.execution.engine.api_implementations.feedback.SimpleFeedbackPolicy;
 import org.gemoc.execution.engine.api_implementations.moc.CcslSolver;
 import org.gemoc.execution.engine.api_implementations.utils.TfsmModelLoader;
 import org.gemoc.execution.engine.core.ExecutionEngine;
@@ -52,7 +53,7 @@ public class InitializeAction implements IObjectActionDelegate {
 
 		try {
 			this.engine = new GemocExecutionEngine((LanguageInitializer) null, new TfsmModelLoader(), (String) null,
-					new CcslSolver(), new EmfExecutor(), (FeedbackPolicy) null);
+					new CcslSolver(), new EmfExecutor(), new SimpleFeedbackPolicy());
 			this.engine.initialize(modelPath);
 			information += "Engine Initialized.";
 		} catch (Exception e) {

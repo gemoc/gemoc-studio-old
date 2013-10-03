@@ -96,8 +96,6 @@ public class EmfExecutor implements Executor {
 
 	private Method getMethod(Object target, String methodQualifiedName) throws SecurityException, NoSuchMethodException {
 		String methodName = methodQualifiedName.substring(methodQualifiedName.lastIndexOf("::") + 2);
-		Activator.getMessagingSystem().info(Arrays.asList(target.getClass().getMethods()).toString(), Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().debug(methodName, Activator.PLUGIN_ID);
 		return target.getClass().getMethod(methodName);
 	}
 

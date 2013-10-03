@@ -21,6 +21,9 @@ import tfsm.TfsmPackage;
  * @generated
  */
 public class TfsmClockImpl extends NamedElementImpl implements TfsmClock {
+	
+	private int numberOfTicks;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -46,9 +49,8 @@ public class TfsmClockImpl extends NamedElementImpl implements TfsmClock {
 	 * @generated
 	 */
 	public String tick() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.numberOfTicks++;
+		return "[DSA TfsmClockImpl.tick()] : incremented number of ticks";
 	}
 
 	/**
@@ -57,9 +59,8 @@ public class TfsmClockImpl extends NamedElementImpl implements TfsmClock {
 	 * @generated
 	 */
 	public String initialize() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		this.numberOfTicks = 0;
+		return "[DSA TfsmClockImpl.initialize()] : initialized number of ticks to 0";
 	}
 
 	/**

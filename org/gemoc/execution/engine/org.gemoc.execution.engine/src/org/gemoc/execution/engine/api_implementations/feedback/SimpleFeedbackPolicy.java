@@ -43,20 +43,26 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 						Activator.PLUGIN_ID);
 				Activator.getMessagingSystem().debug(causalEvent.getAction().getMethodQualifiedName(),
 						Activator.PLUGIN_ID);
-//
-//				if (causalEvent.getAction().getTargetQualifiedName().equals("guardIsDay")
-//						& causalEvent.getAction().getMethodQualifiedName().equals("evaluate")) {
-//					EObject targetToForce = getEObjectFromQualifiedName("guardIsDay_evaluatedFalse");
-//					Boolean b = (Boolean) o;
-//					if (b) {
-//						solver.forceEventOccurrenceReferencing(targetToForce);
-//					} else {
-//						solver.forbidEventOccurrenceReferencing(targetToForce);
-//					}
-//				}
+				//
+				// if
+				// (causalEvent.getAction().getTargetQualifiedName().equals("guardIsDay")
+				// &
+				// causalEvent.getAction().getMethodQualifiedName().equals("evaluate"))
+				// {
+				// EObject targetToForce =
+				// getEObjectFromQualifiedName("guardIsDay_evaluatedFalse");
+				// Boolean b = (Boolean) o;
+				// if (b) {
+				// solver.forceEventOccurrenceReferencing(targetToForce);
+				// } else {
+				// solver.forbidEventOccurrenceReferencing(targetToForce);
+				// }
+				// }
 
 			} else if (o instanceof Character) {
 				Activator.getMessagingSystem().warn("Please don't return a Character in your DSA", Activator.PLUGIN_ID);
+			} else if (o instanceof String) {
+				Activator.getMessagingSystem().info("[DSA]" + (String) o, Activator.PLUGIN_ID);
 			} else if (o instanceof Object) {
 				Activator.getMessagingSystem().warn("Please don't return a non-primitive type in your DSA",
 						Activator.PLUGIN_ID);
