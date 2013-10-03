@@ -3,7 +3,6 @@ package org.gemoc.execution.engine.core.impl;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
@@ -12,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
+import org.gemoc.execution.engine.api_implementations.dsa.EmfBytecodeNameResolver;
 import org.gemoc.execution.engine.api_implementations.dse.EclEvent;
 import org.gemoc.execution.engine.core.BasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
@@ -21,7 +21,6 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
@@ -64,47 +63,13 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
 		for (EventOccurrence eventOccurrence : step.getEventOccurrences()) {
 			if (eventOccurrence.getFState() == FiredStateKind.TICK) {
-				// EObject target =
-				// this.getEObjectFromReference(eventOccurrence.getContext());
-				// EOperation operation = (EOperation)
-				// this.getEObjectFromReference(eventOccurrence.getReferedElement());
-
-				// En attendant que la couche d'adaptation du solveur CCSL soit
-				// faite...
-				EObject target = null;
-				EOperation operation = null;
-				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
-				if (c != null) {
-					// is c a DSA caller --> should be replaced with mapping
-					// manipulation
-					EList<EObject> linkedObjects = c.getTickingEvent().getReferencedObjectRefs();
-					if (linkedObjects.size() == 2) {
-						target = linkedObjects.get(0);
-						operation = (EOperation) linkedObjects.get(1);
-					}
-				}
+				EObject target = this.getEObjectFromReference(eventOccurrence.getContext());
+				EOperation operation = (EOperation) this.getEObjectFromReference(eventOccurrence.getReferedElement());
 
 				res.add(new EclEvent(new EmfAction(target, operation)));
 			}
 		}
 		return res;
-	}
-
-	private Clock getClockLinkedToOccurrence(EventOccurrence eventOcc) {
-		Reference ref = eventOcc.getReferedElement();
-		if (ref instanceof ModelElementReference) {
-			ModelElementReference mer = (ModelElementReference) ref;
-			EList<EObject> eobjects = mer.getElementRef();
-			EObject actualObject = eobjects.get(eobjects.size() - 1);
-			if (actualObject instanceof Clock) {
-				// you got the clock that ticked
-				return (Clock) actualObject;
-			} else {
-				return null;
-			}
-		} else {
-			return null;
-		}
 	}
 
 	private EObject getEObjectFromReference(Reference reference) {
@@ -117,18 +82,54 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 			return elements.get(elements.size() - 1);
 		} else if (reference instanceof NamedReference) {
 			// Returns EObject thanks to its qualified name
-			Iterator<EObject> modelIterator = this.modelResource.getContents().get(0).eAllContents();
-			while (modelIterator.hasNext()) {
-				EObject eo = modelIterator.next();
-				if (this.getNameOfEObject(eo).equals(elements.get(elements.size() - 1))) {
-					return eo;
-				}
+			try {
+				return new EmfBytecodeNameResolver(modelResource)
+						.getEObjectFromQualifiedName((((NamedReference) reference).getValue()));
+			} catch (SecurityException e) {
+				String errorMessage = e.getClass().getSimpleName()
+						+ " when trying to retrieve an EObject from the model from a NamedReference";
+				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.error(errorMessage, e);
+				return null;
+			} catch (IllegalArgumentException e) {
+				String errorMessage = e.getClass().getSimpleName()
+						+ " when trying to retrieve an EObject from the model from a NamedReference";
+				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.error(errorMessage, e);
+				return null;
+			} catch (NoSuchMethodException e) {
+				String errorMessage = e.getClass().getSimpleName()
+						+ " when trying to retrieve an EObject from the model from a NamedReference";
+				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.error(errorMessage, e);
+				return null;
+			} catch (IllegalAccessException e) {
+				String errorMessage = e.getClass().getSimpleName()
+						+ " when trying to retrieve an EObject from the model from a NamedReference";
+				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.error(errorMessage, e);
+				return null;
+			} catch (InvocationTargetException e) {
+				String errorMessage = e.getClass().getSimpleName()
+						+ " when trying to retrieve an EObject from the model from a NamedReference";
+				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.error(errorMessage, e);
+				return null;
 			}
+
+			// Iterator<EObject> modelIterator =
+			// this.modelResource.getContents().get(0).eAllContents();
+			// while (modelIterator.hasNext()) {
+			// EObject eo = modelIterator.next();
+			// if (this.getNameOfEObject(eo).equals(elements.get(elements.size()
+			// - 1))) {
+			// return eo;
+			// }
+			// }
 		} else {
 			throw new RuntimeException(
 					"Context reference is neither a ModelElementReference nor a NamedElementReference");
 		}
-		return null;
 	}
 
 	private String getNameOfEObject(EObject eo) {
