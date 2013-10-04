@@ -72,7 +72,7 @@
                   Class offering execution API on the XDSML
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.Executor"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor"/>
                </appinfo>
             </annotation>
          </attribute>

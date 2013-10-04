@@ -34,13 +34,10 @@ public class BuilderTemplates {
 	public static final String EXECUTOR_CLASS_TEMPLATE =
 "/* GENERATED FILE, do not modify manually */\n" +
 "package ${package.name};\n"+
-"import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLExecutor;\n"+
-"public class ${language.name.toupperfirst}DSAExecutor implements IXDSMLExecutor {\n"+
-"	@Override\n"+
-"	public Object execute(Object target, String methodName) {\n"+
-"		Object result = null;\n"+
-"	    ${execute.content}\n"+
-"		return result;\n"+
+"import org.gemoc.gemoc_language_workbench.api.dsa.impl.ChainedDSAExecutor;\n"+
+"public class ${language.name.toupperfirst}DSAExecutor extends ChainedDSAExecutor {\n"+
+"	public ${language.name.toupperfirst}DSAExecutor(){\n"+
+"	    ${constructor.content}\n"+
 "	}\n"+
 "}";
 	

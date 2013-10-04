@@ -540,11 +540,21 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			fileContent = fileContent.replaceAll(
 					Pattern.quote("${language.name.toupperfirst}"),
 					languageToUpperFirst);
-			StringBuilder sb = new StringBuilder();
+			/*StringBuilder sb = new StringBuilder();
 			sb.append("// TODO\n");
 			sb.append("\t\tSystem.out.println(\"will call \"+ methodName + \" on \"+ target.toString());");
 			fileContent = fileContent.replaceAll(
-					Pattern.quote("${execute.content}"), sb.toString());
+					Pattern.quote("${execute.content}"), sb.toString()); */
+			
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("// TODO add DSA specific executor\n");
+			sb.append("// fall back executor : search classic java method\n");
+			sb.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.api.dsa.impl.JavaDSAExecutor());");
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${constructor.content}"), sb.toString());
+			
+			
 			IFile file = project
 					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
 							+ folderName + "/" + languageToUpperFirst
