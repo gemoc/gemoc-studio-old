@@ -11,7 +11,7 @@ package tfsm
 		def: occurs : Event(self) = GenericEvent
 	
 	context TfsmClock
-		def: ticks : Event(self.ticks()) = GenericEvent
+		def: ticks : Event(self.tick()) = GenericEvent
 		 
 	context Transition
 		def: fire : Event(self.fire()) = GenericEvent
@@ -77,56 +77,9 @@ package tfsm
 			) 
 		
 
-		
 		inv fireWhenTemporalGuardHoldsOneTransition:
 			(self.ownedGuard.oclIsKindOf(TemporalGuard) and self.source.outgoingTransitions->select(t|t <> self)->size() = 0) implies
 			let delay : Integer = self.ownedGuard.oclAsType(TemporalGuard).afterDuration in
 			let delayIsExpired_wrt_StateEntering :Event = Expression DelayFor(
 															self.source.entering,
-															self.ownedGuard.oclAsType(TemporalGuard).onClock.ticks,
-															delay
-			) in
-			Relation Coincides(delayIsExpired_wrt_StateEntering, self.fire) 
-		
-		-- Evaluate guards is checked at the entering of the state 
-		inv EvaluateGuardWhenEnteringState:
-			(self.ownedGuard.oclIsKindOf(EvaluateGuard)) implies
-			--let EvaluteTransition : Event = Expression Union(self.ownedGuard.oclIsKindOf(EvaluateGuard)) in
-			(Relation Coincides(self.ownedGuard.oclAsType(EvaluateGuard).evaluate, self.source.entering)) 
-			
-	context State
-		inv enterOnceBeforeToLeave:
-			Relation Alternates(self.entering, self.leaving) 
-		
-		inv firingATransitionAlternatesWithLeavingState:
-			let allFiredoutgoingTransition : Event = Expression Union(self.outgoingTransitions.fire) in
-			Relation Coincides(allFiredoutgoingTransition, self.leaving)
-		
-		inv stateEntering:
-			(not (self = self.owningTfsm.initialState)) implies
-			let allInputTransition : Event = Expression Union(self.incomingTransitions.fire) in
---			let allSourceState : Event = Expression Union(self.incomingTransition.source.leaving) in
---			let theEntryInTheState : Event = Expression NonStrictSampledOn(allSourceState, allInputTransition) in
-			Relation Causes(allInputTransition,self.entering)
-
-		
-	context EvaluateGuard
-	
-		inv fireEvaluationAndResult:
-			Relation TransitionRule (self.evaluate, self.evaluatedTrue, self.evaluatedFalse)	
-			
-	context Tfsm
-		inv oneStateAtATime:
-			Relation Exclusion(self.ownedStates.entering)
-			
-		inv oneTransitionAtATime:
-			Relation Exclusion(self.ownedStates.outgoingTransitions.fire)
-			
-		inv firstIsInitialState:
-			Relation Coincides(self.start, self.initialState.entering)
-			
-		inv firstOnlyOnce:
-			let onlyOneFirst : Event = Expression OneTickAndNoMore(self.start) in
-			Relation Coincides(self.start,onlyOneFirst)
--- Relation Precedes(self.occurs, AllTriggeringOccurrences)			
-endpackage
+															self.owned
