@@ -27,6 +27,8 @@ public class JavaDSAExecutor implements IDSAExecutor {
 				e.printStackTrace();
 			}
 		}
+		NoSuchMethodException e = new NoSuchMethodException("cannot find applicable method "+methodName+" and matching parameters on "+target);
+		e.printStackTrace();
 		// TODO should return the fact that it cannot be executed via an exception (NoSuchMethodException ? or custom ?)
 		return null;
 	}
@@ -37,8 +39,10 @@ public class JavaDSAExecutor implements IDSAExecutor {
 		
 		Class[] parameterTypes = null;
 		ArrayList<Class> parameterTypesList = new ArrayList<Class>();
-		for(Object param : parameters){
-			parameterTypesList.add(param.getClass());
+		if(parameters != null){
+			for(Object param : parameters){
+				parameterTypesList.add(param.getClass());
+			}
 		}
 		try {
 			Method method = target.getClass().getMethod(methodName, parameterTypes);
@@ -68,7 +72,11 @@ public class JavaDSAExecutor implements IDSAExecutor {
 
 		@Override
 		public Object execute() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-			return method.invoke(target, parameters);
+			Object[] args = new Object[0];
+			if(parameters != null){
+				args =parameters.toArray();
+			}
+			return method.invoke(target, args); 
 		}
 		
 	}

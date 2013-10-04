@@ -16,6 +16,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
+import org.gemoc.gemoc_modeling_workbench.ui.launcher.minitestengine.MiniEngine;
 
 public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegate {
 
@@ -54,6 +55,7 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 		String eclFilePath = null;
 
 		// get the extension objects
+		/* test : désactivé le temps de vérifier l'executor
 		if (confElement != null) {
 			try{
 				final Object oinitializer = confElement
@@ -102,9 +104,6 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 				| feedbackPolicy == null | eclFilePath == null) {
 			Activator.warn("One of the API elements is null", new NullPointerException());
 		}
-
-		// MiniEngine engine = new MiniEngine(languageName);
-		// engine.launchEngine(modelPath);
 		try {
 			ExecutionEngine engine = new GemocExecutionEngine(languageInitializer, modelLoader, solver, executor, feedbackPolicy);
 			engine.initialize(modelPath, eclFilePath);
@@ -112,5 +111,9 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 		} catch (Throwable e) {
 			Activator.error("Exception in the initialization of the engine", e);
 		}
+		*/
+		MiniEngine engine = new MiniEngine(languageName);
+		engine.launchEngine(modelPath);
+		
 	}
 }

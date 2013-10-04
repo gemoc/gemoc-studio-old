@@ -6,6 +6,7 @@ import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
 import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLExecutor;
 import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLInitializer;
 import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLModelLoader;
@@ -15,7 +16,7 @@ public class MiniEngine {
 	
 	protected IXDSMLModelLoader modelLoader;
 	protected IXDSMLInitializer languageInitializer;
-	protected IXDSMLExecutor languageDSAExecutor;
+	protected IDSAExecutor languageDSAExecutor;
 	
 	
 	public MiniEngine(String languageName ) throws CoreException{
@@ -39,8 +40,8 @@ public class MiniEngine {
 			}
 
 			final Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT);
-			if(oexecutor instanceof IXDSMLExecutor){
-				this.languageDSAExecutor = (IXDSMLExecutor) oexecutor;
+			if(oexecutor instanceof IDSAExecutor){
+				this.languageDSAExecutor = (IDSAExecutor) oexecutor;
 			}
 		}
 	}
@@ -57,7 +58,9 @@ public class MiniEngine {
 		    	  languageInitializer.initialize();
 		    	  Resource res = modelLoader.loadModel(modelURI);
 		    	  Object o = res.getContents().get(0);
-		    	  languageDSAExecutor.execute(o, "start");
+		    	  System.out.println("launchEngine.run loadedobject ="+o);
+		    	  System.out.println("launchEngine.run execute getname="+languageDSAExecutor.execute(o, "getName", null));
+		    	  languageDSAExecutor.execute(o, "start", null);
 		      }
 		    };
 		    SafeRunner.run(runnable);
