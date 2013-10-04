@@ -2,8 +2,10 @@ package org.gemoc.execution.engine.api_implementations.dsa;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
@@ -14,65 +16,37 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 public class EmfExecutor implements Executor {
 
 	private Resource modelResource = null;
-	private EmfBytecodeNameResolver nameResolver = null;
 
 	@Override
 	public FeedbackData execute(DomainSpecificAction dsa) {
 
-		Object target = null;
+		// The target is simply casting the EObject into an Object
+		Object target = (Object) dsa.getTarget();
+
+		// Retrieving the parameters from which we can deduce their types
+		List<EParameter> parameters = new ArrayList<EParameter>(dsa.getParameters());
+		Class<?>[] parametersType = new Class<?>[parameters.size()];
+		for (int i = 0; i < parameters.size(); i++) {
+			parametersType[i] = parameters.get(i).getClass();
+		}
+
+		// Retrieving the method from its name and parameters types array.
+		Method method;
 		try {
-			target = (Object) this.nameResolver.getEObjectFromQualifiedName(dsa.getTargetQualifiedName());
+			method = target.getClass().getMethod(dsa.getOperation().getName(), parametersType);
 		} catch (SecurityException e) {
 			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to retrieve an EObject from the model from its qualified name";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
-			return null;
-		} catch (IllegalArgumentException e) {
-			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to retrieve an EObject from the model from its qualified name";
+					+ " when trying to retrieve a method from its name and its parameters' types array";
 			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		} catch (NoSuchMethodException e) {
 			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to retrieve an EObject from the model from its qualified name";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
-			return null;
-		} catch (IllegalAccessException e) {
-			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to retrieve an EObject from the model from its qualified name";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
-			return null;
-		} catch (InvocationTargetException e) {
-			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to retrieve an EObject from the model from its qualified name";
+					+ " when trying to retrieve a method from its name and its parameters' types array";
 			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		}
-		Activator.getMessagingSystem().info("EObject found: " + target.toString(), Activator.PLUGIN_ID);
-
-		Method method = null;
-		try {
-			method = this.getMethod(target, dsa.getMethodQualifiedName());
-		} catch (SecurityException e) {
-			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to retrieve the method from an object and a method name";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
-			return null;
-		} catch (NoSuchMethodException e) {
-			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to retrieve the method from an object and a method name";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
-			return null;
-		}
-
-		Activator.getMessagingSystem().info("Method found: " + method.toString(), Activator.PLUGIN_ID);
 
 		try {
 			return DataConverter.convertToFeedbackData(method.invoke(target, (Object[]) null));
@@ -94,11 +68,6 @@ public class EmfExecutor implements Executor {
 		}
 	}
 
-	private Method getMethod(Object target, String methodQualifiedName) throws SecurityException, NoSuchMethodException {
-		String methodName = methodQualifiedName.substring(methodQualifiedName.lastIndexOf("::") + 2);
-		return target.getClass().getMethod(methodName);
-	}
-
 	@Override
 	public FeedbackData execute(DomainSpecificEvent dse) {
 		return this.execute(dse.getAction());
@@ -107,7 +76,6 @@ public class EmfExecutor implements Executor {
 	@Override
 	public void setModel(Resource modelResource) {
 		this.modelResource = modelResource;
-		this.nameResolver = new EmfBytecodeNameResolver(modelResource);
 	}
 
 }

@@ -1,6 +1,5 @@
 package org.gemoc.execution.engine.api_implementations.feedback;
 
-import org.eclipse.emf.ecore.EObject;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
@@ -39,9 +38,9 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 			} else if (o instanceof Boolean) {
 				Activator.getMessagingSystem().debug(
 						"Caught a Boolean as feedback from event: " + causalEvent.toString(), Activator.PLUGIN_ID);
-				Activator.getMessagingSystem().debug(causalEvent.getAction().getTargetQualifiedName(),
+				Activator.getMessagingSystem().debug(causalEvent.getAction().getTarget().toString(),
 						Activator.PLUGIN_ID);
-				Activator.getMessagingSystem().debug(causalEvent.getAction().getMethodQualifiedName(),
+				Activator.getMessagingSystem().debug(causalEvent.getAction().getOperation().toString(),
 						Activator.PLUGIN_ID);
 				//
 				// if

@@ -77,14 +77,19 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 				"Trying to retrieve the EObject from the Reference : " + reference.toString(), Activator.PLUGIN_ID);
 
 		EList<EObject> elements = ((ModelElementReference) reference).getElementRef();
+		Activator.getMessagingSystem().debug("elements: " + elements.toString(), Activator.PLUGIN_ID);
 		if (reference instanceof ModelElementReference) {
 			// Returns EObject thanks to the list of EObjects
+			Activator.getMessagingSystem()
+					.debug("Returning :" + elements.get(elements.size() - 1), Activator.PLUGIN_ID);
 			return elements.get(elements.size() - 1);
 		} else if (reference instanceof NamedReference) {
 			// Returns EObject thanks to its qualified name
 			try {
-				return new EmfBytecodeNameResolver(modelResource)
+				EObject res = new EmfBytecodeNameResolver(modelResource)
 						.getEObjectFromQualifiedName((((NamedReference) reference).getValue()));
+				Activator.getMessagingSystem().debug("Returning :" + res, Activator.PLUGIN_ID);
+				return res;
 			} catch (SecurityException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
