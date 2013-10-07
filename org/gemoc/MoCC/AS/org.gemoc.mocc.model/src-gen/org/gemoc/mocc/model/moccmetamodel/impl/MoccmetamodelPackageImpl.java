@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.gemoc.mocc.model.moccmetamodel.Action;
+import org.gemoc.mocc.model.moccmetamodel.FinishClock;
 import org.gemoc.mocc.model.moccmetamodel.IntegerAssignment;
 import org.gemoc.mocc.model.moccmetamodel.MoccmetamodelFactory;
 import org.gemoc.mocc.model.moccmetamodel.MoccmetamodelPackage;
@@ -23,6 +25,7 @@ import org.gemoc.mocc.model.moccmetamodel.State;
 import org.gemoc.mocc.model.moccmetamodel.StateBaseRelationLibrary;
 import org.gemoc.mocc.model.moccmetamodel.StateMachineRelationDefinition;
 import org.gemoc.mocc.model.moccmetamodel.Transition;
+import org.gemoc.mocc.model.moccmetamodel.Trigger;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,6 +68,27 @@ public class MoccmetamodelPackageImpl extends EPackageImpl implements Moccmetamo
 	 * @generated
 	 */
 	private EClass integerAssignmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass triggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass actionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass finishClockEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -297,6 +321,60 @@ public class MoccmetamodelPackageImpl extends EPackageImpl implements Moccmetamo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTrigger() {
+		return triggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTrigger_TrueTriggers() {
+		return (EReference)triggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTrigger_FalseTriggers() {
+		return (EReference)triggerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAction() {
+		return actionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFinishClock() {
+		return finishClockEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFinishClock_Clock() {
+		return (EReference)finishClockEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public MoccmetamodelFactory getMoccmetamodelFactory() {
 		return (MoccmetamodelFactory)getEFactoryInstance();
 	}
@@ -342,6 +420,15 @@ public class MoccmetamodelPackageImpl extends EPackageImpl implements Moccmetamo
 		stateBaseRelationLibraryEClass = createEClass(STATE_BASE_RELATION_LIBRARY);
 
 		integerAssignmentEClass = createEClass(INTEGER_ASSIGNMENT);
+
+		triggerEClass = createEClass(TRIGGER);
+		createEReference(triggerEClass, TRIGGER__TRUE_TRIGGERS);
+		createEReference(triggerEClass, TRIGGER__FALSE_TRIGGERS);
+
+		actionEClass = createEClass(ACTION);
+
+		finishClockEClass = createEClass(FINISH_CLOCK);
+		createEReference(finishClockEClass, FINISH_CLOCK__CLOCK);
 	}
 
 	/**
@@ -382,6 +469,8 @@ public class MoccmetamodelPackageImpl extends EPackageImpl implements Moccmetamo
 		transitionEClass.getESuperTypes().add(theTimeModelPackage.getNamedElement());
 		stateBaseRelationLibraryEClass.getESuperTypes().add(theClockExpressionAndRelationPackage.getLibrary());
 		integerAssignmentEClass.getESuperTypes().add(theClassicalExpressionPackage.getBinaryIntegerExpression());
+		integerAssignmentEClass.getESuperTypes().add(this.getAction());
+		finishClockEClass.getESuperTypes().add(this.getAction());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(stateMachineRelationDefinitionEClass, StateMachineRelationDefinition.class, "StateMachineRelationDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -400,12 +489,21 @@ public class MoccmetamodelPackageImpl extends EPackageImpl implements Moccmetamo
 		initEReference(getTransition_Source(), this.getState(), this.getState_OutputTransitions(), "source", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransition_Target(), this.getState(), this.getState_InputTransitions(), "target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransition_Guard(), theClassicalExpressionPackage.getBooleanExpression(), null, "guard", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransition_Trigger(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "trigger", null, 1, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransition_Actions(), this.getIntegerAssignment(), null, "actions", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Trigger(), this.getTrigger(), null, "trigger", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Actions(), this.getAction(), null, "actions", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stateBaseRelationLibraryEClass, StateBaseRelationLibrary.class, "StateBaseRelationLibrary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(integerAssignmentEClass, IntegerAssignment.class, "IntegerAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTrigger_TrueTriggers(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "trueTriggers", null, 0, -1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTrigger_FalseTriggers(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "falseTriggers", null, 0, -1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(finishClockEClass, FinishClock.class, "FinishClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFinishClock_Clock(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "clock", null, 1, 1, FinishClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

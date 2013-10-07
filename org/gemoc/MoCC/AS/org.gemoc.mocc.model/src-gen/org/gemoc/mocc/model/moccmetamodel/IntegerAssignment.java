@@ -14,5 +14,5 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalE
  * @model
  * @generated
  */
-public interface IntegerAssignment extends BinaryIntegerExpression {
+public interface IntegerAssignment extends BinaryIntegerExpression, Action {
 } // IntegerAssignment

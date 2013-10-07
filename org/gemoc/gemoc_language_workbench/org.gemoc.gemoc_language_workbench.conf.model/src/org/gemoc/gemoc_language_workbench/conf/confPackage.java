@@ -509,13 +509,22 @@ public interface confPackage extends EPackage {
 	int EMF_ECORE_PROJECT__EMF_GENMODEL = DOMAIN_MODEL_PROJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Default Root EObject Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME = DOMAIN_MODEL_PROJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>EMF Ecore Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_ECORE_PROJECT_FEATURE_COUNT = DOMAIN_MODEL_PROJECT_FEATURE_COUNT + 1;
+	int EMF_ECORE_PROJECT_FEATURE_COUNT = DOMAIN_MODEL_PROJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ODProjectImpl <em>OD Project</em>}' class.
@@ -1197,6 +1206,17 @@ public interface confPackage extends EPackage {
 	EReference getEMFEcoreProject_EmfGenmodel();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getDefaultRootEObjectQualifiedName <em>Default Root EObject Qualified Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Default Root EObject Qualified Name</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getDefaultRootEObjectQualifiedName()
+	 * @see #getEMFEcoreProject()
+	 * @generated
+	 */
+	EAttribute getEMFEcoreProject_DefaultRootEObjectQualifiedName();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ODProject <em>OD Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1576,6 +1596,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EMF_ECORE_PROJECT__EMF_GENMODEL = eINSTANCE.getEMFEcoreProject_EmfGenmodel();
+
+		/**
+		 * The meta object literal for the '<em><b>Default Root EObject Qualified Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME = eINSTANCE.getEMFEcoreProject_DefaultRootEObjectQualifiedName();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ODProjectImpl <em>OD Project</em>}' class.

@@ -187,6 +187,52 @@ public class MoccmetamodelItemProviderAdapterFactory extends MoccmetamodelAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.mocc.model.moccmetamodel.Trigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TriggerItemProvider triggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.mocc.model.moccmetamodel.Trigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTriggerAdapter() {
+		if (triggerItemProvider == null) {
+			triggerItemProvider = new TriggerItemProvider(this);
+		}
+
+		return triggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.mocc.model.moccmetamodel.FinishClock} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FinishClockItemProvider finishClockItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.mocc.model.moccmetamodel.FinishClock}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFinishClockAdapter() {
+		if (finishClockItemProvider == null) {
+			finishClockItemProvider = new FinishClockItemProvider(this);
+		}
+
+		return finishClockItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -290,6 +336,8 @@ public class MoccmetamodelItemProviderAdapterFactory extends MoccmetamodelAdapte
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
 		if (stateBaseRelationLibraryItemProvider != null) stateBaseRelationLibraryItemProvider.dispose();
 		if (integerAssignmentItemProvider != null) integerAssignmentItemProvider.dispose();
+		if (triggerItemProvider != null) triggerItemProvider.dispose();
+		if (finishClockItemProvider != null) finishClockItemProvider.dispose();
 	}
 
 }

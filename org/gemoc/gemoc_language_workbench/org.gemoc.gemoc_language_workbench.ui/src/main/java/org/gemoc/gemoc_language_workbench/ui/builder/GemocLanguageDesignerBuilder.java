@@ -355,6 +355,10 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		helper.updateXDSMLDefinitionInExtensionPoint(gemocExtensionPoint,
 				languageName);
+		helper.updateXDSMLDefinitionAttributeInExtensionPoint(
+				gemocExtensionPoint,
+				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_XDSML_FILE_PATH_ATT,
+				project.getFullPath().toString()+"/project.xdsml");
 		helper.saveDocument(pluginfile);
 	}
 
@@ -536,11 +540,21 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			fileContent = fileContent.replaceAll(
 					Pattern.quote("${language.name.toupperfirst}"),
 					languageToUpperFirst);
-			StringBuilder sb = new StringBuilder();
+			/*StringBuilder sb = new StringBuilder();
 			sb.append("// TODO\n");
 			sb.append("\t\tSystem.out.println(\"will call \"+ methodName + \" on \"+ target.toString());");
 			fileContent = fileContent.replaceAll(
-					Pattern.quote("${execute.content}"), sb.toString());
+					Pattern.quote("${execute.content}"), sb.toString()); */
+			
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("// TODO add DSA specific executor\n");
+			sb.append("// fall back executor : search classic java method\n");
+			sb.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.api.dsa.impl.JavaDSAExecutor());");
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${constructor.content}"), sb.toString());
+			
+			
 			IFile file = project
 					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
 							+ folderName + "/" + languageToUpperFirst
@@ -573,6 +587,19 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	protected void updateECL_QVTO(final IProject project,
 			final ECLFile ecliFilePath) {
 		
+		
+		final URI uri = URI.createPlatformResourceURI(
+				ecliFilePath.getLocationURI(), true);
+		final IFolder qvtoFolder = project.getFolder("qvto-gen");
+
+		String folderPath = qvtoFolder.getLocation().toOSString();
+		final File folder = new File(folderPath);
+
+		final List<String> arguments = new ArrayList<String>();
+		LanguageDefinition ld = EObjectUtil.eContainerOfType(ecliFilePath, LanguageDefinition.class);				
+		String qvtoFileName = ld != null ? ld.getName()+"_toCCSL.qvto" : uri.lastSegment().replace(".ecl", "_toCCSL.qvto");
+		arguments.add(qvtoFileName);
+		
 		// create QVTO file
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
@@ -582,20 +609,8 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
 			@Override
 			public void run() throws Exception {
-				
-				
-				URI uri = URI.createPlatformResourceURI(
-						ecliFilePath.getLocationURI(), true);
-				IFolder qvtoFolder = project.getFolder("qvto-gen");
+
 				ResourceUtil.createFolder(qvtoFolder, true, true, null);
-
-				String folderPath = qvtoFolder.getLocation().toOSString();
-				File folder = new File(folderPath);
-
-				List<String> arguments = new ArrayList<String>();
-				LanguageDefinition ld = EObjectUtil.eContainerOfType(ecliFilePath, LanguageDefinition.class);				
-				String qvtoFileName = ld != null ? ld.getName()+"_toCCSL.qvto" : uri.lastSegment().replace(".ecl", "_toCCSL.qvto");
-				arguments.add(qvtoFileName);
 
 				try {
 					System.out.println("launching ecl to qvto:\n\turi=" + uri
@@ -622,6 +637,10 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				gemocExtensionPoint,
 				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_ECL_FILE_PATH_ATT,
 				ecliFilePath.getLocationURI());
+		helper.updateXDSMLDefinitionAttributeInExtensionPoint(
+				gemocExtensionPoint,
+				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT,
+				qvtoFolder.getFullPath().toString()+"/"+qvtoFileName);
 		helper.saveDocument(pluginfile);
 
 	}

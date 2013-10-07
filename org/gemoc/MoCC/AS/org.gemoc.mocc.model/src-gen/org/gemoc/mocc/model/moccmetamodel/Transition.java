@@ -4,8 +4,6 @@ package org.gemoc.mocc.model.moccmetamodel;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.BooleanExpression;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.BindableEntity;
-
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.NamedElement;
 
 import org.eclipse.emf.common.util.EList;
@@ -114,35 +112,45 @@ public interface Transition extends NamedElement {
 	void setGuard(BooleanExpression value);
 
 	/**
-	 * Returns the value of the '<em><b>Trigger</b></em>' reference list.
-	 * The list contents are of type {@link fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.BindableEntity}.
+	 * Returns the value of the '<em><b>Trigger</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Trigger</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Trigger</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Trigger</em>' reference list.
+	 * @return the value of the '<em>Trigger</em>' containment reference.
+	 * @see #setTrigger(Trigger)
 	 * @see org.gemoc.mocc.model.moccmetamodel.MoccmetamodelPackage#getTransition_Trigger()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<BindableEntity> getTrigger();
+	Trigger getTrigger();
 
 	/**
-	 * Returns the value of the '<em><b>Actions</b></em>' reference list.
-	 * The list contents are of type {@link org.gemoc.mocc.model.moccmetamodel.IntegerAssignment}.
+	 * Sets the value of the '{@link org.gemoc.mocc.model.moccmetamodel.Transition#getTrigger <em>Trigger</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Trigger</em>' containment reference.
+	 * @see #getTrigger()
+	 * @generated
+	 */
+	void setTrigger(Trigger value);
+
+	/**
+	 * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
+	 * The list contents are of type {@link org.gemoc.mocc.model.moccmetamodel.Action}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Actions</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Actions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Actions</em>' reference list.
+	 * @return the value of the '<em>Actions</em>' containment reference list.
 	 * @see org.gemoc.mocc.model.moccmetamodel.MoccmetamodelPackage#getTransition_Actions()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<IntegerAssignment> getActions();
+	EList<Action> getActions();
 
 } // Transition

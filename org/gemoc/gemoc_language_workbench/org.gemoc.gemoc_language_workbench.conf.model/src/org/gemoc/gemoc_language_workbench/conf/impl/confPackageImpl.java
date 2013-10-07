@@ -477,6 +477,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEMFEcoreProject_DefaultRootEObjectQualifiedName() {
+		return (EAttribute)emfEcoreProjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getODProject() {
 		return odProjectEClass;
 	}
@@ -668,6 +677,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		emfEcoreProjectEClass = createEClass(EMF_ECORE_PROJECT);
 		createEReference(emfEcoreProjectEClass, EMF_ECORE_PROJECT__EMF_GENMODEL);
+		createEAttribute(emfEcoreProjectEClass, EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME);
 
 		odProjectEClass = createEClass(OD_PROJECT);
 
@@ -779,6 +789,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		initEClass(emfEcoreProjectEClass, EMFEcoreProject.class, "EMFEcoreProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEMFEcoreProject_EmfGenmodel(), this.getEMFGenmodel(), null, "emfGenmodel", null, 1, 1, EMFEcoreProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEMFEcoreProject_DefaultRootEObjectQualifiedName(), ecorePackage.getEString(), "defaultRootEObjectQualifiedName", null, 0, 1, EMFEcoreProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(odProjectEClass, ODProject.class, "ODProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

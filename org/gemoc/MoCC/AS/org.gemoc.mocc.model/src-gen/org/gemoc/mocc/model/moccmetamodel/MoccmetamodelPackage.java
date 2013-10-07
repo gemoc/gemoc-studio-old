@@ -245,7 +245,7 @@ public interface MoccmetamodelPackage extends EPackage {
 	int TRANSITION__GUARD = TimeModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Trigger</b></em>' reference list.
+	 * The feature id for the '<em><b>Trigger</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -254,7 +254,7 @@ public interface MoccmetamodelPackage extends EPackage {
 	int TRANSITION__TRIGGER = TimeModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Actions</b></em>' reference list.
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -389,6 +389,90 @@ public interface MoccmetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_ASSIGNMENT_FEATURE_COUNT = ClassicalExpressionPackage.BINARY_INTEGER_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.mocc.model.moccmetamodel.impl.TriggerImpl <em>Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.mocc.model.moccmetamodel.impl.TriggerImpl
+	 * @see org.gemoc.mocc.model.moccmetamodel.impl.MoccmetamodelPackageImpl#getTrigger()
+	 * @generated
+	 */
+	int TRIGGER = 5;
+
+	/**
+	 * The feature id for the '<em><b>True Triggers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__TRUE_TRIGGERS = 0;
+
+	/**
+	 * The feature id for the '<em><b>False Triggers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__FALSE_TRIGGERS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.mocc.model.moccmetamodel.impl.ActionImpl <em>Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.mocc.model.moccmetamodel.impl.ActionImpl
+	 * @see org.gemoc.mocc.model.moccmetamodel.impl.MoccmetamodelPackageImpl#getAction()
+	 * @generated
+	 */
+	int ACTION = 6;
+
+	/**
+	 * The number of structural features of the '<em>Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.mocc.model.moccmetamodel.impl.FinishClockImpl <em>Finish Clock</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.mocc.model.moccmetamodel.impl.FinishClockImpl
+	 * @see org.gemoc.mocc.model.moccmetamodel.impl.MoccmetamodelPackageImpl#getFinishClock()
+	 * @generated
+	 */
+	int FINISH_CLOCK = 7;
+
+	/**
+	 * The feature id for the '<em><b>Clock</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINISH_CLOCK__CLOCK = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Finish Clock</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINISH_CLOCK_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
 
 
 	/**
@@ -543,10 +627,10 @@ public interface MoccmetamodelPackage extends EPackage {
 	EReference getTransition_Guard();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.gemoc.mocc.model.moccmetamodel.Transition#getTrigger <em>Trigger</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.mocc.model.moccmetamodel.Transition#getTrigger <em>Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Trigger</em>'.
+	 * @return the meta object for the containment reference '<em>Trigger</em>'.
 	 * @see org.gemoc.mocc.model.moccmetamodel.Transition#getTrigger()
 	 * @see #getTransition()
 	 * @generated
@@ -554,10 +638,10 @@ public interface MoccmetamodelPackage extends EPackage {
 	EReference getTransition_Trigger();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.gemoc.mocc.model.moccmetamodel.Transition#getActions <em>Actions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.mocc.model.moccmetamodel.Transition#getActions <em>Actions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Actions</em>'.
+	 * @return the meta object for the containment reference list '<em>Actions</em>'.
 	 * @see org.gemoc.mocc.model.moccmetamodel.Transition#getActions()
 	 * @see #getTransition()
 	 * @generated
@@ -583,6 +667,69 @@ public interface MoccmetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getIntegerAssignment();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.mocc.model.moccmetamodel.Trigger <em>Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Trigger</em>'.
+	 * @see org.gemoc.mocc.model.moccmetamodel.Trigger
+	 * @generated
+	 */
+	EClass getTrigger();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.gemoc.mocc.model.moccmetamodel.Trigger#getTrueTriggers <em>True Triggers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>True Triggers</em>'.
+	 * @see org.gemoc.mocc.model.moccmetamodel.Trigger#getTrueTriggers()
+	 * @see #getTrigger()
+	 * @generated
+	 */
+	EReference getTrigger_TrueTriggers();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.gemoc.mocc.model.moccmetamodel.Trigger#getFalseTriggers <em>False Triggers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>False Triggers</em>'.
+	 * @see org.gemoc.mocc.model.moccmetamodel.Trigger#getFalseTriggers()
+	 * @see #getTrigger()
+	 * @generated
+	 */
+	EReference getTrigger_FalseTriggers();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.mocc.model.moccmetamodel.Action <em>Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Action</em>'.
+	 * @see org.gemoc.mocc.model.moccmetamodel.Action
+	 * @generated
+	 */
+	EClass getAction();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.mocc.model.moccmetamodel.FinishClock <em>Finish Clock</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Finish Clock</em>'.
+	 * @see org.gemoc.mocc.model.moccmetamodel.FinishClock
+	 * @generated
+	 */
+	EClass getFinishClock();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.gemoc.mocc.model.moccmetamodel.FinishClock#getClock <em>Clock</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Clock</em>'.
+	 * @see org.gemoc.mocc.model.moccmetamodel.FinishClock#getClock()
+	 * @see #getFinishClock()
+	 * @generated
+	 */
+	EReference getFinishClock_Clock();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -725,7 +872,7 @@ public interface MoccmetamodelPackage extends EPackage {
 		EReference TRANSITION__GUARD = eINSTANCE.getTransition_Guard();
 
 		/**
-		 * The meta object literal for the '<em><b>Trigger</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Trigger</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -733,7 +880,7 @@ public interface MoccmetamodelPackage extends EPackage {
 		EReference TRANSITION__TRIGGER = eINSTANCE.getTransition_Trigger();
 
 		/**
-		 * The meta object literal for the '<em><b>Actions</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -759,6 +906,60 @@ public interface MoccmetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass INTEGER_ASSIGNMENT = eINSTANCE.getIntegerAssignment();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.mocc.model.moccmetamodel.impl.TriggerImpl <em>Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.mocc.model.moccmetamodel.impl.TriggerImpl
+		 * @see org.gemoc.mocc.model.moccmetamodel.impl.MoccmetamodelPackageImpl#getTrigger()
+		 * @generated
+		 */
+		EClass TRIGGER = eINSTANCE.getTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>True Triggers</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRIGGER__TRUE_TRIGGERS = eINSTANCE.getTrigger_TrueTriggers();
+
+		/**
+		 * The meta object literal for the '<em><b>False Triggers</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRIGGER__FALSE_TRIGGERS = eINSTANCE.getTrigger_FalseTriggers();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.mocc.model.moccmetamodel.impl.ActionImpl <em>Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.mocc.model.moccmetamodel.impl.ActionImpl
+		 * @see org.gemoc.mocc.model.moccmetamodel.impl.MoccmetamodelPackageImpl#getAction()
+		 * @generated
+		 */
+		EClass ACTION = eINSTANCE.getAction();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.mocc.model.moccmetamodel.impl.FinishClockImpl <em>Finish Clock</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.mocc.model.moccmetamodel.impl.FinishClockImpl
+		 * @see org.gemoc.mocc.model.moccmetamodel.impl.MoccmetamodelPackageImpl#getFinishClock()
+		 * @generated
+		 */
+		EClass FINISH_CLOCK = eINSTANCE.getFinishClock();
+
+		/**
+		 * The meta object literal for the '<em><b>Clock</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FINISH_CLOCK__CLOCK = eINSTANCE.getFinishClock_Clock();
 
 	}
 

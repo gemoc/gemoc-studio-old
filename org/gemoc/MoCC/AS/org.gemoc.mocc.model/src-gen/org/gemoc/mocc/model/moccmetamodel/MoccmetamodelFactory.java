@@ -67,6 +67,24 @@ public interface MoccmetamodelFactory extends EFactory {
 	IntegerAssignment createIntegerAssignment();
 
 	/**
+	 * Returns a new object of class '<em>Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Trigger</em>'.
+	 * @generated
+	 */
+	Trigger createTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Finish Clock</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Finish Clock</em>'.
+	 * @generated
+	 */
+	FinishClock createFinishClock();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

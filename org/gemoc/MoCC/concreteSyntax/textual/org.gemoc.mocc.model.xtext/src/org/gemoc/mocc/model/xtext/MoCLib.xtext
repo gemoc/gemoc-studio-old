@@ -32,6 +32,8 @@ StateMachineRelationDefinition returns moccmetamodel::StateMachineRelationDefini
 	{moccmetamodel::StateMachineRelationDefinition}
 	'StateBasedRelationDefinition'name=ID '['declaration=[ClockExpressionAndRelation::RelationDeclaration|EString]']'
 	'{'
+		(concreteEntities+=ConcreteEntity)*
+		(classicalExpressions+=BooleanExpression)*
 		('init' initialState= [moccmetamodel::State|EString])';'
 		((ownedStates+=State)|
 		(ownedTransitions+=Transition))+
@@ -40,21 +42,44 @@ StateMachineRelationDefinition returns moccmetamodel::StateMachineRelationDefini
  
 State returns moccmetamodel::State:
 	{moccmetamodel::State}
-	'State' name=EString ';'
+	'State' name=EString '('
+		(('in' ':' inputTransitions+=[moccmetamodel::Transition|EString])? (','inputTransitions+=[moccmetamodel::Transition|EString])*';')?
+		(('out' ':' outputTransitions+=[moccmetamodel::Transition|EString])? (','outputTransitions+=[moccmetamodel::Transition|EString])*';')?
+	')'
 ;
 
 Transition returns moccmetamodel::Transition: 
 	'from' source=[moccmetamodel::State|EString] 'to' target=[moccmetamodel::State|EString]':'name=EString'('
 		('if' guard=[ClassicalExpression::BooleanExpression|EString])?
-		'when' (trigger+=[TimeModel::Clock|EString])('and' trigger+=[TimeModel::Clock|EString])*
-		('do ' (actions+=[moccmetamodel::IntegerAssignment|EString])(','actions+=[moccmetamodel::IntegerAssignment|EString])*)*
+		'when' trigger=Trigger
+		('do' (actions+=Action))*
 	')';
+
+Action returns moccmetamodel::Action:
+	IntegerAssignemnt | FinishClock
+;
+
+FinishClock returns moccmetamodel::FinishClock:
+	'kill' '(' clock=[TimeModel::Clock|EString]')'
+;
+
+Trigger returns moccmetamodel::Trigger:
+	((trueTriggers+=[TimeModel::Clock|EString])|
+	('not' '(' falseTriggers+=[TimeModel::Clock|EString])')')+
+	('.' (trueTriggers+=[TimeModel::Clock|EString])|
+	('not' '(' falseTriggers+=[TimeModel::Clock|EString])')')*
+	//('and' trigger+=[TimeModel::Clock|EString])*
+;
 
 IntegerExpression returns ClassicalExpression::IntegerExpression:
 IntegerRef | UnaryIntPlus | UnaryIntMinus | IntPlus | IntMinus | IntMultiply | IntDivide | SeqGetHead | IntegerVariableRef | IntegerAssignemnt;
 
 
 IntegerAssignemnt returns moccmetamodel::IntegerAssignment:
-	leftValue=IntegerRef':=' rightValue=IntegerExpression
+	'Assign' name=EString '('leftValue=IntegerRef ':=' rightValue=IntegerExpression ')'
 ;
 
+IntEqual returns ClassicalExpression::IntEqual:
+	'IntEqual' ('name' name=ID)?'('leftValue=IntegerExpression
+		'==' rightValue=IntegerExpression
+    ')';

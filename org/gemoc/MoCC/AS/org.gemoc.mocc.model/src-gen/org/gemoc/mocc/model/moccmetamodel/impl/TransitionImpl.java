@@ -4,8 +4,6 @@ package org.gemoc.mocc.model.moccmetamodel.impl;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.BooleanExpression;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.BindableEntity;
-
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.impl.NamedElementImpl;
 
 import java.util.Collection;
@@ -20,12 +18,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.gemoc.mocc.model.moccmetamodel.IntegerAssignment;
+import org.gemoc.mocc.model.moccmetamodel.Action;
 import org.gemoc.mocc.model.moccmetamodel.MoccmetamodelPackage;
 import org.gemoc.mocc.model.moccmetamodel.State;
 import org.gemoc.mocc.model.moccmetamodel.Transition;
+import org.gemoc.mocc.model.moccmetamodel.Trigger;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,24 +76,24 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	protected BooleanExpression guard;
 
 	/**
-	 * The cached value of the '{@link #getTrigger() <em>Trigger</em>}' reference list.
+	 * The cached value of the '{@link #getTrigger() <em>Trigger</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTrigger()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<BindableEntity> trigger;
+	protected Trigger trigger;
 
 	/**
-	 * The cached value of the '{@link #getActions() <em>Actions</em>}' reference list.
+	 * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getActions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<IntegerAssignment> actions;
+	protected EList<Action> actions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -277,10 +277,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<BindableEntity> getTrigger() {
-		if (trigger == null) {
-			trigger = new EObjectResolvingEList<BindableEntity>(BindableEntity.class, this, MoccmetamodelPackage.TRANSITION__TRIGGER);
-		}
+	public Trigger getTrigger() {
 		return trigger;
 	}
 
@@ -289,9 +286,43 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<IntegerAssignment> getActions() {
+	public NotificationChain basicSetTrigger(Trigger newTrigger, NotificationChain msgs) {
+		Trigger oldTrigger = trigger;
+		trigger = newTrigger;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MoccmetamodelPackage.TRANSITION__TRIGGER, oldTrigger, newTrigger);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTrigger(Trigger newTrigger) {
+		if (newTrigger != trigger) {
+			NotificationChain msgs = null;
+			if (trigger != null)
+				msgs = ((InternalEObject)trigger).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MoccmetamodelPackage.TRANSITION__TRIGGER, null, msgs);
+			if (newTrigger != null)
+				msgs = ((InternalEObject)newTrigger).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MoccmetamodelPackage.TRANSITION__TRIGGER, null, msgs);
+			msgs = basicSetTrigger(newTrigger, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MoccmetamodelPackage.TRANSITION__TRIGGER, newTrigger, newTrigger));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Action> getActions() {
 		if (actions == null) {
-			actions = new EObjectResolvingEList<IntegerAssignment>(IntegerAssignment.class, this, MoccmetamodelPackage.TRANSITION__ACTIONS);
+			actions = new EObjectContainmentEList<Action>(Action.class, this, MoccmetamodelPackage.TRANSITION__ACTIONS);
 		}
 		return actions;
 	}
@@ -328,6 +359,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return basicSetSource(null, msgs);
 			case MoccmetamodelPackage.TRANSITION__TARGET:
 				return basicSetTarget(null, msgs);
+			case MoccmetamodelPackage.TRANSITION__TRIGGER:
+				return basicSetTrigger(null, msgs);
+			case MoccmetamodelPackage.TRANSITION__ACTIONS:
+				return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -376,12 +411,11 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				setGuard((BooleanExpression)newValue);
 				return;
 			case MoccmetamodelPackage.TRANSITION__TRIGGER:
-				getTrigger().clear();
-				getTrigger().addAll((Collection<? extends BindableEntity>)newValue);
+				setTrigger((Trigger)newValue);
 				return;
 			case MoccmetamodelPackage.TRANSITION__ACTIONS:
 				getActions().clear();
-				getActions().addAll((Collection<? extends IntegerAssignment>)newValue);
+				getActions().addAll((Collection<? extends Action>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -405,7 +439,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				setGuard((BooleanExpression)null);
 				return;
 			case MoccmetamodelPackage.TRANSITION__TRIGGER:
-				getTrigger().clear();
+				setTrigger((Trigger)null);
 				return;
 			case MoccmetamodelPackage.TRANSITION__ACTIONS:
 				getActions().clear();
@@ -429,7 +463,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case MoccmetamodelPackage.TRANSITION__GUARD:
 				return guard != null;
 			case MoccmetamodelPackage.TRANSITION__TRIGGER:
-				return trigger != null && !trigger.isEmpty();
+				return trigger != null;
 			case MoccmetamodelPackage.TRANSITION__ACTIONS:
 				return actions != null && !actions.isEmpty();
 		}

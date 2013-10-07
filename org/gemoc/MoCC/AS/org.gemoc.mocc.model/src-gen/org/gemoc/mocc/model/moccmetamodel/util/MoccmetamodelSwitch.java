@@ -116,6 +116,7 @@ public class MoccmetamodelSwitch<T> extends Switch<T> {
 				IntegerAssignment integerAssignment = (IntegerAssignment)theEObject;
 				T result = caseIntegerAssignment(integerAssignment);
 				if (result == null) result = caseBinaryIntegerExpression(integerAssignment);
+				if (result == null) result = caseAction(integerAssignment);
 				if (result == null) result = caseIntegerExpression(integerAssignment);
 				if (result == null) result = caseClassicalExpression(integerAssignment);
 				if (result == null) result = casePrimitiveElement(integerAssignment);
@@ -123,6 +124,25 @@ public class MoccmetamodelSwitch<T> extends Switch<T> {
 				if (result == null) result = caseConcreteEntity(integerAssignment);
 				if (result == null) result = caseBindableEntity(integerAssignment);
 				if (result == null) result = caseNamedElement(integerAssignment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MoccmetamodelPackage.TRIGGER: {
+				Trigger trigger = (Trigger)theEObject;
+				T result = caseTrigger(trigger);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MoccmetamodelPackage.ACTION: {
+				Action action = (Action)theEObject;
+				T result = caseAction(action);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MoccmetamodelPackage.FINISH_CLOCK: {
+				FinishClock finishClock = (FinishClock)theEObject;
+				T result = caseFinishClock(finishClock);
+				if (result == null) result = caseAction(finishClock);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -202,6 +222,51 @@ public class MoccmetamodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIntegerAssignment(IntegerAssignment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTrigger(Trigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAction(Action object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Finish Clock</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Finish Clock</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFinishClock(FinishClock object) {
 		return null;
 	}
 

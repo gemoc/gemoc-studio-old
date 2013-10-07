@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Branding for Gemoc Studio
+Bundle-Name: Gemoc Studio
 Bundle-SymbolicName: org.gemoc.gemoc_studio.branding;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Gemoc.org
+Bundle-Localization: plugin

@@ -29,5 +29,13 @@
     </genClasses>
     <genClasses ecoreClass="MoCCMetamodel.ecore#//StateBaseRelationLibrary"/>
     <genClasses ecoreClass="MoCCMetamodel.ecore#//IntegerAssignment"/>
+    <genClasses ecoreClass="MoCCMetamodel.ecore#//Trigger">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//Trigger/trueTriggers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//Trigger/falseTrigger"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="MoCCMetamodel.ecore#//Action"/>
+    <genClasses ecoreClass="MoCCMetamodel.ecore#//FinishClock">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MoCCMetamodel.ecore#//FinishClock/clock"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -46,13 +46,38 @@
 			<layout>p2</layout>
 			<url>http://www.obeo.fr/download/eclipse/juno-3.8</url>
 		</repository>
-		<repository>
+		<!-- <repository>
 			<id>kermeta2-latest-stable</id>
 			<layout>p2</layout>
 			<url>http://www.kermeta.org/k2/update/</url>
-		</repository>
+		</repository>-->
+		<repository>
+            <id>kermeta2-latest-release-candidate</id>
+            <layout>p2</layout>
+            <url>http://www.kermeta.org/k2/update_2.1.1.RC/</url>
+        </repository>
 		
+		<!-- <repository>
+            <id>kermeta3</id>
+            <layout>p2</layout>
+            <url>http://gemoc-dev.gforge.inria.fr/k3updatesite/</url>
+        </repository> -->
+        <repository>
+            <id>kermeta3</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/</url>
+        </repository>
 		
+        <repository>
+            <id>timesquare ECL</id>
+            <layout>p2</layout>
+            <url>http://timesquare.inria.fr/ecl/update_site</url>
+        </repository>	
+        <repository>
+            <id>timesquare</id>
+            <layout>p2</layout>
+            <url>http://timesquare.inria.fr/update_site</url>
+        </repository>
 		
 		 <repository>
             <id>emf2.9.x</id>

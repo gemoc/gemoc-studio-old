@@ -1,6 +1,6 @@
 /*
  * CCSL specification
- * @author:  jdeanton
+ * @author:  Julien DeAntoni
  * date :  Tue September 3 2013  05:56:50 CEST 
  */
 ClockConstraintSystem MySpec {
@@ -9,14 +9,14 @@ ClockConstraintSystem MySpec {
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0; 
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1; 
 		//import "./MyFirstTest.moc" as StateLib;
-		import "./testxtext.moclib" as StateLib;  
-    }
+		import "./testxtext.moclib" as StateLib;
+    } 
     entryBlock main
       
         Block main {
         	Clock c1
-        	Clock c2->zaza()
-		Relation relation_0[rel1](  firstParam-> c1 ,	secondParam-> c2  ) 
+        	Clock c2 
+		Relation relation_0[firstTest](  firstParam-> c1 ,	secondParam-> c2)
 
 	}
 }

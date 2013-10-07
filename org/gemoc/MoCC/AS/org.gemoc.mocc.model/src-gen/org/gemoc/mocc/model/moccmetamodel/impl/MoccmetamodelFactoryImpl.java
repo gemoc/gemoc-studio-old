@@ -61,6 +61,8 @@ public class MoccmetamodelFactoryImpl extends EFactoryImpl implements Moccmetamo
 			case MoccmetamodelPackage.TRANSITION: return createTransition();
 			case MoccmetamodelPackage.STATE_BASE_RELATION_LIBRARY: return createStateBaseRelationLibrary();
 			case MoccmetamodelPackage.INTEGER_ASSIGNMENT: return createIntegerAssignment();
+			case MoccmetamodelPackage.TRIGGER: return createTrigger();
+			case MoccmetamodelPackage.FINISH_CLOCK: return createFinishClock();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -114,6 +116,26 @@ public class MoccmetamodelFactoryImpl extends EFactoryImpl implements Moccmetamo
 	public IntegerAssignment createIntegerAssignment() {
 		IntegerAssignmentImpl integerAssignment = new IntegerAssignmentImpl();
 		return integerAssignment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger createTrigger() {
+		TriggerImpl trigger = new TriggerImpl();
+		return trigger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FinishClock createFinishClock() {
+		FinishClockImpl finishClock = new FinishClockImpl();
+		return finishClock;
 	}
 
 	/**

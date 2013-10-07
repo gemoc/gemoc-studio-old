@@ -16,6 +16,7 @@
         <module>../org.gemoc.gemoc_studio.product</module>
         <module>../org.gemoc.gemoc_studio.branding</module>
         <module>../org.gemoc.gemoc_studio.branding.feature</module>		
+        <module>../org.gemoc.gemoc_studio.additions.feature</module>	
     </modules>
 
     <repositories>
@@ -55,10 +56,15 @@
             <layout>p2</layout>
             <url>http://www.kermeta.org/k2/update_2.1.1.RC/</url>
         </repository>	
-        <repository>
+        <!-- <repository>
             <id>kermeta3</id>
             <layout>p2</layout>
             <url>http://gemoc-dev.gforge.inria.fr/k3updatesite/</url>
+        </repository> -->
+        <repository>
+            <id>kermeta3</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/</url>
         </repository>
         <repository>
         	<id>gemoc.execution.trace-latest-snapshot</id>
