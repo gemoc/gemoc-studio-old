@@ -10,6 +10,7 @@ import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
+import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
@@ -31,22 +32,36 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected Solver solver = null;
 	protected Executor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
+	protected ModelOfExecutionBuilder modelOfExecutionBuilder = null;
+	protected Resource domainSpecificEventsResource = null;
 
 	protected Resource modelResource = null;
 
-	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, String eclFilePath,
-			Solver solver, Executor executor, FeedbackPolicy feedbackPolicy) {
+	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader,
+			Resource domainSpecificEventsResource, ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
+			Executor executor, FeedbackPolicy feedbackPolicy) {
 		Activator.getMessagingSystem().info("Instantiating BasicExecutionEngine with...", Activator.PLUGIN_ID);
 		Activator.getMessagingSystem().info("\tLanguageInitializer=" + languageInitializer, Activator.PLUGIN_ID);
 		Activator.getMessagingSystem().info("\tModelLoader=" + modelLoader, Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tEclFilePath=" + eclFilePath, Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tDomainSpecificEventsResource=" + domainSpecificEventsResource,
+				Activator.PLUGIN_ID);
+		Activator.getMessagingSystem()
+				.info("\tModelOfExecutionBuilder=" + modelOfExecutionBuilder, Activator.PLUGIN_ID);
 		Activator.getMessagingSystem().info("\tSolver=" + solver, Activator.PLUGIN_ID);
 		Activator.getMessagingSystem().info("\tExecutor=" + executor, Activator.PLUGIN_ID);
 		Activator.getMessagingSystem().info("\tFeedbackPolicy=" + feedbackPolicy, Activator.PLUGIN_ID);
 
-		// The engine needs AT LEAST a Solver and an Executor.
-		if (solver == null | executor == null) {
+		// The engine needs AT LEAST a ModelOfExecutionBuilder, a
+		// domainSpecificEventsResource, a Solver and an
+		// Executor.
+		if (modelOfExecutionBuilder == null | domainSpecificEventsResource == null | solver == null | executor == null) {
 			String exceptionMessage = "";
+			if (modelOfExecutionBuilder == null) {
+				exceptionMessage += "modelOfExecutionBuilder is null, ";
+			}
+			if (domainSpecificEventsResource == null) {
+				exceptionMessage += "domainSpecificEventsResource is null, ";
+			}
 			if (solver == null) {
 				exceptionMessage += "solver is null, ";
 			}
@@ -60,6 +75,8 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 		} else {
 			this.languageInitializer = languageInitializer;
 			this.modelLoader = modelLoader;
+			this.domainSpecificEventsResource = domainSpecificEventsResource;
+			this.modelOfExecutionBuilder = modelOfExecutionBuilder;
 			this.solver = solver;
 			this.executor = executor;
 			this.feedbackPolicy = feedbackPolicy;
@@ -76,8 +93,8 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 			String msg = "ModelLoader is null";
 			Activator.warn(msg, new NullPointerException(msg));
 		}
-		if (eclFilePath == null) {
-			String msg = "String eclFilePath is null";
+		if (domainSpecificEventsResource == null) {
+			String msg = "String domainSpecificEventsFilePath is null";
 			Activator.warn(msg, new NullPointerException(msg));
 		}
 		if (feedbackPolicy == null) {

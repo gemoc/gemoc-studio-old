@@ -1,5 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api.moc;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 
 import fr.inria.aoste.trace.LogicalStep;
@@ -41,5 +42,5 @@ public interface Solver {
 	 * 
 	 * @param modelOfExecutionURI
 	 */
-	public void setModelOfExecutionFile(String modelOfExecutionURI);
+	public void setModelOfExecutionFile(URI modelOfExecutionURI);
 }

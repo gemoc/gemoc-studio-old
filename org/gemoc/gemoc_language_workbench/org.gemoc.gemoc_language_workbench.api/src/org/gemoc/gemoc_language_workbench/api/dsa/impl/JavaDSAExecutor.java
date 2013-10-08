@@ -10,10 +10,9 @@ import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutorCommand;
 public class JavaDSAExecutor implements IDSAExecutor {
 
 	@Override
-	public Object execute(Object target, String methodName,
-			ArrayList<Object> parameters) {
+	public Object execute(Object target, String methodName, ArrayList<Object> parameters) {
 		IDSAExecutorCommand command = this.getCommand(target, methodName, parameters);
-		if(command != null){
+		if (command != null) {
 			try {
 				return command.execute();
 			} catch (IllegalAccessException e) {
@@ -27,26 +26,27 @@ public class JavaDSAExecutor implements IDSAExecutor {
 				e.printStackTrace();
 			}
 		}
-		NoSuchMethodException e = new NoSuchMethodException("cannot find applicable method "+methodName+" and matching parameters on "+target);
+		NoSuchMethodException e = new NoSuchMethodException("cannot find applicable method " + methodName
+				+ " and matching parameters on " + target);
 		e.printStackTrace();
-		// TODO should return the fact that it cannot be executed via an exception (NoSuchMethodException ? or custom ?)
+		// TODO should return the fact that it cannot be executed via an
+		// exception (NoSuchMethodException ? or custom ?)
 		return null;
 	}
 
 	@Override
-	public IDSAExecutorCommand getCommand(Object target, String methodName,
-			ArrayList<Object> parameters) {
-		
+	public IDSAExecutorCommand getCommand(Object target, String methodName, ArrayList<Object> parameters) {
+
 		Class[] parameterTypes = null;
 		ArrayList<Class> parameterTypesList = new ArrayList<Class>();
-		if(parameters != null){
-			for(Object param : parameters){
+		if (parameters != null) {
+			for (Object param : parameters) {
 				parameterTypesList.add(param.getClass());
 			}
 		}
 		try {
 			Method method = target.getClass().getMethod(methodName, parameterTypes);
-			
+
 			return new JavaDSAExecutorCommand(target, method, parameters);
 		} catch (NoSuchMethodException e) {
 			return null;
@@ -54,17 +54,16 @@ public class JavaDSAExecutor implements IDSAExecutor {
 			e.printStackTrace();
 			return null;
 		}
-		
+
 	}
-	
-	public class JavaDSAExecutorCommand implements IDSAExecutorCommand{
+
+	public class JavaDSAExecutorCommand implements IDSAExecutorCommand {
 
 		protected Method method;
 		protected Object target;
 		protected ArrayList<Object> parameters;
-		
-		public JavaDSAExecutorCommand(Object target, Method method,
-				ArrayList<Object> parameters) {
+
+		public JavaDSAExecutorCommand(Object target, Method method, ArrayList<Object> parameters) {
 			this.target = target;
 			this.method = method;
 			this.parameters = parameters;
@@ -73,12 +72,12 @@ public class JavaDSAExecutor implements IDSAExecutor {
 		@Override
 		public Object execute() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 			Object[] args = new Object[0];
-			if(parameters != null){
-				args =parameters.toArray();
+			if (parameters != null) {
+				args = parameters.toArray();
 			}
-			return method.invoke(target, args); 
+			return method.invoke(target, args);
 		}
-		
+
 	}
 
 }

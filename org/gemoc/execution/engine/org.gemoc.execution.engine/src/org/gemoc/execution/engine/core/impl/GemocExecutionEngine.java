@@ -7,8 +7,10 @@ import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
 import org.gemoc.execution.engine.api_implementations.dsa.EmfBytecodeNameResolver;
@@ -17,6 +19,7 @@ import org.gemoc.execution.engine.core.BasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
+import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
@@ -30,9 +33,11 @@ import fr.inria.aoste.trace.Reference;
 
 public class GemocExecutionEngine extends BasicExecutionEngine {
 
-	public GemocExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader, String eclFilePath,
-			Solver solver, Executor executor, FeedbackPolicy feedbackPolicy) throws CoreException {
-		super(languageInitializer, modelLoader, eclFilePath, solver, executor, feedbackPolicy);
+	public GemocExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader,
+			Resource domainSpecificEventsResource, ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
+			Executor executor, FeedbackPolicy feedbackPolicy) throws CoreException {
+		super(languageInitializer, modelLoader, domainSpecificEventsResource, modelOfExecutionBuilder, solver,
+				executor, feedbackPolicy);
 		Activator.getMessagingSystem().info("*** Engine construction done. ***", Activator.PLUGIN_ID);
 	}
 
@@ -48,7 +53,12 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 
 		// TODO: do something with the DSE file and the model.
 		// Programatically generate the .extendedCCSL.
-		String modelOfExecutionURI = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC_new.extendedCCSL";
+		Resource modelOfExecution = this.modelOfExecutionBuilder.build(this.domainSpecificEventsResource,
+				this.modelResource);
+
+		String modelOfExecutionFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC_new.extendedCCSL";
+		URI modelOfExecutionURI = URI.createPlatformResourceURI(modelOfExecutionFilePath, true);
+		// URI modelOfExecutionURI = modelOfExecution.getURI();
 
 		this.solver.setModelOfExecutionFile(modelOfExecutionURI);
 

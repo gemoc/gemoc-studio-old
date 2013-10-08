@@ -8,10 +8,12 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
+import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
@@ -48,7 +50,8 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 		Solver solver = null;
 		Executor executor = null;
 		FeedbackPolicy feedbackPolicy = null;
-		String eclFilePath = null;
+		Resource domainSpecificEventsResource = null;
+		ModelOfExecutionBuilder modelOfExecutionBuilder = null;
 
 		// get the extension objects
 		if (confElement != null) {
@@ -82,10 +85,16 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 				feedbackPolicy = (FeedbackPolicy) oFeedbackPolicy;
 			}
 
-			final Object oEclFilePath = confElement
-					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_ECL_FILE_PATH_ATT);
-			if (oEclFilePath instanceof String) {
-				eclFilePath = (String) oEclFilePath;
+			final Object oDomainSpecificEventsResource = confElement
+					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_ATT);
+			if (oDomainSpecificEventsResource instanceof Resource) {
+				domainSpecificEventsResource = (Resource) oDomainSpecificEventsResource;
+			}
+			
+			final Object oModelOfExecutionBuilder = confElement
+					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MODEL_OF_EXECUTION_BUILDER_ATT);
+			if (oModelOfExecutionBuilder instanceof ModelOfExecutionBuilder) {
+				modelOfExecutionBuilder = (ModelOfExecutionBuilder) oModelOfExecutionBuilder;
 			}
 		}
 
@@ -96,11 +105,13 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 		this.reactToNull(solver, "Solver");
 		this.reactToNull(executor, "Executor");
 		this.reactToNull(feedbackPolicy, "Feedback Policy");
-		this.reactToNull(eclFilePath, "ECL File path");
+		this.reactToNull(domainSpecificEventsResource, "Domain Specific Events Resource");
+		this.reactToNull(modelOfExecutionBuilder, "Model Of Execution Builder");
+		
 
 		try {
 			// Language-level instanciation of the engine
-			ExecutionEngine engine = new GemocExecutionEngine(languageInitializer, modelLoader, eclFilePath, solver,
+			ExecutionEngine engine = new GemocExecutionEngine(languageInitializer, modelLoader, domainSpecificEventsResource, modelOfExecutionBuilder, solver,
 					executor, feedbackPolicy);
 			
 			// Model-level initialization of the engine

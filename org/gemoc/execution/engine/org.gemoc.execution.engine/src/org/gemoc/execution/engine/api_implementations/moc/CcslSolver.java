@@ -31,7 +31,7 @@ import fr.inria.aoste.trace.Reference;
 public class CcslSolver implements Solver {
 
 	CCSLKernelSolverWrapper solverWrapper = null;
-	String modelOfExecutionURI = "";
+	URI modelOfExecutionURI = null;
 
 	public CcslSolver() {
 	}
@@ -56,8 +56,6 @@ public class CcslSolver implements Solver {
 			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {
 				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
 				if (c != null) {
-					// is c a DSA caller --> should be replaced with mapping
-					// manipulation
 					EList<EObject> linkedObjects = c.getTickingEvent().getReferencedObjectRefs();
 					if (linkedObjects.size() == 2) {
 						eventOccurrence.setContext(HelperFactory.createModelElementReference(linkedObjects.get(0)));
@@ -97,12 +95,11 @@ public class CcslSolver implements Solver {
 	}
 
 	@Override
-	public void setModelOfExecutionFile(String modelOfExecutionURI) {
+	public void setModelOfExecutionFile(URI modelOfExecutionURI) {
 		this.modelOfExecutionURI = modelOfExecutionURI;
 		try {
-			URI uri = URI.createPlatformResourceURI(modelOfExecutionURI, false);
 			ResourceSet resourceSet = new ResourceSetImpl();
-			Resource ccslResource = resourceSet.getResource(uri, true);
+			Resource ccslResource = resourceSet.getResource(this.modelOfExecutionURI, true);
 			ccslResource.load(null);
 			EcoreUtil.resolveAll(resourceSet);
 			this.solverWrapper = new CCSLKernelSolverWrapper();
