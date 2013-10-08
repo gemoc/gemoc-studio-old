@@ -37,8 +37,8 @@ public class JavaDSAExecutor implements IDSAExecutor {
 	public IDSAExecutorCommand getCommand(Object target, String methodName,
 			ArrayList<Object> parameters) {
 		
-		Class[] parameterTypes = null;
-		ArrayList<Class> parameterTypesList = new ArrayList<Class>();
+		Class<?>[] parameterTypes = null;
+		ArrayList<Class<?>> parameterTypesList = new ArrayList<Class<?>>();
 		if(parameters != null){
 			for(Object param : parameters){
 				parameterTypesList.add(param.getClass());

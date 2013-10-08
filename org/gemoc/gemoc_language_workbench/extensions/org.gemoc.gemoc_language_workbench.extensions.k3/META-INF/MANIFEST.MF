@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gemoc extension for K3
+Bundle-SymbolicName: org.gemoc.gemoc_language_workbench.extensions.k3
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.gemoc.gemoc_language_workbench.extensions.k3.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.gemoc.gemoc_language_workbench.api,
+ org.eclipse.emf.ecore;bundle-version="2.9.1"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.gemoc.gemoc_language_workbench.extensions.k3,
+ org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl
