@@ -1,19 +1,31 @@
 package org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
 import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutorCommand;
 
+/**
+ * Executor that is able to find the helper class associated with a given object
+ * It also works for aspect on EMF:
+ * 	- In case of EObject, (target or parameter)  it is also able to find the appropriate interface when looking for the method
+ * @author dvojtise
+ *
+ */
 public class K3DSAAspectExecutor implements IDSAExecutor {
 
 	protected ClassLoader classLoader;
+	protected String bundleSymbolicName;
 	
-	public K3DSAAspectExecutor(ClassLoader classLoader) {
+	public K3DSAAspectExecutor(ClassLoader classLoader, String bundleSymbolicName) {
 		this.classLoader = classLoader;
+		this.bundleSymbolicName = bundleSymbolicName;
 	}
 
 	@Override
@@ -49,16 +61,17 @@ public class K3DSAAspectExecutor implements IDSAExecutor {
 		Class<?> staticHelperClass = getStaticHelperClass(target);
 		if(staticHelperClass == null) return null; // no applicable static class found
 		
-		Class<?>[] parameterTypes = null;
+		Class<?>[] parameterTypes = new Class<?>[parameters != null?parameters.size()+1:1];
 		ArrayList<Class<?>> parameterTypesList = new ArrayList<Class<?>>();
-		parameterTypesList.add(target.getClass()); // add the target as first param
+		parameterTypesList.add(getInterfaceClassOfEObjectOrClass(target)); // add the target as first param
 		if(parameters != null){
 			for(Object param : parameters){
-				parameterTypesList.add(param.getClass());
+				parameterTypesList.add(getInterfaceClassOfEObjectOrClass(param));
 			}
 		}
+		parameterTypes = parameterTypesList.toArray(parameterTypes);
 		try {
-			Method method = target.getClass().getMethod(methodName, parameterTypes);
+			Method method = staticHelperClass.getMethod(methodName, parameterTypes);
 			
 			return new K3DSAAspectExecutorCommand(staticHelperClass, target, method, parameters);
 		} catch (NoSuchMethodException e) {
@@ -74,21 +87,76 @@ public class K3DSAAspectExecutor implements IDSAExecutor {
 	 *
 	 */
 	protected Class<?> getStaticHelperClass(Object target){
-		String targetClassCanonicalName = target.getClass().getCanonicalName();
-		String possibleStaticClassName = targetClassCanonicalName.substring(0, targetClassCanonicalName.lastIndexOf("."));
-		// class name comes from Ecore or just try as simpe java class
-		String targetClassName = target instanceof EObject ? ((EObject)target).eClass().getName() : targetClassCanonicalName.substring(targetClassCanonicalName.lastIndexOf(".")+1, targetClassCanonicalName.length());
-		if(target instanceof EObject && possibleStaticClassName.endsWith(".impl")){
-			possibleStaticClassName = possibleStaticClassName.substring(0, possibleStaticClassName.lastIndexOf(".impl"));
+		
+		String searchedAspectizedClassCanonicalName = getInterfaceClassOfEObjectOrClass(target).getCanonicalName();
+				
+		String searchedPropertyFileName = "/META-INF/xtend-gen/"+bundleSymbolicName+".k3_aspect_mapping.properties";
+		Properties properties = new Properties();
+		InputStream inputStream =classLoader.getResourceAsStream(searchedPropertyFileName);
+		if(inputStream == null){
+			try {
+				inputStream = org.eclipse.core.runtime.Platform.getBundle(bundleSymbolicName).getEntry(searchedPropertyFileName).openStream();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
 		}
-		possibleStaticClassName = possibleStaticClassName + ".aspect."+targetClassName+"Aspect";
+		String possibleStaticClassName= null;
 		try {
-			//Class.forName("org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect");, true, classLoader)
+			if(inputStream != null){
+				properties.load(inputStream);
+				possibleStaticClassName = properties.getProperty(searchedAspectizedClassCanonicalName);
+			}
+		} catch (IOException e) {
+			// TODO report for debug that no mapping was found
+			return null;
+		}
+		if(possibleStaticClassName == null) {
+			return null;
+			
+		}
+		
+		try {
 			return Class.forName(possibleStaticClassName, true, classLoader);
 		} catch (ClassNotFoundException e) {}
 		return null;
 	}
 	
+	/**
+	 * returns the class of o or the interface that o implements in the case of EObjects
+	 * @param o
+	 * @return
+	 */
+	public Class<?> getInterfaceClassOfEObjectOrClass(Object o){
+		if(o instanceof EObject){
+			/*String targetClassCanonicalName = o.getClass().getCanonicalName();
+			String searchedAspectizedClassCanonicalName = targetClassCanonicalName;
+			// apply special rules to retrieve the Ecore interface instead of the Impl 
+			String searchedAspectizedClasPackageName = targetClassCanonicalName.substring(0, targetClassCanonicalName.lastIndexOf("."));
+			searchedAspectizedClasPackageName = searchedAspectizedClasPackageName.substring(0, searchedAspectizedClasPackageName.lastIndexOf(".impl"));
+			searchedAspectizedClassCanonicalName = searchedAspectizedClasPackageName+"."+((EObject)o).eClass().getName();*/
+			Class<?> interfaces[] = o.getClass().getInterfaces();
+			for (int i = 0; i < interfaces.length; i++) {
+				Class<?> interfac = interfaces[i];
+				if(interfac.getSimpleName().equals(((EObject)o).eClass().getName())){
+					return interfaces[i];
+				}
+			}
+			return o.getClass();
+			
+		}
+		else{
+			return o.getClass();
+		}
+			
+	}
+	
+	
+	/**
+	 * Command that is able to execute the required method
+	 *
+	 */
 	public class K3DSAAspectExecutorCommand implements IDSAExecutorCommand{
 
 		protected Class<?> staticHelperClass;
@@ -100,7 +168,9 @@ public class K3DSAAspectExecutor implements IDSAExecutor {
 			this.staticHelperClass = staticHelperClass;
 			this.method = method;
 			this.staticParameters.add(target);
-			this.staticParameters.addAll(parameters);
+			if(parameters != null){
+				this.staticParameters.addAll(parameters);
+			}
 		}
 
 		@Override
@@ -113,5 +183,8 @@ public class K3DSAAspectExecutor implements IDSAExecutor {
 		}
 		
 	}
+	
+	
+	
 
 }

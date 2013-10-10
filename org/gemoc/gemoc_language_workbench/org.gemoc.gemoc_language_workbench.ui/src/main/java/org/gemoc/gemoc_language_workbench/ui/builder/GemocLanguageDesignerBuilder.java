@@ -1,14 +1,11 @@
 package org.gemoc.gemoc_language_workbench.ui.builder;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -27,19 +24,17 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.BasicMonitor;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.xtext.EcoreUtil2;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
+import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
@@ -548,8 +543,17 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			
 			
 			StringBuilder sb = new StringBuilder();
-			sb.append("// TODO add DSA specific executor\n");
-			sb.append("// fall back executor : search classic java method\n");
+			
+			if(ld.getDsaProject() instanceof K3DSAProject){
+				sb.append("\t\t// add K3 DSA specific executor\n");
+				sb.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.K3DSAAspectExecutor(Thread.currentThread().getContextClassLoader(),\n");
+				sb.append("\t\t\t\""+ld.getDsaProject().getProjectName()+"\"));\n");
+			}
+			else{
+				sb.append("\t\t// TODO add DSA specific executor for "+ld.getDsaProject().eClass().getName()+"\n");	
+			}
+			
+			sb.append("\t\t// fall back executor : search classic java method\n");
 			sb.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.api.dsa.impl.JavaDSAExecutor());");
 			fileContent = fileContent.replaceAll(
 					Pattern.quote("${constructor.content}"), sb.toString());
