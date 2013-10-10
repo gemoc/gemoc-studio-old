@@ -12,6 +12,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tfsm.ecore#//Tfsm/ownedEvents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tfsm.ecore#//Tfsm/ownedClock"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tfsm.ecore#//Tfsm/ownedTransitions"/>
+      <genOperations ecoreOperation="Tfsm.ecore#//Tfsm/initialize"/>
     </genClasses>
     <genClasses ecoreClass="Tfsm.ecore#//State">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Tfsm.ecore#//State/owningTfsm"/>

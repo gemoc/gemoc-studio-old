@@ -125,4 +125,14 @@ public interface Tfsm extends NamedElement {
 	 */
 	EList<Transition> getOwnedTransitions();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	String initialize();
+	
+	void setCurrentState(State newState);
+
 } // Tfsm

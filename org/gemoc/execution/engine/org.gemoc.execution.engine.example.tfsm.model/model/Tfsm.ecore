@@ -3,6 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tfsm" nsURI="http://org.gemoc.execution.engine.example.tfsm"
     nsPrefix="org.gemoc.execution.engine.example">
   <eClassifiers xsi:type="ecore:EClass" name="Tfsm" eSuperTypes="#//NamedElement">
+    <eOperations name="initialize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStates" upperBound="-1"
         eType="#//State" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialState" lowerBound="1"

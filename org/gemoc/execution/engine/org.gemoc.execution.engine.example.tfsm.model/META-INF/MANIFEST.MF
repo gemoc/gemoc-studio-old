@@ -3,7 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.gemoc.execution.engine.example.tfsm.model;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ groovy-all-2.1.2.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
@@ -11,5 +12,9 @@ Export-Package: tfsm,
  tfsm.impl,
  tfsm.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.kermeta.utils.systemservices.eclipse;bundle-version="2.1.1",
+ org.kermeta.utils.systemservices.api;bundle-version="2.1.1",
+ org.eclipse.ui;bundle-version="3.8.2",
+ org.eclipse.core.resources;bundle-version="3.8.1"
 Bundle-ActivationPolicy: lazy

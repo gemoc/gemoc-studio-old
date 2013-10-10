@@ -73,10 +73,15 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
 		for (EventOccurrence eventOccurrence : step.getEventOccurrences()) {
 			if (eventOccurrence.getFState() == FiredStateKind.TICK) {
-				EObject target = this.getEObjectFromReference(eventOccurrence.getContext());
-				EOperation operation = (EOperation) this.getEObjectFromReference(eventOccurrence.getReferedElement());
+				Activator.getMessagingSystem().debug("FState is TICK for eventOccurrence: " + eventOccurrence,
+						Activator.PLUGIN_ID);
+				if (eventOccurrence.getContext() != null & eventOccurrence.getReferedElement() != null) {
+					EObject target = this.getEObjectFromReference(eventOccurrence.getContext());
+					EOperation operation = (EOperation) this.getEObjectFromReference(eventOccurrence
+							.getReferedElement());
 
-				res.add(new EclEvent(new EmfAction(target, operation)));
+					res.add(new EclEvent(new EmfAction(target, operation)));
+				}
 			}
 		}
 		return res;
@@ -87,7 +92,6 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 				"Trying to retrieve the EObject from the Reference : " + reference.toString(), Activator.PLUGIN_ID);
 
 		EList<EObject> elements = ((ModelElementReference) reference).getElementRef();
-		Activator.getMessagingSystem().debug("elements: " + elements.toString(), Activator.PLUGIN_ID);
 		if (reference instanceof ModelElementReference) {
 			// Returns EObject thanks to the list of EObjects
 			Activator.getMessagingSystem()

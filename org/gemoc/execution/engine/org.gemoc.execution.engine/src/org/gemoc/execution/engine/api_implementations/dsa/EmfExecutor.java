@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.api_implementations.dsa;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EParameter;
@@ -19,7 +20,6 @@ public class EmfExecutor implements Executor {
 
 	@Override
 	public FeedbackData execute(DomainSpecificAction dsa) {
-
 		// The target is simply casting the EObject into an Object
 		Object target = (Object) dsa.getTarget();
 
@@ -64,6 +64,7 @@ public class EmfExecutor implements Executor {
 			String errorMessage = e.getClass().getSimpleName() + " when trying to execute an Emf method";
 			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
+			Activator.error("Nested Exception", e.getCause());
 			return null;
 		}
 	}

@@ -11,6 +11,12 @@ import tfsm.TfsmFactory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Tfsm</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link tfsm.Tfsm#initialize() <em>Initialize</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class TfsmTest extends NamedElementTest {
@@ -65,6 +71,19 @@ public class TfsmTest extends NamedElementTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link tfsm.Tfsm#initialize() <em>Initialize</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm.Tfsm#initialize()
+	 * @generated
+	 */
+	public void testInitialize() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //TfsmTest

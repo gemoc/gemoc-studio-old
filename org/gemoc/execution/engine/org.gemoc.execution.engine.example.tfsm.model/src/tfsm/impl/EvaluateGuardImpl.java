@@ -92,12 +92,10 @@ public class EvaluateGuardImpl extends GuardImpl implements EvaluateGuard {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean evaluate() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return (Boolean) GroovyRunner.executeScript(this.condition);
 	}
 
 	/**

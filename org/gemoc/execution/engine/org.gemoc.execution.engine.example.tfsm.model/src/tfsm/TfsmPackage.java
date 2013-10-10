@@ -168,13 +168,22 @@ public interface TfsmPackage extends EPackage {
 	int TFSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Initialize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM___INITIALIZE = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Tfsm</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int TFSM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link tfsm.impl.StateImpl <em>State</em>}' class.
@@ -774,6 +783,16 @@ public interface TfsmPackage extends EPackage {
 	EReference getTfsm_OwnedTransitions();
 
 	/**
+	 * Returns the meta object for the '{@link tfsm.Tfsm#initialize() <em>Initialize</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Initialize</em>' operation.
+	 * @see tfsm.Tfsm#initialize()
+	 * @generated
+	 */
+	EOperation getTfsm__Initialize();
+
+	/**
 	 * Returns the meta object for class '{@link tfsm.State <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1192,6 +1211,14 @@ public interface TfsmPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TFSM__OWNED_TRANSITIONS = eINSTANCE.getTfsm_OwnedTransitions();
+
+		/**
+		 * The meta object literal for the '<em><b>Initialize</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TFSM___INITIALIZE = eINSTANCE.getTfsm__Initialize();
 
 		/**
 		 * The meta object literal for the '{@link tfsm.impl.StateImpl <em>State</em>}' class.

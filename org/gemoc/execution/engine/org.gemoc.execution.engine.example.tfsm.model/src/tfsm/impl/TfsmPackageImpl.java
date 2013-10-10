@@ -227,6 +227,15 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getTfsm__Initialize() {
+		return tfsmEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getState() {
 		return stateEClass;
 	}
@@ -553,6 +562,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		createEReference(tfsmEClass, TFSM__OWNED_EVENTS);
 		createEReference(tfsmEClass, TFSM__OWNED_CLOCK);
 		createEReference(tfsmEClass, TFSM__OWNED_TRANSITIONS);
+		createEOperation(tfsmEClass, TFSM___INITIALIZE);
 
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__OWNING_TFSM);
@@ -644,6 +654,8 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		initEReference(getTfsm_OwnedEvents(), this.getTfsmEvent(), null, "ownedEvents", null, 0, -1, Tfsm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTfsm_OwnedClock(), this.getTfsmClock(), null, "ownedClock", null, 1, 1, Tfsm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTfsm_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, Tfsm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getTfsm__Initialize(), ecorePackage.getEString(), "initialize", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getState_OwningTfsm(), this.getTfsm(), null, "owningTfsm", null, 1, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -46,9 +46,10 @@ public class TfsmClockImpl extends NamedElementImpl implements TfsmClock {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String tick() {
+		GroovyRunner.executeScript("doTick");
 		this.numberOfTicks++;
 		return "[DSA TfsmClockImpl.tick()] : incremented number of ticks";
 	}
@@ -56,7 +57,7 @@ public class TfsmClockImpl extends NamedElementImpl implements TfsmClock {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String initialize() {
 		this.numberOfTicks = 0;

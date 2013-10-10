@@ -31,6 +31,7 @@ public class TfsmTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new TfsmTests("tfsm Tests");
+		suite.addTestSuite(TfsmTest.class);
 		suite.addTestSuite(StateTest.class);
 		suite.addTestSuite(TransitionTest.class);
 		suite.addTestSuite(TfsmClockTest.class);

@@ -1,6 +1,10 @@
 package org.gemoc.execution.engine.launcher.popup.actions;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -11,13 +15,15 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.execution.engine.api_implementations.dsa.EmfExecutor;
 import org.gemoc.execution.engine.api_implementations.feedback.SimpleFeedbackPolicy;
-import org.gemoc.execution.engine.api_implementations.moc.CcslSolver;
+import org.gemoc.execution.engine.api_implementations.moc.MockSolver;
+import org.gemoc.execution.engine.api_implementations.utils.EclToCcslTranslator;
 import org.gemoc.execution.engine.api_implementations.utils.TfsmModelLoader;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
+import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
+import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 public class InitializeAction implements IObjectActionDelegate {
 
@@ -51,9 +57,19 @@ public class InitializeAction implements IObjectActionDelegate {
 		String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
 		String MMpath = "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
 
+		// GemocExecutionEngine(LanguageInitializer languageInitializer,
+		// ModelLoader modelLoader,
+		// Resource domainSpecificEventsResource, ModelOfExecutionBuilder
+		// modelOfExecutionBuilder, Solver solver,
+		// Executor executor, FeedbackPolicy feedbackPolicy)
+		String eclFilePath = "/org.gemoc.execution.engine.example/model/TFSM.ecl";
+		ResourceSet resSet = new ResourceSetImpl();
+		Resource eclResource = resSet.getResource(URI.createURI(eclFilePath), true);
+
 		try {
-			this.engine = new GemocExecutionEngine((LanguageInitializer) null, new TfsmModelLoader(), (String) null,
-					new CcslSolver(), new EmfExecutor(), new SimpleFeedbackPolicy());
+			this.engine = new GemocExecutionEngine((LanguageInitializer) null, (ModelLoader) new TfsmModelLoader(),
+					(Resource) eclResource, (ModelOfExecutionBuilder) new EclToCcslTranslator(eclResource),
+					new MockSolver(), new EmfExecutor(), new SimpleFeedbackPolicy());
 			this.engine.initialize(modelPath);
 			information += "Engine Initialized.";
 		} catch (Exception e) {

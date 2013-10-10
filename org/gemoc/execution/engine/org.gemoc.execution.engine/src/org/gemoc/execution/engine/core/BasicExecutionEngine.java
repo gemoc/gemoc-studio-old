@@ -163,9 +163,10 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 		// For each event, execute its action(s) and take into account the
 		// feedback the Domain Specific Action returns.
 		for (DomainSpecificEvent event : events) {
+			Activator.getMessagingSystem().info("Executing the following event: " + event.toString(),
+					Activator.PLUGIN_ID);
 			FeedbackData feedback = this.executor.execute(event);
-			Activator.getMessagingSystem().info(
-					"Feedback from event " + event.toString() + " is : " + feedback.toString(), Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().info("Feedback received: " + feedback.toString(), Activator.PLUGIN_ID);
 			if (this.feedbackPolicy != null) {
 				this.feedbackPolicy.processFeedback(feedback, event, solver);
 			}
