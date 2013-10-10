@@ -25,6 +25,8 @@ import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import tfsm.impl.GroovyRunner;
+
 public class InitializeAction implements IObjectActionDelegate {
 
 	private Shell shell;
@@ -56,6 +58,8 @@ public class InitializeAction implements IObjectActionDelegate {
 		String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
 		String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
 		String MMpath = "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
+		GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
+
 
 		// GemocExecutionEngine(LanguageInitializer languageInitializer,
 		// ModelLoader modelLoader,
