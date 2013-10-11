@@ -59,7 +59,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="locationURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="XTextEditorProject" eSuperTypes="#//EditorProject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="XTextEditorProject" eSuperTypes="#//EditorProject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="grammarName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ProjectKind">
     <eLiterals name="eclipsePlugin"/>
     <eLiterals name="mavenJar" value="1"/>

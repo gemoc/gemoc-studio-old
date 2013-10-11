@@ -594,6 +594,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getXTextEditorProject_GrammarName() {
+		return (EAttribute)xTextEditorProjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getK3DSAProject() {
 		return k3DSAProjectEClass;
 	}
@@ -699,6 +708,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		createEAttribute(fileResourceEClass, FILE_RESOURCE__LOCATION_URI);
 
 		xTextEditorProjectEClass = createEClass(XTEXT_EDITOR_PROJECT);
+		createEAttribute(xTextEditorProjectEClass, XTEXT_EDITOR_PROJECT__GRAMMAR_NAME);
 
 		k3DSAProjectEClass = createEClass(K3DSA_PROJECT);
 
@@ -811,6 +821,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEAttribute(getFileResource_LocationURI(), ecorePackage.getEString(), "locationURI", null, 0, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xTextEditorProjectEClass, XTextEditorProject.class, "XTextEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getXTextEditorProject_GrammarName(), ecorePackage.getEString(), "grammarName", null, 1, 1, XTextEditorProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(k3DSAProjectEClass, K3DSAProject.class, "K3DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
