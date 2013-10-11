@@ -14,6 +14,7 @@
 		<module>../org.gemoc.gemoc_language_workbench.utils</module>
 		<module>../org.gemoc.gemoc_language_workbench.ui</module>
 		<module>../org.gemoc.gemoc_language_workbench.documentation</module>
+		<module>../extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>
 
 		<!-- feature and update site -->
 		<module>../org.gemoc.gemoc_language_workbench.feature</module>
