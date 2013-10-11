@@ -3,8 +3,11 @@ package org.gemoc.gemoc_language_workbench.ui.builder;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
@@ -34,9 +37,12 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
+import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
+import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.gemoc.gemoc_language_workbench.utils.emf.EObjectUtil;
@@ -430,11 +436,30 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			sb.append("System.out.println(\"[" + languageToUpperFirst
 					+ Activator.MODEL_LOADER_CLASS_NAMEPART
 					+ "] loading model from uri \"+modelFileUri);\n");
-			sb.append("			if(modelFileUri.endsWith(\".xmi\")){\n"
+			ArrayList<EditorProject> editorWithXMIResource = new ArrayList<EditorProject>();
+			Set<String> xmiExtensions = new HashSet<String>();
+			for (EditorProject editorProject : ld.getEditorProjects()) {
+				if(editorProject instanceof TreeEditorProject){
+					editorWithXMIResource.add(editorProject);
+					xmiExtensions.addAll(editorProject.getFileExtension());
+				}
+				if(editorProject instanceof ODProject){
+					editorWithXMIResource.add(editorProject);
+					xmiExtensions.addAll(editorProject.getFileExtension());
+				}
+			}
+			sb.append("			if(modelFileUri.endsWith(\".xmi\")");
+			for (String xmiExtension : xmiExtensions) {
+				sb.append(" || modelFileUri.endsWith(\"."+xmiExtension+"\")");
+			}
+			sb.append(" ){\n"
 					+ "			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;\n"
 					+ "		    Map<String, Object> m = reg.getExtensionToFactoryMap();\n"
-					+ "		    m.put(\"xmi\", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());\n"
-					+ "		    // Obtain a new resource set\n"
+					+ "		    m.put(\"xmi\", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());\n");
+			for (String xmiExtension : xmiExtensions) {
+				sb.append("		    m.put(\""+xmiExtension+"\", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());\n");
+			}
+			sb.append("		    // Obtain a new resource set\n"
 					+ "		    ResourceSet resSet = new org.eclipse.emf.ecore.resource.impl.ResourceSetImpl();\n"
 					+ "		    // Create the resource\n"
 					+ "		    result = resSet.getResource(URI.createURI(modelFileUri), true);\n"
@@ -545,7 +570,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			StringBuilder sb = new StringBuilder();
 			
 			if(ld.getDsaProject() instanceof K3DSAProject){
-				sb.append("\t\t// add K3 DSA specific executor\n");
+				sb.append("// add K3 DSA specific executor\n");
 				sb.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.K3DSAAspectExecutor(Thread.currentThread().getContextClassLoader(),\n");
 				sb.append("\t\t\t\""+ld.getDsaProject().getProjectName()+"\"));\n");
 			}
