@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
 import org.eclipse.core.runtime.CoreException;
