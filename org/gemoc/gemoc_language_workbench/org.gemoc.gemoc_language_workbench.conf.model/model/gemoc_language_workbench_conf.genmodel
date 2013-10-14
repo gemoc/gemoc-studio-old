@@ -53,7 +53,9 @@
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//FileResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//FileResource/locationURI"/>
     </genClasses>
-    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//XTextEditorProject"/>
+    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//XTextEditorProject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//XTextEditorProject/grammarName"/>
+    </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//K3DSAProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLFile"/>
   </genPackages>

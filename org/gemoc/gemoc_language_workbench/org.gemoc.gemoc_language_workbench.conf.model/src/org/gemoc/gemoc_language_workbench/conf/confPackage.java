@@ -878,13 +878,22 @@ public interface confPackage extends EPackage {
 	int XTEXT_EDITOR_PROJECT__FILE_EXTENSION = EDITOR_PROJECT__FILE_EXTENSION;
 
 	/**
+	 * The feature id for the '<em><b>Grammar Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XTEXT_EDITOR_PROJECT__GRAMMAR_NAME = EDITOR_PROJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>XText Editor Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XTEXT_EDITOR_PROJECT_FEATURE_COUNT = EDITOR_PROJECT_FEATURE_COUNT + 0;
+	int XTEXT_EDITOR_PROJECT_FEATURE_COUNT = EDITOR_PROJECT_FEATURE_COUNT + 1;
 
 
 	/**
@@ -1340,6 +1349,17 @@ public interface confPackage extends EPackage {
 	EClass getXTextEditorProject();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.XTextEditorProject#getGrammarName <em>Grammar Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Grammar Name</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.XTextEditorProject#getGrammarName()
+	 * @see #getXTextEditorProject()
+	 * @generated
+	 */
+	EAttribute getXTextEditorProject_GrammarName();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject <em>K3DSA Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1718,6 +1738,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass XTEXT_EDITOR_PROJECT = eINSTANCE.getXTextEditorProject();
+
+		/**
+		 * The meta object literal for the '<em><b>Grammar Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XTEXT_EDITOR_PROJECT__GRAMMAR_NAME = eINSTANCE.getXTextEditorProject_GrammarName();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl <em>K3DSA Project</em>}' class.

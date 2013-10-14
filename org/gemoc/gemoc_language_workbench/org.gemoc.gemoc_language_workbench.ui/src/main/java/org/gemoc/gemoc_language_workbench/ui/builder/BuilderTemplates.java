@@ -9,6 +9,7 @@ public class BuilderTemplates {
 "import org.eclipse.emf.common.util.URI;\n"+	
 "import org.eclipse.emf.ecore.resource.Resource;\n"+
 "import org.eclipse.emf.ecore.resource.ResourceSet;\n"+
+"import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;\n"+
 "import org.gemoc.gemoc_language_workbench.ui.api.IXDSMLModelLoader;\n"+
 "public class ${language.name.toupperfirst}ModelLoader implements IXDSMLModelLoader {\n"+
 "	@Override\n"+

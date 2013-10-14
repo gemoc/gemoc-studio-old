@@ -1,12 +1,13 @@
 package org.gemoc.gemoc_language_workbench.ui.builder;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
@@ -26,21 +27,23 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.BasicMonitor;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.xtext.EcoreUtil2;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
+import org.gemoc.gemoc_language_workbench.conf.EditorProject;
+import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
+import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
+import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.gemoc.gemoc_language_workbench.utils.emf.EObjectUtil;
@@ -270,6 +273,14 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 						DSAProject dsaProject = (DSAProject) eObject;
 						updateDependenciesWithDSAProject(project, dsaProject);
 					}
+
+					if (eObject instanceof XTextEditorProject) {
+						XTextEditorProject xtextProject = (XTextEditorProject) eObject;
+						updateDependenciesWithXTextEditorProject(project, xtextProject);
+					}
+					if (eObject instanceof ECLFile) {
+						updateECL_QVTO(project, (ECLFile) eObject);
+					}
 					/*
 					 * if(eObject instanceof
 					 * org.gemoc.gemoc_language_workbench.conf.MoCProject){
@@ -359,6 +370,25 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
+	protected void updateDependenciesWithXTextEditorProject(IProject project,
+			XTextEditorProject xtextEditorProject) {
+		IFile manifestFile = project.getFile(new Path("META-INF/MANIFEST.MF"));
+
+		try {
+			ManifestChanger mfChanger = new ManifestChanger(manifestFile);
+			// TODO find a way to remove possible old domain model dependencies
+			mfChanger.addPluginDependency(xtextEditorProject.getProjectName(),
+					"0.0.0", true, true);
+
+			mfChanger.writeManifest(manifestFile);
+		} catch (IOException e) {
+			Activator.error(e.getMessage(), e);
+		} catch (CoreException e) {
+			Activator.error(e.getMessage(), e);
+		} catch (BundleException e) {
+			Activator.error(e.getMessage(), e);
+		}
+	}
 	/**
 	 * create or replace existing ModelLoaderClass by an implementation that is
 	 * able to load models of the domain
@@ -379,17 +409,61 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			StringBuilder sb = new StringBuilder();
 			sb.append("System.out.println(\"[" + languageToUpperFirst + Activator.MODEL_LOADER_CLASS_NAMEPART
 					+ "] loading model from uri \"+modelFileUri);\n");
-			sb.append("			if(modelFileUri.endsWith(\".xmi\")){\n"
+			ArrayList<EditorProject> editorWithXMIResource = new ArrayList<EditorProject>();
+			Set<String> xmiExtensions = new HashSet<String>();
+			for (EditorProject editorProject : ld.getEditorProjects()) {
+				if(editorProject instanceof TreeEditorProject){
+					editorWithXMIResource.add(editorProject);
+					xmiExtensions.addAll(editorProject.getFileExtension());
+				}
+				if(editorProject instanceof ODProject){
+					editorWithXMIResource.add(editorProject);
+					xmiExtensions.addAll(editorProject.getFileExtension());
+				}
+			}
+			sb.append("		if(modelFileUri.endsWith(\".xmi\")");
+			for (String xmiExtension : xmiExtensions) {
+				sb.append(" || modelFileUri.endsWith(\"."+xmiExtension+"\")");
+			}
+			sb.append(" ){\n"
 					+ "			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;\n"
 					+ "		    Map<String, Object> m = reg.getExtensionToFactoryMap();\n"
-					+ "		    m.put(\"xmi\", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());\n"
-					+ "		    // Obtain a new resource set\n"
+					+ "		    m.put(\"xmi\", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());\n");
+			for (String xmiExtension : xmiExtensions) {
+				sb.append("		    m.put(\""+xmiExtension+"\", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());\n");
+			}
+			sb.append("		    // Obtain a new resource set\n"
 					+ "		    ResourceSet resSet = new org.eclipse.emf.ecore.resource.impl.ResourceSetImpl();\n"
 					+ "		    // Create the resource\n"
-					+ "		    result = resSet.getResource(URI.createURI(modelFileUri), true);\n" + "		}");
-			fileContent = fileContent.replaceAll(Pattern.quote("${loadModel.content}"), sb.toString());
-			IFile file = project.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME + folderName + "/"
-					+ languageToUpperFirst + Activator.MODEL_LOADER_CLASS_NAMEPART + ".java");
+					+ "		    result = resSet.getResource(URI.createURI(modelFileUri), true);\n"
+					+ "		}\n");
+			
+			for (EditorProject editorProject : ld.getEditorProjects()) {
+				if(editorProject instanceof XTextEditorProject && editorProject.getFileExtension().size() > 0){
+					sb.append("		if(modelFileUri.endsWith(\"."+editorProject.getFileExtension().get(0)+"\")){\n");
+					sb.append("			com.google.inject.Injector injector = new "+((XTextEditorProject)editorProject).getGrammarName()+"StandaloneSetup().createInjector();\n");
+					sb.append("			org.eclipse.xtext.resource.IResourceFactory resourceFactory = injector.getInstance(org.eclipse.xtext.resource.IResourceFactory.class);\n");
+					sb.append("			org.eclipse.xtext.resource.IResourceServiceProvider serviceProvider = injector.getInstance(org.eclipse.xtext.resource.IResourceServiceProvider.class);\n");
+					for (String extension : editorProject.getFileExtension()) {
+						sb.append("			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(\""+extension+"\", resourceFactory);\n");	
+					}
+					sb.append("			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(\n");
+					sb.append("			Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());\n");
+					for (String extension : editorProject.getFileExtension()) {
+						sb.append("			org.eclipse.xtext.resource.IResourceServiceProvider.Registry.INSTANCE.getExtensionToFactoryMap().put(\""+extension+"\", serviceProvider);\n");	
+					}	
+					sb.append("			org.eclipse.xtext.resource.XtextResourceSet resourceSet = injector.getInstance(org.eclipse.xtext.resource.XtextResourceSet.class);\n");
+					sb.append("			resourceSet.addLoadOption(org.eclipse.xtext.resource.XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);\n");
+					sb.append("			result = resourceSet.getResource(URI.createURI(modelFileUri), true);\n");		
+					sb.append("		}\n");
+				}
+			}
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${loadModel.content}"), sb.toString());
+			IFile file = project
+					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
+							+ folderName + "/" + languageToUpperFirst
+							+ Activator.MODEL_LOADER_CLASS_NAMEPART + ".java");
 			ResourceUtil.writeFile(file, fileContent);
 		}
 		// update plugin.xml
@@ -468,8 +542,17 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			 */
 
 			StringBuilder sb = new StringBuilder();
-			sb.append("// TODO add DSA specific executor\n");
-			sb.append("// fall back executor : search classic java method\n");
+			
+			if(ld.getDsaProject() instanceof K3DSAProject){
+				sb.append("// add K3 DSA specific executor\n");
+				sb.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.K3DSAAspectExecutor(Thread.currentThread().getContextClassLoader(),\n");
+				sb.append("\t\t\t\""+ld.getDsaProject().getProjectName()+"\"));\n");
+			}
+			else{
+				sb.append("\t\t// TODO add DSA specific executor for "+ld.getDsaProject().eClass().getName()+"\n");	
+			}
+			
+			sb.append("\t\t// fall back executor : search classic java method\n");
 			sb.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.api.dsa.impl.JavaDSAExecutor());");
 			fileContent = fileContent.replaceAll(Pattern.quote("${constructor.content}"), sb.toString());
 
