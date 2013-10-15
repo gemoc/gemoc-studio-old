@@ -1,0 +1,24 @@
+$date 
+Thu Oct 10 09:56:44 CEST 2013
+$end
+
+$version 
+VCD Generation 2.1.0
+$end
+
+$comment alias mainBlock__minutes_initialize "mainBlock::minutes_initialize" $end
+$comment alias mainBlock__minutes_ticks "mainBlock::minutes_ticks" $end
+$comment alias mainBlock__initialization "mainBlock::initialization" $end
+$comment scale 0.1  $end
+$comment relation   "TrafficControl_MoCC_new2013_1010_095644.ccslrelationmodel" $end
+$scope module top $end
+$var event 1 !1 mainBlock__minutes_initialize $end
+$var event 1 !2 mainBlock__minutes_ticks $end
+$var event 1 !3 mainBlock__initialization $end
+$upscope $end
+$enddefinitions $end
+
+#10
+z!1
+z!2
+z!3

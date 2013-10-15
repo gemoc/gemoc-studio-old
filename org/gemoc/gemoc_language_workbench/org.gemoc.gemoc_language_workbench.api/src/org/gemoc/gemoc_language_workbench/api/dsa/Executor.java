@@ -1,5 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
+import java.util.Collection;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
@@ -42,5 +44,19 @@ public interface Executor {
 	 * @param modelResource
 	 */
 	public void setModel(Resource modelResource);
+
+	/**
+	 * Retrieve the sentinels used by this executor.
+	 * 
+	 * @return
+	 */
+	public Collection<BytecodeSentinel> getSentinels();
+
+	/**
+	 * Add a new sentinel to this executor.
+	 * 
+	 * @param sentinel
+	 */
+	public void addSentinel(BytecodeSentinel sentinel);
 
 }

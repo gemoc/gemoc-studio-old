@@ -13,14 +13,14 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.gemoc.execution.engine.api_implementations.dsa.EmfExecutor;
 import org.gemoc.execution.engine.api_implementations.feedback.SimpleFeedbackPolicy;
-import org.gemoc.execution.engine.api_implementations.moc.MockSolver;
-import org.gemoc.execution.engine.api_implementations.utils.EclToCcslTranslator;
-import org.gemoc.execution.engine.api_implementations.utils.TfsmModelLoader;
+import org.gemoc.execution.engine.commons.EclToCcslTranslator;
+import org.gemoc.execution.engine.commons.EmfExecutor;
+import org.gemoc.execution.engine.commons.TfsmModelLoader;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
+import org.gemoc.execution.example.solver.MockSolver;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
@@ -58,7 +58,7 @@ public class InitializeAction implements IObjectActionDelegate {
 		String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
 		String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
 		String MMpath = "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
-		GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
+		//GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
 
 
 		// GemocExecutionEngine(LanguageInitializer languageInitializer,
@@ -71,9 +71,11 @@ public class InitializeAction implements IObjectActionDelegate {
 		Resource eclResource = resSet.getResource(URI.createURI(eclFilePath), true);
 
 		try {
-			this.engine = new GemocExecutionEngine((LanguageInitializer) null, (ModelLoader) new TfsmModelLoader(),
-					(Resource) eclResource, (ModelOfExecutionBuilder) new EclToCcslTranslator(eclResource),
-					new MockSolver(), new EmfExecutor(), new SimpleFeedbackPolicy());
+//			this.engine = new GemocExecutionEngine((LanguageInitializer) null, (ModelLoader) new TfsmModelLoader(),
+//					(Resource) eclResource, (ModelOfExecutionBuilder) new EclToCcslTranslator(eclResource),
+//					new MockSolver(), new EmfExecutor(), new SimpleFeedbackPolicy());
+			this.engine = new GemocExecutionEngine((LanguageInitializer) new TfsmInitializer(), (ModelLoader) new TfsmModelLoader(), (Resource) eclResource, (ModelOfExecutionBuilder) new EclToCcslTranslator(eclResource),)
+			new CcslSolver(), new TfsmDSAExecutor(), new SimpleFeedbackPolicy());
 			this.engine.initialize(modelPath);
 			information += "Engine Initialized.";
 		} catch (Exception e) {

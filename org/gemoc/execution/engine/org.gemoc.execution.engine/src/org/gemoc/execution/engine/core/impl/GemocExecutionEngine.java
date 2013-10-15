@@ -12,9 +12,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.api_implementations.dsa.EmfAction;
-import org.gemoc.execution.engine.api_implementations.dsa.EmfBytecodeNameResolver;
-import org.gemoc.execution.engine.api_implementations.dse.EclEvent;
+import org.gemoc.execution.engine.api_standard_implementations.dsa.EmfAction;
+import org.gemoc.execution.engine.api_standard_implementations.dse.EclEvent;
+import org.gemoc.execution.engine.commons.dsa.sentinels.EmfBytecodeSentinel;
 import org.gemoc.execution.engine.core.BasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
@@ -100,7 +100,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		} else if (reference instanceof NamedReference) {
 			// Returns EObject thanks to its qualified name
 			try {
-				EObject res = new EmfBytecodeNameResolver(modelResource)
+				EObject res = new EmfBytecodeSentinel(modelResource)
 						.getEObjectFromQualifiedName((((NamedReference) reference).getValue()));
 				Activator.getMessagingSystem().debug("Returning :" + res, Activator.PLUGIN_ID);
 				return res;
