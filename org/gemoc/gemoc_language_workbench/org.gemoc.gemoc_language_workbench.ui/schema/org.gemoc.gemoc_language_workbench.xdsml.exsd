@@ -62,7 +62,7 @@
                   Class in charge of loading model
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.ui.api.IXDSMLModelLoader"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.ModelLoader"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -82,7 +82,7 @@
                   Class in charge of initializing the XDSML for correct loading and execution
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.ui.api.IXDSMLInitializer"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer"/>
                </appinfo>
             </annotation>
          </attribute>

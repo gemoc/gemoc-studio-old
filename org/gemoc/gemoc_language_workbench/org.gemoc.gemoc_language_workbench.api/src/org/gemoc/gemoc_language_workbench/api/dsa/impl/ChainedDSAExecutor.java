@@ -34,6 +34,8 @@ public class ChainedDSAExecutor implements IDSAExecutor{
 			}
 		}
 		// TODO should return the fact that it cannot be executed via an exception (NoSuchMethodException ? or custom ?)
+		Exception e = new NoSuchMethodException("None of the registered executors know how to run method "+methodName+ " on "+target);
+		e.printStackTrace();
 		return null;
 	}
 
