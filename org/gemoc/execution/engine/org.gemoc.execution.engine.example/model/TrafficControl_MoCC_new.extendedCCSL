@@ -5,12 +5,13 @@ ClockConstraintSystem TrafficControl {
 		import "./TFSMMoC.ccslLib" as TFSMMoC ;
 		import "platform:/resource/org.gemoc.execution.engine.example/model/TrafficControl.tfsm" as System ;
 	}
+	
 	entryBlock mainBlock
 	Block mainBlock {
-		Clock minutes_initialize : clock -> evt_minutes_initialize
-		("System->minutes", "System->minutes::initialize()")
+		//Clock minutes_initialize : clock -> evt_minutes_initialize
+		//("TimedSystem->minutes", "TimedSystem->minutes::initialize()")
 		Clock minutes_ticks : clock -> evt_minutes_ticks
-		("System->minutes" , "System->minutes::ticks()")
+		("TimedSystem->minutes" , "TimedSystem->minutes::ticks()")
 		
 		/*
 		Expression switchintermediate_AllTriggeringOccurrences1 = Union
