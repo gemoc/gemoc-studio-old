@@ -3,13 +3,13 @@ ClockConstraintSystem TrafficControl {
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel ;
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as CCSL ;
 		import "./TFSMMoC.ccslLib" as TFSMMoC ;
-		import "platform:/resource/org.gemoc.execution.engine.example/model/TrafficControl.tfsm" as System ;
+		import "platform:/resource/org.gemoc.execution.engine.example/model/TrafficControl.tfsm" as TimedSystem ;
 	}
 	
 	entryBlock mainBlock
 	Block mainBlock {
-		//Clock minutes_initialize : clock -> evt_minutes_initialize
-		//("TimedSystem->minutes", "TimedSystem->minutes::initialize()")
+		Clock minutes_initialize : clock -> evt_minutes_initialize
+		("TimedSystem->minutes", "TimedSystem->minutes::initialize()")
 		Clock minutes_ticks : clock -> evt_minutes_ticks
 		("TimedSystem->minutes" , "TimedSystem->minutes::ticks()")
 		
