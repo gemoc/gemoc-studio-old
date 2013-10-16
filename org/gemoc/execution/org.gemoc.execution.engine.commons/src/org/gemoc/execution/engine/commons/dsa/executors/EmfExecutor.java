@@ -23,7 +23,7 @@ public class EmfExecutor implements Executor {
 	private BytecodeSentinel sentinel = null;
 
 	public EmfExecutor() {
-		this.sentinel = new EmfBytecodeSentinel();
+//		this.sentinel = new EmfBytecodeSentinel();
 	}
 
 	@Override

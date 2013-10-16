@@ -21,9 +21,6 @@ public class Kermeta3Executor implements Executor {
 	public Kermeta3Executor(ClassLoader classLoader, String bundleSymbolicName) {
 		this.sentinel = new Kermeta3BytecodeSentinel(classLoader,
 				bundleSymbolicName);
-//		Thread
-//		.currentThread().getContextClassLoader(),
-//		"org.gemoc.sample.tfsm.k3dsa")
 	}
 
 	@Override
