@@ -33,52 +33,80 @@ import fr.inria.aoste.trace.Reference;
 
 public class GemocExecutionEngine extends BasicExecutionEngine {
 
-	public GemocExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader,
-			Resource domainSpecificEventsResource, ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
-			Executor executor, FeedbackPolicy feedbackPolicy) throws CoreException {
-		super(languageInitializer, modelLoader, domainSpecificEventsResource, modelOfExecutionBuilder, solver,
-				executor, feedbackPolicy);
-		Activator.getMessagingSystem().info("*** Engine construction done. ***", Activator.PLUGIN_ID);
+	public GemocExecutionEngine(LanguageInitializer languageInitializer,
+			ModelLoader modelLoader, Resource domainSpecificEventsResource,
+			ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
+			Executor executor, FeedbackPolicy feedbackPolicy)
+			throws CoreException {
+		super(languageInitializer, modelLoader, domainSpecificEventsResource,
+				modelOfExecutionBuilder, solver, executor, feedbackPolicy);
+		Activator.getMessagingSystem().info(
+				"*** Engine construction done. ***", Activator.PLUGIN_ID);
 	}
 
 	@Override
 	public void initialize(String modelURI) {
-		Activator.getMessagingSystem().info("Initializing GemocExecutionEngine with...", Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tmodelURI: " + modelURI, Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info(
+				"Initializing GemocExecutionEngine with...",
+				Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tmodelURI: " + modelURI,
+				Activator.PLUGIN_ID);
 
 		this.modelResource = this.modelLoader.loadModel(modelURI);
 		this.executor.setModel(this.modelResource);
-		Activator.getMessagingSystem().info("Model was successfully loaded: " + modelResource.toString(),
+		Activator.getMessagingSystem().info(
+				"Model was successfully loaded: " + modelResource.toString(),
 				Activator.PLUGIN_ID);
 
 		// TODO: do something with the DSE file and the model.
 		// Programatically generate the .extendedCCSL.
-		Resource modelOfExecution = this.modelOfExecutionBuilder.build(this.domainSpecificEventsResource,
-				this.modelResource);
+		Resource modelOfExecution = this.modelOfExecutionBuilder.build(
+				this.domainSpecificEventsResource, this.modelResource);
 
 		String modelOfExecutionFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC_new.extendedCCSL";
-		URI modelOfExecutionURI = URI.createPlatformResourceURI(modelOfExecutionFilePath, true);
+		URI modelOfExecutionURI = URI.createPlatformResourceURI(
+				modelOfExecutionFilePath, true);
 		// URI modelOfExecutionURI = modelOfExecution.getURI();
 
 		this.solver.setModelOfExecutionFile(modelOfExecutionURI);
 
-		Activator.getMessagingSystem().info("*** Engine initialization done. ***", Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info(
+				"*** Engine initialization done. ***", Activator.PLUGIN_ID);
 	}
 
 	@Override
 	protected List<DomainSpecificEvent> match(LogicalStep step) {
 		Activator.getMessagingSystem().debug(
-				"Matching the given step : " + step.toString() + " containing: \n"
-						+ step.getEventOccurrences().toString(), Activator.PLUGIN_ID);
+				"Matching the given step : " + step.toString()
+						+ " containing: \n"
+						+ step.getEventOccurrences().toString(),
+				Activator.PLUGIN_ID);
 		List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
 		for (EventOccurrence eventOccurrence : step.getEventOccurrences()) {
 			if (eventOccurrence.getFState() == FiredStateKind.TICK) {
-				Activator.getMessagingSystem().debug("FState is TICK for eventOccurrence: " + eventOccurrence,
-						Activator.PLUGIN_ID);
-				if (eventOccurrence.getContext() != null & eventOccurrence.getReferedElement() != null) {
-					EObject target = this.getEObjectFromReference(eventOccurrence.getContext());
-					EOperation operation = (EOperation) this.getEObjectFromReference(eventOccurrence
-							.getReferedElement());
+				Activator.getMessagingSystem().debug(
+						"FState is TICK for eventOccurrence: "
+								+ eventOccurrence, Activator.PLUGIN_ID);
+
+				if (eventOccurrence.getContext() != null
+						& eventOccurrence.getReferedElement() != null) {
+					
+					EObject target = this
+							.getEObjectFromReference(eventOccurrence
+									.getContext());
+					EObject ooperation = this
+							.getEObjectFromReference(eventOccurrence
+									.getReferedElement());
+					Activator.getMessagingSystem().debug(
+							"context : " + target,
+							Activator.PLUGIN_ID);
+					Activator.getMessagingSystem().debug(
+							"referedElement : "
+									+ ooperation,
+							Activator.PLUGIN_ID);
+					EOperation operation = (EOperation) this
+							.getEObjectFromReference(eventOccurrence
+									.getReferedElement());
 
 					res.add(new EclEvent(new EmfAction(target, operation)));
 				}
@@ -89,49 +117,59 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 
 	private EObject getEObjectFromReference(Reference reference) {
 		Activator.getMessagingSystem().debug(
-				"Trying to retrieve the EObject from the Reference : " + reference.toString(), Activator.PLUGIN_ID);
+				"Trying to retrieve the EObject from the Reference : "
+						+ reference.toString(), Activator.PLUGIN_ID);
 
-		EList<EObject> elements = ((ModelElementReference) reference).getElementRef();
+		EList<EObject> elements = ((ModelElementReference) reference)
+				.getElementRef();
 		if (reference instanceof ModelElementReference) {
 			// Returns EObject thanks to the list of EObjects
-			Activator.getMessagingSystem()
-					.debug("Returning :" + elements.get(elements.size() - 1), Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().debug(
+					"Returning :" + elements.get(elements.size() - 1),
+					Activator.PLUGIN_ID);
 			return elements.get(elements.size() - 1);
 		} else if (reference instanceof NamedReference) {
 			// Returns EObject thanks to its qualified name
 			try {
 				EObject res = new EmfBytecodeSentinel(modelResource)
-						.getEObjectFromQualifiedName((((NamedReference) reference).getValue()));
-				Activator.getMessagingSystem().debug("Returning :" + res, Activator.PLUGIN_ID);
+						.getEObjectFromQualifiedName((((NamedReference) reference)
+								.getValue()));
+				Activator.getMessagingSystem().debug("Returning :" + res,
+						Activator.PLUGIN_ID);
 				return res;
 			} catch (SecurityException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.getMessagingSystem().error(errorMessage,
+						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			} catch (IllegalArgumentException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.getMessagingSystem().error(errorMessage,
+						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			} catch (NoSuchMethodException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.getMessagingSystem().error(errorMessage,
+						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			} catch (IllegalAccessException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.getMessagingSystem().error(errorMessage,
+						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			} catch (InvocationTargetException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+				Activator.getMessagingSystem().error(errorMessage,
+						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			}
@@ -181,27 +219,32 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 			}
 		} catch (SecurityException e) {
 			String errorMessage = "SecurityException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		} catch (IllegalArgumentException e) {
 			String errorMessage = "IllegalArgumentException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		} catch (NoSuchMethodException e) {
 			String errorMessage = "NoSuchMethodException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		} catch (IllegalAccessException e) {
 			String errorMessage = "IllegalAccessException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		} catch (InvocationTargetException e) {
 			String errorMessage = "InvocationTargetException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		}

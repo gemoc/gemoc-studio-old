@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
+import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.BytecodeSentinel;
 import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
 
@@ -26,6 +28,7 @@ public class Kermeta3BytecodeSentinel implements BytecodeSentinel {
 		Object target = (Object) dsa.getTarget();
 		String methodName = dsa.getOperation().getName();
 		List<Object> parameters = new ArrayList<Object>((dsa.getParameters()));
+
 
 		Class<?> staticHelperClass = getStaticHelperClass(target);
 		if (staticHelperClass == null)
@@ -50,9 +53,18 @@ public class Kermeta3BytecodeSentinel implements BytecodeSentinel {
 		try {
 			return staticHelperClass.getMethod(methodName, parameterTypes);
 		} catch (NoSuchMethodException e) {
+			String errorMessage = e.getClass().getSimpleName()
+					+ " when trying to retrieve a method in the Kermeta 3 Sentinel";
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
+			Activator.error(errorMessage, e);
 			return null;
 		} catch (SecurityException e) {
-			e.printStackTrace();
+			String errorMessage = e.getClass().getSimpleName()
+					+ " when trying to retrieve a method in the Kermeta 3 Sentinel";
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
+			Activator.error(errorMessage, e);
 			return null;
 		}
 	}
