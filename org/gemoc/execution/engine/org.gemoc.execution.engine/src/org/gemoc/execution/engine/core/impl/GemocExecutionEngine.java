@@ -63,7 +63,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		Resource modelOfExecution = this.modelOfExecutionBuilder.build(
 				this.domainSpecificEventsResource, this.modelResource);
 
-		String modelOfExecutionFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC_new.extendedCCSL";
+		String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControlRendezVous.extendedCCSL";
 		URI modelOfExecutionURI = URI.createPlatformResourceURI(
 				modelOfExecutionFilePath, true);
 		// URI modelOfExecutionURI = modelOfExecution.getURI();
@@ -90,19 +90,17 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 
 				if (eventOccurrence.getContext() != null
 						& eventOccurrence.getReferedElement() != null) {
-					
+
 					EObject target = this
 							.getEObjectFromReference(eventOccurrence
 									.getContext());
 					EObject ooperation = this
 							.getEObjectFromReference(eventOccurrence
 									.getReferedElement());
-					Activator.getMessagingSystem().debug(
-							"context : " + target,
+					Activator.getMessagingSystem().debug("context : " + target,
 							Activator.PLUGIN_ID);
 					Activator.getMessagingSystem().debug(
-							"referedElement : "
-									+ ooperation,
+							"referedElement : " + ooperation,
 							Activator.PLUGIN_ID);
 					EOperation operation = (EOperation) this
 							.getEObjectFromReference(eventOccurrence

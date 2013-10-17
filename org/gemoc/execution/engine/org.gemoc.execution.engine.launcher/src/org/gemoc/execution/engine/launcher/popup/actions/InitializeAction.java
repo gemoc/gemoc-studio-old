@@ -24,6 +24,7 @@ import org.gemoc.execution.engine.launcher.Activator;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
+import org.gemoc.sample.tfsm.k3dsa.GroovyRunner;
 
 public class InitializeAction implements IObjectActionDelegate {
 
@@ -51,22 +52,20 @@ public class InitializeAction implements IObjectActionDelegate {
 	public void run(IAction action) {
 		String information = "";
 
-		String ccslFilePath = "/org.gemoc.execution.engine.example/model/TrafficControl_MoCC_new.extendedCCSL";
-		String jarDsaFolderPath = "/org.gemoc.execution.engine.example/my_jars/dsa";
-		String jarDependenciesFolderPath = "/org.gemoc.execution.engine.example/my_jars/dependencies";
-		String modelPath = "/org.gemoc.execution.engine.example/model/TrafficControl.tfsm";
-		//String MMpath = "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
+		String ccslFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControlRendezVous.extendedCCSL";
+		String modelPath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm";
+		// String MMpath =
+		// "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
 		String MMPath = "fr.inria.aoste.gemoc.example";
-		
-		// GroovyRunner.absolutePathToGroovyControl =
-		// "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
+
+		GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
 
 		// GemocExecutionEngine(LanguageInitializer languageInitializer,
 		// ModelLoader modelLoader,
 		// Resource domainSpecificEventsResource, ModelOfExecutionBuilder
 		// modelOfExecutionBuilder, Solver solver,
 		// Executor executor, FeedbackPolicy feedbackPolicy)
-		String eclFilePath = "/org.gemoc.execution.engine.example/model/TFSM.ecl";
+		String eclFilePath = "/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl";
 		ResourceSet resSet = new ResourceSetImpl();
 		Resource eclResource = resSet.getResource(URI.createURI(eclFilePath),
 				true);
