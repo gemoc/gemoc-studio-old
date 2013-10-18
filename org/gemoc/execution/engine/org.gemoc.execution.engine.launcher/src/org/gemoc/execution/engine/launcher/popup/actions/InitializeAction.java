@@ -21,10 +21,14 @@ import org.gemoc.execution.engine.commons.utils.TfsmModelLoader;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
+import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
-import org.gemoc.sample.tfsm.k3dsa.GroovyRunner;
+
+//import org.gemoc.sample.tfsm.k3dsa.GroovyRunner;
 
 public class InitializeAction implements IObjectActionDelegate {
 
@@ -52,39 +56,32 @@ public class InitializeAction implements IObjectActionDelegate {
 	public void run(IAction action) {
 		String information = "";
 
-		String ccslFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControlRendezVous.extendedCCSL";
-		String modelPath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm";
-		// String MMpath =
-		// "/org.gemoc.execution.engine.example.tfsm.model/model/Tfsm.ecore";
+		// Not used yet
+		String ccslFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
 		String MMPath = "fr.inria.aoste.gemoc.example";
 
-		GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
+		// Path to the tfsm model
+		String modelPath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm";
 
-		// GemocExecutionEngine(LanguageInitializer languageInitializer,
-		// ModelLoader modelLoader,
-		// Resource domainSpecificEventsResource, ModelOfExecutionBuilder
-		// modelOfExecutionBuilder, Solver solver,
-		// Executor executor, FeedbackPolicy feedbackPolicy)
+		// Path to the ECL file so as to retrieve the resource.
 		String eclFilePath = "/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl";
 		ResourceSet resSet = new ResourceSetImpl();
 		Resource eclResource = resSet.getResource(URI.createURI(eclFilePath),
 				true);
 
 		try {
-			// this.engine = new GemocExecutionEngine((LanguageInitializer)
-			// null, (ModelLoader) new TfsmModelLoader(),
-			// (Resource) eclResource, (ModelOfExecutionBuilder) new
-			// EclToCcslTranslator(eclResource),
-			// new MockSolver(), new EmfExecutor(), new SimpleFeedbackPolicy());
+			// Language-level initialization of the engine
 			this.engine = new GemocExecutionEngine((LanguageInitializer) null,
 					(ModelLoader) new TfsmModelLoader(),
 					(Resource) eclResource,
 					(ModelOfExecutionBuilder) new EclToCcslTranslator(
-							eclResource), new CcslSolver(),
-					new Kermeta3Executor(Thread.currentThread()
+							eclResource), (Solver) new CcslSolver(),
+					(Executor) new Kermeta3Executor(Thread.currentThread()
 							.getContextClassLoader(),
 							"org.gemoc.sample.tfsm.k3dsa"),
-					new SimpleFeedbackPolicy());
+					(FeedbackPolicy) new SimpleFeedbackPolicy());
+			
+			// Model-level initialization of the engine
 			this.engine.initialize(modelPath);
 			information += "Engine Initialized.";
 		} catch (Exception e) {
