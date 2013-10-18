@@ -16,6 +16,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.launch.CCSLKernelSolverWrapper;
+import fr.inria.aoste.timesquare.simulationpolicy.maxcardpolicy.MaxCardSimulationPolicy;
 import fr.inria.aoste.timesquare.trace.util.HelperFactory;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
@@ -39,35 +40,43 @@ public class CcslSolver implements Solver {
 	@Override
 	public void forbidEventOccurrenceReferencing(EObject target) {
 		// TODO: Julien complete the code so as to force the correct clocks.
-		this.solverWrapper.forceClockAbsence(HelperFactory.createModelElementReference(target));
+		this.solverWrapper.forceClockAbsence(HelperFactory
+				.createModelElementReference(target));
 	}
 
 	@Override
 	public void forceEventOccurrenceReferencing(EObject target) {
 		// TODO: Julien complete the code so as to force the correct clocks.
-		this.solverWrapper.forceClockPresence(HelperFactory.createModelElementReference(target));
+		this.solverWrapper.forceClockPresence(HelperFactory
+				.createModelElementReference(target));
 	}
 
 	@Override
 	public LogicalStep getNextStep() {
 		try {
-			LogicalStep res = this.solverWrapper.getSolver().doOneSimulationStep();
+			LogicalStep res = this.solverWrapper.getSolver()
+					.doOneSimulationStep();
 
 			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {
 				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
 				if (c != null) {
-					EList<EObject> linkedObjects = c.getTickingEvent().getReferencedObjectRefs();
+					EList<EObject> linkedObjects = c.getTickingEvent()
+							.getReferencedObjectRefs();
 					if (linkedObjects.size() == 2) {
-						eventOccurrence.setContext(HelperFactory.createModelElementReference(linkedObjects.get(0)));
-						eventOccurrence.setReferedElement(HelperFactory.createModelElementReference(linkedObjects
-								.get(1)));
+						eventOccurrence.setContext(HelperFactory
+								.createModelElementReference(linkedObjects
+										.get(0)));
+						eventOccurrence.setReferedElement(HelperFactory
+								.createModelElementReference(linkedObjects
+										.get(1)));
 					}
 				}
 			}
 			return res;
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while trying to get next Ccsl step";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		}
@@ -91,7 +100,8 @@ public class CcslSolver implements Solver {
 	}
 
 	public String toString() {
-		return this.getClass().getName() + "@[modelOfExecutionURI=" + this.modelOfExecutionURI + "]";
+		return this.getClass().getName() + "@[modelOfExecutionURI="
+				+ this.modelOfExecutionURI + "]";
 	}
 
 	@Override
@@ -99,23 +109,29 @@ public class CcslSolver implements Solver {
 		this.modelOfExecutionURI = modelOfExecutionURI;
 		try {
 			ResourceSet resourceSet = new ResourceSetImpl();
-			Resource ccslResource = resourceSet.getResource(this.modelOfExecutionURI, true);
+			Resource ccslResource = resourceSet.getResource(
+					this.modelOfExecutionURI, true);
 			ccslResource.load(null);
 			EcoreUtil.resolveAll(resourceSet);
 			this.solverWrapper = new CCSLKernelSolverWrapper();
 			this.solverWrapper.getSolver().loadModel(ccslResource);
 			this.solverWrapper.getSolver().initSimulation();
+			this.solverWrapper.getSolver().setPolicy(
+					new MaxCardSimulationPolicy());
 		} catch (IOException e) {
 			String errorMessage = "IOException while instantiating the CcslSolver";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 		} catch (UnfoldingException e) {
 			String errorMessage = "UnfoldingException while instantiating the CcslSolver";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while instantiating the CcslSolver";
-			Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().error(errorMessage,
+					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 		}
 

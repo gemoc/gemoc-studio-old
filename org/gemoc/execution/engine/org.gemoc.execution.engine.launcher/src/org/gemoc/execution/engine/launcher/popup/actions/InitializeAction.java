@@ -28,7 +28,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
-//import org.gemoc.sample.tfsm.k3dsa.GroovyRunner;
+import org.gemoc.sample.tfsm.k3dsa.GroovyRunner;
 
 public class InitializeAction implements IObjectActionDelegate {
 
@@ -62,6 +62,9 @@ public class InitializeAction implements IObjectActionDelegate {
 
 		// Path to the tfsm model
 		String modelPath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm";
+		
+		GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
+
 
 		// Path to the ECL file so as to retrieve the resource.
 		String eclFilePath = "/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl";

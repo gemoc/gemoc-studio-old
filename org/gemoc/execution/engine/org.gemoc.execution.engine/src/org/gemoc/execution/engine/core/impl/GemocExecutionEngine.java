@@ -63,7 +63,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		Resource modelOfExecution = this.modelOfExecutionBuilder.build(
 				this.domainSpecificEventsResource, this.modelResource);
 
-		String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControlRendezVous.extendedCCSL";
+		String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
 		URI modelOfExecutionURI = URI.createPlatformResourceURI(
 				modelOfExecutionFilePath, true);
 		// URI modelOfExecutionURI = modelOfExecution.getURI();
@@ -102,11 +102,20 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 					Activator.getMessagingSystem().debug(
 							"referedElement : " + ooperation,
 							Activator.PLUGIN_ID);
+					try{
 					EOperation operation = (EOperation) this
 							.getEObjectFromReference(eventOccurrence
 									.getReferedElement());
-
-					res.add(new EclEvent(new EmfAction(target, operation)));
+					DomainSpecificEvent dse = new EclEvent(new EmfAction(
+							target, operation));
+					Activator.getMessagingSystem().info(
+							"Adding new DSE: " + dse, Activator.PLUGIN_ID);
+					res.add(dse);
+					} catch(ClassCastException e){
+						Activator.getMessagingSystem().warn(
+								"Not linked to an EOperation.",
+								Activator.PLUGIN_ID);
+					}
 				}
 			}
 		}
