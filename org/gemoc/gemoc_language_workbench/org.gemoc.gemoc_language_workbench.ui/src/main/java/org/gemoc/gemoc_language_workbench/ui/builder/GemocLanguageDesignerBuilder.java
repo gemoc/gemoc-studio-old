@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
+import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
@@ -299,12 +300,15 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				Resource modelresource = resSet.getResource(
 						URI.createURI(file.getLocationURI().toString()), true);
 				TreeIterator<EObject> it = modelresource.getAllContents();
+				String languageRootElement = "";
 				while (it.hasNext()) {
 					EObject eObject = (EObject) it.next();
 					if (eObject instanceof DomainModelProject) {
 						DomainModelProject domainModelProject = (DomainModelProject) eObject;
-						updateDependenciesWithDomainProject(project,
-								domainModelProject);
+						updateDependenciesWithDomainProject(project, domainModelProject);
+						if (eObject instanceof EMFEcoreProject){
+							languageRootElement = ((EMFEcoreProject)eObject).getDefaultRootEObjectQualifiedName();
+						}
 					}
 					if (eObject instanceof DSAProject) {
 						DSAProject dsaProject = (DSAProject) eObject;
@@ -316,7 +320,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 						updateDependenciesWithXTextEditorProject(project, xtextProject);
 					}
 					if (eObject instanceof ECLFile) {
-						updateECL_QVTO(project, (ECLFile) eObject);
+						updateECL_QVTO(project, (ECLFile) eObject, languageRootElement);
 					}
 					/*
 					 * if(eObject instanceof
@@ -660,7 +664,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	 * @param ld
 	 */
 	protected void updateECL_QVTO(final IProject project,
-			final ECLFile ecliFilePath) {
+			final ECLFile ecliFilePath, String rootElement) {
 		
 		
 		final URI uri = URI.createPlatformResourceURI(
@@ -674,6 +678,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		LanguageDefinition ld = EObjectUtil.eContainerOfType(ecliFilePath, LanguageDefinition.class);				
 		String qvtoFileName = ld != null ? ld.getName()+"_toCCSL.qvto" : uri.lastSegment().replace(".ecl", "_toCCSL.qvto");
 		arguments.add(qvtoFileName);
+		arguments.add(rootElement);
 		
 		// create QVTO file
 		ISafeRunnable runnable = new ISafeRunnable() {

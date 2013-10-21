@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="kermeta_libs/mesdep/groovy-all-2.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="kermeta_libs/mesdep/groovyembedded-2.0.99-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="kermeta_libs/mesdep/emf.lib.patched-2.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="kermeta_libs/mesdep/org.kermeta.language.library.core-2.0.99-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="kermeta_libs/mesdep/org.kermeta.language.library.standard-2.0.99-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="kermeta_libs/mesdep/org.osgi.core-4.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="kermeta_libs/mesdep/scala-library-2.9.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="kermeta_libs/mesdep/utils.helpers-2.0.99-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="kermeta_libs/mesdep/utils.systemservices.api-2.0.99-SNAPSHOT.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
