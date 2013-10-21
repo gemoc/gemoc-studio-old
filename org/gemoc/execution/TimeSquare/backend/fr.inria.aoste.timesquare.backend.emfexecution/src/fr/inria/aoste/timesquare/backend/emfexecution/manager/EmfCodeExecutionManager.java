@@ -182,7 +182,7 @@ public class EmfCodeExecutionManager<RichMainClass> extends BehaviorManager {
 
 	
 	public void manageBehavior(ConfigurationHelper helper) {
-		
+		initLoaderAndExecutor();
 		//create the behavior
 		for (ClockEntity ce : helper.getClocks()) {
 			if (ce.getReferencedElement().size() > 1){// if linked to an object AND an operation
