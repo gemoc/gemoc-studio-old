@@ -21,6 +21,7 @@ import org.gemoc.execution.engine.commons.utils.TfsmModelLoader;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
+import org.gemoc.execution.example.solver.core.JavaSolver;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
@@ -78,7 +79,7 @@ public class InitializeAction implements IObjectActionDelegate {
 					(ModelLoader) new TfsmModelLoader(),
 					(Resource) eclResource,
 					(ModelOfExecutionBuilder) new EclToCcslTranslator(
-							eclResource), (Solver) new CcslSolver(),
+							eclResource), (Solver) new JavaSolver(),
 					(Executor) new Kermeta3Executor(Thread.currentThread()
 							.getContextClassLoader(),
 							"org.gemoc.sample.tfsm.k3dsa"),

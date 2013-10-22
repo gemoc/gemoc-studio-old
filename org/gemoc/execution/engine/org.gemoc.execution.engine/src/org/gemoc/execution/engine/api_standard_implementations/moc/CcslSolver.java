@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -38,14 +39,16 @@ public class CcslSolver implements Solver {
 	}
 
 	@Override
-	public void forbidEventOccurrenceReferencing(EObject target) {
+	public void forbidEventOccurrenceReferencing(EObject target,
+			EOperation operation) {
 		// TODO: Julien complete the code so as to force the correct clocks.
 		this.solverWrapper.forceClockAbsence(HelperFactory
 				.createModelElementReference(target));
 	}
 
 	@Override
-	public void forceEventOccurrenceReferencing(EObject target) {
+	public void forceEventOccurrenceReferencing(EObject target,
+			EOperation operation) {
 		// TODO: Julien complete the code so as to force the correct clocks.
 		this.solverWrapper.forceClockPresence(HelperFactory
 				.createModelElementReference(target));

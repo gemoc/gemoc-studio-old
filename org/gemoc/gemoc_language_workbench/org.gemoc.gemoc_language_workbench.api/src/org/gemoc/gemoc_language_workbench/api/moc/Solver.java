@@ -2,6 +2,7 @@ package org.gemoc.gemoc_language_workbench.api.moc;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 
 import fr.inria.aoste.trace.LogicalStep;
 
@@ -19,7 +20,8 @@ public interface Solver {
 	 * 
 	 * @param event
 	 */
-	public void forbidEventOccurrenceReferencing(EObject target);
+	public void forbidEventOccurrenceReferencing(EObject target,
+			EOperation operation);
 
 	/**
 	 * Forces the underlying MoC structure to trigger the given Domain Specific
@@ -27,7 +29,8 @@ public interface Solver {
 	 * 
 	 * @param event
 	 */
-	public void forceEventOccurrenceReferencing(EObject target);
+	public void forceEventOccurrenceReferencing(EObject target,
+			EOperation operation);
 
 	/**
 	 * Returns the next step on the MoC's agenda.

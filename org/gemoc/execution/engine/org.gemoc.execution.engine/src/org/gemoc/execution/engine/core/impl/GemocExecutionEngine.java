@@ -52,7 +52,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		Activator.getMessagingSystem().info("\tmodelURI: " + modelURI,
 				Activator.PLUGIN_ID);
 
-		this.modelResource = this.modelLoader.loadModel(modelURI);
+		this.modelResource = this.modelLoader.loadModel(modelURI);		
 		this.executor.setModel(this.modelResource);
 		Activator.getMessagingSystem().info(
 				"Model was successfully loaded: " + modelResource.toString(),
@@ -108,7 +108,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 									.getReferedElement());
 					DomainSpecificEvent dse = new EclEvent(new EmfAction(
 							target, operation));
-					Activator.getMessagingSystem().info(
+					Activator.getMessagingSystem().debug(
 							"Adding new DSE: " + dse, Activator.PLUGIN_ID);
 					res.add(dse);
 					} catch(ClassCastException e){
