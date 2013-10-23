@@ -14,7 +14,6 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.execution.engine.api_standard_implementations.feedback.SimpleFeedbackPolicy;
-import org.gemoc.execution.engine.api_standard_implementations.moc.CcslSolver;
 import org.gemoc.execution.engine.api_standard_implementations.moc.EclToCcslTranslator;
 import org.gemoc.execution.engine.commons.dsa.executors.Kermeta3Executor;
 import org.gemoc.execution.engine.commons.utils.TfsmModelLoader;
@@ -22,13 +21,13 @@ import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
 import org.gemoc.execution.example.solver.core.JavaSolver;
+import org.gemoc.execution.example.solver.feedback.JavaFeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
-
 import org.gemoc.sample.tfsm.k3dsa.GroovyRunner;
 
 public class InitializeAction implements IObjectActionDelegate {
@@ -62,10 +61,11 @@ public class InitializeAction implements IObjectActionDelegate {
 		String MMPath = "fr.inria.aoste.gemoc.example";
 
 		// Path to the tfsm model
+		// String modelPath =
+		// "/org.gemoc.sample.tfsm.instances/TrafficControl/test.tfsm";
 		String modelPath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm";
-		
-		GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
 
+		GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
 
 		// Path to the ECL file so as to retrieve the resource.
 		String eclFilePath = "/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl";
@@ -83,8 +83,8 @@ public class InitializeAction implements IObjectActionDelegate {
 					(Executor) new Kermeta3Executor(Thread.currentThread()
 							.getContextClassLoader(),
 							"org.gemoc.sample.tfsm.k3dsa"),
-					(FeedbackPolicy) new SimpleFeedbackPolicy());
-			
+					(FeedbackPolicy) new JavaFeedbackPolicy());
+
 			// Model-level initialization of the engine
 			this.engine.initialize(modelPath);
 			information += "Engine Initialized.";

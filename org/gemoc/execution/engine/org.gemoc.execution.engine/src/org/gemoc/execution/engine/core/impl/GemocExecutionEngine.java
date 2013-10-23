@@ -52,7 +52,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		Activator.getMessagingSystem().info("\tmodelURI: " + modelURI,
 				Activator.PLUGIN_ID);
 
-		this.modelResource = this.modelLoader.loadModel(modelURI);		
+		this.modelResource = this.modelLoader.loadModel(modelURI);
 		this.executor.setModel(this.modelResource);
 		Activator.getMessagingSystem().info(
 				"Model was successfully loaded: " + modelResource.toString(),
@@ -63,6 +63,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		Resource modelOfExecution = this.modelOfExecutionBuilder.build(
 				this.domainSpecificEventsResource, this.modelResource);
 
+		//String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";
 		String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
 		URI modelOfExecutionURI = URI.createPlatformResourceURI(
 				modelOfExecutionFilePath, true);
@@ -94,26 +95,22 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 					EObject target = this
 							.getEObjectFromReference(eventOccurrence
 									.getContext());
-					EObject ooperation = this
-							.getEObjectFromReference(eventOccurrence
-									.getReferedElement());
-					Activator.getMessagingSystem().debug("context : " + target,
-							Activator.PLUGIN_ID);
 					Activator.getMessagingSystem().debug(
-							"referedElement : " + ooperation,
+							"Linked to the EObject: " + target,
 							Activator.PLUGIN_ID);
-					try{
-					EOperation operation = (EOperation) this
-							.getEObjectFromReference(eventOccurrence
-									.getReferedElement());
-					DomainSpecificEvent dse = new EclEvent(new EmfAction(
-							target, operation));
-					Activator.getMessagingSystem().debug(
-							"Adding new DSE: " + dse, Activator.PLUGIN_ID);
-					res.add(dse);
-					} catch(ClassCastException e){
+					try {
+						EOperation operation = (EOperation) this
+								.getEObjectFromReference(eventOccurrence
+										.getReferedElement());
+						Activator.getMessagingSystem().debug(
+								"Linked to the EOperation: " + operation,
+								Activator.PLUGIN_ID);
+						DomainSpecificEvent dse = new EclEvent(new EmfAction(
+								target, operation));
+						res.add(dse);
+					} catch (ClassCastException e) {
 						Activator.getMessagingSystem().warn(
-								"Not linked to an EOperation.",
+								"... but not linked to an EOperation.",
 								Activator.PLUGIN_ID);
 					}
 				}
@@ -123,17 +120,11 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 	}
 
 	private EObject getEObjectFromReference(Reference reference) {
-		Activator.getMessagingSystem().debug(
-				"Trying to retrieve the EObject from the Reference : "
-						+ reference.toString(), Activator.PLUGIN_ID);
 
 		EList<EObject> elements = ((ModelElementReference) reference)
 				.getElementRef();
 		if (reference instanceof ModelElementReference) {
 			// Returns EObject thanks to the list of EObjects
-			Activator.getMessagingSystem().debug(
-					"Returning :" + elements.get(elements.size() - 1),
-					Activator.PLUGIN_ID);
 			return elements.get(elements.size() - 1);
 		} else if (reference instanceof NamedReference) {
 			// Returns EObject thanks to its qualified name

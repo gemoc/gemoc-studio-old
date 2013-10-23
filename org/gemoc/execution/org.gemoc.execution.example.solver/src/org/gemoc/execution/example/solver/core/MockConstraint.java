@@ -6,14 +6,12 @@ import org.eclipse.emf.ecore.EOperation;
 public class MockConstraint {
 	private EObject target;
 	private EOperation operation;
-	private int time;
 
-	public MockConstraint(EObject target, EOperation operation, int time) {
+	public MockConstraint(EObject target, EOperation operation) {
 		this.target = target;
 		this.operation = operation;
-		this.time = time;
 	}
-	
+
 	public EObject getTarget() {
 		return target;
 	}
@@ -22,14 +20,15 @@ public class MockConstraint {
 		return operation;
 	}
 
-	public int getTime() {
-		return time;
+	public MockConstraint(EObject target, String operationName) {
+		this(target, getEOperationFromName(target, operationName));
 	}
 
-	public MockConstraint(EObject target, String operationName, int time) {
-		this(target, getEOperationFromName(target, operationName), time);
+	public boolean equals(MockConstraint constraint) {
+		return this.target == constraint.getTarget()
+				& this.operation == constraint.getOperation();
 	}
-	
+
 	private static EOperation getEOperationFromName(EObject eo, String name) {
 		for (EOperation operation : eo.eClass().getEAllOperations()) {
 			if (operation.getName().equals(name)) {
