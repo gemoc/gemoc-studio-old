@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.gemoc.executionmodel.create.contribution1">
+         <menu
+               label="gemoc"
+               path="additions"
+               id="org.gemoc.executionmodel.create.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="create execution model"
+               class="org.gemoc.executionmodel.create.popup.actions.ExecutionModelGenerator"
+               menubarPath="org.gemoc.executionmodel.create.menu1/group1"
+               id="org.gemoc.executionmodel.create.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
