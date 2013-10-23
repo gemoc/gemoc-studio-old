@@ -14,14 +14,13 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.execution.engine.api_standard_implementations.feedback.SimpleFeedbackPolicy;
+import org.gemoc.execution.engine.api_standard_implementations.moc.CcslSolver;
 import org.gemoc.execution.engine.api_standard_implementations.moc.EclToCcslTranslator;
 import org.gemoc.execution.engine.commons.dsa.executors.Kermeta3Executor;
 import org.gemoc.execution.engine.commons.utils.TfsmModelLoader;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
-import org.gemoc.execution.example.solver.core.JavaSolver;
-import org.gemoc.execution.example.solver.feedback.JavaFeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
@@ -61,9 +60,9 @@ public class InitializeAction implements IObjectActionDelegate {
 		String MMPath = "fr.inria.aoste.gemoc.example";
 
 		// Path to the tfsm model
+		String modelPath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test.tfsm";
 		// String modelPath =
-		// "/org.gemoc.sample.tfsm.instances/TrafficControl/test.tfsm";
-		String modelPath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm";
+		// "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm";
 
 		GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
 
@@ -79,11 +78,11 @@ public class InitializeAction implements IObjectActionDelegate {
 					(ModelLoader) new TfsmModelLoader(),
 					(Resource) eclResource,
 					(ModelOfExecutionBuilder) new EclToCcslTranslator(
-							eclResource), (Solver) new JavaSolver(),
+							eclResource), (Solver) new CcslSolver(),
 					(Executor) new Kermeta3Executor(Thread.currentThread()
 							.getContextClassLoader(),
 							"org.gemoc.sample.tfsm.k3dsa"),
-					(FeedbackPolicy) new JavaFeedbackPolicy());
+					(FeedbackPolicy) new SimpleFeedbackPolicy());
 
 			// Model-level initialization of the engine
 			this.engine.initialize(modelPath);

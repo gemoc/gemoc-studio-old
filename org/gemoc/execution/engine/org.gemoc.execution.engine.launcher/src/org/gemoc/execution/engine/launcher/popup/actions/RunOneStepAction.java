@@ -59,7 +59,7 @@ public class RunOneStepAction implements IObjectActionDelegate {
         	
             information += "Engine is null. Please initialize engine before running.";
         } else {
-            int numberOfSteps = 1;
+            int numberOfSteps = 100;
             this.engine.run(numberOfSteps);
 
             information += "Engine ran " + numberOfSteps + " step(s).";
