@@ -36,10 +36,11 @@ public class BuilderTemplates {
 "/* GENERATED FILE, do not modify manually */\n" +
 "package ${package.name};\n"+
 "import org.gemoc.gemoc_language_workbench.api.dsa.impl.ChainedDSAExecutor;\n"+
-"public class ${language.name.toupperfirst}DSAExecutor extends ChainedDSAExecutor {\n"+
+"public class ${language.name.toupperfirst}DSAExecutor extends ChainedDSAExecutor ${implements.content} {\n"+
 "	public ${language.name.toupperfirst}DSAExecutor(){\n"+
 "	    ${constructor.content}\n"+
 "	}\n"+
+"   ${additional.operations}\n"+
 "}";
 	
 }

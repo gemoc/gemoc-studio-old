@@ -10,4 +10,5 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.gemoc_language_workbench.extensions.k3,
+ org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api,
  org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl

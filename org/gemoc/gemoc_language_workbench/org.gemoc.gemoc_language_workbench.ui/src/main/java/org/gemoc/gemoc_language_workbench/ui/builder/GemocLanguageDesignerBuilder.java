@@ -617,22 +617,41 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 					Pattern.quote("${execute.content}"), sb.toString()); */
 			
 			
-			StringBuilder sb = new StringBuilder();
+			StringBuilder sbContent = new StringBuilder();
+			StringBuilder sbImplementContent = new StringBuilder();
+			StringBuilder sbAdditionalOperations = new StringBuilder();
 			
 			if(ld.getDsaProject() instanceof K3DSAProject){
-				sb.append("// add K3 DSA specific executor\n");
-				sb.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.K3DSAAspectExecutor(Thread.currentThread().getContextClassLoader(),\n");
-				sb.append("\t\t\t\""+ld.getDsaProject().getProjectName()+"\"));\n");
+				sbContent.append("// add K3 DSA specific executor\n");
+				sbContent.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.K3DSAAspectExecutor(this,\n");
+				sbContent.append("\t\t\t\""+ld.getDsaProject().getProjectName()+"\"));\n");
+				
+				sbImplementContent.append("\n\t\timplements org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorClassLoader ");
+				
+				sbAdditionalOperations.append("@Override\n"+
+"	public Class<?> getClassForName(String className) throws ClassNotFoundException {\n"+
+"		return Class.forName(className);\n"+
+"	}\n"+
+"	@Override\n"+
+"	public java.io.InputStream getResourceAsStream(String resourceName) {\n"+
+"		//this.getClass().getResourceAsStream(resourceName);\n"+
+"		return Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceName);\n"+	
+"	}");
 			}
 			else{
-				sb.append("\t\t// TODO add DSA specific executor for "+ld.getDsaProject().eClass().getName()+"\n");	
+				sbContent.append("\t\t// TODO add DSA specific executor for "+ld.getDsaProject().eClass().getName()+"\n");	
 			}
 			
-			sb.append("\t\t// fall back executor : search classic java method\n");
-			sb.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.api.dsa.impl.JavaDSAExecutor());");
+			sbContent.append("\t\t// fall back executor : search classic java method\n");
+			sbContent.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.api.dsa.impl.JavaDSAExecutor());");
 			fileContent = fileContent.replaceAll(
-					Pattern.quote("${constructor.content}"), sb.toString());
+					Pattern.quote("${constructor.content}"), sbContent.toString());
 			
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${implements.content}"), sbImplementContent.toString());
+			
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${additional.operations}"), sbAdditionalOperations.toString());
 			
 			IFile file = project
 					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
