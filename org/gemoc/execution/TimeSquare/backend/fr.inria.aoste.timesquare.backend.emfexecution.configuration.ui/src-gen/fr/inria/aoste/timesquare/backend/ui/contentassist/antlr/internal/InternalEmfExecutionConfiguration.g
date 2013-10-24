@@ -140,32 +140,6 @@ finally {
 
 
 
-// Entry rule entryRuleJarImportStatement
-entryRuleJarImportStatement 
-:
-{ before(grammarAccess.getJarImportStatementRule()); }
-	 ruleJarImportStatement
-{ after(grammarAccess.getJarImportStatementRule()); } 
-	 EOF 
-;
-
-// Rule JarImportStatement
-ruleJarImportStatement
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getJarImportStatementAccess().getGroup()); }
-(rule__JarImportStatement__Group__0)
-{ after(grammarAccess.getJarImportStatementAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 
 
 
@@ -213,7 +187,6 @@ rule__EMFExecutionConfiguration__Group__1
     }
 :
 	rule__EMFExecutionConfiguration__Group__1__Impl
-	rule__EMFExecutionConfiguration__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -225,45 +198,15 @@ rule__EMFExecutionConfiguration__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementAssignment_1()); }
-(rule__EMFExecutionConfiguration__JarImportStatementAssignment_1)
-{ after(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementAssignment_1()); }
+{ before(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_1()); }
+(rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1)*
+{ after(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_1()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
-
-
-rule__EMFExecutionConfiguration__Group__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__EMFExecutionConfiguration__Group__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EMFExecutionConfiguration__Group__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_2()); }
-(rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2)*
-{ after(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_2()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
 
 
 
@@ -625,101 +568,6 @@ finally {
 
 
 
-rule__JarImportStatement__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__JarImportStatement__Group__0__Impl
-	rule__JarImportStatement__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__JarImportStatement__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getJarImportStatementAccess().getImportJarKeyword_0()); }
-
-	'importJar' 
-
-{ after(grammarAccess.getJarImportStatementAccess().getImportJarKeyword_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__JarImportStatement__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__JarImportStatement__Group__1__Impl
-	rule__JarImportStatement__Group__2
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__JarImportStatement__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getJarImportStatementAccess().getPathToJarAssignment_1()); }
-(rule__JarImportStatement__PathToJarAssignment_1)
-{ after(grammarAccess.getJarImportStatementAccess().getPathToJarAssignment_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__JarImportStatement__Group__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__JarImportStatement__Group__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__JarImportStatement__Group__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getJarImportStatementAccess().getSemicolonKeyword_2()); }
-
-	';' 
-
-{ after(grammarAccess.getJarImportStatementAccess().getSemicolonKeyword_2()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
-
 
 
 rule__EMFExecutionConfiguration__ImportsAssignment_0
@@ -737,29 +585,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EMFExecutionConfiguration__JarImportStatementAssignment_1
+rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementJarImportStatementParserRuleCall_1_0()); }
-	ruleJarImportStatement{ after(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementJarImportStatementParserRuleCall_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_2_0()); }
-	ruleForcedClockMapping{ after(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_2_0()); }
+{ before(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_1_0()); }
+	ruleForcedClockMapping{ after(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_1_0()); }
 )
 
 ;
@@ -820,20 +653,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__JarImportStatement__PathToJarAssignment_1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getJarImportStatementAccess().getPathToJarSTRINGTerminalRuleCall_1_0()); }
-	RULE_STRING{ after(grammarAccess.getJarImportStatementAccess().getPathToJarSTRINGTerminalRuleCall_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
 
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

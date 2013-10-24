@@ -6,7 +6,7 @@ generate emfExecutionConfiguration "http://www.inria.fr/aoste/timesquare/backend
 EMFExecutionConfiguration:
 	(imports+=ImportStatement)+ 
 	
-	jarImportStatement = JarImportStatement
+//	jarImportStatement = JarImportStatement
 	
 	(forcedClockMappings+=ForcedClockMapping)*;
 	

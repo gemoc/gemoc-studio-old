@@ -5,6 +5,7 @@
          point="fr.inria.aoste.timesquare.backend.manager.behaviormanager">
       <behaviormanager
             BehaviorManager="fr.inria.aoste.timesquare.backend.emfexecution.manager.EmfCodeExecutionManager"
+            BehaviorManagerGUI="fr.inria.aoste.timesquare.backend.emfexecution.gui.EmfExecutionGUI"
             name="emfexecution">
       </behaviormanager>
    </extension>

@@ -145,19 +145,9 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEMFExecutionConfiguration_JarImportStatement()
-  {
-    return (EReference)emfExecutionConfigurationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getEMFExecutionConfiguration_ForcedClockMappings()
   {
-    return (EReference)emfExecutionConfigurationEClass.getEStructuralFeatures().get(2);
+    return (EReference)emfExecutionConfigurationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -262,7 +252,6 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
     // Create classes and their features
     emfExecutionConfigurationEClass = createEClass(EMF_EXECUTION_CONFIGURATION);
     createEReference(emfExecutionConfigurationEClass, EMF_EXECUTION_CONFIGURATION__IMPORTS);
-    createEReference(emfExecutionConfigurationEClass, EMF_EXECUTION_CONFIGURATION__JAR_IMPORT_STATEMENT);
     createEReference(emfExecutionConfigurationEClass, EMF_EXECUTION_CONFIGURATION__FORCED_CLOCK_MAPPINGS);
 
     forcedClockMappingEClass = createEClass(FORCED_CLOCK_MAPPING);
@@ -312,7 +301,6 @@ public class EmfExecutionConfigurationPackageImpl extends EPackageImpl implement
     // Initialize classes and features; add operations and parameters
     initEClass(emfExecutionConfigurationEClass, EMFExecutionConfiguration.class, "EMFExecutionConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEMFExecutionConfiguration_Imports(), this.getImportStatement(), null, "imports", null, 0, -1, EMFExecutionConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEMFExecutionConfiguration_JarImportStatement(), this.getJarImportStatement(), null, "jarImportStatement", null, 0, 1, EMFExecutionConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEMFExecutionConfiguration_ForcedClockMappings(), this.getForcedClockMapping(), null, "forcedClockMappings", null, 0, -1, EMFExecutionConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(forcedClockMappingEClass, ForcedClockMapping.class, "ForcedClockMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

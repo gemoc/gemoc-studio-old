@@ -166,20 +166,20 @@ public class EmfExecutionBehavior implements ClockBehavior {
 			Object res = null;
 			res = languageDSAExecutor.execute(_o, _methodName, null);
 			ce.println(res.toString());
-//			if (res instanceof Boolean){
-//				Boolean boolRes = (Boolean)res;
-//				if (boolRes.booleanValue()){
-//					for(ModelElementReference mer : mersToForce){
-//						ce.getSolver().forceClockAbsence(mer);
-//					}
-//				}else{
-//					for(ModelElementReference mer : mersToForce){
-//						ce.getSolver().forceClockPresence(mer);
-//					}
-//				}
-//				//	System.out.println("res of "+m+ " is "+res);
-//			}
-//
+			if (res instanceof Boolean){
+				Boolean boolRes = (Boolean)res;
+				if (boolRes.booleanValue()){
+					for(ModelElementReference mer : mersToForce){
+						ce.getSolver().forceClockAbsence(mer);
+					}
+				}else{
+					for(ModelElementReference mer : mersToForce){
+						ce.getSolver().forceClockPresence(mer);
+					}
+				}
+				//	System.out.println("res of "+m+ " is "+res);
+			}
+
 
 		}
 	}
