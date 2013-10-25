@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<relativePath>../org.gemoc.gemoc_modeling_workbench.root/pom.xml</relativePath>
+		<groupId>org.gemoc.gemoc_modeling_workbench</groupId>
+		<artifactId>org.gemoc.gemoc_modeling_workbench.root</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>org.gemoc.gemoc_modeling_workbench.sample.deployer</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="${basedir}/zips" />
+								
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.traffic_light_example_model.zip">
+									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm.traffic_light_example_model/" />
+								</zip>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project> 
+

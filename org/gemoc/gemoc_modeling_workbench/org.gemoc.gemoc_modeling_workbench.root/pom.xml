@@ -8,6 +8,7 @@
 	<modules>
 		<!-- plugins -->
 		<module>../org.gemoc.gemoc_modeling_workbench.ui</module>
+		<module>../org.gemoc.gemoc_modeling_workbench.sample.deployer</module>
 
 		<!-- feature and update site -->
 		<module>../org.gemoc.gemoc_modeling_workbench.feature</module>

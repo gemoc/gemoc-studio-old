@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+
+
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.gemoc.gemoc_modeling_workbench.samples.category"
+            name="Gemoc modeling workbench examples"
+            parentCategory="org.eclipse.ui.Examples"/>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
+            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.TFSMExampleWizard"
+            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.gemoc_modeling_workbench.sample.deployer.tfsm.model.wizard"
+            name="Gemoc TFSM Model example"
+            preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
+         <description>
+            T⁮his project contains some TFSM models that can be executed if you have installed the TFSM language.
+         </description>
+      </wizard>      
+   </extension>
+ 
+</plugin>
