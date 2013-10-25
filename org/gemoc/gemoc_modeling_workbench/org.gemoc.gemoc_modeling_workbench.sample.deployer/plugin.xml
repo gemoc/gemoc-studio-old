@@ -17,7 +17,7 @@
             finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.gemoc_modeling_workbench.sample.deployer.tfsm.model.wizard"
-            name="Gemoc TFSM Model example"
+            name="Gemoc TrafficLight Model example for TFSM Language"
             preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
          <description>
             T⁮his project contains some TFSM models that can be executed if you have installed the TFSM language.
