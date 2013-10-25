@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore;bundle-version="2.9.1",
  org.gemoc.sample.tfsm;bundle-version="1.0.0",
  org.gemoc.execution.engine.commons;bundle-version="1.0.0",
- org.gemoc.execution.example.solver;bundle-version="1.0.0"
+ org.gemoc.execution.javasolver;bundle-version="1.0.0",
+ org.gemoc.sample.tfsm.feedback;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
