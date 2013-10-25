@@ -67,11 +67,11 @@
             <url>https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/</url>
         </repository>
 		
-        <!-- <repository>
+        <repository>
             <id>timesquare ECL</id>
             <layout>p2</layout>
             <url>http://timesquare.inria.fr/ecl/update_site</url>
-        </repository>-->	
+        </repository>	
         <repository>
             <id>timesquare</id>
             <layout>p2</layout>
