@@ -1,9 +1,9 @@
-package org.gemoc.execution.example.solver.feedback;
+package org.gemoc.execution.javasolver.feedback;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
-import org.gemoc.execution.example.solver.Activator;
 import org.gemoc.execution.engine.commons.feedback.ObjectFeedbackData;
+import org.gemoc.execution.javasolver.Activator;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;

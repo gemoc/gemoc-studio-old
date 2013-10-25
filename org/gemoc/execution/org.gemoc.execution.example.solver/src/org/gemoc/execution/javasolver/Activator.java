@@ -1,4 +1,4 @@
-package org.gemoc.execution.example.solver;
+package org.gemoc.execution.javasolver;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
@@ -11,7 +11,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.execution.example.solver"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.execution.javasolver"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;

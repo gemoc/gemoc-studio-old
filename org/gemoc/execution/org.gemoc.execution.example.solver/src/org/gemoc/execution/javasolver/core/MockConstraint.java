@@ -1,4 +1,4 @@
-package org.gemoc.execution.example.solver.core;
+package org.gemoc.execution.javasolver.core;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;

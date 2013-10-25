@@ -1,4 +1,4 @@
-package org.gemoc.execution.example.solver.core;
+package org.gemoc.execution.javasolver.core;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.commons.utils.TfsmModelLoader;
-import org.gemoc.execution.example.solver.Activator;
+import org.gemoc.execution.javasolver.Activator;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.sample.tfsm.EvaluateGuard;
 import org.gemoc.sample.tfsm.FSMClock;

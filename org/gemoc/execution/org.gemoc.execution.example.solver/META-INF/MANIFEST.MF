@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Solver
-Bundle-SymbolicName: org.gemoc.execution.example.solver
+Bundle-SymbolicName: org.gemoc.execution.javasolver
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.gemoc.execution.example.solver.Activator
+Bundle-Activator: org.gemoc.execution.javasolver.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;bundle-version="2.9.1",
@@ -16,6 +16,6 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.sample.tfsm.k3dsa;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.gemoc.execution.example.solver,
- org.gemoc.execution.example.solver.core,
- org.gemoc.execution.example.solver.feedback
+Export-Package: org.gemoc.execution.javasolver,
+ org.gemoc.execution.javasolver.core,
+ org.gemoc.execution.javasolver.feedback
