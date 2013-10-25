@@ -105,7 +105,7 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 						Activator.getMessagingSystem().debug(
 								"Linked to the EOperation: " + operation,
 								Activator.PLUGIN_ID);
-						DomainSpecificEvent dse = new EclEvent(new EmfAction(
+						DomainSpecificEvent dse = new EclEvent("dseNamesNotUsedYet", new EmfAction(
 								target, operation));
 						res.add(dse);
 					} catch (ClassCastException e) {

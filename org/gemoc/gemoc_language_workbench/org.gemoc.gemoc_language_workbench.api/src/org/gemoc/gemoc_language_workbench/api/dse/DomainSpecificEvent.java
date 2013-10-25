@@ -21,4 +21,13 @@ public interface DomainSpecificEvent {
 	 * @return the DomainSpecificAction contained by this event.
 	 */
 	public DomainSpecificAction getAction();
+
+	/**
+	 * The name of a DSE is (/will be) used to connect the trace from the solver
+	 * with the DSAs it references. It is (/will be) also be used for
+	 * implementing the feedback influence on the solver.
+	 * 
+	 * @return the name of this event
+	 */
+	public String getName();
 }

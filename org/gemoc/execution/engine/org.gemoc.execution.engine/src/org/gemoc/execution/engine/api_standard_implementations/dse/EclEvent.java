@@ -1,8 +1,5 @@
 package org.gemoc.execution.engine.api_standard_implementations.dse;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.api_standard_implementations.dsa.EmfAction;
@@ -15,35 +12,30 @@ import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
  * @author flatombe
  */
 public class EclEvent implements DomainSpecificEvent {
-    private DomainSpecificAction action;
+	private DomainSpecificAction action;
+	private String name;
 
-    public EclEvent(EObject target, EOperation operation) {
-        this(new EmfAction(target, operation));
-    }
+	public EclEvent(String name, EObject target, EOperation operation) {
+		this(name, new EmfAction(target, operation));
+	}
 
-    private String retrieveMethodName(EObject eObjectMethod) throws SecurityException, NoSuchMethodException,
-            IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-        Method method = eObjectMethod.getClass().getMethod("getName");
-        Object res = method.invoke(eObjectMethod);
-        if (res instanceof String) {
-            return (String) res;
-        } else {
-            return null;
-        }
+	public EclEvent(String name, DomainSpecificAction action) {
+		this.action = action;
+	}
 
-    }
+	@Override
+	public DomainSpecificAction getAction() {
+		return this.action;
+	}
 
-    public EclEvent(DomainSpecificAction action) {
-        this.action = action;
-    }
+	@Override
+	public String getName() {
+		return this.name;
+	}
 
-    @Override
-    public DomainSpecificAction getAction() {
-        return this.action;
-    }
-
-    public String toString() {
-        return this.getClass().getName() + "@[" + this.action.toString() + "]";
-    }
+	public String toString() {
+		return this.getClass().getName() + "@[" + "name=" + this.name
+				+ " ; action=" + this.action.toString() + "]";
+	}
 
 }
