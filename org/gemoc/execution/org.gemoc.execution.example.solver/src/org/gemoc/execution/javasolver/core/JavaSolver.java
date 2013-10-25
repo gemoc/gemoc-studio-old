@@ -34,19 +34,20 @@ public class JavaSolver implements Solver {
 	private State currentState = null;
 	private State previousState = null;
 	private int timer = 0;
-	private List<MockConstraint> nextEvents;
-	private List<MockConstraint> forbiddenEvents;
+	private List<MockEvent> nextEvents;
+	private List<MockEvent> forbiddenEvents;
 
 	public JavaSolver() {
-		this.nextEvents = new ArrayList<MockConstraint>();
-		this.forbiddenEvents = new ArrayList<MockConstraint>();
+		this.nextEvents = new ArrayList<MockEvent>();
+		this.forbiddenEvents = new ArrayList<MockEvent>();
+		this.myFactory = TraceFactory.eINSTANCE;
 	}
 
 	@Override
 	public void forbidEventOccurrenceReferencing(EObject target,
 			EOperation operation) {
 		this.forbiddenEvents
-				.add(new MockConstraint(target, operation.getName()));
+				.add(new MockEvent(target, operation.getName()));
 	}
 
 	@Override
@@ -54,14 +55,15 @@ public class JavaSolver implements Solver {
 			EOperation operation) {
 		Activator.getMessagingSystem().debug("forcing some event",
 				Activator.PLUGIN_ID);
-		this.nextEvents.add(new MockConstraint(target, operation.getName()));
+		this.nextEvents.add(new MockEvent(target, operation.getName()));
 
 	}
 
 	@Override
 	public LogicalStep getNextStep() {
 		Activator.getMessagingSystem().debug(
-				"Using MockSolver to retrieve a step", Activator.PLUGIN_ID);
+				"Using " + this.getClass().getName() + " to retrieve a step",
+				Activator.PLUGIN_ID);
 		LogicalStep res = myFactory.createLogicalStep();
 
 		// Model Elements...
@@ -113,7 +115,7 @@ public class JavaSolver implements Solver {
 		if (!this.nextEvents.isEmpty()) {
 			Activator.getMessagingSystem().info("There are some nextEvents",
 					Activator.PLUGIN_ID);
-			for (MockConstraint constraint : this.nextEvents) {
+			for (MockEvent constraint : this.nextEvents) {
 				addEvent(res, constraint.getTarget(), constraint.getOperation()
 						.getName());
 			}
@@ -155,7 +157,7 @@ public class JavaSolver implements Solver {
 
 	// Does not add the event if it is in the list of forbidden events
 	private void addEvent(LogicalStep res, EObject target, String methodName) {
-		MockConstraint newConstraint = new MockConstraint(target, methodName);
+		MockEvent newConstraint = new MockEvent(target, methodName);
 		if (!this.forbiddenEvents.contains(newConstraint)) {
 			res.getEventOccurrences().add(
 					createEventOccurrenceFromConstraint(newConstraint));
@@ -164,7 +166,7 @@ public class JavaSolver implements Solver {
 	}
 
 	private EventOccurrence createEventOccurrenceFromConstraint(
-			MockConstraint constraint) {
+			MockEvent constraint) {
 		EventOccurrence eventOccurrence = myFactory.createEventOccurrence();
 		eventOccurrence.setFState(FiredStateKind.TICK);
 
@@ -186,12 +188,6 @@ public class JavaSolver implements Solver {
 	public void setModelOfExecutionFile(URI modelOfExecutionURI) {
 		this.modelResource = new TfsmModelLoader()
 				.loadModel("/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm");
-		// Créer des contraintes ...
-		TimedSystem modelRoot = (TimedSystem) modelResource.getContents()
-				.get(0);
-
-		this.myFactory = TraceFactory.eINSTANCE;
-
 	}
 
 }
