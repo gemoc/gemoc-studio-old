@@ -60,9 +60,9 @@ public class InitializeAction implements IObjectActionDelegate {
 		String MMPath = "fr.inria.aoste.gemoc.example";
 
 		// Path to the tfsm model
-		String modelPath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test.tfsm";
 		// String modelPath =
-		// "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm";
+		// "/org.gemoc.sample.tfsm.instances/TrafficControl/test.tfsm";
+		String modelPath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm";
 
 		GroovyRunner.absolutePathToGroovyControl = "/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/TFSM/DSA/org.gemoc.sample.i3s.fsm.dsa.groovy/groovy/control.groovy";
 

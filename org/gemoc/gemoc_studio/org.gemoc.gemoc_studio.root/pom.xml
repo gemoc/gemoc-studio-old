@@ -85,11 +85,16 @@
             <id>timesquare ECL</id>
             <layout>p2</layout>
             <url>http://timesquare.inria.fr/ecl/update_site</url>
-        </repository>	
-        <repository>
+        </repository>        
+        <!-- <repository>
             <id>timesquare</id>
             <layout>p2</layout>
             <url>http://timesquare.inria.fr/update_site</url>
+        </repository>-->
+        <repository>
+            <id>timesquare experimental</id>
+            <layout>p2</layout>
+            <url>http://timesquare.inria.fr/update_site/experimental/</url>
         </repository>
         <repository>
             <id>Scala-IDE 3.0.0 Release Juno For Scala 2.9.x</id>

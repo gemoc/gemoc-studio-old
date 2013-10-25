@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
+import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
@@ -263,11 +264,15 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				// Create the resource
 				Resource modelresource = resSet.getResource(URI.createURI(file.getLocationURI().toString()), true);
 				TreeIterator<EObject> it = modelresource.getAllContents();
+				String languageRootElement = "";
 				while (it.hasNext()) {
 					EObject eObject = (EObject) it.next();
 					if (eObject instanceof DomainModelProject) {
 						DomainModelProject domainModelProject = (DomainModelProject) eObject;
 						updateDependenciesWithDomainProject(project, domainModelProject);
+						if (eObject instanceof EMFEcoreProject){
+							languageRootElement = ((EMFEcoreProject)eObject).getDefaultRootEObjectQualifiedName();
+						}
 					}
 					if (eObject instanceof DSAProject) {
 						DSAProject dsaProject = (DSAProject) eObject;
@@ -279,7 +284,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 						updateDependenciesWithXTextEditorProject(project, xtextProject);
 					}
 					if (eObject instanceof ECLFile) {
-						updateECL_QVTO(project, (ECLFile) eObject);
+						updateECL_QVTO(project, (ECLFile) eObject, languageRootElement);
 					}
 					/*
 					 * if(eObject instanceof
@@ -580,9 +585,12 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	 * @param project
 	 * @param ld
 	 */
-	protected void updateECL_QVTO(final IProject project, final ECLFile ecliFilePath) {
-
-		final URI uri = URI.createPlatformResourceURI(ecliFilePath.getLocationURI(), true);
+	protected void updateECL_QVTO(final IProject project,
+			final ECLFile ecliFilePath, String rootElement) {
+		
+		
+		final URI uri = URI.createPlatformResourceURI(
+				ecliFilePath.getLocationURI(), true);
 		final IFolder qvtoFolder = project.getFolder("qvto-gen");
 
 		String folderPath = qvtoFolder.getLocation().toOSString();
