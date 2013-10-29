@@ -68,7 +68,8 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 
 		// String modelOfExecutionFilePath =
 		// "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";
-		String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
+		//String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
+		String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
 
 		URI modelOfExecutionURI = URI.createPlatformResourceURI(
 				modelOfExecutionFilePath, true);
