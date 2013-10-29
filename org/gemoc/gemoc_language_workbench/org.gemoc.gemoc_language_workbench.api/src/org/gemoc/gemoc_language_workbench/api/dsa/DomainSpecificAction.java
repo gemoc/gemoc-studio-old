@@ -5,16 +5,16 @@ package org.gemoc.gemoc_language_workbench.api.dsa;
 
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EParameter;
+import org.eclipse.emf.ecore.ETypeParameter;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 
 /**
- * A DomainSpecificAction (DSA) captures references sufficient enough for the
- * Executor to compute the actual Object and Method that are concerned by this
- * action. For now we will use the qualified names of the target (object on
- * which to apply the method) and of the method (method to apply on the target)
- * to uniquely identify a Domain Specific Action.
+ * A Domain-Specific Action (DSA) is a language-level data structure
+ * representing a method call in EMF. It has enough information for a competent
+ * EventExecutor to compute the actual Object and Method which will serve during
+ * the invokation of the DSA.
  * 
  * @author flatombe
  * 
@@ -32,11 +32,22 @@ public interface DomainSpecificAction {
 	 *         operation must be called.
 	 * 
 	 */
-	public EObject getTarget();
+	public EClass getTargetClass();
 
 	/**
 	 * 
 	 * @return a copy of the list of parameters for this action.
 	 */
-	public List<EParameter> getParameters();
+	public List<ETypeParameter> getParameterTypes();
+
+	/**
+	 * 
+	 * @return the Domain Specific Event that owns this DSA.
+	 */
+	public DomainSpecificEvent getOwningEvent();
+
+	/**
+	 * 
+	 */
+	public void setOwningEvent(DomainSpecificEvent event);
 }

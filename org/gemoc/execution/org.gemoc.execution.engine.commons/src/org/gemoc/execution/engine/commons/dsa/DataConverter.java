@@ -5,15 +5,20 @@ package org.gemoc.execution.engine.commons.dsa;
 
 import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.execution.engine.commons.feedback.ObjectFeedbackData;
+import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 /**
+ * Sort of a helper that translates the return of a DSA into a proper
+ * FeedbackData object...
+ * 
  * @author flatombe
  * 
  */
 public class DataConverter {
 
-	public static FeedbackData convertToFeedbackData(Object o) {
+	public static FeedbackData convertToFeedbackData(Object o,
+			ModelSpecificAction msa) {
 		FeedbackData feedback = null;
 		Activator.getMessagingSystem().debug(
 				"Trying to convert the following object into feedbackdata: "
@@ -36,6 +41,8 @@ public class DataConverter {
 				Activator.error(errorMessage, e1);
 			}
 		}
+
+		feedback.setCausalAction(msa);
 
 		return feedback;
 	}

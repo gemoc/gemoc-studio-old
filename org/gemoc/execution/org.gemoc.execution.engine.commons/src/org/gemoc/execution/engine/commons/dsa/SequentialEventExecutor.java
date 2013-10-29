@@ -6,55 +6,64 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.execution.engine.commons.dsa.executors.JavaExecutor;
+import org.gemoc.execution.engine.commons.Activator;
+import org.gemoc.execution.engine.commons.dsa.executors.JavaEventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.BytecodeSentinel;
-import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
-import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.dsa.MethodNotFoundException;
+import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
+import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 /**
  * Composes several executors, personal sentinels and a default executor.
  * 
  * @author dvojtise
+ * @author flatombe
  * 
  */
-public class SequentialExecutor implements Executor {
+public class SequentialEventExecutor extends BasicEventExecutor {
 
 	private Resource modelResource = null;
-	protected List<Executor> executors = new ArrayList<Executor>();
+	protected List<EventExecutor> executors = new ArrayList<EventExecutor>();
 	private Collection<BytecodeSentinel> personalSentinels = new ArrayList<BytecodeSentinel>();
-	private Executor defaultExecutor = new JavaExecutor();
+	private EventExecutor defaultExecutor = new JavaEventExecutor();
 
-	public SequentialExecutor() {
+	public SequentialEventExecutor() {
 	}
 
-	public SequentialExecutor(Executor defaultExecutor) {
+	public SequentialEventExecutor(EventExecutor defaultExecutor) {
 		this.defaultExecutor = defaultExecutor;
 	}
 
-	public void addExecutor(Executor newexecutor) {
+	public void addExecutor(EventExecutor newexecutor) {
 		this.executors.add(newexecutor);
 	}
 
 	/**
 	 * First, checks if one of the owned executors has a sentinel that can find
 	 * a method corresponding to the DSA in the bytecode. If that is the case,
-	 * then the owning executor of the sentinel is responsbible for executing
-	 * the DSA. If that is not the case, then we search through the personal
+	 * then the owning executor of the sentinel is responsible for executing the
+	 * DSA. If that is not the case, then we search through the personal
 	 * sentinels of this executor for one sentinel able to find a method
 	 * corresponding to the DSA. If one is found, then the sentinel is added to
 	 * the defaultExecutor which is promoted responsible for executing the
 	 * bytecode. Else returns null.
 	 */
-	@Override
-	public FeedbackData execute(DomainSpecificAction dsa) {
+	public FeedbackData execute(ModelSpecificAction msa) {
 		Method method = null;
-		Executor associatedExecutor = null;
+		EventExecutor associatedExecutor = null;
 
-		for (Executor executor : executors) {
+		for (EventExecutor executor : executors) {
 			for (BytecodeSentinel sentinel : executor.getSentinels()) {
-				method = sentinel.getMethodFromAction(dsa);
+				try {
+					method = sentinel.getMethodFromAction(msa);
+				} catch (MethodNotFoundException e) {
+					Activator.getMessagingSystem().warn(
+							this.getClass().getName()
+									+ " could not find method of the action "
+									+ msa.toString(), Activator.PLUGIN_ID);
+				}
 				if (method != null) {
 					break;
 				}
@@ -68,7 +77,14 @@ public class SequentialExecutor implements Executor {
 		if (method == null | associatedExecutor == null) {
 			BytecodeSentinel spottingSentinel = null;
 			for (BytecodeSentinel sentinel : this.personalSentinels) {
-				method = sentinel.getMethodFromAction(dsa);
+				try {
+					method = sentinel.getMethodFromAction(msa);
+				} catch (MethodNotFoundException e) {
+					Activator.getMessagingSystem().warn(
+							this.getClass().getName()
+									+ " could not find method of the action "
+									+ msa.toString(), Activator.PLUGIN_ID);
+				}
 				if (method != null) {
 					spottingSentinel = sentinel;
 					break;
@@ -79,26 +95,21 @@ public class SequentialExecutor implements Executor {
 		}
 
 		if (method != null & associatedExecutor != null) {
-			return associatedExecutor.execute(dsa);
+			return associatedExecutor.execute(msa);
 		} else {
 			return null;
 		}
 	}
 
 	@Override
-	public FeedbackData execute(DomainSpecificEvent dse) {
-		return this.execute(dse.getAction());
-	}
-
-	@Override
-	public void setModel(Resource modelResource) {
-		this.modelResource = modelResource;
+	public List<FeedbackData> execute(ModelSpecificEvent dse) {
+		return this.execute(dse.getActions());
 	}
 
 	@Override
 	public Collection<BytecodeSentinel> getSentinels() {
 		Collection<BytecodeSentinel> res = new ArrayList<BytecodeSentinel>();
-		for (Executor executor : this.executors) {
+		for (EventExecutor executor : this.executors) {
 			res.addAll(executor.getSentinels());
 		}
 		res.addAll(this.personalSentinels);

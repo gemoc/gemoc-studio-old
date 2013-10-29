@@ -2,7 +2,6 @@ package org.gemoc.execution.engine.api_standard_implementations.feedback;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.commons.feedback.ObjectFeedbackData;
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -18,8 +17,7 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 	}
 
 	@Override
-	public void processFeedback(FeedbackData feedbackData,
-			DomainSpecificEvent causalEvent, Solver solver) {
+	public void processFeedback(FeedbackData feedbackData, Solver solver) {
 		// Activator.getMessagingSystem().warn("You need to complete processFeedback",
 		// Activator.PLUGIN_ID);
 		try {
@@ -52,12 +50,7 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 			} else if (o instanceof Boolean) {
 				Activator.getMessagingSystem().debug(
 						"Caught a Boolean as feedback from event: "
-								+ causalEvent.toString(), Activator.PLUGIN_ID);
-				Activator.getMessagingSystem().debug(
-						causalEvent.getAction().getTarget().toString(),
-						Activator.PLUGIN_ID);
-				Activator.getMessagingSystem().debug(
-						causalEvent.getAction().getOperation().toString(),
+								+ feedbackData.getCausalEvent().toString(),
 						Activator.PLUGIN_ID);
 				//
 				// if

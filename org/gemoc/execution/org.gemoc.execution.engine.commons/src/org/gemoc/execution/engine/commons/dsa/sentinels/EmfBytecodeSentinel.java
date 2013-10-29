@@ -8,8 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.BytecodeSentinel;
-import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
-
+import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
 
 public class EmfBytecodeSentinel implements BytecodeSentinel {
 
@@ -19,10 +18,13 @@ public class EmfBytecodeSentinel implements BytecodeSentinel {
 		this.modelResource = modelResource;
 	}
 
-	public EObject getEObjectFromQualifiedName(String qualifiedName) throws SecurityException,
-			IllegalArgumentException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-		Activator.getMessagingSystem()
-				.debug("Entering with targetqualifiedname: " + qualifiedName, Activator.PLUGIN_ID);
+	public EObject getEObjectFromQualifiedName(String qualifiedName)
+			throws SecurityException, IllegalArgumentException,
+			NoSuchMethodException, IllegalAccessException,
+			InvocationTargetException {
+		Activator.getMessagingSystem().debug(
+				"Entering with targetqualifiedname: " + qualifiedName,
+				Activator.PLUGIN_ID);
 		Iterator<EObject> iterator = this.modelResource.getAllContents();// this.modelResource.getContents().get(0).eAllContents();
 		EObject res = null;
 		while (iterator.hasNext() & res == null) {
@@ -34,8 +36,9 @@ public class EmfBytecodeSentinel implements BytecodeSentinel {
 		return res;
 	}
 
-	private String getQualifiedName(EObject eo) throws SecurityException, IllegalArgumentException,
-			NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+	private String getQualifiedName(EObject eo) throws SecurityException,
+			IllegalArgumentException, NoSuchMethodException,
+			IllegalAccessException, InvocationTargetException {
 		String res = this.invokeGetNameOnEObject(eo);
 		EObject tmp = eo.eContainer();
 		while (tmp != null) {
@@ -45,8 +48,10 @@ public class EmfBytecodeSentinel implements BytecodeSentinel {
 		return res;
 	}
 
-	private String invokeGetNameOnEObject(EObject eObjectMethod) throws SecurityException, NoSuchMethodException,
-			IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+	private String invokeGetNameOnEObject(EObject eObjectMethod)
+			throws SecurityException, NoSuchMethodException,
+			IllegalArgumentException, IllegalAccessException,
+			InvocationTargetException {
 		Method method;
 		method = eObjectMethod.getClass().getMethod("getName");
 		Object res = method.invoke(eObjectMethod);
@@ -58,7 +63,7 @@ public class EmfBytecodeSentinel implements BytecodeSentinel {
 	}
 
 	@Override
-	public Method getMethodFromAction(DomainSpecificAction dsa) {
+	public Method getMethodFromAction(ModelSpecificAction msa) {
 		// TODO Auto-generated method stub
 		return null;
 	}

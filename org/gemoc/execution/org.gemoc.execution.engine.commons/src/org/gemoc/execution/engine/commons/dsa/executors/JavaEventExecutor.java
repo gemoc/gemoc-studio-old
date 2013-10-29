@@ -3,37 +3,44 @@ package org.gemoc.execution.engine.commons.dsa.executors;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.commons.Activator;
+import org.gemoc.execution.engine.commons.dsa.BasicEventExecutor;
 import org.gemoc.execution.engine.commons.dsa.DataConverter;
+import org.gemoc.execution.engine.commons.dsa.sentinels.JavaBytecodeSentinel;
 import org.gemoc.gemoc_language_workbench.api.dsa.BytecodeSentinel;
-import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
-import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.dsa.MethodNotFoundException;
+import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
+import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
-public class JavaExecutor implements Executor {
-	private Resource modelResource;
+public class JavaEventExecutor extends BasicEventExecutor {
 
-	private Collection<BytecodeSentinel> sentinels = new ArrayList<BytecodeSentinel>();
+	private BytecodeSentinel sentinel = null;
+
+	public JavaEventExecutor() {
+		this.sentinel = new JavaBytecodeSentinel();
+	}
 
 	@Override
-	public FeedbackData execute(DomainSpecificAction dsa) {
-		Object target = (Object) dsa.getTarget();
-		Object[] params = (new ArrayList<Object>(dsa.getParameters()))
+	public FeedbackData execute(ModelSpecificAction msa) {
+		Object target = (Object) msa.getTarget();
+		Object[] params = (new ArrayList<Object>(msa.getParameters()))
 				.toArray();
 		Method method = null;
-		for (BytecodeSentinel sentinel : sentinels) {
-			method = sentinel.getMethodFromAction(dsa);
-			if (method != null) {
-				break;
-			}
-		}
 		try {
-			return DataConverter.convertToFeedbackData(method.invoke(target,
-					params));
+			method = sentinel.getMethodFromAction(msa);
+		} catch (MethodNotFoundException e) {
+			Activator.getMessagingSystem().warn(
+					this.getClass().getName()
+							+ " could not find method of the action "
+							+ msa.toString(), Activator.PLUGIN_ID);
+		}
+
+		try {
+			return DataConverter.convertToFeedbackData(
+					method.invoke(target, params), msa);
 		} catch (IllegalArgumentException e) {
 			String errorMessage = e.getClass().getSimpleName()
 					+ " when trying to execute a Java method";
@@ -60,23 +67,8 @@ public class JavaExecutor implements Executor {
 	}
 
 	@Override
-	public FeedbackData execute(DomainSpecificEvent dse) {
-		return this.execute(dse.getAction());
-	}
-
-	@Override
-	public void setModel(Resource modelResource) {
-		this.modelResource = modelResource;
-	}
-
-	@Override
-	public Collection<BytecodeSentinel> getSentinels() {
-		return this.sentinels;
-	}
-
-	@Override
-	public void addSentinel(BytecodeSentinel sentinel) {
-		this.sentinels.add(sentinel);
+	public List<FeedbackData> execute(ModelSpecificEvent mse) {
+		return this.execute(mse.getActions());
 	}
 
 }

@@ -6,8 +6,8 @@ import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
@@ -30,31 +30,44 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected LanguageInitializer languageInitializer = null;
 	protected ModelLoader modelLoader = null;
 	protected Solver solver = null;
-	protected Executor executor = null;
+	protected EventExecutor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
 	protected ModelOfExecutionBuilder modelOfExecutionBuilder = null;
 	protected Resource domainSpecificEventsResource = null;
 
 	protected Resource modelResource = null;
 
-	public BasicExecutionEngine(LanguageInitializer languageInitializer, ModelLoader modelLoader,
-			Resource domainSpecificEventsResource, ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
-			Executor executor, FeedbackPolicy feedbackPolicy) {
-		Activator.getMessagingSystem().info("Instantiating BasicExecutionEngine with...", Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tLanguageInitializer=" + languageInitializer, Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tModelLoader=" + modelLoader, Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tDomainSpecificEventsResource=" + domainSpecificEventsResource,
+	public BasicExecutionEngine(LanguageInitializer languageInitializer,
+			ModelLoader modelLoader, Resource domainSpecificEventsResource,
+			ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
+			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
+		Activator.getMessagingSystem().info(
+				"Instantiating BasicExecutionEngine with...",
 				Activator.PLUGIN_ID);
-		Activator.getMessagingSystem()
-				.info("\tModelOfExecutionBuilder=" + modelOfExecutionBuilder, Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tSolver=" + solver, Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tExecutor=" + executor, Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tFeedbackPolicy=" + feedbackPolicy, Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info(
+				"\tLanguageInitializer=" + languageInitializer,
+				Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tModelLoader=" + modelLoader,
+				Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info(
+				"\tDomainSpecificEventsResource="
+						+ domainSpecificEventsResource, Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info(
+				"\tModelOfExecutionBuilder=" + modelOfExecutionBuilder,
+				Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tSolver=" + solver,
+				Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("\tExecutor=" + executor,
+				Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info(
+				"\tFeedbackPolicy=" + feedbackPolicy, Activator.PLUGIN_ID);
 
 		// The engine needs AT LEAST a ModelOfExecutionBuilder, a
 		// domainSpecificEventsResource, a Solver and an
 		// Executor.
-		if (modelOfExecutionBuilder == null | domainSpecificEventsResource == null | solver == null | executor == null) {
+		if (modelOfExecutionBuilder == null
+				| domainSpecificEventsResource == null | solver == null
+				| executor == null) {
 			String exceptionMessage = "";
 			if (modelOfExecutionBuilder == null) {
 				exceptionMessage += "modelOfExecutionBuilder is null, ";
@@ -69,7 +82,8 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 				exceptionMessage += "executor is null, ";
 			}
 			if (exceptionMessage.endsWith(", ")) {
-				exceptionMessage = exceptionMessage.substring(0, exceptionMessage.length() - 2);
+				exceptionMessage = exceptionMessage.substring(0,
+						exceptionMessage.length() - 2);
 			}
 			throw new NullPointerException(exceptionMessage);
 		} else {
@@ -113,18 +127,21 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	 * @param step
 	 * @return
 	 */
-	protected abstract List<DomainSpecificEvent> match(LogicalStep step);
+	protected abstract List<ModelSpecificEvent> match(LogicalStep step);
 
 	@Override
 	public void run() {
-		Activator.getMessagingSystem().info("Starting running indefinitely", Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("Starting running indefinitely",
+				Activator.PLUGIN_ID);
 		this.run(-1);
-		Activator.getMessagingSystem().info("Stopped running indefinitely", Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info("Stopped running indefinitely",
+				Activator.PLUGIN_ID);
 	}
 
 	@Override
 	public void run(int numberOfSteps) {
-		Activator.getMessagingSystem().info("Running " + numberOfSteps + " steps", Activator.PLUGIN_ID);
+		Activator.getMessagingSystem().info(
+				"Running " + numberOfSteps + " steps", Activator.PLUGIN_ID);
 		for (int i = 0; i < numberOfSteps; i++) {
 			this.runOneStep();
 		}
@@ -140,9 +157,11 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 
 			@Override
 			public void run() throws Exception {
-				Activator.getMessagingSystem().info(">>Running one step", Activator.PLUGIN_ID);
+				Activator.getMessagingSystem().info(">>Running one step",
+						Activator.PLUGIN_ID);
 				BasicExecutionEngine.this.doOneStep();
-				Activator.getMessagingSystem().info("<<Step finished", Activator.PLUGIN_ID);
+				Activator.getMessagingSystem().info("<<Step finished",
+						Activator.PLUGIN_ID);
 			}
 		};
 		SafeRunner.run(runnable);
@@ -152,29 +171,38 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	private void doOneStep() {
 		// Retrieve information from the solver.
 		LogicalStep step = this.solver.getNextStep();
-		Activator.getMessagingSystem().debug("The solver has correctly returned a step to the engine",
+		Activator.getMessagingSystem().debug(
+				"The solver has correctly returned a step to the engine",
 				Activator.PLUGIN_ID);
 
 		// Create the Domain Specific Events according to the information
 		// returned to us by the solver.
-		List<DomainSpecificEvent> events = this.match(step);
-		Activator.getMessagingSystem().info("Number of events matched : " + events.size(), Activator.PLUGIN_ID);
+		List<ModelSpecificEvent> events = this.match(step);
+		Activator.getMessagingSystem().info(
+				"Number of events matched : " + events.size(),
+				Activator.PLUGIN_ID);
 
 		// For each event, execute its action(s) and take into account the
 		// feedback the Domain Specific Action returns.
-		for (DomainSpecificEvent event : events) {
-			Activator.getMessagingSystem().debug("Executing the following event: " + event.toString(),
+		for (ModelSpecificEvent event : events) {
+			Activator.getMessagingSystem().debug(
+					"Executing the following event: " + event.toString(),
 					Activator.PLUGIN_ID);
-			FeedbackData feedback = this.executor.execute(event);
-			Activator.getMessagingSystem().debug("Feedback received: " + feedback.toString(), Activator.PLUGIN_ID);
-			if (this.feedbackPolicy != null) {
-				this.feedbackPolicy.processFeedback(feedback, event, solver);
+			List<FeedbackData> feedbacks = this.executor.execute(event);
+			for (FeedbackData feedback : feedbacks) {
+				Activator.getMessagingSystem().debug(
+						"Feedback received: " + feedback.toString(),
+						Activator.PLUGIN_ID);
+				if (this.feedbackPolicy != null) {
+					this.feedbackPolicy
+							.processFeedback(feedback, solver);
+				}
 			}
 		}
 	}
 
 	@Override
-	public Executor getExecutor() {
+	public EventExecutor getExecutor() {
 		return this.executor;
 	}
 
@@ -200,7 +228,8 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 
 	@Override
 	public String toString() {
-		return this.getClass().getName() + "@[Executor=" + this.executor + " ; Solver=" + this.solver
-				+ " ; ModelResource=" + this.modelResource + "]";
+		return this.getClass().getName() + "@[Executor=" + this.executor
+				+ " ; Solver=" + this.solver + " ; ModelResource="
+				+ this.modelResource + "]";
 	}
 }

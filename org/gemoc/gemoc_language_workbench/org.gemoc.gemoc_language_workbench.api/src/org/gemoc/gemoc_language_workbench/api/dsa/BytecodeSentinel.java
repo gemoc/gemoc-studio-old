@@ -11,13 +11,13 @@ import java.lang.reflect.Method;
  */
 public interface BytecodeSentinel {
 	/**
-	 * Returns the Java Method corresponding to the DomainSpecificAction.
-	 * Returns null if it cannot find a fitting method. This is specific to the
-	 * technology used to write/compile the Domain Specific Actions and Dynamic
-	 * Attributes.
+	 * Returns the Java Method corresponding to the DomainSpecificAction. This
+	 * is specific to the technology used to write/compile the Domain Specific
+	 * Actions and Dynamic Attributes.
 	 * 
 	 * @param dsa
 	 * @return
 	 */
-	public Method getMethodFromAction(DomainSpecificAction dsa);
+	public Method getMethodFromAction(ModelSpecificAction msa)
+			throws MethodNotFoundException;
 }

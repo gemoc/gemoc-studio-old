@@ -11,7 +11,9 @@ import org.gemoc.execution.engine.commons.utils.TfsmModelLoader;
 import org.gemoc.execution.javasolver.Activator;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.sample.tfsm.EvaluateGuard;
+import org.gemoc.sample.tfsm.EventGuard;
 import org.gemoc.sample.tfsm.FSMClock;
+import org.gemoc.sample.tfsm.FSMEvent;
 import org.gemoc.sample.tfsm.State;
 import org.gemoc.sample.tfsm.TFSM;
 import org.gemoc.sample.tfsm.TemporalGuard;
@@ -31,9 +33,12 @@ public class JavaSolver implements Solver {
 	private Resource traceResource = null;
 	private TraceFactory myFactory = null;
 	private Resource modelResource = null;
-	private State currentState = null;
-	private State previousState = null;
-	private int timer = 0;
+	private State controlCurrentState = null;
+	private State controlPreviousState = null;
+	private State semaphoreCurrentState = null;
+	private State semaphorePreviousState = null;
+	private int controlTimer = 0;
+	private int semaphoreTimer = 0;
 	private List<MockEvent> nextEvents;
 	private List<MockEvent> forbiddenEvents;
 
@@ -46,15 +51,12 @@ public class JavaSolver implements Solver {
 	@Override
 	public void forbidEventOccurrenceReferencing(EObject target,
 			EOperation operation) {
-		this.forbiddenEvents
-				.add(new MockEvent(target, operation.getName()));
+		this.forbiddenEvents.add(new MockEvent(target, operation.getName()));
 	}
 
 	@Override
 	public void forceEventOccurrenceReferencing(EObject target,
 			EOperation operation) {
-		Activator.getMessagingSystem().debug("forcing some event",
-				Activator.PLUGIN_ID);
 		this.nextEvents.add(new MockEvent(target, operation.getName()));
 
 	}
@@ -62,21 +64,22 @@ public class JavaSolver implements Solver {
 	@Override
 	public LogicalStep getNextStep() {
 		Activator.getMessagingSystem().debug(
-				"Using " + this.getClass().getName() + " to retrieve a step",
+				"[" + this.getClass().getSimpleName() + "]Retrieving a step",
 				Activator.PLUGIN_ID);
 		LogicalStep res = myFactory.createLogicalStep();
 
 		// Model Elements...
 		TimedSystem modelRoot = (TimedSystem) modelResource.getContents()
 				.get(0);
-		TFSM tfsm = (TFSM) modelRoot.getTfsms().get(0);
-		TFSMAspect.Init(tfsm);
-		this.previousState = this.currentState;
-		State currentState = TFSMAspect.currentState(tfsm);
-		this.currentState = currentState;
-		FSMClock clock = (FSMClock) modelRoot.getGlobalClocks().get(0);
+		TFSM controlTfsm = (TFSM) modelRoot.getTfsms().get(0);
+		TFSMAspect.Init(controlTfsm);
+		this.controlPreviousState = this.controlCurrentState;
+		State controlCurrentState = TFSMAspect.currentState(controlTfsm);
+		this.controlCurrentState = controlCurrentState;
+		FSMClock systemClock = (FSMClock) modelRoot.getGlobalClocks().get(0);
 
 		TFSM control = (TFSM) modelRoot.getTfsms().get(0);
+		FSMClock controlClock = (FSMClock) control.getLocalClock();
 		State initControl = (State) control.getOwnedStates().get(0);
 		State day = (State) control.getOwnedStates().get(1);
 		State night = (State) control.getOwnedStates().get(2);
@@ -101,13 +104,42 @@ public class JavaSolver implements Solver {
 		TemporalGuard guard_night_to_night = (TemporalGuard) night_to_night
 				.getOwnedGuard();
 
-		addEvent(res, clock, "ticks");
+		TFSM tfsmSemaphore = modelRoot.getTfsms().get(1);
+		TFSMAspect.Init(tfsmSemaphore);
+		this.semaphorePreviousState = this.semaphoreCurrentState;
+		State semaphoreCurrentState = TFSMAspect.currentState(tfsmSemaphore);
+		this.semaphoreCurrentState = semaphoreCurrentState;
+
+		State initSemaphore = tfsmSemaphore.getOwnedStates().get(0);
+		State redState = tfsmSemaphore.getOwnedStates().get(1);
+		State greenState = tfsmSemaphore.getOwnedStates().get(2);
+		FSMClock semaphoreClock = tfsmSemaphore.getLocalClock();
+		Transition initSemaphore_to_red = tfsmSemaphore.getOwnedTransitions()
+				.get(0);
+		TemporalGuard guard_initSemaphore_to_red = (TemporalGuard) initSemaphore_to_red
+				.getOwnedGuard();
+		Transition red_to_green = tfsmSemaphore.getOwnedTransitions().get(1);
+		TemporalGuard guard_red_to_green = (TemporalGuard) red_to_green
+				.getOwnedGuard();
+		Transition green_to_red = tfsmSemaphore.getOwnedTransitions().get(2);
+		EventGuard guard_green_to_red = (EventGuard) green_to_red
+				.getOwnedGuard();
+		FSMEvent switchEvent = modelRoot.getGlobalEvents().get(0);
+
+		// addEvent(res, semaphoreClock, "ticks");
+		if (this.semaphoreCurrentState == this.semaphorePreviousState) {
+			this.semaphoreTimer++;
+		} else {
+			this.semaphoreTimer = 0;
+		}
+		addEvent(res, systemClock, "ticks");
+		// addEvent(res, controlClock, "ticks");
 
 		// Counting the time we've been in the current state...
-		if (this.currentState == this.previousState) {
-			this.timer++;
+		if (this.controlCurrentState == this.controlPreviousState) {
+			this.controlTimer++;
 		} else {
-			this.timer = 0;
+			this.controlTimer = 0;
 		}
 
 		// Case where the feedback provoked some new events, then first we
@@ -122,36 +154,61 @@ public class JavaSolver implements Solver {
 			this.nextEvents.clear();
 		} else {
 			// Runtime evaluation of the dynamic state of the system... manually
-			if (currentState.getName().equals("initControl")) {
-				if (this.timer == guard_initControl_to_day.getAfterDuration()) {
-					addEvent(res, currentState, "onLeave");
+			if (controlCurrentState.getName().equals("initControl")) {
+				if (this.controlTimer == guard_initControl_to_day
+						.getAfterDuration()) {
+					addEvent(res, controlCurrentState, "onLeave");
 					addEvent(res, initControl_to_day, "fire");
 					addEvent(res, initControl_to_day.getTarget(), "onEnter");
-					this.timer = 0;
+					this.controlTimer = 0;
 				} else {
 					// Wait
 				}
-			} else if (currentState.getName().equals("Day")) {
-				if (this.timer == guard_day_to_day.getAfterDuration()) {
-					addEvent(res, currentState, "onLeave");
+			} else if (controlCurrentState.getName().equals("Day")) {
+				if (this.controlTimer == guard_day_to_day.getAfterDuration()) {
+					addEvent(res, controlCurrentState, "onLeave");
 					addEvent(res, day_to_day, "fire");
 					addEvent(res, day_to_day.getTarget(), "onEnter");
-					this.timer = 0;
+					this.controlTimer = 0;
 				} else {
 					addEvent(res, guard_day_to_night, "evaluate");
 
 				}
-			} else if (currentState.getName().equals("Night")) {
-				if (this.timer == guard_night_to_night.getAfterDuration()) {
-					addEvent(res, currentState, "onLeave");
+			} else if (controlCurrentState.getName().equals("Night")) {
+				if (this.controlTimer == guard_night_to_night
+						.getAfterDuration()) {
+					addEvent(res, controlCurrentState, "onLeave");
 					addEvent(res, night_to_night, "fire");
 					addEvent(res, night_to_night.getTarget(), "onEnter");
-					this.timer = 0;
+					this.controlTimer = 0;
 				} else {
 					addEvent(res, guard_night_to_day, "evaluate");
 				}
 			}
+
+			if (semaphoreCurrentState.getName().equals("initSema0")) {
+				if (this.semaphoreTimer == guard_initSemaphore_to_red
+						.getAfterDuration()) {
+					addEvent(res, semaphoreCurrentState, "onLeave");
+					addEvent(res, initSemaphore_to_red, "fire");
+					addEvent(res, initSemaphore_to_red.getTarget(), "onEnter");
+				} else {
+					// Wait
+				}
+			} else if (semaphoreCurrentState.getName().equals("Red0")) {
+				if (this.semaphoreTimer == guard_red_to_green
+						.getAfterDuration()) {
+					addEvent(res, semaphoreCurrentState, "onLeave");
+					addEvent(res, red_to_green, "fire");
+					addEvent(res, red_to_green.getTarget(), "onEnter");
+				} else {
+					// Wait
+				}
+			} else if (semaphoreCurrentState.getName().equals("Green0")) {
+				// if(guard_green_to_red.)
+			}
 		}
+
 		return res;
 	}
 
@@ -163,6 +220,8 @@ public class JavaSolver implements Solver {
 					createEventOccurrenceFromConstraint(newConstraint));
 		}
 		this.forbiddenEvents.clear();
+		Activator.getMessagingSystem().debug(
+				"New list of events : " + res.toString(), Activator.PLUGIN_ID);
 	}
 
 	private EventOccurrence createEventOccurrenceFromConstraint(

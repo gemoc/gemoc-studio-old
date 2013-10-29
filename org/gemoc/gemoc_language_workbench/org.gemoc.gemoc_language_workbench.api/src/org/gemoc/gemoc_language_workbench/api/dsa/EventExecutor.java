@@ -1,28 +1,28 @@
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 /**
- * An Executor is responsible for executing the Domain-Specific Action(s)
+ * An EventExecutor is responsible for executing the Domain-Specific Action(s)
  * referenced by Domain-Specific Event(s). In particular, it is responsible for
- * identifying the Object and Method required to actually execute the Domain
- * Specific Action only thanks to their respective fully qualified name.
+ * identifying the Object and Method referenced by the Domain-Specific Action(s)
+ * in the bytecode.
  * 
  * @author flatombe
  */
-public interface Executor {
+public interface EventExecutor {
 	/**
 	 * Executes the Domain-Specific Action.
 	 * 
-	 * @param dsa
-	 * @return the result of the Domain-Specific Action wrapped in an
-	 *         appropriate FeedbackData object.
+	 * @param msa
+	 * @return
 	 */
-	public FeedbackData execute(DomainSpecificAction dsa);
+	public FeedbackData execute(ModelSpecificAction msa);
 
 	/**
 	 * Executes the Domain-Specific Action(s) referenced by the given
@@ -31,13 +31,13 @@ public interface Executor {
 	 * TODO : What happens when a DSE refers to several DSAs ?
 	 * 
 	 * @param dse
-	 * @return the result(s) of the Domain-Specific Action(s) wrapped in an
-	 *         appropriate FeedbackData object.
+	 * @return the results of the Domain-Specific Actions wrapped in appropriate
+	 *         FeedbackData objects.
 	 */
-	public FeedbackData execute(DomainSpecificEvent dse);
+	public List<FeedbackData> execute(ModelSpecificEvent dse);
 
 	/**
-	 * An Executor needs to have a model against which it will look for the
+	 * An EventExecutor needs to have a model against which it will look for the
 	 * actual object(s) and operation(s) designated by the Domain Specific
 	 * Action(s) to execute.
 	 * 

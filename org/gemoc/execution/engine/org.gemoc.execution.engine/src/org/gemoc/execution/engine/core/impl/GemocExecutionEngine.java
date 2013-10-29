@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.api_standard_implementations.dsa.EmfAction;
-import org.gemoc.execution.engine.api_standard_implementations.dse.EclEvent;
+import org.gemoc.execution.engine.api_standard_implementations.dsa.ModelAction;
+import org.gemoc.execution.engine.api_standard_implementations.dse.ModelEvent;
 import org.gemoc.execution.engine.commons.dsa.sentinels.EmfBytecodeSentinel;
 import org.gemoc.execution.engine.core.BasicExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -36,10 +36,13 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 	public GemocExecutionEngine(LanguageInitializer languageInitializer,
 			ModelLoader modelLoader, Resource domainSpecificEventsResource,
 			ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
-			Executor executor, FeedbackPolicy feedbackPolicy)
+			EventExecutor executor, FeedbackPolicy feedbackPolicy)
 			throws CoreException {
 		super(languageInitializer, modelLoader, domainSpecificEventsResource,
 				modelOfExecutionBuilder, solver, executor, feedbackPolicy);
+
+		// TODO : parse DSE file to fill in the DSE/DSA information read
+
 		Activator.getMessagingSystem().info(
 				"*** Engine construction done. ***", Activator.PLUGIN_ID);
 	}
@@ -63,8 +66,10 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		Resource modelOfExecution = this.modelOfExecutionBuilder.build(
 				this.domainSpecificEventsResource, this.modelResource);
 
-		//String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";
+		// String modelOfExecutionFilePath =
+		// "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";
 		String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
+
 		URI modelOfExecutionURI = URI.createPlatformResourceURI(
 				modelOfExecutionFilePath, true);
 		// URI modelOfExecutionURI = modelOfExecution.getURI();
@@ -76,13 +81,13 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 	}
 
 	@Override
-	protected List<DomainSpecificEvent> match(LogicalStep step) {
+	protected List<ModelSpecificEvent> match(LogicalStep step) {
 		Activator.getMessagingSystem().debug(
 				"Matching the given step : " + step.toString()
 						+ " containing: \n"
 						+ step.getEventOccurrences().toString(),
 				Activator.PLUGIN_ID);
-		List<DomainSpecificEvent> res = new ArrayList<DomainSpecificEvent>();
+		List<ModelSpecificEvent> res = new ArrayList<ModelSpecificEvent>();
 		for (EventOccurrence eventOccurrence : step.getEventOccurrences()) {
 			if (eventOccurrence.getFState() == FiredStateKind.TICK) {
 				Activator.getMessagingSystem().debug(
@@ -105,9 +110,10 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 						Activator.getMessagingSystem().debug(
 								"Linked to the EOperation: " + operation,
 								Activator.PLUGIN_ID);
-						DomainSpecificEvent dse = new EclEvent("dseNamesNotUsedYet", new EmfAction(
-								target, operation));
-						res.add(dse);
+						ModelSpecificEvent mse = new ModelEvent(
+								"dseNamesNotUsedYet", new ModelAction(target,
+										operation, null), null);
+						res.add(mse);
 					} catch (ClassCastException e) {
 						Activator.getMessagingSystem().warn(
 								"... but not linked to an EOperation.",

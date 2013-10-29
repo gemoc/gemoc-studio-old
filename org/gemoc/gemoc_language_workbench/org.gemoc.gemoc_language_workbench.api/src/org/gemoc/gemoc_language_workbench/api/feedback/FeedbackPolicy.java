@@ -1,9 +1,10 @@
 package org.gemoc.gemoc_language_workbench.api.feedback;
 
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 /**
+ * TODO : instead of doing it in Java, create a DSL for this.
+ * 
  * A FeedbackPolicy is in charge of interpreting some FeedbackData in order to
  * call correctly the API of the solver.
  * 
@@ -17,5 +18,5 @@ public interface FeedbackPolicy {
 	 * @param feedback
 	 * @param solver
 	 */
-	public void processFeedback(FeedbackData feedback, DomainSpecificEvent causalEvent, Solver solver);
+	public void processFeedback(FeedbackData feedback, Solver solver);
 }

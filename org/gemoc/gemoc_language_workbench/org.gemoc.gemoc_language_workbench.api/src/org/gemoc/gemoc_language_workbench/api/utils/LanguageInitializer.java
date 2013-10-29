@@ -1,7 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.utils;
 
 /**
- * Tool used to initialize the language used to write the Domain Specific
+ * Class used to initialize the language used to write the Domain Specific
  * Actions.
  * 
  * @author flatombe

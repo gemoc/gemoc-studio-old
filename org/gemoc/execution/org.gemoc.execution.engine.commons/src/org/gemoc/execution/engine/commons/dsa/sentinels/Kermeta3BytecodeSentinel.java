@@ -4,14 +4,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
 import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.BytecodeSentinel;
-import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
+import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
 
 public class Kermeta3BytecodeSentinel implements BytecodeSentinel {
 	protected ClassLoader classLoader;
@@ -24,11 +23,10 @@ public class Kermeta3BytecodeSentinel implements BytecodeSentinel {
 	}
 
 	@Override
-	public Method getMethodFromAction(DomainSpecificAction dsa) {
-		Object target = (Object) dsa.getTarget();
-		String methodName = dsa.getOperation().getName();
-		List<Object> parameters = new ArrayList<Object>((dsa.getParameters()));
-
+	public Method getMethodFromAction(ModelSpecificAction msa) {
+		Object target = (Object) msa.getTarget();
+		String methodName = msa.getOperation().getName();
+		List<Object> parameters = new ArrayList<Object>((msa.getParameters()));
 
 		Class<?> staticHelperClass = getStaticHelperClass(target);
 		if (staticHelperClass == null)
