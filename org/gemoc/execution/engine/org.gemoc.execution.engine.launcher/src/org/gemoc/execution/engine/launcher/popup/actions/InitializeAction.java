@@ -13,13 +13,13 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.gemoc.execution.engine.api_standard_implementations.moc.CcslSolver;
 import org.gemoc.execution.engine.api_standard_implementations.moc.EclToCcslTranslator;
 import org.gemoc.execution.engine.commons.dsa.executors.Kermeta3EventExecutor;
 import org.gemoc.execution.engine.commons.utils.TfsmModelLoader;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
+import org.gemoc.execution.javasolver.core.JavaSolver;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
@@ -78,7 +78,7 @@ public class InitializeAction implements IObjectActionDelegate {
 					(ModelLoader) new TfsmModelLoader(),
 					(Resource) eclResource,
 					(ModelOfExecutionBuilder) new EclToCcslTranslator(
-							eclResource), (Solver) new CcslSolver(),
+							eclResource), (Solver) new JavaSolver(),
 					(EventExecutor) new Kermeta3EventExecutor(Thread
 							.currentThread().getContextClassLoader(),
 							"org.gemoc.sample.tfsm.k3dsa"),

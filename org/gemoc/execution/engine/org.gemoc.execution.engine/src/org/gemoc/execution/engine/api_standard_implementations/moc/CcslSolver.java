@@ -42,16 +42,17 @@ public class CcslSolver implements Solver {
 	public void forbidEventOccurrenceReferencing(EObject target,
 			EOperation operation) {
 		// TODO: Julien complete the code so as to force the correct clocks.
-		this.solverWrapper.forceClockAbsence(HelperFactory
-				.createModelElementReference(target));
+		
+//		this.solverWrapper.forceClockAbsence(HelperFactory
+//				.createModelElementReference(target));
 	}
 
 	@Override
 	public void forceEventOccurrenceReferencing(EObject target,
 			EOperation operation) {
 		// TODO: Julien complete the code so as to force the correct clocks.
-		this.solverWrapper.forceClockPresence(HelperFactory
-				.createModelElementReference(target));
+		// this.solverWrapper.forceClockPresence(HelperFactory
+		// .createModelElementReference(target));
 	}
 
 	@Override
