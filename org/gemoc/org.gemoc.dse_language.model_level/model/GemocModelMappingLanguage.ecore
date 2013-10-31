@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gmml" nsURI="http://org.gemoc.dse_language.model_level/gmml"
+    nsPrefix="org.gemoc.dse_language.model_level.gmml">
+  <eClassifiers xsi:type="ecore:EClass" name="ModelSpecificEventFile">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="import" lowerBound="1"
+        eType="#//ImportStatement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
+        eType="#//ModelSpecificEvent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelSpecificEvent" eSuperTypes="../../org.gemoc.dse_language.language_level/model/GemocLanguageMappingLanguage.ecore#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reification" lowerBound="1"
+        eType="ecore:EClass ../../org.gemoc.dse_language.language_level/model/GemocLanguageMappingLanguage.ecore#//LanguageSpecificEvent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImportStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DomainSpecificEventFileURI"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

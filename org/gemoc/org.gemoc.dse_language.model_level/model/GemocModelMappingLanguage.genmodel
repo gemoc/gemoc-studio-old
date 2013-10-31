@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.dse_language.model_level/src" modelPluginID="org.gemoc.dse_language.model_level"
+    modelName="GemocModelMappingLanguage" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.gemoc.dse_language.language_level/model/GemocLanguageMappingLanguage.genmodel#//glml"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>GemocModelMappingLanguage.ecore</foreignModel>
+  <genPackages prefix="Gmml" disposableProviderFactory="true" ecorePackage="GemocModelMappingLanguage.ecore#/">
+    <genClasses ecoreClass="GemocModelMappingLanguage.ecore#//ModelSpecificEventFile">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocModelMappingLanguage.ecore#//ModelSpecificEventFile/import"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocModelMappingLanguage.ecore#//ModelSpecificEventFile/events"/>
+    </genClasses>
+    <genClasses ecoreClass="GemocModelMappingLanguage.ecore#//ModelSpecificEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocModelMappingLanguage.ecore#//ModelSpecificEvent/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocModelMappingLanguage.ecore#//ModelSpecificEvent/operations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GemocModelMappingLanguage.ecore#//ModelSpecificEvent/condition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocModelMappingLanguage.ecore#//ModelSpecificEvent/reification"/>
+    </genClasses>
+    <genClasses ecoreClass="GemocModelMappingLanguage.ecore#//ImportStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GemocModelMappingLanguage.ecore#//ImportStatement/DomainSpecificEventFileURI"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
