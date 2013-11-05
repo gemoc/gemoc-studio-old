@@ -76,22 +76,13 @@ public interface EmfExecutionConfigurationPackage extends EPackage
   int EMF_EXECUTION_CONFIGURATION__IMPORTS = 0;
 
   /**
-   * The feature id for the '<em><b>Jar Import Statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EMF_EXECUTION_CONFIGURATION__JAR_IMPORT_STATEMENT = 1;
-
-  /**
    * The feature id for the '<em><b>Forced Clock Mappings</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EMF_EXECUTION_CONFIGURATION__FORCED_CLOCK_MAPPINGS = 2;
+  int EMF_EXECUTION_CONFIGURATION__FORCED_CLOCK_MAPPINGS = 1;
 
   /**
    * The number of structural features of the '<em>EMF Execution Configuration</em>' class.
@@ -100,7 +91,7 @@ public interface EmfExecutionConfigurationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EMF_EXECUTION_CONFIGURATION_FEATURE_COUNT = 3;
+  int EMF_EXECUTION_CONFIGURATION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.impl.ForcedClockMappingImpl <em>Forced Clock Mapping</em>}' class.
@@ -216,17 +207,6 @@ public interface EmfExecutionConfigurationPackage extends EPackage
    * @generated
    */
   EReference getEMFExecutionConfiguration_Imports();
-
-  /**
-   * Returns the meta object for the containment reference '{@link fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EMFExecutionConfiguration#getJarImportStatement <em>Jar Import Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Jar Import Statement</em>'.
-   * @see fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EMFExecutionConfiguration#getJarImportStatement()
-   * @see #getEMFExecutionConfiguration()
-   * @generated
-   */
-  EReference getEMFExecutionConfiguration_JarImportStatement();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EMFExecutionConfiguration#getForcedClockMappings <em>Forced Clock Mappings</em>}'.
@@ -353,14 +333,6 @@ public interface EmfExecutionConfigurationPackage extends EPackage
      * @generated
      */
     EReference EMF_EXECUTION_CONFIGURATION__IMPORTS = eINSTANCE.getEMFExecutionConfiguration_Imports();
-
-    /**
-     * The meta object literal for the '<em><b>Jar Import Statement</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EMF_EXECUTION_CONFIGURATION__JAR_IMPORT_STATEMENT = eINSTANCE.getEMFExecutionConfiguration_JarImportStatement();
 
     /**
      * The meta object literal for the '<em><b>Forced Clock Mappings</b></em>' containment reference list feature.

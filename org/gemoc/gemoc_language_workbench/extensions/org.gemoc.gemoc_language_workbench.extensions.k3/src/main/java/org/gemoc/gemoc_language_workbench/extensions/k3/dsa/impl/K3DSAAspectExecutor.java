@@ -10,6 +10,7 @@ import java.util.Properties;
 import org.eclipse.emf.ecore.EObject;
 import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutorCommand;
+import org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorClassLoader;
 
 /**
  * Executor that is able to find the helper class associated with a given object
@@ -20,11 +21,13 @@ import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutorCommand;
  */
 public class K3DSAAspectExecutor implements IDSAExecutor {
 
-	protected ClassLoader classLoader;
+	//protected ClassLoader classLoader;
+	protected IK3DSAExecutorClassLoader k3DSAExecutorClassLoader;
 	protected String bundleSymbolicName;
 	
-	public K3DSAAspectExecutor(ClassLoader classLoader, String bundleSymbolicName) {
-		this.classLoader = classLoader;
+	public K3DSAAspectExecutor( IK3DSAExecutorClassLoader k3DSAExecutorClassLoader,  String bundleSymbolicName) {
+		//this.classLoader = classLoader;
+		this.k3DSAExecutorClassLoader = k3DSAExecutorClassLoader;
 		this.bundleSymbolicName = bundleSymbolicName;
 	}
 
@@ -61,27 +64,49 @@ public class K3DSAAspectExecutor implements IDSAExecutor {
 		Class<?> staticHelperClass = getStaticHelperClass(target);
 		if(staticHelperClass == null) return null; // no applicable static class found
 		
-		Class<?>[] parameterTypes = new Class<?>[parameters != null?parameters.size()+1:1];
-		ArrayList<Class<?>> parameterTypesList = new ArrayList<Class<?>>();
-		parameterTypesList.add(getInterfaceClassOfEObjectOrClass(target)); // add the target as first param
+		ArrayList<Object> staticParameters = new ArrayList<Object>();
+		staticParameters.add(target);
 		if(parameters != null){
-			for(Object param : parameters){
-				parameterTypesList.add(getInterfaceClassOfEObjectOrClass(param));
-			}
+			staticParameters.addAll(parameters);
 		}
-		parameterTypes = parameterTypesList.toArray(parameterTypes);
-		try {
-			Method method = staticHelperClass.getMethod(methodName, parameterTypes);
-			
-			return new K3DSAAspectExecutorCommand(staticHelperClass, target, method, parameters);
-		} catch (NoSuchMethodException e) {
-			return null;
-		} catch (SecurityException e) {
-			e.printStackTrace();
-			return null;
-		}
+		Method bestApplicableMethod = getFirstApplicableMethod(staticHelperClass, methodName, staticParameters);
+		if(bestApplicableMethod != null)
+			return new K3DSAAspectExecutorCommand(staticHelperClass,  bestApplicableMethod, staticParameters);
+		else return null;
 		
 	}
+	
+	/**
+	 * return the first compatible method, goes up the inheritance hierarchy
+	 * @param staticHelperClass
+	 * @param methodName
+	 * @param parameters
+	 * @return
+	 */
+	protected Method getFirstApplicableMethod(Class<?> staticHelperClass, String methodName, ArrayList<Object> parameters){
+		
+		Method[] methods = staticHelperClass.getDeclaredMethods();
+		for (Method method : methods) {
+			Class<?>[] evaluatedMethodParamTypes = method.getParameterTypes();
+			if(method.getName().equals(methodName) && evaluatedMethodParamTypes.length == parameters.size()){
+				boolean isAllParamCompatible = true;
+				for (int i = 0; i < evaluatedMethodParamTypes.length; i++) {
+					if(!evaluatedMethodParamTypes[i].isInstance(parameters.get(i))){
+						isAllParamCompatible = false;
+						break;
+					}
+				}
+				if(isAllParamCompatible){
+					return method;
+				}				
+			}
+		}
+		// tries going in the inheritance hierarchy
+		Class<?> superClass = staticHelperClass.getSuperclass();
+		if(superClass != null) return getFirstApplicableMethod(superClass, methodName, parameters);
+		else return null;
+	}
+	
 	
 	/** search static class by name  (future version should use a map of available aspects, and deals with it as a list of applicable static classes)
 	 *
@@ -92,7 +117,7 @@ public class K3DSAAspectExecutor implements IDSAExecutor {
 				
 		String searchedPropertyFileName = "/META-INF/xtend-gen/"+bundleSymbolicName+".k3_aspect_mapping.properties";
 		Properties properties = new Properties();
-		InputStream inputStream =classLoader.getResourceAsStream(searchedPropertyFileName);
+		InputStream inputStream =k3DSAExecutorClassLoader.getResourceAsStream(searchedPropertyFileName);
 		if(inputStream == null){
 			try {
 				inputStream = org.eclipse.core.runtime.Platform.getBundle(bundleSymbolicName).getEntry(searchedPropertyFileName).openStream();
@@ -117,8 +142,9 @@ public class K3DSAAspectExecutor implements IDSAExecutor {
 			
 		}
 		
-		try {
-			return Class.forName(possibleStaticClassName, true, classLoader);
+		try { //Class.forName(possibleStaticClassName)
+			// Class.forName(possibleStaticClassName, true, classLoader);
+			return k3DSAExecutorClassLoader.getClassForName(possibleStaticClassName); 
 		} catch (ClassNotFoundException e) {}
 		return null;
 	}
@@ -161,16 +187,13 @@ public class K3DSAAspectExecutor implements IDSAExecutor {
 
 		protected Class<?> staticHelperClass;
 		protected Method method;
-		protected ArrayList<Object> staticParameters = new ArrayList<Object>();
+		protected ArrayList<Object> staticParameters;
 		
-		public K3DSAAspectExecutorCommand(Class<?> staticHelperClass, Object target, Method method,
-				ArrayList<Object> parameters) {
+		public K3DSAAspectExecutorCommand(Class<?> staticHelperClass,  Method method,
+				ArrayList<Object> staticParameters) {
 			this.staticHelperClass = staticHelperClass;
 			this.method = method;
-			this.staticParameters.add(target);
-			if(parameters != null){
-				this.staticParameters.addAll(parameters);
-			}
+			this.staticParameters = staticParameters;
 		}
 
 		@Override

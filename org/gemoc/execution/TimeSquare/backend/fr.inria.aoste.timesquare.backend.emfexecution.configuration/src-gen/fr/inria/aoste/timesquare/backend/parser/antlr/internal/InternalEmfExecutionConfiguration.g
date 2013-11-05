@@ -104,34 +104,16 @@ ruleEMFExecutionConfiguration returns [EObject current=null]
 )+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementJarImportStatementParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_1_0()); 
 	    }
-		lv_jarImportStatement_1_0=ruleJarImportStatement		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getEMFExecutionConfigurationRule());
-	        }
-       		set(
-       			$current, 
-       			"jarImportStatement",
-        		lv_jarImportStatement_1_0, 
-        		"JarImportStatement");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_2_0()); 
-	    }
-		lv_forcedClockMappings_2_0=ruleForcedClockMapping		{
+		lv_forcedClockMappings_1_0=ruleForcedClockMapping		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getEMFExecutionConfigurationRule());
 	        }
        		add(
        			$current, 
        			"forcedClockMappings",
-        		lv_forcedClockMappings_2_0, 
+        		lv_forcedClockMappings_1_0, 
         		"ForcedClockMapping");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -265,51 +247,6 @@ ruleImportStatement returns [EObject current=null]
 ;
 
 
-
-
-
-// Entry rule entryRuleJarImportStatement
-entryRuleJarImportStatement returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getJarImportStatementRule()); }
-	 iv_ruleJarImportStatement=ruleJarImportStatement 
-	 { $current=$iv_ruleJarImportStatement.current; } 
-	 EOF 
-;
-
-// Rule JarImportStatement
-ruleJarImportStatement returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='importJar' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getJarImportStatementAccess().getImportJarKeyword_0());
-    }
-(
-(
-		lv_pathToJar_1_0=RULE_STRING
-		{
-			newLeafNode(lv_pathToJar_1_0, grammarAccess.getJarImportStatementAccess().getPathToJarSTRINGTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getJarImportStatementRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"pathToJar",
-        		lv_pathToJar_1_0, 
-        		"STRING");
-	    }
-
-)
-)	otherlv_2=';' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getJarImportStatementAccess().getSemicolonKeyword_2());
-    }
-)
-;
 
 
 

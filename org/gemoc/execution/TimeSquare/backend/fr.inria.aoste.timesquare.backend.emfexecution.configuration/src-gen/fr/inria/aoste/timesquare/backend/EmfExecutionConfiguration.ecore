@@ -5,8 +5,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="EMFExecutionConfiguration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//ImportStatement" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jarImportStatement" eType="#//JarImportStatement"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="forcedClockMappings" upperBound="-1"
         eType="#//ForcedClockMapping" containment="true"/>
   </eClassifiers>

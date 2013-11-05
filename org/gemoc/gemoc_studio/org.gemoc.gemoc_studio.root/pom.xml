@@ -81,6 +81,12 @@
             <layout>p2</layout>
             <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_modeling_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_modeling_workbench/org.gemoc.gemoc_modeling_workbench.p2updatesite/target/repository/</url>
         </repository>
+        
+        <repository>
+        	<id>gemoc_timesquare_backend-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.timesquare.facilities.root/lastSuccessfulBuild/artifact/org/gemoc/execution/TimeSquare/facilities/org.gemoc.execution.timesquare.facilities.p2updatesite/target/repository/</url>
+        </repository>
         <repository>
             <id>timesquare ECL</id>
             <layout>p2</layout>

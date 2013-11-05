@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EMFExecutionConfiguration#getImports <em>Imports</em>}</li>
- *   <li>{@link fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EMFExecutionConfiguration#getJarImportStatement <em>Jar Import Statement</em>}</li>
  *   <li>{@link fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EMFExecutionConfiguration#getForcedClockMappings <em>Forced Clock Mappings</em>}</li>
  * </ul>
  * </p>
@@ -41,32 +40,6 @@ public interface EMFExecutionConfiguration extends EObject
    * @generated
    */
   EList<ImportStatement> getImports();
-
-  /**
-   * Returns the value of the '<em><b>Jar Import Statement</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Jar Import Statement</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Jar Import Statement</em>' containment reference.
-   * @see #setJarImportStatement(JarImportStatement)
-   * @see fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EmfExecutionConfigurationPackage#getEMFExecutionConfiguration_JarImportStatement()
-   * @model containment="true"
-   * @generated
-   */
-  JarImportStatement getJarImportStatement();
-
-  /**
-   * Sets the value of the '{@link fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EMFExecutionConfiguration#getJarImportStatement <em>Jar Import Statement</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Jar Import Statement</em>' containment reference.
-   * @see #getJarImportStatement()
-   * @generated
-   */
-  void setJarImportStatement(JarImportStatement value);
 
   /**
    * Returns the value of the '<em><b>Forced Clock Mappings</b></em>' containment reference list.

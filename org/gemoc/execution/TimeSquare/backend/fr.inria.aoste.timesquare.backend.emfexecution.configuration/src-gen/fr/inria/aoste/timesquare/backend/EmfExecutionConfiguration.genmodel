@@ -7,12 +7,11 @@
     modelName="EmfExecutionConfiguration" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="fr.inria.aoste.timesquare.backend.emfexecution.configuration.edit"
     editorPluginID="fr.inria.aoste.timesquare.backend.emfexecution.configuration.editor"
-    runtimeVersion="2.8" usedGenPackages="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel">
+    runtimeVersion="2.9" usedGenPackages="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel">
   <genPackages prefix="EmfExecutionConfiguration" basePackage="fr.inria.aoste.timesquare.backend"
       disposableProviderFactory="true" ecorePackage="EmfExecutionConfiguration.ecore#/">
     <genClasses ecoreClass="EmfExecutionConfiguration.ecore#//EMFExecutionConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfExecutionConfiguration.ecore#//EMFExecutionConfiguration/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfExecutionConfiguration.ecore#//EMFExecutionConfiguration/jarImportStatement"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfExecutionConfiguration.ecore#//EMFExecutionConfiguration/forcedClockMappings"/>
     </genClasses>
     <genClasses ecoreClass="EmfExecutionConfiguration.ecore#//ForcedClockMapping">

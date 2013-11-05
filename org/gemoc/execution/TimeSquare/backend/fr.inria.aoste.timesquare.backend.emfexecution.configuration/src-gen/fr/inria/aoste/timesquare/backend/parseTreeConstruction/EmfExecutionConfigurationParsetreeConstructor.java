@@ -6,14 +6,13 @@ package fr.inria.aoste.timesquare.backend.parseTreeConstruction;
 import org.eclipse.emf.ecore.*;
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parsetree.reconstr.IEObjectConsumer;
-import org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor;
 
 import fr.inria.aoste.timesquare.backend.services.EmfExecutionConfigurationGrammarAccess;
 
 import com.google.inject.Inject;
 
 @SuppressWarnings("all")
-public class EmfExecutionConfigurationParsetreeConstructor extends AbstractParseTreeConstructor {
+public class EmfExecutionConfigurationParsetreeConstructor extends org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor {
 		
 	@Inject
 	private EmfExecutionConfigurationGrammarAccess grammarAccess;
@@ -44,11 +43,13 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule EMFExecutionConfiguration ****************
  *
  * EMFExecutionConfiguration:
- * 	imports+=ImportStatement+ jarImportStatement=JarImportStatement forcedClockMappings+=ForcedClockMapping*;
+ * 	imports+=ImportStatement+ //	jarImportStatement = JarImportStatement
+ * 	forcedClockMappings+=ForcedClockMapping*;
  *
  **/
 
-// imports+=ImportStatement+ jarImportStatement=JarImportStatement forcedClockMappings+=ForcedClockMapping*
+// imports+=ImportStatement+ //	jarImportStatement = JarImportStatement
+// forcedClockMappings+=ForcedClockMapping*
 protected class EMFExecutionConfiguration_Group extends GroupToken {
 	
 	public EMFExecutionConfiguration_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -63,8 +64,8 @@ protected class EMFExecutionConfiguration_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new EMFExecutionConfiguration_ForcedClockMappingsAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new EMFExecutionConfiguration_JarImportStatementAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new EMFExecutionConfiguration_ForcedClockMappingsAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new EMFExecutionConfiguration_ImportsAssignment_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -124,62 +125,16 @@ protected class EMFExecutionConfiguration_ImportsAssignment_0 extends Assignment
 	}	
 }
 
-// jarImportStatement=JarImportStatement
-protected class EMFExecutionConfiguration_JarImportStatementAssignment_1 extends AssignmentToken  {
-	
-	public EMFExecutionConfiguration_JarImportStatementAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementAssignment_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new JarImportStatement_Group(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("jarImportStatement",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("jarImportStatement");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getJarImportStatementRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementJarImportStatementParserRuleCall_1_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new EMFExecutionConfiguration_ImportsAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
 // forcedClockMappings+=ForcedClockMapping*
-protected class EMFExecutionConfiguration_ForcedClockMappingsAssignment_2 extends AssignmentToken  {
+protected class EMFExecutionConfiguration_ForcedClockMappingsAssignment_1 extends AssignmentToken  {
 	
-	public EMFExecutionConfiguration_ForcedClockMappingsAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public EMFExecutionConfiguration_ForcedClockMappingsAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_2();
+		return grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_1();
 	}
 
     @Override
@@ -198,7 +153,7 @@ protected class EMFExecutionConfiguration_ForcedClockMappingsAssignment_2 extend
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getForcedClockMappingRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_2_0(); 
+				element = grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -210,8 +165,8 @@ protected class EMFExecutionConfiguration_ForcedClockMappingsAssignment_2 extend
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new EMFExecutionConfiguration_ForcedClockMappingsAssignment_2(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new EMFExecutionConfiguration_JarImportStatementAssignment_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new EMFExecutionConfiguration_ForcedClockMappingsAssignment_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new EMFExecutionConfiguration_ImportsAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	

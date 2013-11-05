@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+
+
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.gemoc.gemoc_language_workbench.samples.category"
+            name="Gemoc language workbench examples"
+            parentCategory="org.eclipse.ui.Examples"/>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
+            class="org.gemoc.gemoc_language_workbench.sample.deployer.wizards.TFSMExampleWizard"
+            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            icon="icons/IconeGemocLanguage-16.png"
+            id="org.gemoc.gemoc_language_workbench.sample.deployer.tfsm.wizard"
+            name="Gemoc TFSM Language example"
+            preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling,fr.obeo.dsl.viewpoint.ui.tools.perspective.design">
+         <description>
+            T⁮his set of projects feature a simple Timed finite state machine language which is made executable using Gemoc.
+         </description>
+      </wizard>      
+   </extension>
+ 
+</plugin>
