@@ -10,7 +10,7 @@ import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
+import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -47,7 +47,7 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 		LanguageInitializer languageInitializer = null;
 		ModelLoader modelLoader = null;
 		Solver solver = null;
-		Executor executor = null;
+		EventExecutor executor = null;
 		FeedbackPolicy feedbackPolicy = null;
 		Resource domainSpecificEventsResource = null;
 		ModelOfExecutionBuilder modelOfExecutionBuilder = null;
@@ -74,8 +74,8 @@ public class GemocReflectiveModelLauncher implements ILaunchConfigurationDelegat
 
 			final Object oexecutor = confElement
 					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT);
-			if (oexecutor instanceof Executor) {
-				executor = (Executor) oexecutor;
+			if (oexecutor instanceof EventExecutor) {
+				executor = (EventExecutor) oexecutor;
 			}
 
 			final Object oFeedbackPolicy = confElement
