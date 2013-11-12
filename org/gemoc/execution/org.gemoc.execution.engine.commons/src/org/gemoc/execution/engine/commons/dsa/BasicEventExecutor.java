@@ -13,10 +13,10 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 public abstract class BasicEventExecutor implements EventExecutor {
 	protected Resource modelResource = null;
-	protected Collection<BytecodeSentinel> sentinels = null;
+	
 
 	public BasicEventExecutor() {
-		this.sentinels = new ArrayList<BytecodeSentinel>();
+		
 	}
 
 	@Override
@@ -46,12 +46,12 @@ public abstract class BasicEventExecutor implements EventExecutor {
 
 	@Override
 	public Collection<BytecodeSentinel> getSentinels() {
-		return this.sentinels;
+		return null;
 	}
 
 	@Override
 	public void addSentinel(BytecodeSentinel sentinel) {
-		this.sentinels.add(sentinel);
+		
 	}
 
 }

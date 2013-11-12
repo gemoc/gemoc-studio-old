@@ -29,7 +29,6 @@ public class Activator extends AbstractUIPlugin {
 		return messagingSystem;
 	}
 
-
 	/**
 	 * The constructor
 	 */

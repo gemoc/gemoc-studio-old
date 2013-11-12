@@ -3,8 +3,7 @@ package org.gemoc.gemoc_language_workbench.api.dsa;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutorCommand;
+import org.gemoc.gemoc_language_workbench.api.Activator;
 
 /**
  * composes several executors in order to find out which can execute the method
@@ -22,15 +21,28 @@ public class ChainedDSAExecutor implements IDSAExecutor{
 		if(command != null){
 			try {
 				return command.execute();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				String errorMessage = e.getClass().getSimpleName()
+						+ " when trying to execute a method";
+				Activator.getMessagingSystem().error(errorMessage,
+						Activator.PLUGIN_ID);
+				Activator.error(errorMessage, e);
+				return null;
+			} catch (IllegalAccessException e) {
+				String errorMessage = e.getClass().getSimpleName()
+						+ " when trying to execute a method";
+				Activator.getMessagingSystem().error(errorMessage,
+						Activator.PLUGIN_ID);
+				Activator.error(errorMessage, e);
+				return null;
 			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				String errorMessage = e.getClass().getSimpleName()
+						+ " when trying to execute a method";
+				Activator.getMessagingSystem().error(errorMessage,
+						Activator.PLUGIN_ID);
+				Activator.error(errorMessage, e);
+				Activator.error("Nested Exception", e.getCause());
+				return null;
 			}
 		}
 		// TODO should return the fact that it cannot be executed via an exception (NoSuchMethodException ? or custom ?)
