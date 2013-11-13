@@ -66,13 +66,13 @@
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="executor_class" type="string">
+         <attribute name="executor_class" type="string" use="required">
             <annotation>
                <documentation>
                   Class offering execution API on the XDSML
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.Executor"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -86,11 +86,14 @@
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="eclFilePath" type="string">
+         <attribute name="domainSpecificEventsResource" type="string">
             <annotation>
                <documentation>
-                  Path to the ECL file. (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
+                  Resource of the DSE Mapping file (e.g. ECL file). (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
                </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
+               </appinfo>
             </annotation>
          </attribute>
          <attribute name="xdsmlFilePath" type="string" use="required">
@@ -100,14 +103,22 @@
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="toCCSLQVTOFilePath" type="string">
+         <attribute name="modelOfExecutionBuilder" type="string">
             <annotation>
                <documentation>
-                  Path to the ECL to CCSL qvto transformation file. (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
+                  An implementation of ModelOfExecutionBuilder. Responsible for instanciating the DSE/MoC to the model used.
+
+
+--
+FL : Deprecated
+Path to the ECL to CCSL qvto transformation file. (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
                </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder"/>
+               </appinfo>
             </annotation>
          </attribute>
-         <attribute name="solver_class" type="string">
+         <attribute name="solver_class" type="string" use="required">
             <annotation>
                <documentation>
                   An implementation of the Solver.

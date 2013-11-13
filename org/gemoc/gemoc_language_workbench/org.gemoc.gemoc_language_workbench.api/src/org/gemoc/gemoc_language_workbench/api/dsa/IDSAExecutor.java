@@ -11,18 +11,18 @@ import java.util.ArrayList;
  * 
  */
 public interface IDSAExecutor {
-	
-	public Object execute(Object target, String methodName, ArrayList<Object> parameters);
-	
-	/**
-	 * return weither the current executor can execute the method
-	 * It is usefull in order to implement a chain of responsability of executors using fall back
-	 * @param target
-	 * @param methodName
-	 * @param parameters
-	 * @return
-	 */
-	public IDSAExecutorCommand getCommand(Object target, String methodName, ArrayList<Object> parameters);
 
-	
+    public Object execute(Object target, String methodName, ArrayList<Object> parameters);
+
+    /**
+     * return weither the current executor can execute the method
+     * It is usefull in order to implement a chain of responsability of executors using fall back
+     * @param target
+     * @param methodName
+     * @param parameters
+     * @return
+     */
+    public IDSAExecutorCommand getCommand(Object target, String methodName, ArrayList<Object> parameters);
+
+
 }

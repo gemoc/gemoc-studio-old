@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
+import org.gemoc.gemoc_language_workbench.extensions.k3.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutorCommand;
 import org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorClassLoader;
@@ -202,7 +203,8 @@ public class K3DSAAspectExecutor implements IDSAExecutor {
 			if(staticParameters != null){
 				args =staticParameters.toArray();
 			}
-			return method.invoke(null, args); 
+			Object res = method.invoke(null, args);
+			return res; 
 		}
 		
 	}

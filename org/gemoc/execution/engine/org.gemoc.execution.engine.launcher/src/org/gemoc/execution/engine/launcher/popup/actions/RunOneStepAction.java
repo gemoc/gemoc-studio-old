@@ -25,7 +25,6 @@ public class RunOneStepAction implements IObjectActionDelegate {
      */
     public RunOneStepAction() {
         super();
-        this.engine = Activator.engine;
     }
 
     // private MessageConsole findConsole(String name) {
@@ -52,6 +51,7 @@ public class RunOneStepAction implements IObjectActionDelegate {
      * @see IActionDelegate#run(IAction)
      */
     public void run(IAction action) {
+        this.engine = Activator.engine;
         String information = "";
 
         if (engine == null) {

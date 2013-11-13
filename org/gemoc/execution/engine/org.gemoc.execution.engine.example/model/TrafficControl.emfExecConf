@@ -1,0 +1,5 @@
+import './TrafficControl_MoCC-rendevous.extendedCCSL';
+	importJar "file:///home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/execution/engine/org.gemoc.execution.engine.example/my_jars/dsa/org.gemoc.sample.i3s.fsm.dsa-0.0.1-SNAPSHOT.jar";
+
+When guardIsDay_evaluate DSA returns true  avoid guardIsDay_evaluatedFalse;
+When GuardIsNight_evaluate DSA returns true  avoid GuardIsNight_evaluatedFalse;

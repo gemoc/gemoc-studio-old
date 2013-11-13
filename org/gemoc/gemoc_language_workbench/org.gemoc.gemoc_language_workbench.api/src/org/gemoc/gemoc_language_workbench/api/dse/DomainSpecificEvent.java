@@ -1,24 +1,28 @@
 package org.gemoc.gemoc_language_workbench.api.dse;
 
+import java.util.List;
+
 import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
 
 /**
- * For now, DomainSpecificEvents are wrappers for DomainSpecificActions built
- * thanks to the information contained by the CcslSolver's steps.
- * 
- * TODO: When we change ECL, then the Domain Specific Events should come from
- * analyzing the new file containing the DSE informations.
+ * Language-level structure for the mapping between Domain-Specific Actions and
+ * MoC relations.
  * 
  * @author flatombe
+ * 
  */
 public interface DomainSpecificEvent {
 	/**
-	 * Returns the DomainSpecificAction contained by this event.
 	 * 
-	 * TODO: Needs to be changed when we authorize a DSE to refer to multiple
-	 * DSAs.
-	 * 
-	 * @return the DomainSpecificAction contained by this event.
+	 * @return the name of this Domain Specific Event
 	 */
-	public DomainSpecificAction getAction();
+	public String getName();
+
+	/**
+	 * 
+	 * @return the list of Domain Specific Actions triggered by this event.
+	 */
+	public List<DomainSpecificAction> getActions();
+
+	// TODO add constraint relations
 }

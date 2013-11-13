@@ -22,25 +22,16 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.ecl.ecltoqvto;bundle-version="1.0.0",
  org.eclipse.acceleo.engine;bundle-version="3.3.0",
  fr.inria.aoste.timesquare.ccslkernel.parser.xtext,
- org.eclipse.gmf.runtime.emf.ui
+ org.gemoc.gemoc_language_workbench.api;bundle-version="0.1.0",
+ fr.inria.diverse.k3.eclipse.language.ui;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: k2.standard,
  org.eclipse.core.filesystem,
- org.k3.language.ui.wizards,
- org.k3.language.ui.wizards.pages,
  org.kermeta.kp.wizard.eclipse,
  org.kermeta.kp.wizard.eclipse.wizards
 Bundle-ClassPath: lib/jaxen-1.1.6.jar,
  lib/jdom-2.0.5.jar,
  lib/xercesImpl.jar,
  .
-Export-Package: org.gemoc.gemoc_language_workbench.ui,
- org.gemoc.gemoc_language_workbench.ui.activeFile,
- org.gemoc.gemoc_language_workbench.ui.builder,
- org.gemoc.gemoc_language_workbench.ui.builder.pde,
- org.gemoc.gemoc_language_workbench.ui.commands,
- org.gemoc.gemoc_language_workbench.ui.listeners,
- org.gemoc.gemoc_language_workbench.ui.wizards,
- org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA,
- org.gemoc.gemoc_language_workbench.ui.wizards.pages
+Export-Package: org.gemoc.gemoc_language_workbench.ui

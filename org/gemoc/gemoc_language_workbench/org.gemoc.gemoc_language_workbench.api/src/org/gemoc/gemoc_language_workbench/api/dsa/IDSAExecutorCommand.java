@@ -9,6 +9,6 @@ import java.lang.reflect.InvocationTargetException;
  */
 public interface IDSAExecutorCommand {
 
-	public Object execute() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException;
+    public Object execute() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException;
 
 }

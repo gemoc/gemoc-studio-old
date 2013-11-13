@@ -23,5 +23,4 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.gemoc_modeling_workbench.ui,
  org.gemoc.gemoc_modeling_workbench.ui.builder,
  org.gemoc.gemoc_modeling_workbench.ui.launcher,
- org.gemoc.gemoc_modeling_workbench.ui.launcher.minitestengine,
  org.gemoc.gemoc_modeling_workbench.ui.wizards

@@ -1,6 +1,6 @@
 package org.gemoc.execution.engine.core;
 
-import org.gemoc.gemoc_language_workbench.api.dsa.Executor;
+import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
@@ -21,11 +21,10 @@ public interface ExecutionEngine {
 	 * loading the model and instantiating the Model of Computation to the
 	 * model.
 	 */
-	public void initialize(String modelURI, String dseFilePath);
+	public void initialize(String modelURI);
 
 	/**
-	 * Runs the engine indefinitely. Equivalent as running the engine -1 number
-	 * of steps.
+	 * Runs the engine indefinitely. Equivalent to calling run(-1).
 	 */
 	public void run();
 
@@ -37,7 +36,7 @@ public interface ExecutionEngine {
 	public void run(int numberOfSteps);
 
 	/**
-	 * Runs the engine for just one step.
+	 * Runs the engine for just one step. Equivalent to calling run(1).
 	 */
 	public void runOneStep();
 
@@ -46,7 +45,7 @@ public interface ExecutionEngine {
 	 * 
 	 * @return
 	 */
-	public Executor getExecutor();
+	public EventExecutor getExecutor();
 
 	/**
 	 * Returns the Solver used by the engine.
@@ -56,9 +55,7 @@ public interface ExecutionEngine {
 	public Solver getSolver();
 
 	/**
-	 * Returns the feedbackpolicy defined by the engine, parameterized by the
-	 * feedback data structure used to capture feedback information from the
-	 * execution of the Domain-Specific Actions.
+	 * Returns the FeedbackPolicy used by the engine.
 	 * 
 	 * @return
 	 */

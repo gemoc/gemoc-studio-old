@@ -5,42 +5,49 @@ package org.gemoc.gemoc_language_workbench.api.dsa;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.ETypeParameter;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
+
 /**
- * A DomainSpecificAction (DSA) captures references sufficient enough for the
- * Executor to compute the actual Object and Method that are concerned by this
- * action. For now we will use the qualified names of the target (object on
- * which to apply the method) and of the method (method to apply on the target)
- * to uniquely identify a Domain Specific Action.
+ * A Domain-Specific Action (DSA) is a language-level data structure
+ * representing a method call in EMF. It has enough information for a competent
+ * EventExecutor to compute the actual Object and Method which will serve during
+ * the invokation of the DSA.
  * 
  * @author flatombe
  * 
  */
 public interface DomainSpecificAction {
 	/**
-	 * Returns a fully qualified name of the method concerned by this DSA, name
-	 * which should be sufficient to retrieve the designed Method, EOperation or
-	 * whatever is need to actually be executed.
 	 * 
-	 * @return the fully qualified name of the method to execute.
+	 * @return the EOperation which corresponds to the method of this action.
 	 */
-	public String getMethodQualifiedName();
+	public EOperation getOperation();
 
 	/**
-	 * Returns a fully qualified name of the object target by this DSA, name
-	 * which should be sufficient to retrieve the Object, EObject or whatever
-	 * data structure used to represent the Domain Specific Concept on which the
-	 * DSA needs to be applied.
 	 * 
-	 * @return the fully qualified name of the target (Object on which the
-	 *         Domain Specific Action must be executed).
+	 * @return the target of this action, which is the EObject on which the
+	 *         operation must be called.
+	 * 
 	 */
-	public String getTargetQualifiedName();
+	public EClass getTargetClass();
 
 	/**
-	 * Returns the list of the fully qualified names of the parameters for this
-	 * action.
 	 * 
-	 * @return
+	 * @return a copy of the list of parameters for this action.
 	 */
-	public List<String> getParametersQualifiedNames();
+	public List<ETypeParameter> getParameterTypes();
+
+	/**
+	 * 
+	 * @return the Domain Specific Event that owns this DSA.
+	 */
+	public DomainSpecificEvent getOwningEvent();
+
+	/**
+	 * 
+	 */
+	public void setOwningEvent(DomainSpecificEvent event);
 }
