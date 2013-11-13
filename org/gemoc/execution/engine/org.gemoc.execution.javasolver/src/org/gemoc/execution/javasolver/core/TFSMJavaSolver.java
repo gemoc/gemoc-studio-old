@@ -7,9 +7,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.execution.engine.commons.utils.TfsmModelLoader;
 import org.gemoc.execution.javasolver.Activator;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.sample.tfsm.EvaluateGuard;
 import org.gemoc.sample.tfsm.EventGuard;
 import org.gemoc.sample.tfsm.FSMClock;
@@ -27,8 +27,16 @@ import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.TraceFactory;
 
-public class JavaSolver implements Solver {
 
+/**
+ * This is an hardcoded version of a solver for TFSM
+ *
+ */
+public class TFSMJavaSolver implements Solver {
+
+	
+	protected ModelLoader modelLoader = null;
+	
 	private Resource modelOfExecutionResource = null;
 	private Resource traceResource = null;
 	private TraceFactory myFactory = null;
@@ -42,7 +50,8 @@ public class JavaSolver implements Solver {
 	private List<MockEvent> nextEvents;
 	private List<MockEvent> forbiddenEvents;
 
-	public JavaSolver() {
+	public TFSMJavaSolver(ModelLoader modelLoader) {
+		this.modelLoader = modelLoader;
 		this.nextEvents = new ArrayList<MockEvent>();
 		this.forbiddenEvents = new ArrayList<MockEvent>();
 		this.myFactory = TraceFactory.eINSTANCE;
@@ -245,7 +254,7 @@ public class JavaSolver implements Solver {
 
 	@Override
 	public void setModelOfExecutionFile(URI modelOfExecutionURI) {
-		this.modelResource = new TfsmModelLoader()
+		this.modelResource = modelLoader
 				.loadModel("/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm");
 	}
 

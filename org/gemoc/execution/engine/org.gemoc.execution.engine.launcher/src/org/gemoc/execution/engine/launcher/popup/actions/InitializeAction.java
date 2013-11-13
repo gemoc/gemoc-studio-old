@@ -1,6 +1,8 @@
 package org.gemoc.execution.engine.launcher.popup.actions;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -15,12 +17,12 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.execution.engine.api_standard_implementations.moc.EclToCcslTranslator;
 import org.gemoc.execution.engine.commons.dsa.executors.Kermeta3EventExecutor;
-import org.gemoc.execution.engine.commons.utils.TfsmModelLoader;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.launcher.Activator;
-import org.gemoc.execution.javasolver.core.JavaSolver;
+import org.gemoc.execution.javasolver.core.TFSMJavaSolver;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -73,16 +75,53 @@ public class InitializeAction implements IObjectActionDelegate {
 				true);
 
 		try {
-			// Language-level initialization of the engine
-			this.engine = new GemocExecutionEngine((LanguageInitializer) null,
-					(ModelLoader) new TfsmModelLoader(),
-					(Resource) eclResource,
-					(ModelOfExecutionBuilder) new EclToCcslTranslator(
-							eclResource), (Solver) new JavaSolver(),
-					(EventExecutor) new Kermeta3EventExecutor(Thread
-							.currentThread().getContextClassLoader(),
-							"org.gemoc.sample.tfsm.k3dsa"),
-					(FeedbackPolicy) new TfsmFeedbackPolicy());
+			ModelLoader modelLoader = null;
+			LanguageInitializer languageInitializer = null;
+			IDSAExecutor languageDSAExecutor = null;
+			// retrieve the language extension point
+			IConfigurationElement confElement = null;
+			IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor("org.gemoc.gemoc_language_workbench.xdsml");
+			// retrieve the extension for the chosen language
+			for (int i = 0; i < confElements.length; i++) {
+				if(confElements[i].getAttribute("name").equals("tfsm")){
+					confElement =confElements[i];
+				}
+			}
+			// get the extension objects
+			if(confElement != null){
+				final Object omodelLoader = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
+				if(omodelLoader instanceof ModelLoader){
+					modelLoader = (ModelLoader) omodelLoader;
+				}
+				final Object oinitializer = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT);
+				if(oinitializer instanceof LanguageInitializer){
+					languageInitializer = (LanguageInitializer) oinitializer;
+				}
+
+				final Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT);
+				if(oexecutor instanceof IDSAExecutor){
+					languageDSAExecutor = (IDSAExecutor) oexecutor;
+				}
+				
+			}
+			if(modelLoader != null && languageDSAExecutor != null){
+				// Language-level initialization of the engine
+				this.engine = new GemocExecutionEngine((LanguageInitializer) null,
+						modelLoader,
+						(Resource) eclResource,
+						(ModelOfExecutionBuilder) new EclToCcslTranslator(
+								eclResource), (Solver) new TFSMJavaSolver(modelLoader),
+						(EventExecutor) new Kermeta3EventExecutor(Thread
+								.currentThread().getContextClassLoader(),
+								"org.gemoc.sample.tfsm.k3dsa", 
+								languageDSAExecutor),
+						(FeedbackPolicy) new TfsmFeedbackPolicy());
+			}
+			else {
+				Activator.error("Problem initializing GemocExecutionEngine, cannot find modelLoader or dsaExecutor", new Exception());
+			}
+			
+			
 
 			// Model-level initialization of the engine
 			this.engine.initialize(modelPath);

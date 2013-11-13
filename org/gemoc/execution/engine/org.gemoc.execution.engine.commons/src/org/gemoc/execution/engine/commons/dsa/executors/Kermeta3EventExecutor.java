@@ -10,15 +10,13 @@ import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
-import org.gemoc.sample.tfsm.xdsml.api.impl.TfsmDSAExecutor;
 
 public class Kermeta3EventExecutor extends BasicEventExecutor {
 
 	private IDSAExecutor dsaExecutor;
 
-	public Kermeta3EventExecutor(ClassLoader classLoader,
-			String bundleSymbolicName) {
-		this.dsaExecutor = new TfsmDSAExecutor();
+	public Kermeta3EventExecutor(ClassLoader classLoader, String bundleSymbolicName, IDSAExecutor dsaExecutor) {
+		this.dsaExecutor = dsaExecutor;
 	}
 
 	@Override
