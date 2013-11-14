@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
@@ -30,7 +29,7 @@ import fr.inria.aoste.trace.Reference;
  * @author flatombe
  * 
  */
-public class CcslSolver implements Solver {
+public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.Solver {
 
 	CCSLKernelSolverWrapper solverWrapper = null;
 	URI modelOfExecutionURI = null;
