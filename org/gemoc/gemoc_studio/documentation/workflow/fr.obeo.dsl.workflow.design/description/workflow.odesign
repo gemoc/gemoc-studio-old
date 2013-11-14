@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" name="workflow" version="6.7.0.201302071200">
+  <ownedViewpoints name="Workflow">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Workflow diagram" titleExpression="Gemoc_workflow" initialisation="true" showOnStartup="true" domainClass="workflow.Workflow">
+      <metamodel href="../../fr.obeo.dsl.workflow/model/workflow.ecore#/"/>
+      <layout xsi:type="description:CompositeLayout" direction="LeftToRight"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="WD_Step" domainClass="workflow.Step">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="6" workspacePath="/fr.obeo.dsl.workflow.design/icon/step.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="WD_Command" domainClass="workflow.Command">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" workspacePath="/fr.obeo.dsl.workflow.design/icon/command.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="WD_Transition" sourceMapping="//@ownedViewpoints[name='Workflow']/@ownedRepresentations[name='Workflow%20diagram']/@defaultLayer/@nodeMappings[name='WD_Step']" targetMapping="//@ownedViewpoints[name='Workflow']/@ownedRepresentations[name='Workflow%20diagram']/@defaultLayer/@nodeMappings[name='WD_Step']" targetFinderExpression="&lt;%next%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="WD_Execute" sourceMapping="//@ownedViewpoints[name='Workflow']/@ownedRepresentations[name='Workflow%20diagram']/@defaultLayer/@nodeMappings[name='WD_Step']" targetMapping="//@ownedViewpoints[name='Workflow']/@ownedRepresentations[name='Workflow%20diagram']/@defaultLayer/@nodeMappings[name='WD_Command']" targetFinderExpression="&lt;%commands%>">
+          <style lineStyle="dash" sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Step diagram" titleExpression="&lt;%name.replaceAll(&quot; &quot;, &quot;_&quot;)%>" initialisation="true" showOnStartup="true" domainClass="workflow.Step">
+      <layout xsi:type="description:CompositeLayout" direction="LeftToRight"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="SD_Artifact" semanticCandidatesExpression="&lt;%commands.artifacts%>" domainClass="workflow.Artifact">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" workspacePath="/fr.obeo.dsl.workflow.design/icon/artifact_add.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%type==&quot;update&quot;%>">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" workspacePath="/fr.obeo.dsl.workflow.design/icon/artifact_update.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <nodeMappings name="SD_Step" semanticCandidatesExpression="&lt;%self%>" domainClass="workflow.Step">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="6" workspacePath="/fr.obeo.dsl.workflow.design/icon/step.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="SD_Command" semanticCandidatesExpression="&lt;%commands%>" domainClass="workflow.Command">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" workspacePath="/fr.obeo.dsl.workflow.design/icon/command.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="SD_Output" sourceMapping="//@ownedViewpoints[name='Workflow']/@ownedRepresentations[name='Step%20diagram']/@defaultLayer/@nodeMappings[name='SD_Command']" targetMapping="//@ownedViewpoints[name='Workflow']/@ownedRepresentations[name='Step%20diagram']/@defaultLayer/@nodeMappings[name='SD_Artifact']" targetFinderExpression="&lt;%self%>" sourceFinderExpression="&lt;%eContainer()%>" domainClass="workflow.Artifact" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="SD_Execute" sourceMapping="//@ownedViewpoints[name='Workflow']/@ownedRepresentations[name='Step%20diagram']/@defaultLayer/@nodeMappings[name='SD_Step']" targetMapping="//@ownedViewpoints[name='Workflow']/@ownedRepresentations[name='Step%20diagram']/@defaultLayer/@nodeMappings[name='SD_Command']" targetFinderExpression="&lt;%commands%>">
+          <style lineStyle="dash" sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
