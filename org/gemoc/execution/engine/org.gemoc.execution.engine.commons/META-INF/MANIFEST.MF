@@ -7,10 +7,10 @@ Bundle-Activator: org.gemoc.execution.engine.commons.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;bundle-version="2.9.1",
- org.kermeta.utils.systemservices.api;bundle-version="2.1.1",
- org.kermeta.utils.systemservices.eclipse;bundle-version="2.1.1",
- org.gemoc.gemoc_language_workbench.api;bundle-version="0.1.0",
- org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0"
+ org.kermeta.utils.systemservices.api,
+ org.kermeta.utils.systemservices.eclipse,
+ org.gemoc.gemoc_language_workbench.api,
+ org.gemoc.gemoc_language_workbench.extensions.k3
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine.commons,
