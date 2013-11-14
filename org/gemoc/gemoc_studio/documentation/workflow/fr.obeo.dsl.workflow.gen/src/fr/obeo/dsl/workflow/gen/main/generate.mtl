@@ -1,0 +1,86 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/workflow')]
+
+
+[template public generateLatex(workflow : Workflow)]
+[comment @main/]
+[file ('gemoc-workflow.tex', false, 'UTF-8')]
+\documentclass{gemoc} %% no option needed, default is : 10pt, twoside, babel['['/] english[']'/] , graphicx
+\usepackage{color}
+\usepackage['['/]colorlinks=true[']'/]{hyperref}
+
+\task{x.x.x}
+\title{Gemoc XXX }
+\docnumber{Dx.x.x}
+\version{1.0}
+
+\companycopyright{Consortium GEMOC}  %% Appear in the foot page
+
+\begin{document}
+\maketitle
+
+%[protected ('revisions')]
+\begin{revisions}
+	\begin{revtable}
+		\dates{}{}{}{}{}
+		\writers{}{}{}{}{}
+		\approvers{}{}{}{}{}
+	\end{revtable}
+	\begin{revisionlabels}
+		\revlabel{}
+	\end{revisionlabels}
+\end{revisions}
+%[/protected]
+
+%[protected ('tableofauthors')]
+\begin{tableofauthors}
+	\leadauthor{Didier Vojtisek}{INRIA}
+	\contributor{$<$Name$>$}{$<$Organisation$>$}
+\end{tableofauthors}
+%[/protected]
+
+\tableofcontents
+\newpage
+
+\chapter{Gemoc language workbench workflow}
+[protected ('summary')]
+	TODO intro gemoc language workbench workflow
+[/protected]
+[comment]\begin{center}
+\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true[']'/]{../images/Gemoc_workflow.png}
+\end{center}[/comment]
+[for (step : Step | workflow.categories.steps)]
+\section{[step.name/]}
+[step.generate()/]
+[/for]
+[/file]
+[/template]
+
+[template private generate(step : Step)]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:[step.name.replaceAll(' ', '_').replaceAll('\'', '_')/]}
+%[protected (step.name)]
+%[/protected]
+%[protected (step.name+'Description')]
+%[/protected] 
+[comment]\begin{center}
+\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true[']'/]{../images/[step.name.replaceAll(' ', '_')/].png}
+\end{center}[/comment]
+
+[step.description/]
+[step.commands.generate()/]
+[/template]
+
+[template private generate(command : Command)]
+
+\subsection{[command.name/]}
+[command.description/]
+
+[command.artifacts.generate()/]
+[/template]
+
+[template private generate(artifact : Artifact)]
+
+\subsubsection{[artifact.name/]}
+[artifact.description/]
+[/template]
