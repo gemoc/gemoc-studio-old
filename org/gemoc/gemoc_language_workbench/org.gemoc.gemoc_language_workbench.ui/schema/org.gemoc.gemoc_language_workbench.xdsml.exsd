@@ -118,6 +118,13 @@ Path to the ECL to CCSL qvto transformation file. (Usually in a plugin, so it sh
                </appinfo>
             </annotation>
          </attribute>
+         <attribute name="toCCSLQVTOFilePath" type="string">
+            <annotation>
+               <documentation>
+                  Path to the ECL to CCSL qvto transformation file. (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
+               </documentation>
+            </annotation>
+         </attribute>
          <attribute name="solver_class" type="string" use="required">
             <annotation>
                <documentation>

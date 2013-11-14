@@ -661,6 +661,10 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint,
 				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_ATT, ecliFilePath.getLocationURI());
+		helper.updateXDSMLDefinitionAttributeInExtensionPoint(
+				gemocExtensionPoint,
+				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT,
+				qvtoFolder.getFullPath().toString()+"/"+qvtoFileName);
 		helper.saveDocument(pluginfile);
 
 	}
