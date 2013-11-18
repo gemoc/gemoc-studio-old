@@ -155,7 +155,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 	@Override
 	public void deathSemantic(SemanticHelper helper)
 			throws SolverException {
-		//TODO: take into account the killAction !
+		//TODO: take into account the final states... !
 	}
 
 	@Override
