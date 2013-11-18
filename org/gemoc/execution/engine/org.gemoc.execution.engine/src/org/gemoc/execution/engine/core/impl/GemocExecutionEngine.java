@@ -63,8 +63,8 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 
 		// TODO: do something with the DSE file and the model.
 		// Programatically generate the .extendedCCSL.
-		Resource modelOfExecution = this.modelOfExecutionBuilder.build(
-				this.domainSpecificEventsResource, this.modelResource);
+//		Resource modelOfExecution = this.modelOfExecutionBuilder.build(
+//				this.domainSpecificEventsResource, this.modelResource);
 
 		// String modelOfExecutionFilePath =
 		// "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";

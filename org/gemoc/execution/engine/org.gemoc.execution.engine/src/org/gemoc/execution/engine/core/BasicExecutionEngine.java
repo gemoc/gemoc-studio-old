@@ -65,28 +65,28 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 		// The engine needs AT LEAST a ModelOfExecutionBuilder, a
 		// domainSpecificEventsResource, a Solver and an
 		// Executor.
-		if (modelOfExecutionBuilder == null
-				| domainSpecificEventsResource == null | solver == null
-				| executor == null) {
-			String exceptionMessage = "";
-			if (modelOfExecutionBuilder == null) {
-				exceptionMessage += "modelOfExecutionBuilder is null, ";
-			}
-			if (domainSpecificEventsResource == null) {
-				exceptionMessage += "domainSpecificEventsResource is null, ";
-			}
-			if (solver == null) {
-				exceptionMessage += "solver is null, ";
-			}
-			if (executor == null) {
-				exceptionMessage += "executor is null, ";
-			}
-			if (exceptionMessage.endsWith(", ")) {
-				exceptionMessage = exceptionMessage.substring(0,
-						exceptionMessage.length() - 2);
-			}
-			throw new NullPointerException(exceptionMessage);
-		} else {
+//		if (modelOfExecutionBuilder == null
+//				| domainSpecificEventsResource == null | solver == null
+//				| executor == null) {
+//			String exceptionMessage = "";
+//			if (modelOfExecutionBuilder == null) {
+//				exceptionMessage += "modelOfExecutionBuilder is null, ";
+//			}
+//			if (domainSpecificEventsResource == null) {
+//				exceptionMessage += "domainSpecificEventsResource is null, ";
+//			}
+//			if (solver == null) {
+//				exceptionMessage += "solver is null, ";
+//			}
+//			if (executor == null) {
+//				exceptionMessage += "executor is null, ";
+//			}
+//			if (exceptionMessage.endsWith(", ")) {
+//				exceptionMessage = exceptionMessage.substring(0,
+//						exceptionMessage.length() - 2);
+//			}
+//			throw new NullPointerException(exceptionMessage);
+//		} else {
 			this.languageInitializer = languageInitializer;
 			this.modelLoader = modelLoader;
 			this.domainSpecificEventsResource = domainSpecificEventsResource;
@@ -98,7 +98,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 			if (languageInitializer != null) {
 				this.languageInitializer.initialize();
 			}
-		}
+//		}
 		if (languageInitializer == null) {
 			String msg = "LanguageInitializer is null";
 			Activator.warn(msg, new NullPointerException(msg));
