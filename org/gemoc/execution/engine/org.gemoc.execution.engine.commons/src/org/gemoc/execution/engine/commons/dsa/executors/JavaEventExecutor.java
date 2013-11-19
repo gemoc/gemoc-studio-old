@@ -18,6 +18,10 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 public class JavaEventExecutor extends BasicEventExecutor {
 
 	private BytecodeSentinel sentinel = null;
+	
+	public void initialize(){
+		
+	}
 
 	public JavaEventExecutor() {
 		this.sentinel = new JavaBytecodeSentinel();

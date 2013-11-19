@@ -4,15 +4,16 @@ import java.util.List;
 
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
-import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
-import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 import fr.inria.aoste.trace.LogicalStep;
@@ -27,93 +28,76 @@ import fr.inria.aoste.trace.LogicalStep;
  */
 public abstract class BasicExecutionEngine implements ExecutionEngine {
 
-	protected LanguageInitializer languageInitializer = null;
 	protected ModelLoader modelLoader = null;
 	protected Solver solver = null;
 	protected EventExecutor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
-	protected ModelOfExecutionBuilder modelOfExecutionBuilder = null;
 	protected Resource domainSpecificEventsResource = null;
 
 	protected Resource modelResource = null;
+	protected String modelStringURI = null;
 
-	public BasicExecutionEngine(LanguageInitializer languageInitializer,
-			ModelLoader modelLoader, Resource domainSpecificEventsResource,
-			ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
-			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
-		Activator.getMessagingSystem().info(
-				"Instantiating BasicExecutionEngine with...",
-				Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info(
-				"\tLanguageInitializer=" + languageInitializer,
-				Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tModelLoader=" + modelLoader,
-				Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info(
-				"\tDomainSpecificEventsResource="
-						+ domainSpecificEventsResource, Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info(
-				"\tModelOfExecutionBuilder=" + modelOfExecutionBuilder,
-				Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tSolver=" + solver,
-				Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tExecutor=" + executor,
-				Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info(
-				"\tFeedbackPolicy=" + feedbackPolicy, Activator.PLUGIN_ID);
+	public BasicExecutionEngine(Resource domainSpecificEventsResource,
+			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 
-		// The engine needs AT LEAST a ModelOfExecutionBuilder, a
-		// domainSpecificEventsResource, a Solver and an
-		// Executor.
-//		if (modelOfExecutionBuilder == null
-//				| domainSpecificEventsResource == null | solver == null
-//				| executor == null) {
-//			String exceptionMessage = "";
-//			if (modelOfExecutionBuilder == null) {
-//				exceptionMessage += "modelOfExecutionBuilder is null, ";
-//			}
-//			if (domainSpecificEventsResource == null) {
-//				exceptionMessage += "domainSpecificEventsResource is null, ";
-//			}
-//			if (solver == null) {
-//				exceptionMessage += "solver is null, ";
-//			}
-//			if (executor == null) {
-//				exceptionMessage += "executor is null, ";
-//			}
-//			if (exceptionMessage.endsWith(", ")) {
-//				exceptionMessage = exceptionMessage.substring(0,
-//						exceptionMessage.length() - 2);
-//			}
-//			throw new NullPointerException(exceptionMessage);
-//		} else {
-			this.languageInitializer = languageInitializer;
-			this.modelLoader = modelLoader;
+		// TODO : REMOVE ME
+		if(domainSpecificEventsResource == null){
+			ResourceSet resSet = new ResourceSetImpl();
+			domainSpecificEventsResource = resSet.getResource(URI.createURI("platform:/resource/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl"), true);
+		}
+		
+		Activator.getMessagingSystem().info(
+				"Verifying input before instanciating BasicExecutionEngine...",
+				Activator.PLUGIN_ID);
+		// The engine needs AT LEAST a domainSpecificEventsResource, a Solver,
+		// an EventExecutor.
+		if (domainSpecificEventsResource == null | solver == null
+				| executor == null | feedbackPolicy == null) {
+			String exceptionMessage = "";
+			if (domainSpecificEventsResource == null) {
+				exceptionMessage += "domainSpecificEventsResource is null, ";
+			}
+			if (solver == null) {
+				exceptionMessage += "solver is null, ";
+			}
+			if (executor == null) {
+				exceptionMessage += "eventExecutor is null, ";
+			}
+			if (exceptionMessage.endsWith(", ")) {
+				exceptionMessage = exceptionMessage.substring(0,
+						exceptionMessage.length() - 2);
+			}
+			Activator.getMessagingSystem().info(
+					"...NOK. Throwing NullPointerException.",
+					Activator.PLUGIN_ID);
+			throw new NullPointerException(exceptionMessage);
+		} else {
+			Activator.getMessagingSystem().info(
+					"...OK. Instantiating BasicExecutionEngine with...",
+					Activator.PLUGIN_ID);
+			Activator
+					.getMessagingSystem()
+					.info("\tDomainSpecificEventsResource="
+							+ domainSpecificEventsResource, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().info("\tSolver=" + solver,
+					Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().info("\tExecutor=" + executor,
+					Activator.PLUGIN_ID);
+
+			if (feedbackPolicy == null) {
+				String msg = "FeedbackPolicy is null";
+				Activator.warn(msg, new NullPointerException(msg));
+			} else {
+				this.feedbackPolicy = feedbackPolicy;
+				Activator.getMessagingSystem().info(
+						"\tFeedbackPolicy=" + feedbackPolicy,
+						Activator.PLUGIN_ID);
+			}
+
 			this.domainSpecificEventsResource = domainSpecificEventsResource;
-			this.modelOfExecutionBuilder = modelOfExecutionBuilder;
 			this.solver = solver;
 			this.executor = executor;
-			this.feedbackPolicy = feedbackPolicy;
-
-			if (languageInitializer != null) {
-				this.languageInitializer.initialize();
-			}
-//		}
-		if (languageInitializer == null) {
-			String msg = "LanguageInitializer is null";
-			Activator.warn(msg, new NullPointerException(msg));
-		}
-		if (modelLoader == null) {
-			String msg = "ModelLoader is null";
-			Activator.warn(msg, new NullPointerException(msg));
-		}
-		if (domainSpecificEventsResource == null) {
-			String msg = "String domainSpecificEventsFilePath is null";
-			Activator.warn(msg, new NullPointerException(msg));
-		}
-		if (feedbackPolicy == null) {
-			String msg = "FeedbackPolicy is null";
-			Activator.warn(msg, new NullPointerException(msg));
+			this.executor.initialize();
 		}
 	}
 
@@ -194,8 +178,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 						"Feedback received: " + feedback.toString(),
 						Activator.PLUGIN_ID);
 				if (this.feedbackPolicy != null) {
-					this.feedbackPolicy
-							.processFeedback(feedback, solver);
+					this.feedbackPolicy.processFeedback(feedback, solver);
 				}
 			}
 		}
@@ -219,11 +202,6 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	@Override
 	public ModelLoader getModelLoader() {
 		return this.modelLoader;
-	}
-
-	@Override
-	public LanguageInitializer getLanguageInitializer() {
-		return this.languageInitializer;
 	}
 
 	@Override

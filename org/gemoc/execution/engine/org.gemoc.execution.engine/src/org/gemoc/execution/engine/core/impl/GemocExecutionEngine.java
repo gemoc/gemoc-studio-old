@@ -19,9 +19,7 @@ import org.gemoc.execution.engine.core.BasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
-import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
-import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 import fr.inria.aoste.trace.EventOccurrence;
@@ -33,13 +31,10 @@ import fr.inria.aoste.trace.Reference;
 
 public class GemocExecutionEngine extends BasicExecutionEngine {
 
-	public GemocExecutionEngine(LanguageInitializer languageInitializer,
-			ModelLoader modelLoader, Resource domainSpecificEventsResource,
-			ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
-			EventExecutor executor, FeedbackPolicy feedbackPolicy)
+	public GemocExecutionEngine(Resource domainSpecificEventsResource,
+			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy)
 			throws CoreException {
-		super(languageInitializer, modelLoader, domainSpecificEventsResource,
-				modelOfExecutionBuilder, solver, executor, feedbackPolicy);
+		super(domainSpecificEventsResource, solver, executor, feedbackPolicy);
 
 		// TODO : parse DSE file to fill in the DSE/DSA information read
 
@@ -48,37 +43,67 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 	}
 
 	@Override
-	public void initialize(String modelURI) {
+	public void initialize(String modelURI, ModelLoader modelLoader) {
 		Activator.getMessagingSystem().info(
-				"Initializing GemocExecutionEngine with...",
-				Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tmodelURI: " + modelURI,
+				"Verifying input before instanciating GemocExecutionEngine...",
 				Activator.PLUGIN_ID);
 
-		this.modelResource = this.modelLoader.loadModel(modelURI);
-		this.executor.setModel(this.modelResource);
-		Activator.getMessagingSystem().info(
-				"Model was successfully loaded: " + modelResource.toString(),
-				Activator.PLUGIN_ID);
+		// modelURI cannot be null or "", modelLoader cannot be null.
+		if (modelURI == null | modelLoader == null | modelURI.isEmpty()) {
+			String exceptionMessage = "";
+			if (modelURI == null) {
+				exceptionMessage += "modelURI is null, ";
+			}
+			if (modelLoader == null) {
+				exceptionMessage += "modelLoader is null, ";
+			}
+			if (modelURI.isEmpty()) {
+				exceptionMessage += "modelURI is empty, ";
+			}
+			Activator.getMessagingSystem().info(
+					"...NOK. Throwing NullPointerException.",
+					Activator.PLUGIN_ID);
+			throw new NullPointerException(exceptionMessage);
+		} else {
 
-		// TODO: do something with the DSE file and the model.
-		// Programatically generate the .extendedCCSL.
-//		Resource modelOfExecution = this.modelOfExecutionBuilder.build(
-//				this.domainSpecificEventsResource, this.modelResource);
+			Activator.getMessagingSystem().info(
+					"...OK. Initializing GemocExecutionEngine with...",
+					Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().info("\tmodelURI: " + modelURI,
+					Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().info(
+					"\tmodelLoader: " + modelLoader, Activator.PLUGIN_ID);
+			
+			this.modelStringURI = modelURI;
+			this.modelLoader = modelLoader;
 
-		// String modelOfExecutionFilePath =
-		// "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";
-		//String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
-		String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
+			// Create the modelResource from the modelLoader and the modelURI.
+			this.modelResource = this.modelLoader.loadModel(modelURI);
+			this.executor.setModel(this.modelResource);
+			Activator.getMessagingSystem().info(
+					"Model was successfully loaded: "
+							+ modelResource.toString(), Activator.PLUGIN_ID);
 
-		URI modelOfExecutionURI = URI.createPlatformResourceURI(
-				modelOfExecutionFilePath, true);
-		// URI modelOfExecutionURI = modelOfExecution.getURI();
+			// TODO: do something with the DSE file and the model.
+			// Programatically generate the .extendedCCSL.
+			// Resource modelOfExecution = this.modelOfExecutionBuilder.build(
+			// this.domainSpecificEventsResource, this.modelResource);
 
-		this.solver.setModelOfExecutionFile(modelOfExecutionURI);
+			// String modelOfExecutionFilePath =
+			// "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";
+			// String modelOfExecutionFilePath =
+			// "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
+			String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
 
-		Activator.getMessagingSystem().info(
-				"*** Engine initialization done. ***", Activator.PLUGIN_ID);
+			URI modelOfExecutionURI = URI.createPlatformResourceURI(
+					modelOfExecutionFilePath, true);
+			// URI modelOfExecutionURI = modelOfExecution.getURI();
+
+			this.solver.setModelOfExecutionFile(modelOfExecutionURI);
+
+			Activator.getMessagingSystem().info(
+					"*** Engine initialization done. ***", Activator.PLUGIN_ID);
+		}
 	}
 
 	@Override

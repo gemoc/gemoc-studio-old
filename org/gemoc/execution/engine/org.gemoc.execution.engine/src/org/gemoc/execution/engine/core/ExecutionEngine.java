@@ -21,7 +21,7 @@ public interface ExecutionEngine {
 	 * loading the model and instantiating the Model of Computation to the
 	 * model.
 	 */
-	public void initialize(String modelURI);
+	public void initialize(String modelURI, ModelLoader modelLoader);
 
 	/**
 	 * Runs the engine indefinitely. Equivalent to calling run(-1).
@@ -68,11 +68,5 @@ public interface ExecutionEngine {
 	 */
 	public ModelLoader getModelLoader();
 
-	/**
-	 * Returns the LanguageInitializer used by the engine.
-	 * 
-	 * @return
-	 */
-	public LanguageInitializer getLanguageInitializer();
 
 }

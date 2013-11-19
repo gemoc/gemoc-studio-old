@@ -73,16 +73,6 @@
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="domainSpecificEventsResource" type="string" use="required">
-            <annotation>
-               <documentation>
-                  Resource of the DSE Mapping file (e.g. ECL file). (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
-               </documentation>
-               <appinfo>
-                  <meta.attribute kind="resource"/>
-               </appinfo>
-            </annotation>
-         </attribute>
          <attribute name="solver_class" type="string" use="required">
             <annotation>
                <documentation>
@@ -93,13 +83,33 @@
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="feedbackPolicy_class" type="string" use="required">
+         <attribute name="domainSpecificEventsResource" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Resource of the DSE Mapping file (e.g. ECL file). (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="feedbackPolicy_class" type="string">
             <annotation>
                <documentation>
                   A FeedbackPolicy implementation, done in Java but which is to be replaced by a well-defined DSL from the GEMOC ANR Project. It is responsible for telling the solver what to do when certain Model-Specific Actions return certain values.
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="modelLoader_class" type="string">
+            <annotation>
+               <documentation>
+                  Optional ModelLoader, in case the user does not want to use XMI-compliant formats for their model...
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.ModelLoader"/>
                </appinfo>
             </annotation>
          </attribute>

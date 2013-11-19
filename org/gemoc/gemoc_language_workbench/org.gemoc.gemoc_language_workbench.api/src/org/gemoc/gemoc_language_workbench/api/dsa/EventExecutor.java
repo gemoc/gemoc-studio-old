@@ -17,6 +17,13 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
  */
 public interface EventExecutor {
 	/**
+	 * A rather optional method that is used to instanciate the languages
+	 * managed by this EventExecutor... if they need to be. Most of the time it
+	 * will probably perform nothing.
+	 */
+	public void initialize();
+
+	/**
 	 * Executes the Domain-Specific Action.
 	 * 
 	 * @param msa
