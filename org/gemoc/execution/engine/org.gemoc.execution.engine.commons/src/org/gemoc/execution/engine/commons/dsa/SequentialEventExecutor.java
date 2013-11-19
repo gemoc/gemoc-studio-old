@@ -28,6 +28,10 @@ public class SequentialEventExecutor extends BasicEventExecutor {
 	protected List<EventExecutor> executors = new ArrayList<EventExecutor>();
 	private Collection<BytecodeSentinel> personalSentinels = new ArrayList<BytecodeSentinel>();
 	private EventExecutor defaultExecutor = new JavaEventExecutor();
+	
+	public void initialize(){
+		
+	}
 
 	public SequentialEventExecutor() {
 	}
