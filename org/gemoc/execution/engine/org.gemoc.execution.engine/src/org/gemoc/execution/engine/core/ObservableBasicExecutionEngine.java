@@ -1,13 +1,17 @@
 package org.gemoc.execution.engine.core;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-import org.eclipse.core.runtime.ISafeRunnable;
-import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+
+import org.eclipse.core.runtime.ISafeRunnable;
+import org.eclipse.core.runtime.SafeRunner;
+
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
@@ -20,13 +24,14 @@ import fr.inria.aoste.trace.LogicalStep;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
- * technologies used for the solver, the executor and the feedback protocol.
- * 
+ * technologies used for the solver, the executor and the feedback protocol. It
+ * can display the runtime execution information to its registered observers.
  * 
  * @author flatombe
  * 
  */
-public abstract class BasicExecutionEngine implements ExecutionEngine {
+public abstract class ObservableBasicExecutionEngine extends Observable
+		implements ExecutionEngine {
 
 	protected ModelLoader modelLoader = null;
 	protected Solver solver = null;
@@ -37,18 +42,23 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected Resource modelResource = null;
 	protected String modelStringURI = null;
 
-	public BasicExecutionEngine(Resource domainSpecificEventsResource,
-			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
+	public ObservableBasicExecutionEngine(
+			Resource domainSpecificEventsResource, Solver solver,
+			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 
 		// TODO : REMOVE ME
-		if(domainSpecificEventsResource == null){
+		if (domainSpecificEventsResource == null) {
 			ResourceSet resSet = new ResourceSetImpl();
-			domainSpecificEventsResource = resSet.getResource(URI.createURI("platform:/resource/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl"), true);
+			domainSpecificEventsResource = resSet
+					.getResource(
+							URI.createURI("platform:/resource/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl"),
+							true);
 		}
-		
-		Activator.getMessagingSystem().info(
-				"Verifying input before instanciating BasicExecutionEngine...",
-				Activator.PLUGIN_ID);
+
+		Activator
+				.getMessagingSystem()
+				.info("Verifying input before instanciating ObservableBasicExecutionEngine...",
+						Activator.PLUGIN_ID);
 		// The engine needs AT LEAST a domainSpecificEventsResource, a Solver,
 		// an EventExecutor.
 		if (domainSpecificEventsResource == null | solver == null
@@ -72,9 +82,10 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 					Activator.PLUGIN_ID);
 			throw new NullPointerException(exceptionMessage);
 		} else {
-			Activator.getMessagingSystem().info(
-					"...OK. Instantiating BasicExecutionEngine with...",
-					Activator.PLUGIN_ID);
+			Activator
+					.getMessagingSystem()
+					.info("...OK. Instantiating ObservableBasicExecutionEngine with...",
+							Activator.PLUGIN_ID);
 			Activator
 					.getMessagingSystem()
 					.info("\tDomainSpecificEventsResource="
@@ -114,24 +125,16 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 	protected abstract List<ModelSpecificEvent> match(LogicalStep step);
 
 	@Override
-	public void run() {
-		Activator.getMessagingSystem().info("Starting running indefinitely",
-				Activator.PLUGIN_ID);
-		this.run(-1);
-		Activator.getMessagingSystem().info("Stopped running indefinitely",
-				Activator.PLUGIN_ID);
-	}
-
-	@Override
 	public void run(int numberOfSteps) {
 		Activator.getMessagingSystem().info(
 				"Running " + numberOfSteps + " steps", Activator.PLUGIN_ID);
+		this.setChanged();
+		this.notifyObservers("Received from ControlPanel: run(" + numberOfSteps + ")");
 		for (int i = 0; i < numberOfSteps; i++) {
 			this.runOneStep();
 		}
 	}
 
-	@Override
 	public void runOneStep() {
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
@@ -143,7 +146,7 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 			public void run() throws Exception {
 				Activator.getMessagingSystem().info(">>Running one step",
 						Activator.PLUGIN_ID);
-				BasicExecutionEngine.this.doOneStep();
+				ObservableBasicExecutionEngine.this.doOneStep();
 				Activator.getMessagingSystem().info("<<Step finished",
 						Activator.PLUGIN_ID);
 			}
@@ -172,6 +175,11 @@ public abstract class BasicExecutionEngine implements ExecutionEngine {
 			Activator.getMessagingSystem().debug(
 					"Executing the following event: " + event.toString(),
 					Activator.PLUGIN_ID);
+			this.setChanged();
+			List<String> traces = new ArrayList<String>();
+			traces.add(event.toString());
+			this.notifyObservers(traces);
+
 			List<FeedbackData> feedbacks = this.executor.execute(event);
 			for (FeedbackData feedback : feedbacks) {
 				Activator.getMessagingSystem().debug(

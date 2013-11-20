@@ -1,5 +1,10 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -7,9 +12,12 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.execution.engine.core.ExecutionEngine;
-import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
+
+import org.gemoc.execution.engine.io.Backend;
+import org.gemoc.execution.engine.io.ControlPanel;
+import org.gemoc.execution.engine.io.EngineManager;
+import org.gemoc.execution.engine.io.backends.ConsoleBackend;
+import org.gemoc.execution.engine.io.controlpanels.BasicGUIControlPanel;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -129,21 +137,27 @@ public class GemocReflectiveModelLauncher implements
 				"Domain Specific Events Resource");
 		this.reactToNull(modelLoader, "Model Loader");
 
-		try {
-			// Language-level instanciation of the engine
-			ExecutionEngine engine = new GemocExecutionEngine(
-					domainSpecificEventsResource, solver, executor,
-					feedbackPolicy);
-
-			// Model-level initialization of the engine
-			engine.initialize(modelPath, modelLoader);
-
-			// Run the engine for just one step...
-			engine.run(10);
-
-		} catch (Throwable e) {
-			Activator.error("Exception in the initialization of the engine", e);
-		}
+		// try {
+		// // Language-level instanciation of the engine
+		// ExecutionEngine engine = new GemocExecutionEngine(
+		// domainSpecificEventsResource, solver, executor,
+		// feedbackPolicy);
+		//
+		// // Model-level initialization of the engine
+		// engine.initialize(modelPath, modelLoader);
+		//
+		// // Run the engine for just one step...
+		// engine.run(10);
+		//
+		// } catch (Throwable e) {
+		// Activator.error("Exception in the initialization of the engine", e);
+		// }
+		ControlPanel controlPanel = new BasicGUIControlPanel();
+		List<Backend> backends = new ArrayList<Backend>();
+		backends.add(new ConsoleBackend());
+		EngineManager manager = new EngineManager(domainSpecificEventsResource,
+				solver, executor, feedbackPolicy, modelPath, modelLoader,
+				controlPanel, backends);
 	}
 
 	private void reactToNull(Object o, String name) {

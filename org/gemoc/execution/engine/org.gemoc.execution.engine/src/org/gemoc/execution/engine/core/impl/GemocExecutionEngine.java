@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_standard_implementations.dsa.ModelAction;
 import org.gemoc.execution.engine.api_standard_implementations.dse.ModelEvent;
-import org.gemoc.execution.engine.core.BasicExecutionEngine;
+import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
@@ -29,11 +29,10 @@ import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.Reference;
 
-public class GemocExecutionEngine extends BasicExecutionEngine {
+public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
 	public GemocExecutionEngine(Resource domainSpecificEventsResource,
-			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy)
-			throws CoreException {
+			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy){
 		super(domainSpecificEventsResource, solver, executor, feedbackPolicy);
 
 		// TODO : parse DSE file to fill in the DSE/DSA information read
@@ -234,10 +233,6 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		}
 	}
 
-	private String getNameOfEObject(EObject eo) {
-		return this.getQualifiedName(eo);
-	}
-
 	private String getQualifiedName(EObject eo) {
 		String res = getSimpleName(eo);
 		EObject tmp = eo.eContainer();
@@ -251,33 +246,6 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 	private String getSimpleName(EObject eo) {
 		return this.invokeGetNameOnEObject(eo);
 	}
-
-
-//	private String getQualifiedName(EObject eo) throws SecurityException,
-//			IllegalArgumentException, NoSuchMethodException,
-//			IllegalAccessException, InvocationTargetException {
-//		String res = this.invokeGetNameOnEObject(eo);
-//		EObject tmp = eo.eContainer();
-//		while (tmp != null) {
-//			res = this.invokeGetNameOnEObject(tmp) + "::" + res;
-//			tmp = tmp.eContainer();
-//		}
-//		return res;
-//	}
-//
-//	private String invokeGetNameOnEObject(EObject eObjectMethod)
-//			throws SecurityException, NoSuchMethodException,
-//			IllegalArgumentException, IllegalAccessException,
-//			InvocationTargetException {
-//		Method method;
-//		method = eObjectMethod.getClass().getMethod("getName");
-//		Object res = method.invoke(eObjectMethod);
-//		if (res instanceof String) {
-//			return (String) res;
-//		} else {
-//			return null;
-//		}
-//	}
 
 	private String invokeGetNameOnEObject(EObject eObjectMethod) {
 		Method method;

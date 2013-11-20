@@ -3,7 +3,6 @@ package org.gemoc.execution.engine.core;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
-import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 /**
@@ -24,21 +23,11 @@ public interface ExecutionEngine {
 	public void initialize(String modelURI, ModelLoader modelLoader);
 
 	/**
-	 * Runs the engine indefinitely. Equivalent to calling run(-1).
-	 */
-	public void run();
-
-	/**
 	 * Runs the engine for a given number of steps.
 	 * 
 	 * @param numberOfSteps
 	 */
 	public void run(int numberOfSteps);
-
-	/**
-	 * Runs the engine for just one step. Equivalent to calling run(1).
-	 */
-	public void runOneStep();
 
 	/**
 	 * Returns the Executor used by the engine.
@@ -67,6 +56,5 @@ public interface ExecutionEngine {
 	 * @return
 	 */
 	public ModelLoader getModelLoader();
-
 
 }

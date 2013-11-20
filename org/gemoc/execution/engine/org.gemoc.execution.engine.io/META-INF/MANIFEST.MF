@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Io
+Bundle-SymbolicName: org.gemoc.execution.engine.io
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.gemoc.execution.engine.io.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.gemoc.gemoc_language_workbench.api;bundle-version="0.1.0",
+ org.gemoc.execution.engine;bundle-version="1.0.0",
+ org.kermeta.utils.systemservices.api;bundle-version="2.1.1",
+ org.kermeta.utils.systemservices.eclipse;bundle-version="2.1.1"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.gemoc.execution.engine.io,
+ org.gemoc.execution.engine.io.backends,
+ org.gemoc.execution.engine.io.controlpanels
