@@ -1,6 +1,5 @@
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -42,28 +41,5 @@ public interface EventExecutor {
 	 *         FeedbackData objects.
 	 */
 	public List<FeedbackData> execute(ModelSpecificEvent dse);
-
-	/**
-	 * An EventExecutor needs to have a model against which it will look for the
-	 * actual object(s) and operation(s) designated by the Domain Specific
-	 * Action(s) to execute.
-	 * 
-	 * @param modelResource
-	 */
-	public void setModel(Resource modelResource);
-
-	/**
-	 * Retrieve the sentinels used by this executor.
-	 * 
-	 * @return
-	 */
-	public Collection<BytecodeSentinel> getSentinels();
-
-	/**
-	 * Add a new sentinel to this executor.
-	 * 
-	 * @param sentinel
-	 */
-	public void addSentinel(BytecodeSentinel sentinel);
 
 }

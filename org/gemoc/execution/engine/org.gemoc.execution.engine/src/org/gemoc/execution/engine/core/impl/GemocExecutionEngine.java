@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.core.impl;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
@@ -14,7 +15,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_standard_implementations.dsa.ModelAction;
 import org.gemoc.execution.engine.api_standard_implementations.dse.ModelEvent;
-import org.gemoc.execution.engine.commons.dsa.sentinels.EmfBytecodeSentinel;
 import org.gemoc.execution.engine.core.BasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
@@ -73,13 +73,13 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 					Activator.PLUGIN_ID);
 			Activator.getMessagingSystem().info(
 					"\tmodelLoader: " + modelLoader, Activator.PLUGIN_ID);
-			
+
 			this.modelStringURI = modelURI;
 			this.modelLoader = modelLoader;
 
 			// Create the modelResource from the modelLoader and the modelURI.
 			this.modelResource = this.modelLoader.loadModel(modelURI);
-			this.executor.setModel(this.modelResource);
+
 			Activator.getMessagingSystem().info(
 					"Model was successfully loaded: "
 							+ modelResource.toString(), Activator.PLUGIN_ID);
@@ -151,6 +151,22 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		return res;
 	}
 
+	public EObject getEObjectFromQualifiedName(Resource modelResource,
+			String qualifiedName) throws SecurityException,
+			IllegalArgumentException, NoSuchMethodException,
+			IllegalAccessException, InvocationTargetException {
+
+		Iterator<EObject> iterator = modelResource.getAllContents();// this.modelResource.getContents().get(0).eAllContents();
+		EObject res = null;
+		while (iterator.hasNext() & res == null) {
+			EObject modelElement = iterator.next();
+			if (this.getQualifiedName(modelElement).equals(qualifiedName)) {
+				res = modelElement;
+			}
+		}
+		return res;
+	}
+
 	private EObject getEObjectFromReference(Reference reference) {
 
 		EList<EObject> elements = ((ModelElementReference) reference)
@@ -161,9 +177,8 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		} else if (reference instanceof NamedReference) {
 			// Returns EObject thanks to its qualified name
 			try {
-				EObject res = new EmfBytecodeSentinel(modelResource)
-						.getEObjectFromQualifiedName((((NamedReference) reference)
-								.getValue()));
+				EObject res = getEObjectFromQualifiedName(this.modelResource,
+						(((NamedReference) reference).getValue()));
 				Activator.getMessagingSystem().debug("Returning :" + res,
 						Activator.PLUGIN_ID);
 				return res;
@@ -236,6 +251,33 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 	private String getSimpleName(EObject eo) {
 		return this.invokeGetNameOnEObject(eo);
 	}
+
+
+//	private String getQualifiedName(EObject eo) throws SecurityException,
+//			IllegalArgumentException, NoSuchMethodException,
+//			IllegalAccessException, InvocationTargetException {
+//		String res = this.invokeGetNameOnEObject(eo);
+//		EObject tmp = eo.eContainer();
+//		while (tmp != null) {
+//			res = this.invokeGetNameOnEObject(tmp) + "::" + res;
+//			tmp = tmp.eContainer();
+//		}
+//		return res;
+//	}
+//
+//	private String invokeGetNameOnEObject(EObject eObjectMethod)
+//			throws SecurityException, NoSuchMethodException,
+//			IllegalArgumentException, IllegalAccessException,
+//			InvocationTargetException {
+//		Method method;
+//		method = eObjectMethod.getClass().getMethod("getName");
+//		Object res = method.invoke(eObjectMethod);
+//		if (res instanceof String) {
+//			return (String) res;
+//		} else {
+//			return null;
+//		}
+//	}
 
 	private String invokeGetNameOnEObject(EObject eObjectMethod) {
 		Method method;

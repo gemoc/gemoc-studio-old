@@ -4,20 +4,15 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Plugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.execution.engine.commons.dsa.executors.Kermeta3EventExecutor;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
-import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
-import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
@@ -58,7 +53,6 @@ public class GemocReflectiveModelLauncher implements
 		// retrieved from the Extension Points of the xDSML.
 		Solver solver = null;
 		EventExecutor executor = null;
-		IDSAExecutor tempExecutor = null;
 		FeedbackPolicy feedbackPolicy = null;
 		Resource domainSpecificEventsResource = null;
 		ModelLoader modelLoader = null;
@@ -79,8 +73,8 @@ public class GemocReflectiveModelLauncher implements
 
 			final Object oexecutor = confElement
 					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT);
-			if (oexecutor instanceof IDSAExecutor) {
-				tempExecutor = (IDSAExecutor) oexecutor;
+			if (oexecutor instanceof EventExecutor) {
+				executor = (EventExecutor) oexecutor;
 			}
 
 			try {
@@ -129,14 +123,13 @@ public class GemocReflectiveModelLauncher implements
 		// Ugly calls to check if all the elements have been provided as
 		// required.
 		this.reactToNull(solver, "Solver");
-		this.reactToNull(tempExecutor, "Executor");
+		this.reactToNull(executor, "Executor");
 		this.reactToNull(feedbackPolicy, "Feedback Policy");
 		this.reactToNull(domainSpecificEventsResource,
 				"Domain Specific Events Resource");
 		this.reactToNull(modelLoader, "Model Loader");
 
 		try {
-			executor = new Kermeta3EventExecutor(null, "", tempExecutor);
 			// Language-level instanciation of the engine
 			ExecutionEngine engine = new GemocExecutionEngine(
 					domainSpecificEventsResource, solver, executor,
