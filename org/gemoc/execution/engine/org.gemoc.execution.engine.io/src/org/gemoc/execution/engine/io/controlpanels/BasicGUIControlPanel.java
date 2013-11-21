@@ -4,8 +4,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.io.ControlPanel;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;

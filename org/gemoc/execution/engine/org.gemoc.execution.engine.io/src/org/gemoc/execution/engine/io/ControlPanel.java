@@ -1,6 +1,6 @@
 package org.gemoc.execution.engine.io;
 
-import org.gemoc.execution.engine.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 
 public interface ControlPanel {
 	

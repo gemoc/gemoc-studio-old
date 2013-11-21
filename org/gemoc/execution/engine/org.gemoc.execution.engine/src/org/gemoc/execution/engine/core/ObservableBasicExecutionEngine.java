@@ -1,10 +1,11 @@
 package org.gemoc.execution.engine.core;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -13,6 +14,7 @@ import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
 
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
@@ -129,7 +131,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		Activator.getMessagingSystem().info(
 				"Running " + numberOfSteps + " steps", Activator.PLUGIN_ID);
 		this.setChanged();
-		this.notifyObservers("Received from ControlPanel: run(" + numberOfSteps + ")");
+		this.notifyObservers("Received from ControlPanel: run(" + numberOfSteps
+				+ ")");
 		for (int i = 0; i < numberOfSteps; i++) {
 			this.runOneStep();
 		}
@@ -176,9 +179,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 					"Executing the following event: " + event.toString(),
 					Activator.PLUGIN_ID);
 			this.setChanged();
-			List<String> traces = new ArrayList<String>();
-			traces.add(event.toString());
-			this.notifyObservers(traces);
+			this.notifyObservers(event.toString());
 
 			List<FeedbackData> feedbacks = this.executor.execute(event);
 			for (FeedbackData feedback : feedbacks) {
@@ -186,10 +187,28 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 						"Feedback received: " + feedback.toString(),
 						Activator.PLUGIN_ID);
 				if (this.feedbackPolicy != null) {
-					this.feedbackPolicy.processFeedback(feedback, solver);
+					this.feedbackPolicy.processFeedback(feedback, this);
 				}
 			}
 		}
+	}
+
+	@Override
+	public void forceEventOccurrenceReferencing(EObject target,
+			EOperation operation) {
+		this.setChanged();
+		this.notifyObservers("Forcing the solver to produce events leading to a MSE that references: "
+				+ target.toString() + ", " + operation.toString());
+		this.solver.forceEventOccurrenceReferencing(target, operation);
+	}
+
+	@Override
+	public void forbidEventOccurrenceReferencing(EObject target,
+			EOperation operation) {
+		this.setChanged();
+		this.notifyObservers("Forbidding the solver from producing events leading to a MSE that references: "
+				+ target.toString() + ", " + operation.toString());
+		this.solver.forbidEventOccurrenceReferencing(target, operation);
 	}
 
 	@Override
