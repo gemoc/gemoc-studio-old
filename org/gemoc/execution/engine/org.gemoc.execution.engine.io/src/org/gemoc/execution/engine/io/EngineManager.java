@@ -6,8 +6,8 @@ import java.util.Observer;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
-import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;

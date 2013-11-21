@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_standard_implementations.dsa.ModelAction;
 import org.gemoc.execution.engine.api_standard_implementations.dse.ModelEvent;
@@ -32,7 +32,7 @@ import fr.inria.aoste.trace.Reference;
 public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
 	public GemocExecutionEngine(Resource domainSpecificEventsResource,
-			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy){
+			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 		super(domainSpecificEventsResource, solver, executor, feedbackPolicy);
 
 		// TODO : parse DSE file to fill in the DSE/DSA information read

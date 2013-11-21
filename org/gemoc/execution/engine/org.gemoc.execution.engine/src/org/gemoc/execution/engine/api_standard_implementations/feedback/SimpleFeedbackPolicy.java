@@ -2,9 +2,9 @@ package org.gemoc.execution.engine.api_standard_implementations.feedback;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.commons.feedback.ObjectFeedbackData;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 /**
  * A simple interpretation of all the Java primitive types...
@@ -17,7 +17,8 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 	}
 
 	@Override
-	public void processFeedback(FeedbackData feedbackData, Solver solver) {
+	public void processFeedback(FeedbackData feedbackData,
+			ExecutionEngine engine) {
 		// Activator.getMessagingSystem().warn("You need to complete processFeedback",
 		// Activator.PLUGIN_ID);
 		try {

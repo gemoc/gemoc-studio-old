@@ -13,6 +13,7 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.gemoc_language_workbench.api,
+ org.gemoc.gemoc_language_workbench.api.core,
  org.gemoc.gemoc_language_workbench.api.dsa,
  org.gemoc.gemoc_language_workbench.api.dse,
  org.gemoc.gemoc_language_workbench.api.feedback,
