@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.SafeRunner;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
@@ -43,6 +44,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 	protected Resource modelResource = null;
 	protected String modelStringURI = null;
+
+	protected List<DomainSpecificEvent> domainSpecificEvents = null;
 
 	public ObservableBasicExecutionEngine(
 			Resource domainSpecificEventsResource, Solver solver,
@@ -113,6 +116,9 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			this.executor.initialize();
 		}
 	}
+
+	@Override
+	public abstract void initialize(String modelURI, ModelLoader modelLoader);
 
 	/**
 	 * Instantiates a list of Domain Specific Events depending on which event
@@ -186,6 +192,10 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				Activator.getMessagingSystem().debug(
 						"Feedback received: " + feedback.toString(),
 						Activator.PLUGIN_ID);
+				this.setChanged();
+				this.notifyObservers("MSA "
+						+ feedback.getCausalAction().toString() + " returned "
+						+ feedback.toString());
 				if (this.feedbackPolicy != null) {
 					this.feedbackPolicy.processFeedback(feedback, this);
 				}

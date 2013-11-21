@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
@@ -14,14 +15,17 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_standard_implementations.dsa.ModelAction;
+import org.gemoc.execution.engine.api_standard_implementations.dse.LanguageEvent;
 import org.gemoc.execution.engine.api_standard_implementations.dse.ModelEvent;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import fr.inria.aoste.timesquare.ECL.EventType;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
@@ -35,10 +39,17 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 		super(domainSpecificEventsResource, solver, executor, feedbackPolicy);
 
-		// TODO : parse DSE file to fill in the DSE/DSA information read
+		
+		memorizeDomainSpecificEvents();
 
 		Activator.getMessagingSystem().info(
 				"*** Engine construction done. ***", Activator.PLUGIN_ID);
+	}
+
+	private void memorizeDomainSpecificEvents() {
+		this.domainSpecificEvents = new ArrayList<DomainSpecificEvent>();
+		// TODO : parse DSE file to fill in the DSE/DSA information read
+		
 	}
 
 	@Override
