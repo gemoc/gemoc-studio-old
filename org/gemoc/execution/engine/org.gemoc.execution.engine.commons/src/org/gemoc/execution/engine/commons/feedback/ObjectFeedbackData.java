@@ -13,11 +13,13 @@ public class ObjectFeedbackData implements FeedbackData {
 	private Object o;
 	private ModelSpecificAction causalAction;
 
-	public ObjectFeedbackData(Object feedback) {
+	public ObjectFeedbackData(Object feedback, ModelSpecificAction msa) {
 		this.o = feedback;
+		this.causalAction = msa;
 	}
 
-	public Object getObject() {
+	@Override
+	public Object getContent() {
 		return this.o;
 	}
 
@@ -28,11 +30,6 @@ public class ObjectFeedbackData implements FeedbackData {
 	@Override
 	public ModelSpecificAction getCausalAction() {
 		return this.causalAction;
-	}
-
-	@Override
-	public void setCausalAction(ModelSpecificAction action) {
-		this.causalAction = action;
 	}
 
 	@Override

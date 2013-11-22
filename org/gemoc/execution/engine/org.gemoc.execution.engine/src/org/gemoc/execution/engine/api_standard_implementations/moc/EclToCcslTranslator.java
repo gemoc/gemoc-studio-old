@@ -30,18 +30,21 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import com.google.inject.Injector;
 
 import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ExtendedCCSLStandaloneSetup;
 import fr.inria.aoste.timesquare.ecl.ecltoqvto.main.AcceleoLauncherForEclToQvto;
 
+// TODO: here the code to generate the .extendedccsl from ecl + xmi
 public class EclToCcslTranslator implements ModelOfExecutionBuilder {
 	private IFile qvtoFile = null;
 	private XtextResourceSet aModelResourceSet = null;
 	private XtextResourceSet outputResourceSet = null;
 
 	// TODO fix this class
-	public EclToCcslTranslator(final Resource domainSpecificEventsResource) {
+	public EclToCcslTranslator() {
 		super();
 		//
 		// // Taken from
@@ -153,7 +156,7 @@ public class EclToCcslTranslator implements ModelOfExecutionBuilder {
 		// }
 		//
 		// return outputResource;
-		return null;
+		throw new NotImplementedException();
 	}
 
 	/**

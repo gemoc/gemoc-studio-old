@@ -22,6 +22,7 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
@@ -30,6 +31,8 @@ import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.Reference;
 
 public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
+
+	private List<ModelSpecificEvent> modelSpecificEvents = null;
 
 	public GemocExecutionEngine(Resource domainSpecificEventsResource,
 			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
@@ -83,26 +86,32 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 					"Model was successfully loaded: "
 							+ modelResource.toString(), Activator.PLUGIN_ID);
 
-			// TODO: do something with the DSE file and the model.
-			// Programatically generate the .extendedCCSL.
-			// Resource modelOfExecution = this.modelOfExecutionBuilder.build(
-			// this.domainSpecificEventsResource, this.modelResource);
+			URI modelOfExecutionURI = null;
+			// TODO : remove when EclToCCslTranslator gets implemented.
+			try {
+				Resource modelOfExecution = this.solver
+						.getModelOfExecutionBuilder().build(
+								this.domainSpecificEventsResource,
+								this.modelResource);
 
-			// String modelOfExecutionFilePath =
-			// "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";
-			// String modelOfExecutionFilePath =
-			// "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
-			String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
-
-			URI modelOfExecutionURI = URI.createPlatformResourceURI(
-					modelOfExecutionFilePath, true);
-			// URI modelOfExecutionURI = modelOfExecution.getURI();
-
+				modelOfExecutionURI = modelOfExecution.getURI();
+			} catch (NotImplementedException e) {
+				String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
+				modelOfExecutionURI = URI.createPlatformResourceURI(
+						modelOfExecutionFilePath, true);
+			}
 			this.solver.setModelOfExecutionFile(modelOfExecutionURI);
+			this.modelSpecificEvents = this
+					.initializeModelSpecificEvents(modelOfExecutionURI);
 
 			Activator.getMessagingSystem().info(
 					"*** Engine initialization done. ***", Activator.PLUGIN_ID);
 		}
+	}
+
+	private List<ModelSpecificEvent> initializeModelSpecificEvents(
+			URI modelOfExecutionURI) {
+		return new ArrayList<ModelSpecificEvent>();
 	}
 
 	@Override

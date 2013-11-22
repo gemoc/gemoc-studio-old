@@ -4,12 +4,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
+import org.gemoc.gemoc_language_workbench.api.exceptions.InvokationResultConvertionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 
 /**
  * A generic EventExecutor...
@@ -19,44 +21,45 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
  */
 public abstract class BasicEventExecutor implements EventExecutor {
 	protected CodeExecutor codeExecutor = null;
+	protected FeedbackPolicy feedbackPolicy = null;
 
 	@Override
-	public FeedbackData execute(ModelSpecificAction msa) {
+	public FeedbackData execute(ModelSpecificAction msa)
+			throws EventExecutionException, InvokationResultConvertionException {
+		Object res;
 		try {
 			List<Object> parameters = new ArrayList<Object>();
 			parameters.addAll(msa.getParameters());
-			Object res = this.codeExecutor.invoke(msa.getTarget(), msa
-					.getOperation().getName(), parameters);
-			return DataConverter.convertToFeedbackData(res, msa);
+			res = this.codeExecutor.invoke(msa.getTarget(), msa.getOperation()
+					.getName(), parameters);
+
 		} catch (NoSuchMethodException e) {
-			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to execute a ModelSpecificAction";
-			Activator.getMessagingSystem().error(errorMessage,
-					Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
+			throw new EventExecutionException(e);
 		} catch (IllegalAccessException e) {
-			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to execute a ModelSpecificAction";
-			Activator.getMessagingSystem().error(errorMessage,
-					Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
+			throw new EventExecutionException(e);
 		} catch (IllegalArgumentException e) {
-			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to execute a ModelSpecificAction";
-			Activator.getMessagingSystem().error(errorMessage,
-					Activator.PLUGIN_ID);
-			Activator.error(errorMessage, e);
+			throw new EventExecutionException(e);
 		} catch (InvocationTargetException e) {
-			String errorMessage = e.getClass().getSimpleName()
-					+ " when trying to execute a ModelSpecificAction";
-			Activator.getMessagingSystem().error(errorMessage,
-					Activator.PLUGIN_ID);
-			Activator.getMessagingSystem().error(
-					"Inner exception has been sent to the Error Log view.",
-					Activator.PLUGIN_ID);
-			Activator.error(e.getCause().getMessage(), e.getCause());
+			throw new EventExecutionException(e);
 		}
-		return null;
+
+		try {
+			return this.feedbackPolicy.convertToFeedbackDataImplementation(res,
+					msa);
+		} catch (SecurityException e) {
+			throw new InvokationResultConvertionException(e);
+		} catch (InstantiationException e) {
+			throw new InvokationResultConvertionException(e);
+		} catch (IllegalArgumentException e) {
+			throw new InvokationResultConvertionException(e);
+		} catch (IllegalAccessException e) {
+			throw new InvokationResultConvertionException(e);
+		} catch (InvocationTargetException e) {
+			throw new InvokationResultConvertionException(e);
+		} catch (NoSuchMethodException e) {
+			throw new InvokationResultConvertionException(e);
+		}
+
 	}
 
 	/**
@@ -67,7 +70,8 @@ public abstract class BasicEventExecutor implements EventExecutor {
 	 * @param actions
 	 * @return
 	 */
-	protected List<FeedbackData> execute(List<ModelSpecificAction> actions) {
+	protected List<FeedbackData> execute(List<ModelSpecificAction> actions)
+			throws EventExecutionException, InvokationResultConvertionException {
 		List<FeedbackData> res = new ArrayList<FeedbackData>();
 		for (ModelSpecificAction action : actions) {
 			res.add(this.execute(action));
@@ -76,7 +80,8 @@ public abstract class BasicEventExecutor implements EventExecutor {
 	}
 
 	@Override
-	public List<FeedbackData> execute(ModelSpecificEvent mse) {
+	public List<FeedbackData> execute(ModelSpecificEvent mse)
+			throws EventExecutionException, InvokationResultConvertionException {
 		return this.execute(mse.getActions());
 	}
 
