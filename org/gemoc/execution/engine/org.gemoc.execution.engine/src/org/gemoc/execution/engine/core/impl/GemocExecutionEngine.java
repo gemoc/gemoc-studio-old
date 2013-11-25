@@ -119,6 +119,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
 	public void reset() {
 		this.solver.setModelOfExecutionFile(this.modelOfExecutionURI);
+		this.setChanged();
+		this.notifyObservers(">Reset!");
 	}
 
 	private List<ModelSpecificEvent> initializeModelSpecificEvents(
