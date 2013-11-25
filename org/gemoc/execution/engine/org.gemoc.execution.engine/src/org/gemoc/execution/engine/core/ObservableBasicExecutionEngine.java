@@ -1,5 +1,7 @@
 package org.gemoc.execution.engine.core;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Observable;
 
@@ -123,8 +125,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	public abstract void initialize(String modelURI, ModelLoader modelLoader);
 
 	/**
-	 * Instantiates a list of Domain Specific Events depending on which event
-	 * occurrences are in the Step returned by the Solver.
+	 * Instantiates a Collection of Model-Specific Events depending on which
+	 * event occurrences are in the Step returned by the Solver.
 	 * 
 	 * Depends on the implementation used for the Solver, Step and Domain
 	 * Specific Event.
@@ -132,7 +134,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	 * @param step
 	 * @return
 	 */
-	protected abstract List<ModelSpecificEvent> match(LogicalStep step);
+	protected abstract Collection<ModelSpecificEvent> match(LogicalStep step);
 
 	@Override
 	public void run(int numberOfSteps) {
@@ -142,11 +144,12 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		this.notifyObservers("Received from ControlPanel: run(" + numberOfSteps
 				+ ")");
 		for (int i = 0; i < numberOfSteps; i++) {
-			this.runOneStep();
+			this.runOneStep(null);
 		}
 	}
 
-	public void runOneStep() {
+	@Override
+	public void runOneStep(final ModelSpecificEvent mse) {
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
 			public void handleException(Throwable e) {
@@ -157,28 +160,44 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			public void run() throws Exception {
 				Activator.getMessagingSystem().info(">>Running one step",
 						Activator.PLUGIN_ID);
-				ObservableBasicExecutionEngine.this.doOneStep();
+				ObservableBasicExecutionEngine.this.doOneStep(mse);
 				Activator.getMessagingSystem().info("<<Step finished",
 						Activator.PLUGIN_ID);
 			}
 		};
 		SafeRunner.run(runnable);
-
 	}
 
-	private void doOneStep() {
-		// Retrieve information from the solver.
+	private LogicalStep getSolverStep() {
 		LogicalStep step = this.solver.getNextStep();
 		Activator.getMessagingSystem().debug(
 				"The solver has correctly returned a step to the engine",
 				Activator.PLUGIN_ID);
+		return step;
+	}
+
+	@Override
+	public Collection<ModelSpecificEvent> getNextEvents() {
+		LogicalStep step = this.getSolverStep();
 
 		// Create the Domain Specific Events according to the information
 		// returned to us by the solver.
-		List<ModelSpecificEvent> events = this.match(step);
-		Activator.getMessagingSystem().info(
-				"Number of events matched : " + events.size(),
-				Activator.PLUGIN_ID);
+		Collection<ModelSpecificEvent> events = this.match(step);
+
+		return events;
+	}
+
+	private void doOneStep(ModelSpecificEvent mse) {
+		Collection<ModelSpecificEvent> events;
+		if (mse != null) {
+			// The MSE has been chosen beforehand (via controlpanel)
+			events = new ArrayList<ModelSpecificEvent>();
+			events.add(mse);
+		} else {
+			// The MSE has not been chosen beforehand, so it's more of an
+			// automatic mode.
+			events = this.getNextEvents();
+		}
 
 		// For each event, execute its action(s) and take into account the
 		// feedback the Domain Specific Action returns.
@@ -247,26 +266,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		this.notifyObservers("Forbidding the solver from producing events leading to a MSE that references: "
 				+ target.toString() + ", " + operation.toString());
 		this.solver.forbidEventOccurrenceReferencing(target, operation);
-	}
-
-	@Override
-	public EventExecutor getExecutor() {
-		return this.executor;
-	}
-
-	@Override
-	public Solver getSolver() {
-		return this.solver;
-	}
-
-	@Override
-	public FeedbackPolicy getFeedbackPolicy() {
-		return this.feedbackPolicy;
-	}
-
-	@Override
-	public ModelLoader getModelLoader() {
-		return this.modelLoader;
 	}
 
 	@Override

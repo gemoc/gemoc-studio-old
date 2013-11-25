@@ -1,11 +1,11 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
+import java.util.Collection;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 
-import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 /**
@@ -34,32 +34,24 @@ public interface ExecutionEngine {
 	public void run(int numberOfSteps);
 
 	/**
-	 * 
-	 * 
-	 * @return Returns the EventExecutor used by the engine.
+	 * Resets the engine and its components to its initial state.
 	 */
-	public EventExecutor getExecutor();
+	public void reset();
 
 	/**
+	 * Query to retrieve the MSEs which can be triggered by the user, in no
+	 * particular order.
 	 * 
-	 * 
-	 * @return Returns the Solver used by the engine.
+	 * @return the collection of ModelSpecificEvents which can be triggered by
+	 *         the user.
 	 */
-	public Solver getSolver();
+	public Collection<ModelSpecificEvent> getNextEvents();
 
 	/**
-	 * 
-	 * 
-	 * @return the FeedbackPolicy used by the engine.
+	 * Runs one step of the execution corresponding to an occurrence of the
+	 * given mse, which should come from the getNextEvents() result.
 	 */
-	public FeedbackPolicy getFeedbackPolicy();
-
-	/**
-	 * 
-	 * 
-	 * @return the ModelLoader used by the engine.
-	 */
-	public ModelLoader getModelLoader();
+	public void runOneStep(ModelSpecificEvent mse);
 
 	/**
 	 * API that delegates to the Solver the application of the constraints to

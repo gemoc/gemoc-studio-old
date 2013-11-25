@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.core.impl;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,12 +35,12 @@ import fr.inria.aoste.trace.Reference;
 public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
 	private List<ModelSpecificEvent> modelSpecificEvents = null;
+	private URI modelOfExecutionURI = null;
 
 	public GemocExecutionEngine(Resource domainSpecificEventsResource,
 			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 		super(domainSpecificEventsResource, solver, executor, feedbackPolicy);
 
-		
 		memorizeDomainSpecificEvents();
 
 		Activator.getMessagingSystem().info(
@@ -49,7 +50,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	private void memorizeDomainSpecificEvents() {
 		this.domainSpecificEvents = new ArrayList<DomainSpecificEvent>();
 		// TODO : parse DSE file to fill in the DSE/DSA information read
-		
+
 	}
 
 	@Override
@@ -94,7 +95,6 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 					"Model was successfully loaded: "
 							+ modelResource.toString(), Activator.PLUGIN_ID);
 
-			URI modelOfExecutionURI = null;
 			// TODO : remove when EclToCCslTranslator gets implemented.
 			try {
 				Resource modelOfExecution = this.solver
@@ -102,19 +102,23 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 								this.domainSpecificEventsResource,
 								this.modelResource);
 
-				modelOfExecutionURI = modelOfExecution.getURI();
+				this.modelOfExecutionURI = modelOfExecution.getURI();
 			} catch (NotImplementedException e) {
 				String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
-				modelOfExecutionURI = URI.createPlatformResourceURI(
+				this.modelOfExecutionURI = URI.createPlatformResourceURI(
 						modelOfExecutionFilePath, true);
 			}
-			this.solver.setModelOfExecutionFile(modelOfExecutionURI);
+			this.solver.setModelOfExecutionFile(this.modelOfExecutionURI);
 			this.modelSpecificEvents = this
-					.initializeModelSpecificEvents(modelOfExecutionURI);
+					.initializeModelSpecificEvents(this.modelOfExecutionURI);
 
 			Activator.getMessagingSystem().info(
 					"*** Engine initialization done. ***", Activator.PLUGIN_ID);
 		}
+	}
+
+	public void reset() {
+		this.solver.setModelOfExecutionFile(this.modelOfExecutionURI);
 	}
 
 	private List<ModelSpecificEvent> initializeModelSpecificEvents(
@@ -123,13 +127,13 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	}
 
 	@Override
-	protected List<ModelSpecificEvent> match(LogicalStep step) {
+	protected Collection<ModelSpecificEvent> match(LogicalStep step) {
 		Activator.getMessagingSystem().debug(
 				"Matching the given step : " + step.toString()
 						+ " containing: \n"
 						+ step.getEventOccurrences().toString(),
 				Activator.PLUGIN_ID);
-		List<ModelSpecificEvent> res = new ArrayList<ModelSpecificEvent>();
+		Collection<ModelSpecificEvent> res = new ArrayList<ModelSpecificEvent>();
 		for (EventOccurrence eventOccurrence : step.getEventOccurrences()) {
 			if (eventOccurrence.getFState() == FiredStateKind.TICK) {
 				Activator.getMessagingSystem().debug(
