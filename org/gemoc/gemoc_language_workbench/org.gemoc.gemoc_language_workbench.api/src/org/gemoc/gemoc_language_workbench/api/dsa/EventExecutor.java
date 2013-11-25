@@ -2,8 +2,9 @@ package org.gemoc.gemoc_language_workbench.api.dsa;
 
 import java.util.List;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
+import org.gemoc.gemoc_language_workbench.api.exceptions.InvokationResultConvertionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 /**
@@ -28,7 +29,8 @@ public interface EventExecutor {
 	 * @param msa
 	 * @return
 	 */
-	public FeedbackData execute(ModelSpecificAction msa);
+	public FeedbackData execute(ModelSpecificAction msa)
+			throws EventExecutionException, InvokationResultConvertionException;
 
 	/**
 	 * Executes the Domain-Specific Action(s) referenced by the given
@@ -40,6 +42,7 @@ public interface EventExecutor {
 	 * @return the results of the Domain-Specific Actions wrapped in appropriate
 	 *         FeedbackData objects.
 	 */
-	public List<FeedbackData> execute(ModelSpecificEvent dse);
+	public List<FeedbackData> execute(ModelSpecificEvent dse)
+			throws EventExecutionException, InvokationResultConvertionException;
 
 }

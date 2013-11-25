@@ -16,6 +16,7 @@ Export-Package: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.gemoc_language_workbench.api.core,
  org.gemoc.gemoc_language_workbench.api.dsa,
  org.gemoc.gemoc_language_workbench.api.dse,
+ org.gemoc.gemoc_language_workbench.api.exceptions,
  org.gemoc.gemoc_language_workbench.api.feedback,
  org.gemoc.gemoc_language_workbench.api.moc,
  org.gemoc.gemoc_language_workbench.api.utils

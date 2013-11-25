@@ -1,6 +1,9 @@
 package org.gemoc.gemoc_language_workbench.api.feedback;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
 
 /**
  * TODO : instead of doing it in Java, create a DSL for this.
@@ -19,4 +22,11 @@ public interface FeedbackPolicy {
 	 * @param solver
 	 */
 	public void processFeedback(FeedbackData feedback, ExecutionEngine engine);
+	
+	
+	public FeedbackData convertToFeedbackDataImplementation(Object o,
+			ModelSpecificAction causalAction) throws IllegalArgumentException,
+			SecurityException, InstantiationException, IllegalAccessException,
+			InvocationTargetException, NoSuchMethodException;
+
 }

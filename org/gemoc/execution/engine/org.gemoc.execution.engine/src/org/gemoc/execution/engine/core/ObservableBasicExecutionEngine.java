@@ -18,6 +18,8 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
+import org.gemoc.gemoc_language_workbench.api.exceptions.InvokationResultConvertionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -187,17 +189,43 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			this.setChanged();
 			this.notifyObservers(event.toString());
 
-			List<FeedbackData> feedbacks = this.executor.execute(event);
-			for (FeedbackData feedback : feedbacks) {
-				Activator.getMessagingSystem().debug(
-						"Feedback received: " + feedback.toString(),
+			try {
+				List<FeedbackData> feedbacks = this.executor.execute(event);
+				for (FeedbackData feedback : feedbacks) {
+					Activator.getMessagingSystem().debug(
+							"Feedback received: " + feedback.toString(),
+							Activator.PLUGIN_ID);
+					if (this.feedbackPolicy != null) {
+						this.feedbackPolicy.processFeedback(feedback, this);
+					}
+				}
+			} catch (EventExecutionException e) {
+				String errorMessage = e.getClass().getSimpleName()
+						+ " while executing this round's worth of events. Inner exception sent to the Error Log view.";
+				Activator.getMessagingSystem().error(errorMessage,
 						Activator.PLUGIN_ID);
-				this.setChanged();
-				this.notifyObservers("MSA "
-						+ feedback.getCausalAction().toString() + " returned "
-						+ feedback.toString());
-				if (this.feedbackPolicy != null) {
-					this.feedbackPolicy.processFeedback(feedback, this);
+
+				Activator.error(
+						"Inner exception: " + e.getCause().getMessage(),
+						e.getCause());
+				if (e.getCause().getCause() != null) {
+					Activator.error("Inner inner exception: "
+							+ e.getCause().getCause().getMessage(), e
+							.getCause().getCause());
+				}
+			} catch (InvokationResultConvertionException e) {
+				String errorMessage = e.getClass().getSimpleName()
+						+ " while executing this round's worth of events. Inner exception sent to the Error Log view.";
+				Activator.getMessagingSystem().error(errorMessage,
+						Activator.PLUGIN_ID);
+				Activator.error(
+						"Inner exception: " + e.getCause().getMessage(),
+						e.getCause());
+				if (e.getCause().getCause() != null) {
+					Activator.error("Inner inner exception: "
+							+ e.getCause().getCause().getMessage(), e
+							.getCause().getCause());
+
 				}
 			}
 		}
