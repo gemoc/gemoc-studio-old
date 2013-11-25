@@ -13,6 +13,13 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+/**
+ * An entity which builds an ExecutionEngine and connects it to a ControlPanel
+ * and n Backends.
+ * 
+ * @author flatombe
+ * 
+ */
 public class EngineManager {
 	private ExecutionEngine engine;
 
