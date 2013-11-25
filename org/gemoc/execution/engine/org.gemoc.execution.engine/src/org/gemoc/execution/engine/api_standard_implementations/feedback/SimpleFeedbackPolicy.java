@@ -22,6 +22,7 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 	@Override
 	public void processFeedback(FeedbackData feedbackData,
 			ExecutionEngine engine) {
+
 		Object o = feedbackData.getContent();
 		if (o instanceof Byte) {
 			Activator.getMessagingSystem().warn(
@@ -67,6 +68,7 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 			// solver.forbidEventOccurrenceReferencing(targetToForce);
 			// }
 			// }
+
 
 		} else if (o instanceof Character) {
 			Activator.getMessagingSystem().warn(

@@ -198,6 +198,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 						+ " while executing this round's worth of events. Inner exception sent to the Error Log view.";
 				Activator.getMessagingSystem().error(errorMessage,
 						Activator.PLUGIN_ID);
+
 				Activator.error(
 						"Inner exception: " + e.getCause().getMessage(),
 						e.getCause());
@@ -218,6 +219,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 					Activator.error("Inner inner exception: "
 							+ e.getCause().getCause().getMessage(), e
 							.getCause().getCause());
+
 				}
 			}
 		}
