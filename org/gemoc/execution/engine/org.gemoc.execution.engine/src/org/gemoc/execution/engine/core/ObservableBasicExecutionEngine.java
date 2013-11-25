@@ -193,6 +193,9 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			// The MSE has been chosen beforehand (via controlpanel)
 			events = new ArrayList<ModelSpecificEvent>();
 			events.add(mse);
+			this.setChanged();
+			this.notifyObservers("User required execution of MSE: " + mse.getName()
+					+ ")");
 		} else {
 			// The MSE has not been chosen beforehand, so it's more of an
 			// automatic mode.
