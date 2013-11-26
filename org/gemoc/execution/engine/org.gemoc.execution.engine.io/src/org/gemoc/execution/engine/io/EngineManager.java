@@ -27,7 +27,7 @@ public class EngineManager {
 			EventExecutor executor, FeedbackPolicy feedbackPolicy,
 			String modelPath, ModelLoader modelLoader,
 			ControlPanel controlPanel, List<Backend> backends) {
-
+	
 		// Initialization of the Execution Engine
 		this.engine = new GemocExecutionEngine(domainSpecificEventsResource,
 				solver, executor, feedbackPolicy);

@@ -96,13 +96,14 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 							+ modelResource.toString(), Activator.PLUGIN_ID);
 
 			// TODO : remove when EclToCCslTranslator gets implemented.
-			try {
+			try {				
 				Resource modelOfExecution = this.solver
 						.getModelOfExecutionBuilder().build(
 								this.domainSpecificEventsResource,
 								this.modelResource);
 
 				this.modelOfExecutionURI = modelOfExecution.getURI();
+				
 			} catch (NotImplementedException e) {
 				String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
 				this.modelOfExecutionURI = URI.createPlatformResourceURI(

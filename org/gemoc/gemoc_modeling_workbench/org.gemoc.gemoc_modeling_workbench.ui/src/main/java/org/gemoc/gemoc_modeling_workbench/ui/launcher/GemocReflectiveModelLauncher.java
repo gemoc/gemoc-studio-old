@@ -136,7 +136,7 @@ public class GemocReflectiveModelLauncher implements
 		this.reactToNull(domainSpecificEventsResource,
 				"Domain Specific Events Resource");
 		this.reactToNull(modelLoader, "Model Loader");
-
+		
 		// try {
 		// // Language-level instanciation of the engine
 		// ExecutionEngine engine = new GemocExecutionEngine(
