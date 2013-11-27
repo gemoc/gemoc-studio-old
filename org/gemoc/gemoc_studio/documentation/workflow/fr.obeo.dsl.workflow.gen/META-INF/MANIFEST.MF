@@ -19,5 +19,6 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
-Export-Package: fr.obeo.dsl.workflow.gen.main
+Export-Package: fr.obeo.dsl.workflow.gen,
+ fr.obeo.dsl.workflow.gen.main
 
