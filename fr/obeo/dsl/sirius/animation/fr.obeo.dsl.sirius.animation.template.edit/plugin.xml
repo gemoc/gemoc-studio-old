@@ -24,5 +24,11 @@
             class="fr.obeo.dsl.sirius.animationtemplate.FreeDiagramTemplateEdit">
       </dialectUI>
    </extension>
+   <extension
+         point="fr.obeo.dsl.viewpoint.ui.representationTemplateEdit">
+      <dialectUI
+            class="fr.obeo.dsl.sirius.animationtemplate.AnimationTemplateEdit">
+      </dialectUI>
+   </extension>
 
 </plugin>
