@@ -60,7 +60,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			ResourceSet resSet = new ResourceSetImpl();
 			domainSpecificEventsResource = resSet
 					.getResource(
-							URI.createURI("platform:/resource/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl"),
+							URI.createURI("platform:/resource/org.gemoc.sample.tfsm.dse/ecl/TFSM.ecl"),
 							true);
 		}
 
