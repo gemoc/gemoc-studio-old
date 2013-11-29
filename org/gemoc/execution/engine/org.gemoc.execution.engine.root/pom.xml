@@ -9,6 +9,7 @@
 		<!-- plugins -->
 		<module>../org.gemoc.execution.engine</module>
 		<module>../org.gemoc.execution.engine.commons</module>
+		<module>../org.gemoc.execution.engine.io</module>
 		<!-- <module>../org.gemoc.execution.engine.launcher</module>
 		<module>../org.gemoc.execution.javasolver</module>-->
 		<!-- <module>../org.gemoc.execution.engine.executors.emf</module>
