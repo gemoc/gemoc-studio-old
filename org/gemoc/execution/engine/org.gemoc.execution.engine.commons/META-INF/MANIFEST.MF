@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.commons.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.emf.ecore;bundle-version="2.9.1",
+ org.eclipse.emf.ecore,
  org.kermeta.utils.systemservices.api,
  org.kermeta.utils.systemservices.eclipse,
  org.gemoc.gemoc_language_workbench.api,
