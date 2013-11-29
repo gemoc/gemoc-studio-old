@@ -8,6 +8,7 @@
 	<modules>
 		<!-- plugins -->
 		<module>../org.gemoc.gemoc_modeling_workbench.ui</module>
+		<module>../org.gemoc.gemoc_modeling_workbench.sample.deployer</module>
 
 		<!-- feature and update site -->
 		<module>../org.gemoc.gemoc_modeling_workbench.feature</module>
@@ -40,6 +41,11 @@
 			<layout>p2</layout>
 			<url>http://www.obeo.fr/download/eclipse/juno-3.8</url>
 		</repository>
+		<repository>
+            <id>emf2.9.x</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
+        </repository>
 		<!-- <repository>
 			<id>kermeta2-latest-stable</id>
 			<layout>p2</layout>

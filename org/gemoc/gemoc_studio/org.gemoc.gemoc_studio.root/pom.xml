@@ -82,6 +82,16 @@
             <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_modeling_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_modeling_workbench/org.gemoc.gemoc_modeling_workbench.p2updatesite/target/repository/</url>
         </repository>
         <repository>
+        	<id>gemoc_execution_engine-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository/</url>
+        </repository>
+        <repository>
+        	<id>gemoc_timesquare_backend-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.timesquare.facilities.root/lastSuccessfulBuild/artifact/org/gemoc/execution/TimeSquare/facilities/org.gemoc.execution.timesquare.facilities.p2updatesite/target/repository/</url>
+        </repository>
+        <repository>
             <id>timesquare ECL</id>
             <layout>p2</layout>
             <url>http://timesquare.inria.fr/ecl/update_site</url>
@@ -105,6 +115,11 @@
             <id>Xtext All In One - Releases</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+        </repository>
+        <repository>
+            <id>emf2.9.x</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
         </repository>
     </repositories>
 

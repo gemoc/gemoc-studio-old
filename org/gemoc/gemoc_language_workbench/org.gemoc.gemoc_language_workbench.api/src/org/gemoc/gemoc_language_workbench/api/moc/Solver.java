@@ -51,6 +51,15 @@ public interface Solver {
 	public LogicalStep getNextStep();
 
 	/**
+	 * Returns the facility that allows the Execution Engine to instanciate the
+	 * Domain-Specific Events into Model-Specific Events in a format
+	 * understandable for this solver.
+	 * 
+	 * @return the ModelOfExecutionBuilder for this solver.
+	 */
+	public ModelOfExecutionBuilder getModelOfExecutionBuilder();
+
+	/**
 	 * Sets the model of execution (constraints instanciated for the model) for
 	 * this solver. We use a file URI to allow different formats.
 	 * 

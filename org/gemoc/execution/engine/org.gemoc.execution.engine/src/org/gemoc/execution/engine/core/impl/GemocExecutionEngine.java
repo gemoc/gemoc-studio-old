@@ -3,27 +3,28 @@ package org.gemoc.execution.engine.core.impl;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_standard_implementations.dsa.ModelAction;
 import org.gemoc.execution.engine.api_standard_implementations.dse.ModelEvent;
-import org.gemoc.execution.engine.commons.dsa.sentinels.EmfBytecodeSentinel;
-import org.gemoc.execution.engine.core.BasicExecutionEngine;
+import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
-import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
-import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
@@ -31,64 +32,110 @@ import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.Reference;
 
-public class GemocExecutionEngine extends BasicExecutionEngine {
+public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
-	public GemocExecutionEngine(LanguageInitializer languageInitializer,
-			ModelLoader modelLoader, Resource domainSpecificEventsResource,
-			ModelOfExecutionBuilder modelOfExecutionBuilder, Solver solver,
-			EventExecutor executor, FeedbackPolicy feedbackPolicy)
-			throws CoreException {
-		super(languageInitializer, modelLoader, domainSpecificEventsResource,
-				modelOfExecutionBuilder, solver, executor, feedbackPolicy);
+	private List<ModelSpecificEvent> modelSpecificEvents = null;
+	private URI modelOfExecutionURI = null;
 
-		// TODO : parse DSE file to fill in the DSE/DSA information read
+	public GemocExecutionEngine(Resource domainSpecificEventsResource,
+			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
+		super(domainSpecificEventsResource, solver, executor, feedbackPolicy);
+
+		memorizeDomainSpecificEvents();
 
 		Activator.getMessagingSystem().info(
 				"*** Engine construction done. ***", Activator.PLUGIN_ID);
 	}
 
-	@Override
-	public void initialize(String modelURI) {
-		Activator.getMessagingSystem().info(
-				"Initializing GemocExecutionEngine with...",
-				Activator.PLUGIN_ID);
-		Activator.getMessagingSystem().info("\tmodelURI: " + modelURI,
-				Activator.PLUGIN_ID);
+	private void memorizeDomainSpecificEvents() {
+		this.domainSpecificEvents = new ArrayList<DomainSpecificEvent>();
+		// TODO : parse DSE file to fill in the DSE/DSA information read
 
-		this.modelResource = this.modelLoader.loadModel(modelURI);
-		this.executor.setModel(this.modelResource);
-		Activator.getMessagingSystem().info(
-				"Model was successfully loaded: " + modelResource.toString(),
-				Activator.PLUGIN_ID);
-
-		// TODO: do something with the DSE file and the model.
-		// Programatically generate the .extendedCCSL.
-		Resource modelOfExecution = this.modelOfExecutionBuilder.build(
-				this.domainSpecificEventsResource, this.modelResource);
-
-		// String modelOfExecutionFilePath =
-		// "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";
-		//String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_RendezVous.extendedCCSL";
-		String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
-
-		URI modelOfExecutionURI = URI.createPlatformResourceURI(
-				modelOfExecutionFilePath, true);
-		// URI modelOfExecutionURI = modelOfExecution.getURI();
-
-		this.solver.setModelOfExecutionFile(modelOfExecutionURI);
-
-		Activator.getMessagingSystem().info(
-				"*** Engine initialization done. ***", Activator.PLUGIN_ID);
 	}
 
 	@Override
-	protected List<ModelSpecificEvent> match(LogicalStep step) {
+	public void initialize(String modelURI, ModelLoader modelLoader) {
+		Activator.getMessagingSystem().info(
+				"Verifying input before instanciating GemocExecutionEngine...",
+				Activator.PLUGIN_ID);
+
+		// modelURI cannot be null or "", modelLoader cannot be null.
+		if (modelURI == null | modelLoader == null | modelURI.isEmpty()) {
+			String exceptionMessage = "";
+			if (modelURI == null) {
+				exceptionMessage += "modelURI is null, ";
+			}
+			if (modelLoader == null) {
+				exceptionMessage += "modelLoader is null, ";
+			}
+			if (modelURI.isEmpty()) {
+				exceptionMessage += "modelURI is empty, ";
+			}
+			Activator.getMessagingSystem().info(
+					"...NOK. Throwing NullPointerException.",
+					Activator.PLUGIN_ID);
+			throw new NullPointerException(exceptionMessage);
+		} else {
+
+			Activator.getMessagingSystem().info(
+					"...OK. Initializing GemocExecutionEngine with...",
+					Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().info("\tmodelURI: " + modelURI,
+					Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().info(
+					"\tmodelLoader: " + modelLoader, Activator.PLUGIN_ID);
+
+			this.modelStringURI = modelURI;
+			this.modelLoader = modelLoader;
+
+			// Create the modelResource from the modelLoader and the modelURI.
+			this.modelResource = this.modelLoader.loadModel(modelURI);
+
+			Activator.getMessagingSystem().info(
+					"Model was successfully loaded: "
+							+ modelResource.toString(), Activator.PLUGIN_ID);
+
+			// TODO : remove when EclToCCslTranslator gets implemented.
+			try {
+				Resource modelOfExecution = this.solver
+						.getModelOfExecutionBuilder().build(
+								this.domainSpecificEventsResource,
+								this.modelResource);
+
+				this.modelOfExecutionURI = modelOfExecution.getURI();
+			} catch (NotImplementedException e) {
+				String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
+				this.modelOfExecutionURI = URI.createPlatformResourceURI(
+						modelOfExecutionFilePath, true);
+			}
+			this.solver.setModelOfExecutionFile(this.modelOfExecutionURI);
+			this.modelSpecificEvents = this
+					.initializeModelSpecificEvents(this.modelOfExecutionURI);
+
+			Activator.getMessagingSystem().info(
+					"*** Engine initialization done. ***", Activator.PLUGIN_ID);
+		}
+	}
+
+	public void reset() {
+		this.solver.setModelOfExecutionFile(this.modelOfExecutionURI);
+		this.setChanged();
+		this.notifyObservers(">Reset!");
+	}
+
+	private List<ModelSpecificEvent> initializeModelSpecificEvents(
+			URI modelOfExecutionURI) {
+		return new ArrayList<ModelSpecificEvent>();
+	}
+
+	@Override
+	protected Collection<ModelSpecificEvent> match(LogicalStep step) {
 		Activator.getMessagingSystem().debug(
 				"Matching the given step : " + step.toString()
 						+ " containing: \n"
 						+ step.getEventOccurrences().toString(),
 				Activator.PLUGIN_ID);
-		List<ModelSpecificEvent> res = new ArrayList<ModelSpecificEvent>();
+		Collection<ModelSpecificEvent> res = new ArrayList<ModelSpecificEvent>();
 		for (EventOccurrence eventOccurrence : step.getEventOccurrences()) {
 			if (eventOccurrence.getFState() == FiredStateKind.TICK) {
 				Activator.getMessagingSystem().debug(
@@ -126,6 +173,22 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		return res;
 	}
 
+	public EObject getEObjectFromQualifiedName(Resource modelResource,
+			String qualifiedName) throws SecurityException,
+			IllegalArgumentException, NoSuchMethodException,
+			IllegalAccessException, InvocationTargetException {
+
+		Iterator<EObject> iterator = modelResource.getAllContents();// this.modelResource.getContents().get(0).eAllContents();
+		EObject res = null;
+		while (iterator.hasNext() & res == null) {
+			EObject modelElement = iterator.next();
+			if (this.getQualifiedName(modelElement).equals(qualifiedName)) {
+				res = modelElement;
+			}
+		}
+		return res;
+	}
+
 	private EObject getEObjectFromReference(Reference reference) {
 
 		EList<EObject> elements = ((ModelElementReference) reference)
@@ -136,9 +199,8 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 		} else if (reference instanceof NamedReference) {
 			// Returns EObject thanks to its qualified name
 			try {
-				EObject res = new EmfBytecodeSentinel(modelResource)
-						.getEObjectFromQualifiedName((((NamedReference) reference)
-								.getValue()));
+				EObject res = getEObjectFromQualifiedName(this.modelResource,
+						(((NamedReference) reference).getValue()));
 				Activator.getMessagingSystem().debug("Returning :" + res,
 						Activator.PLUGIN_ID);
 				return res;
@@ -192,10 +254,6 @@ public class GemocExecutionEngine extends BasicExecutionEngine {
 			throw new RuntimeException(
 					"Context reference is neither a ModelElementReference nor a NamedElementReference");
 		}
-	}
-
-	private String getNameOfEObject(EObject eo) {
-		return this.getQualifiedName(eo);
 	}
 
 	private String getQualifiedName(EObject eo) {

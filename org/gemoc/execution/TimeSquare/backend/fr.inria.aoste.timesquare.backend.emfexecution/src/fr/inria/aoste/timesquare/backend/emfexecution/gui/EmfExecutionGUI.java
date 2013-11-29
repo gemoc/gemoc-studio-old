@@ -55,7 +55,7 @@ public class EmfExecutionGUI extends BehaviorManagerGUI {
 
 	private ITreeContentProvider fContentProvider = new WorkbenchContentProvider();
 
-	private String message = "choose the model to execute";
+	private String message = "choose the configuration file";
 
 	private TreeViewer fViewer;
 
@@ -108,7 +108,7 @@ public class EmfExecutionGUI extends BehaviorManagerGUI {
 			}
 		});
 
-		//fViewer.addFilter(new FileExtensionFilter(new String[] { "xdsml" }));
+		fViewer.addFilter(new FileExtensionFilter(new String[] { "emfExecConf" }));
 		fValidator = new SelectionConfFile();
 		fViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {

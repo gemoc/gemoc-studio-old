@@ -22,13 +22,12 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalEmfExecutionConfigurationParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'When'", "'DSA'", "'returns'", "'true'", "'avoid'", "';'", "'import'", "'importJar'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'When'", "'DSA'", "'returns'", "'true'", "'avoid'", "';'", "'import'"
     };
     public static final int RULE_ID=4;
     public static final int RULE_STRING=5;
     public static final int T__16=16;
     public static final int T__15=15;
-    public static final int T__18=18;
     public static final int T__17=17;
     public static final int T__12=12;
     public static final int T__11=11;
@@ -309,99 +308,22 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
     // $ANTLR end "ruleImportStatement"
 
 
-    // $ANTLR start "entryRuleJarImportStatement"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:144:1: entryRuleJarImportStatement : ruleJarImportStatement EOF ;
-    public final void entryRuleJarImportStatement() throws RecognitionException {
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:145:1: ( ruleJarImportStatement EOF )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:146:1: ruleJarImportStatement EOF
-            {
-             before(grammarAccess.getJarImportStatementRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleJarImportStatement_in_entryRuleJarImportStatement241);
-            ruleJarImportStatement();
-
-            state._fsp--;
-
-             after(grammarAccess.getJarImportStatementRule()); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleJarImportStatement248); 
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRuleJarImportStatement"
-
-
-    // $ANTLR start "ruleJarImportStatement"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:153:1: ruleJarImportStatement : ( ( rule__JarImportStatement__Group__0 ) ) ;
-    public final void ruleJarImportStatement() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:157:2: ( ( ( rule__JarImportStatement__Group__0 ) ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:158:1: ( ( rule__JarImportStatement__Group__0 ) )
-            {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:158:1: ( ( rule__JarImportStatement__Group__0 ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:159:1: ( rule__JarImportStatement__Group__0 )
-            {
-             before(grammarAccess.getJarImportStatementAccess().getGroup()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:160:1: ( rule__JarImportStatement__Group__0 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:160:2: rule__JarImportStatement__Group__0
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__JarImportStatement__Group__0_in_ruleJarImportStatement274);
-            rule__JarImportStatement__Group__0();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getJarImportStatementAccess().getGroup()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "ruleJarImportStatement"
-
-
     // $ANTLR start "rule__EMFExecutionConfiguration__Group__0"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:174:1: rule__EMFExecutionConfiguration__Group__0 : rule__EMFExecutionConfiguration__Group__0__Impl rule__EMFExecutionConfiguration__Group__1 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:148:1: rule__EMFExecutionConfiguration__Group__0 : rule__EMFExecutionConfiguration__Group__0__Impl rule__EMFExecutionConfiguration__Group__1 ;
     public final void rule__EMFExecutionConfiguration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:178:1: ( rule__EMFExecutionConfiguration__Group__0__Impl rule__EMFExecutionConfiguration__Group__1 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:179:2: rule__EMFExecutionConfiguration__Group__0__Impl rule__EMFExecutionConfiguration__Group__1
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:152:1: ( rule__EMFExecutionConfiguration__Group__0__Impl rule__EMFExecutionConfiguration__Group__1 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:153:2: rule__EMFExecutionConfiguration__Group__0__Impl rule__EMFExecutionConfiguration__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__Group__0__Impl_in_rule__EMFExecutionConfiguration__Group__0308);
+            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__Group__0__Impl_in_rule__EMFExecutionConfiguration__Group__0250);
             rule__EMFExecutionConfiguration__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__Group__1_in_rule__EMFExecutionConfiguration__Group__0311);
+            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__Group__1_in_rule__EMFExecutionConfiguration__Group__0253);
             rule__EMFExecutionConfiguration__Group__1();
 
             state._fsp--;
@@ -425,26 +347,26 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__EMFExecutionConfiguration__Group__0__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:186:1: rule__EMFExecutionConfiguration__Group__0__Impl : ( ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* ) ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:160:1: rule__EMFExecutionConfiguration__Group__0__Impl : ( ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* ) ) ;
     public final void rule__EMFExecutionConfiguration__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:190:1: ( ( ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* ) ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:191:1: ( ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:164:1: ( ( ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* ) ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:165:1: ( ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* ) )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:191:1: ( ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:192:1: ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:165:1: ( ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:166:1: ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) ) ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:192:1: ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:193:1: ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:166:1: ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:167:1: ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )
             {
              before(grammarAccess.getEMFExecutionConfigurationAccess().getImportsAssignment_0()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:194:1: ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:194:2: rule__EMFExecutionConfiguration__ImportsAssignment_0
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:168:1: ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:168:2: rule__EMFExecutionConfiguration__ImportsAssignment_0
             {
-            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__ImportsAssignment_0_in_rule__EMFExecutionConfiguration__Group__0__Impl340);
+            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__ImportsAssignment_0_in_rule__EMFExecutionConfiguration__Group__0__Impl282);
             rule__EMFExecutionConfiguration__ImportsAssignment_0();
 
             state._fsp--;
@@ -456,11 +378,11 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
             }
 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:197:1: ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:198:1: ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )*
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:171:1: ( ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )* )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:172:1: ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )*
             {
              before(grammarAccess.getEMFExecutionConfigurationAccess().getImportsAssignment_0()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:199:1: ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )*
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:173:1: ( rule__EMFExecutionConfiguration__ImportsAssignment_0 )*
             loop1:
             do {
                 int alt1=2;
@@ -473,9 +395,9 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
                 switch (alt1) {
             	case 1 :
-            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:199:2: rule__EMFExecutionConfiguration__ImportsAssignment_0
+            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:173:2: rule__EMFExecutionConfiguration__ImportsAssignment_0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__ImportsAssignment_0_in_rule__EMFExecutionConfiguration__Group__0__Impl352);
+            	    pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__ImportsAssignment_0_in_rule__EMFExecutionConfiguration__Group__0__Impl294);
             	    rule__EMFExecutionConfiguration__ImportsAssignment_0();
 
             	    state._fsp--;
@@ -515,22 +437,17 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__EMFExecutionConfiguration__Group__1"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:210:1: rule__EMFExecutionConfiguration__Group__1 : rule__EMFExecutionConfiguration__Group__1__Impl rule__EMFExecutionConfiguration__Group__2 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:184:1: rule__EMFExecutionConfiguration__Group__1 : rule__EMFExecutionConfiguration__Group__1__Impl ;
     public final void rule__EMFExecutionConfiguration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:214:1: ( rule__EMFExecutionConfiguration__Group__1__Impl rule__EMFExecutionConfiguration__Group__2 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:215:2: rule__EMFExecutionConfiguration__Group__1__Impl rule__EMFExecutionConfiguration__Group__2
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:188:1: ( rule__EMFExecutionConfiguration__Group__1__Impl )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:189:2: rule__EMFExecutionConfiguration__Group__1__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__Group__1__Impl_in_rule__EMFExecutionConfiguration__Group__1385);
+            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__Group__1__Impl_in_rule__EMFExecutionConfiguration__Group__1327);
             rule__EMFExecutionConfiguration__Group__1__Impl();
-
-            state._fsp--;
-
-            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__Group__2_in_rule__EMFExecutionConfiguration__Group__1388);
-            rule__EMFExecutionConfiguration__Group__2();
 
             state._fsp--;
 
@@ -553,31 +470,49 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__EMFExecutionConfiguration__Group__1__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:222:1: rule__EMFExecutionConfiguration__Group__1__Impl : ( ( rule__EMFExecutionConfiguration__JarImportStatementAssignment_1 ) ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:195:1: rule__EMFExecutionConfiguration__Group__1__Impl : ( ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1 )* ) ;
     public final void rule__EMFExecutionConfiguration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:226:1: ( ( ( rule__EMFExecutionConfiguration__JarImportStatementAssignment_1 ) ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:227:1: ( ( rule__EMFExecutionConfiguration__JarImportStatementAssignment_1 ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:199:1: ( ( ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1 )* ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:200:1: ( ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1 )* )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:227:1: ( ( rule__EMFExecutionConfiguration__JarImportStatementAssignment_1 ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:228:1: ( rule__EMFExecutionConfiguration__JarImportStatementAssignment_1 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:200:1: ( ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1 )* )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:201:1: ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1 )*
             {
-             before(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementAssignment_1()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:229:1: ( rule__EMFExecutionConfiguration__JarImportStatementAssignment_1 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:229:2: rule__EMFExecutionConfiguration__JarImportStatementAssignment_1
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__JarImportStatementAssignment_1_in_rule__EMFExecutionConfiguration__Group__1__Impl415);
-            rule__EMFExecutionConfiguration__JarImportStatementAssignment_1();
+             before(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_1()); 
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:202:1: ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1 )*
+            loop2:
+            do {
+                int alt2=2;
+                int LA2_0 = input.LA(1);
 
-            state._fsp--;
+                if ( (LA2_0==11) ) {
+                    alt2=1;
+                }
 
 
-            }
+                switch (alt2) {
+            	case 1 :
+            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:202:2: rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1
+            	    {
+            	    pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1_in_rule__EMFExecutionConfiguration__Group__1__Impl354);
+            	    rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1();
 
-             after(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementAssignment_1()); 
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop2;
+                }
+            } while (true);
+
+             after(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_1()); 
 
             }
 
@@ -599,120 +534,22 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
     // $ANTLR end "rule__EMFExecutionConfiguration__Group__1__Impl"
 
 
-    // $ANTLR start "rule__EMFExecutionConfiguration__Group__2"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:239:1: rule__EMFExecutionConfiguration__Group__2 : rule__EMFExecutionConfiguration__Group__2__Impl ;
-    public final void rule__EMFExecutionConfiguration__Group__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:243:1: ( rule__EMFExecutionConfiguration__Group__2__Impl )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:244:2: rule__EMFExecutionConfiguration__Group__2__Impl
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__Group__2__Impl_in_rule__EMFExecutionConfiguration__Group__2445);
-            rule__EMFExecutionConfiguration__Group__2__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__EMFExecutionConfiguration__Group__2"
-
-
-    // $ANTLR start "rule__EMFExecutionConfiguration__Group__2__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:250:1: rule__EMFExecutionConfiguration__Group__2__Impl : ( ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2 )* ) ;
-    public final void rule__EMFExecutionConfiguration__Group__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:254:1: ( ( ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2 )* ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:255:1: ( ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2 )* )
-            {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:255:1: ( ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2 )* )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:256:1: ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2 )*
-            {
-             before(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_2()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:257:1: ( rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2 )*
-            loop2:
-            do {
-                int alt2=2;
-                int LA2_0 = input.LA(1);
-
-                if ( (LA2_0==11) ) {
-                    alt2=1;
-                }
-
-
-                switch (alt2) {
-            	case 1 :
-            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:257:2: rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2
-            	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2_in_rule__EMFExecutionConfiguration__Group__2__Impl472);
-            	    rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop2;
-                }
-            } while (true);
-
-             after(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_2()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__EMFExecutionConfiguration__Group__2__Impl"
-
-
     // $ANTLR start "rule__ForcedClockMapping__Group__0"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:273:1: rule__ForcedClockMapping__Group__0 : rule__ForcedClockMapping__Group__0__Impl rule__ForcedClockMapping__Group__1 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:216:1: rule__ForcedClockMapping__Group__0 : rule__ForcedClockMapping__Group__0__Impl rule__ForcedClockMapping__Group__1 ;
     public final void rule__ForcedClockMapping__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:277:1: ( rule__ForcedClockMapping__Group__0__Impl rule__ForcedClockMapping__Group__1 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:278:2: rule__ForcedClockMapping__Group__0__Impl rule__ForcedClockMapping__Group__1
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:220:1: ( rule__ForcedClockMapping__Group__0__Impl rule__ForcedClockMapping__Group__1 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:221:2: rule__ForcedClockMapping__Group__0__Impl rule__ForcedClockMapping__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__0__Impl_in_rule__ForcedClockMapping__Group__0509);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__0__Impl_in_rule__ForcedClockMapping__Group__0389);
             rule__ForcedClockMapping__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__1_in_rule__ForcedClockMapping__Group__0512);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__1_in_rule__ForcedClockMapping__Group__0392);
             rule__ForcedClockMapping__Group__1();
 
             state._fsp--;
@@ -736,20 +573,20 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__0__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:285:1: rule__ForcedClockMapping__Group__0__Impl : ( 'When' ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:228:1: rule__ForcedClockMapping__Group__0__Impl : ( 'When' ) ;
     public final void rule__ForcedClockMapping__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:289:1: ( ( 'When' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:290:1: ( 'When' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:232:1: ( ( 'When' ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:233:1: ( 'When' )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:290:1: ( 'When' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:291:1: 'When'
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:233:1: ( 'When' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:234:1: 'When'
             {
              before(grammarAccess.getForcedClockMappingAccess().getWhenKeyword_0()); 
-            match(input,11,FollowSets000.FOLLOW_11_in_rule__ForcedClockMapping__Group__0__Impl540); 
+            match(input,11,FollowSets000.FOLLOW_11_in_rule__ForcedClockMapping__Group__0__Impl420); 
              after(grammarAccess.getForcedClockMappingAccess().getWhenKeyword_0()); 
 
             }
@@ -773,21 +610,21 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__1"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:304:1: rule__ForcedClockMapping__Group__1 : rule__ForcedClockMapping__Group__1__Impl rule__ForcedClockMapping__Group__2 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:247:1: rule__ForcedClockMapping__Group__1 : rule__ForcedClockMapping__Group__1__Impl rule__ForcedClockMapping__Group__2 ;
     public final void rule__ForcedClockMapping__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:308:1: ( rule__ForcedClockMapping__Group__1__Impl rule__ForcedClockMapping__Group__2 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:309:2: rule__ForcedClockMapping__Group__1__Impl rule__ForcedClockMapping__Group__2
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:251:1: ( rule__ForcedClockMapping__Group__1__Impl rule__ForcedClockMapping__Group__2 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:252:2: rule__ForcedClockMapping__Group__1__Impl rule__ForcedClockMapping__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__1__Impl_in_rule__ForcedClockMapping__Group__1571);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__1__Impl_in_rule__ForcedClockMapping__Group__1451);
             rule__ForcedClockMapping__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__2_in_rule__ForcedClockMapping__Group__1574);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__2_in_rule__ForcedClockMapping__Group__1454);
             rule__ForcedClockMapping__Group__2();
 
             state._fsp--;
@@ -811,23 +648,23 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__1__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:316:1: rule__ForcedClockMapping__Group__1__Impl : ( ( rule__ForcedClockMapping__ClockAssignment_1 ) ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:259:1: rule__ForcedClockMapping__Group__1__Impl : ( ( rule__ForcedClockMapping__ClockAssignment_1 ) ) ;
     public final void rule__ForcedClockMapping__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:320:1: ( ( ( rule__ForcedClockMapping__ClockAssignment_1 ) ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:321:1: ( ( rule__ForcedClockMapping__ClockAssignment_1 ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:263:1: ( ( ( rule__ForcedClockMapping__ClockAssignment_1 ) ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:264:1: ( ( rule__ForcedClockMapping__ClockAssignment_1 ) )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:321:1: ( ( rule__ForcedClockMapping__ClockAssignment_1 ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:322:1: ( rule__ForcedClockMapping__ClockAssignment_1 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:264:1: ( ( rule__ForcedClockMapping__ClockAssignment_1 ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:265:1: ( rule__ForcedClockMapping__ClockAssignment_1 )
             {
              before(grammarAccess.getForcedClockMappingAccess().getClockAssignment_1()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:323:1: ( rule__ForcedClockMapping__ClockAssignment_1 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:323:2: rule__ForcedClockMapping__ClockAssignment_1
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:266:1: ( rule__ForcedClockMapping__ClockAssignment_1 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:266:2: rule__ForcedClockMapping__ClockAssignment_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__ClockAssignment_1_in_rule__ForcedClockMapping__Group__1__Impl601);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__ClockAssignment_1_in_rule__ForcedClockMapping__Group__1__Impl481);
             rule__ForcedClockMapping__ClockAssignment_1();
 
             state._fsp--;
@@ -858,21 +695,21 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__2"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:333:1: rule__ForcedClockMapping__Group__2 : rule__ForcedClockMapping__Group__2__Impl rule__ForcedClockMapping__Group__3 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:276:1: rule__ForcedClockMapping__Group__2 : rule__ForcedClockMapping__Group__2__Impl rule__ForcedClockMapping__Group__3 ;
     public final void rule__ForcedClockMapping__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:337:1: ( rule__ForcedClockMapping__Group__2__Impl rule__ForcedClockMapping__Group__3 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:338:2: rule__ForcedClockMapping__Group__2__Impl rule__ForcedClockMapping__Group__3
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:280:1: ( rule__ForcedClockMapping__Group__2__Impl rule__ForcedClockMapping__Group__3 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:281:2: rule__ForcedClockMapping__Group__2__Impl rule__ForcedClockMapping__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__2__Impl_in_rule__ForcedClockMapping__Group__2631);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__2__Impl_in_rule__ForcedClockMapping__Group__2511);
             rule__ForcedClockMapping__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__3_in_rule__ForcedClockMapping__Group__2634);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__3_in_rule__ForcedClockMapping__Group__2514);
             rule__ForcedClockMapping__Group__3();
 
             state._fsp--;
@@ -896,20 +733,20 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__2__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:345:1: rule__ForcedClockMapping__Group__2__Impl : ( 'DSA' ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:288:1: rule__ForcedClockMapping__Group__2__Impl : ( 'DSA' ) ;
     public final void rule__ForcedClockMapping__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:349:1: ( ( 'DSA' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:350:1: ( 'DSA' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:292:1: ( ( 'DSA' ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:293:1: ( 'DSA' )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:350:1: ( 'DSA' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:351:1: 'DSA'
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:293:1: ( 'DSA' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:294:1: 'DSA'
             {
              before(grammarAccess.getForcedClockMappingAccess().getDSAKeyword_2()); 
-            match(input,12,FollowSets000.FOLLOW_12_in_rule__ForcedClockMapping__Group__2__Impl662); 
+            match(input,12,FollowSets000.FOLLOW_12_in_rule__ForcedClockMapping__Group__2__Impl542); 
              after(grammarAccess.getForcedClockMappingAccess().getDSAKeyword_2()); 
 
             }
@@ -933,21 +770,21 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__3"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:364:1: rule__ForcedClockMapping__Group__3 : rule__ForcedClockMapping__Group__3__Impl rule__ForcedClockMapping__Group__4 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:307:1: rule__ForcedClockMapping__Group__3 : rule__ForcedClockMapping__Group__3__Impl rule__ForcedClockMapping__Group__4 ;
     public final void rule__ForcedClockMapping__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:368:1: ( rule__ForcedClockMapping__Group__3__Impl rule__ForcedClockMapping__Group__4 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:369:2: rule__ForcedClockMapping__Group__3__Impl rule__ForcedClockMapping__Group__4
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:311:1: ( rule__ForcedClockMapping__Group__3__Impl rule__ForcedClockMapping__Group__4 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:312:2: rule__ForcedClockMapping__Group__3__Impl rule__ForcedClockMapping__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__3__Impl_in_rule__ForcedClockMapping__Group__3693);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__3__Impl_in_rule__ForcedClockMapping__Group__3573);
             rule__ForcedClockMapping__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__4_in_rule__ForcedClockMapping__Group__3696);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__4_in_rule__ForcedClockMapping__Group__3576);
             rule__ForcedClockMapping__Group__4();
 
             state._fsp--;
@@ -971,20 +808,20 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__3__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:376:1: rule__ForcedClockMapping__Group__3__Impl : ( 'returns' ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:319:1: rule__ForcedClockMapping__Group__3__Impl : ( 'returns' ) ;
     public final void rule__ForcedClockMapping__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:380:1: ( ( 'returns' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:381:1: ( 'returns' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:323:1: ( ( 'returns' ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:324:1: ( 'returns' )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:381:1: ( 'returns' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:382:1: 'returns'
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:324:1: ( 'returns' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:325:1: 'returns'
             {
              before(grammarAccess.getForcedClockMappingAccess().getReturnsKeyword_3()); 
-            match(input,13,FollowSets000.FOLLOW_13_in_rule__ForcedClockMapping__Group__3__Impl724); 
+            match(input,13,FollowSets000.FOLLOW_13_in_rule__ForcedClockMapping__Group__3__Impl604); 
              after(grammarAccess.getForcedClockMappingAccess().getReturnsKeyword_3()); 
 
             }
@@ -1008,21 +845,21 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__4"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:395:1: rule__ForcedClockMapping__Group__4 : rule__ForcedClockMapping__Group__4__Impl rule__ForcedClockMapping__Group__5 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:338:1: rule__ForcedClockMapping__Group__4 : rule__ForcedClockMapping__Group__4__Impl rule__ForcedClockMapping__Group__5 ;
     public final void rule__ForcedClockMapping__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:399:1: ( rule__ForcedClockMapping__Group__4__Impl rule__ForcedClockMapping__Group__5 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:400:2: rule__ForcedClockMapping__Group__4__Impl rule__ForcedClockMapping__Group__5
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:342:1: ( rule__ForcedClockMapping__Group__4__Impl rule__ForcedClockMapping__Group__5 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:343:2: rule__ForcedClockMapping__Group__4__Impl rule__ForcedClockMapping__Group__5
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__4__Impl_in_rule__ForcedClockMapping__Group__4755);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__4__Impl_in_rule__ForcedClockMapping__Group__4635);
             rule__ForcedClockMapping__Group__4__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__5_in_rule__ForcedClockMapping__Group__4758);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__5_in_rule__ForcedClockMapping__Group__4638);
             rule__ForcedClockMapping__Group__5();
 
             state._fsp--;
@@ -1046,20 +883,20 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__4__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:407:1: rule__ForcedClockMapping__Group__4__Impl : ( 'true' ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:350:1: rule__ForcedClockMapping__Group__4__Impl : ( 'true' ) ;
     public final void rule__ForcedClockMapping__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:411:1: ( ( 'true' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:412:1: ( 'true' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:354:1: ( ( 'true' ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:355:1: ( 'true' )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:412:1: ( 'true' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:413:1: 'true'
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:355:1: ( 'true' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:356:1: 'true'
             {
              before(grammarAccess.getForcedClockMappingAccess().getTrueKeyword_4()); 
-            match(input,14,FollowSets000.FOLLOW_14_in_rule__ForcedClockMapping__Group__4__Impl786); 
+            match(input,14,FollowSets000.FOLLOW_14_in_rule__ForcedClockMapping__Group__4__Impl666); 
              after(grammarAccess.getForcedClockMappingAccess().getTrueKeyword_4()); 
 
             }
@@ -1083,21 +920,21 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__5"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:426:1: rule__ForcedClockMapping__Group__5 : rule__ForcedClockMapping__Group__5__Impl rule__ForcedClockMapping__Group__6 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:369:1: rule__ForcedClockMapping__Group__5 : rule__ForcedClockMapping__Group__5__Impl rule__ForcedClockMapping__Group__6 ;
     public final void rule__ForcedClockMapping__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:430:1: ( rule__ForcedClockMapping__Group__5__Impl rule__ForcedClockMapping__Group__6 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:431:2: rule__ForcedClockMapping__Group__5__Impl rule__ForcedClockMapping__Group__6
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:373:1: ( rule__ForcedClockMapping__Group__5__Impl rule__ForcedClockMapping__Group__6 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:374:2: rule__ForcedClockMapping__Group__5__Impl rule__ForcedClockMapping__Group__6
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__5__Impl_in_rule__ForcedClockMapping__Group__5817);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__5__Impl_in_rule__ForcedClockMapping__Group__5697);
             rule__ForcedClockMapping__Group__5__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__6_in_rule__ForcedClockMapping__Group__5820);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__6_in_rule__ForcedClockMapping__Group__5700);
             rule__ForcedClockMapping__Group__6();
 
             state._fsp--;
@@ -1121,20 +958,20 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__5__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:438:1: rule__ForcedClockMapping__Group__5__Impl : ( 'avoid' ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:381:1: rule__ForcedClockMapping__Group__5__Impl : ( 'avoid' ) ;
     public final void rule__ForcedClockMapping__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:442:1: ( ( 'avoid' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:443:1: ( 'avoid' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:385:1: ( ( 'avoid' ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:386:1: ( 'avoid' )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:443:1: ( 'avoid' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:444:1: 'avoid'
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:386:1: ( 'avoid' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:387:1: 'avoid'
             {
              before(grammarAccess.getForcedClockMappingAccess().getAvoidKeyword_5()); 
-            match(input,15,FollowSets000.FOLLOW_15_in_rule__ForcedClockMapping__Group__5__Impl848); 
+            match(input,15,FollowSets000.FOLLOW_15_in_rule__ForcedClockMapping__Group__5__Impl728); 
              after(grammarAccess.getForcedClockMappingAccess().getAvoidKeyword_5()); 
 
             }
@@ -1158,21 +995,21 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__6"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:457:1: rule__ForcedClockMapping__Group__6 : rule__ForcedClockMapping__Group__6__Impl rule__ForcedClockMapping__Group__7 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:400:1: rule__ForcedClockMapping__Group__6 : rule__ForcedClockMapping__Group__6__Impl rule__ForcedClockMapping__Group__7 ;
     public final void rule__ForcedClockMapping__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:461:1: ( rule__ForcedClockMapping__Group__6__Impl rule__ForcedClockMapping__Group__7 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:462:2: rule__ForcedClockMapping__Group__6__Impl rule__ForcedClockMapping__Group__7
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:404:1: ( rule__ForcedClockMapping__Group__6__Impl rule__ForcedClockMapping__Group__7 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:405:2: rule__ForcedClockMapping__Group__6__Impl rule__ForcedClockMapping__Group__7
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__6__Impl_in_rule__ForcedClockMapping__Group__6879);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__6__Impl_in_rule__ForcedClockMapping__Group__6759);
             rule__ForcedClockMapping__Group__6__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__7_in_rule__ForcedClockMapping__Group__6882);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__7_in_rule__ForcedClockMapping__Group__6762);
             rule__ForcedClockMapping__Group__7();
 
             state._fsp--;
@@ -1196,23 +1033,23 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__6__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:469:1: rule__ForcedClockMapping__Group__6__Impl : ( ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 ) ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:412:1: rule__ForcedClockMapping__Group__6__Impl : ( ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 ) ) ;
     public final void rule__ForcedClockMapping__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:473:1: ( ( ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 ) ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:474:1: ( ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:416:1: ( ( ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 ) ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:417:1: ( ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 ) )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:474:1: ( ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:475:1: ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:417:1: ( ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:418:1: ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 )
             {
              before(grammarAccess.getForcedClockMappingAccess().getClockToAvoidWhenTrueAssignment_6()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:476:1: ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:476:2: rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:419:1: ( rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:419:2: rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6_in_rule__ForcedClockMapping__Group__6__Impl909);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6_in_rule__ForcedClockMapping__Group__6__Impl789);
             rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6();
 
             state._fsp--;
@@ -1243,16 +1080,16 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__7"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:486:1: rule__ForcedClockMapping__Group__7 : rule__ForcedClockMapping__Group__7__Impl ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:429:1: rule__ForcedClockMapping__Group__7 : rule__ForcedClockMapping__Group__7__Impl ;
     public final void rule__ForcedClockMapping__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:490:1: ( rule__ForcedClockMapping__Group__7__Impl )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:491:2: rule__ForcedClockMapping__Group__7__Impl
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:433:1: ( rule__ForcedClockMapping__Group__7__Impl )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:434:2: rule__ForcedClockMapping__Group__7__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__7__Impl_in_rule__ForcedClockMapping__Group__7939);
+            pushFollow(FollowSets000.FOLLOW_rule__ForcedClockMapping__Group__7__Impl_in_rule__ForcedClockMapping__Group__7819);
             rule__ForcedClockMapping__Group__7__Impl();
 
             state._fsp--;
@@ -1276,20 +1113,20 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__Group__7__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:497:1: rule__ForcedClockMapping__Group__7__Impl : ( ';' ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:440:1: rule__ForcedClockMapping__Group__7__Impl : ( ';' ) ;
     public final void rule__ForcedClockMapping__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:501:1: ( ( ';' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:502:1: ( ';' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:444:1: ( ( ';' ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:445:1: ( ';' )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:502:1: ( ';' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:503:1: ';'
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:445:1: ( ';' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:446:1: ';'
             {
              before(grammarAccess.getForcedClockMappingAccess().getSemicolonKeyword_7()); 
-            match(input,16,FollowSets000.FOLLOW_16_in_rule__ForcedClockMapping__Group__7__Impl967); 
+            match(input,16,FollowSets000.FOLLOW_16_in_rule__ForcedClockMapping__Group__7__Impl847); 
              after(grammarAccess.getForcedClockMappingAccess().getSemicolonKeyword_7()); 
 
             }
@@ -1313,21 +1150,21 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ImportStatement__Group__0"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:532:1: rule__ImportStatement__Group__0 : rule__ImportStatement__Group__0__Impl rule__ImportStatement__Group__1 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:475:1: rule__ImportStatement__Group__0 : rule__ImportStatement__Group__0__Impl rule__ImportStatement__Group__1 ;
     public final void rule__ImportStatement__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:536:1: ( rule__ImportStatement__Group__0__Impl rule__ImportStatement__Group__1 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:537:2: rule__ImportStatement__Group__0__Impl rule__ImportStatement__Group__1
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:479:1: ( rule__ImportStatement__Group__0__Impl rule__ImportStatement__Group__1 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:480:2: rule__ImportStatement__Group__0__Impl rule__ImportStatement__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__0__Impl_in_rule__ImportStatement__Group__01014);
+            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__0__Impl_in_rule__ImportStatement__Group__0894);
             rule__ImportStatement__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__1_in_rule__ImportStatement__Group__01017);
+            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__1_in_rule__ImportStatement__Group__0897);
             rule__ImportStatement__Group__1();
 
             state._fsp--;
@@ -1351,20 +1188,20 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ImportStatement__Group__0__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:544:1: rule__ImportStatement__Group__0__Impl : ( 'import' ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:487:1: rule__ImportStatement__Group__0__Impl : ( 'import' ) ;
     public final void rule__ImportStatement__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:548:1: ( ( 'import' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:549:1: ( 'import' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:491:1: ( ( 'import' ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:492:1: ( 'import' )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:549:1: ( 'import' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:550:1: 'import'
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:492:1: ( 'import' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:493:1: 'import'
             {
              before(grammarAccess.getImportStatementAccess().getImportKeyword_0()); 
-            match(input,17,FollowSets000.FOLLOW_17_in_rule__ImportStatement__Group__0__Impl1045); 
+            match(input,17,FollowSets000.FOLLOW_17_in_rule__ImportStatement__Group__0__Impl925); 
              after(grammarAccess.getImportStatementAccess().getImportKeyword_0()); 
 
             }
@@ -1388,21 +1225,21 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ImportStatement__Group__1"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:563:1: rule__ImportStatement__Group__1 : rule__ImportStatement__Group__1__Impl rule__ImportStatement__Group__2 ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:506:1: rule__ImportStatement__Group__1 : rule__ImportStatement__Group__1__Impl rule__ImportStatement__Group__2 ;
     public final void rule__ImportStatement__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:567:1: ( rule__ImportStatement__Group__1__Impl rule__ImportStatement__Group__2 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:568:2: rule__ImportStatement__Group__1__Impl rule__ImportStatement__Group__2
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:510:1: ( rule__ImportStatement__Group__1__Impl rule__ImportStatement__Group__2 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:511:2: rule__ImportStatement__Group__1__Impl rule__ImportStatement__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__1__Impl_in_rule__ImportStatement__Group__11076);
+            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__1__Impl_in_rule__ImportStatement__Group__1956);
             rule__ImportStatement__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__2_in_rule__ImportStatement__Group__11079);
+            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__2_in_rule__ImportStatement__Group__1959);
             rule__ImportStatement__Group__2();
 
             state._fsp--;
@@ -1426,23 +1263,23 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ImportStatement__Group__1__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:575:1: rule__ImportStatement__Group__1__Impl : ( ( rule__ImportStatement__ImportURIAssignment_1 ) ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:518:1: rule__ImportStatement__Group__1__Impl : ( ( rule__ImportStatement__ImportURIAssignment_1 ) ) ;
     public final void rule__ImportStatement__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:579:1: ( ( ( rule__ImportStatement__ImportURIAssignment_1 ) ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:580:1: ( ( rule__ImportStatement__ImportURIAssignment_1 ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:522:1: ( ( ( rule__ImportStatement__ImportURIAssignment_1 ) ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:523:1: ( ( rule__ImportStatement__ImportURIAssignment_1 ) )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:580:1: ( ( rule__ImportStatement__ImportURIAssignment_1 ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:581:1: ( rule__ImportStatement__ImportURIAssignment_1 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:523:1: ( ( rule__ImportStatement__ImportURIAssignment_1 ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:524:1: ( rule__ImportStatement__ImportURIAssignment_1 )
             {
              before(grammarAccess.getImportStatementAccess().getImportURIAssignment_1()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:582:1: ( rule__ImportStatement__ImportURIAssignment_1 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:582:2: rule__ImportStatement__ImportURIAssignment_1
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:525:1: ( rule__ImportStatement__ImportURIAssignment_1 )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:525:2: rule__ImportStatement__ImportURIAssignment_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__ImportURIAssignment_1_in_rule__ImportStatement__Group__1__Impl1106);
+            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__ImportURIAssignment_1_in_rule__ImportStatement__Group__1__Impl986);
             rule__ImportStatement__ImportURIAssignment_1();
 
             state._fsp--;
@@ -1473,16 +1310,16 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ImportStatement__Group__2"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:592:1: rule__ImportStatement__Group__2 : rule__ImportStatement__Group__2__Impl ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:535:1: rule__ImportStatement__Group__2 : rule__ImportStatement__Group__2__Impl ;
     public final void rule__ImportStatement__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:596:1: ( rule__ImportStatement__Group__2__Impl )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:597:2: rule__ImportStatement__Group__2__Impl
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:539:1: ( rule__ImportStatement__Group__2__Impl )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:540:2: rule__ImportStatement__Group__2__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__2__Impl_in_rule__ImportStatement__Group__21136);
+            pushFollow(FollowSets000.FOLLOW_rule__ImportStatement__Group__2__Impl_in_rule__ImportStatement__Group__21016);
             rule__ImportStatement__Group__2__Impl();
 
             state._fsp--;
@@ -1506,20 +1343,20 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ImportStatement__Group__2__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:603:1: rule__ImportStatement__Group__2__Impl : ( ';' ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:546:1: rule__ImportStatement__Group__2__Impl : ( ';' ) ;
     public final void rule__ImportStatement__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:607:1: ( ( ';' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:608:1: ( ';' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:550:1: ( ( ';' ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:551:1: ( ';' )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:608:1: ( ';' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:609:1: ';'
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:551:1: ( ';' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:552:1: ';'
             {
              before(grammarAccess.getImportStatementAccess().getSemicolonKeyword_2()); 
-            match(input,16,FollowSets000.FOLLOW_16_in_rule__ImportStatement__Group__2__Impl1164); 
+            match(input,16,FollowSets000.FOLLOW_16_in_rule__ImportStatement__Group__2__Impl1044); 
              after(grammarAccess.getImportStatementAccess().getSemicolonKeyword_2()); 
 
             }
@@ -1542,251 +1379,21 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
     // $ANTLR end "rule__ImportStatement__Group__2__Impl"
 
 
-    // $ANTLR start "rule__JarImportStatement__Group__0"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:628:1: rule__JarImportStatement__Group__0 : rule__JarImportStatement__Group__0__Impl rule__JarImportStatement__Group__1 ;
-    public final void rule__JarImportStatement__Group__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:632:1: ( rule__JarImportStatement__Group__0__Impl rule__JarImportStatement__Group__1 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:633:2: rule__JarImportStatement__Group__0__Impl rule__JarImportStatement__Group__1
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__JarImportStatement__Group__0__Impl_in_rule__JarImportStatement__Group__01201);
-            rule__JarImportStatement__Group__0__Impl();
-
-            state._fsp--;
-
-            pushFollow(FollowSets000.FOLLOW_rule__JarImportStatement__Group__1_in_rule__JarImportStatement__Group__01204);
-            rule__JarImportStatement__Group__1();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__JarImportStatement__Group__0"
-
-
-    // $ANTLR start "rule__JarImportStatement__Group__0__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:640:1: rule__JarImportStatement__Group__0__Impl : ( 'importJar' ) ;
-    public final void rule__JarImportStatement__Group__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:644:1: ( ( 'importJar' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:645:1: ( 'importJar' )
-            {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:645:1: ( 'importJar' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:646:1: 'importJar'
-            {
-             before(grammarAccess.getJarImportStatementAccess().getImportJarKeyword_0()); 
-            match(input,18,FollowSets000.FOLLOW_18_in_rule__JarImportStatement__Group__0__Impl1232); 
-             after(grammarAccess.getJarImportStatementAccess().getImportJarKeyword_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__JarImportStatement__Group__0__Impl"
-
-
-    // $ANTLR start "rule__JarImportStatement__Group__1"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:659:1: rule__JarImportStatement__Group__1 : rule__JarImportStatement__Group__1__Impl rule__JarImportStatement__Group__2 ;
-    public final void rule__JarImportStatement__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:663:1: ( rule__JarImportStatement__Group__1__Impl rule__JarImportStatement__Group__2 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:664:2: rule__JarImportStatement__Group__1__Impl rule__JarImportStatement__Group__2
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__JarImportStatement__Group__1__Impl_in_rule__JarImportStatement__Group__11263);
-            rule__JarImportStatement__Group__1__Impl();
-
-            state._fsp--;
-
-            pushFollow(FollowSets000.FOLLOW_rule__JarImportStatement__Group__2_in_rule__JarImportStatement__Group__11266);
-            rule__JarImportStatement__Group__2();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__JarImportStatement__Group__1"
-
-
-    // $ANTLR start "rule__JarImportStatement__Group__1__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:671:1: rule__JarImportStatement__Group__1__Impl : ( ( rule__JarImportStatement__PathToJarAssignment_1 ) ) ;
-    public final void rule__JarImportStatement__Group__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:675:1: ( ( ( rule__JarImportStatement__PathToJarAssignment_1 ) ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:676:1: ( ( rule__JarImportStatement__PathToJarAssignment_1 ) )
-            {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:676:1: ( ( rule__JarImportStatement__PathToJarAssignment_1 ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:677:1: ( rule__JarImportStatement__PathToJarAssignment_1 )
-            {
-             before(grammarAccess.getJarImportStatementAccess().getPathToJarAssignment_1()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:678:1: ( rule__JarImportStatement__PathToJarAssignment_1 )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:678:2: rule__JarImportStatement__PathToJarAssignment_1
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__JarImportStatement__PathToJarAssignment_1_in_rule__JarImportStatement__Group__1__Impl1293);
-            rule__JarImportStatement__PathToJarAssignment_1();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getJarImportStatementAccess().getPathToJarAssignment_1()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__JarImportStatement__Group__1__Impl"
-
-
-    // $ANTLR start "rule__JarImportStatement__Group__2"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:688:1: rule__JarImportStatement__Group__2 : rule__JarImportStatement__Group__2__Impl ;
-    public final void rule__JarImportStatement__Group__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:692:1: ( rule__JarImportStatement__Group__2__Impl )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:693:2: rule__JarImportStatement__Group__2__Impl
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__JarImportStatement__Group__2__Impl_in_rule__JarImportStatement__Group__21323);
-            rule__JarImportStatement__Group__2__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__JarImportStatement__Group__2"
-
-
-    // $ANTLR start "rule__JarImportStatement__Group__2__Impl"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:699:1: rule__JarImportStatement__Group__2__Impl : ( ';' ) ;
-    public final void rule__JarImportStatement__Group__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:703:1: ( ( ';' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:704:1: ( ';' )
-            {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:704:1: ( ';' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:705:1: ';'
-            {
-             before(grammarAccess.getJarImportStatementAccess().getSemicolonKeyword_2()); 
-            match(input,16,FollowSets000.FOLLOW_16_in_rule__JarImportStatement__Group__2__Impl1351); 
-             after(grammarAccess.getJarImportStatementAccess().getSemicolonKeyword_2()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__JarImportStatement__Group__2__Impl"
-
-
     // $ANTLR start "rule__EMFExecutionConfiguration__ImportsAssignment_0"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:725:1: rule__EMFExecutionConfiguration__ImportsAssignment_0 : ( ruleImportStatement ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:573:1: rule__EMFExecutionConfiguration__ImportsAssignment_0 : ( ruleImportStatement ) ;
     public final void rule__EMFExecutionConfiguration__ImportsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:729:1: ( ( ruleImportStatement ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:730:1: ( ruleImportStatement )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:577:1: ( ( ruleImportStatement ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:578:1: ( ruleImportStatement )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:730:1: ( ruleImportStatement )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:731:1: ruleImportStatement
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:578:1: ( ruleImportStatement )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:579:1: ruleImportStatement
             {
              before(grammarAccess.getEMFExecutionConfigurationAccess().getImportsImportStatementParserRuleCall_0_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleImportStatement_in_rule__EMFExecutionConfiguration__ImportsAssignment_01393);
+            pushFollow(FollowSets000.FOLLOW_ruleImportStatement_in_rule__EMFExecutionConfiguration__ImportsAssignment_01087);
             ruleImportStatement();
 
             state._fsp--;
@@ -1813,67 +1420,26 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
     // $ANTLR end "rule__EMFExecutionConfiguration__ImportsAssignment_0"
 
 
-    // $ANTLR start "rule__EMFExecutionConfiguration__JarImportStatementAssignment_1"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:740:1: rule__EMFExecutionConfiguration__JarImportStatementAssignment_1 : ( ruleJarImportStatement ) ;
-    public final void rule__EMFExecutionConfiguration__JarImportStatementAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1"
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:588:1: rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1 : ( ruleForcedClockMapping ) ;
+    public final void rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:744:1: ( ( ruleJarImportStatement ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:745:1: ( ruleJarImportStatement )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:592:1: ( ( ruleForcedClockMapping ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:593:1: ( ruleForcedClockMapping )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:745:1: ( ruleJarImportStatement )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:746:1: ruleJarImportStatement
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:593:1: ( ruleForcedClockMapping )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:594:1: ruleForcedClockMapping
             {
-             before(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementJarImportStatementParserRuleCall_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleJarImportStatement_in_rule__EMFExecutionConfiguration__JarImportStatementAssignment_11424);
-            ruleJarImportStatement();
-
-            state._fsp--;
-
-             after(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementJarImportStatementParserRuleCall_1_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__EMFExecutionConfiguration__JarImportStatementAssignment_1"
-
-
-    // $ANTLR start "rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:755:1: rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2 : ( ruleForcedClockMapping ) ;
-    public final void rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:759:1: ( ( ruleForcedClockMapping ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:760:1: ( ruleForcedClockMapping )
-            {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:760:1: ( ruleForcedClockMapping )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:761:1: ruleForcedClockMapping
-            {
-             before(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_2_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleForcedClockMapping_in_rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_21455);
+             before(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_1_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleForcedClockMapping_in_rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_11118);
             ruleForcedClockMapping();
 
             state._fsp--;
 
-             after(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_2_0()); 
+             after(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsForcedClockMappingParserRuleCall_1_0()); 
 
             }
 
@@ -1892,28 +1458,28 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
         }
         return ;
     }
-    // $ANTLR end "rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2"
+    // $ANTLR end "rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1"
 
 
     // $ANTLR start "rule__ForcedClockMapping__ClockAssignment_1"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:770:1: rule__ForcedClockMapping__ClockAssignment_1 : ( ( RULE_ID ) ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:603:1: rule__ForcedClockMapping__ClockAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__ForcedClockMapping__ClockAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:774:1: ( ( ( RULE_ID ) ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:775:1: ( ( RULE_ID ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:607:1: ( ( ( RULE_ID ) ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:608:1: ( ( RULE_ID ) )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:775:1: ( ( RULE_ID ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:776:1: ( RULE_ID )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:608:1: ( ( RULE_ID ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:609:1: ( RULE_ID )
             {
              before(grammarAccess.getForcedClockMappingAccess().getClockClockCrossReference_1_0()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:777:1: ( RULE_ID )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:778:1: RULE_ID
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:610:1: ( RULE_ID )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:611:1: RULE_ID
             {
              before(grammarAccess.getForcedClockMappingAccess().getClockClockIDTerminalRuleCall_1_0_1()); 
-            match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rule__ForcedClockMapping__ClockAssignment_11490); 
+            match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rule__ForcedClockMapping__ClockAssignment_11153); 
              after(grammarAccess.getForcedClockMappingAccess().getClockClockIDTerminalRuleCall_1_0_1()); 
 
             }
@@ -1941,24 +1507,24 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:789:1: rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 : ( ( RULE_ID ) ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:622:1: rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6 : ( ( RULE_ID ) ) ;
     public final void rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:793:1: ( ( ( RULE_ID ) ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:794:1: ( ( RULE_ID ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:626:1: ( ( ( RULE_ID ) ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:627:1: ( ( RULE_ID ) )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:794:1: ( ( RULE_ID ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:795:1: ( RULE_ID )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:627:1: ( ( RULE_ID ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:628:1: ( RULE_ID )
             {
              before(grammarAccess.getForcedClockMappingAccess().getClockToAvoidWhenTrueClockCrossReference_6_0()); 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:796:1: ( RULE_ID )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:797:1: RULE_ID
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:629:1: ( RULE_ID )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:630:1: RULE_ID
             {
              before(grammarAccess.getForcedClockMappingAccess().getClockToAvoidWhenTrueClockIDTerminalRuleCall_6_0_1()); 
-            match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_61529); 
+            match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_61192); 
              after(grammarAccess.getForcedClockMappingAccess().getClockToAvoidWhenTrueClockIDTerminalRuleCall_6_0_1()); 
 
             }
@@ -1986,20 +1552,20 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
 
 
     // $ANTLR start "rule__ImportStatement__ImportURIAssignment_1"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:808:1: rule__ImportStatement__ImportURIAssignment_1 : ( RULE_STRING ) ;
+    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:641:1: rule__ImportStatement__ImportURIAssignment_1 : ( RULE_STRING ) ;
     public final void rule__ImportStatement__ImportURIAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:812:1: ( ( RULE_STRING ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:813:1: ( RULE_STRING )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:645:1: ( ( RULE_STRING ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:646:1: ( RULE_STRING )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:813:1: ( RULE_STRING )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:814:1: RULE_STRING
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:646:1: ( RULE_STRING )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:647:1: RULE_STRING
             {
              before(grammarAccess.getImportStatementAccess().getImportURISTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_rule__ImportStatement__ImportURIAssignment_11564); 
+            match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_rule__ImportStatement__ImportURIAssignment_11227); 
              after(grammarAccess.getImportStatementAccess().getImportURISTRINGTerminalRuleCall_1_0()); 
 
             }
@@ -2021,43 +1587,6 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
     }
     // $ANTLR end "rule__ImportStatement__ImportURIAssignment_1"
 
-
-    // $ANTLR start "rule__JarImportStatement__PathToJarAssignment_1"
-    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:823:1: rule__JarImportStatement__PathToJarAssignment_1 : ( RULE_STRING ) ;
-    public final void rule__JarImportStatement__PathToJarAssignment_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:827:1: ( ( RULE_STRING ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:828:1: ( RULE_STRING )
-            {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:828:1: ( RULE_STRING )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui/src-gen/fr/inria/aoste/timesquare/backend/ui/contentassist/antlr/internal/InternalEmfExecutionConfiguration.g:829:1: RULE_STRING
-            {
-             before(grammarAccess.getJarImportStatementAccess().getPathToJarSTRINGTerminalRuleCall_1_0()); 
-            match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_rule__JarImportStatement__PathToJarAssignment_11595); 
-             after(grammarAccess.getJarImportStatementAccess().getPathToJarSTRINGTerminalRuleCall_1_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__JarImportStatement__PathToJarAssignment_1"
-
     // Delegated rules
 
 
@@ -2074,64 +1603,48 @@ public class InternalEmfExecutionConfigurationParser extends AbstractInternalCon
         public static final BitSet FOLLOW_ruleImportStatement_in_entryRuleImportStatement181 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleImportStatement188 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__ImportStatement__Group__0_in_ruleImportStatement214 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleJarImportStatement_in_entryRuleJarImportStatement241 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleJarImportStatement248 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__JarImportStatement__Group__0_in_ruleJarImportStatement274 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__Group__0__Impl_in_rule__EMFExecutionConfiguration__Group__0308 = new BitSet(new long[]{0x0000000000040000L});
-        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__Group__1_in_rule__EMFExecutionConfiguration__Group__0311 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__ImportsAssignment_0_in_rule__EMFExecutionConfiguration__Group__0__Impl340 = new BitSet(new long[]{0x0000000000020002L});
-        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__ImportsAssignment_0_in_rule__EMFExecutionConfiguration__Group__0__Impl352 = new BitSet(new long[]{0x0000000000020002L});
-        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__Group__1__Impl_in_rule__EMFExecutionConfiguration__Group__1385 = new BitSet(new long[]{0x0000000000000800L});
-        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__Group__2_in_rule__EMFExecutionConfiguration__Group__1388 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__JarImportStatementAssignment_1_in_rule__EMFExecutionConfiguration__Group__1__Impl415 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__Group__2__Impl_in_rule__EMFExecutionConfiguration__Group__2445 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2_in_rule__EMFExecutionConfiguration__Group__2__Impl472 = new BitSet(new long[]{0x0000000000000802L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__0__Impl_in_rule__ForcedClockMapping__Group__0509 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__1_in_rule__ForcedClockMapping__Group__0512 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_11_in_rule__ForcedClockMapping__Group__0__Impl540 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__1__Impl_in_rule__ForcedClockMapping__Group__1571 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__2_in_rule__ForcedClockMapping__Group__1574 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__ClockAssignment_1_in_rule__ForcedClockMapping__Group__1__Impl601 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__2__Impl_in_rule__ForcedClockMapping__Group__2631 = new BitSet(new long[]{0x0000000000002000L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__3_in_rule__ForcedClockMapping__Group__2634 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_12_in_rule__ForcedClockMapping__Group__2__Impl662 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__3__Impl_in_rule__ForcedClockMapping__Group__3693 = new BitSet(new long[]{0x0000000000004000L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__4_in_rule__ForcedClockMapping__Group__3696 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_13_in_rule__ForcedClockMapping__Group__3__Impl724 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__4__Impl_in_rule__ForcedClockMapping__Group__4755 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__5_in_rule__ForcedClockMapping__Group__4758 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_14_in_rule__ForcedClockMapping__Group__4__Impl786 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__5__Impl_in_rule__ForcedClockMapping__Group__5817 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__6_in_rule__ForcedClockMapping__Group__5820 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_15_in_rule__ForcedClockMapping__Group__5__Impl848 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__6__Impl_in_rule__ForcedClockMapping__Group__6879 = new BitSet(new long[]{0x0000000000010000L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__7_in_rule__ForcedClockMapping__Group__6882 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6_in_rule__ForcedClockMapping__Group__6__Impl909 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__7__Impl_in_rule__ForcedClockMapping__Group__7939 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_16_in_rule__ForcedClockMapping__Group__7__Impl967 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ImportStatement__Group__0__Impl_in_rule__ImportStatement__Group__01014 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_rule__ImportStatement__Group__1_in_rule__ImportStatement__Group__01017 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_17_in_rule__ImportStatement__Group__0__Impl1045 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ImportStatement__Group__1__Impl_in_rule__ImportStatement__Group__11076 = new BitSet(new long[]{0x0000000000010000L});
-        public static final BitSet FOLLOW_rule__ImportStatement__Group__2_in_rule__ImportStatement__Group__11079 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ImportStatement__ImportURIAssignment_1_in_rule__ImportStatement__Group__1__Impl1106 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__ImportStatement__Group__2__Impl_in_rule__ImportStatement__Group__21136 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_16_in_rule__ImportStatement__Group__2__Impl1164 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__JarImportStatement__Group__0__Impl_in_rule__JarImportStatement__Group__01201 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_rule__JarImportStatement__Group__1_in_rule__JarImportStatement__Group__01204 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_18_in_rule__JarImportStatement__Group__0__Impl1232 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__JarImportStatement__Group__1__Impl_in_rule__JarImportStatement__Group__11263 = new BitSet(new long[]{0x0000000000010000L});
-        public static final BitSet FOLLOW_rule__JarImportStatement__Group__2_in_rule__JarImportStatement__Group__11266 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__JarImportStatement__PathToJarAssignment_1_in_rule__JarImportStatement__Group__1__Impl1293 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__JarImportStatement__Group__2__Impl_in_rule__JarImportStatement__Group__21323 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_16_in_rule__JarImportStatement__Group__2__Impl1351 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleImportStatement_in_rule__EMFExecutionConfiguration__ImportsAssignment_01393 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleJarImportStatement_in_rule__EMFExecutionConfiguration__JarImportStatementAssignment_11424 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleForcedClockMapping_in_rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_21455 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_ID_in_rule__ForcedClockMapping__ClockAssignment_11490 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_ID_in_rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_61529 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_rule__ImportStatement__ImportURIAssignment_11564 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_rule__JarImportStatement__PathToJarAssignment_11595 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__Group__0__Impl_in_rule__EMFExecutionConfiguration__Group__0250 = new BitSet(new long[]{0x0000000000000800L});
+        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__Group__1_in_rule__EMFExecutionConfiguration__Group__0253 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__ImportsAssignment_0_in_rule__EMFExecutionConfiguration__Group__0__Impl282 = new BitSet(new long[]{0x0000000000020002L});
+        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__ImportsAssignment_0_in_rule__EMFExecutionConfiguration__Group__0__Impl294 = new BitSet(new long[]{0x0000000000020002L});
+        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__Group__1__Impl_in_rule__EMFExecutionConfiguration__Group__1327 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1_in_rule__EMFExecutionConfiguration__Group__1__Impl354 = new BitSet(new long[]{0x0000000000000802L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__0__Impl_in_rule__ForcedClockMapping__Group__0389 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__1_in_rule__ForcedClockMapping__Group__0392 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_11_in_rule__ForcedClockMapping__Group__0__Impl420 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__1__Impl_in_rule__ForcedClockMapping__Group__1451 = new BitSet(new long[]{0x0000000000001000L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__2_in_rule__ForcedClockMapping__Group__1454 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__ClockAssignment_1_in_rule__ForcedClockMapping__Group__1__Impl481 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__2__Impl_in_rule__ForcedClockMapping__Group__2511 = new BitSet(new long[]{0x0000000000002000L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__3_in_rule__ForcedClockMapping__Group__2514 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_12_in_rule__ForcedClockMapping__Group__2__Impl542 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__3__Impl_in_rule__ForcedClockMapping__Group__3573 = new BitSet(new long[]{0x0000000000004000L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__4_in_rule__ForcedClockMapping__Group__3576 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_rule__ForcedClockMapping__Group__3__Impl604 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__4__Impl_in_rule__ForcedClockMapping__Group__4635 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__5_in_rule__ForcedClockMapping__Group__4638 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_14_in_rule__ForcedClockMapping__Group__4__Impl666 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__5__Impl_in_rule__ForcedClockMapping__Group__5697 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__6_in_rule__ForcedClockMapping__Group__5700 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_15_in_rule__ForcedClockMapping__Group__5__Impl728 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__6__Impl_in_rule__ForcedClockMapping__Group__6759 = new BitSet(new long[]{0x0000000000010000L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__7_in_rule__ForcedClockMapping__Group__6762 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6_in_rule__ForcedClockMapping__Group__6__Impl789 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ForcedClockMapping__Group__7__Impl_in_rule__ForcedClockMapping__Group__7819 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_16_in_rule__ForcedClockMapping__Group__7__Impl847 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ImportStatement__Group__0__Impl_in_rule__ImportStatement__Group__0894 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_rule__ImportStatement__Group__1_in_rule__ImportStatement__Group__0897 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_17_in_rule__ImportStatement__Group__0__Impl925 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ImportStatement__Group__1__Impl_in_rule__ImportStatement__Group__1956 = new BitSet(new long[]{0x0000000000010000L});
+        public static final BitSet FOLLOW_rule__ImportStatement__Group__2_in_rule__ImportStatement__Group__1959 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ImportStatement__ImportURIAssignment_1_in_rule__ImportStatement__Group__1__Impl986 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__ImportStatement__Group__2__Impl_in_rule__ImportStatement__Group__21016 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_16_in_rule__ImportStatement__Group__2__Impl1044 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleImportStatement_in_rule__EMFExecutionConfiguration__ImportsAssignment_01087 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleForcedClockMapping_in_rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_11118 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_rule__ForcedClockMapping__ClockAssignment_11153 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_61192 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_rule__ImportStatement__ImportURIAssignment_11227 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

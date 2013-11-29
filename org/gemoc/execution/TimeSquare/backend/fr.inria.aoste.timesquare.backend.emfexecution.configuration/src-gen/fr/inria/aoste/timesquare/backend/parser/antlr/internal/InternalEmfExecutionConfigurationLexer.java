@@ -16,7 +16,6 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
     public static final int RULE_STRING=5;
     public static final int T__16=16;
     public static final int T__15=15;
-    public static final int T__18=18;
     public static final int T__17=17;
     public static final int T__12=12;
     public static final int T__11=11;
@@ -188,36 +187,15 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
     }
     // $ANTLR end "T__17"
 
-    // $ANTLR start "T__18"
-    public final void mT__18() throws RecognitionException {
-        try {
-            int _type = T__18;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:18:7: ( 'importJar' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:18:9: 'importJar'
-            {
-            match("importJar"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__18"
-
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:318:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:318:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:255:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:255:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:318:11: ( '^' )?
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:255:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -226,7 +204,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:318:11: '^'
+                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:255:11: '^'
                     {
                     match('^'); 
 
@@ -244,7 +222,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:318:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:255:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -293,10 +271,10 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:320:10: ( ( '0' .. '9' )+ )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:320:12: ( '0' .. '9' )+
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:257:10: ( ( '0' .. '9' )+ )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:257:12: ( '0' .. '9' )+
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:320:12: ( '0' .. '9' )+
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:257:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -310,7 +288,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:320:13: '0' .. '9'
+            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:257:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -342,10 +320,10 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -363,10 +341,10 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -382,7 +360,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -398,7 +376,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -423,10 +401,10 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -442,7 +420,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -458,7 +436,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:322:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:259:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -501,12 +479,12 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:324:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:324:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:261:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:261:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:324:24: ( options {greedy=false; } : . )*
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:261:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -531,7 +509,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:324:52: .
+            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:261:52: .
             	    {
             	    matchAny(); 
 
@@ -561,12 +539,12 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:326:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:326:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:263:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:263:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:326:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:263:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -579,7 +557,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:326:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:263:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -599,7 +577,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
                 }
             } while (true);
 
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:326:40: ( ( '\\r' )? '\\n' )?
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:263:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -608,9 +586,9 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:326:41: ( '\\r' )? '\\n'
+                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:263:41: ( '\\r' )? '\\n'
                     {
-                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:326:41: ( '\\r' )?
+                    // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:263:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -619,7 +597,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:326:41: '\\r'
+                            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:263:41: '\\r'
                             {
                             match('\r'); 
 
@@ -651,10 +629,10 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:328:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:328:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:265:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:265:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:328:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:265:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -708,8 +686,8 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:330:16: ( . )
-            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:330:18: .
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:267:16: ( . )
+            // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:267:18: .
             {
             matchAny(); 
 
@@ -724,8 +702,8 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=15;
+        // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=14;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -778,56 +756,49 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
                 }
                 break;
             case 8 :
-                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:52: T__18
-                {
-                mT__18(); 
-
-                }
-                break;
-            case 9 :
-                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:58: RULE_ID
+                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:52: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 10 :
-                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:66: RULE_INT
+            case 9 :
+                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:60: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 11 :
-                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:75: RULE_STRING
+            case 10 :
+                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:69: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 12 :
-                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:87: RULE_ML_COMMENT
+            case 11 :
+                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:81: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 13 :
-                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:103: RULE_SL_COMMENT
+            case 12 :
+                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:97: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 14 :
-                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:119: RULE_WS
+            case 13 :
+                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:113: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 15 :
-                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:127: RULE_ANY_OTHER
+            case 14 :
+                // ../fr.inria.aoste.timesquare.backend.emfexecution.configuration/src-gen/fr/inria/aoste/timesquare/backend/parser/antlr/internal/InternalEmfExecutionConfiguration.g:1:121: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -843,28 +814,27 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
     static final String DFA12_eotS =
         "\1\uffff\5\21\1\uffff\1\21\1\17\2\uffff\3\17\2\uffff\1\21\1\uffff"+
         "\4\21\1\uffff\1\21\5\uffff\1\21\1\44\4\21\1\51\1\uffff\1\21\1\53"+
-        "\2\21\1\uffff\1\21\1\uffff\1\57\2\21\1\uffff\1\63\1\64\1\21\2\uffff"+
-        "\1\21\1\67\1\uffff";
+        "\2\21\1\uffff\1\21\1\uffff\1\57\2\21\1\uffff\1\62\1\63\2\uffff";
     static final String DFA12_eofS =
-        "\70\uffff";
+        "\64\uffff";
     static final String DFA12_minS =
         "\1\0\1\150\1\123\1\145\1\162\1\166\1\uffff\1\155\1\101\2\uffff\2"+
         "\0\1\52\2\uffff\1\145\1\uffff\1\101\1\164\1\165\1\157\1\uffff\1"+
         "\160\5\uffff\1\156\1\60\1\165\1\145\1\151\1\157\1\60\1\uffff\1\162"+
         "\1\60\1\144\1\162\1\uffff\1\156\1\uffff\1\60\1\164\1\163\1\uffff"+
-        "\2\60\1\141\2\uffff\1\162\1\60\1\uffff";
+        "\2\60\2\uffff";
     static final String DFA12_maxS =
         "\1\uffff\1\150\1\123\1\145\1\162\1\166\1\uffff\1\155\1\172\2\uffff"+
         "\2\uffff\1\57\2\uffff\1\145\1\uffff\1\101\1\164\1\165\1\157\1\uffff"+
         "\1\160\5\uffff\1\156\1\172\1\165\1\145\1\151\1\157\1\172\1\uffff"+
         "\1\162\1\172\1\144\1\162\1\uffff\1\156\1\uffff\1\172\1\164\1\163"+
-        "\1\uffff\2\172\1\141\2\uffff\1\162\1\172\1\uffff";
+        "\1\uffff\2\172\2\uffff";
     static final String DFA12_acceptS =
-        "\6\uffff\1\6\2\uffff\1\11\1\12\3\uffff\1\16\1\17\1\uffff\1\11\4"+
-        "\uffff\1\6\1\uffff\1\12\1\13\1\14\1\15\1\16\7\uffff\1\2\4\uffff"+
-        "\1\1\1\uffff\1\4\3\uffff\1\5\3\uffff\1\7\1\3\2\uffff\1\10";
+        "\6\uffff\1\6\2\uffff\1\10\1\11\3\uffff\1\15\1\16\1\uffff\1\10\4"+
+        "\uffff\1\6\1\uffff\1\11\1\12\1\13\1\14\1\15\7\uffff\1\2\4\uffff"+
+        "\1\1\1\uffff\1\4\3\uffff\1\5\2\uffff\1\7\1\3";
     static final String DFA12_specialS =
-        "\1\2\12\uffff\1\1\1\0\53\uffff}>";
+        "\1\1\12\uffff\1\0\1\2\47\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\17\2\16\2\17\1\16\22\17\1\16\1\17\1\13\4\17\1\14\7\17\1"+
             "\15\12\12\1\17\1\6\5\17\3\11\1\2\22\11\1\1\3\11\3\17\1\10\1"+
@@ -916,13 +886,9 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
             "\1\60",
             "\1\61",
             "",
-            "\12\21\7\uffff\11\21\1\62\20\21\4\uffff\1\21\1\uffff\32\21",
             "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
-            "\1\65",
-            "",
-            "",
-            "\1\66",
             "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "",
             ""
     };
 
@@ -956,23 +922,13 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_12 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_12>='\u0000' && LA12_12<='\uFFFF')) ) {s = 25;}
-
-                        else s = 15;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
                         int LA12_11 = input.LA(1);
 
                         s = -1;
@@ -982,7 +938,7 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 2 : 
+                    case 1 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1015,6 +971,16 @@ public class InternalEmfExecutionConfigurationLexer extends Lexer {
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 14;}
 
                         else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='.')||LA12_0==':'||(LA12_0>='<' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 15;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA12_12 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_12>='\u0000' && LA12_12<='\uFFFF')) ) {s = 25;}
+
+                        else s = 15;
 
                         if ( s>=0 ) return s;
                         break;

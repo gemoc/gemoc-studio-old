@@ -1,6 +1,5 @@
 package org.gemoc.gemoc_language_workbench.api.feedback;
 
-import org.gemoc.gemoc_language_workbench.api.dsa.DomainSpecificAction;
 import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 
@@ -19,16 +18,19 @@ public interface FeedbackData {
 	 */
 
 	/**
+	 * The original content of this FeedbackData.
 	 * 
-	 * @return the DSA that caused this feedback.
+	 * @return the original object returned by the MSA which created this
+	 *         FeedbackData.
 	 */
-	public ModelSpecificAction getCausalAction();
+	public Object getContent();
 
 	/**
-	 * @param dsa
 	 * 
+	 * 
+	 * @return the MSA that caused this feedback.
 	 */
-	public void setCausalAction(ModelSpecificAction action);
+	public ModelSpecificAction getCausalAction();
 
 	/**
 	 * 

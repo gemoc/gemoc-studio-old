@@ -2,21 +2,37 @@ package fr.inria.aoste.timesquare.backend.emfexecution.manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
 import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
 import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import com.google.inject.Injector;
+
+import fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.EMFExecutionConfiguration;
+import fr.inria.aoste.timesquare.backend.emfExecutionConfiguration.ForcedClockMapping;
 import fr.inria.aoste.timesquare.backend.emfexecution.CodeExecutionHelper;
 import fr.inria.aoste.timesquare.backend.emfexecution.behaviors.EmfExecutionBehavior;
 import fr.inria.aoste.timesquare.backend.emfexecution.persistentoptions.EmfExecutionPersistentOptions;
@@ -27,6 +43,7 @@ import fr.inria.aoste.timesquare.backend.manager.visible.ClockEntity;
 import fr.inria.aoste.timesquare.backend.manager.visible.ConfigurationHelper;
 import fr.inria.aoste.timesquare.backend.manager.visible.PersistentOptions;
 import fr.inria.aoste.timesquare.backend.manager.visible.RelationBehavior;
+import fr.inria.aoste.timesquare.backend.ui.internal.EmfExecutionConfigurationActivator;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ConcreteEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.utils.CCSLKernelUtils;
@@ -49,23 +66,56 @@ public class EmfCodeExecutionManager<RichMainClass> extends BehaviorManager {
 	protected IDSAExecutor languageDSAExecutor;
 	
 	protected String modelUriString=null;
+	protected String confUriString=null;
+
 	
 	public String getConfigurationIFile() {
 		return _modelFilename;
 	}
 
-	public void setModelFileName(String modelFilename) {
-		modelUriString = modelFilename;
+	public void setModelFileName(String confFilename) {
+		confUriString = confFilename;
 		initLoaderAndExecutor();
 		
-//		for(ForcedClockMapping mapping: confModel.getForcedClockMappings()){
-//			String ClkToEvaluate = CCSLKernelUtils.getQualifiedName(mapping.getClock(), "::");
-//			//String ClkToAvoid = CCSLKernelUtils.getQualifiedName(mapping.getClockToAvoidWhenTrue(), "::");
-//			forcedClockMap.put(ClkToEvaluate, mapping.getClockToAvoidWhenTrue());
-//		}
+		EMFExecutionConfiguration confModel = loadEMFExecutionConfiguration(confFilename);
+		for(ForcedClockMapping mapping: confModel.getForcedClockMappings()){
+			String ClkToEvaluate = CCSLKernelUtils.getQualifiedName(mapping.getClock(), "::");
+			//String ClkToAvoid = CCSLKernelUtils.getQualifiedName(mapping.getClockToAvoidWhenTrue(), "::");
+			forcedClockMap.put(ClkToEvaluate, mapping.getClockToAvoidWhenTrue());
+		}
 		
 	}
 	
+	private EMFExecutionConfiguration loadEMFExecutionConfiguration(String filename) {
+		if (filename == null || filename.isEmpty()) {
+			return null;
+ 		}
+		String language = EmfExecutionConfigurationActivator.FR_INRIA_AOSTE_TIMESQUARE_BACKEND_EMFEXECUTIONCONFIGURATION;
+		Injector injector = EmfExecutionConfigurationActivator.getInstance().getInjector(language);
+		XtextResourceSetProvider provider = injector.getInstance(XtextResourceSetProvider.class);
+
+		XtextResourceSet resourceSet = (XtextResourceSet) provider
+				.get(findContainingProject(filename));
+		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+
+		URI uri = URI.createPlatformResourceURI(filename, true);
+		XtextResource resource = (XtextResource) resourceSet.getResource(uri, true);
+		List<Diagnostic> errors = resource.getErrors();
+		if (!errors.isEmpty()) {
+			System.err.println(errors);
+			return null;
+		}
+		return (EMFExecutionConfiguration) resource.getContents().get(0);
+ 	}
+	
+		private IProject findContainingProject(String filename) {
+				IWorkspace workspace = ResourcesPlugin.getWorkspace();
+				IWorkspaceRoot root = workspace.getRoot();
+				IPath path = root.getLocation();
+				path = path.append(new Path(filename));
+				IFile file = (IFile) root.findMember(filename);
+				return (file != null ? file.getProject() : null);
+			}
 
 	
 	
@@ -182,7 +232,7 @@ public class EmfCodeExecutionManager<RichMainClass> extends BehaviorManager {
 
 	
 	public void manageBehavior(ConfigurationHelper helper) {
-		
+		initLoaderAndExecutor();
 		//create the behavior
 		for (ClockEntity ce : helper.getClocks()) {
 			if (ce.getReferencedElement().size() > 1){// if linked to an object AND an operation

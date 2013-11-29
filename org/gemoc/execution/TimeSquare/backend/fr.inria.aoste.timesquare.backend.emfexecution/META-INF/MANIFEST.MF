@@ -25,9 +25,8 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.backend.emfexecution.configuration;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui;bundle-version="1.0.0",
  org.eclipse.emf;bundle-version="2.6.0",
- org.kermeta.language.model;bundle-version="2.0.99",
  org.gemoc.gemoc_language_workbench.api,
- org.gemoc.gemoc_language_workbench.ui;bundle-version="0.1.0",
+ org.gemoc.gemoc_language_workbench.ui,
  org.eclipse.m2m.qvt.oml,
  fr.inria.aoste.timesquare.ccslkernel.parser.xtext
 Bundle-ActivationPolicy: lazy

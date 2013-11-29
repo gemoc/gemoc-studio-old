@@ -10,8 +10,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
@@ -30,21 +31,28 @@ import fr.inria.aoste.trace.Reference;
  * @author flatombe
  * 
  */
-public class CcslSolver implements Solver {
+public class CcslSolver implements
+		org.gemoc.gemoc_language_workbench.api.moc.Solver {
 
 	CCSLKernelSolverWrapper solverWrapper = null;
 	URI modelOfExecutionURI = null;
+	ModelOfExecutionBuilder modelOfExecutionBuilder;
 
 	public CcslSolver() {
+		this.modelOfExecutionBuilder = new EclToCcslTranslator();
+	}
+
+	public ModelOfExecutionBuilder getModelOfExecutionBuilder() {
+		return this.modelOfExecutionBuilder;
 	}
 
 	@Override
 	public void forbidEventOccurrenceReferencing(EObject target,
 			EOperation operation) {
 		// TODO: Julien complete the code so as to force the correct clocks.
-		
-//		this.solverWrapper.forceClockAbsence(HelperFactory
-//				.createModelElementReference(target));
+
+		// this.solverWrapper.forceClockAbsence(HelperFactory
+		// .createModelElementReference(target));
 	}
 
 	@Override

@@ -42,8 +42,7 @@ public class EmfExecutionConfigurationParser extends AbstractContentAssistParser
 					put(grammarAccess.getImportStatementAccess().getGroup(), "rule__ImportStatement__Group__0");
 					put(grammarAccess.getJarImportStatementAccess().getGroup(), "rule__JarImportStatement__Group__0");
 					put(grammarAccess.getEMFExecutionConfigurationAccess().getImportsAssignment_0(), "rule__EMFExecutionConfiguration__ImportsAssignment_0");
-					put(grammarAccess.getEMFExecutionConfigurationAccess().getJarImportStatementAssignment_1(), "rule__EMFExecutionConfiguration__JarImportStatementAssignment_1");
-					put(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_2(), "rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_2");
+					put(grammarAccess.getEMFExecutionConfigurationAccess().getForcedClockMappingsAssignment_1(), "rule__EMFExecutionConfiguration__ForcedClockMappingsAssignment_1");
 					put(grammarAccess.getForcedClockMappingAccess().getClockAssignment_1(), "rule__ForcedClockMapping__ClockAssignment_1");
 					put(grammarAccess.getForcedClockMappingAccess().getClockToAvoidWhenTrueAssignment_6(), "rule__ForcedClockMapping__ClockToAvoidWhenTrueAssignment_6");
 					put(grammarAccess.getImportStatementAccess().getImportURIAssignment_1(), "rule__ImportStatement__ImportURIAssignment_1");

@@ -30,7 +30,7 @@ public class EmfExecutionConfigurationFactoryImpl extends EFactoryImpl implement
   {
     try
     {
-      EmfExecutionConfigurationFactory theEmfExecutionConfigurationFactory = (EmfExecutionConfigurationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.inria.fr/aoste/timesquare/backend/EmfExecutionConfiguration"); 
+      EmfExecutionConfigurationFactory theEmfExecutionConfigurationFactory = (EmfExecutionConfigurationFactory)EPackage.Registry.INSTANCE.getEFactory(EmfExecutionConfigurationPackage.eNS_URI);
       if (theEmfExecutionConfigurationFactory != null)
       {
         return theEmfExecutionConfigurationFactory;

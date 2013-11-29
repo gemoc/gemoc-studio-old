@@ -1,10 +1,10 @@
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
-import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
+import org.gemoc.gemoc_language_workbench.api.exceptions.InvokationResultConvertionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 /**
@@ -17,12 +17,20 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
  */
 public interface EventExecutor {
 	/**
+	 * A rather optional method that is used to instanciate the languages
+	 * managed by this EventExecutor... if they need to be. Most of the time it
+	 * will probably perform nothing.
+	 */
+	public void initialize();
+
+	/**
 	 * Executes the Domain-Specific Action.
 	 * 
 	 * @param msa
 	 * @return
 	 */
-	public FeedbackData execute(ModelSpecificAction msa);
+	public FeedbackData execute(ModelSpecificAction msa)
+			throws EventExecutionException, InvokationResultConvertionException;
 
 	/**
 	 * Executes the Domain-Specific Action(s) referenced by the given
@@ -34,29 +42,7 @@ public interface EventExecutor {
 	 * @return the results of the Domain-Specific Actions wrapped in appropriate
 	 *         FeedbackData objects.
 	 */
-	public List<FeedbackData> execute(ModelSpecificEvent dse);
-
-	/**
-	 * An EventExecutor needs to have a model against which it will look for the
-	 * actual object(s) and operation(s) designated by the Domain Specific
-	 * Action(s) to execute.
-	 * 
-	 * @param modelResource
-	 */
-	public void setModel(Resource modelResource);
-
-	/**
-	 * Retrieve the sentinels used by this executor.
-	 * 
-	 * @return
-	 */
-	public Collection<BytecodeSentinel> getSentinels();
-
-	/**
-	 * Add a new sentinel to this executor.
-	 * 
-	 * @param sentinel
-	 */
-	public void addSentinel(BytecodeSentinel sentinel);
+	public List<FeedbackData> execute(ModelSpecificEvent dse)
+			throws EventExecutionException, InvokationResultConvertionException;
 
 }

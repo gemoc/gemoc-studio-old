@@ -56,37 +56,34 @@
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="loadModel_class" type="string">
+         <attribute name="xdsmlFilePath" type="string" use="required">
             <annotation>
                <documentation>
-                  Class in charge of loading model
+                  Path to the xdsml configuration file. (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
                </documentation>
-               <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.ModelLoader"/>
-               </appinfo>
             </annotation>
          </attribute>
          <attribute name="executor_class" type="string" use="required">
             <annotation>
                <documentation>
-                  Class offering execution API on the XDSML
+                  Class responsible for being able to execute the methods referenced by the Domain-Specific Events. In particular, it should be able to locate the methods in the bytecode and call them correctly.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.Executor"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor"/>
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="initializer_class" type="string">
+         <attribute name="solver_class" type="string" use="required">
             <annotation>
                <documentation>
-                  Class in charge of initializing the XDSML for correct loading and execution
+                  A Solver implementation, which has a facility to &quot;compile&quot; the Domain-Specific Events specification file into its own Model of Execution file format. It should be able to produce a scheduling trace conforming to the RT-Simex Trace Metamodel (fr.inria.aoste.trace).
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.moc.Solver"/>
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="domainSpecificEventsResource" type="string">
+         <attribute name="domainSpecificEventsResource" type="string" use="required">
             <annotation>
                <documentation>
                   Resource of the DSE Mapping file (e.g. ECL file). (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
@@ -96,45 +93,23 @@
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="xdsmlFilePath" type="string" use="required">
-            <annotation>
-               <documentation>
-                  Path to the xdsml configuration file. (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
-               </documentation>
-            </annotation>
-         </attribute>
-         <attribute name="modelOfExecutionBuilder" type="string">
-            <annotation>
-               <documentation>
-                  An implementation of ModelOfExecutionBuilder. Responsible for instanciating the DSE/MoC to the model used.
-
-
---
-FL : Deprecated
-Path to the ECL to CCSL qvto transformation file. (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
-               </documentation>
-               <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder"/>
-               </appinfo>
-            </annotation>
-         </attribute>
-         <attribute name="solver_class" type="string" use="required">
-            <annotation>
-               <documentation>
-                  An implementation of the Solver.
-               </documentation>
-               <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.moc.Solver"/>
-               </appinfo>
-            </annotation>
-         </attribute>
          <attribute name="feedbackPolicy_class" type="string">
             <annotation>
                <documentation>
-                  An implementation of the FeedbackPolicy interface.
+                  A FeedbackPolicy implementation, done in Java but which is to be replaced by a well-defined DSL from the GEMOC ANR Project. It is responsible for telling the solver what to do when certain Model-Specific Actions return certain values.
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="modelLoader_class" type="string">
+            <annotation>
+               <documentation>
+                  Optional ModelLoader, in case the user does not want to use XMI-compliant formats for their model...
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.ModelLoader"/>
                </appinfo>
             </annotation>
          </attribute>

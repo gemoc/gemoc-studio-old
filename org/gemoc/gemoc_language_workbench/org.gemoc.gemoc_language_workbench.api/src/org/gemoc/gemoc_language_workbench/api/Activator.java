@@ -1,6 +1,9 @@
 package org.gemoc.gemoc_language_workbench.api;
 
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
+import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -11,9 +14,30 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.gemoc.gemoc_modeling_workbench.api"; //$NON-NLS-1$
 
+	protected static EclipseMessagingSystem messagingSystem = null;
+
+	public static void warn(String msg, Throwable e) {
+		Activator.getDefault().getLog()
+				.log(new Status(Status.WARNING, PLUGIN_ID, Status.OK, msg, e));
+	}
+
+	public static void error(String msg, Throwable e) {
+		Activator.getDefault().getLog()
+				.log(new Status(Status.ERROR, PLUGIN_ID, Status.OK, msg, e));
+	}
+
+	public static EclipseMessagingSystem getMessagingSystem() {
+		if (messagingSystem == null) {
+			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID, "GEMOC API");
+			((EclipseMessagingSystem) messagingSystem)
+					.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
+		}
+		return messagingSystem;
+	}
+
 	// The shared instance
 	private static Activator plugin;
-	
+
 	/**
 	 * The constructor
 	 */
@@ -22,7 +46,10 @@ public class Activator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
+	 * )
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
@@ -31,7 +58,10 @@ public class Activator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
+	 * )
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
@@ -40,7 +70,7 @@ public class Activator extends AbstractUIPlugin {
 
 	/**
 	 * Returns the shared instance
-	 *
+	 * 
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {

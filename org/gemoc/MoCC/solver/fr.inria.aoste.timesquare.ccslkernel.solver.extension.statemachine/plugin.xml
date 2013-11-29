@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="fr.inria.aoste.timesquare.ccslkernel.solver.extension.relations">
+      <ISolverRelationFactory
+            class="fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine.StateMachineRelationDefinitionFactory"
+            name="semantic implementation of state machine relation definitions">
+      </ISolverRelationFactory>
+   </extension>
+
+</plugin>
