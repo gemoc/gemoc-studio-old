@@ -116,11 +116,17 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
         </repository>
+        
+        <repository>
+            <id>emf2.8.x</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/emf/emf/updates/2.8.x/</url>
+        </repository>
         <repository>
             <id>emf2.9.x</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
-        </repository>
+        </repository>        
     </repositories>
 
     <build>
