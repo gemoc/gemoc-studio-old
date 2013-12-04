@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.gemoc.mocc.cometaccsl.model.xtext.mocdsl.ui
+Bundle-Vendor: ENSTA Bretagne
+Bundle-Version: 0.0.1
+Bundle-SymbolicName: org.gemoc.mocc.cometaccsl.model.xtext.mocdsl.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.gemoc.mocc.cometaccsl.model.xtext.mocdsl;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ fr.inria.aoste.timesquare.ccslkernel.library.xtext;bundle-version="1.0.0";visibility:=reexport,
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0";visibility:=reexport,
+ fr.inria.aoste.timesquare.ccslkernel.library.xtext.ui;bundle-version="1.0.0";visibility:=reexport,
+ org.eclipse.compare,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.xtend,
+ org.eclipse.xpand
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.gemoc.mocc.cometaccsl.model.xtext.ui.quickfix,
+ org.gemoc.mocc.cometaccsl.model.xtext.ui.contentassist,
+ org.gemoc.mocc.cometaccsl.model.xtext.ui.contentassist.antlr,
+ org.gemoc.mocc.cometaccsl.model.xtext.ui.internal
+Bundle-Activator: org.gemoc.mocc.cometaccsl.model.xtext.ui.internal.MoCDslActivator
