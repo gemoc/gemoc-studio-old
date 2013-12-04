@@ -52,9 +52,17 @@
    <features>
       <feature id="org.gemoc.gemoc_studio.branding.feature"/>
       <feature id="org.gemoc.gemoc_studio.additions.feature"/>
-      <feature id="fr.obeo.dsl.feature.designer.architect"/>
+      <feature id="org.eclipse.sirius.runtime"/>
+      <feature id="org.eclipse.sirius.runtime.acceleo"/>
+      <feature id="org.eclipse.sirius.runtime.ide.eef"/>
+      <feature id="org.eclipse.sirius.runtime.ide.ui"/>
+      <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo"/>
+      <feature id="org.eclipse.sirius.specifier.ide.ui"/>
+      <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo"/>
+      <feature id="org.eclipse.sirius.runtime.ide.xtext"/>
+      <!-- Waiting for a Sirius migrated UML Designer
       <feature id="org.obeonetwork.dsl.feature.uml2"/>
-      <feature id="fr.obeo.dsl.viewpoint.runtime.ide.xtext"/>
+      -->
       <feature id="org.kermeta.language.feature"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
       <feature id="org.gemoc.execution.trace.feature"/>

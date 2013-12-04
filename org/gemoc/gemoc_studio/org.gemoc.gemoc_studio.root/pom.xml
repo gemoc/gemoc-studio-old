@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <tycho-version>0.18.0</tycho-version>
+        <tycho-version>0.18.1</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -21,15 +21,18 @@
 
     <repositories>
         <repository>
-            <id>latest-od-release</id>
+            <id>sirius-0-9-nightly</id>
             <layout>p2</layout>
-            <url>http://www.obeo.fr/download/release/designer/6.1/latest/juno3/update</url>
+            <url>http://download.eclipse.org/sirius/updates/nightly/0.9/</url>
         </repository>
+        <!--
+             No marketplace for Sirius based modelers yet.
         <repository>
             <id>latest-od-marketplace-release</id>
             <layout>p2</layout>
             <url>http://marketplace.obeonetwork.com/updates/od61/</url>
         </repository>
+        -->
         <repository>
             <id>latest-egit-release</id>
             <layout>p2</layout>
