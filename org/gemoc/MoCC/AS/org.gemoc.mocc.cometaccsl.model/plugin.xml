@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2012-2016 GEMOC consortium.
+ 
+ http://www.gemoc.org
+ 
+ Contributors:
+   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
+   
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+   
+ $Id$
+-->
+
+<plugin>
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Cometa -->
+      <package
+            uri="http://org.gemoc.mocc.cometastructure/1.0"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.cometastructure.CometastructurePackage"
+            genModel="model/Cometa.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Cometa -->
+      <parser
+            type="cometastructure"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.cometastructure.util.CometastructureResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Cometa -->
+      <package
+            uri="http://org.gemoc.mocc.cometa/1.0"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.CometaPackage"
+            genModel="model/Cometa.genmodel"/>
+   </extension>
+
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Cometa -->
+      <parser
+            type="cometa"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.util.CometaResourceFactoryImpl"/>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Cometa -->
+      <package
+            uri="http://org.gemoc.mocc.cometadatatype/1.0"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.cometadatatype.CometadatatypePackage"
+            genModel="model/Cometa.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Cometa -->
+      <parser
+            type="cometadatatype"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.cometadatatype.util.CometadatatypeResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Cometa -->
+      <package
+            uri="http://org.gemoc.mocc.cometamoc/1.0"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.cometamoc.CometamocPackage"
+            genModel="model/Cometa.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Cometa -->
+      <parser
+            type="cometamoc"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.cometamoc.util.CometamocResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Cometa -->
+      <package
+            uri="http://org.gemoc.mocc.cometatime/1.0"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.cometatime.CometatimePackage"
+            genModel="model/Cometa.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Cometa -->
+      <parser
+            type="cometatime"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.cometatime.util.CometatimeResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Cometa -->
+      <package
+            uri="http://org.gemoc.mocc.ccsl4cometaspecialisation/1.0"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.ccsl4cometaspecialisation.Ccsl4cometaspecialisationPackage"
+            genModel="model/Cometa.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Cometa -->
+      <parser
+            type="ccsl4cometaspecialisation"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.ccsl4cometaspecialisation.util.Ccsl4cometaspecialisationResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Cometa -->
+      <package
+            uri="http://org.gemoc.mocc.ccslmoc/1.0"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.ccslmoc.CcslmocPackage"
+            genModel="model/Cometa.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Cometa -->
+      <parser
+            type="ccslmoc"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.ccslmoc.util.CcslmocResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Cometa -->
+      <package
+            uri="http://org.gemoc.mocc.fsmdefinition/1.0"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.fsmdefinition.FsmdefinitionPackage"
+            genModel="model/Cometa.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Cometa -->
+      <parser
+            type="fsmdefinition"
+            class="org.gemoc.mocc.cometaccsl.model.cometa.fsmdefinition.util.FsmdefinitionResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

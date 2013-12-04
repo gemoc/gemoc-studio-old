@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012-2016 GEMOC consortium.&#xD;&#xA;&#xD;&#xA;http://www.gemoc.org&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]&#xD;&#xA;  &#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;  &#xD;&#xA;$Id$"
+    modelDirectory="/org.gemoc.mocc.cometaccsl.model/src-gen" editDirectory="/org.gemoc.mocc.cometaccsl.model.edit/src-gen"
+    editorDirectory="/org.gemoc.mocc.cometaccsl.model.editor/src-gen" modelPluginID="org.gemoc.mocc.cometaccsl.model"
+    modelName="Cometa" editPluginClass="org.gemoc.mocc.cometaccsl.model.cometa.edit.provider.CometaEditPlugin"
+    editorPluginClass="org.gemoc.mocc.cometaccsl.model.cometa.editor.presentation.CometaEditorPlugin"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="/org.gemoc.mocc.cometaccsl.model.tests/src-gen"
+    testSuiteClass="org.gemoc.mocc.cometaccsl.model.tests.cometa.tests.CometaAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    editPluginID="org.gemoc.mocc.cometaccsl.model.edit" editorPluginID="org.gemoc.mocc.cometaccsl.model.editor"
+    usedGenPackages="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Cometaccsl.ecore</foreignModel>
+  <genPackages prefix="Cometa" basePackage="org.gemoc.mocc.cometaccsl.model" resource="XML"
+      disposableProviderFactory="true" ecorePackage="Cometaccsl.ecore#/">
+    <genClasses ecoreClass="Cometaccsl.ecore#//MoCSystemSpecification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//MoCSystemSpecification/mocLib"/>
+    </genClasses>
+    <genClasses ecoreClass="Cometaccsl.ecore#//CometaSystemSpecification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//CometaSystemSpecification/dataLib"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//CometaSystemSpecification/structureLib"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//CometaSystemSpecification/timeLib"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cometaccsl.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//NamedElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//NamedElement/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//NamedElement/definition"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cometaccsl.ecore#//ElementAbstraction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//ElementAbstraction/content"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cometaccsl.ecore#//MoCLibrary"/>
+    <nestedGenPackages prefix="Cometadatatype" basePackage="org.gemoc.mocc.cometaccsl.model.cometa"
+        resource="XML" disposableProviderFactory="true" ecorePackage="Cometaccsl.ecore#//cometadatatype">
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometadatatype/TypeDeclaration"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometadatatype/DataTypeLibrary">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometadatatype/DataTypeLibrary/typedef"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Cometamoc" basePackage="org.gemoc.mocc.cometaccsl.model.cometa"
+        resource="XML" disposableProviderFactory="true" ecorePackage="Cometaccsl.ecore#//cometamoc">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cometaccsl.ecore#//cometamoc/MoCRole">
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometamoc/MoCRole/Orchestrator"/>
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometamoc/MoCRole/PortBehavior"/>
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometamoc/MoCRole/ConnectorBehavior"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cometaccsl.ecore#//cometamoc/QueueKind">
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometamoc/QueueKind/FIFO"/>
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometamoc/QueueKind/LIFO"/>
+      </genEnums>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/Queue">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/Queue/rtInterfaces"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//cometamoc/Queue/kind"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//cometamoc/Queue/size"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/CometaMoCLibrary">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/CometaMoCLibrary/mocDomains"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/CometaMoCLibrary/mocEvents"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/CometaMoCLibrary/queues"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/MoCDomain">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/MoCDomain/mocBehaviors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/MoCDomain/domainTimeConstraints"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometamoc/Behavior">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//cometamoc/Behavior/roles"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/Behavior/mocDomain"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/Behavior/queueInstances"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/Behavior/rtInterfaces"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/Behavior/behaviorTimeConstraints"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/OpaqueBlock">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/OpaqueBlock/rtElements"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/OpaqueBehavior">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/OpaqueBehavior/body"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/MoCEvent"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/QueueInstance">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/QueueInstance/type"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/FiniteStateMachineBehavior"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/CometaGuard"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/CometaAction"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometamoc/CometaTrigger">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometamoc/CometaTrigger/triggOn"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Cometastructure" basePackage="org.gemoc.mocc.cometaccsl.model.cometa"
+        resource="XML" disposableProviderFactory="true" ecorePackage="Cometaccsl.ecore#//cometastructure">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cometaccsl.ecore#//cometastructure/PortKind">
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometastructure/PortKind/in"/>
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometastructure/PortKind/out"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cometaccsl.ecore#//cometastructure/MoCConnectorKind">
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometastructure/MoCConnectorKind/delegation"/>
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometastructure/MoCConnectorKind/assembly"/>
+      </genEnums>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometastructure/StructureContainer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/StructureContainer/connectorInstances"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/StructureContainer/componentInstances"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/StructureContainer/portInstances"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometastructure/MoCConnector">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/MoCConnector/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/MoCConnector/target"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//cometastructure/MoCConnector/kind"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometastructure/MoCComponent">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/MoCComponent/ownedPortInstances"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometastructure/MoCPort">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//cometastructure/MoCPort/direction"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/MoCPort/target"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/MoCPort/portInterfaces"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometastructure/StructureElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/StructureElement/behaviorMap"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/StructureElement/mocDomain"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/StructureElement/parameters"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometastructure/Container">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/Container/parts"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometastructure/CompositeComponent">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/CompositeComponent/connectors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/CompositeComponent/subComponents"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometastructure/BasicComponent">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/BasicComponent/computation"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometastructure/StructureLibrary">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/StructureLibrary/mocStructures"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/StructureLibrary/mocInterfaces"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometastructure/Part">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/Part/componentType"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/Part/ports"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometastructure/Part/container"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Cometatime" basePackage="org.gemoc.mocc.cometaccsl.model.cometa"
+        resource="XML" disposableProviderFactory="true" ecorePackage="Cometaccsl.ecore#//cometatime">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cometaccsl.ecore#//cometatime/InterfaceKind">
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometatime/InterfaceKind/provided"/>
+        <genEnumLiterals ecoreEnumLiteral="Cometaccsl.ecore#//cometatime/InterfaceKind/required"/>
+      </genEnums>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometatime/TimeLibrary">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/TimeLibrary/clocks"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/TimeLibrary/globalTimeConstraints"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometatime/TimeConstraint">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/TimeConstraint/uses"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometatime/ClockAbstraction">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/ClockAbstraction/isReferedInConstraints"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/ClockAbstraction/isReferedbyEvents"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/ClockAbstraction/isReferedbyTrigger"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometatime/ComplexEventDefinitionAbstraction">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/ComplexEventDefinitionAbstraction/uses"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometatime/Parameter">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/Parameter/parameterType"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/Parameter/value"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometatime/Event">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/Event/eventParameters"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/Event/uses"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometatime/Service">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//cometatime/Service/parameters"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometatime/Send"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometatime/Receive"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//cometatime/Ack"/>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometatime/Interface">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//cometatime/Interface/kind"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometatime/MoCInterface"/>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//cometatime/RTInterface"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Ccsl4cometaspecialisation" basePackage="org.gemoc.mocc.cometaccsl.model.cometa"
+        resource="XML" disposableProviderFactory="true" ecorePackage="Cometaccsl.ecore#//ccsl4cometaspecialisation">
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaClock"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaBlockAbstraction"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaTimeConstraint"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaComplexTrigger">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaComplexTrigger/trueTriggers"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaComplexTrigger/falseTriggers"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaCometaSystemSpecification">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaCometaSystemSpecification/ccslLib"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaGuard"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccsl4cometaspecialisation/CCSL4CometaAction"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Ccslmoc" basePackage="org.gemoc.mocc.cometaccsl.model.cometa"
+        resource="XML" disposableProviderFactory="true" ecorePackage="Cometaccsl.ecore#//ccslmoc">
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccslmoc/CCSLLibrary"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccslmoc/CCSLStateMachineRelationDefinition">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//ccslmoc/CCSLStateMachineRelationDefinition/concreteEntities"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//ccslmoc/CCSLStateMachineRelationDefinition/classicalExpressions"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//ccslmoc/CCSLAction"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccslmoc/FinishClock">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//ccslmoc/FinishClock/clock"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccslmoc/IntegerAssignement"/>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccslmoc/CCSLGuard">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//ccslmoc/CCSLGuard/value"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//ccslmoc/CCSLTrigger">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//ccslmoc/CCSLTrigger/trueTriggers"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//ccslmoc/CCSLTrigger/falseTriggers"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Fsmdefinition" basePackage="org.gemoc.mocc.cometaccsl.model.cometa"
+        resource="XML" disposableProviderFactory="true" ecorePackage="Cometaccsl.ecore#//fsmdefinition">
+      <genClasses ecoreClass="Cometaccsl.ecore#//fsmdefinition/State">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/State/actions"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/State/inputTransitions"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/State/outputTransitions"/>
+      </genClasses>
+      <genClasses ecoreClass="Cometaccsl.ecore#//fsmdefinition/Transition">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/Transition/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/Transition/target"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/Transition/guard"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/Transition/trigger"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/Transition/actions"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//fsmdefinition/FiniteStateMachine">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/FiniteStateMachine/transitions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/FiniteStateMachine/states"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/FiniteStateMachine/initialState"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Cometaccsl.ecore#//fsmdefinition/FiniteStateMachine/finalStates"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//fsmdefinition/Trigger"/>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//fsmdefinition/Action"/>
+      <genClasses image="false" ecoreClass="Cometaccsl.ecore#//fsmdefinition/Guard"/>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>
