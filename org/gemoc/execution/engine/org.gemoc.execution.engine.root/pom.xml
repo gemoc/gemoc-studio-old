@@ -36,21 +36,36 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/juno</url>
 		</repository>-->
-		<repository>
-			<id>latest-od-release</id>
-			<layout>p2</layout>
-			<url>http://www.obeo.fr/download/release/designer/6.1/latest/juno3/update</url>
-		</repository>
-		<repository>
-			<id>latest-od-marketplace-release</id>
-			<layout>p2</layout>
-			<url>http://marketplace.obeonetwork.com/updates/od61/</url>
-		</repository>
-		<repository>
-			<id>juno-with-no-platform4</id>
-			<layout>p2</layout>
-			<url>http://www.obeo.fr/download/eclipse/juno-3.8</url>
-		</repository>
+		<!-- <repository>
+            <id>juno</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/releases/juno</url>
+        </repository>-->
+        <repository>
+            <id>sirius-0-9-nightly</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/sirius/updates/nightly/0.9/</url>
+        </repository>
+        <repository>
+            <id>ecoretools2-milestone</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/emft/ecoretools/updates/2.0/2.0.0M3/</url>
+        </repository>
+        <repository>
+            <id>eef-milestone</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.2</url>
+        </repository>
+        <repository>
+            <id>juno-with-no-platform4</id>
+            <layout>p2</layout>
+            <url>http://www.obeo.fr/download/eclipse/juno-3.8</url>
+        </repository>
+        <repository>
+            <id>orbit</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/</url>
+        </repository>
 		<repository>
 			<id>kermeta2-latest-stable</id>
 			<layout>p2</layout>
