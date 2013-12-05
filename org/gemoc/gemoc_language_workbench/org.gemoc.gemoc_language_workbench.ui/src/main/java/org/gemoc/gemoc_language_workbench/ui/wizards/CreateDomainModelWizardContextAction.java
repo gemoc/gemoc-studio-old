@@ -28,7 +28,7 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectEMFIProjectDialog;
 
-import fr.obeo.mda.ecore.design.wizard.EcoreModelerWizard;
+import org.eclipse.emf.ecoretools.design.wizard.EcoreModelerWizard;
 
 
 /**
