@@ -36,6 +36,11 @@
             <url>http://download.eclipse.org/modeling/mdt/uml2/updates/4.1.x</url>
         </repository>
         <repository>
+            <id>acceleo-latest-release</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/m2t/acceleo/updates/milestones/3.4/S201309031307</url>
+        </repository>
+        <repository>
             <id>latest-egit-release</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/egit/updates</url>
