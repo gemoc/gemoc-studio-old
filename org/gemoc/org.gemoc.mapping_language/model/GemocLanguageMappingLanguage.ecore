@@ -12,15 +12,20 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LanguageSpecificEvent" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetClass" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//MocRelation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ImportStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MocRelation" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtendedCcslRelation" eSuperTypes="#//MocRelation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relation" lowerBound="1"
+        eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/Relation"/>
   </eClassifiers>
 </ecore:EPackage>
