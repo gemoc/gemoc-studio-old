@@ -25,14 +25,11 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/sirius/updates/nightly/0.9/</url>
         </repository>
-        <!--
-             No marketplace for Sirius based modelers yet.
         <repository>
-            <id>latest-od-marketplace-release</id>
+            <id>uml-designer-nightly</id>
             <layout>p2</layout>
-            <url>http://marketplace.obeonetwork.com/updates/od61/</url>
+            <url>http://marketplace.obeonetwork.com/updates/nightly/uml/4.0.0/repository</url>
         </repository>
-        -->
         <repository>
             <id>latest-egit-release</id>
             <layout>p2</layout>
