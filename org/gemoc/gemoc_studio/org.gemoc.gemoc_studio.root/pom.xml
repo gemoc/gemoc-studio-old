@@ -41,6 +41,11 @@
             <url>http://download.eclipse.org/modeling/m2t/acceleo/updates/milestones/3.4/S201309031307</url>
         </repository>
         <repository>
+            <id>ecoretools2-milestone</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/emft/ecoretools/updates/2.0/2.0.0M3/</url>
+        </repository>
+        <repository>
             <id>latest-egit-release</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/egit/updates</url>
