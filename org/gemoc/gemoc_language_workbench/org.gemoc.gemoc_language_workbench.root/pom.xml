@@ -53,6 +53,11 @@
 			<layout>p2</layout>
 			<url>http://www.obeo.fr/download/eclipse/juno-3.8</url>
 		</repository>
+		<repository>
+			<id>orbit</id>
+			<layout>p2</layout>
+            <url>http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/</url>
+		</repository>
 		<!-- <repository>
 			<id>kermeta2-latest-stable</id>
 			<layout>p2</layout>
