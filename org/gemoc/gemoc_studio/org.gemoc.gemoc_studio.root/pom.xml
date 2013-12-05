@@ -31,6 +31,11 @@
             <url>http://marketplace.obeonetwork.com/updates/nightly/uml/4.0.0/repository</url>
         </repository>
         <repository>
+            <id>mdt-uml-4-updates</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/mdt/uml2/updates/4.1.x</url>
+        </repository>
+        <repository>
             <id>latest-egit-release</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/egit/updates</url>
