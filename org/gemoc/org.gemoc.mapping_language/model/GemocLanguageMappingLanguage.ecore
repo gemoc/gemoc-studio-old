@@ -2,18 +2,18 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="glml" nsURI="http://org.gemoc.dse_language.language_level/glml"
     nsPrefix="org.gemoc.dse_language.language_level.glml">
-  <eClassifiers xsi:type="ecore:EClass" name="DomainSpecificEventFile">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" eType="#//ImportStatement"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainSpecificEventFile" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//ImportStatement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="languageEvents" upperBound="-1"
-        eType="#//LanguageSpecificEvent" containment="true"/>
+        eType="#//DomainSpecificEvent" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LanguageSpecificEvent" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainSpecificEvent" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetClass" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
@@ -26,6 +26,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="MocRelation" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="ExtendedCcslRelation" eSuperTypes="#//MocRelation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="relation" lowerBound="1"
-        eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/Relation"/>
+        eType="ecore:EClass platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/Relation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelSpecificEvent" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reification" eType="#//DomainSpecificEvent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
 </ecore:EPackage>
