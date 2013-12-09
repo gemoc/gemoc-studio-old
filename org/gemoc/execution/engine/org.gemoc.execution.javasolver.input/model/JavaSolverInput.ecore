@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="javasolverinput" nsURI="http://javasolverinput/1.0" nsPrefix="javasolverinput">
+  <eClassifiers xsi:type="ecore:EClass" name="JavaSolverInputFile" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clocks" upperBound="-1"
+        eType="#//Clock" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+        eType="#//Relation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Clock" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Relation" abstract="true" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Precedes" eSuperTypes="#//Relation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock1" lowerBound="1"
+        eType="#//Clock"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock2" lowerBound="1"
+        eType="#//Clock"/>
+  </eClassifiers>
+</ecore:EPackage>
