@@ -98,7 +98,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			// TODO : remove when EclToCCslTranslator gets implemented.
 			try {				
 				Resource modelOfExecution = this.solver
-						.getModelOfExecutionBuilder().build(
+						.getSolverInputBuilder().build(
 								this.domainSpecificEventsResource,
 								this.modelResource);
 
@@ -109,7 +109,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				this.modelOfExecutionURI = URI.createPlatformResourceURI(
 						modelOfExecutionFilePath, true);
 			}
-			this.solver.setModelOfExecutionFile(this.modelOfExecutionURI);
+			this.solver.setSolverInputFile(this.modelOfExecutionURI);
 			this.modelSpecificEvents = this
 					.initializeModelSpecificEvents(this.modelOfExecutionURI);
 
@@ -119,7 +119,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	}
 
 	public void reset() {
-		this.solver.setModelOfExecutionFile(this.modelOfExecutionURI);
+		this.solver.setSolverInputFile(this.modelOfExecutionURI);
 		this.setChanged();
 		this.notifyObservers(">Reset!");
 	}

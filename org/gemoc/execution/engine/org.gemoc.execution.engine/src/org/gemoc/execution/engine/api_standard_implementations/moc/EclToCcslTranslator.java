@@ -29,7 +29,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
+import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -40,7 +40,7 @@ import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ExtendedCCSLStandaloneS
 import fr.inria.aoste.timesquare.ecl.ecltoqvto.main.AcceleoLauncherForEclToQvto;
 
 // TODO: here the code to generate the .extendedccsl from ecl + xmi
-public class EclToCcslTranslator implements ModelOfExecutionBuilder {
+public class EclToCcslTranslator implements SolverInputBuilder {
 	private XtextResourceSet aModelResourceSet = null;
 	private XtextResourceSet outputResourceSet = null;
 	private Resource result = null;

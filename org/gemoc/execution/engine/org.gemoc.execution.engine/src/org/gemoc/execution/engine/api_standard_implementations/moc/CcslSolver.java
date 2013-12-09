@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
+import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
@@ -36,13 +36,13 @@ public class CcslSolver implements
 
 	CCSLKernelSolverWrapper solverWrapper = null;
 	URI modelOfExecutionURI = null;
-	ModelOfExecutionBuilder modelOfExecutionBuilder;
+	SolverInputBuilder modelOfExecutionBuilder;
 
 	public CcslSolver() {
 		this.modelOfExecutionBuilder = new EclToCcslTranslator();
 	}
 
-	public ModelOfExecutionBuilder getModelOfExecutionBuilder() {
+	public SolverInputBuilder getSolverInputBuilder() {
 		return this.modelOfExecutionBuilder;
 	}
 
@@ -117,7 +117,7 @@ public class CcslSolver implements
 	}
 
 	@Override
-	public void setModelOfExecutionFile(URI modelOfExecutionURI) {
+	public void setSolverInputFile(URI modelOfExecutionURI) {
 		this.modelOfExecutionURI = modelOfExecutionURI;
 		try {
 			ResourceSet resourceSet = new ResourceSetImpl();
