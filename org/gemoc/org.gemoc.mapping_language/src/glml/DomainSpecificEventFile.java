@@ -4,8 +4,6 @@ package glml;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Domain Specific Event File</b></em>'.
@@ -16,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link glml.DomainSpecificEventFile#getImports <em>Imports</em>}</li>
  *   <li>{@link glml.DomainSpecificEventFile#getLanguageEvents <em>Language Events</em>}</li>
+ *   <li>{@link glml.DomainSpecificEventFile#getModelEvents <em>Model Events</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,36 +22,26 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DomainSpecificEventFile extends EObject {
+public interface DomainSpecificEventFile extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Imports</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
+	 * The list contents are of type {@link glml.ImportStatement}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Imports</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Imports</em>' containment reference.
-	 * @see #setImports(ImportStatement)
+	 * @return the value of the '<em>Imports</em>' containment reference list.
 	 * @see glml.GlmlPackage#getDomainSpecificEventFile_Imports()
 	 * @model containment="true"
 	 * @generated
 	 */
-	ImportStatement getImports();
-
-	/**
-	 * Sets the value of the '{@link glml.DomainSpecificEventFile#getImports <em>Imports</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Imports</em>' containment reference.
-	 * @see #getImports()
-	 * @generated
-	 */
-	void setImports(ImportStatement value);
+	EList<ImportStatement> getImports();
 
 	/**
 	 * Returns the value of the '<em><b>Language Events</b></em>' containment reference list.
-	 * The list contents are of type {@link glml.LanguageSpecificEvent}.
+	 * The list contents are of type {@link glml.DomainSpecificEvent}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Language Events</em>' containment reference list isn't clear,
@@ -64,6 +53,22 @@ public interface DomainSpecificEventFile extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<LanguageSpecificEvent> getLanguageEvents();
+	EList<DomainSpecificEvent> getLanguageEvents();
+
+	/**
+	 * Returns the value of the '<em><b>Model Events</b></em>' containment reference list.
+	 * The list contents are of type {@link glml.ModelSpecificEvent}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Model Events</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Model Events</em>' containment reference list.
+	 * @see glml.GlmlPackage#getDomainSpecificEventFile_ModelEvents()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ModelSpecificEvent> getModelEvents();
 
 } // DomainSpecificEventFile

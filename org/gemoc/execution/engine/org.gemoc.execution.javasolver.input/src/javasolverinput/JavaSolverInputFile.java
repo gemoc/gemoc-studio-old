@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface JavaSolverInputFile extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Clocks</b></em>' reference list.
+	 * Returns the value of the '<em><b>Clocks</b></em>' containment reference list.
 	 * The list contents are of type {@link javasolverinput.Clock}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -31,15 +31,15 @@ public interface JavaSolverInputFile extends NamedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Clocks</em>' reference list.
+	 * @return the value of the '<em>Clocks</em>' containment reference list.
 	 * @see javasolverinput.JavasolverinputPackage#getJavaSolverInputFile_Clocks()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Clock> getClocks();
 
 	/**
-	 * Returns the value of the '<em><b>Constraints</b></em>' reference list.
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
 	 * The list contents are of type {@link javasolverinput.Relation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -47,9 +47,9 @@ public interface JavaSolverInputFile extends NamedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constraints</em>' reference list.
+	 * @return the value of the '<em>Constraints</em>' containment reference list.
 	 * @see javasolverinput.JavasolverinputPackage#getJavaSolverInputFile_Constraints()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Relation> getConstraints();

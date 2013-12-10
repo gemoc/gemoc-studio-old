@@ -69,6 +69,7 @@ public class GlmlSwitch<T> extends Switch<T> {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE: {
 				DomainSpecificEventFile domainSpecificEventFile = (DomainSpecificEventFile)theEObject;
 				T result = caseDomainSpecificEventFile(domainSpecificEventFile);
+				if (result == null) result = caseNamedElement(domainSpecificEventFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -78,16 +79,43 @@ public class GlmlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case GlmlPackage.LANGUAGE_SPECIFIC_EVENT: {
-				LanguageSpecificEvent languageSpecificEvent = (LanguageSpecificEvent)theEObject;
-				T result = caseLanguageSpecificEvent(languageSpecificEvent);
-				if (result == null) result = caseNamedElement(languageSpecificEvent);
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT: {
+				DomainSpecificEvent domainSpecificEvent = (DomainSpecificEvent)theEObject;
+				T result = caseDomainSpecificEvent(domainSpecificEvent);
+				if (result == null) result = caseNamedElement(domainSpecificEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case GlmlPackage.IMPORT_STATEMENT: {
 				ImportStatement importStatement = (ImportStatement)theEObject;
 				T result = caseImportStatement(importStatement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GlmlPackage.MOC_RELATION: {
+				MocRelation mocRelation = (MocRelation)theEObject;
+				T result = caseMocRelation(mocRelation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GlmlPackage.EXTENDED_CCSL_RELATION: {
+				ExtendedCcslRelation extendedCcslRelation = (ExtendedCcslRelation)theEObject;
+				T result = caseExtendedCcslRelation(extendedCcslRelation);
+				if (result == null) result = caseMocRelation(extendedCcslRelation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GlmlPackage.MODEL_SPECIFIC_EVENT: {
+				ModelSpecificEvent modelSpecificEvent = (ModelSpecificEvent)theEObject;
+				T result = caseModelSpecificEvent(modelSpecificEvent);
+				if (result == null) result = caseNamedElement(modelSpecificEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GlmlPackage.JAVA_SOLVER_RELATION: {
+				JavaSolverRelation javaSolverRelation = (JavaSolverRelation)theEObject;
+				T result = caseJavaSolverRelation(javaSolverRelation);
+				if (result == null) result = caseMocRelation(javaSolverRelation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -126,17 +154,17 @@ public class GlmlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Language Specific Event</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Domain Specific Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Language Specific Event</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Domain Specific Event</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLanguageSpecificEvent(LanguageSpecificEvent object) {
+	public T caseDomainSpecificEvent(DomainSpecificEvent object) {
 		return null;
 	}
 
@@ -152,6 +180,66 @@ public class GlmlSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseImportStatement(ImportStatement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Moc Relation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Moc Relation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMocRelation(MocRelation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Extended Ccsl Relation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extended Ccsl Relation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExtendedCcslRelation(ExtendedCcslRelation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Specific Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Specific Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelSpecificEvent(ModelSpecificEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Java Solver Relation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Java Solver Relation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJavaSolverRelation(JavaSolverRelation object) {
 		return null;
 	}
 

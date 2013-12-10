@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<javasolverinput:JavaSolverInputFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:javasolverinput="http://javasolverinput/1.0" xsi:schemaLocation="http://javasolverinput/1.0 JavaSolverInput.ecore" name="Test">
-  <clocks name="c1"/>
-  <clocks name="c2"/>
-  <constraints xsi:type="javasolverinput:Precedes" name="c1 precedes c2" clock1="//@clocks.0" clock2="//@clocks.1"/>
-</javasolverinput:JavaSolverInputFile>

@@ -113,7 +113,7 @@ public interface JavasolverinputPackage extends EPackage {
 	int JAVA_SOLVER_INPUT_FILE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Clocks</b></em>' reference list.
+	 * The feature id for the '<em><b>Clocks</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -122,7 +122,7 @@ public interface JavasolverinputPackage extends EPackage {
 	int JAVA_SOLVER_INPUT_FILE__CLOCKS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -289,10 +289,10 @@ public interface JavasolverinputPackage extends EPackage {
 	EClass getJavaSolverInputFile();
 
 	/**
-	 * Returns the meta object for the reference list '{@link javasolverinput.JavaSolverInputFile#getClocks <em>Clocks</em>}'.
+	 * Returns the meta object for the containment reference list '{@link javasolverinput.JavaSolverInputFile#getClocks <em>Clocks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Clocks</em>'.
+	 * @return the meta object for the containment reference list '<em>Clocks</em>'.
 	 * @see javasolverinput.JavaSolverInputFile#getClocks()
 	 * @see #getJavaSolverInputFile()
 	 * @generated
@@ -300,10 +300,10 @@ public interface JavasolverinputPackage extends EPackage {
 	EReference getJavaSolverInputFile_Clocks();
 
 	/**
-	 * Returns the meta object for the reference list '{@link javasolverinput.JavaSolverInputFile#getConstraints <em>Constraints</em>}'.
+	 * Returns the meta object for the containment reference list '{@link javasolverinput.JavaSolverInputFile#getConstraints <em>Constraints</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Constraints</em>'.
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
 	 * @see javasolverinput.JavaSolverInputFile#getConstraints()
 	 * @see #getJavaSolverInputFile()
 	 * @generated
@@ -417,7 +417,7 @@ public interface JavasolverinputPackage extends EPackage {
 		EClass JAVA_SOLVER_INPUT_FILE = eINSTANCE.getJavaSolverInputFile();
 
 		/**
-		 * The meta object literal for the '<em><b>Clocks</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Clocks</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -425,7 +425,7 @@ public interface JavasolverinputPackage extends EPackage {
 		EReference JAVA_SOLVER_INPUT_FILE__CLOCKS = eINSTANCE.getJavaSolverInputFile_Clocks();
 
 		/**
-		 * The meta object literal for the '<em><b>Constraints</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

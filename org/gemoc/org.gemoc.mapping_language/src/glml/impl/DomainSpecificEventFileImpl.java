@@ -2,23 +2,20 @@
  */
 package glml.impl;
 
+import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
 import glml.GlmlPackage;
 import glml.ImportStatement;
-import glml.LanguageSpecificEvent;
 
+import glml.ModelSpecificEvent;
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -32,21 +29,22 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link glml.impl.DomainSpecificEventFileImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link glml.impl.DomainSpecificEventFileImpl#getLanguageEvents <em>Language Events</em>}</li>
+ *   <li>{@link glml.impl.DomainSpecificEventFileImpl#getModelEvents <em>Model Events</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DomainSpecificEventFileImpl extends MinimalEObjectImpl.Container implements DomainSpecificEventFile {
+public class DomainSpecificEventFileImpl extends NamedElementImpl implements DomainSpecificEventFile {
 	/**
-	 * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference.
+	 * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getImports()
 	 * @generated
 	 * @ordered
 	 */
-	protected ImportStatement imports;
+	protected EList<ImportStatement> imports;
 
 	/**
 	 * The cached value of the '{@link #getLanguageEvents() <em>Language Events</em>}' containment reference list.
@@ -56,7 +54,17 @@ public class DomainSpecificEventFileImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<LanguageSpecificEvent> languageEvents;
+	protected EList<DomainSpecificEvent> languageEvents;
+
+	/**
+	 * The cached value of the '{@link #getModelEvents() <em>Model Events</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModelEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ModelSpecificEvent> modelEvents;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,7 +90,10 @@ public class DomainSpecificEventFileImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ImportStatement getImports() {
+	public EList<ImportStatement> getImports() {
+		if (imports == null) {
+			imports = new EObjectContainmentEList<ImportStatement>(ImportStatement.class, this, GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__IMPORTS);
+		}
 		return imports;
 	}
 
@@ -91,45 +102,23 @@ public class DomainSpecificEventFileImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetImports(ImportStatement newImports, NotificationChain msgs) {
-		ImportStatement oldImports = imports;
-		imports = newImports;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__IMPORTS, oldImports, newImports);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setImports(ImportStatement newImports) {
-		if (newImports != imports) {
-			NotificationChain msgs = null;
-			if (imports != null)
-				msgs = ((InternalEObject)imports).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__IMPORTS, null, msgs);
-			if (newImports != null)
-				msgs = ((InternalEObject)newImports).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__IMPORTS, null, msgs);
-			msgs = basicSetImports(newImports, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__IMPORTS, newImports, newImports));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<LanguageSpecificEvent> getLanguageEvents() {
+	public EList<DomainSpecificEvent> getLanguageEvents() {
 		if (languageEvents == null) {
-			languageEvents = new EObjectContainmentEList<LanguageSpecificEvent>(LanguageSpecificEvent.class, this, GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__LANGUAGE_EVENTS);
+			languageEvents = new EObjectContainmentEList<DomainSpecificEvent>(DomainSpecificEvent.class, this, GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__LANGUAGE_EVENTS);
 		}
 		return languageEvents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ModelSpecificEvent> getModelEvents() {
+		if (modelEvents == null) {
+			modelEvents = new EObjectContainmentEList<ModelSpecificEvent>(ModelSpecificEvent.class, this, GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__MODEL_EVENTS);
+		}
+		return modelEvents;
 	}
 
 	/**
@@ -141,9 +130,11 @@ public class DomainSpecificEventFileImpl extends MinimalEObjectImpl.Container im
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__IMPORTS:
-				return basicSetImports(null, msgs);
+				return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__LANGUAGE_EVENTS:
 				return ((InternalEList<?>)getLanguageEvents()).basicRemove(otherEnd, msgs);
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__MODEL_EVENTS:
+				return ((InternalEList<?>)getModelEvents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -160,6 +151,8 @@ public class DomainSpecificEventFileImpl extends MinimalEObjectImpl.Container im
 				return getImports();
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__LANGUAGE_EVENTS:
 				return getLanguageEvents();
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__MODEL_EVENTS:
+				return getModelEvents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -174,11 +167,16 @@ public class DomainSpecificEventFileImpl extends MinimalEObjectImpl.Container im
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__IMPORTS:
-				setImports((ImportStatement)newValue);
+				getImports().clear();
+				getImports().addAll((Collection<? extends ImportStatement>)newValue);
 				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__LANGUAGE_EVENTS:
 				getLanguageEvents().clear();
-				getLanguageEvents().addAll((Collection<? extends LanguageSpecificEvent>)newValue);
+				getLanguageEvents().addAll((Collection<? extends DomainSpecificEvent>)newValue);
+				return;
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__MODEL_EVENTS:
+				getModelEvents().clear();
+				getModelEvents().addAll((Collection<? extends ModelSpecificEvent>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -193,10 +191,13 @@ public class DomainSpecificEventFileImpl extends MinimalEObjectImpl.Container im
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__IMPORTS:
-				setImports((ImportStatement)null);
+				getImports().clear();
 				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__LANGUAGE_EVENTS:
 				getLanguageEvents().clear();
+				return;
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__MODEL_EVENTS:
+				getModelEvents().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -211,9 +212,11 @@ public class DomainSpecificEventFileImpl extends MinimalEObjectImpl.Container im
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__IMPORTS:
-				return imports != null;
+				return imports != null && !imports.isEmpty();
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__LANGUAGE_EVENTS:
 				return languageEvents != null && !languageEvents.isEmpty();
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE__MODEL_EVENTS:
+				return modelEvents != null && !modelEvents.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

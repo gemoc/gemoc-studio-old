@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated JavaSolverInput -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="javasolverinput.presentation.JavasolverinputModelWizardID"
+            name="%_UI_JavasolverinputModelWizard_label"
+            class="javasolverinput.presentation.JavasolverinputModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/JavasolverinputModelFile.gif">
+         <description>%_UI_JavasolverinputModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated JavaSolverInput -->
+      <editor
+            id="javasolverinput.presentation.JavasolverinputEditorID"
+            name="%_UI_JavasolverinputEditor_label"
+            icon="icons/full/obj16/JavasolverinputModelFile.gif"
+            extensions="javasolverinput"
+            class="javasolverinput.presentation.JavasolverinputEditor"
+            contributorClass="javasolverinput.presentation.JavasolverinputActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

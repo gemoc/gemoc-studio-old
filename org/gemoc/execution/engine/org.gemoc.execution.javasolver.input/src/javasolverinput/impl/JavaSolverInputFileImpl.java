@@ -9,11 +9,14 @@ import javasolverinput.JavaSolverInputFile;
 import javasolverinput.JavasolverinputPackage;
 import javasolverinput.Relation;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +34,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSolverInputFile {
 	/**
-	 * The cached value of the '{@link #getClocks() <em>Clocks</em>}' reference list.
+	 * The cached value of the '{@link #getClocks() <em>Clocks</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getClocks()
@@ -41,7 +44,7 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	protected EList<Clock> clocks;
 
 	/**
-	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' reference list.
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getConstraints()
@@ -76,7 +79,7 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	 */
 	public EList<Clock> getClocks() {
 		if (clocks == null) {
-			clocks = new EObjectResolvingEList<Clock>(Clock.class, this, JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCKS);
+			clocks = new EObjectContainmentEList<Clock>(Clock.class, this, JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCKS);
 		}
 		return clocks;
 	}
@@ -88,9 +91,25 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	 */
 	public EList<Relation> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectResolvingEList<Relation>(Relation.class, this, JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS);
+			constraints = new EObjectContainmentEList<Relation>(Relation.class, this, JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS);
 		}
 		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCKS:
+				return ((InternalEList<?>)getClocks()).basicRemove(otherEnd, msgs);
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
