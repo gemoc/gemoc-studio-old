@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.gemoc.dse_language.language_level.glml:DomainSpecificEventFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gemoc.dse_language.language_level.glml="http://org.gemoc.dse_language.language_level/glml" xsi:schemaLocation="http://org.gemoc.dse_language.language_level/glml GemocLanguageMappingLanguage.ecore" name="TFSM.glml">
+  <imports>
+    <importURI>TFSM.ecore</importURI>
+  </imports>
+  <imports>
+    <importURI>TFSMMoC.ccslLib</importURI>
+  </imports>
+  <imports>
+    <importURI>k3dsa</importURI>
+  </imports>
+  <languageEvents name="FireTransition"/>
+</org.gemoc.dse_language.language_level.glml:DomainSpecificEventFile>

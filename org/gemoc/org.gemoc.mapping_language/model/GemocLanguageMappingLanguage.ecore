@@ -33,4 +33,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaSolverRelation" eSuperTypes="#//MocRelation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relation" lowerBound="1"/>
+  </eClassifiers>
 </ecore:EPackage>
