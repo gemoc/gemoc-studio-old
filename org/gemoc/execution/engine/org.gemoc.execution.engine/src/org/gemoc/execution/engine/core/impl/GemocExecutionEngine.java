@@ -12,7 +12,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_standard_implementations.dsa.ModelAction;
 import org.gemoc.execution.engine.api_standard_implementations.dse.ModelEvent;
@@ -24,7 +23,6 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
@@ -96,15 +94,14 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 							+ modelResource.toString(), Activator.PLUGIN_ID);
 
 			// TODO : remove when EclToCCslTranslator gets implemented.
-			try {				
-				Resource modelOfExecution = this.solver
-						.getSolverInputBuilder().build(
-								this.domainSpecificEventsResource,
+			try {
+				Resource modelOfExecution = this.solver.getSolverInputBuilder()
+						.build(this.domainSpecificEventsResource,
 								this.modelResource);
 
 				this.modelOfExecutionURI = modelOfExecution.getURI();
-				
-			} catch (NotImplementedException e) {
+
+			} catch (UnsupportedOperationException e) {
 				String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
 				this.modelOfExecutionURI = URI.createPlatformResourceURI(
 						modelOfExecutionFilePath, true);
@@ -129,6 +126,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		return new ArrayList<ModelSpecificEvent>();
 	}
 
+	// TODO : this method will change when we change the DSE language.
 	@Override
 	protected Collection<ModelSpecificEvent> match(LogicalStep step) {
 		Activator.getMessagingSystem().debug(
@@ -142,10 +140,10 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				Activator.getMessagingSystem().debug(
 						"FState is TICK for eventOccurrence: "
 								+ eventOccurrence, Activator.PLUGIN_ID);
-
+				
 				if (eventOccurrence.getContext() != null
 						& eventOccurrence.getReferedElement() != null) {
-
+					// Case of the CCSL Solver
 					EObject target = this
 							.getEObjectFromReference(eventOccurrence
 									.getContext());
@@ -167,6 +165,14 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 						Activator.getMessagingSystem().warn(
 								"... but not linked to an EOperation.",
 								Activator.PLUGIN_ID);
+					}
+				} else{
+					// Case of the JavaSolver
+					if(eventOccurrence.getReferedElement() != null){
+						if(eventOccurrence.getReferedElement() instanceof NamedReference){
+							NamedReference namedReference = (NamedReference) eventOccurrence.getReferedElement();
+							res.add(new ModelEvent(namedReference.getValue(), (DomainSpecificEvent) null));
+						}
 					}
 				}
 			}

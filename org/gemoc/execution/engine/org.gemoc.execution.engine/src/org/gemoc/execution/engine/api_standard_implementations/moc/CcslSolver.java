@@ -36,14 +36,14 @@ public class CcslSolver implements
 
 	CCSLKernelSolverWrapper solverWrapper = null;
 	URI modelOfExecutionURI = null;
-	SolverInputBuilder modelOfExecutionBuilder;
+	SolverInputBuilder solverInputBuilder;
 
 	public CcslSolver() {
-		this.modelOfExecutionBuilder = new EclToCcslTranslator();
+		this.solverInputBuilder = new EclToCcslTranslator();
 	}
 
 	public SolverInputBuilder getSolverInputBuilder() {
-		return this.modelOfExecutionBuilder;
+		return this.solverInputBuilder;
 	}
 
 	@Override

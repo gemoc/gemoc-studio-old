@@ -17,13 +17,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
+import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.TraceFactory;
 
 public class JavaSolver implements Solver {
@@ -111,9 +112,11 @@ public class JavaSolver implements Solver {
 		EventOccurrence eventOccurrence = myFactory.createEventOccurrence();
 		eventOccurrence.setFState(FiredStateKind.TICK);
 
-		ModelElementReference clockReference = myFactory
-				.createModelElementReference();
-		clockReference.getElementRef().add(clock);
+		// ModelElementReference clockReference = myFactory
+		// .createModelElementReference();
+		// clockReference.getElementRef().add(clock);
+		NamedReference clockReference = myFactory.createNamedReference();
+		clockReference.setValue(clock.getName());
 
 		eventOccurrence.setReferedElement(clockReference);
 
@@ -122,8 +125,7 @@ public class JavaSolver implements Solver {
 
 	@Override
 	public SolverInputBuilder getSolverInputBuilder() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -132,7 +134,13 @@ public class JavaSolver implements Solver {
 		resSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 				.put("xmi", new XMIResourceFactoryImpl());
 		JavasolverinputPackage.eINSTANCE.eClass();
-		Resource resource = resSet.getResource(modelOfExecutionURI, true);
+
+		// Resource resource = resSet.getResource(modelOfExecutionURI, true);
+		Resource resource = resSet
+				.getResource(
+						URI.createFileURI("/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/execution/engine/org.gemoc.execution.javasolver.input/model/Example.xmi"),
+						true);
+
 		JavaSolverInputFile input = (JavaSolverInputFile) resource
 				.getContents().get(0);
 
@@ -147,6 +155,10 @@ public class JavaSolver implements Solver {
 		}
 		this.myFactory = TraceFactory.eINSTANCE;
 
+	}
+
+	public String toString() {
+		return this.getClass().getSimpleName() + "@[" + this.inputName + "]";
 	}
 
 }
