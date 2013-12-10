@@ -76,7 +76,7 @@
          <attribute name="solver_class" type="string" use="required">
             <annotation>
                <documentation>
-                  A Solver implementation, which has a facility to &quot;compile&quot; the Domain-Specific Events specification file into its own Model of Execution file format. It should be able to produce a scheduling trace conforming to the RT-Simex Trace Metamodel (fr.inria.aoste.trace).
+                  A Solver implementation, which has a facility to &quot;compile&quot; the Domain-Specific Events specification file into its own input file format. It should be able to produce a scheduling trace conforming to the RT-Simex Trace Metamodel (fr.inria.aoste.trace).
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.moc.Solver"/>

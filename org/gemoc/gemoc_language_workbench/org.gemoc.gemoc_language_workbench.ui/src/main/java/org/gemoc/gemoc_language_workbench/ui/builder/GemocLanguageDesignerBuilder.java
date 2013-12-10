@@ -308,8 +308,8 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 						LanguageDefinition ld = (LanguageDefinition) eObject;
 						changePluginLanguageName(project, ld.getName());
 						updateModelLoaderClass(project, ld);
-						updateInitializerClass(project, ld);
-						updateDSAExecutorClass(project, ld);
+						//updateInitializerClass(project, ld);
+						//updateDSAExecutorClass(project, ld);
 					}
 				}
 			}

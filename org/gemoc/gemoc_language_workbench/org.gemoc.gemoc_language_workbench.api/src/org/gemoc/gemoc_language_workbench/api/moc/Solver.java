@@ -8,7 +8,7 @@ import fr.inria.aoste.trace.LogicalStep;
 
 /**
  * A Solver is the visible interface of any constraint solver system that runs
- * on the Model of Execution of a model, returns Steps upon requests and
+ * on its corresponding input based on a Model of Execution, returns Steps upon requests and
  * provides an API to influence the constraint-solving.
  * 
  * TODO : EventOccurrences should refer (in the context ?) (by name ?) to the
@@ -51,19 +51,18 @@ public interface Solver {
 	public LogicalStep getNextStep();
 
 	/**
-	 * Returns the facility that allows the Execution Engine to instanciate the
-	 * Domain-Specific Events into Model-Specific Events in a format
-	 * understandable for this solver.
+	 * Returns the facility that allows the Execution Engine to create an input
+	 * acceptable for the solver based on the Model-Specific Events file.
 	 * 
-	 * @return the ModelOfExecutionBuilder for this solver.
+	 * @return the SolverInputBuilder for this solver.
 	 */
-	public ModelOfExecutionBuilder getModelOfExecutionBuilder();
+	public SolverInputBuilder getSolverInputBuilder();
 
 	/**
-	 * Sets the model of execution (constraints instanciated for the model) for
+	 * Sets the input (constraints instanciated for the model) for
 	 * this solver. We use a file URI to allow different formats.
 	 * 
-	 * @param modelOfExecutionURI
+	 * @param solverInputURI
 	 */
-	public void setModelOfExecutionFile(URI modelOfExecutionURI);
+	public void setSolverInputFile(URI solverInputURI);
 }
