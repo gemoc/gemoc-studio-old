@@ -95,26 +95,26 @@ public class JavasolverinputItemProviderAdapterFactory extends JavasolverinputAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link javasolverinput.Clock} instances.
+	 * This keeps track of the one adapter used for all {@link javasolverinput.BootStrappedConstraintArgument} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ClockItemProvider clockItemProvider;
+	protected BootStrappedConstraintArgumentItemProvider bootStrappedConstraintArgumentItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link javasolverinput.Clock}.
+	 * This creates an adapter for a {@link javasolverinput.BootStrappedConstraintArgument}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createClockAdapter() {
-		if (clockItemProvider == null) {
-			clockItemProvider = new ClockItemProvider(this);
+	public Adapter createBootStrappedConstraintArgumentAdapter() {
+		if (bootStrappedConstraintArgumentItemProvider == null) {
+			bootStrappedConstraintArgumentItemProvider = new BootStrappedConstraintArgumentItemProvider(this);
 		}
 
-		return clockItemProvider;
+		return bootStrappedConstraintArgumentItemProvider;
 	}
 
 	/**
@@ -138,6 +138,121 @@ public class JavasolverinputItemProviderAdapterFactory extends JavasolverinputAd
 		}
 
 		return precedesItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link javasolverinput.Clock} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClockItemProvider clockItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link javasolverinput.Clock}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClockAdapter() {
+		if (clockItemProvider == null) {
+			clockItemProvider = new ClockItemProvider(this);
+		}
+
+		return clockItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link javasolverinput.CustomConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CustomConstraintItemProvider customConstraintItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link javasolverinput.CustomConstraint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCustomConstraintAdapter() {
+		if (customConstraintItemProvider == null) {
+			customConstraintItemProvider = new CustomConstraintItemProvider(this);
+		}
+
+		return customConstraintItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link javasolverinput.RelationDeclaration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RelationDeclarationItemProvider relationDeclarationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link javasolverinput.RelationDeclaration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRelationDeclarationAdapter() {
+		if (relationDeclarationItemProvider == null) {
+			relationDeclarationItemProvider = new RelationDeclarationItemProvider(this);
+		}
+
+		return relationDeclarationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link javasolverinput.Parameter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterItemProvider parameterItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link javasolverinput.Parameter}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterAdapter() {
+		if (parameterItemProvider == null) {
+			parameterItemProvider = new ParameterItemProvider(this);
+		}
+
+		return parameterItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link javasolverinput.RelationDefinition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RelationDefinitionItemProvider relationDefinitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link javasolverinput.RelationDefinition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRelationDefinitionAdapter() {
+		if (relationDefinitionItemProvider == null) {
+			relationDefinitionItemProvider = new RelationDefinitionItemProvider(this);
+		}
+
+		return relationDefinitionItemProvider;
 	}
 
 	/**
@@ -240,8 +355,13 @@ public class JavasolverinputItemProviderAdapterFactory extends JavasolverinputAd
 	 */
 	public void dispose() {
 		if (javaSolverInputFileItemProvider != null) javaSolverInputFileItemProvider.dispose();
-		if (clockItemProvider != null) clockItemProvider.dispose();
+		if (bootStrappedConstraintArgumentItemProvider != null) bootStrappedConstraintArgumentItemProvider.dispose();
 		if (precedesItemProvider != null) precedesItemProvider.dispose();
+		if (clockItemProvider != null) clockItemProvider.dispose();
+		if (customConstraintItemProvider != null) customConstraintItemProvider.dispose();
+		if (relationDeclarationItemProvider != null) relationDeclarationItemProvider.dispose();
+		if (parameterItemProvider != null) parameterItemProvider.dispose();
+		if (relationDefinitionItemProvider != null) relationDefinitionItemProvider.dispose();
 	}
 
 }

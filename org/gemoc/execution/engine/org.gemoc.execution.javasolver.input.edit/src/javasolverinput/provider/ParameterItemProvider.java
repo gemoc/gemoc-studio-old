@@ -6,11 +6,13 @@ package javasolverinput.provider;
 import java.util.Collection;
 import java.util.List;
 
-import javasolverinput.Relation;
+import javasolverinput.JavasolverinputPackage;
+import javasolverinput.Parameter;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -19,12 +21,12 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link javasolverinput.Relation} object.
+ * This is the item provider adapter for a {@link javasolverinput.Parameter} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class RelationItemProvider
+public class ParameterItemProvider
 	extends NamedElementItemProvider
 	implements
 		IEditingDomainItemProvider,
@@ -38,7 +40,7 @@ public class RelationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RelationItemProvider(AdapterFactory adapterFactory) {
+	public ParameterItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -53,8 +55,42 @@ public class RelationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Parameter_type_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_type_feature", "_UI_Parameter_type"),
+				 JavasolverinputPackage.Literals.PARAMETER__TYPE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns Parameter.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Parameter"));
 	}
 
 	/**
@@ -65,10 +101,10 @@ public class RelationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Relation)object).getName();
+		String label = ((Parameter)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Relation_type") :
-			getString("_UI_Relation_type") + " " + label;
+			getString("_UI_Parameter_type") :
+			getString("_UI_Parameter_type") + " " + label;
 	}
 
 	/**

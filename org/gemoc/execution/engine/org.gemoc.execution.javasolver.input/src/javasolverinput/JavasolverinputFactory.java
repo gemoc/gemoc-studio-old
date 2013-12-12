@@ -31,13 +31,13 @@ public interface JavasolverinputFactory extends EFactory {
 	JavaSolverInputFile createJavaSolverInputFile();
 
 	/**
-	 * Returns a new object of class '<em>Clock</em>'.
+	 * Returns a new object of class '<em>Boot Strapped Constraint Argument</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Clock</em>'.
+	 * @return a new object of class '<em>Boot Strapped Constraint Argument</em>'.
 	 * @generated
 	 */
-	Clock createClock();
+	BootStrappedConstraintArgument createBootStrappedConstraintArgument();
 
 	/**
 	 * Returns a new object of class '<em>Precedes</em>'.
@@ -47,6 +47,51 @@ public interface JavasolverinputFactory extends EFactory {
 	 * @generated
 	 */
 	Precedes createPrecedes();
+
+	/**
+	 * Returns a new object of class '<em>Clock</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Clock</em>'.
+	 * @generated
+	 */
+	Clock createClock();
+
+	/**
+	 * Returns a new object of class '<em>Custom Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom Constraint</em>'.
+	 * @generated
+	 */
+	CustomConstraint createCustomConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Relation Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Relation Declaration</em>'.
+	 * @generated
+	 */
+	RelationDeclaration createRelationDeclaration();
+
+	/**
+	 * Returns a new object of class '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter</em>'.
+	 * @generated
+	 */
+	Parameter createParameter();
+
+	/**
+	 * Returns a new object of class '<em>Relation Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Relation Definition</em>'.
+	 * @generated
+	 */
+	RelationDefinition createRelationDefinition();
 
 	/**
 	 * Returns the package supported by this factory.

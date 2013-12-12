@@ -66,6 +66,12 @@ public class JavasolverinputSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case JavasolverinputPackage.NAMED_ELEMENT: {
+				NamedElement namedElement = (NamedElement)theEObject;
+				T result = caseNamedElement(namedElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE: {
 				JavaSolverInputFile javaSolverInputFile = (JavaSolverInputFile)theEObject;
 				T result = caseJavaSolverInputFile(javaSolverInputFile);
@@ -73,9 +79,33 @@ public class JavasolverinputSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JavasolverinputPackage.NAMED_ELEMENT: {
-				NamedElement namedElement = (NamedElement)theEObject;
-				T result = caseNamedElement(namedElement);
+			case JavasolverinputPackage.BOOTSTRAPPED_CONSTRAINT: {
+				BootstrappedConstraint bootstrappedConstraint = (BootstrappedConstraint)theEObject;
+				T result = caseBootstrappedConstraint(bootstrappedConstraint);
+				if (result == null) result = caseConstraint(bootstrappedConstraint);
+				if (result == null) result = caseNamedElement(bootstrappedConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case JavasolverinputPackage.BOOT_STRAPPED_CONSTRAINT_ARGUMENT: {
+				BootStrappedConstraintArgument bootStrappedConstraintArgument = (BootStrappedConstraintArgument)theEObject;
+				T result = caseBootStrappedConstraintArgument(bootStrappedConstraintArgument);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case JavasolverinputPackage.CONSTRAINT: {
+				Constraint constraint = (Constraint)theEObject;
+				T result = caseConstraint(constraint);
+				if (result == null) result = caseNamedElement(constraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case JavasolverinputPackage.PRECEDES: {
+				Precedes precedes = (Precedes)theEObject;
+				T result = casePrecedes(precedes);
+				if (result == null) result = caseBootstrappedConstraint(precedes);
+				if (result == null) result = caseConstraint(precedes);
+				if (result == null) result = caseNamedElement(precedes);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -86,23 +116,51 @@ public class JavasolverinputSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JavasolverinputPackage.RELATION: {
-				Relation relation = (Relation)theEObject;
-				T result = caseRelation(relation);
-				if (result == null) result = caseNamedElement(relation);
+			case JavasolverinputPackage.CUSTOM_CONSTRAINT: {
+				CustomConstraint customConstraint = (CustomConstraint)theEObject;
+				T result = caseCustomConstraint(customConstraint);
+				if (result == null) result = caseConstraint(customConstraint);
+				if (result == null) result = caseNamedElement(customConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JavasolverinputPackage.PRECEDES: {
-				Precedes precedes = (Precedes)theEObject;
-				T result = casePrecedes(precedes);
-				if (result == null) result = caseRelation(precedes);
-				if (result == null) result = caseNamedElement(precedes);
+			case JavasolverinputPackage.RELATION_DECLARATION: {
+				RelationDeclaration relationDeclaration = (RelationDeclaration)theEObject;
+				T result = caseRelationDeclaration(relationDeclaration);
+				if (result == null) result = caseNamedElement(relationDeclaration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case JavasolverinputPackage.PARAMETER: {
+				Parameter parameter = (Parameter)theEObject;
+				T result = caseParameter(parameter);
+				if (result == null) result = caseNamedElement(parameter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case JavasolverinputPackage.RELATION_DEFINITION: {
+				RelationDefinition relationDefinition = (RelationDefinition)theEObject;
+				T result = caseRelationDefinition(relationDefinition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedElement(NamedElement object) {
+		return null;
 	}
 
 	/**
@@ -121,17 +179,62 @@ public class JavasolverinputSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Bootstrapped Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Bootstrapped Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseNamedElement(NamedElement object) {
+	public T caseBootstrappedConstraint(BootstrappedConstraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Boot Strapped Constraint Argument</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Boot Strapped Constraint Argument</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBootStrappedConstraintArgument(BootStrappedConstraintArgument object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConstraint(Constraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Precedes</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Precedes</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePrecedes(Precedes object) {
 		return null;
 	}
 
@@ -151,32 +254,62 @@ public class JavasolverinputSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Relation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Custom Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Relation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Custom Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRelation(Relation object) {
+	public T caseCustomConstraint(CustomConstraint object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Precedes</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Relation Declaration</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Precedes</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Relation Declaration</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePrecedes(Precedes object) {
+	public T caseRelationDeclaration(RelationDeclaration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameter(Parameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Relation Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Relation Definition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRelationDefinition(RelationDefinition object) {
 		return null;
 	}
 

@@ -6,26 +6,29 @@ package javasolverinput.provider;
 import java.util.Collection;
 import java.util.List;
 
-import javasolverinput.Precedes;
+import javasolverinput.JavasolverinputPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link javasolverinput.Precedes} object.
+ * This is the item provider adapter for a {@link javasolverinput.BootStrappedConstraintArgument} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PrecedesItemProvider
-	extends BootstrappedConstraintItemProvider
+public class BootStrappedConstraintArgumentItemProvider
+	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -38,7 +41,7 @@ public class PrecedesItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PrecedesItemProvider(AdapterFactory adapterFactory) {
+	public BootStrappedConstraintArgumentItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -53,19 +56,42 @@ public class PrecedesItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addParameterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This returns Precedes.gif.
+	 * This adds a property descriptor for the Parameter feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addParameterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BootStrappedConstraintArgument_parameter_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BootStrappedConstraintArgument_parameter_feature", "_UI_BootStrappedConstraintArgument_type"),
+				 JavasolverinputPackage.Literals.BOOT_STRAPPED_CONSTRAINT_ARGUMENT__PARAMETER,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns BootStrappedConstraintArgument.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Precedes"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BootStrappedConstraintArgument"));
 	}
 
 	/**
@@ -76,10 +102,7 @@ public class PrecedesItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Precedes)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Precedes_type") :
-			getString("_UI_Precedes_type") + " " + label;
+		return getString("_UI_BootStrappedConstraintArgument_type");
 	}
 
 	/**
@@ -105,6 +128,17 @@ public class PrecedesItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return JavaSolverInputEditPlugin.INSTANCE;
 	}
 
 }

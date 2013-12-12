@@ -6,7 +6,7 @@ package javasolverinput.provider;
 import java.util.Collection;
 import java.util.List;
 
-import javasolverinput.Precedes;
+import javasolverinput.Constraint;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -19,13 +19,13 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link javasolverinput.Precedes} object.
+ * This is the item provider adapter for a {@link javasolverinput.Constraint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PrecedesItemProvider
-	extends BootstrappedConstraintItemProvider
+public class ConstraintItemProvider
+	extends NamedElementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -38,7 +38,7 @@ public class PrecedesItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PrecedesItemProvider(AdapterFactory adapterFactory) {
+	public ConstraintItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -58,17 +58,6 @@ public class PrecedesItemProvider
 	}
 
 	/**
-	 * This returns Precedes.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Precedes"));
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -76,10 +65,10 @@ public class PrecedesItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Precedes)object).getName();
+		String label = ((Constraint)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Precedes_type") :
-			getString("_UI_Precedes_type") + " " + label;
+			getString("_UI_Constraint_type") :
+			getString("_UI_Constraint_type") + " " + label;
 	}
 
 	/**

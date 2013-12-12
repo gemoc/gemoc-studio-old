@@ -2,18 +2,25 @@
  */
 package javasolverinput.impl;
 
+import javasolverinput.BootStrappedConstraintArgument;
+import javasolverinput.BootstrappedConstraint;
 import javasolverinput.Clock;
+import javasolverinput.Constraint;
+import javasolverinput.CustomConstraint;
 import javasolverinput.JavaSolverInputFile;
 import javasolverinput.JavasolverinputFactory;
 import javasolverinput.JavasolverinputPackage;
 import javasolverinput.NamedElement;
+import javasolverinput.Parameter;
 import javasolverinput.Precedes;
-import javasolverinput.Relation;
+import javasolverinput.RelationDeclaration;
+import javasolverinput.RelationDefinition;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -29,6 +36,13 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass namedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass javaSolverInputFileEClass = null;
 
 	/**
@@ -36,7 +50,28 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass namedElementEClass = null;
+	private EClass bootstrappedConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass bootStrappedConstraintArgumentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass constraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass precedesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -50,14 +85,28 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass relationEClass = null;
+	private EClass customConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass precedesEClass = null;
+	private EClass relationDeclarationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass relationDefinitionEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -105,6 +154,9 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 
 		isInited = true;
 
+		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
+
 		// Create package meta-data objects
 		theJavasolverinputPackage.createPackageContents();
 
@@ -118,33 +170,6 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(JavasolverinputPackage.eNS_URI, theJavasolverinputPackage);
 		return theJavasolverinputPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getJavaSolverInputFile() {
-		return javaSolverInputFileEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getJavaSolverInputFile_Clocks() {
-		return (EReference)javaSolverInputFileEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getJavaSolverInputFile_Constraints() {
-		return (EReference)javaSolverInputFileEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -170,8 +195,8 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getClock() {
-		return clockEClass;
+	public EClass getJavaSolverInputFile() {
+		return javaSolverInputFileEClass;
 	}
 
 	/**
@@ -179,8 +204,71 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRelation() {
-		return relationEClass;
+	public EReference getJavaSolverInputFile_ClockDeclarations() {
+		return (EReference)javaSolverInputFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJavaSolverInputFile_Constraints() {
+		return (EReference)javaSolverInputFileEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJavaSolverInputFile_RelationDeclarations() {
+		return (EReference)javaSolverInputFileEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBootstrappedConstraint() {
+		return bootstrappedConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBootstrappedConstraint_Arguments() {
+		return (EReference)bootstrappedConstraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBootStrappedConstraintArgument() {
+		return bootStrappedConstraintArgumentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBootStrappedConstraintArgument_Parameter() {
+		return (EReference)bootStrappedConstraintArgumentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConstraint() {
+		return constraintEClass;
 	}
 
 	/**
@@ -197,8 +285,8 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPrecedes_Clock1() {
-		return (EReference)precedesEClass.getEStructuralFeatures().get(0);
+	public EClass getClock() {
+		return clockEClass;
 	}
 
 	/**
@@ -206,8 +294,89 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPrecedes_Clock2() {
-		return (EReference)precedesEClass.getEStructuralFeatures().get(1);
+	public EClass getCustomConstraint() {
+		return customConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCustomConstraint_Type() {
+		return (EReference)customConstraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCustomConstraint_Arguments() {
+		return (EReference)customConstraintEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRelationDeclaration() {
+		return relationDeclarationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRelationDeclaration_Parameters() {
+		return (EReference)relationDeclarationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRelationDeclaration_Definition() {
+		return (EReference)relationDeclarationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getParameter() {
+		return parameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getParameter_Type() {
+		return (EReference)parameterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRelationDefinition() {
+		return relationDefinitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRelationDefinition_Constraints() {
+		return (EReference)relationDefinitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -238,20 +407,39 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 		isCreated = true;
 
 		// Create classes and their features
-		javaSolverInputFileEClass = createEClass(JAVA_SOLVER_INPUT_FILE);
-		createEReference(javaSolverInputFileEClass, JAVA_SOLVER_INPUT_FILE__CLOCKS);
-		createEReference(javaSolverInputFileEClass, JAVA_SOLVER_INPUT_FILE__CONSTRAINTS);
-
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
-		clockEClass = createEClass(CLOCK);
+		javaSolverInputFileEClass = createEClass(JAVA_SOLVER_INPUT_FILE);
+		createEReference(javaSolverInputFileEClass, JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS);
+		createEReference(javaSolverInputFileEClass, JAVA_SOLVER_INPUT_FILE__CONSTRAINTS);
+		createEReference(javaSolverInputFileEClass, JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS);
 
-		relationEClass = createEClass(RELATION);
+		bootstrappedConstraintEClass = createEClass(BOOTSTRAPPED_CONSTRAINT);
+		createEReference(bootstrappedConstraintEClass, BOOTSTRAPPED_CONSTRAINT__ARGUMENTS);
+
+		bootStrappedConstraintArgumentEClass = createEClass(BOOT_STRAPPED_CONSTRAINT_ARGUMENT);
+		createEReference(bootStrappedConstraintArgumentEClass, BOOT_STRAPPED_CONSTRAINT_ARGUMENT__PARAMETER);
+
+		constraintEClass = createEClass(CONSTRAINT);
 
 		precedesEClass = createEClass(PRECEDES);
-		createEReference(precedesEClass, PRECEDES__CLOCK1);
-		createEReference(precedesEClass, PRECEDES__CLOCK2);
+
+		clockEClass = createEClass(CLOCK);
+
+		customConstraintEClass = createEClass(CUSTOM_CONSTRAINT);
+		createEReference(customConstraintEClass, CUSTOM_CONSTRAINT__TYPE);
+		createEReference(customConstraintEClass, CUSTOM_CONSTRAINT__ARGUMENTS);
+
+		relationDeclarationEClass = createEClass(RELATION_DECLARATION);
+		createEReference(relationDeclarationEClass, RELATION_DECLARATION__PARAMETERS);
+		createEReference(relationDeclarationEClass, RELATION_DECLARATION__DEFINITION);
+
+		parameterEClass = createEClass(PARAMETER);
+		createEReference(parameterEClass, PARAMETER__TYPE);
+
+		relationDefinitionEClass = createEClass(RELATION_DEFINITION);
+		createEReference(relationDefinitionEClass, RELATION_DEFINITION__CONSTRAINTS);
 	}
 
 	/**
@@ -277,31 +465,57 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		javaSolverInputFileEClass.getESuperTypes().add(this.getNamedElement());
+		bootstrappedConstraintEClass.getESuperTypes().add(this.getConstraint());
+		constraintEClass.getESuperTypes().add(this.getNamedElement());
+		precedesEClass.getESuperTypes().add(this.getBootstrappedConstraint());
 		clockEClass.getESuperTypes().add(this.getNamedElement());
-		relationEClass.getESuperTypes().add(this.getNamedElement());
-		precedesEClass.getESuperTypes().add(this.getRelation());
+		customConstraintEClass.getESuperTypes().add(this.getConstraint());
+		relationDeclarationEClass.getESuperTypes().add(this.getNamedElement());
+		parameterEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(javaSolverInputFileEClass, JavaSolverInputFile.class, "JavaSolverInputFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getJavaSolverInputFile_Clocks(), this.getClock(), null, "clocks", null, 0, -1, JavaSolverInputFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJavaSolverInputFile_Constraints(), this.getRelation(), null, "constraints", null, 0, -1, JavaSolverInputFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(clockEClass, Clock.class, "Clock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(javaSolverInputFileEClass, JavaSolverInputFile.class, "JavaSolverInputFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJavaSolverInputFile_ClockDeclarations(), this.getClock(), null, "clockDeclarations", null, 0, -1, JavaSolverInputFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJavaSolverInputFile_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, JavaSolverInputFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJavaSolverInputFile_RelationDeclarations(), this.getRelationDeclaration(), null, "relationDeclarations", null, 0, -1, JavaSolverInputFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(relationEClass, Relation.class, "Relation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(bootstrappedConstraintEClass, BootstrappedConstraint.class, "BootstrappedConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBootstrappedConstraint_Arguments(), this.getBootStrappedConstraintArgument(), null, "arguments", null, 0, -1, BootstrappedConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(bootStrappedConstraintArgumentEClass, BootStrappedConstraintArgument.class, "BootStrappedConstraintArgument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBootStrappedConstraintArgument_Parameter(), this.getParameter(), null, "parameter", null, 1, 1, BootStrappedConstraintArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(constraintEClass, Constraint.class, "Constraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(precedesEClass, Precedes.class, "Precedes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPrecedes_Clock1(), this.getClock(), null, "clock1", null, 1, 1, Precedes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPrecedes_Clock2(), this.getClock(), null, "clock2", null, 1, 1, Precedes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(clockEClass, Clock.class, "Clock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(customConstraintEClass, CustomConstraint.class, "CustomConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCustomConstraint_Type(), this.getRelationDeclaration(), null, "type", null, 1, 1, CustomConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCustomConstraint_Arguments(), theEcorePackage.getEObject(), null, "arguments", null, 0, -1, CustomConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(relationDeclarationEClass, RelationDeclaration.class, "RelationDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRelationDeclaration_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, RelationDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationDeclaration_Definition(), this.getRelationDefinition(), null, "definition", null, 1, 1, RelationDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getParameter_Type(), theEcorePackage.getEClassifier(), null, "type", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(relationDefinitionEClass, RelationDefinition.class, "RelationDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRelationDefinition_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, RelationDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

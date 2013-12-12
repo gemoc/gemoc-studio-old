@@ -8,6 +8,8 @@ import org.eclipse.emf.common.ui.EclipseUIPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
+
 /**
  * This is the central singleton for the JavaSolverInput editor plugin.
  * <!-- begin-user-doc -->
@@ -40,6 +42,7 @@ public final class JavaSolverInputEditorPlugin extends EMFPlugin {
 	public JavaSolverInputEditorPlugin() {
 		super
 			(new ResourceLocator [] {
+				EcoreEditPlugin.INSTANCE,
 			});
 	}
 

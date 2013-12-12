@@ -2,27 +2,27 @@
  */
 package javasolverinput.impl;
 
+import javasolverinput.Constraint;
 import javasolverinput.JavasolverinputPackage;
-import javasolverinput.Relation;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Relation</b></em>'.
+ * An implementation of the model object '<em><b>Constraint</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public abstract class RelationImpl extends NamedElementImpl implements Relation {
+public abstract class ConstraintImpl extends NamedElementImpl implements Constraint {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RelationImpl() {
+	protected ConstraintImpl() {
 		super();
 	}
 
@@ -33,7 +33,7 @@ public abstract class RelationImpl extends NamedElementImpl implements Relation 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return JavasolverinputPackage.Literals.RELATION;
+		return JavasolverinputPackage.Literals.CONSTRAINT;
 	}
 
-} //RelationImpl
+} //ConstraintImpl

@@ -3,21 +3,40 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.execution.javasolver.input/src" modelPluginID="org.gemoc.execution.javasolver.input"
     modelName="JavaSolverInput" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
-    operationReflection="true" importOrganizing="true">
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore" operationReflection="true"
+    importOrganizing="true">
   <foreignModel>JavaSolverInput.ecore</foreignModel>
   <genPackages prefix="Javasolverinput" disposableProviderFactory="true" ecorePackage="JavaSolverInput.ecore#/">
-    <genClasses ecoreClass="JavaSolverInput.ecore#//JavaSolverInputFile">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//JavaSolverInputFile/clocks"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//JavaSolverInputFile/constraints"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="JavaSolverInput.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JavaSolverInput.ecore#//NamedElement/name"/>
     </genClasses>
+    <genClasses ecoreClass="JavaSolverInput.ecore#//JavaSolverInputFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//JavaSolverInputFile/clockDeclarations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//JavaSolverInputFile/constraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//JavaSolverInputFile/relationDeclarations"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="JavaSolverInput.ecore#//BootstrappedConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//BootstrappedConstraint/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaSolverInput.ecore#//BootStrappedConstraintArgument">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//BootStrappedConstraintArgument/parameter"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="JavaSolverInput.ecore#//Constraint"/>
+    <genClasses ecoreClass="JavaSolverInput.ecore#//Precedes"/>
     <genClasses ecoreClass="JavaSolverInput.ecore#//Clock"/>
-    <genClasses image="false" ecoreClass="JavaSolverInput.ecore#//Relation"/>
-    <genClasses ecoreClass="JavaSolverInput.ecore#//Precedes">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//Precedes/clock1"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//Precedes/clock2"/>
+    <genClasses ecoreClass="JavaSolverInput.ecore#//CustomConstraint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//CustomConstraint/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//CustomConstraint/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaSolverInput.ecore#//RelationDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//RelationDeclaration/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//RelationDeclaration/definition"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaSolverInput.ecore#//Parameter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//Parameter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="JavaSolverInput.ecore#//RelationDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JavaSolverInput.ecore#//RelationDefinition/constraints"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

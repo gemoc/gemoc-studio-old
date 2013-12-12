@@ -68,24 +68,48 @@ public class JavasolverinputAdapterFactory extends AdapterFactoryImpl {
 	protected JavasolverinputSwitch<Adapter> modelSwitch =
 		new JavasolverinputSwitch<Adapter>() {
 			@Override
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
+			}
+			@Override
 			public Adapter caseJavaSolverInputFile(JavaSolverInputFile object) {
 				return createJavaSolverInputFileAdapter();
 			}
 			@Override
-			public Adapter caseNamedElement(NamedElement object) {
-				return createNamedElementAdapter();
+			public Adapter caseBootstrappedConstraint(BootstrappedConstraint object) {
+				return createBootstrappedConstraintAdapter();
+			}
+			@Override
+			public Adapter caseBootStrappedConstraintArgument(BootStrappedConstraintArgument object) {
+				return createBootStrappedConstraintArgumentAdapter();
+			}
+			@Override
+			public Adapter caseConstraint(Constraint object) {
+				return createConstraintAdapter();
+			}
+			@Override
+			public Adapter casePrecedes(Precedes object) {
+				return createPrecedesAdapter();
 			}
 			@Override
 			public Adapter caseClock(Clock object) {
 				return createClockAdapter();
 			}
 			@Override
-			public Adapter caseRelation(Relation object) {
-				return createRelationAdapter();
+			public Adapter caseCustomConstraint(CustomConstraint object) {
+				return createCustomConstraintAdapter();
 			}
 			@Override
-			public Adapter casePrecedes(Precedes object) {
-				return createPrecedesAdapter();
+			public Adapter caseRelationDeclaration(RelationDeclaration object) {
+				return createRelationDeclarationAdapter();
+			}
+			@Override
+			public Adapter caseParameter(Parameter object) {
+				return createParameterAdapter();
+			}
+			@Override
+			public Adapter caseRelationDefinition(RelationDefinition object) {
+				return createRelationDefinitionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -108,6 +132,20 @@ public class JavasolverinputAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
+	 * Creates a new adapter for an object of class '{@link javasolverinput.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see javasolverinput.NamedElement
+	 * @generated
+	 */
+	public Adapter createNamedElementAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link javasolverinput.JavaSolverInputFile <em>Java Solver Input File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -122,16 +160,58 @@ public class JavasolverinputAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link javasolverinput.NamedElement <em>Named Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link javasolverinput.BootstrappedConstraint <em>Bootstrapped Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see javasolverinput.NamedElement
+	 * @see javasolverinput.BootstrappedConstraint
 	 * @generated
 	 */
-	public Adapter createNamedElementAdapter() {
+	public Adapter createBootstrappedConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link javasolverinput.BootStrappedConstraintArgument <em>Boot Strapped Constraint Argument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see javasolverinput.BootStrappedConstraintArgument
+	 * @generated
+	 */
+	public Adapter createBootStrappedConstraintArgumentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link javasolverinput.Constraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see javasolverinput.Constraint
+	 * @generated
+	 */
+	public Adapter createConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link javasolverinput.Precedes <em>Precedes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see javasolverinput.Precedes
+	 * @generated
+	 */
+	public Adapter createPrecedesAdapter() {
 		return null;
 	}
 
@@ -150,30 +230,58 @@ public class JavasolverinputAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link javasolverinput.Relation <em>Relation</em>}'.
+	 * Creates a new adapter for an object of class '{@link javasolverinput.CustomConstraint <em>Custom Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see javasolverinput.Relation
+	 * @see javasolverinput.CustomConstraint
 	 * @generated
 	 */
-	public Adapter createRelationAdapter() {
+	public Adapter createCustomConstraintAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link javasolverinput.Precedes <em>Precedes</em>}'.
+	 * Creates a new adapter for an object of class '{@link javasolverinput.RelationDeclaration <em>Relation Declaration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see javasolverinput.Precedes
+	 * @see javasolverinput.RelationDeclaration
 	 * @generated
 	 */
-	public Adapter createPrecedesAdapter() {
+	public Adapter createRelationDeclarationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link javasolverinput.Parameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see javasolverinput.Parameter
+	 * @generated
+	 */
+	public Adapter createParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link javasolverinput.RelationDefinition <em>Relation Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see javasolverinput.RelationDefinition
+	 * @generated
+	 */
+	public Adapter createRelationDefinitionAdapter() {
 		return null;
 	}
 

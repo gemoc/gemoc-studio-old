@@ -5,16 +5,18 @@ package javasolverinput.impl;
 import java.util.Collection;
 
 import javasolverinput.Clock;
+import javasolverinput.Constraint;
 import javasolverinput.JavaSolverInputFile;
 import javasolverinput.JavasolverinputPackage;
-import javasolverinput.Relation;
+import javasolverinput.RelationDeclaration;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -25,8 +27,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link javasolverinput.impl.JavaSolverInputFileImpl#getClocks <em>Clocks</em>}</li>
+ *   <li>{@link javasolverinput.impl.JavaSolverInputFileImpl#getClockDeclarations <em>Clock Declarations</em>}</li>
  *   <li>{@link javasolverinput.impl.JavaSolverInputFileImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link javasolverinput.impl.JavaSolverInputFileImpl#getRelationDeclarations <em>Relation Declarations</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,14 +37,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSolverInputFile {
 	/**
-	 * The cached value of the '{@link #getClocks() <em>Clocks</em>}' containment reference list.
+	 * The cached value of the '{@link #getClockDeclarations() <em>Clock Declarations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getClocks()
+	 * @see #getClockDeclarations()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Clock> clocks;
+	protected EList<Clock> clockDeclarations;
 
 	/**
 	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
@@ -51,7 +54,17 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Relation> constraints;
+	protected EList<Constraint> constraints;
+
+	/**
+	 * The cached value of the '{@link #getRelationDeclarations() <em>Relation Declarations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelationDeclarations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<RelationDeclaration> relationDeclarations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,11 +90,11 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Clock> getClocks() {
-		if (clocks == null) {
-			clocks = new EObjectContainmentEList<Clock>(Clock.class, this, JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCKS);
+	public EList<Clock> getClockDeclarations() {
+		if (clockDeclarations == null) {
+			clockDeclarations = new EObjectContainmentEList<Clock>(Clock.class, this, JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS);
 		}
-		return clocks;
+		return clockDeclarations;
 	}
 
 	/**
@@ -89,11 +102,23 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Relation> getConstraints() {
+	public EList<Constraint> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectContainmentEList<Relation>(Relation.class, this, JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS);
+			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS);
 		}
 		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<RelationDeclaration> getRelationDeclarations() {
+		if (relationDeclarations == null) {
+			relationDeclarations = new EObjectContainmentEList<RelationDeclaration>(RelationDeclaration.class, this, JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS);
+		}
+		return relationDeclarations;
 	}
 
 	/**
@@ -104,10 +129,12 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCKS:
-				return ((InternalEList<?>)getClocks()).basicRemove(otherEnd, msgs);
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS:
+				return ((InternalEList<?>)getClockDeclarations()).basicRemove(otherEnd, msgs);
 			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS:
 				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS:
+				return ((InternalEList<?>)getRelationDeclarations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -120,10 +147,12 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCKS:
-				return getClocks();
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS:
+				return getClockDeclarations();
 			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS:
 				return getConstraints();
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS:
+				return getRelationDeclarations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -137,13 +166,17 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCKS:
-				getClocks().clear();
-				getClocks().addAll((Collection<? extends Clock>)newValue);
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS:
+				getClockDeclarations().clear();
+				getClockDeclarations().addAll((Collection<? extends Clock>)newValue);
 				return;
 			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS:
 				getConstraints().clear();
-				getConstraints().addAll((Collection<? extends Relation>)newValue);
+				getConstraints().addAll((Collection<? extends Constraint>)newValue);
+				return;
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS:
+				getRelationDeclarations().clear();
+				getRelationDeclarations().addAll((Collection<? extends RelationDeclaration>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -157,11 +190,14 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCKS:
-				getClocks().clear();
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS:
+				getClockDeclarations().clear();
 				return;
 			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS:
 				getConstraints().clear();
+				return;
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS:
+				getRelationDeclarations().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -175,10 +211,12 @@ public class JavaSolverInputFileImpl extends NamedElementImpl implements JavaSol
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCKS:
-				return clocks != null && !clocks.isEmpty();
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS:
+				return clockDeclarations != null && !clockDeclarations.isEmpty();
 			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS:
 				return constraints != null && !constraints.isEmpty();
+			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS:
+				return relationDeclarations != null && !relationDeclarations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

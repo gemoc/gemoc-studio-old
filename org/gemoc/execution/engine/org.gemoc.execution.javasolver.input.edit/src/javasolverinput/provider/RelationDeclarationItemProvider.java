@@ -6,9 +6,9 @@ package javasolverinput.provider;
 import java.util.Collection;
 import java.util.List;
 
-import javasolverinput.JavaSolverInputFile;
 import javasolverinput.JavasolverinputFactory;
 import javasolverinput.JavasolverinputPackage;
+import javasolverinput.RelationDeclaration;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -24,12 +24,12 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link javasolverinput.JavaSolverInputFile} object.
+ * This is the item provider adapter for a {@link javasolverinput.RelationDeclaration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class JavaSolverInputFileItemProvider
+public class RelationDeclarationItemProvider
 	extends NamedElementItemProvider
 	implements
 		IEditingDomainItemProvider,
@@ -43,7 +43,7 @@ public class JavaSolverInputFileItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JavaSolverInputFileItemProvider(AdapterFactory adapterFactory) {
+	public RelationDeclarationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -74,9 +74,8 @@ public class JavaSolverInputFileItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS);
-			childrenFeatures.add(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS);
-			childrenFeatures.add(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS);
+			childrenFeatures.add(JavasolverinputPackage.Literals.RELATION_DECLARATION__PARAMETERS);
+			childrenFeatures.add(JavasolverinputPackage.Literals.RELATION_DECLARATION__DEFINITION);
 		}
 		return childrenFeatures;
 	}
@@ -95,14 +94,14 @@ public class JavaSolverInputFileItemProvider
 	}
 
 	/**
-	 * This returns JavaSolverInputFile.gif.
+	 * This returns RelationDeclaration.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/JavaSolverInputFile"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/RelationDeclaration"));
 	}
 
 	/**
@@ -113,10 +112,10 @@ public class JavaSolverInputFileItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((JavaSolverInputFile)object).getName();
+		String label = ((RelationDeclaration)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_JavaSolverInputFile_type") :
-			getString("_UI_JavaSolverInputFile_type") + " " + label;
+			getString("_UI_RelationDeclaration_type") :
+			getString("_UI_RelationDeclaration_type") + " " + label;
 	}
 
 	/**
@@ -130,10 +129,9 @@ public class JavaSolverInputFileItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(JavaSolverInputFile.class)) {
-			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS:
-			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS:
-			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS:
+		switch (notification.getFeatureID(RelationDeclaration.class)) {
+			case JavasolverinputPackage.RELATION_DECLARATION__PARAMETERS:
+			case JavasolverinputPackage.RELATION_DECLARATION__DEFINITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -153,23 +151,13 @@ public class JavaSolverInputFileItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS,
-				 JavasolverinputFactory.eINSTANCE.createClock()));
+				(JavasolverinputPackage.Literals.RELATION_DECLARATION__PARAMETERS,
+				 JavasolverinputFactory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
-				 JavasolverinputFactory.eINSTANCE.createPrecedes()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
-				 JavasolverinputFactory.eINSTANCE.createCustomConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS,
-				 JavasolverinputFactory.eINSTANCE.createRelationDeclaration()));
+				(JavasolverinputPackage.Literals.RELATION_DECLARATION__DEFINITION,
+				 JavasolverinputFactory.eINSTANCE.createRelationDefinition()));
 	}
 
 }

@@ -12,8 +12,9 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link javasolverinput.JavaSolverInputFile#getClocks <em>Clocks</em>}</li>
+ *   <li>{@link javasolverinput.JavaSolverInputFile#getClockDeclarations <em>Clock Declarations</em>}</li>
  *   <li>{@link javasolverinput.JavaSolverInputFile#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link javasolverinput.JavaSolverInputFile#getRelationDeclarations <em>Relation Declarations</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,27 +24,27 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface JavaSolverInputFile extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Clocks</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Clock Declarations</b></em>' containment reference list.
 	 * The list contents are of type {@link javasolverinput.Clock}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Clocks</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Clock Declarations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Clocks</em>' containment reference list.
-	 * @see javasolverinput.JavasolverinputPackage#getJavaSolverInputFile_Clocks()
+	 * @return the value of the '<em>Clock Declarations</em>' containment reference list.
+	 * @see javasolverinput.JavasolverinputPackage#getJavaSolverInputFile_ClockDeclarations()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Clock> getClocks();
+	EList<Clock> getClockDeclarations();
 
 	/**
 	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link javasolverinput.Relation}.
+	 * The list contents are of type {@link javasolverinput.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Constraints</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -52,6 +53,22 @@ public interface JavaSolverInputFile extends NamedElement {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Relation> getConstraints();
+	EList<Constraint> getConstraints();
+
+	/**
+	 * Returns the value of the '<em><b>Relation Declarations</b></em>' containment reference list.
+	 * The list contents are of type {@link javasolverinput.RelationDeclaration}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Relation Declarations</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Relation Declarations</em>' containment reference list.
+	 * @see javasolverinput.JavasolverinputPackage#getJavaSolverInputFile_RelationDeclarations()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<RelationDeclaration> getRelationDeclarations();
 
 } // JavaSolverInputFile
