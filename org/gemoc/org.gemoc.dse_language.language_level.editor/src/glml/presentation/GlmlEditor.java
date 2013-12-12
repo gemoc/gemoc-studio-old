@@ -170,8 +170,10 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.provider.C
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.provider.TimeModelItemProviderAdapterFactory;
 
+import javasolverinput.creation.provider.CreationItemProviderAdapterFactory;
 import javasolverinput.provider.JavasolverinputItemProviderAdapterFactory;
 
+import javasolverinput.usage.provider.UsageItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -722,6 +724,8 @@ public class GlmlEditor
 		adapterFactory.addAdapterFactory(new GlmlItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new JavasolverinputItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CreationItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new UsageItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new TimeModelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CCSLModelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ClassicalExpressionItemProviderAdapterFactory());

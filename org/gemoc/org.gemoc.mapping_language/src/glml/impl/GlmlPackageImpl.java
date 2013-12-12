@@ -19,6 +19,7 @@ import glml.NamedElement;
 
 import javasolverinput.JavasolverinputPackage;
 
+import javasolverinput.usage.UsagePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -137,7 +138,6 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
 		JavasolverinputPackage.eINSTANCE.eClass();
 		TimeModelPackage.eINSTANCE.eClass();
 
@@ -419,7 +419,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		// Obtain other dependent packages
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		ClockExpressionAndRelationPackage theClockExpressionAndRelationPackage = (ClockExpressionAndRelationPackage)EPackage.Registry.INSTANCE.getEPackage(ClockExpressionAndRelationPackage.eNS_URI);
-		JavasolverinputPackage theJavasolverinputPackage = (JavasolverinputPackage)EPackage.Registry.INSTANCE.getEPackage(JavasolverinputPackage.eNS_URI);
+		UsagePackage theUsagePackage = (UsagePackage)EPackage.Registry.INSTANCE.getEPackage(UsagePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -459,7 +459,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		initEReference(getModelSpecificEvent_Target(), ecorePackage.getEObject(), null, "target", null, 1, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(javaSolverRelationEClass, JavaSolverRelation.class, "JavaSolverRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getJavaSolverRelation_Relation(), theJavasolverinputPackage.getRelation(), null, "relation", null, 1, 1, JavaSolverRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJavaSolverRelation_Relation(), theUsagePackage.getConstraint(), null, "relation", null, 1, 1, JavaSolverRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
