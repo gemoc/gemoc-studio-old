@@ -8,7 +8,9 @@ Bundle-Activator: javasolverinput.provider.JavaSolverInputEditPlugin$Implementat
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: javasolverinput.provider
+Export-Package: javasolverinput.creation.provider,
+ javasolverinput.provider,
+ javasolverinput.usage.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.execution.javasolver.input;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,

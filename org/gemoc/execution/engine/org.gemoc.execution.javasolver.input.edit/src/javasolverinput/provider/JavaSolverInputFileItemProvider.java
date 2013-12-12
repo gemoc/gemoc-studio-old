@@ -7,8 +7,11 @@ import java.util.Collection;
 import java.util.List;
 
 import javasolverinput.JavaSolverInputFile;
-import javasolverinput.JavasolverinputFactory;
 import javasolverinput.JavasolverinputPackage;
+
+import javasolverinput.creation.CreationFactory;
+
+import javasolverinput.usage.UsageFactory;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -154,22 +157,22 @@ public class JavaSolverInputFileItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS,
-				 JavasolverinputFactory.eINSTANCE.createClock()));
+				 UsageFactory.eINSTANCE.createClock()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
-				 JavasolverinputFactory.eINSTANCE.createPrecedes()));
+				 UsageFactory.eINSTANCE.createCustomConstraint()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
-				 JavasolverinputFactory.eINSTANCE.createCustomConstraint()));
+				 UsageFactory.eINSTANCE.createPrecedes()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS,
-				 JavasolverinputFactory.eINSTANCE.createRelationDeclaration()));
+				 CreationFactory.eINSTANCE.createRelationDeclaration()));
 	}
 
 }

@@ -156,6 +156,10 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import javasolverinput.provider.JavasolverinputItemProviderAdapterFactory;
 
+import javasolverinput.creation.provider.CreationItemProviderAdapterFactory;
+
+import javasolverinput.usage.provider.UsageItemProviderAdapterFactory;
+
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -704,6 +708,8 @@ public class JavasolverinputEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new JavasolverinputItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CreationItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new UsageItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 

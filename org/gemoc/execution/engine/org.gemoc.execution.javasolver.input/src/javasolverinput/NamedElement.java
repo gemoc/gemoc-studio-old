@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface NamedElement extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
@@ -32,7 +33,7 @@ public interface NamedElement extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see javasolverinput.JavasolverinputPackage#getNamedElement_Name()
-	 * @model required="true"
+	 * @model default="" required="true"
 	 * @generated
 	 */
 	String getName();

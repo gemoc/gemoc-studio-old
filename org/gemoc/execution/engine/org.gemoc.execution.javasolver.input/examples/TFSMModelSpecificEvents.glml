@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.gemoc.dse_language.language_level.glml:DomainSpecificEventFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.gemoc.dse_language.language_level.glml="http://org.gemoc.dse_language.language_level/glml">
+  <modelEvents name="FireTransition_initControl_to_Day">
+    <reification href="TFSMDomainSpecificEvents.glml#//@languageEvents.0"/>
+    <target href="../../org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+  </modelEvents>
+  <modelEvents name="FireTransition_Day_to_Day">
+    <reification href="TFSMDomainSpecificEvents.glml#//@languageEvents.0"/>
+    <target href="../../org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+  </modelEvents>
+</org.gemoc.dse_language.language_level.glml:DomainSpecificEventFile>

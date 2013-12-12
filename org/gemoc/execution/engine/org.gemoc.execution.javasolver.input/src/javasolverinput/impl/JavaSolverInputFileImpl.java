@@ -4,11 +4,13 @@ package javasolverinput.impl;
 
 import java.util.Collection;
 
-import javasolverinput.Clock;
-import javasolverinput.Constraint;
 import javasolverinput.JavaSolverInputFile;
 import javasolverinput.JavasolverinputPackage;
-import javasolverinput.RelationDeclaration;
+
+import javasolverinput.creation.RelationDeclaration;
+
+import javasolverinput.usage.Clock;
+import javasolverinput.usage.Constraint;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 

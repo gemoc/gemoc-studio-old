@@ -2,6 +2,11 @@
  */
 package javasolverinput;
 
+import javasolverinput.creation.RelationDeclaration;
+
+import javasolverinput.usage.Clock;
+import javasolverinput.usage.Constraint;
+
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -25,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
 public interface JavaSolverInputFile extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Clock Declarations</b></em>' containment reference list.
-	 * The list contents are of type {@link javasolverinput.Clock}.
+	 * The list contents are of type {@link javasolverinput.usage.Clock}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Clock Declarations</em>' containment reference list isn't clear,
@@ -41,7 +46,7 @@ public interface JavaSolverInputFile extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link javasolverinput.Constraint}.
+	 * The list contents are of type {@link javasolverinput.usage.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
@@ -57,7 +62,7 @@ public interface JavaSolverInputFile extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Relation Declarations</b></em>' containment reference list.
-	 * The list contents are of type {@link javasolverinput.RelationDeclaration}.
+	 * The list contents are of type {@link javasolverinput.creation.RelationDeclaration}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Relation Declarations</em>' containment reference list isn't clear,
