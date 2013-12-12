@@ -82,6 +82,10 @@ public class UsageAdapterFactory extends AdapterFactoryImpl {
 				return createBootstrappedConstraintAdapter();
 			}
 			@Override
+			public Adapter caseOnce(Once object) {
+				return createOnceAdapter();
+			}
+			@Override
 			public Adapter casePrecedes(Precedes object) {
 				return createPrecedesAdapter();
 			}
@@ -152,6 +156,20 @@ public class UsageAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBootstrappedConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link javasolverinput.usage.Once <em>Once</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see javasolverinput.usage.Once
+	 * @generated
+	 */
+	public Adapter createOnceAdapter() {
 		return null;
 	}
 

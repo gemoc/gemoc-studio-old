@@ -158,6 +158,11 @@ public class RelationDefinitionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CreationPackage.Literals.RELATION_DEFINITION__CONSTRAINTS,
+				 UsageFactory.eINSTANCE.createOnce()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CreationPackage.Literals.RELATION_DEFINITION__CONSTRAINTS,
 				 UsageFactory.eINSTANCE.createPrecedes()));
 	}
 

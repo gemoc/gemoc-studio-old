@@ -269,13 +269,22 @@ public interface GlmlPackage extends EPackage {
 	int MOC_RELATION = 4;
 
 	/**
+	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOC_RELATION__ARGUMENTS = 0;
+
+	/**
 	 * The number of structural features of the '<em>Moc Relation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOC_RELATION_FEATURE_COUNT = 0;
+	int MOC_RELATION_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Moc Relation</em>' class.
@@ -295,6 +304,15 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 */
 	int EXTENDED_CCSL_RELATION = 5;
+
+	/**
+	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENDED_CCSL_RELATION__ARGUMENTS = MOC_RELATION__ARGUMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Relation</b></em>' reference.
@@ -361,13 +379,22 @@ public interface GlmlPackage extends EPackage {
 	int MODEL_SPECIFIC_EVENT__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Model Specific Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int MODEL_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Model Specific Event</em>' class.
@@ -387,6 +414,15 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 */
 	int JAVA_SOLVER_RELATION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_SOLVER_RELATION__ARGUMENTS = MOC_RELATION__ARGUMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Relation</b></em>' reference.
@@ -555,6 +591,17 @@ public interface GlmlPackage extends EPackage {
 	EClass getMocRelation();
 
 	/**
+	 * Returns the meta object for the reference list '{@link glml.MocRelation#getArguments <em>Arguments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Arguments</em>'.
+	 * @see glml.MocRelation#getArguments()
+	 * @see #getMocRelation()
+	 * @generated
+	 */
+	EReference getMocRelation_Arguments();
+
+	/**
 	 * Returns the meta object for class '{@link glml.ExtendedCcslRelation <em>Extended Ccsl Relation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -606,6 +653,17 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModelSpecificEvent_Target();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Condition</em>'.
+	 * @see glml.ModelSpecificEvent#getCondition()
+	 * @see #getModelSpecificEvent()
+	 * @generated
+	 */
+	EReference getModelSpecificEvent_Condition();
 
 	/**
 	 * Returns the meta object for class '{@link glml.JavaSolverRelation <em>Java Solver Relation</em>}'.
@@ -766,6 +824,14 @@ public interface GlmlPackage extends EPackage {
 		EClass MOC_RELATION = eINSTANCE.getMocRelation();
 
 		/**
+		 * The meta object literal for the '<em><b>Arguments</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MOC_RELATION__ARGUMENTS = eINSTANCE.getMocRelation_Arguments();
+
+		/**
 		 * The meta object literal for the '{@link glml.impl.ExtendedCcslRelationImpl <em>Extended Ccsl Relation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -808,6 +874,14 @@ public interface GlmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODEL_SPECIFIC_EVENT__TARGET = eINSTANCE.getModelSpecificEvent_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_SPECIFIC_EVENT__CONDITION = eINSTANCE.getModelSpecificEvent_Condition();
 
 		/**
 		 * The meta object literal for the '{@link glml.impl.JavaSolverRelationImpl <em>Java Solver Relation</em>}' class.

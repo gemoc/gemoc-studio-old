@@ -38,6 +38,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BootstrappedConstraint" abstract="true"
         eSuperTypes="#//usage/Constraint"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Once" eSuperTypes="#//usage/BootstrappedConstraint"/>
     <eClassifiers xsi:type="ecore:EClass" name="Precedes" eSuperTypes="#//usage/BootstrappedConstraint"/>
     <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="#//NamedElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"

@@ -167,6 +167,11 @@ public class JavaSolverInputFileItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
+				 UsageFactory.eINSTANCE.createOnce()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
 				 UsageFactory.eINSTANCE.createPrecedes()));
 
 		newChildDescriptors.add

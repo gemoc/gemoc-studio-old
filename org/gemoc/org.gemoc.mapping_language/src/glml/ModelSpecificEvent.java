@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link glml.ModelSpecificEvent#getReification <em>Reification</em>}</li>
  *   <li>{@link glml.ModelSpecificEvent#getTarget <em>Target</em>}</li>
+ *   <li>{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,5 +74,31 @@ public interface ModelSpecificEvent extends NamedElement {
 	 * @generated
 	 */
 	void setTarget(EObject value);
+
+	/**
+	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Condition</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Condition</em>' containment reference.
+	 * @see #setCondition(MocRelation)
+	 * @see glml.GlmlPackage#getModelSpecificEvent_Condition()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	MocRelation getCondition();
+
+	/**
+	 * Sets the value of the '{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Condition</em>' containment reference.
+	 * @see #getCondition()
+	 * @generated
+	 */
+	void setCondition(MocRelation value);
 
 } // ModelSpecificEvent

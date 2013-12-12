@@ -1,34 +1,31 @@
 /**
  */
-package glml.provider;
+package javasolverinput.usage.provider;
 
 
-import glml.GlmlPackage;
 import java.util.Collection;
 import java.util.List;
+
+import javasolverinput.usage.Once;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link glml.MocRelation} object.
+ * This is the item provider adapter for a {@link javasolverinput.usage.Once} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class MocRelationItemProvider
-	extends ItemProviderAdapter
+public class OnceItemProvider
+	extends BootstrappedConstraintItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -41,7 +38,7 @@ public class MocRelationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MocRelationItemProvider(AdapterFactory adapterFactory) {
+	public OnceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,31 +53,19 @@ public class MocRelationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addArgumentsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Arguments feature.
+	 * This returns Once.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addArgumentsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MocRelation_arguments_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MocRelation_arguments_feature", "_UI_MocRelation_type"),
-				 GlmlPackage.Literals.MOC_RELATION__ARGUMENTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Once"));
 	}
 
 	/**
@@ -91,7 +76,10 @@ public class MocRelationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_MocRelation_type");
+		String label = ((Once)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Once_type") :
+			getString("_UI_Once_type") + " " + label;
 	}
 
 	/**
@@ -117,17 +105,6 @@ public class MocRelationItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return GemocLanguageMappingLanguageEditPlugin.INSTANCE;
 	}
 
 }

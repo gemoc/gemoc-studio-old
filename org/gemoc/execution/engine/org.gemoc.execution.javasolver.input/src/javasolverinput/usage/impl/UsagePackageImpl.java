@@ -14,6 +14,7 @@ import javasolverinput.usage.BootstrappedConstraint;
 import javasolverinput.usage.Clock;
 import javasolverinput.usage.Constraint;
 import javasolverinput.usage.CustomConstraint;
+import javasolverinput.usage.Once;
 import javasolverinput.usage.Precedes;
 import javasolverinput.usage.UsageFactory;
 import javasolverinput.usage.UsagePackage;
@@ -52,6 +53,13 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 	 * @generated
 	 */
 	private EClass bootstrappedConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass onceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,6 +188,15 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOnce() {
+		return onceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPrecedes() {
 		return precedesEClass;
 	}
@@ -237,6 +254,8 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 
 		bootstrappedConstraintEClass = createEClass(BOOTSTRAPPED_CONSTRAINT);
 
+		onceEClass = createEClass(ONCE);
+
 		precedesEClass = createEClass(PRECEDES);
 
 		constraintEClass = createEClass(CONSTRAINT);
@@ -279,6 +298,7 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 		clockEClass.getESuperTypes().add(theJavasolverinputPackage.getNamedElement());
 		customConstraintEClass.getESuperTypes().add(this.getConstraint());
 		bootstrappedConstraintEClass.getESuperTypes().add(this.getConstraint());
+		onceEClass.getESuperTypes().add(this.getBootstrappedConstraint());
 		precedesEClass.getESuperTypes().add(this.getBootstrappedConstraint());
 		constraintEClass.getESuperTypes().add(theJavasolverinputPackage.getNamedElement());
 
@@ -289,6 +309,8 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 		initEReference(getCustomConstraint_Type(), theCreationPackage.getRelationDeclaration(), null, "type", null, 1, 1, CustomConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bootstrappedConstraintEClass, BootstrappedConstraint.class, "BootstrappedConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(onceEClass, Once.class, "Once", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(precedesEClass, Precedes.class, "Precedes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

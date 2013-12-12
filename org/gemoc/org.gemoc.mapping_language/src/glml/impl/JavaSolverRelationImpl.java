@@ -6,6 +6,7 @@ import glml.GlmlPackage;
 import glml.JavaSolverRelation;
 
 
+import javasolverinput.creation.RelationDeclaration;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,7 +36,7 @@ public class JavaSolverRelationImpl extends MocRelationImpl implements JavaSolve
 	 * @generated
 	 * @ordered
 	 */
-	protected javasolverinput.usage.Constraint relation;
+	protected RelationDeclaration relation;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,10 +62,10 @@ public class JavaSolverRelationImpl extends MocRelationImpl implements JavaSolve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public javasolverinput.usage.Constraint getRelation() {
+	public RelationDeclaration getRelation() {
 		if (relation != null && relation.eIsProxy()) {
 			InternalEObject oldRelation = (InternalEObject)relation;
-			relation = (javasolverinput.usage.Constraint)eResolveProxy(oldRelation);
+			relation = (RelationDeclaration)eResolveProxy(oldRelation);
 			if (relation != oldRelation) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.JAVA_SOLVER_RELATION__RELATION, oldRelation, relation));
@@ -78,7 +79,7 @@ public class JavaSolverRelationImpl extends MocRelationImpl implements JavaSolve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public javasolverinput.usage.Constraint basicGetRelation() {
+	public RelationDeclaration basicGetRelation() {
 		return relation;
 	}
 
@@ -87,8 +88,8 @@ public class JavaSolverRelationImpl extends MocRelationImpl implements JavaSolve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRelation(javasolverinput.usage.Constraint newRelation) {
-		javasolverinput.usage.Constraint oldRelation = relation;
+	public void setRelation(RelationDeclaration newRelation) {
+		RelationDeclaration oldRelation = relation;
 		relation = newRelation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.JAVA_SOLVER_RELATION__RELATION, oldRelation, relation));
@@ -118,7 +119,7 @@ public class JavaSolverRelationImpl extends MocRelationImpl implements JavaSolve
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GlmlPackage.JAVA_SOLVER_RELATION__RELATION:
-				setRelation((javasolverinput.usage.Constraint)newValue);
+				setRelation((RelationDeclaration)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -133,7 +134,7 @@ public class JavaSolverRelationImpl extends MocRelationImpl implements JavaSolve
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GlmlPackage.JAVA_SOLVER_RELATION__RELATION:
-				setRelation((javasolverinput.usage.Constraint)null);
+				setRelation((RelationDeclaration)null);
 				return;
 		}
 		super.eUnset(featureID);

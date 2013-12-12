@@ -40,6 +40,15 @@ public interface UsageFactory extends EFactory {
 	CustomConstraint createCustomConstraint();
 
 	/**
+	 * Returns a new object of class '<em>Once</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Once</em>'.
+	 * @generated
+	 */
+	Once createOnce();
+
+	/**
 	 * Returns a new object of class '<em>Precedes</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -3,6 +3,7 @@
 package javasolverinput.usage;
 
 
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Precedes</b></em>'.

@@ -4,10 +4,12 @@ package glml.impl;
 
 import glml.DomainSpecificEvent;
 import glml.GlmlPackage;
+import glml.MocRelation;
 import glml.ModelSpecificEvent;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -23,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link glml.impl.ModelSpecificEventImpl#getReification <em>Reification</em>}</li>
  *   <li>{@link glml.impl.ModelSpecificEventImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link glml.impl.ModelSpecificEventImpl#getCondition <em>Condition</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +51,16 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	 * @ordered
 	 */
 	protected EObject target;
+
+	/**
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected MocRelation condition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -149,6 +162,63 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MocRelation getCondition() {
+		return condition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCondition(MocRelation newCondition, NotificationChain msgs) {
+		MocRelation oldCondition = condition;
+		condition = newCondition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, oldCondition, newCondition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCondition(MocRelation newCondition) {
+		if (newCondition != condition) {
+			NotificationChain msgs = null;
+			if (condition != null)
+				msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, null, msgs);
+			if (newCondition != null)
+				msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, null, msgs);
+			msgs = basicSetCondition(newCondition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, newCondition, newCondition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
+				return basicSetCondition(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -158,6 +228,8 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
+				return getCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -175,6 +247,9 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 				return;
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__TARGET:
 				setTarget((EObject)newValue);
+				return;
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
+				setCondition((MocRelation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -194,6 +269,9 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__TARGET:
 				setTarget((EObject)null);
 				return;
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
+				setCondition((MocRelation)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -210,6 +288,8 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 				return reification != null;
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__TARGET:
 				return target != null;
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
+				return condition != null;
 		}
 		return super.eIsSet(featureID);
 	}

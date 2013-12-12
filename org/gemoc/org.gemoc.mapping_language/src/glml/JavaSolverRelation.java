@@ -2,6 +2,8 @@
  */
 package glml;
 
+import javasolverinput.creation.RelationDeclaration;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +31,12 @@ public interface JavaSolverRelation extends MocRelation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation</em>' reference.
-	 * @see #setRelation(javasolverinput.usage.Constraint)
+	 * @see #setRelation(RelationDeclaration)
 	 * @see glml.GlmlPackage#getJavaSolverRelation_Relation()
 	 * @model required="true"
 	 * @generated
 	 */
-	javasolverinput.usage.Constraint getRelation();
+	RelationDeclaration getRelation();
 
 	/**
 	 * Sets the value of the '{@link glml.JavaSolverRelation#getRelation <em>Relation</em>}' reference.
@@ -44,6 +46,6 @@ public interface JavaSolverRelation extends MocRelation {
 	 * @see #getRelation()
 	 * @generated
 	 */
-	void setRelation(javasolverinput.usage.Constraint value);
+	void setRelation(RelationDeclaration value);
 
 } // JavaSolverRelation

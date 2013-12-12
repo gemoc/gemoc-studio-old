@@ -102,7 +102,7 @@ public interface UsagePackage extends EPackage {
 	 * @see javasolverinput.usage.impl.UsagePackageImpl#getConstraint()
 	 * @generated
 	 */
-	int CONSTRAINT = 4;
+	int CONSTRAINT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -242,6 +242,52 @@ public interface UsagePackage extends EPackage {
 	int BOOTSTRAPPED_CONSTRAINT_OPERATION_COUNT = CONSTRAINT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link javasolverinput.usage.impl.OnceImpl <em>Once</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see javasolverinput.usage.impl.OnceImpl
+	 * @see javasolverinput.usage.impl.UsagePackageImpl#getOnce()
+	 * @generated
+	 */
+	int ONCE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONCE__NAME = BOOTSTRAPPED_CONSTRAINT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONCE__ARGUMENTS = BOOTSTRAPPED_CONSTRAINT__ARGUMENTS;
+
+	/**
+	 * The number of structural features of the '<em>Once</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONCE_FEATURE_COUNT = BOOTSTRAPPED_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Once</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONCE_OPERATION_COUNT = BOOTSTRAPPED_CONSTRAINT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link javasolverinput.usage.impl.PrecedesImpl <em>Precedes</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,7 +295,7 @@ public interface UsagePackage extends EPackage {
 	 * @see javasolverinput.usage.impl.UsagePackageImpl#getPrecedes()
 	 * @generated
 	 */
-	int PRECEDES = 3;
+	int PRECEDES = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -328,6 +374,16 @@ public interface UsagePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getBootstrappedConstraint();
+
+	/**
+	 * Returns the meta object for class '{@link javasolverinput.usage.Once <em>Once</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Once</em>'.
+	 * @see javasolverinput.usage.Once
+	 * @generated
+	 */
+	EClass getOnce();
 
 	/**
 	 * Returns the meta object for class '{@link javasolverinput.usage.Precedes <em>Precedes</em>}'.
@@ -420,6 +476,16 @@ public interface UsagePackage extends EPackage {
 		 * @generated
 		 */
 		EClass BOOTSTRAPPED_CONSTRAINT = eINSTANCE.getBootstrappedConstraint();
+
+		/**
+		 * The meta object literal for the '{@link javasolverinput.usage.impl.OnceImpl <em>Once</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see javasolverinput.usage.impl.OnceImpl
+		 * @see javasolverinput.usage.impl.UsagePackageImpl#getOnce()
+		 * @generated
+		 */
+		EClass ONCE = eINSTANCE.getOnce();
 
 		/**
 		 * The meta object literal for the '{@link javasolverinput.usage.impl.PrecedesImpl <em>Precedes</em>}' class.

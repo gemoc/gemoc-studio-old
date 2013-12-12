@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<javasolverinput:JavaSolverInputFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:javasolverinput="http://gemoc.org/javasolverinput" xmlns:usage="http://gemoc.org/javasolverinput/usage" name="Example.javasolverinput">
+  <clockDeclarations name="c1"/>
+  <clockDeclarations name="c2"/>
+  <constraints xsi:type="usage:Precedes" name="Precedes" arguments="//@clockDeclarations.0 //@clockDeclarations.1"/>
+  <constraints xsi:type="usage:CustomConstraint" name="myRelation" arguments="//@clockDeclarations.0 //@clockDeclarations.1" type="//@relationDeclarations.0"/>
+  <relationDeclarations name="MyRelation">
+    <parameters name="clock1">
+      <type xsi:type="ecore:EClass" href="../model/JavaSolverInput.ecore#//usage/Clock"/>
+    </parameters>
+    <parameters name="clock2">
+      <type xsi:type="ecore:EClass" href="../model/JavaSolverInput.ecore#//usage/Clock"/>
+    </parameters>
+    <definition>
+      <constraints xsi:type="usage:Precedes" name="UsingPrecedes" arguments="//@relationDeclarations.0/@parameters.0 //@relationDeclarations.0/@parameters.1"/>
+      <constraints xsi:type="usage:CustomConstraint" name="usingMyRelation" arguments="//@relationDeclarations.0/@parameters.0 //@relationDeclarations.0/@parameters.1" type="//@relationDeclarations.0"/>
+      <constraints xsi:type="usage:Once" name="UsingOnce" arguments="//@relationDeclarations.0/@parameters.0"/>
+    </definition>
+  </relationDeclarations>
+</javasolverinput:JavaSolverInputFile>
