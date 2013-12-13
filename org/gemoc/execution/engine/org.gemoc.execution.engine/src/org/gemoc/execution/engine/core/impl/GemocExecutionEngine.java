@@ -1,39 +1,41 @@
 package org.gemoc.execution.engine.core.impl;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.api_standard_implementations.dsa.ModelAction;
-import org.gemoc.execution.engine.api_standard_implementations.dse.ModelEvent;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
-import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
-import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
-import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
-
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.Reference;
+import glml.DomainSpecificEvent;
+import glml.DomainSpecificEventFile;
+import glml.ModelSpecificEvent;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
-	private List<ModelSpecificEvent> modelSpecificEvents = null;
-	private URI modelOfExecutionURI = null;
+	private Map<String, ModelSpecificEvent> mseRegistry = null;
+	private Resource solverInput = null;
+	private Resource modelOfExecution = null;
 
 	public GemocExecutionEngine(Resource domainSpecificEventsResource,
 			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
@@ -93,37 +95,54 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 					"Model was successfully loaded: "
 							+ modelResource.toString(), Activator.PLUGIN_ID);
 
+			// Invoke the transformation that creates the model of execution
+			// from the DSEs.
+			this.modelOfExecution = new ResourceSetImpl()
+					.getResource(
+							URI.createPlatformResourceURI(
+									"/org.gemoc.sample.tfsm.instances/TrafficControl/test/MyModelSpecificEvents.glml",
+									true), true);
+
 			// TODO : remove when EclToCCslTranslator gets implemented.
 			try {
-				Resource modelOfExecution = this.solver.getSolverInputBuilder()
-						.build(this.domainSpecificEventsResource,
-								this.modelResource);
+				Resource solverInput = this.solver.getSolverInputBuilder()
+						.build(this.modelOfExecution);
 
-				this.modelOfExecutionURI = modelOfExecution.getURI();
+				this.solverInput = solverInput;
 
 			} catch (UnsupportedOperationException e) {
-				String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
-				this.modelOfExecutionURI = URI.createPlatformResourceURI(
-						modelOfExecutionFilePath, true);
+				//String solverInputFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
+				String solverInputFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test/MySolverInput.javasolverinput";
+				this.solverInput = new ResourceSetImpl().getResource(URI
+						.createPlatformResourceURI(solverInputFilePath, true),
+						true);
+				// this.solver.input.load(null) ???
 			}
-			this.solver.setSolverInputFile(this.modelOfExecutionURI);
-			this.modelSpecificEvents = this
-					.initializeModelSpecificEvents(this.modelOfExecutionURI);
+			this.solver.setSolverInputFile(this.solverInput.getURI());
+			this.mseRegistry = this
+					.buildModelSpecificEventsRegistry(this.modelOfExecution);
 
 			Activator.getMessagingSystem().info(
 					"*** Engine initialization done. ***", Activator.PLUGIN_ID);
 		}
 	}
 
+	@Override
 	public void reset() {
-		this.solver.setSolverInputFile(this.modelOfExecutionURI);
+		this.solver.setSolverInputFile(this.solverInput.getURI());
 		this.setChanged();
 		this.notifyObservers(">Reset!");
 	}
 
-	private List<ModelSpecificEvent> initializeModelSpecificEvents(
-			URI modelOfExecutionURI) {
-		return new ArrayList<ModelSpecificEvent>();
+	private Map<String, ModelSpecificEvent> buildModelSpecificEventsRegistry(
+			Resource modelOfExecution) {
+		Map<String, ModelSpecificEvent> res = new HashMap<String, ModelSpecificEvent>();
+		DomainSpecificEventFile dseFile = (DomainSpecificEventFile) modelOfExecution
+				.getContents().get(0);
+		for (ModelSpecificEvent mse : dseFile.getModelEvents()) {
+			res.put(mse.getName(), mse);
+		}
+		return res;
 	}
 
 	// TODO : this method will change when we change the DSE language.
@@ -140,7 +159,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				Activator.getMessagingSystem().debug(
 						"FState is TICK for eventOccurrence: "
 								+ eventOccurrence, Activator.PLUGIN_ID);
-				
+
 				if (eventOccurrence.getContext() != null
 						& eventOccurrence.getReferedElement() != null) {
 					// Case of the CCSL Solver
@@ -157,21 +176,23 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 						Activator.getMessagingSystem().debug(
 								"Linked to the EOperation: " + operation,
 								Activator.PLUGIN_ID);
-						ModelSpecificEvent mse = new ModelEvent(
-								"dseNamesNotUsedYet", new ModelAction(target,
-										operation, null), null);
+						ModelSpecificEvent mse = null;// = new ModelEvent(
+						// "dseNamesNotUsedYet", new ModelAction(target,
+						// operation, null), null);
 						res.add(mse);
 					} catch (ClassCastException e) {
 						Activator.getMessagingSystem().warn(
 								"... but not linked to an EOperation.",
 								Activator.PLUGIN_ID);
 					}
-				} else{
+				} else {
 					// Case of the JavaSolver
-					if(eventOccurrence.getReferedElement() != null){
-						if(eventOccurrence.getReferedElement() instanceof NamedReference){
-							NamedReference namedReference = (NamedReference) eventOccurrence.getReferedElement();
-							res.add(new ModelEvent(namedReference.getValue(), (DomainSpecificEvent) null));
+					if (eventOccurrence.getReferedElement() != null) {
+						if (eventOccurrence.getReferedElement() instanceof NamedReference) {
+							NamedReference namedReference = (NamedReference) eventOccurrence
+									.getReferedElement();
+							res.add(this.mseRegistry.get(namedReference
+									.getValue()));
 						}
 					}
 				}

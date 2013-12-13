@@ -6,6 +6,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.TimeModelPackage;
 
+import glml.DomainSpecificAction;
 import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
 import glml.ExtendedCcslRelation;
@@ -14,6 +15,7 @@ import glml.GlmlPackage;
 import glml.ImportStatement;
 import glml.JavaSolverRelation;
 import glml.MocRelation;
+import glml.ModelSpecificAction;
 import glml.ModelSpecificEvent;
 import glml.NamedElement;
 
@@ -61,6 +63,13 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass domainSpecificActionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass importStatementEClass = null;
 
 	/**
@@ -83,6 +92,13 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * @generated
 	 */
 	private EClass modelSpecificEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modelSpecificActionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -224,7 +240,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDomainSpecificEvent_TargetClass() {
+	public EReference getDomainSpecificEvent_Condition() {
 		return (EReference)domainSpecificEventEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -233,7 +249,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDomainSpecificEvent_Operations() {
+	public EReference getDomainSpecificEvent_DomainSpecificActions() {
 		return (EReference)domainSpecificEventEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -242,8 +258,44 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDomainSpecificEvent_Condition() {
-		return (EReference)domainSpecificEventEClass.getEStructuralFeatures().get(2);
+	public EClass getDomainSpecificAction() {
+		return domainSpecificActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSpecificAction_TargetClass() {
+		return (EReference)domainSpecificActionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSpecificAction_Operation() {
+		return (EReference)domainSpecificActionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSpecificAction_ParameterTypes() {
+		return (EReference)domainSpecificActionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSpecificAction_OwningDomainSpecificEvent() {
+		return (EReference)domainSpecificActionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -323,7 +375,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModelSpecificEvent_Target() {
+	public EReference getModelSpecificEvent_Condition() {
 		return (EReference)modelSpecificEventEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -332,8 +384,62 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModelSpecificEvent_Condition() {
+	public EReference getModelSpecificEvent_ModelSpecificActions() {
 		return (EReference)modelSpecificEventEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModelSpecificAction() {
+		return modelSpecificActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelSpecificAction_Reification() {
+		return (EReference)modelSpecificActionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelSpecificAction_Target() {
+		return (EReference)modelSpecificActionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelSpecificAction_Operation() {
+		return (EReference)modelSpecificActionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelSpecificAction_Parameters() {
+		return (EReference)modelSpecificActionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelSpecificAction_OwningModelSpecificEvent() {
+		return (EReference)modelSpecificActionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -390,13 +496,18 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
-		domainSpecificEventEClass = createEClass(DOMAIN_SPECIFIC_EVENT);
-		createEReference(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__TARGET_CLASS);
-		createEReference(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__OPERATIONS);
-		createEReference(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__CONDITION);
-
 		importStatementEClass = createEClass(IMPORT_STATEMENT);
 		createEAttribute(importStatementEClass, IMPORT_STATEMENT__IMPORT_URI);
+
+		domainSpecificEventEClass = createEClass(DOMAIN_SPECIFIC_EVENT);
+		createEReference(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__CONDITION);
+		createEReference(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS);
+
+		domainSpecificActionEClass = createEClass(DOMAIN_SPECIFIC_ACTION);
+		createEReference(domainSpecificActionEClass, DOMAIN_SPECIFIC_ACTION__TARGET_CLASS);
+		createEReference(domainSpecificActionEClass, DOMAIN_SPECIFIC_ACTION__OPERATION);
+		createEReference(domainSpecificActionEClass, DOMAIN_SPECIFIC_ACTION__PARAMETER_TYPES);
+		createEReference(domainSpecificActionEClass, DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT);
 
 		mocRelationEClass = createEClass(MOC_RELATION);
 		createEReference(mocRelationEClass, MOC_RELATION__ARGUMENTS);
@@ -404,13 +515,20 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		extendedCcslRelationEClass = createEClass(EXTENDED_CCSL_RELATION);
 		createEReference(extendedCcslRelationEClass, EXTENDED_CCSL_RELATION__RELATION);
 
-		modelSpecificEventEClass = createEClass(MODEL_SPECIFIC_EVENT);
-		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__REIFICATION);
-		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__TARGET);
-		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__CONDITION);
-
 		javaSolverRelationEClass = createEClass(JAVA_SOLVER_RELATION);
 		createEReference(javaSolverRelationEClass, JAVA_SOLVER_RELATION__RELATION);
+
+		modelSpecificEventEClass = createEClass(MODEL_SPECIFIC_EVENT);
+		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__REIFICATION);
+		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__CONDITION);
+		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS);
+
+		modelSpecificActionEClass = createEClass(MODEL_SPECIFIC_ACTION);
+		createEReference(modelSpecificActionEClass, MODEL_SPECIFIC_ACTION__REIFICATION);
+		createEReference(modelSpecificActionEClass, MODEL_SPECIFIC_ACTION__TARGET);
+		createEReference(modelSpecificActionEClass, MODEL_SPECIFIC_ACTION__OPERATION);
+		createEReference(modelSpecificActionEClass, MODEL_SPECIFIC_ACTION__PARAMETERS);
+		createEReference(modelSpecificActionEClass, MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT);
 	}
 
 	/**
@@ -449,8 +567,8 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		domainSpecificEventFileEClass.getESuperTypes().add(this.getNamedElement());
 		domainSpecificEventEClass.getESuperTypes().add(this.getNamedElement());
 		extendedCcslRelationEClass.getESuperTypes().add(this.getMocRelation());
-		modelSpecificEventEClass.getESuperTypes().add(this.getNamedElement());
 		javaSolverRelationEClass.getESuperTypes().add(this.getMocRelation());
+		modelSpecificEventEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(domainSpecificEventFileEClass, DomainSpecificEventFile.class, "DomainSpecificEventFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -461,13 +579,18 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(domainSpecificEventEClass, DomainSpecificEvent.class, "DomainSpecificEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDomainSpecificEvent_TargetClass(), theEcorePackage.getEClassifier(), null, "targetClass", null, 1, 1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDomainSpecificEvent_Operations(), theEcorePackage.getEOperation(), null, "operations", null, 0, -1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDomainSpecificEvent_Condition(), this.getMocRelation(), null, "condition", null, 1, 1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(importStatementEClass, ImportStatement.class, "ImportStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getImportStatement_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, -1, ImportStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(domainSpecificEventEClass, DomainSpecificEvent.class, "DomainSpecificEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDomainSpecificEvent_Condition(), this.getMocRelation(), null, "condition", null, 1, 1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSpecificEvent_DomainSpecificActions(), this.getDomainSpecificAction(), null, "domainSpecificActions", null, 0, -1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(domainSpecificActionEClass, DomainSpecificAction.class, "DomainSpecificAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDomainSpecificAction_TargetClass(), theEcorePackage.getEClassifier(), null, "targetClass", null, 1, 1, DomainSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSpecificAction_Operation(), theEcorePackage.getEOperation(), null, "operation", null, 1, 1, DomainSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSpecificAction_ParameterTypes(), theEcorePackage.getEClassifier(), null, "parameterTypes", null, 0, -1, DomainSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSpecificAction_OwningDomainSpecificEvent(), this.getDomainSpecificEvent(), null, "owningDomainSpecificEvent", null, 1, 1, DomainSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mocRelationEClass, MocRelation.class, "MocRelation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMocRelation_Arguments(), theEcorePackage.getEObject(), null, "arguments", null, 0, -1, MocRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -475,13 +598,20 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		initEClass(extendedCcslRelationEClass, ExtendedCcslRelation.class, "ExtendedCcslRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExtendedCcslRelation_Relation(), theClockExpressionAndRelationPackage.getRelation(), null, "relation", null, 1, 1, ExtendedCcslRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(modelSpecificEventEClass, ModelSpecificEvent.class, "ModelSpecificEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModelSpecificEvent_Reification(), this.getDomainSpecificEvent(), null, "reification", null, 0, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModelSpecificEvent_Target(), ecorePackage.getEObject(), null, "target", null, 1, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModelSpecificEvent_Condition(), this.getMocRelation(), null, "condition", null, 1, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(javaSolverRelationEClass, JavaSolverRelation.class, "JavaSolverRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJavaSolverRelation_Relation(), theCreationPackage.getRelationDeclaration(), null, "relation", null, 1, 1, JavaSolverRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(modelSpecificEventEClass, ModelSpecificEvent.class, "ModelSpecificEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModelSpecificEvent_Reification(), this.getDomainSpecificEvent(), null, "reification", null, 0, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelSpecificEvent_Condition(), this.getMocRelation(), null, "condition", null, 1, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelSpecificEvent_ModelSpecificActions(), this.getModelSpecificAction(), null, "modelSpecificActions", null, 0, -1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(modelSpecificActionEClass, ModelSpecificAction.class, "ModelSpecificAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModelSpecificAction_Reification(), this.getDomainSpecificAction(), null, "reification", null, 1, 1, ModelSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelSpecificAction_Target(), theEcorePackage.getEObject(), null, "target", null, 1, 1, ModelSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelSpecificAction_Operation(), theEcorePackage.getEOperation(), null, "operation", null, 1, 1, ModelSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelSpecificAction_Parameters(), theEcorePackage.getEObject(), null, "parameters", null, 0, -1, ModelSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelSpecificAction_OwningModelSpecificEvent(), this.getModelSpecificEvent(), null, "owningModelSpecificEvent", null, 1, 1, ModelSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

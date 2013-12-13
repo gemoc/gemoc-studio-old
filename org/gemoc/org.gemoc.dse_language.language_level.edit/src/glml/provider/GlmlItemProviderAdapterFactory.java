@@ -118,6 +118,29 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link glml.DomainSpecificAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DomainSpecificActionItemProvider domainSpecificActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link glml.DomainSpecificAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDomainSpecificActionAdapter() {
+		if (domainSpecificActionItemProvider == null) {
+			domainSpecificActionItemProvider = new DomainSpecificActionItemProvider(this);
+		}
+
+		return domainSpecificActionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link glml.ImportStatement} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -184,6 +207,29 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 		}
 
 		return modelSpecificEventItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link glml.ModelSpecificAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModelSpecificActionItemProvider modelSpecificActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link glml.ModelSpecificAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModelSpecificActionAdapter() {
+		if (modelSpecificActionItemProvider == null) {
+			modelSpecificActionItemProvider = new ModelSpecificActionItemProvider(this);
+		}
+
+		return modelSpecificActionItemProvider;
 	}
 
 	/**
@@ -309,11 +355,13 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 	 */
 	public void dispose() {
 		if (domainSpecificEventFileItemProvider != null) domainSpecificEventFileItemProvider.dispose();
-		if (domainSpecificEventItemProvider != null) domainSpecificEventItemProvider.dispose();
 		if (importStatementItemProvider != null) importStatementItemProvider.dispose();
+		if (domainSpecificEventItemProvider != null) domainSpecificEventItemProvider.dispose();
+		if (domainSpecificActionItemProvider != null) domainSpecificActionItemProvider.dispose();
 		if (extendedCcslRelationItemProvider != null) extendedCcslRelationItemProvider.dispose();
-		if (modelSpecificEventItemProvider != null) modelSpecificEventItemProvider.dispose();
 		if (javaSolverRelationItemProvider != null) javaSolverRelationItemProvider.dispose();
+		if (modelSpecificEventItemProvider != null) modelSpecificEventItemProvider.dispose();
+		if (modelSpecificActionItemProvider != null) modelSpecificActionItemProvider.dispose();
 	}
 
 }

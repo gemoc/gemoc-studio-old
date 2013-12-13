@@ -2,6 +2,7 @@
  */
 package glml.impl;
 
+import glml.DomainSpecificAction;
 import glml.DomainSpecificEvent;
 import glml.GlmlPackage;
 import glml.MocRelation;
@@ -14,13 +15,12 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,35 +29,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link glml.impl.DomainSpecificEventImpl#getTargetClass <em>Target Class</em>}</li>
- *   <li>{@link glml.impl.DomainSpecificEventImpl#getOperations <em>Operations</em>}</li>
  *   <li>{@link glml.impl.DomainSpecificEventImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link glml.impl.DomainSpecificEventImpl#getDomainSpecificActions <em>Domain Specific Actions</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class DomainSpecificEventImpl extends NamedElementImpl implements DomainSpecificEvent {
-	/**
-	 * The cached value of the '{@link #getTargetClass() <em>Target Class</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTargetClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected EClassifier targetClass;
-
-	/**
-	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOperations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<EOperation> operations;
-
 	/**
 	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -67,6 +46,16 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * @ordered
 	 */
 	protected MocRelation condition;
+
+	/**
+	 * The cached value of the '{@link #getDomainSpecificActions() <em>Domain Specific Actions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDomainSpecificActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DomainSpecificAction> domainSpecificActions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,56 +74,6 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	protected EClass eStaticClass() {
 		return GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClassifier getTargetClass() {
-		if (targetClass != null && targetClass.eIsProxy()) {
-			InternalEObject oldTargetClass = (InternalEObject)targetClass;
-			targetClass = (EClassifier)eResolveProxy(oldTargetClass);
-			if (targetClass != oldTargetClass) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.DOMAIN_SPECIFIC_EVENT__TARGET_CLASS, oldTargetClass, targetClass));
-			}
-		}
-		return targetClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClassifier basicGetTargetClass() {
-		return targetClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTargetClass(EClassifier newTargetClass) {
-		EClassifier oldTargetClass = targetClass;
-		targetClass = newTargetClass;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT__TARGET_CLASS, oldTargetClass, targetClass));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<EOperation> getOperations() {
-		if (operations == null) {
-			operations = new EObjectResolvingEList<EOperation>(EOperation.class, this, GlmlPackage.DOMAIN_SPECIFIC_EVENT__OPERATIONS);
-		}
-		return operations;
 	}
 
 	/**
@@ -185,11 +124,25 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<DomainSpecificAction> getDomainSpecificActions() {
+		if (domainSpecificActions == null) {
+			domainSpecificActions = new EObjectContainmentEList<DomainSpecificAction>(DomainSpecificAction.class, this, GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS);
+		}
+		return domainSpecificActions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
 				return basicSetCondition(null, msgs);
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
+				return ((InternalEList<?>)getDomainSpecificActions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -202,13 +155,10 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__TARGET_CLASS:
-				if (resolve) return getTargetClass();
-				return basicGetTargetClass();
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__OPERATIONS:
-				return getOperations();
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
 				return getCondition();
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
+				return getDomainSpecificActions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -222,15 +172,12 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__TARGET_CLASS:
-				setTargetClass((EClassifier)newValue);
-				return;
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__OPERATIONS:
-				getOperations().clear();
-				getOperations().addAll((Collection<? extends EOperation>)newValue);
-				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
 				setCondition((MocRelation)newValue);
+				return;
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
+				getDomainSpecificActions().clear();
+				getDomainSpecificActions().addAll((Collection<? extends DomainSpecificAction>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -244,14 +191,11 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__TARGET_CLASS:
-				setTargetClass((EClassifier)null);
-				return;
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__OPERATIONS:
-				getOperations().clear();
-				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
 				setCondition((MocRelation)null);
+				return;
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
+				getDomainSpecificActions().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -265,12 +209,10 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__TARGET_CLASS:
-				return targetClass != null;
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__OPERATIONS:
-				return operations != null && !operations.isEmpty();
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
 				return condition != null;
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
+				return domainSpecificActions != null && !domainSpecificActions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

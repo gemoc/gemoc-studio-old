@@ -57,11 +57,13 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE: return createDomainSpecificEventFile();
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT: return createDomainSpecificEvent();
 			case GlmlPackage.IMPORT_STATEMENT: return createImportStatement();
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT: return createDomainSpecificEvent();
+			case GlmlPackage.DOMAIN_SPECIFIC_ACTION: return createDomainSpecificAction();
 			case GlmlPackage.EXTENDED_CCSL_RELATION: return createExtendedCcslRelation();
-			case GlmlPackage.MODEL_SPECIFIC_EVENT: return createModelSpecificEvent();
 			case GlmlPackage.JAVA_SOLVER_RELATION: return createJavaSolverRelation();
+			case GlmlPackage.MODEL_SPECIFIC_EVENT: return createModelSpecificEvent();
+			case GlmlPackage.MODEL_SPECIFIC_ACTION: return createModelSpecificAction();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -92,6 +94,16 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DomainSpecificAction createDomainSpecificAction() {
+		DomainSpecificActionImpl domainSpecificAction = new DomainSpecificActionImpl();
+		return domainSpecificAction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ImportStatement createImportStatement() {
 		ImportStatementImpl importStatement = new ImportStatementImpl();
 		return importStatement;
@@ -115,6 +127,16 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	public ModelSpecificEvent createModelSpecificEvent() {
 		ModelSpecificEventImpl modelSpecificEvent = new ModelSpecificEventImpl();
 		return modelSpecificEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModelSpecificAction createModelSpecificAction() {
+		ModelSpecificActionImpl modelSpecificAction = new ModelSpecificActionImpl();
+		return modelSpecificAction;
 	}
 
 	/**

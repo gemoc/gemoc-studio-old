@@ -1,13 +1,14 @@
 package org.gemoc.execution.engine.commons.dsa;
 
+import glml.ModelSpecificAction;
+import glml.ModelSpecificEvent;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
-import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
 import org.gemoc.gemoc_language_workbench.api.exceptions.InvokationResultConvertionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
@@ -82,7 +83,7 @@ public abstract class BasicEventExecutor implements EventExecutor {
 	@Override
 	public List<FeedbackData> execute(ModelSpecificEvent mse)
 			throws EventExecutionException, InvokationResultConvertionException {
-		return this.execute(mse.getActions());
+		return this.execute(mse.getModelSpecificActions());
 	}
 
 }

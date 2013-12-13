@@ -59,7 +59,6 @@ public class ModelSpecificEventItemProvider
 			super.getPropertyDescriptors(object);
 
 			addReificationPropertyDescriptor(object);
-			addTargetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,28 +86,6 @@ public class ModelSpecificEventItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Target feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTargetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ModelSpecificEvent_target_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModelSpecificEvent_target_feature", "_UI_ModelSpecificEvent_type"),
-				 GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__TARGET,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -121,6 +98,7 @@ public class ModelSpecificEventItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__CONDITION);
+			childrenFeatures.add(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS);
 		}
 		return childrenFeatures;
 	}
@@ -176,6 +154,7 @@ public class ModelSpecificEventItemProvider
 
 		switch (notification.getFeatureID(ModelSpecificEvent.class)) {
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -202,6 +181,11 @@ public class ModelSpecificEventItemProvider
 			(createChildParameter
 				(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__CONDITION,
 				 GlmlFactory.eINSTANCE.createJavaSolverRelation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS,
+				 GlmlFactory.eINSTANCE.createModelSpecificAction()));
 	}
 
 }

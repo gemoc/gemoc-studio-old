@@ -165,61 +165,17 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getDomainSpecificEvent()
 	 * @generated
 	 */
-	int DOMAIN_SPECIFIC_EVENT = 2;
+	int DOMAIN_SPECIFIC_EVENT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The meta object id for the '{@link glml.impl.DomainSpecificActionImpl <em>Domain Specific Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see glml.impl.DomainSpecificActionImpl
+	 * @see glml.impl.GlmlPackageImpl#getDomainSpecificAction()
 	 * @generated
-	 * @ordered
 	 */
-	int DOMAIN_SPECIFIC_EVENT__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Target Class</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN_SPECIFIC_EVENT__TARGET_CLASS = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Operations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN_SPECIFIC_EVENT__OPERATIONS = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN_SPECIFIC_EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Domain Specific Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Domain Specific Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN_SPECIFIC_EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int DOMAIN_SPECIFIC_ACTION = 4;
 
 	/**
 	 * The meta object id for the '{@link glml.impl.ImportStatementImpl <em>Import Statement</em>}' class.
@@ -229,7 +185,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getImportStatement()
 	 * @generated
 	 */
-	int IMPORT_STATEMENT = 3;
+	int IMPORT_STATEMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Import URI</b></em>' attribute list.
@@ -259,6 +215,105 @@ public interface GlmlPackage extends EPackage {
 	int IMPORT_STATEMENT_OPERATION_COUNT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_EVENT__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Domain Specific Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Domain Specific Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Domain Specific Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target Class</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_ACTION__TARGET_CLASS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_ACTION__OPERATION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Parameter Types</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_ACTION__PARAMETER_TYPES = 2;
+
+	/**
+	 * The feature id for the '<em><b>Owning Domain Specific Event</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT = 3;
+
+	/**
+	 * The number of structural features of the '<em>Domain Specific Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_ACTION_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Domain Specific Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_ACTION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link glml.impl.MocRelationImpl <em>Moc Relation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,7 +321,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getMocRelation()
 	 * @generated
 	 */
-	int MOC_RELATION = 4;
+	int MOC_RELATION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
@@ -303,7 +358,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getExtendedCcslRelation()
 	 * @generated
 	 */
-	int EXTENDED_CCSL_RELATION = 5;
+	int EXTENDED_CCSL_RELATION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
@@ -349,61 +404,17 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getModelSpecificEvent()
 	 * @generated
 	 */
-	int MODEL_SPECIFIC_EVENT = 6;
+	int MODEL_SPECIFIC_EVENT = 8;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The meta object id for the '{@link glml.impl.ModelSpecificActionImpl <em>Model Specific Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see glml.impl.ModelSpecificActionImpl
+	 * @see glml.impl.GlmlPackageImpl#getModelSpecificAction()
 	 * @generated
-	 * @ordered
 	 */
-	int MODEL_SPECIFIC_EVENT__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Reification</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_SPECIFIC_EVENT__REIFICATION = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_SPECIFIC_EVENT__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_SPECIFIC_EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Model Specific Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Model Specific Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_SPECIFIC_EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int MODEL_SPECIFIC_ACTION = 9;
 
 	/**
 	 * The meta object id for the '{@link glml.impl.JavaSolverRelationImpl <em>Java Solver Relation</em>}' class.
@@ -450,6 +461,123 @@ public interface GlmlPackage extends EPackage {
 	 * @ordered
 	 */
 	int JAVA_SOLVER_RELATION_OPERATION_COUNT = MOC_RELATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_EVENT__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Reification</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_EVENT__REIFICATION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Model Specific Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Model Specific Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Model Specific Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Reification</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_ACTION__REIFICATION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_ACTION__TARGET = 1;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_ACTION__OPERATION = 2;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_ACTION__PARAMETERS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Owning Model Specific Event</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT = 4;
+
+	/**
+	 * The number of structural features of the '<em>Model Specific Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_ACTION_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Model Specific Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_ACTION_OPERATION_COUNT = 0;
 
 
 	/**
@@ -527,28 +655,6 @@ public interface GlmlPackage extends EPackage {
 	EClass getDomainSpecificEvent();
 
 	/**
-	 * Returns the meta object for the reference '{@link glml.DomainSpecificEvent#getTargetClass <em>Target Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target Class</em>'.
-	 * @see glml.DomainSpecificEvent#getTargetClass()
-	 * @see #getDomainSpecificEvent()
-	 * @generated
-	 */
-	EReference getDomainSpecificEvent_TargetClass();
-
-	/**
-	 * Returns the meta object for the reference list '{@link glml.DomainSpecificEvent#getOperations <em>Operations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Operations</em>'.
-	 * @see glml.DomainSpecificEvent#getOperations()
-	 * @see #getDomainSpecificEvent()
-	 * @generated
-	 */
-	EReference getDomainSpecificEvent_Operations();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link glml.DomainSpecificEvent#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -558,6 +664,71 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDomainSpecificEvent_Condition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link glml.DomainSpecificEvent#getDomainSpecificActions <em>Domain Specific Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Domain Specific Actions</em>'.
+	 * @see glml.DomainSpecificEvent#getDomainSpecificActions()
+	 * @see #getDomainSpecificEvent()
+	 * @generated
+	 */
+	EReference getDomainSpecificEvent_DomainSpecificActions();
+
+	/**
+	 * Returns the meta object for class '{@link glml.DomainSpecificAction <em>Domain Specific Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Domain Specific Action</em>'.
+	 * @see glml.DomainSpecificAction
+	 * @generated
+	 */
+	EClass getDomainSpecificAction();
+
+	/**
+	 * Returns the meta object for the reference '{@link glml.DomainSpecificAction#getTargetClass <em>Target Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target Class</em>'.
+	 * @see glml.DomainSpecificAction#getTargetClass()
+	 * @see #getDomainSpecificAction()
+	 * @generated
+	 */
+	EReference getDomainSpecificAction_TargetClass();
+
+	/**
+	 * Returns the meta object for the reference '{@link glml.DomainSpecificAction#getOperation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Operation</em>'.
+	 * @see glml.DomainSpecificAction#getOperation()
+	 * @see #getDomainSpecificAction()
+	 * @generated
+	 */
+	EReference getDomainSpecificAction_Operation();
+
+	/**
+	 * Returns the meta object for the reference list '{@link glml.DomainSpecificAction#getParameterTypes <em>Parameter Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Parameter Types</em>'.
+	 * @see glml.DomainSpecificAction#getParameterTypes()
+	 * @see #getDomainSpecificAction()
+	 * @generated
+	 */
+	EReference getDomainSpecificAction_ParameterTypes();
+
+	/**
+	 * Returns the meta object for the reference '{@link glml.DomainSpecificAction#getOwningDomainSpecificEvent <em>Owning Domain Specific Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Owning Domain Specific Event</em>'.
+	 * @see glml.DomainSpecificAction#getOwningDomainSpecificEvent()
+	 * @see #getDomainSpecificAction()
+	 * @generated
+	 */
+	EReference getDomainSpecificAction_OwningDomainSpecificEvent();
 
 	/**
 	 * Returns the meta object for class '{@link glml.ImportStatement <em>Import Statement</em>}'.
@@ -644,17 +815,6 @@ public interface GlmlPackage extends EPackage {
 	EReference getModelSpecificEvent_Reification();
 
 	/**
-	 * Returns the meta object for the reference '{@link glml.ModelSpecificEvent#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see glml.ModelSpecificEvent#getTarget()
-	 * @see #getModelSpecificEvent()
-	 * @generated
-	 */
-	EReference getModelSpecificEvent_Target();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -664,6 +824,82 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModelSpecificEvent_Condition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link glml.ModelSpecificEvent#getModelSpecificActions <em>Model Specific Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Model Specific Actions</em>'.
+	 * @see glml.ModelSpecificEvent#getModelSpecificActions()
+	 * @see #getModelSpecificEvent()
+	 * @generated
+	 */
+	EReference getModelSpecificEvent_ModelSpecificActions();
+
+	/**
+	 * Returns the meta object for class '{@link glml.ModelSpecificAction <em>Model Specific Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Model Specific Action</em>'.
+	 * @see glml.ModelSpecificAction
+	 * @generated
+	 */
+	EClass getModelSpecificAction();
+
+	/**
+	 * Returns the meta object for the reference '{@link glml.ModelSpecificAction#getReification <em>Reification</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reification</em>'.
+	 * @see glml.ModelSpecificAction#getReification()
+	 * @see #getModelSpecificAction()
+	 * @generated
+	 */
+	EReference getModelSpecificAction_Reification();
+
+	/**
+	 * Returns the meta object for the reference '{@link glml.ModelSpecificAction#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see glml.ModelSpecificAction#getTarget()
+	 * @see #getModelSpecificAction()
+	 * @generated
+	 */
+	EReference getModelSpecificAction_Target();
+
+	/**
+	 * Returns the meta object for the reference '{@link glml.ModelSpecificAction#getOperation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Operation</em>'.
+	 * @see glml.ModelSpecificAction#getOperation()
+	 * @see #getModelSpecificAction()
+	 * @generated
+	 */
+	EReference getModelSpecificAction_Operation();
+
+	/**
+	 * Returns the meta object for the reference list '{@link glml.ModelSpecificAction#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Parameters</em>'.
+	 * @see glml.ModelSpecificAction#getParameters()
+	 * @see #getModelSpecificAction()
+	 * @generated
+	 */
+	EReference getModelSpecificAction_Parameters();
+
+	/**
+	 * Returns the meta object for the reference '{@link glml.ModelSpecificAction#getOwningModelSpecificEvent <em>Owning Model Specific Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Owning Model Specific Event</em>'.
+	 * @see glml.ModelSpecificAction#getOwningModelSpecificEvent()
+	 * @see #getModelSpecificAction()
+	 * @generated
+	 */
+	EReference getModelSpecificAction_OwningModelSpecificEvent();
 
 	/**
 	 * Returns the meta object for class '{@link glml.JavaSolverRelation <em>Java Solver Relation</em>}'.
@@ -772,28 +1008,62 @@ public interface GlmlPackage extends EPackage {
 		EClass DOMAIN_SPECIFIC_EVENT = eINSTANCE.getDomainSpecificEvent();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Class</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOMAIN_SPECIFIC_EVENT__TARGET_CLASS = eINSTANCE.getDomainSpecificEvent_TargetClass();
-
-		/**
-		 * The meta object literal for the '<em><b>Operations</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOMAIN_SPECIFIC_EVENT__OPERATIONS = eINSTANCE.getDomainSpecificEvent_Operations();
-
-		/**
 		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference DOMAIN_SPECIFIC_EVENT__CONDITION = eINSTANCE.getDomainSpecificEvent_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain Specific Actions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS = eINSTANCE.getDomainSpecificEvent_DomainSpecificActions();
+
+		/**
+		 * The meta object literal for the '{@link glml.impl.DomainSpecificActionImpl <em>Domain Specific Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glml.impl.DomainSpecificActionImpl
+		 * @see glml.impl.GlmlPackageImpl#getDomainSpecificAction()
+		 * @generated
+		 */
+		EClass DOMAIN_SPECIFIC_ACTION = eINSTANCE.getDomainSpecificAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Class</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SPECIFIC_ACTION__TARGET_CLASS = eINSTANCE.getDomainSpecificAction_TargetClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SPECIFIC_ACTION__OPERATION = eINSTANCE.getDomainSpecificAction_Operation();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter Types</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SPECIFIC_ACTION__PARAMETER_TYPES = eINSTANCE.getDomainSpecificAction_ParameterTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Owning Domain Specific Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT = eINSTANCE.getDomainSpecificAction_OwningDomainSpecificEvent();
 
 		/**
 		 * The meta object literal for the '{@link glml.impl.ImportStatementImpl <em>Import Statement</em>}' class.
@@ -868,20 +1138,70 @@ public interface GlmlPackage extends EPackage {
 		EReference MODEL_SPECIFIC_EVENT__REIFICATION = eINSTANCE.getModelSpecificEvent_Reification();
 
 		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL_SPECIFIC_EVENT__TARGET = eINSTANCE.getModelSpecificEvent_Target();
-
-		/**
 		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference MODEL_SPECIFIC_EVENT__CONDITION = eINSTANCE.getModelSpecificEvent_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Specific Actions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS = eINSTANCE.getModelSpecificEvent_ModelSpecificActions();
+
+		/**
+		 * The meta object literal for the '{@link glml.impl.ModelSpecificActionImpl <em>Model Specific Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glml.impl.ModelSpecificActionImpl
+		 * @see glml.impl.GlmlPackageImpl#getModelSpecificAction()
+		 * @generated
+		 */
+		EClass MODEL_SPECIFIC_ACTION = eINSTANCE.getModelSpecificAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Reification</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_SPECIFIC_ACTION__REIFICATION = eINSTANCE.getModelSpecificAction_Reification();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_SPECIFIC_ACTION__TARGET = eINSTANCE.getModelSpecificAction_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_SPECIFIC_ACTION__OPERATION = eINSTANCE.getModelSpecificAction_Operation();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameters</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_SPECIFIC_ACTION__PARAMETERS = eINSTANCE.getModelSpecificAction_Parameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Owning Model Specific Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT = eINSTANCE.getModelSpecificAction_OwningModelSpecificEvent();
 
 		/**
 		 * The meta object literal for the '{@link glml.impl.JavaSolverRelationImpl <em>Java Solver Relation</em>}' class.

@@ -2,13 +2,16 @@ package org.gemoc.execution.javasolver.core;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import javasolverinput.Clock;
 import javasolverinput.JavaSolverInputFile;
 import javasolverinput.JavasolverinputPackage;
-import javasolverinput.Precedes;
-import javasolverinput.Relation;
+import javasolverinput.usage.Clock;
+import javasolverinput.usage.Constraint;
+import javasolverinput.usage.CustomConstraint;
+import javasolverinput.usage.Once;
+import javasolverinput.usage.Precedes;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -23,7 +26,6 @@ import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
-import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.TraceFactory;
 
@@ -31,7 +33,7 @@ public class JavaSolver implements Solver {
 
 	private Collection<Clock> clocks;
 	private Map<Clock, Map<Integer, Boolean>> trace;
-	private Collection<Relation> constraints;
+	private Collection<Constraint> constraints;
 	private String inputName;
 	private TraceFactory myFactory = null;
 
@@ -50,26 +52,65 @@ public class JavaSolver implements Solver {
 		throw new UnsupportedOperationException();
 	}
 
-	private Boolean isTicking(Clock clock) {
+	private Boolean isTicking(Clock clock, Collection<Constraint> constraints) {
 		Boolean res = null;
-		for (Relation relation : this.constraints) {
-			if (relation instanceof Precedes) {
-				if (((Precedes) relation).getClock1().equals(clock)) {
-					res = true;
-				} else if (((Precedes) relation).getClock2().equals(clock)) {
-					Integer n1 = this.getNumberOfTicks(((Precedes) relation)
-							.getClock1());
-					Integer n2 = this.getNumberOfTicks(clock);
-					if (n1 >= n2) {
+		for (Constraint constraint : constraints) {
+			if (constraint instanceof Precedes) {
+				if (constraint.getArguments().size() != 2) {
+					throw new UnsupportedOperationException(
+							"Constraint Precedes should have two and only two arguments");
+				} else {
+					List<EObject> arguments = constraint.getArguments();
+					for (EObject eo : arguments) {
+						if (!(eo instanceof Clock)) {
+							throw new UnsupportedOperationException(
+									"Constraint Precedes arguments should be clocks");
+						}
+					}
+					Clock c1 = (Clock) arguments.get(0);
+					Clock c2 = (Clock) arguments.get(1);
+
+					if (c1.equals(clock)) {
 						res = true;
-					} else {
-						res = false;
+					} else if (c2.equals(clock)) {
+						Integer n1 = this.getNumberOfTicks(c1);
+						Integer n2 = this.getNumberOfTicks(clock);
+						res = n1 >= n2;
 					}
 				}
+			} else if (constraint instanceof Once) {
+				if (constraint.getArguments().size() != 1) {
+					throw new UnsupportedOperationException(
+							"Constraint Once should have one and only one argument");
+				} else {
+					List<EObject> arguments = constraint.getArguments();
+					for (EObject eo : arguments) {
+						if (!(eo instanceof Clock)) {
+							throw new UnsupportedOperationException(
+									"Constraint Once arguments should be a clock");
+						}
+					}
+					Clock c = (Clock) arguments.get(0);
+
+					if (c.equals(clock)) {
+						res = this.getNumberOfTicks(clock) == 0;
+					}
+				}
+			} else if (constraint instanceof CustomConstraint) {
+				res = res
+						&& this.isTicking(clock,
+								((CustomConstraint) constraint).getType()
+										.getDefinition().getConstraints());
 			} else {
 				throw new RuntimeException("Impossible relation.");
 			}
 		}
+		return res;
+	}
+
+	private Boolean isTickingAndRegister(Clock clock,
+			Collection<Constraint> constraints) {
+		Boolean res = this.isTicking(clock, constraints);
 		Map<Integer, Boolean> map = this.trace.get(clock);
 		map.put(this.getLastIndex(clock) + 1, res);
 		return res;
@@ -100,7 +141,7 @@ public class JavaSolver implements Solver {
 	public LogicalStep getNextStep() {
 		LogicalStep res = myFactory.createLogicalStep();
 		for (Clock clock : this.clocks) {
-			if (this.isTicking(clock)) {
+			if (this.isTickingAndRegister(clock, this.constraints)) {
 				res.getEventOccurrences().add(
 						this.createEventOccurrenceFromClock(clock));
 			}
@@ -132,19 +173,19 @@ public class JavaSolver implements Solver {
 	public void setSolverInputFile(URI modelOfExecutionURI) {
 		ResourceSet resSet = new ResourceSetImpl();
 		resSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("xmi", new XMIResourceFactoryImpl());
+				.put("javasolverinput", new XMIResourceFactoryImpl());
 		JavasolverinputPackage.eINSTANCE.eClass();
 
 		// Resource resource = resSet.getResource(modelOfExecutionURI, true);
 		Resource resource = resSet
 				.getResource(
-						URI.createFileURI("/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/execution/engine/org.gemoc.execution.javasolver.input/model/Example.xmi"),
+						URI.createFileURI("/home/flatombe/thesis/gemoc/git/gemoc-dev/org/gemoc/sample/tfsm_k3/org.gemoc.sample.tfsm.instances/TrafficControl/test/MySolverInput.javasolverinput"),
 						true);
 
 		JavaSolverInputFile input = (JavaSolverInputFile) resource
 				.getContents().get(0);
 
-		this.clocks = input.getClocks();
+		this.clocks = input.getClockDeclarations();
 		this.constraints = input.getConstraints();
 		this.inputName = input.getName();
 

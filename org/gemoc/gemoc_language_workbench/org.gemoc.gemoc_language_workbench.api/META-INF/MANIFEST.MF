@@ -9,13 +9,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore,
  fr.inria.aoste.trace;bundle-version="1.0.1",
  org.kermeta.utils.systemservices.api,
- org.kermeta.utils.systemservices.eclipse
+ org.kermeta.utils.systemservices.eclipse,
+ org.gemoc.dse_language.language_level;bundle-version="1.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.gemoc_language_workbench.api.core,
  org.gemoc.gemoc_language_workbench.api.dsa,
- org.gemoc.gemoc_language_workbench.api.dse,
  org.gemoc.gemoc_language_workbench.api.exceptions,
  org.gemoc.gemoc_language_workbench.api.feedback,
  org.gemoc.gemoc_language_workbench.api.moc,

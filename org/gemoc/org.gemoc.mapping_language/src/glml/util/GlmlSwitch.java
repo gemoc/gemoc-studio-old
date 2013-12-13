@@ -79,6 +79,12 @@ public class GlmlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case GlmlPackage.IMPORT_STATEMENT: {
+				ImportStatement importStatement = (ImportStatement)theEObject;
+				T result = caseImportStatement(importStatement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT: {
 				DomainSpecificEvent domainSpecificEvent = (DomainSpecificEvent)theEObject;
 				T result = caseDomainSpecificEvent(domainSpecificEvent);
@@ -86,9 +92,9 @@ public class GlmlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case GlmlPackage.IMPORT_STATEMENT: {
-				ImportStatement importStatement = (ImportStatement)theEObject;
-				T result = caseImportStatement(importStatement);
+			case GlmlPackage.DOMAIN_SPECIFIC_ACTION: {
+				DomainSpecificAction domainSpecificAction = (DomainSpecificAction)theEObject;
+				T result = caseDomainSpecificAction(domainSpecificAction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -105,6 +111,13 @@ public class GlmlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case GlmlPackage.JAVA_SOLVER_RELATION: {
+				JavaSolverRelation javaSolverRelation = (JavaSolverRelation)theEObject;
+				T result = caseJavaSolverRelation(javaSolverRelation);
+				if (result == null) result = caseMocRelation(javaSolverRelation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case GlmlPackage.MODEL_SPECIFIC_EVENT: {
 				ModelSpecificEvent modelSpecificEvent = (ModelSpecificEvent)theEObject;
 				T result = caseModelSpecificEvent(modelSpecificEvent);
@@ -112,10 +125,9 @@ public class GlmlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case GlmlPackage.JAVA_SOLVER_RELATION: {
-				JavaSolverRelation javaSolverRelation = (JavaSolverRelation)theEObject;
-				T result = caseJavaSolverRelation(javaSolverRelation);
-				if (result == null) result = caseMocRelation(javaSolverRelation);
+			case GlmlPackage.MODEL_SPECIFIC_ACTION: {
+				ModelSpecificAction modelSpecificAction = (ModelSpecificAction)theEObject;
+				T result = caseModelSpecificAction(modelSpecificAction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -165,6 +177,21 @@ public class GlmlSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDomainSpecificEvent(DomainSpecificEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Domain Specific Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Domain Specific Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDomainSpecificAction(DomainSpecificAction object) {
 		return null;
 	}
 
@@ -225,6 +252,21 @@ public class GlmlSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseModelSpecificEvent(ModelSpecificEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Specific Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Specific Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelSpecificAction(ModelSpecificAction object) {
 		return null;
 	}
 

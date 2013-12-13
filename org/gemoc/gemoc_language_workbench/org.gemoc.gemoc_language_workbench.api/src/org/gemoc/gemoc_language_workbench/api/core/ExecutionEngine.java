@@ -1,11 +1,11 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
+import glml.ModelSpecificEvent;
+
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
-
-import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 /**

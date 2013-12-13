@@ -1,8 +1,10 @@
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
+import glml.ModelSpecificAction;
+import glml.ModelSpecificEvent;
+
 import java.util.List;
 
-import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
 import org.gemoc.gemoc_language_workbench.api.exceptions.InvokationResultConvertionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;

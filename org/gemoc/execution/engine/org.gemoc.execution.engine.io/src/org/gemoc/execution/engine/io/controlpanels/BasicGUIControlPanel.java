@@ -1,5 +1,11 @@
 package org.gemoc.execution.engine.io.controlpanels;
 
+import glml.ModelSpecificEvent;
+
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,12 +16,6 @@ import javax.swing.JPanel;
 
 import org.gemoc.execution.engine.io.ControlPanel;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
-
-import java.awt.ComponentOrientation;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * A basic example of a GUI implementing ControlPanel and giving order to the

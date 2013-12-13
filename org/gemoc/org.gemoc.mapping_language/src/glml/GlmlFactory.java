@@ -40,6 +40,15 @@ public interface GlmlFactory extends EFactory {
 	DomainSpecificEvent createDomainSpecificEvent();
 
 	/**
+	 * Returns a new object of class '<em>Domain Specific Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain Specific Action</em>'.
+	 * @generated
+	 */
+	DomainSpecificAction createDomainSpecificAction();
+
+	/**
 	 * Returns a new object of class '<em>Import Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +74,15 @@ public interface GlmlFactory extends EFactory {
 	 * @generated
 	 */
 	ModelSpecificEvent createModelSpecificEvent();
+
+	/**
+	 * Returns a new object of class '<em>Model Specific Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model Specific Action</em>'.
+	 * @generated
+	 */
+	ModelSpecificAction createModelSpecificAction();
 
 	/**
 	 * Returns a new object of class '<em>Java Solver Relation</em>'.

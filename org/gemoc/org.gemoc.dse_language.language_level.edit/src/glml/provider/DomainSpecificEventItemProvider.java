@@ -14,7 +14,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -58,54 +57,8 @@ public class DomainSpecificEventItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTargetClassPropertyDescriptor(object);
-			addOperationsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Target Class feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTargetClassPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DomainSpecificEvent_targetClass_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DomainSpecificEvent_targetClass_feature", "_UI_DomainSpecificEvent_type"),
-				 GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__TARGET_CLASS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Operations feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOperationsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DomainSpecificEvent_operations_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DomainSpecificEvent_operations_feature", "_UI_DomainSpecificEvent_type"),
-				 GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__OPERATIONS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -121,6 +74,7 @@ public class DomainSpecificEventItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION);
+			childrenFeatures.add(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS);
 		}
 		return childrenFeatures;
 	}
@@ -176,6 +130,7 @@ public class DomainSpecificEventItemProvider
 
 		switch (notification.getFeatureID(DomainSpecificEvent.class)) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -202,6 +157,11 @@ public class DomainSpecificEventItemProvider
 			(createChildParameter
 				(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION,
 				 GlmlFactory.eINSTANCE.createJavaSolverRelation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS,
+				 GlmlFactory.eINSTANCE.createDomainSpecificAction()));
 	}
 
 }

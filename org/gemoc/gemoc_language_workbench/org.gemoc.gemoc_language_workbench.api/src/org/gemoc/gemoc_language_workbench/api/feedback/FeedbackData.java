@@ -1,7 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.feedback;
 
-import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
-import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
+import glml.ModelSpecificAction;
+import glml.ModelSpecificEvent;
 
 /**
  * FeedbackData is the format of the data returned by the Domain-Specific

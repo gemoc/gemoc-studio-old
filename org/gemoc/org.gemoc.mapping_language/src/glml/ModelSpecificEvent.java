@@ -2,7 +2,7 @@
  */
 package glml;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link glml.ModelSpecificEvent#getReification <em>Reification</em>}</li>
- *   <li>{@link glml.ModelSpecificEvent#getTarget <em>Target</em>}</li>
  *   <li>{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}</li>
+ *   <li>{@link glml.ModelSpecificEvent#getModelSpecificActions <em>Model Specific Actions</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,32 +50,6 @@ public interface ModelSpecificEvent extends NamedElement {
 	void setReification(DomainSpecificEvent value);
 
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Target</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(EObject)
-	 * @see glml.GlmlPackage#getModelSpecificEvent_Target()
-	 * @model required="true"
-	 * @generated
-	 */
-	EObject getTarget();
-
-	/**
-	 * Sets the value of the '{@link glml.ModelSpecificEvent#getTarget <em>Target</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target</em>' reference.
-	 * @see #getTarget()
-	 * @generated
-	 */
-	void setTarget(EObject value);
-
-	/**
 	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -100,5 +74,21 @@ public interface ModelSpecificEvent extends NamedElement {
 	 * @generated
 	 */
 	void setCondition(MocRelation value);
+
+	/**
+	 * Returns the value of the '<em><b>Model Specific Actions</b></em>' containment reference list.
+	 * The list contents are of type {@link glml.ModelSpecificAction}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Model Specific Actions</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Model Specific Actions</em>' containment reference list.
+	 * @see glml.GlmlPackage#getModelSpecificEvent_ModelSpecificActions()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ModelSpecificAction> getModelSpecificActions();
 
 } // ModelSpecificEvent

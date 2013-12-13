@@ -1,7 +1,8 @@
 package org.gemoc.execution.engine.commons.feedback;
 
-import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
-import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
+import glml.ModelSpecificAction;
+import glml.ModelSpecificEvent;
+
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 /**
@@ -34,6 +35,6 @@ public class ObjectFeedbackData implements FeedbackData {
 
 	@Override
 	public ModelSpecificEvent getCausalEvent() {
-		return this.causalAction.getOwningEvent();
+		return this.causalAction.getOwningModelSpecificEvent();
 	}
 }

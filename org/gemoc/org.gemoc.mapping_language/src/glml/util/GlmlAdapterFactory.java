@@ -76,12 +76,16 @@ public class GlmlAdapterFactory extends AdapterFactoryImpl {
 				return createNamedElementAdapter();
 			}
 			@Override
+			public Adapter caseImportStatement(ImportStatement object) {
+				return createImportStatementAdapter();
+			}
+			@Override
 			public Adapter caseDomainSpecificEvent(DomainSpecificEvent object) {
 				return createDomainSpecificEventAdapter();
 			}
 			@Override
-			public Adapter caseImportStatement(ImportStatement object) {
-				return createImportStatementAdapter();
+			public Adapter caseDomainSpecificAction(DomainSpecificAction object) {
+				return createDomainSpecificActionAdapter();
 			}
 			@Override
 			public Adapter caseMocRelation(MocRelation object) {
@@ -92,12 +96,16 @@ public class GlmlAdapterFactory extends AdapterFactoryImpl {
 				return createExtendedCcslRelationAdapter();
 			}
 			@Override
+			public Adapter caseJavaSolverRelation(JavaSolverRelation object) {
+				return createJavaSolverRelationAdapter();
+			}
+			@Override
 			public Adapter caseModelSpecificEvent(ModelSpecificEvent object) {
 				return createModelSpecificEventAdapter();
 			}
 			@Override
-			public Adapter caseJavaSolverRelation(JavaSolverRelation object) {
-				return createJavaSolverRelationAdapter();
+			public Adapter caseModelSpecificAction(ModelSpecificAction object) {
+				return createModelSpecificActionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -162,6 +170,20 @@ public class GlmlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link glml.DomainSpecificAction <em>Domain Specific Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see glml.DomainSpecificAction
+	 * @generated
+	 */
+	public Adapter createDomainSpecificActionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link glml.ImportStatement <em>Import Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -214,6 +236,20 @@ public class GlmlAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelSpecificEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link glml.ModelSpecificAction <em>Model Specific Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see glml.ModelSpecificAction
+	 * @generated
+	 */
+	public Adapter createModelSpecificActionAdapter() {
 		return null;
 	}
 
