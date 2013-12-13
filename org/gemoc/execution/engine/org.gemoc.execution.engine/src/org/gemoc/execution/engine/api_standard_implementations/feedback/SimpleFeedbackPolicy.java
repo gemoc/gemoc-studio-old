@@ -11,7 +11,9 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 
 /**
- * A simple interpretation of all the Java primitive types...
+ * A simple interpretation of all the Java primitive types. Ideally we should
+ * use this whenever a language does not specify any FeedbackPolicy. Could help
+ * debug the execution.
  * 
  * @author flatombe
  */

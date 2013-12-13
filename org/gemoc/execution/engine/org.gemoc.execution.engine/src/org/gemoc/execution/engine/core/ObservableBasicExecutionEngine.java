@@ -1,8 +1,15 @@
 package org.gemoc.execution.engine.core;
 
+import fr.inria.aoste.trace.LogicalStep;
+import glml.DomainSpecificEvent;
+import glml.DomainSpecificEventFile;
+import glml.ModelSpecificEvent;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 
 import org.eclipse.core.runtime.ISafeRunnable;
@@ -14,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
@@ -23,14 +31,27 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
-import fr.inria.aoste.trace.LogicalStep;
-import glml.DomainSpecificEvent;
-import glml.ModelSpecificEvent;
-
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
  * technologies used for the solver, the executor and the feedback protocol. It
  * can display the runtime execution information to its registered observers.
+ * 
+ * There are two phases of initializations for this entity:
+ * <ul>
+ * <li>the constructor sets the language-specific elements such as
+ * DomainSpecificEvents, Solver, EventExecutor, FeedbackPolicy
+ * <li>the initialize method sets the model-specific elements such as Model and
+ * ModelLoader.
+ * </ul>
+ * From the Model, we can derive :
+ * <ul>
+ * <li>the Model of Execution (using the DomainSpecificEvents
+ * <li>the Higher-order-transformation (TODO)) and the Solver Input (using the
+ * Model of Execution and the Solver Input Builder provided by the Solver).
+ * </ul>
+ * 
+ * @see ExecutionEngine
+ * @see GemocExecutionEngine
  * 
  * @author flatombe
  * 
@@ -38,22 +59,50 @@ import glml.ModelSpecificEvent;
 public abstract class ObservableBasicExecutionEngine extends Observable
 		implements ExecutionEngine {
 
+	/**
+	 * Given at the model-level initialization.
+	 */
 	protected ModelLoader modelLoader = null;
+	protected Resource modelResource = null;
+
+	/**
+	 * Derived from the above model-specific elements
+	 */
+	protected String modelStringURI = null;
+
+	/**
+	 * Given at the language-level initialization.
+	 */
 	protected Solver solver = null;
 	protected EventExecutor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
 	protected Resource domainSpecificEventsResource = null;
 
-	protected Resource modelResource = null;
-	protected String modelStringURI = null;
+	/**
+	 * Derived from the above language-specific elements
+	 */
+	protected Map<String, DomainSpecificEvent> domainSpecificEventsRegistry = null;
 
-	protected List<DomainSpecificEvent> domainSpecificEvents = null;
-
+	/**
+	 * The constructor takes in all the language-specific elements. Creates the
+	 * internal map of Domain-Specific Events and initializes the languages used
+	 * for execution.
+	 * 
+	 * @param domainSpecificEventsResource
+	 *            cannot be null
+	 * @param solver
+	 *            cannot be null
+	 * @param executor
+	 *            cannot be null
+	 * @param feedbackPolicy
+	 *            can be null (for now).
+	 */
 	public ObservableBasicExecutionEngine(
 			Resource domainSpecificEventsResource, Solver solver,
 			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 
-		// TODO : REMOVE ME
+		// TODO : REMOVE ME. This is a temporary fix because I can't get an ECL
+		// resource to be correctly detected...
 		if (domainSpecificEventsResource == null) {
 			ResourceSet resSet = new ResourceSetImpl();
 			domainSpecificEventsResource = resSet
@@ -66,6 +115,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				.getMessagingSystem()
 				.info("Verifying input before instanciating ObservableBasicExecutionEngine...",
 						Activator.PLUGIN_ID);
+
 		// The engine needs AT LEAST a domainSpecificEventsResource, a Solver,
 		// an EventExecutor.
 		if (domainSpecificEventsResource == null | solver == null
@@ -116,7 +166,28 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			this.solver = solver;
 			this.executor = executor;
 			this.executor.initialize();
+
+			this.domainSpecificEventsRegistry = this
+					.createDomainSpecificEventsRegistry(this.domainSpecificEventsResource);
 		}
+	}
+
+	/**
+	 * Returns a map with Domain-Specific Events names as keys and the
+	 * Domain-Specific Events as values.
+	 * 
+	 * @param domainSpecificEventsResource
+	 * @return
+	 */
+	private Map<String, DomainSpecificEvent> createDomainSpecificEventsRegistry(
+			Resource domainSpecificEventsResource) {
+		Map<String, DomainSpecificEvent> res = new HashMap<String, DomainSpecificEvent>();
+		DomainSpecificEventFile dseFile = (DomainSpecificEventFile) domainSpecificEventsResource
+				.getContents().get(0);
+		for (DomainSpecificEvent dse : dseFile.getLanguageEvents()) {
+			res.put(dse.getName(), dse);
+		}
+		return res;
 	}
 
 	@Override
@@ -128,9 +199,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	/**
 	 * Instantiates a Collection of Model-Specific Events depending on which
 	 * event occurrences are in the Step returned by the Solver.
-	 * 
-	 * Depends on the implementation used for the Solver, Step and Domain
-	 * Specific Event.
 	 * 
 	 * @param step
 	 * @return
@@ -188,6 +256,12 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		return events;
 	}
 
+	/**
+	 * One step of execution corresponding to the execution of the given
+	 * Model-Specific Event.
+	 * 
+	 * @param mse
+	 */
 	private void doOneStep(ModelSpecificEvent mse) {
 		Collection<ModelSpecificEvent> events;
 		if (mse != null) {

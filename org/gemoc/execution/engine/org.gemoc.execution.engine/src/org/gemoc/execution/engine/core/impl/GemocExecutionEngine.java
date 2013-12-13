@@ -6,7 +6,6 @@ import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.Reference;
-import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
 import glml.ModelSpecificEvent;
 
@@ -26,31 +25,55 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+/**
+ * Implementation of the GEMOC Execution Engine. In particular, it is more
+ * concerned about the model-specific elements such as the modelLoader and the
+ * modelResource used for an execution.
+ * 
+ * 
+ * @see ExecutionEngine
+ * @see ObservableBasicExecutionEngine
+ * 
+ * @author flatombe
+ * 
+ */
 public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
+	/**
+	 * Derived from the language-specific elements using the loaded model.
+	 */
+	private Resource modelOfExecution = null;
 	private Map<String, ModelSpecificEvent> mseRegistry = null;
 	private Resource solverInput = null;
-	private Resource modelOfExecution = null;
 
+	/**
+	 * Delegated to the abstract class, for the language-level instantiation of
+	 * the engine.
+	 * 
+	 * @see ObservableBasicExecutionEngine
+	 * @param domainSpecificEventsResource
+	 *            the resource containing the DomainSpecificEvents of the
+	 *            language.
+	 * @param solver
+	 *            the solver corresponding to the MoC used by the xDSML.
+	 * @param executor
+	 *            the executor, able to execute code compiled from the language
+	 *            used for the RTD/DSAs.
+	 * @param feedbackPolicy
+	 *            interprets the results from the DSAs to influence the
+	 *            Solver/MoC.
+	 */
 	public GemocExecutionEngine(Resource domainSpecificEventsResource,
 			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 		super(domainSpecificEventsResource, solver, executor, feedbackPolicy);
-
-		memorizeDomainSpecificEvents();
-
 		Activator.getMessagingSystem().info(
 				"*** Engine construction done. ***", Activator.PLUGIN_ID);
-	}
-
-	private void memorizeDomainSpecificEvents() {
-		this.domainSpecificEvents = new ArrayList<DomainSpecificEvent>();
-		// TODO : parse DSE file to fill in the DSE/DSA information read
-
 	}
 
 	@Override
@@ -95,7 +118,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 					"Model was successfully loaded: "
 							+ modelResource.toString(), Activator.PLUGIN_ID);
 
-			// Invoke the transformation that creates the model of execution
+			// TODO: Invoke the transformation that creates the model of
+			// execution
 			// from the DSEs.
 			this.modelOfExecution = new ResourceSetImpl()
 					.getResource(
@@ -111,7 +135,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				this.solverInput = solverInput;
 
 			} catch (UnsupportedOperationException e) {
-				//String solverInputFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
+				// String solverInputFilePath =
+				// "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
 				String solverInputFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test/MySolverInput.javasolverinput";
 				this.solverInput = new ResourceSetImpl().getResource(URI
 						.createPlatformResourceURI(solverInputFilePath, true),
@@ -127,13 +152,13 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		}
 	}
 
-	@Override
-	public void reset() {
-		this.solver.setSolverInputFile(this.solverInput.getURI());
-		this.setChanged();
-		this.notifyObservers(">Reset!");
-	}
-
+	/**
+	 * Builds a map with, as keys, the names of the ModelSpecificEvents, as
+	 * values, the ModelSpecificEvents.
+	 * 
+	 * @param modelOfExecution
+	 * @return the registry of ModelSpecificEvents based on their names.
+	 */
 	private Map<String, ModelSpecificEvent> buildModelSpecificEventsRegistry(
 			Resource modelOfExecution) {
 		Map<String, ModelSpecificEvent> res = new HashMap<String, ModelSpecificEvent>();
@@ -143,6 +168,13 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			res.put(mse.getName(), mse);
 		}
 		return res;
+	}
+
+	@Override
+	public void reset() {
+		this.solver.setSolverInputFile(this.solverInput.getURI());
+		this.setChanged();
+		this.notifyObservers(">Reset!");
 	}
 
 	// TODO : this method will change when we change the DSE language.
@@ -201,6 +233,23 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		return res;
 	}
 
+	/**
+	 * All 5 methods below are a hack needed at some point to retrieve the
+	 * EObject from a qualified name.
+	 */
+
+	/**
+	 * Hack to retrieve an EObject from its qualified name...
+	 * 
+	 * @param modelResource
+	 * @param qualifiedName
+	 * @return
+	 * @throws SecurityException
+	 * @throws IllegalArgumentException
+	 * @throws NoSuchMethodException
+	 * @throws IllegalAccessException
+	 * @throws InvocationTargetException
+	 */
 	public EObject getEObjectFromQualifiedName(Resource modelResource,
 			String qualifiedName) throws SecurityException,
 			IllegalArgumentException, NoSuchMethodException,
@@ -217,6 +266,12 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		return res;
 	}
 
+	/**
+	 * Part of the hack to get an EObject from its qualified name.
+	 * 
+	 * @param reference
+	 * @return
+	 */
 	private EObject getEObjectFromReference(Reference reference) {
 
 		EList<EObject> elements = ((ModelElementReference) reference)
@@ -284,6 +339,12 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		}
 	}
 
+	/**
+	 * Part of the hack to get an EObject from its qualified name.
+	 * 
+	 * @param eo
+	 * @return
+	 */
 	private String getQualifiedName(EObject eo) {
 		String res = getSimpleName(eo);
 		EObject tmp = eo.eContainer();
@@ -294,10 +355,22 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		return res;
 	}
 
+	/**
+	 * Part of the hack to get an EObject from its qualified name.
+	 * 
+	 * @param eo
+	 * @return
+	 */
 	private String getSimpleName(EObject eo) {
 		return this.invokeGetNameOnEObject(eo);
 	}
 
+	/**
+	 * Part of the hack to get an EObject from its qualified name.
+	 * 
+	 * @param eObjectMethod
+	 * @return
+	 */
 	private String invokeGetNameOnEObject(EObject eObjectMethod) {
 		Method method;
 		try {
