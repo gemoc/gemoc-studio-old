@@ -26,10 +26,20 @@ public interface EventExecutor {
 	public void initialize();
 
 	/**
-	 * Executes the Domain-Specific Action.
+	 * Executes the Model-Specific Action. Typically, will delegate to its
+	 * CodeExecutor the task to locate in the bytecode the method corresponding
+	 * to the referenced EOperation and its invokation. Then the result is
+	 * converted into a FeedbackData that can be interpreted by the
+	 * FeedbackPolicy.
 	 * 
 	 * @param msa
-	 * @return
+	 *            the ModelSpecificAction to execute.
+	 * @exception EventExecutionException
+	 *                if there has been any problem locating the method or the
+	 *                object or during the execution of the method. The source
+	 *                exception is wrapped.
+	 * @return the FeedbackData representing the result of the
+	 *         ModelSpecificAction execution.
 	 */
 	public FeedbackData execute(ModelSpecificAction msa)
 			throws EventExecutionException, InvokationResultConvertionException;

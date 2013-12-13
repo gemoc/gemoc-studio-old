@@ -1,8 +1,8 @@
 package org.gemoc.gemoc_language_workbench.api.exceptions;
 
 /**
- * Exception that indicates an issue during the execution of a Domain/Model
- * -Specific Event.
+ * Exception that indicates an issue during the convertion into a FeedbackData
+ * of the result of the execution of a Model-Specific Action.
  * 
  * @author flatombe
  * 

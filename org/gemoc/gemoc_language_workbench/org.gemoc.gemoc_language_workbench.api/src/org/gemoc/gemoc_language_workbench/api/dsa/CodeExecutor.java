@@ -17,9 +17,17 @@ public interface CodeExecutor {
 	 * method of name methodName on the object target with the given parameters.
 	 * 
 	 * @param target
+	 *            object targeted by the method call.
 	 * @param methodName
+	 *            name of the method called.
 	 * @param parameters
-	 * @return
+	 *            parameters of the method called.
+	 * @exception NoSuchMethodException
+	 *                if a method of the given name cannot be found.
+	 * @exception IllegalArgumentException
+	 *                if the arguments given for this method call are not
+	 *                correct.
+	 * @return an object MethodCall representing a method call.
 	 */
 	public MethodCall getMethodCall(Object target, String methodName,
 			List<Object> parameters) throws NoSuchMethodException,
@@ -32,10 +40,14 @@ public interface CodeExecutor {
 	 * method.
 	 * 
 	 * @param target
+	 *            object on which to call the method.
 	 * @param methodName
+	 *            name of the method to call.
 	 * @param parameters
+	 *            arguments of the method to call.
 	 * @throws MethodNotFoundException
-	 * @return
+	 *             if a method of the given name cannot be found.
+	 * @return the result of the method call.
 	 */
 	public Object invoke(Object target, String methodName,
 			List<Object> parameters) throws NoSuchMethodException,
