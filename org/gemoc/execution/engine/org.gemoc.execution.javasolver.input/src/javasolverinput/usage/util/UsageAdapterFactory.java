@@ -94,6 +94,10 @@ public class UsageAdapterFactory extends AdapterFactoryImpl {
 				return createConstraintAdapter();
 			}
 			@Override
+			public Adapter caseWaitUntil(WaitUntil object) {
+				return createWaitUntilAdapter();
+			}
+			@Override
 			public Adapter caseNamedElement(NamedElement object) {
 				return createNamedElementAdapter();
 			}
@@ -198,6 +202,20 @@ public class UsageAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link javasolverinput.usage.WaitUntil <em>Wait Until</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see javasolverinput.usage.WaitUntil
+	 * @generated
+	 */
+	public Adapter createWaitUntilAdapter() {
 		return null;
 	}
 

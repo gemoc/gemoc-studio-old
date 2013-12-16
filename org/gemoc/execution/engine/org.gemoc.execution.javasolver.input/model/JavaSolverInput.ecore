@@ -44,5 +44,9 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
           eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WaitUntil" eSuperTypes="#//usage/BootstrappedConstraint">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

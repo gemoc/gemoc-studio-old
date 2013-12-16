@@ -164,6 +164,11 @@ public class RelationDefinitionItemProvider
 			(createChildParameter
 				(CreationPackage.Literals.RELATION_DEFINITION__CONSTRAINTS,
 				 UsageFactory.eINSTANCE.createPrecedes()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CreationPackage.Literals.RELATION_DEFINITION__CONSTRAINTS,
+				 UsageFactory.eINSTANCE.createWaitUntil()));
 	}
 
 	/**

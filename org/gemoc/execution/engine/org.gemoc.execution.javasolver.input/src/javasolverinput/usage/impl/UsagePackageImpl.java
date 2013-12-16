@@ -19,6 +19,8 @@ import javasolverinput.usage.Precedes;
 import javasolverinput.usage.UsageFactory;
 import javasolverinput.usage.UsagePackage;
 
+import javasolverinput.usage.WaitUntil;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -74,6 +76,13 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 	 * @generated
 	 */
 	private EClass constraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass waitUntilEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -224,6 +233,24 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getWaitUntil() {
+		return waitUntilEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWaitUntil_Date() {
+		return (EAttribute)waitUntilEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public UsageFactory getUsageFactory() {
 		return (UsageFactory)getEFactoryInstance();
 	}
@@ -260,6 +287,9 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 
 		constraintEClass = createEClass(CONSTRAINT);
 		createEReference(constraintEClass, CONSTRAINT__ARGUMENTS);
+
+		waitUntilEClass = createEClass(WAIT_UNTIL);
+		createEAttribute(waitUntilEClass, WAIT_UNTIL__DATE);
 	}
 
 	/**
@@ -301,6 +331,7 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 		onceEClass.getESuperTypes().add(this.getBootstrappedConstraint());
 		precedesEClass.getESuperTypes().add(this.getBootstrappedConstraint());
 		constraintEClass.getESuperTypes().add(theJavasolverinputPackage.getNamedElement());
+		waitUntilEClass.getESuperTypes().add(this.getBootstrappedConstraint());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(clockEClass, Clock.class, "Clock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -316,6 +347,9 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConstraint_Arguments(), theEcorePackage.getEObject(), null, "arguments", null, 0, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(waitUntilEClass, WaitUntil.class, "WaitUntil", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWaitUntil_Date(), ecorePackage.getEIntegerObject(), "date", null, 1, 1, WaitUntil.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //UsagePackageImpl

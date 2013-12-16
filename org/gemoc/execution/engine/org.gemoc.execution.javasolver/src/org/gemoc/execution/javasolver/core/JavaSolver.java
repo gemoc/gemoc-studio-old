@@ -12,6 +12,7 @@ import javasolverinput.usage.Constraint;
 import javasolverinput.usage.CustomConstraint;
 import javasolverinput.usage.Once;
 import javasolverinput.usage.Precedes;
+import javasolverinput.usage.WaitUntil;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -56,46 +57,11 @@ public class JavaSolver implements Solver {
 		Boolean res = null;
 		for (Constraint constraint : constraints) {
 			if (constraint instanceof Precedes) {
-				if (constraint.getArguments().size() != 2) {
-					throw new UnsupportedOperationException(
-							"Constraint Precedes should have two and only two arguments");
-				} else {
-					List<EObject> arguments = constraint.getArguments();
-					for (EObject eo : arguments) {
-						if (!(eo instanceof Clock)) {
-							throw new UnsupportedOperationException(
-									"Constraint Precedes arguments should be clocks");
-						}
-					}
-					Clock c1 = (Clock) arguments.get(0);
-					Clock c2 = (Clock) arguments.get(1);
-
-					if (c1.equals(clock)) {
-						res = true;
-					} else if (c2.equals(clock)) {
-						Integer n1 = this.getNumberOfTicks(c1);
-						Integer n2 = this.getNumberOfTicks(clock);
-						res = n1 >= n2;
-					}
-				}
+				res = this.semanticsOfPrecedes((Precedes) constraint, clock);
 			} else if (constraint instanceof Once) {
-				if (constraint.getArguments().size() != 1) {
-					throw new UnsupportedOperationException(
-							"Constraint Once should have one and only one argument");
-				} else {
-					List<EObject> arguments = constraint.getArguments();
-					for (EObject eo : arguments) {
-						if (!(eo instanceof Clock)) {
-							throw new UnsupportedOperationException(
-									"Constraint Once arguments should be a clock");
-						}
-					}
-					Clock c = (Clock) arguments.get(0);
-
-					if (c.equals(clock)) {
-						res = this.getNumberOfTicks(clock) == 0;
-					}
-				}
+				res = this.semanticsOfOnce((Once) constraint, clock);
+			} else if (constraint instanceof WaitUntil) {
+				res = this.semanticsOfWaitUntil((WaitUntil) constraint, clock);
 			} else if (constraint instanceof CustomConstraint) {
 				res = res
 						&& this.isTicking(clock,
@@ -103,6 +69,77 @@ public class JavaSolver implements Solver {
 										.getDefinition().getConstraints());
 			} else {
 				throw new RuntimeException("Impossible relation.");
+			}
+		}
+		return res;
+	}
+
+	private Boolean semanticsOfPrecedes(Precedes constraint, Clock clock) {
+		Boolean res = false;
+		if (constraint.getArguments().size() != 2) {
+			throw new IllegalArgumentException(
+					"Constraint Precedes should have two and only two arguments");
+		} else {
+			List<EObject> arguments = constraint.getArguments();
+			for (EObject eo : arguments) {
+				if (!(eo instanceof Clock)) {
+					throw new IllegalArgumentException(
+							"Constraint Precedes arguments should be clocks");
+				}
+			}
+			Clock c1 = (Clock) arguments.get(0);
+			Clock c2 = (Clock) arguments.get(1);
+
+			if (c1.equals(clock)) {
+				res = true;
+			} else if (c2.equals(clock)) {
+				Integer n1 = this.getNumberOfTicks(c1);
+				Integer n2 = this.getNumberOfTicks(clock);
+				res = n1 >= n2;
+			}
+		}
+		return res;
+	}
+
+	private Boolean semanticsOfOnce(Once constraint, Clock clock) {
+		Boolean res = false;
+		if (constraint.getArguments().size() != 1) {
+			throw new IllegalArgumentException(
+					"Constraint Once should have one and only one argument");
+		} else {
+			List<EObject> arguments = constraint.getArguments();
+			for (EObject eo : arguments) {
+				if (!(eo instanceof Clock)) {
+					throw new IllegalArgumentException(
+							"Constraint Once arguments should be a clock");
+				}
+			}
+			Clock c = (Clock) arguments.get(0);
+
+			if (c.equals(clock)) {
+				res = this.getNumberOfTicks(clock) == 0;
+			}
+		}
+		return res;
+	}
+
+	private Boolean semanticsOfWaitUntil(WaitUntil constraint, Clock clock) {
+		Boolean res = false;
+		if (constraint.getArguments().size() != 1) {
+			throw new IllegalArgumentException(
+					"Constraint WaitUntil should have one and only one argument");
+		} else {
+			List<EObject> arguments = constraint.getArguments();
+			if (!(arguments.get(0) instanceof Clock)) {
+				throw new IllegalArgumentException(
+						"The argument of WaitUntil should be a Clock");
+			}
+			Clock c = (Clock) arguments.get(0);
+			Integer date = ((WaitUntil) constraint).getDate();
+
+			if (c.equals(clock)) {
+				Integer lastIndex = this.getLastIndex(clock);
+				res = date == lastIndex + 1;
 			}
 		}
 		return res;

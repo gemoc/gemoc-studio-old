@@ -60,6 +60,7 @@ public class UsageFactoryImpl extends EFactoryImpl implements UsageFactory {
 			case UsagePackage.CUSTOM_CONSTRAINT: return createCustomConstraint();
 			case UsagePackage.ONCE: return createOnce();
 			case UsagePackage.PRECEDES: return createPrecedes();
+			case UsagePackage.WAIT_UNTIL: return createWaitUntil();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +104,16 @@ public class UsageFactoryImpl extends EFactoryImpl implements UsageFactory {
 	public Precedes createPrecedes() {
 		PrecedesImpl precedes = new PrecedesImpl();
 		return precedes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WaitUntil createWaitUntil() {
+		WaitUntilImpl waitUntil = new WaitUntilImpl();
+		return waitUntil;
 	}
 
 	/**

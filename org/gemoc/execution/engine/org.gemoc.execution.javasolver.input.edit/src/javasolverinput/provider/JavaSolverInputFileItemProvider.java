@@ -176,6 +176,11 @@ public class JavaSolverInputFileItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
+				 UsageFactory.eINSTANCE.createWaitUntil()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS,
 				 CreationFactory.eINSTANCE.createRelationDeclaration()));
 	}

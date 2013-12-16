@@ -4,6 +4,7 @@ package javasolverinput.usage;
 
 import javasolverinput.JavasolverinputPackage;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -335,6 +336,62 @@ public interface UsagePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link javasolverinput.usage.impl.WaitUntilImpl <em>Wait Until</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see javasolverinput.usage.impl.WaitUntilImpl
+	 * @see javasolverinput.usage.impl.UsagePackageImpl#getWaitUntil()
+	 * @generated
+	 */
+	int WAIT_UNTIL = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WAIT_UNTIL__NAME = BOOTSTRAPPED_CONSTRAINT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WAIT_UNTIL__ARGUMENTS = BOOTSTRAPPED_CONSTRAINT__ARGUMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WAIT_UNTIL__DATE = BOOTSTRAPPED_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Wait Until</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WAIT_UNTIL_FEATURE_COUNT = BOOTSTRAPPED_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Wait Until</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WAIT_UNTIL_OPERATION_COUNT = BOOTSTRAPPED_CONSTRAINT_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link javasolverinput.usage.Clock <em>Clock</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -415,6 +472,27 @@ public interface UsagePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getConstraint_Arguments();
+
+	/**
+	 * Returns the meta object for class '{@link javasolverinput.usage.WaitUntil <em>Wait Until</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Wait Until</em>'.
+	 * @see javasolverinput.usage.WaitUntil
+	 * @generated
+	 */
+	EClass getWaitUntil();
+
+	/**
+	 * Returns the meta object for the attribute '{@link javasolverinput.usage.WaitUntil#getDate <em>Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date</em>'.
+	 * @see javasolverinput.usage.WaitUntil#getDate()
+	 * @see #getWaitUntil()
+	 * @generated
+	 */
+	EAttribute getWaitUntil_Date();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -514,6 +592,24 @@ public interface UsagePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONSTRAINT__ARGUMENTS = eINSTANCE.getConstraint_Arguments();
+
+		/**
+		 * The meta object literal for the '{@link javasolverinput.usage.impl.WaitUntilImpl <em>Wait Until</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see javasolverinput.usage.impl.WaitUntilImpl
+		 * @see javasolverinput.usage.impl.UsagePackageImpl#getWaitUntil()
+		 * @generated
+		 */
+		EClass WAIT_UNTIL = eINSTANCE.getWaitUntil();
+
+		/**
+		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WAIT_UNTIL__DATE = eINSTANCE.getWaitUntil_Date();
 
 	}
 

@@ -164,6 +164,29 @@ public class UsageItemProviderAdapterFactory extends UsageAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link javasolverinput.usage.WaitUntil} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WaitUntilItemProvider waitUntilItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link javasolverinput.usage.WaitUntil}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWaitUntilAdapter() {
+		if (waitUntilItemProvider == null) {
+			waitUntilItemProvider = new WaitUntilItemProvider(this);
+		}
+
+		return waitUntilItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,6 +289,7 @@ public class UsageItemProviderAdapterFactory extends UsageAdapterFactory impleme
 		if (customConstraintItemProvider != null) customConstraintItemProvider.dispose();
 		if (onceItemProvider != null) onceItemProvider.dispose();
 		if (precedesItemProvider != null) precedesItemProvider.dispose();
+		if (waitUntilItemProvider != null) waitUntilItemProvider.dispose();
 	}
 
 }

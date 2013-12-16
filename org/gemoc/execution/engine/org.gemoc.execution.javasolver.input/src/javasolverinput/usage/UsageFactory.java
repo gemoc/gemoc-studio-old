@@ -58,6 +58,15 @@ public interface UsageFactory extends EFactory {
 	Precedes createPrecedes();
 
 	/**
+	 * Returns a new object of class '<em>Wait Until</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Wait Until</em>'.
+	 * @generated
+	 */
+	WaitUntil createWaitUntil();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
