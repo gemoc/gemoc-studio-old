@@ -12,7 +12,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.api_standard_implementations.dsa.ModelAction;
 import org.gemoc.execution.engine.api_standard_implementations.dse.ModelEvent;
@@ -24,7 +23,6 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
@@ -103,7 +101,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 								this.modelResource);
 
 				this.modelOfExecutionURI = modelOfExecution.getURI();
-			} catch (NotImplementedException e) {
+			} catch (RuntimeException e) {
 				String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
 				this.modelOfExecutionURI = URI.createPlatformResourceURI(
 						modelOfExecutionFilePath, true);

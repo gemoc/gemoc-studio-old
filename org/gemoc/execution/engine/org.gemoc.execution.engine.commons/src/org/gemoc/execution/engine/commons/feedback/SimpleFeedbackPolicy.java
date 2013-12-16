@@ -1,9 +1,8 @@
-package org.gemoc.execution.engine.api_standard_implementations.feedback;
+package org.gemoc.execution.engine.commons.feedback;
 
 import java.lang.reflect.InvocationTargetException;
 
-import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.commons.feedback.ObjectFeedbackData;
+import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.ModelSpecificAction;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
@@ -68,7 +67,6 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 			// solver.forbidEventOccurrenceReferencing(targetToForce);
 			// }
 			// }
-
 
 		} else if (o instanceof Character) {
 			Activator.getMessagingSystem().warn(

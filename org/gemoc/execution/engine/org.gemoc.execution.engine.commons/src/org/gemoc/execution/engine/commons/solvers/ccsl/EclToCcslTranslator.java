@@ -1,41 +1,16 @@
-package org.gemoc.execution.engine.api_standard_implementations.moc;
+package org.gemoc.execution.engine.commons.solvers.ccsl;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import javax.naming.OperationNotSupportedException;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.ISafeRunnable;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.SafeRunner;
-import org.eclipse.emf.common.util.BasicMonitor;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
-import org.eclipse.m2m.qvt.oml.BasicModelExtent;
-import org.eclipse.m2m.qvt.oml.ExecutionContextImpl;
-import org.eclipse.m2m.qvt.oml.ExecutionDiagnostic;
-import org.eclipse.m2m.qvt.oml.ModelExtent;
-import org.eclipse.m2m.qvt.oml.TransformationExecutor;
-import org.eclipse.xtext.resource.SaveOptions;
-import org.eclipse.xtext.resource.SaveOptions.Builder;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
-import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
-
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import com.google.inject.Injector;
 
 import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ExtendedCCSLStandaloneSetup;
-import fr.inria.aoste.timesquare.ecl.ecltoqvto.main.AcceleoLauncherForEclToQvto;
 
 // TODO: here the code to generate the .extendedccsl from ecl + xmi
 public class EclToCcslTranslator implements ModelOfExecutionBuilder {
@@ -96,7 +71,8 @@ public class EclToCcslTranslator implements ModelOfExecutionBuilder {
 	}
 
 	@Override
-	public Resource build(Resource domainSpecificEventsResource, Resource modelResource) {
+	public Resource build(Resource domainSpecificEventsResource,
+			Resource modelResource) {
 		// initializeXtext();
 		//
 		// URI modelURI = modelResource.getURI();
@@ -156,7 +132,7 @@ public class EclToCcslTranslator implements ModelOfExecutionBuilder {
 		// }
 		//
 		// return outputResource;
-		throw new NotImplementedException();
+		throw new RuntimeException();
 	}
 
 	/**
@@ -169,7 +145,8 @@ public class EclToCcslTranslator implements ModelOfExecutionBuilder {
 		aModelResourceSet = injector.getInstance(XtextResourceSet.class);
 		outputResourceSet = injector.getInstance(XtextResourceSet.class);
 		// set.setClasspathURIContext(getClasspathURIContext());
-		aModelResourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+		aModelResourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL,
+				Boolean.TRUE);
 		ExtendedCCSLStandaloneSetup.doSetup();
 	}
 

@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.api_standard_implementations.moc;
+package org.gemoc.execution.engine.commons.solvers.ccsl;
 
 import java.io.IOException;
 
@@ -10,8 +10,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.moc.ModelOfExecutionBuilder;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
