@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io;
+package org.gemoc.execution.engine.io.core;
 
 import java.util.Observer;
 

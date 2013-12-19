@@ -19,6 +19,7 @@ import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
@@ -102,7 +103,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
 				this.modelOfExecutionURI = modelOfExecution.getURI();
 			} catch (RuntimeException e) {
-				String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
+				String modelOfExecutionFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test_executionModel.extendedCCSL";
 				this.modelOfExecutionURI = URI.createPlatformResourceURI(
 						modelOfExecutionFilePath, true);
 			}
@@ -309,6 +310,24 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			Activator.error(errorMessage, e);
 			return null;
 		}
+	}
+
+	@Override
+	public Collection<DomainSpecificEvent> getDomainSpecificEvents() {
+		// TODO
+		return this.domainSpecificEvents;
+	}
+
+	@Override
+	public void injectEvent(DomainSpecificEvent dse, EObject target)
+			throws EventInjectionException {
+		// TODO
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Resource getModelResource() {
+		return this.modelResource;
 	}
 
 }

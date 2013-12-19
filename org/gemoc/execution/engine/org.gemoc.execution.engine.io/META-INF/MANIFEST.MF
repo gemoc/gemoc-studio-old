@@ -14,4 +14,8 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine.io,
  org.gemoc.execution.engine.io.backends,
- org.gemoc.execution.engine.io.controlpanels
+ org.gemoc.execution.engine.io.core,
+ org.gemoc.execution.engine.io.core.impl,
+ org.gemoc.execution.engine.io.exceptions,
+ org.gemoc.execution.engine.io.frontends.controlpanels,
+ org.gemoc.execution.engine.io.frontends.scenariobuilders

@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io;
+package org.gemoc.execution.engine.io.core;
 
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 
@@ -8,7 +8,8 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
  * @author flatombe
  * 
  */
-public interface ControlPanel {
+public interface Frontend {
 
 	public void initialize(ExecutionEngine engine);
+
 }

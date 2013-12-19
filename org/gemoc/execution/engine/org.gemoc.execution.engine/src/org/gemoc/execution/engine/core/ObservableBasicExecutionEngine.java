@@ -5,16 +5,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Observable;
 
+import org.eclipse.core.runtime.ISafeRunnable;
+import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import org.eclipse.core.runtime.ISafeRunnable;
-import org.eclipse.core.runtime.SafeRunner;
-
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
@@ -149,6 +147,16 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	}
 
 	@Override
+	public void pause() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void stepBack(int numberOfSteps) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
 	public void runOneStep(final ModelSpecificEvent mse) {
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
@@ -194,8 +202,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			events = new ArrayList<ModelSpecificEvent>();
 			events.add(mse);
 			this.setChanged();
-			this.notifyObservers("User required execution of MSE: " + mse.getName()
-					+ ")");
+			this.notifyObservers("User required execution of MSE: "
+					+ mse.getName() + ")");
 		} else {
 			// The MSE has not been chosen beforehand, so it's more of an
 			// automatic mode.

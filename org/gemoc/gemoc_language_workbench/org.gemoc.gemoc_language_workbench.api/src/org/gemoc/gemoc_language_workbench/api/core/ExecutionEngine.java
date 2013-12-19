@@ -4,8 +4,10 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
-
+import org.eclipse.emf.ecore.resource.Resource;
+import org.gemoc.gemoc_language_workbench.api.dse.DomainSpecificEvent;
 import org.gemoc.gemoc_language_workbench.api.dse.ModelSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 /**
@@ -26,6 +28,13 @@ public interface ExecutionEngine {
 	public void initialize(String modelURI, ModelLoader modelLoader);
 
 	/**
+	 * Retrieve the model being executed.
+	 * 
+	 * @return the EMF Resource corresponding to the model being executed.
+	 */
+	public Resource getModelResource();
+
+	/**
 	 * Runs the engine for a given number of steps.
 	 * 
 	 * @param numberOfSteps
@@ -37,6 +46,35 @@ public interface ExecutionEngine {
 	 * Resets the engine and its components to its initial state.
 	 */
 	public void reset();
+
+	/**
+	 * Pauses the execution.
+	 */
+	public void pause();
+
+	/**
+	 * Go back in the past.
+	 * 
+	 * @param numberOfSteps
+	 *            number of steps to go back.
+	 */
+	public void stepBack(int numberOfSteps);
+
+	/**
+	 * Retrieve the Domain-Specific Events of the language.
+	 * 
+	 * @return the collection of DomainSpecificEvents for the language of the
+	 *         model being executed.
+	 */
+	public Collection<DomainSpecificEvent> getDomainSpecificEvents();
+
+	/**
+	 * 
+	 * @param dse
+	 * @param target
+	 */
+	public void injectEvent(DomainSpecificEvent dse, EObject target)
+			throws EventInjectionException;
 
 	/**
 	 * Query to retrieve the MSEs which can be triggered by the user, in no
