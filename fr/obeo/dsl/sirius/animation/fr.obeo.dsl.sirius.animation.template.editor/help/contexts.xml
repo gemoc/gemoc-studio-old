@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="AnimationTemplate">
+     <description>
+              
+       
+         
+   <!-- Start of user code AnimationTemplate description -->
+   
+   <!-- End of user code AnimationTemplate description -->
+   
+      </description>
+   </context>
+   <context id="FreeDiagramTemplate">
+     <description>
+              
+       
+         
+   <!-- Start of user code FreeDiagramTemplate description -->
+   
+   <!-- End of user code FreeDiagramTemplate description -->
+   
+      </description>
+   </context>
+   <context id="TTransformer">
+     <description>
+              
+       
+         
+   <!-- Start of user code TTransformer description -->
+   
+   <!-- End of user code TTransformer description -->
+   
+      </description>
+   </context>
+</contexts>

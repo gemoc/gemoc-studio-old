@@ -7,7 +7,7 @@
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%self.~executionEnvironment.nSize() > 0%>">
             <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="labelColor">
               <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@style"/>
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </featureCustomizations>
             <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="labelColor">
               <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']/@conditionnalStyles.0/@style"/>
@@ -21,7 +21,7 @@
               <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_State']/@style"/>
               <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']/@style"/>
               <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']/@style"/>
-              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%self.~currentInstruction.nSize() > 0%>">
@@ -42,6 +42,16 @@
               <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']/@style"/>
               <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']/@style"/>
               <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="strokeColor">
+              <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition']/@style"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%self.~.filter(&quot;Variable&quot;)[name==&quot;transitions&quot;].nSize() > 0%>">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="strokeColor">
+              <appliedOn href="viewpoint:/org.obeonetwork.dsl.uml2.design/UML%20Structural%20Modeling#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition']/@style"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
         </customization>

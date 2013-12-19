@@ -1,11 +1,14 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
+import glml.DomainSpecificEvent;
 import glml.ModelSpecificEvent;
 
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 /**
@@ -35,15 +38,12 @@ public interface ExecutionEngine {
 	 */
 	public void initialize(String modelURI, ModelLoader modelLoader);
 
-	/** --------------- Input/Output (ControlPanel) --------------- **/
+	/** --------------- Input/Output (Frontend) --------------- **/
 	/**
 	 * Runs the engine for a given number of steps. There are a few semantic
 	 * variation points here: - When the Engine matches several DSEs at for a
 	 * given step - When a DSE is linked to several DSAs - (consequence) when
 	 * feedbacks from concurrent DSAs is incoherent.
-	 * 
-	 * @see ObservableBasicExecutionEngine
-	 * @see GemocExecutionEngine
 	 * 
 	 * @param numberOfSteps
 	 *            the number of steps of execution for the Execution Engine to
@@ -57,9 +57,45 @@ public interface ExecutionEngine {
 	public void reset();
 
 	/**
-	 * Query to retrieve the next ModelSpecificEvents which can be triggered. In
-	 * particular, this should be used to create a GUI for scheduling an
-	 * execution.
+	 * Pauses the execution.
+	 */
+	public void pause();
+
+	/**
+	 * Go back in the past.
+	 * 
+	 * @param numberOfSteps
+	 *            number of steps to go back.
+	 */
+	public void stepBack(int numberOfSteps);
+
+	/**
+	 * Retrieve the Domain-Specific Events of the language.
+	 * 
+	 * @return the collection of DomainSpecificEvents for the language of the
+	 *         model being executed.
+	 */
+	public Collection<DomainSpecificEvent> getDomainSpecificEvents();
+
+	/**
+	 * Retrieve the model being executed.
+	 * 
+	 * @return the EMF Resource corresponding to the model being executed.
+	 */
+	public Resource getModelResource();
+
+	/**
+	 * Inject an event.
+	 * 
+	 * @param dse
+	 * @param target
+	 */
+	public void injectEvent(DomainSpecificEvent dse, EObject target)
+			throws EventInjectionException;
+
+	/**
+	 * Query to retrieve the MSEs which can be triggered by the user, in no
+	 * particular order.
 	 * 
 	 * @return the collection of ModelSpecificEvents which can be triggered by
 	 *         the user.

@@ -49,8 +49,7 @@ import fr.obeo.dsl.sirius.animation.Thread;
 import fr.obeo.dsl.sirius.animation.provider.AnimationItemProviderAdapterFactory;
 import fr.obeo.dsl.sirius.animation.util.AnimationAdapterFactory;
 
-public  class AnimatorEclipseDebugIntegration extends
-		AnimationAdapterFactory {
+public class AnimatorEclipseDebugIntegration extends AnimationAdapterFactory {
 
 	private ILaunch launch;
 
@@ -61,6 +60,8 @@ public  class AnimatorEclipseDebugIntegration extends
 	protected TransactionalEditingDomain domain;
 
 	private Animator animator;
+
+	private boolean tracking_modifications;
 
 	public AnimatorEclipseDebugIntegration(ILaunch launch,
 			TransactionalEditingDomain domain, Animator animator) {
@@ -105,7 +106,7 @@ public  class AnimatorEclipseDebugIntegration extends
 	}
 
 	@Override
-	public Adapter adapt(Notifier target, Object type) {
+	public synchronized Adapter adapt(Notifier target, Object type) {
 		if (target instanceof SettingWrapper) {
 			Adapter adapter = createSettingTargetAdapter();
 			associate(adapter, target);
@@ -170,11 +171,8 @@ public  class AnimatorEclipseDebugIntegration extends
 		return adapter;
 	}
 
-
 	public void stepOverViaCommand(final StackFrame host) {
-		ChangeObjectsVariableUpdater recorder = new ChangeObjectsVariableUpdater(
-				host);
-		domain.addResourceSetListener(recorder);
+		ChangeObjectsVariableUpdater recorder = preCommand(host);
 		domain.getCommandStack().execute(
 				new RecordingCommand(domain, "Step Over") {
 
@@ -186,7 +184,22 @@ public  class AnimatorEclipseDebugIntegration extends
 					}
 
 				});
-		domain.removeResourceSetListener(recorder);
+		postCommand(recorder);
+	}
+
+	private void postCommand(ChangeObjectsVariableUpdater recorder) {
+		if (tracking_modifications) {
+			domain.removeResourceSetListener(recorder);
+		}
+	}
+
+	private ChangeObjectsVariableUpdater preCommand(final StackFrame host) {
+		ChangeObjectsVariableUpdater recorder = new ChangeObjectsVariableUpdater(
+				host);
+		if (tracking_modifications) {
+			domain.addResourceSetListener(recorder);
+		}
+		return recorder;
 	}
 
 	public void stepIntoViaCommand(final StackFrame host) {
@@ -204,9 +217,7 @@ public  class AnimatorEclipseDebugIntegration extends
 	}
 
 	public void stepReturnViaCommand(final StackFrame host) {
-		ChangeObjectsVariableUpdater recorder = new ChangeObjectsVariableUpdater(
-				host);
-		domain.addResourceSetListener(recorder);
+		ChangeObjectsVariableUpdater recorder = preCommand(host);
 		domain.getCommandStack().execute(
 				new RecordingCommand(domain, "Step Return") {
 
@@ -218,7 +229,7 @@ public  class AnimatorEclipseDebugIntegration extends
 					}
 
 				});
-		domain.removeResourceSetListener(recorder);
+		postCommand(recorder);
 
 	}
 

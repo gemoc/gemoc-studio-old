@@ -6,6 +6,7 @@ import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.Reference;
+import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
 import glml.ModelSpecificEvent;
 
@@ -27,6 +28,7 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
@@ -412,6 +414,24 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			Activator.error(errorMessage, e);
 			return null;
 		}
+	}
+
+	@Override
+	public Collection<DomainSpecificEvent> getDomainSpecificEvents() {
+		// TODO
+		return this.domainSpecificEventsRegistry.values();
+	}
+
+	@Override
+	public void injectEvent(DomainSpecificEvent dse, EObject target)
+			throws EventInjectionException {
+		// TODO
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Resource getModelResource() {
+		return this.modelResource;
 	}
 
 }

@@ -1,10 +1,6 @@
 instructions.configure=\
-addRepository(type:0,location:http${#58}//www.obeo.fr/download/release/designer/6.1/latest/juno3/update,name:Obeo Designer 6.1);\
-addRepository(type:1,location:http${#58}//www.obeo.fr/download/release/designer/6.1/latest/juno3/update,name:Obeo Designer 6.1);\
-addRepository(type:0,location:http${#58}//marketplace.obeonetwork.com/updates/od61/,name:Obeo Designer MarketPlace);\
-addRepository(type:1,location:http${#58}//marketplace.obeonetwork.com/updates/od61/,name:Obeo Designer MarketPlace);\
-addRepository(type:0,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
-addRepository(type:1,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/releases/kepler,name:Kepler);\
+addRepository(type:1,location:http${#58}//download.eclipse.org/releases/kepler,name:Kepler);\
 addRepository(type:0,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
 addRepository(type:1,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
 addRepository(type:0,location:http${#58}//timesquare.inria.fr/update_site,name:Timesquare);\

@@ -85,7 +85,6 @@ public class AnimationDebugModelPresentation implements IDebugModelPresentation 
 				Set<DRepresentation> representations = Sets.newLinkedHashSet();
 				for (Setting setting : session.getSemanticCrossReferencer()
 						.getInverseReferences(elementToOpenElement)) {
-					System.out.println(setting.getEObject());
 					if (setting.getEObject() instanceof DRepresentationElement) {
 						representations.add(new DRepresentationElementQuery(
 								(DRepresentationElement) setting.getEObject())

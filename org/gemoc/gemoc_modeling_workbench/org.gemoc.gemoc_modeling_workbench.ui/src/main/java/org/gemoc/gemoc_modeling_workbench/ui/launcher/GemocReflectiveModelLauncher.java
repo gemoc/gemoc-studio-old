@@ -3,8 +3,6 @@ package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -12,12 +10,13 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
-
-import org.gemoc.execution.engine.io.Backend;
-import org.gemoc.execution.engine.io.ControlPanel;
-import org.gemoc.execution.engine.io.EngineManager;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.io.backends.ConsoleBackend;
-import org.gemoc.execution.engine.io.controlpanels.BasicGUIControlPanel;
+import org.gemoc.execution.engine.io.core.Backend;
+import org.gemoc.execution.engine.io.core.EngineManager;
+import org.gemoc.execution.engine.io.core.Frontend;
+import org.gemoc.execution.engine.io.frontends.controlpanels.ExampleGUIControlPanel;
+import org.gemoc.execution.engine.io.frontends.scenariobuilders.ExampleScenarioBuilder;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -152,12 +151,17 @@ public class GemocReflectiveModelLauncher implements
 		// } catch (Throwable e) {
 		// Activator.error("Exception in the initialization of the engine", e);
 		// }
-		ControlPanel controlPanel = new BasicGUIControlPanel();
+		Frontend controlPanel = new ExampleGUIControlPanel();
+		Frontend scenarioBuilder = new ExampleScenarioBuilder();
+		List<Frontend> frontends = new ArrayList<Frontend>();
+		frontends.add(controlPanel);
+		frontends.add(scenarioBuilder);
+		
 		List<Backend> backends = new ArrayList<Backend>();
 		backends.add(new ConsoleBackend());
 		EngineManager manager = new EngineManager(domainSpecificEventsResource,
 				solver, executor, feedbackPolicy, modelPath, modelLoader,
-				controlPanel, backends);
+				frontends, backends);
 	}
 
 	private void reactToNull(Object o, String name) {

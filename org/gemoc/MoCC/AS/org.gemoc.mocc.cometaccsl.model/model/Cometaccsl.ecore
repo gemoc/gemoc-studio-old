@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cometa" nsURI="http://org.gemoc.mocc.cometa/1.0" nsPrefix="cometa">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="MoCSystemSpecification">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mocLib" eType="#//MoCLibrary"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CometaSystemSpecification" eSuperTypes="#//MoCSystemSpecification">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataLib" eType="#//cometadatatype/DataTypeLibrary"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="structureLib" eType="#//cometastructure/StructureLibrary"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeLib" eType="#//cometatime/TimeLibrary"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElementAbstraction" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MoCLibrary" abstract="true"/>
+  <eSubpackages name="cometadatatype" nsURI="http://org.gemoc.mocc.cometadatatype/1.0"
+      nsPrefix="cometadatatype">
+    <eClassifiers xsi:type="ecore:EClass" name="TypeDeclaration" eSuperTypes="#//NamedElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DataTypeLibrary" eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="typedef" upperBound="-1"
+          eType="#//cometadatatype/TypeDeclaration" containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="cometamoc" nsURI="http://org.gemoc.mocc.cometamoc/1.0" nsPrefix="cometamoc">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Queue">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Queue The analysis of communicating behavioral entities must take into account the sizes of the used shared memories because in reality such sizes cannot be infinite.&#xD;&#xA;The notion of Queue is an abstract concept for the virtual representation of the shared memories such as FIFO, LIFO. The purpose of this virtualization is to highlight their sizes and the required services to operate on the Queues."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="rtInterfaces" upperBound="-1"
+          eType="#//cometatime/RTInterface" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//cometamoc/QueueKind"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CometaMoCLibrary" eSuperTypes="#//MoCLibrary #//NamedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MoCLibrary represents the unique library of MoC domains from Cometa."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mocDomains" upperBound="-1"
+          eType="#//cometamoc/MoCDomain" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mocEvents" upperBound="-1"
+          eType="#//cometamoc/MoCEvent" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="queues" upperBound="-1"
+          eType="#//cometamoc/Queue" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MoCDomain" eSuperTypes="#//NamedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A MoCDomain is a concept reifying the notion of MoC modeling space. A MoC modeling space captures all of the rules, properties and semantics specific to a MoC.&#xD;&#xA;The captured rules include operational behaviors defined through the notion of Behavior."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mocBehaviors" upperBound="-1"
+          eType="#//cometamoc/Behavior" containment="true" eOpposite="#//cometamoc/Behavior/mocDomain"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="domainTimeConstraints"
+          upperBound="-1" eType="#//cometatime/TimeConstraint" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="MoCRole">
+      <eLiterals name="Orchestrator" literal="OrchestratorBehavior"/>
+      <eLiterals name="PortBehavior" value="1"/>
+      <eLiterals name="ConnectorBehavior" value="2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="QueueKind">
+      <eLiterals name="FIFO"/>
+      <eLiterals name="LIFO" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Behavior" abstract="true" interface="true"
+        eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="roles" upperBound="-1"
+          eType="#//cometamoc/MoCRole">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The &lt; role > function is defined to associate the following roles (SchedulingBehavior, PortBehavior, ConnectorBehavior) with the different behaviors, making explicit what they can be used for."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mocDomain" lowerBound="1"
+          eType="#//cometamoc/MoCDomain" transient="true" derived="true" eOpposite="#//cometamoc/MoCDomain/mocBehaviors">
+        <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+          <details key="name" value="mocDomain"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="queueInstances" upperBound="-1"
+          eType="#//cometamoc/QueueInstance" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="rtInterfaces" upperBound="-1"
+          eType="#//cometatime/RTInterface" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="behaviorTimeConstraints"
+          upperBound="-1" eType="#//cometatime/TimeConstraint" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OpaqueBlock" abstract="true" eSuperTypes="#//ElementAbstraction">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A Block in Cometa helps to define a sequence of instructions."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="rtElements" upperBound="-1"
+          eType="#//cometatime/RTInterface"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OpaqueBehavior" eSuperTypes="#//cometamoc/Behavior #//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="body" lowerBound="1"
+          eType="#//cometamoc/OpaqueBlock" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MoCEvent" eSuperTypes="#//NamedElement #//cometatime/Event">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The concept of MoCEvent is used to describe the communication events between FSMs of a semantic layer. For example, the distribution of control over ports and&#xD;&#xA;connectors involves the use of these events as triggers for state changes in ports and connectors. These events are dissociated with interface events that are directly related to the application blocks."/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="QueueInstance" eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//cometamoc/Queue"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FiniteStateMachineBehavior" eSuperTypes="#//cometamoc/Behavior #//fsmdefinition/FiniteStateMachine"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CometaGuard" abstract="true" eSuperTypes="#//fsmdefinition/Guard #//cometamoc/OpaqueBlock"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CometaAction" abstract="true" eSuperTypes="#//fsmdefinition/Action #//cometamoc/OpaqueBlock"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CometaTrigger" eSuperTypes="#//fsmdefinition/Trigger">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="triggOn" lowerBound="1"
+          eType="#//cometatime/Event"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="cometastructure" nsURI="http://org.gemoc.mocc.cometastructure/1.0"
+      nsPrefix="cometastructure">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="StructureContainer" eSuperTypes="#//NamedElement #//cometastructure/Container">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A StructureContainer represents a possible configuration of interconnected components. Indeed, it allows describing new components, connectors and the mechanisms of&#xD;&#xA;the components interconnections."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connectorInstances" upperBound="-1"
+          eType="#//cometastructure/MoCConnector" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="componentInstances" upperBound="-1"
+          eType="#//cometastructure/MoCComponent" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="portInstances" upperBound="-1"
+          eType="#//cometastructure/MoCPort" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MoCConnector" eSuperTypes="#//cometastructure/StructureElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MoCConnector: represents the set of connectors that can be defined from the structure abstract syntax. The connectors allow linking the components of the topology."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+          eType="#//cometastructure/MoCPort"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//cometastructure/MoCPort"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" lowerBound="1"
+          eType="#//cometastructure/MoCConnectorKind"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MoCComponent" abstract="true" interface="true"
+        eSuperTypes="#//cometastructure/StructureElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MoCComponent: abstract structural component, that is specialized into Basic and Composite components.&#xD;&#xA;The MoCComponent are virtual parallel entities used for the hierarchical description of topologies, but also as support for the mechanisms of execution control. The MoCComponent represent atomic and composite components. These two types of components have similar properties such as the ability to define sets of ports and to carry&#xD;&#xA;behaviors used for execution control. However, when they are defined separately, atomic and composite components provide different properties."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPortInstances" upperBound="-1"
+          eType="#//cometastructure/MoCPort" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MoCPort" eSuperTypes="#//cometastructure/StructureElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MoCPort: The ports are the interconnection points for the components. Ports are connected between them by the Cometa MoCConnector.&#xD;&#xA;The MoCConnector of Cometa are structural elements to bind the ports of the various components (Part or MoCComponent).&#xD;&#xA; Links to ports are defined by the &lt;source; target > functions that combine each connector to its specific input and output ports. &#xD;&#xA;The connectors more substantially contribute to the definition of the mechanisms of execution control because they are carriers of behaviors to synchronize components.&#xD;&#xA;The MoCPort can be enriched with MoC based behaviors. When applying a MoC behavior to a MoCPort, this behavior participates in the specification of the communication protocol."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" lowerBound="1"
+          eType="#//cometastructure/PortKind">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The &lt;direction> property qualifies the port with a &quot;kind&quot; (in or out) to specify the direction of the communication."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//cometastructure/MoCPort"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="portInterfaces" lowerBound="1"
+          upperBound="2" eType="#//cometatime/MoCInterface"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="PortKind">
+      <eLiterals name="in" literal="in"/>
+      <eLiterals name="out" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StructureElement" abstract="true"
+        interface="true" eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="behaviorMap" eType="#//cometamoc/Behavior"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mocDomain" eType="#//cometamoc/MoCDomain"
+          derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+          <details key="derivation" value="(MoCDomain)((StructureElement)self.eContainer()).behaviorMap().eContainer()"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+          eType="#//cometatime/Parameter" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Container" abstract="true" interface="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
+          eType="#//cometastructure/Part" containment="true" eOpposite="#//cometastructure/Part/container"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CompositeComponent" eSuperTypes="#//cometastructure/MoCComponent #//cometastructure/Container">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CompositeComponent: A CompositeComponent objectifies the notion of hierarchy and &quot;white-box&quot;. It allows hiding his sub-topologies associated with its description&#xD;&#xA;(sub-topologies are not seen as black-boxes). A CompositeComponent has the same properties as a StructureContainer with the difference that it possibly has ports and behavior when interconnected with other components of the same hierarchical level."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+          eType="#//cometastructure/MoCConnector" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subComponents" upperBound="-1"
+          eType="#//cometastructure/MoCComponent" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BasicComponent" eSuperTypes="#//cometastructure/MoCComponent">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BasicComponent: atomic components of a structure Cometa. Unlike the composite components, the BasicComponent are the entities directly interfaced with the application&#xD;&#xA;blocks."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="computation" eType="#//cometamoc/OpaqueBlock"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StructureLibrary" eSuperTypes="#//NamedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="StructureLibrary: is uniquely defined to contain the library of semantic layers described at the topological level. The networks of interconnected components forms the semantic layer. The library allows describing several containers of topologies (StructureContainer, CompositeComponent) and atomic (BasiCComponent) components. In Cometa, each StructureContainer represents a semantic layer."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mocStructures" upperBound="-1"
+          eType="#//cometastructure/StructureContainer" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mocInterfaces" upperBound="-1"
+          eType="#//cometatime/MoCInterface" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="MoCConnectorKind">
+      <eLiterals name="delegation"/>
+      <eLiterals name="assembly" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Part" eSuperTypes="#//NamedElement #//cometastructure/Container">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Part: Part are containers insofar as they are able to contain / define a semantic layer. Part refers to existing components and represents a duplication of the latter.&#xD;&#xA;The Part participates in the description of topologies by offering the possibility to describe the concept of &quot;black-box&quot; reproducing the behavior of a composite or atomic&#xD;&#xA;execution control module. Elements of type Part have ports connecting them with the rest of the structure."/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="PartHasSameNumberOfPortsThanItsComponent EachPortIsDefinedInComponent NoRedondancyInPortsNames"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="PartHasSameNumberOfPortsThanItsComponent" value="ports->size()=componentType.ownedPortInstances->size()"/>
+        <details key="EachPortIsDefinedInComponent" value="ports->forAll(self.componentType.ownedPortInstances->collect(name)->includes(name))"/>
+        <details key="NoRedondancyInPortsNames" value="self.ports->forAll(p1, p2 | p1&lt;>p2 implies p1.name&lt;>p2.name)"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="componentType" lowerBound="1"
+          eType="#//cometastructure/MoCComponent"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+          eType="#//cometastructure/MoCPort" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//cometastructure/Container"
+          eOpposite="#//cometastructure/Container/parts"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="cometatime" nsURI="http://org.gemoc.mocc.cometatime/1.0" nsPrefix="cometatime">
+    <eClassifiers xsi:type="ecore:EClass" name="TimeLibrary" eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="clocks" upperBound="-1"
+          eType="#//cometatime/ClockAbstraction" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="globalTimeConstraints"
+          upperBound="-1" eType="#//cometatime/TimeConstraint" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TimeConstraint" abstract="true" eSuperTypes="#//ElementAbstraction">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="TimeLibrary"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1"
+          eType="#//cometatime/ClockAbstraction" eOpposite="#//cometatime/ClockAbstraction/isReferedInConstraints"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ClockAbstraction" abstract="true"
+        eSuperTypes="#//ElementAbstraction">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="TimeLibrary"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="isReferedInConstraints"
+          upperBound="-1" eType="#//cometatime/TimeConstraint" eOpposite="#//cometatime/TimeConstraint/uses"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="isReferedbyEvents" upperBound="-1"
+          eType="#//cometatime/Event" eOpposite="#//cometatime/Event/uses"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="isReferedbyTrigger" upperBound="-1"
+          eType="#//cometatime/ComplexEventDefinitionAbstraction" eOpposite="#//cometatime/ComplexEventDefinitionAbstraction/uses"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ComplexEventDefinitionAbstraction"
+        abstract="true" eSuperTypes="#//ElementAbstraction">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="TimeLibrary"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1"
+          eType="#//cometatime/ClockAbstraction" eOpposite="#//cometatime/ClockAbstraction/isReferedbyTrigger"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//NamedElement #//cometatime/RTInterface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A Parameter is an abstract concept of the meta-model that aims to capture variables, parameters. A Parameter has a value (Block) and a type (Type). The value represents&#xD;&#xA;the data stored by the variable. The type represents the type of the stored value."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="TimeLibrary"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameterType" eType="#//cometadatatype/TypeDeclaration"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
+          eType="#//cometamoc/OpaqueBlock" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Event" abstract="true" interface="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="TimeLibrary"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eventParameters" upperBound="-1"
+          eType="#//cometatime/Parameter" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1"
+          eType="#//cometatime/ClockAbstraction" eOpposite="#//cometatime/ClockAbstraction/isReferedbyEvents"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Service" eSuperTypes="#//NamedElement #//cometatime/RTInterface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Service The concept of service is used in the context of Cometa to abstract functions interfacing with the &quot;runtime&quot;, but also to abstract functions for communication&#xD;&#xA;between machines of control."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="TimeLibrary"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+          eType="#//cometatime/Parameter" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Send" eSuperTypes="#//cometatime/MoCInterface #//cometatime/Event">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Send event, This abstraction allows describing the sending events. The sending events are the result of data sending requests emitted by an entity behavior. These&#xD;&#xA;events can be parameterized. The parameters are used to specify the receiver of the request, the communication connector, or the data to be transmitted, etc."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="TimeLibrary"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Receive" eSuperTypes="#//cometatime/MoCInterface #//cometatime/Event">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Receive event, This abstraction allows describing the reception events. The reception events are the result of the reception requests issued by an entity behavior. These&#xD;&#xA;events can be parameterized. The parameters are used to specify the communication connector. Within Cometa, the events are used as &quot;trigger&quot; on the transitions of the control machines."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="TimeLibrary"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Ack" eSuperTypes="#//cometatime/MoCInterface #//cometatime/Event">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ack event, The Ack events are sent back to the behavioral entity so they can continue their execution. The Ack are needed in all running control scenarios with Cometa.&#xD;&#xA;They reify the notion of permission to run."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="TimeLibrary"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Interface" abstract="true" interface="true"
+        eSuperTypes="#//NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//cometatime/InterfaceKind"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MoCInterface" abstract="true" interface="true"
+        eSuperTypes="#//cometatime/Interface"/>
+    <eClassifiers xsi:type="ecore:EClass" name="RTInterface" abstract="true" interface="true"
+        eSuperTypes="#//cometatime/Interface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The notion of RTInterface captures the events (MoCEvent), as well as services and parameters that are used within the control behavior to interface with the communication media (shared memory such as FIFO and LIFO)."/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="InterfaceKind">
+      <eLiterals name="provided"/>
+      <eLiterals name="required" value="1"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="ccsl4cometaspecialisation" nsURI="http://org.gemoc.mocc.ccsl4cometaspecialisation/1.0"
+      nsPrefix="ccsl4cometaccslspecialisation">
+    <eClassifiers xsi:type="ecore:EClass" name="CCSL4CometaClock" eSuperTypes="#//cometatime/ClockAbstraction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSL4CometaBlockAbstraction" eSuperTypes="#//cometamoc/OpaqueBlock"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSL4CometaTimeConstraint" eSuperTypes="#//cometatime/TimeConstraint"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSL4CometaComplexTrigger" eSuperTypes="#//fsmdefinition/Trigger">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="trueTriggers" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="falseTriggers" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSL4CometaCometaSystemSpecification"
+        eSuperTypes="#//CometaSystemSpecification">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ccslLib" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/Library"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSL4CometaGuard" eSuperTypes="#//cometamoc/CometaGuard"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSL4CometaAction" eSuperTypes="#//cometamoc/CometaAction"/>
+  </eSubpackages>
+  <eSubpackages name="ccslmoc" nsURI="http://org.gemoc.mocc.ccslmoc/1.0" nsPrefix="ccslmoc">
+    <eClassifiers xsi:type="ecore:EClass" name="CCSLLibrary" eSuperTypes="#//MoCLibrary ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/Library"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSLStateMachineRelationDefinition"
+        eSuperTypes="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/ExternalRelationDefinition #//fsmdefinition/FiniteStateMachine">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="concreteEntities" upperBound="-1"
+          eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/ConcreteEntity"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="classicalExpressions"
+          upperBound="-1" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/ClassicalExpression"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSLAction" abstract="true" eSuperTypes="#//fsmdefinition/Action"/>
+    <eClassifiers xsi:type="ecore:EClass" name="FinishClock" eSuperTypes="#//ccslmoc/CCSLAction">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="clock" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerAssignement" eSuperTypes="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/BinaryIntegerExpression #//ccslmoc/CCSLAction"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSLGuard" eSuperTypes="#//fsmdefinition/Guard">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/BooleanExpression"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CCSLTrigger" eSuperTypes="#//fsmdefinition/Trigger">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="trueTriggers" upperBound="-1"
+          eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="falseTriggers" upperBound="-1"
+          eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="fsmdefinition" nsURI="http://org.gemoc.mocc.fsmdefinition/1.0"
+      nsPrefix="fsmdefinition">
+    <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//NamedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The notion of State in Cometa is a description of a state of control. A control state contributes in regulating incoming and outgoing requests of various concurrent&#xD;&#xA;entities. It allows defining the order in which the various requests must precede or succeed. This is done by describing in each state the authorized events / requests, and by defining the successors and predecessors states (of each state) that are part of the synchronization process."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+          eType="#//fsmdefinition/Action" containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Action: The action function is defined for the State and Transition. In both cases, the function references the Block they integrate. In the notation of action, a stands for State or Transition. The Blocks define the sequences of instructions for internal and external communication. The internal communication is the communication between control FSM and external control is the answer provided to each requesting concurrent entity."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inputTransitions" upperBound="-1"
+          eType="#//fsmdefinition/Transition" eOpposite="#//fsmdefinition/Transition/source"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="outputTransitions" upperBound="-1"
+          eType="#//fsmdefinition/Transition" eOpposite="#//fsmdefinition/Transition/target"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NamedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The concept of Transition is used to describe the relationships between the various states of the control FSM. They are used to define relations of succession and precedence between the control states. Specifically, Cometa transitions define references source, target to denote the &lt; source > states and &lt; target > states for a given transition."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+          eType="#//fsmdefinition/State" eOpposite="#//fsmdefinition/State/inputTransitions"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//fsmdefinition/State" eOpposite="#//fsmdefinition/State/outputTransitions"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//fsmdefinition/Guard"
+          containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The conditions on transitions are referenced as the &quot;guard&quot;. A &quot;guard&quot; is placed on the transition expression and its evaluation is mandatory for the state change."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//fsmdefinition/Trigger"
+          containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Transitions have &quot;trigger&quot; reference that is of type Event. The occurrence of an event called the &quot;trigger&quot; may involve state change during the control process if all additional conditions on the transition are verified.&#xD;&#xA;In the context of Cometa, occurrences of events that are &quot;trigger&quot; are MoCInterfaces (Send / Receive / Ack) and MoCEvents."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+          eType="#//fsmdefinition/Action" containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Action: The action function is defined for the State and Transition. In both cases, the function references the Block they integrate. In the notation of action, a stands for State or Transition. The Blocks define the sequences of instructions for internal and external communication. The internal communication is the communication between control FSM and external control is the answer provided to each requesting concurrent entity."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FiniteStateMachine" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
+          eType="#//fsmdefinition/Transition" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+          eType="#//fsmdefinition/State" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="initialState" lowerBound="1"
+          eType="#//fsmdefinition/State"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="finalStates" upperBound="-1"
+          eType="#//fsmdefinition/State"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Action" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Guard" abstract="true"/>
+  </eSubpackages>
+</ecore:EPackage>

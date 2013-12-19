@@ -4,7 +4,7 @@
     modelDirectory="/fr.obeo.dsl.sirius.animation/src-gen" creationIcons="false" editDirectory="/fr.obeo.dsl.sirius.animation.edit/src-gen"
     editorDirectory="/fr.obeo.dsl.sirius.animation.editor/src-gen" modelPluginID="fr.obeo.dsl.sirius.animation"
     modelName="Animation" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    copyrightFields="false">
   <foreignModel>animation.ecore</foreignModel>
   <genPackages prefix="Animation" basePackage="fr.obeo.dsl.sirius" disposableProviderFactory="true"
       ecorePackage="animation.ecore#/">
@@ -27,7 +27,6 @@
     </genClasses>
     <genClasses ecoreClass="animation.ecore#//StackFrame">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/variables"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/subFrames"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//StackFrame/state"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference animation.ecore#//StackFrame/parent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute animation.ecore#//StackFrame/name"/>

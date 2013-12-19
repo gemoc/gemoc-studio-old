@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Observable;
 
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.execution.engine.io.Backend;
+import org.gemoc.execution.engine.io.core.Backend;
 
 /**
  * A very simple backend that writes in the console the strings it is given.

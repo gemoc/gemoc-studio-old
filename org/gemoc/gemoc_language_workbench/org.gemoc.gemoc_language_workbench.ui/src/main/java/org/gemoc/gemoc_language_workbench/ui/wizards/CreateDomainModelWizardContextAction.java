@@ -28,7 +28,7 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectEMFIProjectDialog;
 
-import fr.obeo.mda.ecore.design.wizard.EcoreModelerWizard;
+//import org.eclipse.emf.ecoretools.design.wizard.EcoreModelerWizard;
 
 
 /**
@@ -83,7 +83,7 @@ public class CreateDomainModelWizardContextAction {
 				IWizard wizard;
 				wizard = descriptor.createWizard();
 				// this wizard need some dedicated initialization
-				((EcoreModelerWizard )wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
+				//((EcoreModelerWizard )wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
 				//((EcoreModelWizard)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) selection);
 				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 				wd.create();

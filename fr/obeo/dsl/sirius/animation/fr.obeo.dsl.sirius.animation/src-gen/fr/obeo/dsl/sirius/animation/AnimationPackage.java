@@ -138,22 +138,13 @@ public interface AnimationPackage extends EPackage {
 	int STACK_FRAME__VARIABLES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Sub Frames</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STACK_FRAME__SUB_FRAMES = 1;
-
-	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME__STATE = 2;
+	int STACK_FRAME__STATE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -162,7 +153,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME__PARENT = 3;
+	int STACK_FRAME__PARENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -171,7 +162,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME__NAME = 4;
+	int STACK_FRAME__NAME = 3;
 
 	/**
 	 * The feature id for the '<em><b>Data</b></em>' containment reference.
@@ -180,7 +171,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME__DATA = 5;
+	int STACK_FRAME__DATA = 4;
 
 	/**
 	 * The feature id for the '<em><b>Current Instruction</b></em>' reference.
@@ -189,7 +180,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME__CURRENT_INSTRUCTION = 6;
+	int STACK_FRAME__CURRENT_INSTRUCTION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Parent Stack</b></em>' reference.
@@ -198,7 +189,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME__PARENT_STACK = 7;
+	int STACK_FRAME__PARENT_STACK = 6;
 
 	/**
 	 * The feature id for the '<em><b>Execution Environment</b></em>' reference.
@@ -207,7 +198,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME__EXECUTION_ENVIRONMENT = 8;
+	int STACK_FRAME__EXECUTION_ENVIRONMENT = 7;
 
 	/**
 	 * The number of structural features of the '<em>Stack Frame</em>' class.
@@ -216,7 +207,7 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME_FEATURE_COUNT = 9;
+	int STACK_FRAME_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.sirius.animation.impl.VariableImpl <em>Variable</em>}' class.
@@ -432,17 +423,6 @@ public interface AnimationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getStackFrame_Variables();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fr.obeo.dsl.sirius.animation.StackFrame#getSubFrames <em>Sub Frames</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sub Frames</em>'.
-	 * @see fr.obeo.dsl.sirius.animation.StackFrame#getSubFrames()
-	 * @see #getStackFrame()
-	 * @generated
-	 */
-	EReference getStackFrame_SubFrames();
 
 	/**
 	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.sirius.animation.StackFrame#getState <em>State</em>}'.
@@ -732,14 +712,6 @@ public interface AnimationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference STACK_FRAME__VARIABLES = eINSTANCE.getStackFrame_Variables();
-
-		/**
-		 * The meta object literal for the '<em><b>Sub Frames</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference STACK_FRAME__SUB_FRAMES = eINSTANCE.getStackFrame_SubFrames();
 
 		/**
 		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.

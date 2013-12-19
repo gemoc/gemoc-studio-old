@@ -218,6 +218,16 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	}
 
 	@Override
+	public void pause() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void stepBack(int numberOfSteps) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
 	public void runOneStep(final ModelSpecificEvent mse) {
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override

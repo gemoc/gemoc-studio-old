@@ -26,60 +26,18 @@ Gemoc Language Workbench.
          version="0.0.0"
          unpack="false"/>
 
-   <!--<plugin
-         id="org.gemoc.execution.engine.actions"
+   <plugin
+         id="org.gemoc.execution.engine.commons"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.gemoc.execution.engine.events"
+         id="org.gemoc.execution.engine.io"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
-   <plugin
-         id="org.gemoc.execution.engine.executors"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.execution.engine.executors.emf"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.execution.engine.feedback.data"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.execution.engine.feedback.policy"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.execution.engine.launcher"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.execution.engine.solvers"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
--->
 </feature>

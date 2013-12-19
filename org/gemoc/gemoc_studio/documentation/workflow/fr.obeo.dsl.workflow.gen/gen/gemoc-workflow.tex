@@ -1,3 +1,4 @@
+% Start of user code protected header
 \documentclass{gemoc} %% no option needed, default is : 10pt, twoside, babel[ english] , graphicx
 \usepackage{color}
 \usepackage[colorlinks=true]{hyperref}
@@ -12,7 +13,6 @@
 \begin{document}
 \maketitle
 
-%Start of user code revisions
 \begin{revisions}
 	\begin{revtable}
 		\dates{}{}{}{}{}
@@ -23,169 +23,345 @@
 		\revlabel{}
 	\end{revisionlabels}
 \end{revisions}
-%End of user code
-
-%Start of user code tableofauthors
 \begin{tableofauthors}
 	\leadauthor{Didier Vojtisek}{INRIA}
 	\contributor{$<$Name$>$}{$<$Organisation$>$}
 \end{tableofauthors}
-%End of user code
 
 \tableofcontents
 \newpage
 
 \chapter{Gemoc language workbench workflow}
-Start of user code summary
-	TODO intro gemoc language workbench workflow
-End of user code
-\section{Create language workbench definition}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:Create_language_workbench_definition}
-%Start of user code Create language workbench definition
+
 %End of user code
-%Start of user code Create language workbench definitionDescription
-%End of user code 
-
-TODO
-
-\subsection{Create language workbench}
-TODO
+%Start of user code summary
+The figure \ref{fig:gemoc_worflow} presents the global view of the workflow of the different activities of the Language Workbench.
 
 
-\subsubsection{Language workbench project}
-TODO
-\subsubsection{xdsml file}
-TODO
-\section{Define language}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:Define_language}
-%Start of user code Define language
+In further sections each activity will be detailled by also presenting the major concrete artefacts resulting from the Commands.
 %End of user code
-%Start of user code Define languageDescription
-%End of user code 
+\begin{figure}[h]
+		\center
+		\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{fig/Gemoc_workflow}
+		\caption{Gemoc Language Workbench workflow activities and supported tools}
+		\label{fig:gemoc_worflow}
+\end{figure}
 
-TODO
-
-\subsection{Create EMF Project}
-TODO
-
-
-\subsubsection{EMF project}
-TODO
-\subsubsection{ecore}
-TODO
-\subsubsection{genmodel}
-TODO
-\subsubsection{xdsml}
-TODO
-\section{Define editors}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:Define_editors}
-%Start of user code Define editors
+% Start of user code protected summary_legend
+Legend:
+\begin{itemize}
+	\item \includegraphics[width=1cm]{fig/step} Activity: an activity is a step of the workflow. Each activity is supported by at least one concrete Command
+	\item \includegraphics[width=0.7cm]{fig/command} Command: a command is a concrete action of the studio, usually implemented as a wizard.
+	\item \includegraphics[width=0.5cm]{fig/artifact_add} Artifact creation: Artifact created as the result of a command.
+	\item \includegraphics[width=0.5cm]{fig/artifact_update} Artifact update:  Artifact updated as the result of a command.
+\end{itemize}
 %End of user code
-%Start of user code Define editorsDescription
-%End of user code 
-
-TODO
-
-\subsection{Create tree editor}
-TODO
-
-
-\subsubsection{Edit project}
-TODO
-\subsubsection{Editor project}
-TODO
-\subsubsection{xdsml}
-TODO
-\subsection{Create Xtext editor}
-TODO
-
-
-\subsubsection{Xtext project}
-TODO
-\subsubsection{Xtext.ui project}
-TODO
-\subsubsection{xdsml}
-TODO
-\subsection{Create Sirius editor}
-TODO
-
-
-\subsubsection{Sirius specification project}
-TODO
-\subsubsection{xdsml}
-TODO
-\section{Define DSA}
+\section{xDSML definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:Define_DSA}
-%Start of user code Define DSA
+\label{sec:xDSML_definition}
+% Start of user code protected xDSML definition
 %End of user code
-%Start of user code Define DSADescription
-%End of user code 
+\begin{figure}[h]
+		\center
+		\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{fig/xDSML_definition}
+		\caption{xDSML definition activity}
+		\label{fig:xDSML_definition}
+\end{figure}
 
-TODO
+The \emph{Create language workbench definition} Activity is the global activity of assembling the various components of a xDSML tool suite.
 
-\subsection{K2}
-TODO
+The figure \ref{fig:xDSML_definition} presents the activity and its supporting Commands.
 
+\subsection{New Gemoc Language project Command}
+The \emph{New Gemoc Language project} Command is a wizard that creates the eclipse project hosting the xdsml definition and the glue code connecting the components for this definition.
+\subsubsection{Created artefacts}
+Artifacts created by the New Gemoc Language project Command:
+\paragraph{Gemoc Language project} 
+This is the eclipse project hosting the xdsml definition and the glue code connecting the components for this definition.\paragraph{xdsml file} 
+This is the definition of the language assembly. It acts as a dashboard presenting the implementation choices and provide a link to the concrete implementations components.
+\subsubsection{Updated artefacts}
+Artifacts updated by the New Gemoc Language project Command:
 
-\subsubsection{K2 project}
-TODO
-\subsubsection{xdsml}
-TODO
-\subsection{K3}
-TODO
+	None
 
-
-\subsubsection{K3 project}
-TODO
-\subsubsection{xdsml}
-TODO
-\section{Define MOC}
+\section{Domain Model definition (AS)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:Define_MOC}
-%Start of user code Define MOC
+\label{sec:Domain_Model_definition_(AS)}
+% Start of user code protected Domain Model definition (AS)
 %End of user code
-%Start of user code Define MOCDescription
-%End of user code 
+\begin{figure}[h]
+		\center
+		\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{fig/Domain_Model_definition_(AS)}
+		\caption{Domain Model definition (AS) activity}
+		\label{fig:Domain_Model_definition_(AS)}
+\end{figure}
 
-TODO
+The \emph{Domain Model definition} Activity is the activity of creating the domain model and the components that implement this model.
 
-\subsection{Moc project}
-TODO
+The figure \ref{fig:Domain_Model_definition_(AS)} presents the activity and its supporting Commands.
 
+\subsection{New EMF Project Command}
+The \emph{New EMF Project} Command is a wizard that creates a new eclipse project hosting the ecore file of the domain definition and its java implementation in an eclipse plugin.
+\subsubsection{Created artefacts}
+Artifacts created by the New EMF Project Command:
+\paragraph{EMF project} 
+This artifact is an eclipse plugin project that hosts a ecore file and its java implementation.\paragraph{ecore} 
+This artifact is an ecore model representing the domain of the xDSML.\paragraph{genmodel} 
+This artifact is an genmodel file that is used internally by the eclipse plugin to build the java implementation.
+\subsubsection{Updated artefacts}
+Artifacts updated by the New EMF Project Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
 
-\section{DSE project}
+\subsection{Select existing EMF Project Command}
+The \emph{New EMF Project} Command is a wizard that selects an eclipse plugin project hosting the ecore file of the domain definition and its java implementation.
+\subsubsection{Created artefacts}
+Artifacts created by the Select existing EMF Project Command:
+
+	None
+\subsubsection{Updated artefacts}
+Artifacts updated by the Select existing EMF Project Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\section{Modelers definition (CS)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:DSE_project}
-%Start of user code DSE project
+\label{sec:Modelers_definition_(CS)}
+% Start of user code protected Modelers definition (CS)
 %End of user code
-%Start of user code DSE projectDescription
-%End of user code 
+\begin{figure}[h]
+		\center
+		\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{fig/Modelers_definition_(CS)}
+		\caption{Modelers definition (CS) activity}
+		\label{fig:Modelers_definition_(CS)}
+\end{figure}
 
-TODO
+This activity will create or associated implementations of concrete syntaxes for the domain Model.
 
-\subsection{ECL}
-TODO
+The figure \ref{fig:Modelers_definition_(CS)} presents the activity and its supporting Commands.
 
+\subsection{New Tree editor Command}
+The \emph{New tree editor} command is in charge of creating the plugins implementing a tree editor using EMF based on the Domain Model.
+\subsubsection{Created artefacts}
+Artifacts created by the New Tree editor Command:
+\paragraph{Edit project} 
+The \emph{Edit project} is an eclipse project that is part of a tree editor.\paragraph{Editor project} 
+The \emph{Editor project} is an eclipse project that is part of a tree editor.
+\subsubsection{Updated artefacts}
+Artifacts updated by the New Tree editor Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
 
-\subsubsection{ecl file}
-TODO
-\subsubsection{xdsml}
-TODO
-\subsection{Modelhex}
-TODO
+\subsection{Select existing Tree editor Command}
+This Command is a wizard that selects existing eclipse plugin projects hosting a tree editor implementation.
+\subsubsection{Created artefacts}
+Artifacts created by the Select existing Tree editor Command:
 
+	None
+\subsubsection{Updated artefacts}
+Artifacts updated by the Select existing Tree editor Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
 
-\section{Animator}
+\subsection{New Xtext editor Command}
+The \emph{Create Xtext editor} command is in charge of creating the plugins implementing a textual editor using Xtext based on the Domain Model.
+\subsubsection{Created artefacts}
+Artifacts created by the New Xtext editor Command:
+\paragraph{Xtext project} 
+The \emph{Xtext project} is an eclipse project that is part of a textual editor editor.\paragraph{Xtext.ui project} 
+The \emph{Xtext.ui project} is an eclipse project that is part of a textual editor editor.
+\subsubsection{Updated artefacts}
+Artifacts updated by the New Xtext editor Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\subsection{Select existing Xtext editor Command}
+This Command is a wizard that selects existing eclipse plugin projects hosting a Xtext editor implementation.
+\subsubsection{Created artefacts}
+Artifacts created by the Select existing Xtext editor Command:
+
+	None
+\subsubsection{Updated artefacts}
+Artifacts updated by the Select existing Xtext editor Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\subsection{New Sirius editor Command}
+The \emph{New Sirius editor} command is in charge of creating the plugins implementing a textual editor using Sirius framework based on the Domain Model.
+\subsubsection{Created artefacts}
+Artifacts created by the New Sirius editor Command:
+\paragraph{Sirius specification project} 
+The \emph{Sirius specification project} is an eclipse project that implements a Sirius editor.
+\subsubsection{Updated artefacts}
+Artifacts updated by the New Sirius editor Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\subsection{Select existing Sirius editor Command}
+This Command is a wizard that selects existing eclipse plugin projects hosting a Sirius editor implementation.
+\subsubsection{Created artefacts}
+Artifacts created by the Select existing Sirius editor Command:
+
+	None
+\subsubsection{Updated artefacts}
+Artifacts updated by the Select existing Sirius editor Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\section{Execution function and Data definition (DSA)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:Animator}
-%Start of user code Animator
+\label{sec:Execution_function_and_Data_definition_(DSA)}
+% Start of user code protected Execution function and Data definition (DSA)
 %End of user code
-%Start of user code AnimatorDescription
-%End of user code 
+\begin{figure}[h]
+		\center
+		\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{fig/Execution_function_and_Data_definition_(DSA)}
+		\caption{Execution function and Data definition (DSA) activity}
+		\label{fig:Execution_function_and_Data_definition_(DSA)}
+\end{figure}
 
-TODO
+This is the activity of creating the components that implement the execution function and data of the Domain Model for the xDSML.
 
+The figure \ref{fig:Execution_function_and_Data_definition_(DSA)} presents the activity and its supporting Commands.
+
+\subsection{New Kermeta 2 project Command}
+This command is a wizard that is in charge of creating the plugin implementing the DSA using Kermeta 2.
+\subsubsection{Created artefacts}
+Artifacts created by the New Kermeta 2 project Command:
+\paragraph{K2 project} 
+This is an eclipse project written in Kermeta 2 that implements the DSA for the xDSML.
+\subsubsection{Updated artefacts}
+Artifacts updated by the New Kermeta 2 project Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\subsection{Select existing Kermeta 2 project Command}
+This command is a wizard that is in charge of selecting an existing plugin implementing the DSA using Kermeta 2.
+\subsubsection{Created artefacts}
+Artifacts created by the Select existing Kermeta 2 project Command:
+
+	None
+\subsubsection{Updated artefacts}
+Artifacts updated by the Select existing Kermeta 2 project Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\subsection{New Kermeta 3 project Command}
+This command is a wizard that is in charge of selecting an existing plugin implementing the DSA using Kermeta 3.
+\subsubsection{Created artefacts}
+Artifacts created by the New Kermeta 3 project Command:
+\paragraph{K3 project} 
+This is an eclipse project written in Kermeta 3 that implements the DSA for the xDSML.
+\subsubsection{Updated artefacts}
+Artifacts updated by the New Kermeta 3 project Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\subsection{Select existing Kermeta 3 project Command}
+This command is a wizard that is in charge of selecting an existing plugin implementing the DSA using Kermeta 3.
+\subsubsection{Created artefacts}
+Artifacts created by the Select existing Kermeta 3 project Command:
+
+	None
+\subsubsection{Updated artefacts}
+Artifacts updated by the Select existing Kermeta 3 project Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the selected artifacts so the glue can be automatically adapted to use them.
+
+\section{Concurrency model definition (MOC)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Concurrency_model_definition_(MOC)}
+% Start of user code protected Concurrency model definition (MOC)
+%End of user code
+\begin{figure}[h]
+		\center
+		\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{fig/Concurrency_model_definition_(MOC)}
+		\caption{Concurrency model definition (MOC) activity}
+		\label{fig:Concurrency_model_definition_(MOC)}
+\end{figure}
+
+This activity is in charge of creating the components that implement the model of computation of the Domain Model for the xDSML. 
+
+The figure \ref{fig:Concurrency_model_definition_(MOC)} presents the activity and its supporting Commands.
+
+\subsection{New CCSL Moc project Command}
+The current implementation supposes that the DSE written in ECL have an import to the MoC definition. This MoC definition is supposed to be a ccslLib file that is bundled in an eclipse plugin.
+\subsubsection{Created artefacts}
+Artifacts created by the New CCSL Moc project Command:
+\paragraph{eclipse plugin project} 
+This is an eclipse plugin project that host and deploy the ccslLib file.\paragraph{ccslLib file} 
+This is the ccslLib file implementing the MOC in CCSL.
+\subsubsection{Updated artefacts}
+Artifacts updated by the New CCSL Moc project Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\section{Behavioral observation definition (DSE)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Behavioral_observation_definition_(DSE)}
+% Start of user code protected Behavioral observation definition (DSE)
+%End of user code
+\begin{figure}[h]
+		\center
+		\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{fig/Behavioral_observation_definition_(DSE)}
+		\caption{Behavioral observation definition (DSE) activity}
+		\label{fig:Behavioral_observation_definition_(DSE)}
+\end{figure}
+
+This is the activity of creating the components that implement the Domain Specific Event for the xDSML.
+
+The figure \ref{fig:Behavioral_observation_definition_(DSE)} presents the activity and its supporting Commands.
+
+\subsection{New ECL file Command}
+The command is in charge of creating the plugin hosting the DSE. this plugin is written using ECL.
+\subsubsection{Created artefacts}
+Artifacts created by the New ECL file Command:
+\paragraph{ecl file} 
+The \emph{ecl file} is the implementation of the DSE written in ECL.
+\subsubsection{Updated artefacts}
+Artifacts updated by the New ECL file Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the created artifacts so the glue can be automatically adapted to use them.
+
+\subsection{New Modelh'x project Command}
+Not implemented in this version of the Studio.
+\subsubsection{Created artefacts}
+Artifacts created by the New Modelh'x project Command:
+
+	None
+\subsubsection{Updated artefacts}
+Artifacts updated by the New Modelh'x project Command:
+
+	None
+
+\subsection{Select existing ECL file Command}
+This command is a wizard that is in charge of selecting an existing plugin implementing the DSE using ECL.
+\subsubsection{Created artefacts}
+Artifacts created by the Select existing ECL file Command:
+
+	None
+\subsubsection{Updated artefacts}
+Artifacts updated by the Select existing ECL file Command:
+\paragraph{xdsml} 
+The command also updates the xdsml artifact in order to indicates the various location of the ECL file so the glue can automatically create a qvto transformation from it and deploy it.
+
+\section{Animators definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:Animators_definition}
+% Start of user code protected Animators definition
+%End of user code
+\begin{figure}[h]
+		\center
+		\includegraphics*[trim=0.0cm 0.0cm 0cm 0.0cm, clip=true]{fig/Animators_definition}
+		\caption{Animators definition activity}
+		\label{fig:Animators_definition}
+\end{figure}
+
+Not implemented in this version of the Studio.
+
+The figure \ref{fig:Animators_definition} presents the activity and its supporting Commands.
+
+
+%Start of user code protected footer
+\end{document}
+%End of user code

@@ -32,13 +32,15 @@
    <requires>
       <import feature="org.kermeta.language.feature" version="2.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
-      <import feature="fr.inria.aoste.timesquare.feature" version="0.0.0" match="greaterOrEqual"/>
+      <!-- disabled as long as it depends on the Obeo Designer feature
+      <import feature="fr.inria.aoste.timesquare.feature" version="0.0.0" match="greaterOrEqual"/> 
       <import feature="fr.inria.aoste.timesquare.ecl.feature" version="0.0.0" match="greaterOrEqual"/>
+      -->
       <import feature="org.eclipse.m2m.qvt.oml.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtend.sdk" version="2.4.2.v201306120542" match="greaterOrEqual"/>
       <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecoretools.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecoretools.design" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_language_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_modeling_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.k3.eclipse.K3Feature" version="0.0.0" match="greaterOrEqual"/>

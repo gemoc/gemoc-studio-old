@@ -2,7 +2,8 @@ package org.gemoc.execution.engine.commons;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-
+import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
+import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -15,6 +16,18 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
+
+	protected static EclipseMessagingSystem messagingSystem = null;
+
+	public static EclipseMessagingSystem getMessagingSystem() {
+		if (messagingSystem == null) {
+			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
+					"GEMOC Execution Engine");
+			((EclipseMessagingSystem) messagingSystem)
+					.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
+		}
+		return messagingSystem;
+	}
 
 	/**
 	 * The constructor
