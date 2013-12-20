@@ -31,24 +31,6 @@ public interface UsageFactory extends EFactory {
 	Clock createClock();
 
 	/**
-	 * Returns a new object of class '<em>Custom Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Custom Constraint</em>'.
-	 * @generated
-	 */
-	CustomConstraint createCustomConstraint();
-
-	/**
-	 * Returns a new object of class '<em>Once</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Once</em>'.
-	 * @generated
-	 */
-	Once createOnce();
-
-	/**
 	 * Returns a new object of class '<em>Precedes</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,15 +38,6 @@ public interface UsageFactory extends EFactory {
 	 * @generated
 	 */
 	Precedes createPrecedes();
-
-	/**
-	 * Returns a new object of class '<em>Wait Until</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Wait Until</em>'.
-	 * @generated
-	 */
-	WaitUntil createWaitUntil();
 
 	/**
 	 * Returns the package supported by this factory.

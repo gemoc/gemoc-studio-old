@@ -3,6 +3,7 @@
 package glml;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface MocRelation extends EObject {
-
 	/**
 	 * Returns the value of the '<em><b>Arguments</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
@@ -38,4 +38,5 @@ public interface MocRelation extends EObject {
 	 * @generated
 	 */
 	EList<EObject> getArguments();
+
 } // MocRelation

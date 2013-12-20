@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.dse_language.language_level/src" modelPluginID="org.gemoc.dse_language.language_level"
     modelName="GemocLanguageMappingLanguage" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
-    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.gemoc.execution.javasolver.input/model/JavaSolverInput.genmodel#//javasolverinput ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel"
     operationReflection="true" importOrganizing="true">
   <foreignModel>GemocLanguageMappingLanguage.ecore</foreignModel>
   <genPackages prefix="Glml" disposableProviderFactory="true" ecorePackage="GemocLanguageMappingLanguage.ecore#/">
@@ -34,9 +34,7 @@
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//ExtendedCcslRelation">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ExtendedCcslRelation/relation"/>
     </genClasses>
-    <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//JavaSolverRelation">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//JavaSolverRelation/relation"/>
-    </genClasses>
+    <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//JavaSolverRelation"/>
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent/reification"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent/condition"/>

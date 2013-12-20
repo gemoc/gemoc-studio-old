@@ -4,27 +4,17 @@ package javasolverinput.usage.impl;
 
 import javasolverinput.JavasolverinputPackage;
 
-import javasolverinput.creation.CreationPackage;
-
-import javasolverinput.creation.impl.CreationPackageImpl;
-
 import javasolverinput.impl.JavasolverinputPackageImpl;
 
-import javasolverinput.usage.BootstrappedConstraint;
 import javasolverinput.usage.Clock;
 import javasolverinput.usage.Constraint;
-import javasolverinput.usage.CustomConstraint;
-import javasolverinput.usage.Once;
 import javasolverinput.usage.Precedes;
 import javasolverinput.usage.UsageFactory;
 import javasolverinput.usage.UsagePackage;
 
-import javasolverinput.usage.WaitUntil;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -47,27 +37,6 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass customConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass bootstrappedConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass onceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass precedesEClass = null;
 
 	/**
@@ -76,13 +45,6 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 	 * @generated
 	 */
 	private EClass constraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass waitUntilEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -130,22 +92,16 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 
 		isInited = true;
 
-		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
-
 		// Obtain or create and register interdependencies
 		JavasolverinputPackageImpl theJavasolverinputPackage = (JavasolverinputPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(JavasolverinputPackage.eNS_URI) instanceof JavasolverinputPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(JavasolverinputPackage.eNS_URI) : JavasolverinputPackage.eINSTANCE);
-		CreationPackageImpl theCreationPackage = (CreationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CreationPackage.eNS_URI) instanceof CreationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CreationPackage.eNS_URI) : CreationPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theUsagePackage.createPackageContents();
 		theJavasolverinputPackage.createPackageContents();
-		theCreationPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theUsagePackage.initializePackageContents();
 		theJavasolverinputPackage.initializePackageContents();
-		theCreationPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theUsagePackage.freeze();
@@ -170,42 +126,6 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCustomConstraint() {
-		return customConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCustomConstraint_Type() {
-		return (EReference)customConstraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBootstrappedConstraint() {
-		return bootstrappedConstraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOnce() {
-		return onceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPrecedes() {
 		return precedesEClass;
 	}
@@ -215,35 +135,26 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPrecedes_Clock1() {
+		return (EReference)precedesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPrecedes_Clock2() {
+		return (EReference)precedesEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConstraint() {
 		return constraintEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getConstraint_Arguments() {
-		return (EReference)constraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getWaitUntil() {
-		return waitUntilEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getWaitUntil_Date() {
-		return (EAttribute)waitUntilEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -276,20 +187,11 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 		// Create classes and their features
 		clockEClass = createEClass(CLOCK);
 
-		customConstraintEClass = createEClass(CUSTOM_CONSTRAINT);
-		createEReference(customConstraintEClass, CUSTOM_CONSTRAINT__TYPE);
-
-		bootstrappedConstraintEClass = createEClass(BOOTSTRAPPED_CONSTRAINT);
-
-		onceEClass = createEClass(ONCE);
-
 		precedesEClass = createEClass(PRECEDES);
+		createEReference(precedesEClass, PRECEDES__CLOCK1);
+		createEReference(precedesEClass, PRECEDES__CLOCK2);
 
 		constraintEClass = createEClass(CONSTRAINT);
-		createEReference(constraintEClass, CONSTRAINT__ARGUMENTS);
-
-		waitUntilEClass = createEClass(WAIT_UNTIL);
-		createEAttribute(waitUntilEClass, WAIT_UNTIL__DATE);
 	}
 
 	/**
@@ -317,8 +219,6 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 
 		// Obtain other dependent packages
 		JavasolverinputPackage theJavasolverinputPackage = (JavasolverinputPackage)EPackage.Registry.INSTANCE.getEPackage(JavasolverinputPackage.eNS_URI);
-		CreationPackage theCreationPackage = (CreationPackage)EPackage.Registry.INSTANCE.getEPackage(CreationPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -326,30 +226,17 @@ public class UsagePackageImpl extends EPackageImpl implements UsagePackage {
 
 		// Add supertypes to classes
 		clockEClass.getESuperTypes().add(theJavasolverinputPackage.getNamedElement());
-		customConstraintEClass.getESuperTypes().add(this.getConstraint());
-		bootstrappedConstraintEClass.getESuperTypes().add(this.getConstraint());
-		onceEClass.getESuperTypes().add(this.getBootstrappedConstraint());
-		precedesEClass.getESuperTypes().add(this.getBootstrappedConstraint());
+		precedesEClass.getESuperTypes().add(this.getConstraint());
 		constraintEClass.getESuperTypes().add(theJavasolverinputPackage.getNamedElement());
-		waitUntilEClass.getESuperTypes().add(this.getBootstrappedConstraint());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(clockEClass, Clock.class, "Clock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(customConstraintEClass, CustomConstraint.class, "CustomConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCustomConstraint_Type(), theCreationPackage.getRelationDeclaration(), null, "type", null, 1, 1, CustomConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(bootstrappedConstraintEClass, BootstrappedConstraint.class, "BootstrappedConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(onceEClass, Once.class, "Once", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(precedesEClass, Precedes.class, "Precedes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPrecedes_Clock1(), this.getClock(), null, "clock1", null, 1, 1, Precedes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrecedes_Clock2(), this.getClock(), null, "clock2", null, 1, 1, Precedes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConstraint_Arguments(), theEcorePackage.getEObject(), null, "arguments", null, 0, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(waitUntilEClass, WaitUntil.class, "WaitUntil", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWaitUntil_Date(), ecorePackage.getEIntegerObject(), "date", null, 1, 1, WaitUntil.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //UsagePackageImpl

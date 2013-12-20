@@ -105,10 +105,14 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		// resource to be correctly detected...
 		if (domainSpecificEventsResource == null) {
 			ResourceSet resSet = new ResourceSetImpl();
+//			domainSpecificEventsResource = resSet
+//					.getResource(
+//							URI.createURI("platform:/resource/org.gemoc.sample.tfsm.dse/ecl/TFSM.ecl"),
+//							true);
 			domainSpecificEventsResource = resSet
 					.getResource(
-							URI.createURI("platform:/resource/org.gemoc.sample.tfsm.dse/ecl/TFSM.ecl"),
-							true);
+							URI.createURI("platform:/plugin/org.gemoc.sample.tfsm.dse/glml/MyDomainSpecificEvents.glml"),
+							true); 
 		}
 
 		Activator

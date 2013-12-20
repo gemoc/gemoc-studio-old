@@ -156,13 +156,9 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import javasolverinput.usage.provider.UsageItemProviderAdapterFactory;
 
-import javasolverinput.creation.provider.CreationItemProviderAdapterFactory;
-
 import javasolverinput.presentation.JavaSolverInputEditorPlugin;
 
 import javasolverinput.provider.JavasolverinputItemProviderAdapterFactory;
-
-import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
@@ -710,9 +706,7 @@ public class UsageEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new JavasolverinputItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new CreationItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new UsageItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

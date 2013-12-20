@@ -129,7 +129,7 @@ public class EclToCcslTranslator implements SolverInputBuilder {
 		// }
 		//
 		// return outputResource;
-		throw new RuntimeException();
+		throw new UnsupportedOperationException();
 	}
 
 	/**

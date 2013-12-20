@@ -74,12 +74,14 @@ public class CcslSolver implements
 					EList<EObject> linkedObjects = c.getTickingEvent()
 							.getReferencedObjectRefs();
 					if (linkedObjects.size() == 2) {
-						eventOccurrence.setContext(HelperFactory
+						// OLD (for ECL). Removed because I'm testing with GLML.
+						/*eventOccurrence.setContext(HelperFactory
 								.createModelElementReference(linkedObjects
 										.get(0)));
 						eventOccurrence.setReferedElement(HelperFactory
 								.createModelElementReference(linkedObjects
-										.get(1)));
+										.get(1)));*/
+						eventOccurrence.setReferedElement(HelperFactory.createNamedReference(c.getTickingEvent().getName()));
 					}
 				}
 			}

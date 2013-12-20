@@ -131,22 +131,13 @@ public interface JavasolverinputPackage extends EPackage {
 	int JAVA_SOLVER_INPUT_FILE__CONSTRAINTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Relation Declarations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Java Solver Input File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JAVA_SOLVER_INPUT_FILE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int JAVA_SOLVER_INPUT_FILE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Java Solver Input File</em>' class.
@@ -210,17 +201,6 @@ public interface JavasolverinputPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getJavaSolverInputFile_Constraints();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link javasolverinput.JavaSolverInputFile#getRelationDeclarations <em>Relation Declarations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Relation Declarations</em>'.
-	 * @see javasolverinput.JavaSolverInputFile#getRelationDeclarations()
-	 * @see #getJavaSolverInputFile()
-	 * @generated
-	 */
-	EReference getJavaSolverInputFile_RelationDeclarations();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -288,14 +268,6 @@ public interface JavasolverinputPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JAVA_SOLVER_INPUT_FILE__CONSTRAINTS = eINSTANCE.getJavaSolverInputFile_Constraints();
-
-		/**
-		 * The meta object literal for the '<em><b>Relation Declarations</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS = eINSTANCE.getJavaSolverInputFile_RelationDeclarations();
 
 	}
 

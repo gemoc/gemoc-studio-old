@@ -7,10 +7,6 @@ import javasolverinput.JavasolverinputFactory;
 import javasolverinput.JavasolverinputPackage;
 import javasolverinput.NamedElement;
 
-import javasolverinput.creation.CreationPackage;
-
-import javasolverinput.creation.impl.CreationPackageImpl;
-
 import javasolverinput.usage.UsagePackage;
 
 import javasolverinput.usage.impl.UsagePackageImpl;
@@ -19,7 +15,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -90,21 +85,15 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 
 		isInited = true;
 
-		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
-
 		// Obtain or create and register interdependencies
-		CreationPackageImpl theCreationPackage = (CreationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CreationPackage.eNS_URI) instanceof CreationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CreationPackage.eNS_URI) : CreationPackage.eINSTANCE);
 		UsagePackageImpl theUsagePackage = (UsagePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(UsagePackage.eNS_URI) instanceof UsagePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(UsagePackage.eNS_URI) : UsagePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theJavasolverinputPackage.createPackageContents();
-		theCreationPackage.createPackageContents();
 		theUsagePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theJavasolverinputPackage.initializePackageContents();
-		theCreationPackage.initializePackageContents();
 		theUsagePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
@@ -166,15 +155,6 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getJavaSolverInputFile_RelationDeclarations() {
-		return (EReference)javaSolverInputFileEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public JavasolverinputFactory getJavasolverinputFactory() {
 		return (JavasolverinputFactory)getEFactoryInstance();
 	}
@@ -204,7 +184,6 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 		javaSolverInputFileEClass = createEClass(JAVA_SOLVER_INPUT_FILE);
 		createEReference(javaSolverInputFileEClass, JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS);
 		createEReference(javaSolverInputFileEClass, JAVA_SOLVER_INPUT_FILE__CONSTRAINTS);
-		createEReference(javaSolverInputFileEClass, JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS);
 	}
 
 	/**
@@ -231,11 +210,9 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		CreationPackage theCreationPackage = (CreationPackage)EPackage.Registry.INSTANCE.getEPackage(CreationPackage.eNS_URI);
 		UsagePackage theUsagePackage = (UsagePackage)EPackage.Registry.INSTANCE.getEPackage(UsagePackage.eNS_URI);
 
 		// Add subpackages
-		getESubpackages().add(theCreationPackage);
 		getESubpackages().add(theUsagePackage);
 
 		// Create type parameters
@@ -252,7 +229,6 @@ public class JavasolverinputPackageImpl extends EPackageImpl implements Javasolv
 		initEClass(javaSolverInputFileEClass, JavaSolverInputFile.class, "JavaSolverInputFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJavaSolverInputFile_ClockDeclarations(), theUsagePackage.getClock(), null, "clockDeclarations", null, 0, -1, JavaSolverInputFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJavaSolverInputFile_Constraints(), theUsagePackage.getConstraint(), null, "constraints", null, 0, -1, JavaSolverInputFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJavaSolverInputFile_RelationDeclarations(), theCreationPackage.getRelationDeclaration(), null, "relationDeclarations", null, 0, -1, JavaSolverInputFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

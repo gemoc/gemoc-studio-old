@@ -6,8 +6,8 @@ import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
 import glml.GlmlPackage;
 import glml.ImportStatement;
-
 import glml.ModelSpecificEvent;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;

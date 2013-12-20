@@ -95,52 +95,6 @@ public class UsageItemProviderAdapterFactory extends UsageAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link javasolverinput.usage.CustomConstraint} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CustomConstraintItemProvider customConstraintItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link javasolverinput.usage.CustomConstraint}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCustomConstraintAdapter() {
-		if (customConstraintItemProvider == null) {
-			customConstraintItemProvider = new CustomConstraintItemProvider(this);
-		}
-
-		return customConstraintItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link javasolverinput.usage.Once} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OnceItemProvider onceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link javasolverinput.usage.Once}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOnceAdapter() {
-		if (onceItemProvider == null) {
-			onceItemProvider = new OnceItemProvider(this);
-		}
-
-		return onceItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link javasolverinput.usage.Precedes} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -161,29 +115,6 @@ public class UsageItemProviderAdapterFactory extends UsageAdapterFactory impleme
 		}
 
 		return precedesItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link javasolverinput.usage.WaitUntil} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WaitUntilItemProvider waitUntilItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link javasolverinput.usage.WaitUntil}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createWaitUntilAdapter() {
-		if (waitUntilItemProvider == null) {
-			waitUntilItemProvider = new WaitUntilItemProvider(this);
-		}
-
-		return waitUntilItemProvider;
 	}
 
 	/**
@@ -286,10 +217,7 @@ public class UsageItemProviderAdapterFactory extends UsageAdapterFactory impleme
 	 */
 	public void dispose() {
 		if (clockItemProvider != null) clockItemProvider.dispose();
-		if (customConstraintItemProvider != null) customConstraintItemProvider.dispose();
-		if (onceItemProvider != null) onceItemProvider.dispose();
 		if (precedesItemProvider != null) precedesItemProvider.dispose();
-		if (waitUntilItemProvider != null) waitUntilItemProvider.dispose();
 	}
 
 }

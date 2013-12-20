@@ -40,34 +40,6 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="javasolverinput.creation.presentation.CreationModelWizardID"
-            name="%_UI_CreationModelWizard_label"
-            class="javasolverinput.creation.presentation.CreationModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/CreationModelFile.gif">
-         <description>%_UI_CreationModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated JavaSolverInput -->
-      <editor
-            id="javasolverinput.creation.presentation.CreationEditorID"
-            name="%_UI_CreationEditor_label"
-            icon="icons/full/obj16/CreationModelFile.gif"
-            extensions="creation"
-            class="javasolverinput.creation.presentation.CreationEditor"
-            contributorClass="javasolverinput.creation.presentation.CreationActionBarContributor">
-      </editor>
-   </extension>
-
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated JavaSolverInput -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
             id="javasolverinput.usage.presentation.UsageModelWizardID"
             name="%_UI_UsageModelWizard_label"
             class="javasolverinput.usage.presentation.UsageModelWizard"

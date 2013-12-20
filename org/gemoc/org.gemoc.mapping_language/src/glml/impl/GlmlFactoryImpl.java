@@ -84,6 +84,16 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ImportStatement createImportStatement() {
+		ImportStatementImpl importStatement = new ImportStatementImpl();
+		return importStatement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DomainSpecificEvent createDomainSpecificEvent() {
 		DomainSpecificEventImpl domainSpecificEvent = new DomainSpecificEventImpl();
 		return domainSpecificEvent;
@@ -104,9 +114,9 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ImportStatement createImportStatement() {
-		ImportStatementImpl importStatement = new ImportStatementImpl();
-		return importStatement;
+	public ExtendedCcslRelation createExtendedCcslRelation() {
+		ExtendedCcslRelationImpl extendedCcslRelation = new ExtendedCcslRelationImpl();
+		return extendedCcslRelation;
 	}
 
 	/**
@@ -114,9 +124,9 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExtendedCcslRelation createExtendedCcslRelation() {
-		ExtendedCcslRelationImpl extendedCcslRelation = new ExtendedCcslRelationImpl();
-		return extendedCcslRelation;
+	public JavaSolverRelation createJavaSolverRelation() {
+		JavaSolverRelationImpl javaSolverRelation = new JavaSolverRelationImpl();
+		return javaSolverRelation;
 	}
 
 	/**
@@ -137,16 +147,6 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	public ModelSpecificAction createModelSpecificAction() {
 		ModelSpecificActionImpl modelSpecificAction = new ModelSpecificActionImpl();
 		return modelSpecificAction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JavaSolverRelation createJavaSolverRelation() {
-		JavaSolverRelationImpl javaSolverRelation = new JavaSolverRelationImpl();
-		return javaSolverRelation;
 	}
 
 	/**

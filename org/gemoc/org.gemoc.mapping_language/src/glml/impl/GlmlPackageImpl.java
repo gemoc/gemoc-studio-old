@@ -19,9 +19,6 @@ import glml.ModelSpecificAction;
 import glml.ModelSpecificEvent;
 import glml.NamedElement;
 
-import javasolverinput.JavasolverinputPackage;
-
-import javasolverinput.creation.CreationPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -56,6 +53,13 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass importStatementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass domainSpecificEventEClass = null;
 
 	/**
@@ -64,13 +68,6 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * @generated
 	 */
 	private EClass domainSpecificActionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass importStatementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,6 +88,13 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass javaSolverRelationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass modelSpecificEventEClass = null;
 
 	/**
@@ -99,13 +103,6 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * @generated
 	 */
 	private EClass modelSpecificActionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass javaSolverRelationEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -154,7 +151,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		JavasolverinputPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 		TimeModelPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -224,6 +221,24 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 */
 	public EAttribute getNamedElement_Name() {
 		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getImportStatement() {
+		return importStatementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getImportStatement_ImportURI() {
+		return (EAttribute)importStatementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -303,24 +318,6 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getImportStatement() {
-		return importStatementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getImportStatement_ImportURI() {
-		return (EAttribute)importStatementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getMocRelation() {
 		return mocRelationEClass;
 	}
@@ -350,6 +347,15 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 */
 	public EReference getExtendedCcslRelation_Relation() {
 		return (EReference)extendedCcslRelationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJavaSolverRelation() {
+		return javaSolverRelationEClass;
 	}
 
 	/**
@@ -447,24 +453,6 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getJavaSolverRelation() {
-		return javaSolverRelationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getJavaSolverRelation_Relation() {
-		return (EReference)javaSolverRelationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public GlmlFactory getGlmlFactory() {
 		return (GlmlFactory)getEFactoryInstance();
 	}
@@ -516,7 +504,6 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		createEReference(extendedCcslRelationEClass, EXTENDED_CCSL_RELATION__RELATION);
 
 		javaSolverRelationEClass = createEClass(JAVA_SOLVER_RELATION);
-		createEReference(javaSolverRelationEClass, JAVA_SOLVER_RELATION__RELATION);
 
 		modelSpecificEventEClass = createEClass(MODEL_SPECIFIC_EVENT);
 		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__REIFICATION);
@@ -557,7 +544,6 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		// Obtain other dependent packages
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		ClockExpressionAndRelationPackage theClockExpressionAndRelationPackage = (ClockExpressionAndRelationPackage)EPackage.Registry.INSTANCE.getEPackage(ClockExpressionAndRelationPackage.eNS_URI);
-		CreationPackage theCreationPackage = (CreationPackage)EPackage.Registry.INSTANCE.getEPackage(CreationPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -599,7 +585,6 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		initEReference(getExtendedCcslRelation_Relation(), theClockExpressionAndRelationPackage.getRelation(), null, "relation", null, 1, 1, ExtendedCcslRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(javaSolverRelationEClass, JavaSolverRelation.class, "JavaSolverRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getJavaSolverRelation_Relation(), theCreationPackage.getRelationDeclaration(), null, "relation", null, 1, 1, JavaSolverRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelSpecificEventEClass, ModelSpecificEvent.class, "ModelSpecificEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelSpecificEvent_Reification(), this.getDomainSpecificEvent(), null, "reification", null, 0, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

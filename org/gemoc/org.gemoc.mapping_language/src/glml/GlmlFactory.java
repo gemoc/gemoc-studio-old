@@ -31,6 +31,15 @@ public interface GlmlFactory extends EFactory {
 	DomainSpecificEventFile createDomainSpecificEventFile();
 
 	/**
+	 * Returns a new object of class '<em>Import Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Import Statement</em>'.
+	 * @generated
+	 */
+	ImportStatement createImportStatement();
+
+	/**
 	 * Returns a new object of class '<em>Domain Specific Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,15 +58,6 @@ public interface GlmlFactory extends EFactory {
 	DomainSpecificAction createDomainSpecificAction();
 
 	/**
-	 * Returns a new object of class '<em>Import Statement</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Import Statement</em>'.
-	 * @generated
-	 */
-	ImportStatement createImportStatement();
-
-	/**
 	 * Returns a new object of class '<em>Extended Ccsl Relation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +65,15 @@ public interface GlmlFactory extends EFactory {
 	 * @generated
 	 */
 	ExtendedCcslRelation createExtendedCcslRelation();
+
+	/**
+	 * Returns a new object of class '<em>Java Solver Relation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Java Solver Relation</em>'.
+	 * @generated
+	 */
+	JavaSolverRelation createJavaSolverRelation();
 
 	/**
 	 * Returns a new object of class '<em>Model Specific Event</em>'.
@@ -83,15 +92,6 @@ public interface GlmlFactory extends EFactory {
 	 * @generated
 	 */
 	ModelSpecificAction createModelSpecificAction();
-
-	/**
-	 * Returns a new object of class '<em>Java Solver Relation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Java Solver Relation</em>'.
-	 * @generated
-	 */
-	JavaSolverRelation createJavaSolverRelation();
 
 	/**
 	 * Returns the package supported by this factory.

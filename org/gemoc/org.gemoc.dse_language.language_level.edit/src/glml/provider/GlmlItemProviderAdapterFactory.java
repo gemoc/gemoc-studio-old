@@ -95,6 +95,29 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link glml.ImportStatement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ImportStatementItemProvider importStatementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link glml.ImportStatement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createImportStatementAdapter() {
+		if (importStatementItemProvider == null) {
+			importStatementItemProvider = new ImportStatementItemProvider(this);
+		}
+
+		return importStatementItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link glml.DomainSpecificEvent} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -141,29 +164,6 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link glml.ImportStatement} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ImportStatementItemProvider importStatementItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link glml.ImportStatement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createImportStatementAdapter() {
-		if (importStatementItemProvider == null) {
-			importStatementItemProvider = new ImportStatementItemProvider(this);
-		}
-
-		return importStatementItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link glml.ExtendedCcslRelation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -184,6 +184,29 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 		}
 
 		return extendedCcslRelationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link glml.JavaSolverRelation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected JavaSolverRelationItemProvider javaSolverRelationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link glml.JavaSolverRelation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createJavaSolverRelationAdapter() {
+		if (javaSolverRelationItemProvider == null) {
+			javaSolverRelationItemProvider = new JavaSolverRelationItemProvider(this);
+		}
+
+		return javaSolverRelationItemProvider;
 	}
 
 	/**
@@ -230,29 +253,6 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 		}
 
 		return modelSpecificActionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link glml.JavaSolverRelation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected JavaSolverRelationItemProvider javaSolverRelationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link glml.JavaSolverRelation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createJavaSolverRelationAdapter() {
-		if (javaSolverRelationItemProvider == null) {
-			javaSolverRelationItemProvider = new JavaSolverRelationItemProvider(this);
-		}
-
-		return javaSolverRelationItemProvider;
 	}
 
 	/**

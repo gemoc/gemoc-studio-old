@@ -158,26 +158,6 @@ public interface GlmlPackage extends EPackage {
 	int DOMAIN_SPECIFIC_EVENT_FILE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link glml.impl.DomainSpecificEventImpl <em>Domain Specific Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.DomainSpecificEventImpl
-	 * @see glml.impl.GlmlPackageImpl#getDomainSpecificEvent()
-	 * @generated
-	 */
-	int DOMAIN_SPECIFIC_EVENT = 3;
-
-	/**
-	 * The meta object id for the '{@link glml.impl.DomainSpecificActionImpl <em>Domain Specific Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.DomainSpecificActionImpl
-	 * @see glml.impl.GlmlPackageImpl#getDomainSpecificAction()
-	 * @generated
-	 */
-	int DOMAIN_SPECIFIC_ACTION = 4;
-
-	/**
 	 * The meta object id for the '{@link glml.impl.ImportStatementImpl <em>Import Statement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -213,6 +193,16 @@ public interface GlmlPackage extends EPackage {
 	 * @ordered
 	 */
 	int IMPORT_STATEMENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link glml.impl.DomainSpecificEventImpl <em>Domain Specific Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glml.impl.DomainSpecificEventImpl
+	 * @see glml.impl.GlmlPackageImpl#getDomainSpecificEvent()
+	 * @generated
+	 */
+	int DOMAIN_SPECIFIC_EVENT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -258,6 +248,16 @@ public interface GlmlPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOMAIN_SPECIFIC_EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link glml.impl.DomainSpecificActionImpl <em>Domain Specific Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glml.impl.DomainSpecificActionImpl
+	 * @see glml.impl.GlmlPackageImpl#getDomainSpecificAction()
+	 * @generated
+	 */
+	int DOMAIN_SPECIFIC_ACTION = 4;
 
 	/**
 	 * The feature id for the '<em><b>Target Class</b></em>' reference.
@@ -397,26 +397,6 @@ public interface GlmlPackage extends EPackage {
 	int EXTENDED_CCSL_RELATION_OPERATION_COUNT = MOC_RELATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link glml.impl.ModelSpecificEventImpl <em>Model Specific Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.ModelSpecificEventImpl
-	 * @see glml.impl.GlmlPackageImpl#getModelSpecificEvent()
-	 * @generated
-	 */
-	int MODEL_SPECIFIC_EVENT = 8;
-
-	/**
-	 * The meta object id for the '{@link glml.impl.ModelSpecificActionImpl <em>Model Specific Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.ModelSpecificActionImpl
-	 * @see glml.impl.GlmlPackageImpl#getModelSpecificAction()
-	 * @generated
-	 */
-	int MODEL_SPECIFIC_ACTION = 9;
-
-	/**
 	 * The meta object id for the '{@link glml.impl.JavaSolverRelationImpl <em>Java Solver Relation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -436,22 +416,13 @@ public interface GlmlPackage extends EPackage {
 	int JAVA_SOLVER_RELATION__ARGUMENTS = MOC_RELATION__ARGUMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Relation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAVA_SOLVER_RELATION__RELATION = MOC_RELATION_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Java Solver Relation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JAVA_SOLVER_RELATION_FEATURE_COUNT = MOC_RELATION_FEATURE_COUNT + 1;
+	int JAVA_SOLVER_RELATION_FEATURE_COUNT = MOC_RELATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Java Solver Relation</em>' class.
@@ -461,6 +432,16 @@ public interface GlmlPackage extends EPackage {
 	 * @ordered
 	 */
 	int JAVA_SOLVER_RELATION_OPERATION_COUNT = MOC_RELATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link glml.impl.ModelSpecificEventImpl <em>Model Specific Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glml.impl.ModelSpecificEventImpl
+	 * @see glml.impl.GlmlPackageImpl#getModelSpecificEvent()
+	 * @generated
+	 */
+	int MODEL_SPECIFIC_EVENT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -515,6 +496,16 @@ public interface GlmlPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_SPECIFIC_EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link glml.impl.ModelSpecificActionImpl <em>Model Specific Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glml.impl.ModelSpecificActionImpl
+	 * @see glml.impl.GlmlPackageImpl#getModelSpecificAction()
+	 * @generated
+	 */
+	int MODEL_SPECIFIC_ACTION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Reification</b></em>' reference.
@@ -645,6 +636,27 @@ public interface GlmlPackage extends EPackage {
 	EAttribute getNamedElement_Name();
 
 	/**
+	 * Returns the meta object for class '{@link glml.ImportStatement <em>Import Statement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Import Statement</em>'.
+	 * @see glml.ImportStatement
+	 * @generated
+	 */
+	EClass getImportStatement();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link glml.ImportStatement#getImportURI <em>Import URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Import URI</em>'.
+	 * @see glml.ImportStatement#getImportURI()
+	 * @see #getImportStatement()
+	 * @generated
+	 */
+	EAttribute getImportStatement_ImportURI();
+
+	/**
 	 * Returns the meta object for class '{@link glml.DomainSpecificEvent <em>Domain Specific Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -731,27 +743,6 @@ public interface GlmlPackage extends EPackage {
 	EReference getDomainSpecificAction_OwningDomainSpecificEvent();
 
 	/**
-	 * Returns the meta object for class '{@link glml.ImportStatement <em>Import Statement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Import Statement</em>'.
-	 * @see glml.ImportStatement
-	 * @generated
-	 */
-	EClass getImportStatement();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link glml.ImportStatement#getImportURI <em>Import URI</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Import URI</em>'.
-	 * @see glml.ImportStatement#getImportURI()
-	 * @see #getImportStatement()
-	 * @generated
-	 */
-	EAttribute getImportStatement_ImportURI();
-
-	/**
 	 * Returns the meta object for class '{@link glml.MocRelation <em>Moc Relation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -792,6 +783,16 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getExtendedCcslRelation_Relation();
+
+	/**
+	 * Returns the meta object for class '{@link glml.JavaSolverRelation <em>Java Solver Relation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Java Solver Relation</em>'.
+	 * @see glml.JavaSolverRelation
+	 * @generated
+	 */
+	EClass getJavaSolverRelation();
 
 	/**
 	 * Returns the meta object for class '{@link glml.ModelSpecificEvent <em>Model Specific Event</em>}'.
@@ -902,27 +903,6 @@ public interface GlmlPackage extends EPackage {
 	EReference getModelSpecificAction_OwningModelSpecificEvent();
 
 	/**
-	 * Returns the meta object for class '{@link glml.JavaSolverRelation <em>Java Solver Relation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Java Solver Relation</em>'.
-	 * @see glml.JavaSolverRelation
-	 * @generated
-	 */
-	EClass getJavaSolverRelation();
-
-	/**
-	 * Returns the meta object for the reference '{@link glml.JavaSolverRelation#getRelation <em>Relation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Relation</em>'.
-	 * @see glml.JavaSolverRelation#getRelation()
-	 * @see #getJavaSolverRelation()
-	 * @generated
-	 */
-	EReference getJavaSolverRelation_Relation();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -998,6 +978,24 @@ public interface GlmlPackage extends EPackage {
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
+		 * The meta object literal for the '{@link glml.impl.ImportStatementImpl <em>Import Statement</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glml.impl.ImportStatementImpl
+		 * @see glml.impl.GlmlPackageImpl#getImportStatement()
+		 * @generated
+		 */
+		EClass IMPORT_STATEMENT = eINSTANCE.getImportStatement();
+
+		/**
+		 * The meta object literal for the '<em><b>Import URI</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMPORT_STATEMENT__IMPORT_URI = eINSTANCE.getImportStatement_ImportURI();
+
+		/**
 		 * The meta object literal for the '{@link glml.impl.DomainSpecificEventImpl <em>Domain Specific Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1066,24 +1064,6 @@ public interface GlmlPackage extends EPackage {
 		EReference DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT = eINSTANCE.getDomainSpecificAction_OwningDomainSpecificEvent();
 
 		/**
-		 * The meta object literal for the '{@link glml.impl.ImportStatementImpl <em>Import Statement</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.impl.ImportStatementImpl
-		 * @see glml.impl.GlmlPackageImpl#getImportStatement()
-		 * @generated
-		 */
-		EClass IMPORT_STATEMENT = eINSTANCE.getImportStatement();
-
-		/**
-		 * The meta object literal for the '<em><b>Import URI</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IMPORT_STATEMENT__IMPORT_URI = eINSTANCE.getImportStatement_ImportURI();
-
-		/**
 		 * The meta object literal for the '{@link glml.impl.MocRelationImpl <em>Moc Relation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1118,6 +1098,16 @@ public interface GlmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXTENDED_CCSL_RELATION__RELATION = eINSTANCE.getExtendedCcslRelation_Relation();
+
+		/**
+		 * The meta object literal for the '{@link glml.impl.JavaSolverRelationImpl <em>Java Solver Relation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glml.impl.JavaSolverRelationImpl
+		 * @see glml.impl.GlmlPackageImpl#getJavaSolverRelation()
+		 * @generated
+		 */
+		EClass JAVA_SOLVER_RELATION = eINSTANCE.getJavaSolverRelation();
 
 		/**
 		 * The meta object literal for the '{@link glml.impl.ModelSpecificEventImpl <em>Model Specific Event</em>}' class.
@@ -1202,24 +1192,6 @@ public interface GlmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT = eINSTANCE.getModelSpecificAction_OwningModelSpecificEvent();
-
-		/**
-		 * The meta object literal for the '{@link glml.impl.JavaSolverRelationImpl <em>Java Solver Relation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.impl.JavaSolverRelationImpl
-		 * @see glml.impl.GlmlPackageImpl#getJavaSolverRelation()
-		 * @generated
-		 */
-		EClass JAVA_SOLVER_RELATION = eINSTANCE.getJavaSolverRelation();
-
-		/**
-		 * The meta object literal for the '<em><b>Relation</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JAVA_SOLVER_RELATION__RELATION = eINSTANCE.getJavaSolverRelation_Relation();
 
 	}
 

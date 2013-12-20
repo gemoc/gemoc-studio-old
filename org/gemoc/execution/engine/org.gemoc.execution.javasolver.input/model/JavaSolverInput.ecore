@@ -10,43 +10,15 @@
         eType="#//usage/Clock" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
         eType="#//usage/Constraint" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="relationDeclarations" upperBound="-1"
-        eType="#//creation/RelationDeclaration" containment="true"/>
   </eClassifiers>
-  <eSubpackages name="creation" nsURI="http://gemoc.org/javasolverinput/creation"
-      nsPrefix="creation">
-    <eClassifiers xsi:type="ecore:EClass" name="RelationDeclaration" eSuperTypes="#//NamedElement">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-          eType="#//creation/Parameter" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
-          eType="#//creation/RelationDefinition" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//NamedElement">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="RelationDefinition">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
-          eType="#//usage/Constraint" containment="true"/>
-    </eClassifiers>
-  </eSubpackages>
   <eSubpackages name="usage" nsURI="http://gemoc.org/javasolverinput/usage" nsPrefix="usage">
     <eClassifiers xsi:type="ecore:EClass" name="Clock" eSuperTypes="#//NamedElement"/>
-    <eClassifiers xsi:type="ecore:EClass" name="CustomConstraint" eSuperTypes="#//usage/Constraint">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
-          eType="#//creation/RelationDeclaration"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Precedes" eSuperTypes="#//usage/Constraint">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="clock1" lowerBound="1"
+          eType="#//usage/Clock"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="clock2" lowerBound="1"
+          eType="#//usage/Clock"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="BootstrappedConstraint" abstract="true"
-        eSuperTypes="#//usage/Constraint"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Once" eSuperTypes="#//usage/BootstrappedConstraint"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Precedes" eSuperTypes="#//usage/BootstrappedConstraint"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="#//NamedElement">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
-          eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="WaitUntil" eSuperTypes="#//usage/BootstrappedConstraint">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
-    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="#//NamedElement"/>
   </eSubpackages>
 </ecore:EPackage>

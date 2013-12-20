@@ -137,9 +137,9 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				this.solverInput = solverInput;
 
 			} catch (UnsupportedOperationException e) {
-				// String solverInputFilePath =
-				// "/org.gemoc.sample.tfsm.instances/TrafficControl/TrafficControl_MoCC.extendedCCSL";
-				String solverInputFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test/MySolverInput.javasolverinput";
+				 String solverInputFilePath =
+				 "/org.gemoc.sample.tfsm.instances/TrafficControl/test/test_executionModel.extendedCCSL";
+				//String solverInputFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test/MySolverInput.javasolverinput";
 				this.solverInput = new ResourceSetImpl().getResource(URI
 						.createPlatformResourceURI(solverInputFilePath, true),
 						true);
@@ -194,7 +194,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 						"FState is TICK for eventOccurrence: "
 								+ eventOccurrence, Activator.PLUGIN_ID);
 
-				if (eventOccurrence.getContext() != null
+				/*if (eventOccurrence.getContext() != null
 						& eventOccurrence.getReferedElement() != null) {
 					// Case of the CCSL Solver
 					EObject target = this
@@ -219,7 +219,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 								"... but not linked to an EOperation.",
 								Activator.PLUGIN_ID);
 					}
-				} else {
+					
+				} else {*/
 					// Case of the JavaSolver
 					if (eventOccurrence.getReferedElement() != null) {
 						if (eventOccurrence.getReferedElement() instanceof NamedReference) {
@@ -229,7 +230,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 									.getValue()));
 						}
 					}
-				}
+				/*}*/
 			}
 		}
 		return res;

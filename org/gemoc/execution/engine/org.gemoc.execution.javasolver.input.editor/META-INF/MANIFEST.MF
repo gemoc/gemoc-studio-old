@@ -8,14 +8,12 @@ Bundle-Activator: javasolverinput.presentation.JavaSolverInputEditorPlugin$Imple
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: javasolverinput.creation.presentation,
- javasolverinput.presentation,
+Export-Package: javasolverinput.presentation,
  javasolverinput.usage.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.gemoc.execution.javasolver.input.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
- org.eclipse.ui.ide;visibility:=reexport,
- org.eclipse.emf.ecore.edit;visibility:=reexport
+ org.eclipse.ui.ide;visibility:=reexport
 Bundle-ActivationPolicy: lazy

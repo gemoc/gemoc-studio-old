@@ -2,17 +2,14 @@ package org.gemoc.execution.javasolver.core;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javasolverinput.JavaSolverInputFile;
 import javasolverinput.JavasolverinputPackage;
 import javasolverinput.usage.Clock;
 import javasolverinput.usage.Constraint;
-import javasolverinput.usage.CustomConstraint;
-import javasolverinput.usage.Once;
 import javasolverinput.usage.Precedes;
-import javasolverinput.usage.WaitUntil;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -54,19 +51,10 @@ public class JavaSolver implements Solver {
 	}
 
 	private Boolean isTicking(Clock clock, Collection<Constraint> constraints) {
-		Boolean res = null;
+		Boolean res = (new Random()).nextBoolean();
 		for (Constraint constraint : constraints) {
 			if (constraint instanceof Precedes) {
 				res = this.semanticsOfPrecedes((Precedes) constraint, clock);
-			} else if (constraint instanceof Once) {
-				res = this.semanticsOfOnce((Once) constraint, clock);
-			} else if (constraint instanceof WaitUntil) {
-				res = this.semanticsOfWaitUntil((WaitUntil) constraint, clock);
-			} else if (constraint instanceof CustomConstraint) {
-				res = res
-						&& this.isTicking(clock,
-								((CustomConstraint) constraint).getType()
-										.getDefinition().getConstraints());
 			} else {
 				throw new RuntimeException("Impossible relation.");
 			}
@@ -76,19 +64,12 @@ public class JavaSolver implements Solver {
 
 	private Boolean semanticsOfPrecedes(Precedes constraint, Clock clock) {
 		Boolean res = false;
-		if (constraint.getArguments().size() != 2) {
+		if (constraint.getClock1() == null || constraint.getClock2() == null) {
 			throw new IllegalArgumentException(
-					"Constraint Precedes should have two and only two arguments");
+					"Constraint Precedes should have two clocks");
 		} else {
-			List<EObject> arguments = constraint.getArguments();
-			for (EObject eo : arguments) {
-				if (!(eo instanceof Clock)) {
-					throw new IllegalArgumentException(
-							"Constraint Precedes arguments should be clocks");
-				}
-			}
-			Clock c1 = (Clock) arguments.get(0);
-			Clock c2 = (Clock) arguments.get(1);
+			Clock c1 = constraint.getClock1();
+			Clock c2 = constraint.getClock2();
 
 			if (c1.equals(clock)) {
 				res = true;
@@ -96,50 +77,6 @@ public class JavaSolver implements Solver {
 				Integer n1 = this.getNumberOfTicks(c1);
 				Integer n2 = this.getNumberOfTicks(clock);
 				res = n1 >= n2;
-			}
-		}
-		return res;
-	}
-
-	private Boolean semanticsOfOnce(Once constraint, Clock clock) {
-		Boolean res = false;
-		if (constraint.getArguments().size() != 1) {
-			throw new IllegalArgumentException(
-					"Constraint Once should have one and only one argument");
-		} else {
-			List<EObject> arguments = constraint.getArguments();
-			for (EObject eo : arguments) {
-				if (!(eo instanceof Clock)) {
-					throw new IllegalArgumentException(
-							"Constraint Once arguments should be a clock");
-				}
-			}
-			Clock c = (Clock) arguments.get(0);
-
-			if (c.equals(clock)) {
-				res = this.getNumberOfTicks(clock) == 0;
-			}
-		}
-		return res;
-	}
-
-	private Boolean semanticsOfWaitUntil(WaitUntil constraint, Clock clock) {
-		Boolean res = false;
-		if (constraint.getArguments().size() != 1) {
-			throw new IllegalArgumentException(
-					"Constraint WaitUntil should have one and only one argument");
-		} else {
-			List<EObject> arguments = constraint.getArguments();
-			if (!(arguments.get(0) instanceof Clock)) {
-				throw new IllegalArgumentException(
-						"The argument of WaitUntil should be a Clock");
-			}
-			Clock c = (Clock) arguments.get(0);
-			Integer date = ((WaitUntil) constraint).getDate();
-
-			if (c.equals(clock)) {
-				Integer lastIndex = this.getLastIndex(clock);
-				res = date == lastIndex + 1;
 			}
 		}
 		return res;

@@ -75,35 +75,9 @@ public class UsageSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case UsagePackage.CUSTOM_CONSTRAINT: {
-				CustomConstraint customConstraint = (CustomConstraint)theEObject;
-				T result = caseCustomConstraint(customConstraint);
-				if (result == null) result = caseConstraint(customConstraint);
-				if (result == null) result = caseNamedElement(customConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UsagePackage.BOOTSTRAPPED_CONSTRAINT: {
-				BootstrappedConstraint bootstrappedConstraint = (BootstrappedConstraint)theEObject;
-				T result = caseBootstrappedConstraint(bootstrappedConstraint);
-				if (result == null) result = caseConstraint(bootstrappedConstraint);
-				if (result == null) result = caseNamedElement(bootstrappedConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UsagePackage.ONCE: {
-				Once once = (Once)theEObject;
-				T result = caseOnce(once);
-				if (result == null) result = caseBootstrappedConstraint(once);
-				if (result == null) result = caseConstraint(once);
-				if (result == null) result = caseNamedElement(once);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case UsagePackage.PRECEDES: {
 				Precedes precedes = (Precedes)theEObject;
 				T result = casePrecedes(precedes);
-				if (result == null) result = caseBootstrappedConstraint(precedes);
 				if (result == null) result = caseConstraint(precedes);
 				if (result == null) result = caseNamedElement(precedes);
 				if (result == null) result = defaultCase(theEObject);
@@ -113,15 +87,6 @@ public class UsageSwitch<T> extends Switch<T> {
 				Constraint constraint = (Constraint)theEObject;
 				T result = caseConstraint(constraint);
 				if (result == null) result = caseNamedElement(constraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UsagePackage.WAIT_UNTIL: {
-				WaitUntil waitUntil = (WaitUntil)theEObject;
-				T result = caseWaitUntil(waitUntil);
-				if (result == null) result = caseBootstrappedConstraint(waitUntil);
-				if (result == null) result = caseConstraint(waitUntil);
-				if (result == null) result = caseNamedElement(waitUntil);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -141,51 +106,6 @@ public class UsageSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseClock(Clock object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Custom Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Custom Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCustomConstraint(CustomConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Bootstrapped Constraint</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Bootstrapped Constraint</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBootstrappedConstraint(BootstrappedConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Once</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Once</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOnce(Once object) {
 		return null;
 	}
 
@@ -216,21 +136,6 @@ public class UsageSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConstraint(Constraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Wait Until</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Wait Until</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseWaitUntil(WaitUntil object) {
 		return null;
 	}
 

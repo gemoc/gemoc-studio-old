@@ -4,7 +4,6 @@ package javasolverinput.usage;
 
 import javasolverinput.JavasolverinputPackage;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -103,7 +102,7 @@ public interface UsagePackage extends EPackage {
 	 * @see javasolverinput.usage.impl.UsagePackageImpl#getConstraint()
 	 * @generated
 	 */
-	int CONSTRAINT = 5;
+	int CONSTRAINT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -115,22 +114,13 @@ public interface UsagePackage extends EPackage {
 	int CONSTRAINT__NAME = JavasolverinputPackage.NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__ARGUMENTS = JavasolverinputPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_FEATURE_COUNT = JavasolverinputPackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int CONSTRAINT_FEATURE_COUNT = JavasolverinputPackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Constraint</em>' class.
@@ -142,153 +132,6 @@ public interface UsagePackage extends EPackage {
 	int CONSTRAINT_OPERATION_COUNT = JavasolverinputPackage.NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link javasolverinput.usage.impl.CustomConstraintImpl <em>Custom Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see javasolverinput.usage.impl.CustomConstraintImpl
-	 * @see javasolverinput.usage.impl.UsagePackageImpl#getCustomConstraint()
-	 * @generated
-	 */
-	int CUSTOM_CONSTRAINT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_CONSTRAINT__NAME = CONSTRAINT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_CONSTRAINT__ARGUMENTS = CONSTRAINT__ARGUMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_CONSTRAINT__TYPE = CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Custom Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Custom Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_CONSTRAINT_OPERATION_COUNT = CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link javasolverinput.usage.impl.BootstrappedConstraintImpl <em>Bootstrapped Constraint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see javasolverinput.usage.impl.BootstrappedConstraintImpl
-	 * @see javasolverinput.usage.impl.UsagePackageImpl#getBootstrappedConstraint()
-	 * @generated
-	 */
-	int BOOTSTRAPPED_CONSTRAINT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOTSTRAPPED_CONSTRAINT__NAME = CONSTRAINT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOTSTRAPPED_CONSTRAINT__ARGUMENTS = CONSTRAINT__ARGUMENTS;
-
-	/**
-	 * The number of structural features of the '<em>Bootstrapped Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOTSTRAPPED_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Bootstrapped Constraint</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOTSTRAPPED_CONSTRAINT_OPERATION_COUNT = CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link javasolverinput.usage.impl.OnceImpl <em>Once</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see javasolverinput.usage.impl.OnceImpl
-	 * @see javasolverinput.usage.impl.UsagePackageImpl#getOnce()
-	 * @generated
-	 */
-	int ONCE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ONCE__NAME = BOOTSTRAPPED_CONSTRAINT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ONCE__ARGUMENTS = BOOTSTRAPPED_CONSTRAINT__ARGUMENTS;
-
-	/**
-	 * The number of structural features of the '<em>Once</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ONCE_FEATURE_COUNT = BOOTSTRAPPED_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Once</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ONCE_OPERATION_COUNT = BOOTSTRAPPED_CONSTRAINT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link javasolverinput.usage.impl.PrecedesImpl <em>Precedes</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,7 +139,7 @@ public interface UsagePackage extends EPackage {
 	 * @see javasolverinput.usage.impl.UsagePackageImpl#getPrecedes()
 	 * @generated
 	 */
-	int PRECEDES = 4;
+	int PRECEDES = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -305,16 +148,25 @@ public interface UsagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRECEDES__NAME = BOOTSTRAPPED_CONSTRAINT__NAME;
+	int PRECEDES__NAME = CONSTRAINT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
+	 * The feature id for the '<em><b>Clock1</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRECEDES__ARGUMENTS = BOOTSTRAPPED_CONSTRAINT__ARGUMENTS;
+	int PRECEDES__CLOCK1 = CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Clock2</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRECEDES__CLOCK2 = CONSTRAINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Precedes</em>' class.
@@ -323,7 +175,7 @@ public interface UsagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRECEDES_FEATURE_COUNT = BOOTSTRAPPED_CONSTRAINT_FEATURE_COUNT + 0;
+	int PRECEDES_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Precedes</em>' class.
@@ -332,63 +184,7 @@ public interface UsagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRECEDES_OPERATION_COUNT = BOOTSTRAPPED_CONSTRAINT_OPERATION_COUNT + 0;
-
-
-	/**
-	 * The meta object id for the '{@link javasolverinput.usage.impl.WaitUntilImpl <em>Wait Until</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see javasolverinput.usage.impl.WaitUntilImpl
-	 * @see javasolverinput.usage.impl.UsagePackageImpl#getWaitUntil()
-	 * @generated
-	 */
-	int WAIT_UNTIL = 6;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WAIT_UNTIL__NAME = BOOTSTRAPPED_CONSTRAINT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WAIT_UNTIL__ARGUMENTS = BOOTSTRAPPED_CONSTRAINT__ARGUMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WAIT_UNTIL__DATE = BOOTSTRAPPED_CONSTRAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Wait Until</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WAIT_UNTIL_FEATURE_COUNT = BOOTSTRAPPED_CONSTRAINT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Wait Until</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WAIT_UNTIL_OPERATION_COUNT = BOOTSTRAPPED_CONSTRAINT_OPERATION_COUNT + 0;
+	int PRECEDES_OPERATION_COUNT = CONSTRAINT_OPERATION_COUNT + 0;
 
 
 	/**
@@ -402,47 +198,6 @@ public interface UsagePackage extends EPackage {
 	EClass getClock();
 
 	/**
-	 * Returns the meta object for class '{@link javasolverinput.usage.CustomConstraint <em>Custom Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Custom Constraint</em>'.
-	 * @see javasolverinput.usage.CustomConstraint
-	 * @generated
-	 */
-	EClass getCustomConstraint();
-
-	/**
-	 * Returns the meta object for the reference '{@link javasolverinput.usage.CustomConstraint#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Type</em>'.
-	 * @see javasolverinput.usage.CustomConstraint#getType()
-	 * @see #getCustomConstraint()
-	 * @generated
-	 */
-	EReference getCustomConstraint_Type();
-
-	/**
-	 * Returns the meta object for class '{@link javasolverinput.usage.BootstrappedConstraint <em>Bootstrapped Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Bootstrapped Constraint</em>'.
-	 * @see javasolverinput.usage.BootstrappedConstraint
-	 * @generated
-	 */
-	EClass getBootstrappedConstraint();
-
-	/**
-	 * Returns the meta object for class '{@link javasolverinput.usage.Once <em>Once</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Once</em>'.
-	 * @see javasolverinput.usage.Once
-	 * @generated
-	 */
-	EClass getOnce();
-
-	/**
 	 * Returns the meta object for class '{@link javasolverinput.usage.Precedes <em>Precedes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -453,6 +208,28 @@ public interface UsagePackage extends EPackage {
 	EClass getPrecedes();
 
 	/**
+	 * Returns the meta object for the reference '{@link javasolverinput.usage.Precedes#getClock1 <em>Clock1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Clock1</em>'.
+	 * @see javasolverinput.usage.Precedes#getClock1()
+	 * @see #getPrecedes()
+	 * @generated
+	 */
+	EReference getPrecedes_Clock1();
+
+	/**
+	 * Returns the meta object for the reference '{@link javasolverinput.usage.Precedes#getClock2 <em>Clock2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Clock2</em>'.
+	 * @see javasolverinput.usage.Precedes#getClock2()
+	 * @see #getPrecedes()
+	 * @generated
+	 */
+	EReference getPrecedes_Clock2();
+
+	/**
 	 * Returns the meta object for class '{@link javasolverinput.usage.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -461,38 +238,6 @@ public interface UsagePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getConstraint();
-
-	/**
-	 * Returns the meta object for the reference list '{@link javasolverinput.usage.Constraint#getArguments <em>Arguments</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Arguments</em>'.
-	 * @see javasolverinput.usage.Constraint#getArguments()
-	 * @see #getConstraint()
-	 * @generated
-	 */
-	EReference getConstraint_Arguments();
-
-	/**
-	 * Returns the meta object for class '{@link javasolverinput.usage.WaitUntil <em>Wait Until</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Wait Until</em>'.
-	 * @see javasolverinput.usage.WaitUntil
-	 * @generated
-	 */
-	EClass getWaitUntil();
-
-	/**
-	 * Returns the meta object for the attribute '{@link javasolverinput.usage.WaitUntil#getDate <em>Date</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Date</em>'.
-	 * @see javasolverinput.usage.WaitUntil#getDate()
-	 * @see #getWaitUntil()
-	 * @generated
-	 */
-	EAttribute getWaitUntil_Date();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -528,44 +273,6 @@ public interface UsagePackage extends EPackage {
 		EClass CLOCK = eINSTANCE.getClock();
 
 		/**
-		 * The meta object literal for the '{@link javasolverinput.usage.impl.CustomConstraintImpl <em>Custom Constraint</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see javasolverinput.usage.impl.CustomConstraintImpl
-		 * @see javasolverinput.usage.impl.UsagePackageImpl#getCustomConstraint()
-		 * @generated
-		 */
-		EClass CUSTOM_CONSTRAINT = eINSTANCE.getCustomConstraint();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CUSTOM_CONSTRAINT__TYPE = eINSTANCE.getCustomConstraint_Type();
-
-		/**
-		 * The meta object literal for the '{@link javasolverinput.usage.impl.BootstrappedConstraintImpl <em>Bootstrapped Constraint</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see javasolverinput.usage.impl.BootstrappedConstraintImpl
-		 * @see javasolverinput.usage.impl.UsagePackageImpl#getBootstrappedConstraint()
-		 * @generated
-		 */
-		EClass BOOTSTRAPPED_CONSTRAINT = eINSTANCE.getBootstrappedConstraint();
-
-		/**
-		 * The meta object literal for the '{@link javasolverinput.usage.impl.OnceImpl <em>Once</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see javasolverinput.usage.impl.OnceImpl
-		 * @see javasolverinput.usage.impl.UsagePackageImpl#getOnce()
-		 * @generated
-		 */
-		EClass ONCE = eINSTANCE.getOnce();
-
-		/**
 		 * The meta object literal for the '{@link javasolverinput.usage.impl.PrecedesImpl <em>Precedes</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -576,6 +283,22 @@ public interface UsagePackage extends EPackage {
 		EClass PRECEDES = eINSTANCE.getPrecedes();
 
 		/**
+		 * The meta object literal for the '<em><b>Clock1</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRECEDES__CLOCK1 = eINSTANCE.getPrecedes_Clock1();
+
+		/**
+		 * The meta object literal for the '<em><b>Clock2</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRECEDES__CLOCK2 = eINSTANCE.getPrecedes_Clock2();
+
+		/**
 		 * The meta object literal for the '{@link javasolverinput.usage.impl.ConstraintImpl <em>Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -584,32 +307,6 @@ public interface UsagePackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONSTRAINT = eINSTANCE.getConstraint();
-
-		/**
-		 * The meta object literal for the '<em><b>Arguments</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONSTRAINT__ARGUMENTS = eINSTANCE.getConstraint_Arguments();
-
-		/**
-		 * The meta object literal for the '{@link javasolverinput.usage.impl.WaitUntilImpl <em>Wait Until</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see javasolverinput.usage.impl.WaitUntilImpl
-		 * @see javasolverinput.usage.impl.UsagePackageImpl#getWaitUntil()
-		 * @generated
-		 */
-		EClass WAIT_UNTIL = eINSTANCE.getWaitUntil();
-
-		/**
-		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WAIT_UNTIL__DATE = eINSTANCE.getWaitUntil_Date();
 
 	}
 

@@ -9,8 +9,6 @@ import java.util.List;
 import javasolverinput.JavaSolverInputFile;
 import javasolverinput.JavasolverinputPackage;
 
-import javasolverinput.creation.CreationFactory;
-
 import javasolverinput.usage.UsageFactory;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -79,7 +77,6 @@ public class JavaSolverInputFileItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS);
 			childrenFeatures.add(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS);
-			childrenFeatures.add(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS);
 		}
 		return childrenFeatures;
 	}
@@ -136,7 +133,6 @@ public class JavaSolverInputFileItemProvider
 		switch (notification.getFeatureID(JavaSolverInputFile.class)) {
 			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CLOCK_DECLARATIONS:
 			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS:
-			case JavasolverinputPackage.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -162,27 +158,7 @@ public class JavaSolverInputFileItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
-				 UsageFactory.eINSTANCE.createCustomConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
-				 UsageFactory.eINSTANCE.createOnce()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
 				 UsageFactory.eINSTANCE.createPrecedes()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__CONSTRAINTS,
-				 UsageFactory.eINSTANCE.createWaitUntil()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(JavasolverinputPackage.Literals.JAVA_SOLVER_INPUT_FILE__RELATION_DECLARATIONS,
-				 CreationFactory.eINSTANCE.createRelationDeclaration()));
 	}
 
 }

@@ -17,14 +17,6 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated JavaSolverInput -->
       <package
-            uri="http://gemoc.org/javasolverinput/creation"
-            class="javasolverinput.creation.CreationPackage"
-            genModel="model/JavaSolverInput.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated JavaSolverInput -->
-      <package
             uri="http://gemoc.org/javasolverinput/usage"
             class="javasolverinput.usage.UsagePackage"
             genModel="model/JavaSolverInput.genmodel"/>

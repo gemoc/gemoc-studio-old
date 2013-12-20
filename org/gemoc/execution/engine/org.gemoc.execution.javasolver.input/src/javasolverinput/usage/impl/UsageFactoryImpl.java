@@ -57,10 +57,7 @@ public class UsageFactoryImpl extends EFactoryImpl implements UsageFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case UsagePackage.CLOCK: return createClock();
-			case UsagePackage.CUSTOM_CONSTRAINT: return createCustomConstraint();
-			case UsagePackage.ONCE: return createOnce();
 			case UsagePackage.PRECEDES: return createPrecedes();
-			case UsagePackage.WAIT_UNTIL: return createWaitUntil();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,39 +78,9 @@ public class UsageFactoryImpl extends EFactoryImpl implements UsageFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CustomConstraint createCustomConstraint() {
-		CustomConstraintImpl customConstraint = new CustomConstraintImpl();
-		return customConstraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Once createOnce() {
-		OnceImpl once = new OnceImpl();
-		return once;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Precedes createPrecedes() {
 		PrecedesImpl precedes = new PrecedesImpl();
 		return precedes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public WaitUntil createWaitUntil() {
-		WaitUntilImpl waitUntil = new WaitUntilImpl();
-		return waitUntil;
 	}
 
 	/**

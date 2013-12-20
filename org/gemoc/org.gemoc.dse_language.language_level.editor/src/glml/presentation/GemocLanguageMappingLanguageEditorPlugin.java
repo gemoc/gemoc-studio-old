@@ -4,8 +4,6 @@ package glml.presentation;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.provider.TimeModelEditPlugin;
 
-import javasolverinput.provider.JavaSolverInputEditPlugin;
-
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
@@ -47,7 +45,6 @@ public final class GemocLanguageMappingLanguageEditorPlugin extends EMFPlugin {
 		super
 			(new ResourceLocator [] {
 				EcoreEditPlugin.INSTANCE,
-				JavaSolverInputEditPlugin.INSTANCE,
 				TimeModelEditPlugin.INSTANCE,
 			});
 	}

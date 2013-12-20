@@ -74,28 +74,12 @@ public class UsageAdapterFactory extends AdapterFactoryImpl {
 				return createClockAdapter();
 			}
 			@Override
-			public Adapter caseCustomConstraint(CustomConstraint object) {
-				return createCustomConstraintAdapter();
-			}
-			@Override
-			public Adapter caseBootstrappedConstraint(BootstrappedConstraint object) {
-				return createBootstrappedConstraintAdapter();
-			}
-			@Override
-			public Adapter caseOnce(Once object) {
-				return createOnceAdapter();
-			}
-			@Override
 			public Adapter casePrecedes(Precedes object) {
 				return createPrecedesAdapter();
 			}
 			@Override
 			public Adapter caseConstraint(Constraint object) {
 				return createConstraintAdapter();
-			}
-			@Override
-			public Adapter caseWaitUntil(WaitUntil object) {
-				return createWaitUntilAdapter();
 			}
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
@@ -136,48 +120,6 @@ public class UsageAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link javasolverinput.usage.CustomConstraint <em>Custom Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see javasolverinput.usage.CustomConstraint
-	 * @generated
-	 */
-	public Adapter createCustomConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link javasolverinput.usage.BootstrappedConstraint <em>Bootstrapped Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see javasolverinput.usage.BootstrappedConstraint
-	 * @generated
-	 */
-	public Adapter createBootstrappedConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link javasolverinput.usage.Once <em>Once</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see javasolverinput.usage.Once
-	 * @generated
-	 */
-	public Adapter createOnceAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link javasolverinput.usage.Precedes <em>Precedes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -202,20 +144,6 @@ public class UsageAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link javasolverinput.usage.WaitUntil <em>Wait Until</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see javasolverinput.usage.WaitUntil
-	 * @generated
-	 */
-	public Adapter createWaitUntilAdapter() {
 		return null;
 	}
 
