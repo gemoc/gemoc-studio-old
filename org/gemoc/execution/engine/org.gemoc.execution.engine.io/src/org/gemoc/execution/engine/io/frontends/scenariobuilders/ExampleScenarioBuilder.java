@@ -2,17 +2,21 @@ package org.gemoc.execution.engine.io.frontends.scenariobuilders;
 
 import glml.DomainSpecificEvent;
 
+import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -41,13 +45,18 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 		this.content = new JPanel();
 		JButton injectButton = new JButton("Inject event");
 		injectButton.addActionListener(new ButtonHandlerInject());
+		JButton clearButton = new JButton("Clear");
+		clearButton.addActionListener(new ButtonHandlerClear());
 
 		this.eventLabel = new JLabel("Selected DSE: ");
 		this.targetLabel = new JLabel("Selected model element: ");
 
 		this.content.add(eventLabel);
 		this.content.add(targetLabel);
+		this.content.add(new JSeparator(SwingConstants.VERTICAL));
 		this.content.add(injectButton);
+		this.content.add(clearButton);
+		this.content.add(new JSeparator(SwingConstants.VERTICAL));
 		this.content.setLayout(new FlowLayout());
 		this.content
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -75,18 +84,20 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 		}
 	}
 
-	private void repaint() {
-		this.window.repaint();
+	private void validate() {
 		this.eventLabel.setText("Selected DSE: " + this.getSelectedEventText());
 		this.targetLabel.setText("Selected model element: "
 				+ this.getSelectedTargetText());
+		this.window.validate();
 	}
 
 	@Override
 	public void initialize(ExecutionEngine engine) {
 		this.engine = engine;
 		this.addEventButtons(this.engine.getDomainSpecificEvents());
+		this.content.add(new JSeparator(SwingConstants.VERTICAL));
 		this.addModelButtons(this.engine.getModelResource());
+		this.validate();
 	}
 
 	public void addEventButtons(Collection<DomainSpecificEvent> events) {
@@ -94,15 +105,21 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 			JButton eventButton = new JButton(dse.getName());
 			ActionListener listenerEvent = new ButtonHandlerEvent(dse);
 			eventButton.addActionListener(listenerEvent);
+			eventButton.setOpaque(true);
+			eventButton.setBackground(Color.CYAN);
 			this.content.add(eventButton);
 		}
 	}
 
 	public void addModelButtons(Resource modelResource) {
-		for (EObject eo : modelResource.getContents().get(0).eContents()) {
+		Iterator<EObject> it = modelResource.getAllContents();
+		while (it.hasNext()) {
+			EObject eo = it.next();
 			JButton eobjectButton = new JButton(eo.toString());
 			ActionListener listener = new ButtonHandlerEObject(eo);
 			eobjectButton.addActionListener(listener);
+			eobjectButton.setOpaque(true);
+			eobjectButton.setBackground(Color.MAGENTA);
 			this.content.add(eobjectButton);
 		}
 	}
@@ -125,13 +142,22 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 					ExampleScenarioBuilder.this.selectedTarget = null;
 				} catch (UnsupportedOperationException e2) {
 					JOptionPane.showMessageDialog(null,
-							"Unsupported operation stepBack", "Error",
+							"Unsupported operation injection", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				} catch (EventInjectionException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null,
+							"Exception during the injection of the event", "Error",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
+		}
+	}
+
+	private class ButtonHandlerClear implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			ExampleScenarioBuilder.this.selectedTarget = null;
+			ExampleScenarioBuilder.this.selectedEvent = null;
+			ExampleScenarioBuilder.this.validate();
 		}
 	}
 
@@ -144,7 +170,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 
 		public void actionPerformed(ActionEvent e) {
 			ExampleScenarioBuilder.this.selectedTarget = eo;
-			ExampleScenarioBuilder.this.repaint();
+			ExampleScenarioBuilder.this.validate();
 		}
 	}
 
@@ -163,7 +189,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 
 		public void actionPerformed(ActionEvent e) {
 			ExampleScenarioBuilder.this.selectedEvent = dse;
-			ExampleScenarioBuilder.this.repaint();
+			ExampleScenarioBuilder.this.validate();
 		}
 	}
 }

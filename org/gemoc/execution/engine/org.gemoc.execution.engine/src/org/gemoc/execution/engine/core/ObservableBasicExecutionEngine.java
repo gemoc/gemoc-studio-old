@@ -1,16 +1,14 @@
 package org.gemoc.execution.engine.core;
 
-import fr.inria.aoste.trace.LogicalStep;
-import glml.DomainSpecificEvent;
-import glml.DomainSpecificEventFile;
-import glml.ModelSpecificEvent;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Observable;
+import java.util.Queue;
 
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
@@ -30,6 +28,11 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
+
+import fr.inria.aoste.trace.LogicalStep;
+import glml.DomainSpecificEvent;
+import glml.DomainSpecificEventFile;
+import glml.ModelSpecificEvent;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -58,6 +61,13 @@ import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
  */
 public abstract class ObservableBasicExecutionEngine extends Observable
 		implements ExecutionEngine {
+
+	protected LogicalStep currentStep = null;
+	protected Queue<LogicalStep> scheduledSteps = null;
+	protected Map<LogicalStep, List<ModelSpecificEvent>> scheduledEvents = null;
+
+	protected Map<Integer, LogicalStep> schedulingTrace;
+	protected Map<LogicalStep, List<ModelSpecificEvent>> executionTrace;
 
 	/**
 	 * Given at the model-level initialization.
@@ -105,14 +115,14 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		// resource to be correctly detected...
 		if (domainSpecificEventsResource == null) {
 			ResourceSet resSet = new ResourceSetImpl();
-//			domainSpecificEventsResource = resSet
-//					.getResource(
-//							URI.createURI("platform:/resource/org.gemoc.sample.tfsm.dse/ecl/TFSM.ecl"),
-//							true);
+			// domainSpecificEventsResource = resSet
+			// .getResource(
+			// URI.createURI("platform:/resource/org.gemoc.sample.tfsm.dse/ecl/TFSM.ecl"),
+			// true);
 			domainSpecificEventsResource = resSet
 					.getResource(
 							URI.createURI("platform:/plugin/org.gemoc.sample.tfsm.dse/glml/MyDomainSpecificEvents.glml"),
-							true); 
+							true);
 		}
 
 		Activator
@@ -173,6 +183,13 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 			this.domainSpecificEventsRegistry = this
 					.createDomainSpecificEventsRegistry(this.domainSpecificEventsResource);
+
+			// TODO: Execution initialization, move them somewhere else and
+			// place them in reset too.
+			this.scheduledEvents = new HashMap<LogicalStep, List<ModelSpecificEvent>>();
+			this.scheduledSteps = new LinkedList<LogicalStep>();
+			this.schedulingTrace = new HashMap<Integer, LogicalStep>();
+			this.executionTrace = new HashMap<LogicalStep, List<ModelSpecificEvent>>();
 		}
 	}
 
@@ -200,6 +217,16 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	@Override
 	public abstract void reset();
 
+	@Override
+	public void pause() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void stepBack(int numberOfSteps) {
+		throw new UnsupportedOperationException();
+	}
+
 	/**
 	 * Instantiates a Collection of Model-Specific Events depending on which
 	 * event occurrences are in the Step returned by the Solver.
@@ -217,22 +244,35 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		this.notifyObservers("Received from ControlPanel: run(" + numberOfSteps
 				+ ")");
 		for (int i = 0; i < numberOfSteps; i++) {
-			this.runOneStep(null);
+			this.runOneStep();
 		}
 	}
 
-	@Override
-	public void pause() {
-		throw new UnsupportedOperationException();
+	/**
+	 * Updates the scheduling trace and the execution trace. Updates the value
+	 * of currentStep.
+	 * 
+	 * @param newStep
+	 */
+	protected void setCurrentStep(LogicalStep newStep) {
+		// Map<Integer, Map<LogicalStep, List<ModelSpecificEvent>>>
+		Integer max = 0;
+		for (Integer index : this.schedulingTrace.keySet()) {
+			if (index > max) {
+				max = index;
+			}
+		}
+		this.currentStep = newStep;
+		this.schedulingTrace.put(max + 1, newStep);
+		this.executionTrace.put(newStep, new ArrayList<ModelSpecificEvent>());
 	}
 
-	@Override
-	public void stepBack(int numberOfSteps) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void runOneStep(final ModelSpecificEvent mse) {
+	/**
+	 * Runs one step of the execution. Retrieves a scheduling step (either from
+	 * the solver or one scheduled earlier) then executes the associated events
+	 * if there are some.
+	 */
+	protected void runOneStep() {
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
 			public void handleException(Throwable e) {
@@ -243,7 +283,10 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			public void run() throws Exception {
 				Activator.getMessagingSystem().info(">>Running one step",
 						Activator.PLUGIN_ID);
-				ObservableBasicExecutionEngine.this.doOneStep(mse);
+				ObservableBasicExecutionEngine.this.doOneStep();
+				ObservableBasicExecutionEngine.this
+						.setCurrentStep(ObservableBasicExecutionEngine.this
+								.getScheduledOrSolverStep());
 				Activator.getMessagingSystem().info("<<Step finished",
 						Activator.PLUGIN_ID);
 			}
@@ -251,54 +294,50 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		SafeRunner.run(runnable);
 	}
 
-	private LogicalStep getSolverStep() {
-		LogicalStep step = this.solver.getNextStep();
-		Activator.getMessagingSystem().debug(
-				"The solver has correctly returned a step to the engine",
-				Activator.PLUGIN_ID);
-		return step;
+	/**
+	 * If there is a scheduled step then it is returned, else a new one is
+	 * gotten from the solver.
+	 * 
+	 * @return
+	 */
+	protected LogicalStep getScheduledOrSolverStep() {
+		if (this.scheduledSteps.isEmpty()) {
+			return this.solver.getNextStep();
+		} else {
+			return this.scheduledSteps.remove();
+		}
 	}
 
 	@Override
-	public Collection<ModelSpecificEvent> getNextEvents() {
-		LogicalStep step = this.getSolverStep();
-
-		// Create the Domain Specific Events according to the information
-		// returned to us by the solver.
-		Collection<ModelSpecificEvent> events = this.match(step);
-
-		return events;
+	public Collection<ModelSpecificEvent> getPossibleEvents() {
+		return this.match(this.currentStep);
 	}
 
 	/**
-	 * One step of execution corresponding to the execution of the given
-	 * Model-Specific Event.
+	 * One step of execution. Retrieves all the events scheduled for this round
+	 * and executes them sequentially.
 	 * 
 	 * @param mse
 	 */
-	private void doOneStep(ModelSpecificEvent mse) {
+	private void doOneStep() {
 		Collection<ModelSpecificEvent> events;
-		if (mse != null) {
-			// The MSE has been chosen beforehand (via controlpanel)
-			events = new ArrayList<ModelSpecificEvent>();
-			events.add(mse);
-			this.setChanged();
-			this.notifyObservers("User required execution of MSE: "
-					+ mse.getName() + ")");
-		} else {
-			// The MSE has not been chosen beforehand, so it's more of an
-			// automatic mode.
-			events = this.getNextEvents();
+		events = new ArrayList<ModelSpecificEvent>();
+		try {
+			events.addAll(this.scheduledEvents.get(this.currentStep));
+		} catch (NoSuchElementException e) {
+			// Collection remains empty and the below loop is skipped so nothing
+			// happens. As expected.
 		}
 
 		// For each event, execute its action(s) and take into account the
 		// feedback the Domain Specific Action returns.
 		for (ModelSpecificEvent event : events) {
+			this.setChanged();
+			this.notifyObservers("Execution of MSE: " + event.getName() + ")");
+
 			Activator.getMessagingSystem().debug(
 					"Executing the following event: " + event.toString(),
 					Activator.PLUGIN_ID);
-			this.setChanged();
-			this.notifyObservers(event.toString());
 
 			try {
 				List<FeedbackData> feedbacks = this.executor.execute(event);
@@ -340,6 +379,11 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				}
 			}
 		}
+	}
+
+	@Override
+	public Collection<DomainSpecificEvent> getDomainSpecificEvents() {
+		return this.domainSpecificEventsRegistry.values();
 	}
 
 	@Override

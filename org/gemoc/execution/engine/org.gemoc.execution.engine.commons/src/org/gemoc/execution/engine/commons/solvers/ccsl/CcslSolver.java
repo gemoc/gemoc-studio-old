@@ -65,7 +65,9 @@ public class CcslSolver implements
 	@Override
 	public LogicalStep getNextStep() {
 		try {
-			LogicalStep res = this.solverWrapper.getSolver()
+			LogicalStep res = 
+					this.solverWrapper
+					.getSolver()
 					.doOneSimulationStep();
 
 			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {

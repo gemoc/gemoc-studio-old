@@ -100,14 +100,7 @@ public interface ExecutionEngine {
 	 * @return the collection of ModelSpecificEvents which can be triggered by
 	 *         the user.
 	 */
-	public Collection<ModelSpecificEvent> getNextEvents();
-
-	/**
-	 * Runs one step of the execution corresponding to an occurrence of the
-	 * given ModelSpecificEvent, which should come from the getNextEvents()
-	 * result.
-	 */
-	public void runOneStep(ModelSpecificEvent mse);
+	public Collection<ModelSpecificEvent> getPossibleEvents();
 
 	/** --------------- Influence the MoC Constraints --------------- **/
 	/**

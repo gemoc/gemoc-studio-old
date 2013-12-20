@@ -1,28 +1,28 @@
 package org.gemoc.execution.engine.io.core.impl;
 
 import org.gemoc.execution.engine.io.core.ControlPanel;
-import org.gemoc.execution.engine.io.exceptions.ImpossibleOperationException;
+import org.gemoc.execution.engine.io.exceptions.ImpossibleCommandException;
 
 public abstract class BasicControlPanel extends BasicFrontend implements
 		ControlPanel {
-	public void run() throws ImpossibleOperationException {
+	public void run() throws ImpossibleCommandException {
 		this.engine.run(-1);
 	}
 
-	public void run(int numberOfSteps) throws ImpossibleOperationException {
+	public void run(int numberOfSteps) throws ImpossibleCommandException {
 		this.engine.run(numberOfSteps);
 	}
 
-	public void pause() throws ImpossibleOperationException{
+	public void pause() throws ImpossibleCommandException{
 		this.engine.pause();
 	}
 
-	public void reset() throws ImpossibleOperationException {
+	public void reset() throws ImpossibleCommandException {
 		this.engine.reset();
 	}
 
 	public void stepBack(int numberOfSteps)
-			throws ImpossibleOperationException{
+			throws ImpossibleCommandException{
 		this.engine.stepBack(numberOfSteps);
 	}
 }

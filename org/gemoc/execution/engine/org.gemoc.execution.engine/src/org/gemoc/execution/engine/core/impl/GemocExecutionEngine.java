@@ -16,12 +16,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.execution.engine.Activator;
@@ -137,15 +138,16 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				this.solverInput = solverInput;
 
 			} catch (UnsupportedOperationException e) {
-				 String solverInputFilePath =
-				 "/org.gemoc.sample.tfsm.instances/TrafficControl/test/test_executionModel.extendedCCSL";
-				//String solverInputFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test/MySolverInput.javasolverinput";
+				String solverInputFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test/test_executionModel.extendedCCSL";
+				// String solverInputFilePath =
+				// "/org.gemoc.sample.tfsm.instances/TrafficControl/test/MySolverInput.javasolverinput";
 				this.solverInput = new ResourceSetImpl().getResource(URI
 						.createPlatformResourceURI(solverInputFilePath, true),
 						true);
 				// this.solver.input.load(null) ???
 			}
 			this.solver.setSolverInputFile(this.solverInput.getURI());
+			this.currentStep = this.getScheduledOrSolverStep();
 			this.mseRegistry = this
 					.buildModelSpecificEventsRegistry(this.modelOfExecution);
 
@@ -175,6 +177,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	@Override
 	public void reset() {
 		this.solver.setSolverInputFile(this.solverInput.getURI());
+		this.scheduledEvents.clear();
 		this.setChanged();
 		this.notifyObservers(">Reset!");
 	}
@@ -194,46 +197,92 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 						"FState is TICK for eventOccurrence: "
 								+ eventOccurrence, Activator.PLUGIN_ID);
 
-				/*if (eventOccurrence.getContext() != null
-						& eventOccurrence.getReferedElement() != null) {
-					// Case of the CCSL Solver
-					EObject target = this
-							.getEObjectFromReference(eventOccurrence
-									.getContext());
-					Activator.getMessagingSystem().debug(
-							"Linked to the EObject: " + target,
-							Activator.PLUGIN_ID);
-					try {
-						EOperation operation = (EOperation) this
-								.getEObjectFromReference(eventOccurrence
-										.getReferedElement());
-						Activator.getMessagingSystem().debug(
-								"Linked to the EOperation: " + operation,
-								Activator.PLUGIN_ID);
-						ModelSpecificEvent mse = null;// = new ModelEvent(
-						// "dseNamesNotUsedYet", new ModelAction(target,
-						// operation, null), null);
-						res.add(mse);
-					} catch (ClassCastException e) {
-						Activator.getMessagingSystem().warn(
-								"... but not linked to an EOperation.",
-								Activator.PLUGIN_ID);
+				/*
+				 * if (eventOccurrence.getContext() != null &
+				 * eventOccurrence.getReferedElement() != null) { // Case of the
+				 * CCSL Solver EObject target = this
+				 * .getEObjectFromReference(eventOccurrence .getContext());
+				 * Activator.getMessagingSystem().debug(
+				 * "Linked to the EObject: " + target, Activator.PLUGIN_ID); try
+				 * { EOperation operation = (EOperation) this
+				 * .getEObjectFromReference(eventOccurrence
+				 * .getReferedElement()); Activator.getMessagingSystem().debug(
+				 * "Linked to the EOperation: " + operation,
+				 * Activator.PLUGIN_ID); ModelSpecificEvent mse = null;// = new
+				 * ModelEvent( // "dseNamesNotUsedYet", new ModelAction(target,
+				 * // operation, null), null); res.add(mse); } catch
+				 * (ClassCastException e) { Activator.getMessagingSystem().warn(
+				 * "... but not linked to an EOperation.", Activator.PLUGIN_ID);
+				 * }
+				 * 
+				 * } else {
+				 */
+				// Case of the JavaSolver
+				if (eventOccurrence.getReferedElement() != null) {
+					if (eventOccurrence.getReferedElement() instanceof NamedReference) {
+						NamedReference namedReference = (NamedReference) eventOccurrence
+								.getReferedElement();
+						res.add(this.mseRegistry.get(namedReference.getValue()));
 					}
-					
-				} else {*/
-					// Case of the JavaSolver
-					if (eventOccurrence.getReferedElement() != null) {
-						if (eventOccurrence.getReferedElement() instanceof NamedReference) {
-							NamedReference namedReference = (NamedReference) eventOccurrence
-									.getReferedElement();
-							res.add(this.mseRegistry.get(namedReference
-									.getValue()));
-						}
-					}
-				/*}*/
+				}
+				/* } */
 			}
 		}
 		return res;
+	}
+
+	@Override
+	public void injectEvent(DomainSpecificEvent dse, EObject target)
+			throws EventInjectionException {
+		if (this.domainSpecificEventsRegistry.containsValue(dse)
+				&& this.resourceContainsEObject(this.modelResource, target)) {
+			try {
+				ModelSpecificEvent mse = this
+						.findCorrespondingModelSpecificEvent(dse, target,
+								this.mseRegistry);
+				Collection<ModelSpecificEvent> allowedEvents = this
+						.getPossibleEvents();
+				if (allowedEvents.contains(mse)) {
+					List<ModelSpecificEvent> scheduledEventsForCurrentStep = this.scheduledEvents
+							.get(this.currentStep);
+					scheduledEventsForCurrentStep.add(mse);
+				} else {
+					throw new EventInjectionException(
+							"Injecting this event is not allowed by the Model of Computation at that time.");
+				}
+			} catch (NoSuchElementException e) {
+				throw new EventInjectionException(e);
+			}
+		}
+	}
+
+	@Override
+	public Resource getModelResource() {
+		return this.modelResource;
+	}
+
+	private ModelSpecificEvent findCorrespondingModelSpecificEvent(
+			DomainSpecificEvent dse, EObject target,
+			Map<String, ModelSpecificEvent> map) {
+		for (ModelSpecificEvent mse : map.values()) {
+			if (mse.getReification().equals(dse)
+					&& mse.getModelSpecificActions().get(0).getTarget()
+							.equals(target)) {
+				return mse;
+			}
+		}
+		throw new NoSuchElementException();
+	}
+
+	private boolean resourceContainsEObject(Resource resource, EObject eo) {
+		Iterator<EObject> it = resource.getAllContents();
+		while (it.hasNext()) {
+			EObject content = it.next();
+			if (content.equals(eo)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -415,24 +464,6 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			Activator.error(errorMessage, e);
 			return null;
 		}
-	}
-
-	@Override
-	public Collection<DomainSpecificEvent> getDomainSpecificEvents() {
-		// TODO
-		return this.domainSpecificEventsRegistry.values();
-	}
-
-	@Override
-	public void injectEvent(DomainSpecificEvent dse, EObject target)
-			throws EventInjectionException {
-		// TODO
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public Resource getModelResource() {
-		return this.modelResource;
 	}
 
 }

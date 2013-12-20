@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import org.gemoc.execution.engine.io.core.impl.BasicControlPanel;
-import org.gemoc.execution.engine.io.exceptions.ImpossibleOperationException;
+import org.gemoc.execution.engine.io.exceptions.ImpossibleCommandException;
 
 /**
  * A basic example of a GUI implementing ControlPanel and giving order to the
@@ -64,7 +64,7 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				ExampleGUIControlPanel.this.run(1);
-			} catch (ImpossibleOperationException e1) {
+			} catch (ImpossibleCommandException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
@@ -81,7 +81,7 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				ExampleGUIControlPanel.this.reset();
-			} catch (ImpossibleOperationException e1) {
+			} catch (ImpossibleCommandException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
@@ -92,7 +92,7 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				ExampleGUIControlPanel.this.pause();
-			} catch (ImpossibleOperationException e1) {
+			} catch (ImpossibleCommandException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (UnsupportedOperationException e2) {
@@ -107,7 +107,7 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				ExampleGUIControlPanel.this.stepBack(1);
-			} catch (ImpossibleOperationException e1) {
+			} catch (ImpossibleCommandException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (UnsupportedOperationException e2) {
