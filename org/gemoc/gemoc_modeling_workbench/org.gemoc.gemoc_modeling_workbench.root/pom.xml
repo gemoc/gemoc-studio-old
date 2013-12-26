@@ -84,7 +84,7 @@
         <repository>
             <id>timesquare</id>
             <layout>p2</layout>
-            <url>http://timesquare.inria.fr/update_site</url>
+            <url>http://timesquare.inria.fr/update_site/experimental</url>
         </repository>
 		
         <repository>
