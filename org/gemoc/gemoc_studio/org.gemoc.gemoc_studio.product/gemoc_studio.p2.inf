@@ -3,8 +3,8 @@ addRepository(type:0,location:http${#58}//download.eclipse.org/releases/kepler,n
 addRepository(type:1,location:http${#58}//download.eclipse.org/releases/kepler,name:Kepler);\
 addRepository(type:0,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
 addRepository(type:1,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
-addRepository(type:0,location:http${#58}//timesquare.inria.fr/update_site,name:Timesquare);\
-addRepository(type:1,location:http${#58}//timesquare.inria.fr/update_site,name:Timesquare);\
+addRepository(type:0,location:http${#58}//timesquare.inria.fr/update_site/experimental,name:Timesquare);\
+addRepository(type:1,location:http${#58}//timesquare.inria.fr/update_site/experimental,name:Timesquare);\
 addRepository(type:0,location:http${#58}//www.kermeta.org/k2/update/,name:Kermeta 2);\
 addRepository(type:1,location:http${#58}//www.kermeta.org/k2/update/,name:Kermeta 2);\
   mkdir(path:${installFolder}/dropins);
