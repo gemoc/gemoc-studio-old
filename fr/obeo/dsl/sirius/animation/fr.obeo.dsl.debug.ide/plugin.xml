@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.core.sourceLocators">
+      <sourceLocator
+            class="fr.obeo.dsl.debug.ide.DSLSourceLocator"
+            id="fr.obeo.dsl.debug.ide.sourceLocator"
+            name="DSL Debug Source Locator">
+      </sourceLocator>
+   </extension>
+
+</plugin>
