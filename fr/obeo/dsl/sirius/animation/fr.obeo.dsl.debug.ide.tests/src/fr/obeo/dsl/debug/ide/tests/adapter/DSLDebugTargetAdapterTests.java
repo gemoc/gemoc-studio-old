@@ -499,7 +499,7 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 			DebugPlugin.getDefault().removeDebugEventListener(listener);
 		}
 
-		assertEquals(1, listener.getEventsList().size());
+		assertEquals(2, listener.getEventsList().size());
 		DebugEvent[] events = listener.getEventsList().get(0);
 		assertEquals(1, events.length);
 		DebugEvent event = events[0];
@@ -507,6 +507,13 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 				suspendedThreadIndex)));
 		assertEquals(DebugEvent.RESUME, event.getKind());
 		assertEquals(DebugEvent.CLIENT_REQUEST, event.getDetail());
+
+		events = listener.getEventsList().get(1);
+		assertEquals(1, events.length);
+		event = events[0];
+		assertTrue(event.getSource() == debugTarget);
+		assertEquals(DebugEvent.CHANGE, event.getKind());
+		assertEquals(DebugEvent.STATE, event.getDetail());
 	}
 
 	/**
@@ -541,7 +548,7 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 			DebugPlugin.getDefault().removeDebugEventListener(listener);
 		}
 
-		assertEquals(1, listener.getEventsList().size());
+		assertEquals(2, listener.getEventsList().size());
 		DebugEvent[] events = listener.getEventsList().get(0);
 		assertEquals(1, events.length);
 		DebugEvent event = events[0];
@@ -549,6 +556,13 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 				suspendedThreadIndex)));
 		assertEquals(DebugEvent.RESUME, event.getKind());
 		assertEquals(DebugEvent.STEP_RETURN, event.getDetail());
+
+		events = listener.getEventsList().get(1);
+		assertEquals(1, events.length);
+		event = events[0];
+		assertTrue(event.getSource() == debugTarget);
+		assertEquals(DebugEvent.CHANGE, event.getKind());
+		assertEquals(DebugEvent.STATE, event.getDetail());
 	}
 
 	/**
@@ -579,7 +593,7 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 			DebugPlugin.getDefault().removeDebugEventListener(listener);
 		}
 
-		assertEquals(1, listener.getEventsList().size());
+		assertEquals(2, listener.getEventsList().size());
 		DebugEvent[] events = listener.getEventsList().get(0);
 		assertEquals(1, events.length);
 		DebugEvent event = events[0];
@@ -587,6 +601,13 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 				suspendedThreadIndex)));
 		assertEquals(DebugEvent.RESUME, event.getKind());
 		assertEquals(DebugEvent.STEP_OVER, event.getDetail());
+
+		events = listener.getEventsList().get(1);
+		assertEquals(1, events.length);
+		event = events[0];
+		assertTrue(event.getSource() == debugTarget);
+		assertEquals(DebugEvent.CHANGE, event.getKind());
+		assertEquals(DebugEvent.STATE, event.getDetail());
 	}
 
 	/**
@@ -619,7 +640,7 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 			DebugPlugin.getDefault().removeDebugEventListener(listener);
 		}
 
-		assertEquals(1, listener.getEventsList().size());
+		assertEquals(2, listener.getEventsList().size());
 		DebugEvent[] events = listener.getEventsList().get(0);
 		assertEquals(1, events.length);
 		DebugEvent event = events[0];
@@ -627,6 +648,13 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 				suspendedThreadIndex)));
 		assertEquals(DebugEvent.RESUME, event.getKind());
 		assertEquals(DebugEvent.STEP_INTO, event.getDetail());
+
+		events = listener.getEventsList().get(1);
+		assertEquals(1, events.length);
+		event = events[0];
+		assertTrue(event.getSource() == debugTarget);
+		assertEquals(DebugEvent.CHANGE, event.getKind());
+		assertEquals(DebugEvent.STATE, event.getDetail());
 	}
 
 	/**

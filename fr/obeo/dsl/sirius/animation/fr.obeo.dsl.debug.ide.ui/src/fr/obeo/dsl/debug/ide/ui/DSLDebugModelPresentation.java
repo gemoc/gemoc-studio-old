@@ -17,9 +17,9 @@
  *******************************************************************************/
 package fr.obeo.dsl.debug.ide.ui;
 
-import fr.obeo.dsl.debug.Contextual;
+import fr.obeo.dsl.debug.Variable;
 import fr.obeo.dsl.debug.ide.adapter.DSLStackFrameAdapter;
-import fr.obeo.dsl.debug.provider.DebugItemProviderAdapterFactory;
+import fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory;
 
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
@@ -28,7 +28,6 @@ import org.eclipse.debug.ui.IDebugEditorPresentation;
 import org.eclipse.debug.ui.IDebugModelPresentation;
 import org.eclipse.debug.ui.IValueDetailListener;
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
@@ -39,12 +38,15 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 /**
  * The {@link IDebugModelPresentation} for the DSL debug model.
@@ -54,9 +56,14 @@ import org.eclipse.ui.PlatformUI;
 public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebugEditorPresentation {
 
 	/**
-	 * The {@link org.eclipse.jface.viewers.ILabelProvider ILabelProvider} factory.
+	 * The EMF {@link ILabelProvider}.
 	 */
-	private final AdapterFactoryLabelProvider labelProvider;
+	private final ILabelProvider eLabelProvider;
+
+	/**
+	 * The Eclipse {@link ILabelProvider}.
+	 */
+	private final ILabelProvider eclipseLabelProvider;
 
 	/**
 	 * Constructor.
@@ -67,10 +74,11 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		DebugItemProviderAdapterFactory animationFactory = new DebugItemProviderAdapterFactory();
-		adapterFactory.addAdapterFactory(animationFactory);
+		CustomDebugItemProviderAdapterFactory debugFactory = new CustomDebugItemProviderAdapterFactory();
+		adapterFactory.addAdapterFactory(debugFactory);
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
-		labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+		eLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+		eclipseLabelProvider = WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider();
 	}
 
 	/**
@@ -79,7 +87,7 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
 	 */
 	public void addListener(ILabelProviderListener listener) {
-		labelProvider.addListener(listener);
+		eLabelProvider.addListener(listener);
 	}
 
 	/**
@@ -88,7 +96,17 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
 	 */
 	public void dispose() {
-		labelProvider.dispose();
+		eLabelProvider.dispose();
+		Display.getDefault().asyncExec(new Runnable() {
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see java.lang.Runnable#run()
+			 */
+			public void run() {
+				eclipseLabelProvider.dispose();
+			}
+		});
 	}
 
 	/**
@@ -97,7 +115,7 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
 	 */
 	public boolean isLabelProperty(Object element, String property) {
-		return labelProvider.isLabelProperty(unwrapp(element), property);
+		return eLabelProvider.isLabelProperty(unwrapp(element), property);
 	}
 
 	/**
@@ -106,7 +124,7 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
 	 */
 	public void removeListener(ILabelProviderListener listener) {
-		labelProvider.removeListener(listener);
+		eLabelProvider.removeListener(listener);
 	}
 
 	/**
@@ -156,7 +174,18 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.debug.ui.IDebugModelPresentation#getImage(java.lang.Object)
 	 */
 	public Image getImage(final Object element) {
-		return labelProvider.getImage(unwrapp(element));
+		final Image res;
+
+		final Object unwrapped = unwrapp(element);
+		if (unwrapped instanceof Variable) {
+			res = getImage(((Variable)unwrapped).getValue());
+		} else if (unwrapped instanceof EObject) {
+			res = eLabelProvider.getImage(unwrapped);
+		} else {
+			res = eclipseLabelProvider.getImage(unwrapped);
+		}
+
+		return res;
 	}
 
 	/**
@@ -165,7 +194,18 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.debug.ui.IDebugModelPresentation#getText(java.lang.Object)
 	 */
 	public String getText(Object element) {
-		return labelProvider.getText(unwrapp(element));
+		final String res;
+
+		final Object unwrapped = unwrapp(element);
+		if (unwrapped instanceof Variable) {
+			res = getText(((Variable)unwrapped).getValue());
+		} else if (unwrapped instanceof EObject) {
+			res = eLabelProvider.getText(unwrapped);
+		} else {
+			res = eclipseLabelProvider.getText(unwrapped);
+		}
+
+		return res;
 	}
 
 	public void computeDetail(IValue value, IValueDetailListener listener) {
@@ -173,23 +213,17 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	}
 
 	/**
-	 * Unwrap the {@link Adapter#getTarget() target} if the given element is an {@link Adapter} and the
-	 * {@link Contextual#getContext() contextual object} if possible.
+	 * Unwrap the {@link Adapter#getTarget() target} if the given element is an {@link Adapter}.
 	 * 
 	 * @param element
 	 *            the {@link Object element}
-	 * @return the {@link Adapter#getTarget() traget} if the given element is an {@link Adapter}, the given
+	 * @return the {@link Adapter#getTarget() target} if the given element is an {@link Adapter}, the given
 	 *         element itself otherwise
 	 */
 	private Object unwrapp(Object element) {
 		final Object res;
 		if (element instanceof Adapter) {
-			final Notifier target = ((Adapter)element).getTarget();
-			if (target instanceof Contextual) {
-				res = ((Contextual)target).getContext();
-			} else {
-				res = target;
-			}
+			res = ((Adapter)element).getTarget();
 		} else {
 			res = element;
 		}

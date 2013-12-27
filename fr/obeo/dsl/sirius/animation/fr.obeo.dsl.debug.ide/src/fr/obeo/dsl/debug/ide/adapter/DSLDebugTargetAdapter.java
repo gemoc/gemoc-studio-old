@@ -410,6 +410,7 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 			// Eclipse change
 			factory.getThread(eThread).fireResumeEvent(DebugEvent.CLIENT_REQUEST);
 		}
+		fireChangeEvent(DebugEvent.STATE);
 	}
 
 	/**
@@ -471,7 +472,7 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 		} else {
 			thread.fireSuspendEvent(DebugEvent.CLIENT_REQUEST);
 		}
-		factory.getDebugTarget(eThread.getDebugTarget()).fireChangeEvent(DebugEvent.STATE);
+		fireChangeEvent(DebugEvent.STATE);
 	}
 
 }

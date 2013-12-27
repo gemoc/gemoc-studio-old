@@ -23,7 +23,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://www.obeo.fr/dsl/debug"
-            class="fr.obeo.dsl.debug.provider.DebugItemProviderAdapterFactory"
+            class="fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

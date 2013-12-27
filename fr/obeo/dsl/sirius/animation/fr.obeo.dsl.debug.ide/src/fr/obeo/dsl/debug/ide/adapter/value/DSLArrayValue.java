@@ -80,11 +80,13 @@ public class DSLArrayValue extends AbstractDSLValue implements IIndexedValue {
 		StringBuilder builder = new StringBuilder(BUFFER_SIZE);
 
 		builder.append('[');
-		for (IVariable variable : variables) {
-			builder = builder.append(variable.getValue().getValueString());
-			builder = builder.append(", ");
+		if (variables.length > 0) {
+			for (IVariable variable : variables) {
+				builder = builder.append(variable.getValue().getValueString());
+				builder = builder.append(", ");
+			}
+			builder = builder.delete(builder.length() - ", ".length(), builder.length());
 		}
-		builder = builder.delete(builder.length() - ", ".length(), builder.length());
 		builder.append(']');
 
 		return builder.toString();
