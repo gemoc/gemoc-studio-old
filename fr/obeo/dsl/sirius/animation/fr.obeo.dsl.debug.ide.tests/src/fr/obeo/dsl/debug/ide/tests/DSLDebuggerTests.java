@@ -19,7 +19,8 @@ package fr.obeo.dsl.debug.ide.tests;
 
 import fr.obeo.dsl.debug.DebugPackage;
 import fr.obeo.dsl.debug.Variable;
-import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
+import fr.obeo.dsl.debug.ide.event.IDSLDebugEvent;
+import fr.obeo.dsl.debug.ide.event.debugger.TerminatedReply;
 import fr.obeo.dsl.debug.ide.event.model.DisconnectRequest;
 import fr.obeo.dsl.debug.ide.event.model.ResumeRequest;
 import fr.obeo.dsl.debug.ide.event.model.StartRequest;
@@ -32,6 +33,7 @@ import fr.obeo.dsl.debug.ide.tests.event.TestEventProcessor;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -47,7 +49,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventStartRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		debugger.handleEvent(new StartRequest());
@@ -61,13 +63,17 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventTerminateRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		debugger.handleEvent(new TerminateRequest());
 
 		assertTrue(debugger.hasTerminateCall());
 		assertTrue(debugger.isTerminated());
+		assertEquals(1, target.getEvents().size());
+		IDSLDebugEvent event = target.getEvents().get(0);
+		assertTrue(event instanceof TerminatedReply);
+		assertEquals(null, ((TerminatedReply)event).getThreadName());
 	}
 
 	/**
@@ -76,7 +82,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventTerminateThreadRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		debugger.spawnRunningThread("thread", DebugPackage.eINSTANCE.getDebugFactory().createVariable());
@@ -91,7 +97,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventSuspendRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		debugger.handleEvent(new SuspendRequest());
@@ -105,7 +111,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventSuspendThreadRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		debugger.spawnRunningThread("thread", DebugPackage.eINSTANCE.getDebugFactory().createVariable());
@@ -120,7 +126,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventResume() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		debugger.handleEvent(new ResumeRequest());
@@ -134,7 +140,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventResumeThreadRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		debugger.spawnRunningThread("thread", DebugPackage.eINSTANCE.getDebugFactory().createVariable());
@@ -149,7 +155,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventStepIntoRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		final Variable instruction = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
@@ -166,7 +172,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventStepOverRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		final Variable instruction = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
@@ -183,7 +189,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventStepReturnRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		final Variable instruction = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
@@ -200,7 +206,7 @@ public class DSLDebuggerTests {
 	 */
 	@Test
 	public void handleEventDisconnectRequest() {
-		final IDSLDebugEventProcessor target = new TestEventProcessor();
+		final TestEventProcessor target = new TestEventProcessor();
 		final TestDSLDebugger debugger = new TestDSLDebugger(target);
 
 		final Variable instruction = DebugPackage.eINSTANCE.getDebugFactory().createVariable();

@@ -17,8 +17,8 @@
  *******************************************************************************/
 package fr.obeo.dsl.debug.ide.tests;
 
+import fr.obeo.dsl.debug.DebugPackage;
 import fr.obeo.dsl.debug.ide.AbstractDSLDebugger;
-import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
 import org.eclipse.emf.ecore.EObject;
@@ -31,59 +31,125 @@ import org.eclipse.emf.ecore.EObject;
 public class TestDSLDebugger extends AbstractDSLDebugger {
 
 	/**
-	 * A call to {@link IDSLDebugger#disconnect()} call has been made.
+	 * An interpreter.
+	 * 
+	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+	 */
+	private class Interpreter implements Runnable {
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see java.lang.Runnable#run()
+		 */
+		public void run() {
+			spawnRunningThread(Thread.currentThread().getName(), INSTRUCTION_1);
+			boolean terminated = false;
+			while (!terminated) {
+				terminated = control(Thread.currentThread().getName(), INSTRUCTION_1);
+				if (!terminated) {
+					terminated = control(Thread.currentThread().getName(), INSTRUCTION_2);
+				}
+				if (!terminated) {
+					terminated = control(Thread.currentThread().getName(), INSTRUCTION_3);
+				}
+			}
+			if (isTerminated(Thread.currentThread().getName())) {
+				terminate(Thread.currentThread().getName());
+			}
+		}
+	}
+
+	/**
+	 * The thread name.
+	 */
+	public static final String THREAD_NAME_1 = "THREAD_1";
+
+	/**
+	 * The thread name.
+	 */
+	public static final String THREAD_NAME_2 = "THREAD_2";
+
+	/**
+	 * The first {@link EObject instruction}.
+	 */
+	public static final EObject INSTRUCTION_1 = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
+
+	/**
+	 * The second {@link EObject instruction}.
+	 */
+	public static final EObject INSTRUCTION_2 = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
+
+	/**
+	 * The third {@link EObject instruction}.
+	 */
+	public static final EObject INSTRUCTION_3 = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
+
+	/**
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#disconnect()} call has been made.
 	 */
 	private boolean disconnectCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#start()} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#start()} call has been made.
 	 */
 	private boolean startCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#stepInto(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#stepInto(String)} call has been made.
 	 */
 	private boolean stepIntoCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#stepOver(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#stepOver(String)} call has been made.
 	 */
 	private boolean stepOverCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#stepReturn(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#stepReturn(String)} call has been made.
 	 */
 	private boolean stepReturnCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#resume()} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#resume()} call has been made.
 	 */
 	private boolean resumeCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#resume(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#resume(String)} call has been made.
 	 */
 	private boolean resumeThreadCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#suspend()} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#suspend()} call has been made.
 	 */
 	private boolean suspendCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#suspend(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#suspend(String)} call has been made.
 	 */
 	private boolean suspendThreadCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#terminate()} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#terminate()} call has been made.
 	 */
 	private boolean terminateCall;
 
 	/**
-	 * A call to {@link IDSLDebugger#terminate(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#terminate(String)} call has been made.
 	 */
 	private boolean terminateThreadCall;
+
+	/**
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#updateData(String, EObject)} call has been made.
+	 */
+	private boolean updateDataCall;
+
+	/**
+	 * A call to
+	 * {@link fr.obeo.dsl.debug.ide.IDSLDebugger#getNextInstruction(String, EObject, fr.obeo.dsl.debug.ide.IDSLDebugger.Stepping)}
+	 * call has been made.
+	 */
+	private boolean getNextInstructionCall;
 
 	/**
 	 * Constructor.
@@ -100,16 +166,18 @@ public class TestDSLDebugger extends AbstractDSLDebugger {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#start()
+	 * @see fr.obeo.dsl.debug.ide.fr.obeo.dsl.debug.ide.IDSLDebugger#start()
 	 */
 	public void start() {
 		startCall = true;
+		new Thread(new Interpreter(), THREAD_NAME_1).start();
+		new Thread(new Interpreter(), THREAD_NAME_2).start();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#disconnect()
+	 * @see fr.obeo.dsl.debug.ide.fr.obeo.dsl.debug.ide.IDSLDebugger#disconnect()
 	 */
 	public void disconnect() {
 		disconnectCall = true;
@@ -172,120 +240,160 @@ public class TestDSLDebugger extends AbstractDSLDebugger {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#canStepInto(java.lang.String, org.eclipse.emf.ecore.EObject)
+	 * @see fr.obeo.dsl.debug.ide.fr.obeo.dsl.debug.ide.IDSLDebugger#canStepInto(java.lang.String,
+	 *      org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean canStepInto(String threadName, EObject instruction) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#updateData(java.lang.String, org.eclipse.emf.ecore.EObject)
+	 * @see fr.obeo.dsl.debug.ide.fr.obeo.dsl.debug.ide.IDSLDebugger#updateData(java.lang.String,
+	 *      org.eclipse.emf.ecore.EObject)
 	 */
 	public void updateData(String threadName, EObject instruction) {
-		// TODO Auto-generated method stub
+		updateDataCall = true;
+	}
 
+	@Override
+	public EObject getNextInstruction(String threadName, EObject currentInstruction, Stepping stepping) {
+		getNextInstructionCall = true;
+		return super.getNextInstruction(threadName, currentInstruction, stepping);
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#disconnect()} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#disconnect()} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#disconnect()} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#disconnect()} has been
+	 *         made.
 	 */
 	public boolean hasDisconnectCall() {
 		return disconnectCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#start()} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#start()} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#start()} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#start()} has been
+	 *         made.
 	 */
 	public boolean hasStartCall() {
 		return startCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#stepInto(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#stepInto(String)} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#stepInto(String)} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#stepInto(String)} has
+	 *         been made.
 	 */
 	public boolean hasStepIntoCall() {
 		return stepIntoCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#stepOver(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#stepOver(String)} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#stepOver(String)} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#stepOver(String)} has
+	 *         been made.
 	 */
 	public boolean hasStepOverCall() {
 		return stepOverCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#stepReturn(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#stepReturn(String)} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#stepReturn(String)} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#stepReturn(String)}
+	 *         has been made.
 	 */
 	public boolean hasStepReturnCall() {
 		return stepReturnCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#resume()} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#resume()} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#resume()} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#resume()} has been
+	 *         made.
 	 */
 	public boolean hasResumeCall() {
 		return resumeCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#resume(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#resume(String)} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#resume(String)} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#resume(String)} has
+	 *         been made.
 	 */
 	public boolean hasResumeThreadCall() {
 		return resumeThreadCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#suspend()} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#suspend()} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#suspend()} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#suspend()} has been
+	 *         made.
 	 */
 	public boolean hasSuspendCall() {
 		return suspendCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#suspend(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#suspend(String)} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#suspend(String)} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#suspend(String)} has
+	 *         been made.
 	 */
 	public boolean hasSuspendThreadCall() {
 		return suspendThreadCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#terminate()} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#terminate()} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#terminate()} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#terminate()} has been
+	 *         made.
 	 */
 	public boolean hasTerminateCall() {
 		return terminateCall;
 	}
 
 	/**
-	 * A call to {@link IDSLDebugger#terminate(String)} call has been made.
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#terminate(String)} call has been made.
 	 * 
-	 * @return <code>true</code> if a call to {@link IDSLDebugger#terminate(String)} has been made.
+	 * @return <code>true</code> if a call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#terminate(String)} has
+	 *         been made.
 	 */
 	public boolean hasTerminateThreadCall() {
 		return terminateThreadCall;
+	}
+
+	/**
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#updateData(String, EObject)} call has been made.
+	 * 
+	 * @return <code>true</code> if a call to
+	 *         {@link fr.obeo.dsl.debug.ide.IDSLDebugger#updateData(String, EObject)} has been made.
+	 */
+	public boolean hasUpdateDataCall() {
+		return updateDataCall;
+	}
+
+	/**
+	 * A call to
+	 * {@link fr.obeo.dsl.debug.ide.IDSLDebugger#getNextInstruction(String, EObject, fr.obeo.dsl.debug.ide.IDSLDebugger.Stepping)}
+	 * call has been made.
+	 * 
+	 * @return <code>true</code> if a call to
+	 *         {@link fr.obeo.dsl.debug.ide.IDSLDebugger#getNextInstruction(String, EObject, fr.obeo.dsl.debug.ide.IDSLDebugger.Stepping)}
+	 *         has been made.
+	 */
+	public boolean hasGetNextInstructionCall() {
+		return getNextInstructionCall;
 	}
 
 }
