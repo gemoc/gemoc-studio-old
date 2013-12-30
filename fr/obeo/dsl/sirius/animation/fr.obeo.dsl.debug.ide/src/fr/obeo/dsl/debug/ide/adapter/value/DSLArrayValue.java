@@ -53,7 +53,7 @@ public class DSLArrayValue extends AbstractDSLValue implements IIndexedValue {
 	 *            the array of {@link Object}
 	 */
 	public DSLArrayValue(DSLEclipseDebugIntegration factory, String referenceTypeName, Object[] array) {
-		super(factory, referenceTypeName);
+		super(factory, referenceTypeName, array);
 		variables = new IVariable[array.length];
 		for (int i = 0; i < array.length; ++i) {
 			variables[i] = factory.getVariable(getActualTypeName(array), "[" + i + "]", array[i]);

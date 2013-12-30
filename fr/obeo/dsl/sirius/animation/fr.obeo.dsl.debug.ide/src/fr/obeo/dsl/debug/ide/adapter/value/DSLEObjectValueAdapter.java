@@ -39,9 +39,11 @@ public class DSLEObjectValueAdapter extends AbstractDSLValue {
 	 *            the {@link DSLEclipseDebugIntegration} factory
 	 * @param referenceTypeName
 	 *            the reference type name
+	 * @param value
+	 *            the value {@link Object}
 	 */
-	public DSLEObjectValueAdapter(DSLEclipseDebugIntegration factory, String referenceTypeName) {
-		super(factory, referenceTypeName);
+	public DSLEObjectValueAdapter(DSLEclipseDebugIntegration factory, String referenceTypeName, Object value) {
+		super(factory, referenceTypeName, value);
 	}
 
 	/**

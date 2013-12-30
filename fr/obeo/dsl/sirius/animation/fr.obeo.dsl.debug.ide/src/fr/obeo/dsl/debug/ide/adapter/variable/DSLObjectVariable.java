@@ -42,6 +42,11 @@ public class DSLObjectVariable extends AbstractDSLDebugElementAdapter implements
 	private final IValue value;
 
 	/**
+	 * The attached {@link Object}.
+	 */
+	private final Object object;
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param factory
@@ -58,6 +63,7 @@ public class DSLObjectVariable extends AbstractDSLDebugElementAdapter implements
 		super(factory);
 		this.variableName = variableName;
 		this.value = factory.getValue(referenceTypeName, value);
+		this.object = value;
 	}
 
 	/**
@@ -139,6 +145,15 @@ public class DSLObjectVariable extends AbstractDSLDebugElementAdapter implements
 	 */
 	public boolean hasValueChanged() throws DebugException {
 		return false;
+	}
+
+	/**
+	 * Gets the attached {@link Object}.
+	 * 
+	 * @return the attached {@link Object}
+	 */
+	public Object getObject() {
+		return object;
 	}
 
 }

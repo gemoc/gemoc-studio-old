@@ -19,6 +19,8 @@ package fr.obeo.dsl.debug.ide.ui;
 
 import fr.obeo.dsl.debug.Variable;
 import fr.obeo.dsl.debug.ide.adapter.DSLStackFrameAdapter;
+import fr.obeo.dsl.debug.ide.adapter.value.DSLObjectValue;
+import fr.obeo.dsl.debug.ide.adapter.variable.DSLObjectVariable;
 import fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory;
 
 import org.eclipse.debug.core.model.IStackFrame;
@@ -42,11 +44,9 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 /**
  * The {@link IDebugModelPresentation} for the DSL debug model.
@@ -61,11 +61,6 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	private final ILabelProvider eLabelProvider;
 
 	/**
-	 * The Eclipse {@link ILabelProvider}.
-	 */
-	private final ILabelProvider eclipseLabelProvider;
-
-	/**
 	 * Constructor.
 	 */
 	public DSLDebugModelPresentation() {
@@ -78,7 +73,6 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 		adapterFactory.addAdapterFactory(debugFactory);
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		eLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-		eclipseLabelProvider = WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider();
 	}
 
 	/**
@@ -97,16 +91,6 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 */
 	public void dispose() {
 		eLabelProvider.dispose();
-		Display.getDefault().asyncExec(new Runnable() {
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see java.lang.Runnable#run()
-			 */
-			public void run() {
-				eclipseLabelProvider.dispose();
-			}
-		});
 	}
 
 	/**
@@ -115,7 +99,16 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
 	 */
 	public boolean isLabelProperty(Object element, String property) {
-		return eLabelProvider.isLabelProperty(unwrapp(element), property);
+		final boolean res;
+
+		final Object unwrapped = unwrapp(element);
+		if (unwrapped instanceof Variable) {
+			res = isLabelProperty(((Variable)unwrapped).getValue(), property);
+		} else {
+			res = eLabelProvider.isLabelProperty(unwrapp(element), property);
+		}
+
+		return res;
 	}
 
 	/**
@@ -179,10 +172,8 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 		final Object unwrapped = unwrapp(element);
 		if (unwrapped instanceof Variable) {
 			res = getImage(((Variable)unwrapped).getValue());
-		} else if (unwrapped instanceof EObject) {
-			res = eLabelProvider.getImage(unwrapped);
 		} else {
-			res = eclipseLabelProvider.getImage(unwrapped);
+			res = eLabelProvider.getImage(unwrapped);
 		}
 
 		return res;
@@ -199,10 +190,8 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 		final Object unwrapped = unwrapp(element);
 		if (unwrapped instanceof Variable) {
 			res = getText(((Variable)unwrapped).getValue());
-		} else if (unwrapped instanceof EObject) {
-			res = eLabelProvider.getText(unwrapped);
 		} else {
-			res = eclipseLabelProvider.getText(unwrapped);
+			res = eLabelProvider.getText(unwrapped);
 		}
 
 		return res;
@@ -222,7 +211,12 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 */
 	private Object unwrapp(Object element) {
 		final Object res;
-		if (element instanceof Adapter) {
+
+		if (element instanceof DSLObjectVariable) {
+			res = ((DSLObjectVariable)element).getObject();
+		} else if (element instanceof DSLObjectValue) {
+			res = ((DSLObjectValue)element).getValue();
+		} else if (element instanceof Adapter) {
 			res = ((Adapter)element).getTarget();
 		} else {
 			res = element;

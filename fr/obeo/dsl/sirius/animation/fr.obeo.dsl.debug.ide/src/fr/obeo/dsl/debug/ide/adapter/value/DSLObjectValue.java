@@ -30,11 +30,6 @@ import org.eclipse.debug.core.model.IVariable;
 public class DSLObjectValue extends AbstractDSLValue {
 
 	/**
-	 * The value.
-	 */
-	private Object value;
-
-	/**
 	 * Constructor.
 	 * 
 	 * @param factory
@@ -45,8 +40,7 @@ public class DSLObjectValue extends AbstractDSLValue {
 	 *            the {@link Object}
 	 */
 	public DSLObjectValue(DSLEclipseDebugIntegration factory, String referenceTypeName, Object value) {
-		super(factory, referenceTypeName);
-		this.value = value;
+		super(factory, referenceTypeName, value);
 	}
 
 	/**
@@ -55,7 +49,7 @@ public class DSLObjectValue extends AbstractDSLValue {
 	 * @see org.eclipse.debug.core.model.IValue#getValueString()
 	 */
 	public String getValueString() throws DebugException {
-		return value.toString();
+		return getValue().toString();
 	}
 
 	/**

@@ -38,7 +38,7 @@ public class DSLNullValue extends AbstractDSLValue {
 	 *            the reference type name
 	 */
 	public DSLNullValue(DSLEclipseDebugIntegration factory, String referenceTypeName) {
-		super(factory, referenceTypeName);
+		super(factory, referenceTypeName, null);
 	}
 
 	/**

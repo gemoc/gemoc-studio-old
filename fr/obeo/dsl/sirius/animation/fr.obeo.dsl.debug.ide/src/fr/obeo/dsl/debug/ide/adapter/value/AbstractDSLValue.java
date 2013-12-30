@@ -37,6 +37,11 @@ public abstract class AbstractDSLValue extends AbstractDSLDebugElementAdapter im
 	public static final IVariable[] EMPTY = new IVariable[0];
 
 	/**
+	 * The value.
+	 */
+	private final Object value;
+
+	/**
 	 * The reference type name.
 	 */
 	private final String referenceTypeName;
@@ -48,10 +53,13 @@ public abstract class AbstractDSLValue extends AbstractDSLDebugElementAdapter im
 	 *            the {@link DSLEclipseDebugIntegration} factory
 	 * @param referenceTypeName
 	 *            the reference type name
+	 * @param value
+	 *            the value {@link Object}
 	 */
-	public AbstractDSLValue(DSLEclipseDebugIntegration factory, String referenceTypeName) {
+	public AbstractDSLValue(DSLEclipseDebugIntegration factory, String referenceTypeName, Object value) {
 		super(factory);
 		this.referenceTypeName = referenceTypeName;
+		this.value = value;
 	}
 
 	/**
@@ -61,6 +69,15 @@ public abstract class AbstractDSLValue extends AbstractDSLDebugElementAdapter im
 	 */
 	public String getReferenceTypeName() throws DebugException {
 		return referenceTypeName;
+	}
+
+	/**
+	 * Gets the value {@link Object}.
+	 * 
+	 * @return the value {@link Object}
+	 */
+	public Object getValue() {
+		return value;
 	}
 
 }

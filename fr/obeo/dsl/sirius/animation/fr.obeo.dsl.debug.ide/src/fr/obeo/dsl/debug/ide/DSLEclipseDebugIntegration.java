@@ -331,7 +331,7 @@ public class DSLEclipseDebugIntegration extends DebugAdapterFactory {
 			}
 		}
 		if (valueAdapter == null) {
-			valueAdapter = new DSLEObjectValueAdapter(this, referenceTypeName);
+			valueAdapter = new DSLEObjectValueAdapter(this, referenceTypeName, value);
 			value.eAdapters().add(valueAdapter);
 		}
 		res = valueAdapter;
