@@ -45,16 +45,12 @@ public class TestDSLDebugger extends AbstractDSLDebugger {
 			spawnRunningThread(Thread.currentThread().getName(), INSTRUCTION_1);
 			boolean terminated = false;
 			while (!terminated) {
-				terminated = control(Thread.currentThread().getName(), INSTRUCTION_1);
-				if (!terminated) {
-					terminated = control(Thread.currentThread().getName(), INSTRUCTION_2);
-				}
-				if (!terminated) {
-					terminated = control(Thread.currentThread().getName(), INSTRUCTION_3);
+				for (int i = 0; i < INSTRUCTIONS.length && !terminated; ++i) {
+					terminated = control(Thread.currentThread().getName(), INSTRUCTIONS[i]);
 				}
 			}
-			if (isTerminated(Thread.currentThread().getName())) {
-				terminate(Thread.currentThread().getName());
+			if (!isTerminated(Thread.currentThread().getName())) {
+				terminated(Thread.currentThread().getName());
 			}
 		}
 	}
@@ -83,6 +79,11 @@ public class TestDSLDebugger extends AbstractDSLDebugger {
 	 * The third {@link EObject instruction}.
 	 */
 	public static final EObject INSTRUCTION_3 = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
+
+	/**
+	 * Instructions of the test interpreter.
+	 */
+	public static final EObject[] INSTRUCTIONS = new EObject[] {INSTRUCTION_1, INSTRUCTION_2, INSTRUCTION_3, };
 
 	/**
 	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#disconnect()} call has been made.
