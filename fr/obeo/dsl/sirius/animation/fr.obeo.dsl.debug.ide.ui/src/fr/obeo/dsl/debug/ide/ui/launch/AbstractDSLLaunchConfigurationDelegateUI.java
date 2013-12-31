@@ -34,6 +34,8 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.debug.ui.DebugUITools;
+import org.eclipse.debug.ui.ILaunchGroup;
 import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.debug.ui.ILaunchShortcut2;
 import org.eclipse.emf.common.util.URI;
@@ -140,7 +142,9 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 		// try to find existing configurations using the same file
 		try {
 			for (ILaunchConfiguration configuration : manager.getLaunchConfigurations(type)) {
-				IFile file = configuration.getFile();
+				final String pathString = configuration.getAttribute(
+						AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
+				IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathString));
 				if (resource != null && resource.equals(file)) {
 					configurations.add(configuration);
 				}
@@ -171,25 +175,14 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 			try {
 				ILaunchConfiguration[] configurations = getLaunchConfgurations(file);
 				if (configurations.length == 0) {
-					// no configuration found, create new one
-					ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();
-					ILaunchConfigurationType type = manager
-							.getLaunchConfigurationType(getLaunchConfigurationTypeID());
-
-					ILaunchConfigurationWorkingCopy configuration = type.newInstance(null, file.getName());
-					configuration.setAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, file
-							.getFullPath().toString());
-					configuration.setAttribute(AbstractDSLLaunchConfigurationDelegate.FIRST_INSTRUCTION_URI,
-							EcoreUtil.getURI(firstInstruction).toString());
-
-					// save and return new configuration
-					configuration.doSave();
-
-					configurations = new ILaunchConfiguration[] {configuration };
+					// try to create a launch configuration
+					configurations = createLaunchConfiguration(file, firstInstruction, mode);
 				}
 
 				// launch
-				configurations[0].launch(mode, new NullProgressMonitor());
+				if (configurations.length != 0) {
+					configurations[0].launch(mode, new NullProgressMonitor());
+				}
 
 			} catch (CoreException e) {
 				// could not create launch configuration, run file directly
@@ -200,6 +193,50 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 				}
 			}
 		}
+	}
+
+	/**
+	 * Creates a {@link ILaunchConfiguration}. If the <code>firstInstruction</code> is <code>null</code> the
+	 * launch configuration dialog is opened.
+	 * 
+	 * @param file
+	 *            the selected model {@link IFile}
+	 * @param firstInstruction
+	 *            the first {@link EObject instruction} or <code>null</code> for interactive selection
+	 * @param mode
+	 *            the {@link ILaunchConfiguration#getModes() mode}
+	 * @return an array of possible {@link ILaunchConfiguration}, can be empty but not <code>null</code>
+	 * @throws CoreException
+	 *             if {@link ILaunchConfiguration} initialization fails of models can't be loaded
+	 */
+	private ILaunchConfiguration[] createLaunchConfiguration(final IResource file, EObject firstInstruction,
+			final String mode) throws CoreException {
+		final ILaunchConfiguration[] res;
+
+		ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();
+		ILaunchConfigurationType type = manager.getLaunchConfigurationType(getLaunchConfigurationTypeID());
+
+		ILaunchConfigurationWorkingCopy configuration = type.newInstance(null, file.getName());
+		configuration.setMappedResources(new IResource[] {file, });
+		configuration.setAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, file.getFullPath()
+				.toString());
+		if (firstInstruction == null) {
+			// open configuration for further editing
+			final ILaunchGroup group = DebugUITools.getLaunchGroup(configuration, mode);
+			if (group != null) {
+				configuration.doSave();
+				DebugUITools.openLaunchConfigurationDialog(PlatformUI.getWorkbench()
+						.getActiveWorkbenchWindow().getShell(), configuration, group.getIdentifier(), null);
+			}
+			res = new ILaunchConfiguration[] {};
+		} else {
+			configuration.setAttribute(AbstractDSLLaunchConfigurationDelegate.FIRST_INSTRUCTION_URI,
+					EcoreUtil.getURI(firstInstruction).toString());
+			// save and return new configuration
+			configuration.doSave();
+			res = new ILaunchConfiguration[] {configuration, };
+		}
+		return res;
 	}
 
 	/**
@@ -214,7 +251,8 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 	 * 
 	 * @param selection
 	 *            the {@link ISelection}
-	 * @return the first {@link EObject instruction} from the given {@link ISelection}
+	 * @return the first {@link EObject instruction} from the given {@link ISelection} or <code>null</code>
+	 *         for interactive selection
 	 */
 	protected abstract EObject getFirstInstruction(ISelection selection);
 
@@ -223,7 +261,8 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 	 * 
 	 * @param editor
 	 *            the {@link IEditorPart}
-	 * @return the first {@link EObject instruction} from the given {@link IEditorPart}
+	 * @return the first {@link EObject instruction} from the given {@link IEditorPart} or <code>null</code>
+	 *         for interactive selection
 	 */
 	protected abstract EObject getFirstInstruction(IEditorPart editor);
 
