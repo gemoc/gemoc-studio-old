@@ -150,7 +150,7 @@ public class DSLLaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 				final ResourceSet rs = new ResourceSetImpl();
 				Resource resource = null;
 				try {
-					resource = rs.getResource(URI.createURI(resourceURI), true);
+					resource = rs.getResource(URI.createPlatformResourceURI(resourceURI, true), true);
 				} catch (WrappedException e) {
 					errorMessage = "Model can't be loaded: "
 							+ ((WrappedException)e).exception().getLocalizedMessage() + ".";
@@ -158,7 +158,7 @@ public class DSLLaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 				EObject firstInstruction = null;
 				try {
 					firstInstruction = rs.getEObject(URI.createURI(launchConfig.getAttribute(
-							AbstractDSLLaunchConfigurationDelegate.FIRST_INSTRUCTION_URI, "")), true);
+							AbstractDSLLaunchConfigurationDelegate.FIRST_INSTRUCTION_URI, ""), true), true);
 				} catch (WrappedException e) {
 					errorMessage = "First instruction can't be loaded: "
 							+ ((WrappedException)e).exception().getLocalizedMessage() + ".";
@@ -311,7 +311,8 @@ public class DSLLaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 		fatory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		fatory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		final ResourceSet rs = new ResourceSetImpl();
-		final Resource resource = rs.getResource(URI.createURI(resourceURIText.getText()), true);
+		final Resource resource = rs.getResource(URI.createPlatformResourceURI(resourceURIText.getText(),
+				true), true);
 
 		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(parent.getShell(),
 				new AdapterFactoryLabelProvider(fatory), new AdapterFactoryContentProvider(fatory));

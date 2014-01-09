@@ -33,8 +33,11 @@ import fr.obeo.dsl.debug.ide.event.debugger.SteppedReply;
 import fr.obeo.dsl.debug.ide.event.debugger.SuspendedReply;
 import fr.obeo.dsl.debug.ide.event.debugger.TerminatedReply;
 import fr.obeo.dsl.debug.ide.event.debugger.VariableReply;
+import fr.obeo.dsl.debug.ide.event.model.AbstractBreakpointRequest;
 import fr.obeo.dsl.debug.ide.event.model.AbstractStepRequest;
+import fr.obeo.dsl.debug.ide.event.model.AddBreakpointRequest;
 import fr.obeo.dsl.debug.ide.event.model.DisconnectRequest;
+import fr.obeo.dsl.debug.ide.event.model.RemoveBreakpointRequest;
 import fr.obeo.dsl.debug.ide.event.model.ResumeRequest;
 import fr.obeo.dsl.debug.ide.event.model.StartRequest;
 import fr.obeo.dsl.debug.ide.event.model.StepIntoRequest;
@@ -49,7 +52,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * Base {@link IDSLDebugger debugger} implementation.
@@ -83,7 +88,7 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	/**
 	 * Instructions marked as breakpoints. TODO find something more powerful (expression, EClass, etc...)
 	 */
-	private final Set<EObject> breakpoints = new HashSet<EObject>();
+	private final Set<URI> breakpoints = new HashSet<URI>();
 
 	/**
 	 * Constructor.
@@ -113,8 +118,24 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 			handleSuspendRequest((SuspendRequest)event);
 		} else if (event instanceof TerminateRequest) {
 			handleTerminateRequest((TerminateRequest)event);
+		} else if (event instanceof AbstractBreakpointRequest) {
+			handleBreakpointRequest((AbstractBreakpointRequest)event);
 		} else if (event instanceof StartRequest) {
 			start();
+		}
+	}
+
+	/**
+	 * Handles {@link AbstractBreakpointRequest}.
+	 * 
+	 * @param breakpointRequest
+	 *            the {@link AbstractBreakpointRequest}
+	 */
+	private void handleBreakpointRequest(AbstractBreakpointRequest breakpointRequest) {
+		if (breakpointRequest instanceof AddBreakpointRequest) {
+			addBreakPoint(breakpointRequest.getURI());
+		} else if (breakpointRequest instanceof RemoveBreakpointRequest) {
+			removeBreakPoint(breakpointRequest.getURI());
 		}
 	}
 
@@ -316,24 +337,24 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#shouldBreak(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean shouldBreak(EObject instruction) {
-		return breakpoints.contains(instruction);
+		return breakpoints.contains(EcoreUtil.getURI(instruction));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#addBreakPoint(org.eclipse.emf.ecore.EObject)
+	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#addBreakPoint(org.eclipse.emf.common.util.URI)
 	 */
-	public void addBreakPoint(EObject instruction) {
+	public void addBreakPoint(URI instruction) {
 		breakpoints.add(instruction);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#removeBreakPoint(org.eclipse.emf.ecore.EObject)
+	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#removeBreakPoint(org.eclipse.emf.common.util.URI)
 	 */
-	public void removeBreakPoint(EObject instruction) {
+	public void removeBreakPoint(URI instruction) {
 		breakpoints.remove(instruction);
 	}
 

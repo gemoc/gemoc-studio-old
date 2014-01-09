@@ -27,9 +27,11 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
@@ -41,8 +43,10 @@ import org.eclipse.debug.ui.ILaunchShortcut2;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.ResourceUtil;
@@ -54,6 +58,17 @@ import org.eclipse.ui.ide.ResourceUtil;
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
 public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractDSLLaunchConfigurationDelegate implements ILaunchShortcut, ILaunchShortcut2 {
+
+	@Override
+	protected void launch(EObject firstInstruction, ILaunchConfiguration configuration, String mode,
+			ILaunch launch, IProgressMonitor monitor) throws CoreException {
+		Display.getDefault().syncExec(new Runnable() {
+			public void run() {
+				ExtendedImageRegistry.getInstance(); // initialize the image registry
+			}
+		});
+		super.launch(firstInstruction, configuration, mode, launch, monitor);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -149,6 +164,8 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 					configurations.add(configuration);
 				}
 			}
+		} catch (IllegalArgumentException r) {
+			// could not load configurations, ignore
 		} catch (CoreException e) {
 			// could not load configurations, ignore
 		}

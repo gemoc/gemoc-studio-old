@@ -18,11 +18,16 @@
 package fr.obeo.dsl.debug.ide.ui;
 
 import fr.obeo.dsl.debug.Variable;
+import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.adapter.DSLStackFrameAdapter;
 import fr.obeo.dsl.debug.ide.adapter.value.DSLObjectValue;
 import fr.obeo.dsl.debug.ide.adapter.variable.DSLObjectVariable;
 import fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IValue;
@@ -32,21 +37,27 @@ import org.eclipse.debug.ui.IValueDetailListener;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 
 /**
  * The {@link IDebugModelPresentation} for the DSL debug model.
@@ -126,10 +137,47 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.debug.ui.ISourcePresentation#getEditorInput(java.lang.Object)
 	 */
 	public IEditorInput getEditorInput(Object element) {
-		final URIEditorInput res;
+		final IEditorInput res;
 
 		if (element instanceof EObject) {
-			res = new URIEditorInput(EcoreUtil.getURI((EObject)element));
+			Resource resource = ((EObject)element).eResource();
+			if (resource != null) {
+				res = getEditorInput(resource.getURI());
+			} else {
+				res = null;
+			}
+		} else if (element instanceof DSLBreakpoint) {
+			res = getEditorInput(((DSLBreakpoint)element).getURI().trimFragment());
+		} else {
+			res = null;
+		}
+
+		return res;
+	}
+
+	/**
+	 * Gets the {@link IEditorInput} from the given {@link URI}.
+	 * 
+	 * @param uri
+	 *            the {@link URI}
+	 * @return the {@link IEditorInput} from the given {@link URI} or <code>null</code> if none can be created
+	 */
+	protected IEditorInput getEditorInput(URI uri) {
+		final IEditorInput res;
+
+		if (uri != null) {
+			if (uri.isPlatformResource()) {
+				String path = uri.toPlatformString(true);
+				IResource workspaceResource = ResourcesPlugin.getWorkspace().getRoot().findMember(
+						new Path(path));
+				if (workspaceResource instanceof IFile) {
+					res = new FileEditorInput((IFile)workspaceResource);
+				} else {
+					res = new URIEditorInput(uri);
+				}
+			} else {
+				res = new URIEditorInput(uri);
+			}
 		} else {
 			res = null;
 		}
@@ -146,9 +194,12 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	public String getEditorId(IEditorInput input, Object element) {
 		final String res;
 
-		if (element instanceof EObject && input instanceof URIEditorInput) {
+		if (input instanceof URIEditorInput) {
 			res = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(
 					((URIEditorInput)input).getURI().lastSegment()).getId();
+		} else if (input instanceof IFileEditorInput) {
+			res = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(
+					((IFileEditorInput)input).getFile().getName()).getId();
 		} else {
 			res = null;
 		}
@@ -172,6 +223,14 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 		final Object unwrapped = unwrapp(element);
 		if (unwrapped instanceof Variable) {
 			res = getImage(((Variable)unwrapped).getValue());
+		} else if (element instanceof DSLBreakpoint) {
+			final Object image = ((DSLBreakpoint)element).getImage();
+			if (image instanceof ComposedImage) {
+				((ComposedImage)image).getImages().add(
+						DebugIdeUiEditPlugin.INSTANCE.getImage("full/deco16/breakpoint_enabled"));
+			}
+			// TODO image cache and disposing... probable memory leak
+			res = ExtendedImageRegistry.getInstance().getImage(image);
 		} else {
 			res = eLabelProvider.getImage(unwrapped);
 		}
@@ -190,6 +249,8 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 		final Object unwrapped = unwrapp(element);
 		if (unwrapped instanceof Variable) {
 			res = getText(((Variable)unwrapped).getValue());
+		} else if (element instanceof DSLBreakpoint) {
+			res = ((DSLBreakpoint)element).getText();
 		} else {
 			res = eLabelProvider.getText(unwrapped);
 		}

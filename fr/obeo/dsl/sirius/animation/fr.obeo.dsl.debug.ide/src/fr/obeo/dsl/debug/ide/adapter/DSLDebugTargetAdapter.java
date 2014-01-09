@@ -21,6 +21,7 @@ import fr.obeo.dsl.debug.DebugTarget;
 import fr.obeo.dsl.debug.DebugTargetState;
 import fr.obeo.dsl.debug.DebugTargetUtils;
 import fr.obeo.dsl.debug.Thread;
+import fr.obeo.dsl.debug.ide.Activator;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.DSLEclipseDebugIntegration;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEvent;
@@ -39,7 +40,9 @@ import fr.obeo.dsl.debug.ide.event.debugger.SteppedReply;
 import fr.obeo.dsl.debug.ide.event.debugger.SuspendedReply;
 import fr.obeo.dsl.debug.ide.event.debugger.TerminatedReply;
 import fr.obeo.dsl.debug.ide.event.debugger.VariableReply;
+import fr.obeo.dsl.debug.ide.event.model.AddBreakpointRequest;
 import fr.obeo.dsl.debug.ide.event.model.DisconnectRequest;
+import fr.obeo.dsl.debug.ide.event.model.RemoveBreakpointRequest;
 import fr.obeo.dsl.debug.ide.event.model.ResumeRequest;
 import fr.obeo.dsl.debug.ide.event.model.StartRequest;
 import fr.obeo.dsl.debug.ide.event.model.SuspendRequest;
@@ -49,6 +52,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IMarkerDelta;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.DebugPlugin;
@@ -57,6 +61,7 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IMemoryBlock;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IThread;
+import org.eclipse.emf.common.util.URI;
 
 /**
  * The {@link DebugTarget} DSL debug model.
@@ -73,6 +78,12 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 	 */
 	public DSLDebugTargetAdapter(DSLEclipseDebugIntegration factory) {
 		super(factory);
+	}
+
+	/**
+	 * Starts the debugger with a {@link StartRequest}.
+	 */
+	public void start() {
 		// register as a breakpoint listener
 		DebugPlugin.getDefault().getBreakpointManager().addBreakpointListener(this);
 
@@ -82,12 +93,6 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 		for (IBreakpoint breakpoint : breakpoints) {
 			breakpointAdded(breakpoint);
 		}
-	}
-
-	/**
-	 * Starts the debugger with a {@link StartRequest}.
-	 */
-	public void start() {
 		factory.getDebugger().handleEvent(new StartRequest());
 	}
 
@@ -179,19 +184,67 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 		factory.getDebugger().handleEvent(new SuspendRequest());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.debug.core.IBreakpointListener#breakpointAdded(org.eclipse.debug.core.model.IBreakpoint)
+	 */
 	public void breakpointAdded(IBreakpoint breakpoint) {
-		// TODO Auto-generated method stub
-
+		if (supportsBreakpoint(breakpoint)) {
+			try {
+				if (breakpoint.isEnabled()) {
+					// TODO EMF representation of breakpoints ?
+					URI uri = ((DSLBreakpoint)breakpoint).getURI();
+					factory.getDebugger().handleEvent(new AddBreakpointRequest(uri));
+				}
+			} catch (CoreException e) {
+				Activator.getDefault().error(e);
+			}
+		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.debug.core.IBreakpointListener#breakpointRemoved(org.eclipse.debug.core.model.IBreakpoint,
+	 *      org.eclipse.core.resources.IMarkerDelta)
+	 */
 	public void breakpointRemoved(IBreakpoint breakpoint, IMarkerDelta delta) {
-		// TODO Auto-generated method stub
-
+		if (supportsBreakpoint(breakpoint)) {
+			try {
+				if (breakpoint.isEnabled()) {
+					// TODO EMF representation of breakpoints ?
+					final URI uri = ((DSLBreakpoint)breakpoint).getURI();
+					factory.getDebugger().handleEvent(new RemoveBreakpointRequest(uri));
+				}
+			} catch (CoreException e) {
+				Activator.getDefault().error(e);
+			}
+		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.debug.core.IBreakpointListener#breakpointChanged(org.eclipse.debug.core.model.IBreakpoint,
+	 *      org.eclipse.core.resources.IMarkerDelta)
+	 */
 	public void breakpointChanged(IBreakpoint breakpoint, IMarkerDelta delta) {
-		// TODO Auto-generated method stub
-
+		if (supportsBreakpoint(breakpoint)) {
+			try {
+				if (breakpoint.isEnabled() && !delta.getAttribute(IBreakpoint.ENABLED, Boolean.FALSE)) {
+					// TODO EMF representation of breakpoints ?
+					final URI uri = ((DSLBreakpoint)breakpoint).getURI();
+					factory.getDebugger().handleEvent(new AddBreakpointRequest(uri));
+				} else if (!breakpoint.isEnabled() && delta.getAttribute(IBreakpoint.ENABLED, Boolean.FALSE)) {
+					// TODO EMF representation of breakpoints ?
+					final URI uri = ((DSLBreakpoint)breakpoint).getURI();
+					factory.getDebugger().handleEvent(new RemoveBreakpointRequest(uri));
+				}
+			} catch (CoreException e) {
+				Activator.getDefault().error(e);
+			}
+		}
 	}
 
 	/**
@@ -276,7 +329,7 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 	 * @see org.eclipse.debug.core.model.IDebugTarget#supportsBreakpoint(org.eclipse.debug.core.model.IBreakpoint)
 	 */
 	public boolean supportsBreakpoint(IBreakpoint breakpoint) {
-		return breakpoint instanceof DSLBreakpoint && ((DSLBreakpoint)breakpoint).getEObject() != null;
+		return breakpoint instanceof DSLBreakpoint && ((DSLBreakpoint)breakpoint).getURI() != null;
 	}
 
 	/**

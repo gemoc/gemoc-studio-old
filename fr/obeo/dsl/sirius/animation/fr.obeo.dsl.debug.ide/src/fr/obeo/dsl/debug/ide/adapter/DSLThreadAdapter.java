@@ -38,6 +38,8 @@ import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * The {@link Thread} DSL debug model.
@@ -274,11 +276,13 @@ public class DSLThreadAdapter extends AbstractDSLDebugElementAdapter implements 
 	public IBreakpoint[] getBreakpoints() {
 		final List<IBreakpoint> res = new ArrayList<IBreakpoint>();
 
-		for (IBreakpoint breakpoint : DebugPlugin.getDefault().getBreakpointManager().getBreakpoints()) {
-			if (breakpoint instanceof DSLBreakpoint
-					&& ((DSLBreakpoint)breakpoint).getEObject().equals(
-							getHost().getTopStackFrame().getCurrentInstruction())) {
-				res.add(breakpoint);
+		if (isSuspended()) {
+			final URI instructionUri = EcoreUtil.getURI(getHost().getTopStackFrame().getCurrentInstruction());
+			for (IBreakpoint breakpoint : DebugPlugin.getDefault().getBreakpointManager().getBreakpoints()) {
+				if (breakpoint instanceof DSLBreakpoint
+						&& (((DSLBreakpoint)breakpoint).getURI().equals(instructionUri))) {
+					res.add(breakpoint);
+				}
 			}
 		}
 

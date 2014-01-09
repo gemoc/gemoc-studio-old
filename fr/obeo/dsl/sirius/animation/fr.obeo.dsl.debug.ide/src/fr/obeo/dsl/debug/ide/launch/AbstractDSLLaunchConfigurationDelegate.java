@@ -33,8 +33,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-import org.eclipse.swt.widgets.Display;
 
 /**
  * An abstract implementation of {@link ILaunchConfigurationDelegate} for DSL debugger.
@@ -88,11 +86,6 @@ public abstract class AbstractDSLLaunchConfigurationDelegate implements ILaunchC
 					firstInstruction), firstInstruction);
 
 			DSLDebugEventDispatcher dispatcher = new DSLDebugEventDispatcher();
-			Display.getDefault().syncExec(new Runnable() {
-				public void run() {
-					ExtendedImageRegistry.getInstance(); // initialize the image registry
-				}
-			});
 			// Connect the model to the dispatcher
 			DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(launch, eDebugTarget,
 					new ModelUpdater(), dispatcher);
@@ -129,8 +122,10 @@ public abstract class AbstractDSLLaunchConfigurationDelegate implements ILaunchC
 		final ResourceSet rs = getResourceSet();
 
 		try {
-			rs.getResource(URI.createURI(configuration.getAttribute(RESOURCE_URI, "")), true);
-			res = rs.getEObject(URI.createURI(configuration.getAttribute(FIRST_INSTRUCTION_URI, "")), true);
+			rs.getResource(URI.createPlatformResourceURI(configuration.getAttribute(RESOURCE_URI, ""), true),
+					true);
+			res = rs.getEObject(URI.createURI(configuration.getAttribute(FIRST_INSTRUCTION_URI, ""), true),
+					true);
 		} catch (CoreException e) {
 			Activator.getDefault().error(e);
 		}

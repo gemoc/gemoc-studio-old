@@ -19,6 +19,7 @@ package fr.obeo.dsl.debug.ide;
 
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -184,21 +185,21 @@ public interface IDSLDebugger extends IDSLDebugEventProcessor {
 
 	/**
 	 * TODO should be more than a simple instruction (conditional break points, EClass break points, ...) Adds
-	 * the given {@link EObject} representing an instruction as a break point.
+	 * the given {@link URI} pointing an {@link EObject instruction} as a break point.
 	 * 
 	 * @param instruction
-	 *            the {@link EObject} representing an instruction
+	 *            the {@link URI} pointing an {@link EObject instruction}
 	 */
-	void addBreakPoint(EObject instruction);
+	void addBreakPoint(URI instruction);
 
 	/**
 	 * TODO should be more than a simple instruction (conditional break points, EClass break points, ...)
-	 * Removes the given {@link EObject} representing an instruction as a break point.
+	 * Removes the given {@link URI} pointing an {@link EObject instruction} as a break point.
 	 * 
 	 * @param instruction
-	 *            the {@link EObject} representing an instruction
+	 *            {@link URI} pointing an {@link EObject instruction}
 	 */
-	void removeBreakPoint(EObject instruction);
+	void removeBreakPoint(URI instruction);
 
 	/**
 	 * The thread suspended on a breakpoint with the given state.
