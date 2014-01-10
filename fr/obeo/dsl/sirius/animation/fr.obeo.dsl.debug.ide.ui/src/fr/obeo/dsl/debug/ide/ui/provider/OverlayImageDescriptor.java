@@ -75,4 +75,15 @@ public class OverlayImageDescriptor extends CompositeImageDescriptor {
 		return size;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof OverlayImageDescriptor && image.equals(((OverlayImageDescriptor)obj).image)
+				&& overlay.equals(((OverlayImageDescriptor)obj).overlay);
+	}
+
+	@Override
+	public int hashCode() {
+		return image.hashCode() ^ overlay.hashCode();
+	}
+
 }

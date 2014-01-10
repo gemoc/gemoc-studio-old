@@ -24,6 +24,9 @@ import fr.obeo.dsl.debug.ide.adapter.value.DSLObjectValue;
 import fr.obeo.dsl.debug.ide.adapter.variable.DSLObjectVariable;
 import fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -49,10 +52,12 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
@@ -65,6 +70,11 @@ import org.eclipse.ui.part.FileEditorInput;
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
 public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebugEditorPresentation {
+
+	/**
+	 * The {@link Image} cache.
+	 */
+	protected final Map<ImageDescriptor, Image> imagesCache = new HashMap<ImageDescriptor, Image>();
 
 	/**
 	 * The EMF {@link ILabelProvider}.
@@ -101,6 +111,9 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
 	 */
 	public void dispose() {
+		for (Image cachedImage : imagesCache.values()) {
+			cachedImage.dispose();
+		}
 		eLabelProvider.dispose();
 	}
 
@@ -229,8 +242,13 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 				((ComposedImage)image).getImages().add(
 						DebugIdeUiEditPlugin.INSTANCE.getImage("full/deco16/breakpoint_enabled"));
 			}
-			// TODO image cache and disposing... probable memory leak
-			res = ExtendedImageRegistry.getInstance().getImage(image);
+			final ImageDescriptor descriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(image);
+			Image cachedImage = imagesCache.get(descriptor);
+			if (cachedImage == null) {
+				cachedImage = new Image(Display.getDefault(), descriptor.getImageData());
+				imagesCache.put(descriptor, cachedImage);
+			}
+			res = cachedImage;
 		} else {
 			res = eLabelProvider.getImage(unwrapped);
 		}

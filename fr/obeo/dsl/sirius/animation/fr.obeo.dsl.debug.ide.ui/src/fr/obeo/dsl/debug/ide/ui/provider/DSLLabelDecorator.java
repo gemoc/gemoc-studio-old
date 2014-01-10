@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.BaseLabelProvider;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.LabelProviderChangedEvent;
@@ -52,16 +53,23 @@ import org.eclipse.swt.widgets.Display;
 public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecorator, IBreakpointListener {
 
 	/**
+	 * The {@link Image} cache.
+	 */
+	protected final Map<ImageDescriptor, Image> imagesCache = new HashMap<ImageDescriptor, Image>();
+
+	/**
 	 * Enabled breakpoint {@link Image}.
 	 */
-	private static final Image BREAKPOINT_ENABLED = ExtendedImageRegistry.getInstance().getImage(
-			DebugIdeUiEditPlugin.INSTANCE.getImage("full/deco16/breakpoint_enabled"));
+	private final Image breakpointEnabled = new Image(Display.getDefault(), ExtendedImageRegistry
+			.getInstance().getImageDescriptor(
+					DebugIdeUiEditPlugin.INSTANCE.getImage("full/deco16/breakpoint_enabled")).getImageData());
 
 	/**
 	 * Disabled breakpoint {@link Image}.
 	 */
-	private static final Image BREAKPOINT_DISABLED = ExtendedImageRegistry.getInstance().getImage(
-			DebugIdeUiEditPlugin.INSTANCE.getImage("full/deco16/breakpoint_disabled"));
+	private final Image breakpointDisabled = new Image(Display.getDefault(), ExtendedImageRegistry
+			.getInstance().getImageDescriptor(
+					DebugIdeUiEditPlugin.INSTANCE.getImage("full/deco16/breakpoint_disabled")).getImageData());
 
 	/**
 	 * {@link Map} of {@link URI} pointing {@link DSLBreakpoint}.
@@ -184,12 +192,16 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 				final OverlayImageDescriptor descriptor;
 				try {
 					if (breakpoint.isEnabled()) {
-						descriptor = new OverlayImageDescriptor(image, BREAKPOINT_ENABLED);
+						descriptor = new OverlayImageDescriptor(image, breakpointEnabled);
 					} else {
-						descriptor = new OverlayImageDescriptor(image, BREAKPOINT_DISABLED);
+						descriptor = new OverlayImageDescriptor(image, breakpointDisabled);
 					}
-					// TODO image cache and disposing... probable memory leak
-					res = descriptor.createImage();
+					Image cachedImage = imagesCache.get(descriptor);
+					if (cachedImage == null) {
+						cachedImage = descriptor.createImage();
+						imagesCache.put(descriptor, cachedImage);
+					}
+					res = cachedImage;
 				} catch (CoreException e) {
 					res = image;
 					DebugIdeUiEditPlugin.getPlugin().getLog().log(
@@ -258,6 +270,11 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 	@Override
 	public void dispose() {
 		DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
+		breakpointEnabled.dispose();
+		breakpointDisabled.dispose();
+		for (Image cachedImage : imagesCache.values()) {
+			cachedImage.dispose();
+		}
 		super.dispose();
 	}
 
