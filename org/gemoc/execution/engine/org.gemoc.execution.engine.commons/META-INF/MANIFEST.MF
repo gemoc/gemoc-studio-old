@@ -10,7 +10,6 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.ccslkernel.model,
  fr.inria.aoste.timesquare.ccslkernel.modelunfolding,
  fr.inria.aoste.timesquare.trace.util,
- fr.inria.aoste.timesquare.simulationpolicy,
  fr.inria.aoste.timesquare.simulationpolicy.maxcard,
  fr.inria.aoste.trace,
  org.gemoc.gemoc_language_workbench.api,
@@ -28,6 +27,7 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.execution.engine.commons,
  org.kermeta.utils.systemservices.api;bundle-version="2.1.1",
  org.kermeta.utils.systemservices.eclipse;bundle-version="2.1.1",
+ fr.inria.aoste.timesquare.simulationpolicy,
  fr.inria.aoste.timesquare.simulationpolicy.max;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

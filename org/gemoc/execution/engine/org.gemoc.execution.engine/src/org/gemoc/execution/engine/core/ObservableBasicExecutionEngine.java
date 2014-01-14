@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Observable;
 import java.util.Queue;
 
@@ -62,11 +61,36 @@ import glml.ModelSpecificEvent;
 public abstract class ObservableBasicExecutionEngine extends Observable
 		implements ExecutionEngine {
 
+	/**
+	 * The current LogicalStep being "executed" by this engine. This means that
+	 * any event, injected or internal, is allowed by the LogicalStep. The
+	 * associated events scheduled for this step can be retrieved in the map
+	 * below.
+	 */
 	protected LogicalStep currentStep = null;
-	protected Queue<LogicalStep> scheduledSteps = null;
-	protected Map<LogicalStep, List<ModelSpecificEvent>> scheduledEvents = null;
 
+	/**
+	 * The stack of LogicalSteps.
+	 */
+	protected Queue<LogicalStep> scheduledSteps = null;
+
+	/**
+	 * A map that associates a LogicalStep with its scheduled events. This means
+	 * that not all the events scheduled are executed, since some may be illegal
+	 * with regards to the MoC.
+	 */
+	protected Map<LogicalStep, List<ModelSpecificEvent>> scheduledEventsMap = null;
+
+	/**
+	 * A map containing all the LogicalSteps that have been "executed" and in
+	 * which order.
+	 */
 	protected Map<Integer, LogicalStep> schedulingTrace;
+
+	/**
+	 * A map containing all the steps that have been "executed" and their
+	 * associated ModelSpecificEvents which have actually been executed.
+	 */
 	protected Map<LogicalStep, List<ModelSpecificEvent>> executionTrace;
 
 	/**
@@ -111,14 +135,17 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			Resource domainSpecificEventsResource, Solver solver,
 			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 
-		// TODO : REMOVE ME. This is a temporary fix because I can't get an ECL
+		// TODO : REMOVE ME. This is a temporary fix because I can't get a DSE
 		// resource to be correctly detected...
 		if (domainSpecificEventsResource == null) {
 			ResourceSet resSet = new ResourceSetImpl();
+			// With ECL:
 			// domainSpecificEventsResource = resSet
 			// .getResource(
 			// URI.createURI("platform:/resource/org.gemoc.sample.tfsm.dse/ecl/TFSM.ecl"),
 			// true);
+
+			// With GLML:
 			domainSpecificEventsResource = resSet
 					.getResource(
 							URI.createURI("platform:/plugin/org.gemoc.sample.tfsm.dse/glml/MyDomainSpecificEvents.glml"),
@@ -186,7 +213,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 			// TODO: Execution initialization, move them somewhere else and
 			// place them in reset too.
-			this.scheduledEvents = new HashMap<LogicalStep, List<ModelSpecificEvent>>();
+			this.scheduledEventsMap = new HashMap<LogicalStep, List<ModelSpecificEvent>>();
 			this.scheduledSteps = new LinkedList<LogicalStep>();
 			this.schedulingTrace = new HashMap<Integer, LogicalStep>();
 			this.executionTrace = new HashMap<LogicalStep, List<ModelSpecificEvent>>();
@@ -263,6 +290,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			}
 		}
 		this.currentStep = newStep;
+		this.scheduledEventsMap.put(newStep,
+				new ArrayList<ModelSpecificEvent>());
 		this.schedulingTrace.put(max + 1, newStep);
 		this.executionTrace.put(newStep, new ArrayList<ModelSpecificEvent>());
 	}
@@ -322,12 +351,16 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	private void doOneStep() {
 		Collection<ModelSpecificEvent> events;
 		events = new ArrayList<ModelSpecificEvent>();
-		try {
-			events.addAll(this.scheduledEvents.get(this.currentStep));
-		} catch (NoSuchElementException e) {
-			// Collection remains empty and the below loop is skipped so nothing
-			// happens. As expected.
+		// try {
+		Collection<ModelSpecificEvent> nextEvents = this.scheduledEventsMap
+				.get(this.currentStep);
+		if (nextEvents != null) {
+			events.addAll(nextEvents);
 		}
+		// } catch (NoSuchElementException e) {
+		// // Collection remains empty and the below loop is skipped so nothing
+		// // happens. As expected.
+		// }
 
 		// For each event, execute its action(s) and take into account the
 		// feedback the Domain Specific Action returns.
@@ -341,6 +374,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 			try {
 				List<FeedbackData> feedbacks = this.executor.execute(event);
+				this.executionTrace.get(this.currentStep).add(event);
 				for (FeedbackData feedback : feedbacks) {
 					Activator.getMessagingSystem().debug(
 							"Feedback received: " + feedback.toString(),

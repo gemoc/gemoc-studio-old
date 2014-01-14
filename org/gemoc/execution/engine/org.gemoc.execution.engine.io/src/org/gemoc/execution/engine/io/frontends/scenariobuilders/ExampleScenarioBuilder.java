@@ -140,13 +140,22 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 							ExampleScenarioBuilder.this.selectedTarget);
 					ExampleScenarioBuilder.this.selectedEvent = null;
 					ExampleScenarioBuilder.this.selectedTarget = null;
+					ExampleScenarioBuilder.this.validate();
 				} catch (UnsupportedOperationException e2) {
 					JOptionPane.showMessageDialog(null,
 							"Unsupported operation injection", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				} catch (EventInjectionException e1) {
-					JOptionPane.showMessageDialog(null,
-							"Exception during the injection of the event", "Error",
+					JOptionPane.showMessageDialog(
+							null,
+							"Exception during the injection of the event:"
+									+ e1.getMessage(), "Error",
+							JOptionPane.ERROR_MESSAGE);
+				} catch (Throwable e3) {
+					JOptionPane.showMessageDialog(
+							null,
+							"Exception during the injection of the event:"
+									+ e3.getMessage(), "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}

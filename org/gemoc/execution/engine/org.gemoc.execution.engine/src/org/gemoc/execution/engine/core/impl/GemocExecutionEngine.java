@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
@@ -52,7 +53,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	 * Derived from the language-specific elements using the loaded model.
 	 */
 	private Resource modelOfExecution = null;
-	private Map<String, ModelSpecificEvent> mseRegistry = null;
+	private Map<String, ModelSpecificEvent> modelSpecificEventsRegistry = null;
 	private Resource solverInput = null;
 
 	/**
@@ -147,8 +148,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				// this.solver.input.load(null) ???
 			}
 			this.solver.setSolverInputFile(this.solverInput.getURI());
-			this.currentStep = this.getScheduledOrSolverStep();
-			this.mseRegistry = this
+			this.setCurrentStep(this.getScheduledOrSolverStep());
+			this.modelSpecificEventsRegistry = this
 					.buildModelSpecificEventsRegistry(this.modelOfExecution);
 
 			Activator.getMessagingSystem().info(
@@ -177,7 +178,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	@Override
 	public void reset() {
 		this.solver.setSolverInputFile(this.solverInput.getURI());
-		this.scheduledEvents.clear();
+		this.scheduledEventsMap.clear();
 		this.setChanged();
 		this.notifyObservers(">Reset!");
 	}
@@ -222,7 +223,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 					if (eventOccurrence.getReferedElement() instanceof NamedReference) {
 						NamedReference namedReference = (NamedReference) eventOccurrence
 								.getReferedElement();
-						res.add(this.mseRegistry.get(namedReference.getValue()));
+						res.add(this.modelSpecificEventsRegistry
+								.get(namedReference.getValue()));
 					}
 				}
 				/* } */
@@ -234,26 +236,118 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	@Override
 	public void injectEvent(DomainSpecificEvent dse, EObject target)
 			throws EventInjectionException {
-		if (this.domainSpecificEventsRegistry.containsValue(dse)
-				&& this.resourceContainsEObject(this.modelResource, target)) {
-			try {
+		try {
+			Activator.getMessagingSystem().info(
+					"Trying injection of the following event : "
+							+ dse.getName() + " on target: "
+							+ target.toString(), Activator.PLUGIN_ID);
+
+			// First we verify that the DSE is valid (with respect to the file
+			// describing the DSEs) and that the target is indeed in the model.
+			if (this.domainSpecificEventsRegistry.containsValue(dse)
+					&& this.resourceContainsEObject(this.modelResource, target)) {
+
+				Activator
+						.getMessagingSystem()
+						.debug("DSE Registry and model resource contain required elements. Proceeding with the injection.",
+								Activator.PLUGIN_ID);
+
+				// If it is the case, then we retrieve the equivalent MSE
 				ModelSpecificEvent mse = this
 						.findCorrespondingModelSpecificEvent(dse, target,
-								this.mseRegistry);
+								this.modelSpecificEventsRegistry);
+				Activator.getMessagingSystem().debug(
+						"The equivalent MSE is: " + mse.toString(),
+						Activator.PLUGIN_ID);
+
+				// We get the events allowed by the MoC for the current step.
 				Collection<ModelSpecificEvent> allowedEvents = this
 						.getPossibleEvents();
+				Activator.getMessagingSystem().debug(
+						"Allowed events are: " + allowedEvents.toString(),
+						Activator.PLUGIN_ID);
+
 				if (allowedEvents.contains(mse)) {
-					List<ModelSpecificEvent> scheduledEventsForCurrentStep = this.scheduledEvents
+					// If the injected MSE is legal, then it is added to the
+					// scheduled events of the current step.
+					List<ModelSpecificEvent> scheduledEventsForCurrentStep = this.scheduledEventsMap
 							.get(this.currentStep);
+					Activator.getMessagingSystem().debug(
+							scheduledEventsForCurrentStep.toString(),
+							Activator.PLUGIN_ID);
 					scheduledEventsForCurrentStep.add(mse);
+					Activator.getMessagingSystem().debug(
+							"MSE added to the scheduled events of the step.",
+							Activator.PLUGIN_ID);
 				} else {
+					Activator.getMessagingSystem().debug("not legal",
+							Activator.PLUGIN_ID);
+					// If the MSE is not authorized by the MoC, we throw an
+					// exception and leave the GUI to deal with it (reinject
+					// later,
+					// send feedback to the user, etc...)
+					Activator.getMessagingSystem().debug(
+							"MSE was not allowed by the MoC.",
+							Activator.PLUGIN_ID);
 					throw new EventInjectionException(
 							"Injecting this event is not allowed by the Model of Computation at that time.");
 				}
-			} catch (NoSuchElementException e) {
-				throw new EventInjectionException(e);
+			}
+
+			Activator.getMessagingSystem().info(
+					"Scheduling Trace: \n" + mapToString(this.schedulingTrace)
+							+ "\n Scheduled Events: \n"
+							+ mapToString(this.scheduledEventsMap)
+							+ "\n Execution Trace: \n"
+							+ mapToString(this.executionTrace),
+					Activator.PLUGIN_ID);
+
+		} catch (RuntimeException e) {
+			Activator.error("RuntimeException during injection of event", e);
+			throw e;
+		}
+	}
+
+	/**
+	 * Pretty print for a map.
+	 * 
+	 * @param map
+	 * @return
+	 */
+	private String mapToString(Map<?, ?> map) {
+		String res = "---------------------------------------------------------------------------------------------------------------\n";
+		int maximumKeyLength = 0;
+		for (Object key : map.keySet()) {
+			if (key.toString().length() > maximumKeyLength) {
+				maximumKeyLength = key.toString().length();
 			}
 		}
+		for (Object key : map.keySet()) {
+			Object value = map.get(key);
+			res += key.toString();
+			for (int i = 0; i < maximumKeyLength - key.toString().length(); i++) {
+				res += " ";
+			}
+			res += " | ";
+			if (value instanceof Collection<?>) {
+				Iterator<?> iterator = (Iterator<?>) ((Collection<?>) value)
+						.iterator();
+				if(iterator.hasNext()){
+					res += iterator.next();
+				}
+				while (iterator.hasNext()) {
+					res += "\n";
+					for (int i = 0; i < maximumKeyLength; i++) {
+						res += " ";
+					}
+					res += " | " + iterator.next();
+				}
+			} else {
+				res += value.toString();
+			}
+			res += "\n---------------------------------------------------------------------------------------------------------------\n";
+		}
+		return res;
 	}
 
 	@Override
@@ -261,16 +355,51 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		return this.modelResource;
 	}
 
+	/**
+	 * Searches through the given map for a Model-Specific Event which the
+	 * following characteristics:
+	 * <ul>
+	 * <li>Its reification is "equals" to the DSE given in arguments. Because
+	 * the DSE resource is loaded at two different places (once in the
+	 * ModelOfExecution file, once by this Engine), the instances are not the
+	 * same though the objects have the same features values. Which is why we
+	 * use EcoreUtil.EqualityHelper.
+	 * </ul>
+	 * Its first (and only... ?) MSA's target is equals to the target given in
+	 * the parameters (same as above).
+	 * 
+	 * @param dse
+	 *            A Domain-Specific Event
+	 * @param target
+	 *            An EObject of the model
+	 * @param map
+	 *            The ModelSpecificEvents registry
+	 * @return the MSE corresponding to the DSE on the given target.
+	 */
 	private ModelSpecificEvent findCorrespondingModelSpecificEvent(
 			DomainSpecificEvent dse, EObject target,
 			Map<String, ModelSpecificEvent> map) {
+		Activator.getMessagingSystem().debug(
+				"Trying to find the MSE with the following characteristics:"
+						+ "\n - DSE: " + dse.getName() + "\n - Target: "
+						+ target.toString() + "\n Among the following MSE map:"
+						+ "\n" + this.mapToString(map), Activator.PLUGIN_ID);
+		EcoreUtil.EqualityHelper equalityHelper = new EcoreUtil.EqualityHelper();
 		for (ModelSpecificEvent mse : map.values()) {
-			if (mse.getReification().equals(dse)
-					&& mse.getModelSpecificActions().get(0).getTarget()
-							.equals(target)) {
+			if (equalityHelper.equals(mse.getReification(), dse)
+					&& equalityHelper.equals(
+							mse.getModelSpecificActions().get(0).getTarget(),
+							target)) {
+				Activator.getMessagingSystem().debug(
+						"Found corresponding MSE: " + mse.getName(),
+						Activator.PLUGIN_ID);
 				return mse;
 			}
 		}
+		Activator
+				.getMessagingSystem()
+				.debug("Could not find corresponding MSE. Throwing NoSuchElementException.",
+						Activator.PLUGIN_ID);
 		throw new NoSuchElementException();
 	}
 
