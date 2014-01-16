@@ -20,6 +20,8 @@ import javax.swing.SwingConstants;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.execution.engine.io.core.impl.BasicScenarioBuilder;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
@@ -63,8 +65,8 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 
 		this.window = new JFrame("GEMOC Execution Engine Scenario Builder");
 		this.window.setContentPane(this.content);
-		this.window.setSize(500, 200);
-		this.window.setLocation(100, 100);
+		this.window.setSize(700, 600);
+		this.window.setLocation(0, 100);
 		this.window.setVisible(true);
 	}
 

@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import org.gemoc.execution.engine.io.core.impl.BasicControlPanel;
 import org.gemoc.execution.engine.io.exceptions.ImpossibleCommandException;
+import org.gemoc.gemoc_language_workbench.api.Activator;
 
 /**
  * A basic example of a GUI implementing ControlPanel and giving order to the
@@ -24,20 +25,16 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 
 	public ExampleGUIControlPanel() {
 		JButton runOneStepButton = new JButton("Run one step");
-		ActionListener listenerRunOneStep = new ButtonHandlerRunOneStep();
-		runOneStepButton.addActionListener(listenerRunOneStep);
+		runOneStepButton.addActionListener(new ButtonHandlerRunOneStep());
 
 		JButton resetButton = new JButton("Reset");
-		ActionListener listenerReset = new ButtonHandlerReset();
-		resetButton.addActionListener(listenerReset);
+		resetButton.addActionListener(new ButtonHandlerReset());
 
 		JButton pauseButton = new JButton("Pause");
-		ActionListener listenerPause = new ButtonHandlerPause();
-		resetButton.addActionListener(listenerPause);
+		resetButton.addActionListener(new ButtonHandlerPause());
 
 		JButton stepBackButton = new JButton("Step back one step");
-		ActionListener listenerStepBack = new ButtonHandlerStepBack();
-		resetButton.addActionListener(listenerStepBack);
+		resetButton.addActionListener(new ButtonHandlerStepBack());
 
 		JPanel content = new JPanel();
 		content.setLayout(new FlowLayout());
@@ -50,7 +47,7 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 		JFrame window = new JFrame("GEMOC Execution Engine Control Panel");
 		window.setContentPane(content);
 		window.setSize(500, 200);
-		window.setLocation(100, 100);
+		window.setLocation(0, 0);
 		window.setVisible(true);
 	}
 
@@ -67,6 +64,8 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 			} catch (ImpossibleCommandException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				Activator.error(e1.getClass().getSimpleName() + " in "
+						+ this.getClass().getSimpleName(), e1);
 			}
 		}
 	}
@@ -84,6 +83,8 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 			} catch (ImpossibleCommandException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				Activator.error(e1.getClass().getSimpleName() + " in "
+						+ this.getClass().getSimpleName(), e1);
 			}
 		}
 	}
@@ -95,10 +96,14 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 			} catch (ImpossibleCommandException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				Activator.error(e1.getClass().getSimpleName() + " in "
+						+ this.getClass().getSimpleName(), e1);
 			} catch (UnsupportedOperationException e2) {
 				JOptionPane.showMessageDialog(null,
 						"Unsupported operation pause", "Error",
 						JOptionPane.ERROR_MESSAGE);
+				Activator.error(e2.getClass().getSimpleName() + " in "
+						+ this.getClass().getSimpleName(), e2);
 			}
 		}
 	}
@@ -110,10 +115,15 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 			} catch (ImpossibleCommandException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				Activator.error(e1.getClass().getSimpleName() + " in "
+						+ this.getClass().getSimpleName(), e1);
 			} catch (UnsupportedOperationException e2) {
 				JOptionPane.showMessageDialog(null,
 						"Unsupported operation stepBack", "Error",
 						JOptionPane.ERROR_MESSAGE);
+
+				Activator.error(e2.getClass().getSimpleName() + " in "
+						+ this.getClass().getSimpleName(), e2);
 			}
 		}
 	}

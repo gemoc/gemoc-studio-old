@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.core;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -245,13 +246,20 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	public abstract void reset();
 
 	@Override
+	// TODO
 	public void pause() {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
+	// TODO
 	public void stepBack(int numberOfSteps) {
 		throw new UnsupportedOperationException();
+		// Body:
+		// - Dump the execution trace corresponding to the steps we want to go
+		// back
+		// - Make the solver load the n-numberOfSteps-th step.
+
 	}
 
 	/**
@@ -281,18 +289,18 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	 * 
 	 * @param newStep
 	 */
-	protected void setCurrentStep(LogicalStep newStep) {
+	protected void setCurrentStepAndUpdateTraces(LogicalStep newStep) {
 		// Map<Integer, Map<LogicalStep, List<ModelSpecificEvent>>>
-		Integer max = 0;
+		Integer previousDate = 0;
 		for (Integer index : this.schedulingTrace.keySet()) {
-			if (index > max) {
-				max = index;
+			if (index > previousDate) {
+				previousDate = index;
 			}
 		}
 		this.currentStep = newStep;
 		this.scheduledEventsMap.put(newStep,
 				new ArrayList<ModelSpecificEvent>());
-		this.schedulingTrace.put(max + 1, newStep);
+		this.schedulingTrace.put(previousDate + 1, newStep);
 		this.executionTrace.put(newStep, new ArrayList<ModelSpecificEvent>());
 	}
 
@@ -314,10 +322,15 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 						Activator.PLUGIN_ID);
 				ObservableBasicExecutionEngine.this.doOneStep();
 				ObservableBasicExecutionEngine.this
-						.setCurrentStep(ObservableBasicExecutionEngine.this
+						.setCurrentStepAndUpdateTraces(ObservableBasicExecutionEngine.this
 								.getScheduledOrSolverStep());
 				Activator.getMessagingSystem().info("<<Step finished",
 						Activator.PLUGIN_ID);
+				Activator
+						.getMessagingSystem()
+						.info("Execution Trace: \n"
+								+ mapToString(ObservableBasicExecutionEngine.this.executionTrace),
+								Activator.PLUGIN_ID);
 			}
 		};
 		SafeRunner.run(runnable);
@@ -344,7 +357,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 	/**
 	 * One step of execution. Retrieves all the events scheduled for this round
-	 * and executes them sequentially.
+	 * and executes them sequentially. If no exception was thrown, the scheduled
+	 * events are removed fom the scheduled events map.
 	 * 
 	 * @param mse
 	 */
@@ -357,10 +371,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		if (nextEvents != null) {
 			events.addAll(nextEvents);
 		}
-		// } catch (NoSuchElementException e) {
-		// // Collection remains empty and the below loop is skipped so nothing
-		// // happens. As expected.
-		// }
 
 		// For each event, execute its action(s) and take into account the
 		// feedback the Domain Specific Action returns.
@@ -384,6 +394,10 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 					}
 				}
 			} catch (EventExecutionException e) {
+				// There was an exception during the execution of an event so we
+				// send it to the Error log view. If there is a nested exception
+				// then we also print its information (typically the case when
+				// invoking code like the DSAs).
 				String errorMessage = e.getClass().getSimpleName()
 						+ " while executing this round's worth of events. Inner exception sent to the Error Log view.";
 				Activator.getMessagingSystem().error(errorMessage,
@@ -398,6 +412,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 							.getCause().getCause());
 				}
 			} catch (InvokationResultConvertionException e) {
+				// Couldn't figure out how to convert the result of a DSA into
+				// an appropriate object.
 				String errorMessage = e.getClass().getSimpleName()
 						+ " while executing this round's worth of events. Inner exception sent to the Error Log view.";
 				Activator.getMessagingSystem().error(errorMessage,
@@ -413,6 +429,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				}
 			}
 		}
+		this.scheduledEventsMap.remove(this.currentStep);
 	}
 
 	@Override
@@ -436,6 +453,71 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		this.notifyObservers("Forbidding the solver from producing events leading to a MSE that references: "
 				+ target.toString() + ", " + operation.toString());
 		this.solver.forbidEventOccurrenceReferencing(target, operation);
+	}
+
+	/**
+	 * Pretty print for a map.
+	 * 
+	 * Outputs will be like this :
+	 * 
+	 * <ul>
+	 * <li>---------------------</li>
+	 * <li>key1 | value1</li>
+	 * <li>---------------------</li>
+	 * <li>key2 | value2</li>
+	 * <li>---------------------</li>
+	 * </ul>
+	 * 
+	 * If the values are collections, then each element of the collections will
+	 * have its line but the associated key is not repeated.
+	 * 
+	 * <ul>
+	 * <li>---------------------</li>
+	 * <li>key1 | value1</li>
+	 * <li>| value1'</li>
+	 * <li>| value1''</li>
+	 * <li>---------------------</li>
+	 * <li>key2 | value2</li>
+	 * <li>---------------------</li>
+	 * </ul>
+	 * 
+	 * @param map
+	 * @return
+	 */
+	protected String mapToString(Map<?, ?> map) {
+		String res = "---------------------------------------------------------------------------------------------------------------\n";
+		int maximumKeyLength = 0;
+		for (Object key : map.keySet()) {
+			if (key.toString().length() > maximumKeyLength) {
+				maximumKeyLength = key.toString().length();
+			}
+		}
+		for (Object key : map.keySet()) {
+			Object value = map.get(key);
+			res += key.toString();
+			for (int i = 0; i < maximumKeyLength - key.toString().length(); i++) {
+				res += " ";
+			}
+			res += " | ";
+			if (value instanceof Collection<?>) {
+				Iterator<?> iterator = (Iterator<?>) ((Collection<?>) value)
+						.iterator();
+				if (iterator.hasNext()) {
+					res += iterator.next();
+				}
+				while (iterator.hasNext()) {
+					res += "\n";
+					for (int i = 0; i < maximumKeyLength; i++) {
+						res += " ";
+					}
+					res += " | " + iterator.next();
+				}
+			} else {
+				res += value.toString();
+			}
+			res += "\n---------------------------------------------------------------------------------------------------------------\n";
+		}
+		return res;
 	}
 
 	@Override

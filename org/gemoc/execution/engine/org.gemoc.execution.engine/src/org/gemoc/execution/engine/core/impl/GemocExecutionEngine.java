@@ -148,7 +148,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				// this.solver.input.load(null) ???
 			}
 			this.solver.setSolverInputFile(this.solverInput.getURI());
-			this.setCurrentStep(this.getScheduledOrSolverStep());
+			this.setCurrentStepAndUpdateTraces(this.getScheduledOrSolverStep());
 			this.modelSpecificEventsRegistry = this
 					.buildModelSpecificEventsRegistry(this.modelOfExecution);
 
@@ -179,6 +179,10 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	public void reset() {
 		this.solver.setSolverInputFile(this.solverInput.getURI());
 		this.scheduledEventsMap.clear();
+		this.scheduledSteps.clear();
+		this.schedulingTrace.clear();
+		this.executionTrace.clear();
+		this.setCurrentStepAndUpdateTraces(this.getScheduledOrSolverStep());
 		this.setChanged();
 		this.notifyObservers(">Reset!");
 	}
@@ -243,13 +247,19 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 							+ target.toString(), Activator.PLUGIN_ID);
 
 			// First we verify that the DSE is valid (with respect to the file
-			// describing the DSEs) and that the target is indeed in the model.
+			// describing the DSEs) and that the target is indeed in the model
+			// and that the metaclass of the target is the metaclass targetted
+			// by the action of the DSE.
+
+			EcoreUtil.EqualityHelper equalityHelper = new EcoreUtil.EqualityHelper();
 			if (this.domainSpecificEventsRegistry.containsValue(dse)
-					&& this.resourceContainsEObject(this.modelResource, target)) {
+					&& this.resourceContainsEObject(this.modelResource, target)
+					&& equalityHelper.equals(dse.getDomainSpecificActions()
+							.get(0).getTargetClass(), target.eClass())) {
 
 				Activator
 						.getMessagingSystem()
-						.debug("DSE Registry and model resource contain required elements. Proceeding with the injection.",
+						.debug("DSE Registry and model resource contain required elements. Target is of valid type. Proceeding with the injection.",
 								Activator.PLUGIN_ID);
 
 				// If it is the case, then we retrieve the equivalent MSE
@@ -276,17 +286,15 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 							scheduledEventsForCurrentStep.toString(),
 							Activator.PLUGIN_ID);
 					scheduledEventsForCurrentStep.add(mse);
-					Activator.getMessagingSystem().debug(
+					Activator.getMessagingSystem().info(
 							"MSE added to the scheduled events of the step.",
 							Activator.PLUGIN_ID);
 				} else {
-					Activator.getMessagingSystem().debug("not legal",
-							Activator.PLUGIN_ID);
 					// If the MSE is not authorized by the MoC, we throw an
 					// exception and leave the GUI to deal with it (reinject
 					// later,
 					// send feedback to the user, etc...)
-					Activator.getMessagingSystem().debug(
+					Activator.getMessagingSystem().warn(
 							"MSE was not allowed by the MoC.",
 							Activator.PLUGIN_ID);
 					throw new EventInjectionException(
@@ -297,9 +305,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			Activator.getMessagingSystem().info(
 					"Scheduling Trace: \n" + mapToString(this.schedulingTrace)
 							+ "\n Scheduled Events: \n"
-							+ mapToString(this.scheduledEventsMap)
-							+ "\n Execution Trace: \n"
-							+ mapToString(this.executionTrace),
+							+ mapToString(this.scheduledEventsMap),
 					Activator.PLUGIN_ID);
 
 		} catch (RuntimeException e) {
@@ -308,47 +314,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		}
 	}
 
-	/**
-	 * Pretty print for a map.
-	 * 
-	 * @param map
-	 * @return
-	 */
-	private String mapToString(Map<?, ?> map) {
-		String res = "---------------------------------------------------------------------------------------------------------------\n";
-		int maximumKeyLength = 0;
-		for (Object key : map.keySet()) {
-			if (key.toString().length() > maximumKeyLength) {
-				maximumKeyLength = key.toString().length();
-			}
-		}
-		for (Object key : map.keySet()) {
-			Object value = map.get(key);
-			res += key.toString();
-			for (int i = 0; i < maximumKeyLength - key.toString().length(); i++) {
-				res += " ";
-			}
-			res += " | ";
-			if (value instanceof Collection<?>) {
-				Iterator<?> iterator = (Iterator<?>) ((Collection<?>) value)
-						.iterator();
-				if(iterator.hasNext()){
-					res += iterator.next();
-				}
-				while (iterator.hasNext()) {
-					res += "\n";
-					for (int i = 0; i < maximumKeyLength; i++) {
-						res += " ";
-					}
-					res += " | " + iterator.next();
-				}
-			} else {
-				res += value.toString();
-			}
-			res += "\n---------------------------------------------------------------------------------------------------------------\n";
-		}
-		return res;
-	}
+	
 
 	@Override
 	public Resource getModelResource() {
