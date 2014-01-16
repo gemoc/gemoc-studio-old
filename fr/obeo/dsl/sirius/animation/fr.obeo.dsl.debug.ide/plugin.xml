@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.core.sourceLocators">
+      <sourceLocator
+            class="fr.obeo.dsl.debug.ide.DSLSourceLocator"
+            id="fr.obeo.dsl.debug.ide.sourceLocator"
+            name="DSL Debug Source Locator">
+      </sourceLocator>
+   </extension>
+   <extension
+         id="breakpointMarker"
+         point="org.eclipse.core.resources.markers">
+      <persistent
+            value="true">
+      </persistent>
+      <super
+            type="org.eclipse.debug.core.breakpointMarker">
+      </super>
+      <super
+            type="org.eclipse.emf.ecore.diagnostic">
+      </super>
+      <attribute
+            name="image">
+      </attribute>
+      <attribute
+            name="text">
+      </attribute>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.breakpoints">
+      <breakpoint
+            class="fr.obeo.dsl.debug.ide.DSLBreakpoint"
+            id="fr.obeo.dsl.debug.ide.breakpoint"
+            markerType="fr.obeo.dsl.debug.ide.breakpointMarker"
+            name="DSL Breakpoints">
+      </breakpoint>
+   </extension>
+
+</plugin>

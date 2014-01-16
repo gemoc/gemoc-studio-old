@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="fr.obeo.dsl.debug.ide.ui.DSLDebugModelPresentation"
+            id="fr.obeo.dsl.debug.ide.ui.debugModelPresentation">
+      </debugModelPresentation>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.eclipse.emf.edit.domain.IEditingDomainProvider"
+            class="fr.obeo.dsl.debug.ide.ui.DSLBreakpointAdapterFactory">
+         <adapter
+               type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget">
+         </adapter>
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.markerImageProviders">
+      <imageprovider
+            icon="icons/full/deco16/breakpoint_enabled.gif"
+            id="fr.obeo.dsl.debug.ide.ui.breakpointImageProvider"
+            markertype="fr.obeo.dsl.debug.ide.breakpointMarker">
+      </imageprovider>
+   </extension>
+
+</plugin>
