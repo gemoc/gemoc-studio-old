@@ -86,17 +86,14 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				"Verifying input before instanciating GemocExecutionEngine...",
 				Activator.PLUGIN_ID);
 
-		// modelURI cannot be null or "", modelLoader cannot be null.
-		if (modelURI == null | modelLoader == null | modelURI.isEmpty()) {
+		// modelURI cannot be null, modelLoader cannot be null.
+		if (modelURI == null | modelLoader == null) {
 			String exceptionMessage = "";
 			if (modelURI == null) {
 				exceptionMessage += "modelURI is null, ";
 			}
 			if (modelLoader == null) {
 				exceptionMessage += "modelLoader is null, ";
-			}
-			if (modelURI.isEmpty()) {
-				exceptionMessage += "modelURI is empty, ";
 			}
 			Activator.getMessagingSystem().info(
 					"...NOK. Throwing NullPointerException.",
@@ -147,8 +144,15 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 						true);
 				// this.solver.input.load(null) ???
 			}
+
+			// Then we place the created solverInput into the solver
 			this.solver.setSolverInputFile(this.solverInput.getURI());
+
+			// We proceed to the first step of execution (a new one coming from
+			// the solver or the first coming from a loaded scenario !)
 			this.setCurrentStepAndUpdateTraces(this.getScheduledOrSolverStep());
+
+			// We create the internal representation of the MSEs.
 			this.modelSpecificEventsRegistry = this
 					.buildModelSpecificEventsRegistry(this.modelOfExecution);
 
@@ -159,7 +163,9 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
 	/**
 	 * Builds a map with, as keys, the names of the ModelSpecificEvents, as
-	 * values, the ModelSpecificEvents.
+	 * values, the ModelSpecificEvents. This is so because we "recognize" the
+	 * MSE occurrences allowed by the MoC solver's trace thanks to the name of
+	 * the event.
 	 * 
 	 * @param modelOfExecution
 	 * @return the registry of ModelSpecificEvents based on their names.
@@ -314,8 +320,6 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		}
 	}
 
-	
-
 	@Override
 	public Resource getModelResource() {
 		return this.modelResource;
@@ -329,7 +333,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	 * the DSE resource is loaded at two different places (once in the
 	 * ModelOfExecution file, once by this Engine), the instances are not the
 	 * same though the objects have the same features values. Which is why we
-	 * use EcoreUtil.EqualityHelper.
+	 * use EcoreUtil.EqualityHelper.</li>
 	 * </ul>
 	 * Its first (and only... ?) MSA's target is equals to the target given in
 	 * the parameters (same as above).

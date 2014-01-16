@@ -42,15 +42,33 @@ import glml.ModelSpecificEvent;
  * There are two phases of initializations for this entity:
  * <ul>
  * <li>the constructor sets the language-specific elements such as
- * DomainSpecificEvents, Solver, EventExecutor, FeedbackPolicy
+ * DomainSpecificEvents, Solver, EventExecutor, FeedbackPolicy</li>
  * <li>the initialize method sets the model-specific elements such as Model and
- * ModelLoader.
+ * ModelLoader.</li>
  * </ul>
  * From the Model, we can derive :
  * <ul>
- * <li>the Model of Execution (using the DomainSpecificEvents
+ * <li>the Model of Execution (using the DomainSpecificEvents)</li>
  * <li>the Higher-order-transformation (TODO)) and the Solver Input (using the
- * Model of Execution and the Solver Input Builder provided by the Solver).
+ * Model of Execution and the Solver Input Builder provided by the Solver).</li>
+ * </ul>
+ * 
+ * There are a few elements that could enter the ExecutionEngine, maybe after
+ * being reified as their own data structures:
+ * <ul>
+ * <li>{@link #scheduledSteps} is the FIFO of LogicalSteps. We use a FIFO
+ * because sometimes we may want to memorize steps in order to go back in the
+ * past and replay given steps. When the engine seeks to reach the next step of
+ * execution, it will first check if there is something in this FIFO. If there
+ * is not, then a new step is requested from the solver.</li>
+ * <li>{@link #schedulingTrace} is a map recording the order in which the steps
+ * of the solver have been used.</li>
+ * <li>{@link #scheduledEventsMap} records which step is linked to which list of
+ * MSEs. It is to be noticed that not all the MSEs were executed. Indeed, some
+ * may have been illegal at the time (with regards to the MoC) and thus
+ * discarded during the execution of this step.</li>
+ * <li>{@link #executionTrace} records the steps and the actual MSEs that were
+ * actually executed.</li>
  * </ul>
  * 
  * @see ExecutionEngine
@@ -64,14 +82,21 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 	/**
 	 * The current LogicalStep being "executed" by this engine. This means that
-	 * any event, injected or internal, is allowed by the LogicalStep. The
+	 * any event, injected or internal, must be allowed by this LogicalStep. The
 	 * associated events scheduled for this step can be retrieved in the map
-	 * below.
+	 * {@link #scheduledEventsMap}
+	 * 
+	 * @see scheduledEventsMap
 	 */
 	protected LogicalStep currentStep = null;
 
 	/**
-	 * The stack of LogicalSteps.
+	 * The stack of LogicalSteps. If there is no step in this stack when the
+	 * engine needs to proceed to the next step, then a new step is required
+	 * from the MoC Solver. This means that TODO if we want to be able to go
+	 * back in the past, and then move forward towards a different future than
+	 * the one we come from, then we need to change the logic of the engine in
+	 * {@link #getScheduledOrSolverStep()}.
 	 */
 	protected Queue<LogicalStep> scheduledSteps = null;
 
@@ -83,8 +108,9 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	protected Map<LogicalStep, List<ModelSpecificEvent>> scheduledEventsMap = null;
 
 	/**
-	 * A map containing all the LogicalSteps that have been "executed" and in
-	 * which order.
+	 * A map containing all the LogicalSteps that have been "executed" (as in,
+	 * execution has been done with this step as the MoC authority) and in which
+	 * order.
 	 */
 	protected Map<Integer, LogicalStep> schedulingTrace;
 
@@ -223,7 +249,9 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 	/**
 	 * Returns a map with Domain-Specific Events names as keys and the
-	 * Domain-Specific Events as values.
+	 * Domain-Specific Events as values. This is done like this because we will
+	 * match the Domain-Specific Events using their names : they should appear
+	 * in the LogicalStep produced by the MoC solver.
 	 * 
 	 * @param domainSpecificEventsResource
 	 * @return
@@ -246,7 +274,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	public abstract void reset();
 
 	@Override
-	// TODO
+	// TODO : What should this do ?
 	public void pause() {
 		throw new UnsupportedOperationException();
 	}
@@ -285,7 +313,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 	/**
 	 * Updates the scheduling trace and the execution trace. Updates the value
-	 * of currentStep.
+	 * of currentStep. Adds a new entry to the scheduledEventsMap.
 	 * 
 	 * @param newStep
 	 */
@@ -307,7 +335,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	/**
 	 * Runs one step of the execution. Retrieves a scheduling step (either from
 	 * the solver or one scheduled earlier) then executes the associated events
-	 * if there are some.
+	 * if there are some. After the execution, it makes the engine proceed to
+	 * the next step of execution.
 	 */
 	protected void runOneStep() {
 		ISafeRunnable runnable = new ISafeRunnable() {
@@ -438,6 +467,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	}
 
 	@Override
+	// TODO
 	public void forceEventOccurrenceReferencing(EObject target,
 			EOperation operation) {
 		this.setChanged();
@@ -447,6 +477,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	}
 
 	@Override
+	// TODO
 	public void forbidEventOccurrenceReferencing(EObject target,
 			EOperation operation) {
 		this.setChanged();
