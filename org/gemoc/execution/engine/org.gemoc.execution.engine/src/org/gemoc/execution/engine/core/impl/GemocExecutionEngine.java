@@ -189,8 +189,12 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		this.schedulingTrace.clear();
 		this.executionTrace.clear();
 		this.setCurrentStepAndUpdateTraces(this.getScheduledOrSolverStep());
+
 		this.setChanged();
 		this.notifyObservers(">Reset!");
+
+		Activator.getMessagingSystem().warn("\n\n\nReset !\n\n\n",
+				Activator.PLUGIN_ID);
 	}
 
 	// TODO : this method will change when we change the DSE language.
@@ -246,6 +250,9 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	@Override
 	public void injectEvent(DomainSpecificEvent dse, EObject target)
 			throws EventInjectionException {
+		this.setChanged();
+		this.notifyObservers("Received from ControlPanel: injection of event <<"
+				+ dse.getName() + ">> on target <<" + target.toString() + ">>");
 		try {
 			Activator.getMessagingSystem().info(
 					"Trying injection of the following event : "
@@ -258,17 +265,33 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			// by the action of the DSE.
 
 			EcoreUtil.EqualityHelper equalityHelper = new EcoreUtil.EqualityHelper();
-			if (this.domainSpecificEventsRegistry.containsValue(dse)
-					&& this.resourceContainsEObject(this.modelResource, target)
-					&& equalityHelper.equals(dse.getDomainSpecificActions()
-							.get(0).getTargetClass(), target.eClass())) {
+			if (!(this.domainSpecificEventsRegistry.containsValue(dse)
+					&& this.resourceContainsEObject(this.modelResource, target) && equalityHelper
+						.equals(dse.getDomainSpecificActions().get(0)
+								.getTargetClass(), target.eClass()))) {
+				String errorMessage = "";
+				if (!this.domainSpecificEventsRegistry.containsValue(dse)) {
+					errorMessage += "The selected DomainSpecificEvent is not present in the DSE file, ";
+				}
+				if (!this.resourceContainsEObject(this.modelResource, target)) {
+					errorMessage += "The model resource does not contained the selected EObject, ";
+				}
+				if (!equalityHelper.equals(dse.getDomainSpecificActions()
+						.get(0).getTargetClass(), target.eClass())) {
+					errorMessage += "The metaclass of the selected EObject does not correspond to the metaclass targetted by the selected DomainSpecificEvent, ";
+				}
+				errorMessage = errorMessage.substring(0,
+						errorMessage.length() - 2) + ".";
+				throw new EventInjectionException(errorMessage);
+			} else {
 
 				Activator
 						.getMessagingSystem()
 						.debug("DSE Registry and model resource contain required elements. Target is of valid type. Proceeding with the injection.",
 								Activator.PLUGIN_ID);
 
-				// If it is the case, then we retrieve the equivalent MSE
+				// If it is the case, then we (try to) retrieve the equivalent
+				// MSE
 				ModelSpecificEvent mse = this
 						.findCorrespondingModelSpecificEvent(dse, target,
 								this.modelSpecificEventsRegistry);
@@ -313,10 +336,12 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 							+ "\n Scheduled Events: \n"
 							+ mapToString(this.scheduledEventsMap),
 					Activator.PLUGIN_ID);
-
-		} catch (RuntimeException e) {
-			Activator.error("RuntimeException during injection of event", e);
-			throw e;
+		} catch (NoSuchElementException e) {
+			throw new EventInjectionException(
+					"Could not find a corresponding Model-Specific Event. Please verify your selection. Your Model of Execution or Solver Input may be incorrect !");
+		} catch (RuntimeException e1) {
+			Activator.error("RuntimeException during injection of event", e1);
+			throw e1;
 		}
 	}
 

@@ -31,10 +31,10 @@ public class ExampleGUIControlPanel extends BasicControlPanel {
 		resetButton.addActionListener(new ButtonHandlerReset());
 
 		JButton pauseButton = new JButton("Pause");
-		resetButton.addActionListener(new ButtonHandlerPause());
+		pauseButton.addActionListener(new ButtonHandlerPause());
 
 		JButton stepBackButton = new JButton("Step back one step");
-		resetButton.addActionListener(new ButtonHandlerStepBack());
+		stepBackButton.addActionListener(new ButtonHandlerStepBack());
 
 		JPanel content = new JPanel();
 		content.setLayout(new FlowLayout());

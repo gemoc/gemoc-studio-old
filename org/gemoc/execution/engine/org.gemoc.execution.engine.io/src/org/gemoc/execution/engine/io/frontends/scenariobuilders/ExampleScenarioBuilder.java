@@ -1,14 +1,17 @@
 package org.gemoc.execution.engine.io.frontends.scenariobuilders;
 
 import glml.DomainSpecificEvent;
+import glml.ModelSpecificEvent;
 
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,8 +23,6 @@ import javax.swing.SwingConstants;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.execution.engine.io.core.impl.BasicScenarioBuilder;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
@@ -55,14 +56,15 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 
 		this.content.add(eventLabel);
 		this.content.add(targetLabel);
-		this.content.add(new JSeparator(SwingConstants.VERTICAL));
+		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
 		this.content.add(injectButton);
 		this.content.add(clearButton);
-		this.content.add(new JSeparator(SwingConstants.VERTICAL));
+		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
+
 		this.content.setLayout(new FlowLayout());
 		this.content
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-
+		
 		this.window = new JFrame("GEMOC Execution Engine Scenario Builder");
 		this.window.setContentPane(this.content);
 		this.window.setSize(700, 600);
@@ -97,8 +99,12 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 	public void initialize(ExecutionEngine engine) {
 		this.engine = engine;
 		this.addEventButtons(this.engine.getDomainSpecificEvents());
-		this.content.add(new JSeparator(SwingConstants.VERTICAL));
+		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
 		this.addModelButtons(this.engine.getModelResource());
+		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
+		for (ModelSpecificEvent mse : this.engine.getPossibleEvents()) {
+			this.content.add(new JLabel(mse.getName()));
+		}
 		this.validate();
 	}
 

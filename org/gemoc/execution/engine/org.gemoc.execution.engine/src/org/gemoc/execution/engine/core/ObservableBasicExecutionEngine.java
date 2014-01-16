@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -240,10 +241,10 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 			// TODO: Execution initialization, move them somewhere else and
 			// place them in reset too.
-			this.scheduledEventsMap = new HashMap<LogicalStep, List<ModelSpecificEvent>>();
+			this.scheduledEventsMap = new LinkedHashMap<LogicalStep, List<ModelSpecificEvent>>();
 			this.scheduledSteps = new LinkedList<LogicalStep>();
 			this.schedulingTrace = new HashMap<Integer, LogicalStep>();
-			this.executionTrace = new HashMap<LogicalStep, List<ModelSpecificEvent>>();
+			this.executionTrace = new LinkedHashMap<LogicalStep, List<ModelSpecificEvent>>();
 		}
 	}
 
@@ -350,9 +351,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				Activator.getMessagingSystem().info(">>Running one step",
 						Activator.PLUGIN_ID);
 				ObservableBasicExecutionEngine.this.doOneStep();
-				ObservableBasicExecutionEngine.this
-						.setCurrentStepAndUpdateTraces(ObservableBasicExecutionEngine.this
-								.getScheduledOrSolverStep());
 				Activator.getMessagingSystem().info("<<Step finished",
 						Activator.PLUGIN_ID);
 				Activator
@@ -360,6 +358,9 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 						.info("Execution Trace: \n"
 								+ mapToString(ObservableBasicExecutionEngine.this.executionTrace),
 								Activator.PLUGIN_ID);
+				ObservableBasicExecutionEngine.this
+						.setCurrentStepAndUpdateTraces(ObservableBasicExecutionEngine.this
+								.getScheduledOrSolverStep());
 			}
 		};
 		SafeRunner.run(runnable);
