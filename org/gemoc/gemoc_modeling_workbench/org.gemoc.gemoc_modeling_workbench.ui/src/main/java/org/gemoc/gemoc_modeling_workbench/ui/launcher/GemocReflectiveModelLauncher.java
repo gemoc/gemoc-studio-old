@@ -135,28 +135,15 @@ public class GemocReflectiveModelLauncher implements
 		this.reactToNull(domainSpecificEventsResource,
 				"Domain Specific Events Resource");
 		this.reactToNull(modelLoader, "Model Loader");
-		
-		// try {
-		// // Language-level instanciation of the engine
-		// ExecutionEngine engine = new GemocExecutionEngine(
-		// domainSpecificEventsResource, solver, executor,
-		// feedbackPolicy);
-		//
-		// // Model-level initialization of the engine
-		// engine.initialize(modelPath, modelLoader);
-		//
-		// // Run the engine for just one step...
-		// engine.run(10);
-		//
-		// } catch (Throwable e) {
-		// Activator.error("Exception in the initialization of the engine", e);
-		// }
+
+		// TODO : Hard-coded Frontends and Backends... It should be selectable
+		// in the launch configuration etc.
 		Frontend controlPanel = new ExampleGUIControlPanel();
 		Frontend scenarioBuilder = new ExampleScenarioBuilder();
 		List<Frontend> frontends = new ArrayList<Frontend>();
 		frontends.add(controlPanel);
 		frontends.add(scenarioBuilder);
-		
+
 		List<Backend> backends = new ArrayList<Backend>();
 		backends.add(new ConsoleBackend());
 		EngineManager manager = new EngineManager(domainSpecificEventsResource,
