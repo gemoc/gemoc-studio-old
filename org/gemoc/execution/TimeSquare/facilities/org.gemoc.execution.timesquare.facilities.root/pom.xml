@@ -138,18 +138,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>OCL bug fix</id>
-			<url>http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/</url>
-			<layout>p2</layout>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		
+
 		 <repository>
             <id>emf2.9.x</id>
             <layout>p2</layout>
