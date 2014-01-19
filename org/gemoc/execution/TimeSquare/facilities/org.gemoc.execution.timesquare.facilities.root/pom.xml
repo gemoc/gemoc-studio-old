@@ -77,16 +77,78 @@
             <url>https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/</url>
         </repository>
 		
-        <repository>
+            <repository>
             <id>timesquare ECL</id>
             <layout>p2</layout>
             <url>http://timesquare.inria.fr/ecl/update_site</url>
-        </repository>	
+	    
+        </repository>        
         <repository>
-            <id>timesquare</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/update_site/experimental</url>
-        </repository>
+		<id>TimeSquare</id>
+		<url>http://timesquare.inria.fr/update_site</url>
+		<layout>p2</layout>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+	<repository>
+		<id>OCL bug fix</id>
+		<url>http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/</url>
+		<layout>p2</layout>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+	<repository>
+			<id>Kepler</id>
+			<url>http://download.eclipse.org/releases/kepler/</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>kepler-updates</id>
+			<url>http://download.eclipse.org/eclipse/updates/4.3</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Xtext All-in-One</id>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>OCL bug fix</id>
+			<url>http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 		
 		 <repository>
             <id>emf2.9.x</id>
