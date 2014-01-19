@@ -112,23 +112,28 @@
             <url>http://timesquare.inria.fr/ecl/update_site</url>
 	    
         </repository>        
-        <!-- <repository>
-            <id>timesquare</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/update_site</url>
-        </repository>-->
         <repository>
-            <id>timesquare experimental</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/update_site/experimental/</url>
-	    <releases>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-            </releases>
-	    <snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-	    </snapshots>
+		<id>TimeSquare</id>
+		<url>http://timesquare.inria.fr/update_site</url>
+		<layout>p2</layout>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+	<repository>
+		<id>OCL bug fix</id>
+		<url>http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/</url>
+		<layout>p2</layout>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
         </repository>
         <repository>
             <id>Scala-IDE 3.0.0 Release Juno For Scala 2.9.x</id>
