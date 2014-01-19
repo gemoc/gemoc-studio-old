@@ -134,7 +134,6 @@
 			<enabled>true</enabled>
 		</snapshots>
 	</repository>
-        </repository>
         <repository>
             <id>Scala-IDE 3.0.0 Release Juno For Scala 2.9.x</id>
             <layout>p2</layout>
