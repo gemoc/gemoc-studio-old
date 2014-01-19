@@ -114,11 +114,42 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
         </repository>
-        <repository>
-            <id>guava11</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/</url>
-        </repository> 
+        
+        
+        
+        		<repository>
+			<id>Kepler</id>
+			<url>http://download.eclipse.org/releases/kepler/</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>kepler-updates</id>
+			<url>http://download.eclipse.org/eclipse/updates/4.3</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Xtext All-in-One</id>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 		
 		
 	</repositories>
