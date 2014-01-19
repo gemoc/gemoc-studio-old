@@ -116,7 +116,8 @@
         </repository>
         <repository>
             <id>guava11</id>
-            <url> http://search.maven.org/#artifactdetails%7Ccom.google.guava%7Cguava%7C11.0.2%7Cjar</url>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/</url>
         </repository> 
 		
 		
