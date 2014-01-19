@@ -154,7 +154,12 @@
             <id>emf2.9.x</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
-        </repository>        
+        </repository>  
+	<repository>
+            <id>guava11</id>
+            <url> http://search.maven.org/#artifactdetails%7Ccom.google.guava%7Cguava%7C11.0.2%7Cjar</url>
+        </repository> 
+	
     </repositories>
 
     <build>
