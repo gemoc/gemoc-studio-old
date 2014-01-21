@@ -10,7 +10,6 @@ Bundle-Activator: org.gemoc.mapping_language.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.gemoc.execution.javasolver.input;visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
