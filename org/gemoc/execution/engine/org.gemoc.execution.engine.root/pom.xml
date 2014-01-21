@@ -119,7 +119,7 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-			<repository>
+		<repository>
         	<id>gemoc_commons-latest-snapshot</id>
             <layout>p2</layout>
             <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.gemoc_commons.p2updatesite/target/repository/</url>
