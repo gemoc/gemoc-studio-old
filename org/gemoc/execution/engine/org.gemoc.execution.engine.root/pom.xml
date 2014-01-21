@@ -97,8 +97,29 @@
             <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
         </repository>
         
-        
 		<repository>
+			<id>Xtext All-in-One</id>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+        <repository>
+			<id>OCL bug fix</id>
+			<url>http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+			<repository>
         	<id>gemoc_commons-latest-snapshot</id>
             <layout>p2</layout>
             <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.gemoc_commons.p2updatesite/target/repository/</url>
