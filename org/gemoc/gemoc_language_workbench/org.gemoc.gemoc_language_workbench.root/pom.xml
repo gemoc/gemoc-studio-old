@@ -85,7 +85,12 @@
             <layout>p2</layout>
             <url>http://timesquare.inria.fr/ecl/update_site</url>
 	    
-        </repository>        
+        </repository>   
+        <repository>
+        	<id>gemoc_commons-latest-snapshot</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.gemoc_commons.p2updatesite/target/repository/</url>
+        </repository>     
         <repository>
 		<id>TimeSquare</id>
 		<url>http://timesquare.inria.fr/update_site</url>
