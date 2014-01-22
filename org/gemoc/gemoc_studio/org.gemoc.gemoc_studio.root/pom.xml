@@ -21,15 +21,15 @@
 
     <repositories>
         <repository>
-            <id>sirius-0-9</id>
+            <id>sirius-1-0-M4</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/sirius/updates/releases/0.9.0/kepler</url>
+            <url>http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler</url>
         </repository>
-        <repository>
+        <!-- <repository>
             <id>uml-designer-nightly</id>
             <layout>p2</layout>
             <url>http://marketplace.obeonetwork.com/updates/nightly/uml/4.0.0/repository</url>
-        </repository>
+        </repository> -->
         
         <repository>
             <id>mdt-uml-4-updates</id>
@@ -204,7 +204,7 @@
                 <configuration>
                     <!-- environments that will be built -->
                     <environments>
-                        <environment>
+                     	<environment>
                             <os>linux</os>
                             <ws>gtk</ws>
                             <arch>x86_64</arch>

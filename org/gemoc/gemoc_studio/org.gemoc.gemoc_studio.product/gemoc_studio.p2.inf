@@ -7,6 +7,8 @@ addRepository(type:0,location:http${#58}//timesquare.inria.fr/update_site/experi
 addRepository(type:1,location:http${#58}//timesquare.inria.fr/update_site/experimental,name:Timesquare);\
 addRepository(type:0,location:http${#58}//www.kermeta.org/k2/update/,name:Kermeta 2);\
 addRepository(type:1,location:http${#58}//www.kermeta.org/k2/update/,name:Kermeta 2);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler,name:Sirius 1.0.0M4);\
+addRepository(type:1,location:http${#58}//download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler,name:Sirius 1.0.0M4);\
   mkdir(path:${installFolder}/dropins);
 
 requires.1.namespace=org.eclipse.equinox.p2.iu
