@@ -75,6 +75,7 @@
       <feature id="org.scala-ide.sdt.source.feature"/>
       <feature id="org.eclipse.xtend.sdk"/>
       <feature id="org.eclipse.xtend.m2e"/>
+      <feature id="org.eclipse.eep.mpc"/>
    </features>
 
    <configurations>
