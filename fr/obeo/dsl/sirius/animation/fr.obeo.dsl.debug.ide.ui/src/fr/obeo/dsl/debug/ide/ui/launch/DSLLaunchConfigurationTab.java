@@ -51,6 +51,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
@@ -270,7 +271,12 @@ public class DSLLaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 				IFile resourceFile = ResourcesPlugin.getWorkspace().getRoot().getFile(
 						new Path(resourceURIText.getText()));
 				if (resourceFile.exists()) {
-					openFirstInstructionSelection(parent);
+					final ResourceSet rs = new ResourceSetImpl();
+					rs.getResource(URI.createPlatformResourceURI(resourceURIText.getText(), true), true);
+					EObject firstInstruction = openFirstInstructionSelection(parent.getShell(), rs);
+					if (firstInstruction != null) {
+						firstInstructionURIText.setText(EcoreUtil.getURI(firstInstruction).toString());
+					}
 				} else {
 					MessageDialog.openInformation(parent.getShell(), "Model not selected",
 							"You must select a model first.");
@@ -302,27 +308,31 @@ public class DSLLaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 	/**
 	 * Opens the {@link EObject first instruction} selection dialog.
 	 * 
-	 * @param parent
-	 *            the parent {@link Composite}
+	 * @param shell
+	 *            the {@link Shell} to use for display
+	 * @param resourceSet
+	 *            the {@link ResourceSet} to get the first instruction from
+	 * @return the selected first instruction {@link URI} if any selected, <code>null</code> otherwise
 	 */
-	private void openFirstInstructionSelection(final Composite parent) {
+	public static EObject openFirstInstructionSelection(final Shell shell, ResourceSet resourceSet) {
+		final EObject res;
 		final ComposedAdapterFactory fatory = new ComposedAdapterFactory(
 				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		fatory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		fatory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
-		final ResourceSet rs = new ResourceSetImpl();
-		final Resource resource = rs.getResource(URI.createPlatformResourceURI(resourceURIText.getText(),
-				true), true);
 
-		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(parent.getShell(),
+		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(shell,
 				new AdapterFactoryLabelProvider(fatory), new AdapterFactoryContentProvider(fatory));
 		dialog.setTitle("Select first instruction");
 		dialog.setMessage("Select the first instruction:");
-		dialog.setInput(resource);
+		dialog.setInput(resourceSet);
 		if (dialog.open() == Window.OK) {
-			firstInstructionURIText.setText(EcoreUtil.getURI((EObject)dialog.getFirstResult()).toString());
+			res = (EObject)dialog.getFirstResult();
+		} else {
+			res = null;
 		}
 		fatory.dispose();
+		return res;
 	}
 
 }

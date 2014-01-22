@@ -20,7 +20,6 @@ package fr.obeo.dsl.debug.tests;
 import fr.obeo.dsl.debug.DebugPackage;
 import fr.obeo.dsl.debug.DebugTarget;
 import fr.obeo.dsl.debug.DebugTargetState;
-import fr.obeo.dsl.debug.DebugTargetUtils;
 import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.State;
 import fr.obeo.dsl.debug.Thread;
@@ -35,7 +34,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 /**
- * Tests the {@link DebugTargetUtils} class.
+ * Tests the {@link ThreadUtils} class.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */

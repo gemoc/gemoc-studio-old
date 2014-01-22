@@ -71,6 +71,11 @@ import org.eclipse.emf.common.util.URI;
 public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implements IDebugTarget, IDSLDebugEventProcessor {
 
 	/**
+	 * The {@link List} of {@link IDSLSuspendListener} to notify.
+	 */
+	protected final List<IDSLCurrentInstructionListener> currentInstructionListeners = new ArrayList<IDSLCurrentInstructionListener>();
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param factory
@@ -329,7 +334,9 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 	 * @see org.eclipse.debug.core.model.IDebugTarget#supportsBreakpoint(org.eclipse.debug.core.model.IBreakpoint)
 	 */
 	public boolean supportsBreakpoint(IBreakpoint breakpoint) {
-		return breakpoint instanceof DSLBreakpoint && ((DSLBreakpoint)breakpoint).getURI() != null;
+		return breakpoint instanceof DSLBreakpoint
+				&& breakpoint.getModelIdentifier().equals(getModelIdentifier())
+				&& ((DSLBreakpoint)breakpoint).getURI() != null;
 	}
 
 	/**
@@ -373,6 +380,8 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 				setCurrentInstructionReply.getInstruction(), setCurrentInstructionReply.isCanStepInto());
 		// Eclipse change
 		factory.getThread(eThread).fireChangeEvent(DebugEvent.CONTENT);
+		// notify current instruction listeners
+		fireCurrentInstructionChangedEvent(eThread);
 	}
 
 	/**
@@ -403,6 +412,8 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 				pushStackFrameReply.isCanStepInto());
 		// Eclipse change
 		factory.getThread(eThread).fireChangeEvent(DebugEvent.CONTENT);
+		// notify current instruction listeners
+		fireCurrentInstructionChangedEvent(eThread);
 	}
 
 	/**
@@ -502,6 +513,8 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 			// Eclipse change
 			DSLThreadAdapter thread = factory.getThread(eThread);
 			thread.fireTerminateEvent();
+			// notify current instruction listeners
+			fireCurrentInstructionTerminatedEvent(eThread);
 		}
 	}
 
@@ -526,6 +539,52 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 			thread.fireSuspendEvent(DebugEvent.CLIENT_REQUEST);
 		}
 		fireChangeEvent(DebugEvent.STATE);
+		// notify our suspend listeners
+
+	}
+
+	/**
+	 * Adds the given {@link IDSLSuspendListener}.
+	 * 
+	 * @param listener
+	 *            the {@link IDSLSuspendListener} to add
+	 */
+	public void addCurrentInstructionListener(IDSLCurrentInstructionListener listener) {
+		currentInstructionListeners.add(listener);
+	}
+
+	/**
+	 * Removes the given {@link IDSLSuspendListener}.
+	 * 
+	 * @param listener
+	 *            the {@link IDSLSuspendListener} to remove
+	 */
+	public void removeCurrentInstructionListener(IDSLCurrentInstructionListener listener) {
+		currentInstructionListeners.remove(listener);
+	}
+
+	/**
+	 * Notifies a change of current instruction for the given {@link Thread}.
+	 * 
+	 * @param thread
+	 *            the {@link Thread}
+	 */
+	protected void fireCurrentInstructionChangedEvent(Thread thread) {
+		for (IDSLCurrentInstructionListener listener : currentInstructionListeners) {
+			listener.currentInstructionChanged(getModelIdentifier(), thread);
+		}
+	}
+
+	/**
+	 * Notifies a change of current instruction for the given {@link Thread}.
+	 * 
+	 * @param thread
+	 *            the {@link Thread}
+	 */
+	protected void fireCurrentInstructionTerminatedEvent(Thread thread) {
+		for (IDSLCurrentInstructionListener listener : currentInstructionListeners) {
+			listener.terminated(getModelIdentifier(), thread);
+		}
 	}
 
 }

@@ -18,7 +18,7 @@
 package fr.obeo.dsl.debug.ide.ui.provider;
 
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
-import fr.obeo.dsl.debug.ide.ui.DebugIdeUiEditPlugin;
+import fr.obeo.dsl.debug.ide.ui.DebugIdeUiPlugin;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -62,14 +62,14 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 	 */
 	private final Image breakpointEnabled = new Image(Display.getDefault(), ExtendedImageRegistry
 			.getInstance().getImageDescriptor(
-					DebugIdeUiEditPlugin.INSTANCE.getImage("full/deco16/breakpoint_enabled")).getImageData());
+					DebugIdeUiPlugin.INSTANCE.getImage("full/deco16/breakpoint_enabled")).getImageData());
 
 	/**
 	 * Disabled breakpoint {@link Image}.
 	 */
 	private final Image breakpointDisabled = new Image(Display.getDefault(), ExtendedImageRegistry
 			.getInstance().getImageDescriptor(
-					DebugIdeUiEditPlugin.INSTANCE.getImage("full/deco16/breakpoint_disabled")).getImageData());
+					DebugIdeUiPlugin.INSTANCE.getImage("full/deco16/breakpoint_disabled")).getImageData());
 
 	/**
 	 * {@link Map} of {@link URI} pointing {@link DSLBreakpoint}.
@@ -82,20 +82,38 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 	private final ResourceSet resourceSet;
 
 	/**
+	 * The debug model identifier.
+	 */
+	private final String identifier;
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param resourceSet
 	 *            the {@link ResourceSet} used to load {@link EObject instruction} from the
 	 *            {@link DSLBreakpoint}
+	 * @param identifier
+	 *            the debug model identifier
 	 */
-	public DSLLabelDecorator(ResourceSet resourceSet) {
+	public DSLLabelDecorator(ResourceSet resourceSet, String identifier) {
 		this.resourceSet = resourceSet;
+		this.identifier = identifier;
 		DebugPlugin.getDefault().getBreakpointManager().addBreakpointListener(this);
-		for (IBreakpoint breakpoint : DebugPlugin.getDefault().getBreakpointManager().getBreakpoints()) {
+		for (IBreakpoint breakpoint : DebugPlugin.getDefault().getBreakpointManager().getBreakpoints(
+				getModelIdentifier())) {
 			if (breakpoint instanceof DSLBreakpoint) {
 				addBreakpoint((DSLBreakpoint)breakpoint);
 			}
 		}
+	}
+
+	/**
+	 * Gets the debug model identifier.
+	 * 
+	 * @return the debug model identifier
+	 */
+	protected String getModelIdentifier() {
+		return identifier;
 	}
 
 	/**
@@ -104,7 +122,8 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 	 * @see org.eclipse.debug.core.IBreakpointListener#breakpointAdded(org.eclipse.debug.core.model.IBreakpoint)
 	 */
 	public void breakpointAdded(IBreakpoint breakpoint) {
-		if (breakpoint instanceof DSLBreakpoint) {
+		if (breakpoint instanceof DSLBreakpoint
+				&& breakpoint.getModelIdentifier().equals(getModelIdentifier())) {
 			addBreakpoint((DSLBreakpoint)breakpoint);
 			fireLabelProviderChanged(breakpoint);
 		}
@@ -141,7 +160,8 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 	 *      org.eclipse.core.resources.IMarkerDelta)
 	 */
 	public void breakpointRemoved(IBreakpoint breakpoint, IMarkerDelta delta) {
-		if (breakpoint instanceof DSLBreakpoint) {
+		if (breakpoint instanceof DSLBreakpoint
+				&& breakpoint.getModelIdentifier().equals(getModelIdentifier())) {
 			removeBreakpoint((DSLBreakpoint)breakpoint);
 			fireLabelProviderChanged(breakpoint);
 		}
@@ -156,6 +176,7 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 	public void breakpointChanged(IBreakpoint breakpoint, IMarkerDelta delta) {
 		try {
 			if (breakpoint instanceof DSLBreakpoint
+					&& breakpoint.getModelIdentifier().equals(getModelIdentifier())
 					&& delta.getAttribute(IBreakpoint.ENABLED) != null
 					&& breakpoint.isEnabled() != ((Boolean)delta.getAttribute(IBreakpoint.ENABLED))
 							.booleanValue()) {
@@ -204,8 +225,8 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 					res = cachedImage;
 				} catch (CoreException e) {
 					res = image;
-					DebugIdeUiEditPlugin.getPlugin().getLog().log(
-							new Status(IStatus.ERROR, DebugIdeUiEditPlugin.ID, e.getLocalizedMessage(), e));
+					DebugIdeUiPlugin.getPlugin().getLog().log(
+							new Status(IStatus.ERROR, DebugIdeUiPlugin.ID, e.getLocalizedMessage(), e));
 				}
 			} else {
 				res = image;

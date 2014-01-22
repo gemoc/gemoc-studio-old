@@ -76,7 +76,7 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 	 * @see org.eclipse.debug.ui.ILaunchShortcut2#getLaunchConfigurations(org.eclipse.jface.viewers.ISelection)
 	 */
 	public ILaunchConfiguration[] getLaunchConfigurations(ISelection selection) {
-		return getLaunchConfgurations(getLaunchableResource(selection));
+		return getLaunchConfigurations(getLaunchableResource(selection));
 	}
 
 	/**
@@ -85,7 +85,7 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 	 * @see org.eclipse.debug.ui.ILaunchShortcut2#getLaunchConfigurations(org.eclipse.ui.IEditorPart)
 	 */
 	public ILaunchConfiguration[] getLaunchConfigurations(IEditorPart editorpart) {
-		return getLaunchConfgurations(getLaunchableResource(editorpart));
+		return getLaunchConfigurations(getLaunchableResource(editorpart));
 	}
 
 	/**
@@ -102,9 +102,11 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 					break;
 				} else if (element instanceof EObject) {
 					final URI resourceURI = ((EObject)element).eResource().getURI();
-					final String pathString = URI.decode(resourceURI.path());
-					res = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathString));
-					break;
+					if (resourceURI.isPlatformResource()) {
+						final String pathString = resourceURI.toPlatformString(true);
+						res = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathString));
+						break;
+					}
 				}
 			}
 		}
@@ -147,7 +149,7 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 	 *            root file to execute
 	 * @return {@link ILaunchConfiguration}s using resource
 	 */
-	protected ILaunchConfiguration[] getLaunchConfgurations(IResource resource) {
+	protected ILaunchConfiguration[] getLaunchConfigurations(IResource resource) {
 		final List<ILaunchConfiguration> configurations = new ArrayList<ILaunchConfiguration>();
 
 		final ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();
@@ -157,11 +159,13 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 		// try to find existing configurations using the same file
 		try {
 			for (ILaunchConfiguration configuration : manager.getLaunchConfigurations(type)) {
-				final String pathString = configuration.getAttribute(
-						AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
-				IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathString));
-				if (resource != null && resource.equals(file)) {
-					configurations.add(configuration);
+				if (configuration.hasAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI)) {
+					final String pathString = configuration.getAttribute(
+							AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
+					IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathString));
+					if (resource != null && resource.equals(file)) {
+						configurations.add(configuration);
+					}
 				}
 			}
 		} catch (IllegalArgumentException r) {
@@ -183,14 +187,14 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 	 * @param mode
 	 *            launch mode
 	 */
-	private void launch(final IResource file, EObject firstInstruction, final String mode) {
+	public void launch(final IResource file, EObject firstInstruction, final String mode) {
 
 		if (file instanceof IFile) {
 			// try to save dirty editors
 			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().saveAllEditors(true);
 
 			try {
-				ILaunchConfiguration[] configurations = getLaunchConfgurations(file);
+				ILaunchConfiguration[] configurations = getLaunchConfigurations(file);
 				if (configurations.length == 0) {
 					// try to create a launch configuration
 					configurations = createLaunchConfiguration(file, firstInstruction, mode);
@@ -226,8 +230,8 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 	 * @throws CoreException
 	 *             if {@link ILaunchConfiguration} initialization fails of models can't be loaded
 	 */
-	private ILaunchConfiguration[] createLaunchConfiguration(final IResource file, EObject firstInstruction,
-			final String mode) throws CoreException {
+	protected ILaunchConfiguration[] createLaunchConfiguration(final IResource file,
+			EObject firstInstruction, final String mode) throws CoreException {
 		final ILaunchConfiguration[] res;
 
 		ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();

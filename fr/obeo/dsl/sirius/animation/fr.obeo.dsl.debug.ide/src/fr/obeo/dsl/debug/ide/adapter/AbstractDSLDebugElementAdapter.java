@@ -35,11 +35,6 @@ import org.eclipse.emf.common.notify.Notifier;
 public abstract class AbstractDSLDebugElementAdapter extends DebugElement implements Adapter.Internal, IDebugElement {
 
 	/**
-	 * The model presentation ID.
-	 */
-	public static final String REPRESENTATION_ID = "fr.obeo.dsl.debug.ide.ui.debugModelPresentation";
-
-	/**
 	 * The {@link DSLEclipseDebugIntegration} factory.
 	 */
 	protected final DSLEclipseDebugIntegration factory;
@@ -66,7 +61,7 @@ public abstract class AbstractDSLDebugElementAdapter extends DebugElement implem
 	 * @see org.eclipse.debug.core.model.IDebugElement#getModelIdentifier()
 	 */
 	public String getModelIdentifier() {
-		return REPRESENTATION_ID;
+		return factory.getModelIdentifier();
 	}
 
 	/**

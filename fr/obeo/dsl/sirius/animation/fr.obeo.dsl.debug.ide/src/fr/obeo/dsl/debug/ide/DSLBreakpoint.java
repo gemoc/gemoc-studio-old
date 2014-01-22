@@ -17,7 +17,6 @@
  *******************************************************************************/
 package fr.obeo.dsl.debug.ide;
 
-import fr.obeo.dsl.debug.ide.adapter.DSLDebugTargetAdapter;
 import fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory;
 
 import java.io.IOException;
@@ -146,6 +145,16 @@ public class DSLBreakpoint extends Breakpoint {
 	private static final ComposedAdapterFactory ADAPTER_FACTORY = initLabelProvider();
 
 	/**
+	 * The debug model identifier.
+	 */
+	private String identifier;
+
+	/**
+	 * The instruction {@link URI}.
+	 */
+	private URI instructionUri;
+
+	/**
 	 * Constructor.
 	 */
 	public DSLBreakpoint() {
@@ -155,6 +164,8 @@ public class DSLBreakpoint extends Breakpoint {
 	/**
 	 * Constructor.
 	 * 
+	 * @param identifier
+	 *            the debug model identifier
 	 * @param instruction
 	 *            the {@link EObject} representing the instruction
 	 * @param persistent
@@ -162,9 +173,10 @@ public class DSLBreakpoint extends Breakpoint {
 	 * @throws CoreException
 	 *             if marker can't be installed
 	 */
-	public DSLBreakpoint(final EObject instruction, final boolean persistent) throws CoreException {
+	public DSLBreakpoint(String identifier, EObject instruction, boolean persistent) throws CoreException {
 		super();
-
+		this.identifier = identifier;
+		this.instructionUri = EcoreUtil.getURI(instruction);
 		final URI resourceURI = ((EObject)instruction).eResource().getURI();
 		final String pathString = resourceURI.toPlatformString(true);
 		final IFile resource = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathString));
@@ -178,6 +190,12 @@ public class DSLBreakpoint extends Breakpoint {
 	@Override
 	public void setMarker(IMarker marker) throws CoreException {
 		super.setMarker(marker);
+		try {
+			identifier = (String)getMarker().getAttribute(IBreakpoint.ID);
+			instructionUri = URI.createURI((String)getMarker().getAttribute(EValidator.URI_ATTRIBUTE), true);
+		} catch (CoreException e) {
+			Activator.getDefault().error(e);
+		}
 
 	}
 
@@ -202,7 +220,7 @@ public class DSLBreakpoint extends Breakpoint {
 	 * @see org.eclipse.debug.core.model.IBreakpoint#getModelIdentifier()
 	 */
 	public String getModelIdentifier() {
-		return DSLDebugTargetAdapter.REPRESENTATION_ID;
+		return identifier;
 	}
 
 	/**
@@ -211,13 +229,7 @@ public class DSLBreakpoint extends Breakpoint {
 	 * @return the {@link URI} representing the instruction
 	 */
 	public URI getURI() {
-		URI res = null;
-		try {
-			res = URI.createURI((String)getMarker().getAttribute(EValidator.URI_ATTRIBUTE), true);
-		} catch (CoreException e) {
-			Activator.getDefault().error(e);
-		}
-		return res;
+		return instructionUri;
 	}
 
 	/**
@@ -272,20 +284,23 @@ public class DSLBreakpoint extends Breakpoint {
 	 *             if encoding fails
 	 */
 	private static String toAttribute(Object image) throws IOException {
-		StringBuffer buffer = new StringBuffer();
+		final String res;
 
+		StringBuffer buffer = new StringBuffer();
 		if (image instanceof ComposedImage) {
 			toAttribute(buffer, (ComposedImage)image);
+			if (buffer.length() != 0) {
+				res = buffer.substring(0, buffer.length() - 1);
+			} else {
+				res = buffer.toString();
+			}
 		} else if (image instanceof URL) {
 			buffer.append(Base64.encode(((URL)image).toString().getBytes(UTF8)));
-		}
-
-		final String res;
-		if (buffer.length() != 0) {
-			res = buffer.substring(0, buffer.length() - 1);
+			res = buffer.toString();
 		} else {
 			res = "";
 		}
+
 		return res;
 	}
 

@@ -278,7 +278,8 @@ public class DSLThreadAdapter extends AbstractDSLDebugElementAdapter implements 
 
 		if (isSuspended()) {
 			final URI instructionUri = EcoreUtil.getURI(getHost().getTopStackFrame().getCurrentInstruction());
-			for (IBreakpoint breakpoint : DebugPlugin.getDefault().getBreakpointManager().getBreakpoints()) {
+			for (IBreakpoint breakpoint : DebugPlugin.getDefault().getBreakpointManager().getBreakpoints(
+					getModelIdentifier())) {
 				if (breakpoint instanceof DSLBreakpoint
 						&& (((DSLBreakpoint)breakpoint).getURI().equals(instructionUri))) {
 					res.add(breakpoint);

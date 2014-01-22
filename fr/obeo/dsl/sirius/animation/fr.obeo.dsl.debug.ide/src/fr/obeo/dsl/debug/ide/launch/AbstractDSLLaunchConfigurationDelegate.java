@@ -18,7 +18,11 @@ import fr.obeo.dsl.debug.ide.DSLEclipseDebugIntegration;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.ModelUpdater;
 import fr.obeo.dsl.debug.ide.adapter.DSLDebugTargetAdapter;
+import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -87,10 +91,15 @@ public abstract class AbstractDSLLaunchConfigurationDelegate implements ILaunchC
 
 			DSLDebugEventDispatcher dispatcher = new DSLDebugEventDispatcher();
 			// Connect the model to the dispatcher
-			DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(launch, eDebugTarget,
-					new ModelUpdater(), dispatcher);
+			DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(getModelIdentifier(),
+					launch, eDebugTarget, new ModelUpdater(), dispatcher);
 			final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget(eDebugTarget);
 			dispatcher.setModel(debugTarget);
+
+			// add current instruction listeners
+			for (IDSLCurrentInstructionListener listener : getCurrentInstructionListeners()) {
+				debugTarget.addCurrentInstructionListener(listener);
+			}
 
 			// Connect the debugger to the dispatcher
 			IDSLDebugger debugger = getDebugger(configuration, dispatcher, firstInstruction, monitor);
@@ -143,6 +152,17 @@ public abstract class AbstractDSLLaunchConfigurationDelegate implements ILaunchC
 	}
 
 	/**
+	 * Gets the {@link List} of {@link IDSLCurrentInstructionListener} to add to the created
+	 * {@link DSLDebugTargetAdapter}.
+	 * 
+	 * @return the {@link List} of {@link IDSLCurrentInstructionListener} to add to the created
+	 *         {@link DSLDebugTargetAdapter}
+	 */
+	protected List<IDSLCurrentInstructionListener> getCurrentInstructionListeners() {
+		return new ArrayList<IDSLCurrentInstructionListener>();
+	}
+
+	/**
 	 * Gets the {@link IDSLDebugger} to be {@link IDSLDebugger#start() started}.
 	 * 
 	 * @param configuration
@@ -186,5 +206,12 @@ public abstract class AbstractDSLLaunchConfigurationDelegate implements ILaunchC
 	 * @return the current plug-in ID
 	 */
 	protected abstract String getPluginID();
+
+	/**
+	 * Gets the debug model identifier.
+	 * 
+	 * @return the debug model identifier
+	 */
+	protected abstract String getModelIdentifier();
 
 }

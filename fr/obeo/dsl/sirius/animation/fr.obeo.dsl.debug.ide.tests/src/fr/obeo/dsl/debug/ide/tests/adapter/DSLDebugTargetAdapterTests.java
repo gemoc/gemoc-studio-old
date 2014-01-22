@@ -71,8 +71,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		debugTarget.start();
 
@@ -88,8 +88,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 
 		assertTrue(debugTarget.isAdapterForType(IDebugTarget.class));
@@ -106,8 +106,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 
 		debugTarget.terminate();
@@ -129,8 +129,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 
 		debugTarget.resume();
@@ -151,8 +151,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 
 		debugTarget.suspend();
@@ -173,8 +173,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 
 		createThreads(eDebugTarget);
@@ -196,8 +196,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 
 		assertTrue(!debugTarget.hasThreads());
@@ -218,8 +218,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 
 		assertEquals("Debug target", debugTarget.getName());
@@ -236,8 +236,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -281,8 +281,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -326,8 +326,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -371,8 +371,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -408,8 +408,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -443,8 +443,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -482,8 +482,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -527,8 +527,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -576,8 +576,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -621,8 +621,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -668,8 +668,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -709,8 +709,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -752,8 +752,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -795,8 +795,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 
@@ -840,8 +840,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
 		eDebugTarget.setName("Debug target");
 		final TestEventProcessor testEventProcessor = new TestEventProcessor();
-		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration(null, eDebugTarget,
-				new ModelUpdater(), testEventProcessor);
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
 		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
 		TestDebugEventSetListener listener = new TestDebugEventSetListener();
 

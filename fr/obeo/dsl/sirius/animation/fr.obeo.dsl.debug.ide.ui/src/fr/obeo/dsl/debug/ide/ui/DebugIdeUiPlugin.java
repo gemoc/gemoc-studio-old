@@ -24,14 +24,17 @@ import org.eclipse.emf.common.util.ResourceLocator;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public final class DebugIdeUiEditPlugin extends EMFPlugin {
+public final class DebugIdeUiPlugin extends EMFPlugin {
 
+	/**
+	 * The plug-in identifier.
+	 */
 	public static final String ID = "fr.obeo.dsl.debug.ide.ui";
 
 	/**
 	 * Keep track of the singleton.
 	 */
-	public static final DebugIdeUiEditPlugin INSTANCE = new DebugIdeUiEditPlugin();
+	public static final DebugIdeUiPlugin INSTANCE = new DebugIdeUiPlugin();
 
 	/**
 	 * Keep track of the singleton.
@@ -41,7 +44,7 @@ public final class DebugIdeUiEditPlugin extends EMFPlugin {
 	/**
 	 * Create the instance.
 	 */
-	public DebugIdeUiEditPlugin() {
+	public DebugIdeUiPlugin() {
 		super(new ResourceLocator[] {});
 	}
 

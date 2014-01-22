@@ -240,7 +240,7 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 			final Object image = ((DSLBreakpoint)element).getImage();
 			if (image instanceof ComposedImage) {
 				((ComposedImage)image).getImages().add(
-						DebugIdeUiEditPlugin.INSTANCE.getImage("full/deco16/breakpoint_enabled"));
+						DebugIdeUiPlugin.INSTANCE.getImage("full/deco16/breakpoint_enabled"));
 			}
 			final ImageDescriptor descriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(image);
 			Image cachedImage = imagesCache.get(descriptor);

@@ -100,8 +100,15 @@ public class DSLEclipseDebugIntegration extends DebugAdapterFactory {
 	private final IModelUpdater modelUpdater;
 
 	/**
+	 * The debug model identifier.
+	 */
+	private final String identifier;
+
+	/**
 	 * Constructor.
 	 * 
+	 * @param identifier
+	 *            the debug model identifier
 	 * @param launch
 	 *            the launching debug session
 	 * @param debugTarget
@@ -113,8 +120,9 @@ public class DSLEclipseDebugIntegration extends DebugAdapterFactory {
 	 *            communication or the {@link fr.obeo.dsl.debug.ide.IDSLDebugger debugger} for synchronous
 	 *            communication
 	 */
-	public DSLEclipseDebugIntegration(ILaunch launch, DebugTarget debugTarget, IModelUpdater modelUpdater,
-			IDSLDebugEventProcessor debugger) {
+	public DSLEclipseDebugIntegration(String identifier, ILaunch launch, DebugTarget debugTarget,
+			IModelUpdater modelUpdater, IDSLDebugEventProcessor debugger) {
+		this.identifier = identifier;
 		this.launch = launch;
 		this.debugger = debugger;
 
@@ -512,6 +520,15 @@ public class DSLEclipseDebugIntegration extends DebugAdapterFactory {
 	 */
 	public IModelUpdater getModelUpdater() {
 		return modelUpdater;
+	}
+
+	/**
+	 * Gets the debug model identifier.
+	 * 
+	 * @return the debug model identifier
+	 */
+	public String getModelIdentifier() {
+		return identifier;
 	}
 
 }

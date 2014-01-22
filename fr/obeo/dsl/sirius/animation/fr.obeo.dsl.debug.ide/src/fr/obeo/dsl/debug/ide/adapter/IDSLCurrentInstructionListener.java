@@ -15,38 +15,35 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.debug.ide.ui;
+package fr.obeo.dsl.debug.ide.adapter;
 
-import org.eclipse.core.runtime.IAdapterFactory;
-import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget;
-import org.eclipse.debug.ui.actions.IToggleBreakpointsTargetExtension;
-import org.eclipse.debug.ui.actions.IToggleBreakpointsTargetExtension2;
+import fr.obeo.dsl.debug.Thread;
 
 /**
- * An {@link IAdapterFactory} adapting to {@link IToggleBreakpointsTarget},
- * {@link IToggleBreakpointsTargetExtension}, and {@link IToggleBreakpointsTargetExtension2}.
+ * A listener notified when a {@link DSLDebugTargetAdapter} is suspended.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class DSLBreakpointAdapterFactory implements IAdapterFactory {
+public interface IDSLCurrentInstructionListener {
 
 	/**
-	 * {@inheritDoc}
+	 * The current instruction has been changed for the given {@link Thread}.
 	 * 
-	 * @see org.eclipse.core.runtime.IAdapterFactory#getAdapter(java.lang.Object, java.lang.Class)
+	 * @param debugModelID
+	 *            the debug model identifier
+	 * @param thread
+	 *            the {@link Thread}
 	 */
-	public Object getAdapter(Object adaptableObject, @SuppressWarnings("rawtypes") Class adapterType) {
-		return DSLToggleBreakpointsTarget.INSTANCE;
-	}
+	void currentInstructionChanged(String debugModelID, Thread thread);
 
 	/**
-	 * {@inheritDoc}
+	 * The given thread has terminated.
 	 * 
-	 * @see org.eclipse.core.runtime.IAdapterFactory#getAdapterList()
+	 * @param debugModelID
+	 *            the debug model identifier
+	 * @param thread
+	 *            the {@link Thread}
 	 */
-	public Class<?>[] getAdapterList() {
-		return new Class[] {IToggleBreakpointsTarget.class, IToggleBreakpointsTargetExtension.class,
-				IToggleBreakpointsTargetExtension2.class, };
-	}
+	void terminated(String debugModelID, Thread thread);
 
 }

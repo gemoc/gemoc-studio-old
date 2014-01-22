@@ -16,4 +16,4 @@ Export-Package: fr.obeo.dsl.debug.ide.ui,
  fr.obeo.dsl.debug.ide.ui.launch,
  fr.obeo.dsl.debug.ide.ui.provider
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: fr.obeo.dsl.debug.ide.ui.DebugIdeUiEditPlugin$Implementation
+Bundle-Activator: fr.obeo.dsl.debug.ide.ui.DebugIdeUiPlugin$Implementation
