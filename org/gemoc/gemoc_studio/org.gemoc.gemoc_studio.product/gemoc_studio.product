@@ -60,7 +60,7 @@
       <feature id="org.eclipse.sirius.specifier.ide.ui"/>
       <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo"/>
       <feature id="org.eclipse.sirius.runtime.ide.xtext"/>
-      <feature id="org.obeonetwork.dsl.uml2.runtime.sdk.feature"/>
+     <!-- <feature id="org.obeonetwork.dsl.uml2.runtime.sdk.feature"/>-->
       <feature id="org.kermeta.language.feature"/>
       <feature id="org.eclipse.emf.ecoretools.design"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>

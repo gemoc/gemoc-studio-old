@@ -25,11 +25,12 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/sirius/updates/releases/0.9.0/kepler</url>
         </repository>
-        <repository>
+        <!-- <repository>
             <id>uml-designer-nightly</id>
             <layout>p2</layout>
             <url>http://marketplace.obeonetwork.com/updates/nightly/uml/4.0.0/repository</url>
-        </repository>
+        </repository>-->
+        
         <repository>
             <id>mdt-uml-4-updates</id>
             <layout>p2</layout>
@@ -54,11 +55,11 @@
             <id>juno-with-no-platform4</id>
             <layout>p2</layout>
             <url>http://www.obeo.fr/download/eclipse/juno-3.8</url>
-        </repository>	
+        </repository>
         <repository>
             <id>subversive-juno-connectors</id>
             <layout>p2</layout>
-            <url>http://community.polarion.com/projects/subversive/download/eclipse/3.0/juno-site/</url>
+            <url>http://community.polarion.com/projects/subversive/download/eclipse/3.0/kepler-site/</url>
         </repository>
         
        <!--  <repository>
@@ -164,7 +165,7 @@
 	
 	
 	
-			<repository>
+		<repository>
 			<id>Kepler</id>
 			<url>http://download.eclipse.org/releases/kepler/</url>
 			<layout>p2</layout>
