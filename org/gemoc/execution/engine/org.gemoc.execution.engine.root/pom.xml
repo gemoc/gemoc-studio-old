@@ -42,9 +42,9 @@
             <url>http://download.eclipse.org/releases/juno</url>
         </repository>-->
         <repository>
-            <id>sirius-0-9-nightly</id>
+            <id>sirius-1-0-M4</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/sirius/updates/nightly/0.9/</url>
+            <url>http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler</url>
         </repository>
         <repository>
             <id>ecoretools2-milestone</id>
