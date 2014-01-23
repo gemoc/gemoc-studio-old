@@ -188,7 +188,7 @@ public class CreateEditorProjectWizardContextAction {
 				.getWorkbench()
 				.getNewWizardRegistry()
 				.findWizard(
-						"fr.obeo.dsl.viewpoint.ui.specificationproject.wizard");
+						"org.eclipse.sirius.ui.specificationproject.wizard");
 		// Then if we have a wizard, open it.
 		if (descriptor != null) {
 			// add a listener to capture the creation of the resulting project
@@ -227,7 +227,7 @@ public class CreateEditorProjectWizardContextAction {
 			}
 		}
 		else{
-			Activator.error("wizard with id=fr.obeo.dsl.viewpoint.ui.specificationproject.wizard not found", null);
+			Activator.error("wizard with id=org.eclipse.sirius.ui.specificationproject.wizard not found", null);
 		}
 	}
 	
