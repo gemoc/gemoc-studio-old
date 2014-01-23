@@ -56,6 +56,7 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 
 	// FIXME this code is ugly but should work... the right way to do this is to add
 	// DialectUIManager.getEditorInput(...) and DialectUIManager.getDeitorID(...)
+	// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=426431
 
 	/**
 	 * The opened {@link IEditorPart}.
@@ -94,7 +95,7 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 				final DRepresentation representation;
 				if (representations.size() > 1) {
 					representation = selectRepresentation(representations);
-				} else if (sessions.size() == 1) {
+				} else if (representations.size() == 1) {
 					representation = representations.get(0);
 				} else {
 					representation = null;
