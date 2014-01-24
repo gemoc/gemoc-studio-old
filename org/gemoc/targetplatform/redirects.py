@@ -130,3 +130,5 @@ with open('pom.xml', 'w') as the_file:
 
 for name,urls in sites.iteritems():
     produce_repository('all-except-' + name,set(map( lambda x : '../' + x,sites.keys())) - set(name),timestamp)
+
+produce_repository(".",sites.keys(),timestamp)
