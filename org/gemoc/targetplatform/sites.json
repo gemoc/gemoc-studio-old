@@ -32,6 +32,13 @@
         "../umldesigner",
         "../sirius-with-deps"
         ],
+    "animation": [
+        "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.sirius.animation/lastSuccessfulBuild/artifact/fr/obeo/dsl/sirius/animation/releng/fr.obeo.dsl.debug.repository/target/repository/"
+        ],
+    "animation-with-deps": [
+        "../animation",
+        "umldesigner-with-deps"
+        ],
     "kermeta2": [
         "http://www.kermeta.org/k2/update_2.1.1.RC"
         ],
