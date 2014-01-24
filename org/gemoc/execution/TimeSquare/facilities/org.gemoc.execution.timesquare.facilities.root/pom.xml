@@ -1,270 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.gemoc.execution.timesquare.facilities</groupId>
-	<artifactId>org.gemoc.execution.timesquare.facilities.root</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<modules>
-		<!-- plugins -->
-		<module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution</module>
-		<module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration</module>
-		<!-- <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.sdk</module>-->
-		<module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.tests</module>
-		<module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui</module>
-		<module>../org.gemoc.executionmodel.create</module>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.gemoc.execution.timesquare.facilities</groupId>
+    <artifactId>org.gemoc.execution.timesquare.facilities.root</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <!-- plugins -->
+        <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution</module>
+        <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration</module>
+        <!-- <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.sdk</module>-->
+        <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.tests</module>
+        <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui</module>
+        <module>../org.gemoc.executionmodel.create</module>
 
-		<!-- feature and update site -->
-		<module>../org.gemoc.execution.timesquare.facilities.feature</module>
-		<module>../org.gemoc.execution.timesquare.facilities.p2updatesite</module>
-	</modules>
+        <!-- feature and update site -->
+        <module>../org.gemoc.execution.timesquare.facilities.feature</module>
+        <module>../org.gemoc.execution.timesquare.facilities.p2updatesite</module>
+    </modules>
 
-	<properties>
-		<tycho-version>0.18.1</tycho-version>
-		<project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
-	</properties>
+    <properties>
+        <tycho-version>0.18.1</tycho-version>
+        <project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
+    </properties>
 
-	<repositories>
-		<!-- *****************************************
-		     * External Repositories for product from project partners 
-		     ***************************************** -->
+    <repositories>
         <repository>
-            <id>sirius-1-0-M4</id>
+            <id>Gemoc TP without me</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler</url>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-timesquare-backend</url>
         </repository>
-        <repository>
-            <id>uml-designer-4-0-0M1</id>
-            <layout>p2</layout>
-            <url>http://www.obeo.fr/download/release/uml/4.0.0_M1/repository </url>
-        </repository>
-        
-        
-        
-       <!--  <repository>
-            <id>kermeta2-latest-stable</id>
-            <layout>p2</layout>
-            <url>http://www.kermeta.org/k2/update/</url>
-        </repository>-->
-        <repository>
-            <id>kermeta2-latest-release-candidate</id>
-            <layout>p2</layout>
-            <url>http://www.kermeta.org/k2/update_2.1.1.RC/</url>
-        </repository>	
-        <!-- <repository>
-            <id>kermeta3</id>
-            <layout>p2</layout>
-            <url>http://gemoc-dev.gforge.inria.fr/k3updatesite/</url>
-        </repository> -->
-        <repository>
-            <id>kermeta3</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/</url>
-        </repository>
-        <repository>
-        	<id>gemoc_timesquare_backend-latest-snapshot</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.timesquare.facilities.root/lastSuccessfulBuild/artifact/org/gemoc/execution/TimeSquare/facilities/org.gemoc.execution.timesquare.facilities.p2updatesite/target/repository/</url>
-        </repository>
-        <repository>
-            <id>timesquare ECL</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/ecl/update_site</url>
-	    
-        </repository>        
-        <repository>
-			<id>TimeSquare</id>
-			<url>http://timesquare.inria.fr/update_site</url>
-			<layout>p2</layout>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>OCL bug fix</id>
-			<url>http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/</url>
-			<layout>p2</layout>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		
-		
-		<!-- *****************************************
-		     * GEMOC repositories (build in the jenkins) 
-		     ********************************************* -->        
-		<repository>
-        	<id>gemoc_commons-latest-snapshot</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.gemoc_commons.p2updatesite/target/repository/</url>
-        </repository>
-        <repository>
-        	<id>gemoc_language_workbench-latest-snapshot</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository/</url>
-        </repository>
-        
-		<!-- *****************************************
-		     *  Eclipse and target platform repositories 
-		     ***************************************** -->
-		<repository>
-			<id>Kepler</id>
-			<url>http://download.eclipse.org/releases/kepler/</url>
-			<layout>p2</layout>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>kepler-updates</id>
-			<url>http://download.eclipse.org/eclipse/updates/4.3</url>
-			<layout>p2</layout>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-            <id>mdt-uml-4-updates</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/mdt/uml2/updates/4.1.x</url>
-        </repository>
-        <repository>
-            <id>acceleo-latest-release</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/m2t/acceleo/updates/milestones/3.4/S201309031307</url>
-        </repository>
-        <repository>
-            <id>ecoretools2-milestone</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/emft/ecoretools/updates/2.0/2.0.0M3/</url>
-        </repository>
-        <repository>
-            <id>latest-egit-release</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/egit/updates</url>
-        </repository>
-        <repository>
-            <id>juno-with-no-platform4</id>
-            <layout>p2</layout>
-            <url>http://www.obeo.fr/download/eclipse/juno-3.8</url>
-        </repository>
-        <repository>
-            <id>subversive-juno-connectors</id>
-            <layout>p2</layout>
-            <url>http://community.polarion.com/projects/subversive/download/eclipse/3.0/kepler-site/</url>
-        </repository>
-        <repository>
-            <id>Scala-IDE 3.0.0 Release Juno For Scala 2.9.x</id>
-            <layout>p2</layout>
-            <url>http://download.scala-ide.org/sdk/e38/scala29/stable/site</url>
-        </repository>
-        <repository>
-            <id>Xtext All In One - Releases</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
-        </repository>
-        
-        <repository>
-            <id>emf2.8.x</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/emf/emf/updates/2.8.x/</url>
-        </repository>
-        <repository>
-            <id>emf2.9.x</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
-        </repository> 
-		
-		
-	</repositories>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<extensions>true</extensions>
-			</plugin>
 
-			<!--<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-p2-director-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>materialize-products</id>
-						<goals>
-							<goal>materialize-products</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>archive-products</id>
-						<goals>
-							<goal>archive-products</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>-->
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<!-- environments that will be built -->
-					<environments>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>
-					</environments>
-				</configuration>
-			</plugin>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <extensions>true</extensions>
+            </plugin>
+
+            <!--<plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-p2-director-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <executions>
+                    <execution>
+                        <id>materialize-products</id>
+                        <goals>
+                            <goal>materialize-products</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>archive-products</id>
+                        <goals>
+                            <goal>archive-products</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    <!-- environments that will be built -->
+                    <environments>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>macosx</os>
+                            <ws>cocoa</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                    </environments>
+                </configuration>
+            </plugin>
             <!-- Java compiler plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
