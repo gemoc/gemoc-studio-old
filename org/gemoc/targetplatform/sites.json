@@ -58,10 +58,10 @@
         "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/"
         ],
     "gemoc-execution-trace": [
-        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository/"
+        "https://ci.inria.fr/gemoc/job/org.gemoc.execution.trace.master/lastSuccessfulBuild/artifact/org/gemoc/execution/trace/org.gemoc.execution.trace.p2updatesite/target/repository/"
         ],
     "gemoc-commons": [
-        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository"
+        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.gemoc_commons.p2updatesite/target/repository/"
         ],
     "gemoc-language-workbench": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository"
