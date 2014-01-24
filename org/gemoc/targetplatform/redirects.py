@@ -52,8 +52,15 @@ if os.access(OUTPUT_DIR,os.F_OK):
 os.mkdir(OUTPUT_DIR)
 os.chdir(OUTPUT_DIR)
 
+allurls = []
+timestamp = time.time() 
 for name,urls in sites.iteritems():
-    timestamp = time.time() 
+    allurls += urls
     produce_repository(name,urls,timestamp)
+
+
+for name,urls in sites.iteritems():
+    produce_repository('all-except-' + name,set(allurls) - set(urls),timestamp)
+
 produce_repository(".",sites.keys(),timestamp)
 
