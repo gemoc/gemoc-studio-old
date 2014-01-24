@@ -54,8 +54,11 @@
     "timesquare-ecl": [
         "http://timesquare.inria.fr/ecl/update_site"
         ],
-    "timesquare-backend": [
+    "K3": [
         "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/"
+        ],
+    "timesquare-backend": [
+        "https://ci.inria.fr/gemoc/job/org.gemoc.execution.timesquare.facilities.root/lastSuccessfulBuild/artifact/org/gemoc/execution/TimeSquare/facilities/org.gemoc.execution.timesquare.facilities.p2updatesite/target/repository/"
         ],
     "gemoc-execution-trace": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.execution.trace.master/lastSuccessfulBuild/artifact/org/gemoc/execution/trace/org.gemoc.execution.trace.p2updatesite/target/repository/"
