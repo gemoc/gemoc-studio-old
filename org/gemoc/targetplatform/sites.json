@@ -54,9 +54,6 @@
     "timesquare-ecl": [
         "http://timesquare.inria.fr/ecl/update_site"
         ],
-    "K3": [
-        "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/"
-        ],
     "timesquare-backend": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.execution.timesquare.facilities.root/lastSuccessfulBuild/artifact/org/gemoc/execution/TimeSquare/facilities/org.gemoc.execution.timesquare.facilities.p2updatesite/target/repository/"
         ],
@@ -77,6 +74,11 @@
         ],
     "kermeta3": [
         "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site"
+        ],
+    "devtools": [
+        "http://download.scala-ide.org/sdk/e38/scala29/stable/site",
+        "http://community.polarion.com/projects/subversive/download/eclipse/3.0/kepler-site/",
+        "http://download.eclipse.org/egit/updates"
         ]
 
 }
