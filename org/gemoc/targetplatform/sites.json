@@ -1,16 +1,61 @@
 {
+    "platform": [
+        "http://download.eclipse.org/releases/kepler/",
+        "http://download.eclipse.org/eclipse/updates/4.3"
+        ],
     "acceleo": [
         "http://download.eclipse.org/modeling/m2t/acceleo/updates/milestones/3.4/S201309031307"
         ],
     "ecoretools": [
-        "http://download.eclipse.org/modeling/emft/ecoretools/updates/milestones/2.0.0M4/luna"
+        "http://download.eclipse.org/modeling/emft/ecoretools/updates/milestones/2.0.0M4/luna",
+        "../sirius/"
         ],
     "sirius": [
-        "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler"
+        "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler",
+        "../acceleo"
         ],
     "uml": [
-        "http://download.eclipse.org/modeling/mdt/uml2/updates/4.1.x",
+        "http://download.eclipse.org/modeling/mdt/uml2/updates/4.1.x"
+        ],
+    "uml-designer": [
+        "../uml",
+        "../sirius",
         "http://www.obeo.fr/download/release/uml/4.0.0_M1/repository"
+        ],
+    "kermeta2": [
+        "http://www.kermeta.org/k2/update_2.1.1.RC"
+        ],
+    "timesquare": [
+        "http://timesquare.inria.fr/update_site"
+        ],
+    "ocl-fork": [
+        "http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/"
+        ],
+    "timesquare-ecl": [
+        "http://timesquare.inria.fr/ecl/update_site"
+        ],
+    "timesquare-backend": [
+        "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/"
+        ],
+    "gemoc-execution-trace": [
+        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository/"
+        ],
+    "gemoc-commons": [
+        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository"
+        ],
+    "gemoc-language-workbench": [
+        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository"
+        ],
+    "gemoc-modeling-workbench": [
+        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_modeling_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_modeling_workbench/org.gemoc.gemoc_modeling_workbench.p2updatesite/target/repository/"
+        ],
+    "gemoc-exec-engine": [
+        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_modeling_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_modeling_workbench/org.gemoc.gemoc_modeling_workbench.p2updatesite/target/repository/"
+        ],
+    "kermeta3": [
+        "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site"
         ]
+
+
 }
 
