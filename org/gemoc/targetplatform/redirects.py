@@ -5,20 +5,8 @@ OUTPUT_DIR='update'
 
 sites = {}
 
-with open('sites.json','r') as json_file:
-    sites = json.load(json_file)
 
-print json.dumps(sites,sort_keys=True,indent=4, separators=(',', ': '))
-
-if os.access(OUTPUT_DIR,os.F_OK):
-    shutil.rmtree(OUTPUT_DIR)
-os.mkdir(OUTPUT_DIR)
-os.chdir(OUTPUT_DIR)
-
-for name,urls in sites.iteritems():
-    timestamp = time.time() 
-    if not os.access(name,os.F_OK):
-        os.mkdir(name)
+def compute_repository_content(name,urls,timestamp):
     compositeArtifacts = "<?xml version='1.0' encoding='UTF-8'?>\n\
     <?compositeArtifactRepository version='1.0.0'?>\n\
     <repository name='%s' type='org.eclipse.equinox.internal.p2.artifact.repository.CompositeArtifactRepository' version='1.0.0'>\n\
@@ -40,9 +28,32 @@ for name,urls in sites.iteritems():
                     </repository>\n"
     compositeContent += "</children>\n\
                     </repository>\n"
+    return (compositeArtifacts,compositeContent)
+
+def produce_repository(name,urls,timestamp):
+    (compositeArtifacts,compositeContent) =  compute_repository_content(name,urls,timestamp)
+    if not os.access(name,os.F_OK):
+        os.mkdir(name)
     with open(name + '/compositeArtifacts.xml', 'w') as the_file:
       the_file.write(compositeArtifacts)
     with open(name + '/compositeContent.xml', 'w') as the_file:
       the_file.write(compositeContent)
     print "creating redirect : %s" % name
+
+
+
+with open('sites.json','r') as json_file:
+    sites = json.load(json_file)
+
+print json.dumps(sites,sort_keys=True,indent=4, separators=(',', ': '))
+
+if os.access(OUTPUT_DIR,os.F_OK):
+    shutil.rmtree(OUTPUT_DIR)
+os.mkdir(OUTPUT_DIR)
+os.chdir(OUTPUT_DIR)
+
+for name,urls in sites.iteritems():
+    timestamp = time.time() 
+    produce_repository(name,urls,timestamp)
+produce_repository(".",sites.keys(),timestamp)
 
