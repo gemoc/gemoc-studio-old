@@ -22,8 +22,8 @@
     "sirius-with-deps": [
         "../sirius",
         "../acceleo",
-        "../platform"
-        "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533",
+        "../platform",
+        "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533"
         ],
     "umldesigner": [
         "http://download.eclipse.org/modeling/mdt/uml2/updates/4.1.x",
