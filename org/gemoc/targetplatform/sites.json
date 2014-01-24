@@ -2,7 +2,7 @@
     "platform": [
         "http://download.eclipse.org/releases/kepler/",
         "http://download.eclipse.org/eclipse/updates/4.3",
-        "http://download.eclipse.org/tools/orbit/downloads/drops/S20131024145017/repository/"
+        "http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/"
         ],
     "acceleo": [
         "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307"
@@ -17,7 +17,6 @@
         ],
     "sirius": [
         "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler",
-        "../acceleo"
         ],
     "sirius-with-deps": [
         "../sirius",
