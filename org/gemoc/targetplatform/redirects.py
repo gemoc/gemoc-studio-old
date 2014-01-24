@@ -1,7 +1,8 @@
 #!/bin/env/python
 import os,time,json,shutil
 
-OUTPUT_DIR='update'
+AGGREGATED_UPDATE='update'
+MIRRORED_UPDATE='archive'
 
 sites = {}
 
@@ -47,10 +48,10 @@ with open('sites.json','r') as json_file:
 
 print json.dumps(sites,sort_keys=True,indent=4, separators=(',', ': '))
 
-if os.access(OUTPUT_DIR,os.F_OK):
-    shutil.rmtree(OUTPUT_DIR)
-os.mkdir(OUTPUT_DIR)
-os.chdir(OUTPUT_DIR)
+if os.access(AGGREGATED_UPDATE,os.F_OK):
+    shutil.rmtree(AGGREGATED_UPDATE)
+os.mkdir(AGGREGATED_UPDATE)
+os.chdir(AGGREGATED_UPDATE)
 
 allurls = []
 timestamp = time.time() 
@@ -64,3 +65,68 @@ for name,urls in sites.iteritems():
 
 produce_repository(".",sites.keys(),timestamp)
 
+#now preparing for mirroring
+
+os.chdir('../')
+if os.access(MIRRORED_UPDATE,os.F_OK):
+    shutil.rmtree(MIRRORED_UPDATE)
+os.mkdir(MIRRORED_UPDATE)
+os.chdir(MIRRORED_UPDATE)
+
+pomContent='<?xml version="1.0" encoding="UTF-8"?>\n\
+<project>\n\
+    <modelVersion>4.0.0</modelVersion>\n\
+    <name>Mirroring</name>\n\
+    <groupId>org.gemoc.gemoc_studio</groupId>\n\
+    <artifactId>org.gemoc.gemoc_studio.root</artifactId>\n\
+    <version>1.0.0-SNAPSHOT</version>\n\
+    <packaging>pom</packaging>\n\
+\n\
+    <properties>\n\
+        <tycho-version>0.18.1</tycho-version>\n\
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n\
+    </properties>\n\
+\n\
+    <build>\n\
+        <plugins>\n\
+            <plugin>\n\
+                <groupId>org.eclipse.tycho</groupId>\n\
+                <artifactId>tycho-maven-plugin</artifactId>\n\
+                <version>${tycho-version}</version>\n\
+                <extensions>true</extensions>\n\
+            </plugin>\n\
+            <plugin>\n\
+                <groupId>org.eclipse.tycho.extras</groupId>\n\
+                <artifactId>tycho-p2-extras-plugin</artifactId>\n\
+                <executions>\n'
+
+for name,urls in sites.iteritems():
+    if not os.access(name,os.F_OK):
+        os.mkdir(name)
+    pomContent +="<execution>\n\
+                        <id>archive %s</id>\n\
+                        <phase>package</phase>\n\
+                        <goals>\n\
+                            <goal>mirror</goal>\n\
+                        </goals>\n\
+                        <configuration>\n\
+                            <source>\n\
+                                <repository>\n\
+                                    <url>../%s/%s/</url>\n\
+                                </repository>\n\
+                            </source>\n\
+                            <append>true</append>\n\
+                            <destination>%s</destination>\n\
+                        </configuration>\n\
+                    </execution>\n" % (name,AGGREGATED_UPDATE,name,name)
+pomContent += "                </executions>\n\
+            </plugin>\n\
+        </plugins>\n\
+    </build>\n\
+</project>"
+
+with open('pom.xml', 'w') as the_file:
+      the_file.write(pomContent)
+
+for name,urls in sites.iteritems():
+    produce_repository('all-except-' + name,set(map( lambda x : '../' + x,sites.keys())) - set(name),timestamp)
