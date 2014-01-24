@@ -1,15 +1,27 @@
 {
     "platform": [
-        "http://download.eclipse.org/releases/kepler/",
-        "http://download.eclipse.org/eclipse/updates/4.3",
+        "http://download.eclipse.org/eclipse/updates/4.3-M-builds/M-4.3.2RC1-201401170910/",
+        "http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/",
         "http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/"
         ],
+    "modeling-base": [
+        "http://download.eclipse.org/modeling/mdt/ocl/updates/maintenance/4.1.2/M201401201522",
+        "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones",
+        "http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones",
+        "http://download.eclipse.org/tools/gef/updates/milestones",
+	"http://download.eclipse.org/modeling/emf/validation/updates/milestones",
+	"http://download.eclipse.org/modeling/emf/transaction/updates/milestones",
+        "http://download.eclipse.org/modeling/emf/query/updates/milestones",
+        "http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.1/S201401220957"
+        ],
+    "papyrus": [
+        "http://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/0.10/SR2_RC1/main"
+	],
     "acceleo": [
         "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307"
         ],
     "ecoretools": [
-        "http://download.eclipse.org/modeling/emft/ecoretools/updates/milestones/2.0.0M4/luna",
-        "../sirius/"
+        "http://download.eclipse.org/modeling/emft/ecoretools/updates/milestones/2.0.0M4/luna"
         ],
     "sirius": [
         "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler"
@@ -22,7 +34,7 @@
         "http://www.obeo.fr/download/release/uml/4.0.0_M1/repository"
         ],
      "xtext": [
-         "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"
+         "http://download.eclipse.org/modeling/tmf/xtext/updates/releases/head/R201309030823/"
          ],
     "animation": [
         "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.sirius.animation/lastSuccessfulBuild/artifact/fr/obeo/dsl/sirius/animation/releng/fr.obeo.dsl.debug.repository/target/repository/"
