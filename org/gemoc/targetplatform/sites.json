@@ -73,7 +73,7 @@
         "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_modeling_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_modeling_workbench/org.gemoc.gemoc_modeling_workbench.p2updatesite/target/repository/"
         ],
     "gemoc-exec-engine": [
-        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_modeling_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_modeling_workbench/org.gemoc.gemoc_modeling_workbench.p2updatesite/target/repository/"
+        "https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository"
         ],
     "kermeta3": [
         "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site"
