@@ -3,7 +3,7 @@ import os,time,json,shutil
 
 AGGREGATED_UPDATE='update'
 MIRRORED_UPDATE='archive'
-
+SCRIPT_HOME=os.getcwd()
 sites = {}
 
 
@@ -112,13 +112,13 @@ for name,urls in sites.iteritems():
                         <configuration>\n\
                             <source>\n\
                                 <repository>\n\
-                                    <url>../%s/%s/</url>\n\
+                                    <url>%s</url>\n\
                                 </repository>\n\
                             </source>\n\
                             <append>true</append>\n\
                             <destination>%s</destination>\n\
                         </configuration>\n\
-                    </execution>\n" % (name,AGGREGATED_UPDATE,name,name)
+                    </execution>\n" % (name,SCRIPT_HOME + "/" + AGGREGATED_UPDATE+ "/" + name,SCRIPT_HOME + "/" + MIRRORED_UPDATE+ "/" + name)
 pomContent += "                </executions>\n\
             </plugin>\n\
         </plugins>\n\
