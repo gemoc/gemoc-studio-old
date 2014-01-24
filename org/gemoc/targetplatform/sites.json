@@ -76,7 +76,7 @@
         "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site"
         ],
     "devtools": [
-        "http://download.scala-ide.org/sdk/e38/scala29/stable/site",
+        "http://download.scala-ide.org/sdk/helium/e38/scala210/stable/site",
         "http://community.polarion.com/projects/subversive/download/eclipse/3.0/kepler-site/",
         "http://download.eclipse.org/egit/updates"
         ]
