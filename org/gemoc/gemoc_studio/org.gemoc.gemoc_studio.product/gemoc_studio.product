@@ -60,17 +60,22 @@
       <feature id="org.eclipse.sirius.specifier.ide.ui"/>
       <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo"/>
       <feature id="org.eclipse.sirius.runtime.ide.xtext"/>
+      <feature id="org.eclipse.sirius.doc.feature"/>
+      <feature id="org.eclipse.sirius.runtime.ocl"/>
+      <feature id="org.eclipse.sirius.samples"/>
       <feature id="org.obeonetwork.dsl.uml2.runtime.sdk.feature"/>
       <feature id="org.kermeta.language.feature"/>
       <feature id="org.eclipse.emf.ecoretools.design"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
       <feature id="org.gemoc.execution.trace.feature"/>
+      <feature id="fr.inria.aoste.timesquare.ecl.feature"/>
       <feature id="fr.inria.aoste.timesquare.feature"/>
       <feature id="org.scala-ide.sdt.feature"/>
       <feature id="org.scala-ide.sdt.dev.feature"/>
       <feature id="org.scala-ide.sdt.source.feature"/>
       <feature id="org.eclipse.xtend.sdk"/>
       <feature id="org.eclipse.xtend.m2e"/>
+      <feature id="org.eclipse.epp.mpc"/>
    </features>
 
    <configurations>

@@ -48,6 +48,70 @@
 					</items>
 				</configuration>
 			</plugin>
+			<!-- Generate the splash screen (support png only) -->
+			<plugin>
+	            <groupId>org.bitstrings.maven.plugins</groupId>
+	            <artifactId>splasher-maven-plugin</artifactId>
+	            <version>1.1.0</version>
+	            <executions>
+	                <execution>
+	                    <id>splash-bg</id>
+	                    <phase>generate-resources</phase>
+	                    <goals>
+	                        <goal>compose</goal>
+	                    </goals>
+	                    <configuration>
+	                        <outputImageFile>${project.build.directory}/splash.png</outputImageFile>
+	                        <resources>
+	                            <loadImage>
+	                                <imageFile>src/main/splash/splash.png</imageFile>
+	                                <name>splash</name>
+	                            </loadImage>
+	                        </resources>
+	                        <canvas>
+	                        	<backgroundImageName>splash</backgroundImageName>
+	                            <draw>
+	                            	<drawText>
+			                            <text>${project.version}  ${buildNumber}</text>
+			                            <textColor>#000000</textColor>
+			                            <fontName>SansSerif</fontName>
+			                            <fontStyle>italic,bold</fontStyle>
+			                            <fontSize>12</fontSize>
+			                            <position>right-15,bottom-20</position>
+			                        </drawText>
+	                            </draw>
+	                        </canvas>
+	                    </configuration>
+	                </execution>
+	            </executions>
+	        </plugin>
+	        <!-- convert the splash screen to bmp -->
+	        <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							
+							<tasks>
+								<taskdef name="pulpcore-image" classname="pulpcore.assettools.ConvertImageTask" >
+									<classpath>
+						                <fileset dir="tool_libs">
+						                    <include name="*.jar"/>
+						                </fileset>
+					            	</classpath>
+								</taskdef>
+								<pulpcore-image srcFile="${project.build.directory}/splash.png" destFile="splash.bmp" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<!-- used by buildnumber-maven-plugin -->

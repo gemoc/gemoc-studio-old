@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/fr.obeo.dsl.debug.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.debug.feature" version="1.0.0.qualifier">
+      <category name="DSL Debugger"/>
+   </feature>
+   <feature url="features/fr.obeo.dsl.debug.ui.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.debug.ui.feature" version="1.0.0.qualifier">
+      <category name="DSL Debugger"/>
+   </feature>
+   <feature url="features/fr.obeo.dsl.debug.sirius.ui.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.debug.sirius.ui.feature" version="1.0.0.qualifier">
+      <category name="DSL Debugger"/>
+   </feature>
+   <category-def name="DSL Debugger" label="DSL Debugger"/>
+</site>

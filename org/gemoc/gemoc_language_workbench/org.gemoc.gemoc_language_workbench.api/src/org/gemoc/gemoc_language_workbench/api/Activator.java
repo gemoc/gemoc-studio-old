@@ -12,7 +12,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.gemoc_modeling_workbench.api"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.api"; //$NON-NLS-1$
 
 	protected static EclipseMessagingSystem messagingSystem = null;
 

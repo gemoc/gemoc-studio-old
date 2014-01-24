@@ -132,7 +132,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 					IFile manifestFile = project.getFile(new Path("META-INF/MANIFEST.MF"));
 					ManifestChanger mfChanger = new ManifestChanger(manifestFile);	
 					
-					mfChanger.addPluginDependency(Activator.PLUGIN_ID, "0.1.0", true, true);
+					mfChanger.addPluginDependency(org.gemoc.gemoc_language_workbench.api.Activator.PLUGIN_ID, "0.1.0", true, true);
 					mfChanger.addPluginDependency("org.eclipse.emf.ecore.xmi", "2.8.0", true, true);
 					mfChanger.addSingleton();
 					mfChanger.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");

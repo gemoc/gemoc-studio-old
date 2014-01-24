@@ -74,7 +74,7 @@ public class CreateEditorProjectWizardPage  extends WizardPage {
 			}
 		});
 	    Button createODProject = new Button(actionSelection, SWT.RADIO);
-	    createODProject.setText("Create new Obeo Designer Editor project");
+	    createODProject.setText("Create new Sirius Viewpoint Specification project");
 	    createODProject.addListener (SWT.Selection, new Listener () {
 			public void handleEvent (Event event) {
 				// update context and potentially add new pages ?

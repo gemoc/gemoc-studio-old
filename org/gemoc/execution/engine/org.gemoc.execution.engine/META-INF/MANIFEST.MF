@@ -7,7 +7,6 @@ Bundle-Activator: org.gemoc.execution.engine.Activator
 Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.simulationpolicy.maxcard,
  fr.inria.aoste.trace,
- fr.inria.aoste.timesquare.ecl,
  fr.inria.aoste.timesquare.ccslkernel.modelunfolding,
  fr.inria.aoste.timesquare.ccslkernel.solver,
  fr.inria.aoste.timesquare.trace.util,

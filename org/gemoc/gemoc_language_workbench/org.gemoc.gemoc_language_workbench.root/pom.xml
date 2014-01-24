@@ -34,9 +34,9 @@
 			<url>http://download.eclipse.org/releases/juno</url>
 		</repository>-->
 		<repository>
-            <id>sirius-0-9-nightly</id>
+            <id>sirius-0-9</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/sirius/updates/nightly/0.9/</url>
+            <url>http://download.eclipse.org/sirius/updates/releases/0.9.0/kepler</url>
         </repository>
 		<repository>
             <id>ecoretools2-milestone</id>
@@ -80,16 +80,39 @@
             <url>https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site/</url>
         </repository>
 		
-        <repository>
+               <repository>
             <id>timesquare ECL</id>
             <layout>p2</layout>
             <url>http://timesquare.inria.fr/ecl/update_site</url>
-        </repository>	
+	    
+        </repository>   
         <repository>
-            <id>timesquare</id>
+        	<id>gemoc_commons-latest-snapshot</id>
             <layout>p2</layout>
-            <url>http://timesquare.inria.fr/update_site/experimental</url>
-        </repository>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.gemoc_commons.p2updatesite/target/repository/</url>
+        </repository>     
+        <repository>
+		<id>TimeSquare</id>
+		<url>http://timesquare.inria.fr/update_site</url>
+		<layout>p2</layout>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+	<repository>
+		<id>OCL bug fix</id>
+		<url>http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/</url>
+		<layout>p2</layout>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
 		
 		 <repository>
             <id>emf2.9.x</id>
@@ -97,6 +120,41 @@
             <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
         </repository>
         
+        
+        
+        	<repository>
+			<id>Kepler</id>
+			<url>http://download.eclipse.org/releases/kepler/</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>kepler-updates</id>
+			<url>http://download.eclipse.org/eclipse/updates/4.3</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Xtext All-in-One</id>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 		
 		
 	</repositories>
@@ -110,7 +168,7 @@
 				<extensions>true</extensions>
 			</plugin>
 
-			<plugin>
+			<!--<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-director-plugin</artifactId>
 				<version>${tycho-version}</version>
@@ -128,7 +186,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>-->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
