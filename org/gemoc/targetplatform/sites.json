@@ -32,6 +32,9 @@
         "../umldesigner",
         "../sirius-with-deps"
         ],
+     "xtext": [
+         "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"
+         ],
     "animation": [
         "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.sirius.animation/lastSuccessfulBuild/artifact/fr/obeo/dsl/sirius/animation/releng/fr.obeo.dsl.debug.repository/target/repository/"
         ],
