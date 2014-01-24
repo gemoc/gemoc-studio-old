@@ -16,7 +16,7 @@
         "../sirius/"
         ],
     "sirius": [
-        "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler",
+        "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler"
         ],
     "sirius-with-deps": [
         "../sirius",
