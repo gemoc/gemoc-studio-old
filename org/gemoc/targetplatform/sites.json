@@ -40,7 +40,7 @@
         ],
     "animation-with-deps": [
         "../animation",
-        "umldesigner-with-deps"
+        "../umldesigner-with-deps"
         ],
     "kermeta2": [
         "http://www.kermeta.org/k2/update_2.1.1.RC"
