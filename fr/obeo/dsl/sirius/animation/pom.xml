@@ -62,7 +62,7 @@
     <repository>
       <id>Gemoc Consolidated Target Platform</id>
       <layout>p2</layout>
-      <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/</url>
+      <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/umldesigner-with-deps</url>
     </repository>
       <!--
     <repository>
