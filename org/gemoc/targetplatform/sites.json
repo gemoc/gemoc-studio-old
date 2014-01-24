@@ -1,10 +1,15 @@
 {
     "platform": [
         "http://download.eclipse.org/releases/kepler/",
-        "http://download.eclipse.org/eclipse/updates/4.3"
+        "http://download.eclipse.org/eclipse/updates/4.3",
+        "http://download.eclipse.org/tools/orbit/downloads/drops/S20131024145017/repository/"
         ],
     "acceleo": [
-        "http://download.eclipse.org/modeling/m2t/acceleo/updates/milestones/3.4/S201309031307"
+        "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307"
+        ],
+    "acceleo-with-deps": [
+        "../acceleo",
+        "../platform"
         ],
     "ecoretools": [
         "http://download.eclipse.org/modeling/emft/ecoretools/updates/milestones/2.0.0M4/luna",
@@ -14,13 +19,19 @@
         "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler",
         "../acceleo"
         ],
-    "uml": [
-        "http://download.eclipse.org/modeling/mdt/uml2/updates/4.1.x"
-        ],
-    "uml-designer": [
-        "../uml",
+    "sirius-with-deps": [
         "../sirius",
+        "../acceleo",
+        "../platform"
+        "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533",
+        ],
+    "umldesigner": [
+        "http://download.eclipse.org/modeling/mdt/uml2/updates/4.1.x",
         "http://www.obeo.fr/download/release/uml/4.0.0_M1/repository"
+        ],
+    "umldesigner-with-deps": [
+        "../umldesigner",
+        "../sirius-with-deps"
         ],
     "kermeta2": [
         "http://www.kermeta.org/k2/update_2.1.1.RC"
@@ -56,6 +67,4 @@
         "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site"
         ]
 
-
 }
-
