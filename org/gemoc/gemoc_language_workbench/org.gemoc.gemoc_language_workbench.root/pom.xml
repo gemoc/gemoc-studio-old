@@ -28,11 +28,17 @@
 	</properties>
 
 	<repositories>
+		<repository>
+            <id>Gemoc TP without me</id>
+            <layout>p2</layout>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-exec-engine</url>
+        </repository>
+
 		<!-- <repository>
 			<id>juno</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/juno</url>
-		</repository>-->
+		</repository>
 		<repository>
             <id>sirius-0-9</id>
             <layout>p2</layout>
@@ -57,23 +63,24 @@
 			<id>orbit</id>
 			<layout>p2</layout>
             <url>http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/</url>
-		</repository>
+        </repository>-->
 		<!-- <repository>
 			<id>kermeta2-latest-stable</id>
 			<layout>p2</layout>
 			<url>http://www.kermeta.org/k2/update/</url>
-		</repository>-->
+		</repository>
 		<repository>
             <id>kermeta2-latest-release-candidate</id>
             <layout>p2</layout>
             <url>http://www.kermeta.org/k2/update_2.1.1.RC/</url>
-        </repository>
+        </repository>-->
 		
 		<!-- <repository>
             <id>kermeta3</id>
             <layout>p2</layout>
             <url>http://gemoc-dev.gforge.inria.fr/k3updatesite/</url>
         </repository> -->
+        <!--
         <repository>
             <id>kermeta3</id>
             <layout>p2</layout>
@@ -155,7 +162,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		
+        -->
 		
 	</repositories>
 

@@ -60,6 +60,12 @@
   
   <repositories>
     <repository>
+      <id>Gemoc Consolidated Target Platform</id>
+      <layout>p2</layout>
+      <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-animation</url>
+    </repository>
+      <!--
+    <repository>
       <id>Eclipse 3.8 release</id>
       <layout>p2</layout>
       <url>http://download.eclipse.org/releases/juno</url>
@@ -94,6 +100,7 @@
       <layout>p2</layout>
       <url>http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307</url>
     </repository>
+    -->
   </repositories>
   
   <build>

@@ -24,16 +24,17 @@
 		     *  External Repositories for product from project partners 
 		     ***************************************** -->
         <repository>
-            <id>sirius-1-0-M4</id>
+            <id>Gemoc Consolidated Target Platform</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler</url>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update</url>
         </repository>
+	<!--
         <repository>
             <id>uml-designer-4-0-0M1</id>
             <layout>p2</layout>
             <url>http://www.obeo.fr/download/release/uml/4.0.0_M1/repository </url>
         </repository>
-        
+        -->
         
         
        <!--  <repository>
@@ -41,16 +42,19 @@
             <layout>p2</layout>
             <url>http://www.kermeta.org/k2/update/</url>
         </repository>-->
+       <!--
         <repository>
             <id>kermeta2-latest-release-candidate</id>
             <layout>p2</layout>
             <url>http://www.kermeta.org/k2/update_2.1.1.RC/</url>
         </repository>	
+        -->
         <!-- <repository>
             <id>kermeta3</id>
             <layout>p2</layout>
             <url>http://gemoc-dev.gforge.inria.fr/k3updatesite/</url>
         </repository> -->
+	<!--
         <repository>
             <id>kermeta3</id>
             <layout>p2</layout>
@@ -89,10 +93,11 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-        
+		-->
         <!-- *****************************************
 		     *  GEMOC repositories (build in the jenkins) 
 		     ***************************************** -->
+	<!--
         <repository>
         	<id>gemoc.execution.trace-latest-snapshot</id>
             <layout>p2</layout>
@@ -119,10 +124,12 @@
             <layout>p2</layout>
             <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository/</url>
         </repository>
+        -->
 
 		<!-- *****************************************
 		     *  Eclipse and target platform repositories 
 		     ***************************************** -->
+		<!--
 		<repository>
 			<id>Kepler</id>
 			<url>http://download.eclipse.org/releases/kepler/</url>
@@ -160,6 +167,8 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/emft/ecoretools/updates/2.0/2.0.0M3/</url>
         </repository>
+        -->
+		<!--
         <repository>
             <id>latest-egit-release</id>
             <layout>p2</layout>
@@ -180,6 +189,7 @@
             <layout>p2</layout>
             <url>http://download.scala-ide.org/sdk/e38/scala29/stable/site</url>
         </repository>
+	
         <repository>
             <id>Xtext All In One - Releases</id>
             <layout>p2</layout>
@@ -196,6 +206,7 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/</url>
         </repository> 
+        -->
     </repositories>
 
     <build>
