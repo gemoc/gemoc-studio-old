@@ -56,6 +56,14 @@
     
     <module>tests/fr.obeo.dsl.debug.tests</module>
     <module>tests/fr.obeo.dsl.debug.ide.tests</module>
+
+    <module>fuml/fr.obeo.dsl.fuml</module>
+    <module>fuml/fr.obeo.dsl.fuml.feature</module>
+    <module>fuml/fr.obeo.dsl.fuml.standardlibrary</module>
+    <module>fuml/fr.obeo.dsl.fuml.sirius.ui</module>
+    <module>fuml/fr.obeo.dsl.fuml.sirius.ui.feature</module>
+    <module>fuml/fr.obeo.dsl.fuml.ui</module>
+    <module>fuml/fr.obeo.dsl.fuml.ui.feature</module>
   </modules>
   
   <repositories>

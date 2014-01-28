@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="fr.obeo.dsl.fuml.ui.feature"
+      label="fUML UI Feature"
+      version="1.0.0.qualifier"
+      provider-name="Obeo">
+
+   <description url="http://www.example.com/description">
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="fr.obeo.dsl.fuml.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

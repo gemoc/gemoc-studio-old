@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="fr.obeo.dsl.fuml.sirius.ui.Activator"
+               id="fr.obeo.dsl.fuml.sirius.ui"
+	       name="umldebug">
+    </component>
+  </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="fr.obeo.dsl.fuml.sirius.ui.action.FUMLDebugAs"
+            id="fr.obeo.dsl.fuml.sirius.ui.action.fUMLDebugAs">
+      </javaActions>
+      <javaActions
+            actionClass="fr.obeo.dsl.fuml.sirius.ui.action.FUMLToggleBreakpointAction"
+            id="fr.obeo.dsl.fuml.sirius.ui.action.fUMLToggleBreakpointAction">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="fr.obeo.dsl.fuml.sirius.ui.launch.FUMLDelegate"
+            id="fr.obeo.dsl.fuml.sirius.ui.launchConfiguration"
+            modes="debug"
+            name="fUML Sirius launch configuration"
+            sourceLocatorId="fr.obeo.dsl.debug.ide.sourceLocator">
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="fr.obeo.dsl.debug.ide.sirius.ui.DSLDebugModelPresentation"
+            id="fr.obeo.dsl.fuml.sirius.ui.debugModel">
+      </debugModelPresentation>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="fr.obeo.dsl.fuml.sirius.ui.launchConfiguration"
+            icon="icons/fuml_icon.png"
+            id="fr.obeo.dsl.fuml.sirius.ui.launchConfigurationImage">
+      </launchConfigurationTypeImage>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="fr.obeo.dsl.fuml.sirius.ui.launch.FUMLTabGroup"
+            id="fr.obeo.dsl.fuml.sirius.ui.launchConfigurationTabGroup"
+            type="fr.obeo.dsl.fuml.sirius.ui.launchConfiguration">
+         <launchMode
+               mode="debug"
+               perspective="org.eclipse.debug.ui.DebugPerspective">
+         </launchMode>
+      </launchConfigurationTabGroup>
+   </extension>
+</plugin>
