@@ -30,7 +30,7 @@
     <packaging>eclipse-test-plugin</packaging>
 
     <properties>
-        <ui.test.vmargs.all>${tycho.testArgLine} -ea -Xmx1024m -XX:MaxPermSize=256m</ui.test.vmargs.all>
+        <ui.test.vmargs.all> -ea -Xmx1024m -XX:MaxPermSize=256m</ui.test.vmargs.all>
         <ui.test.vmargs.mac>-XstartOnFirstThread</ui.test.vmargs.mac>
         <ui.test.vmargs>${ui.test.vmargs.all}</ui.test.vmargs>
     </properties>
