@@ -41,6 +41,8 @@
           <useUIHarness>false</useUIHarness>
           <useUIThread>false</useUIThread>
           <argLine>${tycho.testArgLine} -ea -Xmx1024m -XX:MaxPermSize=256m</argLine>
+          <application>org.eclipse.ui.ide.workbench</application>
+          <product>org.eclipse.e4.ide.application.product</product>
         </configuration>
       </plugin>
     </plugins>
