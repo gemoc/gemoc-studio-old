@@ -49,7 +49,6 @@
                     <useUIThread>false</useUIThread>
                     <appArgLine>${ui.test.vmargs}</appArgLine>
                     <application>org.eclipse.ui.ide.workbench</application>
-                    <product>org.eclipse.e4.ide.application.product</product>
                 </configuration>
             </plugin>
         </plugins>
