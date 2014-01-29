@@ -17,33 +17,40 @@
 -->
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-  	<artifactId>fr.obeo.dsl.debug.parent</artifactId>
-  	<groupId>DSLDebugger</groupId>
-  	<version>1.0.0-SNAPSHOT</version>	
-  	<relativePath>../../</relativePath>
-  </parent>
-  <groupId>DSLDebugger</groupId>
-  <artifactId>fr.obeo.dsl.debug.ide.tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>eclipse-test-plugin</packaging>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-surefire-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <includes>
-            <include>**/AllTests.class</include>
-          </includes>
-          <useUIHarness>true</useUIHarness>
-          <useUIThread>false</useUIThread>
-          <argLine>${tycho.testArgLine} -ea -Xmx1024m -XX:MaxPermSize=256m</argLine>
-          <application>org.eclipse.ui.ide.workbench</application>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>fr.obeo.dsl.debug.parent</artifactId>
+        <groupId>DSLDebugger</groupId>
+        <version>1.0.0-SNAPSHOT</version>	
+        <relativePath>../../</relativePath>
+    </parent>
+    <groupId>DSLDebugger</groupId>
+    <artifactId>fr.obeo.dsl.debug.ide.tests</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>eclipse-test-plugin</packaging>
+
+    <properties>
+        <ui.test.vmargs.all> -ea -Xmx1024m -XX:MaxPermSize=256m</ui.test.vmargs.all>
+        <ui.test.vmargs.mac>-XstartOnFirstThread</ui.test.vmargs.mac>
+        <ui.test.vmargs>${ui.test.vmargs.all}</ui.test.vmargs>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-surefire-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/AllTests.class</include>
+                    </includes>
+                    <useUIHarness>true</useUIHarness>
+                    <useUIThread>false</useUIThread>
+                    <argLine>${ui.test.vmargs}</argLine>
+                    <application>org.eclipse.ui.ide.workbench</application>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
