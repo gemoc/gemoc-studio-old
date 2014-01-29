@@ -163,7 +163,7 @@
           <!-- This profile should be enabled for sonar analysis-->
           <id>quality</id>
           <activation>
-              <activeByDefault>true</activeByDefault>
+              <activeByDefault>false</activeByDefault>
           </activation>
           <properties>
               <!-- Sonar properties -->
