@@ -123,26 +123,28 @@ public interface ModelSpecificAction extends EObject {
 	EList<EObject> getParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Owning Model Specific Event</b></em>' reference.
+	 * Returns the value of the '<em><b>Owning Model Specific Event</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link glml.ModelSpecificEvent#getModelSpecificActions <em>Model Specific Actions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owning Model Specific Event</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owning Model Specific Event</em>' reference.
+	 * @return the value of the '<em>Owning Model Specific Event</em>' container reference.
 	 * @see #setOwningModelSpecificEvent(ModelSpecificEvent)
 	 * @see glml.GlmlPackage#getModelSpecificAction_OwningModelSpecificEvent()
-	 * @model required="true"
+	 * @see glml.ModelSpecificEvent#getModelSpecificActions
+	 * @model opposite="modelSpecificActions" required="true" transient="false"
 	 * @generated
 	 */
 	ModelSpecificEvent getOwningModelSpecificEvent();
 
 	/**
-	 * Sets the value of the '{@link glml.ModelSpecificAction#getOwningModelSpecificEvent <em>Owning Model Specific Event</em>}' reference.
+	 * Sets the value of the '{@link glml.ModelSpecificAction#getOwningModelSpecificEvent <em>Owning Model Specific Event</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owning Model Specific Event</em>' reference.
+	 * @param value the new value of the '<em>Owning Model Specific Event</em>' container reference.
 	 * @see #getOwningModelSpecificEvent()
 	 * @generated
 	 */

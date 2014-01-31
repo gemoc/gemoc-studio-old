@@ -2,13 +2,11 @@
  */
 package glml.provider;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.provider.TimeModelEditPlugin;
-
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
+
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.provider.TimeModelEditPlugin;
 
 /**
  * This is the central singleton for the GemocLanguageMappingLanguage edit plugin.
@@ -37,7 +35,7 @@ public final class GemocLanguageMappingLanguageEditPlugin extends EMFPlugin {
 	 * Create the instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public GemocLanguageMappingLanguageEditPlugin() {
 		super

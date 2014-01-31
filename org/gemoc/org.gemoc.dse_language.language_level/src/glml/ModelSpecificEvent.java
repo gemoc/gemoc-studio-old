@@ -58,12 +58,12 @@ public interface ModelSpecificEvent extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Condition</em>' containment reference.
-	 * @see #setCondition(MocRelation)
+	 * @see #setCondition(MocElement)
 	 * @see glml.GlmlPackage#getModelSpecificEvent_Condition()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	MocRelation getCondition();
+	MocElement getCondition();
 
 	/**
 	 * Sets the value of the '{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}' containment reference.
@@ -73,11 +73,12 @@ public interface ModelSpecificEvent extends NamedElement {
 	 * @see #getCondition()
 	 * @generated
 	 */
-	void setCondition(MocRelation value);
+	void setCondition(MocElement value);
 
 	/**
 	 * Returns the value of the '<em><b>Model Specific Actions</b></em>' containment reference list.
 	 * The list contents are of type {@link glml.ModelSpecificAction}.
+	 * It is bidirectional and its opposite is '{@link glml.ModelSpecificAction#getOwningModelSpecificEvent <em>Owning Model Specific Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Model Specific Actions</em>' containment reference list isn't clear,
@@ -86,7 +87,8 @@ public interface ModelSpecificEvent extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Model Specific Actions</em>' containment reference list.
 	 * @see glml.GlmlPackage#getModelSpecificEvent_ModelSpecificActions()
-	 * @model containment="true"
+	 * @see glml.ModelSpecificAction#getOwningModelSpecificEvent
+	 * @model opposite="owningModelSpecificEvent" containment="true"
 	 * @generated
 	 */
 	EList<ModelSpecificAction> getModelSpecificActions();

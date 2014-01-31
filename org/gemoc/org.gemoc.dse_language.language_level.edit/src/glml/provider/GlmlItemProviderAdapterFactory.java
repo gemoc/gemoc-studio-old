@@ -164,49 +164,26 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link glml.ExtendedCcslRelation} instances.
+	 * This keeps track of the one adapter used for all {@link glml.ExtendedCcslElement} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExtendedCcslRelationItemProvider extendedCcslRelationItemProvider;
+	protected ExtendedCcslElementItemProvider extendedCcslElementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link glml.ExtendedCcslRelation}.
+	 * This creates an adapter for a {@link glml.ExtendedCcslElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExtendedCcslRelationAdapter() {
-		if (extendedCcslRelationItemProvider == null) {
-			extendedCcslRelationItemProvider = new ExtendedCcslRelationItemProvider(this);
+	public Adapter createExtendedCcslElementAdapter() {
+		if (extendedCcslElementItemProvider == null) {
+			extendedCcslElementItemProvider = new ExtendedCcslElementItemProvider(this);
 		}
 
-		return extendedCcslRelationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link glml.JavaSolverRelation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected JavaSolverRelationItemProvider javaSolverRelationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link glml.JavaSolverRelation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createJavaSolverRelationAdapter() {
-		if (javaSolverRelationItemProvider == null) {
-			javaSolverRelationItemProvider = new JavaSolverRelationItemProvider(this);
-		}
-
-		return javaSolverRelationItemProvider;
+		return extendedCcslElementItemProvider;
 	}
 
 	/**
@@ -358,8 +335,7 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 		if (importStatementItemProvider != null) importStatementItemProvider.dispose();
 		if (domainSpecificEventItemProvider != null) domainSpecificEventItemProvider.dispose();
 		if (domainSpecificActionItemProvider != null) domainSpecificActionItemProvider.dispose();
-		if (extendedCcslRelationItemProvider != null) extendedCcslRelationItemProvider.dispose();
-		if (javaSolverRelationItemProvider != null) javaSolverRelationItemProvider.dispose();
+		if (extendedCcslElementItemProvider != null) extendedCcslElementItemProvider.dispose();
 		if (modelSpecificEventItemProvider != null) modelSpecificEventItemProvider.dispose();
 		if (modelSpecificActionItemProvider != null) modelSpecificActionItemProvider.dispose();
 	}

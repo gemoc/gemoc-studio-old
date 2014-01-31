@@ -20,13 +20,13 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link glml.ExtendedCcslRelation} object.
+ * This is the item provider adapter for a {@link glml.ExtendedCcslElement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExtendedCcslRelationItemProvider
-	extends MocRelationItemProvider
+public class ExtendedCcslElementItemProvider
+	extends MocElementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -39,7 +39,7 @@ public class ExtendedCcslRelationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExtendedCcslRelationItemProvider(AdapterFactory adapterFactory) {
+	public ExtendedCcslElementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -54,25 +54,25 @@ public class ExtendedCcslRelationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addRelationPropertyDescriptor(object);
+			addElementPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Relation feature.
+	 * This adds a property descriptor for the Element feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRelationPropertyDescriptor(Object object) {
+	protected void addElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ExtendedCcslRelation_relation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ExtendedCcslRelation_relation_feature", "_UI_ExtendedCcslRelation_type"),
-				 GlmlPackage.Literals.EXTENDED_CCSL_RELATION__RELATION,
+				 getString("_UI_ExtendedCcslElement_element_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExtendedCcslElement_element_feature", "_UI_ExtendedCcslElement_type"),
+				 GlmlPackage.Literals.EXTENDED_CCSL_ELEMENT__ELEMENT,
 				 true,
 				 false,
 				 true,
@@ -82,14 +82,14 @@ public class ExtendedCcslRelationItemProvider
 	}
 
 	/**
-	 * This returns ExtendedCcslRelation.gif.
+	 * This returns ExtendedCcslElement.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExtendedCcslRelation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExtendedCcslElement"));
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class ExtendedCcslRelationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ExtendedCcslRelation_type");
+		return getString("_UI_ExtendedCcslElement_type");
 	}
 
 	/**

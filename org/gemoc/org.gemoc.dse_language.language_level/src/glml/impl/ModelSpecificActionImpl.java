@@ -11,6 +11,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -22,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,16 +82,6 @@ public class ModelSpecificActionImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected EList<EObject> parameters;
-
-	/**
-	 * The cached value of the '{@link #getOwningModelSpecificEvent() <em>Owning Model Specific Event</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwningModelSpecificEvent()
-	 * @generated
-	 * @ordered
-	 */
-	protected ModelSpecificEvent owningModelSpecificEvent;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -242,15 +234,8 @@ public class ModelSpecificActionImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	public ModelSpecificEvent getOwningModelSpecificEvent() {
-		if (owningModelSpecificEvent != null && owningModelSpecificEvent.eIsProxy()) {
-			InternalEObject oldOwningModelSpecificEvent = (InternalEObject)owningModelSpecificEvent;
-			owningModelSpecificEvent = (ModelSpecificEvent)eResolveProxy(oldOwningModelSpecificEvent);
-			if (owningModelSpecificEvent != oldOwningModelSpecificEvent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT, oldOwningModelSpecificEvent, owningModelSpecificEvent));
-			}
-		}
-		return owningModelSpecificEvent;
+		if (eContainerFeatureID() != GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT) return null;
+		return (ModelSpecificEvent)eInternalContainer();
 	}
 
 	/**
@@ -258,8 +243,9 @@ public class ModelSpecificActionImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModelSpecificEvent basicGetOwningModelSpecificEvent() {
-		return owningModelSpecificEvent;
+	public NotificationChain basicSetOwningModelSpecificEvent(ModelSpecificEvent newOwningModelSpecificEvent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOwningModelSpecificEvent, GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT, msgs);
+		return msgs;
 	}
 
 	/**
@@ -268,10 +254,63 @@ public class ModelSpecificActionImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	public void setOwningModelSpecificEvent(ModelSpecificEvent newOwningModelSpecificEvent) {
-		ModelSpecificEvent oldOwningModelSpecificEvent = owningModelSpecificEvent;
-		owningModelSpecificEvent = newOwningModelSpecificEvent;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT, oldOwningModelSpecificEvent, owningModelSpecificEvent));
+		if (newOwningModelSpecificEvent != eInternalContainer() || (eContainerFeatureID() != GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT && newOwningModelSpecificEvent != null)) {
+			if (EcoreUtil.isAncestor(this, newOwningModelSpecificEvent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newOwningModelSpecificEvent != null)
+				msgs = ((InternalEObject)newOwningModelSpecificEvent).eInverseAdd(this, GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS, ModelSpecificEvent.class, msgs);
+			msgs = basicSetOwningModelSpecificEvent(newOwningModelSpecificEvent, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT, newOwningModelSpecificEvent, newOwningModelSpecificEvent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetOwningModelSpecificEvent((ModelSpecificEvent)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT:
+				return basicSetOwningModelSpecificEvent(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT:
+				return eInternalContainer().eInverseRemove(this, GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS, ModelSpecificEvent.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -294,8 +333,7 @@ public class ModelSpecificActionImpl extends MinimalEObjectImpl.Container implem
 			case GlmlPackage.MODEL_SPECIFIC_ACTION__PARAMETERS:
 				return getParameters();
 			case GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT:
-				if (resolve) return getOwningModelSpecificEvent();
-				return basicGetOwningModelSpecificEvent();
+				return getOwningModelSpecificEvent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -373,7 +411,7 @@ public class ModelSpecificActionImpl extends MinimalEObjectImpl.Container implem
 			case GlmlPackage.MODEL_SPECIFIC_ACTION__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 			case GlmlPackage.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT:
-				return owningModelSpecificEvent != null;
+				return getOwningModelSpecificEvent() != null;
 		}
 		return super.eIsSet(featureID);
 	}

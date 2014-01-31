@@ -88,16 +88,12 @@ public class GlmlAdapterFactory extends AdapterFactoryImpl {
 				return createDomainSpecificActionAdapter();
 			}
 			@Override
-			public Adapter caseMocRelation(MocRelation object) {
-				return createMocRelationAdapter();
+			public Adapter caseMocElement(MocElement object) {
+				return createMocElementAdapter();
 			}
 			@Override
-			public Adapter caseExtendedCcslRelation(ExtendedCcslRelation object) {
-				return createExtendedCcslRelationAdapter();
-			}
-			@Override
-			public Adapter caseJavaSolverRelation(JavaSolverRelation object) {
-				return createJavaSolverRelationAdapter();
+			public Adapter caseExtendedCcslElement(ExtendedCcslElement object) {
+				return createExtendedCcslElementAdapter();
 			}
 			@Override
 			public Adapter caseModelSpecificEvent(ModelSpecificEvent object) {
@@ -198,44 +194,30 @@ public class GlmlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link glml.MocRelation <em>Moc Relation</em>}'.
+	 * Creates a new adapter for an object of class '{@link glml.MocElement <em>Moc Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see glml.MocRelation
+	 * @see glml.MocElement
 	 * @generated
 	 */
-	public Adapter createMocRelationAdapter() {
+	public Adapter createMocElementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link glml.ExtendedCcslRelation <em>Extended Ccsl Relation</em>}'.
+	 * Creates a new adapter for an object of class '{@link glml.ExtendedCcslElement <em>Extended Ccsl Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see glml.ExtendedCcslRelation
+	 * @see glml.ExtendedCcslElement
 	 * @generated
 	 */
-	public Adapter createExtendedCcslRelationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link glml.JavaSolverRelation <em>Java Solver Relation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see glml.JavaSolverRelation
-	 * @generated
-	 */
-	public Adapter createJavaSolverRelationAdapter() {
+	public Adapter createExtendedCcslElementAdapter() {
 		return null;
 	}
 

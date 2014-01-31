@@ -58,22 +58,13 @@ public interface GlmlFactory extends EFactory {
 	DomainSpecificAction createDomainSpecificAction();
 
 	/**
-	 * Returns a new object of class '<em>Extended Ccsl Relation</em>'.
+	 * Returns a new object of class '<em>Extended Ccsl Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Extended Ccsl Relation</em>'.
+	 * @return a new object of class '<em>Extended Ccsl Element</em>'.
 	 * @generated
 	 */
-	ExtendedCcslRelation createExtendedCcslRelation();
-
-	/**
-	 * Returns a new object of class '<em>Java Solver Relation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Java Solver Relation</em>'.
-	 * @generated
-	 */
-	JavaSolverRelation createJavaSolverRelation();
+	ExtendedCcslElement createExtendedCcslElement();
 
 	/**
 	 * Returns a new object of class '<em>Model Specific Event</em>'.

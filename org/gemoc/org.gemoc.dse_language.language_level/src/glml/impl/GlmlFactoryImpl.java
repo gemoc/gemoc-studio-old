@@ -60,8 +60,7 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 			case GlmlPackage.IMPORT_STATEMENT: return createImportStatement();
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT: return createDomainSpecificEvent();
 			case GlmlPackage.DOMAIN_SPECIFIC_ACTION: return createDomainSpecificAction();
-			case GlmlPackage.EXTENDED_CCSL_RELATION: return createExtendedCcslRelation();
-			case GlmlPackage.JAVA_SOLVER_RELATION: return createJavaSolverRelation();
+			case GlmlPackage.EXTENDED_CCSL_ELEMENT: return createExtendedCcslElement();
 			case GlmlPackage.MODEL_SPECIFIC_EVENT: return createModelSpecificEvent();
 			case GlmlPackage.MODEL_SPECIFIC_ACTION: return createModelSpecificAction();
 			default:
@@ -114,19 +113,9 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExtendedCcslRelation createExtendedCcslRelation() {
-		ExtendedCcslRelationImpl extendedCcslRelation = new ExtendedCcslRelationImpl();
-		return extendedCcslRelation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JavaSolverRelation createJavaSolverRelation() {
-		JavaSolverRelationImpl javaSolverRelation = new JavaSolverRelationImpl();
-		return javaSolverRelation;
+	public ExtendedCcslElement createExtendedCcslElement() {
+		ExtendedCcslElementImpl extendedCcslElement = new ExtendedCcslElementImpl();
+		return extendedCcslElement;
 	}
 
 	/**

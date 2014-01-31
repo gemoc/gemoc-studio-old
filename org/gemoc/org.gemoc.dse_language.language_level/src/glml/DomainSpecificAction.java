@@ -97,26 +97,28 @@ public interface DomainSpecificAction extends EObject {
 	EList<EClassifier> getParameterTypes();
 
 	/**
-	 * Returns the value of the '<em><b>Owning Domain Specific Event</b></em>' reference.
+	 * Returns the value of the '<em><b>Owning Domain Specific Event</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link glml.DomainSpecificEvent#getDomainSpecificActions <em>Domain Specific Actions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owning Domain Specific Event</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owning Domain Specific Event</em>' reference.
+	 * @return the value of the '<em>Owning Domain Specific Event</em>' container reference.
 	 * @see #setOwningDomainSpecificEvent(DomainSpecificEvent)
 	 * @see glml.GlmlPackage#getDomainSpecificAction_OwningDomainSpecificEvent()
-	 * @model required="true"
+	 * @see glml.DomainSpecificEvent#getDomainSpecificActions
+	 * @model opposite="domainSpecificActions" required="true" transient="false"
 	 * @generated
 	 */
 	DomainSpecificEvent getOwningDomainSpecificEvent();
 
 	/**
-	 * Sets the value of the '{@link glml.DomainSpecificAction#getOwningDomainSpecificEvent <em>Owning Domain Specific Event</em>}' reference.
+	 * Sets the value of the '{@link glml.DomainSpecificAction#getOwningDomainSpecificEvent <em>Owning Domain Specific Event</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owning Domain Specific Event</em>' reference.
+	 * @param value the new value of the '<em>Owning Domain Specific Event</em>' container reference.
 	 * @see #getOwningDomainSpecificEvent()
 	 * @generated
 	 */

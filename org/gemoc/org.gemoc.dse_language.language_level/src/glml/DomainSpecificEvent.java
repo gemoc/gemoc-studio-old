@@ -31,12 +31,12 @@ public interface DomainSpecificEvent extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Condition</em>' containment reference.
-	 * @see #setCondition(MocRelation)
+	 * @see #setCondition(MocElement)
 	 * @see glml.GlmlPackage#getDomainSpecificEvent_Condition()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	MocRelation getCondition();
+	MocElement getCondition();
 
 	/**
 	 * Sets the value of the '{@link glml.DomainSpecificEvent#getCondition <em>Condition</em>}' containment reference.
@@ -46,11 +46,12 @@ public interface DomainSpecificEvent extends NamedElement {
 	 * @see #getCondition()
 	 * @generated
 	 */
-	void setCondition(MocRelation value);
+	void setCondition(MocElement value);
 
 	/**
 	 * Returns the value of the '<em><b>Domain Specific Actions</b></em>' containment reference list.
 	 * The list contents are of type {@link glml.DomainSpecificAction}.
+	 * It is bidirectional and its opposite is '{@link glml.DomainSpecificAction#getOwningDomainSpecificEvent <em>Owning Domain Specific Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Specific Actions</em>' containment reference list isn't clear,
@@ -59,7 +60,8 @@ public interface DomainSpecificEvent extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Domain Specific Actions</em>' containment reference list.
 	 * @see glml.GlmlPackage#getDomainSpecificEvent_DomainSpecificActions()
-	 * @model containment="true"
+	 * @see glml.DomainSpecificAction#getOwningDomainSpecificEvent
+	 * @model opposite="owningDomainSpecificEvent" containment="true"
 	 * @generated
 	 */
 	EList<DomainSpecificAction> getDomainSpecificActions();

@@ -152,12 +152,7 @@ public class DomainSpecificEventItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION,
-				 GlmlFactory.eINSTANCE.createExtendedCcslRelation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION,
-				 GlmlFactory.eINSTANCE.createJavaSolverRelation()));
+				 GlmlFactory.eINSTANCE.createExtendedCcslElement()));
 
 		newChildDescriptors.add
 			(createChildParameter

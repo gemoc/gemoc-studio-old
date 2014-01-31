@@ -176,12 +176,7 @@ public class ModelSpecificEventItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__CONDITION,
-				 GlmlFactory.eINSTANCE.createExtendedCcslRelation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__CONDITION,
-				 GlmlFactory.eINSTANCE.createJavaSolverRelation()));
+				 GlmlFactory.eINSTANCE.createExtendedCcslElement()));
 
 		newChildDescriptors.add
 			(createChildParameter

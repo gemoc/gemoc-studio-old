@@ -5,21 +5,15 @@ package glml.impl;
 import glml.DomainSpecificAction;
 import glml.DomainSpecificEvent;
 import glml.GlmlPackage;
-import glml.MocRelation;
-
+import glml.MocElement;
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -45,7 +39,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * @generated
 	 * @ordered
 	 */
-	protected MocRelation condition;
+	protected MocElement condition;
 
 	/**
 	 * The cached value of the '{@link #getDomainSpecificActions() <em>Domain Specific Actions</em>}' containment reference list.
@@ -81,7 +75,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MocRelation getCondition() {
+	public MocElement getCondition() {
 		return condition;
 	}
 
@@ -90,8 +84,8 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCondition(MocRelation newCondition, NotificationChain msgs) {
-		MocRelation oldCondition = condition;
+	public NotificationChain basicSetCondition(MocElement newCondition, NotificationChain msgs) {
+		MocElement oldCondition = condition;
 		condition = newCondition;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION, oldCondition, newCondition);
@@ -105,7 +99,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCondition(MocRelation newCondition) {
+	public void setCondition(MocElement newCondition) {
 		if (newCondition != condition) {
 			NotificationChain msgs = null;
 			if (condition != null)
@@ -126,9 +120,24 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 */
 	public EList<DomainSpecificAction> getDomainSpecificActions() {
 		if (domainSpecificActions == null) {
-			domainSpecificActions = new EObjectContainmentEList<DomainSpecificAction>(DomainSpecificAction.class, this, GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS);
+			domainSpecificActions = new EObjectContainmentWithInverseEList<DomainSpecificAction>(DomainSpecificAction.class, this, GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS, GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT);
 		}
 		return domainSpecificActions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDomainSpecificActions()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -173,7 +182,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
-				setCondition((MocRelation)newValue);
+				setCondition((MocElement)newValue);
 				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				getDomainSpecificActions().clear();
@@ -192,7 +201,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
-				setCondition((MocRelation)null);
+				setCondition((MocElement)null);
 				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				getDomainSpecificActions().clear();

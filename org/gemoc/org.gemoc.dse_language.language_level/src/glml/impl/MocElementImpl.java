@@ -3,7 +3,7 @@
 package glml.impl;
 
 import glml.GlmlPackage;
-import glml.MocRelation;
+import glml.MocElement;
 
 import java.util.Collection;
 
@@ -18,18 +18,18 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Moc Relation</b></em>'.
+ * An implementation of the model object '<em><b>Moc Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link glml.impl.MocRelationImpl#getArguments <em>Arguments</em>}</li>
+ *   <li>{@link glml.impl.MocElementImpl#getArguments <em>Arguments</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class MocRelationImpl extends MinimalEObjectImpl.Container implements MocRelation {
+public abstract class MocElementImpl extends MinimalEObjectImpl.Container implements MocElement {
 	/**
 	 * The cached value of the '{@link #getArguments() <em>Arguments</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -45,7 +45,7 @@ public abstract class MocRelationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MocRelationImpl() {
+	protected MocElementImpl() {
 		super();
 	}
 
@@ -56,7 +56,7 @@ public abstract class MocRelationImpl extends MinimalEObjectImpl.Container imple
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GlmlPackage.Literals.MOC_RELATION;
+		return GlmlPackage.Literals.MOC_ELEMENT;
 	}
 
 	/**
@@ -66,7 +66,7 @@ public abstract class MocRelationImpl extends MinimalEObjectImpl.Container imple
 	 */
 	public EList<EObject> getArguments() {
 		if (arguments == null) {
-			arguments = new EObjectResolvingEList<EObject>(EObject.class, this, GlmlPackage.MOC_RELATION__ARGUMENTS);
+			arguments = new EObjectResolvingEList<EObject>(EObject.class, this, GlmlPackage.MOC_ELEMENT__ARGUMENTS);
 		}
 		return arguments;
 	}
@@ -79,7 +79,7 @@ public abstract class MocRelationImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GlmlPackage.MOC_RELATION__ARGUMENTS:
+			case GlmlPackage.MOC_ELEMENT__ARGUMENTS:
 				return getArguments();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -94,7 +94,7 @@ public abstract class MocRelationImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GlmlPackage.MOC_RELATION__ARGUMENTS:
+			case GlmlPackage.MOC_ELEMENT__ARGUMENTS:
 				getArguments().clear();
 				getArguments().addAll((Collection<? extends EObject>)newValue);
 				return;
@@ -110,7 +110,7 @@ public abstract class MocRelationImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.MOC_RELATION__ARGUMENTS:
+			case GlmlPackage.MOC_ELEMENT__ARGUMENTS:
 				getArguments().clear();
 				return;
 		}
@@ -125,10 +125,10 @@ public abstract class MocRelationImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.MOC_RELATION__ARGUMENTS:
+			case GlmlPackage.MOC_ELEMENT__ARGUMENTS:
 				return arguments != null && !arguments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //MocRelationImpl
+} //MocElementImpl

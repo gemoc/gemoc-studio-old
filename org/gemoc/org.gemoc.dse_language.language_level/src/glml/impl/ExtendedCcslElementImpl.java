@@ -2,9 +2,9 @@
  */
 package glml.impl;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
+import fr.inria.aoste.timesquare.ECL.EventType;
 
-import glml.ExtendedCcslRelation;
+import glml.ExtendedCcslElement;
 import glml.GlmlPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -16,34 +16,34 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Extended Ccsl Relation</b></em>'.
+ * An implementation of the model object '<em><b>Extended Ccsl Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link glml.impl.ExtendedCcslRelationImpl#getRelation <em>Relation</em>}</li>
+ *   <li>{@link glml.impl.ExtendedCcslElementImpl#getElement <em>Element</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExtendedCcslRelationImpl extends MocRelationImpl implements ExtendedCcslRelation {
+public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedCcslElement {
 	/**
-	 * The cached value of the '{@link #getRelation() <em>Relation</em>}' reference.
+	 * The cached value of the '{@link #getElement() <em>Element</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRelation()
+	 * @see #getElement()
 	 * @generated
 	 * @ordered
 	 */
-	protected Relation relation;
+	protected EventType element;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExtendedCcslRelationImpl() {
+	protected ExtendedCcslElementImpl() {
 		super();
 	}
 
@@ -54,7 +54,7 @@ public class ExtendedCcslRelationImpl extends MocRelationImpl implements Extende
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GlmlPackage.Literals.EXTENDED_CCSL_RELATION;
+		return GlmlPackage.Literals.EXTENDED_CCSL_ELEMENT;
 	}
 
 	/**
@@ -62,16 +62,16 @@ public class ExtendedCcslRelationImpl extends MocRelationImpl implements Extende
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Relation getRelation() {
-		if (relation != null && relation.eIsProxy()) {
-			InternalEObject oldRelation = (InternalEObject)relation;
-			relation = (Relation)eResolveProxy(oldRelation);
-			if (relation != oldRelation) {
+	public EventType getElement() {
+		if (element != null && element.eIsProxy()) {
+			InternalEObject oldElement = (InternalEObject)element;
+			element = (EventType)eResolveProxy(oldElement);
+			if (element != oldElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.EXTENDED_CCSL_RELATION__RELATION, oldRelation, relation));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT, oldElement, element));
 			}
 		}
-		return relation;
+		return element;
 	}
 
 	/**
@@ -79,8 +79,8 @@ public class ExtendedCcslRelationImpl extends MocRelationImpl implements Extende
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Relation basicGetRelation() {
-		return relation;
+	public EventType basicGetElement() {
+		return element;
 	}
 
 	/**
@@ -88,11 +88,11 @@ public class ExtendedCcslRelationImpl extends MocRelationImpl implements Extende
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRelation(Relation newRelation) {
-		Relation oldRelation = relation;
-		relation = newRelation;
+	public void setElement(EventType newElement) {
+		EventType oldElement = element;
+		element = newElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.EXTENDED_CCSL_RELATION__RELATION, oldRelation, relation));
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT, oldElement, element));
 	}
 
 	/**
@@ -103,9 +103,9 @@ public class ExtendedCcslRelationImpl extends MocRelationImpl implements Extende
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GlmlPackage.EXTENDED_CCSL_RELATION__RELATION:
-				if (resolve) return getRelation();
-				return basicGetRelation();
+			case GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT:
+				if (resolve) return getElement();
+				return basicGetElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -118,8 +118,8 @@ public class ExtendedCcslRelationImpl extends MocRelationImpl implements Extende
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GlmlPackage.EXTENDED_CCSL_RELATION__RELATION:
-				setRelation((Relation)newValue);
+			case GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT:
+				setElement((EventType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -133,8 +133,8 @@ public class ExtendedCcslRelationImpl extends MocRelationImpl implements Extende
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.EXTENDED_CCSL_RELATION__RELATION:
-				setRelation((Relation)null);
+			case GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT:
+				setElement((EventType)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -148,10 +148,10 @@ public class ExtendedCcslRelationImpl extends MocRelationImpl implements Extende
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.EXTENDED_CCSL_RELATION__RELATION:
-				return relation != null;
+			case GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT:
+				return element != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ExtendedCcslRelationImpl
+} //ExtendedCcslElementImpl

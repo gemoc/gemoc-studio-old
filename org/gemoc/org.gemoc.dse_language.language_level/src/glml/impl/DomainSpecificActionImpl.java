@@ -10,6 +10,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,16 +70,6 @@ public class DomainSpecificActionImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected EList<EClassifier> parameterTypes;
-
-	/**
-	 * The cached value of the '{@link #getOwningDomainSpecificEvent() <em>Owning Domain Specific Event</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwningDomainSpecificEvent()
-	 * @generated
-	 * @ordered
-	 */
-	protected DomainSpecificEvent owningDomainSpecificEvent;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,15 +184,8 @@ public class DomainSpecificActionImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 */
 	public DomainSpecificEvent getOwningDomainSpecificEvent() {
-		if (owningDomainSpecificEvent != null && owningDomainSpecificEvent.eIsProxy()) {
-			InternalEObject oldOwningDomainSpecificEvent = (InternalEObject)owningDomainSpecificEvent;
-			owningDomainSpecificEvent = (DomainSpecificEvent)eResolveProxy(oldOwningDomainSpecificEvent);
-			if (owningDomainSpecificEvent != oldOwningDomainSpecificEvent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT, oldOwningDomainSpecificEvent, owningDomainSpecificEvent));
-			}
-		}
-		return owningDomainSpecificEvent;
+		if (eContainerFeatureID() != GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT) return null;
+		return (DomainSpecificEvent)eInternalContainer();
 	}
 
 	/**
@@ -208,8 +193,9 @@ public class DomainSpecificActionImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DomainSpecificEvent basicGetOwningDomainSpecificEvent() {
-		return owningDomainSpecificEvent;
+	public NotificationChain basicSetOwningDomainSpecificEvent(DomainSpecificEvent newOwningDomainSpecificEvent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOwningDomainSpecificEvent, GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT, msgs);
+		return msgs;
 	}
 
 	/**
@@ -218,10 +204,63 @@ public class DomainSpecificActionImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 */
 	public void setOwningDomainSpecificEvent(DomainSpecificEvent newOwningDomainSpecificEvent) {
-		DomainSpecificEvent oldOwningDomainSpecificEvent = owningDomainSpecificEvent;
-		owningDomainSpecificEvent = newOwningDomainSpecificEvent;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT, oldOwningDomainSpecificEvent, owningDomainSpecificEvent));
+		if (newOwningDomainSpecificEvent != eInternalContainer() || (eContainerFeatureID() != GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT && newOwningDomainSpecificEvent != null)) {
+			if (EcoreUtil.isAncestor(this, newOwningDomainSpecificEvent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newOwningDomainSpecificEvent != null)
+				msgs = ((InternalEObject)newOwningDomainSpecificEvent).eInverseAdd(this, GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS, DomainSpecificEvent.class, msgs);
+			msgs = basicSetOwningDomainSpecificEvent(newOwningDomainSpecificEvent, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT, newOwningDomainSpecificEvent, newOwningDomainSpecificEvent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetOwningDomainSpecificEvent((DomainSpecificEvent)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT:
+				return basicSetOwningDomainSpecificEvent(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT:
+				return eInternalContainer().eInverseRemove(this, GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS, DomainSpecificEvent.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -241,8 +280,7 @@ public class DomainSpecificActionImpl extends MinimalEObjectImpl.Container imple
 			case GlmlPackage.DOMAIN_SPECIFIC_ACTION__PARAMETER_TYPES:
 				return getParameterTypes();
 			case GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT:
-				if (resolve) return getOwningDomainSpecificEvent();
-				return basicGetOwningDomainSpecificEvent();
+				return getOwningDomainSpecificEvent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -312,7 +350,7 @@ public class DomainSpecificActionImpl extends MinimalEObjectImpl.Container imple
 			case GlmlPackage.DOMAIN_SPECIFIC_ACTION__PARAMETER_TYPES:
 				return parameterTypes != null && !parameterTypes.isEmpty();
 			case GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT:
-				return owningDomainSpecificEvent != null;
+				return getOwningDomainSpecificEvent() != null;
 		}
 		return super.eIsSet(featureID);
 	}

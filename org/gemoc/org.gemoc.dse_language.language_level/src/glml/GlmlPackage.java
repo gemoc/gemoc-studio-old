@@ -287,7 +287,7 @@ public interface GlmlPackage extends EPackage {
 	int DOMAIN_SPECIFIC_ACTION__PARAMETER_TYPES = 2;
 
 	/**
-	 * The feature id for the '<em><b>Owning Domain Specific Event</b></em>' reference.
+	 * The feature id for the '<em><b>Owning Domain Specific Event</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -314,14 +314,14 @@ public interface GlmlPackage extends EPackage {
 	int DOMAIN_SPECIFIC_ACTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link glml.impl.MocRelationImpl <em>Moc Relation</em>}' class.
+	 * The meta object id for the '{@link glml.impl.MocElementImpl <em>Moc Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see glml.impl.MocRelationImpl
-	 * @see glml.impl.GlmlPackageImpl#getMocRelation()
+	 * @see glml.impl.MocElementImpl
+	 * @see glml.impl.GlmlPackageImpl#getMocElement()
 	 * @generated
 	 */
-	int MOC_RELATION = 5;
+	int MOC_ELEMENT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
@@ -330,35 +330,35 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOC_RELATION__ARGUMENTS = 0;
+	int MOC_ELEMENT__ARGUMENTS = 0;
 
 	/**
-	 * The number of structural features of the '<em>Moc Relation</em>' class.
+	 * The number of structural features of the '<em>Moc Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOC_RELATION_FEATURE_COUNT = 1;
+	int MOC_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Moc Relation</em>' class.
+	 * The number of operations of the '<em>Moc Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOC_RELATION_OPERATION_COUNT = 0;
+	int MOC_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link glml.impl.ExtendedCcslRelationImpl <em>Extended Ccsl Relation</em>}' class.
+	 * The meta object id for the '{@link glml.impl.ExtendedCcslElementImpl <em>Extended Ccsl Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see glml.impl.ExtendedCcslRelationImpl
-	 * @see glml.impl.GlmlPackageImpl#getExtendedCcslRelation()
+	 * @see glml.impl.ExtendedCcslElementImpl
+	 * @see glml.impl.GlmlPackageImpl#getExtendedCcslElement()
 	 * @generated
 	 */
-	int EXTENDED_CCSL_RELATION = 6;
+	int EXTENDED_CCSL_ELEMENT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
@@ -367,71 +367,34 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENDED_CCSL_RELATION__ARGUMENTS = MOC_RELATION__ARGUMENTS;
+	int EXTENDED_CCSL_ELEMENT__ARGUMENTS = MOC_ELEMENT__ARGUMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Relation</b></em>' reference.
+	 * The feature id for the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENDED_CCSL_RELATION__RELATION = MOC_RELATION_FEATURE_COUNT + 0;
+	int EXTENDED_CCSL_ELEMENT__ELEMENT = MOC_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Extended Ccsl Relation</em>' class.
+	 * The number of structural features of the '<em>Extended Ccsl Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENDED_CCSL_RELATION_FEATURE_COUNT = MOC_RELATION_FEATURE_COUNT + 1;
+	int EXTENDED_CCSL_ELEMENT_FEATURE_COUNT = MOC_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Extended Ccsl Relation</em>' class.
+	 * The number of operations of the '<em>Extended Ccsl Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENDED_CCSL_RELATION_OPERATION_COUNT = MOC_RELATION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link glml.impl.JavaSolverRelationImpl <em>Java Solver Relation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.JavaSolverRelationImpl
-	 * @see glml.impl.GlmlPackageImpl#getJavaSolverRelation()
-	 * @generated
-	 */
-	int JAVA_SOLVER_RELATION = 7;
-
-	/**
-	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAVA_SOLVER_RELATION__ARGUMENTS = MOC_RELATION__ARGUMENTS;
-
-	/**
-	 * The number of structural features of the '<em>Java Solver Relation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAVA_SOLVER_RELATION_FEATURE_COUNT = MOC_RELATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Java Solver Relation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAVA_SOLVER_RELATION_OPERATION_COUNT = MOC_RELATION_OPERATION_COUNT + 0;
+	int EXTENDED_CCSL_ELEMENT_OPERATION_COUNT = MOC_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link glml.impl.ModelSpecificEventImpl <em>Model Specific Event</em>}' class.
@@ -441,7 +404,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getModelSpecificEvent()
 	 * @generated
 	 */
-	int MODEL_SPECIFIC_EVENT = 8;
+	int MODEL_SPECIFIC_EVENT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -505,7 +468,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getModelSpecificAction()
 	 * @generated
 	 */
-	int MODEL_SPECIFIC_ACTION = 9;
+	int MODEL_SPECIFIC_ACTION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Reification</b></em>' reference.
@@ -544,7 +507,7 @@ public interface GlmlPackage extends EPackage {
 	int MODEL_SPECIFIC_ACTION__PARAMETERS = 3;
 
 	/**
-	 * The feature id for the '<em><b>Owning Model Specific Event</b></em>' reference.
+	 * The feature id for the '<em><b>Owning Model Specific Event</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -732,10 +695,10 @@ public interface GlmlPackage extends EPackage {
 	EReference getDomainSpecificAction_ParameterTypes();
 
 	/**
-	 * Returns the meta object for the reference '{@link glml.DomainSpecificAction#getOwningDomainSpecificEvent <em>Owning Domain Specific Event</em>}'.
+	 * Returns the meta object for the container reference '{@link glml.DomainSpecificAction#getOwningDomainSpecificEvent <em>Owning Domain Specific Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Owning Domain Specific Event</em>'.
+	 * @return the meta object for the container reference '<em>Owning Domain Specific Event</em>'.
 	 * @see glml.DomainSpecificAction#getOwningDomainSpecificEvent()
 	 * @see #getDomainSpecificAction()
 	 * @generated
@@ -743,56 +706,46 @@ public interface GlmlPackage extends EPackage {
 	EReference getDomainSpecificAction_OwningDomainSpecificEvent();
 
 	/**
-	 * Returns the meta object for class '{@link glml.MocRelation <em>Moc Relation</em>}'.
+	 * Returns the meta object for class '{@link glml.MocElement <em>Moc Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Moc Relation</em>'.
-	 * @see glml.MocRelation
+	 * @return the meta object for class '<em>Moc Element</em>'.
+	 * @see glml.MocElement
 	 * @generated
 	 */
-	EClass getMocRelation();
+	EClass getMocElement();
 
 	/**
-	 * Returns the meta object for the reference list '{@link glml.MocRelation#getArguments <em>Arguments</em>}'.
+	 * Returns the meta object for the reference list '{@link glml.MocElement#getArguments <em>Arguments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Arguments</em>'.
-	 * @see glml.MocRelation#getArguments()
-	 * @see #getMocRelation()
+	 * @see glml.MocElement#getArguments()
+	 * @see #getMocElement()
 	 * @generated
 	 */
-	EReference getMocRelation_Arguments();
+	EReference getMocElement_Arguments();
 
 	/**
-	 * Returns the meta object for class '{@link glml.ExtendedCcslRelation <em>Extended Ccsl Relation</em>}'.
+	 * Returns the meta object for class '{@link glml.ExtendedCcslElement <em>Extended Ccsl Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Extended Ccsl Relation</em>'.
-	 * @see glml.ExtendedCcslRelation
+	 * @return the meta object for class '<em>Extended Ccsl Element</em>'.
+	 * @see glml.ExtendedCcslElement
 	 * @generated
 	 */
-	EClass getExtendedCcslRelation();
+	EClass getExtendedCcslElement();
 
 	/**
-	 * Returns the meta object for the reference '{@link glml.ExtendedCcslRelation#getRelation <em>Relation</em>}'.
+	 * Returns the meta object for the reference '{@link glml.ExtendedCcslElement#getElement <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Relation</em>'.
-	 * @see glml.ExtendedCcslRelation#getRelation()
-	 * @see #getExtendedCcslRelation()
+	 * @return the meta object for the reference '<em>Element</em>'.
+	 * @see glml.ExtendedCcslElement#getElement()
+	 * @see #getExtendedCcslElement()
 	 * @generated
 	 */
-	EReference getExtendedCcslRelation_Relation();
-
-	/**
-	 * Returns the meta object for class '{@link glml.JavaSolverRelation <em>Java Solver Relation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Java Solver Relation</em>'.
-	 * @see glml.JavaSolverRelation
-	 * @generated
-	 */
-	EClass getJavaSolverRelation();
+	EReference getExtendedCcslElement_Element();
 
 	/**
 	 * Returns the meta object for class '{@link glml.ModelSpecificEvent <em>Model Specific Event</em>}'.
@@ -892,10 +845,10 @@ public interface GlmlPackage extends EPackage {
 	EReference getModelSpecificAction_Parameters();
 
 	/**
-	 * Returns the meta object for the reference '{@link glml.ModelSpecificAction#getOwningModelSpecificEvent <em>Owning Model Specific Event</em>}'.
+	 * Returns the meta object for the container reference '{@link glml.ModelSpecificAction#getOwningModelSpecificEvent <em>Owning Model Specific Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Owning Model Specific Event</em>'.
+	 * @return the meta object for the container reference '<em>Owning Model Specific Event</em>'.
 	 * @see glml.ModelSpecificAction#getOwningModelSpecificEvent()
 	 * @see #getModelSpecificAction()
 	 * @generated
@@ -1056,7 +1009,7 @@ public interface GlmlPackage extends EPackage {
 		EReference DOMAIN_SPECIFIC_ACTION__PARAMETER_TYPES = eINSTANCE.getDomainSpecificAction_ParameterTypes();
 
 		/**
-		 * The meta object literal for the '<em><b>Owning Domain Specific Event</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Owning Domain Specific Event</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1064,14 +1017,14 @@ public interface GlmlPackage extends EPackage {
 		EReference DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT = eINSTANCE.getDomainSpecificAction_OwningDomainSpecificEvent();
 
 		/**
-		 * The meta object literal for the '{@link glml.impl.MocRelationImpl <em>Moc Relation</em>}' class.
+		 * The meta object literal for the '{@link glml.impl.MocElementImpl <em>Moc Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see glml.impl.MocRelationImpl
-		 * @see glml.impl.GlmlPackageImpl#getMocRelation()
+		 * @see glml.impl.MocElementImpl
+		 * @see glml.impl.GlmlPackageImpl#getMocElement()
 		 * @generated
 		 */
-		EClass MOC_RELATION = eINSTANCE.getMocRelation();
+		EClass MOC_ELEMENT = eINSTANCE.getMocElement();
 
 		/**
 		 * The meta object literal for the '<em><b>Arguments</b></em>' reference list feature.
@@ -1079,35 +1032,25 @@ public interface GlmlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MOC_RELATION__ARGUMENTS = eINSTANCE.getMocRelation_Arguments();
+		EReference MOC_ELEMENT__ARGUMENTS = eINSTANCE.getMocElement_Arguments();
 
 		/**
-		 * The meta object literal for the '{@link glml.impl.ExtendedCcslRelationImpl <em>Extended Ccsl Relation</em>}' class.
+		 * The meta object literal for the '{@link glml.impl.ExtendedCcslElementImpl <em>Extended Ccsl Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see glml.impl.ExtendedCcslRelationImpl
-		 * @see glml.impl.GlmlPackageImpl#getExtendedCcslRelation()
+		 * @see glml.impl.ExtendedCcslElementImpl
+		 * @see glml.impl.GlmlPackageImpl#getExtendedCcslElement()
 		 * @generated
 		 */
-		EClass EXTENDED_CCSL_RELATION = eINSTANCE.getExtendedCcslRelation();
+		EClass EXTENDED_CCSL_ELEMENT = eINSTANCE.getExtendedCcslElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Relation</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Element</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTENDED_CCSL_RELATION__RELATION = eINSTANCE.getExtendedCcslRelation_Relation();
-
-		/**
-		 * The meta object literal for the '{@link glml.impl.JavaSolverRelationImpl <em>Java Solver Relation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.impl.JavaSolverRelationImpl
-		 * @see glml.impl.GlmlPackageImpl#getJavaSolverRelation()
-		 * @generated
-		 */
-		EClass JAVA_SOLVER_RELATION = eINSTANCE.getJavaSolverRelation();
+		EReference EXTENDED_CCSL_ELEMENT__ELEMENT = eINSTANCE.getExtendedCcslElement_Element();
 
 		/**
 		 * The meta object literal for the '{@link glml.impl.ModelSpecificEventImpl <em>Model Specific Event</em>}' class.
@@ -1186,7 +1129,7 @@ public interface GlmlPackage extends EPackage {
 		EReference MODEL_SPECIFIC_ACTION__PARAMETERS = eINSTANCE.getModelSpecificAction_Parameters();
 
 		/**
-		 * The meta object literal for the '<em><b>Owning Model Specific Event</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Owning Model Specific Event</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

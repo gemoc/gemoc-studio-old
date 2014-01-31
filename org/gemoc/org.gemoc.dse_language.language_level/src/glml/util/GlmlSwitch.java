@@ -98,23 +98,16 @@ public class GlmlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case GlmlPackage.MOC_RELATION: {
-				MocRelation mocRelation = (MocRelation)theEObject;
-				T result = caseMocRelation(mocRelation);
+			case GlmlPackage.MOC_ELEMENT: {
+				MocElement mocElement = (MocElement)theEObject;
+				T result = caseMocElement(mocElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case GlmlPackage.EXTENDED_CCSL_RELATION: {
-				ExtendedCcslRelation extendedCcslRelation = (ExtendedCcslRelation)theEObject;
-				T result = caseExtendedCcslRelation(extendedCcslRelation);
-				if (result == null) result = caseMocRelation(extendedCcslRelation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case GlmlPackage.JAVA_SOLVER_RELATION: {
-				JavaSolverRelation javaSolverRelation = (JavaSolverRelation)theEObject;
-				T result = caseJavaSolverRelation(javaSolverRelation);
-				if (result == null) result = caseMocRelation(javaSolverRelation);
+			case GlmlPackage.EXTENDED_CCSL_ELEMENT: {
+				ExtendedCcslElement extendedCcslElement = (ExtendedCcslElement)theEObject;
+				T result = caseExtendedCcslElement(extendedCcslElement);
+				if (result == null) result = caseMocElement(extendedCcslElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -211,47 +204,32 @@ public class GlmlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Moc Relation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Moc Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Moc Relation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Moc Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMocRelation(MocRelation object) {
+	public T caseMocElement(MocElement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Extended Ccsl Relation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Extended Ccsl Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Extended Ccsl Relation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Extended Ccsl Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExtendedCcslRelation(ExtendedCcslRelation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Java Solver Relation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Java Solver Relation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseJavaSolverRelation(JavaSolverRelation object) {
+	public T caseExtendedCcslElement(ExtendedCcslElement object) {
 		return null;
 	}
 
