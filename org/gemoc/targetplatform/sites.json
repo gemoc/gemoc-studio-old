@@ -3,7 +3,7 @@
         "http://download.eclipse.org/eclipse/updates/4.3-M-builds/M-4.3.2RC1-201401170910/",
         "http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/",
         "http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/",
-        "http://download.eclipse.org/mpc/nightly"
+        "http://download.eclipse.org/mpc/nightly",
         "http://download.eclipse.org/releases/kepler"
         ],
     "modeling-base": [
