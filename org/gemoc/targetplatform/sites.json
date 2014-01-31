@@ -13,7 +13,8 @@
 	"http://download.eclipse.org/modeling/emf/validation/updates/milestones",
 	"http://download.eclipse.org/modeling/emf/transaction/updates/milestones",
         "http://download.eclipse.org/modeling/emf/query/updates/milestones",
-        "http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.1/S201401220957"
+        "http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.1/S201401220957",
+        "http://download.eclipse.org/mmt/qvto/updates/releases/3.3.0"
         ],
     "papyrus": [
         "http://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/0.10/SR2_RC1/main"
