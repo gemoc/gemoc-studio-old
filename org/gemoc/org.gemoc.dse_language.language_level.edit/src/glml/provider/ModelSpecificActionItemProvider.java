@@ -61,7 +61,6 @@ public class ModelSpecificActionItemProvider
 			addTargetPropertyDescriptor(object);
 			addOperationPropertyDescriptor(object);
 			addParametersPropertyDescriptor(object);
-			addOwningModelSpecificEventPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -146,28 +145,6 @@ public class ModelSpecificActionItemProvider
 				 getString("_UI_ModelSpecificAction_parameters_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ModelSpecificAction_parameters_feature", "_UI_ModelSpecificAction_type"),
 				 GlmlPackage.Literals.MODEL_SPECIFIC_ACTION__PARAMETERS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Owning Model Specific Event feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOwningModelSpecificEventPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ModelSpecificAction_owningModelSpecificEvent_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModelSpecificAction_owningModelSpecificEvent_feature", "_UI_ModelSpecificAction_type"),
-				 GlmlPackage.Literals.MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT,
 				 true,
 				 false,
 				 true,

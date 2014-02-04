@@ -2,19 +2,20 @@
  */
 package glml.impl;
 
-import fr.inria.aoste.timesquare.ECL.ECLPackage;
-
 import glml.DomainSpecificAction;
 import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
-import glml.ExtendedCcslElement;
+import glml.ECLEvent;
 import glml.GlmlFactory;
 import glml.GlmlPackage;
+import glml.Identity;
 import glml.ImportStatement;
-import glml.MocElement;
+import glml.MocEvent;
 import glml.ModelSpecificAction;
 import glml.ModelSpecificEvent;
 import glml.NamedElement;
+import glml.Pattern;
+import glml.SpatialCoincidence;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -23,6 +24,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.CompleteOCLCSPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,6 +67,27 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass patternEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass identityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass spatialCoincidenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass domainSpecificActionEClass = null;
 
 	/**
@@ -71,14 +95,14 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass mocElementEClass = null;
+	private EClass mocEventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass extendedCcslElementEClass = null;
+	private EClass eclEventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,7 +165,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		ECLPackage.eINSTANCE.eClass();
+		CompleteOCLCSPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -263,6 +287,60 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPattern() {
+		return patternEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIdentity() {
+		return identityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIdentity_Argument() {
+		return (EReference)identityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSpatialCoincidence() {
+		return spatialCoincidenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpatialCoincidence_FirstArgument() {
+		return (EReference)spatialCoincidenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpatialCoincidence_SecondArgument() {
+		return (EReference)spatialCoincidenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDomainSpecificAction() {
 		return domainSpecificActionEClass;
 	}
@@ -308,8 +386,8 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMocElement() {
-		return mocElementEClass;
+	public EClass getMocEvent() {
+		return mocEventEClass;
 	}
 
 	/**
@@ -317,8 +395,8 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMocElement_Arguments() {
-		return (EReference)mocElementEClass.getEStructuralFeatures().get(0);
+	public EClass getECLEvent() {
+		return eclEventEClass;
 	}
 
 	/**
@@ -326,17 +404,8 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExtendedCcslElement() {
-		return extendedCcslElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExtendedCcslElement_Element() {
-		return (EReference)extendedCcslElementEClass.getEStructuralFeatures().get(0);
+	public EReference getECLEvent_Element() {
+		return (EReference)eclEventEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -472,17 +541,25 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		createEReference(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__CONDITION);
 		createEReference(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS);
 
+		patternEClass = createEClass(PATTERN);
+
+		identityEClass = createEClass(IDENTITY);
+		createEReference(identityEClass, IDENTITY__ARGUMENT);
+
+		spatialCoincidenceEClass = createEClass(SPATIAL_COINCIDENCE);
+		createEReference(spatialCoincidenceEClass, SPATIAL_COINCIDENCE__FIRST_ARGUMENT);
+		createEReference(spatialCoincidenceEClass, SPATIAL_COINCIDENCE__SECOND_ARGUMENT);
+
 		domainSpecificActionEClass = createEClass(DOMAIN_SPECIFIC_ACTION);
 		createEReference(domainSpecificActionEClass, DOMAIN_SPECIFIC_ACTION__TARGET_CLASS);
 		createEReference(domainSpecificActionEClass, DOMAIN_SPECIFIC_ACTION__OPERATION);
 		createEReference(domainSpecificActionEClass, DOMAIN_SPECIFIC_ACTION__PARAMETER_TYPES);
 		createEReference(domainSpecificActionEClass, DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT);
 
-		mocElementEClass = createEClass(MOC_ELEMENT);
-		createEReference(mocElementEClass, MOC_ELEMENT__ARGUMENTS);
+		mocEventEClass = createEClass(MOC_EVENT);
 
-		extendedCcslElementEClass = createEClass(EXTENDED_CCSL_ELEMENT);
-		createEReference(extendedCcslElementEClass, EXTENDED_CCSL_ELEMENT__ELEMENT);
+		eclEventEClass = createEClass(ECL_EVENT);
+		createEReference(eclEventEClass, ECL_EVENT__ELEMENT);
 
 		modelSpecificEventEClass = createEClass(MODEL_SPECIFIC_EVENT);
 		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__REIFICATION);
@@ -522,7 +599,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 
 		// Obtain other dependent packages
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-		ECLPackage theECLPackage = (ECLPackage)EPackage.Registry.INSTANCE.getEPackage(ECLPackage.eNS_URI);
+		CompleteOCLCSPackage theCompleteOCLCSPackage = (CompleteOCLCSPackage)EPackage.Registry.INSTANCE.getEPackage(CompleteOCLCSPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -531,7 +608,9 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		// Add supertypes to classes
 		domainSpecificEventFileEClass.getESuperTypes().add(this.getNamedElement());
 		domainSpecificEventEClass.getESuperTypes().add(this.getNamedElement());
-		extendedCcslElementEClass.getESuperTypes().add(this.getMocElement());
+		identityEClass.getESuperTypes().add(this.getPattern());
+		spatialCoincidenceEClass.getESuperTypes().add(this.getPattern());
+		eclEventEClass.getESuperTypes().add(this.getMocEvent());
 		modelSpecificEventEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
@@ -547,8 +626,17 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		initEAttribute(getImportStatement_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, -1, ImportStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(domainSpecificEventEClass, DomainSpecificEvent.class, "DomainSpecificEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDomainSpecificEvent_Condition(), this.getMocElement(), null, "condition", null, 1, 1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSpecificEvent_Condition(), this.getPattern(), null, "condition", null, 1, 1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecificEvent_DomainSpecificActions(), this.getDomainSpecificAction(), this.getDomainSpecificAction_OwningDomainSpecificEvent(), "domainSpecificActions", null, 0, -1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(patternEClass, Pattern.class, "Pattern", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(identityEClass, Identity.class, "Identity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIdentity_Argument(), this.getMocEvent(), null, "argument", null, 1, 1, Identity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(spatialCoincidenceEClass, SpatialCoincidence.class, "SpatialCoincidence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSpatialCoincidence_FirstArgument(), this.getMocEvent(), null, "firstArgument", null, 1, 1, SpatialCoincidence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpatialCoincidence_SecondArgument(), this.getMocEvent(), null, "secondArgument", null, 1, 1, SpatialCoincidence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(domainSpecificActionEClass, DomainSpecificAction.class, "DomainSpecificAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDomainSpecificAction_TargetClass(), theEcorePackage.getEClassifier(), null, "targetClass", null, 1, 1, DomainSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -556,15 +644,14 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		initEReference(getDomainSpecificAction_ParameterTypes(), theEcorePackage.getEClassifier(), null, "parameterTypes", null, 0, -1, DomainSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecificAction_OwningDomainSpecificEvent(), this.getDomainSpecificEvent(), this.getDomainSpecificEvent_DomainSpecificActions(), "owningDomainSpecificEvent", null, 1, 1, DomainSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(mocElementEClass, MocElement.class, "MocElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMocElement_Arguments(), theEcorePackage.getEObject(), null, "arguments", null, 0, -1, MocElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(mocEventEClass, MocEvent.class, "MocEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(extendedCcslElementEClass, ExtendedCcslElement.class, "ExtendedCcslElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExtendedCcslElement_Element(), theECLPackage.getEventType(), null, "element", null, 1, 1, ExtendedCcslElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eclEventEClass, ECLEvent.class, "ECLEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getECLEvent_Element(), theCompleteOCLCSPackage.getDefPropertyCS(), null, "element", null, 1, 1, ECLEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelSpecificEventEClass, ModelSpecificEvent.class, "ModelSpecificEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelSpecificEvent_Reification(), this.getDomainSpecificEvent(), null, "reification", null, 0, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModelSpecificEvent_Condition(), this.getMocElement(), null, "condition", null, 1, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelSpecificEvent_Condition(), this.getPattern(), null, "condition", null, 1, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelSpecificEvent_ModelSpecificActions(), this.getModelSpecificAction(), this.getModelSpecificAction_OwningModelSpecificEvent(), "modelSpecificActions", null, 0, -1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelSpecificActionEClass, ModelSpecificAction.class, "ModelSpecificAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

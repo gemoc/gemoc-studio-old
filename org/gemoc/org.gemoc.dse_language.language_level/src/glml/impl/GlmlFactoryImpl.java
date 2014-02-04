@@ -59,8 +59,10 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT_FILE: return createDomainSpecificEventFile();
 			case GlmlPackage.IMPORT_STATEMENT: return createImportStatement();
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT: return createDomainSpecificEvent();
+			case GlmlPackage.IDENTITY: return createIdentity();
+			case GlmlPackage.SPATIAL_COINCIDENCE: return createSpatialCoincidence();
 			case GlmlPackage.DOMAIN_SPECIFIC_ACTION: return createDomainSpecificAction();
-			case GlmlPackage.EXTENDED_CCSL_ELEMENT: return createExtendedCcslElement();
+			case GlmlPackage.ECL_EVENT: return createECLEvent();
 			case GlmlPackage.MODEL_SPECIFIC_EVENT: return createModelSpecificEvent();
 			case GlmlPackage.MODEL_SPECIFIC_ACTION: return createModelSpecificAction();
 			default:
@@ -103,6 +105,26 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Identity createIdentity() {
+		IdentityImpl identity = new IdentityImpl();
+		return identity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SpatialCoincidence createSpatialCoincidence() {
+		SpatialCoincidenceImpl spatialCoincidence = new SpatialCoincidenceImpl();
+		return spatialCoincidence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DomainSpecificAction createDomainSpecificAction() {
 		DomainSpecificActionImpl domainSpecificAction = new DomainSpecificActionImpl();
 		return domainSpecificAction;
@@ -113,9 +135,9 @@ public class GlmlFactoryImpl extends EFactoryImpl implements GlmlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExtendedCcslElement createExtendedCcslElement() {
-		ExtendedCcslElementImpl extendedCcslElement = new ExtendedCcslElementImpl();
-		return extendedCcslElement;
+	public ECLEvent createECLEvent() {
+		ECLEventImpl eclEvent = new ECLEventImpl();
+		return eclEvent;
 	}
 
 	/**

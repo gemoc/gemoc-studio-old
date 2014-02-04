@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.dse_language.language_level/src" modelPluginID="org.gemoc.dse_language.language_level"
     modelName="GemocLanguageMappingLanguage" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
-    usedGenPackages="../../org.eclipse.ocl.examples.xtext.base/model/BaseCS.genmodel#//basecs ../../org.eclipse.ocl.examples.xtext.completeocl/model/CompleteOCLCS.genmodel#//completeoclcs ../../fr.inria.aoste.timesquare.ecl/model/ecl.genmodel#//ECL ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.ocl.examples.xtext.essentialocl/model/EssentialOCLCS.genmodel#//essentialoclcs ../../org.eclipse.ocl.examples.pivot/model/Pivot.merged.genmodel#//pivot ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel"
+    usedGenPackages="../../org.eclipse.ocl.examples.xtext.base/model/BaseCS.genmodel#//basecs ../../org.eclipse.ocl.examples.xtext.completeocl/model/CompleteOCLCS.genmodel#//completeoclcs ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.ocl.examples.xtext.essentialocl/model/EssentialOCLCS.genmodel#//essentialoclcs ../../org.eclipse.ocl.examples.pivot/model/Pivot.merged.genmodel#//pivot"
     operationReflection="true" importOrganizing="true">
   <foreignModel>GemocLanguageMappingLanguage.ecore</foreignModel>
   <genPackages prefix="Glml" disposableProviderFactory="true" ecorePackage="GemocLanguageMappingLanguage.ecore#/">
@@ -22,17 +22,23 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificEvent/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificEvent/domainSpecificActions"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="GemocLanguageMappingLanguage.ecore#//Pattern"/>
+    <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//Identity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//Identity/argument"/>
+    </genClasses>
+    <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//SpatialCoincidence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//SpatialCoincidence/firstArgument"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//SpatialCoincidence/secondArgument"/>
+    </genClasses>
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//DomainSpecificAction">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificAction/targetClass"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificAction/operation"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificAction/parameterTypes"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificAction/owningDomainSpecificEvent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificAction/owningDomainSpecificEvent"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="GemocLanguageMappingLanguage.ecore#//MocElement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//MocElement/arguments"/>
-    </genClasses>
-    <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//ExtendedCcslElement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ExtendedCcslElement/element"/>
+    <genClasses image="false" ecoreClass="GemocLanguageMappingLanguage.ecore#//MocEvent"/>
+    <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//ECLEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ECLEvent/element"/>
     </genClasses>
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent/reification"/>
@@ -44,7 +50,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificAction/target"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificAction/operation"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificAction/parameters"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificAction/owningModelSpecificEvent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificAction/owningModelSpecificEvent"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -6,8 +6,6 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.provider.TimeModelEditPlugin;
-
 /**
  * This is the central singleton for the GemocLanguageMappingLanguage edit plugin.
  * <!-- begin-user-doc -->
@@ -35,13 +33,12 @@ public final class GemocLanguageMappingLanguageEditPlugin extends EMFPlugin {
 	 * Create the instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public GemocLanguageMappingLanguageEditPlugin() {
 		super
 		  (new ResourceLocator [] {
 		     EcoreEditPlugin.INSTANCE,
-		     TimeModelEditPlugin.INSTANCE,
 		   });
 	}
 

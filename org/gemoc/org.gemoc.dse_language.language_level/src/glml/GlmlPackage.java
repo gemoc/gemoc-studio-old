@@ -250,6 +250,117 @@ public interface GlmlPackage extends EPackage {
 	int DOMAIN_SPECIFIC_EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link glml.impl.PatternImpl <em>Pattern</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glml.impl.PatternImpl
+	 * @see glml.impl.GlmlPackageImpl#getPattern()
+	 * @generated
+	 */
+	int PATTERN = 4;
+
+	/**
+	 * The number of structural features of the '<em>Pattern</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATTERN_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Pattern</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATTERN_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link glml.impl.IdentityImpl <em>Identity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glml.impl.IdentityImpl
+	 * @see glml.impl.GlmlPackageImpl#getIdentity()
+	 * @generated
+	 */
+	int IDENTITY = 5;
+
+	/**
+	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY__ARGUMENT = PATTERN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Identity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_FEATURE_COUNT = PATTERN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Identity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_OPERATION_COUNT = PATTERN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link glml.impl.SpatialCoincidenceImpl <em>Spatial Coincidence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glml.impl.SpatialCoincidenceImpl
+	 * @see glml.impl.GlmlPackageImpl#getSpatialCoincidence()
+	 * @generated
+	 */
+	int SPATIAL_COINCIDENCE = 6;
+
+	/**
+	 * The feature id for the '<em><b>First Argument</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPATIAL_COINCIDENCE__FIRST_ARGUMENT = PATTERN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Second Argument</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPATIAL_COINCIDENCE__SECOND_ARGUMENT = PATTERN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Spatial Coincidence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPATIAL_COINCIDENCE_FEATURE_COUNT = PATTERN_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Spatial Coincidence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPATIAL_COINCIDENCE_OPERATION_COUNT = PATTERN_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link glml.impl.DomainSpecificActionImpl <em>Domain Specific Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -257,7 +368,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getDomainSpecificAction()
 	 * @generated
 	 */
-	int DOMAIN_SPECIFIC_ACTION = 4;
+	int DOMAIN_SPECIFIC_ACTION = 7;
 
 	/**
 	 * The feature id for the '<em><b>Target Class</b></em>' reference.
@@ -314,60 +425,42 @@ public interface GlmlPackage extends EPackage {
 	int DOMAIN_SPECIFIC_ACTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link glml.impl.MocElementImpl <em>Moc Element</em>}' class.
+	 * The meta object id for the '{@link glml.impl.MocEventImpl <em>Moc Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see glml.impl.MocElementImpl
-	 * @see glml.impl.GlmlPackageImpl#getMocElement()
+	 * @see glml.impl.MocEventImpl
+	 * @see glml.impl.GlmlPackageImpl#getMocEvent()
 	 * @generated
 	 */
-	int MOC_ELEMENT = 5;
+	int MOC_EVENT = 8;
 
 	/**
-	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
+	 * The number of structural features of the '<em>Moc Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOC_ELEMENT__ARGUMENTS = 0;
+	int MOC_EVENT_FEATURE_COUNT = 0;
 
 	/**
-	 * The number of structural features of the '<em>Moc Element</em>' class.
+	 * The number of operations of the '<em>Moc Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOC_ELEMENT_FEATURE_COUNT = 1;
+	int MOC_EVENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The number of operations of the '<em>Moc Element</em>' class.
+	 * The meta object id for the '{@link glml.impl.ECLEventImpl <em>ECL Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MOC_ELEMENT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link glml.impl.ExtendedCcslElementImpl <em>Extended Ccsl Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.ExtendedCcslElementImpl
-	 * @see glml.impl.GlmlPackageImpl#getExtendedCcslElement()
+	 * @see glml.impl.ECLEventImpl
+	 * @see glml.impl.GlmlPackageImpl#getECLEvent()
 	 * @generated
 	 */
-	int EXTENDED_CCSL_ELEMENT = 6;
-
-	/**
-	 * The feature id for the '<em><b>Arguments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENDED_CCSL_ELEMENT__ARGUMENTS = MOC_ELEMENT__ARGUMENTS;
+	int ECL_EVENT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Element</b></em>' reference.
@@ -376,25 +469,25 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENDED_CCSL_ELEMENT__ELEMENT = MOC_ELEMENT_FEATURE_COUNT + 0;
+	int ECL_EVENT__ELEMENT = MOC_EVENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Extended Ccsl Element</em>' class.
+	 * The number of structural features of the '<em>ECL Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENDED_CCSL_ELEMENT_FEATURE_COUNT = MOC_ELEMENT_FEATURE_COUNT + 1;
+	int ECL_EVENT_FEATURE_COUNT = MOC_EVENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Extended Ccsl Element</em>' class.
+	 * The number of operations of the '<em>ECL Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENDED_CCSL_ELEMENT_OPERATION_COUNT = MOC_ELEMENT_OPERATION_COUNT + 0;
+	int ECL_EVENT_OPERATION_COUNT = MOC_EVENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link glml.impl.ModelSpecificEventImpl <em>Model Specific Event</em>}' class.
@@ -404,7 +497,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getModelSpecificEvent()
 	 * @generated
 	 */
-	int MODEL_SPECIFIC_EVENT = 7;
+	int MODEL_SPECIFIC_EVENT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -468,7 +561,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getModelSpecificAction()
 	 * @generated
 	 */
-	int MODEL_SPECIFIC_ACTION = 8;
+	int MODEL_SPECIFIC_ACTION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Reification</b></em>' reference.
@@ -652,6 +745,69 @@ public interface GlmlPackage extends EPackage {
 	EReference getDomainSpecificEvent_DomainSpecificActions();
 
 	/**
+	 * Returns the meta object for class '{@link glml.Pattern <em>Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pattern</em>'.
+	 * @see glml.Pattern
+	 * @generated
+	 */
+	EClass getPattern();
+
+	/**
+	 * Returns the meta object for class '{@link glml.Identity <em>Identity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Identity</em>'.
+	 * @see glml.Identity
+	 * @generated
+	 */
+	EClass getIdentity();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link glml.Identity#getArgument <em>Argument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Argument</em>'.
+	 * @see glml.Identity#getArgument()
+	 * @see #getIdentity()
+	 * @generated
+	 */
+	EReference getIdentity_Argument();
+
+	/**
+	 * Returns the meta object for class '{@link glml.SpatialCoincidence <em>Spatial Coincidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Spatial Coincidence</em>'.
+	 * @see glml.SpatialCoincidence
+	 * @generated
+	 */
+	EClass getSpatialCoincidence();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link glml.SpatialCoincidence#getFirstArgument <em>First Argument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>First Argument</em>'.
+	 * @see glml.SpatialCoincidence#getFirstArgument()
+	 * @see #getSpatialCoincidence()
+	 * @generated
+	 */
+	EReference getSpatialCoincidence_FirstArgument();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link glml.SpatialCoincidence#getSecondArgument <em>Second Argument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Second Argument</em>'.
+	 * @see glml.SpatialCoincidence#getSecondArgument()
+	 * @see #getSpatialCoincidence()
+	 * @generated
+	 */
+	EReference getSpatialCoincidence_SecondArgument();
+
+	/**
 	 * Returns the meta object for class '{@link glml.DomainSpecificAction <em>Domain Specific Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -706,46 +862,35 @@ public interface GlmlPackage extends EPackage {
 	EReference getDomainSpecificAction_OwningDomainSpecificEvent();
 
 	/**
-	 * Returns the meta object for class '{@link glml.MocElement <em>Moc Element</em>}'.
+	 * Returns the meta object for class '{@link glml.MocEvent <em>Moc Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Moc Element</em>'.
-	 * @see glml.MocElement
+	 * @return the meta object for class '<em>Moc Event</em>'.
+	 * @see glml.MocEvent
 	 * @generated
 	 */
-	EClass getMocElement();
+	EClass getMocEvent();
 
 	/**
-	 * Returns the meta object for the reference list '{@link glml.MocElement#getArguments <em>Arguments</em>}'.
+	 * Returns the meta object for class '{@link glml.ECLEvent <em>ECL Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Arguments</em>'.
-	 * @see glml.MocElement#getArguments()
-	 * @see #getMocElement()
+	 * @return the meta object for class '<em>ECL Event</em>'.
+	 * @see glml.ECLEvent
 	 * @generated
 	 */
-	EReference getMocElement_Arguments();
+	EClass getECLEvent();
 
 	/**
-	 * Returns the meta object for class '{@link glml.ExtendedCcslElement <em>Extended Ccsl Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Extended Ccsl Element</em>'.
-	 * @see glml.ExtendedCcslElement
-	 * @generated
-	 */
-	EClass getExtendedCcslElement();
-
-	/**
-	 * Returns the meta object for the reference '{@link glml.ExtendedCcslElement#getElement <em>Element</em>}'.
+	 * Returns the meta object for the reference '{@link glml.ECLEvent#getElement <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Element</em>'.
-	 * @see glml.ExtendedCcslElement#getElement()
-	 * @see #getExtendedCcslElement()
+	 * @see glml.ECLEvent#getElement()
+	 * @see #getECLEvent()
 	 * @generated
 	 */
-	EReference getExtendedCcslElement_Element();
+	EReference getECLEvent_Element();
 
 	/**
 	 * Returns the meta object for class '{@link glml.ModelSpecificEvent <em>Model Specific Event</em>}'.
@@ -975,6 +1120,60 @@ public interface GlmlPackage extends EPackage {
 		EReference DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS = eINSTANCE.getDomainSpecificEvent_DomainSpecificActions();
 
 		/**
+		 * The meta object literal for the '{@link glml.impl.PatternImpl <em>Pattern</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glml.impl.PatternImpl
+		 * @see glml.impl.GlmlPackageImpl#getPattern()
+		 * @generated
+		 */
+		EClass PATTERN = eINSTANCE.getPattern();
+
+		/**
+		 * The meta object literal for the '{@link glml.impl.IdentityImpl <em>Identity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glml.impl.IdentityImpl
+		 * @see glml.impl.GlmlPackageImpl#getIdentity()
+		 * @generated
+		 */
+		EClass IDENTITY = eINSTANCE.getIdentity();
+
+		/**
+		 * The meta object literal for the '<em><b>Argument</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IDENTITY__ARGUMENT = eINSTANCE.getIdentity_Argument();
+
+		/**
+		 * The meta object literal for the '{@link glml.impl.SpatialCoincidenceImpl <em>Spatial Coincidence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glml.impl.SpatialCoincidenceImpl
+		 * @see glml.impl.GlmlPackageImpl#getSpatialCoincidence()
+		 * @generated
+		 */
+		EClass SPATIAL_COINCIDENCE = eINSTANCE.getSpatialCoincidence();
+
+		/**
+		 * The meta object literal for the '<em><b>First Argument</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPATIAL_COINCIDENCE__FIRST_ARGUMENT = eINSTANCE.getSpatialCoincidence_FirstArgument();
+
+		/**
+		 * The meta object literal for the '<em><b>Second Argument</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPATIAL_COINCIDENCE__SECOND_ARGUMENT = eINSTANCE.getSpatialCoincidence_SecondArgument();
+
+		/**
 		 * The meta object literal for the '{@link glml.impl.DomainSpecificActionImpl <em>Domain Specific Action</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1017,32 +1216,24 @@ public interface GlmlPackage extends EPackage {
 		EReference DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT = eINSTANCE.getDomainSpecificAction_OwningDomainSpecificEvent();
 
 		/**
-		 * The meta object literal for the '{@link glml.impl.MocElementImpl <em>Moc Element</em>}' class.
+		 * The meta object literal for the '{@link glml.impl.MocEventImpl <em>Moc Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see glml.impl.MocElementImpl
-		 * @see glml.impl.GlmlPackageImpl#getMocElement()
+		 * @see glml.impl.MocEventImpl
+		 * @see glml.impl.GlmlPackageImpl#getMocEvent()
 		 * @generated
 		 */
-		EClass MOC_ELEMENT = eINSTANCE.getMocElement();
+		EClass MOC_EVENT = eINSTANCE.getMocEvent();
 
 		/**
-		 * The meta object literal for the '<em><b>Arguments</b></em>' reference list feature.
+		 * The meta object literal for the '{@link glml.impl.ECLEventImpl <em>ECL Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see glml.impl.ECLEventImpl
+		 * @see glml.impl.GlmlPackageImpl#getECLEvent()
 		 * @generated
 		 */
-		EReference MOC_ELEMENT__ARGUMENTS = eINSTANCE.getMocElement_Arguments();
-
-		/**
-		 * The meta object literal for the '{@link glml.impl.ExtendedCcslElementImpl <em>Extended Ccsl Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.impl.ExtendedCcslElementImpl
-		 * @see glml.impl.GlmlPackageImpl#getExtendedCcslElement()
-		 * @generated
-		 */
-		EClass EXTENDED_CCSL_ELEMENT = eINSTANCE.getExtendedCcslElement();
+		EClass ECL_EVENT = eINSTANCE.getECLEvent();
 
 		/**
 		 * The meta object literal for the '<em><b>Element</b></em>' reference feature.
@@ -1050,7 +1241,7 @@ public interface GlmlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTENDED_CCSL_ELEMENT__ELEMENT = eINSTANCE.getExtendedCcslElement_Element();
+		EReference ECL_EVENT__ELEMENT = eINSTANCE.getECLEvent_Element();
 
 		/**
 		 * The meta object literal for the '{@link glml.impl.ModelSpecificEventImpl <em>Model Specific Event</em>}' class.

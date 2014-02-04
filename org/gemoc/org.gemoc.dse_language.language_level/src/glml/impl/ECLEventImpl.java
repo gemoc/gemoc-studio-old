@@ -2,9 +2,7 @@
  */
 package glml.impl;
 
-import fr.inria.aoste.timesquare.ECL.EventType;
-
-import glml.ExtendedCcslElement;
+import glml.ECLEvent;
 import glml.GlmlPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -14,20 +12,22 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.DefPropertyCS;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Extended Ccsl Element</b></em>'.
+ * An implementation of the model object '<em><b>ECL Event</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link glml.impl.ExtendedCcslElementImpl#getElement <em>Element</em>}</li>
+ *   <li>{@link glml.impl.ECLEventImpl#getElement <em>Element</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedCcslElement {
+public class ECLEventImpl extends MocEventImpl implements ECLEvent {
 	/**
 	 * The cached value of the '{@link #getElement() <em>Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -36,14 +36,14 @@ public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedC
 	 * @generated
 	 * @ordered
 	 */
-	protected EventType element;
+	protected DefPropertyCS element;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExtendedCcslElementImpl() {
+	protected ECLEventImpl() {
 		super();
 	}
 
@@ -54,7 +54,7 @@ public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedC
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GlmlPackage.Literals.EXTENDED_CCSL_ELEMENT;
+		return GlmlPackage.Literals.ECL_EVENT;
 	}
 
 	/**
@@ -62,13 +62,13 @@ public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EventType getElement() {
+	public DefPropertyCS getElement() {
 		if (element != null && element.eIsProxy()) {
 			InternalEObject oldElement = (InternalEObject)element;
-			element = (EventType)eResolveProxy(oldElement);
+			element = (DefPropertyCS)eResolveProxy(oldElement);
 			if (element != oldElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT, oldElement, element));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.ECL_EVENT__ELEMENT, oldElement, element));
 			}
 		}
 		return element;
@@ -79,7 +79,7 @@ public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EventType basicGetElement() {
+	public DefPropertyCS basicGetElement() {
 		return element;
 	}
 
@@ -88,11 +88,11 @@ public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setElement(EventType newElement) {
-		EventType oldElement = element;
+	public void setElement(DefPropertyCS newElement) {
+		DefPropertyCS oldElement = element;
 		element = newElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT, oldElement, element));
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.ECL_EVENT__ELEMENT, oldElement, element));
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedC
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT:
+			case GlmlPackage.ECL_EVENT__ELEMENT:
 				if (resolve) return getElement();
 				return basicGetElement();
 		}
@@ -118,8 +118,8 @@ public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedC
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT:
-				setElement((EventType)newValue);
+			case GlmlPackage.ECL_EVENT__ELEMENT:
+				setElement((DefPropertyCS)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -133,8 +133,8 @@ public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedC
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT:
-				setElement((EventType)null);
+			case GlmlPackage.ECL_EVENT__ELEMENT:
+				setElement((DefPropertyCS)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -148,10 +148,10 @@ public class ExtendedCcslElementImpl extends MocElementImpl implements ExtendedC
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.EXTENDED_CCSL_ELEMENT__ELEMENT:
+			case GlmlPackage.ECL_EVENT__ELEMENT:
 				return element != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ExtendedCcslElementImpl
+} //ECLEventImpl

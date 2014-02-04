@@ -19,9 +19,20 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainSpecificEvent" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-        eType="#//MocElement" containment="true"/>
+        eType="#//Pattern" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecificActions"
         upperBound="-1" eType="#//DomainSpecificAction" containment="true" eOpposite="#//DomainSpecificAction/owningDomainSpecificEvent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pattern" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="#//Pattern">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="argument" lowerBound="1"
+        eType="#//MocEvent" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpatialCoincidence" eSuperTypes="#//Pattern">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="firstArgument" lowerBound="1"
+        eType="#//MocEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="secondArgument" lowerBound="1"
+        eType="#//MocEvent" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainSpecificAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetClass" lowerBound="1"
@@ -33,18 +44,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningDomainSpecificEvent"
         lowerBound="1" eType="#//DomainSpecificEvent" eOpposite="#//DomainSpecificEvent/domainSpecificActions"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MocElement" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
-        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExtendedCcslElement" eSuperTypes="#//MocElement">
+  <eClassifiers xsi:type="ecore:EClass" name="MocEvent" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ECLEvent" eSuperTypes="#//MocEvent">
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
-        eType="ecore:EClass ../../fr.inria.aoste.timesquare.ecl/model/ecl.ecore#//EventType"/>
+        eType="ecore:EClass ../../org.eclipse.ocl.examples.xtext.completeocl/model/CompleteOCLCS.ecore#//DefPropertyCS"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelSpecificEvent" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reification" eType="#//DomainSpecificEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-        eType="#//MocElement" containment="true"/>
+        eType="#//Pattern" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelSpecificActions" upperBound="-1"
         eType="#//ModelSpecificAction" containment="true" eOpposite="#//ModelSpecificAction/owningModelSpecificEvent"/>
   </eClassifiers>

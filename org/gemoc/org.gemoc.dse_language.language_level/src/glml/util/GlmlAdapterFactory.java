@@ -84,16 +84,28 @@ public class GlmlAdapterFactory extends AdapterFactoryImpl {
 				return createDomainSpecificEventAdapter();
 			}
 			@Override
+			public Adapter casePattern(Pattern object) {
+				return createPatternAdapter();
+			}
+			@Override
+			public Adapter caseIdentity(Identity object) {
+				return createIdentityAdapter();
+			}
+			@Override
+			public Adapter caseSpatialCoincidence(SpatialCoincidence object) {
+				return createSpatialCoincidenceAdapter();
+			}
+			@Override
 			public Adapter caseDomainSpecificAction(DomainSpecificAction object) {
 				return createDomainSpecificActionAdapter();
 			}
 			@Override
-			public Adapter caseMocElement(MocElement object) {
-				return createMocElementAdapter();
+			public Adapter caseMocEvent(MocEvent object) {
+				return createMocEventAdapter();
 			}
 			@Override
-			public Adapter caseExtendedCcslElement(ExtendedCcslElement object) {
-				return createExtendedCcslElementAdapter();
+			public Adapter caseECLEvent(ECLEvent object) {
+				return createECLEventAdapter();
 			}
 			@Override
 			public Adapter caseModelSpecificEvent(ModelSpecificEvent object) {
@@ -180,6 +192,48 @@ public class GlmlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link glml.Pattern <em>Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see glml.Pattern
+	 * @generated
+	 */
+	public Adapter createPatternAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link glml.Identity <em>Identity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see glml.Identity
+	 * @generated
+	 */
+	public Adapter createIdentityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link glml.SpatialCoincidence <em>Spatial Coincidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see glml.SpatialCoincidence
+	 * @generated
+	 */
+	public Adapter createSpatialCoincidenceAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link glml.DomainSpecificAction <em>Domain Specific Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -194,30 +248,30 @@ public class GlmlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link glml.MocElement <em>Moc Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link glml.MocEvent <em>Moc Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see glml.MocElement
+	 * @see glml.MocEvent
 	 * @generated
 	 */
-	public Adapter createMocElementAdapter() {
+	public Adapter createMocEventAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link glml.ExtendedCcslElement <em>Extended Ccsl Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link glml.ECLEvent <em>ECL Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see glml.ExtendedCcslElement
+	 * @see glml.ECLEvent
 	 * @generated
 	 */
-	public Adapter createExtendedCcslElementAdapter() {
+	public Adapter createECLEventAdapter() {
 		return null;
 	}
 

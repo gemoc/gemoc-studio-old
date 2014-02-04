@@ -5,14 +5,20 @@ package glml.impl;
 import glml.DomainSpecificAction;
 import glml.DomainSpecificEvent;
 import glml.GlmlPackage;
-import glml.MocElement;
+import glml.Pattern;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -39,7 +45,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * @generated
 	 * @ordered
 	 */
-	protected MocElement condition;
+	protected Pattern condition;
 
 	/**
 	 * The cached value of the '{@link #getDomainSpecificActions() <em>Domain Specific Actions</em>}' containment reference list.
@@ -75,7 +81,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MocElement getCondition() {
+	public Pattern getCondition() {
 		return condition;
 	}
 
@@ -84,8 +90,8 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCondition(MocElement newCondition, NotificationChain msgs) {
-		MocElement oldCondition = condition;
+	public NotificationChain basicSetCondition(Pattern newCondition, NotificationChain msgs) {
+		Pattern oldCondition = condition;
 		condition = newCondition;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION, oldCondition, newCondition);
@@ -99,7 +105,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCondition(MocElement newCondition) {
+	public void setCondition(Pattern newCondition) {
 		if (newCondition != condition) {
 			NotificationChain msgs = null;
 			if (condition != null)
@@ -182,7 +188,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
-				setCondition((MocElement)newValue);
+				setCondition((Pattern)newValue);
 				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				getDomainSpecificActions().clear();
@@ -201,7 +207,7 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
-				setCondition((MocElement)null);
+				setCondition((Pattern)null);
 				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				getDomainSpecificActions().clear();

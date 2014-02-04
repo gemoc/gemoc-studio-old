@@ -3,13 +3,6 @@
 package glml.presentation;
 
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.provider.BasicTypeItemProviderAdapterFactory;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.provider.ClassicalExpressionItemProviderAdapterFactory;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.KernelExpression.provider.KernelExpressionItemProviderAdapterFactory;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.KernelRelation.provider.KernelRelationItemProviderAdapterFactory;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.provider.ClockExpressionAndRelationItemProviderAdapterFactory;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.provider.CCSLModelItemProviderAdapterFactory;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.provider.TimeModelItemProviderAdapterFactory;
 import glml.provider.GlmlItemProviderAdapterFactory;
 
 import java.io.IOException;
@@ -663,7 +656,7 @@ public class GlmlEditor
 	 * This sets up the editing domain for the model editor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void initializeEditingDomain() {
 		// Create an adapter factory that yields item providers.
@@ -673,13 +666,6 @@ public class GlmlEditor
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new GlmlItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new TimeModelItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new CCSLModelItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ClassicalExpressionItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ClockExpressionAndRelationItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new KernelExpressionItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new KernelRelationItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new BasicTypeItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

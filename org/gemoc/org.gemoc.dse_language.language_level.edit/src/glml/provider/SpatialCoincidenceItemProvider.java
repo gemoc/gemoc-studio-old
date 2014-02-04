@@ -5,17 +5,12 @@ package glml.provider;
 
 import glml.GlmlFactory;
 import glml.GlmlPackage;
-import glml.ModelSpecificEvent;
-
+import glml.SpatialCoincidence;
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -25,13 +20,13 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link glml.ModelSpecificEvent} object.
+ * This is the item provider adapter for a {@link glml.SpatialCoincidence} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModelSpecificEventItemProvider
-	extends NamedElementItemProvider
+public class SpatialCoincidenceItemProvider
+	extends PatternItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -44,7 +39,7 @@ public class ModelSpecificEventItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModelSpecificEventItemProvider(AdapterFactory adapterFactory) {
+	public SpatialCoincidenceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -59,31 +54,8 @@ public class ModelSpecificEventItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addReificationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Reification feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addReificationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ModelSpecificEvent_reification_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModelSpecificEvent_reification_feature", "_UI_ModelSpecificEvent_type"),
-				 GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__REIFICATION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -98,8 +70,8 @@ public class ModelSpecificEventItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__CONDITION);
-			childrenFeatures.add(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS);
+			childrenFeatures.add(GlmlPackage.Literals.SPATIAL_COINCIDENCE__FIRST_ARGUMENT);
+			childrenFeatures.add(GlmlPackage.Literals.SPATIAL_COINCIDENCE__SECOND_ARGUMENT);
 		}
 		return childrenFeatures;
 	}
@@ -118,14 +90,14 @@ public class ModelSpecificEventItemProvider
 	}
 
 	/**
-	 * This returns ModelSpecificEvent.gif.
+	 * This returns SpatialCoincidence.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModelSpecificEvent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SpatialCoincidence"));
 	}
 
 	/**
@@ -136,10 +108,7 @@ public class ModelSpecificEventItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ModelSpecificEvent)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ModelSpecificEvent_type") :
-			getString("_UI_ModelSpecificEvent_type") + " " + label;
+		return getString("_UI_SpatialCoincidence_type");
 	}
 
 	/**
@@ -153,9 +122,9 @@ public class ModelSpecificEventItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ModelSpecificEvent.class)) {
-			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
-			case GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS:
+		switch (notification.getFeatureID(SpatialCoincidence.class)) {
+			case GlmlPackage.SPATIAL_COINCIDENCE__FIRST_ARGUMENT:
+			case GlmlPackage.SPATIAL_COINCIDENCE__SECOND_ARGUMENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -175,18 +144,36 @@ public class ModelSpecificEventItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__CONDITION,
-				 GlmlFactory.eINSTANCE.createIdentity()));
+				(GlmlPackage.Literals.SPATIAL_COINCIDENCE__FIRST_ARGUMENT,
+				 GlmlFactory.eINSTANCE.createECLEvent()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__CONDITION,
-				 GlmlFactory.eINSTANCE.createSpatialCoincidence()));
+				(GlmlPackage.Literals.SPATIAL_COINCIDENCE__SECOND_ARGUMENT,
+				 GlmlFactory.eINSTANCE.createECLEvent()));
+	}
 
-		newChildDescriptors.add
-			(createChildParameter
-				(GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS,
-				 GlmlFactory.eINSTANCE.createModelSpecificAction()));
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == GlmlPackage.Literals.SPATIAL_COINCIDENCE__FIRST_ARGUMENT ||
+			childFeature == GlmlPackage.Literals.SPATIAL_COINCIDENCE__SECOND_ARGUMENT;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

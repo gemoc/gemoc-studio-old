@@ -49,6 +49,24 @@ public interface GlmlFactory extends EFactory {
 	DomainSpecificEvent createDomainSpecificEvent();
 
 	/**
+	 * Returns a new object of class '<em>Identity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Identity</em>'.
+	 * @generated
+	 */
+	Identity createIdentity();
+
+	/**
+	 * Returns a new object of class '<em>Spatial Coincidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Spatial Coincidence</em>'.
+	 * @generated
+	 */
+	SpatialCoincidence createSpatialCoincidence();
+
+	/**
 	 * Returns a new object of class '<em>Domain Specific Action</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,13 +76,13 @@ public interface GlmlFactory extends EFactory {
 	DomainSpecificAction createDomainSpecificAction();
 
 	/**
-	 * Returns a new object of class '<em>Extended Ccsl Element</em>'.
+	 * Returns a new object of class '<em>ECL Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Extended Ccsl Element</em>'.
+	 * @return a new object of class '<em>ECL Event</em>'.
 	 * @generated
 	 */
-	ExtendedCcslElement createExtendedCcslElement();
+	ECLEvent createECLEvent();
 
 	/**
 	 * Returns a new object of class '<em>Model Specific Event</em>'.

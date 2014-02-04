@@ -127,7 +127,7 @@ public interface ModelSpecificAction extends EObject {
 	 * It is bidirectional and its opposite is '{@link glml.ModelSpecificEvent#getModelSpecificActions <em>Model Specific Actions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owning Model Specific Event</em>' reference isn't clear,
+	 * If the meaning of the '<em>Owning Model Specific Event</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

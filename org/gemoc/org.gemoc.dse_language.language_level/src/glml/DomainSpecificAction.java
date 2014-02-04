@@ -101,7 +101,7 @@ public interface DomainSpecificAction extends EObject {
 	 * It is bidirectional and its opposite is '{@link glml.DomainSpecificEvent#getDomainSpecificActions <em>Domain Specific Actions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owning Domain Specific Event</em>' reference isn't clear,
+	 * If the meaning of the '<em>Owning Domain Specific Event</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

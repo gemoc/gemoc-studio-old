@@ -152,7 +152,12 @@ public class DomainSpecificEventItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION,
-				 GlmlFactory.eINSTANCE.createExtendedCcslElement()));
+				 GlmlFactory.eINSTANCE.createIdentity()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION,
+				 GlmlFactory.eINSTANCE.createSpatialCoincidence()));
 
 		newChildDescriptors.add
 			(createChildParameter

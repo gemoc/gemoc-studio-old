@@ -2,25 +2,25 @@
  */
 package glml;
 
-import fr.inria.aoste.timesquare.ECL.EventType;
+import org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.DefPropertyCS;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Extended Ccsl Element</b></em>'.
+ * A representation of the model object '<em><b>ECL Event</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link glml.ExtendedCcslElement#getElement <em>Element</em>}</li>
+ *   <li>{@link glml.ECLEvent#getElement <em>Element</em>}</li>
  * </ul>
  * </p>
  *
- * @see glml.GlmlPackage#getExtendedCcslElement()
+ * @see glml.GlmlPackage#getECLEvent()
  * @model
  * @generated
  */
-public interface ExtendedCcslElement extends MocElement {
+public interface ECLEvent extends MocEvent {
 	/**
 	 * Returns the value of the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -30,21 +30,21 @@ public interface ExtendedCcslElement extends MocElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element</em>' reference.
-	 * @see #setElement(EventType)
-	 * @see glml.GlmlPackage#getExtendedCcslElement_Element()
+	 * @see #setElement(DefPropertyCS)
+	 * @see glml.GlmlPackage#getECLEvent_Element()
 	 * @model required="true"
 	 * @generated
 	 */
-	EventType getElement();
+	DefPropertyCS getElement();
 
 	/**
-	 * Sets the value of the '{@link glml.ExtendedCcslElement#getElement <em>Element</em>}' reference.
+	 * Sets the value of the '{@link glml.ECLEvent#getElement <em>Element</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Element</em>' reference.
 	 * @see #getElement()
 	 * @generated
 	 */
-	void setElement(EventType value);
+	void setElement(DefPropertyCS value);
 
-} // ExtendedCcslElement
+} // ECLEvent

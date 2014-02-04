@@ -58,12 +58,12 @@ public interface ModelSpecificEvent extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Condition</em>' containment reference.
-	 * @see #setCondition(MocElement)
+	 * @see #setCondition(Pattern)
 	 * @see glml.GlmlPackage#getModelSpecificEvent_Condition()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	MocElement getCondition();
+	Pattern getCondition();
 
 	/**
 	 * Sets the value of the '{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}' containment reference.
@@ -73,7 +73,7 @@ public interface ModelSpecificEvent extends NamedElement {
 	 * @see #getCondition()
 	 * @generated
 	 */
-	void setCondition(MocElement value);
+	void setCondition(Pattern value);
 
 	/**
 	 * Returns the value of the '<em><b>Model Specific Actions</b></em>' containment reference list.
