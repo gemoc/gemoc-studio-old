@@ -2,7 +2,9 @@
     "platform": [
         "http://download.eclipse.org/eclipse/updates/4.3-M-builds/M-4.3.2RC1-201401170910/",
         "http://download.eclipse.org/modeling/emf/emf/updates/2.9.x/",
-        "http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/"
+        "http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/",
+        "http://download.eclipse.org/mpc/nightly",
+        "http://download.eclipse.org/releases/kepler"
         ],
     "modeling-base": [
         "http://download.eclipse.org/modeling/mdt/ocl/updates/maintenance/4.1.2/M201401201522",
@@ -12,7 +14,8 @@
 	"http://download.eclipse.org/modeling/emf/validation/updates/milestones",
 	"http://download.eclipse.org/modeling/emf/transaction/updates/milestones",
         "http://download.eclipse.org/modeling/emf/query/updates/milestones",
-        "http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.1/S201401220957"
+        "http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.1/S201401220957",
+        "http://download.eclipse.org/mmt/qvto/updates/releases/3.3.0"
         ],
     "papyrus": [
         "http://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/0.10/SR2_RC1/main"
