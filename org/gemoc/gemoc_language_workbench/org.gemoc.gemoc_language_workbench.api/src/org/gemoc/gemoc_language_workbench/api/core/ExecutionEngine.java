@@ -100,7 +100,7 @@ public interface ExecutionEngine {
 	 * @return the collection of ModelSpecificEvents which can be triggered by
 	 *         the user.
 	 */
-	public Collection<ModelSpecificEvent> getPossibleEvents();
+	public Collection<ModelSpecificEvent> getCurrentPossibleEvents();
 
 	/** --------------- Influence the MoC Constraints --------------- **/
 	/**

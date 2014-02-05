@@ -92,6 +92,12 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	protected LogicalStep currentStep = null;
 
 	/**
+	 * Memorizing the MSEs found at the current step so we do not have to
+	 * compute it everytime.
+	 */
+	protected Collection<ModelSpecificEvent> currentPossibleEvents = null;
+
+	/**
 	 * The stack of LogicalSteps. If there is no step in this stack when the
 	 * engine needs to proceed to the next step, then a new step is required
 	 * from the MoC Solver. This means that TODO if we want to be able to go
@@ -298,7 +304,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	 * @param step
 	 * @return
 	 */
-	protected abstract Collection<ModelSpecificEvent> match(LogicalStep step);
+	protected abstract Collection<ModelSpecificEvent> match(
+			Map<Integer, LogicalStep> schedulingTrace);
 
 	@Override
 	public void run(int numberOfSteps) {
@@ -314,7 +321,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 	/**
 	 * Updates the scheduling trace and the execution trace. Updates the value
-	 * of currentStep. Adds a new entry to the scheduledEventsMap.
+	 * of currentStep. Adds a new entry to the scheduledEventsMap. Matches the
+	 * scheduling trace and updates the current possible events.
 	 * 
 	 * @param newStep
 	 */
@@ -331,6 +339,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				new ArrayList<ModelSpecificEvent>());
 		this.schedulingTrace.put(previousDate + 1, newStep);
 		this.executionTrace.put(newStep, new ArrayList<ModelSpecificEvent>());
+		this.currentPossibleEvents = this.match(this.schedulingTrace);
+		;
 	}
 
 	/**
@@ -381,8 +391,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	}
 
 	@Override
-	public Collection<ModelSpecificEvent> getPossibleEvents() {
-		return this.match(this.currentStep);
+	public Collection<ModelSpecificEvent> getCurrentPossibleEvents() {
+		return this.currentPossibleEvents;
 	}
 
 	/**

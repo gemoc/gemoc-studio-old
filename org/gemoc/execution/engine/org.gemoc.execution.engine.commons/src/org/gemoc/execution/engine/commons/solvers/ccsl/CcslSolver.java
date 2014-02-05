@@ -73,9 +73,10 @@ public class CcslSolver implements
 			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {
 				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
 				if (c != null) {
-					EList<EObject> linkedObjects = c.getTickingEvent()
+					// OLD now GLML does the DSA-linking.
+					/*EList<EObject> linkedObjects = c.getTickingEvent()
 							.getReferencedObjectRefs();
-					if (linkedObjects.size() == 2) {
+					if (linkedObjects.size() == 2) {*/
 						// OLD (for ECL). Removed because I'm testing with GLML.
 						/*eventOccurrence.setContext(HelperFactory
 								.createModelElementReference(linkedObjects
@@ -84,7 +85,7 @@ public class CcslSolver implements
 								.createModelElementReference(linkedObjects
 										.get(1)));*/
 						eventOccurrence.setReferedElement(HelperFactory.createNamedReference(c.getTickingEvent().getName()));
-					}
+					/*}*/
 				}
 			}
 			return res;

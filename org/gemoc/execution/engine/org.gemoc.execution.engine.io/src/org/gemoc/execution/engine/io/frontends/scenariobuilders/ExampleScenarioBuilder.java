@@ -38,6 +38,9 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 	private JLabel eventLabel;
 	private JLabel targetLabel;
 
+	private Collection<ModelSpecificEvent> possibleEvents;
+	private Collection<JLabel> possibleEventsLabels;
+
 	/**
 	 * Creates the base of the GUI.
 	 */
@@ -60,11 +63,12 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 		this.content.add(injectButton);
 		this.content.add(clearButton);
 		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
+		
 
 		this.content.setLayout(new FlowLayout());
 		this.content
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		
+
 		this.window = new JFrame("GEMOC Execution Engine Scenario Builder");
 		this.window.setContentPane(this.content);
 		this.window.setSize(700, 600);
@@ -92,7 +96,22 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 		this.eventLabel.setText("Selected DSE: " + this.getSelectedEventText());
 		this.targetLabel.setText("Selected model element: "
 				+ this.getSelectedTargetText());
+
+		this.possibleEvents = this.engine.getCurrentPossibleEvents();
+		for (JLabel label : this.possibleEventsLabels) {
+			this.content.remove(label);
+		}
+		this.possibleEventsLabels.clear();
+		this.setAndAddPossibleEventsLabels();
 		this.window.validate();
+	}
+
+	private void setAndAddPossibleEventsLabels() {
+		for (ModelSpecificEvent mse : this.possibleEvents) {
+			JLabel label = new JLabel(mse.getName());
+			this.content.add(label);
+			this.possibleEventsLabels.add(label);
+		}
 	}
 
 	@Override
@@ -102,9 +121,9 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
 		this.addModelButtons(this.engine.getModelResource());
 		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
-		for (ModelSpecificEvent mse : this.engine.getPossibleEvents()) {
-			this.content.add(new JLabel(mse.getName()));
-		}
+		this.content.add(new JLabel("Possible MSEs at this time: "));
+		this.possibleEventsLabels = new ArrayList<JLabel>();
+		this.possibleEvents = null;
 		this.validate();
 	}
 
