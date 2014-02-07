@@ -12,7 +12,6 @@
         eType="#//ProjectKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DSAProject" abstract="true" eSuperTypes="#//ProjectResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Kermeta2DSAProject" eSuperTypes="#//DSAProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="LanguageDefinition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dsaProject" lowerBound="1"
         eType="#//DSAProject" containment="true"/>

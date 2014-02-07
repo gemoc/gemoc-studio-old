@@ -5,7 +5,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectDSAIprojectDialog;
-import org.kermeta.kp.wizard.eclipse.wizards.KermetaProjectNewWizard;
 
 public class CreateDSAWizardContextActionDSA {
 
@@ -31,6 +30,5 @@ public class CreateDSAWizardContextActionDSA {
 	protected void addDSAProjectToConf(String projectName){
 	}
 	
-	protected void getEcoreFile(KermetaProjectNewWizard wizard) {
-	}
+	
 }

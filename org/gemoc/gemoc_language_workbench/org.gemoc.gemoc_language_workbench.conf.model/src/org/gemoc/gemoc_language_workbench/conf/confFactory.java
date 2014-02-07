@@ -31,15 +31,6 @@ public interface confFactory extends EFactory {
 	GemocLanguageWorkbenchConfiguration createGemocLanguageWorkbenchConfiguration();
 
 	/**
-	 * Returns a new object of class '<em>Kermeta2 DSA Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Kermeta2 DSA Project</em>'.
-	 * @generated
-	 */
-	Kermeta2DSAProject createKermeta2DSAProject();
-
-	/**
 	 * Returns a new object of class '<em>Language Definition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -12,6 +12,7 @@ import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchPage;
@@ -19,9 +20,8 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.ide.IDE;
-
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
-import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileKp;
+//import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileKp;
 
 public class ShowDSAProjectHandler extends AbstractHandler implements IHandler {
 	
@@ -31,7 +31,7 @@ public class ShowDSAProjectHandler extends AbstractHandler implements IHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		this.activeFilekp = new ActiveFileKp(this.getUpdateGemocLanguageProjectFromSelection(event));
+		/*this.activeFilekp = new ActiveFileKp(this.getUpdateGemocLanguageProjectFromSelection(event));
 		
 		File fileToOpen = new File(this.activeFilekp.getActiveFile().getLocation().toOSString());
 		if (fileToOpen.exists() && fileToOpen.isFile()) {
@@ -46,7 +46,21 @@ public class ShowDSAProjectHandler extends AbstractHandler implements IHandler {
 		} else {
 		    //Do something if the file does not exist
 		}
-		
+		*/
+		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event)
+		        .getActivePage().getSelection();
+		    if (selection != null & selection instanceof IStructuredSelection) {
+		      IStructuredSelection strucSelection = (IStructuredSelection) selection;
+		      for (Iterator<Object> iterator = strucSelection.iterator(); iterator
+		          .hasNext();) {
+		        Object element = iterator.next();
+		        MessageDialog.openWarning(
+						HandlerUtil.getActiveWorkbenchWindow(event).getShell(),
+						"Gemoc Language Workbench UI",
+						"Show DSA Project command was executed. Action not implemented yet, Selected elment ="+element.toString());
+		        //System.out.println(element.toString());
+		      }
+		    }
 		return null;
 	}
 	

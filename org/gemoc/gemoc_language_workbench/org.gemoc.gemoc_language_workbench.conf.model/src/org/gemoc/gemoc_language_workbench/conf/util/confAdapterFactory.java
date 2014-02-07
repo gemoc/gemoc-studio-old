@@ -80,10 +80,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createDSAProjectAdapter();
 			}
 			@Override
-			public Adapter caseKermeta2DSAProject(Kermeta2DSAProject object) {
-				return createKermeta2DSAProjectAdapter();
-			}
-			@Override
 			public Adapter caseLanguageDefinition(LanguageDefinition object) {
 				return createLanguageDefinitionAdapter();
 			}
@@ -214,20 +210,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDSAProjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject <em>Kermeta2 DSA Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject
-	 * @generated
-	 */
-	public Adapter createKermeta2DSAProjectAdapter() {
 		return null;
 	}
 

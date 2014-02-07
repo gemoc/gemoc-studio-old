@@ -64,7 +64,6 @@
       <feature id="org.eclipse.sirius.runtime.ocl"/>
       <feature id="org.eclipse.sirius.samples"/>
       <feature id="org.obeonetwork.dsl.uml2.runtime.sdk.feature"/>
-      <feature id="org.kermeta.language.feature"/>
       <feature id="org.eclipse.emf.ecoretools.design"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
       <feature id="org.gemoc.execution.trace.feature"/>
