@@ -62,7 +62,6 @@
       <feature id="org.eclipse.sirius.runtime.ide.xtext"/>
       <feature id="org.eclipse.sirius.doc.feature"/>
       <feature id="org.eclipse.sirius.runtime.ocl"/>
-      <feature id="org.eclipse.sirius.samples"/>
       <feature id="org.obeonetwork.dsl.uml2.runtime.sdk.feature"/>
       <feature id="org.eclipse.emf.ecoretools.design"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
