@@ -2,7 +2,7 @@ package org.gemoc.gemoc_language_workbench.ui.wizards;
 
 import org.eclipse.core.resources.IProject;
 import org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA.CreateDSAWizardContextActionDSA;
-import org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA.CreateDSAWizardContextActionDSAK2;
+//import org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA.CreateDSAWizardContextActionDSAK2;
 import org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA.CreateDSAWizardContextActionDSAK3;
 
 public class CreateDSAWizardContextAction {
@@ -19,9 +19,9 @@ public class CreateDSAWizardContextAction {
 
 	public void execute() {
 		switch (actionToExecute) {
-		case CREATE_NEW_K2_DSA_PROJECT:
+		/*case CREATE_NEW_K2_DSA_PROJECT:
 			new CreateDSAWizardContextActionDSAK2(gemocLanguageIProject).createNewDSAProject(); 
-			break;
+			break;*/
 		case CREATE_NEW_K3_DSA_PROJECT:
 			new CreateDSAWizardContextActionDSAK3(gemocLanguageIProject).createNewDSAProject();
 			break;

@@ -85,14 +85,6 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case confPackage.KERMETA2_DSA_PROJECT: {
-				Kermeta2DSAProject kermeta2DSAProject = (Kermeta2DSAProject)theEObject;
-				T result = caseKermeta2DSAProject(kermeta2DSAProject);
-				if (result == null) result = caseDSAProject(kermeta2DSAProject);
-				if (result == null) result = caseProjectResource(kermeta2DSAProject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case confPackage.LANGUAGE_DEFINITION: {
 				LanguageDefinition languageDefinition = (LanguageDefinition)theEObject;
 				T result = caseLanguageDefinition(languageDefinition);
@@ -272,21 +264,6 @@ public class confSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDSAProject(DSAProject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Kermeta2 DSA Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Kermeta2 DSA Project</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseKermeta2DSAProject(Kermeta2DSAProject object) {
 		return null;
 	}
 

@@ -58,7 +58,6 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case confPackage.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION: return createGemocLanguageWorkbenchConfiguration();
-			case confPackage.KERMETA2_DSA_PROJECT: return createKermeta2DSAProject();
 			case confPackage.LANGUAGE_DEFINITION: return createLanguageDefinition();
 			case confPackage.CCSL_MO_CPROJECT: return createCCSLMoCProject();
 			case confPackage.EMF_ECORE_PROJECT: return createEMFEcoreProject();
@@ -114,16 +113,6 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	public GemocLanguageWorkbenchConfiguration createGemocLanguageWorkbenchConfiguration() {
 		GemocLanguageWorkbenchConfigurationImpl gemocLanguageWorkbenchConfiguration = new GemocLanguageWorkbenchConfigurationImpl();
 		return gemocLanguageWorkbenchConfiguration;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Kermeta2DSAProject createKermeta2DSAProject() {
-		Kermeta2DSAProjectImpl kermeta2DSAProject = new Kermeta2DSAProjectImpl();
-		return kermeta2DSAProject;
 	}
 
 	/**

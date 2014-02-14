@@ -191,11 +191,6 @@ public class LanguageDefinitionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(confPackage.Literals.LANGUAGE_DEFINITION__DSA_PROJECT,
-				 confFactory.eINSTANCE.createKermeta2DSAProject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(confPackage.Literals.LANGUAGE_DEFINITION__DSA_PROJECT,
 				 confFactory.eINSTANCE.createK3DSAProject()));
 
 		newChildDescriptors.add

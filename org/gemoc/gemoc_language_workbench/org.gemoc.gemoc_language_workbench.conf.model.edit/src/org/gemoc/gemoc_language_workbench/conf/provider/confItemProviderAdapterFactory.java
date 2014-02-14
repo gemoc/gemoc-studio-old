@@ -95,29 +95,6 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Kermeta2DSAProjectItemProvider kermeta2DSAProjectItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createKermeta2DSAProjectAdapter() {
-		if (kermeta2DSAProjectItemProvider == null) {
-			kermeta2DSAProjectItemProvider = new Kermeta2DSAProjectItemProvider(this);
-		}
-
-		return kermeta2DSAProjectItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -493,7 +470,6 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	 */
 	public void dispose() {
 		if (gemocLanguageWorkbenchConfigurationItemProvider != null) gemocLanguageWorkbenchConfigurationItemProvider.dispose();
-		if (kermeta2DSAProjectItemProvider != null) kermeta2DSAProjectItemProvider.dispose();
 		if (languageDefinitionItemProvider != null) languageDefinitionItemProvider.dispose();
 		if (ccslMoCProjectItemProvider != null) ccslMoCProjectItemProvider.dispose();
 		if (emfEcoreProjectItemProvider != null) emfEcoreProjectItemProvider.dispose();

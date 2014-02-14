@@ -26,10 +26,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecoretools.design;bundle-version="2.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Import-Package: k2.standard,
- org.eclipse.core.filesystem,
- org.kermeta.kp.wizard.eclipse,
- org.kermeta.kp.wizard.eclipse.wizards
+Import-Package: org.eclipse.core.filesystem
 Bundle-ClassPath: lib/jaxen-1.1.6.jar,
  lib/jdom-2.0.5.jar,
  lib/xercesImpl.jar,

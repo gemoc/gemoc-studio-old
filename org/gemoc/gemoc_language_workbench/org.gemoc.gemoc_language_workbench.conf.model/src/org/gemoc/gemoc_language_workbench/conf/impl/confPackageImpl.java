@@ -23,7 +23,6 @@ import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.FileResource;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
-import org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.MoCProject;
 import org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject;
@@ -63,13 +62,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * @generated
 	 */
 	private EClass dsaProjectEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass kermeta2DSAProjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -317,15 +309,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 */
 	public EClass getDSAProject() {
 		return dsaProjectEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getKermeta2DSAProject() {
-		return kermeta2DSAProjectEClass;
 	}
 
 	/**
@@ -662,8 +645,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		dsaProjectEClass = createEClass(DSA_PROJECT);
 
-		kermeta2DSAProjectEClass = createEClass(KERMETA2_DSA_PROJECT);
-
 		languageDefinitionEClass = createEClass(LANGUAGE_DEFINITION);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DSA_PROJECT);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT);
@@ -747,7 +728,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		// Add supertypes to classes
 		dsaProjectEClass.getESuperTypes().add(this.getProjectResource());
-		kermeta2DSAProjectEClass.getESuperTypes().add(this.getDSAProject());
 		editorProjectEClass.getESuperTypes().add(this.getProjectResource());
 		domainModelProjectEClass.getESuperTypes().add(this.getProjectResource());
 		moCProjectEClass.getESuperTypes().add(this.getProjectResource());
@@ -774,8 +754,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEAttribute(getProjectResource_ProjectKind(), this.getProjectKind(), "projectKind", null, 1, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dsaProjectEClass, DSAProject.class, "DSAProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(kermeta2DSAProjectEClass, Kermeta2DSAProject.class, "Kermeta2DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(languageDefinitionEClass, LanguageDefinition.class, "LanguageDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLanguageDefinition_DsaProject(), this.getDSAProject(), null, "dsaProject", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

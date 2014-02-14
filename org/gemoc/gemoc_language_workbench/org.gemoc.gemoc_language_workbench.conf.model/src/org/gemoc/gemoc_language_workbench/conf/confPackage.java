@@ -159,43 +159,6 @@ public interface confPackage extends EPackage {
 	int DSA_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.Kermeta2DSAProjectImpl <em>Kermeta2 DSA Project</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.Kermeta2DSAProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getKermeta2DSAProject()
-	 * @generated
-	 */
-	int KERMETA2_DSA_PROJECT = 3;
-
-	/**
-	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int KERMETA2_DSA_PROJECT__PROJECT_NAME = DSA_PROJECT__PROJECT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int KERMETA2_DSA_PROJECT__PROJECT_KIND = DSA_PROJECT__PROJECT_KIND;
-
-	/**
-	 * The number of structural features of the '<em>Kermeta2 DSA Project</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int KERMETA2_DSA_PROJECT_FEATURE_COUNT = DSA_PROJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl <em>Language Definition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -203,7 +166,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getLanguageDefinition()
 	 * @generated
 	 */
-	int LANGUAGE_DEFINITION = 4;
+	int LANGUAGE_DEFINITION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Dsa Project</b></em>' containment reference.
@@ -285,7 +248,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEditorProject()
 	 * @generated
 	 */
-	int EDITOR_PROJECT = 5;
+	int EDITOR_PROJECT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -331,7 +294,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getDomainModelProject()
 	 * @generated
 	 */
-	int DOMAIN_MODEL_PROJECT = 6;
+	int DOMAIN_MODEL_PROJECT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -368,7 +331,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getMoCProject()
 	 * @generated
 	 */
-	int MO_CPROJECT = 7;
+	int MO_CPROJECT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -405,7 +368,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getCCSLMoCProject()
 	 * @generated
 	 */
-	int CCSL_MO_CPROJECT = 8;
+	int CCSL_MO_CPROJECT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -442,7 +405,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getAnimatorProject()
 	 * @generated
 	 */
-	int ANIMATOR_PROJECT = 9;
+	int ANIMATOR_PROJECT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -479,7 +442,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFEcoreProject()
 	 * @generated
 	 */
-	int EMF_ECORE_PROJECT = 10;
+	int EMF_ECORE_PROJECT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -534,7 +497,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getODProject()
 	 * @generated
 	 */
-	int OD_PROJECT = 11;
+	int OD_PROJECT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -580,7 +543,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getSiriusAnimatorProject()
 	 * @generated
 	 */
-	int SIRIUS_ANIMATOR_PROJECT = 12;
+	int SIRIUS_ANIMATOR_PROJECT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -626,7 +589,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getModHelXMoCProject()
 	 * @generated
 	 */
-	int MOD_HEL_XMO_CPROJECT = 13;
+	int MOD_HEL_XMO_CPROJECT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -663,7 +626,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getDSEProject()
 	 * @generated
 	 */
-	int DSE_PROJECT = 14;
+	int DSE_PROJECT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -700,7 +663,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLProject()
 	 * @generated
 	 */
-	int ECL_PROJECT = 15;
+	int ECL_PROJECT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -746,7 +709,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getTreeEditorProject()
 	 * @generated
 	 */
-	int TREE_EDITOR_PROJECT = 16;
+	int TREE_EDITOR_PROJECT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -792,7 +755,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getFileResource()
 	 * @generated
 	 */
-	int FILE_RESOURCE = 18;
+	int FILE_RESOURCE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
@@ -820,7 +783,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFGenmodel()
 	 * @generated
 	 */
-	int EMF_GENMODEL = 17;
+	int EMF_GENMODEL = 16;
 
 	/**
 	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
@@ -848,7 +811,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getXTextEditorProject()
 	 * @generated
 	 */
-	int XTEXT_EDITOR_PROJECT = 19;
+	int XTEXT_EDITOR_PROJECT = 18;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -904,7 +867,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getK3DSAProject()
 	 * @generated
 	 */
-	int K3DSA_PROJECT = 20;
+	int K3DSA_PROJECT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -941,7 +904,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLFile()
 	 * @generated
 	 */
-	int ECL_FILE = 21;
+	int ECL_FILE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
@@ -969,7 +932,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getProjectKind()
 	 * @generated
 	 */
-	int PROJECT_KIND = 22;
+	int PROJECT_KIND = 21;
 
 
 	/**
@@ -1034,16 +997,6 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDSAProject();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject <em>Kermeta2 DSA Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Kermeta2 DSA Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.Kermeta2DSAProject
-	 * @generated
-	 */
-	EClass getKermeta2DSAProject();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition <em>Language Definition</em>}'.
@@ -1464,16 +1417,6 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DSA_PROJECT = eINSTANCE.getDSAProject();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.Kermeta2DSAProjectImpl <em>Kermeta2 DSA Project</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.Kermeta2DSAProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getKermeta2DSAProject()
-		 * @generated
-		 */
-		EClass KERMETA2_DSA_PROJECT = eINSTANCE.getKermeta2DSAProject();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl <em>Language Definition</em>}' class.
