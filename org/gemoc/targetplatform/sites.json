@@ -37,7 +37,7 @@
         "http://www.obeo.fr/download/release/uml/4.0.0_M1/repository"
         ],
      "xtext": [
-         "http://download.eclipse.org/modeling/tmf/xtext/updates/releases/head/R201309030823/"
+         "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"
          ],
     "animation": [
         "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.sirius.animation/lastSuccessfulBuild/artifact/fr/obeo/dsl/sirius/animation/releng/fr.obeo.dsl.debug.repository/target/repository/"
