@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import fr.inria.aoste.trace.EventOccurrence;
@@ -16,32 +15,20 @@ import glml.MocEvent;
  * on its corresponding input based on a Model of Execution, returns Steps upon
  * requests and provides an API to influence the constraint-solving.
  * 
- * TODO : EventOccurrences should refer (in the context ?) (by name ?) to the
- * clock which they represent. Same for mapping the feedback to the right
- * clocks.
+ * The steps it returns are based on the trace metamodel fr.inria.aoste.trace.
  * 
  * @author flatombe
  */
 public interface Solver {
 	/**
-	 * Forces the underlying MoC structure to forbid the future occurrences of a
-	 * Model-Specific Event
-	 * 
-	 * TODO : change the method signature when the DSE mapping is refined.
-	 * 
-	 * @param event
-	 *            Model-Specific Event to forbid.
+	 * Forces the underlying MoC structure to forbid the given EventOccurrence
+	 * from ticking in the next step.
 	 */
 	public void forbidEventOccurrence(EventOccurrence eventOccurrence);
 
 	/**
-	 * Forces the underlying MoC structure to trigger an occurrence of a
-	 * Model-Specific Event
-	 * 
-	 * TODO : change the method signature when the DSE mapping is refined.
-	 * 
-	 * @param event
-	 *            Model-Specific Event to force.
+	 * Forces the underlying MoC structure to force the given EventOccurrence to
+	 * tick in the next step.
 	 */
 	public void forceEventOccurrence(EventOccurrence eventOccurrence);
 
@@ -70,7 +57,11 @@ public interface Solver {
 	public void setSolverInputFile(URI solverInputURI);
 
 	/**
-	 * Returns the instance of MocEvent for the EObject target.
+	 * Returns the instance of MocEvent for the EObject target. The Solver (or
+	 * its SolverInputBuilder more precisely) being responsible for
+	 * instanciating the Moc Events down to the model level, but this mapping
+	 * not being explicitly appearing in the trace metamodel, this method allows
+	 * us to keep track of this mapping.
 	 * 
 	 * @param mocEvent
 	 * @param target
@@ -79,5 +70,17 @@ public interface Solver {
 	public EventOccurrence getCorrespondingEventOccurrence(MocEvent mocEvent,
 			EObject target);
 
-	public Map<String, MocEvent> createMocEventsRegistry(Resource mocEventsResource);
+	/**
+	 * Creates a registry which represents the mapping between a MocEvent and
+	 * its "name" (string representation...). Used for the feedback at the
+	 * Moc-event level since the feedback specification does not know of the Moc
+	 * Event implementation thus does not know if it really has a name. So this
+	 * registry is there to make sure we can somehow still create references to
+	 * these Moc Events.
+	 * 
+	 * @param mocEventsResource
+	 * @return
+	 */
+	public Map<String, MocEvent> createMocEventsRegistry(
+			Resource mocEventsResource);
 }

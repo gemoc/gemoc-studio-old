@@ -18,7 +18,6 @@ import org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.DefPropertyCS;
 import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 
-import fr.inria.aoste.timesquare.ECL.ECLDocument;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
@@ -29,7 +28,6 @@ import fr.inria.aoste.timesquare.trace.util.HelperFactory;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
-import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.Reference;
 import glml.ECLEvent;
 import glml.GlmlFactory;
@@ -58,86 +56,64 @@ public class CcslSolver implements
 	public SolverInputBuilder getSolverInputBuilder() {
 		return this.solverInputBuilder;
 	}
-	
 
 	@Override
 	public void forbidEventOccurrence(EventOccurrence eventOccurrence) {
-		ModelElementReference clockToForce = HelperFactory
-				.createModelElementReference(eventOccurrence
-						.getReferedElement());
-		this.solverWrapper.forceClockAbsence(clockToForce);
-		// this.solverWrapper.forceClockAbsence(this.getClockLinkedToOccurrence(eventOccurrence));
+		this.solverWrapper.forceClockAbsence(this
+				.getModelElementReferenceFromEventOccurrence(eventOccurrence));
 	}
 
 	@Override
 	public void forceEventOccurrence(EventOccurrence eventOccurrence) {
-		// ModelElementReference clockToForce = HelperFactory
-		// .createModelElementReference(eventOccurrence.getReferedElement());
+		this.solverWrapper.forceClockPresence(this
+				.getModelElementReferenceFromEventOccurrence(eventOccurrence));
+
+	}
+
+	/**
+	 * Returns the ModelElementReference refered by this eventOccurrence (as
+	 * originally sent by the CCSL Solver).
+	 * 
+	 * @param eventOccurrence
+	 * @return
+	 */
+	private ModelElementReference getModelElementReferenceFromEventOccurrence(
+			EventOccurrence eventOccurrence) {
 		Reference reference = eventOccurrence.getReferedElement();
 		if (reference instanceof ModelElementReference) {
 			ModelElementReference mer = (ModelElementReference) reference;
-
-			Activator.getMessagingSystem().info(
-					"Feedback: forcing clock presence of : \n" + "MER: "
-							+ mer.toString() + "\n" + "ElementRef: "
-							+ mer.getElementRef().get(0), Activator.PLUGIN_ID);
-			
-			ModelElementReference merToForce = this.mappingEventToOriginalMer.get(mer.getElementRef().get(0));
-			Activator.getMessagingSystem().info("Retrieved mer from the map: " + merToForce.toString(), Activator.PLUGIN_ID);
-
-			this.solverWrapper.forceClockPresence(merToForce);
-			
-			
+			ModelElementReference merToForce = this.mappingEventToOriginalMer
+					.get(mer.getElementRef().get(0));
+			return merToForce;
 		} else {
 			throw new RuntimeException(
 					"Refered Element of eventOccurrence should be a ModelElementReference");
 		}
-
 	}
 
 	@Override
 	public LogicalStep getNextStep() {
 		try {
+			// Retrieve a step from the CCSL Solver.
 			LogicalStep res = this.solverWrapper.getSolver()
 					.doOneSimulationStep();
 
+			// We need to slightly adapt the trace so as to be able to establish
+			// the link
+			// between an EventOccurrence and an ECL Event.
 			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {
 				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
 				if (c != null) {
-					// OLD now GLML does the DSA-linking.
-					/*
-					 * EList<EObject> linkedObjects = c.getTickingEvent()
-					 * .getReferencedObjectRefs(); if (linkedObjects.size() ==
-					 * 2) {
-					 */
-					// OLD (for ECL). Removed because I'm testing with GLML.
-					/*
-					 * eventOccurrence.setContext(HelperFactory
-					 * .createModelElementReference(linkedObjects .get(0)));
-					 * eventOccurrence.setReferedElement(HelperFactory
-					 * .createModelElementReference(linkedObjects .get(1)));
-					 */
-					// eventOccurrence
-					// .setReferedElement(HelperFactory
-					// .createNamedReference(c.getTickingEvent()
-					// .getName()));
-					Activator.getMessagingSystem().debug("Before the setting of the ref element :", Activator.PLUGIN_ID);
-					ModelElementReference mer = (ModelElementReference) eventOccurrence.getReferedElement();
-					Activator.getMessagingSystem().debug("- the MER : " + mer.toString(), Activator.PLUGIN_ID);
-					Activator.getMessagingSystem().debug("- the list:" + mer.getElementRef().toString(), Activator.PLUGIN_ID);
-					Activator.getMessagingSystem().debug("- clock? : " + (mer.getElementRef().get(mer.getElementRef().size()-1) instanceof Clock), Activator.PLUGIN_ID);
-					
-					mappingEventToOriginalMer.put(c.getTickingEvent(), (ModelElementReference) eventOccurrence.getReferedElement());
-					
+					ModelElementReference mer = (ModelElementReference) eventOccurrence
+							.getReferedElement();
+					// We memorize the reference to the Clock (3 EObjects : file
+					// / block / clock) so it can be retrieved later on.
+					mappingEventToOriginalMer.put(c.getTickingEvent(),
+							(ModelElementReference) eventOccurrence
+									.getReferedElement());
+					// Instead we place the ECL Event
 					eventOccurrence.setReferedElement(HelperFactory
 							.createModelElementReference(c.getTickingEvent()));
-					Activator.getMessagingSystem().debug(
-							"MER of the eventOcc :"
-									+ eventOccurrence.getReferedElement()
-									+ "\nTicking event : "
-									+ c.getTickingEvent().toString(),
-							Activator.PLUGIN_ID);
-					/* } */
 				}
 			}
 			this.lastLogicalStep = res;
@@ -151,6 +127,12 @@ public class CcslSolver implements
 		}
 	}
 
+	/**
+	 * Returns the clock linked to an EventOccurrence.
+	 * 
+	 * @param eventOcc
+	 * @return
+	 */
 	private Clock getClockLinkedToOccurrence(EventOccurrence eventOcc) {
 		Reference ref = eventOcc.getReferedElement();
 		if (ref instanceof ModelElementReference) {
@@ -168,6 +150,7 @@ public class CcslSolver implements
 		}
 	}
 
+	@Override
 	public String toString() {
 		return this.getClass().getName() + "@[modelOfExecutionURI="
 				+ this.solverInputURI + "]";
@@ -210,78 +193,23 @@ public class CcslSolver implements
 	public EventOccurrence getCorrespondingEventOccurrence(MocEvent mocEvent,
 			EObject target) {
 		try {
-			Activator
-					.getMessagingSystem()
-					.debug("Trying to find the instanciation of the following MoC Event for the following EObject : \n -"
-							+ mocEvent.toString() + " \n -" + target.toString(),
-							Activator.PLUGIN_ID);
-
+			// Retrieve the name of the MocEvent
 			ECLEvent eclEvent = (ECLEvent) mocEvent;
 			String eventName = eclEvent.getElement().getName();
-
-			// String representation of the EObject :
-			// "Klass@abc123 (att1: v1) (att2: v2)"
-			String targetString = target.toString();
-			// We get the list of attribute without ending and
-			// parentheses : "att1: v1) (att2: v2"
-			String stringOfAttributesList = targetString.substring(
-					targetString.indexOf("(") + 1, targetString.length() - 1);
-			// We split it to get ["att1: v1", "att2: v2"]
-			List<String> listOfAttributes = Arrays
-					.asList(stringOfAttributesList.split("\\) \\("));
-			// We look for "name: xxx" in the array.
-			String attributeName = "";
-			for (String s : listOfAttributes) {
-				if (s.startsWith("name: ")) {
-					attributeName = s;
-				}
-			}
-			String targetName = "";
-			if (attributeName != "") {
-				// Either we found "name: xxx" in which case we have
-				// 'xxx'
-				targetName = attributeName.substring(
-						attributeName.indexOf("name: ") + "name: ".length(),
-						attributeName.length());
-			} else {
-				// Or we throw exception (what to do?)
-				throw new UnsupportedOperationException(
-						"Somehow you need a 'name' attribute on your model elements...");
-			}
+			// Retrieve the value of attribute "name" on the target
+			String targetName = this.getValueOfStringAttribute(target, "name");
+			// So the clock generated by the transformation should have the
+			// following name:
 			String eventOccurrenceName = "evt_" + targetName + "_" + eventName;
-
-			Activator.getMessagingSystem().debug(
-					"Looking for the clock named: " + eventOccurrenceName
-							+ " among the following step :",
-					Activator.PLUGIN_ID);
-			Activator.getMessagingSystem().debug(
-					this.lastLogicalStep.getEventOccurrences().toString(),
-					Activator.PLUGIN_ID);
 
 			for (EventOccurrence eventOccurrence : this.lastLogicalStep
 					.getEventOccurrences()) {
-				Activator.getMessagingSystem().debug(
-						"reference : "
-								+ eventOccurrence.getReferedElement()
-										.toString(), Activator.PLUGIN_ID);
-				if (eventOccurrence.getReferedElement() instanceof NamedReference) {
-					NamedReference reference = (NamedReference) eventOccurrence
-							.getReferedElement();
-					if (reference.getValue().equals(eventOccurrenceName)) {
-						Activator.getMessagingSystem().debug(
-								"Returning: " + eventOccurrence.toString(),
-								Activator.PLUGIN_ID);
-						return eventOccurrence;
-					}
-				} else if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
+				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
 					ModelElementReference reference = (ModelElementReference) eventOccurrence
 							.getReferedElement();
 					if (this.getValueOfStringAttribute(
 							reference.getElementRef().get(0), "name").equals(
 							eventOccurrenceName)) {
-						Activator.getMessagingSystem().debug(
-								"Returning: " + eventOccurrence.toString(),
-								Activator.PLUGIN_ID);
 						return eventOccurrence;
 					}
 				} else {
@@ -303,6 +231,17 @@ public class CcslSolver implements
 		return null;
 	}
 
+	/**
+	 * Returns the value of the attribute whose name is attributeName of eobject
+	 * eo. The type of the attribute must be String. Basically if a String
+	 * attribute is a good enough unique identifier for your EObjects then use
+	 * this method to retrieve the value of the attribute without making
+	 * assumption about the EObject. Otherwise, better use .toString().
+	 * 
+	 * @param eo
+	 * @param attributeName
+	 * @return
+	 */
 	private String getValueOfStringAttribute(EObject eo, String attributeName) {
 		// String representation of the EObject :
 		// "Klass@abc123 (att1: v1) (att2: v2)"
@@ -336,14 +275,15 @@ public class CcslSolver implements
 					"Somehow you need a 'name' attribute on your model elements...");
 		}
 	}
-	
+
 	@Override
-	public Map<String, MocEvent> createMocEventsRegistry(Resource mocEventsResource){
+	public Map<String, MocEvent> createMocEventsRegistry(
+			Resource mocEventsResource) {
 		Map<String, MocEvent> res = new HashMap<String, MocEvent>();
 		Iterator<EObject> iterator = mocEventsResource.getAllContents();
-		while(iterator.hasNext()){
+		while (iterator.hasNext()) {
 			EObject eo = iterator.next();
-			if(eo instanceof DefPropertyCS){
+			if (eo instanceof DefPropertyCS) {
 				DefPropertyCS event = (DefPropertyCS) eo;
 				ECLEvent eclEvent = GlmlFactory.eINSTANCE.createECLEvent();
 				eclEvent.setElement(event);

@@ -154,6 +154,10 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	 * Derived from the above language-specific elements
 	 */
 	protected Map<String, DomainSpecificEvent> domainSpecificEventsRegistry = null;
+
+	/**
+	 * Given by the MoC at instanciation.
+	 */
 	protected Map<String, MocEvent> mocEventsRegistry = null;
 
 	/**
@@ -173,31 +177,27 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	public ObservableBasicExecutionEngine(Resource mocEventsResource,
 			Resource domainSpecificEventsResource, Solver solver,
 			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
-		
-		// TODO: Same as below, I expected it not to work ...
-		if (mocEventsResource == null){
+
+		// TODO: REMOVE ME. This is a temporary fix because I can't get a
+		// resource to be correctly detected...
+		if (mocEventsResource == null) {
 			ResourceSet resSet = new ResourceSetImpl();
-			mocEventsResource = resSet.getResource(URI.createURI("platform:/plugin/org.gemoc.sample.petrinet.dse/ecl/petrinet.ecl"), true);
+			mocEventsResource = resSet
+					.getResource(
+							URI.createURI("platform:/plugin/org.gemoc.sample.petrinet.dse/ecl/petrinet.ecl"),
+							true);
 		}
 
-		// TODO : REMOVE ME. This is a temporary fix because I can't get a DSE
+		// TODO : REMOVE ME. This is a temporary fix because I can't get a
 		// resource to be correctly detected...
 		if (domainSpecificEventsResource == null) {
 			ResourceSet resSet = new ResourceSetImpl();
-			// With ECL:
+			// Tfsm Sample
 			// domainSpecificEventsResource = resSet
 			// .getResource(
-			// URI.createURI("platform:/resource/org.gemoc.sample.tfsm.dse/ecl/TFSM.ecl"),
+			// URI.createURI("platform:/plugin/org.gemoc.sample.tfsm.dse/glml/MyDomainSpecificEvents.glml"),
 			// true);
 
-			// With GLML:
-			
-			// Tfsm Sample
-//			domainSpecificEventsResource = resSet
-//					.getResource(
-//							URI.createURI("platform:/plugin/org.gemoc.sample.tfsm.dse/glml/MyDomainSpecificEvents.glml"),
-//							true);
-			
 			// Petrinet Sample
 			domainSpecificEventsResource = resSet
 					.getResource(
@@ -210,12 +210,13 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				.info("Verifying input before instanciating ObservableBasicExecutionEngine...",
 						Activator.PLUGIN_ID);
 
-		// The engine needs AT LEAST a mocEventsResource, domainSpecificEventsResource, a Solver,
+		// The engine needs AT LEAST a mocEventsResource,
+		// domainSpecificEventsResource, a Solver,
 		// an EventExecutor.
-		if (mocEventsResource == null | domainSpecificEventsResource == null | solver == null
-				| executor == null | feedbackPolicy == null) {
+		if (mocEventsResource == null | domainSpecificEventsResource == null
+				| solver == null | executor == null | feedbackPolicy == null) {
 			String exceptionMessage = "";
-			if (mocEventsResource == null){
+			if (mocEventsResource == null) {
 				exceptionMessage += "mocEventsResource is null, ";
 			}
 			if (domainSpecificEventsResource == null) {
@@ -240,10 +241,9 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 					.getMessagingSystem()
 					.info("...OK. Instantiating ObservableBasicExecutionEngine with...",
 							Activator.PLUGIN_ID);
-			Activator
-			.getMessagingSystem()
-			.info("\tMocEventsResource="
-					+ mocEventsResource, Activator.PLUGIN_ID);
+			Activator.getMessagingSystem().info(
+					"\tMocEventsResource=" + mocEventsResource,
+					Activator.PLUGIN_ID);
 			Activator
 					.getMessagingSystem()
 					.info("\tDomainSpecificEventsResource="
@@ -269,19 +269,17 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			this.executor = executor;
 			this.executor.initialize();
 
-			this.mocEventsRegistry = this.solver.createMocEventsRegistry(this.mocEventsResource);
+			this.mocEventsRegistry = this.solver
+					.createMocEventsRegistry(this.mocEventsResource);
 			this.domainSpecificEventsRegistry = this
 					.createDomainSpecificEventsRegistry(this.domainSpecificEventsResource);
 
-			// TODO: Execution initialization, move them somewhere else and
-			// place them in reset too.
 			this.scheduledEventsMap = new LinkedHashMap<LogicalStep, List<ModelSpecificEvent>>();
 			this.scheduledSteps = new LinkedList<LogicalStep>();
 			this.schedulingTrace = new HashMap<Integer, LogicalStep>();
 			this.executionTrace = new LinkedHashMap<LogicalStep, List<ModelSpecificEvent>>();
 		}
 	}
-	
 
 	/**
 	 * Returns a map with Domain-Specific Events names as keys and the
@@ -434,7 +432,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	private void doOneStep() {
 		Collection<ModelSpecificEvent> events;
 		events = new ArrayList<ModelSpecificEvent>();
-		// try {
+
 		Collection<ModelSpecificEvent> nextEvents = this.scheduledEventsMap
 				.get(this.currentStep);
 		if (nextEvents != null) {
@@ -507,49 +505,59 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	}
 
 	@Override
-	// TODO
-	public void forceEventOccurrence(ModelSpecificEvent mse) {
+	public void forceModelSpecificEventOccurrence(ModelSpecificEvent mse) {
 		this.setChanged();
-		this.notifyObservers("Trying to force the solver to trigger an occurrence of MSE: " + mse.toString());
+		this.notifyObservers("Trying to force the solver to trigger an occurrence of MSE: "
+				+ mse.toString());
 		this.solver.forceEventOccurrence(this.findMappedMocElement(mse));
 	}
 
 	@Override
-	// TODO
-	public void forbidEventOccurrence(ModelSpecificEvent mse) {
+	public void forbidModelSpecificEventOccurrence(ModelSpecificEvent mse) {
 		this.setChanged();
-		this.notifyObservers("Trying to force the solver to forbid an occurrence of MSE: " + mse.toString());
+		this.notifyObservers("Trying to force the solver to forbid an occurrence of MSE: "
+				+ mse.toString());
 		this.solver.forbidEventOccurrence(this.findMappedMocElement(mse));
 	}
-	
+
 	@Override
-	public void forceMocEventOccurrence(MocEvent mocEvent, EObject target){
+	public void forceMocEventOccurrence(MocEvent mocEvent, EObject target) {
 		this.setChanged();
-		this.notifyObservers("Trying to force an occurrence of the MocEvent: " + mocEvent.toString() + " on target " + target.toString());
-		this.solver.forceEventOccurrence(this.solver.getCorrespondingEventOccurrence(mocEvent, target));
+		this.notifyObservers("Trying to force an occurrence of the MocEvent: "
+				+ mocEvent.toString() + " on target " + target.toString());
+		this.solver.forceEventOccurrence(this.solver
+				.getCorrespondingEventOccurrence(mocEvent, target));
 	}
-	
+
 	@Override
-	public void forbidMocEventOccurrence(MocEvent mocEvent, EObject target){
+	public void forbidMocEventOccurrence(MocEvent mocEvent, EObject target) {
 		this.setChanged();
-		this.notifyObservers("Trying to forbid an occurrence of the MocEvent: " + mocEvent.toString() + " on target " + target.toString());
-		this.solver.forbidEventOccurrence(this.solver.getCorrespondingEventOccurrence(mocEvent, target));
+		this.notifyObservers("Trying to forbid an occurrence of the MocEvent: "
+				+ mocEvent.toString() + " on target " + target.toString());
+		this.solver.forbidEventOccurrence(this.solver
+				.getCorrespondingEventOccurrence(mocEvent, target));
 	}
-	
+
 	@Override
-	public Map<String, MocEvent> getMocEventsRegistry(){
+	public Map<String, MocEvent> getMocEventsRegistry() {
 		return this.mocEventsRegistry;
 	}
-	
-	// Only works with Identity for now
-	private EventOccurrence findMappedMocElement(ModelSpecificEvent mse){
+
+	/**
+	 * Reverse interpretation of Pattern.
+	 * @param mse
+	 * @return
+	 */
+	private EventOccurrence findMappedMocElement(ModelSpecificEvent mse) {
 		Pattern pattern = mse.getCondition();
-		if (pattern instanceof Identity){
+		if (pattern instanceof Identity) {
 			Identity identity = (Identity) pattern;
 			MocEvent mocEvent = identity.getArgument();
-			return this.solver.getCorrespondingEventOccurrence(mocEvent, mse.getModelSpecificActions().get(0).getTarget());
-		} else{
-			throw new UnsupportedOperationException("Can only deal with Identity pattern for now...");
+			return this.solver.getCorrespondingEventOccurrence(mocEvent, mse
+					.getModelSpecificActions().get(0).getTarget());
+		} else {
+			throw new UnsupportedOperationException(
+					"Can only deal with Identity pattern for now...");
 		}
 	}
 

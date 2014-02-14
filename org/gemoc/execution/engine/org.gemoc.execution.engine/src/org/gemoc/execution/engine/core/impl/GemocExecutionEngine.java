@@ -77,9 +77,11 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	 *            interprets the results from the DSAs to influence the
 	 *            Solver/MoC.
 	 */
-	public GemocExecutionEngine(Resource mocEventsResource, Resource domainSpecificEventsResource,
-			Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy) {
-		super(mocEventsResource, domainSpecificEventsResource, solver, executor, feedbackPolicy);
+	public GemocExecutionEngine(Resource mocEventsResource,
+			Resource domainSpecificEventsResource, Solver solver,
+			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
+		super(mocEventsResource, domainSpecificEventsResource, solver,
+				executor, feedbackPolicy);
 		Activator.getMessagingSystem().info(
 				"*** Engine construction done. ***", Activator.PLUGIN_ID);
 	}
@@ -104,7 +106,6 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 					Activator.PLUGIN_ID);
 			throw new NullPointerException(exceptionMessage);
 		} else {
-
 			Activator.getMessagingSystem().info(
 					"...OK. Initializing GemocExecutionEngine with...",
 					Activator.PLUGIN_ID);
@@ -124,16 +125,15 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 							+ modelResource.toString(), Activator.PLUGIN_ID);
 
 			// TODO: Invoke the transformation that creates the model of
-			// execution
-			// from the DSEs.
-			
+			// execution from the DSEs.
+
 			// TFSM Sample
-//			this.modelOfExecution = new ResourceSetImpl()
-//			.getResource(
-//					URI.createPlatformResourceURI(
-//							"/org.gemoc.sample.tfsm.instances/TrafficControl/test/MyModelSpecificEvents.glml",
-//							true), true);
-			
+			// this.modelOfExecution = new ResourceSetImpl()
+			// .getResource(
+			// URI.createPlatformResourceURI(
+			// "/org.gemoc.sample.tfsm.instances/TrafficControl/test/MyModelSpecificEvents.glml",
+			// true), true);
+
 			// Petrinet Sample
 			this.modelOfExecution = new ResourceSetImpl()
 					.getResource(
@@ -150,10 +150,11 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
 			} catch (UnsupportedOperationException e) {
 				// TFSM Sample
-//				String solverInputFilePath = "/org.gemoc.sample.tfsm.instances/TrafficControl/test/test_executionModel.extendedCCSL";
+				// String solverInputFilePath =
+				// "/org.gemoc.sample.tfsm.instances/TrafficControl/test/test_executionModel.extendedCCSL";
 				// Petrinet Sample
 				String solverInputFilePath = "/org.gemoc.sample.petrinet/instances/test_1/BasicExample_MoCC.extendedCCSL";
-				
+
 				// String solverInputFilePath =
 				// "/org.gemoc.sample.tfsm.instances/TrafficControl/test/MySolverInput.javasolverinput";
 				this.solverInput = new ResourceSetImpl().getResource(URI
@@ -167,7 +168,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
 			// We create the internal representation of the MSEs.
 			this.modelSpecificEventsRegistry = this
-					.buildModelSpecificEventsRegistry(this.modelOfExecution);
+					.createModelSpecificEventsRegistry(this.modelOfExecution);
 
 			// We proceed to the first step of execution (a new one coming from
 			// the solver or the first coming from a loaded scenario !)
@@ -187,7 +188,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	 * @param modelOfExecution
 	 * @return the registry of ModelSpecificEvents based on their names.
 	 */
-	private Map<String, ModelSpecificEvent> buildModelSpecificEventsRegistry(
+	private Map<String, ModelSpecificEvent> createModelSpecificEventsRegistry(
 			Resource modelOfExecution) {
 		Map<String, ModelSpecificEvent> res = new HashMap<String, ModelSpecificEvent>();
 		DomainSpecificEventFile dseFile = (DomainSpecificEventFile) modelOfExecution
@@ -214,20 +215,32 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 				Activator.PLUGIN_ID);
 	}
 
+	/**
+	 * Returns the last "date" (integer) in the scheduling trace. We use this
+	 * instead of this.currentStep because we need to match Patterns over a
+	 * fixed period (for example t, t-1 and t-2 are involved for a given
+	 * pattern) so we need to be able to position ourselves on the scheduling
+	 * trace for navigation.
+	 * 
+	 * @return
+	 */
 	private Integer getCurrentDate() {
 		int res = 0;
 		for (Integer integer : this.schedulingTrace.keySet()) {
-			if (integer > res) {
+			if (this.schedulingTrace.get(integer).equals(this.currentStep)) {
 				res = integer;
 			}
 		}
 		return res;
 	}
 
-	// This method is in charge of interpreting the pattern described in GLML.
-	// For now let's do some simple interpretation in Java, however here is
-	// where we might want to use an implementation that supports bidirection in
-	// order to deal with the feedback.
+	/**
+	 * Interpretation of the pattern...
+	 * 
+	 * @param mse
+	 * @param schedulingTrace
+	 * @return
+	 */
 	private Boolean patternOfEventOccursInSchedulingTrace(
 			ModelSpecificEvent mse, Map<Integer, LogicalStep> schedulingTrace) {
 		Boolean res = false;
@@ -237,8 +250,6 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			// occurrence that has a named reference of same name as the mapped
 			// MoC Event.
 			Identity identity = (Identity) pattern;
-			// TODO should MoCEvent have the name attribute and be filled
-			// depending on the implementation used?
 			String mappedMocEventName = ((ECLEvent) identity.getArgument())
 					.getElement().getName();
 			LogicalStep lastStep = schedulingTrace.get(this.getCurrentDate());
@@ -246,33 +257,19 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 					.getEventOccurrences()) {
 				if (eventOccurrence.getFState() == FiredStateKind.TICK
 						& eventOccurrence.getReferedElement() != null) {
-					if (eventOccurrence.getReferedElement() instanceof NamedReference) {
-						// In our protocol, the scheduling trace's event
-						// occurrences' refered element must be a named
-						// reference to the clock (ECL event). This way we know
-						// what MoC event it is related to.
-						NamedReference namedReference = (NamedReference) eventOccurrence
-								.getReferedElement();
-						String nameOfTheECLEventCorrespondingToTheTickingClock = namedReference
-								.getValue();
-						String targetName = this.getValueOfStringAttribute(mse.getModelSpecificActions().get(0).getTarget(), "name");
-						
-						res = nameOfTheECLEventCorrespondingToTheTickingClock
-								.equals("evt_" + targetName + "_"
-										+ mappedMocEventName)
-								|| res;
-					} else if(eventOccurrence.getReferedElement() instanceof ModelElementReference){
+					if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
 						// In our protocol, the scheduling trace's event
 						// occurrences' refered element must be a named
 						// reference to the clock (ECL event). This way we know
 						// what MoC event it is related to.
 						ModelElementReference mer = (ModelElementReference) eventOccurrence
 								.getReferedElement();
-						String stringOfTheECLEventCorrespondingToTheTickingClock = mer.getElementRef().get(0).toString();
-						Activator.getMessagingSystem().debug("string of the ecl event corresponding to the ticking clock: " + stringOfTheECLEventCorrespondingToTheTickingClock, Activator.PLUGIN_ID);
+						String stringOfTheECLEventCorrespondingToTheTickingClock = mer
+								.getElementRef().get(0).toString();
 						// MAYBE FILTER BY NAME HERE TOO
-						String nameOfTheECLEventCorrespondingToTheTickingClock = this.getValueOfStringAttribute(mer.getElementRef().get(0), "name");
-						Activator.getMessagingSystem().debug("name of the ecl event : " + nameOfTheECLEventCorrespondingToTheTickingClock, Activator.PLUGIN_ID);
+						String nameOfTheECLEventCorrespondingToTheTickingClock = this
+								.getValueOfStringAttribute(mer.getElementRef()
+										.get(0), "name");
 						// In the MSE Specification, we have a link from MSE to
 						// its reification (DSE).
 						// We also have a link (pattern) from DSE to MSE.
@@ -285,16 +282,18 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 						// if it indeed is an instanciation of the correct ECL
 						// Event and if it aims the same EObject from the model
 						// as our MSE's MSA does.
-						String nameOfTheEObject = this.getValueOfStringAttribute(mse.getModelSpecificActions().get(0).getTarget(), "name");
-						
-						
+						String nameOfTheEObject = this
+								.getValueOfStringAttribute(mse
+										.getModelSpecificActions().get(0)
+										.getTarget(), "name");
+
 						res = nameOfTheECLEventCorrespondingToTheTickingClock
 								.equals("evt_" + nameOfTheEObject + "_"
 										+ mappedMocEventName)
 								|| res;
-						Activator.getMessagingSystem().debug("made up name of the event with targetname etc : " + "evt_" + nameOfTheEObject + "_" + mappedMocEventName, Activator.PLUGIN_ID);
-					} else{
-						throw new RuntimeException("Unable to analyze correctly the scheduling step provided");
+					} else {
+						throw new RuntimeException(
+								"Unable to analyze correctly the scheduling step provided");
 					}
 				}
 			}
@@ -305,19 +304,29 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 		}
 		return res;
 	}
-	
-	private String getValueOfStringAttribute(EObject eo, String attributeName){
+
+	/**
+	 * Returns the value of the attribute whose name is attributeName of eobject
+	 * eo. The type of the attribute must be String. Basically if a String
+	 * attribute is a good enough unique identifier for your EObjects then use
+	 * this method to retrieve the value of the attribute without making
+	 * assumption about the EObject. Otherwise, better use .toString().
+	 * 
+	 * @param eo
+	 * @param attributeName
+	 * @return
+	 */
+	private String getValueOfStringAttribute(EObject eo, String attributeName) {
 		// String representation of the EObject :
 		// "Klass@abc123 (att1: v1) (att2: v2)"
 		String targetString = eo.toString();
 		// We get the list of attribute without ending and
 		// starting parentheses : "att1: v1) (att2: v2"
 		String stringOfAttributesList = targetString.substring(
-				targetString.indexOf("(") + 1,
-				targetString.length() - 1);
+				targetString.indexOf("(") + 1, targetString.length() - 1);
 		// We split it to get ["att1: v1", "att2: v2"]
-		List<String> listOfAttributes = Arrays
-				.asList(stringOfAttributesList.split("\\) \\("));
+		List<String> listOfAttributes = Arrays.asList(stringOfAttributesList
+				.split("\\) \\("));
 		// We look for "attributeName: xxx" in the array.
 		String attributeStringRepresentation = "";
 		for (String s : listOfAttributes) {
@@ -332,16 +341,16 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			res = attributeStringRepresentation.substring(
 					attributeStringRepresentation.indexOf(attributeName + ": ")
 							+ (attributeName + ": ").length(),
-							attributeStringRepresentation.length());
+					attributeStringRepresentation.length());
 			return res;
 		} else {
 			// Or we throw exception (what to do?)
-			throw new UnsupportedOperationException(
-					"Somehow you need a 'name' attribute on your model elements...");
+			throw new UnsupportedOperationException("You need a(n) '"
+					+ attributeName + "' attribute on the EObject "
+					+ eo.toString() + " for this method to work.");
 		}
 	}
 
-	// TODO : this method will change when we change the DSE language.
 	@Override
 	protected Collection<ModelSpecificEvent> match(
 			Map<Integer, LogicalStep> schedulingTrace) {
@@ -380,34 +389,33 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 
 			EcoreUtil.EqualityHelper equalityHelper = new EcoreUtil.EqualityHelper();
 			if (!(this.domainSpecificEventsRegistry.containsValue(injectedDse)
-					&& this.resourceContainsEObject(this.modelResource, target) && /*
-																					 * equalityHelper
-																					 * .
-																					 * equals
-																					 * (
-																					 * injectedDse
-																					 * .
-																					 * getDomainSpecificActions
-																					 * (
-																					 * )
-																					 * .
-																					 * get
-																					 * (
-																					 * 0
-																					 * )
-																					 * .
-																					 * getTargetClass
-																					 * (
-																					 * )
-																					 * ,
-																					 * target
-																					 * .
-																					 * eClass
-																					 * (
-																					 * )
-																					 * )
-																					 */injectedDse
-					.getDomainSpecificActions().get(0).getTargetClass()
+					&& this.resourceContainsEObject(this.modelResource, target) &&
+			// equalityHelper
+			// .
+			// equals
+			// (
+			// injectedDse
+			// .
+			// getDomainSpecificActions
+			// (
+			// )
+			// .
+			// get
+			// (
+			// 0
+			// )
+			// .
+			// getTargetClass
+			// (
+			// )
+			// ,
+			// target
+			// .
+			// eClass
+			// (
+			// )
+			// )
+			injectedDse.getDomainSpecificActions().get(0).getTargetClass()
 					.getName().equals(target.eClass().getName()))) {
 				String errorMessage = "";
 				if (!this.domainSpecificEventsRegistry
@@ -744,7 +752,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	@Override
 	public ModelSpecificEvent getCorrespondingModelSpecificEvent(
 			DomainSpecificEvent dse, EObject target) {
-		return this.findCorrespondingModelSpecificEvent(dse, target, this.modelSpecificEventsRegistry);
+		return this.findCorrespondingModelSpecificEvent(dse, target,
+				this.modelSpecificEventsRegistry);
 	}
 
 }

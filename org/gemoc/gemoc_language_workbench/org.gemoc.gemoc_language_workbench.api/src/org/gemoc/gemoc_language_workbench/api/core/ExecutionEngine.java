@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
@@ -78,20 +77,31 @@ public interface ExecutionEngine {
 	 *         model being executed.
 	 */
 	public Collection<DomainSpecificEvent> getDomainSpecificEvents();
-	
+
 	/**
 	 * Retrieve the Model-Specific Events of the model being executed.
+	 * 
 	 * @return
 	 */
 	public Collection<ModelSpecificEvent> getModelSpecificEvents();
-	
+
 	/**
-	 * Returns the ModelSpecificEvent corresponding to the given couple of DSE and target.
+	 * Returns the ModelSpecificEvent corresponding to the given couple of DSE
+	 * and target.
+	 * 
 	 * @param dse
 	 * @param target
 	 * @return
 	 */
-	public ModelSpecificEvent getCorrespondingModelSpecificEvent(DomainSpecificEvent dse, EObject target);
+	public ModelSpecificEvent getCorrespondingModelSpecificEvent(
+			DomainSpecificEvent dse, EObject target);
+
+	/**
+	 * Returns the map between the MoC Events and their String representation.
+	 * 
+	 * @return
+	 */
+	public Map<String, MocEvent> getMocEventsRegistry();
 
 	/**
 	 * Retrieve the model being executed.
@@ -120,23 +130,40 @@ public interface ExecutionEngine {
 
 	/** --------------- Influence the MoC Constraints --------------- **/
 	/**
-	 * API that delegates to the Solver the application of the constraints to
-	 * add to the MoC following a Feedback result from a/several DSA(s).
 	 * 
+	 * Forces the solver to arrange its internals so as to create an occurrence
+	 * of the given MSE at the next round.
+	 * 
+	 * TODO: There should be some exception thrown if by undoing the MSE's
+	 * pattern we detect that this MSE just cannot be triggered.
 	 */
-	public void forceEventOccurrence(ModelSpecificEvent mse);
+	public void forceModelSpecificEventOccurrence(ModelSpecificEvent mse);
 
 	/**
-	 * API that delegates to the Solver the application of the constraints to
-	 * add to the MoC following a Feedback result from a/several DSA(s).
+	 * Forces the solver to arrange its internals so as to forbid an occurrence
+	 * of the given MSE at the next round.
 	 * 
+	 * TODO: There should be some exception thrown if by undoing the MSE's
+	 * pattern we detect that forbidding this MSE is impossible.
 	 */
-	public void forbidEventOccurrence(ModelSpecificEvent mse);
+	public void forbidModelSpecificEventOccurrence(ModelSpecificEvent mse);
 
+	/**
+	 * Moc-event level Feedback to force a specific instance of MoCEvent to
+	 * occur at the next step.
+	 * 
+	 * @param mocEvent
+	 * @param target
+	 */
 	public void forceMocEventOccurrence(MocEvent mocEvent, EObject target);
 
+	/**
+	 * Moc-event level Feedback to force a specific instance of MoCEvent to NOT
+	 * occur at the next step.
+	 * 
+	 * @param mocEvent
+	 * @param target
+	 */
 	public void forbidMocEventOccurrence(MocEvent mocEvent, EObject target);
-
-	Map<String, MocEvent> getMocEventsRegistry();
 
 }
