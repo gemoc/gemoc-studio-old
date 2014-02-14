@@ -28,7 +28,9 @@ Require-Bundle: org.eclipse.ui,
  org.kermeta.utils.systemservices.api;bundle-version="2.1.1",
  org.kermeta.utils.systemservices.eclipse;bundle-version="2.1.1",
  fr.inria.aoste.timesquare.simulationpolicy,
- fr.inria.aoste.timesquare.simulationpolicy.max;bundle-version="1.0.0"
+ fr.inria.aoste.timesquare.simulationpolicy.max;bundle-version="1.0.0",
+ org.gemoc.dse_language.language_level,
+ fr.inria.aoste.timesquare.launcher.core;bundle-version="1.4.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine.commons,

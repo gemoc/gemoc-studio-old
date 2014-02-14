@@ -1,9 +1,11 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
 import glml.DomainSpecificEvent;
+import glml.MocEvent;
 import glml.ModelSpecificEvent;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
@@ -76,6 +78,20 @@ public interface ExecutionEngine {
 	 *         model being executed.
 	 */
 	public Collection<DomainSpecificEvent> getDomainSpecificEvents();
+	
+	/**
+	 * Retrieve the Model-Specific Events of the model being executed.
+	 * @return
+	 */
+	public Collection<ModelSpecificEvent> getModelSpecificEvents();
+	
+	/**
+	 * Returns the ModelSpecificEvent corresponding to the given couple of DSE and target.
+	 * @param dse
+	 * @param target
+	 * @return
+	 */
+	public ModelSpecificEvent getCorrespondingModelSpecificEvent(DomainSpecificEvent dse, EObject target);
 
 	/**
 	 * Retrieve the model being executed.
@@ -107,24 +123,20 @@ public interface ExecutionEngine {
 	 * API that delegates to the Solver the application of the constraints to
 	 * add to the MoC following a Feedback result from a/several DSA(s).
 	 * 
-	 * @param target
-	 *            the EObject targeted by the event we want to force.
-	 * @param operation
-	 *            the EOperation referenced by the event we want to force.
 	 */
-	public void forceEventOccurrenceReferencing(EObject target,
-			EOperation operation);
+	public void forceEventOccurrence(ModelSpecificEvent mse);
 
 	/**
 	 * API that delegates to the Solver the application of the constraints to
 	 * add to the MoC following a Feedback result from a/several DSA(s).
 	 * 
-	 * @param target
-	 *            the EObject target by the event we want to forbid.
-	 * @param operation
-	 *            the EOperation referenced by the event we want to forbid.
 	 */
-	public void forbidEventOccurrenceReferencing(EObject target,
-			EOperation operation);
+	public void forbidEventOccurrence(ModelSpecificEvent mse);
+
+	public void forceMocEventOccurrence(MocEvent mocEvent, EObject target);
+
+	public void forbidMocEventOccurrence(MocEvent mocEvent, EObject target);
+
+	Map<String, MocEvent> getMocEventsRegistry();
 
 }

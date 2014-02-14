@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.execution.engine,
  org.gemoc.gemoc_language_workbench.api,
  org.gemoc.execution.engine.commons;bundle-version="1.0.0",
- org.gemoc.execution.engine.io
+ org.gemoc.execution.engine.io,
+ org.gemoc.gemoc_language_workbench.conf.model;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.gemoc_modeling_workbench.ui,

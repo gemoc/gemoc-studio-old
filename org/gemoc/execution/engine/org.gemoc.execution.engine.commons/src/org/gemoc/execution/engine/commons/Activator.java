@@ -22,7 +22,7 @@ public class Activator extends AbstractUIPlugin {
 	public static EclipseMessagingSystem getMessagingSystem() {
 		if (messagingSystem == null) {
 			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
-					"GEMOC Execution Engine");
+					"GEMOC Execution Engine Commons");
 			((EclipseMessagingSystem) messagingSystem)
 					.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
 		}

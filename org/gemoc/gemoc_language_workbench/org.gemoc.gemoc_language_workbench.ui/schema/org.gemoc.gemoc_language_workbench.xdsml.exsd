@@ -86,7 +86,7 @@
          <attribute name="domainSpecificEventsResource" type="string" use="required">
             <annotation>
                <documentation>
-                  Resource of the DSE Mapping file (e.g. ECL file). (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
+                  Resource of the DSE Mapping file (e.g.GLML). (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
                </documentation>
                <appinfo>
                   <meta.attribute kind="resource"/>
@@ -110,6 +110,16 @@
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.ModelLoader"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="mocEventsResource" type="string">
+            <annotation>
+               <documentation>
+                  ECL file
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
                </appinfo>
             </annotation>
          </attribute>

@@ -1,15 +1,20 @@
 package org.gemoc.gemoc_language_workbench.api.moc;
 
+import java.util.Map;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.resource.Resource;
 
+import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
+import glml.MocEvent;
 
 /**
  * A Solver is the visible interface of any constraint solver system that runs
- * on its corresponding input based on a Model of Execution, returns Steps upon requests and
- * provides an API to influence the constraint-solving.
+ * on its corresponding input based on a Model of Execution, returns Steps upon
+ * requests and provides an API to influence the constraint-solving.
  * 
  * TODO : EventOccurrences should refer (in the context ?) (by name ?) to the
  * clock which they represent. Same for mapping the feedback to the right
@@ -27,8 +32,7 @@ public interface Solver {
 	 * @param event
 	 *            Model-Specific Event to forbid.
 	 */
-	public void forbidEventOccurrenceReferencing(EObject target,
-			EOperation operation);
+	public void forbidEventOccurrence(EventOccurrence eventOccurrence);
 
 	/**
 	 * Forces the underlying MoC structure to trigger an occurrence of a
@@ -39,8 +43,7 @@ public interface Solver {
 	 * @param event
 	 *            Model-Specific Event to force.
 	 */
-	public void forceEventOccurrenceReferencing(EObject target,
-			EOperation operation);
+	public void forceEventOccurrence(EventOccurrence eventOccurrence);
 
 	/**
 	 * Returns the next step on the MoC's agenda.
@@ -59,10 +62,22 @@ public interface Solver {
 	public SolverInputBuilder getSolverInputBuilder();
 
 	/**
-	 * Sets the input (constraints instanciated for the model) for
-	 * this solver. We use a file URI to allow different formats.
+	 * Sets the input (constraints instanciated for the model) for this solver.
+	 * We use a file URI to allow different formats.
 	 * 
 	 * @param solverInputURI
 	 */
 	public void setSolverInputFile(URI solverInputURI);
+
+	/**
+	 * Returns the instance of MocEvent for the EObject target.
+	 * 
+	 * @param mocEvent
+	 * @param target
+	 * @return
+	 */
+	public EventOccurrence getCorrespondingEventOccurrence(MocEvent mocEvent,
+			EObject target);
+
+	public Map<String, MocEvent> createMocEventsRegistry(Resource mocEventsResource);
 }

@@ -22,13 +22,13 @@ import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 public class EngineManager {
 	private ExecutionEngine engine;
 
-	public EngineManager(Resource domainSpecificEventsResource, Solver solver,
+	public EngineManager(Resource mocEventsResource, Resource domainSpecificEventsResource, Solver solver,
 			EventExecutor executor, FeedbackPolicy feedbackPolicy,
 			String modelPath, ModelLoader modelLoader,
 			List<Frontend> frontends, List<Backend> backends) {
 
 		// Initialization of the Execution Engine
-		this.engine = new GemocExecutionEngine(domainSpecificEventsResource,
+		this.engine = new GemocExecutionEngine(mocEventsResource, domainSpecificEventsResource,
 				solver, executor, feedbackPolicy);
 		this.engine.initialize(modelPath, modelLoader);
 

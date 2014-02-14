@@ -63,6 +63,7 @@ public class GemocReflectiveModelLauncher implements
 		FeedbackPolicy feedbackPolicy = null;
 		Resource domainSpecificEventsResource = null;
 		ModelLoader modelLoader = null;
+		Resource mocEventsResource = null;
 
 		// get the extension objects
 		if (confElement != null) {
@@ -108,6 +109,16 @@ public class GemocReflectiveModelLauncher implements
 			} catch (CoreException e) {
 				domainSpecificEventsResource = null;
 			}
+			
+			try {
+				final Object oMocEventsResource = confElement
+						.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_ATT);
+				if (oMocEventsResource instanceof Resource) {
+					mocEventsResource = (Resource) oMocEventsResource;
+				}
+			} catch (CoreException e) {
+				mocEventsResource = null;
+			}
 
 			// If there is a custom ModelLoader then we will use this,
 			// else we should rely on some default XMI ModelLoader.
@@ -134,6 +145,8 @@ public class GemocReflectiveModelLauncher implements
 		this.reactToNull(feedbackPolicy, "Feedback Policy");
 		this.reactToNull(domainSpecificEventsResource,
 				"Domain Specific Events Resource");
+		this.reactToNull(mocEventsResource,
+				"MoC Events Resource");
 		this.reactToNull(modelLoader, "Model Loader");
 
 		// TODO : Hard-coded Frontends and Backends... It should be selectable
@@ -146,7 +159,7 @@ public class GemocReflectiveModelLauncher implements
 
 		List<Backend> backends = new ArrayList<Backend>();
 		backends.add(new ConsoleBackend());
-		EngineManager manager = new EngineManager(domainSpecificEventsResource,
+		EngineManager manager = new EngineManager(mocEventsResource, domainSpecificEventsResource,
 				solver, executor, feedbackPolicy, modelPath, modelLoader,
 				frontends, backends);
 	}

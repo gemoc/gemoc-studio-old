@@ -5,12 +5,14 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.MethodCall;
+import org.gemoc.gemoc_language_workbench.extensions.k3.Activator;
 import org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorClassLoader;
 
 /**
@@ -131,7 +133,6 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 	 * 
 	 */
 	protected Class<?> getStaticHelperClass(Object target) {
-
 		String searchedAspectizedClassCanonicalName = getInterfaceClassOfEObjectOrClass(
 				target).getCanonicalName();
 
@@ -172,6 +173,9 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 			return k3DSAExecutorClassLoader
 					.getClassForName(possibleStaticClassName);
 		} catch (ClassNotFoundException e) {
+			Activator.getMessagingSystem().error(
+					"ClassNotFoundException, see Error Log View",
+					Activator.PLUGIN_ID, e);
 		}
 		return null;
 	}

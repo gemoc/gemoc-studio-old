@@ -15,7 +15,6 @@ import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -30,10 +29,14 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
+import glml.Identity;
+import glml.MocEvent;
 import glml.ModelSpecificEvent;
+import glml.Pattern;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -145,11 +148,13 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	protected EventExecutor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
 	protected Resource domainSpecificEventsResource = null;
+	protected Resource mocEventsResource = null;
 
 	/**
 	 * Derived from the above language-specific elements
 	 */
 	protected Map<String, DomainSpecificEvent> domainSpecificEventsRegistry = null;
+	protected Map<String, MocEvent> mocEventsRegistry = null;
 
 	/**
 	 * The constructor takes in all the language-specific elements. Creates the
@@ -165,9 +170,15 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	 * @param feedbackPolicy
 	 *            can be null (for now).
 	 */
-	public ObservableBasicExecutionEngine(
+	public ObservableBasicExecutionEngine(Resource mocEventsResource,
 			Resource domainSpecificEventsResource, Solver solver,
 			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
+		
+		// TODO: Same as below, I expected it not to work ...
+		if (mocEventsResource == null){
+			ResourceSet resSet = new ResourceSetImpl();
+			mocEventsResource = resSet.getResource(URI.createURI("platform:/plugin/org.gemoc.sample.petrinet.dse/ecl/petrinet.ecl"), true);
+		}
 
 		// TODO : REMOVE ME. This is a temporary fix because I can't get a DSE
 		// resource to be correctly detected...
@@ -180,9 +191,17 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			// true);
 
 			// With GLML:
+			
+			// Tfsm Sample
+//			domainSpecificEventsResource = resSet
+//					.getResource(
+//							URI.createURI("platform:/plugin/org.gemoc.sample.tfsm.dse/glml/MyDomainSpecificEvents.glml"),
+//							true);
+			
+			// Petrinet Sample
 			domainSpecificEventsResource = resSet
 					.getResource(
-							URI.createURI("platform:/plugin/org.gemoc.sample.tfsm.dse/glml/MyDomainSpecificEvents.glml"),
+							URI.createURI("platform:/plugin/org.gemoc.sample.petrinet.dse/glml/petrinetDomainSpecificEvents.glml"),
 							true);
 		}
 
@@ -191,11 +210,14 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				.info("Verifying input before instanciating ObservableBasicExecutionEngine...",
 						Activator.PLUGIN_ID);
 
-		// The engine needs AT LEAST a domainSpecificEventsResource, a Solver,
+		// The engine needs AT LEAST a mocEventsResource, domainSpecificEventsResource, a Solver,
 		// an EventExecutor.
-		if (domainSpecificEventsResource == null | solver == null
+		if (mocEventsResource == null | domainSpecificEventsResource == null | solver == null
 				| executor == null | feedbackPolicy == null) {
 			String exceptionMessage = "";
+			if (mocEventsResource == null){
+				exceptionMessage += "mocEventsResource is null, ";
+			}
 			if (domainSpecificEventsResource == null) {
 				exceptionMessage += "domainSpecificEventsResource is null, ";
 			}
@@ -219,6 +241,10 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 					.info("...OK. Instantiating ObservableBasicExecutionEngine with...",
 							Activator.PLUGIN_ID);
 			Activator
+			.getMessagingSystem()
+			.info("\tMocEventsResource="
+					+ mocEventsResource, Activator.PLUGIN_ID);
+			Activator
 					.getMessagingSystem()
 					.info("\tDomainSpecificEventsResource="
 							+ domainSpecificEventsResource, Activator.PLUGIN_ID);
@@ -237,11 +263,13 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 						Activator.PLUGIN_ID);
 			}
 
+			this.mocEventsResource = mocEventsResource;
 			this.domainSpecificEventsResource = domainSpecificEventsResource;
 			this.solver = solver;
 			this.executor = executor;
 			this.executor.initialize();
 
+			this.mocEventsRegistry = this.solver.createMocEventsRegistry(this.mocEventsResource);
 			this.domainSpecificEventsRegistry = this
 					.createDomainSpecificEventsRegistry(this.domainSpecificEventsResource);
 
@@ -253,6 +281,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			this.executionTrace = new LinkedHashMap<LogicalStep, List<ModelSpecificEvent>>();
 		}
 	}
+	
 
 	/**
 	 * Returns a map with Domain-Specific Events names as keys and the
@@ -416,7 +445,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		// feedback the Domain Specific Action returns.
 		for (ModelSpecificEvent event : events) {
 			this.setChanged();
-			this.notifyObservers("Execution of MSE: " + event.getName() + ")");
+			this.notifyObservers("Execution of MSE: " + event.getName());
 
 			Activator.getMessagingSystem().debug(
 					"Executing the following event: " + event.toString(),
@@ -479,22 +508,49 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 	@Override
 	// TODO
-	public void forceEventOccurrenceReferencing(EObject target,
-			EOperation operation) {
+	public void forceEventOccurrence(ModelSpecificEvent mse) {
 		this.setChanged();
-		this.notifyObservers("Forcing the solver to produce events leading to a MSE that references: "
-				+ target.toString() + ", " + operation.toString());
-		this.solver.forceEventOccurrenceReferencing(target, operation);
+		this.notifyObservers("Trying to force the solver to trigger an occurrence of MSE: " + mse.toString());
+		this.solver.forceEventOccurrence(this.findMappedMocElement(mse));
 	}
 
 	@Override
 	// TODO
-	public void forbidEventOccurrenceReferencing(EObject target,
-			EOperation operation) {
+	public void forbidEventOccurrence(ModelSpecificEvent mse) {
 		this.setChanged();
-		this.notifyObservers("Forbidding the solver from producing events leading to a MSE that references: "
-				+ target.toString() + ", " + operation.toString());
-		this.solver.forbidEventOccurrenceReferencing(target, operation);
+		this.notifyObservers("Trying to force the solver to forbid an occurrence of MSE: " + mse.toString());
+		this.solver.forbidEventOccurrence(this.findMappedMocElement(mse));
+	}
+	
+	@Override
+	public void forceMocEventOccurrence(MocEvent mocEvent, EObject target){
+		this.setChanged();
+		this.notifyObservers("Trying to force an occurrence of the MocEvent: " + mocEvent.toString() + " on target " + target.toString());
+		this.solver.forceEventOccurrence(this.solver.getCorrespondingEventOccurrence(mocEvent, target));
+	}
+	
+	@Override
+	public void forbidMocEventOccurrence(MocEvent mocEvent, EObject target){
+		this.setChanged();
+		this.notifyObservers("Trying to forbid an occurrence of the MocEvent: " + mocEvent.toString() + " on target " + target.toString());
+		this.solver.forbidEventOccurrence(this.solver.getCorrespondingEventOccurrence(mocEvent, target));
+	}
+	
+	@Override
+	public Map<String, MocEvent> getMocEventsRegistry(){
+		return this.mocEventsRegistry;
+	}
+	
+	// Only works with Identity for now
+	private EventOccurrence findMappedMocElement(ModelSpecificEvent mse){
+		Pattern pattern = mse.getCondition();
+		if (pattern instanceof Identity){
+			Identity identity = (Identity) pattern;
+			MocEvent mocEvent = identity.getArgument();
+			return this.solver.getCorrespondingEventOccurrence(mocEvent, mse.getModelSpecificActions().get(0).getTarget());
+		} else{
+			throw new UnsupportedOperationException("Can only deal with Identity pattern for now...");
+		}
 	}
 
 	/**
