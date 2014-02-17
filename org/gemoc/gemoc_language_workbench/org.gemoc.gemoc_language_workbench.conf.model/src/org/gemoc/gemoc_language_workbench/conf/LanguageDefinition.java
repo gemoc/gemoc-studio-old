@@ -40,7 +40,7 @@ public interface LanguageDefinition extends EObject {
 	 * @return the value of the '<em>Dsa Project</em>' containment reference.
 	 * @see #setDsaProject(DSAProject)
 	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_DsaProject()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	DSAProject getDsaProject();
@@ -92,7 +92,7 @@ public interface LanguageDefinition extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Editor Projects</em>' containment reference list.
 	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_EditorProjects()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<EditorProject> getEditorProjects();
@@ -108,7 +108,7 @@ public interface LanguageDefinition extends EObject {
 	 * @return the value of the '<em>Mo CModel Project</em>' containment reference.
 	 * @see #setMoCModelProject(MoCProject)
 	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_MoCModelProject()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	MoCProject getMoCModelProject();
@@ -134,7 +134,7 @@ public interface LanguageDefinition extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Animator Projects</em>' containment reference list.
 	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_AnimatorProjects()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<AnimatorProject> getAnimatorProjects();
@@ -150,7 +150,7 @@ public interface LanguageDefinition extends EObject {
 	 * @return the value of the '<em>DSE Project</em>' containment reference.
 	 * @see #setDSEProject(DSEProject)
 	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_DSEProject()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	DSEProject getDSEProject();

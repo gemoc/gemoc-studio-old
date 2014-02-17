@@ -18,7 +18,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectKind"/>
     </genClasses>
     <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//DSAProject"/>
-    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//Kermeta2DSAProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//LanguageDefinition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/dsaProject"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/domainModelProject"/>
