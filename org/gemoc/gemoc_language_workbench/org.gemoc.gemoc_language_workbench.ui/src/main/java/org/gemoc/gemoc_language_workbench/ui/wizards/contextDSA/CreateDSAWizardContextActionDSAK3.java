@@ -28,7 +28,7 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
-import org.k3.language.ui.wizards.WizardNewProjectK3Plugin;
+import fr.inria.diverse.k3.ui.wizards.WizardNewProjectK3Plugin;
 
 public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextActionDSA {
 
