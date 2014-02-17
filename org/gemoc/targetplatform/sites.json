@@ -37,7 +37,7 @@
         "http://www.obeo.fr/download/release/uml/4.0.0_M1/repository"
         ],
      "xtext": [
-         "http://download.eclipse.org/modeling/tmf/xtext/updates/releases/head/R201309030823/"
+         "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"
          ],
     "animation": [
         "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.sirius.animation/lastSuccessfulBuild/artifact/fr/obeo/dsl/sirius/animation/releng/fr.obeo.dsl.debug.repository/target/repository/"
@@ -73,7 +73,8 @@
         "https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository"
         ],
     "kermeta3": [
-        "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site"
+        "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site",
+        "https://ci.inria.fr/k3al/job/k3-sle.eclipse/lastSuccessfulBuild/artifact/k3-sle.eclipse/fr.inria.diverse.k3.sle.p2updatesite/target/site/"
         ],
     "devtools": [
         "http://download.scala-ide.org/sdk/helium/e38/scala210/stable/site",
