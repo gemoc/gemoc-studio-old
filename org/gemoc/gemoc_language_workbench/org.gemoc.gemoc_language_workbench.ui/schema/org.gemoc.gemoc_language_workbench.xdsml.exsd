@@ -63,7 +63,7 @@
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="executor_class" type="string" use="required">
+         <attribute name="executor_class" type="string">
             <annotation>
                <documentation>
                   Class responsible for being able to execute the methods referenced by the Domain-Specific Events. In particular, it should be able to locate the methods in the bytecode and call them correctly.
@@ -73,7 +73,7 @@
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="solver_class" type="string" use="required">
+         <attribute name="solver_class" type="string">
             <annotation>
                <documentation>
                   A Solver implementation, which has a facility to &quot;compile&quot; the Domain-Specific Events specification file into its own input file format. It should be able to produce a scheduling trace conforming to the RT-Simex Trace Metamodel (fr.inria.aoste.trace).
@@ -83,7 +83,7 @@
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="domainSpecificEventsResource" type="string" use="required">
+         <attribute name="domainSpecificEventsResource" type="string">
             <annotation>
                <documentation>
                   Resource of the DSE Mapping file (e.g.GLML). (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
