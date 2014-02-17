@@ -73,8 +73,7 @@
         "https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository"
         ],
     "kermeta3": [
-        "https://ci.inria.fr/k3al/job/STABLE_eclipse.root/lastSuccessfulBuild/artifact/eclipse/k3.eclipse.p2updatesite/target/site",
-        "https://ci.inria.fr/k3al/job/k3-sle.eclipse/lastSuccessfulBuild/artifact/k3-sle.eclipse/fr.inria.diverse.k3.sle.p2updatesite/target/site/"
+        "https://ci.inria.fr/k3al/job/k3.eclipse/lastSuccessfulBuild/artifact/k3.eclipse/fr.inria.diverse.k3.p2updatesite/target/site/"
         ],
     "devtools": [
         "http://download.scala-ide.org/sdk/helium/e38/scala210/stable/site",
