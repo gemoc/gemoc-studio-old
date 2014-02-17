@@ -5,8 +5,8 @@ addRepository(type:0,location:http${#58}//timesquare.inria.fr/ecl/update_site,na
 addRepository(type:1,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
 addRepository(type:0,location:http${#58}//timesquare.inria.fr/update_site/experimental,name:Timesquare);\
 addRepository(type:1,location:http${#58}//timesquare.inria.fr/update_site/experimental,name:Timesquare);\
-addRepository(type:0,location:http${#58}//www.kermeta.org/k2/update/,name:Kermeta 2);\
-addRepository(type:1,location:http${#58}//www.kermeta.org/k2/update/,name:Kermeta 2);\
+addRepository(type:0,location:http${#58}//www.kermeta.org/k3/update/,name:Kermeta 3);\
+addRepository(type:1,location:http${#58}//www.kermeta.org/k3/update/,name:Kermeta 3);\
 addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler,name:Sirius 1.0.0M4);\
 addRepository(type:1,location:http${#58}//download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler,name:Sirius 1.0.0M4);\
   mkdir(path:${installFolder}/dropins);
