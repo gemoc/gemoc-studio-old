@@ -44,9 +44,10 @@ public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextAct
 				.getWorkbench()
 				.getNewWizardRegistry()
 				.findWizard(
-						"org.k3.language.ui.wizards.WizardNewProjectK3Plugin");
+						"fr.inria.diverse.k3.ui.wizards.WizardNewProjectK3Plugin");
 		
 		// Then if we have a wizard, open it.
+			if(descriptor == null) Activator.error("failled to find wizard descriptor with id = fr.inria.diverse.k3.ui.wizards.WizardNewProjectK3Plugin", null);
 			if (descriptor != null) {
 			// add a listener to capture the creation of the resulting project
 			NewProjectWorkspaceListener workspaceListener = new NewProjectWorkspaceListener();
@@ -61,8 +62,16 @@ public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextAct
 				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 				
 				wd.create();
-				getEcoreFile((WizardNewProjectK3Plugin)wizard);
+				// set field as much as possible
+				ActiveFile activeFileEcore = new ActiveFileEcore(this.gemocLanguageIProject);
+				IFile ecoreFile = activeFileEcore.getActiveFile();
+				if (ecoreFile != null) {
+					((WizardNewProjectK3Plugin)wizard).getPageProject().setEcoreLoaded(ecoreFile);
+				}
+				((WizardNewProjectK3Plugin)wizard).getPageProject().setProjectName(gemocLanguageIProject.getName()+".k3dsa");
+				((WizardNewProjectK3Plugin)wizard).getPageProject().setProjectKind(fr.inria.diverse.k3.ui.tools.Context.KindsOfProject.PLUGIN);
 				wd.setTitle("New Kermeta 3 project");
+				
 				
 				int res = wd.open();
 				if(res == WizardDialog.OK){

@@ -476,10 +476,12 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
 		PluginXMLHelper helper = new PluginXMLHelper();
 		helper.loadDocument(pluginfile);
-		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
-		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint,
+		if (ld.getDomainModelProject() != null) {
+			Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+			helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint,
 				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT, packageName + "."
-						+ languageToUpperFirst + Activator.MODEL_LOADER_CLASS_NAMEPART);
+						+ languageToUpperFirst + Activator.MODEL_LOADER_CLASS_NAMEPART);	
+		}
 		helper.saveDocument(pluginfile);
 
 	}
