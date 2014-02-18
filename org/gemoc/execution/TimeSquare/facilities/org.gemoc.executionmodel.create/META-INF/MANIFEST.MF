@@ -13,7 +13,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xtext;bundle-version="2.3.0",
  org.gemoc.gemoc_language_workbench.api,
  fr.inria.aoste.timesquare.ccslkernel.model,
- org.gemoc.gemoc_language_workbench.ui;bundle-version="0.1.0"
+ org.gemoc.gemoc_language_workbench.ui;bundle-version="0.1.0",
+ org.gemoc.gemoc_language_workbench.extensions.k3,
+ org.eclipse.emf.ecore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
  JavaSE-1.7
 Bundle-ActivationPolicy: lazy

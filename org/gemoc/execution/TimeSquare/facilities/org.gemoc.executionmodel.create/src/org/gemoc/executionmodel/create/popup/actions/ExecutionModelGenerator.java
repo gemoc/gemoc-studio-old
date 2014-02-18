@@ -9,7 +9,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -26,13 +25,11 @@ import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.resource.SaveOptions.Builder;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
-import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 import com.google.inject.Injector;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ExtendedCCSLStandaloneSetup;
 
 
@@ -139,6 +136,7 @@ public class ExecutionModelGenerator implements IObjectActionDelegate {
 				confElement =confElements[i];
 			}
 		}
+		
 		// get the extension objects
 		if(confElement != null){
 			Object omodelLoader=null;
@@ -150,22 +148,14 @@ public class ExecutionModelGenerator implements IObjectActionDelegate {
 			if(omodelLoader instanceof ModelLoader){
 				this.modelLoader = (ModelLoader) omodelLoader;
 			}
-			Object oinitializer=null;
-			try {
-				oinitializer = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT);
-			} catch (CoreException e) {
-				e.printStackTrace();
-			}
-			if(oinitializer instanceof LanguageInitializer){
-			}
-
+			
 			Object oexecutor=null;
 			try {
 				oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT);
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
-			if(oexecutor instanceof IDSAExecutor){
+			if(oexecutor instanceof CodeExecutor){
 			}
 			
 			//get the Qvto file
