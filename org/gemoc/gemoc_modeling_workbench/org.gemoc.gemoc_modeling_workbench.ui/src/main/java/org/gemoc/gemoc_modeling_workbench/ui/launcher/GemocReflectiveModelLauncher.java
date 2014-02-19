@@ -80,7 +80,7 @@ public class GemocReflectiveModelLauncher implements
 			}
 
 			final Object oexecutor = confElement
-					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT);
+					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT);
 			if (oexecutor instanceof EventExecutor) {
 				executor = (EventExecutor) oexecutor;
 			}

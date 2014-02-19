@@ -66,14 +66,14 @@
          <attribute name="codeExecutor_class" type="string">
             <annotation>
                <documentation>
-                  Class responsible for being able to execute the methods referenced by the Domain-Specific Events. In particular, it should be able to locate the methods in the bytecode and call them correctly.
+                  Class responsible for being able to execute the methods in the domain including the oe added by the DSA. In particular, it should be able to locate the methods in the bytecode and call them correctly.
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor"/>
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="executor_class" type="string">
+         <attribute name="eventExecutor_class" type="string">
             <annotation>
                <documentation>
                   Class responsible for being able to execute the methods referenced by the Domain-Specific Events. In particular, it should be able to locate the methods in the bytecode and call them correctly.

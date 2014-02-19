@@ -34,7 +34,7 @@ public class Activator extends AbstractUIPlugin {
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT = "modelLoader_class";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT = "solver_class";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT = "codeExecutor_class";
-	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT = "executor_class";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT = "eventExecutor_class";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_FEEDBACKPOLICY_ATT = "feedbackPolicy_class";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_ATT = "mocEventsResource";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_ATT = "domainSpecificEventsResource";
@@ -45,7 +45,7 @@ public class Activator extends AbstractUIPlugin {
 	public static final String MODEL_LOADER_CLASS_NAMEPART = "ModelLoader";
 	public static final String INITIALIZER_CLASS_NAMEPART = "Initializer";
 	public static final String CODEEXECUTOR_CLASS_NAMEPART = "CodeExecutor";
-	public static final String EXECUTOR_CLASS_NAMEPART = "DSAExecutor";
+	public static final String EVENTEXECUTOR_CLASS_NAMEPART = "DSAExecutor";
 	public static final String EXTENSION_GENERATED_CLASS_FOLDER_NAME = "src/main/xdsml-java-gen/";
 
 	// The shared instance
