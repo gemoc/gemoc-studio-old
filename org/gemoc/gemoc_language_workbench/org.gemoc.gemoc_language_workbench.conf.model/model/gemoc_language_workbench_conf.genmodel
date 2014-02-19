@@ -12,7 +12,7 @@
     </genEnums>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/languageDefinition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/buildOptions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/buildOptions"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ProjectResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectName"/>

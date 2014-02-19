@@ -34,17 +34,20 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.gemoc.gemoc_language_workbench.conf.BuildOptions;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
+import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
+import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.gemoc.gemoc_language_workbench.utils.emf.EObjectUtil;
@@ -263,6 +266,11 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
 				// Create the resource
 				Resource modelresource = resSet.getResource(URI.createURI(file.getLocationURI().toString()), true);
+				// get buil option first
+				GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) modelresource.getContents().get(0);
+			    BuildOptions buildOptions = gemocLanguageWorkbenchConfiguration.getBuildOptions();
+			    if(buildOptions == null) buildOptions = confFactoryImpl.eINSTANCE.createBuildOptions();
+			    // then look to all the content to do the work
 				TreeIterator<EObject> it = modelresource.getAllContents();
 				String languageRootElement = "";
 				while (it.hasNext()) {
@@ -284,7 +292,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 						updateDependenciesWithXTextEditorProject(project, xtextProject);
 					}
 					if (eObject instanceof ECLFile) {
-						updateECL_QVTO(project, (ECLFile) eObject, languageRootElement);
+						if(buildOptions.isGenerateQVTOFromECL()){
+							updateECL_QVTO(project, (ECLFile) eObject, languageRootElement);
+						}
 					}
 					/*
 					 * if(eObject instanceof
@@ -307,9 +317,13 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 					if (eObject instanceof LanguageDefinition) {
 						LanguageDefinition ld = (LanguageDefinition) eObject;
 						changePluginLanguageName(project, ld.getName());
-						updateModelLoaderClass(project, ld);
+						if(buildOptions.isGenerateModelLoaderService()){							
+							updateModelLoaderClass(project, ld);
+						}
 						//updateInitializerClass(project, ld);
-						//updateDSAExecutorClass(project, ld);
+						if(buildOptions.isGenerateCodeExecutorService()){
+							updateCodeExecutorClass(project, ld);
+						}
 					}
 				}
 			}
@@ -524,20 +538,20 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	}
 
 	/**
-	 * create or replace existing DSAExecutorClass by an implementation that is
+	 * create or replace existing CodeExecutorClass by an implementation that is
 	 * able to execute method from the concrete DSA
 	 * 
 	 * @param project
 	 * @param ld
 	 */
-	protected void updateDSAExecutorClass(IProject project, LanguageDefinition ld) {
+	protected void updateCodeExecutorClass(IProject project, LanguageDefinition ld) {
 		// TODO remove possible previous classes
 		// create the java class
 		String languageToUpperFirst = ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
 		String packageName = project.getName() + ".xdsml.api.impl";
 		String folderName = packageName.replaceAll("\\.", "/");
 		if (ld.getDomainModelProject() != null) {
-			String fileContent = BuilderTemplates.EXECUTOR_CLASS_TEMPLATE;
+			String fileContent = BuilderTemplates.CODEEXECUTOR_CLASS_TEMPLATE;
 			fileContent = fileContent.replaceAll(
 					Pattern.quote("${package.name}"), packageName);
 			fileContent = fileContent.replaceAll(
@@ -556,7 +570,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			
 			if(ld.getDsaProject() instanceof K3DSAProject){
 				sbContent.append("// add K3 DSA specific executor\n");
-				sbContent.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.K3DSAAspectExecutor(this,\n");
+				sbContent.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor(this,\n");
 				sbContent.append("\t\t\t\""+ld.getDsaProject().getProjectName()+"\"));\n");
 				
 				sbImplementContent.append("\n\t\timplements org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorClassLoader ");
@@ -577,7 +591,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			
 
 			sbContent.append("\t\t// fall back executor : search classic java method\n");
-			sbContent.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.api.dsa.impl.JavaDSAExecutor());");
+			sbContent.append("\t\taddExecutor(new org.gemoc.execution.engine.commons.dsa.executors.JavaCodeExecutor());");
 			fileContent = fileContent.replaceAll(
 					Pattern.quote("${constructor.content}"), sbContent.toString());
 			
@@ -590,7 +604,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			IFile file = project
 					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
 							+ folderName + "/" + languageToUpperFirst
-							+ Activator.EXECUTOR_CLASS_NAMEPART + ".java");
+							+ Activator.CODEEXECUTOR_CLASS_NAMEPART + ".java");
 			ResourceUtil.writeFile(file, fileContent);
 		}
 		// update plugin.xml
@@ -600,8 +614,8 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.loadDocument(pluginfile);
 		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint,
-				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT, packageName + "."
-						+ languageToUpperFirst + Activator.EXECUTOR_CLASS_NAMEPART);
+				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT, packageName + "."
+						+ languageToUpperFirst + Activator.CODEEXECUTOR_CLASS_NAMEPART);
 		helper.saveDocument(pluginfile);
 
 	}

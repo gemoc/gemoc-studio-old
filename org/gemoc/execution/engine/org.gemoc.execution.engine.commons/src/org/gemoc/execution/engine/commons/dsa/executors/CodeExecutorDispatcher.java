@@ -9,25 +9,25 @@ import org.gemoc.gemoc_language_workbench.api.dsa.MethodCall;
 
 /**
  * An aggregation of several CodeExecutors.
- * 
+ * The actual invoke command will be dispatched to the first CodeExecutor that is able to handle it 
  * @author dvojtise
  * @author flatombe
  * 
  */
-public class SequentialCodeExecutor implements CodeExecutor {
+public class CodeExecutorDispatcher implements CodeExecutor {
 
 	protected List<CodeExecutor> availableExecutors = null;
 
-	public SequentialCodeExecutor() {
+	public CodeExecutorDispatcher() {
 		this.availableExecutors = new ArrayList<CodeExecutor>();
 	}
 
-	public SequentialCodeExecutor(CodeExecutor codeExecutor) {
+	public CodeExecutorDispatcher(CodeExecutor codeExecutor) {
 		this();
 		this.addExecutor(codeExecutor);
 	}
 
-	public SequentialCodeExecutor(List<CodeExecutor> codeExecutors) {
+	public CodeExecutorDispatcher(List<CodeExecutor> codeExecutors) {
 		this();
 		for (CodeExecutor codeExecutor : codeExecutors) {
 			this.addExecutor(codeExecutor);

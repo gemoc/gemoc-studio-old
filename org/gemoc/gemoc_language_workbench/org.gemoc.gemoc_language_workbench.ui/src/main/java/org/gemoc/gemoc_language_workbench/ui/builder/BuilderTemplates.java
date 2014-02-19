@@ -3,7 +3,8 @@ package org.gemoc.gemoc_language_workbench.ui.builder;
 public class BuilderTemplates {
 
 	public static final String MODEL_LOADER_CLASS_TEMPLATE =
-"/* GENERATED FILE, do not modify manually */\n" +
+"/* GENERATED FILE, do not modify manually                                                    *\n" +
+" * If you need to modify it, disable the generation in the BuildOptions of the project.xdsml */\n" +
 "package ${package.name};\n"+
 "import java.util.Map;\n"+
 "import org.eclipse.emf.common.util.URI;\n"+	
@@ -21,7 +22,8 @@ public class BuilderTemplates {
 "}";
 	
 	public static final String INITIALIZER_CLASS_TEMPLATE =
-"/* GENERATED FILE, do not modify manually */\n" +
+"/* GENERATED FILE, do not modify manually                                                    *\n" +
+" * If you need to modify it, disable the generation in the BuildOptions of the project.xdsml */\n" +
 "package ${package.name};\n"+
 "import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;\n"+
 "public class ${language.name.toupperfirst}Initializer implements LanguageInitializer {\n"+
@@ -32,12 +34,13 @@ public class BuilderTemplates {
 "}";
 	
 	
-	public static final String EXECUTOR_CLASS_TEMPLATE =
-"/* GENERATED FILE, do not modify manually */\n" +
+	public static final String CODEEXECUTOR_CLASS_TEMPLATE =
+"/* GENERATED FILE, do not modify manually                                                    *\n" +
+" * If you need to modify it, disable the generation in the BuildOptions of the project.xdsml */\n" +
 "package ${package.name};\n"+
-"import org.gemoc.gemoc_language_workbench.api.dsa.impl.ChainedDSAExecutor;\n"+
-"public class ${language.name.toupperfirst}DSAExecutor extends ChainedDSAExecutor ${implements.content} {\n"+
-"	public ${language.name.toupperfirst}DSAExecutor(){\n"+
+"import org.gemoc.execution.engine.commons.dsa.executors.CodeExecutorDispatcher;\n"+
+"public class ${language.name.toupperfirst}CodeExecutor extends CodeExecutorDispatcher ${implements.content} {\n"+
+"	public ${language.name.toupperfirst}CodeExecutor(){\n"+
 "	    ${constructor.content}\n"+
 "	}\n"+
 "   ${additional.operations}\n"+

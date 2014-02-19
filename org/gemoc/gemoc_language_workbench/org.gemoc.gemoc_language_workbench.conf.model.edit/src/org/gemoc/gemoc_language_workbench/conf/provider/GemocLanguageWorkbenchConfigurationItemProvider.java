@@ -62,31 +62,8 @@ public class GemocLanguageWorkbenchConfigurationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addBuildOptionsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Build Options feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBuildOptionsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GemocLanguageWorkbenchConfiguration_buildOptions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GemocLanguageWorkbenchConfiguration_buildOptions_feature", "_UI_GemocLanguageWorkbenchConfiguration_type"),
-				 confPackage.Literals.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -102,6 +79,7 @@ public class GemocLanguageWorkbenchConfigurationItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(confPackage.Literals.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION);
+			childrenFeatures.add(confPackage.Literals.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS);
 		}
 		return childrenFeatures;
 	}
@@ -154,6 +132,7 @@ public class GemocLanguageWorkbenchConfigurationItemProvider
 
 		switch (notification.getFeatureID(GemocLanguageWorkbenchConfiguration.class)) {
 			case confPackage.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION:
+			case confPackage.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -175,6 +154,11 @@ public class GemocLanguageWorkbenchConfigurationItemProvider
 			(createChildParameter
 				(confPackage.Literals.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION,
 				 confFactory.eINSTANCE.createLanguageDefinition()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(confPackage.Literals.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS,
+				 confFactory.eINSTANCE.createBuildOptions()));
 	}
 
 	/**
