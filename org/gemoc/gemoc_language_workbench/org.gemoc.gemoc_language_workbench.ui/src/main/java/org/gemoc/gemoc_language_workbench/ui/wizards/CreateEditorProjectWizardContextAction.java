@@ -265,7 +265,7 @@ public class CreateEditorProjectWizardContextAction {
 		    
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
 		    // consider only one language :-/
-		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinitions().get(0);
+		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
 		    
 		    // add missing data to conf
 		    

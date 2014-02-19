@@ -218,7 +218,8 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = confFactoryImpl.eINSTANCE.createGemocLanguageWorkbenchConfiguration();
 		    LanguageDefinition ld =confFactoryImpl.eINSTANCE.createLanguageDefinition();
 		    ld.setName(project.getName());
-		    gemocLanguageWorkbenchConfiguration.getLanguageDefinitions().add(ld);
+		    gemocLanguageWorkbenchConfiguration.setLanguageDefinition(ld);
+		    gemocLanguageWorkbenchConfiguration.setBuildOptions(confFactoryImpl.eINSTANCE.createBuildOptions());
 		    resource.getContents().add(gemocLanguageWorkbenchConfiguration);
 		    			
 			

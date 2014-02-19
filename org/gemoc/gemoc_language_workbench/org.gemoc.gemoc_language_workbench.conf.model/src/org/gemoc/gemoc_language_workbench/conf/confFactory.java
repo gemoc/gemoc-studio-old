@@ -141,6 +141,15 @@ public interface confFactory extends EFactory {
 	ECLFile createECLFile();
 
 	/**
+	 * Returns a new object of class '<em>Build Options</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Build Options</em>'.
+	 * @generated
+	 */
+	BuildOptions createBuildOptions();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

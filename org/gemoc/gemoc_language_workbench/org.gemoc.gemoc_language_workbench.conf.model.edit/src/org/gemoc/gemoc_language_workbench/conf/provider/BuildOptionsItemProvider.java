@@ -11,8 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -20,20 +18,20 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
-import org.gemoc.gemoc_language_workbench.conf.confFactory;
+import org.gemoc.gemoc_language_workbench.conf.BuildOptions;
 import org.gemoc.gemoc_language_workbench.conf.confPackage;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration} object.
+ * This is the item provider adapter for a {@link org.gemoc.gemoc_language_workbench.conf.BuildOptions} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class GemocLanguageWorkbenchConfigurationItemProvider
+public class BuildOptionsItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -47,7 +45,7 @@ public class GemocLanguageWorkbenchConfigurationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GemocLanguageWorkbenchConfigurationItemProvider(AdapterFactory adapterFactory) {
+	public BuildOptionsItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,72 +60,88 @@ public class GemocLanguageWorkbenchConfigurationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addBuildOptionsPropertyDescriptor(object);
+			addGenerateModelLoaderServicePropertyDescriptor(object);
+			addGenerateCodeExecutorServicePropertyDescriptor(object);
+			addGenerateQVTOFromECLPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Build Options feature.
+	 * This adds a property descriptor for the Generate Model Loader Service feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBuildOptionsPropertyDescriptor(Object object) {
+	protected void addGenerateModelLoaderServicePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_GemocLanguageWorkbenchConfiguration_buildOptions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GemocLanguageWorkbenchConfiguration_buildOptions_feature", "_UI_GemocLanguageWorkbenchConfiguration_type"),
-				 confPackage.Literals.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS,
+				 getString("_UI_BuildOptions_generateModelLoaderService_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BuildOptions_generateModelLoaderService_feature", "_UI_BuildOptions_type"),
+				 confPackage.Literals.BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE,
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Generate Code Executor Service feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(confPackage.Literals.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION);
-		}
-		return childrenFeatures;
+	protected void addGenerateCodeExecutorServicePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BuildOptions_generateCodeExecutorService_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BuildOptions_generateCodeExecutorService_feature", "_UI_BuildOptions_type"),
+				 confPackage.Literals.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Generate QVTO From ECL feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addGenerateQVTOFromECLPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BuildOptions_generateQVTOFromECL_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BuildOptions_generateQVTOFromECL_feature", "_UI_BuildOptions_type"),
+				 confPackage.Literals.BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns GemocLanguageWorkbenchConfiguration.gif.
+	 * This returns BuildOptions.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/GemocLanguageWorkbenchConfiguration"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BuildOptions"));
 	}
 
 	/**
@@ -138,7 +152,8 @@ public class GemocLanguageWorkbenchConfigurationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_GemocLanguageWorkbenchConfiguration_type");
+		BuildOptions buildOptions = (BuildOptions)object;
+		return getString("_UI_BuildOptions_type") + " " + buildOptions.isGenerateModelLoaderService();
 	}
 
 	/**
@@ -152,9 +167,11 @@ public class GemocLanguageWorkbenchConfigurationItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(GemocLanguageWorkbenchConfiguration.class)) {
-			case confPackage.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(BuildOptions.class)) {
+			case confPackage.BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE:
+			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
+			case confPackage.BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -170,11 +187,6 @@ public class GemocLanguageWorkbenchConfigurationItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(confPackage.Literals.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION,
-				 confFactory.eINSTANCE.createLanguageDefinition()));
 	}
 
 	/**

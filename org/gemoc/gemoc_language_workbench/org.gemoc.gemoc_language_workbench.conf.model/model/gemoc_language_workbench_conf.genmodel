@@ -11,7 +11,8 @@
       <genEnumLiterals ecoreEnumLiteral="gemoc_language_workbench_conf.ecore#//ProjectKind/mavenJar"/>
     </genEnums>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/languageDefinitions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/languageDefinition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//GemocLanguageWorkbenchConfiguration/buildOptions"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ProjectResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectName"/>
@@ -57,5 +58,10 @@
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//K3DSAProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLFile"/>
+    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//BuildOptions">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//BuildOptions/generateModelLoaderService"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//BuildOptions/generateCodeExecutorService"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//BuildOptions/generateQVTOFromECL"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

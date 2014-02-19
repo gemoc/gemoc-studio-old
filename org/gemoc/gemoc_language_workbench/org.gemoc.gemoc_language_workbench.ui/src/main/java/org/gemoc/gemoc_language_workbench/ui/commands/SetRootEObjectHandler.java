@@ -80,7 +80,7 @@ public class SetRootEObjectHandler extends AbstractGemocLanguageProjectHandler i
 		    
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
 		    // consider only one language :-/
-		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinitions().get(0);
+		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
 		    
 		    if(language.getDomainModelProject() instanceof EMFEcoreProject){
 		    	((EMFEcoreProject)language.getDomainModelProject()).setDefaultRootEObjectQualifiedName(rootEObjectName);

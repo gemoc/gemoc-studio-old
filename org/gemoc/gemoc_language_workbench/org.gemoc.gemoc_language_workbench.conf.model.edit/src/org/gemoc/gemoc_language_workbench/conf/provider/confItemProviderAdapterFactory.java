@@ -371,6 +371,29 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.BuildOptions} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BuildOptionsItemProvider buildOptionsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.BuildOptions}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBuildOptionsAdapter() {
+		if (buildOptionsItemProvider == null) {
+			buildOptionsItemProvider = new BuildOptionsItemProvider(this);
+		}
+
+		return buildOptionsItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -482,6 +505,7 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 		if (xTextEditorProjectItemProvider != null) xTextEditorProjectItemProvider.dispose();
 		if (k3DSAProjectItemProvider != null) k3DSAProjectItemProvider.dispose();
 		if (eclFileItemProvider != null) eclFileItemProvider.dispose();
+		if (buildOptionsItemProvider != null) buildOptionsItemProvider.dispose();
 	}
 
 }

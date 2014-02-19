@@ -65,7 +65,7 @@ public class ActiveFileEcore extends ActiveFile {
 		    
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
 		    // consider only one language :-/
-		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinitions().get(0);
+		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
 		    
 		    // create missing data
 		    EMFEcoreProject emfEcoreProject = (EMFEcoreProject) langage.getDomainModelProject();

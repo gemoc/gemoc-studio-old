@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.gemoc.gemoc_language_workbench.conf.AnimatorProject;
+import org.gemoc.gemoc_language_workbench.conf.BuildOptions;
 import org.gemoc.gemoc_language_workbench.conf.CCSLMoCProject;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DSEProject;
@@ -194,6 +195,13 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass buildOptionsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum projectKindEEnum = null;
 
 	/**
@@ -271,8 +279,17 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGemocLanguageWorkbenchConfiguration_LanguageDefinitions() {
+	public EReference getGemocLanguageWorkbenchConfiguration_LanguageDefinition() {
 		return (EReference)gemocLanguageWorkbenchConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGemocLanguageWorkbenchConfiguration_BuildOptions() {
+		return (EReference)gemocLanguageWorkbenchConfigurationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -604,6 +621,42 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getBuildOptions() {
+		return buildOptionsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBuildOptions_GenerateModelLoaderService() {
+		return (EAttribute)buildOptionsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBuildOptions_GenerateCodeExecutorService() {
+		return (EAttribute)buildOptionsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBuildOptions_GenerateQVTOFromECL() {
+		return (EAttribute)buildOptionsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getProjectKind() {
 		return projectKindEEnum;
 	}
@@ -637,7 +690,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		// Create classes and their features
 		gemocLanguageWorkbenchConfigurationEClass = createEClass(GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION);
-		createEReference(gemocLanguageWorkbenchConfigurationEClass, GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITIONS);
+		createEReference(gemocLanguageWorkbenchConfigurationEClass, GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION);
+		createEReference(gemocLanguageWorkbenchConfigurationEClass, GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS);
 
 		projectResourceEClass = createEClass(PROJECT_RESOURCE);
 		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_NAME);
@@ -695,6 +749,11 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		eclFileEClass = createEClass(ECL_FILE);
 
+		buildOptionsEClass = createEClass(BUILD_OPTIONS);
+		createEAttribute(buildOptionsEClass, BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE);
+		createEAttribute(buildOptionsEClass, BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE);
+		createEAttribute(buildOptionsEClass, BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL);
+
 		// Create enums
 		projectKindEEnum = createEEnum(PROJECT_KIND);
 	}
@@ -747,7 +806,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(gemocLanguageWorkbenchConfigurationEClass, GemocLanguageWorkbenchConfiguration.class, "GemocLanguageWorkbenchConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGemocLanguageWorkbenchConfiguration_LanguageDefinitions(), this.getLanguageDefinition(), null, "languageDefinitions", null, 0, -1, GemocLanguageWorkbenchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGemocLanguageWorkbenchConfiguration_LanguageDefinition(), this.getLanguageDefinition(), null, "languageDefinition", null, 0, 1, GemocLanguageWorkbenchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGemocLanguageWorkbenchConfiguration_BuildOptions(), this.getBuildOptions(), null, "buildOptions", null, 0, 1, GemocLanguageWorkbenchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(projectResourceEClass, ProjectResource.class, "ProjectResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProjectResource_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -804,6 +864,11 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEClass(k3DSAProjectEClass, K3DSAProject.class, "K3DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(eclFileEClass, ECLFile.class, "ECLFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(buildOptionsEClass, BuildOptions.class, "BuildOptions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBuildOptions_GenerateModelLoaderService(), ecorePackage.getEBoolean(), "generateModelLoaderService", "true", 0, 1, BuildOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBuildOptions_GenerateCodeExecutorService(), ecorePackage.getEBoolean(), "generateCodeExecutorService", "true", 0, 1, BuildOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBuildOptions_GenerateQVTOFromECL(), ecorePackage.getEBoolean(), "generateQVTOFromECL", "true", 0, 1, BuildOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(projectKindEEnum, ProjectKind.class, "ProjectKind");

@@ -3,8 +3,10 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="conf" nsURI="http://www.gemoc.org/gemoc_language_workbench_conf"
     nsPrefix="conf">
   <eClassifiers xsi:type="ecore:EClass" name="GemocLanguageWorkbenchConfiguration">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="languageDefinitions" upperBound="-1"
-        eType="#//LanguageDefinition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languageDefinition" eType="#//LanguageDefinition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="buildOptions" eType="#//BuildOptions"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectResource" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -68,4 +70,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="K3DSAProject" eSuperTypes="#//DSAProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="ECLFile" eSuperTypes="#//FileResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BuildOptions">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generateModelLoaderService"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generateCodeExecutorService"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generateQVTOFromECL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
 </ecore:EPackage>

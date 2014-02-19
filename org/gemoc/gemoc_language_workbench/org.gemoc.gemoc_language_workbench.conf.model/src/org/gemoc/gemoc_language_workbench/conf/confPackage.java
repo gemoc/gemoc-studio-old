@@ -67,13 +67,22 @@ public interface confPackage extends EPackage {
 	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Language Definitions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Language Definition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITIONS = 0;
+	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Build Options</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS = 1;
 
 	/**
 	 * The number of structural features of the '<em>Gemoc Language Workbench Configuration</em>' class.
@@ -82,7 +91,7 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION_FEATURE_COUNT = 1;
+	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ProjectResourceImpl <em>Project Resource</em>}' class.
@@ -925,6 +934,52 @@ public interface confPackage extends EPackage {
 	int ECL_FILE_FEATURE_COUNT = FILE_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl <em>Build Options</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getBuildOptions()
+	 * @generated
+	 */
+	int BUILD_OPTIONS = 21;
+
+	/**
+	 * The feature id for the '<em><b>Generate Model Loader Service</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Generate Code Executor Service</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Generate QVTO From ECL</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL = 2;
+
+	/**
+	 * The number of structural features of the '<em>Build Options</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILD_OPTIONS_FEATURE_COUNT = 3;
+
+	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -932,7 +987,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getProjectKind()
 	 * @generated
 	 */
-	int PROJECT_KIND = 21;
+	int PROJECT_KIND = 22;
 
 
 	/**
@@ -946,15 +1001,26 @@ public interface confPackage extends EPackage {
 	EClass getGemocLanguageWorkbenchConfiguration();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getLanguageDefinitions <em>Language Definitions</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getLanguageDefinition <em>Language Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Language Definitions</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getLanguageDefinitions()
+	 * @return the meta object for the containment reference '<em>Language Definition</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getLanguageDefinition()
 	 * @see #getGemocLanguageWorkbenchConfiguration()
 	 * @generated
 	 */
-	EReference getGemocLanguageWorkbenchConfiguration_LanguageDefinitions();
+	EReference getGemocLanguageWorkbenchConfiguration_LanguageDefinition();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getBuildOptions <em>Build Options</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Build Options</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getBuildOptions()
+	 * @see #getGemocLanguageWorkbenchConfiguration()
+	 * @generated
+	 */
+	EReference getGemocLanguageWorkbenchConfiguration_BuildOptions();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ProjectResource <em>Project Resource</em>}'.
@@ -1333,6 +1399,49 @@ public interface confPackage extends EPackage {
 	EClass getECLFile();
 
 	/**
+	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions <em>Build Options</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Build Options</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions
+	 * @generated
+	 */
+	EClass getBuildOptions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateModelLoaderService <em>Generate Model Loader Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Generate Model Loader Service</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateModelLoaderService()
+	 * @see #getBuildOptions()
+	 * @generated
+	 */
+	EAttribute getBuildOptions_GenerateModelLoaderService();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateCodeExecutorService <em>Generate Code Executor Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Generate Code Executor Service</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateCodeExecutorService()
+	 * @see #getBuildOptions()
+	 * @generated
+	 */
+	EAttribute getBuildOptions_GenerateCodeExecutorService();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateQVTOFromECL <em>Generate QVTO From ECL</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Generate QVTO From ECL</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateQVTOFromECL()
+	 * @see #getBuildOptions()
+	 * @generated
+	 */
+	EAttribute getBuildOptions_GenerateQVTOFromECL();
+
+	/**
 	 * Returns the meta object for enum '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1375,12 +1484,20 @@ public interface confPackage extends EPackage {
 		EClass GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION = eINSTANCE.getGemocLanguageWorkbenchConfiguration();
 
 		/**
-		 * The meta object literal for the '<em><b>Language Definitions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Language Definition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITIONS = eINSTANCE.getGemocLanguageWorkbenchConfiguration_LanguageDefinitions();
+		EReference GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION = eINSTANCE.getGemocLanguageWorkbenchConfiguration_LanguageDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Build Options</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS = eINSTANCE.getGemocLanguageWorkbenchConfiguration_BuildOptions();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ProjectResourceImpl <em>Project Resource</em>}' class.
@@ -1709,6 +1826,40 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ECL_FILE = eINSTANCE.getECLFile();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl <em>Build Options</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getBuildOptions()
+		 * @generated
+		 */
+		EClass BUILD_OPTIONS = eINSTANCE.getBuildOptions();
+
+		/**
+		 * The meta object literal for the '<em><b>Generate Model Loader Service</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE = eINSTANCE.getBuildOptions_GenerateModelLoaderService();
+
+		/**
+		 * The meta object literal for the '<em><b>Generate Code Executor Service</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE = eINSTANCE.getBuildOptions_GenerateCodeExecutorService();
+
+		/**
+		 * The meta object literal for the '<em><b>Generate QVTO From ECL</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL = eINSTANCE.getBuildOptions_GenerateQVTOFromECL();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
