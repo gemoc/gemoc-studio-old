@@ -48,7 +48,6 @@
                     <useUIHarness>true</useUIHarness>
                     <useUIThread>false</useUIThread>
                     <appArgLine>${ui.test.vmargs}</appArgLine>
-                    <application>org.eclipse.ui.ide.workbench</application>
                 </configuration>
             </plugin>
         </plugins>
