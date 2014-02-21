@@ -10,7 +10,10 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.execution.engine.io.backends.ConsoleBackend;
 import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.EngineManager;
@@ -99,26 +102,25 @@ public class GemocReflectiveModelLauncher implements
 								Activator.PLUGIN_ID);
 			}
 
-			// TODO: REMOVE the try/catch
-			try {
-				final Object oDomainSpecificEventsResource = confElement
-						.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_ATT);
-				if (oDomainSpecificEventsResource instanceof Resource) {
-					domainSpecificEventsResource = (Resource) oDomainSpecificEventsResource;
-				}
-			} catch (CoreException e) {
-				domainSpecificEventsResource = null;
+				
+			String dseResourcePath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT);
+			if(dseResourcePath != null){
+				ResourceSet resSet = new ResourceSetImpl();
+				domainSpecificEventsResource = resSet.getResource(
+								URI.createURI(dseResourcePath),
+								true);
 			}
+			else{Activator.getDefault().getMessaggingSystem().warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT + " isn't set", Activator.PLUGIN_ID);}
+		
+			String mocEventResourcePath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
+			if(mocEventResourcePath != null){
+				ResourceSet resSet = new ResourceSetImpl();
+				mocEventsResource = resSet.getResource(
+								URI.createURI(mocEventResourcePath),
+								true);
+			}
+			else{Activator.getDefault().getMessaggingSystem().warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT + " isn't set", Activator.PLUGIN_ID);}
 			
-			try {
-				final Object oMocEventsResource = confElement
-						.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_ATT);
-				if (oMocEventsResource instanceof Resource) {
-					mocEventsResource = (Resource) oMocEventsResource;
-				}
-			} catch (CoreException e) {
-				mocEventsResource = null;
-			}
 
 			// If there is a custom ModelLoader then we will use this,
 			// else we should rely on some default XMI ModelLoader.

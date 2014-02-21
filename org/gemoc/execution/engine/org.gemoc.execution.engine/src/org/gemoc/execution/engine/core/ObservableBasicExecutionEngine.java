@@ -178,64 +178,30 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			Resource domainSpecificEventsResource, Solver solver,
 			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 
-		// TODO: REMOVE ME. This is a temporary fix because I can't get a
-		// resource to be correctly detected...
-		if (mocEventsResource == null) {
-			ResourceSet resSet = new ResourceSetImpl();
-			mocEventsResource = resSet
-					.getResource(
-							URI.createURI("platform:/plugin/org.gemoc.sample.petrinet.dse/ecl/petrinet.ecl"),
-							true);
-		}
-
-		// TODO : REMOVE ME. This is a temporary fix because I can't get a
-		// resource to be correctly detected...
-		if (domainSpecificEventsResource == null) {
-			ResourceSet resSet = new ResourceSetImpl();
-			// Tfsm Sample
-			// domainSpecificEventsResource = resSet
-			// .getResource(
-			// URI.createURI("platform:/plugin/org.gemoc.sample.tfsm.dse/glml/MyDomainSpecificEvents.glml"),
-			// true);
-
-			// Petrinet Sample
-			domainSpecificEventsResource = resSet
-					.getResource(
-							URI.createURI("platform:/plugin/org.gemoc.sample.petrinet.dse/glml/petrinetDomainSpecificEvents.glml"),
-							true);
-		}
-
-		Activator
-				.getMessagingSystem()
-				.info("Verifying input before instanciating ObservableBasicExecutionEngine...",
-						Activator.PLUGIN_ID);
-
+		
 		// The engine needs AT LEAST a mocEventsResource,
 		// domainSpecificEventsResource, a Solver,
 		// an EventExecutor.
 		if (mocEventsResource == null | domainSpecificEventsResource == null
 				| solver == null | executor == null | feedbackPolicy == null) {
-			String exceptionMessage = "";
+			StringBuilder exceptionMessage = new StringBuilder();
 			if (mocEventsResource == null) {
-				exceptionMessage += "mocEventsResource is null, ";
+				exceptionMessage.append(", mocEventsResource is null, ");
 			}
 			if (domainSpecificEventsResource == null) {
-				exceptionMessage += "domainSpecificEventsResource is null, ";
+				exceptionMessage.append(", domainSpecificEventsResource is null, ");
 			}
 			if (solver == null) {
-				exceptionMessage += "solver is null, ";
+				exceptionMessage.append(", solver is null, ");
 			}
 			if (executor == null) {
-				exceptionMessage += "eventExecutor is null, ";
+				exceptionMessage.append(", eventExecutor is null, ");
 			}
-			if (exceptionMessage.endsWith(", ")) {
-				exceptionMessage = exceptionMessage.substring(0,
-						exceptionMessage.length() - 2);
-			}
-			Activator.getMessagingSystem().info(
-					"...NOK. Throwing NullPointerException.",
+			Activator.getMessagingSystem().error(
+					"Language definition is incomplete"+exceptionMessage,
 					Activator.PLUGIN_ID);
-			throw new NullPointerException(exceptionMessage);
+
+			throw new EngineNotCorrectlyInitialized("Language definition is incomplete"+exceptionMessage);	
 		} else {
 			Activator
 					.getMessagingSystem()
