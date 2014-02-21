@@ -1,5 +1,6 @@
 package fr.inria.aoste.timesquare.backend.emfexecution.behaviors;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.security.Permission;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
-import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 
 import fr.inria.aoste.timesquare.backend.emfexecution.Activator;
 import fr.inria.aoste.timesquare.backend.emfexecution.CodeExecutionHelper;
@@ -155,17 +156,27 @@ public class EmfExecutionBehavior implements ClockBehavior {
 				} catch (CoreException e) {
 					e.printStackTrace();
 				}
-				IDSAExecutor languageDSAExecutor = null;
-				if(oexecutor instanceof IDSAExecutor){
-					languageDSAExecutor = (IDSAExecutor) oexecutor;
+				CodeExecutor languageDSAExecutor = null;
+				if(oexecutor instanceof CodeExecutor){
+					languageDSAExecutor = (CodeExecutor) oexecutor;
 				}
 			
 			
 			
 			
 			Object res = null;
-			res = languageDSAExecutor.execute(_o, _methodName, null);
-			ce.println(res.toString());
+			try {
+				
+				res = languageDSAExecutor.invoke(_o, _methodName, null);
+			
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				throw new IllegalStateException(e);
+			} 
+			
+			
+			//ce.println(res.toString());
 			if (res instanceof Boolean){
 				Boolean boolRes = (Boolean)res;
 				if (boolRes.booleanValue()){

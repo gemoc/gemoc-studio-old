@@ -1,5 +1,7 @@
 package fr.inria.aoste.timesquare.backend.emfexecution.manager;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,8 +27,8 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
-import org.gemoc.gemoc_language_workbench.api.dsa.IDSAExecutor;
-import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
+//import org.gemoc.gemoc_language_workbench.api.utils.LanguageInitializer;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 import com.google.inject.Injector;
@@ -62,8 +64,8 @@ public class EmfCodeExecutionManager<RichMainClass> extends BehaviorManager {
 	private Map<String, Clock> forcedClockMap = new HashMap<String, Clock>();
 	
 	protected ModelLoader modelLoader;
-	protected LanguageInitializer languageInitializer;
-	protected IDSAExecutor languageDSAExecutor;
+//	protected LanguageInitializer languageInitializer;
+	protected CodeExecutor languageDSAExecutor;
 	
 	protected String modelUriString=null;
 	protected String confUriString=null;
@@ -150,15 +152,15 @@ public class EmfCodeExecutionManager<RichMainClass> extends BehaviorManager {
 				this.modelLoader = (ModelLoader) omodelLoader;
 				_modelRoot = modelLoader.loadModel(modelUriString).getContents().get(0);
 			}
-			Object oinitializer=null;
-			try {
-				oinitializer = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT);
-			} catch (CoreException e) {
-				e.printStackTrace();
-			}
-			if(oinitializer instanceof LanguageInitializer){
-				this.languageInitializer = (LanguageInitializer) oinitializer;
-			}
+//			Object oinitializer=null;
+//			try {
+//				oinitializer = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT);
+//			} catch (CoreException e) {
+//				e.printStackTrace();
+//			}
+//			if(oinitializer instanceof LanguageInitializer){
+//				this.languageInitializer = (LanguageInitializer) oinitializer;
+//			}
 
 			Object oexecutor=null;
 			try {
@@ -166,8 +168,8 @@ public class EmfCodeExecutionManager<RichMainClass> extends BehaviorManager {
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
-			if(oexecutor instanceof IDSAExecutor){
-				this.languageDSAExecutor = (IDSAExecutor) oexecutor;
+			if(oexecutor instanceof CodeExecutor){
+				this.languageDSAExecutor = (CodeExecutor) oexecutor;
 			}
 			
 		}
@@ -262,7 +264,12 @@ public class EmfCodeExecutionManager<RichMainClass> extends BehaviorManager {
 
 	private Object invokeMethod(EObject eo, String methodName){
 		Object res=null;
-		res = languageDSAExecutor.execute(eo, methodName, null);
+		try {
+			res = languageDSAExecutor.invoke(eo, methodName, null);
+		} catch (Throwable e) {
+			e.printStackTrace();
+			throw new IllegalStateException(e);
+		} 
 		_helper.println(res.toString());
 		return res;
 	}
@@ -279,7 +286,17 @@ public class EmfCodeExecutionManager<RichMainClass> extends BehaviorManager {
 	
 	private String getSimpleName(EObject eo){
 		Object res=null;
-		res =  invokeMethod(eo, "getName");
+		try {
+			Class<?> params[] = new Class[0];
+			Method m = eo.getClass().getMethod("getName", params);
+			
+			res = m.invoke(eo);
+			
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//res =  invokeMethod(eo, "getName");
 		return (String)res;
 	}
 	
