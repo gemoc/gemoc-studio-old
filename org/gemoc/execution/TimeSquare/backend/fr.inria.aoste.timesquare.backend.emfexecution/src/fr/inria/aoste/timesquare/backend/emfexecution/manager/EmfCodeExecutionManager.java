@@ -355,8 +355,9 @@ public class EmfCodeExecutionManager<RichMainClass> extends BehaviorManager {
 		String linkedElementQN = options.getObjectQualifiedName();
 		
 		modelUriString = options.getJarFilePath();
-		
-		initLoaderAndExecutor();
+		if(_modelRoot == null){
+			initLoaderAndExecutor();
+		}
 		TreeIterator<EObject> modelIterator = _modelRoot.eAllContents();
 		ArrayList<ClockEntity> clocksToForce = new ArrayList<ClockEntity>();
 		for(String clockQualifiedName: options.getClocksQualifiedNameToForce()){

@@ -166,7 +166,7 @@ public class EmfExecutionBehavior implements ClockBehavior {
 			
 			Object res = null;
 			try {
-				
+				//System.out.println("####  EMFExecutor invoke "+_methodName+ "on " +_o);
 				res = languageDSAExecutor.invoke(_o, _methodName, null);
 			
 			} catch (Throwable e) {
