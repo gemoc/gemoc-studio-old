@@ -3,9 +3,13 @@ package org.gemoc.execution.engine.io.frontends.scenariobuilders;
 import glml.DomainSpecificEvent;
 import glml.ModelSpecificEvent;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,12 +17,17 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.GroupLayout.Group;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
 
 import org.eclipse.emf.ecore.EObject;
@@ -33,10 +42,16 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 	private JFrame window;
 
 	private DomainSpecificEvent selectedEvent;
-	private EObject selectedTarget;
+	private EObject 	selectedTarget;
+	
 
-	private JLabel eventLabel;
-	private JLabel targetLabel;
+	protected JPanel 	actionPanel;
+	protected JPanel 	dsePanel;
+	protected JPanel 	modelElementPanel;
+	protected JPanel	possibleEventsPanel;
+
+	private JLabel 		eventLabel;
+	private JLabel 		targetLabel;
 
 	private Collection<ModelSpecificEvent> possibleEvents;
 	private Collection<JLabel> possibleEventsLabels;
@@ -49,26 +64,72 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 		this.selectedTarget = null;
 
 		this.content = new JPanel();
+		this.content.setLayout(new BoxLayout(this.content, BoxLayout.Y_AXIS));
+		//this.content.setLayout(new FlowLayout());
+		
+		//-----------------------------------------------
+		actionPanel = new JPanel();
+		actionPanel.setLayout(new BoxLayout(actionPanel, BoxLayout.X_AXIS));
+		
+		JPanel actionPanelLeft = new JPanel();
+		actionPanelLeft.setLayout(new BoxLayout(actionPanelLeft, BoxLayout.Y_AXIS));		
+		this.eventLabel = new JLabel("Selected DSE: ");
+		actionPanelLeft.add(eventLabel);
+		this.targetLabel = new JLabel("Selected model element: ");
+		actionPanelLeft.add(targetLabel);
+		actionPanel.add(actionPanelLeft);
+		
+		JPanel actionPanelRight = new JPanel();	
+		actionPanelRight.setLayout(new BoxLayout(actionPanelRight, BoxLayout.Y_AXIS));
+		actionPanel.add(actionPanelRight);	
+		
 		JButton injectButton = new JButton("Inject event");
 		injectButton.addActionListener(new ButtonHandlerInject());
+		actionPanelRight.add(injectButton);
+		
 		JButton clearButton = new JButton("Clear");
 		clearButton.addActionListener(new ButtonHandlerClear());
-
-		this.eventLabel = new JLabel("Selected DSE: ");
-		this.targetLabel = new JLabel("Selected model element: ");
-
-		this.content.add(eventLabel);
-		this.content.add(targetLabel);
-		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
-		this.content.add(injectButton);
-		this.content.add(clearButton);
-		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
+		actionPanelRight.add(clearButton);
 		
-
-		this.content.setLayout(new FlowLayout());
-		this.content
-				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-
+		this.content.add(actionPanel);
+		
+		// -----------------------------------------------
+		
+		//mainPanel.setSize(new Dimension(this.content.getWidth(), this.content.getHeight() -actionPanel.getHeight()));
+		
+		// -----------------------------------------------	
+		dsePanel = new JPanel();
+		dsePanel.setLayout(new BoxLayout(dsePanel, BoxLayout.Y_AXIS));
+		JScrollPane dseScrollPane = new JScrollPane(dsePanel);
+		dseScrollPane.setBorder(BorderFactory.createTitledBorder("Choose DSE"));
+		//mainPanel.add(dseScrollPane);
+		
+		// -----------------------------------------------	
+		modelElementPanel = new JPanel();
+		modelElementPanel.setLayout(new BoxLayout(modelElementPanel, BoxLayout.Y_AXIS));
+		JScrollPane modelElementScrollPane = new JScrollPane(modelElementPanel);
+		modelElementScrollPane.setBorder(BorderFactory.createTitledBorder("Choose Model Element"));
+		//mainPanel.add(modelElementScrollPane);
+		
+		// -----------------------------------------------	
+		possibleEventsPanel = new JPanel();
+		possibleEventsPanel.setLayout(new BoxLayout(possibleEventsPanel, BoxLayout.Y_AXIS));
+		//possibleEventsPanel.add(new JLabel("Possible MSEs at this time: "));
+		JScrollPane possibleEventsScrollPane = new JScrollPane(possibleEventsPanel);
+		possibleEventsScrollPane.setBorder(BorderFactory.createTitledBorder("Possible MSEs at this time:"));
+		//mainPanel.add(possibleEventsScrollPane);
+		
+		JSplitPane splitPane1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+				dseScrollPane, modelElementScrollPane);
+		splitPane1.setDividerLocation(250);
+		JSplitPane splitPane2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+				splitPane1, possibleEventsScrollPane);
+		splitPane2.setDividerLocation(400);
+		
+		JScrollPane mainPanel = new JScrollPane(splitPane2);
+		
+		this.content.add(mainPanel);
+		
 		this.window = new JFrame("GEMOC Execution Engine Scenario Builder");
 		this.window.setContentPane(this.content);
 		this.window.setSize(700, 600);
@@ -99,7 +160,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 
 		this.possibleEvents = this.engine.getCurrentPossibleEvents();
 		for (JLabel label : this.possibleEventsLabels) {
-			this.content.remove(label);
+			possibleEventsPanel.remove(label);
 		}
 		this.possibleEventsLabels.clear();
 		this.setAndAddPossibleEventsLabels();
@@ -109,7 +170,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 	private void setAndAddPossibleEventsLabels() {
 		for (ModelSpecificEvent mse : this.possibleEvents) {
 			JLabel label = new JLabel(mse.getName());
-			this.content.add(label);
+			possibleEventsPanel.add(label);
 			this.possibleEventsLabels.add(label);
 		}
 	}
@@ -118,10 +179,10 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 	public void initialize(ExecutionEngine engine) {
 		this.engine = engine;
 		this.addEventButtons(this.engine.getDomainSpecificEvents());
-		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
+		//this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
 		this.addModelButtons(this.engine.getModelResource());
-		this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
-		this.content.add(new JLabel("Possible MSEs at this time: "));
+		//this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
+		//this.content.add(new JLabel("Possible MSEs at this time: "));
 		this.possibleEventsLabels = new ArrayList<JLabel>();
 		this.possibleEvents = null;
 		this.validate();
@@ -134,7 +195,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 			eventButton.addActionListener(listenerEvent);
 			eventButton.setOpaque(true);
 			eventButton.setBackground(Color.CYAN);
-			this.content.add(eventButton);
+			dsePanel.add(eventButton);
 		}
 	}
 
@@ -147,7 +208,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 			eobjectButton.addActionListener(listener);
 			eobjectButton.setOpaque(true);
 			eobjectButton.setBackground(Color.MAGENTA);
-			this.content.add(eobjectButton);
+			modelElementPanel.add(eobjectButton);
 		}
 	}
 
