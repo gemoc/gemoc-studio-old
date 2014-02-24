@@ -38,12 +38,8 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	protected Text modelLocationText;
 	protected Combo languageCombo;
 
-	protected Text metamodelLocationText;
-	protected Text ccslLocationText;
-	private Text jarFolderLocationText;
-	private Text k2MainOperationText;
-	private Text k2ProjectNameText;
-	private Text k2PortText;
+	protected Text modelofexecutionglml_LocationText;
+	protected Text extendedccslLocationText;
 	
 	public int GRID_DEFAULT_WIDTH = 200;
 	
@@ -87,12 +83,8 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		try {
 			this.modelLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MODEL_PATH, ""));
 			this.languageCombo.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE, ""));
-			this.metamodelLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MM_PATH, ""));
-			this.ccslLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_CCSL_FILE_PATH, ""));
-			this.jarFolderLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_JARS_FOLDER_PATH, ""));
-			this.k2MainOperationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.KM_LAUNCH_MAIN_OPERATION, ""));
-			this.k2ProjectNameText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.KM_LAUNCH_PROJECT, ""));
-			this.k2PortText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.KM_LAUNCH_PORT, ""));
+			this.modelofexecutionglml_LocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH, ""));
+			this.extendedccslLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH, ""));
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
@@ -107,23 +99,11 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 				GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
 				this.languageCombo.getText());
 		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.LAUNCH_MM_PATH,
-				this.metamodelLocationText.getText());
+				GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
+				this.modelofexecutionglml_LocationText.getText());
 		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.LAUNCH_CCSL_FILE_PATH,
-				this.ccslLocationText.getText());
-		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.LAUNCH_JARS_FOLDER_PATH,
-				this.jarFolderLocationText.getText());
-		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.KM_LAUNCH_MAIN_OPERATION,
-				this.k2MainOperationText.getText());
-		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.KM_LAUNCH_PROJECT,
-				this.k2ProjectNameText.getText());
-		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.KM_LAUNCH_PORT,
-				this.k2PortText.getText());
+				GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH,
+				this.extendedccslLocationText.getText());
 	}
 
 	@Override
@@ -245,52 +225,21 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		// gd.horizontalSpan = 1;
 		gd.widthHint = GRID_DEFAULT_WIDTH;
 		
-		createTextLabelLayout(parent, "Metamodel path (*.ecore)");
+		// --------------
+		createTextLabelLayout(parent, "used defined ModelOfExecution glml File");
+		modelofexecutionglml_LocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		modelofexecutionglml_LocationText.setLayoutData(gd);
+		modelofexecutionglml_LocationText.setFont(font);
+		modelofexecutionglml_LocationText.addModifyListener(fBasicModifyListener);
 		
+		// --------------
+		createTextLabelLayout(parent, "used defined extendedCCSL File");
 		// metamodel location text
-		metamodelLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		metamodelLocationText.setLayoutData(gd);
-		metamodelLocationText.setFont(font);
-		metamodelLocationText.addModifyListener(fBasicModifyListener);
+		extendedccslLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		extendedccslLocationText.setLayoutData(gd);
+		extendedccslLocationText.setFont(font);
+		extendedccslLocationText.addModifyListener(fBasicModifyListener);
 		
-		// --------------
-		createTextLabelLayout(parent, "CCSL File");
-		// metamodel location text
-		ccslLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		ccslLocationText.setLayoutData(gd);
-		ccslLocationText.setFont(font);
-		ccslLocationText.addModifyListener(fBasicModifyListener);
-		
-		// --------------
-		createTextLabelLayout(parent, "jar folder");
-		jarFolderLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		jarFolderLocationText.setLayoutData(gd);
-		jarFolderLocationText.setFont(font);
-		jarFolderLocationText.addModifyListener(fBasicModifyListener);
-		
-		createSeparator(parent, 2);
-		
-		// --------------
-		createTextLabelLayout(parent, "Kermeta 2 main operation");
-		k2MainOperationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		k2MainOperationText.setLayoutData(gd);
-		k2MainOperationText.setFont(font);
-		k2MainOperationText.addModifyListener(fBasicModifyListener);
-
-		// --------------
-		createTextLabelLayout(parent, "Kermeta 2 project name");
-		k2ProjectNameText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		k2ProjectNameText.setLayoutData(gd);
-		k2ProjectNameText.setFont(font);
-		k2ProjectNameText.addModifyListener(fBasicModifyListener);
-
-		
-		// --------------
-		createTextLabelLayout(parent, "Kermeta 2 port");
-		k2PortText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		k2PortText.setLayoutData(gd);
-		k2PortText.setFont(font);
-		k2PortText.addModifyListener(fBasicModifyListener);
 		
 		
 		return parent;

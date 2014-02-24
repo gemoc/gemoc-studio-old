@@ -34,10 +34,12 @@ public interface ExecutionEngine {
 	 * 
 	 * @param modelURI
 	 *            : URI of the model to load
+	 * @param modelOfExecutionURI
+	 *            : URI of the model of execution (linked to the model that will run)
 	 * @param modelLoader
 	 *            : Facility able to load the model. By default should be XMI.
 	 */
-	public void initialize(String modelURI, ModelLoader modelLoader);
+	public void initialize(String modelURI, String modelOfExecutionURI, ModelLoader modelLoader);
 
 	/** --------------- Input/Output (Frontend) --------------- **/
 	/**

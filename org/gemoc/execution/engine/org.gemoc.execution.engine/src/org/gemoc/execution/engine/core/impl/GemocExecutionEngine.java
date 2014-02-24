@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.core.EngineNotCorrectlyInitialized;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
@@ -56,7 +57,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	/**
 	 * Derived from the language-specific elements using the loaded model.
 	 */
-	private Resource modelOfExecution = null;
+	public Resource modelOfExecution = null;
 	private Map<String, ModelSpecificEvent> modelSpecificEventsRegistry = null;
 	private Resource solverInput = null;
 
@@ -87,7 +88,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	}
 
 	@Override
-	public void initialize(String modelURI, ModelLoader modelLoader) {
+	public void initialize(String modelURI, String modelOfExecutionURI, ModelLoader modelLoader) {
 		Activator.getMessagingSystem().info(
 				"Verifying input before instanciating GemocExecutionEngine...",
 				Activator.PLUGIN_ID);
@@ -98,13 +99,16 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			if (modelURI == null) {
 				exceptionMessage += "modelURI is null, ";
 			}
+			if (modelOfExecutionURI == null) {
+				exceptionMessage += "modelOfExecutionURI is null, ";
+			}
 			if (modelLoader == null) {
 				exceptionMessage += "modelLoader is null, ";
 			}
 			Activator.getMessagingSystem().info(
-					"...NOK. Throwing NullPointerException.",
+					"...NOK. Throwing EngineNotCorrectlyInitialized.",
 					Activator.PLUGIN_ID);
-			throw new NullPointerException(exceptionMessage);
+			throw new EngineNotCorrectlyInitialized("Engine not correctly initialized "+exceptionMessage);
 		} else {
 			Activator.getMessagingSystem().info(
 					"...OK. Initializing GemocExecutionEngine with...",
@@ -135,12 +139,13 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			// true), true);
 
 			// Petrinet Sample
-			this.modelOfExecution = new ResourceSetImpl()
+			if(this.modelOfExecution == null){
+				this.modelOfExecution = new ResourceSetImpl()
 					.getResource(
-							URI.createPlatformResourceURI(
-									"/org.gemoc.sample.petrinet/instances/test_1/BasicExample_ModelOfExecution.glml",
+							URI.createPlatformResourceURI(modelOfExecutionURI,
 									true), true);
-
+			}
+			
 			// TODO : remove when EclToCCslTranslator gets implemented.
 			try {
 				Resource solverInput = this.solver.getSolverInputBuilder()

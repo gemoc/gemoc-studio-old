@@ -268,7 +268,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	}
 
 	@Override
-	public abstract void initialize(String modelURI, ModelLoader modelLoader);
+	public abstract void initialize(String modelURI, String modelOfExecutionURI, ModelLoader modelLoader);
 
 	@Override
 	public abstract void reset();

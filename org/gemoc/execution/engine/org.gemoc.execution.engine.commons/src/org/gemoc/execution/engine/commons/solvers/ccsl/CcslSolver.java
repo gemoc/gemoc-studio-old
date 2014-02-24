@@ -56,6 +56,9 @@ public class CcslSolver implements
 	public SolverInputBuilder getSolverInputBuilder() {
 		return this.solverInputBuilder;
 	}
+	public void setSolverInputBuilder(SolverInputBuilder solverInputBuilder) {
+		this.solverInputBuilder = solverInputBuilder;
+	}
 
 	@Override
 	public void forbidEventOccurrence(EventOccurrence eventOccurrence) {

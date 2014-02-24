@@ -8,14 +8,8 @@ public abstract class GemocModelLauncherConfigurationConstants {
 	
 	
 	// parameters that should be derived from the language in future version
-	public static final String LAUNCH_MM_PATH = "GEMOC_LAUNCH_MM_PATH";
-	public static final String LAUNCH_PARAMETERS = "GEMOC_LAUNCH_PARAMETERS";
-	public static final String LAUNCH_CCSL_FILE_PATH = "GEMOC_LAUNCH_CCSL_FILE_PATH";
-		// can be reused as "additional user jar"
-	public static final String LAUNCH_JARS_FOLDER_PATH = "GEMOC_LAUNCH_JARS_FOLDER_PATH";
-	public static final String KM_LAUNCH_MAIN_OPERATION = "KM_LAUNCH_MAIN_OPERATION";
-	public static final String KM_LAUNCH_PROJECT = "KM_LAUNCH_PROJECT";
-	public static final String KM_LAUNCH_PORT = "KM_LAUNCH_PORT";
+	public static final String LAUNCH_EXTENDEDCCSL_FILE_PATH = "GEMOC_LAUNCH_EXTENDEDCCSL_FILE_PATH";
+	public static final String LAUNCH_MODELOFEXECUTION_GLML_PATH = "GEMOC_LAUNCH_MODELOFEXECUTION_GLML_FILE_PATH";
 	
 	
 	

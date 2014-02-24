@@ -49,6 +49,13 @@ public interface Solver {
 	public SolverInputBuilder getSolverInputBuilder();
 
 	/**
+	 * allows to define manually the facility that allows the Execution Engine to create an input
+	 * acceptable for the solver based on the Model-Specific Events file.
+	 * @param solverInputBuilder
+	 */
+	public void setSolverInputBuilder(SolverInputBuilder solverInputBuilder);
+	
+	/**
 	 * Sets the input (constraints instanciated for the model) for this solver.
 	 * We use a file URI to allow different formats.
 	 * 
