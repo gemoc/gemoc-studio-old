@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="fr.obeo.dsl.fuml.sirius.ui.launchConfiguration">
+<stringAttribute key="First Instruction" value="platform:/resource/test.sirius/BasicActiveObjectExample.uml#_Z5ViIHXlEeKEDJ51kkuoUw"/>
+<stringAttribute key="Resource" value="/test.sirius/BasicActiveObjectExample.uml"/>
+<stringAttribute key="airdResource" value="/test.sirius/representations.aird"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/test.sirius/BasicActiveObjectExample.uml"/>
+<listEntry value="/test.sirius/representations.aird"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+<listEntry value="1"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
+</listAttribute>
+</launchConfiguration>
