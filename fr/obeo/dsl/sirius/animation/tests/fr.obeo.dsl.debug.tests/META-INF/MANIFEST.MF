@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: fr.obeo.dsl.debug.tests;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Require-Bundle: fr.obeo.dsl.debug;bundle-version="1.0.0",
+ org.junit;bundle-version="4.0.0"
+Export-Package: fr.obeo.dsl.debug.tests

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.ide.markerImageProviders">
+      <imageprovider
+            icon="icons/full/deco16/breakpoint_enabled.gif"
+            id="fr.obeo.dsl.debug.ide.ui.breakpointImageProvider"
+            markertype="fr.obeo.dsl.debug.ide.breakpointMarker">
+      </imageprovider>
+   </extension>
+
+</plugin>

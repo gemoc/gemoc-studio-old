@@ -1,0 +1,283 @@
+/*
+ * $Id:$ 
+ * Creation		: May 15, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ * Authors		: 
+ * 		hardebolle
+ */
+package modhelx::core;
+
+require kermeta
+require "platform:/resource/fr.supelec.modhelx/metamodel/modhelx.ecore"
+
+using kermeta::standard
+using kermeta::persistence
+using kermeta::exceptions
+using kermeta::utils
+
+using modhelx::core
+
+/*
+ * This file contains the abstract semantics of ModHel'X
+ * i.e. the abstract definition of all operations necessary to define the semantics of a model in ModHel'X
+ * 
+ */
+
+/*** Model of the state of the model for execution : Tokens ***/
+
+class Token {
+	// a token may have a value, which is given by the MoC according to which it is interpreted
+	operation getValue() : Object  is abstract
+	operation setOwnerMoC(moc : ModelOfComputation) is abstract
+}
+
+
+aspect class Pin {
+	// pins are made to store and get tokens
+	operation addToken(token : Token)  is abstract
+	operation getToken(remove : Boolean) : Token  is abstract
+	operation getTokens() : Token [0..*]  is abstract
+	operation hasToken() : Boolean  is abstract
+	operation clearTokens() is abstract
+}
+
+
+/*** Snapshot/update triggering ***/
+
+// objects allowing the triggering of an update on an observable entity
+abstract class UpdateTrigger {
+	operation getEntityToUpdate() : ObservableEntity is abstract
+	operation setEntityToUpdate(o: ObservableEntity) is abstract
+	operation getTimeOfUpdate() : Integer is abstract
+	operation setTimeOfUpdate(t: Integer) is abstract
+	
+	// prepare = provide all necessary information to the entity so that it can be updated
+	operation prepareToTrigger() is abstract
+	// trigger = basically update the entity to update (but may cover other things if necessary)
+	operation trigger() is abstract
+}
+
+// basic update triggers are snapshot requests made by blocks
+class SnapshotRequest inherits UpdateTrigger {
+}
+
+
+/*** Abstract semantics for MoCs -- will be specialized ***/
+
+aspect abstract class ModelOfComputation {
+	// operations for tokens
+	operation getTokenValue(t : Token) : Object  is abstract
+	operation setTokenValue(t : Token, val : Object) is abstract
+	operation createToken(val : Object) : Token is abstract
+
+	// prep : done just after loading the model (e.g. type resolution...) 
+	operation prep(s : BlockStructure) is abstract
+	
+	// beginning of the simulation, done just before executing the model (pair with wrapup, done just after executing)
+	operation setup(s : BlockStructure) is abstract
+	
+	// collect the initial requests for snapshots (for source blocks in particular)
+	operation collectInitialSnapshotRequests(s : BlockStructure, sr : Sequence<SnapshotRequest>) is abstract
+
+	// operations for computing the snapshot
+	operation startOfSnapshot(s : BlockStructure) is abstract
+	operation reset(s : BlockStructure) is abstract
+	operation schedule(s : BlockStructure) is abstract
+	operation update(s : BlockStructure) is abstract
+	operation propagate(s : BlockStructure) is abstract
+	operation canGoFurther(s : BlockStructure) : Boolean is abstract
+	operation validate(s : BlockStructure) : Boolean is abstract
+	operation endOfSnapshot(s : BlockStructure) is abstract
+
+	// collect snapshot requests for next snapshot
+	operation collectSnapshotRequests(s : BlockStructure, sr : Sequence<SnapshotRequest>) is abstract
+	
+	// end of the simulation
+	operation wrapup(s : BlockStructure) is abstract
+
+}
+
+
+/*** Observable entities ***/
+
+
+aspect abstract class ObservableEntity {
+	// operations for pins
+	operation addPin(name : String) : Pin is abstract
+	operation getPin(name : String) : Pin is abstract
+
+	// operations for execution
+	operation prep() is abstract
+	operation setup() is abstract
+	operation collectInitialSnapshotRequests(sr : Sequence<SnapshotRequest>) is abstract
+	operation startOfSnapshot() is abstract
+	operation reset() is abstract
+	operation update() is abstract // most important operation for an observable entity : it can be updated
+	operation validate() : Boolean is abstract
+	operation endOfSnapshot() is abstract
+	operation collectSnapshotRequests(sr : Sequence<SnapshotRequest>) is abstract
+	operation wrapup() is abstract
+
+}
+
+// Model inherits ObservableEntity
+aspect class Model {
+	// operations necessary for hierarchical execution, delegated to the moc associated to the model
+	method prep() is do
+		self.moc.prep(self.structure)
+	end
+	method setup() is do
+		self.moc.setup(self.structure)
+	end
+	method collectInitialSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		self.moc.collectInitialSnapshotRequests(self.structure, sr)
+	end
+	method startOfSnapshot() is do
+		self.moc.startOfSnapshot(self.structure)
+	end
+	method reset() is do
+		self.moc.reset(self.structure)
+	end
+	method update() is do
+		from var canGoFurther : Boolean init self.moc.canGoFurther(self.structure) until not canGoFurther
+		loop
+			self.moc.schedule(self.structure)
+			self.moc.update(self.structure)
+			self.moc.propagate(self.structure)
+			canGoFurther := self.moc.canGoFurther(self.structure)
+		end
+	end
+	method validate() : Boolean is do
+		result := self.moc.validate(self.structure)
+	end
+	method endOfSnapshot() is do
+		self.moc.endOfSnapshot(self.structure)
+	end
+	method collectSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		self.moc.collectSnapshotRequests(self.structure, sr)
+	end
+	method wrapup() is do
+		self.moc.wrapup(self.structure)
+	end
+	
+}
+
+// Block inherits ObservableEntity
+
+// AtomicBlock inherits Block
+// (in particular, the update operation will be specialized)
+
+// InterfaceBlock inherits Block
+aspect abstract class InterfaceBlock {
+	// most important operations for interface blocks : they are responsible for semantic adaptation
+	// => will be specialized
+	operation adaptIn() is abstract
+	operation adaptOut() is abstract
+
+
+	// operations necessary for hierarchical execution, delegated to the internal model
+	method prep() is  do
+		self.internal.prep()
+	end
+	method setup() is  do
+		self.internal.setup()
+	end
+	method collectInitialSnapshotRequests(sr : Sequence<SnapshotRequest>) is  do
+		self.internal.collectInitialSnapshotRequests(sr)
+		// TODO adapt collected requests ?
+	end
+	method startOfSnapshot() is  do
+		self.internal.startOfSnapshot()
+	end
+	method reset() is  do
+		self.internal.reset()
+	end
+	method update() is do
+		self.adaptIn()
+		// TODO startOfUpdate ?
+		self.internal.update() // delegated to the moc (computes the snapshot without validate)
+		// TODO endOfUpdate ?
+		self.adaptOut()
+	end
+	method validate() : Boolean is do
+		result := self.internal.validate()
+	end
+	method collectSnapshotRequests(sr : Sequence<SnapshotRequest>) is  do
+		self.internal.collectSnapshotRequests(sr)
+		// TODO adapt collected requests ?
+	end
+	method endOfSnapshot() is  do
+		self.internal.endOfSnapshot()
+	end
+	method wrapup() is  do
+		self.internal.wrapup()
+	end
+}
+
+
+
+
+/*** Model structure ***/
+
+aspect class NamedEntity {
+	// operations for properties
+	operation hasProperty(propname : String) : Boolean  is abstract
+	operation addProperty(propname : String, propvalue : Object)  is abstract
+	operation removeProperty(propname : String) is abstract
+	operation getProperty(propname : String) : Object is abstract
+}
+
+
+aspect class BlockStructure {
+	
+	// operations necessary for hierarchical execution, delegated to all blocks in the structure
+	operation prep() is do
+		self.blocks.each{b| b.prep()}
+	end
+	operation setup() is do
+		self.blocks.each{b| b.setup()}
+	end
+	operation collectInitialSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		self.blocks.each{b| b.collectInitialSnapshotRequests(sr)}
+	end
+	operation startOfSnapshot() is do
+		self.blocks.each{b| b.startOfSnapshot()}
+	end
+	operation reset() is do
+		self.blocks.each{b| b.reset()}
+	end
+	operation validate() : Boolean is do
+		result := self.blocks.forAll{b| b.validate()}
+	end
+	operation endOfSnapshot() is do
+		self.blocks.each{b| b.endOfSnapshot()}
+	end
+	operation collectSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		self.blocks.each{b| b.collectSnapshotRequests(sr)}
+	end
+	operation wrapup() is do
+		self.blocks.each{b| b.wrapup()}
+	end
+	
+	// to create relations 
+	operation createRelation(sourcePin : Pin, targetPin : Pin) : Relation is abstract
+}
+
+
+aspect class Relation {
+	operation initialize(sourcePin : Pin, targetPin : Pin) : Relation is abstract
+}
+
+

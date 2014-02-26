@@ -1,0 +1,126 @@
+/*
+ * $Id:$ 
+ * Creation		: May 15, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ * Authors		: 
+ * 		hardebolle
+ */
+@mainClass "modhelx::ModHelX"
+@mainOperation "main"
+
+package modhelx;
+
+require kermeta
+require "./core/abstractSemantics.kmt"
+require "./core/abstractSemanticsImpl.kmt"
+require "./core/executionEngine.kmt"
+require "./mocs/abstractDEMoC.kmt"
+require "./mocs/concurrentDEMoC.kmt"
+require "./mocs/sequentialDEMoC.kmt"
+require "./mocs/DELib.kmt"
+
+using kermeta::standard
+using kermeta::persistence
+using kermeta::exceptions
+using kermeta::utils
+using kermeta::io
+
+using modhelx::core
+using modhelx::engine
+using modhelx::mocs::de
+
+/*
+ * This file contains a main for test purpose
+ * It creates a very simple model and executes it according to ConcurrentDEMoC
+ * (does not work with SequentialDEMoC)
+ */
+
+class ModHelX {
+	operation main() : Void is do 
+        var model : modhelx::core::Model
+
+		// builds the model 
+		model := buildModel()
+
+		// executes the model
+		var nbsnap : Integer init 4 //for tests purpose, replace by stdio.read("Number of snapshots to compute :").toInteger
+		var eng : Engine init Engine.new.initialize(model, nbsnap)
+		eng.setLogLevel(LogLevel.debug) // possible log levels: debug or info
+		eng.run()  
+		
+	end
+	
+	
+	/*
+	 * Builds a DE model for test purpose
+	 * Can be used both with sequential and concurrent DE 
+	 */
+	operation buildModel() : Model is do
+        // new test model
+        var model : Model init Model.new.initialize("myModel")
+		
+		// DE MoC
+		// CAUTION this example does not work with SequentialDEMoC, USE ONLY ConcurrentDEMoC
+		var democ : AbstractDEMoC init ConcurrentDEMoC.new 
+		democ.initialize()
+		model.moc := democ
+
+		// new structure for the model
+		var struct : BlockStructure init BlockStructure.new
+		model.structure := struct
+
+/*
+		// this block emits a constant value with a given period (time step)
+		var deconst : Block init DEConstant.new.initialize(1,2) // val, timestep
+		struct.blocks.add(deconst)
+*/
+
+		// this block is a configurable scenario player
+		var splay : DEScenarioPlayer init DEScenarioPlayer.new.initialize()
+		struct.blocks.add(splay)
+		splay.addPin("addLeftOp")
+		splay.addPin("addRightOp")
+		// its scenario is the following: 
+		// at time 0 :
+		// - emits 2 on pin addLeftOp
+		// - emits 3 on pin addRightOp
+		// at time 10 :
+		// - emits -6 on pin addLeftOp
+		// - emits 6 on pin addRightOp
+		splay.addEventToScenario(0,2,"addLeftOp")// time, val, pin
+		splay.addEventToScenario(0,3,"addRightOp")// time, val, pin
+		splay.addEventToScenario(10,-6,"addLeftOp")
+		splay.addEventToScenario(10,6,"addRightOp")
+
+		// this block adds the values found on its input pins, therefore:
+		// -> at time 0 its output will be 5 (2+3)
+		// -> at time 10 its output will be 0 (-6+6)
+		var deadd : Block init DEAdder.new.initialize()
+		struct.blocks.add(deadd)
+
+		// this block prints the value found on its input pins on the standard output at the end of the snapshot
+		var deprint : Block init DEPrinter.new.initialize()
+		struct.blocks.add(deprint)
+		
+		// relations to connect the blocks
+		struct.createRelation(splay.getPin("addLeftOp"), deadd.getPin("in1"))
+		struct.createRelation(splay.getPin("addRightOp"), deadd.getPin("in2"))
+		struct.createRelation(deadd.getPin("out"), deprint.getPin("in"))
+		
+		result := model
+	end
+	
+}
+

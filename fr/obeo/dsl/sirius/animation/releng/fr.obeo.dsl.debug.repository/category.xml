@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/fr.obeo.dsl.debug.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.debug.feature" version="1.0.0.qualifier">
+      <category name="DSL_Debugger"/>
+   </feature>
+   <feature url="features/fr.obeo.dsl.debug.ui.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.debug.ui.feature" version="1.0.0.qualifier">
+      <category name="DSL_Debugger"/>
+   </feature>
+   <feature url="features/fr.obeo.dsl.debug.sirius.ui.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.debug.sirius.ui.feature" version="1.0.0.qualifier">
+      <category name="DSL_Debugger"/>
+   </feature>
+   <feature url="features/fr.obeo.dsl.fuml.feature_0.10.0.qualifier.jar" id="fr.obeo.dsl.fuml.feature" version="0.10.0.qualifier">
+      <category name="fUML"/>
+   </feature>
+   <feature url="features/fr.obeo.dsl.fuml.sirius.ui.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.fuml.sirius.ui.feature" version="1.0.0.qualifier">
+      <category name="fUML"/>
+   </feature>
+   <feature url="features/fr.obeo.dsl.fuml.ui.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.fuml.ui.feature" version="1.0.0.qualifier">
+      <category name="fUML"/>
+   </feature>
+   <category-def name="DSL_Debugger" label="DSL Debugger"/>
+   <category-def name="fUML" label="fUML"/>
+</site>

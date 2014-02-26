@@ -1,0 +1,403 @@
+/*
+ * $Id:$ 
+ * Creation		: May 15, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ * Authors		: 
+ * 		hardebolle
+ */
+package modhelx::core;
+
+require kermeta
+require "./abstractSemantics.kmt"
+
+using kermeta::standard
+using kermeta::persistence
+using kermeta::exceptions
+using kermeta::utils
+
+using modhelx::core
+
+/*
+ * This file contains the implementation of basic features of the abstract semantics
+ * with a logging system
+ */
+
+/*** Utilities on all ModHel'X elements ***/
+
+enumeration LogLevel { info ; debug ; }
+
+aspect class NamedEntity {
+	// For handling logs
+	attribute logLevel : LogLevel
+
+	operation setLogLevel(logLevel : LogLevel) : Void is do
+		self.logLevel := logLevel
+	end
+	operation getLogLevel() : LogLevel is do
+		result := self.logLevel
+	end
+	operation isLogLevelOFF() : Boolean is do
+		result := (self.logLevel != LogLevel.info) and (self.logLevel != LogLevel.debug) 
+	end
+	operation isLogLevelINFO() : Boolean is do
+		result := self.logLevel == LogLevel.info or self.logLevel == LogLevel.debug 
+	end
+	operation isLogLevelDEBUG() : Boolean is do
+		result := self.logLevel == LogLevel.debug
+	end
+
+	// For handling properties
+	operation hasProperty(propname : String) : Boolean  is do
+		result := self.properties.exists{p|p.key == propname}
+	end
+	
+	operation addProperty(propname : String, propvalue : Object)  is do
+		var prop : StringToObjectMapEntry init StringToObjectMapEntry.new
+		prop.key := propname
+		prop.~value := propvalue
+		self.properties.add(prop)
+	end
+
+	operation removeProperty(propname : String) is do
+		var entries : Sequence<StringToObjectMapEntry> init self.properties.reject{entry|entry.key == propname}
+		self.properties.clear()
+		self.properties.addAll(entries)
+		
+	end
+	
+	operation getProperty(propname : String) : Object is do
+		var entry : StringToObjectMapEntry init self.properties.detect{p|p.key == propname}
+		var propvalue : Object
+		propvalue := if entry != void then entry.~value end
+		result := propvalue
+	end
+	
+	operation propertiesToString() : String is do
+		var s : String init "["
+		self.properties.each{p|s := s+p.key+"="+p.~value.toString()+", "}
+		result := s + "]"
+	end
+}
+
+
+ 
+/*** Basic implementation of a MoC ***/
+
+// basic implementation =
+// log + delegation to the block structure + snapshot request collection
+
+class ModelOfComputationImpl inherits ModelOfComputation {
+	// storage of local snapshot requests 
+	reference snapshotRequests : Sequence<SnapshotRequest>
+
+	// storage of tokens values
+	reference tokenValues : Hashtable<Token,Object>
+	
+	// replaces constructor
+	operation initialize() : ModelOfComputationImpl is do
+		self.tokenValues := Hashtable<Token,Object>.new
+		self.snapshotRequests := Sequence<SnapshotRequest>.new
+		
+		result := self
+	end
+	
+	// operations for tokens
+	method getTokenValue(t : Token) : Object  is do
+		result := self.tokenValues.getValue(t)
+	end
+	method setTokenValue(t : Token, val : Object) is do
+		self.tokenValues.put(t,val)
+	end
+	method createToken(val : Object) : Token is do
+		var tok : Token init Token.new
+		tok.setOwnerMoC(self)
+		self.setTokenValue(tok,val)
+		result := tok
+	end
+
+
+	// delegation to the block structure
+	method prep(s : BlockStructure) is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": prep") end
+		s.prep()
+	end
+	
+	method setup(s : BlockStructure) is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": setup") end
+		s.setup()
+	end
+	method collectInitialSnapshotRequests(s : BlockStructure, sr : Sequence<SnapshotRequest>) is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": collectInitialSnapshotRequests") end
+		s.collectInitialSnapshotRequests(self.snapshotRequests) // local collection of snapshot requests
+		sr.addAll(self.snapshotRequests) // provide requests to hierarchy
+	end
+	method startOfSnapshot(s : BlockStructure) is do
+		if self.isLogLevelINFO() then stdio.writeln("*** " + self.name + ": startOfSnapshot") end
+		s.startOfSnapshot()
+	end
+	method reset(s : BlockStructure) is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": reset") end
+
+		s.reset()
+	end
+
+	// not delegated : will be specialized for reflecting the semantics of each moc
+	method schedule(s : BlockStructure) is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": schedule") end
+	end
+	method update(s : BlockStructure) is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": update") end
+	end
+	method propagate(s : BlockStructure) is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": propagate") end
+	end
+	method canGoFurther(s : BlockStructure) : Boolean is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": canGoFurther") end
+		result := false
+	end
+	
+	
+	// delegation to the block structure
+	method validate(s : BlockStructure) : Boolean is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": validate") end
+		result := s.validate()
+	end
+	method endOfSnapshot(s : BlockStructure) is do
+		if self.isLogLevelINFO() then stdio.writeln("*** " + self.name + ": endOfSnapshot") stdio.writeln("") end
+		s.endOfSnapshot()
+		
+		// clear all constraints from snapshot before collecting new constraints
+		self.snapshotRequests.clear()
+	end
+	method collectSnapshotRequests(s : BlockStructure, sr : Sequence<SnapshotRequest>) is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": collectSnapshotRequests") end
+		s.collectSnapshotRequests(self.snapshotRequests)
+		sr.addAll(self.snapshotRequests)
+	end
+	method wrapup(s : BlockStructure) is do
+		if self.isLogLevelDEBUG() then stdio.writeln("*** " + self.name + ": wrapup") end
+		s.wrapup()
+	end
+
+
+	method toString() : String is do
+		result := "MoC:" + self.name  
+	end
+}
+ 
+
+/*** Basic implementation of other elements ***/
+
+aspect class Token {
+	reference ownerMoC : ModelOfComputation
+
+	operation setOwnerMoC(moc : ModelOfComputation)  is do
+		self.ownerMoC := moc
+	end
+	operation getValue() : Object  is do
+		result := self.ownerMoC.getTokenValue(self)
+	end
+}
+
+
+aspect class Pin {
+	reference tokens : seq Token[0..*]
+	
+	operation addToken(token : Token)  is do
+		self.tokens.add(token)
+	end
+	operation getToken(remove : Boolean) : Token  is do
+		var tok : Token init self.tokens.at(0)
+		result := tok
+		if(remove) then
+			self.tokens.remove(tok)
+		end
+	end
+	operation hasToken() : Boolean  is do
+		result := self.tokens.size() > 0
+	end
+	operation getTokens() : seq Token [0..*]  is do
+		result := self.tokens
+	end
+	operation clearTokens() is do
+		self.tokens.clear()
+	end
+	
+	method toString() : String is do
+		result := self.name + "(owner=" + self.owner.name + ")" 
+	end
+}
+
+
+aspect abstract class UpdateTrigger {
+	attribute timeOfUpdate : Integer
+	reference entityToUpdate : ObservableEntity 
+
+	operation getEntityToUpdate() : ObservableEntity is do
+		result := self.entityToUpdate
+	end
+	operation setEntityToUpdate(o: ObservableEntity) is do
+		self.entityToUpdate := o
+	end
+	operation getTimeOfUpdate() : Integer is do
+		result := self.timeOfUpdate
+	end
+	operation setTimeOfUpdate(t: Integer) is do
+		self.timeOfUpdate := t
+	end
+	
+	operation trigger() is do
+		self.entityToUpdate.update()
+	end
+
+	method toString() : String is do
+		result := "<"+self.entityToUpdate.name.toString() + ","+self.timeOfUpdate.toString()+">"
+	end
+}
+
+aspect class SnapshotRequest {
+	method prepareToTrigger() is do // here use "method" because redefining operations from the super class
+		//do nothing
+	end
+}
+
+
+
+
+aspect abstract class ObservableEntity {
+	operation addPin(name : String) : Pin is do
+		var pin : Pin init Pin.new
+		pin.name := name
+		self.interface.add(pin)
+		result := pin
+	end
+	operation getPin(name : String) : Pin is do
+		var pin : Pin init self.interface.detect{p|p.name == name}
+		// if several pins have the same name, 
+		// will return the first pin that has the specified name
+		if pin==void then
+			var e : Exception init Exception.new
+			e.message := "Cannot find pin with name "+name+" in the interface of entity"+self.toString()
+			raise e
+		end
+		result := pin
+	end
+
+	operation interfaceToString() : String is do
+		var s : String init "[" 
+		self.interface.each{p|
+			s := s + p.name+", "
+		} 
+		result :=  s + "]" 
+	end
+}
+
+
+aspect class Model {
+	operation initialize(name : String) : Model is do
+		self.name := name
+		result := self
+	end
+
+	method setLogLevel(logLevel : LogLevel) is do
+		self.logLevel := logLevel
+		self.structure.setLogLevel(logLevel)
+		self.moc.setLogLevel(logLevel)
+	end
+
+	method toString() : String is do
+		result := "Model:"+self.name + ":\n " + self.moc.toString() + "\n " + self.structure.toString()+"]"
+	end
+}
+
+
+// log on all block operations
+aspect abstract class Block {
+	method prep() is do
+		if self.isLogLevelDEBUG() then stdio.writeln(self.name + " -> prep") end
+	end
+	method setup() is do
+		if self.isLogLevelDEBUG() then stdio.writeln(self.name + " -> setup") end
+	end
+	method collectInitialSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		if self.isLogLevelDEBUG() then stdio.writeln(self.toString() + " -> collectInitialSnapshotRequests") end
+	end
+	method startOfSnapshot() is do
+		if self.isLogLevelDEBUG() then stdio.writeln(self.name + " -> startOfSnapshot") end
+	end
+	method reset() is do
+		if self.isLogLevelDEBUG() then stdio.writeln(self.name + " -> reset") end
+	end
+	method update() is do
+		if self.isLogLevelINFO() then stdio.writeln(self.name + " -> update") end
+	end
+	method validate() : Boolean is do
+		if self.isLogLevelDEBUG() then stdio.writeln(self.name + " -> validate") end
+		result := true
+	end
+	method endOfSnapshot() is do
+		if self.isLogLevelDEBUG() then stdio.writeln(self.name + " -> endOfSnapshot") end
+	end
+	method collectSnapshotRequests(sr : Sequence<SnapshotRequest>) is do
+		if self.isLogLevelDEBUG() then stdio.writeln(self.name + " -> collectSnapshotRequests") end
+	end
+	method wrapup() is do
+		if self.isLogLevelDEBUG() then stdio.writeln(self.name + " -> wrapup") end
+	end
+	
+	method toString() : String is do
+		result := "Block:" + self.name + "" + self.interfaceToString() + "" + self.propertiesToString() + ""
+	end
+}
+
+
+
+
+aspect class BlockStructure {
+	operation createRelation(sourcePin : Pin, targetPin : Pin) : Relation is do
+		var r : Relation init Relation.new.initialize(sourcePin, targetPin)
+		self.relations.add(r)
+		result := r
+	end
+
+	// logs
+	method setLogLevel(logLevel : LogLevel) is do
+		self.logLevel := logLevel
+		self.blocks.each{b| b.setLogLevel(logLevel)}
+	end
+	
+	method toString() : String is do
+		var s : String init "BlockStructure:\nBlocks:\n"
+		self.blocks.each{b| s := s +  "          " + b.toString() + ",\n"}
+		s := s + "Relations:\n"
+		self.relations.each{r| s := s + "          " + r.toString() + ",\n"}
+		s := s + ""
+		result := s
+	end
+}
+
+
+aspect class Relation {
+	operation initialize(sourcePin : Pin, targetPin : Pin) : Relation is do
+		self.source := sourcePin
+		self.target := targetPin
+		result := self
+	end
+	method toString() : String is do
+		result := self.source.toString() + "->" + self.target.toString() 
+	end
+}
+
+

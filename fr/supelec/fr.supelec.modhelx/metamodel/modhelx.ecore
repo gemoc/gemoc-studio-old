@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="modhelx"
+    nsURI="http://www.supelec.fr/modhelx/v1" nsPrefix="modhelx">
+  <eSubpackages name="core" nsURI="http://www.supelec.fr/modhelx/core" nsPrefix="modhelx_core">
+    <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//core/ObservableEntity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="moc" ordered="false"
+          unique="false" lowerBound="1" eType="#//core/ModelOfComputation" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="structure" ordered="false"
+          unique="false" lowerBound="1" eType="#//core/BlockStructure" containment="true"
+          eOpposite="#//core/BlockStructure/model"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ModelOfComputation" abstract="true"
+        eSuperTypes="#//core/NamedEntity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="InterfaceBlock" abstract="true" eSuperTypes="#//core/Block">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="internal" ordered="false"
+          unique="false" lowerBound="1" eType="#//core/Model" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="adaptation" ordered="false"
+          upperBound="-1" eType="#//core/Relation" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Block" abstract="true" eSuperTypes="#//core/ObservableEntity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="#//core/BlockStructure"
+          eOpposite="#//core/BlockStructure/blocks"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Relation" eSuperTypes="#//core/NamedEntity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" ordered="false"
+          unique="false" lowerBound="1" eType="#//core/Pin"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"
+          unique="false" lowerBound="1" eType="#//core/Pin"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="#//core/BlockStructure"
+          eOpposite="#//core/BlockStructure/relations"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Pin" eSuperTypes="#//core/NamedEntity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1"
+          eType="#//core/ObservableEntity" eOpposite="#//core/ObservableEntity/interface"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AtomicBlock" abstract="true" eSuperTypes="#//core/Block"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NamedEntity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+          eType="#//core/StringToObjectMapEntry"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BlockStructure" eSuperTypes="#//core/NamedEntity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
+          eType="#//core/Relation" containment="true" eOpposite="#//core/Relation/structure"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="blocks" upperBound="-1"
+          eType="#//core/Block" containment="true" eOpposite="#//core/Block/structure"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//core/Model"
+          eOpposite="#//core/Model/structure"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StringToObjectMapEntry" instanceClassName="java.util.Map$Entry">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ObservableEntity" abstract="true"
+        eSuperTypes="#//core/NamedEntity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="interface" ordered="false"
+          upperBound="-1" eType="#//core/Pin" containment="true" eOpposite="#//core/Pin/owner"/>
+    </eClassifiers>
+    <eSubpackages name="utils" nsURI="http://www.supelec.fr/modhelx/core/utils" nsPrefix="modhelx_utils">
+      <eClassifiers xsi:type="ecore:EClass" name="IntParameter" instanceClassName="java.util.Map$Entry"
+          eSuperTypes="#//core/StringToObjectMapEntry">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="intValue" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
+            transient="true" defaultValueLiteral="0" derived="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="StringParameter" instanceClassName="java.util.Map$Entry"
+          eSuperTypes="#//core/StringToObjectMapEntry">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringValue" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+            volatile="true" transient="true" defaultValueLiteral="" derived="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="BooleanParameter" instanceClassName="java.util.Map$Entry"
+          eSuperTypes="#//core/StringToObjectMapEntry">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanValue" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+            volatile="true" transient="true" defaultValueLiteral="false" derived="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="DoubleParameter" instanceClassName="java.util.Map$Entry"
+          eSuperTypes="#//core/StringToObjectMapEntry">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="doubleValue" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+            volatile="true" transient="true" defaultValueLiteral="0" derived="true"/>
+      </eClassifiers>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

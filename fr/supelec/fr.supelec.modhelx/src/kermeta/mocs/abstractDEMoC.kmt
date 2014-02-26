@@ -1,0 +1,142 @@
+/*
+ * $Id:$ 
+ * Creation		: June 6, 2012
+ * Licence		: EPL 
+ * Copyright (c) 2012 Supelec.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors	:
+ *     	Computer Science Department, Supelec
+ * Contacts		:
+ *     	Cecile.Hardebolle@supelec.fr
+ *     	Christophe.Jacquet@supelec.fr
+ *     	Frederic.Boulanger@supelec.fr
+ * Authors		: 
+ * 		jacquet_chr
+ */
+package modhelx::mocs::de;
+
+require kermeta
+require "../core/abstractSemantics.kmt"
+require "../core/abstractSemanticsImpl.kmt"
+require "../core/utils.kmt"
+
+
+using modhelx::core
+using modhelx::utils
+
+using kermeta::standard
+using kermeta::utils
+
+
+
+/*** DE Triggers ***/
+
+// In DE, a block can be updated either because of a snapshot request, or because of an event
+class DEEventToProcess inherits UpdateTrigger {
+	reference democ : AbstractDEMoC
+	reference event : Token
+	
+	operation initialize(democ : AbstractDEMoC, event : Token) : DEEventToProcess is do
+		self.democ := democ
+		self.event := event
+		self.setEntityToUpdate(self.democ.getEventDestination(event).owner)
+		self.setTimeOfUpdate(self.democ.getEventTimestamp(event))
+		result := self
+	end
+
+	method prepareToTrigger() is do
+		self.democ.getEventDestination(self.event).addToken(self.event)
+	end
+	
+	method toString() : String is do
+		var s : String init super()
+		result := s + "(event="+self.event.toString()+")"
+	end
+}
+
+
+abstract class AbstractDEMoC inherits ModelOfComputationImpl {
+	// static set of blocks in topological order
+	reference blocks : OrderedSet<Block>
+	reference navHelper : BlockStructureNavigationHelper
+
+	// state of the model
+	attribute currentTime : Integer
+	reference triggers : oset UpdateTrigger[0..*]
+	// (eventValues already exists as tokenValues)
+	reference eventTimestamps : Hashtable<Token,Integer>
+	reference eventDestinations : Hashtable<Token,Pin>
+	
+	
+
+	//------------------
+	// Operations for events
+	//------------------
+	operation createEvent(val : Object) : Token is do 
+		// create the token and store its value
+		var e : Token init self.createToken(val)
+		// no timestamp
+		// return the token		
+		result := e
+	end
+	operation createEventWithTimestamp(val : Object, time : Integer) : Token is do
+		// create the token and store its value
+		var e : Token init self.createToken(val)
+		// then add time 
+		self.eventTimestamps.put(e,time)		
+		// return the token		
+		result := e
+	end
+	operation createEventWithTimestampAtCurrentTime(val : Object) : Token is do
+		result := self.createEventWithTimestamp(val,self.currentTime)
+	end
+	
+	operation setEventValue(t : Token, val : Object) : Token is do
+		self.setTokenValue(t, val)
+		result := t
+	end
+	operation setEventTimestamp(t : Token, time : Integer) : Token is do
+		self.eventTimestamps.put(t, time)
+		result := t
+	end
+	operation setEventDestination(t : Token, destination : Pin) : Token is do
+		self.eventDestinations.put(t, destination)
+		result := t
+	end
+	
+	operation getEventValue(t : Token) : Object is do
+		result := self.getTokenValue(t)
+	end
+	operation getEventTimestamp(t : Token) : Integer is do
+		result := self.eventTimestamps.getValue(t)
+	end
+	operation getEventDestination(t : Token) : Pin is do
+		result := self.eventDestinations.getValue(t)
+	end
+	
+	operation removeEventFromValueDestTimeTables(t : Token) is do
+		self.tokenValues.remove(t)
+		self.eventDestinations.remove(t)
+		self.eventTimestamps.remove(t)
+	end
+	
+	
+	//------------------
+	// Special property for loops
+	//------------------
+	// the DE MoC manages pins with special properties for dealing with loops : NotInstantaneouslyDependent,true/false
+	operation setNotInstantaneouslyDependent(p : Pin) is do
+		p.addProperty("NotInstantaneouslyDependent", true)
+	end
+	operation removeNotInstantaneouslyDependent(p : Pin) is do
+		p.removeProperty("NotInstantaneouslyDependent")
+	end
+	operation isNotInstantaneouslyDependent(p : Pin) : Boolean is do
+		result := p.hasProperty("NotInstantaneouslyDependent")
+	end
+	
+}

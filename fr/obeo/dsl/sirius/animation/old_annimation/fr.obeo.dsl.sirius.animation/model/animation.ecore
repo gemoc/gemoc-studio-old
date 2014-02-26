@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="animation" nsURI="http://www.obeo.fr/dsl/sirius/animation" nsPrefix="animation">
+  <eClassifiers xsi:type="ecore:EClass" name="AnimationTarget">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="threads" upperBound="-1"
+        eType="#//Thread" containment="true" eOpposite="#//Thread/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//TargetState"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StackFrame">
+    <eOperations name="getOrCreateVariable" eType="#//Variable">
+      <eParameters name="varName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="newFrame" eType="#//StackFrame">
+      <eParameters name="executionEnvironment" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    </eOperations>
+    <eOperations name="popFrame" eType="#//StackFrame"/>
+    <eOperations name="is" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="state" eType="#//TargetState"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//StackFrameState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Thread"
+        eOpposite="#//Thread/stackFrames"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentInstruction" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parentStack" eType="#//StackFrame"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executionEnvironment" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Thread">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stackFrames" upperBound="-1"
+        eType="#//StackFrame" containment="true" eOpposite="#//StackFrame/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topStackFrame" eType="#//StackFrame"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//AnimationTarget"
+        eOpposite="#//AnimationTarget/threads"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TargetState">
+    <eLiterals name="suspended" value="3"/>
+    <eLiterals name="disconnected" value="2"/>
+    <eLiterals name="terminated" value="1"/>
+    <eLiterals name="running"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CurrentSessions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
+        eType="#//AnimationTarget" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StackFrameState">
+    <eLiterals name="stepingReturn" value="3"/>
+    <eLiterals name="stepingOver" value="2"/>
+    <eLiterals name="stepingInto" value="1"/>
+    <eLiterals name="done"/>
+  </eClassifiers>
+</ecore:EPackage>
