@@ -18,21 +18,17 @@ package org.gemoc.mocc.cometafsm.model.cometafsm.impl;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.BasicTypePackage;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.CCSLModelPackage;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.ClassicalExpressionPackage;
-
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ClockExpressionAndRelationPackage;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.KernelExpression.KernelExpressionPackage;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.KernelRelation.KernelRelationPackage;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.PrimitivesTypeValue.PrimitivesTypeValuePackage;
-
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.TimeModelPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.gemoc.mocc.cometafsm.model.cometafsm.AbstractAction;
 import org.gemoc.mocc.cometafsm.model.cometafsm.AbstractGuard;
 import org.gemoc.mocc.cometafsm.model.cometafsm.AbstractTrigger;
@@ -178,15 +174,14 @@ public class CometafsmPackageImpl extends EPackageImpl implements CometafsmPacka
 		isInited = true;
 
 		// Initialize simple dependencies
-				TimeModelPackage.eINSTANCE.eClass();
-				BasicTypePackage.eINSTANCE.eClass();
-				CCSLModelPackage.eINSTANCE.eClass();
-				ClassicalExpressionPackage.eINSTANCE.eClass();
-				ClockExpressionAndRelationPackage.eINSTANCE.eClass();
-				KernelExpressionPackage.eINSTANCE.eClass();
-				KernelRelationPackage.eINSTANCE.eClass();
-				PrimitivesTypeValuePackage.eINSTANCE.eClass();
-		
+		TimeModelPackage.eINSTANCE.eClass();
+		BasicTypePackage.eINSTANCE.eClass();
+		CCSLModelPackage.eINSTANCE.eClass();
+		ClassicalExpressionPackage.eINSTANCE.eClass();
+		ClockExpressionAndRelationPackage.eINSTANCE.eClass();
+		KernelExpressionPackage.eINSTANCE.eClass();
+		KernelRelationPackage.eINSTANCE.eClass();
+		PrimitivesTypeValuePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theCometafsmPackage.createPackageContents();
