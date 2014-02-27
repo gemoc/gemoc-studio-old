@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.gemoc.mocc.cometafsm.model.xtext.fsmdsl
+Bundle-Name: Cometa FSM dsl xtext
 Bundle-Vendor: ENSTA Bretagne
 Bundle-Version: 0.0.1
 Bundle-SymbolicName: org.gemoc.mocc.cometafsm.model.xtext.fsmdsl;singleton:=true
@@ -33,3 +33,4 @@ Export-Package: org.gemoc.mocc.cometafsm.model.xtext,
  org.gemoc.mocc.cometafsm.model.xtext.scoping,
  org.gemoc.mocc.cometafsm.model.xtext.generator,
  org.gemoc.mocc.cometafsm.model.xtext.formatting
+Bundle-Activator: org.gemoc.mocc.cometafsm.model.xtext.Activator

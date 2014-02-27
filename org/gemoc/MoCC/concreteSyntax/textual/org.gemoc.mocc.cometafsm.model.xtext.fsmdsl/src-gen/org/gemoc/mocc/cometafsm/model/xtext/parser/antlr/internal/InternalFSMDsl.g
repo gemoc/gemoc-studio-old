@@ -203,19 +203,65 @@ ruleStateMachineDefinition returns [EObject current=null]
     {
     	newLeafNode(otherlv_13, grammarAccess.getStateMachineDefinitionAccess().getSemicolonKeyword_8());
     }
-((
+((	otherlv_14='finals' 
+    {
+    	newLeafNode(otherlv_14, grammarAccess.getStateMachineDefinitionAccess().getFinalsKeyword_9_0_0());
+    }
+	otherlv_15=':' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getStateMachineDefinitionAccess().getColonKeyword_9_0_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStateMachineDefinitionRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesStateCrossReference_9_0_2_0()); 
+	    }
+		ruleEString		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?(	otherlv_17=',' 
+    {
+    	newLeafNode(otherlv_17, grammarAccess.getStateMachineDefinitionAccess().getCommaKeyword_9_1_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStateMachineDefinitionRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesStateCrossReference_9_1_1_0()); 
+	    }
+		ruleEString		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*	otherlv_19=';' 
+    {
+    	newLeafNode(otherlv_19, grammarAccess.getStateMachineDefinitionAccess().getSemicolonKeyword_9_2());
+    }
+)?((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getStatesStateParserRuleCall_9_0_0()); 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getStatesStateParserRuleCall_10_0_0()); 
 	    }
-		lv_states_14_0=ruleState		{
+		lv_states_20_0=ruleState		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStateMachineDefinitionRule());
 	        }
        		add(
        			$current, 
        			"states",
-        		lv_states_14_0, 
+        		lv_states_20_0, 
         		"State");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -225,24 +271,24 @@ ruleStateMachineDefinition returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getTransitionsTransitionParserRuleCall_9_1_0()); 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getTransitionsTransitionParserRuleCall_10_1_0()); 
 	    }
-		lv_transitions_15_0=ruleTransition		{
+		lv_transitions_21_0=ruleTransition		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStateMachineDefinitionRule());
 	        }
        		add(
        			$current, 
        			"transitions",
-        		lv_transitions_15_0, 
+        		lv_transitions_21_0, 
         		"Transition");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))+	otherlv_16='}' 
+))+	otherlv_22='}' 
     {
-    	newLeafNode(otherlv_16, grammarAccess.getStateMachineDefinitionAccess().getRightCurlyBracketKeyword_10());
+    	newLeafNode(otherlv_22, grammarAccess.getStateMachineDefinitionAccess().getRightCurlyBracketKeyword_11());
     }
 )
 ;
