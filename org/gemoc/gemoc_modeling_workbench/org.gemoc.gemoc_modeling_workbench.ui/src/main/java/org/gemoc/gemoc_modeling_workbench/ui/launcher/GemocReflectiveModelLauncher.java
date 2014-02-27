@@ -26,14 +26,13 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
-import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.io.backends.ConsoleBackend;
 import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
 import org.gemoc.execution.engine.io.frontends.controlpanels.ExampleGUIControlPanel;
 import org.gemoc.execution.engine.io.frontends.scenariobuilders.ExampleScenarioBuilder;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -246,7 +245,7 @@ public class GemocReflectiveModelLauncher extends fr.obeo.dsl.debug.ide.ui.launc
 		}
 	}
 	
-	protected void configureEngine(ExecutionEngine engine, Resource mocEventsResource, Resource domainSpecificEventsResource, Solver solver,
+	protected void configureEngine(GemocExecutionEngine engine, Resource mocEventsResource, Resource domainSpecificEventsResource, Solver solver,
 			EventExecutor executor, FeedbackPolicy feedbackPolicy,
 			String modelPath, ModelLoader modelLoader,
 			List<Frontend> frontends, List<Backend> backends){

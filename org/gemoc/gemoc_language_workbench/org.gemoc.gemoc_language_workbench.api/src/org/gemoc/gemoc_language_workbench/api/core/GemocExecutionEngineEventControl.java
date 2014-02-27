@@ -9,9 +9,12 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
-// TODO
-public interface EventSelector {
+
+/** Part of the ExecutionEngine API that  allows the
+* caller to influence the constraints of the MoC at runtime.
+
+* */
+public interface GemocExecutionEngineEventControl {
 
 	/**
 	 * Retrieve the Domain-Specific Events of the language.

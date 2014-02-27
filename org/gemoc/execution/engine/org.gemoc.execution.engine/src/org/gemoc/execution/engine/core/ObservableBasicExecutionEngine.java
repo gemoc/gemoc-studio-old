@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
-import org.gemoc.gemoc_language_workbench.api.core.EventSelector;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngineEventControl;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
+import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
 import org.gemoc.gemoc_language_workbench.api.exceptions.InvokationResultConvertionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
@@ -83,14 +83,14 @@ import glml.Pattern;
  * actually executed.</li>
  * </ul>
  * 
- * @see ExecutionEngine
+ * @see GemocExecutionEngine
  * @see GemocExecutionEngine
  * 
  * @author flatombe
  * 
  */
 public class ObservableBasicExecutionEngine extends Observable
-		implements ExecutionEngine, EventSelector {
+		implements GemocExecutionEngine {
 
 	private GemocModelDebugger debugger;
 
@@ -425,14 +425,20 @@ public class ObservableBasicExecutionEngine extends Observable
 //							"Allowed events are: " + allowedEvents.toString(),
 //							Activator.PLUGIN_ID);
 					while (!terminated && eventToRun.size() != 0) {
-						doOneStep();
-						Activator.getMessagingSystem().info("<<Step finished",Activator.PLUGIN_ID);
-						Activator.getMessagingSystem().info("Execution Trace: \n"
-										+ mapToString(ObservableBasicExecutionEngine.this.executionTrace),
-										Activator.PLUGIN_ID);
-						setCurrentStepAndUpdateTraces(ObservableBasicExecutionEngine.this
-										.getScheduledOrSolverStep());
-						eventToRun = eventInjector.getEventToInject(getCurrentPossibleEvents());
+						try {
+							injectEventsToCurrentStep(eventToRun);
+						
+							doOneStep();
+							Activator.getMessagingSystem().info("<<Step finished",Activator.PLUGIN_ID);
+							Activator.getMessagingSystem().info("Execution Trace: \n"
+											+ mapToString(ObservableBasicExecutionEngine.this.executionTrace),
+											Activator.PLUGIN_ID);
+							setCurrentStepAndUpdateTraces(ObservableBasicExecutionEngine.this
+											.getScheduledOrSolverStep());
+							eventToRun = eventInjector.getEventToInject(getCurrentPossibleEvents());
+						} catch (EventInjectionException e) {
+							Activator.getMessagingSystem().error("Exception received "+e.getMessage()+", stopping engine.",Activator.PLUGIN_ID, e);
+						}
 					}
 					
 					if (getDebugger() != null && !getDebugger().isTerminated(Thread.currentThread().getName())) {
@@ -442,6 +448,32 @@ public class ObservableBasicExecutionEngine extends Observable
 			};
 			Thread mainThread = new Thread(execution, "Gemoc engine " + modelStringURI) ;
 			mainThread.start() ;
+		}
+	}
+	/**
+	 * Update the engine variable with the new events
+	 * @param eventToInject
+	 * @throws EventInjectionException 
+	 */
+	protected void injectEventsToCurrentStep(Collection<ModelSpecificEvent> eventsToInject) throws EventInjectionException{
+		for(ModelSpecificEvent mse : eventsToInject){
+			// We get the events allowed by the MoC for the current step.
+			Collection<ModelSpecificEvent> allowedEvents = getCurrentPossibleEvents();
+	
+			if (allowedEvents.contains(mse)) {
+				// If the injected MSE is legal, then it is added to the
+				// scheduled events of the current step.
+				List<ModelSpecificEvent> scheduledEventsForCurrentStep = this.scheduledEventsMap.get(this.currentStep);
+				scheduledEventsForCurrentStep.add(mse);
+				Activator.getMessagingSystem().info("MSE "+mse.getName()+" added to the scheduled events of the current step.", Activator.PLUGIN_ID);
+			} else {
+				// If the MSE is not authorized by the MoC, we throw an
+				// exception and stop the engine
+				Activator.getMessagingSystem().debug("Allowed events are: " + allowedEvents.toString(),	Activator.PLUGIN_ID);
+				Activator.getMessagingSystem().error("Injecting event "+mse.getName()+" is not allowed by the Model of Computation at that time.",	Activator.PLUGIN_ID);				
+				throw new EventInjectionException(
+						"Injecting event "+mse.getName()+" is not allowed by the Model of Computation at that time.");
+			}
 		}
 	}
 	

@@ -1,15 +1,5 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
-import glml.DomainSpecificEvent;
-import glml.MocEvent;
-import glml.ModelSpecificEvent;
-
-import java.util.Collection;
-import java.util.Map;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 /**
@@ -22,7 +12,7 @@ import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
  * @author flatombe
  * 
  */
-public interface ExecutionEngine {
+public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, GemocExecutionEngineEventControl {
 
 	/** --------------- Initialization --------------- **/
 	/**
@@ -41,9 +31,4 @@ public interface ExecutionEngine {
 	 */
 	void initialize(String modelURI, String modelOfExecutionURI, ModelLoader modelLoader);
 
-	/**
-	 * Starts the {@link ExecutionEngine}.
-	 */
-	void start();
-	
 }
