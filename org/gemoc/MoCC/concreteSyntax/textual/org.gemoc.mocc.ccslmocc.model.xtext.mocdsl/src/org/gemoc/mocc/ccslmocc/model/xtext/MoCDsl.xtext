@@ -35,6 +35,7 @@ CCSLStateMachineRelationDefinition returns ccslmoc::StateMachineRelationDefiniti
 	'{'
 		(declarationBlock=DeclarationBlock)?
 		('init' initialState= [cometafsm::State|EString])';'
+		(('finals' ':' finalStates+=[cometafsm::State|EString])? ( "," finalStates+=[cometafsm::State|EString])* ';' )?
 		((states+=State)|
 		(transitions+=Transition))+
 		
@@ -49,7 +50,7 @@ Trigger returns cometafsm::Trigger:
 	('.' (trueTriggers+=[TimeModel::Clock|EString])|
 	('not' '(' falseTriggers+=[TimeModel::Clock|EString])')')*
 	//('and' trigger+=[TimeModel::Clock|EString])*
-;
+	;
 
 // <--- Override --->
 Action returns cometafsm::AbstractAction:
