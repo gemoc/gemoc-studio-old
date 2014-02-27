@@ -37,7 +37,7 @@ public class FSMDslParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getStateMachineDefinitionAccess().getAlternatives_9(), "rule__StateMachineDefinition__Alternatives_9");
+					put(grammarAccess.getStateMachineDefinitionAccess().getAlternatives_10(), "rule__StateMachineDefinition__Alternatives_10");
 					put(grammarAccess.getBinaryIntegerExpressionAccess().getAlternatives(), "rule__BinaryIntegerExpression__Alternatives");
 					put(grammarAccess.getIntegerExpressionAccess().getAlternatives(), "rule__IntegerExpression__Alternatives");
 					put(grammarAccess.getUnaryIntegerExpressionAccess().getAlternatives(), "rule__UnaryIntegerExpression__Alternatives");
@@ -76,6 +76,9 @@ public class FSMDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_3(), "rule__StateMachineDefinition__Group_3__0");
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_4(), "rule__StateMachineDefinition__Group_4__0");
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_7(), "rule__StateMachineDefinition__Group_7__0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_9(), "rule__StateMachineDefinition__Group_9__0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_9_0(), "rule__StateMachineDefinition__Group_9_0__0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_9_1(), "rule__StateMachineDefinition__Group_9_1__0");
 					put(grammarAccess.getDeclarationBlockAccess().getGroup(), "rule__DeclarationBlock__Group__0");
 					put(grammarAccess.getTransitionAccess().getGroup(), "rule__Transition__Group__0");
 					put(grammarAccess.getTransitionAccess().getGroup_7(), "rule__Transition__Group_7__0");
@@ -266,8 +269,10 @@ public class FSMDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStateMachineDefinitionAccess().getDefinitionAssignment_4_1(), "rule__StateMachineDefinition__DefinitionAssignment_4_1");
 					put(grammarAccess.getStateMachineDefinitionAccess().getDeclarationBlockAssignment_6(), "rule__StateMachineDefinition__DeclarationBlockAssignment_6");
 					put(grammarAccess.getStateMachineDefinitionAccess().getInitialStateAssignment_7_1(), "rule__StateMachineDefinition__InitialStateAssignment_7_1");
-					put(grammarAccess.getStateMachineDefinitionAccess().getStatesAssignment_9_0(), "rule__StateMachineDefinition__StatesAssignment_9_0");
-					put(grammarAccess.getStateMachineDefinitionAccess().getTransitionsAssignment_9_1(), "rule__StateMachineDefinition__TransitionsAssignment_9_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_9_0_2(), "rule__StateMachineDefinition__FinalStatesAssignment_9_0_2");
+					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_9_1_1(), "rule__StateMachineDefinition__FinalStatesAssignment_9_1_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getStatesAssignment_10_0(), "rule__StateMachineDefinition__StatesAssignment_10_0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getTransitionsAssignment_10_1(), "rule__StateMachineDefinition__TransitionsAssignment_10_1");
 					put(grammarAccess.getDeclarationBlockAccess().getConcreteEntitiesAssignment_2(), "rule__DeclarationBlock__ConcreteEntitiesAssignment_2");
 					put(grammarAccess.getDeclarationBlockAccess().getClassicalExpressionsAssignment_3(), "rule__DeclarationBlock__ClassicalExpressionsAssignment_3");
 					put(grammarAccess.getTransitionAccess().getSourceAssignment_2(), "rule__Transition__SourceAssignment_2");

@@ -332,7 +332,7 @@
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
             class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.cometafsm.model.xtext.ui.fsmdsl.check.fast">
+            markerType="org.gemoc.mocc.cometafsm.model.xtext.fsmdsl.ui.fsmdsl.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -340,7 +340,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.cometafsm.model.xtext.ui.fsmdsl.check.normal">
+            markerType="org.gemoc.mocc.cometafsm.model.xtext.fsmdsl.ui.fsmdsl.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -348,7 +348,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.cometafsm.model.xtext.ui.fsmdsl.check.expensive">
+            markerType="org.gemoc.mocc.cometafsm.model.xtext.fsmdsl.ui.fsmdsl.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
