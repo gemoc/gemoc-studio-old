@@ -102,7 +102,7 @@
       <launchConfigurationType
             delegate="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncher"
             id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID"
-            modes="run"
+            modes="run, debug"
             name="Gemoc eXecutable Model"
             public="true">
       </launchConfigurationType>

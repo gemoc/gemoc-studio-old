@@ -8,15 +8,26 @@ import java.util.Observer;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.ui.IEditorPart;
+import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
+import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.io.backends.ConsoleBackend;
 import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
@@ -30,9 +41,19 @@ import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
-public class GemocReflectiveModelLauncher implements
-		ILaunchConfigurationDelegate {
+import fr.obeo.dsl.debug.ide.IDSLDebugger;
+import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
+import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
+public class GemocReflectiveModelLauncher extends fr.obeo.dsl.debug.ide.ui.launch.AbstractDSLLaunchConfigurationDelegateUI {
+		//ILaunchConfigurationDelegate {
+
+	public final static  String TYPE_ID= "org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID";
+	
+	public final static  String MODEL_ID= "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
+	
+	private ObservableBasicExecutionEngine engine;
+	
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
@@ -45,7 +66,7 @@ public class GemocReflectiveModelLauncher implements
 						"");
 
 		String modelPath = configuration.getAttribute(
-				GemocModelLauncherConfigurationConstants.LAUNCH_MODEL_PATH, "");
+				AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
 
 		String languageName = configuration
 				.getAttribute(
@@ -183,23 +204,38 @@ public class GemocReflectiveModelLauncher implements
 		// Create required Frontends
 		// TODO : Hard-coded Frontends and Backends... It should be selectable
 		// in the launch configuration etc.
-		Frontend controlPanel = new ExampleGUIControlPanel();
-		Frontend scenarioBuilder = new ExampleScenarioBuilder();
+//		Frontend controlPanel = new ExampleGUIControlPanel();
+//		Frontend scenarioBuilder = new ExampleScenarioBuilder();
 		List<Frontend> frontends = new ArrayList<Frontend>();
-		frontends.add(controlPanel);
-		frontends.add(scenarioBuilder);
+//		frontends.add(controlPanel);
+//		frontends.add(scenarioBuilder);
 		
 		// Create required Backends		
 		List<Backend> backends = new ArrayList<Backend>();
 		backends.add(new ConsoleBackend());
 		
 		// Create and initialize engine
-		GemocExecutionEngine engine = new GemocExecutionEngine(	mocEventsResource, domainSpecificEventsResource,
+		engine = new ObservableBasicExecutionEngine(	mocEventsResource, domainSpecificEventsResource,
 															solver, executor, feedbackPolicy);
 		engine.initialize(modelPath, modelOfExecutionFilePath,  modelLoader);
 		//engine.
 		// configure altogether
 		configureEngine(engine, mocEventsResource, domainSpecificEventsResource, solver, executor, feedbackPolicy, modelPath, modelLoader, frontends, backends);
+		
+		// delegate for debug mode
+		if (ILaunchManager.DEBUG_MODE.equals(mode)) {
+			super.launch(configuration, mode, launch, monitor);
+		} else {
+			Job job = new Job(getDebugJobName(configuration, getFirstInstruction(configuration))) {
+
+				@Override
+				protected IStatus run(IProgressMonitor monitor) {
+					engine.start();
+					return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
+				}
+			};
+			job.schedule();
+		}
 	}
 
 	private void reactToNull(Object o, String name) {
@@ -226,5 +262,57 @@ public class GemocReflectiveModelLauncher implements
 			backend.configure();
 			((Observable) engine).addObserver((Observer) backend);
 		}
+	}
+
+	@Override
+	protected String getLaunchConfigurationTypeID() {
+		return TYPE_ID;
+	}
+
+	@Override
+	protected EObject getFirstInstruction(ISelection selection) {
+		return EcorePackage.eINSTANCE;
+	}
+
+	@Override
+	protected EObject getFirstInstruction(IEditorPart editor) {
+		return EcorePackage.eINSTANCE;
+	}
+
+	@Override
+	protected EObject getFirstInstruction(ILaunchConfiguration configuration) {
+		return EcorePackage.eINSTANCE;
+	}
+	
+	@Override
+	protected IDSLDebugger getDebugger(ILaunchConfiguration configuration,
+			DSLDebugEventDispatcher dispatcher, EObject firstInstruction,
+			IProgressMonitor monitor) {
+		GemocModelDebugger res = new GemocModelDebugger(dispatcher, engine);
+		engine.setDebugger(res);
+		return res;
+	}
+
+	@Override
+	protected String getDebugTargetName(ILaunchConfiguration configuration,
+			EObject firstInstruction) {
+		// TODO Auto-generated method stub
+		return "Gemoc debug target";
+	}
+
+	@Override
+	protected String getDebugJobName(ILaunchConfiguration configuration,
+			EObject firstInstruction) {
+		return "Gemoc debug job";
+	}
+
+	@Override
+	protected String getPluginID() {
+		return Activator.PLUGIN_ID;
+	}
+
+	@Override
+	protected String getModelIdentifier() {
+		return MODEL_ID;
 	}
 }

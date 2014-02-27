@@ -32,6 +32,8 @@ import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
+import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
+
 public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
 
@@ -81,7 +83,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
 		try {
-			this.modelLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MODEL_PATH, ""));
+			this.modelLocationText.setText(configuration.getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, ""));
 			this.languageCombo.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE, ""));
 			this.modelofexecutionglml_LocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH, ""));
 			this.extendedccslLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH, ""));
@@ -93,7 +95,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.LAUNCH_MODEL_PATH,
+				AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI,
 				this.modelLocationText.getText());
 		configuration.setAttribute(
 				GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
