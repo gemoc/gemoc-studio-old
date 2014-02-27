@@ -59,6 +59,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import toools.io.file.RegularFile;
 import fr.inria.aoste.timesquare.ecl.ecltoqvto.main.AcceleoLauncherForEclToQvto;
 
 public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
@@ -643,7 +644,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		String qvtoFileName = ld != null ? ld.getName() + "_toCCSL.qvto" : uri.lastSegment().replace(".ecl",
 				"_toCCSL.qvto");
 		arguments.add(qvtoFileName);
-
+		arguments.add(rootElement); 
 		// create QVTO file
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
@@ -662,6 +663,15 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 					AcceleoLauncherForEclToQvto launcher = new AcceleoLauncherForEclToQvto(uri, folder, arguments);
 					launcher.doGenerate(new BasicMonitor());
 					qvtoFolder.refreshLocal(2, new NullProgressMonitor());
+					
+					
+					RegularFile qvtoFile = new RegularFile(launcher.getTargetFolder()+"/" +arguments.get(0));
+					String qvtoContent = new String(qvtoFile.getContent());
+					qvtoContent = qvtoContent.replaceAll("platform:/resource", "platform:/plugin");
+					qvtoFile.setContent(qvtoContent.getBytes());
+					
+					
+					
 				} catch (IOException e) {
 					Activator.error(e.getMessage(), e);
 				}
