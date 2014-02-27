@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
-Bundle-Name: org.gemoc.mocc.cometafsm.model.design
-Bundle-SymbolicName: org.gemoc.mocc.cometafsm.model.design;singleton=true
+Bundle-ManifestVersion: 2
+Bundle-Name: Cometa FSM Design
+Bundle-SymbolicName: org.gemoc.mocc.cometafsm.model.design;singleton:=true
 Bundle-Version: 0.0.1
 Bundle-Activator: org.gemoc.mocc.cometafsm.model.design.Activator
 Require-Bundle: org.eclipse.ui,
@@ -18,6 +19,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.compare.rcp;bundle-version="2.1.1",
  org.eclipse.emf.diffmerge;bundle-version="0.2.0"
 Bundle-ActivationPolicy: lazy
+Eclipse-LazyStart: true
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: ENSTA Bretagne
-Provide-Package: org.gemoc.mocc.cometafsm.model.design.actions
+Export-Package: org.gemoc.mocc.cometafsm.model.design.actions
+
