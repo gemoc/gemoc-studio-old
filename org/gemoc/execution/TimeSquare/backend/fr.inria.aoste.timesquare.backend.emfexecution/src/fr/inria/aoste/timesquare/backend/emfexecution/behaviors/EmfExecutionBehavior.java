@@ -152,7 +152,7 @@ public class EmfExecutionBehavior implements ClockBehavior {
 	
 				Object oexecutor=null;
 				try {
-					oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EXECUTOR_ATT);
+					oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
 				} catch (CoreException e) {
 					e.printStackTrace();
 				}
