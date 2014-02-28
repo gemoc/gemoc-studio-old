@@ -224,58 +224,27 @@
     </extension>
 
 
-	<!-- marker definitions for org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl -->
-	<extension
-	        id="mocdsl.check.fast"
-	        name="MoCDsl Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.fast"/>
-	    <persistent value="true"/>
-	</extension>
-	<extension
-	        id="mocdsl.check.normal"
-	        name="MoCDsl Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.normal"/>
-	    <persistent value="true"/>
-	</extension>
-	<extension
-	        id="mocdsl.check.expensive"
-	        name="MoCDsl Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.expensive"/>
-	    <persistent value="true"/>
-	</extension>
-
-   <extension
-         point="org.eclipse.xtext.builder.participant">
-      <participant
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
-      </participant>
-   </extension>
-   <extension
-            point="org.eclipse.ui.preferencePages">
-        <page
-            category="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl"
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.compiler.preferencePage"
-            name="Compiler">
-            <keywordReference id="org.gemoc.mocc.ccslmocc.model.xtext.ui.keyword_MoCDsl"/>
-        </page>
+    <!-- marker definitions for org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl -->
+    <extension
+            id="mocdsl.check.fast"
+            name="MoCDsl Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.fast"/>
+        <persistent value="true"/>
     </extension>
     <extension
-            point="org.eclipse.ui.propertyPages">
-        <page
-            category="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl"
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.compiler.propertyPage"
-            name="Compiler">
-            <keywordReference id="org.gemoc.mocc.ccslmocc.model.xtext.ui.keyword_MoCDsl"/>
-            <enabledWhen>
-	            <adapt type="org.eclipse.core.resources.IProject"/>
-			</enabledWhen>
-	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
-        </page>
+            id="mocdsl.check.normal"
+            name="MoCDsl Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.normal"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="mocdsl.check.expensive"
+            name="MoCDsl Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.expensive"/>
+        <persistent value="true"/>
     </extension>
 
 	<!-- Quick Outline -->
@@ -339,6 +308,17 @@
             </attribute>
         </markerResolutionGenerator>
     </extension>
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.xtext.projectwiz"
+            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.gemoc.mocc.ccslmocc.model.xtext.ui.wizard.MoCDslNewProjectWizard"
+            id="org.gemoc.mocc.ccslmocc.model.xtext.ui.wizard.MoCDslNewProjectWizard"
+            name="MoCDsl Project"
+            project="true">
+      </wizard>
+   </extension>
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 

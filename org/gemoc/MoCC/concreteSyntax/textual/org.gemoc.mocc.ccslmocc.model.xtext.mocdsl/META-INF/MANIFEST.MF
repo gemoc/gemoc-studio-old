@@ -14,9 +14,14 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
  org.gemoc.mocc.ccslmocc.model,
  org.gemoc.mocc.cometafsm.model.xtext.fsmdsl;bundle-version="0.0.1",
+ fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport,
+ fr.inria.aoste.timesquare.ccslkernel.library.xtext;visibility:=reexport,
  org.eclipse.xtext.util,
  org.antlr.runtime,
- org.eclipse.xtext.common.types
+ org.eclipse.xtext.common.types,
+ org.eclipse.core.runtime;bundle-version="3.8.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6,J2SE-1.5
@@ -27,5 +32,5 @@ Export-Package: org.gemoc.mocc.ccslmocc.model.xtext,
  org.gemoc.mocc.ccslmocc.model.xtext.parser.antlr.internal,
  org.gemoc.mocc.ccslmocc.model.xtext.validation,
  org.gemoc.mocc.ccslmocc.model.xtext.scoping,
- org.gemoc.mocc.ccslmocc.model.xtext.generator,
  org.gemoc.mocc.ccslmocc.model.xtext.formatting
+Bundle-Activator: org.gemoc.mocc.ccslmocc.model.xtext.Activator

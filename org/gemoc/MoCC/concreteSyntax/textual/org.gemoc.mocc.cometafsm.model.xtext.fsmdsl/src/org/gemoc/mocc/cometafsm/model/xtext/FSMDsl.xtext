@@ -16,7 +16,7 @@ StateMachineDefinition returns cometa::StateMachineDefinition:
 	'{'
 		(declarationBlock=DeclarationBlock)?
 		('init' initialState= [cometa::State|EString])';'
-		(('finals' ':' finalStates+=[cometa::State|EString])? ( "," finalStates+=[cometa::State|EString])* ';' )?
+		('finals' ':' finalStates+=[cometa::State|EString] ( "," finalStates+=[cometa::State|EString])* ';' )?
 		((states+=State)|
 		(transitions+=Transition))+
 		
@@ -44,8 +44,8 @@ Action returns cometa::AbstractAction:
 State returns cometa::State:
 	{cometa::State}
 	'State' name=EString ('-version' version=EString'-')? ('|definition' definition=EString '|')? '('
-		(('in' ':' inputTransitions+=[cometa::Transition|EString])? ( "," inputTransitions+=[cometa::Transition|EString])* ';' )?
-		(('out' ':' outputTransitions+=[cometa::Transition|EString])? ( "," outputTransitions+=[cometa::Transition|EString])* ';' )?
+		('in' ':' inputTransitions+=[cometa::Transition|EString] ( "," inputTransitions+=[cometa::Transition|EString])* ';' )?
+		('out' ':' outputTransitions+=[cometa::Transition|EString] ( "," outputTransitions+=[cometa::Transition|EString])* ';' )?
 	')';
 
 
