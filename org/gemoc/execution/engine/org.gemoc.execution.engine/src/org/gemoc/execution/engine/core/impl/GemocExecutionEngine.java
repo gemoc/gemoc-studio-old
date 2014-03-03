@@ -6,12 +6,13 @@ import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.NamedReference;
 import fr.inria.aoste.trace.Reference;
+import gepl.ECLEvent;
+import gepl.Every;
+import gepl.MocEvent;
+import gepl.Pattern;
 import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
-import glml.ECLEvent;
-import glml.Identity;
 import glml.ModelSpecificEvent;
-import glml.Pattern;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -88,7 +89,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	}
 
 	@Override
-	public void initialize(String modelURI, String modelOfExecutionURI, ModelLoader modelLoader) {
+	public void initialize(String modelURI, String modelOfExecutionURI,
+			ModelLoader modelLoader) {
 		Activator.getMessagingSystem().info(
 				"Verifying input before instanciating GemocExecutionEngine...",
 				Activator.PLUGIN_ID);
@@ -108,7 +110,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			Activator.getMessagingSystem().info(
 					"...NOK. Throwing EngineNotCorrectlyInitialized.",
 					Activator.PLUGIN_ID);
-			throw new EngineNotCorrectlyInitialized("Engine not correctly initialized "+exceptionMessage);
+			throw new EngineNotCorrectlyInitialized(
+					"Engine not correctly initialized " + exceptionMessage);
 		} else {
 			Activator.getMessagingSystem().info(
 					"...OK. Initializing GemocExecutionEngine with...",
@@ -139,13 +142,12 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			// true), true);
 
 			// Petrinet Sample
-			if(this.modelOfExecution == null){
-				this.modelOfExecution = new ResourceSetImpl()
-					.getResource(
-							URI.createPlatformResourceURI(modelOfExecutionURI,
-									true), true);
+			if (this.modelOfExecution == null) {
+				this.modelOfExecution = new ResourceSetImpl().getResource(URI
+						.createPlatformResourceURI(modelOfExecutionURI, true),
+						true);
 			}
-			
+
 			// TODO : remove when EclToCCslTranslator gets implemented.
 			try {
 				Resource solverInput = this.solver.getSolverInputBuilder()
@@ -242,6 +244,8 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 	/**
 	 * Interpretation of the pattern...
 	 * 
+	 * TODO: hastily modified, needs refactoring
+	 * 
 	 * @param mse
 	 * @param schedulingTrace
 	 * @return
@@ -250,62 +254,155 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 			ModelSpecificEvent mse, Map<Integer, LogicalStep> schedulingTrace) {
 		Boolean res = false;
 		Pattern pattern = mse.getCondition();
-		if (pattern instanceof Identity) {
-			// Identity means the last scheduling step must contain an event
-			// occurrence that has a named reference of same name as the mapped
-			// MoC Event.
-			Identity identity = (Identity) pattern;
-			String mappedMocEventName = ((ECLEvent) identity.getArgument())
-					.getElement().getName();
-			LogicalStep lastStep = schedulingTrace.get(this.getCurrentDate());
-			for (EventOccurrence eventOccurrence : lastStep
-					.getEventOccurrences()) {
-				if (eventOccurrence.getFState() == FiredStateKind.TICK
-						& eventOccurrence.getReferedElement() != null) {
-					if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
-						// In our protocol, the scheduling trace's event
-						// occurrences' refered element must be a named
-						// reference to the clock (ECL event). This way we know
-						// what MoC event it is related to.
-						ModelElementReference mer = (ModelElementReference) eventOccurrence
-								.getReferedElement();
-						String stringOfTheECLEventCorrespondingToTheTickingClock = mer
-								.getElementRef().get(0).toString();
-						// MAYBE FILTER BY NAME HERE TOO
-						String nameOfTheECLEventCorrespondingToTheTickingClock = this
-								.getValueOfStringAttribute(mer.getElementRef()
-										.get(0), "name");
-						// In the MSE Specification, we have a link from MSE to
-						// its reification (DSE).
-						// We also have a link (pattern) from DSE to MSE.
-						// Unfortunately we cannot explicitly know which clock
-						// (EventOccurrence) came from which ECL Event, so we
-						// cannot map MSEs directly to clocks and thus they are
-						// mapped to the same Ecl Event as their reification.
-						// Which is why we need to do this mapping by analyzing
-						// the name of the clock (EventOccurrence) so as to see
-						// if it indeed is an instanciation of the correct ECL
-						// Event and if it aims the same EObject from the model
-						// as our MSE's MSA does.
-						String nameOfTheEObject = this
-								.getValueOfStringAttribute(mse
-										.getModelSpecificActions().get(0)
-										.getTarget(), "name");
+		if (pattern instanceof Every) {
+			// For now we only deal with Every
+			Every patternEvery = (Every) pattern;
+			if (patternEvery.getAtom() instanceof gepl.Reference) {
+				// Identity
+				MocEvent mocEvent = (MocEvent) ((gepl.Reference) patternEvery)
+						.getEvent();
+				// Here the cast to ECLEvent should depend on the technology
+				// used.
+				String mappedMocEventName = ((ECLEvent) mocEvent).getElement()
+						.getName();
+				LogicalStep lastStep = schedulingTrace.get(this
+						.getCurrentDate());
+				for (EventOccurrence eventOccurrence : lastStep
+						.getEventOccurrences()) {
+					if (eventOccurrence.getFState() == FiredStateKind.TICK
+							& eventOccurrence.getReferedElement() != null) {
+						if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
+							// In our protocol, the scheduling trace's event
+							// occurrences' refered element must be a named
+							// reference to the clock (ECL event). This way we
+							// know
+							// what MoC event it is related to.
+							ModelElementReference mer = (ModelElementReference) eventOccurrence
+									.getReferedElement();
+							String stringOfTheECLEventCorrespondingToTheTickingClock = mer
+									.getElementRef().get(0).toString();
+							// MAYBE FILTER BY NAME HERE TOO
+							String nameOfTheECLEventCorrespondingToTheTickingClock = this
+									.getValueOfStringAttribute(mer
+											.getElementRef().get(0), "name");
+							// In the MSE Specification, we have a link from MSE
+							// to
+							// its reification (DSE).
+							// We also have a link (pattern) from DSE to MSE.
+							// Unfortunately we cannot explicitly know which
+							// clock
+							// (EventOccurrence) came from which ECL Event, so
+							// we
+							// cannot map MSEs directly to clocks and thus they
+							// are
+							// mapped to the same Ecl Event as their
+							// reification.
+							// Which is why we need to do this mapping by
+							// analyzing
+							// the name of the clock (EventOccurrence) so as to
+							// see
+							// if it indeed is an instanciation of the correct
+							// ECL
+							// Event and if it aims the same EObject from the
+							// model
+							// as our MSE's MSA does.
+							String nameOfTheEObject = this
+									.getValueOfStringAttribute(mse
+											.getModelSpecificActions().get(0)
+											.getTarget(), "name");
 
-						res = nameOfTheECLEventCorrespondingToTheTickingClock
-								.equals("evt_" + nameOfTheEObject + "_"
-										+ mappedMocEventName)
-								|| res;
-					} else {
-						throw new RuntimeException(
-								"Unable to analyze correctly the scheduling step provided");
+							res = nameOfTheECLEventCorrespondingToTheTickingClock
+									.equals("evt_" + nameOfTheEObject + "_"
+											+ mappedMocEventName)
+									|| res;
+						} else {
+							throw new RuntimeException(
+									"Unable to analyze correctly the scheduling step provided");
+						}
 					}
 				}
+			} else if (patternEvery.getAtom() instanceof gepl.And) {
+				// And
+				MocEvent firstMocEvent = (MocEvent) ((gepl.And) patternEvery)
+						.getFirstParameter();
+				MocEvent secondMocEvent = (MocEvent) ((gepl.And) patternEvery)
+						.getSecondParameter();
+				return mocEventOccursInCurrentTrace(firstMocEvent,
+						schedulingTrace, mse)
+						&& mocEventOccursInCurrentTrace(secondMocEvent,
+								schedulingTrace, mse);
+			} else {
+				throw new UnsupportedOperationException(
+						"Not able to interpret the following atom: "
+								+ patternEvery.getAtom().toString());
 			}
 		} else {
 			throw new UnsupportedOperationException(
 					"Not able to interpret the following pattern: "
 							+ pattern.toString());
+		}
+		return res;
+	}
+
+	private Boolean mocEventOccursInCurrentTrace(MocEvent mocEvent,
+			Map<Integer, LogicalStep> schedulingTrace, ModelSpecificEvent mse) {
+		Boolean res = false;
+		// Here the cast to ECLEvent should depend on the technology
+		// used.
+		String mappedMocEventName = ((ECLEvent) mocEvent).getElement()
+				.getName();
+		LogicalStep lastStep = schedulingTrace.get(this.getCurrentDate());
+		for (EventOccurrence eventOccurrence : lastStep.getEventOccurrences()) {
+			if (eventOccurrence.getFState() == FiredStateKind.TICK
+					& eventOccurrence.getReferedElement() != null) {
+				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
+					// In our protocol, the scheduling trace's event
+					// occurrences' refered element must be a named
+					// reference to the clock (ECL event). This way we
+					// know
+					// what MoC event it is related to.
+					ModelElementReference mer = (ModelElementReference) eventOccurrence
+							.getReferedElement();
+					String stringOfTheECLEventCorrespondingToTheTickingClock = mer
+							.getElementRef().get(0).toString();
+					// MAYBE FILTER BY NAME HERE TOO
+					String nameOfTheECLEventCorrespondingToTheTickingClock = this
+							.getValueOfStringAttribute(
+									mer.getElementRef().get(0), "name");
+					// In the MSE Specification, we have a link from MSE
+					// to
+					// its reification (DSE).
+					// We also have a link (pattern) from DSE to MSE.
+					// Unfortunately we cannot explicitly know which
+					// clock
+					// (EventOccurrence) came from which ECL Event, so
+					// we
+					// cannot map MSEs directly to clocks and thus they
+					// are
+					// mapped to the same Ecl Event as their
+					// reification.
+					// Which is why we need to do this mapping by
+					// analyzing
+					// the name of the clock (EventOccurrence) so as to
+					// see
+					// if it indeed is an instanciation of the correct
+					// ECL
+					// Event and if it aims the same EObject from the
+					// model
+					// as our MSE's MSA does.
+					String nameOfTheEObject = this.getValueOfStringAttribute(
+							mse.getModelSpecificActions().get(0).getTarget(),
+							"name");
+
+					res = nameOfTheECLEventCorrespondingToTheTickingClock
+							.equals("evt_" + nameOfTheEObject + "_"
+									+ mappedMocEventName)
+							|| res;
+				} else {
+					throw new RuntimeException(
+							"Unable to analyze correctly the scheduling step provided");
+				}
+			}
 		}
 		return res;
 	}

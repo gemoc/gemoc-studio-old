@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.core;
 
+import java.security.Identity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,14 +11,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Queue;
+import java.util.Random;
 
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
@@ -31,12 +30,12 @@ import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
+import gepl.Every;
+import gepl.MocEvent;
+import gepl.Pattern;
 import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
-import glml.Identity;
-import glml.MocEvent;
 import glml.ModelSpecificEvent;
-import glml.Pattern;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -178,7 +177,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			Resource domainSpecificEventsResource, Solver solver,
 			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 
-		
 		// The engine needs AT LEAST a mocEventsResource,
 		// domainSpecificEventsResource, a Solver,
 		// an EventExecutor.
@@ -189,7 +187,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				exceptionMessage.append(", mocEventsResource is null, ");
 			}
 			if (domainSpecificEventsResource == null) {
-				exceptionMessage.append(", domainSpecificEventsResource is null, ");
+				exceptionMessage
+						.append(", domainSpecificEventsResource is null, ");
 			}
 			if (solver == null) {
 				exceptionMessage.append(", solver is null, ");
@@ -198,10 +197,11 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 				exceptionMessage.append(", eventExecutor is null, ");
 			}
 			Activator.getMessagingSystem().error(
-					"Language definition is incomplete"+exceptionMessage,
+					"Language definition is incomplete" + exceptionMessage,
 					Activator.PLUGIN_ID);
 
-			throw new EngineNotCorrectlyInitialized("Language definition is incomplete"+exceptionMessage);	
+			throw new EngineNotCorrectlyInitialized(
+					"Language definition is incomplete" + exceptionMessage);
 		} else {
 			Activator
 					.getMessagingSystem()
@@ -268,7 +268,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	}
 
 	@Override
-	public abstract void initialize(String modelURI, String modelOfExecutionURI, ModelLoader modelLoader);
+	public abstract void initialize(String modelURI,
+			String modelOfExecutionURI, ModelLoader modelLoader);
 
 	@Override
 	public abstract void reset();
@@ -511,19 +512,35 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 
 	/**
 	 * Reverse interpretation of Pattern.
+	 * 
 	 * @param mse
 	 * @return
 	 */
 	private EventOccurrence findMappedMocElement(ModelSpecificEvent mse) {
 		Pattern pattern = mse.getCondition();
-		if (pattern instanceof Identity) {
-			Identity identity = (Identity) pattern;
-			MocEvent mocEvent = identity.getArgument();
-			return this.solver.getCorrespondingEventOccurrence(mocEvent, mse
-					.getModelSpecificActions().get(0).getTarget());
+		if (pattern instanceof Every) {
+			Every patternEvery = (Every) pattern;
+			if (patternEvery.getAtom() instanceof gepl.Reference) {
+				MocEvent mocEvent = ((gepl.Reference) patternEvery).getEvent();
+				return this.solver.getCorrespondingEventOccurrence(mocEvent,
+						mse.getModelSpecificActions().get(0).getTarget());
+			} else if (patternEvery.getAtom() instanceof gepl.And) {
+				// TODO: make it work recursively
+				MocEvent firstParameter = (MocEvent) ((gepl.Reference) ((gepl.And) patternEvery)
+						.getFirstParameter()).getEvent();
+				MocEvent secondParameter = (MocEvent) ((gepl.Reference) ((gepl.And) patternEvery)
+						.getSecondParameter()).getEvent();
+				// Fair random, threw a coin ;-)
+				return this.solver.getCorrespondingEventOccurrence(
+						firstParameter, mse.getModelSpecificActions().get(0)
+								.getTarget());
+			} else {
+				throw new UnsupportedOperationException(
+						"Only expecting Atom Reference or Atom And for now...");
+			}
 		} else {
 			throw new UnsupportedOperationException(
-					"Can only deal with Identity pattern for now...");
+					"Can only deal with 'Every' pattern for now...");
 		}
 	}
 
