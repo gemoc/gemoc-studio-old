@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -60,6 +61,7 @@ public class ModelSpecificEventItemProvider
 			super.getPropertyDescriptors(object);
 
 			addReificationPropertyDescriptor(object);
+			addVisibilityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -82,6 +84,28 @@ public class ModelSpecificEventItemProvider
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Visibility feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVisibilityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ModelSpecificEvent_visibility_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModelSpecificEvent_visibility_feature", "_UI_ModelSpecificEvent_type"),
+				 GlmlPackage.Literals.MODEL_SPECIFIC_EVENT__VISIBILITY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -154,6 +178,9 @@ public class ModelSpecificEventItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ModelSpecificEvent.class)) {
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

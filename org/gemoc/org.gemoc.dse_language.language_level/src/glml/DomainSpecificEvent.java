@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link glml.DomainSpecificEvent#getCondition <em>Condition</em>}</li>
  *   <li>{@link glml.DomainSpecificEvent#getDomainSpecificActions <em>Domain Specific Actions</em>}</li>
+ *   <li>{@link glml.DomainSpecificEvent#getVisibility <em>Visibility</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,5 +66,34 @@ public interface DomainSpecificEvent extends NamedElement {
 	 * @generated
 	 */
 	EList<DomainSpecificAction> getDomainSpecificActions();
+
+	/**
+	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+	 * The literals are from the enumeration {@link glml.Visibility}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Visibility</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Visibility</em>' attribute.
+	 * @see glml.Visibility
+	 * @see #setVisibility(Visibility)
+	 * @see glml.GlmlPackage#getDomainSpecificEvent_Visibility()
+	 * @model required="true"
+	 * @generated
+	 */
+	Visibility getVisibility();
+
+	/**
+	 * Sets the value of the '{@link glml.DomainSpecificEvent#getVisibility <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Visibility</em>' attribute.
+	 * @see glml.Visibility
+	 * @see #getVisibility()
+	 * @generated
+	 */
+	void setVisibility(Visibility value);
 
 } // DomainSpecificEvent

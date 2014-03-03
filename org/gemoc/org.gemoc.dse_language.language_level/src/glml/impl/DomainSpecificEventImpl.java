@@ -7,6 +7,7 @@ import glml.DomainSpecificEvent;
 import glml.GlmlPackage;
 import glml.Pattern;
 
+import glml.Visibility;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link glml.impl.DomainSpecificEventImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link glml.impl.DomainSpecificEventImpl#getDomainSpecificActions <em>Domain Specific Actions</em>}</li>
+ *   <li>{@link glml.impl.DomainSpecificEventImpl#getVisibility <em>Visibility</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,6 +58,26 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * @ordered
 	 */
 	protected EList<DomainSpecificAction> domainSpecificActions;
+
+	/**
+	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Visibility VISIBILITY_EDEFAULT = Visibility.EXTERNAL;
+
+	/**
+	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected Visibility visibility = VISIBILITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +158,27 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Visibility getVisibility() {
+		return visibility;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVisibility(Visibility newVisibility) {
+		Visibility oldVisibility = visibility;
+		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY, oldVisibility, visibility));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -174,6 +217,8 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 				return getCondition();
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				return getDomainSpecificActions();
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
+				return getVisibility();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -194,6 +239,9 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 				getDomainSpecificActions().clear();
 				getDomainSpecificActions().addAll((Collection<? extends DomainSpecificAction>)newValue);
 				return;
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
+				setVisibility((Visibility)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -212,6 +260,9 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				getDomainSpecificActions().clear();
 				return;
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
+				setVisibility(VISIBILITY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -228,8 +279,26 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 				return condition != null;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				return domainSpecificActions != null && !domainSpecificActions.isEmpty();
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
+				return visibility != VISIBILITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (visibility: ");
+		result.append(visibility);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DomainSpecificEventImpl

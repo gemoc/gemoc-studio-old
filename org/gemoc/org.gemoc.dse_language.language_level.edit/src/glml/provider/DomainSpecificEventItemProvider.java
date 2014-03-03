@@ -15,12 +15,14 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -58,8 +60,31 @@ public class DomainSpecificEventItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addVisibilityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Visibility feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVisibilityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DomainSpecificEvent_visibility_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DomainSpecificEvent_visibility_feature", "_UI_DomainSpecificEvent_type"),
+				 GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__VISIBILITY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -130,6 +155,9 @@ public class DomainSpecificEventItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DomainSpecificEvent.class)) {
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

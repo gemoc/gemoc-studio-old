@@ -4,6 +4,7 @@ package glml;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -232,13 +233,22 @@ public interface GlmlPackage extends EPackage {
 	int DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFIC_EVENT__VISIBILITY = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Domain Specific Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int DOMAIN_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Domain Specific Event</em>' class.
@@ -536,13 +546,22 @@ public interface GlmlPackage extends EPackage {
 	int MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_SPECIFIC_EVENT__VISIBILITY = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Model Specific Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int MODEL_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Model Specific Event</em>' class.
@@ -625,6 +644,17 @@ public interface GlmlPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_SPECIFIC_ACTION_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link glml.Visibility <em>Visibility</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glml.Visibility
+	 * @see glml.impl.GlmlPackageImpl#getVisibility()
+	 * @generated
+	 */
+	int VISIBILITY = 12;
 
 
 	/**
@@ -743,6 +773,17 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDomainSpecificEvent_DomainSpecificActions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link glml.DomainSpecificEvent#getVisibility <em>Visibility</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Visibility</em>'.
+	 * @see glml.DomainSpecificEvent#getVisibility()
+	 * @see #getDomainSpecificEvent()
+	 * @generated
+	 */
+	EAttribute getDomainSpecificEvent_Visibility();
 
 	/**
 	 * Returns the meta object for class '{@link glml.Pattern <em>Pattern</em>}'.
@@ -936,6 +977,17 @@ public interface GlmlPackage extends EPackage {
 	EReference getModelSpecificEvent_ModelSpecificActions();
 
 	/**
+	 * Returns the meta object for the attribute '{@link glml.ModelSpecificEvent#getVisibility <em>Visibility</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Visibility</em>'.
+	 * @see glml.ModelSpecificEvent#getVisibility()
+	 * @see #getModelSpecificEvent()
+	 * @generated
+	 */
+	EAttribute getModelSpecificEvent_Visibility();
+
+	/**
 	 * Returns the meta object for class '{@link glml.ModelSpecificAction <em>Model Specific Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -999,6 +1051,16 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModelSpecificAction_OwningModelSpecificEvent();
+
+	/**
+	 * Returns the meta object for enum '{@link glml.Visibility <em>Visibility</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Visibility</em>'.
+	 * @see glml.Visibility
+	 * @generated
+	 */
+	EEnum getVisibility();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1118,6 +1180,14 @@ public interface GlmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS = eINSTANCE.getDomainSpecificEvent_DomainSpecificActions();
+
+		/**
+		 * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOMAIN_SPECIFIC_EVENT__VISIBILITY = eINSTANCE.getDomainSpecificEvent_Visibility();
 
 		/**
 		 * The meta object literal for the '{@link glml.impl.PatternImpl <em>Pattern</em>}' class.
@@ -1278,6 +1348,14 @@ public interface GlmlPackage extends EPackage {
 		EReference MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS = eINSTANCE.getModelSpecificEvent_ModelSpecificActions();
 
 		/**
+		 * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_SPECIFIC_EVENT__VISIBILITY = eINSTANCE.getModelSpecificEvent_Visibility();
+
+		/**
 		 * The meta object literal for the '{@link glml.impl.ModelSpecificActionImpl <em>Model Specific Action</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1326,6 +1404,16 @@ public interface GlmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT = eINSTANCE.getModelSpecificAction_OwningModelSpecificEvent();
+
+		/**
+		 * The meta object literal for the '{@link glml.Visibility <em>Visibility</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glml.Visibility
+		 * @see glml.impl.GlmlPackageImpl#getVisibility()
+		 * @generated
+		 */
+		EEnum VISIBILITY = eINSTANCE.getVisibility();
 
 	}
 

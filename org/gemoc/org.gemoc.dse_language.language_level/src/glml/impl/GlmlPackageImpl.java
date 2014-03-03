@@ -17,8 +17,10 @@ import glml.NamedElement;
 import glml.Pattern;
 import glml.SpatialCoincidence;
 
+import glml.Visibility;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -117,6 +119,13 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * @generated
 	 */
 	private EClass modelSpecificActionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum visibilityEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -287,6 +296,15 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDomainSpecificEvent_Visibility() {
+		return (EAttribute)domainSpecificEventEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPattern() {
 		return patternEClass;
 	}
@@ -449,6 +467,15 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getModelSpecificEvent_Visibility() {
+		return (EAttribute)modelSpecificEventEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModelSpecificAction() {
 		return modelSpecificActionEClass;
 	}
@@ -503,6 +530,15 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getVisibility() {
+		return visibilityEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public GlmlFactory getGlmlFactory() {
 		return (GlmlFactory)getEFactoryInstance();
 	}
@@ -540,6 +576,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		domainSpecificEventEClass = createEClass(DOMAIN_SPECIFIC_EVENT);
 		createEReference(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__CONDITION);
 		createEReference(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS);
+		createEAttribute(domainSpecificEventEClass, DOMAIN_SPECIFIC_EVENT__VISIBILITY);
 
 		patternEClass = createEClass(PATTERN);
 
@@ -565,6 +602,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__REIFICATION);
 		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__CONDITION);
 		createEReference(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS);
+		createEAttribute(modelSpecificEventEClass, MODEL_SPECIFIC_EVENT__VISIBILITY);
 
 		modelSpecificActionEClass = createEClass(MODEL_SPECIFIC_ACTION);
 		createEReference(modelSpecificActionEClass, MODEL_SPECIFIC_ACTION__REIFICATION);
@@ -572,6 +610,9 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		createEReference(modelSpecificActionEClass, MODEL_SPECIFIC_ACTION__OPERATION);
 		createEReference(modelSpecificActionEClass, MODEL_SPECIFIC_ACTION__PARAMETERS);
 		createEReference(modelSpecificActionEClass, MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT);
+
+		// Create enums
+		visibilityEEnum = createEEnum(VISIBILITY);
 	}
 
 	/**
@@ -628,6 +669,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		initEClass(domainSpecificEventEClass, DomainSpecificEvent.class, "DomainSpecificEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDomainSpecificEvent_Condition(), this.getPattern(), null, "condition", null, 1, 1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecificEvent_DomainSpecificActions(), this.getDomainSpecificAction(), this.getDomainSpecificAction_OwningDomainSpecificEvent(), "domainSpecificActions", null, 0, -1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomainSpecificEvent_Visibility(), this.getVisibility(), "visibility", null, 1, 1, DomainSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(patternEClass, Pattern.class, "Pattern", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -653,6 +695,7 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		initEReference(getModelSpecificEvent_Reification(), this.getDomainSpecificEvent(), null, "reification", null, 0, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelSpecificEvent_Condition(), this.getPattern(), null, "condition", null, 1, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelSpecificEvent_ModelSpecificActions(), this.getModelSpecificAction(), this.getModelSpecificAction_OwningModelSpecificEvent(), "modelSpecificActions", null, 0, -1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelSpecificEvent_Visibility(), this.getVisibility(), "visibility", null, 1, 1, ModelSpecificEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelSpecificActionEClass, ModelSpecificAction.class, "ModelSpecificAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelSpecificAction_Reification(), this.getDomainSpecificAction(), null, "reification", null, 1, 1, ModelSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -660,6 +703,11 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 		initEReference(getModelSpecificAction_Operation(), theEcorePackage.getEOperation(), null, "operation", null, 1, 1, ModelSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelSpecificAction_Parameters(), theEcorePackage.getEObject(), null, "parameters", null, 0, -1, ModelSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelSpecificAction_OwningModelSpecificEvent(), this.getModelSpecificEvent(), this.getModelSpecificEvent_ModelSpecificActions(), "owningModelSpecificEvent", null, 1, 1, ModelSpecificAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(visibilityEEnum, Visibility.class, "Visibility");
+		addEEnumLiteral(visibilityEEnum, Visibility.EXTERNAL);
+		addEEnumLiteral(visibilityEEnum, Visibility.INTERNAL);
 
 		// Create resource
 		createResource(eNS_URI);

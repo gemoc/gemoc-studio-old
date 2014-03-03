@@ -8,6 +8,7 @@ import glml.ModelSpecificAction;
 import glml.ModelSpecificEvent;
 import glml.Pattern;
 
+import glml.Visibility;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link glml.impl.ModelSpecificEventImpl#getReification <em>Reification</em>}</li>
  *   <li>{@link glml.impl.ModelSpecificEventImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link glml.impl.ModelSpecificEventImpl#getModelSpecificActions <em>Model Specific Actions</em>}</li>
+ *   <li>{@link glml.impl.ModelSpecificEventImpl#getVisibility <em>Visibility</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,6 +70,26 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	 * @ordered
 	 */
 	protected EList<ModelSpecificAction> modelSpecificActions;
+
+	/**
+	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Visibility VISIBILITY_EDEFAULT = Visibility.EXTERNAL;
+
+	/**
+	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected Visibility visibility = VISIBILITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,6 +208,27 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Visibility getVisibility() {
+		return visibility;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVisibility(Visibility newVisibility) {
+		Visibility oldVisibility = visibility;
+		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY, oldVisibility, visibility));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -227,6 +270,8 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 				return getCondition();
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS:
 				return getModelSpecificActions();
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY:
+				return getVisibility();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -250,6 +295,9 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 				getModelSpecificActions().clear();
 				getModelSpecificActions().addAll((Collection<? extends ModelSpecificAction>)newValue);
 				return;
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY:
+				setVisibility((Visibility)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -271,6 +319,9 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS:
 				getModelSpecificActions().clear();
 				return;
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY:
+				setVisibility(VISIBILITY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -289,8 +340,26 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 				return condition != null;
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS:
 				return modelSpecificActions != null && !modelSpecificActions.isEmpty();
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY:
+				return visibility != VISIBILITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (visibility: ");
+		result.append(visibility);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ModelSpecificEventImpl
