@@ -17,5 +17,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.edit;visibility:=reexport,
  org.eclipse.ocl.examples.xtext.essentialocl;visibility:=reexport,
+ org.gemoc.patterns_language;visibility:=reexport,
+ org.gemoc.patterns_language.edit;visibility:=reexport,
  org.eclipse.ocl.examples.pivot;visibility:=reexport
 Bundle-ActivationPolicy: lazy

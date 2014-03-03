@@ -18,23 +18,10 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainSpecificEvent" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-        eType="#//Pattern" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecificActions"
         upperBound="-1" eType="#//DomainSpecificAction" containment="true" eOpposite="#//DomainSpecificAction/owningDomainSpecificEvent"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" lowerBound="1"
-        eType="#//Visibility"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Pattern" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="#//Pattern">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="argument" lowerBound="1"
-        eType="#//MocEvent" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SpatialCoincidence" eSuperTypes="#//Pattern">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="firstArgument" lowerBound="1"
-        eType="#//MocEvent" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="secondArgument" lowerBound="1"
-        eType="#//MocEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="ecore:EClass ../../org.gemoc.patterns_language/model/gepl.ecore#//Pattern"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainSpecificAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetClass" lowerBound="1"
@@ -46,19 +33,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningDomainSpecificEvent"
         lowerBound="1" eType="#//DomainSpecificEvent" eOpposite="#//DomainSpecificEvent/domainSpecificActions"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MocEvent" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ECLEvent" eSuperTypes="#//MocEvent">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.ocl.examples.xtext.completeocl/model/CompleteOCLCS.ecore#//DefPropertyCS"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelSpecificEvent" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reification" eType="#//DomainSpecificEvent"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-        eType="#//Pattern" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelSpecificActions" upperBound="-1"
         eType="#//ModelSpecificAction" containment="true" eOpposite="#//ModelSpecificAction/owningModelSpecificEvent"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" lowerBound="1"
-        eType="#//Visibility"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="ecore:EClass ../../org.gemoc.patterns_language/model/gepl.ecore#//Pattern"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelSpecificAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reification" lowerBound="1"
@@ -71,9 +51,5 @@
         eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningModelSpecificEvent"
         lowerBound="1" eType="#//ModelSpecificEvent" eOpposite="#//ModelSpecificEvent/modelSpecificActions"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Visibility">
-    <eLiterals name="External"/>
-    <eLiterals name="Internal" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -14,6 +14,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ocl.examples.xtext.completeocl;visibility:=reexport,
  fr.inria.aoste.timesquare.ecl;visibility:=reexport,
  org.eclipse.ocl.examples.xtext.essentialocl;visibility:=reexport,
+ org.gemoc.patterns_language;visibility:=reexport,
  org.eclipse.ocl.examples.pivot;visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport
 Bundle-ActivationPolicy: lazy

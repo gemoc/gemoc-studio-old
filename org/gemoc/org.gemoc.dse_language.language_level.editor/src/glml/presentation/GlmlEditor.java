@@ -156,6 +156,8 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import glml.provider.GlmlItemProviderAdapterFactory;
 
+import gepl.provider.GeplItemProviderAdapterFactory;
+
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -705,6 +707,7 @@ public class GlmlEditor
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new GlmlItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new GeplItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

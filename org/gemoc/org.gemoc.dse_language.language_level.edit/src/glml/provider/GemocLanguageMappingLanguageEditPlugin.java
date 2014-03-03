@@ -2,6 +2,8 @@
  */
 package glml.provider;
 
+import gepl.provider.GeplEditPlugin;
+
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -41,6 +43,7 @@ public final class GemocLanguageMappingLanguageEditPlugin extends EMFPlugin {
 		super
 		  (new ResourceLocator [] {
 		     EcoreEditPlugin.INSTANCE,
+		     GeplEditPlugin.INSTANCE,
 		   });
 	}
 

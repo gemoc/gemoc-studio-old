@@ -4,7 +4,6 @@ package glml;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -215,31 +214,22 @@ public interface GlmlPackage extends EPackage {
 	int DOMAIN_SPECIFIC_EVENT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN_SPECIFIC_EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Domain Specific Actions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * The feature id for the '<em><b>Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_SPECIFIC_EVENT__VISIBILITY = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int DOMAIN_SPECIFIC_EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Domain Specific Event</em>' class.
@@ -248,7 +238,7 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int DOMAIN_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Domain Specific Event</em>' class.
@@ -260,117 +250,6 @@ public interface GlmlPackage extends EPackage {
 	int DOMAIN_SPECIFIC_EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link glml.impl.PatternImpl <em>Pattern</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.PatternImpl
-	 * @see glml.impl.GlmlPackageImpl#getPattern()
-	 * @generated
-	 */
-	int PATTERN = 4;
-
-	/**
-	 * The number of structural features of the '<em>Pattern</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PATTERN_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Pattern</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PATTERN_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link glml.impl.IdentityImpl <em>Identity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.IdentityImpl
-	 * @see glml.impl.GlmlPackageImpl#getIdentity()
-	 * @generated
-	 */
-	int IDENTITY = 5;
-
-	/**
-	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTITY__ARGUMENT = PATTERN_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Identity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTITY_FEATURE_COUNT = PATTERN_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Identity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTITY_OPERATION_COUNT = PATTERN_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link glml.impl.SpatialCoincidenceImpl <em>Spatial Coincidence</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.SpatialCoincidenceImpl
-	 * @see glml.impl.GlmlPackageImpl#getSpatialCoincidence()
-	 * @generated
-	 */
-	int SPATIAL_COINCIDENCE = 6;
-
-	/**
-	 * The feature id for the '<em><b>First Argument</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPATIAL_COINCIDENCE__FIRST_ARGUMENT = PATTERN_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Second Argument</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPATIAL_COINCIDENCE__SECOND_ARGUMENT = PATTERN_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Spatial Coincidence</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPATIAL_COINCIDENCE_FEATURE_COUNT = PATTERN_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Spatial Coincidence</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPATIAL_COINCIDENCE_OPERATION_COUNT = PATTERN_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link glml.impl.DomainSpecificActionImpl <em>Domain Specific Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -378,7 +257,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getDomainSpecificAction()
 	 * @generated
 	 */
-	int DOMAIN_SPECIFIC_ACTION = 7;
+	int DOMAIN_SPECIFIC_ACTION = 4;
 
 	/**
 	 * The feature id for the '<em><b>Target Class</b></em>' reference.
@@ -435,71 +314,6 @@ public interface GlmlPackage extends EPackage {
 	int DOMAIN_SPECIFIC_ACTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link glml.impl.MocEventImpl <em>Moc Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.MocEventImpl
-	 * @see glml.impl.GlmlPackageImpl#getMocEvent()
-	 * @generated
-	 */
-	int MOC_EVENT = 8;
-
-	/**
-	 * The number of structural features of the '<em>Moc Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MOC_EVENT_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Moc Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MOC_EVENT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link glml.impl.ECLEventImpl <em>ECL Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.impl.ECLEventImpl
-	 * @see glml.impl.GlmlPackageImpl#getECLEvent()
-	 * @generated
-	 */
-	int ECL_EVENT = 9;
-
-	/**
-	 * The feature id for the '<em><b>Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_EVENT__ELEMENT = MOC_EVENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>ECL Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_EVENT_FEATURE_COUNT = MOC_EVENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>ECL Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_EVENT_OPERATION_COUNT = MOC_EVENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link glml.impl.ModelSpecificEventImpl <em>Model Specific Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -507,7 +321,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getModelSpecificEvent()
 	 * @generated
 	 */
-	int MODEL_SPECIFIC_EVENT = 10;
+	int MODEL_SPECIFIC_EVENT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -528,31 +342,22 @@ public interface GlmlPackage extends EPackage {
 	int MODEL_SPECIFIC_EVENT__REIFICATION = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_SPECIFIC_EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Model Specific Actions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * The feature id for the '<em><b>Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_SPECIFIC_EVENT__VISIBILITY = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int MODEL_SPECIFIC_EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Model Specific Event</em>' class.
@@ -561,7 +366,7 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int MODEL_SPECIFIC_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Model Specific Event</em>' class.
@@ -580,7 +385,7 @@ public interface GlmlPackage extends EPackage {
 	 * @see glml.impl.GlmlPackageImpl#getModelSpecificAction()
 	 * @generated
 	 */
-	int MODEL_SPECIFIC_ACTION = 11;
+	int MODEL_SPECIFIC_ACTION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Reification</b></em>' reference.
@@ -644,17 +449,6 @@ public interface GlmlPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_SPECIFIC_ACTION_OPERATION_COUNT = 0;
-
-
-	/**
-	 * The meta object id for the '{@link glml.Visibility <em>Visibility</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see glml.Visibility
-	 * @see glml.impl.GlmlPackageImpl#getVisibility()
-	 * @generated
-	 */
-	int VISIBILITY = 12;
 
 
 	/**
@@ -753,17 +547,6 @@ public interface GlmlPackage extends EPackage {
 	EClass getDomainSpecificEvent();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link glml.DomainSpecificEvent#getCondition <em>Condition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Condition</em>'.
-	 * @see glml.DomainSpecificEvent#getCondition()
-	 * @see #getDomainSpecificEvent()
-	 * @generated
-	 */
-	EReference getDomainSpecificEvent_Condition();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link glml.DomainSpecificEvent#getDomainSpecificActions <em>Domain Specific Actions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -775,78 +558,15 @@ public interface GlmlPackage extends EPackage {
 	EReference getDomainSpecificEvent_DomainSpecificActions();
 
 	/**
-	 * Returns the meta object for the attribute '{@link glml.DomainSpecificEvent#getVisibility <em>Visibility</em>}'.
+	 * Returns the meta object for the reference '{@link glml.DomainSpecificEvent#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Visibility</em>'.
-	 * @see glml.DomainSpecificEvent#getVisibility()
+	 * @return the meta object for the reference '<em>Condition</em>'.
+	 * @see glml.DomainSpecificEvent#getCondition()
 	 * @see #getDomainSpecificEvent()
 	 * @generated
 	 */
-	EAttribute getDomainSpecificEvent_Visibility();
-
-	/**
-	 * Returns the meta object for class '{@link glml.Pattern <em>Pattern</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Pattern</em>'.
-	 * @see glml.Pattern
-	 * @generated
-	 */
-	EClass getPattern();
-
-	/**
-	 * Returns the meta object for class '{@link glml.Identity <em>Identity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Identity</em>'.
-	 * @see glml.Identity
-	 * @generated
-	 */
-	EClass getIdentity();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link glml.Identity#getArgument <em>Argument</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Argument</em>'.
-	 * @see glml.Identity#getArgument()
-	 * @see #getIdentity()
-	 * @generated
-	 */
-	EReference getIdentity_Argument();
-
-	/**
-	 * Returns the meta object for class '{@link glml.SpatialCoincidence <em>Spatial Coincidence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Spatial Coincidence</em>'.
-	 * @see glml.SpatialCoincidence
-	 * @generated
-	 */
-	EClass getSpatialCoincidence();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link glml.SpatialCoincidence#getFirstArgument <em>First Argument</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>First Argument</em>'.
-	 * @see glml.SpatialCoincidence#getFirstArgument()
-	 * @see #getSpatialCoincidence()
-	 * @generated
-	 */
-	EReference getSpatialCoincidence_FirstArgument();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link glml.SpatialCoincidence#getSecondArgument <em>Second Argument</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Second Argument</em>'.
-	 * @see glml.SpatialCoincidence#getSecondArgument()
-	 * @see #getSpatialCoincidence()
-	 * @generated
-	 */
-	EReference getSpatialCoincidence_SecondArgument();
+	EReference getDomainSpecificEvent_Condition();
 
 	/**
 	 * Returns the meta object for class '{@link glml.DomainSpecificAction <em>Domain Specific Action</em>}'.
@@ -903,37 +623,6 @@ public interface GlmlPackage extends EPackage {
 	EReference getDomainSpecificAction_OwningDomainSpecificEvent();
 
 	/**
-	 * Returns the meta object for class '{@link glml.MocEvent <em>Moc Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Moc Event</em>'.
-	 * @see glml.MocEvent
-	 * @generated
-	 */
-	EClass getMocEvent();
-
-	/**
-	 * Returns the meta object for class '{@link glml.ECLEvent <em>ECL Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>ECL Event</em>'.
-	 * @see glml.ECLEvent
-	 * @generated
-	 */
-	EClass getECLEvent();
-
-	/**
-	 * Returns the meta object for the reference '{@link glml.ECLEvent#getElement <em>Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Element</em>'.
-	 * @see glml.ECLEvent#getElement()
-	 * @see #getECLEvent()
-	 * @generated
-	 */
-	EReference getECLEvent_Element();
-
-	/**
 	 * Returns the meta object for class '{@link glml.ModelSpecificEvent <em>Model Specific Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -955,17 +644,6 @@ public interface GlmlPackage extends EPackage {
 	EReference getModelSpecificEvent_Reification();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Condition</em>'.
-	 * @see glml.ModelSpecificEvent#getCondition()
-	 * @see #getModelSpecificEvent()
-	 * @generated
-	 */
-	EReference getModelSpecificEvent_Condition();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link glml.ModelSpecificEvent#getModelSpecificActions <em>Model Specific Actions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -977,15 +655,15 @@ public interface GlmlPackage extends EPackage {
 	EReference getModelSpecificEvent_ModelSpecificActions();
 
 	/**
-	 * Returns the meta object for the attribute '{@link glml.ModelSpecificEvent#getVisibility <em>Visibility</em>}'.
+	 * Returns the meta object for the reference '{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Visibility</em>'.
-	 * @see glml.ModelSpecificEvent#getVisibility()
+	 * @return the meta object for the reference '<em>Condition</em>'.
+	 * @see glml.ModelSpecificEvent#getCondition()
 	 * @see #getModelSpecificEvent()
 	 * @generated
 	 */
-	EAttribute getModelSpecificEvent_Visibility();
+	EReference getModelSpecificEvent_Condition();
 
 	/**
 	 * Returns the meta object for class '{@link glml.ModelSpecificAction <em>Model Specific Action</em>}'.
@@ -1051,16 +729,6 @@ public interface GlmlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModelSpecificAction_OwningModelSpecificEvent();
-
-	/**
-	 * Returns the meta object for enum '{@link glml.Visibility <em>Visibility</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Visibility</em>'.
-	 * @see glml.Visibility
-	 * @generated
-	 */
-	EEnum getVisibility();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1166,14 +834,6 @@ public interface GlmlPackage extends EPackage {
 		EClass DOMAIN_SPECIFIC_EVENT = eINSTANCE.getDomainSpecificEvent();
 
 		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOMAIN_SPECIFIC_EVENT__CONDITION = eINSTANCE.getDomainSpecificEvent_Condition();
-
-		/**
 		 * The meta object literal for the '<em><b>Domain Specific Actions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1182,66 +842,12 @@ public interface GlmlPackage extends EPackage {
 		EReference DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS = eINSTANCE.getDomainSpecificEvent_DomainSpecificActions();
 
 		/**
-		 * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Condition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DOMAIN_SPECIFIC_EVENT__VISIBILITY = eINSTANCE.getDomainSpecificEvent_Visibility();
-
-		/**
-		 * The meta object literal for the '{@link glml.impl.PatternImpl <em>Pattern</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.impl.PatternImpl
-		 * @see glml.impl.GlmlPackageImpl#getPattern()
-		 * @generated
-		 */
-		EClass PATTERN = eINSTANCE.getPattern();
-
-		/**
-		 * The meta object literal for the '{@link glml.impl.IdentityImpl <em>Identity</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.impl.IdentityImpl
-		 * @see glml.impl.GlmlPackageImpl#getIdentity()
-		 * @generated
-		 */
-		EClass IDENTITY = eINSTANCE.getIdentity();
-
-		/**
-		 * The meta object literal for the '<em><b>Argument</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference IDENTITY__ARGUMENT = eINSTANCE.getIdentity_Argument();
-
-		/**
-		 * The meta object literal for the '{@link glml.impl.SpatialCoincidenceImpl <em>Spatial Coincidence</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.impl.SpatialCoincidenceImpl
-		 * @see glml.impl.GlmlPackageImpl#getSpatialCoincidence()
-		 * @generated
-		 */
-		EClass SPATIAL_COINCIDENCE = eINSTANCE.getSpatialCoincidence();
-
-		/**
-		 * The meta object literal for the '<em><b>First Argument</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SPATIAL_COINCIDENCE__FIRST_ARGUMENT = eINSTANCE.getSpatialCoincidence_FirstArgument();
-
-		/**
-		 * The meta object literal for the '<em><b>Second Argument</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SPATIAL_COINCIDENCE__SECOND_ARGUMENT = eINSTANCE.getSpatialCoincidence_SecondArgument();
+		EReference DOMAIN_SPECIFIC_EVENT__CONDITION = eINSTANCE.getDomainSpecificEvent_Condition();
 
 		/**
 		 * The meta object literal for the '{@link glml.impl.DomainSpecificActionImpl <em>Domain Specific Action</em>}' class.
@@ -1286,34 +892,6 @@ public interface GlmlPackage extends EPackage {
 		EReference DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT = eINSTANCE.getDomainSpecificAction_OwningDomainSpecificEvent();
 
 		/**
-		 * The meta object literal for the '{@link glml.impl.MocEventImpl <em>Moc Event</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.impl.MocEventImpl
-		 * @see glml.impl.GlmlPackageImpl#getMocEvent()
-		 * @generated
-		 */
-		EClass MOC_EVENT = eINSTANCE.getMocEvent();
-
-		/**
-		 * The meta object literal for the '{@link glml.impl.ECLEventImpl <em>ECL Event</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.impl.ECLEventImpl
-		 * @see glml.impl.GlmlPackageImpl#getECLEvent()
-		 * @generated
-		 */
-		EClass ECL_EVENT = eINSTANCE.getECLEvent();
-
-		/**
-		 * The meta object literal for the '<em><b>Element</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ECL_EVENT__ELEMENT = eINSTANCE.getECLEvent_Element();
-
-		/**
 		 * The meta object literal for the '{@link glml.impl.ModelSpecificEventImpl <em>Model Specific Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1332,14 +910,6 @@ public interface GlmlPackage extends EPackage {
 		EReference MODEL_SPECIFIC_EVENT__REIFICATION = eINSTANCE.getModelSpecificEvent_Reification();
 
 		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL_SPECIFIC_EVENT__CONDITION = eINSTANCE.getModelSpecificEvent_Condition();
-
-		/**
 		 * The meta object literal for the '<em><b>Model Specific Actions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1348,12 +918,12 @@ public interface GlmlPackage extends EPackage {
 		EReference MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS = eINSTANCE.getModelSpecificEvent_ModelSpecificActions();
 
 		/**
-		 * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Condition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MODEL_SPECIFIC_EVENT__VISIBILITY = eINSTANCE.getModelSpecificEvent_Visibility();
+		EReference MODEL_SPECIFIC_EVENT__CONDITION = eINSTANCE.getModelSpecificEvent_Condition();
 
 		/**
 		 * The meta object literal for the '{@link glml.impl.ModelSpecificActionImpl <em>Model Specific Action</em>}' class.
@@ -1404,16 +974,6 @@ public interface GlmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODEL_SPECIFIC_ACTION__OWNING_MODEL_SPECIFIC_EVENT = eINSTANCE.getModelSpecificAction_OwningModelSpecificEvent();
-
-		/**
-		 * The meta object literal for the '{@link glml.Visibility <em>Visibility</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see glml.Visibility
-		 * @see glml.impl.GlmlPackageImpl#getVisibility()
-		 * @generated
-		 */
-		EEnum VISIBILITY = eINSTANCE.getVisibility();
 
 	}
 

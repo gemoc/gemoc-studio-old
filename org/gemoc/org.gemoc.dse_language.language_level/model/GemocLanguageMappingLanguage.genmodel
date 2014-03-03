@@ -3,14 +3,10 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.dse_language.language_level/src" modelPluginID="org.gemoc.dse_language.language_level"
     modelName="GemocLanguageMappingLanguage" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
-    usedGenPackages="../../org.eclipse.ocl.examples.xtext.base/model/BaseCS.genmodel#//basecs ../../org.eclipse.ocl.examples.xtext.completeocl/model/CompleteOCLCS.genmodel#//completeoclcs ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.ocl.examples.xtext.essentialocl/model/EssentialOCLCS.genmodel#//essentialoclcs ../../org.eclipse.ocl.examples.pivot/model/Pivot.merged.genmodel#//pivot"
+    usedGenPackages="../../org.eclipse.ocl.examples.xtext.base/model/BaseCS.genmodel#//basecs ../../org.eclipse.ocl.examples.xtext.completeocl/model/CompleteOCLCS.genmodel#//completeoclcs ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.ocl.examples.xtext.essentialocl/model/EssentialOCLCS.genmodel#//essentialoclcs ../../org.gemoc.patterns_language/model/gepl.genmodel#//gepl ../../org.eclipse.ocl.examples.pivot/model/Pivot.merged.genmodel#//pivot"
     operationReflection="true" importOrganizing="true">
   <foreignModel>GemocLanguageMappingLanguage.ecore</foreignModel>
   <genPackages prefix="Glml" disposableProviderFactory="true" ecorePackage="GemocLanguageMappingLanguage.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GemocLanguageMappingLanguage.ecore#//Visibility">
-      <genEnumLiterals ecoreEnumLiteral="GemocLanguageMappingLanguage.ecore#//Visibility/External"/>
-      <genEnumLiterals ecoreEnumLiteral="GemocLanguageMappingLanguage.ecore#//Visibility/Internal"/>
-    </genEnums>
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//DomainSpecificEventFile">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificEventFile/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificEventFile/languageEvents"/>
@@ -23,17 +19,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GemocLanguageMappingLanguage.ecore#//ImportStatement/importURI"/>
     </genClasses>
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//DomainSpecificEvent">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificEvent/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificEvent/domainSpecificActions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GemocLanguageMappingLanguage.ecore#//DomainSpecificEvent/visibility"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="GemocLanguageMappingLanguage.ecore#//Pattern"/>
-    <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//Identity">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//Identity/argument"/>
-    </genClasses>
-    <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//SpatialCoincidence">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//SpatialCoincidence/firstArgument"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//SpatialCoincidence/secondArgument"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificEvent/condition"/>
     </genClasses>
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//DomainSpecificAction">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificAction/targetClass"/>
@@ -41,15 +28,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificAction/parameterTypes"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificAction/owningDomainSpecificEvent"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="GemocLanguageMappingLanguage.ecore#//MocEvent"/>
-    <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//ECLEvent">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ECLEvent/element"/>
-    </genClasses>
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent/reification"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent/modelSpecificActions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent/visibility"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificEvent/condition"/>
     </genClasses>
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//ModelSpecificAction">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//ModelSpecificAction/reification"/>

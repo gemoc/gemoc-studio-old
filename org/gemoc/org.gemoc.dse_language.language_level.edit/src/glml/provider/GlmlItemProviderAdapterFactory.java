@@ -141,52 +141,6 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link glml.Identity} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IdentityItemProvider identityItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link glml.Identity}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createIdentityAdapter() {
-		if (identityItemProvider == null) {
-			identityItemProvider = new IdentityItemProvider(this);
-		}
-
-		return identityItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link glml.SpatialCoincidence} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SpatialCoincidenceItemProvider spatialCoincidenceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link glml.SpatialCoincidence}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSpatialCoincidenceAdapter() {
-		if (spatialCoincidenceItemProvider == null) {
-			spatialCoincidenceItemProvider = new SpatialCoincidenceItemProvider(this);
-		}
-
-		return spatialCoincidenceItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link glml.DomainSpecificAction} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,29 +161,6 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 		}
 
 		return domainSpecificActionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link glml.ECLEvent} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ECLEventItemProvider eclEventItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link glml.ECLEvent}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createECLEventAdapter() {
-		if (eclEventItemProvider == null) {
-			eclEventItemProvider = new ECLEventItemProvider(this);
-		}
-
-		return eclEventItemProvider;
 	}
 
 	/**
@@ -380,10 +311,7 @@ public class GlmlItemProviderAdapterFactory extends GlmlAdapterFactory implement
 		if (domainSpecificEventFileItemProvider != null) domainSpecificEventFileItemProvider.dispose();
 		if (importStatementItemProvider != null) importStatementItemProvider.dispose();
 		if (domainSpecificEventItemProvider != null) domainSpecificEventItemProvider.dispose();
-		if (identityItemProvider != null) identityItemProvider.dispose();
-		if (spatialCoincidenceItemProvider != null) spatialCoincidenceItemProvider.dispose();
 		if (domainSpecificActionItemProvider != null) domainSpecificActionItemProvider.dispose();
-		if (eclEventItemProvider != null) eclEventItemProvider.dispose();
 		if (modelSpecificEventItemProvider != null) modelSpecificEventItemProvider.dispose();
 		if (modelSpecificActionItemProvider != null) modelSpecificActionItemProvider.dispose();
 	}

@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -60,29 +59,29 @@ public class DomainSpecificEventItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addVisibilityPropertyDescriptor(object);
+			addConditionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Visibility feature.
+	 * This adds a property descriptor for the Condition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVisibilityPropertyDescriptor(Object object) {
+	protected void addConditionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DomainSpecificEvent_visibility_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DomainSpecificEvent_visibility_feature", "_UI_DomainSpecificEvent_type"),
-				 GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__VISIBILITY,
+				 getString("_UI_DomainSpecificEvent_condition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DomainSpecificEvent_condition_feature", "_UI_DomainSpecificEvent_type"),
+				 GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -99,7 +98,6 @@ public class DomainSpecificEventItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION);
 			childrenFeatures.add(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS);
 		}
 		return childrenFeatures;
@@ -155,10 +153,6 @@ public class DomainSpecificEventItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DomainSpecificEvent.class)) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -176,16 +170,6 @@ public class DomainSpecificEventItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION,
-				 GlmlFactory.eINSTANCE.createIdentity()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(GlmlPackage.Literals.DOMAIN_SPECIFIC_EVENT__CONDITION,
-				 GlmlFactory.eINSTANCE.createSpatialCoincidence()));
 
 		newChildDescriptors.add
 			(createChildParameter

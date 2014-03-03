@@ -92,42 +92,9 @@ public class GlmlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case GlmlPackage.PATTERN: {
-				Pattern pattern = (Pattern)theEObject;
-				T result = casePattern(pattern);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case GlmlPackage.IDENTITY: {
-				Identity identity = (Identity)theEObject;
-				T result = caseIdentity(identity);
-				if (result == null) result = casePattern(identity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case GlmlPackage.SPATIAL_COINCIDENCE: {
-				SpatialCoincidence spatialCoincidence = (SpatialCoincidence)theEObject;
-				T result = caseSpatialCoincidence(spatialCoincidence);
-				if (result == null) result = casePattern(spatialCoincidence);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case GlmlPackage.DOMAIN_SPECIFIC_ACTION: {
 				DomainSpecificAction domainSpecificAction = (DomainSpecificAction)theEObject;
 				T result = caseDomainSpecificAction(domainSpecificAction);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case GlmlPackage.MOC_EVENT: {
-				MocEvent mocEvent = (MocEvent)theEObject;
-				T result = caseMocEvent(mocEvent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case GlmlPackage.ECL_EVENT: {
-				ECLEvent eclEvent = (ECLEvent)theEObject;
-				T result = caseECLEvent(eclEvent);
-				if (result == null) result = caseMocEvent(eclEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -209,51 +176,6 @@ public class GlmlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Pattern</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Pattern</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePattern(Pattern object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIdentity(Identity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Spatial Coincidence</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Spatial Coincidence</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSpatialCoincidence(SpatialCoincidence object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Domain Specific Action</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -265,36 +187,6 @@ public class GlmlSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDomainSpecificAction(DomainSpecificAction object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Moc Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Moc Event</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMocEvent(MocEvent object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ECL Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ECL Event</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseECLEvent(ECLEvent object) {
 		return null;
 	}
 

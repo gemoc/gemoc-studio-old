@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gepl" nsURI="http://www.gemoc.org/patterns_language/gepl" nsPrefix="org.gemoc.patterns_language.gepl">
+  <eClassifiers xsi:type="ecore:EClass" name="Pattern" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Every" eSuperTypes="#//Pattern">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atom" lowerBound="1" eType="#//Atom"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MocEvent" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ECLEvent" eSuperTypes="#//MocEvent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.ocl.examples.xtext.completeocl/model/CompleteOCLCS.ecore#//DefPropertyCS"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Atom" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Reference" eSuperTypes="#//Atom">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" lowerBound="1" eType="#//MocEvent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Atom">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="firstParameter" lowerBound="1"
+        eType="#//Atom"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="secondParameter" lowerBound="1"
+        eType="#//Atom"/>
+  </eClassifiers>
+</ecore:EPackage>

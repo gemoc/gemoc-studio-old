@@ -2,12 +2,12 @@
  */
 package glml.impl;
 
+import gepl.Pattern;
+
 import glml.DomainSpecificAction;
 import glml.DomainSpecificEvent;
 import glml.GlmlPackage;
-import glml.Pattern;
 
-import glml.Visibility;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -30,25 +30,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link glml.impl.DomainSpecificEventImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link glml.impl.DomainSpecificEventImpl#getDomainSpecificActions <em>Domain Specific Actions</em>}</li>
- *   <li>{@link glml.impl.DomainSpecificEventImpl#getVisibility <em>Visibility</em>}</li>
+ *   <li>{@link glml.impl.DomainSpecificEventImpl#getCondition <em>Condition</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class DomainSpecificEventImpl extends NamedElementImpl implements DomainSpecificEvent {
-	/**
-	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected Pattern condition;
-
 	/**
 	 * The cached value of the '{@link #getDomainSpecificActions() <em>Domain Specific Actions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -60,24 +49,14 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	protected EList<DomainSpecificAction> domainSpecificActions;
 
 	/**
-	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVisibility()
+	 * @see #getCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Visibility VISIBILITY_EDEFAULT = Visibility.EXTERNAL;
-
-	/**
-	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVisibility()
-	 * @generated
-	 * @ordered
-	 */
-	protected Visibility visibility = VISIBILITY_EDEFAULT;
+	protected Pattern condition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,49 +82,6 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Pattern getCondition() {
-		return condition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCondition(Pattern newCondition, NotificationChain msgs) {
-		Pattern oldCondition = condition;
-		condition = newCondition;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION, oldCondition, newCondition);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCondition(Pattern newCondition) {
-		if (newCondition != condition) {
-			NotificationChain msgs = null;
-			if (condition != null)
-				msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION, null, msgs);
-			if (newCondition != null)
-				msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION, null, msgs);
-			msgs = basicSetCondition(newCondition, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION, newCondition, newCondition));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<DomainSpecificAction> getDomainSpecificActions() {
 		if (domainSpecificActions == null) {
 			domainSpecificActions = new EObjectContainmentWithInverseEList<DomainSpecificAction>(DomainSpecificAction.class, this, GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS, GlmlPackage.DOMAIN_SPECIFIC_ACTION__OWNING_DOMAIN_SPECIFIC_EVENT);
@@ -158,8 +94,16 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Visibility getVisibility() {
-		return visibility;
+	public Pattern getCondition() {
+		if (condition != null && condition.eIsProxy()) {
+			InternalEObject oldCondition = (InternalEObject)condition;
+			condition = (Pattern)eResolveProxy(oldCondition);
+			if (condition != oldCondition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION, oldCondition, condition));
+			}
+		}
+		return condition;
 	}
 
 	/**
@@ -167,11 +111,20 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVisibility(Visibility newVisibility) {
-		Visibility oldVisibility = visibility;
-		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
+	public Pattern basicGetCondition() {
+		return condition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCondition(Pattern newCondition) {
+		Pattern oldCondition = condition;
+		condition = newCondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY, oldVisibility, visibility));
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION, oldCondition, condition));
 	}
 
 	/**
@@ -197,8 +150,6 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
-				return basicSetCondition(null, msgs);
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				return ((InternalEList<?>)getDomainSpecificActions()).basicRemove(otherEnd, msgs);
 		}
@@ -213,12 +164,11 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
-				return getCondition();
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				return getDomainSpecificActions();
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
-				return getVisibility();
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
+				if (resolve) return getCondition();
+				return basicGetCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -232,15 +182,12 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
-				setCondition((Pattern)newValue);
-				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				getDomainSpecificActions().clear();
 				getDomainSpecificActions().addAll((Collection<? extends DomainSpecificAction>)newValue);
 				return;
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
-				setVisibility((Visibility)newValue);
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
+				setCondition((Pattern)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -254,14 +201,11 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
-				setCondition((Pattern)null);
-				return;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				getDomainSpecificActions().clear();
 				return;
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
-				setVisibility(VISIBILITY_EDEFAULT);
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
+				setCondition((Pattern)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -275,30 +219,12 @@ public class DomainSpecificEventImpl extends NamedElementImpl implements DomainS
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
-				return condition != null;
 			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__DOMAIN_SPECIFIC_ACTIONS:
 				return domainSpecificActions != null && !domainSpecificActions.isEmpty();
-			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
+			case GlmlPackage.DOMAIN_SPECIFIC_EVENT__CONDITION:
+				return condition != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (visibility: ");
-		result.append(visibility);
-		result.append(')');
-		return result.toString();
 	}
 
 } //DomainSpecificEventImpl
