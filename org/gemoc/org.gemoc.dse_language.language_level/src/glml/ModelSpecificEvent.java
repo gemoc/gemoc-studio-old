@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link glml.ModelSpecificEvent#getReification <em>Reification</em>}</li>
  *   <li>{@link glml.ModelSpecificEvent#getModelSpecificActions <em>Model Specific Actions</em>}</li>
  *   <li>{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}</li>
+ *   <li>{@link glml.ModelSpecificEvent#getVisibility <em>Visibility</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,29 +71,58 @@ public interface ModelSpecificEvent extends NamedElement {
 	EList<ModelSpecificAction> getModelSpecificActions();
 
 	/**
-	 * Returns the value of the '<em><b>Condition</b></em>' reference.
+	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Condition</em>' reference isn't clear,
+	 * If the meaning of the '<em>Condition</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Condition</em>' reference.
+	 * @return the value of the '<em>Condition</em>' containment reference.
 	 * @see #setCondition(Pattern)
 	 * @see glml.GlmlPackage#getModelSpecificEvent_Condition()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Pattern getCondition();
 
 	/**
-	 * Sets the value of the '{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}' reference.
+	 * Sets the value of the '{@link glml.ModelSpecificEvent#getCondition <em>Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Condition</em>' reference.
+	 * @param value the new value of the '<em>Condition</em>' containment reference.
 	 * @see #getCondition()
 	 * @generated
 	 */
 	void setCondition(Pattern value);
+
+	/**
+	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+	 * The literals are from the enumeration {@link glml.Visibility}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Visibility</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Visibility</em>' attribute.
+	 * @see glml.Visibility
+	 * @see #setVisibility(Visibility)
+	 * @see glml.GlmlPackage#getModelSpecificEvent_Visibility()
+	 * @model required="true"
+	 * @generated
+	 */
+	Visibility getVisibility();
+
+	/**
+	 * Sets the value of the '{@link glml.ModelSpecificEvent#getVisibility <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Visibility</em>' attribute.
+	 * @see glml.Visibility
+	 * @see #getVisibility()
+	 * @generated
+	 */
+	void setVisibility(Visibility value);
 
 } // ModelSpecificEvent

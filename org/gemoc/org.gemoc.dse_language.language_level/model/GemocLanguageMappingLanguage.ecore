@@ -21,7 +21,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecificActions"
         upperBound="-1" eType="#//DomainSpecificAction" containment="true" eOpposite="#//DomainSpecificAction/owningDomainSpecificEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-        eType="ecore:EClass ../../org.gemoc.patterns_language/model/gepl.ecore#//Pattern"/>
+        eType="ecore:EClass ../../org.gemoc.patterns_language/model/gepl.ecore#//Pattern"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" lowerBound="1"
+        eType="#//Visibility"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainSpecificAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetClass" lowerBound="1"
@@ -38,7 +41,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelSpecificActions" upperBound="-1"
         eType="#//ModelSpecificAction" containment="true" eOpposite="#//ModelSpecificAction/owningModelSpecificEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
-        eType="ecore:EClass ../../org.gemoc.patterns_language/model/gepl.ecore#//Pattern"/>
+        eType="ecore:EClass ../../org.gemoc.patterns_language/model/gepl.ecore#//Pattern"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" lowerBound="1"
+        eType="#//Visibility"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelSpecificAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reification" lowerBound="1"
@@ -51,5 +57,9 @@
         eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningModelSpecificEvent"
         lowerBound="1" eType="#//ModelSpecificEvent" eOpposite="#//ModelSpecificEvent/modelSpecificActions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Visibility">
+    <eLiterals name="External"/>
+    <eLiterals name="Internal" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

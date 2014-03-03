@@ -21,26 +21,26 @@ package gepl;
  */
 public interface Every extends Pattern {
 	/**
-	 * Returns the value of the '<em><b>Atom</b></em>' reference.
+	 * Returns the value of the '<em><b>Atom</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Atom</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Atom</em>' reference.
+	 * @return the value of the '<em>Atom</em>' containment reference.
 	 * @see #setAtom(Atom)
 	 * @see gepl.GeplPackage#getEvery_Atom()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Atom getAtom();
 
 	/**
-	 * Sets the value of the '{@link gepl.Every#getAtom <em>Atom</em>}' reference.
+	 * Sets the value of the '{@link gepl.Every#getAtom <em>Atom</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Atom</em>' reference.
+	 * @param value the new value of the '<em>Atom</em>' containment reference.
 	 * @see #getAtom()
 	 * @generated
 	 */

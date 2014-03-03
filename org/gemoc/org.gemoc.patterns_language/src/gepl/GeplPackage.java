@@ -94,7 +94,7 @@ public interface GeplPackage extends EPackage {
 	int EVERY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Atom</b></em>' reference.
+	 * The feature id for the '<em><b>Atom</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -224,7 +224,7 @@ public interface GeplPackage extends EPackage {
 	int REFERENCE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Event</b></em>' reference.
+	 * The feature id for the '<em><b>Event</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -261,7 +261,7 @@ public interface GeplPackage extends EPackage {
 	int AND = 6;
 
 	/**
-	 * The feature id for the '<em><b>First Parameter</b></em>' reference.
+	 * The feature id for the '<em><b>First Parameter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -270,7 +270,7 @@ public interface GeplPackage extends EPackage {
 	int AND__FIRST_PARAMETER = ATOM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Second Parameter</b></em>' reference.
+	 * The feature id for the '<em><b>Second Parameter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -318,10 +318,10 @@ public interface GeplPackage extends EPackage {
 	EClass getEvery();
 
 	/**
-	 * Returns the meta object for the reference '{@link gepl.Every#getAtom <em>Atom</em>}'.
+	 * Returns the meta object for the containment reference '{@link gepl.Every#getAtom <em>Atom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Atom</em>'.
+	 * @return the meta object for the containment reference '<em>Atom</em>'.
 	 * @see gepl.Every#getAtom()
 	 * @see #getEvery()
 	 * @generated
@@ -380,10 +380,10 @@ public interface GeplPackage extends EPackage {
 	EClass getReference();
 
 	/**
-	 * Returns the meta object for the reference '{@link gepl.Reference#getEvent <em>Event</em>}'.
+	 * Returns the meta object for the containment reference '{@link gepl.Reference#getEvent <em>Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Event</em>'.
+	 * @return the meta object for the containment reference '<em>Event</em>'.
 	 * @see gepl.Reference#getEvent()
 	 * @see #getReference()
 	 * @generated
@@ -401,10 +401,10 @@ public interface GeplPackage extends EPackage {
 	EClass getAnd();
 
 	/**
-	 * Returns the meta object for the reference '{@link gepl.And#getFirstParameter <em>First Parameter</em>}'.
+	 * Returns the meta object for the containment reference '{@link gepl.And#getFirstParameter <em>First Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>First Parameter</em>'.
+	 * @return the meta object for the containment reference '<em>First Parameter</em>'.
 	 * @see gepl.And#getFirstParameter()
 	 * @see #getAnd()
 	 * @generated
@@ -412,10 +412,10 @@ public interface GeplPackage extends EPackage {
 	EReference getAnd_FirstParameter();
 
 	/**
-	 * Returns the meta object for the reference '{@link gepl.And#getSecondParameter <em>Second Parameter</em>}'.
+	 * Returns the meta object for the containment reference '{@link gepl.And#getSecondParameter <em>Second Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Second Parameter</em>'.
+	 * @return the meta object for the containment reference '<em>Second Parameter</em>'.
 	 * @see gepl.And#getSecondParameter()
 	 * @see #getAnd()
 	 * @generated
@@ -466,7 +466,7 @@ public interface GeplPackage extends EPackage {
 		EClass EVERY = eINSTANCE.getEvery();
 
 		/**
-		 * The meta object literal for the '<em><b>Atom</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Atom</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -522,7 +522,7 @@ public interface GeplPackage extends EPackage {
 		EClass REFERENCE = eINSTANCE.getReference();
 
 		/**
-		 * The meta object literal for the '<em><b>Event</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Event</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -540,7 +540,7 @@ public interface GeplPackage extends EPackage {
 		EClass AND = eINSTANCE.getAnd();
 
 		/**
-		 * The meta object literal for the '<em><b>First Parameter</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>First Parameter</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -548,7 +548,7 @@ public interface GeplPackage extends EPackage {
 		EReference AND__FIRST_PARAMETER = eINSTANCE.getAnd_FirstParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Second Parameter</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Second Parameter</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

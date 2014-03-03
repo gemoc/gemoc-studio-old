@@ -14,12 +14,5 @@
             genModel="model/GemocLanguageMappingLanguage.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated GemocModelMappingLanguage -->
-      <package
-            uri="http://org.gemoc.mapping_language/gmml"
-            class="gmml.GmmlPackage"
-            genModel="model/GemocModelMappingLanguage.genmodel"/>
-   </extension>
 
 </plugin>

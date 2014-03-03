@@ -8,6 +8,7 @@ import glml.DomainSpecificEvent;
 import glml.GlmlPackage;
 import glml.ModelSpecificAction;
 import glml.ModelSpecificEvent;
+import glml.Visibility;
 
 import java.util.Collection;
 
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link glml.impl.ModelSpecificEventImpl#getReification <em>Reification</em>}</li>
  *   <li>{@link glml.impl.ModelSpecificEventImpl#getModelSpecificActions <em>Model Specific Actions</em>}</li>
  *   <li>{@link glml.impl.ModelSpecificEventImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link glml.impl.ModelSpecificEventImpl#getVisibility <em>Visibility</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,7 +63,7 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	protected EList<ModelSpecificAction> modelSpecificActions;
 
 	/**
-	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' reference.
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCondition()
@@ -69,6 +71,26 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	 * @ordered
 	 */
 	protected Pattern condition;
+
+	/**
+	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Visibility VISIBILITY_EDEFAULT = Visibility.EXTERNAL;
+
+	/**
+	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected Visibility visibility = VISIBILITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,14 +167,6 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	 * @generated
 	 */
 	public Pattern getCondition() {
-		if (condition != null && condition.eIsProxy()) {
-			InternalEObject oldCondition = (InternalEObject)condition;
-			condition = (Pattern)eResolveProxy(oldCondition);
-			if (condition != oldCondition) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, oldCondition, condition));
-			}
-		}
 		return condition;
 	}
 
@@ -161,8 +175,14 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Pattern basicGetCondition() {
-		return condition;
+	public NotificationChain basicSetCondition(Pattern newCondition, NotificationChain msgs) {
+		Pattern oldCondition = condition;
+		condition = newCondition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, oldCondition, newCondition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -171,10 +191,38 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	 * @generated
 	 */
 	public void setCondition(Pattern newCondition) {
-		Pattern oldCondition = condition;
-		condition = newCondition;
+		if (newCondition != condition) {
+			NotificationChain msgs = null;
+			if (condition != null)
+				msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, null, msgs);
+			if (newCondition != null)
+				msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, null, msgs);
+			msgs = basicSetCondition(newCondition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, newCondition, newCondition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Visibility getVisibility() {
+		return visibility;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVisibility(Visibility newVisibility) {
+		Visibility oldVisibility = visibility;
+		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION, oldCondition, condition));
+			eNotify(new ENotificationImpl(this, Notification.SET, GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY, oldVisibility, visibility));
 	}
 
 	/**
@@ -202,6 +250,8 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 		switch (featureID) {
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS:
 				return ((InternalEList<?>)getModelSpecificActions()).basicRemove(otherEnd, msgs);
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
+				return basicSetCondition(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -220,8 +270,9 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__MODEL_SPECIFIC_ACTIONS:
 				return getModelSpecificActions();
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
-				if (resolve) return getCondition();
-				return basicGetCondition();
+				return getCondition();
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY:
+				return getVisibility();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -245,6 +296,9 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
 				setCondition((Pattern)newValue);
 				return;
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY:
+				setVisibility((Visibility)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -266,6 +320,9 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
 				setCondition((Pattern)null);
 				return;
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY:
+				setVisibility(VISIBILITY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -284,8 +341,26 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 				return modelSpecificActions != null && !modelSpecificActions.isEmpty();
 			case GlmlPackage.MODEL_SPECIFIC_EVENT__CONDITION:
 				return condition != null;
+			case GlmlPackage.MODEL_SPECIFIC_EVENT__VISIBILITY:
+				return visibility != VISIBILITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (visibility: ");
+		result.append(visibility);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ModelSpecificEventImpl

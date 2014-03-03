@@ -8,6 +8,7 @@ import gepl.GeplPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -29,7 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class AndImpl extends AtomImpl implements And {
 	/**
-	 * The cached value of the '{@link #getFirstParameter() <em>First Parameter</em>}' reference.
+	 * The cached value of the '{@link #getFirstParameter() <em>First Parameter</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFirstParameter()
@@ -39,7 +40,7 @@ public class AndImpl extends AtomImpl implements And {
 	protected Atom firstParameter;
 
 	/**
-	 * The cached value of the '{@link #getSecondParameter() <em>Second Parameter</em>}' reference.
+	 * The cached value of the '{@link #getSecondParameter() <em>Second Parameter</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSecondParameter()
@@ -73,14 +74,6 @@ public class AndImpl extends AtomImpl implements And {
 	 * @generated
 	 */
 	public Atom getFirstParameter() {
-		if (firstParameter != null && firstParameter.eIsProxy()) {
-			InternalEObject oldFirstParameter = (InternalEObject)firstParameter;
-			firstParameter = (Atom)eResolveProxy(oldFirstParameter);
-			if (firstParameter != oldFirstParameter) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GeplPackage.AND__FIRST_PARAMETER, oldFirstParameter, firstParameter));
-			}
-		}
 		return firstParameter;
 	}
 
@@ -89,8 +82,14 @@ public class AndImpl extends AtomImpl implements And {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Atom basicGetFirstParameter() {
-		return firstParameter;
+	public NotificationChain basicSetFirstParameter(Atom newFirstParameter, NotificationChain msgs) {
+		Atom oldFirstParameter = firstParameter;
+		firstParameter = newFirstParameter;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeplPackage.AND__FIRST_PARAMETER, oldFirstParameter, newFirstParameter);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -99,10 +98,17 @@ public class AndImpl extends AtomImpl implements And {
 	 * @generated
 	 */
 	public void setFirstParameter(Atom newFirstParameter) {
-		Atom oldFirstParameter = firstParameter;
-		firstParameter = newFirstParameter;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeplPackage.AND__FIRST_PARAMETER, oldFirstParameter, firstParameter));
+		if (newFirstParameter != firstParameter) {
+			NotificationChain msgs = null;
+			if (firstParameter != null)
+				msgs = ((InternalEObject)firstParameter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeplPackage.AND__FIRST_PARAMETER, null, msgs);
+			if (newFirstParameter != null)
+				msgs = ((InternalEObject)newFirstParameter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeplPackage.AND__FIRST_PARAMETER, null, msgs);
+			msgs = basicSetFirstParameter(newFirstParameter, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GeplPackage.AND__FIRST_PARAMETER, newFirstParameter, newFirstParameter));
 	}
 
 	/**
@@ -111,14 +117,6 @@ public class AndImpl extends AtomImpl implements And {
 	 * @generated
 	 */
 	public Atom getSecondParameter() {
-		if (secondParameter != null && secondParameter.eIsProxy()) {
-			InternalEObject oldSecondParameter = (InternalEObject)secondParameter;
-			secondParameter = (Atom)eResolveProxy(oldSecondParameter);
-			if (secondParameter != oldSecondParameter) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GeplPackage.AND__SECOND_PARAMETER, oldSecondParameter, secondParameter));
-			}
-		}
 		return secondParameter;
 	}
 
@@ -127,8 +125,14 @@ public class AndImpl extends AtomImpl implements And {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Atom basicGetSecondParameter() {
-		return secondParameter;
+	public NotificationChain basicSetSecondParameter(Atom newSecondParameter, NotificationChain msgs) {
+		Atom oldSecondParameter = secondParameter;
+		secondParameter = newSecondParameter;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeplPackage.AND__SECOND_PARAMETER, oldSecondParameter, newSecondParameter);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -137,10 +141,33 @@ public class AndImpl extends AtomImpl implements And {
 	 * @generated
 	 */
 	public void setSecondParameter(Atom newSecondParameter) {
-		Atom oldSecondParameter = secondParameter;
-		secondParameter = newSecondParameter;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeplPackage.AND__SECOND_PARAMETER, oldSecondParameter, secondParameter));
+		if (newSecondParameter != secondParameter) {
+			NotificationChain msgs = null;
+			if (secondParameter != null)
+				msgs = ((InternalEObject)secondParameter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeplPackage.AND__SECOND_PARAMETER, null, msgs);
+			if (newSecondParameter != null)
+				msgs = ((InternalEObject)newSecondParameter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeplPackage.AND__SECOND_PARAMETER, null, msgs);
+			msgs = basicSetSecondParameter(newSecondParameter, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GeplPackage.AND__SECOND_PARAMETER, newSecondParameter, newSecondParameter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GeplPackage.AND__FIRST_PARAMETER:
+				return basicSetFirstParameter(null, msgs);
+			case GeplPackage.AND__SECOND_PARAMETER:
+				return basicSetSecondParameter(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -152,11 +179,9 @@ public class AndImpl extends AtomImpl implements And {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GeplPackage.AND__FIRST_PARAMETER:
-				if (resolve) return getFirstParameter();
-				return basicGetFirstParameter();
+				return getFirstParameter();
 			case GeplPackage.AND__SECOND_PARAMETER:
-				if (resolve) return getSecondParameter();
-				return basicGetSecondParameter();
+				return getSecondParameter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

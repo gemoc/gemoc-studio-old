@@ -3,7 +3,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gepl" nsURI="http://www.gemoc.org/patterns_language/gepl" nsPrefix="org.gemoc.patterns_language.gepl">
   <eClassifiers xsi:type="ecore:EClass" name="Pattern" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Every" eSuperTypes="#//Pattern">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="atom" lowerBound="1" eType="#//Atom"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atom" lowerBound="1" eType="#//Atom"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MocEvent" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="ECLEvent" eSuperTypes="#//MocEvent">
@@ -12,12 +13,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Atom" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Reference" eSuperTypes="#//Atom">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="event" lowerBound="1" eType="#//MocEvent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" lowerBound="1" eType="#//MocEvent"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Atom">
     <eStructuralFeatures xsi:type="ecore:EReference" name="firstParameter" lowerBound="1"
-        eType="#//Atom"/>
+        eType="#//Atom" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondParameter" lowerBound="1"
-        eType="#//Atom"/>
+        eType="#//Atom" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
