@@ -158,6 +158,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 				+ this.getSelectedTargetText());
 
 		// Let's not display the Internal events
+		this.possibleEvents = new ArrayList<ModelSpecificEvent>();
 		for (ModelSpecificEvent mse : this.engine.getCurrentPossibleEvents()) {
 			if (mse.getVisibility().equals(Visibility.EXTERNAL)) {
 				this.possibleEvents.add(mse);
@@ -190,7 +191,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 		// this.content.add(new JSeparator(SwingConstants.HORIZONTAL));
 		// this.content.add(new JLabel("Possible MSEs at this time: "));
 		this.possibleEventsLabels = new ArrayList<JLabel>();
-		this.possibleEvents = new ArrayList<ModelSpecificEvent>();
+		this.possibleEvents = null;
 		this.validate();
 	}
 
