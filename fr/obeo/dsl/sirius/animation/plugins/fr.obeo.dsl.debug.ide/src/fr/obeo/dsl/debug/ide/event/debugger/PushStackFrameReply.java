@@ -81,7 +81,7 @@ public class PushStackFrameReply extends AbstractThreadReply {
 	/**
 	 * Gets the context of the stack frame.
 	 * 
-	 * @return the context of the stack fram
+	 * @return the context of the stack frame
 	 */
 	public EObject getContext() {
 		return context;
