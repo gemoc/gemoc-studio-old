@@ -36,6 +36,7 @@ import gepl.Pattern;
 import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
 import glml.ModelSpecificEvent;
+import glml.Visibility;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -334,7 +335,15 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		this.schedulingTrace.put(previousDate + 1, newStep);
 		this.executionTrace.put(newStep, new ArrayList<ModelSpecificEvent>());
 		this.currentPossibleEvents = this.match(this.schedulingTrace);
-		;
+		
+		// All internal events are interpreted as automatically scheduled.
+		for(ModelSpecificEvent mse : this.currentPossibleEvents){
+			if(mse.getVisibility().equals(Visibility.INTERNAL)){
+				List<ModelSpecificEvent> scheduledEventsForCurrentStep = this.scheduledEventsMap
+						.get(this.currentStep);
+				scheduledEventsForCurrentStep.add(mse);
+			}
+		}
 	}
 
 	/**
