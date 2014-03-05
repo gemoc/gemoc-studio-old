@@ -24,12 +24,8 @@ Require-Bundle: org.gemoc.mocc.cometafsm.model.xtext.fsmdsl;visibility:=reexport
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.gemoc.mocc.cometafsm.model.xtext.ui,
+Bundle-Activator: org.gemoc.mocc.cometafsm.model.xtext.ui.internal.FSMDslActivator
+Export-Package: org.gemoc.mocc.cometafsm.model.xtext.ui.quickfix,
  org.gemoc.mocc.cometafsm.model.xtext.ui.contentassist,
  org.gemoc.mocc.cometafsm.model.xtext.ui.contentassist.antlr,
- org.gemoc.mocc.cometafsm.model.xtext.ui.contentassist.antlr.internal,
- org.gemoc.mocc.cometafsm.model.xtext.ui.internal,
- org.gemoc.mocc.cometafsm.model.xtext.ui.labeling,
- org.gemoc.mocc.cometafsm.model.xtext.ui.outline,
- org.gemoc.mocc.cometafsm.model.xtext.ui.quickfix
-Bundle-Activator: org.gemoc.mocc.cometafsm.model.xtext.ui.internal.FSMDslActivator
+ org.gemoc.mocc.cometafsm.model.xtext.ui.internal

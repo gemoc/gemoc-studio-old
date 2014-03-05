@@ -25,6 +25,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6,J2SE-1.5
+Bundle-Activator: org.gemoc.mocc.ccslmocc.model.xtext.Activator
 Export-Package: org.gemoc.mocc.ccslmocc.model.xtext,
  org.gemoc.mocc.ccslmocc.model.xtext.services,
  org.gemoc.mocc.ccslmocc.model.xtext.parseTreeConstruction,
@@ -33,4 +34,3 @@ Export-Package: org.gemoc.mocc.ccslmocc.model.xtext,
  org.gemoc.mocc.ccslmocc.model.xtext.validation,
  org.gemoc.mocc.ccslmocc.model.xtext.scoping,
  org.gemoc.mocc.ccslmocc.model.xtext.formatting
-Bundle-Activator: org.gemoc.mocc.ccslmocc.model.xtext.Activator
