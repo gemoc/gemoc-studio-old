@@ -44,7 +44,7 @@ import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
-public class GemocReflectiveModelLauncher extends fr.obeo.dsl.debug.ide.ui.launch.AbstractDSLLaunchConfigurationDelegateUI {
+public class GemocReflectiveModelLauncher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI {
 		//ILaunchConfigurationDelegate {
 
 	public final static  String TYPE_ID= "org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID";
