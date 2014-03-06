@@ -69,7 +69,3 @@ StartClock returns ccslmoc::StartClock:
 {ccslmoc::StartClock}
 	'start' '(' clock=[TimeModel::Clock|EString]')'
 ;
-
-// <--- Override --->
-IntegerVariableRef returns ClassicalExpression::IntegerVariableRef:
-	'IntegerVariableRef' name=EString '['referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]']';
