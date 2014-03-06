@@ -9,7 +9,7 @@
         <!-- plugins -->
         <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution</module>
         <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration</module>
-        <!-- <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.sdk</module>-->
+        <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.sdk</module>
         <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.tests</module>
         <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui</module>
         <module>../org.gemoc.executionmodel.create</module>
