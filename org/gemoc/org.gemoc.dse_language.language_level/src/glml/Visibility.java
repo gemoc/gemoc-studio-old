@@ -19,54 +19,52 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum Visibility implements Enumerator {
 	/**
-	 * The '<em><b>External</b></em>' literal object.
+	 * The '<em><b>Public</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #EXTERNAL_VALUE
+	 * @see #PUBLIC_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	EXTERNAL(0, "External", "External"),
-
-	/**
-	 * The '<em><b>Internal</b></em>' literal object.
+	PUBLIC(0, "Public", "Public"), /**
+	 * The '<em><b>Private</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #INTERNAL_VALUE
+	 * @see #PRIVATE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	INTERNAL(1, "Internal", "Internal");
+	PRIVATE(1, "Private", "Private");
 
 	/**
-	 * The '<em><b>External</b></em>' literal value.
+	 * The '<em><b>Public</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>External</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Public</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #EXTERNAL
-	 * @model name="External"
+	 * @see #PUBLIC
+	 * @model name="Public"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EXTERNAL_VALUE = 0;
+	public static final int PUBLIC_VALUE = 0;
 
 	/**
-	 * The '<em><b>Internal</b></em>' literal value.
+	 * The '<em><b>Private</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Internal</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Private</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #INTERNAL
-	 * @model name="Internal"
+	 * @see #PRIVATE
+	 * @model name="Private"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int INTERNAL_VALUE = 1;
+	public static final int PRIVATE_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Visibility</b></em>' enumerators.
@@ -76,8 +74,8 @@ public enum Visibility implements Enumerator {
 	 */
 	private static final Visibility[] VALUES_ARRAY =
 		new Visibility[] {
-			EXTERNAL,
-			INTERNAL,
+			PUBLIC,
+			PRIVATE,
 		};
 
 	/**
@@ -128,8 +126,8 @@ public enum Visibility implements Enumerator {
 	 */
 	public static Visibility get(int value) {
 		switch (value) {
-			case EXTERNAL_VALUE: return EXTERNAL;
-			case INTERNAL_VALUE: return INTERNAL;
+			case PUBLIC_VALUE: return PUBLIC;
+			case PRIVATE_VALUE: return PRIVATE;
 		}
 		return null;
 	}

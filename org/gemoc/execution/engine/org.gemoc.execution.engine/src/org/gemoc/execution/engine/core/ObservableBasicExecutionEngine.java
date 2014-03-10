@@ -1,6 +1,5 @@
 package org.gemoc.execution.engine.core;
 
-import java.security.Identity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Queue;
-import java.util.Random;
 
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
@@ -338,7 +336,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 		
 		// All internal events are interpreted as automatically scheduled.
 		for(ModelSpecificEvent mse : this.currentPossibleEvents){
-			if(mse.getVisibility().equals(Visibility.INTERNAL)){
+			if(mse.getVisibility().equals(Visibility.PRIVATE)){
 				List<ModelSpecificEvent> scheduledEventsForCurrentStep = this.scheduledEventsMap
 						.get(this.currentStep);
 				scheduledEventsForCurrentStep.add(mse);

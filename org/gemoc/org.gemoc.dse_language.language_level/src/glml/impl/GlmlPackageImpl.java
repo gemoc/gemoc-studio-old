@@ -554,8 +554,8 @@ public class GlmlPackageImpl extends EPackageImpl implements GlmlPackage {
 
 		// Initialize enums and add enum literals
 		initEEnum(visibilityEEnum, Visibility.class, "Visibility");
-		addEEnumLiteral(visibilityEEnum, Visibility.EXTERNAL);
-		addEEnumLiteral(visibilityEEnum, Visibility.INTERNAL);
+		addEEnumLiteral(visibilityEEnum, Visibility.PUBLIC);
+		addEEnumLiteral(visibilityEEnum, Visibility.PRIVATE);
 
 		// Create resource
 		createResource(eNS_URI);

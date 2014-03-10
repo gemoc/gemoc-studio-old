@@ -160,7 +160,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 		// Let's not display the Internal events
 		this.possibleEvents = new ArrayList<ModelSpecificEvent>();
 		for (ModelSpecificEvent mse : this.engine.getCurrentPossibleEvents()) {
-			if (mse.getVisibility().equals(Visibility.EXTERNAL)) {
+			if (mse.getVisibility().equals(Visibility.PUBLIC)) {
 				this.possibleEvents.add(mse);
 			}
 		}

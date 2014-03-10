@@ -80,7 +80,7 @@ public class ModelSpecificEventImpl extends NamedElementImpl implements ModelSpe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Visibility VISIBILITY_EDEFAULT = Visibility.EXTERNAL;
+	protected static final Visibility VISIBILITY_EDEFAULT = Visibility.PUBLIC;
 
 	/**
 	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.

@@ -59,7 +59,7 @@
         lowerBound="1" eType="#//ModelSpecificEvent" eOpposite="#//ModelSpecificEvent/modelSpecificActions"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Visibility">
-    <eLiterals name="External"/>
-    <eLiterals name="Internal" value="1"/>
+    <eLiterals name="Public" literal="Public"/>
+    <eLiterals name="Private" value="1" literal="Private"/>
   </eClassifiers>
 </ecore:EPackage>

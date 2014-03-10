@@ -20,8 +20,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -486,7 +484,7 @@ public class GemocExecutionEngine extends ObservableBasicExecutionEngine {
 					"Trying injection of the following event : "
 							+ injectedDse.getName() + " on target: "
 							+ target.toString(), Activator.PLUGIN_ID);
-			if (injectedDse.getVisibility().equals(Visibility.INTERNAL)) {
+			if (injectedDse.getVisibility().equals(Visibility.PRIVATE)) {
 				throw new EventInjectionException(
 						"Cannot inject internal event.");
 			} else {

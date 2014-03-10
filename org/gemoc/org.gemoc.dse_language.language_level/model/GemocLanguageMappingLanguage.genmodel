@@ -8,8 +8,8 @@
   <foreignModel>GemocLanguageMappingLanguage.ecore</foreignModel>
   <genPackages prefix="Glml" disposableProviderFactory="true" ecorePackage="GemocLanguageMappingLanguage.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="GemocLanguageMappingLanguage.ecore#//Visibility">
-      <genEnumLiterals ecoreEnumLiteral="GemocLanguageMappingLanguage.ecore#//Visibility/External"/>
-      <genEnumLiterals ecoreEnumLiteral="GemocLanguageMappingLanguage.ecore#//Visibility/Internal"/>
+      <genEnumLiterals ecoreEnumLiteral="GemocLanguageMappingLanguage.ecore#//Visibility/Public"/>
+      <genEnumLiterals ecoreEnumLiteral="GemocLanguageMappingLanguage.ecore#//Visibility/Private"/>
     </genEnums>
     <genClasses ecoreClass="GemocLanguageMappingLanguage.ecore#//DomainSpecificEventFile">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocLanguageMappingLanguage.ecore#//DomainSpecificEventFile/imports"/>
