@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/org.gemoc.gee.feature_0.1.0.qualifier.jar" id="org.gemoc.gee.feature" version="0.1.0.qualifier">
-      <category name="gemoc_generic_execution_engine"/>
-   </feature>
-   <category-def name="gemoc_generic_execution_engine" label="Gemoc Generic Execution Engine"/>
-</site>
