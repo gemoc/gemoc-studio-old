@@ -9,7 +9,7 @@
         <!-- plugins -->
         <module>../../gemoc_language_workbench/org.gemoc.gemoc_language_workbench.api</module>
         <module>../../org.gemoc.dse_language.language_level</module>
-        <module>../../utils/fr.cnrs.luchogie.toools</module>
+        <module>../fr.cnrs.luchogie.toools</module>
         <!-- <module>../org.gemoc.gemoc_language_workbench.conf.model</module>
         <module>../org.gemoc.gemoc_language_workbench.conf.model.edit</module>
         <module>../org.gemoc.gemoc_language_workbench.conf.model.editor</module>
