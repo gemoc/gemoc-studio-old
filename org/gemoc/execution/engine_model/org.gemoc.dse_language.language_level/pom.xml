@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <relativePath>../gemoc_commons/org.gemoc.gemoc_commons.root/pom.xml</relativePath>
-    <groupId>org.gemoc.gemoc_commons</groupId>
-    <artifactId>org.gemoc.gemoc_commons.root</artifactId>
+    <relativePath>../org.gemoc.engine_model.root/pom.xml</relativePath>
+    <groupId>org.gemoc.engine_model</groupId>
+    <artifactId>org.gemoc.engine_model.root</artifactId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <relativePath>../org.gemoc.engine_model.root/pom.xml</relativePath>
+    <groupId>org.gemoc.engine_model</groupId>
+    <artifactId>org.gemoc.engine_model.root</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>org.gemoc.execution_model_language</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  <packaging>eclipse-plugin</packaging>
+</project>
