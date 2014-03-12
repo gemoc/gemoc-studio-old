@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.gemoc.mocc.cometafsm.model.xtext.fsmdsl.ui
+Bundle-Name: Cometa FSM xtext ui
 Bundle-Vendor: ENSTA Bretagne
 Bundle-Version: 0.0.1
 Bundle-SymbolicName: org.gemoc.mocc.cometafsm.model.xtext.fsmdsl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.gemoc.mocc.cometafsm.model.xtext.fsmdsl;visibility:=reexport,
+Require-Bundle: org.gemoc.mocc.cometafsm.model.xtext.fsmdsl,
  org.eclipse.xtext.ui,
  org.eclipse.ui.editors;bundle-version="3.5.0",
  org.eclipse.ui.ide;bundle-version="3.5.0",
@@ -13,15 +13,20 @@ Require-Bundle: org.gemoc.mocc.cometafsm.model.xtext.fsmdsl;visibility:=reexport
  org.eclipse.ui,
  org.eclipse.xtext.builder,
  fr.inria.aoste.timesquare.ccslkernel.library.xtext.ui;bundle-version="1.0.0";visibility:=reexport,
+ fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ui;bundle-version="1.0.0";visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
- org.eclipse.compare
+ org.eclipse.compare,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.xtend,
+ org.eclipse.xpand
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Activator: org.gemoc.mocc.cometafsm.model.xtext.ui.internal.FSMDslActivator
 Export-Package: org.gemoc.mocc.cometafsm.model.xtext.ui.quickfix,
  org.gemoc.mocc.cometafsm.model.xtext.ui.contentassist,
  org.gemoc.mocc.cometafsm.model.xtext.ui.contentassist.antlr,
  org.gemoc.mocc.cometafsm.model.xtext.ui.internal
-Bundle-Activator: org.gemoc.mocc.cometafsm.model.xtext.ui.internal.FSMDslActivator

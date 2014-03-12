@@ -37,5 +37,6 @@ public class MoCDslStandaloneSetupGenerated implements ISetup {
 		
 
 
+
 	}
 }

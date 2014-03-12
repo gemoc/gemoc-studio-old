@@ -149,15 +149,6 @@ public class ExecutionModelGenerator implements IObjectActionDelegate {
 				this.modelLoader = (ModelLoader) omodelLoader;
 			}
 			
-			Object oexecutor=null;
-			try {
-				oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
-			} catch (CoreException e) {
-				e.printStackTrace();
-			}
-			if(oexecutor instanceof CodeExecutor){
-			}
-			
 			//get the Qvto file
 			qvtoUriString = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
 			doQvToTransfo();

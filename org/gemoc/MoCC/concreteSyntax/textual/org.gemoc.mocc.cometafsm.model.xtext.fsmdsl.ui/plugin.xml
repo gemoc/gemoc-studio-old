@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 
-<!--
- Copyright (c) 2012-2016 GEMOC consortium.
- 
- http://www.gemoc.org
- 
- Contributors:
-   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
-   
- All rights reserved. This program and the accompanying materials
- are made available under the terms of the Eclipse Public License v1.0
- which accompanies this distribution, and is available at
- http://www.eclipse.org/legal/epl-v10.html
-   
- $Id$
--->
-
 <plugin>
 
     <extension
@@ -240,58 +224,27 @@
     </extension>
 
 
-	<!-- marker definitions for org.gemoc.mocc.cometafsm.model.xtext.FSMDsl -->
-	<extension
-	        id="fsmdsl.check.fast"
-	        name="FSMDsl Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.fast"/>
-	    <persistent value="true"/>
-	</extension>
-	<extension
-	        id="fsmdsl.check.normal"
-	        name="FSMDsl Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.normal"/>
-	    <persistent value="true"/>
-	</extension>
-	<extension
-	        id="fsmdsl.check.expensive"
-	        name="FSMDsl Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.expensive"/>
-	    <persistent value="true"/>
-	</extension>
-
-   <extension
-         point="org.eclipse.xtext.builder.participant">
-      <participant
-            class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
-      </participant>
-   </extension>
-   <extension
-            point="org.eclipse.ui.preferencePages">
-        <page
-            category="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl"
-            class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl.compiler.preferencePage"
-            name="Compiler">
-            <keywordReference id="org.gemoc.mocc.cometafsm.model.xtext.ui.keyword_FSMDsl"/>
-        </page>
+    <!-- marker definitions for org.gemoc.mocc.cometafsm.model.xtext.FSMDsl -->
+    <extension
+            id="fsmdsl.check.fast"
+            name="FSMDsl Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.fast"/>
+        <persistent value="true"/>
     </extension>
     <extension
-            point="org.eclipse.ui.propertyPages">
-        <page
-            category="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl"
-            class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl.compiler.propertyPage"
-            name="Compiler">
-            <keywordReference id="org.gemoc.mocc.cometafsm.model.xtext.ui.keyword_FSMDsl"/>
-            <enabledWhen>
-	            <adapt type="org.eclipse.core.resources.IProject"/>
-			</enabledWhen>
-	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
-        </page>
+            id="fsmdsl.check.normal"
+            name="FSMDsl Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.normal"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="fsmdsl.check.expensive"
+            name="FSMDsl Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.expensive"/>
+        <persistent value="true"/>
     </extension>
 
 	<!-- Quick Outline -->
@@ -332,7 +285,7 @@
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
             class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.cometafsm.model.xtext.ui.fsmdsl.check.fast">
+            markerType="org.gemoc.mocc.cometafsm.model.xtext.fsmdsl.ui.fsmdsl.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -340,7 +293,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.cometafsm.model.xtext.ui.fsmdsl.check.normal">
+            markerType="org.gemoc.mocc.cometafsm.model.xtext.fsmdsl.ui.fsmdsl.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -348,65 +301,23 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.cometafsm.model.xtext.ui.fsmdsl.check.expensive">
+            markerType="org.gemoc.mocc.cometafsm.model.xtext.fsmdsl.ui.fsmdsl.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
     </extension>
-   	<!-- Rename Refactoring -->
-	<extension point="org.eclipse.ui.handlers">
-		<handler 
-			class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
-			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
-			<activeWhen>
-				<reference
-					definitionId="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl.Editor.opened">
-				</reference>
-			</activeWhen>
-		</handler>
-	</extension>
-    <extension point="org.eclipse.ui.menus">
-         <menuContribution
-            locationURI="popup:#TextEditorContext?after=group.edit">
-         <command commandId="org.eclipse.xtext.ui.refactoring.RenameElement"
-               style="push">
-            <visibleWhen checkEnabled="false">
-               <reference
-                     definitionId="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl.Editor.opened">
-               </reference>
-            </visibleWhen>
-         </command>
-      </menuContribution>
-   </extension>
-   <extension point="org.eclipse.ui.preferencePages">
-	    <page
-	        category="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl"
-	        class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl.refactoring"
-	        name="Refactoring">
-	        <keywordReference id="org.gemoc.mocc.cometafsm.model.xtext.ui.keyword_FSMDsl"/>
-	    </page>
-	</extension>
 
-  <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl.compare.contentViewers"
-            class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="fsmdsl">
-    </viewer>
-  </extension>
-  <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl.compare.contentMergeViewers"
-            class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="fsmdsl" label="FSMDsl Compare">
-     </viewer>
-  </extension>
-  <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.gemoc.mocc.cometafsm.model.xtext.FSMDsl.editors.documentProviders"
-            class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="fsmdsl">
-    </provider>
-  </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.xtext.projectwiz"
+            class="org.gemoc.mocc.cometafsm.model.xtext.ui.FSMDslExecutableExtensionFactory:org.gemoc.mocc.cometafsm.model.xtext.ui.wizard.FSMDslNewProjectWizard"
+            id="org.gemoc.mocc.cometafsm.model.xtext.ui.wizard.FSMDslNewProjectWizard"
+            name="FSMDsl Project"
+            project="true">
+      </wizard>
+   </extension>
 
 </plugin>

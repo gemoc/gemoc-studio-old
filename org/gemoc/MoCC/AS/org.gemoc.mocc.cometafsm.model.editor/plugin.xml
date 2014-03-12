@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2012-2016 GEMOC consortium.
+ 
+ http://www.gemoc.org
+ 
+ Contributors:
+   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
+   
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+   
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Cometafsm -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.gemoc.mocc.cometafsm.model.cometafsm.editor.presentation.CometafsmModelWizardID"
+            name="%_UI_CometafsmModelWizard_label"
+            class="org.gemoc.mocc.cometafsm.model.cometafsm.editor.presentation.CometafsmModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CometafsmModelFile.gif">
+         <description>%_UI_CometafsmModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Cometafsm -->
+      <editor
+            id="org.gemoc.mocc.cometafsm.model.cometafsm.editor.presentation.CometafsmEditorID"
+            name="%_UI_CometafsmEditor_label"
+            icon="icons/full/obj16/CometafsmModelFile.gif"
+            extensions="cometafsm"
+            class="org.gemoc.mocc.cometafsm.model.cometafsm.editor.presentation.CometafsmEditor"
+            contributorClass="org.gemoc.mocc.cometafsm.model.cometafsm.editor.presentation.CometafsmActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -224,58 +224,27 @@
     </extension>
 
 
-	<!-- marker definitions for org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl -->
-	<extension
-	        id="mocdsl.check.fast"
-	        name="MoCDsl Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.fast"/>
-	    <persistent value="true"/>
-	</extension>
-	<extension
-	        id="mocdsl.check.normal"
-	        name="MoCDsl Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.normal"/>
-	    <persistent value="true"/>
-	</extension>
-	<extension
-	        id="mocdsl.check.expensive"
-	        name="MoCDsl Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.expensive"/>
-	    <persistent value="true"/>
-	</extension>
-
-   <extension
-         point="org.eclipse.xtext.builder.participant">
-      <participant
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
-      </participant>
-   </extension>
-   <extension
-            point="org.eclipse.ui.preferencePages">
-        <page
-            category="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl"
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.compiler.preferencePage"
-            name="Compiler">
-            <keywordReference id="org.gemoc.mocc.ccslmocc.model.xtext.ui.keyword_MoCDsl"/>
-        </page>
+    <!-- marker definitions for org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl -->
+    <extension
+            id="mocdsl.check.fast"
+            name="MoCDsl Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.fast"/>
+        <persistent value="true"/>
     </extension>
     <extension
-            point="org.eclipse.ui.propertyPages">
-        <page
-            category="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl"
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.compiler.propertyPage"
-            name="Compiler">
-            <keywordReference id="org.gemoc.mocc.ccslmocc.model.xtext.ui.keyword_MoCDsl"/>
-            <enabledWhen>
-	            <adapt type="org.eclipse.core.resources.IProject"/>
-			</enabledWhen>
-	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
-        </page>
+            id="mocdsl.check.normal"
+            name="MoCDsl Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.normal"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="mocdsl.check.expensive"
+            name="MoCDsl Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.expensive"/>
+        <persistent value="true"/>
     </extension>
 
 	<!-- Quick Outline -->
@@ -311,12 +280,23 @@
 			</command>
 		</menuContribution>
 	</extension>
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.xtext.projectwiz"
+            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.gemoc.mocc.ccslmocc.model.xtext.ui.wizard.MoCDslNewProjectWizard"
+            id="org.gemoc.mocc.ccslmocc.model.xtext.ui.wizard.MoCDslNewProjectWizard"
+            name="MoCDsl Project"
+            project="true">
+      </wizard>
+   </extension>
     <!-- quickfix marker resolution generator for org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
             class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.ccslmocc.model.xtext.ui.mocdsl.check.fast">
+            markerType="org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui.mocdsl.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -324,7 +304,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.ccslmocc.model.xtext.ui.mocdsl.check.normal">
+            markerType="org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui.mocdsl.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -332,65 +312,12 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.ccslmocc.model.xtext.ui.mocdsl.check.expensive">
+            markerType="org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui.mocdsl.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
     </extension>
-   	<!-- Rename Refactoring -->
-	<extension point="org.eclipse.ui.handlers">
-		<handler 
-			class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
-			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
-			<activeWhen>
-				<reference
-					definitionId="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.Editor.opened">
-				</reference>
-			</activeWhen>
-		</handler>
-	</extension>
-    <extension point="org.eclipse.ui.menus">
-         <menuContribution
-            locationURI="popup:#TextEditorContext?after=group.edit">
-         <command commandId="org.eclipse.xtext.ui.refactoring.RenameElement"
-               style="push">
-            <visibleWhen checkEnabled="false">
-               <reference
-                     definitionId="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.Editor.opened">
-               </reference>
-            </visibleWhen>
-         </command>
-      </menuContribution>
-   </extension>
-   <extension point="org.eclipse.ui.preferencePages">
-	    <page
-	        category="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl"
-	        class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.refactoring"
-	        name="Refactoring">
-	        <keywordReference id="org.gemoc.mocc.ccslmocc.model.xtext.ui.keyword_MoCDsl"/>
-	    </page>
-	</extension>
-
-  <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.compare.contentViewers"
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="mocdsl">
-    </viewer>
-  </extension>
-  <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.compare.contentMergeViewers"
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="mocdsl" label="MoCDsl Compare">
-     </viewer>
-  </extension>
-  <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl.editors.documentProviders"
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="mocdsl">
-    </provider>
-  </extension>
 
 </plugin>

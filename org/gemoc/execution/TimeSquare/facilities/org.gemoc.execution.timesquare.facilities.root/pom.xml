@@ -5,11 +5,11 @@
     <artifactId>org.gemoc.execution.timesquare.facilities.root</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <modules>
+    <modules> 
         <!-- plugins -->
         <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution</module>
         <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration</module>
-        <!-- <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.sdk</module>-->
+      <!--  <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.sdk</module>-->
         <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.tests</module>
         <module>../../backend/fr.inria.aoste.timesquare.backend.emfexecution.configuration.ui</module>
         <module>../org.gemoc.executionmodel.create</module>

@@ -4,17 +4,15 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.gemoc.mocc.cometafsm.model;singleton:=true
 Bundle-Version: 0.0.1
 Bundle-ClassPath: .
-Bundle-Activator: org.gemoc.mocc.cometafsm.model.PluginActivator
+Bundle-Activator: org.gemoc.mocc.cometafsm.model.Activator
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
- fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport,
- fr.inria.aoste.timesquare.ccslkernel.library.xtext;visibility:=reexport;bundle-version="1.0.0",
- fr.inria.aoste.timesquare.ccslkernel.parser.xtext;visibility:=reexport;bundle-version="1.0.0"
+ fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.mocc.cometafsm.model.cometafsm,
+Export-Package: org.gemoc.mocc.cometafsm.model,
+ org.gemoc.mocc.cometafsm.model.cometafsm,
  org.gemoc.mocc.cometafsm.model.cometafsm.impl,
  org.gemoc.mocc.cometafsm.model.cometafsm.util
 Bundle-ActivationPolicy: lazy

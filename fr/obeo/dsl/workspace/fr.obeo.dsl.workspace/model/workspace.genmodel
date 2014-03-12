@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2013 Obeo. All Rights Reserved.&#xA;&#xA;This software and the attached documentation are the exclusive ownership&#xA;of its authors and was conceded to the profit of Obeo SARL.&#xA;This software and the attached documentation are protected under the rights&#xA;of intellectual ownership, including the section &quot;Titre II  Droits des auteurs (Articles L121-1 L123-12)&quot;&#xA;By installing this software, you acknowledge being aware of this rights and&#xA;accept them, and as a consequence you must:&#xA;- be in possession of a valid license of use conceded by Obeo only.&#xA;- agree that you have read, understood, and will comply with the license terms and conditions.&#xA;- agree not to do anything that could conflict with intellectual ownership owned by Obeo or its beneficiaries&#xA;or the authors of this software&#xA;&#xA;Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner."
+    modelDirectory="/fr.obeo.dsl.workspace/src-gen" editDirectory="/fr.obeo.dsl.workspace.edit/src-gen"
+    editorDirectory="/fr.obeo.dsl.workspace.editor/src-gen" modelPluginID="fr.obeo.dsl.workspace"
+    modelName="Workspace" testsDirectory="/fr.obeo.dsl.workspace.tests/src-gen" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" language="">
+  <foreignModel>workspace.ecore</foreignModel>
+  <genPackages prefix="Workspace" basePackage="fr.obeo.dsl" disposableProviderFactory="true"
+      ecorePackage="workspace.ecore#/">
+    <genClasses ecoreClass="workspace.ecore#//State">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workspace.ecore#//State/workspace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workspace.ecore#//State/workbench"/>
+    </genClasses>
+    <genClasses ecoreClass="workspace.ecore#//WorkspaceRoot"/>
+    <genClasses image="false" ecoreClass="workspace.ecore#//Resource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//Resource/name"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//Resource/fullpath"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference workspace.ecore#//Resource/parent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="workspace.ecore#//Container">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workspace.ecore#//Container/members"/>
+    </genClasses>
+    <genClasses ecoreClass="workspace.ecore#//File">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//File/extension"/>
+    </genClasses>
+    <genClasses ecoreClass="workspace.ecore#//Project">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//Project/natureId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workspace.ecore#//Project/dependencies"/>
+    </genClasses>
+    <genClasses ecoreClass="workspace.ecore#//Folder"/>
+    <genClasses image="false" ecoreClass="workspace.ecore#//Dependency">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workspace.ecore#//Dependency/project"/>
+    </genClasses>
+    <genClasses ecoreClass="workspace.ecore#//BundleDependency">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//BundleDependency/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//BundleDependency/lowerVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//BundleDependency/lowerVersionIncluded"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//BundleDependency/upperVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//BundleDependency/upperVersionIncluded"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//BundleDependency/exported"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//BundleDependency/optional"/>
+    </genClasses>
+    <nestedGenPackages prefix="Workbench" basePackage="fr.obeo.dsl.workspace" disposableProviderFactory="true"
+        ecorePackage="workspace.ecore#//workbench">
+      <genClasses ecoreClass="workspace.ecore#//workbench/WorkbenchRoot">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workspace.ecore#//workbench/WorkbenchRoot/windows"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference workspace.ecore#//workbench/WorkbenchRoot/activeWindow"/>
+      </genClasses>
+      <genClasses ecoreClass="workspace.ecore#//workbench/WorkbenchWindow">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workspace.ecore#//workbench/WorkbenchWindow/pages"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference workspace.ecore#//workbench/WorkbenchWindow/activePage"/>
+      </genClasses>
+      <genClasses ecoreClass="workspace.ecore#//workbench/WorkbenchPage">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workspace.ecore#//workbench/WorkbenchPage/editors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workspace.ecore#//workbench/WorkbenchPage/views"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference workspace.ecore#//workbench/WorkbenchPage/activePart"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="workspace.ecore#//workbench/WorkbenchPartReference">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//workbench/WorkbenchPartReference/title"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//workbench/WorkbenchPartReference/titleToolTip"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//workbench/WorkbenchPartReference/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workspace.ecore#//workbench/WorkbenchPartReference/name"/>
+      </genClasses>
+      <genClasses ecoreClass="workspace.ecore#//workbench/EditorReference"/>
+      <genClasses ecoreClass="workspace.ecore#//workbench/ViewReference"/>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

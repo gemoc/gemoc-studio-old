@@ -28,7 +28,8 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.gemoc_language_workbench.api,
  org.gemoc.gemoc_language_workbench.ui,
  org.eclipse.m2m.qvt.oml,
- fr.inria.aoste.timesquare.ccslkernel.parser.xtext
+ fr.inria.aoste.timesquare.ccslkernel.parser.xtext,
+ fr.cnrs.luchogie.toools;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: Aoste INRIA/I3S

@@ -4,13 +4,14 @@ grammar org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl with org.gemoc.mocc.cometafsm
 import "http://org.gemoc.mocc.ccslmocc/1.0" as ccslmoc
 import "http://fr.inria.aoste.timemodel.primitivetypes" as PrimitivesTypeValue
 import "http://fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation" as ClockExpressionAndRelation
+import "http://fr.inria.aoste.timemodel.classicalexpression" as ClassicalExpression
 import "http://fr.inria.aoste.timemodel.basicTypes" as BasicType
 import "http://fr.inria.aoste.timemodel" as TimeModel
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://org.gemoc.mocc.cometafsm/1.0" as cometafsm
 
 StateRelationBasedLibrary returns ccslmoc::StateRelationBasedLibrary:
-	{ccslmoc::StateRelationBasedLibrary}
+	{ccslmoc::StateRelationBasedLibrary} 
 	'StateRelationBasedLibrary' name=EString
 	'{'
 		(('imports' '{' ( imports+= ImportStatement)* '}' )? 
@@ -18,6 +19,9 @@ StateRelationBasedLibrary returns ccslmoc::StateRelationBasedLibrary:
 		 relationLibraries+=RelationLibrary  |
 		 predefinedTypes+=Type  )*)
 	'}';
+
+ImportStatement returns TimeModel::ImportStatement:
+	'import' importURI=STRING 'as' alias=String0";";
 	
 
 // <--- Override --->	
@@ -35,6 +39,7 @@ CCSLStateMachineRelationDefinition returns ccslmoc::StateMachineRelationDefiniti
 	'{'
 		(declarationBlock=DeclarationBlock)?
 		('init' initialState= [cometafsm::State|EString])';'
+		('finals' ':' finalStates+=[cometafsm::State|EString] ( "," finalStates+=[cometafsm::State|EString])* ';' )?
 		((states+=State)|
 		(transitions+=Transition))+
 		
@@ -49,7 +54,7 @@ Trigger returns cometafsm::Trigger:
 	('.' (trueTriggers+=[TimeModel::Clock|EString])|
 	('not' '(' falseTriggers+=[TimeModel::Clock|EString])')')*
 	//('and' trigger+=[TimeModel::Clock|EString])*
-;
+	;
 
 // <--- Override --->
 Action returns cometafsm::AbstractAction:

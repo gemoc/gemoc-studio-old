@@ -44,22 +44,36 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cInitialStateStateCrossReference_7_1_0 = (CrossReference)cInitialStateAssignment_7_1.eContents().get(0);
 		private final RuleCall cInitialStateStateEStringParserRuleCall_7_1_0_1 = (RuleCall)cInitialStateStateCrossReference_7_1_0.eContents().get(1);
 		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Alternatives cAlternatives_9 = (Alternatives)cGroup.eContents().get(9);
-		private final Assignment cStatesAssignment_9_0 = (Assignment)cAlternatives_9.eContents().get(0);
-		private final RuleCall cStatesStateParserRuleCall_9_0_0 = (RuleCall)cStatesAssignment_9_0.eContents().get(0);
-		private final Assignment cTransitionsAssignment_9_1 = (Assignment)cAlternatives_9.eContents().get(1);
-		private final RuleCall cTransitionsTransitionParserRuleCall_9_1_0 = (RuleCall)cTransitionsAssignment_9_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cFinalsKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Keyword cColonKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
+		private final Assignment cFinalStatesAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
+		private final CrossReference cFinalStatesStateCrossReference_9_2_0 = (CrossReference)cFinalStatesAssignment_9_2.eContents().get(0);
+		private final RuleCall cFinalStatesStateEStringParserRuleCall_9_2_0_1 = (RuleCall)cFinalStatesStateCrossReference_9_2_0.eContents().get(1);
+		private final Group cGroup_9_3 = (Group)cGroup_9.eContents().get(3);
+		private final Keyword cCommaKeyword_9_3_0 = (Keyword)cGroup_9_3.eContents().get(0);
+		private final Assignment cFinalStatesAssignment_9_3_1 = (Assignment)cGroup_9_3.eContents().get(1);
+		private final CrossReference cFinalStatesStateCrossReference_9_3_1_0 = (CrossReference)cFinalStatesAssignment_9_3_1.eContents().get(0);
+		private final RuleCall cFinalStatesStateEStringParserRuleCall_9_3_1_0_1 = (RuleCall)cFinalStatesStateCrossReference_9_3_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_9_4 = (Keyword)cGroup_9.eContents().get(4);
+		private final Alternatives cAlternatives_10 = (Alternatives)cGroup.eContents().get(10);
+		private final Assignment cStatesAssignment_10_0 = (Assignment)cAlternatives_10.eContents().get(0);
+		private final RuleCall cStatesStateParserRuleCall_10_0_0 = (RuleCall)cStatesAssignment_10_0.eContents().get(0);
+		private final Assignment cTransitionsAssignment_10_1 = (Assignment)cAlternatives_10.eContents().get(1);
+		private final RuleCall cTransitionsTransitionParserRuleCall_10_1_0 = (RuleCall)cTransitionsAssignment_10_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
 		//StateMachineDefinition returns cometa::StateMachineDefinition:
 		//	{cometa::StateMachineDefinition} "StateMachineDefinition" name=EString ("-version" version=EString "-")?
 		//	("|definition" definition=EString "|")? "{" declarationBlock=DeclarationBlock? ("init"
-		//	initialState=[cometa::State|EString]) ";" (states+=State | transitions+=Transition)+ "}";
+		//	initialState=[cometa::State|EString]) ";" ("finals" ":" finalStates+=[cometa::State|EString] (","
+		//	finalStates+=[cometa::State|EString])* ";")? (states+=State | transitions+=Transition)+ "}";
 		public ParserRule getRule() { return rule; }
 
 		//{cometa::StateMachineDefinition} "StateMachineDefinition" name=EString ("-version" version=EString "-")? ("|definition"
 		//definition=EString "|")? "{" declarationBlock=DeclarationBlock? ("init" initialState=[cometa::State|EString]) ";"
-		//(states+=State | transitions+=Transition)+ "}"
+		//("finals" ":" finalStates+=[cometa::State|EString] ("," finalStates+=[cometa::State|EString])* ";")? (states+=State |
+		//transitions+=Transition)+ "}"
 		public Group getGroup() { return cGroup; }
 
 		//{cometa::StateMachineDefinition}
@@ -131,23 +145,59 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		//";"
 		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
 
+		//("finals" ":" finalStates+=[cometa::State|EString] ("," finalStates+=[cometa::State|EString])* ";")?
+		public Group getGroup_9() { return cGroup_9; }
+
+		//"finals"
+		public Keyword getFinalsKeyword_9_0() { return cFinalsKeyword_9_0; }
+
+		//":"
+		public Keyword getColonKeyword_9_1() { return cColonKeyword_9_1; }
+
+		//finalStates+=[cometa::State|EString]
+		public Assignment getFinalStatesAssignment_9_2() { return cFinalStatesAssignment_9_2; }
+
+		//[cometa::State|EString]
+		public CrossReference getFinalStatesStateCrossReference_9_2_0() { return cFinalStatesStateCrossReference_9_2_0; }
+
+		//EString
+		public RuleCall getFinalStatesStateEStringParserRuleCall_9_2_0_1() { return cFinalStatesStateEStringParserRuleCall_9_2_0_1; }
+
+		//("," finalStates+=[cometa::State|EString])*
+		public Group getGroup_9_3() { return cGroup_9_3; }
+
+		//","
+		public Keyword getCommaKeyword_9_3_0() { return cCommaKeyword_9_3_0; }
+
+		//finalStates+=[cometa::State|EString]
+		public Assignment getFinalStatesAssignment_9_3_1() { return cFinalStatesAssignment_9_3_1; }
+
+		//[cometa::State|EString]
+		public CrossReference getFinalStatesStateCrossReference_9_3_1_0() { return cFinalStatesStateCrossReference_9_3_1_0; }
+
+		//EString
+		public RuleCall getFinalStatesStateEStringParserRuleCall_9_3_1_0_1() { return cFinalStatesStateEStringParserRuleCall_9_3_1_0_1; }
+
+		//";"
+		public Keyword getSemicolonKeyword_9_4() { return cSemicolonKeyword_9_4; }
+
 		//(states+=State | transitions+=Transition)+
-		public Alternatives getAlternatives_9() { return cAlternatives_9; }
+		public Alternatives getAlternatives_10() { return cAlternatives_10; }
 
 		//states+=State
-		public Assignment getStatesAssignment_9_0() { return cStatesAssignment_9_0; }
+		public Assignment getStatesAssignment_10_0() { return cStatesAssignment_10_0; }
 
 		//State
-		public RuleCall getStatesStateParserRuleCall_9_0_0() { return cStatesStateParserRuleCall_9_0_0; }
+		public RuleCall getStatesStateParserRuleCall_10_0_0() { return cStatesStateParserRuleCall_10_0_0; }
 
 		//transitions+=Transition
-		public Assignment getTransitionsAssignment_9_1() { return cTransitionsAssignment_9_1; }
+		public Assignment getTransitionsAssignment_10_1() { return cTransitionsAssignment_10_1; }
 
 		//Transition
-		public RuleCall getTransitionsTransitionParserRuleCall_9_1_0() { return cTransitionsTransitionParserRuleCall_9_1_0; }
+		public RuleCall getTransitionsTransitionParserRuleCall_10_1_0() { return cTransitionsTransitionParserRuleCall_10_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
 	}
 
 	public class DeclarationBlockElements extends AbstractParserRuleElementFinder {
@@ -383,44 +433,41 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cVerticalLineKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
 		private final Keyword cLeftParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Group cGroup_6_0 = (Group)cGroup_6.eContents().get(0);
-		private final Keyword cInKeyword_6_0_0 = (Keyword)cGroup_6_0.eContents().get(0);
-		private final Keyword cColonKeyword_6_0_1 = (Keyword)cGroup_6_0.eContents().get(1);
-		private final Assignment cInputTransitionsAssignment_6_0_2 = (Assignment)cGroup_6_0.eContents().get(2);
-		private final CrossReference cInputTransitionsTransitionCrossReference_6_0_2_0 = (CrossReference)cInputTransitionsAssignment_6_0_2.eContents().get(0);
-		private final RuleCall cInputTransitionsTransitionEStringParserRuleCall_6_0_2_0_1 = (RuleCall)cInputTransitionsTransitionCrossReference_6_0_2_0.eContents().get(1);
-		private final Group cGroup_6_1 = (Group)cGroup_6.eContents().get(1);
-		private final Keyword cCommaKeyword_6_1_0 = (Keyword)cGroup_6_1.eContents().get(0);
-		private final Assignment cInputTransitionsAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
-		private final CrossReference cInputTransitionsTransitionCrossReference_6_1_1_0 = (CrossReference)cInputTransitionsAssignment_6_1_1.eContents().get(0);
-		private final RuleCall cInputTransitionsTransitionEStringParserRuleCall_6_1_1_0_1 = (RuleCall)cInputTransitionsTransitionCrossReference_6_1_1_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
+		private final Keyword cInKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cColonKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cInputTransitionsAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final CrossReference cInputTransitionsTransitionCrossReference_6_2_0 = (CrossReference)cInputTransitionsAssignment_6_2.eContents().get(0);
+		private final RuleCall cInputTransitionsTransitionEStringParserRuleCall_6_2_0_1 = (RuleCall)cInputTransitionsTransitionCrossReference_6_2_0.eContents().get(1);
+		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
+		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
+		private final Assignment cInputTransitionsAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
+		private final CrossReference cInputTransitionsTransitionCrossReference_6_3_1_0 = (CrossReference)cInputTransitionsAssignment_6_3_1.eContents().get(0);
+		private final RuleCall cInputTransitionsTransitionEStringParserRuleCall_6_3_1_0_1 = (RuleCall)cInputTransitionsTransitionCrossReference_6_3_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Group cGroup_7_0 = (Group)cGroup_7.eContents().get(0);
-		private final Keyword cOutKeyword_7_0_0 = (Keyword)cGroup_7_0.eContents().get(0);
-		private final Keyword cColonKeyword_7_0_1 = (Keyword)cGroup_7_0.eContents().get(1);
-		private final Assignment cOutputTransitionsAssignment_7_0_2 = (Assignment)cGroup_7_0.eContents().get(2);
-		private final CrossReference cOutputTransitionsTransitionCrossReference_7_0_2_0 = (CrossReference)cOutputTransitionsAssignment_7_0_2.eContents().get(0);
-		private final RuleCall cOutputTransitionsTransitionEStringParserRuleCall_7_0_2_0_1 = (RuleCall)cOutputTransitionsTransitionCrossReference_7_0_2_0.eContents().get(1);
-		private final Group cGroup_7_1 = (Group)cGroup_7.eContents().get(1);
-		private final Keyword cCommaKeyword_7_1_0 = (Keyword)cGroup_7_1.eContents().get(0);
-		private final Assignment cOutputTransitionsAssignment_7_1_1 = (Assignment)cGroup_7_1.eContents().get(1);
-		private final CrossReference cOutputTransitionsTransitionCrossReference_7_1_1_0 = (CrossReference)cOutputTransitionsAssignment_7_1_1.eContents().get(0);
-		private final RuleCall cOutputTransitionsTransitionEStringParserRuleCall_7_1_1_0_1 = (RuleCall)cOutputTransitionsTransitionCrossReference_7_1_1_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_7_2 = (Keyword)cGroup_7.eContents().get(2);
+		private final Keyword cOutKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Keyword cColonKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
+		private final Assignment cOutputTransitionsAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
+		private final CrossReference cOutputTransitionsTransitionCrossReference_7_2_0 = (CrossReference)cOutputTransitionsAssignment_7_2.eContents().get(0);
+		private final RuleCall cOutputTransitionsTransitionEStringParserRuleCall_7_2_0_1 = (RuleCall)cOutputTransitionsTransitionCrossReference_7_2_0.eContents().get(1);
+		private final Group cGroup_7_3 = (Group)cGroup_7.eContents().get(3);
+		private final Keyword cCommaKeyword_7_3_0 = (Keyword)cGroup_7_3.eContents().get(0);
+		private final Assignment cOutputTransitionsAssignment_7_3_1 = (Assignment)cGroup_7_3.eContents().get(1);
+		private final CrossReference cOutputTransitionsTransitionCrossReference_7_3_1_0 = (CrossReference)cOutputTransitionsAssignment_7_3_1.eContents().get(0);
+		private final RuleCall cOutputTransitionsTransitionEStringParserRuleCall_7_3_1_0_1 = (RuleCall)cOutputTransitionsTransitionCrossReference_7_3_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_7_4 = (Keyword)cGroup_7.eContents().get(4);
 		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//State returns cometa::State:
 		//	{cometa::State} "State" name=EString ("-version" version=EString "-")? ("|definition" definition=EString "|")? "("
-		//	(("in" ":" inputTransitions+=[cometa::Transition|EString])? ("," inputTransitions+=[cometa::Transition|EString])*
-		//	";")? (("out" ":" outputTransitions+=[cometa::Transition|EString])? (","
-		//	outputTransitions+=[cometa::Transition|EString])* ";")? ")";
+		//	("in" ":" inputTransitions+=[cometa::Transition|EString] ("," inputTransitions+=[cometa::Transition|EString])* ";")?
+		//	("out" ":" outputTransitions+=[cometa::Transition|EString] ("," outputTransitions+=[cometa::Transition|EString])*
+		//	";")? ")";
 		public ParserRule getRule() { return rule; }
 
-		//{cometa::State} "State" name=EString ("-version" version=EString "-")? ("|definition" definition=EString "|")? "("
-		//(("in" ":" inputTransitions+=[cometa::Transition|EString])? ("," inputTransitions+=[cometa::Transition|EString])*
-		//";")? (("out" ":" outputTransitions+=[cometa::Transition|EString])? (","
-		//outputTransitions+=[cometa::Transition|EString])* ";")? ")"
+		//{cometa::State} "State" name=EString ("-version" version=EString "-")? ("|definition" definition=EString "|")? "(" ("in"
+		//":" inputTransitions+=[cometa::Transition|EString] ("," inputTransitions+=[cometa::Transition|EString])* ";")? ("out"
+		//":" outputTransitions+=[cometa::Transition|EString] ("," outputTransitions+=[cometa::Transition|EString])* ";")? ")"
 		public Group getGroup() { return cGroup; }
 
 		//{cometa::State}
@@ -468,84 +515,77 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_5() { return cLeftParenthesisKeyword_5; }
 
-		//(("in" ":" inputTransitions+=[cometa::Transition|EString])? ("," inputTransitions+=[cometa::Transition|EString])* ";")?
+		//("in" ":" inputTransitions+=[cometa::Transition|EString] ("," inputTransitions+=[cometa::Transition|EString])* ";")?
 		public Group getGroup_6() { return cGroup_6; }
 
-		//("in" ":" inputTransitions+=[cometa::Transition|EString])?
-		public Group getGroup_6_0() { return cGroup_6_0; }
-
 		//"in"
-		public Keyword getInKeyword_6_0_0() { return cInKeyword_6_0_0; }
+		public Keyword getInKeyword_6_0() { return cInKeyword_6_0; }
 
 		//":"
-		public Keyword getColonKeyword_6_0_1() { return cColonKeyword_6_0_1; }
+		public Keyword getColonKeyword_6_1() { return cColonKeyword_6_1; }
 
 		//inputTransitions+=[cometa::Transition|EString]
-		public Assignment getInputTransitionsAssignment_6_0_2() { return cInputTransitionsAssignment_6_0_2; }
+		public Assignment getInputTransitionsAssignment_6_2() { return cInputTransitionsAssignment_6_2; }
 
 		//[cometa::Transition|EString]
-		public CrossReference getInputTransitionsTransitionCrossReference_6_0_2_0() { return cInputTransitionsTransitionCrossReference_6_0_2_0; }
+		public CrossReference getInputTransitionsTransitionCrossReference_6_2_0() { return cInputTransitionsTransitionCrossReference_6_2_0; }
 
 		//EString
-		public RuleCall getInputTransitionsTransitionEStringParserRuleCall_6_0_2_0_1() { return cInputTransitionsTransitionEStringParserRuleCall_6_0_2_0_1; }
+		public RuleCall getInputTransitionsTransitionEStringParserRuleCall_6_2_0_1() { return cInputTransitionsTransitionEStringParserRuleCall_6_2_0_1; }
 
 		//("," inputTransitions+=[cometa::Transition|EString])*
-		public Group getGroup_6_1() { return cGroup_6_1; }
+		public Group getGroup_6_3() { return cGroup_6_3; }
 
 		//","
-		public Keyword getCommaKeyword_6_1_0() { return cCommaKeyword_6_1_0; }
+		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
 
 		//inputTransitions+=[cometa::Transition|EString]
-		public Assignment getInputTransitionsAssignment_6_1_1() { return cInputTransitionsAssignment_6_1_1; }
+		public Assignment getInputTransitionsAssignment_6_3_1() { return cInputTransitionsAssignment_6_3_1; }
 
 		//[cometa::Transition|EString]
-		public CrossReference getInputTransitionsTransitionCrossReference_6_1_1_0() { return cInputTransitionsTransitionCrossReference_6_1_1_0; }
+		public CrossReference getInputTransitionsTransitionCrossReference_6_3_1_0() { return cInputTransitionsTransitionCrossReference_6_3_1_0; }
 
 		//EString
-		public RuleCall getInputTransitionsTransitionEStringParserRuleCall_6_1_1_0_1() { return cInputTransitionsTransitionEStringParserRuleCall_6_1_1_0_1; }
+		public RuleCall getInputTransitionsTransitionEStringParserRuleCall_6_3_1_0_1() { return cInputTransitionsTransitionEStringParserRuleCall_6_3_1_0_1; }
 
 		//";"
-		public Keyword getSemicolonKeyword_6_2() { return cSemicolonKeyword_6_2; }
+		public Keyword getSemicolonKeyword_6_4() { return cSemicolonKeyword_6_4; }
 
-		//(("out" ":" outputTransitions+=[cometa::Transition|EString])? ("," outputTransitions+=[cometa::Transition|EString])*
-		//";")?
+		//("out" ":" outputTransitions+=[cometa::Transition|EString] ("," outputTransitions+=[cometa::Transition|EString])* ";")?
 		public Group getGroup_7() { return cGroup_7; }
 
-		//("out" ":" outputTransitions+=[cometa::Transition|EString])?
-		public Group getGroup_7_0() { return cGroup_7_0; }
-
 		//"out"
-		public Keyword getOutKeyword_7_0_0() { return cOutKeyword_7_0_0; }
+		public Keyword getOutKeyword_7_0() { return cOutKeyword_7_0; }
 
 		//":"
-		public Keyword getColonKeyword_7_0_1() { return cColonKeyword_7_0_1; }
+		public Keyword getColonKeyword_7_1() { return cColonKeyword_7_1; }
 
 		//outputTransitions+=[cometa::Transition|EString]
-		public Assignment getOutputTransitionsAssignment_7_0_2() { return cOutputTransitionsAssignment_7_0_2; }
+		public Assignment getOutputTransitionsAssignment_7_2() { return cOutputTransitionsAssignment_7_2; }
 
 		//[cometa::Transition|EString]
-		public CrossReference getOutputTransitionsTransitionCrossReference_7_0_2_0() { return cOutputTransitionsTransitionCrossReference_7_0_2_0; }
+		public CrossReference getOutputTransitionsTransitionCrossReference_7_2_0() { return cOutputTransitionsTransitionCrossReference_7_2_0; }
 
 		//EString
-		public RuleCall getOutputTransitionsTransitionEStringParserRuleCall_7_0_2_0_1() { return cOutputTransitionsTransitionEStringParserRuleCall_7_0_2_0_1; }
+		public RuleCall getOutputTransitionsTransitionEStringParserRuleCall_7_2_0_1() { return cOutputTransitionsTransitionEStringParserRuleCall_7_2_0_1; }
 
 		//("," outputTransitions+=[cometa::Transition|EString])*
-		public Group getGroup_7_1() { return cGroup_7_1; }
+		public Group getGroup_7_3() { return cGroup_7_3; }
 
 		//","
-		public Keyword getCommaKeyword_7_1_0() { return cCommaKeyword_7_1_0; }
+		public Keyword getCommaKeyword_7_3_0() { return cCommaKeyword_7_3_0; }
 
 		//outputTransitions+=[cometa::Transition|EString]
-		public Assignment getOutputTransitionsAssignment_7_1_1() { return cOutputTransitionsAssignment_7_1_1; }
+		public Assignment getOutputTransitionsAssignment_7_3_1() { return cOutputTransitionsAssignment_7_3_1; }
 
 		//[cometa::Transition|EString]
-		public CrossReference getOutputTransitionsTransitionCrossReference_7_1_1_0() { return cOutputTransitionsTransitionCrossReference_7_1_1_0; }
+		public CrossReference getOutputTransitionsTransitionCrossReference_7_3_1_0() { return cOutputTransitionsTransitionCrossReference_7_3_1_0; }
 
 		//EString
-		public RuleCall getOutputTransitionsTransitionEStringParserRuleCall_7_1_1_0_1() { return cOutputTransitionsTransitionEStringParserRuleCall_7_1_1_0_1; }
+		public RuleCall getOutputTransitionsTransitionEStringParserRuleCall_7_3_1_0_1() { return cOutputTransitionsTransitionEStringParserRuleCall_7_3_1_0_1; }
 
 		//";"
-		public Keyword getSemicolonKeyword_7_2() { return cSemicolonKeyword_7_2; }
+		public Keyword getSemicolonKeyword_7_4() { return cSemicolonKeyword_7_4; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
@@ -979,7 +1019,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	//StateMachineDefinition returns cometa::StateMachineDefinition:
 	//	{cometa::StateMachineDefinition} "StateMachineDefinition" name=EString ("-version" version=EString "-")?
 	//	("|definition" definition=EString "|")? "{" declarationBlock=DeclarationBlock? ("init"
-	//	initialState=[cometa::State|EString]) ";" (states+=State | transitions+=Transition)+ "}";
+	//	initialState=[cometa::State|EString]) ";" ("finals" ":" finalStates+=[cometa::State|EString] (","
+	//	finalStates+=[cometa::State|EString])* ";")? (states+=State | transitions+=Transition)+ "}";
 	public StateMachineDefinitionElements getStateMachineDefinitionAccess() {
 		return (pStateMachineDefinition != null) ? pStateMachineDefinition : (pStateMachineDefinition = new StateMachineDefinitionElements());
 	}
@@ -1023,9 +1064,9 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	//State returns cometa::State:
 	//	{cometa::State} "State" name=EString ("-version" version=EString "-")? ("|definition" definition=EString "|")? "("
-	//	(("in" ":" inputTransitions+=[cometa::Transition|EString])? ("," inputTransitions+=[cometa::Transition|EString])*
-	//	";")? (("out" ":" outputTransitions+=[cometa::Transition|EString])? (","
-	//	outputTransitions+=[cometa::Transition|EString])* ";")? ")";
+	//	("in" ":" inputTransitions+=[cometa::Transition|EString] ("," inputTransitions+=[cometa::Transition|EString])* ";")?
+	//	("out" ":" outputTransitions+=[cometa::Transition|EString] ("," outputTransitions+=[cometa::Transition|EString])*
+	//	";")? ")";
 	public StateElements getStateAccess() {
 		return (pState != null) ? pState : (pState = new StateElements());
 	}
