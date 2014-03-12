@@ -18,13 +18,6 @@
    </license>
 
    <plugin
-         id="org.gemoc.gemoc_language_workbench.api"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.gemoc.dse_language.language_level"
          download-size="0"
          install-size="0"
@@ -32,7 +25,49 @@
          unpack="false"/>
 
    <plugin
-         id="fr.cnrs.luchogie.toools"
+         id="org.gemoc.dse_language.language_level.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.dse_language.language_level.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.feedback_policy_language"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.patterns_language"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.patterns_language.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.patterns_language.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.execution_model_language"
          download-size="0"
          install-size="0"
          version="0.0.0"
