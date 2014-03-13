@@ -1,5 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api.moc;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -33,12 +34,33 @@ public interface Solver {
 	public void forceEventOccurrence(EventOccurrence eventOccurrence);
 
 	/**
-	 * Returns the next step on the MoC's agenda.
-	 * 
+	 * Returns the Step that the solver has proposed and applied.
+	 * This is equivalent to
+	 * 		applyLogicalStepByIndex(getPossibleLogicalSteps().get(proposeLogicalStepByIndex()))
 	 * @return a LogicalStep conforming to the (fr.inria.aoste.trace) scheduling
 	 *         trace metamodel.
 	 */
 	public LogicalStep getNextStep();
+	
+	/**
+	 * Returns the currently possible LogicalSteps
+	 * @return a list of LogicalSteps
+	 */
+	public List<LogicalStep> getPossibleLogicalSteps();
+	
+	/**
+	 * among the currently possible LogicalStep (see {@link getPossibleLogicalSteps} ), asks the solver to choose one
+	 * @return the index of the proposed LogicalStep from possible LogicalSteps 
+	 */
+	public int proposeLogicalStepByIndex();
+	
+	/**
+	 * ask the solver to apply the LogicalStep from possibleLogicalSteps and thus compute next step
+	 * @param indexOfStepToApply
+	 */
+	public void applyLogicalStepByIndex(int indexOfStepToApply);
+
+	
 
 	/**
 	 * Returns the facility that allows the Execution Engine to create an input
