@@ -12,7 +12,7 @@ public abstract class BasicScenarioBuilder extends BasicFrontend implements
 	@Override
 	public void injectEvent(DomainSpecificEvent dse, EObject target)
 			throws EventInjectionException {
-		this.engine.injectEvent(dse, target);
+	//	this.engine.injectEvent(dse, target);
 	}
 
 }

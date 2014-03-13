@@ -5,7 +5,7 @@ import glml.ModelSpecificAction;
 import java.lang.reflect.InvocationTargetException;
 
 import org.gemoc.execution.engine.commons.Activator;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 
@@ -21,7 +21,7 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 
 	@Override
 	public void processFeedback(FeedbackData feedbackData,
-			ExecutionEngine engine) {
+			GemocExecutionEngine engine) {
 
 		Object o = feedbackData.getContent();
 		if (o instanceof Byte) {

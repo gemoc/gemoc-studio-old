@@ -1,14 +1,14 @@
 package org.gemoc.execution.engine.io.core.impl;
 
 import org.gemoc.execution.engine.io.core.Frontend;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 public abstract class BasicFrontend implements Frontend {
 
-	protected ExecutionEngine engine;
+	protected GemocExecutionEngine engine;
 
 	@Override
-	public void initialize(ExecutionEngine engine) {
+	public void initialize(GemocExecutionEngine engine) {
 		this.engine = engine;
 	}
 

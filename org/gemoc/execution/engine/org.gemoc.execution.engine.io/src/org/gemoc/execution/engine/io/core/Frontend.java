@@ -1,6 +1,6 @@
 package org.gemoc.execution.engine.io.core;
 
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 /**
  * A ControlPanel implements a GUI that makes use of the ExecutionEngine API.
@@ -10,6 +10,6 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
  */
 public interface Frontend {
 
-	public void initialize(ExecutionEngine engine);
+	public void initialize(GemocExecutionEngine engine);
 
 }

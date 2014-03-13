@@ -295,4 +295,22 @@ public class CcslSolver implements
 		}
 		return res;
 	}
+
+	@Override
+	public List<LogicalStep> getPossibleLogicalSteps() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int proposeLogicalStepByIndex() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void applyLogicalStepByIndex(int indexOfStepToApply) {
+		// TODO Auto-generated method stub
+		
+	}
 }
