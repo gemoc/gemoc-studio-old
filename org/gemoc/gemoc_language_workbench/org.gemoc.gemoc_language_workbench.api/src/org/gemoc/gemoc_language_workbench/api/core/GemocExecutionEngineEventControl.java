@@ -1,7 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
 import glml.DomainSpecificEvent;
-import glml.MocEvent;
+import gepl.MocEvent;
 import glml.ModelSpecificEvent;
 
 import java.util.Collection;

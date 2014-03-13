@@ -17,7 +17,6 @@
       [Enter License Description here.]
    </license>
 
-   
    <plugin
          id="org.gemoc.gemoc_language_workbench.api"
          download-size="0"
@@ -26,12 +25,10 @@
          unpack="false"/>
 
    <plugin
-         id="org.gemoc.dse_language.language_level"
+         id="fr.cnrs.luchogie.toools"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-
 
 </feature>

@@ -29,9 +29,9 @@ import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.Reference;
-import glml.ECLEvent;
-import glml.GlmlFactory;
-import glml.MocEvent;
+import gepl.ECLEvent;
+import gepl.GeplFactory;
+import gepl.MocEvent;
 
 /**
  * The interface of the CCSLKernelSolver as seen by the Execution Engine.
@@ -56,6 +56,7 @@ public class CcslSolver implements
 	public SolverInputBuilder getSolverInputBuilder() {
 		return this.solverInputBuilder;
 	}
+
 	public void setSolverInputBuilder(SolverInputBuilder solverInputBuilder) {
 		this.solverInputBuilder = solverInputBuilder;
 	}
@@ -288,7 +289,7 @@ public class CcslSolver implements
 			EObject eo = iterator.next();
 			if (eo instanceof DefPropertyCS) {
 				DefPropertyCS event = (DefPropertyCS) eo;
-				ECLEvent eclEvent = GlmlFactory.eINSTANCE.createECLEvent();
+				ECLEvent eclEvent = GeplFactory.eINSTANCE.createECLEvent();
 				eclEvent.setElement(event);
 				res.put(event.getName(), eclEvent);
 			}

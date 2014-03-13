@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
-import glml.MocEvent;
+import gepl.MocEvent;
 
 /**
  * A Solver is the visible interface of any constraint solver system that runs

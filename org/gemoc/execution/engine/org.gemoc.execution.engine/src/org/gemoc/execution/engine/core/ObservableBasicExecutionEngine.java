@@ -37,14 +37,13 @@ import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
-import fr.inria.aoste.trace.ModelElementReference;
+import gepl.Every;
+import gepl.MocEvent;
+import gepl.Pattern;
 import glml.DomainSpecificEvent;
 import glml.DomainSpecificEventFile;
-import glml.ECLEvent;
-import glml.Identity;
-import glml.MocEvent;
 import glml.ModelSpecificEvent;
-import glml.Pattern;
+import glml.Visibility;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -202,7 +201,6 @@ public class ObservableBasicExecutionEngine extends Observable
 			Resource domainSpecificEventsResource, Solver solver,
 			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
 
-		
 		// The engine needs AT LEAST a mocEventsResource,
 		// domainSpecificEventsResource, a Solver,
 		// an EventExecutor.
@@ -213,6 +211,7 @@ public class ObservableBasicExecutionEngine extends Observable
 				exceptionMessage.append(", mocEventsResource is null, ");
 			}
 			if (domainSpecificEventsResource == null) {
+				exceptionMessage
 				exceptionMessage.append(", domainSpecificEventsResource is null, ");
 			}
 			if (solver == null) {
@@ -222,9 +221,10 @@ public class ObservableBasicExecutionEngine extends Observable
 				exceptionMessage.append(", eventExecutor is null, ");
 			}
 			Activator.getMessagingSystem().error(
-					"Language definition is incomplete"+exceptionMessage,
+					"Language definition is incomplete" + exceptionMessage,
 					Activator.PLUGIN_ID);
 
+			throw new EngineNotCorrectlyInitialized(
 			throw new EngineNotCorrectlyInitialized("Language definition is incomplete"+exceptionMessage);	
 		} else {
 			Activator
@@ -521,7 +521,13 @@ public class ObservableBasicExecutionEngine extends Observable
 		this.schedulingTrace.put(previousDate + 1, newStep);
 		this.executionTrace.put(newStep, new ArrayList<ModelSpecificEvent>());
 		this.currentPossibleEvents = this.match(this.schedulingTrace);
-		;
+		
+		// All internal events are interpreted as automatically scheduled.
+		for(ModelSpecificEvent mse : this.currentPossibleEvents){
+			if(mse.getVisibility().equals(Visibility.PRIVATE)){
+				List<ModelSpecificEvent> scheduledEventsForCurrentStep = this.scheduledEventsMap
+						.get(this.currentStep);
+				scheduledEventsForCurrentStep.add(mse);
 	}
 
 	/**
@@ -702,19 +708,35 @@ public class ObservableBasicExecutionEngine extends Observable
 
 	/**
 	 * Reverse interpretation of Pattern.
+	 * 
 	 * @param mse
 	 * @return
 	 */
 	private EventOccurrence findMappedMocElement(ModelSpecificEvent mse) {
 		Pattern pattern = mse.getCondition();
-		if (pattern instanceof Identity) {
-			Identity identity = (Identity) pattern;
-			MocEvent mocEvent = identity.getArgument();
-			return this.solver.getCorrespondingEventOccurrence(mocEvent, mse
-					.getModelSpecificActions().get(0).getTarget());
+		if (pattern instanceof Every) {
+			Every patternEvery = (Every) pattern;
+			if (patternEvery.getAtom() instanceof gepl.Reference) {
+				MocEvent mocEvent = ((gepl.Reference) patternEvery).getEvent();
+				return this.solver.getCorrespondingEventOccurrence(mocEvent,
+						mse.getModelSpecificActions().get(0).getTarget());
+			} else if (patternEvery.getAtom() instanceof gepl.And) {
+				// TODO: make it work recursively
+				MocEvent firstParameter = (MocEvent) ((gepl.Reference) ((gepl.And) patternEvery)
+						.getFirstParameter()).getEvent();
+				MocEvent secondParameter = (MocEvent) ((gepl.Reference) ((gepl.And) patternEvery)
+						.getSecondParameter()).getEvent();
+				// Fair random, threw a coin ;-)
+				return this.solver.getCorrespondingEventOccurrence(
+						firstParameter, mse.getModelSpecificActions().get(0)
+								.getTarget());
+			} else {
+				throw new UnsupportedOperationException(
+						"Only expecting Atom Reference or Atom And for now...");
+			}
 		} else {
 			throw new UnsupportedOperationException(
-					"Can only deal with Identity pattern for now...");
+					"Can only deal with 'Every' pattern for now...");
 		}
 	}
 

@@ -8,15 +8,7 @@
     <modules>
         <!-- plugins -->
         <module>../../gemoc_language_workbench/org.gemoc.gemoc_language_workbench.api</module>
-        <module>../../org.gemoc.dse_language.language_level</module>
-        <!-- <module>../org.gemoc.gemoc_language_workbench.conf.model</module>
-        <module>../org.gemoc.gemoc_language_workbench.conf.model.edit</module>
-        <module>../org.gemoc.gemoc_language_workbench.conf.model.editor</module>
-        <module>../org.gemoc.gemoc_language_workbench.utils</module>
-        <module>../org.gemoc.gemoc_language_workbench.ui</module>
-        <module>../org.gemoc.gemoc_language_workbench.documentation</module>
-        <module>../org.gemoc.gemoc_language_workbench.sample.deployer</module>
-        <module>../extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>-->
+        <module>../fr.cnrs.luchogie.toools</module>
 
         <!-- feature and update site -->
         <module>../org.gemoc.gemoc_commons.feature</module>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated GemocLanguageMappingLanguage -->
+      <package
+            uri="http://org.gemoc.dse_language.language_level/glml"
+            class="glml.GlmlPackage"
+            genModel="model/GemocLanguageMappingLanguage.genmodel"/>
+   </extension>
+
+
+</plugin>

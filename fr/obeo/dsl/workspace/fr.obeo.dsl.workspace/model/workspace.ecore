@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="workspace" nsURI="http://www.obeo.fr/dsl/workspace" nsPrefix="workspace">
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workspace" eType="#//WorkspaceRoot"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workbench" eType="#//workbench/WorkbenchRoot"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkspaceRoot" eSuperTypes="#//Container"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Resource" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fullpath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Container"
+        eOpposite="#//Container/members"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Container" abstract="true" interface="true"
+      eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//Resource" containment="true" eOpposite="#//Resource/parent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="File" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Project" eSuperTypes="#//Container">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="natureId" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
+        eType="#//Dependency" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Folder" eSuperTypes="#//Container"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Dependency" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="project" eType="#//Project"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BundleDependency" eSuperTypes="#//Dependency">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerVersion" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerVersionIncluded" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperVersion" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperVersionIncluded" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exported" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eSubpackages name="workbench" nsURI="http://www.obeo.fr/dsl/workspace/workbench"
+      nsPrefix="workbench">
+    <eClassifiers xsi:type="ecore:EClass" name="WorkbenchRoot">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="windows" upperBound="-1"
+          eType="#//workbench/WorkbenchWindow" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="activeWindow" eType="#//workbench/WorkbenchWindow"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WorkbenchWindow">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="pages" upperBound="-1"
+          eType="#//workbench/WorkbenchPage" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="activePage" eType="#//workbench/WorkbenchPage"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WorkbenchPage">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="editors" upperBound="-1"
+          eType="#//workbench/EditorReference" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="views" upperBound="-1"
+          eType="#//workbench/ViewReference" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="activePart" eType="#//workbench/WorkbenchPartReference"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WorkbenchPartReference" abstract="true"
+        interface="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="titleToolTip" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EditorReference" eSuperTypes="#//workbench/WorkbenchPartReference"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ViewReference" eSuperTypes="#//workbench/WorkbenchPartReference"/>
+  </eSubpackages>
+</ecore:EPackage>
