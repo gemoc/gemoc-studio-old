@@ -426,6 +426,17 @@ public class ObservableBasicExecutionEngine extends Observable
 //							Activator.PLUGIN_ID);
 					while (!terminated && eventToRun.size() != 0) {
 						try {
+							
+							// 1- ask solver possible solutions for this step (set of logical steps | 1 logical step = set of simultaneous event occurence)
+							// 2- select one solution from available logical step / select interactive vs batch
+							// 3 - run the selected logical step 
+							//		= step in debug mode, goes to next logical step
+							//        ->  run all event occurrences of the logical step 
+							//				step into / open internal thread and pause them
+							//				each concurrent event occurrence is presented as a separate thread in the debugger
+							//				
+							
+							
 							injectEventsToCurrentStep(eventToRun);
 						
 							doOneStep();
