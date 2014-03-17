@@ -378,11 +378,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 				}
 				
 				try {
-					Object res = executor.execute(engineEventOccurence);
+					FeedbackData res = executor.execute(engineEventOccurence);
 					// send result as feedback to the solver
 					// process feedback may influence the solver results for next step
-					FeedbackData feedbackData = new FeedbackData(res, engineEventOccurence);
-					feedbackPolicy.processFeedback(feedbackData, ObservableBasicExecutionEngine.this);
+					//FeedbackData feedbackData = new FeedbackData(res, engineEventOccurence);
+					feedbackPolicy.processFeedback(res, ObservableBasicExecutionEngine.this);
 				} catch (EventExecutionException e) {
 					Activator.getMessagingSystem().error(
 							"Exception received " + e.getMessage(),
