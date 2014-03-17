@@ -1,7 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.feedback;
 
-import glml.ModelSpecificAction;
-import glml.ModelSpecificEvent;
+import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
+
 
 /**
  * FeedbackData is the format of the data returned by the Domain-Specific
@@ -11,11 +11,22 @@ import glml.ModelSpecificEvent;
  * 
  * @author flatombe
  */
-public interface FeedbackData {
+public class FeedbackData {
 	/**
 	 * Can be "anything". A good start is probably to be able to wrap and unwrap
 	 * all the primitive types.
 	 */
+	private Object data;
+	private EngineEventOccurence contextEngineEventOccurence;
+	
+	
+
+	public FeedbackData(Object data,
+			EngineEventOccurence contextEngineEventOccurence) {
+		super();
+		this.data = data;
+		this.contextEngineEventOccurence = contextEngineEventOccurence;
+	}
 
 	/**
 	 * The original content of this FeedbackData.
@@ -23,20 +34,21 @@ public interface FeedbackData {
 	 * @return the original object returned by the MSA which created this
 	 *         FeedbackData.
 	 */
-	public Object getContent();
+	public Object getData(){
+		return data;
+	}
 
 	/**
 	 * 
 	 * 
-	 * @return the MSA that caused this feedback.
+	 * @return the EngineEventOccurence that caused this feedback.
 	 */
-	public ModelSpecificAction getCausalAction();
+	public EngineEventOccurence getContextEngineEventOccurence(){
+		return contextEngineEventOccurence;
+	}
 
-	/**
-	 * 
-	 * @return the DSE instance (== ModelSpecificEvent) that caused this
-	 *         feedback.
-	 */
-	public ModelSpecificEvent getCausalEvent();
 
+	public String toString() {
+		return this.getClass().getName() + "@[" + this.data + "]";
+	}
 }

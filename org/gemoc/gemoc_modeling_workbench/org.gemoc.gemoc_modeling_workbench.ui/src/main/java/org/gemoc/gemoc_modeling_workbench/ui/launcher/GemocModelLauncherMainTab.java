@@ -36,16 +36,15 @@ import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
 public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
-
 	protected Text modelLocationText;
 	protected Combo languageCombo;
+	protected Combo deciderCombo;
 
 	protected Text modelofexecutionglml_LocationText;
 	protected Text extendedccslLocationText;
-	
+
 	public int GRID_DEFAULT_WIDTH = 200;
-	
-	
+
 	@Override
 	public void createControl(Composite parent) {
 		Composite area = new Composite(parent, SWT.NULL);
@@ -60,18 +59,18 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		modelArea.setLayout(new FillLayout());
 		// Create the area for the filename to get
 		createModelLayout(modelArea, null);
-		
+
 		Group languageArea = new Group(area, SWT.NULL);
 		languageArea.setText("Language:");
 		languageArea.setLayout(new FillLayout());
 		createLanguageLayout(languageArea, null);
-		
+
 		Group prototypeArea = new Group(area, SWT.NULL);
-		prototypeArea.setText("Gemoc Engine Prototype parameters (these info will probably be removed in future version):");
+		prototypeArea
+				.setText("Gemoc Engine Prototype parameters (these info will probably be removed in future version):");
 		prototypeArea.setLayout(new FillLayout());
 		createPrototypeLayout(prototypeArea, null);
 
-		
 	}
 
 	@Override
@@ -83,10 +82,23 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
 		try {
-			this.modelLocationText.setText(configuration.getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, ""));
-			this.languageCombo.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE, ""));
-			this.modelofexecutionglml_LocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH, ""));
-			this.extendedccslLocationText.setText(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH, ""));
+			this.modelLocationText.setText(configuration.getAttribute(
+					AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, ""));
+			this.languageCombo
+					.setText(configuration
+							.getAttribute(
+									GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
+									""));
+			this.modelofexecutionglml_LocationText
+					.setText(configuration
+							.getAttribute(
+									GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
+									""));
+			this.extendedccslLocationText
+					.setText(configuration
+							.getAttribute(
+									GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH,
+									""));
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
@@ -97,35 +109,39 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 				AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI,
 				this.modelLocationText.getText());
-		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
-				this.languageCombo.getText());
-		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
-				this.modelofexecutionglml_LocationText.getText());
-		configuration.setAttribute(
-				GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH,
-				this.extendedccslLocationText.getText());
+		configuration
+				.setAttribute(
+						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
+						this.languageCombo.getText());
+		configuration
+				.setAttribute(
+						GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
+						this.modelofexecutionglml_LocationText.getText());
+		configuration
+				.setAttribute(
+						GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH,
+						this.extendedccslLocationText.getText());
 	}
 
 	@Override
 	public String getName() {
 		return "Main";
 	}
-	
-	
+
 	// -----------------------------------
-	
-	/** Basic modify listener that can be reused if there is no more precise need */
+
+	/**
+	 * Basic modify listener that can be reused if there is no more precise need
+	 */
 	private ModifyListener fBasicModifyListener = new ModifyListener() {
 		@Override
 		public void modifyText(ModifyEvent arg0) {
 			updateLaunchConfigurationDialog();
 		}
 	};
-	
+
 	// -----------------------------------
-	
+
 	/***
 	 * Create the Field where user enters model to execute
 	 * 
@@ -134,7 +150,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	 * @return
 	 */
 	public Composite createModelLayout(Composite parent, Font font) {
-		createTextLabelLayout(parent, "Model to execute");		
+		createTextLabelLayout(parent, "Model to execute");
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		// gd.horizontalSpan = 1;
 		gd.widthHint = GRID_DEFAULT_WIDTH;
@@ -148,20 +164,23 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		Button projectLocationButton = createPushButton(parent, "Browse", null);
 		projectLocationButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
-				//handleModelLocationButtonSelected();
+				// handleModelLocationButtonSelected();
 				// TODO launch the appropriate selector
-				
-				SelectAnyIFileDialog dialog = new SelectAnyIFileDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
-				if(dialog.open() == Dialog.OK){
-					String modelPath = ((IResource)dialog.getResult()[0]).getFullPath().toPortableString();
+
+				SelectAnyIFileDialog dialog = new SelectAnyIFileDialog(
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+								.getShell());
+				if (dialog.open() == Dialog.OK) {
+					String modelPath = ((IResource) dialog.getResult()[0])
+							.getFullPath().toPortableString();
 					modelLocationText.setText(modelPath);
 					updateLaunchConfigurationDialog();
-				}				
+				}
 			}
 		});
 		return parent;
 	}
-	
+
 	/***
 	 * Create the Field where user enters the language used to execute
 	 * 
@@ -176,44 +195,56 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		gd.widthHint = GRID_DEFAULT_WIDTH;
 		// Create the project selector button
 
-		languageCombo = new Combo (parent, SWT.NONE);
-		
+		languageCombo = new Combo(parent, SWT.NONE);
+
 		ArrayList<String> xdsmlNames = new ArrayList<String>();
-		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor("org.gemoc.gemoc_language_workbench.xdsml");
+		IConfigurationElement[] confElements = Platform.getExtensionRegistry()
+				.getConfigurationElementsFor(
+						"org.gemoc.gemoc_language_workbench.xdsml");
 		for (int i = 0; i < confElements.length; i++) {
 			xdsmlNames.add(confElements[i].getAttribute("name"));
 		}
-		if(confElements.length == 0){
+		if (confElements.length == 0) {
 			xdsmlNames.add("<No xdml available>");
 		}
 		String[] empty = {};
-		languageCombo.setItems (xdsmlNames.toArray(empty));
+		languageCombo.setItems(xdsmlNames.toArray(empty));
 		languageCombo.addModifyListener(fBasicModifyListener);
-		/*languageCombo.addListener (SWT.DefaultSelection, new Listener () {
-			public void handleEvent (Event e) {
-				//System.out.println (e.widget + " - Default Selection");
-				
-				updateLaunchConfigurationDialog();
-			}
-		});*/
-		
-		// button to deal with dynamic language creation and provisionning		
-		Button projectLocationButton = createPushButton(parent, "Dynamic Language Variants...", null);
+		/*
+		 * languageCombo.addListener (SWT.DefaultSelection, new Listener () {
+		 * public void handleEvent (Event e) { //System.out.println (e.widget +
+		 * " - Default Selection");
+		 * 
+		 * updateLaunchConfigurationDialog(); } });
+		 */
+
+		// button to deal with dynamic language creation and provisionning
+		Button projectLocationButton = createPushButton(parent,
+				"Dynamic Language Variants...", null);
 		projectLocationButton.setEnabled(false);
 		projectLocationButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
-				//handleModelLocationButtonSelected();
+				// handleModelLocationButtonSelected();
 				// TODO launch the appropriate selector
-				MessageDialog.openWarning(
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				MessageDialog.openWarning(PlatformUI.getWorkbench()
+						.getActiveWorkbenchWindow().getShell(),
 						"Dynamic Language Variants",
 						"Action not implemented yet");
 				updateLaunchConfigurationDialog();
 			}
 		});
+
+		deciderCombo = new Combo(parent, SWT.NONE);
+		String[] deciderChoice = {
+				GemocModelLauncherConfigurationConstants.DECIDER_SOLVER_PROPOSITION,
+				GemocModelLauncherConfigurationConstants.DECIDER_RANDOM };
+		deciderCombo.setItems(deciderChoice);
+		deciderCombo.select(0);
+		deciderCombo.addModifyListener(fBasicModifyListener);
+
 		return parent;
 	}
-	
+
 	/***
 	 * Create the Field where user enters model to execute
 	 * 
@@ -222,18 +253,20 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	 * @return
 	 */
 	public Composite createPrototypeLayout(Composite parent, Font font) {
-		
+
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		// gd.horizontalSpan = 1;
 		gd.widthHint = GRID_DEFAULT_WIDTH;
-		
+
 		// --------------
 		createTextLabelLayout(parent, "used defined ModelOfExecution glml File");
-		modelofexecutionglml_LocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		modelofexecutionglml_LocationText = new Text(parent, SWT.SINGLE
+				| SWT.BORDER);
 		modelofexecutionglml_LocationText.setLayoutData(gd);
 		modelofexecutionglml_LocationText.setFont(font);
-		modelofexecutionglml_LocationText.addModifyListener(fBasicModifyListener);
-		
+		modelofexecutionglml_LocationText
+				.addModifyListener(fBasicModifyListener);
+
 		// --------------
 		createTextLabelLayout(parent, "used defined extendedCCSL File");
 		// metamodel location text
@@ -241,15 +274,12 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		extendedccslLocationText.setLayoutData(gd);
 		extendedccslLocationText.setFont(font);
 		extendedccslLocationText.addModifyListener(fBasicModifyListener);
-		
-		
-		
+
 		return parent;
 	}
-	
-	
+
 	// -----------------------------------
-	
+
 	/**
 	 * 
 	 * @param parent

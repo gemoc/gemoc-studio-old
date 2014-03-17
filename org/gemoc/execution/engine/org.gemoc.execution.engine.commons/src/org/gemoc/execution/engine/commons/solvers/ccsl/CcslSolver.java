@@ -1,6 +1,7 @@
 package org.gemoc.execution.engine.commons.solvers.ccsl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -299,19 +300,21 @@ public class CcslSolver implements
 
 	@Override
 	public List<LogicalStep> getPossibleLogicalSteps() {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO improve when the appropriate support if implemented in timesquare
+		List<LogicalStep> logicalSteps = new ArrayList<LogicalStep>();
+		logicalSteps.add(getNextStep());
+		return logicalSteps;
 	}
 
 	@Override
 	public int proposeLogicalStepByIndex() {
-		// TODO Auto-generated method stub
+		// TODO improve when the appropriate support if implemented in timesquare
 		return 0;
 	}
 
 	@Override
 	public void applyLogicalStepByIndex(int indexOfStepToApply) {
-		// TODO Auto-generated method stub
+		// TODO improve when the appropriate support if implemented in timesquare
 		
 	}
 }

@@ -34,6 +34,7 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine.commons,
+ org.gemoc.execution.engine.commons.deciders,
  org.gemoc.execution.engine.commons.dsa,
  org.gemoc.execution.engine.commons.dsa.executors,
  org.gemoc.execution.engine.commons.feedback,

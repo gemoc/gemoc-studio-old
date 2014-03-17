@@ -1,5 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 /**
@@ -9,7 +10,7 @@ import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
  * given model, and to run the engine in different ways. It also allows the
  * caller to influence the constraints of the MoC at runtime.
  * 
- * @author flatombe
+ * @author didier.vojtisek@inria.fr
  * 
  */
 public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, GemocExecutionEngineEventControl {
@@ -24,11 +25,16 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 * 
 	 * @param modelURI
 	 *            : URI of the model to load
-	 * @param modelOfExecutionURI
-	 *            : URI of the model of execution (linked to the model that will run)
 	 * @param modelLoader
 	 *            : Facility able to load the model. By default should be XMI.
 	 */
-	void initialize(String modelURI, String modelOfExecutionURI, ModelLoader modelLoader);
+	void initialize(String modelURI,  ModelLoader modelLoader);
+	
+	/**
+	 * Retrieve the model being executed.
+	 * 
+	 * @return the EMF Resource corresponding to the model being executed.
+	 */
+	public Resource getModelUnderExecutionResource();
 
 }
