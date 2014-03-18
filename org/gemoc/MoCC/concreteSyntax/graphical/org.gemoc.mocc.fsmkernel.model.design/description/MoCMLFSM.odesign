@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:filter="http://www.eclipse.org/sirius/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="MoCMLFSM" version="7.0.0">
+  <ownedViewpoints name="MoCMLFSM" modelFileExtension="fsmmodel xmi fsmdsl">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="FSMBehaviorDiagram" label="FSM Behavior Diagram" domainClass="FSMModel.StateMachineDefinition">
+      <metamodel href="platform:/plugin/org.gemoc.mocc.fsmkernel.model/model/FSMModel.ecore#/"/>
+      <metamodel href="http://fr.inria.aoste.timemodel#/"/>
+      <metamodel href="http://fr.inria.aoste.timemodel#//BasicType"/>
+      <metamodel href="http://fr.inria.aoste.timemodel#//CCSLModel"/>
+      <metamodel href="http://fr.inria.aoste.timemodel#//CCSLModel/ClockExpressionAndRelation"/>
+      <metamodel href="http://fr.inria.aoste.timemodel#//CCSLModel/ClockExpressionAndRelation/KernelExpression"/>
+      <metamodel href="http://fr.inria.aoste.timemodel#//CCSLModel/ClockExpressionAndRelation/KernelRelation"/>
+      <metamodel href="http://fr.inria.aoste.timemodel#//CCSLModel/ClassicalExpression"/>
+      <metamodel href="http://fr.inria.aoste.timemodel#//PrimitivesTypeValue"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideActions" label="Hide Actions">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='IntAssignAction'] //@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@edgeMappings[name='ActionLink']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideGuards" label="Hide Guards">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Guard'] //@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@edgeMappings[name='GuardLink']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideTriggers" label="Hide Triggers">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Trigger'] //@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@edgeMappings[name='TriggerLink']"/>
+      </filters>
+      <defaultLayer name="Default">
+        <nodeMappings name="FSMState" labelDirectEdit="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SetStateName']" semanticCandidatesExpression="[states/]" domainClass="FSMModel.State">
+          <style xsi:type="style:BundledImageDescription" labelFormat="bold" showIcon="false" resizeKind="NSEW" shape="dot">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[self.eContainer()->filter(StateMachineDefinition).initialState->includes(self)/]">
+            <style xsi:type="style:BundledImageDescription" labelFormat="bold" showIcon="false" resizeKind="NSEW" shape="dot">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.eContainer()->filter(StateMachineDefinition).finalStates->includes(self)/]">
+            <style xsi:type="style:BundledImageDescription" labelFormat="bold" showIcon="false" resizeKind="NSEW" shape="dot">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings name="FSMTransition" label="FSM Transition" deletionDescription="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DeleteTransition']" semanticCandidatesExpression="[eAllContents()/]" doubleClickDescription="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" sourceMapping="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" targetMapping="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" targetFinderExpression="[target/]" sourceFinderExpression="[source/]" domainClass="FSMModel.Transition" useDomainElement="true" reconnections="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EdgeMoveTgt'] //@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EdgeMoveSrc']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="[name/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="[self.trigger&lt;>null]">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="[name+' : on '+trigger.oclAsType(Trigger).trueTriggers.oclAsType(BindableEntity).toString()->sep(', ')/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[(self.trigger&lt;>null)and(guard&lt;>null)]">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="[name+' : on '+trigger.oclAsType(Trigger).trueTriggers.oclAsType(BindableEntity).toString()->sep(', ')+' '+guard.oclAsType(Guard).value/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <toolSections name="FSMTools" label="Basic FSM Tools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="FSMStateCreation" label="New State" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/CreateState.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.State" referenceName="states">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['S'+container->filter(FSMModel::StateMachineDefinition).states->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="FSMInitialStateCreation" label="New Initial State" precondition="[container.oclAsType(StateMachineDefinition).initialState = null/]" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/CreateInitialState.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.State" referenceName="states" variableName="initState">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['S'+container->filter(FSMModel::StateMachineDefinition).states->size()/]"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[initState.eContainer()/]">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="initialState" valueExpression="var:initState"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="FSMFinalStateCreation" label="New Final State" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/CreateFinalNode.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.State" referenceName="states" variableName="finalState">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['S'+container->filter(FSMModel::StateMachineDefinition).states->size()/]"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="finalStates" valueExpression="var:finalState"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="SetStateName" label="Set State Name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="FSMTransitionCreation" label="New Transition" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/CreateTransition.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer()/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.Transition" referenceName="transitions" variableName="t">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:t">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['t '+source.eContainer()->filter(FSMModel::StateMachineDefinition).transitions->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="EdgeMoveTgt" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="var:source">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="EdgeMoveSrc" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="var:source">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteTransition">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[elementView->filter(viewpoint::DEdge).sourceNode->filter(viewpoint::DSemanticDecorator).target/]"/>
+                <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[elementView->filter(viewpoint::DEdge).targetNode->filter(viewpoint::DSemanticDecorator)/]"/>
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="TransitionDetails" label="Transition Details">
+        <nodeMappings name="Trigger" semanticCandidatesExpression="[eAllContents()/]" doubleClickDescription="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.Trigger">
+          <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[trueTriggers.oclAsType(BindableEntity).name->sep(', ')/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.fsmkernel.model.design/images/Trigger.gif">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="IntAssignAction" labelDirectEdit="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='EditLabelAction']" semanticCandidatesExpression="[transitions.actions/]" doubleClickDescription="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.IntegerAssignement">
+          <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[name/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.fsmkernel.model.design/images/Action.gif">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Guard" semanticCandidatesExpression="[transitions.guard/]" doubleClickDescription="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.Guard">
+          <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[value/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.fsmkernel.model.design/images/Guard.gif">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ActionLink" sourceMapping="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']" targetMapping="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='IntAssignAction']" targetFinderExpression="[actions/]">
+          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="action">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TriggerLink" sourceMapping="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']" targetMapping="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Trigger']" targetFinderExpression="[trigger/]">
+          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="trigger on">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="GuardLink" sourceMapping="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']" targetMapping="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Guard']" targetFinderExpression="[guard/]">
+          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="provided that">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="TransitionTooling" label="Transition Tools">
+          <ownedTools xsi:type="tool:ToolDescription" name="IntAssignActionCreation" label="New Action" precondition="[self.oclIsKindOf(Transition)/]" forceRefresh="true" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/CreateAction.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.IntegerAssignement" referenceName="actions" variableName="ob">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="action"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditLabelAction" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="GuardCreation" label="New Guard" precondition="[self.oclIsTypeOf(Transition)/]" forceRefresh="true" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/CreateGuard.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.Guard" referenceName="guard" variableName="ob"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="TriggerCreation" label="New Trigger" precondition="[self.oclIsTypeOf(Transition)/]" forceRefresh="true" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/Trigger.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.Trigger" referenceName="trigger" variableName="ob"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition'] //@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Trigger'] //@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='IntAssignAction'] //@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Guard']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.fsmkernel.model.design.OpenEditorActionCallID" action="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenEmbeddedEditorAction']"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ExternalJavaAction" name="OpenEmbeddedEditorAction" forceRefresh="true" id="org.gemoc.mocc.fsmkernel.model.design.OpenEmbeddedEditorID"/>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="Declarations">
+        <containerMappings name="DeclarationBlockID" semanticCandidatesExpression="[declarationBlock/]" doubleClickDescription="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.DeclarationBlock" childrenPresentation="List">
+          <subNodeMappings name="ConcreteEntityID" labelDirectEdit="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='EditCE']" semanticCandidatesExpression="[concreteEntities/]" doubleClickDescription="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="ClockExpressionAndRelation.ConcreteEntity">
+            <style xsi:type="style:SquareDescription" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/QualifierValue.gif" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="ClassicalExpressionID" semanticCandidatesExpression="[classicalExpressions/]" doubleClickDescription="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="ClassicalExpression.ClassicalExpression">
+            <style xsi:type="style:SquareDescription" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/Attribute.gif" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" labelFormat="italic" labelExpression="Declaration Bloc" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/DeclarationBloc.gif" roundedCorner="true" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="DeclarationsTooling" label="Declarations Tooling">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="DeclarationBlocCreation" label="New Declaration Bloc" precondition="[container.oclAsType(FSMModel::StateMachineDefinition).declarationBlock&lt;>null/]" containerMappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/DeclarationBloc.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.DeclarationBlock" referenceName="declarationBlock"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateConcreteEntity" label="New Concrete Entity" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ConcreteEntityID']" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/QualifierValue.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ConcreteEntity" referenceName="concreteEntities">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['CE '+instance.eContainer().oclAsType(DeclarationBlock).concreteEntities->size()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EditCE">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="ClassicalExpressionGroup">
+            <tools xsi:type="tool:NodeCreationDescription" name="CreateNot" label="New Not" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ClassicalExpressionID']" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/Attribute.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="ClassicalExpression.Not" referenceName="classicalExpressions">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Not '+instance.eContainer().oclAsType(DeclarationBlock).classicalExpressions->filter(Not)->size()/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="CreateAnd" label="New And" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ClassicalExpressionID']" iconPath="/org.gemoc.mocc.fsmkernel.model.design/images/Attribute.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="ClassicalExpression.And" referenceName="classicalExpressions">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['And '+instance.eContainer().oclAsType(DeclarationBlock).classicalExpressions->filter(And)->size()/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID'] //@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ClassicalExpressionID'] //@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ConcreteEntityID']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.fsmkernel.model.design.OpenEditorActionCallID" action="//@ownedViewpoints[name='MoCMLFSM']/@ownedRepresentations[name='FSMBehaviorDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenEmbeddedEditorAction']"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:TreeDescription"/>
+    <ownedJavaExtensions qualifiedClassName="org.gemoc.mocc.fsmkernel.model.design.services.MoCMLServices"/>
+  </ownedViewpoints>
+</description:Group>
