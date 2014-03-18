@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.sdk"
+      label="FSMDsl SDK Feature "
+      version="0.1.0"
+      provider-name="ENSTA Bretagne">
+
+   <plugin
+         id="org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl"
+         download-size="0"
+         install-size="0"
+         version="0.1.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.1.0" 
+         unpack="false"/>
+
+</feature>
