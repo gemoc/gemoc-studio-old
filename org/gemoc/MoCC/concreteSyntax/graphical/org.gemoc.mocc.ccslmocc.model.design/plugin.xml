@@ -30,5 +30,9 @@
            actionClass="org.gemoc.mocc.ccslmocc.model.design.actions.OpenEmbeddedEditor"
            id="org.gemoc.mocc.ccslmocc.model.design.OpenEmbeddedEditorID">
      </javaActions>
+     <javaActions
+           actionClass="org.gemoc.mocc.ccslmocc.model.design.actions.DeleteNotAllowed"
+           id="org.gemoc.mocc.ccslmocc.model.design.actions.DeleteNotAllowedID">
+     </javaActions>
   </extension>
 </plugin>

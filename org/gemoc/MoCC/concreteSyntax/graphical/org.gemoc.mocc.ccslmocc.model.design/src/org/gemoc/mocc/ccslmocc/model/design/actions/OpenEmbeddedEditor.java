@@ -16,7 +16,10 @@
 package org.gemoc.mocc.ccslmocc.model.design.actions;
 
 import org.gemoc.mocc.ccslmocc.model.xtext.ui.internal.MoCDslActivator;
-import org.gemoc.mocc.cometafsm.model.design.actions.OpenXtextEmbeddedEditor;
+import org.gemoc.mocc.fsmkernel.model.design.actions.OpenXtextEmbeddedEditor;
+
+
+//import org.obeonetwork.dsl.viewpoint.xtext.support.action.OpenXtextEmbeddedEditor;
 
 import com.google.inject.Injector;
 
