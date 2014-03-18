@@ -5,11 +5,21 @@ package org.gemoc.mocc.ccslmocc.model.xtext;
 
 
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.parsetree.reconstr.ITokenSerializer.ICrossReferenceSerializer;
+import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
+import org.eclipse.xtext.scoping.IGlobalScopeProvider;
+import org.eclipse.xtext.scoping.impl.ImportUriResolver;
 
 import com.google.inject.Binder;
 
 import fr.inria.aoste.timesquare.ccslkernel.library.xtext.CCSLLibraryRuntimeModule;
+import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.CCSLImportURIResolver;
+import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.CCSLImportUriGlobalScopeProvider;
+import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.CCSLQualifiedNameConverter;
+import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ExtendedCCSLResourceDescriptionStrategy;
+//import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.serialization.CCSLCrossReferenceSerializer;
 import fr.inria.aoste.timesquare.ccslkernel.xtext.util.CCSLLinkingDiagnosticMessageProvider;
 import fr.inria.aoste.timesquare.ccslkernel.xtext.util.CCSLTerminalConverters;
 import fr.inria.aoste.timesquare.ccslkernel.xtext.util.SimpleNamedElementProvider;
@@ -44,6 +54,38 @@ public class MoCDslRuntimeModule extends org.gemoc.mocc.ccslmocc.model.xtext.Abs
 		super.configure(binder);		
 		binder.bind(ILinkingDiagnosticMessageProvider.class).to(CCSLLinkingDiagnosticMessageProvider.class);
 	}
+	
+	/* @Override
+	public Class<? extends IGlobalScopeProvider> bindIGlobalScopeProvider() {
+		return CCSLImportUriGlobalScopeProvider.class;
+	}
+
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(ImportUriResolver.class).to(
+				CCSLImportURIResolver.class);
+		binder.bind(ICrossReferenceSerializer.class).to(
+				CCSLCrossReferenceSerializer.class);
+		binder.bind(ILinkingDiagnosticMessageProvider.class).to(CCSLLinkingDiagnosticMessageProvider.class);
+	}
+
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return SimpleNamedElementProvider.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.conversion.IValueConverterService> bindIValueConverterService() {
+		return CCSLTerminalConverters.class;
+	}
+	
+	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
+		return CCSLQualifiedNameConverter.class;
+	}
+	
+	public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+		return ExtendedCCSLResourceDescriptionStrategy.class;
+	}*/
 	
 
 }

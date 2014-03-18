@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui
 Bundle-Vendor: ENSTA Bretagne
-Bundle-Version: 0.0.1
+Bundle-Version: 0.1.0
 Bundle-SymbolicName: org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.gemoc.mocc.ccslmocc.model.xtext.mocdsl;visibility:=reexport,
- org.gemoc.mocc.cometafsm.model.xtext.fsmdsl.ui,
+ org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui,
  org.eclipse.xtext.ui,
  org.eclipse.ui.editors;bundle-version="3.5.0",
  org.eclipse.ui.ide;bundle-version="3.5.0",

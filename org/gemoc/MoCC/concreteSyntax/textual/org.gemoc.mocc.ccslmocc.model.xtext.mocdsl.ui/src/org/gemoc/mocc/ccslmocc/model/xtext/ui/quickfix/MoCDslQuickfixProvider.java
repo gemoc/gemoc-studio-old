@@ -8,7 +8,7 @@ package org.gemoc.mocc.ccslmocc.model.xtext.ui.quickfix;
  *
  * see http://www.eclipse.org/Xtext/documentation.html#quickfixes
  */
-public class MoCDslQuickfixProvider extends org.gemoc.mocc.cometafsm.model.xtext.ui.quickfix.FSMDslQuickfixProvider {
+public class MoCDslQuickfixProvider extends org.gemoc.mocc.fsmkernel.model.xtext.ui.quickfix.FSMDslQuickfixProvider {
 
 //	@Fix(MyJavaValidator.INVALID_NAME)
 //	public void capitalizeName(final Issue issue, IssueResolutionAcceptor acceptor) {

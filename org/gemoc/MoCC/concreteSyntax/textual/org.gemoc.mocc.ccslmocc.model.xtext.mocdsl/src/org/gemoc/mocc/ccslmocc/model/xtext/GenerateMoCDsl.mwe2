@@ -25,10 +25,12 @@ Workflow {
 		registerGeneratedEPackage = "fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ClockExpressionAndRelationPackage"
 		registerGeneratedEPackage = "fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.KernelRelation.KernelRelationPackage"
 	
-		registerGeneratedEPackage = "org.gemoc.mocc.cometafsm.model.cometafsm.CometafsmPackage"
+		registerGeneratedEPackage = "org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage"
+	    
+		
 		registerGeneratedEPackage = "org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage"
 		//registerGenModelFile = "platform:/resource/org.gemoc.mocc.ccslmocc.model/model/Ccslmocc.genmodel"
-		//registerGenModelFile = "platform:/resource/org.gemoc.mocc.cometafsm.model/model/Cometafsm.genmodel"
+		//registerGenModelFile = "platform:/resource/org.gemoc.mocc.fsmkernel.model/model/FSMModel.genmodel"
 		//registerGenModelFile = "platform:/resource/fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel"
 	
 		
