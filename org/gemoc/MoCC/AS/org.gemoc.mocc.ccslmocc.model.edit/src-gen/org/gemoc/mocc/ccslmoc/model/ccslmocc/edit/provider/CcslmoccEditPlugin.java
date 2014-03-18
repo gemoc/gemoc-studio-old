@@ -21,7 +21,7 @@ import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.gemoc.mocc.cometafsm.model.cometafsm.edit.provider.CometafsmEditPlugin;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.edit.provider.FSMModelEditPlugin;
 
 /**
  * This is the central singleton for the Ccslmocc edit plugin.
@@ -55,7 +55,7 @@ public final class CcslmoccEditPlugin extends EMFPlugin {
 	public CcslmoccEditPlugin() {
 		super
 		  (new ResourceLocator [] {
-		     CometafsmEditPlugin.INSTANCE,
+		     FSMModelEditPlugin.INSTANCE,
 		     TimeModelEditPlugin.INSTANCE,
 		   });
 	}

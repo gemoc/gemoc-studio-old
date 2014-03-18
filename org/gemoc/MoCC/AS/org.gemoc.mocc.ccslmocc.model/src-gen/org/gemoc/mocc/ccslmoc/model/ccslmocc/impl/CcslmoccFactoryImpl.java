@@ -70,9 +70,9 @@ public class CcslmoccFactoryImpl extends EFactoryImpl implements CcslmoccFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CcslmoccPackage.STATE_RELATION_BASED_LIBRARY: return createStateRelationBasedLibrary();
+			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION: return createStateMachineRelationDefinition();
 			case CcslmoccPackage.FINISH_CLOCK: return createFinishClock();
 			case CcslmoccPackage.START_CLOCK: return createStartClock();
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION: return createStateMachineRelationDefinition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -18,21 +18,15 @@ package org.gemoc.mocc.ccslmoc.model.ccslmocc.util;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ExternalRelationDefinition;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Library;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDefinition;
-
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.NamedElement;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.*;
-
-import org.gemoc.mocc.cometafsm.model.cometafsm.AbstractAction;
-import org.gemoc.mocc.cometafsm.model.cometafsm.CometaElement;
-import org.gemoc.mocc.cometafsm.model.cometafsm.StateMachineDefinition;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.AbstractAction;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition;
 
 /**
  * <!-- begin-user-doc -->
@@ -95,16 +89,16 @@ public class CcslmoccAdapterFactory extends AdapterFactoryImpl {
 				return createStateRelationBasedLibraryAdapter();
 			}
 			@Override
+			public Adapter caseStateMachineRelationDefinition(StateMachineRelationDefinition object) {
+				return createStateMachineRelationDefinitionAdapter();
+			}
+			@Override
 			public Adapter caseFinishClock(FinishClock object) {
 				return createFinishClockAdapter();
 			}
 			@Override
 			public Adapter caseStartClock(StartClock object) {
 				return createStartClockAdapter();
-			}
-			@Override
-			public Adapter caseStateMachineRelationDefinition(StateMachineRelationDefinition object) {
-				return createStateMachineRelationDefinitionAdapter();
 			}
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
@@ -115,10 +109,6 @@ public class CcslmoccAdapterFactory extends AdapterFactoryImpl {
 				return createLibraryAdapter();
 			}
 			@Override
-			public Adapter caseAbstractAction(AbstractAction object) {
-				return createAbstractActionAdapter();
-			}
-			@Override
 			public Adapter caseRelationDefinition(RelationDefinition object) {
 				return createRelationDefinitionAdapter();
 			}
@@ -127,12 +117,12 @@ public class CcslmoccAdapterFactory extends AdapterFactoryImpl {
 				return createExternalRelationDefinitionAdapter();
 			}
 			@Override
-			public Adapter caseCometaElement(CometaElement object) {
-				return createCometaElementAdapter();
-			}
-			@Override
 			public Adapter caseStateMachineDefinition(StateMachineDefinition object) {
 				return createStateMachineDefinitionAdapter();
+			}
+			@Override
+			public Adapter caseAbstractAction(AbstractAction object) {
+				return createAbstractActionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -239,13 +229,13 @@ public class CcslmoccAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.mocc.cometafsm.model.cometafsm.AbstractAction <em>Abstract Action</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.mocc.fsmkernel.model.FSMModel.AbstractAction <em>Abstract Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.mocc.cometafsm.model.cometafsm.AbstractAction
+	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.AbstractAction
 	 * @generated
 	 */
 	public Adapter createAbstractActionAdapter() {
@@ -281,27 +271,13 @@ public class CcslmoccAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.mocc.cometafsm.model.cometafsm.CometaElement <em>Cometa Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition <em>State Machine Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.mocc.cometafsm.model.cometafsm.CometaElement
-	 * @generated
-	 */
-	public Adapter createCometaElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.mocc.cometafsm.model.cometafsm.StateMachineDefinition <em>State Machine Definition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.mocc.cometafsm.model.cometafsm.StateMachineDefinition
+	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition
 	 * @generated
 	 */
 	public Adapter createStateMachineDefinitionAdapter() {

@@ -17,17 +17,12 @@ package org.gemoc.mocc.ccslmoc.model.ccslmocc.edit.provider;
 
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.provider.ExternalRelationDefinitionItemProvider;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -35,14 +30,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
-
-import org.gemoc.mocc.cometafsm.model.cometafsm.CometafsmFactory;
-import org.gemoc.mocc.cometafsm.model.cometafsm.CometafsmPackage;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelFactory;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition} object.
@@ -79,57 +71,15 @@ public class StateMachineRelationDefinitionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addVersionPropertyDescriptor(object);
-			addDefinitionPropertyDescriptor(object);
 			addInitialStatePropertyDescriptor(object);
 			addFinalStatesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
-	/**
-	 * This adds a property descriptor for the Version feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CometaElement_version_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CometaElement_version_feature", "_UI_CometaElement_type"),
-				 CometafsmPackage.Literals.COMETA_ELEMENT__VERSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+	
 
-	/**
-	 * This adds a property descriptor for the Definition feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDefinitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CometaElement_definition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CometaElement_definition_feature", "_UI_CometaElement_type"),
-				 CometafsmPackage.Literals.COMETA_ELEMENT__DEFINITION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+	
 
 	/**
 	 * This adds a property descriptor for the Initial State feature.
@@ -144,7 +94,7 @@ public class StateMachineRelationDefinitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StateMachineDefinition_initialState_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachineDefinition_initialState_feature", "_UI_StateMachineDefinition_type"),
-				 CometafsmPackage.Literals.STATE_MACHINE_DEFINITION__INITIAL_STATE,
+				 FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__INITIAL_STATE,
 				 true,
 				 false,
 				 true,
@@ -166,7 +116,7 @@ public class StateMachineRelationDefinitionItemProvider
 				 getResourceLocator(),
 				 getString("_UI_StateMachineDefinition_finalStates_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachineDefinition_finalStates_feature", "_UI_StateMachineDefinition_type"),
-				 CometafsmPackage.Literals.STATE_MACHINE_DEFINITION__FINAL_STATES,
+				 FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__FINAL_STATES,
 				 true,
 				 false,
 				 true,
@@ -187,9 +137,9 @@ public class StateMachineRelationDefinitionItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CometafsmPackage.Literals.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK);
-			childrenFeatures.add(CometafsmPackage.Literals.STATE_MACHINE_DEFINITION__TRANSITIONS);
-			childrenFeatures.add(CometafsmPackage.Literals.STATE_MACHINE_DEFINITION__STATES);
+			childrenFeatures.add(FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK);
+			childrenFeatures.add(FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__TRANSITIONS);
+			childrenFeatures.add(FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__STATES);
 		}
 		return childrenFeatures;
 	}
@@ -244,10 +194,6 @@ public class StateMachineRelationDefinitionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(StateMachineRelationDefinition.class)) {
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__VERSION:
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DEFINITION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK:
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS:
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES:
@@ -270,18 +216,18 @@ public class StateMachineRelationDefinitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CometafsmPackage.Literals.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK,
-				 CometafsmFactory.eINSTANCE.createDeclarationBlock()));
+				(FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK,
+				 FSMModelFactory.eINSTANCE.createDeclarationBlock()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CometafsmPackage.Literals.STATE_MACHINE_DEFINITION__TRANSITIONS,
-				 CometafsmFactory.eINSTANCE.createTransition()));
+				(FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__TRANSITIONS,
+				 FSMModelFactory.eINSTANCE.createTransition()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CometafsmPackage.Literals.STATE_MACHINE_DEFINITION__STATES,
-				 CometafsmFactory.eINSTANCE.createState()));
+				(FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__STATES,
+				 FSMModelFactory.eINSTANCE.createState()));
 	}
 
 	/**

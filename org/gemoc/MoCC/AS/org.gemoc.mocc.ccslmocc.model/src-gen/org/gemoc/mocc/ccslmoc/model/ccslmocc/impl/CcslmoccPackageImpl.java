@@ -16,21 +16,17 @@
 package org.gemoc.mocc.ccslmoc.model.ccslmocc.impl;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ClockExpressionAndRelationPackage;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccFactory;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.FinishClock;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.StartClock;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateRelationBasedLibrary;
-
-import org.gemoc.mocc.cometafsm.model.cometafsm.CometafsmPackage;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -114,7 +110,7 @@ public class CcslmoccPackageImpl extends EPackageImpl implements CcslmoccPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		CometafsmPackage.eINSTANCE.eClass();
+		FSMModelPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theCcslmoccPackage.createPackageContents();
@@ -215,13 +211,13 @@ public class CcslmoccPackageImpl extends EPackageImpl implements CcslmoccPackage
 		// Create classes and their features
 		stateRelationBasedLibraryEClass = createEClass(STATE_RELATION_BASED_LIBRARY);
 
+		stateMachineRelationDefinitionEClass = createEClass(STATE_MACHINE_RELATION_DEFINITION);
+
 		finishClockEClass = createEClass(FINISH_CLOCK);
 		createEReference(finishClockEClass, FINISH_CLOCK__CLOCK);
 
 		startClockEClass = createEClass(START_CLOCK);
 		createEReference(startClockEClass, START_CLOCK__CLOCK);
-
-		stateMachineRelationDefinitionEClass = createEClass(STATE_MACHINE_RELATION_DEFINITION);
 	}
 
 	/**
@@ -249,7 +245,7 @@ public class CcslmoccPackageImpl extends EPackageImpl implements CcslmoccPackage
 
 		// Obtain other dependent packages
 		ClockExpressionAndRelationPackage theClockExpressionAndRelationPackage = (ClockExpressionAndRelationPackage)EPackage.Registry.INSTANCE.getEPackage(ClockExpressionAndRelationPackage.eNS_URI);
-		CometafsmPackage theCometafsmPackage = (CometafsmPackage)EPackage.Registry.INSTANCE.getEPackage(CometafsmPackage.eNS_URI);
+		FSMModelPackage theFSMModelPackage = (FSMModelPackage)EPackage.Registry.INSTANCE.getEPackage(FSMModelPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -257,21 +253,21 @@ public class CcslmoccPackageImpl extends EPackageImpl implements CcslmoccPackage
 
 		// Add supertypes to classes
 		stateRelationBasedLibraryEClass.getESuperTypes().add(theClockExpressionAndRelationPackage.getLibrary());
-		finishClockEClass.getESuperTypes().add(theCometafsmPackage.getAbstractAction());
-		startClockEClass.getESuperTypes().add(theCometafsmPackage.getAbstractAction());
 		stateMachineRelationDefinitionEClass.getESuperTypes().add(theClockExpressionAndRelationPackage.getExternalRelationDefinition());
-		stateMachineRelationDefinitionEClass.getESuperTypes().add(theCometafsmPackage.getStateMachineDefinition());
+		stateMachineRelationDefinitionEClass.getESuperTypes().add(theFSMModelPackage.getStateMachineDefinition());
+		finishClockEClass.getESuperTypes().add(theFSMModelPackage.getAbstractAction());
+		startClockEClass.getESuperTypes().add(theFSMModelPackage.getAbstractAction());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(stateRelationBasedLibraryEClass, StateRelationBasedLibrary.class, "StateRelationBasedLibrary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stateMachineRelationDefinitionEClass, StateMachineRelationDefinition.class, "StateMachineRelationDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(finishClockEClass, FinishClock.class, "FinishClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFinishClock_Clock(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "clock", null, 1, 1, FinishClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(startClockEClass, StartClock.class, "StartClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStartClock_Clock(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "clock", null, 1, 1, StartClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(stateMachineRelationDefinitionEClass, StateMachineRelationDefinition.class, "StateMachineRelationDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.gemoc.mocc.ccslmocc.model.edit;singleton:=true
-Bundle-Version: 0.0.1
+Bundle-Version: 0.1.0
 Bundle-ClassPath: .
 Bundle-Activator: org.gemoc.mocc.ccslmoc.model.ccslmocc.edit.provider.CcslmoccEditPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -12,8 +12,8 @@ Export-Package: org.gemoc.mocc.ccslmoc.model.ccslmocc.edit.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.mocc.ccslmocc.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
- org.gemoc.mocc.cometafsm.model;visibility:=reexport,
- org.gemoc.mocc.cometafsm.model.edit;visibility:=reexport,
+ org.gemoc.mocc.fsmkernel.model;visibility:=reexport,
+ org.gemoc.mocc.fsmkernel.model.edit;visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.model.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

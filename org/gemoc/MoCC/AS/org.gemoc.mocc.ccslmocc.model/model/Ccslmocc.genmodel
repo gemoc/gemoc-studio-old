@@ -5,7 +5,7 @@
     editorDirectory="/org.gemoc.mocc.ccslmocc.model.editor/src-gen" modelPluginID="org.gemoc.mocc.ccslmocc.model"
     modelName="Ccslmocc" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    language="" usedGenPackages="../../org.gemoc.mocc.cometafsm.model/model/Cometafsm.genmodel#//cometafsm ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel"
+    language="" usedGenPackages="../../org.gemoc.mocc.fsmkernel.model/model/FSMModel.genmodel#//FSMModel ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel"
     importOrganizing="true">
   <genAnnotations source=" http://www.eclipse.org/OCL/GenModel">
     <details key=" Use Delegates" value="false"/>

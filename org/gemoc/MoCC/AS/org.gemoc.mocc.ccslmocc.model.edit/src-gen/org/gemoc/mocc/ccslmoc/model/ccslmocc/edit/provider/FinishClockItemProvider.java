@@ -34,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage;
 
-import org.gemoc.mocc.cometafsm.model.cometafsm.edit.provider.AbstractActionItemProvider;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.edit.provider.AbstractActionItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.mocc.ccslmoc.model.ccslmocc.FinishClock} object.

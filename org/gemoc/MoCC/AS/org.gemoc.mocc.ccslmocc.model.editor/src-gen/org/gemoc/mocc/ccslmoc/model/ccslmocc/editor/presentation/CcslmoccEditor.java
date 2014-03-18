@@ -185,7 +185,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.provider.TimeModelIt
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
-import org.gemoc.mocc.cometafsm.model.cometafsm.edit.provider.CometafsmItemProviderAdapterFactory;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.edit.provider.FSMModelItemProviderAdapterFactory;
 
 
 /**
@@ -731,7 +731,7 @@ public class CcslmoccEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CcslmoccItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new CometafsmItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new FSMModelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new TimeModelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CCSLModelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ClassicalExpressionItemProviderAdapterFactory());
