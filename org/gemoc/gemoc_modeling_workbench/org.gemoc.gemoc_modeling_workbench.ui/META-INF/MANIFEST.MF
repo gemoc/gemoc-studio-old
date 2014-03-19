@@ -18,12 +18,20 @@ Require-Bundle: org.eclipse.ui,
  org.kermeta.utils.systemservices.api;bundle-version="2.1.0",
  org.gemoc.execution.engine,
  org.gemoc.gemoc_language_workbench.api,
- org.gemoc.execution.engine.commons;bundle-version="1.0.0",
  org.gemoc.execution.engine.io,
- org.gemoc.gemoc_language_workbench.conf.model;bundle-version="0.1.0"
+ org.gemoc.gemoc_language_workbench.conf.model;bundle-version="0.1.0",
+ fr.obeo.dsl.debug;bundle-version="1.0.0",
+ fr.obeo.dsl.debug.ide;bundle-version="1.0.0",
+ fr.obeo.dsl.debug.ide.ui;bundle-version="1.0.0",
+ fr.obeo.dsl.debug.ide.sirius.ui;bundle-version="1.0.0",
+ org.eclipse.sirius;bundle-version="1.0.0",
+ org.eclipse.sirius.ui;bundle-version="1.0.0",
+ org.eclipse.emf.transaction;bundle-version="1.4.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.gemoc_modeling_workbench.ui,
  org.gemoc.gemoc_modeling_workbench.ui.builder,
+ org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action,
+ org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services,
  org.gemoc.gemoc_modeling_workbench.ui.launcher,
  org.gemoc.gemoc_modeling_workbench.ui.wizards

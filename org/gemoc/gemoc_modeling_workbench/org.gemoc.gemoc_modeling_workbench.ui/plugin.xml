@@ -102,11 +102,19 @@
       <launchConfigurationType
             delegate="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncher"
             id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID"
-            modes="run"
+            modes="run, debug"
             name="Gemoc eXecutable Model"
-            public="true">
+            public="true"
+            sourceLocatorId="fr.obeo.dsl.debug.ide.sourceLocator">
       </launchConfigurationType>
    </extension>
+    <extension
+          point="org.eclipse.debug.ui.debugModelPresentations">
+       <debugModelPresentation
+             class="fr.obeo.dsl.debug.ide.sirius.ui.DSLDebugModelPresentation"
+             id="org.gemoc.gemoc_modeling_workbench.ui.debugModel">
+       </debugModelPresentation>
+    </extension>
    <extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
     <launchConfigurationTypeImage
         icon="icons/IconeGemocModel-16.png"
@@ -124,7 +132,7 @@
 	<extension
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
-            class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncherShortcut"
+            class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncher"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.gemoc_modeling_workbench.ui.GemocExecutableReflectiveModel"
             label="Gemoc eXecutable Model"
@@ -175,5 +183,16 @@
           project="true">
     </wizard>
  </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.GemocDebugAs"
+            id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocDebugAs">
+      </javaActions>
+      <javaActions
+            actionClass="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.GemocToggleBreakpoint"
+            id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocToggleBreakpoint">
+      </javaActions>
+   </extension>
 
 </plugin>

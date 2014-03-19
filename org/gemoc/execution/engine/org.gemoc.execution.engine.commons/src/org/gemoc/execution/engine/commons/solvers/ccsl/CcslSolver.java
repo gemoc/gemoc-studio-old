@@ -1,6 +1,7 @@
 package org.gemoc.execution.engine.commons.solvers.ccsl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -39,27 +40,31 @@ import gepl.MocEvent;
  * @author flatombe
  * 
  */
-public class CcslSolver implements
+public abstract class CcslSolver implements
 		org.gemoc.gemoc_language_workbench.api.moc.Solver {
 
 	private CCSLKernelSolverWrapper solverWrapper = null;
 	private URI solverInputURI = null;
-	private SolverInputBuilder solverInputBuilder;
+	// private SolverInputBuilder solverInputBuilder;
 	private LogicalStep lastLogicalStep = null;
 	private Map<Event, ModelElementReference> mappingEventToOriginalMer = null;
 
-	public CcslSolver() {
-		this.solverInputBuilder = new EclToCcslTranslator();
+	protected String extentedCCSL_qvto_transformationPath; // "/org.gemoc.sample.tfsm/qvto-gen/tfsm_toCCSL.qvto";
+	
+	
+	public CcslSolver(String extentedCCSL_qvto_transformationPath) {
+		//this.solverInputBuilder = new EclToCcslTranslator();
+		this.extentedCCSL_qvto_transformationPath = extentedCCSL_qvto_transformationPath;
 		this.mappingEventToOriginalMer = new HashMap<Event, ModelElementReference>();
 	}
 
-	public SolverInputBuilder getSolverInputBuilder() {
-		return this.solverInputBuilder;
-	}
-
-	public void setSolverInputBuilder(SolverInputBuilder solverInputBuilder) {
-		this.solverInputBuilder = solverInputBuilder;
-	}
+//	public SolverInputBuilder getSolverInputBuilder() {
+//		return this.solverInputBuilder;
+//	}
+//
+//	public void setSolverInputBuilder(SolverInputBuilder solverInputBuilder) {
+//		this.solverInputBuilder = solverInputBuilder;
+//	}
 
 	@Override
 	public void forbidEventOccurrence(EventOccurrence eventOccurrence) {
@@ -193,6 +198,26 @@ public class CcslSolver implements
 
 	}
 
+	/**
+	 * used to test if we need to generate the extendedCCSL
+	 * extendedCCSL should be regenerated if user model is newer than the extendedCCSL
+	 */
+	public boolean isSolverInputFileReadyForUserModel(URI userModelURI){
+		// TODO implement this feature 
+		return true;
+	}
+	
+	/**
+	 * generate the ExtendedCCSL using the provided qvto transformation
+	 * return the URI of the prepared file 
+	 */
+	public URI prepareSolverInputFileForUserModel(URI userModelURI){
+		// generate the ExtendedCCSL
+		// set the input
+		// TODO implement this feature 
+		return null;
+	}
+	
 	@Override
 	public EventOccurrence getCorrespondingEventOccurrence(MocEvent mocEvent,
 			EObject target) {
@@ -295,5 +320,36 @@ public class CcslSolver implements
 			}
 		}
 		return res;
+	}
+
+	@Override
+	public List<LogicalStep> getPossibleLogicalSteps() {
+		// TODO improve when the appropriate support if implemented in timesquare
+		List<LogicalStep> logicalSteps = new ArrayList<LogicalStep>();
+		logicalSteps.add(getNextStep());
+		return logicalSteps;
+	}
+
+	@Override
+	public int proposeLogicalStepByIndex() {
+		// TODO improve when the appropriate support if implemented in timesquare
+		return 0;
+	}
+
+	@Override
+	public void applyLogicalStepByIndex(int indexOfStepToApply) {
+		// TODO improve when the appropriate support if implemented in timesquare
+		
+	}
+
+	
+	
+	public String getExtentedCCSL_qvto_transformationPath() {
+		return extentedCCSL_qvto_transformationPath;
+	}
+
+	public void setExtentedCCSL_qvto_transformationPath(
+			String extentedCCSL_qvto_transformationPath) {
+		this.extentedCCSL_qvto_transformationPath = extentedCCSL_qvto_transformationPath;
 	}
 }

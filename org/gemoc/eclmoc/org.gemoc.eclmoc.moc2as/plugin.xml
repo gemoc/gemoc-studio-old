@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="eclMoc2ASBuilder"
+         name="ECLMoc2AS Project Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="org.gemoc.eclmoc.moc2as.builder.ECLMoc2ASBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="eclMoc2ASNature"
+         name="ECLMoc2AS Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.gemoc.eclmoc.moc2as.builder.ECLMoc2ASNature">
+         </run>
+      </runtime>
+      <builder
+            id="org.gemoc.eclmoc.moc2as.eclMoc2ASBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="ECLMoc2AS Project Nature commands"
+            id="org.gemoc.eclmoc.moc2as.eclMoc2ASNature.category">
+      </category>
+      <command
+            name="Add/RemoveECLMoc2AS Project Nature"
+            defaultHandler="org.gemoc.eclmoc.moc2as.builder.AddRemoveECLMoc2ASNatureHandler"
+            categoryId="org.gemoc.eclmoc.moc2as.eclMoc2ASNature.category"
+            id="org.gemoc.eclmoc.moc2as.addRemoveECLMoc2ASNature">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
+         <command
+               commandId="org.gemoc.eclmoc.moc2as.addRemoveECLMoc2ASNature"
+               label="Disable ECLMoc2AS builder"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <and>
+                        <instanceof
+                              value="org.eclipse.core.resources.IProject">
+                        </instanceof>
+                        <test
+                              value="org.gemoc.eclmoc.moc2as.eclMoc2ASNature"
+                              property="org.eclipse.core.resources.projectNature">
+                        </test>
+                     </and>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.gemoc.eclmoc.moc2as.addRemoveECLMoc2ASNature"
+               label="Enable ECLMoc2AS builder"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <and>
+                        <instanceof
+                              value="org.eclipse.core.resources.IProject">
+                        </instanceof>
+                        <not>
+                           <test
+                                 value="org.gemoc.eclmoc.moc2as.eclMoc2ASNature"
+                                 property="org.eclipse.core.resources.projectNature">
+                           </test>
+                        </not>
+                     </and>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         id="org.gemoc.eclmoc.moc2as.eclMoc2AsProblem"
+         name="ECLMoc2AS Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+
+</plugin>

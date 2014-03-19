@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.io.core.impl.BasicScenarioBuilder;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventInjectionException;
 
 public class ExampleScenarioBuilder extends BasicScenarioBuilder {
@@ -182,7 +182,7 @@ public class ExampleScenarioBuilder extends BasicScenarioBuilder {
 	}
 
 	@Override
-	public void initialize(ExecutionEngine engine) {
+	public void initialize(GemocExecutionEngine engine) {
 		this.engine = engine;
 		this.addEventButtons(this.engine.getDomainSpecificEvents());
 		// this.content.add(new JSeparator(SwingConstants.HORIZONTAL));

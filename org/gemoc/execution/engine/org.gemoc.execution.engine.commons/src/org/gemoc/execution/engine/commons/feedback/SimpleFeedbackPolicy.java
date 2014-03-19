@@ -5,7 +5,7 @@ import glml.ModelSpecificAction;
 import java.lang.reflect.InvocationTargetException;
 
 import org.gemoc.execution.engine.commons.Activator;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 
@@ -21,9 +21,9 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 
 	@Override
 	public void processFeedback(FeedbackData feedbackData,
-			ExecutionEngine engine) {
+			GemocExecutionEngine engine) {
 
-		Object o = feedbackData.getContent();
+		Object o = feedbackData.getData();
 		if (o instanceof Byte) {
 			Activator.getMessagingSystem().warn(
 					"Please don't return a Byte in your DSA",
@@ -51,7 +51,7 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 		} else if (o instanceof Boolean) {
 			Activator.getMessagingSystem().debug(
 					"Caught a Boolean as feedback from event: "
-							+ feedbackData.getCausalEvent().toString(),
+							+ feedbackData.getContextEngineEventOccurence().toString(),
 					Activator.PLUGIN_ID);
 			//
 			// if
@@ -82,17 +82,6 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 					Activator.PLUGIN_ID);
 		}
 
-	}
-
-	@Override
-	public ObjectFeedbackData convertToFeedbackDataImplementation(Object o,
-			ModelSpecificAction msa) throws IllegalArgumentException,
-			SecurityException, InstantiationException, IllegalAccessException,
-			InvocationTargetException, NoSuchMethodException {
-
-		ObjectFeedbackData feedback = new ObjectFeedbackData(o, msa);
-
-		return feedback;
 	}
 
 	public String toString() {

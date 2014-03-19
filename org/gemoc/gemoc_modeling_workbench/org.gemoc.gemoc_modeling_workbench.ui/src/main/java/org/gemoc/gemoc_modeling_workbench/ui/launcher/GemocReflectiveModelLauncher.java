@@ -8,21 +8,34 @@ import java.util.Observer;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.ui.IEditorPart;
+import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
+import org.gemoc.execution.engine.commons.deciders.RandomDecider;
+import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
+import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.io.backends.ConsoleBackend;
 import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
 import org.gemoc.execution.engine.io.frontends.controlpanels.ExampleGUIControlPanel;
-import org.gemoc.execution.engine.io.frontends.scenariobuilders.ExampleScenarioBuilder;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.LogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -30,8 +43,20 @@ import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
-public class GemocReflectiveModelLauncher implements
-		ILaunchConfigurationDelegate {
+import fr.obeo.dsl.debug.ide.IDSLDebugger;
+import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
+import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
+
+public class GemocReflectiveModelLauncher
+		extends
+		fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI {
+	// ILaunchConfigurationDelegate {
+
+	public final static String TYPE_ID = "org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID";
+
+	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
+
+	private ObservableBasicExecutionEngine engine;
 
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode,
@@ -45,11 +70,15 @@ public class GemocReflectiveModelLauncher implements
 						"");
 
 		String modelPath = configuration.getAttribute(
-				GemocModelLauncherConfigurationConstants.LAUNCH_MODEL_PATH, "");
+				AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
 
 		String languageName = configuration
 				.getAttribute(
 						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
+						"");
+		String deciderName = configuration
+				.getAttribute(
+						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_DECIDER,
 						"");
 		final String extendedCCSLFilePath = configuration
 				.getAttribute(
@@ -114,25 +143,33 @@ public class GemocReflectiveModelLauncher implements
 								Activator.PLUGIN_ID);
 			}
 
-				
-			String dseResourcePath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT);
-			if(dseResourcePath != null){
+			String dseResourcePath = confElement
+					.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT);
+			if (dseResourcePath != null) {
 				ResourceSet resSet = new ResourceSetImpl();
 				domainSpecificEventsResource = resSet.getResource(
-								URI.createURI(dseResourcePath),
-								true);
+						URI.createURI(dseResourcePath), true);
+			} else {
+				Activator
+						.getDefault()
+						.getMessaggingSystem()
+						.warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT
+								+ " isn't set", Activator.PLUGIN_ID);
 			}
-			else{Activator.getDefault().getMessaggingSystem().warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT + " isn't set", Activator.PLUGIN_ID);}
-		
-			String mocEventResourcePath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
-			if(mocEventResourcePath != null){
+
+			String mocEventResourcePath = confElement
+					.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
+			if (mocEventResourcePath != null) {
 				ResourceSet resSet = new ResourceSetImpl();
 				mocEventsResource = resSet.getResource(
-								URI.createURI(mocEventResourcePath),
-								true);
+						URI.createURI(mocEventResourcePath), true);
+			} else {
+				Activator
+						.getDefault()
+						.getMessaggingSystem()
+						.warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT
+								+ " isn't set", Activator.PLUGIN_ID);
 			}
-			else{Activator.getDefault().getMessaggingSystem().warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT + " isn't set", Activator.PLUGIN_ID);}
-			
 
 			// If there is a custom ModelLoader then we will use this,
 			// else we should rely on some default XMI ModelLoader.
@@ -157,49 +194,90 @@ public class GemocReflectiveModelLauncher implements
 		this.reactToNull(solver, "Solver");
 		this.reactToNull(executor, "Executor");
 		this.reactToNull(feedbackPolicy, "Feedback Policy");
-		this.reactToNull(domainSpecificEventsResource,
-				"Domain Specific Events Resource");
-		this.reactToNull(mocEventsResource,
-				"MoC Events Resource");
+		//this.reactToNull(domainSpecificEventsResource,
+		//		"Domain Specific Events Resource");
+		//this.reactToNull(mocEventsResource, "MoC Events Resource");
 		this.reactToNull(modelLoader, "Model Loader");
-		// TODO will probably be replaced by an internal map in the engine, created form the domainSpecificEventsResource)
+		// TODO will probably be replaced by an internal map in the engine,
+		// created form the domainSpecificEventsResource)
 		this.reactToNull(modelOfExecutionFilePath, "modelOfExecutionFilePath");
 
-		
-		if(extendedCCSLFilePath != null && !extendedCCSLFilePath.isEmpty()){
-			Activator.getDefault().getMessaggingSystem()
-				.warn("forcing the solverInput to user defined extendedCCSL "+extendedCCSLFilePath,
-					Activator.PLUGIN_ID);
-			solver.setSolverInputBuilder(new SolverInputBuilder() {
-				@Override
-				public Resource build(Resource modelOfExecutionResource) {
-					return new ResourceSetImpl().getResource(URI
-							.createPlatformResourceURI(extendedCCSLFilePath, true),
-							true);
-				}
-			});
+		if (extendedCCSLFilePath != null && !extendedCCSLFilePath.isEmpty()) {
+			Activator
+					.getDefault()
+					.getMessaggingSystem()
+					.warn("forcing the solverInput to user defined extendedCCSL "
+							+ extendedCCSLFilePath, Activator.PLUGIN_ID);			
+			// initialize solver
+			solver.setSolverInputFile(URI.createPlatformResourceURI(
+					extendedCCSLFilePath, true));
+		} else {
+			// TODO complement this step by a pre-run action that will build the
+			// extended-ccsl from the model using the qvto transformation
+			Activator
+					.getDefault()
+					.getMessaggingSystem()
+					.error("automatic call to qvto transformation  not implemented yet. Please specify a manually generated extendedCCSL file.",
+							Activator.PLUGIN_ID);
+			URI solverInputFileURI = solver.prepareSolverInputFileForUserModel(URI.createPlatformResourceURI(modelPath, true));
+			solver.setSolverInputFile(solverInputFileURI);
+			return;
 		}
-		
+
+		// create decider
+		LogicalStepDecider decider;
+		if (deciderName
+				.equals(GemocModelLauncherConfigurationConstants.DECIDER_RANDOM)) {
+			decider = new RandomDecider();
+		} else {
+			if (solver instanceof CcslSolver) {
+				// use solver proposition
+				decider = new CcslSolverDecider((CcslSolver) solver);
+			} else {
+				// use random as the only compatible decider
+				decider = new RandomDecider();
+			}
+		}
+
 		// Create required Frontends
 		// TODO : Hard-coded Frontends and Backends... It should be selectable
 		// in the launch configuration etc.
-		Frontend controlPanel = new ExampleGUIControlPanel();
-		Frontend scenarioBuilder = new ExampleScenarioBuilder();
+		// Frontend controlPanel = new ExampleGUIControlPanel();
+		// Frontend scenarioBuilder = new ExampleScenarioBuilder();
 		List<Frontend> frontends = new ArrayList<Frontend>();
-		frontends.add(controlPanel);
-		frontends.add(scenarioBuilder);
-		
-		// Create required Backends		
+		// frontends.add(controlPanel);
+		// frontends.add(scenarioBuilder);
+
+		// Create required Backends
 		List<Backend> backends = new ArrayList<Backend>();
 		backends.add(new ConsoleBackend());
-		
+
 		// Create and initialize engine
-		GemocExecutionEngine engine = new GemocExecutionEngine(	mocEventsResource, domainSpecificEventsResource,
-															solver, executor, feedbackPolicy);
-		engine.initialize(modelPath, modelOfExecutionFilePath,  modelLoader);
-		//engine.
+		engine = new ObservableBasicExecutionEngine(solver, executor,
+				feedbackPolicy, decider);
+		engine.initialize(modelPath, modelLoader);
+		// engine.
 		// configure altogether
-		configureEngine(engine, mocEventsResource, domainSpecificEventsResource, solver, executor, feedbackPolicy, modelPath, modelLoader, frontends, backends);
+		configureEngine(engine, mocEventsResource,
+				domainSpecificEventsResource, solver, executor, feedbackPolicy,
+				modelPath, modelLoader, frontends, backends);
+
+		// delegate for debug mode
+		if (ILaunchManager.DEBUG_MODE.equals(mode)) {
+			super.launch(configuration, mode, launch, monitor);
+		} else {
+			Job job = new Job(getDebugJobName(configuration,
+					getFirstInstruction(configuration))) {
+
+				@Override
+				protected IStatus run(IProgressMonitor monitor) {
+					engine.start();
+					return new Status(IStatus.OK, getPluginID(),
+							"Execution was successfull");
+				}
+			};
+			job.schedule();
+		}
 	}
 
 	private void reactToNull(Object o, String name) {
@@ -209,11 +287,13 @@ public class GemocReflectiveModelLauncher implements
 			Activator.warn(name + " is null", new NullPointerException(name));
 		}
 	}
-	
-	protected void configureEngine(ExecutionEngine engine, Resource mocEventsResource, Resource domainSpecificEventsResource, Solver solver,
-			EventExecutor executor, FeedbackPolicy feedbackPolicy,
-			String modelPath, ModelLoader modelLoader,
-			List<Frontend> frontends, List<Backend> backends){
+
+	protected void configureEngine(GemocExecutionEngine engine,
+			Resource mocEventsResource, Resource domainSpecificEventsResource,
+			Solver solver, EventExecutor executor,
+			FeedbackPolicy feedbackPolicy, String modelPath,
+			ModelLoader modelLoader, List<Frontend> frontends,
+			List<Backend> backends) {
 
 		// Links the Execution Engine to the Frontends
 		for (Frontend frontend : frontends) {
@@ -226,5 +306,57 @@ public class GemocReflectiveModelLauncher implements
 			backend.configure();
 			((Observable) engine).addObserver((Observer) backend);
 		}
+	}
+
+	@Override
+	protected String getLaunchConfigurationTypeID() {
+		return TYPE_ID;
+	}
+
+	@Override
+	protected EObject getFirstInstruction(ISelection selection) {
+		return EcorePackage.eINSTANCE;
+	}
+
+	@Override
+	protected EObject getFirstInstruction(IEditorPart editor) {
+		return EcorePackage.eINSTANCE;
+	}
+
+	@Override
+	protected EObject getFirstInstruction(ILaunchConfiguration configuration) {
+		return EcorePackage.eINSTANCE;
+	}
+
+	@Override
+	protected IDSLDebugger getDebugger(ILaunchConfiguration configuration,
+			DSLDebugEventDispatcher dispatcher, EObject firstInstruction,
+			IProgressMonitor monitor) {
+		GemocModelDebugger res = new GemocModelDebugger(dispatcher, engine);
+		engine.setDebugger(res);
+		return res;
+	}
+
+	@Override
+	protected String getDebugTargetName(ILaunchConfiguration configuration,
+			EObject firstInstruction) {
+		// TODO Auto-generated method stub
+		return "Gemoc debug target";
+	}
+
+	@Override
+	protected String getDebugJobName(ILaunchConfiguration configuration,
+			EObject firstInstruction) {
+		return "Gemoc debug job";
+	}
+
+	@Override
+	protected String getPluginID() {
+		return Activator.PLUGIN_ID;
+	}
+
+	@Override
+	protected String getModelIdentifier() {
+		return MODEL_ID;
 	}
 }

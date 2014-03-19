@@ -1,16 +1,13 @@
 package org.gemoc.execution.engine.commons.dsa;
 
-import glml.ModelSpecificAction;
-import glml.ModelSpecificEvent;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
+import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
-import org.gemoc.gemoc_language_workbench.api.exceptions.InvokationResultConvertionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 
@@ -25,13 +22,13 @@ public abstract class BasicEventExecutor implements EventExecutor {
 	protected FeedbackPolicy feedbackPolicy = null;
 
 	@Override
-	public FeedbackData execute(ModelSpecificAction msa)
-			throws EventExecutionException, InvokationResultConvertionException {
-		Object res;
+	public FeedbackData execute(EngineEventOccurence msa)
+			throws EventExecutionException {
+		Object res = null;
 		try {
 			List<Object> parameters = new ArrayList<Object>();
 			parameters.addAll(msa.getParameters());
-			res = this.codeExecutor.invoke(msa.getTarget(), msa.getOperation()
+			res = this.codeExecutor.invoke(msa.getTargetObject(), msa.getTargetOperation()
 					.getName(), parameters);
 
 		} catch (NoSuchMethodException e) {
@@ -44,46 +41,9 @@ public abstract class BasicEventExecutor implements EventExecutor {
 			throw new EventExecutionException(e);
 		}
 
-		try {
-			return this.feedbackPolicy.convertToFeedbackDataImplementation(res,
-					msa);
-		} catch (SecurityException e) {
-			throw new InvokationResultConvertionException(e);
-		} catch (InstantiationException e) {
-			throw new InvokationResultConvertionException(e);
-		} catch (IllegalArgumentException e) {
-			throw new InvokationResultConvertionException(e);
-		} catch (IllegalAccessException e) {
-			throw new InvokationResultConvertionException(e);
-		} catch (InvocationTargetException e) {
-			throw new InvokationResultConvertionException(e);
-		} catch (NoSuchMethodException e) {
-			throw new InvokationResultConvertionException(e);
-		}
+		return new FeedbackData(res, msa);
 
 	}
 
-	/**
-	 * TODO : what happens when a DSE is linked to several DSAs ?
-	 * 
-	 * A list of Actions is executed sequentially.
-	 * 
-	 * @param actions
-	 * @return
-	 */
-	protected List<FeedbackData> execute(List<ModelSpecificAction> actions)
-			throws EventExecutionException, InvokationResultConvertionException {
-		List<FeedbackData> res = new ArrayList<FeedbackData>();
-		for (ModelSpecificAction action : actions) {
-			res.add(this.execute(action));
-		}
-		return res;
-	}
-
-	@Override
-	public List<FeedbackData> execute(ModelSpecificEvent mse)
-			throws EventExecutionException, InvokationResultConvertionException {
-		return this.execute(mse.getModelSpecificActions());
-	}
 
 }

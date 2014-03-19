@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.core;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -8,26 +9,41 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Observable;
 import java.util.Queue;
 
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.core.impl.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionEngine;
+import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
+import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
+import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngineEventControl;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.LogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
-import org.gemoc.gemoc_language_workbench.api.exceptions.InvokationResultConvertionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.EventOccurrence;
+import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
+import fr.inria.aoste.trace.ModelElementReference;
+import gepl.ECLEvent;
 import gepl.Every;
 import gepl.MocEvent;
 import gepl.Pattern;
@@ -73,71 +89,20 @@ import glml.Visibility;
  * actually executed.</li>
  * </ul>
  * 
- * @see ExecutionEngine
  * @see GemocExecutionEngine
  * 
  * @author flatombe
+ * @author didier.vojtisek@inria.fr
  * 
  */
-public abstract class ObservableBasicExecutionEngine extends Observable
-		implements ExecutionEngine {
+public class ObservableBasicExecutionEngine extends Observable implements
+		GemocExecutionEngine {
 
-	/**
-	 * The current LogicalStep being "executed" by this engine. This means that
-	 * any event, injected or internal, must be allowed by this LogicalStep. The
-	 * associated events scheduled for this step can be retrieved in the map
-	 * {@link #scheduledEventsMap}
-	 * 
-	 * @see scheduledEventsMap
-	 */
-	protected LogicalStep currentStep = null;
+	private GemocModelDebugger debugger;
 
-	/**
-	 * Memorizing the MSEs found at the current step so we do not have to
-	 * compute it everytime.
-	 */
-	protected Collection<ModelSpecificEvent> currentPossibleEvents = null;
+	private boolean started = false;
 
-	/**
-	 * The stack of LogicalSteps. If there is no step in this stack when the
-	 * engine needs to proceed to the next step, then a new step is required
-	 * from the MoC Solver. This means that TODO if we want to be able to go
-	 * back in the past, and then move forward towards a different future than
-	 * the one we come from, then we need to change the logic of the engine in
-	 * {@link #getScheduledOrSolverStep()}.
-	 */
-	protected Queue<LogicalStep> scheduledSteps = null;
-
-	/**
-	 * A map that associates a LogicalStep with its scheduled events. This means
-	 * that not all the events scheduled are executed, since some may be illegal
-	 * with regards to the MoC.
-	 */
-	protected Map<LogicalStep, List<ModelSpecificEvent>> scheduledEventsMap = null;
-
-	/**
-	 * A map containing all the LogicalSteps that have been "executed" (as in,
-	 * execution has been done with this step as the MoC authority) and in which
-	 * order.
-	 */
-	protected Map<Integer, LogicalStep> schedulingTrace;
-
-	/**
-	 * A map containing all the steps that have been "executed" and their
-	 * associated ModelSpecificEvents which have actually been executed.
-	 */
-	protected Map<LogicalStep, List<ModelSpecificEvent>> executionTrace;
-
-	/**
-	 * Given at the model-level initialization.
-	 */
-	protected ModelLoader modelLoader = null;
-	protected Resource modelResource = null;
-
-	/**
-	 * Derived from the above model-specific elements
-	 */
-	protected String modelStringURI = null;
+	boolean terminated = false;
 
 	/**
 	 * Given at the language-level initialization.
@@ -145,18 +110,17 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	protected Solver solver = null;
 	protected EventExecutor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
-	protected Resource domainSpecificEventsResource = null;
-	protected Resource mocEventsResource = null;
+	protected LogicalStepDecider logicalStepDecider = null;
 
 	/**
-	 * Derived from the above language-specific elements
+	 * URI of the model being executed
 	 */
-	protected Map<String, DomainSpecificEvent> domainSpecificEventsRegistry = null;
-
+	protected String modelUnderExecutionStringURI = null;
 	/**
-	 * Given by the MoC at instanciation.
+	 * resource of the user model being executed this is the resource with
+	 * dynamic information (from DSA) (not the raw model)
 	 */
-	protected Map<String, MocEvent> mocEventsRegistry = null;
+	protected Resource modelUnderExecutionResource = null;
 
 	/**
 	 * The constructor takes in all the language-specific elements. Creates the
@@ -172,23 +136,14 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 	 * @param feedbackPolicy
 	 *            can be null (for now).
 	 */
-	public ObservableBasicExecutionEngine(Resource mocEventsResource,
-			Resource domainSpecificEventsResource, Solver solver,
-			EventExecutor executor, FeedbackPolicy feedbackPolicy) {
+	public ObservableBasicExecutionEngine(Solver solver,
+			EventExecutor executor, FeedbackPolicy feedbackPolicy, LogicalStepDecider decider) {
 
 		// The engine needs AT LEAST a mocEventsResource,
 		// domainSpecificEventsResource, a Solver,
 		// an EventExecutor.
-		if (mocEventsResource == null | domainSpecificEventsResource == null
-				| solver == null | executor == null | feedbackPolicy == null) {
+		if (solver == null | executor == null | feedbackPolicy == null) {
 			StringBuilder exceptionMessage = new StringBuilder();
-			if (mocEventsResource == null) {
-				exceptionMessage.append(", mocEventsResource is null, ");
-			}
-			if (domainSpecificEventsResource == null) {
-				exceptionMessage
-						.append(", domainSpecificEventsResource is null, ");
-			}
 			if (solver == null) {
 				exceptionMessage.append(", solver is null, ");
 			}
@@ -202,17 +157,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 			throw new EngineNotCorrectlyInitialized(
 					"Language definition is incomplete" + exceptionMessage);
 		} else {
-			Activator
-					.getMessagingSystem()
-					.info("...OK. Instantiating ObservableBasicExecutionEngine with...",
-							Activator.PLUGIN_ID);
-			Activator.getMessagingSystem().info(
-					"\tMocEventsResource=" + mocEventsResource,
-					Activator.PLUGIN_ID);
-			Activator
-					.getMessagingSystem()
-					.info("\tDomainSpecificEventsResource="
-							+ domainSpecificEventsResource, Activator.PLUGIN_ID);
 			Activator.getMessagingSystem().info("\tSolver=" + solver,
 					Activator.PLUGIN_ID);
 			Activator.getMessagingSystem().info("\tExecutor=" + executor,
@@ -228,398 +172,247 @@ public abstract class ObservableBasicExecutionEngine extends Observable
 						Activator.PLUGIN_ID);
 			}
 
-			this.mocEventsResource = mocEventsResource;
-			this.domainSpecificEventsResource = domainSpecificEventsResource;
 			this.solver = solver;
 			this.executor = executor;
 			this.executor.initialize();
-
-			this.mocEventsRegistry = this.solver
-					.createMocEventsRegistry(this.mocEventsResource);
-			this.domainSpecificEventsRegistry = this
-					.createDomainSpecificEventsRegistry(this.domainSpecificEventsResource);
-
-			this.scheduledEventsMap = new LinkedHashMap<LogicalStep, List<ModelSpecificEvent>>();
-			this.scheduledSteps = new LinkedList<LogicalStep>();
-			this.schedulingTrace = new HashMap<Integer, LogicalStep>();
-			this.executionTrace = new LinkedHashMap<LogicalStep, List<ModelSpecificEvent>>();
-		}
-	}
-
-	/**
-	 * Returns a map with Domain-Specific Events names as keys and the
-	 * Domain-Specific Events as values. This is done like this because we will
-	 * match the Domain-Specific Events using their names : they should appear
-	 * in the LogicalStep produced by the MoC solver.
-	 * 
-	 * @param domainSpecificEventsResource
-	 * @return
-	 */
-	private Map<String, DomainSpecificEvent> createDomainSpecificEventsRegistry(
-			Resource domainSpecificEventsResource) {
-		Map<String, DomainSpecificEvent> res = new HashMap<String, DomainSpecificEvent>();
-		DomainSpecificEventFile dseFile = (DomainSpecificEventFile) domainSpecificEventsResource
-				.getContents().get(0);
-		for (DomainSpecificEvent dse : dseFile.getLanguageEvents()) {
-			res.put(dse.getName(), dse);
-		}
-		return res;
-	}
-
-	@Override
-	public abstract void initialize(String modelURI,
-			String modelOfExecutionURI, ModelLoader modelLoader);
-
-	@Override
-	public abstract void reset();
-
-	@Override
-	// TODO : What should this do ?
-	public void pause() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	// TODO
-	public void stepBack(int numberOfSteps) {
-		throw new UnsupportedOperationException();
-		// Body:
-		// - Dump the execution trace corresponding to the steps we want to go
-		// back
-		// - Make the solver load the n-numberOfSteps-th step.
-
-	}
-
-	/**
-	 * Instantiates a Collection of Model-Specific Events depending on which
-	 * event occurrences are in the Step returned by the Solver.
-	 * 
-	 * @param step
-	 * @return
-	 */
-	protected abstract Collection<ModelSpecificEvent> match(
-			Map<Integer, LogicalStep> schedulingTrace);
-
-	@Override
-	public void run(int numberOfSteps) {
-		Activator.getMessagingSystem().info(
-				"Running " + numberOfSteps + " steps", Activator.PLUGIN_ID);
-		this.setChanged();
-		this.notifyObservers("Received from ControlPanel: run(" + numberOfSteps
-				+ ")");
-		for (int i = 0; i < numberOfSteps; i++) {
-			this.runOneStep();
-		}
-	}
-
-	/**
-	 * Updates the scheduling trace and the execution trace. Updates the value
-	 * of currentStep. Adds a new entry to the scheduledEventsMap. Matches the
-	 * scheduling trace and updates the current possible events.
-	 * 
-	 * @param newStep
-	 */
-	protected void setCurrentStepAndUpdateTraces(LogicalStep newStep) {
-		// Map<Integer, Map<LogicalStep, List<ModelSpecificEvent>>>
-		Integer previousDate = 0;
-		for (Integer index : this.schedulingTrace.keySet()) {
-			if (index > previousDate) {
-				previousDate = index;
-			}
-		}
-		this.currentStep = newStep;
-		this.scheduledEventsMap.put(newStep,
-				new ArrayList<ModelSpecificEvent>());
-		this.schedulingTrace.put(previousDate + 1, newStep);
-		this.executionTrace.put(newStep, new ArrayList<ModelSpecificEvent>());
-		this.currentPossibleEvents = this.match(this.schedulingTrace);
-		
-		// All internal events are interpreted as automatically scheduled.
-		for(ModelSpecificEvent mse : this.currentPossibleEvents){
-			if(mse.getVisibility().equals(Visibility.PRIVATE)){
-				List<ModelSpecificEvent> scheduledEventsForCurrentStep = this.scheduledEventsMap
-						.get(this.currentStep);
-				scheduledEventsForCurrentStep.add(mse);
-			}
-		}
-	}
-
-	/**
-	 * Runs one step of the execution. Retrieves a scheduling step (either from
-	 * the solver or one scheduled earlier) then executes the associated events
-	 * if there are some. After the execution, it makes the engine proceed to
-	 * the next step of execution.
-	 */
-	protected void runOneStep() {
-		ISafeRunnable runnable = new ISafeRunnable() {
-			@Override
-			public void handleException(Throwable e) {
-				Activator.error(e.getMessage(), e);
-			}
-
-			@Override
-			public void run() throws Exception {
-				Activator.getMessagingSystem().info(">>Running one step",
-						Activator.PLUGIN_ID);
-				ObservableBasicExecutionEngine.this.doOneStep();
-				Activator.getMessagingSystem().info("<<Step finished",
-						Activator.PLUGIN_ID);
-				Activator
-						.getMessagingSystem()
-						.info("Execution Trace: \n"
-								+ mapToString(ObservableBasicExecutionEngine.this.executionTrace),
-								Activator.PLUGIN_ID);
-				ObservableBasicExecutionEngine.this
-						.setCurrentStepAndUpdateTraces(ObservableBasicExecutionEngine.this
-								.getScheduledOrSolverStep());
-			}
-		};
-		SafeRunner.run(runnable);
-	}
-
-	/**
-	 * If there is a scheduled step then it is returned, else a new one is
-	 * gotten from the solver.
-	 * 
-	 * @return
-	 */
-	protected LogicalStep getScheduledOrSolverStep() {
-		if (this.scheduledSteps.isEmpty()) {
-			return this.solver.getNextStep();
-		} else {
-			return this.scheduledSteps.remove();
-		}
-	}
-
-	@Override
-	public Collection<ModelSpecificEvent> getCurrentPossibleEvents() {
-		return this.currentPossibleEvents;
-	}
-
-	/**
-	 * One step of execution. Retrieves all the events scheduled for this round
-	 * and executes them sequentially. If no exception was thrown, the scheduled
-	 * events are removed fom the scheduled events map.
-	 * 
-	 * @param mse
-	 */
-	private void doOneStep() {
-		Collection<ModelSpecificEvent> events;
-		events = new ArrayList<ModelSpecificEvent>();
-
-		Collection<ModelSpecificEvent> nextEvents = this.scheduledEventsMap
-				.get(this.currentStep);
-		if (nextEvents != null) {
-			events.addAll(nextEvents);
-		}
-
-		// For each event, execute its action(s) and take into account the
-		// feedback the Domain Specific Action returns.
-		for (ModelSpecificEvent event : events) {
-			this.setChanged();
-			this.notifyObservers("Execution of MSE: " + event.getName());
-
-			Activator.getMessagingSystem().debug(
-					"Executing the following event: " + event.toString(),
-					Activator.PLUGIN_ID);
-
-			try {
-				List<FeedbackData> feedbacks = this.executor.execute(event);
-				this.executionTrace.get(this.currentStep).add(event);
-				for (FeedbackData feedback : feedbacks) {
-					Activator.getMessagingSystem().debug(
-							"Feedback received: " + feedback.toString(),
+			this.logicalStepDecider = decider;
+			if(this.logicalStepDecider == null){
+				if(solver instanceof CcslSolver){
+					Activator.getMessagingSystem().warn(
+							"LogicalStepDecider not set,  using default SolverDecider",
 							Activator.PLUGIN_ID);
-					if (this.feedbackPolicy != null) {
-						this.feedbackPolicy.processFeedback(feedback, this);
+					this.logicalStepDecider =  new CcslSolverDecider((CcslSolver) solver);
+				}
+				else{
+					throw new EngineNotCorrectlyInitialized(
+							"LogicalStepDecider not set and cannot use default CcslSolverDecider");
+				}
+			}
+		}
+	}
+
+	@Override
+	public void initialize(String modelUnderExecutionStringURI,
+			ModelLoader modelLoader) {
+
+		this.modelUnderExecutionStringURI = modelUnderExecutionStringURI;
+
+		// Create the modelResource from the modelURI using the modelLoader.
+		this.modelUnderExecutionResource = modelLoader
+				.loadModel(modelUnderExecutionStringURI);
+
+		Activator.getMessagingSystem().info(
+				"*** Engine initialization done. ***", Activator.PLUGIN_ID);
+	}
+
+	@Override
+	public void start() {
+		if (!this.started) {
+			Runnable execution = new EngineRunnable();
+			Thread mainThread = new Thread(execution, "Gemoc engine "
+					+ modelUnderExecutionStringURI);
+			mainThread.start();
+		}
+
+	}
+
+	class EngineRunnable implements Runnable {
+		public void run() {
+			if (getDebugger() != null) {
+				// connect the debugger to the model being executed (including
+				// dynamic data)
+				getDebugger().spawnRunningThread(
+						Thread.currentThread().getName(),
+						modelUnderExecutionResource.getContents().get(0));
+			}
+			long count = 0;
+			while (!terminated) {
+				try {
+					
+					// 1- ask solver possible solutions for this step (set of
+					// logical steps | 1 logical step = set of simultaneous
+					// event occurence)
+					// TODO WARNING current implementation of
+					// getPossibleLogicalSteps() applies a LogicalStep to the
+					// solver, make sure to call it only once
+					List<LogicalStep> possibleLogicalSteps = solver
+							.getPossibleLogicalSteps();
+					// 2- select one solution from available logical step /
+					// select interactive vs batch
+					int selectedLogicalStep;
+					if (possibleLogicalSteps.size() == 0) {
+						Activator.getMessagingSystem().debug(
+								"No more LogicalStep to run",
+								Activator.PLUGIN_ID);
+						terminated = true;
+					} else{ 
+						Activator.getMessagingSystem().debug(
+								"\t\t ---------------- LogicalStep "+count,
+								Activator.PLUGIN_ID);
+						count++;
+						if (possibleLogicalSteps.size() == 1) {
+							selectedLogicalStep = 0;
+						} else {
+							// depending on the strategy, ask the user, get from
+							// scenario, ask solver for a proposal
+							// TODO implement strategy for selecting a LogicalStep
+							selectedLogicalStep = logicalStepDecider.decide(possibleLogicalSteps);
+						}
+						// 3 - run the selected logical step
+						LogicalStep logicalStepToApply = possibleLogicalSteps
+								.get(selectedLogicalStep);
+						// inform the solver that we will run this step
+						solver.applyLogicalStepByIndex(selectedLogicalStep);
+						// run all the event occurrences of this logical step
+						doLogicalStep(logicalStepToApply);
+
+					}
+
+				} catch (Throwable e) {
+					Activator.getMessagingSystem().error(
+							"Exception received " + e.getMessage()
+									+ ", stopping engine.",
+							Activator.PLUGIN_ID, e);
+					terminated = true;
+				}
+			}
+
+			// inform the debugger UI that the thread is terminated
+			if (getDebugger() != null
+					&& !getDebugger().isTerminated(
+							Thread.currentThread().getName())) {
+				getDebugger().terminated(Thread.currentThread().getName());
+			}
+		}
+
+		/**
+		 * run all the event occurrences of this logical step
+		 * 
+		 * @param logicalStepToApply
+		 */
+		protected void doLogicalStep(LogicalStep logicalStepToApply) {
+			// = step in debug mode, goes to next logical step
+			// -> run all event occurrences of the logical step
+			// step into / open internal thread and pause them
+			// each concurrent event occurrence is presented as a separate
+			// thread in the debugger
+			// execution feedback is sent to the solver so it can take internal
+			// event into account
+
+			List<EngineEventOccurence> engineEventOccurences = new ArrayList<EngineEventOccurence>();
+			for (EventOccurrence eventOccurrence : logicalStepToApply
+					.getEventOccurrences()) {
+				if (eventOccurrence.getFState() == FiredStateKind.TICK
+						&& eventOccurrence.getReferedElement() != null) {
+					if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
+						ModelElementReference mer = (ModelElementReference) eventOccurrence
+								.getReferedElement();
+						if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
+							Event event = (Event) mer.getElementRef().get(0);
+							
+							if (event.getReferencedObjectRefs().size() == 2
+									&& event.getReferencedObjectRefs().get(1) instanceof EOperation) {
+								EObject targetModelElement = event.getReferencedObjectRefs()
+										.get(0);
+								EOperation targetOperation = (EOperation)event.getReferencedObjectRefs().get(1);
+								Activator.getMessagingSystem().info(
+										"event occurence: target="
+												+ targetModelElement.toString()
+												+ " operation="
+												+ targetOperation.getName(),
+										Activator.PLUGIN_ID);
+								// TODO verify that solver and engine work on the same resource ...
+								
+								// build the list of simplified eventOccurence from solver
+								EngineEventOccurence engineEventOccurence = new EngineEventOccurence(targetModelElement, targetOperation);
+								engineEventOccurences.add(engineEventOccurence);
+							}
+							else{
+								Activator.getMessagingSystem().debug(
+										"event occurence: TICK Event="
+												+ event.getName()
+												+ " ReferencedObjectRefs="
+												+event.getReferencedObjectRefs(),
+										Activator.PLUGIN_ID);
+							}
+						}
+						else{
+//							String stringOfTheECLEventCorrespondingToTheTickingClock = mer
+//									.getElementRef().get(0).toString();
+//							Activator.getMessagingSystem().debug(
+//									"event occurence: TICK target="
+//											+ stringOfTheECLEventCorrespondingToTheTickingClock,
+//									Activator.PLUGIN_ID);
+						}						
 					}
 				}
-			} catch (EventExecutionException e) {
-				// There was an exception during the execution of an event so we
-				// send it to the Error log view. If there is a nested exception
-				// then we also print its information (typically the case when
-				// invoking code like the DSAs).
-				String errorMessage = e.getClass().getSimpleName()
-						+ " while executing this round's worth of events. Inner exception sent to the Error Log view.";
-				Activator.getMessagingSystem().error(errorMessage,
-						Activator.PLUGIN_ID);
-
-				Activator.error(
-						"Inner exception: " + e.getCause().getMessage(),
-						e.getCause());
-				if (e.getCause().getCause() != null) {
-					Activator.error("Inner inner exception: "
-							+ e.getCause().getCause().getMessage(), e
-							.getCause().getCause());
-				}
-			} catch (InvokationResultConvertionException e) {
-				// Couldn't figure out how to convert the result of a DSA into
-				// an appropriate object.
-				String errorMessage = e.getClass().getSimpleName()
-						+ " while executing this round's worth of events. Inner exception sent to the Error Log view.";
-				Activator.getMessagingSystem().error(errorMessage,
-						Activator.PLUGIN_ID);
-				Activator.error(
-						"Inner exception: " + e.getCause().getMessage(),
-						e.getCause());
-				if (e.getCause().getCause() != null) {
-					Activator.error("Inner inner exception: "
-							+ e.getCause().getCause().getMessage(), e
-							.getCause().getCause());
-
-				}
-			}
-		}
-		this.scheduledEventsMap.remove(this.currentStep);
-	}
-
-	@Override
-	public Collection<DomainSpecificEvent> getDomainSpecificEvents() {
-		return this.domainSpecificEventsRegistry.values();
-	}
-
-	@Override
-	public void forceModelSpecificEventOccurrence(ModelSpecificEvent mse) {
-		this.setChanged();
-		this.notifyObservers("Trying to force the solver to trigger an occurrence of MSE: "
-				+ mse.toString());
-		this.solver.forceEventOccurrence(this.findMappedMocElement(mse));
-	}
-
-	@Override
-	public void forbidModelSpecificEventOccurrence(ModelSpecificEvent mse) {
-		this.setChanged();
-		this.notifyObservers("Trying to force the solver to forbid an occurrence of MSE: "
-				+ mse.toString());
-		this.solver.forbidEventOccurrence(this.findMappedMocElement(mse));
-	}
-
-	@Override
-	public void forceMocEventOccurrence(MocEvent mocEvent, EObject target) {
-		this.setChanged();
-		this.notifyObservers("Trying to force an occurrence of the MocEvent: "
-				+ mocEvent.toString() + " on target " + target.toString());
-		this.solver.forceEventOccurrence(this.solver
-				.getCorrespondingEventOccurrence(mocEvent, target));
-	}
-
-	@Override
-	public void forbidMocEventOccurrence(MocEvent mocEvent, EObject target) {
-		this.setChanged();
-		this.notifyObservers("Trying to forbid an occurrence of the MocEvent: "
-				+ mocEvent.toString() + " on target " + target.toString());
-		this.solver.forbidEventOccurrence(this.solver
-				.getCorrespondingEventOccurrence(mocEvent, target));
-	}
-
-	@Override
-	public Map<String, MocEvent> getMocEventsRegistry() {
-		return this.mocEventsRegistry;
-	}
-
-	/**
-	 * Reverse interpretation of Pattern.
-	 * 
-	 * @param mse
-	 * @return
-	 */
-	private EventOccurrence findMappedMocElement(ModelSpecificEvent mse) {
-		Pattern pattern = mse.getCondition();
-		if (pattern instanceof Every) {
-			Every patternEvery = (Every) pattern;
-			if (patternEvery.getAtom() instanceof gepl.Reference) {
-				MocEvent mocEvent = ((gepl.Reference) patternEvery).getEvent();
-				return this.solver.getCorrespondingEventOccurrence(mocEvent,
-						mse.getModelSpecificActions().get(0).getTarget());
-			} else if (patternEvery.getAtom() instanceof gepl.And) {
-				// TODO: make it work recursively
-				MocEvent firstParameter = (MocEvent) ((gepl.Reference) ((gepl.And) patternEvery)
-						.getFirstParameter()).getEvent();
-				MocEvent secondParameter = (MocEvent) ((gepl.Reference) ((gepl.And) patternEvery)
-						.getSecondParameter()).getEvent();
-				// Fair random, threw a coin ;-)
-				return this.solver.getCorrespondingEventOccurrence(
-						firstParameter, mse.getModelSpecificActions().get(0)
-								.getTarget());
-			} else {
-				throw new UnsupportedOperationException(
-						"Only expecting Atom Reference or Atom And for now...");
-			}
-		} else {
-			throw new UnsupportedOperationException(
-					"Can only deal with 'Every' pattern for now...");
-		}
-	}
-
-	/**
-	 * Pretty print for a map.
-	 * 
-	 * Outputs will be like this :
-	 * 
-	 * <ul>
-	 * <li>---------------------</li>
-	 * <li>key1 | value1</li>
-	 * <li>---------------------</li>
-	 * <li>key2 | value2</li>
-	 * <li>---------------------</li>
-	 * </ul>
-	 * 
-	 * If the values are collections, then each element of the collections will
-	 * have its line but the associated key is not repeated.
-	 * 
-	 * <ul>
-	 * <li>---------------------</li>
-	 * <li>key1 | value1</li>
-	 * <li>| value1'</li>
-	 * <li>| value1''</li>
-	 * <li>---------------------</li>
-	 * <li>key2 | value2</li>
-	 * <li>---------------------</li>
-	 * </ul>
-	 * 
-	 * @param map
-	 * @return
-	 */
-	protected String mapToString(Map<?, ?> map) {
-		String res = "---------------------------------------------------------------------------------------------------------------\n";
-		int maximumKeyLength = 0;
-		for (Object key : map.keySet()) {
-			if (key.toString().length() > maximumKeyLength) {
-				maximumKeyLength = key.toString().length();
-			}
-		}
-		for (Object key : map.keySet()) {
-			Object value = map.get(key);
-			res += key.toString();
-			for (int i = 0; i < maximumKeyLength - key.toString().length(); i++) {
-				res += " ";
-			}
-			res += " | ";
-			if (value instanceof Collection<?>) {
-				Iterator<?> iterator = (Iterator<?>) ((Collection<?>) value)
-						.iterator();
-				if (iterator.hasNext()) {
-					res += iterator.next();
-				}
-				while (iterator.hasNext()) {
-					res += "\n";
-					for (int i = 0; i < maximumKeyLength; i++) {
-						res += " ";
+				else{
+					if (eventOccurrence.getReferedElement() != null) {
+//						if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
+//							ModelElementReference mer = (ModelElementReference) eventOccurrence
+//									.getReferedElement();
+//							Activator.getMessagingSystem().debug(
+//									"event occurence (NOT A TICK): refered element= "+mer.getElementRef(),
+//									Activator.PLUGIN_ID);
+//						}
+//						else{
+//							Activator.getMessagingSystem().debug(
+//								"event occurence (NOT A TICK): refered element= "+eventOccurrence.getReferedElement(),
+//								Activator.PLUGIN_ID);
+//						}
 					}
-					res += " | " + iterator.next();
+					else{
+					//	Activator.getMessagingSystem().debug(
+					//		"event occurence (NOT A TICK): "+eventOccurrence,
+					//		Activator.PLUGIN_ID);
+					}
 				}
-			} else {
-				res += value.toString();
 			}
-			res += "\n---------------------------------------------------------------------------------------------------------------\n";
+			// TODO verify if we need to pause on this LogicalStep due to breakpoint on one of the eventOccurence
+			
+			// run the event
+			for(EngineEventOccurence engineEventOccurence : engineEventOccurences){
+				// FIXME can pause on each eventoccurence, should be done in separate threads if we support step into or globally at the LogicalStep level 
+				if (debugger != null) {
+					terminated = !debugger.control(Thread.currentThread().getName(), engineEventOccurence.getTargetObject());
+				}
+				
+				try {
+					FeedbackData res = executor.execute(engineEventOccurence);
+					// send result as feedback to the solver
+					// process feedback may influence the solver results for next step
+					//FeedbackData feedbackData = new FeedbackData(res, engineEventOccurence);
+					feedbackPolicy.processFeedback(res, ObservableBasicExecutionEngine.this);
+				} catch (EventExecutionException e) {
+					Activator.getMessagingSystem().error(
+							"Exception received " + e.getMessage(),
+							Activator.PLUGIN_ID, e);
+				}
+				
+			}
+
 		}
-		return res;
 	}
 
 	@Override
 	public String toString() {
 		return this.getClass().getName() + "@[Executor=" + this.executor
 				+ " ; Solver=" + this.solver + " ; ModelResource="
-				+ this.modelResource + "]";
+				+ this.modelUnderExecutionResource + "]";
 	}
+
+	/* Getters and Setters */
+	@Override
+	public Resource getModelUnderExecutionResource() {
+		return this.modelUnderExecutionResource;
+	}
+
+	public GemocModelDebugger getDebugger() {
+		return debugger;
+	}
+
+	public void setDebugger(GemocModelDebugger debugger) {
+		this.debugger = debugger;
+	}
+
 }

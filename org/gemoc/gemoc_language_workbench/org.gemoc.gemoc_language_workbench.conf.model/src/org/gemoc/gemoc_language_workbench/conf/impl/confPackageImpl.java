@@ -17,6 +17,7 @@ import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
+import org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
@@ -25,11 +26,13 @@ import org.gemoc.gemoc_language_workbench.conf.FileResource;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.MoC2ASApplicationProject;
 import org.gemoc.gemoc_language_workbench.conf.MoCProject;
 import org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject;
 import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
 import org.gemoc.gemoc_language_workbench.conf.ProjectResource;
+import org.gemoc.gemoc_language_workbench.conf.QVToFile;
 import org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
@@ -63,6 +66,13 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * @generated
 	 */
 	private EClass dsaProjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass moC2ASApplicationProjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -188,7 +198,21 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass eclMoC2ASApplicationProjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass eclFileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass qvToFileEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -333,6 +357,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMoC2ASApplicationProject() {
+		return moC2ASApplicationProjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLanguageDefinition() {
 		return languageDefinitionEClass;
 	}
@@ -398,6 +431,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 */
 	public EAttribute getLanguageDefinition_Name() {
 		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLanguageDefinition_Moc2ASApplication() {
+		return (EReference)languageDefinitionEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -612,8 +654,44 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getECLMoC2ASApplicationProject() {
+		return eclMoC2ASApplicationProjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getECLMoC2ASApplicationProject_EclFile() {
+		return (EReference)eclMoC2ASApplicationProjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getECLMoC2ASApplicationProject_QvtoFile() {
+		return (EReference)eclMoC2ASApplicationProjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getECLFile() {
 		return eclFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getQVToFile() {
+		return qvToFileEClass;
 	}
 
 	/**
@@ -693,12 +771,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		createEReference(gemocLanguageWorkbenchConfigurationEClass, GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION);
 		createEReference(gemocLanguageWorkbenchConfigurationEClass, GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS);
 
-		projectResourceEClass = createEClass(PROJECT_RESOURCE);
-		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_NAME);
-		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_KIND);
-
-		dsaProjectEClass = createEClass(DSA_PROJECT);
-
 		languageDefinitionEClass = createEClass(LANGUAGE_DEFINITION);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DSA_PROJECT);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT);
@@ -707,6 +779,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__ANIMATOR_PROJECTS);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DSE_PROJECT);
 		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__NAME);
+		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__MOC2_AS_APPLICATION);
+
+		projectResourceEClass = createEClass(PROJECT_RESOURCE);
+		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_NAME);
+		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_KIND);
+
+		dsaProjectEClass = createEClass(DSA_PROJECT);
+
+		moC2ASApplicationProjectEClass = createEClass(MO_C2AS_APPLICATION_PROJECT);
 
 		editorProjectEClass = createEClass(EDITOR_PROJECT);
 		createEAttribute(editorProjectEClass, EDITOR_PROJECT__FILE_EXTENSION);
@@ -719,6 +800,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		animatorProjectEClass = createEClass(ANIMATOR_PROJECT);
 
+		dseProjectEClass = createEClass(DSE_PROJECT);
+
 		emfEcoreProjectEClass = createEClass(EMF_ECORE_PROJECT);
 		createEReference(emfEcoreProjectEClass, EMF_ECORE_PROJECT__EMF_GENMODEL);
 		createEAttribute(emfEcoreProjectEClass, EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME);
@@ -730,24 +813,28 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		modHelXMoCProjectEClass = createEClass(MOD_HEL_XMO_CPROJECT);
 
-		dseProjectEClass = createEClass(DSE_PROJECT);
-
 		eclProjectEClass = createEClass(ECL_PROJECT);
 		createEReference(eclProjectEClass, ECL_PROJECT__ECL_FILE);
 
 		treeEditorProjectEClass = createEClass(TREE_EDITOR_PROJECT);
 
-		emfGenmodelEClass = createEClass(EMF_GENMODEL);
+		k3DSAProjectEClass = createEClass(K3DSA_PROJECT);
+
+		eclMoC2ASApplicationProjectEClass = createEClass(ECL_MO_C2AS_APPLICATION_PROJECT);
+		createEReference(eclMoC2ASApplicationProjectEClass, ECL_MO_C2AS_APPLICATION_PROJECT__ECL_FILE);
+		createEReference(eclMoC2ASApplicationProjectEClass, ECL_MO_C2AS_APPLICATION_PROJECT__QVTO_FILE);
 
 		fileResourceEClass = createEClass(FILE_RESOURCE);
 		createEAttribute(fileResourceEClass, FILE_RESOURCE__LOCATION_URI);
 
-		xTextEditorProjectEClass = createEClass(XTEXT_EDITOR_PROJECT);
-		createEAttribute(xTextEditorProjectEClass, XTEXT_EDITOR_PROJECT__GRAMMAR_NAME);
-
-		k3DSAProjectEClass = createEClass(K3DSA_PROJECT);
+		emfGenmodelEClass = createEClass(EMF_GENMODEL);
 
 		eclFileEClass = createEClass(ECL_FILE);
+
+		qvToFileEClass = createEClass(QV_TO_FILE);
+
+		xTextEditorProjectEClass = createEClass(XTEXT_EDITOR_PROJECT);
+		createEAttribute(xTextEditorProjectEClass, XTEXT_EDITOR_PROJECT__GRAMMAR_NAME);
 
 		buildOptionsEClass = createEClass(BUILD_OPTIONS);
 		createEAttribute(buildOptionsEClass, BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE);
@@ -787,33 +874,30 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		// Add supertypes to classes
 		dsaProjectEClass.getESuperTypes().add(this.getProjectResource());
+		moC2ASApplicationProjectEClass.getESuperTypes().add(this.getProjectResource());
 		editorProjectEClass.getESuperTypes().add(this.getProjectResource());
 		domainModelProjectEClass.getESuperTypes().add(this.getProjectResource());
 		moCProjectEClass.getESuperTypes().add(this.getProjectResource());
 		ccslMoCProjectEClass.getESuperTypes().add(this.getMoCProject());
 		animatorProjectEClass.getESuperTypes().add(this.getProjectResource());
+		dseProjectEClass.getESuperTypes().add(this.getProjectResource());
 		emfEcoreProjectEClass.getESuperTypes().add(this.getDomainModelProject());
 		odProjectEClass.getESuperTypes().add(this.getEditorProject());
 		siriusAnimatorProjectEClass.getESuperTypes().add(this.getAnimatorProject());
 		modHelXMoCProjectEClass.getESuperTypes().add(this.getMoCProject());
-		dseProjectEClass.getESuperTypes().add(this.getProjectResource());
 		eclProjectEClass.getESuperTypes().add(this.getDSEProject());
 		treeEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
-		emfGenmodelEClass.getESuperTypes().add(this.getFileResource());
-		xTextEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
 		k3DSAProjectEClass.getESuperTypes().add(this.getDSAProject());
+		eclMoC2ASApplicationProjectEClass.getESuperTypes().add(this.getDSEProject());
+		emfGenmodelEClass.getESuperTypes().add(this.getFileResource());
 		eclFileEClass.getESuperTypes().add(this.getFileResource());
+		qvToFileEClass.getESuperTypes().add(this.getFileResource());
+		xTextEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(gemocLanguageWorkbenchConfigurationEClass, GemocLanguageWorkbenchConfiguration.class, "GemocLanguageWorkbenchConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGemocLanguageWorkbenchConfiguration_LanguageDefinition(), this.getLanguageDefinition(), null, "languageDefinition", null, 0, 1, GemocLanguageWorkbenchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGemocLanguageWorkbenchConfiguration_BuildOptions(), this.getBuildOptions(), null, "buildOptions", null, 0, 1, GemocLanguageWorkbenchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(projectResourceEClass, ProjectResource.class, "ProjectResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProjectResource_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProjectResource_ProjectKind(), this.getProjectKind(), "projectKind", null, 1, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(dsaProjectEClass, DSAProject.class, "DSAProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(languageDefinitionEClass, LanguageDefinition.class, "LanguageDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLanguageDefinition_DsaProject(), this.getDSAProject(), null, "dsaProject", null, 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -823,6 +907,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEReference(getLanguageDefinition_AnimatorProjects(), this.getAnimatorProject(), null, "animatorProjects", null, 0, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLanguageDefinition_DSEProject(), this.getDSEProject(), null, "dSEProject", null, 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLanguageDefinition_Name(), ecorePackage.getEString(), "name", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLanguageDefinition_Moc2ASApplication(), this.getMoC2ASApplicationProject(), null, "moc2ASApplication", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(projectResourceEClass, ProjectResource.class, "ProjectResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProjectResource_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectResource_ProjectKind(), this.getProjectKind(), "projectKind", null, 1, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dsaProjectEClass, DSAProject.class, "DSAProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(moC2ASApplicationProjectEClass, MoC2ASApplicationProject.class, "MoC2ASApplicationProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(editorProjectEClass, EditorProject.class, "EditorProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEditorProject_FileExtension(), ecorePackage.getEString(), "fileExtension", null, 1, -1, EditorProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -835,6 +928,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		initEClass(animatorProjectEClass, AnimatorProject.class, "AnimatorProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(dseProjectEClass, DSEProject.class, "DSEProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(emfEcoreProjectEClass, EMFEcoreProject.class, "EMFEcoreProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEMFEcoreProject_EmfGenmodel(), this.getEMFGenmodel(), null, "emfGenmodel", null, 1, 1, EMFEcoreProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEMFEcoreProject_DefaultRootEObjectQualifiedName(), ecorePackage.getEString(), "defaultRootEObjectQualifiedName", null, 0, 1, EMFEcoreProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -846,24 +941,28 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		initEClass(modHelXMoCProjectEClass, ModHelXMoCProject.class, "ModHelXMoCProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(dseProjectEClass, DSEProject.class, "DSEProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(eclProjectEClass, ECLProject.class, "ECLProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getECLProject_EclFile(), this.getECLFile(), null, "eclFile", null, 1, 1, ECLProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(treeEditorProjectEClass, TreeEditorProject.class, "TreeEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(emfGenmodelEClass, EMFGenmodel.class, "EMFGenmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(k3DSAProjectEClass, K3DSAProject.class, "K3DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(eclMoC2ASApplicationProjectEClass, ECLMoC2ASApplicationProject.class, "ECLMoC2ASApplicationProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getECLMoC2ASApplicationProject_EclFile(), this.getECLFile(), null, "eclFile", null, 1, 1, ECLMoC2ASApplicationProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getECLMoC2ASApplicationProject_QvtoFile(), this.getQVToFile(), null, "qvtoFile", null, 1, 1, ECLMoC2ASApplicationProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fileResourceEClass, FileResource.class, "FileResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFileResource_LocationURI(), ecorePackage.getEString(), "locationURI", null, 0, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(xTextEditorProjectEClass, XTextEditorProject.class, "XTextEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getXTextEditorProject_GrammarName(), ecorePackage.getEString(), "grammarName", null, 1, 1, XTextEditorProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(k3DSAProjectEClass, K3DSAProject.class, "K3DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(emfGenmodelEClass, EMFGenmodel.class, "EMFGenmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(eclFileEClass, ECLFile.class, "ECLFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(qvToFileEClass, QVToFile.class, "QVToFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(xTextEditorProjectEClass, XTextEditorProject.class, "XTextEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getXTextEditorProject_GrammarName(), ecorePackage.getEString(), "grammarName", null, 1, 1, XTextEditorProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(buildOptionsEClass, BuildOptions.class, "BuildOptions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBuildOptions_GenerateModelLoaderService(), ecorePackage.getEBoolean(), "generateModelLoaderService", "true", 0, 1, BuildOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

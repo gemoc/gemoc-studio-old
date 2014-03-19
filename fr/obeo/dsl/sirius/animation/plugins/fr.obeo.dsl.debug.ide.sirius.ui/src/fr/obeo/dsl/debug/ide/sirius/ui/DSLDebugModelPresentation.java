@@ -230,27 +230,26 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 
 	@Override
 	public boolean addAnnotations(IEditorPart editorPart, IStackFrame frame) {
-		final TraceabilityMarkerNavigationProvider navigationProvider;
-
 		if (frame instanceof DSLStackFrameAdapter) {
 			if (editorPart instanceof DialectEditor) {
-				navigationProvider = new TraceabilityMarkerNavigationProvider((DialectEditor)editorPart);
-			} else {
-				navigationProvider = new TraceabilityMarkerNavigationProvider((DialectEditor)null);
-			}
-			final EObject instruction = ((DSLStackFrameAdapter)frame).getCurrentInstruction();
-			final URI resourceURI = instruction.eResource().getURI();
-			if (resourceURI.isPlatformResource()) {
-				final String resourcePath = resourceURI.toPlatformString(true);
-				final IResource resource = ResourcesPlugin.getWorkspace().getRoot().getFile(
-						new Path(resourcePath));
-				try {
-					final IMarker marker = resource.createMarker(EValidator.MARKER);
-					navigationProvider.gotoMarker(marker);
-					marker.delete();
-				} catch (CoreException e) {
-					DebugSiriusIdeUiPlugin.INSTANCE.log(e);
+				final TraceabilityMarkerNavigationProvider navigationProvider = new TraceabilityMarkerNavigationProvider(
+						(DialectEditor)editorPart);
+				final EObject instruction = ((DSLStackFrameAdapter)frame).getCurrentInstruction();
+				final URI resourceURI = instruction.eResource().getURI();
+				if (resourceURI.isPlatformResource()) {
+					final String resourcePath = resourceURI.toPlatformString(true);
+					final IResource resource = ResourcesPlugin.getWorkspace().getRoot().getFile(
+							new Path(resourcePath));
+					try {
+						final IMarker marker = resource.createMarker(EValidator.MARKER);
+						navigationProvider.gotoMarker(marker);
+						marker.delete();
+					} catch (CoreException e) {
+						DebugSiriusIdeUiPlugin.INSTANCE.log(e);
+					}
 				}
+			} else {
+				super.addAnnotations(editorPart, frame);
 			}
 		}
 

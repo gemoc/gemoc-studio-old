@@ -24,6 +24,7 @@ import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.MoC2ASApplicationProject;
 import org.gemoc.gemoc_language_workbench.conf.MoCProject;
 import org.gemoc.gemoc_language_workbench.conf.confPackage;
 
@@ -41,6 +42,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getAnimatorProjects <em>Animator Projects</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getDSEProject <em>DSE Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getMoc2ASApplication <em>Moc2 AS Application</em>}</li>
  * </ul>
  * </p>
  *
@@ -126,6 +128,16 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getMoc2ASApplication() <em>Moc2 AS Application</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMoc2ASApplication()
+	 * @generated
+	 * @ordered
+	 */
+	protected MoC2ASApplicationProject moc2ASApplication;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -368,6 +380,49 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MoC2ASApplicationProject getMoc2ASApplication() {
+		return moc2ASApplication;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMoc2ASApplication(MoC2ASApplicationProject newMoc2ASApplication, NotificationChain msgs) {
+		MoC2ASApplicationProject oldMoc2ASApplication = moc2ASApplication;
+		moc2ASApplication = newMoc2ASApplication;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION, oldMoc2ASApplication, newMoc2ASApplication);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMoc2ASApplication(MoC2ASApplicationProject newMoc2ASApplication) {
+		if (newMoc2ASApplication != moc2ASApplication) {
+			NotificationChain msgs = null;
+			if (moc2ASApplication != null)
+				msgs = ((InternalEObject)moc2ASApplication).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION, null, msgs);
+			if (newMoc2ASApplication != null)
+				msgs = ((InternalEObject)newMoc2ASApplication).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION, null, msgs);
+			msgs = basicSetMoc2ASApplication(newMoc2ASApplication, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION, newMoc2ASApplication, newMoc2ASApplication));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -383,6 +438,8 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				return ((InternalEList<?>)getAnimatorProjects()).basicRemove(otherEnd, msgs);
 			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECT:
 				return basicSetDSEProject(null, msgs);
+			case confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION:
+				return basicSetMoc2ASApplication(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -409,6 +466,8 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				return getDSEProject();
 			case confPackage.LANGUAGE_DEFINITION__NAME:
 				return getName();
+			case confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION:
+				return getMoc2ASApplication();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -445,6 +504,9 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 			case confPackage.LANGUAGE_DEFINITION__NAME:
 				setName((String)newValue);
 				return;
+			case confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION:
+				setMoc2ASApplication((MoC2ASApplicationProject)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -478,6 +540,9 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 			case confPackage.LANGUAGE_DEFINITION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION:
+				setMoc2ASApplication((MoC2ASApplicationProject)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -504,6 +569,8 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				return dSEProject != null;
 			case confPackage.LANGUAGE_DEFINITION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION:
+				return moc2ASApplication != null;
 		}
 		return super.eIsSet(featureID);
 	}

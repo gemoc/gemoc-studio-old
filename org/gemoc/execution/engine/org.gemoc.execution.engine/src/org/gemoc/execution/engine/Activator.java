@@ -3,6 +3,8 @@ package org.gemoc.execution.engine;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem;
+import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
 import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
@@ -18,14 +20,15 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 
-	protected static EclipseMessagingSystem messagingSystem = null;
+	protected static MessagingSystem messagingSystem = null;
 
-	public static EclipseMessagingSystem getMessagingSystem() {
+	public static MessagingSystem getMessagingSystem() {
 		if (messagingSystem == null) {
-			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
-					"GEMOC Execution Engine");
-			((EclipseMessagingSystem) messagingSystem)
-					.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
+			messagingSystem = new StdioSimpleMessagingSystem();
+			//messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
+			//		"GEMOC Execution Engine");
+			//((EclipseMessagingSystem) messagingSystem)
+			//		.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
 		}
 		return messagingSystem;
 	}
@@ -93,4 +96,6 @@ public class Activator extends AbstractUIPlugin {
 		Activator.getDefault().getLog()
 				.log(new Status(Status.ERROR, PLUGIN_ID, Status.OK, msg, e));
 	}
+	
+	
 }

@@ -72,6 +72,10 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createGemocLanguageWorkbenchConfigurationAdapter();
 			}
 			@Override
+			public Adapter caseLanguageDefinition(LanguageDefinition object) {
+				return createLanguageDefinitionAdapter();
+			}
+			@Override
 			public Adapter caseProjectResource(ProjectResource object) {
 				return createProjectResourceAdapter();
 			}
@@ -80,8 +84,8 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createDSAProjectAdapter();
 			}
 			@Override
-			public Adapter caseLanguageDefinition(LanguageDefinition object) {
-				return createLanguageDefinitionAdapter();
+			public Adapter caseMoC2ASApplicationProject(MoC2ASApplicationProject object) {
+				return createMoC2ASApplicationProjectAdapter();
 			}
 			@Override
 			public Adapter caseEditorProject(EditorProject object) {
@@ -104,6 +108,10 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createAnimatorProjectAdapter();
 			}
 			@Override
+			public Adapter caseDSEProject(DSEProject object) {
+				return createDSEProjectAdapter();
+			}
+			@Override
 			public Adapter caseEMFEcoreProject(EMFEcoreProject object) {
 				return createEMFEcoreProjectAdapter();
 			}
@@ -120,10 +128,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createModHelXMoCProjectAdapter();
 			}
 			@Override
-			public Adapter caseDSEProject(DSEProject object) {
-				return createDSEProjectAdapter();
-			}
-			@Override
 			public Adapter caseECLProject(ECLProject object) {
 				return createECLProjectAdapter();
 			}
@@ -132,24 +136,32 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createTreeEditorProjectAdapter();
 			}
 			@Override
-			public Adapter caseEMFGenmodel(EMFGenmodel object) {
-				return createEMFGenmodelAdapter();
+			public Adapter caseK3DSAProject(K3DSAProject object) {
+				return createK3DSAProjectAdapter();
+			}
+			@Override
+			public Adapter caseECLMoC2ASApplicationProject(ECLMoC2ASApplicationProject object) {
+				return createECLMoC2ASApplicationProjectAdapter();
 			}
 			@Override
 			public Adapter caseFileResource(FileResource object) {
 				return createFileResourceAdapter();
 			}
 			@Override
-			public Adapter caseXTextEditorProject(XTextEditorProject object) {
-				return createXTextEditorProjectAdapter();
-			}
-			@Override
-			public Adapter caseK3DSAProject(K3DSAProject object) {
-				return createK3DSAProjectAdapter();
+			public Adapter caseEMFGenmodel(EMFGenmodel object) {
+				return createEMFGenmodelAdapter();
 			}
 			@Override
 			public Adapter caseECLFile(ECLFile object) {
 				return createECLFileAdapter();
+			}
+			@Override
+			public Adapter caseQVToFile(QVToFile object) {
+				return createQVToFileAdapter();
+			}
+			@Override
+			public Adapter caseXTextEditorProject(XTextEditorProject object) {
+				return createXTextEditorProjectAdapter();
 			}
 			@Override
 			public Adapter caseBuildOptions(BuildOptions object) {
@@ -214,6 +226,20 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDSAProjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.MoC2ASApplicationProject <em>Mo C2AS Application Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.gemoc_language_workbench.conf.MoC2ASApplicationProject
+	 * @generated
+	 */
+	public Adapter createMoC2ASApplicationProjectAdapter() {
 		return null;
 	}
 
@@ -456,6 +482,20 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject <em>ECL Mo C2AS Application Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject
+	 * @generated
+	 */
+	public Adapter createECLMoC2ASApplicationProjectAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.ECLFile <em>ECL File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -466,6 +506,20 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createECLFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.QVToFile <em>QV To File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.gemoc_language_workbench.conf.QVToFile
+	 * @generated
+	 */
+	public Adapter createQVToFileAdapter() {
 		return null;
 	}
 

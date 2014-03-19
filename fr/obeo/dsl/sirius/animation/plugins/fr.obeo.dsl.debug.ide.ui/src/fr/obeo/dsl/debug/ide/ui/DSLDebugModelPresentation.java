@@ -58,6 +58,7 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
@@ -211,8 +212,13 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 			res = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(
 					((URIEditorInput)input).getURI().lastSegment()).getId();
 		} else if (input instanceof IFileEditorInput) {
-			res = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(
-					((IFileEditorInput)input).getFile().getName()).getId();
+			IEditorDescriptor defaultEditor = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(
+					((IFileEditorInput)input).getFile().getName());
+			if (defaultEditor != null) {
+				res = defaultEditor.getId();
+			} else {
+				res = "org.eclipse.emf.ecore.presentation.ReflectiveEditorID";
+			}
 		} else {
 			res = null;
 		}
