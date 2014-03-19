@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getAnimatorProjects <em>Animator Projects</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProject <em>DSE Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getName <em>Name</em>}</li>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoc2ASApplication <em>Moc2 AS Application</em>}</li>
  * </ul>
  * </p>
  *
@@ -191,31 +190,5 @@ public interface LanguageDefinition extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Moc2 AS Application</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Moc2 AS Application</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Moc2 AS Application</em>' containment reference.
-	 * @see #setMoc2ASApplication(MoC2ASApplicationProject)
-	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_Moc2ASApplication()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	MoC2ASApplicationProject getMoc2ASApplication();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoc2ASApplication <em>Moc2 AS Application</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Moc2 AS Application</em>' containment reference.
-	 * @see #getMoc2ASApplication()
-	 * @generated
-	 */
-	void setMoc2ASApplication(MoC2ASApplicationProject value);
 
 } // LanguageDefinition

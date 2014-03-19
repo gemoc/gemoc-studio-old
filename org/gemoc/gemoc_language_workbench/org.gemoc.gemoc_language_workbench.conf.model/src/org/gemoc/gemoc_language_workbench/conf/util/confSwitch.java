@@ -91,13 +91,6 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case confPackage.MO_C2AS_APPLICATION_PROJECT: {
-				MoC2ASApplicationProject moC2ASApplicationProject = (MoC2ASApplicationProject)theEObject;
-				T result = caseMoC2ASApplicationProject(moC2ASApplicationProject);
-				if (result == null) result = caseProjectResource(moC2ASApplicationProject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case confPackage.EDITOR_PROJECT: {
 				EditorProject editorProject = (EditorProject)theEObject;
 				T result = caseEditorProject(editorProject);
@@ -197,14 +190,6 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case confPackage.ECL_MO_C2AS_APPLICATION_PROJECT: {
-				ECLMoC2ASApplicationProject eclMoC2ASApplicationProject = (ECLMoC2ASApplicationProject)theEObject;
-				T result = caseECLMoC2ASApplicationProject(eclMoC2ASApplicationProject);
-				if (result == null) result = caseDSEProject(eclMoC2ASApplicationProject);
-				if (result == null) result = caseProjectResource(eclMoC2ASApplicationProject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case confPackage.FILE_RESOURCE: {
 				FileResource fileResource = (FileResource)theEObject;
 				T result = caseFileResource(fileResource);
@@ -292,21 +277,6 @@ public class confSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDSAProject(DSAProject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mo C2AS Application Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mo C2AS Application Project</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMoC2ASApplicationProject(MoC2ASApplicationProject object) {
 		return null;
 	}
 
@@ -562,21 +532,6 @@ public class confSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseK3DSAProject(K3DSAProject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ECL Mo C2AS Application Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ECL Mo C2AS Application Project</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseECLMoC2ASApplicationProject(ECLMoC2ASApplicationProject object) {
 		return null;
 	}
 

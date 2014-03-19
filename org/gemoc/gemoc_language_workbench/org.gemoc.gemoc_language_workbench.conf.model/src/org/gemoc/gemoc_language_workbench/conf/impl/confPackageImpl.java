@@ -17,7 +17,6 @@ import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
-import org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject;
 import org.gemoc.gemoc_language_workbench.conf.ECLProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
@@ -26,7 +25,6 @@ import org.gemoc.gemoc_language_workbench.conf.FileResource;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.conf.MoC2ASApplicationProject;
 import org.gemoc.gemoc_language_workbench.conf.MoCProject;
 import org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject;
 import org.gemoc.gemoc_language_workbench.conf.ODProject;
@@ -66,13 +64,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * @generated
 	 */
 	private EClass dsaProjectEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass moC2ASApplicationProjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,13 +183,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * @generated
 	 */
 	private EClass k3DSAProjectEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass eclMoC2ASApplicationProjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -357,15 +341,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMoC2ASApplicationProject() {
-		return moC2ASApplicationProjectEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getLanguageDefinition() {
 		return languageDefinitionEClass;
 	}
@@ -431,15 +406,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 */
 	public EAttribute getLanguageDefinition_Name() {
 		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLanguageDefinition_Moc2ASApplication() {
-		return (EReference)languageDefinitionEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -591,6 +557,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getECLProject_QvtoFile() {
+		return (EReference)eclProjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTreeEditorProject() {
 		return treeEditorProjectEClass;
 	}
@@ -647,33 +622,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 */
 	public EClass getK3DSAProject() {
 		return k3DSAProjectEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getECLMoC2ASApplicationProject() {
-		return eclMoC2ASApplicationProjectEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getECLMoC2ASApplicationProject_EclFile() {
-		return (EReference)eclMoC2ASApplicationProjectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getECLMoC2ASApplicationProject_QvtoFile() {
-		return (EReference)eclMoC2ASApplicationProjectEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -779,15 +727,12 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__ANIMATOR_PROJECTS);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DSE_PROJECT);
 		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__NAME);
-		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__MOC2_AS_APPLICATION);
 
 		projectResourceEClass = createEClass(PROJECT_RESOURCE);
 		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_NAME);
 		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_KIND);
 
 		dsaProjectEClass = createEClass(DSA_PROJECT);
-
-		moC2ASApplicationProjectEClass = createEClass(MO_C2AS_APPLICATION_PROJECT);
 
 		editorProjectEClass = createEClass(EDITOR_PROJECT);
 		createEAttribute(editorProjectEClass, EDITOR_PROJECT__FILE_EXTENSION);
@@ -815,14 +760,11 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		eclProjectEClass = createEClass(ECL_PROJECT);
 		createEReference(eclProjectEClass, ECL_PROJECT__ECL_FILE);
+		createEReference(eclProjectEClass, ECL_PROJECT__QVTO_FILE);
 
 		treeEditorProjectEClass = createEClass(TREE_EDITOR_PROJECT);
 
 		k3DSAProjectEClass = createEClass(K3DSA_PROJECT);
-
-		eclMoC2ASApplicationProjectEClass = createEClass(ECL_MO_C2AS_APPLICATION_PROJECT);
-		createEReference(eclMoC2ASApplicationProjectEClass, ECL_MO_C2AS_APPLICATION_PROJECT__ECL_FILE);
-		createEReference(eclMoC2ASApplicationProjectEClass, ECL_MO_C2AS_APPLICATION_PROJECT__QVTO_FILE);
 
 		fileResourceEClass = createEClass(FILE_RESOURCE);
 		createEAttribute(fileResourceEClass, FILE_RESOURCE__LOCATION_URI);
@@ -874,7 +816,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		// Add supertypes to classes
 		dsaProjectEClass.getESuperTypes().add(this.getProjectResource());
-		moC2ASApplicationProjectEClass.getESuperTypes().add(this.getProjectResource());
 		editorProjectEClass.getESuperTypes().add(this.getProjectResource());
 		domainModelProjectEClass.getESuperTypes().add(this.getProjectResource());
 		moCProjectEClass.getESuperTypes().add(this.getProjectResource());
@@ -888,7 +829,6 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		eclProjectEClass.getESuperTypes().add(this.getDSEProject());
 		treeEditorProjectEClass.getESuperTypes().add(this.getEditorProject());
 		k3DSAProjectEClass.getESuperTypes().add(this.getDSAProject());
-		eclMoC2ASApplicationProjectEClass.getESuperTypes().add(this.getDSEProject());
 		emfGenmodelEClass.getESuperTypes().add(this.getFileResource());
 		eclFileEClass.getESuperTypes().add(this.getFileResource());
 		qvToFileEClass.getESuperTypes().add(this.getFileResource());
@@ -907,15 +847,12 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEReference(getLanguageDefinition_AnimatorProjects(), this.getAnimatorProject(), null, "animatorProjects", null, 0, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLanguageDefinition_DSEProject(), this.getDSEProject(), null, "dSEProject", null, 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLanguageDefinition_Name(), ecorePackage.getEString(), "name", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLanguageDefinition_Moc2ASApplication(), this.getMoC2ASApplicationProject(), null, "moc2ASApplication", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(projectResourceEClass, ProjectResource.class, "ProjectResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProjectResource_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProjectResource_ProjectKind(), this.getProjectKind(), "projectKind", null, 1, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dsaProjectEClass, DSAProject.class, "DSAProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(moC2ASApplicationProjectEClass, MoC2ASApplicationProject.class, "MoC2ASApplicationProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(editorProjectEClass, EditorProject.class, "EditorProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEditorProject_FileExtension(), ecorePackage.getEString(), "fileExtension", null, 1, -1, EditorProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -943,14 +880,11 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		initEClass(eclProjectEClass, ECLProject.class, "ECLProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getECLProject_EclFile(), this.getECLFile(), null, "eclFile", null, 1, 1, ECLProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getECLProject_QvtoFile(), this.getQVToFile(), null, "qvtoFile", null, 1, 1, ECLProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(treeEditorProjectEClass, TreeEditorProject.class, "TreeEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(k3DSAProjectEClass, K3DSAProject.class, "K3DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(eclMoC2ASApplicationProjectEClass, ECLMoC2ASApplicationProject.class, "ECLMoC2ASApplicationProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getECLMoC2ASApplicationProject_EclFile(), this.getECLFile(), null, "eclFile", null, 1, 1, ECLMoC2ASApplicationProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getECLMoC2ASApplicationProject_QvtoFile(), this.getQVToFile(), null, "qvtoFile", null, 1, 1, ECLMoC2ASApplicationProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fileResourceEClass, FileResource.class, "FileResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFileResource_LocationURI(), ecorePackage.getEString(), "locationURI", null, 0, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

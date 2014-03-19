@@ -348,29 +348,6 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ECLMoC2ASApplicationProjectItemProvider eclMoC2ASApplicationProjectItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createECLMoC2ASApplicationProjectAdapter() {
-		if (eclMoC2ASApplicationProjectItemProvider == null) {
-			eclMoC2ASApplicationProjectItemProvider = new ECLMoC2ASApplicationProjectItemProvider(this);
-		}
-
-		return eclMoC2ASApplicationProjectItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.ECLFile} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -548,7 +525,6 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 		if (eclProjectItemProvider != null) eclProjectItemProvider.dispose();
 		if (treeEditorProjectItemProvider != null) treeEditorProjectItemProvider.dispose();
 		if (k3DSAProjectItemProvider != null) k3DSAProjectItemProvider.dispose();
-		if (eclMoC2ASApplicationProjectItemProvider != null) eclMoC2ASApplicationProjectItemProvider.dispose();
 		if (emfGenmodelItemProvider != null) emfGenmodelItemProvider.dispose();
 		if (eclFileItemProvider != null) eclFileItemProvider.dispose();
 		if (qvToFileItemProvider != null) qvToFileItemProvider.dispose();

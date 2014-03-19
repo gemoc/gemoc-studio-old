@@ -22,14 +22,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/animatorProjects"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/dSEProject"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//LanguageDefinition/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/moc2ASApplication"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ProjectResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectKind"/>
     </genClasses>
     <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//DSAProject"/>
-    <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//MoC2ASApplicationProject"/>
     <genClasses image="false" ecoreClass="gemoc_language_workbench_conf.ecore#//EditorProject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//EditorProject/fileExtension"/>
     </genClasses>
@@ -49,13 +47,10 @@
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ModHelXMoCProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLProject">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//ECLProject/eclFile"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//ECLProject/qvtoFile"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//TreeEditorProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//K3DSAProject"/>
-    <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLMoC2ASApplicationProject">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//ECLMoC2ASApplicationProject/eclFile"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//ECLMoC2ASApplicationProject/qvtoFile"/>
-    </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//FileResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//FileResource/locationURI"/>
     </genClasses>

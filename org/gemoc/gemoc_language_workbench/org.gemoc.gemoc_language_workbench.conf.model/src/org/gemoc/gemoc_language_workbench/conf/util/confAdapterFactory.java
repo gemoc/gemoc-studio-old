@@ -84,10 +84,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createDSAProjectAdapter();
 			}
 			@Override
-			public Adapter caseMoC2ASApplicationProject(MoC2ASApplicationProject object) {
-				return createMoC2ASApplicationProjectAdapter();
-			}
-			@Override
 			public Adapter caseEditorProject(EditorProject object) {
 				return createEditorProjectAdapter();
 			}
@@ -138,10 +134,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseK3DSAProject(K3DSAProject object) {
 				return createK3DSAProjectAdapter();
-			}
-			@Override
-			public Adapter caseECLMoC2ASApplicationProject(ECLMoC2ASApplicationProject object) {
-				return createECLMoC2ASApplicationProjectAdapter();
 			}
 			@Override
 			public Adapter caseFileResource(FileResource object) {
@@ -226,20 +218,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDSAProjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.MoC2ASApplicationProject <em>Mo C2AS Application Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.MoC2ASApplicationProject
-	 * @generated
-	 */
-	public Adapter createMoC2ASApplicationProjectAdapter() {
 		return null;
 	}
 
@@ -478,20 +456,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createK3DSAProjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject <em>ECL Mo C2AS Application Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject
-	 * @generated
-	 */
-	public Adapter createECLMoC2ASApplicationProjectAdapter() {
 		return null;
 	}
 

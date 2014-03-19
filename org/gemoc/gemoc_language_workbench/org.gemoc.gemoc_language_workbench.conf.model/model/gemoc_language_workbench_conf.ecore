@@ -22,8 +22,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dSEProject" eType="#//DSEProject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="moc2ASApplication" lowerBound="1"
-        eType="#//MoC2ASApplicationProject" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectResource" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -31,8 +29,6 @@
         eType="#//ProjectKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DSAProject" abstract="true" eSuperTypes="#//ProjectResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MoC2ASApplicationProject" abstract="true"
-      eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="EditorProject" abstract="true" eSuperTypes="#//ProjectResource">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -58,15 +54,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="ECLProject" eSuperTypes="#//DSEProject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="eclFile" lowerBound="1"
         eType="#//ECLFile" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TreeEditorProject" eSuperTypes="#//EditorProject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="K3DSAProject" eSuperTypes="#//DSAProject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ECLMoC2ASApplicationProject" eSuperTypes="#//DSEProject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eclFile" lowerBound="1"
-        eType="#//ECLFile" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="qvtoFile" lowerBound="1"
         eType="#//QVToFile"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TreeEditorProject" eSuperTypes="#//EditorProject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="K3DSAProject" eSuperTypes="#//DSAProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="locationURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

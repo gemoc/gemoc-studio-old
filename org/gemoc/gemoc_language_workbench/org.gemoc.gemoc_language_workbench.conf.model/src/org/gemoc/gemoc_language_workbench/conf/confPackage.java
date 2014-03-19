@@ -114,16 +114,6 @@ public interface confPackage extends EPackage {
 	int DSA_PROJECT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.MoC2ASApplicationProjectImpl <em>Mo C2AS Application Project</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.MoC2ASApplicationProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getMoC2ASApplicationProject()
-	 * @generated
-	 */
-	int MO_C2AS_APPLICATION_PROJECT = 4;
-
-	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl <em>Language Definition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -197,22 +187,13 @@ public interface confPackage extends EPackage {
 	int LANGUAGE_DEFINITION__NAME = 6;
 
 	/**
-	 * The feature id for the '<em><b>Moc2 AS Application</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LANGUAGE_DEFINITION__MOC2_AS_APPLICATION = 7;
-
-	/**
 	 * The number of structural features of the '<em>Language Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LANGUAGE_DEFINITION_FEATURE_COUNT = 8;
+	int LANGUAGE_DEFINITION_FEATURE_COUNT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -269,33 +250,6 @@ public interface confPackage extends EPackage {
 	int DSA_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MO_C2AS_APPLICATION_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MO_C2AS_APPLICATION_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
-
-	/**
-	 * The number of structural features of the '<em>Mo C2AS Application Project</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MO_C2AS_APPLICATION_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EditorProjectImpl <em>Editor Project</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -303,7 +257,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEditorProject()
 	 * @generated
 	 */
-	int EDITOR_PROJECT = 5;
+	int EDITOR_PROJECT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -349,7 +303,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getDomainModelProject()
 	 * @generated
 	 */
-	int DOMAIN_MODEL_PROJECT = 6;
+	int DOMAIN_MODEL_PROJECT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -386,7 +340,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getMoCProject()
 	 * @generated
 	 */
-	int MO_CPROJECT = 7;
+	int MO_CPROJECT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -423,7 +377,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getCCSLMoCProject()
 	 * @generated
 	 */
-	int CCSL_MO_CPROJECT = 8;
+	int CCSL_MO_CPROJECT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -460,7 +414,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getAnimatorProject()
 	 * @generated
 	 */
-	int ANIMATOR_PROJECT = 9;
+	int ANIMATOR_PROJECT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -497,7 +451,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFEcoreProject()
 	 * @generated
 	 */
-	int EMF_ECORE_PROJECT = 11;
+	int EMF_ECORE_PROJECT = 10;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ODProjectImpl <em>OD Project</em>}' class.
@@ -507,7 +461,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getODProject()
 	 * @generated
 	 */
-	int OD_PROJECT = 12;
+	int OD_PROJECT = 11;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.SiriusAnimatorProjectImpl <em>Sirius Animator Project</em>}' class.
@@ -517,7 +471,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getSiriusAnimatorProject()
 	 * @generated
 	 */
-	int SIRIUS_ANIMATOR_PROJECT = 13;
+	int SIRIUS_ANIMATOR_PROJECT = 12;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ModHelXMoCProjectImpl <em>Mod Hel XMo CProject</em>}' class.
@@ -527,7 +481,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getModHelXMoCProject()
 	 * @generated
 	 */
-	int MOD_HEL_XMO_CPROJECT = 14;
+	int MOD_HEL_XMO_CPROJECT = 13;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DSEProjectImpl <em>DSE Project</em>}' class.
@@ -537,7 +491,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getDSEProject()
 	 * @generated
 	 */
-	int DSE_PROJECT = 10;
+	int DSE_PROJECT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -718,7 +672,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLProject()
 	 * @generated
 	 */
-	int ECL_PROJECT = 15;
+	int ECL_PROJECT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -748,13 +702,22 @@ public interface confPackage extends EPackage {
 	int ECL_PROJECT__ECL_FILE = DSE_PROJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Qvto File</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_PROJECT__QVTO_FILE = DSE_PROJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>ECL Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_PROJECT_FEATURE_COUNT = DSE_PROJECT_FEATURE_COUNT + 1;
+	int ECL_PROJECT_FEATURE_COUNT = DSE_PROJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl <em>Tree Editor Project</em>}' class.
@@ -764,7 +727,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getTreeEditorProject()
 	 * @generated
 	 */
-	int TREE_EDITOR_PROJECT = 16;
+	int TREE_EDITOR_PROJECT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -810,7 +773,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getFileResource()
 	 * @generated
 	 */
-	int FILE_RESOURCE = 19;
+	int FILE_RESOURCE = 17;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFGenmodelImpl <em>EMF Genmodel</em>}' class.
@@ -820,7 +783,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFGenmodel()
 	 * @generated
 	 */
-	int EMF_GENMODEL = 20;
+	int EMF_GENMODEL = 18;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.XTextEditorProjectImpl <em>XText Editor Project</em>}' class.
@@ -830,7 +793,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getXTextEditorProject()
 	 * @generated
 	 */
-	int XTEXT_EDITOR_PROJECT = 23;
+	int XTEXT_EDITOR_PROJECT = 21;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl <em>K3DSA Project</em>}' class.
@@ -840,7 +803,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getK3DSAProject()
 	 * @generated
 	 */
-	int K3DSA_PROJECT = 17;
+	int K3DSA_PROJECT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -868,61 +831,6 @@ public interface confPackage extends EPackage {
 	 * @ordered
 	 */
 	int K3DSA_PROJECT_FEATURE_COUNT = DSA_PROJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ECLMoC2ASApplicationProjectImpl <em>ECL Mo C2AS Application Project</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.ECLMoC2ASApplicationProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLMoC2ASApplicationProject()
-	 * @generated
-	 */
-	int ECL_MO_C2AS_APPLICATION_PROJECT = 18;
-
-	/**
-	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_MO_C2AS_APPLICATION_PROJECT__PROJECT_NAME = DSE_PROJECT__PROJECT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_MO_C2AS_APPLICATION_PROJECT__PROJECT_KIND = DSE_PROJECT__PROJECT_KIND;
-
-	/**
-	 * The feature id for the '<em><b>Ecl File</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_MO_C2AS_APPLICATION_PROJECT__ECL_FILE = DSE_PROJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Qvto File</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_MO_C2AS_APPLICATION_PROJECT__QVTO_FILE = DSE_PROJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>ECL Mo C2AS Application Project</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_MO_C2AS_APPLICATION_PROJECT_FEATURE_COUNT = DSE_PROJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
@@ -968,7 +876,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLFile()
 	 * @generated
 	 */
-	int ECL_FILE = 21;
+	int ECL_FILE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
@@ -996,7 +904,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getQVToFile()
 	 * @generated
 	 */
-	int QV_TO_FILE = 22;
+	int QV_TO_FILE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
@@ -1069,7 +977,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getBuildOptions()
 	 * @generated
 	 */
-	int BUILD_OPTIONS = 24;
+	int BUILD_OPTIONS = 22;
 
 	/**
 	 * The feature id for the '<em><b>Generate Model Loader Service</b></em>' attribute.
@@ -1115,7 +1023,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getProjectKind()
 	 * @generated
 	 */
-	int PROJECT_KIND = 25;
+	int PROJECT_KIND = 23;
 
 
 	/**
@@ -1191,16 +1099,6 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDSAProject();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.MoC2ASApplicationProject <em>Mo C2AS Application Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Mo C2AS Application Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.MoC2ASApplicationProject
-	 * @generated
-	 */
-	EClass getMoC2ASApplicationProject();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition <em>Language Definition</em>}'.
@@ -1288,17 +1186,6 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLanguageDefinition_Name();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoc2ASApplication <em>Moc2 AS Application</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Moc2 AS Application</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoc2ASApplication()
-	 * @see #getLanguageDefinition()
-	 * @generated
-	 */
-	EReference getLanguageDefinition_Moc2ASApplication();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.EditorProject <em>Editor Project</em>}'.
@@ -1466,6 +1353,17 @@ public interface confPackage extends EPackage {
 	EReference getECLProject_EclFile();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.gemoc.gemoc_language_workbench.conf.ECLProject#getQvtoFile <em>Qvto File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Qvto File</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.ECLProject#getQvtoFile()
+	 * @see #getECLProject()
+	 * @generated
+	 */
+	EReference getECLProject_QvtoFile();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject <em>Tree Editor Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1536,38 +1434,6 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getK3DSAProject();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject <em>ECL Mo C2AS Application Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>ECL Mo C2AS Application Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject
-	 * @generated
-	 */
-	EClass getECLMoC2ASApplicationProject();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject#getEclFile <em>Ecl File</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Ecl File</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject#getEclFile()
-	 * @see #getECLMoC2ASApplicationProject()
-	 * @generated
-	 */
-	EReference getECLMoC2ASApplicationProject_EclFile();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject#getQvtoFile <em>Qvto File</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Qvto File</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLMoC2ASApplicationProject#getQvtoFile()
-	 * @see #getECLMoC2ASApplicationProject()
-	 * @generated
-	 */
-	EReference getECLMoC2ASApplicationProject_QvtoFile();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ECLFile <em>ECL File</em>}'.
@@ -1727,16 +1593,6 @@ public interface confPackage extends EPackage {
 		EClass DSA_PROJECT = eINSTANCE.getDSAProject();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.MoC2ASApplicationProjectImpl <em>Mo C2AS Application Project</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.MoC2ASApplicationProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getMoC2ASApplicationProject()
-		 * @generated
-		 */
-		EClass MO_C2AS_APPLICATION_PROJECT = eINSTANCE.getMoC2ASApplicationProject();
-
-		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl <em>Language Definition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1801,14 +1657,6 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LANGUAGE_DEFINITION__NAME = eINSTANCE.getLanguageDefinition_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Moc2 AS Application</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LANGUAGE_DEFINITION__MOC2_AS_APPLICATION = eINSTANCE.getLanguageDefinition_Moc2ASApplication();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EditorProjectImpl <em>Editor Project</em>}' class.
@@ -1961,6 +1809,14 @@ public interface confPackage extends EPackage {
 		EReference ECL_PROJECT__ECL_FILE = eINSTANCE.getECLProject_EclFile();
 
 		/**
+		 * The meta object literal for the '<em><b>Qvto File</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ECL_PROJECT__QVTO_FILE = eINSTANCE.getECLProject_QvtoFile();
+
+		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl <em>Tree Editor Project</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2025,32 +1881,6 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass K3DSA_PROJECT = eINSTANCE.getK3DSAProject();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ECLMoC2ASApplicationProjectImpl <em>ECL Mo C2AS Application Project</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.ECLMoC2ASApplicationProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLMoC2ASApplicationProject()
-		 * @generated
-		 */
-		EClass ECL_MO_C2AS_APPLICATION_PROJECT = eINSTANCE.getECLMoC2ASApplicationProject();
-
-		/**
-		 * The meta object literal for the '<em><b>Ecl File</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ECL_MO_C2AS_APPLICATION_PROJECT__ECL_FILE = eINSTANCE.getECLMoC2ASApplicationProject_EclFile();
-
-		/**
-		 * The meta object literal for the '<em><b>Qvto File</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ECL_MO_C2AS_APPLICATION_PROJECT__QVTO_FILE = eINSTANCE.getECLMoC2ASApplicationProject_QvtoFile();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ECLFileImpl <em>ECL File</em>}' class.

@@ -132,15 +132,6 @@ public interface confFactory extends EFactory {
 	K3DSAProject createK3DSAProject();
 
 	/**
-	 * Returns a new object of class '<em>ECL Mo C2AS Application Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ECL Mo C2AS Application Project</em>'.
-	 * @generated
-	 */
-	ECLMoC2ASApplicationProject createECLMoC2ASApplicationProject();
-
-	/**
 	 * Returns a new object of class '<em>ECL File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

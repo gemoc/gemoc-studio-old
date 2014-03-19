@@ -67,7 +67,6 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 			case confPackage.ECL_PROJECT: return createECLProject();
 			case confPackage.TREE_EDITOR_PROJECT: return createTreeEditorProject();
 			case confPackage.K3DSA_PROJECT: return createK3DSAProject();
-			case confPackage.ECL_MO_C2AS_APPLICATION_PROJECT: return createECLMoC2ASApplicationProject();
 			case confPackage.EMF_GENMODEL: return createEMFGenmodel();
 			case confPackage.ECL_FILE: return createECLFile();
 			case confPackage.QV_TO_FILE: return createQVToFile();
@@ -227,16 +226,6 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	public K3DSAProject createK3DSAProject() {
 		K3DSAProjectImpl k3DSAProject = new K3DSAProjectImpl();
 		return k3DSAProject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ECLMoC2ASApplicationProject createECLMoC2ASApplicationProject() {
-		ECLMoC2ASApplicationProjectImpl eclMoC2ASApplicationProject = new ECLMoC2ASApplicationProjectImpl();
-		return eclMoC2ASApplicationProject;
 	}
 
 	/**
