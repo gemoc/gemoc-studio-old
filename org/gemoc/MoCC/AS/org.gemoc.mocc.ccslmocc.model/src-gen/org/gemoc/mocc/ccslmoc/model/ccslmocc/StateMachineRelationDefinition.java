@@ -17,7 +17,7 @@ package org.gemoc.mocc.ccslmoc.model.ccslmocc;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ExternalRelationDefinition;
 
-import org.gemoc.mocc.cometafsm.model.cometafsm.StateMachineDefinition;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition;
 
 /**
  * <!-- begin-user-doc -->

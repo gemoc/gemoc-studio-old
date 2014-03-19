@@ -16,13 +16,14 @@
 package org.gemoc.mocc.ccslmoc.model.ccslmocc.impl;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.BindableEntity;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.StartClock;
-import org.gemoc.mocc.cometafsm.model.cometafsm.impl.AbstractActionImpl;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.impl.AbstractActionImpl;
 
 /**
  * <!-- begin-user-doc -->

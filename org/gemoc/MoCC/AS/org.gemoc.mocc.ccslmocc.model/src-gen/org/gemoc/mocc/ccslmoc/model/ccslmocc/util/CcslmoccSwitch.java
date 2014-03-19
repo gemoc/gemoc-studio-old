@@ -18,19 +18,14 @@ package org.gemoc.mocc.ccslmoc.model.ccslmocc.util;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ExternalRelationDefinition;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Library;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDefinition;
-
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.NamedElement;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.*;
-
-import org.gemoc.mocc.cometafsm.model.cometafsm.AbstractAction;
-import org.gemoc.mocc.cometafsm.model.cometafsm.CometaElement;
-import org.gemoc.mocc.cometafsm.model.cometafsm.StateMachineDefinition;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.AbstractAction;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition;
 
 /**
  * <!-- begin-user-doc -->
@@ -97,6 +92,16 @@ public class CcslmoccSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION: {
+				StateMachineRelationDefinition stateMachineRelationDefinition = (StateMachineRelationDefinition)theEObject;
+				T result = caseStateMachineRelationDefinition(stateMachineRelationDefinition);
+				if (result == null) result = caseExternalRelationDefinition(stateMachineRelationDefinition);
+				if (result == null) result = caseStateMachineDefinition(stateMachineRelationDefinition);
+				if (result == null) result = caseRelationDefinition(stateMachineRelationDefinition);
+				if (result == null) result = caseNamedElement(stateMachineRelationDefinition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CcslmoccPackage.FINISH_CLOCK: {
 				FinishClock finishClock = (FinishClock)theEObject;
 				T result = caseFinishClock(finishClock);
@@ -108,17 +113,6 @@ public class CcslmoccSwitch<T> extends Switch<T> {
 				StartClock startClock = (StartClock)theEObject;
 				T result = caseStartClock(startClock);
 				if (result == null) result = caseAbstractAction(startClock);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION: {
-				StateMachineRelationDefinition stateMachineRelationDefinition = (StateMachineRelationDefinition)theEObject;
-				T result = caseStateMachineRelationDefinition(stateMachineRelationDefinition);
-				if (result == null) result = caseExternalRelationDefinition(stateMachineRelationDefinition);
-				if (result == null) result = caseStateMachineDefinition(stateMachineRelationDefinition);
-				if (result == null) result = caseRelationDefinition(stateMachineRelationDefinition);
-				if (result == null) result = caseCometaElement(stateMachineRelationDefinition);
-				if (result == null) result = caseNamedElement(stateMachineRelationDefinition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -258,21 +252,6 @@ public class CcslmoccSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseExternalRelationDefinition(ExternalRelationDefinition object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Cometa Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Cometa Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCometaElement(CometaElement object) {
 		return null;
 	}
 

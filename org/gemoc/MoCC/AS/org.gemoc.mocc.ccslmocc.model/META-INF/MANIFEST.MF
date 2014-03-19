@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.gemoc.mocc.ccslmocc.model;singleton:=true
-Bundle-Version: 0.0.1
+Bundle-Version: 0.1.0
 Bundle-ClassPath: .
 Bundle-Activator: org.gemoc.mocc.ccslmocc.model.PluginActivator
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.gemoc.mocc.cometafsm.model;bundle-version="0.0.1";visibility:=reexport,
+ org.gemoc.mocc.fsmkernel.model;visibility:=reexport;bundle-version="0.0.1",
  fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.mocc.ccslmoc.model.ccslmocc,

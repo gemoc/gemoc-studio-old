@@ -19,16 +19,26 @@
   * for timesquare validation.
  */
  import ccslmocc : 'http://org.gemoc.mocc.ccslmocc/1.0#/' 
+ /*import '/resource/org.gemoc.mocc.ccslmocc.model/model/Ccslmocc.ecore'*/
  
  package ccslmocc
  
- context ccslmocc::StateRelationBasedLibrary
+ context ccslmocc::StateRelationBasedLibrary 
  
  /*
   * The specific state machine library must contain state machine relation definitions
  */
  inv LibraryUsesStateMachineRelationDefinition(
- 	'State machine relation definition library ' +self.name+' must contain state machines'): 
+ 	'State machine relation definition library ' +self.name+' must contain a state machine'): 
+ 	self.relationLibraries.relationDefinitions->includes(oclIsTypeOf(StateMachineRelationDefinition))
+ 	
+ 	 
+ context ccslmocc::StrictStateRelationBasedLibrary 
+  /*
+  * The specific strict state machine library must only contain state machine relation definitions
+ */
+ inv StrictLibraryUsesStateMachineRelationDefinition(
+ 	'State machine relation definition library ' +self.name+' must only contain state machines'): 
  	self.relationLibraries.relationDefinitions->forAll(oclIsTypeOf(StateMachineRelationDefinition))
  
  endpackage

@@ -1,0 +1,75 @@
+/**
+ * Copyright (c) 2012-2016 GEMOC consortium.
+ * 
+ * http://www.gemoc.org
+ * 
+ * Contributors:
+ *   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
+ *   
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *   
+ * $Id$
+ */
+ 
+ /*
+  * This file provides additional validation constraints on FSMModel ecore 
+  * and ccsl metamodels for timesquare validation.
+ */
+ import ccslmocc : 'http://org.gemoc.mocc.ccslmocc/1.0#/' 
+ import FSMModel : 'http://org.gemoc.mocc.fsmmodel/1.0'
+ import ecore : 'http://www.eclipse.org/emf/2002/Ecore#/'
+ import TimeModel : 'http://fr.inria.aoste.timemodel'
+ import BasicType : 'http://fr.inria.aoste.timemodel.basicTypes#/'
+ import ClassicalExpression : 'http://fr.inria.aoste.timemodel.classicalexpression'
+ import ClockExpressionAndRelation : 'http://fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation'
+ 
+ package FSMModel
+ 
+  /*
+  * The trigger accept either a true list or a false
+ */
+ context FSMModel::Trigger
+ inv EitherTrueOrFalseTriggers(
+ 	'Triggers in transition '+self.oclAsType(ecore::EObject).eContainer().oclAsType(FSMModel::Transition).name
+ 	+' (fsm: '+ self.oclAsType(ecore::EObject).eContainer().eContainer().oclAsType(ccslmocc::StateMachineRelationDefinition).name+') must be either true or false'): 
+ 	((self.trueTriggers->isEmpty() implies (not self.falseTriggers->isEmpty()))and 
+ 	(self.falseTriggers->isEmpty() implies (not self.trueTriggers->isEmpty())) and
+ 	(not self.trueTriggers->appendAll(self.falseTriggers)->isEmpty()))
+ 
+ endpackage
+ 
+ package ccslmocc
+ 
+  /*
+  * Types are restricted to non real
+  */
+ 
+ context ccslmocc::StateRelationBasedLibrary
+ inv nonRealTypesUsedInTheModel(
+ 	'The library '+self.name+' cannot use Real'): 
+ 	self.oclAsType(ecore::EObject).eAllContents()->selectByKind(BasicType::BasicType::Real).oclAsType(ecore::EObject)->asSet()->union(self.oclAsType(ecore::EObject).eAllContents()->selectByKind(BasicType::BasicType::RealElement).oclAsType(ecore::EObject)->asSet())->union(self.oclAsType(ecore::EObject).eAllContents()->selectByKind(ClassicalExpression::RealExpression).oclAsType(ecore::EObject)->asSet())->isEmpty()
+
+ 
+ /*
+  * Action Start clock acts on clock
+  */
+  
+ context ccslmocc::StartClock
+ inv startClockBindsAClockType(
+ 	'The start clock action in transition '+self.oclAsType(ecore::EObject).eContainer().oclAsType(FSMModel::Transition).name+' is linked to a wrong type ('+self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclAsType(ecore::EObject).eClass().name+')'):  
+ 	self.clock->oclIsTypeOf(ClockExpressionAndRelation::AbstractEntity) and (self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::BasicType::DiscreteClockType)or self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::BasicType::DenseClockType))
+ 	
+ /*
+  * Action Finish clock acts on clock
+  */
+  
+ context ccslmocc::StartClock
+ inv finishClockBindsAClockType(
+ 	'The finish clock action in transition '+self.oclAsType(ecore::EObject).eContainer().oclAsType(FSMModel::Transition).name+' is linked to a wrong type ('+self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclAsType(ecore::EObject).eClass().name+')'):  
+ 	self.clock->oclIsTypeOf(ClockExpressionAndRelation::AbstractEntity) and (self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::BasicType::DiscreteClockType)or self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::BasicType::DenseClockType))
+ 	
+ 	
+ endpackage	

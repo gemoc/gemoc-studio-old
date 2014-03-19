@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Bundle-Name: org.gemoc.mocc.ccslmocc.model.design
-Bundle-SymbolicName: org.gemoc.mocc.ccslmocc.model.design;singleton=true
-Bundle-Version: 0.0.1
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: org.gemoc.mocc.ccslmocc.model.design;singleton:=true
+Bundle-Version: 0.1.0
 Bundle-Activator: org.gemoc.mocc.ccslmocc.model.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -17,7 +17,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.compare;bundle-version="3.0.1",
  org.eclipse.emf.compare.rcp;bundle-version="2.1.1",
  org.eclipse.emf.diffmerge;bundle-version="0.2.0",
- org.gemoc.mocc.cometafsm.model.design;bundle-version="0.0.1"
+ org.gemoc.mocc.fsmkernel.model.design;bundle-version="0.0.1",
+ org.eclipse.sirius.common;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Bundle-Vendor: ENSTA Bretagne
+Bundle-Vendor: %Bundle-Vendor
+Bundle-ManifestVersion: 2
+Export-Package: org.gemoc.mocc.ccslmocc.model.design,
+ org.gemoc.mocc.ccslmocc.model.design.actions,
+ org.gemoc.mocc.ccslmocc.model.design.services

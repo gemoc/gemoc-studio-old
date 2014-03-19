@@ -16,7 +16,8 @@
 package org.gemoc.mocc.ccslmoc.model.ccslmocc;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.BindableEntity;
-import org.gemoc.mocc.cometafsm.model.cometafsm.AbstractAction;
+
+import org.gemoc.mocc.fsmkernel.model.FSMModel.AbstractAction;
 
 /**
  * <!-- begin-user-doc -->

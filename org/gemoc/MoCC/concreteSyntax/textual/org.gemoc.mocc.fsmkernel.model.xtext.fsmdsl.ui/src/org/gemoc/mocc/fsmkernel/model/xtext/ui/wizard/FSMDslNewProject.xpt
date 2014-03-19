@@ -1,0 +1,14 @@
+«IMPORT org::gemoc::mocc::fsmkernel::model::xtext::ui::wizard»
+
+«DEFINE main FOR FSMDslProjectInfo»
+«EXPAND model FOR this»
+«ENDDEFINE»
+
+«DEFINE model FOR FSMDslProjectInfo»
+«FILE "src/model/Model.fsmdsl"-»
+/*
+ * This is an example model
+ */
+Hello Xtext!
+«ENDFILE»
+«ENDDEFINE»

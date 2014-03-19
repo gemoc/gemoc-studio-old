@@ -10,6 +10,6 @@ package org.gemoc.mocc.ccslmocc.model.xtext.scoping;
  * on how and when to use it 
  *
  */
-public class MoCDslScopeProvider extends org.gemoc.mocc.cometafsm.model.xtext.scoping.FSMDslScopeProvider {
+public class MoCDslScopeProvider extends org.gemoc.mocc.fsmkernel.model.xtext.scoping.FSMDslScopeProvider {
 
 }

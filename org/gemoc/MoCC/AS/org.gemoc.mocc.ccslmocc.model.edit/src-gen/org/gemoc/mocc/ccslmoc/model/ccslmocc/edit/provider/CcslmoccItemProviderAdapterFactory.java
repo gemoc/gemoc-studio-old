@@ -276,9 +276,9 @@ public class CcslmoccItemProviderAdapterFactory extends CcslmoccAdapterFactory i
 	 */
 	public void dispose() {
 		if (stateRelationBasedLibraryItemProvider != null) stateRelationBasedLibraryItemProvider.dispose();
+		if (stateMachineRelationDefinitionItemProvider != null) stateMachineRelationDefinitionItemProvider.dispose();
 		if (finishClockItemProvider != null) finishClockItemProvider.dispose();
 		if (startClockItemProvider != null) startClockItemProvider.dispose();
-		if (stateMachineRelationDefinitionItemProvider != null) stateMachineRelationDefinitionItemProvider.dispose();
 	}
 
 }

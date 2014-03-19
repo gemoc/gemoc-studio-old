@@ -21,27 +21,20 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
-
-import org.gemoc.mocc.cometafsm.model.cometafsm.CometaElement;
-import org.gemoc.mocc.cometafsm.model.cometafsm.CometafsmPackage;
-import org.gemoc.mocc.cometafsm.model.cometafsm.DeclarationBlock;
-import org.gemoc.mocc.cometafsm.model.cometafsm.State;
-import org.gemoc.mocc.cometafsm.model.cometafsm.StateMachineDefinition;
-import org.gemoc.mocc.cometafsm.model.cometafsm.Transition;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.DeclarationBlock;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.State;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,8 +43,6 @@ import org.gemoc.mocc.cometafsm.model.cometafsm.Transition;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getDefinition <em>Definition</em>}</li>
  *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getDeclarationBlock <em>Declaration Block</em>}</li>
  *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getTransitions <em>Transitions</em>}</li>
  *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getStates <em>States</em>}</li>
@@ -63,46 +54,6 @@ import org.gemoc.mocc.cometafsm.model.cometafsm.Transition;
  * @generated
  */
 public class StateMachineRelationDefinitionImpl extends ExternalRelationDefinitionImpl implements StateMachineRelationDefinition {
-	/**
-	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVersion()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VERSION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVersion()
-	 * @generated
-	 * @ordered
-	 */
-	protected String version = VERSION_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DEFINITION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected String definition = DEFINITION_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getDeclarationBlock() <em>Declaration Block</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -170,48 +121,6 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 	@Override
 	protected EClass eStaticClass() {
 		return CcslmoccPackage.Literals.STATE_MACHINE_RELATION_DEFINITION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getVersion() {
-		return version;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setVersion(String newVersion) {
-		String oldVersion = version;
-		version = newVersion;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__VERSION, oldVersion, version));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getDefinition() {
-		return definition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDefinition(String newDefinition) {
-		String oldDefinition = definition;
-		definition = newDefinition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DEFINITION, oldDefinition, definition));
 	}
 
 	/**
@@ -357,10 +266,6 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__VERSION:
-				return getVersion();
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DEFINITION:
-				return getDefinition();
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK:
 				return getDeclarationBlock();
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS:
@@ -385,12 +290,6 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__VERSION:
-				setVersion((String)newValue);
-				return;
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DEFINITION:
-				setDefinition((String)newValue);
-				return;
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK:
 				setDeclarationBlock((DeclarationBlock)newValue);
 				return;
@@ -421,12 +320,6 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__VERSION:
-				setVersion(VERSION_EDEFAULT);
-				return;
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DEFINITION:
-				setDefinition(DEFINITION_EDEFAULT);
-				return;
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK:
 				setDeclarationBlock((DeclarationBlock)null);
 				return;
@@ -454,10 +347,6 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__VERSION:
-				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DEFINITION:
-				return DEFINITION_EDEFAULT == null ? definition != null : !DEFINITION_EDEFAULT.equals(definition);
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK:
 				return declarationBlock != null;
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS:
@@ -479,20 +368,13 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == CometaElement.class) {
-			switch (derivedFeatureID) {
-				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__VERSION: return CometafsmPackage.COMETA_ELEMENT__VERSION;
-				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DEFINITION: return CometafsmPackage.COMETA_ELEMENT__DEFINITION;
-				default: return -1;
-			}
-		}
 		if (baseClass == StateMachineDefinition.class) {
 			switch (derivedFeatureID) {
-				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK: return CometafsmPackage.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK;
-				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS: return CometafsmPackage.STATE_MACHINE_DEFINITION__TRANSITIONS;
-				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES: return CometafsmPackage.STATE_MACHINE_DEFINITION__STATES;
-				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE: return CometafsmPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE;
-				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES: return CometafsmPackage.STATE_MACHINE_DEFINITION__FINAL_STATES;
+				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK: return FSMModelPackage.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK;
+				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS: return FSMModelPackage.STATE_MACHINE_DEFINITION__TRANSITIONS;
+				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES: return FSMModelPackage.STATE_MACHINE_DEFINITION__STATES;
+				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE: return FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE;
+				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES: return FSMModelPackage.STATE_MACHINE_DEFINITION__FINAL_STATES;
 				default: return -1;
 			}
 		}
@@ -506,42 +388,17 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == CometaElement.class) {
-			switch (baseFeatureID) {
-				case CometafsmPackage.COMETA_ELEMENT__VERSION: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__VERSION;
-				case CometafsmPackage.COMETA_ELEMENT__DEFINITION: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DEFINITION;
-				default: return -1;
-			}
-		}
 		if (baseClass == StateMachineDefinition.class) {
 			switch (baseFeatureID) {
-				case CometafsmPackage.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK;
-				case CometafsmPackage.STATE_MACHINE_DEFINITION__TRANSITIONS: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS;
-				case CometafsmPackage.STATE_MACHINE_DEFINITION__STATES: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES;
-				case CometafsmPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE;
-				case CometafsmPackage.STATE_MACHINE_DEFINITION__FINAL_STATES: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES;
+				case FSMModelPackage.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK;
+				case FSMModelPackage.STATE_MACHINE_DEFINITION__TRANSITIONS: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS;
+				case FSMModelPackage.STATE_MACHINE_DEFINITION__STATES: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES;
+				case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE;
+				case FSMModelPackage.STATE_MACHINE_DEFINITION__FINAL_STATES: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES;
 				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (version: ");
-		result.append(version);
-		result.append(", definition: ");
-		result.append(definition);
-		result.append(')');
-		return result.toString();
 	}
 
 } //StateMachineRelationDefinitionImpl

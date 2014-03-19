@@ -20,8 +20,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.gemoc.mocc.cometafsm.model.cometafsm.CometafsmPackage;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -154,25 +153,7 @@ public interface CcslmoccPackage extends EPackage {
 	 * @see org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.CcslmoccPackageImpl#getFinishClock()
 	 * @generated
 	 */
-	int FINISH_CLOCK = 1;
-
-	/**
-	 * The feature id for the '<em><b>Clock</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FINISH_CLOCK__CLOCK = CometafsmPackage.ABSTRACT_ACTION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Finish Clock</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FINISH_CLOCK_FEATURE_COUNT = CometafsmPackage.ABSTRACT_ACTION_FEATURE_COUNT + 1;
+	int FINISH_CLOCK = 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StartClockImpl <em>Start Clock</em>}' class.
@@ -182,25 +163,7 @@ public interface CcslmoccPackage extends EPackage {
 	 * @see org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.CcslmoccPackageImpl#getStartClock()
 	 * @generated
 	 */
-	int START_CLOCK = 2;
-
-	/**
-	 * The feature id for the '<em><b>Clock</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int START_CLOCK__CLOCK = CometafsmPackage.ABSTRACT_ACTION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Start Clock</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int START_CLOCK_FEATURE_COUNT = CometafsmPackage.ABSTRACT_ACTION_FEATURE_COUNT + 1;
+	int START_CLOCK = 3;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl <em>State Machine Relation Definition</em>}' class.
@@ -210,7 +173,7 @@ public interface CcslmoccPackage extends EPackage {
 	 * @see org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.CcslmoccPackageImpl#getStateMachineRelationDefinition()
 	 * @generated
 	 */
-	int STATE_MACHINE_RELATION_DEFINITION = 3;
+	int STATE_MACHINE_RELATION_DEFINITION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -231,31 +194,13 @@ public interface CcslmoccPackage extends EPackage {
 	int STATE_MACHINE_RELATION_DEFINITION__DECLARATION = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION__DECLARATION;
 
 	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE_MACHINE_RELATION_DEFINITION__VERSION = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE_MACHINE_RELATION_DEFINITION__DEFINITION = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Declaration Block</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 2;
+	int STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Transitions</b></em>' containment reference list.
@@ -264,7 +209,7 @@ public interface CcslmoccPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 3;
+	int STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>States</b></em>' containment reference list.
@@ -273,7 +218,7 @@ public interface CcslmoccPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_RELATION_DEFINITION__STATES = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 4;
+	int STATE_MACHINE_RELATION_DEFINITION__STATES = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Initial State</b></em>' reference.
@@ -282,7 +227,7 @@ public interface CcslmoccPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 5;
+	int STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Final States</b></em>' reference list.
@@ -291,7 +236,7 @@ public interface CcslmoccPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 6;
+	int STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>State Machine Relation Definition</em>' class.
@@ -300,7 +245,43 @@ public interface CcslmoccPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_RELATION_DEFINITION_FEATURE_COUNT = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 7;
+	int STATE_MACHINE_RELATION_DEFINITION_FEATURE_COUNT = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Clock</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINISH_CLOCK__CLOCK = FSMModelPackage.ABSTRACT_ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Finish Clock</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINISH_CLOCK_FEATURE_COUNT = FSMModelPackage.ABSTRACT_ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Clock</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START_CLOCK__CLOCK = FSMModelPackage.ABSTRACT_ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Start Clock</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START_CLOCK_FEATURE_COUNT = FSMModelPackage.ABSTRACT_ACTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>State Machine Relation Definition</em>' class.
