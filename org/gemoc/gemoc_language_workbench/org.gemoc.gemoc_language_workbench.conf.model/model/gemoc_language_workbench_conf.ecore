@@ -55,7 +55,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="eclFile" lowerBound="1"
         eType="#//ECLFile" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="qvtoFile" lowerBound="1"
-        eType="#//QVToFile"/>
+        eType="#//QVToFile" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TreeEditorProject" eSuperTypes="#//EditorProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="K3DSAProject" eSuperTypes="#//DSAProject"/>

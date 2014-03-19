@@ -46,8 +46,8 @@
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ModHelXMoCProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ECLProject">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//ECLProject/eclFile"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//ECLProject/qvtoFile"/>
+      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//ECLProject/eclFile"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//ECLProject/qvtoFile"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//TreeEditorProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//K3DSAProject"/>

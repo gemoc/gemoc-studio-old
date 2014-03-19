@@ -57,9 +57,32 @@ public class ECLProjectItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addEclFilePropertyDescriptor(object);
 			addQvtoFilePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Ecl File feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEclFilePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ECLProject_eclFile_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ECLProject_eclFile_feature", "_UI_ECLProject_type"),
+				 confPackage.Literals.ECL_PROJECT__ECL_FILE,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -97,6 +120,7 @@ public class ECLProjectItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(confPackage.Literals.ECL_PROJECT__ECL_FILE);
+			childrenFeatures.add(confPackage.Literals.ECL_PROJECT__QVTO_FILE);
 		}
 		return childrenFeatures;
 	}
@@ -152,6 +176,7 @@ public class ECLProjectItemProvider
 
 		switch (notification.getFeatureID(ECLProject.class)) {
 			case confPackage.ECL_PROJECT__ECL_FILE:
+			case confPackage.ECL_PROJECT__QVTO_FILE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -173,6 +198,11 @@ public class ECLProjectItemProvider
 			(createChildParameter
 				(confPackage.Literals.ECL_PROJECT__ECL_FILE,
 				 confFactory.eINSTANCE.createECLFile()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(confPackage.Literals.ECL_PROJECT__QVTO_FILE,
+				 confFactory.eINSTANCE.createQVToFile()));
 	}
 
 }

@@ -39,7 +39,7 @@ public class ECLProjectImpl extends DSEProjectImpl implements ECLProject {
 	protected ECLFile eclFile;
 
 	/**
-	 * The cached value of the '{@link #getQvtoFile() <em>Qvto File</em>}' reference.
+	 * The cached value of the '{@link #getQvtoFile() <em>Qvto File</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getQvtoFile()
@@ -116,14 +116,6 @@ public class ECLProjectImpl extends DSEProjectImpl implements ECLProject {
 	 * @generated
 	 */
 	public QVToFile getQvtoFile() {
-		if (qvtoFile != null && qvtoFile.eIsProxy()) {
-			InternalEObject oldQvtoFile = (InternalEObject)qvtoFile;
-			qvtoFile = (QVToFile)eResolveProxy(oldQvtoFile);
-			if (qvtoFile != oldQvtoFile) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, confPackage.ECL_PROJECT__QVTO_FILE, oldQvtoFile, qvtoFile));
-			}
-		}
 		return qvtoFile;
 	}
 
@@ -132,8 +124,14 @@ public class ECLProjectImpl extends DSEProjectImpl implements ECLProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QVToFile basicGetQvtoFile() {
-		return qvtoFile;
+	public NotificationChain basicSetQvtoFile(QVToFile newQvtoFile, NotificationChain msgs) {
+		QVToFile oldQvtoFile = qvtoFile;
+		qvtoFile = newQvtoFile;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, confPackage.ECL_PROJECT__QVTO_FILE, oldQvtoFile, newQvtoFile);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -142,10 +140,17 @@ public class ECLProjectImpl extends DSEProjectImpl implements ECLProject {
 	 * @generated
 	 */
 	public void setQvtoFile(QVToFile newQvtoFile) {
-		QVToFile oldQvtoFile = qvtoFile;
-		qvtoFile = newQvtoFile;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.ECL_PROJECT__QVTO_FILE, oldQvtoFile, qvtoFile));
+		if (newQvtoFile != qvtoFile) {
+			NotificationChain msgs = null;
+			if (qvtoFile != null)
+				msgs = ((InternalEObject)qvtoFile).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - confPackage.ECL_PROJECT__QVTO_FILE, null, msgs);
+			if (newQvtoFile != null)
+				msgs = ((InternalEObject)newQvtoFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - confPackage.ECL_PROJECT__QVTO_FILE, null, msgs);
+			msgs = basicSetQvtoFile(newQvtoFile, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.ECL_PROJECT__QVTO_FILE, newQvtoFile, newQvtoFile));
 	}
 
 	/**
@@ -158,6 +163,8 @@ public class ECLProjectImpl extends DSEProjectImpl implements ECLProject {
 		switch (featureID) {
 			case confPackage.ECL_PROJECT__ECL_FILE:
 				return basicSetEclFile(null, msgs);
+			case confPackage.ECL_PROJECT__QVTO_FILE:
+				return basicSetQvtoFile(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -173,8 +180,7 @@ public class ECLProjectImpl extends DSEProjectImpl implements ECLProject {
 			case confPackage.ECL_PROJECT__ECL_FILE:
 				return getEclFile();
 			case confPackage.ECL_PROJECT__QVTO_FILE:
-				if (resolve) return getQvtoFile();
-				return basicGetQvtoFile();
+				return getQvtoFile();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

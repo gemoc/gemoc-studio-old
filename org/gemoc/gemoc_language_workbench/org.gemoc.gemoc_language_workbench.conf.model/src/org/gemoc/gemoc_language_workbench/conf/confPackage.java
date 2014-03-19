@@ -702,7 +702,7 @@ public interface confPackage extends EPackage {
 	int ECL_PROJECT__ECL_FILE = DSE_PROJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Qvto File</b></em>' reference.
+	 * The feature id for the '<em><b>Qvto File</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1353,10 +1353,10 @@ public interface confPackage extends EPackage {
 	EReference getECLProject_EclFile();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.gemoc_language_workbench.conf.ECLProject#getQvtoFile <em>Qvto File</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.ECLProject#getQvtoFile <em>Qvto File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Qvto File</em>'.
+	 * @return the meta object for the containment reference '<em>Qvto File</em>'.
 	 * @see org.gemoc.gemoc_language_workbench.conf.ECLProject#getQvtoFile()
 	 * @see #getECLProject()
 	 * @generated
@@ -1809,7 +1809,7 @@ public interface confPackage extends EPackage {
 		EReference ECL_PROJECT__ECL_FILE = eINSTANCE.getECLProject_EclFile();
 
 		/**
-		 * The meta object literal for the '<em><b>Qvto File</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Qvto File</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
