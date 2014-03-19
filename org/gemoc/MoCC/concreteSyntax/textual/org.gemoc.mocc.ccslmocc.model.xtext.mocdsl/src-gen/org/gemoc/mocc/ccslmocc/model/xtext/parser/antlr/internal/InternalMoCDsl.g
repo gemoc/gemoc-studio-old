@@ -466,16 +466,16 @@ ruleCCSLStateMachineRelationDefinition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getInitialStateStateCrossReference_8_1_0()); 
+	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getInitialStatesStateCrossReference_8_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))(	otherlv_10='finals: ' 
+))(	otherlv_10=',' 
     {
-    	newLeafNode(otherlv_10, grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalsKeyword_9_0());
+    	newLeafNode(otherlv_10, grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getCommaKeyword_9_0());
     }
 (
 (
@@ -488,16 +488,16 @@ ruleCCSLStateMachineRelationDefinition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalStatesStateCrossReference_9_1_0()); 
+	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getInitialStatesStateCrossReference_9_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_12=',' 
+))*(	otherlv_12='finals: ' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getCommaKeyword_9_2_0());
+    	newLeafNode(otherlv_12, grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalsKeyword_10_0());
     }
 (
 (
@@ -510,7 +510,29 @@ ruleCCSLStateMachineRelationDefinition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalStatesStateCrossReference_9_2_1_0()); 
+	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalStatesStateCrossReference_10_1_0()); 
+	    }
+		ruleEString		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_14=',' 
+    {
+    	newLeafNode(otherlv_14, grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getCommaKeyword_10_2_0());
+    }
+(
+(
+		{ 
+		  /* */ 
+		}
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCCSLStateMachineRelationDefinitionRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalStatesStateCrossReference_10_2_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
@@ -520,16 +542,16 @@ ruleCCSLStateMachineRelationDefinition returns [EObject current=null]
 ))*)?((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getStatesStateParserRuleCall_10_0_0()); 
+	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getStatesStateParserRuleCall_11_0_0()); 
 	    }
-		lv_states_14_0=ruleState		{
+		lv_states_16_0=ruleState		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCCSLStateMachineRelationDefinitionRule());
 	        }
        		add(
        			$current, 
        			"states",
-        		lv_states_14_0, 
+        		lv_states_16_0, 
         		"State");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -539,24 +561,24 @@ ruleCCSLStateMachineRelationDefinition returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getTransitionsTransitionParserRuleCall_10_1_0()); 
+	        newCompositeNode(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getTransitionsTransitionParserRuleCall_11_1_0()); 
 	    }
-		lv_transitions_15_0=ruleTransition		{
+		lv_transitions_17_0=ruleTransition		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCCSLStateMachineRelationDefinitionRule());
 	        }
        		add(
        			$current, 
        			"transitions",
-        		lv_transitions_15_0, 
+        		lv_transitions_17_0, 
         		"Transition");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))+	otherlv_16='}' 
+))+	otherlv_18='}' 
     {
-    	newLeafNode(otherlv_16, grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getRightCurlyBracketKeyword_11());
+    	newLeafNode(otherlv_18, grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getRightCurlyBracketKeyword_12());
     }
 )
 ;

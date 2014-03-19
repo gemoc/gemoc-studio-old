@@ -49,7 +49,7 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
  *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.impl.StateMachineDefinitionImpl#getDeclarationBlock <em>Declaration Block</em>}</li>
  *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.impl.StateMachineDefinitionImpl#getTransitions <em>Transitions</em>}</li>
  *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.impl.StateMachineDefinitionImpl#getStates <em>States</em>}</li>
- *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.impl.StateMachineDefinitionImpl#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.impl.StateMachineDefinitionImpl#getInitialStates <em>Initial States</em>}</li>
  *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.impl.StateMachineDefinitionImpl#getFinalStates <em>Final States</em>}</li>
  * </ul>
  * </p>
@@ -88,14 +88,14 @@ public class StateMachineDefinitionImpl extends NamedElementImpl implements Stat
 	protected EList<State> states;
 
 	/**
-	 * The cached value of the '{@link #getInitialState() <em>Initial State</em>}' reference.
+	 * The cached value of the '{@link #getInitialStates() <em>Initial States</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInitialState()
+	 * @see #getInitialStates()
 	 * @generated
 	 * @ordered
 	 */
-	protected State initialState;
+	protected EList<State> initialStates;
 
 	/**
 	 * The cached value of the '{@link #getFinalStates() <em>Final States</em>}' reference list.
@@ -198,37 +198,11 @@ public class StateMachineDefinitionImpl extends NamedElementImpl implements Stat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public State getInitialState() {
-		if (initialState != null && initialState.eIsProxy()) {
-			InternalEObject oldInitialState = (InternalEObject)initialState;
-			initialState = (State)eResolveProxy(oldInitialState);
-			if (initialState != oldInitialState) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE, oldInitialState, initialState));
-			}
+	public EList<State> getInitialStates() {
+		if (initialStates == null) {
+			initialStates = new EObjectResolvingEList<State>(State.class, this, FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATES);
 		}
-		return initialState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public State basicGetInitialState() {
-		return initialState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInitialState(State newInitialState) {
-		State oldInitialState = initialState;
-		initialState = newInitialState;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE, oldInitialState, initialState));
+		return initialStates;
 	}
 
 	/**
@@ -275,9 +249,8 @@ public class StateMachineDefinitionImpl extends NamedElementImpl implements Stat
 				return getTransitions();
 			case FSMModelPackage.STATE_MACHINE_DEFINITION__STATES:
 				return getStates();
-			case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE:
-				if (resolve) return getInitialState();
-				return basicGetInitialState();
+			case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATES:
+				return getInitialStates();
 			case FSMModelPackage.STATE_MACHINE_DEFINITION__FINAL_STATES:
 				return getFinalStates();
 		}
@@ -304,8 +277,9 @@ public class StateMachineDefinitionImpl extends NamedElementImpl implements Stat
 				getStates().clear();
 				getStates().addAll((Collection<? extends State>)newValue);
 				return;
-			case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE:
-				setInitialState((State)newValue);
+			case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATES:
+				getInitialStates().clear();
+				getInitialStates().addAll((Collection<? extends State>)newValue);
 				return;
 			case FSMModelPackage.STATE_MACHINE_DEFINITION__FINAL_STATES:
 				getFinalStates().clear();
@@ -332,8 +306,8 @@ public class StateMachineDefinitionImpl extends NamedElementImpl implements Stat
 			case FSMModelPackage.STATE_MACHINE_DEFINITION__STATES:
 				getStates().clear();
 				return;
-			case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE:
-				setInitialState((State)null);
+			case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATES:
+				getInitialStates().clear();
 				return;
 			case FSMModelPackage.STATE_MACHINE_DEFINITION__FINAL_STATES:
 				getFinalStates().clear();
@@ -356,8 +330,8 @@ public class StateMachineDefinitionImpl extends NamedElementImpl implements Stat
 				return transitions != null && !transitions.isEmpty();
 			case FSMModelPackage.STATE_MACHINE_DEFINITION__STATES:
 				return states != null && !states.isEmpty();
-			case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE:
-				return initialState != null;
+			case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATES:
+				return initialStates != null && !initialStates.isEmpty();
 			case FSMModelPackage.STATE_MACHINE_DEFINITION__FINAL_STATES:
 				return finalStates != null && !finalStates.isEmpty();
 		}

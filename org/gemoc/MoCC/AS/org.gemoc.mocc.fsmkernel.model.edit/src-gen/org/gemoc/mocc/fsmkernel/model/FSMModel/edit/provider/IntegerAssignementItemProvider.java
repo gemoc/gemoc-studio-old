@@ -37,6 +37,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelFactory;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignement;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension.EditionExtensionFactory;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignement} object.
@@ -133,8 +134,48 @@ public class IntegerAssignementItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(ClassicalExpressionPackage.Literals.BINARY_INTEGER_EXPRESSION__LEFT_VALUE,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfPlusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClassicalExpressionPackage.Literals.BINARY_INTEGER_EXPRESSION__LEFT_VALUE,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfMinusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClassicalExpressionPackage.Literals.BINARY_INTEGER_EXPRESSION__LEFT_VALUE,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfMultiplyAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClassicalExpressionPackage.Literals.BINARY_INTEGER_EXPRESSION__LEFT_VALUE,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfDivideAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(ClassicalExpressionPackage.Literals.BINARY_INTEGER_EXPRESSION__RIGHT_VALUE,
 				 FSMModelFactory.eINSTANCE.createIntegerAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClassicalExpressionPackage.Literals.BINARY_INTEGER_EXPRESSION__RIGHT_VALUE,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfPlusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClassicalExpressionPackage.Literals.BINARY_INTEGER_EXPRESSION__RIGHT_VALUE,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfMinusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClassicalExpressionPackage.Literals.BINARY_INTEGER_EXPRESSION__RIGHT_VALUE,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfMultiplyAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClassicalExpressionPackage.Literals.BINARY_INTEGER_EXPRESSION__RIGHT_VALUE,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfDivideAssignement()));
 	}
 
 	/**

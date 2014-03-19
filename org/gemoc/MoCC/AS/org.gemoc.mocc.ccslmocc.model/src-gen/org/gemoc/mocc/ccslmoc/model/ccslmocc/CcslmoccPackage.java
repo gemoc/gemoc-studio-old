@@ -221,13 +221,13 @@ public interface CcslmoccPackage extends EPackage {
 	int STATE_MACHINE_RELATION_DEFINITION__STATES = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Initial State</b></em>' reference.
+	 * The feature id for the '<em><b>Initial States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 3;
+	int STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATES = ClockExpressionAndRelationPackage.EXTERNAL_RELATION_DEFINITION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Final States</b></em>' reference list.

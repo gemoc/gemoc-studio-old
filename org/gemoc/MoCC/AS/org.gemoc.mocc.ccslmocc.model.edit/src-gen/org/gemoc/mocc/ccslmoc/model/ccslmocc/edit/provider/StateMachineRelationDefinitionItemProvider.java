@@ -71,7 +71,7 @@ public class StateMachineRelationDefinitionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addInitialStatePropertyDescriptor(object);
+			addInitialStatesPropertyDescriptor(object);
 			addFinalStatesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -82,19 +82,19 @@ public class StateMachineRelationDefinitionItemProvider
 	
 
 	/**
-	 * This adds a property descriptor for the Initial State feature.
+	 * This adds a property descriptor for the Initial States feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addInitialStatePropertyDescriptor(Object object) {
+	protected void addInitialStatesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_StateMachineDefinition_initialState_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachineDefinition_initialState_feature", "_UI_StateMachineDefinition_type"),
-				 FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__INITIAL_STATE,
+				 getString("_UI_StateMachineDefinition_initialStates_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachineDefinition_initialStates_feature", "_UI_StateMachineDefinition_type"),
+				 FSMModelPackage.Literals.STATE_MACHINE_DEFINITION__INITIAL_STATES,
 				 true,
 				 false,
 				 true,

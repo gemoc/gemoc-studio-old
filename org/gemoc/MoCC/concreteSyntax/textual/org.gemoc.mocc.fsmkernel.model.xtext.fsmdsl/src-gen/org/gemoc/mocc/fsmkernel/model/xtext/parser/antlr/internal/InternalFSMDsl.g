@@ -153,16 +153,16 @@ ruleStateMachineDefinition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getInitialStateStateCrossReference_5_1_0()); 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getInitialStatesStateCrossReference_5_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))(	otherlv_7='finals: ' 
+))(	otherlv_7=',' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getStateMachineDefinitionAccess().getFinalsKeyword_6_0());
+    	newLeafNode(otherlv_7, grammarAccess.getStateMachineDefinitionAccess().getCommaKeyword_6_0());
     }
 (
 (
@@ -175,16 +175,16 @@ ruleStateMachineDefinition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesStateCrossReference_6_1_0()); 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getInitialStatesStateCrossReference_6_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_9=',' 
+))*(	otherlv_9='finals: ' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getStateMachineDefinitionAccess().getCommaKeyword_6_2_0());
+    	newLeafNode(otherlv_9, grammarAccess.getStateMachineDefinitionAccess().getFinalsKeyword_7_0());
     }
 (
 (
@@ -197,7 +197,29 @@ ruleStateMachineDefinition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesStateCrossReference_6_2_1_0()); 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesStateCrossReference_7_1_0()); 
+	    }
+		ruleEString		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_11=',' 
+    {
+    	newLeafNode(otherlv_11, grammarAccess.getStateMachineDefinitionAccess().getCommaKeyword_7_2_0());
+    }
+(
+(
+		{ 
+		  /* */ 
+		}
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStateMachineDefinitionRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesStateCrossReference_7_2_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
@@ -207,16 +229,16 @@ ruleStateMachineDefinition returns [EObject current=null]
 ))*)?((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getStatesStateParserRuleCall_7_0_0()); 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getStatesStateParserRuleCall_8_0_0()); 
 	    }
-		lv_states_11_0=ruleState		{
+		lv_states_13_0=ruleState		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStateMachineDefinitionRule());
 	        }
        		add(
        			$current, 
        			"states",
-        		lv_states_11_0, 
+        		lv_states_13_0, 
         		"State");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -226,24 +248,24 @@ ruleStateMachineDefinition returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getTransitionsTransitionParserRuleCall_7_1_0()); 
+	        newCompositeNode(grammarAccess.getStateMachineDefinitionAccess().getTransitionsTransitionParserRuleCall_8_1_0()); 
 	    }
-		lv_transitions_12_0=ruleTransition		{
+		lv_transitions_14_0=ruleTransition		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStateMachineDefinitionRule());
 	        }
        		add(
        			$current, 
        			"transitions",
-        		lv_transitions_12_0, 
+        		lv_transitions_14_0, 
         		"Transition");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))+	otherlv_13='}' 
+))+	otherlv_15='}' 
     {
-    	newLeafNode(otherlv_13, grammarAccess.getStateMachineDefinitionAccess().getRightCurlyBracketKeyword_8());
+    	newLeafNode(otherlv_15, grammarAccess.getStateMachineDefinitionAccess().getRightCurlyBracketKeyword_9());
     }
 )
 ;

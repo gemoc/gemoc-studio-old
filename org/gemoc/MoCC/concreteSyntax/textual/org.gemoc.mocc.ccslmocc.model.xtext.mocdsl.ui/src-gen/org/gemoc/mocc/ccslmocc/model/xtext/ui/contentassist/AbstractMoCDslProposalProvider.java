@@ -46,7 +46,7 @@ public class AbstractMoCDslProposalProvider extends org.gemoc.mocc.fsmkernel.mod
 	public void completeCCSLStateMachineRelationDefinition_DeclarationBlock(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeCCSLStateMachineRelationDefinition_InitialState(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeCCSLStateMachineRelationDefinition_InitialStates(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeCCSLStateMachineRelationDefinition_FinalStates(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {

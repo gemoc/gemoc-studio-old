@@ -34,8 +34,8 @@ CCSLStateMachineRelationDefinition returns ccslmoc::StateMachineRelationDefiniti
 	'StateBasedRelationDefinition'name=EString '['declaration=[ClockExpressionAndRelation::RelationDeclaration|EString]']'
 	'{'
 		(declarationBlock=DeclarationBlock)?
-		('init: ' initialState= [fsmmodel::State|EString])//';'
-		('finals: ' finalStates+=[fsmmodel::State|EString] ( "," finalStates+=[fsmmodel::State|EString])* /*';'*/ )?
+		('init: ' initialStates+= [fsmmodel::State|EString]) ( "," initialStates+=[fsmmodel::State|EString])*
+		('finals: ' finalStates+=[fsmmodel::State|EString] ( "," finalStates+=[fsmmodel::State|EString])* )?
 		((states+=State)|
 		(transitions+=Transition))+
 		

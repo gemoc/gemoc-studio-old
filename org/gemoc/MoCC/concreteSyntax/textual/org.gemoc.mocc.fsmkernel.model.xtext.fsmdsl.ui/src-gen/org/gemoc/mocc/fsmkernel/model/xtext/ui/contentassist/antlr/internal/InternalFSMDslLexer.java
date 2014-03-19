@@ -575,11 +575,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:29:7: ( 'finals: ' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:29:9: 'finals: '
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:29:7: ( ',' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:29:9: ','
             {
-            match("finals: "); 
-
+            match(','); 
 
             }
 
@@ -596,10 +595,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:30:7: ( ',' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:30:9: ','
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:30:7: ( 'finals: ' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:30:9: 'finals: '
             {
-            match(','); 
+            match("finals: "); 
+
 
             }
 
@@ -3519,10 +3519,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = RULE_REAL0;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48547:12: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48547:14: ( '0' .. '9' )+ '.' ( '0' .. '9' )+
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48660:12: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48660:14: ( '0' .. '9' )+ '.' ( '0' .. '9' )+
             {
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48547:14: ( '0' .. '9' )+
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48660:14: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -3536,7 +3536,7 @@ public class InternalFSMDslLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48547:15: '0' .. '9'
+            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48660:15: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -3553,7 +3553,7 @@ public class InternalFSMDslLexer extends Lexer {
             } while (true);
 
             match('.'); 
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48547:30: ( '0' .. '9' )+
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48660:30: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -3567,7 +3567,7 @@ public class InternalFSMDslLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48547:31: '0' .. '9'
+            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48660:31: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -3599,10 +3599,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48549:10: ( ( '-' )? ( '0' .. '9' )+ )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48549:12: ( '-' )? ( '0' .. '9' )+
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48662:10: ( ( '-' )? ( '0' .. '9' )+ )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48662:12: ( '-' )? ( '0' .. '9' )+
             {
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48549:12: ( '-' )?
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48662:12: ( '-' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -3611,7 +3611,7 @@ public class InternalFSMDslLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48549:12: '-'
+                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48662:12: '-'
                     {
                     match('-'); 
 
@@ -3620,7 +3620,7 @@ public class InternalFSMDslLexer extends Lexer {
 
             }
 
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48549:17: ( '0' .. '9' )+
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48662:17: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -3634,7 +3634,7 @@ public class InternalFSMDslLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48549:18: '0' .. '9'
+            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48662:18: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -3666,10 +3666,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48551:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48551:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48664:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48664:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48551:11: ( '^' )?
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48664:11: ( '^' )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -3678,7 +3678,7 @@ public class InternalFSMDslLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48551:11: '^'
+                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48664:11: '^'
                     {
                     match('^'); 
 
@@ -3696,7 +3696,7 @@ public class InternalFSMDslLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48551:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48664:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop6:
             do {
                 int alt6=2;
@@ -3745,10 +3745,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -3766,10 +3766,10 @@ public class InternalFSMDslLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop7:
                     do {
                         int alt7=3;
@@ -3785,7 +3785,7 @@ public class InternalFSMDslLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3801,7 +3801,7 @@ public class InternalFSMDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3826,10 +3826,10 @@ public class InternalFSMDslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop8:
                     do {
                         int alt8=3;
@@ -3845,7 +3845,7 @@ public class InternalFSMDslLexer extends Lexer {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3861,7 +3861,7 @@ public class InternalFSMDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48553:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48666:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3904,12 +3904,12 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48555:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48555:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48668:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48668:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48555:24: ( options {greedy=false; } : . )*
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48668:24: ( options {greedy=false; } : . )*
             loop10:
             do {
                 int alt10=2;
@@ -3934,7 +3934,7 @@ public class InternalFSMDslLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48555:52: .
+            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48668:52: .
             	    {
             	    matchAny(); 
 
@@ -3964,12 +3964,12 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48557:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48557:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48670:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48670:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48557:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48670:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop11:
             do {
                 int alt11=2;
@@ -3982,7 +3982,7 @@ public class InternalFSMDslLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48557:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48670:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -4002,7 +4002,7 @@ public class InternalFSMDslLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48557:40: ( ( '\\r' )? '\\n' )?
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48670:40: ( ( '\\r' )? '\\n' )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -4011,9 +4011,9 @@ public class InternalFSMDslLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48557:41: ( '\\r' )? '\\n'
+                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48670:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48557:41: ( '\\r' )?
+                    // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48670:41: ( '\\r' )?
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -4022,7 +4022,7 @@ public class InternalFSMDslLexer extends Lexer {
                     }
                     switch (alt12) {
                         case 1 :
-                            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48557:41: '\\r'
+                            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48670:41: '\\r'
                             {
                             match('\r'); 
 
@@ -4054,10 +4054,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48559:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48559:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48672:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48672:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48559:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48672:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt14=0;
             loop14:
             do {
@@ -4111,8 +4111,8 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48561:16: ( . )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48561:18: .
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48674:16: ( . )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48674:18: .
             {
             matchAny(); 
 
@@ -5535,10 +5535,10 @@ public class InternalFSMDslLexer extends Lexer {
         "\1\146\1\156\2\151\1\156\1\164\2\151\1\164\1\157\1\151\1\156\1\157"+
         "\1\172\1\156\1\uffff\1\172\1\uffff";
     static final String DFA15_acceptS =
-        "\14\uffff\1\20\2\uffff\1\24\2\uffff\1\30\1\uffff\1\32\4\uffff\1"+
+        "\14\uffff\1\20\2\uffff\1\23\2\uffff\1\30\1\uffff\1\32\4\uffff\1"+
         "\42\1\43\13\uffff\1\114\12\uffff\1\u00a2\2\uffff\1\u00a6\1\u00a7"+
         "\2\uffff\1\u00a2\20\uffff\1\57\1\60\10\uffff\1\20\1\67\1\21\2\uffff"+
-        "\1\61\1\62\2\uffff\1\24\5\uffff\1\30\1\66\1\71\1\31\1\32\5\uffff"+
+        "\1\61\1\62\2\uffff\1\23\5\uffff\1\30\1\66\1\71\1\31\1\32\5\uffff"+
         "\1\36\2\uffff\1\42\1\43\1\47\1\63\1\50\1\132\1\70\1\u00a1\1\51\1"+
         "\72\1\52\1\u00a4\1\u00a5\1\73\1\54\1\53\1\55\1\56\4\uffff\1\77\1"+
         "\75\1\74\1\76\1\111\1\101\1\110\1\102\1\114\24\uffff\1\u00a0\1\u00a3"+
@@ -5549,7 +5549,7 @@ public class InternalFSMDslLexer extends Lexer {
         "\1\152\1\33\14\uffff\1\144\6\uffff\1\141\2\uffff\1\u0095\14\uffff"+
         "\1\u0096\10\uffff\1\4\1\172\1\5\24\uffff\1\37\2\uffff\1\104\1\105"+
         "\22\uffff\1\64\5\uffff\1\133\13\uffff\1\u0082\5\uffff\1\u0098\4"+
-        "\uffff\1\1\3\uffff\1\124\2\uffff\1\6\1\23\4\uffff\1\u0092\1\u0093"+
+        "\uffff\1\1\3\uffff\1\124\2\uffff\1\6\1\24\4\uffff\1\u0092\1\u0093"+
         "\6\uffff\1\u009f\3\uffff\1\135\1\uffff\1\142\2\uffff\1\112\37\uffff"+
         "\1\u0091\1\u0087\1\u009e\10\uffff\1\44\3\uffff\1\10\2\uffff\1\11"+
         "\1\uffff\1\12\20\uffff\1\125\4\uffff\1\65\16\uffff\1\145\15\uffff"+
