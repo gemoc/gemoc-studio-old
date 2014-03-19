@@ -217,12 +217,10 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 					//addMarker(eclFile, "rootElement not defined in moc2as.properties, cannot generate qvto", -1, IMarker.SEVERITY_WARNING);
 					return;
 				}
-				final URI uri = URI.createPlatformResourceURI(
-						eclFile.getLocationURI().toString(), true);
+				String uristring = eclFile.getLocation().toOSString();
+			    final URI uri = URI.createFileURI(uristring);
 				final IFolder qvtoFolder = project.getFolder("qvto-gen");
-				if(!qvtoFolder.exists())
-				
-				qvtoFolder.create(true, true, null);
+				if(!qvtoFolder.exists()) qvtoFolder.create(true, true, null);
 			
 
 				String folderPath = qvtoFolder.getLocation().toOSString();
