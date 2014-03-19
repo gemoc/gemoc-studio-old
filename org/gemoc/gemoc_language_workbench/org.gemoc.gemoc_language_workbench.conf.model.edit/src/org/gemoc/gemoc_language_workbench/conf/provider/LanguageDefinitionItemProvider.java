@@ -108,6 +108,7 @@ public class LanguageDefinitionItemProvider
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT);
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS);
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__DSE_PROJECT);
+			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION);
 		}
 		return childrenFeatures;
 	}
@@ -171,6 +172,7 @@ public class LanguageDefinitionItemProvider
 			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
 			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECT:
+			case confPackage.LANGUAGE_DEFINITION__MOC2_AS_APPLICATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -232,6 +234,11 @@ public class LanguageDefinitionItemProvider
 			(createChildParameter
 				(confPackage.Literals.LANGUAGE_DEFINITION__DSE_PROJECT,
 				 confFactory.eINSTANCE.createECLProject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(confPackage.Literals.LANGUAGE_DEFINITION__DSE_PROJECT,
+				 confFactory.eINSTANCE.createECLMoC2ASApplicationProject()));
 	}
 
 	/**

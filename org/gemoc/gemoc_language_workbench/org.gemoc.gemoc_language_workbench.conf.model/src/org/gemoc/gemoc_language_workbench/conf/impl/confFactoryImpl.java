@@ -66,10 +66,12 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 			case confPackage.MOD_HEL_XMO_CPROJECT: return createModHelXMoCProject();
 			case confPackage.ECL_PROJECT: return createECLProject();
 			case confPackage.TREE_EDITOR_PROJECT: return createTreeEditorProject();
-			case confPackage.EMF_GENMODEL: return createEMFGenmodel();
-			case confPackage.XTEXT_EDITOR_PROJECT: return createXTextEditorProject();
 			case confPackage.K3DSA_PROJECT: return createK3DSAProject();
+			case confPackage.ECL_MO_C2AS_APPLICATION_PROJECT: return createECLMoC2ASApplicationProject();
+			case confPackage.EMF_GENMODEL: return createEMFGenmodel();
 			case confPackage.ECL_FILE: return createECLFile();
+			case confPackage.QV_TO_FILE: return createQVToFile();
+			case confPackage.XTEXT_EDITOR_PROJECT: return createXTextEditorProject();
 			case confPackage.BUILD_OPTIONS: return createBuildOptions();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -232,9 +234,29 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ECLMoC2ASApplicationProject createECLMoC2ASApplicationProject() {
+		ECLMoC2ASApplicationProjectImpl eclMoC2ASApplicationProject = new ECLMoC2ASApplicationProjectImpl();
+		return eclMoC2ASApplicationProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ECLFile createECLFile() {
 		ECLFileImpl eclFile = new ECLFileImpl();
 		return eclFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QVToFile createQVToFile() {
+		QVToFileImpl qvToFile = new QVToFileImpl();
+		return qvToFile;
 	}
 
 	/**

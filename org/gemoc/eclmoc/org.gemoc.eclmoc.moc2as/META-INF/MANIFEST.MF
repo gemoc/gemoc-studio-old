@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ECL Moc 2 AS
+Bundle-SymbolicName: org.gemoc.eclmoc.moc2as;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.gemoc.eclmoc.moc2as.Activator
+Bundle-Vendor: INRIA
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ fr.inria.aoste.timesquare.ecl.xtext,
+ fr.inria.aoste.timesquare.ecl.ecltoqvto,
+ org.eclipse.acceleo.engine,
+ fr.cnrs.luchogie.toools
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

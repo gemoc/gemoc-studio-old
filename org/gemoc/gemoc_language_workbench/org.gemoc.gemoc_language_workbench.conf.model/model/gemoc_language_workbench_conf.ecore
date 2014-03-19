@@ -8,12 +8,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="buildOptions" eType="#//BuildOptions"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProjectResource" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectKind" lowerBound="1"
-        eType="#//ProjectKind"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DSAProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="LanguageDefinition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dsaProject" eType="#//DSAProject"
         containment="true"/>
@@ -28,7 +22,17 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dSEProject" eType="#//DSEProject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moc2ASApplication" lowerBound="1"
+        eType="#//MoC2ASApplicationProject" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectResource" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectKind" lowerBound="1"
+        eType="#//ProjectKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DSAProject" abstract="true" eSuperTypes="#//ProjectResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MoC2ASApplicationProject" abstract="true"
+      eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="EditorProject" abstract="true" eSuperTypes="#//ProjectResource">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -38,6 +42,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="MoCProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="CCSLMoCProject" eSuperTypes="#//MoCProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="AnimatorProject" abstract="true" eSuperTypes="#//ProjectResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DSEProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="EMFEcoreProject" eSuperTypes="#//DomainModelProject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="emfGenmodel" lowerBound="1"
         eType="#//EMFGenmodel" containment="true"/>
@@ -50,16 +55,24 @@
         eType="#//ODProject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModHelXMoCProject" eSuperTypes="#//MoCProject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DSEProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="ECLProject" eSuperTypes="#//DSEProject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="eclFile" lowerBound="1"
         eType="#//ECLFile" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TreeEditorProject" eSuperTypes="#//EditorProject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EMFGenmodel" eSuperTypes="#//FileResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="K3DSAProject" eSuperTypes="#//DSAProject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ECLMoC2ASApplicationProject" eSuperTypes="#//DSEProject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eclFile" lowerBound="1"
+        eType="#//ECLFile" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qvtoFile" lowerBound="1"
+        eType="#//QVToFile"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="locationURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EMFGenmodel" eSuperTypes="#//FileResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ECLFile" eSuperTypes="#//FileResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QVToFile" eSuperTypes="#//FileResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="XTextEditorProject" eSuperTypes="#//EditorProject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="grammarName" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -68,8 +81,6 @@
     <eLiterals name="eclipsePlugin"/>
     <eLiterals name="mavenJar" value="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="K3DSAProject" eSuperTypes="#//DSAProject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ECLFile" eSuperTypes="#//FileResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="BuildOptions">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="generateModelLoaderService"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
