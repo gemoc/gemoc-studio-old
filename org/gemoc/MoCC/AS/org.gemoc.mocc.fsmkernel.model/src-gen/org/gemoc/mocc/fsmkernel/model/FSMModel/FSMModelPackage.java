@@ -257,13 +257,13 @@ public interface FSMModelPackage extends EPackage {
 	int STATE_MACHINE_DEFINITION__STATES = TimeModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Initial State</b></em>' reference.
+	 * The feature id for the '<em><b>Initial States</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_DEFINITION__INITIAL_STATE = TimeModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int STATE_MACHINE_DEFINITION__INITIAL_STATES = TimeModelPackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Final States</b></em>' reference list.
@@ -710,15 +710,15 @@ public interface FSMModelPackage extends EPackage {
 	EReference getStateMachineDefinition_States();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getInitialState <em>Initial State</em>}'.
+	 * Returns the meta object for the reference list '{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getInitialStates <em>Initial States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Initial State</em>'.
-	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getInitialState()
+	 * @return the meta object for the reference list '<em>Initial States</em>'.
+	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getInitialStates()
 	 * @see #getStateMachineDefinition()
 	 * @generated
 	 */
-	EReference getStateMachineDefinition_InitialState();
+	EReference getStateMachineDefinition_InitialStates();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getFinalStates <em>Final States</em>}'.
@@ -990,12 +990,12 @@ public interface FSMModelPackage extends EPackage {
 		EReference STATE_MACHINE_DEFINITION__STATES = eINSTANCE.getStateMachineDefinition_States();
 
 		/**
-		 * The meta object literal for the '<em><b>Initial State</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Initial States</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE_MACHINE_DEFINITION__INITIAL_STATE = eINSTANCE.getStateMachineDefinition_InitialState();
+		EReference STATE_MACHINE_DEFINITION__INITIAL_STATES = eINSTANCE.getStateMachineDefinition_InitialStates();
 
 		/**
 		 * The meta object literal for the '<em><b>Final States</b></em>' reference list feature.

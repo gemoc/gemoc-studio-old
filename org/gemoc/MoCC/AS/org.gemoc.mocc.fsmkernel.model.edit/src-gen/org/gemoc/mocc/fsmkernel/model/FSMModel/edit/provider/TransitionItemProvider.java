@@ -40,6 +40,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelFactory;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension.EditionExtensionFactory;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.mocc.fsmkernel.model.FSMModel.Transition} object.
@@ -229,6 +230,11 @@ public class TransitionItemProvider
 			(createChildParameter
 				(FSMModelPackage.Literals.TRANSITION__ACTIONS,
 				 FSMModelFactory.eINSTANCE.createIntegerAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.TRANSITION__ACTIONS,
+				 EditionExtensionFactory.eINSTANCE.createIntegerAssignementBlock()));
 	}
 
 	/**

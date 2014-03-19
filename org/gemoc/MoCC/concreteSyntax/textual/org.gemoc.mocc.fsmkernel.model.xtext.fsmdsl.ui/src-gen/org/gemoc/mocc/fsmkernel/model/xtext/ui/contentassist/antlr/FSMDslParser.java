@@ -37,7 +37,7 @@ public class FSMDslParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getStateMachineDefinitionAccess().getAlternatives_7(), "rule__StateMachineDefinition__Alternatives_7");
+					put(grammarAccess.getStateMachineDefinitionAccess().getAlternatives_8(), "rule__StateMachineDefinition__Alternatives_8");
 					put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
 					put(grammarAccess.getBinaryIntegerExpressionAccess().getAlternatives(), "rule__BinaryIntegerExpression__Alternatives");
 					put(grammarAccess.getIntegerExpressionAccess().getAlternatives(), "rule__IntegerExpression__Alternatives");
@@ -103,7 +103,8 @@ public class FSMDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup(), "rule__StateMachineDefinition__Group__0");
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_5(), "rule__StateMachineDefinition__Group_5__0");
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_6(), "rule__StateMachineDefinition__Group_6__0");
-					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_6_2(), "rule__StateMachineDefinition__Group_6_2__0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_7(), "rule__StateMachineDefinition__Group_7__0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_7_2(), "rule__StateMachineDefinition__Group_7_2__0");
 					put(grammarAccess.getDeclarationBlockAccess().getGroup(), "rule__DeclarationBlock__Group__0");
 					put(grammarAccess.getTransitionAccess().getGroup(), "rule__Transition__Group__0");
 					put(grammarAccess.getTransitionAccess().getGroup_8(), "rule__Transition__Group_8__0");
@@ -368,11 +369,12 @@ public class FSMDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDeathAccess().getGroup_2(), "rule__Death__Group_2__0");
 					put(grammarAccess.getStateMachineDefinitionAccess().getNameAssignment_2(), "rule__StateMachineDefinition__NameAssignment_2");
 					put(grammarAccess.getStateMachineDefinitionAccess().getDeclarationBlockAssignment_4(), "rule__StateMachineDefinition__DeclarationBlockAssignment_4");
-					put(grammarAccess.getStateMachineDefinitionAccess().getInitialStateAssignment_5_1(), "rule__StateMachineDefinition__InitialStateAssignment_5_1");
-					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_6_1(), "rule__StateMachineDefinition__FinalStatesAssignment_6_1");
-					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_6_2_1(), "rule__StateMachineDefinition__FinalStatesAssignment_6_2_1");
-					put(grammarAccess.getStateMachineDefinitionAccess().getStatesAssignment_7_0(), "rule__StateMachineDefinition__StatesAssignment_7_0");
-					put(grammarAccess.getStateMachineDefinitionAccess().getTransitionsAssignment_7_1(), "rule__StateMachineDefinition__TransitionsAssignment_7_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getInitialStatesAssignment_5_1(), "rule__StateMachineDefinition__InitialStatesAssignment_5_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getInitialStatesAssignment_6_1(), "rule__StateMachineDefinition__InitialStatesAssignment_6_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_7_1(), "rule__StateMachineDefinition__FinalStatesAssignment_7_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_7_2_1(), "rule__StateMachineDefinition__FinalStatesAssignment_7_2_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getStatesAssignment_8_0(), "rule__StateMachineDefinition__StatesAssignment_8_0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getTransitionsAssignment_8_1(), "rule__StateMachineDefinition__TransitionsAssignment_8_1");
 					put(grammarAccess.getDeclarationBlockAccess().getConcreteEntitiesAssignment_2(), "rule__DeclarationBlock__ConcreteEntitiesAssignment_2");
 					put(grammarAccess.getDeclarationBlockAccess().getClassicalExpressionsAssignment_3(), "rule__DeclarationBlock__ClassicalExpressionsAssignment_3");
 					put(grammarAccess.getTransitionAccess().getSourceAssignment_2(), "rule__Transition__SourceAssignment_2");

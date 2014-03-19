@@ -30,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getDeclarationBlock <em>Declaration Block</em>}</li>
  *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getTransitions <em>Transitions</em>}</li>
  *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getStates <em>States</em>}</li>
- *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getInitialStates <em>Initial States</em>}</li>
  *   <li>{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getFinalStates <em>Final States</em>}</li>
  * </ul>
  * </p>
@@ -99,30 +99,20 @@ public interface StateMachineDefinition extends NamedElement {
 	EList<State> getStates();
 
 	/**
-	 * Returns the value of the '<em><b>Initial State</b></em>' reference.
+	 * Returns the value of the '<em><b>Initial States</b></em>' reference list.
+	 * The list contents are of type {@link org.gemoc.mocc.fsmkernel.model.FSMModel.State}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Initial State</em>' reference isn't clear,
+	 * If the meaning of the '<em>Initial States</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Initial State</em>' reference.
-	 * @see #setInitialState(State)
-	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getStateMachineDefinition_InitialState()
+	 * @return the value of the '<em>Initial States</em>' reference list.
+	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getStateMachineDefinition_InitialStates()
 	 * @model required="true"
 	 * @generated
 	 */
-	State getInitialState();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.mocc.fsmkernel.model.FSMModel.StateMachineDefinition#getInitialState <em>Initial State</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Initial State</em>' reference.
-	 * @see #getInitialState()
-	 * @generated
-	 */
-	void setInitialState(State value);
+	EList<State> getInitialStates();
 
 	/**
 	 * Returns the value of the '<em><b>Final States</b></em>' reference list.
@@ -135,7 +125,7 @@ public interface StateMachineDefinition extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Final States</em>' reference list.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getStateMachineDefinition_FinalStates()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	EList<State> getFinalStates();

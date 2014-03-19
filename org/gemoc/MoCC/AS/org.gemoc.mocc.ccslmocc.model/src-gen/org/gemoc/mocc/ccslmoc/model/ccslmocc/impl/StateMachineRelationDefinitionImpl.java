@@ -46,7 +46,7 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
  *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getDeclarationBlock <em>Declaration Block</em>}</li>
  *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getTransitions <em>Transitions</em>}</li>
  *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getStates <em>States</em>}</li>
- *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getInitialStates <em>Initial States</em>}</li>
  *   <li>{@link org.gemoc.mocc.ccslmoc.model.ccslmocc.impl.StateMachineRelationDefinitionImpl#getFinalStates <em>Final States</em>}</li>
  * </ul>
  * </p>
@@ -85,14 +85,14 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 	protected EList<State> states;
 
 	/**
-	 * The cached value of the '{@link #getInitialState() <em>Initial State</em>}' reference.
+	 * The cached value of the '{@link #getInitialStates() <em>Initial States</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInitialState()
+	 * @see #getInitialStates()
 	 * @generated
 	 * @ordered
 	 */
-	protected State initialState;
+	protected EList<State> initialStates;
 
 	/**
 	 * The cached value of the '{@link #getFinalStates() <em>Final States</em>}' reference list.
@@ -195,37 +195,11 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public State getInitialState() {
-		if (initialState != null && initialState.eIsProxy()) {
-			InternalEObject oldInitialState = (InternalEObject)initialState;
-			initialState = (State)eResolveProxy(oldInitialState);
-			if (initialState != oldInitialState) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE, oldInitialState, initialState));
-			}
+	public EList<State> getInitialStates() {
+		if (initialStates == null) {
+			initialStates = new EObjectResolvingEList<State>(State.class, this, CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATES);
 		}
-		return initialState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public State basicGetInitialState() {
-		return initialState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInitialState(State newInitialState) {
-		State oldInitialState = initialState;
-		initialState = newInitialState;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE, oldInitialState, initialState));
+		return initialStates;
 	}
 
 	/**
@@ -272,9 +246,8 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 				return getTransitions();
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES:
 				return getStates();
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE:
-				if (resolve) return getInitialState();
-				return basicGetInitialState();
+			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATES:
+				return getInitialStates();
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES:
 				return getFinalStates();
 		}
@@ -301,8 +274,9 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 				getStates().clear();
 				getStates().addAll((Collection<? extends State>)newValue);
 				return;
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE:
-				setInitialState((State)newValue);
+			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATES:
+				getInitialStates().clear();
+				getInitialStates().addAll((Collection<? extends State>)newValue);
 				return;
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES:
 				getFinalStates().clear();
@@ -329,8 +303,8 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES:
 				getStates().clear();
 				return;
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE:
-				setInitialState((State)null);
+			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATES:
+				getInitialStates().clear();
 				return;
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES:
 				getFinalStates().clear();
@@ -353,8 +327,8 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 				return transitions != null && !transitions.isEmpty();
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES:
 				return states != null && !states.isEmpty();
-			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE:
-				return initialState != null;
+			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATES:
+				return initialStates != null && !initialStates.isEmpty();
 			case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES:
 				return finalStates != null && !finalStates.isEmpty();
 		}
@@ -373,7 +347,7 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK: return FSMModelPackage.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK;
 				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS: return FSMModelPackage.STATE_MACHINE_DEFINITION__TRANSITIONS;
 				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES: return FSMModelPackage.STATE_MACHINE_DEFINITION__STATES;
-				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE: return FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE;
+				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATES: return FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATES;
 				case CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES: return FSMModelPackage.STATE_MACHINE_DEFINITION__FINAL_STATES;
 				default: return -1;
 			}
@@ -393,7 +367,7 @@ public class StateMachineRelationDefinitionImpl extends ExternalRelationDefiniti
 				case FSMModelPackage.STATE_MACHINE_DEFINITION__DECLARATION_BLOCK: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__DECLARATION_BLOCK;
 				case FSMModelPackage.STATE_MACHINE_DEFINITION__TRANSITIONS: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__TRANSITIONS;
 				case FSMModelPackage.STATE_MACHINE_DEFINITION__STATES: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__STATES;
-				case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATE: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATE;
+				case FSMModelPackage.STATE_MACHINE_DEFINITION__INITIAL_STATES: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__INITIAL_STATES;
 				case FSMModelPackage.STATE_MACHINE_DEFINITION__FINAL_STATES: return CcslmoccPackage.STATE_MACHINE_RELATION_DEFINITION__FINAL_STATES;
 				default: return -1;
 			}

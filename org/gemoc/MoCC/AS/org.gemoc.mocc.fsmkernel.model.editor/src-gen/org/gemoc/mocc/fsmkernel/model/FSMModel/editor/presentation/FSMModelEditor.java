@@ -184,6 +184,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.provider.C
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.provider.TimeModelItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension.edit.provider.EditionExtensionItemProviderAdapterFactory;
 
 
 /**
@@ -729,6 +730,7 @@ public class FSMModelEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new FSMModelItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new EditionExtensionItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new TimeModelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CCSLModelItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ClassicalExpressionItemProviderAdapterFactory());

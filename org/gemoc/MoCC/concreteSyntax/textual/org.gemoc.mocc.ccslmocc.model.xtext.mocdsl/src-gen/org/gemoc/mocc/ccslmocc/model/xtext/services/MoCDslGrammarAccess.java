@@ -204,39 +204,44 @@ public class MoCDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDeclarationBlockDeclarationBlockParserRuleCall_7_0 = (RuleCall)cDeclarationBlockAssignment_7.eContents().get(0);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
 		private final Keyword cInitKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cInitialStateAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final CrossReference cInitialStateStateCrossReference_8_1_0 = (CrossReference)cInitialStateAssignment_8_1.eContents().get(0);
-		private final RuleCall cInitialStateStateEStringParserRuleCall_8_1_0_1 = (RuleCall)cInitialStateStateCrossReference_8_1_0.eContents().get(1);
+		private final Assignment cInitialStatesAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final CrossReference cInitialStatesStateCrossReference_8_1_0 = (CrossReference)cInitialStatesAssignment_8_1.eContents().get(0);
+		private final RuleCall cInitialStatesStateEStringParserRuleCall_8_1_0_1 = (RuleCall)cInitialStatesStateCrossReference_8_1_0.eContents().get(1);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cFinalsKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cFinalStatesAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final CrossReference cFinalStatesStateCrossReference_9_1_0 = (CrossReference)cFinalStatesAssignment_9_1.eContents().get(0);
-		private final RuleCall cFinalStatesStateEStringParserRuleCall_9_1_0_1 = (RuleCall)cFinalStatesStateCrossReference_9_1_0.eContents().get(1);
-		private final Group cGroup_9_2 = (Group)cGroup_9.eContents().get(2);
-		private final Keyword cCommaKeyword_9_2_0 = (Keyword)cGroup_9_2.eContents().get(0);
-		private final Assignment cFinalStatesAssignment_9_2_1 = (Assignment)cGroup_9_2.eContents().get(1);
-		private final CrossReference cFinalStatesStateCrossReference_9_2_1_0 = (CrossReference)cFinalStatesAssignment_9_2_1.eContents().get(0);
-		private final RuleCall cFinalStatesStateEStringParserRuleCall_9_2_1_0_1 = (RuleCall)cFinalStatesStateCrossReference_9_2_1_0.eContents().get(1);
-		private final Alternatives cAlternatives_10 = (Alternatives)cGroup.eContents().get(10);
-		private final Assignment cStatesAssignment_10_0 = (Assignment)cAlternatives_10.eContents().get(0);
-		private final RuleCall cStatesStateParserRuleCall_10_0_0 = (RuleCall)cStatesAssignment_10_0.eContents().get(0);
-		private final Assignment cTransitionsAssignment_10_1 = (Assignment)cAlternatives_10.eContents().get(1);
-		private final RuleCall cTransitionsTransitionParserRuleCall_10_1_0 = (RuleCall)cTransitionsAssignment_10_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Keyword cCommaKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Assignment cInitialStatesAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final CrossReference cInitialStatesStateCrossReference_9_1_0 = (CrossReference)cInitialStatesAssignment_9_1.eContents().get(0);
+		private final RuleCall cInitialStatesStateEStringParserRuleCall_9_1_0_1 = (RuleCall)cInitialStatesStateCrossReference_9_1_0.eContents().get(1);
+		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
+		private final Keyword cFinalsKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Assignment cFinalStatesAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final CrossReference cFinalStatesStateCrossReference_10_1_0 = (CrossReference)cFinalStatesAssignment_10_1.eContents().get(0);
+		private final RuleCall cFinalStatesStateEStringParserRuleCall_10_1_0_1 = (RuleCall)cFinalStatesStateCrossReference_10_1_0.eContents().get(1);
+		private final Group cGroup_10_2 = (Group)cGroup_10.eContents().get(2);
+		private final Keyword cCommaKeyword_10_2_0 = (Keyword)cGroup_10_2.eContents().get(0);
+		private final Assignment cFinalStatesAssignment_10_2_1 = (Assignment)cGroup_10_2.eContents().get(1);
+		private final CrossReference cFinalStatesStateCrossReference_10_2_1_0 = (CrossReference)cFinalStatesAssignment_10_2_1.eContents().get(0);
+		private final RuleCall cFinalStatesStateEStringParserRuleCall_10_2_1_0_1 = (RuleCall)cFinalStatesStateCrossReference_10_2_1_0.eContents().get(1);
+		private final Alternatives cAlternatives_11 = (Alternatives)cGroup.eContents().get(11);
+		private final Assignment cStatesAssignment_11_0 = (Assignment)cAlternatives_11.eContents().get(0);
+		private final RuleCall cStatesStateParserRuleCall_11_0_0 = (RuleCall)cStatesAssignment_11_0.eContents().get(0);
+		private final Assignment cTransitionsAssignment_11_1 = (Assignment)cAlternatives_11.eContents().get(1);
+		private final RuleCall cTransitionsTransitionParserRuleCall_11_1_0 = (RuleCall)cTransitionsAssignment_11_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//CCSLStateMachineRelationDefinition returns ccslmoc::StateMachineRelationDefinition:
 		//	{ccslmoc::StateMachineRelationDefinition} "StateBasedRelationDefinition" name=EString "["
 		//	declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]" "{" declarationBlock=DeclarationBlock?
-		//	("init: " initialState=[fsmmodel::State|EString]) //';'
-		//	("finals: " finalStates+=[fsmmodel::State|EString] ("," finalStates+=[fsmmodel::State|EString])*)? / *';'* /
-		//	(states+=State | transitions+=Transition)+ "}";
+		//	("init: " initialStates+=[fsmmodel::State|EString]) ("," initialStates+=[fsmmodel::State|EString])* ("finals: "
+		//	finalStates+=[fsmmodel::State|EString] ("," finalStates+=[fsmmodel::State|EString])*)? (states+=State |
+		//	transitions+=Transition)+ "}";
 		public ParserRule getRule() { return rule; }
 
 		//{ccslmoc::StateMachineRelationDefinition} "StateBasedRelationDefinition" name=EString "["
 		//declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]" "{" declarationBlock=DeclarationBlock?
-		//("init: " initialState=[fsmmodel::State|EString]) //';'
-		//("finals: " finalStates+=[fsmmodel::State|EString] ("," finalStates+=[fsmmodel::State|EString])*)? / *';'* /
-		//(states+=State | transitions+=Transition)+ "}"
+		//("init: " initialStates+=[fsmmodel::State|EString]) ("," initialStates+=[fsmmodel::State|EString])* ("finals: "
+		//finalStates+=[fsmmodel::State|EString] ("," finalStates+=[fsmmodel::State|EString])*)? (states+=State |
+		//transitions+=Transition)+ "}"
 		public Group getGroup() { return cGroup; }
 
 		//{ccslmoc::StateMachineRelationDefinition}
@@ -275,68 +280,83 @@ public class MoCDslGrammarAccess extends AbstractGrammarElementFinder {
 		//DeclarationBlock
 		public RuleCall getDeclarationBlockDeclarationBlockParserRuleCall_7_0() { return cDeclarationBlockDeclarationBlockParserRuleCall_7_0; }
 
-		//"init: " initialState=[fsmmodel::State|EString]
+		//"init: " initialStates+=[fsmmodel::State|EString]
 		public Group getGroup_8() { return cGroup_8; }
 
 		//"init: "
 		public Keyword getInitKeyword_8_0() { return cInitKeyword_8_0; }
 
-		//initialState=[fsmmodel::State|EString]
-		public Assignment getInitialStateAssignment_8_1() { return cInitialStateAssignment_8_1; }
+		//initialStates+=[fsmmodel::State|EString]
+		public Assignment getInitialStatesAssignment_8_1() { return cInitialStatesAssignment_8_1; }
 
 		//[fsmmodel::State|EString]
-		public CrossReference getInitialStateStateCrossReference_8_1_0() { return cInitialStateStateCrossReference_8_1_0; }
+		public CrossReference getInitialStatesStateCrossReference_8_1_0() { return cInitialStatesStateCrossReference_8_1_0; }
 
 		//EString
-		public RuleCall getInitialStateStateEStringParserRuleCall_8_1_0_1() { return cInitialStateStateEStringParserRuleCall_8_1_0_1; }
+		public RuleCall getInitialStatesStateEStringParserRuleCall_8_1_0_1() { return cInitialStatesStateEStringParserRuleCall_8_1_0_1; }
 
-		//("finals: " finalStates+=[fsmmodel::State|EString] ("," finalStates+=[fsmmodel::State|EString])*)?
+		//("," initialStates+=[fsmmodel::State|EString])*
 		public Group getGroup_9() { return cGroup_9; }
 
-		//"finals: "
-		public Keyword getFinalsKeyword_9_0() { return cFinalsKeyword_9_0; }
+		//","
+		public Keyword getCommaKeyword_9_0() { return cCommaKeyword_9_0; }
 
-		//finalStates+=[fsmmodel::State|EString]
-		public Assignment getFinalStatesAssignment_9_1() { return cFinalStatesAssignment_9_1; }
+		//initialStates+=[fsmmodel::State|EString]
+		public Assignment getInitialStatesAssignment_9_1() { return cInitialStatesAssignment_9_1; }
 
 		//[fsmmodel::State|EString]
-		public CrossReference getFinalStatesStateCrossReference_9_1_0() { return cFinalStatesStateCrossReference_9_1_0; }
+		public CrossReference getInitialStatesStateCrossReference_9_1_0() { return cInitialStatesStateCrossReference_9_1_0; }
 
 		//EString
-		public RuleCall getFinalStatesStateEStringParserRuleCall_9_1_0_1() { return cFinalStatesStateEStringParserRuleCall_9_1_0_1; }
+		public RuleCall getInitialStatesStateEStringParserRuleCall_9_1_0_1() { return cInitialStatesStateEStringParserRuleCall_9_1_0_1; }
+
+		//("finals: " finalStates+=[fsmmodel::State|EString] ("," finalStates+=[fsmmodel::State|EString])*)?
+		public Group getGroup_10() { return cGroup_10; }
+
+		//"finals: "
+		public Keyword getFinalsKeyword_10_0() { return cFinalsKeyword_10_0; }
+
+		//finalStates+=[fsmmodel::State|EString]
+		public Assignment getFinalStatesAssignment_10_1() { return cFinalStatesAssignment_10_1; }
+
+		//[fsmmodel::State|EString]
+		public CrossReference getFinalStatesStateCrossReference_10_1_0() { return cFinalStatesStateCrossReference_10_1_0; }
+
+		//EString
+		public RuleCall getFinalStatesStateEStringParserRuleCall_10_1_0_1() { return cFinalStatesStateEStringParserRuleCall_10_1_0_1; }
 
 		//("," finalStates+=[fsmmodel::State|EString])*
-		public Group getGroup_9_2() { return cGroup_9_2; }
+		public Group getGroup_10_2() { return cGroup_10_2; }
 
 		//","
-		public Keyword getCommaKeyword_9_2_0() { return cCommaKeyword_9_2_0; }
+		public Keyword getCommaKeyword_10_2_0() { return cCommaKeyword_10_2_0; }
 
 		//finalStates+=[fsmmodel::State|EString]
-		public Assignment getFinalStatesAssignment_9_2_1() { return cFinalStatesAssignment_9_2_1; }
+		public Assignment getFinalStatesAssignment_10_2_1() { return cFinalStatesAssignment_10_2_1; }
 
 		//[fsmmodel::State|EString]
-		public CrossReference getFinalStatesStateCrossReference_9_2_1_0() { return cFinalStatesStateCrossReference_9_2_1_0; }
+		public CrossReference getFinalStatesStateCrossReference_10_2_1_0() { return cFinalStatesStateCrossReference_10_2_1_0; }
 
 		//EString
-		public RuleCall getFinalStatesStateEStringParserRuleCall_9_2_1_0_1() { return cFinalStatesStateEStringParserRuleCall_9_2_1_0_1; }
+		public RuleCall getFinalStatesStateEStringParserRuleCall_10_2_1_0_1() { return cFinalStatesStateEStringParserRuleCall_10_2_1_0_1; }
 
 		//(states+=State | transitions+=Transition)+
-		public Alternatives getAlternatives_10() { return cAlternatives_10; }
+		public Alternatives getAlternatives_11() { return cAlternatives_11; }
 
 		//states+=State
-		public Assignment getStatesAssignment_10_0() { return cStatesAssignment_10_0; }
+		public Assignment getStatesAssignment_11_0() { return cStatesAssignment_11_0; }
 
 		//State
-		public RuleCall getStatesStateParserRuleCall_10_0_0() { return cStatesStateParserRuleCall_10_0_0; }
+		public RuleCall getStatesStateParserRuleCall_11_0_0() { return cStatesStateParserRuleCall_11_0_0; }
 
 		//transitions+=Transition
-		public Assignment getTransitionsAssignment_10_1() { return cTransitionsAssignment_10_1; }
+		public Assignment getTransitionsAssignment_11_1() { return cTransitionsAssignment_11_1; }
 
 		//Transition
-		public RuleCall getTransitionsTransitionParserRuleCall_10_1_0() { return cTransitionsTransitionParserRuleCall_10_1_0; }
+		public RuleCall getTransitionsTransitionParserRuleCall_11_1_0() { return cTransitionsTransitionParserRuleCall_11_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 
 	public class TransitionElements extends AbstractParserRuleElementFinder {
@@ -771,9 +791,9 @@ public class MoCDslGrammarAccess extends AbstractGrammarElementFinder {
 	//CCSLStateMachineRelationDefinition returns ccslmoc::StateMachineRelationDefinition:
 	//	{ccslmoc::StateMachineRelationDefinition} "StateBasedRelationDefinition" name=EString "["
 	//	declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]" "{" declarationBlock=DeclarationBlock?
-	//	("init: " initialState=[fsmmodel::State|EString]) //';'
-	//	("finals: " finalStates+=[fsmmodel::State|EString] ("," finalStates+=[fsmmodel::State|EString])*)? / *';'* /
-	//	(states+=State | transitions+=Transition)+ "}";
+	//	("init: " initialStates+=[fsmmodel::State|EString]) ("," initialStates+=[fsmmodel::State|EString])* ("finals: "
+	//	finalStates+=[fsmmodel::State|EString] ("," finalStates+=[fsmmodel::State|EString])*)? (states+=State |
+	//	transitions+=Transition)+ "}";
 	public CCSLStateMachineRelationDefinitionElements getCCSLStateMachineRelationDefinitionAccess() {
 		return (pCCSLStateMachineRelationDefinition != null) ? pCCSLStateMachineRelationDefinition : (pCCSLStateMachineRelationDefinition = new CCSLStateMachineRelationDefinitionElements());
 	}
@@ -843,8 +863,9 @@ public class MoCDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	//StateMachineDefinition returns fsmmodel::StateMachineDefinition:
 	//	{fsmmodel::StateMachineDefinition} "StateMachineDefinition" name=EString "{" declarationBlock=DeclarationBlock?
-	//	("init: " initialState=[fsmmodel::State|EString]) ("finals: " finalStates+=[fsmmodel::State|EString] (","
-	//	finalStates+=[fsmmodel::State|EString])*)? (states+=State | transitions+=Transition)+ "}";
+	//	("init: " initialStates+=[fsmmodel::State|EString]) ("," initialStates+=[fsmmodel::State|EString])* ("finals: "
+	//	finalStates+=[fsmmodel::State|EString] ("," finalStates+=[fsmmodel::State|EString])*)? (states+=State |
+	//	transitions+=Transition)+ "}";
 	public FSMDslGrammarAccess.StateMachineDefinitionElements getStateMachineDefinitionAccess() {
 		return gaFSMDsl.getStateMachineDefinitionAccess();
 	}

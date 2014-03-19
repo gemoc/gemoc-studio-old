@@ -46,6 +46,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.DeclarationBlock;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelFactory;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension.EditionExtensionFactory;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.mocc.fsmkernel.model.FSMModel.DeclarationBlock} object.
@@ -174,6 +175,61 @@ public class DeclarationBlockItemProvider
 			(createChildParameter
 				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
 				 FSMModelFactory.eINSTANCE.createIntegerAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createIntInfEqual()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createIntSupEqual()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createRealInfEqual()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createRealSupEqual()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfPlusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfMinusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfMultiplyAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfDivideAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createRealSelfPlusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createRealSelfMinusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CONCRETE_ENTITIES,
+				 EditionExtensionFactory.eINSTANCE.createRealSelfMultiplyAssignement()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -404,6 +460,61 @@ public class DeclarationBlockItemProvider
 			(createChildParameter
 				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
 				 FSMModelFactory.eINSTANCE.createIntegerAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createIntInfEqual()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createIntSupEqual()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createRealInfEqual()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createRealSupEqual()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfPlusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfMinusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfMultiplyAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createIntSelfDivideAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createRealSelfPlusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createRealSelfMinusAssignement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FSMModelPackage.Literals.DECLARATION_BLOCK__CLASSICAL_EXPRESSIONS,
+				 EditionExtensionFactory.eINSTANCE.createRealSelfMultiplyAssignement()));
 
 		newChildDescriptors.add
 			(createChildParameter

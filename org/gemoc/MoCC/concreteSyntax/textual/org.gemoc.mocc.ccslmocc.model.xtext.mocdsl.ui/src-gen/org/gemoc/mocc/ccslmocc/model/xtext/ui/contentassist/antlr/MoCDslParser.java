@@ -39,10 +39,10 @@ public class MoCDslParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getStateRelationBasedLibraryAccess().getAlternatives_4_1(), "rule__StateRelationBasedLibrary__Alternatives_4_1");
 					put(grammarAccess.getRelationDefinitionAccess().getAlternatives(), "rule__RelationDefinition__Alternatives");
-					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getAlternatives_10(), "rule__CCSLStateMachineRelationDefinition__Alternatives_10");
+					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getAlternatives_11(), "rule__CCSLStateMachineRelationDefinition__Alternatives_11");
 					put(grammarAccess.getTriggerAccess().getAlternatives_1(), "rule__Trigger__Alternatives_1");
 					put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
-					put(grammarAccess.getStateMachineDefinitionAccess().getAlternatives_7(), "rule__StateMachineDefinition__Alternatives_7");
+					put(grammarAccess.getStateMachineDefinitionAccess().getAlternatives_8(), "rule__StateMachineDefinition__Alternatives_8");
 					put(grammarAccess.getBinaryIntegerExpressionAccess().getAlternatives(), "rule__BinaryIntegerExpression__Alternatives");
 					put(grammarAccess.getIntegerExpressionAccess().getAlternatives(), "rule__IntegerExpression__Alternatives");
 					put(grammarAccess.getUnaryIntegerExpressionAccess().getAlternatives(), "rule__UnaryIntegerExpression__Alternatives");
@@ -110,7 +110,8 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup(), "rule__CCSLStateMachineRelationDefinition__Group__0");
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup_8(), "rule__CCSLStateMachineRelationDefinition__Group_8__0");
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup_9(), "rule__CCSLStateMachineRelationDefinition__Group_9__0");
-					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup_9_2(), "rule__CCSLStateMachineRelationDefinition__Group_9_2__0");
+					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup_10(), "rule__CCSLStateMachineRelationDefinition__Group_10__0");
+					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup_10_2(), "rule__CCSLStateMachineRelationDefinition__Group_10_2__0");
 					put(grammarAccess.getTransitionAccess().getGroup(), "rule__Transition__Group__0");
 					put(grammarAccess.getTransitionAccess().getGroup_8(), "rule__Transition__Group_8__0");
 					put(grammarAccess.getTransitionAccess().getGroup_9(), "rule__Transition__Group_9__0");
@@ -125,7 +126,8 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup(), "rule__StateMachineDefinition__Group__0");
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_5(), "rule__StateMachineDefinition__Group_5__0");
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_6(), "rule__StateMachineDefinition__Group_6__0");
-					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_6_2(), "rule__StateMachineDefinition__Group_6_2__0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_7(), "rule__StateMachineDefinition__Group_7__0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_7_2(), "rule__StateMachineDefinition__Group_7_2__0");
 					put(grammarAccess.getDeclarationBlockAccess().getGroup(), "rule__DeclarationBlock__Group__0");
 					put(grammarAccess.getIntegerAssignementBlockAccess().getGroup(), "rule__IntegerAssignementBlock__Group__0");
 					put(grammarAccess.getIntegerAssignementBlockAccess().getGroup_5(), "rule__IntegerAssignementBlock__Group_5__0");
@@ -388,11 +390,12 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getNameAssignment_2(), "rule__CCSLStateMachineRelationDefinition__NameAssignment_2");
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getDeclarationAssignment_4(), "rule__CCSLStateMachineRelationDefinition__DeclarationAssignment_4");
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getDeclarationBlockAssignment_7(), "rule__CCSLStateMachineRelationDefinition__DeclarationBlockAssignment_7");
-					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getInitialStateAssignment_8_1(), "rule__CCSLStateMachineRelationDefinition__InitialStateAssignment_8_1");
-					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalStatesAssignment_9_1(), "rule__CCSLStateMachineRelationDefinition__FinalStatesAssignment_9_1");
-					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalStatesAssignment_9_2_1(), "rule__CCSLStateMachineRelationDefinition__FinalStatesAssignment_9_2_1");
-					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getStatesAssignment_10_0(), "rule__CCSLStateMachineRelationDefinition__StatesAssignment_10_0");
-					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getTransitionsAssignment_10_1(), "rule__CCSLStateMachineRelationDefinition__TransitionsAssignment_10_1");
+					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getInitialStatesAssignment_8_1(), "rule__CCSLStateMachineRelationDefinition__InitialStatesAssignment_8_1");
+					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getInitialStatesAssignment_9_1(), "rule__CCSLStateMachineRelationDefinition__InitialStatesAssignment_9_1");
+					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalStatesAssignment_10_1(), "rule__CCSLStateMachineRelationDefinition__FinalStatesAssignment_10_1");
+					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getFinalStatesAssignment_10_2_1(), "rule__CCSLStateMachineRelationDefinition__FinalStatesAssignment_10_2_1");
+					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getStatesAssignment_11_0(), "rule__CCSLStateMachineRelationDefinition__StatesAssignment_11_0");
+					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getTransitionsAssignment_11_1(), "rule__CCSLStateMachineRelationDefinition__TransitionsAssignment_11_1");
 					put(grammarAccess.getTransitionAccess().getSourceAssignment_2(), "rule__Transition__SourceAssignment_2");
 					put(grammarAccess.getTransitionAccess().getTargetAssignment_4(), "rule__Transition__TargetAssignment_4");
 					put(grammarAccess.getTransitionAccess().getNameAssignment_6(), "rule__Transition__NameAssignment_6");
@@ -407,11 +410,12 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStartClockAccess().getClockAssignment_3(), "rule__StartClock__ClockAssignment_3");
 					put(grammarAccess.getStateMachineDefinitionAccess().getNameAssignment_2(), "rule__StateMachineDefinition__NameAssignment_2");
 					put(grammarAccess.getStateMachineDefinitionAccess().getDeclarationBlockAssignment_4(), "rule__StateMachineDefinition__DeclarationBlockAssignment_4");
-					put(grammarAccess.getStateMachineDefinitionAccess().getInitialStateAssignment_5_1(), "rule__StateMachineDefinition__InitialStateAssignment_5_1");
-					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_6_1(), "rule__StateMachineDefinition__FinalStatesAssignment_6_1");
-					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_6_2_1(), "rule__StateMachineDefinition__FinalStatesAssignment_6_2_1");
-					put(grammarAccess.getStateMachineDefinitionAccess().getStatesAssignment_7_0(), "rule__StateMachineDefinition__StatesAssignment_7_0");
-					put(grammarAccess.getStateMachineDefinitionAccess().getTransitionsAssignment_7_1(), "rule__StateMachineDefinition__TransitionsAssignment_7_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getInitialStatesAssignment_5_1(), "rule__StateMachineDefinition__InitialStatesAssignment_5_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getInitialStatesAssignment_6_1(), "rule__StateMachineDefinition__InitialStatesAssignment_6_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_7_1(), "rule__StateMachineDefinition__FinalStatesAssignment_7_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getFinalStatesAssignment_7_2_1(), "rule__StateMachineDefinition__FinalStatesAssignment_7_2_1");
+					put(grammarAccess.getStateMachineDefinitionAccess().getStatesAssignment_8_0(), "rule__StateMachineDefinition__StatesAssignment_8_0");
+					put(grammarAccess.getStateMachineDefinitionAccess().getTransitionsAssignment_8_1(), "rule__StateMachineDefinition__TransitionsAssignment_8_1");
 					put(grammarAccess.getDeclarationBlockAccess().getConcreteEntitiesAssignment_2(), "rule__DeclarationBlock__ConcreteEntitiesAssignment_2");
 					put(grammarAccess.getDeclarationBlockAccess().getClassicalExpressionsAssignment_3(), "rule__DeclarationBlock__ClassicalExpressionsAssignment_3");
 					put(grammarAccess.getIntegerAssignementBlockAccess().getNameAssignment_2(), "rule__IntegerAssignementBlock__NameAssignment_2");

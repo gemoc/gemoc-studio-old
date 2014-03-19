@@ -49,10 +49,10 @@
         eType="#//Transition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" lowerBound="1"
         upperBound="-1" eType="#//State" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="initialState" lowerBound="1"
-        eType="#//State"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="finalStates" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialStates" lowerBound="1"
         upperBound="-1" eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="finalStates" upperBound="-1"
+        eType="#//State"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractTrigger" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractAction" abstract="true"/>

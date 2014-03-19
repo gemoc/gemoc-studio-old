@@ -318,7 +318,7 @@ public class FSMModelPackageImpl extends EPackageImpl implements FSMModelPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStateMachineDefinition_InitialState() {
+	public EReference getStateMachineDefinition_InitialStates() {
 		return (EReference)stateMachineDefinitionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -482,7 +482,7 @@ public class FSMModelPackageImpl extends EPackageImpl implements FSMModelPackage
 		createEReference(stateMachineDefinitionEClass, STATE_MACHINE_DEFINITION__DECLARATION_BLOCK);
 		createEReference(stateMachineDefinitionEClass, STATE_MACHINE_DEFINITION__TRANSITIONS);
 		createEReference(stateMachineDefinitionEClass, STATE_MACHINE_DEFINITION__STATES);
-		createEReference(stateMachineDefinitionEClass, STATE_MACHINE_DEFINITION__INITIAL_STATE);
+		createEReference(stateMachineDefinitionEClass, STATE_MACHINE_DEFINITION__INITIAL_STATES);
 		createEReference(stateMachineDefinitionEClass, STATE_MACHINE_DEFINITION__FINAL_STATES);
 
 		abstractTriggerEClass = createEClass(ABSTRACT_TRIGGER);
@@ -562,8 +562,8 @@ public class FSMModelPackageImpl extends EPackageImpl implements FSMModelPackage
 		initEReference(getStateMachineDefinition_DeclarationBlock(), this.getDeclarationBlock(), null, "declarationBlock", null, 0, 1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStateMachineDefinition_Transitions(), this.getTransition(), null, "transitions", null, 0, -1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStateMachineDefinition_States(), this.getState(), null, "states", null, 1, -1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStateMachineDefinition_InitialState(), this.getState(), null, "initialState", null, 1, 1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStateMachineDefinition_FinalStates(), this.getState(), null, "finalStates", null, 1, -1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachineDefinition_InitialStates(), this.getState(), null, "initialStates", null, 1, -1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachineDefinition_FinalStates(), this.getState(), null, "finalStates", null, 0, -1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractTriggerEClass, AbstractTrigger.class, "AbstractTrigger", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
