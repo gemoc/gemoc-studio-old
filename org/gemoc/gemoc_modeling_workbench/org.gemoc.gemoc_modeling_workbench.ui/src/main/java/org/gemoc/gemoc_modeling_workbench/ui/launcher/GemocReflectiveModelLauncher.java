@@ -194,9 +194,9 @@ public class GemocReflectiveModelLauncher
 		this.reactToNull(solver, "Solver");
 		this.reactToNull(executor, "Executor");
 		this.reactToNull(feedbackPolicy, "Feedback Policy");
-		this.reactToNull(domainSpecificEventsResource,
-				"Domain Specific Events Resource");
-		this.reactToNull(mocEventsResource, "MoC Events Resource");
+		//this.reactToNull(domainSpecificEventsResource,
+		//		"Domain Specific Events Resource");
+		//this.reactToNull(mocEventsResource, "MoC Events Resource");
 		this.reactToNull(modelLoader, "Model Loader");
 		// TODO will probably be replaced by an internal map in the engine,
 		// created form the domainSpecificEventsResource)
@@ -207,15 +207,7 @@ public class GemocReflectiveModelLauncher
 					.getDefault()
 					.getMessaggingSystem()
 					.warn("forcing the solverInput to user defined extendedCCSL "
-							+ extendedCCSLFilePath, Activator.PLUGIN_ID);
-			solver.setSolverInputBuilder(new SolverInputBuilder() {
-				@Override
-				public Resource build(Resource modelOfExecutionResource) {
-					return new ResourceSetImpl().getResource(URI
-							.createPlatformResourceURI(extendedCCSLFilePath,
-									true), true);
-				}
-			});
+							+ extendedCCSLFilePath, Activator.PLUGIN_ID);			
 			// initialize solver
 			solver.setSolverInputFile(URI.createPlatformResourceURI(
 					extendedCCSLFilePath, true));
@@ -227,6 +219,8 @@ public class GemocReflectiveModelLauncher
 					.getMessaggingSystem()
 					.error("automatic call to qvto transformation  not implemented yet. Please specify a manually generated extendedCCSL file.",
 							Activator.PLUGIN_ID);
+			URI solverInputFileURI = solver.prepareSolverInputFileForUserModel(URI.createPlatformResourceURI(modelPath, true));
+			solver.setSolverInputFile(solverInputFileURI);
 			return;
 		}
 
