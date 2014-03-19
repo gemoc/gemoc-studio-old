@@ -43,14 +43,14 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 			switch (delta.getKind()) {
 			case IResourceDelta.ADDED:
 				// handle added resource
-				updateQVTOFromECL(resource);
+				processResource(resource);
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
 				break;
 			case IResourceDelta.CHANGED:
 				// handle changed resource
-				updateQVTOFromECL(resource);
+				processResource(resource);
 				break;
 			}
 			//return true to continue visiting children.
@@ -60,7 +60,7 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 
 	class Moc2ASProjectResourceVisitor implements IResourceVisitor {
 		public boolean visit(IResource resource) {
-			updateQVTOFromECL(resource);
+			processResource(resource);
 			//return true to continue visiting children.
 			return true;
 		}
@@ -94,10 +94,25 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 
 	public static final String BUILDER_ID = "org.gemoc.eclmoc.moc2as.eclMoc2ASBuilder";
 
-	private static final String MARKER_TYPE = "org.gemoc.eclmoc.moc2as.eclProblem";
+	private static final String MARKER_TYPE = "org.gemoc.eclmoc.moc2as.eclMoc2AsProblem";
 
 	// private SAXParserFactory parserFactory;
 
+	private void addMarker(IProject project, String message, int lineNumber,
+			int severity) {
+		try {
+			IMarker marker = project.createMarker(MARKER_TYPE);
+			marker.setAttribute(IMarker.MESSAGE, message);
+			marker.setAttribute(IMarker.SEVERITY, severity);
+			/*if (lineNumber == -1) {
+				lineNumber = 1;
+			}
+			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);*/
+		} catch (CoreException e) {
+			Activator.eclipseError(e.getMessage(), e);
+		}
+	}
+	
 	private void addMarker(IFile file, String message, int lineNumber,
 			int severity) {
 		try {
@@ -109,6 +124,7 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 			}
 			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
 		} catch (CoreException e) {
+			Activator.eclipseError(e.getMessage(), e);
 		}
 	}
 
@@ -133,16 +149,55 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 		return null;
 	}
 
+	
+	
+	
 	protected void clean(IProgressMonitor monitor) throws CoreException {
 		// delete markers set and files created
 		getProject().deleteMarkers(MARKER_TYPE, true, IResource.DEPTH_INFINITE);
 	}
 
-	void updateQVTOFromECL(IResource resource) {
+	protected void processResource(IResource resource){
 		if (resource instanceof IFile && resource.getName().equals("moc2as.properties")) {
-			//TODO special handling of moc2as.properties
-			
+			checkProjectProperties((IFile) resource);
 		}
+		else if (resource instanceof IProject)  {
+			checkProjectMinimalContent((IProject) resource);
+		}
+		else if(resource instanceof IFile && resource.getName().endsWith(".ecl")){
+			updateQVTOFromECL(resource);
+		}
+	}
+	
+	protected void checkProjectMinimalContent(IProject project) {
+		deleteMarkers(project);
+		IFile propertyFile = (IFile) project.getFile("moc2as.properties");
+		if(!propertyFile.exists()){
+			addMarker(project, "Missing moc2as.properties, cannot generate qvto", -1, IMarker.SEVERITY_ERROR);
+			return;
+		}
+	}
+	
+	protected void checkProjectProperties(IFile propertyFile) {
+		checkProjectMinimalContent(propertyFile.getProject());
+		deleteMarkers(propertyFile);
+		Properties properties = new Properties();
+		try {
+			properties.load(propertyFile.getContents());
+		
+			String rootElement = properties.getProperty("rootElement");
+			if(rootElement==null || rootElement.isEmpty()){
+				addMarker(propertyFile, "rootElement not defined in moc2as.properties, cannot generate qvto", -1, IMarker.SEVERITY_ERROR);
+				return;
+			}
+		} catch (IOException e1) {
+			Activator.eclipseError(e1.getMessage(), e1);
+		} catch (CoreException e1) {
+			Activator.eclipseError(e1.getMessage(), e1);
+		}
+	}
+	
+	void updateQVTOFromECL(IResource resource) {		
 		if (resource instanceof IFile && resource.getName().endsWith(".ecl")) {
 			IProject project = resource.getProject();
 			final IFile eclFile = (IFile) resource;
@@ -151,15 +206,15 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 			
 			IFile propertyFile = (IFile) resource.getProject().getFile("moc2as.properties");
 			if(!propertyFile.exists()){
-				addMarker(eclFile, "Missing moc2as.properties, cannot generate qvto", 0, IMarker.SEVERITY_ERROR);
+				//addMarker(resource.getProject(), "Missing moc2as.properties, cannot generate qvto", -1, IMarker.SEVERITY_ERROR);
 				return;
 			}
 			try {
 				Properties properties = new Properties();
-				properties.load(eclFile.getContents());
+				properties.load(propertyFile.getContents());
 				String rootElement = properties.getProperty("rootElement");
 				if(rootElement==null || rootElement.isEmpty()){
-					addMarker(eclFile, "rootElement not defined in moc2as.properties, cannot generate qvto", 0, IMarker.SEVERITY_WARNING);
+					//addMarker(eclFile, "rootElement not defined in moc2as.properties, cannot generate qvto", -1, IMarker.SEVERITY_WARNING);
 					return;
 				}
 				final URI uri = URI.createPlatformResourceURI(
@@ -206,7 +261,7 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 							
 							
 						} catch (IOException e) {
-							addMarker(eclFile, e.getMessage(), 0, IMarker.SEVERITY_ERROR);
+							addMarker(eclFile, e.getMessage(), -1, IMarker.SEVERITY_ERROR);
 							Activator.eclipseError(e.getMessage(), e);
 						}
 					}
@@ -223,7 +278,7 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
-	private void deleteMarkers(IFile file) {
+	private void deleteMarkers(IResource file) {
 		try {
 			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
 		} catch (CoreException ce) {

@@ -98,8 +98,8 @@
       </menuContribution>
    </extension>
    <extension
-         id="xmlProblem"
-         name="XML Problem"
+         id="org.gemoc.eclmoc.moc2as.eclMoc2AsProblem"
+         name="ECLMoc2AS Problem"
          point="org.eclipse.core.resources.markers">
       <super
             type="org.eclipse.core.resources.problemmarker">
