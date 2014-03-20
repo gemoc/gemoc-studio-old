@@ -1,4 +1,4 @@
-package org.gemoc.eclmoc.moc2as.builder;
+package org.gemoc.dse.ecl.moc2as.builder;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.gemoc.eclmoc.moc2as.Activator;
+import org.gemoc.dse.ecl.moc2as.ui.Activator;
 
 import toools.io.file.RegularFile;
 import fr.inria.aoste.timesquare.ecl.ecltoqvto.main.AcceleoLauncherForEclToQvto;

@@ -1,4 +1,4 @@
-package org.gemoc.eclmoc.moc2as.builder;
+package org.gemoc.dse.ecl.moc2as.builder;
 
 import java.util.Iterator;
 import org.eclipse.core.commands.*;

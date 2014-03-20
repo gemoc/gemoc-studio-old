@@ -1,4 +1,4 @@
-package org.gemoc.eclmoc.moc2as.builder;
+package org.gemoc.dse.ecl.moc2as.builder;
 
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IProject;
@@ -11,7 +11,7 @@ public class ECLMoc2ASNature implements IProjectNature {
 	/**
 	 * ID of this project nature
 	 */
-	public static final String NATURE_ID = "org.gemoc.eclmoc.moc2as.eclMoc2ASNature";
+	public static final String NATURE_ID = "org.gemoc.dse.ecl.moc2as.eclMoc2ASNature";
 
 	private IProject project;
 
