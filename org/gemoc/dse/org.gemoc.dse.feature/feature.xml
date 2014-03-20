@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.gemoc.gemoc_commons.feature"
-      label="Gemoc Language Designer"
+      id="org.gemoc.dse.feature"
+      label="Gemoc Language Designer, DSE support"
       version="1.0.0.qualifier"
       provider-name="INRIA">
 
