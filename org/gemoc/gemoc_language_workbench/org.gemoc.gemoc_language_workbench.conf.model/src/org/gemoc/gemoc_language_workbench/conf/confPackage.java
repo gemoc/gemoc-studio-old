@@ -998,22 +998,13 @@ public interface confPackage extends EPackage {
 	int BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Generate QVTO From ECL</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL = 2;
-
-	/**
 	 * The number of structural features of the '<em>Build Options</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_OPTIONS_FEATURE_COUNT = 3;
+	int BUILD_OPTIONS_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
@@ -1488,17 +1479,6 @@ public interface confPackage extends EPackage {
 	EAttribute getBuildOptions_GenerateCodeExecutorService();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateQVTOFromECL <em>Generate QVTO From ECL</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Generate QVTO From ECL</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateQVTOFromECL()
-	 * @see #getBuildOptions()
-	 * @generated
-	 */
-	EAttribute getBuildOptions_GenerateQVTOFromECL();
-
-	/**
 	 * Returns the meta object for enum '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1927,14 +1907,6 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE = eINSTANCE.getBuildOptions_GenerateCodeExecutorService();
-
-		/**
-		 * The meta object literal for the '<em><b>Generate QVTO From ECL</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL = eINSTANCE.getBuildOptions_GenerateQVTOFromECL();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.

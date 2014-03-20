@@ -45,6 +45,7 @@ import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
+import org.gemoc.gemoc_language_workbench.conf.QVToFile;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
@@ -293,9 +294,12 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 						updateDependenciesWithXTextEditorProject(project, xtextProject);
 					}
 					if (eObject instanceof ECLFile) {
-						if(buildOptions.isGenerateQVTOFromECL()){
-							updateECL_QVTO(project, (ECLFile) eObject, languageRootElement);
-						}
+						updateECL(project, (ECLFile) eObject, languageRootElement);
+						
+					}
+					if (eObject instanceof QVToFile) {
+						updateQVTO(project, (QVToFile) eObject, languageRootElement);
+						
 					}
 					/*
 					 * if(eObject instanceof
@@ -628,7 +632,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	 * @param project
 	 * @param ld
 	 */
-	protected void updateECL_QVTO(final IProject project,
+	/*protected void updateECL_QVTO(final IProject project,
 			final ECLFile ecliFilePath, String rootElement) {
 		
 		
@@ -636,6 +640,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				ecliFilePath.getLocationURI(), true);
 		final IFolder qvtoFolder = project.getFolder("qvto-gen");
 
+		
 		String folderPath = qvtoFolder.getLocation().toOSString();
 		final File folder = new File(folderPath);
 
@@ -678,7 +683,10 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			}
 		};
 		SafeRunner.run(runnable);
-
+*/
+	protected void updateECL(final IProject project,
+			final ECLFile ecliFilePath, String rootElement) {
+		// TODO check that the ecl file exists
 		// update plugin.xml
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
 		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
@@ -687,10 +695,23 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint,
 				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT, ecliFilePath.getLocationURI());
+		helper.saveDocument(pluginfile);
+
+	}
+	protected void updateQVTO(final IProject project,
+			final QVToFile qvtoFilePath, String rootElement) {
+		// TODO check that the qvto file exists
+		
+		// update plugin.xml
+		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
+		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
+		PluginXMLHelper helper = new PluginXMLHelper();
+		helper.loadDocument(pluginfile);
+		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		helper.updateXDSMLDefinitionAttributeInExtensionPoint(
 				gemocExtensionPoint,
 				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT,
-				qvtoFolder.getFullPath().toString()+"/"+qvtoFileName);
+				qvtoFilePath.getLocationURI());
 		helper.saveDocument(pluginfile);
 
 	}

@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateModelLoaderService <em>Generate Model Loader Service</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateCodeExecutorService <em>Generate Code Executor Service</em>}</li>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateQVTOFromECL <em>Generate QVTO From ECL</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,32 +75,5 @@ public interface BuildOptions extends EObject {
 	 * @generated
 	 */
 	void setGenerateCodeExecutorService(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Generate QVTO From ECL</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Generate QVTO From ECL</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Generate QVTO From ECL</em>' attribute.
-	 * @see #setGenerateQVTOFromECL(boolean)
-	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getBuildOptions_GenerateQVTOFromECL()
-	 * @model default="true"
-	 * @generated
-	 */
-	boolean isGenerateQVTOFromECL();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateQVTOFromECL <em>Generate QVTO From ECL</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Generate QVTO From ECL</em>' attribute.
-	 * @see #isGenerateQVTOFromECL()
-	 * @generated
-	 */
-	void setGenerateQVTOFromECL(boolean value);
 
 } // BuildOptions

@@ -62,7 +62,6 @@ public class BuildOptionsItemProvider
 
 			addGenerateModelLoaderServicePropertyDescriptor(object);
 			addGenerateCodeExecutorServicePropertyDescriptor(object);
-			addGenerateQVTOFromECLPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,28 +111,6 @@ public class BuildOptionsItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Generate QVTO From ECL feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addGenerateQVTOFromECLPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_BuildOptions_generateQVTOFromECL_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_BuildOptions_generateQVTOFromECL_feature", "_UI_BuildOptions_type"),
-				 confPackage.Literals.BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns BuildOptions.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -170,7 +147,6 @@ public class BuildOptionsItemProvider
 		switch (notification.getFeatureID(BuildOptions.class)) {
 			case confPackage.BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE:
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
-			case confPackage.BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

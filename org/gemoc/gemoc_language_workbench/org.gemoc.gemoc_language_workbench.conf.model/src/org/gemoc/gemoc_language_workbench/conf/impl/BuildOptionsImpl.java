@@ -21,7 +21,6 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * <ul>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl#isGenerateModelLoaderService <em>Generate Model Loader Service</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl#isGenerateCodeExecutorService <em>Generate Code Executor Service</em>}</li>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl#isGenerateQVTOFromECL <em>Generate QVTO From ECL</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,26 +66,6 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 	 * @ordered
 	 */
 	protected boolean generateCodeExecutorService = GENERATE_CODE_EXECUTOR_SERVICE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isGenerateQVTOFromECL() <em>Generate QVTO From ECL</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isGenerateQVTOFromECL()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean GENERATE_QVTO_FROM_ECL_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isGenerateQVTOFromECL() <em>Generate QVTO From ECL</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isGenerateQVTOFromECL()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean generateQVTOFromECL = GENERATE_QVTO_FROM_ECL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,27 +133,6 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isGenerateQVTOFromECL() {
-		return generateQVTOFromECL;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setGenerateQVTOFromECL(boolean newGenerateQVTOFromECL) {
-		boolean oldGenerateQVTOFromECL = generateQVTOFromECL;
-		generateQVTOFromECL = newGenerateQVTOFromECL;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL, oldGenerateQVTOFromECL, generateQVTOFromECL));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -182,8 +140,6 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 				return isGenerateModelLoaderService();
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
 				return isGenerateCodeExecutorService();
-			case confPackage.BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL:
-				return isGenerateQVTOFromECL();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -201,9 +157,6 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 				return;
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
 				setGenerateCodeExecutorService((Boolean)newValue);
-				return;
-			case confPackage.BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL:
-				setGenerateQVTOFromECL((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -223,9 +176,6 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
 				setGenerateCodeExecutorService(GENERATE_CODE_EXECUTOR_SERVICE_EDEFAULT);
 				return;
-			case confPackage.BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL:
-				setGenerateQVTOFromECL(GENERATE_QVTO_FROM_ECL_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -242,8 +192,6 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 				return generateModelLoaderService != GENERATE_MODEL_LOADER_SERVICE_EDEFAULT;
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
 				return generateCodeExecutorService != GENERATE_CODE_EXECUTOR_SERVICE_EDEFAULT;
-			case confPackage.BUILD_OPTIONS__GENERATE_QVTO_FROM_ECL:
-				return generateQVTOFromECL != GENERATE_QVTO_FROM_ECL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -262,8 +210,6 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 		result.append(generateModelLoaderService);
 		result.append(", generateCodeExecutorService: ");
 		result.append(generateCodeExecutorService);
-		result.append(", generateQVTOFromECL: ");
-		result.append(generateQVTOFromECL);
 		result.append(')');
 		return result.toString();
 	}

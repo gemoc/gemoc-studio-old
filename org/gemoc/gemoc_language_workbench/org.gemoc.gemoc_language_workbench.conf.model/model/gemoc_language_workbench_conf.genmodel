@@ -63,7 +63,6 @@
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//BuildOptions">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//BuildOptions/generateModelLoaderService"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//BuildOptions/generateCodeExecutorService"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//BuildOptions/generateQVTOFromECL"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
