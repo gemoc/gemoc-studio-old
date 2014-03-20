@@ -29,6 +29,10 @@
          id="org.gemoc.execution.engine.feature"
          version="0.0.0"/>
 
+   <includes
+         id="org.gemoc.dse.feature"
+         version="0.0.0"/>
+
    <requires>
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.sdk" version="0.0.0" match="greaterOrEqual"/>
