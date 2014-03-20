@@ -2,7 +2,7 @@ package fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine;
 
 import java.util.Map;
 
-import org.gemoc.mocc.model.moccmetamodel.StateMachineRelationDefinition;
+import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.AbstractEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ExternalRelationDefinition;

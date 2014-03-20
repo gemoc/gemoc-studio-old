@@ -5,15 +5,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.gemoc.mocc.ccslmoc.model.ccslmocc.FinishClock;
+import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.AbstractAction;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.Guard;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignement;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.State;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.Trigger;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.impl.IntegerAssignementImpl;
+
 import net.javabdd.BDD;
-
-import org.gemoc.mocc.model.moccmetamodel.Action;
-import org.gemoc.mocc.model.moccmetamodel.FinishClock;
-import org.gemoc.mocc.model.moccmetamodel.IntegerAssignment;
-import org.gemoc.mocc.model.moccmetamodel.State;
-import org.gemoc.mocc.model.moccmetamodel.StateMachineRelationDefinition;
-import org.gemoc.mocc.model.moccmetamodel.Transition;
-
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.DiscreteClockType;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.IntegerElement;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.BooleanExpression;
@@ -53,14 +55,14 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 	public StateMachineRelationDefinitionSemantics(StateMachineRelationDefinition modelSTS, AbstractConcreteMapping<SolverElement> context) {
 		_modelSTS = modelSTS;
 		_abstract2concreteMap = context;
-		_currentState = _modelSTS.getInitialState();
+		_currentState = _modelSTS.getInitialStates().get(0);
 		_sensitiveTransitition = new ArrayList<Transition>();
 		_parameters = _modelSTS.getDeclaration().getParameters();
 		_clockParameters = keepOnlyClocks(_parameters);
 		_allClocks = getConcreteElements(_clockParameters);
 		
 		_localInteger = new HashMap<ConcreteEntity, IntegerElement>();
-		for (ConcreteEntity ce : _modelSTS.getConcreteEntities()) {
+		for (ConcreteEntity ce : _modelSTS.getDeclarationBlock().getConcreteEntities()) {
 			if (ce instanceof IntegerElement){
 				IntegerElement ie = (IntegerElement)ce;
 				_localInteger.put(ce, ie);
@@ -70,7 +72,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 
 	@Override
 	public void start(SemanticHelper helper) throws SolverException {
-		_currentState = _modelSTS.getInitialState();
+		_currentState = _modelSTS.getInitialStates().get(0);
 		_sensitiveTransitition = new ArrayList<Transition>();
 	}
 
@@ -108,15 +110,15 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		
 		for (Transition t : _currentState.getOutputTransitions()) {
 			if (t.getGuard() != null){
-				if (! evaluate(t.getGuard())){
+				if (! evaluate(((Guard)t.getGuard()).getValue())){
 					continue;
 				}
 			}
 
 			_sensitiveTransitition.add(t);
 			
-			List<SolverElement> trueTrigger = getConcreteElements((List<? extends AbstractEntity>) t.getTrigger().getTrueTriggers());
-			List<SolverElement> falseTrigger = getConcreteElements((List<? extends AbstractEntity>) t.getTrigger().getFalseTriggers());
+			List<SolverElement> trueTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getTrueTriggers());
+			List<SolverElement> falseTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getFalseTriggers());
 			List<SolverElement> clocksNotInTrigger = new ArrayList<SolverElement>(_allClocks);
 			clocksNotInTrigger.removeAll(trueTrigger);
 			
@@ -162,8 +164,8 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 	public void update(CCSLKernelSolver solver, StepExecutor stepExecutor) throws SolverException {
 		allTransition: for (Transition t : _sensitiveTransitition) {
 			//construct three set, the one of clock that must tick and the clock that must not tick
-			List<SolverElement> trueTrigger = getConcreteElements((List<? extends AbstractEntity>) t.getTrigger().getTrueTriggers());
-			List<SolverElement> falseTrigger = getConcreteElements((List<? extends AbstractEntity>) t.getTrigger().getFalseTriggers());
+			List<SolverElement> trueTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger) t.getTrigger()).getTrueTriggers());
+			List<SolverElement> falseTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getFalseTriggers());
 			List<SolverElement> clocksNotInTrigger = new ArrayList<SolverElement>(_allClocks);
 			clocksNotInTrigger.removeAll(trueTrigger);
 			
@@ -185,14 +187,14 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 			
 			//here, it is the fired transition
 			
-			for (Action a : t.getActions()) {
+			for (AbstractAction a : t.getActions()) {
 				if (a instanceof FinishClock){
 					SolverClock toKill = (SolverClock) _abstract2concreteMap.getLocalValue((AbstractEntity) ((FinishClock) a).getClock());
 					stepExecutor.getNewDeadClocks().add(toKill);
 					toKill.setDead(true);
 				}
-				if (a instanceof IntegerAssignment){
-					IntegerAssignment ia = (IntegerAssignment)a;
+				if (a instanceof IntegerAssignement){
+					IntegerAssignement ia = (IntegerAssignement)a;
 					doAssignInt(ia);
 				}
 			}
@@ -207,7 +209,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 	//TODO: make it clean either throw a visitor, or by using the timesquare mecanism
 	
 	
-	private void doAssignInt(IntegerAssignment ia) {
+	private void doAssignInt(IntegerAssignement ia) {
 		IntegerExpression leftExpr = ia.getLeftValue();
 		IntegerExpression rightExpr = ia.getRightValue();
 							
