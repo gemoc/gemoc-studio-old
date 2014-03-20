@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.gemoc.gemoc_commons.feature"
+      label="Gemoc Language Designer"
+      version="1.0.0.qualifier"
+      provider-name="INRIA">
+
+   <description url="http://gemoc.org/studio/">
+      
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="org.gemoc.dse.ecl.moc2as.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

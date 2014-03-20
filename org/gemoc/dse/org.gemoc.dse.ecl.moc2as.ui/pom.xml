@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <relativePath>../org.gemoc.dse.root/pom.xml</relativePath>
+    <groupId>org.gemoc.dse</groupId>
+    <artifactId>org.gemoc.dse.root</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>org.gemoc.dse.ecl.moc2as.ui</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  <packaging>eclipse-plugin</packaging>
+</project>
