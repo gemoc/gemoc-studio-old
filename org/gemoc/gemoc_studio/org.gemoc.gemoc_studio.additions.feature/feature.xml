@@ -28,9 +28,9 @@
       <import feature="org.eclipse.mylyn.hudson" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.query.sdk" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.compare.feature.group" version="2.0.0" match="greaterOrEqual"/>
-	  <import feature="org.eclipse.emf.compare.source.feature.group" version="2.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.diffmerge.sdk.feature.feature.group" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.compare" version="2.0.0" match="greaterOrEqual"/>
+	  <import feature="org.eclipse.emf.compare.source" version="2.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.diffmerge.sdk.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.polarion.eclipse.team.svn.connector" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.polarion.eclipse.team.svn.connector.svnkit16" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.polarion.eclipse.team.svn.connector.svnkit17" version="0.0.0" match="greaterOrEqual"/>
