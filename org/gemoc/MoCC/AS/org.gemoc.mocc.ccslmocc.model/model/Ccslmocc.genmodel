@@ -15,12 +15,12 @@
       providerPackageSuffix="edit.provider" presentationPackageSuffix="editor.presentation"
       ecorePackage="Ccslmocc.ecore#/">
     <genClasses ecoreClass="Ccslmocc.ecore#//StateRelationBasedLibrary"/>
+    <genClasses ecoreClass="Ccslmocc.ecore#//StateMachineRelationDefinition"/>
     <genClasses ecoreClass="Ccslmocc.ecore#//FinishClock">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ccslmocc.ecore#//FinishClock/clock"/>
     </genClasses>
     <genClasses ecoreClass="Ccslmocc.ecore#//StartClock">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ccslmocc.ecore#//StartClock/clock"/>
     </genClasses>
-    <genClasses ecoreClass="Ccslmocc.ecore#//StateMachineRelationDefinition"/>
   </genPackages>
 </genmodel:GenModel>

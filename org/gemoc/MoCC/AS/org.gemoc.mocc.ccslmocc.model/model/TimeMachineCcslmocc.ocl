@@ -18,7 +18,7 @@
   * This file provides additional validation constraints on FSMModel ecore 
   * and ccsl metamodels for timesquare validation.
  */
- import ccslmocc : 'http://org.gemoc.mocc.ccslmocc/1.0#/' 
+ import ccslmocc : 'http://org.gemoc.mocc.ccslmocc/1.0' 
  import FSMModel : 'http://org.gemoc.mocc.fsmmodel/1.0'
  import ecore : 'http://www.eclipse.org/emf/2002/Ecore#/'
  import TimeModel : 'http://fr.inria.aoste.timemodel'

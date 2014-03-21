@@ -36,7 +36,7 @@ import org.eclipse.emf.compare.EMFCompare;
 import org.eclipse.emf.compare.match.IMatchEngine;
 import org.eclipse.emf.compare.merge.IMerger;
 import org.eclipse.emf.compare.postprocessor.IPostProcessor;
-import org.eclipse.emf.compare.rcp.EMFCompareRCPPlugin;
+import org.eclipse.emf.compare.rcp.EMFCompareRCPPlugin; 
 import org.eclipse.emf.compare.scope.IComparisonScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
