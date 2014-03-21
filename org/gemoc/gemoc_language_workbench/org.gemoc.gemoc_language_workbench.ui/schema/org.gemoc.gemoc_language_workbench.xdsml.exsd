@@ -127,6 +127,13 @@
                </documentation>
             </annotation>
          </attribute>
+         <attribute name="toCCSLQVTOFilePath" type="string">
+            <annotation>
+               <documentation>
+                  path to the QVTO file that is responsible for doing the ECL to CCSL transformation
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 
