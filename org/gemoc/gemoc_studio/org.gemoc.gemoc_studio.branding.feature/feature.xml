@@ -46,6 +46,9 @@
       <import feature="org.gemoc.execution.timesquare.facilities.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.execution.engine.feature" version="0.0.0"/>
       <import feature="org.gemoc.gemoc_commons.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>	
    </requires>
 
    <plugin
