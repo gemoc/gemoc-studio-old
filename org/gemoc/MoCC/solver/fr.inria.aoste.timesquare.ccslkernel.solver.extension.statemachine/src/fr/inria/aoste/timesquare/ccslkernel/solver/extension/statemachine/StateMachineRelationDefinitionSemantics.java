@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.javabdd.BDD;
+
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.FinishClock;
 import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.AbstractAction;
@@ -13,14 +15,14 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignement;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.State;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Trigger;
-import org.gemoc.mocc.fsmkernel.model.FSMModel.impl.IntegerAssignementImpl;
 
-import net.javabdd.BDD;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.BasicTypeFactory;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.DiscreteClockType;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.IntegerElement;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.BooleanExpression;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntEqual;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntInf;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntMinus;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntPlus;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntSup;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntegerExpression;
@@ -64,16 +66,49 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		_localInteger = new HashMap<ConcreteEntity, IntegerElement>();
 		for (ConcreteEntity ce : _modelSTS.getDeclarationBlock().getConcreteEntities()) {
 			if (ce instanceof IntegerElement){
-				IntegerElement ie = (IntegerElement)ce;
+				IntegerElement ie  = BasicTypeFactory.eINSTANCE.createIntegerElement();
+				ie.setName(((IntegerElement)ce).getName());
+				ie.setValue(((IntegerElement)ce).getValue());
+//				IntegerElement ie =((IntegerElement)ce);
 				_localInteger.put(ce, ie);
 			}
 		}
+		
+		for (Transition t : _currentState.getOutputTransitions()) {
+			//construct three set, the one of clock that must tick and the clock that must not tick
+			if(t.getTrigger() == null & evaluate((BooleanExpression)((Guard)t.getGuard()).getValue())){
+			//here, it is the default transition
+				for (AbstractAction a : t.getActions()) {
+					if (a instanceof IntegerAssignement){
+						IntegerAssignement ia = (IntegerAssignement)a;
+						doAssignInt(ia);
+					}
+				}
+			_currentState = t.getTarget();
+			}
+		}
+		
+		
 	}
 
 	@Override
 	public void start(SemanticHelper helper) throws SolverException {
 		_currentState = _modelSTS.getInitialStates().get(0);
 		_sensitiveTransitition = new ArrayList<Transition>();
+		for (Transition t : _currentState.getOutputTransitions()) {
+			//construct three set, the one of clock that must tick and the clock that must not tick
+			if(t.getTrigger() == null & evaluate((BooleanExpression)((Guard)t.getGuard()).getValue())){
+			//here, it is the default transition
+				for (AbstractAction a : t.getActions()) {
+					if (a instanceof IntegerAssignement){
+						IntegerAssignement ia = (IntegerAssignement)a;
+						doAssignInt(ia);
+					}
+				}
+			_currentState = t.getTarget();
+			}
+		}
+		
 	}
 
 	private List<SolverElement> getConcreteElements(List<? extends AbstractEntity> abstractTriggers){
@@ -94,6 +129,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		return res;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void semantic(SemanticHelper semanticHelper) throws SolverException {
 		if (semanticHelper.isSemanticDone(this)) {
@@ -114,13 +150,17 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 					continue;
 				}
 			}
-
+			
 			_sensitiveTransitition.add(t);
 			
-			List<SolverElement> trueTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getTrueTriggers());
-			List<SolverElement> falseTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getFalseTriggers());
+			List<SolverElement> trueTrigger = null;
+			List<SolverElement> falseTrigger = null;
 			List<SolverElement> clocksNotInTrigger = new ArrayList<SolverElement>(_allClocks);
-			clocksNotInTrigger.removeAll(trueTrigger);
+
+			if(t.getTrigger() != null){
+				trueTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getTrueTriggers());
+				falseTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getFalseTriggers());
+				clocksNotInTrigger.removeAll(trueTrigger);
 			
 			BDD triggersBDD =semanticHelper.createOne();
 			for (SolverElement se : trueTrigger) {
@@ -134,10 +174,12 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 			}	
 		
 			stateBDD.orWith(triggersBDD);
-			
+			}
+			semanticHelper.registerClockUse(_allClocks.toArray(new SolverClock[0]));
+
 		}
 		semanticHelper.semanticBDDAnd(stateBDD);
-		semanticHelper.registerClockUse(_allClocks.toArray(new SolverClock[0]));
+		semanticHelper.registerSemanticDone(this);
 	}
 
 	private boolean evaluate(BooleanExpression guard) {
@@ -160,14 +202,19 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		//TODO: take into account the final states... !
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void update(CCSLKernelSolver solver, StepExecutor stepExecutor) throws SolverException {
 		allTransition: for (Transition t : _sensitiveTransitition) {
 			//construct three set, the one of clock that must tick and the clock that must not tick
-			List<SolverElement> trueTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger) t.getTrigger()).getTrueTriggers());
-			List<SolverElement> falseTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getFalseTriggers());
+			List<SolverElement> trueTrigger = null;
+			List<SolverElement> falseTrigger = null;
 			List<SolverElement> clocksNotInTrigger = new ArrayList<SolverElement>(_allClocks);
-			clocksNotInTrigger.removeAll(trueTrigger);
+
+			if(t.getTrigger() != null){
+				trueTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getTrueTriggers());
+				falseTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getFalseTriggers());
+				clocksNotInTrigger.removeAll(trueTrigger);
 			
 			for (SolverElement se : trueTrigger) {
 				if (! stepExecutor.clockHasFired((SolverClock) se)){
@@ -201,6 +248,8 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 			
 			
 			_currentState = t.getTarget();
+			
+			}
 			_sensitiveTransitition.clear();
 			break;
 		}
@@ -213,20 +262,52 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		IntegerExpression leftExpr = ia.getLeftValue();
 		IntegerExpression rightExpr = ia.getRightValue();
 							
-		if (!(rightExpr instanceof IntPlus)){
-			throw new IllegalArgumentException("only integer plus (IntPlus) expression as supported as right value of assignment");
+		if (!(rightExpr instanceof IntPlus |rightExpr instanceof IntMinus | rightExpr instanceof IntegerVariableRef)){
+			throw new IllegalArgumentException("only integer plus/minus and integer variable ref expressions are supported as right value of assignment");
 		}
-		IntPlus plus = (IntPlus)rightExpr;
+		if(rightExpr instanceof IntPlus){
+			IntPlus plus = (IntPlus)rightExpr;
 
-		int iToIncrement = getInteger(plus.getLeftValue());
-		int incrementValue = getInteger(plus.getRightValue());
-		
-		if (! (leftExpr instanceof IntegerRef)){
-			throw new IllegalArgumentException("left value of assignment should be integerRef (to a local integer !)");
+			int iToIncrement = getInteger(plus.getLeftValue());
+			int incrementValue = getInteger(plus.getRightValue());
+			
+			if (! (leftExpr instanceof IntegerRef)){
+				throw new IllegalArgumentException("left value of assignment should be integerRef (to a local integer !)");
+			}
+			
+			IntegerElement leftElement = ((IntegerRef)leftExpr).getIntegerElem();
+			IntegerElement localLeftElement = _localInteger.get(leftElement);
+			localLeftElement.setValue(iToIncrement+incrementValue);
 		}
 		
-		IntegerElement leftElement = ((IntegerRef)leftExpr).getIntegerElem();
-		leftElement.setValue(iToIncrement+incrementValue);
+		if(rightExpr instanceof IntMinus){
+			IntMinus minus = (IntMinus)rightExpr;
+
+			int iToIncrement = getInteger(minus.getLeftValue());
+			int decrementValue = getInteger(minus.getRightValue());
+			
+			if (! (leftExpr instanceof IntegerRef)){
+				throw new IllegalArgumentException("left value of assignment should be integerRef (to a local integer !)");
+			}
+			
+			IntegerElement leftElement = ((IntegerRef)leftExpr).getIntegerElem();
+			IntegerElement localLeftElement = _localInteger.get(leftElement);
+			localLeftElement.setValue(iToIncrement-decrementValue);
+		}
+		
+		if(rightExpr instanceof IntegerVariableRef){
+			IntegerVariableRef varRef = (IntegerVariableRef)rightExpr;
+
+			int iToAssign = ((IntegerElement) _abstract2concreteMap.get(varRef.getReferencedVar()).getModelElement()).getValue().intValue();
+			
+			if (! (leftExpr instanceof IntegerRef)){
+				throw new IllegalArgumentException("left value of assignment should be integerRef (to a local integer !)");
+			}
+			
+			IntegerElement leftElement = ((IntegerRef)leftExpr).getIntegerElem();
+			IntegerElement localLeftElement = _localInteger.get(leftElement);
+			localLeftElement.setValue(iToAssign);
+		}
 		return;
 	}
 
@@ -265,7 +346,12 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 	private int getInteger(IntegerExpression expr){
 		
 		if(expr instanceof IntegerRef){
-			return ((IntegerRef)expr).getIntegerElem().getValue();
+			IntegerElement localLeftElement = _localInteger.get(((IntegerRef)expr).getIntegerElem());
+			if (localLeftElement == null){
+				//this should never be a left element of an assignement, i.e. the integer ref points to an int "elsewhere" (e.g. in a lib)
+				localLeftElement = ((IntegerRef)expr).getIntegerElem();
+			}
+			return localLeftElement.getValue();
 		}else{
 			if(expr instanceof IntegerVariableRef){
 				SolverElement ce = _abstract2concreteMap.getLocalValue(((IntegerVariableRef)expr).getReferencedVar());
