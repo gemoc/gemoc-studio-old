@@ -1794,12 +1794,14 @@ protected class CCSLStateMachineRelationDefinition_RightCurlyBracketKeyword_12 e
  *
  * Transition returns fsmmodel::Transition:
  * 	{fsmmodel::Transition} "from" source=[fsmmodel::State|EString] "to" target=[fsmmodel::State|EString] ":" name=EString
- * 	"(" ("when" trigger=Trigger)? ("if" guard=Guard)? ("do" actions+=Action)* ")";
+ * 	"(" (("when" trigger=Trigger) ("if" guard=Guard)? | ("if" guard=Guard) ("when" trigger=Trigger)?)? ("do"
+ * 	actions+=Action)* ")";
  *
  **/
 
 // {fsmmodel::Transition} "from" source=[fsmmodel::State|EString] "to" target=[fsmmodel::State|EString] ":" name=EString
-// "(" ("when" trigger=Trigger)? ("if" guard=Guard)? ("do" actions+=Action)* ")"
+// "(" (("when" trigger=Trigger) ("if" guard=Guard)? | ("if" guard=Guard) ("when" trigger=Trigger)?)? ("do"
+// actions+=Action)* ")"
 protected class Transition_Group extends GroupToken {
 	
 	public Transition_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1814,7 +1816,7 @@ protected class Transition_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Transition_RightParenthesisKeyword_11(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Transition_RightParenthesisKeyword_10(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2050,22 +2052,68 @@ protected class Transition_LeftParenthesisKeyword_7 extends KeywordToken  {
 
 }
 
-// ("when" trigger=Trigger)?
-protected class Transition_Group_8 extends GroupToken {
-	
-	public Transition_Group_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+// (("when" trigger=Trigger) ("if" guard=Guard)? | ("if" guard=Guard) ("when" trigger=Trigger)?)?
+protected class Transition_Alternatives_8 extends AlternativesToken {
+
+	public Transition_Alternatives_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getGroup_8();
+	public Alternatives getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getAlternatives_8();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Transition_TriggerAssignment_8_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Transition_Group_8_0(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Transition_Group_8_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("when" trigger=Trigger) ("if" guard=Guard)?
+protected class Transition_Group_8_0 extends GroupToken {
+	
+	public Transition_Group_8_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getGroup_8_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Transition_Group_8_0_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Transition_Group_8_0_0(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "when" trigger=Trigger
+protected class Transition_Group_8_0_0 extends GroupToken {
+	
+	public Transition_Group_8_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getGroup_8_0_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Transition_TriggerAssignment_8_0_0_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2073,15 +2121,15 @@ protected class Transition_Group_8 extends GroupToken {
 }
 
 // "when"
-protected class Transition_WhenKeyword_8_0 extends KeywordToken  {
+protected class Transition_WhenKeyword_8_0_0_0 extends KeywordToken  {
 	
-	public Transition_WhenKeyword_8_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_WhenKeyword_8_0_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getWhenKeyword_8_0();
+		return grammarAccess.getTransitionAccess().getWhenKeyword_8_0_0_0();
 	}
 
     @Override
@@ -2095,15 +2143,15 @@ protected class Transition_WhenKeyword_8_0 extends KeywordToken  {
 }
 
 // trigger=Trigger
-protected class Transition_TriggerAssignment_8_1 extends AssignmentToken  {
+protected class Transition_TriggerAssignment_8_0_0_1 extends AssignmentToken  {
 	
-	public Transition_TriggerAssignment_8_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_TriggerAssignment_8_0_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getTriggerAssignment_8_1();
+		return grammarAccess.getTransitionAccess().getTriggerAssignment_8_0_0_1();
 	}
 
     @Override
@@ -2116,13 +2164,13 @@ protected class Transition_TriggerAssignment_8_1 extends AssignmentToken  {
 
     @Override	
 	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("trigger",false)) == null) return null;
+		if((value = eObjectConsumer.getConsumable("trigger",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("trigger");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getTriggerRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getTransitionAccess().getTriggerTriggerParserRuleCall_8_1_0(); 
+				element = grammarAccess.getTransitionAccess().getTriggerTriggerParserRuleCall_8_0_0_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -2134,7 +2182,7 @@ protected class Transition_TriggerAssignment_8_1 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new Transition_WhenKeyword_8_0(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new Transition_WhenKeyword_8_0_0_0(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
@@ -2142,21 +2190,21 @@ protected class Transition_TriggerAssignment_8_1 extends AssignmentToken  {
 
 
 // ("if" guard=Guard)?
-protected class Transition_Group_9 extends GroupToken {
+protected class Transition_Group_8_0_1 extends GroupToken {
 	
-	public Transition_Group_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_Group_8_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getGroup_9();
+		return grammarAccess.getTransitionAccess().getGroup_8_0_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Transition_GuardAssignment_9_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Transition_GuardAssignment_8_0_1_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2164,22 +2212,21 @@ protected class Transition_Group_9 extends GroupToken {
 }
 
 // "if"
-protected class Transition_IfKeyword_9_0 extends KeywordToken  {
+protected class Transition_IfKeyword_8_0_1_0 extends KeywordToken  {
 	
-	public Transition_IfKeyword_9_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_IfKeyword_8_0_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getIfKeyword_9_0();
+		return grammarAccess.getTransitionAccess().getIfKeyword_8_0_1_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Transition_Group_8(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new Transition_Group_8_0_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2187,15 +2234,15 @@ protected class Transition_IfKeyword_9_0 extends KeywordToken  {
 }
 
 // guard=Guard
-protected class Transition_GuardAssignment_9_1 extends AssignmentToken  {
+protected class Transition_GuardAssignment_8_0_1_1 extends AssignmentToken  {
 	
-	public Transition_GuardAssignment_9_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_GuardAssignment_8_0_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getGuardAssignment_9_1();
+		return grammarAccess.getTransitionAccess().getGuardAssignment_8_0_1_1();
 	}
 
     @Override
@@ -2214,7 +2261,7 @@ protected class Transition_GuardAssignment_9_1 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getGuardRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getTransitionAccess().getGuardGuardParserRuleCall_9_1_0(); 
+				element = grammarAccess.getTransitionAccess().getGuardGuardParserRuleCall_8_0_1_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -2226,29 +2273,237 @@ protected class Transition_GuardAssignment_9_1 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new Transition_IfKeyword_9_0(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new Transition_IfKeyword_8_0_1_0(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
 
-// ("do" actions+=Action)*
-protected class Transition_Group_10 extends GroupToken {
+
+// ("if" guard=Guard) ("when" trigger=Trigger)?
+protected class Transition_Group_8_1 extends GroupToken {
 	
-	public Transition_Group_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_Group_8_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getGroup_10();
+		return grammarAccess.getTransitionAccess().getGroup_8_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Transition_ActionsAssignment_10_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Transition_Group_8_1_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Transition_Group_8_1_0(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "if" guard=Guard
+protected class Transition_Group_8_1_0 extends GroupToken {
+	
+	public Transition_Group_8_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getGroup_8_1_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Transition_GuardAssignment_8_1_0_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "if"
+protected class Transition_IfKeyword_8_1_0_0 extends KeywordToken  {
+	
+	public Transition_IfKeyword_8_1_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getIfKeyword_8_1_0_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// guard=Guard
+protected class Transition_GuardAssignment_8_1_0_1 extends AssignmentToken  {
+	
+	public Transition_GuardAssignment_8_1_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getGuardAssignment_8_1_0_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Guard_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("guard",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("guard");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getGuardRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getTransitionAccess().getGuardGuardParserRuleCall_8_1_0_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Transition_IfKeyword_8_1_0_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+// ("when" trigger=Trigger)?
+protected class Transition_Group_8_1_1 extends GroupToken {
+	
+	public Transition_Group_8_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getGroup_8_1_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Transition_TriggerAssignment_8_1_1_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "when"
+protected class Transition_WhenKeyword_8_1_1_0 extends KeywordToken  {
+	
+	public Transition_WhenKeyword_8_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getWhenKeyword_8_1_1_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Transition_Group_8_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// trigger=Trigger
+protected class Transition_TriggerAssignment_8_1_1_1 extends AssignmentToken  {
+	
+	public Transition_TriggerAssignment_8_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getTriggerAssignment_8_1_1_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Trigger_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("trigger",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("trigger");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getTriggerRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getTransitionAccess().getTriggerTriggerParserRuleCall_8_1_1_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Transition_WhenKeyword_8_1_1_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+
+
+// ("do" actions+=Action)*
+protected class Transition_Group_9 extends GroupToken {
+	
+	public Transition_Group_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getTransitionAccess().getGroup_9();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Transition_ActionsAssignment_9_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2256,24 +2511,23 @@ protected class Transition_Group_10 extends GroupToken {
 }
 
 // "do"
-protected class Transition_DoKeyword_10_0 extends KeywordToken  {
+protected class Transition_DoKeyword_9_0 extends KeywordToken  {
 	
-	public Transition_DoKeyword_10_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_DoKeyword_9_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getDoKeyword_10_0();
+		return grammarAccess.getTransitionAccess().getDoKeyword_9_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Transition_Group_10(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Transition_Group_9(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new Transition_Group_8(lastRuleCallOrigin, this, 2, inst);
-			case 3: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 3, inst);
+			case 0: return new Transition_Group_9(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Transition_Alternatives_8(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -2281,15 +2535,15 @@ protected class Transition_DoKeyword_10_0 extends KeywordToken  {
 }
 
 // actions+=Action
-protected class Transition_ActionsAssignment_10_1 extends AssignmentToken  {
+protected class Transition_ActionsAssignment_9_1 extends AssignmentToken  {
 	
-	public Transition_ActionsAssignment_10_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_ActionsAssignment_9_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getActionsAssignment_10_1();
+		return grammarAccess.getTransitionAccess().getActionsAssignment_9_1();
 	}
 
     @Override
@@ -2308,7 +2562,7 @@ protected class Transition_ActionsAssignment_10_1 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getActionRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getTransitionAccess().getActionsActionParserRuleCall_10_1_0(); 
+				element = grammarAccess.getTransitionAccess().getActionsActionParserRuleCall_9_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -2320,7 +2574,7 @@ protected class Transition_ActionsAssignment_10_1 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new Transition_DoKeyword_10_0(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new Transition_DoKeyword_9_0(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
@@ -2328,24 +2582,23 @@ protected class Transition_ActionsAssignment_10_1 extends AssignmentToken  {
 
 
 // ")"
-protected class Transition_RightParenthesisKeyword_11 extends KeywordToken  {
+protected class Transition_RightParenthesisKeyword_10 extends KeywordToken  {
 	
-	public Transition_RightParenthesisKeyword_11(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_RightParenthesisKeyword_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getRightParenthesisKeyword_11();
+		return grammarAccess.getTransitionAccess().getRightParenthesisKeyword_10();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Transition_Group_10(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Transition_Group_9(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new Transition_Group_8(lastRuleCallOrigin, this, 2, inst);
-			case 3: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 3, inst);
+			case 0: return new Transition_Group_9(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Transition_Alternatives_8(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -4537,8 +4790,8 @@ protected class IntegerAssignementBlock_RightCurlyBracketKeyword_6 extends Keywo
  *
  * State returns fsmmodel::State:
  * 	{fsmmodel::State} "State" name=EString "(" ("in" ":" inputTransitions+=[fsmmodel::Transition|EString] (","
- * 	inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString]
- * 	("," outputTransitions+=[fsmmodel::Transition|EString])*)? ")";
+ * 	inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString] (","
+ * 	outputTransitions+=[fsmmodel::Transition|EString])*)? ")";
  *
  **/
 
@@ -6158,8 +6411,7 @@ protected class IntSelfMinusAssign_RightValueAssignment_4 extends AssignmentToke
 /************ begin Rule IntSelfMultAssign ****************
  *
  * IntSelfMultAssign returns extension::IntSelfMultiplyAssignement:
- * 	{extension::IntSelfMultiplyAssignement} ("#ref" name=EString)? leftValue=IntegerRef "*="
- * 	rightValue=IntegerExpression;
+ * 	{extension::IntSelfMultiplyAssignement} ("#ref" name=EString)? leftValue=IntegerRef "*=" rightValue=IntegerExpression;
  *
  **/
 
@@ -6679,15 +6931,13 @@ protected class IntSelfDivAssign_RightValueAssignment_4 extends AssignmentToken 
 /************ begin Rule IntegerAssignement ****************
  *
  * IntegerAssignement returns fsmmodel::IntegerAssignement:
- * 	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue=
- * 	//';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
- *  IntegerExpression;
+ * 	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+ * 	IntegerExpression;
  *
  **/
 
-// {fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue=
-// //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-//  IntegerExpression
+// {fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+// IntegerExpression
 protected class IntegerAssignement_Group extends GroupToken {
 	
 	public IntegerAssignement_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6891,7 +7141,7 @@ protected class IntegerAssignement_EqualsSignKeyword_3 extends KeywordToken  {
 }
 
 // rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-//  IntegerExpression
+// IntegerExpression
 protected class IntegerAssignement_RightValueAssignment_4 extends AssignmentToken  {
 	
 	public IntegerAssignement_RightValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13263,8 +13513,8 @@ protected class UnaryIntMinus_RightCurlyBracketRightParenthesisKeyword_1_7 exten
 /************ begin Rule IntPlus ****************
  *
  * IntPlus returns ClassicalExpression::IntPlus:
- * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "+" rightValue=IntegerExpression ")" | "(" ("#ref"
- * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "+" rightValue=IntegerExpression ")";
+ * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "+" rightValue=IntegerExpression ")" | "(" ("#ref" name=String0
+ * 	":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "+" rightValue=IntegerExpression ")";
  *
  **/
 
@@ -13886,8 +14136,8 @@ protected class IntPlus_RightParenthesisKeyword_1_5 extends KeywordToken  {
 /************ begin Rule IntMinus ****************
  *
  * IntMinus returns ClassicalExpression::IntMinus:
- * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "-" rightValue=IntegerExpression ")" | "(" ("#ref"
- * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "-" rightValue=IntegerExpression ")";
+ * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "-" rightValue=IntegerExpression ")" | "(" ("#ref" name=String0
+ * 	":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "-" rightValue=IntegerExpression ")";
  *
  **/
 
@@ -14509,8 +14759,8 @@ protected class IntMinus_RightParenthesisKeyword_1_5 extends KeywordToken  {
 /************ begin Rule IntMultiply ****************
  *
  * IntMultiply returns ClassicalExpression::IntMultiply:
- * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "*" rightValue=IntegerExpression ")" | "(" ("#ref"
- * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "*" rightValue=IntegerExpression ")";
+ * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "*" rightValue=IntegerExpression ")" | "(" ("#ref" name=String0
+ * 	":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "*" rightValue=IntegerExpression ")";
  *
  **/
 
@@ -15132,8 +15382,8 @@ protected class IntMultiply_RightParenthesisKeyword_1_5 extends KeywordToken  {
 /************ begin Rule IntDivide ****************
  *
  * IntDivide returns ClassicalExpression::IntDivide:
- * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "/" rightValue=IntegerExpression ")" | "(" ("#ref"
- * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "/" rightValue=IntegerExpression ")";
+ * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "/" rightValue=IntegerExpression ")" | "(" ("#ref" name=String0
+ * 	":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "/" rightValue=IntegerExpression ")";
  *
  **/
 
@@ -19139,8 +19389,8 @@ protected class RealSup_RightParenthesisKeyword_1_5 extends KeywordToken  {
 /************ begin Rule IntInf ****************
  *
  * IntInf returns ClassicalExpression::IntInf:
- * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")" | "(" ("#ref"
- * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")";
+ * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")" | "(" ("#ref" name=String0
+ * 	":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")";
  *
  **/
 
@@ -19762,8 +20012,8 @@ protected class IntInf_RightParenthesisKeyword_1_5 extends KeywordToken  {
 /************ begin Rule IntSup ****************
  *
  * IntSup returns ClassicalExpression::IntSup:
- * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression ">" rightValue=IntegerExpression ")" | "(" ("#ref"
- * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression ">" rightValue=IntegerExpression ")";
+ * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression ">" rightValue=IntegerExpression ")" | "(" ("#ref" name=String0
+ * 	":" type=[BasicType::Type|EString])? leftValue=IntegerExpression ">" rightValue=IntegerExpression ")";
  *
  **/
 
@@ -29715,8 +29965,8 @@ protected class ExternalExpressionDefinition_RightSquareBracketKeyword_5 extends
  **/
 
 // "ConditionalRelationDefinition" name=ID "[" declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]"
-// "{" ((concreteEntities+=ConcreteEntity | classicalExpressions+=ClassicalExpression0)* & ("switch" "{"
-// relCases+=RelCase relCases+=RelCase* "}" "default" defaultRelation+=Relation*)?) "}"
+// "{" ((concreteEntities+=ConcreteEntity | classicalExpressions+=ClassicalExpression0)* & ("switch" "{" relCases+=RelCase
+// relCases+=RelCase* "}" "default" defaultRelation+=Relation*)?) "}"
 protected class ConditionalRelationDefinition_Group extends GroupToken {
 	
 	public ConditionalRelationDefinition_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -30553,8 +30803,8 @@ protected class ExternalRelationDefinition_RightSquareBracketKeyword_5 extends K
 /************ begin Rule Relation ****************
  *
  * Relation returns ClockExpressionAndRelation::Relation:
- * 	isAnAssertion?="assert"? "Relation" (name=ID "[")? type=[ClockExpressionAndRelation::RelationDeclaration|EString]
- * 	"]"? "(" (bindings+=Binding ("," bindings+=Binding)*)? ")";
+ * 	isAnAssertion?="assert"? "Relation" (name=ID "[")? type=[ClockExpressionAndRelation::RelationDeclaration|EString] "]"?
+ * 	"(" (bindings+=Binding ("," bindings+=Binding)*)? ")";
  *
  **/
 
@@ -33779,7 +34029,7 @@ protected class SeqExpression_NumberSeqVariableRefParserRuleCall_4 extends RuleC
 /************ begin Rule PrimitiveElement ****************
  *
  * //| CharElement;
- *  PrimitiveElement returns BasicType::PrimitiveElement:
+ * PrimitiveElement returns BasicType::PrimitiveElement:
  * 	StringElement | BooleanElement | IntegerElement | IntegerVariableRef | RealElement;
  *
  **/
@@ -36376,9 +36626,8 @@ protected class RealElement_ValueAssignment_4 extends AssignmentToken  {
 /************ begin Rule IntegerElement ****************
  *
  * //Real0 returns Real:
- *  //	'Real' / * TODO: implement this rule and an appropriate IValueConverter * /;
- *  IntegerElement
- * returns BasicType::IntegerElement:
+ * //	'Real' / * TODO: implement this rule and an appropriate IValueConverter * /;
+ * IntegerElement returns BasicType::IntegerElement:
  * 	"Integer" name=ID (":" type=[BasicType::Type|EString])? "=" value=INT | name=ID "=" value=INT | value=INT;
  *
  **/
@@ -37795,19 +38044,16 @@ protected class StringElement_ValueAssignment_3 extends AssignmentToken  {
 /************ begin Rule RecordElement ****************
  *
  * //		('type' type=[BasicType::Type|EString])?
- *  //CharElement returns BasicType::CharElement:
- *  //	'CharElement'
- *  //	'{'
- * 
+ * //CharElement returns BasicType::CharElement:
+ * //	'CharElement'
+ * //	'{'
  * //		('name' name=ID)?
- *  //		'value' value=Char0
- *  //		('type' type=[BasicType::Type|EString])?
- *  //    '}';
- * 
+ * //		'value' value=Char0
+ * //		('type' type=[BasicType::Type|EString])?
+ * //    '}';
  * //Char0 returns Char:
- *  //	'Char' / * TODO: implement this rule and an appropriate IValueConverter * /;
- *  RecordElement
- * returns BasicType::RecordElement:
+ * //	'Char' / * TODO: implement this rule and an appropriate IValueConverter * /;
+ * RecordElement returns BasicType::RecordElement:
  * 	"RecordElement" "{" ("name" name=ID)? ("type" type=[BasicType::Type|EString])? "box" "{" box+=Box ("," box+=Box)* "}"
  * 	"}";
  *
@@ -40370,9 +40616,8 @@ protected class Field_RightCurlyBracketKeyword_5 extends KeywordToken  {
 /************ begin Rule SubClock ****************
  *
  * //This is only for the kernel.ccslLib !!!
- *  SubClock returns KernelRelation::SubClock:
- * 	"_SubClock" "{" ("name" name=ID)? "rightEntity" rightEntity=AbstractEntity "leftEntity" leftEntity=AbstractEntity
- * 	"}";
+ * SubClock returns KernelRelation::SubClock:
+ * 	"_SubClock" "{" ("name" name=ID)? "rightEntity" rightEntity=AbstractEntity "leftEntity" leftEntity=AbstractEntity "}";
  *
  **/
 
@@ -44016,8 +44261,8 @@ protected class Union_RightCurlyBracketKeyword_9 extends KeywordToken  {
 /************ begin Rule Intersection ****************
  *
  * Intersection returns KernelExpression::Intersection:
- * 	"_Intersection" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1"
- * 	clock1=AbstractEntity "clock2" clock2=AbstractEntity "}";
+ * 	"_Intersection" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
+ * 	"clock2" clock2=AbstractEntity "}";
  *
  **/
 
@@ -44398,8 +44643,8 @@ protected class Intersection_RightCurlyBracketKeyword_9 extends KeywordToken  {
 /************ begin Rule Sup ****************
  *
  * Sup returns KernelExpression::Sup:
- * 	"_Sup" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
- * 	"clock2" clock2=AbstractEntity "}";
+ * 	"_Sup" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity "clock2"
+ * 	clock2=AbstractEntity "}";
  *
  **/
 
@@ -44780,8 +45025,8 @@ protected class Sup_RightCurlyBracketKeyword_9 extends KeywordToken  {
 /************ begin Rule Inf ****************
  *
  * Inf returns KernelExpression::Inf:
- * 	"_Inf" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
- * 	"clock2" clock2=AbstractEntity "}";
+ * 	"_Inf" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity "clock2"
+ * 	clock2=AbstractEntity "}";
  *
  **/
 

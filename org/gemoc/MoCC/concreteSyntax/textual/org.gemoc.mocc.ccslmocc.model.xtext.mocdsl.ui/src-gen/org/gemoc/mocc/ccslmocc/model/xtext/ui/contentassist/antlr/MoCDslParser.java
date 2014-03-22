@@ -40,6 +40,7 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStateRelationBasedLibraryAccess().getAlternatives_4_1(), "rule__StateRelationBasedLibrary__Alternatives_4_1");
 					put(grammarAccess.getRelationDefinitionAccess().getAlternatives(), "rule__RelationDefinition__Alternatives");
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getAlternatives_11(), "rule__CCSLStateMachineRelationDefinition__Alternatives_11");
+					put(grammarAccess.getTransitionAccess().getAlternatives_8(), "rule__Transition__Alternatives_8");
 					put(grammarAccess.getTriggerAccess().getAlternatives_1(), "rule__Trigger__Alternatives_1");
 					put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
 					put(grammarAccess.getStateMachineDefinitionAccess().getAlternatives_8(), "rule__StateMachineDefinition__Alternatives_8");
@@ -113,9 +114,13 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup_10(), "rule__CCSLStateMachineRelationDefinition__Group_10__0");
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup_10_2(), "rule__CCSLStateMachineRelationDefinition__Group_10_2__0");
 					put(grammarAccess.getTransitionAccess().getGroup(), "rule__Transition__Group__0");
-					put(grammarAccess.getTransitionAccess().getGroup_8(), "rule__Transition__Group_8__0");
+					put(grammarAccess.getTransitionAccess().getGroup_8_0(), "rule__Transition__Group_8_0__0");
+					put(grammarAccess.getTransitionAccess().getGroup_8_0_0(), "rule__Transition__Group_8_0_0__0");
+					put(grammarAccess.getTransitionAccess().getGroup_8_0_1(), "rule__Transition__Group_8_0_1__0");
+					put(grammarAccess.getTransitionAccess().getGroup_8_1(), "rule__Transition__Group_8_1__0");
+					put(grammarAccess.getTransitionAccess().getGroup_8_1_0(), "rule__Transition__Group_8_1_0__0");
+					put(grammarAccess.getTransitionAccess().getGroup_8_1_1(), "rule__Transition__Group_8_1_1__0");
 					put(grammarAccess.getTransitionAccess().getGroup_9(), "rule__Transition__Group_9__0");
-					put(grammarAccess.getTransitionAccess().getGroup_10(), "rule__Transition__Group_10__0");
 					put(grammarAccess.getTriggerAccess().getGroup(), "rule__Trigger__Group__0");
 					put(grammarAccess.getTriggerAccess().getGroup_1_0(), "rule__Trigger__Group_1_0__0");
 					put(grammarAccess.getTriggerAccess().getGroup_1_0_1(), "rule__Trigger__Group_1_0_1__0");
@@ -399,9 +404,11 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTransitionAccess().getSourceAssignment_2(), "rule__Transition__SourceAssignment_2");
 					put(grammarAccess.getTransitionAccess().getTargetAssignment_4(), "rule__Transition__TargetAssignment_4");
 					put(grammarAccess.getTransitionAccess().getNameAssignment_6(), "rule__Transition__NameAssignment_6");
-					put(grammarAccess.getTransitionAccess().getTriggerAssignment_8_1(), "rule__Transition__TriggerAssignment_8_1");
-					put(grammarAccess.getTransitionAccess().getGuardAssignment_9_1(), "rule__Transition__GuardAssignment_9_1");
-					put(grammarAccess.getTransitionAccess().getActionsAssignment_10_1(), "rule__Transition__ActionsAssignment_10_1");
+					put(grammarAccess.getTransitionAccess().getTriggerAssignment_8_0_0_1(), "rule__Transition__TriggerAssignment_8_0_0_1");
+					put(grammarAccess.getTransitionAccess().getGuardAssignment_8_0_1_1(), "rule__Transition__GuardAssignment_8_0_1_1");
+					put(grammarAccess.getTransitionAccess().getGuardAssignment_8_1_0_1(), "rule__Transition__GuardAssignment_8_1_0_1");
+					put(grammarAccess.getTransitionAccess().getTriggerAssignment_8_1_1_1(), "rule__Transition__TriggerAssignment_8_1_1_1");
+					put(grammarAccess.getTransitionAccess().getActionsAssignment_9_1(), "rule__Transition__ActionsAssignment_9_1");
 					put(grammarAccess.getTriggerAccess().getTrueTriggersAssignment_1_0_0(), "rule__Trigger__TrueTriggersAssignment_1_0_0");
 					put(grammarAccess.getTriggerAccess().getTrueTriggersAssignment_1_0_1_1(), "rule__Trigger__TrueTriggersAssignment_1_0_1_1");
 					put(grammarAccess.getTriggerAccess().getFalseTriggersAssignment_1_1_2(), "rule__Trigger__FalseTriggersAssignment_1_1_2");

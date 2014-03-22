@@ -3541,10 +3541,10 @@ public class InternalMoCDslLexer extends Lexer {
         try {
             int _type = RULE_REAL0;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14700:12: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14700:14: ( '0' .. '9' )+ '.' ( '0' .. '9' )+
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14745:12: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14745:14: ( '0' .. '9' )+ '.' ( '0' .. '9' )+
             {
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14700:14: ( '0' .. '9' )+
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14745:14: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -3558,7 +3558,7 @@ public class InternalMoCDslLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14700:15: '0' .. '9'
+            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14745:15: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -3575,7 +3575,7 @@ public class InternalMoCDslLexer extends Lexer {
             } while (true);
 
             match('.'); 
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14700:30: ( '0' .. '9' )+
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14745:30: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -3589,7 +3589,7 @@ public class InternalMoCDslLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14700:31: '0' .. '9'
+            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14745:31: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -3621,10 +3621,10 @@ public class InternalMoCDslLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14702:10: ( ( '-' )? ( '0' .. '9' )+ )
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14702:12: ( '-' )? ( '0' .. '9' )+
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14747:10: ( ( '-' )? ( '0' .. '9' )+ )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14747:12: ( '-' )? ( '0' .. '9' )+
             {
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14702:12: ( '-' )?
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14747:12: ( '-' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -3633,7 +3633,7 @@ public class InternalMoCDslLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14702:12: '-'
+                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14747:12: '-'
                     {
                     match('-'); 
 
@@ -3642,7 +3642,7 @@ public class InternalMoCDslLexer extends Lexer {
 
             }
 
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14702:17: ( '0' .. '9' )+
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14747:17: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -3656,7 +3656,7 @@ public class InternalMoCDslLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14702:18: '0' .. '9'
+            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14747:18: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -3688,10 +3688,10 @@ public class InternalMoCDslLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14704:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14704:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14749:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14749:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14704:11: ( '^' )?
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14749:11: ( '^' )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -3700,7 +3700,7 @@ public class InternalMoCDslLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14704:11: '^'
+                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14749:11: '^'
                     {
                     match('^'); 
 
@@ -3718,7 +3718,7 @@ public class InternalMoCDslLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14704:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14749:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop6:
             do {
                 int alt6=2;
@@ -3767,10 +3767,10 @@ public class InternalMoCDslLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -3788,10 +3788,10 @@ public class InternalMoCDslLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop7:
                     do {
                         int alt7=3;
@@ -3807,7 +3807,7 @@ public class InternalMoCDslLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3823,7 +3823,7 @@ public class InternalMoCDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3848,10 +3848,10 @@ public class InternalMoCDslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop8:
                     do {
                         int alt8=3;
@@ -3867,7 +3867,7 @@ public class InternalMoCDslLexer extends Lexer {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3883,7 +3883,7 @@ public class InternalMoCDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14706:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14751:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3926,12 +3926,12 @@ public class InternalMoCDslLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14708:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14708:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14753:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14753:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14708:24: ( options {greedy=false; } : . )*
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14753:24: ( options {greedy=false; } : . )*
             loop10:
             do {
                 int alt10=2;
@@ -3956,7 +3956,7 @@ public class InternalMoCDslLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14708:52: .
+            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14753:52: .
             	    {
             	    matchAny(); 
 
@@ -3986,12 +3986,12 @@ public class InternalMoCDslLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14710:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14710:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14755:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14755:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14710:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14755:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop11:
             do {
                 int alt11=2;
@@ -4004,7 +4004,7 @@ public class InternalMoCDslLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14710:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14755:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -4024,7 +4024,7 @@ public class InternalMoCDslLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14710:40: ( ( '\\r' )? '\\n' )?
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14755:40: ( ( '\\r' )? '\\n' )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -4033,9 +4033,9 @@ public class InternalMoCDslLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14710:41: ( '\\r' )? '\\n'
+                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14755:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14710:41: ( '\\r' )?
+                    // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14755:41: ( '\\r' )?
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -4044,7 +4044,7 @@ public class InternalMoCDslLexer extends Lexer {
                     }
                     switch (alt12) {
                         case 1 :
-                            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14710:41: '\\r'
+                            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14755:41: '\\r'
                             {
                             match('\r'); 
 
@@ -4076,10 +4076,10 @@ public class InternalMoCDslLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14712:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14712:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14757:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14757:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14712:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14757:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt14=0;
             loop14:
             do {
@@ -4133,8 +4133,8 @@ public class InternalMoCDslLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14714:16: ( . )
-            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14714:18: .
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14759:16: ( . )
+            // ../org.gemoc.mocc.ccslmocc.model.xtext.mocdsl/src-gen/org/gemoc/mocc/ccslmocc/model/xtext/parser/antlr/internal/InternalMoCDsl.g:14759:18: .
             {
             matchAny(); 
 
@@ -5386,95 +5386,94 @@ public class InternalMoCDslLexer extends Lexer {
     static final String DFA15_eofS =
         "\u0402\uffff";
     static final String DFA15_minS =
-        "\1\0\1\145\1\uffff\1\43\1\51\1\154\4\uffff\1\151\1\157\1\uffff"+
-        "\1\53\1\141\1\145\1\uffff\1\141\1\151\1\141\1\145\1\162\1\160\1"+
-        "\75\1\60\1\75\1\52\1\75\2\43\1\60\1\50\1\101\2\75\1\156\1\145\1"+
-        "\150\1\141\1\162\1\141\1\157\1\156\1\150\1\156\1\103\1\145\1\156"+
-        "\1\56\1\uffff\2\0\2\uffff\1\141\1\161\2\uffff\1\160\2\60\2\uffff"+
-        "\1\120\2\uffff\1\60\1\171\1\154\4\uffff\1\156\1\157\1\60\1\160\4"+
-        "\uffff\1\145\1\151\1\60\1\146\1\163\1\uffff\1\164\1\155\1\154\1"+
-        "\141\1\151\1\155\1\156\1\143\1\163\1\uffff\1\164\1\145\20\uffff"+
-        "\1\170\1\163\2\uffff\1\157\1\147\1\143\1\154\1\60\10\uffff\1\160"+
-        "\1\165\1\141\1\156\1\157\1\141\1\163\1\156\1\157\1\165\1\154\1\145"+
-        "\1\157\1\164\1\171\1\157\1\165\1\164\1\157\1\170\1\162\1\157\1\156"+
-        "\1\145\1\156\1\141\1\146\1\144\1\uffff\1\56\2\uffff\1\164\1\151"+
-        "\1\53\1\157\1\164\2\uffff\1\162\1\145\1\uffff\2\60\1\141\1\155\1"+
-        "\uffff\1\145\1\156\1\164\1\uffff\2\141\1\163\1\143\1\60\1\145\1"+
-        "\154\1\162\1\160\1\164\1\160\1\144\1\154\1\163\1\143\1\60\1\162"+
-        "\1\60\1\145\1\164\1\150\1\165\1\145\1\165\1\uffff\1\162\1\145\1"+
-        "\155\1\141\1\154\1\157\1\144\1\143\1\162\1\145\1\163\1\143\1\145"+
-        "\1\163\2\154\1\60\1\145\1\163\1\144\1\155\1\142\1\162\1\151\1\143"+
-        "\1\145\1\156\1\124\1\151\1\141\1\163\1\146\1\151\1\164\2\145\1\156"+
-        "\1\163\1\55\1\uffff\1\145\1\141\1\145\1\162\1\72\1\145\1\162\2\uffff"+
-        "\1\154\1\163\3\60\1\151\1\165\1\171\1\145\1\162\1\uffff\2\60\1\164"+
-        "\1\60\1\143\1\154\1\60\1\141\1\145\1\162\1\uffff\1\141\1\uffff\1"+
-        "\103\1\60\1\164\1\162\1\151\2\145\1\162\1\145\1\164\1\60\1\162\1"+
-        "\151\1\153\1\124\1\60\1\141\1\165\1\153\1\60\1\145\1\144\1\145\1"+
-        "\uffff\1\147\1\151\1\165\1\114\1\103\1\60\1\151\1\156\1\143\1\154"+
-        "\1\143\1\123\2\157\1\145\1\164\1\143\1\145\1\60\1\164\1\103\1\146"+
-        "\1\60\1\147\1\105\1\110\1\uffff\1\146\1\162\1\156\1\164\1\uffff"+
-        "\1\145\1\164\1\163\1\150\3\uffff\1\156\1\154\2\103\1\145\1\uffff"+
-        "\1\162\1\uffff\1\60\1\uffff\1\150\1\145\1\uffff\1\162\1\103\1\145"+
-        "\2\156\1\154\1\uffff\1\103\1\156\1\166\1\60\1\163\1\156\1\162\1"+
-        "\151\1\141\1\171\1\uffff\1\144\1\164\1\60\1\171\1\uffff\1\151\1"+
-        "\155\1\61\1\uffff\2\60\1\141\1\145\2\143\1\151\1\154\1\uffff\2\143"+
-        "\1\141\1\165\1\145\1\164\1\60\1\156\1\162\1\150\2\162\1\uffff\1"+
-        "\60\1\156\1\154\1\151\1\145\1\141\1\uffff\1\60\1\155\2\uffff\1\60"+
-        "\1\122\1\143\1\60\1\155\1\60\1\72\1\60\1\147\1\164\1\154\1\141\1"+
-        "\154\1\164\1\103\1\uffff\1\60\1\144\1\156\1\141\1\154\1\164\1\144"+
-        "\1\151\1\157\1\156\1\154\1\124\1\145\1\uffff\1\163\1\60\1\141\1"+
-        "\157\1\162\1\160\1\105\1\151\1\uffff\1\160\1\156\1\145\1\157\2\60"+
-        "\2\uffff\1\156\1\162\1\141\1\145\1\164\1\157\1\164\1\151\1\164\1"+
-        "\163\1\144\1\162\1\uffff\3\60\1\145\1\163\1\uffff\1\164\1\157\1"+
-        "\156\1\154\1\163\1\171\1\uffff\1\160\1\uffff\2\145\1\60\1\uffff"+
-        "\1\160\3\uffff\1\103\1\60\1\157\1\164\1\157\1\151\1\154\1\uffff"+
-        "\1\103\1\147\1\164\1\157\1\145\1\60\1\164\1\143\1\164\1\157\1\171"+
-        "\1\60\1\151\1\154\1\uffff\1\164\1\156\1\151\1\145\1\154\1\171\1"+
-        "\157\1\145\1\155\1\60\1\106\2\uffff\1\105\1\60\1\154\1\60\1\145"+
-        "\1\143\1\123\1\144\1\145\1\151\1\145\1\151\3\uffff\1\164\1\145\1"+
-        "\151\1\143\1\145\1\141\1\145\1\160\1\164\1\146\1\60\1\uffff\1\164"+
-        "\1\154\1\141\1\uffff\1\143\1\164\1\143\1\172\1\157\1\154\1\103\1"+
-        "\151\1\143\1\103\1\uffff\1\60\1\153\1\151\1\143\1\160\1\uffff\1"+
-        "\157\1\60\1\151\1\60\1\141\1\60\1\145\1\160\1\156\1\60\1\145\1\uffff"+
-        "\1\157\1\141\1\154\1\171\1\141\1\171\1\uffff\1\115\1\uffff\1\162"+
-        "\1\153\1\141\1\145\1\156\1\157\1\156\1\143\1\151\1\143\1\164\1\153"+
-        "\1\144\1\164\1\144\1\145\1\171\1\60\1\171\1\uffff\1\151\1\157\1"+
-        "\154\1\153\1\145\1\153\1\141\1\143\1\157\1\154\1\157\1\153\1\154"+
-        "\1\uffff\1\60\1\164\1\153\1\145\1\156\1\uffff\1\157\1\151\1\145"+
-        "\1\uffff\1\142\1\uffff\1\155\1\145\1\141\1\uffff\1\156\1\154\1\162"+
-        "\1\145\1\160\1\162\1\160\2\141\1\60\1\155\1\156\1\141\1\156\1\143"+
-        "\1\164\1\172\1\164\1\171\2\60\1\151\1\122\2\60\1\uffff\1\160\1\166"+
-        "\1\143\1\165\1\60\1\162\1\60\1\164\1\153\1\143\1\157\1\156\1\124"+
-        "\1\157\1\uffff\1\171\3\60\1\156\1\142\1\143\1\154\1\145\1\60\1\154"+
-        "\1\164\1\154\1\151\1\155\1\145\1\151\1\145\1\147\1\154\1\uffff\1"+
-        "\160\1\143\1\164\1\60\1\145\1\120\1\141\1\151\1\60\2\uffff\1\157"+
-        "\1\145\2\uffff\2\145\1\153\1\145\1\uffff\1\156\1\uffff\1\151\1\60"+
-        "\1\153\1\143\1\163\1\171\1\143\1\60\2\uffff\1\151\1\145\1\uffff"+
-        "\1\124\1\162\1\154\1\151\1\145\1\156\1\uffff\1\105\1\60\1\157\1"+
-        "\141\1\145\1\60\1\141\1\60\1\156\1\60\1\154\1\145\1\151\1\uffff"+
-        "\1\60\1\162\1\141\1\164\1\157\1\uffff\1\156\1\154\5\60\1\157\1\uffff"+
-        "\1\60\1\153\1\40\1\160\1\153\1\uffff\1\142\1\143\1\171\2\141\1\156"+
-        "\1\122\1\164\1\170\1\145\1\uffff\1\167\1\142\1\156\1\uffff\1\142"+
-        "\1\uffff\1\151\1\uffff\1\151\1\60\1\157\1\uffff\1\145\1\155\1\151"+
-        "\1\156\1\102\1\141\5\uffff\1\156\1\uffff\1\60\1\uffff\1\145\1\124"+
-        "\1\162\1\154\1\151\1\160\2\162\1\151\1\145\1\60\1\160\1\154\1\60"+
-        "\1\154\1\164\1\154\1\164\1\156\1\uffff\1\156\1\143\1\160\1\157\1"+
-        "\60\1\141\1\164\1\106\1\uffff\1\60\1\171\2\141\1\156\1\145\1\171"+
-        "\1\141\1\164\1\146\1\uffff\1\162\1\141\1\uffff\1\145\1\60\1\145"+
-        "\1\165\1\147\1\60\1\145\1\154\1\156\1\uffff\1\163\1\151\1\141\1"+
-        "\uffff\1\160\2\162\1\151\2\60\1\164\1\151\1\60\1\145\1\164\1\122"+
-        "\1\uffff\1\122\1\144\1\60\1\uffff\1\144\1\151\1\60\1\145\1\157\1"+
-        "\143\1\145\1\171\1\141\1\164\2\uffff\1\151\1\157\1\uffff\1\163\1"+
-        "\151\3\145\1\uffff\1\145\1\156\1\uffff\1\144\1\156\1\164\2\60\1"+
-        "\164\1\151\1\157\1\156\1\163\1\157\2\146\1\60\1\156\1\147\1\114"+
-        "\1\104\1\157\2\uffff\1\151\1\157\1\156\1\60\1\151\1\156\2\60\1\uffff"+
-        "\1\143\1\60\1\151\1\145\1\162\1\157\1\156\1\60\1\uffff\1\157\1\104"+
-        "\2\uffff\1\145\1\uffff\1\142\1\146\1\60\1\156\1\60\1\uffff\1\156"+
-        "\1\145\1\60\1\162\1\151\1\uffff\1\60\1\uffff\1\104\1\146\1\uffff"+
-        "\1\141\1\156\1\uffff\1\145\1\151\1\162\1\151\1\146\1\156\1\171\1"+
-        "\164\2\151\1\60\1\151\1\156\1\164\1\uffff\1\157\2\151\1\156\1\164"+
-        "\1\157\1\60\1\151\1\156\1\uffff\1\157\1\60\1\156\1\uffff\1\60\1"+
-        "\uffff";
+        "\1\0\1\145\1\uffff\1\43\1\51\1\154\4\uffff\1\151\1\157\1\uffff\1"+
+        "\53\1\141\1\145\1\uffff\1\141\1\151\1\141\1\145\1\162\1\160\1\75"+
+        "\1\60\1\75\1\52\1\75\2\43\1\60\1\50\1\101\2\75\1\156\1\145\1\150"+
+        "\1\141\1\162\1\141\1\157\1\156\1\150\1\156\1\103\1\145\1\156\1\56"+
+        "\1\uffff\2\0\2\uffff\1\141\1\161\2\uffff\1\160\2\60\2\uffff\1\120"+
+        "\2\uffff\1\60\1\171\1\154\4\uffff\1\156\1\157\1\60\1\160\4\uffff"+
+        "\1\145\1\151\1\60\1\146\1\163\1\uffff\1\164\1\155\1\154\1\141\1"+
+        "\151\1\155\1\156\1\143\1\163\1\uffff\1\164\1\145\20\uffff\1\170"+
+        "\1\163\2\uffff\1\157\1\147\1\143\1\154\1\60\10\uffff\1\160\1\165"+
+        "\1\141\1\156\1\157\1\141\1\163\1\156\1\157\1\165\1\154\1\145\1\157"+
+        "\1\164\1\171\1\157\1\165\1\164\1\157\1\170\1\162\1\157\1\156\1\145"+
+        "\1\156\1\141\1\146\1\144\1\uffff\1\56\2\uffff\1\164\1\151\1\53\1"+
+        "\157\1\164\2\uffff\1\162\1\145\1\uffff\2\60\1\141\1\155\1\uffff"+
+        "\1\145\1\156\1\164\1\uffff\2\141\1\163\1\143\1\60\1\145\1\154\1"+
+        "\162\1\160\1\164\1\160\1\144\1\154\1\163\1\143\1\60\1\162\1\60\1"+
+        "\145\1\164\1\150\1\165\1\145\1\165\1\uffff\1\162\1\145\1\155\1\141"+
+        "\1\154\1\157\1\144\1\143\1\162\1\145\1\163\1\143\1\145\1\163\2\154"+
+        "\1\60\1\145\1\163\1\144\1\155\1\142\1\162\1\151\1\143\1\145\1\156"+
+        "\1\124\1\151\1\141\1\163\1\146\1\151\1\164\2\145\1\156\1\163\1\55"+
+        "\1\uffff\1\145\1\141\1\145\1\162\1\72\1\145\1\162\2\uffff\1\154"+
+        "\1\163\3\60\1\151\1\165\1\171\1\145\1\162\1\uffff\2\60\1\164\1\60"+
+        "\1\143\1\154\1\60\1\141\1\145\1\162\1\uffff\1\141\1\uffff\1\103"+
+        "\1\60\1\164\1\162\1\151\2\145\1\162\1\145\1\164\1\60\1\162\1\151"+
+        "\1\153\1\124\1\60\1\141\1\165\1\153\1\60\1\145\1\144\1\145\1\uffff"+
+        "\1\147\1\151\1\165\1\114\1\103\1\60\1\151\1\156\1\143\1\154\1\143"+
+        "\1\123\2\157\1\145\1\164\1\143\1\145\1\60\1\164\1\103\1\146\1\60"+
+        "\1\147\1\105\1\110\1\uffff\1\146\1\162\1\156\1\164\1\uffff\1\145"+
+        "\1\164\1\163\1\150\3\uffff\1\156\1\154\2\103\1\145\1\uffff\1\162"+
+        "\1\uffff\1\60\1\uffff\1\150\1\145\1\uffff\1\162\1\103\1\145\2\156"+
+        "\1\154\1\uffff\1\103\1\156\1\166\1\60\1\163\1\156\1\162\1\151\1"+
+        "\141\1\171\1\uffff\1\144\1\164\1\60\1\171\1\uffff\1\151\1\155\1"+
+        "\61\1\uffff\2\60\1\141\1\145\2\143\1\151\1\154\1\uffff\2\143\1\141"+
+        "\1\165\1\145\1\164\1\60\1\156\1\162\1\150\2\162\1\uffff\1\60\1\156"+
+        "\1\154\1\151\1\145\1\141\1\uffff\1\60\1\155\2\uffff\1\60\1\122\1"+
+        "\143\1\60\1\155\1\60\1\72\1\60\1\147\1\164\1\154\1\141\1\154\1\164"+
+        "\1\103\1\uffff\1\60\1\144\1\156\1\141\1\154\1\164\1\144\1\151\1"+
+        "\157\1\156\1\154\1\124\1\145\1\uffff\1\163\1\60\1\141\1\157\1\162"+
+        "\1\160\1\105\1\151\1\uffff\1\160\1\156\1\145\1\157\2\60\2\uffff"+
+        "\1\156\1\162\1\141\1\145\1\164\1\157\1\164\1\151\1\164\1\163\1\144"+
+        "\1\162\1\uffff\3\60\1\145\1\163\1\uffff\1\164\1\157\1\156\1\154"+
+        "\1\163\1\171\1\uffff\1\160\1\uffff\2\145\1\60\1\uffff\1\160\3\uffff"+
+        "\1\103\1\60\1\157\1\164\1\157\1\151\1\154\1\uffff\1\103\1\147\1"+
+        "\164\1\157\1\145\1\60\1\164\1\143\1\164\1\157\1\171\1\60\1\151\1"+
+        "\154\1\uffff\1\164\1\156\1\151\1\145\1\154\1\171\1\157\1\145\1\155"+
+        "\1\60\1\106\2\uffff\1\105\1\60\1\154\1\60\1\145\1\143\1\123\1\144"+
+        "\1\145\1\151\1\145\1\151\3\uffff\1\164\1\145\1\151\1\143\1\145\1"+
+        "\141\1\145\1\160\1\164\1\146\1\60\1\uffff\1\164\1\154\1\141\1\uffff"+
+        "\1\143\1\164\1\143\1\172\1\157\1\154\1\103\1\151\1\143\1\103\1\uffff"+
+        "\1\60\1\153\1\151\1\143\1\160\1\uffff\1\157\1\60\1\151\1\60\1\141"+
+        "\1\60\1\145\1\160\1\156\1\60\1\145\1\uffff\1\157\1\141\1\154\1\171"+
+        "\1\141\1\171\1\uffff\1\115\1\uffff\1\162\1\153\1\141\1\145\1\156"+
+        "\1\157\1\156\1\143\1\151\1\143\1\164\1\153\1\144\1\164\1\144\1\145"+
+        "\1\171\1\60\1\171\1\uffff\1\151\1\157\1\154\1\153\1\145\1\153\1"+
+        "\141\1\143\1\157\1\154\1\157\1\153\1\154\1\uffff\1\60\1\164\1\153"+
+        "\1\145\1\156\1\uffff\1\157\1\151\1\145\1\uffff\1\142\1\uffff\1\155"+
+        "\1\145\1\141\1\uffff\1\156\1\154\1\162\1\145\1\160\1\162\1\160\2"+
+        "\141\1\60\1\155\1\156\1\141\1\156\1\143\1\164\1\172\1\164\1\171"+
+        "\2\60\1\151\1\122\2\60\1\uffff\1\160\1\166\1\143\1\165\1\60\1\162"+
+        "\1\60\1\164\1\153\1\143\1\157\1\156\1\124\1\157\1\uffff\1\171\3"+
+        "\60\1\156\1\142\1\143\1\154\1\145\1\60\1\154\1\164\1\154\1\151\1"+
+        "\155\1\145\1\151\1\145\1\147\1\154\1\uffff\1\160\1\143\1\164\1\60"+
+        "\1\145\1\120\1\141\1\151\1\60\2\uffff\1\157\1\145\2\uffff\2\145"+
+        "\1\153\1\145\1\uffff\1\156\1\uffff\1\151\1\60\1\153\1\143\1\163"+
+        "\1\171\1\143\1\60\2\uffff\1\151\1\145\1\uffff\1\124\1\162\1\154"+
+        "\1\151\1\145\1\156\1\uffff\1\105\1\60\1\157\1\141\1\145\1\60\1\141"+
+        "\1\60\1\156\1\60\1\154\1\145\1\151\1\uffff\1\60\1\162\1\141\1\164"+
+        "\1\157\1\uffff\1\156\1\154\5\60\1\157\1\uffff\1\60\1\153\1\40\1"+
+        "\160\1\153\1\uffff\1\142\1\143\1\171\2\141\1\156\1\122\1\164\1\170"+
+        "\1\145\1\uffff\1\167\1\142\1\156\1\uffff\1\142\1\uffff\1\151\1\uffff"+
+        "\1\151\1\60\1\157\1\uffff\1\145\1\155\1\151\1\156\1\102\1\141\5"+
+        "\uffff\1\156\1\uffff\1\60\1\uffff\1\145\1\124\1\162\1\154\1\151"+
+        "\1\160\2\162\1\151\1\145\1\60\1\160\1\154\1\60\1\154\1\164\1\154"+
+        "\1\164\1\156\1\uffff\1\156\1\143\1\160\1\157\1\60\1\141\1\164\1"+
+        "\106\1\uffff\1\60\1\171\2\141\1\156\1\145\1\171\1\141\1\164\1\146"+
+        "\1\uffff\1\162\1\141\1\uffff\1\145\1\60\1\145\1\165\1\147\1\60\1"+
+        "\145\1\154\1\156\1\uffff\1\163\1\151\1\141\1\uffff\1\160\2\162\1"+
+        "\151\2\60\1\164\1\151\1\60\1\145\1\164\1\122\1\uffff\1\122\1\144"+
+        "\1\60\1\uffff\1\144\1\151\1\60\1\145\1\157\1\143\1\145\1\171\1\141"+
+        "\1\164\2\uffff\1\151\1\157\1\uffff\1\163\1\151\3\145\1\uffff\1\145"+
+        "\1\156\1\uffff\1\144\1\156\1\164\2\60\1\164\1\151\1\157\1\156\1"+
+        "\163\1\157\2\146\1\60\1\156\1\147\1\114\1\104\1\157\2\uffff\1\151"+
+        "\1\157\1\156\1\60\1\151\1\156\2\60\1\uffff\1\143\1\60\1\151\1\145"+
+        "\1\162\1\157\1\156\1\60\1\uffff\1\157\1\104\2\uffff\1\145\1\uffff"+
+        "\1\142\1\146\1\60\1\156\1\60\1\uffff\1\156\1\145\1\60\1\162\1\151"+
+        "\1\uffff\1\60\1\uffff\1\104\1\146\1\uffff\1\141\1\156\1\uffff\1"+
+        "\145\1\151\1\162\1\151\1\146\1\156\1\171\1\164\2\151\1\60\1\151"+
+        "\1\156\1\164\1\uffff\1\157\2\151\1\156\1\164\1\157\1\60\1\151\1"+
+        "\156\1\uffff\1\157\1\60\1\156\1\uffff\1\60\1\uffff";
     static final String DFA15_maxS =
         "\1\uffff\1\164\1\uffff\1\163\1\51\1\163\4\uffff\1\162\1\171\1\uffff"+
         "\1\55\1\150\1\157\1\uffff\1\157\1\151\1\167\1\151\1\162\1\165\1"+
@@ -5566,39 +5565,38 @@ public class InternalMoCDslLexer extends Lexer {
         "\1\156\1\164\1\uffff\1\157\2\151\1\156\1\164\1\157\1\172\1\151\1"+
         "\156\1\uffff\1\157\1\172\1\156\1\uffff\1\172\1\uffff";
     static final String DFA15_acceptS =
-        "\2\uffff\1\2\3\uffff\1\7\1\11\1\12\1\14\2\uffff\1\20\3\uffff\1"+
-        "\25\40\uffff\1\u00a3\2\uffff\1\u00a7\1\u00a8\2\uffff\1\u00a3\1\2"+
-        "\3\uffff\1\50\1\51\1\uffff\1\56\1\4\3\uffff\1\7\1\11\1\12\1\14\4"+
-        "\uffff\1\20\1\55\1\60\1\21\5\uffff\1\25\11\uffff\1\32\2\uffff\1"+
-        "\36\1\52\1\37\1\121\1\57\1\u00a2\1\40\1\61\1\41\1\u00a5\1\u00a6"+
-        "\1\62\1\43\1\42\1\44\1\45\2\uffff\1\46\1\47\5\uffff\1\66\1\64\1"+
-        "\63\1\65\1\100\1\70\1\77\1\71\34\uffff\1\u00a1\1\uffff\1\u00a4\1"+
-        "\u00a7\5\uffff\1\34\1\23\2\uffff\1\6\4\uffff\1\17\3\uffff\1\24\30"+
-        "\uffff\1\67\47\uffff\1\76\7\uffff\1\u009e\1\u009f\12\uffff\1\26"+
-        "\12\uffff\1\35\1\uffff\1\143\27\uffff\1\144\32\uffff\1\75\4\uffff"+
-        "\1\13\4\uffff\1\16\1\142\1\22\5\uffff\1\132\1\uffff\1\27\1\uffff"+
-        "\1\u0099\2\uffff\1\u009d\6\uffff\1\106\12\uffff\1\135\4\uffff\1"+
-        "\123\3\uffff\1\125\10\uffff\1\u008e\14\uffff\1\u008f\6\uffff\1\33"+
-        "\2\uffff\1\73\1\74\17\uffff\1\30\15\uffff\1\53\10\uffff\1\122\6"+
-        "\uffff\1\126\1\163\14\uffff\1\173\5\uffff\1\u0091\6\uffff\1\124"+
-        "\1\uffff\1\133\3\uffff\1\5\1\uffff\1\116\1\15\1\u0098\7\uffff\1"+
-        "\110\16\uffff\1\112\13\uffff\1\u008b\1\u008c\14\uffff\1\u008a\1"+
-        "\u0080\1\u0097\13\uffff\1\3\3\uffff\1\111\12\uffff\1\54\5\uffff"+
-        "\1\u009c\13\uffff\1\u009a\6\uffff\1\136\1\uffff\1\u009b\23\uffff"+
-        "\1\140\15\uffff\1\157\5\uffff\1\113\3\uffff\1\117\1\uffff\1\151"+
-        "\3\uffff\1\152\31\uffff\1\134\16\uffff\1\u0081\24\uffff\1\164\11"+
-        "\uffff\1\u0088\1\u00a0\2\uffff\1\146\1\72\4\uffff\1\u0082\1\uffff"+
-        "\1\u0095\10\uffff\1\u0089\1\174\2\uffff\1\120\6\uffff\1\153\15\uffff"+
-        "\1\170\5\uffff\1\166\10\uffff\1\176\5\uffff\1\165\12\uffff\1\145"+
-        "\3\uffff\1\147\1\uffff\1\150\1\uffff\1\162\3\uffff\1\171\6\uffff"+
-        "\1\154\1\177\1\u0092\1\u0093\1\u0083\1\uffff\1\u0085\1\uffff\1\31"+
-        "\23\uffff\1\167\10\uffff\1\u0086\12\uffff\1\141\2\uffff\1\175\11"+
-        "\uffff\1\u008d\3\uffff\1\156\14\uffff\1\137\3\uffff\1\u0087\12\uffff"+
-        "\1\161\1\102\2\uffff\1\131\5\uffff\1\u0084\2\uffff\1\u0094\23\uffff"+
-        "\1\155\1\101\10\uffff\1\160\10\uffff\1\115\2\uffff\1\127\1\130\1"+
-        "\uffff\1\u0090\5\uffff\1\104\5\uffff\1\u0096\1\uffff\1\105\2\uffff"+
-        "\1\172\2\uffff\1\103\16\uffff\1\1\11\uffff\1\10\3\uffff\1\114\1"+
-        "\uffff\1\107";
+        "\2\uffff\1\2\3\uffff\1\7\1\11\1\12\1\14\2\uffff\1\20\3\uffff\1\25"+
+        "\40\uffff\1\u00a3\2\uffff\1\u00a7\1\u00a8\2\uffff\1\u00a3\1\2\3"+
+        "\uffff\1\50\1\51\1\uffff\1\56\1\4\3\uffff\1\7\1\11\1\12\1\14\4\uffff"+
+        "\1\20\1\55\1\60\1\21\5\uffff\1\25\11\uffff\1\32\2\uffff\1\36\1\52"+
+        "\1\37\1\121\1\57\1\u00a2\1\40\1\61\1\41\1\u00a5\1\u00a6\1\62\1\43"+
+        "\1\42\1\44\1\45\2\uffff\1\46\1\47\5\uffff\1\66\1\64\1\63\1\65\1"+
+        "\100\1\70\1\77\1\71\34\uffff\1\u00a1\1\uffff\1\u00a4\1\u00a7\5\uffff"+
+        "\1\34\1\23\2\uffff\1\6\4\uffff\1\17\3\uffff\1\24\30\uffff\1\67\47"+
+        "\uffff\1\76\7\uffff\1\u009e\1\u009f\12\uffff\1\26\12\uffff\1\35"+
+        "\1\uffff\1\143\27\uffff\1\144\32\uffff\1\75\4\uffff\1\13\4\uffff"+
+        "\1\16\1\142\1\22\5\uffff\1\132\1\uffff\1\27\1\uffff\1\u0099\2\uffff"+
+        "\1\u009d\6\uffff\1\106\12\uffff\1\135\4\uffff\1\123\3\uffff\1\125"+
+        "\10\uffff\1\u008e\14\uffff\1\u008f\6\uffff\1\33\2\uffff\1\73\1\74"+
+        "\17\uffff\1\30\15\uffff\1\53\10\uffff\1\122\6\uffff\1\126\1\163"+
+        "\14\uffff\1\173\5\uffff\1\u0091\6\uffff\1\124\1\uffff\1\133\3\uffff"+
+        "\1\5\1\uffff\1\116\1\15\1\u0098\7\uffff\1\110\16\uffff\1\112\13"+
+        "\uffff\1\u008b\1\u008c\14\uffff\1\u008a\1\u0080\1\u0097\13\uffff"+
+        "\1\3\3\uffff\1\111\12\uffff\1\54\5\uffff\1\u009c\13\uffff\1\u009a"+
+        "\6\uffff\1\136\1\uffff\1\u009b\23\uffff\1\140\15\uffff\1\157\5\uffff"+
+        "\1\113\3\uffff\1\117\1\uffff\1\151\3\uffff\1\152\31\uffff\1\134"+
+        "\16\uffff\1\u0081\24\uffff\1\164\11\uffff\1\u0088\1\u00a0\2\uffff"+
+        "\1\146\1\72\4\uffff\1\u0082\1\uffff\1\u0095\10\uffff\1\u0089\1\174"+
+        "\2\uffff\1\120\6\uffff\1\153\15\uffff\1\170\5\uffff\1\166\10\uffff"+
+        "\1\176\5\uffff\1\165\12\uffff\1\145\3\uffff\1\147\1\uffff\1\150"+
+        "\1\uffff\1\162\3\uffff\1\171\6\uffff\1\154\1\177\1\u0092\1\u0093"+
+        "\1\u0083\1\uffff\1\u0085\1\uffff\1\31\23\uffff\1\167\10\uffff\1"+
+        "\u0086\12\uffff\1\141\2\uffff\1\175\11\uffff\1\u008d\3\uffff\1\156"+
+        "\14\uffff\1\137\3\uffff\1\u0087\12\uffff\1\161\1\102\2\uffff\1\131"+
+        "\5\uffff\1\u0084\2\uffff\1\u0094\23\uffff\1\155\1\101\10\uffff\1"+
+        "\160\10\uffff\1\115\2\uffff\1\127\1\130\1\uffff\1\u0090\5\uffff"+
+        "\1\104\5\uffff\1\u0096\1\uffff\1\105\2\uffff\1\172\2\uffff\1\103"+
+        "\16\uffff\1\1\11\uffff\1\10\3\uffff\1\114\1\uffff\1\107";
     static final String DFA15_specialS =
         "\1\0\61\uffff\1\2\1\1\u03ce\uffff}>";
     static final String[] DFA15_transitionS = {
@@ -5678,8 +5676,7 @@ public class InternalMoCDslLexer extends Lexer {
             "\1\u00ab",
             "",
             "",
-            "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\22\70\1\u00ac\7"+
-            "\70",
+            "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\22\70\1\u00ac\7\70",
             "\1\u00ae",
             "\1\u00af",
             "",
@@ -5883,8 +5880,7 @@ public class InternalMoCDslLexer extends Lexer {
             "\1\u015c",
             "",
             "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
-            "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\4\70\1\u015e\25"+
-            "\70",
+            "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\4\70\1\u015e\25\70",
             "\1\u0160",
             "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
             "\1\u0162",
@@ -5943,8 +5939,8 @@ public class InternalMoCDslLexer extends Lexer {
             "\1\u0196",
             "\1\u0198\1\uffff\1\u0197",
             "\1\u0199",
-            "\12\70\7\uffff\1\70\1\u019b\17\70\1\u019a\10\70\4\uffff\1"+
-            "\70\1\uffff\32\70",
+            "\12\70\7\uffff\1\70\1\u019b\17\70\1\u019a\10\70\4\uffff\1\70"+
+            "\1\uffff\32\70",
             "\1\u019d",
             "\1\u019e",
             "\1\u01a0\13\uffff\1\u019f",
@@ -6030,16 +6026,14 @@ public class InternalMoCDslLexer extends Lexer {
             "\1\u01e6",
             "\1\u01e7",
             "",
-            "\12\70\7\uffff\23\70\1\u01e8\6\70\4\uffff\1\70\1\uffff\32"+
-            "\70",
+            "\12\70\7\uffff\23\70\1\u01e8\6\70\4\uffff\1\70\1\uffff\32\70",
             "\1\u01ea",
             "",
             "",
             "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
             "\1\u01ec",
             "\1\u01ed",
-            "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\22\70\1\u01ee\7"+
-            "\70",
+            "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\22\70\1\u01ee\7\70",
             "\1\u01f0",
             "\12\70\7\uffff\32\70\4\uffff\1\70\1\uffff\32\70",
             "\1\u01f2",
@@ -6181,8 +6175,7 @@ public class InternalMoCDslLexer extends Lexer {
             "\1\u026c",
             "\1\u026d",
             "\1\u026e",
-            "\12\70\7\uffff\23\70\1\u026f\6\70\4\uffff\1\70\1\uffff\32"+
-            "\70",
+            "\12\70\7\uffff\23\70\1\u026f\6\70\4\uffff\1\70\1\uffff\32\70",
             "",
             "\1\u0271",
             "\1\u0272",

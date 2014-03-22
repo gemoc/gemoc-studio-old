@@ -680,14 +680,14 @@ ruleTransition returns [EObject current=null]
     {
     	newLeafNode(otherlv_7, grammarAccess.getTransitionAccess().getLeftParenthesisKeyword_7());
     }
-(	otherlv_8='when' 
+(((	otherlv_8='when' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getTransitionAccess().getWhenKeyword_8_0());
+    	newLeafNode(otherlv_8, grammarAccess.getTransitionAccess().getWhenKeyword_8_0_0_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTransitionAccess().getTriggerTriggerParserRuleCall_8_1_0()); 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getTriggerTriggerParserRuleCall_8_0_0_1_0()); 
 	    }
 		lv_trigger_9_0=ruleTrigger		{
 	        if ($current==null) {
@@ -702,14 +702,14 @@ ruleTransition returns [EObject current=null]
 	    }
 
 )
-))?(	otherlv_10='if' 
+))(	otherlv_10='if' 
     {
-    	newLeafNode(otherlv_10, grammarAccess.getTransitionAccess().getIfKeyword_9_0());
+    	newLeafNode(otherlv_10, grammarAccess.getTransitionAccess().getIfKeyword_8_0_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTransitionAccess().getGuardGuardParserRuleCall_9_1_0()); 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getGuardGuardParserRuleCall_8_0_1_1_0()); 
 	    }
 		lv_guard_11_0=ruleGuard		{
 	        if ($current==null) {
@@ -724,31 +724,76 @@ ruleTransition returns [EObject current=null]
 	    }
 
 )
-))?(	otherlv_12='do' 
+))?)
+    |((	otherlv_12='if' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getTransitionAccess().getDoKeyword_10_0());
+    	newLeafNode(otherlv_12, grammarAccess.getTransitionAccess().getIfKeyword_8_1_0_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTransitionAccess().getActionsActionParserRuleCall_10_1_0()); 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getGuardGuardParserRuleCall_8_1_0_1_0()); 
 	    }
-		lv_actions_13_0=ruleAction		{
+		lv_guard_13_0=ruleGuard		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getTransitionRule());
+	        }
+       		set(
+       			$current, 
+       			"guard",
+        		lv_guard_13_0, 
+        		"Guard");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))(	otherlv_14='when' 
+    {
+    	newLeafNode(otherlv_14, grammarAccess.getTransitionAccess().getWhenKeyword_8_1_1_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getTriggerTriggerParserRuleCall_8_1_1_1_0()); 
+	    }
+		lv_trigger_15_0=ruleTrigger		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getTransitionRule());
+	        }
+       		set(
+       			$current, 
+       			"trigger",
+        		lv_trigger_15_0, 
+        		"Trigger");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?))?(	otherlv_16='do' 
+    {
+    	newLeafNode(otherlv_16, grammarAccess.getTransitionAccess().getDoKeyword_9_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getActionsActionParserRuleCall_9_1_0()); 
+	    }
+		lv_actions_17_0=ruleAction		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getTransitionRule());
 	        }
        		add(
        			$current, 
        			"actions",
-        		lv_actions_13_0, 
+        		lv_actions_17_0, 
         		"Action");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*	otherlv_14=')' 
+))*	otherlv_18=')' 
     {
-    	newLeafNode(otherlv_14, grammarAccess.getTransitionAccess().getRightParenthesisKeyword_11());
+    	newLeafNode(otherlv_18, grammarAccess.getTransitionAccess().getRightParenthesisKeyword_10());
     }
 )
 ;
