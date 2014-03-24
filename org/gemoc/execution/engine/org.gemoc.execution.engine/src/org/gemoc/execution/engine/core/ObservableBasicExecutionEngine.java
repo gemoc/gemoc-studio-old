@@ -408,22 +408,31 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
 							Event event = (Event) mer.getElementRef().get(0);
 							
-							if (event.getReferencedObjectRefs().size() == 2
-									&& event.getReferencedObjectRefs().get(1) instanceof EOperation) {
-								EObject targetModelElement = event.getReferencedObjectRefs()
-										.get(0);
-								EOperation targetOperation = (EOperation)event.getReferencedObjectRefs().get(1);
-								Activator.getMessagingSystem().info(
-										"event occurence: target="
-												+ targetModelElement.toString()
-												+ " operation="
-												+ targetOperation.getName(),
-										Activator.PLUGIN_ID);
-								// TODO verify that solver and engine work on the same resource ...
-								
-								// build the list of simplified eventOccurence from solver
-								EngineEventOccurence engineEventOccurence = new EngineEventOccurence(targetModelElement, targetOperation);
-								engineEventOccurences.add(engineEventOccurence);
+							if (event.getReferencedObjectRefs().size() == 2){
+								if( event.getReferencedObjectRefs().get(1) instanceof EOperation) {
+									EObject targetModelElement = event.getReferencedObjectRefs()
+											.get(0);
+									EOperation targetOperation = (EOperation)event.getReferencedObjectRefs().get(1);
+									Activator.getMessagingSystem().info(
+											"event occurence: target="
+													+ targetModelElement.toString()
+													+ " operation="
+													+ targetOperation.getName(),
+											Activator.PLUGIN_ID);
+									// TODO verify that solver and engine work on the same resource ...
+									
+									// build the list of simplified eventOccurence from solver
+									EngineEventOccurence engineEventOccurence = new EngineEventOccurence(targetModelElement, targetOperation);
+									engineEventOccurences.add(engineEventOccurence);
+								}
+								else{
+									Activator.getMessagingSystem().warn(
+											"event occurence: TICK Event="
+													+ event.getName()
+													+ " ReferencedObjectRefs="
+													+event.getReferencedObjectRefs(),
+											Activator.PLUGIN_ID);
+								}
 							}
 							else{
 								Activator.getMessagingSystem().debug(

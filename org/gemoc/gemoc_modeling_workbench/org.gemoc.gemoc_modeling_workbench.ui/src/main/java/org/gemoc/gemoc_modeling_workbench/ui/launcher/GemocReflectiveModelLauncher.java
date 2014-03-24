@@ -1,7 +1,9 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,10 +21,12 @@ import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
@@ -155,6 +159,15 @@ public class GemocReflectiveModelLauncher
 					domainSpecificEventsResource = resSet.getResource(
 							URI.createURI(dseResourcePath, true), true);
 				}
+				EcoreUtil.resolveAll(resSet);
+				Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resSet);
+				if(unresolvedProxies.size() != 0){
+					Activator
+					.getDefault()
+					.getMessaggingSystem()
+					.warn("There are unresolved proxies in "+dseResourcePath+ ", the first is "+unresolvedProxies.entrySet().toArray()[0], Activator.PLUGIN_ID);
+					
+				}
 			} else {
 				Activator
 						.getDefault()
@@ -170,6 +183,7 @@ public class GemocReflectiveModelLauncher
 				if(mocEventResourcePath.startsWith("/")){
 					mocEventsResource = resSet.getResource(
 							URI.createPlatformPluginURI(mocEventResourcePath, true), true);
+					
 				} else {
 					mocEventsResource = resSet.getResource(
 						URI.createURI(mocEventResourcePath), true);
