@@ -394,8 +394,8 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		stopCurrentEngineAction = new Action() {
 			public void run() {
 				if(EnginesStatusView.this.getSelectedEngine() != null){
-					showMessage("Stopping Engine");
 					EnginesStatusView.this.getSelectedEngine().stop();
+					//showMessage("Stopping Engine");
 				}
 				else
 					showMessage("please select an engine to stop");
