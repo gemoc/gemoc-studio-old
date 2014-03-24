@@ -1,6 +1,7 @@
 package org.gemoc.execution.engine.core;
 
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -108,7 +109,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	protected EngineStatus engineStatus = new EngineStatus();
 	
 	
-	
+	protected int nbLastStepRunObservedForStopDetection = 10;
+	/**
+	 * used to detect
+	 */
+	protected ArrayDeque<LogicalStep> lastStepsRun = new ArrayDeque<LogicalStep>(nbLastStepRunObservedForStopDetection);
 	
 
 	/**
@@ -232,6 +237,45 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		return engineStatus;
 	}
 
+	private static boolean areLogicalStepSimilar(LogicalStep ls1, LogicalStep ls2){
+		if(ls1 == ls2) return true;
+		
+		List<String> ls1TickedEventOccurences = new ArrayList<String>();
+		for (EventOccurrence eventOccurrence : ls1
+				.getEventOccurrences()) {
+			if (eventOccurrence.getFState() == FiredStateKind.TICK
+					&& eventOccurrence.getReferedElement() != null) {
+				ModelElementReference mer = (ModelElementReference) eventOccurrence
+						.getReferedElement();
+				if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
+					Event event = (Event) mer.getElementRef().get(0);
+					ls1TickedEventOccurences.add(event.getName());
+				}
+			}
+		}
+		List<String> ls2TickedEventOccurences = new ArrayList<String>();
+		for (EventOccurrence eventOccurrence : ls2
+				.getEventOccurrences()) {
+			if (eventOccurrence.getFState() == FiredStateKind.TICK
+					&& eventOccurrence.getReferedElement() != null) {
+				ModelElementReference mer = (ModelElementReference) eventOccurrence
+						.getReferedElement();
+				if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
+					Event event = (Event) mer.getElementRef().get(0);
+					ls2TickedEventOccurences.add(event.getName());
+				}
+			}
+		}
+		
+		
+		if(ls1TickedEventOccurences.size() == ls2TickedEventOccurences.size()){
+			if(ls1TickedEventOccurences.containsAll(ls2TickedEventOccurences)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	class EngineRunnable implements Runnable {
 		public void run() {
 			// register this engine using a unique name
@@ -284,12 +328,29 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						// 3 - run the selected logical step
 						LogicalStep logicalStepToApply = possibleLogicalSteps
 								.get(selectedLogicalStep);
+						lastStepsRun.add(logicalStepToApply);
 						// inform the solver that we will run this step
 						solver.applyLogicalStepByIndex(selectedLogicalStep);
 						// run all the event occurrences of this logical step
 						doLogicalStep(logicalStepToApply);
 
+						// if all lastStepsRun are the same, then we may have reached the end of the simulation
+						boolean allLastLogicalStepAreTheSame = true;
+						for (LogicalStep logicalStep : lastStepsRun) {
+							allLastLogicalStepAreTheSame = allLastLogicalStepAreTheSame && areLogicalStepSimilar(logicalStep, logicalStepToApply);							
+						}
+						if((lastStepsRun.size() >= nbLastStepRunObservedForStopDetection) && allLastLogicalStepAreTheSame){
+							Activator.getMessagingSystem().debug(
+									"Detected "+nbLastStepRunObservedForStopDetection+" identical LogicalStep, stopping engine",
+									Activator.PLUGIN_ID);
+							terminated = true;
+						}
+						// if queue is full, remove one
+						if(lastStepsRun.size() > nbLastStepRunObservedForStopDetection)
+							lastStepsRun.poll();
 					}
+					
+					
 					
 					// increments nbStepRun and notify observers
 					ObservableBasicExecutionEngine.this.setChanged();
@@ -319,6 +380,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			// TODO remove the engine from registered running engines
 		}
 
+		
+		
+		
 		/**
 		 * run all the event occurrences of this logical step
 		 * 
