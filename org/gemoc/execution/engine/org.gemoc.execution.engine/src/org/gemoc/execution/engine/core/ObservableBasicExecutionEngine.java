@@ -246,6 +246,8 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						modelUnderExecutionResource.getContents().get(0));
 			}
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
+			ObservableBasicExecutionEngine.this.setChanged();
+			ObservableBasicExecutionEngine.this.notifyObservers("Starting "+engineName); // use a simple message for the console observer
 			long count = 0;
 			while (!terminated) {
 				try {
@@ -291,7 +293,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 					
 					// increments nbStepRun and notify observers
 					ObservableBasicExecutionEngine.this.setChanged();
-					ObservableBasicExecutionEngine.this.notifyObservers();
+					ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
 					engineStatus.incrementNbLogicalStepRun();
 
 				} catch (Throwable e) {
@@ -310,10 +312,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 				getDebugger().terminated(Thread.currentThread().getName());
 			}
 			
-
-			ObservableBasicExecutionEngine.this.setChanged();
-			ObservableBasicExecutionEngine.this.notifyObservers();
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Stopped);
+			ObservableBasicExecutionEngine.this.setChanged();
+			ObservableBasicExecutionEngine.this.notifyObservers("Stopping "+engineName);
 			
 			// TODO remove the engine from registered running engines
 		}

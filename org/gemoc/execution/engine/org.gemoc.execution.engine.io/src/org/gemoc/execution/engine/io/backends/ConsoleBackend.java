@@ -36,9 +36,10 @@ public class ConsoleBackend implements Backend {
 				Activator.getMessagingSystem().info(s.toString(),
 						Activator.PLUGIN_ID);
 			}
-		} else {
+		} /*ignore non String messages from notification
+			else {
 			Activator.getMessagingSystem().error(
 					"Trace was not formatted correctly", Activator.PLUGIN_ID);
-		}
+		}*/
 	}
 }
