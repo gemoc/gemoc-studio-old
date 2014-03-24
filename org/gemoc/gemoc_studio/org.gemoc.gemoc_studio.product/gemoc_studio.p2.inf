@@ -9,6 +9,8 @@ addRepository(type:0,location:http${#58}//www.kermeta.org/k3/update/,name:Kermet
 addRepository(type:1,location:http${#58}//www.kermeta.org/k3/update/,name:Kermeta 3);\
 addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler,name:Sirius 1.0.0M4);\
 addRepository(type:1,location:http${#58}//download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler,name:Sirius 1.0.0M4);\
+addRepository(type:0,location:https${#58}//ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/,name:All Gemoc - composite update site);\
+addRepository(type:1,location:https${#58}//ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/,name:All Gemoc - composite update site);\
   mkdir(path:${installFolder}/dropins);
 
 requires.1.namespace=org.eclipse.equinox.p2.iu
