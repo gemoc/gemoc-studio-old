@@ -11,6 +11,13 @@ public interface GemocExecutionEngineRunControl {
 	/**
 	 * Starts the {@link GemocExecutionEngine}.
 	 */
-	void start();
+	public void start();
+	
+	/**
+	 * Asks the engine to stop
+	 */
+	public void stop();
+	
+	public EngineStatus getEngineStatus();
 	
 }

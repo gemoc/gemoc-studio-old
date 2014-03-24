@@ -33,6 +33,7 @@ import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
+import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
 public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
@@ -108,6 +109,9 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.setAttribute(
 				AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI,
+				this.modelLocationText.getText());
+		configuration.setAttribute(
+				AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI,
 				this.modelLocationText.getText());
 		configuration
 				.setAttribute(

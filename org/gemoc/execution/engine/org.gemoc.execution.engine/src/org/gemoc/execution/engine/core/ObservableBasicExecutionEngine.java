@@ -27,6 +27,7 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngineEventControl;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.LogicalStepDecider;
@@ -103,6 +104,12 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	private boolean started = false;
 
 	boolean terminated = false;
+	
+	protected EngineStatus engineStatus = new EngineStatus();
+	
+	
+	
+	
 
 	/**
 	 * Given at the language-level initialization.
@@ -208,6 +215,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	@Override
 	public void start() {
 		if (!this.started) {
+			engineStatus.setNbLogicalStepRun(0);
 			Runnable execution = new EngineRunnable();
 			Thread mainThread = new Thread(execution, "Gemoc engine "
 					+ modelUnderExecutionStringURI);
@@ -215,9 +223,21 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 
 	}
+	@Override
+	public void stop() {
+		terminated = true;
+	}
+	
+	public EngineStatus getEngineStatus(){
+		return engineStatus;
+	}
 
 	class EngineRunnable implements Runnable {
 		public void run() {
+			// register this engine using a unique name
+			String engineName = Thread.currentThread().getName();
+			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerNewEngine(engineName, ObservableBasicExecutionEngine.this);
+			
 			if (getDebugger() != null) {
 				// connect the debugger to the model being executed (including
 				// dynamic data)
@@ -225,6 +245,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						Thread.currentThread().getName(),
 						modelUnderExecutionResource.getContents().get(0));
 			}
+			engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
 			long count = 0;
 			while (!terminated) {
 				try {
@@ -267,6 +288,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						doLogicalStep(logicalStepToApply);
 
 					}
+					
+					// increments nbStepRun and notify observers
+					ObservableBasicExecutionEngine.this.setChanged();
+					ObservableBasicExecutionEngine.this.notifyObservers();
+					engineStatus.incrementNbLogicalStepRun();
 
 				} catch (Throwable e) {
 					Activator.getMessagingSystem().error(
@@ -283,6 +309,13 @@ public class ObservableBasicExecutionEngine extends Observable implements
 							Thread.currentThread().getName())) {
 				getDebugger().terminated(Thread.currentThread().getName());
 			}
+			
+
+			ObservableBasicExecutionEngine.this.setChanged();
+			ObservableBasicExecutionEngine.this.notifyObservers();
+			engineStatus.setRunningStatus(EngineStatus.RunStatus.Stopped);
+			
+			// TODO remove the engine from registered running engines
 		}
 
 		/**

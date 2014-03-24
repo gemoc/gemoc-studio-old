@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Io
-Bundle-SymbolicName: org.gemoc.execution.engine.io
+Bundle-SymbolicName: org.gemoc.execution.engine.io;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.io.Activator
 Require-Bundle: org.eclipse.ui,

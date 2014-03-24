@@ -147,8 +147,14 @@ public class GemocReflectiveModelLauncher
 					.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT);
 			if (dseResourcePath != null) {
 				ResourceSet resSet = new ResourceSetImpl();
-				domainSpecificEventsResource = resSet.getResource(
-						URI.createURI(dseResourcePath), true);
+				if(dseResourcePath.startsWith("/")){
+					domainSpecificEventsResource = resSet.getResource(
+						URI.createPlatformPluginURI(dseResourcePath, true), true);
+				}
+				else{
+					domainSpecificEventsResource = resSet.getResource(
+							URI.createURI(dseResourcePath, true), true);
+				}
 			} else {
 				Activator
 						.getDefault()
@@ -161,8 +167,13 @@ public class GemocReflectiveModelLauncher
 					.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
 			if (mocEventResourcePath != null) {
 				ResourceSet resSet = new ResourceSetImpl();
-				mocEventsResource = resSet.getResource(
+				if(mocEventResourcePath.startsWith("/")){
+					mocEventsResource = resSet.getResource(
+							URI.createPlatformPluginURI(mocEventResourcePath, true), true);
+				} else {
+					mocEventsResource = resSet.getResource(
 						URI.createURI(mocEventResourcePath), true);
+				}
 			} else {
 				Activator
 						.getDefault()

@@ -1,7 +1,9 @@
 package org.gemoc.execution.engine.io;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import java.util.HashMap;
 
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
@@ -35,6 +37,7 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 	}
 
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -56,6 +59,8 @@ public class Activator extends AbstractUIPlugin {
 		return plugin;
 	}
 
+	
+	
 	protected static EclipseMessagingSystem messagingSystem = null;
 
 	public static EclipseMessagingSystem getMessagingSystem() {
@@ -67,5 +72,8 @@ public class Activator extends AbstractUIPlugin {
 		}
 		return messagingSystem;
 	}
+	
+	
+	
 
 }

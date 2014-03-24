@@ -1,8 +1,13 @@
 package org.gemoc.execution.engine;
 
+import java.util.HashMap;
+
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
+import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
 import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
@@ -87,6 +92,15 @@ public class Activator extends AbstractUIPlugin {
 		super.stop(context);
 	}
 
+	
+
+
+	/**
+	 * List of engines that have registered to be running in this eclipse
+	 */
+	public GemocRunningEnginesRegistry gemocRunningEngineRegistry = new GemocRunningEnginesRegistry();
+	
+	
 	public static void warn(String msg, Throwable e) {
 		Activator.getDefault().getLog()
 				.log(new Status(Status.WARNING, PLUGIN_ID, Status.OK, msg, e));
