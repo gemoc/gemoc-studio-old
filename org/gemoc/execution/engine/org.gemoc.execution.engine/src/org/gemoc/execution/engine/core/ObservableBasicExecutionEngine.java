@@ -304,6 +304,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 					// solver, make sure to call it only once
 					List<LogicalStep> possibleLogicalSteps = solver
 							.getPossibleLogicalSteps();
+					engineStatus.updateCurrentLogicalStepChoice(possibleLogicalSteps);
+					ObservableBasicExecutionEngine.this.setChanged();
+					ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
 					// 2- select one solution from available logical step /
 					// select interactive vs batch
 					int selectedLogicalStep;
@@ -399,7 +402,8 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			// event into account
 
 			List<EngineEventOccurence> engineEventOccurences = new ArrayList<EngineEventOccurence>();
-			for (EventOccurrence eventOccurrence : logicalStepToApply
+			for(Event event : getTickedEvents(logicalStepToApply)){
+			/*for (EventOccurrence eventOccurrence : logicalStepToApply
 					.getEventOccurrences()) {
 				if (eventOccurrence.getFState() == FiredStateKind.TICK
 						&& eventOccurrence.getReferedElement() != null) {
@@ -407,7 +411,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						ModelElementReference mer = (ModelElementReference) eventOccurrence
 								.getReferedElement();
 						if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
-							Event event = (Event) mer.getElementRef().get(0);
+							Event event = (Event) mer.getElementRef().get(0); */
 							
 							if (event.getReferencedObjectRefs().size() == 2){
 								if( event.getReferencedObjectRefs().get(1) instanceof EOperation) {
@@ -443,38 +447,15 @@ public class ObservableBasicExecutionEngine extends Observable implements
 												+event.getReferencedObjectRefs(),
 										Activator.PLUGIN_ID);
 							}
-						}
-						else{
+				//		}
+	//					else{
 //							String stringOfTheECLEventCorrespondingToTheTickingClock = mer
 //									.getElementRef().get(0).toString();
 //							Activator.getMessagingSystem().debug(
 //									"event occurence: TICK target="
 //											+ stringOfTheECLEventCorrespondingToTheTickingClock,
 //									Activator.PLUGIN_ID);
-						}						
-					}
-				}
-				else{
-					if (eventOccurrence.getReferedElement() != null) {
-//						if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
-//							ModelElementReference mer = (ModelElementReference) eventOccurrence
-//									.getReferedElement();
-//							Activator.getMessagingSystem().debug(
-//									"event occurence (NOT A TICK): refered element= "+mer.getElementRef(),
-//									Activator.PLUGIN_ID);
-//						}
-//						else{
-//							Activator.getMessagingSystem().debug(
-//								"event occurence (NOT A TICK): refered element= "+eventOccurrence.getReferedElement(),
-//								Activator.PLUGIN_ID);
-//						}
-					}
-					else{
-					//	Activator.getMessagingSystem().debug(
-					//		"event occurence (NOT A TICK): "+eventOccurrence,
-					//		Activator.PLUGIN_ID);
-					}
-				}
+		//				}
 			}
 			// TODO verify if we need to pause on this LogicalStep due to breakpoint on one of the eventOccurence
 			
@@ -502,6 +483,28 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 	}
 
+	/**
+	 * 
+	 * @param logicalStep
+	 * @return the list of ModelElementReference of this LogicalStep that are Ticked and have a reference
+	 */
+	public static List<Event> getTickedEvents(LogicalStep logicalStep){
+		List<Event> result = new ArrayList<Event>();
+		for (EventOccurrence eventOccurrence : logicalStep
+				.getEventOccurrences()) {
+			if (eventOccurrence.getFState() == FiredStateKind.TICK
+					&& eventOccurrence.getReferedElement() != null) {
+				if (eventOccurrence.getReferedElement() instanceof ModelElementReference){
+					ModelElementReference mer = (ModelElementReference) eventOccurrence.getReferedElement();
+					if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
+						result.add((Event) mer.getElementRef().get(0));
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
 	@Override
 	public String toString() {
 		return this.getClass().getName() + "@[Executor=" + this.executor

@@ -7,10 +7,13 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -27,8 +30,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.mwe.internal.core.ast.util.Injector;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.xtext.resource.IResourceFactory;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.deciders.RandomDecider;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
@@ -47,6 +55,10 @@ import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
+import com.google.inject.Inject;
+
+import fr.inria.aoste.timesquare.ECL.ECLPackage;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.TimeModelPackage;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
@@ -61,6 +73,10 @@ public class GemocReflectiveModelLauncher
 	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
 
 	private ObservableBasicExecutionEngine engine;
+	
+	
+	
+
 
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode,
@@ -93,6 +109,8 @@ public class GemocReflectiveModelLauncher
 						GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 						"");
 
+		
+		
 		IConfigurationElement confElement = null;
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry()
 				.getConfigurationElementsFor(
@@ -149,32 +167,7 @@ public class GemocReflectiveModelLauncher
 
 			String dseResourcePath = confElement
 					.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT);
-			if (dseResourcePath != null) {
-				ResourceSet resSet = new ResourceSetImpl();
-				if(dseResourcePath.startsWith("/")){
-					domainSpecificEventsResource = resSet.getResource(
-						URI.createPlatformPluginURI(dseResourcePath, true), true);
-				}
-				else{
-					domainSpecificEventsResource = resSet.getResource(
-							URI.createURI(dseResourcePath, true), true);
-				}
-				EcoreUtil.resolveAll(resSet);
-				Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resSet);
-				if(unresolvedProxies.size() != 0){
-					Activator
-					.getDefault()
-					.getMessaggingSystem()
-					.warn("There are unresolved proxies in "+dseResourcePath+ ", the first is "+unresolvedProxies.entrySet().toArray()[0], Activator.PLUGIN_ID);
-					
-				}
-			} else {
-				Activator
-						.getDefault()
-						.getMessaggingSystem()
-						.warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT
-								+ " isn't set", Activator.PLUGIN_ID);
-			}
+			
 
 			String mocEventResourcePath = confElement
 					.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
@@ -212,6 +205,52 @@ public class GemocReflectiveModelLauncher
 						.warn("TODO XMI ModelLoader by default",
 								Activator.PLUGIN_ID);
 			}
+			/*if (dseResourcePath != null) {
+				
+				//com.google.inject.Injector injector = fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ui.internal.ExtendedCCSLActivator.getInstance().getInjector("extendedCCSL");
+				//injector.
+				//IFile modelIFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(modelPath));
+				//modelIFile.getProject();
+				//ResourceSet resourceSet = resourceSetProvider.get(modelIFile.getProject());
+				
+				/*com.google.inject.Injector injector = fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ui.internal.ExtendedCCSLActivator.getInstance().getInjector("extendedCCSL");
+				
+				//com.google.inject.Injector injector = new ExtendedCCSLStandaloneSetup().createInjector();
+				XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
+				resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+				Resource modelRes = modelLoader.loadModel(modelPath);
+				
+				resourceSet.getResources().add(modelRes);
+				
+				ECLPackage.eINSTANCE.eClass();
+				TimeModelPackage.eINSTANCE.eClass(); // force registration of ccsl
+				//ResourceSet resSet = modelRes.getResourceSet(); // use same resource set as model
+				Resource eclResource =  resourceSet.getResource(URI.createURI("platform:/plugin/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl",true), true);
+				if(dseResourcePath.startsWith("/")){
+					domainSpecificEventsResource = resourceSet.getResource(
+						URI.createPlatformPluginURI(dseResourcePath, true), true);
+				}
+				else{
+					domainSpecificEventsResource = resourceSet.getResource(
+							URI.createURI(dseResourcePath, true), true);
+				}
+				EcoreUtil.resolveAll(resourceSet);
+				Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resourceSet);
+				if(unresolvedProxies.size() != 0){
+					Activator
+					.getDefault()
+					.getMessaggingSystem()
+					.warn("There are unresolved proxies in "+dseResourcePath+ ", the first is "+unresolvedProxies.entrySet().toArray()[0], Activator.PLUGIN_ID);
+					
+				}
+				*/
+		/*	} else {
+				Activator
+						.getDefault()
+						.getMessaggingSystem()
+						.warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT
+								+ " isn't set", Activator.PLUGIN_ID);
+			}*/
 		}
 
 		// Ugly calls to check if all the elements have been provided as

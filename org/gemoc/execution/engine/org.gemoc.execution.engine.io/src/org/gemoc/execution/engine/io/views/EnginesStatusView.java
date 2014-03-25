@@ -21,9 +21,14 @@ import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
+import fr.inria.aoste.trace.LogicalStep;
+import fr.inria.aoste.trace.ModelElementReference;
 
 
 /**
@@ -122,8 +127,14 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			children.remove(child);
 			child.setParent(null);
 		}
+		public void removeAllChildren() {
+			children.clear();
+		}
 		public TreeObject [] getChildren() {
 			return (TreeObject [])children.toArray(new TreeObject[children.size()]);
+		}
+		public List<TreeObject> getChildrenList() {
+			return children;
 		}
 		public boolean hasChildren() {
 			return children.size()>0;
@@ -214,8 +225,47 @@ public class EnginesStatusView extends ViewPart implements Observer {
 				}
 			}
 			// For all current engines, refresh contents
-			// TODO add current possible logical steps
-			// TODO for each logical step , add internal events
+			for( TreeParent  root : roots){
+				GemocExecutionEngine engine = (GemocExecutionEngine) root.getWrappedObject();
+				// add current possible logical steps
+				// TODO for each logical step , add internal events
+				switch(engine.getEngineStatus().getRunningStatus()){
+				case Running:
+				case WaitingLogicalStepSelection:
+					List<LogicalStep> currentLogicalStepChoice = engine.getEngineStatus().getCurrentLogicalStepChoice();
+					// remove unused previous choice and mark reused ones
+					TreeObject[] previousChild = root.getChildren();
+					Set<LogicalStep> currentlyListedLogicalStep = new HashSet<LogicalStep>();
+					for (int i = 0; i < previousChild.length; i++) {
+						if(!currentLogicalStepChoice.contains(previousChild[i].wrappedObject)){
+							root.removeChild(previousChild[i]);
+						}
+						else{
+							currentlyListedLogicalStep.add((LogicalStep) previousChild[i].wrappedObject);
+						}
+					}
+					// current Logical Step
+					for(LogicalStep logicalStep : currentLogicalStepChoice){
+						if(!currentlyListedLogicalStep.contains(logicalStep)){
+							TreeParent logicalStepTreeObject = new TreeParent(logicalStep.toString(), logicalStep);
+							root.addChild(logicalStepTreeObject);
+							
+							// Add internal events
+							for(Event event : ObservableBasicExecutionEngine.getTickedEvents(logicalStep)){
+								TreeObject to = new TreeObject(event.getName(), event);
+								logicalStepTreeObject.addChild(to);								
+							}
+						}
+					}
+					
+					break;
+				default:
+					// remove any previous logical step
+					root.removeAllChildren();
+				}
+				
+			}
+			
 		}
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
@@ -227,16 +277,13 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			case 0:
 				// TODO select image for LogicalStep, engine and internal step
 				String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
-				if (obj instanceof TreeParent) {
-					if(treeObject.wrappedObject != null && treeObject.wrappedObject instanceof GemocExecutionEngine){
-						// TODO change the image according to the running status, running, waiting logicalStep selection, paused (debug), stopped 
-						imageKey = ISharedImages.IMG_OBJ_ELEMENT;
-					}
-					else{
-						imageKey = ISharedImages.IMG_OBJ_FOLDER;
-					}
-				   
+				if(treeObject.wrappedObject != null && treeObject.wrappedObject instanceof GemocExecutionEngine){
+					// TODO change the image according to the running status, running, waiting logicalStep selection, paused (debug), stopped 
+					imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 				}
+				else{
+					imageKey = ISharedImages.IMG_OBJ_FOLDER;
+				}			
 				return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 			default:
 				return null;
@@ -250,10 +297,15 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			case 0:
 				return treeObject.getName();
 			case 1:
-				if(treeObject.wrappedObject != null && treeObject.wrappedObject instanceof GemocExecutionEngine){
-					return ""+((GemocExecutionEngine)treeObject.wrappedObject).getEngineStatus().getNbLogicalStepRun();
-				}
-				return "";
+				if(treeObject.wrappedObject != null){
+					if(treeObject.wrappedObject instanceof GemocExecutionEngine){
+				
+						return ""+((GemocExecutionEngine)treeObject.wrappedObject).getEngineStatus().getNbLogicalStepRun();
+					}
+					else if(treeObject.wrappedObject instanceof LogicalStep){
+						return "("+((LogicalStep)treeObject.wrappedObject).getStepNumber()+")";
+					} else return "";
+				} else	return "";
 			case 2:
 				if(treeObject.wrappedObject != null && treeObject.wrappedObject instanceof GemocExecutionEngine){
 					switch(((GemocExecutionEngine)treeObject.wrappedObject).getEngineStatus().getRunningStatus()){
@@ -268,6 +320,20 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					default:
 						return "";
 					}					
+				}
+				if(treeObject.wrappedObject != null && treeObject.wrappedObject instanceof Event){
+					Event event = (Event)treeObject.wrappedObject;
+					if (event.getReferencedObjectRefs().size() == 2){
+						if( event.getReferencedObjectRefs().get(1) instanceof EOperation) {
+							return  event.getReferencedObjectRefs().get(0)+"."+((EOperation)event.getReferencedObjectRefs().get(1)).getName();
+						}
+						else{
+							return  event.getReferencedObjectRefs().get(0)+"."+event.getReferencedObjectRefs().get(1);
+						}
+					}
+					else{
+						return "";
+					}
 				}
 				return "";
 			default:
