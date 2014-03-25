@@ -371,6 +371,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 					&& !getDebugger().isTerminated(
 							Thread.currentThread().getName())) {
 				getDebugger().terminated(Thread.currentThread().getName());
+				setDebugger(null); // make sure to release handles
 			}
 			
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Stopped);

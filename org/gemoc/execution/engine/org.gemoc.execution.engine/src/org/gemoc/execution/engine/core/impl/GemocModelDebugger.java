@@ -18,6 +18,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 			ObservableBasicExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
+		engine.setDebugger(this);
 	}
 
 	@Override
@@ -41,7 +42,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 	public void updateData(String threadName, EObject instruction) {
 		if (!frameCreated) {
 			pushStackFrame(threadName,
-					((ModelSpecificEvent) instruction).getName(), instruction,
+					instruction.eClass().getName(), instruction,
 					instruction);
 			frameCreated = true;
 		} else {
@@ -56,7 +57,10 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 	@Override
 	public boolean shouldBreak(EObject instruction) {
 		boolean res = false;
-		if (instruction instanceof ModelSpecificEvent) {
+		if(super.shouldBreak(instruction)){
+			res = true;
+		}
+		/*if (instruction instanceof ModelSpecificEvent) {
 			ModelSpecificEvent event = (ModelSpecificEvent) instruction;
 			for (ModelSpecificAction action : event.getModelSpecificActions()) {
 				if (super.shouldBreak(action.getTarget())) {
@@ -64,7 +68,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 					break;
 				}
 			}
-		}
+		}*/
 		return res;
 	}
 
