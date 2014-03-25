@@ -23,6 +23,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
@@ -275,16 +276,21 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			TreeObject treeObject = (TreeObject) obj;
 			switch(columnIndex){
 			case 0:
-				// TODO select image for LogicalStep, engine and internal step
-				String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
-				if(treeObject.wrappedObject != null && treeObject.wrappedObject instanceof GemocExecutionEngine){
-					// TODO change the image according to the running status, running, waiting logicalStep selection, paused (debug), stopped 
-					imageKey = ISharedImages.IMG_OBJ_ELEMENT;
+				// select image for LogicalStep, engine and internal step
+				if(treeObject.wrappedObject != null ){
+					if(treeObject.wrappedObject instanceof GemocExecutionEngine){
+				
+						// TODO change the image according to the running status, running, waiting logicalStep selection, paused (debug), stopped 
+						return SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON);
+					}
+					else if(treeObject.wrappedObject instanceof LogicalStep){
+						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_ICON);
+					}
+					else if(treeObject.wrappedObject instanceof Event){
+						return SharedIcons.getSharedImage(SharedIcons.VISIBLE_EVENT_ICON);
+					}
+					else return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
 				}
-				else{
-					imageKey = ISharedImages.IMG_OBJ_FOLDER;
-				}			
-				return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 			default:
 				return null;
 			}
