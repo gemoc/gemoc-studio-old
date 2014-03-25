@@ -55,7 +55,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	private ViewContentProvider contentProvider;
 	private DrillDownAdapter drillDownAdapter;
 	private Action stopCurrentEngineAction;
-	private Action action2;
+	private Action removeStoppedEnginesAction;
 	private Action doubleClickAction;
 
 	/*
@@ -371,12 +371,12 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	private void fillLocalPullDown(IMenuManager manager) {
 		manager.add(stopCurrentEngineAction);
 		manager.add(new Separator());
-		manager.add(action2);
+		manager.add(removeStoppedEnginesAction);
 	}
 
 	private void fillContextMenu(IMenuManager manager) {
 		manager.add(stopCurrentEngineAction);
-		manager.add(action2);
+		manager.add(removeStoppedEnginesAction);
 		manager.add(new Separator());
 		drillDownAdapter.addNavigationActions(manager);
 		// Other plug-ins can contribute there actions here
@@ -385,7 +385,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(stopCurrentEngineAction);
-		manager.add(action2);
+		manager.add(removeStoppedEnginesAction);
 		manager.add(new Separator());
 		drillDownAdapter.addNavigationActions(manager);
 	}
@@ -406,15 +406,16 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		stopCurrentEngineAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
 			getImageDescriptor(ISharedImages.IMG_ELCL_STOP));
 		
-		action2 = new Action() {
+		removeStoppedEnginesAction = new Action() {
 			public void run() {
-				showMessage("Action 2 executed");
+				removeStoppedEngines();
+				//showMessage("Action 2 executed");
 			}
 		};
-		action2.setText("Action 2");
-		action2.setToolTipText("Action 2 tooltip");
-		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-				getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
+		removeStoppedEnginesAction.setText("Remove stopped engines");
+		removeStoppedEnginesAction.setToolTipText("Remove all stopped engines");
+		removeStoppedEnginesAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
+				getImageDescriptor(ISharedImages.IMG_ELCL_REMOVEALL));
 		doubleClickAction = new Action() {
 			public void run() {
 				ISelection selection = viewer.getSelection();
@@ -462,6 +463,30 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		return null;
 	}
 	
+	public void removeStoppedEngines(){
+		Display.getDefault().asyncExec(new Runnable() {
+			public void run() {
+		    // we may be triggered by a registry change or by an engine change
+		    // if registry changes, then may need to observe the new engine
+			List<String> engineStopped = new ArrayList<String>();
+		    for( Entry<String, GemocExecutionEngine> engineEntry :org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().entrySet()){
+		    	  
+		    	switch(engineEntry.getValue().getEngineStatus().getRunningStatus()){
+		    	case Stopped:
+		    		engineStopped.add(engineEntry.getKey());
+		    		break;
+		    	default:
+		    	}
+		    	
+	    	}
+	    	for(String engine : engineStopped){
+	    		org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().remove(engine);
+	    	}
+	    	update(null, null);
+	    	  
+	      }
+		 });
+	}
 	
 	@Override
 	public void update(Observable o, Object arg) {
