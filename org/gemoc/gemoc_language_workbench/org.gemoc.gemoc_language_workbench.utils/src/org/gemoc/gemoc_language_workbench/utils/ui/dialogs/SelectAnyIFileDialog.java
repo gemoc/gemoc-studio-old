@@ -22,6 +22,10 @@ public class SelectAnyIFileDialog extends ResourceListSelectionDialog {
 		super(parentShell, ResourcesPlugin.getWorkspace().getRoot(), IResource.FILE);
 	}
 
+	public SelectAnyIFileDialog(Shell parentShell, String defaultPattern){
+		super(parentShell, ResourcesPlugin.getWorkspace().getRoot(), IResource.FILE);
+	}
+	
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Control result = super.createDialogArea(parent);

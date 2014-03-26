@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
+import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
@@ -38,6 +39,7 @@ import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDele
 public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
 	protected Text modelLocationText;
+	protected Text siriusRepresentationLocationText;
 	protected Combo languageCombo;
 	protected Combo deciderCombo;
 
@@ -85,6 +87,8 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		try {
 			this.modelLocationText.setText(configuration.getAttribute(
 					AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, ""));
+			this.siriusRepresentationLocationText.setText(configuration.getAttribute(
+					AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI, ""));
 			this.languageCombo
 					.setText(configuration
 							.getAttribute(
@@ -112,7 +116,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 				this.modelLocationText.getText());
 		configuration.setAttribute(
 				AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI,
-				this.modelLocationText.getText());
+				this.siriusRepresentationLocationText.getText());
 		configuration
 				.setAttribute(
 						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
@@ -160,13 +164,13 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		gd.widthHint = GRID_DEFAULT_WIDTH;
 		// Create the project selector button
 
-		// Project location text
+		// Model location text
 		modelLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		modelLocationText.setLayoutData(gd);
 		modelLocationText.setFont(font);
 		modelLocationText.addModifyListener(fBasicModifyListener);
-		Button projectLocationButton = createPushButton(parent, "Browse", null);
-		projectLocationButton.addSelectionListener(new SelectionAdapter() {
+		Button modelLocationButton = createPushButton(parent, "Browse", null);
+		modelLocationButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 				// handleModelLocationButtonSelected();
 				// TODO launch the appropriate selector
@@ -178,6 +182,35 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 					String modelPath = ((IResource) dialog.getResult()[0])
 							.getFullPath().toPortableString();
 					modelLocationText.setText(modelPath);
+					updateLaunchConfigurationDialog();
+				}
+			}
+		});
+		//return parent;
+	
+		createTextLabelLayout(parent, "Sirius representation");
+		//GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		// gd.horizontalSpan = 1;
+		//gd.widthHint = GRID_DEFAULT_WIDTH;
+		// Create the project selector button
+		// Animation view location text
+		siriusRepresentationLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		siriusRepresentationLocationText.setLayoutData(gd);
+		siriusRepresentationLocationText.setFont(font);
+		siriusRepresentationLocationText.addModifyListener(fBasicModifyListener);
+		Button siriusRepresentationLocationButton = createPushButton(parent, "Browse", null);
+		siriusRepresentationLocationButton.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent evt) {
+				// handleModelLocationButtonSelected();
+				// TODO launch the appropriate selector
+
+				SelectAIRDIFileDialog dialog = new SelectAIRDIFileDialog(
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+								.getShell());
+				if (dialog.open() == Dialog.OK) {
+					String modelPath = ((IResource) dialog.getResult()[0])
+							.getFullPath().toPortableString();
+					siriusRepresentationLocationText.setText(modelPath);
 					updateLaunchConfigurationDialog();
 				}
 			}
