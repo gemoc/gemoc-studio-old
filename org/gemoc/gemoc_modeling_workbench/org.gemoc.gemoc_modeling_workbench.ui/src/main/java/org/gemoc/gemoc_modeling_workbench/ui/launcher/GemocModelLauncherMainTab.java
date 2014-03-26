@@ -204,7 +204,11 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 				// handleModelLocationButtonSelected();
 				// TODO launch the appropriate selector
 
+<<<<<<< HEAD
 				SelectAIRDIFileDialog dialog = new SelectAIRDIFileDialog(
+=======
+				SelectAnyIFileDialog dialog = new SelectAnyIFileDialog(
+>>>>>>> refs/remotes/origin/master
 						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 								.getShell());
 				if (dialog.open() == Dialog.OK) {
