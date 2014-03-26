@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
    <extension
-         id="eclMoc2ASBuilder"
-         name="ECLMoc2AS Project Builder"
+         id="gemocDSEBuilder"
+         name="GemocDSE Project Builder"
          point="org.eclipse.core.resources.builders">
       <builder
             hasNature="true">
          <run
-               class="org.gemoc.dse.ecl.moc2as.builder.ECLMoc2ASBuilder">
+               class="org.gemoc.dse.ecl.moc2as.ui.builder.GemocDSEBuilder">
          </run>
       </builder>
    </extension>
    <extension
-         id="eclMoc2ASNature"
-         name="ECLMoc2AS Project Nature"
+         id="gemocDSENature"
+         name="GemocDSE Project Nature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.gemoc.dse.ecl.moc2as.builder.ECLMoc2ASNature">
+               class="org.gemoc.dse.ecl.moc2as.ui.builder.GemocDSENature">
          </run>
       </runtime>
       <builder
-            id="org.gemoc.dse.ecl.moc2as.eclMoc2ASBuilder">
+            id="org.gemoc.dse.ecl.moc2as.ui.gemocDSEBuilder">
       </builder>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <category
-            name="ECLMoc2AS Project Nature commands"
-            id="org.gemoc.dse.ecl.moc2as.eclMoc2ASNature.category">
+            id="org.gemoc.dse.ecl.moc2as.ui.gemocDSENature.category"
+            name="GemocDSE Project Nature commands">
       </category>
       <command
-            name="Add/RemoveECLMoc2AS Project Nature"
-            defaultHandler="org.gemoc.dse.ecl.moc2as.builder.AddRemoveECLMoc2ASNatureHandler"
-            categoryId="org.gemoc.dse.ecl.moc2as.eclMoc2ASNature.category"
-            id="org.gemoc.dse.ecl.moc2as.addRemoveECLMoc2ASNature">
+            categoryId="org.gemoc.dse.ecl.moc2as.ui.gemocDSENature.category"
+            defaultHandler="org.gemoc.dse.ecl.moc2as.ui.builder.AddRemoveGemocDSENatureHandler"
+            id="org.gemoc.dse.ecl.moc2as.ui.addRemoveGemocDSENature"
+            name="Add/RemoveGemocDSE Project Nature">
       </command>
    </extension>
    <extension
@@ -44,8 +43,8 @@
       <menuContribution
             locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
          <command
-               commandId="org.gemoc.dse.ecl.moc2as.addRemoveECLMoc2ASNature"
-               label="Disable ECLMoc2AS builder"
+               commandId="org.gemoc.dse.ecl.moc2as.ui.addRemoveGemocDSENature"
+               label="Disable GemocDSE builder"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -60,8 +59,8 @@
                               value="org.eclipse.core.resources.IProject">
                         </instanceof>
                         <test
-                              value="org.gemoc.dse.ecl.moc2as.eclMoc2ASNature"
-                              property="org.eclipse.core.resources.projectNature">
+                              property="org.eclipse.core.resources.projectNature"
+                              value="org.gemoc.dse.ecl.moc2as.ui.gemocDSENature">
                         </test>
                      </and>
                   </iterate>
@@ -69,8 +68,8 @@
             </visibleWhen>
          </command>
          <command
-               commandId="org.gemoc.dse.ecl.moc2as.addRemoveECLMoc2ASNature"
-               label="Enable ECLMoc2AS builder"
+               commandId="org.gemoc.dse.ecl.moc2as.ui.addRemoveGemocDSENature"
+               label="Enable GemocDSE builder"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -86,8 +85,8 @@
                         </instanceof>
                         <not>
                            <test
-                                 value="org.gemoc.dse.ecl.moc2as.eclMoc2ASNature"
-                                 property="org.eclipse.core.resources.projectNature">
+                                 property="org.eclipse.core.resources.projectNature"
+                                 value="org.gemoc.dse.ecl.moc2as.ui.gemocDSENature">
                            </test>
                         </not>
                      </and>
@@ -98,8 +97,8 @@
       </menuContribution>
    </extension>
    <extension
-         id="org.gemoc.dse.ecl.moc2as.eclMoc2AsProblem"
-         name="ECLMoc2AS Problem"
+         id="dseProblem"
+         name="DSE Problem"
          point="org.eclipse.core.resources.markers">
       <super
             type="org.eclipse.core.resources.problemmarker">
@@ -108,5 +107,7 @@
             value="true">
       </persistent>
    </extension>
+
+   
 
 </plugin>

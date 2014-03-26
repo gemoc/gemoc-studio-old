@@ -1,4 +1,4 @@
-package org.gemoc.dse.ecl.moc2as.builder;
+package org.gemoc.dse.ecl.moc2as.ui.builder;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -26,11 +28,14 @@ import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.dse.ecl.moc2as.ui.Activator;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import toools.io.file.RegularFile;
 import fr.inria.aoste.timesquare.ecl.ecltoqvto.main.AcceleoLauncherForEclToQvto;
 
-public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
+public class GemocDSEBuilder extends IncrementalProjectBuilder {
 
 	class SampleDeltaVisitor implements IResourceDeltaVisitor {
 		/*
@@ -92,9 +97,9 @@ public class ECLMoc2ASBuilder extends IncrementalProjectBuilder {
 		}
 	}*/
 
-	public static final String BUILDER_ID = "org.gemoc.eclmoc.moc2as.eclMoc2ASBuilder";
+	public static final String BUILDER_ID = "org.gemoc.dse.ecl.moc2as.ui.gemocDSEBuilder";
 
-	private static final String MARKER_TYPE = "org.gemoc.eclmoc.moc2as.eclMoc2AsProblem";
+	private static final String MARKER_TYPE = "org.gemoc.dse.ecl.moc2as.ui.dseProblem";
 
 	// private SAXParserFactory parserFactory;
 
