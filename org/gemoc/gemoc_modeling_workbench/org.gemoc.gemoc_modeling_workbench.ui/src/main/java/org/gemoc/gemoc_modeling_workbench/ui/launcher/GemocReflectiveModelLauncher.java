@@ -54,12 +54,14 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
+import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
 
 import com.google.inject.Inject;
 
 import fr.inria.aoste.timesquare.ECL.ECLPackage;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.TimeModelPackage;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
+import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
@@ -406,6 +408,14 @@ public class GemocReflectiveModelLauncher
 			EObject firstInstruction) {
 		// TODO Auto-generated method stub
 		return "Gemoc debug target";
+	}
+
+	@Override
+	protected List<IDSLCurrentInstructionListener> getCurrentInstructionListeners() {
+
+		List<IDSLCurrentInstructionListener> result = super.getCurrentInstructionListeners();
+		result.add(AbstractGemocDebuggerServices.LISTENER);
+		return result;
 	}
 
 	@Override
