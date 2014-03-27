@@ -105,13 +105,13 @@
             modes="run, debug"
             name="Gemoc eXecutable Model"
             public="true"
-            sourceLocatorId="fr.obeo.dsl.debug.ide.sourceLocator">
+            sourceLocatorId="org.gemoc.gemoc_modeling_workbench.ui.sourceLocator">
       </launchConfigurationType>
    </extension>
     <extension
           point="org.eclipse.debug.ui.debugModelPresentations">
        <debugModelPresentation
-             class="fr.obeo.dsl.debug.ide.sirius.ui.DSLDebugModelPresentation"
+             class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocDebugModelPresentation"
              id="org.gemoc.gemoc_modeling_workbench.ui.debugModel">
        </debugModelPresentation>
     </extension>
@@ -193,6 +193,14 @@
             actionClass="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.GemocToggleBreakpoint"
             id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocToggleBreakpoint">
       </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.sourceLocators">
+      <sourceLocator
+            class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocSourceLocator"
+            id="org.gemoc.gemoc_modeling_workbench.ui.sourceLocator"
+            name="Gemoc Source Locator">
+      </sourceLocator>
    </extension>
 
 </plugin>

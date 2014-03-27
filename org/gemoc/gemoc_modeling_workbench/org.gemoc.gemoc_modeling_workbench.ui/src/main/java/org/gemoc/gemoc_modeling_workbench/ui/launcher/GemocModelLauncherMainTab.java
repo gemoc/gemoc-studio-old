@@ -274,7 +274,8 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		deciderCombo = new Combo(parent, SWT.NONE);
 		String[] deciderChoice = {
 				GemocModelLauncherConfigurationConstants.DECIDER_SOLVER_PROPOSITION,
-				GemocModelLauncherConfigurationConstants.DECIDER_RANDOM };
+				GemocModelLauncherConfigurationConstants.DECIDER_RANDOM,
+				GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER};
 		deciderCombo.setItems(deciderChoice);
 		deciderCombo.select(0);
 		deciderCombo.addModifyListener(fBasicModifyListener);

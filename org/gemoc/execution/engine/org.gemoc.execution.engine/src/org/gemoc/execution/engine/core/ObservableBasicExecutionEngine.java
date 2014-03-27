@@ -401,8 +401,12 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			// execution feedback is sent to the solver so it can take internal
 			// event into account
 
+			if (debugger != null) {
+				terminated = !debugger.control(Thread.currentThread().getName(), logicalStepToApply);
+			}
+
 			List<EngineEventOccurence> engineEventOccurences = new ArrayList<EngineEventOccurence>();
-			for(Event event : getTickedEvents(logicalStepToApply)){
+			for(Event event : LogicalStepHelper.getTickedEvents(logicalStepToApply)){
 			/*for (EventOccurrence eventOccurrence : logicalStepToApply
 					.getEventOccurrences()) {
 				if (eventOccurrence.getFState() == FiredStateKind.TICK
@@ -483,28 +487,6 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 	}
 
-	/**
-	 * 
-	 * @param logicalStep
-	 * @return the list of ModelElementReference of this LogicalStep that are Ticked and have a reference
-	 */
-	public static List<Event> getTickedEvents(LogicalStep logicalStep){
-		List<Event> result = new ArrayList<Event>();
-		for (EventOccurrence eventOccurrence : logicalStep
-				.getEventOccurrences()) {
-			if (eventOccurrence.getFState() == FiredStateKind.TICK
-					&& eventOccurrence.getReferedElement() != null) {
-				if (eventOccurrence.getReferedElement() instanceof ModelElementReference){
-					ModelElementReference mer = (ModelElementReference) eventOccurrence.getReferedElement();
-					if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
-						result.add((Event) mer.getElementRef().get(0));
-					}
-				}
-			}
-		}
-		return result;
-	}
-	
 	@Override
 	public String toString() {
 		return this.getClass().getName() + "@[Executor=" + this.executor

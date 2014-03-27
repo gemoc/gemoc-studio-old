@@ -68,7 +68,7 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	 * communication or the {@link fr.obeo.dsl.debug.ide.DSLDebugTargetAdapter target} for synchronous
 	 * communication.
 	 */
-	private final IDSLDebugEventProcessor target;
+	protected final IDSLDebugEventProcessor target;
 
 	/**
 	 * Tells if the debugger is terminated.
@@ -78,7 +78,7 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	/**
 	 * Thread name to current instruction. For check purpose only.
 	 */
-	private final Map<String, EObject> currentInstructions = new HashMap<String, EObject>();
+	protected final Map<String, EObject> currentInstructions = new HashMap<String, EObject>();
 
 	/**
 	 * Mapping form thread name to the thread controller.

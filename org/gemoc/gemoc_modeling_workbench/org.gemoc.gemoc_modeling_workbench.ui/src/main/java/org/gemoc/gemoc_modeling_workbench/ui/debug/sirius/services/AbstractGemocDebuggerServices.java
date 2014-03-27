@@ -27,8 +27,11 @@ import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.Layer;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncher;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
+import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.Thread;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
@@ -333,10 +336,10 @@ public abstract class AbstractGemocDebuggerServices {
 		public void currentInstructionChanged(String debugModelID, Thread thread) {
 			EObject currentInstruction = thread.getTopStackFrame().getCurrentInstruction();
 			final Set<URI> instructionURIs = new HashSet<URI>();
-			if (currentInstruction instanceof ModelSpecificEvent) {
-				for (ModelSpecificAction action : ((ModelSpecificEvent) currentInstruction).getModelSpecificActions()) {
-					if (action.getTarget() != null) {
-					instructionURIs.add(EcoreUtil.getURI(action.getTarget()));
+			if (currentInstruction instanceof LogicalStep) {
+				for (Event event : LogicalStepHelper.getTickedEvents((LogicalStep) currentInstruction)) {
+					if (event.getReferencedObjectRefs().size() != 0) {
+						instructionURIs.add(EcoreUtil.getURI(event.getReferencedObjectRefs().get(0)));
 					}
 				}
 			} else {

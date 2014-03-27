@@ -39,6 +39,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.deciders.RandomDecider;
+import org.gemoc.execution.engine.commons.deciders.UserDecider;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
@@ -295,6 +296,11 @@ public class GemocReflectiveModelLauncher
 		if (deciderName
 				.equals(GemocModelLauncherConfigurationConstants.DECIDER_RANDOM)) {
 			decider = new RandomDecider();
+		} else if (deciderName
+				.equals(GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER)) {
+			// use random as the only compatible decider
+			decider = new UserDecider();
+			
 		} else {
 			if (solver instanceof CcslSolver) {
 				// use solver proposition
