@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EOperation;
+import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
@@ -252,10 +253,17 @@ public class EnginesStatusView extends ViewPart implements Observer {
 							root.addChild(logicalStepTreeObject);
 							
 							// Add internal events
-							for(Event event : ObservableBasicExecutionEngine.getTickedEvents(logicalStep)){
+							for(Event event : LogicalStepHelper.getTickedEvents(logicalStep)){
 								TreeObject to = new TreeObject(event.getName(), event);
-								logicalStepTreeObject.addChild(to);								
+								logicalStepTreeObject.addChild(to);
+								// expand the added Logical step  (previously closed one, will remain closed)
+								//EnginesStatusView.this.viewer.getTree().indexOf(to);
+								EnginesStatusView.this.viewer.expandToLevel(to, TreeViewer.ALL_LEVELS); // doesn't work ?								
 							}
+							EnginesStatusView.this.viewer.expandToLevel(logicalStepTreeObject, 3);// doesn't work ?
+							// temp workaround for demo
+							EnginesStatusView.this.viewer.expandAll();
+							
 						}
 					}
 					
@@ -577,6 +585,8 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		    	  ISelection previousSelection = EnginesStatusView.this.viewer.getSelection();
 		    	  EnginesStatusView.this.viewer.refresh();
 		    	  EnginesStatusView.this.viewer.setSelection(previousSelection, true);
+		    	  EnginesStatusView.this.viewer.expandAll();
+		    	  //EnginesStatusView.this.viewer.expandAll();
 		    	  
 		      }
 		 });

@@ -12,7 +12,7 @@ public class SharedIcons {
 	public static ImageDescriptor LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/footprints-cat-16.png");
 	
 	public static ImageDescriptor VISIBLE_EVENT_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/visible-16.png");
-	
+		
 	static HashMap<ImageDescriptor, Image> imageMap = new HashMap<ImageDescriptor, Image>();
 	
 	static public Image getSharedImage(ImageDescriptor descriptor){
