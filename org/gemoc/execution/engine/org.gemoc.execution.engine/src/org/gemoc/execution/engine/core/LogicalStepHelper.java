@@ -3,6 +3,8 @@ package org.gemoc.execution.engine.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
@@ -33,6 +35,7 @@ public class LogicalStepHelper {
 	}
 
 	public static String getLogicalStepName(LogicalStep step) {
-		return step.toString();
+		//returns the emf id or the java id if the emf id is null
+		return "LogicalStep ["+(EcoreUtil.getID(step) !=  null ? EcoreUtil.getID(step):System.identityHashCode(step)) +"]";
 	}
 }

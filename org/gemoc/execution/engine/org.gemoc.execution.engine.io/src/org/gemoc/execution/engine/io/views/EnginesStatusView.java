@@ -249,7 +249,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					// current Logical Step
 					for(LogicalStep logicalStep : currentLogicalStepChoice){
 						if(!currentlyListedLogicalStep.contains(logicalStep)){
-							TreeParent logicalStepTreeObject = new TreeParent(logicalStep.toString(), logicalStep);
+							TreeParent logicalStepTreeObject = new TreeParent(LogicalStepHelper.getLogicalStepName(logicalStep), logicalStep);
 							root.addChild(logicalStepTreeObject);
 							
 							// Add internal events
