@@ -13,14 +13,19 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.part.*;
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.*;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.jface.action.*;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.util.SimpleAttributeResolver;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
@@ -279,6 +284,8 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
 
+		
+		
 		@Override
 		public Image getColumnImage(Object obj, int columnIndex) {
 			TreeObject treeObject = (TreeObject) obj;
@@ -338,11 +345,15 @@ public class EnginesStatusView extends ViewPart implements Observer {
 				if(treeObject.wrappedObject != null && treeObject.wrappedObject instanceof Event){
 					Event event = (Event)treeObject.wrappedObject;
 					if (event.getReferencedObjectRefs().size() == 2){
+						//String name = SimpleAttributeResolver.NAME_RESOLVER.apply(obj);
+						String metaClassName = event.getReferencedObjectRefs().get(0).eClass().getName();
+						String targetObjectNiceName = SimpleAttributeResolver.NAME_RESOLVER.apply(event.getReferencedObjectRefs().get(0));
 						if( event.getReferencedObjectRefs().get(1) instanceof EOperation) {
-							return  event.getReferencedObjectRefs().get(0)+"."+((EOperation)event.getReferencedObjectRefs().get(1)).getName();
+							String operationName = ((EOperation)event.getReferencedObjectRefs().get(1)).getName();
+							return String.format("%-12s: %s", metaClassName, targetObjectNiceName+"."+operationName+"()");
 						}
 						else{
-							return  event.getReferencedObjectRefs().get(0)+"."+event.getReferencedObjectRefs().get(1);
+							return   String.format("%-12s: %s", metaClassName, targetObjectNiceName+"."+event.getReferencedObjectRefs().get(1));
 						}
 					}
 					else{
@@ -361,6 +372,8 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	class NameSorter extends ViewerSorter {
 	}
 
+	
+	
 	/**
 	 * The constructor.
 	 */
@@ -382,8 +395,10 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		createColumns(viewer);
 		viewer.setColumnProperties( new String[] {"Identifier", "Step", "Status"} );
 		viewer.getTree().setHeaderVisible(true);
-		
+		Font mono = JFaceResources.getFont(JFaceResources.TEXT_FONT);
+		viewer.getTree().setFont(mono);
 		viewer.setInput(getViewSite());
+		
 		
 
 		// Create the help context id for the viewer's control
@@ -424,7 +439,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		column3.setResizable(true);
 		
 		TreeColumn column4 = new TreeColumn(viewer.getTree(), SWT.LEFT);
-		column4.setText("Status");
+		column4.setText("Details");
 		column4.setWidth(350);
 		column4.setResizable(true);
 	}
