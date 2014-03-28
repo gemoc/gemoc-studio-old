@@ -323,9 +323,10 @@ public class EnginesStatusView extends ViewPart implements Observer {
 				
 						return ""+((GemocExecutionEngine)treeObject.wrappedObject).getEngineStatus().getNbLogicalStepRun();
 					}
-					else if(treeObject.wrappedObject instanceof LogicalStep){
-						return "("+((LogicalStep)treeObject.wrappedObject).getStepNumber()+")";
-					} else return "";
+					//else if(treeObject.wrappedObject instanceof LogicalStep){
+					//	return "("+((LogicalStep)treeObject.wrappedObject).getStepNumber()+")";
+					//} 
+					else return "";
 				} else	return "";
 			case 2:
 				if(treeObject.wrappedObject != null && treeObject.wrappedObject instanceof GemocExecutionEngine){
