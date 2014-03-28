@@ -290,7 +290,7 @@ public interface IDSLDebugger extends IDSLDebugEventProcessor {
 	void variable(String threadName, String declarationTypeName, String name, Object value);
 
 	/**
-	 * Deletes the varaible with the givne name for the given thread.
+	 * Deletes the variable with the given name for the given thread.
 	 * 
 	 * @param threadName
 	 *            the thread name
