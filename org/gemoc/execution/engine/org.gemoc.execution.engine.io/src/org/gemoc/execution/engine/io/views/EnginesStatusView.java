@@ -356,6 +356,11 @@ public class EnginesStatusView extends ViewPart implements Observer {
 							return   String.format("%-12s: %s", metaClassName, targetObjectNiceName+"."+event.getReferencedObjectRefs().get(1));
 						}
 					}
+					else if (event.getReferencedObjectRefs().size() == 1){
+						String metaClassName = event.getReferencedObjectRefs().get(0).eClass().getName();
+						String targetObjectNiceName = SimpleAttributeResolver.NAME_RESOLVER.apply(event.getReferencedObjectRefs().get(0));
+						return String.format("%-12s: %s", metaClassName, targetObjectNiceName);
+					}
 					else{
 						return "";
 					}
