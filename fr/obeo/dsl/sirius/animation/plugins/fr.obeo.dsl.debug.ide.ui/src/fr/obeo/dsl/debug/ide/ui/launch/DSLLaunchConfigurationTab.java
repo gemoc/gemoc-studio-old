@@ -76,7 +76,7 @@ public class DSLLaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 	/**
 	 * Disable the update.
 	 */
-	private boolean disableUpdate;
+	protected boolean disableUpdate;
 
 	/**
 	 * Supported {@link org.eclipse.core.resources.IResource IResource} extensions.
