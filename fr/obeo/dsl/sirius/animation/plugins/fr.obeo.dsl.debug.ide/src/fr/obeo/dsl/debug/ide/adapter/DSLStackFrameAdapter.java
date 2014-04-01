@@ -40,6 +40,11 @@ import org.eclipse.emf.ecore.EObject;
 public class DSLStackFrameAdapter extends AbstractDSLDebugElementAdapter implements IStackFrame {
 
 	/**
+	 * The {@link IThread} containing this {@link IStackFrame}. Needed after popping the stack.
+	 */
+	private IThread thread;
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param factory
@@ -190,12 +195,13 @@ public class DSLStackFrameAdapter extends AbstractDSLDebugElementAdapter impleme
 	 * @see org.eclipse.debug.core.model.IStackFrame#getThread()
 	 */
 	public IThread getThread() {
-		final IThread res = (IThread)factory.adapt(ThreadUtils.getThread(getHost()), IThread.class);
-
-		if (res == null) {
-			throw new IllegalStateException("can't addapt Thread to IThread.");
+		if (thread == null) {
+			thread = (IThread)factory.adapt(ThreadUtils.getThread(getHost()), IThread.class);
+			if (thread == null) {
+				throw new IllegalStateException("can't addapt Thread to IThread.");
+			}
 		}
-		return res;
+		return thread;
 	}
 
 	/**
