@@ -1,6 +1,7 @@
 package org.gemoc.execution.engine.core.impl;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 
@@ -11,14 +12,36 @@ import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
 public class GemocModelDebugger extends AbstractDSLDebugger {
 
+	/**
+	 * A fake instruction to prevent the stepping return to stop on each event.
+	 */
+	private static final EObject FAKE_INSTRUCTION = EcorePackage.eINSTANCE;
+
+	/**
+	 * The {@link ObservableBasicExecutionEngine} to debug.
+	 */
 	private final ObservableBasicExecutionEngine engine;
 
+	/**
+	 * Tells if the logical step level stack frame is created.
+	 */
 	private boolean frameCreated;
 
+	/**
+	 * Tells if the event level stack frame is created.
+	 */
 	private boolean stepIntoFrameCreated;
 
+	/**
+	 * Tells if we are stepping at the event level.
+	 */
 	private boolean steppingInto;
 
+	/**
+	 * Tells if we are stepping from the event level to the next logical step.
+	 */
+	private boolean steppingReturn;
+	
 	public GemocModelDebugger(IDSLDebugEventProcessor target, ObservableBasicExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
@@ -47,16 +70,18 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 			pushStackFrame(threadName, LogicalStepHelper.getLogicalStepName((LogicalStep) instruction), instruction, instruction);
 			frameCreated = true;
 		} else {
-//			if (steppingInto && !stepIntoFrameCreated) {
-//				pushStackFrame(threadName, instruction.toString(), instruction, instruction);
-//				stepIntoFrameCreated = true;
-//			} else {
-//				if (stepIntoFrameCreated) {
-//					popStackFrame(threadName);
-//					stepIntoFrameCreated = false;
-//				}
-				setCurrentInstruction(threadName, instruction);
-//			}
+			if (steppingInto) {
+				if (!stepIntoFrameCreated) {
+					pushStackFrame(threadName, instruction.toString(), instruction, instruction);
+					stepIntoFrameCreated = true;
+				}
+			} else {
+				if (stepIntoFrameCreated) {
+					popStackFrame(threadName);
+					stepIntoFrameCreated = false;
+				}
+			}
+			setCurrentInstruction(threadName, instruction);
 		}
 
 		// TODO populate variables...
@@ -64,17 +89,21 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 		// instruction);
 	}
 
-
 	@Override
 	public boolean shouldBreak(EObject instruction) {
 		boolean res = false;
 		if (instruction instanceof LogicalStep) {
 			steppingInto = false;
-			for (Event event : LogicalStepHelper.getTickedEvents((LogicalStep) instruction)) {
-				if (event.getReferencedObjectRefs().size() != 0) {
-					res = super.shouldBreak(event.getReferencedObjectRefs().get(0));
-					if (res) {
-						break;
+			if (steppingReturn) {
+				steppingReturn = false;
+				res = true;
+			} else {
+				for (Event event : LogicalStepHelper.getTickedEvents((LogicalStep) instruction)) {
+					if (event.getReferencedObjectRefs().size() != 0) {
+						res = super.shouldBreak(event.getReferencedObjectRefs().get(0));
+						if (res) {
+							break;
+						}
 					}
 				}
 			}
@@ -91,6 +120,12 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 	}
 
 	@Override
+	public void steppingReturn(String threadName) {
+		super.steppingReturn(threadName);
+		steppingReturn = true;
+	}
+
+	@Override
 	public boolean control(String threadName, EObject instruction) {
 		final boolean res;
 
@@ -103,4 +138,15 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 		return res;
 	}
 
+	@Override
+	public EObject getNextInstruction(String threadName, EObject currentInstruction, Stepping stepping) {
+		final EObject res;
+		if (stepping == Stepping.STEP_RETURN) {
+			res = FAKE_INSTRUCTION;
+		} else {
+			res= super.getNextInstruction(threadName, currentInstruction, stepping);
+		}
+		return res;
+	}
+	
 }
