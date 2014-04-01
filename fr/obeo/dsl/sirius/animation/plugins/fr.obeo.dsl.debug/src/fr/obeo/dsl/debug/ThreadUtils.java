@@ -531,7 +531,7 @@ public final class ThreadUtils {
 
 		EObject current = frame.eContainer();
 		while (current instanceof StackFrame) {
-			current = frame.eContainer();
+			current = current.eContainer();
 		}
 
 		if (current instanceof Thread) {

@@ -27,6 +27,7 @@ import fr.obeo.dsl.debug.ThreadUtils;
 import fr.obeo.dsl.debug.Variable;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Test;
 
@@ -3997,6 +3998,194 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 		assertEquals(false, ThreadUtils.isStepping(target.getThreads().get(suspendingThreadIndex)));
 		assertEquals(false, ThreadUtils.isStepping(target.getThreads().get(terminatedThreadIndex)));
 		assertEquals(false, ThreadUtils.isStepping(target.getThreads().get(terminatingThreadIndex)));
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#isSuspended(Thread)} in {@link DebugTargetState#TERMINATING}.
+	 */
+	@Test
+	public void isSuspendedDebugTargetTerminating() {
+		final DebugTarget target = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
+		target.setContext(DebugPackage.eINSTANCE.getDebugFactory().createVariable());
+		target.setName("target");
+		target.setState(DebugTargetState.TERMINATING);
+		createThreads(target);
+
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(runningThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingIntoThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingOverThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingReturnThreadIndex)));
+		assertEquals(true, ThreadUtils.isSuspended(target.getThreads().get(suspendedThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(suspendingThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(terminatedThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(terminatingThreadIndex)));
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#isSuspended(Thread)} in {@link DebugTargetState#TERMINATING}.
+	 */
+	@Test
+	public void isSuspendedDebugTargetTerminated() {
+		final DebugTarget target = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
+		target.setContext(DebugPackage.eINSTANCE.getDebugFactory().createVariable());
+		target.setName("target");
+		target.setState(DebugTargetState.TERMINATED);
+		createThreads(target);
+
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(runningThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingIntoThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingOverThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingReturnThreadIndex)));
+		assertEquals(true, ThreadUtils.isSuspended(target.getThreads().get(suspendedThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(suspendingThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(terminatedThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(terminatingThreadIndex)));
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#isSuspended(Thread)} in {@link DebugTargetState#DISCONNECTED}.
+	 */
+	@Test
+	public void isSuspendedDebugTargetDisconnnected() {
+		final DebugTarget target = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
+		target.setContext(DebugPackage.eINSTANCE.getDebugFactory().createVariable());
+		target.setName("target");
+		target.setState(DebugTargetState.DISCONNECTED);
+		createThreads(target);
+
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(runningThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingIntoThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingOverThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingReturnThreadIndex)));
+		assertEquals(true, ThreadUtils.isSuspended(target.getThreads().get(suspendedThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(suspendingThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(terminatedThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(terminatingThreadIndex)));
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#isSuspended(Thread)} in {@link DebugTargetState#CONNECTED}.
+	 */
+	@Test
+	public void isSuspendedDebugTargetConnnected() {
+		final DebugTarget target = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
+		target.setContext(DebugPackage.eINSTANCE.getDebugFactory().createVariable());
+		target.setName("target");
+		target.setState(DebugTargetState.CONNECTED);
+		createThreads(target);
+
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(runningThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingIntoThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingOverThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(steppingReturnThreadIndex)));
+		assertEquals(true, ThreadUtils.isSuspended(target.getThreads().get(suspendedThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(suspendingThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(terminatedThreadIndex)));
+		assertEquals(false, ThreadUtils.isSuspended(target.getThreads().get(terminatingThreadIndex)));
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#getThread(StackFrame)}.
+	 */
+	@Test
+	public void getThreadNoContainer() {
+		final StackFrame frame = DebugPackage.eINSTANCE.getDebugFactory().createStackFrame();
+		frame.setName("frame");
+
+		assertEquals(null, ThreadUtils.getThread(frame));
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#getThread(StackFrame)}.
+	 */
+	@Test
+	public void getThreadThreadContainer() {
+		final Thread thread = DebugPackage.eINSTANCE.getDebugFactory().createThread();
+		thread.setName("thread");
+		final StackFrame frame = DebugPackage.eINSTANCE.getDebugFactory().createStackFrame();
+		frame.setName("frame");
+		thread.setBottomStackFrame(frame);
+		thread.setTopStackFrame(frame);
+
+		assertEquals(thread, ThreadUtils.getThread(frame));
+
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#getThread(StackFrame)}.
+	 */
+	@Test
+	public void getThreadFrameContainerNoThread() {
+		final StackFrame containingFrame = DebugPackage.eINSTANCE.getDebugFactory().createStackFrame();
+		containingFrame.setName("containingFrame");
+		final StackFrame frame = DebugPackage.eINSTANCE.getDebugFactory().createStackFrame();
+		frame.setName("frame");
+		containingFrame.setChildFrame(frame);
+
+		assertEquals(null, ThreadUtils.getThread(frame));
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#getThread(StackFrame)}.
+	 */
+	@Test
+	public void getThreadFrameContainer() {
+		final Thread thread = DebugPackage.eINSTANCE.getDebugFactory().createThread();
+		thread.setName("thread");
+		final StackFrame containingFrame = DebugPackage.eINSTANCE.getDebugFactory().createStackFrame();
+		containingFrame.setName("containingFrame");
+		final StackFrame frame = DebugPackage.eINSTANCE.getDebugFactory().createStackFrame();
+		frame.setName("frame");
+		thread.setBottomStackFrame(containingFrame);
+		thread.setTopStackFrame(containingFrame);
+		containingFrame.setChildFrame(frame);
+
+		assertEquals(thread, ThreadUtils.getThread(frame));
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#setCurrentInstructionReply(Thread, EObject, boolean)}.
+	 */
+	@Test(expected = NullPointerException.class)
+	public void setCurrentInstructionReplyNullThread() {
+		ThreadUtils.setCurrentInstructionReply(null, EcorePackage.eINSTANCE, true);
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#setCurrentInstructionReply(Thread, EObject, boolean)}.
+	 */
+	@Test
+	public void setCurrentInstructionReplyNoStackFrame() {
+		final Thread thread = DebugPackage.eINSTANCE.getDebugFactory().createThread();
+		thread.setName("thread");
+
+		try {
+			ThreadUtils.setCurrentInstructionReply(thread, EcorePackage.eINSTANCE, true);
+			fail();
+		} catch (IllegalStateException e) {
+			assertEquals("can't set current instrcution when there is no top stack frame.", e.getMessage());
+		}
+	}
+
+	/**
+	 * Tests {@link ThreadUtils#setCurrentInstructionReply(Thread, EObject, boolean)}.
+	 */
+	@Test
+	public void setCurrentInstructionReply() {
+		final Thread thread = DebugPackage.eINSTANCE.getDebugFactory().createThread();
+		thread.setName("thread");
+		final StackFrame frame = DebugPackage.eINSTANCE.getDebugFactory().createStackFrame();
+		frame.setName("frame");
+		frame.setContext(EcorePackage.eINSTANCE);
+		frame.setCurrentInstruction(null);
+		frame.setCanStepIntoCurrentInstruction(false);
+		thread.setBottomStackFrame(frame);
+		thread.setTopStackFrame(frame);
+
+		ThreadUtils.setCurrentInstructionReply(thread, EcorePackage.eINSTANCE, true);
+
+		assertEquals(EcorePackage.eINSTANCE, thread.getTopStackFrame().getCurrentInstruction());
+		assertEquals(true, thread.getTopStackFrame().isCanStepIntoCurrentInstruction());
 	}
 
 }
