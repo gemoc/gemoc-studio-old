@@ -23,14 +23,14 @@ public class TFSMExampleWizard
 		// We need the statements example to be unzipped along with the
 		// EMF library example model, edit and editor examples
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.design.zip", "org.gemoc.sample.tfsm.design"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.eclmoc2as.zip", "org.gemoc.sample.tfsm.eclmoc2as"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.k3dsa.zip", "org.gemoc.sample.tfsm.k3dsa"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.moc.lib.zip", "org.gemoc.sample.tfsm.moc.lib"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.model.zip", "org.gemoc.sample.tfsm.model"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.model.edit.zip", "org.gemoc.sample.tfsm.model.edit"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.model.editor.zip", "org.gemoc.sample.tfsm.model.editor"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.ccslmoc.zip", "org.gemoc.sample.tfsm.ccslmoc"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.k3dsa.zip", "org.gemoc.sample.tfsm.k3dsa"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.ecldse.zip", "org.gemoc.sample.tfsm.ecldse"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.design.zip", "org.gemoc.sample.tfsm.design"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.zip", "org.gemoc.sample.tfsm"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.xdsml.zip", "org.gemoc.sample.tfsm.xdsml"));
 		return projects;
 	}
 

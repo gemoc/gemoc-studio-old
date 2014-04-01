@@ -23,6 +23,19 @@
             T⁮his project contains some TFSM models that can be executed if you have installed the TFSM language.
          </description>
       </wizard>      
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
+            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.SDFExampleWizard"
+            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.gemoc_modeling_workbench.sample.deployer.sdf.model.wizard"
+            name="SDF"
+            preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
+         <description>
+            T⁮his project contains some SDF models that can be executed if you have installed the SDF language.
+         </description>
+      </wizard>      
    </extension>
  
 </plugin>

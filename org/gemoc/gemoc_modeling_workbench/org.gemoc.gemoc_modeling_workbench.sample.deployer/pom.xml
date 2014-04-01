@@ -2,6 +2,12 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <sample_root>${basedir}/../../sample</sample_root>
+        <tfsm_sample_modeling_root>${basedir}/../../sample/TFSM_GEMOC/modeling_workbench</tfsm_sample_modeling_root>
+        <sdf_sample_modeling_root>${basedir}/../../sample/SDF_archi/modeling_workbench</sdf_sample_modeling_root>
+    </properties>
+    
 	<parent>
 		<relativePath>../org.gemoc.gemoc_modeling_workbench.root/pom.xml</relativePath>
 		<groupId>org.gemoc.gemoc_modeling_workbench</groupId>
@@ -27,9 +33,17 @@
 							<tasks>
 								<mkdir dir="${basedir}/zips" />
 								
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.traffic_light_example_model.zip">
-									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm.traffic_light_example_model/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.single_traffic_light_sample.zip">
+									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.single_traffic_light_sample/" />
 								</zip>
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample.zip">
+									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample/" />
+								</zip>
+
+								<zip destfile="${basedir}/zips/fr.inria.aoste.gemoc.examples.zip">
+									<fileset dir="${sdf_sample_modeling_root}/fr.inria.aoste.gemoc.examples/" />
+								</zip>
+
 							</tasks>
 						</configuration>
 					</execution>

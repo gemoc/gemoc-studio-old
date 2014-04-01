@@ -2,6 +2,12 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <sample_root>${basedir}/../../sample</sample_root>
+        <tfsm_sample_language_root>${basedir}/../../sample/TFSM_GEMOC/language_workbench</tfsm_sample_language_root>
+        <sdf_sample_language_root>${basedir}/../../sample/SDF_archi/language_workbench</sdf_sample_language_root>
+    </properties>
+    
 	<parent>
 		<relativePath>../org.gemoc.gemoc_language_workbench.root/pom.xml</relativePath>
 		<groupId>org.gemoc.gemoc_language_workbench</groupId>
@@ -27,30 +33,64 @@
 							<tasks>
 								<mkdir dir="${basedir}/zips" />
 								
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.zip">
-									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm/" />
+								<!-- TFSM  -->
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.design.zip">
+									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.design/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.model.zip">
-									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm.model/" />
-								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.model.edit.zip">
-									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm.model.edit/" />
-								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.model.editor.zip">
-									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm.model.editor/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.eclmoc2as.zip">
+									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.eclmoc2as/" />
 								</zip>
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.k3dsa.zip">
-									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm.k3dsa/" />
+									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.k3dsa/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.ecldse.zip">
-									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm.ecldse/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.moc.lib.zip">
+									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.moc.lib/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.ccslmoc.zip">
-									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm.ccslmoc/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.model.zip">
+									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.model/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.design.zip">
-									<fileset dir="${basedir}/../../sample/tfsm_k3/org.gemoc.sample.tfsm.design/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.model.edit.zip">
+									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.model.edit/" />
 								</zip>
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.model.editor.zip">
+									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.model.editor/" />
+								</zip>
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.xdsml.zip">
+									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.xdsml/" />
+								</zip>
+
+								<!-- SDF -->
+								<zip destfile="${basedir}/zips/fr.cnrs.luchogie.ultimateplotter.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.cnrs.luchogie.ultimateplotter/" />
+								</zip>
+								<zip destfile="${basedir}/zips/fr.inria.aoste.hope.sdf.concrete.design.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.inria.aoste.hope.sdf.concrete.design/" />
+								</zip>
+								<zip destfile="${basedir}/zips/fr.inria.aoste.hope.sdf.k3dsa.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.inria.aoste.hope.sdf.k3dsa/" />
+								</zip>
+								<zip destfile="${basedir}/zips/fr.inria.aoste.hope.sdf.moc.application.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.inria.aoste.hope.sdf.moc.application/" />
+								</zip>
+								<zip destfile="${basedir}/zips/fr.inria.aoste.hope.sdf.moc.lib.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.inria.aoste.hope.sdf.moc.lib/" />
+								</zip>
+								<zip destfile="${basedir}/zips/fr.inria.aoste.hope.sdf.model.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.inria.aoste.hope.sdf.model/" />
+								</zip>
+								<zip destfile="${basedir}/zips/fr.inria.aoste.hope.sdf.model.edit.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.inria.aoste.hope.sdf.model.edit/" />
+								</zip>
+								<zip destfile="${basedir}/zips/fr.inria.aoste.hope.sdf.model.editor.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.inria.aoste.hope.sdf.model.editor/" />
+								</zip>
+								<zip destfile="${basedir}/zips/fr.inria.aoste.hope.sdf.model.tests.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.inria.aoste.hope.sdf.model.tests/" />
+								</zip>
+								<zip destfile="${basedir}/zips/fr.inria.aoste.hope.sdf.xdsml.zip">
+									<fileset dir="${sdf_sample_language_root}/fr.inria.aoste.hope.sdf.xdsml/" />
+								</zip>
+								
 							</tasks>
 						</configuration>
 					</execution>

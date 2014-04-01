@@ -23,6 +23,19 @@
             T⁮his set of projects feature a simple Timed finite state machine language which is made executable using Gemoc.
          </description>
       </wizard>      
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
+            class="org.gemoc.gemoc_language_workbench.sample.deployer.wizards.SDFExampleWizard"
+            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            icon="icons/IconeGemocLanguage-16.png"
+            id="org.gemoc.gemoc_language_workbench.sample.deployer.sdf.wizard"
+            name="Gemoc SDF Language example"
+            preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling,fr.obeo.dsl.viewpoint.ui.tools.perspective.design">
+         <description>
+??????????????????????
+         </description>
+      </wizard>      
    </extension>
  
 </plugin>
