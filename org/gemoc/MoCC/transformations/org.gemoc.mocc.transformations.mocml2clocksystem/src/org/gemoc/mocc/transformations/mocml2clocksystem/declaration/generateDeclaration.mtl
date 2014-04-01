@@ -1,0 +1,59 @@
+[comment encoding = UTF-8 /]
+[module generateDeclaration('http://org.gemoc.mocc.ccslmocc/1.0','http://fr.inria.aoste.timemodel','http://org.gemoc.mocc.fsmmodel/1.0')]
+
+[import org::gemoc::mocc::transformations::mocml2clocksystem::services::javaservices /] 
+
+[template public generateElement(aStateRelationBasedLibrary : StateRelationBasedLibrary)]
+[comment @main/]
+[for (rl : RelationLibrary | aStateRelationBasedLibrary.oclAsType(Library).relationLibraries)]
+	[for (rd : RelationDefinition | rl.relationDefinitions)]
+		[if (rd.oclIsTypeOf(StateMachineRelationDefinition))]
+			[file (rd.oclAsType(NamedElement).name+'_declaration.clocksystem', false, 'UTF-8')]
+[if (rd.oclAsType(StateMachineRelationDefinition).declarationBlock->size()<>0)]
+ |	[for (cr : ClockExpressionAndRelation::ConcreteEntity | rd.oclAsType(StateMachineRelationDefinition).declarationBlock.concreteEntities)]
+ 	[cr.name/] 
+ [/for]	
+    [for (cl : ClassicalExpression::ClassicalExpression | rd.oclAsType(StateMachineRelationDefinition).declarationBlock.classicalExpressions)]
+ 	[if (cl.oclIsTypeOf(BooleanExpression))]
+ 		[cl.oclAsType(BooleanExpression).name/][comment : voir s'il faut plus que le nom, l'expression.../]
+ 	[/if]
+ [/for]	
+ |
+[/if]
+system := ClockSystem named: '[rd.oclAsType(NamedElement).name/]'.
+
+[for (ae : ClockExpressionAndRelation::AbstractEntity | rd.oclAsType(StateMachineRelationDefinition).declaration.parameters)]
+[if (ae.type.oclIsTypeOf(DenseClockType) or ae.type.oclIsTypeOf(DiscreteClockType))]
+	[ae.name/] := system clock: #clk_$[ae.name/].
+[/if]
+[/for]
+
+	
+[for (s : FSMModel::State | rd.oclAsType(StateMachineRelationDefinition).states)]
+	[if ((s.inputTransitions<>null)and(s.outputTransitions<>null))]
+		[for (it : FSMModel::Transition | s.inputTransitions)]
+			[for (ot : FSMModel::Transition | s.outputTransitions)] 
+[if ((it.trigger<>null)and (ot.trigger<>null))]
+	[if ((it.trigger.oclAsType(Trigger).trueTriggers->size()=1)and (ot.trigger.oclAsType(Trigger).trueTriggers->size()=1))]
+		[it.trigger.oclAsType(Trigger).trueTriggers.name->first()/] < [ot.trigger.oclAsType(Trigger).trueTriggers.name->first()/].
+	[/if]
+	[if ((it.trigger.oclAsType(Trigger).trueTriggers->size()>1)and (ot.trigger.oclAsType(Trigger).trueTriggers->size()=1))]
+		[it.trigger.oclAsType(FSMModel::Trigger).basicConstraints(ot.trigger.oclAsType(FSMModel::Trigger))/]
+		[it.trigger.oclAsType(FSMModel::Trigger).trueTriggers.name->first()/] [ot.trigger.oclAsType(FSMModel::Trigger).trueTriggers.name->first()/].
+	[/if]
+	[if ((it.trigger.oclAsType(Trigger).trueTriggers->size()=1)and (ot.trigger.oclAsType(Trigger).trueTriggers->size()>1))]
+		[ot.trigger.oclAsType(FSMModel::Trigger).basicConstraints(it.trigger.oclAsType(FSMModel::Trigger))/]
+		[it.trigger.oclAsType(FSMModel::Trigger).trueTriggers.name->first()/] [ot.trigger.oclAsType(FSMModel::Trigger).trueTriggers.name->first()/].
+	[/if]
+[/if]		
+		    [/for]
+		[/for]
+	[/if]
+[/for]
+
+			[/file]
+		[/if]
+	[/for]
+[/for]
+
+[/template]

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<!--
+ Copyright (c) 2012-2016 GEMOC consortium.
+ 
+ http://www.gemoc.org
+ 
+ Contributors:
+   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
+   
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+   
+ $Id$
+-->
+
+
+<plugin>
+   <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.mocdsl"
+            id="org.gemoc.mocc.transformations.mocml2clocksystem.ui.popupMenus.contribution.IFile">
+         <menu id="org.gemoc.menu.mocc" label="MoCML" path="additions">
+               <groupMarker name="group1"/> 
+         </menu>
+         <action
+               class="org.gemoc.mocc.transformations.mocml2clocksystem.ui.popupMenus.AcceleoGenerateMoCml2ClockSystemAction"
+               enablesFor="+"
+               id="org.gemoc.mocc.transformations.mocml2clocksystem.ui.popupMenus.acceleoGenerateMoCml2ClockSystemAction"
+               icon="icons/default.gif"
+               label="Translate to ClockSystem Files"
+               menubarPath="org.gemoc.menu.mocc/group1"/>
+      </objectContribution>
+   </extension>
+</plugin>

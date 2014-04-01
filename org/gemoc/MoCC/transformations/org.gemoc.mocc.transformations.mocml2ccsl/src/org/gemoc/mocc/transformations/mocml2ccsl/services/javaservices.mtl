@@ -1,7 +1,0 @@
-[comment encoding = Cp1252 /]
-[module javaservices('http://org.gemoc.mocc.cometafsm/1.0')/]
-
-[query public basicConstraints(arg0 : Trigger) : String
-	= invoke('org.gemoc.mocc.transformations.mocml2ccsl.services.Services', 'basicConstraints(org.gemoc.mocc.cometafsm.model.cometafsm.Trigger)', Sequence{arg0})
-/]
-
