@@ -235,6 +235,13 @@ public class GemocReflectiveModelLauncher
 								+ " isn't set", Activator.PLUGIN_ID);
 			}*/
 		}
+		else{
+			Activator
+			.getDefault()
+			.getMessaggingSystem()
+			.error("Cannot find xdsml definition for the language "+languageName+", please verify that is is correctly deployed.", Activator.PLUGIN_ID);
+			Activator.error("Cannot find xdsml definition for the language "+languageName+", please verify that is is correctly deployed", new NullPointerException("Cannot find xdsml definition for the language "));
+		}
 
 		// Ugly calls to check if all the elements have been provided as
 		// required.
