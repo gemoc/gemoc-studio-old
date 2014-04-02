@@ -48,115 +48,108 @@ protected class ThisRootNode extends RootToken {
 			case 15: return new UnaryIntegerExpression_Alternatives(this, this, 15, inst);
 			case 16: return new IntEqual_Alternatives(this, this, 16, inst);
 			case 17: return new BooleanRef_Alternatives(this, this, 17, inst);
-			case 18: return new RealRef_Alternatives(this, this, 18, inst);
-			case 19: return new IntegerRef_Alternatives(this, this, 19, inst);
-			case 20: return new UnaryRealPlus_Alternatives(this, this, 20, inst);
-			case 21: return new UnaryRealMinus_Alternatives(this, this, 21, inst);
-			case 22: return new RealPlus_Alternatives(this, this, 22, inst);
-			case 23: return new RealMinus_Alternatives(this, this, 23, inst);
-			case 24: return new RealMultiply_Alternatives(this, this, 24, inst);
-			case 25: return new UnaryIntPlus_Alternatives(this, this, 25, inst);
-			case 26: return new UnaryIntMinus_Alternatives(this, this, 26, inst);
-			case 27: return new IntPlus_Alternatives(this, this, 27, inst);
-			case 28: return new IntMinus_Alternatives(this, this, 28, inst);
-			case 29: return new IntMultiply_Alternatives(this, this, 29, inst);
-			case 30: return new IntDivide_Alternatives(this, this, 30, inst);
-			case 31: return new Not_Alternatives(this, this, 31, inst);
-			case 32: return new And_Group(this, this, 32, inst);
-			case 33: return new Or_Group(this, this, 33, inst);
-			case 34: return new Xor_Group(this, this, 34, inst);
-			case 35: return new RealEqual_Alternatives(this, this, 35, inst);
-			case 36: return new RealInf_Alternatives(this, this, 36, inst);
-			case 37: return new RealSup_Alternatives(this, this, 37, inst);
-			case 38: return new IntInf_Alternatives(this, this, 38, inst);
-			case 39: return new IntSup_Alternatives(this, this, 39, inst);
-			case 40: return new SeqIsEmpty_Group(this, this, 40, inst);
-			case 41: return new SeqGetTail_Group(this, this, 41, inst);
-			case 42: return new SeqGetHead_Group(this, this, 42, inst);
-			case 43: return new SeqDecr_Group(this, this, 43, inst);
-			case 44: return new SeqSched_Group(this, this, 44, inst);
-			case 45: return new BooleanExpression_Alternatives(this, this, 45, inst);
-			case 46: return new RealSupEqual_Alternatives(this, this, 46, inst);
-			case 47: return new RealInfEqual_Alternatives(this, this, 47, inst);
-			case 48: return new IntSupEqual_Alternatives(this, this, 48, inst);
-			case 49: return new IntInfEqual_Alternatives(this, this, 49, inst);
-			case 50: return new ClassicalExpression0_Alternatives(this, this, 50, inst);
-			case 51: return new RealExpression_Alternatives(this, this, 51, inst);
-			case 52: return new BinaryRealExpression_Alternatives(this, this, 52, inst);
-			case 53: return new UnaryRealExpression_Alternatives(this, this, 53, inst);
-			case 54: return new RealSelfPlusAssign_Group(this, this, 54, inst);
-			case 55: return new RealSelfMinusAssign_Group(this, this, 55, inst);
-			case 56: return new RealSelfMultAssign_Group(this, this, 56, inst);
-			case 57: return new Library_Group(this, this, 57, inst);
-			case 58: return new ImportStatement_Group(this, this, 58, inst);
-			case 59: return new ExpressionLibrary_Group(this, this, 59, inst);
-			case 60: return new RelationLibrary_Group(this, this, 60, inst);
-			case 61: return new ExpressionDeclaration_Group(this, this, 61, inst);
-			case 62: return new RelationDeclaration_Group(this, this, 62, inst);
-			case 63: return new UserExpressionDefinition_Impl_Group(this, this, 63, inst);
-			case 64: return new ConditionalExpressionDefinition_Group(this, this, 64, inst);
-			case 65: return new ExternalExpressionDefinition_Group(this, this, 65, inst);
-			case 66: return new ConditionalRelationDefinition_Group(this, this, 66, inst);
-			case 67: return new ExternalRelationDefinition_Group(this, this, 67, inst);
-			case 68: return new Relation_Group(this, this, 68, inst);
-			case 69: return new Expression_Group(this, this, 69, inst);
-			case 70: return new Binding_Group(this, this, 70, inst);
-			case 71: return new Clock_Group(this, this, 71, inst);
-			case 72: return new Type_Alternatives(this, this, 72, inst);
-			case 73: return new ExpressionDefinition_Alternatives(this, this, 73, inst);
-			case 74: return new Element_Alternatives(this, this, 74, inst);
-			case 75: return new RelationDefinition_Alternatives(this, this, 75, inst);
-			case 76: return new ExprCase_Group(this, this, 76, inst);
-			case 77: return new RelCase_Group(this, this, 77, inst);
-			case 78: return new UserRelationDefinition_Impl_Group(this, this, 78, inst);
-			case 79: return new ConcreteEntity_Alternatives(this, this, 79, inst);
-			case 80: return new BindableEntity_Alternatives(this, this, 80, inst);
-			case 81: return new SeqExpression_Alternatives(this, this, 81, inst);
-			case 82: return new PrimitiveElement_Alternatives(this, this, 82, inst);
-			case 83: return new PrimitiveType_Alternatives(this, this, 83, inst);
-			case 84: return new KernelExpressionDecl_Alternatives(this, this, 84, inst);
-			case 85: return new KernelRelationDecl_Alternatives(this, this, 85, inst);
-			case 86: return new AbstractEntity_Group(this, this, 86, inst);
-			case 87: return new BooleanVariableRef_Group(this, this, 87, inst);
-			case 88: return new IntegerVariableRef_Group(this, this, 88, inst);
-			case 89: return new RealVariableRef_Group(this, this, 89, inst);
-			case 90: return new NumberSeqRef_Group(this, this, 90, inst);
-			case 91: return new NumberSeqVariableRef_Group(this, this, 91, inst);
-			case 92: return new RealElement_Group(this, this, 92, inst);
-			case 93: return new IntegerElement_Alternatives(this, this, 93, inst);
-			case 94: return new BooleanElement_Group(this, this, 94, inst);
-			case 95: return new SequenceElement_Group(this, this, 95, inst);
-			case 96: return new StringElement_Group(this, this, 96, inst);
-			case 97: return new RecordElement_Group(this, this, 97, inst);
-			case 98: return new Box_Group(this, this, 98, inst);
-			case 99: return new String1_Group(this, this, 99, inst);
-			case 100: return new Boolean_Group(this, this, 100, inst);
-			case 101: return new Integer_Group(this, this, 101, inst);
-			case 102: return new Real_Group(this, this, 102, inst);
-			case 103: return new Char_Group(this, this, 103, inst);
-			case 104: return new Record_Group(this, this, 104, inst);
-			case 105: return new SequenceType_Group(this, this, 105, inst);
-			case 106: return new DiscreteClockType_Impl_Group(this, this, 106, inst);
-			case 107: return new DenseClockType_Group(this, this, 107, inst);
-			case 108: return new EnumerationType_Group(this, this, 108, inst);
-			case 109: return new Field_Group(this, this, 109, inst);
-			case 110: return new SubClock_Group(this, this, 110, inst);
-			case 111: return new Coincidence_Group(this, this, 111, inst);
-			case 112: return new Exclusion_Group(this, this, 112, inst);
-			case 113: return new Precedence_Group(this, this, 113, inst);
-			case 114: return new NonStrictPrecedence_Group(this, this, 114, inst);
-			case 115: return new UpTo_Group(this, this, 115, inst);
-			case 116: return new Defer_Group(this, this, 116, inst);
-			case 117: return new StrictSampling_Group(this, this, 117, inst);
-			case 118: return new Concatenation_Group(this, this, 118, inst);
-			case 119: return new Union_Group(this, this, 119, inst);
-			case 120: return new Intersection_Group(this, this, 120, inst);
-			case 121: return new Sup_Group(this, this, 121, inst);
-			case 122: return new Inf_Group(this, this, 122, inst);
-			case 123: return new NonStrictSampling_Group(this, this, 123, inst);
-			case 124: return new Wait_Group(this, this, 124, inst);
-			case 125: return new Discretization_Group(this, this, 125, inst);
-			case 126: return new Death_Group(this, this, 126, inst);
+			case 18: return new IntegerRef_Alternatives(this, this, 18, inst);
+			case 19: return new UnaryIntPlus_Alternatives(this, this, 19, inst);
+			case 20: return new UnaryIntMinus_Alternatives(this, this, 20, inst);
+			case 21: return new IntPlus_Alternatives(this, this, 21, inst);
+			case 22: return new IntMinus_Alternatives(this, this, 22, inst);
+			case 23: return new IntMultiply_Alternatives(this, this, 23, inst);
+			case 24: return new IntDivide_Alternatives(this, this, 24, inst);
+			case 25: return new Not_Alternatives(this, this, 25, inst);
+			case 26: return new And_Group(this, this, 26, inst);
+			case 27: return new Or_Group(this, this, 27, inst);
+			case 28: return new Xor_Group(this, this, 28, inst);
+			case 29: return new IntInf_Alternatives(this, this, 29, inst);
+			case 30: return new IntSup_Alternatives(this, this, 30, inst);
+			case 31: return new SeqIsEmpty_Group(this, this, 31, inst);
+			case 32: return new SeqGetTail_Group(this, this, 32, inst);
+			case 33: return new SeqGetHead_Group(this, this, 33, inst);
+			case 34: return new SeqDecr_Group(this, this, 34, inst);
+			case 35: return new SeqSched_Group(this, this, 35, inst);
+			case 36: return new BooleanExpression_Alternatives(this, this, 36, inst);
+			case 37: return new IntSupEqual_Alternatives(this, this, 37, inst);
+			case 38: return new IntInfEqual_Alternatives(this, this, 38, inst);
+			case 39: return new ClassicalExpression0_Alternatives(this, this, 39, inst);
+			case 40: return new Library_Group(this, this, 40, inst);
+			case 41: return new ImportStatement_Group(this, this, 41, inst);
+			case 42: return new ExpressionLibrary_Group(this, this, 42, inst);
+			case 43: return new RelationLibrary_Group(this, this, 43, inst);
+			case 44: return new ExpressionDeclaration_Group(this, this, 44, inst);
+			case 45: return new RelationDeclaration_Group(this, this, 45, inst);
+			case 46: return new UserExpressionDefinition_Impl_Group(this, this, 46, inst);
+			case 47: return new ConditionalExpressionDefinition_Group(this, this, 47, inst);
+			case 48: return new ExternalExpressionDefinition_Group(this, this, 48, inst);
+			case 49: return new ConditionalRelationDefinition_Group(this, this, 49, inst);
+			case 50: return new ExternalRelationDefinition_Group(this, this, 50, inst);
+			case 51: return new Relation_Group(this, this, 51, inst);
+			case 52: return new Expression_Group(this, this, 52, inst);
+			case 53: return new Binding_Group(this, this, 53, inst);
+			case 54: return new Clock_Group(this, this, 54, inst);
+			case 55: return new Type_Alternatives(this, this, 55, inst);
+			case 56: return new ExpressionDefinition_Alternatives(this, this, 56, inst);
+			case 57: return new Element_Alternatives(this, this, 57, inst);
+			case 58: return new RelationDefinition_Alternatives(this, this, 58, inst);
+			case 59: return new ExprCase_Group(this, this, 59, inst);
+			case 60: return new RelCase_Group(this, this, 60, inst);
+			case 61: return new UserRelationDefinition_Impl_Group(this, this, 61, inst);
+			case 62: return new ConcreteEntity_Alternatives(this, this, 62, inst);
+			case 63: return new BindableEntity_Alternatives(this, this, 63, inst);
+			case 64: return new RealExpression_Alternatives(this, this, 64, inst);
+			case 65: return new SeqExpression_Alternatives(this, this, 65, inst);
+			case 66: return new PrimitiveElement_Alternatives(this, this, 66, inst);
+			case 67: return new PrimitiveType_Alternatives(this, this, 67, inst);
+			case 68: return new KernelExpressionDecl_Alternatives(this, this, 68, inst);
+			case 69: return new KernelRelationDecl_Alternatives(this, this, 69, inst);
+			case 70: return new AbstractEntity_Group(this, this, 70, inst);
+			case 71: return new RealRef_Group(this, this, 71, inst);
+			case 72: return new UnaryRealPlus_Group(this, this, 72, inst);
+			case 73: return new UnaryRealMinus_Group(this, this, 73, inst);
+			case 74: return new RealPlus_Group(this, this, 74, inst);
+			case 75: return new RealMinus_Group(this, this, 75, inst);
+			case 76: return new RealMultiply_Group(this, this, 76, inst);
+			case 77: return new RealEqual_Group(this, this, 77, inst);
+			case 78: return new RealInf_Group(this, this, 78, inst);
+			case 79: return new RealSup_Group(this, this, 79, inst);
+			case 80: return new BooleanVariableRef_Group(this, this, 80, inst);
+			case 81: return new IntegerVariableRef_Group(this, this, 81, inst);
+			case 82: return new RealVariableRef_Group(this, this, 82, inst);
+			case 83: return new NumberSeqRef_Group(this, this, 83, inst);
+			case 84: return new NumberSeqVariableRef_Group(this, this, 84, inst);
+			case 85: return new RealElement_Group(this, this, 85, inst);
+			case 86: return new IntegerElement_Alternatives(this, this, 86, inst);
+			case 87: return new BooleanElement_Group(this, this, 87, inst);
+			case 88: return new SequenceElement_Group(this, this, 88, inst);
+			case 89: return new StringElement_Group(this, this, 89, inst);
+			case 90: return new RecordElement_Group(this, this, 90, inst);
+			case 91: return new Box_Group(this, this, 91, inst);
+			case 92: return new String1_Group(this, this, 92, inst);
+			case 93: return new Boolean_Group(this, this, 93, inst);
+			case 94: return new Integer_Group(this, this, 94, inst);
+			case 95: return new Real_Group(this, this, 95, inst);
+			case 96: return new Char_Group(this, this, 96, inst);
+			case 97: return new Record_Group(this, this, 97, inst);
+			case 98: return new SequenceType_Group(this, this, 98, inst);
+			case 99: return new DiscreteClockType_Impl_Group(this, this, 99, inst);
+			case 100: return new DenseClockType_Group(this, this, 100, inst);
+			case 101: return new EnumerationType_Group(this, this, 101, inst);
+			case 102: return new Field_Group(this, this, 102, inst);
+			case 103: return new SubClock_Group(this, this, 103, inst);
+			case 104: return new Coincidence_Group(this, this, 104, inst);
+			case 105: return new Exclusion_Group(this, this, 105, inst);
+			case 106: return new Precedence_Group(this, this, 106, inst);
+			case 107: return new NonStrictPrecedence_Group(this, this, 107, inst);
+			case 108: return new UpTo_Group(this, this, 108, inst);
+			case 109: return new Defer_Group(this, this, 109, inst);
+			case 110: return new StrictSampling_Group(this, this, 110, inst);
+			case 111: return new Concatenation_Group(this, this, 111, inst);
+			case 112: return new Union_Group(this, this, 112, inst);
+			case 113: return new Intersection_Group(this, this, 113, inst);
+			case 114: return new Sup_Group(this, this, 114, inst);
+			case 115: return new Inf_Group(this, this, 115, inst);
+			case 116: return new NonStrictSampling_Group(this, this, 116, inst);
+			case 117: return new Wait_Group(this, this, 117, inst);
+			case 118: return new Discretization_Group(this, this, 118, inst);
+			case 119: return new Death_Group(this, this, 119, inst);
 			default: return null;
 		}	
 	}	
@@ -4742,15 +4735,13 @@ protected class IntSelfDivAssign_RightValueAssignment_4 extends AssignmentToken 
 /************ begin Rule IntegerAssignement ****************
  *
  * IntegerAssignement returns fsmmodel::IntegerAssignement:
- * 	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue=
- * 	//';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
- *  IntegerExpression;
+ * 	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+ * 	IntegerExpression;
  *
  **/
 
-// {fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue=
-// //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-//  IntegerExpression
+// {fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+// IntegerExpression
 protected class IntegerAssignement_Group extends GroupToken {
 	
 	public IntegerAssignement_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4954,7 +4945,7 @@ protected class IntegerAssignement_EqualsSignKeyword_3 extends KeywordToken  {
 }
 
 // rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-//  IntegerExpression
+// IntegerExpression
 protected class IntegerAssignement_RightValueAssignment_4 extends AssignmentToken  {
 	
 	public IntegerAssignement_RightValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6292,313 +6283,11 @@ protected class BooleanRef_RightSquareBracketKeyword_1_4 extends KeywordToken  {
 /************ end Rule BooleanRef ****************/
 
 
-/************ begin Rule RealRef ****************
- *
- * RealRef returns ClassicalExpression::RealRef:
- * 	"r[" realElem=[BasicType::RealElement|EString] "]" | "r#ref" name=ID "[" realElem=[BasicType::RealElement|EString]
- * 	"]";
- *
- **/
-
-// "r[" realElem=[BasicType::RealElement|EString] "]" | "r#ref" name=ID "[" realElem=[BasicType::RealElement|EString] "]"
-protected class RealRef_Alternatives extends AlternativesToken {
-
-	public RealRef_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealRef_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealRefRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "r[" realElem=[BasicType::RealElement|EString] "]"
-protected class RealRef_Group_0 extends GroupToken {
-	
-	public RealRef_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_RightSquareBracketKeyword_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "r["
-protected class RealRef_RKeyword_0_0 extends KeywordToken  {
-	
-	public RealRef_RKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getRKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// realElem=[BasicType::RealElement|EString]
-protected class RealRef_RealElemAssignment_0_1 extends AssignmentToken  {
-	
-	public RealRef_RealElemAssignment_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getRealElemAssignment_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_RKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("realElem",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("realElem");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealRefAccess().getRealElemRealElementCrossReference_0_1_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealRefAccess().getRealElemRealElementCrossReference_0_1_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-// "]"
-protected class RealRef_RightSquareBracketKeyword_0_2 extends KeywordToken  {
-	
-	public RealRef_RightSquareBracketKeyword_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getRightSquareBracketKeyword_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_RealElemAssignment_0_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "r#ref" name=ID "[" realElem=[BasicType::RealElement|EString] "]"
-protected class RealRef_Group_1 extends GroupToken {
-	
-	public RealRef_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_RightSquareBracketKeyword_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "r#ref"
-protected class RealRef_RRefKeyword_1_0 extends KeywordToken  {
-	
-	public RealRef_RRefKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getRRefKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// name=ID
-protected class RealRef_NameAssignment_1_1 extends AssignmentToken  {
-	
-	public RealRef_NameAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getNameAssignment_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_RRefKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealRefAccess().getNameIDTerminalRuleCall_1_1_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getRealRefAccess().getNameIDTerminalRuleCall_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// "["
-protected class RealRef_LeftSquareBracketKeyword_1_2 extends KeywordToken  {
-	
-	public RealRef_LeftSquareBracketKeyword_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getLeftSquareBracketKeyword_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_NameAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// realElem=[BasicType::RealElement|EString]
-protected class RealRef_RealElemAssignment_1_3 extends AssignmentToken  {
-	
-	public RealRef_RealElemAssignment_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getRealElemAssignment_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_LeftSquareBracketKeyword_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("realElem",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("realElem");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealRefAccess().getRealElemRealElementCrossReference_1_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealRefAccess().getRealElemRealElementCrossReference_1_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-// "]"
-protected class RealRef_RightSquareBracketKeyword_1_4 extends KeywordToken  {
-	
-	public RealRef_RightSquareBracketKeyword_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealRefAccess().getRightSquareBracketKeyword_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_RealElemAssignment_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule RealRef ****************/
-
-
 /************ begin Rule IntegerRef ****************
  *
- * IntegerRef returns ClassicalExpression::IntegerRef:
+ * / *RealRef returns ClassicalExpression::RealRef:
+ * 	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';* / IntegerRef
+ * returns ClassicalExpression::IntegerRef:
  * 	"i[" integerElem=[BasicType::IntegerElement|EString] "]" | "i#ref" name=ID "["
  * 	integerElem=[BasicType::IntegerElement|EString] "]";
  *
@@ -6901,3153 +6590,40 @@ protected class IntegerRef_RightSquareBracketKeyword_1_4 extends KeywordToken  {
 /************ end Rule IntegerRef ****************/
 
 
-/************ begin Rule UnaryRealPlus ****************
- *
- * UnaryRealPlus returns ClassicalExpression::UnaryRealPlus:
- * 	"+" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(+" ("#ref"
- * 	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
- * 	operand=RealExpression "})";
- *
- **/
-
-// "+" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(+" ("#ref" name=String0
-// (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
-// operand=RealExpression "})"
-protected class UnaryRealPlus_Alternatives extends AlternativesToken {
-
-	public UnaryRealPlus_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new UnaryRealPlus_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "+" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}"
-protected class UnaryRealPlus_Group_0 extends GroupToken {
-	
-	public UnaryRealPlus_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_RightCurlyBracketKeyword_0_6(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "+"
-protected class UnaryRealPlus_PlusSignKeyword_0_0 extends KeywordToken  {
-	
-	public UnaryRealPlus_PlusSignKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getPlusSignKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// "{"
-protected class UnaryRealPlus_LeftCurlyBracketKeyword_0_1 extends KeywordToken  {
-	
-	public UnaryRealPlus_LeftCurlyBracketKeyword_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getLeftCurlyBracketKeyword_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_PlusSignKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "value"
-protected class UnaryRealPlus_ValueKeyword_0_2 extends KeywordToken  {
-	
-	public UnaryRealPlus_ValueKeyword_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getValueKeyword_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_LeftCurlyBracketKeyword_0_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// value=[BasicType::RealElement|EString]
-protected class UnaryRealPlus_ValueAssignment_0_3 extends AssignmentToken  {
-	
-	public UnaryRealPlus_ValueAssignment_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getValueAssignment_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_ValueKeyword_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getUnaryRealPlusAccess().getValueRealElementCrossReference_0_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getUnaryRealPlusAccess().getValueRealElementCrossReference_0_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-// "operand"
-protected class UnaryRealPlus_OperandKeyword_0_4 extends KeywordToken  {
-	
-	public UnaryRealPlus_OperandKeyword_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getOperandKeyword_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_ValueAssignment_0_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// operand=RealExpression
-protected class UnaryRealPlus_OperandAssignment_0_5 extends AssignmentToken  {
-	
-	public UnaryRealPlus_OperandAssignment_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getOperandAssignment_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("operand",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("operand");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getUnaryRealPlusAccess().getOperandRealExpressionParserRuleCall_0_5_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new UnaryRealPlus_OperandKeyword_0_4(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "}"
-protected class UnaryRealPlus_RightCurlyBracketKeyword_0_6 extends KeywordToken  {
-	
-	public UnaryRealPlus_RightCurlyBracketKeyword_0_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getRightCurlyBracketKeyword_0_6();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_OperandAssignment_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(+" ("#ref" name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString]
-// "operand" operand=RealExpression "})"
-protected class UnaryRealPlus_Group_1 extends GroupToken {
-	
-	public UnaryRealPlus_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_RightCurlyBracketRightParenthesisKeyword_1_7(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "(+"
-protected class UnaryRealPlus_LeftParenthesisPlusSignKeyword_1_0 extends KeywordToken  {
-	
-	public UnaryRealPlus_LeftParenthesisPlusSignKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getLeftParenthesisPlusSignKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 (":" type=[BasicType::Type|EString])?)?
-protected class UnaryRealPlus_Group_1_1 extends GroupToken {
-	
-	public UnaryRealPlus_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_Group_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new UnaryRealPlus_NameAssignment_1_1_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class UnaryRealPlus_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public UnaryRealPlus_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_LeftParenthesisPlusSignKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class UnaryRealPlus_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public UnaryRealPlus_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getUnaryRealPlusAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getUnaryRealPlusAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// (":" type=[BasicType::Type|EString])?
-protected class UnaryRealPlus_Group_1_1_2 extends GroupToken {
-	
-	public UnaryRealPlus_Group_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getGroup_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_TypeAssignment_1_1_2_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// ":"
-protected class UnaryRealPlus_ColonKeyword_1_1_2_0 extends KeywordToken  {
-	
-	public UnaryRealPlus_ColonKeyword_1_1_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getColonKeyword_1_1_2_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class UnaryRealPlus_TypeAssignment_1_1_2_1 extends AssignmentToken  {
-	
-	public UnaryRealPlus_TypeAssignment_1_1_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getTypeAssignment_1_1_2_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_ColonKeyword_1_1_2_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getUnaryRealPlusAccess().getTypeTypeCrossReference_1_1_2_1_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getUnaryRealPlusAccess().getTypeTypeCrossReference_1_1_2_1_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-
-// "{"
-protected class UnaryRealPlus_LeftCurlyBracketKeyword_1_2 extends KeywordToken  {
-	
-	public UnaryRealPlus_LeftCurlyBracketKeyword_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getLeftCurlyBracketKeyword_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_Group_1_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new UnaryRealPlus_LeftParenthesisPlusSignKeyword_1_0(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "value"
-protected class UnaryRealPlus_ValueKeyword_1_3 extends KeywordToken  {
-	
-	public UnaryRealPlus_ValueKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getValueKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_LeftCurlyBracketKeyword_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// value=[BasicType::RealElement|EString]
-protected class UnaryRealPlus_ValueAssignment_1_4 extends AssignmentToken  {
-	
-	public UnaryRealPlus_ValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_ValueKeyword_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getUnaryRealPlusAccess().getValueRealElementCrossReference_1_4_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getUnaryRealPlusAccess().getValueRealElementCrossReference_1_4_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-// "operand"
-protected class UnaryRealPlus_OperandKeyword_1_5 extends KeywordToken  {
-	
-	public UnaryRealPlus_OperandKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getOperandKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_ValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// operand=RealExpression
-protected class UnaryRealPlus_OperandAssignment_1_6 extends AssignmentToken  {
-	
-	public UnaryRealPlus_OperandAssignment_1_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getOperandAssignment_1_6();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("operand",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("operand");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getUnaryRealPlusAccess().getOperandRealExpressionParserRuleCall_1_6_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new UnaryRealPlus_OperandKeyword_1_5(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "})"
-protected class UnaryRealPlus_RightCurlyBracketRightParenthesisKeyword_1_7 extends KeywordToken  {
-	
-	public UnaryRealPlus_RightCurlyBracketRightParenthesisKeyword_1_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealPlusAccess().getRightCurlyBracketRightParenthesisKeyword_1_7();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_OperandAssignment_1_6(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule UnaryRealPlus ****************/
-
-
-/************ begin Rule UnaryRealMinus ****************
- *
- * UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
- * 	"-" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(-" ("#ref"
- * 	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
- * 	operand=RealExpression "})";
- *
- **/
-
-// "-" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(-" ("#ref" name=String0
-// (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
-// operand=RealExpression "})"
-protected class UnaryRealMinus_Alternatives extends AlternativesToken {
-
-	public UnaryRealMinus_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new UnaryRealMinus_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "-" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}"
-protected class UnaryRealMinus_Group_0 extends GroupToken {
-	
-	public UnaryRealMinus_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_RightCurlyBracketKeyword_0_6(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "-"
-protected class UnaryRealMinus_HyphenMinusKeyword_0_0 extends KeywordToken  {
-	
-	public UnaryRealMinus_HyphenMinusKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getHyphenMinusKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// "{"
-protected class UnaryRealMinus_LeftCurlyBracketKeyword_0_1 extends KeywordToken  {
-	
-	public UnaryRealMinus_LeftCurlyBracketKeyword_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getLeftCurlyBracketKeyword_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_HyphenMinusKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "value"
-protected class UnaryRealMinus_ValueKeyword_0_2 extends KeywordToken  {
-	
-	public UnaryRealMinus_ValueKeyword_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getValueKeyword_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_LeftCurlyBracketKeyword_0_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// value=[BasicType::RealElement|EString]
-protected class UnaryRealMinus_ValueAssignment_0_3 extends AssignmentToken  {
-	
-	public UnaryRealMinus_ValueAssignment_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getValueAssignment_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_ValueKeyword_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getUnaryRealMinusAccess().getValueRealElementCrossReference_0_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getUnaryRealMinusAccess().getValueRealElementCrossReference_0_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-// "operand"
-protected class UnaryRealMinus_OperandKeyword_0_4 extends KeywordToken  {
-	
-	public UnaryRealMinus_OperandKeyword_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getOperandKeyword_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_ValueAssignment_0_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// operand=RealExpression
-protected class UnaryRealMinus_OperandAssignment_0_5 extends AssignmentToken  {
-	
-	public UnaryRealMinus_OperandAssignment_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getOperandAssignment_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("operand",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("operand");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getUnaryRealMinusAccess().getOperandRealExpressionParserRuleCall_0_5_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new UnaryRealMinus_OperandKeyword_0_4(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "}"
-protected class UnaryRealMinus_RightCurlyBracketKeyword_0_6 extends KeywordToken  {
-	
-	public UnaryRealMinus_RightCurlyBracketKeyword_0_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getRightCurlyBracketKeyword_0_6();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_OperandAssignment_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(-" ("#ref" name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString]
-// "operand" operand=RealExpression "})"
-protected class UnaryRealMinus_Group_1 extends GroupToken {
-	
-	public UnaryRealMinus_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_RightCurlyBracketRightParenthesisKeyword_1_7(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "(-"
-protected class UnaryRealMinus_LeftParenthesisHyphenMinusKeyword_1_0 extends KeywordToken  {
-	
-	public UnaryRealMinus_LeftParenthesisHyphenMinusKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getLeftParenthesisHyphenMinusKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 (":" type=[BasicType::Type|EString])?)?
-protected class UnaryRealMinus_Group_1_1 extends GroupToken {
-	
-	public UnaryRealMinus_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_Group_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new UnaryRealMinus_NameAssignment_1_1_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class UnaryRealMinus_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public UnaryRealMinus_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_LeftParenthesisHyphenMinusKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class UnaryRealMinus_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public UnaryRealMinus_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getUnaryRealMinusAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getUnaryRealMinusAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// (":" type=[BasicType::Type|EString])?
-protected class UnaryRealMinus_Group_1_1_2 extends GroupToken {
-	
-	public UnaryRealMinus_Group_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getGroup_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_TypeAssignment_1_1_2_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// ":"
-protected class UnaryRealMinus_ColonKeyword_1_1_2_0 extends KeywordToken  {
-	
-	public UnaryRealMinus_ColonKeyword_1_1_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getColonKeyword_1_1_2_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class UnaryRealMinus_TypeAssignment_1_1_2_1 extends AssignmentToken  {
-	
-	public UnaryRealMinus_TypeAssignment_1_1_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getTypeAssignment_1_1_2_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_ColonKeyword_1_1_2_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getUnaryRealMinusAccess().getTypeTypeCrossReference_1_1_2_1_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getUnaryRealMinusAccess().getTypeTypeCrossReference_1_1_2_1_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-
-// "{"
-protected class UnaryRealMinus_LeftCurlyBracketKeyword_1_2 extends KeywordToken  {
-	
-	public UnaryRealMinus_LeftCurlyBracketKeyword_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getLeftCurlyBracketKeyword_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_Group_1_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new UnaryRealMinus_LeftParenthesisHyphenMinusKeyword_1_0(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "value"
-protected class UnaryRealMinus_ValueKeyword_1_3 extends KeywordToken  {
-	
-	public UnaryRealMinus_ValueKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getValueKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_LeftCurlyBracketKeyword_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// value=[BasicType::RealElement|EString]
-protected class UnaryRealMinus_ValueAssignment_1_4 extends AssignmentToken  {
-	
-	public UnaryRealMinus_ValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_ValueKeyword_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getUnaryRealMinusAccess().getValueRealElementCrossReference_1_4_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getUnaryRealMinusAccess().getValueRealElementCrossReference_1_4_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-// "operand"
-protected class UnaryRealMinus_OperandKeyword_1_5 extends KeywordToken  {
-	
-	public UnaryRealMinus_OperandKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getOperandKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_ValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// operand=RealExpression
-protected class UnaryRealMinus_OperandAssignment_1_6 extends AssignmentToken  {
-	
-	public UnaryRealMinus_OperandAssignment_1_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getOperandAssignment_1_6();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("operand",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("operand");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getUnaryRealMinusAccess().getOperandRealExpressionParserRuleCall_1_6_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new UnaryRealMinus_OperandKeyword_1_5(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "})"
-protected class UnaryRealMinus_RightCurlyBracketRightParenthesisKeyword_1_7 extends KeywordToken  {
-	
-	public UnaryRealMinus_RightCurlyBracketRightParenthesisKeyword_1_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getUnaryRealMinusAccess().getRightCurlyBracketRightParenthesisKeyword_1_7();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_OperandAssignment_1_6(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule UnaryRealMinus ****************/
-
-
-/************ begin Rule RealPlus ****************
- *
- * RealPlus returns ClassicalExpression::RealPlus:
- * 	"(" ("#ref" name=String0)? leftValue=RealExpression "+" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
- * 	type=[BasicType::Type|EString])? leftValue=RealExpression "+" rightValue=RealExpression ")";
- *
- **/
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "+" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-// type=[BasicType::Type|EString])? leftValue=RealExpression "+" rightValue=RealExpression ")"
-protected class RealPlus_Alternatives extends AlternativesToken {
-
-	public RealPlus_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealPlus_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "+" rightValue=RealExpression ")"
-protected class RealPlus_Group_0 extends GroupToken {
-	
-	public RealPlus_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_RightParenthesisKeyword_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealPlus_LeftParenthesisKeyword_0_0 extends KeywordToken  {
-	
-	public RealPlus_LeftParenthesisKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getLeftParenthesisKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0)?
-protected class RealPlus_Group_0_1 extends GroupToken {
-	
-	public RealPlus_Group_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getGroup_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_NameAssignment_0_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealPlus_RefKeyword_0_1_0 extends KeywordToken  {
-	
-	public RealPlus_RefKeyword_0_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getRefKeyword_0_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealPlus_NameAssignment_0_1_1 extends AssignmentToken  {
-	
-	public RealPlus_NameAssignment_0_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getNameAssignment_0_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_RefKeyword_0_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealPlusAccess().getNameString0ParserRuleCall_0_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealPlusAccess().getNameString0ParserRuleCall_0_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealPlus_LeftValueAssignment_0_2 extends AssignmentToken  {
-	
-	public RealPlus_LeftValueAssignment_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getLeftValueAssignment_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealPlusAccess().getLeftValueRealExpressionParserRuleCall_0_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealPlus_Group_0_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealPlus_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "+"
-protected class RealPlus_PlusSignKeyword_0_3 extends KeywordToken  {
-	
-	public RealPlus_PlusSignKeyword_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getPlusSignKeyword_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_LeftValueAssignment_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealPlus_RightValueAssignment_0_4 extends AssignmentToken  {
-	
-	public RealPlus_RightValueAssignment_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getRightValueAssignment_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealPlusAccess().getRightValueRealExpressionParserRuleCall_0_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealPlus_PlusSignKeyword_0_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealPlus_RightParenthesisKeyword_0_5 extends KeywordToken  {
-	
-	public RealPlus_RightParenthesisKeyword_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getRightParenthesisKeyword_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_RightValueAssignment_0_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "+" rightValue=RealExpression ")"
-protected class RealPlus_Group_1 extends GroupToken {
-	
-	public RealPlus_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_RightParenthesisKeyword_1_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealPlus_LeftParenthesisKeyword_1_0 extends KeywordToken  {
-	
-	public RealPlus_LeftParenthesisKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getLeftParenthesisKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-protected class RealPlus_Group_1_1 extends GroupToken {
-	
-	public RealPlus_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_TypeAssignment_1_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealPlus_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public RealPlus_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealPlus_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public RealPlus_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealPlusAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealPlusAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// ":"
-protected class RealPlus_ColonKeyword_1_1_2 extends KeywordToken  {
-	
-	public RealPlus_ColonKeyword_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getColonKeyword_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class RealPlus_TypeAssignment_1_1_3 extends AssignmentToken  {
-	
-	public RealPlus_TypeAssignment_1_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getTypeAssignment_1_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_ColonKeyword_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealPlusAccess().getTypeTypeCrossReference_1_1_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealPlusAccess().getTypeTypeCrossReference_1_1_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealPlus_LeftValueAssignment_1_2 extends AssignmentToken  {
-	
-	public RealPlus_LeftValueAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getLeftValueAssignment_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealPlusAccess().getLeftValueRealExpressionParserRuleCall_1_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealPlus_Group_1_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealPlus_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "+"
-protected class RealPlus_PlusSignKeyword_1_3 extends KeywordToken  {
-	
-	public RealPlus_PlusSignKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getPlusSignKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_LeftValueAssignment_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealPlus_RightValueAssignment_1_4 extends AssignmentToken  {
-	
-	public RealPlus_RightValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getRightValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealPlusAccess().getRightValueRealExpressionParserRuleCall_1_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealPlus_PlusSignKeyword_1_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealPlus_RightParenthesisKeyword_1_5 extends KeywordToken  {
-	
-	public RealPlus_RightParenthesisKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealPlusAccess().getRightParenthesisKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_RightValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule RealPlus ****************/
-
-
-/************ begin Rule RealMinus ****************
- *
- * RealMinus returns ClassicalExpression::RealMinus:
- * 	"(" ("#ref" name=String0)? leftValue=RealExpression "-" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
- * 	type=[BasicType::Type|EString])? leftValue=RealExpression "-" rightValue=RealExpression ")";
- *
- **/
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "-" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-// type=[BasicType::Type|EString])? leftValue=RealExpression "-" rightValue=RealExpression ")"
-protected class RealMinus_Alternatives extends AlternativesToken {
-
-	public RealMinus_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealMinus_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "-" rightValue=RealExpression ")"
-protected class RealMinus_Group_0 extends GroupToken {
-	
-	public RealMinus_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_RightParenthesisKeyword_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealMinus_LeftParenthesisKeyword_0_0 extends KeywordToken  {
-	
-	public RealMinus_LeftParenthesisKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getLeftParenthesisKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0)?
-protected class RealMinus_Group_0_1 extends GroupToken {
-	
-	public RealMinus_Group_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getGroup_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_NameAssignment_0_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealMinus_RefKeyword_0_1_0 extends KeywordToken  {
-	
-	public RealMinus_RefKeyword_0_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getRefKeyword_0_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealMinus_NameAssignment_0_1_1 extends AssignmentToken  {
-	
-	public RealMinus_NameAssignment_0_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getNameAssignment_0_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_RefKeyword_0_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealMinusAccess().getNameString0ParserRuleCall_0_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealMinusAccess().getNameString0ParserRuleCall_0_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealMinus_LeftValueAssignment_0_2 extends AssignmentToken  {
-	
-	public RealMinus_LeftValueAssignment_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getLeftValueAssignment_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealMinusAccess().getLeftValueRealExpressionParserRuleCall_0_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealMinus_Group_0_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealMinus_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "-"
-protected class RealMinus_HyphenMinusKeyword_0_3 extends KeywordToken  {
-	
-	public RealMinus_HyphenMinusKeyword_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getHyphenMinusKeyword_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_LeftValueAssignment_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealMinus_RightValueAssignment_0_4 extends AssignmentToken  {
-	
-	public RealMinus_RightValueAssignment_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getRightValueAssignment_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealMinusAccess().getRightValueRealExpressionParserRuleCall_0_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealMinus_HyphenMinusKeyword_0_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealMinus_RightParenthesisKeyword_0_5 extends KeywordToken  {
-	
-	public RealMinus_RightParenthesisKeyword_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getRightParenthesisKeyword_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_RightValueAssignment_0_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "-" rightValue=RealExpression ")"
-protected class RealMinus_Group_1 extends GroupToken {
-	
-	public RealMinus_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_RightParenthesisKeyword_1_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealMinus_LeftParenthesisKeyword_1_0 extends KeywordToken  {
-	
-	public RealMinus_LeftParenthesisKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getLeftParenthesisKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-protected class RealMinus_Group_1_1 extends GroupToken {
-	
-	public RealMinus_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_TypeAssignment_1_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealMinus_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public RealMinus_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealMinus_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public RealMinus_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealMinusAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealMinusAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// ":"
-protected class RealMinus_ColonKeyword_1_1_2 extends KeywordToken  {
-	
-	public RealMinus_ColonKeyword_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getColonKeyword_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class RealMinus_TypeAssignment_1_1_3 extends AssignmentToken  {
-	
-	public RealMinus_TypeAssignment_1_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getTypeAssignment_1_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_ColonKeyword_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealMinusAccess().getTypeTypeCrossReference_1_1_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealMinusAccess().getTypeTypeCrossReference_1_1_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealMinus_LeftValueAssignment_1_2 extends AssignmentToken  {
-	
-	public RealMinus_LeftValueAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getLeftValueAssignment_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealMinusAccess().getLeftValueRealExpressionParserRuleCall_1_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealMinus_Group_1_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealMinus_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "-"
-protected class RealMinus_HyphenMinusKeyword_1_3 extends KeywordToken  {
-	
-	public RealMinus_HyphenMinusKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getHyphenMinusKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_LeftValueAssignment_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealMinus_RightValueAssignment_1_4 extends AssignmentToken  {
-	
-	public RealMinus_RightValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getRightValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealMinusAccess().getRightValueRealExpressionParserRuleCall_1_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealMinus_HyphenMinusKeyword_1_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealMinus_RightParenthesisKeyword_1_5 extends KeywordToken  {
-	
-	public RealMinus_RightParenthesisKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMinusAccess().getRightParenthesisKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_RightValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule RealMinus ****************/
-
-
-/************ begin Rule RealMultiply ****************
- *
- * RealMultiply returns ClassicalExpression::RealMultiply:
- * 	"(" ("#ref" name=String0)? leftValue=RealExpression "*" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
- * 	type=[BasicType::Type|EString])? leftValue=RealExpression "*" rightValue=RealExpression ")";
- *
- **/
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "*" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-// type=[BasicType::Type|EString])? leftValue=RealExpression "*" rightValue=RealExpression ")"
-protected class RealMultiply_Alternatives extends AlternativesToken {
-
-	public RealMultiply_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealMultiply_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "*" rightValue=RealExpression ")"
-protected class RealMultiply_Group_0 extends GroupToken {
-	
-	public RealMultiply_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_RightParenthesisKeyword_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealMultiply_LeftParenthesisKeyword_0_0 extends KeywordToken  {
-	
-	public RealMultiply_LeftParenthesisKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getLeftParenthesisKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0)?
-protected class RealMultiply_Group_0_1 extends GroupToken {
-	
-	public RealMultiply_Group_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getGroup_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_NameAssignment_0_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealMultiply_RefKeyword_0_1_0 extends KeywordToken  {
-	
-	public RealMultiply_RefKeyword_0_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getRefKeyword_0_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealMultiply_NameAssignment_0_1_1 extends AssignmentToken  {
-	
-	public RealMultiply_NameAssignment_0_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getNameAssignment_0_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_RefKeyword_0_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealMultiplyAccess().getNameString0ParserRuleCall_0_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealMultiplyAccess().getNameString0ParserRuleCall_0_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealMultiply_LeftValueAssignment_0_2 extends AssignmentToken  {
-	
-	public RealMultiply_LeftValueAssignment_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getLeftValueAssignment_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealMultiplyAccess().getLeftValueRealExpressionParserRuleCall_0_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealMultiply_Group_0_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealMultiply_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "*"
-protected class RealMultiply_AsteriskKeyword_0_3 extends KeywordToken  {
-	
-	public RealMultiply_AsteriskKeyword_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getAsteriskKeyword_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_LeftValueAssignment_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealMultiply_RightValueAssignment_0_4 extends AssignmentToken  {
-	
-	public RealMultiply_RightValueAssignment_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getRightValueAssignment_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealMultiplyAccess().getRightValueRealExpressionParserRuleCall_0_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealMultiply_AsteriskKeyword_0_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealMultiply_RightParenthesisKeyword_0_5 extends KeywordToken  {
-	
-	public RealMultiply_RightParenthesisKeyword_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getRightParenthesisKeyword_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_RightValueAssignment_0_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "*" rightValue=RealExpression ")"
-protected class RealMultiply_Group_1 extends GroupToken {
-	
-	public RealMultiply_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_RightParenthesisKeyword_1_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealMultiply_LeftParenthesisKeyword_1_0 extends KeywordToken  {
-	
-	public RealMultiply_LeftParenthesisKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getLeftParenthesisKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-protected class RealMultiply_Group_1_1 extends GroupToken {
-	
-	public RealMultiply_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_TypeAssignment_1_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealMultiply_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public RealMultiply_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealMultiply_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public RealMultiply_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealMultiplyAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealMultiplyAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// ":"
-protected class RealMultiply_ColonKeyword_1_1_2 extends KeywordToken  {
-	
-	public RealMultiply_ColonKeyword_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getColonKeyword_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class RealMultiply_TypeAssignment_1_1_3 extends AssignmentToken  {
-	
-	public RealMultiply_TypeAssignment_1_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getTypeAssignment_1_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_ColonKeyword_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealMultiplyAccess().getTypeTypeCrossReference_1_1_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealMultiplyAccess().getTypeTypeCrossReference_1_1_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealMultiply_LeftValueAssignment_1_2 extends AssignmentToken  {
-	
-	public RealMultiply_LeftValueAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getLeftValueAssignment_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealMultiplyAccess().getLeftValueRealExpressionParserRuleCall_1_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealMultiply_Group_1_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealMultiply_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "*"
-protected class RealMultiply_AsteriskKeyword_1_3 extends KeywordToken  {
-	
-	public RealMultiply_AsteriskKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getAsteriskKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_LeftValueAssignment_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealMultiply_RightValueAssignment_1_4 extends AssignmentToken  {
-	
-	public RealMultiply_RightValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getRightValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealMultiplyAccess().getRightValueRealExpressionParserRuleCall_1_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealMultiply_AsteriskKeyword_1_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealMultiply_RightParenthesisKeyword_1_5 extends KeywordToken  {
-	
-	public RealMultiply_RightParenthesisKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealMultiplyAccess().getRightParenthesisKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_RightValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule RealMultiply ****************/
-
-
 /************ begin Rule UnaryIntPlus ****************
  *
- * UnaryIntPlus returns ClassicalExpression::UnaryIntPlus:
+ * / *UnaryRealPlus returns ClassicalExpression::UnaryRealPlus:
+ * 	('+' 
+ * 	'{'
+ * 		'value' value=[BasicType::RealElement|EString]
+ * 		'operand' operand=RealExpression
+ * 	'}')|
+ * 	('(+' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
+ * 	'{'
+ * 		'value' value=[BasicType::RealElement|EString]
+ * 		'operand' operand=RealExpression
+ * 	'})');* / / *UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
+ * 	('-' 
+ * 	'{'
+ * 		'value' value=[BasicType::RealElement|EString]
+ * 		'operand' operand=RealExpression
+ * 	'}')|
+ * 	('(-' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
+ * 	'{'
+ * 		'value' value=[BasicType::RealElement|EString]
+ * 		'operand' operand=RealExpression
+ * 	'})');* / / *RealPlus returns ClassicalExpression::RealPlus:
+ * 	('('('#ref' name=String0)? leftValue=RealExpression '+' rightValue=RealExpression')')|
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '+' rightValue=RealExpression')');
+ * 
+ * RealMinus returns ClassicalExpression::RealMinus:
+ * 	('('('#ref' name=String0)? leftValue=RealExpression '-' rightValue=RealExpression')')|
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '-' rightValue=RealExpression')');
+ * 
+ * RealMultiply returns ClassicalExpression::RealMultiply:
+ * 	('('('#ref' name=String0)? leftValue=RealExpression '*' rightValue=RealExpression')')|
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '*' rightValue=RealExpression')');* / UnaryIntPlus
+ * returns ClassicalExpression::UnaryIntPlus:
  * 	"+" "{" "value" value=[BasicType::IntegerElement|EString] "operand" operand=IntegerExpression "}" | "(+" ("#ref"
  * 	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::IntegerElement|EString] "operand"
  * 	operand=IntegerExpression "})";
@@ -15332,1876 +11908,20 @@ protected class Xor_RightParenthesisKeyword_5 extends KeywordToken  {
 /************ end Rule Xor ****************/
 
 
-/************ begin Rule RealEqual ****************
- *
- * RealEqual returns ClassicalExpression::RealEqual:
- * 	"(" ("#ref" name=String0)? leftValue=RealExpression "==" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
- * 	type=[BasicType::Type|EString])? leftValue=RealExpression "==" rightValue=RealExpression ")";
- *
- **/
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "==" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-// type=[BasicType::Type|EString])? leftValue=RealExpression "==" rightValue=RealExpression ")"
-protected class RealEqual_Alternatives extends AlternativesToken {
-
-	public RealEqual_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealEqual_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealEqualRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "==" rightValue=RealExpression ")"
-protected class RealEqual_Group_0 extends GroupToken {
-	
-	public RealEqual_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_RightParenthesisKeyword_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealEqual_LeftParenthesisKeyword_0_0 extends KeywordToken  {
-	
-	public RealEqual_LeftParenthesisKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getLeftParenthesisKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0)?
-protected class RealEqual_Group_0_1 extends GroupToken {
-	
-	public RealEqual_Group_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getGroup_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_NameAssignment_0_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealEqual_RefKeyword_0_1_0 extends KeywordToken  {
-	
-	public RealEqual_RefKeyword_0_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getRefKeyword_0_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealEqual_NameAssignment_0_1_1 extends AssignmentToken  {
-	
-	public RealEqual_NameAssignment_0_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getNameAssignment_0_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_RefKeyword_0_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealEqualAccess().getNameString0ParserRuleCall_0_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealEqualAccess().getNameString0ParserRuleCall_0_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealEqual_LeftValueAssignment_0_2 extends AssignmentToken  {
-	
-	public RealEqual_LeftValueAssignment_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getLeftValueAssignment_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealEqualAccess().getLeftValueRealExpressionParserRuleCall_0_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealEqual_Group_0_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealEqual_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "=="
-protected class RealEqual_EqualsSignEqualsSignKeyword_0_3 extends KeywordToken  {
-	
-	public RealEqual_EqualsSignEqualsSignKeyword_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getEqualsSignEqualsSignKeyword_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_LeftValueAssignment_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealEqual_RightValueAssignment_0_4 extends AssignmentToken  {
-	
-	public RealEqual_RightValueAssignment_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getRightValueAssignment_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealEqualAccess().getRightValueRealExpressionParserRuleCall_0_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealEqual_EqualsSignEqualsSignKeyword_0_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealEqual_RightParenthesisKeyword_0_5 extends KeywordToken  {
-	
-	public RealEqual_RightParenthesisKeyword_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getRightParenthesisKeyword_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_RightValueAssignment_0_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "==" rightValue=RealExpression
-// ")"
-protected class RealEqual_Group_1 extends GroupToken {
-	
-	public RealEqual_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_RightParenthesisKeyword_1_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealEqual_LeftParenthesisKeyword_1_0 extends KeywordToken  {
-	
-	public RealEqual_LeftParenthesisKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getLeftParenthesisKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-protected class RealEqual_Group_1_1 extends GroupToken {
-	
-	public RealEqual_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_TypeAssignment_1_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealEqual_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public RealEqual_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealEqual_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public RealEqual_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealEqualAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealEqualAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// ":"
-protected class RealEqual_ColonKeyword_1_1_2 extends KeywordToken  {
-	
-	public RealEqual_ColonKeyword_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getColonKeyword_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class RealEqual_TypeAssignment_1_1_3 extends AssignmentToken  {
-	
-	public RealEqual_TypeAssignment_1_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getTypeAssignment_1_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_ColonKeyword_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealEqualAccess().getTypeTypeCrossReference_1_1_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealEqualAccess().getTypeTypeCrossReference_1_1_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealEqual_LeftValueAssignment_1_2 extends AssignmentToken  {
-	
-	public RealEqual_LeftValueAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getLeftValueAssignment_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealEqualAccess().getLeftValueRealExpressionParserRuleCall_1_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealEqual_Group_1_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealEqual_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "=="
-protected class RealEqual_EqualsSignEqualsSignKeyword_1_3 extends KeywordToken  {
-	
-	public RealEqual_EqualsSignEqualsSignKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getEqualsSignEqualsSignKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_LeftValueAssignment_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealEqual_RightValueAssignment_1_4 extends AssignmentToken  {
-	
-	public RealEqual_RightValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getRightValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealEqualAccess().getRightValueRealExpressionParserRuleCall_1_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealEqual_EqualsSignEqualsSignKeyword_1_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealEqual_RightParenthesisKeyword_1_5 extends KeywordToken  {
-	
-	public RealEqual_RightParenthesisKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealEqualAccess().getRightParenthesisKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_RightValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule RealEqual ****************/
-
-
-/************ begin Rule RealInf ****************
- *
- * RealInf returns ClassicalExpression::RealInf:
- * 	"(" ("#ref" name=String0)? leftValue=RealExpression "<" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
- * 	type=[BasicType::Type|EString])? leftValue=RealExpression "<" rightValue=RealExpression ")";
- *
- **/
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "<" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-// type=[BasicType::Type|EString])? leftValue=RealExpression "<" rightValue=RealExpression ")"
-protected class RealInf_Alternatives extends AlternativesToken {
-
-	public RealInf_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealInf_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealInfRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "<" rightValue=RealExpression ")"
-protected class RealInf_Group_0 extends GroupToken {
-	
-	public RealInf_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_RightParenthesisKeyword_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealInf_LeftParenthesisKeyword_0_0 extends KeywordToken  {
-	
-	public RealInf_LeftParenthesisKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getLeftParenthesisKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0)?
-protected class RealInf_Group_0_1 extends GroupToken {
-	
-	public RealInf_Group_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getGroup_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_NameAssignment_0_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealInf_RefKeyword_0_1_0 extends KeywordToken  {
-	
-	public RealInf_RefKeyword_0_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getRefKeyword_0_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealInf_NameAssignment_0_1_1 extends AssignmentToken  {
-	
-	public RealInf_NameAssignment_0_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getNameAssignment_0_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_RefKeyword_0_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealInfAccess().getNameString0ParserRuleCall_0_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealInfAccess().getNameString0ParserRuleCall_0_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealInf_LeftValueAssignment_0_2 extends AssignmentToken  {
-	
-	public RealInf_LeftValueAssignment_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getLeftValueAssignment_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealInfAccess().getLeftValueRealExpressionParserRuleCall_0_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealInf_Group_0_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealInf_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "<"
-protected class RealInf_LessThanSignKeyword_0_3 extends KeywordToken  {
-	
-	public RealInf_LessThanSignKeyword_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getLessThanSignKeyword_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_LeftValueAssignment_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealInf_RightValueAssignment_0_4 extends AssignmentToken  {
-	
-	public RealInf_RightValueAssignment_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getRightValueAssignment_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealInfAccess().getRightValueRealExpressionParserRuleCall_0_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealInf_LessThanSignKeyword_0_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealInf_RightParenthesisKeyword_0_5 extends KeywordToken  {
-	
-	public RealInf_RightParenthesisKeyword_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getRightParenthesisKeyword_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_RightValueAssignment_0_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "<" rightValue=RealExpression ")"
-protected class RealInf_Group_1 extends GroupToken {
-	
-	public RealInf_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_RightParenthesisKeyword_1_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealInf_LeftParenthesisKeyword_1_0 extends KeywordToken  {
-	
-	public RealInf_LeftParenthesisKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getLeftParenthesisKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-protected class RealInf_Group_1_1 extends GroupToken {
-	
-	public RealInf_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_TypeAssignment_1_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealInf_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public RealInf_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealInf_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public RealInf_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealInfAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealInfAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// ":"
-protected class RealInf_ColonKeyword_1_1_2 extends KeywordToken  {
-	
-	public RealInf_ColonKeyword_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getColonKeyword_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class RealInf_TypeAssignment_1_1_3 extends AssignmentToken  {
-	
-	public RealInf_TypeAssignment_1_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getTypeAssignment_1_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_ColonKeyword_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealInfAccess().getTypeTypeCrossReference_1_1_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealInfAccess().getTypeTypeCrossReference_1_1_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealInf_LeftValueAssignment_1_2 extends AssignmentToken  {
-	
-	public RealInf_LeftValueAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getLeftValueAssignment_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealInfAccess().getLeftValueRealExpressionParserRuleCall_1_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealInf_Group_1_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealInf_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "<"
-protected class RealInf_LessThanSignKeyword_1_3 extends KeywordToken  {
-	
-	public RealInf_LessThanSignKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getLessThanSignKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_LeftValueAssignment_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealInf_RightValueAssignment_1_4 extends AssignmentToken  {
-	
-	public RealInf_RightValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getRightValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealInfAccess().getRightValueRealExpressionParserRuleCall_1_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealInf_LessThanSignKeyword_1_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealInf_RightParenthesisKeyword_1_5 extends KeywordToken  {
-	
-	public RealInf_RightParenthesisKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfAccess().getRightParenthesisKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_RightValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule RealInf ****************/
-
-
-/************ begin Rule RealSup ****************
- *
- * RealSup returns ClassicalExpression::RealSup:
- * 	"(" ("#ref" name=String0)? leftValue=RealExpression ">" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
- * 	type=[BasicType::Type|EString])? leftValue=RealExpression ">" rightValue=RealExpression ")";
- *
- **/
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression ">" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-// type=[BasicType::Type|EString])? leftValue=RealExpression ">" rightValue=RealExpression ")"
-protected class RealSup_Alternatives extends AlternativesToken {
-
-	public RealSup_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealSup_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSupRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression ">" rightValue=RealExpression ")"
-protected class RealSup_Group_0 extends GroupToken {
-	
-	public RealSup_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_RightParenthesisKeyword_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealSup_LeftParenthesisKeyword_0_0 extends KeywordToken  {
-	
-	public RealSup_LeftParenthesisKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getLeftParenthesisKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0)?
-protected class RealSup_Group_0_1 extends GroupToken {
-	
-	public RealSup_Group_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getGroup_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_NameAssignment_0_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealSup_RefKeyword_0_1_0 extends KeywordToken  {
-	
-	public RealSup_RefKeyword_0_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getRefKeyword_0_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealSup_NameAssignment_0_1_1 extends AssignmentToken  {
-	
-	public RealSup_NameAssignment_0_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getNameAssignment_0_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_RefKeyword_0_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealSupAccess().getNameString0ParserRuleCall_0_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealSupAccess().getNameString0ParserRuleCall_0_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealSup_LeftValueAssignment_0_2 extends AssignmentToken  {
-	
-	public RealSup_LeftValueAssignment_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getLeftValueAssignment_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSupAccess().getLeftValueRealExpressionParserRuleCall_0_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSup_Group_0_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealSup_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ">"
-protected class RealSup_GreaterThanSignKeyword_0_3 extends KeywordToken  {
-	
-	public RealSup_GreaterThanSignKeyword_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getGreaterThanSignKeyword_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_LeftValueAssignment_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealSup_RightValueAssignment_0_4 extends AssignmentToken  {
-	
-	public RealSup_RightValueAssignment_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getRightValueAssignment_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSupAccess().getRightValueRealExpressionParserRuleCall_0_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSup_GreaterThanSignKeyword_0_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealSup_RightParenthesisKeyword_0_5 extends KeywordToken  {
-	
-	public RealSup_RightParenthesisKeyword_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getRightParenthesisKeyword_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_RightValueAssignment_0_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression ">" rightValue=RealExpression ")"
-protected class RealSup_Group_1 extends GroupToken {
-	
-	public RealSup_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_RightParenthesisKeyword_1_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealSup_LeftParenthesisKeyword_1_0 extends KeywordToken  {
-	
-	public RealSup_LeftParenthesisKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getLeftParenthesisKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-protected class RealSup_Group_1_1 extends GroupToken {
-	
-	public RealSup_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_TypeAssignment_1_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealSup_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public RealSup_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealSup_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public RealSup_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealSupAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealSupAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// ":"
-protected class RealSup_ColonKeyword_1_1_2 extends KeywordToken  {
-	
-	public RealSup_ColonKeyword_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getColonKeyword_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class RealSup_TypeAssignment_1_1_3 extends AssignmentToken  {
-	
-	public RealSup_TypeAssignment_1_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getTypeAssignment_1_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_ColonKeyword_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealSupAccess().getTypeTypeCrossReference_1_1_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealSupAccess().getTypeTypeCrossReference_1_1_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealSup_LeftValueAssignment_1_2 extends AssignmentToken  {
-	
-	public RealSup_LeftValueAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getLeftValueAssignment_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSupAccess().getLeftValueRealExpressionParserRuleCall_1_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSup_Group_1_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealSup_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ">"
-protected class RealSup_GreaterThanSignKeyword_1_3 extends KeywordToken  {
-	
-	public RealSup_GreaterThanSignKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getGreaterThanSignKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_LeftValueAssignment_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealSup_RightValueAssignment_1_4 extends AssignmentToken  {
-	
-	public RealSup_RightValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getRightValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSupAccess().getRightValueRealExpressionParserRuleCall_1_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSup_GreaterThanSignKeyword_1_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealSup_RightParenthesisKeyword_1_5 extends KeywordToken  {
-	
-	public RealSup_RightParenthesisKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupAccess().getRightParenthesisKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_RightValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule RealSup ****************/
-
-
 /************ begin Rule IntInf ****************
  *
- * IntInf returns ClassicalExpression::IntInf:
+ * / *RealEqual returns ClassicalExpression::RealEqual:
+ * 	('('('#ref' name=String0)? leftValue=RealExpression '==' rightValue=RealExpression')')|
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '==' rightValue=RealExpression')');
+ * 
+ * RealInf returns ClassicalExpression::RealInf:
+ * 	('('('#ref' name=String0)? leftValue=RealExpression '<' rightValue=RealExpression')')|
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '<' rightValue=RealExpression')');
+ * 
+ * RealSup returns ClassicalExpression::RealSup:
+ * 	('('('#ref' name=String0)? leftValue=RealExpression '>' rightValue=RealExpression')')|
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>' rightValue=RealExpression')');* / IntInf
+ * returns ClassicalExpression::IntInf:
  * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")" | "(" ("#ref"
  * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")";
  *
@@ -19919,14 +14639,14 @@ protected class SeqSched_RightParenthesisKeyword_6 extends KeywordToken  {
 
 /************ begin Rule BooleanExpression ****************
  *
- * BooleanExpression returns ClassicalExpression::BooleanExpression:
- * 	BooleanRef | Not | And | Or | Xor | RealEqual | RealInf | RealSup | IntEqual | IntInf | IntSup | SeqIsEmpty |
- * 	BooleanVariableRef | IntInfEqual | IntSupEqual | RealInfEqual | RealSupEqual;
+ * / *|RealInfEqual|RealSupEqual* / BooleanExpression returns ClassicalExpression::BooleanExpression:
+ * 	BooleanRef | Not | And | Or | Xor | / *RealEqual | RealInf | RealSup | * / IntEqual | IntInf | IntSup | SeqIsEmpty |
+ * 	BooleanVariableRef | IntInfEqual | IntSupEqual;
  *
  **/
 
-// BooleanRef | Not | And | Or | Xor | RealEqual | RealInf | RealSup | IntEqual | IntInf | IntSup | SeqIsEmpty |
-// BooleanVariableRef | IntInfEqual | IntSupEqual | RealInfEqual | RealSupEqual
+// BooleanRef | Not | And | Or | Xor | / *RealEqual | RealInf | RealSup | * / IntEqual | IntInf | IntSup | SeqIsEmpty |
+// BooleanVariableRef | IntInfEqual | IntSupEqual
 protected class BooleanExpression_Alternatives extends AlternativesToken {
 
 	public BooleanExpression_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -19946,18 +14666,13 @@ protected class BooleanExpression_Alternatives extends AlternativesToken {
 			case 2: return new BooleanExpression_AndParserRuleCall_2(lastRuleCallOrigin, this, 2, inst);
 			case 3: return new BooleanExpression_OrParserRuleCall_3(lastRuleCallOrigin, this, 3, inst);
 			case 4: return new BooleanExpression_XorParserRuleCall_4(lastRuleCallOrigin, this, 4, inst);
-			case 5: return new BooleanExpression_RealEqualParserRuleCall_5(lastRuleCallOrigin, this, 5, inst);
-			case 6: return new BooleanExpression_RealInfParserRuleCall_6(lastRuleCallOrigin, this, 6, inst);
-			case 7: return new BooleanExpression_RealSupParserRuleCall_7(lastRuleCallOrigin, this, 7, inst);
-			case 8: return new BooleanExpression_IntEqualParserRuleCall_8(lastRuleCallOrigin, this, 8, inst);
-			case 9: return new BooleanExpression_IntInfParserRuleCall_9(lastRuleCallOrigin, this, 9, inst);
-			case 10: return new BooleanExpression_IntSupParserRuleCall_10(lastRuleCallOrigin, this, 10, inst);
-			case 11: return new BooleanExpression_SeqIsEmptyParserRuleCall_11(lastRuleCallOrigin, this, 11, inst);
-			case 12: return new BooleanExpression_BooleanVariableRefParserRuleCall_12(lastRuleCallOrigin, this, 12, inst);
-			case 13: return new BooleanExpression_IntInfEqualParserRuleCall_13(lastRuleCallOrigin, this, 13, inst);
-			case 14: return new BooleanExpression_IntSupEqualParserRuleCall_14(lastRuleCallOrigin, this, 14, inst);
-			case 15: return new BooleanExpression_RealInfEqualParserRuleCall_15(lastRuleCallOrigin, this, 15, inst);
-			case 16: return new BooleanExpression_RealSupEqualParserRuleCall_16(lastRuleCallOrigin, this, 16, inst);
+			case 5: return new BooleanExpression_IntEqualParserRuleCall_5(lastRuleCallOrigin, this, 5, inst);
+			case 6: return new BooleanExpression_IntInfParserRuleCall_6(lastRuleCallOrigin, this, 6, inst);
+			case 7: return new BooleanExpression_IntSupParserRuleCall_7(lastRuleCallOrigin, this, 7, inst);
+			case 8: return new BooleanExpression_SeqIsEmptyParserRuleCall_8(lastRuleCallOrigin, this, 8, inst);
+			case 9: return new BooleanExpression_BooleanVariableRefParserRuleCall_9(lastRuleCallOrigin, this, 9, inst);
+			case 10: return new BooleanExpression_IntInfEqualParserRuleCall_10(lastRuleCallOrigin, this, 10, inst);
+			case 11: return new BooleanExpression_IntSupEqualParserRuleCall_11(lastRuleCallOrigin, this, 11, inst);
 			default: return null;
 		}	
 	}
@@ -19974,11 +14689,6 @@ protected class BooleanExpression_Alternatives extends AlternativesToken {
 		   getEObject().eClass() != grammarAccess.getIntSupEqualRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getNotRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getOrRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealEqualRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealInfRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealInfEqualRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSupRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSupEqualRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getSeqIsEmptyRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getXorRule().getType().getClassifier())
 			return null;
@@ -20167,124 +14877,16 @@ protected class BooleanExpression_XorParserRuleCall_4 extends RuleCallToken {
 	}	
 }
 
-// RealEqual
-protected class BooleanExpression_RealEqualParserRuleCall_5 extends RuleCallToken {
+// / *RealEqual | RealInf | RealSup | * / IntEqual
+protected class BooleanExpression_IntEqualParserRuleCall_5 extends RuleCallToken {
 	
-	public BooleanExpression_RealEqualParserRuleCall_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public BooleanExpression_IntEqualParserRuleCall_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getRealEqualParserRuleCall_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealEqual_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealEqualRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealEqual_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealInf
-protected class BooleanExpression_RealInfParserRuleCall_6 extends RuleCallToken {
-	
-	public BooleanExpression_RealInfParserRuleCall_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getRealInfParserRuleCall_6();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInf_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealInfRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealInf_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealSup
-protected class BooleanExpression_RealSupParserRuleCall_7 extends RuleCallToken {
-	
-	public BooleanExpression_RealSupParserRuleCall_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getRealSupParserRuleCall_7();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSup_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSupRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealSup_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// IntEqual
-protected class BooleanExpression_IntEqualParserRuleCall_8 extends RuleCallToken {
-	
-	public BooleanExpression_IntEqualParserRuleCall_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getIntEqualParserRuleCall_8();
+		return grammarAccess.getBooleanExpressionAccess().getIntEqualParserRuleCall_5();
 	}
 
     @Override
@@ -20312,15 +14914,15 @@ protected class BooleanExpression_IntEqualParserRuleCall_8 extends RuleCallToken
 }
 
 // IntInf
-protected class BooleanExpression_IntInfParserRuleCall_9 extends RuleCallToken {
+protected class BooleanExpression_IntInfParserRuleCall_6 extends RuleCallToken {
 	
-	public BooleanExpression_IntInfParserRuleCall_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public BooleanExpression_IntInfParserRuleCall_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getIntInfParserRuleCall_9();
+		return grammarAccess.getBooleanExpressionAccess().getIntInfParserRuleCall_6();
 	}
 
     @Override
@@ -20348,15 +14950,15 @@ protected class BooleanExpression_IntInfParserRuleCall_9 extends RuleCallToken {
 }
 
 // IntSup
-protected class BooleanExpression_IntSupParserRuleCall_10 extends RuleCallToken {
+protected class BooleanExpression_IntSupParserRuleCall_7 extends RuleCallToken {
 	
-	public BooleanExpression_IntSupParserRuleCall_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public BooleanExpression_IntSupParserRuleCall_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getIntSupParserRuleCall_10();
+		return grammarAccess.getBooleanExpressionAccess().getIntSupParserRuleCall_7();
 	}
 
     @Override
@@ -20384,15 +14986,15 @@ protected class BooleanExpression_IntSupParserRuleCall_10 extends RuleCallToken 
 }
 
 // SeqIsEmpty
-protected class BooleanExpression_SeqIsEmptyParserRuleCall_11 extends RuleCallToken {
+protected class BooleanExpression_SeqIsEmptyParserRuleCall_8 extends RuleCallToken {
 	
-	public BooleanExpression_SeqIsEmptyParserRuleCall_11(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public BooleanExpression_SeqIsEmptyParserRuleCall_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getSeqIsEmptyParserRuleCall_11();
+		return grammarAccess.getBooleanExpressionAccess().getSeqIsEmptyParserRuleCall_8();
 	}
 
     @Override
@@ -20420,15 +15022,15 @@ protected class BooleanExpression_SeqIsEmptyParserRuleCall_11 extends RuleCallTo
 }
 
 // BooleanVariableRef
-protected class BooleanExpression_BooleanVariableRefParserRuleCall_12 extends RuleCallToken {
+protected class BooleanExpression_BooleanVariableRefParserRuleCall_9 extends RuleCallToken {
 	
-	public BooleanExpression_BooleanVariableRefParserRuleCall_12(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public BooleanExpression_BooleanVariableRefParserRuleCall_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getBooleanVariableRefParserRuleCall_12();
+		return grammarAccess.getBooleanExpressionAccess().getBooleanVariableRefParserRuleCall_9();
 	}
 
     @Override
@@ -20456,15 +15058,15 @@ protected class BooleanExpression_BooleanVariableRefParserRuleCall_12 extends Ru
 }
 
 // IntInfEqual
-protected class BooleanExpression_IntInfEqualParserRuleCall_13 extends RuleCallToken {
+protected class BooleanExpression_IntInfEqualParserRuleCall_10 extends RuleCallToken {
 	
-	public BooleanExpression_IntInfEqualParserRuleCall_13(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public BooleanExpression_IntInfEqualParserRuleCall_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getIntInfEqualParserRuleCall_13();
+		return grammarAccess.getBooleanExpressionAccess().getIntInfEqualParserRuleCall_10();
 	}
 
     @Override
@@ -20492,15 +15094,15 @@ protected class BooleanExpression_IntInfEqualParserRuleCall_13 extends RuleCallT
 }
 
 // IntSupEqual
-protected class BooleanExpression_IntSupEqualParserRuleCall_14 extends RuleCallToken {
+protected class BooleanExpression_IntSupEqualParserRuleCall_11 extends RuleCallToken {
 	
-	public BooleanExpression_IntSupEqualParserRuleCall_14(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public BooleanExpression_IntSupEqualParserRuleCall_11(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getIntSupEqualParserRuleCall_14();
+		return grammarAccess.getBooleanExpressionAccess().getIntSupEqualParserRuleCall_11();
 	}
 
     @Override
@@ -20527,1331 +15129,18 @@ protected class BooleanExpression_IntSupEqualParserRuleCall_14 extends RuleCallT
 	}	
 }
 
-// RealInfEqual
-protected class BooleanExpression_RealInfEqualParserRuleCall_15 extends RuleCallToken {
-	
-	public BooleanExpression_RealInfEqualParserRuleCall_15(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getRealInfEqualParserRuleCall_15();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealInfEqualRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealInfEqual_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealSupEqual
-protected class BooleanExpression_RealSupEqualParserRuleCall_16 extends RuleCallToken {
-	
-	public BooleanExpression_RealSupEqualParserRuleCall_16(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBooleanExpressionAccess().getRealSupEqualParserRuleCall_16();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSupEqualRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealSupEqual_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
 
 /************ end Rule BooleanExpression ****************/
 
 
-/************ begin Rule RealSupEqual ****************
- *
- * RealSupEqual returns extension::RealSupEqual:
- * 	"(" ("#ref" name=String0)? leftValue=RealExpression ">=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
- * 	type=[BasicType::Type|EString])? leftValue=RealExpression ">=" rightValue=RealExpression ")";
- *
- **/
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression ">=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-// type=[BasicType::Type|EString])? leftValue=RealExpression ">=" rightValue=RealExpression ")"
-protected class RealSupEqual_Alternatives extends AlternativesToken {
-
-	public RealSupEqual_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealSupEqual_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSupEqualRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression ">=" rightValue=RealExpression ")"
-protected class RealSupEqual_Group_0 extends GroupToken {
-	
-	public RealSupEqual_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_RightParenthesisKeyword_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealSupEqual_LeftParenthesisKeyword_0_0 extends KeywordToken  {
-	
-	public RealSupEqual_LeftParenthesisKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getLeftParenthesisKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0)?
-protected class RealSupEqual_Group_0_1 extends GroupToken {
-	
-	public RealSupEqual_Group_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getGroup_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_NameAssignment_0_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealSupEqual_RefKeyword_0_1_0 extends KeywordToken  {
-	
-	public RealSupEqual_RefKeyword_0_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getRefKeyword_0_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealSupEqual_NameAssignment_0_1_1 extends AssignmentToken  {
-	
-	public RealSupEqual_NameAssignment_0_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getNameAssignment_0_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_RefKeyword_0_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealSupEqualAccess().getNameString0ParserRuleCall_0_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealSupEqualAccess().getNameString0ParserRuleCall_0_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealSupEqual_LeftValueAssignment_0_2 extends AssignmentToken  {
-	
-	public RealSupEqual_LeftValueAssignment_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getLeftValueAssignment_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSupEqualAccess().getLeftValueRealExpressionParserRuleCall_0_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSupEqual_Group_0_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealSupEqual_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ">="
-protected class RealSupEqual_GreaterThanSignEqualsSignKeyword_0_3 extends KeywordToken  {
-	
-	public RealSupEqual_GreaterThanSignEqualsSignKeyword_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getGreaterThanSignEqualsSignKeyword_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_LeftValueAssignment_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealSupEqual_RightValueAssignment_0_4 extends AssignmentToken  {
-	
-	public RealSupEqual_RightValueAssignment_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getRightValueAssignment_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSupEqualAccess().getRightValueRealExpressionParserRuleCall_0_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSupEqual_GreaterThanSignEqualsSignKeyword_0_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealSupEqual_RightParenthesisKeyword_0_5 extends KeywordToken  {
-	
-	public RealSupEqual_RightParenthesisKeyword_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getRightParenthesisKeyword_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_RightValueAssignment_0_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression ">=" rightValue=RealExpression
-// ")"
-protected class RealSupEqual_Group_1 extends GroupToken {
-	
-	public RealSupEqual_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_RightParenthesisKeyword_1_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealSupEqual_LeftParenthesisKeyword_1_0 extends KeywordToken  {
-	
-	public RealSupEqual_LeftParenthesisKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getLeftParenthesisKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-protected class RealSupEqual_Group_1_1 extends GroupToken {
-	
-	public RealSupEqual_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_TypeAssignment_1_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealSupEqual_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public RealSupEqual_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealSupEqual_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public RealSupEqual_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealSupEqualAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealSupEqualAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// ":"
-protected class RealSupEqual_ColonKeyword_1_1_2 extends KeywordToken  {
-	
-	public RealSupEqual_ColonKeyword_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getColonKeyword_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class RealSupEqual_TypeAssignment_1_1_3 extends AssignmentToken  {
-	
-	public RealSupEqual_TypeAssignment_1_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getTypeAssignment_1_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_ColonKeyword_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealSupEqualAccess().getTypeTypeCrossReference_1_1_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealSupEqualAccess().getTypeTypeCrossReference_1_1_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealSupEqual_LeftValueAssignment_1_2 extends AssignmentToken  {
-	
-	public RealSupEqual_LeftValueAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getLeftValueAssignment_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSupEqualAccess().getLeftValueRealExpressionParserRuleCall_1_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSupEqual_Group_1_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealSupEqual_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ">="
-protected class RealSupEqual_GreaterThanSignEqualsSignKeyword_1_3 extends KeywordToken  {
-	
-	public RealSupEqual_GreaterThanSignEqualsSignKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getGreaterThanSignEqualsSignKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_LeftValueAssignment_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealSupEqual_RightValueAssignment_1_4 extends AssignmentToken  {
-	
-	public RealSupEqual_RightValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getRightValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSupEqualAccess().getRightValueRealExpressionParserRuleCall_1_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSupEqual_GreaterThanSignEqualsSignKeyword_1_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealSupEqual_RightParenthesisKeyword_1_5 extends KeywordToken  {
-	
-	public RealSupEqual_RightParenthesisKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSupEqualAccess().getRightParenthesisKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSupEqual_RightValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule RealSupEqual ****************/
-
-
-/************ begin Rule RealInfEqual ****************
- *
- * RealInfEqual returns extension::RealInfEqual:
- * 	"(" ("#ref" name=String0)? leftValue=RealExpression "<=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
- * 	type=[BasicType::Type|EString])? leftValue=RealExpression "<=" rightValue=RealExpression ")";
- *
- **/
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "<=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-// type=[BasicType::Type|EString])? leftValue=RealExpression "<=" rightValue=RealExpression ")"
-protected class RealInfEqual_Alternatives extends AlternativesToken {
-
-	public RealInfEqual_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealInfEqual_Group_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealInfEqualRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "(" ("#ref" name=String0)? leftValue=RealExpression "<=" rightValue=RealExpression ")"
-protected class RealInfEqual_Group_0 extends GroupToken {
-	
-	public RealInfEqual_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_RightParenthesisKeyword_0_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealInfEqual_LeftParenthesisKeyword_0_0 extends KeywordToken  {
-	
-	public RealInfEqual_LeftParenthesisKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getLeftParenthesisKeyword_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0)?
-protected class RealInfEqual_Group_0_1 extends GroupToken {
-	
-	public RealInfEqual_Group_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getGroup_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_NameAssignment_0_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealInfEqual_RefKeyword_0_1_0 extends KeywordToken  {
-	
-	public RealInfEqual_RefKeyword_0_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getRefKeyword_0_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealInfEqual_NameAssignment_0_1_1 extends AssignmentToken  {
-	
-	public RealInfEqual_NameAssignment_0_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getNameAssignment_0_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_RefKeyword_0_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealInfEqualAccess().getNameString0ParserRuleCall_0_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealInfEqualAccess().getNameString0ParserRuleCall_0_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealInfEqual_LeftValueAssignment_0_2 extends AssignmentToken  {
-	
-	public RealInfEqual_LeftValueAssignment_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getLeftValueAssignment_0_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealInfEqualAccess().getLeftValueRealExpressionParserRuleCall_0_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealInfEqual_Group_0_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealInfEqual_LeftParenthesisKeyword_0_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "<="
-protected class RealInfEqual_LessThanSignEqualsSignKeyword_0_3 extends KeywordToken  {
-	
-	public RealInfEqual_LessThanSignEqualsSignKeyword_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getLessThanSignEqualsSignKeyword_0_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_LeftValueAssignment_0_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealInfEqual_RightValueAssignment_0_4 extends AssignmentToken  {
-	
-	public RealInfEqual_RightValueAssignment_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getRightValueAssignment_0_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealInfEqualAccess().getRightValueRealExpressionParserRuleCall_0_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealInfEqual_LessThanSignEqualsSignKeyword_0_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealInfEqual_RightParenthesisKeyword_0_5 extends KeywordToken  {
-	
-	public RealInfEqual_RightParenthesisKeyword_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getRightParenthesisKeyword_0_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_RightValueAssignment_0_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// "(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "<=" rightValue=RealExpression
-// ")"
-protected class RealInfEqual_Group_1 extends GroupToken {
-	
-	public RealInfEqual_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_RightParenthesisKeyword_1_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "("
-protected class RealInfEqual_LeftParenthesisKeyword_1_0 extends KeywordToken  {
-	
-	public RealInfEqual_LeftParenthesisKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getLeftParenthesisKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// ("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-protected class RealInfEqual_Group_1_1 extends GroupToken {
-	
-	public RealInfEqual_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getGroup_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_TypeAssignment_1_1_3(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealInfEqual_RefKeyword_1_1_0 extends KeywordToken  {
-	
-	public RealInfEqual_RefKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getRefKeyword_1_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=String0
-protected class RealInfEqual_NameAssignment_1_1_1 extends AssignmentToken  {
-	
-	public RealInfEqual_NameAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getNameAssignment_1_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_RefKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealInfEqualAccess().getNameString0ParserRuleCall_1_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealInfEqualAccess().getNameString0ParserRuleCall_1_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-// ":"
-protected class RealInfEqual_ColonKeyword_1_1_2 extends KeywordToken  {
-	
-	public RealInfEqual_ColonKeyword_1_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getColonKeyword_1_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_NameAssignment_1_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// type=[BasicType::Type|EString]
-protected class RealInfEqual_TypeAssignment_1_1_3 extends AssignmentToken  {
-	
-	public RealInfEqual_TypeAssignment_1_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getTypeAssignment_1_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_ColonKeyword_1_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("type",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("type");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealInfEqualAccess().getTypeTypeCrossReference_1_1_3_0().getType().getClassifier())) {
-				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getRealInfEqualAccess().getTypeTypeCrossReference_1_1_3_0(); 
-				return obj;
-			}
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealExpression
-protected class RealInfEqual_LeftValueAssignment_1_2 extends AssignmentToken  {
-	
-	public RealInfEqual_LeftValueAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getLeftValueAssignment_1_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealInfEqualAccess().getLeftValueRealExpressionParserRuleCall_1_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealInfEqual_Group_1_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealInfEqual_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "<="
-protected class RealInfEqual_LessThanSignEqualsSignKeyword_1_3 extends KeywordToken  {
-	
-	public RealInfEqual_LessThanSignEqualsSignKeyword_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getLessThanSignEqualsSignKeyword_1_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_LeftValueAssignment_1_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealInfEqual_RightValueAssignment_1_4 extends AssignmentToken  {
-	
-	public RealInfEqual_RightValueAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getRightValueAssignment_1_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealInfEqualAccess().getRightValueRealExpressionParserRuleCall_1_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealInfEqual_LessThanSignEqualsSignKeyword_1_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// ")"
-protected class RealInfEqual_RightParenthesisKeyword_1_5 extends KeywordToken  {
-	
-	public RealInfEqual_RightParenthesisKeyword_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealInfEqualAccess().getRightParenthesisKeyword_1_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealInfEqual_RightValueAssignment_1_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-
-/************ end Rule RealInfEqual ****************/
-
-
 /************ begin Rule IntSupEqual ****************
  *
- * IntSupEqual returns extension::IntSupEqual:
+ * / *RealSupEqual returns extension::RealSupEqual:
+ * 	('('('#ref' name=String0)? leftValue=RealExpression '>=' rightValue=RealExpression')')|
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>=' rightValue=RealExpression')');* / / *RealInfEqual returns extension::RealInfEqual:
+ * 	('('('#ref' name=String0)? leftValue=RealExpression '<=' rightValue=RealExpression')')|
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '<=' rightValue=RealExpression')');* / IntSupEqual
+ * returns extension::IntSupEqual:
  * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression ">=" rightValue=IntegerExpression ")" | "(" ("#ref"
  * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression ">=" rightValue=IntegerExpression ")";
  *
@@ -23097,12 +16386,56 @@ protected class IntInfEqual_RightParenthesisKeyword_1_5 extends KeywordToken  {
 
 /************ begin Rule ClassicalExpression0 ****************
  *
- * ClassicalExpression0 returns ClassicalExpression::ClassicalExpression:
- * 	BooleanExpression | RealExpression | IntegerExpression | SeqExpression;
+ * / *RealExpression returns ClassicalExpression::RealExpression:
+ * 	BinaryRealExpression|UnaryRealExpression|RealRef|RealVariableRef;
+ * 	
+ * BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
+ * 	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
+ * 
+ * UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
+ * 	UnaryRealPlus|UnaryRealMinus;* / / * 
+ * RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
+ * 	{extension::RealSelfPlusAssignement}
+ * 	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
+ * ;
+ * 
+ * RealSelfMinusAssign returns extension::RealSelfMinusAssignement:
+ * 	{extension::RealSelfMinusAssignement}
+ * 	('#ref'name=EString)? leftValue=RealRef '-=' rightValue=RealExpression
+ * ;
+ * 
+ * RealSelfMultAssign returns extension::RealSelfMultiplyAssignement:
+ * 	{extension::RealSelfMultiplyAssignement}
+ * 	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
+ * ;
+ * * / ClassicalExpression0 returns ClassicalExpression::ClassicalExpression:
+ * 	BooleanExpression / *| RealExpression* / | IntegerExpression | SeqExpression;
  *
  **/
 
-// BooleanExpression | RealExpression | IntegerExpression | SeqExpression
+// BooleanExpression / *| RealExpression* / / *RealExpression returns ClassicalExpression::RealExpression:
+// 	BinaryRealExpression|UnaryRealExpression|RealRef|RealVariableRef;
+// 	
+// BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
+// 	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
+// 
+// UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
+// 	UnaryRealPlus|UnaryRealMinus;* / / * 
+// RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
+// 	{extension::RealSelfPlusAssignement}
+// 	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
+// ;
+// 
+// RealSelfMinusAssign returns extension::RealSelfMinusAssignement:
+// 	{extension::RealSelfMinusAssignement}
+// 	('#ref'name=EString)? leftValue=RealRef '-=' rightValue=RealExpression
+// ;
+// 
+// RealSelfMultAssign returns extension::RealSelfMultiplyAssignement:
+// 	{extension::RealSelfMultiplyAssignement}
+// 	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
+// ;
+// * / | IntegerExpression | SeqExpression
 protected class ClassicalExpression0_Alternatives extends AlternativesToken {
 
 	public ClassicalExpression0_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -23118,9 +16451,8 @@ protected class ClassicalExpression0_Alternatives extends AlternativesToken {
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new ClassicalExpression0_BooleanExpressionParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new ClassicalExpression0_RealExpressionParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new ClassicalExpression0_IntegerExpressionParserRuleCall_2(lastRuleCallOrigin, this, 2, inst);
-			case 3: return new ClassicalExpression0_SeqExpressionParserRuleCall_3(lastRuleCallOrigin, this, 3, inst);
+			case 1: return new ClassicalExpression0_IntegerExpressionParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new ClassicalExpression0_SeqExpressionParserRuleCall_2(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -23150,19 +16482,6 @@ protected class ClassicalExpression0_Alternatives extends AlternativesToken {
 		   getEObject().eClass() != grammarAccess.getNumberSeqRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getNumberSeqVariableRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getOrRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealEqualRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealInfRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealInfEqualRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealRefRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMinusAssignAccess().getRealSelfMinusAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMultAssignAccess().getRealSelfMultiplyAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfPlusAssignAccess().getRealSelfPlusAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSupRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSupEqualRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealVariableRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getSeqDecrRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getSeqGetHeadRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getSeqGetTailRule().getType().getClassifier() && 
@@ -23170,8 +16489,6 @@ protected class ClassicalExpression0_Alternatives extends AlternativesToken {
 		   getEObject().eClass() != grammarAccess.getSeqSchedRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getUnaryIntMinusRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getUnaryIntPlusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getXorRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
@@ -23211,11 +16528,6 @@ protected class ClassicalExpression0_BooleanExpressionParserRuleCall_0 extends R
 		   getEObject().eClass() != grammarAccess.getIntSupEqualRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getNotRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getOrRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealEqualRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealInfRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealInfEqualRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSupRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSupEqualRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getSeqIsEmptyRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getXorRule().getType().getClassifier())
 			return null;
@@ -23231,61 +16543,16 @@ protected class ClassicalExpression0_BooleanExpressionParserRuleCall_0 extends R
 	}	
 }
 
-// RealExpression
-protected class ClassicalExpression0_RealExpressionParserRuleCall_1 extends RuleCallToken {
-	
-	public ClassicalExpression0_RealExpressionParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getClassicalExpression0Access().getRealExpressionParserRuleCall_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealRefRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMinusAssignAccess().getRealSelfMinusAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMultAssignAccess().getRealSelfMultiplyAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfPlusAssignAccess().getRealSelfPlusAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealVariableRefRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealExpression_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
 // IntegerExpression
-protected class ClassicalExpression0_IntegerExpressionParserRuleCall_2 extends RuleCallToken {
+protected class ClassicalExpression0_IntegerExpressionParserRuleCall_1 extends RuleCallToken {
 	
-	public ClassicalExpression0_IntegerExpressionParserRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public ClassicalExpression0_IntegerExpressionParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getClassicalExpression0Access().getIntegerExpressionParserRuleCall_2();
+		return grammarAccess.getClassicalExpression0Access().getIntegerExpressionParserRuleCall_1();
 	}
 
     @Override
@@ -23325,16 +16592,38 @@ protected class ClassicalExpression0_IntegerExpressionParserRuleCall_2 extends R
 	}	
 }
 
-// SeqExpression
-protected class ClassicalExpression0_SeqExpressionParserRuleCall_3 extends RuleCallToken {
+// / *RealExpression returns ClassicalExpression::RealExpression:
+// 	BinaryRealExpression|UnaryRealExpression|RealRef|RealVariableRef;
+// 	
+// BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
+// 	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
+// 
+// UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
+// 	UnaryRealPlus|UnaryRealMinus;* / / * 
+// RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
+// 	{extension::RealSelfPlusAssignement}
+// 	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
+// ;
+// 
+// RealSelfMinusAssign returns extension::RealSelfMinusAssignement:
+// 	{extension::RealSelfMinusAssignement}
+// 	('#ref'name=EString)? leftValue=RealRef '-=' rightValue=RealExpression
+// ;
+// 
+// RealSelfMultAssign returns extension::RealSelfMultiplyAssignement:
+// 	{extension::RealSelfMultiplyAssignement}
+// 	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
+// ;
+// * / SeqExpression
+protected class ClassicalExpression0_SeqExpressionParserRuleCall_2 extends RuleCallToken {
 	
-	public ClassicalExpression0_SeqExpressionParserRuleCall_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public ClassicalExpression0_SeqExpressionParserRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getClassicalExpression0Access().getSeqExpressionParserRuleCall_3();
+		return grammarAccess.getClassicalExpression0Access().getSeqExpressionParserRuleCall_2();
 	}
 
     @Override
@@ -23367,1368 +16656,6 @@ protected class ClassicalExpression0_SeqExpressionParserRuleCall_3 extends RuleC
 
 
 /************ end Rule ClassicalExpression0 ****************/
-
-
-/************ begin Rule RealExpression ****************
- *
- * RealExpression returns ClassicalExpression::RealExpression:
- * 	BinaryRealExpression | UnaryRealExpression | RealRef | RealVariableRef;
- *
- **/
-
-// BinaryRealExpression | UnaryRealExpression | RealRef | RealVariableRef
-protected class RealExpression_Alternatives extends AlternativesToken {
-
-	public RealExpression_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getRealExpressionAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_BinaryRealExpressionParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RealExpression_UnaryRealExpressionParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new RealExpression_RealRefParserRuleCall_2(lastRuleCallOrigin, this, 2, inst);
-			case 3: return new RealExpression_RealVariableRefParserRuleCall_3(lastRuleCallOrigin, this, 3, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealRefRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMinusAssignAccess().getRealSelfMinusAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMultAssignAccess().getRealSelfMultiplyAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfPlusAssignAccess().getRealSelfPlusAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealVariableRefRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// BinaryRealExpression
-protected class RealExpression_BinaryRealExpressionParserRuleCall_0 extends RuleCallToken {
-	
-	public RealExpression_BinaryRealExpressionParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getRealExpressionAccess().getBinaryRealExpressionParserRuleCall_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new BinaryRealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMinusAssignAccess().getRealSelfMinusAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMultAssignAccess().getRealSelfMultiplyAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfPlusAssignAccess().getRealSelfPlusAssignementAction_0().getType().getClassifier())
-			return null;
-		if(checkForRecursion(BinaryRealExpression_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// UnaryRealExpression
-protected class RealExpression_UnaryRealExpressionParserRuleCall_1 extends RuleCallToken {
-	
-	public RealExpression_UnaryRealExpressionParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getRealExpressionAccess().getUnaryRealExpressionParserRuleCall_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(UnaryRealExpression_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealRef
-protected class RealExpression_RealRefParserRuleCall_2 extends RuleCallToken {
-	
-	public RealExpression_RealRefParserRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getRealExpressionAccess().getRealRefParserRuleCall_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealRefRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealRef_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealVariableRef
-protected class RealExpression_RealVariableRefParserRuleCall_3 extends RuleCallToken {
-	
-	public RealExpression_RealVariableRefParserRuleCall_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getRealExpressionAccess().getRealVariableRefParserRuleCall_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealVariableRef_Group(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealVariableRefRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealVariableRef_Group.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-
-/************ end Rule RealExpression ****************/
-
-
-/************ begin Rule BinaryRealExpression ****************
- *
- * BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
- * 	RealPlus | RealMinus | RealMultiply | RealSelfPlusAssign | RealSelfMinusAssign | RealSelfMultAssign;
- *
- **/
-
-// RealPlus | RealMinus | RealMultiply | RealSelfPlusAssign | RealSelfMinusAssign | RealSelfMultAssign
-protected class BinaryRealExpression_Alternatives extends AlternativesToken {
-
-	public BinaryRealExpression_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getBinaryRealExpressionAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new BinaryRealExpression_RealPlusParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new BinaryRealExpression_RealMinusParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new BinaryRealExpression_RealMultiplyParserRuleCall_2(lastRuleCallOrigin, this, 2, inst);
-			case 3: return new BinaryRealExpression_RealSelfPlusAssignParserRuleCall_3(lastRuleCallOrigin, this, 3, inst);
-			case 4: return new BinaryRealExpression_RealSelfMinusAssignParserRuleCall_4(lastRuleCallOrigin, this, 4, inst);
-			case 5: return new BinaryRealExpression_RealSelfMultAssignParserRuleCall_5(lastRuleCallOrigin, this, 5, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMinusAssignAccess().getRealSelfMinusAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfMultAssignAccess().getRealSelfMultiplyAssignementAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRealSelfPlusAssignAccess().getRealSelfPlusAssignementAction_0().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// RealPlus
-protected class BinaryRealExpression_RealPlusParserRuleCall_0 extends RuleCallToken {
-	
-	public BinaryRealExpression_RealPlusParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBinaryRealExpressionAccess().getRealPlusParserRuleCall_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealPlus_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealPlus_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealMinus
-protected class BinaryRealExpression_RealMinusParserRuleCall_1 extends RuleCallToken {
-	
-	public BinaryRealExpression_RealMinusParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBinaryRealExpressionAccess().getRealMinusParserRuleCall_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMinus_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealMinus_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealMultiply
-protected class BinaryRealExpression_RealMultiplyParserRuleCall_2 extends RuleCallToken {
-	
-	public BinaryRealExpression_RealMultiplyParserRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBinaryRealExpressionAccess().getRealMultiplyParserRuleCall_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealMultiply_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealMultiply_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealSelfPlusAssign
-protected class BinaryRealExpression_RealSelfPlusAssignParserRuleCall_3 extends RuleCallToken {
-	
-	public BinaryRealExpression_RealSelfPlusAssignParserRuleCall_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBinaryRealExpressionAccess().getRealSelfPlusAssignParserRuleCall_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfPlusAssign_Group(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSelfPlusAssignAccess().getRealSelfPlusAssignementAction_0().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealSelfPlusAssign_Group.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealSelfMinusAssign
-protected class BinaryRealExpression_RealSelfMinusAssignParserRuleCall_4 extends RuleCallToken {
-	
-	public BinaryRealExpression_RealSelfMinusAssignParserRuleCall_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBinaryRealExpressionAccess().getRealSelfMinusAssignParserRuleCall_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMinusAssign_Group(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSelfMinusAssignAccess().getRealSelfMinusAssignementAction_0().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealSelfMinusAssign_Group.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// RealSelfMultAssign
-protected class BinaryRealExpression_RealSelfMultAssignParserRuleCall_5 extends RuleCallToken {
-	
-	public BinaryRealExpression_RealSelfMultAssignParserRuleCall_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getBinaryRealExpressionAccess().getRealSelfMultAssignParserRuleCall_5();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMultAssign_Group(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSelfMultAssignAccess().getRealSelfMultiplyAssignementAction_0().getType().getClassifier())
-			return null;
-		if(checkForRecursion(RealSelfMultAssign_Group.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-
-/************ end Rule BinaryRealExpression ****************/
-
-
-/************ begin Rule UnaryRealExpression ****************
- *
- * UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
- * 	UnaryRealPlus | UnaryRealMinus;
- *
- **/
-
-// UnaryRealPlus | UnaryRealMinus
-protected class UnaryRealExpression_Alternatives extends AlternativesToken {
-
-	public UnaryRealExpression_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getUnaryRealExpressionAccess().getAlternatives();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealExpression_UnaryRealPlusParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new UnaryRealExpression_UnaryRealMinusParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// UnaryRealPlus
-protected class UnaryRealExpression_UnaryRealPlusParserRuleCall_0 extends RuleCallToken {
-	
-	public UnaryRealExpression_UnaryRealPlusParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getUnaryRealExpressionAccess().getUnaryRealPlusParserRuleCall_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealPlus_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(UnaryRealPlus_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// UnaryRealMinus
-protected class UnaryRealExpression_UnaryRealMinusParserRuleCall_1 extends RuleCallToken {
-	
-	public UnaryRealExpression_UnaryRealMinusParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getUnaryRealExpressionAccess().getUnaryRealMinusParserRuleCall_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new UnaryRealMinus_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(UnaryRealMinus_Alternatives.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-
-/************ end Rule UnaryRealExpression ****************/
-
-
-/************ begin Rule RealSelfPlusAssign ****************
- *
- * RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
- * 	{extension::RealSelfPlusAssignement} ("#ref" name=EString)? leftValue=RealRef "+=" rightValue=RealExpression;
- *
- **/
-
-// {extension::RealSelfPlusAssignement} ("#ref" name=EString)? leftValue=RealRef "+=" rightValue=RealExpression
-protected class RealSelfPlusAssign_Group extends GroupToken {
-	
-	public RealSelfPlusAssign_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSelfPlusAssignAccess().getGroup();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfPlusAssign_RightValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSelfPlusAssignAccess().getRealSelfPlusAssignementAction_0().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// {extension::RealSelfPlusAssignement}
-protected class RealSelfPlusAssign_RealSelfPlusAssignementAction_0 extends ActionToken  {
-
-	public RealSelfPlusAssign_RealSelfPlusAssignementAction_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Action getGrammarElement() {
-		return grammarAccess.getRealSelfPlusAssignAccess().getRealSelfPlusAssignementAction_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(!eObjectConsumer.isConsumed()) return null;
-		return eObjectConsumer;
-	}
-}
-
-// ("#ref" name=EString)?
-protected class RealSelfPlusAssign_Group_1 extends GroupToken {
-	
-	public RealSelfPlusAssign_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSelfPlusAssignAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfPlusAssign_NameAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealSelfPlusAssign_RefKeyword_1_0 extends KeywordToken  {
-	
-	public RealSelfPlusAssign_RefKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSelfPlusAssignAccess().getRefKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfPlusAssign_RealSelfPlusAssignementAction_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=EString
-protected class RealSelfPlusAssign_NameAssignment_1_1 extends AssignmentToken  {
-	
-	public RealSelfPlusAssign_NameAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSelfPlusAssignAccess().getNameAssignment_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfPlusAssign_RefKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealSelfPlusAssignAccess().getNameEStringParserRuleCall_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealSelfPlusAssignAccess().getNameEStringParserRuleCall_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealRef
-protected class RealSelfPlusAssign_LeftValueAssignment_2 extends AssignmentToken  {
-	
-	public RealSelfPlusAssign_LeftValueAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSelfPlusAssignAccess().getLeftValueAssignment_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealRefRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSelfPlusAssignAccess().getLeftValueRealRefParserRuleCall_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSelfPlusAssign_Group_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealSelfPlusAssign_RealSelfPlusAssignementAction_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "+="
-protected class RealSelfPlusAssign_PlusSignEqualsSignKeyword_3 extends KeywordToken  {
-	
-	public RealSelfPlusAssign_PlusSignEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSelfPlusAssignAccess().getPlusSignEqualsSignKeyword_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfPlusAssign_LeftValueAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealSelfPlusAssign_RightValueAssignment_4 extends AssignmentToken  {
-	
-	public RealSelfPlusAssign_RightValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSelfPlusAssignAccess().getRightValueAssignment_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSelfPlusAssignAccess().getRightValueRealExpressionParserRuleCall_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSelfPlusAssign_PlusSignEqualsSignKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-
-/************ end Rule RealSelfPlusAssign ****************/
-
-
-/************ begin Rule RealSelfMinusAssign ****************
- *
- * RealSelfMinusAssign returns extension::RealSelfMinusAssignement:
- * 	{extension::RealSelfMinusAssignement} ("#ref" name=EString)? leftValue=RealRef "-=" rightValue=RealExpression;
- *
- **/
-
-// {extension::RealSelfMinusAssignement} ("#ref" name=EString)? leftValue=RealRef "-=" rightValue=RealExpression
-protected class RealSelfMinusAssign_Group extends GroupToken {
-	
-	public RealSelfMinusAssign_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSelfMinusAssignAccess().getGroup();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMinusAssign_RightValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSelfMinusAssignAccess().getRealSelfMinusAssignementAction_0().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// {extension::RealSelfMinusAssignement}
-protected class RealSelfMinusAssign_RealSelfMinusAssignementAction_0 extends ActionToken  {
-
-	public RealSelfMinusAssign_RealSelfMinusAssignementAction_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Action getGrammarElement() {
-		return grammarAccess.getRealSelfMinusAssignAccess().getRealSelfMinusAssignementAction_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(!eObjectConsumer.isConsumed()) return null;
-		return eObjectConsumer;
-	}
-}
-
-// ("#ref" name=EString)?
-protected class RealSelfMinusAssign_Group_1 extends GroupToken {
-	
-	public RealSelfMinusAssign_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSelfMinusAssignAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMinusAssign_NameAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealSelfMinusAssign_RefKeyword_1_0 extends KeywordToken  {
-	
-	public RealSelfMinusAssign_RefKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSelfMinusAssignAccess().getRefKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMinusAssign_RealSelfMinusAssignementAction_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=EString
-protected class RealSelfMinusAssign_NameAssignment_1_1 extends AssignmentToken  {
-	
-	public RealSelfMinusAssign_NameAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSelfMinusAssignAccess().getNameAssignment_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMinusAssign_RefKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealSelfMinusAssignAccess().getNameEStringParserRuleCall_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealSelfMinusAssignAccess().getNameEStringParserRuleCall_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealRef
-protected class RealSelfMinusAssign_LeftValueAssignment_2 extends AssignmentToken  {
-	
-	public RealSelfMinusAssign_LeftValueAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSelfMinusAssignAccess().getLeftValueAssignment_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealRefRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSelfMinusAssignAccess().getLeftValueRealRefParserRuleCall_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSelfMinusAssign_Group_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealSelfMinusAssign_RealSelfMinusAssignementAction_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "-="
-protected class RealSelfMinusAssign_HyphenMinusEqualsSignKeyword_3 extends KeywordToken  {
-	
-	public RealSelfMinusAssign_HyphenMinusEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSelfMinusAssignAccess().getHyphenMinusEqualsSignKeyword_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMinusAssign_LeftValueAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealSelfMinusAssign_RightValueAssignment_4 extends AssignmentToken  {
-	
-	public RealSelfMinusAssign_RightValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSelfMinusAssignAccess().getRightValueAssignment_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSelfMinusAssignAccess().getRightValueRealExpressionParserRuleCall_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSelfMinusAssign_HyphenMinusEqualsSignKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-
-/************ end Rule RealSelfMinusAssign ****************/
-
-
-/************ begin Rule RealSelfMultAssign ****************
- *
- * RealSelfMultAssign returns extension::RealSelfMultiplyAssignement:
- * 	{extension::RealSelfMultiplyAssignement} ("#ref" name=EString)? leftValue=RealRef "*=" rightValue=RealExpression;
- *
- **/
-
-// {extension::RealSelfMultiplyAssignement} ("#ref" name=EString)? leftValue=RealRef "*=" rightValue=RealExpression
-protected class RealSelfMultAssign_Group extends GroupToken {
-	
-	public RealSelfMultAssign_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSelfMultAssignAccess().getGroup();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMultAssign_RightValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getRealSelfMultAssignAccess().getRealSelfMultiplyAssignementAction_0().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// {extension::RealSelfMultiplyAssignement}
-protected class RealSelfMultAssign_RealSelfMultiplyAssignementAction_0 extends ActionToken  {
-
-	public RealSelfMultAssign_RealSelfMultiplyAssignementAction_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Action getGrammarElement() {
-		return grammarAccess.getRealSelfMultAssignAccess().getRealSelfMultiplyAssignementAction_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(!eObjectConsumer.isConsumed()) return null;
-		return eObjectConsumer;
-	}
-}
-
-// ("#ref" name=EString)?
-protected class RealSelfMultAssign_Group_1 extends GroupToken {
-	
-	public RealSelfMultAssign_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getRealSelfMultAssignAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMultAssign_NameAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "#ref"
-protected class RealSelfMultAssign_RefKeyword_1_0 extends KeywordToken  {
-	
-	public RealSelfMultAssign_RefKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSelfMultAssignAccess().getRefKeyword_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMultAssign_RealSelfMultiplyAssignementAction_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// name=EString
-protected class RealSelfMultAssign_NameAssignment_1_1 extends AssignmentToken  {
-	
-	public RealSelfMultAssign_NameAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSelfMultAssignAccess().getNameAssignment_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMultAssign_RefKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealSelfMultAssignAccess().getNameEStringParserRuleCall_1_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRealSelfMultAssignAccess().getNameEStringParserRuleCall_1_1_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-// leftValue=RealRef
-protected class RealSelfMultAssign_LeftValueAssignment_2 extends AssignmentToken  {
-	
-	public RealSelfMultAssign_LeftValueAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSelfMultAssignAccess().getLeftValueAssignment_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealRef_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealRefRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSelfMultAssignAccess().getLeftValueRealRefParserRuleCall_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSelfMultAssign_Group_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new RealSelfMultAssign_RealSelfMultiplyAssignementAction_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "*="
-protected class RealSelfMultAssign_AsteriskEqualsSignKeyword_3 extends KeywordToken  {
-	
-	public RealSelfMultAssign_AsteriskEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getRealSelfMultAssignAccess().getAsteriskEqualsSignKeyword_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealSelfMultAssign_LeftValueAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// rightValue=RealExpression
-protected class RealSelfMultAssign_RightValueAssignment_4 extends AssignmentToken  {
-	
-	public RealSelfMultAssign_RightValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getRealSelfMultAssignAccess().getRightValueAssignment_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getRealSelfMultAssignAccess().getRightValueRealExpressionParserRuleCall_4_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new RealSelfMultAssign_AsteriskEqualsSignKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-
-/************ end Rule RealSelfMultAssign ****************/
 
 
 /************ begin Rule Library ****************
@@ -31936,6 +23863,310 @@ protected class BindableEntity_AbstractEntityParserRuleCall_2 extends RuleCallTo
 /************ end Rule BindableEntity ****************/
 
 
+/************ begin Rule RealExpression ****************
+ *
+ * RealExpression returns ClassicalExpression::RealExpression:
+ * 	RealRef | UnaryRealPlus | UnaryRealMinus | RealPlus | RealMinus | RealMultiply | RealVariableRef;
+ *
+ **/
+
+// RealRef | UnaryRealPlus | UnaryRealMinus | RealPlus | RealMinus | RealMultiply | RealVariableRef
+protected class RealExpression_Alternatives extends AlternativesToken {
+
+	public RealExpression_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Alternatives getGrammarElement() {
+		return grammarAccess.getRealExpressionAccess().getAlternatives();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_RealRefParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RealExpression_UnaryRealPlusParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new RealExpression_UnaryRealMinusParserRuleCall_2(lastRuleCallOrigin, this, 2, inst);
+			case 3: return new RealExpression_RealPlusParserRuleCall_3(lastRuleCallOrigin, this, 3, inst);
+			case 4: return new RealExpression_RealMinusParserRuleCall_4(lastRuleCallOrigin, this, 4, inst);
+			case 5: return new RealExpression_RealMultiplyParserRuleCall_5(lastRuleCallOrigin, this, 5, inst);
+			case 6: return new RealExpression_RealVariableRefParserRuleCall_6(lastRuleCallOrigin, this, 6, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getRealRefRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getRealVariableRefRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// RealRef
+protected class RealExpression_RealRefParserRuleCall_0 extends RuleCallToken {
+	
+	public RealExpression_RealRefParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getRealExpressionAccess().getRealRefParserRuleCall_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealRef_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealRefRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(RealRef_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// UnaryRealPlus
+protected class RealExpression_UnaryRealPlusParserRuleCall_1 extends RuleCallToken {
+	
+	public RealExpression_UnaryRealPlusParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getRealExpressionAccess().getUnaryRealPlusParserRuleCall_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(UnaryRealPlus_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// UnaryRealMinus
+protected class RealExpression_UnaryRealMinusParserRuleCall_2 extends RuleCallToken {
+	
+	public RealExpression_UnaryRealMinusParserRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getRealExpressionAccess().getUnaryRealMinusParserRuleCall_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(UnaryRealMinus_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// RealPlus
+protected class RealExpression_RealPlusParserRuleCall_3 extends RuleCallToken {
+	
+	public RealExpression_RealPlusParserRuleCall_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getRealExpressionAccess().getRealPlusParserRuleCall_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealPlus_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(RealPlus_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// RealMinus
+protected class RealExpression_RealMinusParserRuleCall_4 extends RuleCallToken {
+	
+	public RealExpression_RealMinusParserRuleCall_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getRealExpressionAccess().getRealMinusParserRuleCall_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMinus_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(RealMinus_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// RealMultiply
+protected class RealExpression_RealMultiplyParserRuleCall_5 extends RuleCallToken {
+	
+	public RealExpression_RealMultiplyParserRuleCall_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getRealExpressionAccess().getRealMultiplyParserRuleCall_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMultiply_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(RealMultiply_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// RealVariableRef
+protected class RealExpression_RealVariableRefParserRuleCall_6 extends RuleCallToken {
+	
+	public RealExpression_RealVariableRefParserRuleCall_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getRealExpressionAccess().getRealVariableRefParserRuleCall_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealVariableRef_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealVariableRefRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(RealVariableRef_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+
+/************ end Rule RealExpression ****************/
+
+
 /************ begin Rule SeqExpression ****************
  *
  * SeqExpression returns ClassicalExpression::SeqExpression:
@@ -33550,6 +25781,2804 @@ protected class AbstractEntity_DesiredEventKindAssignment_3 extends AssignmentTo
 
 /************ end Rule AbstractEntity ****************/
 
+
+
+/************ begin Rule RealRef ****************
+ *
+ * RealRef returns ClassicalExpression::RealRef:
+ * 	"RealRef" "{" ("name" name=ID)? "realElem" realElem=[BasicType::RealElement|EString] "}";
+ *
+ **/
+
+// "RealRef" "{" ("name" name=ID)? "realElem" realElem=[BasicType::RealElement|EString] "}"
+protected class RealRef_Group extends GroupToken {
+	
+	public RealRef_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealRefAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealRef_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealRefRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "RealRef"
+protected class RealRef_RealRefKeyword_0 extends KeywordToken  {
+	
+	public RealRef_RealRefKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealRefAccess().getRealRefKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "{"
+protected class RealRef_LeftCurlyBracketKeyword_1 extends KeywordToken  {
+	
+	public RealRef_LeftCurlyBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealRefAccess().getLeftCurlyBracketKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealRef_RealRefKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("name" name=ID)?
+protected class RealRef_Group_2 extends GroupToken {
+	
+	public RealRef_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealRefAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealRef_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "name"
+protected class RealRef_NameKeyword_2_0 extends KeywordToken  {
+	
+	public RealRef_NameKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealRefAccess().getNameKeyword_2_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealRef_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class RealRef_NameAssignment_2_1 extends AssignmentToken  {
+	
+	public RealRef_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealRefAccess().getNameAssignment_2_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealRef_NameKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealRefAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getRealRefAccess().getNameIDTerminalRuleCall_2_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+// "realElem"
+protected class RealRef_RealElemKeyword_3 extends KeywordToken  {
+	
+	public RealRef_RealElemKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealRefAccess().getRealElemKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealRef_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RealRef_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// realElem=[BasicType::RealElement|EString]
+protected class RealRef_RealElemAssignment_4 extends AssignmentToken  {
+	
+	public RealRef_RealElemAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealRefAccess().getRealElemAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealRef_RealElemKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("realElem",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("realElem");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealRefAccess().getRealElemRealElementCrossReference_4_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getRealRefAccess().getRealElemRealElementCrossReference_4_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "}"
+protected class RealRef_RightCurlyBracketKeyword_5 extends KeywordToken  {
+	
+	public RealRef_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealRefAccess().getRightCurlyBracketKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealRef_RealElemAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule RealRef ****************/
+
+
+/************ begin Rule UnaryRealPlus ****************
+ *
+ * UnaryRealPlus returns ClassicalExpression::UnaryRealPlus:
+ * 	"UnaryRealPlus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression
+ * 	"}";
+ *
+ **/
+
+// "UnaryRealPlus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression
+// "}"
+protected class UnaryRealPlus_Group extends GroupToken {
+	
+	public UnaryRealPlus_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_RightCurlyBracketKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getUnaryRealPlusRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "UnaryRealPlus"
+protected class UnaryRealPlus_UnaryRealPlusKeyword_0 extends KeywordToken  {
+	
+	public UnaryRealPlus_UnaryRealPlusKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getUnaryRealPlusKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "{"
+protected class UnaryRealPlus_LeftCurlyBracketKeyword_1 extends KeywordToken  {
+	
+	public UnaryRealPlus_LeftCurlyBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getLeftCurlyBracketKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_UnaryRealPlusKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("name" name=ID)?
+protected class UnaryRealPlus_Group_2 extends GroupToken {
+	
+	public UnaryRealPlus_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "name"
+protected class UnaryRealPlus_NameKeyword_2_0 extends KeywordToken  {
+	
+	public UnaryRealPlus_NameKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getNameKeyword_2_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class UnaryRealPlus_NameAssignment_2_1 extends AssignmentToken  {
+	
+	public UnaryRealPlus_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getNameAssignment_2_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_NameKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getUnaryRealPlusAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getUnaryRealPlusAccess().getNameIDTerminalRuleCall_2_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+// "value"
+protected class UnaryRealPlus_ValueKeyword_3 extends KeywordToken  {
+	
+	public UnaryRealPlus_ValueKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getValueKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new UnaryRealPlus_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// value=[BasicType::RealElement|EString]
+protected class UnaryRealPlus_ValueAssignment_4 extends AssignmentToken  {
+	
+	public UnaryRealPlus_ValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getValueAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_ValueKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getUnaryRealPlusAccess().getValueRealElementCrossReference_4_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getUnaryRealPlusAccess().getValueRealElementCrossReference_4_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "operand"
+protected class UnaryRealPlus_OperandKeyword_5 extends KeywordToken  {
+	
+	public UnaryRealPlus_OperandKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getOperandKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_ValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// operand=RealExpression
+protected class UnaryRealPlus_OperandAssignment_6 extends AssignmentToken  {
+	
+	public UnaryRealPlus_OperandAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getOperandAssignment_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("operand",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("operand");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getUnaryRealPlusAccess().getOperandRealExpressionParserRuleCall_6_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new UnaryRealPlus_OperandKeyword_5(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class UnaryRealPlus_RightCurlyBracketKeyword_7 extends KeywordToken  {
+	
+	public UnaryRealPlus_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealPlusAccess().getRightCurlyBracketKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealPlus_OperandAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule UnaryRealPlus ****************/
+
+
+/************ begin Rule UnaryRealMinus ****************
+ *
+ * UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
+ * 	"UnaryRealMinus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand"
+ * 	operand=RealExpression "}";
+ *
+ **/
+
+// "UnaryRealMinus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression
+// "}"
+protected class UnaryRealMinus_Group extends GroupToken {
+	
+	public UnaryRealMinus_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_RightCurlyBracketKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getUnaryRealMinusRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "UnaryRealMinus"
+protected class UnaryRealMinus_UnaryRealMinusKeyword_0 extends KeywordToken  {
+	
+	public UnaryRealMinus_UnaryRealMinusKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getUnaryRealMinusKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "{"
+protected class UnaryRealMinus_LeftCurlyBracketKeyword_1 extends KeywordToken  {
+	
+	public UnaryRealMinus_LeftCurlyBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getLeftCurlyBracketKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_UnaryRealMinusKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("name" name=ID)?
+protected class UnaryRealMinus_Group_2 extends GroupToken {
+	
+	public UnaryRealMinus_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "name"
+protected class UnaryRealMinus_NameKeyword_2_0 extends KeywordToken  {
+	
+	public UnaryRealMinus_NameKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getNameKeyword_2_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class UnaryRealMinus_NameAssignment_2_1 extends AssignmentToken  {
+	
+	public UnaryRealMinus_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getNameAssignment_2_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_NameKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getUnaryRealMinusAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getUnaryRealMinusAccess().getNameIDTerminalRuleCall_2_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+// "value"
+protected class UnaryRealMinus_ValueKeyword_3 extends KeywordToken  {
+	
+	public UnaryRealMinus_ValueKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getValueKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new UnaryRealMinus_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// value=[BasicType::RealElement|EString]
+protected class UnaryRealMinus_ValueAssignment_4 extends AssignmentToken  {
+	
+	public UnaryRealMinus_ValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getValueAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_ValueKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getUnaryRealMinusAccess().getValueRealElementCrossReference_4_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getUnaryRealMinusAccess().getValueRealElementCrossReference_4_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "operand"
+protected class UnaryRealMinus_OperandKeyword_5 extends KeywordToken  {
+	
+	public UnaryRealMinus_OperandKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getOperandKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_ValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// operand=RealExpression
+protected class UnaryRealMinus_OperandAssignment_6 extends AssignmentToken  {
+	
+	public UnaryRealMinus_OperandAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getOperandAssignment_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("operand",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("operand");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getUnaryRealMinusAccess().getOperandRealExpressionParserRuleCall_6_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new UnaryRealMinus_OperandKeyword_5(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class UnaryRealMinus_RightCurlyBracketKeyword_7 extends KeywordToken  {
+	
+	public UnaryRealMinus_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getUnaryRealMinusAccess().getRightCurlyBracketKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new UnaryRealMinus_OperandAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule UnaryRealMinus ****************/
+
+
+/************ begin Rule RealPlus ****************
+ *
+ * RealPlus returns ClassicalExpression::RealPlus:
+ * 	"RealPlus" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+ *
+ **/
+
+// "RealPlus" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}"
+protected class RealPlus_Group extends GroupToken {
+	
+	public RealPlus_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealPlus_RightCurlyBracketKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealPlusRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "RealPlus"
+protected class RealPlus_RealPlusKeyword_0 extends KeywordToken  {
+	
+	public RealPlus_RealPlusKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getRealPlusKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "{"
+protected class RealPlus_LeftCurlyBracketKeyword_1 extends KeywordToken  {
+	
+	public RealPlus_LeftCurlyBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getLeftCurlyBracketKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealPlus_RealPlusKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("name" name=ID)?
+protected class RealPlus_Group_2 extends GroupToken {
+	
+	public RealPlus_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealPlus_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "name"
+protected class RealPlus_NameKeyword_2_0 extends KeywordToken  {
+	
+	public RealPlus_NameKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getNameKeyword_2_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealPlus_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class RealPlus_NameAssignment_2_1 extends AssignmentToken  {
+	
+	public RealPlus_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getNameAssignment_2_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealPlus_NameKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealPlusAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getRealPlusAccess().getNameIDTerminalRuleCall_2_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+// "leftValue"
+protected class RealPlus_LeftValueKeyword_3 extends KeywordToken  {
+	
+	public RealPlus_LeftValueKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getLeftValueKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealPlus_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RealPlus_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// leftValue=RealExpression
+protected class RealPlus_LeftValueAssignment_4 extends AssignmentToken  {
+	
+	public RealPlus_LeftValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getLeftValueAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealPlusAccess().getLeftValueRealExpressionParserRuleCall_4_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealPlus_LeftValueKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "rightValue"
+protected class RealPlus_RightValueKeyword_5 extends KeywordToken  {
+	
+	public RealPlus_RightValueKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getRightValueKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealPlus_LeftValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// rightValue=RealExpression
+protected class RealPlus_RightValueAssignment_6 extends AssignmentToken  {
+	
+	public RealPlus_RightValueAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getRightValueAssignment_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealPlusAccess().getRightValueRealExpressionParserRuleCall_6_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealPlus_RightValueKeyword_5(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class RealPlus_RightCurlyBracketKeyword_7 extends KeywordToken  {
+	
+	public RealPlus_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealPlusAccess().getRightCurlyBracketKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealPlus_RightValueAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule RealPlus ****************/
+
+
+/************ begin Rule RealMinus ****************
+ *
+ * RealMinus returns ClassicalExpression::RealMinus:
+ * 	"RealMinus" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+ *
+ **/
+
+// "RealMinus" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}"
+protected class RealMinus_Group extends GroupToken {
+	
+	public RealMinus_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMinus_RightCurlyBracketKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealMinusRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "RealMinus"
+protected class RealMinus_RealMinusKeyword_0 extends KeywordToken  {
+	
+	public RealMinus_RealMinusKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getRealMinusKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "{"
+protected class RealMinus_LeftCurlyBracketKeyword_1 extends KeywordToken  {
+	
+	public RealMinus_LeftCurlyBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getLeftCurlyBracketKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMinus_RealMinusKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("name" name=ID)?
+protected class RealMinus_Group_2 extends GroupToken {
+	
+	public RealMinus_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMinus_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "name"
+protected class RealMinus_NameKeyword_2_0 extends KeywordToken  {
+	
+	public RealMinus_NameKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getNameKeyword_2_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMinus_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class RealMinus_NameAssignment_2_1 extends AssignmentToken  {
+	
+	public RealMinus_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getNameAssignment_2_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMinus_NameKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealMinusAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getRealMinusAccess().getNameIDTerminalRuleCall_2_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+// "leftValue"
+protected class RealMinus_LeftValueKeyword_3 extends KeywordToken  {
+	
+	public RealMinus_LeftValueKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getLeftValueKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMinus_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RealMinus_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// leftValue=RealExpression
+protected class RealMinus_LeftValueAssignment_4 extends AssignmentToken  {
+	
+	public RealMinus_LeftValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getLeftValueAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealMinusAccess().getLeftValueRealExpressionParserRuleCall_4_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealMinus_LeftValueKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "rightValue"
+protected class RealMinus_RightValueKeyword_5 extends KeywordToken  {
+	
+	public RealMinus_RightValueKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getRightValueKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMinus_LeftValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// rightValue=RealExpression
+protected class RealMinus_RightValueAssignment_6 extends AssignmentToken  {
+	
+	public RealMinus_RightValueAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getRightValueAssignment_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealMinusAccess().getRightValueRealExpressionParserRuleCall_6_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealMinus_RightValueKeyword_5(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class RealMinus_RightCurlyBracketKeyword_7 extends KeywordToken  {
+	
+	public RealMinus_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMinusAccess().getRightCurlyBracketKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMinus_RightValueAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule RealMinus ****************/
+
+
+/************ begin Rule RealMultiply ****************
+ *
+ * RealMultiply returns ClassicalExpression::RealMultiply:
+ * 	"RealMultiply" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+ *
+ **/
+
+// "RealMultiply" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}"
+protected class RealMultiply_Group extends GroupToken {
+	
+	public RealMultiply_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMultiply_RightCurlyBracketKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealMultiplyRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "RealMultiply"
+protected class RealMultiply_RealMultiplyKeyword_0 extends KeywordToken  {
+	
+	public RealMultiply_RealMultiplyKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getRealMultiplyKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "{"
+protected class RealMultiply_LeftCurlyBracketKeyword_1 extends KeywordToken  {
+	
+	public RealMultiply_LeftCurlyBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getLeftCurlyBracketKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMultiply_RealMultiplyKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("name" name=ID)?
+protected class RealMultiply_Group_2 extends GroupToken {
+	
+	public RealMultiply_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMultiply_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "name"
+protected class RealMultiply_NameKeyword_2_0 extends KeywordToken  {
+	
+	public RealMultiply_NameKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getNameKeyword_2_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMultiply_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class RealMultiply_NameAssignment_2_1 extends AssignmentToken  {
+	
+	public RealMultiply_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getNameAssignment_2_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMultiply_NameKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealMultiplyAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getRealMultiplyAccess().getNameIDTerminalRuleCall_2_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+// "leftValue"
+protected class RealMultiply_LeftValueKeyword_3 extends KeywordToken  {
+	
+	public RealMultiply_LeftValueKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getLeftValueKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMultiply_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RealMultiply_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// leftValue=RealExpression
+protected class RealMultiply_LeftValueAssignment_4 extends AssignmentToken  {
+	
+	public RealMultiply_LeftValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getLeftValueAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealMultiplyAccess().getLeftValueRealExpressionParserRuleCall_4_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealMultiply_LeftValueKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "rightValue"
+protected class RealMultiply_RightValueKeyword_5 extends KeywordToken  {
+	
+	public RealMultiply_RightValueKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getRightValueKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMultiply_LeftValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// rightValue=RealExpression
+protected class RealMultiply_RightValueAssignment_6 extends AssignmentToken  {
+	
+	public RealMultiply_RightValueAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getRightValueAssignment_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealMultiplyAccess().getRightValueRealExpressionParserRuleCall_6_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealMultiply_RightValueKeyword_5(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class RealMultiply_RightCurlyBracketKeyword_7 extends KeywordToken  {
+	
+	public RealMultiply_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealMultiplyAccess().getRightCurlyBracketKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealMultiply_RightValueAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule RealMultiply ****************/
+
+
+/************ begin Rule RealEqual ****************
+ *
+ * RealEqual returns ClassicalExpression::RealEqual:
+ * 	"RealEqual" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+ *
+ **/
+
+// "RealEqual" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}"
+protected class RealEqual_Group extends GroupToken {
+	
+	public RealEqual_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealEqual_RightCurlyBracketKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealEqualRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "RealEqual"
+protected class RealEqual_RealEqualKeyword_0 extends KeywordToken  {
+	
+	public RealEqual_RealEqualKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getRealEqualKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "{"
+protected class RealEqual_LeftCurlyBracketKeyword_1 extends KeywordToken  {
+	
+	public RealEqual_LeftCurlyBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getLeftCurlyBracketKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealEqual_RealEqualKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("name" name=ID)?
+protected class RealEqual_Group_2 extends GroupToken {
+	
+	public RealEqual_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealEqual_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "name"
+protected class RealEqual_NameKeyword_2_0 extends KeywordToken  {
+	
+	public RealEqual_NameKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getNameKeyword_2_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealEqual_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class RealEqual_NameAssignment_2_1 extends AssignmentToken  {
+	
+	public RealEqual_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getNameAssignment_2_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealEqual_NameKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealEqualAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getRealEqualAccess().getNameIDTerminalRuleCall_2_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+// "leftValue"
+protected class RealEqual_LeftValueKeyword_3 extends KeywordToken  {
+	
+	public RealEqual_LeftValueKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getLeftValueKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealEqual_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RealEqual_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// leftValue=RealExpression
+protected class RealEqual_LeftValueAssignment_4 extends AssignmentToken  {
+	
+	public RealEqual_LeftValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getLeftValueAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealEqualAccess().getLeftValueRealExpressionParserRuleCall_4_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealEqual_LeftValueKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "rightValue"
+protected class RealEqual_RightValueKeyword_5 extends KeywordToken  {
+	
+	public RealEqual_RightValueKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getRightValueKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealEqual_LeftValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// rightValue=RealExpression
+protected class RealEqual_RightValueAssignment_6 extends AssignmentToken  {
+	
+	public RealEqual_RightValueAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getRightValueAssignment_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealEqualAccess().getRightValueRealExpressionParserRuleCall_6_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealEqual_RightValueKeyword_5(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class RealEqual_RightCurlyBracketKeyword_7 extends KeywordToken  {
+	
+	public RealEqual_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealEqualAccess().getRightCurlyBracketKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealEqual_RightValueAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule RealEqual ****************/
+
+
+/************ begin Rule RealInf ****************
+ *
+ * RealInf returns ClassicalExpression::RealInf:
+ * 	"RealInf" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+ *
+ **/
+
+// "RealInf" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}"
+protected class RealInf_Group extends GroupToken {
+	
+	public RealInf_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealInf_RightCurlyBracketKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealInfRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "RealInf"
+protected class RealInf_RealInfKeyword_0 extends KeywordToken  {
+	
+	public RealInf_RealInfKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getRealInfKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "{"
+protected class RealInf_LeftCurlyBracketKeyword_1 extends KeywordToken  {
+	
+	public RealInf_LeftCurlyBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getLeftCurlyBracketKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealInf_RealInfKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("name" name=ID)?
+protected class RealInf_Group_2 extends GroupToken {
+	
+	public RealInf_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealInf_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "name"
+protected class RealInf_NameKeyword_2_0 extends KeywordToken  {
+	
+	public RealInf_NameKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getNameKeyword_2_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealInf_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class RealInf_NameAssignment_2_1 extends AssignmentToken  {
+	
+	public RealInf_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getNameAssignment_2_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealInf_NameKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealInfAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getRealInfAccess().getNameIDTerminalRuleCall_2_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+// "leftValue"
+protected class RealInf_LeftValueKeyword_3 extends KeywordToken  {
+	
+	public RealInf_LeftValueKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getLeftValueKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealInf_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RealInf_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// leftValue=RealExpression
+protected class RealInf_LeftValueAssignment_4 extends AssignmentToken  {
+	
+	public RealInf_LeftValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getLeftValueAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealInfAccess().getLeftValueRealExpressionParserRuleCall_4_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealInf_LeftValueKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "rightValue"
+protected class RealInf_RightValueKeyword_5 extends KeywordToken  {
+	
+	public RealInf_RightValueKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getRightValueKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealInf_LeftValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// rightValue=RealExpression
+protected class RealInf_RightValueAssignment_6 extends AssignmentToken  {
+	
+	public RealInf_RightValueAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getRightValueAssignment_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealInfAccess().getRightValueRealExpressionParserRuleCall_6_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealInf_RightValueKeyword_5(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class RealInf_RightCurlyBracketKeyword_7 extends KeywordToken  {
+	
+	public RealInf_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealInfAccess().getRightCurlyBracketKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealInf_RightValueAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule RealInf ****************/
+
+
+/************ begin Rule RealSup ****************
+ *
+ * RealSup returns ClassicalExpression::RealSup:
+ * 	"RealSup" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+ *
+ **/
+
+// "RealSup" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}"
+protected class RealSup_Group extends GroupToken {
+	
+	public RealSup_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealSup_RightCurlyBracketKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getRealSupRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "RealSup"
+protected class RealSup_RealSupKeyword_0 extends KeywordToken  {
+	
+	public RealSup_RealSupKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getRealSupKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "{"
+protected class RealSup_LeftCurlyBracketKeyword_1 extends KeywordToken  {
+	
+	public RealSup_LeftCurlyBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getLeftCurlyBracketKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealSup_RealSupKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("name" name=ID)?
+protected class RealSup_Group_2 extends GroupToken {
+	
+	public RealSup_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealSup_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "name"
+protected class RealSup_NameKeyword_2_0 extends KeywordToken  {
+	
+	public RealSup_NameKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getNameKeyword_2_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealSup_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class RealSup_NameAssignment_2_1 extends AssignmentToken  {
+	
+	public RealSup_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getNameAssignment_2_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealSup_NameKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRealSupAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getRealSupAccess().getNameIDTerminalRuleCall_2_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+// "leftValue"
+protected class RealSup_LeftValueKeyword_3 extends KeywordToken  {
+	
+	public RealSup_LeftValueKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getLeftValueKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealSup_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RealSup_LeftCurlyBracketKeyword_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// leftValue=RealExpression
+protected class RealSup_LeftValueAssignment_4 extends AssignmentToken  {
+	
+	public RealSup_LeftValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getLeftValueAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("leftValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("leftValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealSupAccess().getLeftValueRealExpressionParserRuleCall_4_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealSup_LeftValueKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "rightValue"
+protected class RealSup_RightValueKeyword_5 extends KeywordToken  {
+	
+	public RealSup_RightValueKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getRightValueKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealSup_LeftValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// rightValue=RealExpression
+protected class RealSup_RightValueAssignment_6 extends AssignmentToken  {
+	
+	public RealSup_RightValueAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getRightValueAssignment_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("rightValue",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rightValue");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getRealExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRealSupAccess().getRightValueRealExpressionParserRuleCall_6_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RealSup_RightValueKeyword_5(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// "}"
+protected class RealSup_RightCurlyBracketKeyword_7 extends KeywordToken  {
+	
+	public RealSup_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRealSupAccess().getRightCurlyBracketKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RealSup_RightValueAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+/************ end Rule RealSup ****************/
 
 
 /************ begin Rule BooleanVariableRef ****************

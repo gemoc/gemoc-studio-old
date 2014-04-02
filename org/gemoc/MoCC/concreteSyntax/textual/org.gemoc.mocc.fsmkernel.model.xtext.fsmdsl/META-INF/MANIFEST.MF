@@ -8,6 +8,9 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
  fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.library.xtext;visibility:=reexport,
@@ -16,6 +19,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.xtext.util;bundle-version="1.0.0";visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.parser.xtext;bundle-version="1.0.0";visibility:=reexport,
  org.eclipse.xtext.util,
+ org.eclipse.xtext.common.types,
  org.antlr.runtime
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib

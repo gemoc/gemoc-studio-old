@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 
+<!--
+ Copyright (c) 2012-2016 GEMOC consortium.
+ 
+ http://www.gemoc.org
+ 
+ Contributors:
+   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
+   
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+   
+ $Id$
+-->
+
 <plugin>
 
     <extension
@@ -296,7 +312,7 @@
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
             class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.ccslmocc.model.xtext.ui.mocdsl.check.fast">
+            markerType="org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui.mocdsl.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -304,7 +320,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.ccslmocc.model.xtext.ui.mocdsl.check.normal">
+            markerType="org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui.mocdsl.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -312,7 +328,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.mocc.ccslmocc.model.xtext.ui.mocdsl.check.expensive">
+            markerType="org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui.mocdsl.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">

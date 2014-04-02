@@ -985,14 +985,12 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightValueIntegerExpressionParserRuleCall_4_0 = (RuleCall)cRightValueAssignment_4.eContents().get(0);
 		
 		//IntegerAssignement returns fsmmodel::IntegerAssignement:
-		//	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue=
-		//	//';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-		// IntegerExpression;
+		//	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+		//	IntegerExpression;
 		public ParserRule getRule() { return rule; }
 
-		//{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue=
-		////';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-		// IntegerExpression
+		//{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+		//IntegerExpression
 		public Group getGroup() { return cGroup; }
 
 		//{fsmmodel::IntegerAssignement}
@@ -1020,11 +1018,11 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 
 		//rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-		// IntegerExpression
+		//IntegerExpression
 		public Assignment getRightValueAssignment_4() { return cRightValueAssignment_4; }
 
 		////';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-		// IntegerExpression
+		//IntegerExpression
 		public RuleCall getRightValueIntegerExpressionParserRuleCall_4_0() { return cRightValueIntegerExpressionParserRuleCall_4_0; }
 	}
 
@@ -1281,79 +1279,6 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightSquareBracketKeyword_1_4() { return cRightSquareBracketKeyword_1_4; }
 	}
 
-	public class RealRefElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealRef");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cRKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Assignment cRealElemAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final CrossReference cRealElemRealElementCrossReference_0_1_0 = (CrossReference)cRealElemAssignment_0_1.eContents().get(0);
-		private final RuleCall cRealElemRealElementEStringParserRuleCall_0_1_0_1 = (RuleCall)cRealElemRealElementCrossReference_0_1_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cRRefKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Assignment cRealElemAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final CrossReference cRealElemRealElementCrossReference_1_3_0 = (CrossReference)cRealElemAssignment_1_3.eContents().get(0);
-		private final RuleCall cRealElemRealElementEStringParserRuleCall_1_3_0_1 = (RuleCall)cRealElemRealElementCrossReference_1_3_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
-		
-		//RealRef returns ClassicalExpression::RealRef:
-		//	"r[" realElem=[BasicType::RealElement|EString] "]" | "r#ref" name=ID "[" realElem=[BasicType::RealElement|EString]
-		//	"]";
-		public ParserRule getRule() { return rule; }
-
-		//"r[" realElem=[BasicType::RealElement|EString] "]" | "r#ref" name=ID "[" realElem=[BasicType::RealElement|EString] "]"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"r[" realElem=[BasicType::RealElement|EString] "]"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"r["
-		public Keyword getRKeyword_0_0() { return cRKeyword_0_0; }
-
-		//realElem=[BasicType::RealElement|EString]
-		public Assignment getRealElemAssignment_0_1() { return cRealElemAssignment_0_1; }
-
-		//[BasicType::RealElement|EString]
-		public CrossReference getRealElemRealElementCrossReference_0_1_0() { return cRealElemRealElementCrossReference_0_1_0; }
-
-		//EString
-		public RuleCall getRealElemRealElementEStringParserRuleCall_0_1_0_1() { return cRealElemRealElementEStringParserRuleCall_0_1_0_1; }
-
-		//"]"
-		public Keyword getRightSquareBracketKeyword_0_2() { return cRightSquareBracketKeyword_0_2; }
-
-		//"r#ref" name=ID "[" realElem=[BasicType::RealElement|EString] "]"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"r#ref"
-		public Keyword getRRefKeyword_1_0() { return cRRefKeyword_1_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
-
-		//"["
-		public Keyword getLeftSquareBracketKeyword_1_2() { return cLeftSquareBracketKeyword_1_2; }
-
-		//realElem=[BasicType::RealElement|EString]
-		public Assignment getRealElemAssignment_1_3() { return cRealElemAssignment_1_3; }
-
-		//[BasicType::RealElement|EString]
-		public CrossReference getRealElemRealElementCrossReference_1_3_0() { return cRealElemRealElementCrossReference_1_3_0; }
-
-		//EString
-		public RuleCall getRealElemRealElementEStringParserRuleCall_1_3_0_1() { return cRealElemRealElementEStringParserRuleCall_1_3_0_1; }
-
-		//"]"
-		public Keyword getRightSquareBracketKeyword_1_4() { return cRightSquareBracketKeyword_1_4; }
-	}
-
 	public class IntegerRefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntegerRef");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1373,7 +1298,9 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIntegerElemIntegerElementEStringParserRuleCall_1_3_0_1 = (RuleCall)cIntegerElemIntegerElementCrossReference_1_3_0.eContents().get(1);
 		private final Keyword cRightSquareBracketKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		
-		//IntegerRef returns ClassicalExpression::IntegerRef:
+		/// *RealRef returns ClassicalExpression::RealRef:
+		//	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';* / IntegerRef
+		//returns ClassicalExpression::IntegerRef:
 		//	"i[" integerElem=[BasicType::IntegerElement|EString] "]" | "i#ref" name=ID "["
 		//	integerElem=[BasicType::IntegerElement|EString] "]";
 		public ParserRule getRule() { return rule; }
@@ -1428,666 +1355,6 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightSquareBracketKeyword_1_4() { return cRightSquareBracketKeyword_1_4; }
 	}
 
-	public class UnaryRealPlusElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UnaryRealPlus");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cPlusSignKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Keyword cValueKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Assignment cValueAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
-		private final CrossReference cValueRealElementCrossReference_0_3_0 = (CrossReference)cValueAssignment_0_3.eContents().get(0);
-		private final RuleCall cValueRealElementEStringParserRuleCall_0_3_0_1 = (RuleCall)cValueRealElementCrossReference_0_3_0.eContents().get(1);
-		private final Keyword cOperandKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
-		private final Assignment cOperandAssignment_0_5 = (Assignment)cGroup_0.eContents().get(5);
-		private final RuleCall cOperandRealExpressionParserRuleCall_0_5_0 = (RuleCall)cOperandAssignment_0_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_0_6 = (Keyword)cGroup_0.eContents().get(6);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisPlusSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Group cGroup_1_1_2 = (Group)cGroup_1_1.eContents().get(2);
-		private final Keyword cColonKeyword_1_1_2_0 = (Keyword)cGroup_1_1_2.eContents().get(0);
-		private final Assignment cTypeAssignment_1_1_2_1 = (Assignment)cGroup_1_1_2.eContents().get(1);
-		private final CrossReference cTypeTypeCrossReference_1_1_2_1_0 = (CrossReference)cTypeAssignment_1_1_2_1.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_2_1_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_2_1_0.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Keyword cValueKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final CrossReference cValueRealElementCrossReference_1_4_0 = (CrossReference)cValueAssignment_1_4.eContents().get(0);
-		private final RuleCall cValueRealElementEStringParserRuleCall_1_4_0_1 = (RuleCall)cValueRealElementCrossReference_1_4_0.eContents().get(1);
-		private final Keyword cOperandKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		private final Assignment cOperandAssignment_1_6 = (Assignment)cGroup_1.eContents().get(6);
-		private final RuleCall cOperandRealExpressionParserRuleCall_1_6_0 = (RuleCall)cOperandAssignment_1_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketRightParenthesisKeyword_1_7 = (Keyword)cGroup_1.eContents().get(7);
-		
-		//UnaryRealPlus returns ClassicalExpression::UnaryRealPlus:
-		//	"+" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(+" ("#ref"
-		//	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
-		//	operand=RealExpression "})";
-		public ParserRule getRule() { return rule; }
-
-		//"+" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(+" ("#ref" name=String0
-		//(":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
-		//operand=RealExpression "})"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"+" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"+"
-		public Keyword getPlusSignKeyword_0_0() { return cPlusSignKeyword_0_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_0_1() { return cLeftCurlyBracketKeyword_0_1; }
-
-		//"value"
-		public Keyword getValueKeyword_0_2() { return cValueKeyword_0_2; }
-
-		//value=[BasicType::RealElement|EString]
-		public Assignment getValueAssignment_0_3() { return cValueAssignment_0_3; }
-
-		//[BasicType::RealElement|EString]
-		public CrossReference getValueRealElementCrossReference_0_3_0() { return cValueRealElementCrossReference_0_3_0; }
-
-		//EString
-		public RuleCall getValueRealElementEStringParserRuleCall_0_3_0_1() { return cValueRealElementEStringParserRuleCall_0_3_0_1; }
-
-		//"operand"
-		public Keyword getOperandKeyword_0_4() { return cOperandKeyword_0_4; }
-
-		//operand=RealExpression
-		public Assignment getOperandAssignment_0_5() { return cOperandAssignment_0_5; }
-
-		//RealExpression
-		public RuleCall getOperandRealExpressionParserRuleCall_0_5_0() { return cOperandRealExpressionParserRuleCall_0_5_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_0_6() { return cRightCurlyBracketKeyword_0_6; }
-
-		//"(+" ("#ref" name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString]
-		//"operand" operand=RealExpression "})"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"(+"
-		public Keyword getLeftParenthesisPlusSignKeyword_1_0() { return cLeftParenthesisPlusSignKeyword_1_0; }
-
-		//("#ref" name=String0 (":" type=[BasicType::Type|EString])?)?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//(":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1_2() { return cGroup_1_1_2; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2_0() { return cColonKeyword_1_1_2_0; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_2_1() { return cTypeAssignment_1_1_2_1; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_2_1_0() { return cTypeTypeCrossReference_1_1_2_1_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_2_1_0_1() { return cTypeTypeEStringParserRuleCall_1_1_2_1_0_1; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1_2() { return cLeftCurlyBracketKeyword_1_2; }
-
-		//"value"
-		public Keyword getValueKeyword_1_3() { return cValueKeyword_1_3; }
-
-		//value=[BasicType::RealElement|EString]
-		public Assignment getValueAssignment_1_4() { return cValueAssignment_1_4; }
-
-		//[BasicType::RealElement|EString]
-		public CrossReference getValueRealElementCrossReference_1_4_0() { return cValueRealElementCrossReference_1_4_0; }
-
-		//EString
-		public RuleCall getValueRealElementEStringParserRuleCall_1_4_0_1() { return cValueRealElementEStringParserRuleCall_1_4_0_1; }
-
-		//"operand"
-		public Keyword getOperandKeyword_1_5() { return cOperandKeyword_1_5; }
-
-		//operand=RealExpression
-		public Assignment getOperandAssignment_1_6() { return cOperandAssignment_1_6; }
-
-		//RealExpression
-		public RuleCall getOperandRealExpressionParserRuleCall_1_6_0() { return cOperandRealExpressionParserRuleCall_1_6_0; }
-
-		//"})"
-		public Keyword getRightCurlyBracketRightParenthesisKeyword_1_7() { return cRightCurlyBracketRightParenthesisKeyword_1_7; }
-	}
-
-	public class UnaryRealMinusElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UnaryRealMinus");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cHyphenMinusKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Keyword cValueKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Assignment cValueAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
-		private final CrossReference cValueRealElementCrossReference_0_3_0 = (CrossReference)cValueAssignment_0_3.eContents().get(0);
-		private final RuleCall cValueRealElementEStringParserRuleCall_0_3_0_1 = (RuleCall)cValueRealElementCrossReference_0_3_0.eContents().get(1);
-		private final Keyword cOperandKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
-		private final Assignment cOperandAssignment_0_5 = (Assignment)cGroup_0.eContents().get(5);
-		private final RuleCall cOperandRealExpressionParserRuleCall_0_5_0 = (RuleCall)cOperandAssignment_0_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_0_6 = (Keyword)cGroup_0.eContents().get(6);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisHyphenMinusKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Group cGroup_1_1_2 = (Group)cGroup_1_1.eContents().get(2);
-		private final Keyword cColonKeyword_1_1_2_0 = (Keyword)cGroup_1_1_2.eContents().get(0);
-		private final Assignment cTypeAssignment_1_1_2_1 = (Assignment)cGroup_1_1_2.eContents().get(1);
-		private final CrossReference cTypeTypeCrossReference_1_1_2_1_0 = (CrossReference)cTypeAssignment_1_1_2_1.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_2_1_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_2_1_0.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Keyword cValueKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final CrossReference cValueRealElementCrossReference_1_4_0 = (CrossReference)cValueAssignment_1_4.eContents().get(0);
-		private final RuleCall cValueRealElementEStringParserRuleCall_1_4_0_1 = (RuleCall)cValueRealElementCrossReference_1_4_0.eContents().get(1);
-		private final Keyword cOperandKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		private final Assignment cOperandAssignment_1_6 = (Assignment)cGroup_1.eContents().get(6);
-		private final RuleCall cOperandRealExpressionParserRuleCall_1_6_0 = (RuleCall)cOperandAssignment_1_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketRightParenthesisKeyword_1_7 = (Keyword)cGroup_1.eContents().get(7);
-		
-		//UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
-		//	"-" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(-" ("#ref"
-		//	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
-		//	operand=RealExpression "})";
-		public ParserRule getRule() { return rule; }
-
-		//"-" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(-" ("#ref" name=String0
-		//(":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
-		//operand=RealExpression "})"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"-" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"-"
-		public Keyword getHyphenMinusKeyword_0_0() { return cHyphenMinusKeyword_0_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_0_1() { return cLeftCurlyBracketKeyword_0_1; }
-
-		//"value"
-		public Keyword getValueKeyword_0_2() { return cValueKeyword_0_2; }
-
-		//value=[BasicType::RealElement|EString]
-		public Assignment getValueAssignment_0_3() { return cValueAssignment_0_3; }
-
-		//[BasicType::RealElement|EString]
-		public CrossReference getValueRealElementCrossReference_0_3_0() { return cValueRealElementCrossReference_0_3_0; }
-
-		//EString
-		public RuleCall getValueRealElementEStringParserRuleCall_0_3_0_1() { return cValueRealElementEStringParserRuleCall_0_3_0_1; }
-
-		//"operand"
-		public Keyword getOperandKeyword_0_4() { return cOperandKeyword_0_4; }
-
-		//operand=RealExpression
-		public Assignment getOperandAssignment_0_5() { return cOperandAssignment_0_5; }
-
-		//RealExpression
-		public RuleCall getOperandRealExpressionParserRuleCall_0_5_0() { return cOperandRealExpressionParserRuleCall_0_5_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_0_6() { return cRightCurlyBracketKeyword_0_6; }
-
-		//"(-" ("#ref" name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString]
-		//"operand" operand=RealExpression "})"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"(-"
-		public Keyword getLeftParenthesisHyphenMinusKeyword_1_0() { return cLeftParenthesisHyphenMinusKeyword_1_0; }
-
-		//("#ref" name=String0 (":" type=[BasicType::Type|EString])?)?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//(":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1_2() { return cGroup_1_1_2; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2_0() { return cColonKeyword_1_1_2_0; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_2_1() { return cTypeAssignment_1_1_2_1; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_2_1_0() { return cTypeTypeCrossReference_1_1_2_1_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_2_1_0_1() { return cTypeTypeEStringParserRuleCall_1_1_2_1_0_1; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1_2() { return cLeftCurlyBracketKeyword_1_2; }
-
-		//"value"
-		public Keyword getValueKeyword_1_3() { return cValueKeyword_1_3; }
-
-		//value=[BasicType::RealElement|EString]
-		public Assignment getValueAssignment_1_4() { return cValueAssignment_1_4; }
-
-		//[BasicType::RealElement|EString]
-		public CrossReference getValueRealElementCrossReference_1_4_0() { return cValueRealElementCrossReference_1_4_0; }
-
-		//EString
-		public RuleCall getValueRealElementEStringParserRuleCall_1_4_0_1() { return cValueRealElementEStringParserRuleCall_1_4_0_1; }
-
-		//"operand"
-		public Keyword getOperandKeyword_1_5() { return cOperandKeyword_1_5; }
-
-		//operand=RealExpression
-		public Assignment getOperandAssignment_1_6() { return cOperandAssignment_1_6; }
-
-		//RealExpression
-		public RuleCall getOperandRealExpressionParserRuleCall_1_6_0() { return cOperandRealExpressionParserRuleCall_1_6_0; }
-
-		//"})"
-		public Keyword getRightCurlyBracketRightParenthesisKeyword_1_7() { return cRightCurlyBracketRightParenthesisKeyword_1_7; }
-	}
-
-	public class RealPlusElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealPlus");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cRefKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cNameAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_0_1_1_0 = (RuleCall)cNameAssignment_0_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_0_2_0 = (RuleCall)cLeftValueAssignment_0_2.eContents().get(0);
-		private final Keyword cPlusSignKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cRightValueAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_0_4_0 = (RuleCall)cRightValueAssignment_0_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Keyword cColonKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
-		private final Assignment cTypeAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_1_1_3_0 = (CrossReference)cTypeAssignment_1_1_3.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_3_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_3_0.eContents().get(1);
-		private final Assignment cLeftValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_1_2_0 = (RuleCall)cLeftValueAssignment_1_2.eContents().get(0);
-		private final Keyword cPlusSignKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cRightValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		
-		//RealPlus returns ClassicalExpression::RealPlus:
-		//	"(" ("#ref" name=String0)? leftValue=RealExpression "+" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//	type=[BasicType::Type|EString])? leftValue=RealExpression "+" rightValue=RealExpression ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "+" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//type=[BasicType::Type|EString])? leftValue=RealExpression "+" rightValue=RealExpression ")"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "+" rightValue=RealExpression ")"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-
-		//("#ref" name=String0)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_0_1_0() { return cRefKeyword_0_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_0_1_1() { return cNameAssignment_0_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_0_1_1_0() { return cNameString0ParserRuleCall_0_1_1_0; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_0_2() { return cLeftValueAssignment_0_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_0_2_0() { return cLeftValueRealExpressionParserRuleCall_0_2_0; }
-
-		//"+"
-		public Keyword getPlusSignKeyword_0_3() { return cPlusSignKeyword_0_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_0_4() { return cRightValueAssignment_0_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_0_4_0() { return cRightValueRealExpressionParserRuleCall_0_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_0_5() { return cRightParenthesisKeyword_0_5; }
-
-		//"(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "+" rightValue=RealExpression ")"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
-
-		//("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2() { return cColonKeyword_1_1_2; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_3() { return cTypeAssignment_1_1_3; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_3_0() { return cTypeTypeCrossReference_1_1_3_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_3_0_1() { return cTypeTypeEStringParserRuleCall_1_1_3_0_1; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_1_2() { return cLeftValueAssignment_1_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_1_2_0() { return cLeftValueRealExpressionParserRuleCall_1_2_0; }
-
-		//"+"
-		public Keyword getPlusSignKeyword_1_3() { return cPlusSignKeyword_1_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_1_4() { return cRightValueAssignment_1_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_1_4_0() { return cRightValueRealExpressionParserRuleCall_1_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_1_5() { return cRightParenthesisKeyword_1_5; }
-	}
-
-	public class RealMinusElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealMinus");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cRefKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cNameAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_0_1_1_0 = (RuleCall)cNameAssignment_0_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_0_2_0 = (RuleCall)cLeftValueAssignment_0_2.eContents().get(0);
-		private final Keyword cHyphenMinusKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cRightValueAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_0_4_0 = (RuleCall)cRightValueAssignment_0_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Keyword cColonKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
-		private final Assignment cTypeAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_1_1_3_0 = (CrossReference)cTypeAssignment_1_1_3.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_3_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_3_0.eContents().get(1);
-		private final Assignment cLeftValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_1_2_0 = (RuleCall)cLeftValueAssignment_1_2.eContents().get(0);
-		private final Keyword cHyphenMinusKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cRightValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		
-		//RealMinus returns ClassicalExpression::RealMinus:
-		//	"(" ("#ref" name=String0)? leftValue=RealExpression "-" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//	type=[BasicType::Type|EString])? leftValue=RealExpression "-" rightValue=RealExpression ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "-" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//type=[BasicType::Type|EString])? leftValue=RealExpression "-" rightValue=RealExpression ")"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "-" rightValue=RealExpression ")"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-
-		//("#ref" name=String0)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_0_1_0() { return cRefKeyword_0_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_0_1_1() { return cNameAssignment_0_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_0_1_1_0() { return cNameString0ParserRuleCall_0_1_1_0; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_0_2() { return cLeftValueAssignment_0_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_0_2_0() { return cLeftValueRealExpressionParserRuleCall_0_2_0; }
-
-		//"-"
-		public Keyword getHyphenMinusKeyword_0_3() { return cHyphenMinusKeyword_0_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_0_4() { return cRightValueAssignment_0_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_0_4_0() { return cRightValueRealExpressionParserRuleCall_0_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_0_5() { return cRightParenthesisKeyword_0_5; }
-
-		//"(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "-" rightValue=RealExpression ")"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
-
-		//("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2() { return cColonKeyword_1_1_2; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_3() { return cTypeAssignment_1_1_3; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_3_0() { return cTypeTypeCrossReference_1_1_3_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_3_0_1() { return cTypeTypeEStringParserRuleCall_1_1_3_0_1; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_1_2() { return cLeftValueAssignment_1_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_1_2_0() { return cLeftValueRealExpressionParserRuleCall_1_2_0; }
-
-		//"-"
-		public Keyword getHyphenMinusKeyword_1_3() { return cHyphenMinusKeyword_1_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_1_4() { return cRightValueAssignment_1_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_1_4_0() { return cRightValueRealExpressionParserRuleCall_1_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_1_5() { return cRightParenthesisKeyword_1_5; }
-	}
-
-	public class RealMultiplyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealMultiply");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cRefKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cNameAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_0_1_1_0 = (RuleCall)cNameAssignment_0_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_0_2_0 = (RuleCall)cLeftValueAssignment_0_2.eContents().get(0);
-		private final Keyword cAsteriskKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cRightValueAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_0_4_0 = (RuleCall)cRightValueAssignment_0_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Keyword cColonKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
-		private final Assignment cTypeAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_1_1_3_0 = (CrossReference)cTypeAssignment_1_1_3.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_3_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_3_0.eContents().get(1);
-		private final Assignment cLeftValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_1_2_0 = (RuleCall)cLeftValueAssignment_1_2.eContents().get(0);
-		private final Keyword cAsteriskKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cRightValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		
-		//RealMultiply returns ClassicalExpression::RealMultiply:
-		//	"(" ("#ref" name=String0)? leftValue=RealExpression "*" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//	type=[BasicType::Type|EString])? leftValue=RealExpression "*" rightValue=RealExpression ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "*" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//type=[BasicType::Type|EString])? leftValue=RealExpression "*" rightValue=RealExpression ")"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "*" rightValue=RealExpression ")"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-
-		//("#ref" name=String0)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_0_1_0() { return cRefKeyword_0_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_0_1_1() { return cNameAssignment_0_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_0_1_1_0() { return cNameString0ParserRuleCall_0_1_1_0; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_0_2() { return cLeftValueAssignment_0_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_0_2_0() { return cLeftValueRealExpressionParserRuleCall_0_2_0; }
-
-		//"*"
-		public Keyword getAsteriskKeyword_0_3() { return cAsteriskKeyword_0_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_0_4() { return cRightValueAssignment_0_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_0_4_0() { return cRightValueRealExpressionParserRuleCall_0_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_0_5() { return cRightParenthesisKeyword_0_5; }
-
-		//"(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "*" rightValue=RealExpression ")"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
-
-		//("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2() { return cColonKeyword_1_1_2; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_3() { return cTypeAssignment_1_1_3; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_3_0() { return cTypeTypeCrossReference_1_1_3_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_3_0_1() { return cTypeTypeEStringParserRuleCall_1_1_3_0_1; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_1_2() { return cLeftValueAssignment_1_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_1_2_0() { return cLeftValueRealExpressionParserRuleCall_1_2_0; }
-
-		//"*"
-		public Keyword getAsteriskKeyword_1_3() { return cAsteriskKeyword_1_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_1_4() { return cRightValueAssignment_1_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_1_4_0() { return cRightValueRealExpressionParserRuleCall_1_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_1_5() { return cRightParenthesisKeyword_1_5; }
-	}
-
 	public class UnaryIntPlusElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UnaryIntPlus");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -2123,7 +1390,38 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOperandIntegerExpressionParserRuleCall_1_6_0 = (RuleCall)cOperandAssignment_1_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketRightParenthesisKeyword_1_7 = (Keyword)cGroup_1.eContents().get(7);
 		
-		//UnaryIntPlus returns ClassicalExpression::UnaryIntPlus:
+		/// *UnaryRealPlus returns ClassicalExpression::UnaryRealPlus:
+		//	('+' 
+		//	'{'
+		//		'value' value=[BasicType::RealElement|EString]
+		//		'operand' operand=RealExpression
+		//	'}')|
+		//	('(+' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
+		//	'{'
+		//		'value' value=[BasicType::RealElement|EString]
+		//		'operand' operand=RealExpression
+		//	'})');* / / *UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
+		//	('-' 
+		//	'{'
+		//		'value' value=[BasicType::RealElement|EString]
+		//		'operand' operand=RealExpression
+		//	'}')|
+		//	('(-' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
+		//	'{'
+		//		'value' value=[BasicType::RealElement|EString]
+		//		'operand' operand=RealExpression
+		//	'})');* / / *RealPlus returns ClassicalExpression::RealPlus:
+		//	('('('#ref' name=String0)? leftValue=RealExpression '+' rightValue=RealExpression')')|
+		//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '+' rightValue=RealExpression')');
+		//
+		//RealMinus returns ClassicalExpression::RealMinus:
+		//	('('('#ref' name=String0)? leftValue=RealExpression '-' rightValue=RealExpression')')|
+		//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '-' rightValue=RealExpression')');
+		//
+		//RealMultiply returns ClassicalExpression::RealMultiply:
+		//	('('('#ref' name=String0)? leftValue=RealExpression '*' rightValue=RealExpression')')|
+		//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '*' rightValue=RealExpression')');* / UnaryIntPlus
+		//returns ClassicalExpression::UnaryIntPlus:
 		//	"+" "{" "value" value=[BasicType::IntegerElement|EString] "operand" operand=IntegerExpression "}" | "(+" ("#ref"
 		//	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::IntegerElement|EString] "operand"
 		//	operand=IntegerExpression "})";
@@ -3202,385 +2500,6 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
 
-	public class RealEqualElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealEqual");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cRefKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cNameAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_0_1_1_0 = (RuleCall)cNameAssignment_0_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_0_2_0 = (RuleCall)cLeftValueAssignment_0_2.eContents().get(0);
-		private final Keyword cEqualsSignEqualsSignKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cRightValueAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_0_4_0 = (RuleCall)cRightValueAssignment_0_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Keyword cColonKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
-		private final Assignment cTypeAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_1_1_3_0 = (CrossReference)cTypeAssignment_1_1_3.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_3_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_3_0.eContents().get(1);
-		private final Assignment cLeftValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_1_2_0 = (RuleCall)cLeftValueAssignment_1_2.eContents().get(0);
-		private final Keyword cEqualsSignEqualsSignKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cRightValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		
-		//RealEqual returns ClassicalExpression::RealEqual:
-		//	"(" ("#ref" name=String0)? leftValue=RealExpression "==" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//	type=[BasicType::Type|EString])? leftValue=RealExpression "==" rightValue=RealExpression ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "==" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//type=[BasicType::Type|EString])? leftValue=RealExpression "==" rightValue=RealExpression ")"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "==" rightValue=RealExpression ")"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-
-		//("#ref" name=String0)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_0_1_0() { return cRefKeyword_0_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_0_1_1() { return cNameAssignment_0_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_0_1_1_0() { return cNameString0ParserRuleCall_0_1_1_0; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_0_2() { return cLeftValueAssignment_0_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_0_2_0() { return cLeftValueRealExpressionParserRuleCall_0_2_0; }
-
-		//"=="
-		public Keyword getEqualsSignEqualsSignKeyword_0_3() { return cEqualsSignEqualsSignKeyword_0_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_0_4() { return cRightValueAssignment_0_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_0_4_0() { return cRightValueRealExpressionParserRuleCall_0_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_0_5() { return cRightParenthesisKeyword_0_5; }
-
-		//"(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "==" rightValue=RealExpression
-		//")"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
-
-		//("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2() { return cColonKeyword_1_1_2; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_3() { return cTypeAssignment_1_1_3; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_3_0() { return cTypeTypeCrossReference_1_1_3_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_3_0_1() { return cTypeTypeEStringParserRuleCall_1_1_3_0_1; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_1_2() { return cLeftValueAssignment_1_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_1_2_0() { return cLeftValueRealExpressionParserRuleCall_1_2_0; }
-
-		//"=="
-		public Keyword getEqualsSignEqualsSignKeyword_1_3() { return cEqualsSignEqualsSignKeyword_1_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_1_4() { return cRightValueAssignment_1_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_1_4_0() { return cRightValueRealExpressionParserRuleCall_1_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_1_5() { return cRightParenthesisKeyword_1_5; }
-	}
-
-	public class RealInfElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealInf");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cRefKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cNameAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_0_1_1_0 = (RuleCall)cNameAssignment_0_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_0_2_0 = (RuleCall)cLeftValueAssignment_0_2.eContents().get(0);
-		private final Keyword cLessThanSignKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cRightValueAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_0_4_0 = (RuleCall)cRightValueAssignment_0_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Keyword cColonKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
-		private final Assignment cTypeAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_1_1_3_0 = (CrossReference)cTypeAssignment_1_1_3.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_3_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_3_0.eContents().get(1);
-		private final Assignment cLeftValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_1_2_0 = (RuleCall)cLeftValueAssignment_1_2.eContents().get(0);
-		private final Keyword cLessThanSignKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cRightValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		
-		//RealInf returns ClassicalExpression::RealInf:
-		//	"(" ("#ref" name=String0)? leftValue=RealExpression "<" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//	type=[BasicType::Type|EString])? leftValue=RealExpression "<" rightValue=RealExpression ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "<" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//type=[BasicType::Type|EString])? leftValue=RealExpression "<" rightValue=RealExpression ")"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "<" rightValue=RealExpression ")"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-
-		//("#ref" name=String0)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_0_1_0() { return cRefKeyword_0_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_0_1_1() { return cNameAssignment_0_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_0_1_1_0() { return cNameString0ParserRuleCall_0_1_1_0; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_0_2() { return cLeftValueAssignment_0_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_0_2_0() { return cLeftValueRealExpressionParserRuleCall_0_2_0; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_0_3() { return cLessThanSignKeyword_0_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_0_4() { return cRightValueAssignment_0_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_0_4_0() { return cRightValueRealExpressionParserRuleCall_0_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_0_5() { return cRightParenthesisKeyword_0_5; }
-
-		//"(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "<" rightValue=RealExpression ")"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
-
-		//("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2() { return cColonKeyword_1_1_2; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_3() { return cTypeAssignment_1_1_3; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_3_0() { return cTypeTypeCrossReference_1_1_3_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_3_0_1() { return cTypeTypeEStringParserRuleCall_1_1_3_0_1; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_1_2() { return cLeftValueAssignment_1_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_1_2_0() { return cLeftValueRealExpressionParserRuleCall_1_2_0; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_1_3() { return cLessThanSignKeyword_1_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_1_4() { return cRightValueAssignment_1_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_1_4_0() { return cRightValueRealExpressionParserRuleCall_1_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_1_5() { return cRightParenthesisKeyword_1_5; }
-	}
-
-	public class RealSupElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealSup");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cRefKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cNameAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_0_1_1_0 = (RuleCall)cNameAssignment_0_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_0_2_0 = (RuleCall)cLeftValueAssignment_0_2.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cRightValueAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_0_4_0 = (RuleCall)cRightValueAssignment_0_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Keyword cColonKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
-		private final Assignment cTypeAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_1_1_3_0 = (CrossReference)cTypeAssignment_1_1_3.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_3_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_3_0.eContents().get(1);
-		private final Assignment cLeftValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_1_2_0 = (RuleCall)cLeftValueAssignment_1_2.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cRightValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		
-		//RealSup returns ClassicalExpression::RealSup:
-		//	"(" ("#ref" name=String0)? leftValue=RealExpression ">" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//	type=[BasicType::Type|EString])? leftValue=RealExpression ">" rightValue=RealExpression ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression ">" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//type=[BasicType::Type|EString])? leftValue=RealExpression ">" rightValue=RealExpression ")"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression ">" rightValue=RealExpression ")"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-
-		//("#ref" name=String0)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_0_1_0() { return cRefKeyword_0_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_0_1_1() { return cNameAssignment_0_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_0_1_1_0() { return cNameString0ParserRuleCall_0_1_1_0; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_0_2() { return cLeftValueAssignment_0_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_0_2_0() { return cLeftValueRealExpressionParserRuleCall_0_2_0; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_0_3() { return cGreaterThanSignKeyword_0_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_0_4() { return cRightValueAssignment_0_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_0_4_0() { return cRightValueRealExpressionParserRuleCall_0_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_0_5() { return cRightParenthesisKeyword_0_5; }
-
-		//"(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression ">" rightValue=RealExpression ")"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
-
-		//("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2() { return cColonKeyword_1_1_2; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_3() { return cTypeAssignment_1_1_3; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_3_0() { return cTypeTypeCrossReference_1_1_3_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_3_0_1() { return cTypeTypeEStringParserRuleCall_1_1_3_0_1; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_1_2() { return cLeftValueAssignment_1_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_1_2_0() { return cLeftValueRealExpressionParserRuleCall_1_2_0; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_1_3() { return cGreaterThanSignKeyword_1_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_1_4() { return cRightValueAssignment_1_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_1_4_0() { return cRightValueRealExpressionParserRuleCall_1_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_1_5() { return cRightParenthesisKeyword_1_5; }
-	}
-
 	public class IntInfElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntInf");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -3613,7 +2532,18 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightValueIntegerExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
 		
-		//IntInf returns ClassicalExpression::IntInf:
+		/// *RealEqual returns ClassicalExpression::RealEqual:
+		//	('('('#ref' name=String0)? leftValue=RealExpression '==' rightValue=RealExpression')')|
+		//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '==' rightValue=RealExpression')');
+		//
+		//RealInf returns ClassicalExpression::RealInf:
+		//	('('('#ref' name=String0)? leftValue=RealExpression '<' rightValue=RealExpression')')|
+		//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '<' rightValue=RealExpression')');
+		//
+		//RealSup returns ClassicalExpression::RealSup:
+		//	('('('#ref' name=String0)? leftValue=RealExpression '>' rightValue=RealExpression')')|
+		//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>' rightValue=RealExpression')');* / IntInf
+		//returns ClassicalExpression::IntInf:
 		//	"(" ("#ref" name=String0)? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")" | "(" ("#ref"
 		//	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")";
 		public ParserRule getRule() { return rule; }
@@ -4155,26 +3085,21 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAndParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cOrParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cXorParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cRealEqualParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cRealInfParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cRealSupParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final RuleCall cIntEqualParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
-		private final RuleCall cIntInfParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
-		private final RuleCall cIntSupParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
-		private final RuleCall cSeqIsEmptyParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
-		private final RuleCall cBooleanVariableRefParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
-		private final RuleCall cIntInfEqualParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
-		private final RuleCall cIntSupEqualParserRuleCall_14 = (RuleCall)cAlternatives.eContents().get(14);
-		private final RuleCall cRealInfEqualParserRuleCall_15 = (RuleCall)cAlternatives.eContents().get(15);
-		private final RuleCall cRealSupEqualParserRuleCall_16 = (RuleCall)cAlternatives.eContents().get(16);
+		private final RuleCall cIntEqualParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cIntInfParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cIntSupParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cSeqIsEmptyParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cBooleanVariableRefParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
+		private final RuleCall cIntInfEqualParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
+		private final RuleCall cIntSupEqualParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
 		
-		//BooleanExpression returns ClassicalExpression::BooleanExpression:
-		//	BooleanRef | Not | And | Or | Xor | RealEqual | RealInf | RealSup | IntEqual | IntInf | IntSup | SeqIsEmpty |
-		//	BooleanVariableRef | IntInfEqual | IntSupEqual | RealInfEqual | RealSupEqual;
+		/// *|RealInfEqual|RealSupEqual* / BooleanExpression returns ClassicalExpression::BooleanExpression:
+		//	BooleanRef | Not | And | Or | Xor | / *RealEqual | RealInf | RealSup | * / IntEqual | IntInf | IntSup | SeqIsEmpty |
+		//	BooleanVariableRef | IntInfEqual | IntSupEqual;
 		public ParserRule getRule() { return rule; }
 
-		//BooleanRef | Not | And | Or | Xor | RealEqual | RealInf | RealSup | IntEqual | IntInf | IntSup | SeqIsEmpty |
-		//BooleanVariableRef | IntInfEqual | IntSupEqual | RealInfEqual | RealSupEqual
+		//BooleanRef | Not | And | Or | Xor | / *RealEqual | RealInf | RealSup | * / IntEqual | IntInf | IntSup | SeqIsEmpty |
+		//BooleanVariableRef | IntInfEqual | IntSupEqual
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//BooleanRef
@@ -4192,295 +3117,26 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Xor
 		public RuleCall getXorParserRuleCall_4() { return cXorParserRuleCall_4; }
 
-		//RealEqual
-		public RuleCall getRealEqualParserRuleCall_5() { return cRealEqualParserRuleCall_5; }
-
-		//RealInf
-		public RuleCall getRealInfParserRuleCall_6() { return cRealInfParserRuleCall_6; }
-
-		//RealSup
-		public RuleCall getRealSupParserRuleCall_7() { return cRealSupParserRuleCall_7; }
-
-		//IntEqual
-		public RuleCall getIntEqualParserRuleCall_8() { return cIntEqualParserRuleCall_8; }
+		/// *RealEqual | RealInf | RealSup | * / IntEqual
+		public RuleCall getIntEqualParserRuleCall_5() { return cIntEqualParserRuleCall_5; }
 
 		//IntInf
-		public RuleCall getIntInfParserRuleCall_9() { return cIntInfParserRuleCall_9; }
+		public RuleCall getIntInfParserRuleCall_6() { return cIntInfParserRuleCall_6; }
 
 		//IntSup
-		public RuleCall getIntSupParserRuleCall_10() { return cIntSupParserRuleCall_10; }
+		public RuleCall getIntSupParserRuleCall_7() { return cIntSupParserRuleCall_7; }
 
 		//SeqIsEmpty
-		public RuleCall getSeqIsEmptyParserRuleCall_11() { return cSeqIsEmptyParserRuleCall_11; }
+		public RuleCall getSeqIsEmptyParserRuleCall_8() { return cSeqIsEmptyParserRuleCall_8; }
 
 		//BooleanVariableRef
-		public RuleCall getBooleanVariableRefParserRuleCall_12() { return cBooleanVariableRefParserRuleCall_12; }
+		public RuleCall getBooleanVariableRefParserRuleCall_9() { return cBooleanVariableRefParserRuleCall_9; }
 
 		//IntInfEqual
-		public RuleCall getIntInfEqualParserRuleCall_13() { return cIntInfEqualParserRuleCall_13; }
+		public RuleCall getIntInfEqualParserRuleCall_10() { return cIntInfEqualParserRuleCall_10; }
 
 		//IntSupEqual
-		public RuleCall getIntSupEqualParserRuleCall_14() { return cIntSupEqualParserRuleCall_14; }
-
-		//RealInfEqual
-		public RuleCall getRealInfEqualParserRuleCall_15() { return cRealInfEqualParserRuleCall_15; }
-
-		//RealSupEqual
-		public RuleCall getRealSupEqualParserRuleCall_16() { return cRealSupEqualParserRuleCall_16; }
-	}
-
-	public class RealSupEqualElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealSupEqual");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cRefKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cNameAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_0_1_1_0 = (RuleCall)cNameAssignment_0_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_0_2_0 = (RuleCall)cLeftValueAssignment_0_2.eContents().get(0);
-		private final Keyword cGreaterThanSignEqualsSignKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cRightValueAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_0_4_0 = (RuleCall)cRightValueAssignment_0_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Keyword cColonKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
-		private final Assignment cTypeAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_1_1_3_0 = (CrossReference)cTypeAssignment_1_1_3.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_3_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_3_0.eContents().get(1);
-		private final Assignment cLeftValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_1_2_0 = (RuleCall)cLeftValueAssignment_1_2.eContents().get(0);
-		private final Keyword cGreaterThanSignEqualsSignKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cRightValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		
-		//RealSupEqual returns extension::RealSupEqual:
-		//	"(" ("#ref" name=String0)? leftValue=RealExpression ">=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//	type=[BasicType::Type|EString])? leftValue=RealExpression ">=" rightValue=RealExpression ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression ">=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//type=[BasicType::Type|EString])? leftValue=RealExpression ">=" rightValue=RealExpression ")"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression ">=" rightValue=RealExpression ")"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-
-		//("#ref" name=String0)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_0_1_0() { return cRefKeyword_0_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_0_1_1() { return cNameAssignment_0_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_0_1_1_0() { return cNameString0ParserRuleCall_0_1_1_0; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_0_2() { return cLeftValueAssignment_0_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_0_2_0() { return cLeftValueRealExpressionParserRuleCall_0_2_0; }
-
-		//">="
-		public Keyword getGreaterThanSignEqualsSignKeyword_0_3() { return cGreaterThanSignEqualsSignKeyword_0_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_0_4() { return cRightValueAssignment_0_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_0_4_0() { return cRightValueRealExpressionParserRuleCall_0_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_0_5() { return cRightParenthesisKeyword_0_5; }
-
-		//"(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression ">=" rightValue=RealExpression
-		//")"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
-
-		//("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2() { return cColonKeyword_1_1_2; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_3() { return cTypeAssignment_1_1_3; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_3_0() { return cTypeTypeCrossReference_1_1_3_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_3_0_1() { return cTypeTypeEStringParserRuleCall_1_1_3_0_1; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_1_2() { return cLeftValueAssignment_1_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_1_2_0() { return cLeftValueRealExpressionParserRuleCall_1_2_0; }
-
-		//">="
-		public Keyword getGreaterThanSignEqualsSignKeyword_1_3() { return cGreaterThanSignEqualsSignKeyword_1_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_1_4() { return cRightValueAssignment_1_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_1_4_0() { return cRightValueRealExpressionParserRuleCall_1_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_1_5() { return cRightParenthesisKeyword_1_5; }
-	}
-
-	public class RealInfEqualElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealInfEqual");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cRefKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cNameAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_0_1_1_0 = (RuleCall)cNameAssignment_0_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_0_2_0 = (RuleCall)cLeftValueAssignment_0_2.eContents().get(0);
-		private final Keyword cLessThanSignEqualsSignKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cRightValueAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_0_4_0 = (RuleCall)cRightValueAssignment_0_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cRefKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cNameString0ParserRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
-		private final Keyword cColonKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
-		private final Assignment cTypeAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_1_1_3_0 = (CrossReference)cTypeAssignment_1_1_3.eContents().get(0);
-		private final RuleCall cTypeTypeEStringParserRuleCall_1_1_3_0_1 = (RuleCall)cTypeTypeCrossReference_1_1_3_0.eContents().get(1);
-		private final Assignment cLeftValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cLeftValueRealExpressionParserRuleCall_1_2_0 = (RuleCall)cLeftValueAssignment_1_2.eContents().get(0);
-		private final Keyword cLessThanSignEqualsSignKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cRightValueAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
-		
-		//RealInfEqual returns extension::RealInfEqual:
-		//	"(" ("#ref" name=String0)? leftValue=RealExpression "<=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//	type=[BasicType::Type|EString])? leftValue=RealExpression "<=" rightValue=RealExpression ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "<=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-		//type=[BasicType::Type|EString])? leftValue=RealExpression "<=" rightValue=RealExpression ")"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"(" ("#ref" name=String0)? leftValue=RealExpression "<=" rightValue=RealExpression ")"
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-
-		//("#ref" name=String0)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_0_1_0() { return cRefKeyword_0_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_0_1_1() { return cNameAssignment_0_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_0_1_1_0() { return cNameString0ParserRuleCall_0_1_1_0; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_0_2() { return cLeftValueAssignment_0_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_0_2_0() { return cLeftValueRealExpressionParserRuleCall_0_2_0; }
-
-		//"<="
-		public Keyword getLessThanSignEqualsSignKeyword_0_3() { return cLessThanSignEqualsSignKeyword_0_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_0_4() { return cRightValueAssignment_0_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_0_4_0() { return cRightValueRealExpressionParserRuleCall_0_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_0_5() { return cRightParenthesisKeyword_0_5; }
-
-		//"(" ("#ref" name=String0 ":" type=[BasicType::Type|EString])? leftValue=RealExpression "<=" rightValue=RealExpression
-		//")"
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
-
-		//("#ref" name=String0 ":" type=[BasicType::Type|EString])?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_1_0() { return cRefKeyword_1_1_0; }
-
-		//name=String0
-		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
-
-		//String0
-		public RuleCall getNameString0ParserRuleCall_1_1_1_0() { return cNameString0ParserRuleCall_1_1_1_0; }
-
-		//":"
-		public Keyword getColonKeyword_1_1_2() { return cColonKeyword_1_1_2; }
-
-		//type=[BasicType::Type|EString]
-		public Assignment getTypeAssignment_1_1_3() { return cTypeAssignment_1_1_3; }
-
-		//[BasicType::Type|EString]
-		public CrossReference getTypeTypeCrossReference_1_1_3_0() { return cTypeTypeCrossReference_1_1_3_0; }
-
-		//EString
-		public RuleCall getTypeTypeEStringParserRuleCall_1_1_3_0_1() { return cTypeTypeEStringParserRuleCall_1_1_3_0_1; }
-
-		//leftValue=RealExpression
-		public Assignment getLeftValueAssignment_1_2() { return cLeftValueAssignment_1_2; }
-
-		//RealExpression
-		public RuleCall getLeftValueRealExpressionParserRuleCall_1_2_0() { return cLeftValueRealExpressionParserRuleCall_1_2_0; }
-
-		//"<="
-		public Keyword getLessThanSignEqualsSignKeyword_1_3() { return cLessThanSignEqualsSignKeyword_1_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_1_4() { return cRightValueAssignment_1_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_1_4_0() { return cRightValueRealExpressionParserRuleCall_1_4_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_1_5() { return cRightParenthesisKeyword_1_5; }
+		public RuleCall getIntSupEqualParserRuleCall_11() { return cIntSupEqualParserRuleCall_11; }
 	}
 
 	public class IntSupEqualElements extends AbstractParserRuleElementFinder {
@@ -4515,7 +3171,12 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightValueIntegerExpressionParserRuleCall_1_4_0 = (RuleCall)cRightValueAssignment_1_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
 		
-		//IntSupEqual returns extension::IntSupEqual:
+		/// *RealSupEqual returns extension::RealSupEqual:
+		//	('('('#ref' name=String0)? leftValue=RealExpression '>=' rightValue=RealExpression')')|
+		//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>=' rightValue=RealExpression')');* / / *RealInfEqual returns extension::RealInfEqual:
+		//	('('('#ref' name=String0)? leftValue=RealExpression '<=' rightValue=RealExpression')')|
+		//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '<=' rightValue=RealExpression')');* / IntSupEqual
+		//returns extension::IntSupEqual:
 		//	"(" ("#ref" name=String0)? leftValue=IntegerExpression ">=" rightValue=IntegerExpression ")" | "(" ("#ref"
 		//	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression ">=" rightValue=IntegerExpression ")";
 		public ParserRule getRule() { return rule; }
@@ -4741,268 +3402,90 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ClassicalExpression0");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cBooleanExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cRealExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cIntegerExpressionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cSeqExpressionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cIntegerExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cSeqExpressionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
-		//ClassicalExpression0 returns ClassicalExpression::ClassicalExpression:
-		//	BooleanExpression | RealExpression | IntegerExpression | SeqExpression;
+		/// *RealExpression returns ClassicalExpression::RealExpression:
+		//	BinaryRealExpression|UnaryRealExpression|RealRef|RealVariableRef;
+		//	
+		//BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
+		//	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
+		//
+		//UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
+		//	UnaryRealPlus|UnaryRealMinus;* / / * 
+		//RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
+		//	{extension::RealSelfPlusAssignement}
+		//	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
+		//;
+		//
+		//RealSelfMinusAssign returns extension::RealSelfMinusAssignement:
+		//	{extension::RealSelfMinusAssignement}
+		//	('#ref'name=EString)? leftValue=RealRef '-=' rightValue=RealExpression
+		//;
+		//
+		//RealSelfMultAssign returns extension::RealSelfMultiplyAssignement:
+		//	{extension::RealSelfMultiplyAssignement}
+		//	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
+		//;
+		// * / ClassicalExpression0 returns ClassicalExpression::ClassicalExpression:
+		//	BooleanExpression / *| RealExpression* / | IntegerExpression | SeqExpression;
 		public ParserRule getRule() { return rule; }
 
-		//BooleanExpression | RealExpression | IntegerExpression | SeqExpression
+		//BooleanExpression / *| RealExpression* / / *RealExpression returns ClassicalExpression::RealExpression:
+		//	BinaryRealExpression|UnaryRealExpression|RealRef|RealVariableRef;
+		//	
+		//BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
+		//	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
+		//
+		//UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
+		//	UnaryRealPlus|UnaryRealMinus;* / / * 
+		//RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
+		//	{extension::RealSelfPlusAssignement}
+		//	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
+		//;
+		//
+		//RealSelfMinusAssign returns extension::RealSelfMinusAssignement:
+		//	{extension::RealSelfMinusAssignement}
+		//	('#ref'name=EString)? leftValue=RealRef '-=' rightValue=RealExpression
+		//;
+		//
+		//RealSelfMultAssign returns extension::RealSelfMultiplyAssignement:
+		//	{extension::RealSelfMultiplyAssignement}
+		//	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
+		//;
+		// * / | IntegerExpression | SeqExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//BooleanExpression
 		public RuleCall getBooleanExpressionParserRuleCall_0() { return cBooleanExpressionParserRuleCall_0; }
 
-		//RealExpression
-		public RuleCall getRealExpressionParserRuleCall_1() { return cRealExpressionParserRuleCall_1; }
-
 		//IntegerExpression
-		public RuleCall getIntegerExpressionParserRuleCall_2() { return cIntegerExpressionParserRuleCall_2; }
+		public RuleCall getIntegerExpressionParserRuleCall_1() { return cIntegerExpressionParserRuleCall_1; }
 
-		//SeqExpression
-		public RuleCall getSeqExpressionParserRuleCall_3() { return cSeqExpressionParserRuleCall_3; }
-	}
-
-	public class RealExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealExpression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cBinaryRealExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cUnaryRealExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cRealRefParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cRealVariableRefParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		
-		//RealExpression returns ClassicalExpression::RealExpression:
-		//	BinaryRealExpression | UnaryRealExpression | RealRef | RealVariableRef;
-		public ParserRule getRule() { return rule; }
-
-		//BinaryRealExpression | UnaryRealExpression | RealRef | RealVariableRef
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//BinaryRealExpression
-		public RuleCall getBinaryRealExpressionParserRuleCall_0() { return cBinaryRealExpressionParserRuleCall_0; }
-
-		//UnaryRealExpression
-		public RuleCall getUnaryRealExpressionParserRuleCall_1() { return cUnaryRealExpressionParserRuleCall_1; }
-
-		//RealRef
-		public RuleCall getRealRefParserRuleCall_2() { return cRealRefParserRuleCall_2; }
-
-		//RealVariableRef
-		public RuleCall getRealVariableRefParserRuleCall_3() { return cRealVariableRefParserRuleCall_3; }
-	}
-
-	public class BinaryRealExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BinaryRealExpression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cRealPlusParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cRealMinusParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cRealMultiplyParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cRealSelfPlusAssignParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cRealSelfMinusAssignParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cRealSelfMultAssignParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		
+		/// *RealExpression returns ClassicalExpression::RealExpression:
+		//	BinaryRealExpression|UnaryRealExpression|RealRef|RealVariableRef;
+		//	
 		//BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
-		//	RealPlus | RealMinus | RealMultiply | RealSelfPlusAssign | RealSelfMinusAssign | RealSelfMultAssign;
-		public ParserRule getRule() { return rule; }
-
-		//RealPlus | RealMinus | RealMultiply | RealSelfPlusAssign | RealSelfMinusAssign | RealSelfMultAssign
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//RealPlus
-		public RuleCall getRealPlusParserRuleCall_0() { return cRealPlusParserRuleCall_0; }
-
-		//RealMinus
-		public RuleCall getRealMinusParserRuleCall_1() { return cRealMinusParserRuleCall_1; }
-
-		//RealMultiply
-		public RuleCall getRealMultiplyParserRuleCall_2() { return cRealMultiplyParserRuleCall_2; }
-
-		//RealSelfPlusAssign
-		public RuleCall getRealSelfPlusAssignParserRuleCall_3() { return cRealSelfPlusAssignParserRuleCall_3; }
-
-		//RealSelfMinusAssign
-		public RuleCall getRealSelfMinusAssignParserRuleCall_4() { return cRealSelfMinusAssignParserRuleCall_4; }
-
-		//RealSelfMultAssign
-		public RuleCall getRealSelfMultAssignParserRuleCall_5() { return cRealSelfMultAssignParserRuleCall_5; }
-	}
-
-	public class UnaryRealExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UnaryRealExpression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cUnaryRealPlusParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cUnaryRealMinusParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
+		//	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
+		//
 		//UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
-		//	UnaryRealPlus | UnaryRealMinus;
-		public ParserRule getRule() { return rule; }
-
-		//UnaryRealPlus | UnaryRealMinus
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//UnaryRealPlus
-		public RuleCall getUnaryRealPlusParserRuleCall_0() { return cUnaryRealPlusParserRuleCall_0; }
-
-		//UnaryRealMinus
-		public RuleCall getUnaryRealMinusParserRuleCall_1() { return cUnaryRealMinusParserRuleCall_1; }
-	}
-
-	public class RealSelfPlusAssignElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealSelfPlusAssign");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cRealSelfPlusAssignementAction_0 = (Action)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cRefKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cLeftValueRealRefParserRuleCall_2_0 = (RuleCall)cLeftValueAssignment_2.eContents().get(0);
-		private final Keyword cPlusSignEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cRightValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_4_0 = (RuleCall)cRightValueAssignment_4.eContents().get(0);
-		
+		//	UnaryRealPlus|UnaryRealMinus;* / / * 
 		//RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
-		//	{extension::RealSelfPlusAssignement} ("#ref" name=EString)? leftValue=RealRef "+=" rightValue=RealExpression;
-		public ParserRule getRule() { return rule; }
-
-		//{extension::RealSelfPlusAssignement} ("#ref" name=EString)? leftValue=RealRef "+=" rightValue=RealExpression
-		public Group getGroup() { return cGroup; }
-
-		//{extension::RealSelfPlusAssignement}
-		public Action getRealSelfPlusAssignementAction_0() { return cRealSelfPlusAssignementAction_0; }
-
-		//("#ref" name=EString)?
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_0() { return cRefKeyword_1_0; }
-
-		//name=EString
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
-
-		//EString
-		public RuleCall getNameEStringParserRuleCall_1_1_0() { return cNameEStringParserRuleCall_1_1_0; }
-
-		//leftValue=RealRef
-		public Assignment getLeftValueAssignment_2() { return cLeftValueAssignment_2; }
-
-		//RealRef
-		public RuleCall getLeftValueRealRefParserRuleCall_2_0() { return cLeftValueRealRefParserRuleCall_2_0; }
-
-		//"+="
-		public Keyword getPlusSignEqualsSignKeyword_3() { return cPlusSignEqualsSignKeyword_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_4() { return cRightValueAssignment_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_4_0() { return cRightValueRealExpressionParserRuleCall_4_0; }
-	}
-
-	public class RealSelfMinusAssignElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealSelfMinusAssign");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cRealSelfMinusAssignementAction_0 = (Action)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cRefKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cLeftValueRealRefParserRuleCall_2_0 = (RuleCall)cLeftValueAssignment_2.eContents().get(0);
-		private final Keyword cHyphenMinusEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cRightValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_4_0 = (RuleCall)cRightValueAssignment_4.eContents().get(0);
-		
+		//	{extension::RealSelfPlusAssignement}
+		//	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
+		//;
+		//
 		//RealSelfMinusAssign returns extension::RealSelfMinusAssignement:
-		//	{extension::RealSelfMinusAssignement} ("#ref" name=EString)? leftValue=RealRef "-=" rightValue=RealExpression;
-		public ParserRule getRule() { return rule; }
-
-		//{extension::RealSelfMinusAssignement} ("#ref" name=EString)? leftValue=RealRef "-=" rightValue=RealExpression
-		public Group getGroup() { return cGroup; }
-
-		//{extension::RealSelfMinusAssignement}
-		public Action getRealSelfMinusAssignementAction_0() { return cRealSelfMinusAssignementAction_0; }
-
-		//("#ref" name=EString)?
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_0() { return cRefKeyword_1_0; }
-
-		//name=EString
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
-
-		//EString
-		public RuleCall getNameEStringParserRuleCall_1_1_0() { return cNameEStringParserRuleCall_1_1_0; }
-
-		//leftValue=RealRef
-		public Assignment getLeftValueAssignment_2() { return cLeftValueAssignment_2; }
-
-		//RealRef
-		public RuleCall getLeftValueRealRefParserRuleCall_2_0() { return cLeftValueRealRefParserRuleCall_2_0; }
-
-		//"-="
-		public Keyword getHyphenMinusEqualsSignKeyword_3() { return cHyphenMinusEqualsSignKeyword_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_4() { return cRightValueAssignment_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_4_0() { return cRightValueRealExpressionParserRuleCall_4_0; }
-	}
-
-	public class RealSelfMultAssignElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RealSelfMultAssign");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cRealSelfMultiplyAssignementAction_0 = (Action)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cRefKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
-		private final Assignment cLeftValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cLeftValueRealRefParserRuleCall_2_0 = (RuleCall)cLeftValueAssignment_2.eContents().get(0);
-		private final Keyword cAsteriskEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cRightValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cRightValueRealExpressionParserRuleCall_4_0 = (RuleCall)cRightValueAssignment_4.eContents().get(0);
-		
+		//	{extension::RealSelfMinusAssignement}
+		//	('#ref'name=EString)? leftValue=RealRef '-=' rightValue=RealExpression
+		//;
+		//
 		//RealSelfMultAssign returns extension::RealSelfMultiplyAssignement:
-		//	{extension::RealSelfMultiplyAssignement} ("#ref" name=EString)? leftValue=RealRef "*=" rightValue=RealExpression;
-		public ParserRule getRule() { return rule; }
-
-		//{extension::RealSelfMultiplyAssignement} ("#ref" name=EString)? leftValue=RealRef "*=" rightValue=RealExpression
-		public Group getGroup() { return cGroup; }
-
-		//{extension::RealSelfMultiplyAssignement}
-		public Action getRealSelfMultiplyAssignementAction_0() { return cRealSelfMultiplyAssignementAction_0; }
-
-		//("#ref" name=EString)?
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"#ref"
-		public Keyword getRefKeyword_1_0() { return cRefKeyword_1_0; }
-
-		//name=EString
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
-
-		//EString
-		public RuleCall getNameEStringParserRuleCall_1_1_0() { return cNameEStringParserRuleCall_1_1_0; }
-
-		//leftValue=RealRef
-		public Assignment getLeftValueAssignment_2() { return cLeftValueAssignment_2; }
-
-		//RealRef
-		public RuleCall getLeftValueRealRefParserRuleCall_2_0() { return cLeftValueRealRefParserRuleCall_2_0; }
-
-		//"*="
-		public Keyword getAsteriskEqualsSignKeyword_3() { return cAsteriskEqualsSignKeyword_3; }
-
-		//rightValue=RealExpression
-		public Assignment getRightValueAssignment_4() { return cRightValueAssignment_4; }
-
-		//RealExpression
-		public RuleCall getRightValueRealExpressionParserRuleCall_4_0() { return cRightValueRealExpressionParserRuleCall_4_0; }
+		//	{extension::RealSelfMultiplyAssignement}
+		//	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
+		//;
+		// * / SeqExpression
+		public RuleCall getSeqExpressionParserRuleCall_2() { return cSeqExpressionParserRuleCall_2; }
 	}
 	
 	
@@ -5024,13 +3507,7 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	private UnaryIntegerExpressionElements pUnaryIntegerExpression;
 	private IntEqualElements pIntEqual;
 	private BooleanRefElements pBooleanRef;
-	private RealRefElements pRealRef;
 	private IntegerRefElements pIntegerRef;
-	private UnaryRealPlusElements pUnaryRealPlus;
-	private UnaryRealMinusElements pUnaryRealMinus;
-	private RealPlusElements pRealPlus;
-	private RealMinusElements pRealMinus;
-	private RealMultiplyElements pRealMultiply;
 	private UnaryIntPlusElements pUnaryIntPlus;
 	private UnaryIntMinusElements pUnaryIntMinus;
 	private IntPlusElements pIntPlus;
@@ -5041,9 +3518,6 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	private AndElements pAnd;
 	private OrElements pOr;
 	private XorElements pXor;
-	private RealEqualElements pRealEqual;
-	private RealInfElements pRealInf;
-	private RealSupElements pRealSup;
 	private IntInfElements pIntInf;
 	private IntSupElements pIntSup;
 	private SeqIsEmptyElements pSeqIsEmpty;
@@ -5052,17 +3526,9 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	private SeqDecrElements pSeqDecr;
 	private SeqSchedElements pSeqSched;
 	private BooleanExpressionElements pBooleanExpression;
-	private RealSupEqualElements pRealSupEqual;
-	private RealInfEqualElements pRealInfEqual;
 	private IntSupEqualElements pIntSupEqual;
 	private IntInfEqualElements pIntInfEqual;
 	private ClassicalExpression0Elements pClassicalExpression0;
-	private RealExpressionElements pRealExpression;
-	private BinaryRealExpressionElements pBinaryRealExpression;
-	private UnaryRealExpressionElements pUnaryRealExpression;
-	private RealSelfPlusAssignElements pRealSelfPlusAssign;
-	private RealSelfMinusAssignElements pRealSelfMinusAssign;
-	private RealSelfMultAssignElements pRealSelfMultAssign;
 	
 	private final Grammar grammar;
 
@@ -5247,9 +3713,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntegerAssignement returns fsmmodel::IntegerAssignement:
-	//	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue=
-	//	//';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-	// IntegerExpression;
+	//	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+	//	IntegerExpression;
 	public IntegerAssignementElements getIntegerAssignementAccess() {
 		return (pIntegerAssignement != null) ? pIntegerAssignement : (pIntegerAssignement = new IntegerAssignementElements());
 	}
@@ -5300,18 +3765,9 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getBooleanRefAccess().getRule();
 	}
 
-	//RealRef returns ClassicalExpression::RealRef:
-	//	"r[" realElem=[BasicType::RealElement|EString] "]" | "r#ref" name=ID "[" realElem=[BasicType::RealElement|EString]
-	//	"]";
-	public RealRefElements getRealRefAccess() {
-		return (pRealRef != null) ? pRealRef : (pRealRef = new RealRefElements());
-	}
-	
-	public ParserRule getRealRefRule() {
-		return getRealRefAccess().getRule();
-	}
-
-	//IntegerRef returns ClassicalExpression::IntegerRef:
+	/// *RealRef returns ClassicalExpression::RealRef:
+	//	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';* / IntegerRef
+	//returns ClassicalExpression::IntegerRef:
 	//	"i[" integerElem=[BasicType::IntegerElement|EString] "]" | "i#ref" name=ID "["
 	//	integerElem=[BasicType::IntegerElement|EString] "]";
 	public IntegerRefElements getIntegerRefAccess() {
@@ -5322,64 +3778,38 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getIntegerRefAccess().getRule();
 	}
 
-	//UnaryRealPlus returns ClassicalExpression::UnaryRealPlus:
-	//	"+" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(+" ("#ref"
-	//	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
-	//	operand=RealExpression "})";
-	public UnaryRealPlusElements getUnaryRealPlusAccess() {
-		return (pUnaryRealPlus != null) ? pUnaryRealPlus : (pUnaryRealPlus = new UnaryRealPlusElements());
-	}
-	
-	public ParserRule getUnaryRealPlusRule() {
-		return getUnaryRealPlusAccess().getRule();
-	}
-
-	//UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
-	//	"-" "{" "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression "}" | "(-" ("#ref"
-	//	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::RealElement|EString] "operand"
-	//	operand=RealExpression "})";
-	public UnaryRealMinusElements getUnaryRealMinusAccess() {
-		return (pUnaryRealMinus != null) ? pUnaryRealMinus : (pUnaryRealMinus = new UnaryRealMinusElements());
-	}
-	
-	public ParserRule getUnaryRealMinusRule() {
-		return getUnaryRealMinusAccess().getRule();
-	}
-
-	//RealPlus returns ClassicalExpression::RealPlus:
-	//	"(" ("#ref" name=String0)? leftValue=RealExpression "+" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-	//	type=[BasicType::Type|EString])? leftValue=RealExpression "+" rightValue=RealExpression ")";
-	public RealPlusElements getRealPlusAccess() {
-		return (pRealPlus != null) ? pRealPlus : (pRealPlus = new RealPlusElements());
-	}
-	
-	public ParserRule getRealPlusRule() {
-		return getRealPlusAccess().getRule();
-	}
-
+	/// *UnaryRealPlus returns ClassicalExpression::UnaryRealPlus:
+	//	('+' 
+	//	'{'
+	//		'value' value=[BasicType::RealElement|EString]
+	//		'operand' operand=RealExpression
+	//	'}')|
+	//	('(+' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
+	//	'{'
+	//		'value' value=[BasicType::RealElement|EString]
+	//		'operand' operand=RealExpression
+	//	'})');* / / *UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
+	//	('-' 
+	//	'{'
+	//		'value' value=[BasicType::RealElement|EString]
+	//		'operand' operand=RealExpression
+	//	'}')|
+	//	('(-' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
+	//	'{'
+	//		'value' value=[BasicType::RealElement|EString]
+	//		'operand' operand=RealExpression
+	//	'})');* / / *RealPlus returns ClassicalExpression::RealPlus:
+	//	('('('#ref' name=String0)? leftValue=RealExpression '+' rightValue=RealExpression')')|
+	//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '+' rightValue=RealExpression')');
+	//
 	//RealMinus returns ClassicalExpression::RealMinus:
-	//	"(" ("#ref" name=String0)? leftValue=RealExpression "-" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-	//	type=[BasicType::Type|EString])? leftValue=RealExpression "-" rightValue=RealExpression ")";
-	public RealMinusElements getRealMinusAccess() {
-		return (pRealMinus != null) ? pRealMinus : (pRealMinus = new RealMinusElements());
-	}
-	
-	public ParserRule getRealMinusRule() {
-		return getRealMinusAccess().getRule();
-	}
-
+	//	('('('#ref' name=String0)? leftValue=RealExpression '-' rightValue=RealExpression')')|
+	//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '-' rightValue=RealExpression')');
+	//
 	//RealMultiply returns ClassicalExpression::RealMultiply:
-	//	"(" ("#ref" name=String0)? leftValue=RealExpression "*" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-	//	type=[BasicType::Type|EString])? leftValue=RealExpression "*" rightValue=RealExpression ")";
-	public RealMultiplyElements getRealMultiplyAccess() {
-		return (pRealMultiply != null) ? pRealMultiply : (pRealMultiply = new RealMultiplyElements());
-	}
-	
-	public ParserRule getRealMultiplyRule() {
-		return getRealMultiplyAccess().getRule();
-	}
-
-	//UnaryIntPlus returns ClassicalExpression::UnaryIntPlus:
+	//	('('('#ref' name=String0)? leftValue=RealExpression '*' rightValue=RealExpression')')|
+	//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '*' rightValue=RealExpression')');* / UnaryIntPlus
+	//returns ClassicalExpression::UnaryIntPlus:
 	//	"+" "{" "value" value=[BasicType::IntegerElement|EString] "operand" operand=IntegerExpression "}" | "(+" ("#ref"
 	//	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::IntegerElement|EString] "operand"
 	//	operand=IntegerExpression "})";
@@ -5491,40 +3921,18 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getXorAccess().getRule();
 	}
 
-	//RealEqual returns ClassicalExpression::RealEqual:
-	//	"(" ("#ref" name=String0)? leftValue=RealExpression "==" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-	//	type=[BasicType::Type|EString])? leftValue=RealExpression "==" rightValue=RealExpression ")";
-	public RealEqualElements getRealEqualAccess() {
-		return (pRealEqual != null) ? pRealEqual : (pRealEqual = new RealEqualElements());
-	}
-	
-	public ParserRule getRealEqualRule() {
-		return getRealEqualAccess().getRule();
-	}
-
+	/// *RealEqual returns ClassicalExpression::RealEqual:
+	//	('('('#ref' name=String0)? leftValue=RealExpression '==' rightValue=RealExpression')')|
+	//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '==' rightValue=RealExpression')');
+	//
 	//RealInf returns ClassicalExpression::RealInf:
-	//	"(" ("#ref" name=String0)? leftValue=RealExpression "<" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-	//	type=[BasicType::Type|EString])? leftValue=RealExpression "<" rightValue=RealExpression ")";
-	public RealInfElements getRealInfAccess() {
-		return (pRealInf != null) ? pRealInf : (pRealInf = new RealInfElements());
-	}
-	
-	public ParserRule getRealInfRule() {
-		return getRealInfAccess().getRule();
-	}
-
+	//	('('('#ref' name=String0)? leftValue=RealExpression '<' rightValue=RealExpression')')|
+	//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '<' rightValue=RealExpression')');
+	//
 	//RealSup returns ClassicalExpression::RealSup:
-	//	"(" ("#ref" name=String0)? leftValue=RealExpression ">" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-	//	type=[BasicType::Type|EString])? leftValue=RealExpression ">" rightValue=RealExpression ")";
-	public RealSupElements getRealSupAccess() {
-		return (pRealSup != null) ? pRealSup : (pRealSup = new RealSupElements());
-	}
-	
-	public ParserRule getRealSupRule() {
-		return getRealSupAccess().getRule();
-	}
-
-	//IntInf returns ClassicalExpression::IntInf:
+	//	('('('#ref' name=String0)? leftValue=RealExpression '>' rightValue=RealExpression')')|
+	//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>' rightValue=RealExpression')');* / IntInf
+	//returns ClassicalExpression::IntInf:
 	//	"(" ("#ref" name=String0)? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")" | "(" ("#ref"
 	//	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")";
 	public IntInfElements getIntInfAccess() {
@@ -5596,9 +4004,9 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getSeqSchedAccess().getRule();
 	}
 
-	//BooleanExpression returns ClassicalExpression::BooleanExpression:
-	//	BooleanRef | Not | And | Or | Xor | RealEqual | RealInf | RealSup | IntEqual | IntInf | IntSup | SeqIsEmpty |
-	//	BooleanVariableRef | IntInfEqual | IntSupEqual | RealInfEqual | RealSupEqual;
+	/// *|RealInfEqual|RealSupEqual* / BooleanExpression returns ClassicalExpression::BooleanExpression:
+	//	BooleanRef | Not | And | Or | Xor | / *RealEqual | RealInf | RealSup | * / IntEqual | IntInf | IntSup | SeqIsEmpty |
+	//	BooleanVariableRef | IntInfEqual | IntSupEqual;
 	public BooleanExpressionElements getBooleanExpressionAccess() {
 		return (pBooleanExpression != null) ? pBooleanExpression : (pBooleanExpression = new BooleanExpressionElements());
 	}
@@ -5607,29 +4015,12 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getBooleanExpressionAccess().getRule();
 	}
 
-	//RealSupEqual returns extension::RealSupEqual:
-	//	"(" ("#ref" name=String0)? leftValue=RealExpression ">=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-	//	type=[BasicType::Type|EString])? leftValue=RealExpression ">=" rightValue=RealExpression ")";
-	public RealSupEqualElements getRealSupEqualAccess() {
-		return (pRealSupEqual != null) ? pRealSupEqual : (pRealSupEqual = new RealSupEqualElements());
-	}
-	
-	public ParserRule getRealSupEqualRule() {
-		return getRealSupEqualAccess().getRule();
-	}
-
-	//RealInfEqual returns extension::RealInfEqual:
-	//	"(" ("#ref" name=String0)? leftValue=RealExpression "<=" rightValue=RealExpression ")" | "(" ("#ref" name=String0 ":"
-	//	type=[BasicType::Type|EString])? leftValue=RealExpression "<=" rightValue=RealExpression ")";
-	public RealInfEqualElements getRealInfEqualAccess() {
-		return (pRealInfEqual != null) ? pRealInfEqual : (pRealInfEqual = new RealInfEqualElements());
-	}
-	
-	public ParserRule getRealInfEqualRule() {
-		return getRealInfEqualAccess().getRule();
-	}
-
-	//IntSupEqual returns extension::IntSupEqual:
+	/// *RealSupEqual returns extension::RealSupEqual:
+	//	('('('#ref' name=String0)? leftValue=RealExpression '>=' rightValue=RealExpression')')|
+	//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>=' rightValue=RealExpression')');* / / *RealInfEqual returns extension::RealInfEqual:
+	//	('('('#ref' name=String0)? leftValue=RealExpression '<=' rightValue=RealExpression')')|
+	//	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '<=' rightValue=RealExpression')');* / IntSupEqual
+	//returns extension::IntSupEqual:
 	//	"(" ("#ref" name=String0)? leftValue=IntegerExpression ">=" rightValue=IntegerExpression ")" | "(" ("#ref"
 	//	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression ">=" rightValue=IntegerExpression ")";
 	public IntSupEqualElements getIntSupEqualAccess() {
@@ -5651,74 +4042,36 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getIntInfEqualAccess().getRule();
 	}
 
-	//ClassicalExpression0 returns ClassicalExpression::ClassicalExpression:
-	//	BooleanExpression | RealExpression | IntegerExpression | SeqExpression;
+	/// *RealExpression returns ClassicalExpression::RealExpression:
+	//	BinaryRealExpression|UnaryRealExpression|RealRef|RealVariableRef;
+	//	
+	//BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
+	//	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
+	//
+	//UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
+	//	UnaryRealPlus|UnaryRealMinus;* / / * 
+	//RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
+	//	{extension::RealSelfPlusAssignement}
+	//	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
+	//;
+	//
+	//RealSelfMinusAssign returns extension::RealSelfMinusAssignement:
+	//	{extension::RealSelfMinusAssignement}
+	//	('#ref'name=EString)? leftValue=RealRef '-=' rightValue=RealExpression
+	//;
+	//
+	//RealSelfMultAssign returns extension::RealSelfMultiplyAssignement:
+	//	{extension::RealSelfMultiplyAssignement}
+	//	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
+	//;
+	// * / ClassicalExpression0 returns ClassicalExpression::ClassicalExpression:
+	//	BooleanExpression / *| RealExpression* / | IntegerExpression | SeqExpression;
 	public ClassicalExpression0Elements getClassicalExpression0Access() {
 		return (pClassicalExpression0 != null) ? pClassicalExpression0 : (pClassicalExpression0 = new ClassicalExpression0Elements());
 	}
 	
 	public ParserRule getClassicalExpression0Rule() {
 		return getClassicalExpression0Access().getRule();
-	}
-
-	//RealExpression returns ClassicalExpression::RealExpression:
-	//	BinaryRealExpression | UnaryRealExpression | RealRef | RealVariableRef;
-	public RealExpressionElements getRealExpressionAccess() {
-		return (pRealExpression != null) ? pRealExpression : (pRealExpression = new RealExpressionElements());
-	}
-	
-	public ParserRule getRealExpressionRule() {
-		return getRealExpressionAccess().getRule();
-	}
-
-	//BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
-	//	RealPlus | RealMinus | RealMultiply | RealSelfPlusAssign | RealSelfMinusAssign | RealSelfMultAssign;
-	public BinaryRealExpressionElements getBinaryRealExpressionAccess() {
-		return (pBinaryRealExpression != null) ? pBinaryRealExpression : (pBinaryRealExpression = new BinaryRealExpressionElements());
-	}
-	
-	public ParserRule getBinaryRealExpressionRule() {
-		return getBinaryRealExpressionAccess().getRule();
-	}
-
-	//UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
-	//	UnaryRealPlus | UnaryRealMinus;
-	public UnaryRealExpressionElements getUnaryRealExpressionAccess() {
-		return (pUnaryRealExpression != null) ? pUnaryRealExpression : (pUnaryRealExpression = new UnaryRealExpressionElements());
-	}
-	
-	public ParserRule getUnaryRealExpressionRule() {
-		return getUnaryRealExpressionAccess().getRule();
-	}
-
-	//RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
-	//	{extension::RealSelfPlusAssignement} ("#ref" name=EString)? leftValue=RealRef "+=" rightValue=RealExpression;
-	public RealSelfPlusAssignElements getRealSelfPlusAssignAccess() {
-		return (pRealSelfPlusAssign != null) ? pRealSelfPlusAssign : (pRealSelfPlusAssign = new RealSelfPlusAssignElements());
-	}
-	
-	public ParserRule getRealSelfPlusAssignRule() {
-		return getRealSelfPlusAssignAccess().getRule();
-	}
-
-	//RealSelfMinusAssign returns extension::RealSelfMinusAssignement:
-	//	{extension::RealSelfMinusAssignement} ("#ref" name=EString)? leftValue=RealRef "-=" rightValue=RealExpression;
-	public RealSelfMinusAssignElements getRealSelfMinusAssignAccess() {
-		return (pRealSelfMinusAssign != null) ? pRealSelfMinusAssign : (pRealSelfMinusAssign = new RealSelfMinusAssignElements());
-	}
-	
-	public ParserRule getRealSelfMinusAssignRule() {
-		return getRealSelfMinusAssignAccess().getRule();
-	}
-
-	//RealSelfMultAssign returns extension::RealSelfMultiplyAssignement:
-	//	{extension::RealSelfMultiplyAssignement} ("#ref" name=EString)? leftValue=RealRef "*=" rightValue=RealExpression;
-	public RealSelfMultAssignElements getRealSelfMultAssignAccess() {
-		return (pRealSelfMultAssign != null) ? pRealSelfMultAssign : (pRealSelfMultAssign = new RealSelfMultAssignElements());
-	}
-	
-	public ParserRule getRealSelfMultAssignRule() {
-		return getRealSelfMultAssignAccess().getRule();
 	}
 
 	//Library returns ClockExpressionAndRelation::Library:
@@ -5979,6 +4332,16 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getBindableEntityAccess().getRule();
 	}
 
+	//RealExpression returns ClassicalExpression::RealExpression:
+	//	RealRef | UnaryRealPlus | UnaryRealMinus | RealPlus | RealMinus | RealMultiply | RealVariableRef;
+	public CCSLLibraryGrammarAccess.RealExpressionElements getRealExpressionAccess() {
+		return gaCCSLLibrary.getRealExpressionAccess();
+	}
+	
+	public ParserRule getRealExpressionRule() {
+		return getRealExpressionAccess().getRule();
+	}
+
 	//SeqExpression returns ClassicalExpression::SeqExpression:
 	//	SeqGetTail | SeqDecr | SeqSched | NumberSeqRef | NumberSeqVariableRef;
 	public CCSLLibraryGrammarAccess.SeqExpressionElements getSeqExpressionAccess() {
@@ -6073,6 +4436,98 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getBoolean0Rule() {
 		return getBoolean0Access().getRule();
+	}
+
+	//RealRef returns ClassicalExpression::RealRef:
+	//	"RealRef" "{" ("name" name=ID)? "realElem" realElem=[BasicType::RealElement|EString] "}";
+	public CCSLLibraryGrammarAccess.RealRefElements getRealRefAccess() {
+		return gaCCSLLibrary.getRealRefAccess();
+	}
+	
+	public ParserRule getRealRefRule() {
+		return getRealRefAccess().getRule();
+	}
+
+	//UnaryRealPlus returns ClassicalExpression::UnaryRealPlus:
+	//	"UnaryRealPlus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression
+	//	"}";
+	public CCSLLibraryGrammarAccess.UnaryRealPlusElements getUnaryRealPlusAccess() {
+		return gaCCSLLibrary.getUnaryRealPlusAccess();
+	}
+	
+	public ParserRule getUnaryRealPlusRule() {
+		return getUnaryRealPlusAccess().getRule();
+	}
+
+	//UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
+	//	"UnaryRealMinus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand"
+	//	operand=RealExpression "}";
+	public CCSLLibraryGrammarAccess.UnaryRealMinusElements getUnaryRealMinusAccess() {
+		return gaCCSLLibrary.getUnaryRealMinusAccess();
+	}
+	
+	public ParserRule getUnaryRealMinusRule() {
+		return getUnaryRealMinusAccess().getRule();
+	}
+
+	//RealPlus returns ClassicalExpression::RealPlus:
+	//	"RealPlus" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+	public CCSLLibraryGrammarAccess.RealPlusElements getRealPlusAccess() {
+		return gaCCSLLibrary.getRealPlusAccess();
+	}
+	
+	public ParserRule getRealPlusRule() {
+		return getRealPlusAccess().getRule();
+	}
+
+	//RealMinus returns ClassicalExpression::RealMinus:
+	//	"RealMinus" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+	public CCSLLibraryGrammarAccess.RealMinusElements getRealMinusAccess() {
+		return gaCCSLLibrary.getRealMinusAccess();
+	}
+	
+	public ParserRule getRealMinusRule() {
+		return getRealMinusAccess().getRule();
+	}
+
+	//RealMultiply returns ClassicalExpression::RealMultiply:
+	//	"RealMultiply" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+	public CCSLLibraryGrammarAccess.RealMultiplyElements getRealMultiplyAccess() {
+		return gaCCSLLibrary.getRealMultiplyAccess();
+	}
+	
+	public ParserRule getRealMultiplyRule() {
+		return getRealMultiplyAccess().getRule();
+	}
+
+	//RealEqual returns ClassicalExpression::RealEqual:
+	//	"RealEqual" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+	public CCSLLibraryGrammarAccess.RealEqualElements getRealEqualAccess() {
+		return gaCCSLLibrary.getRealEqualAccess();
+	}
+	
+	public ParserRule getRealEqualRule() {
+		return getRealEqualAccess().getRule();
+	}
+
+	//RealInf returns ClassicalExpression::RealInf:
+	//	"RealInf" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+	public CCSLLibraryGrammarAccess.RealInfElements getRealInfAccess() {
+		return gaCCSLLibrary.getRealInfAccess();
+	}
+	
+	public ParserRule getRealInfRule() {
+		return getRealInfAccess().getRule();
+	}
+
+	//RealSup returns ClassicalExpression::RealSup:
+	//	"RealSup" "{" ("name" name=ID)? "leftValue" leftValue=RealExpression "rightValue" rightValue=RealExpression "}";
+	public CCSLLibraryGrammarAccess.RealSupElements getRealSupAccess() {
+		return gaCCSLLibrary.getRealSupAccess();
+	}
+	
+	public ParserRule getRealSupRule() {
+		return getRealSupAccess().getRule();
 	}
 
 	//BooleanVariableRef returns ClassicalExpression::BooleanVariableRef:
