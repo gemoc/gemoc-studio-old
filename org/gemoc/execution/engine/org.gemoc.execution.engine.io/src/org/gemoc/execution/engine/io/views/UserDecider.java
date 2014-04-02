@@ -6,6 +6,8 @@ import java.util.concurrent.Semaphore;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -17,8 +19,11 @@ import fr.inria.aoste.trace.LogicalStep;
 
 public class UserDecider implements ILogicalStepDecider {
 
-	public UserDecider() {
+	boolean isStepByStep = false;
+	
+	public UserDecider(boolean isStepByStep) {
 		super();
+		this.isStepByStep = isStepByStep;
 	}
 
 	Semaphore semaphore = new Semaphore(0);
@@ -26,6 +31,7 @@ public class UserDecider implements ILogicalStepDecider {
 	@Override
 	public int decide(final List<LogicalStep> possibleLogicalSteps)
 			throws InterruptedException {
+		if(!isStepByStep && possibleLogicalSteps.size() == 1) return 0;
 		retreiveDecisionView();
 		// add action into view menu
 		IMenuListener menuListener = new IMenuListener() {
@@ -50,10 +56,31 @@ public class UserDecider implements ILogicalStepDecider {
 			}
 		};
 		decisionView.menuMgr.addMenuListener(menuListener);
+		
+		// add action on double click
+		IDoubleClickListener doubleClickListener = new IDoubleClickListener() {
+			public void doubleClick(DoubleClickEvent event) {
+				if (possibleLogicalSteps.contains(decisionView
+						.getSelectedLogicalStep())) {
+					Action selectLogicalStepAction = new Action() {
+						public void run() {
+	
+							semaphore.release();
+							// decisionView.showMessage("TODO notify engine that we have selected this logicalStep");
+						}
+					};
+					selectLogicalStepAction.run();
+				}
+			}
+		};
+		decisionView.viewer.addDoubleClickListener(doubleClickListener);
+		
+		
 		// wait for user selection if it applies to this engine
 		semaphore.acquire();
 		// clean menu listener
 		decisionView.menuMgr.removeMenuListener(menuListener);
+		decisionView.viewer.removeDoubleClickListener(doubleClickListener);
 		return possibleLogicalSteps.indexOf(decisionView
 				.getSelectedLogicalStep());
 

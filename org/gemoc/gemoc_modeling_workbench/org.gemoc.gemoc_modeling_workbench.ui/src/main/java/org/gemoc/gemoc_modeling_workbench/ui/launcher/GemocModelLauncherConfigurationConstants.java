@@ -16,6 +16,7 @@ public abstract class GemocModelLauncherConfigurationConstants {
 	public static final String DECIDER_SOLVER_PROPOSITION = "Solver proposition";
 	public static final String DECIDER_RANDOM = "Random";
 	public static final String DECIDER_ASKUSER = "Ask user";
+	public static final String DECIDER_ASKUSER_STEP_BY_STEP = "Ask user (step by step)";
 	
 	
 }

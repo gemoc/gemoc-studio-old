@@ -279,9 +279,14 @@ public class GemocReflectiveModelLauncher
 		} else if (deciderName
 				.equals(GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER)) {
 			// use random as the only compatible decider
-			decider = new UserDecider();
+			decider = new UserDecider(false);
 			
-		} else {
+		} else if (deciderName
+				.equals(GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER_STEP_BY_STEP)) {
+			// use random as the only compatible decider
+			decider = new UserDecider(true);
+			
+		} else 	{
 			if (solver instanceof CcslSolver) {
 				// use solver proposition
 				decider = new CcslSolverDecider((CcslSolver) solver);

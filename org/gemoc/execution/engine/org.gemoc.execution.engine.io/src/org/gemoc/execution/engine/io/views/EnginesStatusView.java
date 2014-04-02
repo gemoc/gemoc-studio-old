@@ -64,9 +64,9 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	 */
 	public static final String ID = "org.gemoc.execution.engine.io.views.EnginesStatusView";
 
-	private TreeViewer viewer;
+	public TreeViewer viewer;
 	private ViewContentProvider contentProvider;
-	private DrillDownAdapter drillDownAdapter;
+	//private DrillDownAdapter drillDownAdapter;
 	private Action stopCurrentEngineAction;
 	private Action removeStoppedEnginesAction;
 	private Action doubleClickAction;
@@ -393,7 +393,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	 */
 	public void createPartControl(Composite parent) {
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		drillDownAdapter = new DrillDownAdapter(viewer);
+		//drillDownAdapter = new DrillDownAdapter(viewer);
 		contentProvider = new ViewContentProvider();
 		viewer.setContentProvider(contentProvider);
 		viewer.setLabelProvider(new ViewLabelProvider());
@@ -478,9 +478,9 @@ public class EnginesStatusView extends ViewPart implements Observer {
 
 	private void fillContextMenu(IMenuManager manager) {
 		manager.add(stopCurrentEngineAction);
-		manager.add(removeStoppedEnginesAction);
+		//manager.add(removeStoppedEnginesAction);
 		manager.add(new Separator());
-		drillDownAdapter.addNavigationActions(manager);
+		//drillDownAdapter.addNavigationActions(manager);
 		// Other plug-ins can contribute there actions here
 		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
@@ -489,7 +489,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		manager.add(stopCurrentEngineAction);
 		manager.add(removeStoppedEnginesAction);
 		manager.add(new Separator());
-		drillDownAdapter.addNavigationActions(manager);
+		//drillDownAdapter.addNavigationActions(manager);
 	}
 
 	private void makeActions() {
@@ -535,11 +535,11 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	}
 
 	private void hookDoubleClickAction() {
-		viewer.addDoubleClickListener(new IDoubleClickListener() {
+		/*viewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
 				doubleClickAction.run();
 			}
-		});
+		});*/
 	}
 	private void showMessage(String message) {
 		MessageDialog.openInformation(

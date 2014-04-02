@@ -97,6 +97,10 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 							.getAttribute(
 									GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
 									""));
+			this.deciderCombo.setText(configuration
+							.getAttribute(
+									GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_DECIDER,
+									""));
 			this.modelofexecutionglml_LocationText
 					.setText(configuration
 							.getAttribute(
@@ -286,7 +290,8 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		String[] deciderChoice = {
 				GemocModelLauncherConfigurationConstants.DECIDER_SOLVER_PROPOSITION,
 				GemocModelLauncherConfigurationConstants.DECIDER_RANDOM,
-				GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER };
+				GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER,
+				GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER_STEP_BY_STEP };
 		deciderCombo.setItems(deciderChoice);
 		deciderCombo.select(0);
 		deciderCombo.addModifyListener(fBasicModifyListener);
