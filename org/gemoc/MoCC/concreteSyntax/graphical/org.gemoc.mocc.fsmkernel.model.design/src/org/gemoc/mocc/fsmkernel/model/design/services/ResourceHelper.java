@@ -21,10 +21,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -40,13 +38,17 @@ import org.eclipse.emf.compare.rcp.EMFCompareRCPPlugin;
 import org.eclipse.emf.compare.scope.IComparisonScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.ide.ResourceUtil;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.linking.lazy.LazyLinkingResource;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
@@ -57,6 +59,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.CancelIndicator;
 import org.gemoc.mocc.fsmkernel.model.design.Activator;
+import org.gemoc.mocc.fsmkernel.model.design.editor.GraphicalPartHelper;
 
 import com.google.inject.Injector;
 
@@ -70,6 +73,8 @@ import com.google.inject.Injector;
  *
  */
 public class ResourceHelper {
+	
+	public final static String TEMPORARY_PROJECT_NAME = ".tempPopUpXtextEditorFiles";
 
 	/**
 	 * Dependency tracker service
@@ -80,6 +85,7 @@ public class ResourceHelper {
 	 * xtext pop up editor working resource
 	 */
 	private XtextResource xtextVirtualResource;
+	private URI xtextUri;
 
 	/**
 	 * host resource
@@ -100,7 +106,7 @@ public class ResourceHelper {
 	 * @return new xtext resource with a dummy uri in a temporary ResourceSet
 	 * @throws IOException whenever occurs!
 	 */
-	public XtextResource createVirtualXtextResource(Resource originalR)
+	public XtextResource createVirtualXtextResource(Resource originalR, GraphicalPartHelper partHelper)
 			throws IOException {
 		this.originalResource = originalR;
 
@@ -108,34 +114,43 @@ public class ResourceHelper {
 				.getInstance(IResourceFactory.class);
 		XtextResourceSet rs = xtextInjector.getInstance(XtextResourceSet.class);
 		rs.setClasspathURIContext(getClass());
-		URI uri = createURI();
+		
+		IDiagramEditDomain diagramEditDomain = partHelper.getDiagramEditDomain();
+		IEditorPart diagramEditor = ((DiagramEditDomain) diagramEditDomain).getEditorPart();
+		
+		xtextUri = createURI(diagramEditor,partHelper.resolveSemanticElement().hashCode());
+		//FIXME check if uri allready exist
+		
+		
 		// Create virtual resource
 		xtextVirtualResource = (XtextResource) resourceFactory
-				.createResource(uri);
+				.createResource(xtextUri);
 
 		rs.getResources().add(xtextVirtualResource);
 		
 		// Clone root EObject
-		//EObject semanticElement = EcoreUtil.copy(originalResource.getContents().get(0));
-		//xtextVirtualResource.getContents().add(semanticElement);
-
-		// Populate virtual resource with the given semantic element to edit
-		String semanticModelText = ((LazyLinkingResource) originalR)
-				.getSerializer().serialize(originalR.getContents().get(0));
-		//String semanticModelText = ((LazyLinkingResource)originalR).getParseResult().getRootNode().getText();
-		xtextVirtualResource.reparse(semanticModelText);
 		
-		xtextVirtualResource.validateConcreteSyntax();
-		
-		//Diagnostician.INSTANCE.validate
-		
-		EcoreUtil2.resolveLazyCrossReferences(xtextVirtualResource,
-				CancelIndicator.NullImpl);
-		
+		if (originalResource instanceof XMIResource) {
+			EObject semanticElement = EcoreUtil.copy(originalResource.getContents().get(0));
+			xtextVirtualResource.getContents().add(semanticElement);
+		}else {
+			// Populate virtual resource with the given semantic element to edit (keeping textual formating)
+			String semanticModelText = ((LazyLinkingResource) originalR)
+					.getSerializer().serialize(originalR.getContents().get(0));
+			//String semanticModelText = ((LazyLinkingResource)originalR).getParseResult().getRootNode().getText();
+			xtextVirtualResource.reparse(semanticModelText);
+			
+			xtextVirtualResource.validateConcreteSyntax();
+			
+			//Diagnostician.INSTANCE.validate
+			
+			EcoreUtil2.resolveLazyCrossReferences(xtextVirtualResource,
+					CancelIndicator.NullImpl);
+		}	
 		
 
 		// save to create file
-		// TODO remove crappy hack
+		// FIXME remove crappy hack
 		xtextVirtualResource.save(Collections.emptyMap());
 
 		// Save and reparse in order to initialize virtual Xtext resource
@@ -150,29 +165,17 @@ public class ResourceHelper {
 	}
 
 	/**
-	 * @return a temp dummy "uri /tempProject/temp.dmodel"
+	 * @return a temp dummy uri
 	 */
-	private URI createURI() {
-		// FIXME remove crappy code and use in memory resource
-		// URI uri = URI.createURI("XtextResource.ram");
-		final String TEMPORARY_PROJECT_NAME = "tempProject";
-		final IProjectDescription projectDescription = ResourcesPlugin
-				.getWorkspace().newProjectDescription(TEMPORARY_PROJECT_NAME);
-		final IProject project = ResourcesPlugin.getWorkspace().getRoot()
-				.getProject(TEMPORARY_PROJECT_NAME);
-		try {
-			if (!project.exists()) {
-				project.create(projectDescription, new NullProgressMonitor());
-				project.open(new NullProgressMonitor());
-			}
-		} catch (final CoreException e) {
-			// Propagate as runtime exception
-			throw new RuntimeException(e);
-		}
-		URI uri = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME
-				+ "/temp.dmodel", false);
+	private URI createURI(IEditorPart diagramEditor, int hcode) {
+		IFile file = ResourceUtil.getFile(diagramEditor.getEditorInput());
+	    IProject activeProject = file.getProject();
+	    String activeProjectName = activeProject.getName();
+		URI uri = URI.createPlatformResourceURI("/" + activeProjectName
+				+ "/"+TEMPORARY_PROJECT_NAME+"/"+hcode+".mocdsl", false);
 		return uri;
 	}
+	
 
 	/**
 	 * Update XText resource
@@ -330,16 +333,18 @@ public class ResourceHelper {
 			if (!changes.isEmpty()) {
 				semanticCommand.execute(new NullProgressMonitor(), null);
 			} else {
-				if (((LazyLinkingResource) oldRootObject.eResource())
-						.getParseResult()
-						.getRootNode()
-						.getText()
-						.compareTo(
-								((LazyLinkingResource) newRootObject
-										.eResource()).getParseResult()
-										.getRootNode().getText()) != 0) {
-					// check for formating modifications
-					formatingCommand.execute(new NullProgressMonitor(), null);
+				if (oldRootObject.eResource() instanceof LazyLinkingResource) {
+					if (((LazyLinkingResource) oldRootObject.eResource())
+							.getParseResult()
+							.getRootNode()
+							.getText()
+							.compareTo(
+									((LazyLinkingResource) newRootObject
+											.eResource()).getParseResult()
+											.getRootNode().getText()) != 0) {
+						// check for formating modifications
+						formatingCommand.execute(new NullProgressMonitor(), null);
+					}
 				}
 			}
 

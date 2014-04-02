@@ -24,6 +24,7 @@ package org.gemoc.mocc.fsmkernel.model.design.editor;
 
 import java.lang.reflect.Field;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.contentassist.ContentAssistEvent;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
 import org.eclipse.jface.text.contentassist.ICompletionListener;
@@ -36,12 +37,13 @@ import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.VerifyEvent;
+import org.gemoc.mocc.fsmkernel.model.design.Activator;
 
 /**
  * @author koehnlein
  * 
  * +adaptation for the mocml design editor
- * + patch for windows bug stateMask ate somewhere else
+ * FIXME + patch for windows bug stateMask has gone somewhere else
  * @author creffst
  */
 public class PopupXTextEditorKeyListener extends KeyAdapter implements VerifyKeyListener {
@@ -80,7 +82,12 @@ public class PopupXTextEditorKeyListener extends KeyAdapter implements VerifyKey
 				isIgnoreNextESC = false;
 			} else {
 				PopupXTextEditorHelper.ignoreFocusLost = true ;*/
-				this.popupXtextEditorHelper.closeEditor(true);
+				try {
+					this.popupXtextEditorHelper.closeEditor(true);
+				} catch (CoreException exc) {
+					// TODO Auto-generated catch block
+					Activator.logError(exc);
+				}
 			//}
 		}
 		if((((e.stateMask & SWT.CTRL) == SWT.CTRL) && (e.keyCode == 's'))||

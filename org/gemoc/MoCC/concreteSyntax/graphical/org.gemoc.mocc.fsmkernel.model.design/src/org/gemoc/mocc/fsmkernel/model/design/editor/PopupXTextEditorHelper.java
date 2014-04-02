@@ -16,6 +16,11 @@
 package org.gemoc.mocc.fsmkernel.model.design.editor;
 
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -25,6 +30,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.swt.SWT;
@@ -43,6 +49,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
+import org.eclipse.ui.ide.ResourceUtil;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 //import org.eclipse.xtext.nodemodel.serialization.SerializationUtil;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -164,8 +171,9 @@ public class PopupXTextEditorHelper {
 			}
 			this.originalResource = originalSemanticElement.eResource();
 			
-			this.xtextResource = resourceHelper.createVirtualXtextResource(originalResource);
+			this.xtextResource = resourceHelper.createVirtualXtextResource(originalResource, hostEditPartHelper);
 			
+			// TODO manage multi resource with Xtext Linking or Scoping service
 			semanticElementFragment = originalResource.getURIFragment(originalSemanticElement);
 			if (semanticElementFragment == null || "".equals(semanticElementFragment)) {
 				return;
@@ -181,18 +189,31 @@ public class PopupXTextEditorHelper {
 	/**
 	 * Close this editor (performing a reconciliation with the host resource or not)
 	 * @param isReconcile : true if reconciliation has to be performed
+	 * @throws CoreException 
 	 */
-	public void closeEditor(boolean isReconcile) {
+	public void closeEditor(boolean isReconcile) throws CoreException {
 		if (xtextEditor != null) {
 			if (isReconcile) {
 				saveModifications();
 			}
+			deleteFile();
 			xtextEditor.dispose();
 			xtextEditor = null;
 			xtextEditorComposite.setVisible(false);
 			xtextEditorComposite.dispose();
 			
 			//TODO firePropertyChange(IEditorPart.PROP_DIRTY);	
+		}
+	}
+	
+	public void deleteFile() throws CoreException{
+		IFile file = ResourceUtil.getFile(xtextEditor.getEditorInput());
+		file.delete(true, new NullProgressMonitor());
+		IProject activeProject = file.getProject();
+		IFolder folder= activeProject.getFolder(ResourceHelper.TEMPORARY_PROJECT_NAME);	
+		if((folder.members()==null) ||(folder.members().length==0)){
+			//remove folder
+			folder.delete(true, new NullProgressMonitor());
 		}
 	}
 	
@@ -208,6 +229,8 @@ public class PopupXTextEditorHelper {
 				int documentGrowth = xtextDocument.getLength() - initialDocumentSize - 2;
 				String newText = xtextDocument.get(editorOffset + 1, initialEditorSize + documentGrowth);
 				resourceHelper.updateXtextResource(editorOffset, initialEditorSize, newText);
+			}else {
+				
 			}
 		} catch (Exception exc) {
 			Activator.logError(exc);
@@ -242,8 +265,17 @@ public class PopupXTextEditorHelper {
 			//@Override
 			public void widgetDisposed(DisposeEvent e) {
 				//Don't save if no syntax error
-				closeEditor(false);
-				
+				try {
+				if (MessageDialog.openQuestion(xtextEditorComposite.getShell(), "Warning", "You are about to close without saving, save anyway?")) {
+					
+						closeEditor(true);
+					
+				}else {
+					closeEditor(false);
+				}
+				} catch (CoreException ce) {
+					Activator.logError(ce);
+				}
 			}
 		});
 		
@@ -272,7 +304,7 @@ public class PopupXTextEditorHelper {
 	}
 	
 	
-	class fileExitItemListener implements SelectionListener {
+/*	class fileExitItemListener implements SelectionListener {
 	    public void widgetSelected(SelectionEvent event) {
 	      closeEditor(false);
 	    }
@@ -290,7 +322,7 @@ public class PopupXTextEditorHelper {
 	    public void widgetDefaultSelected(SelectionEvent event) {
 	      saveModifications();
 	    }
-	  }
+	  }*/
 	
 	
 	/**

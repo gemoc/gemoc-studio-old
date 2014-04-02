@@ -4,20 +4,17 @@ Bundle-Name: MoCML FSM Design
 Bundle-SymbolicName: org.gemoc.mocc.fsmkernel.model.design;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-Activator: org.gemoc.mocc.fsmkernel.model.design.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.sirius,
- org.eclipse.sirius.common.acceleo.mtl,
- org.gemoc.mocc.fsmkernel.model;bundle-version="0.0.1",
+Require-Bundle: org.eclipse.sirius,
  org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl;bundle-version="0.0.1",
  org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui;bundle-version="0.0.1",
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.6.0",
  org.eclipse.xtext.ui;bundle-version="2.4.3",
- org.eclipse.ui.ide;bundle-version="3.8.2",
- org.eclipse.xtext.ecore;bundle-version="2.4.3",
+ org.eclipse.emf.compare;bundle-version="3.0.1",
+ org.eclipse.emf.compare.rcp;bundle-version="2.1.1",
+ org.eclipse.emf.diffmerge;bundle-version="0.2.0",
  org.eclipse.core.expressions;bundle-version="3.4.501",
- org.eclipse.emf.compare,
- org.eclipse.emf.compare.rcp
+ org.eclipse.ui.ide;bundle-version="3.9.2",
+ org.eclipse.sirius.ui;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

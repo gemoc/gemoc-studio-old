@@ -11,6 +11,10 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.jface.text.TextViewer;
 
+/**
+ * @author Stfun
+ * FIXME 
+ */
 public class CreateNewAction extends TitleAreaDialog {
 
 	/**

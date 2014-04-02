@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="CCSLMoCC" version="7.0.0">
   <ownedViewpoints name="CCSLMoCC" modelFileExtension="ccslmocc xmi mocdsl">
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="State-Based Library Diagram" domainClass="ccslmocc.StateRelationBasedLibrary">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="State-Based Library Diagram" domainClass="ccslmocc.StateRelationBasedLibrary" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.gemoc.mocc.ccslmocc.model/model/Ccslmocc.ecore#/"/>
       <metamodel href="platform:/plugin/org.gemoc.mocc.fsmkernel.model/model/FSMModel.ecore#/"/>
       <metamodel href="http://fr.inria.aoste.timemodel#/"/>
@@ -14,7 +14,7 @@
       <metamodel href="http://fr.inria.aoste.timemodel#//PrimitivesTypeValue"/>
       <metamodel href="http://org.gemoc.mocc.fsmmodel/editionextension/1.0#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="RelationDefToDeclaration" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DelDeclarationRelation']" sourceMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']" targetMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']" targetFinderExpression="[self.oclAsType(ExternalRelationDefinition).declaration/]" reconnections="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SetDeclarationChange']">
+        <edgeMappings name="RelationDefToDeclaration" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DelDeclarationRelation']" sourceMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']" targetMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']" targetFinderExpression="feature:declaration" reconnections="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='SetDeclarationChange']">
           <style lineStyle="dash" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="defines">
@@ -22,8 +22,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="RelationLibrary" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="[eAllContents()/]" domainClass="RelationLibrary">
-          <subContainerMappings name="StateMachineRelationDefinition" detailDescriptions="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CreateStateBasedDefDiagram']" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="[eAllContents()/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="ccslmocc.StateMachineRelationDefinition">
+        <containerMappings name="RelationLibrary" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="feature:eAllContents" domainClass="RelationLibrary">
+          <subContainerMappings name="StateMachineRelationDefinition" detailDescriptions="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='CreateStateBasedDefDiagram']" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenXtextEditorOnDeclAndSMRDef']" domainClass="ccslmocc.StateMachineRelationDefinition">
             <style xsi:type="style:FlatContainerStyleDescription" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/FSM.gif" backgroundStyle="Liquid">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -32,8 +32,8 @@
               <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="RelationDeclaration" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="[eAllContents()/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="RelationDeclaration" childrenPresentation="List" listContainer="true">
-            <subNodeMappings name="AbstractEntity" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NameEditAbstractEntity']" semanticCandidatesExpression="[eAllContents()/]" domainClass="AbstractEntity">
+          <subContainerMappings name="RelationDeclaration" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenXtextEditorOnDeclAndSMRDef']" domainClass="RelationDeclaration" childrenPresentation="List" listContainer="true">
+            <subNodeMappings name="AbstractEntity" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='NameEditAbstractEntity']" semanticCandidatesExpression="feature:eAllContents" domainClass="AbstractEntity">
               <style xsi:type="style:SquareDescription" labelFormat="italic" labelExpression="service:computeLabel" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Parameter.gif" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -54,7 +54,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <toolSections name="RelationTools">
+        <toolSections name="LibraryToolsCreation" label="Library Tools">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="CreateRelationLibrary" label="New Relation Library" forceRefresh="true" containerMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateRelationLibrary.jpg">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -88,31 +88,8 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source/]">
-                <subModelOperations xsi:type="tool:SetValue" featureName="declaration" valueExpression="[target/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="SetDeclarationChange" forceRefresh="true">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[edgeView.oclAsType(viewpoint::DEdge).sourceNode.oclAsType(viewpoint::DSemanticDecorator).target/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:SetValue" featureName="declaration" valueExpression="var:target"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="DelDeclarationRelation" forceRefresh="true">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[elementView.oclAsType(viewpoint::DEdge).sourceNode.oclAsType(viewpoint::DSemanticDecorator).target/]">
-                <subModelOperations xsi:type="tool:Unset" featureName="declaration" elementExpression="[elementView.oclAsType(viewpoint::DEdge).targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -224,11 +201,37 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']">
+        </toolSections>
+        <toolSections name="LibraryToolsModification">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="SetDeclarationChange" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[edgeView.oclAsType(viewpoint::DEdge).sourceNode.oclAsType(viewpoint::DSemanticDecorator).target/]">
+                <subModelOperations xsi:type="tool:SetValue" featureName="declaration" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DelDeclarationRelation" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
+            <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" forceRefresh="true"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[elementView.oclAsType(viewpoint::DEdge).sourceNode.oclAsType(viewpoint::DSemanticDecorator).target/]">
+                <subModelOperations xsi:type="tool:Unset" featureName="declaration" elementExpression="[elementView.oclAsType(viewpoint::DEdge).targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="LibraryToolsLabelEdition">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="NameEditAbstractEntity">
+            <mask mask="{0}: {1}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="NameEditRelationTools">
@@ -237,105 +240,39 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="CreateStateBasedDefDiagram" forceRefresh="true" diagramDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']">
+        </toolSections>
+        <toolSections name="LibraryToolsNavigation">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditorOnDeclAndSMRDef" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" forceRefresh="true" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="CreateStateBasedDefDiagram" label="State Based Diagram" forceRefresh="true" diagramDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:Navigation" diagramDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']"/>
             </initialOperation>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="NameEditAbstractEntity">
-            <mask mask="'{'{0}'} '{1}: {2}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg1"/>
-            </initialOperation>
-          </ownedTools>
         </toolSections>
       </defaultLayer>
       <additionalLayers name="StateMachineRelationDefinition" label="State Machine Relation Definition">
-        <edgeMappings name="Transition" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.0/@ownedTools[name='DeleteTransition']" semanticCandidatesExpression="[eAllContents()/]" sourceMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='State']" targetMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='State']" targetFinderExpression="[target/]" sourceFinderExpression="[source/]" domainClass="Transition" useDomainElement="true" reconnections="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.0/@ownedTools[name='EdgeMoveSrc'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.0/@ownedTools[name='EdgeMoveTgt']">
-          <style sizeComputationExpression="2" routingStyle="manhattan">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="service:computeLabel">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="GuardRelation" sourceMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@edgeMappings[name='Transition']" targetMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='Guard']" targetFinderExpression="[guard/]">
-          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="1">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelSize="6" labelFormat="italic" showIcon="false" labelExpression="guard">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="ActionRelation" sourceMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@edgeMappings[name='Transition']" targetMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='FinishClockAction'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='IntegerAssignementAction'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='StartClockAction']" targetFinderExpression="[actions/]">
-          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="1">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelSize="6" labelFormat="italic" showIcon="false" labelExpression="action">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="TriggerRelation" sourceMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@edgeMappings[name='Transition']" targetMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='Trigger']" targetFinderExpression="[trigger/]">
-          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="1">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelSize="6" labelFormat="italic" showIcon="false" labelExpression="trigger">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings xsi:type="description:ContainerMappingImport" name="StateMachineRelationDefinitionImport" semanticCandidatesExpression="[eAllContents()/]" domainClass="ccslmocc.StateMachineRelationDefinition" importedMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']">
-          <subNodeMappings name="State" semanticCandidatesExpression="[states/]" domainClass="FSMModel.State">
-            <style xsi:type="style:BundledImageDescription" labelFormat="bold" showIcon="false" resizeKind="NSEW" shape="dot">
+        <containerMappings xsi:type="description:ContainerMappingImport" name="StateMachineRelationDefinitionImport" detailDescriptions="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='CreateStateBasedDefDiagram']" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenXtextEditorOnDeclAndSMRDef']" domainClass="ccslmocc.StateMachineRelationDefinition" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']">
+          <subNodeMappings name="StateAndTransitionDetail" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.1/@ownedTools[name='DeleteTransitionOrState']" semanticCandidatesExpression="service:getDetails" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="TimeModel.NamedElement">
+            <style xsi:type="style:SquareDescription" labelFormat="bold" labelExpression="service:computeLabel" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/State.gif" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
-            <conditionnalStyles predicateExpression="[self.eContainer()->filter(ccslmocc::StateMachineRelationDefinition).initialStates->includes(self)/]">
-              <style xsi:type="style:BundledImageDescription" labelFormat="bold" showIcon="false" resizeKind="NSEW" shape="dot">
+            <conditionnalStyles predicateExpression="[self.oclIsTypeOf(FSMModel::Transition)/]">
+              <style xsi:type="style:SquareDescription" labelExpression="service:computeDetailedLabel" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Transition.gif" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[self.eContainer()->filter(ccslmocc::StateMachineRelationDefinition).finalStates->includes(self)/]">
-              <style xsi:type="style:BundledImageDescription" labelFormat="bold" showIcon="false" resizeKind="NSEW" shape="dot">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-              </style>
-            </conditionnalStyles>
-          </subNodeMappings>
-          <subNodeMappings name="FinishClockAction" semanticCandidatesExpression="[(transitions.actions)/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="FinishClock">
-            <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[eClass().name/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Action.gif">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="IntegerAssignementAction" semanticCandidatesExpression="[(transitions.actions)/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="IntegerAssignement">
-            <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[eClass().name/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Action.gif">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="Guard" semanticCandidatesExpression="[transitions.guard/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="Guard">
-            <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[eClass().name/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Guard.gif">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="Trigger" semanticCandidatesExpression="[transitions.trigger/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="Trigger">
-            <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Trigger.gif">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="StartClockAction" semanticCandidatesExpression="[(transitions.actions)/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="StartClock">
-            <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[eClass().name/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Action.gif">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
           </subNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/FSM.gif" backgroundStyle="Liquid">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -347,160 +284,131 @@
         </containerMappings>
         <toolSections name="StateMachineTools" label="State Machine Tools">
           <ownedTools xsi:type="tool:ToolGroup" name="FSMStates" label="FSM States">
-            <tools xsi:type="tool:NodeCreationDescription" name="FSMStateCreation" label="New State" nodeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='State']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateState.gif">
+            <tools xsi:type="tool:NodeCreationDescription" name="FSMStateCreation" label="New State" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='StateAndTransitionDetail']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateState.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.State" referenceName="states">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:createLabel"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="FSMInitialStateCreation" label="New Initial State" nodeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='State']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateInitialState.gif">
+            <tools xsi:type="tool:NodeCreationDescription" name="FSMInitialStateCreation" label="New Initial State" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='StateAndTransitionDetail']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateInitialState.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.State" referenceName="states" variableName="initState">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:createLabel"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[initState.eContainer()/]">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="initialStates" valueExpression="[initState/]"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="initialStates" valueExpression="var:initState"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="FSMFinalStateCreation" label="New Final State" nodeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='State']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateFinalNode.gif">
+            <tools xsi:type="tool:NodeCreationDescription" name="FSMFinalStateCreation" label="New Final State" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='StateAndTransitionDetail']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateFinalNode.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.State" referenceName="states" variableName="finalState">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:createLabel"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="finalStates" valueExpression="[finalState/]"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="finalStates" valueExpression="var:finalState"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="TransitionCreation" label="New Transition" edgeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@edgeMappings[name='Transition']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateTransition.gif">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="TransitionCreationFromState" label="New Transition from..." precondition="[oclIsTypeOf(FSMModel::State)/]" forceRefresh="true" candidatesExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(StateRelationBasedLibrary).eAllContents()->filter(FSMModel::State)->select(s|s.eContainer()=container.eContainer())/]" rootExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target/]" childrenExpression="[eAllContents()/]" message="Select the target state" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateTransition.gif" windowTitle="Transition Creation Wizard">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer()/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.eContainer()/]">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.Transition" referenceName="transitions" variableName="t">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[t/]">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[source.oclAsType(State).name+'To'+target.oclAsType(State).name/]"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="[target/]"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:t">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:container"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:element"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:createLabel"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="TriggerCreation" label="New Trigger" precondition="[self.oclIsTypeOf(Transition)/]" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Trigger.gif">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="CCSLTrigger" referenceName="trigger" variableName="ob"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="GuardCreation" label="New Guard" precondition="[self.oclIsTypeOf(Transition)/]" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateGuard.gif">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="CCSLGuard" referenceName="guard" variableName="ob"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="ToolAction">
-            <tools xsi:type="tool:ToolDescription" name="IntegerAssignementActionCreation" label="New IntegerAssignement Action" precondition="[(self.oclIsTypeOf(Transition))/]" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateAction.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ccslmoc.IntegerAssignement" referenceName="actions" variableName="ob"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:ToolDescription" name="FinishClockActionCreation" label="New Finish Clock Action" precondition="[(self.oclIsTypeOf(Transition))/]" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateAction.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="FinishClock" referenceName="actions" variableName="ob"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:ToolDescription" name="StartClockActionCreation" label="New Start Clock Action" precondition="[(self.oclIsTypeOf(Transition))/]" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateAction.gif">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="StartClock" referenceName="actions" variableName="ob"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='Guard'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='FinishClockAction'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='IntegerAssignementAction'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='Trigger'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='StartClockAction']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" forceRefresh="true"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="EdgeMoveSrc" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
-                <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="[target/]"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="EdgeMoveTgt" forceRefresh="true">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[edgeView.oclAsType(viewpoint::DSemanticDecorator).target/]">
-                <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="[target/]"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteTransition">
+        </toolSections>
+        <toolSections name="StateMachineToolsModification">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteTransitionOrState" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
-                <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[elementView->filter(viewpoint::DEdge).sourceNode->filter(viewpoint::DSemanticDecorator).target/]"/>
-                <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[elementView->filter(viewpoint::DEdge).targetNode->filter(viewpoint::DSemanticDecorator).target/]"/>
-                <subModelOperations xsi:type="tool:RemoveElement"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsTypeOf(FSMModel::Transition)/]">
+                  <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[elementView->filter(viewpoint::DEdge).sourceNode->filter(viewpoint::DSemanticDecorator).target/]"/>
+                  <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[elementView->filter(viewpoint::DEdge).targetNode->filter(viewpoint::DSemanticDecorator).target/]"/>
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsTypeOf(FSMModel::State)/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[self.eContainer(StateMachineRelationDefinition).initialStates->includes(self)/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[eContainer()/]">
+                      <subModelOperations xsi:type="tool:Unset" featureName="initialStates" elementExpression="var:element"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[self.eContainer(StateMachineRelationDefinition).finalStates->includes(self)/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[eContainer()/]">
+                      <subModelOperations xsi:type="tool:Unset" featureName="finalStates" elementExpression="var:element"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[not self.oclAsType(FSMModel::State).inputTransitions->isEmpty()/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.oclAsType(FSMModel::State)/]">
+                      <subModelOperations xsi:type="tool:For" expression="[inputTransitions/]" iteratorName="inputT">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:inputT">
+                          <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[self.oclAsType(FSMModel::Transition).target/]"/>
+                          <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[self.oclAsType(FSMModel::Transition).source/]"/>
+                          <subModelOperations xsi:type="tool:RemoveElement"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[not self.oclAsType(FSMModel::State).outputTransitions->isEmpty()/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.oclAsType(FSMModel::State)/]">
+                      <subModelOperations xsi:type="tool:For" expression="[outputTransitions/]" iteratorName="outputT">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:outputT">
+                          <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[self.oclAsType(FSMModel::Transition).target/]"/>
+                          <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[self.oclAsType(FSMModel::Transition).source/]"/>
+                          <subModelOperations xsi:type="tool:RemoveElement"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </subModelOperations>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="StateMachineToolsNavigation">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='StateMachineRelationDefinition']/@containerMappings[name='StateMachineRelationDefinitionImport']/@subNodeMappings[name='StateAndTransitionDetail']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" forceRefresh="true" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
       </additionalLayers>
       <additionalLayers name="LibraryDefinition" label="Library Definition">
         <containerMappings name="ImportURIContainer" semanticCandidatesExpression="[thisEObject.imports->first()/]" domainClass="ImportStatement" childrenPresentation="List">
-          <subNodeMappings name="ImportURI" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.0/@ownedTools[name='LabelImport']" semanticCandidatesExpression="[self.eContainer().oclAsType(StateRelationBasedLibrary).imports/]" domainClass="ImportStatement">
+          <subNodeMappings name="ImportURI" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.2/@ownedTools[name='LabelImport']" semanticCandidatesExpression="[self.eContainer().oclAsType(StateRelationBasedLibrary).imports/]" domainClass="ImportStatement">
             <style xsi:type="style:SquareDescription" labelFormat="bold" showIcon="false" labelExpression="['import &quot;'+self.importURI+'&quot; as '+self.alias/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
@@ -516,7 +424,7 @@
           </style>
         </containerMappings>
         <containerMappings name="TypeContainer" semanticCandidatesExpression="[predefinedTypes->first()/]" domainClass="BasicType.Type" childrenPresentation="List">
-          <subNodeMappings name="TypeDeclaration" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.0/@ownedTools[name='LabelType']" semanticCandidatesExpression="[eContainer().oclAsType(StateRelationBasedLibrary).predefinedTypes/]" domainClass="BasicType.Type">
+          <subNodeMappings name="TypeDeclaration" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.2/@ownedTools[name='LabelType']" semanticCandidatesExpression="[eContainer().oclAsType(StateRelationBasedLibrary).predefinedTypes/]" domainClass="BasicType.Type">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.eClass().name+': '+self.name/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -531,8 +439,8 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <containerMappings name="ImportedTypeContainer" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.0/@ownedTools[name='DeleteImportedTypes']" semanticCandidatesExpression="[getImportedTypes()->first()/]" domainClass="BasicType.Type" childrenPresentation="List">
-          <subNodeMappings name="ImportedTypeDeclaration" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.0/@ownedTools[name='DeleteImportedTypes']" semanticCandidatesExpression="[containerView.eContainer(viewpoint::DSemanticDecorator).target.oclAsType(StateRelationBasedLibrary).getImportedTypes()/]" synchronizationLock="true" domainClass="BasicType.Type">
+        <containerMappings name="ImportedTypeContainer" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.1/@ownedTools[name='DeleteImportedTypes']" semanticCandidatesExpression="[getImportedTypes()->first()/]" domainClass="BasicType.Type" childrenPresentation="List">
+          <subNodeMappings name="ImportedTypeDeclaration" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.1/@ownedTools[name='DeleteImportedTypes']" semanticCandidatesExpression="[containerView.eContainer(viewpoint::DSemanticDecorator).target.oclAsType(StateRelationBasedLibrary).getImportedTypes()/]" synchronizationLock="true" domainClass="BasicType.Type">
             <style xsi:type="style:SquareDescription" labelFormat="italic" showIcon="false" labelExpression="[self.eClass().name+': '+self.name/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -547,7 +455,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <toolSections name="LibraryTools" label="Library Tools">
+        <toolSections name="LibraryBasicsTools" label="Types &amp; Imports">
           <ownedTools xsi:type="tool:ToolGroup" name="TypeCreationGroup">
             <tools xsi:type="tool:ToolDescription" name="CreateIntegerDeclaration" label="New Integer Type Declaration" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or (container.oclIsKindOf(BasicType::Type)and(container.eContainer().oclIsTypeOf(StateRelationBasedLibrary)))/]" forceRefresh="true">
               <element name="element"/>
@@ -684,7 +592,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" name="CreateURI" label="Import Kernel Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
+            <tools xsi:type="tool:ToolDescription" name="CreateKernelURI" label="Import Kernel Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -709,7 +617,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" name="CreateURI" label="Import CCSL Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
+            <tools xsi:type="tool:ToolDescription" name="CreateCCSLURI" label="Import CCSL Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -735,6 +643,19 @@
               </initialOperation>
             </tools>
           </ownedTools>
+        </toolSections>
+        <toolSections name="LibraryBasicsToolsModification">
+          <ownedTools xsi:type="tool:ExternalJavaAction" name="DeleteNotAllowed" precondition="[self.oclIsTypeOf(BasicType::Type)/]" forceRefresh="true" id="org.gemoc.mocc.ccslmocc.model.design.actions.DeleteNotAllowedID"/>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteImportedTypes">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="CantDeleteElement" forceRefresh="true" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.1/@ownedTools[name='DeleteNotAllowed']"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="LibraryBasicsToolsLabelEdition">
           <ownedTools xsi:type="tool:DirectEditLabel" name="LabelType">
             <mask mask="{0}: {1}"/>
             <initialOperation>
@@ -749,19 +670,10 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteImportedTypes">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="CantDeleteElement" forceRefresh="true" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.0/@ownedTools[name='DeleteNotAllowed']"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ExternalJavaAction" name="DeleteNotAllowed" precondition="[self.oclIsTypeOf(BasicType::Type)/]" forceRefresh="true" id="org.gemoc.mocc.ccslmocc.model.design.actions.DeleteNotAllowedID"/>
         </toolSections>
       </additionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="StateMachineRelationDiagram" label="State Machine Relation Diagram" domainClass="ccslmocc.StateMachineRelationDefinition">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="StateMachineRelationDiagram" label="State Machine Relation Diagram" domainClass="ccslmocc.StateMachineRelationDefinition" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.gemoc.mocc.ccslmocc.model/model/Ccslmocc.ecore#/"/>
       <metamodel href="platform:/plugin/org.gemoc.mocc.fsmkernel.model/model/FSMModel.ecore#/"/>
       <metamodel href="http://fr.inria.aoste.timemodel#/"/>
@@ -786,7 +698,7 @@
         <ownedConcernDescriptions name="HideTransitionGraphicalDesc" label="Hide Transitions Graphical Descriptions" filters="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@filters[name='HideActions'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@filters[name='HideGuards'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@filters[name='HideTriggers']"/>
       </concerns>
       <defaultLayer name="Default">
-        <nodeMappings name="FSMState" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DeleteState']" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SetStateName']" semanticCandidatesExpression="[states/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OpenXtextEditorState']" domainClass="FSMModel.State">
+        <nodeMappings name="FSMState" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DeleteState']" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='SetStateName']" semanticCandidatesExpression="[states/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenXtextEditorState']" domainClass="FSMModel.State">
           <style xsi:type="style:BundledImageDescription" labelFormat="bold" showIcon="false" resizeKind="NSEW" shape="dot">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -807,7 +719,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="FSMTransition" label="FSM Transition" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DeleteTransition']" semanticCandidatesExpression="[eAllContents()/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OpenXtextEditor']" sourceMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" targetMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" targetFinderExpression="[target/]" sourceFinderExpression="[source/]" domainClass="FSMModel.Transition" useDomainElement="true" reconnections="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EdgeMoveTgt'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EdgeMoveSrc']">
+        <edgeMappings name="FSMTransition" label="FSM Transition" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DeleteTransition']" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenTransitionDirectEdit']" semanticCandidatesExpression="feature:transitions" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenXtextEditorTransition']" sourceMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" targetMapping="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" targetFinderExpression="[target/]" sourceFinderExpression="[source/]" domainClass="FSMModel.Transition" useDomainElement="true" reconnections="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EdgeMoveTgt'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EdgeMoveSrc']">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="service:computeLabel">
@@ -815,7 +727,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <toolSections name="FSMTools" label="Basic FSM Tools">
+        <toolSections name="StateMachineToolsCreation" label="State Machine Tools">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="FSMStateCreation" label="New State" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateState.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -855,12 +767,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="SetStateName" label="Set State Name">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="FSMTransitionCreation" label="New Transition" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateTransition.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -870,14 +776,16 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer()/]">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.Transition" referenceName="transitions" variableName="t">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:t">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[source.oclAsType(State).name+'To'+target.oclAsType(State).name/]"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:createLabel"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+        </toolSections>
+        <toolSections name="StateMachineToolsModification">
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="EdgeMoveTgt" forceRefresh="true">
             <source name="source"/>
             <target name="target"/>
@@ -908,7 +816,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteTransition">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteTransition" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -916,80 +824,133 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:For" expression="inputTransitions" iteratorName="iT">
                   <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[elementView->filter(viewpoint::DEdge).sourceNode->filter(viewpoint::DSemanticDecorator).target/]"/>
-                  <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[elementView->filter(viewpoint::DEdge).targetNode->filter(viewpoint::DSemanticDecorator)/]"/>
+                  <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[elementView->filter(viewpoint::DEdge).targetNode->filter(viewpoint::DSemanticDecorator).target/]"/>
                   <subModelOperations xsi:type="tool:RemoveElement"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:For" expression="outputTransitions" iteratorName="oT">
                   <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[elementView->filter(viewpoint::DEdge).sourceNode->filter(viewpoint::DSemanticDecorator).target/]"/>
-                  <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[elementView->filter(viewpoint::DEdge).targetNode->filter(viewpoint::DSemanticDecorator)/]"/>
+                  <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[elementView->filter(viewpoint::DEdge).targetNode->filter(viewpoint::DSemanticDecorator).target/]"/>
                   <subModelOperations xsi:type="tool:RemoveElement"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteState">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteState" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[elementView->filter(viewpoint::DEdge).sourceNode->filter(viewpoint::DSemanticDecorator).target/]"/>
-                <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[elementView->filter(viewpoint::DEdge).targetNode->filter(viewpoint::DSemanticDecorator)/]"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.eContainer(StateMachineRelationDefinition).initialStates->includes(self)/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[eContainer()/]">
+                    <subModelOperations xsi:type="tool:Unset" featureName="initialStates" elementExpression="var:element"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.eContainer(StateMachineRelationDefinition).finalStates->includes(self)/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[eContainer()/]">
+                    <subModelOperations xsi:type="tool:Unset" featureName="finalStates" elementExpression="var:element"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[not self.oclAsType(FSMModel::State).inputTransitions->isEmpty()/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.oclAsType(FSMModel::State)/]">
+                    <subModelOperations xsi:type="tool:For" expression="[inputTransitions/]" iteratorName="inputT">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:inputT">
+                        <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[self.oclAsType(FSMModel::Transition).target/]"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[self.oclAsType(FSMModel::Transition).source/]"/>
+                        <subModelOperations xsi:type="tool:RemoveElement"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[not self.oclAsType(FSMModel::State).outputTransitions->isEmpty()/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.oclAsType(FSMModel::State)/]">
+                    <subModelOperations xsi:type="tool:For" expression="[outputTransitions/]" iteratorName="outputT">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:outputT">
+                        <subModelOperations xsi:type="tool:Unset" featureName="target" elementExpression="[self.oclAsType(FSMModel::Transition).target/]"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="source" elementExpression="[self.oclAsType(FSMModel::Transition).source/]"/>
+                        <subModelOperations xsi:type="tool:RemoveElement"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
                 <subModelOperations xsi:type="tool:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']">
-            <element name="element"/>
-            <elementView name="elementView"/>
+        </toolSections>
+        <toolSections name="StateMachineToolsLabelEdition">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="SetStateName" label="Set State Name" forceRefresh="true">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" forceRefresh="true"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="StateMachineToolsNavigation">
+          <ownedTools xsi:type="tool:ExternalJavaAction" name="OpenEmbeddedEditorAction" forceRefresh="true" id="org.gemoc.mocc.ccslmocc.model.design.OpenEmbeddedEditorID">
+            <subModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" forceRefresh="true" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="OpenTextDescription" label="Open Textual Description" precondition="[self.oclIsTypeOf(ccslmocc::StateMachineRelationDefinition)/]" forceRefresh="true">
+            <menuItemDescription xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.popupOpenEditorActionCallID" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditorState" label="Open Xtext Editor State" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element.eContainer()/]">
-                <subModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID"/>
+                <subModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="OpenTextDescription" label="Open Textual Description" precondition="[self.oclIsTypeOf(ccslmocc::StateMachineRelationDefinition)/]" forceRefresh="true">
-            <menuItemDescription xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID"/>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditorTransition" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" forceRefresh="true" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
+            </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ExternalJavaAction" name="OpenEmbeddedEditorAction" forceRefresh="true" id="org.gemoc.mocc.ccslmocc.model.design.OpenEmbeddedEditorID">
-            <subModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" forceRefresh="true" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OpenEmbeddedEditorAction']"/>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="OpenTransitionDirectEdit" forceRefresh="true">
+            <mask/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="OpenTransitionDirectEditOpenPopUp" forceRefresh="true" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="OpenTextDescriptionTransition" label="Open Textual Description" precondition="[self.oclIsTypeOf(FSMModel::Transition)/]" forceRefresh="true">
+            <menuItemDescription xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.popupOpenEditorActionCallFromP" forceRefresh="true" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
       <additionalLayers name="TransitionDetails" label="Transition Details">
-        <nodeMappings name="Trigger" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='DeleteTrigger']" semanticCandidatesExpression="[eAllContents()/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.Trigger">
+        <nodeMappings name="Trigger" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.1/@ownedTools[name='DeleteTrigger']" semanticCandidatesExpression="[eAllContents()/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.Trigger">
           <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[trueTriggers.oclAsType(BindableEntity).name->sep(', ')/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Trigger.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="IntAssignAction" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='DeleteAction']" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='ActionGroup']/@tools.3" semanticCandidatesExpression="[transitions.actions/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.IntegerAssignement">
+        <nodeMappings name="IntAssignAction" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.1/@ownedTools[name='DeleteAction']" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='ActionGroup']/@tools.3" semanticCandidatesExpression="[transitions.actions/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.IntegerAssignement">
           <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[name/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Action.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Guard" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='DeleteGuard']" semanticCandidatesExpression="[transitions.guard/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.Guard">
+        <nodeMappings name="Guard" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.1/@ownedTools[name='DeleteGuard']" semanticCandidatesExpression="[transitions.guard/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.Guard">
           <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[thisEObject.value.name/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Guard.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="StartClockAction" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='DeleteAction']" semanticCandidatesExpression="[transitions.actions/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="ccslmocc.StartClock">
+        <nodeMappings name="StartClockAction" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.1/@ownedTools[name='DeleteAction']" semanticCandidatesExpression="[transitions.actions/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="ccslmocc.StartClock">
           <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[clock/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Action.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="FinishClockAction" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='DeleteAction']" semanticCandidatesExpression="[transitions.actions/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="ccslmocc.FinishClock">
+        <nodeMappings name="FinishClockAction" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.1/@ownedTools[name='DeleteAction']" semanticCandidatesExpression="[transitions.actions/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="ccslmocc.FinishClock">
           <style xsi:type="style:WorkspaceImageDescription" labelFormat="italic" showIcon="false" labelExpression="[clock/]" sizeComputationExpression="-1" workspacePath="/org.gemoc.mocc.ccslmocc.model.design/images/Action.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1056,7 +1017,9 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.Trigger" referenceName="trigger" variableName="trig"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(FSMModel::Transition).trigger/]">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="trueTriggers" valueExpression="[elements/]"/>
+                    <subModelOperations xsi:type="tool:For" expression="var:elements" iteratorName="e">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="trueTriggers" valueExpression="var:e"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -1071,8 +1034,8 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="FSMModel.Trigger" referenceName="trigger" variableName="trig"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(FSMModel::Transition).trigger/]">
-                    <subModelOperations xsi:type="tool:For" expression="elements" iteratorName="e">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="falseTriggers" valueExpression="[e/]"/>
+                    <subModelOperations xsi:type="tool:For" expression="var:elements" iteratorName="e">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="falseTriggers" valueExpression="var:e"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -1125,13 +1088,8 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Trigger'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='IntAssignAction'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Guard'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='StartClockAction'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='FinishClockAction']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID"/>
-            </initialOperation>
-          </ownedTools>
+        </toolSections>
+        <toolSections name="TransitionToolingModification">
           <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteTrigger" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -1173,17 +1131,26 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+        <toolSections name="TransitionToolingNavigation">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Trigger'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='IntAssignAction'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='Guard'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='StartClockAction'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='TransitionDetails']/@nodeMappings[name='FinishClockAction']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
       </additionalLayers>
       <additionalLayers name="Declarations">
-        <containerMappings name="DeclarationBlockID" semanticCandidatesExpression="[declarationBlock/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.DeclarationBlock" childrenPresentation="List">
-          <subNodeMappings name="ConcreteEntityID" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='EditCE']" semanticCandidatesExpression="[concreteEntities/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="ClockExpressionAndRelation.ConcreteEntity">
+        <containerMappings name="DeclarationBlockID" semanticCandidatesExpression="[declarationBlock/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="FSMModel.DeclarationBlock" childrenPresentation="List">
+          <subNodeMappings name="ConcreteEntityID" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.1/@ownedTools[name='EditCE']" semanticCandidatesExpression="[concreteEntities/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="ClockExpressionAndRelation.ConcreteEntity">
             <style xsi:type="style:SquareDescription" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/QualifierValue.gif" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="ClassicalExpressionID" semanticCandidatesExpression="[classicalExpressions/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="ClassicalExpression.ClassicalExpression">
+          <subNodeMappings name="ClassicalExpressionID" semanticCandidatesExpression="[classicalExpressions/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="ClassicalExpression.ClassicalExpression">
             <style xsi:type="style:SquareDescription" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Attribute.gif" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1197,8 +1164,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="RelationDeclarationID" semanticCandidatesExpression="[declaration/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="RelationDeclaration" childrenPresentation="List">
-          <subNodeMappings name="AbstractEntityID" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='NameEditAbstractEntity']" semanticCandidatesExpression="[parameters/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.0/@ownedTools[name='OpenXtextEditor']" domainClass="ClockExpressionAndRelation.AbstractEntity">
+        <containerMappings name="RelationDeclarationID" semanticCandidatesExpression="[declaration/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="RelationDeclaration" childrenPresentation="List">
+          <subNodeMappings name="AbstractEntityID" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.1/@ownedTools[name='NameEditAbstractEntity']" semanticCandidatesExpression="[parameters/]" doubleClickDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@toolSections.2/@ownedTools[name='OpenXtextEditor']" domainClass="ClockExpressionAndRelation.AbstractEntity">
             <style xsi:type="style:SquareDescription" labelExpression="service:computeLabel" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Parameter.gif" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1219,15 +1186,6 @@
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="DeclarationBlock" referenceName="declarationBlock"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateConcreteEntity" label="New Concrete Entity" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ConcreteEntityID']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/QualifierValue.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ConcreteEntity" referenceName="concreteEntities">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['CE'+instance.eContainer().oclAsType(DeclarationBlock).concreteEntities->size()/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="RelationDeclarationBlocCreation" label="New Relation Declaration" precondition="[container.oclAsType(ccslmocc::StateMachineRelationDefinition).declaration=null/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='RelationDeclarationID']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Variable.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -1240,23 +1198,135 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="AbstractEntitiesCreation">
+            <tools xsi:type="tool:NodeCreationDescription" name="CreateAbstractEntity" label="New Declaration Parameter" nodeMappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='RelationDeclarationID']/@subNodeMappings[name='AbstractEntityID']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateParameter.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newFormalParam'+container.oclAsType(RelationDeclaration).parameters->filter(AbstractEntity)->size()/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:SelectionWizardDescription" name="CreateTypedAbstractEntity" label="New Typed Declaration Parameter" precondition="[container.oclIsTypeOf(RelationDeclaration)/]" forceRefresh="true" candidatesExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(StateMachineRelationDefinition).eContainer().eContainer(StateRelationBasedLibrary).getAllExistingTypes()/]" rootExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target/]" childrenExpression="[eAllContents()/]" message="Select the type of the declaration parameter" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateParameter.gif" windowTitle="New Declaration Parameter Creation">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newFormalParam'+container.oclAsType(RelationDeclaration).parameters->filter(AbstractEntity)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:element"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:SelectionWizardDescription" name="CreateStartTypedAbstractEntity" label="New Typed Declaration Parameter Start" precondition="[container.oclIsTypeOf(RelationDeclaration)/]" forceRefresh="true" candidatesExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(StateMachineRelationDefinition).eContainer().eContainer(StateRelationBasedLibrary).getAllExistingTypes()/]" rootExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target/]" childrenExpression="[eAllContents()/]" message="Select the type of the declaration parameter" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateParameter.gif" windowTitle="New Declaration Parameter Creation">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newFormalParam'+container.oclAsType(RelationDeclaration).parameters->filter(AbstractEntity)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:element"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="desiredEventKind" valueExpression="start"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:SelectionWizardDescription" name="CreateFinishTypedAbstractEntity" label="New Typed Declaration Parameter Finish" precondition="[container.oclIsTypeOf(RelationDeclaration)/]" forceRefresh="true" candidatesExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(StateMachineRelationDefinition).eContainer().eContainer(StateRelationBasedLibrary).getAllExistingTypes()/]" rootExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target/]" childrenExpression="[eAllContents()/]" message="Select the type of the declaration parameter" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateParameter.gif" windowTitle="New Declaration Parameter Creation">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newFormalParam'+container.oclAsType(RelationDeclaration).parameters->filter(AbstractEntity)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:element"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="desiredEventKind" valueExpression="finish"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:SelectionWizardDescription" name="CreateSendTypedAbstractEntity" label="New Typed Declaration Parameter Send" precondition="[container.oclIsTypeOf(RelationDeclaration)/]" forceRefresh="true" candidatesExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(StateMachineRelationDefinition).eContainer().eContainer(StateRelationBasedLibrary).getAllExistingTypes()/]" rootExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target/]" childrenExpression="[eAllContents()/]" message="Select the type of the declaration parameter" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateParameter.gif" windowTitle="New Declaration Parameter Creation">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newFormalParam'+container.oclAsType(RelationDeclaration).parameters->filter(AbstractEntity)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:element"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="desiredEventKind" valueExpression="send"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:SelectionWizardDescription" name="CreateReceiveTypedAbstractEntity" label="New Typed Declaration Parameter Receive" precondition="[container.oclIsTypeOf(RelationDeclaration)/]" forceRefresh="true" candidatesExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(StateMachineRelationDefinition).eContainer().eContainer(StateRelationBasedLibrary).getAllExistingTypes()/]" rootExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target/]" childrenExpression="[eAllContents()/]" message="Select the type of the declaration parameter" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateParameter.gif" windowTitle="New Declaration Parameter Creation">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newFormalParam'+container.oclAsType(RelationDeclaration).parameters->filter(AbstractEntity)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:element"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="desiredEventKind" valueExpression="receive"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:SelectionWizardDescription" name="CreateConsumeTypedAbstractEntity" label="New Typed Declaration Parameter Consume" precondition="[container.oclIsTypeOf(RelationDeclaration)/]" forceRefresh="true" candidatesExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(StateMachineRelationDefinition).eContainer().eContainer(StateRelationBasedLibrary).getAllExistingTypes()/]" rootExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target/]" childrenExpression="[eAllContents()/]" message="Select the type of the declaration parameter" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateParameter.gif" windowTitle="New Declaration Parameter Creation">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newFormalParam'+container.oclAsType(RelationDeclaration).parameters->filter(AbstractEntity)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:element"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="desiredEventKind" valueExpression="consume"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:SelectionWizardDescription" name="CreateProduceTypedAbstractEntity" label="New Typed Declaration Parameter Produce" precondition="[container.oclIsTypeOf(RelationDeclaration)/]" forceRefresh="true" candidatesExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(StateMachineRelationDefinition).eContainer().eContainer(StateRelationBasedLibrary).getAllExistingTypes()/]" rootExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target/]" childrenExpression="[eAllContents()/]" message="Select the type of the declaration parameter" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateParameter.gif" windowTitle="New Declaration Parameter Creation">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newFormalParam'+container.oclAsType(RelationDeclaration).parameters->filter(AbstractEntity)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:element"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="desiredEventKind" valueExpression="produce"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="DeclarationsToolingLabelEdition">
           <ownedTools xsi:type="tool:DirectEditLabel" name="EditCE">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ClassicalExpressionID'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ConcreteEntityID'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='RelationDeclarationID'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='RelationDeclarationID']/@subNodeMappings[name='AbstractEntityID']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="NameEditAbstractEntity">
             <mask mask="'{'{0}'} '{1}: {2}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg1"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="DeclarationsToolingNavigation">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditor" label="Open Xtext Editor" forceRefresh="true" mappings="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ClassicalExpressionID'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']/@subNodeMappings[name='ConcreteEntityID'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='RelationDeclarationID'] //@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='RelationDeclarationID']/@subNodeMappings[name='AbstractEntityID']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.OpenEditorActionCallID" action="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

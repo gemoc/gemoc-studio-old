@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
@@ -36,9 +35,7 @@ public class DeleteNotAllowed implements IExternalJavaAction {
 	/**
 	 * 
 	 */
-	public DeleteNotAllowed() {
-		// TODO Auto-generated constructor stub
-	}
+	public DeleteNotAllowed() {}
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction#execute(java.util.Collection, java.util.Map)
