@@ -9,7 +9,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author dvojtise
  *
  */
-public interface LogicalStepDecider {
+public interface ILogicalStepDecider {
 	/**
 	 * 
 	 * @param possibleLogicalSteps

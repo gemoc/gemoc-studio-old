@@ -48,7 +48,7 @@ import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
 import org.gemoc.execution.engine.io.frontends.controlpanels.ExampleGUIControlPanel;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.LogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -292,7 +292,7 @@ public class GemocReflectiveModelLauncher
 		}
 
 		// create decider
-		LogicalStepDecider decider;
+		ILogicalStepDecider decider;
 		if (deciderName
 				.equals(GemocModelLauncherConfigurationConstants.DECIDER_RANDOM)) {
 			decider = new RandomDecider();

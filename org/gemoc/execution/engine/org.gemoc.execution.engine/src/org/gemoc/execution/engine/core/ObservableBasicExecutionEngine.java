@@ -31,7 +31,7 @@ import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngineEventControl;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.LogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
@@ -122,7 +122,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	protected Solver solver = null;
 	protected EventExecutor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
-	protected LogicalStepDecider logicalStepDecider = null;
+	protected ILogicalStepDecider logicalStepDecider = null;
 
 	/**
 	 * URI of the model being executed
@@ -149,7 +149,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	 *            can be null (for now).
 	 */
 	public ObservableBasicExecutionEngine(Solver solver,
-			EventExecutor executor, FeedbackPolicy feedbackPolicy, LogicalStepDecider decider) {
+			EventExecutor executor, FeedbackPolicy feedbackPolicy, ILogicalStepDecider decider) {
 
 		// The engine needs AT LEAST a mocEventsResource,
 		// domainSpecificEventsResource, a Solver,
@@ -441,15 +441,31 @@ public class ObservableBasicExecutionEngine extends Observable implements
 													+ " ReferencedObjectRefs="
 													+event.getReferencedObjectRefs(),
 											Activator.PLUGIN_ID);
+									EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs()
+											.get(0), null);
+									engineEventOccurences.add(engineEventOccurence);
 								}
 							}
 							else{
-								Activator.getMessagingSystem().debug(
+								if (event.getReferencedObjectRefs().size() == 1){
+									Activator.getMessagingSystem().warn(
+											"event occurence: TICK Event="
+													+ event.getName()
+													+ " ReferencedObjectRefs="
+													+event.getReferencedObjectRefs(),
+											Activator.PLUGIN_ID);
+									EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs()
+											.get(0), null);
+									engineEventOccurences.add(engineEventOccurence);
+								}
+								else{
+									Activator.getMessagingSystem().debug(
 										"event occurence: TICK Event="
 												+ event.getName()
 												+ " ReferencedObjectRefs="
 												+event.getReferencedObjectRefs(),
 										Activator.PLUGIN_ID);
+								}
 							}
 				//		}
 	//					else{
@@ -471,11 +487,13 @@ public class ObservableBasicExecutionEngine extends Observable implements
 				}
 				
 				try {
-					FeedbackData res = executor.execute(engineEventOccurence);
-					// send result as feedback to the solver
-					// process feedback may influence the solver results for next step
-					//FeedbackData feedbackData = new FeedbackData(res, engineEventOccurence);
-					feedbackPolicy.processFeedback(res, ObservableBasicExecutionEngine.this);
+					if(engineEventOccurence.getTargetOperation()!= null){
+						FeedbackData res = executor.execute(engineEventOccurence);
+						// send result as feedback to the solver
+						// process feedback may influence the solver results for next step
+						//FeedbackData feedbackData = new FeedbackData(res, engineEventOccurence);
+						feedbackPolicy.processFeedback(res, ObservableBasicExecutionEngine.this);
+					}
 				} catch (EventExecutionException e) {
 					Activator.getMessagingSystem().error(
 							"Exception received " + e.getMessage(),
