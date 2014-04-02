@@ -300,7 +300,12 @@ public class EnginesStatusView extends ViewPart implements Observer {
 						return SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON);
 					}
 					else if(treeObject.wrappedObject instanceof LogicalStep){
-						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_ICON);
+						if(treeObject.wrappedObject == ((GemocExecutionEngine)treeObject.getParent().getWrappedObject()).getEngineStatus().getChosenLogicalStep()){
+							return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_RUNNING_ICON);
+						}
+						else{
+							return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_ICON);
+						}
 					}
 					else if(treeObject.wrappedObject instanceof Event){
 						return SharedIcons.getSharedImage(SharedIcons.VISIBLE_EVENT_ICON);

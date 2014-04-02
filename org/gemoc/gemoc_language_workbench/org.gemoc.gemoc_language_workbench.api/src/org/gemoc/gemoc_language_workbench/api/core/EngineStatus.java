@@ -8,7 +8,10 @@ public class  EngineStatus {
 	RunStatus runningStatus = RunStatus.Initializing;
 	
 	List<LogicalStep> currentLogicalStepChoice = new ArrayList<LogicalStep>();
+	LogicalStep chosenLogicalStep;
 	
+
+
 	public enum RunStatus { Initializing, Running, WaitingLogicalStepSelection, Stopped}
 
 	
@@ -45,5 +48,16 @@ public class  EngineStatus {
 			newCurrentLogicalStepChoice.addAll(currentLogicalStepChoice);
 		}
 		return newCurrentLogicalStepChoice;
+	}
+	public LogicalStep getChosenLogicalStep() {
+		synchronized (this){
+			return chosenLogicalStep;
+		}
+	}
+
+	public void setChosenLogicalStep(LogicalStep chosenLogicalStep) {
+		synchronized (this){
+			this.chosenLogicalStep = chosenLogicalStep;
+		}
 	}
 }
