@@ -87,8 +87,11 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		try {
 			this.modelLocationText.setText(configuration.getAttribute(
 					AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, ""));
-			this.siriusRepresentationLocationText.setText(configuration.getAttribute(
-					AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI, ""));
+			this.siriusRepresentationLocationText
+					.setText(configuration
+							.getAttribute(
+									AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI,
+									""));
 			this.languageCombo
 					.setText(configuration
 							.getAttribute(
@@ -121,6 +124,10 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 				.setAttribute(
 						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
 						this.languageCombo.getText());
+		configuration
+				.setAttribute(
+						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_DECIDER,
+						this.deciderCombo.getText());
 		configuration
 				.setAttribute(
 						GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
@@ -186,35 +193,39 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 				}
 			}
 		});
-		//return parent;
-	
+		// return parent;
+
 		createTextLabelLayout(parent, "Sirius representation");
-		//GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		// GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		// gd.horizontalSpan = 1;
-		//gd.widthHint = GRID_DEFAULT_WIDTH;
+		// gd.widthHint = GRID_DEFAULT_WIDTH;
 		// Create the project selector button
 		// Animation view location text
-		siriusRepresentationLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		siriusRepresentationLocationText = new Text(parent, SWT.SINGLE
+				| SWT.BORDER);
 		siriusRepresentationLocationText.setLayoutData(gd);
 		siriusRepresentationLocationText.setFont(font);
-		siriusRepresentationLocationText.addModifyListener(fBasicModifyListener);
-		Button siriusRepresentationLocationButton = createPushButton(parent, "Browse", null);
-		siriusRepresentationLocationButton.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent evt) {
-				// handleModelLocationButtonSelected();
-				// TODO launch the appropriate selector
+		siriusRepresentationLocationText
+				.addModifyListener(fBasicModifyListener);
+		Button siriusRepresentationLocationButton = createPushButton(parent,
+				"Browse", null);
+		siriusRepresentationLocationButton
+				.addSelectionListener(new SelectionAdapter() {
+					public void widgetSelected(SelectionEvent evt) {
+						// handleModelLocationButtonSelected();
+						// TODO launch the appropriate selector
 
-				SelectAIRDIFileDialog dialog = new SelectAIRDIFileDialog(
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-								.getShell());
-				if (dialog.open() == Dialog.OK) {
-					String modelPath = ((IResource) dialog.getResult()[0])
-							.getFullPath().toPortableString();
-					siriusRepresentationLocationText.setText(modelPath);
-					updateLaunchConfigurationDialog();
-				}
-			}
-		});
+						SelectAIRDIFileDialog dialog = new SelectAIRDIFileDialog(
+								PlatformUI.getWorkbench()
+										.getActiveWorkbenchWindow().getShell());
+						if (dialog.open() == Dialog.OK) {
+							String modelPath = ((IResource) dialog.getResult()[0])
+									.getFullPath().toPortableString();
+							siriusRepresentationLocationText.setText(modelPath);
+							updateLaunchConfigurationDialog();
+						}
+					}
+				});
 		return parent;
 	}
 
@@ -275,7 +286,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		String[] deciderChoice = {
 				GemocModelLauncherConfigurationConstants.DECIDER_SOLVER_PROPOSITION,
 				GemocModelLauncherConfigurationConstants.DECIDER_RANDOM,
-				GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER};
+				GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER };
 		deciderCombo.setItems(deciderChoice);
 		deciderCombo.select(0);
 		deciderCombo.addModifyListener(fBasicModifyListener);

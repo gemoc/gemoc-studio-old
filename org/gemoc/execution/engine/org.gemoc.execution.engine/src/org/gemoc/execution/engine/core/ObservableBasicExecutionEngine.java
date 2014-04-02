@@ -230,6 +230,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	}
 	@Override
 	public void stop() {
+		logicalStepDecider.dispose();
 		terminated = true;
 	}
 	
@@ -320,14 +321,20 @@ public class ObservableBasicExecutionEngine extends Observable implements
 								"\t\t ---------------- LogicalStep "+count,
 								Activator.PLUGIN_ID);
 						count++;
-						if (possibleLogicalSteps.size() == 1) {
-							selectedLogicalStep = 0;
-						} else {
+					//	if (possibleLogicalSteps.size() == 1) {
+					//		selectedLogicalStep = 0;
+					//	} else {
 							// depending on the strategy, ask the user, get from
 							// scenario, ask solver for a proposal
 							// TODO implement strategy for selecting a LogicalStep
+						engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
+						ObservableBasicExecutionEngine.this.setChanged();
+						ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
 							selectedLogicalStep = logicalStepDecider.decide(possibleLogicalSteps);
-						}
+							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
+							ObservableBasicExecutionEngine.this.setChanged();
+							ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
+					//	}
 						// 3 - run the selected logical step
 						LogicalStep logicalStepToApply = possibleLogicalSteps
 								.get(selectedLogicalStep);

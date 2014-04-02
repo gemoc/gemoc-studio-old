@@ -25,4 +25,8 @@ public class CcslSolverDecider implements ILogicalStepDecider {
 		return solver.proposeLogicalStepByIndex();
 	}
 
+	@Override
+	public void dispose() {
+		// nothing to do
+	}
 }

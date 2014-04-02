@@ -26,4 +26,9 @@ public class RandomDecider implements ILogicalStepDecider {
 		return rand.nextInt(possibleLogicalSteps.size());
 	}
 
+	@Override
+	public void dispose() {
+		// nothing to do
+	}
+
 }

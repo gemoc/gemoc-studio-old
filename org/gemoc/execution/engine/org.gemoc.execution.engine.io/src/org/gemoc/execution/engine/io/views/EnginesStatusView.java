@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
@@ -449,9 +450,9 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		column4.setWidth(350);
 		column4.setResizable(true);
 	}
-	
+	public MenuManager menuMgr;
 	private void hookContextMenu() {
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
+		menuMgr = new MenuManager("#PopupMenu");
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager manager) {
@@ -496,6 +497,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			public void run() {
 				if(EnginesStatusView.this.getSelectedEngine() != null){
 					EnginesStatusView.this.getSelectedEngine().stop();
+					
 					//showMessage("Stopping Engine");
 				}
 				else
@@ -517,6 +519,9 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		removeStoppedEnginesAction.setToolTipText("Remove all stopped engines");
 		removeStoppedEnginesAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
 				getImageDescriptor(ISharedImages.IMG_ELCL_REMOVEALL));
+		
+		
+		
 		doubleClickAction = new Action() {
 			public void run() {
 				ISelection selection = viewer.getSelection();
@@ -524,6 +529,9 @@ public class EnginesStatusView extends ViewPart implements Observer {
 				showMessage("Double-click detected on "+obj.toString());
 			}
 		};
+		
+		
+		
 	}
 
 	private void hookDoubleClickAction() {
@@ -552,14 +560,56 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	 * @return the engine selected or null if no engine selected
 	 */
 	public GemocExecutionEngine getSelectedEngine(){
-		IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
-		Iterator<?> iter = selection.iterator();
-		while (iter.hasNext()){
-			TreeObject treeObject = (TreeObject) iter.next();
-			if(treeObject.wrappedObject instanceof GemocExecutionEngine){
-				return (GemocExecutionEngine) treeObject.wrappedObject;
+		try{
+			IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
+			Iterator<?> iter = selection.iterator();
+			while (iter.hasNext()){
+				TreeObject treeObject = (TreeObject) iter.next();
+				if(treeObject.wrappedObject instanceof GemocExecutionEngine){
+					return (GemocExecutionEngine) treeObject.wrappedObject;
+				}
+				// try to retrieve the engine from internal leaves  (logical step, ...)
+				if(treeObject.wrappedObject instanceof LogicalStep){
+					return (GemocExecutionEngine) treeObject.getParent().getWrappedObject();
+				}
+				if(treeObject.wrappedObject instanceof Event){
+					return (GemocExecutionEngine) treeObject.getParent().getParent().getWrappedObject();
+				}
 			}
-			// TODO try to retrieve the engine from internal leaves  (logical step, ...)
+		} catch(Exception e){
+			Activator.eclipseError(e.getMessage(), e);
+		}
+		return null;
+	}
+	
+	private LogicalStep lastSelectedLogicalStep;	
+	/**
+	 * get the selection
+	 * @return the LogicalStep selected or null if no LogicalStep selected
+	 */
+	public LogicalStep getSelectedLogicalStep(){
+		try{
+			Display.getDefault().syncExec(new Runnable() {
+				@Override
+				public void run() {
+					IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
+					Iterator<?> iter = selection.iterator();
+					while (iter.hasNext()){
+						TreeObject treeObject = (TreeObject) iter.next();
+						if(treeObject.wrappedObject instanceof LogicalStep){
+							lastSelectedLogicalStep =  (LogicalStep) treeObject.wrappedObject;
+						}
+						// try to retrieve the engine from internal leaves  (event occurrences)
+			
+						if(treeObject.wrappedObject instanceof Event){
+							lastSelectedLogicalStep= (LogicalStep) treeObject.getParent().getWrappedObject();
+						}
+					}
+				}
+			});
+			return lastSelectedLogicalStep;
+		} catch(Exception e){
+			Activator.eclipseError(e.getMessage(), e);
 		}
 		return null;
 	}
