@@ -27,6 +27,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
 import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ExtendedCCSLStandaloneSetup;
+import fr.inria.aoste.timesquare.ccslkernel.solver.exception.NoBooleanSolution;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.launch.CCSLKernelSolverWrapper;
 import fr.inria.aoste.timesquare.simulationpolicy.maxcardpolicy.MaxCardSimulationPolicy;
@@ -336,22 +337,32 @@ public abstract class CcslSolver implements
 
 	@Override
 	public List<LogicalStep> getPossibleLogicalSteps() {
-		// TODO improve when the appropriate support if implemented in timesquare
-		List<LogicalStep> logicalSteps = new ArrayList<LogicalStep>();
-		logicalSteps.add(getNextStep());
-		return logicalSteps;
+		
+		try {
+			List<LogicalStep> result = solverWrapper.getPossibleLogicalSteps();
+			
+			return result;
+		} catch (NoBooleanSolution e) {
+			Activator.error(e.getMessage(), e);
+		} catch (SolverException e) {
+			Activator.error(e.getMessage(), e);
+		}
+		return new ArrayList<LogicalStep>();
 	}
 
 	@Override
 	public int proposeLogicalStepByIndex() {
-		// TODO improve when the appropriate support if implemented in timesquare
-		return 0;
+		return solverWrapper.proposeLogicalStepByIndex();
 	}
 
 	@Override
 	public void applyLogicalStepByIndex(int indexOfStepToApply) {
-		// TODO improve when the appropriate support if implemented in timesquare
-		
+		try {
+			solverWrapper.applyLogicalStepByIndex(indexOfStepToApply);
+			solverWrapper.getSolver().doOneSimulationStep();
+		} catch (SolverException e) {
+			Activator.error(e.getMessage(), e);
+		}
 	}
 
 	

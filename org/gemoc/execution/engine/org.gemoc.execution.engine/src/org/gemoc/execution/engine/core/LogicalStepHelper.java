@@ -3,8 +3,10 @@ package org.gemoc.execution.engine.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
@@ -25,10 +27,18 @@ public class LogicalStepHelper {
 			if (eventOccurrence.getFState() == FiredStateKind.TICK && eventOccurrence.getReferedElement() != null) {
 				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
 					ModelElementReference mer = (ModelElementReference) eventOccurrence.getReferedElement();
-					if (mer.getElementRef().size() == 1 && mer.getElementRef().get(0) instanceof Event) {
-						result.add((Event) mer.getElementRef().get(0));
+					// get associated clock : this is the last element of the elementRef
+					EObject actualClock = mer.getElementRef().get(mer.getElementRef().size() - 1);
+					if (actualClock instanceof Clock) {
+
+						// then get the event associated to the clock
+						result.add(((Clock) actualClock).getTickingEvent());
 					}
+					//if (mer.getElementRef().size() == 1 && mer.getElementRef().get(0) instanceof Event) {
+					//	result.add((Event) mer.getElementRef().get(0));
+					//}
 				}
+				 
 			}
 		}
 		return result;

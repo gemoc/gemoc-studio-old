@@ -242,30 +242,12 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		if(ls1 == ls2) return true;
 		
 		List<String> ls1TickedEventOccurences = new ArrayList<String>();
-		for (EventOccurrence eventOccurrence : ls1
-				.getEventOccurrences()) {
-			if (eventOccurrence.getFState() == FiredStateKind.TICK
-					&& eventOccurrence.getReferedElement() != null) {
-				ModelElementReference mer = (ModelElementReference) eventOccurrence
-						.getReferedElement();
-				if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
-					Event event = (Event) mer.getElementRef().get(0);
-					ls1TickedEventOccurences.add(event.getName());
-				}
-			}
+		for(Event event : LogicalStepHelper.getTickedEvents(ls1)){
+			ls1TickedEventOccurences.add(event.getName());
 		}
 		List<String> ls2TickedEventOccurences = new ArrayList<String>();
-		for (EventOccurrence eventOccurrence : ls2
-				.getEventOccurrences()) {
-			if (eventOccurrence.getFState() == FiredStateKind.TICK
-					&& eventOccurrence.getReferedElement() != null) {
-				ModelElementReference mer = (ModelElementReference) eventOccurrence
-						.getReferedElement();
-				if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
-					Event event = (Event) mer.getElementRef().get(0);
-					ls2TickedEventOccurences.add(event.getName());
-				}
-			}
+		for(Event event : LogicalStepHelper.getTickedEvents(ls2)){
+			ls2TickedEventOccurences.add(event.getName());
 		}
 		
 		
@@ -303,8 +285,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 					// TODO WARNING current implementation of
 					// getPossibleLogicalSteps() applies a LogicalStep to the
 					// solver, make sure to call it only once
-					List<LogicalStep> possibleLogicalSteps = solver
-							.getPossibleLogicalSteps();
+					List<LogicalStep> possibleLogicalSteps = solver.getPossibleLogicalSteps();
 					engineStatus.updateCurrentLogicalStepChoice(possibleLogicalSteps);
 					ObservableBasicExecutionEngine.this.setChanged();
 					ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
