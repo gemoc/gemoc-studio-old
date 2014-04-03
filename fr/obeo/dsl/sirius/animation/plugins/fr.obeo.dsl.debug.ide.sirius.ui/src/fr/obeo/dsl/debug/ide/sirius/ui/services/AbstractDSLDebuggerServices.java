@@ -1,6 +1,6 @@
 package fr.obeo.dsl.debug.ide.sirius.ui.services;
 
-import fr.obeo.dsl.debug.Thread;
+import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 
@@ -106,6 +106,11 @@ public abstract class AbstractDSLDebuggerServices {
 		 * {@link Layer#getName() layer identifier} or {@link BreakpointListener#ANY_LAYER any layer}.
 		 */
 		private final Map<String, Map<String, Set<String>>> representationToRefresh = new HashMap<String, Map<String, Set<String>>>();
+
+		/**
+		 * The current {@link StackFrame}.
+		 */
+		private StackFrame currentFrame;
 
 		/**
 		 * Installs this {@link IBreakpointListener}.
@@ -316,18 +321,16 @@ public abstract class AbstractDSLDebuggerServices {
 		/**
 		 * {@inheritDoc}
 		 * 
-		 * @see fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener#currentInstructionChanged(java.lang.String,
-		 *      fr.obeo.dsl.debug.Thread)
+		 * @see fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener#currentInstructionChanged(String,
+		 *      fr.obeo.dsl.debug.StackFrame))
 		 */
-		public void currentInstructionChanged(String debugModelID, Thread thread) {
-			final URI instructionURI = EcoreUtil.getURI(thread.getTopStackFrame().getCurrentInstruction());
-			final URI lastInstruction = CURRENT_INSTRUCTIONS_PER_THREAD.remove(thread);
+		public void currentInstructionChanged(String debugModelID, StackFrame frame) {
+			final URI instructionURI = EcoreUtil.getURI(frame.getCurrentInstruction());
+			final URI lastInstruction = CURRENT_INSTRUCTIONS_PER_FRAME.remove(frame);
 			if (lastInstruction != null) {
-				CURRENT_INSTRUCTIONS.remove(lastInstruction);
 				notifySirius(lastInstruction, debugModelID);
 			}
-			CURRENT_INSTRUCTIONS_PER_THREAD.put(thread, instructionURI);
-			CURRENT_INSTRUCTIONS.add(instructionURI);
+			CURRENT_INSTRUCTIONS_PER_FRAME.put(frame, instructionURI);
 			notifySirius(instructionURI, debugModelID);
 		}
 
@@ -335,15 +338,40 @@ public abstract class AbstractDSLDebuggerServices {
 		 * {@inheritDoc}
 		 * 
 		 * @see fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener#terminated(java.lang.String,
-		 *      fr.obeo.dsl.debug.Thread)
+		 *      fr.obeo.dsl.debug.StackFrame)
 		 */
-		public void terminated(String debugModelID, Thread thread) {
-			final URI lastInstruction = CURRENT_INSTRUCTIONS_PER_THREAD.remove(thread);
+		public void terminated(String debugModelID, StackFrame frame) {
+			final URI lastInstruction = CURRENT_INSTRUCTIONS_PER_FRAME.remove(frame);
 			if (lastInstruction != null) {
-				CURRENT_INSTRUCTIONS.remove(lastInstruction);
 				notifySirius(lastInstruction, debugModelID);
 			}
 		}
+
+		/**
+		 * Gets the current {@link StackFrame}.
+		 * 
+		 * @return the current {@link StackFrame}
+		 */
+		public StackFrame getCurrentFrame() {
+			return currentFrame;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener#setCurrentFrame(java.lang.String,
+		 *      fr.obeo.dsl.debug.StackFrame)
+		 */
+		public void setCurrentFrame(String debugModelID, StackFrame frame) {
+			if (currentFrame != frame) {
+				currentFrame = frame;
+				final URI instructionUri = CURRENT_INSTRUCTIONS_PER_FRAME.get(getCurrentFrame());
+				if (instructionUri != null) {
+					notifySirius(instructionUri, debugModelID);
+				}
+			}
+		}
+
 	}
 
 	/**
@@ -357,14 +385,9 @@ public abstract class AbstractDSLDebuggerServices {
 	private static final Map<URI, Set<DSLBreakpoint>> BREAKPOINTS = new HashMap<URI, Set<DSLBreakpoint>>();
 
 	/**
-	 * Current instruction for a given {@link Thread}.
+	 * Current instruction for a given {@link StackFrame}.
 	 */
-	private static final Map<Thread, URI> CURRENT_INSTRUCTIONS_PER_THREAD = new HashMap<Thread, URI>();
-
-	/**
-	 * {@link Set} of current instructions.
-	 */
-	private static final Set<URI> CURRENT_INSTRUCTIONS = new HashSet<URI>();
+	private static final Map<StackFrame, URI> CURRENT_INSTRUCTIONS_PER_FRAME = new HashMap<StackFrame, URI>();
 
 	/**
 	 * Constructor.
@@ -496,7 +519,8 @@ public abstract class AbstractDSLDebuggerServices {
 	 *         <code>false</code> otherwise
 	 */
 	public boolean isCurrentInstruction(EObject instruction) {
-		return CURRENT_INSTRUCTIONS.contains(EcoreUtil.getURI(instruction));
+		final URI uri = CURRENT_INSTRUCTIONS_PER_FRAME.get(LISTENER.getCurrentFrame());
+		return uri != null && uri.equals(EcoreUtil.getURI(instruction));
 	}
 
 	/**

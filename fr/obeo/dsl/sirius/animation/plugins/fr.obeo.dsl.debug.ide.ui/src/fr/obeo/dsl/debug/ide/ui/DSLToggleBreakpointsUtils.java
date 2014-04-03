@@ -21,9 +21,9 @@ import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 
 import java.util.Iterator;
 
-import org.eclipse.core.internal.runtime.AdapterManager;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.emf.common.util.URI;
@@ -177,10 +177,10 @@ public class DSLToggleBreakpointsUtils {
 			if (adapter != null) {
 				res = adapter;
 			} else {
-				res = (EObject)AdapterManager.getDefault().getAdapter(selected, EObject.class);
+				res = (EObject)Platform.getAdapterManager().getAdapter(selected, EObject.class);
 			}
 		} else if (selected != null) {
-			res = (EObject)AdapterManager.getDefault().getAdapter(selected, EObject.class);
+			res = (EObject)Platform.getAdapterManager().getAdapter(selected, EObject.class);
 		} else {
 			res = null;
 		}

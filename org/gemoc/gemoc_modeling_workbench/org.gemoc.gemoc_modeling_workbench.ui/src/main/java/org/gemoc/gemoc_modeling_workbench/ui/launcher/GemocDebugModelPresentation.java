@@ -35,6 +35,7 @@ public class GemocDebugModelPresentation extends DSLDebugModelPresentation {
 				}
 				final URI resourceURI = instruction.eResource().getURI();
 				if (resourceURI.isPlatformResource()) {
+					changeCurrentStackFrame(frame);
 					final String resourcePath = resourceURI
 							.toPlatformString(true);
 					final IResource resource = ResourcesPlugin.getWorkspace()

@@ -71,14 +71,14 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	protected final IDSLDebugEventProcessor target;
 
 	/**
-	 * Tells if the debugger is terminated.
-	 */
-	private boolean terminated;
-
-	/**
 	 * Thread name to current instruction. For check purpose only.
 	 */
 	protected final Map<String, EObject> currentInstructions = new HashMap<String, EObject>();
+
+	/**
+	 * Tells if the debugger is terminated.
+	 */
+	private boolean terminated;
 
 	/**
 	 * Mapping form thread name to the thread controller.

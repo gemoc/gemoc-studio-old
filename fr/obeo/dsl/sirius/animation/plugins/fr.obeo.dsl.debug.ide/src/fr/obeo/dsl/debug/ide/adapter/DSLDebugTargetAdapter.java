@@ -20,6 +20,7 @@ package fr.obeo.dsl.debug.ide.adapter;
 import fr.obeo.dsl.debug.DebugTarget;
 import fr.obeo.dsl.debug.DebugTargetState;
 import fr.obeo.dsl.debug.DebugTargetUtils;
+import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.Thread;
 import fr.obeo.dsl.debug.ide.Activator;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
@@ -381,7 +382,7 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 		// Eclipse change
 		factory.getThread(eThread).fireChangeEvent(DebugEvent.CONTENT);
 		// notify current instruction listeners
-		fireCurrentInstructionChangedEvent(eThread);
+		fireCurrentInstructionChangedEvent(eThread.getTopStackFrame());
 	}
 
 	/**
@@ -393,9 +394,11 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 	private void handlePopStackFrameReply(PopStackFrameReply popStackFrameReply) {
 		final Thread eThread = DebugTargetUtils.getThread(getHost(), popStackFrameReply.getThreadName());
 		// EMF model change
-		factory.getModelUpdater().popStackFrameReply(eThread);
+		final StackFrame eFrame = factory.getModelUpdater().popStackFrameReply(eThread);
 		// Eclipse change
 		factory.getThread(eThread).fireChangeEvent(DebugEvent.CONTENT);
+		// notify current instruction listeners
+		fireCurrentInstructionTerminatedEvent(eFrame);
 	}
 
 	/**
@@ -407,13 +410,13 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 	private void handlePushStackFrameReply(PushStackFrameReply pushStackFrameReply) {
 		final Thread eThread = DebugTargetUtils.getThread(getHost(), pushStackFrameReply.getThreadName());
 		// EMF model change
-		factory.getModelUpdater().pushStackFrameReply(eThread, pushStackFrameReply.getName(),
-				pushStackFrameReply.getContext(), pushStackFrameReply.getCurrentInstruction(),
-				pushStackFrameReply.isCanStepInto());
+		final StackFrame eFrame = factory.getModelUpdater().pushStackFrameReply(eThread,
+				pushStackFrameReply.getName(), pushStackFrameReply.getContext(),
+				pushStackFrameReply.getCurrentInstruction(), pushStackFrameReply.isCanStepInto());
 		// Eclipse change
 		factory.getThread(eThread).fireChangeEvent(DebugEvent.CONTENT);
 		// notify current instruction listeners
-		fireCurrentInstructionChangedEvent(eThread);
+		fireCurrentInstructionChangedEvent(eFrame);
 	}
 
 	/**
@@ -514,7 +517,11 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 			DSLThreadAdapter thread = factory.getThread(eThread);
 			thread.fireTerminateEvent();
 			// notify current instruction listeners
-			fireCurrentInstructionTerminatedEvent(eThread);
+			StackFrame eFrame = eThread.getTopStackFrame();
+			while (eFrame != null) {
+				fireCurrentInstructionTerminatedEvent(eFrame);
+				eFrame = eFrame.getParentFrame();
+			}
 		}
 	}
 
@@ -566,25 +573,34 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 	/**
 	 * Notifies a change of current instruction for the given {@link Thread}.
 	 * 
-	 * @param thread
-	 *            the {@link Thread}
+	 * @param frame
+	 *            the {@link StackFrame}
 	 */
-	protected void fireCurrentInstructionChangedEvent(Thread thread) {
+	protected void fireCurrentInstructionChangedEvent(StackFrame frame) {
 		for (IDSLCurrentInstructionListener listener : currentInstructionListeners) {
-			listener.currentInstructionChanged(getModelIdentifier(), thread);
+			listener.currentInstructionChanged(getModelIdentifier(), frame);
 		}
 	}
 
 	/**
-	 * Notifies a change of current instruction for the given {@link Thread}.
+	 * Notifies a change of current instruction for the given {@link StackFrame}.
 	 * 
-	 * @param thread
-	 *            the {@link Thread}
+	 * @param frame
+	 *            the {@link StackFrame}
 	 */
-	protected void fireCurrentInstructionTerminatedEvent(Thread thread) {
+	protected void fireCurrentInstructionTerminatedEvent(StackFrame frame) {
 		for (IDSLCurrentInstructionListener listener : currentInstructionListeners) {
-			listener.terminated(getModelIdentifier(), thread);
+			listener.terminated(getModelIdentifier(), frame);
 		}
+	}
+
+	/**
+	 * Gets the {@link List} of {@link IDSLCurrentInstructionListener}.
+	 * 
+	 * @return the {@link List} of {@link IDSLCurrentInstructionListener}
+	 */
+	public List<IDSLCurrentInstructionListener> getCurrentInstructionListeners() {
+		return currentInstructionListeners;
 	}
 
 }

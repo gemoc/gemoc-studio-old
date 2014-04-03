@@ -64,6 +64,11 @@ import org.eclipse.ui.model.WorkbenchLabelProvider;
 public class DSLLaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 
 	/**
+	 * Disable the update.
+	 */
+	protected boolean disableUpdate;
+
+	/**
 	 * The {@link Text} used for the {@link AbstractDSLLaunchConfigurationDelegate#RESOURCE_URI}.
 	 */
 	private Text resourceURIText;
@@ -72,11 +77,6 @@ public class DSLLaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 	 * The {@link Text} used for the {@link AbstractDSLLaunchConfigurationDelegate#FIRST_INSTRUCTION_URI}.
 	 */
 	private Text firstInstructionURIText;
-
-	/**
-	 * Disable the update.
-	 */
-	protected boolean disableUpdate;
 
 	/**
 	 * Supported {@link org.eclipse.core.resources.IResource IResource} extensions.

@@ -19,6 +19,7 @@ package fr.obeo.dsl.debug.ide;
 
 import fr.obeo.dsl.debug.DebugTarget;
 import fr.obeo.dsl.debug.DebugTargetUtils;
+import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.Thread;
 import fr.obeo.dsl.debug.ThreadUtils;
 
@@ -83,8 +84,8 @@ public class ModelUpdater implements IModelUpdater {
 	 * 
 	 * @see fr.obeo.dsl.debug.ide.IModelUpdater#popStackFrameReply(fr.obeo.dsl.debug.Thread)
 	 */
-	public void popStackFrameReply(Thread thread) {
-		ThreadUtils.popStackFrameReply(thread);
+	public StackFrame popStackFrameReply(Thread thread) {
+		return ThreadUtils.popStackFrameReply(thread);
 	}
 
 	/**
@@ -93,9 +94,9 @@ public class ModelUpdater implements IModelUpdater {
 	 * @see fr.obeo.dsl.debug.ide.IModelUpdater#pushStackFrameReply(fr.obeo.dsl.debug.Thread,
 	 *      java.lang.String, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject, boolean)
 	 */
-	public void pushStackFrameReply(Thread thread, String name, EObject context, EObject instruction,
+	public StackFrame pushStackFrameReply(Thread thread, String name, EObject context, EObject instruction,
 			boolean canStepInto) {
-		ThreadUtils.pushStackFrameReply(thread, name, context, instruction, canStepInto);
+		return ThreadUtils.pushStackFrameReply(thread, name, context, instruction, canStepInto);
 	}
 
 	/**

@@ -17,33 +17,43 @@
  *******************************************************************************/
 package fr.obeo.dsl.debug.ide.adapter;
 
-import fr.obeo.dsl.debug.Thread;
+import fr.obeo.dsl.debug.StackFrame;
 
 /**
- * A listener notified when a {@link DSLDebugTargetAdapter} is suspended.
+ * A listener notified when a {@link DSLDebugTargetAdapter} current instructions are changed.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
 public interface IDSLCurrentInstructionListener {
 
 	/**
-	 * The current instruction has been changed for the given {@link Thread}.
+	 * The current instruction has been changed for the given {@link StackFrame}.
 	 * 
 	 * @param debugModelID
 	 *            the debug model identifier
-	 * @param thread
-	 *            the {@link Thread}
+	 * @param frame
+	 *            the {@link StackFrame}
 	 */
-	void currentInstructionChanged(String debugModelID, Thread thread);
+	void currentInstructionChanged(String debugModelID, StackFrame frame);
 
 	/**
-	 * The given thread has terminated.
+	 * The given {@link StackFrame} has terminated.
 	 * 
 	 * @param debugModelID
 	 *            the debug model identifier
-	 * @param thread
-	 *            the {@link Thread}
+	 * @param frame
+	 *            the {@link StackFrame}
 	 */
-	void terminated(String debugModelID, Thread thread);
+	void terminated(String debugModelID, StackFrame frame);
+
+	/**
+	 * Sets the current {@link StackFrame}.
+	 * 
+	 * @param debugModelID
+	 *            the debug model identifier
+	 * @param frame
+	 *            the current {@link StackFrame}
+	 */
+	void setCurrentFrame(String debugModelID, StackFrame frame);
 
 }

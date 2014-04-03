@@ -18,6 +18,7 @@
 package fr.obeo.dsl.debug.ide;
 
 import fr.obeo.dsl.debug.DebugTarget;
+import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.Thread;
 
 import org.eclipse.emf.ecore.EObject;
@@ -86,8 +87,9 @@ public interface IModelUpdater {
 	 * 
 	 * @param thread
 	 *            the {@link Thread}
+	 * @return the popped {@link StackFrame}
 	 */
-	void popStackFrameReply(Thread thread);
+	StackFrame popStackFrameReply(Thread thread);
 
 	/**
 	 * Notify pushing a new {@link fr.obeo.dsl.debug.StackFrame StackFrame} with the given
@@ -104,8 +106,9 @@ public interface IModelUpdater {
 	 * @param canStepInto
 	 *            tells if we can {@link fr.obeo.dsl.debug.StackFrame#isCanStepIntoCurrentInstruction() step
 	 *            into} the current instruction
+	 * @return the pushed {@link StackFrame}
 	 */
-	void pushStackFrameReply(Thread thread, String name, EObject context, EObject instruction,
+	StackFrame pushStackFrameReply(Thread thread, String name, EObject context, EObject instruction,
 			boolean canStepInto);
 
 	/**

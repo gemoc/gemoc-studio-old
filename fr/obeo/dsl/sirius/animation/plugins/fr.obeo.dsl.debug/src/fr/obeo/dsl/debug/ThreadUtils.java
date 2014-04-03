@@ -433,9 +433,11 @@ public final class ThreadUtils {
 	 * @param canStepInto
 	 *            tells if we can {@link StackFrame#isCanStepIntoCurrentInstruction() step into} the current
 	 *            instruction
+	 * @return the new {@link StackFrame}
 	 */
-	public static void pushStackFrameReply(Thread thread, String name, EObject context, EObject instruction,
-			boolean canStepInto) {
+	public static StackFrame pushStackFrameReply(Thread thread, String name, EObject context,
+			EObject instruction, boolean canStepInto) {
+		final StackFrame res;
 		if (ThreadUtils.canPushFrame(thread)) {
 			final StackFrame topStackFrame = thread.getTopStackFrame();
 
@@ -452,10 +454,12 @@ public final class ThreadUtils {
 				newFrame.setContext(thread.getContext());
 			}
 			thread.setTopStackFrame(newFrame);
+			res = newFrame;
 		} else {
 			throw new IllegalStateException(
 					"can't push a stack frame when the debug target is not connected or the thread is not suspended.");
 		}
+		return res;
 	}
 
 	/**
@@ -477,16 +481,20 @@ public final class ThreadUtils {
 	 * 
 	 * @param thread
 	 *            the {@link Thread}
+	 * @return the popped {@link StackFrame}
 	 */
-	public static void popStackFrameReply(Thread thread) {
+	public static StackFrame popStackFrameReply(Thread thread) {
+		final StackFrame res;
 		if (ThreadUtils.canPopFrame(thread)) {
 			final StackFrame topStackFrame = thread.getTopStackFrame();
 			thread.setTopStackFrame(topStackFrame.getParentFrame());
 			EcoreUtil.delete(topStackFrame); // TODO optimize with cross referencer
+			res = topStackFrame;
 		} else {
 			throw new IllegalStateException(
 					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.");
 		}
+		return res;
 	}
 
 	/**

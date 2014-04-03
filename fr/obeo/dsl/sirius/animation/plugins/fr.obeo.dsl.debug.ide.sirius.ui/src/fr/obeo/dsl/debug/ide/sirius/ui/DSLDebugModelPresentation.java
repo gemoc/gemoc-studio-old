@@ -18,7 +18,9 @@
 package fr.obeo.dsl.debug.ide.sirius.ui;
 
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
+import fr.obeo.dsl.debug.ide.adapter.DSLDebugTargetAdapter;
 import fr.obeo.dsl.debug.ide.adapter.DSLStackFrameAdapter;
+import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.emf.common.util.URI;
@@ -237,6 +240,7 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 				final EObject instruction = ((DSLStackFrameAdapter)frame).getCurrentInstruction();
 				final URI resourceURI = instruction.eResource().getURI();
 				if (resourceURI.isPlatformResource()) {
+					changeCurrentStackFrame(frame);
 					final String resourcePath = resourceURI.toPlatformString(true);
 					final IResource resource = ResourcesPlugin.getWorkspace().getRoot().getFile(
 							new Path(resourcePath));
@@ -254,6 +258,20 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 		}
 
 		return true;
+	}
+
+	/**
+	 * Changes the current {@link IStackFrame}.
+	 * 
+	 * @param frame
+	 *            the selected {@link IStackFrame}
+	 */
+	protected void changeCurrentStackFrame(IStackFrame frame) {
+		final IDebugTarget debugTarget = frame.getDebugTarget();
+		for (IDSLCurrentInstructionListener listener : ((DSLDebugTargetAdapter)debugTarget)
+				.getCurrentInstructionListeners()) {
+			listener.setCurrentFrame(frame.getModelIdentifier(), ((DSLStackFrameAdapter)frame).getHost());
+		}
 	}
 
 	@Override

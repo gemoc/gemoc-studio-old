@@ -64,7 +64,7 @@ public class DSLStackFrameAdapter extends AbstractDSLDebugElementAdapter impleme
 	 * 
 	 * @return the {@link StackFrame}
 	 */
-	protected StackFrame getHost() {
+	public StackFrame getHost() {
 		assert target instanceof StackFrame;
 		return (StackFrame)target;
 	}

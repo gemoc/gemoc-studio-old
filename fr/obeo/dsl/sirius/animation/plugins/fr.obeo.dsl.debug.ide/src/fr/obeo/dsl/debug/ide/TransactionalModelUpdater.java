@@ -19,8 +19,12 @@ package fr.obeo.dsl.debug.ide;
 
 import fr.obeo.dsl.debug.DebugTarget;
 import fr.obeo.dsl.debug.DebugTargetUtils;
+import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.Thread;
 import fr.obeo.dsl.debug.ThreadUtils;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
@@ -152,16 +156,25 @@ public class TransactionalModelUpdater extends ModelUpdater {
 	 * 
 	 * @see fr.obeo.dsl.debug.ide.IModelUpdater#popStackFrameReply(fr.obeo.dsl.debug.Thread)
 	 */
-	public void popStackFrameReply(final Thread thread) {
+	public StackFrame popStackFrameReply(final Thread thread) {
 		final Command command = new RecordingCommand(domain, "Pop Stack Frame Reply") {
+			StackFrame res;
 
 			@Override
 			protected void doExecute() {
-				ThreadUtils.popStackFrameReply(thread);
+				res = ThreadUtils.popStackFrameReply(thread);
+			}
+
+			@Override
+			public Collection<?> getResult() {
+				final java.util.List<Object> list = new ArrayList<Object>();
+				list.add(res);
+				return list;
 			}
 
 		};
 		doExecute(command);
+		return (StackFrame)command.getResult().iterator().next();
 	}
 
 	/**
@@ -170,17 +183,26 @@ public class TransactionalModelUpdater extends ModelUpdater {
 	 * @see fr.obeo.dsl.debug.ide.IModelUpdater#pushStackFrameReply(fr.obeo.dsl.debug.Thread,
 	 *      java.lang.String, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject, boolean)
 	 */
-	public void pushStackFrameReply(final Thread thread, final String name, final EObject context,
+	public StackFrame pushStackFrameReply(final Thread thread, final String name, final EObject context,
 			final EObject instruction, final boolean canStepInto) {
 		final Command command = new RecordingCommand(domain, "Push Stack Frame Reply") {
+			StackFrame res;
 
 			@Override
 			protected void doExecute() {
-				ThreadUtils.pushStackFrameReply(thread, name, context, instruction, canStepInto);
+				res = ThreadUtils.pushStackFrameReply(thread, name, context, instruction, canStepInto);
+			}
+
+			@Override
+			public Collection<?> getResult() {
+				final java.util.List<Object> list = new ArrayList<Object>();
+				list.add(res);
+				return list;
 			}
 
 		};
 		doExecute(command);
+		return (StackFrame)command.getResult().iterator().next();
 	}
 
 	/**

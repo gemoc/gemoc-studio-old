@@ -32,12 +32,10 @@ import org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLaunch
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.LogicalStep;
-import fr.obeo.dsl.debug.Thread;
+import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.sirius.ui.services.AbstractDSLDebuggerServices;
-import glml.ModelSpecificAction;
-import glml.ModelSpecificEvent;
 
 public abstract class AbstractGemocDebuggerServices {
 
@@ -95,28 +93,38 @@ public abstract class AbstractGemocDebuggerServices {
 	 * 
 	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
 	 */
-	public static final class BreakpointListener implements IBreakpointListener, IDSLCurrentInstructionListener {
+	public static final class BreakpointListener implements
+			IBreakpointListener, IDSLCurrentInstructionListener {
 
 		/**
-		 * Any layer {@link Set}, means always refresh the given {@link DRepresentation} no matter what its
-		 * layer are. It should be used for trees and tables since they don't have layers.
+		 * Any layer {@link Set}, means always refresh the given
+		 * {@link DRepresentation} no matter what its layer are. It should be
+		 * used for trees and tables since they don't have layers.
 		 */
 		private static final Set<String> ANY_LAYER = new HashSet<String>();
 
 		/**
-		 * Mapping of the {@link RepresentationDescription#getName() representation identifier} to a
-		 * {@link Layer#getName() layer identifier} or {@link BreakpointListener#ANY_LAYER any layer}.
+		 * Mapping of the {@link RepresentationDescription#getName()
+		 * representation identifier} to a {@link Layer#getName() layer
+		 * identifier} or {@link BreakpointListener#ANY_LAYER any layer}.
 		 */
 		private final Map<String, Map<String, Set<String>>> representationToRefresh = new HashMap<String, Map<String, Set<String>>>();
+
+		/**
+		 * The current {@link StackFrame}.
+		 */
+		private StackFrame currentFrame;
 
 		/**
 		 * Installs this {@link IBreakpointListener}.
 		 */
 		public void install() {
-			DebugPlugin.getDefault().getBreakpointManager().addBreakpointListener(this);
-			for (IBreakpoint breakpoint : DebugPlugin.getDefault().getBreakpointManager().getBreakpoints()) {
+			DebugPlugin.getDefault().getBreakpointManager()
+					.addBreakpointListener(this);
+			for (IBreakpoint breakpoint : DebugPlugin.getDefault()
+					.getBreakpointManager().getBreakpoints()) {
 				if (breakpoint instanceof DSLBreakpoint) {
-					addBreakpoint((DSLBreakpoint)breakpoint);
+					addBreakpoint((DSLBreakpoint) breakpoint);
 				}
 			}
 		}
@@ -125,7 +133,8 @@ public abstract class AbstractGemocDebuggerServices {
 		 * Uninstalls this {@link IBreakpointListener}.
 		 */
 		public void uninstall() {
-			DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
+			DebugPlugin.getDefault().getBreakpointManager()
+					.removeBreakpointListener(this);
 		}
 
 		/**
@@ -135,11 +144,12 @@ public abstract class AbstractGemocDebuggerServices {
 		 */
 		public void breakpointAdded(IBreakpoint breakpoint) {
 			if (breakpoint instanceof DSLBreakpoint) {
-				addBreakpoint((DSLBreakpoint)breakpoint);
-				final DSLBreakpoint dslBreakpoint = (DSLBreakpoint)breakpoint;
+				addBreakpoint((DSLBreakpoint) breakpoint);
+				final DSLBreakpoint dslBreakpoint = (DSLBreakpoint) breakpoint;
 				final Set<URI> instructionURIs = new HashSet<URI>();
 				instructionURIs.add(dslBreakpoint.getURI());
-				notifySirius(instructionURIs , dslBreakpoint.getModelIdentifier());
+				notifySirius(instructionURIs,
+						dslBreakpoint.getModelIdentifier());
 			}
 		}
 
@@ -151,11 +161,12 @@ public abstract class AbstractGemocDebuggerServices {
 		 */
 		public void breakpointRemoved(IBreakpoint breakpoint, IMarkerDelta delta) {
 			if (breakpoint instanceof DSLBreakpoint) {
-				removeBreakpoint((DSLBreakpoint)breakpoint);
-				final DSLBreakpoint dslBreakpoint = (DSLBreakpoint)breakpoint;
+				removeBreakpoint((DSLBreakpoint) breakpoint);
+				final DSLBreakpoint dslBreakpoint = (DSLBreakpoint) breakpoint;
 				final Set<URI> instructionURIs = new HashSet<URI>();
 				instructionURIs.add(dslBreakpoint.getURI());
-				notifySirius(instructionURIs, dslBreakpoint.getModelIdentifier());
+				notifySirius(instructionURIs,
+						dslBreakpoint.getModelIdentifier());
 			}
 		}
 
@@ -169,12 +180,14 @@ public abstract class AbstractGemocDebuggerServices {
 			try {
 				if (breakpoint instanceof DSLBreakpoint
 						&& delta.getAttribute(IBreakpoint.ENABLED) != null
-						&& breakpoint.isEnabled() != ((Boolean)delta.getAttribute(IBreakpoint.ENABLED))
+						&& breakpoint.isEnabled() != ((Boolean) delta
+								.getAttribute(IBreakpoint.ENABLED))
 								.booleanValue()) {
-					final DSLBreakpoint dslBreakpoint = (DSLBreakpoint)breakpoint;
+					final DSLBreakpoint dslBreakpoint = (DSLBreakpoint) breakpoint;
 					final Set<URI> instructionURIs = new HashSet<URI>();
 					instructionURIs.add(dslBreakpoint.getURI());
-					notifySirius(instructionURIs, dslBreakpoint.getModelIdentifier());
+					notifySirius(instructionURIs,
+							dslBreakpoint.getModelIdentifier());
 				}
 			} catch (CoreException e) {
 				// ignore
@@ -218,12 +231,15 @@ public abstract class AbstractGemocDebuggerServices {
 		 *            the debug model identifier
 		 */
 		public void notifySirius(Set<URI> instructionUris, String debugModelID) {
-			Map<String, Set<String>> toRefresh = representationToRefresh.get(debugModelID);
+			Map<String, Set<String>> toRefresh = representationToRefresh
+					.get(debugModelID);
 			if (toRefresh != null) {
-				for (IEditingSession session : SessionUIManager.INSTANCE.getUISessions()) {
-					final TransactionalEditingDomain transactionalEditingDomain = session.getSession()
-							.getTransactionalEditingDomain();
-					final ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
+				for (IEditingSession session : SessionUIManager.INSTANCE
+						.getUISessions()) {
+					final TransactionalEditingDomain transactionalEditingDomain = session
+							.getSession().getTransactionalEditingDomain();
+					final ResourceSet resourceSet = transactionalEditingDomain
+							.getResourceSet();
 					for (DialectEditor editor : session.getEditors()) {
 						boolean instructionPresent = false;
 						for (URI instructionUri : instructionUris) {
@@ -233,24 +249,31 @@ public abstract class AbstractGemocDebuggerServices {
 							}
 						}
 						if (instructionPresent) {
-							final DRepresentation representation = editor.getRepresentation();
+							final DRepresentation representation = editor
+									.getRepresentation();
 							final List<DRepresentation> representations = new ArrayList<DRepresentation>();
 							final RepresentationDescription description = DialectManager.INSTANCE
 									.getDescription(representation);
-							final String representationId = description.getName();
-							final Set<String> layerIDs = toRefresh.get(representationId);
+							final String representationId = description
+									.getName();
+							final Set<String> layerIDs = toRefresh
+									.get(representationId);
 							if (layerIDs == ANY_LAYER) {
 								representations.add(representation);
-							} else if (layerIDs != null && representation instanceof DDiagram
-									&& isActiveLayer((DDiagram)representation, layerIDs)) {
+							} else if (layerIDs != null
+									&& representation instanceof DDiagram
+									&& isActiveLayer((DDiagram) representation,
+											layerIDs)) {
 								representations.add(representation);
 							}
 							// TODO prevent the editors from getting dirty
 							if (representations.size() != 0) {
 								final RefreshRepresentationsCommand refresh = new RefreshRepresentationsCommand(
-										transactionalEditingDomain, new NullProgressMonitor(),
+										transactionalEditingDomain,
+										new NullProgressMonitor(),
 										representations);
-								transactionalEditingDomain.getCommandStack().execute(refresh);
+								transactionalEditingDomain.getCommandStack()
+										.execute(refresh);
 							}
 						}
 					}
@@ -259,15 +282,17 @@ public abstract class AbstractGemocDebuggerServices {
 		}
 
 		/**
-		 * Tells if any of the given {@link Layer#getName() layer identifier} is active for the given
-		 * {@link DDiagram}.
+		 * Tells if any of the given {@link Layer#getName() layer identifier} is
+		 * active for the given {@link DDiagram}.
 		 * 
 		 * @param diagram
 		 *            the {@link DDiagram}
 		 * @param layerIDs
-		 *            the {@link Set} of {@link Layer#getName() layer identifiers}
-		 * @return <code>true</code> if any of the given {@link Layer#getName() layer identifier} is active
-		 *         for the given {@link DDiagram}, <code>false</code> otherwise
+		 *            the {@link Set} of {@link Layer#getName() layer
+		 *            identifiers}
+		 * @return <code>true</code> if any of the given {@link Layer#getName()
+		 *         layer identifier} is active for the given {@link DDiagram},
+		 *         <code>false</code> otherwise
 		 */
 		private boolean isActiveLayer(DDiagram diagram, Set<String> layerIDs) {
 			boolean res = false;
@@ -283,16 +308,19 @@ public abstract class AbstractGemocDebuggerServices {
 		}
 
 		/**
-		 * Add the given {@link RepresentationDescription#getName() representation identifier} for
-		 * {@link DRepresentation} refresh.
+		 * Add the given {@link RepresentationDescription#getName()
+		 * representation identifier} for {@link DRepresentation} refresh.
 		 * 
 		 * @param debugModelID
 		 *            the debug model identifier
 		 * @param representationID
-		 *            the {@link RepresentationDescription#getName() representation identifier}
+		 *            the {@link RepresentationDescription#getName()
+		 *            representation identifier}
 		 */
-		public void addRepresentationToRefresh(String debugModelID, String representationID) {
-			Map<String, Set<String>> toRefresh = representationToRefresh.get(debugModelID);
+		public void addRepresentationToRefresh(String debugModelID,
+				String representationID) {
+			Map<String, Set<String>> toRefresh = representationToRefresh
+					.get(debugModelID);
 			if (toRefresh == null) {
 				toRefresh = new HashMap<String, Set<String>>();
 				representationToRefresh.put(debugModelID, toRefresh);
@@ -301,18 +329,22 @@ public abstract class AbstractGemocDebuggerServices {
 		}
 
 		/**
-		 * Add the given {@link RepresentationDescription#getName() representation identifier} and
-		 * {@link Layer#getName() layer identifier} for {@link DRepresentation} refresh.
+		 * Add the given {@link RepresentationDescription#getName()
+		 * representation identifier} and {@link Layer#getName() layer
+		 * identifier} for {@link DRepresentation} refresh.
 		 * 
 		 * @param debugModelID
 		 *            the debug model identifier
 		 * @param representationID
-		 *            the {@link RepresentationDescription#getName() representation identifier}
+		 *            the {@link RepresentationDescription#getName()
+		 *            representation identifier}
 		 * @param layerID
 		 *            the {@link Layer#getName() layer identifier}
 		 */
-		public void addRepresentationToRefresh(String debugModelID, String representationID, String layerID) {
-			Map<String, Set<String>> toRefresh = representationToRefresh.get(debugModelID);
+		public void addRepresentationToRefresh(String debugModelID,
+				String representationID, String layerID) {
+			Map<String, Set<String>> toRefresh = representationToRefresh
+					.get(debugModelID);
 			if (toRefresh == null) {
 				toRefresh = new HashMap<String, Set<String>>();
 				representationToRefresh.put(debugModelID, toRefresh);
@@ -331,27 +363,29 @@ public abstract class AbstractGemocDebuggerServices {
 		 * {@inheritDoc}
 		 * 
 		 * @see fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener#currentInstructionChanged(java.lang.String,
-		 *      fr.obeo.dsl.debug.Thread)
+		 *      fr.obeo.dsl.debug.StackFrame)
 		 */
-		public void currentInstructionChanged(String debugModelID, Thread thread) {
-			EObject currentInstruction = thread.getTopStackFrame().getCurrentInstruction();
+		public void currentInstructionChanged(String debugModelID,
+				StackFrame frame) {
+			EObject currentInstruction = frame.getCurrentInstruction();
 			final Set<URI> instructionURIs = new HashSet<URI>();
 			if (currentInstruction instanceof LogicalStep) {
-				for (Event event : LogicalStepHelper.getTickedEvents((LogicalStep) currentInstruction)) {
+				for (Event event : LogicalStepHelper
+						.getTickedEvents((LogicalStep) currentInstruction)) {
 					if (event.getReferencedObjectRefs().size() != 0) {
-						instructionURIs.add(EcoreUtil.getURI(event.getReferencedObjectRefs().get(0)));
+						instructionURIs.add(EcoreUtil.getURI(event
+								.getReferencedObjectRefs().get(0)));
 					}
 				}
 			} else {
 				instructionURIs.add(EcoreUtil.getURI(currentInstruction));
 			}
-			final Set<URI> lastInstructions = CURRENT_INSTRUCTIONS_PER_THREAD.remove(thread);
+			final Set<URI> lastInstructions = CURRENT_INSTRUCTIONS_PER_FRAME
+					.remove(frame);
 			if (lastInstructions != null) {
-				CURRENT_INSTRUCTIONS.removeAll(lastInstructions);
 				notifySirius(lastInstructions, debugModelID);
 			}
-			CURRENT_INSTRUCTIONS_PER_THREAD.put(thread, instructionURIs);
-			CURRENT_INSTRUCTIONS.addAll(instructionURIs);
+			CURRENT_INSTRUCTIONS_PER_FRAME.put(frame, instructionURIs);
 			notifySirius(instructionURIs, debugModelID);
 		}
 
@@ -359,15 +393,37 @@ public abstract class AbstractGemocDebuggerServices {
 		 * {@inheritDoc}
 		 * 
 		 * @see fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener#terminated(java.lang.String,
-		 *      fr.obeo.dsl.debug.Thread)
+		 *      fr.obeo.dsl.debug.StackFrame)
 		 */
-		public void terminated(String debugModelID, Thread thread) {
-			final Set<URI> lastInstructions = CURRENT_INSTRUCTIONS_PER_THREAD.remove(thread);
+		public void terminated(String debugModelID, StackFrame frame) {
+			final Set<URI> lastInstructions = CURRENT_INSTRUCTIONS_PER_FRAME
+					.remove(frame);
 			if (lastInstructions != null) {
-				CURRENT_INSTRUCTIONS.removeAll(lastInstructions);
 				notifySirius(lastInstructions, debugModelID);
 			}
 		}
+
+		/**
+		 * Gets the current {@link StackFrame}.
+		 * 
+		 * @return the current {@link StackFrame}
+		 */
+		protected StackFrame getCurrentFrame() {
+			return currentFrame;
+		}
+
+		@Override
+		public void setCurrentFrame(String debugModelID, StackFrame frame) {
+			if (currentFrame != frame) {
+				currentFrame = frame;
+				Set<URI> instructionUris = CURRENT_INSTRUCTIONS_PER_FRAME
+						.get(getCurrentFrame());
+				if (instructionUris != null) {
+					notifySirius(instructionUris, debugModelID);
+				}
+			}
+		}
+
 	}
 
 	/**
@@ -381,14 +437,9 @@ public abstract class AbstractGemocDebuggerServices {
 	private static final Map<URI, Set<DSLBreakpoint>> BREAKPOINTS = new HashMap<URI, Set<DSLBreakpoint>>();
 
 	/**
-	 * Current instruction for a given {@link Thread}.
+	 * Current instruction for a given {@link StackFrame}.
 	 */
-	private static final Map<Thread, Set<URI>> CURRENT_INSTRUCTIONS_PER_THREAD = new HashMap<Thread, Set<URI>>();
-
-	/**
-	 * {@link Set} of current instructions.
-	 */
-	private static final Set<URI> CURRENT_INSTRUCTIONS = new HashSet<URI>();
+	private static final Map<StackFrame, Set<URI>> CURRENT_INSTRUCTIONS_PER_FRAME = new HashMap<StackFrame, Set<URI>>();
 
 	/**
 	 * Constructor.
@@ -396,23 +447,25 @@ public abstract class AbstractGemocDebuggerServices {
 	public AbstractGemocDebuggerServices() {
 		for (StringCouple couple : getRepresentationRefreshList()) {
 			if (couple.getFirst() != null) {
-				LISTENER.addRepresentationToRefresh(getModelIdentifier(), couple.getFirst(), couple
-						.getSecond());
+				LISTENER.addRepresentationToRefresh(getModelIdentifier(),
+						couple.getFirst(), couple.getSecond());
 			} else {
-				LISTENER.addRepresentationToRefresh(getModelIdentifier(), couple.getFirst());
+				LISTENER.addRepresentationToRefresh(getModelIdentifier(),
+						couple.getFirst());
 			}
 		}
 	}
 
 	/**
 	 * Gets the {@link List} of {@link StringCouple} representing the
-	 * {@link RepresentationDescription#getName() representation identifier} and the {@link Layer#getName()
-	 * layer identifier} or <code>null</code> where services from this class are used.
+	 * {@link RepresentationDescription#getName() representation identifier} and
+	 * the {@link Layer#getName() layer identifier} or <code>null</code> where
+	 * services from this class are used.
 	 * 
 	 * @return the {@link List} of {@link StringCouple} representing the
-	 *         {@link RepresentationDescription#getName() representation identifier} and the
-	 *         {@link Layer#getName() layer identifier} or <code>null</code> where services from this class
-	 *         are used
+	 *         {@link RepresentationDescription#getName() representation
+	 *         identifier} and the {@link Layer#getName() layer identifier} or
+	 *         <code>null</code> where services from this class are used
 	 */
 	protected abstract List<StringCouple> getRepresentationRefreshList();
 
@@ -421,8 +474,8 @@ public abstract class AbstractGemocDebuggerServices {
 	 * 
 	 * @param instruction
 	 *            the {@link EObject instruction}
-	 * @return <code>true</code> if the given {@link EObject instruction} has a breakpoint, <code>false</code>
-	 *         otherwise
+	 * @return <code>true</code> if the given {@link EObject instruction} has a
+	 *         breakpoint, <code>false</code> otherwise
 	 */
 	public boolean hasBreakpoint(EObject instruction) {
 		final Set<DSLBreakpoint> brkps = getBreakpoints(instruction);
@@ -434,8 +487,8 @@ public abstract class AbstractGemocDebuggerServices {
 	 * 
 	 * @param instruction
 	 *            the {@link EObject instruction}
-	 * @return <code>true</code> if the given {@link EObject instruction} has an enabled breakpoint,
-	 *         <code>false</code> otherwise
+	 * @return <code>true</code> if the given {@link EObject instruction} has an
+	 *         enabled breakpoint, <code>false</code> otherwise
 	 */
 	public boolean hasEnabledBreakpoint(EObject instruction) {
 		boolean res = false;
@@ -458,12 +511,13 @@ public abstract class AbstractGemocDebuggerServices {
 	}
 
 	/**
-	 * Tells if the given {@link EObject instruction} has an disabled breakpoint.
+	 * Tells if the given {@link EObject instruction} has an disabled
+	 * breakpoint.
 	 * 
 	 * @param instruction
 	 *            the {@link EObject instruction}
-	 * @return <code>true</code> if the given {@link EObject instruction} has an disabled breakpoint,
-	 *         <code>false</code> otherwise
+	 * @return <code>true</code> if the given {@link EObject instruction} has an
+	 *         disabled breakpoint, <code>false</code> otherwise
 	 */
 	public boolean hasDisabledBreakpoint(EObject instruction) {
 		boolean res = false;
@@ -488,20 +542,24 @@ public abstract class AbstractGemocDebuggerServices {
 
 	/**
 	 * Gets the {@link Set} of {@link DSLBreakpoint} for the
-	 * {@link AbstractDSLDebuggerServices#getModelIdentifier() model identifier}.
+	 * {@link AbstractDSLDebuggerServices#getModelIdentifier() model identifier}
+	 * .
 	 * 
 	 * @param instruction
 	 *            the instruction to check
 	 * @return the {@link Set} of {@link DSLBreakpoint} for the
-	 *         {@link AbstractDSLDebuggerServices#getModelIdentifier() model identifier}
+	 *         {@link AbstractDSLDebuggerServices#getModelIdentifier() model
+	 *         identifier}
 	 */
 	protected Set<DSLBreakpoint> getBreakpoints(EObject instruction) {
 		Set<DSLBreakpoint> res = new HashSet<DSLBreakpoint>();
 
-		Set<DSLBreakpoint> brkps = BREAKPOINTS.get(EcoreUtil.getURI(instruction));
+		Set<DSLBreakpoint> brkps = BREAKPOINTS.get(EcoreUtil
+				.getURI(instruction));
 		if (brkps != null) {
 			for (DSLBreakpoint breakpoint : brkps) {
-				if (breakpoint.getModelIdentifier().equals(getModelIdentifier())) {
+				if (breakpoint.getModelIdentifier()
+						.equals(getModelIdentifier())) {
 					res.add(breakpoint);
 				}
 			}
@@ -511,16 +569,20 @@ public abstract class AbstractGemocDebuggerServices {
 	}
 
 	/**
-	 * Tells if the given {@link EObject instruction} is a currently debugged instruction. A debugged
-	 * instruction in this context is an instruction a debug target is suspended on.
+	 * Tells if the given {@link EObject instruction} is a currently debugged
+	 * instruction. A debugged instruction in this context is an instruction a
+	 * debug target is suspended on.
 	 * 
 	 * @param instruction
 	 *            the {@link EObject instruction}
-	 * @return <code>true</code> if the given {@link EObject instruction} is a currently debugged instruction,
-	 *         <code>false</code> otherwise
+	 * @return <code>true</code> if the given {@link EObject instruction} is a
+	 *         currently debugged instruction, <code>false</code> otherwise
 	 */
 	public boolean isCurrentInstruction(EObject instruction) {
-		return CURRENT_INSTRUCTIONS.contains(EcoreUtil.getURI(instruction));
+		final Set<URI> instructions = CURRENT_INSTRUCTIONS_PER_FRAME
+				.get(LISTENER.getCurrentFrame());
+		return instructions != null
+				&& instructions.contains(EcoreUtil.getURI(instruction));
 	}
 
 	/**
@@ -531,6 +593,5 @@ public abstract class AbstractGemocDebuggerServices {
 	public String getModelIdentifier() {
 		return GemocReflectiveModelLauncher.MODEL_ID;
 	}
-
 
 }
