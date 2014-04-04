@@ -9,6 +9,7 @@
         <!-- plugins -->
         <module>../../gemoc_language_workbench/org.gemoc.gemoc_language_workbench.api</module>
         <module>../fr.cnrs.luchogie.toools</module>
+        <module>../org.gemoc.gemoc_commons.eclipse_utils</module>
 
         <!-- feature and update site -->
         <module>../org.gemoc.gemoc_commons.feature</module>
