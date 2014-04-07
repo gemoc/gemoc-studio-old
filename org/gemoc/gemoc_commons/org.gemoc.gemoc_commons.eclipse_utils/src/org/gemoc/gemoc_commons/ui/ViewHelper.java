@@ -7,6 +7,21 @@ import org.eclipse.ui.PlatformUI;
 public class ViewHelper {
 
 	
+	public static <ViewType> ViewType retrieveView(String viewId) 
+	{
+		Class<ViewType> c;
+		IViewPart viewPart = ViewHelper.retrieveViewPart(viewId);
+		ViewType view = null;
+		try {
+			view = (ViewType)viewPart;
+		} 
+		catch(Exception e) {
+			
+		}
+		return view;
+	}
+
+	
 	/***
 	 * Will look after the view.
 	 * If not found, will try to show and look for it.
