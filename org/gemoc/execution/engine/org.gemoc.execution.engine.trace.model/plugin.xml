@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated GemocExecutionEngineTrace -->
+      <package
+            uri="http://www.example.org/GemocExecutionEngineTrace"
+            class="GemocExecutionEngineTrace.GemocExecutionEngineTracePackage"
+            genModel="model/GemocExecutionEngineTrace.genmodel"/>
+   </extension>
+
+</plugin>

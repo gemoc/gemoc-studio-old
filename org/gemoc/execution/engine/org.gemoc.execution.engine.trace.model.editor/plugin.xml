@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GemocExecutionEngineTrace -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GemocExecutionEngineTrace.presentation.GemocExecutionEngineTraceModelWizardID"
+            name="%_UI_GemocExecutionEngineTraceModelWizard_label"
+            class="GemocExecutionEngineTrace.presentation.GemocExecutionEngineTraceModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/GemocExecutionEngineTraceModelFile.gif">
+         <description>%_UI_GemocExecutionEngineTraceModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GemocExecutionEngineTrace -->
+      <editor
+            id="GemocExecutionEngineTrace.presentation.GemocExecutionEngineTraceEditorID"
+            name="%_UI_GemocExecutionEngineTraceEditor_label"
+            icon="icons/full/obj16/GemocExecutionEngineTraceModelFile.gif"
+            extensions="gemocexecutionenginetrace"
+            class="GemocExecutionEngineTrace.presentation.GemocExecutionEngineTraceEditor"
+            contributorClass="GemocExecutionEngineTrace.presentation.GemocExecutionEngineTraceActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
