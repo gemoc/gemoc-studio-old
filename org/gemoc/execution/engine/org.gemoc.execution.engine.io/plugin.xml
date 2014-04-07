@@ -14,6 +14,13 @@
             id="org.gemoc.execution.engine.io.views.EnginesStatusView"
             name="Gemoc Engines Status">
       </view>
+      <view
+            category="org.gemoc.execution.engine.io"
+            class="org.gemoc.execution.engine.io.views.ExecutionTraceView"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.execution.engine.io.views.ExecutionTraceView"
+            name="Gemoc Execution Trace">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">

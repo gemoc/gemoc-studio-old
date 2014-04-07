@@ -9,7 +9,9 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.gemoc_language_workbench.api,
  org.gemoc.execution.engine,
  org.kermeta.utils.systemservices.api,
- org.kermeta.utils.systemservices.eclipse
+ org.kermeta.utils.systemservices.eclipse,
+ org.gemoc.gemoc_commons.eclipse_utils;bundle-version="1.0.0",
+ org.gemoc.execution.engine.trace.model;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine.io,
@@ -19,3 +21,4 @@ Export-Package: org.gemoc.execution.engine.io,
  org.gemoc.execution.engine.io.exceptions,
  org.gemoc.execution.engine.io.frontends.controlpanels,
  org.gemoc.execution.engine.io.views
+Import-Package: GemocExecutionEngineTrace

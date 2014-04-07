@@ -40,6 +40,9 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import GemocExecutionEngineTrace.Choice;
+import GemocExecutionEngineTrace.ExecutionLogicalStep;
+import GemocExecutionEngineTrace.GemocExecutionEngineTraceFactory;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
@@ -134,6 +137,10 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	 */
 	protected Resource modelUnderExecutionResource = null;
 
+	private Choice _firstChoice;
+	private Choice _lastChoice;
+	
+	
 	/**
 	 * The constructor takes in all the language-specific elements. Creates the
 	 * internal map of Domain-Specific Events and initializes the languages used
@@ -312,12 +319,16 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						ObservableBasicExecutionEngine.this.setChanged();
 						ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
 							selectedLogicalStep = logicalStepDecider.decide(possibleLogicalSteps);
+
+							updateTraceModel(possibleLogicalSteps, selectedLogicalStep);
+							
 							engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStep));
 							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
 							ObservableBasicExecutionEngine.this.setChanged();
 							ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
 					//	}
-						// 3 - run the selected logical step
+												
+							// 3 - run the selected logical step
 						LogicalStep logicalStepToApply = possibleLogicalSteps
 								.get(selectedLogicalStep);
 						lastStepsRun.add(logicalStepToApply);
@@ -373,7 +384,30 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			// TODO remove the engine from registered running engines
 		}
 
-		
+
+		private void updateTraceModel(List<LogicalStep> possibleLogicalSteps, int selectedLogicalStep) {
+			Choice newChoice = createChoice(possibleLogicalSteps, selectedLogicalStep);
+			if (_firstChoice == null)
+				_firstChoice = newChoice;
+			if (_lastChoice != null) {
+				_lastChoice.setNextChoice(newChoice);
+			}
+			_lastChoice = newChoice;
+		}
+
+
+		private Choice createChoice(List<LogicalStep> possibleLogicalSteps, int selectedLogicalStepIndex) {
+			Choice choice = GemocExecutionEngineTraceFactory.eINSTANCE.createChoice();
+			for(LogicalStep step : possibleLogicalSteps) {
+				ExecutionLogicalStep newStep = GemocExecutionEngineTraceFactory.eINSTANCE.createExecutionLogicalStep();
+				choice.getPossibleLogicalSteps().add(newStep);				
+				for(Event event : LogicalStepHelper.getTickedEvents(step)) {
+					event.getName();
+				}
+			}
+			choice.setChosenLogicalStep(choice.getPossibleLogicalSteps().get(selectedLogicalStepIndex));
+			return choice;			
+		}
 		
 		
 		/**
@@ -513,6 +547,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 
 	public void setDebugger(GemocModelDebugger debugger) {
 		this.debugger = debugger;
+	}
+
+	@Override
+	public Choice getFirstChoice() {
+		return _firstChoice;
 	}
 
 }

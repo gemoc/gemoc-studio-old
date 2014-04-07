@@ -3,6 +3,8 @@ package org.gemoc.gemoc_language_workbench.api.core;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
+import GemocExecutionEngineTrace.Choice;
+
 /**
  * The interface of the GEMOC Execution Engine. The Execution Engine is an
  * entity able to execute models conforming to an xDSML as defined in the GEMOC
@@ -36,5 +38,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 * @return the EMF Resource corresponding to the model being executed.
 	 */
 	public Resource getModelUnderExecutionResource();
+
+	public Choice getFirstChoice();
 
 }

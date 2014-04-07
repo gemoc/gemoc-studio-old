@@ -402,8 +402,14 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		contentProvider = new ViewContentProvider();
 		viewer.setContentProvider(contentProvider);
 		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.setSorter(new NameSorter());
-
+		//viewer.setSorter(new NameSorter());
+		viewer.addSelectionChangedListener(
+				new ISelectionChangedListener() {
+					public void selectionChanged(SelectionChangedEvent event) {
+						fireEngineSelectionChanged();
+					}
+				});
+		
 		createColumns(viewer);
 		viewer.setColumnProperties( new String[] {"Identifier", "Step", "Status"} );
 		viewer.getTree().setHeaderVisible(true);
@@ -587,7 +593,8 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		return null;
 	}
 	
-	private LogicalStep lastSelectedLogicalStep;	
+	private LogicalStep lastSelectedLogicalStep;
+
 	/**
 	 * get the selection
 	 * @return the LogicalStep selected or null if no LogicalStep selected
@@ -667,5 +674,24 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		      }
 		 });
 	}
+
+
+	private ArrayList<IMotorSelectionListener> _motorSelectionListeners = new ArrayList<IMotorSelectionListener>();	
+
+	public void addMotorSelectionListener(IMotorSelectionListener listener) {
+		assert(listener != null);
+		_motorSelectionListeners.add(listener);
+	}
+	public void removeMotorSelectionListener(IMotorSelectionListener listener) {
+		assert(listener != null);
+		_motorSelectionListeners.remove(listener);
+	}
+	private void fireEngineSelectionChanged() {
+		GemocExecutionEngine engine = getSelectedEngine();
+		for(IMotorSelectionListener listener: _motorSelectionListeners) {
+			listener.motorSelectionChanged(engine);
+		}
+	}
+
 	
 }

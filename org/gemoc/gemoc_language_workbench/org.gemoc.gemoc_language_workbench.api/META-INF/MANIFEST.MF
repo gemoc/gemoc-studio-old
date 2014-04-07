@@ -20,3 +20,4 @@ Export-Package: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.gemoc_language_workbench.api.feedback,
  org.gemoc.gemoc_language_workbench.api.moc,
  org.gemoc.gemoc_language_workbench.api.utils
+Import-Package: GemocExecutionEngineTrace
