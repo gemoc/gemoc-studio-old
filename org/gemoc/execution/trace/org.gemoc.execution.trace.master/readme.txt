@@ -1,1 +1,0 @@
-following guidelines from http://www.vogella.com/articles/EclipseTycho/article.html
