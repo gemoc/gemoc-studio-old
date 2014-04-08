@@ -10,6 +10,9 @@
         <module>../../gemoc_language_workbench/org.gemoc.gemoc_language_workbench.api</module>
         <module>../fr.cnrs.luchogie.toools</module>
         <module>../org.gemoc.gemoc_commons.eclipse_utils</module>
+        <module>../../execution/engine/org.gemoc.execution.engine.trace.model</module>
+        <module>../../execution/engine/org.gemoc.execution.engine.trace.model.edit</module>
+        <module>../../execution/engine/org.gemoc.execution.engine.trace.model.editor</module>
 
         <!-- feature and update site -->
         <module>../org.gemoc.gemoc_commons.feature</module>
