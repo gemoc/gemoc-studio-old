@@ -38,6 +38,4 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 */
 	public Resource getModelUnderExecutionResource();
 
-	public Choice getFirstChoice();
-
 }

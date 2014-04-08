@@ -72,8 +72,8 @@ public class ExecutionTraceView extends ViewPart implements
 			if (parent != null) {
 				if (parent instanceof GemocExecutionEngine) {
 					GemocExecutionEngine engine = (GemocExecutionEngine) parent;
-					if (engine.getFirstChoice() != null) {
-						Choice currentChoice = engine.getFirstChoice();
+					if (engine.getEngineStatus().getFirstChoice() != null) {
+						Choice currentChoice = engine.getEngineStatus().getFirstChoice();
 						while (currentChoice != null) {
 							ExecutionTraceModelWrapper wrapper = new ExecutionTraceModelWrapper(
 									currentChoice);

@@ -136,7 +136,6 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	 */
 	protected Resource modelUnderExecutionResource = null;
 
-	private Choice _firstChoice;
 	private Choice _lastChoice;
 	
 	
@@ -386,8 +385,8 @@ public class ObservableBasicExecutionEngine extends Observable implements
 
 		private void updateTraceModel(List<LogicalStep> possibleLogicalSteps, int selectedLogicalStep) {
 			Choice newChoice = createChoice(possibleLogicalSteps, selectedLogicalStep);
-			if (_firstChoice == null)
-				_firstChoice = newChoice;
+			if (getEngineStatus().getFirstChoice() == null)
+				getEngineStatus().setFirstChoice(newChoice);
 			if (_lastChoice != null) {
 				_lastChoice.setNextChoice(newChoice);
 			}
@@ -542,11 +541,6 @@ public class ObservableBasicExecutionEngine extends Observable implements
 
 	public void setDebugger(GemocModelDebugger debugger) {
 		this.debugger = debugger;
-	}
-
-	@Override
-	public Choice getFirstChoice() {
-		return _firstChoice;
 	}
 
 }

@@ -2,6 +2,8 @@ package org.gemoc.gemoc_language_workbench.api.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+
 import fr.inria.aoste.trace.LogicalStep;
 public class  EngineStatus {
 	long nbLogicalStepRun = 0;
@@ -60,4 +62,13 @@ public class  EngineStatus {
 			this.chosenLogicalStep = chosenLogicalStep;
 		}
 	}
+	
+	private Choice _firstChoice;
+	public void setFirstChoice(Choice firstChoice) {
+		_firstChoice = firstChoice;
+	}
+	public Choice getFirstChoice() {
+		return _firstChoice;
+	}
+
 }
