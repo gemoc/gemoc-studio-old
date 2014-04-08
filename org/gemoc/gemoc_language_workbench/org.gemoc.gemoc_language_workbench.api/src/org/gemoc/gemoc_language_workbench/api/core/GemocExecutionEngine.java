@@ -1,9 +1,8 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
-
-import GemocExecutionEngineTrace.Choice;
 
 /**
  * The interface of the GEMOC Execution Engine. The Execution Engine is an

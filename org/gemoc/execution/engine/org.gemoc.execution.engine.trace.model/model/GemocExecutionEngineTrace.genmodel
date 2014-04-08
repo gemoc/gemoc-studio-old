@@ -5,16 +5,81 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>GemocExecutionEngineTrace.ecore</foreignModel>
-  <genPackages prefix="GemocExecutionEngineTrace" disposableProviderFactory="true"
-      generateExampleClass="false" ecorePackage="GemocExecutionEngineTrace.ecore#/">
+  <genPackages prefix="GemocExecutionEngineTrace" basePackage="org.gemoc.execution.engine.trace"
+      disposableProviderFactory="true" generateExampleClass="false" ecorePackage="GemocExecutionEngineTrace.ecore#/">
     <genClasses ecoreClass="GemocExecutionEngineTrace.ecore#//Choice">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocExecutionEngineTrace.ecore#//Choice/nextChoice"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocExecutionEngineTrace.ecore#//Choice/possibleLogicalSteps"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GemocExecutionEngineTrace.ecore#//Choice/chosenLogicalStep"/>
     </genClasses>
-    <genClasses ecoreClass="GemocExecutionEngineTrace.ecore#//ExecutionLogicalStep">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GemocExecutionEngineTrace.ecore#//ExecutionLogicalStep/eventOccurences"/>
+  </genPackages>
+  <genPackages prefix="Trace" basePackage="fr.inria.aoste" ecorePackage="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EnableStateKind">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EnableStateKind/tick"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EnableStateKind/noTick"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EnableStateKind/free"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EnableStateKind/indetermined"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//FiredStateKind">
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//FiredStateKind/tick"/>
+      <genEnumLiterals ecoreEnumLiteral="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//FiredStateKind/noTick"/>
+    </genEnums>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace/logicalSteps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace/physicalBases"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace/references"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace/documentation"/>
+      <genOperations ecoreOperation="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace/getQualifiedName"/>
     </genClasses>
-    <genClasses ecoreClass="GemocExecutionEngineTrace.ecore#//EventOccurence"/>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep/constraintStates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep/eventOccurrences"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep/nextStep"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep/previousStep"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep/stepNumber"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep/assertionStates"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//ConstraintState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//ConstraintState/internalValue"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EventOccurrence">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EventOccurrence/context"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EventOccurrence/isClockDead"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EventOccurrence/counter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EventOccurrence/eState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EventOccurrence/fState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EventOccurrence/wasBorn"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//State">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//State/referedElement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Reference"/>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//ModelElementReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//ModelElementReference/elementRef"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//NamedReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//NamedReference/value"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//PhysicalBase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//PhysicalBase/physicalSteps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//PhysicalBase/relatedDenseClock"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//PhysicalBase/offset"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//PhysicalSteps"/>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//DiscretizedClockStep">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//DiscretizedClockStep/correspondingLogicalStep"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//DiscretizedClockStep/timestamp"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//InterDiscretizedSteps">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//InterDiscretizedSteps/previousFixStep"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//InterDiscretizedSteps/nextFixStep"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//InterDiscretizedSteps/correspondingLogicalSteps"/>
+    </genClasses>
+    <genClasses ecoreClass="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//AssertionState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//AssertionState/isViolated"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

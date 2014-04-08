@@ -21,4 +21,4 @@ Export-Package: org.gemoc.execution.engine.io,
  org.gemoc.execution.engine.io.exceptions,
  org.gemoc.execution.engine.io.frontends.controlpanels,
  org.gemoc.execution.engine.io.views
-Import-Package: GemocExecutionEngineTrace
+

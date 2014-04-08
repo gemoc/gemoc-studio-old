@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.trace;bundle-version="1.0.1",
  org.kermeta.utils.systemservices.api,
  org.kermeta.utils.systemservices.eclipse,
- org.gemoc.dse_language.language_level;bundle-version="1.0.0";visibility:=reexport
+ org.gemoc.dse_language.language_level;bundle-version="1.0.0";visibility:=reexport,
+ org.gemoc.execution.engine.trace.model;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.gemoc_language_workbench.api,
@@ -20,4 +21,3 @@ Export-Package: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.gemoc_language_workbench.api.feedback,
  org.gemoc.gemoc_language_workbench.api.moc,
  org.gemoc.gemoc_language_workbench.api.utils
-Import-Package: GemocExecutionEngineTrace

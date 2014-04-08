@@ -28,6 +28,8 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngineEventControl;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
@@ -40,9 +42,6 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
-import GemocExecutionEngineTrace.Choice;
-import GemocExecutionEngineTrace.ExecutionLogicalStep;
-import GemocExecutionEngineTrace.GemocExecutionEngineTraceFactory;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.FiredStateKind;
@@ -298,7 +297,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 					ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
 					// 2- select one solution from available logical step /
 					// select interactive vs batch
-					int selectedLogicalStep;
+					int selectedLogicalStepIndex;
 					if (possibleLogicalSteps.size() == 0) {
 						Activator.getMessagingSystem().debug(
 								"No more LogicalStep to run",
@@ -318,11 +317,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
 						ObservableBasicExecutionEngine.this.setChanged();
 						ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
-							selectedLogicalStep = logicalStepDecider.decide(possibleLogicalSteps);
+							selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
 
-							updateTraceModel(possibleLogicalSteps, selectedLogicalStep);
+							updateTraceModel(possibleLogicalSteps, selectedLogicalStepIndex);
 							
-							engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStep));
+							engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
 							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
 							ObservableBasicExecutionEngine.this.setChanged();
 							ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
@@ -330,10 +329,10 @@ public class ObservableBasicExecutionEngine extends Observable implements
 												
 							// 3 - run the selected logical step
 						LogicalStep logicalStepToApply = possibleLogicalSteps
-								.get(selectedLogicalStep);
+								.get(selectedLogicalStepIndex);
 						lastStepsRun.add(logicalStepToApply);
 						// inform the solver that we will run this step
-						solver.applyLogicalStepByIndex(selectedLogicalStep);
+						solver.applyLogicalStepByIndex(selectedLogicalStepIndex);
 						// run all the event occurrences of this logical step
 						doLogicalStep(logicalStepToApply);
 
@@ -398,14 +397,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 
 		private Choice createChoice(List<LogicalStep> possibleLogicalSteps, int selectedLogicalStepIndex) {
 			Choice choice = GemocExecutionEngineTraceFactory.eINSTANCE.createChoice();
-			for(LogicalStep step : possibleLogicalSteps) {
-				ExecutionLogicalStep newStep = GemocExecutionEngineTraceFactory.eINSTANCE.createExecutionLogicalStep();
-				choice.getPossibleLogicalSteps().add(newStep);				
-				for(Event event : LogicalStepHelper.getTickedEvents(step)) {
-					event.getName();
-				}
+			choice.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
+			choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
+			for(LogicalStep ls : possibleLogicalSteps) {
+				LogicalStepHelper.removeNotTickedEvents(ls);
 			}
-			choice.setChosenLogicalStep(choice.getPossibleLogicalSteps().get(selectedLogicalStepIndex));
 			return choice;			
 		}
 		
@@ -439,7 +435,6 @@ public class ObservableBasicExecutionEngine extends Observable implements
 								.getReferedElement();
 						if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
 							Event event = (Event) mer.getElementRef().get(0); */
-							
 							if (event.getReferencedObjectRefs().size() == 2){
 								if( event.getReferencedObjectRefs().get(1) instanceof EOperation) {
 									EObject targetModelElement = event.getReferencedObjectRefs()

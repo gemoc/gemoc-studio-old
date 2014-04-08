@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="GemocExecutionEngineTrace" nsURI="http://www.example.org/GemocExecutionEngineTrace"
-    nsPrefix="GemocExecutionEngineTrace">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gemoc_execution_trace" nsURI="http://www.inira.fr/gemoc_execution_trace"
+    nsPrefix="gemoc_execution_trace">
   <eClassifiers xsi:type="ecore:EClass" name="Choice">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nextChoice" eType="#//Choice"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="possibleLogicalSteps" upperBound="-1"
-        eType="#//ExecutionLogicalStep" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="#//ExecutionLogicalStep"/>
+        eType="ecore:EClass platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="ecore:EClass platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExecutionLogicalStep">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eventOccurences" upperBound="-1"
-        eType="#//EventOccurence" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EventOccurence"/>
 </ecore:EPackage>

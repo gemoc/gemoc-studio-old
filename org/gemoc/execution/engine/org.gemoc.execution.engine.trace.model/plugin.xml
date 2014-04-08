@@ -9,8 +9,16 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated GemocExecutionEngineTrace -->
       <package
-            uri="http://www.example.org/GemocExecutionEngineTrace"
-            class="GemocExecutionEngineTrace.GemocExecutionEngineTracePackage"
+            uri="http://www.inira.fr/gemoc_execution_trace"
+            class="org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage"
+            genModel="model/GemocExecutionEngineTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated GemocExecutionEngineTrace -->
+      <package
+            uri="http://www.inria.fr/sophia/aoste/trace/1.0.0"
+            class="fr.inria.aoste.trace.TracePackage"
             genModel="model/GemocExecutionEngineTrace.genmodel"/>
    </extension>
 

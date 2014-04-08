@@ -8,11 +8,14 @@ Bundle-Activator: GemocExecutionEngineTrace.presentation.GemocExecutionEngineTra
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: GemocExecutionEngineTrace.presentation
+Export-Package: org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.gemoc.execution.engine.trace.model.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
- org.eclipse.ui.ide;visibility:=reexport
+ org.eclipse.ui.ide;visibility:=reexport,
+ fr.inria.aoste.trace;bundle-version="1.0.1",
+ fr.inria.aoste.trace.editor;bundle-version="1.0.1",
+ fr.inria.aoste.trace.edit.ui;bundle-version="1.0.1"
 Bundle-ActivationPolicy: lazy

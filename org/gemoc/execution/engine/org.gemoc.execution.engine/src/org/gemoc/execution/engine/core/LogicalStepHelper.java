@@ -24,7 +24,8 @@ public class LogicalStepHelper {
 	public static List<Event> getTickedEvents(LogicalStep logicalStep) {
 		List<Event> result = new ArrayList<Event>();
 		for (EventOccurrence eventOccurrence : logicalStep.getEventOccurrences()) {
-			if (eventOccurrence.getFState() == FiredStateKind.TICK && eventOccurrence.getReferedElement() != null) {
+			if (eventOccurrence.getFState() == FiredStateKind.TICK 
+					&& eventOccurrence.getReferedElement() != null) {
 				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
 					ModelElementReference mer = (ModelElementReference) eventOccurrence.getReferedElement();
 					// get associated clock : this is the last element of the elementRef
@@ -42,6 +43,25 @@ public class LogicalStepHelper {
 			}
 		}
 		return result;
+	}
+	
+	public static void removeNotTickedEvents(LogicalStep logicalStep) {
+		List<EventOccurrence> eventOccurencesToKeep = new ArrayList<EventOccurrence>();
+		for (EventOccurrence eventOccurrence : logicalStep.getEventOccurrences()) {
+			if (eventOccurrence.getFState() == FiredStateKind.TICK 
+					&& eventOccurrence.getReferedElement() != null) {
+				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
+					ModelElementReference mer = (ModelElementReference) eventOccurrence.getReferedElement();
+					// get associated clock : this is the last element of the elementRef
+					EObject actualClock = mer.getElementRef().get(mer.getElementRef().size() - 1);
+					if (actualClock instanceof Clock) {
+						eventOccurencesToKeep.add(eventOccurrence);
+					}
+				}				 
+			}
+		}
+		logicalStep.getEventOccurrences().clear();
+		logicalStep.getEventOccurrences().addAll(eventOccurencesToKeep);
 	}
 
 	public static String getLogicalStepName(LogicalStep step) {
