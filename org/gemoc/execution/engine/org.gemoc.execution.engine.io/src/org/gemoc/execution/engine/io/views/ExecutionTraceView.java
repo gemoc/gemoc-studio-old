@@ -185,7 +185,7 @@ public class ExecutionTraceView extends ViewPart implements
 
 		@Override
 		public int getToolTipDisplayDelayTime(Object object) {
-			return 100; // msec
+			return 0; // msec
 		}
 
 		@Override
