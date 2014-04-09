@@ -56,7 +56,7 @@ public class ExecutionTraceModelWrapper {
 				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
 					ModelElementReference reference = (ModelElementReference)eventOccurrence.getReferedElement();
 					AppendToolTipTextToBuilder(builder, reference);
-					builder.append(System.lineSeparator());
+					builder.append(System.getProperty("line.separator"));
 				}
 			}
 			return builder.toString();						
