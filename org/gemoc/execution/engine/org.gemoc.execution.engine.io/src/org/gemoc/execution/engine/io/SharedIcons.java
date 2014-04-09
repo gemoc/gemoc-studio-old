@@ -15,9 +15,12 @@ public class SharedIcons {
 	
 	public static ImageDescriptor VISIBLE_EVENT_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/visible-16.png");
 
-	public static ImageDescriptor CHOSEN_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-16.png");
-	
-	public static ImageDescriptor POSSIBLE_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-outline-16.png");
+	public static ImageDescriptor PAST_CHOSEN_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-blue-16.png");
+	public static ImageDescriptor PAST_POSSIBLE_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-blue-outline-16.png");
+	public static ImageDescriptor PRESENT_CHOSEN_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-green-16.png");
+	public static ImageDescriptor PRESENT_POSSIBLE_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-green-outline-16.png");
+	public static ImageDescriptor FUTUR_CHOSEN_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-yellow-16.png");
+	public static ImageDescriptor FUTUR_POSSIBLE_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-yellow-outline-16.png");
 	
 	
 	static HashMap<ImageDescriptor, Image> imageMap = new HashMap<ImageDescriptor, Image>();

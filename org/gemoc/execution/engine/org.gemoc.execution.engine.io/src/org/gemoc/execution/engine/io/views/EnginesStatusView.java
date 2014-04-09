@@ -372,6 +372,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	public EnginesStatusView() {
 	}
 
+	private Object _lastSelection;
 	/**
 	 * This is a callback that will allow us
 	 * to create the viewer and initialize it.
@@ -386,6 +387,11 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		viewer.addSelectionChangedListener(
 				new ISelectionChangedListener() {
 					public void selectionChanged(SelectionChangedEvent event) {
+						if (event.getSelection() instanceof TreeSelection) {
+							TreeSelection selection = (TreeSelection)event.getSelection();
+							if (selection.getPaths().length > 0)
+								_lastSelection = selection.getPaths()[0].getFirstSegment();
+						}
 						fireEngineSelectionChanged();
 					}
 				});
@@ -645,9 +651,14 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		    	  
 		    	  contentProvider.refresh();
 
-		    	  ISelection previousSelection = EnginesStatusView.this.viewer.getSelection();
+		    	  //ISelection previousSelection = EnginesStatusView.this.viewer.getSelection();
 		    	  EnginesStatusView.this.viewer.refresh();
-		    	  EnginesStatusView.this.viewer.setSelection(previousSelection, true);
+		    	  if (_lastSelection != null) {
+		    		  TreePath treePath = new TreePath(new Object[] {_lastSelection});
+		    		  TreeSelection newSelection = new TreeSelection(treePath);
+			    	  EnginesStatusView.this.viewer.setSelection(newSelection, true);
+		    	  }
+		    	  //EnginesStatusView.this.viewer.setSelection(previousSelection, true);
 		    	  EnginesStatusView.this.viewer.expandAll();
 		    	  //EnginesStatusView.this.viewer.expandAll();
 		    	  

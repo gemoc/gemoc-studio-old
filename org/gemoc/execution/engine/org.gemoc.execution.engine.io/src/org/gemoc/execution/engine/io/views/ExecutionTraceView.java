@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.io.views;
 
 import java.util.ArrayList;
 
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -10,6 +11,7 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.ToolTip;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
@@ -75,8 +77,7 @@ public class ExecutionTraceView extends ViewPart implements
 					if (engine.getEngineStatus().getFirstChoice() != null) {
 						Choice currentChoice = engine.getEngineStatus().getFirstChoice();
 						while (currentChoice != null) {
-							ExecutionTraceModelWrapper wrapper = new ExecutionTraceModelWrapper(
-									currentChoice);
+							ExecutionTraceModelWrapper wrapper = new ExecutionTraceModelWrapper(currentChoice, engine.getEngineStatus().getRunningStatus());
 							int chosenLogicalStepIndex = wrapper
 									.getChosenLogicalStepIndex();
 							if (chosenLogicalStepIndex > greatestChosenLogicalStepIndex)
@@ -92,6 +93,8 @@ public class ExecutionTraceView extends ViewPart implements
 						.getChosenLogicalStepIndex();
 				int leftBlankNumber = greatestChosenLogicalStepIndex
 						- chosenLogicalStepIndex;
+				if (chosenLogicalStepIndex == -1)
+					leftBlankNumber = 0;
 				wrapper.setLeftBlankCounter(leftBlankNumber);
 			}
 			if (!result.isEmpty()) {
@@ -190,6 +193,11 @@ public class ExecutionTraceView extends ViewPart implements
 			return 0; // msec
 		}
 
+		@Override
+		public Font getToolTipFont(Object object) {
+			return JFaceResources.getFont(JFaceResources.TEXT_FONT);
+		}
+		
 		@Override
 		public Image getImage(Object element) {
 			if (element instanceof ExecutionTraceModelWrapper) {

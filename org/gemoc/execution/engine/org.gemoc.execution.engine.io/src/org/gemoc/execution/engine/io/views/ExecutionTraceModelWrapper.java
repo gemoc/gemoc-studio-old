@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.swt.graphics.Image;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -15,10 +16,11 @@ public class ExecutionTraceModelWrapper {
 
 	private int _leftBlankCounter;
 	private Choice _choice;
-
+	private RunStatus _engineStatus;
 	
-	public ExecutionTraceModelWrapper(Choice choice) {
+	public ExecutionTraceModelWrapper(Choice choice, RunStatus engineStatus) {
 		_choice = choice;
+		_engineStatus = engineStatus;
 	}
 	
 	public void setLeftBlankCounter(int number) {
@@ -30,11 +32,25 @@ public class ExecutionTraceModelWrapper {
 			return null;
 		int choiceIndex = getChosenLogicalStepIndex();
 		int shiftedIndex = index - _leftBlankCounter;
-		if (choiceIndex == shiftedIndex)
-			return SharedIcons.getSharedImage(SharedIcons.CHOSEN_LOGICALSTEP_ICON);		
+		if (choiceIndex == -1) {
+			if (isEngineRunning()
+				&& shiftedIndex < _choice.getPossibleLogicalSteps().size()) {
+				return SharedIcons.getSharedImage(SharedIcons.FUTUR_POSSIBLE_LOGICALSTEP_ICON);		
+			} else {
+				if (choiceIndex == shiftedIndex)
+					return SharedIcons.getSharedImage(SharedIcons.PAST_CHOSEN_LOGICALSTEP_ICON);		
+				else if (shiftedIndex < _choice.getPossibleLogicalSteps().size())
+					return SharedIcons.getSharedImage(SharedIcons.PAST_POSSIBLE_LOGICALSTEP_ICON);				
+			}				
+		} else if (choiceIndex == shiftedIndex)
+			return SharedIcons.getSharedImage(SharedIcons.PAST_CHOSEN_LOGICALSTEP_ICON);		
 		else if (shiftedIndex < _choice.getPossibleLogicalSteps().size())
-			return SharedIcons.getSharedImage(SharedIcons.POSSIBLE_LOGICALSTEP_ICON);
+			return SharedIcons.getSharedImage(SharedIcons.PAST_POSSIBLE_LOGICALSTEP_ICON);
 		return null;
+	}
+
+	private boolean isEngineRunning() {
+		return _engineStatus.equals(RunStatus.Running) || _engineStatus.equals(RunStatus.WaitingLogicalStepSelection);
 	}
 
 	public Choice getChoice() {

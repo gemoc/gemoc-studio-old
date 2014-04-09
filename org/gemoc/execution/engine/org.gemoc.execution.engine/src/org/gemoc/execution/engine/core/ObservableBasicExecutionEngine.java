@@ -314,16 +314,19 @@ public class ObservableBasicExecutionEngine extends Observable implements
 							// scenario, ask solver for a proposal
 							// TODO implement strategy for selecting a LogicalStep
 						engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
+						updateTraceModelBeforeDeciding(possibleLogicalSteps);
+
+						
 						ObservableBasicExecutionEngine.this.setChanged();
 						ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
-							selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
 
-							updateTraceModel(possibleLogicalSteps, selectedLogicalStepIndex);
-							
-							engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
-							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
-							ObservableBasicExecutionEngine.this.setChanged();
-							ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
+						selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
+						updateTraceModelAfterDeciding(selectedLogicalStepIndex);			
+						engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
+						engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
+				
+						ObservableBasicExecutionEngine.this.setChanged();
+						ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
 					//	}
 												
 							// 3 - run the selected logical step
@@ -383,8 +386,13 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 
 
-		private void updateTraceModel(List<LogicalStep> possibleLogicalSteps, int selectedLogicalStep) {
-			Choice newChoice = createChoice(possibleLogicalSteps, selectedLogicalStep);
+		private void updateTraceModelAfterDeciding(int selectedLogicalStepIndex) {
+			_lastChoice.setChosenLogicalStep(_lastChoice.getPossibleLogicalSteps().get(selectedLogicalStepIndex));
+		}
+
+
+		private void updateTraceModelBeforeDeciding(List<LogicalStep> possibleLogicalSteps) {
+			Choice newChoice = createChoice(possibleLogicalSteps);
 			if (getEngineStatus().getFirstChoice() == null)
 				getEngineStatus().setFirstChoice(newChoice);
 			if (_lastChoice != null) {
@@ -394,9 +402,8 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 
 
-		private Choice createChoice(List<LogicalStep> possibleLogicalSteps, int selectedLogicalStepIndex) {
+		private Choice createChoice(List<LogicalStep> possibleLogicalSteps) {
 			Choice choice = GemocExecutionEngineTraceFactory.eINSTANCE.createChoice();
-			choice.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
 			choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
 			for(LogicalStep ls : possibleLogicalSteps) {
 				LogicalStepHelper.removeNotTickedEvents(ls);
