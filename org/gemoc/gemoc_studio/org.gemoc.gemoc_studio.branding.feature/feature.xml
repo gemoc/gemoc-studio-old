@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.gemoc.gemoc_studio.branding.feature"
-      label="Gemoc process features"
+      label="Gemoc features"
       version="1.0.0.qualifier"
       plugin="org.gemoc.gemoc_studio.branding">
 
@@ -17,22 +17,6 @@
       [Enter License Description here.]
    </license>
 
-   <includes
-         id="org.gemoc.gemoc_language_workbench.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.gemoc.gemoc_modeling_workbench.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.gemoc.execution.engine.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.gemoc.dse.feature"
-         version="0.0.0"/>
-
    <requires>
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.sdk" version="0.0.0" match="greaterOrEqual"/>
@@ -44,11 +28,12 @@
       <import feature="org.gemoc.gemoc_modeling_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.execution.timesquare.facilities.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.execution.engine.feature" version="0.0.0"/>
+      <import feature="org.gemoc.execution.engine.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_commons.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>	
+      <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.dse.feature" version="1.0.0.201404021206"/>
    </requires>
 
    <plugin
