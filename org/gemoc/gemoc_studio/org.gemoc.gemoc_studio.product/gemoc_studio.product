@@ -66,7 +66,6 @@
       <feature id="org.eclipse.emf.ecoretools.design"/>
       <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
       <feature id="org.eclipse.emf.ecoretools"/>
-      <feature id="org.gemoc.execution.trace.feature"/>
       <feature id="fr.inria.aoste.timesquare.ecl.feature"/>
       <feature id="fr.inria.aoste.timesquare.feature"/>
       <feature id="org.eclipse.xtend.sdk"/>
