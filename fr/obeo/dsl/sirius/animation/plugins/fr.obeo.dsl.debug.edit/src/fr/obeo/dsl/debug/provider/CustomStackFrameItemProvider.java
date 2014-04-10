@@ -19,6 +19,7 @@ package fr.obeo.dsl.debug.provider;
 
 import fr.obeo.dsl.debug.Contextual;
 import fr.obeo.dsl.debug.StackFrame;
+import fr.obeo.dsl.debug.Thread;
 import fr.obeo.dsl.debug.ThreadUtils;
 
 import java.util.ArrayList;
@@ -70,7 +71,13 @@ public class CustomStackFrameItemProvider extends StackFrameItemProvider {
 		final EObject context = frame.getContext();
 		final IItemLabelProvider provider = (IItemLabelProvider)efactory.adapt(context,
 				IItemLabelProvider.class);
-		final Object decorator = CustomThreadItemProvider.getDecorator(ThreadUtils.getThread(frame));
+		final Thread thread = ThreadUtils.getThread(frame);
+		final Object decorator;
+		if (thread != null) {
+			decorator = CustomThreadItemProvider.getDecorator(thread);
+		} else {
+			decorator = null;
+		}
 		if (decorator != null) {
 			List<Object> images = new ArrayList<Object>(2);
 			images.add(provider.getImage(context));
