@@ -1,9 +1,11 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -44,6 +46,7 @@ import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
 import org.gemoc.execution.engine.io.views.UserDecider;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
@@ -111,7 +114,7 @@ public class GemocReflectiveModelLauncher
 		IConfigurationElement confElement = null;
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry()
 				.getConfigurationElementsFor(
-						"org.gemoc.gemoc_language_workbench.xdsml");
+						org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		// retrieve the extension for the chosen language
 		for (int i = 0; i < confElements.length; i++) {
 			if (confElements[i].getAttribute("name").equals(languageName)) {
@@ -127,6 +130,8 @@ public class GemocReflectiveModelLauncher
 		Resource domainSpecificEventsResource = null;
 		ModelLoader modelLoader = null;
 		Resource mocEventsResource = null;
+		
+		Set<IEngineHook> engineHooks = new HashSet<IEngineHook>(); 
 
 		// get the extension objects
 		if (confElement != null) {
@@ -160,6 +165,14 @@ public class GemocReflectiveModelLauncher
 						.getMessaggingSystem()
 						.warn("WARNING : your xDSML does not have a FeedbackPolicy",
 								Activator.PLUGIN_ID);
+			}
+			
+			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF)){
+				childConfElement.getName();				
+				final Object oEngineHook = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF_ENGINE_HOOK_ATT);
+				if(oEngineHook instanceof IEngineHook){
+					engineHooks.add((IEngineHook) oEngineHook);
+				}
 			}
 
 			String dseResourcePath = confElement
@@ -334,6 +347,10 @@ public class GemocReflectiveModelLauncher
 		engine = new ObservableBasicExecutionEngine(solver, executor,
 				feedbackPolicy, decider);
 		engine.initialize(getModelResource(animate, sessionPath, modelPath));
+
+		for(IEngineHook engineHook : engineHooks){
+			engine.addEngineHook(engineHook);
+		}
 		// engine.
 		// configure altogether
 		configureEngine(engine, mocEventsResource,

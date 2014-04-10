@@ -49,6 +49,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 */
 	public void removeEngineHook(IEngineHook removedEngineHook);
 
+
 	/**
 	 * Sets the delay to wait in millisecond between each logical step.
 	 * 
@@ -56,5 +57,6 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 *            the delay in millisecond
 	 */
 	void setDelay(int delay);
+
 
 }
