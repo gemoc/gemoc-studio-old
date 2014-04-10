@@ -298,9 +298,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
 
 						selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
-						updateTraceModelAfterDeciding(selectedLogicalStepIndex);			
 						engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
 						engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
+						updateTraceModelAfterDeciding(selectedLogicalStepIndex);			
 				
 						ObservableBasicExecutionEngine.this.setChanged();
 						ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info

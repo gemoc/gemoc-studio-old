@@ -33,24 +33,39 @@ public class ExecutionTraceModelWrapper {
 		int choiceIndex = getChosenLogicalStepIndex();
 		int shiftedIndex = index - _leftBlankCounter;
 		if (choiceIndex == -1) {
-			if (isEngineRunning()
-				&& shiftedIndex < _choice.getPossibleLogicalSteps().size()) {
-				return SharedIcons.getSharedImage(SharedIcons.FUTUR_POSSIBLE_LOGICALSTEP_ICON);		
-			} else {
+			if (isEngineNotRunning()) {
 				if (choiceIndex == shiftedIndex)
 					return SharedIcons.getSharedImage(SharedIcons.PAST_CHOSEN_LOGICALSTEP_ICON);		
 				else if (shiftedIndex < _choice.getPossibleLogicalSteps().size())
-					return SharedIcons.getSharedImage(SharedIcons.PAST_POSSIBLE_LOGICALSTEP_ICON);				
-			}				
-		} else if (choiceIndex == shiftedIndex)
-			return SharedIcons.getSharedImage(SharedIcons.PAST_CHOSEN_LOGICALSTEP_ICON);		
-		else if (shiftedIndex < _choice.getPossibleLogicalSteps().size())
-			return SharedIcons.getSharedImage(SharedIcons.PAST_POSSIBLE_LOGICALSTEP_ICON);
+					return SharedIcons.getSharedImage(SharedIcons.PAST_POSSIBLE_LOGICALSTEP_ICON);								
+			} else if (isEngineWaiting()) {
+				return SharedIcons.getSharedImage(SharedIcons.FUTUR_POSSIBLE_LOGICALSTEP_ICON);		
+			}
+		} else {
+			if (isEngineRunning()) {
+				if( _choice.getNextChoice() == null) {
+					if (choiceIndex == shiftedIndex)
+						return SharedIcons.getSharedImage(SharedIcons.PRESENT_CHOSEN_LOGICALSTEP_ICON);		
+					else if (shiftedIndex < _choice.getPossibleLogicalSteps().size())
+						return SharedIcons.getSharedImage(SharedIcons.PRESENT_POSSIBLE_LOGICALSTEP_ICON);		
+				}
+			}
+			if (choiceIndex == shiftedIndex)
+				return SharedIcons.getSharedImage(SharedIcons.PAST_CHOSEN_LOGICALSTEP_ICON);		
+			else if (shiftedIndex < _choice.getPossibleLogicalSteps().size())
+				return SharedIcons.getSharedImage(SharedIcons.PAST_POSSIBLE_LOGICALSTEP_ICON);				
+		}
 		return null;
 	}
 
+	private boolean isEngineNotRunning() {
+		return _engineStatus.equals(RunStatus.Stopped);
+	}
 	private boolean isEngineRunning() {
-		return _engineStatus.equals(RunStatus.Running) || _engineStatus.equals(RunStatus.WaitingLogicalStepSelection);
+		return _engineStatus.equals(RunStatus.Running);
+	}
+	private boolean isEngineWaiting() {
+		return _engineStatus.equals(RunStatus.WaitingLogicalStepSelection);
 	}
 
 	public Choice getChoice() {
