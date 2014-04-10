@@ -1,29 +1,16 @@
 package org.gemoc.execution.engine.core;
 
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Observable;
-import java.util.Queue;
 
-import org.eclipse.core.runtime.ISafeRunnable;
-import org.eclipse.core.runtime.SafeRunner;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
@@ -31,7 +18,6 @@ import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngineEventControl;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
@@ -40,21 +26,9 @@ import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
-import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.trace.EventOccurrence;
-import fr.inria.aoste.trace.FiredStateKind;
 import fr.inria.aoste.trace.LogicalStep;
-import fr.inria.aoste.trace.ModelElementReference;
-import gepl.ECLEvent;
-import gepl.Every;
-import gepl.MocEvent;
-import gepl.Pattern;
-import glml.DomainSpecificEvent;
-import glml.DomainSpecificEventFile;
-import glml.ModelSpecificEvent;
-import glml.Visibility;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -140,6 +114,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	
 	
 	/**
+	 * The delay in millisecond to wait between each logical step.
+	 */
+	private int delay;
+
+	/**
 	 * The constructor takes in all the language-specific elements. Creates the
 	 * internal map of Domain-Specific Events and initializes the languages used
 	 * for execution.
@@ -209,14 +188,12 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	}
 
 	@Override
-	public void initialize(String modelUnderExecutionStringURI,
-			ModelLoader modelLoader) {
+	public void initialize(Resource resource) {
 
-		this.modelUnderExecutionStringURI = modelUnderExecutionStringURI;
+		this.modelUnderExecutionStringURI = resource.getURI().toString();
 
 		// Create the modelResource from the modelURI using the modelLoader.
-		this.modelUnderExecutionResource = modelLoader
-				.loadModel(modelUnderExecutionStringURI);
+		this.modelUnderExecutionResource = resource;
 
 		Activator.getMessagingSystem().info(
 				"*** Engine initialization done. ***", Activator.PLUGIN_ID);
@@ -330,13 +307,17 @@ public class ObservableBasicExecutionEngine extends Observable implements
 					//	}
 												
 							// 3 - run the selected logical step
-						LogicalStep logicalStepToApply = possibleLogicalSteps
+						final LogicalStep logicalStepToApply = possibleLogicalSteps
 								.get(selectedLogicalStepIndex);
 						lastStepsRun.add(logicalStepToApply);
 						// inform the solver that we will run this step
 						solver.applyLogicalStepByIndex(selectedLogicalStepIndex);
 						// run all the event occurrences of this logical step
 						doLogicalStep(logicalStepToApply);
+						// if not debugging wait if needed
+						if (debugger == null && delay != 0) {
+							Thread.sleep(delay);
+						}
 
 						// if all lastStepsRun are the same, then we may have reached the end of the simulation
 						boolean allLastLogicalStepAreTheSame = true;
@@ -504,28 +485,68 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			// TODO verify if we need to pause on this LogicalStep due to breakpoint on one of the eventOccurence
 			
 			// run the event
-			for(EngineEventOccurence engineEventOccurence : engineEventOccurences){
-				// FIXME can pause on each eventoccurence, should be done in separate threads if we support step into or globally at the LogicalStep level 
+			for (final EngineEventOccurence engineEventOccurence : engineEventOccurences) {
+				// FIXME can pause on each eventoccurence, should be done in
+				// separate threads if we support step into or globally at the
+				// LogicalStep level
 				if (debugger != null) {
 					terminated = !debugger.control(Thread.currentThread().getName(), engineEventOccurence.getTargetObject());
 				}
-				
-				try {
-					if(engineEventOccurence.getTargetOperation()!= null){
-						FeedbackData res = executor.execute(engineEventOccurence);
-						// send result as feedback to the solver
-						// process feedback may influence the solver results for next step
-						//FeedbackData feedbackData = new FeedbackData(res, engineEventOccurence);
+
+				if (engineEventOccurence.getTargetOperation() != null) {
+					final FeedbackData res = callExecutor(engineEventOccurence);
+					// send result as feedback to the solver
+					// process feedback may influence the solver results for
+					// next step
+					// FeedbackData feedbackData = new FeedbackData(res,
+					// engineEventOccurence);
+					if (res != null) {
 						feedbackPolicy.processFeedback(res, ObservableBasicExecutionEngine.this);
 					}
-				} catch (EventExecutionException e) {
-					Activator.getMessagingSystem().error(
-							"Exception received " + e.getMessage(),
-							Activator.PLUGIN_ID, e);
 				}
 				
 			}
+		}
 
+		/**
+		 * Calls the {@link EventExecutor} for the given
+		 * {@link EngineEventOccurence}.
+		 * 
+		 * @param engineEventOccurence
+		 *            the {@link EngineEventOccurence} to execute
+		 * @return the {@link FeedbackData} if any, <code>null</code> other wise
+		 */
+		protected FeedbackData callExecutor(final EngineEventOccurence engineEventOccurence) {
+			final TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(ObservableBasicExecutionEngine.this.modelUnderExecutionResource.getResourceSet());
+			FeedbackData res = null;
+			if (editingDomain != null) {
+				final RecordingCommand command = new RecordingCommand(editingDomain) {
+					private List<FeedbackData> result = new ArrayList<FeedbackData>();
+
+					@Override
+					protected void doExecute() {
+						try {
+							result.add(executor.execute(engineEventOccurence));
+						} catch (EventExecutionException e) {
+							Activator.getMessagingSystem().error("Exception received " + e.getMessage(), Activator.PLUGIN_ID, e);
+						}
+					}
+
+					@Override
+					public Collection<?> getResult() {
+						return result;
+					}
+				};
+				editingDomain.getCommandStack().execute(command);
+				res = (FeedbackData) command.getResult().iterator().next();
+			} else {
+				try {
+					res = executor.execute(engineEventOccurence);
+				} catch (EventExecutionException e) {
+					Activator.getMessagingSystem().error("Exception received " + e.getMessage(), Activator.PLUGIN_ID, e);
+				}
+			}
+			return res;
 		}
 	}
 
@@ -548,6 +569,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 
 	public void setDebugger(GemocModelDebugger debugger) {
 		this.debugger = debugger;
+	}
+
+	@Override
+	public void setDelay(int delay) {
+		this.delay = delay;
 	}
 
 }

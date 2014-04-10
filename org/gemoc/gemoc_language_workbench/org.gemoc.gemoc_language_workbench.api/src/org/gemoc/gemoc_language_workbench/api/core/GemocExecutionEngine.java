@@ -24,18 +24,24 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 * loading the model (using the given ModelLoader), creating the Model Of
 	 * Execution (Model Specific Events) and the Solver Input.
 	 * 
-	 * @param modelURI
-	 *            : URI of the model to load
-	 * @param modelLoader
-	 *            : Facility able to load the model. By default should be XMI.
+	 * @param resource
+	 *            the {@link Resource} containing the model to execute.
 	 */
-	void initialize(String modelURI,  ModelLoader modelLoader);
-	
+	void initialize(Resource resource);
+
 	/**
 	 * Retrieve the model being executed.
 	 * 
 	 * @return the EMF Resource corresponding to the model being executed.
 	 */
 	public Resource getModelUnderExecutionResource();
+
+	/**
+	 * Sets the delay to wait in millisecond between each logical step.
+	 * 
+	 * @param delay
+	 *            the delay in millisecond
+	 */
+	void setDelay(int delay);
 
 }

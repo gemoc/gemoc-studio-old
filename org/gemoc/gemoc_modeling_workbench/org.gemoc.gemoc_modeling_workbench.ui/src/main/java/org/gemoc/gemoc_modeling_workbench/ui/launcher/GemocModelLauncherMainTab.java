@@ -23,10 +23,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAIRDIFileDialog;
@@ -40,6 +38,8 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
 	protected Text modelLocationText;
 	protected Text siriusRepresentationLocationText;
+	protected Button animateButton;
+	protected Text delayText;
 	protected Combo languageCombo;
 	protected Combo deciderCombo;
 
@@ -92,6 +92,16 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 							.getAttribute(
 									AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI,
 									""));
+			this.animateButton
+					.setSelection(Boolean.parseBoolean(configuration
+							.getAttribute(
+									GemocModelLauncherConfigurationConstants.LAUNCH_ANIMATE,
+									"")));
+			this.delayText
+			.setText(configuration
+					.getAttribute(
+							GemocModelLauncherConfigurationConstants.LAUNCH_DELAY,
+							""));
 			this.languageCombo
 					.setText(configuration
 							.getAttribute(
@@ -124,6 +134,12 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 				AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI,
 				this.siriusRepresentationLocationText.getText());
+		configuration.setAttribute(
+				GemocModelLauncherConfigurationConstants.LAUNCH_ANIMATE,
+				Boolean.toString(this.animateButton.getSelection()));
+		configuration.setAttribute(
+				GemocModelLauncherConfigurationConstants.LAUNCH_DELAY,
+				this.delayText.getText());
 		configuration
 				.setAttribute(
 						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
@@ -230,6 +246,28 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 						}
 					}
 				});
+		Composite composite = new Composite(parent, SWT.NONE);
+		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		composite.setLayout(new GridLayout(3, false));
+		
+		animateButton = new Button(composite, SWT.CHECK);
+		animateButton.setText("animate");
+		animateButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				updateLaunchConfigurationDialog();
+			}
+		});
+		
+		delayText = new Text(composite, SWT.SINGLE | SWT.BORDER);
+		delayText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				updateLaunchConfigurationDialog();
+			}
+		});
+		new Label(composite, SWT.BORDER).setText("delay in millisecond");
 		return parent;
 	}
 
