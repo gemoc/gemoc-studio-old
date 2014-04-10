@@ -446,7 +446,7 @@ public abstract class AbstractGemocDebuggerServices {
 	 */
 	public AbstractGemocDebuggerServices() {
 		for (StringCouple couple : getRepresentationRefreshList()) {
-			if (couple.getFirst() != null) {
+			if (couple.getSecond() != null) {
 				LISTENER.addRepresentationToRefresh(getModelIdentifier(),
 						couple.getFirst(), couple.getSecond());
 			} else {
