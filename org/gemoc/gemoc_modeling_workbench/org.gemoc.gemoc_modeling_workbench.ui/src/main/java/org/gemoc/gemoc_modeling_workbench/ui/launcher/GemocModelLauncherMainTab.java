@@ -290,7 +290,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		ArrayList<String> xdsmlNames = new ArrayList<String>();
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry()
 				.getConfigurationElementsFor(
-						"org.gemoc.gemoc_language_workbench.xdsml");
+						org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		for (int i = 0; i < confElements.length; i++) {
 			xdsmlNames.add(confElements[i].getAttribute("name"));
 		}

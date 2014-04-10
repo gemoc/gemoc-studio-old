@@ -35,6 +35,19 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 * @return the EMF Resource corresponding to the model being executed.
 	 */
 	public Resource getModelUnderExecutionResource();
+	
+	
+	/**
+	 * allows to add a  hook to the engine
+	 * @param newEngineHook
+	 */
+	public void addEngineHook(IEngineHook newEngineHook);
+	
+	/**
+	 * allows to remove a hook to the engine
+	 * @param removedEngineHook
+	 */
+	public void removeEngineHook(IEngineHook removedEngineHook);
 
 	/**
 	 * Sets the delay to wait in millisecond between each logical step.

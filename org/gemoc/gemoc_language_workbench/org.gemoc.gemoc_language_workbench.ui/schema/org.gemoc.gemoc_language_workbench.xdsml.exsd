@@ -49,6 +49,9 @@
 
    <element name="XDSML_Definition">
       <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="Engine_hook_Definition"/>
+         </sequence>
          <attribute name="name" type="string" use="required">
             <annotation>
                <documentation>
@@ -132,6 +135,24 @@
                <documentation>
                   path to the QVTO file that is responsible for doing the ECL to CCSL transformation
                </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="Engine_hook_Definition">
+      <complexType>
+         <attribute name="engineHook_class" type="string">
+            <annotation>
+               <documentation>
+                  This class allows to hook some code to some phase of the Gemoc engine.
+The hooked code will be run at the appropriate time by the engine.
+This can be used for example to initialize some dsl specific GUI or to monitor the engine.
+This is optional, if not set, the engine will ignore it.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.core.IEngineHook"/>
+               </appinfo>
             </annotation>
          </attribute>
       </complexType>
