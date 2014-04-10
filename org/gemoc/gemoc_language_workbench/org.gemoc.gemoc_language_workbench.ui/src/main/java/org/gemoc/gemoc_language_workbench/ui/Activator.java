@@ -41,6 +41,9 @@ public class Activator extends AbstractUIPlugin {
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_XDSML_FILE_PATH_ATT = "xdsmlFilePath";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MODEL_OF_EXECUTION_BUILDER_ATT = "modelOfExecutionBuilder";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT = "toCCSLQVTOFilePath";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF = "Engine_hook_Definition";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF_ENGINE_HOOK_ATT = "engineHook_class";
+	
 
 	public static final String MODEL_LOADER_CLASS_NAMEPART = "ModelLoader";
 	public static final String INITIALIZER_CLASS_NAMEPART = "Initializer";

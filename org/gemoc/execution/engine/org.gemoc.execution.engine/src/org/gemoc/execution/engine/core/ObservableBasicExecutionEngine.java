@@ -5,6 +5,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Observable;
 import java.util.Queue;
+import java.util.Set;
 
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
@@ -33,6 +35,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngi
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngineEventControl;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
@@ -125,6 +128,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	protected EventExecutor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
 	protected ILogicalStepDecider logicalStepDecider = null;
+	protected Set<IEngineHook> registeredEngineHooks = new HashSet<IEngineHook>();
 
 	/**
 	 * URI of the model being executed
@@ -225,6 +229,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	@Override
 	public void start() {
 		if (!this.started) {
+			for(IEngineHook hook : registeredEngineHooks){
+				hook.preStartEngine(this);
+			}
 			engineStatus.setNbLogicalStepRun(0);
 			Runnable execution = new EngineRunnable();
 			Thread mainThread = new Thread(execution, "Gemoc engine "
@@ -237,6 +244,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	public void stop() {
 		logicalStepDecider.dispose();
 		terminated = true;
+		for(IEngineHook hook : registeredEngineHooks){
+			hook.postStopEngine(this);
+		}
 	}
 	
 	public EngineStatus getEngineStatus(){
@@ -294,6 +304,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 					engineStatus.updateCurrentLogicalStepChoice(possibleLogicalSteps);
 					ObservableBasicExecutionEngine.this.setChanged();
 					ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
+					for(IEngineHook hook : registeredEngineHooks){
+						hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
+					}
 					// 2- select one solution from available logical step /
 					// select interactive vs batch
 					int selectedLogicalStepIndex;
@@ -327,6 +340,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 				
 						ObservableBasicExecutionEngine.this.setChanged();
 						ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
+						for(IEngineHook hook : registeredEngineHooks){
+							hook.postLogicalStepSelection(ObservableBasicExecutionEngine.this);
+						}
 					//	}
 												
 							// 3 - run the selected logical step
@@ -548,6 +564,16 @@ public class ObservableBasicExecutionEngine extends Observable implements
 
 	public void setDebugger(GemocModelDebugger debugger) {
 		this.debugger = debugger;
+	}
+
+	@Override
+	public void addEngineHook(IEngineHook newEngineHook) {
+		registeredEngineHooks.add(newEngineHook);
+	}
+
+	@Override
+	public void removeEngineHook(IEngineHook removedEngineHook) {
+		registeredEngineHooks.remove(removedEngineHook);
 	}
 
 }
