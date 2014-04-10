@@ -30,6 +30,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
@@ -375,14 +376,19 @@ public class GemocReflectiveModelLauncher
 		}
 	}
 
-	protected Resource getModelResource(boolean animate, String sessionPath, String modelPath) {
+	protected Resource getModelResource(boolean animate, String sessionPath, String modelPath) throws CoreException {		
 		final Resource res;
-				if (animate) {
-					final Session session = SessionManager.INSTANCE.getSession(URI.createPlatformResourceURI(sessionPath, true), new NullProgressMonitor());
-					res = session.getTransactionalEditingDomain().getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
-				}else {
-					res = getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
-				}
+		if (animate) {
+			URI uri = URI.createPlatformResourceURI(sessionPath, true);
+			Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+			if (session == null) {
+				session = SessionFactory.INSTANCE.createDefaultSession(uri);
+				SessionManager.INSTANCE.add(session);
+			}
+			res = session.getTransactionalEditingDomain().getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
+		}else {
+			res = getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
+		}
 		return res;
 	}
 
