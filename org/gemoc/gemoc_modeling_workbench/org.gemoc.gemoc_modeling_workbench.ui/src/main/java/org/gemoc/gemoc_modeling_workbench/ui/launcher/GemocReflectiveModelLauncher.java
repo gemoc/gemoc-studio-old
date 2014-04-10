@@ -65,6 +65,9 @@ public class GemocReflectiveModelLauncher
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
+		LanguageExecutionContext executionContext = new LanguageExecutionContext(configuration);
+		executionContext.CreateExecutionContext();
+		
 		Activator.getDefault().getMessaggingSystem().showConsole();
 		Activator
 				.getDefault()
