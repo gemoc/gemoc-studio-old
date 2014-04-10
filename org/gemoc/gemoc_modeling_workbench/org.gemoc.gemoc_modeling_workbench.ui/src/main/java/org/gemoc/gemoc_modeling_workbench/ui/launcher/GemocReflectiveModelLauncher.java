@@ -9,6 +9,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -360,7 +361,7 @@ public class GemocReflectiveModelLauncher
 	protected Resource getModelResource(boolean animate, String sessionPath, String modelPath) {
 		final Resource res;
 				if (animate) {
-					final Session session = SessionManager.INSTANCE.getExistingSession(URI.createPlatformResourceURI(sessionPath, true));
+					final Session session = SessionManager.INSTANCE.getSession(URI.createPlatformResourceURI(sessionPath, true), new NullProgressMonitor());
 					res = session.getTransactionalEditingDomain().getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
 				}else {
 					res = getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
