@@ -20,8 +20,18 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.deciders.RandomDecider;
@@ -56,10 +66,6 @@ public class GemocReflectiveModelLauncher
 	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
 
 	private ObservableBasicExecutionEngine engine;
-	
-	
-	
-
 
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode,
@@ -72,8 +78,14 @@ public class GemocReflectiveModelLauncher
 				.warn("About to initialize and run the GEMOC Execution Engine...",
 						"");
 
+		String sessionPath = configuration.getAttribute(SIRIUS_RESOURCE_URI, "");
 		String modelPath = configuration.getAttribute(
 				AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
+		boolean animate = Boolean.parseBoolean(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_ANIMATE, "false"));
+		int delay = 0;
+		if (animate) {
+			delay=Integer.parseInt(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_DELAY, "0"));
+		}
 
 		String languageName = configuration
 				.getAttribute(
@@ -92,8 +104,6 @@ public class GemocReflectiveModelLauncher
 						GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 						"");
 
-		
-		
 		IConfigurationElement confElement = null;
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry()
 				.getConfigurationElementsFor(
@@ -319,12 +329,12 @@ public class GemocReflectiveModelLauncher
 		// Create and initialize engine
 		engine = new ObservableBasicExecutionEngine(solver, executor,
 				feedbackPolicy, decider);
-		engine.initialize(modelPath, modelLoader);
+		engine.initialize(getModelResource(animate, sessionPath, modelPath));
 		// engine.
 		// configure altogether
 		configureEngine(engine, mocEventsResource,
 				domainSpecificEventsResource, solver, executor, feedbackPolicy,
-				modelPath, modelLoader, frontends, backends);
+				modelPath, modelLoader, frontends, backends, delay);
 
 		// delegate for debug mode
 		if (ILaunchManager.DEBUG_MODE.equals(mode)) {
@@ -344,6 +354,17 @@ public class GemocReflectiveModelLauncher
 		}
 	}
 
+	protected Resource getModelResource(boolean animate, String sessionPath, String modelPath) {
+		final Resource res;
+				if (animate) {
+					final Session session = SessionManager.INSTANCE.getExistingSession(URI.createPlatformResourceURI(sessionPath, true));
+					res = session.getTransactionalEditingDomain().getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
+				}else {
+					res = getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
+				}
+		return res;
+	}
+
 	private void reactToNull(Object o, String name) {
 		if (o == null) {
 			Activator.getDefault().getMessaggingSystem()
@@ -357,8 +378,10 @@ public class GemocReflectiveModelLauncher
 			Solver solver, EventExecutor executor,
 			FeedbackPolicy feedbackPolicy, String modelPath,
 			ModelLoader modelLoader, List<Frontend> frontends,
-			List<Backend> backends) {
+			List<Backend> backends, int delay) {
 
+		engine.setDelay(delay);
+		
 		// Links the Execution Engine to the Frontends
 		for (Frontend frontend : frontends) {
 			frontend.initialize(engine);
