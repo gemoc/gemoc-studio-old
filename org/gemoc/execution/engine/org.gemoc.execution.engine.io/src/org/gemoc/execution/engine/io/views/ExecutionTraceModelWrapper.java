@@ -39,7 +39,8 @@ public class ExecutionTraceModelWrapper {
 				else if (shiftedIndex < _choice.getPossibleLogicalSteps().size())
 					return SharedIcons.getSharedImage(SharedIcons.PAST_POSSIBLE_LOGICALSTEP_ICON);								
 			} else if (isEngineWaiting()) {
-				return SharedIcons.getSharedImage(SharedIcons.FUTUR_POSSIBLE_LOGICALSTEP_ICON);		
+				if (shiftedIndex < _choice.getPossibleLogicalSteps().size())
+					return SharedIcons.getSharedImage(SharedIcons.FUTUR_POSSIBLE_LOGICALSTEP_ICON);								
 			}
 		} else {
 			if (isEngineRunning()) {
