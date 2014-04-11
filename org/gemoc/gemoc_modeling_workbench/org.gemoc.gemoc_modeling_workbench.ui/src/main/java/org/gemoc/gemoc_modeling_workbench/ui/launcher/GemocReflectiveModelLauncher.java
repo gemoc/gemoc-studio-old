@@ -46,6 +46,7 @@ import org.gemoc.execution.engine.io.backends.ConsoleBackend;
 import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
 import org.gemoc.execution.engine.io.views.UserDecider;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
@@ -83,12 +84,26 @@ public class GemocReflectiveModelLauncher
 		Activator
 				.getDefault()
 				.getMessaggingSystem()
-				.warn("About to initialize and run the GEMOC Execution Engine...",
+				.debug("About to initialize and run the GEMOC Execution Engine...",
 						"");
 
 		String sessionPath = configuration.getAttribute(SIRIUS_RESOURCE_URI, "");
 		String modelPath = configuration.getAttribute(
 				AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
+		
+		// make sure there is no other running engine on this model
+		for( GemocExecutionEngine engine :org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values()){
+  		  ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
+  		  if(observable.getEngineStatus().getRunningStatus() != RunStatus.Stopped &&  observable.getModelUnderExecutionResource().getURI().equals(URI.createPlatformResourceURI(modelPath, true))){
+  			Activator
+				.getDefault()
+				.getMessaggingSystem()
+				.warn("An engine is already running on this model, please stop it first",
+						"");
+  			return;
+  		  }
+		}
+		
 		boolean animate = Boolean.parseBoolean(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_ANIMATE, "false"));
 		int delay = 0;
 		if (animate) {
@@ -288,7 +303,7 @@ public class GemocReflectiveModelLauncher
 			Activator
 					.getDefault()
 					.getMessaggingSystem()
-					.warn("forcing the solverInput to user defined extendedCCSL "
+					.info("forcing the solverInput to user defined extendedCCSL "
 							+ extendedCCSLFilePath, Activator.PLUGIN_ID);			
 			// initialize solver
 			solver.setSolverInputFile(URI.createPlatformResourceURI(
