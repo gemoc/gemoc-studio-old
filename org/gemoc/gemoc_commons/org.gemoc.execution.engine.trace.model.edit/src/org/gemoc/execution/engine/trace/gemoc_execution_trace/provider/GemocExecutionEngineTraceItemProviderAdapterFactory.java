@@ -95,6 +95,29 @@ public class GemocExecutionEngineTraceItemProviderAdapterFactory extends GemocEx
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExecutionTraceModelItemProvider executionTraceModelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExecutionTraceModelAdapter() {
+		if (executionTraceModelItemProvider == null) {
+			executionTraceModelItemProvider = new ExecutionTraceModelItemProvider(this);
+		}
+
+		return executionTraceModelItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,6 +217,7 @@ public class GemocExecutionEngineTraceItemProviderAdapterFactory extends GemocEx
 	 */
 	public void dispose() {
 		if (choiceItemProvider != null) choiceItemProvider.dispose();
+		if (executionTraceModelItemProvider != null) executionTraceModelItemProvider.dispose();
 	}
 
 }

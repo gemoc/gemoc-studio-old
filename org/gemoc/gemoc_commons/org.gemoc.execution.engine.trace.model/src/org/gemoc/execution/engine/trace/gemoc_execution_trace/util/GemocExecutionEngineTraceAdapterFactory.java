@@ -72,6 +72,10 @@ public class GemocExecutionEngineTraceAdapterFactory extends AdapterFactoryImpl 
 				return createChoiceAdapter();
 			}
 			@Override
+			public Adapter caseExecutionTraceModel(ExecutionTraceModel object) {
+				return createExecutionTraceModelAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -102,6 +106,20 @@ public class GemocExecutionEngineTraceAdapterFactory extends AdapterFactoryImpl 
 	 * @generated
 	 */
 	public Adapter createChoiceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel <em>Execution Trace Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel
+	 * @generated
+	 */
+	public Adapter createExecutionTraceModelAdapter() {
 		return null;
 	}
 
