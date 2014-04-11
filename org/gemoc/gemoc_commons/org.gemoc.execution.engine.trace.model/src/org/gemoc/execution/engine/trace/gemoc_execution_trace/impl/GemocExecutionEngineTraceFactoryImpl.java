@@ -57,6 +57,7 @@ public class GemocExecutionEngineTraceFactoryImpl extends EFactoryImpl implement
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case GemocExecutionEngineTracePackage.CHOICE: return createChoice();
+			case GemocExecutionEngineTracePackage.EXECUTION_TRACE_MODEL: return createExecutionTraceModel();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -70,6 +71,16 @@ public class GemocExecutionEngineTraceFactoryImpl extends EFactoryImpl implement
 	public Choice createChoice() {
 		ChoiceImpl choice = new ChoiceImpl();
 		return choice;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionTraceModel createExecutionTraceModel() {
+		ExecutionTraceModelImpl executionTraceModel = new ExecutionTraceModelImpl();
+		return executionTraceModel;
 	}
 
 	/**

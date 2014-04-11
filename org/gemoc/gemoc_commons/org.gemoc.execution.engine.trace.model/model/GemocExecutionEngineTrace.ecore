@@ -9,4 +9,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="ecore:EClass platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionTraceModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1"
+        eType="#//Choice" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

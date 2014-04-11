@@ -112,6 +112,44 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl <em>Execution Trace Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getExecutionTraceModel()
+	 * @generated
+	 */
+	int EXECUTION_TRACE_MODEL = 1;
+
+	/**
+	 * The feature id for the '<em><b>Choices</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_TRACE_MODEL__CHOICES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Execution Trace Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_TRACE_MODEL_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Execution Trace Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_TRACE_MODEL_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice <em>Choice</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -153,6 +191,27 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getChoice_ChosenLogicalStep();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel <em>Execution Trace Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Execution Trace Model</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel
+	 * @generated
+	 */
+	EClass getExecutionTraceModel();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel#getChoices <em>Choices</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Choices</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel#getChoices()
+	 * @see #getExecutionTraceModel()
+	 * @generated
+	 */
+	EReference getExecutionTraceModel_Choices();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -210,6 +269,24 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CHOICE__CHOSEN_LOGICAL_STEP = eINSTANCE.getChoice_ChosenLogicalStep();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl <em>Execution Trace Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getExecutionTraceModel()
+		 * @generated
+		 */
+		EClass EXECUTION_TRACE_MODEL = eINSTANCE.getExecutionTraceModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Choices</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXECUTION_TRACE_MODEL__CHOICES = eINSTANCE.getExecutionTraceModel_Choices();
 
 	}
 

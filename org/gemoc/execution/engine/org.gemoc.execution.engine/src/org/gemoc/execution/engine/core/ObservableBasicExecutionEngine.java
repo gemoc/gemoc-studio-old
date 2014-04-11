@@ -23,6 +23,7 @@ import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
@@ -120,7 +121,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	protected Resource modelUnderExecutionResource = null;
 
 	private Choice _lastChoice;
-	
+	private ExecutionTraceModel _executionTraceModel = GemocExecutionEngineTraceFactory.eINSTANCE.createExecutionTraceModel();
 	
 	/**
 	 * The delay in millisecond to wait between each logical step.
@@ -401,6 +402,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 				_lastChoice.setNextChoice(newChoice);
 			}
 			_lastChoice = newChoice;
+			_executionTraceModel.getChoices().add(_lastChoice);
 		}
 
 

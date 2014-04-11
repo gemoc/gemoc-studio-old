@@ -31,6 +31,15 @@ public interface GemocExecutionEngineTraceFactory extends EFactory {
 	Choice createChoice();
 
 	/**
+	 * Returns a new object of class '<em>Execution Trace Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Execution Trace Model</em>'.
+	 * @generated
+	 */
+	ExecutionTraceModel createExecutionTraceModel();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
