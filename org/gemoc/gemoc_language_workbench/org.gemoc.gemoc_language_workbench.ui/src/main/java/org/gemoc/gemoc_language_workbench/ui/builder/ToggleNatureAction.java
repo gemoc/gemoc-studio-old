@@ -63,7 +63,8 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 							.getAdapter(IProject.class);
 				}
 				if (project != null) {
-					toggleNature(project);
+					// [FT] Use the AskLanguaeName wizard here because the name of the project may contain some bad characters.
+					toggleNature(project, project.getName());
 				}
 			}
 		}
@@ -94,7 +95,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 	 * @param project
 	 *            to have sample nature added or removed
 	 */
-	public void toggleNature(IProject project) {
+	public void toggleNature(IProject project, String languageName) {
 		try {
 			IProjectDescription description = project.getDescription();
 			String[] natures = description.getNatureIds();
@@ -130,12 +131,15 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				try {
 					convertOperation.run(new NullProgressMonitor());
 					// complement manifest
-					ManifestChanger connection = new ManifestChanger(project);
-					connection.addPluginDependency(org.gemoc.gemoc_language_workbench.api.Activator.PLUGIN_ID, "0.1.0", true, true);
-					connection.addPluginDependency("org.eclipse.emf.ecore.xmi", "2.8.0", true, true);
-					connection.addSingleton();
-					connection.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
-					connection.commit();					
+					ManifestChanger changer = new ManifestChanger(project);
+					changer.addPluginDependency(org.gemoc.gemoc_language_workbench.api.Activator.PLUGIN_ID, "0.1.0", true, true);
+					changer.addPluginDependency("org.eclipse.emf.ecore.xmi", "2.8.0", true, true);				
+					changer.addPluginDependency("org.gemoc.gemoc_language_workbench.api");
+					changer.addPluginDependency("org.gemoc.execution.engine");
+					changer.addPluginDependency("org.gemoc.execution.engine.commons");
+					changer.addSingleton();
+					changer.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
+					changer.commit();					
 					PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);					
 				} catch (InvocationTargetException e) {
 					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
@@ -154,7 +158,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 					
 			// Add the nature
 			addAsMainNature(project, GemocLanguageDesignerNature.NATURE_ID, null);
-			addMissingResourcesToNature(project);
+			addMissingResourcesToNature(project, languageName);
 		} catch (CoreException e) {
 			Activator.warn("Problem while adding Gemoc Language nature to project. "+e.getMessage(), e);
 		}
@@ -198,7 +202,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		}
 	}
 	
-	private void addMissingResourcesToNature(IProject project) {
+	private void addMissingResourcesToNature(IProject project, String languageName) {
 		IFile configFile = project.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
 		if(!configFile.exists()){
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -213,7 +217,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		    // Creates default root elements,
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = confFactoryImpl.eINSTANCE.createGemocLanguageWorkbenchConfiguration();
 		    LanguageDefinition ld =confFactoryImpl.eINSTANCE.createLanguageDefinition();
-		    ld.setName(project.getName());
+		    ld.setName(languageName);
 		    gemocLanguageWorkbenchConfiguration.setLanguageDefinition(ld);
 		    gemocLanguageWorkbenchConfiguration.setBuildOptions(confFactoryImpl.eINSTANCE.createBuildOptions());
 		    resource.getContents().add(gemocLanguageWorkbenchConfiguration);

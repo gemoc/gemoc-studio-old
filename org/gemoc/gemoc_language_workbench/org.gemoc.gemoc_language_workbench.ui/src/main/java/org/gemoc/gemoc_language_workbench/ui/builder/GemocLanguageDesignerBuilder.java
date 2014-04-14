@@ -404,7 +404,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		// TODO remove possible previous classes
 		// create the java class
 		String languageToUpperFirst = ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
-		String packageName = project.getName() + ".xdsml.api.impl";
+		String packageName = ld.getName() + ".xdsml.api.impl";
 		String folderName = packageName.replaceAll("\\.", "/");
 		if (ld.getDomainModelProject() != null) {
 			String fileContent = BuilderTemplates.MODEL_LOADER_CLASS_TEMPLATE;
@@ -533,7 +533,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		// TODO remove possible previous classes
 		// create the java class
 		String languageToUpperFirst = ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
-		String packageName = project.getName() + ".xdsml.api.impl";
+		String packageName = ld.getName() + ".xdsml.api.impl";
 		String folderName = packageName.replaceAll("\\.", "/");
 		if (ld.getDomainModelProject() != null) {
 			String fileContent = BuilderTemplates.CODEEXECUTOR_CLASS_TEMPLATE;
@@ -570,9 +570,15 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 "		return Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceName);\n"+	
 "	}");
 			}
-			else{
+			else if (ld.getDsaProject() != null)
+			{
 				sbContent.append("\t\t// TODO add DSA specific executor for "+ld.getDsaProject().eClass().getName()+"\n");	
 			}
+			else if (ld.getDsaProject() != null)
+			{
+				sbContent.append("\t\t// TODO add DSA specific executor\n");	
+			}
+
 			
 
 			sbContent.append("\t\t// fall back executor : search classic java method\n");
