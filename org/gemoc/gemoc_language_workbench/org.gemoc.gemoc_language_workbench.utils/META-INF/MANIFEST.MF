@@ -13,7 +13,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.gemoc_language_workbench.utils,
  org.gemoc.gemoc_language_workbench.utils.emf,
- org.gemoc.gemoc_language_workbench.utils.pde,
  org.gemoc.gemoc_language_workbench.utils.resource,
  org.gemoc.gemoc_language_workbench.utils.resourcevisitors,
  org.gemoc.gemoc_language_workbench.utils.stream,

@@ -8,4 +8,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.gemoc.gemoc_commons.ui
+Export-Package: org.gemoc.gemoc_commons.pde,
+ org.gemoc.gemoc_commons.ui
+Import-Package: org.eclipse.core.resources

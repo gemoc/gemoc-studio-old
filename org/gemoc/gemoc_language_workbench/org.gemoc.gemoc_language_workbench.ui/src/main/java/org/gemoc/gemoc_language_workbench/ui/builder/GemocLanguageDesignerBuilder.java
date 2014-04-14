@@ -34,6 +34,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.gemoc.gemoc_commons.pde.ManifestChanger;
+import org.gemoc.gemoc_commons.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.conf.BuildOptions;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
@@ -52,7 +54,6 @@ import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.gemoc.gemoc_language_workbench.utils.emf.EObjectUtil;
-import org.gemoc.gemoc_language_workbench.utils.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
 import org.jdom2.Element;
 import org.osgi.framework.BundleException;
@@ -65,6 +66,11 @@ import fr.inria.aoste.timesquare.ecl.ecltoqvto.main.AcceleoLauncherForEclToQvto;
 
 public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
+	
+	public GemocLanguageDesignerBuilder() {
+		return;
+	}
+	
 	class LanguageProjectDeltaVisitor implements IResourceDeltaVisitor {
 		/*
 		 * (non-Javadoc)
@@ -253,7 +259,8 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	 * @param resource
 	 */
 	private void updateProjectPluginConfiguration(IResource resource) {
-		if (resource instanceof IFile && resource.getName().equals(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)) {
+		if (resource instanceof IFile 
+			&& resource.getName().equals(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)) {
 			IFile file = (IFile) resource;
 			IProject project = file.getProject();
 			// try {
@@ -275,68 +282,83 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			    // then look to all the content to do the work
 				TreeIterator<EObject> it = modelresource.getAllContents();
 				String languageRootElement = "";
-				while (it.hasNext()) {
-					EObject eObject = (EObject) it.next();
-					if (eObject instanceof DomainModelProject) {
-						DomainModelProject domainModelProject = (DomainModelProject) eObject;
-						updateDependenciesWithDomainProject(project, domainModelProject);
-						if (eObject instanceof EMFEcoreProject){
-							languageRootElement = ((EMFEcoreProject)eObject).getDefaultRootEObjectQualifiedName();
-						}
+				
+				ManifestChanger connection = new ManifestChanger(project);
+				try {
+					while (it.hasNext()) {
+						EObject eObject = (EObject) it.next();
+						languageRootElement = updateManifestAndPlugin(project, buildOptions, languageRootElement, connection, eObject);
 					}
-					if (eObject instanceof DSAProject) {
-						DSAProject dsaProject = (DSAProject) eObject;
-						updateDependenciesWithDSAProject(project, dsaProject);
-					}
-
-					if (eObject instanceof XTextEditorProject) {
-						XTextEditorProject xtextProject = (XTextEditorProject) eObject;
-						updateDependenciesWithXTextEditorProject(project, xtextProject);
-					}
-					if (eObject instanceof ECLFile) {
-						updateECL(project, (ECLFile) eObject, languageRootElement);
-						
-					}
-					if (eObject instanceof QVToFile) {
-						updateQVTO(project, (QVToFile) eObject, languageRootElement);
-						
-					}
-					/*
-					 * if(eObject instanceof
-					 * org.gemoc.gemoc_language_workbench.conf.MoCProject){
-					 * project.setPersistentProperty(new
-					 * QualifiedName(Activator.PLUGIN_ID,
-					 * Activator.GEMOC_PROJECT_PROPERTY_HAS_MOC), "true"); }
-					 * if(eObject instanceof
-					 * org.gemoc.gemoc_language_workbench.conf.EditorProject){
-					 * project.setPersistentProperty(new
-					 * QualifiedName(Activator.PLUGIN_ID,
-					 * Activator.GEMOC_PROJECT_PROPERTY_HAS_EDITOR), "true"); }
-					 * if(eObject instanceof
-					 * org.gemoc.gemoc_language_workbench.conf.AnimatorProject){
-					 * project.setPersistentProperty(new
-					 * QualifiedName(Activator.PLUGIN_ID,
-					 * Activator.GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR), "true");
-					 * }
-					 */
-					if (eObject instanceof LanguageDefinition) {
-						LanguageDefinition ld = (LanguageDefinition) eObject;
-						changePluginLanguageName(project, ld.getName());
-						if(buildOptions.isGenerateModelLoaderService()){							
-							updateModelLoaderClass(project, ld);
-						}
-						//updateInitializerClass(project, ld);
-						if(buildOptions.isGenerateCodeExecutorService()){
-							updateCodeExecutorClass(project, ld);
-						}
-					}
-				}
+					connection.commit();			
+				} catch (CoreException e) {
+					Activator.error(e.getMessage(), e);				
+				} catch (IOException e) {
+					Activator.error(e.getMessage(), e);				
+				} catch (BundleException e) {
+					Activator.error(e.getMessage(), e);				
+				} 
 			}
-			/*
-			 * } catch (CoreException e) { Activator.error(e.getMessage(), e); }
-			 */
-
 		}
+	}
+
+	private String updateManifestAndPlugin(IProject project,
+			BuildOptions buildOptions, String languageRootElement,
+			ManifestChanger connection, EObject eObject)
+			throws BundleException, IOException, CoreException {
+		if (eObject instanceof DomainModelProject) {
+			DomainModelProject domainModelProject = (DomainModelProject) eObject;
+			updateDependenciesWithDomainProject(connection, domainModelProject);
+			if (eObject instanceof EMFEcoreProject){
+				languageRootElement = ((EMFEcoreProject)eObject).getDefaultRootEObjectQualifiedName();
+			}
+		}
+		if (eObject instanceof DSAProject) {
+			DSAProject dsaProject = (DSAProject) eObject;
+			updateDependenciesWithDSAProject(connection, dsaProject);
+		}
+
+		if (eObject instanceof XTextEditorProject) {
+			XTextEditorProject xtextProject = (XTextEditorProject) eObject;
+			updateDependenciesWithXTextEditorProject(connection, xtextProject);
+		}
+		if (eObject instanceof ECLFile) {
+			updateECL(project, (ECLFile) eObject, languageRootElement);
+			
+		}
+		if (eObject instanceof QVToFile) {
+			updateQVTO(project, (QVToFile) eObject, languageRootElement);
+			
+		}
+		/*
+		 * if(eObject instanceof
+		 * org.gemoc.gemoc_language_workbench.conf.MoCProject){
+		 * project.setPersistentProperty(new
+		 * QualifiedName(Activator.PLUGIN_ID,
+		 * Activator.GEMOC_PROJECT_PROPERTY_HAS_MOC), "true"); }
+		 * if(eObject instanceof
+		 * org.gemoc.gemoc_language_workbench.conf.EditorProject){
+		 * project.setPersistentProperty(new
+		 * QualifiedName(Activator.PLUGIN_ID,
+		 * Activator.GEMOC_PROJECT_PROPERTY_HAS_EDITOR), "true"); }
+		 * if(eObject instanceof
+		 * org.gemoc.gemoc_language_workbench.conf.AnimatorProject){
+		 * project.setPersistentProperty(new
+		 * QualifiedName(Activator.PLUGIN_ID,
+		 * Activator.GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR), "true");
+		 * }
+		 */
+		if (eObject instanceof LanguageDefinition) {
+			LanguageDefinition ld = (LanguageDefinition) eObject;
+			changePluginLanguageName(project, ld.getName());
+			if(buildOptions.isGenerateModelLoaderService()){							
+				updateModelLoaderClass(project, ld);
+			}
+			//updateInitializerClass(project, ld);
+			if(buildOptions.isGenerateCodeExecutorService()){
+				updateCodeExecutorClass(project, ld);
+			}
+		}
+		return languageRootElement;
 	}
 
 	protected void changePluginLanguageName(IProject project, final String languageName) {
@@ -352,66 +374,24 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.saveDocument(pluginfile);
 	}
 
-	protected void updateDependenciesWithDomainProject(IProject project, DomainModelProject domainModelProject) {
-		IFile manifestFile = project.getFile(new Path("META-INF/MANIFEST.MF"));
+	protected void updateDependenciesWithDomainProject(ManifestChanger connection, DomainModelProject domainModelProject) throws BundleException, IOException, CoreException {
+		connection.addPluginDependency(domainModelProject.getProjectName());
+		// TODO find a way to remove possible old domain model dependencies
+	}
 
-		try {
-			ManifestChanger mfChanger = new ManifestChanger(manifestFile);
-			// TODO find a way to remove possible old domain model dependencies
-			mfChanger.addPluginDependency(domainModelProject.getProjectName(), "0.0.0", true, true);
-
-			mfChanger.writeManifest(manifestFile);
-		} catch (IOException e) {
-			Activator.error(e.getMessage(), e);
-		} catch (CoreException e) {
-			Activator.error(e.getMessage(), e);
-		} catch (BundleException e) {
-			Activator.error(e.getMessage(), e);
+	protected void updateDependenciesWithDSAProject(ManifestChanger connection, DSAProject dsaPoject) throws BundleException, IOException, CoreException {
+		if (dsaPoject.getProjectKind().equals(ProjectKind.ECLIPSE_PLUGIN)) {
+			connection.addPluginDependency(dsaPoject.getProjectName());
+			// TODO find a way to remove possible old domain model
+			// dependencies
+		} else {
+			// TODO deal with maven project (ie. ensure copy of the jar and
+			// use it as internal lib in manifest)
 		}
 	}
 
-	protected void updateDependenciesWithDSAProject(IProject project, DSAProject dsaPoject) {
-		IFile manifestFile = project.getFile(new Path("META-INF/MANIFEST.MF"));
-
-		try {
-			if (dsaPoject.getProjectKind().equals(ProjectKind.ECLIPSE_PLUGIN)) {
-				ManifestChanger mfChanger = new ManifestChanger(manifestFile);
-				// TODO find a way to remove possible old domain model
-				// dependencies
-				mfChanger.addPluginDependency(dsaPoject.getProjectName(), "0.0.0", true, true);
-
-				mfChanger.writeManifest(manifestFile);
-			} else {
-				// TODO deal with maven project (ie. ensure copy of the jar and
-				// use it as internal lib in manifest)
-			}
-		} catch (IOException e) {
-			Activator.error(e.getMessage(), e);
-		} catch (CoreException e) {
-			Activator.error(e.getMessage(), e);
-		} catch (BundleException e) {
-			Activator.error(e.getMessage(), e);
-		}
-	}
-
-	protected void updateDependenciesWithXTextEditorProject(IProject project,
-			XTextEditorProject xtextEditorProject) {
-		IFile manifestFile = project.getFile(new Path("META-INF/MANIFEST.MF"));
-
-		try {
-			ManifestChanger mfChanger = new ManifestChanger(manifestFile);
-			// TODO find a way to remove possible old domain model dependencies
-			mfChanger.addPluginDependency(xtextEditorProject.getProjectName(),
-					"0.0.0", true, true);
-
-			mfChanger.writeManifest(manifestFile);
-		} catch (IOException e) {
-			Activator.error(e.getMessage(), e);
-		} catch (CoreException e) {
-			Activator.error(e.getMessage(), e);
-		} catch (BundleException e) {
-			Activator.error(e.getMessage(), e);
-		}
+	protected void updateDependenciesWithXTextEditorProject(ManifestChanger connection, XTextEditorProject xtextEditorProject) throws BundleException, IOException, CoreException {
+		connection.addPluginDependency(xtextEditorProject.getProjectName());
 	}
 	/**
 	 * create or replace existing ModelLoaderClass by an implementation that is

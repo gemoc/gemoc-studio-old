@@ -31,12 +31,13 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.gemoc.gemoc_commons.pde.ManifestChanger;
+import org.gemoc.gemoc_commons.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
-import org.gemoc.gemoc_language_workbench.utils.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
 import org.osgi.framework.BundleException;
 
@@ -129,18 +130,13 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				try {
 					convertOperation.run(new NullProgressMonitor());
 					// complement manifest
-					IFile manifestFile = project.getFile(new Path("META-INF/MANIFEST.MF"));
-					ManifestChanger mfChanger = new ManifestChanger(manifestFile);	
-					
-					mfChanger.addPluginDependency(org.gemoc.gemoc_language_workbench.api.Activator.PLUGIN_ID, "0.1.0", true, true);
-					mfChanger.addPluginDependency("org.eclipse.emf.ecore.xmi", "2.8.0", true, true);
-					mfChanger.addSingleton();
-					mfChanger.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
-					
-					mfChanger.writeManifest(manifestFile);
-					
-					PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);
-					
+					ManifestChanger connection = new ManifestChanger(project);
+					connection.addPluginDependency(org.gemoc.gemoc_language_workbench.api.Activator.PLUGIN_ID, "0.1.0", true, true);
+					connection.addPluginDependency("org.eclipse.emf.ecore.xmi", "2.8.0", true, true);
+					connection.addSingleton();
+					connection.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
+					connection.commit();					
+					PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);					
 				} catch (InvocationTargetException e) {
 					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
 				} catch (InterruptedException e) {
