@@ -16,6 +16,7 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.State;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Trigger;
 
+import toools.io.Utilities;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.BasicTypeFactory;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.DiscreteClockType;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.IntegerElement;
@@ -369,5 +370,30 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		}
 		return -1;
 	}
+	
+	
+	
+	@Override
+	public ArrayList<byte[]> getState() {
+		//super does not add anything in the list
+		ArrayList<byte[]> currentState = new ArrayList<byte[]>();
+		int currentStateIndex = _modelSTS.getStates().indexOf(_currentState);
+		currentState.add(Utilities.objectToBytes(currentStateIndex));
+		for(IntegerElement ie : _localInteger.values()){
+			currentState.add(Utilities.objectToBytes(ie.getValue().intValue()));
+		}
+		return currentState;
+	}
+
+	@Override
+	public void setState(ArrayList<byte[]> state) {
+		_currentState = _modelSTS.getStates().get((Integer) Utilities.bytesToObject(state.get(0)));
+		int i=1;
+		for(IntegerElement ie : _localInteger.values()){
+			ie.setValue((Integer) Utilities.bytesToObject(state.get(i++)));
+		}
+		return;		
+	}
+	
 	
 }
