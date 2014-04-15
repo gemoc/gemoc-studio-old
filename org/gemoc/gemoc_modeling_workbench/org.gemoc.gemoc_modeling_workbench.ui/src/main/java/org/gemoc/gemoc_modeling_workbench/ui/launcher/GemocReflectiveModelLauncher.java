@@ -56,6 +56,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
+import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
@@ -77,29 +78,20 @@ public class GemocReflectiveModelLauncher
 	public void launch(ILaunchConfiguration configuration, String mode,
 			ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
-		LanguageExecutionContext executionContext = new LanguageExecutionContext(configuration);
+		ModelExecutionContext executionContext = new ModelExecutionContext(configuration);
 		executionContext.CreateExecutionContext();
 		
 		Activator.getDefault().getMessaggingSystem().showConsole();
-		Activator
-				.getDefault()
-				.getMessaggingSystem()
-				.debug("About to initialize and run the GEMOC Execution Engine...",
-						"");
+		debug("About to initialize and run the GEMOC Execution Engine...");
 
 		String sessionPath = configuration.getAttribute(SIRIUS_RESOURCE_URI, "");
-		String modelPath = configuration.getAttribute(
-				AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
+		String modelPath = configuration.getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
 		
 		// make sure there is no other running engine on this model
 		for( GemocExecutionEngine engine :org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values()){
   		  ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
   		  if(observable.getEngineStatus().getRunningStatus() != RunStatus.Stopped &&  observable.getModelUnderExecutionResource().getURI().equals(URI.createPlatformResourceURI(modelPath, true))){
-  			Activator
-				.getDefault()
-				.getMessaggingSystem()
-				.warn("An engine is already running on this model, please stop it first",
-						"");
+  			  warn("An engine is already running on this model, please stop it first");
   			return;
   		  }
 		}
@@ -151,11 +143,7 @@ public class GemocReflectiveModelLauncher
 
 		// get the extension objects
 		if (confElement != null) {
-			Activator
-					.getDefault()
-					.getMessaggingSystem()
-					.debug("Starting to retrieve components from the configuration...",
-							Activator.PLUGIN_ID);
+			debug("Starting to retrieve components from the configuration...");
 
 			final Object oSolver = confElement
 					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
@@ -176,11 +164,7 @@ public class GemocReflectiveModelLauncher
 					feedbackPolicy = (FeedbackPolicy) oFeedbackPolicy;
 				}
 			} catch (CoreException e) {
-				Activator
-						.getDefault()
-						.getMessaggingSystem()
-						.warn("WARNING : your xDSML does not have a FeedbackPolicy",
-								Activator.PLUGIN_ID);
+				warn("WARNING : your xDSML does not have a FeedbackPolicy");
 			}
 			
 			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF)){
@@ -208,11 +192,8 @@ public class GemocReflectiveModelLauncher
 						URI.createURI(mocEventResourcePath), true);
 				}
 			} else {
-				Activator
-						.getDefault()
-						.getMessaggingSystem()
-						.warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT
-								+ " isn't set", Activator.PLUGIN_ID);
+				warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT
+								+ " isn't set");
 			}
 
 			// If there is a custom ModelLoader then we will use this,
@@ -225,11 +206,7 @@ public class GemocReflectiveModelLauncher
 				}
 			} catch (CoreException e) {
 				// TODO : revert to some default generic xmi loader
-				Activator
-						.getDefault()
-						.getMessaggingSystem()
-						.warn("TODO XMI ModelLoader by default",
-								Activator.PLUGIN_ID);
+				warn("TODO XMI ModelLoader by default");
 			}
 			/*if (dseResourcePath != null) {
 				
@@ -279,10 +256,7 @@ public class GemocReflectiveModelLauncher
 			}*/
 		}
 		else{
-			Activator
-			.getDefault()
-			.getMessaggingSystem()
-			.error("Cannot find xdsml definition for the language "+languageName+", please verify that is is correctly deployed.", Activator.PLUGIN_ID);
+			error("Cannot find xdsml definition for the language "+languageName+", please verify that is is correctly deployed.");
 			Activator.error("Cannot find xdsml definition for the language "+languageName+", please verify that is is correctly deployed", new NullPointerException("Cannot find xdsml definition for the language "));
 		}
 
@@ -300,51 +274,21 @@ public class GemocReflectiveModelLauncher
 		this.reactToNull(modelOfExecutionFilePath, "modelOfExecutionFilePath");
 
 		if (extendedCCSLFilePath != null && !extendedCCSLFilePath.isEmpty()) {
-			Activator
-					.getDefault()
-					.getMessaggingSystem()
-					.info("forcing the solverInput to user defined extendedCCSL "
-							+ extendedCCSLFilePath, Activator.PLUGIN_ID);			
+			info("forcing the solverInput to user defined extendedCCSL " + extendedCCSLFilePath);			
 			// initialize solver
 			solver.setSolverInputFile(URI.createPlatformResourceURI(
 					extendedCCSLFilePath, true));
 		} else {
 			// TODO complement this step by a pre-run action that will build the
 			// extended-ccsl from the model using the qvto transformation
-			Activator
-					.getDefault()
-					.getMessaggingSystem()
-					.error("automatic call to qvto transformation  not implemented yet. Please specify a manually generated extendedCCSL file.",
-							Activator.PLUGIN_ID);
+			error("automatic call to qvto transformation  not implemented yet. Please specify a manually generated extendedCCSL file.");
 			URI solverInputFileURI = solver.prepareSolverInputFileForUserModel(URI.createPlatformResourceURI(modelPath, true));
 			solver.setSolverInputFile(solverInputFileURI);
 			return;
 		}
 
 		// create decider
-		ILogicalStepDecider decider;
-		if (deciderName
-				.equals(GemocModelLauncherConfigurationConstants.DECIDER_RANDOM)) {
-			decider = new RandomDecider();
-		} else if (deciderName
-				.equals(GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER)) {
-			// use random as the only compatible decider
-			decider = new UserDecider(false);
-			
-		} else if (deciderName
-				.equals(GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER_STEP_BY_STEP)) {
-			// use random as the only compatible decider
-			decider = new UserDecider(true);
-			
-		} else 	{
-			if (solver instanceof CcslSolver) {
-				// use solver proposition
-				decider = new CcslSolverDecider((CcslSolver) solver);
-			} else {
-				// use random as the only compatible decider
-				decider = new RandomDecider();
-			}
-		}
+		ILogicalStepDecider decider = LogicalStepDeciderFactory.CreateDecider(deciderName, solver);
 
 		// Create required Frontends
 		// TODO : Hard-coded Frontends and Backends... It should be selectable
@@ -391,6 +335,28 @@ public class GemocReflectiveModelLauncher
 		}
 	}
 
+	private void debug(String message) {
+		getMessagingSystem().debug(message, getPluginID());
+	}
+
+	private void info(String message) {
+		getMessagingSystem().info(message, getPluginID());
+	}
+
+	private void warn(String message) {
+		getMessagingSystem().warn(message, getPluginID());
+	}
+
+	private void error(String message) {
+		getMessagingSystem().error(message, getPluginID());
+	}
+
+	private EclipseMessagingSystem getMessagingSystem() {
+		return Activator
+				.getDefault()
+				.getMessaggingSystem();	
+	}
+
 	protected Resource getModelResource(boolean animate, String sessionPath, String modelPath) throws CoreException {		
 		final Resource res;
 		if (animate) {
@@ -409,8 +375,7 @@ public class GemocReflectiveModelLauncher
 
 	private void reactToNull(Object o, String name) {
 		if (o == null) {
-			Activator.getDefault().getMessaggingSystem()
-					.warn("WARNING: " + name + " is null !", "");
+			warn("WARNING: " + name + " is null !");
 			Activator.warn(name + " is null", new NullPointerException(name));
 		}
 	}
