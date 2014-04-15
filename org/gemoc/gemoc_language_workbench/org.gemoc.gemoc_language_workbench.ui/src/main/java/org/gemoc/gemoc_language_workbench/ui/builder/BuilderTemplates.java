@@ -46,4 +46,15 @@ public class BuilderTemplates {
 "   ${additional.operations}\n"+
 "}";
 	
+	public static final String SOLVER_CLASS_TEMPLATE =
+"/* GENERATED FILE, do not modify manually                                                    *\n" +
+" * If you need to modify it, disable the generation in the BuildOptions of the project.xdsml */\n" +
+"package ${package.name};\n"+
+"import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;\n"+
+"public class ${language.name.toupperfirst}Solver extends CcslSolver {\n"+
+"	public ${language.name.toupperfirst}Solver(){\n"+
+"	    ${constructor.content}\n"+
+"	}\n"+
+"}";
+	
 }

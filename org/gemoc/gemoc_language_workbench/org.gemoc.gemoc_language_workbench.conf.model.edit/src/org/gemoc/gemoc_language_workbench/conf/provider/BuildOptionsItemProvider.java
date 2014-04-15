@@ -62,6 +62,7 @@ public class BuildOptionsItemProvider
 
 			addGenerateModelLoaderServicePropertyDescriptor(object);
 			addGenerateCodeExecutorServicePropertyDescriptor(object);
+			addGenerateSolverServicePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -111,6 +112,28 @@ public class BuildOptionsItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Generate Solver Service feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGenerateSolverServicePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BuildOptions_generateSolverService_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BuildOptions_generateSolverService_feature", "_UI_BuildOptions_type"),
+				 confPackage.Literals.BUILD_OPTIONS__GENERATE_SOLVER_SERVICE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns BuildOptions.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -147,6 +170,7 @@ public class BuildOptionsItemProvider
 		switch (notification.getFeatureID(BuildOptions.class)) {
 			case confPackage.BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE:
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
+			case confPackage.BUILD_OPTIONS__GENERATE_SOLVER_SERVICE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

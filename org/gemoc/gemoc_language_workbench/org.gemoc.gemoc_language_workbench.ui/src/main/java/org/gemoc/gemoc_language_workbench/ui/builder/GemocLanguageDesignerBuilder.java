@@ -265,9 +265,8 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			IProject project = file.getProject();
 			// try {
 			if (file.exists()) {
-
-				Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-				Map<String, Object> m = reg.getExtensionToFactoryMap();
+				Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
+				Map<String, Object> m = registry.getExtensionToFactoryMap();
 				m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
 
 				// Obtain a new resource set
@@ -283,13 +282,13 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				TreeIterator<EObject> it = modelresource.getAllContents();
 				String languageRootElement = "";
 				
-				ManifestChanger connection = new ManifestChanger(project);
+				ManifestChanger manifesChanger = new ManifestChanger(project);
 				try {
 					while (it.hasNext()) {
 						EObject eObject = (EObject) it.next();
-						languageRootElement = updateManifestAndPlugin(project, buildOptions, languageRootElement, connection, eObject);
+						languageRootElement = updateManifestAndPlugin(project, buildOptions, languageRootElement, manifesChanger, eObject);
 					}
-					connection.commit();			
+					manifesChanger.commit();			
 				} catch (CoreException e) {
 					Activator.error(e.getMessage(), e);				
 				} catch (IOException e) {
@@ -303,23 +302,23 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
 	private String updateManifestAndPlugin(IProject project,
 			BuildOptions buildOptions, String languageRootElement,
-			ManifestChanger connection, EObject eObject)
+			ManifestChanger manifestChanger, EObject eObject)
 			throws BundleException, IOException, CoreException {
 		if (eObject instanceof DomainModelProject) {
 			DomainModelProject domainModelProject = (DomainModelProject) eObject;
-			updateDependenciesWithDomainProject(connection, domainModelProject);
+			updateDependenciesWithDomainProject(manifestChanger, domainModelProject);
 			if (eObject instanceof EMFEcoreProject){
 				languageRootElement = ((EMFEcoreProject)eObject).getDefaultRootEObjectQualifiedName();
 			}
 		}
 		if (eObject instanceof DSAProject) {
 			DSAProject dsaProject = (DSAProject) eObject;
-			updateDependenciesWithDSAProject(connection, dsaProject);
+			updateDependenciesWithDSAProject(manifestChanger, dsaProject);
 		}
 
 		if (eObject instanceof XTextEditorProject) {
 			XTextEditorProject xtextProject = (XTextEditorProject) eObject;
-			updateDependenciesWithXTextEditorProject(connection, xtextProject);
+			updateDependenciesWithXTextEditorProject(manifestChanger, xtextProject);
 		}
 		if (eObject instanceof ECLFile) {
 			updateECL(project, (ECLFile) eObject, languageRootElement);
@@ -356,6 +355,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			//updateInitializerClass(project, ld);
 			if(buildOptions.isGenerateCodeExecutorService()){
 				updateCodeExecutorClass(project, ld);
+			}
+			if(buildOptions.isGenerateSolverService()){
+				updateSolverClass(project, ld);
 			}
 		}
 		return languageRootElement;
@@ -405,7 +407,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		// create the java class
 		String languageToUpperFirst = ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
 		String packageName = ld.getName() + ".xdsml.api.impl";
-		String folderName = packageName.replaceAll("\\.", "/");
+		String folderName = getFolderName(ld);
 		if (ld.getDomainModelProject() != null) {
 			String fileContent = BuilderTemplates.MODEL_LOADER_CLASS_TEMPLATE;
 			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
@@ -485,6 +487,17 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
 	}
 
+	private String getLanguageNameWithFirstUpper(LanguageDefinition ld) {
+		return ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
+	}
+	private String getPackageName(LanguageDefinition ld) {
+		return ld.getName() + ".xdsml.api.impl";
+	}
+	
+	private String getFolderName(LanguageDefinition ld) {
+		return getPackageName(ld).replaceAll("\\.", "/");
+	}
+
 	/**
 	 * create or replace existing InitializerClass by an implementation that is
 	 * able to initialize all required components
@@ -495,9 +508,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	protected void updateInitializerClass(IProject project, LanguageDefinition ld) {
 		// TODO remove possible previous classes
 		// create the java class
-		String languageToUpperFirst = ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
-		String packageName = project.getName() + ".xdsml.api.impl";
-		String folderName = packageName.replaceAll("\\.", "/");
+		String languageToUpperFirst = getLanguageNameWithFirstUpper(ld);
+		String packageName = getPackageName(ld);
+		String folderName = getFolderName(ld);
 		if (ld.getDomainModelProject() != null) {
 			String fileContent = BuilderTemplates.INITIALIZER_CLASS_TEMPLATE;
 			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
@@ -521,7 +534,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.saveDocument(pluginfile);
 
 	}
-
+	
 	/**
 	 * create or replace existing CodeExecutorClass by an implementation that is
 	 * able to execute method from the concrete DSA
@@ -532,9 +545,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	protected void updateCodeExecutorClass(IProject project, LanguageDefinition ld) {
 		// TODO remove possible previous classes
 		// create the java class
-		String languageToUpperFirst = ld.getName().substring(0, 1).toUpperCase() + ld.getName().substring(1);
-		String packageName = ld.getName() + ".xdsml.api.impl";
-		String folderName = packageName.replaceAll("\\.", "/");
+		String languageToUpperFirst = getLanguageNameWithFirstUpper(ld);
+		String packageName = getPackageName(ld);
+		String folderName = getFolderName(ld);
 		if (ld.getDomainModelProject() != null) {
 			String fileContent = BuilderTemplates.CODEEXECUTOR_CLASS_TEMPLATE;
 			fileContent = fileContent.replaceAll(
@@ -610,7 +623,42 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.saveDocument(pluginfile);
 
 	}
-
+	
+	/**
+	 * create or replace existing CodeExecutorClass by an implementation that is
+	 * able to execute method from the concrete DSA
+	 * 
+	 * @param project
+	 * @param ld
+	 */
+	protected void updateSolverClass(IProject project, LanguageDefinition ld) {
+		// TODO remove possible previous classes
+		// create the java class
+		String languageToUpperFirst = getLanguageNameWithFirstUpper(ld);
+		String packageName = getPackageName(ld);
+		String folderName = getFolderName(ld);
+		if (ld.getDomainModelProject() != null) {
+			String fileContent = BuilderTemplates.SOLVER_CLASS_TEMPLATE;
+			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
+			fileContent = fileContent.replaceAll(Pattern.quote("${language.name.toupperfirst}"), languageToUpperFirst);
+			fileContent = fileContent.replaceAll(Pattern.quote("${constructor.content}"), "super(null);");						
+			IFile file = project
+					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
+							+ folderName + "/" + languageToUpperFirst
+							+ Activator.SOLVER_CLASS_NAMEPART + ".java");
+			ResourceUtil.writeFile(file, fileContent);
+		}
+		// update plugin.xml
+		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
+		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
+		PluginXMLHelper helper = new PluginXMLHelper();
+		helper.loadDocument(pluginfile);
+		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint,
+				Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT, packageName + "." + languageToUpperFirst + Activator.SOLVER_CLASS_NAMEPART);
+		helper.saveDocument(pluginfile);
+	}
+	
 	/**
 	 * create or replace existing InitializerClass by an implementation that is
 	 * able to initialize all required components

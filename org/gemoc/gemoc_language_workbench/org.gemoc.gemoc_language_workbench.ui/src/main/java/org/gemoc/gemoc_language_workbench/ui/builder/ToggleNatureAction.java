@@ -113,57 +113,79 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				}
 			}
 
-			// add java nature
-			if(!project.hasNature(JavaCore.NATURE_ID)){
-				IJavaProject javaProject = JavaCore.create(project);
-				addNature(project, JavaCore.NATURE_ID, null);
-				//CoreUtility.createFolder(project.getFolder(new Path("src"));, true, true, new SubProgressMonitor(monitor, 2));*
-				ResourceUtil.createFolder(project.getFolder(new Path("src/main/java")), true, true, new NullProgressMonitor());
-				ResourceUtil.createFolder(project.getFolder(new Path("src/main/xdsml-java-gen")), true, true, new NullProgressMonitor());
-				addJavaResources(project);
-			}
-				
-			//  add the plugin nature (not removed)
-			if(!project.hasNature("org.eclipse.pde.PluginNature")){
-
-				IRunnableWithProgress convertOperation;
-				convertOperation = new ConvertProjectToPluginOperation(new IProject[]{project}, false);
-				try {
-					convertOperation.run(new NullProgressMonitor());
-					// complement manifest
-					ManifestChanger changer = new ManifestChanger(project);
-					changer.addPluginDependency(org.gemoc.gemoc_language_workbench.api.Activator.PLUGIN_ID, "0.1.0", true, true);
-					changer.addPluginDependency("org.eclipse.emf.ecore.xmi", "2.8.0", true, true);				
-					changer.addPluginDependency("org.gemoc.gemoc_language_workbench.api");
-					changer.addPluginDependency("org.gemoc.execution.engine");
-					changer.addPluginDependency("org.gemoc.execution.engine.commons");
-					changer.addSingleton();
-					changer.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
-					changer.commit();					
-					PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);					
-				} catch (InvocationTargetException e) {
-					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
-				} catch (InterruptedException e) {
-					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
-				} catch (IOException e) {
-					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
-				} catch (BundleException e) {
-					Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
-				}
-				
-				
-			}
-			
-
-					
-			// Add the nature
-			addAsMainNature(project, GemocLanguageDesignerNature.NATURE_ID, null);
-			addMissingResourcesToNature(project, languageName);
+			addJavaNature(project);
+			addPluginNature(project);
+			addGemocNature(project, languageName);
 		} catch (CoreException e) {
 			Activator.warn("Problem while adding Gemoc Language nature to project. "+e.getMessage(), e);
 		}
 	}
 	
+	private void addJavaNature(IProject project) throws CoreException {
+		if(!project.hasNature(JavaCore.NATURE_ID)){
+			IJavaProject javaProject = JavaCore.create(project);
+			addNature(project, JavaCore.NATURE_ID, null);
+			//CoreUtility.createFolder(project.getFolder(new Path("src"));, true, true, new SubProgressMonitor(monitor, 2));*
+			ResourceUtil.createFolder(project.getFolder(new Path("src/main/java")), true, true, new NullProgressMonitor());
+			ResourceUtil.createFolder(project.getFolder(new Path("src/main/xdsml-java-gen")), true, true, new NullProgressMonitor());
+			addJavaResources(project);
+		}
+	}
+	
+	public static void addNature(IProject project,String natureID, IProgressMonitor monitor) throws CoreException {
+		if (monitor != null && monitor.isCanceled()) {
+			throw new OperationCanceledException();
+		}
+		if (!project.hasNature(natureID)) {
+			IProjectDescription description = project.getDescription();
+			String[] prevNatures= description.getNatureIds();
+			String[] newNatures= new String[prevNatures.length + 1];
+			System.arraycopy(prevNatures, 0, newNatures, 0, prevNatures.length);
+			newNatures[prevNatures.length]= natureID;
+			description.setNatureIds(newNatures);
+			project.setDescription(description, monitor);
+		} else {
+			if (monitor != null) {
+				monitor.worked(1);
+			}
+		}
+	}
+
+	private void addPluginNature(IProject project) throws CoreException {
+		if(!project.hasNature("org.eclipse.pde.PluginNature")) {
+			IRunnableWithProgress convertOperation;
+			convertOperation = new ConvertProjectToPluginOperation(new IProject[]{project}, false);
+			try {
+				convertOperation.run(new NullProgressMonitor());
+				// complement manifest
+				ManifestChanger changer = new ManifestChanger(project);
+				changer.addPluginDependency(org.gemoc.gemoc_language_workbench.api.Activator.PLUGIN_ID, "0.1.0", true, true);
+				changer.addPluginDependency("org.eclipse.emf.ecore.xmi", "2.8.0", true, true);				
+				changer.addPluginDependency("org.gemoc.gemoc_language_workbench.api");
+				changer.addPluginDependency("org.gemoc.execution.engine");
+				changer.addPluginDependency("org.gemoc.execution.engine.commons");
+				changer.addSingleton();
+				changer.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
+				changer.commit();					
+				PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);					
+			} catch (InvocationTargetException e) {
+				Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+			} catch (InterruptedException e) {
+				Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+			} catch (IOException e) {
+				Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+			} catch (BundleException e) {
+				Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+			}								
+		}
+	}
+	
+	private void addGemocNature(IProject project, String languageName)
+			throws CoreException {
+		addAsMainNature(project, GemocLanguageDesignerNature.NATURE_ID, null);
+		addMissingResourcesToNature(project, languageName);
+	}
+
 	// add the nature making sure this will be the first
 	public static void addAsMainNature(IProject project, String natureID, IProgressMonitor monitor) throws CoreException{
 		if (monitor != null && monitor.isCanceled()) {
@@ -183,30 +205,12 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			}
 		}
 	}
-	public static void addNature(IProject project,String natureID, IProgressMonitor monitor) throws CoreException {
-		if (monitor != null && monitor.isCanceled()) {
-			throw new OperationCanceledException();
-		}
-		if (!project.hasNature(natureID)) {
-			IProjectDescription description = project.getDescription();
-			String[] prevNatures= description.getNatureIds();
-			String[] newNatures= new String[prevNatures.length + 1];
-			System.arraycopy(prevNatures, 0, newNatures, 0, prevNatures.length);
-			newNatures[prevNatures.length]= natureID;
-			description.setNatureIds(newNatures);
-			project.setDescription(description, monitor);
-		} else {
-			if (monitor != null) {
-				monitor.worked(1);
-			}
-		}
-	}
 	
 	private void addMissingResourcesToNature(IProject project, String languageName) {
 		IFile configFile = project.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
-		if(!configFile.exists()){
-			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		    Map<String, Object> m = reg.getExtensionToFactoryMap();
+		if(!configFile.exists()) {
+			Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
+		    Map<String, Object> m = registry.getExtensionToFactoryMap();
 		    m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
 
 		    // Obtain a new resource set
@@ -216,12 +220,11 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		    Resource resource = resSet.createResource(URI.createURI(configFile.getLocationURI().toString()));
 		    // Creates default root elements,
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = confFactoryImpl.eINSTANCE.createGemocLanguageWorkbenchConfiguration();
-		    LanguageDefinition ld =confFactoryImpl.eINSTANCE.createLanguageDefinition();
+		    LanguageDefinition ld = confFactoryImpl.eINSTANCE.createLanguageDefinition();
 		    ld.setName(languageName);
 		    gemocLanguageWorkbenchConfiguration.setLanguageDefinition(ld);
 		    gemocLanguageWorkbenchConfiguration.setBuildOptions(confFactoryImpl.eINSTANCE.createBuildOptions());
-		    resource.getContents().add(gemocLanguageWorkbenchConfiguration);
-		    			
+		    resource.getContents().add(gemocLanguageWorkbenchConfiguration);	
 			
 			try {
 				resource.save(null);
@@ -233,8 +236,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
-		}
-			
+		}			
 	}
 	
 	public static final String CLASSPATH_TEMPLATE= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
@@ -263,8 +265,6 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			}
 		}
 	}
-	
-
 	
 
 }

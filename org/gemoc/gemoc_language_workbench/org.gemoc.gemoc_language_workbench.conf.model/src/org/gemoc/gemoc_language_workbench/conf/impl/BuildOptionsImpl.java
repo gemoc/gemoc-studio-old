@@ -21,6 +21,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * <ul>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl#isGenerateModelLoaderService <em>Generate Model Loader Service</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl#isGenerateCodeExecutorService <em>Generate Code Executor Service</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl#isGenerateSolverService <em>Generate Solver Service</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +67,26 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 	 * @ordered
 	 */
 	protected boolean generateCodeExecutorService = GENERATE_CODE_EXECUTOR_SERVICE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isGenerateSolverService() <em>Generate Solver Service</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isGenerateSolverService()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean GENERATE_SOLVER_SERVICE_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isGenerateSolverService() <em>Generate Solver Service</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isGenerateSolverService()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean generateSolverService = GENERATE_SOLVER_SERVICE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +154,27 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isGenerateSolverService() {
+		return generateSolverService;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGenerateSolverService(boolean newGenerateSolverService) {
+		boolean oldGenerateSolverService = generateSolverService;
+		generateSolverService = newGenerateSolverService;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.BUILD_OPTIONS__GENERATE_SOLVER_SERVICE, oldGenerateSolverService, generateSolverService));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -140,6 +182,8 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 				return isGenerateModelLoaderService();
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
 				return isGenerateCodeExecutorService();
+			case confPackage.BUILD_OPTIONS__GENERATE_SOLVER_SERVICE:
+				return isGenerateSolverService();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +201,9 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 				return;
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
 				setGenerateCodeExecutorService((Boolean)newValue);
+				return;
+			case confPackage.BUILD_OPTIONS__GENERATE_SOLVER_SERVICE:
+				setGenerateSolverService((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,6 +223,9 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
 				setGenerateCodeExecutorService(GENERATE_CODE_EXECUTOR_SERVICE_EDEFAULT);
 				return;
+			case confPackage.BUILD_OPTIONS__GENERATE_SOLVER_SERVICE:
+				setGenerateSolverService(GENERATE_SOLVER_SERVICE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,6 +242,8 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 				return generateModelLoaderService != GENERATE_MODEL_LOADER_SERVICE_EDEFAULT;
 			case confPackage.BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE:
 				return generateCodeExecutorService != GENERATE_CODE_EXECUTOR_SERVICE_EDEFAULT;
+			case confPackage.BUILD_OPTIONS__GENERATE_SOLVER_SERVICE:
+				return generateSolverService != GENERATE_SOLVER_SERVICE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,6 +262,8 @@ public class BuildOptionsImpl extends EObjectImpl implements BuildOptions {
 		result.append(generateModelLoaderService);
 		result.append(", generateCodeExecutorService: ");
 		result.append(generateCodeExecutorService);
+		result.append(", generateSolverService: ");
+		result.append(generateSolverService);
 		result.append(')');
 		return result.toString();
 	}

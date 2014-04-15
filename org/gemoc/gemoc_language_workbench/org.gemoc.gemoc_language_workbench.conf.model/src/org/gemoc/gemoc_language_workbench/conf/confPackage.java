@@ -998,13 +998,22 @@ public interface confPackage extends EPackage {
 	int BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Generate Solver Service</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILD_OPTIONS__GENERATE_SOLVER_SERVICE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Build Options</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_OPTIONS_FEATURE_COUNT = 2;
+	int BUILD_OPTIONS_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
@@ -1479,6 +1488,17 @@ public interface confPackage extends EPackage {
 	EAttribute getBuildOptions_GenerateCodeExecutorService();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateSolverService <em>Generate Solver Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Generate Solver Service</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateSolverService()
+	 * @see #getBuildOptions()
+	 * @generated
+	 */
+	EAttribute getBuildOptions_GenerateSolverService();
+
+	/**
 	 * Returns the meta object for enum '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1907,6 +1927,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE = eINSTANCE.getBuildOptions_GenerateCodeExecutorService();
+
+		/**
+		 * The meta object literal for the '<em><b>Generate Solver Service</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BUILD_OPTIONS__GENERATE_SOLVER_SERVICE = eINSTANCE.getBuildOptions_GenerateSolverService();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.

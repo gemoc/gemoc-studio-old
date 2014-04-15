@@ -674,6 +674,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getBuildOptions_GenerateSolverService() {
+		return (EAttribute)buildOptionsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getProjectKind() {
 		return projectKindEEnum;
 	}
@@ -772,6 +781,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		buildOptionsEClass = createEClass(BUILD_OPTIONS);
 		createEAttribute(buildOptionsEClass, BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE);
 		createEAttribute(buildOptionsEClass, BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE);
+		createEAttribute(buildOptionsEClass, BUILD_OPTIONS__GENERATE_SOLVER_SERVICE);
 
 		// Create enums
 		projectKindEEnum = createEEnum(PROJECT_KIND);
@@ -891,6 +901,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEClass(buildOptionsEClass, BuildOptions.class, "BuildOptions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBuildOptions_GenerateModelLoaderService(), ecorePackage.getEBoolean(), "generateModelLoaderService", "true", 0, 1, BuildOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBuildOptions_GenerateCodeExecutorService(), ecorePackage.getEBoolean(), "generateCodeExecutorService", "true", 0, 1, BuildOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBuildOptions_GenerateSolverService(), ecorePackage.getEBoolean(), "generateSolverService", "true", 0, 1, BuildOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(projectKindEEnum, ProjectKind.class, "ProjectKind");
