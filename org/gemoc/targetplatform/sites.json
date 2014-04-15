@@ -24,7 +24,7 @@
         "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307"
         ],
     "ecoretools": [
-        "http://download.eclipse.org/modeling/emft/ecoretools/updates/milestones/2.0.0M4/luna"
+        "http://download.eclipse.org/modeling/emft/ecoretools/updates/milestones/2.0.0M5/luna"
         ],
     "sirius": [
         "http://download.eclipse.org/sirius/updates/milestones/1.0.0M5/kepler"
