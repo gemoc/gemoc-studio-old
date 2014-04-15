@@ -74,23 +74,46 @@ public class GemocReflectiveModelLauncher
 
 	private ObservableBasicExecutionEngine engine;
 
-	@Override
-	public void launch(ILaunchConfiguration configuration, String mode,
-			ILaunch launch, IProgressMonitor monitor) throws CoreException {
+	private ModelExecutionContext _executionContext;
+	
+	private String getModelPathAsString() {
+		return _executionContext.getModelPath().toString();
+	}
 
-		ModelExecutionContext executionContext = new ModelExecutionContext(configuration);
-		executionContext.CreateExecutionContext();
+	private String getDebuggerViewPathAsString() {
+		return _executionContext.getDebuggerViewModelPath().toString();
+	}
+
+	private String getMoCPathAsString() {
+		return _executionContext.getMoCPath().toString();
+	}
+
+	private String getLanguageName() {
+		return _executionContext.getLanguageName();
+	}
+
+	private void createModelExecutionContext(ILaunchConfiguration configuration)
+			throws CoreException {
+		_executionContext = new ModelExecutionContext(configuration);
+		_executionContext.CreateExecutionContext();
+	}
+
+	
+	@Override
+	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
+
+		createModelExecutionContext(configuration);
 		
-		Activator.getDefault().getMessaggingSystem().showConsole();
+		getMessagingSystem().showConsole();
 		debug("About to initialize and run the GEMOC Execution Engine...");
 
-		String sessionPath = configuration.getAttribute(SIRIUS_RESOURCE_URI, "");
-		String modelPath = configuration.getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
+		//String sessionPath = configuration.getAttribute(SIRIUS_RESOURCE_URI, "");
+		//String modelPath = configuration.getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
 		
 		// make sure there is no other running engine on this model
 		for( GemocExecutionEngine engine :org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values()){
   		  ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
-  		  if(observable.getEngineStatus().getRunningStatus() != RunStatus.Stopped &&  observable.getModelUnderExecutionResource().getURI().equals(URI.createPlatformResourceURI(modelPath, true))){
+  		  if(observable.getEngineStatus().getRunningStatus() != RunStatus.Stopped &&  observable.getModelUnderExecutionResource().getURI().equals(URI.createPlatformResourceURI(getModelPathAsString(), true))){
   			  warn("An engine is already running on this model, please stop it first");
   			return;
   		  }
@@ -102,33 +125,16 @@ public class GemocReflectiveModelLauncher
 			delay=Integer.parseInt(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_DELAY, "0"));
 		}
 
-		String languageName = configuration
-				.getAttribute(
-						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
-						"");
 		String deciderName = configuration
 				.getAttribute(
 						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_DECIDER,
 						"");
-		final String extendedCCSLFilePath = configuration
-				.getAttribute(
-						GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH,
-						"");
-		final String modelOfExecutionFilePath = configuration
-				.getAttribute(
-						GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
-						"");
+//		final String modelOfExecutionFilePath = configuration
+//				.getAttribute(
+//						GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
+//						"");
 
-		IConfigurationElement confElement = null;
-		IConfigurationElement[] confElements = Platform.getExtensionRegistry()
-				.getConfigurationElementsFor(
-						org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
-		// retrieve the extension for the chosen language
-		for (int i = 0; i < confElements.length; i++) {
-			if (confElements[i].getAttribute("name").equals(languageName)) {
-				confElement = confElements[i];
-			}
-		}
+		IConfigurationElement confElement = getLanguageExtension();
 
 		// All these elements are required to construct the engine. They are
 		// retrieved from the Extension Points of the xDSML.
@@ -139,57 +145,34 @@ public class GemocReflectiveModelLauncher
 		ModelLoader modelLoader = null;
 		Resource mocEventsResource = null;
 		
-		Set<IEngineHook> engineHooks = new HashSet<IEngineHook>(); 
+		Set<IEngineHook> engineHooks = retrieveEngineHooks(confElement); 
 
 		// get the extension objects
 		if (confElement != null) {
 			debug("Starting to retrieve components from the configuration...");
 
-			final Object oSolver = confElement
-					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
-			if (oSolver instanceof Solver) {
-				solver = (Solver) oSolver;
-			}
-
-			final Object oexecutor = confElement
-					.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT);
-			if (oexecutor instanceof EventExecutor) {
-				executor = (EventExecutor) oexecutor;
-			}
+			solver = instanciateSolver(confElement);
+			executor = instanciateCodeExecutor(confElement);
 
 			try {
-				final Object oFeedbackPolicy = confElement
-						.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_FEEDBACKPOLICY_ATT);
-				if (oFeedbackPolicy instanceof FeedbackPolicy) {
-					feedbackPolicy = (FeedbackPolicy) oFeedbackPolicy;
-				}
+				feedbackPolicy = instanciateFeedbackPolicy(confElement);
 			} catch (CoreException e) {
 				warn("WARNING : your xDSML does not have a FeedbackPolicy");
 			}
-			
-			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF)){
-				childConfElement.getName();				
-				final Object oEngineHook = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF_ENGINE_HOOK_ATT);
-				if(oEngineHook instanceof IEngineHook){
-					engineHooks.add((IEngineHook) oEngineHook);
-				}
-			}
 
-			String dseResourcePath = confElement
-					.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT);
+//			String dseResourcePath = confElement
+//					.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_DSE_RESOURCE_PATH_ATT);
 			
-
-			String mocEventResourcePath = confElement
-					.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
+			
+			// [FT] To disappear?
+			String mocEventResourcePath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
 			if (mocEventResourcePath != null) {
 				ResourceSet resSet = new ResourceSetImpl();
-				if(mocEventResourcePath.startsWith("/")){
-					mocEventsResource = resSet.getResource(
-							URI.createPlatformPluginURI(mocEventResourcePath, true), true);
+				if(mocEventResourcePath.startsWith("/")) {
+					mocEventsResource = resSet.getResource(URI.createPlatformPluginURI(mocEventResourcePath, true), true);
 					
 				} else {
-					mocEventsResource = resSet.getResource(
-						URI.createURI(mocEventResourcePath), true);
+					mocEventsResource = resSet.getResource(URI.createURI(mocEventResourcePath), true);
 				}
 			} else {
 				warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT
@@ -199,11 +182,7 @@ public class GemocReflectiveModelLauncher
 			// If there is a custom ModelLoader then we will use this,
 			// else we should rely on some default XMI ModelLoader.
 			try {
-				final Object oModelLoader = confElement
-						.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
-				if (oModelLoader instanceof ModelLoader) {
-					modelLoader = (ModelLoader) oModelLoader;
-				}
+				modelLoader = instanciateModelLoader(confElement);
 			} catch (CoreException e) {
 				// TODO : revert to some default generic xmi loader
 				warn("TODO XMI ModelLoader by default");
@@ -256,8 +235,8 @@ public class GemocReflectiveModelLauncher
 			}*/
 		}
 		else{
-			error("Cannot find xdsml definition for the language "+languageName+", please verify that is is correctly deployed.");
-			Activator.error("Cannot find xdsml definition for the language "+languageName+", please verify that is is correctly deployed", new NullPointerException("Cannot find xdsml definition for the language "));
+			error("Cannot find xdsml definition for the language " + getLanguageName() + ", please verify that is is correctly deployed.");
+			Activator.error("Cannot find xdsml definition for the language " + getLanguageName() + ", please verify that is is correctly deployed", new NullPointerException("Cannot find xdsml definition for the language "));
 		}
 
 		// Ugly calls to check if all the elements have been provided as
@@ -271,18 +250,18 @@ public class GemocReflectiveModelLauncher
 		this.reactToNull(modelLoader, "Model Loader");
 		// TODO will probably be replaced by an internal map in the engine,
 		// created form the domainSpecificEventsResource)
-		this.reactToNull(modelOfExecutionFilePath, "modelOfExecutionFilePath");
+		//this.reactToNull(modelOfExecutionFilePath, "modelOfExecutionFilePath");
 
-		if (extendedCCSLFilePath != null && !extendedCCSLFilePath.isEmpty()) {
-			info("forcing the solverInput to user defined extendedCCSL " + extendedCCSLFilePath);			
+		String mocPath = getMoCPathAsString();
+		if (mocPath != null && !mocPath.isEmpty()) {
+			info("forcing the solverInput to user defined extendedCCSL " + mocPath);			
 			// initialize solver
-			solver.setSolverInputFile(URI.createPlatformResourceURI(
-					extendedCCSLFilePath, true));
+			solver.setSolverInputFile(URI.createPlatformResourceURI(mocPath, true));
 		} else {
 			// TODO complement this step by a pre-run action that will build the
 			// extended-ccsl from the model using the qvto transformation
 			error("automatic call to qvto transformation  not implemented yet. Please specify a manually generated extendedCCSL file.");
-			URI solverInputFileURI = solver.prepareSolverInputFileForUserModel(URI.createPlatformResourceURI(modelPath, true));
+			URI solverInputFileURI = solver.prepareSolverInputFileForUserModel(URI.createPlatformResourceURI(getModelPathAsString(), true));
 			solver.setSolverInputFile(solverInputFileURI);
 			return;
 		}
@@ -304,18 +283,15 @@ public class GemocReflectiveModelLauncher
 		backends.add(new ConsoleBackend());
 
 		// Create and initialize engine
-		engine = new ObservableBasicExecutionEngine(solver, executor,
-				feedbackPolicy, decider);
-		engine.initialize(getModelResource(animate, sessionPath, modelPath));
+		engine = new ObservableBasicExecutionEngine(solver, executor, feedbackPolicy, decider);
+		engine.initialize(getModelResource(animate, getDebuggerViewPathAsString(), getModelPathAsString()));
 
 		for(IEngineHook engineHook : engineHooks){
 			engine.addEngineHook(engineHook);
 		}
 		// engine.
 		// configure altogether
-		configureEngine(engine, mocEventsResource,
-				domainSpecificEventsResource, solver, executor, feedbackPolicy,
-				modelPath, modelLoader, frontends, backends, delay);
+		configureEngine(engine, frontends, backends, delay);
 
 		// delegate for debug mode
 		if (ILaunchManager.DEBUG_MODE.equals(mode)) {
@@ -333,6 +309,64 @@ public class GemocReflectiveModelLauncher
 			};
 			job.schedule();
 		}
+	}
+
+	private HashSet<IEngineHook> retrieveEngineHooks(IConfigurationElement confElement) throws CoreException {
+		HashSet<IEngineHook> engineHooks = new HashSet<IEngineHook>();
+		if (confElement != null) {
+			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF)){
+				childConfElement.getName();				
+				final Object oEngineHook = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF_ENGINE_HOOK_ATT);
+				if(oEngineHook instanceof IEngineHook){
+					engineHooks.add((IEngineHook) oEngineHook);
+				}
+			}
+		}
+		return engineHooks;
+	}
+
+	private ModelLoader instanciateModelLoader(IConfigurationElement confElement) throws CoreException {
+		final Object oModelLoader = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
+		if (oModelLoader instanceof ModelLoader) {
+			return (ModelLoader) oModelLoader;
+		}
+		return null;
+	}
+
+	private FeedbackPolicy instanciateFeedbackPolicy(IConfigurationElement confElement) throws CoreException {
+		final Object oFeedbackPolicy = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_FEEDBACKPOLICY_ATT);
+		if (oFeedbackPolicy instanceof FeedbackPolicy) {
+			return(FeedbackPolicy) oFeedbackPolicy;
+		}
+		return null;
+	}
+
+	private EventExecutor instanciateCodeExecutor(IConfigurationElement confElement) throws CoreException {
+		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT);
+		if (oexecutor instanceof EventExecutor) {
+			return(EventExecutor) oexecutor;
+		}
+		return null;
+	}
+
+	private Solver instanciateSolver(IConfigurationElement confElement) throws CoreException {
+		Object oSolver = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
+		if (oSolver instanceof Solver) {
+			return (Solver) oSolver;
+		}
+		return null;
+	}
+
+	private IConfigurationElement getLanguageExtension() {
+		IConfigurationElement confElement = null;
+		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+		// retrieve the extension for the chosen language
+		for (int i = 0; i < confElements.length; i++) {
+			if (confElements[i].getAttribute("name").equals(getLanguageName())) {
+				confElement = confElements[i];
+			}
+		}
+		return confElement;
 	}
 
 	private void debug(String message) {
@@ -380,20 +414,16 @@ public class GemocReflectiveModelLauncher
 		}
 	}
 
-	protected void configureEngine(GemocExecutionEngine engine,
-			Resource mocEventsResource, Resource domainSpecificEventsResource,
-			Solver solver, EventExecutor executor,
-			FeedbackPolicy feedbackPolicy, String modelPath,
-			ModelLoader modelLoader, List<Frontend> frontends,
-			List<Backend> backends, int delay) {
-
-		engine.setDelay(delay);
-		
+	protected void configureEngine(
+						GemocExecutionEngine engine,
+						List<Frontend> frontends,
+						List<Backend> backends, 
+						int delay) {
+		engine.setDelay(delay);		
 		// Links the Execution Engine to the Frontends
 		for (Frontend frontend : frontends) {
 			frontend.initialize(engine);
 		}
-
 		// Configures all the backends and links the Execution Engine to the
 		// Backends
 		for (Backend backend : backends) {

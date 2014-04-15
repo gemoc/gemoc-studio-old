@@ -19,12 +19,12 @@ public class ModelExecutionContext {
 
 	private ILaunchConfiguration _launchConfiguration;
 	
+	private IPath _originalModelPath;
 	public IPath getModelPath() {
-		return _inputPath.append(_originalModelPath.lastSegment());
+		return _originalModelPath;
+		//return _inputPath.append(_originalModelPath.lastSegment());
 	}
 	
-	private IPath _originalModelPath;
-
 	private IPath _debuggerViewModelPath;
 	public IPath getDebuggerViewModelPath() {
 		return _debuggerViewModelPath;
@@ -32,7 +32,8 @@ public class ModelExecutionContext {
 	
 	private IPath _originalMoCPath;
 	public IPath getMoCPath() {
-		return _runtimePath.append(_originalMoCPath.lastSegment());
+		return _originalMoCPath;
+		//return _runtimePath.append(_originalMoCPath.lastSegment());
 	}
 	
 	private IPath _topPath;
