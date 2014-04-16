@@ -54,6 +54,7 @@ import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
+import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
@@ -252,19 +253,23 @@ public class GemocReflectiveModelLauncher
 		// created form the domainSpecificEventsResource)
 		//this.reactToNull(modelOfExecutionFilePath, "modelOfExecutionFilePath");
 
-		String mocPath = getMoCPathAsString();
-		if (mocPath != null && !mocPath.isEmpty()) {
-			info("forcing the solverInput to user defined extendedCCSL " + mocPath);			
-			// initialize solver
-			solver.setSolverInputFile(URI.createPlatformResourceURI(mocPath, true));
-		} else {
-			// TODO complement this step by a pre-run action that will build the
-			// extended-ccsl from the model using the qvto transformation
-			error("automatic call to qvto transformation  not implemented yet. Please specify a manually generated extendedCCSL file.");
-			URI solverInputFileURI = solver.prepareSolverInputFileForUserModel(URI.createPlatformResourceURI(getModelPathAsString(), true));
-			solver.setSolverInputFile(solverInputFileURI);
-			return;
-		}
+		String transformationPath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
+		_executionContext.generateMoC(transformationPath);
+		solver.setSolverInputFile(URI.createPlatformResourceURI(_executionContext.getMoCPath().toString(), true));
+		
+//		if (mocPath != null && !mocPath.isEmpty()) {
+//			info("forcing the solverInput to user defined extendedCCSL " + mocPath);			
+//			// initialize solver
+//			solver.setSolverInputFile(URI.createPlatformResourceURI(mocPath, true));
+//		} else {
+//			
+//			// TODO complement this step by a pre-run action that will build the
+//			// extended-ccsl from the model using the qvto transformation
+//			error("automatic call to qvto transformation  not implemented yet. Please specify a manually generated extendedCCSL file.");
+//			URI solverInputFileURI = solver.prepareSolverInputFileForUserModel(URI.createPlatformResourceURI(mocPath, true));
+//			solver.setSolverInputFile(solverInputFileURI);
+//			return;
+//		}
 
 		// create decider
 		ILogicalStepDecider decider = LogicalStepDeciderFactory.CreateDecider(deciderName, solver);

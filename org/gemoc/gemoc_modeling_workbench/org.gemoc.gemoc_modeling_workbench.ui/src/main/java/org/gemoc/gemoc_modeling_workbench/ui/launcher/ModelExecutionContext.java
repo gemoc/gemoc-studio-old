@@ -10,6 +10,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
@@ -32,12 +33,14 @@ public class ModelExecutionContext {
 	
 	private IPath _originalMoCPath;
 	public IPath getMoCPath() {
-		return _originalMoCPath;
-		//return _runtimePath.append(_originalMoCPath.lastSegment());
+		//return new Path("");
+		//return _originalMoCPath;
+		return _globalExecutionPath.append(_originalMoCPath.lastSegment());
 	}
 	
 	private IPath _topPath;
-	private IPath _executionPath;	
+	private IPath _globalExecutionPath;	
+	private IPath _specificExecutionPath;	
 	private IPath _inputPath;
 	private IPath _runtimePath;
 
@@ -49,16 +52,24 @@ public class ModelExecutionContext {
 	public ModelExecutionContext(ILaunchConfiguration configuration) throws CoreException {
 		_launchConfiguration = configuration;
 		_topPath = _launchConfiguration.getFile().getParent().getParent().getFullPath().append("/gemoc-gen");
-		_executionPath = _topPath.append(generateExecutionFolderName());	
-		_inputPath = _executionPath.append("/input");
-		_runtimePath = _executionPath.append("/runtime");
+		_globalExecutionPath = _topPath.append("execution");
+		_specificExecutionPath = _topPath.append(generateSpecificExecutionFolderName());	
+		_inputPath = _specificExecutionPath.append("/input");
+		_runtimePath = _specificExecutionPath.append("/runtime");
 		_originalModelPath = new Path(getLaunchAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI));
 		_debuggerViewModelPath = new Path(getLaunchAttribute(AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI));
-		_originalMoCPath = new Path(getLaunchAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH));
+		//_originalMoCPath = new Path(getLaunchAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH));
+		setMoCPath();
 		_languageName = configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE, "");
 	}
 
-	private String generateExecutionFolderName() {
+	private void setMoCPath() {
+		int numberOfCharToRemove = _originalModelPath.lastSegment().toString().length() - _originalModelPath.getFileExtension().length() -1;
+		String path = _originalModelPath.lastSegment().toString().substring(0, numberOfCharToRemove) + "_executionModel.extendedCCSL";
+		_originalMoCPath = new Path(path);
+	}
+
+	private String generateSpecificExecutionFolderName() {
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		return "/execution-" + timeStamp;
 	}
@@ -74,8 +85,9 @@ public class ModelExecutionContext {
 	}
 	
 	private void createExecutionFolders() throws CoreException {
-		createFolder(_topPath);
-		createFolder(_executionPath);
+		createFolder(_topPath);		
+		createFolder(_globalExecutionPath);
+		createFolder(_specificExecutionPath);
 		createFolder(_inputPath);
 		createFolder(_runtimePath);
 	}
@@ -98,7 +110,7 @@ public class ModelExecutionContext {
 
 	private void generateRuntime() throws CoreException {
 		copyFileToRuntimeFolder(_originalModelPath);
-		copyFileToRuntimeFolder(_originalMoCPath);
+		//copyFileToRuntimeFolder(_originalMoCPath);
 		// copy sirius animator		
 	}
 
@@ -112,5 +124,11 @@ public class ModelExecutionContext {
 		file.copy(destinationPath, true, null);
 	}
 
+	public void generateMoC(String transformationPath) {
+		if (!ResourcesPlugin.getWorkspace().getRoot().getFile(getMoCPath()).exists()) {
+			QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
+			performer.run(transformationPath, getModelPath().toString(), getMoCPath().toString());			
+		}		
+	}
 
 }
