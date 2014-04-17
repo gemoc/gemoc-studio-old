@@ -31,7 +31,13 @@ public class AskLanguageNameWizardPage extends WizardPage {
         if (name == null) {
 			_initialLanguageName = null;
 		} else {
-	    	_initialLanguageName = name.trim().replaceAll("\\W", "").replaceAll(" ", "");
+			int indexOfFirstPoint = name.lastIndexOf(".");
+			String intermediateString = name.trim();
+			if (indexOfFirstPoint != -1
+				&& intermediateString.length() > indexOfFirstPoint) {
+				intermediateString = intermediateString.substring(indexOfFirstPoint+1);
+			}
+	    	_initialLanguageName = intermediateString.replaceAll("\\W", "").replaceAll(" ", "");
         }
         if (_nameField != null) {
         	_nameField.setText(_initialLanguageName);

@@ -10,8 +10,10 @@ import org.eclipse.core.commands.NotHandledException;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -120,8 +122,6 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			
 			// Add the nature
 			addAsMainNature(project, GemocReflectiveModelNature.NATURE_ID);
-						
-			
 			addMissingResourcesToNature(project);
 		} catch (CoreException e) {
 			Activator.warn("Problem while adding Gemoc Model nature to project. "+e.getMessage(), e);
