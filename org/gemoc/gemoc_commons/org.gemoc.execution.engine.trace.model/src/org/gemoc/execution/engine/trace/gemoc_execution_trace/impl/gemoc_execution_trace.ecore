@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gemoc_execution_trace" nsURI="http://www.inira.fr/gemoc_execution_trace"
+    nsPrefix="gemoc_execution_trace">
+  <eClassifiers xsi:type="ecore:EClass" name="Choice">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nextChoice" eType="#//Choice"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="possibleLogicalSteps" upperBound="-1"
+        eType="ecore:EClass http://www.inria.fr/sophia/aoste/trace/1.0.0#//LogicalStep"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="ecore:EClass http://www.inria.fr/sophia/aoste/trace/1.0.0#//LogicalStep"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionTraceModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1"
+        eType="#//Choice" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

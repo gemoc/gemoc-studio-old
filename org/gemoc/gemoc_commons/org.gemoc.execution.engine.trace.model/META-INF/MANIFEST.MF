@@ -12,5 +12,6 @@ Export-Package: org.gemoc.execution.engine.trace.gemoc_execution_trace,
  org.gemoc.execution.engine.trace.gemoc_execution_trace.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
  fr.inria.aoste.trace;bundle-version="1.0.1"
 Bundle-ActivationPolicy: lazy

@@ -4,12 +4,17 @@ package org.gemoc.execution.engine.trace.gemoc_execution_trace.impl;
 
 import fr.inria.aoste.trace.TracePackage;
 import fr.inria.aoste.trace.impl.TracePackageImpl;
+import java.io.IOException;
+import java.net.URL;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
 
@@ -20,6 +25,13 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngi
  * @generated
  */
 public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implements GemocExecutionEngineTracePackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected String packageFilename = "gemoc_execution_trace.ecore";
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -68,8 +80,6 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
-	 * @see #createPackageContents()
-	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static GemocExecutionEngineTracePackage init() {
@@ -83,13 +93,17 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 		// Obtain or create and register interdependencies
 		TracePackageImpl theTracePackage = (TracePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI) instanceof TracePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI) : TracePackage.eINSTANCE);
 
+		// Load packages
+		theGemocExecutionEngineTracePackage.loadPackage();
+
 		// Create package meta-data objects
-		theGemocExecutionEngineTracePackage.createPackageContents();
 		theTracePackage.createPackageContents();
 
 		// Initialize created meta-data
-		theGemocExecutionEngineTracePackage.initializePackageContents();
 		theTracePackage.initializePackageContents();
+
+		// Fix loaded packages
+		theGemocExecutionEngineTracePackage.fixPackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theGemocExecutionEngineTracePackage.freeze();
@@ -106,6 +120,9 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	public EClass getChoice() {
+		if (choiceEClass == null) {
+			choiceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(GemocExecutionEngineTracePackage.eNS_URI).getEClassifiers().get(0);
+		}
 		return choiceEClass;
 	}
 
@@ -115,7 +132,7 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	public EReference getChoice_NextChoice() {
-		return (EReference)choiceEClass.getEStructuralFeatures().get(0);
+        return (EReference)getChoice().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -124,7 +141,7 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	public EReference getChoice_PossibleLogicalSteps() {
-		return (EReference)choiceEClass.getEStructuralFeatures().get(1);
+        return (EReference)getChoice().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -133,7 +150,7 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	public EReference getChoice_ChosenLogicalStep() {
-		return (EReference)choiceEClass.getEStructuralFeatures().get(2);
+        return (EReference)getChoice().getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -142,6 +159,9 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	public EClass getExecutionTraceModel() {
+		if (executionTraceModelEClass == null) {
+			executionTraceModelEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(GemocExecutionEngineTracePackage.eNS_URI).getEClassifiers().get(1);
+		}
 		return executionTraceModelEClass;
 	}
 
@@ -151,7 +171,7 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	public EReference getExecutionTraceModel_Choices() {
-		return (EReference)executionTraceModelEClass.getEStructuralFeatures().get(0);
+        return (EReference)getExecutionTraceModel().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -168,27 +188,32 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private boolean isCreated = false;
+	private boolean isLoaded = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
+	 * Laods the package and any sub-packages from their serialized form.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void createPackageContents() {
-		if (isCreated) return;
-		isCreated = true;
+	public void loadPackage() {
+		if (isLoaded) return;
+		isLoaded = true;
 
-		// Create classes and their features
-		choiceEClass = createEClass(CHOICE);
-		createEReference(choiceEClass, CHOICE__NEXT_CHOICE);
-		createEReference(choiceEClass, CHOICE__POSSIBLE_LOGICAL_STEPS);
-		createEReference(choiceEClass, CHOICE__CHOSEN_LOGICAL_STEP);
-
-		executionTraceModelEClass = createEClass(EXECUTION_TRACE_MODEL);
-		createEReference(executionTraceModelEClass, EXECUTION_TRACE_MODEL__CHOICES);
+		URL url = getClass().getResource(packageFilename);
+		if (url == null) {
+			throw new RuntimeException("Missing serialized package: " + packageFilename);
+		}
+		URI uri = URI.createURI(url.toString());
+		Resource resource = new EcoreResourceFactoryImpl().createResource(uri);
+		try {
+			resource.load(null);
+		}
+		catch (IOException exception) {
+			throw new WrappedException(exception);
+		}
+		initializeFromLoadedEPackage(this, (EPackage)resource.getContents().get(0));
+		createResource(eNS_URI);
 	}
 
 	/**
@@ -196,44 +221,32 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private boolean isInitialized = false;
+	private boolean isFixed = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
+	 * Fixes up the loaded package, to make it appear as if it had been programmatically built.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void initializePackageContents() {
-		if (isInitialized) return;
-		isInitialized = true;
+	public void fixPackageContents() {
+		if (isFixed) return;
+		isFixed = true;
+		fixEClassifiers();
+	}
 
-		// Initialize package
-		setName(eNAME);
-		setNsPrefix(eNS_PREFIX);
-		setNsURI(eNS_URI);
-
-		// Obtain other dependent packages
-		TracePackage theTracePackage = (TracePackage)EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
-
-		// Create type parameters
-
-		// Set bounds for type parameters
-
-		// Add supertypes to classes
-
-		// Initialize classes, features, and operations; add parameters
-		initEClass(choiceEClass, Choice.class, "Choice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChoice_NextChoice(), this.getChoice(), null, "nextChoice", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChoice_PossibleLogicalSteps(), theTracePackage.getLogicalStep(), null, "possibleLogicalSteps", null, 0, -1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChoice_ChosenLogicalStep(), theTracePackage.getLogicalStep(), null, "chosenLogicalStep", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(executionTraceModelEClass, ExecutionTraceModel.class, "ExecutionTraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecutionTraceModel_Choices(), this.getChoice(), null, "choices", null, 0, -1, ExecutionTraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Create resource
-		createResource(eNS_URI);
+	/**
+	 * Sets the instance class on the given classifier.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected void fixInstanceClass(EClassifier eClassifier) {
+		if (eClassifier.getInstanceClassName() == null) {
+			eClassifier.setInstanceClassName("org.gemoc.execution.engine.trace.gemoc_execution_trace." + eClassifier.getName());
+			setGeneratedClassName(eClassifier);
+		}
 	}
 
 } //GemocExecutionEngineTracePackageImpl

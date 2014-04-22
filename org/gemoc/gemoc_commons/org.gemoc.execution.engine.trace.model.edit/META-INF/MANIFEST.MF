@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.gemoc.execution.engine.trace.model.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: GemocExecutionEngineTrace.provider.GemocExecutionEngineTraceEditPlugin$Implementation
+Bundle-Activator: org.gemoc.execution.engine.trace.gemoc_execution_trace.provider.GemocExecutionEngineTraceEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
@@ -12,5 +12,5 @@ Export-Package: org.gemoc.execution.engine.trace.gemoc_execution_trace.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.execution.engine.trace.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
- fr.inria.aoste.trace;bundle-version="1.0.1"
+ fr.inria.aoste.trace.edit.ui;bundle-version="1.0.1"
 Bundle-ActivationPolicy: lazy

@@ -25,18 +25,6 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated GemocExecutionEngineTrace -->
       <editor
-            id="fr.inria.aoste.trace.presentation.TraceEditorID"
-            name="%_UI_TraceEditor_label"
-            icon="icons/full/obj16/TraceModelFile.gif"
-            extensions="trace"
-            class="fr.inria.aoste.trace.presentation.TraceEditor"
-            contributorClass="fr.inria.aoste.trace.presentation.TraceActionBarContributor">
-      </editor>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated GemocExecutionEngineTrace -->
-      <editor
             id="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.GemocExecutionEngineTraceEditorID"
             name="%_UI_GemocExecutionEngineTraceEditor_label"
             icon="icons/full/obj16/GemocExecutionEngineTraceModelFile.gif"
@@ -62,8 +50,16 @@
       </wizard>
    </extension>
 
-null
-null
-null
-null
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GemocExecutionEngineTrace -->
+      <editor
+            id="fr.inria.aoste.trace.presentation.TraceEditorID"
+            name="%_UI_TraceEditor_label"
+            icon="icons/full/obj16/TraceModelFile.gif"
+            extensions="trace"
+            class="fr.inria.aoste.trace.presentation.TraceEditor"
+            contributorClass="fr.inria.aoste.trace.presentation.TraceActionBarContributor">
+      </editor>
+   </extension>
+
 </plugin>
