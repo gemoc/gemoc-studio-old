@@ -11,7 +11,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.InvalidRegistryObjectException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -26,6 +28,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
@@ -40,6 +43,7 @@ import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.deciders.RandomDecider;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
+import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.io.backends.ConsoleBackend;
@@ -63,6 +67,7 @@ import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
+import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
 public class GemocReflectiveModelLauncher
 		extends
@@ -73,6 +78,8 @@ public class GemocReflectiveModelLauncher
 
 	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
 
+	private ILaunchConfiguration _launchConfiguration;
+	
 	private ObservableBasicExecutionEngine engine;
 
 	private ModelExecutionContext _executionContext;
@@ -89,21 +96,31 @@ public class GemocReflectiveModelLauncher
 		return _executionContext.getMoCPath().toString();
 	}
 
-	private String getLanguageName() {
-		return _executionContext.getLanguageName();
+	private String getLanguageName() throws CoreException {
+		return _launchConfiguration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE, "");
 	}
 
-	private void createModelExecutionContext(ILaunchConfiguration configuration)
+	private String getLaunchAttribute(String attributeName) throws CoreException {
+		return _launchConfiguration.getAttribute(attributeName, "");
+	}
+
+	
+	private void createModelExecutionContext()
 			throws CoreException {
-		_executionContext = new ModelExecutionContext(configuration);
-		_executionContext.CreateExecutionContext();
+		_executionContext = new ModelExecutionContext(
+									_launchConfiguration.getFile().getParent().getParent().getFullPath(), 
+									new Path(getLaunchAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI)),
+									new Path(getLaunchAttribute(AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI)));
 	}
 
+	
+	
 	
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
-		createModelExecutionContext(configuration);
+		_launchConfiguration = configuration;		
+		createModelExecutionContext();
 		
 		getMessagingSystem().showConsole();
 		debug("About to initialize and run the GEMOC Execution Engine...");
@@ -252,10 +269,20 @@ public class GemocReflectiveModelLauncher
 		// TODO will probably be replaced by an internal map in the engine,
 		// created form the domainSpecificEventsResource)
 		//this.reactToNull(modelOfExecutionFilePath, "modelOfExecutionFilePath");
-
+		
+		ResourceSet resourceSet = getResourceSet(animate, getDebuggerViewPathAsString());
+		
 		String transformationPath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
 		_executionContext.generateMoC(transformationPath);
-		solver.setSolverInputFile(URI.createPlatformResourceURI(_executionContext.getMoCPath().toString(), true));
+		URI mocURI = URI.createPlatformResourceURI(_executionContext.getMoCPath().toString(), true);
+		solver.setSolverInputFile(resourceSet, mocURI);
+		
+		Resource modelResource = getModelResource(resourceSet, getModelPathAsString());
+		TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
+		if (animate) {
+			// [FT] do not use the editing domain from sirius for now
+			// editingDomain = attachSiriusIfNecessary();
+		}
 		
 //		if (mocPath != null && !mocPath.isEmpty()) {
 //			info("forcing the solverInput to user defined extendedCCSL " + mocPath);			
@@ -288,8 +315,8 @@ public class GemocReflectiveModelLauncher
 		backends.add(new ConsoleBackend());
 
 		// Create and initialize engine
-		engine = new ObservableBasicExecutionEngine(solver, executor, feedbackPolicy, decider);
-		engine.initialize(getModelResource(animate, getDebuggerViewPathAsString(), getModelPathAsString()));
+		engine = new ObservableBasicExecutionEngine(solver, executor, feedbackPolicy, decider, _executionContext);
+		engine.initialize(modelResource, editingDomain);
 
 		for(IEngineHook engineHook : engineHooks){
 			engine.addEngineHook(engineHook);
@@ -314,6 +341,26 @@ public class GemocReflectiveModelLauncher
 			};
 			job.schedule();
 		}
+	}
+
+	private TransactionalEditingDomain attachSiriusIfNecessary() {
+		URI uri = URI.createPlatformResourceURI(getDebuggerViewPathAsString(), true);
+		Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+		TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
+//		ResourceSet siriusRS = editingDomain.getResourceSet();
+//		for (Resource r : new ArrayList<Resource>(resourceSet.getResources())) {
+//			// delete the extra resource loaded by sirius
+//			for (Resource resourceToPossiblyDelete : new ArrayList<Resource>(siriusRS.getResources())) {
+//				if (r.getURI().equals(resourceToPossiblyDelete.getURI())) {
+//					siriusRS.getResources().remove(resourceToPossiblyDelete);
+//				}
+//			}
+//			// add the resource loaded by the solver in sirius
+//			siriusRS.getResources().add(r);
+//		}
+//		session.open(new NullProgressMonitor());
+//		resourceSet = siriusRS;
+		return editingDomain; 
 	}
 
 	private HashSet<IEngineHook> retrieveEngineHooks(IConfigurationElement confElement) throws CoreException {
@@ -362,7 +409,7 @@ public class GemocReflectiveModelLauncher
 		return null;
 	}
 
-	private IConfigurationElement getLanguageExtension() {
+	private IConfigurationElement getLanguageExtension() throws InvalidRegistryObjectException, CoreException {
 		IConfigurationElement confElement = null;
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
 		// retrieve the extension for the chosen language
@@ -396,20 +443,19 @@ public class GemocReflectiveModelLauncher
 				.getMessaggingSystem();	
 	}
 
-	protected Resource getModelResource(boolean animate, String sessionPath, String modelPath) throws CoreException {		
-		final Resource res;
-		if (animate) {
-			URI uri = URI.createPlatformResourceURI(sessionPath, true);
-			Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
-			if (session == null) {
-				session = SessionFactory.INSTANCE.createDefaultSession(uri);
-				SessionManager.INSTANCE.add(session);
-			}
-			res = session.getTransactionalEditingDomain().getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
-		}else {
-			res = getResourceSet().getResource(URI.createPlatformResourceURI(modelPath, true), true);
-		}
-		return res;
+	private ResourceSet getResourceSet(boolean animate, String sessionPath) {
+//		if (animate) {
+//			URI uri = URI.createPlatformResourceURI(sessionPath, true);
+//			Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+//			return session.getTransactionalEditingDomain().getResourceSet();
+//		} else {
+//			return new ResourceSetImpl();
+//		}
+		return new ResourceSetImpl();
+	}
+	
+	protected Resource getModelResource(ResourceSet resourceSet, String modelPath) throws CoreException {		
+		return resourceSet.getResource(URI.createPlatformResourceURI(modelPath, true), true);
 	}
 
 	private void reactToNull(Object o, String name) {

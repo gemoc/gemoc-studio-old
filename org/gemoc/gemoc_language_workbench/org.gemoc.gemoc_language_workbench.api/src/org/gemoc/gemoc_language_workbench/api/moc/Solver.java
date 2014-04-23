@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
@@ -85,10 +86,11 @@ public interface Solver {
 	/**
 	 * Sets the input (constraints instanciated for the model) for this solver.
 	 * We use a file URI to allow different formats.
+	 * @param rs 
 	 * 
 	 * @param solverInputURI
 	 */
-	public void setSolverInputFile(URI solverInputURI);
+	public void setSolverInputFile(ResourceSet rs, URI solverInputURI);
 
 	/**
 	 * Returns the instance of MocEvent for the EObject target. The Solver (or

@@ -1,21 +1,21 @@
 package org.gemoc.execution.engine.core;
 
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
-import java.util.Queue;
 import java.util.Set;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
@@ -37,6 +37,7 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
+import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 
 /**
@@ -110,6 +111,8 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	protected ILogicalStepDecider logicalStepDecider = null;
 	protected Set<IEngineHook> registeredEngineHooks = new HashSet<IEngineHook>();
 
+	private ModelExecutionContext _executionContext;
+	
 	/**
 	 * URI of the model being executed
 	 */
@@ -141,9 +144,10 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	 *            cannot be null
 	 * @param feedbackPolicy
 	 *            can be null (for now).
+	 * @param _executionContext 
 	 */
 	public ObservableBasicExecutionEngine(Solver solver,
-			EventExecutor executor, FeedbackPolicy feedbackPolicy, ILogicalStepDecider decider) {
+			EventExecutor executor, FeedbackPolicy feedbackPolicy, ILogicalStepDecider decider, ModelExecutionContext executionContext) {
 
 		// The engine needs AT LEAST a mocEventsResource,
 		// domainSpecificEventsResource, a Solver,
@@ -178,6 +182,8 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						Activator.PLUGIN_ID);
 			}
 
+			_executionContext = executionContext;
+			
 			this.solver = solver;
 			this.executor = executor;
 			this.executor.initialize();
@@ -197,17 +203,31 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 	}
 
+	private TransactionalEditingDomain _editingDomain;
 	@Override
-	public void initialize(Resource resource) {
+	public void initialize(Resource resource, TransactionalEditingDomain editingDomain) {
 
+		_editingDomain = editingDomain;
 		this.modelUnderExecutionStringURI = resource.getURI().toString();
 
 		// Create the modelResource from the modelURI using the modelLoader.
 		this.modelUnderExecutionResource = resource;
 
-		Activator.getMessagingSystem().info(
-				"*** Engine initialization done. ***", Activator.PLUGIN_ID);
+		ResourceSet rs = this.modelUnderExecutionResource.getResourceSet();
+
+		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getRuntimePath().toString() + "/trace/trace.xmi", false);
+		final Resource modelResource = rs.createResource(traceModelURI);
+		final CommandStack commandStack = _editingDomain.getCommandStack();
+		commandStack.execute(new RecordingCommand(_editingDomain) {
+			@Override
+			protected void doExecute() {
+				modelResource.getContents().add(_executionTraceModel);
+			}
+		});
+		
+		Activator.getMessagingSystem().info("*** Engine initialization done. ***", Activator.PLUGIN_ID);
 	}
+
 
 	@Override
 	public void start() {
@@ -275,8 +295,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			ObservableBasicExecutionEngine.this.notifyObservers("Starting "+engineName); // use a simple message for the console observer
 			long count = 0;
 			while (!terminated) {
-				try {
-					
+				try {					
+					saveModels(count);
+										
 					// 1- ask solver possible solutions for this step (set of
 					// logical steps | 1 logical step = set of simultaneous
 					// event occurence)
@@ -388,21 +409,44 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			// TODO remove the engine from registered running engines
 		}
 
+		private void saveModels(long count) throws CoreException, IOException {
+			_executionContext.saveTraceModel(_executionTraceModel.eResource(), count);
+			_executionContext.saveDomainModel(modelUnderExecutionResource, count);			
+		}
 
-		private void updateTraceModelAfterDeciding(int selectedLogicalStepIndex) {
-			_lastChoice.setChosenLogicalStep(_lastChoice.getPossibleLogicalSteps().get(selectedLogicalStepIndex));
+		private void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) {
+			final CommandStack commandStack = _editingDomain.getCommandStack();
+			commandStack.execute(new RecordingCommand(_editingDomain) {
+
+				@Override
+				protected void doExecute() {
+					_lastChoice.setChosenLogicalStep(_lastChoice.getPossibleLogicalSteps().get(selectedLogicalStepIndex));
+				}
+			});
 		}
 
 
-		private void updateTraceModelBeforeDeciding(List<LogicalStep> possibleLogicalSteps) {
-			Choice newChoice = createChoice(possibleLogicalSteps);
-			if (getEngineStatus().getFirstChoice() == null)
-				getEngineStatus().setFirstChoice(newChoice);
-			if (_lastChoice != null) {
-				_lastChoice.setNextChoice(newChoice);
-			}
-			_lastChoice = newChoice;
-			_executionTraceModel.getChoices().add(_lastChoice);
+		private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
+			final CommandStack commandStack = _editingDomain.getCommandStack();
+			commandStack.execute(new RecordingCommand(_editingDomain) {
+
+				@Override
+				protected void doExecute() {
+					Choice newChoice = createChoice(possibleLogicalSteps);
+					if (getEngineStatus().getFirstChoice() == null)
+						getEngineStatus().setFirstChoice(newChoice);
+					if (_lastChoice != null) {
+						_lastChoice.setNextChoice(newChoice);
+					}
+					_lastChoice = newChoice;
+					_executionTraceModel.getChoices().add(_lastChoice);
+					for (LogicalStep step : _lastChoice.getPossibleLogicalSteps()) {
+						for (EventOccurrence occurence : step.getEventOccurrences()) {
+							_executionTraceModel.eResource().getContents().add(occurence.getReferedElement());
+						}
+					}
+				}
+			});
 		}
 
 

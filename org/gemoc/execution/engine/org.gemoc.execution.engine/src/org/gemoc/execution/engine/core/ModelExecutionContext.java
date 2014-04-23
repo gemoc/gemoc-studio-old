@@ -1,5 +1,12 @@
-package org.gemoc.gemoc_modeling_workbench.ui.launcher;
+package org.gemoc.execution.engine.core;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -8,18 +15,14 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
-
-import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
-import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
 
 public class ModelExecutionContext {
 
-	private ILaunchConfiguration _launchConfiguration;
-	
 	private IPath _originalModelPath;
 	public IPath getModelPath() {
 		return _originalModelPath;
@@ -41,26 +44,24 @@ public class ModelExecutionContext {
 	private IPath _topPath;
 	private IPath _globalExecutionPath;	
 	private IPath _specificExecutionPath;	
+
 	private IPath _inputPath;
 	private IPath _runtimePath;
-
-	private String _languageName;
-	public String getLanguageName() {
-		return _languageName;
+	public IPath getRuntimePath() {
+		return _runtimePath;
 	}
 	
-	public ModelExecutionContext(ILaunchConfiguration configuration) throws CoreException {
-		_launchConfiguration = configuration;
-		_topPath = _launchConfiguration.getFile().getParent().getParent().getFullPath().append("/gemoc-gen");
+	public ModelExecutionContext(IPath projectPath, IPath domainModelPath, IPath debuggerModelPath) throws CoreException {
+		_topPath = projectPath.append("/gemoc-gen");
 		_globalExecutionPath = _topPath.append("execution");
 		_specificExecutionPath = _topPath.append(generateSpecificExecutionFolderName());	
 		_inputPath = _specificExecutionPath.append("/input");
 		_runtimePath = _specificExecutionPath.append("/runtime");
-		_originalModelPath = new Path(getLaunchAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI));
-		_debuggerViewModelPath = new Path(getLaunchAttribute(AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI));
+		_originalModelPath = domainModelPath;
+		_debuggerViewModelPath = debuggerModelPath;
 		//_originalMoCPath = new Path(getLaunchAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH));
 		setMoCPath();
-		_languageName = configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE, "");
+		createExecutionContext();
 	}
 
 	private void setMoCPath() {
@@ -73,12 +74,8 @@ public class ModelExecutionContext {
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		return "/execution-" + timeStamp;
 	}
-
-	private String getLaunchAttribute(String attributeName) throws CoreException {
-		return _launchConfiguration.getAttribute(attributeName, "");
-	}
 	
-	void CreateExecutionContext() throws CoreException {
+	void createExecutionContext() throws CoreException {
 		createExecutionFolders();
 		generateInput();
 		generateRuntime();
@@ -130,5 +127,55 @@ public class ModelExecutionContext {
 			performer.run(transformationPath, getModelPath().toString(), getMoCPath().toString());			
 		}		
 	}
+	
+	
+	public void saveTraceModel(Resource resource, long stepNumber) throws CoreException, IOException {
+		if (resource.getContents().size() > 0) {
+			IPath folderPath = getStepFolder(stepNumber);	
+			IPath filePath = folderPath.append("trace.xmi");
+			saveResource(resource, filePath);			
+		}
+	}
+
+	public void saveDomainModel(Resource resource, long stepNumber) throws CoreException, IOException {
+		if (resource.getContents().size() > 0) {
+			IPath folderPath = getStepFolder(stepNumber);	
+			IPath filePath = folderPath.append(resource.getURI().lastSegment());
+			saveResource(resource, filePath);			
+		}	
+	}
+
+	private IPath getStepFolder(long stepNumber) throws CoreException {
+		IPath folderPath = _runtimePath.append("step" + stepNumber);
+		createFolder(folderPath);
+		return folderPath;
+	}
+
+	private void saveResource(Resource resource, IPath filePath) throws IOException, CoreException {
+		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(filePath);		
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		ByteArrayInputStream in = null;
+		try {
+			resource.save(out, null);								
+			in = new ByteArrayInputStream(out.toByteArray());
+			file.create(in, true, new NullProgressMonitor());
+		} finally {
+			out.close();
+			if (in != null)
+				in.close();
+		}
+	}
+
+	
+//	public URI getTraceModelURI(Resource domainModelResource, long stepNumber) {
+//		int numberOfSegmentsToTrim = domainModelResource.getURI().segmentCount() > 2 ? domainModelResource.getURI().segmentCount() - 2 : 0;
+//		return domainModelResource.getURI()
+//										.trimSegments(numberOfSegmentsToTrim)
+//										.appendSegment("gemoc-gen")
+//										.appendSegment("execution")
+//										.appendSegment("step" + stepNumber)
+//										.appendSegment("trace.xmi");
+//	}
+
 
 }

@@ -172,10 +172,9 @@ public abstract class CcslSolver implements
 	}
 
 	@Override
-	public void setSolverInputFile(URI solverInputURI) {
+	public void setSolverInputFile(ResourceSet resourceSet, URI solverInputURI) {
 		this.solverInputURI = solverInputURI;
 		try {
-			ResourceSet resourceSet = new ResourceSetImpl();
 			Resource ccslResource = resourceSet.getResource(
 					this.solverInputURI, true);
 			ccslResource.load(null);
@@ -208,7 +207,6 @@ public abstract class CcslSolver implements
 					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 		}
-
 	}
 
 	/**

@@ -1,6 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
@@ -27,7 +28,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 * @param resource
 	 *            the {@link Resource} containing the model to execute.
 	 */
-	void initialize(Resource resource);
+	//void initialize(Resource resource);
 
 	/**
 	 * Retrieve the model being executed.
@@ -57,6 +58,8 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 *            the delay in millisecond
 	 */
 	void setDelay(int delay);
+
+	void initialize(Resource resource, TransactionalEditingDomain editingDomain);
 
 
 }
