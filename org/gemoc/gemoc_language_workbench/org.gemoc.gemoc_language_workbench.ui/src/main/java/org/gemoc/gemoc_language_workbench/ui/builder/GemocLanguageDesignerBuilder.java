@@ -390,6 +390,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			// TODO deal with maven project (ie. ensure copy of the jar and
 			// use it as internal lib in manifest)
 		}
+		if (dsaPoject instanceof K3DSAProject) {
+			connection.addPluginDependency(org.gemoc.gemoc_language_workbench.extensions.k3.Activator.PLUGIN_ID);
+		}
 	}
 
 	protected void updateDependenciesWithXTextEditorProject(ManifestChanger connection, XTextEditorProject xtextEditorProject) throws BundleException, IOException, CoreException {
