@@ -24,7 +24,7 @@ public class SelectDSAIprojectDialog extends SelectAnyIProjectDialog {
 			KpFileFinderResourceVisitor kpProjectVisitor = new KpFileFinderResourceVisitor();
 			try {
 				resource.accept(kpProjectVisitor);
-				hasKpFile =  kpProjectVisitor.kpFiles != null;
+				hasKpFile =  kpProjectVisitor.getFile() != null;
 			} catch (CoreException e) {
 				Activator.error(e.getMessage(), e);
 			}
@@ -32,7 +32,7 @@ public class SelectDSAIprojectDialog extends SelectAnyIProjectDialog {
 			XTendFileFinderResourceVisitor xtendProjectVisitor = new XTendFileFinderResourceVisitor();
 			try {
 				resource.accept(xtendProjectVisitor);
-				hasXTendFile = xtendProjectVisitor.xtendFiles != null;
+				hasXTendFile = xtendProjectVisitor.getFile() != null;
 			} catch (CoreException e) {
 				Activator.error(e.getMessage(), e);
 			}

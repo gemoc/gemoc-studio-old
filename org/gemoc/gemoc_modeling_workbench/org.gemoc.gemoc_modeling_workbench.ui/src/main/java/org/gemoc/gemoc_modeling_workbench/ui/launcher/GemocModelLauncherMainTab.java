@@ -202,9 +202,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 				// handleModelLocationButtonSelected();
 				// TODO launch the appropriate selector
 
-				SelectAnyIFileDialog dialog = new SelectAnyIFileDialog(
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-								.getShell());
+				SelectAnyIFileDialog dialog = new SelectAnyIFileDialog();
 				if (dialog.open() == Dialog.OK) {
 					String modelPath = ((IResource) dialog.getResult()[0])
 							.getFullPath().toPortableString();
@@ -235,9 +233,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 						// handleModelLocationButtonSelected();
 						// TODO launch the appropriate selector
 
-						SelectAIRDIFileDialog dialog = new SelectAIRDIFileDialog(
-								PlatformUI.getWorkbench()
-										.getActiveWorkbenchWindow().getShell());
+						SelectAIRDIFileDialog dialog = new SelectAIRDIFileDialog();
 						if (dialog.open() == Dialog.OK) {
 							String modelPath = ((IResource) dialog.getResult()[0])
 									.getFullPath().toPortableString();

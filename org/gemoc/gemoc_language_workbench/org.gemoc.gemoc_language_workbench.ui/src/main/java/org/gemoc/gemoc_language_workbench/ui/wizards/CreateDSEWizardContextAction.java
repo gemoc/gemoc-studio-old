@@ -147,7 +147,7 @@ public class CreateDSEWizardContextAction {
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
 				"Gemoc Language Workbench UI",
 				"selectExistingDSEProject. Action not implemented yet");*/
-		SelectECLIFileDialog dialog = new SelectECLIFileDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		SelectECLIFileDialog dialog = new SelectECLIFileDialog();
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model

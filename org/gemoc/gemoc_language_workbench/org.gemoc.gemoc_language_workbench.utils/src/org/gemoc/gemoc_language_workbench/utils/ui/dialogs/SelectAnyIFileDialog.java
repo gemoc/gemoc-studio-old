@@ -1,14 +1,20 @@
 package org.gemoc.gemoc_language_workbench.utils.ui.dialogs;
 
 import java.lang.reflect.Field;
+
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ResourceListSelectionDialog;
 import org.gemoc.gemoc_language_workbench.utils.Activator;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.ECLFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 /**
  * Dialog that allows to select any IProject
@@ -17,7 +23,11 @@ import org.gemoc.gemoc_language_workbench.utils.Activator;
  *
  */
 public class SelectAnyIFileDialog extends ResourceListSelectionDialog {
-	
+
+	public SelectAnyIFileDialog(){
+		this(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+	}
+
 	public SelectAnyIFileDialog(Shell parentShell){
 		super(parentShell, ResourcesPlugin.getWorkspace().getRoot(), IResource.FILE);
 	}
@@ -53,5 +63,4 @@ public class SelectAnyIFileDialog extends ResourceListSelectionDialog {
 		}
 	}
 	
-
 }
