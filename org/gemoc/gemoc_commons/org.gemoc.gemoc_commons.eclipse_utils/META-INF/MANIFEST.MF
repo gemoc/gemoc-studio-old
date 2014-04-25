@@ -1,13 +1,19 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Gemoc_commons
-Bundle-SymbolicName: org.gemoc.gemoc_commons.eclipse_utils
+Bundle-SymbolicName: org.gemoc.gemoc_commons.eclipse_utils;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.gemoc.gemoc_commons.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.eclipse.core.runtime,
+ org.eclipse.pde.core,
+ org.eclipse.pde.ui,
+ org.eclipse.jdt.core;bundle-version="3.9.0",
+ org.eclipse.ui.ide;bundle-version="3.9.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: org.gemoc.gemoc_commons.pde,
+Export-Package: org.gemoc.gemoc_commons.core.resources,
+ org.gemoc.gemoc_commons.pde,
  org.gemoc.gemoc_commons.ui
 Import-Package: org.eclipse.core.resources
+Bundle-Vendor: INRIA

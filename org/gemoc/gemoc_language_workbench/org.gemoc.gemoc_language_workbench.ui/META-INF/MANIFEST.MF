@@ -25,7 +25,9 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.diverse.k3.ui;bundle-version="1.0.0",
  org.eclipse.emf.ecoretools.design;bundle-version="2.0.0",
  fr.cnrs.luchogie.toools;bundle-version="1.0.0",
- org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0"
+ org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0",
+ org.gemoc.gemoc_commons.eclipse_utils,
+ org.gemoc.dse.ecl.moc2as.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.filesystem,
