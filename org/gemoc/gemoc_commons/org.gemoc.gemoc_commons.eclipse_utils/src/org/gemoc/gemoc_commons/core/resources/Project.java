@@ -35,8 +35,16 @@ public class Project {
 
 	public static IFolder createFolder(IProject project, IPath path, IProgressMonitor monitor) throws CoreException {
 		IFolder folder = project.getFolder(path);
-		if (!folder.exists())
+		if (!folder.exists()) {
+			if (path.segmentCount() > 1) {
+				IPath currentFolderPath = new Path("");
+				for (int i=0; i<path.segmentCount()-1; i++) {
+					currentFolderPath = currentFolderPath.append(path.segment(i));
+					createFolder(project, currentFolderPath, monitor);
+				}				
+			}
 			folder.create(true, true, monitor);
+		}
 		return folder;
 	}
 
@@ -81,7 +89,21 @@ public class Project {
 	 */
 	public static IFile createFile(IProject project, IPath path, InputStream contentStream, IProgressMonitor monitor) throws CoreException {
 		IFile file = project.getFile(path);
+		return createFile(project, file, contentStream, monitor);
+	}
+	
+	public static IFile createFile(IProject project, IFile file, String content) throws CoreException {
+		return createFile(project, file, content, new NullProgressMonitor());
+	}
+
+	public static IFile createFile(IProject project, IFile file, String content, IProgressMonitor monitor) throws CoreException {
+		ByteArrayInputStream contentStream = new ByteArrayInputStream(content.getBytes());
+		return createFile(project, file, contentStream, new NullProgressMonitor());
+	}
+
+	public static IFile createFile(IProject project, IFile file, InputStream contentStream, IProgressMonitor monitor) throws CoreException {
 		if (!file.exists()) {
+			IPath path = file.getProjectRelativePath();
 			if (path.segmentCount() > 1) {
 				IPath currentFolderPath = new Path("");
 				for (int i=0; i<path.segmentCount()-1; i++) {
@@ -110,5 +132,6 @@ public class Project {
 			project.setDescription(description, null);
 		}
 	}
+
 
 }

@@ -31,14 +31,13 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.gemoc.gemoc_commons.pde.ManifestChanger;
+import org.gemoc.gemoc_commons.core.resources.Project;
 import org.gemoc.gemoc_commons.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
-import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
 import org.osgi.framework.BundleException;
 
 public class ToggleNatureAction implements IObjectActionDelegate {
@@ -126,8 +125,10 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			IJavaProject javaProject = JavaCore.create(project);
 			addNature(project, JavaCore.NATURE_ID, null);
 			//CoreUtility.createFolder(project.getFolder(new Path("src"));, true, true, new SubProgressMonitor(monitor, 2));*
-			ResourceUtil.createFolder(project.getFolder(new Path("src/main/java")), true, true, new NullProgressMonitor());
-			ResourceUtil.createFolder(project.getFolder(new Path("src/main/xdsml-java-gen")), true, true, new NullProgressMonitor());
+			Project.createFolder(project, "src/main/java", new NullProgressMonitor());
+			Project.createFolder(project, "src/main/xdsml-java-gen", new NullProgressMonitor());
+	//		ResourceUtil.createFolder(project.getFolder(new Path("src/main/java")), true, true, new NullProgressMonitor());
+	//		ResourceUtil.createFolder(project.getFolder(new Path("src/main/xdsml-java-gen")), true, true, new NullProgressMonitor());
 			addJavaResources(project);
 		}
 	}

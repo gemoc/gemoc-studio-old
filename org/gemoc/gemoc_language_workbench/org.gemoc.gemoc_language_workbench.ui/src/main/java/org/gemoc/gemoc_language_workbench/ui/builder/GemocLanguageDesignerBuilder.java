@@ -1,17 +1,13 @@
 package org.gemoc.gemoc_language_workbench.ui.builder;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -21,12 +17,7 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.ISafeRunnable;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.QualifiedName;
-import org.eclipse.core.runtime.SafeRunner;
-import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -34,7 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.gemoc.gemoc_commons.pde.ManifestChanger;
+import org.gemoc.gemoc_commons.core.resources.GFile;
 import org.gemoc.gemoc_commons.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.conf.BuildOptions;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
@@ -53,16 +44,11 @@ import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
-import org.gemoc.gemoc_language_workbench.utils.emf.EObjectUtil;
-import org.gemoc.gemoc_language_workbench.utils.resource.ResourceUtil;
 import org.jdom2.Element;
 import org.osgi.framework.BundleException;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import toools.io.file.RegularFile;
-import fr.inria.aoste.timesquare.ecl.ecltoqvto.main.AcceleoLauncherForEclToQvto;
 
 public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
@@ -473,7 +459,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
 							+ folderName + "/" + languageToUpperFirst
 							+ Activator.MODEL_LOADER_CLASS_NAMEPART + ".java");
-			ResourceUtil.writeFile(file, fileContent);
+			writeFile(file, fileContent);
 		}
 		// update plugin.xml
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
@@ -523,7 +509,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			fileContent = fileContent.replaceAll(Pattern.quote("${initializer.content}"), sb.toString());
 			IFile file = project.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME + folderName + "/"
 					+ languageToUpperFirst + Activator.INITIALIZER_CLASS_NAMEPART + ".java");
-			ResourceUtil.writeFile(file, fileContent);
+			writeFile(file, fileContent);
 		}
 		// update plugin.xml
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
@@ -612,7 +598,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
 							+ folderName + "/" + languageToUpperFirst
 							+ Activator.CODEEXECUTOR_CLASS_NAMEPART + ".java");
-			ResourceUtil.writeFile(file, fileContent);
+			
+			writeFile(file, fileContent);
+			//ResourceUtil.writeFile(file, fileContent);
 		}
 		// update plugin.xml
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
@@ -625,6 +613,14 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 						+ languageToUpperFirst + Activator.CODEEXECUTOR_CLASS_NAMEPART);
 		helper.saveDocument(pluginfile);
 
+	}
+
+	private void writeFile(IFile file, String fileContent) {
+		try {
+			GFile.writeFile(file, fileContent);
+		} catch (CoreException e) {
+			Activator.error(e.getMessage(), e);
+		}
 	}
 	
 	/**
@@ -649,7 +645,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
 							+ folderName + "/" + languageToUpperFirst
 							+ Activator.SOLVER_CLASS_NAMEPART + ".java");
-			ResourceUtil.writeFile(file, fileContent);
+			writeFile(file, fileContent);
 		}
 		// update plugin.xml
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
