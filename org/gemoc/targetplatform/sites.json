@@ -42,6 +42,9 @@
     "animation": [
         "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.sirius.animation/lastSuccessfulBuild/artifact/fr/obeo/dsl/sirius/animation/releng/fr.obeo.dsl.debug.repository/target/repository/"
         ],
+    "modhelx_tesl": [
+    	"http://wwwdi.supelec.fr/gemoc-supelec-update_site"
+    	],
     "kermeta2": [
         "http://www.kermeta.org/k2/update_2.1.1.RC"
         ],
