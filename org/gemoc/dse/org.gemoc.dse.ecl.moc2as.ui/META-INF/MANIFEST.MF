@@ -14,3 +14,4 @@ Require-Bundle: org.eclipse.ui,
  fr.cnrs.luchogie.toools
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Export-Package: org.gemoc.dse.ecl.moc2as.ui.builder
