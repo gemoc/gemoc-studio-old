@@ -268,13 +268,13 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				TreeIterator<EObject> it = modelresource.getAllContents();
 				String languageRootElement = "";
 				
-				ManifestChanger manifesChanger = new ManifestChanger(project);
+				ManifestChanger manifestChanger = new ManifestChanger(project);
 				try {
 					while (it.hasNext()) {
 						EObject eObject = (EObject) it.next();
-						languageRootElement = updateManifestAndPlugin(project, buildOptions, languageRootElement, manifesChanger, eObject);
+						languageRootElement = updateManifestAndPlugin(project, buildOptions, languageRootElement, manifestChanger, eObject);
 					}
-					manifesChanger.commit();			
+					manifestChanger.commit();			
 				} catch (CoreException e) {
 					Activator.error(e.getMessage(), e);				
 				} catch (IOException e) {
