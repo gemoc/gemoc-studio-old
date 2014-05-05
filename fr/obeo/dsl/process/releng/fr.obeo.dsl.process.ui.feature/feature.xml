@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="fr.obeo.dsl.process.ui.feature"
+      label="Process DSL UI Feature"
+      version="1.0.0.qualifier"
+      provider-name="Obeo">
+
+   <description url="http://www.example.com/description">
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      Copyright (c) 2013 Obeo. All Rights Reserved.
+This software and the attached documentation are the exclusive
+ownership
+of its authors and was conceded to the profit of Obeo SARL.
+This software and the attached documentation are protected under
+the rights
+of intellectual ownership, including the section &quot;Titre II  Droits
+des auteurs (Articles L121-1 L123-12)&quot;
+By installing this software, you acknowledge being aware of this
+rights and
+accept them, and as a consequence you must:
+- be in possession of a valid license of use conceded by Obeo
+only.
+- agree that you have read, understood, and will comply with
+the license terms and conditions.
+- agree not to do anything that could conflict with intellectual
+ownership owned by Obeo or its beneficiaries
+or the authors of this software
+Should you not agree with these terms, you must stop to use this
+software and give it back to its legitimate owner.
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="fr.obeo.dsl.process.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="fr.obeo.dsl.process.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
