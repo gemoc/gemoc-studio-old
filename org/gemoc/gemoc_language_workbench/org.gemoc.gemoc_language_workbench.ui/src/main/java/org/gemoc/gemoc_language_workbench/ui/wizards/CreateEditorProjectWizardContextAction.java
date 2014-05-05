@@ -16,9 +16,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
@@ -184,23 +185,20 @@ public class CreateEditorProjectWizardContextAction {
 		}
 	}
 	protected void createNewODProject() {
-		IWizardDescriptor descriptor = PlatformUI
+		final IWizardDescriptor descriptor = PlatformUI
 				.getWorkbench()
 				.getNewWizardRegistry()
-				.findWizard(
-						"org.eclipse.sirius.ui.specificationproject.wizard");
+				.findWizard("org.eclipse.sirius.ui.specificationproject.wizard");
 		// Then if we have a wizard, open it.
-		if (descriptor != null) {
-			// add a listener to capture the creation of the resulting project
+		if (descriptor != null) {				
 			NewProjectWorkspaceListener workspaceListener = new NewProjectWorkspaceListener();
 			ResourcesPlugin.getWorkspace().addResourceChangeListener(workspaceListener);
 			try {
-				IWizard wizard;
+				IWorkbenchWizard wizard;
 				wizard = descriptor.createWizard();
-				// this wizard need some dedicated initialization
-				//((EcoreModelerWizard )wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
-				//((EcoreModelWizard)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) selection);
-				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+				IWorkbench workbench = PlatformUI.getWorkbench();
+				wizard.init(workbench, null);
+				WizardDialog wd = new WizardDialog(workbench.getActiveWorkbenchWindow().getShell(), wizard);
 				wd.create();
 				wd.setTitle(wizard.getWindowTitle());
 				
@@ -217,13 +215,11 @@ public class CreateEditorProjectWizardContextAction {
 					else{
 						Activator.error("not able to detect which project was created by wizard", null);
 					}
-				}
+				}						
 			} catch (CoreException e) {
 				Activator.error(e.getMessage(), e);
-			}
-			finally{
-				// make sure to remove listener in all situations
-				ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
+			} finally {
+				ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);						
 			}
 		}
 		else{
