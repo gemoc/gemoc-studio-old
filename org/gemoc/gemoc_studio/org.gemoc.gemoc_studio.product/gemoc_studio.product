@@ -28,25 +28,23 @@
       location="org.gemoc.gemoc_studio.branding"
       startupProgressRect="5,275,445,15" />
    <launcher name="GemocStudio">
-      <linux icon="/images/icons/IconeGemocStudio-text/xpm/IconeGemocStudio-text.xpm"/>
-      <macosx icon="/images/icons/IconeGemocStudio-text/icns/IconeGemocStudio-text.icns"/>
+      <linux icon="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/xpm/IconeGemocStudio-text.xpm"/>
+      <macosx icon="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/icns/IconeGemocStudio-text.icns"/>
       <solaris/>
       <win useIco="false">
          <bmp
-            winSmallHigh="/images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x32.bmp"
-            winSmallLow="/images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x8.bmp"
-            winMediumHigh="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x32.bmp"
-            winMediumLow="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x8.bmp"
-            winLargeHigh="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_48x48x32.bmp"
-            winLargeLow="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_48x48x8.bmp"
-            winExtraLargeHigh="/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_256x256x32.bmp"/>
+            winSmallHigh="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x32.bmp"
+            winSmallLow="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x8.bmp"
+            winMediumHigh="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x32.bmp"
+            winMediumLow="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x8.bmp"
+            winLargeHigh="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_48x48x32.bmp"
+            winLargeLow="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_48x48x8.bmp"
+            winExtraLargeHigh="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_256x256x32.bmp"/>
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
    </plugins>
