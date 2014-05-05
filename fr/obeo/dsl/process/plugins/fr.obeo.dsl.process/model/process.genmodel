@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2013 Obeo. All Rights Reserved.&#xA;&#xA; This software and the attached documentation are the exclusive ownership&#xA; of its authors and was conceded to the profit of Obeo SARL.&#xA; This software and the attached documentation are protected under the rights&#xA; of intellectual ownership, including the section &quot;Titre II  Droits des auteurs (Articles L121-1 L123-12)&quot;&#xA; By installing this software, you acknowledge being aware of this rights and&#xA; accept them, and as a consequence you must:&#xA; - be in possession of a valid license of use conceded by Obeo only.&#xA; - agree that you have read, understood, and will comply with the license terms and conditions.&#xA; - agree not to do anything that could conflict with intellectual ownership owned by Obeo or its beneficiaries&#xA; or the authors of this software&#xA;&#xA; Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.&#xA;&#xA;"
+    modelDirectory="/fr.obeo.dsl.process/src-gen" editDirectory="/fr.obeo.dsl.process.edit/src-gen"
+    editorDirectory="/fr.obeo.dsl.process.editor/src-gen" modelPluginID="fr.obeo.dsl.process"
+    modelName="Process" testsDirectory="/fr.obeo.dsl.process.tests/src-gen" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>process.ecore</foreignModel>
+  <genPackages prefix="Process" basePackage="fr.obeo.dsl" disposableProviderFactory="true"
+      ecorePackage="process.ecore#/">
+    <genDataTypes ecoreDataType="process.ecore#//Artifact"/>
+    <genClasses ecoreClass="process.ecore#//Process">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Process/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Process/task"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="process.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Task/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Task/id"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute process.ecore#//Task/description"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference process.ecore#//Task/parentTask"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Task/precedingTasks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Task/followingTasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Task/precondition"/>
+    </genClasses>
+    <genClasses ecoreClass="process.ecore#//ComposedTask">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ComposedTask/tasks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ComposedTask/initialTasks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ComposedTask/finalTasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ComposedTask/doneExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="process.ecore#//ActionTask"/>
+    <genClasses image="false" ecoreClass="process.ecore#//Expression">
+      <genOperations ecoreOperation="process.ecore#//Expression/check">
+        <genParameters ecoreParameter="process.ecore#//Expression/check/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="process.ecore#//TasksExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//TasksExpression/tasks"/>
+    </genClasses>
+    <genClasses ecoreClass="process.ecore#//AllDone"/>
+    <genClasses ecoreClass="process.ecore#//AnyDone"/>
+    <genClasses ecoreClass="process.ecore#//OneDone"/>
+    <genClasses ecoreClass="process.ecore#//Not">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Not/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="process.ecore#//And">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//And/expressions"/>
+    </genClasses>
+    <genClasses ecoreClass="process.ecore#//Or">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Or/expressions"/>
+    </genClasses>
+    <genClasses ecoreClass="process.ecore#//ProcessContext">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//ProcessContext/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessContext/definition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessContext/progress"/>
+    </genClasses>
+    <genClasses ecoreClass="process.ecore#//TaskToArtifactMap">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//TaskToArtifactMap/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//TaskToArtifactMap/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

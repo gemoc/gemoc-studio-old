@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: fr.obeo.dsl.process.design
+Bundle-SymbolicName: fr.obeo.dsl.process.design;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: fr.obeo.dsl.process.design.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius,
+ org.eclipse.sirius.common.acceleo.mtl,
+ fr.obeo.dsl.process;bundle-version="1.0.0",
+ org.eclipse.jface.text;bundle-version="3.8.2",
+ org.apache.commons.lang;bundle-version="2.6.0",
+ fr.obeo.dsl.process.edit;bundle-version="1.0.0",
+ org.eclipse.emf.edit.ui;bundle-version="2.8.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
