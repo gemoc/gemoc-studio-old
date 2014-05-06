@@ -39,7 +39,7 @@
             winMediumLow="images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x8.bmp"
             winLargeHigh="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_48x48x32.bmp"
             winLargeLow="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_48x48x8.bmp"
-            winExtraLargeHigh="images/icons/IconeGemocStudio-text/bmp/org.gemoc.gemoc_studio.product/images/IconeGemocStudio-text_256x256x32.bmp"/>
+            winExtraLargeHigh="images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_256x256x32.bmp"/>
       </win>
    </launcher>
 
