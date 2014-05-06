@@ -52,23 +52,23 @@
 				<version>2.5</version>
 				<executions>
 					<execution>
-						<id>copy-resources</id>
+						<id>copy-resources</id> 
 						<!-- here the phase you need -->
-						<phase>validate</phase>
+						<phase>process-resources</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/products/${project.groupId}.${project.artifactId}</outputDirectory>
+							<outputDirectory>${project.build.directory}/products/${project.artifactId}</outputDirectory>
 							<resources>
 								<resource>
-									<directory>icons</directory>
+									<directory>images</directory>
 								</resource>
 							</resources>
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> 
 		</plugins>
 	</build>
 </project> 
