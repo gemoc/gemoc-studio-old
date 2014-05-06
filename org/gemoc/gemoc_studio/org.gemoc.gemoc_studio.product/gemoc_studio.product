@@ -35,7 +35,7 @@
          <bmp
             winSmallHigh="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x32.bmp"
             winSmallLow="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x8.bmp"
-            winMediumHigh="images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x32.bmp"
+            winMediumHigh="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_32x32x32.bmp"
             winMediumLow="images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x8.bmp"
             winLargeHigh="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_48x48x32.bmp"
             winLargeLow="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_48x48x8.bmp"
