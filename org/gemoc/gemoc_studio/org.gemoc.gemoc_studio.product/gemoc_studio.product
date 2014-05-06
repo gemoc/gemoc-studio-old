@@ -28,8 +28,8 @@
       location="org.gemoc.gemoc_studio.branding"
       startupProgressRect="5,275,445,15" />
    <launcher name="GemocStudio">
-      <linux icon="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/xpm/IconeGemocStudio-text.xpm"/>
-      <macosx icon="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/icns/IconeGemocStudio-text.icns"/>
+      <linux icon="/images/icons/IconeGemocStudio-text/xpm/IconeGemocStudio-text.xpm"/>
+      <macosx icon="/images/icons/IconeGemocStudio-text/icns/IconeGemocStudio-text.icns"/>
       <solaris/>
       <win useIco="false">
          <bmp
