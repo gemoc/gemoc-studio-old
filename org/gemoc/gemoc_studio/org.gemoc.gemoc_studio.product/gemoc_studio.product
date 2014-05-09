@@ -63,13 +63,9 @@
       <feature id="org.eclipse.sirius.doc.feature"/>
       <feature id="org.eclipse.sirius.runtime.ocl"/>
       <feature id="org.eclipse.emf.ecoretools.design"/>
-      <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
       <feature id="org.eclipse.emf.ecoretools"/>
       <feature id="fr.inria.aoste.timesquare.ecl.feature"/>
       <feature id="fr.inria.aoste.timesquare.feature"/>
-      <feature id="org.eclipse.xtend.sdk"/>
-      <feature id="org.eclipse.xtend.m2e"/>
-      <feature id="org.eclipse.epp.mpc"/>
    </features>
 
    <configurations>
