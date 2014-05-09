@@ -52,20 +52,6 @@
    <features>
       <feature id="org.gemoc.gemoc_studio.branding.feature"/>
       <feature id="org.gemoc.gemoc_studio.additions.feature"/>
-      <feature id="org.eclipse.sirius.runtime"/>
-      <feature id="org.eclipse.sirius.runtime.acceleo"/>
-      <feature id="org.eclipse.sirius.runtime.ide.eef"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo"/>
-      <feature id="org.eclipse.sirius.specifier.ide.ui"/>
-      <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo"/>
-      <feature id="org.eclipse.sirius.runtime.ide.xtext"/>
-      <feature id="org.eclipse.sirius.doc.feature"/>
-      <feature id="org.eclipse.sirius.runtime.ocl"/>
-      <feature id="org.eclipse.emf.ecoretools.design"/>
-      <feature id="org.eclipse.emf.ecoretools"/>
-      <feature id="fr.inria.aoste.timesquare.ecl.feature"/>
-      <feature id="fr.inria.aoste.timesquare.feature"/>
    </features>
 
    <configurations>

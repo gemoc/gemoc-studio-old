@@ -45,6 +45,7 @@
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
       <import feature="org.eclipse.epp.mpc" version="1.2.1.v20140219-1000" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtend.m2e" version="2.4.3.v201309030823" match="greaterOrEqual"/>
+      <import feature="org.obeonetwork.dsl.uml2.runtime.feature" version="4.0.0.201403071353" match="greaterOrEqual"/>
    </requires>
 
 </feature>
