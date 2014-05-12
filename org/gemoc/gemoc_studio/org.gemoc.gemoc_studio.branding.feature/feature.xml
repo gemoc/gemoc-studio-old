@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.gemoc.gemoc_studio.branding.feature"
-      label="Gemoc features"
+      label="Gemoc Studio Main Features"
       version="0.0.1.qualifier"
+      provider-name="GEMOC"
       plugin="org.gemoc.gemoc_studio.branding">
 
    <description url="http://www.gemoc.org">
@@ -18,7 +19,6 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.m2m.qvt.oml.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtend.sdk" version="2.4.2.v201306120542" match="greaterOrEqual"/>
       <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
