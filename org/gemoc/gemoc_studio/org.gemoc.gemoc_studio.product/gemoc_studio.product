@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Gemoc studio" uid="gemoc_studio" id="org.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Gemoc studio" uid="gemoc_studio" id="org.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.gemoc.gemoc_studio.branding/images/GemocStudioAboutImage.png"/>
@@ -33,13 +33,13 @@
       <solaris/>
       <win useIco="false">
          <bmp
-            winSmallHigh="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x32.bmp"
-            winSmallLow="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x8.bmp"
-            winMediumHigh="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x32.bmp"
-            winMediumLow="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x8.bmp"
-            winLargeHigh="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_48x48x32.bmp"
-            winLargeLow="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_48x48x8.bmp"
-            winExtraLargeHigh="/org.gemoc.gemoc_studio.product/images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_256x256x32.bmp"/>
+            winSmallHigh="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x32.bmp"
+            winSmallLow="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_16x16x8.bmp"
+            winMediumHigh="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_32x32x32.bmp"
+            winMediumLow="images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_32x32x8.bmp"
+            winLargeHigh="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_48x48x32.bmp"
+            winLargeLow="images/icons/IconeGemocStudio/bmp/IconeGemocStudio_48x48x8.bmp"
+            winExtraLargeHigh="images/icons/IconeGemocStudio-text/bmp/IconeGemocStudio-text_256x256x32.bmp"/>
       </win>
    </launcher>
 
@@ -52,24 +52,6 @@
    <features>
       <feature id="org.gemoc.gemoc_studio.branding.feature"/>
       <feature id="org.gemoc.gemoc_studio.additions.feature"/>
-      <feature id="org.eclipse.sirius.runtime"/>
-      <feature id="org.eclipse.sirius.runtime.acceleo"/>
-      <feature id="org.eclipse.sirius.runtime.ide.eef"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo"/>
-      <feature id="org.eclipse.sirius.specifier.ide.ui"/>
-      <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo"/>
-      <feature id="org.eclipse.sirius.runtime.ide.xtext"/>
-      <feature id="org.eclipse.sirius.doc.feature"/>
-      <feature id="org.eclipse.sirius.runtime.ocl"/>
-      <feature id="org.eclipse.emf.ecoretools.design"/>
-      <feature id="org.eclipse.emf.ecoretools.registration.feature"/>
-      <feature id="org.eclipse.emf.ecoretools"/>
-      <feature id="fr.inria.aoste.timesquare.ecl.feature"/>
-      <feature id="fr.inria.aoste.timesquare.feature"/>
-      <feature id="org.eclipse.xtend.sdk"/>
-      <feature id="org.eclipse.xtend.m2e"/>
-      <feature id="org.eclipse.epp.mpc"/>
    </features>
 
    <configurations>

@@ -2,7 +2,8 @@
 <feature
       id="org.gemoc.gemoc_studio.additions.feature"
       label="Gemoc Studio Additional Features"
-      version="1.0.0.qualifier">
+      version="0.0.1.qualifier"
+      provider-name="GEMOC">
 
    <description url="http://www.gemoc.org">
       This feature is dependent of a list of additionnal features (possibly thirdparties) that are usually useful in Gemoc Studio but aren&apos;t part of the core of the Gemoc process.
@@ -42,6 +43,11 @@
       <import feature="org.eclipse.mylyn.team_feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.mylyn_feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.codehaus.groovy.eclipse.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
+      <import feature="org.eclipse.epp.mpc" version="1.2.1.v20140219-1000" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtend.m2e" version="2.4.3.v201309030823" match="greaterOrEqual"/>
+      <import feature="org.obeonetwork.dsl.uml2.runtime.feature" version="4.0.0.201403071353" match="greaterOrEqual"/>
+      <import feature="org.eclipse.m2m.qvt.oml.sdk" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
 </feature>
