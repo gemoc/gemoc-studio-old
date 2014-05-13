@@ -99,12 +99,11 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 
 	public static final String BUILDER_ID = "org.gemoc.dse.ecl.moc2as.ui.gemocDSEBuilder";
 
-	private static final String MARKER_TYPE = "org.gemoc.dse.ecl.moc2as.ui.dseProblem";
+	public static final String MARKER_TYPE = "org.gemoc.dse.ecl.moc2as.ui.dseProblem";
 
 	// private SAXParserFactory parserFactory;
 
-	private void addMarker(IProject project, String message, int lineNumber,
-			int severity) {
+	private void addMarker(IProject project, String message, int lineNumber, int severity) {
 		try {
 			IMarker marker = project.createMarker(MARKER_TYPE);
 			marker.setAttribute(IMarker.MESSAGE, message);
@@ -118,8 +117,7 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 		}
 	}
 	
-	private void addMarker(IFile file, String message, int lineNumber,
-			int severity) {
+	private void addMarker(IFile file, String message, int lineNumber, int severity) {
 		try {
 			IMarker marker = file.createMarker(MARKER_TYPE);
 			marker.setAttribute(IMarker.MESSAGE, message);

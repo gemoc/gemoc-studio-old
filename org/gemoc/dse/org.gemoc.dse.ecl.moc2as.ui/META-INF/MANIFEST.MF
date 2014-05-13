@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.ecl.xtext,
  fr.inria.aoste.timesquare.ecl.ecltoqvto,
  org.eclipse.acceleo.engine,
- fr.cnrs.luchogie.toools
+ fr.cnrs.luchogie.toools,
+ org.gemoc.gemoc_commons.eclipse_utils
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.dse.ecl.moc2as.ui.builder

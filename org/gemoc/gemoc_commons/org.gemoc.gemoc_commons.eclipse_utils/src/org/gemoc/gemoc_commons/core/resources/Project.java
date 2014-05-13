@@ -14,12 +14,15 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.pde.core.project.IBundleProjectDescription;
 import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 
 public class Project {
 
 	
+	public static IFolder createFolder(IProject project, String nameOrPath) throws CoreException {
+		return createFolder(project, nameOrPath, new NullProgressMonitor());
+	}
+
 	/**
 	 * Create a folder in the project.
 	 * Do nothing if folder already exists.
@@ -132,6 +135,5 @@ public class Project {
 			project.setDescription(description, null);
 		}
 	}
-
 
 }
