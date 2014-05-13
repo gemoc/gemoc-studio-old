@@ -15,8 +15,10 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -25,6 +27,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.gemoc.dse.ecl.moc2as.ui.builder.QVTOFileBuilder;
 import org.gemoc.gemoc_commons.core.resources.GFile;
 import org.gemoc.gemoc_commons.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.conf.BuildOptions;
@@ -311,8 +314,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			
 		}
 		if (eObject instanceof QVToFile) {
-			updateQVTO(project, (QVToFile) eObject, languageRootElement);
-			
+			updateQVTO(project, (QVToFile) eObject, languageRootElement);			
 		}
 		/*
 		 * if(eObject instanceof
@@ -658,67 +660,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.saveDocument(pluginfile);
 	}
 	
-	/**
-	 * create or replace existing InitializerClass by an implementation that is
-	 * able to initialize all required components
-	 * 
-	 * @param project
-	 * @param ld
-	 */
-	/*protected void updateECL_QVTO(final IProject project,
-			final ECLFile ecliFilePath, String rootElement) {
-		
-		
-		final URI uri = URI.createPlatformResourceURI(
-				ecliFilePath.getLocationURI(), true);
-		final IFolder qvtoFolder = project.getFolder("qvto-gen");
-
-		
-		String folderPath = qvtoFolder.getLocation().toOSString();
-		final File folder = new File(folderPath);
-
-		final List<String> arguments = new ArrayList<String>();
-		LanguageDefinition ld = EObjectUtil.eContainerOfType(ecliFilePath, LanguageDefinition.class);
-		String qvtoFileName = ld != null ? ld.getName() + "_toCCSL.qvto" : uri.lastSegment().replace(".ecl",
-				"_toCCSL.qvto");
-		arguments.add(qvtoFileName);
-		arguments.add(rootElement); 
-		// create QVTO file
-		ISafeRunnable runnable = new ISafeRunnable() {
-			@Override
-			public void handleException(Throwable e) {
-				Activator.error(e.getMessage(), e);
-			}
-
-			@Override
-			public void run() throws Exception {
-
-				ResourceUtil.createFolder(qvtoFolder, true, true, null);
-
-				try {
-					System.out.println("launching ecl to qvto:\n\turi=" + uri + "\n\tfolder=" + folder + "\n\targs="
-							+ arguments);
-					AcceleoLauncherForEclToQvto launcher = new AcceleoLauncherForEclToQvto(uri, folder, arguments);
-					launcher.doGenerate(new BasicMonitor());
-					qvtoFolder.refreshLocal(2, new NullProgressMonitor());
-					
-					
-					RegularFile qvtoFile = new RegularFile(launcher.getTargetFolder()+"/" +arguments.get(0));
-					String qvtoContent = new String(qvtoFile.getContent());
-					qvtoContent = qvtoContent.replaceAll("platform:/resource", "platform:/plugin");
-					qvtoFile.setContent(qvtoContent.getBytes());
-					
-					
-					
-				} catch (IOException e) {
-					Activator.error(e.getMessage(), e);
-				}
-			}
-		};
-		SafeRunner.run(runnable);
-*/
-	protected void updateECL(final IProject project,
-			final ECLFile ecliFilePath, String rootElement) {
+	protected void updateECL(final IProject project, final ECLFile ecliFilePath, String rootElement) {
 		// TODO check that the ecl file exists
 		// update plugin.xml
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
@@ -731,10 +673,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.saveDocument(pluginfile);
 
 	}
-	protected void updateQVTO(final IProject project,
-			final QVToFile qvtoFilePath, String rootElement) {
-		// TODO check that the qvto file exists
-		
+	protected void updateQVTO(final IProject project, final QVToFile qvtoFilePath, String rootElement) {	
 		// update plugin.xml
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
 		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
@@ -747,7 +686,17 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				qvtoFilePath.getLocationURI());
 		helper.saveDocument(pluginfile);
 
+		// TODO check that the qvto file exists
+		// The qvto file could be generated here but it exists already a GemocDSEBuilder.
+		//IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(qvtoFilePath.getLocationURI()));
+		//updateECL_QVTO(file);
 	}
+
+//	protected void updateECL_QVTO(final IFile eclFile) {				
+//		if (eclFile.exists()) {
+//			QVTOFileBuilder.buildFrom(eclFile);
+//		}
+//	}
 
 	protected void fullBuild(final IProgressMonitor monitor) throws CoreException {
 		try {
