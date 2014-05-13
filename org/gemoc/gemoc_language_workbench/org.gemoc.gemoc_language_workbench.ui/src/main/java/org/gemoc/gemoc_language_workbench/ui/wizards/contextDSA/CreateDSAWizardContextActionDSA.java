@@ -6,14 +6,12 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectDSAIprojectDialog;
 
-public class CreateDSAWizardContextActionDSA {
+public class CreateDSAWizardContextActionDSA extends CreateDSAWizardContextBase {
 
-	protected IProject gemocLanguageIProject;
-	
-	public CreateDSAWizardContextActionDSA (IProject gemocLanguageIProject) {
-		this.gemocLanguageIProject = gemocLanguageIProject;
+	public CreateDSAWizardContextActionDSA(IProject gemocLanguageIProject) {
+		super(gemocLanguageIProject);
 	}
-	
+
 	public void createNewDSAProject() {
 	}
 	
@@ -25,10 +23,6 @@ public class CreateDSAWizardContextActionDSA {
 			// update the project model
 			addDSAProjectToConf(((IResource)dialog.getResult()[0]).getName());
 		}
-	}
-	
-	protected void addDSAProjectToConf(String projectName){
-	}
-	
+	}	
 	
 }
