@@ -1,6 +1,7 @@
 package org.gemoc.execution.engine.io;
 
 import org.eclipse.core.runtime.Status;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
@@ -82,6 +83,13 @@ public class Activator extends AbstractUIPlugin {
                 Status.OK, 
                 msg, 
                 e));
+	}
+
+	public static void info(String s) {
+		if (PlatformUI.isWorkbenchRunning())
+			getMessagingSystem().info(s, PLUGIN_ID);
+		else
+			System.out.println(PLUGIN_ID + " INFO: " + s);
 	}
 	
 

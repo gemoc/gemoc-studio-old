@@ -29,7 +29,7 @@ public class ConsoleBackend implements Backend {
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof String) {
 			String s = (String) arg1;
-			Activator.getMessagingSystem().info(s, Activator.PLUGIN_ID);
+			Activator.info(s);
 		} else if (arg1 instanceof List<?>) {
 			List<String> trace = (List<String>) arg1;
 			for (String s : trace) {
