@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_studio.additions.feature"
       label="Gemoc Studio Additional Features"
-      version="0.0.1.qualifier"
+      version="0.1.0.qualifier"
       provider-name="GEMOC">
 
    <description url="http://www.gemoc.org">
