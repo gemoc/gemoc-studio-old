@@ -165,6 +165,11 @@
             id="org.gemoc.gemoc_language_workbench.ui.commands.ShowAnimatorProject"
             name="ShowAnimatorProject">
       </command>
+      <command
+            defaultHandler="org.gemoc.gemoc_language_workbench.ui.commands.MergeExtendedCCSLCommandHandler"
+            id="org.gemoc.gemoc_language_workbench.ui.commands.MergeExtendedCCSL"
+            name="Merge extendedCCSLFile ino one XMI resource">
+      </command>
    </extension>
    <!-- contributions to popup menus -->
    <extension
@@ -365,6 +370,39 @@
                   <reference
                         definitionId="org.gemoc.gemoc_language_workbench.ui.definitions.editorOrSelectionProjectHasAnimatorProject">
                   </reference>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               icon="icons/IconeGemocLanguage-16.png"
+               id="GEMOCFile.Menu"
+               label="GEMOC File">
+            <command
+                  commandId="org.gemoc.gemoc_language_workbench.ui.commands.MergeExtendedCCSL"
+                  label="Merge into one XMI resource"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <iterate
+                           ifEmpty="false"
+                           operator="and">
+                        <and>
+                           <adapt
+                                 type="org.eclipse.core.resources.IFile">
+                           </adapt>
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="extendedCCSL">
+                           </test>
+                        </and>
+                     </iterate>
+                  </with>
                </visibleWhen>
             </command>
          </menu>
@@ -571,6 +609,18 @@
                </iterate>
             </with>
          </or>
+      </definition>
+      <definition
+            id="org.gemoc.gemoc_language_workbench.ui.definitions.isExtendedCCSLFile">
+         <and>
+            <test
+                  property="extension"
+                  value="extendedCCSL">
+            </test>
+            <instanceof
+                  value="org.eclipse.core.resources.IFile">
+            </instanceof>
+         </and>
       </definition>
    </extension>
    <extension

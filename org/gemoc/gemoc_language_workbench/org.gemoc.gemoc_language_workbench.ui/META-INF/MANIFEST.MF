@@ -27,7 +27,8 @@ Require-Bundle: org.eclipse.ui,
  fr.cnrs.luchogie.toools;bundle-version="1.0.0",
  org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0",
  org.gemoc.gemoc_commons.eclipse_utils,
- org.gemoc.dse.ecl.moc2as.ui
+ org.gemoc.dse.ecl.moc2as.ui,
+ org.eclipse.equinox.registry
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.filesystem,
