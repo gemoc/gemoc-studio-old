@@ -1,6 +1,7 @@
 package org.gemoc.execution.engine.commons;
 
 import org.eclipse.core.runtime.Status;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
@@ -19,7 +20,7 @@ public class Activator extends AbstractUIPlugin {
 
 	protected static EclipseMessagingSystem messagingSystem = null;
 
-	public static EclipseMessagingSystem getMessagingSystem() {
+	private static EclipseMessagingSystem getMessagingSystem() {
 		if (messagingSystem == null) {
 			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
 					"GEMOC Execution Engine Commons");
@@ -76,6 +77,34 @@ public class Activator extends AbstractUIPlugin {
 	public static void error(String msg, Throwable e) {
 		Activator.getDefault().getLog()
 				.log(new Status(Status.ERROR, PLUGIN_ID, Status.OK, msg, e));
+	}
+	
+	public static void info(String s) {
+		if (PlatformUI.isWorkbenchRunning())
+			getMessagingSystem().info(s, PLUGIN_ID);
+		else
+			System.out.println(PLUGIN_ID + " INFO: " + s);
+	}
+	
+	public static void warn(String s) {
+		if (PlatformUI.isWorkbenchRunning())
+			getMessagingSystem().info(s, PLUGIN_ID);
+		else
+			System.out.println(PLUGIN_ID + " WARN: " + s);
+	}
+	
+	public static void debug(String s) {
+		if (PlatformUI.isWorkbenchRunning())
+			getMessagingSystem().info(s, PLUGIN_ID);
+		else
+			System.out.println(PLUGIN_ID + " DEBUG: " + s);
+	}
+
+	public static void error(String s) {
+		if (PlatformUI.isWorkbenchRunning())
+			getMessagingSystem().info(s, PLUGIN_ID);
+		else
+			System.out.println(PLUGIN_ID + " INFO: " + s);
 	}
 
 }

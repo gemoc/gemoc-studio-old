@@ -1,9 +1,5 @@
 package org.gemoc.execution.engine.commons.feedback;
 
-import glml.ModelSpecificAction;
-
-import java.lang.reflect.InvocationTargetException;
-
 import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
@@ -25,34 +21,20 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 
 		Object o = feedbackData.getData();
 		if (o instanceof Byte) {
-			Activator.getMessagingSystem().warn(
-					"Please don't return a Byte in your DSA",
-					Activator.PLUGIN_ID);
+			Activator.warn("Please don't return a Byte in your DSA");
 		} else if (o instanceof Short) {
-			Activator.getMessagingSystem().warn(
-					"Please don't return a Short in your DSA",
-					Activator.PLUGIN_ID);
+			Activator.warn("Please don't return a Short in your DSA");
 		} else if (o instanceof Integer) {
-			Activator.getMessagingSystem().warn(
-					"Please don't return an Integer in your DSA",
-					Activator.PLUGIN_ID);
+			Activator.warn("Please don't return an Integer in your DSA");
 		} else if (o instanceof Long) {
-			Activator.getMessagingSystem().warn(
-					"Please don't return a Long in your DSA",
-					Activator.PLUGIN_ID);
+			Activator.warn("Please don't return a Long in your DSA");
 		} else if (o instanceof Float) {
-			Activator.getMessagingSystem().warn(
-					"Please don't return a Float in your DSA",
-					Activator.PLUGIN_ID);
+			Activator.warn("Please don't return a Float in your DSA");
 		} else if (o instanceof Double) {
-			Activator.getMessagingSystem().warn(
-					"Please don't return a Double in your DSA",
-					Activator.PLUGIN_ID);
+			Activator.warn("Please don't return a Double in your DSA");
 		} else if (o instanceof Boolean) {
-			Activator.getMessagingSystem().debug(
-					"Caught a Boolean as feedback from event: "
-							+ feedbackData.getContextEngineEventOccurence().toString(),
-					Activator.PLUGIN_ID);
+			Activator.debug("Caught a Boolean as feedback from event: "
+							+ feedbackData.getContextEngineEventOccurence().toString());
 			//
 			// if
 			// (causalEvent.getAction().getTargetQualifiedName().equals("guardIsDay")
@@ -70,16 +52,11 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 			// }
 
 		} else if (o instanceof Character) {
-			Activator.getMessagingSystem().warn(
-					"Please don't return a Character in your DSA",
-					Activator.PLUGIN_ID);
+			Activator.warn("Please don't return a Character in your DSA");
 		} else if (o instanceof String) {
-			Activator.getMessagingSystem().info("[DSA]" + (String) o,
-					Activator.PLUGIN_ID);
+			Activator.info("[DSA]" + (String) o);
 		} else if (o instanceof Object) {
-			Activator.getMessagingSystem().warn(
-					"Please don't return a non-primitive type in your DSA",
-					Activator.PLUGIN_ID);
+			Activator.warn("Please don't return a non-primitive type in your DSA");
 		}
 
 	}
