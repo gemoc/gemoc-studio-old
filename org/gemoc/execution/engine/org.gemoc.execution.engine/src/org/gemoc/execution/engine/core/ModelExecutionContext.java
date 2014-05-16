@@ -52,6 +52,10 @@ public class ModelExecutionContext {
 	}
 	
 	public ModelExecutionContext(IPath projectPath, IPath domainModelPath, IPath debuggerModelPath) throws CoreException {
+		this(projectPath, domainModelPath, null, debuggerModelPath);
+	}
+	
+	public ModelExecutionContext(IPath projectPath, IPath domainModelPath, IPath mocPath, IPath debuggerModelPath) throws CoreException {
 		_topPath = projectPath.append("/gemoc-gen");
 		_globalExecutionPath = _topPath.append("execution");
 		_specificExecutionPath = _topPath.append(generateSpecificExecutionFolderName());	
@@ -60,9 +64,12 @@ public class ModelExecutionContext {
 		_originalModelPath = domainModelPath;
 		_debuggerViewModelPath = debuggerModelPath;
 		//_originalMoCPath = new Path(getLaunchAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH));
-		setMoCPath();
+		_originalMoCPath = mocPath;
+		if (_originalMoCPath == null)
+			setMoCPath();
 		createExecutionContext();
 	}
+
 
 	private void setMoCPath() {
 		int numberOfCharToRemove = _originalModelPath.lastSegment().toString().length() - _originalModelPath.getFileExtension().length() -1;
