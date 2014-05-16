@@ -8,6 +8,8 @@
     <modules>
         <!-- plugins -->
         <module>../../AS/org.gemoc.mocc.fsmkernel.model</module>
+        <module>../../AS/org.gemoc.mocc.fsmkernel.model.edit</module>
+        <module>../../AS/org.gemoc.mocc.fsmkernel.model.editor</module>
 
         <!-- feature and update site -->
         <module>../org.gemoc.mocc.feature</module>
