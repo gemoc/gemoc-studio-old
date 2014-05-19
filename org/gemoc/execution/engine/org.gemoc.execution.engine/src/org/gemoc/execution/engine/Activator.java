@@ -111,5 +111,17 @@ public class Activator extends AbstractUIPlugin {
 				.log(new Status(Status.ERROR, PLUGIN_ID, Status.OK, msg, e));
 	}
 	
-	
+	public static void debug(String message) {
+		getMessagingSystem().debug(message, Activator.PLUGIN_ID);		
+	}
+	public static void warn(String message) {
+		getMessagingSystem().warn(message, Activator.PLUGIN_ID);		
+	}
+	public static void error(String message) {
+		getMessagingSystem().error(message, Activator.PLUGIN_ID);		
+	}
+	public static void info(String message) {
+		getMessagingSystem().info(message, Activator.PLUGIN_ID);		
+	}
+
 }

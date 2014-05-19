@@ -13,7 +13,7 @@ public interface ILogicalStepDecider {
 	/**
 	 * 
 	 * @param possibleLogicalSteps
-	 * @return
+	 * @return The index of the selected logical step, -1 if no logical step selected.
 	 */
 	public int decide(List<LogicalStep> possibleLogicalSteps)  throws InterruptedException;
 	

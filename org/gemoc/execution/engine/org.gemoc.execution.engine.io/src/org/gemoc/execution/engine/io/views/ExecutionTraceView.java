@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
@@ -20,6 +23,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.gemoc_commons.ui.ViewHelper;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 /**
@@ -74,17 +78,14 @@ public class ExecutionTraceView extends ViewPart implements
 			if (parent != null) {
 				if (parent instanceof GemocExecutionEngine) {
 					GemocExecutionEngine engine = (GemocExecutionEngine) parent;
-					if (engine.getEngineStatus().getFirstChoice() != null) {
-						Choice currentChoice = engine.getEngineStatus().getFirstChoice();
-						while (currentChoice != null) {
-							ExecutionTraceModelWrapper wrapper = new ExecutionTraceModelWrapper(currentChoice, engine.getEngineStatus().getRunningStatus());
-							int chosenLogicalStepIndex = wrapper
-									.getChosenLogicalStepIndex();
-							if (chosenLogicalStepIndex > greatestChosenLogicalStepIndex)
-								greatestChosenLogicalStepIndex = chosenLogicalStepIndex;
-							result.add(wrapper);
-							currentChoice = currentChoice.getNextChoice();
-						}
+					for (Choice currentChoice : engine.getExecutionTrace().getChoices())
+					{
+						ExecutionTraceModelWrapper wrapper = new ExecutionTraceModelWrapper(currentChoice, engine.getEngineStatus().getRunningStatus());
+						int chosenLogicalStepIndex = wrapper
+								.getChosenLogicalStepIndex();
+						if (chosenLogicalStepIndex > greatestChosenLogicalStepIndex)
+							greatestChosenLogicalStepIndex = chosenLogicalStepIndex;
+						result.add(wrapper);
 					}
 				}
 			}
@@ -135,6 +136,7 @@ public class ExecutionTraceView extends ViewPart implements
 		createColumns();
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setInput(executionEngine);
+		viewer.addDoubleClickListener(new DoubleClickListener());
 	}
 
 	private void createColumns() {
@@ -245,6 +247,19 @@ public class ExecutionTraceView extends ViewPart implements
 		super.dispose();
 		_currentEngine = null;
 		stopListeningToMotorSelectionChange();
+	}
+
+	public class DoubleClickListener implements IDoubleClickListener {
+
+		@Override
+		public void doubleClick(DoubleClickEvent event) {
+			if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection)) {
+				StructuredSelection s = (StructuredSelection)event.getSelection();
+				ExecutionTraceModelWrapper wrapper = (ExecutionTraceModelWrapper)s.getFirstElement();
+				_currentEngine.backToPast(wrapper.getChoice());				
+			}
+		}
+
 	}
 
 }

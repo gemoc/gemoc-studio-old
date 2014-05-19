@@ -3,6 +3,7 @@ package org.gemoc.gemoc_language_workbench.api.core;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 
 /**
@@ -61,5 +62,8 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 
 	void initialize(Resource resource, TransactionalEditingDomain editingDomain);
 
+
+	public void backToPast(Choice choice);
+	public ExecutionTraceModel getExecutionTrace();
 
 }
