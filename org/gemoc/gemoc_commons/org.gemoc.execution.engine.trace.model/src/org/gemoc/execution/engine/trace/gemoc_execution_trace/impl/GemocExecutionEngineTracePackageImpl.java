@@ -47,6 +47,27 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	private EClass executionTraceModelEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass solverStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modelStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass contextStateEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -158,6 +179,15 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getChoice_ContextState() {
+        return (EReference)getChoice().getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getExecutionTraceModel() {
 		if (executionTraceModelEClass == null) {
 			executionTraceModelEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(GemocExecutionEngineTracePackage.eNS_URI).getEClassifiers().get(1);
@@ -172,6 +202,78 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 */
 	public EReference getExecutionTraceModel_Choices() {
         return (EReference)getExecutionTraceModel().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSolverState() {
+		if (solverStateEClass == null) {
+			solverStateEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(GemocExecutionEngineTracePackage.eNS_URI).getEClassifiers().get(2);
+		}
+		return solverStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSolverState_Model() {
+        return (EReference)getSolverState().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModelState() {
+		if (modelStateEClass == null) {
+			modelStateEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(GemocExecutionEngineTracePackage.eNS_URI).getEClassifiers().get(3);
+		}
+		return modelStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelState_Model() {
+        return (EReference)getModelState().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContextState() {
+		if (contextStateEClass == null) {
+			contextStateEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(GemocExecutionEngineTracePackage.eNS_URI).getEClassifiers().get(4);
+		}
+		return contextStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getContextState_SolverState() {
+        return (EReference)getContextState().getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getContextState_ModelState() {
+        return (EReference)getContextState().getEStructuralFeatures().get(0);
 	}
 
 	/**

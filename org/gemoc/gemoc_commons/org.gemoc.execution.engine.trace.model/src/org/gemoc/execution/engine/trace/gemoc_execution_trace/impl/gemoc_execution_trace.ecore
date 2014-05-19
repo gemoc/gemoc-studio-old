@@ -8,9 +8,23 @@
         eType="ecore:EClass http://www.inria.fr/sophia/aoste/trace/1.0.0#//LogicalStep"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="ecore:EClass http://www.inria.fr/sophia/aoste/trace/1.0.0#//LogicalStep"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextState" eType="#//ContextState"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExecutionTraceModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1"
         eType="#//Choice" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SolverState">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelState">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextState">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelState" lowerBound="1"
+        eType="#//ModelState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="solverState" lowerBound="1"
+        eType="#//SolverState" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

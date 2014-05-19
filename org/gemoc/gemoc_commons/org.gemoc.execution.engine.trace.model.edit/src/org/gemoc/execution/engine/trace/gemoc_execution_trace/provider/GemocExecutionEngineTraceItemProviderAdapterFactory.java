@@ -118,6 +118,75 @@ public class GemocExecutionEngineTraceItemProviderAdapterFactory extends GemocEx
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SolverStateItemProvider solverStateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSolverStateAdapter() {
+		if (solverStateItemProvider == null) {
+			solverStateItemProvider = new SolverStateItemProvider(this);
+		}
+
+		return solverStateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModelStateItemProvider modelStateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModelStateAdapter() {
+		if (modelStateItemProvider == null) {
+			modelStateItemProvider = new ModelStateItemProvider(this);
+		}
+
+		return modelStateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContextStateItemProvider contextStateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContextStateAdapter() {
+		if (contextStateItemProvider == null) {
+			contextStateItemProvider = new ContextStateItemProvider(this);
+		}
+
+		return contextStateItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +287,9 @@ public class GemocExecutionEngineTraceItemProviderAdapterFactory extends GemocEx
 	public void dispose() {
 		if (choiceItemProvider != null) choiceItemProvider.dispose();
 		if (executionTraceModelItemProvider != null) executionTraceModelItemProvider.dispose();
+		if (solverStateItemProvider != null) solverStateItemProvider.dispose();
+		if (modelStateItemProvider != null) modelStateItemProvider.dispose();
+		if (contextStateItemProvider != null) contextStateItemProvider.dispose();
 	}
 
 }

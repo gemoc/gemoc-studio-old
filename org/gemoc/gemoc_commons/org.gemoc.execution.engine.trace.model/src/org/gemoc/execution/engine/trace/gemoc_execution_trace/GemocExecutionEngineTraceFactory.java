@@ -40,6 +40,33 @@ public interface GemocExecutionEngineTraceFactory extends EFactory {
 	ExecutionTraceModel createExecutionTraceModel();
 
 	/**
+	 * Returns a new object of class '<em>Solver State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Solver State</em>'.
+	 * @generated
+	 */
+	SolverState createSolverState();
+
+	/**
+	 * Returns a new object of class '<em>Model State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model State</em>'.
+	 * @generated
+	 */
+	ModelState createModelState();
+
+	/**
+	 * Returns a new object of class '<em>Context State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Context State</em>'.
+	 * @generated
+	 */
+	ContextState createContextState();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

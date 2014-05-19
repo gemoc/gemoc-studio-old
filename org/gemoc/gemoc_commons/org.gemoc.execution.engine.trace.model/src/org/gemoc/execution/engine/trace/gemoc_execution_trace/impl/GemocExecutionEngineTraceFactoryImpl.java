@@ -58,6 +58,9 @@ public class GemocExecutionEngineTraceFactoryImpl extends EFactoryImpl implement
 		switch (eClass.getClassifierID()) {
 			case GemocExecutionEngineTracePackage.CHOICE: return createChoice();
 			case GemocExecutionEngineTracePackage.EXECUTION_TRACE_MODEL: return createExecutionTraceModel();
+			case GemocExecutionEngineTracePackage.SOLVER_STATE: return createSolverState();
+			case GemocExecutionEngineTracePackage.MODEL_STATE: return createModelState();
+			case GemocExecutionEngineTracePackage.CONTEXT_STATE: return createContextState();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,6 +84,36 @@ public class GemocExecutionEngineTraceFactoryImpl extends EFactoryImpl implement
 	public ExecutionTraceModel createExecutionTraceModel() {
 		ExecutionTraceModelImpl executionTraceModel = new ExecutionTraceModelImpl();
 		return executionTraceModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SolverState createSolverState() {
+		SolverStateImpl solverState = new SolverStateImpl();
+		return solverState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModelState createModelState() {
+		ModelStateImpl modelState = new ModelStateImpl();
+		return modelState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContextState createContextState() {
+		ContextStateImpl contextState = new ContextStateImpl();
+		return contextState;
 	}
 
 	/**

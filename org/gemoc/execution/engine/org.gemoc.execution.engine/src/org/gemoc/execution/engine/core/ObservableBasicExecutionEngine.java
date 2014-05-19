@@ -25,6 +25,7 @@ import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
@@ -215,7 +216,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 
 		ResourceSet rs = this.modelUnderExecutionResource.getResourceSet();
 
-		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getRuntimePath().toString() + "/trace/trace.xmi", false);
+		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getRuntimePath().toString() + "/trace.xmi", false);
 		final Resource modelResource = rs.createResource(traceModelURI);
 		final CommandStack commandStack = _editingDomain.getCommandStack();
 		commandStack.execute(new RecordingCommand(_editingDomain) {
@@ -410,8 +411,8 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 
 		private void saveModels(long count) throws CoreException, IOException {
-			_executionContext.saveTraceModel(_executionTraceModel.eResource(), count);
-			_executionContext.saveDomainModel(modelUnderExecutionResource, count);			
+			_executionContext.saveTraceModel(_executionTraceModel.eResource(), modelUnderExecutionResource, count);
+		//	_executionContext.saveDomainModel(modelUnderExecutionResource, count);
 		}
 
 		private void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) {

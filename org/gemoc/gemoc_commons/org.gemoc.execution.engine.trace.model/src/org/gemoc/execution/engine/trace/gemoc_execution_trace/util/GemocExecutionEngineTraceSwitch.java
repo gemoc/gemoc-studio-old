@@ -78,6 +78,24 @@ public class GemocExecutionEngineTraceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case GemocExecutionEngineTracePackage.SOLVER_STATE: {
+				SolverState solverState = (SolverState)theEObject;
+				T result = caseSolverState(solverState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GemocExecutionEngineTracePackage.MODEL_STATE: {
+				ModelState modelState = (ModelState)theEObject;
+				T result = caseModelState(modelState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GemocExecutionEngineTracePackage.CONTEXT_STATE: {
+				ContextState contextState = (ContextState)theEObject;
+				T result = caseContextState(contextState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -109,6 +127,51 @@ public class GemocExecutionEngineTraceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseExecutionTraceModel(ExecutionTraceModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Solver State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Solver State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSolverState(SolverState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelState(ModelState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Context State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Context State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseContextState(ContextState object) {
 		return null;
 	}
 

@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getNextChoice <em>Next Choice</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getPossibleLogicalSteps <em>Possible Logical Steps</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getChosenLogicalStep <em>Chosen Logical Step</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getContextState <em>Context State</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,5 +93,31 @@ public interface Choice extends EObject {
 	 * @generated
 	 */
 	void setChosenLogicalStep(LogicalStep value);
+
+	/**
+	 * Returns the value of the '<em><b>Context State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Context State</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Context State</em>' containment reference.
+	 * @see #setContextState(ContextState)
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getChoice_ContextState()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ContextState getContextState();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getContextState <em>Context State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Context State</em>' containment reference.
+	 * @see #getContextState()
+	 * @generated
+	 */
+	void setContextState(ContextState value);
 
 } // Choice

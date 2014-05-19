@@ -29,7 +29,8 @@ Require-Bundle: org.eclipse.ui,
  fr.obeo.dsl.debug.ide;bundle-version="1.0.0",
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
  org.eclipse.emf.ecore,
- org.gemoc.gemoc_language_workbench.utils
+ org.gemoc.gemoc_language_workbench.utils,
+ org.eclipse.emf.common
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine,

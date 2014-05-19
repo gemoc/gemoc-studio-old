@@ -3,19 +3,12 @@
 package org.gemoc.execution.engine.trace.gemoc_execution_trace.provider;
 
 
-import fr.inria.aoste.trace.TraceFactory;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -24,18 +17,17 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice} object.
+ * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChoiceItemProvider
+public class ContextStateItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -49,7 +41,7 @@ public class ChoiceItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChoiceItemProvider(AdapterFactory adapterFactory) {
+	public ContextStateItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -64,54 +56,8 @@ public class ChoiceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNextChoicePropertyDescriptor(object);
-			addChosenLogicalStepPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Next Choice feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNextChoicePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Choice_nextChoice_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_nextChoice_feature", "_UI_Choice_type"),
-				 GemocExecutionEngineTracePackage.Literals.CHOICE__NEXT_CHOICE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Chosen Logical Step feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addChosenLogicalStepPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Choice_chosenLogicalStep_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_chosenLogicalStep_feature", "_UI_Choice_type"),
-				 GemocExecutionEngineTracePackage.Literals.CHOICE__CHOSEN_LOGICAL_STEP,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -126,8 +72,8 @@ public class ChoiceItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS);
-			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CHOICE__CONTEXT_STATE);
+			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CONTEXT_STATE__MODEL_STATE);
+			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CONTEXT_STATE__SOLVER_STATE);
 		}
 		return childrenFeatures;
 	}
@@ -146,14 +92,14 @@ public class ChoiceItemProvider
 	}
 
 	/**
-	 * This returns Choice.gif.
+	 * This returns ContextState.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Choice"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ContextState"));
 	}
 
 	/**
@@ -164,7 +110,7 @@ public class ChoiceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Choice_type");
+		return getString("_UI_ContextState_type");
 	}
 
 	/**
@@ -178,9 +124,9 @@ public class ChoiceItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Choice.class)) {
-			case GemocExecutionEngineTracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
-			case GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE:
+		switch (notification.getFeatureID(ContextState.class)) {
+			case GemocExecutionEngineTracePackage.CONTEXT_STATE__MODEL_STATE:
+			case GemocExecutionEngineTracePackage.CONTEXT_STATE__SOLVER_STATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -200,13 +146,13 @@ public class ChoiceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GemocExecutionEngineTracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS,
-				 TraceFactory.eINSTANCE.createLogicalStep()));
+				(GemocExecutionEngineTracePackage.Literals.CONTEXT_STATE__MODEL_STATE,
+				 GemocExecutionEngineTraceFactory.eINSTANCE.createModelState()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GemocExecutionEngineTracePackage.Literals.CHOICE__CONTEXT_STATE,
-				 GemocExecutionEngineTraceFactory.eINSTANCE.createContextState()));
+				(GemocExecutionEngineTracePackage.Literals.CONTEXT_STATE__SOLVER_STATE,
+				 GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState()));
 	}
 
 	/**

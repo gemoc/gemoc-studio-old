@@ -93,13 +93,22 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 	int CHOICE__CHOSEN_LOGICAL_STEP = 2;
 
 	/**
+	 * The feature id for the '<em><b>Context State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__CONTEXT_STATE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Choice</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHOICE_FEATURE_COUNT = 3;
+	int CHOICE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Choice</em>' class.
@@ -150,6 +159,127 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.SolverStateImpl <em>Solver State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.SolverStateImpl
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getSolverState()
+	 * @generated
+	 */
+	int SOLVER_STATE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOLVER_STATE__MODEL = 0;
+
+	/**
+	 * The number of structural features of the '<em>Solver State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOLVER_STATE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Solver State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOLVER_STATE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ModelStateImpl <em>Model State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ModelStateImpl
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getModelState()
+	 * @generated
+	 */
+	int MODEL_STATE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_STATE__MODEL = 0;
+
+	/**
+	 * The number of structural features of the '<em>Model State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_STATE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Model State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_STATE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ContextStateImpl <em>Context State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ContextStateImpl
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getContextState()
+	 * @generated
+	 */
+	int CONTEXT_STATE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Model State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_STATE__MODEL_STATE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Solver State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_STATE__SOLVER_STATE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Context State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_STATE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Context State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_STATE_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice <em>Choice</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -193,6 +323,17 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 	EReference getChoice_ChosenLogicalStep();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getContextState <em>Context State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Context State</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getContextState()
+	 * @see #getChoice()
+	 * @generated
+	 */
+	EReference getChoice_ContextState();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel <em>Execution Trace Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,6 +353,80 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getExecutionTraceModel_Choices();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState <em>Solver State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Solver State</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState
+	 * @generated
+	 */
+	EClass getSolverState();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState#getModel <em>Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Model</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState#getModel()
+	 * @see #getSolverState()
+	 * @generated
+	 */
+	EReference getSolverState_Model();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState <em>Model State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Model State</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState
+	 * @generated
+	 */
+	EClass getModelState();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState#getModel <em>Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Model</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState#getModel()
+	 * @see #getModelState()
+	 * @generated
+	 */
+	EReference getModelState_Model();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState <em>Context State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Context State</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState
+	 * @generated
+	 */
+	EClass getContextState();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState#getSolverState <em>Solver State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Solver State</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState#getSolverState()
+	 * @see #getContextState()
+	 * @generated
+	 */
+	EReference getContextState_SolverState();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState#getModelState <em>Model State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Model State</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState#getModelState()
+	 * @see #getContextState()
+	 * @generated
+	 */
+	EReference getContextState_ModelState();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -271,6 +486,14 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 		EReference CHOICE__CHOSEN_LOGICAL_STEP = eINSTANCE.getChoice_ChosenLogicalStep();
 
 		/**
+		 * The meta object literal for the '<em><b>Context State</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHOICE__CONTEXT_STATE = eINSTANCE.getChoice_ContextState();
+
+		/**
 		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl <em>Execution Trace Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -287,6 +510,68 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXECUTION_TRACE_MODEL__CHOICES = eINSTANCE.getExecutionTraceModel_Choices();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.SolverStateImpl <em>Solver State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.SolverStateImpl
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getSolverState()
+		 * @generated
+		 */
+		EClass SOLVER_STATE = eINSTANCE.getSolverState();
+
+		/**
+		 * The meta object literal for the '<em><b>Model</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SOLVER_STATE__MODEL = eINSTANCE.getSolverState_Model();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ModelStateImpl <em>Model State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ModelStateImpl
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getModelState()
+		 * @generated
+		 */
+		EClass MODEL_STATE = eINSTANCE.getModelState();
+
+		/**
+		 * The meta object literal for the '<em><b>Model</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_STATE__MODEL = eINSTANCE.getModelState_Model();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ContextStateImpl <em>Context State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ContextStateImpl
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getContextState()
+		 * @generated
+		 */
+		EClass CONTEXT_STATE = eINSTANCE.getContextState();
+
+		/**
+		 * The meta object literal for the '<em><b>Solver State</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTEXT_STATE__SOLVER_STATE = eINSTANCE.getContextState_SolverState();
+
+		/**
+		 * The meta object literal for the '<em><b>Model State</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTEXT_STATE__MODEL_STATE = eINSTANCE.getContextState_ModelState();
 
 	}
 

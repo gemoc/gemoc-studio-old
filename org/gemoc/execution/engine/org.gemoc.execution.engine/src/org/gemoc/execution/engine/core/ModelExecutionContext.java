@@ -17,7 +17,13 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 
 
@@ -136,11 +142,41 @@ public class ModelExecutionContext {
 	}
 	
 	
-	public void saveTraceModel(Resource resource, long stepNumber) throws CoreException, IOException {
-		if (resource.getContents().size() > 0) {
+	public void saveTraceModel(Resource traceResource, Resource modelUnderExecutionResource, long stepNumber) throws CoreException, IOException {
+		if (traceResource.getContents().size() > 0) {
 			IPath folderPath = getStepFolder(stepNumber);	
-			IPath filePath = folderPath.append("trace.xmi");
-			saveResource(resource, filePath);			
+			IPath traceFilePath = new Path(traceResource.getURI().toPlatformString(true));
+			IPath modelPath = folderPath.append(modelUnderExecutionResource.getURI().lastSegment());
+			IFile modelFile = ResourcesPlugin.getWorkspace().getRoot().getFile(modelPath);
+			
+			// filing out the model
+			FileOutputStream fos = new FileOutputStream(modelFile.getLocation().toString());
+			try {
+				modelUnderExecutionResource.save(fos, null);				
+			} 
+			finally {
+				fos.close();
+			}
+			// reload the model
+			URI modelURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+			Resource modelResource = traceResource.getResourceSet().createResource(modelURI);
+			modelResource.load(null);
+			
+			ExecutionTraceModel traceModel = (ExecutionTraceModel)traceResource.getContents().get(0);				
+			if (traceModel.getChoices().size() > 0) {
+				// link it to the trace model
+				ModelState modelState = GemocExecutionEngineTraceFactory.eINSTANCE.createModelState();					
+				modelState.setModel(modelResource.getContents().get(0));
+				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();					
+				solverState.setModel(modelResource.getContents().get(0));
+
+				ContextState contextState = GemocExecutionEngineTraceFactory.eINSTANCE.createContextState();
+				contextState.setModelState(modelState);
+				contextState.setSolverState(solverState);
+				traceModel.getChoices().get(traceModel.getChoices().size()-1).setContextState(contextState);
+			}
+			
+			saveResource(traceResource, traceFilePath);			
 		}
 	}
 
@@ -163,9 +199,13 @@ public class ModelExecutionContext {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		ByteArrayInputStream in = null;
 		try {
-			resource.save(out, null);								
+			resource.save(out, null);				
 			in = new ByteArrayInputStream(out.toByteArray());
-			file.create(in, true, new NullProgressMonitor());
+			if (file.exists()) {
+				file.setContents(in, true, false, new NullProgressMonitor());
+			} else {
+				file.create(in, true, new NullProgressMonitor());				
+			}
 		} finally {
 			out.close();
 			if (in != null)
