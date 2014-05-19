@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: MoCML FSM dsl xtext
 Bundle-Vendor: ENSTA Bretagne
-Bundle-Version: 0.1.0
+Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,

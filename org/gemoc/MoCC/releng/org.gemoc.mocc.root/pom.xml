@@ -13,9 +13,20 @@
         <module>../../AS/org.gemoc.mocc.ccslmocc.model</module>
         <module>../../AS/org.gemoc.mocc.ccslmocc.model.edit</module>
         <module>../../AS/org.gemoc.mocc.ccslmocc.model.editor</module>
+        
+        <module>../../concreteSyntax/textual/org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl</module>
+        <module>../../concreteSyntax/textual/org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui</module>
+        <module>../../concreteSyntax/textual/org.gemoc.mocc.ccslmocc.model.xtext.mocdsl</module>
+        <module>../../concreteSyntax/textual/org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui</module>
+        
+        <module>../../concreteSyntax/graphical/org.gemoc.mocc.fsmkernel.model.design</module>
+        <module>../../concreteSyntax/graphical/org.gemoc.mocc.ccslmocc.model.design</module>
 
         <!-- feature and update site -->
         <module>../org.gemoc.mocc.feature</module>
+        <module>../org.gemoc.mocc.core.feature</module>
+        <module>../org.gemoc.mocc.graphical.editors.feature</module>
+        <module>../org.gemoc.mocc.text.editors.feature</module>
         <module>../org.gemoc.mocc.p2updatesite</module>
     </modules>
 

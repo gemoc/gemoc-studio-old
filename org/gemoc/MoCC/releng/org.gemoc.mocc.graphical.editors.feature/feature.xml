@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.gemoc.mocc.feature"
-      label="Gemoc MoCC"
+      id="org.gemoc.mocc.graphical.editors.feature"
+      label="Gemoc MoCC Graphical Editors"
       version="0.1.0.qualifier"
       provider-name="ENSTA Bretagne">
 
@@ -19,16 +19,18 @@ Gemoc Language Workbench.
       [Enter License Description here.]
    </license>
 
-   <includes
-         id="org.gemoc.mocc.core.feature"
-         version="0.0.0"/>
+   <plugin
+         id="org.gemoc.mocc.ccslmocc.model.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <includes
-         id="org.gemoc.mocc.graphical.editors.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.gemoc.mocc.text.editors.feature"
-         version="0.0.0"/>
+   <plugin
+         id="org.gemoc.mocc.fsmkernel.model.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

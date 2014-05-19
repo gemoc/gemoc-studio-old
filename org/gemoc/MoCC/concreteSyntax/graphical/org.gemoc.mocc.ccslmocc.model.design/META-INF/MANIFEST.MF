@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: org.gemoc.mocc.ccslmocc.model.design;singleton:=true
-Bundle-Version: 0.1.0
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.mocc.ccslmocc.model.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
