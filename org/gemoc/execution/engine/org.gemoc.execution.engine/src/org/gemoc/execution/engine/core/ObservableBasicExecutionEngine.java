@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
@@ -29,6 +30,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
@@ -83,6 +85,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * 
  * @author flatombe
  * @author didier.vojtisek@inria.fr
+ * @param <T>
  * 
  */
 public class ObservableBasicExecutionEngine extends Observable implements
@@ -111,6 +114,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	protected EventExecutor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
 	protected ILogicalStepDecider logicalStepDecider = null;
+	public ILogicalStepDecider getLogicalStepDecider() 
+	{
+		return logicalStepDecider;
+	}
+	
 	protected Set<IEngineHook> registeredEngineHooks = new HashSet<IEngineHook>();
 
 	private ModelExecutionContext _executionContext;
@@ -197,6 +205,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 				}
 			}
 		}
+		capability(ModelExecutionTracingCapability.class);
 	}
 
 	private TransactionalEditingDomain _editingDomain;
@@ -322,9 +331,8 @@ public class ObservableBasicExecutionEngine extends Observable implements
 
 						selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
 						if (selectedLogicalStepIndex == -1) {
-							if (_backToPastHappened) {
+							if (hasRewindHappened()) {
 								Activator.debug("Back to past happened --> let the engine ignoring current steps.");
-								_backToPastHappened = false;
 							} else {
 								Activator.debug("Engine cannot continue because decider did not decide anything.");
 								terminated = true;
@@ -381,6 +389,13 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			ObservableBasicExecutionEngine.this.notifyObservers("Stopping "+engineName);
 			
 			// TODO remove the engine from registered running engines
+		}
+
+		private boolean hasRewindHappened() {
+			if (hasCapability(ModelExecutionTracingCapability.class)) {
+				return capability(ModelExecutionTracingCapability.class).hasRewindHappened(true);
+			}
+			return false;
 		}
 
 		private void terminateIfLastStepsSimilar(final LogicalStep logicalStepToApply) {
@@ -635,36 +650,38 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	public void removeEngineHook(IEngineHook removedEngineHook) {
 		registeredEngineHooks.remove(removedEngineHook);
 	}
-
-
-	private boolean _backToPastHappened = false;
-	@Override
-	public void backToPast(Choice choice) {
-		backInTraceModelTo(choice);
-//		resetSolverContext(choice);
-//		_backToPastHappened = true;
-	}
-
-	private void backInTraceModelTo(Choice choice) {
-		int index = _executionTraceModel.getChoices().indexOf(choice);
-		if (index != -1
-			&& index != _executionTraceModel.getChoices().size()) {
-			_executionTraceModel.getChoices().subList(0, index+1).clear();
-			choice.setNextChoice(null);
-			//			List<Choice> choicesToKeep = 
-//			_executionTraceModel.getChoices().clear();
-//			_executionTraceModel.getChoices().addAll(new ArrayList<Choice>(choicesToKeep));
+	
+	private ArrayList<IExecutionEngineCapability> _capabilities = new ArrayList<IExecutionEngineCapability>();
+	public <T extends IExecutionEngineCapability> boolean hasCapability(Class<T> type) {
+		for(IExecutionEngineCapability c : _capabilities) {
+			if (c.getClass().equals(type))
+				return true;
 		}
+		return false;
 	}
-
-	private void resetSolverContext(Choice choice) {
-//		// overwrite current state of the executable model with the memento
-//		ResourceSet rs = modelUnderExecutionResource.getResourceSet();
-//		choice.getContextState().getModelState().getModel().eResource();
-//		solver.setSolverInputFile(rs, solverInputURI);
-//		// overwrite the current state of the solver state model with the memento
-//		// apply the chosen logical step
-//		doLogicalStep(choice.getChosenLogicalStep());
+	public <T extends IExecutionEngineCapability> T getCapability(Class<T> type) {
+		for(IExecutionEngineCapability c : _capabilities) {
+			if (c.getClass().equals(type))
+				return (T)c;
+		}
+		return null;
 	}
-
+	public <T extends IExecutionEngineCapability> T capability(Class<T> type) {
+		T capability = getCapability(type);
+		if (capability == null) {
+			try {
+				capability = type.newInstance();
+				capability.initialize(this);
+				_capabilities.add(capability);
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return capability;
+	}
+	
 }

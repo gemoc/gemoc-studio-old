@@ -21,6 +21,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
+import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.gemoc_commons.ui.ViewHelper;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
@@ -253,10 +254,11 @@ public class ExecutionTraceView extends ViewPart implements
 
 		@Override
 		public void doubleClick(DoubleClickEvent event) {
-			if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection)) {
+			if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection)
+				&& _currentEngine.hasCapability(ModelExecutionTracingCapability.class)) {
 				StructuredSelection s = (StructuredSelection)event.getSelection();
 				ExecutionTraceModelWrapper wrapper = (ExecutionTraceModelWrapper)s.getFirstElement();
-				_currentEngine.backToPast(wrapper.getChoice());				
+				_currentEngine.capability(ModelExecutionTracingCapability.class).backToPast(wrapper.getChoice());				
 			}
 		}
 
