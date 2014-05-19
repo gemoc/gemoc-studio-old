@@ -16,6 +16,7 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.State;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Trigger;
 
+import toools.io.Serializer;
 import toools.io.Utilities;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.BasicTypeFactory;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.DiscreteClockType;
@@ -77,7 +78,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		
 		for (Transition t : _currentState.getOutputTransitions()) {
 			//construct three set, the one of clock that must tick and the clock that must not tick
-			if(t.getTrigger() == null & evaluate((BooleanExpression)((Guard)t.getGuard()).getValue())){
+			if(t.getTrigger() == null &&t.getGuard() != null  && evaluate((BooleanExpression)((Guard)t.getGuard()).getValue())){
 			//here, it is the default transition
 				for (AbstractAction a : t.getActions()) {
 					if (a instanceof IntegerAssignement){
@@ -98,8 +99,9 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		_sensitiveTransitition = new ArrayList<Transition>();
 		for (Transition t : _currentState.getOutputTransitions()) {
 			//construct three set, the one of clock that must tick and the clock that must not tick
-			if(t.getTrigger() == null & evaluate((BooleanExpression)((Guard)t.getGuard()).getValue())){
+			if(t.getTrigger() == null || evaluate((BooleanExpression)((Guard)t.getGuard()).getValue())){
 			//here, it is the default transition
+				System.out.println("default transition taken");
 				for (AbstractAction a : t.getActions()) {
 					if (a instanceof IntegerAssignement){
 						IntegerAssignement ia = (IntegerAssignement)a;
@@ -279,6 +281,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 			IntegerElement leftElement = ((IntegerRef)leftExpr).getIntegerElem();
 			IntegerElement localLeftElement = _localInteger.get(leftElement);
 			localLeftElement.setValue(iToIncrement+incrementValue);
+//			System.out.println("new Value is: "+localLeftElement.getValue());
 		}
 		
 		if(rightExpr instanceof IntMinus){
@@ -294,6 +297,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 			IntegerElement leftElement = ((IntegerRef)leftExpr).getIntegerElem();
 			IntegerElement localLeftElement = _localInteger.get(leftElement);
 			localLeftElement.setValue(iToIncrement-decrementValue);
+//			System.out.println("new Value is: "+localLeftElement.getValue());
 		}
 		
 		if(rightExpr instanceof IntegerVariableRef){
@@ -340,7 +344,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		
 		int left = getInteger(leftExpr);
 		int right = getInteger(rightExpr);
-		
+		//System.out.println("capacity ("+left+") > currentSize("+right+")");
 		return left > right;
 	}
 	
@@ -364,9 +368,30 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 					}
 				}
 				
-			}else{
-				throw new IllegalArgumentException("sorry for now only IntegerElement refered from IntegerRef is supported");
+			}else
+			if(expr instanceof IntegerRef){
+				return ((IntegerRef)expr).getIntegerElem().getValue();
 			}
+			else
+			if(expr instanceof IntPlus){
+				IntPlus plus = (IntPlus)expr;
+	
+				int iToIncrement = getInteger(plus.getLeftValue());
+				int incrementValue = getInteger(plus.getRightValue());
+				return iToIncrement + incrementValue;
+			}
+			else
+			if(expr instanceof IntMinus){
+				IntMinus minus = (IntMinus)expr;
+
+				int iToDecrement = getInteger(minus.getLeftValue());
+				int decrementValue = getInteger(minus.getRightValue());
+				return iToDecrement - decrementValue;
+			}
+			else{
+				throw new IllegalArgumentException("left value of assignment should be integerRef (to a local integer !)");
+			}
+			
 		}
 		return -1;
 	}
@@ -378,19 +403,20 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		//super does not add anything in the list
 		ArrayList<byte[]> currentState = new ArrayList<byte[]>();
 		int currentStateIndex = _modelSTS.getStates().indexOf(_currentState);
-		currentState.add(Utilities.objectToBytes(currentStateIndex));
+		currentState.add(Serializer.getDefaultProtocol().toBytes(currentStateIndex));
 		for(IntegerElement ie : _localInteger.values()){
-			currentState.add(Utilities.objectToBytes(ie.getValue().intValue()));
+			currentState.add(Serializer.getDefaultProtocol().toBytes(ie.getValue().intValue()));
+//			System.out.println("################################################################# mem:" +ie.getValue().intValue());
 		}
 		return currentState;
 	}
 
 	@Override
 	public void setState(ArrayList<byte[]> state) {
-		_currentState = _modelSTS.getStates().get((Integer) Utilities.bytesToObject(state.get(0)));
+		_currentState = _modelSTS.getStates().get((Integer) Serializer.getDefaultProtocol().fromBytes(state.get(0)));
 		int i=1;
 		for(IntegerElement ie : _localInteger.values()){
-			ie.setValue((Integer) Utilities.bytesToObject(state.get(i++)));
+			ie.setValue((Integer) Serializer.getDefaultProtocol().fromBytes(state.get(i++)));
 		}
 		return;		
 	}
