@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2012-2016 GEMOC consortium.
+ 
+ http://www.gemoc.org
+   
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+   
+ $Id$
+-->
 <feature
       id="org.gemoc.mocc.feature"
       label="Gemoc MoCC"
       version="0.1.0.qualifier"
       provider-name="ENSTA Bretagne">
 
-   <description url="http://gemoc.org/studio/">
-      The Gemoc Modeling Workbench provides the basic support
-for creating and running executable models defined with the
-Gemoc Language Workbench.
+   <description>
+      The MoC Modeling Language Abstract Syntax provides an extension to CCSL to define automaton. The feature includes metamodels and genmodel edits and editors.
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright>
+      Copyright (c) 2012-2016 GEMOC consortium.
+ http://www.gemoc.org
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
    </license>
 
    <includes
