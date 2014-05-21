@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui
 Bundle-Vendor: ENSTA Bretagne
-Bundle-Version: 0.1.0
+Bundle-Version: 0.1.0.qualifier
 Bundle-SymbolicName: org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.gemoc.mocc.ccslmocc.model.xtext.mocdsl;visibility:=reexport,
