@@ -639,4 +639,14 @@
       </wizard>
    </extension>
 
+
+   <extension
+          point="org.eclipse.ui.perspectiveExtensions">
+       <perspectiveExtension
+             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
+          <newWizardShortcut
+                id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject">
+          </newWizardShortcut>
+       </perspectiveExtension>
+    </extension>
 </plugin>
