@@ -3255,11 +3255,11 @@ protected class Action_IntegerAssignementBlockParserRuleCall_3 extends RuleCallT
 /************ begin Rule FinishClock ****************
  *
  * FinishClock returns ccslmoc::FinishClock:
- * 	{ccslmoc::FinishClock} "kill" "(" clock=[TimeModel::Clock|EString] ")";
+ * 	{ccslmoc::FinishClock} "kill" "(" clock=[ClockExpressionAndRelation::BindableEntity|EString] ")";
  *
  **/
 
-// {ccslmoc::FinishClock} "kill" "(" clock=[TimeModel::Clock|EString] ")"
+// {ccslmoc::FinishClock} "kill" "(" clock=[ClockExpressionAndRelation::BindableEntity|EString] ")"
 protected class FinishClock_Group extends GroupToken {
 	
 	public FinishClock_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3358,7 +3358,7 @@ protected class FinishClock_LeftParenthesisKeyword_2 extends KeywordToken  {
 
 }
 
-// clock=[TimeModel::Clock|EString]
+// clock=[ClockExpressionAndRelation::BindableEntity|EString]
 protected class FinishClock_ClockAssignment_3 extends AssignmentToken  {
 	
 	public FinishClock_ClockAssignment_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3384,9 +3384,9 @@ protected class FinishClock_ClockAssignment_3 extends AssignmentToken  {
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("clock");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getFinishClockAccess().getClockClockCrossReference_3_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getFinishClockAccess().getClockBindableEntityCrossReference_3_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getFinishClockAccess().getClockClockCrossReference_3_0(); 
+				element = grammarAccess.getFinishClockAccess().getClockBindableEntityCrossReference_3_0(); 
 				return obj;
 			}
 		}
@@ -3424,11 +3424,11 @@ protected class FinishClock_RightParenthesisKeyword_4 extends KeywordToken  {
 /************ begin Rule StartClock ****************
  *
  * StartClock returns ccslmoc::StartClock:
- * 	{ccslmoc::StartClock} "start" "(" clock=[TimeModel::Clock|EString] ")";
+ * 	{ccslmoc::StartClock} "start" "(" clock=[ClockExpressionAndRelation::BindableEntity|EString] ")";
  *
  **/
 
-// {ccslmoc::StartClock} "start" "(" clock=[TimeModel::Clock|EString] ")"
+// {ccslmoc::StartClock} "start" "(" clock=[ClockExpressionAndRelation::BindableEntity|EString] ")"
 protected class StartClock_Group extends GroupToken {
 	
 	public StartClock_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3527,7 +3527,7 @@ protected class StartClock_LeftParenthesisKeyword_2 extends KeywordToken  {
 
 }
 
-// clock=[TimeModel::Clock|EString]
+// clock=[ClockExpressionAndRelation::BindableEntity|EString]
 protected class StartClock_ClockAssignment_3 extends AssignmentToken  {
 	
 	public StartClock_ClockAssignment_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3553,9 +3553,9 @@ protected class StartClock_ClockAssignment_3 extends AssignmentToken  {
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("clock");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getStartClockAccess().getClockClockCrossReference_3_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getStartClockAccess().getClockBindableEntityCrossReference_3_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getStartClockAccess().getClockClockCrossReference_3_0(); 
+				element = grammarAccess.getStartClockAccess().getClockBindableEntityCrossReference_3_0(); 
 				return obj;
 			}
 		}
@@ -6925,13 +6925,15 @@ protected class IntSelfDivAssign_RightValueAssignment_4 extends AssignmentToken 
 /************ begin Rule IntegerAssignement ****************
  *
  * IntegerAssignement returns fsmmodel::IntegerAssignement:
- * 	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
- * 	IntegerExpression;
+ * 	{fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue=
+ * 	//';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+ *  IntegerExpression;
  *
  **/
 
-// {fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-// IntegerExpression
+// {fsmmodel::IntegerAssignement} ("#ref" name=EString)? leftValue=IntegerRef "=" rightValue=
+// //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+//  IntegerExpression
 protected class IntegerAssignement_Group extends GroupToken {
 	
 	public IntegerAssignement_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7135,7 +7137,7 @@ protected class IntegerAssignement_EqualsSignKeyword_3 extends KeywordToken  {
 }
 
 // rightValue= //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
-// IntegerExpression
+//  IntegerExpression
 protected class IntegerAssignement_RightValueAssignment_4 extends AssignmentToken  {
 	
 	public IntegerAssignement_RightValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8476,8 +8478,8 @@ protected class BooleanRef_RightSquareBracketKeyword_1_4 extends KeywordToken  {
 /************ begin Rule IntegerRef ****************
  *
  * / *RealRef returns ClassicalExpression::RealRef:
- * 	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';* / IntegerRef
- * returns ClassicalExpression::IntegerRef:
+ * 	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';* /
+ * IntegerRef returns ClassicalExpression::IntegerRef:
  * 	"i[" integerElem=[BasicType::IntegerElement|EString] "]" | "i#ref" name=ID "["
  * 	integerElem=[BasicType::IntegerElement|EString] "]";
  *
@@ -8792,7 +8794,8 @@ protected class IntegerRef_RightSquareBracketKeyword_1_4 extends KeywordToken  {
  * 	'{'
  * 		'value' value=[BasicType::RealElement|EString]
  * 		'operand' operand=RealExpression
- * 	'})');* / / *UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
+ * 	'})');* /
+ * / *UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
  * 	('-' 
  * 	'{'
  * 		'value' value=[BasicType::RealElement|EString]
@@ -8802,7 +8805,8 @@ protected class IntegerRef_RightSquareBracketKeyword_1_4 extends KeywordToken  {
  * 	'{'
  * 		'value' value=[BasicType::RealElement|EString]
  * 		'operand' operand=RealExpression
- * 	'})');* / / *RealPlus returns ClassicalExpression::RealPlus:
+ * 	'})');* /
+ * / *RealPlus returns ClassicalExpression::RealPlus:
  * 	('('('#ref' name=String0)? leftValue=RealExpression '+' rightValue=RealExpression')')|
  * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '+' rightValue=RealExpression')');
  * 
@@ -8812,8 +8816,8 @@ protected class IntegerRef_RightSquareBracketKeyword_1_4 extends KeywordToken  {
  * 
  * RealMultiply returns ClassicalExpression::RealMultiply:
  * 	('('('#ref' name=String0)? leftValue=RealExpression '*' rightValue=RealExpression')')|
- * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '*' rightValue=RealExpression')');* / UnaryIntPlus
- * returns ClassicalExpression::UnaryIntPlus:
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '*' rightValue=RealExpression')');* /
+ * UnaryIntPlus returns ClassicalExpression::UnaryIntPlus:
  * 	"+" "{" "value" value=[BasicType::IntegerElement|EString] "operand" operand=IntegerExpression "}" | "(+" ("#ref"
  * 	name=String0 (":" type=[BasicType::Type|EString])?)? "{" "value" value=[BasicType::IntegerElement|EString] "operand"
  * 	operand=IntegerExpression "})";
@@ -14110,8 +14114,8 @@ protected class Xor_RightParenthesisKeyword_5 extends KeywordToken  {
  * 
  * RealSup returns ClassicalExpression::RealSup:
  * 	('('('#ref' name=String0)? leftValue=RealExpression '>' rightValue=RealExpression')')|
- * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>' rightValue=RealExpression')');* / IntInf
- * returns ClassicalExpression::IntInf:
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>' rightValue=RealExpression')');* /
+ * IntInf returns ClassicalExpression::IntInf:
  * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")" | "(" ("#ref"
  * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression "<" rightValue=IntegerExpression ")";
  *
@@ -17327,10 +17331,11 @@ protected class BooleanExpression_IntSupEqualParserRuleCall_11 extends RuleCallT
  *
  * / *RealSupEqual returns extension::RealSupEqual:
  * 	('('('#ref' name=String0)? leftValue=RealExpression '>=' rightValue=RealExpression')')|
- * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>=' rightValue=RealExpression')');* / / *RealInfEqual returns extension::RealInfEqual:
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '>=' rightValue=RealExpression')');* /
+ * / *RealInfEqual returns extension::RealInfEqual:
  * 	('('('#ref' name=String0)? leftValue=RealExpression '<=' rightValue=RealExpression')')|
- * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '<=' rightValue=RealExpression')');* / IntSupEqual
- * returns extension::IntSupEqual:
+ * 	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=RealExpression '<=' rightValue=RealExpression')');* /
+ * IntSupEqual returns extension::IntSupEqual:
  * 	"(" ("#ref" name=String0)? leftValue=IntegerExpression ">=" rightValue=IntegerExpression ")" | "(" ("#ref"
  * 	name=String0 ":" type=[BasicType::Type|EString])? leftValue=IntegerExpression ">=" rightValue=IntegerExpression ")";
  *
@@ -18583,7 +18588,8 @@ protected class IntInfEqual_RightParenthesisKeyword_1_5 extends KeywordToken  {
  * 	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
  * 
  * UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
- * 	UnaryRealPlus|UnaryRealMinus;* / / * 
+ * 	UnaryRealPlus|UnaryRealMinus;* /
+ * / * 
  * RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
  * 	{extension::RealSelfPlusAssignement}
  * 	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
@@ -18598,19 +18604,22 @@ protected class IntInfEqual_RightParenthesisKeyword_1_5 extends KeywordToken  {
  * 	{extension::RealSelfMultiplyAssignement}
  * 	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
  * ;
- * * / ClassicalExpression0 returns ClassicalExpression::ClassicalExpression:
+ * * /
+ * ClassicalExpression0 returns ClassicalExpression::ClassicalExpression:
  * 	BooleanExpression / *| RealExpression* / | IntegerExpression | SeqExpression;
  *
  **/
 
-// BooleanExpression / *| RealExpression* / / *RealExpression returns ClassicalExpression::RealExpression:
+// BooleanExpression / *| RealExpression* /
+// / *RealExpression returns ClassicalExpression::RealExpression:
 // 	BinaryRealExpression|UnaryRealExpression|RealRef|RealVariableRef;
 // 	
 // BinaryRealExpression returns ClassicalExpression::BinaryRealExpression:
 // 	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
 // 
 // UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
-// 	UnaryRealPlus|UnaryRealMinus;* / / * 
+// 	UnaryRealPlus|UnaryRealMinus;* /
+// / * 
 // RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
 // 	{extension::RealSelfPlusAssignement}
 // 	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
@@ -18625,7 +18634,8 @@ protected class IntInfEqual_RightParenthesisKeyword_1_5 extends KeywordToken  {
 // 	{extension::RealSelfMultiplyAssignement}
 // 	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
 // ;
-// * / | IntegerExpression | SeqExpression
+// * /
+// | IntegerExpression | SeqExpression
 protected class ClassicalExpression0_Alternatives extends AlternativesToken {
 
 	public ClassicalExpression0_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -18789,7 +18799,8 @@ protected class ClassicalExpression0_IntegerExpressionParserRuleCall_1 extends R
 // 	RealPlus|RealMinus|RealMultiply|RealSelfPlusAssign|RealSelfMinusAssign|RealSelfMultAssign;
 // 
 // UnaryRealExpression returns ClassicalExpression::UnaryRealExpression:
-// 	UnaryRealPlus|UnaryRealMinus;* / / * 
+// 	UnaryRealPlus|UnaryRealMinus;* /
+// / * 
 // RealSelfPlusAssign returns extension::RealSelfPlusAssignement:
 // 	{extension::RealSelfPlusAssignement}
 // 	('#ref'name=EString)? leftValue=RealRef '+=' rightValue=RealExpression
@@ -18804,7 +18815,8 @@ protected class ClassicalExpression0_IntegerExpressionParserRuleCall_1 extends R
 // 	{extension::RealSelfMultiplyAssignement}
 // 	('#ref'name=EString)? leftValue=RealRef '*=' rightValue=RealExpression
 // ;
-// * / SeqExpression
+// * /
+// SeqExpression
 protected class ClassicalExpression0_SeqExpressionParserRuleCall_2 extends RuleCallToken {
 	
 	public ClassicalExpression0_SeqExpressionParserRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {

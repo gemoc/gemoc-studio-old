@@ -37950,12 +37950,12 @@ rule__FinishClock__ClockAssignment_3
     }
 :
 (
-{ before(grammarAccess.getFinishClockAccess().getClockClockCrossReference_3_0()); }
+{ before(grammarAccess.getFinishClockAccess().getClockBindableEntityCrossReference_3_0()); }
 (
-{ before(grammarAccess.getFinishClockAccess().getClockClockEStringParserRuleCall_3_0_1()); }
-	ruleEString{ after(grammarAccess.getFinishClockAccess().getClockClockEStringParserRuleCall_3_0_1()); }
+{ before(grammarAccess.getFinishClockAccess().getClockBindableEntityEStringParserRuleCall_3_0_1()); }
+	ruleEString{ after(grammarAccess.getFinishClockAccess().getClockBindableEntityEStringParserRuleCall_3_0_1()); }
 )
-{ after(grammarAccess.getFinishClockAccess().getClockClockCrossReference_3_0()); }
+{ after(grammarAccess.getFinishClockAccess().getClockBindableEntityCrossReference_3_0()); }
 )
 
 ;
@@ -37969,12 +37969,12 @@ rule__StartClock__ClockAssignment_3
     }
 :
 (
-{ before(grammarAccess.getStartClockAccess().getClockClockCrossReference_3_0()); }
+{ before(grammarAccess.getStartClockAccess().getClockBindableEntityCrossReference_3_0()); }
 (
-{ before(grammarAccess.getStartClockAccess().getClockClockEStringParserRuleCall_3_0_1()); }
-	ruleEString{ after(grammarAccess.getStartClockAccess().getClockClockEStringParserRuleCall_3_0_1()); }
+{ before(grammarAccess.getStartClockAccess().getClockBindableEntityEStringParserRuleCall_3_0_1()); }
+	ruleEString{ after(grammarAccess.getStartClockAccess().getClockBindableEntityEStringParserRuleCall_3_0_1()); }
 )
-{ after(grammarAccess.getStartClockAccess().getClockClockCrossReference_3_0()); }
+{ after(grammarAccess.getStartClockAccess().getClockBindableEntityCrossReference_3_0()); }
 )
 
 ;

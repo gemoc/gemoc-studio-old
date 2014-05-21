@@ -35,9 +35,11 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Trigger;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.NamedElement;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.IntegerElement;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.Type;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.AbstractEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.BindableEntity;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ConcreteEntity;
 
 
 
@@ -339,6 +341,16 @@ public class MoCMLServices {
 			}
 		}
 		sb.append(state.getName());
+		return sb.toString();
+	}
+	
+	public String computeLabel(ConcreteEntity ce){
+		StringBuilder sb = new StringBuilder(16);
+		if (ce instanceof IntegerElement) {
+			sb.append("Integer : ").append(((IntegerElement)ce).getName()).append(" = ").append(((IntegerElement)ce).getValue());
+		}else {
+			sb.append(ce.getName());
+		}
 		return sb.toString();
 	}
 	

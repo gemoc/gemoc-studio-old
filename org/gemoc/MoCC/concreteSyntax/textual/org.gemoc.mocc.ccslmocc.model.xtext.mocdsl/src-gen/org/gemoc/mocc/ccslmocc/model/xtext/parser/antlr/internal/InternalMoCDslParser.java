@@ -3002,7 +3002,7 @@ public class InternalMoCDslParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getFinishClockAccess().getClockClockCrossReference_3_0()); 
+              	        newCompositeNode(grammarAccess.getFinishClockAccess().getClockBindableEntityCrossReference_3_0()); 
               	    
             }
             pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleFinishClock2089);
@@ -3157,7 +3157,7 @@ public class InternalMoCDslParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getStartClockAccess().getClockClockCrossReference_3_0()); 
+              	        newCompositeNode(grammarAccess.getStartClockAccess().getClockBindableEntityCrossReference_3_0()); 
               	    
             }
             pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleStartClock2235);
