@@ -36,7 +36,14 @@
       <import feature="fr.supelec.gemoc.contrib.feature_modhelx" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.supelec.gemoc.contrib.feature_tesl" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.supelec.gemoc.contrib.feature_tesllang" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="fr.inria.aoste.timesquare.feature" version="1.0.0.201403240946" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.core.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.power.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.vcd.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.codeexecution.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.launcher.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.ccslkernel.clocktree.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.nobackend.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.obeoviewpointanimator.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.aoste.timesquare.ecl.feature" version="1.0.0.201403211604" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.ecoretools" version="2.0.0.201403121311" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.doc.feature" version="1.0.0.201403121231" match="greaterOrEqual"/>
