@@ -107,7 +107,7 @@ public class GemocReflectiveModelLauncher
 
 		_launchConfiguration = configuration;		
 		createModelExecutionContext();
-		
+				
 		getMessagingSystem().showConsole();
 		debug("About to initialize and run the GEMOC Execution Engine...");
 

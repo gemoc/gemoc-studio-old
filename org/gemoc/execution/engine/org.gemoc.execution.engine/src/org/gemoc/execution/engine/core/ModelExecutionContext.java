@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
@@ -18,12 +19,15 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 
 
@@ -142,7 +146,7 @@ public class ModelExecutionContext {
 	}
 	
 	
-	public void saveTraceModel(Resource traceResource, Resource modelUnderExecutionResource, long stepNumber) throws CoreException, IOException {
+	public void saveTraceModel(Resource traceResource, Resource modelUnderExecutionResource, Solver solver, long stepNumber) throws CoreException, IOException {
 		if (traceResource.getContents().size() > 0) {
 			IPath folderPath = getStepFolder(stepNumber);	
 			IPath traceFilePath = new Path(traceResource.getURI().toPlatformString(true));
@@ -168,8 +172,14 @@ public class ModelExecutionContext {
 				ModelState modelState = GemocExecutionEngineTraceFactory.eINSTANCE.createModelState();					
 				modelState.setModel(modelResource.getContents().get(0));
 				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();					
-				solverState.setModel(modelResource.getContents().get(0));
-
+				//EObject trueSolverState = includeSolverStateIntoResourceSet(traceResource, solver, modelFile.getFullPath().removeLastSegments(1));
+				//solverState.setModel(trueSolverState);
+				//trueSolverState.eResource().save(null);
+				
+				solverState.setSerializableModel(solver.getState());
+				Activator.debug("step" + stepNumber + ", saving solver state: " 
+						 + solverState.getSerializableModel());
+				
 				ContextState contextState = GemocExecutionEngineTraceFactory.eINSTANCE.createContextState();
 				contextState.setModelState(modelState);
 				contextState.setSolverState(solverState);
@@ -180,14 +190,23 @@ public class ModelExecutionContext {
 		}
 	}
 
-	public void saveDomainModel(Resource resource, long stepNumber) throws CoreException, IOException {
-		if (resource.getContents().size() > 0) {
-			IPath folderPath = getStepFolder(stepNumber);	
-			IPath filePath = folderPath.append(resource.getURI().lastSegment());
-			saveResource(resource, filePath);			
-		}	
-	}
+//	private EObject includeSolverStateIntoResourceSet(Resource traceResource, Solver solver, IPath folderPath) {
+//		IPath solverStatePath = folderPath.append("solverState.xmi");
+//		URI solverStateURI = URI.createPlatformResourceURI(solverStatePath.toString(), true);
+//		Resource resource = traceResource.getResourceSet().createResource(solverStateURI);
+//		EObject solverState = solver.getState();
+//		resource.getContents().add(solverState);
+//		return solverState;
+//	}
 
+//	public void saveDomainModel(Resource resource, long stepNumber) throws CoreException, IOException {
+//		if (resource.getContents().size() > 0) {
+//			IPath folderPath = getStepFolder(stepNumber);	
+//			IPath filePath = folderPath.append(resource.getURI().lastSegment());
+//			saveResource(resource, filePath);			
+//		}	
+//	}
+	
 	private IPath getStepFolder(long stepNumber) throws CoreException {
 		IPath folderPath = _runtimePath.append("step" + stepNumber);
 		createFolder(folderPath);

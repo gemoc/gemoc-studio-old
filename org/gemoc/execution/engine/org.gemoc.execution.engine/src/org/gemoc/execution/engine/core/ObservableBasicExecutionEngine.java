@@ -300,9 +300,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			ObservableBasicExecutionEngine.this.notifyObservers("Starting "+engineName); // use a simple message for the console observer
 			long count = 0;
 			while (!terminated) {
-				try {					
+				try {									
+					updateTraceModelBeforeAskingSolver();
 					saveModels(count);
-										
 					// 1- ask solver possible solutions for this step (set of
 					// logical steps | 1 logical step = set of simultaneous
 					// event occurence)
@@ -323,13 +323,12 @@ public class ObservableBasicExecutionEngine extends Observable implements
 						terminated = true;
 					} else { 
 						Activator.debug("\t\t ---------------- LogicalStep " + count);
-						count++;
 						engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
 						updateTraceModelBeforeDeciding(possibleLogicalSteps);
-						
 						notifyEngineHasChanged();
-
 						selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
+						count++;
+
 						if (selectedLogicalStepIndex == -1) {
 							if (hasRewindHappened()) {
 								Activator.debug("Back to past happened --> let the engine ignoring current steps.");
@@ -420,7 +419,11 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 
 		private void saveModels(long count) throws CoreException, IOException {
-			_executionContext.saveTraceModel(_executionTraceModel.eResource(), modelUnderExecutionResource, count);
+			_executionContext.saveTraceModel(
+								_executionTraceModel.eResource(), 
+								modelUnderExecutionResource, 
+								solver,
+								count);
 		//	_executionContext.saveDomainModel(modelUnderExecutionResource, count);
 		}
 
@@ -435,18 +438,32 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			});
 		}
 
+		private void updateTraceModelBeforeAskingSolver() {
+			final CommandStack commandStack = _editingDomain.getCommandStack();
+			commandStack.execute(new RecordingCommand(_editingDomain) {
 
+				@Override
+				protected void doExecute() {
+					Choice newChoice = createChoice();
+					if (_lastChoice != null) {
+						_lastChoice.setNextChoice(newChoice);
+					}
+					_lastChoice = newChoice;
+					_executionTraceModel.getChoices().add(_lastChoice);
+				}
+			});
+		}
+		
 		private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
 			final CommandStack commandStack = _editingDomain.getCommandStack();
 			commandStack.execute(new RecordingCommand(_editingDomain) {
 
 				@Override
 				protected void doExecute() {
-					Choice newChoice = createChoice(possibleLogicalSteps);
-					if (_lastChoice != null) {
-						_lastChoice.setNextChoice(newChoice);
+					_lastChoice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
+					for(LogicalStep ls : possibleLogicalSteps) {
+						LogicalStepHelper.removeNotTickedEvents(ls);
 					}
-					_lastChoice = newChoice;
 					_executionTraceModel.getChoices().add(_lastChoice);
 					for (LogicalStep step : _lastChoice.getPossibleLogicalSteps()) {
 						for (EventOccurrence occurence : step.getEventOccurrences()) {
@@ -458,12 +475,8 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 
 
-		private Choice createChoice(List<LogicalStep> possibleLogicalSteps) {
+		private Choice createChoice() {
 			Choice choice = GemocExecutionEngineTraceFactory.eINSTANCE.createChoice();
-			choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
-			for(LogicalStep ls : possibleLogicalSteps) {
-				LogicalStepHelper.removeNotTickedEvents(ls);
-			}
 			return choice;			
 		}
 		
@@ -682,6 +695,12 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			}
 		}
 		return capability;
+	}
+
+
+	@Override
+	public Solver getSolver() {
+		return solver;
 	}
 	
 }

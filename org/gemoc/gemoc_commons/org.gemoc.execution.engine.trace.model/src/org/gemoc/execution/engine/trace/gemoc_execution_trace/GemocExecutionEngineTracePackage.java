@@ -2,7 +2,9 @@
  */
 package org.gemoc.execution.engine.trace.gemoc_execution_trace;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -178,13 +180,22 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 	int SOLVER_STATE__MODEL = 0;
 
 	/**
+	 * The feature id for the '<em><b>Serializable Model</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOLVER_STATE__SERIALIZABLE_MODEL = 1;
+
+	/**
 	 * The number of structural features of the '<em>Solver State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SOLVER_STATE_FEATURE_COUNT = 1;
+	int SOLVER_STATE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Solver State</em>' class.
@@ -277,6 +288,16 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTEXT_STATE_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '<em>ISerializable</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getISerializable()
+	 * @generated
+	 */
+	int ISERIALIZABLE = 5;
 
 
 	/**
@@ -376,6 +397,17 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 	EReference getSolverState_Model();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState#getSerializableModel <em>Serializable Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Serializable Model</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState#getSerializableModel()
+	 * @see #getSolverState()
+	 * @generated
+	 */
+	EAttribute getSolverState_SerializableModel();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState <em>Model State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -416,6 +448,16 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getContextState_SolverState();
+
+	/**
+	 * Returns the meta object for data type '<em>ISerializable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>ISerializable</em>'.
+	 * @model instanceClass="byte[]"
+	 * @generated
+	 */
+	EDataType getISerializable();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState#getModelState <em>Model State</em>}'.
@@ -530,6 +572,14 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 		EReference SOLVER_STATE__MODEL = eINSTANCE.getSolverState_Model();
 
 		/**
+		 * The meta object literal for the '<em><b>Serializable Model</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SOLVER_STATE__SERIALIZABLE_MODEL = eINSTANCE.getSolverState_SerializableModel();
+
+		/**
 		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ModelStateImpl <em>Model State</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -564,6 +614,15 @@ public interface GemocExecutionEngineTracePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONTEXT_STATE__SOLVER_STATE = eINSTANCE.getContextState_SolverState();
+
+		/**
+		 * The meta object literal for the '<em>ISerializable</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.GemocExecutionEngineTracePackageImpl#getISerializable()
+		 * @generated
+		 */
+		EDataType ISERIALIZABLE = eINSTANCE.getISerializable();
 
 		/**
 		 * The meta object literal for the '<em><b>Model State</b></em>' containment reference feature.

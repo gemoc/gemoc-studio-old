@@ -15,8 +15,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState} object.
@@ -54,6 +57,7 @@ public class SolverStateItemProvider
 			super.getPropertyDescriptors(object);
 
 			addModelPropertyDescriptor(object);
+			addSerializableModelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -81,6 +85,28 @@ public class SolverStateItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Serializable Model feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSerializableModelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SolverState_serializableModel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SolverState_serializableModel_feature", "_UI_SolverState_type"),
+				 GemocExecutionEngineTracePackage.Literals.SOLVER_STATE__SERIALIZABLE_MODEL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SolverState.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -99,7 +125,11 @@ public class SolverStateItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_SolverState_type");
+		byte[] labelValue = ((SolverState)object).getSerializableModel();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_SolverState_type") :
+			getString("_UI_SolverState_type") + " " + label;
 	}
 
 	/**
@@ -112,6 +142,12 @@ public class SolverStateItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(SolverState.class)) {
+			case GemocExecutionEngineTracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

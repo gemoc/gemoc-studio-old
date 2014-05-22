@@ -8,8 +8,10 @@ import java.io.IOException;
 import java.net.URL;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -66,6 +68,13 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass contextStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType iSerializableEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -230,6 +239,15 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSolverState_SerializableModel() {
+        return (EAttribute)getSolverState().getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModelState() {
 		if (modelStateEClass == null) {
 			modelStateEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(GemocExecutionEngineTracePackage.eNS_URI).getEClassifiers().get(3);
@@ -265,6 +283,18 @@ public class GemocExecutionEngineTracePackageImpl extends EPackageImpl implement
 	 */
 	public EReference getContextState_SolverState() {
         return (EReference)getContextState().getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getISerializable() {
+		if (iSerializableEDataType == null) {
+			iSerializableEDataType = (EDataType)EPackage.Registry.INSTANCE.getEPackage(GemocExecutionEngineTracePackage.eNS_URI).getEClassifiers().get(5);
+		}
+		return iSerializableEDataType;
 	}
 
 	/**

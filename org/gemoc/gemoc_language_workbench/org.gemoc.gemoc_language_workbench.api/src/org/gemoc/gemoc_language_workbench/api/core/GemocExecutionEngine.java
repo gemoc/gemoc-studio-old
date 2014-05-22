@@ -3,6 +3,7 @@ package org.gemoc.gemoc_language_workbench.api.core;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 /**
  * The interface of the GEMOC Execution Engine. The Execution Engine is an
@@ -82,5 +83,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 * @return The capability of the given type.
 	 */
 	public <T extends IExecutionEngineCapability> T capability(Class<T> type);
+
+	public Solver getSolver();
 	
 }

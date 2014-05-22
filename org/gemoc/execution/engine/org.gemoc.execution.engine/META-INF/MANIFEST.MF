@@ -30,7 +30,8 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
  org.eclipse.emf.ecore,
  org.gemoc.gemoc_language_workbench.utils,
- org.eclipse.emf.common
+ org.eclipse.emf.common,
+ org.eclipse.equinox.registry
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine,
