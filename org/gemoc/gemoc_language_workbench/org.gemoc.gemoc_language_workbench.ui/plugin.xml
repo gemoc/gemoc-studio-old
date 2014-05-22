@@ -633,6 +633,7 @@
             category="org.gemoc.gemoc_language_workbench.ui"
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
             icon="icons/IconeGemocLanguage-16.png"
+            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
             name="New Gemoc Language Project"
             project="true">
