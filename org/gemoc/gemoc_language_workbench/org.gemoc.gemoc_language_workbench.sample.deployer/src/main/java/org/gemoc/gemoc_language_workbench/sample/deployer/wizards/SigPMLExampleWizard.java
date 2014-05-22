@@ -24,7 +24,7 @@ public class SigPMLExampleWizard
 		// EMF library example model, edit and editor examples
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/fr.cnrs.luchogie.ultimateplotter.zip", "fr.cnrs.luchogie.ultimateplotter"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.concrete.design.zip", "org.gemoc.sipml.concrete.design"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.model.design.zip", "org.gemoc.sipml.model.design"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.k3dsa.zip", "org.gemoc.sipml.k3dsa"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.moc.application.zip", "org.gemoc.sipml.moc.application"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.moc.lib.zip", "org.gemoc.sipml.moc.lib"));

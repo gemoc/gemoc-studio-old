@@ -63,8 +63,8 @@
 								<zip destfile="${basedir}/zips/fr.cnrs.luchogie.ultimateplotter.zip">
 									<fileset dir="${sigpml_sample_language_root}/fr.cnrs.luchogie.ultimateplotter/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sigpml.concrete.design.zip">
-									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sigpml.concrete.design/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sigpml.model.design.zip">
+									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sigpml.model.design/" />
 								</zip>
 								<zip destfile="${basedir}/zips/org.gemoc.sigpml.k3dsa.zip">
 									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sigpml.k3dsa/" />
