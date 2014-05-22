@@ -42,6 +42,9 @@
     "animation": [
         "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.sirius.animation/lastSuccessfulBuild/artifact/fr/obeo/dsl/sirius/animation/releng/fr.obeo.dsl.debug.repository/target/repository/"
         ],
+    "process": [
+        "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.process/lastSuccessfulBuild/artifact/fr/obeo/dsl/process/releng/fr.obeo.dsl.process.repository/target/repository/"
+        ],
     "modhelx_tesl": [
     	"http://wwwdi.supelec.fr/gemoc-supelec-update_site"
     	],

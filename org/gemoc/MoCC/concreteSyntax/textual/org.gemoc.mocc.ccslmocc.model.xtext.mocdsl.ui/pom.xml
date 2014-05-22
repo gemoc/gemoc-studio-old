@@ -11,4 +11,5 @@
 
   <artifactId>org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <version>0.1.0</version>
 </project>
