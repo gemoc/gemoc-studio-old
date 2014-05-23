@@ -364,6 +364,9 @@ public abstract class CcslSolver implements
 	public void applyLogicalStepByIndex(int indexOfStepToApply) {
 		try {
 			solverWrapper.applyLogicalStepByIndex(indexOfStepToApply);
+			// needed to 
+			solverWrapper.getSolver().bddFromEnvironment.free();
+			solverWrapper.getSolver().bddFromEnvironment = solverWrapper.getSolver().getBddFactory().one();
 		} catch (SolverException e) {
 			Activator.error(e.getMessage(), e);
 		}
