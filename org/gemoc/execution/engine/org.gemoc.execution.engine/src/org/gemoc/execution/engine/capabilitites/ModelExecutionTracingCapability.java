@@ -1,0 +1,115 @@
+package org.gemoc.execution.engine.capabilitites;
+
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.gemoc.execution.engine.commons.Activator;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
+
+public class ModelExecutionTracingCapability implements IExecutionEngineCapability {
+
+	private GemocExecutionEngine _engine;
+	
+	@Override
+	public void initialize(GemocExecutionEngine engine) {
+		_engine = engine;
+	}
+
+	private boolean _backToPastHappened = false;
+	public void backToPast(Choice choice) throws ModelExecutionTracingException {
+		int index = _engine.getExecutionTrace().getChoices().indexOf(choice);
+		if (index == (_engine.getExecutionTrace().getChoices().size()-1)
+			|| index == (_engine.getExecutionTrace().getChoices().size()-2))
+			return;
+//		try {
+			backInTraceModelTo(choice);
+			_backToPastHappened = true;
+			if (_engine.getLogicalStepDecider() != null) 
+			{
+				_engine.getLogicalStepDecider().preempt();
+			}
+//		} 
+//		catch (IOException e) {
+//			throw new ModelExecutionTracingException(e);
+//		}
+	}
+
+	private void backInTraceModelTo(final Choice choice) {
+		final int index = _engine.getExecutionTrace().getChoices().indexOf(choice);
+		if (index != -1
+			&& index != _engine.getExecutionTrace().getChoices().size()) {
+			final CommandStack commandStack = _editingDomain.getCommandStack();
+			commandStack.execute(new RecordingCommand(_editingDomain) {
+				@Override
+				protected void doExecute() {
+					_engine.getExecutionTrace().getChoices().subList(index+1, _engine.getExecutionTrace().getChoices().size()).clear();
+					choice.setNextChoice(null);
+					try {
+						resetContext(choice);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+	}
+
+	private void resetContext(Choice choice) throws IOException {
+		restoreModelState(choice);
+		restoreSolverState(choice);
+	}
+
+	private void restoreModelState(Choice choice) throws IOException {
+		Resource modelCopyResource = choice.getContextState().getModelState().getModel().eResource();
+		EList<EObject> modelContent = loadModel(modelCopyResource.getURI());
+		Resource resource = _engine.getModelUnderExecutionResource();
+		resource.getContents().clear();
+		resource.getContents().addAll(modelContent);
+	}
+
+	private void restoreSolverState(Choice choice) {
+		_engine.getSolver().getPossibleLogicalSteps();
+
+		Activator.debug("restoring solver state:" + choice.getContextState().getSolverState().getSerializableModel());
+		_engine.getSolver().setState(choice.getContextState().getSolverState().getSerializableModel());
+		Arrays.equals(_engine.getSolver().getState(), choice.getContextState().getSolverState().getSerializableModel());
+		_engine.getSolver().getPossibleLogicalSteps();
+
+		Arrays.equals(_engine.getSolver().getState(), choice.getContextState().getSolverState().getSerializableModel());
+		int selectedChoiceIndex = choice.getPossibleLogicalSteps().indexOf(choice.getChosenLogicalStep());
+		_engine.getSolver().applyLogicalStepByIndex(selectedChoiceIndex);
+		Arrays.equals(_engine.getSolver().getState(), choice.getContextState().getSolverState().getSerializableModel());
+	}
+
+	private EList<EObject> loadModel(URI uri) throws IOException {
+		ResourceSet rs = new ResourceSetImpl();
+		Resource r = rs.createResource(uri);
+		r.load(null);
+		return r.getContents();
+	}
+
+	public boolean hasRewindHappened(boolean resetFlag) {
+		boolean result = _backToPastHappened;
+		if (resetFlag)
+			_backToPastHappened = false;
+		return result;
+	}
+
+	private TransactionalEditingDomain _editingDomain;
+	public void setEditingDomain(TransactionalEditingDomain editingDomain) {
+		_editingDomain = editingDomain;
+	}
+	
+}

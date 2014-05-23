@@ -5,7 +5,7 @@
     <properties>
         <sample_root>${basedir}/../../sample</sample_root>
         <tfsm_sample_modeling_root>${basedir}/../../sample/TFSM_GEMOC/modeling_workbench</tfsm_sample_modeling_root>
-        <sdf_sample_modeling_root>${basedir}/../../sample/SDF_archi/modeling_workbench</sdf_sample_modeling_root>
+        <sigpml_sample_modeling_root>${basedir}/../../sample/SigPML/modeling_workbench</sigpml_sample_modeling_root>
     </properties>
     
 	<parent>
@@ -41,7 +41,7 @@
 								</zip>
 
 								<zip destfile="${basedir}/zips/fr.inria.aoste.gemoc.examples.zip">
-									<fileset dir="${sdf_sample_modeling_root}/fr.inria.aoste.gemoc.examples/" />
+									<fileset dir="${sigpml_sample_modeling_root}/org.gemoc.sigpml.simple_example/" />
 								</zip>
 
 							</tasks>

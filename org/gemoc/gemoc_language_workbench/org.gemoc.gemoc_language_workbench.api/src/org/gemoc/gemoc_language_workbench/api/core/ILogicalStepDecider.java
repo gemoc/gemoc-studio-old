@@ -13,7 +13,7 @@ public interface ILogicalStepDecider {
 	/**
 	 * 
 	 * @param possibleLogicalSteps
-	 * @return
+	 * @return The index of the selected logical step, -1 if no logical step selected.
 	 */
 	public int decide(List<LogicalStep> possibleLogicalSteps)  throws InterruptedException;
 	
@@ -21,4 +21,11 @@ public interface ILogicalStepDecider {
 	 * decider no longer used, (probably because the engine has been asked to stop)
 	 */
 	public void dispose();
+
+	/**
+	 * Stop the decision making in progress.
+	 * This should result in no chosen logical step.
+	 * Has no effect if no decision making is in progress.
+	 */
+	public void preempt();
 }

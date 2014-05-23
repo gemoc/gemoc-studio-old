@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
 
 /**
@@ -26,6 +27,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngi
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getNextChoice <em>Next Choice</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getPossibleLogicalSteps <em>Possible Logical Steps</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getChosenLogicalStep <em>Chosen Logical Step</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getContextState <em>Context State</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,6 +63,16 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	 * @ordered
 	 */
 	protected LogicalStep chosenLogicalStep;
+
+	/**
+	 * The cached value of the '{@link #getContextState() <em>Context State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContextState()
+	 * @generated
+	 * @ordered
+	 */
+	protected ContextState contextState;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -174,11 +186,56 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ContextState getContextState() {
+		return contextState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetContextState(ContextState newContextState, NotificationChain msgs) {
+		ContextState oldContextState = contextState;
+		contextState = newContextState;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE, oldContextState, newContextState);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContextState(ContextState newContextState) {
+		if (newContextState != contextState) {
+			NotificationChain msgs = null;
+			if (contextState != null)
+				msgs = ((InternalEObject)contextState).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE, null, msgs);
+			if (newContextState != null)
+				msgs = ((InternalEObject)newContextState).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE, null, msgs);
+			msgs = basicSetContextState(newContextState, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE, newContextState, newContextState));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GemocExecutionEngineTracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
 				return ((InternalEList<?>)getPossibleLogicalSteps()).basicRemove(otherEnd, msgs);
+			case GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE:
+				return basicSetContextState(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -199,6 +256,8 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 			case GemocExecutionEngineTracePackage.CHOICE__CHOSEN_LOGICAL_STEP:
 				if (resolve) return getChosenLogicalStep();
 				return basicGetChosenLogicalStep();
+			case GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE:
+				return getContextState();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -222,6 +281,9 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 			case GemocExecutionEngineTracePackage.CHOICE__CHOSEN_LOGICAL_STEP:
 				setChosenLogicalStep((LogicalStep)newValue);
 				return;
+			case GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE:
+				setContextState((ContextState)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -243,6 +305,9 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 			case GemocExecutionEngineTracePackage.CHOICE__CHOSEN_LOGICAL_STEP:
 				setChosenLogicalStep((LogicalStep)null);
 				return;
+			case GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE:
+				setContextState((ContextState)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -261,6 +326,8 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 				return possibleLogicalSteps != null && !possibleLogicalSteps.isEmpty();
 			case GemocExecutionEngineTracePackage.CHOICE__CHOSEN_LOGICAL_STEP:
 				return chosenLogicalStep != null;
+			case GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE:
+				return contextState != null;
 		}
 		return super.eIsSet(featureID);
 	}

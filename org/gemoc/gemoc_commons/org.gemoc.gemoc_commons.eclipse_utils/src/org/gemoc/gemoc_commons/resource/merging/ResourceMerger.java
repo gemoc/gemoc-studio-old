@@ -2,7 +2,6 @@ package org.gemoc.gemoc_commons.resource.merging;
 
 import java.io.IOException;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -12,23 +11,24 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class ResourceMerger {
 
-	private IFile _inputFile;
+	private ResourcesMergerContext _context;
 	
-	protected ResourceMerger(IFile inputFile) {
-		_inputFile = inputFile;
+	protected ResourceMerger(ResourcesMergerContext context) {
+		_context = context;
 	}
 
-	public void mergeInto(IFile outputFile) throws IOException {
-		EList<Resource> resources = getResources(outputFile);
-		URI outputURI = URI.createPlatformResourceURI(outputFile.getFullPath().toString(), true);
+	public void merge() throws IOException {
+		EList<Resource> resources = getResources();
+		URI outputURI = URI.createPlatformResourceURI(_context.getOutputFile().getFullPath().toString(), true);
 		merge(resources, outputURI);
 	}
 
-	private EList<Resource> getResources(IFile outputFile) {
+	private EList<Resource> getResources() {
 		ResourceSet rs = new ResourceSetImpl();
-		URI inputURI = URI.createPlatformResourceURI(_inputFile.getFullPath().toString(), true);
+		URI inputURI = URI.createPlatformResourceURI(_context.getInputFile().getFullPath().toString(), true);
 		Resource r = rs.getResource(inputURI, true);
-		EcoreUtil.resolveAll(r); // result in the load of several resources
+		EcoreUtil.resolveAll(r);
+		EcoreUtil.resolveAll(rs); // result in the load of several resources
 		return rs.getResources();
 	}
 
@@ -38,6 +38,10 @@ public class ResourceMerger {
 		for(Resource r : resources) 
 		{
 			uniqueResource.getContents().addAll(r.getContents());
+		}
+		for(IBeforeSavingAction action : _context.getBeforeSavingActions()) {
+			ActionContext c = new ActionContext(uniqueResource);
+			action.run(c);
 		}
 		uniqueResource.save(null);
 	}

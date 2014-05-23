@@ -59,7 +59,7 @@ public class GemocReflectiveModelLauncher
 		extends
 		fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI {
 	// ILaunchConfigurationDelegate {
-
+	
 	public final static String TYPE_ID = "org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID";
 
 	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
@@ -104,10 +104,13 @@ public class GemocReflectiveModelLauncher
 	
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
-
+		_siriusSession = null;
+		engine = null;
+		_executionContext = null;
+		
 		_launchConfiguration = configuration;		
 		createModelExecutionContext();
-		
+				
 		getMessagingSystem().showConsole();
 		debug("About to initialize and run the GEMOC Execution Engine...");
 
@@ -128,6 +131,7 @@ public class GemocReflectiveModelLauncher
 		if (animate) {
 			delay=Integer.parseInt(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_DELAY, "0"));
 		}
+		boolean isTraceActive = Boolean.parseBoolean(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_ACTIVE_TRACE, "false"));
 
 		String deciderName = configuration
 				.getAttribute(
@@ -264,7 +268,7 @@ public class GemocReflectiveModelLauncher
 		solver.setSolverInputFile(resourceSet, mocURI);
 		
 		Resource modelResource = getModelResource(resourceSet, getModelPathAsString());
-		TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
+	//	TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
 		if (animate) {
 			// [FT] do not use the editing domain from sirius for now
 			// editingDomain = attachSiriusIfNecessary();
@@ -302,8 +306,14 @@ public class GemocReflectiveModelLauncher
 
 		// Create and initialize engine
 		engine = new ObservableBasicExecutionEngine(solver, executor, feedbackPolicy, decider, _executionContext);
+		engine.setSiriusSession(_siriusSession);
+		TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
+		if (_siriusSession != null)
+			editingDomain = _siriusSession.getTransactionalEditingDomain();
 		engine.initialize(modelResource, editingDomain);
-
+		if (isTraceActive)
+			engine.activateTrace();
+		
 		for(IEngineHook engineHook : engineHooks){
 			engine.addEngineHook(engineHook);
 		}
@@ -329,25 +339,12 @@ public class GemocReflectiveModelLauncher
 		}
 	}
 
-	private TransactionalEditingDomain attachSiriusIfNecessary() {
-		URI uri = URI.createPlatformResourceURI(getDebuggerViewPathAsString(), true);
-		Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
-		TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
-//		ResourceSet siriusRS = editingDomain.getResourceSet();
-//		for (Resource r : new ArrayList<Resource>(resourceSet.getResources())) {
-//			// delete the extra resource loaded by sirius
-//			for (Resource resourceToPossiblyDelete : new ArrayList<Resource>(siriusRS.getResources())) {
-//				if (r.getURI().equals(resourceToPossiblyDelete.getURI())) {
-//					siriusRS.getResources().remove(resourceToPossiblyDelete);
-//				}
-//			}
-//			// add the resource loaded by the solver in sirius
-//			siriusRS.getResources().add(r);
-//		}
-//		session.open(new NullProgressMonitor());
-//		resourceSet = siriusRS;
-		return editingDomain; 
-	}
+//	private TransactionalEditingDomain attachSiriusIfNecessary() {
+//		URI uri = URI.createPlatformResourceURI(getDebuggerViewPathAsString(), true);
+//		Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+//		TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
+//		return editingDomain; 
+//	}
 
 	private HashSet<IEngineHook> retrieveEngineHooks(IConfigurationElement confElement) throws CoreException {
 		HashSet<IEngineHook> engineHooks = new HashSet<IEngineHook>();
@@ -429,15 +426,16 @@ public class GemocReflectiveModelLauncher
 				.getMessaggingSystem();	
 	}
 
+	private Session _siriusSession;
 	private ResourceSet getResourceSet(boolean animate, String sessionPath) {
-//		if (animate) {
-//			URI uri = URI.createPlatformResourceURI(sessionPath, true);
-//			Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
-//			return session.getTransactionalEditingDomain().getResourceSet();
-//		} else {
-//			return new ResourceSetImpl();
-//		}
-		return new ResourceSetImpl();
+		if (animate) {
+			URI uri = URI.createPlatformResourceURI(sessionPath, true);
+			_siriusSession = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+			return _siriusSession.getTransactionalEditingDomain().getResourceSet();
+		} else {
+			return new ResourceSetImpl();
+		}
+//		return new ResourceSetImpl();
 	}
 	
 	protected Resource getModelResource(ResourceSet resourceSet, String modelPath) throws CoreException {		

@@ -76,6 +76,18 @@ public class GemocExecutionEngineTraceAdapterFactory extends AdapterFactoryImpl 
 				return createExecutionTraceModelAdapter();
 			}
 			@Override
+			public Adapter caseSolverState(SolverState object) {
+				return createSolverStateAdapter();
+			}
+			@Override
+			public Adapter caseModelState(ModelState object) {
+				return createModelStateAdapter();
+			}
+			@Override
+			public Adapter caseContextState(ContextState object) {
+				return createContextStateAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -120,6 +132,48 @@ public class GemocExecutionEngineTraceAdapterFactory extends AdapterFactoryImpl 
 	 * @generated
 	 */
 	public Adapter createExecutionTraceModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState <em>Solver State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState
+	 * @generated
+	 */
+	public Adapter createSolverStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState <em>Model State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState
+	 * @generated
+	 */
+	public Adapter createModelStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState <em>Context State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState
+	 * @generated
+	 */
+	public Adapter createContextStateAdapter() {
 		return null;
 	}
 

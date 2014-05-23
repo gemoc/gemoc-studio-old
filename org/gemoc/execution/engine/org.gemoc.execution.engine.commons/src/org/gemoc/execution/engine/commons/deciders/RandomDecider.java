@@ -31,4 +31,9 @@ public class RandomDecider implements ILogicalStepDecider {
 		// nothing to do
 	}
 
+	@Override
+	public void preempt() {
+		// not possible
+	}
+
 }

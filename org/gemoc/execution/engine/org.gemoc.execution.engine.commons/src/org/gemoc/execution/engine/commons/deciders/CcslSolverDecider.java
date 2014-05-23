@@ -29,4 +29,9 @@ public class CcslSolverDecider implements ILogicalStepDecider {
 	public void dispose() {
 		// nothing to do
 	}
+
+	@Override
+	public void preempt() {
+		// not possible
+	}
 }

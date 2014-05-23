@@ -1,6 +1,11 @@
 package org.gemoc.execution.engine.commons.solvers.ccsl;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -23,6 +28,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 
+import fr.inria.aoste.timesquare.ccslkernel.explorer.CCSLConstraintState;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
@@ -358,7 +364,9 @@ public abstract class CcslSolver implements
 	public void applyLogicalStepByIndex(int indexOfStepToApply) {
 		try {
 			solverWrapper.applyLogicalStepByIndex(indexOfStepToApply);
-			solverWrapper.getSolver().doOneSimulationStep();
+			// needed to 
+			solverWrapper.getSolver().bddFromEnvironment.free();
+			solverWrapper.getSolver().bddFromEnvironment = solverWrapper.getSolver().getBddFactory().one();
 		} catch (SolverException e) {
 			Activator.error(e.getMessage(), e);
 		}
@@ -373,5 +381,38 @@ public abstract class CcslSolver implements
 	public void setExtentedCCSL_qvto_transformationPath(
 			String extentedCCSL_qvto_transformationPath) {
 		this.extentedCCSL_qvto_transformationPath = extentedCCSL_qvto_transformationPath;
+	}
+	
+
+	@Override
+	public byte[] getState() {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ObjectOutputStream objOut;
+		try {
+			objOut = new ObjectOutputStream(out);
+	        objOut.writeObject(solverWrapper.getSolver().getCurrentState());
+			return out.toByteArray();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public void setState(byte[] serializableModel) {
+		ByteArrayInputStream out = new ByteArrayInputStream(serializableModel);
+        ObjectInputStream objOut;
+		try {
+			objOut = new ObjectInputStream(out);
+	        Object o = objOut.readObject();
+	        solverWrapper.getSolver().setCurrentState((CCSLConstraintState) o);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

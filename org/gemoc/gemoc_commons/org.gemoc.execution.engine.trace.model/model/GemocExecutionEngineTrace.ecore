@@ -3,14 +3,33 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gemoc_execution_trace" nsURI="http://www.inira.fr/gemoc_execution_trace"
     nsPrefix="gemoc_execution_trace">
   <eClassifiers xsi:type="ecore:EClass" name="Choice">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="nextChoice" eType="#//Choice"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nextChoice" eType="#//Choice"
+        eOpposite="#//Choice/previousChoice"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="possibleLogicalSteps" upperBound="-1"
         eType="ecore:EClass platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="ecore:EClass platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextState" eType="#//ContextState"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="previousChoice" eType="#//Choice"
+        eOpposite="#//Choice/nextChoice"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExecutionTraceModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1"
         eType="#//Choice" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SolverState">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serializableModel" eType="#//ISerializable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelState">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextState">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelState" lowerBound="1"
+        eType="#//ModelState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="solverState" lowerBound="1"
+        eType="#//SolverState" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ISerializable" instanceClassName="byte[]"/>
 </ecore:EPackage>

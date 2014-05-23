@@ -63,12 +63,4 @@ public class  EngineStatus {
 		}
 	}
 	
-	private Choice _firstChoice;
-	public void setFirstChoice(Choice firstChoice) {
-		_firstChoice = firstChoice;
-	}
-	public Choice getFirstChoice() {
-		return _firstChoice;
-	}
-
 }

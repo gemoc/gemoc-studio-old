@@ -3,18 +3,11 @@
 package org.gemoc.execution.engine.trace.gemoc_execution_trace.provider;
 
 
-import fr.inria.aoste.trace.TraceFactory;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -22,20 +15,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice} object.
+ * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChoiceItemProvider
+public class SolverStateItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -49,7 +41,7 @@ public class ChoiceItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChoiceItemProvider(AdapterFactory adapterFactory) {
+	public SolverStateItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -64,26 +56,26 @@ public class ChoiceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNextChoicePropertyDescriptor(object);
-			addChosenLogicalStepPropertyDescriptor(object);
+			addModelPropertyDescriptor(object);
+			addSerializableModelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Next Choice feature.
+	 * This adds a property descriptor for the Model feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNextChoicePropertyDescriptor(Object object) {
+	protected void addModelPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Choice_nextChoice_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_nextChoice_feature", "_UI_Choice_type"),
-				 GemocExecutionEngineTracePackage.Literals.CHOICE__NEXT_CHOICE,
+				 getString("_UI_SolverState_model_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SolverState_model_feature", "_UI_SolverState_type"),
+				 GemocExecutionEngineTracePackage.Literals.SOLVER_STATE__MODEL,
 				 true,
 				 false,
 				 true,
@@ -93,67 +85,36 @@ public class ChoiceItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Chosen Logical Step feature.
+	 * This adds a property descriptor for the Serializable Model feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addChosenLogicalStepPropertyDescriptor(Object object) {
+	protected void addSerializableModelPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Choice_chosenLogicalStep_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_chosenLogicalStep_feature", "_UI_Choice_type"),
-				 GemocExecutionEngineTracePackage.Literals.CHOICE__CHOSEN_LOGICAL_STEP,
+				 getString("_UI_SolverState_serializableModel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SolverState_serializableModel_feature", "_UI_SolverState_type"),
+				 GemocExecutionEngineTracePackage.Literals.SOLVER_STATE__SERIALIZABLE_MODEL,
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS);
-			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CHOICE__CONTEXT_STATE);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns Choice.gif.
+	 * This returns SolverState.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Choice"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SolverState"));
 	}
 
 	/**
@@ -164,7 +125,11 @@ public class ChoiceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Choice_type");
+		byte[] labelValue = ((SolverState)object).getSerializableModel();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_SolverState_type") :
+			getString("_UI_SolverState_type") + " " + label;
 	}
 
 	/**
@@ -178,10 +143,9 @@ public class ChoiceItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Choice.class)) {
-			case GemocExecutionEngineTracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
-			case GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(SolverState.class)) {
+			case GemocExecutionEngineTracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -197,16 +161,6 @@ public class ChoiceItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(GemocExecutionEngineTracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS,
-				 TraceFactory.eINSTANCE.createLogicalStep()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(GemocExecutionEngineTracePackage.Literals.CHOICE__CONTEXT_STATE,
-				 GemocExecutionEngineTraceFactory.eINSTANCE.createContextState()));
 	}
 
 	/**

@@ -26,11 +26,12 @@ public class UserDecider implements ILogicalStepDecider {
 		this.isStepByStep = isStepByStep;
 	}
 
-	Semaphore semaphore = new Semaphore(0);
+	private Semaphore _semaphore = null;
 
 	@Override
 	public int decide(final List<LogicalStep> possibleLogicalSteps)
 			throws InterruptedException {
+		_semaphore = new Semaphore(0);
 		if(!isStepByStep && possibleLogicalSteps.size() == 1) return 0;
 		retreiveDecisionView();
 		// add action into view menu
@@ -42,7 +43,7 @@ public class UserDecider implements ILogicalStepDecider {
 					Action selectLogicalStepAction = new Action() {
 						public void run() {
 
-							semaphore.release();
+							_semaphore.release();
 							// decisionView.showMessage("TODO notify engine that we have selected this logicalStep");
 						}
 					};
@@ -64,9 +65,7 @@ public class UserDecider implements ILogicalStepDecider {
 						.getSelectedLogicalStep())) {
 					Action selectLogicalStepAction = new Action() {
 						public void run() {
-	
-							semaphore.release();
-							// decisionView.showMessage("TODO notify engine that we have selected this logicalStep");
+							_semaphore.release();
 						}
 					};
 					selectLogicalStepAction.run();
@@ -77,7 +76,8 @@ public class UserDecider implements ILogicalStepDecider {
 		
 		
 		// wait for user selection if it applies to this engine
-		semaphore.acquire();
+		_semaphore.acquire();
+		_semaphore = null;
 		// clean menu listener
 		decisionView.menuMgr.removeMenuListener(menuListener);
 		decisionView.viewer.removeDoubleClickListener(doubleClickListener);
@@ -112,6 +112,13 @@ public class UserDecider implements ILogicalStepDecider {
 
 	@Override
 	public void dispose() {
-		semaphore.release();
+		if (_semaphore != null)
+			_semaphore.release();
+	}
+
+	@Override
+	public void preempt() {
+		if (_semaphore != null)
+			_semaphore.release();
 	}
 }
