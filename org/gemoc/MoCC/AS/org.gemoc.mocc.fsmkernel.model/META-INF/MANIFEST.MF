@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.mocc.fsmkernel.model.FSMModel,
+Export-Package: org.gemoc.mocc.fsmkernel.model,
+ org.gemoc.mocc.fsmkernel.model.FSMModel,
  org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension,
  org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension.impl,
  org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension.util,

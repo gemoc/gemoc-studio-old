@@ -65,10 +65,10 @@ Action returns fsmmodel::AbstractAction:
     
 FinishClock returns ccslmoc::FinishClock:
 {ccslmoc::FinishClock}
-	'kill' '(' clock=[TimeModel::Clock|EString]')'
+	'kill' '(' clock=[ClockExpressionAndRelation::BindableEntity|EString]')'
 ;
 
 StartClock returns ccslmoc::StartClock:
 {ccslmoc::StartClock}
-	'start' '(' clock=[TimeModel::Clock|EString]')'
+	'start' '(' clock=[ClockExpressionAndRelation::BindableEntity|EString]')'
 ;

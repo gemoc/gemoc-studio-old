@@ -22,4 +22,5 @@ Bundle-Vendor: %Bundle-Vendor
 Bundle-ManifestVersion: 2
 Export-Package: org.gemoc.mocc.ccslmocc.model.design,
  org.gemoc.mocc.ccslmocc.model.design.actions,
+ org.gemoc.mocc.ccslmocc.model.design.actions.dialog,
  org.gemoc.mocc.ccslmocc.model.design.services

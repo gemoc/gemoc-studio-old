@@ -1039,7 +1039,7 @@ ruleFinishClock returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getFinishClockAccess().getClockClockCrossReference_3_0()); 
+	        newCompositeNode(grammarAccess.getFinishClockAccess().getClockBindableEntityCrossReference_3_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
@@ -1099,7 +1099,7 @@ ruleStartClock returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getStartClockAccess().getClockClockCrossReference_3_0()); 
+	        newCompositeNode(grammarAccess.getStartClockAccess().getClockBindableEntityCrossReference_3_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();

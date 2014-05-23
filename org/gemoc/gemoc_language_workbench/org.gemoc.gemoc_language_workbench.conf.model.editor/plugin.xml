@@ -20,6 +20,16 @@
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
+   
+   <extension
+          point="org.eclipse.ui.perspectiveExtensions">
+       <perspectiveExtension
+             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
+          <newWizardShortcut
+                id="org.gemoc.gemoc_language_workbench.conf.presentation.confModelWizardID">
+          </newWizardShortcut>
+       </perspectiveExtension>
+    </extension>
 
    <extension point="org.eclipse.ui.editors">
       <editor

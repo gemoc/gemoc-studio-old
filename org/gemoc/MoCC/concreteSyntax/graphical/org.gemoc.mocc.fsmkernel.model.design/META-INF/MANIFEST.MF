@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: MoCML FSM Design
 Bundle-SymbolicName: org.gemoc.mocc.fsmkernel.model.design;singleton:=true
-Bundle-Version: 0.1.0
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.mocc.fsmkernel.model.design.Activator
 Require-Bundle: org.eclipse.sirius,
  org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl;bundle-version="0.0.1",
