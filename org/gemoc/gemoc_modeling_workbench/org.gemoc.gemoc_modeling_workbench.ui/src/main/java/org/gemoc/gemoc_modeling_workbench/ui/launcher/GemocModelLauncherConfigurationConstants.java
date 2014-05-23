@@ -11,7 +11,6 @@ public abstract class GemocModelLauncherConfigurationConstants {
 	
 	
 	// parameters that should be derived from the language in future version
-	public static final String LAUNCH_EXTENDEDCCSL_FILE_PATH = "GEMOC_LAUNCH_EXTENDEDCCSL_FILE_PATH";
 	public static final String LAUNCH_MODELOFEXECUTION_GLML_PATH = "GEMOC_LAUNCH_MODELOFEXECUTION_GLML_FILE_PATH";
 	
 	

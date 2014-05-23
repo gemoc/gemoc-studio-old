@@ -44,7 +44,6 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	protected Combo deciderCombo;
 
 	protected Text modelofexecutionglml_LocationText;
-	protected Text extendedccslLocationText;
 
 	public int GRID_DEFAULT_WIDTH = 200;
 
@@ -116,11 +115,6 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 							.getAttribute(
 									GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 									""));
-			this.extendedccslLocationText
-					.setText(configuration
-							.getAttribute(
-									GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH,
-									""));
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
@@ -152,10 +146,6 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 				.setAttribute(
 						GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 						this.modelofexecutionglml_LocationText.getText());
-		configuration
-				.setAttribute(
-						GemocModelLauncherConfigurationConstants.LAUNCH_EXTENDEDCCSL_FILE_PATH,
-						this.extendedccslLocationText.getText());
 	}
 
 	@Override
@@ -354,14 +344,6 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		modelofexecutionglml_LocationText.setFont(font);
 		modelofexecutionglml_LocationText
 				.addModifyListener(fBasicModifyListener);
-
-		// --------------
-		createTextLabelLayout(parent, "used defined extendedCCSL File");
-		// metamodel location text
-		extendedccslLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		extendedccslLocationText.setLayoutData(gd);
-		extendedccslLocationText.setFont(font);
-		extendedccslLocationText.addModifyListener(fBasicModifyListener);
 
 		return parent;
 	}

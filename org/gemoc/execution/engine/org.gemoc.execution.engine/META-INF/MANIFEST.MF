@@ -31,7 +31,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore,
  org.gemoc.gemoc_language_workbench.utils,
  org.eclipse.emf.common,
- org.eclipse.equinox.registry
+ org.eclipse.equinox.registry,
+ org.eclipse.sirius,
+ org.eclipse.sirius.ui,
+ fr.obeo.dsl.debug.ide.sirius.ui,
+ org.eclipse.emf.compare;bundle-version="3.0.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine,

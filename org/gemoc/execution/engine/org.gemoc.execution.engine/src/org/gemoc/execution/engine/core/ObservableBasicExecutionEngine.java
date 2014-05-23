@@ -9,15 +9,29 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Set;
 
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.URIUtil;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
@@ -43,6 +57,7 @@ import sun.org.mozilla.javascript.internal.ast.DoLoop;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
+import fr.obeo.dsl.debug.ide.sirius.ui.DebugSiriusIdeUiPlugin;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -88,24 +103,21 @@ import fr.inria.aoste.trace.LogicalStep;
  * @param <T>
  * 
  */
-public class ObservableBasicExecutionEngine extends Observable implements
-		GemocExecutionEngine {
+public class ObservableBasicExecutionEngine extends Observable implements GemocExecutionEngine {
 
 	private GemocModelDebugger debugger;
 
 	private boolean started = false;
 
 	boolean terminated = false;
-	
+
 	protected EngineStatus engineStatus = new EngineStatus();
-	
-	
+
 	protected int nbLastStepRunObservedForStopDetection = 10;
 	/**
 	 * used to detect
 	 */
 	protected ArrayDeque<LogicalStep> lastStepsRun = new ArrayDeque<LogicalStep>(nbLastStepRunObservedForStopDetection);
-	
 
 	/**
 	 * Given at the language-level initialization.
@@ -114,15 +126,20 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	protected EventExecutor executor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
 	protected ILogicalStepDecider logicalStepDecider = null;
-	public ILogicalStepDecider getLogicalStepDecider() 
-	{
-		return logicalStepDecider;
+
+	private Session _siriusSession;
+	public void setSiriusSession(Session session) {
+		_siriusSession = session;
 	}
 	
+	public ILogicalStepDecider getLogicalStepDecider() {
+		return logicalStepDecider;
+	}
+
 	protected Set<IEngineHook> registeredEngineHooks = new HashSet<IEngineHook>();
 
 	private ModelExecutionContext _executionContext;
-	
+
 	/**
 	 * URI of the model being executed
 	 */
@@ -135,14 +152,47 @@ public class ObservableBasicExecutionEngine extends Observable implements
 
 	private Choice _lastChoice;
 	private ExecutionTraceModel _executionTraceModel = GemocExecutionEngineTraceFactory.eINSTANCE.createExecutionTraceModel();
+
 	public ExecutionTraceModel getExecutionTrace() {
 		return _executionTraceModel;
 	}
-	
+
 	/**
 	 * The delay in millisecond to wait between each logical step.
 	 */
 	private int delay;
+
+	/**
+	 * Show the given {@link EObject instruction}.
+	 * @param airdURI 
+	 * 
+	 * @param instruction
+	 *            the {@link EObject instruction} to show
+	 */
+	protected void showInstruction(Session session, URI airdURI, final EObject instruction) {
+		final URI resourceURI = instruction.eResource().getURI();
+		if (resourceURI.isPlatformResource()) {
+			final String resourcePath = resourceURI.toPlatformString(true);
+			final IResource resource = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(resourcePath));
+			try {
+				final IMarker marker = resource.createMarker(EValidator.MARKER);
+				marker.setAttribute(EValidator.URI_ATTRIBUTE, EcoreUtil.getURI(instruction).toString());
+				if (session == null)
+					session = SessionManager.INSTANCE.getExistingSession(airdURI);
+				if (session == null)
+					return;
+				if (!session.isOpen()) {
+					session.open(new NullProgressMonitor());
+				}
+				SessionUIManager.INSTANCE.getOrCreateUISession(session);
+				final TraceabilityMarkerNavigationProvider navigationProvider = new TraceabilityMarkerNavigationProvider(session);
+				navigationProvider.gotoMarker(marker);
+				marker.delete();
+			} catch (CoreException e) {
+				DebugSiriusIdeUiPlugin.INSTANCE.log(e);
+			}
+		}
+	}
 
 	/**
 	 * The constructor takes in all the language-specific elements. Creates the
@@ -157,10 +207,10 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	 *            cannot be null
 	 * @param feedbackPolicy
 	 *            can be null (for now).
-	 * @param _executionContext 
+	 * @param _executionContext
 	 */
-	public ObservableBasicExecutionEngine(Solver solver,
-			EventExecutor executor, FeedbackPolicy feedbackPolicy, ILogicalStepDecider decider, ModelExecutionContext executionContext) {
+	public ObservableBasicExecutionEngine(Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy, ILogicalStepDecider decider,
+			ModelExecutionContext executionContext) {
 
 		// The engine needs AT LEAST a mocEventsResource,
 		// domainSpecificEventsResource, a Solver,
@@ -189,30 +239,30 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			}
 
 			_executionContext = executionContext;
-			
+
 			this.solver = solver;
 			this.executor = executor;
 			this.executor.initialize();
 			this.logicalStepDecider = decider;
-			if(this.logicalStepDecider == null){
-				if(solver instanceof CcslSolver){
+			if (this.logicalStepDecider == null) {
+				if (solver instanceof CcslSolver) {
 					Activator.warn("LogicalStepDecider not set,  using default SolverDecider");
-					this.logicalStepDecider =  new CcslSolverDecider((CcslSolver) solver);
-				}
-				else{
-					throw new EngineNotCorrectlyInitialized(
-							"LogicalStepDecider not set and cannot use default CcslSolverDecider");
+					this.logicalStepDecider = new CcslSolverDecider((CcslSolver) solver);
+				} else {
+					throw new EngineNotCorrectlyInitialized("LogicalStepDecider not set and cannot use default CcslSolverDecider");
 				}
 			}
 		}
-		capability(ModelExecutionTracingCapability.class);
 	}
 
 	private TransactionalEditingDomain _editingDomain;
+
 	@Override
 	public void initialize(Resource resource, TransactionalEditingDomain editingDomain) {
 
 		_editingDomain = editingDomain;
+		ModelExecutionTracingCapability capability = capability(ModelExecutionTracingCapability.class);
+		capability.setEditingDomain(_editingDomain);
 		this.modelUnderExecutionStringURI = resource.getURI().toString();
 
 		// Create the modelResource from the modelURI using the modelLoader.
@@ -229,164 +279,201 @@ public class ObservableBasicExecutionEngine extends Observable implements
 				modelResource.getContents().add(_executionTraceModel);
 			}
 		});
-		
+
 		Activator.info("*** Engine initialization done. ***");
 	}
-
 
 	@Override
 	public void start() {
 		if (!this.started) {
-			for(IEngineHook hook : registeredEngineHooks){
+			for (IEngineHook hook : registeredEngineHooks) {
 				hook.preStartEngine(this);
 			}
 			engineStatus.setNbLogicalStepRun(0);
 			Runnable execution = new EngineRunnable();
-			Thread mainThread = new Thread(execution, "Gemoc engine "
-					+ modelUnderExecutionStringURI);
+			Thread mainThread = new Thread(execution, "Gemoc engine " + modelUnderExecutionStringURI);
 			mainThread.start();
 		}
 
 	}
+
 	@Override
 	public void stop() {
 		logicalStepDecider.dispose();
 		terminated = true;
-		for(IEngineHook hook : registeredEngineHooks){
+		for (IEngineHook hook : registeredEngineHooks) {
 			hook.postStopEngine(this);
 		}
 	}
-	
-	public EngineStatus getEngineStatus(){
+
+	private void clean() {
+		URI uri = URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true);
+		Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+		// for (Resource r :
+		// session.getTransactionalEditingDomain().getResourceSet().getResources())
+		// {
+		// r.unload();
+		// }
+		// for (Resource r :
+		// session.getTransactionalEditingDomain().getResourceSet().getResources())
+		// {
+		// try {
+		// r.load(null);
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
+
+		//
+		session.close(new NullProgressMonitor());
+		SessionManager.INSTANCE.remove(session);
+	}
+
+	public EngineStatus getEngineStatus() {
 		return engineStatus;
 	}
 
-	private static boolean areLogicalStepSimilar(LogicalStep ls1, LogicalStep ls2){
-		if(ls1 == ls2) return true;
-		
+	private static boolean areLogicalStepSimilar(LogicalStep ls1, LogicalStep ls2) {
+		if (ls1 == ls2)
+			return true;
+
 		List<String> ls1TickedEventOccurences = new ArrayList<String>();
-		for(Event event : LogicalStepHelper.getTickedEvents(ls1)){
+		for (Event event : LogicalStepHelper.getTickedEvents(ls1)) {
 			ls1TickedEventOccurences.add(event.getName());
 		}
 		List<String> ls2TickedEventOccurences = new ArrayList<String>();
-		for(Event event : LogicalStepHelper.getTickedEvents(ls2)){
+		for (Event event : LogicalStepHelper.getTickedEvents(ls2)) {
 			ls2TickedEventOccurences.add(event.getName());
 		}
-		
-		
-		if(ls1TickedEventOccurences.size() == ls2TickedEventOccurences.size()){
-			if(ls1TickedEventOccurences.containsAll(ls2TickedEventOccurences)){
+
+		if (ls1TickedEventOccurences.size() == ls2TickedEventOccurences.size()) {
+			if (ls1TickedEventOccurences.containsAll(ls2TickedEventOccurences)) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	class EngineRunnable implements Runnable {
 		public void run() {
 			// register this engine using a unique name
 			String engineName = Thread.currentThread().getName();
 			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerNewEngine(engineName, ObservableBasicExecutionEngine.this);
-			
+
 			if (getDebugger() != null) {
 				// connect the debugger to the model being executed (including
 				// dynamic data)
-				getDebugger().spawnRunningThread(
-						Thread.currentThread().getName(),
-						modelUnderExecutionResource.getContents().get(0));
+				getDebugger().spawnRunningThread(Thread.currentThread().getName(), modelUnderExecutionResource.getContents().get(0));
 			}
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
 			ObservableBasicExecutionEngine.this.setChanged();
-			ObservableBasicExecutionEngine.this.notifyObservers("Starting "+engineName); // use a simple message for the console observer
+			ObservableBasicExecutionEngine.this.notifyObservers("Starting " + engineName); // use
+																							// a
+																							// simple
+																							// message
+																							// for
+																							// the
+																							// console
+																							// observer
 			long count = 0;
-			while (!terminated) {
-				try {									
-					updateTraceModelBeforeAskingSolver();
-					saveModels(count);
-					// 1- ask solver possible solutions for this step (set of
-					// logical steps | 1 logical step = set of simultaneous
-					// event occurence)
-					// TODO WARNING current implementation of
-					// getPossibleLogicalSteps() applies a LogicalStep to the
-					// solver, make sure to call it only once
-					List<LogicalStep> possibleLogicalSteps = solver.getPossibleLogicalSteps();
-					engineStatus.updateCurrentLogicalStepChoice(possibleLogicalSteps);
-					notifyEngineHasChanged();
-					for(IEngineHook hook : registeredEngineHooks){
-						hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
-					}
-					// 2- select one solution from available logical step /
-					// select interactive vs batch
-					int selectedLogicalStepIndex;
-					if (possibleLogicalSteps.size() == 0) {
-						Activator.debug("No more LogicalStep to run");
-						terminated = true;
-					} else { 
-						Activator.debug("\t\t ---------------- LogicalStep " + count);
-						engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
-						updateTraceModelBeforeDeciding(possibleLogicalSteps);
+
+			try {
+				while (!terminated) {
+					try {
+						updateTraceModelBeforeAskingSolver(count);
+						// 1- ask solver possible solutions for this step (set
+						// of
+						// logical steps | 1 logical step = set of simultaneous
+						// event occurence)
+						// TODO WARNING current implementation of
+						// getPossibleLogicalSteps() applies a LogicalStep to
+						// the
+						// solver, make sure to call it only once
+						List<LogicalStep> possibleLogicalSteps = solver.getPossibleLogicalSteps();
+						engineStatus.updateCurrentLogicalStepChoice(possibleLogicalSteps);
 						notifyEngineHasChanged();
-						selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
-						count++;
-
-						if (selectedLogicalStepIndex == -1) {
-							if (hasRewindHappened()) {
-								Activator.debug("Back to past happened --> let the engine ignoring current steps.");
-							} else {
-								Activator.debug("Engine cannot continue because decider did not decide anything.");
-								terminated = true;
-							}
+						for (IEngineHook hook : registeredEngineHooks) {
+							hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
 						}
-						else {
-							engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
-							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
-							updateTraceModelAfterDeciding(selectedLogicalStepIndex);			
-					
+						// 2- select one solution from available logical step /
+						// select interactive vs batch
+						int selectedLogicalStepIndex;
+						if (possibleLogicalSteps.size() == 0) {
+							Activator.debug("No more LogicalStep to run");
+							terminated = true;
+						} else {
+							Activator.debug("\t\t ---------------- LogicalStep " + count);
+							engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
+							updateTraceModelBeforeDeciding(possibleLogicalSteps);
 							notifyEngineHasChanged();
-							for(IEngineHook hook : registeredEngineHooks){
-								hook.postLogicalStepSelection(ObservableBasicExecutionEngine.this);
-							}
-													
+							selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
+							count++;
+
+							if (selectedLogicalStepIndex == -1) {
+								if (hasRewindHappened()) {
+									Activator.debug("Back to past happened --> let the engine ignoring current steps.");
+								} else {
+									Activator.debug("Engine cannot continue because decider did not decide anything.");
+									terminated = true;
+								}
+							} else {
+								engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
+								engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
+								updateTraceModelAfterDeciding(selectedLogicalStepIndex);
+
+								notifyEngineHasChanged();
+								for (IEngineHook hook : registeredEngineHooks) {
+									hook.postLogicalStepSelection(ObservableBasicExecutionEngine.this);
+								}
+
 								// 3 - run the selected logical step
-							final LogicalStep logicalStepToApply = possibleLogicalSteps
-									.get(selectedLogicalStepIndex);
-							// inform the solver that we will run this step
-							solver.applyLogicalStepByIndex(selectedLogicalStepIndex);
-							// run all the event occurrences of this logical step
-							doLogicalStep(logicalStepToApply);
-							// if not debugging wait if needed
-							if (debugger == null && delay != 0) {
-								Thread.sleep(delay);
+								final LogicalStep logicalStepToApply = possibleLogicalSteps.get(selectedLogicalStepIndex);
+								// inform the solver that we will run this step
+								solver.applyLogicalStepByIndex(selectedLogicalStepIndex);
+								// run all the event occurrences of this logical
+								// step
+								doLogicalStep(logicalStepToApply);
+								// if not debugging wait if needed
+								if (delay != 0) {
+									for (Event event : LogicalStepHelper
+											.getTickedEvents(logicalStepToApply)) {
+										if (event.getReferencedObjectRefs().size() != 0) {
+											showInstruction(
+													_siriusSession,
+													URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true),										
+													event.getReferencedObjectRefs().get(0));
+										}
+									}
+									Thread.sleep(delay);
+								}
+								terminateIfLastStepsSimilar(logicalStepToApply);
 							}
-
-							terminateIfLastStepsSimilar(logicalStepToApply);							
 						}
-					}				
-					
-					notifyEngineHasChanged();
-					engineStatus.incrementNbLogicalStepRun();
 
-				} catch (Throwable e) {
-					Activator.getMessagingSystem().error(
-							"Exception received " + e.getMessage()
-									+ ", stopping engine.",
-							Activator.PLUGIN_ID, e);
-					terminated = true;
+						notifyEngineHasChanged();
+						engineStatus.incrementNbLogicalStepRun();
+
+					} catch (Throwable e) {
+						Activator.getMessagingSystem().error("Exception received " + e.getMessage() + ", stopping engine.", Activator.PLUGIN_ID, e);
+						terminated = true;
+					}
 				}
+
+			} finally {
+				clean();
 			}
 
 			// inform the debugger UI that the thread is terminated
-			if (getDebugger() != null
-					&& !getDebugger().isTerminated(
-							Thread.currentThread().getName())) {
+			if (getDebugger() != null && !getDebugger().isTerminated(Thread.currentThread().getName())) {
 				getDebugger().terminated(Thread.currentThread().getName());
 				setDebugger(null); // make sure to release handles
 			}
-			
+
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Stopped);
 			ObservableBasicExecutionEngine.this.setChanged();
-			ObservableBasicExecutionEngine.this.notifyObservers("Stopping "+engineName);
-			
+			ObservableBasicExecutionEngine.this.notifyObservers("Stopping " + engineName);
+
 			// TODO remove the engine from registered running engines
 		}
 
@@ -398,33 +485,39 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 
 		private void terminateIfLastStepsSimilar(final LogicalStep logicalStepToApply) {
-			// if all lastStepsRun are the same, then we may have reached the end of the simulation
+			// if all lastStepsRun are the same, then we may have reached the
+			// end of the simulation
 			lastStepsRun.add(logicalStepToApply);
 			boolean allLastLogicalStepAreTheSame = true;
 			for (LogicalStep logicalStep : lastStepsRun) {
-				allLastLogicalStepAreTheSame = allLastLogicalStepAreTheSame && areLogicalStepSimilar(logicalStep, logicalStepToApply);							
+				allLastLogicalStepAreTheSame = allLastLogicalStepAreTheSame && areLogicalStepSimilar(logicalStep, logicalStepToApply);
 			}
-			if((lastStepsRun.size() >= nbLastStepRunObservedForStopDetection) && allLastLogicalStepAreTheSame){
-				Activator.debug("Detected "+nbLastStepRunObservedForStopDetection+" identical LogicalStep, stopping engine");
+			if ((lastStepsRun.size() >= nbLastStepRunObservedForStopDetection) && allLastLogicalStepAreTheSame) {
+				Activator.debug("Detected " + nbLastStepRunObservedForStopDetection + " identical LogicalStep, stopping engine");
 				terminated = true;
 			}
 			// if queue is full, remove one
-			if(lastStepsRun.size() > nbLastStepRunObservedForStopDetection)
+			if (lastStepsRun.size() > nbLastStepRunObservedForStopDetection)
 				lastStepsRun.poll();
 		}
 
 		private void notifyEngineHasChanged() {
 			ObservableBasicExecutionEngine.this.setChanged();
-			ObservableBasicExecutionEngine.this.notifyObservers(); // no message in the notification in order to keep the console with few info
+			ObservableBasicExecutionEngine.this.notifyObservers(); // no message
+																	// in the
+																	// notification
+																	// in order
+																	// to keep
+																	// the
+																	// console
+																	// with few
+																	// info
 		}
 
 		private void saveModels(long count) throws CoreException, IOException {
-			_executionContext.saveTraceModel(
-								_executionTraceModel.eResource(), 
-								modelUnderExecutionResource, 
-								solver,
-								count);
-		//	_executionContext.saveDomainModel(modelUnderExecutionResource, count);
+			_executionContext.saveTraceModel(_executionTraceModel.eResource(), modelUnderExecutionResource, solver, count);
+			// _executionContext.saveDomainModel(modelUnderExecutionResource,
+			// count);
 		}
 
 		private void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) {
@@ -438,7 +531,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			});
 		}
 
-		private void updateTraceModelBeforeAskingSolver() {
+		private void updateTraceModelBeforeAskingSolver(final long count) {
 			final CommandStack commandStack = _editingDomain.getCommandStack();
 			commandStack.execute(new RecordingCommand(_editingDomain) {
 
@@ -450,10 +543,19 @@ public class ObservableBasicExecutionEngine extends Observable implements
 					}
 					_lastChoice = newChoice;
 					_executionTraceModel.getChoices().add(_lastChoice);
+					try {
+						saveModels(count);
+					} catch (CoreException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			});
 		}
-		
+
 		private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
 			final CommandStack commandStack = _editingDomain.getCommandStack();
 			commandStack.execute(new RecordingCommand(_editingDomain) {
@@ -461,7 +563,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 				@Override
 				protected void doExecute() {
 					_lastChoice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
-					for(LogicalStep ls : possibleLogicalSteps) {
+					for (LogicalStep ls : possibleLogicalSteps) {
 						LogicalStepHelper.removeNotTickedEvents(ls);
 					}
 					_executionTraceModel.getChoices().add(_lastChoice);
@@ -474,14 +576,13 @@ public class ObservableBasicExecutionEngine extends Observable implements
 			});
 		}
 
-
 		private Choice createChoice() {
 			Choice choice = GemocExecutionEngineTraceFactory.eINSTANCE.createChoice();
-			return choice;			
+			return choice;
 		}
-		
+
 	}
-	
+
 	/**
 	 * run all the event occurrences of this logical step
 	 * 
@@ -501,70 +602,56 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		}
 
 		List<EngineEventOccurence> engineEventOccurences = new ArrayList<EngineEventOccurence>();
-		for(Event event : LogicalStepHelper.getTickedEvents(logicalStepToApply)){
-		/*for (EventOccurrence eventOccurrence : logicalStepToApply
-				.getEventOccurrences()) {
-			if (eventOccurrence.getFState() == FiredStateKind.TICK
-					&& eventOccurrence.getReferedElement() != null) {
-				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
-					ModelElementReference mer = (ModelElementReference) eventOccurrence
-							.getReferedElement();
-					if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0) instanceof Event){
-						Event event = (Event) mer.getElementRef().get(0); */
-						if (event.getReferencedObjectRefs().size() == 2){
-							if( event.getReferencedObjectRefs().get(1) instanceof EOperation) {
-								EObject targetModelElement = event.getReferencedObjectRefs()
-										.get(0);
-								EOperation targetOperation = (EOperation)event.getReferencedObjectRefs().get(1);
-								Activator.info("event occurence: target="
-												+ targetModelElement.toString()
-												+ " operation="
-												+ targetOperation.getName());
-								// TODO verify that solver and engine work on the same resource ...
-								
-								// build the list of simplified eventOccurence from solver
-								EngineEventOccurence engineEventOccurence = new EngineEventOccurence(targetModelElement, targetOperation);
-								engineEventOccurences.add(engineEventOccurence);
-							}
-							else{
-								Activator.warn("event occurence: TICK Event="
-												+ event.getName()
-												+ " ReferencedObjectRefs="
-												+ event.getReferencedObjectRefs());
-								EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs()
-										.get(0), null);
-								engineEventOccurences.add(engineEventOccurence);
-							}
-						}
-						else{
-							if (event.getReferencedObjectRefs().size() == 1){
-								Activator.warn("event occurence: TICK Event="
-												+ event.getName()
-												+ " ReferencedObjectRefs="
-												+ event.getReferencedObjectRefs());
-								EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs()
-										.get(0), null);
-								engineEventOccurences.add(engineEventOccurence);
-							}
-							else{
-								Activator.debug("event occurence: TICK Event="
-											+ event.getName()
-											+ " ReferencedObjectRefs="
-											+ event.getReferencedObjectRefs());
-							}
-						}
-			//		}
-//					else{
-//						String stringOfTheECLEventCorrespondingToTheTickingClock = mer
-//								.getElementRef().get(0).toString();
-//						Activator.getMessagingSystem().debug(
-//								"event occurence: TICK target="
-//										+ stringOfTheECLEventCorrespondingToTheTickingClock,
-//								Activator.PLUGIN_ID);
-	//				}
+		for (Event event : LogicalStepHelper.getTickedEvents(logicalStepToApply)) {
+			/*
+			 * for (EventOccurrence eventOccurrence : logicalStepToApply
+			 * .getEventOccurrences()) { if (eventOccurrence.getFState() ==
+			 * FiredStateKind.TICK && eventOccurrence.getReferedElement() !=
+			 * null) { if (eventOccurrence.getReferedElement() instanceof
+			 * ModelElementReference) { ModelElementReference mer =
+			 * (ModelElementReference) eventOccurrence .getReferedElement();
+			 * if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0)
+			 * instanceof Event){ Event event = (Event)
+			 * mer.getElementRef().get(0);
+			 */
+			if (event.getReferencedObjectRefs().size() == 2) {
+				if (event.getReferencedObjectRefs().get(1) instanceof EOperation) {
+					EObject targetModelElement = event.getReferencedObjectRefs().get(0);
+					EOperation targetOperation = (EOperation) event.getReferencedObjectRefs().get(1);
+					Activator.info("event occurence: target=" + targetModelElement.toString() + " operation=" + targetOperation.getName());
+					// TODO verify that solver and engine work on the same
+					// resource ...
+
+					// build the list of simplified eventOccurence from solver
+					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(targetModelElement, targetOperation);
+					engineEventOccurences.add(engineEventOccurence);
+				} else {
+					Activator.warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
+					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
+					engineEventOccurences.add(engineEventOccurence);
+				}
+			} else {
+				if (event.getReferencedObjectRefs().size() == 1) {
+					Activator.warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
+					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
+					engineEventOccurences.add(engineEventOccurence);
+				} else {
+					Activator.debug("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
+				}
+			}
+			// }
+			// else{
+			// String stringOfTheECLEventCorrespondingToTheTickingClock = mer
+			// .getElementRef().get(0).toString();
+			// Activator.getMessagingSystem().debug(
+			// "event occurence: TICK target="
+			// + stringOfTheECLEventCorrespondingToTheTickingClock,
+			// Activator.PLUGIN_ID);
+			// }
 		}
-		// TODO verify if we need to pause on this LogicalStep due to breakpoint on one of the eventOccurence
-		
+		// TODO verify if we need to pause on this LogicalStep due to breakpoint
+		// on one of the eventOccurence
+
 		// run the event
 		for (final EngineEventOccurence engineEventOccurence : engineEventOccurences) {
 			// FIXME can pause on each eventoccurence, should be done in
@@ -585,10 +672,10 @@ public class ObservableBasicExecutionEngine extends Observable implements
 					feedbackPolicy.processFeedback(res, ObservableBasicExecutionEngine.this);
 				}
 			}
-			
+
 		}
 	}
-	
+
 	/**
 	 * Calls the {@link EventExecutor} for the given
 	 * {@link EngineEventOccurence}.
@@ -623,18 +710,16 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		} else {
 			try {
 				res = executor.execute(engineEventOccurence);
-			} catch (EventExecutionException e) {
+			} catch (EventExecutionException e) { 
 				Activator.getMessagingSystem().error("Exception received " + e.getMessage(), Activator.PLUGIN_ID, e);
 			}
 		}
 		return res;
 	}
-	
+
 	@Override
 	public String toString() {
-		return this.getClass().getName() + "@[Executor=" + this.executor
-				+ " ; Solver=" + this.solver + " ; ModelResource="
-				+ this.modelUnderExecutionResource + "]";
+		return this.getClass().getName() + "@[Executor=" + this.executor + " ; Solver=" + this.solver + " ; ModelResource=" + this.modelUnderExecutionResource + "]";
 	}
 
 	/* Getters and Setters */
@@ -655,6 +740,7 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	public void setDelay(int delay) {
 		this.delay = delay;
 	}
+
 	public void addEngineHook(IEngineHook newEngineHook) {
 		registeredEngineHooks.add(newEngineHook);
 	}
@@ -663,22 +749,25 @@ public class ObservableBasicExecutionEngine extends Observable implements
 	public void removeEngineHook(IEngineHook removedEngineHook) {
 		registeredEngineHooks.remove(removedEngineHook);
 	}
-	
+
 	private ArrayList<IExecutionEngineCapability> _capabilities = new ArrayList<IExecutionEngineCapability>();
+
 	public <T extends IExecutionEngineCapability> boolean hasCapability(Class<T> type) {
-		for(IExecutionEngineCapability c : _capabilities) {
+		for (IExecutionEngineCapability c : _capabilities) {
 			if (c.getClass().equals(type))
 				return true;
 		}
 		return false;
 	}
+
 	public <T extends IExecutionEngineCapability> T getCapability(Class<T> type) {
-		for(IExecutionEngineCapability c : _capabilities) {
+		for (IExecutionEngineCapability c : _capabilities) {
 			if (c.getClass().equals(type))
-				return (T)c;
+				return (T) c;
 		}
 		return null;
 	}
+
 	public <T extends IExecutionEngineCapability> T capability(Class<T> type) {
 		T capability = getCapability(type);
 		if (capability == null) {
@@ -697,10 +786,9 @@ public class ObservableBasicExecutionEngine extends Observable implements
 		return capability;
 	}
 
-
 	@Override
 	public Solver getSolver() {
 		return solver;
 	}
-	
+
 }
