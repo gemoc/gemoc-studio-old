@@ -42,6 +42,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	protected Text delayText;
 	protected Combo languageCombo;
 	protected Combo deciderCombo;
+	protected Button _activeTraceCheckbox;
 
 	protected Text modelofexecutionglml_LocationText;
 
@@ -101,6 +102,11 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 					.getAttribute(
 							GemocModelLauncherConfigurationConstants.LAUNCH_DELAY,
 							""));
+			_activeTraceCheckbox
+			.setSelection(Boolean.parseBoolean(configuration
+					.getAttribute(
+							GemocModelLauncherConfigurationConstants.LAUNCH_ACTIVE_TRACE,
+							"")));
 			this.languageCombo
 					.setText(configuration
 							.getAttribute(
@@ -110,6 +116,10 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 							.getAttribute(
 									GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_DECIDER,
 									""));
+			this.deciderCombo.setText(configuration
+					.getAttribute(
+							GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_DECIDER,
+							""));
 			this.modelofexecutionglml_LocationText
 					.setText(configuration
 							.getAttribute(
@@ -134,6 +144,9 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 				GemocModelLauncherConfigurationConstants.LAUNCH_DELAY,
 				this.delayText.getText());
+		configuration.setAttribute(
+				GemocModelLauncherConfigurationConstants.LAUNCH_ACTIVE_TRACE,
+				Boolean.toString(_activeTraceCheckbox.getSelection()));
 		configuration
 				.setAttribute(
 						GemocModelLauncherConfigurationConstants.LAUNCH_SELECTED_LANGUAGE,
@@ -254,6 +267,17 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 			}
 		});
 		new Label(composite, SWT.BORDER).setText("delay in millisecond");
+
+		_activeTraceCheckbox = new Button(composite, SWT.CHECK);
+		_activeTraceCheckbox.setText("Active trace");
+		_activeTraceCheckbox.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				updateLaunchConfigurationDialog();
+			}
+		});
+
+		
 		return parent;
 	}
 

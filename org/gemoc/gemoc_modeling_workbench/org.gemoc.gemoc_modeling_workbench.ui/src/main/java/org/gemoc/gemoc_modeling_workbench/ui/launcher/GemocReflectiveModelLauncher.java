@@ -131,6 +131,7 @@ public class GemocReflectiveModelLauncher
 		if (animate) {
 			delay=Integer.parseInt(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_DELAY, "0"));
 		}
+		boolean isTraceActive = Boolean.parseBoolean(configuration.getAttribute(GemocModelLauncherConfigurationConstants.LAUNCH_ACTIVE_TRACE, "false"));
 
 		String deciderName = configuration
 				.getAttribute(
@@ -310,7 +311,9 @@ public class GemocReflectiveModelLauncher
 		if (_siriusSession != null)
 			editingDomain = _siriusSession.getTransactionalEditingDomain();
 		engine.initialize(modelResource, editingDomain);
-
+		if (isTraceActive)
+			engine.activateTrace();
+		
 		for(IEngineHook engineHook : engineHooks){
 			engine.addEngineHook(engineHook);
 		}

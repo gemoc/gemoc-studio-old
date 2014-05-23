@@ -207,6 +207,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 *            cannot be null
 	 * @param feedbackPolicy
 	 *            can be null (for now).
+	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
 	public ObservableBasicExecutionEngine(Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy, ILogicalStepDecider decider,
@@ -261,8 +262,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	public void initialize(Resource resource, TransactionalEditingDomain editingDomain) {
 
 		_editingDomain = editingDomain;
-		ModelExecutionTracingCapability capability = capability(ModelExecutionTracingCapability.class);
-		capability.setEditingDomain(_editingDomain);
 		this.modelUnderExecutionStringURI = resource.getURI().toString();
 
 		// Create the modelResource from the modelURI using the modelLoader.
@@ -281,6 +280,11 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		});
 
 		Activator.info("*** Engine initialization done. ***");
+	}
+	
+	public void activateTrace() {
+		ModelExecutionTracingCapability capability = capability(ModelExecutionTracingCapability.class);
+		capability.setEditingDomain(_editingDomain);		
 	}
 
 	@Override
@@ -381,7 +385,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			try {
 				while (!terminated) {
 					try {
-						updateTraceModelBeforeAskingSolver(count);
+						if (hasCapability(ModelExecutionTracingCapability.class))
+							updateTraceModelBeforeAskingSolver(count);
 						// 1- ask solver possible solutions for this step (set
 						// of
 						// logical steps | 1 logical step = set of simultaneous
@@ -405,7 +410,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 						} else {
 							Activator.debug("\t\t ---------------- LogicalStep " + count);
 							engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
-							updateTraceModelBeforeDeciding(possibleLogicalSteps);
+							if (hasCapability(ModelExecutionTracingCapability.class))
+								updateTraceModelBeforeDeciding(possibleLogicalSteps);
 							notifyEngineHasChanged();
 							selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
 							count++;
@@ -420,7 +426,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 							} else {
 								engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
 								engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
-								updateTraceModelAfterDeciding(selectedLogicalStepIndex);
+								if (hasCapability(ModelExecutionTracingCapability.class))
+									updateTraceModelAfterDeciding(selectedLogicalStepIndex);
 
 								notifyEngineHasChanged();
 								for (IEngineHook hook : registeredEngineHooks) {
