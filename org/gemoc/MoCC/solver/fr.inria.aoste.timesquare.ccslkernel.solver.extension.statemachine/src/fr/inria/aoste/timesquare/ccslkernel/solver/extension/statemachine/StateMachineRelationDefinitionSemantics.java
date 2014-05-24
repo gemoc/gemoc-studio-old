@@ -40,6 +40,7 @@ import fr.inria.aoste.timesquare.ccslkernel.solver.StepExecutor;
 import fr.inria.aoste.timesquare.ccslkernel.solver.TimeModel.SolverClock;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.helpers.SemanticHelper;
+import fr.inria.aoste.timesquare.ccslkernel.solver.helpers.UpdateHelper;
 import fr.inria.aoste.timesquare.ccslkernel.solver.relation.AbstractWrappedRelation;
 
 public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRelation {
@@ -207,7 +208,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void update(CCSLKernelSolver solver, StepExecutor stepExecutor) throws SolverException {
+	public void update(UpdateHelper updateHelper) throws SolverException {
 		allTransition: for (Transition t : _sensitiveTransitition) {
 			//construct three set, the one of clock that must tick and the clock that must not tick
 			List<SolverElement> trueTrigger = null;
@@ -220,17 +221,17 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 				clocksNotInTrigger.removeAll(trueTrigger);
 			
 			for (SolverElement se : trueTrigger) {
-				if (! stepExecutor.clockHasFired((SolverClock) se)){
+				if (! updateHelper.clockHasFired((SolverClock) se)){
 					continue allTransition; //it is not a fired transition
 				}
 			}
 			for (SolverElement se : falseTrigger) {
-				if (stepExecutor.clockHasFired((SolverClock) se)){
+				if (updateHelper.clockHasFired((SolverClock) se)){
 					continue allTransition; //it is not a fired transition
 				}
 			}
 			for (SolverElement se : clocksNotInTrigger) {
-				if (stepExecutor.clockHasFired((SolverClock) se)){
+				if (updateHelper.clockHasFired((SolverClock) se)){
 					continue allTransition; //it is not a fired transition
 				}
 			}
@@ -240,7 +241,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 			for (AbstractAction a : t.getActions()) {
 				if (a instanceof FinishClock){
 					SolverClock toKill = (SolverClock) _abstract2concreteMap.getLocalValue((AbstractEntity) ((FinishClock) a).getClock());
-					stepExecutor.getNewDeadClocks().add(toKill);
+					updateHelper.registerNewDeadClock(toKill);
 					toKill.setDead(true);
 				}
 				if (a instanceof IntegerAssignement){
@@ -403,9 +404,9 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		//super does not add anything in the list
 		ArrayList<byte[]> currentState = new ArrayList<byte[]>();
 		int currentStateIndex = _modelSTS.getStates().indexOf(_currentState);
-		currentState.add(Serializer.getDefaultProtocol().toBytes(currentStateIndex));
+		currentState.add(Serializer.getDefaultSerializer().toBytes(currentStateIndex));
 		for(IntegerElement ie : _localInteger.values()){
-			currentState.add(Serializer.getDefaultProtocol().toBytes(ie.getValue().intValue()));
+			currentState.add(Serializer.getDefaultSerializer().toBytes(ie.getValue().intValue()));
 //			System.out.println("################################################################# mem:" +ie.getValue().intValue());
 		}
 		return currentState;
@@ -413,10 +414,10 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 
 	@Override
 	public void setState(ArrayList<byte[]> state) {
-		_currentState = _modelSTS.getStates().get((Integer) Serializer.getDefaultProtocol().fromBytes(state.get(0)));
+		_currentState = _modelSTS.getStates().get((Integer) Serializer.getDefaultSerializer().fromBytes(state.get(0)));
 		int i=1;
 		for(IntegerElement ie : _localInteger.values()){
-			ie.setValue((Integer) Serializer.getDefaultProtocol().fromBytes(state.get(i++)));
+			ie.setValue((Integer) Serializer.getDefaultSerializer().fromBytes(state.get(i++)));
 		}
 		return;		
 	}
