@@ -5,6 +5,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
+import fr.inria.aoste.trace.LogicalStep;
+
 /**
  * The interface of the GEMOC Execution Engine. The Execution Engine is an
  * entity able to execute models conforming to an xDSML as defined in the GEMOC
@@ -85,5 +87,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	public <T extends IExecutionEngineCapability> T capability(Class<T> type);
 
 	public Solver getSolver();
+
+	public void doLogicalStep(LogicalStep chosenLogicalStep);
 	
 }

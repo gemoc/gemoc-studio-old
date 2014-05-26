@@ -164,7 +164,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * @param instruction
 	 *            the {@link EObject instruction} to show
 	 */
-	protected void showInstruction(Session session, URI airdURI, final EObject instruction) {
+	public void showInstruction(final EObject instruction) {
 		final URI resourceURI = instruction.eResource().getURI();
 		if (resourceURI.isPlatformResource()) {
 			final String resourcePath = resourceURI.toPlatformString(true);
@@ -172,15 +172,17 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			try {
 				final IMarker marker = resource.createMarker(EValidator.MARKER);
 				marker.setAttribute(EValidator.URI_ATTRIBUTE, EcoreUtil.getURI(instruction).toString());
-				if (session == null)
-					session = SessionManager.INSTANCE.getExistingSession(airdURI);
-				if (session == null)
-					return;
-				if (!session.isOpen()) {
-					session.open(new NullProgressMonitor());
+				if (_siriusSession == null) {
+					URI airdURI = URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true);
+					_siriusSession = SessionManager.INSTANCE.getExistingSession(airdURI);
 				}
-				SessionUIManager.INSTANCE.getOrCreateUISession(session);
-				final TraceabilityMarkerNavigationProvider navigationProvider = new TraceabilityMarkerNavigationProvider(session);
+				if (_siriusSession == null)
+					return;
+				if (!_siriusSession.isOpen()) {
+					_siriusSession.open(new NullProgressMonitor());
+				}
+				SessionUIManager.INSTANCE.getOrCreateUISession(_siriusSession);
+				final TraceabilityMarkerNavigationProvider navigationProvider = new TraceabilityMarkerNavigationProvider(_siriusSession);
 				navigationProvider.gotoMarker(marker);
 				marker.delete();
 			} catch (CoreException e) {
@@ -413,6 +415,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 							if (selectedLogicalStepIndex == -1) {
 								if (hasRewindHappened()) {
+									if (_executionTraceModel.getChoices().size() > 0)
+										_lastChoice = _executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1);
+									else 
+										_lastChoice = null;
 									Activator.debug("Back to past happened --> let the engine ignoring current steps.");
 								} else {
 									Activator.debug("Engine cannot continue because decider did not decide anything.");
@@ -441,10 +447,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 									for (Event event : LogicalStepHelper
 											.getTickedEvents(logicalStepToApply)) {
 										if (event.getReferencedObjectRefs().size() != 0) {
-											showInstruction(
-													_siriusSession,
-													URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true),										
-													event.getReferencedObjectRefs().get(0));
+											showInstruction(event.getReferencedObjectRefs().get(0));
 										}
 									}
 									Thread.sleep(delay);
@@ -517,7 +520,9 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 
 		private void saveModels(long count) throws CoreException, IOException {
-			_executionContext.saveTraceModel(_executionTraceModel.eResource(), modelUnderExecutionResource, solver, count);
+			if (hasCapability(ModelExecutionTracingCapability.class))
+				capability(ModelExecutionTracingCapability.class).saveTraceModel(_executionTraceModel.eResource(), modelUnderExecutionResource, solver, count);
+	//		_executionContext.saveTraceModel(_executionTraceModel.eResource(), modelUnderExecutionResource, solver, count);
 			// _executionContext.saveDomainModel(modelUnderExecutionResource,
 			// count);
 		}
@@ -590,7 +595,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * 
 	 * @param logicalStepToApply
 	 */
-	protected void doLogicalStep(LogicalStep logicalStepToApply) {
+	public void doLogicalStep(LogicalStep logicalStepToApply) {
 		// = step in debug mode, goes to next logical step
 		// -> run all event occurrences of the logical step
 		// step into / open internal thread and pause them

@@ -53,6 +53,7 @@ import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
+import fr.obeo.dsl.debug.ide.sirius.ui.DSLDebugModelPresentation;
 import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
 public class GemocReflectiveModelLauncher
@@ -321,6 +322,18 @@ public class GemocReflectiveModelLauncher
 		// configure altogether
 		configureEngine(engine, frontends, backends, delay);
 
+		if (animate) {
+			DSLDebugModelPresentation p = new DSLDebugModelPresentation();
+			p.getEditorInput(engine.getModelUnderExecutionResource().getContents().get(0));
+			engine.showInstruction(engine.getModelUnderExecutionResource().getContents().get(0));
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		// delegate for debug mode
 		if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 			super.launch(configuration, mode, launch, monitor);

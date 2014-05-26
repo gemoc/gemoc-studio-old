@@ -19,8 +19,22 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.compare.Comparison;
+import org.eclipse.emf.compare.EMFCompare;
+import org.eclipse.emf.compare.match.DefaultComparisonFactory;
+import org.eclipse.emf.compare.match.DefaultEqualityHelperFactory;
+import org.eclipse.emf.compare.match.DefaultMatchEngine;
+import org.eclipse.emf.compare.match.IComparisonFactory;
+import org.eclipse.emf.compare.match.IMatchEngine;
+import org.eclipse.emf.compare.match.eobject.IEObjectMatcher;
+import org.eclipse.emf.compare.postprocessor.IPostProcessor;
+import org.eclipse.emf.compare.rcp.EMFCompareRCPPlugin;
+import org.eclipse.emf.compare.scope.IComparisonScope;
+import org.eclipse.emf.compare.utils.UseIdentifiers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
@@ -146,49 +160,74 @@ public class ModelExecutionContext {
 	}
 	
 	
-	public void saveTraceModel(Resource traceResource, Resource modelUnderExecutionResource, Solver solver, long stepNumber) throws CoreException, IOException {
-		if (traceResource.getContents().size() > 0) {
-			IPath folderPath = getStepFolder(stepNumber);	
-			IPath traceFilePath = new Path(traceResource.getURI().toPlatformString(true));
-			IPath modelPath = folderPath.append(modelUnderExecutionResource.getURI().lastSegment());
-			IFile modelFile = ResourcesPlugin.getWorkspace().getRoot().getFile(modelPath);
-			
-			// filing out the model
-			FileOutputStream fos = new FileOutputStream(modelFile.getLocation().toString());
-			try {
-				modelUnderExecutionResource.save(fos, null);				
-			} 
-			finally {
-				fos.close();
-			}
-			// reload the model
-			URI modelURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
-			Resource modelResource = traceResource.getResourceSet().createResource(modelURI);
-			modelResource.load(null);
-			
-			ExecutionTraceModel traceModel = (ExecutionTraceModel)traceResource.getContents().get(0);				
-			if (traceModel.getChoices().size() > 0) {
-				// link it to the trace model
-				ModelState modelState = GemocExecutionEngineTraceFactory.eINSTANCE.createModelState();					
-				modelState.setModel(modelResource.getContents().get(0));
-				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();					
-				//EObject trueSolverState = includeSolverStateIntoResourceSet(traceResource, solver, modelFile.getFullPath().removeLastSegments(1));
-				//solverState.setModel(trueSolverState);
-				//trueSolverState.eResource().save(null);
-				
-				solverState.setSerializableModel(solver.getState());
-				Activator.debug("step" + stepNumber + ", saving solver state: " 
-						 + solverState.getSerializableModel());
-				
-				ContextState contextState = GemocExecutionEngineTraceFactory.eINSTANCE.createContextState();
-				contextState.setModelState(modelState);
-				contextState.setSolverState(solverState);
-				traceModel.getChoices().get(traceModel.getChoices().size()-1).setContextState(contextState);
-			}
-			
-			saveResource(traceResource, traceFilePath);			
-		}
-	}
+//	public void saveTraceModel(Resource traceResource, Resource modelUnderExecutionResource, Solver solver, long stepNumber) throws CoreException, IOException {
+//		if (traceResource.getContents().size() > 0) {
+//			
+//			ResourceSet rs = new ResourceSetImpl();
+//			URI modelURI = URI.createPlatformResourceURI(getModelPath().toOSString(), true);
+//			Resource resource = rs.getResource(modelURI, true);
+//			
+//			// Configure EMF Compare
+//			IEObjectMatcher matcher = DefaultMatchEngine.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
+//			IComparisonFactory comparisonFactory = new DefaultComparisonFactory(new DefaultEqualityHelperFactory());
+//			IMatchEngine matchEngine = new DefaultMatchEngine(matcher, comparisonFactory);
+//			IMatchEngine.Factory.Registry matchEngineRegistry = EMFCompareRCPPlugin.getDefault().getMatchEngineFactoryRegistry();
+//		    IPostProcessor.Descriptor.Registry<String> postProcessorRegistry = EMFCompareRCPPlugin.getDefault().getPostProcessorRegistry();
+//			EMFCompare comparator = EMFCompare.builder()
+//		                                           .setMatchEngineFactoryRegistry(matchEngineRegistry)
+//		                                           .setPostProcessorRegistry(postProcessorRegistry)
+//		                                           .build();
+//			// Compare the two models
+//	//		IComparisonScope scope = EMFCompare.createDefaultScope(rs, modelUnderExecutionResource.getResourceSet());
+//			IComparisonScope scope = EMFCompare.createDefaultScope(resource, modelUnderExecutionResource);
+//			Comparison comparison = comparator.compare(scope);
+//			
+//			
+//			IPath folderPath = getStepFolder(stepNumber);	
+//			IPath traceFilePath = new Path(traceResource.getURI().toPlatformString(true));
+//			IPath modelPath = folderPath.append(modelUnderExecutionResource.getURI().lastSegment());
+//			IFile modelFile = ResourcesPlugin.getWorkspace().getRoot().getFile(modelPath);
+//			
+////			// filing out the model
+////			FileOutputStream fos = new FileOutputStream(modelFile.getLocation().toString());
+////			try {
+////				resource.save(fos, null);
+////				//modelUnderExecutionResource.save(fos, null);				
+////			} 
+////			finally {
+////				fos.close();
+////			}
+//			// reload the model
+////			URI modelURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+////			Resource modelResource = traceResource.getResourceSet().createResource(modelURI);
+////			modelResource.load(null);
+//			
+//			ExecutionTraceModel traceModel = (ExecutionTraceModel)traceResource.getContents().get(0);				
+//			if (traceModel.getChoices().size() > 0) {
+//				// link it to the trace model
+//				ModelState modelState = GemocExecutionEngineTraceFactory.eINSTANCE.createModelState();					
+//				//modelState.setModel(modelResource.getContents().get(0));
+//				traceResource.getContents().add(comparison);
+//				modelState.setModel(comparison);
+//				
+//				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();					
+//				//EObject trueSolverState = includeSolverStateIntoResourceSet(traceResource, solver, modelFile.getFullPath().removeLastSegments(1));
+//				//solverState.setModel(trueSolverState);
+//				//trueSolverState.eResource().save(null);
+//				
+//				solverState.setSerializableModel(solver.getState());
+//				Activator.debug("step" + stepNumber + ", saving solver state: " 
+//						 + solverState.getSerializableModel());
+//				
+//				ContextState contextState = GemocExecutionEngineTraceFactory.eINSTANCE.createContextState();
+//				contextState.setModelState(modelState);
+//				contextState.setSolverState(solverState);
+//				traceModel.getChoices().get(traceModel.getChoices().size()-1).setContextState(contextState);
+//			}
+//			
+//			saveResource(traceResource, traceFilePath);			
+//		}
+//	}
 
 //	private EObject includeSolverStateIntoResourceSet(Resource traceResource, Solver solver, IPath folderPath) {
 //		IPath solverStatePath = folderPath.append("solverState.xmi");
@@ -213,24 +252,6 @@ public class ModelExecutionContext {
 		return folderPath;
 	}
 
-	private void saveResource(Resource resource, IPath filePath) throws IOException, CoreException {
-		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(filePath);		
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		ByteArrayInputStream in = null;
-		try {
-			resource.save(out, null);				
-			in = new ByteArrayInputStream(out.toByteArray());
-			if (file.exists()) {
-				file.setContents(in, true, false, new NullProgressMonitor());
-			} else {
-				file.create(in, true, new NullProgressMonitor());				
-			}
-		} finally {
-			out.close();
-			if (in != null)
-				in.close();
-		}
-	}
 
 	
 //	public URI getTraceModelURI(Resource domainModelResource, long stepNumber) {
