@@ -174,19 +174,19 @@ public class GemocReflectiveModelLauncher
 			
 			
 			// [FT] To disappear?
-			String mocEventResourcePath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
-			if (mocEventResourcePath != null) {
-				ResourceSet resSet = new ResourceSetImpl();
-				if(mocEventResourcePath.startsWith("/")) {
-					mocEventsResource = resSet.getResource(URI.createPlatformPluginURI(mocEventResourcePath, true), true);
-					
-				} else {
-					mocEventsResource = resSet.getResource(URI.createURI(mocEventResourcePath), true);
-				}
-			} else {
-				warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT
-								+ " isn't set");
-			}
+//			String mocEventResourcePath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
+//			if (mocEventResourcePath != null) {
+//				ResourceSet resSet = new ResourceSetImpl();
+//				if(mocEventResourcePath.startsWith("/")) {
+//					mocEventsResource = resSet.getResource(URI.createPlatformPluginURI(mocEventResourcePath, true), true);
+//					
+//				} else {
+//					mocEventsResource = resSet.getResource(URI.createURI(mocEventResourcePath), true);
+//				}
+//			} else {
+//				warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT
+//								+ " isn't set");
+//			}
 
 			// If there is a custom ModelLoader then we will use this,
 			// else we should rely on some default XMI ModelLoader.
