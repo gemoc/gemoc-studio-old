@@ -14,12 +14,5 @@
             genModel="model/GemocExecutionEngineTrace.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated GemocExecutionEngineTrace -->
-      <package
-            uri="http://www.inria.fr/sophia/aoste/trace/1.0.0"
-            class="fr.inria.aoste.trace.TracePackage"
-            genModel="model/GemocExecutionEngineTrace.genmodel"/>
-   </extension>
 
 </plugin>
