@@ -3,8 +3,8 @@ package org.gemoc.execution.engine.capabilitites;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Collection;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -34,6 +34,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.commons.Activator;
@@ -59,8 +61,8 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	private boolean _backToPastHappened = false;
 	public void backToPast(Choice choice) throws ModelExecutionTracingException {
 		int index = _engine.getExecutionTrace().getChoices().indexOf(choice);
-		if (index == (_engine.getExecutionTrace().getChoices().size()-1)
-			|| index == (_engine.getExecutionTrace().getChoices().size()-2))
+		if (index == (_engine.getExecutionTrace().getChoices().size()-1))
+//			|| index == (_engine.getExecutionTrace().getChoices().size()-2))
 			return;
 //		try {
 			backInTraceModelTo(choice);
@@ -83,8 +85,8 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 			commandStack.execute(new RecordingCommand(_editingDomain) {
 				@Override
 				protected void doExecute() {
-					Comparison firstComparison = (Comparison)choice.getContextState().getModelState().getModel();
-					Comparison secondComparison = (Comparison)_engine.getExecutionTrace().getChoices().get(_engine.getExecutionTrace().getChoices().size()-1).getContextState().getModelState().getModel();
+//					Comparison firstComparison = (Comparison)choice.getContextState().getModelState().getModel();
+//					Comparison secondComparison = (Comparison)_engine.getExecutionTrace().getChoices().get(_engine.getExecutionTrace().getChoices().size()-1).getContextState().getModelState().getModel();
 	//				comparison.getDifferences();
 					//					for(int i=_engine.getExecutionTrace().getChoices().size()-1; i>-1; i++)
 //					{
@@ -96,13 +98,17 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 //							break;
 //						}
 //					}
-					_engine.getExecutionTrace().getChoices().subList(index+1, _engine.getExecutionTrace().getChoices().size()).clear();
-					choice.setNextChoice(null);
+					_engine.getExecutionTrace().getChoices().subList(index, _engine.getExecutionTrace().getChoices().size()).clear();
+					if (_engine.getExecutionTrace().getChoices().size() > 0)
+						_engine.getExecutionTrace().getChoices().get(_engine.getExecutionTrace().getChoices().size()-1).setNextChoice(null);
+//					choice.setNextChoice(null);
 					try {
-						restoreModelState(firstComparison, secondComparison);
+						restoreModelState(choice);
+	//					restoreModelState(firstComparison, secondComparison);
 						restoreSolverState(choice);
-						_engine.doLogicalStep(choice.getChosenLogicalStep());
-					} catch (IOException e) {
+						//_engine.doLogicalStep(choice.getChosenLogicalStep());
+					}
+					catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
@@ -110,23 +116,50 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		}
 	}
 
-	private void restoreModelState(Comparison firstComparison, Comparison secondComparison) throws IOException {
+	private void restoreModelState(Choice choice) {
+		// Configure EMF Compare
+		IMatchEngine.Factory.Registry matchEngineRegistry = EMFCompareRCPPlugin.getDefault().getMatchEngineFactoryRegistry();
+	    IPostProcessor.Descriptor.Registry<String> postProcessorRegistry = EMFCompareRCPPlugin.getDefault().getPostProcessorRegistry();
+		EMFCompare comparator = EMFCompare.builder()
+	                                           .setMatchEngineFactoryRegistry(matchEngineRegistry)
+	                                           .setPostProcessorRegistry(postProcessorRegistry)
+	                                           .build();
+		// Compare the two models
+		IComparisonScope scope1 = EMFCompare.createDefaultScope(choice.getContextState().getModelState().getModel(), _engine.getModelUnderExecutionResource().getContents().get(0));
+		Comparison otherComparison = comparator.compare(scope1);
+		otherComparison.getDifferences();
+		
+		Merger merger = new Merger();
+		BasicMonitor monitor = new BasicMonitor();
+		for (Diff diff : otherComparison.getDifferences()) {
+			merger.copyLeftToRight(
+					diff,
+					monitor);			
+			diff.setState(DifferenceState.UNRESOLVED);
+//			merger.copyRightToLeft(
+//					diff,
+//					monitor);			
+//			diff.setState(DifferenceState.UNRESOLVED);
+		}			
+	}
+	
+	private void restoreModelState(Comparison firstComparison, Comparison secondComparison) throws IOException {		
 		Merger merger = new Merger();
 		BasicMonitor monitor = new BasicMonitor();
 		if (firstComparison.getDifferences().size() > 0) {
 			for (Diff diff : firstComparison.getDifferences()) {
-				merger.copyRightToLeft(
+				merger.copyLeftToRight(
 						diff,
 						monitor);			
 				diff.setState(DifferenceState.UNRESOLVED);
-				merger.copyLeftToRight(
+				merger.copyRightToLeft(
 						diff,
 						monitor);			
 				diff.setState(DifferenceState.UNRESOLVED);
 			}			
 		} else if (secondComparison.getDifferences().size() > 0) {
 			for (Diff diff : secondComparison.getDifferences()) {
-				merger.copyLeftToRight(
+				merger.copyRightToLeft(
 						diff,
 						monitor);			
 				diff.setState(DifferenceState.UNRESOLVED);
@@ -134,12 +167,29 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		}
 	}
 
+	byte[] _lastRestoredSolverState;
 	private void restoreSolverState(Choice choice) {
-		_engine.getSolver().getPossibleLogicalSteps();
+		//_engine.getSolver().getPossibleLogicalSteps();
+//		if (_lastRestoredSolverState != null) {
+//			boolean result = Arrays.equals(_lastRestoredSolverState, choice.getContextState().getSolverState().getSerializableModel());
+//			if (result)
+//				Activator.debug("restoring solver state equals to last restored solver state");
+//			else
+//				Activator.debug("restoring solver state NOT equals to last restored solver state");				
+//		}
+//		_lastRestoredSolverState = choice.getContextState().getSolverState().getSerializableModel();
+		
+		Activator.debug("restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
 		_engine.getSolver().setState(choice.getContextState().getSolverState().getSerializableModel());
-		_engine.getSolver().getPossibleLogicalSteps();
-		int selectedChoiceIndex = choice.getPossibleLogicalSteps().indexOf(choice.getChosenLogicalStep());
-		_engine.getSolver().applyLogicalStepByIndex(selectedChoiceIndex);
+		boolean b = Arrays.equals(_engine.getSolver().getState(), choice.getContextState().getSolverState().getSerializableModel());
+		if (b)
+			Activator.debug("new state does equal the restored state");
+		else
+			Activator.debug("new state does NOT equal the restored state");
+		
+		//		_engine.getSolver().getPossibleLogicalSteps();
+//		int selectedChoiceIndex = choice.getPossibleLogicalSteps().indexOf(choice.getChosenLogicalStep());
+//		_engine.getSolver().applyLogicalStepByIndex(selectedChoiceIndex);
 	}
 
 	private EList<EObject> loadModel(URI uri) throws IOException {
@@ -164,30 +214,38 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	public void saveTraceModel(Resource traceResource, Resource modelUnderExecutionResource, Solver solver, long stepNumber) throws CoreException, IOException {
 		if (traceResource.getContents().size() > 0) {
 			
-			Resource resource = getOriginalModel(modelUnderExecutionResource);			
-			// Configure EMF Compare
-			IEObjectMatcher matcher = DefaultMatchEngine.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
-			IComparisonFactory comparisonFactory = new DefaultComparisonFactory(new DefaultEqualityHelperFactory());
-			IMatchEngine matchEngine = new DefaultMatchEngine(matcher, comparisonFactory);
-			IMatchEngine.Factory.Registry matchEngineRegistry = EMFCompareRCPPlugin.getDefault().getMatchEngineFactoryRegistry();
-		    IPostProcessor.Descriptor.Registry<String> postProcessorRegistry = EMFCompareRCPPlugin.getDefault().getPostProcessorRegistry();
-			EMFCompare comparator = EMFCompare.builder()
-		                                           .setMatchEngineFactoryRegistry(matchEngineRegistry)
-		                                           .setPostProcessorRegistry(postProcessorRegistry)
-		                                           .build();
-			// Compare the two models
-			IComparisonScope scope = EMFCompare.createDefaultScope(resource, modelUnderExecutionResource);
-			Comparison comparison = comparator.compare(scope);
-			comparison.getDifferences();
+//			Resource resource = getOriginalModel(modelUnderExecutionResource);			
+//			// Configure EMF Compare
+//			IEObjectMatcher matcher = DefaultMatchEngine.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
+//			IComparisonFactory comparisonFactory = new DefaultComparisonFactory(new DefaultEqualityHelperFactory());
+//			IMatchEngine matchEngine = new DefaultMatchEngine(matcher, comparisonFactory);
+//			IMatchEngine.Factory.Registry matchEngineRegistry = EMFCompareRCPPlugin.getDefault().getMatchEngineFactoryRegistry();
+//		    IPostProcessor.Descriptor.Registry<String> postProcessorRegistry = EMFCompareRCPPlugin.getDefault().getPostProcessorRegistry();
+//			EMFCompare comparator = EMFCompare.builder()
+//		                                           .setMatchEngineFactoryRegistry(matchEngineRegistry)
+//		                                           .setPostProcessorRegistry(postProcessorRegistry)
+//		                                           .build();
+//			// Compare the two models
+//			IComparisonScope scope = EMFCompare.createDefaultScope(resource, modelUnderExecutionResource);
+//			Comparison usedComparison = comparator.compare(scope);
+//			IComparisonScope scope1 = EMFCompare.createDefaultScope(modelUnderExecutionResource, resource);
+//			Comparison otherComparison = comparator.compare(scope1);
+//			usedComparison.getDifferences();
+//			otherComparison.getDifferences();
 			
-			IPath traceFilePath = new Path(traceResource.getURI().toPlatformString(true));
+//			IPath traceFilePath = new Path(traceResource.getURI().toPlatformString(true));
+			
+		    Copier copier = new Copier();		    
+		    EObject result = copier.copy(_engine.getModelUnderExecutionResource().getContents().get(0));
+		    copier.copyReferences();
+		    			
 			
 			ExecutionTraceModel traceModel = (ExecutionTraceModel)traceResource.getContents().get(0);				
 			if (traceModel.getChoices().size() > 0) {
 				// link it to the trace model
 				ModelState modelState = GemocExecutionEngineTraceFactory.eINSTANCE.createModelState();					
-				traceResource.getContents().add(comparison);
-				modelState.setModel(comparison);
+				traceResource.getContents().add(result);
+				modelState.setModel(result);
 				
 				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();									
 				solverState.setSerializableModel(solver.getState());
@@ -200,7 +258,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 				traceModel.getChoices().get(traceModel.getChoices().size()-1).setContextState(contextState);
 			}
 			
-			saveResource(traceResource, traceFilePath);			
+//			saveResource(traceResource, traceFilePath);			
 		}
 	}
 
