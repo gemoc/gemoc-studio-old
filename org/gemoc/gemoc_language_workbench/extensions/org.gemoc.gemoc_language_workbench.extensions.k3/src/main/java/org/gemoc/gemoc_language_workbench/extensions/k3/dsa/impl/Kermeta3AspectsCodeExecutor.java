@@ -5,7 +5,8 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Properties;
 
@@ -133,8 +134,8 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 	 * 
 	 */
 	protected Class<?> getStaticHelperClass(Object target) {
-		String searchedAspectizedClassCanonicalName = getInterfaceClassOfEObjectOrClass(
-				target).getCanonicalName();
+		List<Class<?>> allPossibleInterfaces = getInterfacesClassOfEObjectOrClass(
+				target);
 
 		String searchedPropertyFileName = "/META-INF/xtend-gen/"
 				+ bundleSymbolicName + ".k3_aspect_mapping.properties";
@@ -156,8 +157,13 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 		try {
 			if (inputStream != null) {
 				properties.load(inputStream);
-				possibleStaticClassName = properties
-						.getProperty(searchedAspectizedClassCanonicalName);
+				for (int i = 0 ; i < allPossibleInterfaces.size() ; i++) {
+					possibleStaticClassName = properties
+						.getProperty(allPossibleInterfaces.get(i).getCanonicalName());
+					// Break so that the aspect is applied on the most precise type
+					if (possibleStaticClassName != null)
+						break ;
+				}
 			}
 		} catch (IOException e) {
 			// TODO report for debug that no mapping was found
@@ -187,7 +193,8 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 	 * @param o
 	 * @return
 	 */
-	public Class<?> getInterfaceClassOfEObjectOrClass(Object o) {
+	public List<Class<?>> getInterfacesClassOfEObjectOrClass(Object o) {
+		List<Class<?>> possibleInterfaces = new ArrayList<Class<?>>();
 		if (o instanceof EObject) {
 			/*
 			 * String targetClassCanonicalName =
@@ -204,21 +211,52 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 			 * searchedAspectizedClasPackageName
 			 * +"."+((EObject)o).eClass().getName();
 			 */
-			Class<?> interfaces[] = o.getClass().getInterfaces();
-			for (int i = 0; i < interfaces.length; i++) {
-				Class<?> interfac = interfaces[i];
+
+			// @author tdegueul
+			// Since aspects may target both base / extended metamodel classes
+			// we need to retrieve the complete hierarchy of possible applications
+			List<Class<?>> interfaces = getAllInterfaces(o.getClass());
+			for (int i = 0; i < interfaces.size(); i++) {
+				Class<?> interfac = interfaces.get(i);
 				if (interfac.getSimpleName().equals(
 						((EObject) o).eClass().getName())) {
-					return interfaces[i];
+					possibleInterfaces.add(interfac);
 				}
 			}
-			return o.getClass();
 
 		} else {
-			return o.getClass();
+			possibleInterfaces.add(o.getClass());
 		}
 
+		return possibleInterfaces;
+
 	}
+
+	// The two following methods are copied from org.apache.commons.lang.ClassUtils
+	public static List<Class<?>> getAllInterfaces(Class<?> cls) {
+        if (cls == null) {
+            return null;
+        }
+
+        LinkedHashSet<Class<?>> interfacesFound = new LinkedHashSet<Class<?>>();
+        getAllInterfaces(cls, interfacesFound);
+
+        return new ArrayList<Class<?>>(interfacesFound);
+    }
+
+    private static void getAllInterfaces(Class<?> cls, HashSet<Class<?>> interfacesFound) {
+        while (cls != null) {
+            Class<?>[] interfaces = cls.getInterfaces();
+
+            for (Class<?> i : interfaces) {
+                if (interfacesFound.add(i)) {
+                    getAllInterfaces(i, interfacesFound);
+                }
+            }
+
+            cls = cls.getSuperclass();
+         }
+     }
 
 	/**
 	 * Command that is able to execute the required method
