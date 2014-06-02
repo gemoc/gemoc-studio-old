@@ -109,8 +109,22 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 					&& evaluatedMethodParamTypes.length == parameters.size()) {
 				boolean isAllParamCompatible = true;
 				for (int i = 0; i < evaluatedMethodParamTypes.length; i++) {
-					if (!evaluatedMethodParamTypes[i].isInstance(parameters
-							.get(i))) {
+					Object p = parameters.get(i);
+					if (evaluatedMethodParamTypes[i].isPrimitive()) {
+						
+						if (evaluatedMethodParamTypes[i].equals(Integer.TYPE)
+							&& !Integer.class.isInstance(p)) {
+							isAllParamCompatible = false;
+							break;							
+						}
+						else if (evaluatedMethodParamTypes[i].equals(Boolean.TYPE)
+								&& !Boolean.class.isInstance(p)) {
+								isAllParamCompatible = false;
+								break;							
+						}
+						
+					} 
+					else if (!evaluatedMethodParamTypes[i].isInstance(p)) {
 						isAllParamCompatible = false;
 						break;
 					}

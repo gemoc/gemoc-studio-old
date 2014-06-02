@@ -42,6 +42,7 @@ import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
@@ -118,7 +119,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * Given at the language-level initialization.
 	 */
 	protected Solver solver = null;
-	protected EventExecutor executor = null;
+	protected EventExecutor _eventExecutor = null;
+	private CodeExecutor _codeExecutor = null;
 	protected FeedbackPolicy feedbackPolicy = null;
 	protected ILogicalStepDecider logicalStepDecider = null;
 
@@ -207,7 +209,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
-	public ObservableBasicExecutionEngine(Solver solver, EventExecutor executor, FeedbackPolicy feedbackPolicy, ILogicalStepDecider decider,
+	public ObservableBasicExecutionEngine(Solver solver, EventExecutor executor, CodeExecutor codeExecutor, FeedbackPolicy feedbackPolicy, ILogicalStepDecider decider,
 			ModelExecutionContext executionContext) {
 
 		// The engine needs AT LEAST a mocEventsResource,
@@ -239,8 +241,9 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			_executionContext = executionContext;
 
 			this.solver = solver;
-			this.executor = executor;
-			this.executor.initialize();
+			_codeExecutor = codeExecutor;
+			this._eventExecutor = executor;
+			this._eventExecutor.initialize();
 			this.logicalStepDecider = decider;
 			if (this.logicalStepDecider == null) {
 				if (solver instanceof CcslSolver) {
@@ -533,6 +536,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 				@Override
 				protected void doExecute() {
+					if (_lastChoice.getPossibleLogicalSteps().size() == 0)
+						return;
 					_lastChoice.setChosenLogicalStep(_lastChoice.getPossibleLogicalSteps().get(selectedLogicalStepIndex));
 				}
 			});
@@ -701,7 +706,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				@Override
 				protected void doExecute() {
 					try {
-						result.add(executor.execute(engineEventOccurence));
+						result.add(_eventExecutor.execute(engineEventOccurence));
 					} catch (EventExecutionException e) {
 						Activator.getMessagingSystem().error("Exception received " + e.getMessage(), Activator.PLUGIN_ID, e);
 					}
@@ -716,7 +721,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			res = (FeedbackData) command.getResult().iterator().next();
 		} else {
 			try {
-				res = executor.execute(engineEventOccurence);
+				res = _eventExecutor.execute(engineEventOccurence);
 			} catch (EventExecutionException e) { 
 				Activator.getMessagingSystem().error("Exception received " + e.getMessage(), Activator.PLUGIN_ID, e);
 			}
@@ -726,7 +731,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 	@Override
 	public String toString() {
-		return this.getClass().getName() + "@[Executor=" + this.executor + " ; Solver=" + this.solver + " ; ModelResource=" + this.modelUnderExecutionResource + "]";
+		return this.getClass().getName() + "@[Executor=" + this._eventExecutor + " ; Solver=" + this.solver + " ; ModelResource=" + this.modelUnderExecutionResource + "]";
 	}
 
 	/* Getters and Setters */
@@ -796,6 +801,11 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	@Override
 	public Solver getSolver() {
 		return solver;
+	}
+
+	@Override
+	public CodeExecutor getCodeExecutor() {
+		return _codeExecutor;
 	}
 
 }

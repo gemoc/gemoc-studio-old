@@ -3,6 +3,7 @@ package org.gemoc.gemoc_language_workbench.api.core;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.trace.LogicalStep;
@@ -89,5 +90,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	public Solver getSolver();
 
 	public void doLogicalStep(LogicalStep chosenLogicalStep);
+
+	public CodeExecutor getCodeExecutor();
 	
 }

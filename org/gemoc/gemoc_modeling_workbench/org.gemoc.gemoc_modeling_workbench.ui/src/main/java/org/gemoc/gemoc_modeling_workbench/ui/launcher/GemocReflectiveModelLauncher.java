@@ -41,6 +41,7 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -148,7 +149,8 @@ public class GemocReflectiveModelLauncher
 		// All these elements are required to construct the engine. They are
 		// retrieved from the Extension Points of the xDSML.
 		Solver solver = null;
-		EventExecutor executor = null;
+		EventExecutor eventExecutor = null;
+		CodeExecutor codeExecutor = null;
 		FeedbackPolicy feedbackPolicy = null;
 		Resource domainSpecificEventsResource = null;
 		ModelLoader modelLoader = null;
@@ -161,7 +163,8 @@ public class GemocReflectiveModelLauncher
 			debug("Starting to retrieve components from the configuration...");
 
 			solver = instanciateSolver(confElement);
-			executor = instanciateCodeExecutor(confElement);
+			eventExecutor = instanciateEventExecutor(confElement);
+			codeExecutor = instanciateCodeExecutor(confElement);
 
 			try {
 				feedbackPolicy = instanciateFeedbackPolicy(confElement);
@@ -251,7 +254,7 @@ public class GemocReflectiveModelLauncher
 		// Ugly calls to check if all the elements have been provided as
 		// required.
 		this.reactToNull(solver, "Solver");
-		this.reactToNull(executor, "Executor");
+		this.reactToNull(eventExecutor, "Executor");
 		this.reactToNull(feedbackPolicy, "Feedback Policy");
 		//this.reactToNull(domainSpecificEventsResource,
 		//		"Domain Specific Events Resource");
@@ -306,7 +309,7 @@ public class GemocReflectiveModelLauncher
 		backends.add(new ConsoleBackend());
 
 		// Create and initialize engine
-		engine = new ObservableBasicExecutionEngine(solver, executor, feedbackPolicy, decider, _executionContext);
+		engine = new ObservableBasicExecutionEngine(solver, eventExecutor, codeExecutor, feedbackPolicy, decider, _executionContext);
 		engine.setSiriusSession(_siriusSession);
 		TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
 		if (_siriusSession != null)
@@ -389,7 +392,7 @@ public class GemocReflectiveModelLauncher
 		return null;
 	}
 
-	private EventExecutor instanciateCodeExecutor(IConfigurationElement confElement) throws CoreException {
+	private EventExecutor instanciateEventExecutor(IConfigurationElement confElement) throws CoreException {
 		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT);
 		if (oexecutor instanceof EventExecutor) {
 			return(EventExecutor) oexecutor;
@@ -397,6 +400,14 @@ public class GemocReflectiveModelLauncher
 		return null;
 	}
 
+	private CodeExecutor instanciateCodeExecutor(IConfigurationElement confElement) throws CoreException {
+		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
+		if (oexecutor instanceof CodeExecutor) {
+			return(CodeExecutor) oexecutor;
+		}
+		return null;
+	}
+	
 	private Solver instanciateSolver(IConfigurationElement confElement) throws CoreException {
 		Object oSolver = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
 		if (oSolver instanceof Solver) {
