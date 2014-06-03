@@ -21,6 +21,7 @@ import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
+import org.gemoc.gemoc_commons.ui.WizardFinder;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
@@ -69,11 +70,7 @@ public class CreateDomainModelWizardContextAction {
 		
 		// "org.eclipse.emf.importer.ui.EMFProjectWizard" = create EMFProject from existing Ecore file
 		
-		IWizardDescriptor descriptor = PlatformUI
-				.getWorkbench()
-				.getNewWizardRegistry()
-				.findWizard(
-						"org.eclipse.ecoretools.emf.design.wizardID");
+		IWizardDescriptor descriptor = WizardFinder.findNewWizardDescriptor("org.eclipse.ecoretools.emf.design.wizardID");
 		
 		// Then if we have a wizard, open it.
 		if (descriptor != null) {

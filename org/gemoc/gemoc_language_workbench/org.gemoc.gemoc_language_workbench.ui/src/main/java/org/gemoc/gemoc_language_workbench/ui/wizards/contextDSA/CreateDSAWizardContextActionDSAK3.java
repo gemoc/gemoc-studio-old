@@ -9,6 +9,7 @@ import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
+import org.gemoc.gemoc_commons.ui.WizardFinder;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
@@ -26,11 +27,7 @@ public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextBas
 //	@Override
 	public void createNewDSAProject() {
 		// launch DSA Kermeta New wizard		
-		IWizardDescriptor descriptor = PlatformUI
-				.getWorkbench()
-				.getNewWizardRegistry()
-				.findWizard(
-						"fr.inria.diverse.k3.ui.wizards.WizardNewProjectK3Plugin");
+		IWizardDescriptor descriptor = WizardFinder.findNewWizardDescriptor("fr.inria.diverse.k3.ui.wizards.WizardNewProjectK3Plugin");
 		
 		// Then if we have a wizard, open it.
 			if(descriptor == null) Activator.error("failled to find wizard descriptor with id = fr.inria.diverse.k3.ui.wizards.WizardNewProjectK3Plugin", null);
@@ -82,11 +79,4 @@ public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextBas
 		}
 	}
 
-	protected void getEcoreFile(WizardNewProjectK3Plugin wizard) {
-		ActiveFile activeFileEcore = new ActiveFileEcore(_gemocLanguageIProject);
-		IFile ecoreFile = activeFileEcore.getActiveFile();
-		if (ecoreFile != null) {
-			wizard.getPageProject().setEcoreLoaded(ecoreFile);
-		}
-	}
 }

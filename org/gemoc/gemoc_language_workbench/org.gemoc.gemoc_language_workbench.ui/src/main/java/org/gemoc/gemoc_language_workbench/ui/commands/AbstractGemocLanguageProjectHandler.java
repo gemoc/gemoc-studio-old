@@ -43,8 +43,10 @@ public abstract class AbstractGemocLanguageProjectHandler extends AbstractHandle
 				if (updatedGemocLanguageProject == null) {
 
 					IResource res = (IResource) HandlerUtil
-							.getActiveWorkbenchWindow(event).getActivePage()
-							.getActiveEditor().getEditorInput()
+							.getActiveWorkbenchWindow(event)
+							.getActivePage()
+							.getActiveEditor()
+							.getEditorInput()
 							.getAdapter(IResource.class);
 					if (res != null) {
 						updatedGemocLanguageProject = res.getProject();

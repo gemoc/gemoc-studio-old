@@ -22,6 +22,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
+import org.gemoc.gemoc_commons.ui.WizardFinder;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
@@ -138,11 +139,7 @@ public class CreateEditorProjectWizardContextAction {
 		// wizard id = org.eclipse.xtext.xtext.ui.wizard.ecore2xtext.NewXtextProjectFromEcoreWizard
 		// launch the appropriate wizard
 					
-		IWizardDescriptor descriptor = PlatformUI
-				.getWorkbench()
-				.getNewWizardRegistry()
-				.findWizard(
-						"org.eclipse.xtext.xtext.ui.wizard.ecore2xtext.NewXtextProjectFromEcoreWizard");
+		IWizardDescriptor descriptor = WizardFinder.findNewWizardDescriptor("org.eclipse.xtext.xtext.ui.wizard.ecore2xtext.NewXtextProjectFromEcoreWizard");
 		// Then if we have a wizard, open it.
 		if (descriptor != null) {
 			// add a listener to capture the creation of the resulting project
@@ -185,10 +182,7 @@ public class CreateEditorProjectWizardContextAction {
 		}
 	}
 	protected void createNewODProject() {
-		final IWizardDescriptor descriptor = PlatformUI
-				.getWorkbench()
-				.getNewWizardRegistry()
-				.findWizard("org.eclipse.sirius.ui.specificationproject.wizard");
+		final IWizardDescriptor descriptor = WizardFinder.findNewWizardDescriptor("org.eclipse.sirius.ui.specificationproject.wizard");
 		// Then if we have a wizard, open it.
 		if (descriptor != null) {				
 			NewProjectWorkspaceListener workspaceListener = new NewProjectWorkspaceListener();
