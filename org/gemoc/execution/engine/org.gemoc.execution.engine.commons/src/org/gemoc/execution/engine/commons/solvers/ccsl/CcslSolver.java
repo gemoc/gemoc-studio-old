@@ -125,8 +125,8 @@ public abstract class CcslSolver implements
 			return res;
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while trying to get next Ccsl step";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 			return null;
 		}
 	}
@@ -177,16 +177,16 @@ public abstract class CcslSolver implements
 					new MaxCardSimulationPolicy());
 		} catch (IOException e) {
 			String errorMessage = "IOException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		} catch (UnfoldingException e) {
 			String errorMessage = "UnfoldingException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		}
 	}
 
@@ -194,16 +194,16 @@ public abstract class CcslSolver implements
 			URI solverInputURI) {
 		Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resourceSet);
 		if(unresolvedProxies.size() != 0){
-			Activator.warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
-			Activator.warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
+			Activator.getDefault().warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
+			Activator.getDefault().warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
 		}
 	}
 
 	private void traceResources(ResourceSet resourceSet) {
-		Activator.info("Input resources:");
+		Activator.getDefault().info("Input resources:");
 		for(Resource r : resourceSet.getResources()) 
 		{
-			Activator.info(r.getURI().toString());
+			Activator.getDefault().info(r.getURI().toString());
 		}
 	}
 
@@ -262,8 +262,8 @@ public abstract class CcslSolver implements
 
 		} catch (ClassCastException e) {
 			String errorMessage = "Couldn't cast MocEvent to ECLEvent";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		}
 		return null;
 	}
@@ -338,9 +338,9 @@ public abstract class CcslSolver implements
 			
 			return result;
 		} catch (NoBooleanSolution e) {
-			Activator.error(e.getMessage(), e);
+			Activator.getDefault().error(e.getMessage(), e);
 		} catch (SolverException e) {
-			Activator.error(e.getMessage(), e);
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 		return new ArrayList<LogicalStep>();
 	}
@@ -358,7 +358,7 @@ public abstract class CcslSolver implements
 			solverWrapper.getSolver().bddFromEnvironment.free();
 			solverWrapper.getSolver().bddFromEnvironment = solverWrapper.getSolver().getBddFactory().one();
 		} catch (SolverException e) {
-			Activator.error(e.getMessage(), e);
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 	}
 

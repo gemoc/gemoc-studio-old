@@ -224,18 +224,18 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				exceptionMessage.append(", eventExecutor is null, ");
 			}
 			String message = "Language definition is incomplete" + exceptionMessage; 
-			Activator.error(message);
+			Activator.getDefault().error(message);
 			throw new EngineNotCorrectlyInitialized(message);
 		} else {
-			Activator.info("\tSolver=" + solver);
-			Activator.info("\tExecutor=" + executor);
+			Activator.getDefault().info("\tSolver=" + solver);
+			Activator.getDefault().info("\tExecutor=" + executor);
 
 			if (feedbackPolicy == null) {
 				String msg = "FeedbackPolicy is null";
-				Activator.warn(msg, new NullPointerException(msg));
+				Activator.getDefault().warn(msg, new NullPointerException(msg));
 			} else {
 				this.feedbackPolicy = feedbackPolicy;
-				Activator.info("\tFeedbackPolicy=" + feedbackPolicy);
+				Activator.getDefault().info("\tFeedbackPolicy=" + feedbackPolicy);
 			}
 
 			_executionContext = executionContext;
@@ -247,7 +247,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			this.logicalStepDecider = decider;
 			if (this.logicalStepDecider == null) {
 				if (solver instanceof CcslSolver) {
-					Activator.warn("LogicalStepDecider not set,  using default SolverDecider");
+					Activator.getDefault().warn("LogicalStepDecider not set,  using default SolverDecider");
 					this.logicalStepDecider = new CcslSolverDecider((CcslSolver) solver);
 				} else {
 					throw new EngineNotCorrectlyInitialized("LogicalStepDecider not set and cannot use default CcslSolverDecider");
@@ -279,7 +279,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			}
 		});
 
-		Activator.info("*** Engine initialization done. ***");
+		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
 	
 	public void activateTrace() {
@@ -405,10 +405,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 						// select interactive vs batch
 						int selectedLogicalStepIndex;
 						if (possibleLogicalSteps.size() == 0) {
-							Activator.debug("No more LogicalStep to run");
+							Activator.getDefault().debug("No more LogicalStep to run");
 							terminated = true;
 						} else {
-							Activator.debug("\t\t ---------------- LogicalStep " + count);
+							Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
 							engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
 							if (hasCapability(ModelExecutionTracingCapability.class))
 								updateTraceModelBeforeDeciding(possibleLogicalSteps);
@@ -422,9 +422,9 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 										_lastChoice = _executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1);
 									else 
 										_lastChoice = null;
-									Activator.debug("Back to past happened --> let the engine ignoring current steps.");
+									Activator.getDefault().debug("Back to past happened --> let the engine ignoring current steps.");
 								} else {
-									Activator.debug("Engine cannot continue because decider did not decide anything.");
+									Activator.getDefault().debug("Engine cannot continue because decider did not decide anything.");
 									terminated = true;
 								}
 							} else {
@@ -463,7 +463,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 						engineStatus.incrementNbLogicalStepRun();
 
 					} catch (Throwable e) {
-						Activator.error("Exception received " + e.getMessage() + ", stopping engine.", e);
+						Activator.getDefault().error("Exception received " + e.getMessage() + ", stopping engine.", e);
 						terminated = true;
 					}
 				}
@@ -501,7 +501,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				allLastLogicalStepAreTheSame = allLastLogicalStepAreTheSame && areLogicalStepSimilar(logicalStep, logicalStepToApply);
 			}
 			if ((lastStepsRun.size() >= nbLastStepRunObservedForStopDetection) && allLastLogicalStepAreTheSame) {
-				Activator.debug("Detected " + nbLastStepRunObservedForStopDetection + " identical LogicalStep, stopping engine");
+				Activator.getDefault().debug("Detected " + nbLastStepRunObservedForStopDetection + " identical LogicalStep, stopping engine");
 				terminated = true;
 			}
 			// if queue is full, remove one
@@ -630,7 +630,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				if (event.getReferencedObjectRefs().get(1) instanceof EOperation) {
 					EObject targetModelElement = event.getReferencedObjectRefs().get(0);
 					EOperation targetOperation = (EOperation) event.getReferencedObjectRefs().get(1);
-					Activator.info("event occurence: target=" + targetModelElement.toString() + " operation=" + targetOperation.getName());
+					Activator.getDefault().info("event occurence: target=" + targetModelElement.toString() + " operation=" + targetOperation.getName());
 					// TODO verify that solver and engine work on the same
 					// resource ...
 
@@ -638,17 +638,17 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(targetModelElement, targetOperation);
 					engineEventOccurences.add(engineEventOccurence);
 				} else {
-					Activator.warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
+					Activator.getDefault().warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
 					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
 					engineEventOccurences.add(engineEventOccurence);
 				}
 			} else {
 				if (event.getReferencedObjectRefs().size() == 1) {
-					Activator.warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
+					Activator.getDefault().warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
 					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
 					engineEventOccurences.add(engineEventOccurence);
 				} else {
-					Activator.debug("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
+					Activator.getDefault().debug("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
 				}
 			}
 			// }
@@ -708,7 +708,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 					try {
 						result.add(_eventExecutor.execute(engineEventOccurence));
 					} catch (EventExecutionException e) {
-						Activator.error("Exception received " + e.getMessage(), e);
+						Activator.getDefault().error("Exception received " + e.getMessage(), e);
 					}
 				}
 
@@ -723,7 +723,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			try {
 				res = _eventExecutor.execute(engineEventOccurence);
 			} catch (EventExecutionException e) { 
-				Activator.error("Exception received " + e.getMessage(), e);
+				Activator.getDefault().error("Exception received " + e.getMessage(), e);
 			}
 		}
 		return res;

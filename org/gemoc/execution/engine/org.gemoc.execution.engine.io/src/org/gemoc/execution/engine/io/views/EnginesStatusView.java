@@ -574,7 +574,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 				}
 			}
 		} catch(Exception e){
-			Activator.eclipseError(e.getMessage(), e);
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 		return null;
 	}
@@ -607,7 +607,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			});
 			return lastSelectedLogicalStep;
 		} catch(Exception e){
-			Activator.eclipseError(e.getMessage(), e);
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 		return null;
 	}

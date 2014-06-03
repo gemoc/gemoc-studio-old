@@ -159,13 +159,13 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	byte[] _lastRestoredSolverState;
 	private void restoreSolverState(Choice choice) 
 	{
-		Activator.debug("restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
+		Activator.getDefault().debug("restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
 		_engine.getSolver().setState(choice.getContextState().getSolverState().getSerializableModel());
 		boolean b = Arrays.equals(_engine.getSolver().getState(), choice.getContextState().getSolverState().getSerializableModel());
 		if (b)
-			Activator.debug("new state does equal the restored state");
+			Activator.getDefault().debug("new state does equal the restored state");
 		else
-			Activator.debug("new state does NOT equal the restored state");
+			Activator.getDefault().debug("new state does NOT equal the restored state");
 	}
 
 //	private EList<EObject> loadModel(URI uri) throws IOException {
@@ -204,7 +204,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 				
 				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();									
 				solverState.setSerializableModel(solver.getState());
-				Activator.debug("step" + stepNumber + ", saving solver state: " 
+				Activator.getDefault().debug("step" + stepNumber + ", saving solver state: " 
 						 + solverState.getSerializableModel());
 				
 				ContextState contextState = GemocExecutionEngineTraceFactory.eINSTANCE.createContextState();

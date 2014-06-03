@@ -3,6 +3,8 @@ package org.gemoc.execution.engine.io;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.gemoc.gemoc_commons.logging.backends.DefaultLoggingBackend;
+import org.gemoc.gemoc_commons.pde.GemocUIPlugin;
 import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
@@ -10,7 +12,7 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class Activator extends GemocUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.gemoc.execution.engine.io"; //$NON-NLS-1$
@@ -34,6 +36,7 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		addLoggingBackend(new DefaultLoggingBackend(this));
 	}
 
 	
@@ -57,39 +60,42 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
-
 	
-	
-	protected static EclipseMessagingSystem messagingSystem = null;
+//	protected static EclipseMessagingSystem messagingSystem = null;
+//
+//	public static EclipseMessagingSystem getMessagingSystem() {
+//		if (messagingSystem == null) {
+//			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
+//					"GEMOC Execution Engine Input/Output");
+//			((EclipseMessagingSystem) messagingSystem)
+//					.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
+//		}
+//		return messagingSystem;
+//	}
+//	
+//	public static void eclipseWarn(String msg, Throwable e){
+//		Activator.getDefault().getLog().log(new Status(Status.WARNING, PLUGIN_ID,
+//                Status.OK, 
+//                msg, 
+//                e));
+//	}
+//	public static void eclipseError(String msg, Throwable e){
+//		Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID,
+//                Status.OK, 
+//                msg, 
+//                e));
+//	}
+//
+//	public static void info(String s) {
+//		if (PlatformUI.isWorkbenchRunning())
+//			getMessagingSystem().info(s, PLUGIN_ID);
+//		else
+//			System.out.println(PLUGIN_ID + " INFO: " + s);
+//	}
 
-	public static EclipseMessagingSystem getMessagingSystem() {
-		if (messagingSystem == null) {
-			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
-					"GEMOC Execution Engine Input/Output");
-			((EclipseMessagingSystem) messagingSystem)
-					.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
-		}
-		return messagingSystem;
-	}
-	
-	public static void eclipseWarn(String msg, Throwable e){
-		Activator.getDefault().getLog().log(new Status(Status.WARNING, PLUGIN_ID,
-                Status.OK, 
-                msg, 
-                e));
-	}
-	public static void eclipseError(String msg, Throwable e){
-		Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID,
-                Status.OK, 
-                msg, 
-                e));
-	}
-
-	public static void info(String s) {
-		if (PlatformUI.isWorkbenchRunning())
-			getMessagingSystem().info(s, PLUGIN_ID);
-		else
-			System.out.println(PLUGIN_ID + " INFO: " + s);
+	@Override
+	public String getPluginId() {
+		return PLUGIN_ID;
 	}
 	
 
