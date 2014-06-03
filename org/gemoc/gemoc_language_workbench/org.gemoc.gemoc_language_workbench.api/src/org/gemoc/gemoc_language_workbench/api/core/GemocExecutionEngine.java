@@ -89,8 +89,6 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 
 	public Solver getSolver();
 
-	public void doLogicalStep(LogicalStep chosenLogicalStep);
-
 	public CodeExecutor getCodeExecutor();
 	
 }

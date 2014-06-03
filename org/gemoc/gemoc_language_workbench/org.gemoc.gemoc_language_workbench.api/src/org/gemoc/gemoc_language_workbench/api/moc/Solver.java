@@ -121,7 +121,15 @@ public interface Solver {
 	public Map<String, MocEvent> createMocEventsRegistry(
 			Resource mocEventsResource);
 
+	/**
+	 * Gets the state of the solver at a given execution step.
+	 * @return
+	 */
 	public byte[] getState();
 
+	/**
+	 * Sets the state of the solver as it was at a given step.
+	 * @param serializableModel
+	 */
 	public void setState(byte[] serializableModel);
 }
