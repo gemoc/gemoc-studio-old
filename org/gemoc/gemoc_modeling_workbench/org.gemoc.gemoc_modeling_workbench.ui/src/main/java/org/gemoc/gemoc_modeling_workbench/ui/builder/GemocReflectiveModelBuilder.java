@@ -14,6 +14,7 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.gemoc.gemoc_commons.core.resources.Marker;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -90,13 +91,7 @@ public class GemocReflectiveModelBuilder extends IncrementalProjectBuilder {
 	private void addMarker(IFile file, String message, int lineNumber,
 			int severity) {
 		try {
-			IMarker marker = file.createMarker(MARKER_TYPE);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			marker.setAttribute(IMarker.SEVERITY, severity);
-			if (lineNumber == -1) {
-				lineNumber = 1;
-			}
-			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+			Marker.addMarker(file, MARKER_TYPE, message, lineNumber, severity);
 		} catch (CoreException e) {
 		}
 	}
@@ -203,12 +198,6 @@ public class GemocReflectiveModelBuilder extends IncrementalProjectBuilder {
 		}
 	}
 	*/
-	private void deleteMarkers(IFile file) {
-		try {
-			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
-		} catch (CoreException ce) {
-		}
-	}
 
 	protected void fullBuild(final IProgressMonitor monitor)
 			throws CoreException {

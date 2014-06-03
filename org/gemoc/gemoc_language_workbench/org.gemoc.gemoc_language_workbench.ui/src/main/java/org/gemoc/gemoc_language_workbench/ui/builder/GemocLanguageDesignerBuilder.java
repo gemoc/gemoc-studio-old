@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.gemoc.dse.ecl.moc2as.ui.builder.QVTOFileBuilder;
 import org.gemoc.gemoc_commons.core.resources.GFile;
+import org.gemoc.gemoc_commons.core.resources.Marker;
 import org.gemoc.gemoc_commons.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.conf.BuildOptions;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
@@ -131,13 +132,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
 	private void addMarker(IFile file, String message, int lineNumber, int severity) {
 		try {
-			IMarker marker = file.createMarker(MARKER_TYPE);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			marker.setAttribute(IMarker.SEVERITY, severity);
-			if (lineNumber == -1) {
-				lineNumber = 1;
-			}
-			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+			Marker.addMarker(file, MARKER_TYPE, message, lineNumber, severity);
 		} catch (CoreException e) {
 		}
 	}
