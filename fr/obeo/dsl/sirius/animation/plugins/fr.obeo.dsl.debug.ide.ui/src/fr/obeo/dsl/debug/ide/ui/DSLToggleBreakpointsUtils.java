@@ -125,7 +125,7 @@ public class DSLToggleBreakpointsUtils {
 				.getBreakpoints(identifier);
 		final URI instructionURI = EcoreUtil.getURI(instruction);
 		for (IBreakpoint breakpoint : breakpoints) {
-			if (breakpoint instanceof DSLBreakpoint
+			if (breakpoint instanceof DSLBreakpoint && ((DSLBreakpoint)breakpoint).getURI() != null
 					&& ((DSLBreakpoint)breakpoint).getURI().equals(instructionURI)) {
 				res = (DSLBreakpoint)breakpoint;
 				break;
