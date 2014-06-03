@@ -37,6 +37,7 @@ import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.io.backends.ConsoleBackend;
 import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
+import org.gemoc.execution.engine.io.frontends.PrepareViewFrontend;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
@@ -301,6 +302,7 @@ public class GemocReflectiveModelLauncher
 		// Frontend controlPanel = new ExampleGUIControlPanel();
 		// Frontend scenarioBuilder = new ExampleScenarioBuilder();
 		List<Frontend> frontends = new ArrayList<Frontend>();
+		frontends.add(new PrepareViewFrontend());
 		// frontends.add(controlPanel);
 		// frontends.add(scenarioBuilder);
 
