@@ -211,5 +211,28 @@
          </actionSet>
       </perspectiveExtension>
    </extension>
-
+   
+      <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.gemoc.modeling.menu.contribution">
+         <menu
+               icon="icons/IconeGemocModel-16.png"
+               id="org.gemoc.modeling.menu"
+               label="Gemoc"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Generate extended CCSL"
+               class="org.gemoc.gemoc_modeling_workbench.ui.actions.GenerateExtendedCCSLFile"
+               menubarPath="org.gemoc.modeling.menu/group1"
+               id="org.gemoc.modeling.generate.extendedccsl">
+         </action>
+      </objectContribution>
+   </extension>
+   
 </plugin>
