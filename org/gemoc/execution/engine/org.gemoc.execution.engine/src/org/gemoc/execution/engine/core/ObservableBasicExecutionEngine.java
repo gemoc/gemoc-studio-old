@@ -463,7 +463,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 						engineStatus.incrementNbLogicalStepRun();
 
 					} catch (Throwable e) {
-						Activator.getMessagingSystem().error("Exception received " + e.getMessage() + ", stopping engine.", Activator.PLUGIN_ID, e);
+						Activator.error("Exception received " + e.getMessage() + ", stopping engine.", e);
 						terminated = true;
 					}
 				}
@@ -708,7 +708,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 					try {
 						result.add(_eventExecutor.execute(engineEventOccurence));
 					} catch (EventExecutionException e) {
-						Activator.getMessagingSystem().error("Exception received " + e.getMessage(), Activator.PLUGIN_ID, e);
+						Activator.error("Exception received " + e.getMessage(), e);
 					}
 				}
 
@@ -723,7 +723,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			try {
 				res = _eventExecutor.execute(engineEventOccurence);
 			} catch (EventExecutionException e) { 
-				Activator.getMessagingSystem().error("Exception received " + e.getMessage(), Activator.PLUGIN_ID, e);
+				Activator.error("Exception received " + e.getMessage(), e);
 			}
 		}
 		return res;

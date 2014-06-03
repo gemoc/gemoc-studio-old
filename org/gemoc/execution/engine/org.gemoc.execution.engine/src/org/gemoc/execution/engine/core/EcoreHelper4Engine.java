@@ -63,42 +63,31 @@ public class EcoreHelper4Engine {
 			try {
 				EObject res = getEObjectFromQualifiedName(modelResource,
 						(((NamedReference) reference).getValue()));
-				Activator.getMessagingSystem().debug("Returning :" + res,
-						Activator.PLUGIN_ID);
+				Activator.debug("Returning :" + res);
 				return res;
 			} catch (SecurityException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage,
-						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			} catch (IllegalArgumentException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage,
-						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			} catch (NoSuchMethodException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage,
-						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			} catch (IllegalAccessException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage,
-						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			} catch (InvocationTargetException e) {
 				String errorMessage = e.getClass().getSimpleName()
 						+ " when trying to retrieve an EObject from the model from a NamedReference";
-				Activator.getMessagingSystem().error(errorMessage,
-						Activator.PLUGIN_ID);
 				Activator.error(errorMessage, e);
 				return null;
 			}
@@ -162,32 +151,22 @@ public class EcoreHelper4Engine {
 			}
 		} catch (SecurityException e) {
 			String errorMessage = "SecurityException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage,
-					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		} catch (IllegalArgumentException e) {
 			String errorMessage = "IllegalArgumentException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage,
-					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		} catch (NoSuchMethodException e) {
 			String errorMessage = "NoSuchMethodException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage,
-					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		} catch (IllegalAccessException e) {
 			String errorMessage = "IllegalAccessException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage,
-					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		} catch (InvocationTargetException e) {
 			String errorMessage = "InvocationTargetException when trying to get the qualified name of an object";
-			Activator.getMessagingSystem().error(errorMessage,
-					Activator.PLUGIN_ID);
 			Activator.error(errorMessage, e);
 			return null;
 		}
