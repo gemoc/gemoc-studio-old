@@ -18,6 +18,7 @@
 package fr.obeo.dsl.debug.ide;
 
 import fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory;
+import fr.obeo.dsl.debug.provider.DebugEditPlugin;
 
 import java.io.IOException;
 import java.net.URL;
@@ -304,8 +305,7 @@ public class DSLBreakpoint extends Breakpoint {
 			buffer.append(Base64.encode((new URL(((URI)image).toString())).toString().getBytes(UTF8)));
 			res = buffer.toString();
 		} else {
-			// FIXME : at least provide a working uri by default.
-			res = "";
+			res = toAttribute(DebugEditPlugin.INSTANCE.getImage("full/obj16/Breakpoint"));
 		}
 
 		return res;
