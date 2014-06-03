@@ -5,7 +5,6 @@ import org.eclipse.core.resources.IProject;
 
 public abstract class ActiveFile {
 
-	//getFirstEcoreFile(getEcoreProject()).getLocation().toOSString()
 	IProject gemocLanguageProject;
 	
 	public ActiveFile(IProject gemocLanguageProject){
