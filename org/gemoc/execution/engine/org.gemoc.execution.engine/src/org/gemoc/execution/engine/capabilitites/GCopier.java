@@ -20,7 +20,7 @@ import com.google.common.collect.LinkedListMultimap;
  * @author ftanguy
  *
  */
-public class GCopier extends Copier {
+class GCopier extends Copier {
 
 	@Override
 	protected void copyAttribute(EAttribute eAttribute, EObject eObject, EObject copyEObject) {

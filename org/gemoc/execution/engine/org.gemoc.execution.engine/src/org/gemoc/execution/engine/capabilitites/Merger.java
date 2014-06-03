@@ -5,7 +5,7 @@ import org.eclipse.emf.compare.Diff;
 import org.eclipse.emf.compare.merge.AbstractMerger;
 import org.eclipse.emf.compare.rcp.EMFCompareRCPPlugin;
 
-public class Merger extends AbstractMerger {
+class Merger extends AbstractMerger {
 
 	public Merger() 
 	{
