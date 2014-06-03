@@ -57,26 +57,13 @@ public abstract class CcslSolver implements
 
 	private CCSLKernelSolverWrapper solverWrapper = null;
 	private URI solverInputURI = null;
-	// private SolverInputBuilder solverInputBuilder;
 	private LogicalStep lastLogicalStep = null;
 	private Map<Event, ModelElementReference> mappingEventToOriginalMer = null;
 
-	protected String extentedCCSL_qvto_transformationPath; // "/org.gemoc.sample.tfsm/qvto-gen/tfsm_toCCSL.qvto";
 	
-	
-	public CcslSolver(String extentedCCSL_qvto_transformationPath) {
-		//this.solverInputBuilder = new EclToCcslTranslator();
-		this.extentedCCSL_qvto_transformationPath = extentedCCSL_qvto_transformationPath;
+	public CcslSolver() {
 		this.mappingEventToOriginalMer = new HashMap<Event, ModelElementReference>();
 	}
-
-//	public SolverInputBuilder getSolverInputBuilder() {
-//		return this.solverInputBuilder;
-//	}
-//
-//	public void setSolverInputBuilder(SolverInputBuilder solverInputBuilder) {
-//		this.solverInputBuilder = solverInputBuilder;
-//	}
 
 	@Override
 	public void forbidEventOccurrence(EventOccurrence eventOccurrence) {
@@ -125,13 +112,10 @@ public abstract class CcslSolver implements
 			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {
 				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
 				if (c != null) {
-					ModelElementReference mer = (ModelElementReference) eventOccurrence
-							.getReferedElement();
 					// We memorize the reference to the Clock (3 EObjects : file
 					// / block / clock) so it can be retrieved later on.
 					mappingEventToOriginalMer.put(c.getTickingEvent(),
-							(ModelElementReference) eventOccurrence
-									.getReferedElement());
+												(ModelElementReference) eventOccurrence.getReferedElement());
 					// Instead we place the ECL Event
 					eventOccurrence.setReferedElement(HelperFactory
 							.createModelElementReference(c.getTickingEvent()));
@@ -180,22 +164,11 @@ public abstract class CcslSolver implements
 	public void setSolverInputFile(ResourceSet resourceSet, URI solverInputURI) {
 		this.solverInputURI = solverInputURI;
 		try {
-			Resource ccslResource = resourceSet.getResource(
-					this.solverInputURI, true);
+			Resource ccslResource = resourceSet.getResource(this.solverInputURI, true);
 			ccslResource.load(null);
 			EcoreUtil.resolveAll(resourceSet);
-
-			Activator.info("Input resources:");
-			for(Resource r : resourceSet.getResources()) 
-			{
-				Activator.info(r.getURI().toString());
-			}
-			
-			Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resourceSet);
-			if(unresolvedProxies.size() != 0){
-				Activator.warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
-				Activator.warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
-			}			
+			traceResources(resourceSet);
+			traceUnresolvedProxies(resourceSet, solverInputURI);			
 			
 			this.solverWrapper = new CCSLKernelSolverWrapper();
 			this.solverWrapper.getSolver().loadModel(ccslResource);
@@ -214,6 +187,23 @@ public abstract class CcslSolver implements
 			String errorMessage = "SolverException while instantiating the CcslSolver";
 			Activator.error(errorMessage);
 			Activator.error(errorMessage, e);
+		}
+	}
+
+	private void traceUnresolvedProxies(ResourceSet resourceSet,
+			URI solverInputURI) {
+		Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resourceSet);
+		if(unresolvedProxies.size() != 0){
+			Activator.warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
+			Activator.warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
+		}
+	}
+
+	private void traceResources(ResourceSet resourceSet) {
+		Activator.info("Input resources:");
+		for(Resource r : resourceSet.getResources()) 
+		{
+			Activator.info(r.getURI().toString());
 		}
 	}
 
@@ -371,18 +361,6 @@ public abstract class CcslSolver implements
 			Activator.error(e.getMessage(), e);
 		}
 	}
-
-	
-	
-	public String getExtentedCCSL_qvto_transformationPath() {
-		return extentedCCSL_qvto_transformationPath;
-	}
-
-	public void setExtentedCCSL_qvto_transformationPath(
-			String extentedCCSL_qvto_transformationPath) {
-		this.extentedCCSL_qvto_transformationPath = extentedCCSL_qvto_transformationPath;
-	}
-	
 
 	@Override
 	public byte[] getState() {

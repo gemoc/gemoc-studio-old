@@ -223,9 +223,9 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			if (executor == null) {
 				exceptionMessage.append(", eventExecutor is null, ");
 			}
-			Activator.error("Language definition is incomplete" + exceptionMessage);
-
-			throw new EngineNotCorrectlyInitialized("Language definition is incomplete" + exceptionMessage);
+			String message = "Language definition is incomplete" + exceptionMessage; 
+			Activator.error(message);
+			throw new EngineNotCorrectlyInitialized(message);
 		} else {
 			Activator.info("\tSolver=" + solver);
 			Activator.info("\tExecutor=" + executor);

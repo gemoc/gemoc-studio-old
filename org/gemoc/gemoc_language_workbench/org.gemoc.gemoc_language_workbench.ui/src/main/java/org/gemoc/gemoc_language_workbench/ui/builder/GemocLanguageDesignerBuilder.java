@@ -642,7 +642,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			String fileContent = BuilderTemplates.SOLVER_CLASS_TEMPLATE;
 			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
 			fileContent = fileContent.replaceAll(Pattern.quote("${language.name.toupperfirst}"), languageToUpperFirst);
-			fileContent = fileContent.replaceAll(Pattern.quote("${constructor.content}"), "super(null);");						
+			fileContent = fileContent.replaceAll(Pattern.quote("${constructor.content}"), "super();");						
 			IFile file = project
 					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
 							+ folderName + "/" + languageToUpperFirst
