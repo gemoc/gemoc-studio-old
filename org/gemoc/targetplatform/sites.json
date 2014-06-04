@@ -81,9 +81,6 @@
     "gemoc-mocc": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.mocc.root/lastSuccessfulBuild/artifact/org/gemoc/MoCC/releng/org.gemoc.mocc.p2updatesite/target/repository/"
         ],
-    "gemoc-exec-engine-model": [
-        "https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine_model.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine_model/org.gemoc.engine_model.p2updatesite/target/repository"
-        ],
     "kermeta3": [
 	"https://ci.inria.fr/k3al/job/k3.eclipse/lastSuccessfulBuild/artifact/k3.eclipse/fr.inria.diverse.k3.p2updatesite/target/site/"
         ],

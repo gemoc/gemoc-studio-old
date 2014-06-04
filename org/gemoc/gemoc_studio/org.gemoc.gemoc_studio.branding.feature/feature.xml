@@ -26,7 +26,6 @@
       <import feature="org.gemoc.gemoc_language_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_modeling_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.execution.timesquare.facilities.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.execution.engine.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_commons.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
