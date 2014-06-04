@@ -1,14 +1,5 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
-import glml.DomainSpecificEvent;
-import gepl.MocEvent;
-import glml.ModelSpecificEvent;
-
-import java.util.Collection;
-import java.util.Map;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 
 /** Part of the ExecutionEngine API that  allows the
 * caller to influence the constraints of the MoC at runtime.

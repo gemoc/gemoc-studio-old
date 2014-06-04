@@ -11,7 +11,9 @@ Require-Bundle: org.eclipse.ui,
  org.kermeta.utils.systemservices.api,
  org.kermeta.utils.systemservices.eclipse,
  org.gemoc.gemoc_commons.eclipse_utils;bundle-version="1.0.0",
- org.gemoc.execution.engine.trace.model;bundle-version="0.1.0"
+ org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
+ org.eclipse.xtext.util
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.execution.engine.io,
