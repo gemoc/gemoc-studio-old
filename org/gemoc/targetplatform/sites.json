@@ -11,8 +11,8 @@
         "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones",
         "http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones",
         "http://download.eclipse.org/tools/gef/updates/milestones",
-	"http://download.eclipse.org/modeling/emf/validation/updates/milestones",
-	"http://download.eclipse.org/modeling/emf/transaction/updates/milestones",
+		"http://download.eclipse.org/modeling/emf/validation/updates/milestones",
+		"http://download.eclipse.org/modeling/emf/transaction/updates/milestones",
         "http://download.eclipse.org/modeling/emf/query/updates/milestones",
         "http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.1/S201401220957",
         "http://download.eclipse.org/mmt/qvto/updates/releases/3.3.0"
@@ -75,6 +75,9 @@
     "gemoc-exec-engine": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository"
         ],
+    "gemoc-exec-engine-model": [
+        "https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine_model.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine_model/org.gemoc.engine_model.p2updatesite/target/repository"
+        ],
     "gemoc-dse": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.dse.root/lastSuccessfulBuild/artifact/org/gemoc/dse/org.gemoc.dse.p2updatesite/target/repository/"
         ],
@@ -82,7 +85,7 @@
         "https://ci.inria.fr/gemoc/job/org.gemoc.mocc.root/lastSuccessfulBuild/artifact/org/gemoc/MoCC/releng/org.gemoc.mocc.p2updatesite/target/repository/"
         ],
     "kermeta3": [
-	"https://ci.inria.fr/k3al/job/k3.eclipse/lastSuccessfulBuild/artifact/k3.eclipse/fr.inria.diverse.k3.p2updatesite/target/site/"
+		"https://ci.inria.fr/k3al/job/k3.eclipse/lastSuccessfulBuild/artifact/k3.eclipse/fr.inria.diverse.k3.p2updatesite/target/site/"
         ],
     "devtools": [
         "http://download.scala-ide.org/sdk/helium/e38/scala210/stable/site",
