@@ -75,12 +75,6 @@
     "gemoc-exec-engine": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository"
         ],
-    "gemoc-exec-engine-model": [
-        "https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine_model.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine_model/org.gemoc.engine_model.p2updatesite/target/repository"
-        ],
-    "gemoc-dse": [
-        "https://ci.inria.fr/gemoc/job/org.gemoc.dse.root/lastSuccessfulBuild/artifact/org/gemoc/dse/org.gemoc.dse.p2updatesite/target/repository/"
-        ],
     "gemoc-mocc": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.mocc.root/lastSuccessfulBuild/artifact/org/gemoc/MoCC/releng/org.gemoc.mocc.p2updatesite/target/repository/"
         ],
