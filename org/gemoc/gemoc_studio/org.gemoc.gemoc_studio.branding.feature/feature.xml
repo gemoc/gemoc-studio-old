@@ -31,7 +31,6 @@
       <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.dse.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.supelec.gemoc.contrib.feature_modhelx" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.supelec.gemoc.contrib.feature_tesl" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.supelec.gemoc.contrib.feature_tesllang" version="0.0.0" match="greaterOrEqual"/>
