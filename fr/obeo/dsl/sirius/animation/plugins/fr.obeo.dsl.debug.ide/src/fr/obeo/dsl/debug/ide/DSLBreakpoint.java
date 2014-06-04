@@ -18,6 +18,7 @@
 package fr.obeo.dsl.debug.ide;
 
 import fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory;
+import fr.obeo.dsl.debug.provider.DebugEditPlugin;
 
 import java.io.IOException;
 import java.net.URL;
@@ -192,7 +193,10 @@ public class DSLBreakpoint extends Breakpoint {
 		super.setMarker(marker);
 		try {
 			identifier = (String)getMarker().getAttribute(IBreakpoint.ID);
-			instructionUri = URI.createURI((String)getMarker().getAttribute(EValidator.URI_ATTRIBUTE), true);
+			String attribute = (String)getMarker().getAttribute(EValidator.URI_ATTRIBUTE);
+			if (attribute != null) {
+				instructionUri = URI.createURI(attribute, true);
+			}
 		} catch (CoreException e) {
 			Activator.getDefault().error(e);
 		}
@@ -241,7 +245,7 @@ public class DSLBreakpoint extends Breakpoint {
 		Object res = null;
 		try {
 			final String attribute = (String)getMarker().getAttribute(IMAGE_ATTRIBUTE);
-			if (attribute != null) {
+			if (attribute != null && attribute.length() > 0) {
 				res = fromAttribute(attribute);
 			}
 		} catch (IOException e) {
@@ -297,8 +301,11 @@ public class DSLBreakpoint extends Breakpoint {
 		} else if (image instanceof URL) {
 			buffer.append(Base64.encode(((URL)image).toString().getBytes(UTF8)));
 			res = buffer.toString();
+		} else if (image instanceof URI) {
+			buffer.append(Base64.encode((new URL(((URI)image).toString())).toString().getBytes(UTF8)));
+			res = buffer.toString();
 		} else {
-			res = "";
+			res = toAttribute(DebugEditPlugin.INSTANCE.getImage("full/obj16/Breakpoint"));
 		}
 
 		return res;
