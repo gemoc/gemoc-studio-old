@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.gemoc.gemoc_language_workbench.conf.presentation.gemoc_language_workbench_confEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.gemoc_language_workbench.conf.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,

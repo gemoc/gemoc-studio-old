@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.trace.gemoc_execution_trace,
  org.gemoc.execution.engine.trace.gemoc_execution_trace.impl,
  org.gemoc.execution.engine.trace.gemoc_execution_trace.util

@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.gemoc.execution.engine.trace.gemoc_execution_trace.provider.GemocExecutionEngineTraceEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.trace.gemoc_execution_trace.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.execution.engine.trace.model;visibility:=reexport,

@@ -33,7 +33,7 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.javabdd.runtime;bundle-version="1.2.0",
  org.gemoc.gemoc_commons.eclipse_utils
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.commons,
  org.gemoc.execution.engine.commons.deciders,
  org.gemoc.execution.engine.commons.dsa,
