@@ -49,6 +49,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
+import org.gemoc.workbench.modeling.LanguageFinder;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
@@ -145,7 +146,7 @@ public class GemocReflectiveModelLauncher
 //						GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 //						"");
 
-		IConfigurationElement confElement = getLanguageExtension();
+		IConfigurationElement confElement = LanguageFinder.findDefinition(getLanguageName());
 
 		// All these elements are required to construct the engine. They are
 		// retrieved from the Extension Points of the xDSML.
@@ -153,9 +154,7 @@ public class GemocReflectiveModelLauncher
 		EventExecutor eventExecutor = null;
 		CodeExecutor codeExecutor = null;
 		FeedbackPolicy feedbackPolicy = null;
-		Resource domainSpecificEventsResource = null;
 		ModelLoader modelLoader = null;
-		Resource mocEventsResource = null;
 		
 		Set<IEngineHook> engineHooks = retrieveEngineHooks(confElement); 
 
@@ -416,18 +415,6 @@ public class GemocReflectiveModelLauncher
 			return (Solver) oSolver;
 		}
 		return null;
-	}
-
-	private IConfigurationElement getLanguageExtension() throws InvalidRegistryObjectException, CoreException {
-		IConfigurationElement confElement = null;
-		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
-		// retrieve the extension for the chosen language
-		for (int i = 0; i < confElements.length; i++) {
-			if (confElements[i].getAttribute("name").equals(getLanguageName())) {
-				confElement = confElements[i];
-			}
-		}
-		return confElement;
 	}
 
 	private void debug(String message) {

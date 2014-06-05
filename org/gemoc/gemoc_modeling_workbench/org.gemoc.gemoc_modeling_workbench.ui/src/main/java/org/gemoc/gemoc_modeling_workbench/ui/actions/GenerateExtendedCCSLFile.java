@@ -3,24 +3,23 @@ package org.gemoc.gemoc_modeling_workbench.ui.actions;
 import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
+import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
+import org.gemoc.workbench.modeling.LanguageFinder;
 
 public class GenerateExtendedCCSLFile implements IObjectActionDelegate {
 
 	private IFile modelFile=null;
 	private String qvtoUriString;
 	private String modelUriString;
-	private ModelLoader modelLoader;
 	/**
 	 * Constructor for Action1.
 	 */
@@ -47,34 +46,25 @@ public class GenerateExtendedCCSLFile implements IObjectActionDelegate {
 			return;
 		}
 		
-		// [FT] Why look for the extension and instanciate the model loader???
 		//use the extension of the model file
 		String languageName = modelUriString.substring(modelUriString.lastIndexOf('.')+1, modelUriString.length());
+				
+		IConfigurationElement confElement = LanguageFinder.findDefinition(languageName);
 		
-		IConfigurationElement confElement = null;
-		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor("org.gemoc.gemoc_language_workbench.xdsml");
-		// retrieve the extension for the chosen language
-		for (int i = 0; i < confElements.length; i++) {
-			if(confElements[i].getAttribute("name").equals(languageName)){
-				confElement =confElements[i];
-			}
-		}
-		
-		// get the extension objects
-		if(confElement != null){
-			Object omodelLoader=null;
-			try {
-				omodelLoader = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
-			} catch (CoreException e) {
-				e.printStackTrace();
-			}
-			if(omodelLoader instanceof ModelLoader){
-				this.modelLoader = (ModelLoader) omodelLoader;
-			}
-			
+		if (confElement == null)
+		{
+			MessageDialog dialog = new MessageDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), 
+													"No language found",
+													null,
+													"No language found for file extension " + languageName + ".",
+													MessageDialog.ERROR,
+													new String[0],
+													-1);
+			dialog.open();
+		} else {
 			//get the Qvto file
 			qvtoUriString = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
-			doQvToTransfo();
+			doQvToTransfo();			
 		}
 		return;
 	}
