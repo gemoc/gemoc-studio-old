@@ -27,7 +27,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.gemoc.gemoc_commons.core.resources.Marker;
+import org.gemoc.commons.eclipse.core.resources.Marker;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;

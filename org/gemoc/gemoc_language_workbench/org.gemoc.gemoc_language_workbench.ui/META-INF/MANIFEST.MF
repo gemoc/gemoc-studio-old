@@ -26,7 +26,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecoretools.design;bundle-version="2.0.0",
  fr.cnrs.luchogie.toools;bundle-version="1.0.0",
  org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0",
- org.gemoc.gemoc_commons.eclipse_utils,
+ org.gemoc.commons.eclipse,
  org.eclipse.equinox.registry,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

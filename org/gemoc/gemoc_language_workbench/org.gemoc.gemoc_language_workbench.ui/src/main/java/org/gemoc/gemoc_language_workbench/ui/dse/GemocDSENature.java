@@ -1,7 +1,7 @@
 package org.gemoc.gemoc_language_workbench.ui.dse;
 
 import org.eclipse.core.runtime.CoreException;
-import org.gemoc.gemoc_commons.core.resources.AbstractProjectNature;
+import org.gemoc.commons.eclipse.core.resources.AbstractProjectNature;
 
 public class GemocDSENature extends AbstractProjectNature {
 
