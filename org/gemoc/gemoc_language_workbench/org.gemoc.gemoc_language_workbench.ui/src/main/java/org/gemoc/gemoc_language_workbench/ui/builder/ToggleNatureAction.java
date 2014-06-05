@@ -32,7 +32,7 @@ import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.commons.eclipse.core.resources.Project;
-import org.gemoc.gemoc_commons.pde.ManifestChanger;
+import org.gemoc.commons.eclipse.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
