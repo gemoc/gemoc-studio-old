@@ -11,9 +11,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.gemoc.gemoc_commons.resource.merging.ActionContext;
-import org.gemoc.gemoc_commons.resource.merging.IBeforeSavingAction;
-import org.gemoc.gemoc_commons.resource.merging.ResourcesMergerScript;
+import org.gemoc.commons.eclipse.resource.merging.ActionContext;
+import org.gemoc.commons.eclipse.resource.merging.IBeforeSavingAction;
+import org.gemoc.commons.eclipse.resource.merging.ResourcesMergerScript;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 

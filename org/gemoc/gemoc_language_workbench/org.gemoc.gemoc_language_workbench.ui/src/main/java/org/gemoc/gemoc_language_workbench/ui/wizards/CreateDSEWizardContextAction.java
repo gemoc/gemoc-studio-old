@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_commons.core.resources.Project;
+import org.gemoc.commons.eclipse.core.resources.Project;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
 import org.gemoc.gemoc_language_workbench.conf.ECLProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;

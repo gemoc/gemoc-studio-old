@@ -28,7 +28,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.ui;bundle-version="1.0.0",
  org.eclipse.emf.transaction;bundle-version="1.4.0",
  org.eclipse.sirius.common;bundle-version="1.0.0",
- org.gemoc.gemoc_commons.eclipse_utils,
+ org.gemoc.commons.eclipse,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
