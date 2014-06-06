@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.utils.emf;
+package org.gemoc.commons.eclipse.emf;
 
 import org.eclipse.emf.ecore.EObject;
 
