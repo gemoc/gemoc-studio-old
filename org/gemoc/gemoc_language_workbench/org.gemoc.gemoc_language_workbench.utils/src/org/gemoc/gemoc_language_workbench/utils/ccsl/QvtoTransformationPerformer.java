@@ -43,8 +43,8 @@ public class QvtoTransformationPerformer {
 	}
 	
 	public String run(String transformationPath, String modelPath, String outputPath) {		
-	    URI transformationURI = URI.createPlatformPluginURI(transformationPath, false);
-	    URI modelURI = URI.createPlatformResourceURI(modelPath, false);
+	    URI transformationURI = URI.createURI(transformationPath, true);
+	    URI modelURI = URI.createURI(modelPath, true);
 		IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(modelURI);
 		initializeXtext();
 	    //model resource
@@ -72,7 +72,7 @@ public class QvtoTransformationPerformer {
 		System.out.println(diagnostic);
 		//output resource saving
 	    
-	    URI outputUri = URI.createPlatformResourceURI(outputPath, false);
+	    URI outputUri = URI.createURI(outputPath, true);
 	    Resource outputResource = null;
 	    try{
 	    	outputResource = outputResourceSet.createResource(outputUri);

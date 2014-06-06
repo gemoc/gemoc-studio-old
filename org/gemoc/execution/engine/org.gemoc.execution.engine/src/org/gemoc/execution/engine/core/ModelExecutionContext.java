@@ -155,7 +155,10 @@ public class ModelExecutionContext {
 	public void generateMoC(String transformationPath) {
 		if (!ResourcesPlugin.getWorkspace().getRoot().getFile(getMoCPath()).exists()) {
 			QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
-			performer.run(transformationPath, getModelPath().toString(), getMoCPath().toString());			
+			performer.run(
+						"platform:/plugin" + transformationPath, 
+						"platform:/resource" + getModelPath().toString(), 
+						"platform:/resource" + getMoCPath().toString());			
 		}		
 	}
 	

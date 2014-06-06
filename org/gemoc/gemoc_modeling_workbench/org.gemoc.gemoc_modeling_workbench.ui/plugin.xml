@@ -184,10 +184,16 @@
             </separator>
          </menu>
          <action
-               label="Generate extended CCSL"
+               label="Generate extended CCSL (use language specified QVTO)"
                class="org.gemoc.gemoc_modeling_workbench.ui.actions.GenerateExtendedCCSLFile"
                menubarPath="org.gemoc.modeling.menu/group1"
                id="org.gemoc.modeling.generate.extendedccsl">
+         </action>
+         <action
+               class="org.gemoc.gemoc_modeling_workbench.ui.actions.ChooseQVTOAndGenerateExtendedCCSLFile"
+               id="org.gemoc.modeling.generate.extendedccsl2"
+               label="Generate extended CCSL (choose QVTO)"
+               menubarPath="org.gemoc.modeling.menu/group1">
          </action>
       </objectContribution>
    </extension>
