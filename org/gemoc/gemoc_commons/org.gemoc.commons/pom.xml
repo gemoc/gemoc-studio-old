@@ -9,7 +9,7 @@
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>org.gemoc.execution.engine.trace.model.editor</artifactId>
+  <artifactId>org.gemoc.commons</artifactId>
   <packaging>eclipse-plugin</packaging>
   <version>0.1.0-SNAPSHOT</version>
 </project>
