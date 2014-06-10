@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide;bundle-version="3.9.2",
  org.eclipse.emf.ecore,
  org.kermeta.utils.systemservices.api;bundle-version="2.1.1",
- org.gemoc.commons;bundle-version="0.0.1";visibility:=reexport
+ org.gemoc.commons;bundle-version="0.1.0";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.commons.eclipse.core.resources,
