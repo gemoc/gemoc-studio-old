@@ -19,8 +19,8 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.xtend.sdk" version="2.5.4" match="equivalent"/>
+      <import feature="org.eclipse.xtext.sdk" version="2.5.4" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtend.sdk" version="2.5.4" match="greaterOrEqual"/>
       <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.ecoretools.design" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_language_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
