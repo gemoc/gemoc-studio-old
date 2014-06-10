@@ -64,7 +64,7 @@
         "https://ci.inria.fr/gemoc/job/org.gemoc.execution.timesquare.facilities.root/lastSuccessfulBuild/artifact/org/gemoc/execution/TimeSquare/facilities/org.gemoc.execution.timesquare.facilities.p2updatesite/target/repository/"
         ],
     "gemoc-commons": [
-        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.gemoc_commons.p2updatesite/target/repository/"
+        "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.commons.p2updatesite/target/repository/"
         ],
     "gemoc-language-workbench": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository"
