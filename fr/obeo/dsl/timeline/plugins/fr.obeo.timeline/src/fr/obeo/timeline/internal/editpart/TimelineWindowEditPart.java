@@ -156,34 +156,35 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 	@SuppressWarnings("unchecked")
 	@Override
 	public synchronized void startChanged(int start) {
-		refresh();
-		for (EditPart child : (List<EditPart>)getChildren()) {
-			if (child instanceof TicEditPart) {
-				child.refresh();
-				for (EditPart grandchild : (List<EditPart>)child.getChildren()) {
-					if (grandchild instanceof ChoiceEditPart
-							&& ((ChoiceEditPart)grandchild).getModel().isSelected()) {
-						grandchild.refresh();
-					}
-				}
-			}
-		}
+		deepRefresh();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public synchronized void lengthChanged(int length) {
-		refresh();
-		for (EditPart child : (List<EditPart>)getChildren()) {
-			if (child instanceof TicEditPart) {
-				child.refresh();
-				for (EditPart grandchild : (List<EditPart>)child.getChildren()) {
-					if (grandchild instanceof ChoiceEditPart
-							&& ((ChoiceEditPart)grandchild).getModel().isSelected()) {
-						grandchild.refresh();
+		deepRefresh();
+	}
+
+	/**
+	 * Refresh {@link EditPart} in depth.
+	 */
+	@SuppressWarnings("unchecked")
+	private void deepRefresh() {
+		try {
+			refresh();
+			for (EditPart child : (List<EditPart>)getChildren()) {
+				if (child instanceof TicEditPart) {
+					child.refresh();
+					for (EditPart grandchild : (List<EditPart>)child.getChildren()) {
+						if (grandchild instanceof ChoiceEditPart
+								&& ((ChoiceEditPart)grandchild).getModel().isSelected()) {
+							grandchild.refresh();
+						}
 					}
 				}
 			}
+		} catch (IllegalArgumentException e) {
+			// for some reason during a refresh an EditPart can be removed from its containing EditPart then
+			// refreshed... causing an IllegalArgumentException
 		}
 	}
 
