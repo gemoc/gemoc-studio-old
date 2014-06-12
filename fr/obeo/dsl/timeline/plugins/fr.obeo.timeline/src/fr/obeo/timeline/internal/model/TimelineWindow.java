@@ -33,7 +33,7 @@ public class TimelineWindow implements ITimelineListener {
 	/**
 	 * The {@link ITimelineProvider} used to populate the model.
 	 */
-	private final ITimelineProvider provider;
+	private ITimelineProvider provider;
 
 	/**
 	 * The {@link List} of {@link ITimelineListener} to notify.
@@ -82,7 +82,8 @@ public class TimelineWindow implements ITimelineListener {
 	public List<Tic> getTics() {
 		final List<Tic> res = new ArrayList<Tic>();
 
-		for (int i = getStart(); i < Math.min(getStart() + getLength(), getProvider().getNumberOfTicks()); ++i) {
+		final int end = Math.min(getStart() + getLength(), getProvider().getNumberOfTicks());
+		for (int i = getStart(); i < end; ++i) {
 			res.add(new Tic(this, i));
 		}
 
@@ -96,8 +97,10 @@ public class TimelineWindow implements ITimelineListener {
 	 */
 	public int getMaxConnectionIndex() {
 		if (maxConnectionIndex < 0) {
-			for (int tic = 0; tic < Math.min(getEnd(), getProvider().getNumberOfTicks()); ++tic) {
-				for (int choice = 0; choice < getProvider().getNumberOfchoicesAt(tic); ++choice) {
+			final int end = Math.min(getEnd(), getProvider().getNumberOfTicks());
+			for (int tic = 0; tic < end; ++tic) {
+				final int numberOfchoicesAt = getProvider().getNumberOfchoicesAt(tic);
+				for (int choice = 0; choice < numberOfchoicesAt; ++choice) {
 					if (getProvider().getPreceding(tic, choice) > 0
 							|| getProvider().getFollowing(tic, choice) > 0) {
 						maxConnectionIndex = Math.max(maxConnectionIndex, choice);
@@ -168,6 +171,22 @@ public class TimelineWindow implements ITimelineListener {
 	}
 
 	/**
+	 * Sets a new {@link ITimelineProvider}.
+	 * 
+	 * @param provider
+	 *            the {@link ITimelineProvider}
+	 */
+	public void setProvider(ITimelineProvider provider) {
+		if (!this.provider.equals(provider)) {
+			this.provider = provider;
+			for (ITimelineWindowListener listener : listeners) {
+				listener.providerChanged(provider);
+			}
+			setStart(0);
+		}
+	}
+
+	/**
 	 * Tells if the given index is in the {@link TimelineWindow}.
 	 * 
 	 * @param index
@@ -229,6 +248,15 @@ public class TimelineWindow implements ITimelineListener {
 		if (isInWindow(index)) {
 			for (ITimelineWindowListener listener : listeners) {
 				listener.atChanged(index, choice, object);
+			}
+		}
+	}
+
+	@Override
+	public void isSelectedChanged(int index, int choice, boolean selected) {
+		if (isInWindow(index)) {
+			for (ITimelineWindowListener listener : listeners) {
+				listener.isSelectedChanged(index, choice, selected);
 			}
 		}
 	}

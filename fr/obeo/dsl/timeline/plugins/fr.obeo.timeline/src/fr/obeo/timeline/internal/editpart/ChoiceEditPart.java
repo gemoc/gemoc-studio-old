@@ -56,10 +56,14 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 	@Override
 	protected IFigure createFigure() {
 		final Ellipse res = new Ellipse();
-		if (getModel().isSelected()) {
-			res.setBackgroundColor(ColorConstants.lightBlue);
+		if (getModel().getTic().isLast()) {
+			res.setBackgroundColor(ColorConstants.orange);
 		} else {
-			res.setBackgroundColor(ColorConstants.lightGreen);
+			if (getModel().isSelected()) {
+				res.setBackgroundColor(ColorConstants.lightBlue);
+			} else {
+				res.setBackgroundColor(ColorConstants.lightGreen);
+			}
 		}
 		res.setSize(SIZE, SIZE);
 		res.setForegroundColor(ColorConstants.listBackground);

@@ -99,6 +99,24 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	}
 
 	/**
+	 * Notifies the given choice (timeline index and choice index) has been selected or de-selected.
+	 * 
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
+	 * @param choice
+	 *            the choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
+	 * @param selected
+	 *            <code>true</code> if the choice ise now selected, <code>false</code> otherwise
+	 */
+	public void notifyIsSelectedChanged(int index, int choice, boolean selected) {
+		if (selected != isSelected(index, choice)) {
+			for (ITimelineListener listener : listeners) {
+				listener.isSelectedChanged(index, choice, selected);
+			}
+		}
+	}
+
+	/**
 	 * Notifies the text for the given choice (timeline index and choice index) has changed.
 	 * 
 	 * @param index

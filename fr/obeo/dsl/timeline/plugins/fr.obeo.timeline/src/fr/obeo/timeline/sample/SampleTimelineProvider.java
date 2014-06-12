@@ -78,6 +78,11 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
+	public boolean isSelected(int index, int choice) {
+		return getFollowing(index, choice) > -1;
+	}
+
+	@Override
 	public String getTextAt(int index, int choice) {
 		return "choice " + choice;
 	}

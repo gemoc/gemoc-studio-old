@@ -22,6 +22,7 @@ import fr.obeo.timeline.internal.model.ITimelineWindowListener;
 import fr.obeo.timeline.internal.model.Tic;
 import fr.obeo.timeline.internal.model.TimelineWindow;
 import fr.obeo.timeline.layout.LineLayout;
+import fr.obeo.timeline.view.ITimelineProvider;
 
 import java.util.List;
 
@@ -127,6 +128,13 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 	}
 
 	@Override
+	public void isSelectedChanged(int index, int choice, boolean selected) {
+		final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
+				new Choice(getModel(), index, choice));
+		editPart.refresh();
+	}
+
+	@Override
 	public void textAtChanged(int index, int choice, String text) {
 		final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
 				new Choice(getModel(), index, choice));
@@ -153,7 +161,6 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 		targetEditPart.refresh();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public synchronized void startChanged(int start) {
 		deepRefresh();
@@ -161,6 +168,11 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 
 	@Override
 	public synchronized void lengthChanged(int length) {
+		deepRefresh();
+	}
+
+	@Override
+	public void providerChanged(ITimelineProvider provider) {
 		deepRefresh();
 	}
 

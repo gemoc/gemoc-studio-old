@@ -18,6 +18,7 @@
 package fr.obeo.timeline.internal.model;
 
 import fr.obeo.timeline.view.ITimelineListener;
+import fr.obeo.timeline.view.ITimelineProvider;
 
 /**
  * Listener for {@link TimelineWindow} changes.
@@ -43,6 +44,11 @@ public interface ITimelineWindowListener extends ITimelineListener {
 			// nothing to do here
 		}
 
+		@Override
+		public void providerChanged(ITimelineProvider provider) {
+			// nothing to do here
+		}
+
 	}
 
 	/**
@@ -60,5 +66,13 @@ public interface ITimelineWindowListener extends ITimelineListener {
 	 *            the length
 	 */
 	void lengthChanged(int length);
+
+	/**
+	 * Notifies the {@link ITimelineProvider} has changed.
+	 * 
+	 * @param provider
+	 *            the {@link ITimelineProvider}
+	 */
+	void providerChanged(ITimelineProvider provider);
 
 }

@@ -52,6 +52,11 @@ public interface ITimelineListener {
 		}
 
 		@Override
+		public void isSelectedChanged(int index, int choice, boolean selected) {
+			// nothing to do here
+		}
+
+		@Override
 		public void textAtChanged(int index, int choice, String text) {
 			// nothing to do here
 		}
@@ -107,6 +112,18 @@ public interface ITimelineListener {
 	 *            the {@link Object} at the given choice (timeline index and choice index)
 	 */
 	void atChanged(int index, int choice, Object object);
+
+	/**
+	 * Notifies the given choice (timeline index and choice index) has been selected or de-selected.
+	 * 
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
+	 * @param choice
+	 *            the choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
+	 * @param selected
+	 *            <code>true</code> if the choice ise now selected, <code>false</code> otherwise
+	 */
+	void isSelectedChanged(int index, int choice, boolean selected);
 
 	/**
 	 * Notifies the text for the given choice (timeline index and choice index) has changed.

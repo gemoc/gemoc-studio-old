@@ -89,7 +89,7 @@ public final class Choice {
 	 * @return <code>true</code> if the choice has been selected.
 	 */
 	public boolean isSelected() {
-		return getTimelineWindow().getProvider().getFollowing(index, choice) >= 0;
+		return getTimelineWindow().getProvider().isSelected(index, choice);
 	}
 
 	/**

@@ -50,6 +50,18 @@ public interface ITimelineProvider {
 	String getTextAt(int index);
 
 	/**
+	 * Tells if the given choice (timeline index and choice index) is selected.
+	 * 
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
+	 * @param choice
+	 *            the choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
+	 * @return <code>true</code> if the given choice (timeline index and choice index) is selected,
+	 *         <code>false</code> otherwise
+	 */
+	boolean isSelected(int index, int choice);
+
+	/**
 	 * Gets the {@link Object} at the given choice (timeline index and choice index).
 	 * 
 	 * @param index

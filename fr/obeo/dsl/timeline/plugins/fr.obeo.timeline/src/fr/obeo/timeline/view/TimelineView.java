@@ -26,7 +26,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.ControlEvent;
@@ -39,6 +39,7 @@ import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.events.MouseWheelListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Canvas;
@@ -198,9 +199,9 @@ public class TimelineView extends ViewPart {
 	private static final int TIMELINE_RATIO = 90;
 
 	/**
-	 * The detail {@link TreeViewer}.
+	 * The detail {@link Viewer}.
 	 */
-	private TreeViewer detailViewer;
+	private Viewer detailViewer;
 
 	/**
 	 * The timeline {@link ScrollingGraphicalViewer}.
@@ -231,12 +232,12 @@ public class TimelineView extends ViewPart {
 	/**
 	 * The detail {@link IContentProvider}.
 	 */
-	private final IContentProvider detailContentProvider = new AdapterFactoryContentProvider(adapterFactory);
+	private final IContentProvider detailContentProvider = createDetailContentProvider();
 
 	/**
 	 * The detail {@link ILabelProvider}.
 	 */
-	private final ILabelProvider detailLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+	private final ILabelProvider detailLabelProvider = createDetailLabelProvider();
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -244,6 +245,7 @@ public class TimelineView extends ViewPart {
 		detailViewer = createDetailViewer(mainSashForm);
 		timelineViewer = new ScrollingGraphicalViewer();
 		Composite timelineComposite = new Composite(mainSashForm, SWT.NONE);
+		timelineComposite.setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 		mainSashForm.setWeights(new int[] {DETAIL_RATIO, TIMELINE_RATIO, });
 		GridLayout layout = new GridLayout(1, false);
 		timelineComposite.setLayout(layout);
@@ -258,18 +260,17 @@ public class TimelineView extends ViewPart {
 		rootEditPart = new ScalableFreeformRootEditPart();
 		rootEditPart.setViewer(timelineViewer);
 		timelineViewer.setRootEditPart(rootEditPart);
-		timelineViewer.setEditPartFactory(new TimelineEditPartFactory());
-		final SampleTimelineProvider providier = new SampleTimelineProvider();
-		timelineWindow = new TimelineWindow(providier);
-		providier.addTimelineListener(timelineWindow);
-		timelineViewer.setContents(timelineWindow);
-
 		gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
 		gridData.grabExcessHorizontalSpace = true;
 		gridData.verticalAlignment = SWT.FILL;
 		gridData.grabExcessVerticalSpace = true;
 		timelineViewer.getControl().setLayoutData(gridData);
+		timelineViewer.setEditPartFactory(new TimelineEditPartFactory());
+		final ITimelineProvider provider = getTimelineProvider();
+		timelineWindow = new TimelineWindow(provider);
+		provider.addTimelineListener(timelineWindow);
+		timelineViewer.setContents(timelineWindow);
 
 		timelineSlider.setPageIncrement(timelineWindow.getLength());
 		timelineSlider.setThumb(timelineWindow.getLength());
@@ -358,6 +359,8 @@ public class TimelineView extends ViewPart {
 			@Override
 			public void controlResized(ControlEvent e) {
 				timelineWindow.setLength(getWindowLength());
+				final Canvas canevas = (Canvas)timelineViewer.getControl();
+				canevas.getHorizontalBar().setVisible(false);
 			}
 
 			@Override
@@ -366,6 +369,44 @@ public class TimelineView extends ViewPart {
 			}
 		});
 
+	}
+
+	/**
+	 * Creates the {@link IContentProvider} for the detail viewer.
+	 * 
+	 * @return the created {@link IContentProvider}
+	 */
+	protected IContentProvider createDetailContentProvider() {
+		return new AdapterFactoryContentProvider(adapterFactory);
+	}
+
+	/**
+	 * Creates the {@link ILabelProvider} for the detail viewer.
+	 * 
+	 * @return the created {@link ILabelProvider}
+	 */
+	protected ILabelProvider createDetailLabelProvider() {
+		return new AdapterFactoryLabelProvider(adapterFactory);
+	}
+
+	/**
+	 * Gets the {@link ITimelineProvider}.
+	 * 
+	 * @return the {@link ITimelineProvider}
+	 */
+	protected ITimelineProvider getTimelineProvider() {
+		return new SampleTimelineProvider();
+	}
+
+	/**
+	 * Sets the {@link ITimelineProvider}.
+	 * 
+	 * @param provider
+	 *            the {@link ITimelineProvider}
+	 */
+	public void setTimelineProvider(ITimelineProvider provider) {
+		timelineWindow.setProvider(provider);
+		timelineWindow.setLength(getWindowLength());
 	}
 
 	/**
@@ -393,13 +434,13 @@ public class TimelineView extends ViewPart {
 	}
 
 	/**
-	 * Creates the detail {@link TreeViewer}.
+	 * Creates the detail {@link Viewer}.
 	 * 
 	 * @param parent
 	 *            the parent {@link Composite}
-	 * @return the created detail {@link TreeViewer}
+	 * @return the created detail {@link Viewer}
 	 */
-	protected TreeViewer createDetailViewer(Composite parent) {
+	protected Viewer createDetailViewer(Composite parent) {
 		final FilteredTree treeViewer = new FilteredTree(parent, SWT.None, createDetailPatternFilter(), false);
 		treeViewer.getViewer().setContentProvider(detailContentProvider);
 		treeViewer.getViewer().setLabelProvider(detailLabelProvider);
@@ -417,11 +458,11 @@ public class TimelineView extends ViewPart {
 	}
 
 	/**
-	 * Gets the detail {@link TreeViewer}.
+	 * Gets the detail {@link Viewer}.
 	 * 
-	 * @return the detail {@link TreeViewer}
+	 * @return the detail {@link Viewer}
 	 */
-	public TreeViewer getDetailViewer() {
+	public Viewer getDetailViewer() {
 		return detailViewer;
 	}
 

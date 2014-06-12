@@ -70,7 +70,8 @@ public final class Tic {
 		List<Choice> res = new ArrayList<Choice>();
 
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
-		for (int i = 0; i < provider.getNumberOfchoicesAt(index); ++i) {
+		final int numberOfchoicesAt = provider.getNumberOfchoicesAt(index);
+		for (int i = 0; i < numberOfchoicesAt; ++i) {
 			res.add(new Choice(getTimelineWindow(), index, i));
 		}
 
@@ -108,7 +109,8 @@ public final class Tic {
 	 */
 	public Tic getNextTic() {
 		final Tic res;
-		if (index < getTimelineWindow().getProvider().getNumberOfTicks() - 1) {
+		final int numberOfTicks = getTimelineWindow().getProvider().getNumberOfTicks();
+		if (index < numberOfTicks - 1) {
 			res = new Tic(getTimelineWindow(), index + 1);
 		} else {
 			res = null;
@@ -135,7 +137,8 @@ public final class Tic {
 		int res = -1;
 
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
-		for (int choice = 0; choice < provider.getNumberOfchoicesAt(index); ++choice) {
+		final int numberOfchoicesAt = provider.getNumberOfchoicesAt(index);
+		for (int choice = 0; choice < numberOfchoicesAt; ++choice) {
 			if (provider.getPreceding(index, choice) > -1 || provider.getFollowing(index, choice) > -1) {
 				res = choice;
 				break;
@@ -143,6 +146,15 @@ public final class Tic {
 		}
 
 		return res;
+	}
+
+	/**
+	 * Tells if the tic is the last tic.
+	 * 
+	 * @return <code>true</code> if the tic is the last tic, <code>false</code> otherwise
+	 */
+	public boolean isLast() {
+		return index == getTimelineWindow().getProvider().getNumberOfTicks() - 1;
 	}
 
 }
