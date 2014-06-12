@@ -15,14 +15,26 @@ public class PrepareViewFrontend implements Frontend
 {
 
 	@Override
-	public void initialize(GemocExecutionEngine engine) {
+	public void initialize(final GemocExecutionEngine engine) {
 		if (PlatformUI.isWorkbenchRunning())
 		{
-			ViewHelper.retrieveView(EnginesStatusView.ID);
-			ViewHelper.retrieveView(ExecutionTraceView.ID);
-			TimelineView timelineView = ViewHelper.retrieveView(TimelineView.ID);			
-			ObservableBasicExecutionEngine e = (ObservableBasicExecutionEngine) engine;
-			timelineView.setTimelineProvider(new TimelineProvider(e));
+			PlatformUI
+				.getWorkbench()
+				.getDisplay()
+				.asyncExec(
+						new Runnable()
+						{
+
+							@Override
+							public void run() {
+								ViewHelper.retrieveView(EnginesStatusView.ID);
+								ViewHelper.retrieveView(ExecutionTraceView.ID);
+								TimelineView timelineView = ViewHelper.retrieveView(TimelineView.ID);			
+								ObservableBasicExecutionEngine e = (ObservableBasicExecutionEngine) engine;
+								timelineView.setTimelineProvider(new TimelineProvider(e));
+							}
+			
+						});	
 		}
 	}
 
