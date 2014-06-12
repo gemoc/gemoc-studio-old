@@ -22,7 +22,7 @@ public class PrepareViewFrontend implements Frontend
 			ViewHelper.retrieveView(ExecutionTraceView.ID);
 			TimelineView timelineView = ViewHelper.retrieveView(TimelineView.ID);			
 			ObservableBasicExecutionEngine e = (ObservableBasicExecutionEngine) engine;
-			timelineView.setProvider(new TimelineProvider(e));
+			timelineView.setTimelineProvider(new TimelineProvider(e));
 		}
 	}
 

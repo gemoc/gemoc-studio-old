@@ -14,3 +14,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore.xmi;bundle-version="2.8.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
+Export-Package: fr.obeo.timeline,
+ fr.obeo.timeline.internal.editpart;x-internal:=true,
+ fr.obeo.timeline.internal.model;x-internal:=true,
+ fr.obeo.timeline.layout,
+ fr.obeo.timeline.sample,
+ fr.obeo.timeline.view

@@ -3,12 +3,9 @@ package org.gemoc.execution.engine.io.views.obeo;
 import java.util.Observable;
 import java.util.Observer;
 
-import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
-import org.gemoc.execution.engine.io.views.EnginesStatusView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.obeo.timeline.view.AbstractTimelineProvider;
 
@@ -39,7 +36,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 
 	@Override
 	public String getTextAt(int index) {
-		return "toto";
+		return String.valueOf(index);
 	}
 
 	@Override
@@ -89,6 +86,12 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		notifyNumberOfticksChanged(getExecutionTrace().getChoices().size());
+	}
+
+	@Override
+	public boolean isSelected(int index, int choice) {
+		Choice gemocChoice = getExecutionTrace().getChoices().get(index);
+		return gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()) == choice;
 	}
 
 

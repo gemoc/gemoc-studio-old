@@ -48,6 +48,7 @@ import org.eclipse.swt.widgets.Slider;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.part.ViewPart;
+ org.eclipse.ui.part.ViewPart;
 
 /**
  * A graphical timeline view with an overview and a detail viewer.
@@ -197,6 +198,11 @@ public class TimelineView extends ViewPart {
 	 * The timeline view ratio.
 	 */
 	private static final int TIMELINE_RATIO = 90;
+
+	/**
+	 * The ID of this {@link View}.
+	 */
+	public static final String ID = "fr.obeo.timeline.view";
 
 	/**
 	 * The detail {@link Viewer}.
