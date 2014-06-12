@@ -44,4 +44,11 @@ software and give it back to its legitimate owner.
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="fr.obeo.timeline"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
