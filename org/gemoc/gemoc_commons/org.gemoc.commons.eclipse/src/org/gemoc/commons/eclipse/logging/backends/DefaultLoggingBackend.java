@@ -6,6 +6,7 @@ import org.gemoc.commons.eclipse.logging.ILoggingBackend;
 import org.gemoc.commons.eclipse.pde.GemocUIPlugin;
 import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
+import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 
 public class DefaultLoggingBackend implements ILoggingBackend 
 {
@@ -17,38 +18,47 @@ public class DefaultLoggingBackend implements ILoggingBackend
 		_plugin = plugin;
 	}
 	
-	private MessagingSystem _messagingSystem = new StdioSimpleMessagingSystem();
+	private MessagingSystem _messagingSystem;
 
+	private MessagingSystem getMessagingSystem()
+	{
+		if (_messagingSystem == null)
+		{
+			_messagingSystem = new EclipseMessagingSystem(_plugin.getId(), _plugin.getName());
+		}
+		return _messagingSystem;
+	}
+	
 	@Override
 	public void info(String message) {
 		if (PlatformUI.isWorkbenchRunning())
-			_messagingSystem.info(message, _plugin.getPluginId());	
+			getMessagingSystem().info(message, _plugin.getId());	
 		else
-			System.out.println(_plugin.getPluginId() + " INFO: " + message);
+			System.out.println(_plugin.getId() + " INFO: " + message);
 	}
 
 	@Override
 	public void debug(String message) {
 		if (PlatformUI.isWorkbenchRunning())
-			_messagingSystem.debug(message, _plugin.getPluginId());	
+			getMessagingSystem().debug(message, _plugin.getId());	
 		else
-			System.out.println(_plugin.getPluginId() + " DEBUG: " + message);
+			System.out.println(_plugin.getId() + " DEBUG: " + message);
 	}
 
 	@Override
 	public void warn(String message) {
 		if (PlatformUI.isWorkbenchRunning())
-			_messagingSystem.warn(message, _plugin.getPluginId());	
+			getMessagingSystem().warn(message, _plugin.getId());	
 		else
-			System.out.println(_plugin.getPluginId() + " WARN: " + message);
+			System.out.println(_plugin.getId() + " WARN: " + message);
 	}
 
 	@Override
 	public void error(String message) {
 		if (PlatformUI.isWorkbenchRunning())
-			_messagingSystem.error(message, _plugin.getPluginId());	
+			getMessagingSystem().error(message, _plugin.getId());	
 		else
-			System.out.println(_plugin.getPluginId() + " ERROR: " + message);
+			System.out.println(_plugin.getId() + " ERROR: " + message);
 	}
 
 	@Override
@@ -58,7 +68,7 @@ public class DefaultLoggingBackend implements ILoggingBackend
 			.getLog()
 			.log(new Status(
 						Status.WARNING, 
-						_plugin.getPluginId(), 
+						_plugin.getId(), 
 						Status.OK, 
 						message, e));
 	}
@@ -70,7 +80,7 @@ public class DefaultLoggingBackend implements ILoggingBackend
 			.getLog()
 			.log(new Status(
 						Status.ERROR, 
-						_plugin.getPluginId(), 
+						_plugin.getId(), 
 						Status.OK, 
 						message, e));	
 	}
@@ -82,7 +92,7 @@ public class DefaultLoggingBackend implements ILoggingBackend
 			.getLog()
 			.log(new Status(
 						Status.INFO, 
-						_plugin.getPluginId(), 
+						_plugin.getId(), 
 						Status.OK, 
 						message, e));	
 	}

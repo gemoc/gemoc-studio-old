@@ -68,7 +68,7 @@ public class Activator extends GemocUIPlugin {
 	}
 
 	@Override
-	public String getPluginId() {
+	public String getId() {
 		return PLUGIN_ID;
 	}
 

@@ -57,7 +57,7 @@ public class Activator extends GemocUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		Activator.plugin = this;
-		addLoggingBackend(new DefaultLoggingBackend(this));
+		addLoggingBackend(new DefaultLoggingBackend(org.gemoc.execution.engine.commons.Activator.getDefault()));
 	}
 
 	/*
@@ -79,7 +79,7 @@ public class Activator extends GemocUIPlugin {
 	public GemocRunningEnginesRegistry gemocRunningEngineRegistry = new GemocRunningEnginesRegistry();
 
 	@Override
-	public String getPluginId() {
+	public String getId() {
 		return PLUGIN_ID;
 	}
 	

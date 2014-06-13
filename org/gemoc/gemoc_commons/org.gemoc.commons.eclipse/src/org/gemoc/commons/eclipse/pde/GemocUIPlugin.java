@@ -7,8 +7,21 @@ import org.gemoc.commons.eclipse.logging.ILoggingBackend;
 
 public abstract class GemocUIPlugin extends AbstractUIPlugin {
 
-	public abstract String getPluginId();
-
+	/**
+	 * Get the plugin id as specified in the manifest.
+	 * @return
+	 */
+	public abstract String getId();
+	
+	/**
+	 * Get the plugin name as specified in the manifest.
+	 * @return
+	 */
+	public String getName()
+	{
+		return this.getBundle().getHeaders().get("Bundle-Name");
+	}
+	
 	private ArrayList<ILoggingBackend> _loggingBackends = new ArrayList<ILoggingBackend>();
 	public void addLoggingBackend(ILoggingBackend backend) 
 	{
