@@ -58,6 +58,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		return;
 	}
 	
+	
 	class LanguageProjectDeltaVisitor implements IResourceDeltaVisitor {
 		/*
 		 * (non-Javadoc)
@@ -69,70 +70,39 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		public boolean visit(IResourceDelta delta) throws CoreException {
 			IResource resource = delta.getResource();
 			switch (delta.getKind()) {
-			case IResourceDelta.ADDED:
-				// handle added resource
-				updateProjectPersistentProperties(resource);
-				updateProjectPluginConfiguration(resource);
-				break;
-			case IResourceDelta.REMOVED:
-				// handle removed resource
-				removePersistentProperties(resource);
-				break;
-			case IResourceDelta.CHANGED:
-				// handle changed resource
-				updateProjectPersistentProperties(resource);
-				updateProjectPluginConfiguration(resource);
-				break;
+				case IResourceDelta.ADDED:
+					updateProjectArtefacts(resource);
+					break;
+				case IResourceDelta.REMOVED:
+					removePersistentProperties(resource);
+					break;
+				case IResourceDelta.CHANGED:
+					updateProjectArtefacts(resource);
+					break;
 			}
 			// return true to continue visiting children.
 			return true;
 		}
-	}
 
+	}
+	
+	
 	class LanguageProjectResourceVisitor implements IResourceVisitor {
+		
 		public boolean visit(IResource resource) {
-			updateProjectPersistentProperties(resource);
-			updateProjectPluginConfiguration(resource);
+			updateProjectArtefacts(resource);
 			// return true to continue visiting children.
 			return true;
 		}
+
 	}
 
-	class XMLErrorHandler extends DefaultHandler {
-
-		private IFile file;
-
-		public XMLErrorHandler(IFile file) {
-			this.file = file;
-		}
-
-		private void addMarker(SAXParseException e, int severity) {
-			GemocLanguageDesignerBuilder.this.addMarker(file, e.getMessage(), e.getLineNumber(), severity);
-		}
-
-		public void error(SAXParseException exception) throws SAXException {
-			addMarker(exception, IMarker.SEVERITY_ERROR);
-		}
-
-		public void fatalError(SAXParseException exception) throws SAXException {
-			addMarker(exception, IMarker.SEVERITY_ERROR);
-		}
-
-		public void warning(SAXParseException exception) throws SAXException {
-			addMarker(exception, IMarker.SEVERITY_WARNING);
-		}
+	private void updateProjectArtefacts(IResource resource) {
+		updateProjectPersistentProperties(resource);
+		updateProjectPluginConfiguration(resource);
 	}
 
 	public static final String BUILDER_ID = "org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerBuilder";
-
-	private static final String MARKER_TYPE = "org.gemoc.gemoc_language_workbench.ui.xmlProblem";
-
-	private void addMarker(IFile file, String message, int lineNumber, int severity) {
-		try {
-			Marker.addMarker(file, MARKER_TYPE, message, lineNumber, severity);
-		} catch (CoreException e) {
-		}
-	}
 
 	/*
 	 * (non-Javadoc)
