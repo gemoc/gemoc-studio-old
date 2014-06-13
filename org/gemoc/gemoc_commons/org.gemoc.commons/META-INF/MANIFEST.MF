@@ -63,3 +63,6 @@ Export-Package: ch.lambdaj,
  toools.thread,
  toools.util.assertion
 Bundle-Vendor: INRIA
+Bundle-ClassPath: .,
+ lib/lambdaj-2.4-with-dependencies.jar,
+ lib/toools-2013.04.16.17.54.16.jar
