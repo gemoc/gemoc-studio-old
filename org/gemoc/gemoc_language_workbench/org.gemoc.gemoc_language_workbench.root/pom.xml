@@ -31,7 +31,7 @@
 		<repository>
             <id>Gemoc TP without me</id>
             <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-exec-engine</url>
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-language-workbench</url>
         </repository>
 
 		<!-- <repository>
