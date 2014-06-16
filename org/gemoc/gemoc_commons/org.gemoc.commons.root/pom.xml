@@ -15,8 +15,8 @@
         <module>../org.gemoc.execution.engine.trace.model.editor</module>
 
         <!-- feature and update site -->
-        <module>../org.gemoc.commons.feature</module>
-        <module>../org.gemoc.commons.p2updatesite</module>
+        <module>org.gemoc.commons.feature</module>
+        <module>p2updatesite</module>
     </modules>
 
     <properties>
