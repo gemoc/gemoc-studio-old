@@ -33,7 +33,8 @@ abstract public class GenerateExtendedCCSLFileAction implements IObjectActionDel
 	
 	protected void doQvToTransfo() {
 		int numberOfCharToRemove = modelFile.getFullPath().toString().length() - modelFile.getFileExtension().length() -1;
-		String outputPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel.extendedCCSL";
+//		String outputPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel.extendedCCSL";
+		String outputPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel.timemodel";
 		QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
 		performer.run(qvtoUriString, modelUriString, outputPath);
 	}

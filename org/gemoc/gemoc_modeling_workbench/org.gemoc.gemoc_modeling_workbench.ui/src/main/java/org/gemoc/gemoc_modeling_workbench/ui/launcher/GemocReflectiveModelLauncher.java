@@ -11,10 +11,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.InvalidRegistryObjectException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
@@ -31,6 +29,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.IEditorPart;
+import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
 import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
@@ -52,6 +51,7 @@ import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemoc
 import org.gemoc.workbench.modeling.LanguageFinder;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
@@ -157,7 +157,8 @@ public class GemocReflectiveModelLauncher
 		ModelLoader modelLoader = null;
 		
 		Set<IEngineHook> engineHooks = retrieveEngineHooks(confElement); 
-
+		Set<IAliveClockController> eventOccurenceInjectors = retrieveEventOccurenceInjectors(confElement);
+		
 		// get the extension objects
 		if (confElement != null) {
 			debug("Starting to retrieve components from the configuration...");
@@ -315,13 +316,20 @@ public class GemocReflectiveModelLauncher
 		TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
 		if (_siriusSession != null)
 			editingDomain = _siriusSession.getTransactionalEditingDomain();
+
+		for(IAliveClockController injector: eventOccurenceInjectors){
+			engine.addClockController(injector);
+		}
+
 		engine.initialize(modelResource, editingDomain);
+
 		if (isTraceActive)
 			engine.activateTrace();
 		
 		for(IEngineHook engineHook : engineHooks){
 			engine.addEngineHook(engineHook);
 		}
+		
 		// engine.
 		// configure altogether
 		configureEngine(engine, frontends, backends, delay);
@@ -377,6 +385,22 @@ public class GemocReflectiveModelLauncher
 		return engineHooks;
 	}
 
+	private HashSet<IAliveClockController> retrieveEventOccurenceInjectors(IConfigurationElement confElement) 
+			throws CoreException 
+	{
+		HashSet<IAliveClockController> eventOccurenceInjectors = new HashSet<IAliveClockController>();
+		if (confElement != null) {
+			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_DEFINITION)){
+				childConfElement.getName();				
+				final Object injector = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_CLASS_DEFINITION);
+				if(injector instanceof IAliveClockController){
+					eventOccurenceInjectors.add((IAliveClockController) injector);
+				}
+			}
+		}
+		return eventOccurenceInjectors;
+	}
+	
 	private ModelLoader instanciateModelLoader(IConfigurationElement confElement) throws CoreException {
 		final Object oModelLoader = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
 		if (oModelLoader instanceof ModelLoader) {

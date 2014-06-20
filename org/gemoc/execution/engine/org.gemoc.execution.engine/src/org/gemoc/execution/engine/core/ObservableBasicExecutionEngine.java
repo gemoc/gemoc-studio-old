@@ -32,6 +32,9 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
+import org.gemoc.execution.engine.commons.dsa.DefaultClockController;
+import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
+import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
@@ -51,6 +54,7 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.sirius.ui.DebugSiriusIdeUiPlugin;
@@ -279,6 +283,22 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			}
 		});
 
+		ClockConstraintSystem clockConstraintSystem = null;
+		for(Resource r : rs.getResources())
+		{
+			if (r.getContents().get(0) instanceof ClockConstraintSystem) 
+			{
+				clockConstraintSystem = (ClockConstraintSystem)r.getContents().get(0);
+				break;
+			}			
+		}
+		for (IAliveClockController injector : _clockControllers)
+		{
+			EventInjectionContext context = new EventInjectionContext(solver, clockConstraintSystem);
+			injector.initialize(context);
+			injector.start();
+		}
+		
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
 	
@@ -330,6 +350,12 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		// }
 
 		//
+
+		for (IAliveClockController injector : _clockControllers)
+		{
+			injector.stop();
+		}
+		
 		session.close(new NullProgressMonitor());
 		SessionManager.INSTANCE.remove(session);
 	}
@@ -387,6 +413,13 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 					try {
 						if (hasCapability(ModelExecutionTracingCapability.class))
 							updateTraceModelBeforeAskingSolver(count);
+						
+						
+						for(IAliveClockController cc : _clockControllers)
+						{
+							cc.makeClocksTickOrNotTick();
+						}
+						
 						// 1- ask solver possible solutions for this step (set
 						// of
 						// logical steps | 1 logical step = set of simultaneous
@@ -762,6 +795,12 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		registeredEngineHooks.remove(removedEngineHook);
 	}
 
+	private ArrayList<IAliveClockController> _clockControllers = new ArrayList<IAliveClockController>();
+	public void addClockController(IAliveClockController controller) 
+	{
+		_clockControllers.add(controller);
+	}
+	
 	private ArrayList<IExecutionEngineCapability> _capabilities = new ArrayList<IExecutionEngineCapability>();
 
 	public <T extends IExecutionEngineCapability> boolean hasCapability(Class<T> type) {
@@ -807,5 +846,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	public CodeExecutor getCodeExecutor() {
 		return _codeExecutor;
 	}
+
 
 }

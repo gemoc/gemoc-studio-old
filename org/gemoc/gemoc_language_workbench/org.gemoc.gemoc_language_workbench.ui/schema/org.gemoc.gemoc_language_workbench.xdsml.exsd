@@ -51,6 +51,7 @@
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
             <element ref="Engine_hook_Definition"/>
+            <element ref="Event_Occurence_Injector_Definition"/>
          </sequence>
          <attribute name="name" type="string" use="required">
             <annotation>
@@ -152,6 +153,21 @@ This is optional, if not set, the engine will ignore it.
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.core.IEngineHook"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="Event_Occurence_Injector_Definition">
+      <complexType>
+         <attribute name="Event_Occurence_Injector_Class" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.IAliveEventOccurrenceInjector"/>
                </appinfo>
             </annotation>
          </attribute>

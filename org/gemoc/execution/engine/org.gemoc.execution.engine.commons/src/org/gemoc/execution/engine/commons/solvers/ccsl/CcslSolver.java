@@ -78,9 +78,10 @@ public abstract class CcslSolver implements
 		Reference reference = eventOccurrence.getReferedElement();
 		if (reference instanceof ModelElementReference) {
 			ModelElementReference mer = (ModelElementReference) reference;
-			ModelElementReference merToForce = this.mappingEventToOriginalMer
-					.get(mer.getElementRef().get(0));
-			return merToForce;
+			return mer;
+			//			ModelElementReference merToForce = this.mappingEventToOriginalMer
+//					.get(mer.getElementRef().get(0));
+//			return merToForce;
 		} else {
 			throw new RuntimeException(
 					"Refered Element of eventOccurrence should be a ModelElementReference");
