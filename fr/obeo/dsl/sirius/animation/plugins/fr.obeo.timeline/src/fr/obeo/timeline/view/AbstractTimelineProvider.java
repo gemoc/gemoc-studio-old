@@ -40,11 +40,22 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	 *            the number of ticks in the timeline
 	 */
 	public void notifyNumberOfticksChanged(int numberOfticks) {
-		if (numberOfticks != getNumberOfTicks()) {
-			for (ITimelineListener listener : listeners) {
-				listener.numberOfticksChanged(numberOfticks);
-			}
+		for (ITimelineListener listener : getListeners()) {
+			listener.numberOfticksChanged(numberOfticks);
 		}
+	}
+
+	/**
+	 * Gets the {@link List} of {@link ITimelineListener}.
+	 * 
+	 * @return the {@link List} of {@link ITimelineListener}
+	 */
+	private List<ITimelineListener> getListeners() {
+		final List<ITimelineListener> l;
+		synchronized(listeners) {
+			l = new ArrayList<ITimelineListener>(listeners);
+		}
+		return l;
 	}
 
 	/**
@@ -56,10 +67,8 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	 *            the number of choices at the given timeline index
 	 */
 	public void notifyNumberOfchoicesAtChanged(int index, int numberOfChoice) {
-		if (numberOfChoice != getNumberOfchoicesAt(index)) {
-			for (ITimelineListener listener : listeners) {
-				listener.numberOfchoicesAtChanged(index, numberOfChoice);
-			}
+		for (ITimelineListener listener : getListeners()) {
+			listener.numberOfchoicesAtChanged(index, numberOfChoice);
 		}
 	}
 
@@ -72,10 +81,8 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	 *            the text for the given index of the timeline
 	 */
 	public void notifyTextAtChanged(int index, String text) {
-		if (text != getTextAt(index)) {
-			for (ITimelineListener listener : listeners) {
-				listener.textAtChanged(index, text);
-			}
+		for (ITimelineListener listener : getListeners()) {
+			listener.textAtChanged(index, text);
 		}
 	}
 
@@ -90,11 +97,8 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	 *            the {@link Object} at the given choice (timeline index and choice index)
 	 */
 	public void notifyAtChanged(int index, int choice, Object object) {
-		final Object at = getAt(index, choice);
-		if ((object == null && at != null) || (object != null && !object.equals(at))) {
-			for (ITimelineListener listener : listeners) {
-				listener.atChanged(index, choice, object);
-			}
+		for (ITimelineListener listener : getListeners()) {
+			listener.atChanged(index, choice, object);
 		}
 	}
 
@@ -109,10 +113,8 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	 *            <code>true</code> if the choice ise now selected, <code>false</code> otherwise
 	 */
 	public void notifyIsSelectedChanged(int index, int choice, boolean selected) {
-		if (selected != isSelected(index, choice)) {
-			for (ITimelineListener listener : listeners) {
-				listener.isSelectedChanged(index, choice, selected);
-			}
+		for (ITimelineListener listener : getListeners()) {
+			listener.isSelectedChanged(index, choice, selected);
 		}
 	}
 
@@ -127,10 +129,8 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	 *            the text for the given choice (timeline index and choice index)
 	 */
 	public void notifyTextAtChanged(int index, int choice, String text) {
-		if (text != getTextAt(index)) {
-			for (ITimelineListener listener : listeners) {
-				listener.textAtChanged(index, choice, text);
-			}
+		for (ITimelineListener listener : getListeners()) {
+			listener.textAtChanged(index, choice, text);
 		}
 	}
 
@@ -146,10 +146,8 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	 *            <code>-1</code> otherwise
 	 */
 	public void notifyFollowingChanged(int index, int choice, int following) {
-		if (following != getFollowing(index, choice)) {
-			for (ITimelineListener listener : listeners) {
-				listener.followingChanged(index, choice, following);
-			}
+		for (ITimelineListener listener : getListeners()) {
+			listener.followingChanged(index, choice, following);
 		}
 	}
 
@@ -165,21 +163,23 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	 *            <code>-1</code> otherwise
 	 */
 	public void notifyPrecedingChanged(int index, int choice, int preceding) {
-		if (preceding != getFollowing(index, choice)) {
-			for (ITimelineListener listener : listeners) {
-				listener.precedingChanged(index, choice, preceding);
-			}
+		for (ITimelineListener listener : getListeners()) {
+			listener.precedingChanged(index, choice, preceding);
 		}
 	}
 
 	@Override
 	public void addTimelineListener(ITimelineListener listener) {
-		listeners.add(listener);
+		synchronized(listeners) {
+			listeners.add(listener);
+		}
 	}
 
 	@Override
 	public void removeTimelineListener(ITimelineListener listener) {
-		listeners.remove(listener);
+		synchronized(listeners) {
+			listeners.remove(listener);
+		}
 	}
 
 }

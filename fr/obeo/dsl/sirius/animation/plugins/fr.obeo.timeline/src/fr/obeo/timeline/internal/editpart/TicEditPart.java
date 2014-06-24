@@ -67,6 +67,11 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 	 */
 	public static final int SPACING = 15;
 
+	/**
+	 * The tic label.
+	 */
+	private Label label;
+
 	@Override
 	protected IFigure createFigure() {
 		final LineLayout layout = new LineLayout();
@@ -77,24 +82,31 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 
 		FreeformLayer res = new FreeformLayer();
 		res.setLayoutManager(layout);
-		final Label label = new Label(String.valueOf(getModel().getIndex()));
+		label = new Label();
 		res.add(label);
 		return res;
 	}
 
+	@Override
+	protected void refreshVisuals() {
+		super.refreshVisuals();
+		if (getModel().hasSelected()) {
+			align();
+		}
+		label.setText(String.valueOf(getModel().getIndex()));
+	}
+
 	/**
 	 * Aligns the selected {@link ChoiceEditPart}.
-	 * 
-	 * @param figure
-	 *            the {@link IFigure} to align
 	 */
-	private void align(IFigure figure) {
+	private void align() {
+		final IFigure figure = getFigure();
 		int existing = 0;
 		while (figure.getChildren().size() - existing - 2 >= 0
 				&& figure.getChildren().get(figure.getChildren().size() - existing - 2) instanceof PaddingFigure) {
 			++existing;
 		}
-		final int offset = ((TimelineWindowEditPart)getParent()).getModel().getMaxConnectionIndex()
+		final int offset = ((TimelineWindowEditPart)getParent()).getModel().getMaxSelectedIndex()
 				- getModel().getConnectedIndex();
 
 		if (existing < offset) {
@@ -104,7 +116,11 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 		} else if (existing > offset) {
 			for (int i = 1; i <= existing - offset; ++i) {
 				if (figure.getChildren().size() - 2 >= 0) {
-					figure.remove((IFigure)figure.getChildren().get(figure.getChildren().size() - 2));
+					final IFigure toRemoveFigure = (IFigure)figure.getChildren().get(
+							figure.getChildren().size() - 2);
+					if (toRemoveFigure instanceof PaddingFigure) {
+						figure.remove(toRemoveFigure);
+					}
 				}
 			}
 		}
@@ -147,12 +163,6 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 	@Override
 	public Tic getModel() {
 		return (Tic)super.getModel();
-	}
-
-	@Override
-	public void refresh() {
-		super.refresh();
-		align(getFigure());
 	}
 
 }

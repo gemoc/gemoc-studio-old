@@ -56,18 +56,9 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 	@Override
 	protected IFigure createFigure() {
 		final Ellipse res = new Ellipse();
-		if (getModel().getTic().isLast()) {
-			res.setBackgroundColor(ColorConstants.orange);
-		} else {
-			if (getModel().isSelected()) {
-				res.setBackgroundColor(ColorConstants.lightBlue);
-			} else {
-				res.setBackgroundColor(ColorConstants.lightGreen);
-			}
-		}
 		res.setSize(SIZE, SIZE);
 		res.setForegroundColor(ColorConstants.listBackground);
-		Label toolTip = new Label(getModel().getName());
+		Label toolTip = new Label();
 		toolTip.setBackgroundColor(ColorConstants.tooltipBackground);
 		toolTip.setForegroundColor(ColorConstants.tooltipForeground);
 		res.setToolTip(toolTip);
@@ -91,6 +82,23 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 		});
 
 		return res;
+	}
+
+	@Override
+	protected void refreshVisuals() {
+		super.refreshVisuals();
+		final IFigure figure = getFigure();
+		if (!getModel().getTic().hasSelected()) {
+			figure.setBackgroundColor(ColorConstants.orange);
+		} else {
+			if (getModel().isSelected()) {
+				figure.setBackgroundColor(ColorConstants.lightBlue);
+			} else {
+				figure.setBackgroundColor(ColorConstants.lightGreen);
+			}
+		}
+		final Label toolTip = (Label)figure.getToolTip();
+		toolTip.setText(getModel().getName());
 	}
 
 	/**
@@ -148,10 +156,10 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 				connectionIndex = 0;
 			}
 			int offset = previousConnectionIndex - connectionIndex;
-			if (previousTic.getChoices().size() > getModel().getIndex() + offset
-					&& getModel().getIndex() + offset > -1) {
+			if (previousTic.getChoices().size() > getModel().getChoiceIndex() + offset
+					&& getModel().getChoiceIndex() + offset > -1) {
 				res = (ChoiceEditPart)getViewer().getEditPartRegistry().get(
-						previousTic.getChoices().get(getModel().getIndex() + offset));
+						previousTic.getChoices().get(getModel().getChoiceIndex() + offset));
 			} else {
 				res = null;
 			}
@@ -181,10 +189,10 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 				connectionIndex = 0;
 			}
 			int offset = nextConnectionIndex - connectionIndex;
-			if (nextTic.getChoices().size() > getModel().getIndex() + offset
-					&& getModel().getIndex() + offset > -1) {
+			if (nextTic.getChoices().size() > getModel().getChoiceIndex() + offset
+					&& getModel().getChoiceIndex() + offset > -1) {
 				res = (ChoiceEditPart)getViewer().getEditPartRegistry().get(
-						nextTic.getChoices().get(getModel().getIndex() + offset));
+						nextTic.getChoices().get(getModel().getChoiceIndex() + offset));
 			} else {
 				res = null;
 			}

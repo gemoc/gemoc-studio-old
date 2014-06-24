@@ -89,11 +89,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	}
 
 	@Override
-	public boolean isSelected(int index, int choice) {
+	public int getSelectedChoice(int index) {
 		Choice gemocChoice = getExecutionTrace().getChoices().get(index);
-		return gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()) == choice;
+		return gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
 	}
-
-
 
 }

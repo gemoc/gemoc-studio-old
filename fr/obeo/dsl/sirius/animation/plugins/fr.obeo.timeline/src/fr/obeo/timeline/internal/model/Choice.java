@@ -89,7 +89,7 @@ public final class Choice {
 	 * @return <code>true</code> if the choice has been selected.
 	 */
 	public boolean isSelected() {
-		return getTimelineWindow().getProvider().isSelected(index, choice);
+		return getTimelineWindow().getProvider().getSelectedChoice(index) == choice;
 	}
 
 	/**
@@ -140,8 +140,17 @@ public final class Choice {
 	 * 
 	 * @return the index in the owning {@link Tic}
 	 */
-	public int getIndex() {
+	public int getChoiceIndex() {
 		return choice;
+	}
+
+	/**
+	 * Gets the index of the owning {@link Tic}.
+	 * 
+	 * @return the index of the owning {@link Tic}
+	 */
+	public int getTicIndex() {
+		return index;
 	}
 
 	/**
@@ -153,7 +162,7 @@ public final class Choice {
 		final List<Connection> res = new ArrayList<Connection>();
 
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
-		if (index > getTimelineWindow().getStart()) {
+		if (isSelected() && index > getTimelineWindow().getStart()) {
 			final int preceding = provider.getPreceding(index, choice);
 			if (preceding >= 0) {
 				res.add(new Connection(new Choice(getTimelineWindow(), index - 1, preceding), this));
@@ -172,7 +181,9 @@ public final class Choice {
 		final List<Connection> res = new ArrayList<Connection>();
 
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
-		if (index + 1 < getTimelineWindow().getEnd()) {
+		if (isSelected()
+				&& index + 1 < Math.min(getTimelineWindow().getEnd(), getTimelineWindow().getProvider()
+						.getNumberOfTicks())) {
 			final int following = provider.getFollowing(index, choice);
 			if (following >= 0) {
 				res.add(new Connection(this, new Choice(getTimelineWindow(), index + 1, following)));

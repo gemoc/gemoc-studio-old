@@ -35,6 +35,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * An {@link AbstractGraphicalEditPart} for {@link TimelineWindow}.
@@ -102,101 +103,136 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 
 	@Override
 	public void numberOfticksChanged(int numberOfticks) {
-		// nothing to do here
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				deepRefresh();
+			}
+		});
 	}
 
 	@Override
 	public void numberOfchoicesAtChanged(int index, int numberOfChoice) {
-		final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(new Tic(getModel(), index));
-		editPart.refresh();
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				deepRefresh();
+			}
+		});
 	}
 
 	@Override
-	public void textAtChanged(int index, String text) {
-		final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(new Tic(getModel(), index));
-		editPart.refresh();
+	public void textAtChanged(final int index, String text) {
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
+						new Tic(getModel(), index));
+				editPart.refresh();
+			}
+		});
 	}
 
 	@Override
-	public void atChanged(int index, int choice, Object object) {
-		final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
-				new Choice(getModel(), index, choice));
-		if (editPart.equals(getViewer().getSelectedEditParts())) {
-			getViewer().getSelectionManager().deselect(editPart);
-			getViewer().getSelectionManager().appendSelection(editPart);
-		}
+	public void atChanged(final int index, final int choice, Object object) {
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
+						new Choice(getModel(), index, choice));
+				if (editPart.equals(getViewer().getSelectedEditParts())) {
+					getViewer().getSelectionManager().deselect(editPart);
+					getViewer().getSelectionManager().appendSelection(editPart);
+				}
+			}
+		});
 	}
 
 	@Override
-	public void isSelectedChanged(int index, int choice, boolean selected) {
-		final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
-				new Choice(getModel(), index, choice));
-		editPart.refresh();
+	public void isSelectedChanged(final int index, final int choice, boolean selected) {
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				deepRefresh();
+			}
+		});
 	}
 
 	@Override
-	public void textAtChanged(int index, int choice, String text) {
-		final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
-				new Choice(getModel(), index, choice));
-		editPart.refresh();
+	public void textAtChanged(final int index, final int choice, String text) {
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
+						new Choice(getModel(), index, choice));
+				editPart.refresh();
+			}
+		});
 	}
 
 	@Override
-	public void followingChanged(int index, int choice, int following) {
-		final EditPart sourceEditPart = (EditPart)getViewer().getEditPartRegistry().get(
-				new Choice(getModel(), index, choice));
-		sourceEditPart.refresh();
-		final EditPart targetEditPart = (EditPart)getViewer().getEditPartRegistry().get(
-				new Choice(getModel(), index + 1, choice));
-		targetEditPart.refresh();
+	public void followingChanged(final int index, final int choice, int following) {
+		// nothing to do here
 	}
 
 	@Override
-	public void precedingChanged(int index, int choice, int preceding) {
-		final EditPart sourceEditPart = (EditPart)getViewer().getEditPartRegistry().get(
-				new Choice(getModel(), index - 1, choice));
-		sourceEditPart.refresh();
-		final EditPart targetEditPart = (EditPart)getViewer().getEditPartRegistry().get(
-				new Choice(getModel(), index, choice));
-		targetEditPart.refresh();
+	public void precedingChanged(final int index, final int choice, int preceding) {
+		// nothing to do here
 	}
 
 	@Override
 	public synchronized void startChanged(int start) {
-		deepRefresh();
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				deepRefresh();
+			}
+		});
 	}
 
 	@Override
 	public synchronized void lengthChanged(int length) {
-		deepRefresh();
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				deepRefresh();
+			}
+		});
 	}
 
 	@Override
 	public void providerChanged(ITimelineProvider provider) {
-		deepRefresh();
+		Display.getDefault().syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				deepRefresh();
+			}
+		});
 	}
 
 	/**
 	 * Refresh {@link EditPart} in depth.
 	 */
-	@SuppressWarnings("unchecked")
 	private void deepRefresh() {
-		try {
-			refresh();
-			for (EditPart child : (List<EditPart>)getChildren()) {
-				if (child instanceof TicEditPart) {
-					child.refresh();
-					for (EditPart grandchild : (List<EditPart>)child.getChildren()) {
-						if (grandchild instanceof ChoiceEditPart
-								&& ((ChoiceEditPart)grandchild).getModel().isSelected()) {
-							grandchild.refresh();
-						}
-					}
+		refresh();
+		for (Tic tic : getModelChildren()) {
+			if (tic instanceof Tic) {
+				final EditPart ticEditPart = (EditPart)getViewer().getEditPartRegistry().get(tic);
+				ticEditPart.refresh();
+				for (Choice choice : tic.getChoices()) {
+					final EditPart choiceEditPart = (EditPart)getViewer().getEditPartRegistry().get(choice);
+					choiceEditPart.refresh();
 				}
 			}
-		} catch (IllegalArgumentException e) {
-			// for some reason during a refresh an EditPart can be removed from its containing EditPart then
-			// refreshed... causing an IllegalArgumentException
 		}
 	}
 

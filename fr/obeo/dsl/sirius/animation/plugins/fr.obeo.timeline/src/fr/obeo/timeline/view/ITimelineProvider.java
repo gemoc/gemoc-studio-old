@@ -54,12 +54,10 @@ public interface ITimelineProvider {
 	 * 
 	 * @param index
 	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
-	 * @param choice
-	 *            the choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
-	 * @return <code>true</code> if the given choice (timeline index and choice index) is selected,
-	 *         <code>false</code> otherwise
+	 * @return the selected choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
+	 *         if any, <code>-1</code> otherwise
 	 */
-	boolean isSelected(int index, int choice);
+	int getSelectedChoice(int index);
 
 	/**
 	 * Gets the {@link Object} at the given choice (timeline index and choice index).

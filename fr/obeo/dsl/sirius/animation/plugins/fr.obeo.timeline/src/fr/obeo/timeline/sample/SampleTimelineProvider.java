@@ -43,23 +43,52 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	 */
 	private final int[] selected;
 
+	int size;
+
 	/**
 	 * Constructor.
 	 */
 	public SampleTimelineProvider() {
 		choices = new int[SIZE];
 		selected = new int[SIZE];
-
 		for (int i = 0; i < choices.length; ++i) {
-			final int nbChoices = 1 + (int)(Math.random() * 5);
-			choices[i] = nbChoices;
-			selected[i] = (int)(Math.random() * nbChoices);
+			choices[i] = -1; // no choices
+			selected[i] = -1; // no selection
 		}
+
+		Runnable runnable = new Runnable() {
+
+			@Override
+			public void run() {
+				for (size = 1; size <= choices.length; ++size) {
+					notifyNumberOfticksChanged(size);
+					final int index = size - 1;
+					try {
+						Thread.sleep(300);
+						final int nbChoices = 1 + (int)(Math.random() * 5);
+						choices[index] = nbChoices; // create choices
+						notifyNumberOfchoicesAtChanged(index, nbChoices);
+						Thread.sleep(300);
+						selected[index] = (int)(Math.random() * nbChoices); // make a selection
+						notifyIsSelectedChanged(index, selected[index], true);
+						Thread.sleep(150);
+						if (index - 1 >= 0) {
+							notifyFollowingChanged(index - 1, selected[index - 1], selected[index]);
+							Thread.sleep(150);
+						}
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			};
+		};
+		new Thread(runnable).start();
 	}
 
 	@Override
 	public int getNumberOfTicks() {
-		return choices.length;
+		return size;
 	}
 
 	@Override
@@ -78,8 +107,8 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
-	public boolean isSelected(int index, int choice) {
-		return getFollowing(index, choice) > -1;
+	public int getSelectedChoice(int index) {
+		return selected[index];
 	}
 
 	@Override

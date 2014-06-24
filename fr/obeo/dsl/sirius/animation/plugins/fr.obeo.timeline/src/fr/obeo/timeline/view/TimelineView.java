@@ -44,6 +44,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Slider;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
@@ -189,6 +190,57 @@ public class TimelineView extends ViewPart {
 	}
 
 	/**
+	 * Lister to the {@link TimelineWindow} and update the slide bar.
+	 * 
+	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+	 */
+	private class TimelineWindowListener extends ITimelineWindowListener.Stub {
+		@Override
+		public void numberOfticksChanged(final int numberOfticks) {
+			Display.getDefault().syncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					if (!timelineSlider.isDisposed()) {
+						timelineSlider.setMaximum(numberOfticks);
+						timelineSlider.setVisible(timelineWindow.getLength() < numberOfticks);
+					}
+				}
+			});
+		}
+
+		@Override
+		public void startChanged(final int start) {
+			Display.getDefault().syncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					if (!timelineSlider.isDisposed()) {
+						timelineSlider.setSelection(start);
+					}
+					timelineWindow.setLength(getWindowLength());
+				}
+			});
+		}
+
+		@Override
+		public void lengthChanged(final int length) {
+			Display.getDefault().syncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					if (!timelineSlider.isDisposed()) {
+						timelineSlider.setPageIncrement(length);
+						timelineSlider.setThumb(length);
+						timelineSlider.setVisible(timelineWindow.getLength() < timelineWindow.getProvider()
+								.getNumberOfTicks());
+					}
+				}
+			});
+		}
+	}
+
+	/**
 	 * The ID of this {@link ViewPart}.
 	 */
 	public static final String ID = "fr.obeo.timeline.view";
@@ -244,6 +296,11 @@ public class TimelineView extends ViewPart {
 	 */
 	private final ILabelProvider detailLabelProvider = createDetailLabelProvider();
 
+	/**
+	 * The timeline window listener.
+	 */
+	private ITimelineWindowListener timelineWindowListener;
+
 	@Override
 	public void createPartControl(Composite parent) {
 		final SashForm mainSashForm = new SashForm(parent, SWT.HORIZONTAL);
@@ -295,27 +352,9 @@ public class TimelineView extends ViewPart {
 				timelineWindow.setStart(timelineSlider.getSelection());
 			}
 		});
-		timelineWindow.addTimelineWindowListener(new ITimelineWindowListener.Stub() {
-			@Override
-			public void numberOfticksChanged(int numberOfticks) {
-				timelineSlider.setMaximum(numberOfticks);
-				timelineSlider.setVisible(timelineWindow.getLength() < numberOfticks);
-			}
-
-			@Override
-			public void startChanged(int start) {
-				timelineSlider.setSelection(start);
-				timelineWindow.setLength(getWindowLength());
-			}
-
-			@Override
-			public void lengthChanged(int length) {
-				timelineSlider.setPageIncrement(length);
-				timelineSlider.setThumb(length);
-				timelineSlider.setVisible(timelineWindow.getLength() < timelineWindow.getProvider()
-						.getNumberOfTicks());
-			}
-		});
+		timelineWindowListener = new TimelineWindowListener();
+		timelineWindow.addTimelineWindowListener(timelineWindowListener);
+		provider.addTimelineListener(timelineWindowListener);
 		timelineViewer.getControl().setBackground(ColorConstants.listBackground);
 		timelineViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -480,6 +519,7 @@ public class TimelineView extends ViewPart {
 
 	@Override
 	public void dispose() {
+		timelineWindow.removeTimelineWindowListener(timelineWindowListener);
 		detailContentProvider.dispose();
 		detailLabelProvider.dispose();
 		super.dispose();

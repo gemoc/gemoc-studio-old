@@ -38,7 +38,7 @@ public class TimelineWindow implements ITimelineListener {
 	/**
 	 * The {@link List} of {@link ITimelineListener} to notify.
 	 */
-	private List<ITimelineWindowListener> listeners = new ArrayList<ITimelineWindowListener>();
+	private final List<ITimelineWindowListener> listeners = new ArrayList<ITimelineWindowListener>();
 
 	/**
 	 * The start index.
@@ -51,9 +51,9 @@ public class TimelineWindow implements ITimelineListener {
 	private int length;
 
 	/**
-	 * The maximum index of a connected choice.
+	 * The maximum index of the selected choice.
 	 */
-	private int maxConnectionIndex = -1;
+	private int maxSelectedIndex = -1;
 
 	/**
 	 * Constructor.
@@ -82,8 +82,9 @@ public class TimelineWindow implements ITimelineListener {
 	public List<Tic> getTics() {
 		final List<Tic> res = new ArrayList<Tic>();
 
-		final int end = Math.min(getStart() + getLength(), getProvider().getNumberOfTicks());
-		for (int i = getStart(); i < end; ++i) {
+		final int begin = getStart();
+		final int end = Math.min(begin + getLength(), getProvider().getNumberOfTicks());
+		for (int i = begin; i < end; ++i) {
 			res.add(new Tic(this, i));
 		}
 
@@ -91,24 +92,18 @@ public class TimelineWindow implements ITimelineListener {
 	}
 
 	/**
-	 * Gets the maximum connected choice index.
+	 * Gets the maximum selected choice index.
 	 * 
-	 * @return the maximum connected choice index
+	 * @return the maximum selected choice index
 	 */
-	public int getMaxConnectionIndex() {
-		if (maxConnectionIndex < 0) {
+	public int getMaxSelectedIndex() {
+		if (maxSelectedIndex < 0) {
 			final int end = Math.min(getEnd(), getProvider().getNumberOfTicks());
 			for (int tic = 0; tic < end; ++tic) {
-				final int numberOfchoicesAt = getProvider().getNumberOfchoicesAt(tic);
-				for (int choice = 0; choice < numberOfchoicesAt; ++choice) {
-					if (getProvider().getPreceding(tic, choice) > 0
-							|| getProvider().getFollowing(tic, choice) > 0) {
-						maxConnectionIndex = Math.max(maxConnectionIndex, choice);
-					}
-				}
+				maxSelectedIndex = Math.max(maxSelectedIndex, getProvider().getSelectedChoice(tic));
 			}
 		}
-		return maxConnectionIndex;
+		return maxSelectedIndex;
 	}
 
 	/**
@@ -127,10 +122,10 @@ public class TimelineWindow implements ITimelineListener {
 	 *            the new start index
 	 */
 	public void setStart(int start) {
-		maxConnectionIndex = -1;
+		maxSelectedIndex = -1;
 		if (this.start != start) {
 			this.start = start;
-			for (ITimelineWindowListener listener : listeners) {
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.startChanged(start);
 			}
 		}
@@ -161,10 +156,10 @@ public class TimelineWindow implements ITimelineListener {
 	 *            the length of the window
 	 */
 	public void setLength(int length) {
-		maxConnectionIndex = -1;
+		maxSelectedIndex = -1;
 		if (this.length != length) {
 			this.length = length;
-			for (ITimelineWindowListener listener : listeners) {
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.lengthChanged(length);
 			}
 		}
@@ -179,7 +174,7 @@ public class TimelineWindow implements ITimelineListener {
 	public void setProvider(ITimelineProvider provider) {
 		if (!this.provider.equals(provider)) {
 			this.provider = provider;
-			for (ITimelineWindowListener listener : listeners) {
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.providerChanged(provider);
 			}
 			setStart(0);
@@ -205,7 +200,9 @@ public class TimelineWindow implements ITimelineListener {
 	 *            the {@link ITimelineWindowListener}
 	 */
 	public void addTimelineWindowListener(ITimelineWindowListener listener) {
-		listeners.add(listener);
+		synchronized(listeners) {
+			listeners.add(listener);
+		}
 	}
 
 	/**
@@ -215,20 +212,27 @@ public class TimelineWindow implements ITimelineListener {
 	 *            the {@link ITimelineWindowListener}
 	 */
 	public void removeTimelineWindowListener(ITimelineWindowListener listener) {
-		listeners.remove(listener);
+		synchronized(listeners) {
+			listeners.remove(listener);
+		}
 	}
 
 	@Override
 	public void numberOfticksChanged(int numberOfticks) {
-		for (ITimelineWindowListener listener : listeners) {
-			listener.numberOfticksChanged(numberOfticks);
+		if (isInWindow(numberOfticks)) {
+			for (ITimelineWindowListener listener : getListeners()) {
+				listener.numberOfticksChanged(numberOfticks);
+			}
+		}
+		if (getEnd() == numberOfticks - 1) {
+			setStart(getStart() + 1);
 		}
 	}
 
 	@Override
 	public void numberOfchoicesAtChanged(int index, int numberOfChoice) {
 		if (isInWindow(index)) {
-			for (ITimelineWindowListener listener : listeners) {
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.numberOfchoicesAtChanged(index, numberOfChoice);
 			}
 		}
@@ -237,7 +241,7 @@ public class TimelineWindow implements ITimelineListener {
 	@Override
 	public void textAtChanged(int index, String text) {
 		if (isInWindow(index)) {
-			for (ITimelineWindowListener listener : listeners) {
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.textAtChanged(index, text);
 			}
 		}
@@ -246,7 +250,7 @@ public class TimelineWindow implements ITimelineListener {
 	@Override
 	public void atChanged(int index, int choice, Object object) {
 		if (isInWindow(index)) {
-			for (ITimelineWindowListener listener : listeners) {
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.atChanged(index, choice, object);
 			}
 		}
@@ -255,7 +259,8 @@ public class TimelineWindow implements ITimelineListener {
 	@Override
 	public void isSelectedChanged(int index, int choice, boolean selected) {
 		if (isInWindow(index)) {
-			for (ITimelineWindowListener listener : listeners) {
+			maxSelectedIndex = Math.max(maxSelectedIndex, choice);
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.isSelectedChanged(index, choice, selected);
 			}
 		}
@@ -264,7 +269,7 @@ public class TimelineWindow implements ITimelineListener {
 	@Override
 	public void textAtChanged(int index, int choice, String text) {
 		if (isInWindow(index)) {
-			for (ITimelineWindowListener listener : listeners) {
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.textAtChanged(index, choice, text);
 			}
 		}
@@ -273,7 +278,7 @@ public class TimelineWindow implements ITimelineListener {
 	@Override
 	public void followingChanged(int index, int choice, int following) {
 		if (isInWindow(index) && isInWindow(index + 1)) {
-			for (ITimelineWindowListener listener : listeners) {
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.followingChanged(index, choice, following);
 			}
 		}
@@ -282,10 +287,23 @@ public class TimelineWindow implements ITimelineListener {
 	@Override
 	public void precedingChanged(int index, int choice, int preceding) {
 		if (isInWindow(index - 1) && isInWindow(index)) {
-			for (ITimelineWindowListener listener : listeners) {
+			for (ITimelineWindowListener listener : getListeners()) {
 				listener.precedingChanged(index, choice, preceding);
 			}
 		}
+	}
+
+	/**
+	 * Gets the {@link List} of {@link ITimelineWindowListener}.
+	 * 
+	 * @return the {@link List} of {@link ITimelineWindowListener}
+	 */
+	private List<ITimelineWindowListener> getListeners() {
+		final List<ITimelineWindowListener> l;
+		synchronized(listeners) {
+			l = new ArrayList<ITimelineWindowListener>(listeners);
+		}
+		return l;
 	}
 
 }

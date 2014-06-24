@@ -134,27 +134,16 @@ public final class Tic {
 	 * @return the index of the connected choice if any, <code>-1</code> otherwise
 	 */
 	public int getConnectedIndex() {
-		int res = -1;
-
-		final ITimelineProvider provider = getTimelineWindow().getProvider();
-		final int numberOfchoicesAt = provider.getNumberOfchoicesAt(index);
-		for (int choice = 0; choice < numberOfchoicesAt; ++choice) {
-			if (provider.getPreceding(index, choice) > -1 || provider.getFollowing(index, choice) > -1) {
-				res = choice;
-				break;
-			}
-		}
-
-		return res;
+		return getTimelineWindow().getProvider().getSelectedChoice(index);
 	}
 
 	/**
-	 * Tells if the tic is the last tic.
+	 * Tells if the {@link Tic} has a {@link Choice#isSelected() selectect} {@link Choice}.
 	 * 
-	 * @return <code>true</code> if the tic is the last tic, <code>false</code> otherwise
+	 * @return <code>true</code> if the {@link Tic} has a {@link Choice#isSelected() selectect} {@link Choice}
+	 *         , <code>false</code> otherwise
 	 */
-	public boolean isLast() {
-		return index == getTimelineWindow().getProvider().getNumberOfTicks() - 1;
+	public boolean hasSelected() {
+		return getTimelineWindow().getProvider().getSelectedChoice(index) >= 0;
 	}
-
 }
