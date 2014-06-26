@@ -6,9 +6,10 @@
     <relativePath>../org.gemoc.execution.engine.root/pom.xml</relativePath>
     <groupId>org.gemoc.execution.engine</groupId>
     <artifactId>org.gemoc.execution.engine.root</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>org.gemoc.execution.engine.commons</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <version>0.1.0-SNAPSHOT</version>
 </project>

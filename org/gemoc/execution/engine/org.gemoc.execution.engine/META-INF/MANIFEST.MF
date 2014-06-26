@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Gemoc Engine
 Bundle-SymbolicName: org.gemoc.execution.engine;singleton:=true
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.Activator
 Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.simulationpolicy.maxcard,
