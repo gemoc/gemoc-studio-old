@@ -414,7 +414,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 						if (hasCapability(ModelExecutionTracingCapability.class))
 							updateTraceModelBeforeAskingSolver(count);
 						
-						
+//						solver.freeEnvironmentBDD();
+//						
 						for(IAliveClockController cc : _clockControllers)
 						{
 							cc.makeClocksTickOrNotTick();

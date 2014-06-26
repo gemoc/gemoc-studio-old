@@ -127,4 +127,6 @@ public interface Solver {
 	 * @param serializableModel
 	 */
 	public void setState(byte[] serializableModel);
+
+	public void freeEnvironmentBDD();
 }

@@ -382,4 +382,9 @@ public abstract class CcslSolver implements
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public void freeEnvironmentBDD() {
+//		solverWrapper.freeEnvironmentBDD();
+	}
 }
