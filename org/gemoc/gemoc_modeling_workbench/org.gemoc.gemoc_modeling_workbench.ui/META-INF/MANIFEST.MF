@@ -28,8 +28,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common;bundle-version="1.0.0",
  org.gemoc.commons.eclipse,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
- org.gemoc.execution.engine;bundle-version="1.0.1",
- org.gemoc.execution.engine.io;bundle-version="1.0.0"
+ org.gemoc.execution.engine;bundle-version="0.1.0",
+ org.gemoc.execution.engine.io;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.gemoc_modeling_workbench.ui,
