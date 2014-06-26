@@ -88,16 +88,17 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 		notifyNumberOfticksChanged(getExecutionTrace().getChoices().size());
 	}
 
-	@Override
-	public boolean isSelected(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 //	@Override
-//	public int getSelectedChoice(int index) {
-//		Choice gemocChoice = getExecutionTrace().getChoices().get(index);
-//		return gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
+//	public boolean isSelected(int arg0, int arg1) {
+//		// TODO Auto-generated method stub
+//		return false;
 //	}
+
+	@Override
+	public int getSelectedChoice(int index) {
+		Choice gemocChoice = getExecutionTrace().getChoices().get(index);
+		return gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
+	}
 
 }
