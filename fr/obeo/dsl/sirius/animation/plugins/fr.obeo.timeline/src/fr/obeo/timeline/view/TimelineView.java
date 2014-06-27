@@ -5,7 +5,6 @@ import fr.obeo.timeline.internal.editpart.TimelineEditPartFactory;
 import fr.obeo.timeline.internal.editpart.TimelineWindowEditPart;
 import fr.obeo.timeline.internal.model.ITimelineWindowListener;
 import fr.obeo.timeline.internal.model.TimelineWindow;
-import fr.obeo.timeline.sample.SampleTimelineProvider;
 
 import java.util.List;
 
@@ -88,8 +87,7 @@ public class TimelineView extends ViewPart {
 					case SWT.ARROW_RIGHT:
 						// shift the TimelineWindow if needed
 						if (timelineWindow.getEnd() <= part.getModel().getTic().getIndex() + 1
-								&& part.getModel().getTic().getIndex() + 1 <= timelineWindow.getProvider()
-										.getNumberOfTicks()) {
+								&& part.getModel().getTic().getIndex() + 1 <= provider.getNumberOfTicks()) {
 							timelineWindow.setStart(timelineWindow.getStart() + 1);
 						}
 						toSelect = part.getRightChoiceEditPart();
@@ -177,10 +175,11 @@ public class TimelineView extends ViewPart {
 				}
 				if (timelineWindow.getStart() + shift * multiplier < 0) {
 					timelineWindow.setStart(0);
-				} else if (timelineWindow.getStart() + timelineWindow.getLength() + shift * multiplier > timelineWindow
-						.getProvider().getNumberOfTicks()) {
-					timelineWindow.setStart(Math.max(timelineWindow.getProvider().getNumberOfTicks()
-							- timelineWindow.getLength(), 0));
+				} else if (provider != null
+						&& timelineWindow.getStart() + timelineWindow.getLength() + shift * multiplier > provider
+								.getNumberOfTicks()) {
+					timelineWindow.setStart(Math.max(
+							provider.getNumberOfTicks() - timelineWindow.getLength(), 0));
 				} else if (shift != 0) {
 					doneShift += shift;
 					timelineWindow.setStart(timelineWindow.getStart() + shift * multiplier);
@@ -232,8 +231,12 @@ public class TimelineView extends ViewPart {
 					if (!timelineSlider.isDisposed()) {
 						timelineSlider.setPageIncrement(length);
 						timelineSlider.setThumb(length);
-						timelineSlider.setVisible(timelineWindow.getLength() < timelineWindow.getProvider()
-								.getNumberOfTicks());
+						if (provider != null) {
+							timelineSlider.setVisible(timelineWindow.getLength() < provider
+									.getNumberOfTicks());
+						} else  {
+                            timelineSlider.setVisible(false);
+                        }
 					}
 				}
 			});
@@ -279,6 +282,11 @@ public class TimelineView extends ViewPart {
 	 * The {@link TimelineWindow}.
 	 */
 	private TimelineWindow timelineWindow;
+
+	/**
+	 * The {@link ITimelineProvider}.
+	 */
+	private ITimelineProvider provider;
 
 	/**
 	 * The {@link AdapterFactory} created from the EMF registry.
@@ -329,17 +337,18 @@ public class TimelineView extends ViewPart {
 		gridData.grabExcessVerticalSpace = true;
 		timelineViewer.getControl().setLayoutData(gridData);
 		timelineViewer.setEditPartFactory(new TimelineEditPartFactory());
-		final ITimelineProvider provider = getTimelineProvider();
 		timelineWindow = new TimelineWindow(provider);
-		provider.addTimelineListener(timelineWindow);
 		timelineViewer.setContents(timelineWindow);
 
 		timelineSlider.setPageIncrement(timelineWindow.getLength());
 		timelineSlider.setThumb(timelineWindow.getLength());
 		timelineSlider.setSelection(timelineWindow.getStart());
-		timelineSlider.setMaximum(timelineWindow.getProvider().getNumberOfTicks());
-		timelineSlider.setVisible(timelineWindow.getLength() < timelineWindow.getProvider()
-				.getNumberOfTicks());
+		if (provider != null) {
+			timelineSlider.setMaximum(provider.getNumberOfTicks());
+			timelineSlider.setVisible(timelineWindow.getLength() < provider.getNumberOfTicks());
+		} else {
+			timelineSlider.setVisible(false);
+		}
 		timelineSlider.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -354,7 +363,9 @@ public class TimelineView extends ViewPart {
 		});
 		timelineWindowListener = new TimelineWindowListener();
 		timelineWindow.addTimelineWindowListener(timelineWindowListener);
-		provider.addTimelineListener(timelineWindowListener);
+		if (provider != null) {
+			provider.addTimelineListener(timelineWindowListener);
+		}
 		timelineViewer.getControl().setBackground(ColorConstants.listBackground);
 		timelineViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -383,9 +394,9 @@ public class TimelineView extends ViewPart {
 				} else {
 					rootEditPart.getZoomManager().zoomOut();
 					final int length = getWindowLength();
-					if (timelineWindow.getStart() + length > timelineWindow.getProvider().getNumberOfTicks()
-							&& timelineWindow.getProvider().getNumberOfTicks() - length >= 0) {
-						timelineWindow.setStart(timelineWindow.getProvider().getNumberOfTicks() - length);
+					if (provider != null && timelineWindow.getStart() + length > provider.getNumberOfTicks()
+							&& provider.getNumberOfTicks() - length >= 0) {
+						timelineWindow.setStart(provider.getNumberOfTicks() - length);
 					}
 				}
 			}
@@ -434,15 +445,6 @@ public class TimelineView extends ViewPart {
 	}
 
 	/**
-	 * Gets the {@link ITimelineProvider}.
-	 * 
-	 * @return the {@link ITimelineProvider}
-	 */
-	protected ITimelineProvider getTimelineProvider() {
-		return new SampleTimelineProvider();
-	}
-
-	/**
 	 * Sets the {@link ITimelineProvider}.
 	 * 
 	 * @param provider
@@ -450,6 +452,9 @@ public class TimelineView extends ViewPart {
 	 */
 	public void setTimelineProvider(ITimelineProvider provider) {
 		timelineWindow.setProvider(provider);
+		this.provider.removeTimelineListener(timelineWindowListener);
+		this.provider = provider;
+		this.provider.addTimelineListener(timelineWindowListener);
 		timelineWindow.setLength(getWindowLength());
 	}
 

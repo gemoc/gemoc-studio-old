@@ -85,15 +85,10 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+	Choice gemocChoice = getExecutionTrace().getChoices().get(getExecutionTrace().getChoices().size() - 1);
+		notifyIsSelectedChanged(getExecutionTrace().getChoices().size() - 1, gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()), true);
 		notifyNumberOfticksChanged(getExecutionTrace().getChoices().size());
 	}
-
-
-//	@Override
-//	public boolean isSelected(int arg0, int arg1) {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
 
 	@Override
 	public int getSelectedChoice(int index) {

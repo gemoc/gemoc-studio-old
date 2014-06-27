@@ -62,7 +62,7 @@ public class TimelineWindow implements ITimelineListener {
 	 *            the {@link ITimelineProvider} used to populate the model
 	 */
 	public TimelineWindow(ITimelineProvider providier) {
-		this.provider = providier;
+		setProvider(providier);
 	}
 
 	/**
@@ -82,10 +82,12 @@ public class TimelineWindow implements ITimelineListener {
 	public List<Tic> getTics() {
 		final List<Tic> res = new ArrayList<Tic>();
 
-		final int begin = getStart();
-		final int end = Math.min(begin + getLength(), getProvider().getNumberOfTicks());
-		for (int i = begin; i < end; ++i) {
-			res.add(new Tic(this, i));
+		if (getProvider() != null) {
+			final int begin = getStart();
+			final int end = Math.min(begin + getLength(), getProvider().getNumberOfTicks());
+			for (int i = begin; i < end; ++i) {
+				res.add(new Tic(this, i));
+			}
 		}
 
 		return res;
@@ -172,10 +174,18 @@ public class TimelineWindow implements ITimelineListener {
 	 *            the {@link ITimelineProvider}
 	 */
 	public void setProvider(ITimelineProvider provider) {
-		if (!this.provider.equals(provider)) {
+		if ((this.provider != null && !this.provider.equals(provider))
+				|| (provider != null && !provider.equals(this.provider))) {
+			if (this.provider != null) {
+				this.provider.removeTimelineListener(this);
+			}
 			this.provider = provider;
-			for (ITimelineWindowListener listener : getListeners()) {
-				listener.providerChanged(provider);
+			if (this.provider != null) {
+				this.provider.addTimelineListener(this);
+				for (ITimelineWindowListener listener : getListeners()) {
+					listener.providerChanged(provider);
+				}
+				maxSelectedIndex = -1;
 			}
 			setStart(0);
 		}
