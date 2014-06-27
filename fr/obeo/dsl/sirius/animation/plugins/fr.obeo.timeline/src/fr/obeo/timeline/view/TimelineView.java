@@ -11,10 +11,6 @@ import java.util.List;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.editparts.ScalableFreeformRootEditPart;
 import org.eclipse.gef.editparts.ZoomListener;
@@ -25,6 +21,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -234,9 +231,9 @@ public class TimelineView extends ViewPart {
 						if (provider != null) {
 							timelineSlider.setVisible(timelineWindow.getLength() < provider
 									.getNumberOfTicks());
-						} else  {
-                            timelineSlider.setVisible(false);
-                        }
+						} else {
+							timelineSlider.setVisible(false);
+						}
 					}
 				}
 			});
@@ -259,9 +256,9 @@ public class TimelineView extends ViewPart {
 	private static final int TIMELINE_RATIO = 90;
 
 	/**
-	 * The detail {@link Viewer}.
+	 * The detail {@link TreeViewer}.
 	 */
-	private Viewer detailViewer;
+	private TreeViewer detailViewer;
 
 	/**
 	 * The timeline {@link ScrollingGraphicalViewer}.
@@ -287,22 +284,6 @@ public class TimelineView extends ViewPart {
 	 * The {@link ITimelineProvider}.
 	 */
 	private ITimelineProvider provider;
-
-	/**
-	 * The {@link AdapterFactory} created from the EMF registry.
-	 */
-	private final AdapterFactory adapterFactory = new ComposedAdapterFactory(
-			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-
-	/**
-	 * The detail {@link IContentProvider}.
-	 */
-	private final IContentProvider detailContentProvider = createDetailContentProvider();
-
-	/**
-	 * The detail {@link ILabelProvider}.
-	 */
-	private final ILabelProvider detailLabelProvider = createDetailLabelProvider();
 
 	/**
 	 * The timeline window listener.
@@ -427,24 +408,6 @@ public class TimelineView extends ViewPart {
 	}
 
 	/**
-	 * Creates the {@link IContentProvider} for the detail viewer.
-	 * 
-	 * @return the created {@link IContentProvider}
-	 */
-	protected IContentProvider createDetailContentProvider() {
-		return new AdapterFactoryContentProvider(adapterFactory);
-	}
-
-	/**
-	 * Creates the {@link ILabelProvider} for the detail viewer.
-	 * 
-	 * @return the created {@link ILabelProvider}
-	 */
-	protected ILabelProvider createDetailLabelProvider() {
-		return new AdapterFactoryLabelProvider(adapterFactory);
-	}
-
-	/**
 	 * Sets the {@link ITimelineProvider}.
 	 * 
 	 * @param provider
@@ -483,17 +446,35 @@ public class TimelineView extends ViewPart {
 	}
 
 	/**
-	 * Creates the detail {@link Viewer}.
+	 * Creates the detail {@link TreeViewer}.
 	 * 
 	 * @param parent
 	 *            the parent {@link Composite}
-	 * @return the created detail {@link Viewer}
+	 * @return the created detail {@link TreeViewer}
 	 */
-	protected Viewer createDetailViewer(Composite parent) {
+	protected TreeViewer createDetailViewer(Composite parent) {
 		final FilteredTree treeViewer = new FilteredTree(parent, SWT.None, createDetailPatternFilter(), false);
-		treeViewer.getViewer().setContentProvider(detailContentProvider);
-		treeViewer.getViewer().setLabelProvider(detailLabelProvider);
 		return treeViewer.getViewer();
+	}
+
+	/**
+	 * Sets the detail view content provider.
+	 * 
+	 * @param detailContentProvider
+	 *            the {@link IContentProvider}
+	 */
+	public void setDetailViewerContentProvider(IContentProvider detailContentProvider) {
+		detailViewer.setContentProvider(detailContentProvider);
+	}
+
+	/**
+	 * Sets the detail view label provider.
+	 * 
+	 * @param detailLabelProvider
+	 *            the {@link ILabelProvider}
+	 */
+	public void setDetailViewerLabelProvider(ILabelProvider detailLabelProvider) {
+		detailViewer.setLabelProvider(detailLabelProvider);
 	}
 
 	/**
@@ -525,8 +506,6 @@ public class TimelineView extends ViewPart {
 	@Override
 	public void dispose() {
 		timelineWindow.removeTimelineWindowListener(timelineWindowListener);
-		detailContentProvider.dispose();
-		detailLabelProvider.dispose();
 		super.dispose();
 	}
 

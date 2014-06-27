@@ -19,8 +19,6 @@ package fr.obeo.timeline.sample;
 
 import fr.obeo.timeline.view.AbstractTimelineProvider;
 
-import org.eclipse.emf.ecore.EcorePackage;
-
 /**
  * A sample {@link fr.obeo.timeline.view.ITimelineProvider ITimelineProvider}.
  * 
@@ -103,7 +101,7 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 
 	@Override
 	public Object getAt(int index, int choice) {
-		return EcorePackage.eINSTANCE;
+		return "something";
 	}
 
 	@Override
