@@ -48,6 +48,7 @@
       <import feature="org.eclipse.xtend.m2e" version="2.4.3.v201309030823" match="greaterOrEqual"/>
       <import feature="org.obeonetwork.dsl.uml2.runtime.feature" version="4.0.0.201403071353" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.sonatype.tycho.m2e.feature" version="0.7.0.201309291400" match="greaterOrEqual"/>
    </requires>
 
 </feature>
