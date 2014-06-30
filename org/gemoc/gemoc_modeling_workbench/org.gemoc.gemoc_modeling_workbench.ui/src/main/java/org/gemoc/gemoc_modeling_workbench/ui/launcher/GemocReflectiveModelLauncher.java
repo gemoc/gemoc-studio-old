@@ -267,7 +267,7 @@ public class GemocReflectiveModelLauncher
 		
 		ResourceSet resourceSet = getResourceSet(animate, getDebuggerViewPathAsString());
 		
-		String transformationPath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
+		String transformationPath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
 		_executionContext.generateMoC(transformationPath);
 		URI mocURI = URI.createPlatformResourceURI(_executionContext.getMoCPath().toString(), true);
 		solver.setSolverInputFile(resourceSet, mocURI);
@@ -374,9 +374,9 @@ public class GemocReflectiveModelLauncher
 	private HashSet<IEngineHook> retrieveEngineHooks(IConfigurationElement confElement) throws CoreException {
 		HashSet<IEngineHook> engineHooks = new HashSet<IEngineHook>();
 		if (confElement != null) {
-			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF)){
+			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF)){
 				childConfElement.getName();				
-				final Object oEngineHook = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF_ENGINE_HOOK_ATT);
+				final Object oEngineHook = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF_ENGINE_HOOK_ATT);
 				if(oEngineHook instanceof IEngineHook){
 					engineHooks.add((IEngineHook) oEngineHook);
 				}
@@ -390,9 +390,9 @@ public class GemocReflectiveModelLauncher
 	{
 		HashSet<IAliveClockController> eventOccurenceInjectors = new HashSet<IAliveClockController>();
 		if (confElement != null) {
-			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_DEFINITION)){
+			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_DEFINITION)){
 				childConfElement.getName();				
-				final Object injector = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_CLASS_DEFINITION);
+				final Object injector = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_CLASS_DEFINITION);
 				if(injector instanceof IAliveClockController){
 					eventOccurenceInjectors.add((IAliveClockController) injector);
 				}
@@ -402,7 +402,7 @@ public class GemocReflectiveModelLauncher
 	}
 	
 	private ModelLoader instanciateModelLoader(IConfigurationElement confElement) throws CoreException {
-		final Object oModelLoader = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
+		final Object oModelLoader = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
 		if (oModelLoader instanceof ModelLoader) {
 			return (ModelLoader) oModelLoader;
 		}
@@ -410,7 +410,7 @@ public class GemocReflectiveModelLauncher
 	}
 
 	private FeedbackPolicy instanciateFeedbackPolicy(IConfigurationElement confElement) throws CoreException {
-		final Object oFeedbackPolicy = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_FEEDBACKPOLICY_ATT);
+		final Object oFeedbackPolicy = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_FEEDBACKPOLICY_ATT);
 		if (oFeedbackPolicy instanceof FeedbackPolicy) {
 			return(FeedbackPolicy) oFeedbackPolicy;
 		}
@@ -418,7 +418,7 @@ public class GemocReflectiveModelLauncher
 	}
 
 	private EventExecutor instanciateEventExecutor(IConfigurationElement confElement) throws CoreException {
-		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT);
+		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT);
 		if (oexecutor instanceof EventExecutor) {
 			return(EventExecutor) oexecutor;
 		}
@@ -426,7 +426,7 @@ public class GemocReflectiveModelLauncher
 	}
 
 	private CodeExecutor instanciateCodeExecutor(IConfigurationElement confElement) throws CoreException {
-		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
+		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
 		if (oexecutor instanceof CodeExecutor) {
 			return(CodeExecutor) oexecutor;
 		}
@@ -434,7 +434,7 @@ public class GemocReflectiveModelLauncher
 	}
 	
 	private Solver instanciateSolver(IConfigurationElement confElement) throws CoreException {
-		Object oSolver = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
+		Object oSolver = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
 		if (oSolver instanceof Solver) {
 			return (Solver) oSolver;
 		}
