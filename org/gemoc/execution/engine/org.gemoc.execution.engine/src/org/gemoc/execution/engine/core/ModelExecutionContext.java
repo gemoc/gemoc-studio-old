@@ -1,13 +1,5 @@
 package org.gemoc.execution.engine.core;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -16,32 +8,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.compare.Comparison;
-import org.eclipse.emf.compare.EMFCompare;
-import org.eclipse.emf.compare.match.DefaultComparisonFactory;
-import org.eclipse.emf.compare.match.DefaultEqualityHelperFactory;
-import org.eclipse.emf.compare.match.DefaultMatchEngine;
-import org.eclipse.emf.compare.match.IComparisonFactory;
-import org.eclipse.emf.compare.match.IMatchEngine;
-import org.eclipse.emf.compare.match.eobject.IEObjectMatcher;
-import org.eclipse.emf.compare.postprocessor.IPostProcessor;
-import org.eclipse.emf.compare.rcp.EMFCompareRCPPlugin;
-import org.eclipse.emf.compare.scope.IComparisonScope;
-import org.eclipse.emf.compare.utils.UseIdentifiers;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.gemoc.execution.engine.commons.Activator;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 
 

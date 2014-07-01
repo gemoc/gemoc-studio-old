@@ -27,6 +27,7 @@ import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
+import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine.EngineRunnable;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;

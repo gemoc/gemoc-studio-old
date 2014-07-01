@@ -37,6 +37,7 @@ import org.gemoc.execution.engine.io.backends.ConsoleBackend;
 import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
 import org.gemoc.execution.engine.io.frontends.PrepareViewFrontend;
+import org.gemoc.execution.engine.io.views.obeo.InstructionRevealer;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
@@ -333,18 +334,19 @@ public class GemocReflectiveModelLauncher
 		// engine.
 		// configure altogether
 		configureEngine(engine, frontends, backends, delay);
+		engine.setInstructionRevealer(new InstructionRevealer(_executionContext.getDebuggerViewModelPath()));
 
-		if (animate) {
-			DSLDebugModelPresentation p = new DSLDebugModelPresentation();
-			p.getEditorInput(engine.getModelUnderExecutionResource().getContents().get(0));
-			engine.showInstruction(engine.getModelUnderExecutionResource().getContents().get(0));
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+//		if (animate) {
+//			DSLDebugModelPresentation p = new DSLDebugModelPresentation();
+//			p.getEditorInput(engine.getModelUnderExecutionResource().getContents().get(0));
+//			engine.showInstruction(engine.getModelUnderExecutionResource().getContents().get(0));
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
 		
 		// delegate for debug mode
 		if (ILaunchManager.DEBUG_MODE.equals(mode)) {
