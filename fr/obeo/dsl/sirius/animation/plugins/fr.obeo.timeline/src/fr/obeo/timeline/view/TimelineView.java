@@ -415,7 +415,9 @@ public class TimelineView extends ViewPart {
 	 */
 	public void setTimelineProvider(ITimelineProvider provider) {
 		timelineWindow.setProvider(provider);
-		this.provider.removeTimelineListener(timelineWindowListener);
+		if (this.provider != null) {
+			this.provider.removeTimelineListener(timelineWindowListener);
+		}
 		this.provider = provider;
 		this.provider.addTimelineListener(timelineWindowListener);
 		timelineWindow.setLength(getWindowLength());
