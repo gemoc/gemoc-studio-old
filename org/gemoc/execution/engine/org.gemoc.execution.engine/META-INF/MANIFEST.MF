@@ -4,8 +4,7 @@ Bundle-Name: Gemoc Engine
 Bundle-SymbolicName: org.gemoc.execution.engine;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.Activator
-Require-Bundle: org.eclipse.ui,
- fr.inria.aoste.timesquare.simulationpolicy.maxcard,
+Require-Bundle: fr.inria.aoste.timesquare.simulationpolicy.maxcard,
  fr.inria.aoste.trace,
  fr.inria.aoste.timesquare.ccslkernel.modelunfolding,
  fr.inria.aoste.timesquare.ccslkernel.solver,
@@ -26,20 +25,19 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.execution.engine.commons,
  org.kermeta.utils.systemservices.api;bundle-version="2.1.1",
  fr.inria.aoste.timesquare.simulationpolicy;bundle-version="1.1.0",
- fr.obeo.dsl.debug.ide;bundle-version="1.0.0",
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
  org.eclipse.emf.ecore,
  org.gemoc.gemoc_language_workbench.utils,
  org.eclipse.emf.common,
  org.eclipse.equinox.registry,
  org.eclipse.sirius,
- org.eclipse.sirius.ui,
- fr.obeo.dsl.debug.ide.sirius.ui,
  org.eclipse.emf.compare;bundle-version="3.0.2",
  org.eclipse.emf.compare.rcp;bundle-version="2.1.2",
  org.gemoc.commons.eclipse,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
- com.google.guava;bundle-version="10.0.1"
+ com.google.guava;bundle-version="10.0.1",
+ org.eclipse.ui;bundle-version="3.105.0",
+ fr.obeo.dsl.debug.ide;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine,

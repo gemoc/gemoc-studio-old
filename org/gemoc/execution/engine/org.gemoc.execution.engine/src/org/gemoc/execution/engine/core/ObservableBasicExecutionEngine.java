@@ -9,30 +9,21 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Set;
 
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
-import org.gemoc.execution.engine.commons.dsa.DefaultClockController;
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
@@ -57,7 +48,6 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
-import fr.obeo.dsl.debug.ide.sirius.ui.DebugSiriusIdeUiPlugin;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -128,6 +118,12 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	protected FeedbackPolicy feedbackPolicy = null;
 	protected ILogicalStepDecider logicalStepDecider = null;
 
+	private IInstructionRevealer _instructionRevealer;
+	public void setInstructionRevealer(IInstructionRevealer revealer)
+	{
+		_instructionRevealer = revealer;
+	}
+	
 	private Session _siriusSession;
 	public void setSiriusSession(Session session) {
 		_siriusSession = session;
@@ -163,39 +159,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 */
 	private int delay;
 
-	/**
-	 * Show the given {@link EObject instruction}.
-	 * @param airdURI 
-	 * 
-	 * @param instruction
-	 *            the {@link EObject instruction} to show
-	 */
-	public void showInstruction(final EObject instruction) {
-		final URI resourceURI = instruction.eResource().getURI();
-		if (resourceURI.isPlatformResource()) {
-			final String resourcePath = resourceURI.toPlatformString(true);
-			final IResource resource = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(resourcePath));
-			try {
-				final IMarker marker = resource.createMarker(EValidator.MARKER);
-				marker.setAttribute(EValidator.URI_ATTRIBUTE, EcoreUtil.getURI(instruction).toString());
-				if (_siriusSession == null) {
-					URI airdURI = URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true);
-					_siriusSession = SessionManager.INSTANCE.getExistingSession(airdURI);
-				}
-				if (_siriusSession == null)
-					return;
-				if (!_siriusSession.isOpen()) {
-					_siriusSession.open(new NullProgressMonitor());
-				}
-				SessionUIManager.INSTANCE.getOrCreateUISession(_siriusSession);
-				final TraceabilityMarkerNavigationProvider navigationProvider = new TraceabilityMarkerNavigationProvider(_siriusSession);
-				navigationProvider.gotoMarker(marker);
-				marker.delete();
-			} catch (CoreException e) {
-				DebugSiriusIdeUiPlugin.INSTANCE.log(e);
-			}
-		}
-	}
+
 
 	/**
 	 * The constructor takes in all the language-specific elements. Creates the
@@ -483,8 +447,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 								if (delay != 0) {
 									for (Event event : LogicalStepHelper
 											.getTickedEvents(logicalStepToApply)) {
-										if (event.getReferencedObjectRefs().size() != 0) {
-											showInstruction(event.getReferencedObjectRefs().get(0));
+										if (event.getReferencedObjectRefs().size() != 0
+											&& _instructionRevealer != null) 
+										{
+											_instructionRevealer.showInstruction(event.getReferencedObjectRefs().get(0));
 										}
 									}
 									Thread.sleep(delay);
