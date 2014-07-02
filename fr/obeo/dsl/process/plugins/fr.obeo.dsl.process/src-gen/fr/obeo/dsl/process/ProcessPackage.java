@@ -356,13 +356,22 @@ public interface ProcessPackage extends EPackage {
 	int ACTION_TASK__PRECONDITION = TASK__PRECONDITION;
 
 	/**
+	 * The feature id for the '<em><b>Multiple Execution</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_TASK__MULTIPLE_EXECUTION = TASK_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Action Task</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 0;
+	int ACTION_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.process.Expression <em>Expression</em>}' class. <!--
@@ -854,6 +863,17 @@ public interface ProcessPackage extends EPackage {
 	EClass getActionTask();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ActionTask#isMultipleExecution
+	 * <em>Multiple Execution</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Multiple Execution</em>'.
+	 * @see fr.obeo.dsl.process.ActionTask#isMultipleExecution()
+	 * @see #getActionTask()
+	 * @generated
+	 */
+	EAttribute getActionTask_MultipleExecution();
+
+	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Expression <em>Expression</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -1232,6 +1252,14 @@ public interface ProcessPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ACTION_TASK = eINSTANCE.getActionTask();
+
+		/**
+		 * The meta object literal for the '<em><b>Multiple Execution</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EAttribute ACTION_TASK__MULTIPLE_EXECUTION = eINSTANCE.getActionTask_MultipleExecution();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.process.Expression <em>Expression</em>}' class.

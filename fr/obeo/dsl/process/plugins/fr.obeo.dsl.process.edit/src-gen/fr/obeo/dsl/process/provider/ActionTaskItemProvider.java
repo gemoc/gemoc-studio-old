@@ -57,6 +57,7 @@ public class ActionTaskItemProvider extends ItemProviderAdapter implements IEdit
 			addDescriptionPropertyDescriptor(object);
 			addPrecedingTasksPropertyDescriptor(object);
 			addFollowingTasksPropertyDescriptor(object);
+			addMultipleExecutionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -130,6 +131,21 @@ public class ActionTaskItemProvider extends ItemProviderAdapter implements IEdit
 	}
 
 	/**
+	 * This adds a property descriptor for the Multiple Execution feature. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected void addMultipleExecutionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ActionTask_multipleExecution_feature"), getString(
+						"_UI_PropertyDescriptor_description", "_UI_ActionTask_multipleExecution_feature",
+						"_UI_ActionTask_type"), ProcessPackage.Literals.ACTION_TASK__MULTIPLE_EXECUTION,
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for
 	 * an {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand}
 	 * or {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc -->
@@ -196,6 +212,7 @@ public class ActionTaskItemProvider extends ItemProviderAdapter implements IEdit
 			case ProcessPackage.ACTION_TASK__NAME:
 			case ProcessPackage.ACTION_TASK__ID:
 			case ProcessPackage.ACTION_TASK__DESCRIPTION:
+			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
 						true));
 				return;

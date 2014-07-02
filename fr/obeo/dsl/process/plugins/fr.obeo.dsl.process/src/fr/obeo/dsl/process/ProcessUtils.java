@@ -698,4 +698,20 @@ public final class ProcessUtils {
 		return res;
 	}
 
+	/**
+	 * Tells if the given {@link ActionTask} can be
+	 * {@link IProcessRunner#doAction(ProcessContext, ActionTask) done}.
+	 * 
+	 * @param context
+	 *            the {@link ProcessContext}
+	 * @param task
+	 *            the {@link ActionTask}
+	 * @return <code>true</code> if the given {@link ActionTask} can be
+	 *         {@link IProcessRunner#doAction(ProcessContext, ActionTask) done}, <code>false</code> otherwise
+	 */
+	public static boolean canDoAction(ProcessContext context, ActionTask task) {
+		return ProcessUtils.evaluatePrecondition(context, task)
+				&& (task.isMultipleExecution() || !ProcessUtils.isDone(context, task));
+	}
+
 }
