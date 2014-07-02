@@ -3,6 +3,7 @@ package org.gemoc.gemoc_modeling_workbench.ui.actions;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
+import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinitionExtension;
 import org.gemoc.workbench.modeling.LanguageFinder;
 
 public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
@@ -33,7 +34,7 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 			dialog.open();
 			return null;
 		}
-		String uri = confElement.getAttribute(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
+		String uri = confElement.getAttribute(LanguageDefinitionExtension.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
 		if (!uri.startsWith("platform:/plugin"))
 			uri = "platform:/plugin" + uri;
 		return uri;
