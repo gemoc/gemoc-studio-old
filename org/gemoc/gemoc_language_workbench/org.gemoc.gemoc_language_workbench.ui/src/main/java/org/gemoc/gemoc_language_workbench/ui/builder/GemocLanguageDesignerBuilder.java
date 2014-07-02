@@ -8,7 +8,6 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
@@ -26,7 +25,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.gemoc.commons.eclipse.core.resources.GFile;
-import org.gemoc.commons.eclipse.core.resources.Marker;
 import org.gemoc.commons.eclipse.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.conf.BuildOptions;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
@@ -47,9 +45,6 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.jdom2.Element;
 import org.osgi.framework.BundleException;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-import org.xml.sax.helpers.DefaultHandler;
 
 public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 

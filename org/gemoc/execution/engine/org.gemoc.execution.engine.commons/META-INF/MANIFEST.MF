@@ -30,8 +30,8 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.simulationpolicy.max;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.launcher.core;bundle-version="1.4.1",
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
- fr.inria.aoste.timesquare.javabdd.runtime;bundle-version="1.2.0",
- org.gemoc.commons.eclipse
+ org.gemoc.commons.eclipse,
+ fr.inria.aoste.timesquare.javabdd.runtime;bundle-version="1.2.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.commons,
