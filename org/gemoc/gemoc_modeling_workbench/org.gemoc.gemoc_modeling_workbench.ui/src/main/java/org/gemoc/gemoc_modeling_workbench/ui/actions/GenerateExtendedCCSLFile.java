@@ -14,7 +14,7 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 	{
 		super();
 	}
-
+	
 	@Override
 	protected String getTransformationURI() 
 	{
@@ -40,6 +40,11 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 		if (!uri.startsWith("platform:/plugin"))
 			uri = "platform:/plugin" + uri;
 		return uri;
+	}
+
+	@Override
+	protected String getFileExtension() {
+		return "extendedCCSL";
 	}
 
 
