@@ -3,7 +3,7 @@ package org.gemoc.execution.engine;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
-import org.gemoc.commons.eclipse.pde.GemocUIPlugin;
+import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
 import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
 import org.osgi.framework.BundleContext;
 

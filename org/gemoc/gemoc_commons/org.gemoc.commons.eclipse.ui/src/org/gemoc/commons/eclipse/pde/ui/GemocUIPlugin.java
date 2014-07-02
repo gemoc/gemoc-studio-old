@@ -1,11 +1,12 @@
-package org.gemoc.commons.eclipse.pde;
+package org.gemoc.commons.eclipse.pde.ui;
 
 import java.util.ArrayList;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.gemoc.commons.eclipse.logging.ILoggingBackend;
+import org.gemoc.commons.eclipse.pde.IPlugin;
 
-public abstract class GemocUIPlugin extends AbstractUIPlugin {
+public abstract class GemocUIPlugin extends AbstractUIPlugin implements IPlugin {
 
 	/**
 	 * Get the plugin id as specified in the manifest.

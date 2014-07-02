@@ -27,7 +27,8 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0",
  org.gemoc.commons.eclipse,
  org.eclipse.equinox.registry,
- fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0"
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
+ org.gemoc.commons.eclipse.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.filesystem

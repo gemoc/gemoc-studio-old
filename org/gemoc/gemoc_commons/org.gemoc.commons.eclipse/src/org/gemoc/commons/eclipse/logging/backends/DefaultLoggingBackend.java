@@ -3,17 +3,16 @@ package org.gemoc.commons.eclipse.logging.backends;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.logging.ILoggingBackend;
-import org.gemoc.commons.eclipse.pde.GemocUIPlugin;
-import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem;
+import org.gemoc.commons.eclipse.pde.IPlugin;
 import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 
 public class DefaultLoggingBackend implements ILoggingBackend 
 {
 
-	private GemocUIPlugin _plugin;
+	private IPlugin _plugin;
 
-	public DefaultLoggingBackend(GemocUIPlugin plugin)
+	public DefaultLoggingBackend(IPlugin plugin)
 	{
 		_plugin = plugin;
 	}

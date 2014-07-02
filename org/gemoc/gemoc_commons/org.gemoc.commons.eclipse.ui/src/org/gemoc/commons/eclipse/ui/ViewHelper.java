@@ -56,15 +56,14 @@ public class ViewHelper {
 		@Override
 		public void run() {
 			_viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(_viewId);
-			if (_viewPart == null) {
-				try 
-				{
+			if (_viewPart == null) 
+			{
+				try {
 					_viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(_viewId);
-				}
-				catch (PartInitException e) {
+				} catch (PartInitException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}			
+				}
 			}
 		}
 		

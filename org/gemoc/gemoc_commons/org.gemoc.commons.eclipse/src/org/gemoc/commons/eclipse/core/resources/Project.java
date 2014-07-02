@@ -13,7 +13,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 
 public class Project {
@@ -120,7 +119,7 @@ public class Project {
 	}
 	
 	public static void convertToPlugin(IProject project) throws CoreException, InvocationTargetException, InterruptedException {
-		IRunnableWithProgress convertOperation = new ConvertProjectToPluginOperation(new IProject[]{project}, false);
+		ConvertProjectToPluginOperation convertOperation = new ConvertProjectToPluginOperation(new IProject[]{project}, false);
 		convertOperation.run(new NullProgressMonitor());
 	}	
 	

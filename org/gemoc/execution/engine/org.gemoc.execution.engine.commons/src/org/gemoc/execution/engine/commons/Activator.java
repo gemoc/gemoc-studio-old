@@ -1,7 +1,7 @@
 package org.gemoc.execution.engine.commons;
 
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
-import org.gemoc.commons.eclipse.pde.GemocUIPlugin;
+import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**

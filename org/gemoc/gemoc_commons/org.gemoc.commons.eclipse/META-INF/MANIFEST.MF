@@ -3,9 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: GEMOC Commons Eclipse
 Bundle-SymbolicName: org.gemoc.commons.eclipse;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: org.gemoc.commons.eclipse.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.pde.core,
  org.eclipse.pde.ui,
  org.eclipse.jdt.core;bundle-version="3.9.0",
@@ -20,7 +18,6 @@ Export-Package: org.gemoc.commons.eclipse.core.resources,
  org.gemoc.commons.eclipse.logging,
  org.gemoc.commons.eclipse.logging.backends,
  org.gemoc.commons.eclipse.pde,
- org.gemoc.commons.eclipse.resource.merging,
- org.gemoc.commons.eclipse.ui
+ org.gemoc.commons.eclipse.resource.merging
 Import-Package: org.eclipse.core.resources
 Bundle-Vendor: INRIA
