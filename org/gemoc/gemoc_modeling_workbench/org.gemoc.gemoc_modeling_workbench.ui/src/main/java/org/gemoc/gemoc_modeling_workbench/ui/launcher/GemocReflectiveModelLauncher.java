@@ -11,10 +11,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.InvalidRegistryObjectException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
@@ -31,28 +29,34 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.IEditorPart;
+import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
 import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.execution.engine.io.backends.ConsoleBackend;
 import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
+import org.gemoc.execution.engine.io.frontends.PrepareViewFrontend;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.api.utils.ModelLoader;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
+import org.gemoc.workbench.modeling.LanguageFinder;
 import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
+import fr.obeo.dsl.debug.ide.sirius.ui.DSLDebugModelPresentation;
 import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
 public class GemocReflectiveModelLauncher
@@ -142,25 +146,26 @@ public class GemocReflectiveModelLauncher
 //						GemocModelLauncherConfigurationConstants.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 //						"");
 
-		IConfigurationElement confElement = getLanguageExtension();
+		IConfigurationElement confElement = LanguageFinder.findDefinition(getLanguageName());
 
 		// All these elements are required to construct the engine. They are
 		// retrieved from the Extension Points of the xDSML.
 		Solver solver = null;
-		EventExecutor executor = null;
+		EventExecutor eventExecutor = null;
+		CodeExecutor codeExecutor = null;
 		FeedbackPolicy feedbackPolicy = null;
-		Resource domainSpecificEventsResource = null;
 		ModelLoader modelLoader = null;
-		Resource mocEventsResource = null;
 		
 		Set<IEngineHook> engineHooks = retrieveEngineHooks(confElement); 
-
+		Set<IAliveClockController> eventOccurenceInjectors = retrieveEventOccurenceInjectors(confElement);
+		
 		// get the extension objects
 		if (confElement != null) {
 			debug("Starting to retrieve components from the configuration...");
 
 			solver = instanciateSolver(confElement);
-			executor = instanciateCodeExecutor(confElement);
+			eventExecutor = instanciateEventExecutor(confElement);
+			codeExecutor = instanciateCodeExecutor(confElement);
 
 			try {
 				feedbackPolicy = instanciateFeedbackPolicy(confElement);
@@ -173,19 +178,19 @@ public class GemocReflectiveModelLauncher
 			
 			
 			// [FT] To disappear?
-			String mocEventResourcePath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
-			if (mocEventResourcePath != null) {
-				ResourceSet resSet = new ResourceSetImpl();
-				if(mocEventResourcePath.startsWith("/")) {
-					mocEventsResource = resSet.getResource(URI.createPlatformPluginURI(mocEventResourcePath, true), true);
-					
-				} else {
-					mocEventsResource = resSet.getResource(URI.createURI(mocEventResourcePath), true);
-				}
-			} else {
-				warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT
-								+ " isn't set");
-			}
+//			String mocEventResourcePath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT);
+//			if (mocEventResourcePath != null) {
+//				ResourceSet resSet = new ResourceSetImpl();
+//				if(mocEventResourcePath.startsWith("/")) {
+//					mocEventsResource = resSet.getResource(URI.createPlatformPluginURI(mocEventResourcePath, true), true);
+//					
+//				} else {
+//					mocEventsResource = resSet.getResource(URI.createURI(mocEventResourcePath), true);
+//				}
+//			} else {
+//				warn(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_MOCEVENTS_RESOURCE_PATH_ATT
+//								+ " isn't set");
+//			}
 
 			// If there is a custom ModelLoader then we will use this,
 			// else we should rely on some default XMI ModelLoader.
@@ -250,7 +255,7 @@ public class GemocReflectiveModelLauncher
 		// Ugly calls to check if all the elements have been provided as
 		// required.
 		this.reactToNull(solver, "Solver");
-		this.reactToNull(executor, "Executor");
+		this.reactToNull(eventExecutor, "Executor");
 		this.reactToNull(feedbackPolicy, "Feedback Policy");
 		//this.reactToNull(domainSpecificEventsResource,
 		//		"Domain Specific Events Resource");
@@ -262,7 +267,7 @@ public class GemocReflectiveModelLauncher
 		
 		ResourceSet resourceSet = getResourceSet(animate, getDebuggerViewPathAsString());
 		
-		String transformationPath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
+		String transformationPath = confElement.getAttribute(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
 		_executionContext.generateMoC(transformationPath);
 		URI mocURI = URI.createPlatformResourceURI(_executionContext.getMoCPath().toString(), true);
 		solver.setSolverInputFile(resourceSet, mocURI);
@@ -297,6 +302,7 @@ public class GemocReflectiveModelLauncher
 		// Frontend controlPanel = new ExampleGUIControlPanel();
 		// Frontend scenarioBuilder = new ExampleScenarioBuilder();
 		List<Frontend> frontends = new ArrayList<Frontend>();
+		frontends.add(new PrepareViewFrontend());
 		// frontends.add(controlPanel);
 		// frontends.add(scenarioBuilder);
 
@@ -305,22 +311,41 @@ public class GemocReflectiveModelLauncher
 		backends.add(new ConsoleBackend());
 
 		// Create and initialize engine
-		engine = new ObservableBasicExecutionEngine(solver, executor, feedbackPolicy, decider, _executionContext);
+		engine = new ObservableBasicExecutionEngine(solver, eventExecutor, codeExecutor, feedbackPolicy, decider, _executionContext);
 		engine.setSiriusSession(_siriusSession);
 		TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
 		if (_siriusSession != null)
 			editingDomain = _siriusSession.getTransactionalEditingDomain();
+
+		for(IAliveClockController injector: eventOccurenceInjectors){
+			engine.addClockController(injector);
+		}
+
 		engine.initialize(modelResource, editingDomain);
+
 		if (isTraceActive)
 			engine.activateTrace();
 		
 		for(IEngineHook engineHook : engineHooks){
 			engine.addEngineHook(engineHook);
 		}
+		
 		// engine.
 		// configure altogether
 		configureEngine(engine, frontends, backends, delay);
 
+		if (animate) {
+			DSLDebugModelPresentation p = new DSLDebugModelPresentation();
+			p.getEditorInput(engine.getModelUnderExecutionResource().getContents().get(0));
+			engine.showInstruction(engine.getModelUnderExecutionResource().getContents().get(0));
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		// delegate for debug mode
 		if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 			super.launch(configuration, mode, launch, monitor);
@@ -349,9 +374,9 @@ public class GemocReflectiveModelLauncher
 	private HashSet<IEngineHook> retrieveEngineHooks(IConfigurationElement confElement) throws CoreException {
 		HashSet<IEngineHook> engineHooks = new HashSet<IEngineHook>();
 		if (confElement != null) {
-			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF)){
+			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF)){
 				childConfElement.getName();				
-				final Object oEngineHook = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF_ENGINE_HOOK_ATT);
+				final Object oEngineHook = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF_ENGINE_HOOK_ATT);
 				if(oEngineHook instanceof IEngineHook){
 					engineHooks.add((IEngineHook) oEngineHook);
 				}
@@ -360,8 +385,24 @@ public class GemocReflectiveModelLauncher
 		return engineHooks;
 	}
 
+	private HashSet<IAliveClockController> retrieveEventOccurenceInjectors(IConfigurationElement confElement) 
+			throws CoreException 
+	{
+		HashSet<IAliveClockController> eventOccurenceInjectors = new HashSet<IAliveClockController>();
+		if (confElement != null) {
+			for(IConfigurationElement childConfElement : confElement.getChildren(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_DEFINITION)){
+				childConfElement.getName();				
+				final Object injector = childConfElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_CLASS_DEFINITION);
+				if(injector instanceof IAliveClockController){
+					eventOccurenceInjectors.add((IAliveClockController) injector);
+				}
+			}
+		}
+		return eventOccurenceInjectors;
+	}
+	
 	private ModelLoader instanciateModelLoader(IConfigurationElement confElement) throws CoreException {
-		final Object oModelLoader = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
+		final Object oModelLoader = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
 		if (oModelLoader instanceof ModelLoader) {
 			return (ModelLoader) oModelLoader;
 		}
@@ -369,39 +410,35 @@ public class GemocReflectiveModelLauncher
 	}
 
 	private FeedbackPolicy instanciateFeedbackPolicy(IConfigurationElement confElement) throws CoreException {
-		final Object oFeedbackPolicy = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_FEEDBACKPOLICY_ATT);
+		final Object oFeedbackPolicy = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_FEEDBACKPOLICY_ATT);
 		if (oFeedbackPolicy instanceof FeedbackPolicy) {
 			return(FeedbackPolicy) oFeedbackPolicy;
 		}
 		return null;
 	}
 
-	private EventExecutor instanciateCodeExecutor(IConfigurationElement confElement) throws CoreException {
-		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT);
+	private EventExecutor instanciateEventExecutor(IConfigurationElement confElement) throws CoreException {
+		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT);
 		if (oexecutor instanceof EventExecutor) {
 			return(EventExecutor) oexecutor;
 		}
 		return null;
 	}
 
+	private CodeExecutor instanciateCodeExecutor(IConfigurationElement confElement) throws CoreException {
+		Object oexecutor = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
+		if (oexecutor instanceof CodeExecutor) {
+			return(CodeExecutor) oexecutor;
+		}
+		return null;
+	}
+	
 	private Solver instanciateSolver(IConfigurationElement confElement) throws CoreException {
-		Object oSolver = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
+		Object oSolver = confElement.createExecutableExtension(org.gemoc.gemoc_language_workbench.api.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
 		if (oSolver instanceof Solver) {
 			return (Solver) oSolver;
 		}
 		return null;
-	}
-
-	private IConfigurationElement getLanguageExtension() throws InvalidRegistryObjectException, CoreException {
-		IConfigurationElement confElement = null;
-		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor(org.gemoc.gemoc_language_workbench.ui.Activator.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
-		// retrieve the extension for the chosen language
-		for (int i = 0; i < confElements.length; i++) {
-			if (confElements[i].getAttribute("name").equals(getLanguageName())) {
-				confElement = confElements[i];
-			}
-		}
-		return confElement;
 	}
 
 	private void debug(String message) {

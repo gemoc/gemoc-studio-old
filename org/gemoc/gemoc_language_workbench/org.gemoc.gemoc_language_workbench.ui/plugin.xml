@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="org.gemoc.gemoc_language_workbench.xdsml" name="Gemoc Language Definition" schema="schema/org.gemoc.gemoc_language_workbench.xdsml.exsd"/>
 
    <extension
          id="gemocLanguageDesignerBuilder"
@@ -650,4 +649,114 @@
           </newWizardShortcut>
        </perspectiveExtension>
     </extension>
+    
+    
+    <!-- DSE extensions -->
+   <extension
+         id="dse_builder"
+         name="DSE Project Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="org.gemoc.gemoc_language_workbench.ui.dse.GemocDSEBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="dse_nature"
+         name="DSE Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.gemoc.gemoc_language_workbench.ui.dse.GemocDSENature">
+         </run>
+      </runtime>
+      <builder
+            id="org.gemoc.gemoc_language_workbench.ui.dse_builder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="org.gemoc.gemoc_language_workbench.ui.dse.category"
+            name="DSE commands">
+      </category>
+      <command
+            categoryId="org.gemoc.gemoc_language_workbench.ui.dse.category"
+            defaultHandler="org.gemoc.gemoc_language_workbench.ui.dse.AddRemoveGemocDSENatureHandler"
+            id="org.gemoc.gemoc_language_workbench.ui.dse.addRemoveDSENature"
+            name="Add/Remove DSE Project Nature">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
+         <command
+               commandId="org.gemoc.gemoc_language_workbench.ui.dse.addRemoveDSENature"
+               label="Disable DSE builder"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <and>
+                        <instanceof
+                              value="org.eclipse.core.resources.IProject">
+                        </instanceof>
+                        <test
+                              property="org.eclipse.core.resources.projectNature"
+                              value="org.gemoc.gemoc_language_workbench.ui.dse_nature">
+                        </test>
+                     </and>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.gemoc.gemoc_language_workbench.ui.dse.addRemoveDSENature"
+               label="Enable DSE builder"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <and>
+                        <instanceof
+                              value="org.eclipse.core.resources.IProject">
+                        </instanceof>
+                        <not>
+                           <test
+                                 property="org.eclipse.core.resources.projectNature"
+                                 value="org.gemoc.gemoc_language_workbench.ui.dse_nature">
+                           </test>
+                        </not>
+                     </and>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         id="dse_problem"
+         name="DSE Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+    
 </plugin>

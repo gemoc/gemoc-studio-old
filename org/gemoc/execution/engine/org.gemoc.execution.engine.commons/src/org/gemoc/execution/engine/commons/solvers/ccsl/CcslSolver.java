@@ -5,12 +5,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -20,19 +17,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.DefPropertyCS;
-import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.resource.XtextResourceSet;
 import org.gemoc.execution.engine.commons.Activator;
-import org.gemoc.gemoc_language_workbench.api.moc.SolverInputBuilder;
 
 import fr.inria.aoste.timesquare.ccslkernel.explorer.CCSLConstraintState;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
-import fr.inria.aoste.timesquare.ccslkernel.parser.xtext.ExtendedCCSLStandaloneSetup;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.NoBooleanSolution;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.launch.CCSLKernelSolverWrapper;
@@ -42,9 +33,6 @@ import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.Reference;
-import gepl.ECLEvent;
-import gepl.GeplFactory;
-import gepl.MocEvent;
 
 /**
  * The interface of the CCSLKernelSolver as seen by the Execution Engine.
@@ -57,26 +45,13 @@ public abstract class CcslSolver implements
 
 	private CCSLKernelSolverWrapper solverWrapper = null;
 	private URI solverInputURI = null;
-	// private SolverInputBuilder solverInputBuilder;
 	private LogicalStep lastLogicalStep = null;
 	private Map<Event, ModelElementReference> mappingEventToOriginalMer = null;
 
-	protected String extentedCCSL_qvto_transformationPath; // "/org.gemoc.sample.tfsm/qvto-gen/tfsm_toCCSL.qvto";
 	
-	
-	public CcslSolver(String extentedCCSL_qvto_transformationPath) {
-		//this.solverInputBuilder = new EclToCcslTranslator();
-		this.extentedCCSL_qvto_transformationPath = extentedCCSL_qvto_transformationPath;
+	public CcslSolver() {
 		this.mappingEventToOriginalMer = new HashMap<Event, ModelElementReference>();
 	}
-
-//	public SolverInputBuilder getSolverInputBuilder() {
-//		return this.solverInputBuilder;
-//	}
-//
-//	public void setSolverInputBuilder(SolverInputBuilder solverInputBuilder) {
-//		this.solverInputBuilder = solverInputBuilder;
-//	}
 
 	@Override
 	public void forbidEventOccurrence(EventOccurrence eventOccurrence) {
@@ -103,9 +78,10 @@ public abstract class CcslSolver implements
 		Reference reference = eventOccurrence.getReferedElement();
 		if (reference instanceof ModelElementReference) {
 			ModelElementReference mer = (ModelElementReference) reference;
-			ModelElementReference merToForce = this.mappingEventToOriginalMer
-					.get(mer.getElementRef().get(0));
-			return merToForce;
+			return mer;
+			//			ModelElementReference merToForce = this.mappingEventToOriginalMer
+//					.get(mer.getElementRef().get(0));
+//			return merToForce;
 		} else {
 			throw new RuntimeException(
 					"Refered Element of eventOccurrence should be a ModelElementReference");
@@ -125,13 +101,10 @@ public abstract class CcslSolver implements
 			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {
 				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
 				if (c != null) {
-					ModelElementReference mer = (ModelElementReference) eventOccurrence
-							.getReferedElement();
 					// We memorize the reference to the Clock (3 EObjects : file
 					// / block / clock) so it can be retrieved later on.
 					mappingEventToOriginalMer.put(c.getTickingEvent(),
-							(ModelElementReference) eventOccurrence
-									.getReferedElement());
+												(ModelElementReference) eventOccurrence.getReferedElement());
 					// Instead we place the ECL Event
 					eventOccurrence.setReferedElement(HelperFactory
 							.createModelElementReference(c.getTickingEvent()));
@@ -141,8 +114,8 @@ public abstract class CcslSolver implements
 			return res;
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while trying to get next Ccsl step";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 			return null;
 		}
 	}
@@ -180,22 +153,11 @@ public abstract class CcslSolver implements
 	public void setSolverInputFile(ResourceSet resourceSet, URI solverInputURI) {
 		this.solverInputURI = solverInputURI;
 		try {
-			Resource ccslResource = resourceSet.getResource(
-					this.solverInputURI, true);
+			Resource ccslResource = resourceSet.getResource(this.solverInputURI, true);
 			ccslResource.load(null);
 			EcoreUtil.resolveAll(resourceSet);
-
-			Activator.info("Input resources:");
-			for(Resource r : resourceSet.getResources()) 
-			{
-				Activator.info(r.getURI().toString());
-			}
-			
-			Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resourceSet);
-			if(unresolvedProxies.size() != 0){
-				Activator.warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
-				Activator.warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
-			}			
+			traceResources(resourceSet);
+			traceUnresolvedProxies(resourceSet, solverInputURI);			
 			
 			this.solverWrapper = new CCSLKernelSolverWrapper();
 			this.solverWrapper.getSolver().loadModel(ccslResource);
@@ -204,16 +166,33 @@ public abstract class CcslSolver implements
 					new MaxCardSimulationPolicy());
 		} catch (IOException e) {
 			String errorMessage = "IOException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		} catch (UnfoldingException e) {
 			String errorMessage = "UnfoldingException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
+		}
+	}
+
+	private void traceUnresolvedProxies(ResourceSet resourceSet,
+			URI solverInputURI) {
+		Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resourceSet);
+		if(unresolvedProxies.size() != 0){
+			Activator.getDefault().warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
+			Activator.getDefault().warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
+		}
+	}
+
+	private void traceResources(ResourceSet resourceSet) {
+		Activator.getDefault().info("Input resources:");
+		for(Resource r : resourceSet.getResources()) 
+		{
+			Activator.getDefault().info(r.getURI().toString());
 		}
 	}
 
@@ -237,108 +216,108 @@ public abstract class CcslSolver implements
 		return null;
 	}
 	
-	@Override
-	public EventOccurrence getCorrespondingEventOccurrence(MocEvent mocEvent,
-			EObject target) {
-		try {
-			// Retrieve the name of the MocEvent
-			ECLEvent eclEvent = (ECLEvent) mocEvent;
-			String eventName = eclEvent.getElement().getName();
-			// Retrieve the value of attribute "name" on the target
-			String targetName = this.getValueOfStringAttribute(target, "name");
-			// So the clock generated by the transformation should have the
-			// following name:
-			String eventOccurrenceName = "evt_" + targetName + "_" + eventName;
+//	@Override
+//	public EventOccurrence getCorrespondingEventOccurrence(MocEvent mocEvent,
+//			EObject target) {
+//		try {
+//			// Retrieve the name of the MocEvent
+//			ECLEvent eclEvent = (ECLEvent) mocEvent;
+//			String eventName = eclEvent.getElement().getName();
+//			// Retrieve the value of attribute "name" on the target
+//			String targetName = this.getValueOfStringAttribute(target, "name");
+//			// So the clock generated by the transformation should have the
+//			// following name:
+//			String eventOccurrenceName = "evt_" + targetName + "_" + eventName;
+//
+//			for (EventOccurrence eventOccurrence : this.lastLogicalStep
+//					.getEventOccurrences()) {
+//				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
+//					ModelElementReference reference = (ModelElementReference) eventOccurrence
+//							.getReferedElement();
+//					if (this.getValueOfStringAttribute(
+//							reference.getElementRef().get(0), "name").equals(
+//							eventOccurrenceName)) {
+//						return eventOccurrence;
+//					}
+//				} else {
+//					throw new RuntimeException(
+//							"Context of EventOccurrence should be a NamedReference");
+//				}
+//			}
+//			throw new RuntimeException(
+//					"Couldn't find the instanciation of the MocEvent "
+//							+ mocEvent.toString() + " on eobject "
+//							+ target.toString());
+//
+//		} catch (ClassCastException e) {
+//			String errorMessage = "Couldn't cast MocEvent to ECLEvent";
+//			Activator.getDefault().error(errorMessage);
+//			Activator.getDefault().error(errorMessage, e);
+//		}
+//		return null;
+//	}
 
-			for (EventOccurrence eventOccurrence : this.lastLogicalStep
-					.getEventOccurrences()) {
-				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
-					ModelElementReference reference = (ModelElementReference) eventOccurrence
-							.getReferedElement();
-					if (this.getValueOfStringAttribute(
-							reference.getElementRef().get(0), "name").equals(
-							eventOccurrenceName)) {
-						return eventOccurrence;
-					}
-				} else {
-					throw new RuntimeException(
-							"Context of EventOccurrence should be a NamedReference");
-				}
-			}
-			throw new RuntimeException(
-					"Couldn't find the instanciation of the MocEvent "
-							+ mocEvent.toString() + " on eobject "
-							+ target.toString());
+//	/**
+//	 * Returns the value of the attribute whose name is attributeName of eobject
+//	 * eo. The type of the attribute must be String. Basically if a String
+//	 * attribute is a good enough unique identifier for your EObjects then use
+//	 * this method to retrieve the value of the attribute without making
+//	 * assumption about the EObject. Otherwise, better use .toString().
+//	 * 
+//	 * @param eo
+//	 * @param attributeName
+//	 * @return
+//	 */
+//	private String getValueOfStringAttribute(EObject eo, String attributeName) {
+//		// String representation of the EObject :
+//		// "Klass@abc123 (att1: v1) (att2: v2)"
+//		String targetString = eo.toString();
+//		// We get the list of attribute without ending and
+//		// starting parentheses : "att1: v1) (att2: v2"
+//		String stringOfAttributesList = targetString.substring(
+//				targetString.indexOf("(") + 1, targetString.length() - 1);
+//		// We split it to get ["att1: v1", "att2: v2"]
+//		List<String> listOfAttributes = Arrays.asList(stringOfAttributesList
+//				.split("\\) \\("));
+//		// We look for "attributeName: xxx" in the array.
+//		String attributeStringRepresentation = "";
+//		for (String s : listOfAttributes) {
+//			if (s.startsWith(attributeName + ": ")) {
+//				attributeStringRepresentation = s;
+//			}
+//		}
+//		String res = "";
+//		if (attributeStringRepresentation != "") {
+//			// Either we found "name: xxx" in which case we have
+//			// 'xxx'
+//			res = attributeStringRepresentation.substring(
+//					attributeStringRepresentation.indexOf(attributeName + ": ")
+//							+ (attributeName + ": ").length(),
+//					attributeStringRepresentation.length());
+//			return res;
+//		} else {
+//			// Or we throw exception (what to do?)
+//			throw new UnsupportedOperationException(
+//					"Somehow you need a 'name' attribute on your model elements...");
+//		}
+//	}
 
-		} catch (ClassCastException e) {
-			String errorMessage = "Couldn't cast MocEvent to ECLEvent";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
-		}
-		return null;
-	}
-
-	/**
-	 * Returns the value of the attribute whose name is attributeName of eobject
-	 * eo. The type of the attribute must be String. Basically if a String
-	 * attribute is a good enough unique identifier for your EObjects then use
-	 * this method to retrieve the value of the attribute without making
-	 * assumption about the EObject. Otherwise, better use .toString().
-	 * 
-	 * @param eo
-	 * @param attributeName
-	 * @return
-	 */
-	private String getValueOfStringAttribute(EObject eo, String attributeName) {
-		// String representation of the EObject :
-		// "Klass@abc123 (att1: v1) (att2: v2)"
-		String targetString = eo.toString();
-		// We get the list of attribute without ending and
-		// starting parentheses : "att1: v1) (att2: v2"
-		String stringOfAttributesList = targetString.substring(
-				targetString.indexOf("(") + 1, targetString.length() - 1);
-		// We split it to get ["att1: v1", "att2: v2"]
-		List<String> listOfAttributes = Arrays.asList(stringOfAttributesList
-				.split("\\) \\("));
-		// We look for "attributeName: xxx" in the array.
-		String attributeStringRepresentation = "";
-		for (String s : listOfAttributes) {
-			if (s.startsWith(attributeName + ": ")) {
-				attributeStringRepresentation = s;
-			}
-		}
-		String res = "";
-		if (attributeStringRepresentation != "") {
-			// Either we found "name: xxx" in which case we have
-			// 'xxx'
-			res = attributeStringRepresentation.substring(
-					attributeStringRepresentation.indexOf(attributeName + ": ")
-							+ (attributeName + ": ").length(),
-					attributeStringRepresentation.length());
-			return res;
-		} else {
-			// Or we throw exception (what to do?)
-			throw new UnsupportedOperationException(
-					"Somehow you need a 'name' attribute on your model elements...");
-		}
-	}
-
-	@Override
-	public Map<String, MocEvent> createMocEventsRegistry(
-			Resource mocEventsResource) {
-		Map<String, MocEvent> res = new HashMap<String, MocEvent>();
-		Iterator<EObject> iterator = mocEventsResource.getAllContents();
-		while (iterator.hasNext()) {
-			EObject eo = iterator.next();
-			if (eo instanceof DefPropertyCS) {
-				DefPropertyCS event = (DefPropertyCS) eo;
-				ECLEvent eclEvent = GeplFactory.eINSTANCE.createECLEvent();
-				eclEvent.setElement(event);
-				res.put(event.getName(), eclEvent);
-			}
-		}
-		return res;
-	}
+//	@Override
+//	public Map<String, MocEvent> createMocEventsRegistry(
+//			Resource mocEventsResource) {
+//		Map<String, MocEvent> res = new HashMap<String, MocEvent>();
+//		Iterator<EObject> iterator = mocEventsResource.getAllContents();
+//		while (iterator.hasNext()) {
+//			EObject eo = iterator.next();
+//			if (eo instanceof DefPropertyCS) {
+//				DefPropertyCS event = (DefPropertyCS) eo;
+//				ECLEvent eclEvent = GeplFactory.eINSTANCE.createECLEvent();
+//				eclEvent.setElement(event);
+//				res.put(event.getName(), eclEvent);
+//			}
+//		}
+//		return res;
+//	}
 
 	@Override
 	public List<LogicalStep> getPossibleLogicalSteps() {
@@ -348,9 +327,9 @@ public abstract class CcslSolver implements
 			
 			return result;
 		} catch (NoBooleanSolution e) {
-			Activator.error(e.getMessage(), e);
+			Activator.getDefault().error(e.getMessage(), e);
 		} catch (SolverException e) {
-			Activator.error(e.getMessage(), e);
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 		return new ArrayList<LogicalStep>();
 	}
@@ -368,21 +347,9 @@ public abstract class CcslSolver implements
 			solverWrapper.getSolver().bddFromEnvironment.free();
 			solverWrapper.getSolver().bddFromEnvironment = solverWrapper.getSolver().getBddFactory().one();
 		} catch (SolverException e) {
-			Activator.error(e.getMessage(), e);
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 	}
-
-	
-	
-	public String getExtentedCCSL_qvto_transformationPath() {
-		return extentedCCSL_qvto_transformationPath;
-	}
-
-	public void setExtentedCCSL_qvto_transformationPath(
-			String extentedCCSL_qvto_transformationPath) {
-		this.extentedCCSL_qvto_transformationPath = extentedCCSL_qvto_transformationPath;
-	}
-	
 
 	@Override
 	public byte[] getState() {
@@ -414,5 +381,10 @@ public abstract class CcslSolver implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public void freeEnvironmentBDD() {
+//		solverWrapper.freeEnvironmentBDD();
 	}
 }

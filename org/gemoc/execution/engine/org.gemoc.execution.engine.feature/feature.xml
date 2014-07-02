@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.execution.engine.feature"
       label="Gemoc Execution Engine"
-      version="1.0.0.qualifier"
+      version="0.1.0.qualifier"
       provider-name="INRIA">
 
    <description url="http://gemoc.org/studio/">

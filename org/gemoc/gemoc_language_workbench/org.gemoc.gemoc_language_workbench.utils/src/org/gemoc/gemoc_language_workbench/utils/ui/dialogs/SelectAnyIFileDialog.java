@@ -36,10 +36,12 @@ public class SelectAnyIFileDialog extends ResourceListSelectionDialog {
 		super(parentShell, ResourcesPlugin.getWorkspace().getRoot(), IResource.FILE);
 	}
 	
+	private String _pattern = "*";
+	
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Control result = super.createDialogArea(parent);
-		setPattern("*");
+		setPattern(_pattern);
 		return result;
 	}
 	
@@ -51,7 +53,9 @@ public class SelectAnyIFileDialog extends ResourceListSelectionDialog {
 			Field patternField = ResourceListSelectionDialog.class.getDeclaredField("pattern");
 			patternField.setAccessible(true);
 			Text pattern =(Text) patternField.get(this);
-			pattern.setText("*");
+			if (pattern != null)
+				pattern.setText(newPattern);
+			_pattern = newPattern;
 		} catch (NoSuchFieldException e) {
 			Activator.error(e.getMessage(), e);
 		} catch (SecurityException e) {

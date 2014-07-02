@@ -19,20 +19,17 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtext.sdk" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.xtend.sdk" version="2.4.2.v201306120542" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.sdk" version="2.5.4" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtend.sdk" version="2.5.4" match="greaterOrEqual"/>
       <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.ecoretools.design" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_language_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_modeling_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.execution.timesquare.facilities.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.execution.engine.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gemoc_commons.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.dse.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.supelec.gemoc.contrib.feature_modhelx" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.supelec.gemoc.contrib.feature_tesl" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.supelec.gemoc.contrib.feature_tesllang" version="0.0.0" match="greaterOrEqual"/>
@@ -57,6 +54,7 @@
       <import feature="org.eclipse.sirius.specifier.ide.ui" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.gemoc.mocc.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.commons.feature" version="0.1.0.qualifier"/>
    </requires>
 
    <plugin

@@ -3,30 +3,6 @@
 <plugin>
 
    <extension
-         id="gemocReflectiveModelBuilder"
-         name="Gemoc Reflective Modeling Project"
-         point="org.eclipse.core.resources.builders">
-      <builder
-            hasNature="true">
-         <run
-               class="org.gemoc.gemoc_modeling_workbench.ui.builder.GemocReflectiveModelBuilder">
-         </run>
-      </builder>
-   </extension>
-   <extension
-         id="gemocReflectiveModelNature"
-         name="Gemoc Reflective Modeling Project Nature"
-         point="org.eclipse.core.resources.natures">
-      <runtime>
-         <run
-               class="org.gemoc.gemoc_modeling_workbench.ui.builder.GemocReflectiveModelNature">
-         </run>
-      </runtime>
-      <builder
-            id="org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelBuilder">
-      </builder>
-   </extension>
-   <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
@@ -76,25 +52,6 @@
 	       </and>
 	    </visibility>
       </objectContribution>
-   </extension>
-   <extension
-         id="gemocReflectiveModelProblem"
-         name="Gemoc Reflective Model Problem"
-         point="org.eclipse.core.resources.markers">
-      <super
-            type="org.eclipse.core.resources.problemmarker">
-      </super>
-      <persistent
-            value="true">
-      </persistent>
-   </extension>
-   <extension
-         point="org.eclipse.ui.ide.projectNatureImages">
-      <image
-            icon="icons/IconeGemocModel-10.png"
-            id="org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelNature.image"
-            natureId="org.gemoc.gemoc_modeling_workbench.ui.gemocReflectiveModelNature">
-      </image>
    </extension>
    <!-- definitions of launch menu -->
    	<extension
@@ -211,5 +168,34 @@
          </actionSet>
       </perspectiveExtension>
    </extension>
-
+   
+      <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.gemoc.modeling.menu.contribution">
+         <menu
+               icon="icons/IconeGemocModel-16.png"
+               id="org.gemoc.modeling.menu"
+               label="Gemoc"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Generate extended CCSL (use language specified QVTO)"
+               class="org.gemoc.gemoc_modeling_workbench.ui.actions.GenerateExtendedCCSLFile"
+               menubarPath="org.gemoc.modeling.menu/group1"
+               id="org.gemoc.modeling.generate.extendedccsl">
+         </action>
+         <action
+               class="org.gemoc.gemoc_modeling_workbench.ui.actions.ChooseQVTOAndGenerateExtendedCCSLFile"
+               id="org.gemoc.modeling.generate.extendedccsl2"
+               label="Generate extended CCSL (choose QVTO)"
+               menubarPath="org.gemoc.modeling.menu/group1">
+         </action>
+      </objectContribution>
+   </extension>
+   
 </plugin>

@@ -1,24 +1,28 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Io
+Bundle-Name: Gemoc Engine UI
 Bundle-SymbolicName: org.gemoc.execution.engine.io;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.io.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.gemoc.gemoc_language_workbench.api,
- org.gemoc.execution.engine,
  org.kermeta.utils.systemservices.api,
  org.kermeta.utils.systemservices.eclipse,
- org.gemoc.gemoc_commons.eclipse_utils;bundle-version="1.0.0",
- org.gemoc.execution.engine.trace.model;bundle-version="0.1.0"
+ org.gemoc.commons.eclipse;bundle-version="0.1.0",
+ org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
+ org.eclipse.xtext.util,
+ fr.obeo.timeline;bundle-version="1.0.0",
+ org.gemoc.execution.engine,
+ org.eclipse.emf.edit,
+ org.eclipse.emf.edit.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.io,
  org.gemoc.execution.engine.io.backends,
  org.gemoc.execution.engine.io.core,
- org.gemoc.execution.engine.io.core.impl,
  org.gemoc.execution.engine.io.exceptions,
- org.gemoc.execution.engine.io.frontends.controlpanels,
+ org.gemoc.execution.engine.io.frontends,
  org.gemoc.execution.engine.io.views
 

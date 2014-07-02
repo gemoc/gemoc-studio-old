@@ -1,42 +1,22 @@
 package org.gemoc.execution.engine;
 
-import java.util.HashMap;
-
-import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
+import org.gemoc.commons.eclipse.pde.GemocUIPlugin;
 import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem;
-import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
-import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
-import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class Activator extends GemocUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.gemoc.execution.engine"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
-
-	protected static MessagingSystem messagingSystem = null;
-
-	public static MessagingSystem getMessagingSystem() {
-		if (messagingSystem == null) {
-			messagingSystem = new StdioSimpleMessagingSystem();
-			//messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
-			//		"GEMOC Execution Engine");
-			//((EclipseMessagingSystem) messagingSystem)
-			//		.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
-		}
-		return messagingSystem;
-	}
 
 	/**
 	 * Returns the shared instance
@@ -77,6 +57,7 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		Activator.plugin = this;
+		addLoggingBackend(new DefaultLoggingBackend(org.gemoc.execution.engine.commons.Activator.getDefault()));
 	}
 
 	/*
@@ -92,36 +73,15 @@ public class Activator extends AbstractUIPlugin {
 		super.stop(context);
 	}
 
-	
-
-
 	/**
 	 * List of engines that have registered to be running in this eclipse
 	 */
 	public GemocRunningEnginesRegistry gemocRunningEngineRegistry = new GemocRunningEnginesRegistry();
-	
-	
-	public static void warn(String msg, Throwable e) {
-		Activator.getDefault().getLog()
-				.log(new Status(Status.WARNING, PLUGIN_ID, Status.OK, msg, e));
-	}
 
-	public static void error(String msg, Throwable e) {
-		Activator.getDefault().getLog()
-				.log(new Status(Status.ERROR, PLUGIN_ID, Status.OK, msg, e));
+	@Override
+	public String getId() {
+		return PLUGIN_ID;
 	}
 	
-	public static void debug(String message) {
-		getMessagingSystem().debug(message, Activator.PLUGIN_ID);		
-	}
-	public static void warn(String message) {
-		getMessagingSystem().warn(message, Activator.PLUGIN_ID);		
-	}
-	public static void error(String message) {
-		getMessagingSystem().error(message, Activator.PLUGIN_ID);		
-	}
-	public static void info(String message) {
-		getMessagingSystem().info(message, Activator.PLUGIN_ID);		
-	}
 
 }

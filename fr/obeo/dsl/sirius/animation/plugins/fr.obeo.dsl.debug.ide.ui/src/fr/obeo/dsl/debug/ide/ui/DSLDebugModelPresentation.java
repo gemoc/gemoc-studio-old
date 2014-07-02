@@ -319,16 +319,32 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 		if (frame instanceof DSLStackFrameAdapter) {
 			if (editorPart instanceof IViewerProvider) {
 				if (editorPart instanceof IEditingDomainProvider) {
-					final EditingDomain domain = ((IEditingDomainProvider)editorPart).getEditingDomain();
 					final EObject instruction = ((DSLStackFrameAdapter)frame).getCurrentInstruction();
-					final EObject selection = domain.getResourceSet().getEObject(
-							EcoreUtil.getURI(instruction), false);
-					((IViewerProvider)editorPart).getViewer().setSelection(
-							new StructuredSelection(selection), true);
+					final URI instructionUri = EcoreUtil.getURI(instruction);
+					selectInstruction(editorPart, instructionUri);
 				}
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Selects the given instruction.
+	 * 
+	 * @param editorPart
+	 *            the {@link IEditorPart}
+	 * @param instructionUri
+	 *            the instruction {@link URI}
+	 */
+	private void selectInstruction(IEditorPart editorPart, final URI instructionUri) {
+		final EditingDomain domain = ((IEditingDomainProvider)editorPart).getEditingDomain();
+		final EObject selection = domain.getResourceSet().getEObject(instructionUri, false);
+		if (selection != null) {
+			((IViewerProvider)editorPart).getViewer().setSelection(new StructuredSelection(selection), true);
+		} else {
+			DebugIdeUiPlugin.getPlugin().log(
+					new IllegalStateException("can't find source for " + instructionUri));
+		}
 	}
 
 	/**

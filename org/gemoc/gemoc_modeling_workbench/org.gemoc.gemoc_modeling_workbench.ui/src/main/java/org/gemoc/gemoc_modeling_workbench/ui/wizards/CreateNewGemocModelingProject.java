@@ -11,19 +11,15 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
-import org.gemoc.gemoc_modeling_workbench.ui.builder.ToggleNatureAction;
 
 public class CreateNewGemocModelingProject extends Wizard implements INewWizard {
 
 
 	WizardNewProjectCreationPage mainPage;
-	ToggleNatureAction nature;
 	
 	public CreateNewGemocModelingProject() {
 		super();
-		this.nature = new ToggleNatureAction();
 		this.setWindowTitle("Create Domain Model");
 		this.mainPage = new WizardNewProjectCreationPage("NewGemocModelingProject");
 		this.mainPage.setTitle("Project");
@@ -45,7 +41,6 @@ public class CreateNewGemocModelingProject extends Wizard implements INewWizard 
 				 public void run(IProgressMonitor monitor) throws CoreException {
 					 createdProject.create(monitor);
 					 createdProject.open(monitor);
-					 addGemocModelingProjectNature(createdProject);
 					 createdProject.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 				 }
 			};
@@ -60,7 +55,4 @@ public class CreateNewGemocModelingProject extends Wizard implements INewWizard 
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 	}
 
-	private void addGemocModelingProjectNature(IProject project) {
-		 this.nature.toggleNature(project);
-	}
 }

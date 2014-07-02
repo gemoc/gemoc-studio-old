@@ -21,19 +21,19 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 
 		Object o = feedbackData.getData();
 		if (o instanceof Byte) {
-			Activator.warn("Please don't return a Byte in your DSA");
+			Activator.getDefault().warn("Please don't return a Byte in your DSA");
 		} else if (o instanceof Short) {
-			Activator.warn("Please don't return a Short in your DSA");
+			Activator.getDefault().warn("Please don't return a Short in your DSA");
 		} else if (o instanceof Integer) {
-			Activator.warn("Please don't return an Integer in your DSA");
+			Activator.getDefault().warn("Please don't return an Integer in your DSA");
 		} else if (o instanceof Long) {
-			Activator.warn("Please don't return a Long in your DSA");
+			Activator.getDefault().warn("Please don't return a Long in your DSA");
 		} else if (o instanceof Float) {
-			Activator.warn("Please don't return a Float in your DSA");
+			Activator.getDefault().warn("Please don't return a Float in your DSA");
 		} else if (o instanceof Double) {
-			Activator.warn("Please don't return a Double in your DSA");
+			Activator.getDefault().warn("Please don't return a Double in your DSA");
 		} else if (o instanceof Boolean) {
-			Activator.debug("Caught a Boolean as feedback from event: "
+			Activator.getDefault().debug("Caught a Boolean as feedback from event: "
 							+ feedbackData.getContextEngineEventOccurence().toString());
 			//
 			// if
@@ -52,11 +52,11 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 			// }
 
 		} else if (o instanceof Character) {
-			Activator.warn("Please don't return a Character in your DSA");
+			Activator.getDefault().warn("Please don't return a Character in your DSA");
 		} else if (o instanceof String) {
-			Activator.info("[DSA]" + (String) o);
+			Activator.getDefault().info("[DSA]" + (String) o);
 		} else if (o instanceof Object) {
-			Activator.warn("Please don't return a non-primitive type in your DSA");
+			Activator.getDefault().warn("Please don't return a non-primitive type in your DSA");
 		}
 
 	}

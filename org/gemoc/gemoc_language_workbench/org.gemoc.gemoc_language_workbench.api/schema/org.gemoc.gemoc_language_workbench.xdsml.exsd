@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.gemoc.gemoc_language_workbench.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.gemoc.gemoc_language_workbench.ui" id="org.gemoc.gemoc_language_workbench.xdsml" name="Gemoc Language Definition"/>
+      </appinfo>
+      <documentation>
+         [Enter description of this extension point.]
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <choice>
+            <element ref="XDSML_Definition"/>
+         </choice>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="XDSML_Definition">
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="Engine_hook_Definition"/>
+            <element ref="Event_Occurence_Injector_Definition"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Name of the XDSML language
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="xdsmlFilePath" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Path to the xdsml configuration file. (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="codeExecutor_class" type="string">
+            <annotation>
+               <documentation>
+                  Class responsible for being able to execute the methods in the domain including the oe added by the DSA. In particular, it should be able to locate the methods in the bytecode and call them correctly.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="eventExecutor_class" type="string">
+            <annotation>
+               <documentation>
+                  Class responsible for being able to execute the methods referenced by the Domain-Specific Events. In particular, it should be able to locate the methods in the bytecode and call them correctly.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="solver_class" type="string">
+            <annotation>
+               <documentation>
+                  A Solver implementation, which has a facility to &quot;compile&quot; the Domain-Specific Events specification file into its own input file format. It should be able to produce a scheduling trace conforming to the RT-Simex Trace Metamodel (fr.inria.aoste.trace).
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.moc.Solver"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="domainSpecificEventsResourcePath" type="string">
+            <annotation>
+               <documentation>
+                  Path to the resource of the DSE Mapping file (e.g.GLML). (Usually in a plugin, so it should be prefixed by platform:/plugin to load the resource)
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="feedbackPolicy_class" type="string">
+            <annotation>
+               <documentation>
+                  A FeedbackPolicy implementation, done in Java but which is to be replaced by a well-defined DSL from the GEMOC ANR Project. It is responsible for telling the solver what to do when certain Model-Specific Actions return certain values.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="modelLoader_class" type="string">
+            <annotation>
+               <documentation>
+                  Optional ModelLoader, in case the user does not want to use XMI-compliant formats for their model...
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.utils.ModelLoader"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="mocEventsResourcePath" type="string">
+            <annotation>
+               <documentation>
+                  Path to the ECL file for the MOC
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="toCCSLQVTOFilePath" type="string">
+            <annotation>
+               <documentation>
+                  path to the QVTO file that is responsible for doing the ECL to CCSL transformation
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="Engine_hook_Definition">
+      <complexType>
+         <attribute name="engineHook_class" type="string">
+            <annotation>
+               <documentation>
+                  This class allows to hook some code to some phase of the Gemoc engine.
+The hooked code will be run at the appropriate time by the engine.
+This can be used for example to initialize some dsl specific GUI or to monitor the engine.
+This is optional, if not set, the engine will ignore it.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.core.IEngineHook"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="Event_Occurence_Injector_Definition">
+      <complexType>
+         <attribute name="Event_Occurence_Injector_Class" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.IAliveEventOccurrenceInjector"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>

@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Engine
+Bundle-Name: Gemoc Engine
 Bundle-SymbolicName: org.gemoc.execution.engine;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.Activator
 Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.simulationpolicy.maxcard,
@@ -35,9 +35,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius,
  org.eclipse.sirius.ui,
  fr.obeo.dsl.debug.ide.sirius.ui,
- org.eclipse.emf.compare;bundle-version="3.0.2"
+ org.eclipse.emf.compare;bundle-version="3.0.2",
+ org.eclipse.emf.compare.rcp;bundle-version="2.1.2",
+ org.gemoc.commons.eclipse,
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
+ com.google.guava;bundle-version="10.0.1"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine,
  org.gemoc.execution.engine.capabilitites,
  org.gemoc.execution.engine.core,

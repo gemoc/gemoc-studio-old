@@ -48,6 +48,8 @@
         <module>releng/fr.obeo.dsl.debug.sirius.ui.feature</module>
         <module>releng/fr.obeo.dsl.debug.repository</module>
 
+        <module>plugins/fr.obeo.timeline</module>
+
         <module>plugins/fr.obeo.dsl.debug</module>
         <module>plugins/fr.obeo.dsl.debug.edit</module>
         <module>plugins/fr.obeo.dsl.debug.ide</module>

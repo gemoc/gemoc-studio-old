@@ -18,8 +18,10 @@
 package fr.obeo.dsl.debug.ide;
 
 import fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory;
+import fr.obeo.dsl.debug.provider.DebugEditPlugin;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,9 +64,24 @@ public class DSLBreakpoint extends Breakpoint {
 	public static final String IMAGE_ATTRIBUTE = "image";
 
 	/**
+	 * {@link URL} marker for image attribute.
+	 */
+	public static final String URL_MARKER = "url";
+
+	/**
+	 * {@link URI} marker for image attribute.
+	 */
+	public static final String URI_MARKER = "uri";
+
+	/**
 	 * The image attribute. It should be a comma separated list of image uri.
 	 */
 	public static final String TEXT_ATTRIBUTE = "text";
+
+	/**
+	 * The default breakpoint image.
+	 */
+	private static final String FULL_OBJ16_BREAKPOINT = "full/obj16/Breakpoint";
 
 	/**
 	 * The {@link String} encoding.
@@ -192,7 +209,10 @@ public class DSLBreakpoint extends Breakpoint {
 		super.setMarker(marker);
 		try {
 			identifier = (String)getMarker().getAttribute(IBreakpoint.ID);
-			instructionUri = URI.createURI((String)getMarker().getAttribute(EValidator.URI_ATTRIBUTE), true);
+			String attribute = (String)getMarker().getAttribute(EValidator.URI_ATTRIBUTE);
+			if (attribute != null) {
+				instructionUri = URI.createURI(attribute, true);
+			}
 		} catch (CoreException e) {
 			Activator.getDefault().error(e);
 		}
@@ -241,14 +261,11 @@ public class DSLBreakpoint extends Breakpoint {
 		Object res = null;
 		try {
 			final String attribute = (String)getMarker().getAttribute(IMAGE_ATTRIBUTE);
-			if (attribute != null) {
+			if (attribute != null && attribute.length() > 0) {
 				res = fromAttribute(attribute);
 			}
-		} catch (IOException e) {
-			Activator.getDefault().error(e);
-		} catch (ClassNotFoundException e) {
-			Activator.getDefault().error(e);
 		} catch (CoreException e) {
+			res = DebugEditPlugin.INSTANCE.getImage(FULL_OBJ16_BREAKPOINT);
 			Activator.getDefault().error(e);
 		}
 		return res;
@@ -260,18 +277,50 @@ public class DSLBreakpoint extends Breakpoint {
 	 * @param attribute
 	 *            the attribute {@link String}
 	 * @return the image Object
-	 * @throws IOException
-	 *             if the object stream can't be read
-	 * @throws ClassNotFoundException
-	 *             if the object can't be instantiated
 	 */
-	private static Object fromAttribute(String attribute) throws IOException, ClassNotFoundException {
-		final String[] urls = attribute.split(DELIMITER);
-		final List<Object> images = new ArrayList<Object>(urls.length);
-		for (String url : urls) {
-			images.add(new URL(new String(Base64.decode(url), UTF8)));
+	private static Object fromAttribute(String attribute) {
+		Object res;
+		try {
+			final String[] urls = attribute.split(DELIMITER);
+			if (urls.length > 1) {
+				final List<Object> images = new ArrayList<Object>(urls.length);
+				for (String url : urls) {
+					final String decoded = new String(Base64.decode(url), UTF8);
+					images.add(fromString(decoded));
+				}
+				res = new ComposedImage(images);
+			} else if (urls.length > 0) {
+				final String decoded = new String(Base64.decode(urls[0]), UTF8);
+				res = fromString(decoded);
+			} else {
+				res = DebugEditPlugin.INSTANCE.getImage(FULL_OBJ16_BREAKPOINT);
+			}
+		} catch (IOException e) {
+			res = DebugEditPlugin.INSTANCE.getImage(FULL_OBJ16_BREAKPOINT);
+			Activator.getDefault().error(e);
 		}
-		return new ComposedImage(images);
+		return res;
+	}
+
+	/**
+	 * Converts the the given decoded attribute into an URI or an URL.
+	 * 
+	 * @param decoded
+	 *            the fragment of decoded string from the attribute
+	 * @return an URI or an URL
+	 * @throws MalformedURLException
+	 *             if URL can't be deserialized
+	 */
+	private static Object fromString(final String decoded) throws MalformedURLException {
+		final Object res;
+		if (decoded.startsWith(URL_MARKER)) {
+			res = new URL(decoded.substring(URL_MARKER.length()));
+		} else if (decoded.startsWith(URI_MARKER)) {
+			res = URI.createURI(decoded.substring(URI_MARKER.length()));
+		} else {
+			res = DebugEditPlugin.INSTANCE.getImage(FULL_OBJ16_BREAKPOINT);
+		}
+		return res;
 	}
 
 	/**
@@ -295,10 +344,13 @@ public class DSLBreakpoint extends Breakpoint {
 				res = buffer.toString();
 			}
 		} else if (image instanceof URL) {
-			buffer.append(Base64.encode(((URL)image).toString().getBytes(UTF8)));
+			buffer.append(Base64.encode((URL_MARKER + (URL)image).toString().getBytes(UTF8)));
+			res = buffer.toString();
+		} else if (image instanceof URI) {
+			buffer.append(Base64.encode(((URI_MARKER + (URI)image).toString()).getBytes(UTF8)));
 			res = buffer.toString();
 		} else {
-			res = "";
+			res = toAttribute(DebugEditPlugin.INSTANCE.getImage(FULL_OBJ16_BREAKPOINT));
 		}
 
 		return res;

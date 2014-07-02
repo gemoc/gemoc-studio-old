@@ -28,6 +28,7 @@ import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.dse.ecl.moc2as.ui.Activator;
+import org.gemoc.gemoc_commons.core.resources.Marker;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -103,34 +104,14 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 
 	// private SAXParserFactory parserFactory;
 
-	private void addMarker(IProject project, String message, int lineNumber, int severity) {
+	private void addMarker(IResource resource, String message, int lineNumber, int severity) {
 		try {
-			IMarker marker = project.createMarker(MARKER_TYPE);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			marker.setAttribute(IMarker.SEVERITY, severity);
-			/*if (lineNumber == -1) {
-				lineNumber = 1;
-			}
-			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);*/
+			Marker.addMarker(resource, MARKER_TYPE, message, severity);
 		} catch (CoreException e) {
 			Activator.eclipseError(e.getMessage(), e);
 		}
 	}
 	
-	private void addMarker(IFile file, String message, int lineNumber, int severity) {
-		try {
-			IMarker marker = file.createMarker(MARKER_TYPE);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			marker.setAttribute(IMarker.SEVERITY, severity);
-			if (lineNumber == -1) {
-				lineNumber = 1;
-			}
-			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
-		} catch (CoreException e) {
-			Activator.eclipseError(e.getMessage(), e);
-		}
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -152,12 +133,9 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 		return null;
 	}
 
-	
-	
-	
 	protected void clean(IProgressMonitor monitor) throws CoreException {
 		// delete markers set and files created
-		getProject().deleteMarkers(MARKER_TYPE, true, IResource.DEPTH_INFINITE);
+		Marker.removeMarkers(getProject(), MARKER_TYPE);
 	}
 
 	protected void processResource(IResource resource){
@@ -175,7 +153,8 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 	protected void checkProjectMinimalContent(IProject project) {
 		deleteMarkers(project);
 		IFile propertyFile = (IFile) project.getFile("moc2as.properties");
-		if(!propertyFile.exists()){
+		if(!propertyFile.exists())
+		{
 			addMarker(project, "Missing moc2as.properties, cannot generate qvto", -1, IMarker.SEVERITY_ERROR);
 			return;
 		}
@@ -281,7 +260,7 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 
 	private void deleteMarkers(IResource file) {
 		try {
-			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
+			Marker.removeMarkers(file, MARKER_TYPE);
 		} catch (CoreException ce) {
 		}
 	}

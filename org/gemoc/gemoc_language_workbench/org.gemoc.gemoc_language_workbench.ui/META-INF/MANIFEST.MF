@@ -24,15 +24,13 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.gemoc_language_workbench.api;bundle-version="0.1.0",
  fr.inria.diverse.k3.ui;bundle-version="1.0.0",
  org.eclipse.emf.ecoretools.design;bundle-version="2.0.0",
- fr.cnrs.luchogie.toools;bundle-version="1.0.0",
  org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0",
- org.gemoc.gemoc_commons.eclipse_utils,
- org.gemoc.dse.ecl.moc2as.ui,
- org.eclipse.equinox.registry
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ org.gemoc.commons.eclipse,
+ org.eclipse.equinox.registry,
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Import-Package: org.eclipse.core.filesystem,
- org.gemoc.gemoc_commons.pde
+Import-Package: org.eclipse.core.filesystem
 Bundle-ClassPath: lib/jaxen-1.1.6.jar,
  lib/jdom-2.0.5.jar,
  lib/xercesImpl.jar,

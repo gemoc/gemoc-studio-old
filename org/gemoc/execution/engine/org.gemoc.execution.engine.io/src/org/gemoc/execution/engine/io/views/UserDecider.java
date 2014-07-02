@@ -102,7 +102,7 @@ public class UserDecider implements ILogicalStepDecider {
 							.getWorkbench().getActiveWorkbenchWindow()
 							.getActivePage().findView(EnginesStatusView.ID);
 				} catch (PartInitException e) {
-					Activator.eclipseError(e.getMessage(), e);
+					Activator.getDefault().error(e.getMessage(), e);
 				}
 			}
 
