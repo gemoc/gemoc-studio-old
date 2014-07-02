@@ -1,9 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api;
 
 import org.eclipse.core.runtime.Plugin;
-import org.eclipse.core.runtime.Status;
-import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
-import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -33,27 +30,6 @@ public class Activator extends Plugin {
 	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.api"; //$NON-NLS-1$
-
-	protected static EclipseMessagingSystem messagingSystem = null;
-
-	public static void warn(String msg, Throwable e) {
-		Activator.getDefault().getLog()
-				.log(new Status(Status.WARNING, PLUGIN_ID, Status.OK, msg, e));
-	}
-
-	public static void error(String msg, Throwable e) {
-		Activator.getDefault().getLog()
-				.log(new Status(Status.ERROR, PLUGIN_ID, Status.OK, msg, e));
-	}
-
-	public static EclipseMessagingSystem getMessagingSystem() {
-		if (messagingSystem == null) {
-			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID, "GEMOC API");
-			((EclipseMessagingSystem) messagingSystem)
-					.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
-		}
-		return messagingSystem;
-	}
 
 	// The shared instance
 	private static Activator plugin;
