@@ -3,17 +3,13 @@ package org.gemoc.gemoc_modeling_workbench.ui.actions;
 import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
-import org.gemoc.workbench.modeling.LanguageFinder;
 
 abstract public class GenerateExtendedCCSLFileAction implements IObjectActionDelegate {
 

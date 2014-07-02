@@ -4,7 +4,6 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinitionExtension;
-import org.gemoc.workbench.modeling.LanguageFinder;
 
 public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 
@@ -20,7 +19,7 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 		//use the extension of the model file
 		String languageName = modelUriString.substring(modelUriString.lastIndexOf('.')+1, modelUriString.length());
 				
-		IConfigurationElement confElement = LanguageFinder.findDefinition(languageName);
+		IConfigurationElement confElement = LanguageDefinitionExtension.findDefinition(languageName);
 		
 		if (confElement == null)
 		{
