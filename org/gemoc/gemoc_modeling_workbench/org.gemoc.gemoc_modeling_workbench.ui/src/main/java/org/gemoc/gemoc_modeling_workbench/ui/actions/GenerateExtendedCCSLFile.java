@@ -1,8 +1,8 @@
 package org.gemoc.gemoc_modeling_workbench.ui.actions;
 
-import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
+import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinitionExtension;
 
 public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
@@ -10,18 +10,21 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 	/**
 	 * Constructor for Action1.
 	 */
-	public GenerateExtendedCCSLFile() {
+	public GenerateExtendedCCSLFile() 
+	{
 		super();
 	}
 
 	@Override
-	protected String getTransformationURI() {
+	protected String getTransformationURI() 
+	{
 		//use the extension of the model file
-		String languageName = modelUriString.substring(modelUriString.lastIndexOf('.')+1, modelUriString.length());
+		String languageName = modelUriString.substring(
+												modelUriString.lastIndexOf('.') + 1, 
+												modelUriString.length());
 				
-		IConfigurationElement confElement = LanguageDefinitionExtension.findDefinition(languageName);
-		
-		if (confElement == null)
+		LanguageDefinition languageDefinition = LanguageDefinitionExtension.findDefinition(languageName);		
+		if (languageDefinition == null)
 		{
 			MessageDialog dialog = new MessageDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), 
 													"No language found",
@@ -33,7 +36,7 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 			dialog.open();
 			return null;
 		}
-		String uri = confElement.getAttribute(LanguageDefinitionExtension.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
+		String uri = languageDefinition.getQVTOPath();
 		if (!uri.startsWith("platform:/plugin"))
 			uri = "platform:/plugin" + uri;
 		return uri;

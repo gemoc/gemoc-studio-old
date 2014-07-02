@@ -25,7 +25,7 @@ public class LanguageDefinitionExtension
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_CLASS_DEFINITION= "Event_Occurence_Injector_Class";
 	
 	
-	static public IConfigurationElement findDefinition(String languageName)
+	static public LanguageDefinition findDefinition(String languageName)
 	{
 		IConfigurationElement confElement = null;
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor(GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
@@ -34,10 +34,13 @@ public class LanguageDefinitionExtension
 		{
 			if(confElements[i].getAttribute("name").toUpperCase().equals(languageName.toUpperCase()))
 			{
-				confElement =confElements[i];
+				confElement = confElements[i];
 			}
-		}		
-		return confElement;
+		}	
+		LanguageDefinition languageDefinition = null;
+		if (confElement != null)
+			languageDefinition =  new LanguageDefinition(confElement);
+		return languageDefinition;
 	}
-	
+		
 }
