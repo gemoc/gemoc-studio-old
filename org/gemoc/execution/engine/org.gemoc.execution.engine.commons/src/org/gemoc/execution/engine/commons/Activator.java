@@ -3,8 +3,9 @@ package org.gemoc.execution.engine.commons;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
-import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
+
+import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
 
 /**
  * The activator class controls the plug-in life cycle
