@@ -3,8 +3,9 @@ package org.gemoc.commons.eclipse.logging.backends;
 import org.eclipse.core.runtime.Status;
 import org.gemoc.commons.eclipse.logging.ILoggingBackend;
 import org.gemoc.commons.eclipse.pde.IPlugin;
-import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem;
-import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
+
+import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
+import fr.inria.diverse.commons.messagingsystem.api.impl.StdioSimpleMessagingSystem;
 
 public class DefaultLoggingBackend implements ILoggingBackend 
 {

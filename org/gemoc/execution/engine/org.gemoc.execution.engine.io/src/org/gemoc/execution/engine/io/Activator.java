@@ -1,12 +1,7 @@
 package org.gemoc.execution.engine.io;
 
-import org.eclipse.core.runtime.Status;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
-import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
-import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
 
 /**
