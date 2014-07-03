@@ -2,12 +2,10 @@ package org.gemoc.commons.eclipse.pde.ui;
 
 import java.util.ArrayList;
 
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.gemoc.commons.eclipse.logging.ILoggingBackend;
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.gemoc.commons.eclipse.pde.IPlugin;
-import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleContext;
 
 public abstract class GemocUIPlugin extends AbstractUIPlugin implements IPlugin {

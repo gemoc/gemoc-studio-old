@@ -7,7 +7,6 @@ Bundle-Activator: org.gemoc.gemoc_language_workbench.api.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
  fr.inria.aoste.trace;bundle-version="1.0.1",
- org.kermeta.utils.systemservices.api,
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
  org.eclipse.emf.transaction
 Bundle-ActivationPolicy: lazy
