@@ -48,9 +48,6 @@
     "modhelx_tesl": [
     	"http://wwwdi.supelec.fr/gemoc-supelec-update_site"
     	],
-    "kermeta2": [
-        "http://www.kermeta.org/k2/update_2.1.1.RC"
-        ],
     "timesquare": [
         "http://timesquare.inria.fr/update_site"
         ],
