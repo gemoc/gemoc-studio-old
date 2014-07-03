@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getPrecedingTasks <em>Preceding Tasks</em>}</li>
  * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getFollowingTasks <em>Following Tasks</em>}</li>
  * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getPrecondition <em>Precondition</em>}</li>
+ * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#isMultipleExecution <em>Multiple Execution</em>}</li>
  * </ul>
  * </p>
  * 
@@ -129,6 +130,26 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	 * @ordered
 	 */
 	protected Expression precondition;
+
+	/**
+	 * The default value of the '{@link #isMultipleExecution() <em>Multiple Execution</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #isMultipleExecution()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTIPLE_EXECUTION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultipleExecution() <em>Multiple Execution</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #isMultipleExecution()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multipleExecution = MULTIPLE_EXECUTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -341,6 +362,28 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	 * 
 	 * @generated
 	 */
+	public boolean isMultipleExecution() {
+		return multipleExecution;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setMultipleExecution(boolean newMultipleExecution) {
+		boolean oldMultipleExecution = multipleExecution;
+		multipleExecution = newMultipleExecution;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION, oldMultipleExecution, multipleExecution));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -416,6 +459,8 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 				return getFollowingTasks();
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				return getPrecondition();
+			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
+				return isMultipleExecution();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -452,6 +497,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				setPrecondition((Expression)newValue);
 				return;
+			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
+				setMultipleExecution((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -485,6 +533,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				setPrecondition((Expression)null);
 				return;
+			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
+				setMultipleExecution(MULTIPLE_EXECUTION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -512,6 +563,8 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 				return followingTasks != null && !followingTasks.isEmpty();
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				return precondition != null;
+			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
+				return multipleExecution != MULTIPLE_EXECUTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -533,6 +586,8 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 		result.append(id);
 		result.append(", description: ");
 		result.append(description);
+		result.append(", multipleExecution: ");
+		result.append(multipleExecution);
 		result.append(')');
 		return result.toString();
 	}

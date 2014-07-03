@@ -95,6 +95,12 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A {@link Task} performing any action. The {@link ActionTask#getValidation() validation expression} is used to tell when the {@link ActionTask} {@link fr.obeo.dsl.process.ProcessUtils#isDone(ProcessContext, Task) is done}. Optionally an {@link ActionTask#getAction() action} can be specified to be {@link ActionTask#execute() executed} to meet the {@link ActionTask#getValidation() validation expression}."/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multipleExecution" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tells if this {@link ActionTask} can be {@link IProcessRunner#doAction(ProcessContext, ActionTask) done} many times."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" interface="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -23,4 +23,29 @@ package fr.obeo.dsl.process;
  */
 public interface ActionTask extends Task {
 
+	/**
+	 * Returns the value of the '<em><b>Multiple Execution</b></em>' attribute. The default value is
+	 * <code>"false"</code>. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Tells if
+	 * this {@link ActionTask} can be {@link IProcessRunner#doAction(ProcessContext, ActionTask) done} many
+	 * times. <!-- end-model-doc -->
+	 * 
+	 * @return the value of the '<em>Multiple Execution</em>' attribute.
+	 * @see #setMultipleExecution(boolean)
+	 * @see fr.obeo.dsl.process.ProcessPackage#getActionTask_MultipleExecution()
+	 * @model default="false" required="true"
+	 * @generated
+	 */
+	boolean isMultipleExecution();
+
+	/**
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ActionTask#isMultipleExecution
+	 * <em>Multiple Execution</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Multiple Execution</em>' attribute.
+	 * @see #isMultipleExecution()
+	 * @generated
+	 */
+	void setMultipleExecution(boolean value);
+
 } // ActionTask

@@ -367,6 +367,15 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
+	public EAttribute getActionTask_MultipleExecution() {
+		return (EAttribute)actionTaskEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public EClass getExpression() {
 		return expressionEClass;
 	}
@@ -590,6 +599,7 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		createEReference(composedTaskEClass, COMPOSED_TASK__DONE_EXPRESSION);
 
 		actionTaskEClass = createEClass(ACTION_TASK);
+		createEAttribute(actionTaskEClass, ACTION_TASK__MULTIPLE_EXECUTION);
 
 		expressionEClass = createEClass(EXPRESSION);
 
@@ -711,6 +721,9 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 
 		initEClass(actionTaskEClass, ActionTask.class, "ActionTask", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getActionTask_MultipleExecution(), ecorePackage.getEBoolean(), "multipleExecution",
+				"false", 1, 1, ActionTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

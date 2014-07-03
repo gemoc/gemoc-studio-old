@@ -28,7 +28,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ComposedTask/finalTasks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ComposedTask/doneExpression"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//ActionTask"/>
+    <genClasses ecoreClass="process.ecore#//ActionTask">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//ActionTask/multipleExecution"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="process.ecore#//Expression">
       <genOperations ecoreOperation="process.ecore#//Expression/check">
         <genParameters ecoreParameter="process.ecore#//Expression/check/context"/>

@@ -1970,4 +1970,101 @@ public class ProcessUtilsTests {
 		assertEquals(true, ProcessUtils.evaluateDoneExpression(context, task1));
 	}
 
+	/**
+	 * Tests {@link ProcessUtils#canDoAction(ProcessContext, ActionTask)}.
+	 */
+	@Test(expected = java.lang.NullPointerException.class)
+	public void canDoActionNullActionTask() {
+		final ProcessContext context = ProcessPackage.eINSTANCE.getProcessFactory().createProcessContext();
+
+		ProcessUtils.canDoAction(context, null);
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#canDoAction(ProcessContext, ActionTask)}.
+	 */
+	@Test
+	public void canDoActionFalsePreconditionActionTask() {
+		final ProcessContext context = ProcessPackage.eINSTANCE.getProcessFactory().createProcessContext();
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		task1.getFollowingTasks().add(task2);
+
+		assertEquals(false, ProcessUtils.canDoAction(context, task2));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#canDoAction(ProcessContext, ActionTask)}.
+	 */
+	@Test
+	public void canDoActionFalsePreconditionDoneActionTask() {
+		final ProcessContext context = ProcessPackage.eINSTANCE.getProcessFactory().createProcessContext();
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		task1.getFollowingTasks().add(task2);
+		context.getProgress().put(task2, new Object());
+
+		assertEquals(false, ProcessUtils.canDoAction(context, task2));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#canDoAction(ProcessContext, ActionTask)}.
+	 */
+	@Test
+	public void canDoActionFalsePreconditionDoneActionTaskMultiple() {
+		final ProcessContext context = ProcessPackage.eINSTANCE.getProcessFactory().createProcessContext();
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		task2.setMultipleExecution(true);
+		task1.getFollowingTasks().add(task2);
+		context.getProgress().put(task2, new Object());
+
+		assertEquals(false, ProcessUtils.canDoAction(context, task2));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#canDoAction(ProcessContext, ActionTask)}.
+	 */
+	@Test
+	public void canDoActionTruePreconditionActionTask() {
+		final ProcessContext context = ProcessPackage.eINSTANCE.getProcessFactory().createProcessContext();
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+
+		assertEquals(true, ProcessUtils.canDoAction(context, task2));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#canDoAction(ProcessContext, ActionTask)}.
+	 */
+	@Test
+	public void canDoActionTruePreconditionDoneActionTask() {
+		final ProcessContext context = ProcessPackage.eINSTANCE.getProcessFactory().createProcessContext();
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		context.getProgress().put(task2, new Object());
+
+		assertEquals(false, ProcessUtils.canDoAction(context, task2));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#canDoAction(ProcessContext, ActionTask)}.
+	 */
+	@Test
+	public void canDoActionTruePreconditionDoneActionTaskMultiple() {
+		final ProcessContext context = ProcessPackage.eINSTANCE.getProcessFactory().createProcessContext();
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		task2.setMultipleExecution(true);
+		context.getProgress().put(task2, new Object());
+
+		assertEquals(true, ProcessUtils.canDoAction(context, task2));
+	}
+
 }
