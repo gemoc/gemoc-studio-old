@@ -7,9 +7,16 @@ import org.eclipse.ui.PlatformUI;
 public class ViewHelper {
 
 	
+	/***
+	 * Will look after the view.
+	 * If not found, will try to show and look for it.
+	 * If showing view not possible, return null.
+	 * @param viewId
+	 * @return The view part if found or null otherwise
+	 */
+	@SuppressWarnings("unchecked")
 	public static <ViewType> ViewType retrieveView(String viewId) 
 	{
-		Class<ViewType> c;
 		IViewPart viewPart = ViewHelper.retrieveViewPart(viewId);
 		ViewType view = null;
 		try {
@@ -38,7 +45,7 @@ public class ViewHelper {
 		return runnable.getViewPart();		
 	}
 	
-	public static class RetrieveViewPartRunnable implements Runnable 
+	private static class RetrieveViewPartRunnable implements Runnable 
 	{
 
 		public RetrieveViewPartRunnable(String viewId)

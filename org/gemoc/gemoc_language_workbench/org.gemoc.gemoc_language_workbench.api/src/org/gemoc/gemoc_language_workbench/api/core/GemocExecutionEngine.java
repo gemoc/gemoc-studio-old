@@ -6,8 +6,6 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceMode
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
-import fr.inria.aoste.trace.LogicalStep;
-
 /**
  * The interface of the GEMOC Execution Engine. The Execution Engine is an
  * entity able to execute models conforming to an xDSML as defined in the GEMOC
