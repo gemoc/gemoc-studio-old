@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/org.gemoc.engine_model.feature_0.1.0.qualifier.jar" id="org.gemoc.engine_model.feature" version="0.1.0.qualifier">
-      <category name="gemoc_modeling_workbench"/>
-   </feature>
-   <category-def name="gemoc_modeling_workbench" label="Gemoc Modeling Workbench"/>
-</site>

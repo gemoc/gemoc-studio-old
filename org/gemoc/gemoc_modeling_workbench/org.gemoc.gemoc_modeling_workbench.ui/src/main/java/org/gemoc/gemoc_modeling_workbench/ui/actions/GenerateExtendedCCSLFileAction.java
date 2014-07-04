@@ -3,17 +3,13 @@ package org.gemoc.gemoc_modeling_workbench.ui.actions;
 import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
-import org.gemoc.workbench.modeling.LanguageFinder;
 
 abstract public class GenerateExtendedCCSLFileAction implements IObjectActionDelegate {
 
@@ -21,6 +17,7 @@ abstract public class GenerateExtendedCCSLFileAction implements IObjectActionDel
 	private String qvtoUriString;
 	protected String modelUriString;
 
+	
 	public GenerateExtendedCCSLFileAction() {
 		super();
 	}
@@ -31,10 +28,12 @@ abstract public class GenerateExtendedCCSLFileAction implements IObjectActionDel
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 	}
 	
+	
+	abstract protected String getFileExtension();
+
 	protected void doQvToTransfo() {
 		int numberOfCharToRemove = modelFile.getFullPath().toString().length() - modelFile.getFileExtension().length() -1;
-//		String outputPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel.extendedCCSL";
-		String outputPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel.timemodel";
+		String outputPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel." + getFileExtension();
 		QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
 		performer.run(qvtoUriString, modelUriString, outputPath);
 	}

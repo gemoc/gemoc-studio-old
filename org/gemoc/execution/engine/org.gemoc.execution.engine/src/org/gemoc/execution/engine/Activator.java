@@ -3,7 +3,7 @@ package org.gemoc.execution.engine;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
-import org.gemoc.commons.eclipse.pde.GemocUIPlugin;
+import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
 import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
 import org.osgi.framework.BundleContext;
 
@@ -57,7 +57,6 @@ public class Activator extends GemocUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		Activator.plugin = this;
-		addLoggingBackend(new DefaultLoggingBackend(org.gemoc.execution.engine.commons.Activator.getDefault()));
 	}
 
 	/*
@@ -81,6 +80,11 @@ public class Activator extends GemocUIPlugin {
 	@Override
 	public String getId() {
 		return PLUGIN_ID;
+	}
+
+	@Override
+	public DefaultLoggingBackend resolveLoggingBackend() {
+		return org.gemoc.execution.engine.commons.Activator.getDefault().resolveLoggingBackend();
 	}
 	
 

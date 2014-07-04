@@ -1,19 +1,18 @@
 package org.gemoc.commons.eclipse.logging.backends;
 
 import org.eclipse.core.runtime.Status;
-import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.logging.ILoggingBackend;
-import org.gemoc.commons.eclipse.pde.GemocUIPlugin;
-import org.kermeta.utils.systemservices.api.impl.StdioSimpleMessagingSystem;
-import org.kermeta.utils.systemservices.api.messaging.MessagingSystem;
-import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
+import org.gemoc.commons.eclipse.pde.IPlugin;
+
+import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
+import fr.inria.diverse.commons.messagingsystem.api.impl.StdioSimpleMessagingSystem;
 
 public class DefaultLoggingBackend implements ILoggingBackend 
 {
 
-	private GemocUIPlugin _plugin;
+	private IPlugin _plugin;
 
-	public DefaultLoggingBackend(GemocUIPlugin plugin)
+	public DefaultLoggingBackend(IPlugin plugin)
 	{
 		_plugin = plugin;
 	}
@@ -24,41 +23,34 @@ public class DefaultLoggingBackend implements ILoggingBackend
 	{
 		if (_messagingSystem == null)
 		{
-			_messagingSystem = new EclipseMessagingSystem(_plugin.getId(), _plugin.getName());
+			_messagingSystem = new StdioSimpleMessagingSystem();
 		}
 		return _messagingSystem;
 	}
 	
+	public void setMessagingSystem(MessagingSystem messagingSystem)
+	{
+		_messagingSystem = messagingSystem;
+	}
+	
 	@Override
 	public void info(String message) {
-		if (PlatformUI.isWorkbenchRunning())
-			getMessagingSystem().info(message, _plugin.getId());	
-		else
-			System.out.println(_plugin.getId() + " INFO: " + message);
+		getMessagingSystem().info(message, _plugin.getId());	
 	}
 
 	@Override
 	public void debug(String message) {
-		if (PlatformUI.isWorkbenchRunning())
-			getMessagingSystem().debug(message, _plugin.getId());	
-		else
-			System.out.println(_plugin.getId() + " DEBUG: " + message);
+		getMessagingSystem().debug(message, _plugin.getId());	
 	}
 
 	@Override
 	public void warn(String message) {
-		if (PlatformUI.isWorkbenchRunning())
-			getMessagingSystem().warn(message, _plugin.getId());	
-		else
-			System.out.println(_plugin.getId() + " WARN: " + message);
+		getMessagingSystem().warn(message, _plugin.getId());	
 	}
 
 	@Override
 	public void error(String message) {
-		if (PlatformUI.isWorkbenchRunning())
-			getMessagingSystem().error(message, _plugin.getId());	
-		else
-			System.out.println(_plugin.getId() + " ERROR: " + message);
+		getMessagingSystem().error(message, _plugin.getId());	
 	}
 
 	@Override

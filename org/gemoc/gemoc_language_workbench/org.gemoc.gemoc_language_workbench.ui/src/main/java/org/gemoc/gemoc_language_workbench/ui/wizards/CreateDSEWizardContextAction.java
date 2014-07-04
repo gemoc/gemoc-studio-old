@@ -26,6 +26,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.core.resources.Project;
+import org.gemoc.commons.eclipse.pde.ui.PluginConverter;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
 import org.gemoc.gemoc_language_workbench.conf.ECLProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
@@ -99,7 +100,7 @@ public class CreateDSEWizardContextAction {
 					project.open(monitor);
 					Project.addNature(project, GemocDSENature.NATURE_ID);
 					try {
-						Project.convertToPlugin(project);
+						PluginConverter.convert(project);
 					} catch (InvocationTargetException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

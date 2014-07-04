@@ -1,12 +1,7 @@
 package org.gemoc.execution.engine.io;
 
-import org.eclipse.core.runtime.Status;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
-import org.gemoc.commons.eclipse.pde.GemocUIPlugin;
-import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
-import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
+import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -36,7 +31,6 @@ public class Activator extends GemocUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		addLoggingBackend(new DefaultLoggingBackend(org.gemoc.execution.engine.commons.Activator.getDefault()));
 	}
 
 	
@@ -96,6 +90,11 @@ public class Activator extends GemocUIPlugin {
 	@Override
 	public String getId() {
 		return PLUGIN_ID;
+	}
+
+	@Override
+	public DefaultLoggingBackend resolveLoggingBackend() {
+		return org.gemoc.execution.engine.commons.Activator.getDefault().resolveLoggingBackend();
 	}
 	
 

@@ -7,8 +7,6 @@ Bundle-Activator: org.gemoc.execution.engine.io.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.gemoc.gemoc_language_workbench.api,
- org.kermeta.utils.systemservices.api,
- org.kermeta.utils.systemservices.eclipse,
  org.gemoc.commons.eclipse;bundle-version="0.1.0",
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
@@ -18,7 +16,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edit,
  org.eclipse.emf.edit.ui,
  org.eclipse.core.resources,
- org.eclipse.sirius.ui
+ org.eclipse.sirius.ui,
+ org.gemoc.commons.eclipse.ui;bundle-version="0.1.0",
+ fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.io,

@@ -7,13 +7,11 @@ Bundle-Activator: org.gemoc.execution.engine.Activator
 Require-Bundle: fr.inria.aoste.trace,
  fr.inria.aoste.timesquare.ccslkernel.modelunfolding,
  fr.inria.aoste.timesquare.trace.util,
- org.kermeta.utils.systemservices.eclipse,
  org.gemoc.gemoc_language_workbench.api,
  fr.inria.aoste.trace;visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.modelunfolding,
  fr.inria.aoste.timesquare.trace.util,
  org.gemoc.execution.engine.commons;visibility:=reexport,
- org.kermeta.utils.systemservices.api;bundle-version="2.1.1",
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
  org.eclipse.emf.ecore,
  org.gemoc.gemoc_language_workbench.utils,
@@ -27,7 +25,8 @@ Require-Bundle: fr.inria.aoste.trace,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
  org.eclipse.core.runtime;bundle-version="3.9.100",
  org.eclipse.emf.transaction;bundle-version="1.4.0",
- org.eclipse.emf.compare.rcp;bundle-version="2.1.2"
+ org.eclipse.emf.compare.rcp;bundle-version="2.1.2",
+ org.gemoc.commons.eclipse.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine,

@@ -55,6 +55,16 @@ public interface IProcessRunner {
 	 * @param task
 	 *            the {@link ActionTask}
 	 */
-	void execute(ProcessContext context, ActionTask task);
+	void doAction(ProcessContext context, ActionTask task);
+
+	/**
+	 * Undoes execution of the given {@link ActionTask} in the given {@link ProcessContext}.
+	 * 
+	 * @param context
+	 *            the {@link ProcessContext}
+	 * @param task
+	 *            the {@link ActionTask}
+	 */
+	void undoAction(ProcessContext context, ActionTask task);
 
 }

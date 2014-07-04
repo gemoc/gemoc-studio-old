@@ -1,6 +1,5 @@
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
-import fr.inria.aoste.trace.EventOccurrence;
 
 
 public interface IClockController

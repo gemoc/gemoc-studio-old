@@ -1,9 +1,10 @@
 package org.gemoc.gemoc_language_workbench.extensions.k3;
 
-import org.kermeta.utils.systemservices.eclipse.api.ConsoleLogLevel;
-import org.kermeta.utils.systemservices.eclipse.api.EclipseMessagingSystem;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+
+import fr.inria.diverse.commons.eclipse.messagingsystem.ui.ConsoleLogLevel;
+import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
 
 public class Activator implements BundleActivator {
 

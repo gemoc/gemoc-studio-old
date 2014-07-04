@@ -4,7 +4,8 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.dialogs.Dialog;
 import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAnyIFileDialog;
 
-public class ChooseQVTOAndGenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
+public class ChooseQVTOAndGenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction
+{
 
 	/**
 	 * Constructor for Action1.
@@ -20,6 +21,11 @@ public class ChooseQVTOAndGenerateExtendedCCSLFile extends GenerateExtendedCCSLF
 		if (dialog.open() == Dialog.OK)
 			return "platform:/resource" + ((IResource) dialog.getResult()[0]).getFullPath().toString();
 		return null;
+	}
+	
+	@Override
+	protected String getFileExtension() {
+		return "extendedCCSL";
 	}
 
 }

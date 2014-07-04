@@ -2,7 +2,6 @@ package org.gemoc.commons.eclipse.core.resources;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -13,8 +12,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 
 public class Project {
 
@@ -118,12 +115,7 @@ public class Project {
 		}
 		return file;
 	}
-	
-	public static void convertToPlugin(IProject project) throws CoreException, InvocationTargetException, InterruptedException {
-		IRunnableWithProgress convertOperation = new ConvertProjectToPluginOperation(new IProject[]{project}, false);
-		convertOperation.run(new NullProgressMonitor());
-	}	
-	
+		
 	public static void addNature(IProject project, String natureId) throws CoreException {
 		IProjectDescription description = project.getDescription();
 		String[] natures = description.getNatureIds();

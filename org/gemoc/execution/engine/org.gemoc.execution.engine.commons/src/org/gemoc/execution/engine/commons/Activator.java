@@ -1,8 +1,11 @@
 package org.gemoc.execution.engine.commons;
 
+import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
-import org.gemoc.commons.eclipse.pde.GemocUIPlugin;
+import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
 import org.osgi.framework.BundleContext;
+
+import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -43,7 +46,6 @@ public class Activator extends GemocUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		addLoggingBackend(new DefaultLoggingBackend(this));
 	}
 
 	/*
@@ -70,6 +72,16 @@ public class Activator extends GemocUIPlugin {
 	@Override
 	public String getId() {
 		return PLUGIN_ID;
+	}
+
+	@Override
+	public DefaultLoggingBackend resolveLoggingBackend() {
+		DefaultLoggingBackend backend = new DefaultLoggingBackend(this);
+		if (PlatformUI.isWorkbenchRunning())
+		{
+			backend.setMessagingSystem(new EclipseMessagingSystem(getId(), getName()));
+		}
+		return backend;
 	}
 
 }

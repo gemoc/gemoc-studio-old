@@ -1,10 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.feedback;
 
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 
 /**
  * TODO : instead of doing it in Java, create a DSL for this.
