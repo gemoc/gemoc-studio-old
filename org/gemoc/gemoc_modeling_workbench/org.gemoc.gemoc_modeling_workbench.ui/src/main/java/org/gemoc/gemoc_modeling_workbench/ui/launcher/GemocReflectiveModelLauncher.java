@@ -49,6 +49,7 @@ import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
+import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
 
 import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
@@ -339,6 +340,10 @@ public class GemocReflectiveModelLauncher
 //				e.printStackTrace();
 //			}
 //		}
+		
+		if (animate) {
+			engine.setAnimator(AbstractGemocAnimatorServices.getAnimator());
+		}
 		
 		// delegate for debug mode
 		if (ILaunchManager.DEBUG_MODE.equals(mode)) {

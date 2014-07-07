@@ -51,7 +51,8 @@ public class ActiveFileEcore extends ActiveFile {
 	protected IProject getProject(IProject gemocLanguageIProject) {
 		IProject projectEcore = null; 
 		IFile configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
-		if(configFile.exists()){
+		if(configFile.exists())
+		{
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		    Map<String, Object> m = reg.getExtensionToFactoryMap();
 		    m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());

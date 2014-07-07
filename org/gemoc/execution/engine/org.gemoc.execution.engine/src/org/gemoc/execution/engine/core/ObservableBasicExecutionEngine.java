@@ -98,6 +98,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 	private GemocModelDebugger debugger;
 
+	private IGemocModelAnimator 	animator;
+
 	private boolean started = false;
 
 	boolean terminated = false;
@@ -466,6 +468,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 					} catch (Throwable e) {
 						Activator.getDefault().error("Exception received " + e.getMessage() + ", stopping engine.", e);
 						terminated = true;
+					} finally {
+						if (animator != null) {
+							animator.clear(this);
+						}
 					}
 				}
 
@@ -613,6 +619,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		if (debugger != null) {
 			terminated = !debugger.control(Thread.currentThread().getName(), logicalStepToApply);
 		}
+		
+		if (animator != null) {
+			animator.activate(this, logicalStepToApply);
+		}
 
 		List<EngineEventOccurence> engineEventOccurences = new ArrayList<EngineEventOccurence>();
 		for (Event event : LogicalStepHelper.getTickedEvents(logicalStepToApply)) {
@@ -747,6 +757,14 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 	public void setDebugger(GemocModelDebugger debugger) {
 		this.debugger = debugger;
+	}
+
+	public IGemocModelAnimator getAnimator() {
+		return animator;
+	}
+
+	public void setAnimator(IGemocModelAnimator animator) {
+		this.animator = animator;
 	}
 
 	@Override
