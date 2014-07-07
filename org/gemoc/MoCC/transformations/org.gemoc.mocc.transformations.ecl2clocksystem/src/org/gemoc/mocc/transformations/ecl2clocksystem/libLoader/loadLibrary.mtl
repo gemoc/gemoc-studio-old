@@ -1,0 +1,19 @@
+[comment encoding = UTF-8 /]
+[module loadLibrary('http://fr.inria.aoste.timesquare.ecl', 
+	'http://fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation', 
+	'http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST', 
+	'http://www.eclipse.org/emf/2002/Ecore', 
+	'http://www.eclipse.org/ocl/3.1.0/Pivot', 
+	'http://www.eclipse.org/ocl/3.1.0/BaseCST', 
+	'http://www.eclipse.org/ocl/3.1.0/EssentialOCLCST', 
+	'http://org.gemoc.mocc.ccslmocc/1.0', 
+	'http://fr.inria.aoste.timemodel')]
+
+
+[query public loadMoCMLLibrary (arg0 : ECL::ImportStatement) : StateRelationBasedLibrary 
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.libLoader.LibLoader', 'loadMoCMLLibrary(fr.inria.aoste.timesquare.ECL.ImportStatement)', Sequence{arg0})
+/] 
+
+[query public loadCCSLLibrary (arg0 : ECL::ImportStatement) : Library 
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.libLoader.LibLoader', 'loadCCSLLibrary(fr.inria.aoste.timesquare.ECL.ImportStatement)', Sequence{arg0})
+/] 

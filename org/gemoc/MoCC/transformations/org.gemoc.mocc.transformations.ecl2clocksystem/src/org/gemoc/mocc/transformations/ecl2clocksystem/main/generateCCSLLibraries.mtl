@@ -1,0 +1,17 @@
+[comment encoding = UTF-8 /]
+[module generateCCSLLibraries('http://org.gemoc.mocc.ccslmocc/1.0',
+	'http://fr.inria.aoste.timemodel',
+	'http://org.gemoc.mocc.fsmmodel/1.0')]
+
+[import org::gemoc::mocc::transformations::ecl2clocksystem::services::javaservices /]  
+[import org::gemoc::mocc::transformations::ecl2clocksystem::services::stringQueries /]
+
+[template public generateCCSLLibraries(aLibrary : Library)]
+#[aLibrary.name/] -> {
+[for (rl : RelationLibrary | aLibrary.oclAsType(Library).relationLibraries)]
+	[for (rd : RelationDefinition | rl.relationDefinitions)]
+		TODO
+	[/for]
+[/for]
+}.
+[/template]
