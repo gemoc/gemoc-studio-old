@@ -1,0 +1,9 @@
+	- Fixme dans la transfo
+	- Gestion des Ccsl lib à réaliser,
+		○ Gestion des sequences, etc.. e.g. (01,1101)2
+	- Gestion des collections d'éléments à faire (exemple HWStorageResource) [partiellement réalisée, à tester]
+	- gestion des allUnions and co : 
+Generate.mtl, ligne 90, remplacer 
+system library: #Kernel expression: #[anECLDocument.getExpressionName(cDecl, internalClockName)/] clocks: #([anECLDocument.printListedClockParameters(cDecl, internalClockName)/] [internalClockName/][ '[' /]element.name/[ ']' /]).
+par :
+system all[anECLDocument.getExpressionName(cDecl, internalClockName)/] : {[anECLDocument.printListedClockParametersSepByDot(cDecl, internalClockName)/]} named: # [internalClockName/][ '[' /]element.name/[ ']' /].

@@ -53,6 +53,10 @@
 	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.EclServices', 'printListedClockParameters(fr.inria.aoste.timesquare.ECL.ECLDocument, java.lang.String, java.lang.String)', Sequence{arg0,arg1,arg2})
 /]
 
+[query public printListedClockParametersSepByDot(arg0 : ECLDocument, arg1 : String, arg2 : String) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.EclServices', 'printListedClockParametersSepByDot(fr.inria.aoste.timesquare.ECL.ECLDocument, java.lang.String, java.lang.String)', Sequence{arg0,arg1,arg2})
+/]
+
 [query public hasInternalEvents(arg0 : ECLDocument, arg1 : String) : Boolean
 	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.EclServices', 'hasInternalEvents(fr.inria.aoste.timesquare.ECL.ECLDocument, java.lang.String)', Sequence{arg0,arg1})
 /]

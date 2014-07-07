@@ -191,6 +191,28 @@ public class EclServices {
 		return "error in printListedClockParameters";
 	}
 	
+	public String printListedClockParametersSepByDot(ECLDocument document, String contextName, String eventName){
+		for (ContextDeclCS contextDeclCS : getAllContextOccurences(document)) {
+			if (((org.eclipse.ocl.examples.pivot.Class)contextDeclCS.getPivot()).getName().equals(contextName)) {
+				EList<ConstraintCS> invList = getInvariants(contextDeclCS);
+				for (ConstraintCS constraintCS : invList) {
+					EList<LetExpCS> lst = new BasicEList<>();
+					getLetRelation(((ExpSpecificationCS)constraintCS.getSpecification()).getOwnedExpression(), lst);
+					for (LetExpCS letExpCS : lst) {
+						for(LetVariableCS letVariableCS :letExpCS.getVariable()){
+							if (letVariableCS.getOwnedType() instanceof EventType) {
+								if (letVariableCS.getName().equalsIgnoreCase(eventName)) {
+									return getClockNamesListedAndSepByDot(letVariableCS);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return "error in printListedClockParametersSepByDot";
+	}
+	
 	public EList<String> getAllInternalEvents(ECLDocument document, String contextName){
 		EList<String> result = new BasicEList<>();
 		//add internal events from let expression
@@ -336,7 +358,7 @@ public class EclServices {
 				//[for (ne : NamedElement | element.allocatedAgents.oclAsType(Agent))] isExecuting[ne.name/] [/for]
 				String str = e.toString().replace("self.", "element.");
 				String type = str.substring(str.lastIndexOf("oclAsType("), str.length());
-				sb.append("[for (ne : ").append(type.substring(10, type.indexOf(")"))).append(" | ").append(str.substring(0, str.lastIndexOf("."))).append(")]").append(str.substring(str.lastIndexOf(".")+1, str.length())).append("[ne.name/] [/for]");
+				sb.append("[for (ne : ").append(type.substring(10, type.indexOf(")"))).append(" | ").append(str.substring(0, str.lastIndexOf("."))).append(")]").append(str.substring(str.lastIndexOf(".")+1, str.length())).append("[ne.name/]").append(sep).append("[/for]");
 			} else {
 				if (e.toString().contains("self.")) {
 					if (e.toString().replace("self.", "").contains(".")) {

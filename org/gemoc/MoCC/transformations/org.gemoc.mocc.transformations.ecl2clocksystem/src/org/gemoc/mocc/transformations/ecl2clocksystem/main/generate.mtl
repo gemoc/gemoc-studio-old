@@ -79,12 +79,17 @@ system := ClockSystem named: '[ '[' /]a[rootElementName/].name/[ ']' /]_withMoC-
 	[if (anECLDocument.hasInternalEvents(cDecl))]
 "internal clocks for [cDecl/] [ '[' /]element.name/[ ']' /]" 
     system addInternalClocks: #([for (e : String | anECLDocument.getAllInternalEvents(cDecl))][e/][ '[' /]element.name/[ ']' /] [/for]).
+	[/if]
+[ '[' /]/for[ ']' /]
+[/for]	
+
+[for (cDecl : String | anECLDocument.getContextLabels())][ '[' /]for (element : [cDecl/]| a[rootElementName/].eAllContents([cDecl/]))[ ']' /]
+	[if (anECLDocument.hasInternalEvents(cDecl))]
 "expressions used by  [cDecl/] [ '[' /]element.name/[ ']' /]" 
 	[for (internalClockName : String | anECLDocument.getAllInternalEvents(cDecl))]
-	system library: #Kernel expression: #[anECLDocument.getExpressionName(cDecl, internalClockName)/] clocks: #([anECLDocument.printListedClockParameters(cDecl, internalClockName)/] [internalClockName/][ '[' /]element.name/[ ']' /]). 
-	[/for]
+	system all[anECLDocument.getExpressionName(cDecl, internalClockName)/]: #([anECLDocument.printListedClockParameters(cDecl, internalClockName)/]) named: #[internalClockName/][ '[' /]element.name/[ ']' /]. 
+ 	[/for]
 	[/if]
-	
 "relations for [cDecl/] [ '[' /]element.name/[ ']' /]" 
 	[for (invar : ConstraintCS | anECLDocument.getInvariants(cDecl))]
 	"[invar.name/] in [cDecl/] [ '[' /]element.name/[ ']' /]"
