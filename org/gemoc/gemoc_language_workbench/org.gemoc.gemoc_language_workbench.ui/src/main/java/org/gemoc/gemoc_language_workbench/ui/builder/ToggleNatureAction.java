@@ -1,8 +1,6 @@
 package org.gemoc.gemoc_language_workbench.ui.builder;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.Map;
@@ -22,17 +20,15 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.pde.internal.ui.wizards.tools.ConvertProjectToPluginOperation;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.gemoc.commons.eclipse.core.resources.NatureToggling;
 import org.gemoc.commons.eclipse.core.resources.Project;
 import org.gemoc.commons.eclipse.pde.ManifestChanger;
+import org.gemoc.commons.eclipse.pde.ui.PluginConverter;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
@@ -49,17 +45,18 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 	 * 
 	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
 	 */
-	public void run(IAction action) {
-		if (selection instanceof IStructuredSelection) {
-			for (Iterator it = ((IStructuredSelection) selection).iterator(); it
-					.hasNext();) {
+	public void run(IAction action) 
+	{
+		if (selection instanceof IStructuredSelection) 
+		{
+			for (Iterator<?> it = ((IStructuredSelection) selection).iterator(); it.hasNext();) 
+			{
 				Object element = it.next();
 				IProject project = null;
 				if (element instanceof IProject) {
 					project = (IProject) element;
 				} else if (element instanceof IAdaptable) {
-					project = (IProject) ((IAdaptable) element)
-							.getAdapter(IProject.class);
+					project = (IProject) ((IAdaptable) element).getAdapter(IProject.class);
 				}
 				if (project != null) {
 					// [FT] Use the AskLanguaeName wizard here because the name of the project may contain some bad characters.
@@ -94,43 +91,27 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 	 * @param project
 	 *            to have sample nature added or removed
 	 */
-	public void toggleNature(IProject project, String languageName) {
-		try {
-			IProjectDescription description = project.getDescription();
-			String[] natures = description.getNatureIds();
-
-			for (int i = 0; i < natures.length; ++i) {
-				if (GemocLanguageDesignerNature.NATURE_ID.equals(natures[i])) {
-					// Remove the nature
-					String[] newNatures = new String[natures.length - 1];
-					System.arraycopy(natures, 0, newNatures, 0, i);
-					System.arraycopy(natures, i + 1, newNatures, i,
-							natures.length - i - 1);
-					description.setNatureIds(newNatures);
-					project.setDescription(description, null);
-					return;
-				}
+	public void toggleNature(IProject project, String languageName) 
+	{
+		try 
+		{
+			NatureToggling result = Project.toggleNature(project, GemocLanguageDesignerNature.NATURE_ID);
+			switch (result) {
+				case Added:
+					Project.addJavaNature(project);
+					addPluginNature(project);
+					addGemocNature(project, languageName);
+					break;
+				case Removed:
+					break;	
+				default:
+					break;
 			}
-
-			addJavaNature(project);
-			addPluginNature(project);
-			addGemocNature(project, languageName);
-		} catch (CoreException e) {
-			Activator.warn("Problem while adding Gemoc Language nature to project. "+e.getMessage(), e);
-		}
-	}
-	
-	private void addJavaNature(IProject project) throws CoreException {
-		if(!project.hasNature(JavaCore.NATURE_ID)){
-			IJavaProject javaProject = JavaCore.create(project);
-			addNature(project, JavaCore.NATURE_ID, null);
-			//CoreUtility.createFolder(project.getFolder(new Path("src"));, true, true, new SubProgressMonitor(monitor, 2));*
-			Project.createFolder(project, "src/main/java", new NullProgressMonitor());
-			Project.createFolder(project, "src/main/xdsml-java-gen", new NullProgressMonitor());
-	//		ResourceUtil.createFolder(project.getFolder(new Path("src/main/java")), true, true, new NullProgressMonitor());
-	//		ResourceUtil.createFolder(project.getFolder(new Path("src/main/xdsml-java-gen")), true, true, new NullProgressMonitor());
-			addJavaResources(project);
-		}
+		} 
+		catch (CoreException | IOException e) 
+		{
+			Activator.error("Problem while adding Gemoc Language nature to project. " + e.getMessage(), e);
+		} 
 	}
 	
 	public static void addNature(IProject project,String natureID, IProgressMonitor monitor) throws CoreException {
@@ -153,11 +134,10 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 	}
 
 	private void addPluginNature(IProject project) throws CoreException {
-		if(!project.hasNature("org.eclipse.pde.PluginNature")) {
-			IRunnableWithProgress convertOperation;
-			convertOperation = new ConvertProjectToPluginOperation(new IProject[]{project}, false);
+		if(!project.hasNature("org.eclipse.pde.PluginNature")) 
+		{
 			try {
-				convertOperation.run(new NullProgressMonitor());
+				PluginConverter.convert(project);
 				// complement manifest
 				ManifestChanger changer = new ManifestChanger(project);
 				changer.addPluginDependency(org.gemoc.gemoc_language_workbench.api.Activator.PLUGIN_ID, "0.1.0", true, true);
@@ -169,14 +149,10 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				changer.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
 				changer.commit();					
 				PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);					
-			} catch (InvocationTargetException e) {
-				Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
-			} catch (InterruptedException e) {
-				Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
-			} catch (IOException e) {
-				Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
-			} catch (BundleException e) {
-				Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to "+e.getMessage(), e);
+			} 
+			catch (InvocationTargetException | InterruptedException | IOException | BundleException e) 
+			{
+				Activator.error("cannot add org.eclipse.pde.PluginNature nature to project due to " + e.getMessage(), e);
 			}								
 		}
 	}
@@ -238,33 +214,6 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}			
-	}
-	
-	public static final String CLASSPATH_TEMPLATE= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
-"<classpath>\n"+
-"	<classpathentry kind=\"src\" path=\"src/main/java\"/>\n"+
-"	<classpathentry kind=\"src\" path=\"src/main/xdsml-java-gen\"/>\n"+
-"	<classpathentry kind=\"con\" path=\"org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6\"/>\n"+
-"	<classpathentry kind=\"output\" path=\"bin\"/>\n"+
-"</classpath>";
-	
-	private void addJavaResources(IProject project) {
-		final IFile file = project.getFile(new Path(".classpath")); 
-		if(!file.exists()){	
-			try {
-				InputStream stream = new ByteArrayInputStream(CLASSPATH_TEMPLATE.getBytes());
-				if (file.exists()) {
-					file.setContents(stream, true, true, null);
-				} else {
-					file.create(stream, true, null);
-				}
-				stream.close();
-			} catch (IOException e) {
-				Activator.error(e.getMessage(), e);
-			} catch (CoreException e) {
-				Activator.error(e.getMessage(), e);
-			}
-		}
 	}
 	
 

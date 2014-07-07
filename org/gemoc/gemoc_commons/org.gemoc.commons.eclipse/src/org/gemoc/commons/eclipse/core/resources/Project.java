@@ -1,7 +1,10 @@
 package org.gemoc.commons.eclipse.core.resources;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -12,6 +15,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jdt.core.JavaCore;
 
 public class Project {
 
@@ -102,7 +106,8 @@ public class Project {
 	}
 
 	public static IFile createFile(IProject project, IFile file, InputStream contentStream, IProgressMonitor monitor) throws CoreException {
-		if (!file.exists()) {
+		if (!file.exists()) 
+		{
 			IPath path = file.getProjectRelativePath();
 			if (path.segmentCount() > 1) {
 				IPath currentFolderPath = new Path("");
@@ -115,16 +120,84 @@ public class Project {
 		}
 		return file;
 	}
+	
+	public static void addJavaNature(IProject project) throws CoreException, IOException 
+	{
+		if(!project.hasNature(JavaCore.NATURE_ID)){
+			JavaCore.create(project);
+			addNature(project, JavaCore.NATURE_ID);
+			Project.createFolder(project, "src/main/java", new NullProgressMonitor());
+			Project.createFolder(project, "src/main/xdsml-java-gen", new NullProgressMonitor());
+			addJavaResources(project);
+		}
+	}
 		
-	public static void addNature(IProject project, String natureId) throws CoreException {
+	public static final String CLASSPATH_TEMPLATE= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+"<classpath>\n"+
+"	<classpathentry kind=\"src\" path=\"src/main/java\"/>\n"+
+"	<classpathentry kind=\"src\" path=\"src/main/xdsml-java-gen\"/>\n"+
+"	<classpathentry kind=\"con\" path=\"org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6\"/>\n"+
+"	<classpathentry kind=\"output\" path=\"bin\"/>\n"+
+"</classpath>";
+	
+	private static void addJavaResources(IProject project) throws CoreException, IOException 
+	{
+		final IFile file = project.getFile(new Path(".classpath")); 
+		InputStream stream = null;
+		try 
+			{
+				stream = new ByteArrayInputStream(CLASSPATH_TEMPLATE.getBytes());
+				if (file.exists()) 
+				{
+					file.setContents(stream, true, true, null);
+				} 
+				else 
+				{
+					file.create(stream, true, null);
+				}
+			} 
+			finally
+			{
+				if (stream != null)
+					stream.close();				
+			}
+	}
+	
+	public static void addNature(IProject project, String natureId) throws CoreException 
+	{
 		IProjectDescription description = project.getDescription();
 		String[] natures = description.getNatureIds();
-		if (!project.hasNature(natureId)) {
+		if (!project.hasNature(natureId)) 
+		{
 			String[] newNatures = new String[natures.length + 1];
 			System.arraycopy(natures, 0, newNatures, 1, natures.length);
 			newNatures[0] = natureId;
 			description.setNatureIds(newNatures);
 			project.setDescription(description, null);
+		}
+	}
+	
+	public static void removeNature(IProject project, String natureId) throws CoreException 
+	{
+		IProjectDescription description = project.getDescription();
+		List<String> natures = Arrays.asList(description.getNatureIds());
+		natures.remove(natureId);
+		String[] newNatures = natures.toArray(new String[natures.size()]);
+		description.setNatureIds(newNatures);
+		project.setDescription(description, null);
+	}
+	
+	public static NatureToggling toggleNature(IProject project, String natureId) throws CoreException
+	{
+		if (!project.hasNature(natureId)) 
+		{
+			addNature(project, natureId);
+			return NatureToggling.Added;
+		}
+		else 
+		{
+			removeNature(project, natureId);
+			return NatureToggling.Removed;
 		}
 	}
 
