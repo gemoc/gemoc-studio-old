@@ -1,0 +1,119 @@
+[comment encoding = UTF-8 /]
+[module generate('http://fr.inria.aoste.timesquare.ecl',
+	'http://org.gemoc.mocc.ccslmocc/1.0',
+	'http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST',
+	'http://www.eclipse.org/ocl/3.1.0/BaseCST',
+	'http://www.eclipse.org/ocl/3.1.0/EssentialOCLCST')]
+
+[import org::gemoc::mocc::transformations::ecl2clocksystem::libLoader::loadLibrary /] 
+[import org::gemoc::mocc::transformations::ecl2clocksystem::main::generateMoCMLLibraries /] 
+[import org::gemoc::mocc::transformations::ecl2clocksystem::main::generateCCSLLibraries /] 
+[import org::gemoc::mocc::transformations::ecl2clocksystem::services::eclQueries /] 
+ 
+[template public generate(anECLDocument : ECLDocument, resFileNames : String, rootElementName:String)] 
+[comment @main/]
+[file (resFileNames.toString(), false, 'UTF-8')] 
+[ '[' /]comment encoding = UTF-8 /[ ']' /]
+
+[ '[' /]module generate('http://fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation', 
+	'http://www.eclipse.org/emf/2002/Ecore', 
+	'http://org.gemoc.mocc.ccslmocc/1.0', 
+	'http://fr.inria.aoste.timemodel',
+	'http://org.gemoc.mocc.fsmmodel/1.0',
+	[anECLDocument.getNsURIToDeclare()/]) [ ']' /]
+
+[ '[' /]template public generate(a[rootElementName/] : [rootElementName/])[ ']' /]
+[ '[' /]comment @main/[ ']' /]
+[ '[' /]file (a[rootElementName/].name+'_withMoC-[anECLDocument.getMoCIDFromFirstLib()/].clocksystem', false, 'UTF-8')[ ']' /]
+
+"Some global constants"
+|zero one two three four five six seven eight nine ten|
+zero :=0.
+one := 1.
+two := 2.
+three := 3.
+four := 4.
+five := 5.
+six := 6.
+seven := 7.
+eight := 8.
+nine := 9.
+ten := 10.
+
+[if (anECLDocument.imports.importURI.endsWith('.mocdsl')->size()<>0)]
+"MoCML librairies specifications" 
+[for (importS : ImportStatement | anECLDocument.imports)]
+[if (importS.importURI.endsWith('.mocdsl'))]
+[let aStateRelationBasedLibrary : StateRelationBasedLibrary = importS.loadMoCMLLibrary()]
+[aStateRelationBasedLibrary.generateMoCMLLibraries()/]
+[/let]
+[/if]
+[/for]
+
+
+[/if]
+
+[if (anECLDocument.imports.importURI.endsWith('.ccslLib')->size()<>0)]
+"CCSL librairies specifications" 
+[for (importS : ImportStatement | anECLDocument.imports)]
+[if (importS.importURI.endsWith('.ccslLib'))]
+	"FIXME: [importS.importURI/]"
+[comment let aLibrary : Library = importS.loadCCSLLibrary()/]
+[comment aLibrary.generateCCSLLibraries()/]
+[comment /let/]
+[/if]
+[/for]
+[/if]
+
+
+"Instanciation" 
+
+[comment  For All Context type, get All clocks/]
+
+system := ClockSystem named: '[ '[' /]a[rootElementName/].name/[ ']' /]_withMoC-[anECLDocument.getMoCIDFromFirstLib()/]'.
+[comment [anECLDocument.getAllContextOccurences()->sep(', ')/]
+
+[for (cDecl : String | anECLDocument.getContextLabels())][ '[' /]for (element : [cDecl/]| a[rootElementName/].eAllContents([cDecl/]))[ ']' /]
+"clocks for [cDecl/] [ '[' /]element.name/[ ']' /]" 
+	system addClocks: #([for (e : String | anECLDocument.getAllEvents(cDecl))][e/][ '[' /]element.name/[ ']' /] [/for]).
+	[if (anECLDocument.hasInternalEvents(cDecl))]
+"internal clocks for [cDecl/] [ '[' /]element.name/[ ']' /]" 
+    system addInternalClocks: #([for (e : String | anECLDocument.getAllInternalEvents(cDecl))][e/][ '[' /]element.name/[ ']' /] [/for]).
+	[/if]
+[ '[' /]/for[ ']' /]
+[/for]	
+
+[for (cDecl : String | anECLDocument.getContextLabels())][ '[' /]for (element : [cDecl/]| a[rootElementName/].eAllContents([cDecl/]))[ ']' /]
+	[if (anECLDocument.hasInternalEvents(cDecl))]
+"expressions used by  [cDecl/] [ '[' /]element.name/[ ']' /]" 
+	[for (internalClockName : String | anECLDocument.getAllInternalEvents(cDecl))]
+	system all[anECLDocument.getExpressionName(cDecl, internalClockName)/]: #([anECLDocument.printListedClockParameters(cDecl, internalClockName)/]) named: #[internalClockName/][ '[' /]element.name/[ ']' /]. 
+ 	[/for]
+	[/if]
+"relations for [cDecl/] [ '[' /]element.name/[ ']' /]" 
+	[for (invar : ConstraintCS | anECLDocument.getInvariants(cDecl))]
+	"[invar.name/] in [cDecl/] [ '[' /]element.name/[ ']' /]"
+	[if (invar.getLibraryName().equalsIgnoreCase('CCSL') or invar.getLibraryName().equalsIgnoreCase('kernelLibrary'))]
+		system library: #Kernel relation: #[invar.getRelationDeclName()/] clocks: #([invar.getClockNamesListedAndSepBySpace()/]).
+	[else]
+	system
+		library: #[invar.getLibraryName()/]
+		relation: #[invar.getRelationName()/]
+		clocks: #([invar.getClockNamesListedAndSepBySpace()/])
+		constants: {[invar.getConstantsOrLinkersListedAndSepByDot()/]}
+		variables: {[invar.getVariablesListedAndSepByDot()/]}.
+	[/if]
+
+	[/for]
+[ '[' /]/for[ ']' /]
+
+[/for]
+
+[comment [anECLDocument.getContexts()->sep(', ')/]
+
+[ '[' /]/file[ ']' /]
+[ '[' /]/template[ ']' /]
+[/file]
+[/template]
+
+
