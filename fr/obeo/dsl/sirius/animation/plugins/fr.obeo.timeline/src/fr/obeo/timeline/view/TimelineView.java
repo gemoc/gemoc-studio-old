@@ -295,6 +295,7 @@ public class TimelineView extends ViewPart {
 		final SashForm mainSashForm = new SashForm(parent, SWT.HORIZONTAL);
 		detailViewer = createDetailViewer(mainSashForm);
 		timelineViewer = new ScrollingGraphicalViewer();
+		getSite().setSelectionProvider(timelineViewer);
 		Composite timelineComposite = new Composite(mainSashForm, SWT.NONE);
 		timelineComposite.setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 		mainSashForm.setWeights(new int[] {DETAIL_RATIO, TIMELINE_RATIO, });
@@ -320,7 +321,6 @@ public class TimelineView extends ViewPart {
 		timelineViewer.setEditPartFactory(new TimelineEditPartFactory());
 		timelineWindow = new TimelineWindow(provider);
 		timelineViewer.setContents(timelineWindow);
-
 		timelineSlider.setPageIncrement(timelineWindow.getLength());
 		timelineSlider.setThumb(timelineWindow.getLength());
 		timelineSlider.setSelection(timelineWindow.getStart());
@@ -405,6 +405,15 @@ public class TimelineView extends ViewPart {
 			}
 		});
 
+	}
+
+	/**
+	 * Gets the timeline viewer.
+	 * 
+	 * @return the timeline viewer
+	 */
+	public ScrollingGraphicalViewer getTimelineViewer() {
+		return timelineViewer;
 	}
 
 	/**
