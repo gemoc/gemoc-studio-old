@@ -4,14 +4,14 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            id="org.gemoc.execution.engine.io"
+            id="org.gemoc.execution.engine.io.category"
             name="Gemoc">
       </category>
       <view
-            category="org.gemoc.execution.engine.io"
-            class="org.gemoc.execution.engine.io.views.EnginesStatusView"
+            category="org.gemoc.execution.engine.io.category"
+            class="org.gemoc.execution.engine.io.views.engine.EnginesStatusView"
             icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.execution.engine.io.views.EnginesStatusView"
+            id="org.gemoc.execution.engine.io.views.engine.EnginesStatusView"
             name="Gemoc Engines Status">
       </view>
       <view
@@ -27,31 +27,16 @@
       <perspectiveExtension
             targetID="org.eclipse.jdt.ui.JavaPerspective">
          <view
-               id="org.gemoc.execution.engine.io.views.EnginesStatusView"
+               id="org.gemoc.execution.engine.io.views.engine.EnginesStatusView"
                ratio="0.5"
                relationship="right"
                relative="org.eclipse.ui.views.ProblemView">
          </view>
       </perspectiveExtension>
-   </extension>
-    <extension
-         point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
             targetID="org.eclipse.debug.ui.DebugPerspective">
          <view
-               id="org.gemoc.execution.engine.io.views.EnginesStatusView"
-               ratio="0.5"
-               relationship="stack"
-               relative="org.eclipse.debug.ui.VariableView">
-         </view>
-      </perspectiveExtension>
-   </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="org.eclipse.debug.ui.DebugPerspective">
-         <view
-               id="org.gemoc.execution.engine.io.views.ExecutionTraceView"
+               id="org.gemoc.execution.engine.io.views.engine.EnginesStatusView"
                ratio="0.5"
                relationship="stack"
                relative="org.eclipse.debug.ui.VariableView">
@@ -63,6 +48,54 @@
       <contexts
             file="contexts.xml">
       </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.gemoc.execution.engine.io.views.engine.EnginesStatusView">
+         <command
+               commandId="org.gemoc.execution.engine.io.commands.StopEngine"
+               icon="IMG_ELCL_STOP"
+               label="Stop Engine"
+               style="push">
+         </command>
+         <command
+               commandId="org.gemoc.execution.engine.io.command.RemoveAllEngines"
+               icon="IMG_ELCL_REMOVEALL"
+               label="Remove all engines"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:org.gemoc.execution.engine.io.views.engine.EnginesStatusView">
+         <command
+               commandId="org.gemoc.execution.engine.io.commands.StopEngine"
+               icon="IMG_ELCL_STOP"
+               label="Stop Engine"
+               style="push">
+         </command>
+         <command
+               commandId="org.gemoc.execution.engine.io.command.RemoveAllEngines"
+               icon="IMG_ELCL_REMOVEALL"
+               label="Remove all engines"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.engine.StopEngine"
+            id="org.gemoc.execution.engine.io.commands.StopEngine"
+            name="Stop Engine">
+      </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.engine.RemoveAllEngines"
+            id="org.gemoc.execution.engine.io.command.RemoveAllEngines"
+            name="Remove all engines">
+      </command>
    </extension>
 
 </plugin>

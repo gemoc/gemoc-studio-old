@@ -24,6 +24,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingException;
+import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
@@ -237,7 +238,7 @@ public class ExecutionTraceView extends ViewPart implements
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
 		if (engine != null) {
-			_currentEngine = engine;
+			_currentEngine = engine;		
 			viewer.setInput(_currentEngine);
 			if (_lastCreatedWrapper != null)
 				viewer.reveal(_lastCreatedWrapper);

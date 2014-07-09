@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views;
+package org.gemoc.execution.engine.io.views.engine;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,15 +10,8 @@ import java.util.Observer;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -38,52 +31,29 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TreeColumn;
-import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.SharedIcons;
+import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
+import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.LogicalStep;
-
-
-/**
- * This sample class demonstrates how to plug-in a new
- * workbench view. The view shows data obtained from the
- * model. The sample creates a dummy model on the fly,
- * but a real implementation would connect to the model
- * available either in this or another plug-in (e.g. the workspace).
- * The view is connected to the model using a content provider.
- * <p>
- * The view uses a label provider to define how model
- * objects should be presented in the view. Each
- * view can present the same model objects using
- * different labels and icons, if needed. Alternatively,
- * a single label provider can be shared between views
- * in order to ensure that objects of the same type are
- * presented in the same way everywhere.
- * <p>
- */
 
 public class EnginesStatusView extends ViewPart implements Observer {
 
 	/**
 	 * The ID of the view as specified by the extension.
 	 */
-	public static final String ID = "org.gemoc.execution.engine.io.views.EnginesStatusView";
+	public static final String ID = "org.gemoc.execution.engine.io.views.engine.EnginesStatusView";
 
 	public TreeViewer viewer;
 	private ViewContentProvider contentProvider;
-	//private DrillDownAdapter drillDownAdapter;
-	private Action stopCurrentEngineAction;
-	private Action removeStoppedEnginesAction;
-	private Action doubleClickAction;
 
 	/*
 	 * The content provider class is responsible for
@@ -195,29 +165,10 @@ public class EnginesStatusView extends ViewPart implements Observer {
 				return ((TreeParent)parent).hasChildren();
 			return false;
 		}
-/*
- * We will set up a dummy model to initialize tree heararchy.
- * In a real code, you will connect to a real model and
- * expose its hierarchy.
- */
+
 		private void initialize() {
-			/*TreeObject to1 = new TreeObject("Leaf 1");
-			TreeObject to2 = new TreeObject("Leaf 2");
-			TreeObject to3 = new TreeObject("Leaf 3");
-			TreeParent p1 = new TreeParent("Parent 1");
-			p1.addChild(to1);
-			p1.addChild(to2);
-			p1.addChild(to3);
-			
-			TreeObject to4 = new TreeObject("Leaf 4");
-			TreeParent p2 = new TreeParent("Parent 2");
-			p2.addChild(to4);
-			*/
-			roots = new ArrayList<TreeParent>();
-			
+			roots = new ArrayList<TreeParent>();		
 			refresh();
-			
-			
 		}
 		
 		public void refresh(){
@@ -297,9 +248,9 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			
 		}
 	}
+	
+	
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
-
-		
 		
 		@Override
 		public Image getColumnImage(Object obj, int columnIndex) {
@@ -417,18 +368,10 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		viewer.getTree().setFont(mono);
 		viewer.setInput(getViewSite());
 		
-		
-
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "org.gemoc.execution.engine.io.viewer");
-		makeActions();
 		hookContextMenu();
-		hookDoubleClickAction();
-		
-		
-		
-		contributeToActionBars();
-		
+			
 		// register for changes in the RunningEngineRegistry
 		org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.addObserver(this);
 	}
@@ -461,102 +404,18 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		column4.setWidth(350);
 		column4.setResizable(true);
 	}
-	public MenuManager menuMgr;
-	private void hookContextMenu() {
-		menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
-		menuMgr.addMenuListener(new IMenuListener() {
-			public void menuAboutToShow(IMenuManager manager) {
-				EnginesStatusView.this.fillContextMenu(manager);
-			}
-		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
-	}
-
-	private void contributeToActionBars() {
-		IActionBars bars = getViewSite().getActionBars();
-		fillLocalPullDown(bars.getMenuManager());
-		fillLocalToolBar(bars.getToolBarManager());
-	}
-
-	private void fillLocalPullDown(IMenuManager manager) {
-		manager.add(stopCurrentEngineAction);
-		manager.add(new Separator());
-		manager.add(removeStoppedEnginesAction);
-	}
-
-	private void fillContextMenu(IMenuManager manager) {
-		manager.add(stopCurrentEngineAction);
-		//manager.add(removeStoppedEnginesAction);
-		manager.add(new Separator());
-		//drillDownAdapter.addNavigationActions(manager);
-		// Other plug-ins can contribute there actions here
-		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-	}
 	
-	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(stopCurrentEngineAction);
-		manager.add(removeStoppedEnginesAction);
-		manager.add(new Separator());
-		//drillDownAdapter.addNavigationActions(manager);
-	}
-
-	private void makeActions() {
-		stopCurrentEngineAction = new Action() {
-			public void run() {
-				if(EnginesStatusView.this.getSelectedEngine() != null){
-					EnginesStatusView.this.getSelectedEngine().stop();
-					
-					//showMessage("Stopping Engine");
-				}
-				else
-					showMessage("please select an engine to stop");
-			}
-		};
-		stopCurrentEngineAction.setText("Stop selected engine");
-		stopCurrentEngineAction.setToolTipText("Stop selected engine");
-		stopCurrentEngineAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-			getImageDescriptor(ISharedImages.IMG_ELCL_STOP));
-		
-		removeStoppedEnginesAction = new Action() {
-			public void run() {
-				removeStoppedEngines();
-				//showMessage("Action 2 executed");
-			}
-		};
-		removeStoppedEnginesAction.setText("Remove stopped engines");
-		removeStoppedEnginesAction.setToolTipText("Remove all stopped engines");
-		removeStoppedEnginesAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-				getImageDescriptor(ISharedImages.IMG_ELCL_REMOVEALL));
-		
-		
-		
-		doubleClickAction = new Action() {
-			public void run() {
-				ISelection selection = viewer.getSelection();
-				Object obj = ((IStructuredSelection)selection).getFirstElement();
-				showMessage("Double-click detected on "+obj.toString());
-			}
-		};
-		
-		
-		
-	}
-
-	private void hookDoubleClickAction() {
-		/*viewer.addDoubleClickListener(new IDoubleClickListener() {
-			public void doubleClick(DoubleClickEvent event) {
-				doubleClickAction.run();
-			}
-		});*/
-	}
-	private void showMessage(String message) {
-		MessageDialog.openInformation(
-			viewer.getControl().getShell(),
-			"Gemoc Engines Status",
-			message);
+	public MenuManager menuMgr;
+	private void hookContextMenu() 
+	{
+	    //MenuManager menuManager = new MenuManager();
+	    MenuManager menuManager = new MenuManager();
+	    menuMgr = menuManager;
+	    Menu menu = menuManager.createContextMenu(viewer.getControl());
+	    viewer.getControl().setMenu(menu);
+	    getSite().registerContextMenu(menuManager, viewer);
+	    // make the selection available
+	    getSite().setSelectionProvider(viewer);
 	}
 
 	/**
@@ -608,14 +467,15 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					Iterator<?> iter = selection.iterator();
 					while (iter.hasNext()){
 						TreeObject treeObject = (TreeObject) iter.next();
+						lastSelectedLogicalStep = null;
 						if(treeObject.wrappedObject instanceof LogicalStep){
 							lastSelectedLogicalStep =  (LogicalStep) treeObject.wrappedObject;
 						}
 						// try to retrieve the engine from internal leaves  (event occurrences)
-			
 						if(treeObject.wrappedObject instanceof Event){
 							lastSelectedLogicalStep= (LogicalStep) treeObject.getParent().getWrappedObject();
 						}
+						
 					}
 				}
 			});
