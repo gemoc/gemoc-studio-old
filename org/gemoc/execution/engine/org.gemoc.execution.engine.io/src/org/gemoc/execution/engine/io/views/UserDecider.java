@@ -4,18 +4,13 @@ import java.util.List;
 import java.util.concurrent.Semaphore;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuListener2;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.SharedIcons;
-import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
+import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 
 import fr.inria.aoste.trace.LogicalStep;
@@ -37,7 +32,7 @@ public class UserDecider implements ILogicalStepDecider {
 		_semaphore = new Semaphore(0);
 		if(!isStepByStep && possibleLogicalSteps.size() == 1) return 0;
 
-		decisionView = ViewHelper.retrieveView(EnginesStatusView.ID);
+		decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
 		
 		// add action into view menu
 		IMenuListener2 menuListener = new IMenuListener2() 
@@ -64,7 +59,7 @@ public class UserDecider implements ILogicalStepDecider {
 					manager.remove(_action.getId());
 			}
 		};
-		decisionView.menuMgr.addMenuListener(menuListener);
+		decisionView.addMenuListener(menuListener);
 		
 		// add action on double click
 		IDoubleClickListener doubleClickListener = new IDoubleClickListener() 
@@ -85,20 +80,20 @@ public class UserDecider implements ILogicalStepDecider {
 				}
 			}
 		};
-		decisionView.viewer.addDoubleClickListener(doubleClickListener);
+		decisionView.addDoubleClickListener(doubleClickListener);
 		
 		
 		// wait for user selection if it applies to this engine
 		_semaphore.acquire();
 		_semaphore = null;
 		// clean menu listener
-		decisionView.menuMgr.removeMenuListener(menuListener);
-		decisionView.viewer.removeDoubleClickListener(doubleClickListener);
+		decisionView.removeMenuListener(menuListener);
+		decisionView.removeDoubleClickListener(doubleClickListener);
 		return possibleLogicalSteps.indexOf(decisionView.getSelectedLogicalStep());
 
 	}
 
-	private EnginesStatusView decisionView;
+	private LogicalStepsView decisionView;
 
 	@Override
 	public void dispose() {

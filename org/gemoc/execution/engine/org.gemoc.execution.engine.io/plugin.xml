@@ -15,11 +15,18 @@
             name="Gemoc Engines Status">
       </view>
       <view
-            category="org.gemoc.execution.engine.io"
+            category="org.gemoc.execution.engine.io.category"
             class="org.gemoc.execution.engine.io.views.ExecutionTraceView"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.execution.engine.io.views.ExecutionTraceView"
             name="Gemoc Execution Trace">
+      </view>
+      <view
+            category="org.gemoc.execution.engine.io.category"
+            class="org.gemoc.execution.engine.io.views.step.LogicalStepsView"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
+            name="Logical Steps">
       </view>
    </extension>
    <extension

@@ -16,6 +16,7 @@ import org.gemoc.execution.engine.io.core.Frontend;
 import org.gemoc.execution.engine.io.views.ExecutionTraceView;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.io.views.obeo.TimelineProvider;
+import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.trace.LogicalStep;
@@ -47,6 +48,7 @@ public class PrepareViewFrontend implements Frontend
 							public void run() {
 								ViewHelper.retrieveView(EnginesStatusView.ID);
 								ViewHelper.retrieveView(ExecutionTraceView.ID);
+								ViewHelper.retrieveView(LogicalStepsView.ID);
 								TimelineView timelineView = ViewHelper.retrieveView(TimelineView.ID);			
 								ObservableBasicExecutionEngine e = (ObservableBasicExecutionEngine) engine;
 								timelineView.setDetailViewerContentProvider(new AdapterFactoryContentProvider(adapterFactory));
