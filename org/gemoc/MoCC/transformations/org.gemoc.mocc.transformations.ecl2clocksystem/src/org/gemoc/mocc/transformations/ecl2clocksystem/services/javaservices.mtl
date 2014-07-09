@@ -1,0 +1,90 @@
+[comment encoding = Cp1252 /]
+[module javaservices('http://org.gemoc.mocc.fsmmodel/1.0',
+	'http://org.gemoc.mocc.ccslmocc/1.0',
+	'http://fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation',
+	'http://fr.inria.aoste.timemodel')/] 
+
+[query public basicConstraints(arg0 : Trigger) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'basicConstraints(org.gemoc.mocc.fsmkernel.model.FSMModel.Trigger)', Sequence{arg0})
+/]
+
+[query public nameToNumID(arg0 : State) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'nameToNumID(org.gemoc.mocc.fsmkernel.model.FSMModel.State)', Sequence{arg0})
+/]
+
+[query public printTrigger(arg0 : Transition) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'printTrigger(org.gemoc.mocc.fsmkernel.model.FSMModel.Transition)', Sequence{arg0})
+/]
+
+[query public hasTrigger(arg0 : Transition) : Boolean
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'hasTrigger(org.gemoc.mocc.fsmkernel.model.FSMModel.Transition)', Sequence{arg0})
+/]
+
+[query public hasGuard(arg0 : Transition) : Boolean
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'hasGuard(org.gemoc.mocc.fsmkernel.model.FSMModel.Transition)', Sequence{arg0})
+/]
+
+[query public hasActions(arg0 : Transition) : Boolean
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'hasActions(org.gemoc.mocc.fsmkernel.model.FSMModel.Transition)', Sequence{arg0})
+/]
+
+[query public printGuard(arg0 : Transition) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'printGuard(org.gemoc.mocc.fsmkernel.model.FSMModel.Transition)', Sequence{arg0})
+/]
+
+[query public hasOnlyTriggers(arg0 : RelationDefinition) : Boolean 
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'hasOnlyTriggers(fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDefinition)', Sequence{arg0})
+/]
+
+[query public getListedClocks(arg0 : RelationDefinition) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getListedClocks(fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDefinition)', Sequence{arg0})
+/]
+
+[query public getListedVariables(arg0 : RelationDefinition) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getListedVariables(fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDefinition)', Sequence{arg0})
+/]
+
+[query public getVariables(arg0 : StateMachineRelationDefinition) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getVariables(org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition)', Sequence{arg0})
+/]
+
+[query public getConstants(arg0 : RelationDeclaration) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getConstants(fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDeclaration)', Sequence{arg0})
+/]
+
+[query public getClocks(arg0 : RelationDeclaration) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getClocks(fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDeclaration)', Sequence{arg0})
+/]
+
+
+[query public getVariableIndex(arg0 : RelationDefinition, arg1 : String) : Integer
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getVariableIndex(fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDefinition, java.lang.String)', Sequence{arg0,arg1})
+/]
+
+[query public getVariableIndexPlusOne(arg0 : RelationDefinition, arg1 : String) : Integer
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getVariableIndexPlusOne(fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDefinition, java.lang.String)', Sequence{arg0,arg1})
+/]
+
+[query public getActionVariableName(arg0 : IntegerAssignement) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getActionVariableName(org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignement)', Sequence{arg0})
+/]
+
+[query public getExpression(arg0 : IntegerAssignement) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getExpression(org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignement)', Sequence{arg0})
+/]
+
+
+[query public getListedConstants(arg0 : RelationDefinition) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'getListedConstants(fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDefinition)', Sequence{arg0})
+/]
+
+[query public varArrayAction(arg0 : Transition) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'varArrayAction(org.gemoc.mocc.fsmkernel.model.FSMModel.Transition)', Sequence{arg0})
+/]
+
+[query public toStringAction(arg0 : Transition) : String
+	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.Services', 'toStringAction(org.gemoc.mocc.fsmkernel.model.FSMModel.Transition)', Sequence{arg0})
+/]
+
+
+ 

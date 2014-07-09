@@ -34,6 +34,7 @@ import fr.obeo.dsl.process.Task;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.Test;
@@ -2065,6 +2066,101 @@ public class ProcessUtilsTests {
 		context.getProgress().put(task2, new Object());
 
 		assertEquals(true, ProcessUtils.canDoAction(context, task2));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getTaskByIDMap(Process)}.
+	 */
+	@Test(expected = java.lang.NullPointerException.class)
+	public void getTaskByIDMapNullProcess() {
+		ProcessUtils.getTaskByIDMap(null);
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getTaskByIDMap(Process)}.
+	 */
+	@Test(expected = java.lang.NullPointerException.class)
+	public void getTaskByIDMapNoTask() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+
+		final Map<String, Task> map = ProcessUtils.getTaskByIDMap(process);
+
+		assertEquals(0, map.size());
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getTaskByIDMap(Process)}.
+	 */
+	@Test
+	public void getTaskByIDMapActionTask() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		task1.setId("Task1");
+		process.setTask(task1);
+
+		final Map<String, Task> map = ProcessUtils.getTaskByIDMap(process);
+
+		assertEquals(1, map.size());
+		assertEquals(task1, map.get(task1.getId()));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getTaskByIDMap(Process)}.
+	 */
+	@Test
+	public void getTaskByIDMapComposedTaskNoChildren() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ComposedTask composedTask1 = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask1.setName("composedTask1");
+		composedTask1.setId("ComposedTask1");
+		process.setTask(composedTask1);
+
+		final Map<String, Task> map = ProcessUtils.getTaskByIDMap(process);
+
+		assertEquals(1, map.size());
+		assertEquals(composedTask1, map.get(composedTask1.getId()));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getTaskByIDMap(Process)}.
+	 */
+	@Test
+	public void getTaskByIDMapComposedTask() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ComposedTask composedTask1 = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask1.setName("composedTask1");
+		composedTask1.setId("ComposedTask1");
+		final ComposedTask composedTask2 = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask2.setName("composedTask2");
+		composedTask2.setId("ComposedTask2");
+		composedTask1.getTasks().add(composedTask2);
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		task1.setId("Task1");
+		composedTask1.getTasks().add(task1);
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		task2.setId("Task2");
+		composedTask2.getTasks().add(task2);
+		final ActionTask task3 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task3.setName("task3");
+		task3.setId("Task3");
+		composedTask2.getTasks().add(task3);
+		process.setTask(composedTask1);
+
+		final Map<String, Task> map = ProcessUtils.getTaskByIDMap(process);
+
+		assertEquals(5, map.size());
+		assertEquals(composedTask1, map.get(composedTask1.getId()));
+		assertEquals(composedTask2, map.get(composedTask2.getId()));
+		assertEquals(task1, map.get(task1.getId()));
+		assertEquals(task2, map.get(task2.getId()));
+		assertEquals(task3, map.get(task3.getId()));
 	}
 
 }
