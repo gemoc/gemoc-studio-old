@@ -1,15 +1,22 @@
-package org.gemoc.execution.engine.io.views.obeo;
+package org.gemoc.execution.engine.io.views.timeline;
 
 import java.util.Observable;
 import java.util.Observer;
 
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
+import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
+import fr.inria.aoste.trace.EventOccurrence;
+import fr.inria.aoste.trace.LogicalStep;
+import fr.inria.aoste.trace.ModelElementReference;
 import fr.obeo.timeline.view.AbstractTimelineProvider;
 
-public class TimelineProvider extends AbstractTimelineProvider implements Observer {
+public class TimelineProvider extends AbstractTimelineProvider implements Observer, IDisposable {
 
 	private ObservableBasicExecutionEngine _engine;
 	
@@ -45,10 +52,48 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	}
 
 	@Override
-	public String getTextAt(int index, int choice) {
-		return "titi";
+	public Object getAt(int index) {
+		return getExecutionTrace().getChoices().get(index);
 	}
 
+	@Override
+	public String getTextAt(int index, int choice) 
+	{
+		StringBuilder builder = new StringBuilder();
+		LogicalStep ls = (LogicalStep)getAt(index, choice);
+		for(EventOccurrence eventOccurrence : ls.getEventOccurrences()) {
+			if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
+				ModelElementReference reference = (ModelElementReference)eventOccurrence.getReferedElement();
+				AppendToolTipTextToBuilder(builder, reference);
+				builder.append(System.getProperty("line.separator"));
+			}
+		}
+		return builder.toString();
+	}
+
+	private void AppendToolTipTextToBuilder(StringBuilder builder, ModelElementReference reference) {
+		int numberOfElements = reference.getElementRef().size();
+		switch(numberOfElements) {
+			case 1:
+				throw new UnsupportedOperationException();
+			case 2:
+				throw new UnsupportedOperationException();
+			case 3:
+				// element 0 is ClockConstraintSystemImpl
+				// element 1 is BlockImpl
+				// element 2 is ClockImpl
+				Clock clock = (Clock)reference.getElementRef().get(2);
+				Event event = clock.getTickingEvent();
+				String s = String.format("%-50s%s", event.getName(), ViewUtils.eventToString(event));
+				builder.append(s);
+				break;
+			case 4:
+				break;
+			default:
+				throw new UnsupportedOperationException();
+		}
+	}
+	
 	@Override
 	public int getFollowing(int index, int choice) {
 		int result = -1;
@@ -97,6 +142,15 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	public int getSelectedChoice(int index) {
 		Choice gemocChoice = getExecutionTrace().getChoices().get(index);
 		return gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
+	}
+
+	@Override
+	public void dispose() 
+	{
+		if (_engine != null)
+		{
+			_engine.deleteObserver(this);
+		}
 	}
 
 }

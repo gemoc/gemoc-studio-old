@@ -72,6 +72,16 @@ public interface ITimelineProvider {
 	Object getAt(int index, int choice);
 
 	/**
+	 * Gets the {@link Object} at the given choice (timeline index).
+	 * 
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
+	 * @return the {@link Object} at the given choice (timeline index and choice index) if any,
+	 *         <code>null</code> otherwise
+	 */
+	Object getAt(int index);
+
+	/**
 	 * Gets the text for the given choice (timeline index and choice index).
 	 * 
 	 * @param index

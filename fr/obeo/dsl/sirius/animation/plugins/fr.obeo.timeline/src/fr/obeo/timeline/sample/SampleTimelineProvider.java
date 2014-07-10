@@ -105,6 +105,11 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
+	public Object getAt(int index) {
+		return "something";
+	}
+
+	@Override
 	public int getSelectedChoice(int index) {
 		return selected[index];
 	}

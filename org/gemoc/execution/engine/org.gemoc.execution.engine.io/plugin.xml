@@ -28,6 +28,13 @@
             id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
             name="Logical Steps">
       </view>
+      <view
+            category="org.gemoc.execution.engine.io.category"
+            class="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
+            name="Time Line">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">

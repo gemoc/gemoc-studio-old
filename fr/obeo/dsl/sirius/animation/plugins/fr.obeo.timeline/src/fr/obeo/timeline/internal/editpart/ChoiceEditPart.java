@@ -35,6 +35,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.jface.resource.JFaceResources;
 
 /**
  * An {@link AbstractGraphicalEditPart} for {@link Choice}.
@@ -98,6 +99,7 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 			}
 		}
 		final Label toolTip = (Label)figure.getToolTip();
+		toolTip.setFont(JFaceResources.getFont(JFaceResources.TEXT_FONT));
 		toolTip.setText(getModel().getName());
 	}
 
