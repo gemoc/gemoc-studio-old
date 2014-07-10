@@ -357,7 +357,7 @@ public class TimelineView extends ViewPart {
 					final Object firstElement = ((IStructuredSelection)selection).getFirstElement();
 					if (firstElement instanceof ChoiceEditPart) {
 						final ChoiceEditPart choiceEditPart = (ChoiceEditPart)firstElement;
-						detailViewer.setInput(choiceEditPart.getModel().getLogicalStep());
+						detailViewer.setInput(choiceEditPart.getModel().getChoice());
 					}
 				}
 			}

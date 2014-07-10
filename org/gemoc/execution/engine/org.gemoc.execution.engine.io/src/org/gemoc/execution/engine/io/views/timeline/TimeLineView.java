@@ -75,6 +75,7 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 	public void configure(ObservableBasicExecutionEngine engine)
 	{
 		_currentEngine = engine;
+		// todo dispose content and label provider
 		setDetailViewerContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 		setDetailViewerLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -104,7 +105,7 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 						final Object selected = ((IStructuredSelection) selection).getFirstElement();
 						if (selected instanceof ChoiceEditPart) 
 						{
-							Object o = ((ChoiceEditPart) selected).getModel().getChoice();
+							Object o = ((ChoiceEditPart) selected).getModel().getTic();
 							if (o instanceof Choice)
 							{								
 								if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection)
