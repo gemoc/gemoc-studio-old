@@ -2,7 +2,6 @@ package org.gemoc.execution.engine.io.views;
 
 
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +31,6 @@ import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.Element;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.AbstractEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Binding;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 
@@ -172,16 +170,18 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				}
 				
 			}
+			EventFilter selectedFilter = new EventFilter();
+			
 			for(Relation r : system.getSubBlock().get(0).getRelations())
 			{
 				if(r instanceof Relation)
 				{
-					filtreEvent(r , engineCache);
+					selectedFilter.applyFilter(r, engineCache);
 				}
 			}
 		}
 		engineCache.configure(_currentEngine, system);
-		engineCache.disableAllEvents();
+		//engineCache.disableAllEvents();
 		_cache.put(_currentEngine, engineCache);
 	}
 
