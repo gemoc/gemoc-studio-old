@@ -21,9 +21,11 @@ import fr.obeo.dsl.process.internal.TaskUtilsAdapter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -712,6 +714,45 @@ public final class ProcessUtils {
 	public static boolean canDoAction(ProcessContext context, ActionTask task) {
 		return ProcessUtils.evaluatePrecondition(context, task)
 				&& (task.isMultipleExecution() || !ProcessUtils.isDone(context, task));
+	}
+
+	/**
+	 * Gets the mapping from {@link Task#getId() task id} to the {@link Task} itself for the given
+	 * {@link Process}.
+	 * 
+	 * @param process
+	 *            the {@link Process}
+	 * @return the mapping from {@link Task#getId() task id} to the {@link Task} itself for the given
+	 *         {@link Process}
+	 */
+	public static Map<String, Task> getTaskByIDMap(Process process) {
+		final Map<String, Task> res = new HashMap<String, Task>();
+
+		populateMapping(res, process.getTask());
+
+		return res;
+	}
+
+	/**
+	 * Populates the given mapping with the given {@link Task} and its {@link ComposedTask#getTasks() owned
+	 * tasks} if any.
+	 * 
+	 * @param map
+	 *            the mapping to populate
+	 * @param task
+	 *            the {@link Task}
+	 */
+	private static void populateMapping(Map<String, Task> map, Task task) {
+		if (task instanceof ComposedTask) {
+			map.put(task.getId(), task);
+			for (Task child : ((ComposedTask)task).getTasks()) {
+				populateMapping(map, child);
+			}
+		} else if (task instanceof ActionTask) {
+			map.put(task.getId(), task);
+		} else {
+			throw new IllegalStateException(DON_T_KNOW_WHAT_TO_DO_WITH + task.eClass().getName());
+		}
 	}
 
 }
