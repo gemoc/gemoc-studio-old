@@ -1,7 +1,5 @@
 package org.gemoc.execution.engine.io.views;
 
-import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
-
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
 
@@ -48,5 +46,4 @@ public class EventManagerClockWrapper {
 	public Clock get_clock() {
 		return _clock;
 	}
-	
 }

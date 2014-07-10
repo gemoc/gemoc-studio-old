@@ -1,7 +1,7 @@
 package org.gemoc.execution.engine.io.views;
 
 
-
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -15,9 +15,16 @@ import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -31,7 +38,6 @@ import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.Element;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Binding;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 
 
@@ -63,24 +69,73 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 * This is a callback that will allow us
 	 * to create the viewer and initialize it.
 	 */
-	public void createPartControl(final Composite parent) {
-		_parent = parent;		
+	public void createPartControl(Composite parent) {
+		GridLayout layout = new GridLayout();
+		_parent = parent;	
+		_parent.setLayout(layout);
+		createFilterSelectionBar();
 		createViewer();
-		// get the motor view to listen to motor selection
+		// get the view to listen to motor selection
 		startListeningToMotorSelectionChange();
 	}
+
+	private void createFilterSelectionBar() {
+		Composite filterSelectionBar = new Composite(_parent, SWT.BORDER);
+		filterSelectionBar.setLayout(new GridLayout(2, false));
+		filterSelectionBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		(new Label(filterSelectionBar, SWT.NULL)).setText("Select an event filter: ");
+		final Combo combo = new Combo(filterSelectionBar, SWT.NULL | SWT.DROP_DOWN | SWT.READ_ONLY);
+		combo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		String[] filters = new String[]{"All clocks","Free clocks"};
+		Arrays.sort(filters);
+		for(int i=0; i<filters.length; i++)
+			combo.add(filters[i]);
+		combo.addSelectionListener(new SelectionListener() 
+		{
+			public void widgetSelected(SelectionEvent e) {
+				switch(combo.getSelectionIndex())
+				{
+				case 0: _cache.get(_currentEngine).setFilter(new NoEventFilter()); break;
+				case 1: _cache.get(_currentEngine).setFilter(new RemoveLeftBindingClockFilter()); break;
+				default: break;
+				}
+				Display.getDefault().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						updateView();
+					}				
+				});
+			}
+
+			public void widgetDefaultSelected(SelectionEvent e) {
+				String text = combo.getText();
+				if(combo.indexOf(text) < 0) { // Not in the list yet 
+					combo.add(text);
+					// Re-sort
+					String[] items = combo.getItems();
+					Arrays.sort(items);
+					combo.setItems(items);
+				}
+			}
+		});
+
+	}
+
 
 	public void createViewer(){
 		// Define the TableViewer
 		// First column of its table will be a CHECK BUTTON
 		_viewer = new TableViewer(_parent, SWT.BORDER| SWT.CHECK);
-		// Initialise the column
+		// Initialise the unique column
 		createColumn();
-		
+
 		// make lines and header visible
 		final Table table = _viewer.getTable();
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
+
+		GridData grid = new GridData(SWT.FILL, SWT.FILL, true, true);
+		_viewer.getControl().setLayoutData(grid);
 		// We enable or disable our clocks with checking or unchecking the button.
 		table.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -118,7 +173,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		});
 	}
 
-	//TODO: rafraichir vue qd le moteur est eteint.
 	private void updateView() {
 		RunStatus engineStatus = _currentEngine.getEngineStatus().getRunningStatus();
 		if(engineStatus.equals(RunStatus.Stopped))
@@ -168,31 +222,13 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				{
 					engineCache.addClock((Clock)e);
 				}
-				
-			}
-			EventFilter selectedFilter = new EventFilter();
-			
-			for(Relation r : system.getSubBlock().get(0).getRelations())
-			{
-				if(r instanceof Relation)
-				{
-					selectedFilter.applyFilter(r, engineCache);
-				}
+
 			}
 		}
 		engineCache.configure(_currentEngine, system);
 		//engineCache.disableAllEvents();
 		_cache.put(_currentEngine, engineCache);
 	}
-
-
-	private void filtreEvent(Relation relation, EventManagementCache engineCache) {
-			List<Binding> bindings = relation.getBindings();
-			Binding leftBinding = bindings.get(0);
-			String clockNameLeftBinding = leftBinding.getBindable().getName();
-			engineCache.removeFromClockCache(clockNameLeftBinding);
-	}
-
 
 	private ClockConstraintSystem extractSystem() 
 	{
@@ -215,7 +251,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				updateView();
 			}
 		});
-		
+
 	}
 
 
