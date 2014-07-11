@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views;
+package org.gemoc.execution.engine.io.views.event;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;

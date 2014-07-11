@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views;
+package org.gemoc.execution.engine.io.views.event;
 
 
 import java.util.ArrayList;
@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
@@ -217,6 +218,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			ligne.setText(c.get_clock().getName());
 			ligne.setChecked(c.is_state());
 		}
+		
 	}
 
 	/**
