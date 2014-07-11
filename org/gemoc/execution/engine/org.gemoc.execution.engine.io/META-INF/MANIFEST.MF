@@ -29,5 +29,6 @@ Export-Package: org.gemoc.execution.engine.io,
  org.gemoc.execution.engine.io.exceptions,
  org.gemoc.execution.engine.io.frontends,
  org.gemoc.execution.engine.io.views,
+ org.gemoc.execution.engine.io.views.event,
  org.gemoc.execution.engine.io.views.obeo
 
