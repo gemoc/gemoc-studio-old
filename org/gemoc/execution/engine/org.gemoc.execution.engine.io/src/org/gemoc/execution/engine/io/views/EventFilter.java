@@ -9,7 +9,7 @@ public class EventFilter {
 	IEventFilterStrategy _filterStrategy;
 	
 	public EventFilter(){
-		_filterStrategy = new NoEventFilter(); // Default strategy
+		_filterStrategy = new RemoveAllBindingClockFilter(); // Default strategy
 	}
 
 	public void set_filterStrategy(IEventFilterStrategy filter) {
