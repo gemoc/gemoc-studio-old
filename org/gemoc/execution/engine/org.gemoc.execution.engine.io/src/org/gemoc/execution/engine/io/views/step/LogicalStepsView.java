@@ -3,16 +3,25 @@ package org.gemoc.execution.engine.io.views.step;
 import org.eclipse.jface.action.IMenuListener2;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.TreeViewerColumn;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.TreeColumn;
+import org.gemoc.commons.eclipse.ui.TreeViewerHelper;
+import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.io.Activator;
+import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.DependantViewPart;
+import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -30,9 +39,7 @@ public class LogicalStepsView extends DependantViewPart
 	{
 	}
 
-	
 	private LogicalStepsViewContentProvider _contentProvider;
-	private LogicalStepsViewLabelProvider _labelProvider;
 	private MenuManager _menuManager;
 	
 	@Override
@@ -43,14 +50,77 @@ public class LogicalStepsView extends DependantViewPart
 	}
 
 	private void createTreeViewer(Composite parent) {
-		_viewer = new TreeViewer(parent);
+		_viewer = new TreeViewer(parent, SWT.FULL_SELECTION | SWT.SINGLE);
 		_contentProvider = new LogicalStepsViewContentProvider();
-		_labelProvider = new LogicalStepsViewLabelProvider();
 		_viewer.setContentProvider(_contentProvider);
-		_viewer.setLabelProvider(_labelProvider);
 		Font mono = JFaceResources.getFont(JFaceResources.TEXT_FONT);
 		_viewer.getTree().setFont(mono);
+		createColumns();
 	}
+
+	private void createColumns() 
+	{
+		TreeColumn column1 = new TreeColumn(_viewer.getTree(), SWT.LEFT);
+		column1.setText("Logical Steps");
+		TreeViewerColumn viewerColumn1 = new TreeViewerColumn(_viewer, column1);
+		viewerColumn1.setLabelProvider(new ColumnLabelProvider()
+			{
+				
+				@Override
+				public String getText(Object element) {
+					if (element instanceof LogicalStep)
+					{
+						LogicalStep ls = (LogicalStep)element;
+						return LogicalStepHelper.getLogicalStepName(ls);
+					}
+					else if (element instanceof Event)
+					{
+						Event event = (Event)element;
+						return event.getName();
+					}
+					return super.getText(element);
+				}
+			
+				@Override
+				public Image getImage(Object element) {
+					if (element instanceof LogicalStep)
+					{
+						LogicalStep ls = (LogicalStep)element;
+						if(ls == _currentEngine.getEngineStatus().getChosenLogicalStep())
+						{
+							return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_RUNNING_ICON);
+						}
+						else {
+							return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_ICON);					
+						}
+					}
+					else if (element instanceof Event)
+					{
+						return SharedIcons.getSharedImage(SharedIcons.VISIBLE_EVENT_ICON);
+					}
+					return null;
+				}
+				
+			});
+
+	
+		TreeColumn column2 = new TreeColumn(_viewer.getTree(), SWT.LEFT);
+		column1.setText("Logical Steps");
+		TreeViewerColumn viewerColumn2 = new TreeViewerColumn(_viewer, column2);
+		viewerColumn2.setLabelProvider(new ColumnLabelProvider()
+			{
+				
+				@Override
+				public String getText(Object element) {
+					if (element instanceof Event)
+					{
+						String details = ViewUtils.eventToString((Event)element);
+						return "   " + details;
+					}
+					return super.getText(element);
+				}
+			
+			});}
 
 	private void createMenuManager() {
 		MenuManager menuManager = new MenuManager();
@@ -76,9 +146,9 @@ public class LogicalStepsView extends DependantViewPart
 		if (engine != null) 
 		{
 			_currentEngine = engine;		
-			_labelProvider.setEngine(engine);
 			_viewer.setInput(_currentEngine);
 			_viewer.expandAll();
+			TreeViewerHelper.resizeColumns(_viewer);
 		}
 	}
 

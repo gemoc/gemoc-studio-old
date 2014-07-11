@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
+import org.gemoc.commons.eclipse.ui.TreeViewerHelper;
 import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
@@ -90,8 +91,8 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	private void createColumns(TreeViewer viewer) {
 		TreeColumn column1 = new TreeColumn(viewer.getTree(), SWT.LEFT);
 		column1.setText("Identifier");
-		column1.setWidth(250);
-		column1.setResizable(true);
+//		column1.setWidth(250);
+//		column1.setResizable(true);
 		TreeViewerColumn viewerColumn1 = new TreeViewerColumn(viewer, column1);
 		viewerColumn1.setLabelProvider(new ColumnLabelProvider()
 			{
@@ -140,8 +141,8 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		
 		TreeColumn column3 = new TreeColumn(viewer.getTree(), SWT.LEFT);
 		column3.setText("Step");
-		column3.setWidth(50);
-		column3.setResizable(true);
+//		column3.setWidth(50);
+//		column3.setResizable(true);
 		TreeViewerColumn viewerColumn3 = new TreeViewerColumn(viewer, column3);
 		viewerColumn3.setLabelProvider(new ColumnLabelProvider()
 			{
@@ -162,8 +163,8 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		
 		TreeColumn column4 = new TreeColumn(viewer.getTree(), SWT.LEFT);
 		column4.setText("Details");
-		column4.setWidth(250);
-		column4.setResizable(true);
+//		column4.setWidth(250);
+//		column4.setResizable(true);
 		TreeViewerColumn viewerColumn4 = new TreeViewerColumn(viewer, column4);
 		viewerColumn4.setLabelProvider(new ColumnLabelProvider()
 			{
@@ -268,6 +269,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		    	  }
 		    	  _viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);	    	  
 		    	  _viewer.refresh();
+		    	  TreeViewerHelper.resizeColumns(_viewer);
 		    	  if (_lastSelection != null) {
 		    		  TreePath treePath = new TreePath(new Object[] {_lastSelection});
 		    		  TreeSelection newSelection = new TreeSelection(treePath);
