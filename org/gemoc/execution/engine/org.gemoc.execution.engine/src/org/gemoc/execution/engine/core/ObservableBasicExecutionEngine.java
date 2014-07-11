@@ -322,6 +322,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		{
 			injector.stop();
 		}
+		_clockControllers.clear();
 		
 		session.close(new NullProgressMonitor());
 		SessionManager.INSTANCE.remove(session);
@@ -831,6 +832,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	@Override
 	public CodeExecutor getCodeExecutor() {
 		return _codeExecutor;
+	}
+
+	public ArrayList<IAliveClockController> get_clockControllers() {
+		return _clockControllers;
 	}
 
 

@@ -46,5 +46,4 @@ public class EventManagerClockWrapper {
 	public Clock get_clock() {
 		return _clock;
 	}
-	
 }
