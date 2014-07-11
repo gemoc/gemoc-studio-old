@@ -37,9 +37,9 @@
       </view>
       <view
             category="org.gemoc.execution.engine.io.category"
-            class="org.gemoc.execution.engine.io.views.EventManagerView"
+            class="org.gemoc.execution.engine.io.views.event.EventManagerView"
             icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.execution.engine.io.views.EventManagerView"
+            id="org.gemoc.execution.engine.io.views.event.EventManagerView"
             name="Event Manager">
       </view>
 	</extension>
