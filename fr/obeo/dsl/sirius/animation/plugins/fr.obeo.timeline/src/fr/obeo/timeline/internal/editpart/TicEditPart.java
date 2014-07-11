@@ -65,7 +65,7 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 	/**
 	 * The size of the circle.
 	 */
-	public static final int SPACING = 15;
+	public static final int SPACING = 5;
 
 	/**
 	 * The tic label.

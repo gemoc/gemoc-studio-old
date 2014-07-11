@@ -203,8 +203,12 @@ public final class Choice {
 		return obj instanceof Choice && ((Choice)obj).index == index && ((Choice)obj).choice == choice;
 	}
 
-	public Object getObject() {
+	public Object getChoice() {
 		return getTimelineWindow().getProvider().getAt(index, choice);
+	}
+
+	public Object getTic2() {
+		return getTimelineWindow().getProvider().getAt(index);
 	}
 
 }

@@ -20,8 +20,6 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.part.ViewPart;
-import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingException;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
@@ -43,8 +41,8 @@ import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
  * <p>
  */
 
-public class ExecutionTraceView extends ViewPart implements
-		IMotorSelectionListener {
+public class ExecutionTraceView extends DependantViewPart
+{
 
 	/**
 	 * The ID of the view as specified by the extension.
@@ -54,8 +52,6 @@ public class ExecutionTraceView extends ViewPart implements
 	private TableViewer viewer;
 
 	private ExecutionTraceModelWrapper _lastCreatedWrapper;
-
-	private EnginesStatusView _enginesStatusView;
 
 	private Composite _parent;
 
@@ -119,25 +115,23 @@ public class ExecutionTraceView extends ViewPart implements
 	 */
 	public void createPartControl(Composite parent) {
 		_parent = parent;
-		createTableViewer(null);
+		createTableViewer();
 		// Create the help context id for the viewer's control
 		PlatformUI
 				.getWorkbench()
 				.getHelpSystem()
 				.setHelp(viewer.getControl(),
 						"org.gemoc.execution.engine.io.viewer");
-		// get the motor view to listen to motor selection
-		startListeningToMotorSelectionChange();
 	}
 
-	private void createTableViewer(GemocExecutionEngine executionEngine) {
+	private void createTableViewer() {
 		viewer = new TableViewer(_parent, SWT.H_SCROLL | SWT.V_SCROLL
 				| SWT.FULL_SELECTION);
 		viewer.getTable().setLinesVisible(false);
 		ColumnViewerToolTipSupport.enableFor(viewer, ToolTip.NO_RECREATE);
 		createColumns();
 		viewer.setContentProvider(new ViewContentProvider());
-		viewer.setInput(executionEngine);
+		viewer.setInput(null);
 		viewer.addDoubleClickListener(new DoubleClickListener());
 	}
 
@@ -219,25 +213,12 @@ public class ExecutionTraceView extends ViewPart implements
 		viewer.getControl().setFocus();
 	}
 
-	private void startListeningToMotorSelectionChange() {
-		_enginesStatusView = ViewHelper.retrieveView(EnginesStatusView.ID);
-		if (_enginesStatusView != null) {
-			_enginesStatusView.addMotorSelectionListener(this);
-		}
-	}
-
-	private void stopListeningToMotorSelectionChange() {
-		if (_enginesStatusView != null) {
-			_enginesStatusView.removeMotorSelectionListener(this);
-		}
-	}
-
 	private GemocExecutionEngine _currentEngine;
 
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
 		if (engine != null) {
-			_currentEngine = engine;
+			_currentEngine = engine;		
 			viewer.setInput(_currentEngine);
 			if (_lastCreatedWrapper != null)
 				viewer.reveal(_lastCreatedWrapper);
@@ -248,7 +229,6 @@ public class ExecutionTraceView extends ViewPart implements
 	public void dispose() {
 		super.dispose();
 		_currentEngine = null;
-		stopListeningToMotorSelectionChange();
 	}
 
 	public class DoubleClickListener implements IDoubleClickListener {
