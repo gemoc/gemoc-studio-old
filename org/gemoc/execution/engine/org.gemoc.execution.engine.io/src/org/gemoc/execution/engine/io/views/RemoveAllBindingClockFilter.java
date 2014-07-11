@@ -7,7 +7,10 @@ import java.util.List;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Binding;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 
-public class RemoveLeftBindingClockFilter implements IEventFilterStrategy {
+/**
+ * @author: lguillem
+ */
+public class RemoveAllBindingClockFilter implements IEventFilterStrategy {
 
 	@Override
 	public Collection<EventManagerClockWrapper> applyFilter(
@@ -16,13 +19,15 @@ public class RemoveLeftBindingClockFilter implements IEventFilterStrategy {
 		for(Relation relation: relations)
 		{
 			List<Binding> bindings = relation.getBindings();
-			Binding leftBinding = bindings.get(0);
-			// We copy the collection and scan the copy to be able to delete some of the element while we are in the for()
-			// else there is a problem.
+			String leftBindingClockName = bindings.get(0).getBindable().getName();
+			String rightBindingClockName = bindings.get(1).getBindable().getName();
+	
 			List<EventManagerClockWrapper> copyWrapperList = new ArrayList<EventManagerClockWrapper>(wrapperList);
+			
 			for(EventManagerClockWrapper clockWrapper: copyWrapperList)
 			{
-				if(clockWrapper.get_clock().getName() == leftBinding.getBindable().getName()) 
+				String nameClock = clockWrapper.get_clock().getName();
+				if(  nameClock == leftBindingClockName || nameClock == rightBindingClockName )
 				{
 					wrapperList.remove(clockWrapper);
 				}

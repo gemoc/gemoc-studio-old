@@ -67,8 +67,8 @@ public class EventManagementCache
 		_selectedFilter.set_filterStrategy(filter);
 	}
 
-	public void disableAllEvents(){
-		Collection<EventManagerClockWrapper> clockWrappers = _clocksCache.values();
+	public void disableClocks(Collection<EventManagerClockWrapper> clocksToDisable){
+		ArrayList<EventManagerClockWrapper> clockWrappers = new ArrayList<EventManagerClockWrapper>(clocksToDisable);
 		for(EventManagerClockWrapper wrapper: clockWrappers)
 		{
 			wrapper.set_state(false);
