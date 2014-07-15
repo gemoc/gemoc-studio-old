@@ -89,6 +89,8 @@ public class UserDecider implements ILogicalStepDecider {
 		// clean menu listener
 		decisionView.removeMenuListener(menuListener);
 		decisionView.removeDoubleClickListener(doubleClickListener);
+		if (_preemptionHappened)
+			return -1;
 		return possibleLogicalSteps.indexOf(decisionView.getSelectedLogicalStep());
 
 	}
@@ -101,13 +103,17 @@ public class UserDecider implements ILogicalStepDecider {
 			_semaphore.release();
 	}
 
+	private boolean _preemptionHappened = false;
 	@Override
-	public void preempt() {
+	public void preempt() 
+	{
+		_preemptionHappened = true;
 		if (_semaphore != null)
 			_semaphore.release();
 	}
 	
 	private Action createAction() {
+		
 		Action selectLogicalStepAction = new Action() 
 		{
 			public void run() 
