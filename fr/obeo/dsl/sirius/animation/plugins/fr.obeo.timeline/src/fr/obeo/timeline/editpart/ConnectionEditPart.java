@@ -15,64 +15,56 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.model;
+package fr.obeo.timeline.editpart;
 
-import fr.obeo.timeline.view.ITimelineListener;
-import fr.obeo.timeline.view.ITimelineProvider;
+import fr.obeo.timeline.model.Connection;
+
+import org.eclipse.draw2d.ColorConstants;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PolygonDecoration;
+import org.eclipse.draw2d.PolylineConnection;
+import org.eclipse.gef.editparts.AbstractConnectionEditPart;
+import org.eclipse.swt.SWT;
 
 /**
- * Listener for {@link TimelineWindow} changes.
+ * An {@link AbstractConnectionEditPart} for {@link Connection}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface ITimelineWindowListener extends ITimelineListener {
+public class ConnectionEditPart extends AbstractConnectionEditPart {
 
 	/**
-	 * Stub implementation.
+	 * {@inheritDoc}
 	 * 
-	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+	 * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
 	 */
-	class Stub extends ITimelineListener.Stub implements ITimelineWindowListener {
+	@Override
+	protected void createEditPolicies() {
+		// TODO Auto-generated method stub
+	}
 
-		@Override
-		public void startChanged(int start) {
-			// nothing to do here
-		}
+	@Override
+	protected IFigure createFigure() {
+		final PolylineConnection res = (PolylineConnection)super.createFigure();
 
-		@Override
-		public void lengthChanged(int length) {
-			// nothing to do here
-		}
+		res.setLineWidth(1);
+		PolygonDecoration decoration = new PolygonDecoration();
+		decoration.setTemplate(PolygonDecoration.TRIANGLE_TIP);
+		res.setTargetDecoration(decoration);
+		res.setLineStyle(SWT.LINE_SOLID);
+		res.setBackgroundColor(ColorConstants.listForeground);
 
-		@Override
-		public void providerChanged(ITimelineProvider provider) {
-			// nothing to do here
-		}
-
+		return res;
 	}
 
 	/**
-	 * Notifies the start has changed.
+	 * {@inheritDoc}
 	 * 
-	 * @param start
-	 *            the start
+	 * @see org.eclipse.gef.editparts.AbstractEditPart#getModel()
 	 */
-	void startChanged(int start);
-
-	/**
-	 * Notifies the length has changed.
-	 * 
-	 * @param length
-	 *            the length
-	 */
-	void lengthChanged(int length);
-
-	/**
-	 * Notifies the {@link ITimelineProvider} has changed.
-	 * 
-	 * @param provider
-	 *            the {@link ITimelineProvider}
-	 */
-	void providerChanged(ITimelineProvider provider);
+	@Override
+	public Connection getModel() {
+		return (Connection)super.getModel();
+	}
 
 }

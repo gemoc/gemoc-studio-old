@@ -15,11 +15,11 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.editpart;
+package fr.obeo.timeline.editpart;
 
-import fr.obeo.timeline.internal.model.Choice;
-import fr.obeo.timeline.internal.model.Tic;
 import fr.obeo.timeline.layout.LineLayout;
+import fr.obeo.timeline.model.Choice;
+import fr.obeo.timeline.model.Tic;
 
 import java.util.ArrayList;
 import java.util.List;

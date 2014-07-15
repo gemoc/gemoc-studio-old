@@ -15,56 +15,64 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.editpart;
-
-import fr.obeo.timeline.internal.model.Connection;
-
-import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PolygonDecoration;
-import org.eclipse.draw2d.PolylineConnection;
-import org.eclipse.gef.editparts.AbstractConnectionEditPart;
-import org.eclipse.swt.SWT;
+package fr.obeo.timeline.model;
 
 /**
- * An {@link AbstractConnectionEditPart} for {@link Connection}.
+ * Connect two {@link Choice}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class ConnectionEditPart extends AbstractConnectionEditPart {
+public final class Connection {
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
+	 * The source {@link Choice}.
 	 */
-	@Override
-	protected void createEditPolicies() {
-		// TODO Auto-generated method stub
-	}
+	private final Choice source;
 
-	@Override
-	protected IFigure createFigure() {
-		final PolylineConnection res = (PolylineConnection)super.createFigure();
+	/**
+	 * The target {@link Choice}.
+	 */
+	private final Choice target;
 
-		res.setLineWidth(1);
-		PolygonDecoration decoration = new PolygonDecoration();
-		decoration.setTemplate(PolygonDecoration.TRIANGLE_TIP);
-		res.setTargetDecoration(decoration);
-		res.setLineStyle(SWT.LINE_SOLID);
-		res.setBackgroundColor(ColorConstants.listForeground);
-
-		return res;
+	/**
+	 * Constructor.
+	 * 
+	 * @param source
+	 *            the source {@link Choice}
+	 * @param target
+	 *            the target {@link Choice}
+	 */
+	public Connection(Choice source, Choice target) {
+		this.source = source;
+		this.target = target;
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Gets the source {@link Choice}.
 	 * 
-	 * @see org.eclipse.gef.editparts.AbstractEditPart#getModel()
+	 * @return the source {@link Choice}
 	 */
-	@Override
-	public Connection getModel() {
-		return (Connection)super.getModel();
+	public Choice getSource() {
+		return source;
 	}
 
+	/**
+	 * Gets the target {@link Choice}.
+	 * 
+	 * @return the target {@link Choice}
+	 */
+	public Choice getTarget() {
+		return target;
+	}
+
+	@Override
+	public int hashCode() {
+		return source.hashCode() ^ target.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof Connection && ((Connection)obj).source.equals(source)
+				&& ((Connection)obj).target.equals(target);
+	}
 }

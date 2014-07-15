@@ -1,10 +1,10 @@
 package fr.obeo.timeline.view;
 
-import fr.obeo.timeline.internal.editpart.ChoiceEditPart;
-import fr.obeo.timeline.internal.editpart.TimelineEditPartFactory;
-import fr.obeo.timeline.internal.editpart.TimelineWindowEditPart;
-import fr.obeo.timeline.internal.model.ITimelineWindowListener;
-import fr.obeo.timeline.internal.model.TimelineWindow;
+import fr.obeo.timeline.editpart.ChoiceEditPart;
+import fr.obeo.timeline.editpart.TimelineEditPartFactory;
+import fr.obeo.timeline.editpart.TimelineWindowEditPart;
+import fr.obeo.timeline.model.ITimelineWindowListener;
+import fr.obeo.timeline.model.TimelineWindow;
 
 import java.util.List;
 
