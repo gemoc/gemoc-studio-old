@@ -28,8 +28,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinitionExtension;
-import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAIRDIFileDialog;
-import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAnyIFileDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;

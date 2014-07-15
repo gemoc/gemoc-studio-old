@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.utils.emf;
+package org.gemoc.gemoc_language_workbench.ui.commands;
 
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.jface.viewers.LabelProvider;
