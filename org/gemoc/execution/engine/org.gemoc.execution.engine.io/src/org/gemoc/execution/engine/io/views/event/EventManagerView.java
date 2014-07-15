@@ -5,20 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
@@ -41,7 +38,6 @@ import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.Element;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 
 
 
@@ -59,6 +55,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private ObservableBasicExecutionEngine _currentEngine;
 	private Map<ObservableBasicExecutionEngine, EventManagementCache> _cache;
 	private Collection<EventManagerClockWrapper> _displayedClock;
+	private int _strategySelectionIndex;
 
 	/**
 	 * The constructor.
@@ -66,6 +63,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public EventManagerView() {
 		_cache = new HashMap<ObservableBasicExecutionEngine, EventManagementCache>();
 		_displayedClock = new ArrayList<EventManagerClockWrapper>();
+		_strategySelectionIndex = 0;
 	}
 
 
@@ -108,21 +106,17 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		combo.addSelectionListener(new SelectionListener() 
 		{
 			public void widgetSelected(SelectionEvent e) {
-				EventManagementCache engineCache = _cache.get(_currentEngine);
 				// Strategy filter selection
-				switch(combo.getSelectionIndex())
+				_strategySelectionIndex = combo.getSelectionIndex();
+				if(_currentEngine != null)
 				{
-				case 0: engineCache.setFilter(new NoEventFilter()); break;
-				case 1: engineCache.setFilter(new RemoveAllBindingClockFilter()); break;
-				case 2: engineCache.setFilter(new RemoveLeftBindingClockFilter()); break;
-				default: break;
+					Display.getDefault().asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							updateView();
+						}				
+					});
 				}
-				Display.getDefault().asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						updateView();
-					}				
-				});
 			}
 			//If the combo is clicked but no item selected:
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -208,6 +202,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		{
 			createCacheForEngine();
 		}
+		if(_currentEngine != null)
+		{
+			applyStrategy();
+		}
 		//Remodeling of the view
 		_viewer.getTable().removeAll();
 		//Getting the clock list for the given engine
@@ -218,7 +216,19 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			ligne.setText(c.get_clock().getName());
 			ligne.setChecked(c.is_state());
 		}
-		
+
+	}
+
+
+	private void applyStrategy() {
+		EventManagementCache engineCache = _cache.get(_currentEngine);
+		switch(_strategySelectionIndex)
+		{
+		case 0: engineCache.setFilter(new NoEventFilter()); break;
+		case 1: engineCache.setFilter(new RemoveAllBindingClockFilter()); break;
+		case 2: engineCache.setFilter(new RemoveLeftBindingClockFilter()); break;
+		default: break;
+		}
 	}
 
 	/**
