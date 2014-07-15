@@ -51,7 +51,7 @@ public class TimelineWindow implements ITimelineListener {
 	private int length;
 
 	/**
-	 * The maximum index of the selected choice.
+	 * The maximum index of the selected possible step.
 	 */
 	private int maxSelectedIndex = -1;
 
@@ -75,18 +75,18 @@ public class TimelineWindow implements ITimelineListener {
 	}
 
 	/**
-	 * Gets the {@link List} of {@link Tic}.
+	 * Gets the {@link List} of {@link Choice}.
 	 * 
-	 * @return the {@link List} of {@link Tic}
+	 * @return the {@link List} of {@link Choice}
 	 */
-	public List<Tic> getTics() {
-		final List<Tic> res = new ArrayList<Tic>();
+	public List<Choice> getChoices() {
+		final List<Choice> res = new ArrayList<Choice>();
 
 		if (getProvider() != null) {
 			final int begin = getStart();
-			final int end = Math.min(begin + getLength(), getProvider().getNumberOfTicks());
+			final int end = Math.min(begin + getLength(), getProvider().getNumberOfChoices());
 			for (int i = begin; i < end; ++i) {
-				res.add(new Tic(this, i));
+				res.add(new Choice(this, i));
 			}
 		}
 
@@ -94,15 +94,15 @@ public class TimelineWindow implements ITimelineListener {
 	}
 
 	/**
-	 * Gets the maximum selected choice index.
+	 * Gets the maximum selected possible step index.
 	 * 
-	 * @return the maximum selected choice index
+	 * @return the maximum selected possible step index
 	 */
 	public int getMaxSelectedIndex() {
 		if (maxSelectedIndex < 0) {
-			final int end = Math.min(getEnd(), getProvider().getNumberOfTicks());
-			for (int tic = 0; tic < end; ++tic) {
-				maxSelectedIndex = Math.max(maxSelectedIndex, getProvider().getSelectedChoice(tic));
+			final int end = Math.min(getEnd(), getProvider().getNumberOfChoices());
+			for (int choice = 0; choice < end; ++choice) {
+				maxSelectedIndex = Math.max(maxSelectedIndex, getProvider().getSelectedPossibleStep(choice));
 			}
 		}
 		return maxSelectedIndex;
@@ -228,22 +228,22 @@ public class TimelineWindow implements ITimelineListener {
 	}
 
 	@Override
-	public void numberOfticksChanged(int numberOfticks) {
-		if (isInWindow(numberOfticks)) {
+	public void numberOfChoicesChanged(int numberOfChoices) {
+		if (isInWindow(numberOfChoices)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.numberOfticksChanged(numberOfticks);
+				listener.numberOfChoicesChanged(numberOfChoices);
 			}
 		}
-		if (getEnd() == numberOfticks - 1) {
+		if (getEnd() == numberOfChoices - 1) {
 			setStart(getStart() + 1);
 		}
 	}
 
 	@Override
-	public void numberOfchoicesAtChanged(int index, int numberOfChoice) {
+	public void numberOfPossibleStepsAtChanged(int index, int numberOfPossibleStep) {
 		if (isInWindow(index)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.numberOfchoicesAtChanged(index, numberOfChoice);
+				listener.numberOfPossibleStepsAtChanged(index, numberOfPossibleStep);
 			}
 		}
 	}
@@ -258,47 +258,47 @@ public class TimelineWindow implements ITimelineListener {
 	}
 
 	@Override
-	public void atChanged(int index, int choice, Object object) {
+	public void atChanged(int index, int possibleStep, Object object) {
 		if (isInWindow(index)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.atChanged(index, choice, object);
+				listener.atChanged(index, possibleStep, object);
 			}
 		}
 	}
 
 	@Override
-	public void isSelectedChanged(int index, int choice, boolean selected) {
+	public void isSelectedChanged(int index, int possibleStep, boolean selected) {
 		if (isInWindow(index)) {
-			maxSelectedIndex = Math.max(maxSelectedIndex, choice);
+			maxSelectedIndex = Math.max(maxSelectedIndex, possibleStep);
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.isSelectedChanged(index, choice, selected);
+				listener.isSelectedChanged(index, possibleStep, selected);
 			}
 		}
 	}
 
 	@Override
-	public void textAtChanged(int index, int choice, String text) {
+	public void textAtChanged(int index, int possibleStep, String text) {
 		if (isInWindow(index)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.textAtChanged(index, choice, text);
+				listener.textAtChanged(index, possibleStep, text);
 			}
 		}
 	}
 
 	@Override
-	public void followingChanged(int index, int choice, int following) {
+	public void followingChanged(int index, int possibleStep, int following) {
 		if (isInWindow(index) && isInWindow(index + 1)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.followingChanged(index, choice, following);
+				listener.followingChanged(index, possibleStep, following);
 			}
 		}
 	}
 
 	@Override
-	public void precedingChanged(int index, int choice, int preceding) {
+	public void precedingChanged(int index, int possibleStep, int preceding) {
 		if (isInWindow(index - 1) && isInWindow(index)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.precedingChanged(index, choice, preceding);
+				listener.precedingChanged(index, possibleStep, preceding);
 			}
 		}
 	}

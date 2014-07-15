@@ -17,9 +17,9 @@
  *******************************************************************************/
 package fr.obeo.timeline.editpart;
 
-import fr.obeo.timeline.model.Choice;
+import fr.obeo.timeline.model.PossibleStep;
 import fr.obeo.timeline.model.Connection;
-import fr.obeo.timeline.model.Tic;
+import fr.obeo.timeline.model.Choice;
 import fr.obeo.timeline.model.TimelineWindow;
 
 import org.eclipse.gef.EditPart;
@@ -36,12 +36,12 @@ public class TimelineEditPartFactory implements EditPartFactory {
 	public EditPart createEditPart(EditPart context, Object model) {
 		final EditPart res;
 
-		if (model instanceof Choice) {
-			res = new ChoiceEditPart();
+		if (model instanceof PossibleStep) {
+			res = new PossibleStepEditPart();
 		} else if (model instanceof Connection) {
 			res = new ConnectionEditPart();
-		} else if (model instanceof Tic) {
-			res = new TicEditPart();
+		} else if (model instanceof Choice) {
+			res = new ChoiceEditPart();
 		} else if (model instanceof TimelineWindow) {
 			res = new TimelineWindowEditPart();
 		} else {

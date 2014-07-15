@@ -18,50 +18,50 @@
 package fr.obeo.timeline.model;
 
 /**
- * Connect two {@link Choice}.
+ * Connect two {@link PossibleStep}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
 public final class Connection {
 
 	/**
-	 * The source {@link Choice}.
+	 * The source {@link PossibleStep}.
 	 */
-	private final Choice source;
+	private final PossibleStep source;
 
 	/**
-	 * The target {@link Choice}.
+	 * The target {@link PossibleStep}.
 	 */
-	private final Choice target;
+	private final PossibleStep target;
 
 	/**
 	 * Constructor.
 	 * 
 	 * @param source
-	 *            the source {@link Choice}
+	 *            the source {@link PossibleStep}
 	 * @param target
-	 *            the target {@link Choice}
+	 *            the target {@link PossibleStep}
 	 */
-	public Connection(Choice source, Choice target) {
+	public Connection(PossibleStep source, PossibleStep target) {
 		this.source = source;
 		this.target = target;
 	}
 
 	/**
-	 * Gets the source {@link Choice}.
+	 * Gets the source {@link PossibleStep}.
 	 * 
-	 * @return the source {@link Choice}
+	 * @return the source {@link PossibleStep}
 	 */
-	public Choice getSource() {
+	public PossibleStep getSource() {
 		return source;
 	}
 
 	/**
-	 * Gets the target {@link Choice}.
+	 * Gets the target {@link PossibleStep}.
 	 * 
-	 * @return the target {@link Choice}
+	 * @return the target {@link PossibleStep}
 	 */
-	public Choice getTarget() {
+	public PossibleStep getTarget() {
 		return target;
 	}
 

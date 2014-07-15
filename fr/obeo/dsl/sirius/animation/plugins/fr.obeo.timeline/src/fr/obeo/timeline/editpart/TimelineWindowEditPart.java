@@ -18,9 +18,9 @@
 package fr.obeo.timeline.editpart;
 
 import fr.obeo.timeline.layout.LineLayout;
-import fr.obeo.timeline.model.Choice;
+import fr.obeo.timeline.model.PossibleStep;
 import fr.obeo.timeline.model.ITimelineWindowListener;
-import fr.obeo.timeline.model.Tic;
+import fr.obeo.timeline.model.Choice;
 import fr.obeo.timeline.model.TimelineWindow;
 import fr.obeo.timeline.view.ITimelineProvider;
 
@@ -45,7 +45,7 @@ import org.eclipse.swt.widgets.Display;
 public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements ITimelineWindowListener {
 
 	/**
-	 * The spacing between {@link TicEditPart}.
+	 * The spacing between {@link ChoiceEditPart}.
 	 */
 	public static final int SPACING = 20;
 
@@ -92,8 +92,8 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#getModelChildren()
 	 */
 	@Override
-	public List<Tic> getModelChildren() {
-		return getModel().getTics();
+	public List<Choice> getModelChildren() {
+		return getModel().getChoices();
 	}
 
 	@Override
@@ -102,7 +102,7 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 	}
 
 	@Override
-	public void numberOfticksChanged(int numberOfticks) {
+	public void numberOfChoicesChanged(int numberOfChoices) {
 		Display.getDefault().syncExec(new Runnable() {
 
 			@Override
@@ -113,7 +113,7 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 	}
 
 	@Override
-	public void numberOfchoicesAtChanged(int index, int numberOfChoice) {
+	public void numberOfPossibleStepsAtChanged(int index, int numberOfPossibleStep) {
 		Display.getDefault().syncExec(new Runnable() {
 
 			@Override
@@ -130,20 +130,20 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 			@Override
 			public void run() {
 				final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
-						new Tic(getModel(), index));
+						new Choice(getModel(), index));
 				editPart.refresh();
 			}
 		});
 	}
 
 	@Override
-	public void atChanged(final int index, final int choice, Object object) {
+	public void atChanged(final int index, final int possibleStep, Object object) {
 		Display.getDefault().syncExec(new Runnable() {
 
 			@Override
 			public void run() {
 				final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
-						new Choice(getModel(), index, choice));
+						new PossibleStep(getModel(), index, possibleStep));
 				if (editPart.equals(getViewer().getSelectedEditParts())) {
 					getViewer().getSelectionManager().deselect(editPart);
 					getViewer().getSelectionManager().appendSelection(editPart);
@@ -153,7 +153,7 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 	}
 
 	@Override
-	public void isSelectedChanged(final int index, final int choice, boolean selected) {
+	public void isSelectedChanged(final int index, final int possibleStep, boolean selected) {
 		Display.getDefault().syncExec(new Runnable() {
 
 			@Override
@@ -164,25 +164,25 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 	}
 
 	@Override
-	public void textAtChanged(final int index, final int choice, String text) {
+	public void textAtChanged(final int index, final int possibleStep, String text) {
 		Display.getDefault().syncExec(new Runnable() {
 
 			@Override
 			public void run() {
 				final EditPart editPart = (EditPart)getViewer().getEditPartRegistry().get(
-						new Choice(getModel(), index, choice));
+						new PossibleStep(getModel(), index, possibleStep));
 				editPart.refresh();
 			}
 		});
 	}
 
 	@Override
-	public void followingChanged(final int index, final int choice, int following) {
+	public void followingChanged(final int index, final int possibleStep, int following) {
 		// nothing to do here
 	}
 
 	@Override
-	public void precedingChanged(final int index, final int choice, int preceding) {
+	public void precedingChanged(final int index, final int possibleStep, int preceding) {
 		// nothing to do here
 	}
 
@@ -224,13 +224,13 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 	 */
 	private void deepRefresh() {
 		refresh();
-		for (Tic tic : getModelChildren()) {
-			if (tic instanceof Tic) {
-				final EditPart ticEditPart = (EditPart)getViewer().getEditPartRegistry().get(tic);
-				ticEditPart.refresh();
-				for (Choice choice : tic.getChoices()) {
-					final EditPart choiceEditPart = (EditPart)getViewer().getEditPartRegistry().get(choice);
-					choiceEditPart.refresh();
+		for (Choice choice : getModelChildren()) {
+			if (choice instanceof Choice) {
+				final EditPart choiceEditPart = (EditPart)getViewer().getEditPartRegistry().get(choice);
+				choiceEditPart.refresh();
+				for (PossibleStep possibleStep : choice.getPossibleSteps()) {
+					final EditPart possibleStepEditPart = (EditPart)getViewer().getEditPartRegistry().get(possibleStep);
+					possibleStepEditPart.refresh();
 				}
 			}
 		}

@@ -17,25 +17,24 @@
  *******************************************************************************/
 package fr.obeo.timeline.editpart;
 
+import fr.obeo.timeline.layout.LineLayout;
 import fr.obeo.timeline.model.Choice;
-import fr.obeo.timeline.model.Connection;
-import fr.obeo.timeline.model.Tic;
+import fr.obeo.timeline.model.PossibleStep;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Ellipse;
+import org.eclipse.draw2d.FlowLayout;
+import org.eclipse.draw2d.FreeformLayer;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.MouseListener;
-import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.jface.resource.JFaceResources;
 
 /**
  * An {@link AbstractGraphicalEditPart} for {@link Choice}.
@@ -45,182 +44,125 @@ import org.eclipse.jface.resource.JFaceResources;
 public class ChoiceEditPart extends AbstractGraphicalEditPart {
 
 	/**
-	 * The size of the circle.
+	 * A padding figure for alignment.
+	 * 
+	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
 	 */
-	public static final int SIZE = 20;
+	private static final class PaddingFigure extends Ellipse {
+
+		/**
+		 * Constructor.
+		 */
+		public PaddingFigure() {
+			super();
+			setBackgroundColor(ColorConstants.listBackground);
+			setForegroundColor(ColorConstants.listBackground);
+			setSize(PossibleStepEditPart.SIZE, PossibleStepEditPart.SIZE);
+		}
+
+	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#createFigure()
+	 * The size of the circle.
 	 */
+	public static final int SPACING = 5;
+
+	/**
+	 * The choice label.
+	 */
+	private Label label;
+
 	@Override
 	protected IFigure createFigure() {
-		final Ellipse res = new Ellipse();
-		res.setSize(SIZE, SIZE);
-		res.setForegroundColor(ColorConstants.listBackground);
-		Label toolTip = new Label();
-		toolTip.setBackgroundColor(ColorConstants.tooltipBackground);
-		toolTip.setForegroundColor(ColorConstants.tooltipForeground);
-		res.setToolTip(toolTip);
+		final LineLayout layout = new LineLayout();
+		layout.setHorizontal(false);
+		layout.setMajorAlignment(FlowLayout.ALIGN_TOPLEFT);
+		layout.setMinorAlignment(FlowLayout.ALIGN_CENTER);
+		layout.setMinorSpacing(SPACING);
 
-		res.addMouseListener(new MouseListener.Stub() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.draw2d.MouseListener.Stub#mouseReleased(org.eclipse.draw2d.MouseEvent)
-			 */
-			@Override
-			public void mousePressed(MouseEvent me) {
-				if (me.button == 1) {
-					final EditPartViewer viewer = getViewer();
-					viewer.getSelectionManager().deselectAll();
-					viewer.getSelectionManager().appendSelection(ChoiceEditPart.this);
-				}
-			}
-
-		});
-
+		FreeformLayer res = new FreeformLayer();
+		res.setLayoutManager(layout);
+		label = new Label();
+		res.add(label);
 		return res;
 	}
 
 	@Override
 	protected void refreshVisuals() {
 		super.refreshVisuals();
-		final IFigure figure = getFigure();
-		if (!getModel().getTic().hasSelected()) {
-			figure.setBackgroundColor(ColorConstants.orange);
-		} else {
-			if (getModel().isSelected()) {
-				figure.setBackgroundColor(ColorConstants.lightBlue);
-			} else {
-				figure.setBackgroundColor(ColorConstants.lightGreen);
-			}
+		if (getModel().hasSelected()) {
+			align();
 		}
-		final Label toolTip = (Label)figure.getToolTip();
-		toolTip.setFont(JFaceResources.getFont(JFaceResources.TEXT_FONT));
-		toolTip.setText(getModel().getName());
+		label.setText(String.valueOf(getModel().getIndex()));
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
+	 * Aligns the selected {@link PossibleStepEditPart}.
 	 */
+	private void align() {
+		final IFigure figure = getFigure();
+		int existing = 0;
+		while (figure.getChildren().size() - existing - 2 >= 0
+				&& figure.getChildren().get(figure.getChildren().size() - existing - 2) instanceof PaddingFigure) {
+			++existing;
+		}
+		final int offset = ((TimelineWindowEditPart)getParent()).getModel().getMaxSelectedIndex()
+				- getModel().getConnectedIndex();
+
+		if (existing < offset) {
+			for (int i = 0; i < offset - existing; ++i) {
+				figure.add(new PaddingFigure(), figure.getChildren().size() - 1);
+			}
+		} else if (existing > offset) {
+			for (int i = 1; i <= existing - offset; ++i) {
+				if (figure.getChildren().size() - 2 >= 0) {
+					final IFigure toRemoveFigure = (IFigure)figure.getChildren().get(
+							figure.getChildren().size() - 2);
+					if (toRemoveFigure instanceof PaddingFigure) {
+						figure.remove(toRemoveFigure);
+					}
+				}
+			}
+		}
+	}
+
 	@Override
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new XYLayoutEditPolicy() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.gef.editpolicies.LayoutEditPolicy#getCreateCommand(org.eclipse.gef.requests.CreateRequest)
-			 */
 			@Override
 			protected Command getCreateCommand(CreateRequest request) {
+				// TODO Auto-generated method stub
 				return null;
 			}
 		});
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.gef.editparts.AbstractEditPart#getModelChildren()
+	 */
 	@Override
-	protected List<Connection> getModelSourceConnections() {
-		return getModel().getFollowing();
+	public List<PossibleStep> getModelChildren() {
+		final List<PossibleStep> res = new ArrayList<PossibleStep>();
+
+		final List<PossibleStep> possibleSteps = getModel().getPossibleSteps();
+		for (int i = possibleSteps.size() - 1; i >= 0; --i) {
+			res.add(possibleSteps.get(i));
+		}
+
+		return res;
 	}
 
-	@Override
-	protected List<Connection> getModelTargetConnections() {
-		return getModel().getPreceding();
-	}
-
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.gef.editparts.AbstractEditPart#getModel()
+	 */
 	@Override
 	public Choice getModel() {
 		return (Choice)super.getModel();
-	}
-
-	/**
-	 * Gets the {@link ChoiceEditPart} on the left.
-	 * 
-	 * @return the {@link ChoiceEditPart} on the left if any, <code>null</code> otherwise
-	 */
-	public ChoiceEditPart getLeftChoiceEditPart() {
-		final ChoiceEditPart res;
-
-		final Tic previousTic = getModel().getTic().getPreviousTic();
-		if (previousTic != null) {
-			int previousConnectionIndex = previousTic.getConnectedIndex();
-			if (previousConnectionIndex < 0) {
-				previousConnectionIndex = 0;
-			}
-			int connectionIndex = getModel().getTic().getConnectedIndex();
-			if (connectionIndex < 0) {
-				connectionIndex = 0;
-			}
-			int offset = previousConnectionIndex - connectionIndex;
-			if (previousTic.getChoices().size() > getModel().getChoiceIndex() + offset
-					&& getModel().getChoiceIndex() + offset > -1) {
-				res = (ChoiceEditPart)getViewer().getEditPartRegistry().get(
-						previousTic.getChoices().get(getModel().getChoiceIndex() + offset));
-			} else {
-				res = null;
-			}
-		} else {
-			res = null;
-		}
-
-		return res;
-	}
-
-	/**
-	 * Gets the {@link ChoiceEditPart} on the right.
-	 * 
-	 * @return the {@link ChoiceEditPart} on the right if any, <code>null</code> otherwise
-	 */
-	public ChoiceEditPart getRightChoiceEditPart() {
-		final ChoiceEditPart res;
-
-		final Tic nextTic = getModel().getTic().getNextTic();
-		if (nextTic != null) {
-			int nextConnectionIndex = nextTic.getConnectedIndex();
-			if (nextConnectionIndex < 0) {
-				nextConnectionIndex = 0;
-			}
-			int connectionIndex = getModel().getTic().getConnectedIndex();
-			if (connectionIndex < 0) {
-				connectionIndex = 0;
-			}
-			int offset = nextConnectionIndex - connectionIndex;
-			if (nextTic.getChoices().size() > getModel().getChoiceIndex() + offset
-					&& getModel().getChoiceIndex() + offset > -1) {
-				res = (ChoiceEditPart)getViewer().getEditPartRegistry().get(
-						nextTic.getChoices().get(getModel().getChoiceIndex() + offset));
-			} else {
-				res = null;
-			}
-		} else {
-			res = null;
-		}
-
-		return res;
-	}
-
-	/**
-	 * Gets the {@link ChoiceEditPart} above.
-	 * 
-	 * @return the {@link ChoiceEditPart} above if any, <code>null</code> otherwise
-	 */
-	public ChoiceEditPart getAboveChoiceEditPart() {
-		return (ChoiceEditPart)getViewer().getEditPartRegistry().get(getModel().getNextChoice());
-	}
-
-	/**
-	 * Gets the {@link ChoiceEditPart} beneath.
-	 * 
-	 * @return the {@link ChoiceEditPart} beneath if any, <code>null</code> otherwise
-	 */
-	public ChoiceEditPart getBeneathChoiceEditPart() {
-		return (ChoiceEditPart)getViewer().getEditPartRegistry().get(getModel().getPreviousChoice());
 	}
 
 }
