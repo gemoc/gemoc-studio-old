@@ -32,12 +32,12 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	private static final int SIZE = 100000;
 
 	/**
-	 * Sizes of tics.
+	 * Sizes of choices.
 	 */
-	private final int[] choices;
+	private final int[] possibleSteps;
 
 	/**
-	 * Selected choice.
+	 * Selected possible step.
 	 */
 	private final int[] selected;
 
@@ -47,10 +47,10 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	 * Constructor.
 	 */
 	public SampleTimelineProvider() {
-		choices = new int[SIZE];
+		possibleSteps = new int[SIZE];
 		selected = new int[SIZE];
-		for (int i = 0; i < choices.length; ++i) {
-			choices[i] = -1; // no choices
+		for (int i = 0; i < possibleSteps.length; ++i) {
+			possibleSteps[i] = -1; // no possible steps
 			selected[i] = -1; // no selection
 		}
 
@@ -58,16 +58,16 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 
 			@Override
 			public void run() {
-				for (size = 1; size <= choices.length; ++size) {
-					notifyNumberOfticksChanged(size);
+				for (size = 1; size <= possibleSteps.length; ++size) {
+					notifyNumberOfChoicesChanged(size);
 					final int index = size - 1;
 					try {
 						Thread.sleep(300);
-						final int nbChoices = 1 + (int)(Math.random() * 5);
-						choices[index] = nbChoices; // create choices
-						notifyNumberOfchoicesAtChanged(index, nbChoices);
+						final int nbPossibleSteps = 1 + (int)(Math.random() * 5);
+						possibleSteps[index] = nbPossibleSteps; // create possible steps
+						notifyNumberOfPossibleStepsAtChanged(index, nbPossibleSteps);
 						Thread.sleep(300);
-						selected[index] = (int)(Math.random() * nbChoices); // make a selection
+						selected[index] = (int)(Math.random() * nbPossibleSteps); // make a selection
 						notifyIsSelectedChanged(index, selected[index], true);
 						Thread.sleep(150);
 						if (index - 1 >= 0) {
@@ -85,13 +85,13 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
-	public int getNumberOfTicks() {
+	public int getNumberOfChoices() {
 		return size;
 	}
 
 	@Override
-	public int getNumberOfchoicesAt(int index) {
-		return choices[index];
+	public int getNumberOfPossibleStepsAt(int index) {
+		return possibleSteps[index];
 	}
 
 	@Override
@@ -100,7 +100,7 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
-	public Object getAt(int index, int choice) {
+	public Object getAt(int index, int possibleStep) {
 		return "something";
 	}
 
@@ -110,20 +110,20 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
-	public int getSelectedChoice(int index) {
+	public int getSelectedPossibleStep(int index) {
 		return selected[index];
 	}
 
 	@Override
-	public String getTextAt(int index, int choice) {
-		return "choice " + choice;
+	public String getTextAt(int index, int possibleStep) {
+		return "possible step " + possibleStep;
 	}
 
 	@Override
-	public int getFollowing(int index, int choice) {
+	public int getFollowing(int index, int possibleStep) {
 		final int res;
 
-		if (index < getNumberOfTicks() - 1 && choice == selected[index]) {
+		if (index < getNumberOfChoices() - 1 && possibleStep == selected[index]) {
 			res = selected[index + 1];
 		} else {
 			res = -1;
@@ -133,10 +133,10 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
-	public int getPreceding(int index, int choice) {
+	public int getPreceding(int index, int possibleStep) {
 		final int res;
 
-		if (index > 0 && choice == selected[index]) {
+		if (index > 0 && possibleStep == selected[index]) {
 			res = selected[index - 1];
 		} else {
 			res = -1;

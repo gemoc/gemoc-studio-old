@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.model;
+package fr.obeo.timeline.model;
 
 import fr.obeo.timeline.view.ITimelineProvider;
 
@@ -23,11 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A tic in time.
+ * A choice in time.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public final class Tic {
+public final class Choice {
 
 	/**
 	 * The containing {@link TimelineWindow}.
@@ -47,7 +47,7 @@ public final class Tic {
 	 * @param index
 	 *            the index in the owning {@link TimelineWindow}
 	 */
-	public Tic(TimelineWindow timelineWindow, int index) {
+	public Choice(TimelineWindow timelineWindow, int index) {
 		this.timelineWindow = timelineWindow;
 		this.index = index;
 	}
@@ -62,17 +62,17 @@ public final class Tic {
 	}
 
 	/**
-	 * Gets the {@link List} of {@link Choice}.
+	 * Gets the {@link List} of {@link PossibleStep}.
 	 * 
-	 * @return the {@link List} of {@link Choice}
+	 * @return the {@link List} of {@link PossibleStep}
 	 */
-	public List<Choice> getChoices() {
-		List<Choice> res = new ArrayList<Choice>();
+	public List<PossibleStep> getPossibleSteps() {
+		List<PossibleStep> res = new ArrayList<PossibleStep>();
 
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
-		final int numberOfchoicesAt = provider.getNumberOfchoicesAt(index);
-		for (int i = 0; i < numberOfchoicesAt; ++i) {
-			res.add(new Choice(getTimelineWindow(), index, i));
+		final int numberOfPossibleStepsAt = provider.getNumberOfPossibleStepsAt(index);
+		for (int i = 0; i < numberOfPossibleStepsAt; ++i) {
+			res.add(new PossibleStep(getTimelineWindow(), index, i));
 		}
 
 		return res;
@@ -88,14 +88,14 @@ public final class Tic {
 	}
 
 	/**
-	 * Gets the previous {@link Tic} in the {@link TimelineWindow}.
+	 * Gets the previous {@link Choice} in the {@link TimelineWindow}.
 	 * 
-	 * @return the previous {@link Tic} in the {@link TimelineWindow} if any, <code>null</code> otherwise
+	 * @return the previous {@link Choice} in the {@link TimelineWindow} if any, <code>null</code> otherwise
 	 */
-	public Tic getPreviousTic() {
-		final Tic res;
+	public Choice getPreviousChoice() {
+		final Choice res;
 		if (index > 0) {
-			res = new Tic(getTimelineWindow(), index - 1);
+			res = new Choice(getTimelineWindow(), index - 1);
 		} else {
 			res = null;
 		}
@@ -103,15 +103,15 @@ public final class Tic {
 	}
 
 	/**
-	 * Gets the next {@link Tic} in the {@link TimelineWindow}.
+	 * Gets the next {@link Choice} in the {@link TimelineWindow}.
 	 * 
-	 * @return the next {@link Tic} in the {@link TimelineWindow} if any, <code>null</code> otherwise
+	 * @return the next {@link Choice} in the {@link TimelineWindow} if any, <code>null</code> otherwise
 	 */
-	public Tic getNextTic() {
-		final Tic res;
-		final int numberOfTicks = getTimelineWindow().getProvider().getNumberOfTicks();
-		if (index < numberOfTicks - 1) {
-			res = new Tic(getTimelineWindow(), index + 1);
+	public Choice getNextChoice() {
+		final Choice res;
+		final int numberOfChoices = getTimelineWindow().getProvider().getNumberOfChoices();
+		if (index < numberOfChoices - 1) {
+			res = new Choice(getTimelineWindow(), index + 1);
 		} else {
 			res = null;
 		}
@@ -125,25 +125,25 @@ public final class Tic {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof Tic && ((Tic)obj).index == index;
+		return obj instanceof Choice && ((Choice)obj).index == index;
 	}
 
 	/**
-	 * Gets the index of the connected choice.
+	 * Gets the index of the connected possible step.
 	 * 
-	 * @return the index of the connected choice if any, <code>-1</code> otherwise
+	 * @return the index of the connected possible step if any, <code>-1</code> otherwise
 	 */
 	public int getConnectedIndex() {
-		return getTimelineWindow().getProvider().getSelectedChoice(index);
+		return getTimelineWindow().getProvider().getSelectedPossibleStep(index);
 	}
 
 	/**
-	 * Tells if the {@link Tic} has a {@link Choice#isSelected() selectect} {@link Choice}.
+	 * Tells if the {@link Choice} has a {@link PossibleStep#isSelected() selectect} {@link PossibleStep}.
 	 * 
-	 * @return <code>true</code> if the {@link Tic} has a {@link Choice#isSelected() selectect} {@link Choice}
-	 *         , <code>false</code> otherwise
+	 * @return <code>true</code> if the {@link Choice} has a {@link PossibleStep#isSelected() selectect}
+	 *         {@link PossibleStep} , <code>false</code> otherwise
 	 */
 	public boolean hasSelected() {
-		return getTimelineWindow().getProvider().getSelectedChoice(index) >= 0;
+		return getTimelineWindow().getProvider().getSelectedPossibleStep(index) >= 0;
 	}
 }

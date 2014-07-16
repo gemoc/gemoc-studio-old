@@ -1,10 +1,10 @@
 package fr.obeo.timeline.view;
 
-import fr.obeo.timeline.internal.editpart.ChoiceEditPart;
-import fr.obeo.timeline.internal.editpart.TimelineEditPartFactory;
-import fr.obeo.timeline.internal.editpart.TimelineWindowEditPart;
-import fr.obeo.timeline.internal.model.ITimelineWindowListener;
-import fr.obeo.timeline.internal.model.TimelineWindow;
+import fr.obeo.timeline.editpart.PossibleStepEditPart;
+import fr.obeo.timeline.editpart.TimelineEditPartFactory;
+import fr.obeo.timeline.editpart.TimelineWindowEditPart;
+import fr.obeo.timeline.model.ITimelineWindowListener;
+import fr.obeo.timeline.model.TimelineWindow;
 
 import java.util.List;
 
@@ -67,35 +67,35 @@ public class TimelineView extends ViewPart {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			final ChoiceEditPart toSelect;
+			final PossibleStepEditPart toSelect;
 			final List<?> selected = timelineViewer.getSelectedEditParts();
-			if (selected.size() == 1 && selected.get(0) instanceof ChoiceEditPart) {
-				final ChoiceEditPart part = (ChoiceEditPart)selected.get(0);
+			if (selected.size() == 1 && selected.get(0) instanceof PossibleStepEditPart) {
+				final PossibleStepEditPart part = (PossibleStepEditPart)selected.get(0);
 				switch (e.keyCode) {
 					case SWT.ARROW_LEFT:
 						// shift the TimelineWindow if needed
-						if (timelineWindow.getStart() > part.getModel().getTic().getIndex() - 1
-								&& part.getModel().getTic().getIndex() - 1 >= 0) {
+						if (timelineWindow.getStart() > part.getModel().getChoice().getIndex() - 1
+								&& part.getModel().getChoice().getIndex() - 1 >= 0) {
 							timelineWindow.setStart(timelineWindow.getStart() - 1);
 						}
-						toSelect = part.getLeftChoiceEditPart();
+						toSelect = part.getLeftPossibleStepEditPart();
 						break;
 
 					case SWT.ARROW_RIGHT:
 						// shift the TimelineWindow if needed
-						if (timelineWindow.getEnd() <= part.getModel().getTic().getIndex() + 1
-								&& part.getModel().getTic().getIndex() + 1 <= provider.getNumberOfTicks()) {
+						if (timelineWindow.getEnd() <= part.getModel().getChoice().getIndex() + 1
+								&& part.getModel().getChoice().getIndex() + 1 <= provider.getNumberOfChoices()) {
 							timelineWindow.setStart(timelineWindow.getStart() + 1);
 						}
-						toSelect = part.getRightChoiceEditPart();
+						toSelect = part.getRightPossibleStepEditPart();
 						break;
 
 					case SWT.ARROW_UP:
-						toSelect = part.getAboveChoiceEditPart();
+						toSelect = part.getAbovePossibleStepEditPart();
 						break;
 
 					case SWT.ARROW_DOWN:
-						toSelect = part.getBeneathChoiceEditPart();
+						toSelect = part.getBeneathPossibleStepEditPart();
 						break;
 
 					default:
@@ -161,7 +161,7 @@ public class TimelineView extends ViewPart {
 				final FigureCanvas canvas = (FigureCanvas)timelineViewer.getControl();
 				canvas.scrollTo(offset.x, offset.y - e.y + originMousePosition.y);
 				final int shift = (int)((-e.x + originMousePosition.x)
-						/ (ChoiceEditPart.SIZE + TimelineWindowEditPart.SPACING) / rootEditPart
+						/ (PossibleStepEditPart.SIZE + TimelineWindowEditPart.SPACING) / rootEditPart
 						.getZoomManager().getZoom())
 						- doneShift;
 				final int multiplier;
@@ -174,9 +174,9 @@ public class TimelineView extends ViewPart {
 					timelineWindow.setStart(0);
 				} else if (provider != null
 						&& timelineWindow.getStart() + timelineWindow.getLength() + shift * multiplier > provider
-								.getNumberOfTicks()) {
+								.getNumberOfChoices()) {
 					timelineWindow.setStart(Math.max(
-							provider.getNumberOfTicks() - timelineWindow.getLength(), 0));
+							provider.getNumberOfChoices() - timelineWindow.getLength(), 0));
 				} else if (shift != 0) {
 					doneShift += shift;
 					timelineWindow.setStart(timelineWindow.getStart() + shift * multiplier);
@@ -192,14 +192,14 @@ public class TimelineView extends ViewPart {
 	 */
 	private class TimelineWindowListener extends ITimelineWindowListener.Stub {
 		@Override
-		public void numberOfticksChanged(final int numberOfticks) {
+		public void numberOfChoicesChanged(final int numberOfChoices) {
 			Display.getDefault().syncExec(new Runnable() {
 
 				@Override
 				public void run() {
 					if (!timelineSlider.isDisposed()) {
-						timelineSlider.setMaximum(numberOfticks);
-						timelineSlider.setVisible(timelineWindow.getLength() < numberOfticks);
+						timelineSlider.setMaximum(numberOfChoices);
+						timelineSlider.setVisible(timelineWindow.getLength() < numberOfChoices);
 					}
 				}
 			});
@@ -230,7 +230,7 @@ public class TimelineView extends ViewPart {
 						timelineSlider.setThumb(length);
 						if (provider != null) {
 							timelineSlider.setVisible(timelineWindow.getLength() < provider
-									.getNumberOfTicks());
+									.getNumberOfChoices());
 						} else {
 							timelineSlider.setVisible(false);
 						}
@@ -325,8 +325,8 @@ public class TimelineView extends ViewPart {
 		timelineSlider.setThumb(timelineWindow.getLength());
 		timelineSlider.setSelection(timelineWindow.getStart());
 		if (provider != null) {
-			timelineSlider.setMaximum(provider.getNumberOfTicks());
-			timelineSlider.setVisible(timelineWindow.getLength() < provider.getNumberOfTicks());
+			timelineSlider.setMaximum(provider.getNumberOfChoices());
+			timelineSlider.setVisible(timelineWindow.getLength() < provider.getNumberOfChoices());
 		} else {
 			timelineSlider.setVisible(false);
 		}
@@ -355,9 +355,9 @@ public class TimelineView extends ViewPart {
 				final ISelection selection = event.getSelection();
 				if (selection instanceof IStructuredSelection) {
 					final Object firstElement = ((IStructuredSelection)selection).getFirstElement();
-					if (firstElement instanceof ChoiceEditPart) {
-						final ChoiceEditPart choiceEditPart = (ChoiceEditPart)firstElement;
-						detailViewer.setInput(choiceEditPart.getModel().getChoice());
+					if (firstElement instanceof PossibleStepEditPart) {
+						final PossibleStepEditPart possibleStepEditPart = (PossibleStepEditPart)firstElement;
+						detailViewer.setInput(possibleStepEditPart.getModel().getPossibleStep());
 					}
 				}
 			}
@@ -375,9 +375,9 @@ public class TimelineView extends ViewPart {
 				} else {
 					rootEditPart.getZoomManager().zoomOut();
 					final int length = getWindowLength();
-					if (provider != null && timelineWindow.getStart() + length > provider.getNumberOfTicks()
-							&& provider.getNumberOfTicks() - length >= 0) {
-						timelineWindow.setStart(provider.getNumberOfTicks() - length);
+					if (provider != null && timelineWindow.getStart() + length > provider.getNumberOfChoices()
+							&& provider.getNumberOfChoices() - length >= 0) {
+						timelineWindow.setStart(provider.getNumberOfChoices() - length);
 					}
 				}
 			}
@@ -447,7 +447,7 @@ public class TimelineView extends ViewPart {
 			}
 			averageWidth /= timelineViewer.getContents().getChildren().size();
 		} else {
-			averageWidth = ChoiceEditPart.SIZE;
+			averageWidth = PossibleStepEditPart.SIZE;
 		}
 		int length = (int)Math
 				.floor((timelineViewer.getControl().getBounds().width - 2 * TimelineWindowEditPart.MARGIN)

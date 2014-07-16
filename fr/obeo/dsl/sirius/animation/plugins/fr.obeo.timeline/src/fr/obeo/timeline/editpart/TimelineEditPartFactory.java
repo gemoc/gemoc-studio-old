@@ -15,64 +15,41 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.model;
+package fr.obeo.timeline.editpart;
 
-import fr.obeo.timeline.view.ITimelineListener;
-import fr.obeo.timeline.view.ITimelineProvider;
+import fr.obeo.timeline.model.PossibleStep;
+import fr.obeo.timeline.model.Connection;
+import fr.obeo.timeline.model.Choice;
+import fr.obeo.timeline.model.TimelineWindow;
+
+import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPartFactory;
 
 /**
- * Listener for {@link TimelineWindow} changes.
+ * Sample timeline {@link EditPartFactory}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface ITimelineWindowListener extends ITimelineListener {
+public class TimelineEditPartFactory implements EditPartFactory {
 
-	/**
-	 * Stub implementation.
-	 * 
-	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
-	 */
-	class Stub extends ITimelineListener.Stub implements ITimelineWindowListener {
+	@Override
+	public EditPart createEditPart(EditPart context, Object model) {
+		final EditPart res;
 
-		@Override
-		public void startChanged(int start) {
-			// nothing to do here
+		if (model instanceof PossibleStep) {
+			res = new PossibleStepEditPart();
+		} else if (model instanceof Connection) {
+			res = new ConnectionEditPart();
+		} else if (model instanceof Choice) {
+			res = new ChoiceEditPart();
+		} else if (model instanceof TimelineWindow) {
+			res = new TimelineWindowEditPart();
+		} else {
+			throw new IllegalStateException("don't know what to do with " + model.getClass().getName());
 		}
 
-		@Override
-		public void lengthChanged(int length) {
-			// nothing to do here
-		}
+		res.setModel(model);
 
-		@Override
-		public void providerChanged(ITimelineProvider provider) {
-			// nothing to do here
-		}
-
+		return res;
 	}
-
-	/**
-	 * Notifies the start has changed.
-	 * 
-	 * @param start
-	 *            the start
-	 */
-	void startChanged(int start);
-
-	/**
-	 * Notifies the length has changed.
-	 * 
-	 * @param length
-	 *            the length
-	 */
-	void lengthChanged(int length);
-
-	/**
-	 * Notifies the {@link ITimelineProvider} has changed.
-	 * 
-	 * @param provider
-	 *            the {@link ITimelineProvider}
-	 */
-	void providerChanged(ITimelineProvider provider);
-
 }

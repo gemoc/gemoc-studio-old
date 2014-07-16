@@ -25,96 +25,102 @@ package fr.obeo.timeline.view;
 public interface ITimelineProvider {
 
 	/**
-	 * Gets the number of ticks in the timeline.
+	 * Gets the number of choices in the timeline.
 	 * 
-	 * @return the number of ticks in the timeline
+	 * @return the number of choices in the timeline
 	 */
-	int getNumberOfTicks();
+	int getNumberOfChoices();
 
 	/**
-	 * Gets the number of choices at the given timeline index.
+	 * Gets the number of possible steps at the given timeline index.
 	 * 
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
-	 * @return the number of choices at the given timeline index
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 * @return the number of possible steps at the given timeline index
 	 */
-	int getNumberOfchoicesAt(int index);
+	int getNumberOfPossibleStepsAt(int index);
 
 	/**
 	 * Gets the text for the given index of the timeline.
 	 * 
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
 	 * @return the text for the given index of the timeline
 	 */
 	String getTextAt(int index);
 
 	/**
-	 * Tells if the given choice (timeline index and choice index) is selected.
+	 * Tells if the given possible step (timeline index and possible step index) is selected.
 	 * 
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
-	 * @return the selected choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
-	 *         if any, <code>-1</code> otherwise
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 * @return the selected possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *         nbPossibleSteps}[) if any, <code>-1</code> otherwise
 	 */
-	int getSelectedChoice(int index);
+	int getSelectedPossibleStep(int index);
 
 	/**
-	 * Gets the {@link Object} at the given choice (timeline index and choice index).
+	 * Gets the {@link Object} at the given possible step (timeline index and possible step index).
 	 * 
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
-	 * @param choice
-	 *            the choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
-	 * @return the {@link Object} at the given choice (timeline index and choice index) if any,
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 * @param possibleStep
+	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *            nbPossibleSteps}[)
+	 * @return the {@link Object} at the given possible step (timeline index and possible step index) if any,
 	 *         <code>null</code> otherwise
 	 */
-	Object getAt(int index, int choice);
+	Object getAt(int index, int possibleStep);
 
 	/**
-	 * Gets the {@link Object} at the given choice (timeline index).
+	 * Gets the {@link Object} at the given possible step (timeline index).
 	 * 
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
-	 * @return the {@link Object} at the given choice (timeline index and choice index) if any,
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 * @return the {@link Object} at the given possible step (timeline index and possible step index) if any,
 	 *         <code>null</code> otherwise
 	 */
 	Object getAt(int index);
 
 	/**
-	 * Gets the text for the given choice (timeline index and choice index).
+	 * Gets the text for the given possible step (timeline index and possible step index).
 	 * 
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
-	 * @param choice
-	 *            the choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
-	 * @return the text for the given choice (timeline index and choice index)
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 * @param possible
+	 *            step the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *            nbPossibleSteps}[)
+	 * @return the text for the given possible step (timeline index and possibe step index)
 	 */
-	String getTextAt(int index, int choice);
+	String getTextAt(int index, int possibleStep);
 
 	/**
-	 * Gets the following choice index for the given choice (timeline index and choice index).
+	 * Gets the following possible step index for the given possible step (timeline index and possible step
+	 * index).
 	 * 
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
-	 * @param choice
-	 *            the choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
-	 * @return the following choice for the given choice (timeline index and choice index) if any,
-	 *         <code>-1</code> otherwise
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 * @param possibleStep
+	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *            nbPossibleSteps}[)
+	 * @return the following possible step for the given possible step (timeline index and possible step
+	 *         index) if any, <code>-1</code> otherwise
 	 */
-	int getFollowing(int index, int choice);
+	int getFollowing(int index, int possibleStep);
 
 	/**
-	 * Gets the preceding choice index for the given choice (timeline index and choice index).
+	 * Gets the preceding possible step index for the given possible step (timeline index and possible step
+	 * index).
 	 * 
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfTicks() nbticks}[)
-	 * @param choice
-	 *            the choice index ([0..{@link ITimelineProvider#getNumberOfchoicesAt(int) nbChoices}[)
-	 * @return the preceding choice for the given choice (timeline index and choice index) if any,
-	 *         <code>-1</code> otherwise
+	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 * @param possibleStep
+	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *            nbPossibleSteps}[)
+	 * @return the preceding possible step for the given possible step (timeline index and possible step
+	 *         index) if any, <code>-1</code> otherwise
 	 */
-	int getPreceding(int index, int choice);
+	int getPreceding(int index, int possibleStep);
 
 	/**
 	 * Adds a {@link ITimelineListener}.

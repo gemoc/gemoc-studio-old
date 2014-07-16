@@ -15,11 +15,11 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.editpart;
+package fr.obeo.timeline.editpart;
 
-import fr.obeo.timeline.internal.model.Choice;
-import fr.obeo.timeline.internal.model.Tic;
 import fr.obeo.timeline.layout.LineLayout;
+import fr.obeo.timeline.model.Choice;
+import fr.obeo.timeline.model.PossibleStep;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,11 +37,11 @@ import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 
 /**
- * An {@link AbstractGraphicalEditPart} for {@link Tic}.
+ * An {@link AbstractGraphicalEditPart} for {@link Choice}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class TicEditPart extends AbstractGraphicalEditPart {
+public class ChoiceEditPart extends AbstractGraphicalEditPart {
 
 	/**
 	 * A padding figure for alignment.
@@ -57,7 +57,7 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 			super();
 			setBackgroundColor(ColorConstants.listBackground);
 			setForegroundColor(ColorConstants.listBackground);
-			setSize(ChoiceEditPart.SIZE, ChoiceEditPart.SIZE);
+			setSize(PossibleStepEditPart.SIZE, PossibleStepEditPart.SIZE);
 		}
 
 	}
@@ -68,7 +68,7 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 	public static final int SPACING = 5;
 
 	/**
-	 * The tic label.
+	 * The choice label.
 	 */
 	private Label label;
 
@@ -97,7 +97,7 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 	}
 
 	/**
-	 * Aligns the selected {@link ChoiceEditPart}.
+	 * Aligns the selected {@link PossibleStepEditPart}.
 	 */
 	private void align() {
 		final IFigure figure = getFigure();
@@ -144,12 +144,12 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#getModelChildren()
 	 */
 	@Override
-	public List<Choice> getModelChildren() {
-		final List<Choice> res = new ArrayList<Choice>();
+	public List<PossibleStep> getModelChildren() {
+		final List<PossibleStep> res = new ArrayList<PossibleStep>();
 
-		final List<Choice> choices = getModel().getChoices();
-		for (int i = choices.size() - 1; i >= 0; --i) {
-			res.add(choices.get(i));
+		final List<PossibleStep> possibleSteps = getModel().getPossibleSteps();
+		for (int i = possibleSteps.size() - 1; i >= 0; --i) {
+			res.add(possibleSteps.get(i));
 		}
 
 		return res;
@@ -161,8 +161,8 @@ public class TicEditPart extends AbstractGraphicalEditPart {
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#getModel()
 	 */
 	@Override
-	public Tic getModel() {
-		return (Tic)super.getModel();
+	public Choice getModel() {
+		return (Choice)super.getModel();
 	}
 
 }

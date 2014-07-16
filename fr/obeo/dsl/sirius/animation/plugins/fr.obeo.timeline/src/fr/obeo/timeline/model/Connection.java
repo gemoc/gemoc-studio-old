@@ -15,41 +15,64 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.editpart;
-
-import fr.obeo.timeline.internal.model.Choice;
-import fr.obeo.timeline.internal.model.Connection;
-import fr.obeo.timeline.internal.model.Tic;
-import fr.obeo.timeline.internal.model.TimelineWindow;
-
-import org.eclipse.gef.EditPart;
-import org.eclipse.gef.EditPartFactory;
+package fr.obeo.timeline.model;
 
 /**
- * Sample timeline {@link EditPartFactory}.
+ * Connect two {@link PossibleStep}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class TimelineEditPartFactory implements EditPartFactory {
+public final class Connection {
+
+	/**
+	 * The source {@link PossibleStep}.
+	 */
+	private final PossibleStep source;
+
+	/**
+	 * The target {@link PossibleStep}.
+	 */
+	private final PossibleStep target;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param source
+	 *            the source {@link PossibleStep}
+	 * @param target
+	 *            the target {@link PossibleStep}
+	 */
+	public Connection(PossibleStep source, PossibleStep target) {
+		this.source = source;
+		this.target = target;
+	}
+
+	/**
+	 * Gets the source {@link PossibleStep}.
+	 * 
+	 * @return the source {@link PossibleStep}
+	 */
+	public PossibleStep getSource() {
+		return source;
+	}
+
+	/**
+	 * Gets the target {@link PossibleStep}.
+	 * 
+	 * @return the target {@link PossibleStep}
+	 */
+	public PossibleStep getTarget() {
+		return target;
+	}
 
 	@Override
-	public EditPart createEditPart(EditPart context, Object model) {
-		final EditPart res;
+	public int hashCode() {
+		return source.hashCode() ^ target.hashCode();
+	}
 
-		if (model instanceof Choice) {
-			res = new ChoiceEditPart();
-		} else if (model instanceof Connection) {
-			res = new ConnectionEditPart();
-		} else if (model instanceof Tic) {
-			res = new TicEditPart();
-		} else if (model instanceof TimelineWindow) {
-			res = new TimelineWindowEditPart();
-		} else {
-			throw new IllegalStateException("don't know what to do with " + model.getClass().getName());
-		}
-
-		res.setModel(model);
-
-		return res;
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof Connection && ((Connection)obj).source.equals(source)
+				&& ((Connection)obj).target.equals(target);
 	}
 }

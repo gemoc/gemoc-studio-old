@@ -89,9 +89,9 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 					final ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();
 					if (selection instanceof IStructuredSelection) {
 						final Object selected = ((IStructuredSelection) selection).getFirstElement();
-						if (selected instanceof ChoiceEditPart) 
+						if (selected instanceof PossibleStepEditPart) 
 						{
-							Object o = ((ChoiceEditPart) selected).getModel().getTic2();
+							Object o = ((PossibleStepEditPart) selected).getModel().getTic2();
 							if (o instanceof Choice)
 							{								
 								if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection)

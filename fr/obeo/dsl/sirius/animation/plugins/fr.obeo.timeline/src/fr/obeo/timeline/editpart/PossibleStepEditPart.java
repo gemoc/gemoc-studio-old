@@ -15,11 +15,11 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.editpart;
+package fr.obeo.timeline.editpart;
 
-import fr.obeo.timeline.internal.model.Choice;
-import fr.obeo.timeline.internal.model.Connection;
-import fr.obeo.timeline.internal.model.Tic;
+import fr.obeo.timeline.model.PossibleStep;
+import fr.obeo.timeline.model.Connection;
+import fr.obeo.timeline.model.Choice;
 
 import java.util.List;
 
@@ -38,11 +38,11 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.jface.resource.JFaceResources;
 
 /**
- * An {@link AbstractGraphicalEditPart} for {@link Choice}.
+ * An {@link AbstractGraphicalEditPart} for {@link PossibleStep}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class ChoiceEditPart extends AbstractGraphicalEditPart {
+public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 
 	/**
 	 * The size of the circle.
@@ -76,7 +76,7 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 				if (me.button == 1) {
 					final EditPartViewer viewer = getViewer();
 					viewer.getSelectionManager().deselectAll();
-					viewer.getSelectionManager().appendSelection(ChoiceEditPart.this);
+					viewer.getSelectionManager().appendSelection(PossibleStepEditPart.this);
 				}
 			}
 
@@ -89,7 +89,7 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 	protected void refreshVisuals() {
 		super.refreshVisuals();
 		final IFigure figure = getFigure();
-		if (!getModel().getTic().hasSelected()) {
+		if (!getModel().getChoice().hasSelected()) {
 			figure.setBackgroundColor(ColorConstants.orange);
 		} else {
 			if (getModel().isSelected()) {
@@ -135,33 +135,33 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 	}
 
 	@Override
-	public Choice getModel() {
-		return (Choice)super.getModel();
+	public PossibleStep getModel() {
+		return (PossibleStep)super.getModel();
 	}
 
 	/**
-	 * Gets the {@link ChoiceEditPart} on the left.
+	 * Gets the {@link PossibleStepEditPart} on the left.
 	 * 
-	 * @return the {@link ChoiceEditPart} on the left if any, <code>null</code> otherwise
+	 * @return the {@link PossibleStepEditPart} on the left if any, <code>null</code> otherwise
 	 */
-	public ChoiceEditPart getLeftChoiceEditPart() {
-		final ChoiceEditPart res;
+	public PossibleStepEditPart getLeftPossibleStepEditPart() {
+		final PossibleStepEditPart res;
 
-		final Tic previousTic = getModel().getTic().getPreviousTic();
-		if (previousTic != null) {
-			int previousConnectionIndex = previousTic.getConnectedIndex();
+		final Choice previousChoice = getModel().getChoice().getPreviousChoice();
+		if (previousChoice != null) {
+			int previousConnectionIndex = previousChoice.getConnectedIndex();
 			if (previousConnectionIndex < 0) {
 				previousConnectionIndex = 0;
 			}
-			int connectionIndex = getModel().getTic().getConnectedIndex();
+			int connectionIndex = getModel().getChoice().getConnectedIndex();
 			if (connectionIndex < 0) {
 				connectionIndex = 0;
 			}
 			int offset = previousConnectionIndex - connectionIndex;
-			if (previousTic.getChoices().size() > getModel().getChoiceIndex() + offset
-					&& getModel().getChoiceIndex() + offset > -1) {
-				res = (ChoiceEditPart)getViewer().getEditPartRegistry().get(
-						previousTic.getChoices().get(getModel().getChoiceIndex() + offset));
+			if (previousChoice.getPossibleSteps().size() > getModel().getPossibleStepIndex() + offset
+					&& getModel().getPossibleStepIndex() + offset > -1) {
+				res = (PossibleStepEditPart)getViewer().getEditPartRegistry().get(
+						previousChoice.getPossibleSteps().get(getModel().getPossibleStepIndex() + offset));
 			} else {
 				res = null;
 			}
@@ -173,28 +173,28 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 	}
 
 	/**
-	 * Gets the {@link ChoiceEditPart} on the right.
+	 * Gets the {@link PossibleStepEditPart} on the right.
 	 * 
-	 * @return the {@link ChoiceEditPart} on the right if any, <code>null</code> otherwise
+	 * @return the {@link PossibleStepEditPart} on the right if any, <code>null</code> otherwise
 	 */
-	public ChoiceEditPart getRightChoiceEditPart() {
-		final ChoiceEditPart res;
+	public PossibleStepEditPart getRightPossibleStepEditPart() {
+		final PossibleStepEditPart res;
 
-		final Tic nextTic = getModel().getTic().getNextTic();
-		if (nextTic != null) {
-			int nextConnectionIndex = nextTic.getConnectedIndex();
+		final Choice nextChoice = getModel().getChoice().getNextChoice();
+		if (nextChoice != null) {
+			int nextConnectionIndex = nextChoice.getConnectedIndex();
 			if (nextConnectionIndex < 0) {
 				nextConnectionIndex = 0;
 			}
-			int connectionIndex = getModel().getTic().getConnectedIndex();
+			int connectionIndex = getModel().getChoice().getConnectedIndex();
 			if (connectionIndex < 0) {
 				connectionIndex = 0;
 			}
 			int offset = nextConnectionIndex - connectionIndex;
-			if (nextTic.getChoices().size() > getModel().getChoiceIndex() + offset
-					&& getModel().getChoiceIndex() + offset > -1) {
-				res = (ChoiceEditPart)getViewer().getEditPartRegistry().get(
-						nextTic.getChoices().get(getModel().getChoiceIndex() + offset));
+			if (nextChoice.getPossibleSteps().size() > getModel().getPossibleStepIndex() + offset
+					&& getModel().getPossibleStepIndex() + offset > -1) {
+				res = (PossibleStepEditPart)getViewer().getEditPartRegistry().get(
+						nextChoice.getPossibleSteps().get(getModel().getPossibleStepIndex() + offset));
 			} else {
 				res = null;
 			}
@@ -206,21 +206,21 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 	}
 
 	/**
-	 * Gets the {@link ChoiceEditPart} above.
+	 * Gets the {@link PossibleStepEditPart} above.
 	 * 
-	 * @return the {@link ChoiceEditPart} above if any, <code>null</code> otherwise
+	 * @return the {@link PossibleStepEditPart} above if any, <code>null</code> otherwise
 	 */
-	public ChoiceEditPart getAboveChoiceEditPart() {
-		return (ChoiceEditPart)getViewer().getEditPartRegistry().get(getModel().getNextChoice());
+	public PossibleStepEditPart getAbovePossibleStepEditPart() {
+		return (PossibleStepEditPart)getViewer().getEditPartRegistry().get(getModel().getNextPossibleStep());
 	}
 
 	/**
-	 * Gets the {@link ChoiceEditPart} beneath.
+	 * Gets the {@link PossibleStepEditPart} beneath.
 	 * 
-	 * @return the {@link ChoiceEditPart} beneath if any, <code>null</code> otherwise
+	 * @return the {@link PossibleStepEditPart} beneath if any, <code>null</code> otherwise
 	 */
-	public ChoiceEditPart getBeneathChoiceEditPart() {
-		return (ChoiceEditPart)getViewer().getEditPartRegistry().get(getModel().getPreviousChoice());
+	public PossibleStepEditPart getBeneathPossibleStepEditPart() {
+		return (PossibleStepEditPart)getViewer().getEditPartRegistry().get(getModel().getPreviousPossibleStep());
 	}
 
 }
