@@ -51,7 +51,7 @@ import org.eclipse.ui.part.ViewPart;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class TimelineView extends ViewPart {
+public abstract class AbstractTimelineView extends ViewPart {
 
 	/**
 	 * {@link KeyListener} for the timeline viewer.
@@ -84,7 +84,8 @@ public class TimelineView extends ViewPart {
 					case SWT.ARROW_RIGHT:
 						// shift the TimelineWindow if needed
 						if (timelineWindow.getEnd() <= part.getModel().getChoice().getIndex() + 1
-								&& part.getModel().getChoice().getIndex() + 1 <= provider.getNumberOfChoices()) {
+								&& part.getModel().getChoice().getIndex() + 1 <= provider
+										.getNumberOfChoices()) {
 							timelineWindow.setStart(timelineWindow.getStart() + 1);
 						}
 						toSelect = part.getRightPossibleStepEditPart();
@@ -175,8 +176,8 @@ public class TimelineView extends ViewPart {
 				} else if (provider != null
 						&& timelineWindow.getStart() + timelineWindow.getLength() + shift * multiplier > provider
 								.getNumberOfChoices()) {
-					timelineWindow.setStart(Math.max(
-							provider.getNumberOfChoices() - timelineWindow.getLength(), 0));
+					timelineWindow.setStart(Math.max(provider.getNumberOfChoices()
+							- timelineWindow.getLength(), 0));
 				} else if (shift != 0) {
 					doneShift += shift;
 					timelineWindow.setStart(timelineWindow.getStart() + shift * multiplier);
@@ -292,13 +293,21 @@ public class TimelineView extends ViewPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-		final SashForm mainSashForm = new SashForm(parent, SWT.HORIZONTAL);
-		detailViewer = createDetailViewer(mainSashForm);
+		final Composite container;
+		if (hasDetailViewer()) {
+			final SashForm mainSashForm = new SashForm(parent, SWT.HORIZONTAL);
+			container = mainSashForm;
+			detailViewer = createDetailViewer(container);
+		} else {
+			container = parent;
+		}
 		timelineViewer = new ScrollingGraphicalViewer();
 		getSite().setSelectionProvider(timelineViewer);
-		Composite timelineComposite = new Composite(mainSashForm, SWT.NONE);
+		Composite timelineComposite = new Composite(container, SWT.NONE);
 		timelineComposite.setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
-		mainSashForm.setWeights(new int[] {DETAIL_RATIO, TIMELINE_RATIO, });
+		if (hasDetailViewer()) {
+			((SashForm)container).setWeights(new int[] {DETAIL_RATIO, TIMELINE_RATIO, });
+		}
 		GridLayout layout = new GridLayout(1, false);
 		timelineComposite.setLayout(layout);
 		timelineViewer.createControl(timelineComposite);
@@ -348,20 +357,22 @@ public class TimelineView extends ViewPart {
 			provider.addTimelineListener(timelineWindowListener);
 		}
 		timelineViewer.getControl().setBackground(ColorConstants.listBackground);
-		timelineViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+		if (hasDetailViewer()) {
+			timelineViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			@Override
-			public void selectionChanged(SelectionChangedEvent event) {
-				final ISelection selection = event.getSelection();
-				if (selection instanceof IStructuredSelection) {
-					final Object firstElement = ((IStructuredSelection)selection).getFirstElement();
-					if (firstElement instanceof PossibleStepEditPart) {
-						final PossibleStepEditPart possibleStepEditPart = (PossibleStepEditPart)firstElement;
-						detailViewer.setInput(possibleStepEditPart.getModel().getPossibleStep());
+				@Override
+				public void selectionChanged(SelectionChangedEvent event) {
+					final ISelection selection = event.getSelection();
+					if (selection instanceof IStructuredSelection) {
+						final Object firstElement = ((IStructuredSelection)selection).getFirstElement();
+						if (firstElement instanceof PossibleStepEditPart) {
+							final PossibleStepEditPart possibleStepEditPart = (PossibleStepEditPart)firstElement;
+							detailViewer.setInput(possibleStepEditPart.getModel().getPossibleStep());
+						}
 					}
 				}
-			}
-		});
+			});
+		}
 		timelineViewer.getControl().addKeyListener(new TimelineKeyListener());
 		final TimelineMouseListener listener = new TimelineMouseListener();
 		timelineViewer.getControl().addMouseListener(listener);
@@ -375,7 +386,8 @@ public class TimelineView extends ViewPart {
 				} else {
 					rootEditPart.getZoomManager().zoomOut();
 					final int length = getWindowLength();
-					if (provider != null && timelineWindow.getStart() + length > provider.getNumberOfChoices()
+					if (provider != null
+							&& timelineWindow.getStart() + length > provider.getNumberOfChoices()
 							&& provider.getNumberOfChoices() - length >= 0) {
 						timelineWindow.setStart(provider.getNumberOfChoices() - length);
 					}
@@ -475,7 +487,9 @@ public class TimelineView extends ViewPart {
 	 *            the {@link IContentProvider}
 	 */
 	public void setDetailViewerContentProvider(IContentProvider detailContentProvider) {
-		detailViewer.setContentProvider(detailContentProvider);
+		if (detailViewer != null) {
+			detailViewer.setContentProvider(detailContentProvider);
+		}
 	}
 
 	/**
@@ -485,7 +499,9 @@ public class TimelineView extends ViewPart {
 	 *            the {@link ILabelProvider}
 	 */
 	public void setDetailViewerLabelProvider(ILabelProvider detailLabelProvider) {
-		detailViewer.setLabelProvider(detailLabelProvider);
+		if (detailViewer != null) {
+			detailViewer.setLabelProvider(detailLabelProvider);
+		}
 	}
 
 	/**
@@ -501,7 +517,7 @@ public class TimelineView extends ViewPart {
 	/**
 	 * Gets the detail {@link Viewer}.
 	 * 
-	 * @return the detail {@link Viewer}
+	 * @return the detail {@link Viewer} if any, <code>null</code> otherwise
 	 */
 	public Viewer getDetailViewer() {
 		return detailViewer;
@@ -519,5 +535,13 @@ public class TimelineView extends ViewPart {
 		timelineWindow.removeTimelineWindowListener(timelineWindowListener);
 		super.dispose();
 	}
+
+	/**
+	 * Tells if the {@link AbstractTimelineView#getDetailViewer() detail viewer} exists for this view.
+	 * 
+	 * @return <code>true</code> if the {@link AbstractTimelineView#getDetailViewer() detail viewer} exists
+	 *         for this view, <code>false</code> otherwise
+	 */
+	public abstract boolean hasDetailViewer();
 
 }

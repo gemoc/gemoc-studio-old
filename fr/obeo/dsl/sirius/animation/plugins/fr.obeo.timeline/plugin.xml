@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension
-         point="org.eclipse.ui.views">
-      <category
-            id="fr.obeo.timeline.category"
-            name="Timeline">
-      </category>
-      <view
-            category="fr.obeo.timeline.category"
-            class="fr.obeo.timeline.view.TimelineView"
-            id="fr.obeo.timeline.view"
-            name="Timeline view"
-            restorable="true">
-      </view>
-   </extension>
 
 </plugin>

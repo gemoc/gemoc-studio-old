@@ -25,9 +25,9 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
-import fr.obeo.timeline.view.TimelineView;
+import fr.obeo.timeline.view.AbstractTimelineView;
 
-public class TimeLineView extends TimelineView implements IMotorSelectionListener
+public class TimeLineView extends AbstractTimelineView implements IMotorSelectionListener
 {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.timeline.TimeLineView";
@@ -166,6 +166,11 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
 		configure((ObservableBasicExecutionEngine)engine);
+	}
+
+	@Override
+	public boolean hasDetailViewer() {
+		return false;
 	}
 	
 }
