@@ -18,9 +18,9 @@
 package fr.obeo.timeline.editpart;
 
 import fr.obeo.timeline.layout.LineLayout;
-import fr.obeo.timeline.model.PossibleStep;
-import fr.obeo.timeline.model.ITimelineWindowListener;
 import fr.obeo.timeline.model.Choice;
+import fr.obeo.timeline.model.ITimelineWindowListener;
+import fr.obeo.timeline.model.PossibleStep;
 import fr.obeo.timeline.model.TimelineWindow;
 import fr.obeo.timeline.view.ITimelineProvider;
 
@@ -227,10 +227,13 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 		for (Choice choice : getModelChildren()) {
 			if (choice instanceof Choice) {
 				final EditPart choiceEditPart = (EditPart)getViewer().getEditPartRegistry().get(choice);
-				choiceEditPart.refresh();
-				for (PossibleStep possibleStep : choice.getPossibleSteps()) {
-					final EditPart possibleStepEditPart = (EditPart)getViewer().getEditPartRegistry().get(possibleStep);
-					possibleStepEditPart.refresh();
+				if (choiceEditPart != null) {
+					choiceEditPart.refresh();
+					for (PossibleStep possibleStep : choice.getPossibleSteps()) {
+						final EditPart possibleStepEditPart = (EditPart)getViewer().getEditPartRegistry()
+								.get(possibleStep);
+						possibleStepEditPart.refresh();
+					}
 				}
 			}
 		}

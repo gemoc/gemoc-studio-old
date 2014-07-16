@@ -47,8 +47,8 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConst
 
 public class EventManagerView extends ViewPart implements IMotorSelectionListener, Observer {
 
-	public static final String ID = "org.gemoc.execution.engine.io.views.EventManagerView";
-
+	public static final String ID = "org.gemoc.execution.engine.io.views.event.EventManagerView";
+									 
 	private TableViewer _viewer;
 	private Composite _parent;
 	private EnginesStatusView _enginesStatusView;
