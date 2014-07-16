@@ -24,10 +24,10 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
-import fr.obeo.timeline.internal.editpart.ChoiceEditPart;
-import fr.obeo.timeline.view.TimelineView;
+import fr.obeo.timeline.editpart.PossibleStepEditPart;
+import fr.obeo.timeline.view.AbstractTimelineView;
 
-public class TimeLineView extends TimelineView implements IMotorSelectionListener
+public class TimeLineView extends AbstractTimelineView implements IMotorSelectionListener
 {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.timeline.TimeLineView";
@@ -91,7 +91,7 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 						final Object selected = ((IStructuredSelection) selection).getFirstElement();
 						if (selected instanceof PossibleStepEditPart) 
 						{
-							Object o = ((PossibleStepEditPart) selected).getModel().getTic2();
+							Object o = ((PossibleStepEditPart) selected).getModel().getChoice2();
 							if (o instanceof Choice)
 							{								
 								if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection)
@@ -162,6 +162,11 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
 		configure((ObservableBasicExecutionEngine)engine);
+	}
+	
+	@Override
+	public boolean hasDetailViewer() {
+		return false;
 	}
 	
 }

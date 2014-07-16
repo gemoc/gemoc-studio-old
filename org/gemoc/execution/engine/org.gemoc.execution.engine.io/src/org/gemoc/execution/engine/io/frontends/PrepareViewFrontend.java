@@ -13,7 +13,7 @@ import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
-import fr.obeo.timeline.view.TimelineView;
+import fr.obeo.timeline.view.AbstractTimelineView;
 
 public class PrepareViewFrontend implements Frontend 
 {
