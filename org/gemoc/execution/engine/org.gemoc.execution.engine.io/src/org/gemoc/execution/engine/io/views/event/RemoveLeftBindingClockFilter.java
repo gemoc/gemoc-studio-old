@@ -22,7 +22,7 @@ public class RemoveLeftBindingClockFilter implements IEventFilterStrategy {
 			List<EventManagerClockWrapper> copyWrapperList = new ArrayList<EventManagerClockWrapper>(wrapperList);
 			for(EventManagerClockWrapper clockWrapper: copyWrapperList)
 			{
-				if(clockWrapper.get_clock().getName() == leftBinding.getBindable().getName()) 
+				if(clockWrapper.getClock().getName() == leftBinding.getBindable().getName()) 
 				{
 					wrapperList.remove(clockWrapper);
 				}

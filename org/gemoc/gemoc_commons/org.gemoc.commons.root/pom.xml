@@ -14,6 +14,9 @@
         <module>../org.gemoc.execution.engine.trace.model</module>
         <module>../org.gemoc.execution.engine.trace.model.edit</module>
         <module>../org.gemoc.execution.engine.trace.model.editor</module>
+        <module>../org.gemoc.execution.engine.scenario.model</module>
+        <module>../org.gemoc.execution.engine.scenario.model.edit</module>
+        <module>../org.gemoc.execution.engine.scenario.model.editor</module>
 
         <!-- feature and update site -->
         <module>org.gemoc.commons.feature</module>

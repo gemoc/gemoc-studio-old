@@ -26,7 +26,7 @@ public class RemoveAllBindingClockFilter implements IEventFilterStrategy {
 			
 			for(EventManagerClockWrapper clockWrapper: copyWrapperList)
 			{
-				String nameClock = clockWrapper.get_clock().getName();
+				String nameClock = clockWrapper.getClock().getName();
 				if(  nameClock == leftBindingClockName || nameClock == rightBindingClockName )
 				{
 					wrapperList.remove(clockWrapper);

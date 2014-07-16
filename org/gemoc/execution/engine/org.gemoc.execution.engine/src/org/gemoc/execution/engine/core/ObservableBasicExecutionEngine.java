@@ -140,6 +140,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 	private ModelExecutionContext _executionContext;
 
+	public ModelExecutionContext getExecutionContext() {
+		return _executionContext;
+	}
+
 	/**
 	 * URI of the model being executed
 	 */
