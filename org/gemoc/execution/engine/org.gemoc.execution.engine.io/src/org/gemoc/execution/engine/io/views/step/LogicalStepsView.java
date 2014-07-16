@@ -117,7 +117,7 @@ public class LogicalStepsView extends DependantViewPart
 						String details = ViewUtils.eventToString((Event)element);
 						return "   " + details;
 					}
-					return super.getText(element);
+					return "";
 				}
 			
 			});}
