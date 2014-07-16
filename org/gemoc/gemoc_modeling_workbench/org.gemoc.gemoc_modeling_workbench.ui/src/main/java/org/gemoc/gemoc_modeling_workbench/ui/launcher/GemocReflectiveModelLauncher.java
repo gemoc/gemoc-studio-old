@@ -52,6 +52,7 @@ import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemoc
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
 
 import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
+import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
@@ -114,7 +115,7 @@ public class GemocReflectiveModelLauncher
 		_launchConfiguration = configuration;		
 		createModelExecutionContext();
 				
-		getMessagingSystem().showConsole();
+		//getMessagingSystem().showConsole();
 		debug("About to initialize and run the GEMOC Execution Engine...");
 
 		//String sessionPath = configuration.getAttribute(SIRIUS_RESOURCE_URI, "");
@@ -398,7 +399,7 @@ public class GemocReflectiveModelLauncher
 		getMessagingSystem().error(message, getPluginID());
 	}
 
-	private EclipseMessagingSystem getMessagingSystem() {
+	private MessagingSystem getMessagingSystem() {
 		return Activator
 				.getDefault()
 				.getMessaggingSystem();	

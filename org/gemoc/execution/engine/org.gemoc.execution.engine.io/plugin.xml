@@ -118,12 +118,5 @@
             name="Remove all engines">
       </command>
    </extension>
-   <extension
-         point="fr.inria.diverse.commons.eclipse.messagingsystem">
-      <MessagingSystem_Contribution
-            MessagingSystem_class="fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem"
-            name_string="org.gemoc.execution.engine.io.MessagingSystem_Contribution1">
-      </MessagingSystem_Contribution>
-   </extension>
 
 </plugin>

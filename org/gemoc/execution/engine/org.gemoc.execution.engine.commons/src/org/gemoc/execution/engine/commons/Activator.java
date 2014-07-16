@@ -62,13 +62,17 @@ public class Activator extends GemocPlugin {
 		return PLUGIN_ID;
 	}
 
+	private DefaultLoggingBackend _loggingBackend;
 	@Override
 	public DefaultLoggingBackend resolveLoggingBackend() {
-		DefaultLoggingBackend backend = new DefaultLoggingBackend(this);
-		MessagingSystemManager msm = new MessagingSystemManager();
-		MessagingSystem ms = msm.getBestPlatformSharedMessaggingSystem();
-		backend.setMessagingSystem(ms);
-		return backend;
+		if (_loggingBackend == null)
+		{
+			_loggingBackend = new DefaultLoggingBackend(this);
+			MessagingSystemManager msm = new MessagingSystemManager();
+			MessagingSystem ms = msm.createBestPlatformMessagingSystem("org.gemoc.execution.engine", "Execution Engine");
+			_loggingBackend.setMessagingSystem(ms);
+		}
+		return _loggingBackend;
 	}
 
 }
