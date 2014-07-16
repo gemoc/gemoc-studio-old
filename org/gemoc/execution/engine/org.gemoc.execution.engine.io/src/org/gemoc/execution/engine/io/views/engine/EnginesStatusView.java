@@ -280,7 +280,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		Display.getDefault().asyncExec(new Runnable() {
+		Display.getDefault().syncExec(new Runnable() {
 		      public void run() {
 		    	  // we may be triggered by a registry change or by an engine change
 		    	  // if registry changes, then may need to observe the new engine
