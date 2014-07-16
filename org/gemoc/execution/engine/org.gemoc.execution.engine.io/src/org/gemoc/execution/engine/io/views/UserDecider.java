@@ -29,6 +29,7 @@ public class UserDecider implements ILogicalStepDecider {
 	@Override
 	public int decide(final List<LogicalStep> possibleLogicalSteps)
 			throws InterruptedException {
+		_preemptionHappened = false;
 		_semaphore = new Semaphore(0);
 		if(!isStepByStep && possibleLogicalSteps.size() == 1) return 0;
 

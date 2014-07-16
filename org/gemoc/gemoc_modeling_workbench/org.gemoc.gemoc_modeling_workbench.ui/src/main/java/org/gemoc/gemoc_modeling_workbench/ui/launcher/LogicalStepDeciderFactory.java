@@ -14,15 +14,15 @@ public class LogicalStepDeciderFactory {
 		
 		switch(deciderKind)
 		{
-			case GemocModelLauncherConfigurationConstants.DECIDER_RANDOM:
+			case RunConfiguration.DECIDER_RANDOM:
 				decider = new RandomDecider();
 				break;
 
-			case GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER:
+			case RunConfiguration.DECIDER_ASKUSER:
 				decider = new UserDecider(false);
 				break;
 
-			case GemocModelLauncherConfigurationConstants.DECIDER_ASKUSER_STEP_BY_STEP:
+			case RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP:
 				decider = new UserDecider(true);			
 				break;
 

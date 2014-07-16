@@ -139,8 +139,11 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 	{
 		_currentEngine = engine;
 		disposeTimeLineProvider();
-		_timelineProvider = new TimelineProvider(engine);
-		setTimelineProvider(_timelineProvider);
+		if (engine != null)
+		{
+			_timelineProvider = new TimelineProvider(engine);
+			setTimelineProvider(_timelineProvider);			
+		}
 	}
 
 	private void removeDoubleClickListener() {
@@ -156,6 +159,7 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 		if (_timelineProvider != null)
 		{
 			_timelineProvider.dispose();
+			_timelineProvider = null;
 		}
 	}
 

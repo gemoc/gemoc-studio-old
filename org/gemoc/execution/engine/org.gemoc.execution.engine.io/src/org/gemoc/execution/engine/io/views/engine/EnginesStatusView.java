@@ -113,7 +113,28 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					Image result = null;
 					if (element instanceof GemocExecutionEngine)
 					{
-						result = SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON);
+						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+						
+						switch (engine.getEngineStatus().getRunningStatus()) {
+							case Running:
+								result = SharedIcons.getSharedImage(SharedIcons.RUNNING_ENGINE_ICON);							
+								break;
+	
+							case Stopped:
+								result = SharedIcons.getSharedImage(SharedIcons.STOPPED_ENGINE_ICON);							
+								break;
+
+							case WaitingLogicalStepSelection:
+								result = SharedIcons.getSharedImage(SharedIcons.WAITING_ENGINE_ICON);							
+								break;
+
+							case Initializing:
+								result = SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON);							
+								break;
+
+							default:
+								break;
+						}
 					}
 					return result;
 				}
