@@ -284,12 +284,11 @@ public class EnginesStatusView extends ViewPart implements Observer {
 		      public void run() {
 		    	  // we may be triggered by a registry change or by an engine change
 		    	  // if registry changes, then may need to observe the new engine
-		    	  for( GemocExecutionEngine engine :org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values()){
+		    	  for (GemocExecutionEngine engine : org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values()){
 		    		  ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
 		    		  observable.addObserver(EnginesStatusView.this);
 		    	  }
 		    	  _viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);	    	  
-		    	  _viewer.refresh();
 		    	  TreeViewerHelper.resizeColumns(_viewer);
 		    	  if (_lastSelection != null) {
 		    		  TreePath treePath = new TreePath(new Object[] {_lastSelection});
