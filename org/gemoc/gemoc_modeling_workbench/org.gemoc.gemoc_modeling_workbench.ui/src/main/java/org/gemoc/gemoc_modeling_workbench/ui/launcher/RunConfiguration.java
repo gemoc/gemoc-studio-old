@@ -2,11 +2,12 @@ package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.gemoc.execution.engine.core.IRunConfiguration;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
-public class RunConfiguration 
+public class RunConfiguration implements IRunConfiguration
 {
 	
 	// main launch parameters

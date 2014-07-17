@@ -34,7 +34,6 @@ import org.gemoc.execution.engine.io.backends.ConsoleBackend;
 import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
 import org.gemoc.execution.engine.io.frontends.PrepareViewFrontend;
-import org.gemoc.execution.engine.io.views.obeo.InstructionRevealer;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
@@ -141,7 +140,7 @@ public class GemocReflectiveModelLauncher
 		solver.setSolverInputFile(resourceSet, mocURI);
 		
 		Resource modelResource = getModelResource(resourceSet, getModelPathAsString());
-		ILogicalStepDecider decider = LogicalStepDeciderFactory.CreateDecider(_runConfiguration.getDeciderName(), solver);
+		ILogicalStepDecider decider = LogicalStepDeciderFactory.createDecider(_runConfiguration.getDeciderName(), solver);
 
 		// Create required Frontends
 		// TODO : Hard-coded Frontends and Backends... It should be selectable
@@ -158,8 +157,7 @@ public class GemocReflectiveModelLauncher
 		backends.add(new ConsoleBackend());
 
 		// Create and initialize engine
-		_engine = new ObservableBasicExecutionEngine(solver, eventExecutor, codeExecutor, feedbackPolicy, decider, _executionContext);
-		_engine.setSiriusSession(_siriusSession);
+		_engine = new ObservableBasicExecutionEngine(solver, eventExecutor, codeExecutor, feedbackPolicy, decider, _executionContext, _runConfiguration);
 		TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
 		if (_siriusSession != null)
 			editingDomain = _siriusSession.getTransactionalEditingDomain();
@@ -180,8 +178,7 @@ public class GemocReflectiveModelLauncher
 		
 		// engine.
 		// configure altogether
-		configureEngine(_engine, frontends, backends, _runConfiguration.getAnimationDelay());
-		_engine.setInstructionRevealer(new InstructionRevealer(_executionContext.getDebuggerViewModelPath()));
+		configureEngine(_engine, frontends, backends);
 		
 		if (_runConfiguration.isAnimationActive()) 
 		{
@@ -276,9 +273,7 @@ public class GemocReflectiveModelLauncher
 	protected void configureEngine(
 						GemocExecutionEngine engine,
 						List<Frontend> frontends,
-						List<Backend> backends, 
-						int delay) {
-		engine.setDelay(delay);		
+						List<Backend> backends) {
 		// Links the Execution Engine to the Frontends
 		for (Frontend frontend : frontends) {
 			frontend.initialize(engine);

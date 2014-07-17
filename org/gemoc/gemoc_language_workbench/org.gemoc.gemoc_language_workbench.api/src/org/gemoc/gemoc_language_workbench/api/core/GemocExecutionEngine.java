@@ -2,7 +2,6 @@ package org.gemoc.gemoc_language_workbench.api.core;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
@@ -52,18 +51,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 */
 	public void removeEngineHook(IEngineHook removedEngineHook);
 
-
-	/**
-	 * Sets the delay to wait in millisecond between each logical step.
-	 * 
-	 * @param delay
-	 *            the delay in millisecond
-	 */
-	void setDelay(int delay);
-
 	void initialize(Resource resource, TransactionalEditingDomain editingDomain);
-
-	public ExecutionTraceModel getExecutionTrace();
 
 	/**
 	 * 

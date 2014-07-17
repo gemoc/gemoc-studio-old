@@ -9,7 +9,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 public class LogicalStepDeciderFactory {
 
-	public static ILogicalStepDecider CreateDecider(String deciderKind, Solver solver) {
+	public static ILogicalStepDecider createDecider(String deciderKind, Solver solver) {
 		ILogicalStepDecider decider = null;
 		
 		switch(deciderKind)

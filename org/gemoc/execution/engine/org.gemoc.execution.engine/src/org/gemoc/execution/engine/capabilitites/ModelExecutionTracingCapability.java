@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.BasicMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.compare.Comparison;
 import org.eclipse.emf.compare.Diff;
 import org.eclipse.emf.compare.DifferenceState;
@@ -19,10 +21,13 @@ import org.eclipse.emf.compare.rcp.EMFCompareRCPPlugin;
 import org.eclipse.emf.compare.scope.IComparisonScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.commons.Activator;
+import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
@@ -32,7 +37,9 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+
+import fr.inria.aoste.trace.EventOccurrence;
+import fr.inria.aoste.trace.LogicalStep;
 
 public class ModelExecutionTracingCapability implements IExecutionEngineCapability {
 
@@ -45,8 +52,8 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 
 	private boolean _backToPastHappened = false;
 	public void backToPast(Choice choice) throws ModelExecutionTracingException {
-		int index = _engine.getExecutionTrace().getChoices().indexOf(choice);
-		if (index == (_engine.getExecutionTrace().getChoices().size()-1))
+		int index = _executionTraceModel.getChoices().indexOf(choice);
+		if (index == (_executionTraceModel.getChoices().size()-1))
 			return;
 		backInTraceModelTo(choice);
 		_backToPastHappened = true;
@@ -57,16 +64,16 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	}
 
 	private void backInTraceModelTo(final Choice choice) {
-		final int index = _engine.getExecutionTrace().getChoices().indexOf(choice);
+		final int index = _executionTraceModel.getChoices().indexOf(choice);
 		if (index != -1
-			&& index != _engine.getExecutionTrace().getChoices().size()) {
+			&& index != _executionTraceModel.getChoices().size()) {
 			final CommandStack commandStack = _editingDomain.getCommandStack();
 			commandStack.execute(new RecordingCommand(_editingDomain) {
 				@Override
 				protected void doExecute() {
-					_engine.getExecutionTrace().getChoices().subList(index, _engine.getExecutionTrace().getChoices().size()).clear();
-					if (_engine.getExecutionTrace().getChoices().size() > 0)
-						_engine.getExecutionTrace().getChoices().get(_engine.getExecutionTrace().getChoices().size()-1).setNextChoice(null);
+					_executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size()).clear();
+					if (_executionTraceModel.getChoices().size() > 0)
+						_executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1).setNextChoice(null);
 					try {
 						restoreModelState(choice);
 						restoreSolverState(choice);
@@ -187,7 +194,8 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		_editingDomain = editingDomain;
 	}
 	
-	public void saveTraceModel(Resource traceResource, Resource modelUnderExecutionResource, Solver solver, long stepNumber) throws CoreException, IOException {
+	public void saveTraceModel(long stepNumber) throws CoreException, IOException {
+		Resource traceResource = _executionTraceModel.eResource();
 		if (traceResource.getContents().size() > 0) 
 		{			
 		    Copier copier = new GCopier();		    
@@ -203,7 +211,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 				modelState.setModel(result);
 				
 				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();									
-				solverState.setSerializableModel(solver.getState());
+				solverState.setSerializableModel(_engine.getSolver().getState());
 				Activator.getDefault().debug("step" + stepNumber + ", saving solver state: " 
 						 + solverState.getSerializableModel());
 				
@@ -215,29 +223,97 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		}
 	}
 
-//	private Resource getOriginalModel(Resource modelUnderExecutionResource) {
-//		ResourceSet rs = new ResourceSetImpl();
-//		URI modelURI = modelUnderExecutionResource.getURI();
-//		Resource resource = rs.getResource(modelURI, true);
-//		return resource;
-//	}
-//
-//	private void saveResource(Resource resource, IPath filePath) throws IOException, CoreException {
-//		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(filePath);		
-//		ByteArrayOutputStream out = new ByteArrayOutputStream();
-//		ByteArrayInputStream in = null;
-//		try {
-//			resource.save(out, null);				
-//			in = new ByteArrayInputStream(out.toByteArray());
-//			if (file.exists()) {
-//				file.setContents(in, true, false, new NullProgressMonitor());
-//			} else {
-//				file.create(in, true, new NullProgressMonitor());				
-//			}
-//		} finally {
-//			out.close();
-//			if (in != null)
-//				in.close();
-//		}
-//	}
+	private ExecutionTraceModel _executionTraceModel = GemocExecutionEngineTraceFactory.eINSTANCE.createExecutionTraceModel();
+
+	private ModelExecutionContext _executionContext;
+	public void setModelExecutionContext(ModelExecutionContext executionContext) {
+		_executionContext = executionContext;
+		ResourceSet rs = _engine.getModelUnderExecutionResource().getResourceSet();
+		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getRuntimePath().toString() + "/trace.xmi", false);
+		final Resource modelResource = rs.createResource(traceModelURI);
+		final CommandStack commandStack = _editingDomain.getCommandStack();
+		commandStack.execute(new RecordingCommand(_editingDomain) {
+			@Override
+			protected void doExecute() {
+				modelResource.getContents().add(_executionTraceModel);
+			}
+		});
+	}
+
+	public Choice getLastChoice() {
+		if (_executionTraceModel.getChoices().size() > 0)
+			return _executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1);
+		else 
+			return null;
+	}
+
+
+	private Choice _lastChoice;
+
+	public void updateTraceModelBeforeAskingSolver(final long count) {
+		final CommandStack commandStack = _editingDomain.getCommandStack();
+		commandStack.execute(new RecordingCommand(_editingDomain) {
+
+			@Override
+			protected void doExecute() {
+				Choice newChoice = createChoice();
+				if (_lastChoice != null) {
+					_lastChoice.setNextChoice(newChoice);
+				}
+				_lastChoice = newChoice;
+				_executionTraceModel.getChoices().add(_lastChoice);
+				try {
+					saveTraceModel(count);
+				} catch (CoreException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	private Choice createChoice() {
+		Choice choice = GemocExecutionEngineTraceFactory.eINSTANCE.createChoice();
+		return choice;
+	}
+
+	public void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
+		final CommandStack commandStack = _editingDomain.getCommandStack();
+		commandStack.execute(new RecordingCommand(_editingDomain) {
+
+			@Override
+			protected void doExecute() {
+				_lastChoice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
+				for (LogicalStep ls : possibleLogicalSteps) {
+					LogicalStepHelper.removeNotTickedEvents(ls);
+				}
+				_executionTraceModel.getChoices().add(_lastChoice);
+				for (LogicalStep step : _lastChoice.getPossibleLogicalSteps()) {
+					for (EventOccurrence occurence : step.getEventOccurrences()) {
+						_executionTraceModel.eResource().getContents().add(occurence.getReferedElement());
+					}
+				}
+			}
+		});
+	}
+	
+	public void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) {
+		final CommandStack commandStack = _editingDomain.getCommandStack();
+		commandStack.execute(new RecordingCommand(_editingDomain) {
+
+			@Override
+			protected void doExecute() {
+				if (_lastChoice.getPossibleLogicalSteps().size() == 0)
+					return;
+				_lastChoice.setChosenLogicalStep(_lastChoice.getPossibleLogicalSteps().get(selectedLogicalStepIndex));
+			}
+		});
+	}
+
+	public ExecutionTraceModel getExecutionTrace() {
+		return _executionTraceModel;
+	}
 }
