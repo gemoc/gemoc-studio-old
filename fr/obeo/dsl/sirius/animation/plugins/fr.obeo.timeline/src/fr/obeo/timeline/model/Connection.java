@@ -15,64 +15,64 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.model;
-
-import fr.obeo.timeline.view.ITimelineListener;
-import fr.obeo.timeline.view.ITimelineProvider;
+package fr.obeo.timeline.model;
 
 /**
- * Listener for {@link TimelineWindow} changes.
+ * Connect two {@link PossibleStep}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface ITimelineWindowListener extends ITimelineListener {
+public final class Connection {
 
 	/**
-	 * Stub implementation.
-	 * 
-	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+	 * The source {@link PossibleStep}.
 	 */
-	class Stub extends ITimelineListener.Stub implements ITimelineWindowListener {
+	private final PossibleStep source;
 
-		@Override
-		public void startChanged(int start) {
-			// nothing to do here
-		}
+	/**
+	 * The target {@link PossibleStep}.
+	 */
+	private final PossibleStep target;
 
-		@Override
-		public void lengthChanged(int length) {
-			// nothing to do here
-		}
-
-		@Override
-		public void providerChanged(ITimelineProvider provider) {
-			// nothing to do here
-		}
-
+	/**
+	 * Constructor.
+	 * 
+	 * @param source
+	 *            the source {@link PossibleStep}
+	 * @param target
+	 *            the target {@link PossibleStep}
+	 */
+	public Connection(PossibleStep source, PossibleStep target) {
+		this.source = source;
+		this.target = target;
 	}
 
 	/**
-	 * Notifies the start has changed.
+	 * Gets the source {@link PossibleStep}.
 	 * 
-	 * @param start
-	 *            the start
+	 * @return the source {@link PossibleStep}
 	 */
-	void startChanged(int start);
+	public PossibleStep getSource() {
+		return source;
+	}
 
 	/**
-	 * Notifies the length has changed.
+	 * Gets the target {@link PossibleStep}.
 	 * 
-	 * @param length
-	 *            the length
+	 * @return the target {@link PossibleStep}
 	 */
-	void lengthChanged(int length);
+	public PossibleStep getTarget() {
+		return target;
+	}
 
-	/**
-	 * Notifies the {@link ITimelineProvider} has changed.
-	 * 
-	 * @param provider
-	 *            the {@link ITimelineProvider}
-	 */
-	void providerChanged(ITimelineProvider provider);
+	@Override
+	public int hashCode() {
+		return source.hashCode() ^ target.hashCode();
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof Connection && ((Connection)obj).source.equals(source)
+				&& ((Connection)obj).target.equals(target);
+	}
 }

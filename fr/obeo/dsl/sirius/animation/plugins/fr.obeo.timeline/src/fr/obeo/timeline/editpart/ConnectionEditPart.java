@@ -15,13 +15,12 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.editpart;
+package fr.obeo.timeline.editpart;
 
-import fr.obeo.timeline.internal.model.Connection;
+import fr.obeo.timeline.model.Connection;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.swt.SWT;
@@ -48,9 +47,9 @@ public class ConnectionEditPart extends AbstractConnectionEditPart {
 		final PolylineConnection res = (PolylineConnection)super.createFigure();
 
 		res.setLineWidth(1);
-		PolygonDecoration decoration = new PolygonDecoration();
-		decoration.setTemplate(PolygonDecoration.TRIANGLE_TIP);
-		res.setTargetDecoration(decoration);
+		// PolygonDecoration decoration = new PolygonDecoration();
+		// decoration.setTemplate(PolygonDecoration.TRIANGLE_TIP);
+		// res.setTargetDecoration(decoration);
 		res.setLineStyle(SWT.LINE_SOLID);
 		res.setBackgroundColor(ColorConstants.listForeground);
 

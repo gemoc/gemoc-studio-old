@@ -6,7 +6,8 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
 import org.osgi.framework.BundleContext;
 
-import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
+import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;
+import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -20,7 +21,7 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 	
-	protected EclipseMessagingSystem messaggingSystem = null;
+	protected MessagingSystem messaggingSystem = null;
 	
 	/**
 	 * The constructor
@@ -81,9 +82,11 @@ public class Activator extends AbstractUIPlugin {
                 e));
 	}
 	
-	public EclipseMessagingSystem getMessaggingSystem() {
-		if(messaggingSystem ==  null){
-			messaggingSystem = new EclipseMessagingSystem(PLUGIN_ID, "Modeling workbench console");
+	public MessagingSystem getMessaggingSystem() {
+		if (messaggingSystem ==  null)
+		{
+			MessagingSystemManager msm = new MessagingSystemManager();
+			messaggingSystem  = msm.createBestPlatformMessagingSystem(PLUGIN_ID, "Modeling workbench console");
 		}
 		return messaggingSystem;
 	}

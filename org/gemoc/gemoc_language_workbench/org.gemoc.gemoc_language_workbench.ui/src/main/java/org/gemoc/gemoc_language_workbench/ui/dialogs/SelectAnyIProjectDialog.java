@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.utils.ui.dialogs;
+package org.gemoc.gemoc_language_workbench.ui.dialogs;
 
 import java.lang.reflect.Field;
 import org.eclipse.core.resources.IResource;

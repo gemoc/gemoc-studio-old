@@ -3,8 +3,10 @@ package org.gemoc.gemoc_language_workbench.extensions.k3;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
+import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;
 import fr.inria.diverse.commons.eclipse.messagingsystem.ui.ConsoleLogLevel;
 import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
+import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 
 public class Activator implements BundleActivator {
 
@@ -17,14 +19,15 @@ public class Activator implements BundleActivator {
 	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.extensions.k3"; //$NON-NLS-1$
 
 
-	protected static EclipseMessagingSystem messagingSystem = null;
+	protected static MessagingSystem messagingSystem = null;
 
-	public static EclipseMessagingSystem getMessagingSystem() {
-		if (messagingSystem == null) {
-			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
-					"GEMOC extensions k3");
-			((EclipseMessagingSystem) messagingSystem)
-					.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
+	public static MessagingSystem getMessagingSystem() {
+		if (messagingSystem == null) 
+		{
+			MessagingSystemManager msm = new MessagingSystemManager();
+			messagingSystem = msm.createBestPlatformMessagingSystem(PLUGIN_ID, "GEMOC extensions k3");
+			if (messagingSystem instanceof EclipseMessagingSystem)
+				((EclipseMessagingSystem) messagingSystem).setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
 		}
 		return messagingSystem;
 	}

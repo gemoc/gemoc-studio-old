@@ -24,10 +24,10 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
-import fr.obeo.timeline.internal.editpart.ChoiceEditPart;
-import fr.obeo.timeline.view.TimelineView;
+import fr.obeo.timeline.editpart.PossibleStepEditPart;
+import fr.obeo.timeline.view.AbstractTimelineView;
 
-public class TimeLineView extends TimelineView implements IMotorSelectionListener
+public class TimeLineView extends AbstractTimelineView implements IMotorSelectionListener
 {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.timeline.TimeLineView";
@@ -89,9 +89,9 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 					final ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();
 					if (selection instanceof IStructuredSelection) {
 						final Object selected = ((IStructuredSelection) selection).getFirstElement();
-						if (selected instanceof ChoiceEditPart) 
+						if (selected instanceof PossibleStepEditPart) 
 						{
-							Object o = ((ChoiceEditPart) selected).getModel().getTic2();
+							Object o = ((PossibleStepEditPart) selected).getModel().getChoice2();
 							if (o instanceof Choice)
 							{								
 								if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection)
@@ -139,8 +139,11 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 	{
 		_currentEngine = engine;
 		disposeTimeLineProvider();
-		_timelineProvider = new TimelineProvider(engine);
-		setTimelineProvider(_timelineProvider);
+		if (engine != null)
+		{
+			_timelineProvider = new TimelineProvider(engine);
+			setTimelineProvider(_timelineProvider);			
+		}
 	}
 
 	private void removeDoubleClickListener() {
@@ -156,12 +159,18 @@ public class TimeLineView extends TimelineView implements IMotorSelectionListene
 		if (_timelineProvider != null)
 		{
 			_timelineProvider.dispose();
+			_timelineProvider = null;
 		}
 	}
 
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
 		configure((ObservableBasicExecutionEngine)engine);
+	}
+
+	@Override
+	public boolean hasDetailViewer() {
+		return false;
 	}
 	
 }

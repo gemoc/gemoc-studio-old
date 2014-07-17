@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.utils.ui.dialogs;
+package org.gemoc.gemoc_language_workbench.ui.dialogs;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;

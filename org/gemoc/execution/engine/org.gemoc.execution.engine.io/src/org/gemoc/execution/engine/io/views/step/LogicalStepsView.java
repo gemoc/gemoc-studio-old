@@ -117,7 +117,7 @@ public class LogicalStepsView extends DependantViewPart
 						String details = ViewUtils.eventToString((Event)element);
 						return "   " + details;
 					}
-					return super.getText(element);
+					return "";
 				}
 			
 			});}
@@ -160,15 +160,18 @@ public class LogicalStepsView extends DependantViewPart
 				@Override
 				public void run() {
 					TreeSelection selection = (TreeSelection) _viewer.getSelection();
-					TreePath path = selection.getPaths()[0];
-					_lastSelectedLogicalStep = null;
-					if (path.getLastSegment() instanceof LogicalStep)
+					if (selection.getPaths().length > 0)
 					{
-						_lastSelectedLogicalStep = (LogicalStep)path.getLastSegment();						
-					}
-					else if (path.getLastSegment() instanceof Event)
-					{
-						_lastSelectedLogicalStep = (LogicalStep) path.getFirstSegment();
+						TreePath path = selection.getPaths()[0];
+						_lastSelectedLogicalStep = null;
+						if (path.getLastSegment() instanceof LogicalStep)
+						{
+							_lastSelectedLogicalStep = (LogicalStep)path.getLastSegment();						
+						}
+						else if (path.getLastSegment() instanceof Event)
+						{
+							_lastSelectedLogicalStep = (LogicalStep) path.getFirstSegment();
+						}
 					}
 				}
 			});

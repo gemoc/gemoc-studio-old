@@ -646,7 +646,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				if (event.getReferencedObjectRefs().get(1) instanceof EOperation) {
 					EObject targetModelElement = event.getReferencedObjectRefs().get(0);
 					EOperation targetOperation = (EOperation) event.getReferencedObjectRefs().get(1);
-					Activator.getDefault().info("event occurence: target=" + targetModelElement.toString() + " operation=" + targetOperation.getName());
+					//Activator.getDefault().info("event occurence: target=" + targetModelElement.toString() + " operation=" + targetOperation.getName());
 					// TODO verify that solver and engine work on the same
 					// resource ...
 
@@ -654,18 +654,19 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(targetModelElement, targetOperation);
 					engineEventOccurences.add(engineEventOccurence);
 				} else {
-					Activator.getDefault().warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
+					//Activator.getDefault().warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
 					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
 					engineEventOccurences.add(engineEventOccurence);
 				}
 			} else {
 				if (event.getReferencedObjectRefs().size() == 1) {
-					Activator.getDefault().warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
+					//Activator.getDefault().warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
 					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
 					engineEventOccurences.add(engineEventOccurence);
-				} else {
-					Activator.getDefault().debug("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
-				}
+				} 
+//				else {
+//					Activator.getDefault().debug("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
+//				}
 			}
 			// }
 			// else{

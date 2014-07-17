@@ -1,8 +1,14 @@
 package org.gemoc.execution.engine.io.views.engine;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 class ViewContentProvider implements ITreeContentProvider 
 {
@@ -17,7 +23,9 @@ class ViewContentProvider implements ITreeContentProvider
 		if (parent instanceof GemocRunningEnginesRegistry)
 		{
 			GemocRunningEnginesRegistry registry = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry;
-			return registry.getRunningEngines().values().toArray();
+			List<GemocExecutionEngine> engines = new ArrayList<GemocExecutionEngine>(registry.getRunningEngines().values());
+			Collections.sort(engines, getComparator()); 
+			return engines.toArray();
 		}
 		return null;
 	}
@@ -35,4 +43,26 @@ class ViewContentProvider implements ITreeContentProvider
 	{
 		return false;
 	}
+	
+	private Comparator<GemocExecutionEngine> getComparator()
+	{
+		Comparator<GemocExecutionEngine> comparator = new Comparator<GemocExecutionEngine>() {
+		    public int compare(GemocExecutionEngine c1, GemocExecutionEngine c2) 
+		    {
+		    	int c1Value = c1.getEngineStatus().getRunningStatus().ordinal();
+		    	int c2Value = c2.getEngineStatus().getRunningStatus().ordinal();
+		        if (c1Value < c2Value) 
+		        {
+		        	return -1;
+		        } 
+		        else if (c1Value > c2Value) 
+		        {
+		        	return 1;
+		        }  
+		        return 0;
+		    }
+		};
+		return comparator;
+	}
+	
 }

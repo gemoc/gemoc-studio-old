@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.model;
+package fr.obeo.timeline.model;
 
 import fr.obeo.timeline.view.ITimelineProvider;
 
@@ -23,14 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A Choice.
+ * A possible step.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public final class Choice {
+public final class PossibleStep {
 
 	/**
-	 * Shift for the {@link Choice#hashCode() hash code}.
+	 * Shift for the {@link PossibleStep#hashCode() hash code}.
 	 */
 	private static final int SHIFT = 8;
 
@@ -45,9 +45,9 @@ public final class Choice {
 	private final int index;
 
 	/**
-	 * The choice index.
+	 * The possible step index.
 	 */
-	private final int choice;
+	private final int possibleStep;
 
 	/**
 	 * Constructor.
@@ -56,13 +56,13 @@ public final class Choice {
 	 *            the containing {@link TimelineWindow}
 	 * @param index
 	 *            the timeline index
-	 * @param choice
-	 *            the choice index
+	 * @param possibleStep
+	 *            the possible step index
 	 */
-	public Choice(TimelineWindow timelineWindow, int index, int choice) {
+	public PossibleStep(TimelineWindow timelineWindow, int index, int possibleStep) {
 		this.timelineWindow = timelineWindow;
 		this.index = index;
-		this.choice = choice;
+		this.possibleStep = possibleStep;
 	}
 
 	/**
@@ -80,37 +80,37 @@ public final class Choice {
 	 * @return the name
 	 */
 	public String getName() {
-		return getTimelineWindow().getProvider().getTextAt(index, choice);
+		return getTimelineWindow().getProvider().getTextAt(index, possibleStep);
 	}
 
 	/**
-	 * Tells if the choice has been selected.
+	 * Tells if the possible step has been selected.
 	 * 
-	 * @return <code>true</code> if the choice has been selected.
+	 * @return <code>true</code> if the possible step has been selected, <code>false</code> otherwise.
 	 */
 	public boolean isSelected() {
-		return getTimelineWindow().getProvider().getSelectedChoice(index) == choice;
+		return getTimelineWindow().getProvider().getSelectedPossibleStep(index) == possibleStep;
 	}
 
 	/**
-	 * Gets the owning {@link Tic}.
+	 * Gets the owning {@link Choice}.
 	 * 
-	 * @return the owning {@link Tic}
+	 * @return the owning {@link Choice}
 	 */
-	public Tic getTic() {
-		return new Tic(getTimelineWindow(), index);
+	public Choice getChoice() {
+		return new Choice(getTimelineWindow(), index);
 	}
 
 	/**
-	 * Gets the previous {@link Choice} in the {@link Tic}.
+	 * Gets the previous {@link PossibleStep} in the {@link Choice}.
 	 * 
-	 * @return the previous {@link Choice} in the {@link Tic} if any, <code>null</code> otherwise
+	 * @return the previous {@link PossibleStep} in the {@link Choice} if any, <code>null</code> otherwise
 	 */
-	public Choice getPreviousChoice() {
-		final Choice res;
+	public PossibleStep getPreviousPossibleStep() {
+		final PossibleStep res;
 
-		if (choice > 0) {
-			res = new Choice(getTimelineWindow(), index, choice - 1);
+		if (possibleStep > 0) {
+			res = new PossibleStep(getTimelineWindow(), index, possibleStep - 1);
 		} else {
 			res = null;
 		}
@@ -119,15 +119,15 @@ public final class Choice {
 	}
 
 	/**
-	 * Gets the next {@link Choice} in the {@link Tic}.
+	 * Gets the next {@link PossibleStep} in the {@link Choice}.
 	 * 
-	 * @return the next {@link Choice} in the {@link Tic} if any, <code>null</code> otherwise
+	 * @return the next {@link PossibleStep} in the {@link Choice} if any, <code>null</code> otherwise
 	 */
-	public Choice getNextChoice() {
-		final Choice res;
+	public PossibleStep getNextPossibleStep() {
+		final PossibleStep res;
 
-		if (choice < getTimelineWindow().getProvider().getNumberOfchoicesAt(index)) {
-			res = new Choice(getTimelineWindow(), index, choice + 1);
+		if (possibleStep < getTimelineWindow().getProvider().getNumberOfPossibleStepsAt(index)) {
+			res = new PossibleStep(getTimelineWindow(), index, possibleStep + 1);
 		} else {
 			res = null;
 		}
@@ -136,20 +136,20 @@ public final class Choice {
 	}
 
 	/**
-	 * Gets the index in the owning {@link Tic}.
+	 * Gets the index in the owning {@link Choice}.
 	 * 
-	 * @return the index in the owning {@link Tic}
+	 * @return the index in the owning {@link Choice}
+	 */
+	public int getPossibleStepIndex() {
+		return possibleStep;
+	}
+
+	/**
+	 * Gets the index of the owning {@link Choice}.
+	 * 
+	 * @return the index of the owning {@link Choice}
 	 */
 	public int getChoiceIndex() {
-		return choice;
-	}
-
-	/**
-	 * Gets the index of the owning {@link Tic}.
-	 * 
-	 * @return the index of the owning {@link Tic}
-	 */
-	public int getTicIndex() {
 		return index;
 	}
 
@@ -163,9 +163,9 @@ public final class Choice {
 
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
 		if (isSelected() && index > getTimelineWindow().getStart()) {
-			final int preceding = provider.getPreceding(index, choice);
+			final int preceding = provider.getPreceding(index, possibleStep);
 			if (preceding >= 0) {
-				res.add(new Connection(new Choice(getTimelineWindow(), index - 1, preceding), this));
+				res.add(new Connection(new PossibleStep(getTimelineWindow(), index - 1, preceding), this));
 			}
 		}
 
@@ -183,10 +183,10 @@ public final class Choice {
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
 		if (isSelected()
 				&& index + 1 < Math.min(getTimelineWindow().getEnd(), getTimelineWindow().getProvider()
-						.getNumberOfTicks())) {
-			final int following = provider.getFollowing(index, choice);
+						.getNumberOfChoices())) {
+			final int following = provider.getFollowing(index, possibleStep);
 			if (following >= 0) {
-				res.add(new Connection(this, new Choice(getTimelineWindow(), index + 1, following)));
+				res.add(new Connection(this, new PossibleStep(getTimelineWindow(), index + 1, following)));
 			}
 		}
 
@@ -195,19 +195,20 @@ public final class Choice {
 
 	@Override
 	public int hashCode() {
-		return (index << SHIFT) + choice;
+		return (index << SHIFT) + possibleStep;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof Choice && ((Choice)obj).index == index && ((Choice)obj).choice == choice;
+		return obj instanceof PossibleStep && ((PossibleStep)obj).index == index
+				&& ((PossibleStep)obj).possibleStep == possibleStep;
 	}
 
-	public Object getChoice() {
-		return getTimelineWindow().getProvider().getAt(index, choice);
+	public Object getPossibleStep() {
+		return getTimelineWindow().getProvider().getAt(index, possibleStep);
 	}
 
-	public Object getTic2() {
+	public Object getChoice2() {
 		return getTimelineWindow().getProvider().getAt(index);
 	}
 

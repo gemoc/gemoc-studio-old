@@ -4,14 +4,14 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.ExecutionTraceView;
+import org.gemoc.execution.engine.io.views.event.EventManagerView;
 
 
 public class ShowClockControllerView extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		ViewHelper.retrieveView(ExecutionTraceView.ID);
+		ViewHelper.retrieveView(EventManagerView.ID);
 		return null;
 	}
 

@@ -15,64 +15,64 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.internal.model;
+package fr.obeo.timeline.model;
+
+import fr.obeo.timeline.view.ITimelineListener;
+import fr.obeo.timeline.view.ITimelineProvider;
 
 /**
- * Connect two {@link Choice}.
+ * Listener for {@link TimelineWindow} changes.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public final class Connection {
+public interface ITimelineWindowListener extends ITimelineListener {
 
 	/**
-	 * The source {@link Choice}.
-	 */
-	private final Choice source;
-
-	/**
-	 * The target {@link Choice}.
-	 */
-	private final Choice target;
-
-	/**
-	 * Constructor.
+	 * Stub implementation.
 	 * 
-	 * @param source
-	 *            the source {@link Choice}
-	 * @param target
-	 *            the target {@link Choice}
+	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
 	 */
-	public Connection(Choice source, Choice target) {
-		this.source = source;
-		this.target = target;
+	class Stub extends ITimelineListener.Stub implements ITimelineWindowListener {
+
+		@Override
+		public void startChanged(int start) {
+			// nothing to do here
+		}
+
+		@Override
+		public void lengthChanged(int length) {
+			// nothing to do here
+		}
+
+		@Override
+		public void providerChanged(ITimelineProvider provider) {
+			// nothing to do here
+		}
+
 	}
 
 	/**
-	 * Gets the source {@link Choice}.
+	 * Notifies the start has changed.
 	 * 
-	 * @return the source {@link Choice}
+	 * @param start
+	 *            the start
 	 */
-	public Choice getSource() {
-		return source;
-	}
+	void startChanged(int start);
 
 	/**
-	 * Gets the target {@link Choice}.
+	 * Notifies the length has changed.
 	 * 
-	 * @return the target {@link Choice}
+	 * @param length
+	 *            the length
 	 */
-	public Choice getTarget() {
-		return target;
-	}
+	void lengthChanged(int length);
 
-	@Override
-	public int hashCode() {
-		return source.hashCode() ^ target.hashCode();
-	}
+	/**
+	 * Notifies the {@link ITimelineProvider} has changed.
+	 * 
+	 * @param provider
+	 *            the {@link ITimelineProvider}
+	 */
+	void providerChanged(ITimelineProvider provider);
 
-	@Override
-	public boolean equals(Object obj) {
-		return obj instanceof Connection && ((Connection)obj).source.equals(source)
-				&& ((Connection)obj).target.equals(target);
-	}
 }

@@ -5,12 +5,15 @@ import java.util.HashSet;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.Status;
+import org.gemoc.gemoc_language_workbench.api.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+
 
 public class LanguageDefinition {
 
@@ -28,6 +31,7 @@ public class LanguageDefinition {
 		if (instance instanceof CodeExecutor) {
 			return(CodeExecutor) instance;
 		}
+		throwCoreException();
 		return null;
 	}
 	
@@ -38,6 +42,7 @@ public class LanguageDefinition {
 		if (instance instanceof EventExecutor) {
 			return(EventExecutor) instance;
 		}
+		throwCoreException();
 		return null;
 	}
 	
@@ -48,6 +53,7 @@ public class LanguageDefinition {
 		if (instance instanceof Solver) {
 			return (Solver) instance;
 		}
+		throwCoreException();
 		return null;
 	}
 	
@@ -58,13 +64,31 @@ public class LanguageDefinition {
 		if (oFeedbackPolicy instanceof FeedbackPolicy) {
 			return(FeedbackPolicy) oFeedbackPolicy;
 		}
+		throwCoreException();
 		return null;
 	}
 	
+	private void throwCoreException() 
+			throws CoreException
+	{
+		String message = "Instanciation succeeded but object is not of correct type.";
+		CoreException exception = new CoreException(new Status(Status.ERROR, Activator.PLUGIN_ID, message));
+		throw exception;
+	}
+
 	private Object instanciate(String attributeName) 
 			throws CoreException
 	{
-		return _configurationElement.createExecutableExtension(attributeName);
+		try
+		{
+			return _configurationElement.createExecutableExtension(attributeName);
+		}
+		catch(CoreException e)
+		{
+			String message = "Instanciation of one agent failed (see inner exception).";
+			CoreException exception = new CoreException(new Status(Status.ERROR, Activator.PLUGIN_ID, message, e));
+			throw exception;
+		}
 	}
 	
 	final public String getQVTOPath()
