@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
@@ -28,11 +29,11 @@ public class EventManagementCache
 		_selectedFilter = new EventFilter();
 	}
 
-	public void configure(ObservableBasicExecutionEngine engine, ClockConstraintSystem clockConstraintSystem)
+	public void configure(GemocExecutionEngine engine, ClockConstraintSystem clockConstraintSystem)
 	{
-		engine.addClockController(_clockController);
+		engine.getExecutionContext().getClockControllers().add(_clockController);
 		_system = clockConstraintSystem;
-		EventInjectionContext context = new EventInjectionContext(engine.getSolver(), clockConstraintSystem);
+		EventInjectionContext context = new EventInjectionContext(engine.getExecutionContext().getSolver(), clockConstraintSystem);
 		_clockController.initialize(context);
 		_relations = new ArrayList<Relation>();
 		for(Relation r : _system.getSubBlock().get(0).getRelations())

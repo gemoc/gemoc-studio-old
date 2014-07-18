@@ -3,6 +3,7 @@ package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.deciders.RandomDecider;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
+import org.gemoc.execution.engine.core.RunConfiguration;
 import org.gemoc.execution.engine.io.views.UserDecider;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;

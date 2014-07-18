@@ -27,7 +27,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
-import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
@@ -35,8 +34,10 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngi
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
@@ -48,6 +49,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	@Override
 	public void initialize(GemocExecutionEngine engine) {
 		_engine = engine;
+		_editingDomain = _engine.getExecutionContext().getEditingDomain();
 	}
 
 	private boolean _backToPastHappened = false;
@@ -95,7 +97,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	                                           .setPostProcessorRegistry(postProcessorRegistry)
 	                                           .build();
 		// Compare the two models
-		IComparisonScope scope1 = EMFCompare.createDefaultScope(choice.getContextState().getModelState().getModel(), _engine.getModelUnderExecutionResource().getContents().get(0));
+		IComparisonScope scope1 = EMFCompare.createDefaultScope(choice.getContextState().getModelState().getModel(), _executionContext.getResourceModel().getContents().get(0));
 		Comparison otherComparison = comparator.compare(scope1);
 		otherComparison.getDifferences();
 		
@@ -107,7 +109,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 			{
 				// if attribute, modify value on the aspect side that will modify the model in return.
 				AttributeChangeSpec asc = (AttributeChangeSpec)diff;
-				CodeExecutor codeExecutor = _engine.getCodeExecutor();
+				CodeExecutor codeExecutor = _engine.getExecutionContext().getCodeExecutor();
 				EObject target = diff.getMatch().getRight();
 				String methodName = asc.getAttribute().getName();
 				ArrayList parameters = new ArrayList();
@@ -139,48 +141,18 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		}			
 	}
 	
-//	private void restoreModelState(Comparison firstComparison, Comparison secondComparison) throws IOException {		
-//		Merger merger = new Merger();
-//		BasicMonitor monitor = new BasicMonitor();
-//		if (firstComparison.getDifferences().size() > 0) {
-//			for (Diff diff : firstComparison.getDifferences()) {
-//				merger.copyLeftToRight(
-//						diff,
-//						monitor);			
-//				diff.setState(DifferenceState.UNRESOLVED);
-//				merger.copyRightToLeft(
-//						diff,
-//						monitor);			
-//				diff.setState(DifferenceState.UNRESOLVED);
-//			}			
-//		} else if (secondComparison.getDifferences().size() > 0) {
-//			for (Diff diff : secondComparison.getDifferences()) {
-//				merger.copyRightToLeft(
-//						diff,
-//						monitor);			
-//				diff.setState(DifferenceState.UNRESOLVED);
-//			}			
-//		}
-//	}
-
 	byte[] _lastRestoredSolverState;
 	private void restoreSolverState(Choice choice) 
 	{
+		Solver solver = _engine.getExecutionContext().getSolver();
 		Activator.getDefault().debug("restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
-		_engine.getSolver().setState(choice.getContextState().getSolverState().getSerializableModel());
-		boolean b = Arrays.equals(_engine.getSolver().getState(), choice.getContextState().getSolverState().getSerializableModel());
+		solver.setState(choice.getContextState().getSolverState().getSerializableModel());
+		boolean b = Arrays.equals(solver.getState(), choice.getContextState().getSolverState().getSerializableModel());
 		if (b)
 			Activator.getDefault().debug("new state does equal the restored state");
 		else
 			Activator.getDefault().debug("new state does NOT equal the restored state");
 	}
-
-//	private EList<EObject> loadModel(URI uri) throws IOException {
-//		ResourceSet rs = new ResourceSetImpl();
-//		Resource r = rs.createResource(uri);
-//		r.load(null);
-//		return r.getContents();
-//	}
 
 	public boolean hasRewindHappened(boolean resetFlag) {
 		boolean result = _backToPastHappened;
@@ -190,16 +162,13 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	}
 
 	private TransactionalEditingDomain _editingDomain;
-	public void setEditingDomain(TransactionalEditingDomain editingDomain) {
-		_editingDomain = editingDomain;
-	}
 	
 	public void saveTraceModel(long stepNumber) throws CoreException, IOException {
 		Resource traceResource = _executionTraceModel.eResource();
 		if (traceResource.getContents().size() > 0) 
 		{			
 		    Copier copier = new GCopier();		    
-		    EObject result = copier.copy(_engine.getModelUnderExecutionResource().getContents().get(0));
+		    EObject result = copier.copy(_executionContext.getResourceModel().getContents().get(0));
 		    copier.copyReferences();
 			
 			ExecutionTraceModel traceModel = (ExecutionTraceModel)traceResource.getContents().get(0);				
@@ -211,7 +180,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 				modelState.setModel(result);
 				
 				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();									
-				solverState.setSerializableModel(_engine.getSolver().getState());
+				solverState.setSerializableModel(_engine.getExecutionContext().getSolver().getState());
 				Activator.getDefault().debug("step" + stepNumber + ", saving solver state: " 
 						 + solverState.getSerializableModel());
 				
@@ -225,11 +194,11 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 
 	private ExecutionTraceModel _executionTraceModel = GemocExecutionEngineTraceFactory.eINSTANCE.createExecutionTraceModel();
 
-	private ModelExecutionContext _executionContext;
-	public void setModelExecutionContext(ModelExecutionContext executionContext) {
+	private IExecutionContext _executionContext;
+	public void setModelExecutionContext(IExecutionContext executionContext) {
 		_executionContext = executionContext;
-		ResourceSet rs = _engine.getModelUnderExecutionResource().getResourceSet();
-		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getRuntimePath().toString() + "/trace.xmi", false);
+		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
+		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath().toString() + "/trace.xmi", false);
 		final Resource modelResource = rs.createResource(traceModelURI);
 		final CommandStack commandStack = _editingDomain.getCommandStack();
 		commandStack.execute(new RecordingCommand(_editingDomain) {

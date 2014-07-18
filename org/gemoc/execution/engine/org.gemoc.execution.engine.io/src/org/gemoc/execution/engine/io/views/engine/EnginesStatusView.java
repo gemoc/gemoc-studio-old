@@ -103,7 +103,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					if (element instanceof GemocExecutionEngine)
 					{					
 						GemocExecutionEngine engine = (GemocExecutionEngine)element;
-						result = engine.getModelUnderExecutionResource().getURI().segmentsList().get(engine.getModelUnderExecutionResource().getURI().segments().length-1);						
+						result = engine.getExecutionContext().getResourceModel().getURI().segmentsList().get(engine.getExecutionContext().getResourceModel().getURI().segments().length-1);						
 					}
 					return result;
 				}
