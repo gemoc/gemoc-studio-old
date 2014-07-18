@@ -97,6 +97,40 @@
                style="push">
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.gemoc.execution.engine.io.views.event.EventManagerView">
+         <command
+               commandId="org.gemoc.execution.engine.io.command.RecordScenario"
+               icon="icons/media-record.png"
+               label="Record Engine"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="STATE.RECORD">
+                  <equals
+                        value="DISABLE">
+                  </equals>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.gemoc.execution.engine.io.command.StopScenario"
+               icon="icons/stop.png"
+               label="Stop Engine"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="STATE.RECORD">
+                  <equals
+                        value="ENABLE">
+                  </equals>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -110,6 +144,26 @@
             id="org.gemoc.execution.engine.io.command.RemoveAllEngines"
             name="Remove all engines">
       </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.RecordScenario"
+            id="org.gemoc.execution.engine.io.command.RecordScenario"
+            name="Record Scenario">
+      </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.StopScenario"
+            id="org.gemoc.execution.engine.io.command.StopScenario"
+            name="Stop Scenario">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.services">
+      <sourceProvider
+            provider="org.gemoc.execution.engine.io.views.event.RecordState">
+         <variable
+               name="STATE"
+               priorityLevel="activeShell">
+         </variable>
+      </sourceProvider>
    </extension>
 
 </plugin>

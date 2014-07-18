@@ -431,15 +431,15 @@ public abstract class AbstractTimelineView extends ViewPart {
 	/**
 	 * Sets the {@link ITimelineProvider}.
 	 * 
-	 * @param provider
+	 * @param timelineProvider
 	 *            the {@link ITimelineProvider}
 	 */
-	public void setTimelineProvider(ITimelineProvider provider) {
-		timelineWindow.setProvider(provider);
+	public void setTimelineProvider(ITimelineProvider timelineProvider) {
+		timelineWindow.setProvider(timelineProvider);
 		if (this.provider != null) {
 			this.provider.removeTimelineListener(timelineWindowListener);
 		}
-		this.provider = provider;
+		this.provider = timelineProvider;
 		this.provider.addTimelineListener(timelineWindowListener);
 		timelineWindow.setLength(getWindowLength());
 	}

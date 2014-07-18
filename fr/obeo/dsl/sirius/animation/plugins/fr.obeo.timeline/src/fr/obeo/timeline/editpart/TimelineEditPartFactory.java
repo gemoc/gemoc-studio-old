@@ -17,9 +17,9 @@
  *******************************************************************************/
 package fr.obeo.timeline.editpart;
 
-import fr.obeo.timeline.model.PossibleStep;
-import fr.obeo.timeline.model.Connection;
 import fr.obeo.timeline.model.Choice;
+import fr.obeo.timeline.model.Connection;
+import fr.obeo.timeline.model.PossibleStep;
 import fr.obeo.timeline.model.TimelineWindow;
 
 import org.eclipse.gef.EditPart;

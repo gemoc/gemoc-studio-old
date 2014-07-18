@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
@@ -48,7 +49,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConst
 public class EventManagerView extends ViewPart implements IMotorSelectionListener, Observer {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.event.EventManagerView";
-									 
+
 	private TableViewer _viewer;
 	private Composite _parent;
 	private EnginesStatusView _enginesStatusView;
@@ -56,6 +57,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private Map<ObservableBasicExecutionEngine, EventManagementCache> _cache;
 	private Collection<EventManagerClockWrapper> _displayedClock;
 	private int _strategySelectionIndex;
+	private int _nbLogicalStep;
+	private boolean _recordFlag;
+
 
 	/**
 	 * The constructor.
@@ -64,6 +68,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_cache = new HashMap<ObservableBasicExecutionEngine, EventManagementCache>();
 		_displayedClock = new ArrayList<EventManagerClockWrapper>();
 		_strategySelectionIndex = 0;
+		_nbLogicalStep = 0;
+		_recordFlag = false;
 	}
 
 
@@ -76,7 +82,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		GridLayout layout = new GridLayout();
 		_parent = parent;	
 		_parent.setLayout(layout);
-		// In the first row there will be a 2 column gridlayout
+		// In the first row there will be a 2 column gridLayout
 		createFilterSelectionBar();
 		// In the second column there will be our table with clocks
 		createViewer();
@@ -138,7 +144,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		// Define the TableViewer
 		// First column of its table will be a CHECK BUTTON
 		_viewer = new TableViewer(_parent, SWT.BORDER| SWT.CHECK);
-		// Initialise an unique column
+		// Initialize an unique column
 		createColumn();
 		// make lines and header visible
 		final Table table = _viewer.getTable();
@@ -155,7 +161,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					TableItem item = (TableItem) event.item;
 					EventManagementCache cache = _cache.get(_currentEngine);
 					EventManagerClockWrapper selectedWrapper = cache.getWrapper(item.getText());
-					selectedWrapper.set_state(item.getChecked());
+					selectedWrapper.setState(item.getChecked());
 				}
 			}
 		});
@@ -184,37 +190,34 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	private void updateView() {
-		RunStatus engineStatus = _currentEngine.getEngineStatus().getRunningStatus();
-		if(engineStatus.equals(RunStatus.Stopped))
-		{
-			try
-			{
-				_cache.remove(_currentEngine);
-			}
-			catch(Exception e)
-			{
-				System.out.println("Engine already removed from the cache");
-			}
-			_viewer.getTable().removeAll();
-			return;
-		}
-		if(!_cache.containsKey(_currentEngine))
-		{
-			createCacheForEngine();
-		}
-		if(_currentEngine != null)
-		{
-			applyStrategy();
-		}
+		//				RunStatus engineStatus = _currentEngine.getEngineStatus().getRunningStatus();
+		//				if(engineStatus.equals(RunStatus.Stopped))
+		//				{	
+		//					if(_currentEngine == null){
+		//						
+		//					}
+		//					_viewer.getTable().removeAll();
+		//				}
+
 		//Remodeling of the view
 		_viewer.getTable().removeAll();
-		//Getting the clock list for the given engine
-		_displayedClock = getWrapperList();
-		// for each clock we display the name and the button state ( enable or disable) is updated
-		for(EventManagerClockWrapper c : _displayedClock){
-			TableItem ligne = new TableItem(_viewer.getTable(), SWT.NONE);
-			ligne.setText(c.get_clock().getName());
-			ligne.setChecked(c.is_state());
+		if(_currentEngine != null)
+		{	
+			if(!_cache.containsKey(_currentEngine))
+			{
+				createCacheForEngine();
+			}
+			applyStrategy();
+
+
+			//Getting the clock list for the given engine
+			_displayedClock = getWrapperList();
+			// for each clock we display the name and the button state ( enable or disable) is updated
+			for(EventManagerClockWrapper c : _displayedClock){
+				TableItem ligne = new TableItem(_viewer.getTable(), SWT.NONE);
+				ligne.setText(c.getClock().getName());
+				ligne.setChecked(c.isState());
+			}
 		}
 
 	}
@@ -242,7 +245,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	/**
 	 * createCacheForEngine
-	 * Initialise the cache for the current engine and disable all the free clocks
+	 * Initialize the cache for the current engine and disable all the free clocks
 	 * which has been filtered by the default strategy.
 	 */
 	private void createCacheForEngine() {
@@ -282,6 +285,12 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	@Override
 	public void update(Observable o, Object arg) {
+		int nbStep = (int) _currentEngine.getEngineStatus().getNbLogicalStepRun();
+		if(_recordFlag && nbStep > _nbLogicalStep)
+		{	
+			_cache.get(_currentEngine).addExecutionStep(nbStep);
+		}
+		_nbLogicalStep = nbStep;
 		Display.getDefault().asyncExec(new Runnable() {
 			public void run() 
 			{
@@ -296,10 +305,28 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
 		if (engine != null) 
 		{
-			// Cast on engine to access the clockcontroller
+			// Cast on engine to access the clockController
 			_currentEngine = (ObservableBasicExecutionEngine) engine;
-			_currentEngine.deleteObserver(this);
-			_currentEngine.addObserver(this);
+			if(engine.getEngineStatus().getRunningStatus().equals((RunStatus.Stopped)))
+			{
+
+				if(_recordFlag){
+					IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
+					try 
+					{
+						handlerService.executeCommand("org.gemoc.execution.engine.io.command.StopScenario", null);
+					} catch (Exception ex) {
+						throw new RuntimeException("Stop Scenario command not found");
+					}
+				}
+				_currentEngine.deleteObserver(this);
+				_currentEngine = null;
+			}
+			else
+			{
+				_currentEngine.deleteObserver(this);
+				_currentEngine.addObserver(this);
+			}
 			Display.getDefault().asyncExec(new Runnable() {
 				@Override
 				public void run() {
@@ -308,6 +335,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			});
 		}
 	}
+
 
 	private void startListeningToMotorSelectionChange() {
 		_enginesStatusView = ViewHelper.retrieveView(EnginesStatusView.ID);
@@ -324,12 +352,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
+
 	@Override
 	public void dispose() {
 		super.dispose();
 		_currentEngine = null;
 		stopListeningToMotorSelectionChange();
 	}
+
 
 	/**
 	 * Passing the focus request to the viewer's control.
@@ -339,5 +369,20 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 
+	public GemocExecutionEngine getEngine() {
+		return _currentEngine;
+	}
 
+	public void createScenario() {
+		EventManagementCache engineCache = _cache.get(_currentEngine);
+		engineCache.createScenario();
+		engineCache.addExecutionStep(_nbLogicalStep);
+		_recordFlag = true;
+	}
+
+	public void StopRecordScenario(){
+		EventManagementCache engineCache = _cache.get(_currentEngine);
+		engineCache.resetScenario(_currentEngine);
+		_recordFlag = false;
+	}
 }

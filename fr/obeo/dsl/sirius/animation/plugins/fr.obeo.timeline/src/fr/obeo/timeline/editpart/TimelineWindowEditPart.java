@@ -47,7 +47,7 @@ public class TimelineWindowEditPart extends AbstractGraphicalEditPart implements
 	/**
 	 * The spacing between {@link ChoiceEditPart}.
 	 */
-	public static final int SPACING = 20;
+	public static final int SPACING = 10;
 
 	/**
 	 * The margin.

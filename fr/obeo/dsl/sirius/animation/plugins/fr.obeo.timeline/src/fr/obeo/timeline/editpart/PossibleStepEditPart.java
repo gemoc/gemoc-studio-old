@@ -17,9 +17,9 @@
  *******************************************************************************/
 package fr.obeo.timeline.editpart;
 
-import fr.obeo.timeline.model.PossibleStep;
-import fr.obeo.timeline.model.Connection;
 import fr.obeo.timeline.model.Choice;
+import fr.obeo.timeline.model.Connection;
+import fr.obeo.timeline.model.PossibleStep;
 
 import java.util.List;
 
@@ -220,7 +220,8 @@ public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 	 * @return the {@link PossibleStepEditPart} beneath if any, <code>null</code> otherwise
 	 */
 	public PossibleStepEditPart getBeneathPossibleStepEditPart() {
-		return (PossibleStepEditPart)getViewer().getEditPartRegistry().get(getModel().getPreviousPossibleStep());
+		return (PossibleStepEditPart)getViewer().getEditPartRegistry().get(
+				getModel().getPreviousPossibleStep());
 	}
 
 }

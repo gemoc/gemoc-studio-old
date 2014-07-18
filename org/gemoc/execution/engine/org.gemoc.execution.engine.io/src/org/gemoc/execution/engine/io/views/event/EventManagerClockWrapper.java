@@ -21,10 +21,10 @@ public class EventManagerClockWrapper {
 		_state = false;
 		_clockController = clockController;
 	}
-	public boolean is_state() {
+	public boolean isState() {
 		return _state;
 	}
-	public void set_state(boolean state) {
+	public void setState(boolean state) {
 		_state = state;		
 		if (_state)
 		{
@@ -43,7 +43,7 @@ public class EventManagerClockWrapper {
 		result += _clock.getName();
 		return result;
 	}
-	public Clock get_clock() {
+	public Clock getClock() {
 		return _clock;
 	}
 }
