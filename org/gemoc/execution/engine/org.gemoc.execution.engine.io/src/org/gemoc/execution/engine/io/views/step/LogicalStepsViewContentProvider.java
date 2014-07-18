@@ -6,6 +6,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.LogicalStep;
@@ -27,7 +28,17 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		if (inputElement instanceof GemocExecutionEngine)
 		{
 			GemocExecutionEngine engine = (GemocExecutionEngine)inputElement;
-			return engine.getEngineStatus().getCurrentLogicalStepChoice().toArray();
+			if (engine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped))
+			{
+				String message = "Motor is not running";
+				return new Object[] {
+					message
+				};				
+			}
+			else
+			{
+				return engine.getEngineStatus().getCurrentLogicalStepChoice().toArray();				
+			}
 		}
 		else if (inputElement instanceof LogicalStep)
 		{
