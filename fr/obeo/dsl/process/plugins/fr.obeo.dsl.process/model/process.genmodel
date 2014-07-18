@@ -54,11 +54,20 @@
     <genClasses ecoreClass="process.ecore#//ProcessContext">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//ProcessContext/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessContext/definition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessContext/progress"/>
-    </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskToArtifactMap">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//TaskToArtifactMap/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//TaskToArtifactMap/value"/>
+      <genOperations ecoreOperation="process.ecore#//ProcessContext/isDone">
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/isDone/task"/>
+      </genOperations>
+      <genOperations ecoreOperation="process.ecore#//ProcessContext/setDone">
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/setDone/task"/>
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/setDone/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="process.ecore#//ProcessContext/setUndone">
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/setUndone/task"/>
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/setUndone/reason"/>
+      </genOperations>
+      <genOperations ecoreOperation="process.ecore#//ProcessContext/getResult">
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/getResult/task"/>
+      </genOperations>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

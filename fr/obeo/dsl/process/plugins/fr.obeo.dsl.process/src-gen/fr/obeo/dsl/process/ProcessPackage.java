@@ -616,56 +616,13 @@ public interface ProcessPackage extends EPackage {
 	int PROCESS_CONTEXT__DEFINITION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Progress</b></em>' map. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_CONTEXT__PROGRESS = 2;
-
-	/**
 	 * The number of structural features of the '<em>Context</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_CONTEXT_FEATURE_COUNT = 3;
-
-	/**
-	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.TaskToArtifactMapImpl
-	 * <em>Task To Artifact Map</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see fr.obeo.dsl.process.impl.TaskToArtifactMapImpl
-	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getTaskToArtifactMap()
-	 * @generated
-	 */
-	int TASK_TO_ARTIFACT_MAP = 13;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_TO_ARTIFACT_MAP__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_TO_ARTIFACT_MAP__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Task To Artifact Map</em>' class. <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_TO_ARTIFACT_MAP_FEATURE_COUNT = 2;
+	int PROCESS_CONTEXT_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '<em>Artifact</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -674,7 +631,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getArtifact()
 	 * @generated
 	 */
-	int ARTIFACT = 14;
+	int ARTIFACT = 13;
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Process <em>Process</em>}'. <!--
@@ -1032,51 +989,6 @@ public interface ProcessPackage extends EPackage {
 	EReference getProcessContext_Definition();
 
 	/**
-	 * Returns the meta object for the map '{@link fr.obeo.dsl.process.ProcessContext#getProgress
-	 * <em>Progress</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the map '<em>Progress</em>'.
-	 * @see fr.obeo.dsl.process.ProcessContext#getProgress()
-	 * @see #getProcessContext()
-	 * @generated
-	 */
-	EReference getProcessContext_Progress();
-
-	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Task To Artifact Map</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for class '<em>Task To Artifact Map</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyType="fr.obeo.dsl.process.Task" keyRequired="true"
-	 *        valueDataType="fr.obeo.dsl.process.Artifact" valueRequired="true" valueTransient="true"
-	 * @generated
-	 */
-	EClass getTaskToArtifactMap();
-
-	/**
-	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the reference '<em>Key</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getTaskToArtifactMap()
-	 * @generated
-	 */
-	EReference getTaskToArtifactMap_Key();
-
-	/**
-	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getTaskToArtifactMap()
-	 * @generated
-	 */
-	EAttribute getTaskToArtifactMap_Value();
-
-	/**
 	 * Returns the meta object for data type '{@link java.lang.Object <em>Artifact</em>}'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * 
@@ -1398,40 +1310,6 @@ public interface ProcessPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROCESS_CONTEXT__DEFINITION = eINSTANCE.getProcessContext_Definition();
-
-		/**
-		 * The meta object literal for the '<em><b>Progress</b></em>' reference list feature. <!--
-		 * begin-user-doc --> <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		EReference PROCESS_CONTEXT__PROGRESS = eINSTANCE.getProcessContext_Progress();
-
-		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.TaskToArtifactMapImpl
-		 * <em>Task To Artifact Map</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
-		 * @see fr.obeo.dsl.process.impl.TaskToArtifactMapImpl
-		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getTaskToArtifactMap()
-		 * @generated
-		 */
-		EClass TASK_TO_ARTIFACT_MAP = eINSTANCE.getTaskToArtifactMap();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' reference feature. <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		EReference TASK_TO_ARTIFACT_MAP__KEY = eINSTANCE.getTaskToArtifactMap_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature. <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		EAttribute TASK_TO_ARTIFACT_MAP__VALUE = eINSTANCE.getTaskToArtifactMap_Value();
 
 		/**
 		 * The meta object literal for the '<em>Artifact</em>' data type. <!-- begin-user-doc --> <!--

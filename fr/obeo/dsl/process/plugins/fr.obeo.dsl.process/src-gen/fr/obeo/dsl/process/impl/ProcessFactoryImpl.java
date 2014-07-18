@@ -14,8 +14,6 @@ import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessFactory;
 import fr.obeo.dsl.process.ProcessPackage;
 
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -84,8 +82,6 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 				return createOr();
 			case ProcessPackage.PROCESS_CONTEXT:
 				return createProcessContext();
-			case ProcessPackage.TASK_TO_ARTIFACT_MAP:
-				return (EObject)createTaskToArtifactMap();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName()
 						+ "' is not a valid classifier");
@@ -218,16 +214,6 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 	public ProcessContext createProcessContext() {
 		ProcessContextImpl processContext = new ProcessContextImpl();
 		return processContext;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public Map.Entry<ActionTask, Object> createTaskToArtifactMap() {
-		TaskToArtifactMapImpl taskToArtifactMap = new TaskToArtifactMapImpl();
-		return taskToArtifactMap;
 	}
 
 	/**
