@@ -1,7 +1,6 @@
 package org.gemoc.execution.engine.core;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 
@@ -95,12 +94,6 @@ public class RunConfiguration implements IRunConfiguration
 	{
 		return _animatorURIAsString;
 	}
-	
-	public IPath getProjectPath()
-	{
-		return _launchConfiguration.getFile().getProject().getFullPath();
-	}
-
 	
 	private int nbLastStepRunObservedForStopDetection = 10;
 	@Override
