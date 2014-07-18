@@ -24,14 +24,14 @@ public class SigPMLExampleWizard
 		// EMF library example model, edit and editor examples
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/fr.cnrs.luchogie.ultimateplotter.zip", "fr.cnrs.luchogie.ultimateplotter"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.model.design.zip", "org.gemoc.sipml.model.design"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.k3dsa.zip", "org.gemoc.sipml.k3dsa"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.moc.application.zip", "org.gemoc.sipml.moc.application"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.moc.lib.zip", "org.gemoc.sipml.moc.lib"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.model.zip", "org.gemoc.sipml.model"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.model.edit.zip", "org.gemoc.sipml.model.edit"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.model.editor.zip", "org.gemoc.sipml.model.editor"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sipml.xdsml.zip", "org.gemoc.sipml.xdsml"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.model.design.zip", "org.gemoc.sigpml.model.design"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.k3dsa.zip", "org.gemoc.sigpml.k3dsa"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.moc.application.zip", "org.gemoc.sigpml.moc.application"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.moc.lib.zip", "org.gemoc.sigpml.moc.lib"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.model.zip", "org.gemoc.sigpml.model"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.model.edit.zip", "org.gemoc.sigpml.model.edit"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.model.editor.zip", "org.gemoc.sigpml.model.editor"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.xdsml.zip", "org.gemoc.sigpml.xdsml"));
 		return projects;
 	}
 

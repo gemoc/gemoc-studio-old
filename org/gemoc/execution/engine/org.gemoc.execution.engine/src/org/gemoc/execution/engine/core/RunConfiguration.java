@@ -46,7 +46,7 @@ public class RunConfiguration implements IRunConfiguration
 		_isTraceActive = Boolean.parseBoolean(getAttribute(LAUNCH_ACTIVE_TRACE, "false"));
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_modelURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
-		//_animatorURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI, "");
+		_animatorURIAsString = getAttribute("airdResource", "");
 	}
 
 	private String getAttribute(String attributeName, String defaultValue) throws CoreException

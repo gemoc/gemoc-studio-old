@@ -91,7 +91,10 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		{
 			RunConfiguration runConfiguration = new RunConfiguration(configuration);
 			_modelLocationText.setText(runConfiguration.getModelURIAsString());
-			_siriusRepresentationLocationText.setText(runConfiguration.getAnimatorURIAsString());
+			if (runConfiguration.getAnimatorURIAsString() != null)
+				_siriusRepresentationLocationText.setText(runConfiguration.getAnimatorURIAsString());
+			else
+				_siriusRepresentationLocationText.setText("");
 			_animateButton.setSelection(runConfiguration.isAnimationActive());
 			_delayText.setText(Integer.toString(runConfiguration.getAnimationDelay()));
 			_activeTraceCheckbox.setSelection(runConfiguration.isTraceActive());
