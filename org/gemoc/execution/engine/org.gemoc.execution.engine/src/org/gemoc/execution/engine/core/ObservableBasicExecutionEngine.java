@@ -235,6 +235,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			animator.clear(this);
 		}
 
+		getEngineStatus().getCurrentLogicalStepChoice().clear();
+		getEngineStatus().setChosenLogicalStep(null);
 	}
 
 	public EngineStatus getEngineStatus() {
