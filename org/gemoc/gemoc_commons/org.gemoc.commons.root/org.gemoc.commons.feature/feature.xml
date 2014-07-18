@@ -43,6 +43,24 @@
          version="0.0.0"/>
 
    <plugin
+         id="org.gemoc.execution.engine.scenario.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.scenario.model.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.gemoc.execution.engine.scenario.model.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
          id="org.gemoc.commons.eclipse"
          download-size="0"
          install-size="0"
