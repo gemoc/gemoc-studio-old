@@ -46,7 +46,7 @@ public class ModelExecutionContext implements IExecutionContext
 	
 	public ModelExecutionContext(RunConfiguration runConfiguration) throws EngineContextException, CoreException {
 		_runConfiguration = runConfiguration;
-		_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getProjectPath(), _runConfiguration.getModelURIAsString());
+		_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getModelURIAsString());
 		
 		_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
 		

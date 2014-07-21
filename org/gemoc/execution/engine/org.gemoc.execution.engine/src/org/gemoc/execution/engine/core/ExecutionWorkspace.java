@@ -14,10 +14,10 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
 public class ExecutionWorkspace implements IExecutionWorkspace
 {
 
-	public ExecutionWorkspace(IPath projectPath, String modelURI) throws CoreException
+	public ExecutionWorkspace(String modelURI) throws CoreException
 	{
-		_projectPath = projectPath;
 		_modelPath = new Path(modelURI);
+		_projectPath = _modelPath.removeLastSegments(_modelPath.segmentCount() - 1);
 		_executionTopParentPath = _projectPath.append("gemoc-gen");			
 		_executionPath = _executionTopParentPath
 							.append("execution")

@@ -137,6 +137,9 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		if(!project.hasNature("org.eclipse.pde.PluginNature")) 
 		{
 			try {
+				// create first the plugin.xml file
+				PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);					
+				// convert to plugin and add necessary entries in the build.properties
 				PluginConverter.convert(project);
 				// complement manifest
 				ManifestChanger changer = new ManifestChanger(project);
@@ -148,7 +151,6 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				changer.addSingleton();
 				changer.addAttributes("Bundle-RequiredExecutionEnvironment","JavaSE-1.6");
 				changer.commit();					
-				PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);					
 			} 
 			catch (InvocationTargetException | InterruptedException | IOException | BundleException e) 
 			{

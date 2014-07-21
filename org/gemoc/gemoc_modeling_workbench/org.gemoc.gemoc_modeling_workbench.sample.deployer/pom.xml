@@ -40,7 +40,7 @@
 									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample/" />
 								</zip>
 
-								<zip destfile="${basedir}/zips/fr.inria.aoste.gemoc.examples.zip">
+								<zip destfile="${basedir}/zips/org.gemoc.sigpml.simple_example.zip">
 									<fileset dir="${sigpml_sample_modeling_root}/org.gemoc.sigpml.simple_example/" />
 								</zip>
 

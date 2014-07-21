@@ -1,7 +1,6 @@
 package org.gemoc.execution.engine.core;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 
@@ -46,7 +45,7 @@ public class RunConfiguration implements IRunConfiguration
 		_isTraceActive = Boolean.parseBoolean(getAttribute(LAUNCH_ACTIVE_TRACE, "false"));
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_modelURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
-		//_animatorURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI, "");
+		_animatorURIAsString = getAttribute("airdResource", "");
 	}
 
 	private String getAttribute(String attributeName, String defaultValue) throws CoreException
@@ -95,12 +94,6 @@ public class RunConfiguration implements IRunConfiguration
 	{
 		return _animatorURIAsString;
 	}
-	
-	public IPath getProjectPath()
-	{
-		return _launchConfiguration.getFile().getProject().getFullPath();
-	}
-
 	
 	private int nbLastStepRunObservedForStopDetection = 10;
 	@Override
