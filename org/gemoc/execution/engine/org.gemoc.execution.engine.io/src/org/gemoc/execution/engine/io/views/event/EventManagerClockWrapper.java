@@ -14,7 +14,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
 public class EventManagerClockWrapper {
 	private Clock _clock;
 	private ClockControllerInternal _clockController;
-	private boolean _state;
+	private Boolean _state;
 	
 	public EventManagerClockWrapper(Clock clock, ClockControllerInternal clockController) {
 		_clock = clock;

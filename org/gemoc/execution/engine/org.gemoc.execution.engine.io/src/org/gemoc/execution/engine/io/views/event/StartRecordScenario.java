@@ -12,36 +12,27 @@ import org.eclipse.ui.services.ISourceProviderService;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 
-public class RecordScenario extends AbstractHandler {
-
+public class StartRecordScenario extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
 		if(eventView.getEngine()!=null &&
 		   !eventView.getEngine().getEngineStatus().getRunningStatus().equals(RunStatus.Stopped))
 		{
-			showMessage(eventView.getSite(), "Scenario is recording.");
-			eventView.createScenario();
+			eventView.informationMsg("Record Scenario", "Beginning of the operation");
+			eventView.startRecordScenario();
 			// Get the source provider service
 		    ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
 		        .getActiveWorkbenchWindow(event).getService(ISourceProviderService.class);
 		    // now get my service
-		    RecordState commandStateService = (RecordState) sourceProviderService
-		        .getSourceProvider(RecordState.RECORD_STATE);
-		    commandStateService.toogleEnabled();
+		    PlayRecordState commandStateService = (PlayRecordState) sourceProviderService
+		        .getSourceProvider(PlayRecordState.RECORD_STATE);
+		    commandStateService.tooglePlayEnabled();
 		}
 		else
 		{
-			showMessage(eventView.getSite(), "Recording not possible, please select an engine.");	
+			eventView.informationMsg("Record Scenario", "Operation not possible, please select an engine");
 		}
 		return null;			
-	}
-
-	private void showMessage(IWorkbenchPartSite partSite, String message) {
-		MessageDialog.openInformation(
-			partSite.getShell(),
-			"Event Manager",
-			message);
-	}
-	
+	}	
 }

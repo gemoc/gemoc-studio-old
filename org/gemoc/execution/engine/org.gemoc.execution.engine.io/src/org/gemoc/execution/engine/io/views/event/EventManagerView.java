@@ -9,7 +9,9 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
@@ -27,12 +29,16 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.ISourceProvider;
+import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.services.ISourceProviderService;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
+import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
@@ -57,8 +63,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private Map<ObservableBasicExecutionEngine, EventManagementCache> _cache;
 	private Collection<EventManagerClockWrapper> _displayedClock;
 	private int _strategySelectionIndex;
-	private int _nbLogicalStep;
+	private int _progressPlayScenario;
+	private boolean _playFlag;
 	private boolean _recordFlag;
+	private EventManagementCache _currentEngineCache;
 
 
 	/**
@@ -68,8 +76,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_cache = new HashMap<ObservableBasicExecutionEngine, EventManagementCache>();
 		_displayedClock = new ArrayList<EventManagerClockWrapper>();
 		_strategySelectionIndex = 0;
-		_nbLogicalStep = 0;
+		_progressPlayScenario = 0;
 		_recordFlag = false;
+		_playFlag = false;
+		_currentEngineCache = null;
 	}
 
 
@@ -114,15 +124,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			public void widgetSelected(SelectionEvent e) {
 				// Strategy filter selection
 				_strategySelectionIndex = combo.getSelectionIndex();
-				if(_currentEngine != null)
-				{
-					Display.getDefault().asyncExec(new Runnable() {
-						@Override
-						public void run() {
-							updateView();
-						}				
-					});
-				}
+				updateView();
 			}
 			//If the combo is clicked but no item selected:
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -189,17 +191,16 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		});
 	}
 
-	private void updateView() {
-		//				RunStatus engineStatus = _currentEngine.getEngineStatus().getRunningStatus();
-		//				if(engineStatus.equals(RunStatus.Stopped))
-		//				{	
-		//					if(_currentEngine == null){
-		//						
-		//					}
-		//					_viewer.getTable().removeAll();
-		//				}
+	public void updateView(){
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				refreshView();
+			}				
+		});
+	}
 
-		//Remodeling of the view
+	private void refreshView() {
 		_viewer.getTable().removeAll();
 		if(_currentEngine != null)
 		{	
@@ -208,8 +209,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				createCacheForEngine();
 			}
 			applyStrategy();
-
-
 			//Getting the clock list for the given engine
 			_displayedClock = getWrapperList();
 			// for each clock we display the name and the button state ( enable or disable) is updated
@@ -249,7 +248,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 * which has been filtered by the default strategy.
 	 */
 	private void createCacheForEngine() {
-		EventManagementCache engineCache = new EventManagementCache();
+		_currentEngineCache = new EventManagementCache();
 		ClockConstraintSystem system = extractSystem();
 		if (system != null)
 		{
@@ -257,16 +256,16 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			{
 				if (e instanceof Clock)
 				{
-					engineCache.addClock((Clock)e);
+					_currentEngineCache.addClock((Clock)e);
 				}
 
 			}
 		}
-		engineCache.configure(_currentEngine, system);
-		engineCache.disableClocks(_displayedClock);
-		_cache.put(_currentEngine, engineCache);
+		_currentEngineCache.configure(_currentEngine, system);
+		_currentEngineCache.disableClocks(_displayedClock);
+		_cache.put(_currentEngine, _currentEngineCache);
 		_displayedClock = getWrapperList();
-		engineCache.disableClocks(_displayedClock);
+		_currentEngineCache.disableClocks(_displayedClock);
 	}
 
 	private ClockConstraintSystem extractSystem() 
@@ -285,18 +284,22 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	@Override
 	public void update(Observable o, Object arg) {
-		int nbStep = (int) _currentEngine.getEngineStatus().getNbLogicalStepRun();
-		if(_recordFlag && nbStep > _nbLogicalStep)
-		{	
-			_cache.get(_currentEngine).addExecutionStep(nbStep);
-		}
-		_nbLogicalStep = nbStep;
-		Display.getDefault().asyncExec(new Runnable() {
-			public void run() 
+		int step = (int) _currentEngine.getEngineStatus().getNbLogicalStepRun();
+		if(_currentEngineCache!= null){
+			if(step > _currentEngineCache.getEngineStep())
 			{
-				updateView();
+				if(_recordFlag)
+				{	
+					_currentEngineCache.addExecutionStep();
+				}
+				_currentEngineCache.setEngineStep(step);
+				if(_playFlag)
+				{
+					playScenario();
+				}
 			}
-		});
+		}
+		updateView();
 	}
 
 
@@ -310,14 +313,21 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			if(engine.getEngineStatus().getRunningStatus().equals((RunStatus.Stopped)))
 			{
 
-				if(_recordFlag){
+				if(_recordFlag)
+				{
 					IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
 					try 
 					{
 						handlerService.executeCommand("org.gemoc.execution.engine.io.command.StopScenario", null);
-					} catch (Exception ex) {
+					} 
+					catch (Exception ex) 
+					{
 						throw new RuntimeException("Stop Scenario command not found");
 					}
+				}
+				if(_playFlag)
+				{
+					stopPlayScenario(_currentEngineCache.getScenario());
 				}
 				_currentEngine.deleteObserver(this);
 				_currentEngine = null;
@@ -326,15 +336,16 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			{
 				_currentEngine.deleteObserver(this);
 				_currentEngine.addObserver(this);
+				if(_cache.get(_currentEngine) != null)
+				{
+					_currentEngineCache = _cache.get(_currentEngine);
+				}
 			}
-			Display.getDefault().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					updateView();
-				}				
-			});
+			updateView();
 		}
 	}
+
+
 
 
 	private void startListeningToMotorSelectionChange() {
@@ -373,16 +384,71 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		return _currentEngine;
 	}
 
-	public void createScenario() {
-		EventManagementCache engineCache = _cache.get(_currentEngine);
-		engineCache.createScenario();
-		engineCache.addExecutionStep(_nbLogicalStep);
+
+	public void startRecordScenario() {
+		_currentEngineCache.createScenario();
+		_currentEngineCache.addExecutionStep();
 		_recordFlag = true;
 	}
 
-	public void StopRecordScenario(){
-		EventManagementCache engineCache = _cache.get(_currentEngine);
-		engineCache.resetScenario(_currentEngine);
+	public void stopRecordScenario(){
+		_currentEngineCache.resetRessource(_currentEngine);
 		_recordFlag = false;
+	}
+
+	public void loadScenario(String path){
+		if(path != null)
+		{
+			_playFlag = true;
+			_currentEngineCache.loadScenario(path);	
+			playScenario();
+		}
+	}
+
+	public void playScenario(){
+		Scenario scenario = _currentEngineCache.getScenario();
+		if(_progressPlayScenario < scenario.getStepList().size()-1)
+		{
+			_currentEngineCache.playScenario(_progressPlayScenario);
+		}
+		else
+		{
+			stopPlayScenario(scenario);
+		}
+
+	}
+
+	public void stopPlayScenario(Scenario scenario){
+		_progressPlayScenario = 0;
+		informationMsg("Play Scenario", "Fin du replay");
+		IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
+		try 
+		{
+			handlerService.executeCommand("org.gemoc.execution.engine.io.command.StopScenario", null);
+		} 
+		catch (Exception ex) 
+		{
+			throw new RuntimeException("Stop Scenario command not found");
+		}
+		scenario = null;
+	}
+
+	public void incProgressPlayScenario() {
+		_progressPlayScenario++;
+	}
+
+	public void informationMsg(final String title, final String msg){
+		final EventManagerView eventView = this;
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				MessageDialog.openInformation(eventView.getSite().getShell(), title, msg);
+			}				
+		});
+	}
+
+
+	public boolean getPlayFlag() {
+		return _playFlag;
 	}
 }

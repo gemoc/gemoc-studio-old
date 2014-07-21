@@ -1,15 +1,22 @@
 package org.gemoc.execution.engine.io.views.event;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
+import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
@@ -30,9 +37,13 @@ public class EventManagementCache
 	private ClockConstraintSystem _system;
 	private EventFilter _selectedFilter;
 	private List<Relation> _relations;
-	private Scenario _scenario;
+	private Scenario _scenarioSaved;
+	private Scenario _scenarioLoaded;
+	private EventManagerView _eventView;
 	private ScenarioFactory _factory;
 	private Resource _resource;
+	private int _engineStep;
+	static final String scenarioPath  = "udd//lguillem//runtime-GEMOC//ScenarioFolder/";
 
 	public EventManagementCache()
 	{
@@ -40,6 +51,9 @@ public class EventManagementCache
 		_clockController = new ClockControllerInternal();
 		_selectedFilter = new EventFilter();
 		_factory = ScenarioFactoryImpl.eINSTANCE;
+		_scenarioLoaded = null;
+		_eventView = ViewHelper.retrieveView(EventManagerView.ID);
+		_engineStep = 0;
 	}
 
 	public void configure(ObservableBasicExecutionEngine engine, ClockConstraintSystem clockConstraintSystem)
@@ -58,11 +72,12 @@ public class EventManagementCache
 		}
 		createResource(engine.getExecutionContext());
 	}
-	
-	
+
+
 	private void createResource(ModelExecutionContext context) {
-		ResourceSet rs = _system.eResource().getResourceSet();
-		URI uri = URI.createURI("scenario" + context.getRuntimePath().toString());
+		ResourceSet rs = _system.eResource().getResourceSet(); 
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		URI uri = URI.createURI("file:/"+scenarioPath+timeStamp+".scenario");
 		_resource = rs.createResource(uri);
 	}
 
@@ -84,7 +99,7 @@ public class EventManagementCache
 	public void removeFromClockCache(String clockName){
 		_clocksCache.remove(clockName);
 	}
-	
+
 	public void setFilter(IEventFilterStrategy filter) {
 		_selectedFilter.set_filterStrategy(filter);
 	}
@@ -96,24 +111,22 @@ public class EventManagementCache
 			wrapper.setState(false);
 		}
 	}
-	
+
 	/**
 	 * Create a new model which follow the meta-model Scenario.
 	 */
 	public void createScenario(){
-		_scenario = _factory.createScenario();
-		_resource.getContents().add(_scenario);		
-	
+		_scenarioSaved = _factory.createScenario();
+		_resource.getContents().add(_scenarioSaved);
+		saveScenario();
 	}
-	
+
 	/**
-	 * Add a new Execution Step to the model with all the clock states
-	 * @param nbStep TODO
+	 * Add a new Execution Step to the model scenario with all the clock states
 	 */
-	public void addExecutionStep(int nbStep){
-		List<ExecutionStep> stepList =  _scenario.getStepList();
+	public void addExecutionStep(){
+		List<ExecutionStep> stepList =  _scenarioSaved.getStepList();
 		ExecutionStep newStep = _factory.createExecutionStep();
-		// TODO:fixer le numero de pas logique dans ExecutionStep
 		List<EventState> newListEvent = newStep.getEventList();
 		for(EventManagerClockWrapper cw: getWrappers()){
 			EventState newState = _factory.createEventState();
@@ -121,25 +134,14 @@ public class EventManagementCache
 			newState.setIsForced(cw.isState());
 			newListEvent.add(newState);
 		}
-		stepList.add(newStep);		
+		newStep.setStep(_engineStep);
+		stepList.add(newStep);	
+		saveScenario();
 	}
-	
-	/**
-	 * Load a previously created scenario model.
-	 */
-	public void loadScenario(){
-//		//TODO: recupérer un modele de scenario sauvegardé dans les ressources
-//		// et faire un truc du style _scenario = bidule.load; en fct de ce qui aura ete choisi dans les commandes de la view
-//		URI uri = URI.createURI("platform:/resource//org.gemoc....scenario");
-//		ResourceSet rs = new ResourceSetImpl();
-//		Resource r = rs.getResource(uri, true);
-//		try {
-//			r.load(null);
-//			_scenario = (Scenario)r.getContents().get(0);
-//		} 
-//		catch (IOException e) {}
-	}
-	
+
+
+
+
 	public void saveScenario(){
 		try 
 		{
@@ -147,10 +149,62 @@ public class EventManagementCache
 		} 
 		catch (IOException e) {}
 	}
-	
-	public void resetScenario(ObservableBasicExecutionEngine engine){
+
+	public void resetRessource(ObservableBasicExecutionEngine engine){
 		createResource(engine.getExecutionContext());
 	}
-	
-	
+
+	/**
+	 * Load a previously created scenario model.
+	 */
+	public void loadScenario(String path){
+		ResourceSet resourceSet = new ResourceSetImpl(); 
+		URI uri = URI.createURI("file:/" + path); 
+		_resource = resourceSet.getResource(uri, true); 
+		_scenarioLoaded = (Scenario) _resource.getContents().get(0); 
+	}
+
+	public void playScenario(int progressPlayscenario){ 
+		if(_scenarioLoaded != null && _scenarioLoaded instanceof Scenario)
+		{
+			List<ExecutionStep> stepList = _scenarioLoaded.getStepList();
+			if(progressPlayscenario == 0)
+			{
+				_eventView.informationMsg("Scenario", "Debut du replay");
+			}
+			for(EventManagerClockWrapper cw :_clocksCache.values())
+			{
+				List<EventState> eventList = stepList.get(progressPlayscenario).getEventList();
+				Clock clock = cw.getClock();
+				for(int i = 0; i< eventList.size(); i++)
+				{	
+					if(eventList.get(i).getClock().getName().equals(clock.getName()))
+					{
+						cw.setState(eventList.get(i).isIsForced());
+					}
+				}
+			}
+			_eventView.incProgressPlayScenario();
+		}
+		else
+		{
+			throw new RuntimeException("The scenario loaded is null or isn't an instance of Scenario");
+		}
+
+		return;
+	}
+
+	public Scenario getScenario() {
+		return _scenarioLoaded;
+	}
+
+	public void setEngineStep(int step){
+		_engineStep = step;
+	}
+
+	public int getEngineStep(){
+		return _engineStep;
+	}
+
+
 }
