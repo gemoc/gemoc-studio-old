@@ -299,29 +299,6 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected TaskToArtifactMapItemProvider taskToArtifactMapItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 */
-	@Override
-	public Adapter createTaskToArtifactMapAdapter() {
-		if (taskToArtifactMapItemProvider == null) {
-			taskToArtifactMapItemProvider = new TaskToArtifactMapItemProvider(this);
-		}
-
-		return taskToArtifactMapItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
@@ -438,8 +415,6 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 			orItemProvider.dispose();
 		if (processContextItemProvider != null)
 			processContextItemProvider.dispose();
-		if (taskToArtifactMapItemProvider != null)
-			taskToArtifactMapItemProvider.dispose();
 	}
 
 }

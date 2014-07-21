@@ -1,12 +1,13 @@
-package org.gemoc.gemoc_modeling_workbench.ui.launcher;
+package org.gemoc.execution.engine.core;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
-import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
-public class RunConfiguration 
+public class RunConfiguration implements IRunConfiguration
 {
 	
 	// main launch parameters
@@ -45,7 +46,7 @@ public class RunConfiguration
 		_isTraceActive = Boolean.parseBoolean(getAttribute(LAUNCH_ACTIVE_TRACE, "false"));
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_modelURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
-		_animatorURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI, "");
+		//_animatorURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI, "");
 	}
 
 	private String getAttribute(String attributeName, String defaultValue) throws CoreException
@@ -93,6 +94,19 @@ public class RunConfiguration
 	public String getAnimatorURIAsString() 
 	{
 		return _animatorURIAsString;
+	}
+	
+	public IPath getProjectPath()
+	{
+		return _launchConfiguration.getFile().getProject().getFullPath();
+	}
+
+	
+	private int nbLastStepRunObservedForStopDetection = 10;
+	@Override
+	public int getDeadlockDetectionDepth() 
+	{
+		return nbLastStepRunObservedForStopDetection;
 	}
 
 }

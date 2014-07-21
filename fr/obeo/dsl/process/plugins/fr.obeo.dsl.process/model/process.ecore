@@ -174,16 +174,38 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProcessContext">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An instance of {@link Process}."/>
+    </eAnnotations>
+    <eOperations name="isDone" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tells if the given {@link ActionTask} is done."/>
+      </eAnnotations>
+      <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
+    </eOperations>
+    <eOperations name="setDone" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Marks the given {@link ActionTask} as done with the given value attached to it."/>
+      </eAnnotations>
+      <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
+      <eParameters name="value" lowerBound="1" eType="#//Artifact"/>
+    </eOperations>
+    <eOperations name="setUndone" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Marks the given {@link ActionTask} as undone with the given reason."/>
+      </eAnnotations>
+      <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
+      <eParameters name="reason" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getResult" lowerBound="1" eType="#//Artifact">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the result artifact attached to the given {@link ActionTask} if any, &lt;code>null&lt;/code> otherwise."/>
+      </eAnnotations>
+      <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
         eType="#//Process"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="progress" upperBound="-1"
-        eType="#//TaskToArtifactMap" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskToArtifactMap" instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//ActionTask"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="#//Artifact"
-        transient="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Artifact" instanceClassName="java.lang.Object"
       serializable="false"/>

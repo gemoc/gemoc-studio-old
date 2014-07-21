@@ -5,7 +5,6 @@ import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.Element;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Expression;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.TraceFactory;

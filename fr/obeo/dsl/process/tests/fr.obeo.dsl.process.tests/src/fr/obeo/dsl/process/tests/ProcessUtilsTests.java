@@ -334,7 +334,7 @@ public class ProcessUtilsTests {
 		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
 		task1.setName("task1");
 
-		context.getProgress().put(task1, null);
+		context.setDone(task1, null);
 
 		assertEquals(true, ProcessUtils.isDone(context, task1));
 	}
@@ -377,7 +377,7 @@ public class ProcessUtilsTests {
 		composedTask.getFinalTasks().add(task1);
 		composedTask.setDoneExpression(allDone);
 
-		context.getProgress().put(task1, null);
+		context.setDone(task1, null);
 
 		assertEquals(true, ProcessUtils.isDone(context, task1));
 		assertEquals(true, ProcessUtils.isDone(context, composedTask));
@@ -415,7 +415,7 @@ public class ProcessUtilsTests {
 		composedTask.getTasks().add(task1);
 		composedTask.getFinalTasks().add(task1);
 
-		context.getProgress().put(task1, null);
+		context.setDone(task1, null);
 
 		assertEquals(true, ProcessUtils.isDone(context, task1));
 		assertEquals(true, ProcessUtils.isDone(context, composedTask));
@@ -1703,8 +1703,8 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluatePrecondition(context, task1));
 
-		context.getProgress().put(task2, null);
-		context.getProgress().put(task3, null);
+		context.setDone(task2, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluatePrecondition(context, task1));
 	}
@@ -1730,7 +1730,7 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluatePrecondition(context, task1));
 
-		context.getProgress().put(task3, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluatePrecondition(context, task1));
 	}
@@ -1757,8 +1757,8 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluatePrecondition(context, task1));
 
-		context.getProgress().put(task2, null);
-		context.getProgress().put(task3, null);
+		context.setDone(task2, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluatePrecondition(context, task1));
 	}
@@ -1789,8 +1789,8 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluatePrecondition(context, task1));
 
-		context.getProgress().put(task2, null);
-		context.getProgress().put(task3, null);
+		context.setDone(task2, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluatePrecondition(context, task1));
 	}
@@ -1816,8 +1816,8 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluatePrecondition(context, task1));
 
-		context.getProgress().put(task2, null);
-		context.getProgress().put(task3, null);
+		context.setDone(task2, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluatePrecondition(context, task1));
 	}
@@ -1846,7 +1846,7 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluatePrecondition(context, task1));
 
-		context.getProgress().put(task3, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluatePrecondition(context, task1));
 	}
@@ -1877,8 +1877,8 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluatePrecondition(context, task1));
 
-		context.getProgress().put(task2, null);
-		context.getProgress().put(task3, null);
+		context.setDone(task2, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluatePrecondition(context, task1));
 	}
@@ -1913,8 +1913,8 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluatePrecondition(context, task1));
 
-		context.getProgress().put(task2, null);
-		context.getProgress().put(task3, null);
+		context.setDone(task2, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluatePrecondition(context, task1));
 	}
@@ -1938,8 +1938,8 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluateDoneExpression(context, task1));
 
-		context.getProgress().put(task2, null);
-		context.getProgress().put(task3, null);
+		context.setDone(task2, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluateDoneExpression(context, task1));
 	}
@@ -1965,8 +1965,8 @@ public class ProcessUtilsTests {
 
 		assertEquals(false, ProcessUtils.evaluateDoneExpression(context, task1));
 
-		context.getProgress().put(task2, null);
-		context.getProgress().put(task3, null);
+		context.setDone(task2, null);
+		context.setDone(task3, null);
 
 		assertEquals(true, ProcessUtils.evaluateDoneExpression(context, task1));
 	}
@@ -2007,7 +2007,7 @@ public class ProcessUtilsTests {
 		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
 		task2.setName("task2");
 		task1.getFollowingTasks().add(task2);
-		context.getProgress().put(task2, new Object());
+		context.setDone(task2, new Object());
 
 		assertEquals(false, ProcessUtils.canDoAction(context, task2));
 	}
@@ -2024,7 +2024,7 @@ public class ProcessUtilsTests {
 		task2.setName("task2");
 		task2.setMultipleExecution(true);
 		task1.getFollowingTasks().add(task2);
-		context.getProgress().put(task2, new Object());
+		context.setDone(task2, new Object());
 
 		assertEquals(false, ProcessUtils.canDoAction(context, task2));
 	}
@@ -2049,7 +2049,7 @@ public class ProcessUtilsTests {
 		final ProcessContext context = ProcessPackage.eINSTANCE.getProcessFactory().createProcessContext();
 		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
 		task2.setName("task2");
-		context.getProgress().put(task2, new Object());
+		context.setDone(task2, new Object());
 
 		assertEquals(false, ProcessUtils.canDoAction(context, task2));
 	}
@@ -2063,7 +2063,7 @@ public class ProcessUtilsTests {
 		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
 		task2.setName("task2");
 		task2.setMultipleExecution(true);
-		context.getProgress().put(task2, new Object());
+		context.setDone(task2, new Object());
 
 		assertEquals(true, ProcessUtils.canDoAction(context, task2));
 	}

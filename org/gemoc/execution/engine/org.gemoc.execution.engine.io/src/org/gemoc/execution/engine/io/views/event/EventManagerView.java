@@ -271,7 +271,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private ClockConstraintSystem extractSystem() 
 	{
 		ClockConstraintSystem system = null;
-		for(Resource r : _currentEngine.getModelUnderExecutionResource().getResourceSet().getResources())
+		for(Resource r : _currentEngine.getExecutionContext().getResourceModel().getResourceSet().getResources())
 		{
 			if(r.getContents().get(0) instanceof ClockConstraintSystem)
 			{

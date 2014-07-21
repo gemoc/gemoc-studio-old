@@ -26,7 +26,6 @@ import java.util.Set;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
@@ -126,8 +125,6 @@ public class ProcessValidator extends EObjectValidator {
 				return validateOr((Or)value, diagnostics, context);
 			case ProcessPackage.PROCESS_CONTEXT:
 				return validateProcessContext((ProcessContext)value, diagnostics, context);
-			case ProcessPackage.TASK_TO_ARTIFACT_MAP:
-				return validateTaskToArtifactMap((Map.Entry<?, ?>)value, diagnostics, context);
 			case ProcessPackage.ARTIFACT:
 				return validateArtifact(value, diagnostics, context);
 			default:
@@ -597,16 +594,6 @@ public class ProcessValidator extends EObjectValidator {
 	public boolean validateProcessContext(ProcessContext processContext, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(processContext, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public boolean validateTaskToArtifactMap(Map.Entry<?, ?> taskToArtifactMap, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)taskToArtifactMap, diagnostics, context);
 	}
 
 	/**

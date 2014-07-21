@@ -150,6 +150,15 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getExecutionStep_Step() {
+		return (EAttribute)executionStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEventState() {
 		return eventStateEClass;
 	}
@@ -205,6 +214,7 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 
 		executionStepEClass = createEClass(EXECUTION_STEP);
 		createEReference(executionStepEClass, EXECUTION_STEP__EVENT_LIST);
+		createEAttribute(executionStepEClass, EXECUTION_STEP__STEP);
 
 		eventStateEClass = createEClass(EVENT_STATE);
 		createEAttribute(eventStateEClass, EVENT_STATE__IS_FORCED);
@@ -249,6 +259,7 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 
 		initEClass(executionStepEClass, ExecutionStep.class, "ExecutionStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExecutionStep_EventList(), this.getEventState(), null, "eventList", null, 0, -1, ExecutionStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecutionStep_Step(), ecorePackage.getEInt(), "step", null, 0, 1, ExecutionStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventStateEClass, EventState.class, "EventState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEventState_IsForced(), ecorePackage.getEBoolean(), "isForced", null, 0, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

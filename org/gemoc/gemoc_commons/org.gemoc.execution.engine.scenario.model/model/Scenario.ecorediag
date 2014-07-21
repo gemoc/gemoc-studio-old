@@ -19,6 +19,10 @@
   <children xmi:type="notation:Node" xmi:id="_OPDWIAv4EeSgpMup4TwPZQ" type="1001">
     <children xmi:type="notation:Node" xmi:id="_OPD9MAv4EeSgpMup4TwPZQ" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_OPD9MQv4EeSgpMup4TwPZQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_ssPMAA2SEeSsrMtEvjXNiw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Scenario.ecore#//ExecutionStep/step"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ssPMAQ2SEeSsrMtEvjXNiw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_OPD9Mgv4EeSgpMup4TwPZQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_OPD9Mwv4EeSgpMup4TwPZQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_OPD9NAv4EeSgpMup4TwPZQ"/>

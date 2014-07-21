@@ -2,9 +2,6 @@ package org.gemoc.gemoc_language_workbench.api.core;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 /**
  * The interface of the GEMOC Execution Engine. The Execution Engine is an
@@ -36,7 +33,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 * 
 	 * @return the EMF Resource corresponding to the model being executed.
 	 */
-	public Resource getModelUnderExecutionResource();
+//	public Resource getModelUnderExecutionResource();
 	
 	public ILogicalStepDecider getLogicalStepDecider();
 	
@@ -44,26 +41,15 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 * allows to add a  hook to the engine
 	 * @param newEngineHook
 	 */
-	public void addEngineHook(IEngineHook newEngineHook);
+	//public void addEngineHook(IEngineHook newEngineHook);
 	
 	/**
 	 * allows to remove a hook to the engine
 	 * @param removedEngineHook
 	 */
-	public void removeEngineHook(IEngineHook removedEngineHook);
+	//public void removeEngineHook(IEngineHook removedEngineHook);
 
-
-	/**
-	 * Sets the delay to wait in millisecond between each logical step.
-	 * 
-	 * @param delay
-	 *            the delay in millisecond
-	 */
-	void setDelay(int delay);
-
-	void initialize(Resource resource, TransactionalEditingDomain editingDomain);
-
-	public ExecutionTraceModel getExecutionTrace();
+//	void initialize(Resource resource, TransactionalEditingDomain editingDomain);
 
 	/**
 	 * 
@@ -85,8 +71,9 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	 */
 	public <T extends IExecutionEngineCapability> T capability(Class<T> type);
 
-	public Solver getSolver();
-
-	public CodeExecutor getCodeExecutor();
+	public IExecutionContext getExecutionContext();
+//	public Solver getSolver();
+//
+//	public CodeExecutor getCodeExecutor();
 	
 }

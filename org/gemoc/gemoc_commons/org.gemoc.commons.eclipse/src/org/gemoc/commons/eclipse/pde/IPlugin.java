@@ -7,7 +7,7 @@ public interface IPlugin {
 	public String getName();
 
 	public String getId();
-
+	
 	public ILog getLog();
 
 }

@@ -25,6 +25,7 @@ import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
 import org.gemoc.execution.engine.scenario.impl.ScenarioFactoryImpl;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
@@ -58,9 +59,9 @@ public class EventManagementCache
 
 	public void configure(ObservableBasicExecutionEngine engine, ClockConstraintSystem clockConstraintSystem)
 	{
-		engine.addClockController(_clockController);
+		engine.get_clockControllers().add(_clockController);
 		_system = clockConstraintSystem;
-		EventInjectionContext context = new EventInjectionContext(engine.getSolver(), clockConstraintSystem);
+		EventInjectionContext context = new EventInjectionContext(engine.getExecutionContext().getSolver(), clockConstraintSystem);
 		_clockController.initialize(context);
 		_relations = new ArrayList<Relation>();
 		for(Relation r : _system.getSubBlock().get(0).getRelations())
@@ -74,7 +75,7 @@ public class EventManagementCache
 	}
 
 
-	private void createResource(ModelExecutionContext context) {
+	private void createResource(IExecutionContext context) {
 		ResourceSet rs = _system.eResource().getResourceSet(); 
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		URI uri = URI.createURI("file:/"+scenarioPath+timeStamp+".scenario");

@@ -76,7 +76,7 @@ public class AllDoneTests {
 		expression.getTasks().add(task2);
 		expression.getTasks().add(task3);
 
-		context.getProgress().put(task1, context);
+		context.setDone(task1, context);
 
 		assertEquals(false, expression.check(context));
 	}
@@ -95,8 +95,8 @@ public class AllDoneTests {
 		expression.getTasks().add(task2);
 		expression.getTasks().add(task3);
 
-		context.getProgress().put(task1, context);
-		context.getProgress().put(task2, context);
+		context.setDone(task1, context);
+		context.setDone(task2, context);
 
 		assertEquals(false, expression.check(context));
 	}
@@ -115,9 +115,9 @@ public class AllDoneTests {
 		expression.getTasks().add(task2);
 		expression.getTasks().add(task3);
 
-		context.getProgress().put(task1, context);
-		context.getProgress().put(task2, context);
-		context.getProgress().put(task3, context);
+		context.setDone(task1, context);
+		context.setDone(task2, context);
+		context.setDone(task3, context);
 
 		assertEquals(true, expression.check(context));
 	}

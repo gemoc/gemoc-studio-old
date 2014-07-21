@@ -12,6 +12,13 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
+          <conditionnalStyles predicateExpression="[self.eContainer().oclIsKindOf(Process)/]">
+            <style xsi:type="style:DotDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Start" tooltipExpression="Start">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="End" preconditionExpression="[self = diagram.target/]" deletionDescription="//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@toolSections.0/@ownedTools[name='NoDeletion']" domainClass="process.ComposedTask">
           <style xsi:type="style:DotDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="End" tooltipExpression="End">
@@ -19,6 +26,13 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
+          <conditionnalStyles predicateExpression="[self.eContainer().oclIsKindOf(Process)/]">
+            <style xsi:type="style:DotDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Start" tooltipExpression="Start">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
         <edgeMappings name="FollowingTask" deletionDescription="//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@toolSections.0/@ownedTools[name='DeleteFollowingTask']" sourceMapping="//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@containerMappings[name='ActionTask'] //@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@containerMappings[name='ComposedTask']/@borderedNodeMappings[name='EndNode']" targetMapping="//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@containerMappings[name='ActionTask'] //@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@containerMappings[name='ComposedTask']/@borderedNodeMappings[name='StartNode']" targetFinderExpression="feature:followingTasks" reconnections="//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@toolSections.0/@ownedTools[name='reconnect%20FollowingTask%20source'] //@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@toolSections.0/@ownedTools[name='reconnect%20FollowingTask%20target']">
           <style lineStyle="dash" sizeComputationExpression="1">
