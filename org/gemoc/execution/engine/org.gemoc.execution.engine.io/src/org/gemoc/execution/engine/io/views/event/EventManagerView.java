@@ -270,7 +270,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_currentEngineCache.disableClocks(_displayedClock);
 		_cache.put(_currentEngine, _currentEngineCache);
 		_displayedClock = getWrapperList();
-		_currentEngineCache.disableClocks(_displayedClock);
+		//_currentEngineCache.disableClocks(_displayedClock);
 	}
 
 	private ClockConstraintSystem extractSystem() 
@@ -317,7 +317,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			_currentEngine = (ObservableBasicExecutionEngine) engine;
 			if(engine.getEngineStatus().getRunningStatus().equals((RunStatus.Stopped)))
 			{
-
 				if(_recordFlag)
 				{
 					executeCommand("StopRecordScenario");
@@ -328,11 +327,13 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				}
 				_currentEngine.deleteObserver(this);
 				_currentEngine = null;
+				executeCommand("UndoInit");
 			}
 			else
 			{
 				_currentEngine.deleteObserver(this);
 				_currentEngine.addObserver(this);
+				executeCommand("DoInit");
 				if(_cache.get(_currentEngine) != null)
 				{
 					_currentEngineCache = _cache.get(_currentEngine);
@@ -443,11 +444,13 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				.getActiveWorkbenchWindow(event).getService(ISourceProviderService.class);
 		// now get my service
 		CommandState commandStateService = (CommandState) sourceProviderService
-				.getSourceProvider(CommandState.RECORD_STATE);
+				.getSourceProvider(CommandState.COMMAND_STATE);
 		switch(command)
 		{
 			case "PLAY": commandStateService.togglePlayEnabled(); break;
 			case "RECORD": commandStateService.toggleRecordEnabled(); break;
+			case "INIT": commandStateService.setInit(); break;
+			case "RESET": commandStateService.unsetInit(); break;
 		}
 	}
 

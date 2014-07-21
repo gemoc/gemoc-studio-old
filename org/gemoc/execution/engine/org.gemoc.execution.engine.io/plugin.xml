@@ -151,7 +151,6 @@
             name="Remove all engines">
       </command>
       <command
-            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.StartRecordScenario"
             id="org.gemoc.execution.engine.io.views.event.commands.StartRecordScenario"
             name="Start Record Scenario">
       </command>
@@ -169,6 +168,16 @@
             id="org.gemoc.execution.engine.io.views.event.commands.StopPlayScenario"
             name="Stop Play Scenario">
       </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.doInit"
+            id="org.gemoc.execution.engine.io.views.event.commands.DoInit"
+            name="Do Init">
+      </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.UndoInit"
+            id="org.gemoc.execution.engine.io.views.event.commands.UndoInit"
+            name="Undo init">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.services">
@@ -180,6 +189,10 @@
          </variable>
          <variable
                name="RECORD_STATE"
+               priorityLevel="workbench">
+         </variable>
+         <variable
+               name="INIT_STATE"
                priorityLevel="workbench">
          </variable>
       </sourceProvider>
@@ -201,9 +214,29 @@
                		<equals
                      	value="DISABLE">
                		</equals>
+                 <and>
+                 	<with
+                  variable="org.gemoc.execution.engine.io.views.event.commands.INIT">
+               		<equals
+                     	value="SET">
+               		</equals>
+               		</with>
+                 </and>
             	</with>
             	</and>
             </with></enabledWhen>
+      </handler>
+      <handler
+            class="org.gemoc.execution.engine.io.views.event.commands.StartRecordScenario"
+            commandId="org.gemoc.execution.engine.io.views.event.commands.StartRecordScenario">
+         <enabledWhen>
+            <with
+                  variable="org.gemoc.execution.engine.io.views.event.commands.INIT">
+               <equals
+                     value="SET">
+               </equals>
+            </with>
+         </enabledWhen>
       </handler>
    </extension>
 
