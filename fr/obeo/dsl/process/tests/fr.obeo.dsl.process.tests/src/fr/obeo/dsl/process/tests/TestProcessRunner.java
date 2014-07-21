@@ -52,9 +52,9 @@ public class TestProcessRunner implements IProcessRunner {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.process.IProcessRunner#startNewContext()
+	 * @see fr.obeo.dsl.process.IProcessRunner#startContext()
 	 */
-	public ProcessContext startNewContext() {
+	public ProcessContext startContext() {
 		return null;
 	}
 
@@ -75,6 +75,15 @@ public class TestProcessRunner implements IProcessRunner {
 	 *      fr.obeo.dsl.process.ActionTask)
 	 */
 	public void undoAction(ProcessContext context, ActionTask task) {
+		// nothing to do here
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fr.obeo.dsl.process.IProcessRunner#stopContext(fr.obeo.dsl.process.ProcessContext)
+	 */
+	public void stopContext(ProcessContext context) {
 		// nothing to do here
 	}
 

@@ -68,7 +68,7 @@ public class OrTests {
 		expression.getExpressions().add(falseExpression);
 		expression.getExpressions().add(trueExpression);
 
-		context.getProgress().put(task1, null);
+		context.setDone(task1, null);
 
 		assertEquals(true, expression.check(context));
 	}
@@ -90,7 +90,7 @@ public class OrTests {
 		expression.getExpressions().add(trueExpression);
 		expression.getExpressions().add(falseExpression);
 
-		context.getProgress().put(task1, null);
+		context.setDone(task1, null);
 
 		assertEquals(true, expression.check(context));
 	}
@@ -109,7 +109,7 @@ public class OrTests {
 		expression.getExpressions().add(trueExpression);
 		expression.getExpressions().add(trueExpression);
 
-		context.getProgress().put(task1, null);
+		context.setDone(task1, null);
 
 		assertEquals(true, expression.check(context));
 	}

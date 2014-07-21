@@ -45,7 +45,15 @@ public interface IProcessRunner {
 	 * 
 	 * @return a new {@link ProcessContext} running the {@link IProcessRunner#getProcess() process}
 	 */
-	ProcessContext startNewContext();
+	ProcessContext startContext();
+
+	/**
+	 * Stops the given {@link ProcessContext}.
+	 * 
+	 * @param context
+	 *            the {@link ProcessContext} to stop
+	 */
+	void stopContext(ProcessContext context);
 
 	/**
 	 * Executes the given {@link ActionTask} in the given {@link ProcessContext}.

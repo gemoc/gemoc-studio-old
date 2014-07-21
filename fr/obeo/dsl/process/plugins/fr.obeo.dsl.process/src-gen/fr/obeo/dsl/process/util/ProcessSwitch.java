@@ -16,8 +16,6 @@ import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
 
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -183,14 +181,6 @@ public class ProcessSwitch<T> extends Switch<T> {
 			case ProcessPackage.PROCESS_CONTEXT: {
 				ProcessContext processContext = (ProcessContext)theEObject;
 				T result = caseProcessContext(processContext);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case ProcessPackage.TASK_TO_ARTIFACT_MAP: {
-				@SuppressWarnings("unchecked")
-				Map.Entry<ActionTask, Object> taskToArtifactMap = (Map.Entry<ActionTask, Object>)theEObject;
-				T result = caseTaskToArtifactMap(taskToArtifactMap);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -392,21 +382,6 @@ public class ProcessSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseProcessContext(ProcessContext object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Task To Artifact Map</em>'. <!--
-	 * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
-	 * switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Task To Artifact Map</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTaskToArtifactMap(Map.Entry<ActionTask, Object> object) {
 		return null;
 	}
 

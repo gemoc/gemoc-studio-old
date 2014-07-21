@@ -18,8 +18,6 @@ import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
 import fr.obeo.dsl.process.util.ProcessValidator;
 
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -125,13 +123,6 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * @generated
 	 */
 	private EClass processContextEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	private EClass taskToArtifactMapEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -511,42 +502,6 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
-	public EReference getProcessContext_Progress() {
-		return (EReference)processContextEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public EClass getTaskToArtifactMap() {
-		return taskToArtifactMapEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public EReference getTaskToArtifactMap_Key() {
-		return (EReference)taskToArtifactMapEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public EAttribute getTaskToArtifactMap_Value() {
-		return (EAttribute)taskToArtifactMapEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
 	public EDataType getArtifact() {
 		return artifactEDataType;
 	}
@@ -624,11 +579,6 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		processContextEClass = createEClass(PROCESS_CONTEXT);
 		createEAttribute(processContextEClass, PROCESS_CONTEXT__NAME);
 		createEReference(processContextEClass, PROCESS_CONTEXT__DEFINITION);
-		createEReference(processContextEClass, PROCESS_CONTEXT__PROGRESS);
-
-		taskToArtifactMapEClass = createEClass(TASK_TO_ARTIFACT_MAP);
-		createEReference(taskToArtifactMapEClass, TASK_TO_ARTIFACT_MAP__KEY);
-		createEAttribute(taskToArtifactMapEClass, TASK_TO_ARTIFACT_MAP__VALUE);
 
 		// Create data types
 		artifactEDataType = createEDataType(ARTIFACT);
@@ -770,18 +720,21 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEReference(getProcessContext_Definition(), this.getProcess(), null, "definition", null, 1, 1,
 				ProcessContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessContext_Progress(), this.getTaskToArtifactMap(), null, "progress", null, 0,
-				-1, ProcessContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(taskToArtifactMapEClass, Map.Entry.class, "TaskToArtifactMap", !IS_ABSTRACT,
-				!IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTaskToArtifactMap_Key(), this.getActionTask(), null, "key", null, 1, 1,
-				Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTaskToArtifactMap_Value(), this.getArtifact(), "value", null, 1, 1,
-				Map.Entry.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		op = addEOperation(processContextEClass, ecorePackage.getEBoolean(), "isDone", 1, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(processContextEClass, null, "setDone", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getArtifact(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(processContextEClass, null, "setUndone", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "reason", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(processContextEClass, this.getArtifact(), "getResult", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(artifactEDataType, Object.class, "Artifact", !IS_SERIALIZABLE,

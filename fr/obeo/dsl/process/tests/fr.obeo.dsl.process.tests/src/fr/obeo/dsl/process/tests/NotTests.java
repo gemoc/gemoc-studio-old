@@ -61,7 +61,7 @@ public class NotTests {
 		trueExpression.getTasks().add(task1);
 		expression.setExpression(trueExpression);
 
-		context.getProgress().put(task1, null);
+		context.setDone(task1, null);
 
 		assertEquals(false, expression.check(context));
 	}
