@@ -1,5 +1,7 @@
 package org.gemoc.execution.engine.io.views.event;
 
+import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
+
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
 

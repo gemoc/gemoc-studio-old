@@ -29,7 +29,6 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.ui.ISourceProvider;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
@@ -38,6 +37,10 @@ import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
+import org.gemoc.execution.engine.io.views.event.commands.CommandState;
+import org.gemoc.execution.engine.io.views.event.filters.NoEventFilter;
+import org.gemoc.execution.engine.io.views.event.filters.RemoveAllBindingClockFilter;
+import org.gemoc.execution.engine.io.views.event.filters.RemoveLeftBindingClockFilter;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
@@ -67,6 +70,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private boolean _playFlag;
 	private boolean _recordFlag;
 	private EventManagementCache _currentEngineCache;
+	private Scenario _scenario;
 
 
 	/**
@@ -80,6 +84,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_recordFlag = false;
 		_playFlag = false;
 		_currentEngineCache = null;
+		_scenario = null;
 	}
 
 
@@ -315,19 +320,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 				if(_recordFlag)
 				{
-					IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
-					try 
-					{
-						handlerService.executeCommand("org.gemoc.execution.engine.io.command.StopScenario", null);
-					} 
-					catch (Exception ex) 
-					{
-						throw new RuntimeException("Stop Scenario command not found");
-					}
+					executeCommand("StopRecordScenario");
 				}
 				if(_playFlag)
 				{
-					stopPlayScenario(_currentEngineCache.getScenario());
+					executeCommand("StopPlayScenario");
 				}
 				_currentEngine.deleteObserver(this);
 				_currentEngine = null;
@@ -342,6 +339,18 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				}
 			}
 			updateView();
+		}
+	}
+
+	protected void executeCommand(String command){
+		IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
+		try 
+		{
+			handlerService.executeCommand("org.gemoc.execution.engine.io.views.event.commands." + command, null);
+		} 
+		catch (Exception ex) 
+		{
+			throw new RuntimeException(command + " command not found");
 		}
 	}
 
@@ -386,13 +395,12 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 
 	public void startRecordScenario() {
-		_currentEngineCache.createScenario();
-		_currentEngineCache.addExecutionStep();
+		_currentEngineCache.createScenario();	
 		_recordFlag = true;
 	}
 
 	public void stopRecordScenario(){
-		_currentEngineCache.resetRessource(_currentEngine);
+		_currentEngineCache.resetRessource();
 		_recordFlag = false;
 	}
 
@@ -400,41 +408,23 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		if(path != null)
 		{
 			_playFlag = true;
-			_currentEngineCache.loadScenario(path);	
+			_currentEngineCache.loadScenario(path);
 			playScenario();
 		}
 	}
 
 	public void playScenario(){
-		Scenario scenario = _currentEngineCache.getScenario();
-		if(_progressPlayScenario < scenario.getStepList().size()-1)
+		if(_scenario != null)
 		{
-			_currentEngineCache.playScenario(_progressPlayScenario);
+			if(_progressPlayScenario < _scenario.getStepList().size()-1)
+			{
+				_currentEngineCache.playScenario();
+			}
+			else
+			{
+				executeCommand("StopPlayScenario");
+			}
 		}
-		else
-		{
-			stopPlayScenario(scenario);
-		}
-
-	}
-
-	public void stopPlayScenario(Scenario scenario){
-		_progressPlayScenario = 0;
-		informationMsg("Play Scenario", "Fin du replay");
-		IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
-		try 
-		{
-			handlerService.executeCommand("org.gemoc.execution.engine.io.command.StopScenario", null);
-		} 
-		catch (Exception ex) 
-		{
-			throw new RuntimeException("Stop Scenario command not found");
-		}
-		scenario = null;
-	}
-
-	public void incProgressPlayScenario() {
-		_progressPlayScenario++;
 	}
 
 	public void informationMsg(final String title, final String msg){
@@ -447,8 +437,41 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		});
 	}
 
+	public void executeService(ExecutionEvent event, String command){
+		// Get the source provider service
+		ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
+				.getActiveWorkbenchWindow(event).getService(ISourceProviderService.class);
+		// now get my service
+		CommandState commandStateService = (CommandState) sourceProviderService
+				.getSourceProvider(CommandState.RECORD_STATE);
+		switch(command)
+		{
+			case "PLAY": commandStateService.togglePlayEnabled(); break;
+			case "RECORD": commandStateService.toggleRecordEnabled(); break;
+		}
+	}
 
-	public boolean getPlayFlag() {
-		return _playFlag;
+	public void setScenario(Scenario scenario){
+		_scenario = scenario;
+	}
+
+	public EventManagementCache getCurrentEngineCache(){
+		return _currentEngineCache;
+	}
+
+	public void setPlayFlag(boolean state) {
+		_playFlag = state;
+	}
+
+	public int getProgressPlayScenario() {
+		return _progressPlayScenario;
+	}
+
+	public void resetProgressPlayScenario() {
+		_progressPlayScenario = 0;
+	}
+
+	public void incProgressPlayScenario() {
+		_progressPlayScenario++;
 	}
 }

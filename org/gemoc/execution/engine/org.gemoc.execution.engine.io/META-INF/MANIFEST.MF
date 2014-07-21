@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gef,
  org.eclipse.jface,
  org.gemoc.execution.engine.scenario.model,
- fr.inria.diverse.commons.eclipse.messagingsystem.ui;bundle-version="1.0.0"
+ fr.inria.diverse.commons.eclipse.messagingsystem.ui;bundle-version="1.0.0",
+ org.eclipse.emf.transaction
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.io,
@@ -30,5 +31,8 @@ Export-Package: org.gemoc.execution.engine.io,
  org.gemoc.execution.engine.io.exceptions,
  org.gemoc.execution.engine.io.frontends,
  org.gemoc.execution.engine.io.views,
- org.gemoc.execution.engine.io.views.event
+ org.gemoc.execution.engine.io.views.event,
+ org.gemoc.execution.engine.io.views.event.commands,
+ org.gemoc.execution.engine.io.views.event.control,
+ org.gemoc.execution.engine.io.views.event.filters
 

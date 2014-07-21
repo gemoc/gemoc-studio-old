@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.execution.engine.io.views.event.control;
 
 
 import java.util.HashMap;

@@ -9,17 +9,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
-import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
+import org.gemoc.execution.engine.io.views.event.filters.EventFilter;
+import org.gemoc.execution.engine.io.views.event.filters.IEventFilterStrategy;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.Scenario;
@@ -44,7 +46,7 @@ public class EventManagementCache
 	private ScenarioFactory _factory;
 	private Resource _resource;
 	private int _engineStep;
-	static final String scenarioPath  = "udd//lguillem//runtime-GEMOC//ScenarioFolder/";
+	public static final String scenarioPath  = "udd//lguillem//runtime-GEMOC//ScenarioFolder/";
 
 	public EventManagementCache()
 	{
@@ -76,10 +78,17 @@ public class EventManagementCache
 
 
 	private void createResource(IExecutionContext context) {
-		ResourceSet rs = _system.eResource().getResourceSet(); 
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		URI uri = URI.createURI("file:/"+scenarioPath+timeStamp+".scenario");
-		_resource = rs.createResource(uri);
+		Runnable runnable = new Runnable() 
+		{
+			public void run() 
+			{
+				ResourceSet rs = _system.eResource().getResourceSet(); 
+				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+				URI uri = URI.createURI("file:/"+scenarioPath+timeStamp+".scenario");
+				_resource = rs.createResource(uri);
+			}
+		};
+		safeModelModification(runnable);
 	}
 
 
@@ -113,31 +122,58 @@ public class EventManagementCache
 		}
 	}
 
+	private void safeModelModification(final Runnable runnable)
+	{
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(_system);
+		editingDomain.getCommandStack().execute(
+				new RecordingCommand(editingDomain) {
+					public void doExecute() {
+						runnable.run();
+					}
+				});		
+	}
+
 	/**
 	 * Create a new model which follow the meta-model Scenario.
 	 */
-	public void createScenario(){
-		_scenarioSaved = _factory.createScenario();
-		_resource.getContents().add(_scenarioSaved);
-		saveScenario();
+	public void createScenario()
+	{
+		Runnable runnable = new Runnable() 
+		{
+			public void run() 
+			{
+				_scenarioSaved = _factory.createScenario();
+				_resource.getContents().add(_scenarioSaved);
+				saveScenario();
+			}
+		};
+		safeModelModification(runnable);
 	}
 
 	/**
 	 * Add a new Execution Step to the model scenario with all the clock states
 	 */
-	public void addExecutionStep(){
-		List<ExecutionStep> stepList =  _scenarioSaved.getStepList();
-		ExecutionStep newStep = _factory.createExecutionStep();
-		List<EventState> newListEvent = newStep.getEventList();
-		for(EventManagerClockWrapper cw: getWrappers()){
-			EventState newState = _factory.createEventState();
-			newState.setClock(cw.getClock());
-			newState.setIsForced(cw.isState());
-			newListEvent.add(newState);
-		}
-		newStep.setStep(_engineStep);
-		stepList.add(newStep);	
-		saveScenario();
+	public void addExecutionStep()
+	{
+
+		Runnable runnable = new Runnable() 
+		{
+			public void run() {
+				List<ExecutionStep> stepList =  _scenarioSaved.getStepList();
+				ExecutionStep newStep = _factory.createExecutionStep();
+				List<EventState> newListEvent = newStep.getEventList();
+				for(EventManagerClockWrapper cw: getWrappers()){
+					EventState newState = _factory.createEventState();
+					newState.setClock(cw.getClock());
+					newState.setIsForced(cw.isState());
+					newListEvent.add(newState);
+				}
+				newStep.setStep(_engineStep);
+				stepList.add(newStep);
+				saveScenario();
+			}
+		};
+		safeModelModification(runnable);
 	}
 
 
@@ -151,28 +187,33 @@ public class EventManagementCache
 		catch (IOException e) {}
 	}
 
-	public void resetRessource(ObservableBasicExecutionEngine engine){
-		createResource(engine.getExecutionContext());
+	public void resetRessource(){
+		createResource(_eventView.getEngine().getExecutionContext());
 	}
 
 	/**
 	 * Load a previously created scenario model.
 	 */
-	public void loadScenario(String path){
-		ResourceSet resourceSet = new ResourceSetImpl(); 
-		URI uri = URI.createURI("file:/" + path); 
-		_resource = resourceSet.getResource(uri, true); 
-		_scenarioLoaded = (Scenario) _resource.getContents().get(0); 
+	public void loadScenario(final String path){
+		Runnable runnable = new Runnable() 
+		{
+			public void run() 
+			{
+				ResourceSet resourceSet = new ResourceSetImpl(); 
+				URI uri = URI.createURI("file:/" + path); 
+				_resource = resourceSet.getResource(uri, true); 
+				_scenarioLoaded = (Scenario) _resource.getContents().get(0);
+				_eventView.setScenario(_scenarioLoaded);
+			}
+		};
+		safeModelModification(runnable);
 	}
 
-	public void playScenario(int progressPlayscenario){ 
+	public void playScenario(){ 
+		final int progressPlayscenario = _eventView.getProgressPlayScenario();
 		if(_scenarioLoaded != null && _scenarioLoaded instanceof Scenario)
 		{
 			List<ExecutionStep> stepList = _scenarioLoaded.getStepList();
-			if(progressPlayscenario == 0)
-			{
-				_eventView.informationMsg("Scenario", "Debut du replay");
-			}
 			for(EventManagerClockWrapper cw :_clocksCache.values())
 			{
 				List<EventState> eventList = stepList.get(progressPlayscenario).getEventList();
@@ -191,8 +232,13 @@ public class EventManagementCache
 		{
 			throw new RuntimeException("The scenario loaded is null or isn't an instance of Scenario");
 		}
+	}
 
-		return;
+	public void stopPlayScenario(){
+		_eventView.resetProgressPlayScenario();
+		_scenarioLoaded = null;
+		_eventView.setScenario(null);
+		_eventView.setPlayFlag(false);
 	}
 
 	public Scenario getScenario() {

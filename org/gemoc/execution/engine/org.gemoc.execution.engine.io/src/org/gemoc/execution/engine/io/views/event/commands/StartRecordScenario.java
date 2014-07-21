@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.execution.engine.io.views.event.commands;
 
 
 
@@ -10,6 +10,7 @@ import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.services.ISourceProviderService;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
+import org.gemoc.execution.engine.io.views.event.EventManagerView;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 
 public class StartRecordScenario extends AbstractHandler {
@@ -21,13 +22,7 @@ public class StartRecordScenario extends AbstractHandler {
 		{
 			eventView.informationMsg("Record Scenario", "Beginning of the operation");
 			eventView.startRecordScenario();
-			// Get the source provider service
-		    ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
-		        .getActiveWorkbenchWindow(event).getService(ISourceProviderService.class);
-		    // now get my service
-		    PlayRecordState commandStateService = (PlayRecordState) sourceProviderService
-		        .getSourceProvider(PlayRecordState.RECORD_STATE);
-		    commandStateService.tooglePlayEnabled();
+			eventView.executeService(event, "RECORD");
 		}
 		else
 		{

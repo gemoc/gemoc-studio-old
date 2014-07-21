@@ -1,15 +1,15 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.execution.engine.io.views.event.commands;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.ui.services.ISourceProviderService;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
+import org.gemoc.execution.engine.io.views.event.EventManagementCache;
+import org.gemoc.execution.engine.io.views.event.EventManagerView;
 
-public class LoadScenario extends AbstractHandler {
+public class LoadScenario extends AbstractHandler /*implements IScenarioStateChangeListener*/ {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -21,6 +21,8 @@ public class LoadScenario extends AbstractHandler {
 			dialog.setFilterPath(EventManagementCache.scenarioPath);
 			String path = dialog.open();
 			eventView.loadScenario(path);
+			eventView.informationMsg("Replay", "Beginning");
+			eventView.executeService(event, "PLAY");
 		}
 		else
 		{

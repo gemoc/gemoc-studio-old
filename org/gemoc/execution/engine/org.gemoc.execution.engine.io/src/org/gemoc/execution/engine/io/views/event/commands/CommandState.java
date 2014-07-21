@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.execution.engine.io.views.event.commands;
 
 
 
@@ -8,9 +8,9 @@ import java.util.Map;
 import org.eclipse.ui.AbstractSourceProvider;
 import org.eclipse.ui.ISources;
 
-public class PlayRecordState extends AbstractSourceProvider {
-  public final static String PLAY_STATE = "org.gemoc.execution.engine.io.views.event.PLAY";
-  public final static String RECORD_STATE = "org.gemoc.execution.engine.io.views.event.RECORD";
+public class CommandState extends AbstractSourceProvider {
+  public final static String PLAY_STATE = "org.gemoc.execution.engine.io.views.event.commands.PLAY";
+  public final static String RECORD_STATE = "org.gemoc.execution.engine.io.views.event.commands.RECORD";
   public final static String ENABLE = "ENABLE";
   public final static String DISABLE = "DISABLE";
   private boolean _playFlag = false;
@@ -37,13 +37,13 @@ public class PlayRecordState extends AbstractSourceProvider {
   }
 
   
-  public void tooglePlayEnabled() {
+  public void togglePlayEnabled() {
 	  _playFlag = !_playFlag ;
     String value = _playFlag ? ENABLE : DISABLE;
     fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, value);
   }
   
-  public void toogleRecordEnabled() {
+  public void toggleRecordEnabled() {
 	  _recordFlag = !_recordFlag ;
     String value = _recordFlag ? ENABLE : DISABLE;
     fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, value);
