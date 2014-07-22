@@ -113,13 +113,22 @@ public interface ScenarioPackage extends EPackage {
 	int EXECUTION_STEP__EVENT_LIST = 0;
 
 	/**
+	 * The feature id for the '<em><b>Step</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_STEP__STEP = 1;
+
+	/**
 	 * The number of structural features of the '<em>Execution Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_STEP_FEATURE_COUNT = 1;
+	int EXECUTION_STEP_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Execution Step</em>' class.
@@ -220,6 +229,17 @@ public interface ScenarioPackage extends EPackage {
 	EReference getExecutionStep_EventList();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.scenario.ExecutionStep#getStep <em>Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Step</em>'.
+	 * @see org.gemoc.execution.engine.scenario.ExecutionStep#getStep()
+	 * @see #getExecutionStep()
+	 * @generated
+	 */
+	EAttribute getExecutionStep_Step();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.EventState <em>Event State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -309,6 +329,14 @@ public interface ScenarioPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXECUTION_STEP__EVENT_LIST = eINSTANCE.getExecutionStep_EventList();
+
+		/**
+		 * The meta object literal for the '<em><b>Step</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXECUTION_STEP__STEP = eINSTANCE.getExecutionStep_Step();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl <em>Event State</em>}' class.
