@@ -9,18 +9,14 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author dvojtise
  *
  */
-public interface ILogicalStepDecider {
+public interface ILogicalStepDecider extends IDisposable
+{
 	/**
 	 * 
 	 * @param possibleLogicalSteps
 	 * @return The index of the selected logical step, -1 if no logical step selected.
 	 */
 	public int decide(List<LogicalStep> possibleLogicalSteps)  throws InterruptedException;
-	
-	/**
-	 * decider no longer used, (probably because the engine has been asked to stop)
-	 */
-	public void dispose();
 
 	/**
 	 * Stop the decision making in progress.

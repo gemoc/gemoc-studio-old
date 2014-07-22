@@ -1,17 +1,12 @@
 package org.gemoc.execution.engine.core;
 
-import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Observable;
-import java.util.Set;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
@@ -27,28 +22,23 @@ import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
 import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine.EngineRunnable;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
+import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
-import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
+import fr.obeo.dsl.debug.ide.IDSLDebugger;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -96,73 +86,31 @@ import fr.inria.aoste.trace.LogicalStep;
  */
 public class ObservableBasicExecutionEngine extends Observable implements GemocExecutionEngine {
 
-	private GemocModelDebugger debugger;
+	private IDSLDebugger _debugger;
 
 	private IGemocModelAnimator 	animator;
 
-	private boolean started = false;
-
-	boolean terminated = false;
-
+	private boolean _started = false;
+	private boolean terminated = false;
+	
 	protected EngineStatus engineStatus = new EngineStatus();
-
-	protected int nbLastStepRunObservedForStopDetection = 10;
+	
 	/**
 	 * used to detect
 	 */
-	protected ArrayDeque<LogicalStep> lastStepsRun = new ArrayDeque<LogicalStep>(nbLastStepRunObservedForStopDetection);
+	protected ArrayDeque<LogicalStep> _lastStepsRun;
 
 	/**
 	 * Given at the language-level initialization.
 	 */
-	protected Solver solver = null;
-	protected EventExecutor _eventExecutor = null;
-	private CodeExecutor _codeExecutor = null;
-	protected FeedbackPolicy feedbackPolicy = null;
+
 	protected ILogicalStepDecider logicalStepDecider = null;
 
-	private IInstructionRevealer _instructionRevealer;
-	public void setInstructionRevealer(IInstructionRevealer revealer)
-	{
-		_instructionRevealer = revealer;
-	}
-	
-	private Session _siriusSession;
-	public void setSiriusSession(Session session) {
-		_siriusSession = session;
-	}
-	
 	public ILogicalStepDecider getLogicalStepDecider() {
 		return logicalStepDecider;
 	}
 
-	protected Set<IEngineHook> registeredEngineHooks = new HashSet<IEngineHook>();
-
-	private ModelExecutionContext _executionContext;
-
-	/**
-	 * URI of the model being executed
-	 */
-	protected String modelUnderExecutionStringURI = null;
-	/**
-	 * resource of the user model being executed this is the resource with
-	 * dynamic information (from DSA) (not the raw model)
-	 */
-	protected Resource modelUnderExecutionResource = null;
-
-	private Choice _lastChoice;
-	private ExecutionTraceModel _executionTraceModel = GemocExecutionEngineTraceFactory.eINSTANCE.createExecutionTraceModel();
-
-	public ExecutionTraceModel getExecutionTrace() {
-		return _executionTraceModel;
-	}
-
-	/**
-	 * The delay in millisecond to wait between each logical step.
-	 */
-	private int delay;
-
-
+	private IExecutionContext _executionContext;
 
 	/**
 	 * The constructor takes in all the language-specific elements. Creates the
@@ -180,76 +128,42 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
-	public ObservableBasicExecutionEngine(Solver solver, EventExecutor executor, CodeExecutor codeExecutor, FeedbackPolicy feedbackPolicy, ILogicalStepDecider decider,
-			ModelExecutionContext executionContext) {
+	public ObservableBasicExecutionEngine(ILogicalStepDecider decider, ModelExecutionContext executionContext) {
+//		if (decider == null)
+//			throw new IllegalArgumentException("decider");
+		if (executionContext == null)
+			throw new IllegalArgumentException("executionContext");
 
-		// The engine needs AT LEAST a mocEventsResource,
-		// domainSpecificEventsResource, a Solver,
-		// an EventExecutor.
-		if (solver == null | executor == null | feedbackPolicy == null) {
-			StringBuilder exceptionMessage = new StringBuilder();
-			if (solver == null) {
-				exceptionMessage.append(", solver is null, ");
-			}
-			if (executor == null) {
-				exceptionMessage.append(", eventExecutor is null, ");
-			}
-			String message = "Language definition is incomplete" + exceptionMessage; 
-			Activator.getDefault().error(message);
-			throw new EngineNotCorrectlyInitialized(message);
-		} else {
-			Activator.getDefault().info("\tSolver=" + solver);
-			Activator.getDefault().info("\tExecutor=" + executor);
-
-			if (feedbackPolicy == null) {
-				String msg = "FeedbackPolicy is null";
-				Activator.getDefault().warn(msg, new NullPointerException(msg));
+		_executionContext = executionContext;
+		_lastStepsRun = new ArrayDeque<LogicalStep>(getDeadlockDetectionDepth());
+		_executionContext.getEventExecutor().initialize();
+		logicalStepDecider = decider;
+		if (this.logicalStepDecider == null) 
+		{
+			if (_executionContext.getSolver() instanceof CcslSolver) 
+			{
+				Activator.getDefault().warn("LogicalStepDecider not set,  using default SolverDecider");
+				this.logicalStepDecider = new CcslSolverDecider((CcslSolver) _executionContext.getSolver());
 			} else {
-				this.feedbackPolicy = feedbackPolicy;
-				Activator.getDefault().info("\tFeedbackPolicy=" + feedbackPolicy);
-			}
-
-			_executionContext = executionContext;
-
-			this.solver = solver;
-			_codeExecutor = codeExecutor;
-			this._eventExecutor = executor;
-			this._eventExecutor.initialize();
-			this.logicalStepDecider = decider;
-			if (this.logicalStepDecider == null) {
-				if (solver instanceof CcslSolver) {
-					Activator.getDefault().warn("LogicalStepDecider not set,  using default SolverDecider");
-					this.logicalStepDecider = new CcslSolverDecider((CcslSolver) solver);
-				} else {
-					throw new EngineNotCorrectlyInitialized("LogicalStepDecider not set and cannot use default CcslSolverDecider");
-				}
+				throw new EngineNotCorrectlyInitialized("LogicalStepDecider not set and cannot use default CcslSolverDecider");
 			}
 		}
+		
+		for(IClockController clockController: _executionContext.getClockControllers())
+		{
+			if (clockController instanceof IAliveClockController)
+				addClockController((IAliveClockController)clockController);
+		}
+		
+		if (_executionContext.getRunConfiguration().isTraceActive())
+			activateTrace();
+		
+		initialize();
 	}
 
-	private TransactionalEditingDomain _editingDomain;
+	public void initialize() {
 
-	@Override
-	public void initialize(Resource resource, TransactionalEditingDomain editingDomain) {
-
-		_editingDomain = editingDomain;
-		this.modelUnderExecutionStringURI = resource.getURI().toString();
-
-		// Create the modelResource from the modelURI using the modelLoader.
-		this.modelUnderExecutionResource = resource;
-
-		ResourceSet rs = this.modelUnderExecutionResource.getResourceSet();
-
-		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getRuntimePath().toString() + "/trace.xmi", false);
-		final Resource modelResource = rs.createResource(traceModelURI);
-		final CommandStack commandStack = _editingDomain.getCommandStack();
-		commandStack.execute(new RecordingCommand(_editingDomain) {
-			@Override
-			protected void doExecute() {
-				modelResource.getContents().add(_executionTraceModel);
-			}
-		});
-
+		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
 		ClockConstraintSystem clockConstraintSystem = null;
 		for(Resource r : rs.getResources())
 		{
@@ -261,71 +175,69 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 		for (IAliveClockController injector : _clockControllers)
 		{
-			EventInjectionContext context = new EventInjectionContext(solver, clockConstraintSystem);
+			EventInjectionContext context = new EventInjectionContext(_executionContext.getSolver(), clockConstraintSystem);
 			injector.initialize(context);
 			injector.start();
-		}
-		
+		}	
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
 	
-	public void activateTrace() {
+	private void activateTrace() {
 		ModelExecutionTracingCapability capability = capability(ModelExecutionTracingCapability.class);
-		capability.setEditingDomain(_editingDomain);		
+		capability.setModelExecutionContext(_executionContext);
 	}
 
 	@Override
-	public void start() {
-		if (!this.started) {
-			for (IEngineHook hook : registeredEngineHooks) {
+	public void start() 
+	{
+		if (!_started) 
+		{
+			for (IEngineHook hook : _executionContext.getHooks()) 
+			{
 				hook.preStartEngine(this);
 			}
 			engineStatus.setNbLogicalStepRun(0);
 			Runnable execution = new EngineRunnable();
-			Thread mainThread = new Thread(execution, "Gemoc engine " + modelUnderExecutionStringURI);
+			Thread mainThread = new Thread(execution, "Gemoc engine " + _executionContext.getRunConfiguration().getModelURIAsString());
 			mainThread.start();
 		}
 
 	}
 
 	@Override
-	public void stop() {
+	public void stop() 
+	{
 		logicalStepDecider.dispose();
 		terminated = true;
-		for (IEngineHook hook : registeredEngineHooks) {
+		for (IEngineHook hook : _executionContext.getHooks()) 
+		{
 			hook.postStopEngine(this);
 		}
 	}
 
 	private void clean() {
-		URI uri = URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true);
-		Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
-		// for (Resource r :
-		// session.getTransactionalEditingDomain().getResourceSet().getResources())
-		// {
-		// r.unload();
-		// }
-		// for (Resource r :
-		// session.getTransactionalEditingDomain().getResourceSet().getResources())
-		// {
-		// try {
-		// r.load(null);
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
-
-		//
-
+		if (_executionContext.getDebuggerViewModelPath() != null
+			&& !_executionContext.getDebuggerViewModelPath().toString().equals(""))
+		{
+			URI uri = URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true);
+			Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());			
+			session.close(new NullProgressMonitor());
+			SessionManager.INSTANCE.remove(session);
+		}
 		for (IAliveClockController injector : _clockControllers)
 		{
 			injector.stop();
 		}
-		_clockControllers.clear();
+		_clockControllers.clear();		
+		_executionContext.dispose();
+		logicalStepDecider.dispose();
 		
-		session.close(new NullProgressMonitor());
-		SessionManager.INSTANCE.remove(session);
+		if (animator != null) {
+			animator.clear(this);
+		}
+
+		getEngineStatus().getCurrentLogicalStepChoice().clear();
+		getEngineStatus().setChosenLogicalStep(null);
 	}
 
 	public EngineStatus getEngineStatus() {
@@ -359,138 +271,120 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			String engineName = Thread.currentThread().getName();
 			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerNewEngine(engineName, ObservableBasicExecutionEngine.this);
 
-			if (getDebugger() != null) {
+			if (_debugger != null) {
 				// connect the debugger to the model being executed (including
 				// dynamic data)
-				getDebugger().spawnRunningThread(Thread.currentThread().getName(), modelUnderExecutionResource.getContents().get(0));
+				_debugger.spawnRunningThread(Thread.currentThread().getName(), _executionContext.getResourceModel().getContents().get(0));
 			}
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
 			ObservableBasicExecutionEngine.this.setChanged();
-			ObservableBasicExecutionEngine.this.notifyObservers("Starting " + engineName); // use
-																							// a
-																							// simple
-																							// message
-																							// for
-																							// the
-																							// console
-																							// observer
+			ObservableBasicExecutionEngine.this.notifyObservers("Starting " + engineName); 
 			long count = 0;
 
-			try {
-				while (!terminated) {
-					try {
-						if (hasCapability(ModelExecutionTracingCapability.class))
-							updateTraceModelBeforeAskingSolver(count);
-						
-//						solver.freeEnvironmentBDD();
-//						
-						for(IAliveClockController cc : _clockControllers)
-						{
-							cc.makeClocksTickOrNotTick();
-						}
-						
-						// 1- ask solver possible solutions for this step (set
-						// of
-						// logical steps | 1 logical step = set of simultaneous
-						// event occurence)
-						// TODO WARNING current implementation of
-						// getPossibleLogicalSteps() applies a LogicalStep to
-						// the
-						// solver, make sure to call it only once
-						List<LogicalStep> possibleLogicalSteps = solver.getPossibleLogicalSteps();
-						engineStatus.updateCurrentLogicalStepChoice(possibleLogicalSteps);
-						notifyEngineHasChanged();
-						for (IEngineHook hook : registeredEngineHooks) {
-							hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
-						}
-						// 2- select one solution from available logical step /
-						// select interactive vs batch
-						int selectedLogicalStepIndex;
-						if (possibleLogicalSteps.size() == 0) {
-							Activator.getDefault().debug("No more LogicalStep to run");
-							terminated = true;
-						} else {
-							Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
-							engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
-							if (hasCapability(ModelExecutionTracingCapability.class))
-								updateTraceModelBeforeDeciding(possibleLogicalSteps);
-							notifyEngineHasChanged();
-							selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
-							count++;
+			try 
+			{
+				while (!terminated) 
+				{
+					if (hasCapability(ModelExecutionTracingCapability.class))
+						updateTraceModelBeforeAskingSolver(count);
+					
+					for(IAliveClockController cc : _clockControllers)
+					{
+						cc.makeClocksTickOrNotTick();
+					}
+					
+					// 1- ask solver possible solutions for this step (set
+					// of
+					// logical steps | 1 logical step = set of simultaneous
+					// event occurence)
+					// TODO WARNING current implementation of
+					// getPossibleLogicalSteps() applies a LogicalStep to
+					// the
+					// solver, make sure to call it only once
+					List<LogicalStep> possibleLogicalSteps = _executionContext.getSolver().getPossibleLogicalSteps();
 
-							if (selectedLogicalStepIndex == -1) {
-								if (hasRewindHappened()) {
-									if (_executionTraceModel.getChoices().size() > 0)
-										_lastChoice = _executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1);
-									else 
-										_lastChoice = null;
-									Activator.getDefault().debug("Back to past happened --> let the engine ignoring current steps.");
-								} else {
-									Activator.getDefault().debug("Engine cannot continue because decider did not decide anything.");
-									terminated = true;
-								}
-							} else {
-								engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
-								engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
-								if (hasCapability(ModelExecutionTracingCapability.class))
-									updateTraceModelAfterDeciding(selectedLogicalStepIndex);
-
-								notifyEngineHasChanged();
-								for (IEngineHook hook : registeredEngineHooks) {
-									hook.postLogicalStepSelection(ObservableBasicExecutionEngine.this);
-								}
-
-								// 3 - run the selected logical step
-								final LogicalStep logicalStepToApply = possibleLogicalSteps.get(selectedLogicalStepIndex);
-								// inform the solver that we will run this step
-								solver.applyLogicalStepByIndex(selectedLogicalStepIndex);
-								// run all the event occurrences of this logical
-								// step
-								doLogicalStep(logicalStepToApply);
-								// if not debugging wait if needed
-								if (delay != 0) {
-									for (Event event : LogicalStepHelper
-											.getTickedEvents(logicalStepToApply)) {
-										if (event.getReferencedObjectRefs().size() != 0
-											&& _instructionRevealer != null) 
-										{
-											_instructionRevealer.showInstruction(event.getReferencedObjectRefs().get(0));
-										}
-									}
-									Thread.sleep(delay);
-								}
-								terminateIfLastStepsSimilar(logicalStepToApply);
-							}
-						}
-
-						notifyEngineHasChanged();
-						engineStatus.incrementNbLogicalStepRun();
-
-					} catch (Throwable e) {
-						Activator.getDefault().error("Exception received " + e.getMessage() + ", stopping engine.", e);
+					engineStatus.updateCurrentLogicalStepChoice(possibleLogicalSteps);
+					notifyEngineHasChanged();
+					for (IEngineHook hook : _executionContext.getHooks()) 
+					{
+						hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
+					}
+					// 2- select one solution from available logical step /
+					// select interactive vs batch
+					int selectedLogicalStepIndex;
+					if (possibleLogicalSteps.size() == 0) {
+						Activator.getDefault().debug("No more LogicalStep to run");
 						terminated = true;
-					} finally {
-						if (animator != null) {
-							animator.clear(this);
+					} else {
+						Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
+						engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
+						if (hasCapability(ModelExecutionTracingCapability.class))
+							updateTraceModelBeforeDeciding(possibleLogicalSteps);
+						notifyEngineHasChanged();
+						selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
+						count++;
+
+						if (selectedLogicalStepIndex == -1) {
+							if (hasRewindHappened()) {
+//								getCapability(ModelExecutionTracingCapability.class).getLastChoice();
+								Activator.getDefault().debug("Back to past happened --> let the engine ignoring current steps.");
+							} else {
+								Activator.getDefault().debug("Engine cannot continue because decider did not decide anything.");
+								terminated = true;
+							}
+						} else {
+							engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
+							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
+							if (hasCapability(ModelExecutionTracingCapability.class))
+								updateTraceModelAfterDeciding(selectedLogicalStepIndex);
+
+							notifyEngineHasChanged();
+							for (IEngineHook hook : _executionContext.getHooks()) 
+							{
+								hook.postLogicalStepSelection(ObservableBasicExecutionEngine.this);
+							}
+
+							// 3 - run the selected logical step
+							final LogicalStep logicalStepToApply = possibleLogicalSteps.get(selectedLogicalStepIndex);
+							// inform the solver that we will run this step
+							_executionContext.getSolver().applyLogicalStepByIndex(selectedLogicalStepIndex);
+							// run all the event occurrences of this logical
+							// step
+							doLogicalStep(logicalStepToApply);
+							// if not debugging wait if needed
+							applyAnimationTime();
+							terminateIfLastStepsSimilar(logicalStepToApply);
 						}
 					}
-				}
 
-			} finally {
+					notifyEngineHasChanged();
+					engineStatus.incrementNbLogicalStepRun();
+				} 
+			} catch (Throwable e) {
+				Activator.getDefault().error("Exception received " + e.getMessage() + ", stopping engine.", e);
+				terminated = true;
+			}
+			finally {
 				clean();
 			}
 
 			// inform the debugger UI that the thread is terminated
-			if (getDebugger() != null && !getDebugger().isTerminated(Thread.currentThread().getName())) {
-				getDebugger().terminated(Thread.currentThread().getName());
+			if (_debugger != null && !_debugger.isTerminated(Thread.currentThread().getName())) {
+				_debugger.terminated(Thread.currentThread().getName());
 				setDebugger(null); // make sure to release handles
 			}
 
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Stopped);
 			ObservableBasicExecutionEngine.this.setChanged();
 			ObservableBasicExecutionEngine.this.notifyObservers("Stopping " + engineName);
+		}
 
-			// TODO remove the engine from registered running engines
+		private void applyAnimationTime() throws InterruptedException {
+			int animationDelay = _executionContext.getRunConfiguration().getAnimationDelay();								
+			if (animationDelay != 0) 
+			{
+				Thread.sleep(animationDelay);
+			}
 		}
 
 		private boolean hasRewindHappened() {
@@ -503,106 +397,46 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		private void terminateIfLastStepsSimilar(final LogicalStep logicalStepToApply) {
 			// if all lastStepsRun are the same, then we may have reached the
 			// end of the simulation
-			lastStepsRun.add(logicalStepToApply);
+			_lastStepsRun.add(logicalStepToApply);
 			boolean allLastLogicalStepAreTheSame = true;
-			for (LogicalStep logicalStep : lastStepsRun) {
+			for (LogicalStep logicalStep : _lastStepsRun) {
 				allLastLogicalStepAreTheSame = allLastLogicalStepAreTheSame && areLogicalStepSimilar(logicalStep, logicalStepToApply);
 			}
-			if ((lastStepsRun.size() >= nbLastStepRunObservedForStopDetection) && allLastLogicalStepAreTheSame) {
-				Activator.getDefault().debug("Detected " + nbLastStepRunObservedForStopDetection + " identical LogicalStep, stopping engine");
+			if ((_lastStepsRun.size() >= getDeadlockDetectionDepth()) && allLastLogicalStepAreTheSame) {
+				Activator.getDefault().debug("Detected " + getDeadlockDetectionDepth() + " identical LogicalStep, stopping engine");
 				terminated = true;
 			}
 			// if queue is full, remove one
-			if (lastStepsRun.size() > nbLastStepRunObservedForStopDetection)
-				lastStepsRun.poll();
-		}
-
-		private void notifyEngineHasChanged() {
-			ObservableBasicExecutionEngine.this.setChanged();
-			ObservableBasicExecutionEngine.this.notifyObservers(); // no message
-																	// in the
-																	// notification
-																	// in order
-																	// to keep
-																	// the
-																	// console
-																	// with few
-																	// info
-		}
-
-		private void saveModels(long count) throws CoreException, IOException {
-			if (hasCapability(ModelExecutionTracingCapability.class))
-				capability(ModelExecutionTracingCapability.class).saveTraceModel(_executionTraceModel.eResource(), modelUnderExecutionResource, solver, count);
-	//		_executionContext.saveTraceModel(_executionTraceModel.eResource(), modelUnderExecutionResource, solver, count);
-			// _executionContext.saveDomainModel(modelUnderExecutionResource,
-			// count);
+			if (_lastStepsRun.size() > getDeadlockDetectionDepth())
+				_lastStepsRun.poll();
 		}
 
 		private void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) {
-			final CommandStack commandStack = _editingDomain.getCommandStack();
-			commandStack.execute(new RecordingCommand(_editingDomain) {
-
-				@Override
-				protected void doExecute() {
-					if (_lastChoice.getPossibleLogicalSteps().size() == 0)
-						return;
-					_lastChoice.setChosenLogicalStep(_lastChoice.getPossibleLogicalSteps().get(selectedLogicalStepIndex));
-				}
-			});
+			if (hasCapability(ModelExecutionTracingCapability.class))
+				capability(ModelExecutionTracingCapability.class).updateTraceModelAfterDeciding(selectedLogicalStepIndex);
 		}
 
 		private void updateTraceModelBeforeAskingSolver(final long count) {
-			final CommandStack commandStack = _editingDomain.getCommandStack();
-			commandStack.execute(new RecordingCommand(_editingDomain) {
-
-				@Override
-				protected void doExecute() {
-					Choice newChoice = createChoice();
-					if (_lastChoice != null) {
-						_lastChoice.setNextChoice(newChoice);
-					}
-					_lastChoice = newChoice;
-					_executionTraceModel.getChoices().add(_lastChoice);
-					try {
-						saveModels(count);
-					} catch (CoreException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			});
+			if (hasCapability(ModelExecutionTracingCapability.class))
+				capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeAskingSolver(count);
 		}
 
 		private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
-			final CommandStack commandStack = _editingDomain.getCommandStack();
-			commandStack.execute(new RecordingCommand(_editingDomain) {
-
-				@Override
-				protected void doExecute() {
-					_lastChoice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
-					for (LogicalStep ls : possibleLogicalSteps) {
-						LogicalStepHelper.removeNotTickedEvents(ls);
-					}
-					_executionTraceModel.getChoices().add(_lastChoice);
-					for (LogicalStep step : _lastChoice.getPossibleLogicalSteps()) {
-						for (EventOccurrence occurence : step.getEventOccurrences()) {
-							_executionTraceModel.eResource().getContents().add(occurence.getReferedElement());
-						}
-					}
-				}
-			});
-		}
-
-		private Choice createChoice() {
-			Choice choice = GemocExecutionEngineTraceFactory.eINSTANCE.createChoice();
-			return choice;
+			if (hasCapability(ModelExecutionTracingCapability.class))
+				capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeDeciding(possibleLogicalSteps);
 		}
 
 	}
 
+	private void notifyEngineHasChanged() {
+		ObservableBasicExecutionEngine.this.setChanged();
+		ObservableBasicExecutionEngine.this.notifyObservers(); 
+	}
+
+	private int getDeadlockDetectionDepth() 
+	{
+		return _executionContext.getRunConfiguration().getDeadlockDetectionDepth();
+	}
 	/**
 	 * run all the event occurrences of this logical step
 	 * 
@@ -617,8 +451,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		// execution feedback is sent to the solver so it can take internal
 		// event into account
 
-		if (debugger != null) {
-			terminated = !debugger.control(Thread.currentThread().getName(), logicalStepToApply);
+		if (_debugger != null) {
+			terminated = !_debugger.control(Thread.currentThread().getName(), logicalStepToApply);
 		}
 		
 		if (animator != null) {
@@ -642,7 +476,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				if (event.getReferencedObjectRefs().get(1) instanceof EOperation) {
 					EObject targetModelElement = event.getReferencedObjectRefs().get(0);
 					EOperation targetOperation = (EOperation) event.getReferencedObjectRefs().get(1);
-					Activator.getDefault().info("event occurence: target=" + targetModelElement.toString() + " operation=" + targetOperation.getName());
 					// TODO verify that solver and engine work on the same
 					// resource ...
 
@@ -650,18 +483,14 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(targetModelElement, targetOperation);
 					engineEventOccurences.add(engineEventOccurence);
 				} else {
-					Activator.getDefault().warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
 					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
 					engineEventOccurences.add(engineEventOccurence);
 				}
 			} else {
 				if (event.getReferencedObjectRefs().size() == 1) {
-					Activator.getDefault().warn("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
 					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
 					engineEventOccurences.add(engineEventOccurence);
-				} else {
-					Activator.getDefault().debug("event occurence: TICK Event=" + event.getName() + " ReferencedObjectRefs=" + event.getReferencedObjectRefs());
-				}
+				} 
 			}
 			// }
 			// else{
@@ -681,8 +510,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			// FIXME can pause on each eventoccurence, should be done in
 			// separate threads if we support step into or globally at the
 			// LogicalStep level
-			if (debugger != null) {
-				terminated = !debugger.control(Thread.currentThread().getName(), engineEventOccurence.getTargetObject());
+			if (_debugger != null) {
+				terminated = !_debugger.control(Thread.currentThread().getName(), engineEventOccurence.getTargetObject());
 			}
 
 			if (engineEventOccurence.getTargetOperation() != null) {
@@ -693,7 +522,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				// FeedbackData feedbackData = new FeedbackData(res,
 				// engineEventOccurence);
 				if (res != null) {
-					feedbackPolicy.processFeedback(res, ObservableBasicExecutionEngine.this);
+					_executionContext.getFeedbackPolicy().processFeedback(res, ObservableBasicExecutionEngine.this);
 				}
 			}
 
@@ -709,7 +538,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * @return the {@link FeedbackData} if any, <code>null</code> other wise
 	 */
 	protected FeedbackData callExecutor(final EngineEventOccurence engineEventOccurence) {
-		final TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(ObservableBasicExecutionEngine.this.modelUnderExecutionResource.getResourceSet());
+		final TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(_executionContext.getResourceModel().getResourceSet());
 		FeedbackData res = null;
 		if (editingDomain != null) {
 			final RecordingCommand command = new RecordingCommand(editingDomain) {
@@ -718,7 +547,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				@Override
 				protected void doExecute() {
 					try {
-						result.add(_eventExecutor.execute(engineEventOccurence));
+						result.add(_executionContext.getEventExecutor().execute(engineEventOccurence));
 					} catch (EventExecutionException e) {
 						Activator.getDefault().error("Exception received " + e.getMessage(), e);
 					}
@@ -733,7 +562,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			res = (FeedbackData) command.getResult().iterator().next();
 		} else {
 			try {
-				res = _eventExecutor.execute(engineEventOccurence);
+				res = _executionContext.getEventExecutor().execute(engineEventOccurence);
 			} catch (EventExecutionException e) { 
 				Activator.getDefault().error("Exception received " + e.getMessage(), e);
 			}
@@ -743,47 +572,19 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 	@Override
 	public String toString() {
-		return this.getClass().getName() + "@[Executor=" + this._eventExecutor + " ; Solver=" + this.solver + " ; ModelResource=" + this.modelUnderExecutionResource + "]";
-	}
-
-	/* Getters and Setters */
-	@Override
-	public Resource getModelUnderExecutionResource() {
-		return this.modelUnderExecutionResource;
-	}
-
-	public GemocModelDebugger getDebugger() {
-		return debugger;
+		return this.getClass().getName() + "@[Executor=" + _executionContext.getEventExecutor() + " ; Solver=" + _executionContext.getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
 	}
 
 	public void setDebugger(GemocModelDebugger debugger) {
-		this.debugger = debugger;
-	}
-
-	public IGemocModelAnimator getAnimator() {
-		return animator;
+		_debugger = debugger;
 	}
 
 	public void setAnimator(IGemocModelAnimator animator) {
 		this.animator = animator;
 	}
 
-	@Override
-	public void setDelay(int delay) {
-		this.delay = delay;
-	}
-
-	public void addEngineHook(IEngineHook newEngineHook) {
-		registeredEngineHooks.add(newEngineHook);
-	}
-
-	@Override
-	public void removeEngineHook(IEngineHook removedEngineHook) {
-		registeredEngineHooks.remove(removedEngineHook);
-	}
-
 	private ArrayList<IAliveClockController> _clockControllers = new ArrayList<IAliveClockController>();
-	public void addClockController(IAliveClockController controller) 
+	private void addClockController(IAliveClockController controller) 
 	{
 		_clockControllers.add(controller);
 	}
@@ -798,6 +599,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		return false;
 	}
 
+	@SuppressWarnings("all")
 	public <T extends IExecutionEngineCapability> T getCapability(Class<T> type) {
 		for (IExecutionEngineCapability c : _capabilities) {
 			if (c.getClass().equals(type))
@@ -814,29 +616,21 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				capability.initialize(this);
 				_capabilities.add(capability);
 			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return capability;
 	}
 
-	@Override
-	public Solver getSolver() {
-		return solver;
-	}
-
-	@Override
-	public CodeExecutor getCodeExecutor() {
-		return _codeExecutor;
-	}
-
 	public ArrayList<IAliveClockController> get_clockControllers() {
 		return _clockControllers;
 	}
 
-
+	@Override
+	public IExecutionContext getExecutionContext() {
+		return _executionContext;
+	}
+	
 }

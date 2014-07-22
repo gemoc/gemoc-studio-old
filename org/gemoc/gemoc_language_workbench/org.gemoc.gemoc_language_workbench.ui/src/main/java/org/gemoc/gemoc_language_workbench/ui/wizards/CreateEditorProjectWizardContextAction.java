@@ -31,8 +31,8 @@ import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
-import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAnyIProjectDialog;
 
 //import org.eclipse.emf.ecoretools.design.wizard.EcoreModelerWizard;
 

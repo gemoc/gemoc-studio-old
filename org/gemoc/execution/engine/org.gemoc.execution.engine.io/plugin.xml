@@ -16,13 +16,6 @@
       </view>
       <view
             category="org.gemoc.execution.engine.io.category"
-            class="org.gemoc.execution.engine.io.views.ExecutionTraceView"
-            icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.execution.engine.io.views.ExecutionTraceView"
-            name="Gemoc Execution Trace">
-      </view>
-      <view
-            category="org.gemoc.execution.engine.io.category"
             class="org.gemoc.execution.engine.io.views.step.LogicalStepsView"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
@@ -104,6 +97,46 @@
                style="push">
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.gemoc.execution.engine.io.views.event.EventManagerView">
+         <command
+               commandId="org.gemoc.execution.engine.io.views.event.commands.LoadScenario"
+               icon="icons/footprints-cat-16.png"
+               label="Load Scenario"
+               style="push">
+         </command>   
+         <command
+               commandId="org.gemoc.execution.engine.io.views.event.commands.StartRecordScenario"
+               icon="icons/media-record.png"
+               label="Start Record Scenario"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="org.gemoc.execution.engine.io.views.event.commands.RECORD">
+                  <equals
+                        value="DISABLE">
+                  </equals>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.gemoc.execution.engine.io.views.event.commands.StopRecordScenario"
+               icon="icons/stop.png"
+               label="Stop Record Scenario"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="org.gemoc.execution.engine.io.views.event.commands.RECORD">
+                  <equals
+                        value="ENABLE">
+                  </equals>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -117,6 +150,94 @@
             id="org.gemoc.execution.engine.io.command.RemoveAllEngines"
             name="Remove all engines">
       </command>
+      <command
+            id="org.gemoc.execution.engine.io.views.event.commands.StartRecordScenario"
+            name="Start Record Scenario">
+      </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.StopRecordScenario"
+            id="org.gemoc.execution.engine.io.views.event.commands.StopRecordScenario"
+            name="Stop Record Scenario">
+      </command>
+      <command
+            id="org.gemoc.execution.engine.io.views.event.commands.LoadScenario"
+            name="Load Scenario">
+      </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.StopPlayScenario"
+            id="org.gemoc.execution.engine.io.views.event.commands.StopPlayScenario"
+            name="Stop Play Scenario">
+      </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.doInit"
+            id="org.gemoc.execution.engine.io.views.event.commands.DoInit"
+            name="Do Init">
+      </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.UndoInit"
+            id="org.gemoc.execution.engine.io.views.event.commands.UndoInit"
+            name="Undo init">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.services">
+      <sourceProvider
+            provider="org.gemoc.execution.engine.io.views.event.commands.CommandState">
+         <variable
+               name="PLAY_STATE"
+               priorityLevel="workbench">
+         </variable>
+         <variable
+               name="RECORD_STATE"
+               priorityLevel="workbench">
+         </variable>
+         <variable
+               name="INIT_STATE"
+               priorityLevel="workbench">
+         </variable>
+      </sourceProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.gemoc.execution.engine.io.views.event.commands.LoadScenario"
+            commandId="org.gemoc.execution.engine.io.views.event.commands.LoadScenario">
+         <enabledWhen>
+            <with
+                  variable="org.gemoc.execution.engine.io.views.event.commands.RECORD">
+               <equals
+                     value="DISABLE">
+               </equals>
+               <and>
+               	<with
+                  variable="org.gemoc.execution.engine.io.views.event.commands.PLAY">
+               		<equals
+                     	value="DISABLE">
+               		</equals>
+                 <and>
+                 	<with
+                  variable="org.gemoc.execution.engine.io.views.event.commands.INIT">
+               		<equals
+                     	value="SET">
+               		</equals>
+               		</with>
+                 </and>
+            	</with>
+            	</and>
+            </with></enabledWhen>
+      </handler>
+      <handler
+            class="org.gemoc.execution.engine.io.views.event.commands.StartRecordScenario"
+            commandId="org.gemoc.execution.engine.io.views.event.commands.StartRecordScenario">
+         <enabledWhen>
+            <with
+                  variable="org.gemoc.execution.engine.io.views.event.commands.INIT">
+               <equals
+                     value="SET">
+               </equals>
+            </with>
+         </enabledWhen>
+      </handler>
    </extension>
 
 </plugin>

@@ -4,7 +4,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectDSAIprojectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIprojectDialog;
 
 public class CreateDSAWizardContextActionDSA extends CreateDSAWizardContextBase {
 

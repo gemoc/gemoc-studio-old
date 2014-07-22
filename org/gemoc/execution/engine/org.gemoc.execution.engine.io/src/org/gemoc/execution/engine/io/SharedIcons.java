@@ -8,6 +8,9 @@ import org.eclipse.swt.graphics.Image;
 public class SharedIcons {
 
 	public static ImageDescriptor ENGINE_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/settings-5-16.png");
+	public static ImageDescriptor RUNNING_ENGINE_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/services-16-green.png");
+	public static ImageDescriptor STOPPED_ENGINE_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/services-16-red.png");
+	public static ImageDescriptor WAITING_ENGINE_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/services-16-blue.png");
 	
 	public static ImageDescriptor LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/footprints-cat-16.png");
 	

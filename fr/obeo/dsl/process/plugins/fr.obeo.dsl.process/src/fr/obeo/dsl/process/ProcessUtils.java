@@ -223,7 +223,7 @@ public final class ProcessUtils {
 		final boolean res;
 
 		if (task instanceof ActionTask) {
-			res = context.getProgress().containsKey(task);
+			res = context.isDone((ActionTask)task);
 		} else if (task instanceof ComposedTask) {
 			res = evaluateDoneExpression(context, (ComposedTask)task);
 		} else {

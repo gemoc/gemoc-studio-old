@@ -103,7 +103,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					if (element instanceof GemocExecutionEngine)
 					{					
 						GemocExecutionEngine engine = (GemocExecutionEngine)element;
-						result = engine.getModelUnderExecutionResource().getURI().segmentsList().get(engine.getModelUnderExecutionResource().getURI().segments().length-1);						
+						result = engine.getExecutionContext().getResourceModel().getURI().segmentsList().get(engine.getExecutionContext().getResourceModel().getURI().segments().length-1);						
 					}
 					return result;
 				}
@@ -113,7 +113,28 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					Image result = null;
 					if (element instanceof GemocExecutionEngine)
 					{
-						result = SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON);
+						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+						
+						switch (engine.getEngineStatus().getRunningStatus()) {
+							case Running:
+								result = SharedIcons.getSharedImage(SharedIcons.RUNNING_ENGINE_ICON);							
+								break;
+	
+							case Stopped:
+								result = SharedIcons.getSharedImage(SharedIcons.STOPPED_ENGINE_ICON);							
+								break;
+
+							case WaitingLogicalStepSelection:
+								result = SharedIcons.getSharedImage(SharedIcons.WAITING_ENGINE_ICON);							
+								break;
+
+							case Initializing:
+								result = SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON);							
+								break;
+
+							default:
+								break;
+						}
 					}
 					return result;
 				}
@@ -259,16 +280,15 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		Display.getDefault().asyncExec(new Runnable() {
+		Display.getDefault().syncExec(new Runnable() {
 		      public void run() {
 		    	  // we may be triggered by a registry change or by an engine change
 		    	  // if registry changes, then may need to observe the new engine
-		    	  for( GemocExecutionEngine engine :org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values()){
+		    	  for (GemocExecutionEngine engine : org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values()){
 		    		  ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
 		    		  observable.addObserver(EnginesStatusView.this);
 		    	  }
 		    	  _viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);	    	  
-		    	  _viewer.refresh();
 		    	  TreeViewerHelper.resizeColumns(_viewer);
 		    	  if (_lastSelection != null) {
 		    		  TreePath treePath = new TreePath(new Object[] {_lastSelection});

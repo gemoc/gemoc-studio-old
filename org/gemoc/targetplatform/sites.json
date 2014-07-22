@@ -85,6 +85,9 @@
         ],
     "groovy": [
     	"http://dist.springsource.org/release/GRECLIPSE/e4.3/"
+    	],
+    "nebula": [
+		"http://download.eclipse.org/technology/nebula/incubation/snapshot"
     	]
 
 }

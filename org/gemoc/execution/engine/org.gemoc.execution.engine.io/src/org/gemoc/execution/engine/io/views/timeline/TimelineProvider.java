@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.io.views.timeline;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
@@ -26,17 +27,17 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	}
 	
 	private ExecutionTraceModel getExecutionTrace() {
-		return _engine.getExecutionTrace();
+		return _engine.getCapability(ModelExecutionTracingCapability.class).getExecutionTrace();
 	}
 
 	@Override
-	public int getNumberOfTicks() {
+	public int getNumberOfChoices() {
 		int numberOfChoices = getExecutionTrace().getChoices().size();
 		return numberOfChoices;
 	}
 
 	@Override
-	public int getNumberOfchoicesAt(int index) {
+	public int getNumberOfPossibleStepsAt(int index) {
 		int numberOfPossibleSteps = getExecutionTrace().getChoices().get(index).getPossibleLogicalSteps().size();
 		return numberOfPossibleSteps;
 	}
@@ -97,7 +98,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	@Override
 	public int getFollowing(int index, int choice) {
 		int result = -1;
-		if (index < getNumberOfTicks())
+		if (index < getNumberOfChoices())
 		{
 			Choice gemocChoice = getExecutionTrace().getChoices().get(index);
 			int chosenLogicalStepIndex = gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
@@ -114,7 +115,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	@Override
 	public int getPreceding(int index, int choice) {
 		int result = -1;
-		if (index < getNumberOfTicks())
+		if (index < getNumberOfChoices())
 		{
 			Choice gemocChoice = getExecutionTrace().getChoices().get(index);
 			int chosenLogicalStepIndex = gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
@@ -134,12 +135,12 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 		{
 			Choice gemocChoice = getExecutionTrace().getChoices().get(getExecutionTrace().getChoices().size() - 1);
 			notifyIsSelectedChanged(getExecutionTrace().getChoices().size() - 1, gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()), true);
-			notifyNumberOfticksChanged(getExecutionTrace().getChoices().size());			
+			notifyNumberOfChoicesChanged(getExecutionTrace().getChoices().size());			
 		}
 	}
 
 	@Override
-	public int getSelectedChoice(int index) {
+	public int getSelectedPossibleStep(int index) {
 		Choice gemocChoice = getExecutionTrace().getChoices().get(index);
 		return gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
 	}

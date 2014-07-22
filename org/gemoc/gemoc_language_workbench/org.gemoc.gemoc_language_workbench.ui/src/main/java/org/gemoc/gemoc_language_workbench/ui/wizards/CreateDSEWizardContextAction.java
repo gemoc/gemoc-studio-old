@@ -34,9 +34,9 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIprojectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectECLIFileDialog;
 import org.gemoc.gemoc_language_workbench.ui.dse.GemocDSENature;
-import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectDSAIprojectDialog;
-import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectECLIFileDialog;
 
 public class CreateDSEWizardContextAction {
 

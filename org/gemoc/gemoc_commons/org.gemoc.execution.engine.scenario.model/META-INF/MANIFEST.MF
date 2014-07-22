@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.gemoc.execution.engine.scenario.model;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.gemoc.execution.engine.scenario,
+ org.gemoc.execution.engine.scenario.impl,
+ org.gemoc.execution.engine.scenario.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy

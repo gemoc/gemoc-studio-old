@@ -38,7 +38,8 @@ public class  EngineStatus {
 	public void updateCurrentLogicalStepChoice(List<LogicalStep> newCurrentLogicalStepChoice){
 		synchronized (this){
 			currentLogicalStepChoice.clear();
-			currentLogicalStepChoice.addAll(newCurrentLogicalStepChoice);
+			if (newCurrentLogicalStepChoice != null)
+				currentLogicalStepChoice.addAll(newCurrentLogicalStepChoice);
 		}
 	}
 	

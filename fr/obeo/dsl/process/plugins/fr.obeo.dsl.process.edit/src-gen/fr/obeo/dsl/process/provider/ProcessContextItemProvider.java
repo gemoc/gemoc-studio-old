@@ -52,7 +52,6 @@ public class ProcessContextItemProvider extends ItemProviderAdapter implements I
 
 			addNamePropertyDescriptor(object);
 			addDefinitionPropertyDescriptor(object);
-			addProgressPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -83,20 +82,6 @@ public class ProcessContextItemProvider extends ItemProviderAdapter implements I
 						"_UI_PropertyDescriptor_description", "_UI_ProcessContext_definition_feature",
 						"_UI_ProcessContext_type"), ProcessPackage.Literals.PROCESS_CONTEXT__DEFINITION,
 				true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Progress feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void addProgressPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ProcessContext_progress_feature"), getString(
-						"_UI_PropertyDescriptor_description", "_UI_ProcessContext_progress_feature",
-						"_UI_ProcessContext_type"), ProcessPackage.Literals.PROCESS_CONTEXT__PROGRESS, true,
-				false, true, null, null, null));
 	}
 
 	/**

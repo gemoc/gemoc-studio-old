@@ -28,9 +28,8 @@ import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
-import org.gemoc.gemoc_language_workbench.utils.emf.ENamedElementQualifiedNameLabelProvider;
-import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAnyConcreteEClassDialog;
-import org.gemoc.gemoc_language_workbench.utils.ui.dialogs.SelectAnyEObjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyConcreteEClassDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyEObjectDialog;
 
 public class SetRootEObjectHandler extends AbstractGemocLanguageProjectHandler implements
 		IHandler {

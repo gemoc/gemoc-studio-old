@@ -2,7 +2,6 @@
  */
 package fr.obeo.dsl.process;
 
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -76,21 +75,39 @@ public interface ProcessContext extends EObject {
 	void setDefinition(fr.obeo.dsl.process.Process value);
 
 	/**
-	 * Returns the value of the '<em><b>Progress</b></em>' map. The key is of type
-	 * {@link fr.obeo.dsl.process.Task}, and the value is of type {@link java.lang.Object}, <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Progress</em>' reference list isn't clear, there really should be more of a
-	 * description here...
-	 * </p>
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Tells if the given
+	 * {@link ActionTask} is done. <!-- end-model-doc -->
 	 * 
-	 * @return the value of the '<em>Progress</em>' map.
-	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Progress()
-	 * @model mapType=
-	 *        "fr.obeo.dsl.process.TaskToArtifactMap<fr.obeo.dsl.process.Task, fr.obeo.dsl.process.Artifact>"
+	 * @model required="true" taskRequired="true"
 	 * @generated
 	 */
-	EMap<ActionTask, Object> getProgress();
+	boolean isDone(ActionTask task);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Marks the given
+	 * {@link ActionTask} as done with the given value attached to it. <!-- end-model-doc -->
+	 * 
+	 * @model taskRequired="true" valueDataType="fr.obeo.dsl.process.Artifact" valueRequired="true"
+	 * @generated
+	 */
+	void setDone(ActionTask task, Object value);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Marks the given
+	 * {@link ActionTask} as undone with the given reason. <!-- end-model-doc -->
+	 * 
+	 * @model taskRequired="true"
+	 * @generated
+	 */
+	void setUndone(ActionTask task, String reason);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Gets the result artifact
+	 * attached to the given {@link ActionTask} if any, <code>null</code> otherwise. <!-- end-model-doc -->
+	 * 
+	 * @model dataType="fr.obeo.dsl.process.Artifact" required="true" taskRequired="true"
+	 * @generated
+	 */
+	Object getResult(ActionTask task);
 
 } // ProcessContext

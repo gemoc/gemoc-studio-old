@@ -1,5 +1,7 @@
 package org.gemoc.execution.engine.io.views.event;
 
+import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
+
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
 
@@ -14,17 +16,17 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
 public class EventManagerClockWrapper {
 	private Clock _clock;
 	private ClockControllerInternal _clockController;
-	private boolean _state;
+	private Boolean _state;
 	
 	public EventManagerClockWrapper(Clock clock, ClockControllerInternal clockController) {
 		_clock = clock;
 		_state = false;
 		_clockController = clockController;
 	}
-	public boolean is_state() {
+	public boolean isState() {
 		return _state;
 	}
-	public void set_state(boolean state) {
+	public void setState(boolean state) {
 		_state = state;		
 		if (_state)
 		{
@@ -43,7 +45,7 @@ public class EventManagerClockWrapper {
 		result += _clock.getName();
 		return result;
 	}
-	public Clock get_clock() {
+	public Clock getClock() {
 		return _clock;
 	}
 }

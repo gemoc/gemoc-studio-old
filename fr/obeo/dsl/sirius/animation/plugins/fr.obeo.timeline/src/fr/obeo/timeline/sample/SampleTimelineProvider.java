@@ -27,71 +27,86 @@ import fr.obeo.timeline.view.AbstractTimelineProvider;
 public class SampleTimelineProvider extends AbstractTimelineProvider {
 
 	/**
+	 * Populate the timeline asynchronously.
+	 * 
+	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+	 */
+	private final class TimelineRunnable implements Runnable {
+
+		/**
+		 * Delay between notifications in miliseconds.
+		 */
+		private static final int DELAY_MS = 300;
+
+		@Override
+		public void run() {
+			for (size = 1; size <= possibleSteps.length; ++size) {
+				notifyNumberOfChoicesChanged(size);
+				final int index = size - 1;
+				try {
+					Thread.sleep(DELAY_MS);
+					final int nbPossibleSteps = 1 + (int)(Math.random() * 5);
+					possibleSteps[index] = nbPossibleSteps; // create possible steps
+					notifyNumberOfPossibleStepsAtChanged(index, nbPossibleSteps);
+					Thread.sleep(DELAY_MS);
+					selected[index] = (int)(Math.random() * nbPossibleSteps); // make a selection
+					notifyIsSelectedChanged(index, selected[index], true);
+					Thread.sleep(DELAY_MS / 2);
+					if (index - 1 >= 0) {
+						notifyFollowingChanged(index - 1, selected[index - 1], selected[index]);
+						Thread.sleep(DELAY_MS / 2);
+					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	/**
 	 * The size of the sample timeline.
 	 */
 	private static final int SIZE = 100000;
 
 	/**
-	 * Sizes of tics.
+	 * Sizes of choices.
 	 */
-	private final int[] choices;
+	private final int[] possibleSteps;
 
 	/**
-	 * Selected choice.
+	 * Selected possible step.
 	 */
 	private final int[] selected;
 
-	int size;
+	/**
+	 * The size of the timeline.
+	 */
+	private int size;
 
 	/**
 	 * Constructor.
 	 */
 	public SampleTimelineProvider() {
-		choices = new int[SIZE];
+		possibleSteps = new int[SIZE];
 		selected = new int[SIZE];
-		for (int i = 0; i < choices.length; ++i) {
-			choices[i] = -1; // no choices
+		for (int i = 0; i < possibleSteps.length; ++i) {
+			possibleSteps[i] = -1; // no possible steps
 			selected[i] = -1; // no selection
 		}
 
-		Runnable runnable = new Runnable() {
-
-			@Override
-			public void run() {
-				for (size = 1; size <= choices.length; ++size) {
-					notifyNumberOfticksChanged(size);
-					final int index = size - 1;
-					try {
-						Thread.sleep(300);
-						final int nbChoices = 1 + (int)(Math.random() * 5);
-						choices[index] = nbChoices; // create choices
-						notifyNumberOfchoicesAtChanged(index, nbChoices);
-						Thread.sleep(300);
-						selected[index] = (int)(Math.random() * nbChoices); // make a selection
-						notifyIsSelectedChanged(index, selected[index], true);
-						Thread.sleep(150);
-						if (index - 1 >= 0) {
-							notifyFollowingChanged(index - 1, selected[index - 1], selected[index]);
-							Thread.sleep(150);
-						}
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			};
-		};
+		Runnable runnable = new TimelineRunnable();
 		new Thread(runnable).start();
 	}
 
 	@Override
-	public int getNumberOfTicks() {
+	public int getNumberOfChoices() {
 		return size;
 	}
 
 	@Override
-	public int getNumberOfchoicesAt(int index) {
-		return choices[index];
+	public int getNumberOfPossibleStepsAt(int index) {
+		return possibleSteps[index];
 	}
 
 	@Override
@@ -100,7 +115,7 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
-	public Object getAt(int index, int choice) {
+	public Object getAt(int index, int possibleStep) {
 		return "something";
 	}
 
@@ -110,20 +125,20 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
-	public int getSelectedChoice(int index) {
+	public int getSelectedPossibleStep(int index) {
 		return selected[index];
 	}
 
 	@Override
-	public String getTextAt(int index, int choice) {
-		return "choice " + choice;
+	public String getTextAt(int index, int possibleStep) {
+		return "possible step " + possibleStep;
 	}
 
 	@Override
-	public int getFollowing(int index, int choice) {
+	public int getFollowing(int index, int possibleStep) {
 		final int res;
 
-		if (index < getNumberOfTicks() - 1 && choice == selected[index]) {
+		if (index < getNumberOfChoices() - 1 && possibleStep == selected[index]) {
 			res = selected[index + 1];
 		} else {
 			res = -1;
@@ -133,10 +148,10 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	}
 
 	@Override
-	public int getPreceding(int index, int choice) {
+	public int getPreceding(int index, int possibleStep) {
 		final int res;
 
-		if (index > 0 && choice == selected[index]) {
+		if (index > 0 && possibleStep == selected[index]) {
 			res = selected[index - 1];
 		} else {
 			res = -1;

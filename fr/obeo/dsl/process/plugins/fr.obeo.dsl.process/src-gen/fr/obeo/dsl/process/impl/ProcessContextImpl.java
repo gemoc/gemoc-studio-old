@@ -6,16 +6,14 @@ import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EcoreEMap;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Context</b></em>'. <!-- end-user-doc
@@ -62,14 +60,18 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	protected fr.obeo.dsl.process.Process definition;
 
 	/**
-	 * The cached value of the '{@link #getProgress() <em>Progress</em>}' map. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The current progress of this instance of {@link Process}.
 	 * 
-	 * @see #getProgress()
-	 * @generated
-	 * @ordered
+	 * @generated NOT
 	 */
-	protected EMap<ActionTask, Object> progress;
+	private final Map<ActionTask, Object> progress = new HashMap<ActionTask, Object>();
+
+	/**
+	 * Reasons of an {@link ActionTask} not been done.
+	 * 
+	 * @generated NOT
+	 */
+	private final Map<ActionTask, String> reasons = new HashMap<ActionTask, String>();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -155,28 +157,39 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
-	public EMap<ActionTask, Object> getProgress() {
-		if (progress == null) {
-			progress = new EcoreEMap<ActionTask, Object>(ProcessPackage.Literals.TASK_TO_ARTIFACT_MAP,
-					TaskToArtifactMapImpl.class, this, ProcessPackage.PROCESS_CONTEXT__PROGRESS);
-		}
-		return progress;
+	public boolean isDone(ActionTask task) {
+		return progress.containsKey(task);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ProcessPackage.PROCESS_CONTEXT__PROGRESS:
-				return ((InternalEList<?>)getProgress()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setDone(ActionTask task, Object value) {
+		progress.put(task, value);
+		reasons.remove(task);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public void setUndone(ActionTask task, String reason) {
+		reasons.put(task, reason);
+		progress.remove(task);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public Object getResult(ActionTask task) {
+		return progress.get(task);
 	}
 
 	/**
@@ -193,11 +206,6 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 				if (resolve)
 					return getDefinition();
 				return basicGetDefinition();
-			case ProcessPackage.PROCESS_CONTEXT__PROGRESS:
-				if (coreType)
-					return getProgress();
-				else
-					return getProgress().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -217,9 +225,6 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
 				setDefinition((fr.obeo.dsl.process.Process)newValue);
 				return;
-			case ProcessPackage.PROCESS_CONTEXT__PROGRESS:
-				((EStructuralFeature.Setting)getProgress()).set(newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -238,9 +243,6 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
 				setDefinition((fr.obeo.dsl.process.Process)null);
 				return;
-			case ProcessPackage.PROCESS_CONTEXT__PROGRESS:
-				getProgress().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -257,8 +259,6 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
 				return definition != null;
-			case ProcessPackage.PROCESS_CONTEXT__PROGRESS:
-				return progress != null && !progress.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
