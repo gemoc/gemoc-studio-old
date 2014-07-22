@@ -9,7 +9,7 @@ import org.eclipse.ui.AbstractSourceProvider;
 import org.eclipse.ui.ISources;
 
 public class CommandState extends AbstractSourceProvider {
-	public final static String COMMAND_STATE = "org.gemoc.execution.engine.io.views.event.commands.CommandState";
+	public final static String ID = "org.gemoc.execution.engine.io.views.event.commands.CommandState";
 	public final static String PLAY_STATE = "org.gemoc.execution.engine.io.views.event.commands.PLAY";
 	public final static String RECORD_STATE = "org.gemoc.execution.engine.io.views.event.commands.RECORD";
 	public final static String INIT_STATE = "org.gemoc.execution.engine.io.views.event.commands.INIT";
@@ -25,7 +25,7 @@ public class CommandState extends AbstractSourceProvider {
 
 	@Override
 	public String[] getProvidedSourceNames() {
-		return new String[] { COMMAND_STATE, PLAY_STATE,  RECORD_STATE, INIT_STATE};
+		return new String[] { ID, PLAY_STATE,  RECORD_STATE, INIT_STATE};
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class CommandState extends AbstractSourceProvider {
 		fireSourceChanged(ISources.ACTIVE_SHELL, INIT_STATE, "SET");
 	}
 	
-	public void unsetInit() {
-		fireSourceChanged(ISources.ACTIVE_SHELL, INIT_STATE, "UNSET");
+	public void resetInit() {
+		fireSourceChanged(ISources.ACTIVE_SHELL, INIT_STATE, "RESET");
 	}
 
 

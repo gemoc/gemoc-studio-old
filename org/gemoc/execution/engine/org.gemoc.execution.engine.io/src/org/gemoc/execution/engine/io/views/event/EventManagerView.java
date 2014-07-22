@@ -150,7 +150,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void createViewer(){
 		// Define the TableViewer
 		// First column of its table will be a CHECK BUTTON
-		_viewer = new TableViewer(_parent, SWT.BORDER| SWT.CHECK);
+		_viewer = new TableViewer(_parent, SWT.BORDER| SWT.CHECK | SWT.MULTI);
 		// Initialize an unique column
 		createColumn();
 		// make lines and header visible
@@ -183,11 +183,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		column.setResizable(true);
 		column.setMoveable(true);
 		// LabelProvider to display the name of the clock, attribute text of a CHECK button
-		viewerColumn.setLabelProvider(new ColumnLabelProvider() {
+		viewerColumn.setLabelProvider(new ColumnLabelProvider() 
+		{
 			@Override
-			public String getText(Object element) {
+			public String getText(Object element) 
+			{
 				String result = new String();          
-				if (element instanceof Clock){
+				if (element instanceof Clock)
+				{
 					Clock c = (Clock)element;
 					result = c.getName();
 				}
@@ -343,6 +346,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
+	/**
+	 * executeCommand(String command)
+	 * Call execute function of a command.
+	 * @param command : the name of the wanted command to be called
+	 */
 	protected void executeCommand(String command){
 		IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
 		try 
@@ -377,6 +385,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	@Override
 	public void dispose() {
 		super.dispose();
+		if(_currentEngine != null)
+		{
+			_currentEngine.deleteObserver(this);
+		}
 		_currentEngine = null;
 		stopListeningToMotorSelectionChange();
 	}
@@ -389,12 +401,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_viewer.getTable().setFocus();
 	}
 
-
-	public GemocExecutionEngine getEngine() {
-		return _currentEngine;
-	}
-
-
 	public void startRecordScenario() {
 		_currentEngineCache.createScenario();	
 		_recordFlag = true;
@@ -405,6 +411,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_recordFlag = false;
 	}
 
+	/**
+	 * If the path is correct, the scenario is loaded and played step by step.
+	 * @param path
+	 */
 	public void loadScenario(String path){
 		if(path != null)
 		{
@@ -414,6 +424,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
+	/**
+	 * While the scenario possess execution step to be done, playScenario() is called.
+	 * When the last step has been played, we stop the replay.
+	 */
 	public void playScenario(){
 		if(_scenario != null)
 		{
@@ -438,24 +452,35 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		});
 	}
 
+	/**
+	 * Set or reset variables in the SourceProvider to enable or disable command's handlers 
+	 * (to make them appear grayed).
+	 * The mapping is done in the plugin.xml
+	 * @param event
+	 * @param command
+	 */
 	public void executeService(ExecutionEvent event, String command){
 		// Get the source provider service
 		ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
 				.getActiveWorkbenchWindow(event).getService(ISourceProviderService.class);
 		// now get my service
 		CommandState commandStateService = (CommandState) sourceProviderService
-				.getSourceProvider(CommandState.COMMAND_STATE);
+				.getSourceProvider(CommandState.ID);
 		switch(command)
 		{
 			case "PLAY": commandStateService.togglePlayEnabled(); break;
 			case "RECORD": commandStateService.toggleRecordEnabled(); break;
 			case "INIT": commandStateService.setInit(); break;
-			case "RESET": commandStateService.unsetInit(); break;
+			case "RESET": commandStateService.resetInit(); break;
 		}
 	}
 
 	public void setScenario(Scenario scenario){
 		_scenario = scenario;
+	}
+	
+	public GemocExecutionEngine getEngine() {
+		return _currentEngine;
 	}
 
 	public EventManagementCache getCurrentEngineCache(){
