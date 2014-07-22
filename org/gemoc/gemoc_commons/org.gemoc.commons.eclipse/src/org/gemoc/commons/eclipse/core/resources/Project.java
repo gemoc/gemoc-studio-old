@@ -19,13 +19,20 @@ import org.eclipse.jdt.core.JavaCore;
 
 public class Project {
 
-	
+	/**
+	 * Create recursively folders in the project.
+	 * Do nothing if folder already exists.
+	 * @param project
+	 * @param nameOrPath
+	 * @return
+	 * @throws CoreException
+	 */
 	public static IFolder createFolder(IProject project, String nameOrPath) throws CoreException {
 		return createFolder(project, nameOrPath, new NullProgressMonitor());
 	}
 
 	/**
-	 * Create a folder in the project.
+	 * Create recursively folders in the project.
 	 * Do nothing if folder already exists.
 	 * @param project
 	 * @param nameOrPath
@@ -37,6 +44,15 @@ public class Project {
 		return createFolder(project, new Path(nameOrPath), monitor);
 	}
 
+	/**
+	 * Create recursively folders in the project.
+	 * Do nothing if folder already exists.
+	 * @param project
+	 * @param path
+	 * @param monitor
+	 * @return
+	 * @throws CoreException
+	 */
 	public static IFolder createFolder(IProject project, IPath path, IProgressMonitor monitor) throws CoreException {
 		IFolder folder = project.getFolder(path);
 		if (!folder.exists()) {
