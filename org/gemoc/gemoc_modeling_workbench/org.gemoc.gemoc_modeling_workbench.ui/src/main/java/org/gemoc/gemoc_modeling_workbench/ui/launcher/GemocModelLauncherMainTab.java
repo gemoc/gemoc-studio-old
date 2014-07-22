@@ -11,6 +11,8 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.nebula.widgets.formattedtext.FormattedText;
+import org.eclipse.nebula.widgets.formattedtext.NumberFormatter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -46,6 +48,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	protected Combo _deciderCombo;
 	protected Button _activeTraceCheckbox;
 
+	protected FormattedText _deadlockDetectionDepth;
 	protected Text modelofexecutionglml_LocationText;
 
 	public int GRID_DEFAULT_WIDTH = 200;
@@ -71,8 +74,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		createLanguageLayout(languageArea, null);
 
 		Group prototypeArea = new Group(area, SWT.NULL);
-		prototypeArea
-				.setText("Gemoc Engine Prototype parameters (these info will probably be removed in future version):");
+		prototypeArea.setText("Gemoc Engine Prototype parameters (these info will probably be removed in future version):");
 		prototypeArea.setLayout(new FillLayout());
 		createPrototypeLayout(prototypeArea, null);
 
@@ -80,8 +82,21 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
-		// TODO Auto-generated method stub
-
+		configuration.setAttribute(
+				RunConfiguration.LAUNCH_ANIMATE,
+				false);
+		configuration.setAttribute(
+				RunConfiguration.LAUNCH_DELAY,
+				1000);
+		configuration.setAttribute(
+				RunConfiguration.LAUNCH_ACTIVE_TRACE,
+				true);
+		configuration.setAttribute(
+				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,
+				10);
+		configuration.setAttribute(
+				RunConfiguration.LAUNCH_SELECTED_DECIDER,
+				RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP);
 	}
 
 	@Override
@@ -100,6 +115,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 			_activeTraceCheckbox.setSelection(runConfiguration.isTraceActive());
 			_languageCombo.setText(runConfiguration.getLanguageName());
 			_deciderCombo.setText(runConfiguration.getDeciderName());
+			_deadlockDetectionDepth.setValue(runConfiguration.getDeadlockDetectionDepth());
 //			this.modelofexecutionglml_LocationText
 //					.setText(configuration
 //							.getAttribute(
@@ -128,16 +144,16 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_ACTIVE_TRACE,
 				Boolean.toString(_activeTraceCheckbox.getSelection()));
-		configuration
-				.setAttribute(
+		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_LANGUAGE,
 						this._languageCombo.getText());
-		configuration
-				.setAttribute(
+		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_DECIDER,
 						this._deciderCombo.getText());
-		configuration
-				.setAttribute(
+		configuration.setAttribute(
+				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,
+				Integer.valueOf(_deadlockDetectionDepth.getValue().toString()));
+		configuration.setAttribute(
 						RunConfiguration.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 						this.modelofexecutionglml_LocationText.getText());
 	}
@@ -203,12 +219,10 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		// gd.widthHint = GRID_DEFAULT_WIDTH;
 		// Create the project selector button
 		// Animation view location text
-		_siriusRepresentationLocationText = new Text(parent, SWT.SINGLE
-				| SWT.BORDER);
+		_siriusRepresentationLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		_siriusRepresentationLocationText.setLayoutData(gd);
 		_siriusRepresentationLocationText.setFont(font);
-		_siriusRepresentationLocationText
-				.addModifyListener(fBasicModifyListener);
+		_siriusRepresentationLocationText.addModifyListener(fBasicModifyListener);
 		Button siriusRepresentationLocationButton = createPushButton(parent,
 				"Browse", null);
 		siriusRepresentationLocationButton
@@ -342,12 +356,18 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
 		// --------------
 		createTextLabelLayout(parent, "used defined ModelOfExecution glml File");
-		modelofexecutionglml_LocationText = new Text(parent, SWT.SINGLE
-				| SWT.BORDER);
+		modelofexecutionglml_LocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		modelofexecutionglml_LocationText.setLayoutData(gd);
 		modelofexecutionglml_LocationText.setFont(font);
-		modelofexecutionglml_LocationText
-				.addModifyListener(fBasicModifyListener);
+		modelofexecutionglml_LocationText.addModifyListener(fBasicModifyListener);
+
+		createTextLabelLayout(parent, "Deadlock detection depth");
+		Text underlyingText = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		underlyingText.setLayoutData(gd);
+		underlyingText.setFont(font);
+		underlyingText.addModifyListener(fBasicModifyListener);
+		_deadlockDetectionDepth = new FormattedText(underlyingText);
+		_deadlockDetectionDepth.setFormatter(new NumberFormatter("#####"));
 
 		return parent;
 	}
@@ -363,7 +383,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	 * @param adapter
 	 *            the event that is triggered when clicking on OK button
 	 */
-	public void createTextLabelLayout(Composite parent, String labelString) {
+	private void createTextLabelLayout(Composite parent, String labelString) {
 		GridLayout locationLayout = new GridLayout();
 		locationLayout.numColumns = 2;
 		locationLayout.marginHeight = 10;
@@ -379,5 +399,5 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		gd.horizontalSpan = 2;
 		inputLabel.setLayoutData(gd);
 	}
-
+	
 }

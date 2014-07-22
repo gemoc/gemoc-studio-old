@@ -21,6 +21,7 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -28,6 +29,7 @@ import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.commons.eclipse.core.resources.Marker;
+import org.gemoc.commons.eclipse.core.resources.Project;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -201,16 +203,32 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 				}
 				String uristring = eclFile.getLocation().toOSString();
 			    final URI uri = URI.createFileURI(uristring);
-				final IFolder qvtoFolder = project.getFolder("qvto-gen");
-				if(!qvtoFolder.exists()) qvtoFolder.create(true, true, null);
+			    
+			    String genFolder = "qvto-gen";
+			    final IFolder modelingFolder = Project.createFolder(project, genFolder + "/modeling");			    	
+			    final IFolder languageFolder = Project.createFolder(project, genFolder + "/language");			    	
+
+			    final String qvtoFileName = eclFile.getFullPath()
+			    					.removeFileExtension()
+			    					.addFileExtension("toCCSL.qvto")
+			    					.lastSegment();
+//			    uri.lastSegment().replace(".ecl",	"_toCCSL.qvto");
+//			    final IFile modelingFile = modelingFolder.getFile(new )
+			    
+			    
+//				final IFolder qvtoFolder = project.getFolder("qvto-gen");
+//				if(!qvtoFolder.exists()) qvtoFolder.create(true, true, null);
 			
 
-				String folderPath = qvtoFolder.getLocation().toOSString();
-				final File folder = new File(folderPath);
+//				String folderPath = qvtoFolder.getLocation().toOSString();
+	//			final File folder = new File(folderPath);
 	
+			    
+			    
+			    
 				final List<String> arguments = new ArrayList<String>();
 				//LanguageDefinition ld = EObjectUtil.eContainerOfType(ecliFilePath, LanguageDefinition.class);
-				String qvtoFileName = uri.lastSegment().replace(".ecl",	"_toCCSL.qvto");
+				//String qvtoFileName = uri.lastSegment().replace(".ecl",	"_toCCSL.qvto");
 				arguments.add(qvtoFileName);
 				arguments.add(rootElement); 
 				// create QVTO file
@@ -226,17 +244,32 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 						//ResourceUtil.createFolder(qvtoFolder, true, true, null);
 	
 						try {
-							System.out.println("launching ecl to qvto:\n\turi=" + uri + "\n\tfolder=" + folder + "\n\targs="
+							System.out.println("launching ecl to qvto:\n\turi=" + uri + "\n\tfolder=" + languageFolder + "\n\targs="
 									+ arguments);
-							AcceleoLauncherForEclToQvto launcher = new AcceleoLauncherForEclToQvto(uri, folder, arguments);
+							AcceleoLauncherForEclToQvto launcher = new AcceleoLauncherForEclToQvto(uri, new File(languageFolder.getLocation().toOSString()), arguments);
 							launcher.doGenerate(new BasicMonitor());
-							qvtoFolder.refreshLocal(2, new NullProgressMonitor());
+							
+							IFile qvtoFileForLanguage = languageFolder.getFile(qvtoFileName);
+							qvtoFileForLanguage.refreshLocal(0, new NullProgressMonitor());
+
+							IFile qvtoFileForModeling = modelingFolder.getFile(qvtoFileName);
+									
+							RegularFile reg_qvtoFileForLanguage = new RegularFile(qvtoFileForLanguage.getLocation().toOSString());
+							RegularFile reg_qvtoFileForModeling = new RegularFile(qvtoFileForModeling.getLocation().toOSString());
+							
+							String qvtoLanguageContent = new String(reg_qvtoFileForLanguage.getContent());
+							String qvtoModelingContent = qvtoLanguageContent.replaceAll("platform:/resource", "platform:/plugin");
+							reg_qvtoFileForModeling.setContent(qvtoModelingContent.getBytes());
+								
+							qvtoFileForModeling.refreshLocal(0, new NullProgressMonitor());
+									
+									
+//									.refreshLocal(0, new NullProgressMonitor());
 							
 							
-							RegularFile qvtoFile = new RegularFile(launcher.getTargetFolder()+"/" +arguments.get(0));
-							String qvtoContent = new String(qvtoFile.getContent());
-							qvtoContent = qvtoContent.replaceAll("platform:/resource", "platform:/plugin");
-							qvtoFile.setContent(qvtoContent.getBytes());
+//							qvtoFolder.refreshLocal(2, new NullProgressMonitor());
+							
+							
 							
 							
 							

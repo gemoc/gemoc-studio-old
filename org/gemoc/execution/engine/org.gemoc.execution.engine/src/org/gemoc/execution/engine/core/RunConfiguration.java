@@ -19,6 +19,7 @@ public class RunConfiguration implements IRunConfiguration
 	
 	// parameters that should be derived from the language in future version
 	public static final String LAUNCH_MODELOFEXECUTION_GLML_PATH = "GEMOC_LAUNCH_MODELOFEXECUTION_GLML_FILE_PATH";
+	public static final String LAUNCH_DEADLOCK_DETECTION_DEPTH = "GEMOC_LAUNCH_DEADLOCK_DETECTION_DEPTH";
 	public static final String DECIDER_SOLVER_PROPOSITION = "Solver proposition";
 	public static final String DECIDER_RANDOM = "Random";
 	public static final String DECIDER_ASKUSER = "Ask user";
@@ -46,13 +47,19 @@ public class RunConfiguration implements IRunConfiguration
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_modelURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
 		_animatorURIAsString = getAttribute("airdResource", "");
+		_deadlockDetectionDepth = getAttribute(LAUNCH_DEADLOCK_DETECTION_DEPTH, 10);
 	}
 
 	private String getAttribute(String attributeName, String defaultValue) throws CoreException
 	{
 		return _launchConfiguration.getAttribute(attributeName, defaultValue);
 	}
-	
+
+	private Integer getAttribute(String attributeName, Integer defaultValue) throws CoreException
+	{
+		return _launchConfiguration.getAttribute(attributeName, defaultValue);
+	}
+
 	private String _languageName;
 	public String getLanguageName() 
 	{
@@ -95,11 +102,11 @@ public class RunConfiguration implements IRunConfiguration
 		return _animatorURIAsString;
 	}
 	
-	private int nbLastStepRunObservedForStopDetection = 10;
+	private int _deadlockDetectionDepth = 10;
 	@Override
 	public int getDeadlockDetectionDepth() 
 	{
-		return nbLastStepRunObservedForStopDetection;
+		return _deadlockDetectionDepth;
 	}
 
 }
