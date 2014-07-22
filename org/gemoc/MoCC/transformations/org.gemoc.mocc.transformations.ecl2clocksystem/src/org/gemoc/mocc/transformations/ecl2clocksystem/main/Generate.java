@@ -346,6 +346,9 @@ public class Generate extends AbstractAcceleoGenerator {
         if (!isInWorkspace(fr.inria.aoste.timesquare.ECL.ECLPackage.class)) {
             resourceSet.getPackageRegistry().put(fr.inria.aoste.timesquare.ECL.ECLPackage.eINSTANCE.getNsURI(), fr.inria.aoste.timesquare.ECL.ECLPackage.eINSTANCE);
         }
+        if (!isInWorkspace(org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage.eINSTANCE.getNsURI(), org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage.eINSTANCE);
+        }
         if (!isInWorkspace(org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.CompleteOCLCSPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.CompleteOCLCSPackage.eINSTANCE.getNsURI(), org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.CompleteOCLCSPackage.eINSTANCE);
         }
