@@ -95,38 +95,87 @@ public class WorkspaceListener extends AbstractListener<IWorkspace> implements I
 	private void processDelta(IResourceDelta delta, HashMap<IPath, IResource> movedResources) {
 		switch (delta.getKind()) {
 			case IResourceDelta.ADDED:
-				if ((delta.getFlags() & IResourceDelta.MOVED_FROM) != 0) {
-					fireChange(new ResourceMoved(movedResources.get(delta.getMovedFromPath()), delta
-							.getResource()));
-				} else {
-					fireChange(new ResourceAdded(delta.getResource()));
-				}
+				processAddedDelta(delta, movedResources);
 				break;
 
 			case IResourceDelta.REMOVED:
-				if ((delta.getFlags() & IResourceDelta.MOVED_TO) != 0) {
-					movedResources.put(delta.getResource().getFullPath(), delta.getResource());
-				} else {
-					fireChange(new ResourceRemoved(delta.getResource()));
-				}
+				processRemovedDelta(delta, movedResources);
 				break;
 
 			case IResourceDelta.CHANGED:
-				if ((delta.getFlags() & IResourceDelta.OPEN) != 0) {
-					if (delta.getResource().isAccessible()) {
-						fireChange(new ResourceOpened(delta.getResource()));
-					} else {
-						fireChange(new ResourceClosed(delta.getResource()));
-					}
-				} else if ((delta.getFlags() & IResourceDelta.DESCRIPTION) != 0) {
-					fireChange(new ResourceDescriptionChanged(delta.getResource()));
-				} else if ((delta.getFlags() & IResourceDelta.CONTENT) != 0) {
-					fireChange(new ResourceContentChanged(delta.getResource()));
-				}
+				processChangedDelta(delta);
 				break;
 
 			default:
 				break;
+		}
+	}
+
+	/**
+	 * Process {@link IResourceDelta} with {@link IResourceDelta#CHANGED changed}
+	 * {@link IResourceDelta#getKind() kind}.
+	 * 
+	 * @param delta
+	 *            the {@link IResourceDelta} with {@link IResourceDelta#CHANGED changed}
+	 *            {@link IResourceDelta#getKind() kind}
+	 */
+	private void processChangedDelta(IResourceDelta delta) {
+		if ((delta.getFlags() & IResourceDelta.OPEN) != 0) {
+			if (delta.getResource().isAccessible()) {
+				fireChange(new ResourceOpened(delta.getResource()));
+			} else {
+				fireChange(new ResourceClosed(delta.getResource()));
+			}
+		} else if ((delta.getFlags() & IResourceDelta.DESCRIPTION) != 0) {
+			fireChange(new ResourceDescriptionChanged(delta.getResource()));
+		} else if ((delta.getFlags() & IResourceDelta.CONTENT) != 0) {
+			fireChange(new ResourceContentChanged(delta.getResource()));
+		}
+	}
+
+	/**
+	 * Process {@link IResourceDelta} with {@link IResourceDelta#REMOVED removed}
+	 * {@link IResourceDelta#getKind() kind}.
+	 * 
+	 * @param delta
+	 *            the {@link IResourceDelta} with {@link IResourceDelta#REMOVED removed}
+	 *            {@link IResourceDelta#getKind() kind}
+	 * @param movedResources
+	 *            mapping of moved {@link IResource}
+	 */
+	private void processRemovedDelta(IResourceDelta delta, HashMap<IPath, IResource> movedResources) {
+		if ((delta.getFlags() & IResourceDelta.MOVED_TO) != 0) {
+			final IResource target = movedResources.get(delta.getMovedToPath());
+			if (target != null) {
+				fireChange(new ResourceMoved(delta.getResource(), target));
+			} else {
+				movedResources.put(delta.getResource().getFullPath(), delta.getResource());
+			}
+		} else {
+			fireChange(new ResourceRemoved(delta.getResource()));
+		}
+	}
+
+	/**
+	 * Process {@link IResourceDelta} with {@link IResourceDelta#ADDED added} {@link IResourceDelta#getKind()
+	 * kind}.
+	 * 
+	 * @param delta
+	 *            the {@link IResourceDelta} with {@link IResourceDelta#ADDED added}
+	 *            {@link IResourceDelta#getKind() kind}
+	 * @param movedResources
+	 *            mapping of moved {@link IResource}
+	 */
+	private void processAddedDelta(IResourceDelta delta, HashMap<IPath, IResource> movedResources) {
+		if ((delta.getFlags() & IResourceDelta.MOVED_FROM) != 0) {
+			final IResource source = movedResources.get(delta.getMovedFromPath());
+			if (source != null) {
+				fireChange(new ResourceMoved(source, delta.getResource()));
+			} else {
+				movedResources.put(delta.getResource().getFullPath(), delta.getResource());
+			}
+		} else {
+			fireChange(new ResourceAdded(delta.getResource()));
 		}
 	}
 
@@ -137,8 +186,7 @@ public class WorkspaceListener extends AbstractListener<IWorkspace> implements I
 				walkResource(member, processor);
 			}
 		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Activator.getDefault().error(e);
 		}
 	}
 

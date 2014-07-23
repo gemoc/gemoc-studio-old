@@ -5,11 +5,14 @@ package fr.obeo.dsl.process.impl;
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessUtils;
+import fr.obeo.dsl.process.Task;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.BasicNotifierImpl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -169,8 +172,12 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 * @generated NOT
 	 */
 	public void setDone(ActionTask task, Object value) {
-		progress.put(task, value);
+		final Object oldValue = progress.put(task, value);
 		reasons.remove(task);
+		if (((BasicNotifierImpl)task).eNotificationRequired()) {
+			task.eNotify(new ENotificationImpl((InternalEObject)task, Notification.SET,
+					-ProcessPackage.PROCESS_FEATURE_COUNT, oldValue, value));
+		}
 	}
 
 	/**
@@ -180,7 +187,11 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 */
 	public void setUndone(ActionTask task, String reason) {
 		reasons.put(task, reason);
-		progress.remove(task);
+		final Object oldValue = progress.remove(task);
+		if (((BasicNotifierImpl)task).eNotificationRequired() && oldValue != null) {
+			task.eNotify(new ENotificationImpl((InternalEObject)task, Notification.SET,
+					-ProcessPackage.PROCESS_FEATURE_COUNT, oldValue, null));
+		}
 	}
 
 	/**
