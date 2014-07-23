@@ -5,6 +5,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -58,6 +59,7 @@ public class LogicalStepsView extends DependantViewPart
 		_viewer.getTree().setFont(mono);
 		createColumns();
 	}
+	
 
 	private void createColumns() 
 	{
@@ -199,6 +201,11 @@ public class LogicalStepsView extends DependantViewPart
 	{
 		_viewer.addDoubleClickListener(doubleClickListener);
 	}
+	
+	public void addSelectionChangedListener(ISelectionChangedListener listener)
+	{
+		_viewer.addSelectionChangedListener(listener);
+	}
 
 	public void removeMenuListener(IMenuListener2 menuListener) 
 	{
@@ -208,5 +215,10 @@ public class LogicalStepsView extends DependantViewPart
 	public void removeDoubleClickListener(IDoubleClickListener doubleClickListener)
 	{
 		_viewer.removeDoubleClickListener(doubleClickListener);
+	}
+	
+	public void removeSelectionChangedListener(ISelectionChangedListener selectionChangedListener)
+	{
+		_viewer.removeSelectionChangedListener(selectionChangedListener);
 	}
 }

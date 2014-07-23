@@ -118,7 +118,7 @@ public class EventManagementCache
 		ArrayList<EventManagerClockWrapper> clockWrappers = new ArrayList<EventManagerClockWrapper>(clocksToDisable);
 		for(EventManagerClockWrapper wrapper: clockWrappers)
 		{
-			wrapper.setState(false);
+			wrapper.setStateForced(false);
 		}
 	}
 
@@ -162,14 +162,21 @@ public class EventManagementCache
 				List<ExecutionStep> stepList =  _scenarioSaved.getStepList();
 				ExecutionStep newStep = _factory.createExecutionStep();
 				List<EventState> newListEvent = newStep.getEventList();
-				for(EventManagerClockWrapper cw: getWrappers()){
-					EventState newState = _factory.createEventState();
-					newState.setClock(cw.getClock());
-					newState.setIsForced(cw.isState());
-					newListEvent.add(newState);
+				for(EventManagerClockWrapper cw: getWrappers())
+				{
+					Boolean state = cw.isState();
+					if(state != null)
+					{
+						EventState newState = _factory.createEventState();
+						newState.setClock(cw.getClock());
+						newState.setIsForced(state);
+						newListEvent.add(newState);
+					}
 				}
-				newStep.setStep(_engineStep);
-				stepList.add(newStep);
+				if(!newListEvent.isEmpty()){
+					newStep.setStep(_engineStep);
+					stepList.add(newStep);
+				}
 				saveScenario();
 			}
 		};
@@ -222,11 +229,12 @@ public class EventManagementCache
 				{	
 					if(eventList.get(i).getClock().getName().equals(clock.getName()))
 					{
-						cw.setState(eventList.get(i).isIsForced());
+						cw.setStateForced(eventList.get(i).isIsForced());
 					}
 				}
 			}
 			_eventView.incProgressPlayScenario();
+			_eventView.updateView();
 		}
 		else
 		{

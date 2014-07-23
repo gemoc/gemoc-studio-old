@@ -25,7 +25,12 @@ public class SharedIcons {
 	public static ImageDescriptor FUTUR_CHOSEN_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-yellow-16.png");
 	public static ImageDescriptor FUTUR_POSSIBLE_LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/circle-yellow-outline-16.png");
 	
-	
+	public static ImageDescriptor FORCED_CLOCK_SET = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/new-forced-to-1-16.png");
+	public static ImageDescriptor FORCED_CLOCK_NOTSET = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/new-forced-to-0-16.png");
+	public static ImageDescriptor NOTFORCED_CLOCK_SET = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/new-free-to-1-16.png");
+	public static ImageDescriptor NOTFORCED_CLOCK_NOTSET = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/new-free-to-0-16.png");
+	public static ImageDescriptor INDECISION = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/decision-16.png");
+
 	static HashMap<ImageDescriptor, Image> imageMap = new HashMap<ImageDescriptor, Image>();
 	
 	static public Image getSharedImage(ImageDescriptor descriptor){

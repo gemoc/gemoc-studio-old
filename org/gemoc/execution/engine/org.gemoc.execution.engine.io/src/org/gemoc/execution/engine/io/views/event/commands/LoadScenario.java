@@ -21,8 +21,11 @@ public class LoadScenario extends AbstractHandler /*implements IScenarioStateCha
 			dialog.setFilterPath(EventManagementCache.scenarioPath);
 			String path = dialog.open();
 			eventView.loadScenario(path);
-			eventView.informationMsg("Replay", "Beginning");
-			eventView.executeService(event, "PLAY");
+			if(eventView.getScenario()!=null)
+			{
+				eventView.informationMsg("Replay", "Beginning");
+				eventView.executeService(event, "PLAY");
+			}
 		}
 		else
 		{

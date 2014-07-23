@@ -16,27 +16,31 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
 public class EventManagerClockWrapper {
 	private Clock _clock;
 	private ClockControllerInternal _clockController;
-	private Boolean _state;
+	private Boolean _stateForced;
 	
 	public EventManagerClockWrapper(Clock clock, ClockControllerInternal clockController) {
 		_clock = clock;
-		_state = false;
+		_stateForced = null;
 		_clockController = clockController;
 	}
-	public boolean isState() {
-		return _state;
+	public Boolean isState() {
+		return _stateForced;
 	}
-	public void setState(boolean state) {
-		_state = state;		
-		if (_state)
+	public void setStateForced(Boolean state) {
+		_stateForced = state;		
+		if(_stateForced != null)
 		{
-			_clockController.tickInTheFuture(getClockQualifiedName());			
-		}
-		else
-		{
-			_clockController.doNotTickInTheFuture(getClockQualifiedName());						
+			if (_stateForced)
+			{
+				_clockController.tickInTheFuture(getClockQualifiedName());			
+			}
+			else
+			{
+				_clockController.doNotTickInTheFuture(getClockQualifiedName());						
+			}
 		}
 	}
+	
 	private String getClockQualifiedName() 
 	{
 		Block block = (Block)_clock.eContainer();
@@ -48,4 +52,27 @@ public class EventManagerClockWrapper {
 	public Clock getClock() {
 		return _clock;
 	}
+	
+
+	public String getBehavior(){
+		String result = null;
+		if(_stateForced == null)
+		{
+					result = "NOTFORCED_CLOCK_NOTSET";
+		}
+		else
+		{
+			if(_stateForced)
+			{
+				result = "FORCED_CLOCK_SET";
+			}
+			else
+			{
+				result = "FORCED_CLOCK_NOTSET";
+			}
+		}
+		return result;
+	}
+	
+	
 }
