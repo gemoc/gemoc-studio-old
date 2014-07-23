@@ -37,6 +37,8 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 	
 	public ILogicalStepDecider getLogicalStepDecider();
 	
+	public void changeLogicalStepDecider(ILogicalStepDecider newDecider);
+	
 	/**
 	 * allows to add a  hook to the engine
 	 * @param newEngineHook

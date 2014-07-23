@@ -1,13 +1,13 @@
 package org.gemoc.execution.engine.io.views;
 
 
-public class UserDecider extends AbstractUserDecider 
+public class StepByStepUserDecider extends AbstractUserDecider 
 {
 
 	@Override
 	public boolean isStepByStep() 
 	{
-		return false;
+		return true;
 	}
 
 }

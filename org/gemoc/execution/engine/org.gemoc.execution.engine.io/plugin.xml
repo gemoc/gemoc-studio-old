@@ -67,38 +67,6 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:org.gemoc.execution.engine.io.views.engine.EnginesStatusView">
-         <command
-               commandId="org.gemoc.execution.engine.io.commands.StopEngine"
-               icon="IMG_ELCL_STOP"
-               label="Stop Engine"
-               style="push">
-         </command>
-         <command
-               commandId="org.gemoc.execution.engine.io.command.RemoveAllEngines"
-               icon="IMG_ELCL_REMOVEALL"
-               label="Remove all engines"
-               style="push">
-         </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="true"
-            locationURI="popup:org.gemoc.execution.engine.io.views.engine.EnginesStatusView">
-         <command
-               commandId="org.gemoc.execution.engine.io.commands.StopEngine"
-               icon="IMG_ELCL_STOP"
-               label="Stop Engine"
-               style="push">
-         </command>
-         <command
-               commandId="org.gemoc.execution.engine.io.command.RemoveAllEngines"
-               icon="IMG_ELCL_REMOVEALL"
-               label="Remove all engines"
-               style="push">
-         </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
             locationURI="toolbar:org.gemoc.execution.engine.io.views.event.EventManagerView">
          <command
                commandId="org.gemoc.execution.engine.io.views.event.commands.LoadScenario"
@@ -140,16 +108,6 @@
    </extension>
    <extension
          point="org.eclipse.ui.commands">
-      <command
-            defaultHandler="org.gemoc.execution.engine.io.views.engine.StopEngine"
-            id="org.gemoc.execution.engine.io.commands.StopEngine"
-            name="Stop Engine">
-      </command>
-      <command
-            defaultHandler="org.gemoc.execution.engine.io.views.engine.RemoveAllEngines"
-            id="org.gemoc.execution.engine.io.command.RemoveAllEngines"
-            name="Remove all engines">
-      </command>
       <command
             id="org.gemoc.execution.engine.io.views.event.commands.StartRecordScenario"
             name="Start Record Scenario">
@@ -239,5 +197,29 @@
          </enabledWhen>
       </handler>
    </extension>
+   <extension
+         point="org.gemoc.gemoc_language_workbench.deciders">
+      <DeciderSpecification
+            Class="org.gemoc.execution.engine.io.views.StepByStepUserDecider"
+            Icon="icons/user-shield-green-16.png"
+            Name="Step by step user decider">
+      </DeciderSpecification>
+      <DeciderSpecification
+            Class="org.gemoc.execution.engine.io.views.UserDecider"
+            Icon="icons/user-shield-black-16.png"
+            Name="User decider">
+      </DeciderSpecification>
+      <DeciderSpecification
+            Class="org.gemoc.execution.engine.commons.deciders.RandomDecider"
+            Icon="icons/question-shield-black-16.png"
+            Name="Random decider">
+      </DeciderSpecification>
+      <DeciderSpecification
+            Class="org.gemoc.execution.engine.commons.deciders.CcslSolverDecider"
+            Icon="icons/app-shield-black-16.png"
+            Name="Solver decider">
+      </DeciderSpecification>
+   </extension>	
+
 
 </plugin>
