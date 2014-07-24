@@ -21,6 +21,7 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -217,9 +218,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			EventManagerClockWrapper wrapper  = _currentEngineCache.getWrapper(clockName);
 			switch(id)
 			{
-			case 0: wrapper.setStateForced(false);break;
+			case 0: wrapper.setStateForced(false); break;
 			case 1: wrapper.setStateForced(true); break;
-			case 2: wrapper.setStateForced(null);break;
+			case 2: wrapper.setStateForced(null); break;
 			}
 		}
 		updateView();
@@ -258,14 +259,30 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					case "FORCED_CLOCK_SET": return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET);
 					case "NOTFORCED_CLOCK_NOTSET": return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET);
 					case "FORCED_CLOCK_NOTSET": return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET);
-					case "INDECISION": return SharedIcons.getSharedImage(SharedIcons.INDECISION);
 					}
+			
+					
 				}
 				return null;
 			}
+
+			@Override
+			public Color getBackground(Object element) {
+				if (element instanceof EventManagerClockWrapper) // instance of clockwrapper
+				{
+					String state = ((EventManagerClockWrapper) element).getBehavior();
+					switch(state)
+					{
+					case "NOTFORCED_CLOCK_SET": return new Color(_parent.getDisplay(), 212, 255, 141);
+					case "FORCED_CLOCK_SET": return new Color(_parent.getDisplay(), 255, 217, 142);
+					}
+				}
+				return super.getBackground(element);
+			}
+			
+			
 		});
 	}
-
 
 	public void updateView(){
 		Display.getDefault().asyncExec(new Runnable() {
@@ -273,6 +290,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			public void run() {
 				if(_currentEngine != null)
 				{
+					_currentEngineCache.disableFreeClocks();
 					selectFilter();
 				}
 				_viewer.setInput(_currentEngineCache);
@@ -345,7 +363,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				{
 					playScenario();
 				}
-				_currentEngineCache.disableFreeClocks();
 			}
 		}
 		updateView();
