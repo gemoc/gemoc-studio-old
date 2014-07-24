@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Process UI
+Bundle-SymbolicName: fr.obeo.dsl.process.ui
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: fr.obeo.dsl.process;bundle-version="1.0.0",
+ fr.obeo.dsl.process.edit;bundle-version="1.0.0",
+ org.eclipse.emf.edit.ui;bundle-version="2.10.0",
+ org.eclipse.core.runtime;bundle-version="3.9.100"
+Export-Package: fr.obeo.dsl.process.ui.handler,
+ fr.obeo.dsl.process.ui.view
