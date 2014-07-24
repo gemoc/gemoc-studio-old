@@ -9,7 +9,7 @@ import org.gemoc.execution.engine.io.views.event.EventManagerClockWrapper;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Binding;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 
-public class RemoveLeftBindingClockFilter implements IEventFilterStrategy {
+public class RemoveLeftBindingClockFilter extends Filter {
 
 	@Override
 	public Collection<EventManagerClockWrapper> applyFilter(
@@ -30,6 +30,7 @@ public class RemoveLeftBindingClockFilter implements IEventFilterStrategy {
 				}
 			}
 		}
+		addFutureTickingClocks(wrapperList);
 		return wrapperList;
 	}
 }

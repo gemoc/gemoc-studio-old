@@ -3,8 +3,8 @@ package org.gemoc.execution.engine.io.views.event;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -18,14 +18,15 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -35,6 +36,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.services.ISourceProviderService;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.io.views.event.commands.CommandState;
@@ -64,21 +66,18 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private EnginesStatusView _enginesStatusView;
 	private ObservableBasicExecutionEngine _currentEngine;
 	private Map<ObservableBasicExecutionEngine, EventManagementCache> _cache;
-	private Collection<EventManagerClockWrapper> _displayedClock;
 	private int _strategySelectionIndex;
 	private int _progressPlayScenario;
 	private boolean _playFlag;
 	private boolean _recordFlag;
 	private EventManagementCache _currentEngineCache;
 	private Scenario _scenario;
-
-
+	
 	/**
 	 * The constructor.
 	 */
 	public EventManagerView() {
 		_cache = new HashMap<ObservableBasicExecutionEngine, EventManagementCache>();
-		_displayedClock = new ArrayList<EventManagerClockWrapper>();
 		_strategySelectionIndex = 0;
 		_progressPlayScenario = 0;
 		_recordFlag = false;
@@ -149,106 +148,138 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	public void createViewer(){
 		// Define the TableViewer
-		// First column of its table will be a CHECK BUTTON
-		_viewer = new TableViewer(_parent, SWT.BORDER| SWT.CHECK | SWT.MULTI);
-		// Initialize an unique column
+
+		_viewer = new TableViewer(_parent, SWT.BORDER| SWT.MULTI);
+		_viewer.setContentProvider(new ViewContentProvider());
+
 		createColumn();
+		final Menu menu = new Menu(_parent.getShell(), SWT.POP_UP);
+
 		// make lines and header visible
 		final Table table = _viewer.getTable();
+		//Add the menu to the table
+		table.setMenu(menu);
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 		// The table will take all the horizontal and vertical excess space
 		GridData grid = new GridData(SWT.FILL, SWT.FILL, true, true);
 		_viewer.getControl().setLayoutData(grid);
-		// We enable or disable our clocks with checking or unchecking the button.
-		table.addListener(SWT.Selection, new Listener() {
+
+		SelectionListener listener = new SelectionListener() {
 			@Override
-			public void handleEvent(Event event) {
-				if(event.detail == SWT.CHECK){
-					TableItem item = (TableItem) event.item;
-					EventManagementCache cache = _cache.get(_currentEngine);
-					EventManagerClockWrapper selectedWrapper = cache.getWrapper(item.getText());
-					selectedWrapper.setState(item.getChecked());
+			public void widgetSelected(SelectionEvent e) {
+				List<String> clockToForce = new ArrayList<String>();
+				for(TableItem item : table.getSelection())
+				{
+					clockToForce.add(item.getText());
 				}
+				int s = ((MenuItem)e.getSource()).getID();
+				forceClock(clockToForce, s);	
 			}
-		});
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		};
+		MenuItem item = new MenuItem(menu, SWT.PUSH);
+		item.setText("Force  to 1");
+		item.setID(1);
+		item.addSelectionListener(listener);
+		new MenuItem(menu, SWT.SEPARATOR);
+		item = new MenuItem(menu, SWT.PUSH);
+		item.setText("Force  to 0");
+		item.setID(0);
+		item.addSelectionListener(listener);
+		new MenuItem(menu, SWT.SEPARATOR);
+		item = new MenuItem(menu, SWT.PUSH);
+		item.setText("Free the clock");
+		item.setID(2);
+		item.addSelectionListener(listener);
+	}
+
+	private void forceClock(List<String> clockToForce, int id) {
+		for(String clockName : clockToForce)
+		{
+			EventManagerClockWrapper wrapper  = _currentEngineCache.getWrapper(clockName);
+			switch(id)
+			{
+			case 0: wrapper.setStateForced(false);break;
+			case 1: wrapper.setStateForced(true); break;
+			case 2: wrapper.setStateForced(null);break;
+			}
+		}
+		updateView();
 	}
 
 	public void createColumn(){		
-		// First and unique column
-		TableViewerColumn viewerColumn = new TableViewerColumn(_viewer, SWT.NONE);
-		TableColumn column = viewerColumn.getColumn();
+		TableViewerColumn viewerColumn1 = new TableViewerColumn(_viewer, SWT.LEFT);
+		TableColumn column = viewerColumn1.getColumn();
 		column.setText("Clock");
 		column.setWidth(100);
 		column.setResizable(true);
 		column.setMoveable(true);
-		// LabelProvider to display the name of the clock, attribute text of a CHECK button
-		viewerColumn.setLabelProvider(new ColumnLabelProvider() 
+
+		viewerColumn1.setLabelProvider(new ColumnLabelProvider() 
 		{
 			@Override
 			public String getText(Object element) 
 			{
 				String result = new String();          
-				if (element instanceof Clock)
+				if (element instanceof EventManagerClockWrapper)// instance of clockwrapper
 				{
-					Clock c = (Clock)element;
+					Clock c = ((EventManagerClockWrapper)element).getClock();
 					result = c.getName();
 				}
 				return result;
 			}
+
+			@Override
+			public Image getImage(Object element) {
+				if (element instanceof EventManagerClockWrapper) // instance of clockwrapper
+				{
+					String state = ((EventManagerClockWrapper) element).getBehavior();
+					switch(state)
+					{
+					case "NOTFORCED_CLOCK_SET": return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_SET);
+					case "FORCED_CLOCK_SET": return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET);
+					case "NOTFORCED_CLOCK_NOTSET": return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET);
+					case "FORCED_CLOCK_NOTSET": return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET);
+					case "INDECISION": return SharedIcons.getSharedImage(SharedIcons.INDECISION);
+					}
+				}
+				return null;
+			}
 		});
 	}
+
 
 	public void updateView(){
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
-				refreshView();
+				if(_currentEngine != null)
+				{
+					applyStrategy();
+				}
+				_viewer.setInput(_currentEngineCache);
 			}				
 		});
 	}
 
-	private void refreshView() {
-		_viewer.getTable().removeAll();
-		if(_currentEngine != null)
-		{	
-			if(!_cache.containsKey(_currentEngine))
-			{
-				createCacheForEngine();
-			}
-			applyStrategy();
-			//Getting the clock list for the given engine
-			_displayedClock = getWrapperList();
-			// for each clock we display the name and the button state ( enable or disable) is updated
-			for(EventManagerClockWrapper c : _displayedClock){
-				TableItem ligne = new TableItem(_viewer.getTable(), SWT.NONE);
-				ligne.setText(c.getClock().getName());
-				ligne.setChecked(c.isState());
-			}
-		}
 
-	}
 
 
 	private void applyStrategy() {
-		EventManagementCache engineCache = _cache.get(_currentEngine);
 		switch(_strategySelectionIndex)
 		{
-		case 0: engineCache.setFilter(new NoEventFilter()); break;
-		case 1: engineCache.setFilter(new RemoveAllBindingClockFilter()); break;
-		case 2: engineCache.setFilter(new RemoveLeftBindingClockFilter()); break;
+		case 0: _currentEngineCache.setFilter(new NoEventFilter()); break;
+		case 1: _currentEngineCache.setFilter(new RemoveAllBindingClockFilter()); break;
+		case 2: _currentEngineCache.setFilter(new RemoveLeftBindingClockFilter()); break;
 		default: break;
 		}
 	}
 
-	/**
-	 * getWrapperList
-	 * @return The Filtered Clock Wrappers for the selected strategy
-	 */
-	private Collection<EventManagerClockWrapper> getWrapperList() {
-		EventManagementCache cache = _cache.get(_currentEngine);
-		return cache.getWrappers();
-	}
 
 	/**
 	 * createCacheForEngine
@@ -266,14 +297,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				{
 					_currentEngineCache.addClock((Clock)e);
 				}
-
 			}
 		}
 		_currentEngineCache.configure(_currentEngine, system);
-		_currentEngineCache.disableClocks(_displayedClock);
 		_cache.put(_currentEngine, _currentEngineCache);
-		_displayedClock = getWrapperList();
-		//_currentEngineCache.disableClocks(_displayedClock);
 	}
 
 	private ClockConstraintSystem extractSystem() 
@@ -330,6 +357,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				}
 				_currentEngine.deleteObserver(this);
 				_currentEngine = null;
+				_currentEngineCache = null;
 				executeCommand("UndoInit");
 			}
 			else
@@ -337,10 +365,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				_currentEngine.deleteObserver(this);
 				_currentEngine.addObserver(this);
 				executeCommand("DoInit");
-				if(_cache.get(_currentEngine) != null)
+				if(_cache.get(_currentEngine) == null)
 				{
-					_currentEngineCache = _cache.get(_currentEngine);
+					createCacheForEngine();
 				}
+				_currentEngineCache = _cache.get(_currentEngine);
 			}
 			updateView();
 		}
@@ -418,9 +447,12 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void loadScenario(String path){
 		if(path != null)
 		{
-			_playFlag = true;
 			_currentEngineCache.loadScenario(path);
+			if(_scenario != null){
+				_playFlag = true;
+			}
 			playScenario();
+			
 		}
 	}
 
@@ -468,10 +500,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				.getSourceProvider(CommandState.ID);
 		switch(command)
 		{
-			case "PLAY": commandStateService.togglePlayEnabled(); break;
-			case "RECORD": commandStateService.toggleRecordEnabled(); break;
-			case "INIT": commandStateService.setInit(); break;
-			case "RESET": commandStateService.resetInit(); break;
+		case "PLAY": commandStateService.togglePlayEnabled(); break;
+		case "RECORD": commandStateService.toggleRecordEnabled(); break;
+		case "INIT": commandStateService.setInit(); break;
+		case "RESET": commandStateService.resetInit(); break;
 		}
 	}
 
@@ -479,6 +511,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_scenario = scenario;
 	}
 	
+	public Scenario getScenario(){
+		return _scenario;
+	}
+
 	public GemocExecutionEngine getEngine() {
 		return _currentEngine;
 	}

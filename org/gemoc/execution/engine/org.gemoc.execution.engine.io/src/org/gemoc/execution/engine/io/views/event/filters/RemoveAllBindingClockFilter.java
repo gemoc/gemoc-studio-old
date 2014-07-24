@@ -12,7 +12,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 /**
  * @author: lguillem
  */
-public class RemoveAllBindingClockFilter implements IEventFilterStrategy {
+public class RemoveAllBindingClockFilter extends Filter {
 
 	@Override
 	public Collection<EventManagerClockWrapper> applyFilter(
@@ -35,6 +35,7 @@ public class RemoveAllBindingClockFilter implements IEventFilterStrategy {
 				}
 			}
 		}
+		addFutureTickingClocks(wrapperList);
 		return wrapperList;
 	}
 }
