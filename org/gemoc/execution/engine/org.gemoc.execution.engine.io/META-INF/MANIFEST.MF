@@ -27,7 +27,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.io,
  org.gemoc.execution.engine.io.backends,
- org.gemoc.execution.engine.io.core,
  org.gemoc.execution.engine.io.exceptions,
  org.gemoc.execution.engine.io.frontends,
  org.gemoc.execution.engine.io.views,

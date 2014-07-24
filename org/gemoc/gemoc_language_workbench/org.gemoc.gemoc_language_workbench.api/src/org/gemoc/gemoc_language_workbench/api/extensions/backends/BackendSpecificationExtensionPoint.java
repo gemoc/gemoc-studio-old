@@ -1,6 +1,8 @@
-package org.gemoc.gemoc_language_workbench.api.extensions;
+package org.gemoc.gemoc_language_workbench.api.extensions.backends;
 
 import java.util.Collection;
+
+import org.gemoc.gemoc_language_workbench.api.extensions.ExtensionPoint;
 
 public class BackendSpecificationExtensionPoint extends ExtensionPoint<BackendSpecificationExtension>
 {

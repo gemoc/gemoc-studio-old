@@ -8,8 +8,10 @@ import java.util.Map.Entry;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
-import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtensionPoint;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
@@ -59,6 +61,10 @@ public class RunConfiguration implements IRunConfiguration
 		for (BackendSpecificationExtension extension : BackendSpecificationExtensionPoint.getSpecifications())
 		{
 			_backends.put(extension, getAttribute(extension.getName(), false));			
+		}
+		for (FrontendSpecificationExtension extension : FrontendSpecificationExtensionPoint.getSpecifications())
+		{
+			_frontends.put(extension, getAttribute(extension.getName(), false));			
 		}
 	}
 
@@ -137,7 +143,6 @@ public class RunConfiguration implements IRunConfiguration
 		return false;
 	}
 
-
 	@Override
 	public Collection<BackendSpecificationExtension> getActivatedBackendExtensions()
 	{
@@ -148,7 +153,29 @@ public class RunConfiguration implements IRunConfiguration
 				result.add(e.getKey());
 		}
 		return result;
+	}
 
+	private HashMap<FrontendSpecificationExtension, Boolean> _frontends = new HashMap<>();
+	public boolean isFrontendActivated(FrontendSpecificationExtension extension) 
+	{
+		for (Entry<FrontendSpecificationExtension, Boolean> e : _frontends.entrySet())
+		{
+			if (e.getKey().getName().equals(extension.getName()))
+				return e.getValue();
+		}
+		return false;
+	}
+
+	@Override
+	public Collection<FrontendSpecificationExtension> getActivatedFrontendExtensions()
+	{
+		ArrayList<FrontendSpecificationExtension> result = new ArrayList<FrontendSpecificationExtension>();
+		for (Entry<FrontendSpecificationExtension, Boolean> e : _frontends.entrySet())
+		{
+			if (e.getValue())
+				result.add(e.getKey());
+		}
+		return result;
 	}
 
 }

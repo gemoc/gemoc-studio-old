@@ -6,7 +6,7 @@ import java.util.Observer;
 
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.IBackend;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.IBackend;
 
 /**
  * A very simple backend that writes in the console the strings it is given.

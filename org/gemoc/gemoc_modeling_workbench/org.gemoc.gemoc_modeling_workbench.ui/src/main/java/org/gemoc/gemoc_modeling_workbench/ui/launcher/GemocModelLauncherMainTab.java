@@ -32,9 +32,11 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.execution.engine.core.RunConfiguration;
-import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.extensions.LanguageDefinitionExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtensionPoint;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
@@ -74,6 +76,9 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 
 		Group backendArea = createGroup(area, "Backends attached to execution");
 		createBackendLayout(backendArea, null);
+
+		Group frontendArea = createGroup(area, "Frontend attached to execution");
+		createFrontendLayout(frontendArea, null);
 
 		Group prototypeArea = createGroup(area, "Engine Prototype parameters (these info will probably be removed in future version):");
 		createPrototypeLayout(prototypeArea, null);
@@ -142,6 +147,10 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 			{
 				entry.getValue().setSelection(runConfiguration.isBackendActivated(entry.getKey()));				
 			}
+			for (Entry<FrontendSpecificationExtension, Button> entry : _frontends.entrySet())
+			{
+				entry.getValue().setSelection(runConfiguration.isFrontendActivated(entry.getKey()));				
+			}
 			
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
@@ -180,6 +189,11 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 						this.modelofexecutionglml_LocationText.getText());
 		
 		for (Entry<BackendSpecificationExtension, Button> entry : _backends.entrySet())
+		{
+			configuration.setAttribute(entry.getKey().getName(), entry.getValue().getSelection());
+		}
+
+		for (Entry<FrontendSpecificationExtension, Button> entry : _frontends.entrySet())
 		{
 			configuration.setAttribute(entry.getKey().getName(), entry.getValue().getSelection());
 		}
@@ -439,6 +453,29 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 				public void widgetDefaultSelected(SelectionEvent e) {}
 			});
 			_backends.put(extension, checkbox);
+		}
+				
+		return parent;
+	}
+	
+	private HashMap<FrontendSpecificationExtension, Button> _frontends = new HashMap<>();
+
+	private Composite createFrontendLayout(Composite parent, Font font) 
+	{
+		for (FrontendSpecificationExtension extension : FrontendSpecificationExtensionPoint.getSpecifications())
+		{
+			Button checkbox = createCheckButton(parent, extension.getName());
+			checkbox.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					updateLaunchConfigurationDialog();
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {}
+			});
+			_frontends.put(extension, checkbox);
 		}
 				
 		return parent;

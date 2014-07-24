@@ -4,6 +4,7 @@
 
    <extension-point id="org.gemoc.gemoc_language_workbench.xdsml" name="Gemoc Language Definition" schema="schema/org.gemoc.gemoc_language_workbench.xdsml.exsd"/>
    <extension-point id="org.gemoc.gemoc_language_workbench.deciders" name="GEMOC Decider" schema="schema/org.gemoc.gemoc_language_workbench.decider.exsd"/>
-   <extension-point id="org.gemoc.gemoc_language_workbench.backends" name="GEMOC Backend" schema="schema/org.gemoc.gemoc_language_workbench.backends.exsd"/>
+   <extension-point id="org.gemoc.gemoc_language_workbench.backends" name="GEMOC Backends" schema="schema/org.gemoc.gemoc_language_workbench.backends.exsd"/>
+   <extension-point id="org.gemoc.gemoc_language_workbench.frontends" name="GEMOC Frontends" schema="schema/org.gemoc.gemoc_language_workbench.frontends.exsd"/>
 
 </plugin>

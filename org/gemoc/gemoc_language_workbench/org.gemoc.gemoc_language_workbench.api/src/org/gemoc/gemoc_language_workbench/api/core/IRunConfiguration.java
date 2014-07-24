@@ -2,7 +2,8 @@ package org.gemoc.gemoc_language_workbench.api.core;
 
 import java.util.Collection;
 
-import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtension;
 
 public interface IRunConfiguration {
 
@@ -15,5 +16,7 @@ public interface IRunConfiguration {
 	public int getDeadlockDetectionDepth();
 
 	public Collection<BackendSpecificationExtension> getActivatedBackendExtensions();
+
+	public Collection<FrontendSpecificationExtension> getActivatedFrontendExtensions();
 
 }

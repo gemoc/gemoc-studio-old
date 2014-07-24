@@ -25,7 +25,6 @@ import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.IBackend;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
@@ -34,7 +33,10 @@ import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
-import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.IBackend;
+import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.frontends.IFrontend;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -187,10 +189,18 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			_backends.add(backend);
 		}
 		
+		for (FrontendSpecificationExtension extension : _executionContext.getRunConfiguration().getActivatedFrontendExtensions())
+		{
+			IFrontend frontend = extension.instanciateFrontend();
+			frontend.initialize(this);
+			_frontends.add(frontend);
+		}
+		
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
 	
 	private ArrayList<IBackend> _backends = new ArrayList<IBackend>();
+	private ArrayList<IFrontend> _frontends = new ArrayList<IFrontend>();
 	
 	private void activateTrace() {
 		ModelExecutionTracingCapability capability = capability(ModelExecutionTracingCapability.class);
@@ -249,6 +259,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		for (IBackend backend : _backends)
 		{
 			backend.dispose();
+		}
+		for (IFrontend frontend : _frontends)
+		{
+			frontend.dispose();
 		}
 		
 		getEngineStatus().getCurrentLogicalStepChoice().clear();

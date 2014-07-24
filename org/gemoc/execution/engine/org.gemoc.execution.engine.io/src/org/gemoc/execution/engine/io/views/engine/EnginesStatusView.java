@@ -58,6 +58,12 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	public EnginesStatusView() {
 	}
 
+	@Override
+	public void dispose() {
+		org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.deleteObserver(this);
+		super.dispose();
+	}
+	
 	private Object _lastSelection;
 	/**
 	 * This is a callback that will allow us

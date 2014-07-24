@@ -3,7 +3,7 @@
 <schema targetNamespace="org.gemoc.gemoc_language_workbench.api" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.gemoc.gemoc_language_workbench.api" id="org.gemoc.gemoc_language_workbench.backends" name="GEMOC Backend"/>
+         <meta.schema plugin="org.gemoc.gemoc_language_workbench.api" id="org.gemoc.gemoc_language_workbench.frontends" name="GEMOC Frontends"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
-            <element ref="Backend"/>
+            <element ref="Frontend"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,7 +47,7 @@
       </complexType>
    </element>
 
-   <element name="Backend">
+   <element name="Frontend">
       <complexType>
          <attribute name="Name" type="string" use="required">
             <annotation>
@@ -62,7 +62,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.extensions.backends.IBackend"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.core.IFrontEnd"/>
                </appinfo>
             </annotation>
          </attribute>

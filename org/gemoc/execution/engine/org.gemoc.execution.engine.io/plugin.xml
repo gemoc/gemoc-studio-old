@@ -226,6 +226,13 @@
             Class="org.gemoc.execution.engine.io.backends.ConsoleBackend"
             Name="Console Backend">
       </Backend>
+   </extension>
+   <extension
+         point="org.gemoc.gemoc_language_workbench.frontends">
+      <Frontend
+            Class="org.gemoc.execution.engine.io.frontends.PrepareViewFrontend"
+            Name="GEMOC Perspective">
+      </Frontend>
    </extension>	
 
 
