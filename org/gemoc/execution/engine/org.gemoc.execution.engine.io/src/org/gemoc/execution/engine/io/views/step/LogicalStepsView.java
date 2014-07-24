@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.io.views.step;
 
+
 import org.eclipse.jface.action.IMenuListener2;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.JFaceResources;
@@ -202,7 +203,7 @@ public class LogicalStepsView extends DependantViewPart
 		_viewer.addDoubleClickListener(doubleClickListener);
 	}
 	
-	public void addSelectionChangedListener(ISelectionChangedListener listener)
+	public void addSelectionListener(ISelectionChangedListener listener)
 	{
 		_viewer.addSelectionChangedListener(listener);
 	}
@@ -220,5 +221,9 @@ public class LogicalStepsView extends DependantViewPart
 	public void removeSelectionChangedListener(ISelectionChangedListener selectionChangedListener)
 	{
 		_viewer.removeSelectionChangedListener(selectionChangedListener);
+	}
+	
+	public TreeViewer getTreeViewer(){
+		return _viewer;
 	}
 }

@@ -1,27 +1,72 @@
 package org.gemoc.execution.engine.io.views.event.filters;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeItem;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.event.EventManagerClockWrapper;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 
-import fr.inria.aoste.trace.LogicalStep;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 
 
 public abstract class Filter implements IEventFilterStrategy{
-	public void addFutureTickingClocks(Collection<EventManagerClockWrapper> wrapperLists){
+	
+	protected Map<String, EventManagerClockWrapper> cache;
+	protected Collection<EventManagerClockWrapper> wrapperList;
+	protected List<Relation> relations;
+	
+	@Override
+	public void setParamFilter(List<Relation> relations,
+			Map<String, EventManagerClockWrapper> cache) {
+		this.relations = relations;
+		this.cache = new HashMap<String, EventManagerClockWrapper>(cache);
+		wrapperList = new ArrayList<EventManagerClockWrapper>(cache.values());
+	}
+	
+	protected void addFutureTickingClocks(){
 		//wrapperLists.addAll(null); // recuperer toutes les clocks qui vont ticker dans le future
 		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
-		LogicalStep l = decisionView.getSelectedLogicalStep();
-		if(l!=null)
+		TreeViewer treeViewer = decisionView.getTreeViewer();
+		final Tree tree = treeViewer.getTree();
+		
+		/*
+		TreeSelection treeSelection = (TreeSelection)treeViewer.getSelection();
+		treeSelection.getPaths()[0].getFirstSegment()
+		*/
+		TreeItem[] selection = tree.getSelection();
+		List<String> eventNameList = new ArrayList<String>();
+		for(TreeItem item : selection)
 		{
-			for(Object o : l.eContents())
+			if(item.getExpanded())
 			{
-//				if(o instanceof Event)
-//				{
-//					((Event)o).getName();
-//				}
+				for(TreeItem events : item.getItems())
+				{
+					eventNameList.add(events.getText().substring(4));
+				}
+			}
+			else
+			{
+				for(TreeItem events : item.getParentItem().getItems())
+				{
+					eventNameList.add(events.getText().substring(4));
+				}
+				
+			}
+			for(String event : eventNameList){
+				EventManagerClockWrapper wrapper = cache.get(event);
+				if(wrapper.isForced()==null)
+				{
+					wrapper.setStateFutureTick(true);
+				}
+				wrapperList.remove(wrapper);
+				wrapperList.add(wrapper);
 			}
 		}
 	}

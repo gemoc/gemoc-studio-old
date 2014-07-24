@@ -13,6 +13,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ITreeSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
@@ -24,7 +27,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Table;
@@ -43,6 +48,7 @@ import org.gemoc.execution.engine.io.views.event.commands.CommandState;
 import org.gemoc.execution.engine.io.views.event.filters.NoEventFilter;
 import org.gemoc.execution.engine.io.views.event.filters.RemoveAllBindingClockFilter;
 import org.gemoc.execution.engine.io.views.event.filters.RemoveLeftBindingClockFilter;
+import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
@@ -84,6 +90,13 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_playFlag = false;
 		_currentEngineCache = null;
 		_scenario = null;
+		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
+		decisionView.addSelectionListener(new ISelectionChangedListener() {
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				updateView();
+			}
+		});
 	}
 
 
@@ -260,7 +273,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			public void run() {
 				if(_currentEngine != null)
 				{
-					applyStrategy();
+					selectFilter();
 				}
 				_viewer.setInput(_currentEngineCache);
 			}				
@@ -270,7 +283,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 
 
-	private void applyStrategy() {
+	private void selectFilter() {
 		switch(_strategySelectionIndex)
 		{
 		case 0: _currentEngineCache.setFilter(new NoEventFilter()); break;
@@ -332,6 +345,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				{
 					playScenario();
 				}
+				_currentEngineCache.disableFreeClocks();
 			}
 		}
 		updateView();

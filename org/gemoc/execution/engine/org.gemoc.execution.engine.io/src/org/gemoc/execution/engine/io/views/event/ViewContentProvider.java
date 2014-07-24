@@ -15,7 +15,7 @@ public class ViewContentProvider implements IStructuredContentProvider {
 		if(parent instanceof EventManagementCache){
 			EventManagementCache cache = (EventManagementCache) parent;
 			ArrayList<EventManagerClockWrapper> listeClockWrapper = 
-					new ArrayList<EventManagerClockWrapper>(cache.getWrappers());
+					new ArrayList<EventManagerClockWrapper>(cache.getFilteredWrappers());
 			return listeClockWrapper.toArray();
 		}
 		return new Object[0];

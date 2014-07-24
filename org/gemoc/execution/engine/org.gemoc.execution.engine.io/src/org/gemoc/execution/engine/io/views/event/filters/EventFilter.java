@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.io.views.event.filters;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.gemoc.execution.engine.io.views.event.EventManagerClockWrapper;
 
@@ -18,7 +19,11 @@ public class EventFilter {
 		_filterStrategy = filter;
 	}
 	
-	public Collection<EventManagerClockWrapper> applyFilter(List<Relation> relations, Collection<EventManagerClockWrapper> wrapperList){
-		return _filterStrategy.applyFilter(relations, wrapperList);
+	public Collection<EventManagerClockWrapper> applyFilter(){
+		return _filterStrategy.applyFilter();
+	}
+	
+	public void setParamFilter(List<Relation> relations, Map<String, EventManagerClockWrapper> cache){
+		_filterStrategy.setParamFilter(relations,  cache);
 	}
 }

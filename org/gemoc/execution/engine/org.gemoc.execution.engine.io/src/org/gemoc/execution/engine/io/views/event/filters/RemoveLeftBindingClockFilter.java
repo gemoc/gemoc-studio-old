@@ -12,9 +12,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 public class RemoveLeftBindingClockFilter extends Filter {
 
 	@Override
-	public Collection<EventManagerClockWrapper> applyFilter(
-			List<Relation> relations,
-			Collection<EventManagerClockWrapper> wrapperList) {
+	public Collection<EventManagerClockWrapper> applyFilter() {
 		for(Relation relation: relations)
 		{
 			List<Binding> bindings = relation.getBindings();
@@ -30,7 +28,7 @@ public class RemoveLeftBindingClockFilter extends Filter {
 				}
 			}
 		}
-		addFutureTickingClocks(wrapperList);
+		addFutureTickingClocks();
 		return wrapperList;
 	}
 }
