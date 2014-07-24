@@ -104,10 +104,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * Given at the language-level initialization.
 	 */
 
-	protected ILogicalStepDecider logicalStepDecider = null;
+	protected ILogicalStepDecider _logicalStepDecider = null;
 
 	public ILogicalStepDecider getLogicalStepDecider() {
-		return logicalStepDecider;
+		return _logicalStepDecider;
 	}
 
 	private IExecutionContext _executionContext;
@@ -137,16 +137,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		_executionContext = executionContext;
 		_lastStepsRun = new ArrayDeque<LogicalStep>(getDeadlockDetectionDepth());
 		_executionContext.getEventExecutor().initialize();
-		logicalStepDecider = decider;
-		if (this.logicalStepDecider == null) 
+		_logicalStepDecider = decider;
+		if (_logicalStepDecider == null) 
 		{
-			if (_executionContext.getSolver() instanceof CcslSolver) 
-			{
-				Activator.getDefault().warn("LogicalStepDecider not set,  using default SolverDecider");
-				this.logicalStepDecider = new CcslSolverDecider((CcslSolver) _executionContext.getSolver());
-			} else {
-				throw new EngineNotCorrectlyInitialized("LogicalStepDecider not set and cannot use default CcslSolverDecider");
-			}
+			_logicalStepDecider = new CcslSolverDecider();
 		}
 		
 		for(IClockController clockController: _executionContext.getClockControllers())
@@ -207,7 +201,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	@Override
 	public void stop() 
 	{
-		logicalStepDecider.dispose();
+		_logicalStepDecider.dispose();
 		terminated = true;
 		for (IEngineHook hook : _executionContext.getHooks()) 
 		{
@@ -230,7 +224,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 		_clockControllers.clear();		
 		_executionContext.dispose();
-		logicalStepDecider.dispose();
+		_logicalStepDecider.dispose();
 		
 		if (animator != null) {
 			animator.clear(this);
@@ -285,6 +279,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			{
 				while (!terminated) 
 				{
+					switchDeciderIfNecessary();
 					if (hasCapability(ModelExecutionTracingCapability.class))
 						updateTraceModelBeforeAskingSolver(count);
 					
@@ -321,7 +316,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 						if (hasCapability(ModelExecutionTracingCapability.class))
 							updateTraceModelBeforeDeciding(possibleLogicalSteps);
 						notifyEngineHasChanged();
-						selectedLogicalStepIndex = logicalStepDecider.decide(possibleLogicalSteps);
+						selectedLogicalStepIndex = _logicalStepDecider.decide(ObservableBasicExecutionEngine.this, possibleLogicalSteps);
 						count++;
 
 						if (selectedLogicalStepIndex == -1) {
@@ -631,6 +626,24 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	@Override
 	public IExecutionContext getExecutionContext() {
 		return _executionContext;
+	}
+
+	
+	private ILogicalStepDecider _newDecider;
+	
+	@Override
+	public void changeLogicalStepDecider(ILogicalStepDecider newDecider) 
+	{
+		_newDecider = newDecider;
+	}
+	
+	private void switchDeciderIfNecessary()
+	{
+		if (_newDecider != null)
+		{
+			_logicalStepDecider = _newDecider;
+			_newDecider = null;
+		}
 	}
 	
 }

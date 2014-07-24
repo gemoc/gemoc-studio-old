@@ -2,7 +2,7 @@ package org.gemoc.execution.engine.commons.deciders;
 
 import java.util.List;
 
-import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 
 import fr.inria.aoste.trace.LogicalStep;
@@ -13,16 +13,9 @@ import fr.inria.aoste.trace.LogicalStep;
  */
 public class CcslSolverDecider implements ILogicalStepDecider {
 
-	protected CcslSolver solver;
-	
-	public CcslSolverDecider(CcslSolver solver) {
-		super();
-		this.solver = solver;
-	}
-
 	@Override
-	public int decide(List<LogicalStep> possibleLogicalSteps) {
-		return solver.proposeLogicalStepByIndex();
+	public int decide(GemocExecutionEngine engine, List<LogicalStep> possibleLogicalSteps) {
+		return engine.getExecutionContext().getSolver().proposeLogicalStepByIndex();
 	}
 
 	@Override

@@ -6,6 +6,10 @@ import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
@@ -22,6 +26,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.TreeViewerHelper;
@@ -30,7 +35,12 @@ import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
+import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
+import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
+import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.extension.DeciderSpecification;
+import org.gemoc.gemoc_language_workbench.api.extension.DeciderSpecificationExtension;
 
 public class EnginesStatusView extends ViewPart implements Observer {
 
@@ -70,9 +80,9 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					}
 				});
 		
-		createColumns(_viewer);
-		_viewer.setColumnProperties( new String[] {"Identifier", "Step", "Status"} );
-		_viewer.getTree().setHeaderVisible(true);
+		createColumns();
+//		_viewer.setColumnProperties( new String[] {"Status", "Identifier", "Step", "Status"} );
+//		_viewer.getTree().setHeaderVisible(true);
 		Font mono = JFaceResources.getFont(JFaceResources.TEXT_FONT);
 		_viewer.getTree().setFont(mono);
 		
@@ -81,6 +91,34 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			
 		// register for changes in the RunningEngineRegistry
 		org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.addObserver(this);
+		
+		buildMenu();		
+	}
+
+	private void buildMenu()
+	{
+		addActionToToolbar(new StopEngineAction());
+		addActionToToolbar(new StopAllEngineAction());
+		addSeparatorToToolbar();
+		addActionToToolbar(new SwitchDeciderAction());
+	}
+	
+	private void addActionToToolbar(Action action)
+	{
+		IActionBars actionBars = getViewSite().getActionBars();
+//		IMenuManager dropDownMenu = actionBars.getMenuManager();
+		IToolBarManager toolBar = actionBars.getToolBarManager();
+//		dropDownMenu.add(action);
+		toolBar.add(action);		
+	}
+
+	private void addSeparatorToToolbar()
+	{
+		IActionBars actionBars = getViewSite().getActionBars();
+//		IMenuManager dropDownMenu = actionBars.getMenuManager();
+		IToolBarManager toolBar = actionBars.getToolBarManager();
+//		dropDownMenu.add(action);
+		toolBar.add(new Separator());		
 	}
 
 	/**
@@ -88,33 +126,34 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	 * Creates the columns in the view
 	 * @param viewer
 	 */
-	private void createColumns(TreeViewer viewer) {
-		TreeColumn column1 = new TreeColumn(viewer.getTree(), SWT.LEFT);
-		column1.setText("Identifier");
-//		column1.setWidth(250);
-//		column1.setResizable(true);
-		TreeViewerColumn viewerColumn1 = new TreeViewerColumn(viewer, column1);
-		viewerColumn1.setLabelProvider(new ColumnLabelProvider()
+	private void createColumns() 
+	{
+		createColumn1();
+		createColumn2();
+		createColumn3();
+//		createColumn4();
+	}
+	
+	private void createColumn1() 
+	{
+		TreeColumn column = new TreeColumn(_viewer.getTree(), SWT.LEFT);
+		//column.setText("Status");
+		TreeViewerColumn viewerColumn = new TreeViewerColumn(_viewer, column);
+		viewerColumn.setLabelProvider(
+			new ColumnLabelProvider()
 			{
-				
 				@Override
 				public String getText(Object element) {
-					String result = "";
-					if (element instanceof GemocExecutionEngine)
-					{					
-						GemocExecutionEngine engine = (GemocExecutionEngine)element;
-						result = engine.getExecutionContext().getResourceModel().getURI().segmentsList().get(engine.getExecutionContext().getResourceModel().getURI().segments().length-1);						
-					}
-					return result;
+					return null;
 				}
-			
+				
 				@Override
-				public Image getImage(Object element) {
+				public Image getImage(Object element) 
+				{
 					Image result = null;
 					if (element instanceof GemocExecutionEngine)
 					{
 						GemocExecutionEngine engine = (GemocExecutionEngine)element;
-						
 						switch (engine.getEngineStatus().getRunningStatus()) {
 							case Running:
 								result = SharedIcons.getSharedImage(SharedIcons.RUNNING_ENGINE_ICON);							
@@ -137,10 +176,57 @@ public class EnginesStatusView extends ViewPart implements Observer {
 						}
 					}
 					return result;
+				}			
+			});	
+	}
+	
+	private void createColumn2() 
+	{
+		TreeColumn column = new TreeColumn(_viewer.getTree(), SWT.LEFT);
+//		column.setText("Identifier");
+		TreeViewerColumn viewerColumn = new TreeViewerColumn(_viewer, column);
+		viewerColumn.setLabelProvider(
+			new ColumnLabelProvider()
+			{	
+				@Override
+				public String getText(Object element) 
+				{
+					String result = "";
+					if (element instanceof GemocExecutionEngine)
+					{					
+						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+						result = engine.getExecutionContext().getResourceModel().getURI().segmentsList().get(engine.getExecutionContext().getResourceModel().getURI().segments().length-1);	
+					}
+					return result;
+				}
+			
+				@Override
+				public Image getImage(Object element) 
+				{
+					Image result = null;
+					ImageDescriptor imageDescriptor = null;
+					if (element instanceof GemocExecutionEngine)
+					{
+						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+						for (DeciderSpecification spec : DeciderSpecificationExtension.getSpecifications())
+						{
+							if (engine.getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
+							{
+								imageDescriptor = ImageDescriptor.createFromURL(spec.getIconURL());
+								break;
+							}							
+						}
+					}
+					if (imageDescriptor != null)
+					{
+						result = imageDescriptor.createImage();
+					}
+					return result;
 				}
 				
 				@Override
-				public String getToolTipText(Object element) {
+				public String getToolTipText(Object element) 
+				{
 					String result = "";
 					if (element instanceof GemocExecutionEngine)
 					{					
@@ -154,22 +240,41 @@ public class EnginesStatusView extends ViewPart implements Observer {
 								break;
 							}								
 						}
+						result += "\n";
+						switch(engine.getEngineStatus().getRunningStatus())
+						{
+							case Initializing : 
+								result += "Initializing";
+								break;
+							case Running:
+								result += "Running";
+								break;
+							case WaitingLogicalStepSelection:
+								result += "Waiting LogicalStep Selection";
+								break;
+							case Stopped:
+								result += "Stopped";
+								break;
+						}	
+						result += "\n";
+						result += "Step " + engine.getEngineStatus().getNbLogicalStepRun();
 					}
 					return result;
-				}
-				
+				}				
 			});
-		
-		TreeColumn column3 = new TreeColumn(viewer.getTree(), SWT.LEFT);
-		column3.setText("Step");
-//		column3.setWidth(50);
-//		column3.setResizable(true);
-		TreeViewerColumn viewerColumn3 = new TreeViewerColumn(viewer, column3);
-		viewerColumn3.setLabelProvider(new ColumnLabelProvider()
+	}
+
+	private void createColumn3() 
+	{
+		TreeColumn column = new TreeColumn(_viewer.getTree(), SWT.LEFT);
+//		column.setText("Step");
+		TreeViewerColumn viewerColumn = new TreeViewerColumn(_viewer, column);
+		viewerColumn.setLabelProvider(
+			new ColumnLabelProvider()
 			{
-				
 				@Override
-				public String getText(Object element) {
+				public String getText(Object element) 
+				{
 					String result = "";
 					if (element instanceof GemocExecutionEngine)
 					{					
@@ -177,21 +282,21 @@ public class EnginesStatusView extends ViewPart implements Observer {
 						result = String.format("%d", engine.getEngineStatus().getNbLogicalStepRun());
 					}
 					return result;
-				}
-			
+				}			
 			});
+	}
 
-		
-		TreeColumn column4 = new TreeColumn(viewer.getTree(), SWT.LEFT);
-		column4.setText("Details");
-//		column4.setWidth(250);
-//		column4.setResizable(true);
-		TreeViewerColumn viewerColumn4 = new TreeViewerColumn(viewer, column4);
-		viewerColumn4.setLabelProvider(new ColumnLabelProvider()
-			{
-				
+	private void createColumn4() 
+	{
+		TreeColumn column = new TreeColumn(_viewer.getTree(), SWT.LEFT);
+//		column.setText("Details");
+		TreeViewerColumn viewerColumn = new TreeViewerColumn(_viewer, column);
+		viewerColumn.setLabelProvider(
+			new ColumnLabelProvider()
+			{				
 				@Override
-				public String getText(Object element) {
+				public String getText(Object element) 
+				{
 					String result = "";
 					if (element instanceof GemocExecutionEngine)
 					{
@@ -213,24 +318,10 @@ public class EnginesStatusView extends ViewPart implements Observer {
 						}					
 					}
 					return result;
-				}
-			
-			});
+				}			
+			});	
 	}
 	
-//	public MenuManager menuMgr;
-//	private void hookContextMenu() 
-//	{
-//	    //MenuManager menuManager = new MenuManager();
-//	    MenuManager menuManager = new MenuManager();
-//	    menuMgr = menuManager;
-//	    Menu menu = menuManager.createContextMenu(viewer.getControl());
-//	    viewer.getControl().setMenu(menu);
-//	    getSite().registerContextMenu(menuManager, viewer);
-//	    // make the selection available
-//	    getSite().setSelectionProvider(viewer);
-//	}
-
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */

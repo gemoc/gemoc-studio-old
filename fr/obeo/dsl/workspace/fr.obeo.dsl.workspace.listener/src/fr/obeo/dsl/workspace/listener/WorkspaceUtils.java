@@ -1,10 +1,14 @@
 package fr.obeo.dsl.workspace.listener;
 
 import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
+import fr.obeo.dsl.workspace.listener.change.resource.AbstractResourceChange;
+import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
 import fr.obeo.dsl.workspace.listener.internal.ListenerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.eclipse.core.resources.IResource;
 
 /**
  * Utility class.
@@ -121,6 +125,27 @@ public final class WorkspaceUtils {
 		for (IListener listener : LISTENERS.values()) {
 			listener.removeProcessor(processor);
 		}
+	}
+
+	/**
+	 * Gets the {@link AbstractResourceChange#getObject() resource object} or the
+	 * {@link ResourceMoved#getDestination() destination}.
+	 * 
+	 * @param change
+	 *            the {@link AbstractResourceChange}
+	 * @return the {@link AbstractResourceChange#getObject() resource object} or the
+	 *         {@link ResourceMoved#getDestination() destination}
+	 */
+	public static IResource getResource(AbstractResourceChange change) {
+		final IResource res;
+
+		if (change instanceof ResourceMoved) {
+			res = ((ResourceMoved)change).getDestination();
+		} else {
+			res = change.getObject();
+		}
+
+		return res;
 	}
 
 }

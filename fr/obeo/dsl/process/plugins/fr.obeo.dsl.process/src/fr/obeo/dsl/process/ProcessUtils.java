@@ -755,4 +755,47 @@ public final class ProcessUtils {
 		}
 	}
 
+	/**
+	 * Gets all {@link Task} contained in the given {@link Process}.
+	 * 
+	 * @param process
+	 *            the {@link Process}
+	 * @return all {@link Task} contained in the given {@link Process}
+	 */
+	public static List<Task> getAllTasks(Process process) {
+		final List<Task> res;
+
+		if (process != null && process.getTask() != null) {
+			if (process.getTask() instanceof ComposedTask) {
+				res = getAllTasks((ComposedTask)process.getTask());
+			} else {
+				res = new ArrayList<Task>();
+				res.add(process.getTask());
+			}
+		} else {
+			res = new ArrayList<Task>();
+		}
+
+		return res;
+	}
+
+	/**
+	 * Gets all {@link Task} contained in the given {@link ComposedTask}.
+	 * 
+	 * @param task
+	 *            the {@link ComposedTask}
+	 * @return all {@link Task} contained in the given {@link ComposedTask}
+	 */
+	private static List<Task> getAllTasks(ComposedTask task) {
+		final List<Task> res = new ArrayList<Task>();
+
+		for (Task child : task.getTasks()) {
+			res.add(child);
+			if (child instanceof ComposedTask) {
+				res.addAll(getAllTasks((ComposedTask)child));
+			}
+		}
+
+		return res;
+	}
 }
