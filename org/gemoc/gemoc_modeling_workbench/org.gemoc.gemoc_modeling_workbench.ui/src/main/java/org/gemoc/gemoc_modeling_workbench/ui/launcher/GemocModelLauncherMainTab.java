@@ -1,6 +1,8 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -18,8 +20,8 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -30,7 +32,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.execution.engine.core.RunConfiguration;
-import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
@@ -62,22 +66,29 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		area.layout();
 		setControl(area);
 
-		Group modelArea = new Group(area, SWT.NULL);
-		modelArea.setText("Model:");
-		modelArea.setLayout(new FillLayout());
-		// Create the area for the filename to get
+		Group modelArea = createGroup(area, "Model:");
 		createModelLayout(modelArea, null);
 
-		Group languageArea = new Group(area, SWT.NULL);
-		languageArea.setText("Language:");
-		languageArea.setLayout(new FillLayout());
+		Group languageArea = createGroup(area, "Language:");
 		createLanguageLayout(languageArea, null);
 
-		Group prototypeArea = new Group(area, SWT.NULL);
-		prototypeArea.setText("Gemoc Engine Prototype parameters (these info will probably be removed in future version):");
-		prototypeArea.setLayout(new FillLayout());
-		createPrototypeLayout(prototypeArea, null);
+		Group backendArea = createGroup(area, "Backends attached to execution");
+		createBackendLayout(backendArea, null);
 
+		Group prototypeArea = createGroup(area, "Engine Prototype parameters (these info will probably be removed in future version):");
+		createPrototypeLayout(prototypeArea, null);
+	}
+	
+	private Group createGroup(Composite parent, String text)
+	{
+		Group group = new Group(parent, SWT.NULL);
+		group.setText(text);
+		GridLayout locationLayout = new GridLayout();
+		locationLayout.numColumns = 2;
+		locationLayout.marginHeight = 10;
+		locationLayout.marginWidth = 10;
+		group.setLayout(locationLayout);
+		return group;
 	}
 
 	@Override
@@ -97,6 +108,11 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_SELECTED_DECIDER,
 				RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP);
+
+		for (Entry<BackendSpecificationExtension, Button> entry : _backends.entrySet())
+		{
+			configuration.setAttribute(entry.getKey().getName(), false);
+		}
 	}
 
 	@Override
@@ -121,6 +137,12 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 //							.getAttribute(
 //									RunConfiguration.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 //									""));
+			
+			for (Entry<BackendSpecificationExtension, Button> entry : _backends.entrySet())
+			{
+				entry.getValue().setSelection(runConfiguration.isBackendActivated(entry.getKey()));				
+			}
+			
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
@@ -156,6 +178,12 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 						this.modelofexecutionglml_LocationText.getText());
+		
+		for (Entry<BackendSpecificationExtension, Button> entry : _backends.entrySet())
+		{
+			configuration.setAttribute(entry.getKey().getName(), entry.getValue().getSelection());
+		}
+
 	}
 
 	@Override
@@ -285,16 +313,16 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	 */
 	public Composite createLanguageLayout(Composite parent, Font font) {
 		createTextLabelLayout(parent, "xDSML");
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+//		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		// gd.horizontalSpan = 1;
-		gd.widthHint = GRID_DEFAULT_WIDTH;
+//		gd.widthHint = GRID_DEFAULT_WIDTH;
 		// Create the project selector button
 
 		_languageCombo = new Combo(parent, SWT.NONE);
 
 		ArrayList<String> xdsmlNames = new ArrayList<String>();
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry()
-				.getConfigurationElementsFor(LanguageDefinitionExtension.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+				.getConfigurationElementsFor(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT);
 		for (int i = 0; i < confElements.length; i++) {
 			xdsmlNames.add(confElements[i].getAttribute("name"));
 		}
@@ -384,20 +412,35 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	 *            the event that is triggered when clicking on OK button
 	 */
 	private void createTextLabelLayout(Composite parent, String labelString) {
-		GridLayout locationLayout = new GridLayout();
-		locationLayout.numColumns = 2;
-		locationLayout.marginHeight = 10;
-		locationLayout.marginWidth = 10;
-		parent.setLayout(locationLayout);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		parent.setLayoutData(gd);
-		// parent.setFont(null);
-
 		Label inputLabel = new Label(parent, SWT.NONE);
 		inputLabel.setText(labelString); //$NON-NLS-1$
 		gd = new GridData();
 		gd.horizontalSpan = 2;
 		inputLabel.setLayoutData(gd);
 	}
+		
+	private HashMap<BackendSpecificationExtension, Button> _backends = new HashMap<>();
 	
+	private Composite createBackendLayout(Composite parent, Font font) 
+	{
+		for (BackendSpecificationExtension extension : BackendSpecificationExtensionPoint.getSpecifications())
+		{
+			Button checkbox = createCheckButton(parent, extension.getName());
+			checkbox.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					updateLaunchConfigurationDialog();
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {}
+			});
+			_backends.put(extension, checkbox);
+		}
+				
+		return parent;
+	}
 }

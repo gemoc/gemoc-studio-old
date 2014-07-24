@@ -1,8 +1,15 @@
 package org.gemoc.execution.engine.core;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
+import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.BackendSpecificationExtensionPoint;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
@@ -48,6 +55,11 @@ public class RunConfiguration implements IRunConfiguration
 		_modelURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
 		_animatorURIAsString = getAttribute("airdResource", "");
 		_deadlockDetectionDepth = getAttribute(LAUNCH_DEADLOCK_DETECTION_DEPTH, 10);
+		
+		for (BackendSpecificationExtension extension : BackendSpecificationExtensionPoint.getSpecifications())
+		{
+			_backends.put(extension, getAttribute(extension.getName(), false));			
+		}
 	}
 
 	private String getAttribute(String attributeName, String defaultValue) throws CoreException
@@ -56,6 +68,11 @@ public class RunConfiguration implements IRunConfiguration
 	}
 
 	private Integer getAttribute(String attributeName, Integer defaultValue) throws CoreException
+	{
+		return _launchConfiguration.getAttribute(attributeName, defaultValue);
+	}
+
+	private Boolean getAttribute(String attributeName, Boolean defaultValue) throws CoreException
 	{
 		return _launchConfiguration.getAttribute(attributeName, defaultValue);
 	}
@@ -107,6 +124,31 @@ public class RunConfiguration implements IRunConfiguration
 	public int getDeadlockDetectionDepth() 
 	{
 		return _deadlockDetectionDepth;
+	}
+
+	private HashMap<BackendSpecificationExtension, Boolean> _backends = new HashMap<>();
+	public boolean isBackendActivated(BackendSpecificationExtension extension) 
+	{
+		for (Entry<BackendSpecificationExtension, Boolean> e : _backends.entrySet())
+		{
+			if (e.getKey().getName().equals(extension.getName()))
+				return e.getValue();
+		}
+		return false;
+	}
+
+
+	@Override
+	public Collection<BackendSpecificationExtension> getActivatedBackendExtensions()
+	{
+		ArrayList<BackendSpecificationExtension> result = new ArrayList<BackendSpecificationExtension>();
+		for (Entry<BackendSpecificationExtension, Boolean> e : _backends.entrySet())
+		{
+			if (e.getValue())
+				result.add(e.getKey());
+		}
+		return result;
+
 	}
 
 }

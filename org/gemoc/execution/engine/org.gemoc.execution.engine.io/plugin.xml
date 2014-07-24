@@ -219,6 +219,13 @@
             Icon="icons/app-shield-black-16.png"
             Name="Solver decider">
       </DeciderSpecification>
+   </extension>
+   <extension
+         point="org.gemoc.gemoc_language_workbench.backends">
+      <Backend
+            Class="org.gemoc.execution.engine.io.backends.ConsoleBackend"
+            Name="Console Backend">
+      </Backend>
    </extension>	
 
 

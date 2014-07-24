@@ -2,9 +2,11 @@ package org.gemoc.execution.engine.io.backends;
 
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.execution.engine.io.core.Backend;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IBackend;
 
 /**
  * A very simple backend that writes in the console the strings it is given.
@@ -12,15 +14,7 @@ import org.gemoc.execution.engine.io.core.Backend;
  * @author flatombe
  * 
  */
-public class ConsoleBackend implements Backend {
-
-	/**
-	 * Configure which console to display to, etc...
-	 */
-	@Override
-	public void configure() {
-
-	}
+public class ConsoleBackend implements IBackend, Observer {
 
 	/**
 	 * Looks for String or List<String> and displays whatever is found.
@@ -40,5 +34,22 @@ public class ConsoleBackend implements Backend {
 			Activator.getMessagingSystem().error(
 					"Trace was not formatted correctly", Activator.PLUGIN_ID);
 		}*/
+	}
+
+	@Override
+	public void dispose() 
+	{
+		if (_engine instanceof Observable)
+			((Observable) _engine).deleteObserver(this);
+	}
+
+	private GemocExecutionEngine _engine;
+	
+	@Override
+	public void initialize(GemocExecutionEngine engine)
+	{
+		_engine = engine;
+		if (engine instanceof Observable)
+			((Observable) engine).addObserver(this);
 	}
 }

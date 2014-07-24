@@ -3,7 +3,6 @@ package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Observable;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -22,8 +21,6 @@ import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.RunConfiguration;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
-import org.gemoc.execution.engine.io.backends.ConsoleBackend;
-import org.gemoc.execution.engine.io.core.Backend;
 import org.gemoc.execution.engine.io.core.Frontend;
 import org.gemoc.execution.engine.io.frontends.PrepareViewFrontend;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
@@ -69,11 +66,9 @@ public class GemocReflectiveModelLauncher
 
 			List<Frontend> frontends = new ArrayList<Frontend>();
 			frontends.add(new PrepareViewFrontend());
-			List<Backend> backends = new ArrayList<Backend>();
-			backends.add(new ConsoleBackend());
 
 			_engine = new ObservableBasicExecutionEngine(decider, executionContext);
-			configureBackendsAndFrontEnds(_engine, frontends, backends);
+			configureBackendsAndFrontEnds(_engine, frontends);
 
 			if (executionContext.getRunConfiguration().isAnimationActive()) 
 			{
@@ -143,19 +138,12 @@ public class GemocReflectiveModelLauncher
 				.getMessaggingSystem();	
 	}
 	
-	private void configureBackendsAndFrontEnds(GemocExecutionEngine engine, List<Frontend> frontends, List<Backend> backends) 
+	private void configureBackendsAndFrontEnds(GemocExecutionEngine engine, List<Frontend> frontends) 
 	{
 		// Links the Execution Engine to the Frontends
 		for (Frontend frontend : frontends) 
 		{
 			frontend.initialize(engine);
-		}
-		// Configures all the backends and links the Execution Engine to the
-		// Backends
-		for (Backend backend : backends) 
-		{
-			backend.configure();
-			((Observable) engine).addObserver(backend);
 		}
 	}
 

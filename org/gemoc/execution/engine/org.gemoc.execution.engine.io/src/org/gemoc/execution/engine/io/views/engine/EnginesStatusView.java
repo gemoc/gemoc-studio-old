@@ -39,8 +39,8 @@ import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.extension.DeciderSpecification;
-import org.gemoc.gemoc_language_workbench.api.extension.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.DeciderSpecificationExtensionPoint;
 
 public class EnginesStatusView extends ViewPart implements Observer {
 
@@ -208,7 +208,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					if (element instanceof GemocExecutionEngine)
 					{
 						GemocExecutionEngine engine = (GemocExecutionEngine)element;
-						for (DeciderSpecification spec : DeciderSpecificationExtension.getSpecifications())
+						for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
 						{
 							if (engine.getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
 							{

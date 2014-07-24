@@ -10,7 +10,7 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -91,10 +91,10 @@ public class PluginXMLHelper {
 	
 	public Element updateXDSMLDefinitionInExtensionPoint(Element extensionPoint, String xDSMLName){
 		Element result;
-		List<Element> elements = extensionPoint.getContent(new ElementFilter(LanguageDefinitionExtension.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF));
+		List<Element> elements = extensionPoint.getContent(new ElementFilter(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF));
 		if(elements.size() == 0){
 			// create extension point
-			result = new Element(LanguageDefinitionExtension.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF);
+			result = new Element(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF);
 			extensionPoint.addContent(result);
 		}
 		else{
@@ -105,10 +105,10 @@ public class PluginXMLHelper {
 	}
 	public Element updateXDSMLDefinitionAttributeInExtensionPoint(Element extensionPoint, String atributeName, String value){
 		Element result;
-		List<Element> elements = extensionPoint.getContent(new ElementFilter(LanguageDefinitionExtension.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF));
+		List<Element> elements = extensionPoint.getContent(new ElementFilter(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF));
 		if(elements.size() == 0){
 			// create extension point
-			result = new Element(LanguageDefinitionExtension.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF);
+			result = new Element(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF);
 			extensionPoint.addContent(result);
 		}
 		else{

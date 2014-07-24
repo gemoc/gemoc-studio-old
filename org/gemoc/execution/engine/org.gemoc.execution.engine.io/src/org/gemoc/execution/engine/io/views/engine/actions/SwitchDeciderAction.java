@@ -14,8 +14,8 @@ import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.extension.DeciderSpecification;
-import org.gemoc.gemoc_language_workbench.api.extension.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.DeciderSpecificationExtensionPoint;
 
 public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorSelectionListener
 {
@@ -29,7 +29,7 @@ public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorS
 		super("fake", AS_DROP_DOWN_MENU);
 		setMenuCreator(this);
 				
-		for (DeciderSpecification spec : DeciderSpecificationExtension.getSpecifications())
+		for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
 		{
 			DeciderAction action = new DeciderAction(spec);
 			if (spec.getName().contains("step"))

@@ -1,7 +1,5 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
 /**
  * The interface of the GEMOC Execution Engine. The Execution Engine is an
