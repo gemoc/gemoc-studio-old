@@ -14,8 +14,8 @@ import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.extensions.DeciderSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.DeciderSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
 public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorSelectionListener
 {

@@ -6,7 +6,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.extensions.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 
 public class DeciderAction extends Action 
 {

@@ -2,8 +2,8 @@ package org.gemoc.gemoc_modeling_workbench.ui.actions;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.api.extensions.LanguageDefinitionExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.LanguageDefinitionExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 
 public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 

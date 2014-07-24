@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.api.extensions;
+package org.gemoc.gemoc_language_workbench.api.extensions.languages;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -9,6 +9,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
+import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 

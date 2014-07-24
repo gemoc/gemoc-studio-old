@@ -10,7 +10,7 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.gemoc.gemoc_language_workbench.api.extensions.LanguageDefinitionExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.jdom2.Attribute;
 import org.jdom2.Document;

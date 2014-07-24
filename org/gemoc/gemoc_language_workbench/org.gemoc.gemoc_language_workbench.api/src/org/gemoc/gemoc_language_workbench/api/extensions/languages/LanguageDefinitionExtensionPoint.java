@@ -1,6 +1,8 @@
-package org.gemoc.gemoc_language_workbench.api.extensions;
+package org.gemoc.gemoc_language_workbench.api.extensions.languages;
 
 import java.util.Collection;
+
+import org.gemoc.gemoc_language_workbench.api.extensions.ExtensionPoint;
 
 public class LanguageDefinitionExtensionPoint extends ExtensionPoint<LanguageDefinitionExtension>
 {

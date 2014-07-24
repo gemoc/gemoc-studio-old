@@ -39,8 +39,8 @@ import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.extensions.DeciderSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.DeciderSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
 public class EnginesStatusView extends ViewPart implements Observer {
 

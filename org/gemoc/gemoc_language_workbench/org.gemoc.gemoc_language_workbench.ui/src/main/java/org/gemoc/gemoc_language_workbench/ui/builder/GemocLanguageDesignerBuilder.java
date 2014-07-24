@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.gemoc.commons.eclipse.core.resources.GFile;
 import org.gemoc.commons.eclipse.pde.ManifestChanger;
-import org.gemoc.gemoc_language_workbench.api.extensions.LanguageDefinitionExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.conf.BuildOptions;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
