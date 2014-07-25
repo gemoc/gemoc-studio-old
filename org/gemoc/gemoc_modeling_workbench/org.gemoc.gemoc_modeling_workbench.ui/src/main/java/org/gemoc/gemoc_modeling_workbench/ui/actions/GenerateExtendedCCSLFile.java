@@ -2,8 +2,8 @@ package org.gemoc.gemoc_modeling_workbench.ui.actions;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 
 public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 
@@ -23,7 +23,7 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 												modelUriString.lastIndexOf('.') + 1, 
 												modelUriString.length());
 				
-		LanguageDefinition languageDefinition = LanguageDefinitionExtension.findDefinition(languageName);		
+		LanguageDefinitionExtension languageDefinition = LanguageDefinitionExtensionPoint.findDefinition(languageName);		
 		if (languageDefinition == null)
 		{
 			MessageDialog dialog = new MessageDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), 

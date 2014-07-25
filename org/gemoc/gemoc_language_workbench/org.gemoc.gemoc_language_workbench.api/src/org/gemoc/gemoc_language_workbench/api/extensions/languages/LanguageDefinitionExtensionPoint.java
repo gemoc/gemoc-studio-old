@@ -1,13 +1,16 @@
-package org.gemoc.gemoc_language_workbench.api.extension;
+package org.gemoc.gemoc_language_workbench.api.extensions.languages;
 
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.Platform;
+import java.util.Collection;
 
-public class LanguageDefinitionExtension
+import org.gemoc.gemoc_language_workbench.api.extensions.ExtensionPoint;
+
+public class LanguageDefinitionExtensionPoint extends ExtensionPoint<LanguageDefinitionExtension>
 {
 
-	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_NAME = "org.gemoc.gemoc_language_workbench.xdsml";
+
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT = "org.gemoc.gemoc_language_workbench.xdsml";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF = "XDSML_Definition";
+	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_NAME_ATT = "name";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT = "initializer_class";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT = "modelLoader_class";
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT = "solver_class";
@@ -25,22 +28,44 @@ public class LanguageDefinitionExtension
 	public static final String GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_CLASS_DEFINITION= "Event_Occurence_Injector_Class";
 	
 	
-	static public LanguageDefinition findDefinition(String languageName)
+	protected LanguageDefinitionExtensionPoint() 
 	{
-		IConfigurationElement confElement = null;
-		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor(GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
-		// retrieve the extension for the chosen language
-		for (int i = 0; i < confElements.length; i++) 
+		super(LanguageDefinitionExtension.class);
+	}
+
+	private static LanguageDefinitionExtensionPoint _singleton;
+	
+	private static LanguageDefinitionExtensionPoint getExtensionPoint()
+	{
+		if (_singleton == null)
 		{
-			if(confElements[i].getAttribute("name").toUpperCase().equals(languageName.toUpperCase()))
+			_singleton = new LanguageDefinitionExtensionPoint();
+		}
+		return _singleton;
+	}
+		
+	static public Collection<LanguageDefinitionExtension> getSpecifications() 
+	{
+		return getExtensionPoint().internal_getSpecifications();
+	}
+	
+	static public LanguageDefinitionExtension findDefinition(String languageName)
+	{
+		for (LanguageDefinitionExtension extension : getSpecifications())
+		{
+			if (extension.getName().equals(languageName))
 			{
-				confElement = confElements[i];
+				return extension;
 			}
-		}	
-		LanguageDefinition languageDefinition = null;
-		if (confElement != null)
-			languageDefinition =  new LanguageDefinition(confElement);
-		return languageDefinition;
+		}
+		return null;
+	}
+
+
+	@Override
+	protected String getExtensionPointName()
+	{
+		return GEMOC_LANGUAGE_EXTENSION_POINT;
 	}
 		
 }

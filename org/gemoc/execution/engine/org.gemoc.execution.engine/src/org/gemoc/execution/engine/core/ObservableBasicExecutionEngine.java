@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Observable;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -21,18 +22,19 @@ import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
-import org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
+import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponent;
+import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -152,10 +154,14 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		if (_executionContext.getRunConfiguration().isTraceActive())
 			activateTrace();
 		
-		initialize();
+		try {
+			initialize();
+		} catch (CoreException e) {
+			throw new EngineNotCorrectlyInitialized(e.getMessage(), e);
+		}
 	}
 
-	public void initialize() {
+	private void initialize() throws CoreException {
 
 		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
 		ClockConstraintSystem clockConstraintSystem = null;
@@ -173,8 +179,18 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			injector.initialize(context);
 			injector.start();
 		}	
+				
+		for (IDataProcessingComponentExtension extension : _executionContext.getRunConfiguration().getActivatedComponentExtensions())
+		{
+			IDataProcessingComponent component = extension.instanciateComponent();
+			_executionComponents.add(component);
+			component.initialize(this);
+		}	
+		
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
+		
+	private ArrayList<IDataProcessingComponent> _executionComponents = new ArrayList<>();
 	
 	private void activateTrace() {
 		ModelExecutionTracingCapability capability = capability(ModelExecutionTracingCapability.class);
@@ -230,6 +246,11 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			animator.clear(this);
 		}
 
+		for (IDataProcessingComponent component : _executionComponents)
+		{
+			component.dispose();
+		}
+		
 		getEngineStatus().getCurrentLogicalStepChoice().clear();
 		getEngineStatus().setChosenLogicalStep(null);
 	}

@@ -39,8 +39,8 @@ import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.extension.DeciderSpecification;
-import org.gemoc.gemoc_language_workbench.api.extension.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
 public class EnginesStatusView extends ViewPart implements Observer {
 
@@ -58,6 +58,12 @@ public class EnginesStatusView extends ViewPart implements Observer {
 	public EnginesStatusView() {
 	}
 
+	@Override
+	public void dispose() {
+		org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.deleteObserver(this);
+		super.dispose();
+	}
+	
 	private Object _lastSelection;
 	/**
 	 * This is a callback that will allow us
@@ -208,7 +214,7 @@ public class EnginesStatusView extends ViewPart implements Observer {
 					if (element instanceof GemocExecutionEngine)
 					{
 						GemocExecutionEngine engine = (GemocExecutionEngine)element;
-						for (DeciderSpecification spec : DeciderSpecificationExtension.getSpecifications())
+						for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
 						{
 							if (engine.getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
 							{
@@ -286,41 +292,41 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			});
 	}
 
-	private void createColumn4() 
-	{
-		TreeColumn column = new TreeColumn(_viewer.getTree(), SWT.LEFT);
-//		column.setText("Details");
-		TreeViewerColumn viewerColumn = new TreeViewerColumn(_viewer, column);
-		viewerColumn.setLabelProvider(
-			new ColumnLabelProvider()
-			{				
-				@Override
-				public String getText(Object element) 
-				{
-					String result = "";
-					if (element instanceof GemocExecutionEngine)
-					{
-						GemocExecutionEngine engine = (GemocExecutionEngine)element;
-						switch(engine.getEngineStatus().getRunningStatus())
-						{
-							case Initializing : 
-								result = "Initializing";
-								break;
-							case Running:
-								result = "Running";
-								break;
-							case WaitingLogicalStepSelection:
-								result = "Waiting LogicalStep Selection";
-								break;
-							case Stopped:
-								result = "Stopped";
-								break;
-						}					
-					}
-					return result;
-				}			
-			});	
-	}
+//	private void createColumn4() 
+//	{
+//		TreeColumn column = new TreeColumn(_viewer.getTree(), SWT.LEFT);
+////		column.setText("Details");
+//		TreeViewerColumn viewerColumn = new TreeViewerColumn(_viewer, column);
+//		viewerColumn.setLabelProvider(
+//			new ColumnLabelProvider()
+//			{				
+//				@Override
+//				public String getText(Object element) 
+//				{
+//					String result = "";
+//					if (element instanceof GemocExecutionEngine)
+//					{
+//						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+//						switch(engine.getEngineStatus().getRunningStatus())
+//						{
+//							case Initializing : 
+//								result = "Initializing";
+//								break;
+//							case Running:
+//								result = "Running";
+//								break;
+//							case WaitingLogicalStepSelection:
+//								result = "Waiting LogicalStep Selection";
+//								break;
+//							case Stopped:
+//								result = "Stopped";
+//								break;
+//						}					
+//					}
+//					return result;
+//				}			
+//			});	
+//	}
 	
 	/**
 	 * Passing the focus request to the viewer's control.

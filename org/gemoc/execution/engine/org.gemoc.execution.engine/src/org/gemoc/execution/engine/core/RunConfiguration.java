@@ -1,8 +1,18 @@
 package org.gemoc.execution.engine.core;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
+import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtensionPoint;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
@@ -38,16 +48,25 @@ public class RunConfiguration implements IRunConfiguration
 	private void extractInformation() throws CoreException 
 	{
 		_languageName = getAttribute(LAUNCH_SELECTED_LANGUAGE, "");
-		_isAnimatationActive = Boolean.parseBoolean(getAttribute(LAUNCH_ANIMATE, "false"));
+		_isAnimatationActive = getAttribute(LAUNCH_ANIMATE, false);
 		if (_isAnimatationActive)
 		{
-			_animationDelay = Integer.parseInt(getAttribute(LAUNCH_DELAY, "0"));
+			_animationDelay = getAttribute(LAUNCH_DELAY, 0);
 		}
-		_isTraceActive = Boolean.parseBoolean(getAttribute(LAUNCH_ACTIVE_TRACE, "false"));
+		_isTraceActive = getAttribute(LAUNCH_ACTIVE_TRACE, false);
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_modelURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
 		_animatorURIAsString = getAttribute("airdResource", "");
 		_deadlockDetectionDepth = getAttribute(LAUNCH_DEADLOCK_DETECTION_DEPTH, 10);
+		
+		for (BackendSpecificationExtension extension : BackendSpecificationExtensionPoint.getSpecifications())
+		{
+			_backends.put(extension, getAttribute(extension.getName(), false));			
+		}
+		for (FrontendSpecificationExtension extension : FrontendSpecificationExtensionPoint.getSpecifications())
+		{
+			_frontends.put(extension, getAttribute(extension.getName(), false));			
+		}
 	}
 
 	private String getAttribute(String attributeName, String defaultValue) throws CoreException
@@ -56,6 +75,11 @@ public class RunConfiguration implements IRunConfiguration
 	}
 
 	private Integer getAttribute(String attributeName, Integer defaultValue) throws CoreException
+	{
+		return _launchConfiguration.getAttribute(attributeName, defaultValue);
+	}
+
+	private Boolean getAttribute(String attributeName, Boolean defaultValue) throws CoreException
 	{
 		return _launchConfiguration.getAttribute(attributeName, defaultValue);
 	}
@@ -107,6 +131,27 @@ public class RunConfiguration implements IRunConfiguration
 	public int getDeadlockDetectionDepth() 
 	{
 		return _deadlockDetectionDepth;
+	}
+
+	private HashMap<BackendSpecificationExtension, Boolean> _backends = new HashMap<>();
+
+	private HashMap<FrontendSpecificationExtension, Boolean> _frontends = new HashMap<>();
+
+	@Override
+	public Collection<IDataProcessingComponentExtension> getActivatedComponentExtensions() 
+	{
+		ArrayList<IDataProcessingComponentExtension> result = new ArrayList<IDataProcessingComponentExtension>();
+		for (Entry<FrontendSpecificationExtension, Boolean> e : _frontends.entrySet())
+		{
+			if (e.getValue())
+				result.add(e.getKey());
+		}
+		for (Entry<BackendSpecificationExtension, Boolean> e : _backends.entrySet())
+		{
+			if (e.getValue())
+				result.add(e.getKey());
+		}
+		return result;	
 	}
 
 }

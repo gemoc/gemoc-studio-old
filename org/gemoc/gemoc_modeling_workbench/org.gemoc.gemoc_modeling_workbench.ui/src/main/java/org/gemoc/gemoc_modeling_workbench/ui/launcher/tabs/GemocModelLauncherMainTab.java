@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.launcher;
+package org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,6 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
-import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.nebula.widgets.formattedtext.FormattedText;
@@ -19,7 +18,6 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -30,7 +28,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.execution.engine.core.RunConfiguration;
-import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
@@ -38,7 +36,7 @@ import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
-public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
+public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 
 	protected Text _modelLocationText;
 	protected Text _siriusRepresentationLocationText;
@@ -62,24 +60,16 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		area.layout();
 		setControl(area);
 
-		Group modelArea = new Group(area, SWT.NULL);
-		modelArea.setText("Model:");
-		modelArea.setLayout(new FillLayout());
-		// Create the area for the filename to get
+		Group modelArea = createGroup(area, "Model:");
 		createModelLayout(modelArea, null);
 
-		Group languageArea = new Group(area, SWT.NULL);
-		languageArea.setText("Language:");
-		languageArea.setLayout(new FillLayout());
+		Group languageArea = createGroup(area, "Language:");
 		createLanguageLayout(languageArea, null);
 
-		Group prototypeArea = new Group(area, SWT.NULL);
-		prototypeArea.setText("Gemoc Engine Prototype parameters (these info will probably be removed in future version):");
-		prototypeArea.setLayout(new FillLayout());
+		Group prototypeArea = createGroup(area, "Engine Prototype parameters (these info will probably be removed in future version):");
 		createPrototypeLayout(prototypeArea, null);
-
 	}
-
+	
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.setAttribute(
@@ -115,12 +105,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 			_activeTraceCheckbox.setSelection(runConfiguration.isTraceActive());
 			_languageCombo.setText(runConfiguration.getLanguageName());
 			_deciderCombo.setText(runConfiguration.getDeciderName());
-			_deadlockDetectionDepth.setValue(runConfiguration.getDeadlockDetectionDepth());
-//			this.modelofexecutionglml_LocationText
-//					.setText(configuration
-//							.getAttribute(
-//									RunConfiguration.LAUNCH_MODELOFEXECUTION_GLML_PATH,
-//									""));
+			_deadlockDetectionDepth.setValue(runConfiguration.getDeadlockDetectionDepth());		
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
@@ -137,22 +122,23 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 				this._siriusRepresentationLocationText.getText());
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_ANIMATE,
-				Boolean.toString(this._animateButton.getSelection()));
+				_animateButton.getSelection());
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DELAY,
-				this._delayText.getText());
+				Integer.parseInt(_delayText.getText()));
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_ACTIVE_TRACE,
-				Boolean.toString(_activeTraceCheckbox.getSelection()));
+				_activeTraceCheckbox.getSelection());
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_LANGUAGE,
 						this._languageCombo.getText());
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_DECIDER,
 						this._deciderCombo.getText());
+		int depth = _deadlockDetectionDepth.getValue() == null ? 0 : Integer.valueOf(_deadlockDetectionDepth.getValue().toString());
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,
-				Integer.valueOf(_deadlockDetectionDepth.getValue().toString()));
+				depth);
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 						this.modelofexecutionglml_LocationText.getText());
@@ -285,16 +271,16 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	 */
 	public Composite createLanguageLayout(Composite parent, Font font) {
 		createTextLabelLayout(parent, "xDSML");
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+//		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		// gd.horizontalSpan = 1;
-		gd.widthHint = GRID_DEFAULT_WIDTH;
+//		gd.widthHint = GRID_DEFAULT_WIDTH;
 		// Create the project selector button
 
 		_languageCombo = new Combo(parent, SWT.NONE);
 
 		ArrayList<String> xdsmlNames = new ArrayList<String>();
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry()
-				.getConfigurationElementsFor(LanguageDefinitionExtension.GEMOC_LANGUAGE_EXTENSION_POINT_NAME);
+				.getConfigurationElementsFor(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT);
 		for (int i = 0; i < confElements.length; i++) {
 			xdsmlNames.add(confElements[i].getAttribute("name"));
 		}
@@ -384,20 +370,12 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 	 *            the event that is triggered when clicking on OK button
 	 */
 	private void createTextLabelLayout(Composite parent, String labelString) {
-		GridLayout locationLayout = new GridLayout();
-		locationLayout.numColumns = 2;
-		locationLayout.marginHeight = 10;
-		locationLayout.marginWidth = 10;
-		parent.setLayout(locationLayout);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		parent.setLayoutData(gd);
-		// parent.setFont(null);
-
 		Label inputLabel = new Label(parent, SWT.NONE);
 		inputLabel.setText(labelString); //$NON-NLS-1$
 		gd = new GridData();
 		gd.horizontalSpan = 2;
 		inputLabel.setLayoutData(gd);
 	}
-	
 }

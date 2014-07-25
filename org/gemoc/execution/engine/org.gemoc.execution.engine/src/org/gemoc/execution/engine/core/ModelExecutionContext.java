@@ -23,8 +23,8 @@ import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EngineContextException;
-import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.api.extension.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
@@ -52,7 +52,7 @@ public class ModelExecutionContext implements IExecutionContext
 		
 		if (runConfiguration.getAnimatorURIAsString() != null)
 			_debuggerViewModelPath = new Path(runConfiguration.getAnimatorURIAsString());
-		_languageDefinition = LanguageDefinitionExtension.findDefinition(_runConfiguration.getLanguageName());
+		_languageDefinition = LanguageDefinitionExtensionPoint.findDefinition(_runConfiguration.getLanguageName());
 		throwExceptionIfLanguageDefinitionNull();
 		instantiateAgents();
 		generateMoC();
@@ -105,7 +105,7 @@ public class ModelExecutionContext implements IExecutionContext
 		_clockControllers = _languageDefinition.instanciateClockControllers();
 	}
 
-	private LanguageDefinition _languageDefinition;
+	private LanguageDefinitionExtension _languageDefinition;
 
 	private void throwExceptionIfLanguageDefinitionNull() throws EngineContextException {
 		if (_languageDefinition == null)
