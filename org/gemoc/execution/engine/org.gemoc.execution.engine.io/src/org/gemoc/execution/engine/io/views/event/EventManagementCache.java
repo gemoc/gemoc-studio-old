@@ -1,9 +1,7 @@
 package org.gemoc.execution.engine.io.views.event;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -19,8 +17,8 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
-import org.gemoc.execution.engine.io.views.event.filters.EventFilter;
 import org.gemoc.execution.engine.io.views.event.filters.IEventFilterStrategy;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
@@ -38,29 +36,29 @@ public class EventManagementCache
 	private Map<String, EventManagerClockWrapper> _clocksCache;
 	private ClockControllerInternal _clockController;
 	private ClockConstraintSystem _system;
-	private EventFilter _selectedFilter;
 	private List<Relation> _relations;
 	private Scenario _scenarioSaved;
 	private Scenario _scenarioLoaded;
 	private EventManagerView _eventView;
 	private ScenarioFactory _factory;
 	private Resource _resource;
-	private int _engineStep;
-	public static final String scenarioPath  = "udd//lguillem//runtime-GEMOC//ScenarioFolder/";
-
+	
+	
+	private ObservableBasicExecutionEngine _engine;
+	
 	public EventManagementCache()
 	{
 		_clocksCache = new HashMap<String, EventManagerClockWrapper>();
 		_clockController = new ClockControllerInternal();
-		_selectedFilter = new EventFilter();
 		_factory = ScenarioFactoryImpl.eINSTANCE;
 		_scenarioLoaded = null;
 		_eventView = ViewHelper.retrieveView(EventManagerView.ID);
-		_engineStep = 0;
+//		_engineStep = 0;
 	}
 
 	public void configure(ObservableBasicExecutionEngine engine, ClockConstraintSystem clockConstraintSystem)
 	{
+		_engine = engine;
 		engine.get_clockControllers().add(_clockController);
 		_system = clockConstraintSystem;
 		EventInjectionContext context = new EventInjectionContext(engine.getExecutionContext().getSolver(), clockConstraintSystem);
@@ -82,9 +80,8 @@ public class EventManagementCache
 		{
 			public void run() 
 			{
-				ResourceSet rs = _system.eResource().getResourceSet(); 
-				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-				URI uri = URI.createURI("file:/"+scenarioPath+timeStamp+".scenario");
+				ResourceSet rs = _system.eResource().getResourceSet(); 				
+				URI uri = URI.createURI("platform:/resource" + _engine.getExecutionContext().getWorkspace().getExecutionPath().append("scenario1.scenario").toString());
 				_resource = rs.createResource(uri);
 			}
 		};
@@ -102,9 +99,9 @@ public class EventManagementCache
 		return _clocksCache.values();
 	}
 	
-	public Collection<EventManagerClockWrapper> getFilteredWrappers() {
-		_selectedFilter.setParamFilter(_relations, _clocksCache);
-		return _selectedFilter.applyFilter();
+	public Collection<EventManagerClockWrapper> getFilteredWrappers(IEventFilterStrategy filter) {
+		filter.setParamFilter(_relations, _clocksCache);
+		return filter.applyFilter();
 	}
 
 	public EventManagerClockWrapper getWrapper(String clockName) {
@@ -113,10 +110,6 @@ public class EventManagementCache
 
 	public void removeFromClockCache(String clockName){
 		_clocksCache.remove(clockName);
-	}
-
-	public void setFilter(IEventFilterStrategy filter) {
-		_selectedFilter.set_filterStrategy(filter);
 	}
 
 	public void disableFreeClocks(){
@@ -160,34 +153,37 @@ public class EventManagementCache
 	/**
 	 * Add a new Execution Step to the model scenario with all the clock states
 	 */
-	public void addExecutionStep()
+	public void addExecutionStepIfNecessary()
 	{
-
-		Runnable runnable = new Runnable() 
+		if (_engine.getEngineStatus().getNbLogicalStepRun() > _scenarioSaved.getStepList().size())
 		{
-			public void run() {
-				List<ExecutionStep> stepList =  _scenarioSaved.getStepList();
-				ExecutionStep newStep = _factory.createExecutionStep();
-				List<EventState> newListEvent = newStep.getEventList();
-				for(EventManagerClockWrapper cw: getWrappers())
-				{
-					Boolean state = cw.isForced();
-					if(state != null)
+			Runnable runnable = new Runnable() 
+			{
+				public void run() {
+					List<ExecutionStep> stepList =  _scenarioSaved.getStepList();
+					ExecutionStep newStep = _factory.createExecutionStep();
+					List<EventState> newListEvent = newStep.getEventList();
+					for(EventManagerClockWrapper cw: getWrappers())
 					{
-						EventState newState = _factory.createEventState();
-						newState.setClock(cw.getClock());
-						newState.setIsForced(state);
-						newListEvent.add(newState);
+						Boolean state = cw.isForced();
+						if(state != null)
+						{
+							EventState newState = _factory.createEventState();
+							newState.setClock(cw.getClock());
+							newState.setIsForced(state);
+							newListEvent.add(newState);
+						}
 					}
+					if(!newListEvent.isEmpty())
+					{
+						newStep.setStep((int)_engine.getEngineStatus().getNbLogicalStepRun());
+						stepList.add(newStep);
+					}
+					saveScenario();
 				}
-				if(!newListEvent.isEmpty()){
-					newStep.setStep(_engineStep);
-					stepList.add(newStep);
-				}
-				saveScenario();
-			}
-		};
-		safeModelModification(runnable);
+			};
+			safeModelModification(runnable);			
+		}		
 	}
 
 
@@ -198,7 +194,10 @@ public class EventManagementCache
 		{
 			_resource.save(null);
 		} 
-		catch (IOException e) {}
+		catch (IOException e) {
+			String message = "Cannot save scenario, see inner exception";
+			Activator.getDefault().error(message, e);
+		}
 	}
 
 	public void resetRessource(){
@@ -223,29 +222,41 @@ public class EventManagementCache
 		safeModelModification(runnable);
 	}
 
-	public void playScenario(){ 
-		final int progressPlayscenario = _eventView.getProgressPlayScenario();
-		if(_scenarioLoaded != null && _scenarioLoaded instanceof Scenario)
+	
+	private Long _currentReplayStep = null;
+	public void playScenario()
+	{
+		if (_currentReplayStep == null)
 		{
-			List<ExecutionStep> stepList = _scenarioLoaded.getStepList();
-			for(EventManagerClockWrapper cw :_clocksCache.values())
+			_currentReplayStep = _engine.getEngineStatus().getNbLogicalStepRun() - 1;
+		}
+		
+		if (_engine.getEngineStatus().getNbLogicalStepRun() > _currentReplayStep)
+		{
+			_currentReplayStep++;
+			final int progressPlayscenario = _eventView.getProgressPlayScenario();
+			if(_scenarioLoaded != null && _scenarioLoaded instanceof Scenario)
 			{
-				List<EventState> eventList = stepList.get(progressPlayscenario).getEventList();
-				Clock clock = cw.getClock();
-				for(int i = 0; i< eventList.size(); i++)
-				{	
-					if(eventList.get(i).getClock().getName().equals(clock.getName()))
-					{
-						cw.setStateForced(eventList.get(i).isIsForced());
+				List<ExecutionStep> stepList = _scenarioLoaded.getStepList();
+				for(EventManagerClockWrapper cw :_clocksCache.values())
+				{
+					List<EventState> eventList = stepList.get(progressPlayscenario).getEventList();
+					Clock clock = cw.getClock();
+					for(int i = 0; i< eventList.size(); i++)
+					{	
+						if(eventList.get(i).getClock().getName().equals(clock.getName()))
+						{
+							cw.setStateForced(eventList.get(i).isIsForced());
+						}
 					}
 				}
+				_eventView.incProgressPlayScenario();
+				_eventView.updateView();
 			}
-			_eventView.incProgressPlayScenario();
-			_eventView.updateView();
-		}
-		else
-		{
-			throw new RuntimeException("The scenario loaded is null or isn't an instance of Scenario");
+			else
+			{
+				throw new RuntimeException("The scenario loaded is null or isn't an instance of Scenario");
+			}
 		}
 	}
 
@@ -260,13 +271,13 @@ public class EventManagementCache
 		return _scenarioLoaded;
 	}
 
-	public void setEngineStep(int step){
-		_engineStep = step;
-	}
-
-	public int getEngineStep(){
-		return _engineStep;
-	}
+//	public void setEngineStep(int step){
+//		_engineStep = step;
+//	}
+//
+//	public int getEngineStep(){
+//		return _engineStep;
+//	}
 
 
 }

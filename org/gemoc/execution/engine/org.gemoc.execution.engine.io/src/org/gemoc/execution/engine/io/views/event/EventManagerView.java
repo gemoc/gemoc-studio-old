@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
@@ -28,9 +27,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Table;
@@ -131,6 +128,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		// A label on the first column
 		(new Label(filterSelectionBar, SWT.NULL)).setText("Select an event filter: ");
 		// A read only combo on the second
+		
 		final Combo combo = new Combo(filterSelectionBar, SWT.NULL | SWT.DROP_DOWN | SWT.READ_ONLY);
 		combo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 		String[] filters = new String[]{"All clocks","Free clocks","No left binded clocks"};
@@ -159,12 +157,15 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	}
 
+	
+	private ViewContentProvider _contentProvider;
 
 	public void createViewer(){
 		// Define the TableViewer
 
+		_contentProvider = new ViewContentProvider();
 		_viewer = new TableViewer(_parent, SWT.BORDER| SWT.MULTI);
-		_viewer.setContentProvider(new ViewContentProvider());
+		_viewer.setContentProvider(_contentProvider);
 
 		createColumn();
 		final Menu menu = new Menu(_parent.getShell(), SWT.POP_UP);
@@ -291,7 +292,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				if(_currentEngine != null)
 				{
 					_currentEngineCache.disableFreeClocks();
-					selectFilter();
+					saveFilter();
 				}
 				_viewer.setInput(_currentEngineCache);
 			}				
@@ -299,14 +300,12 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 
-
-
-	private void selectFilter() {
+	private void saveFilter() {
 		switch(_strategySelectionIndex)
 		{
-		case 0: _currentEngineCache.setFilter(new NoEventFilter()); break;
-		case 1: _currentEngineCache.setFilter(new RemoveAllBindingClockFilter()); break;
-		case 2: _currentEngineCache.setFilter(new RemoveLeftBindingClockFilter()); break;
+		case 0: _contentProvider.setFilterStrategy(new NoEventFilter()); break;
+		case 1: _contentProvider.setFilterStrategy(new RemoveAllBindingClockFilter()); break;
+		case 2: _contentProvider.setFilterStrategy(new RemoveLeftBindingClockFilter()); break;
 		default: break;
 		}
 	}
@@ -349,20 +348,18 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		int step = (int) _currentEngine.getEngineStatus().getNbLogicalStepRun();
-		if(_currentEngineCache!= null){
-			if(step > _currentEngineCache.getEngineStep())
+	public void update(Observable o, Object arg) 
+	{
+		if(_currentEngineCache!= null)
+		{
+			if(_recordFlag)
+			{	
+				_currentEngineCache.addExecutionStepIfNecessary();
+			}
+//			_currentEngineCache.setEngineStep(step);
+			if(_playFlag)
 			{
-				if(_recordFlag)
-				{	
-					_currentEngineCache.addExecutionStep();
-				}
-				_currentEngineCache.setEngineStep(step);
-				if(_playFlag)
-				{
-					playScenario();
-				}
+				playScenario();
 			}
 		}
 		updateView();
@@ -445,6 +442,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	@Override
 	public void dispose() {
 		super.dispose();
+		_contentProvider.dispose();
 		if(_currentEngine != null)
 		{
 			_currentEngine.deleteObserver(this);

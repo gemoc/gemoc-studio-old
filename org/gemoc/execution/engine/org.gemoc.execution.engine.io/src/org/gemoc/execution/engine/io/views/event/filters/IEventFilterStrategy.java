@@ -11,7 +11,6 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 public interface IEventFilterStrategy {
 	public Collection<EventManagerClockWrapper> applyFilter();
 
-	public void setParamFilter(List<Relation> relations,
-			Map<String, EventManagerClockWrapper> cache);
+	public void setParamFilter(List<Relation> relations, Map<String, EventManagerClockWrapper> cache);
 }
 

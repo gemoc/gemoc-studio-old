@@ -18,7 +18,7 @@ public class LoadScenario extends AbstractHandler /*implements IScenarioStateCha
 		{
 			FileDialog dialog = new FileDialog(eventView.getSite().getShell(), SWT.OPEN);
 			dialog.setFilterExtensions(new String[]{"*.scenario"});
-			dialog.setFilterPath(EventManagementCache.scenarioPath);
+//			dialog.setFilterPath(EventManagementCache.scenarioPath);
 			String path = dialog.open();
 			eventView.loadScenario(path);
 			if(eventView.getScenario()!=null)
