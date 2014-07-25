@@ -99,7 +99,12 @@ public class EventManagementCache
 	}
 
 	public Collection<EventManagerClockWrapper> getWrappers() {
-		return _selectedFilter.applyFilter(_relations, new ArrayList<EventManagerClockWrapper>(_clocksCache.values()));
+		return _clocksCache.values();
+	}
+	
+	public Collection<EventManagerClockWrapper> getFilteredWrappers() {
+		_selectedFilter.setParamFilter(_relations, _clocksCache);
+		return _selectedFilter.applyFilter();
 	}
 
 	public EventManagerClockWrapper getWrapper(String clockName) {
@@ -114,11 +119,13 @@ public class EventManagementCache
 		_selectedFilter.set_filterStrategy(filter);
 	}
 
-	public void disableClocks(Collection<EventManagerClockWrapper> clocksToDisable){
-		ArrayList<EventManagerClockWrapper> clockWrappers = new ArrayList<EventManagerClockWrapper>(clocksToDisable);
-		for(EventManagerClockWrapper wrapper: clockWrappers)
+	public void disableFreeClocks(){
+		for(EventManagerClockWrapper wrapper: _clocksCache.values())
 		{
-			wrapper.setStateForced(false);
+			if(wrapper.isForced()==null)
+			{
+				wrapper.setStateFutureTick(false);
+			}
 		}
 	}
 
@@ -134,7 +141,7 @@ public class EventManagementCache
 	}
 
 	/**
-	 * Create a new model which follow the meta-model Scenario.
+	 * Create a new model which follows the meta-model Scenario.
 	 */
 	public void createScenario()
 	{
@@ -164,7 +171,7 @@ public class EventManagementCache
 				List<EventState> newListEvent = newStep.getEventList();
 				for(EventManagerClockWrapper cw: getWrappers())
 				{
-					Boolean state = cw.isState();
+					Boolean state = cw.isForced();
 					if(state != null)
 					{
 						EventState newState = _factory.createEventState();

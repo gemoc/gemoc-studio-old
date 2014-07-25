@@ -17,15 +17,22 @@ public class EventManagerClockWrapper {
 	private Clock _clock;
 	private ClockControllerInternal _clockController;
 	private Boolean _stateForced;
-	
+	private boolean _stateFutureTick;
+
 	public EventManagerClockWrapper(Clock clock, ClockControllerInternal clockController) {
 		_clock = clock;
 		_stateForced = null;
+		_stateFutureTick = false;
 		_clockController = clockController;
 	}
-	public Boolean isState() {
+	public Boolean isForced() {
 		return _stateForced;
 	}
+
+	public void setStateFutureTick(boolean state){
+		_stateFutureTick = state;
+	}
+
 	public void setStateForced(Boolean state) {
 		_stateForced = state;		
 		if(_stateForced != null)
@@ -36,11 +43,12 @@ public class EventManagerClockWrapper {
 			}
 			else
 			{
-				_clockController.doNotTickInTheFuture(getClockQualifiedName());						
+				_clockController.doNotTickInTheFuture(getClockQualifiedName());	
 			}
+			setStateFutureTick(_stateForced);
 		}
 	}
-	
+
 	private String getClockQualifiedName() 
 	{
 		Block block = (Block)_clock.eContainer();
@@ -52,27 +60,20 @@ public class EventManagerClockWrapper {
 	public Clock getClock() {
 		return _clock;
 	}
-	
+
 
 	public String getBehavior(){
-		String result = null;
+		String result = "";
 		if(_stateForced == null)
 		{
-					result = "NOTFORCED_CLOCK_NOTSET";
+			result = _stateFutureTick ? "NOTFORCED_CLOCK_SET" : "NOTFORCED_CLOCK_NOTSET";
 		}
 		else
 		{
-			if(_stateForced)
-			{
-				result = "FORCED_CLOCK_SET";
-			}
-			else
-			{
-				result = "FORCED_CLOCK_NOTSET";
-			}
+			result = _stateForced ? "FORCED_CLOCK_SET" : "FORCED_CLOCK_NOTSET";
 		}
 		return result;
 	}
-	
-	
+
+
 }
