@@ -1,8 +1,6 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -10,7 +8,6 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
-import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.nebula.widgets.formattedtext.FormattedText;
@@ -20,7 +17,6 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -32,10 +28,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.execution.engine.core.RunConfiguration;
-import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtensionPoint;
-import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIFileDialog;
@@ -44,7 +36,7 @@ import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
-public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
+public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 
 	protected Text _modelLocationText;
 	protected Text _siriusRepresentationLocationText;
@@ -74,28 +66,10 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		Group languageArea = createGroup(area, "Language:");
 		createLanguageLayout(languageArea, null);
 
-		Group backendArea = createGroup(area, "Backends attached to execution");
-		createBackendLayout(backendArea, null);
-
-		Group frontendArea = createGroup(area, "Frontend attached to execution");
-		createFrontendLayout(frontendArea, null);
-
 		Group prototypeArea = createGroup(area, "Engine Prototype parameters (these info will probably be removed in future version):");
 		createPrototypeLayout(prototypeArea, null);
 	}
 	
-	private Group createGroup(Composite parent, String text)
-	{
-		Group group = new Group(parent, SWT.NULL);
-		group.setText(text);
-		GridLayout locationLayout = new GridLayout();
-		locationLayout.numColumns = 2;
-		locationLayout.marginHeight = 10;
-		locationLayout.marginWidth = 10;
-		group.setLayout(locationLayout);
-		return group;
-	}
-
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.setAttribute(
@@ -113,11 +87,6 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_SELECTED_DECIDER,
 				RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP);
-
-		for (Entry<BackendSpecificationExtension, Button> entry : _backends.entrySet())
-		{
-			configuration.setAttribute(entry.getKey().getName(), false);
-		}
 	}
 
 	@Override
@@ -136,22 +105,7 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 			_activeTraceCheckbox.setSelection(runConfiguration.isTraceActive());
 			_languageCombo.setText(runConfiguration.getLanguageName());
 			_deciderCombo.setText(runConfiguration.getDeciderName());
-			_deadlockDetectionDepth.setValue(runConfiguration.getDeadlockDetectionDepth());
-//			this.modelofexecutionglml_LocationText
-//					.setText(configuration
-//							.getAttribute(
-//									RunConfiguration.LAUNCH_MODELOFEXECUTION_GLML_PATH,
-//									""));
-			
-			for (Entry<BackendSpecificationExtension, Button> entry : _backends.entrySet())
-			{
-				entry.getValue().setSelection(runConfiguration.isBackendActivated(entry.getKey()));				
-			}
-			for (Entry<FrontendSpecificationExtension, Button> entry : _frontends.entrySet())
-			{
-				entry.getValue().setSelection(runConfiguration.isFrontendActivated(entry.getKey()));				
-			}
-			
+			_deadlockDetectionDepth.setValue(runConfiguration.getDeadlockDetectionDepth());		
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
@@ -187,17 +141,6 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 						this.modelofexecutionglml_LocationText.getText());
-		
-		for (Entry<BackendSpecificationExtension, Button> entry : _backends.entrySet())
-		{
-			configuration.setAttribute(entry.getKey().getName(), entry.getValue().getSelection());
-		}
-
-		for (Entry<FrontendSpecificationExtension, Button> entry : _frontends.entrySet())
-		{
-			configuration.setAttribute(entry.getKey().getName(), entry.getValue().getSelection());
-		}
-
 	}
 
 	@Override
@@ -433,51 +376,5 @@ public class GemocModelLauncherMainTab extends AbstractLaunchConfigurationTab {
 		gd = new GridData();
 		gd.horizontalSpan = 2;
 		inputLabel.setLayoutData(gd);
-	}
-		
-	private HashMap<BackendSpecificationExtension, Button> _backends = new HashMap<>();
-	
-	private Composite createBackendLayout(Composite parent, Font font) 
-	{
-		for (BackendSpecificationExtension extension : BackendSpecificationExtensionPoint.getSpecifications())
-		{
-			Button checkbox = createCheckButton(parent, extension.getName());
-			checkbox.addSelectionListener(new SelectionListener() {
-				
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					updateLaunchConfigurationDialog();
-				}
-				
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {}
-			});
-			_backends.put(extension, checkbox);
-		}
-				
-		return parent;
-	}
-	
-	private HashMap<FrontendSpecificationExtension, Button> _frontends = new HashMap<>();
-
-	private Composite createFrontendLayout(Composite parent, Font font) 
-	{
-		for (FrontendSpecificationExtension extension : FrontendSpecificationExtensionPoint.getSpecifications())
-		{
-			Button checkbox = createCheckButton(parent, extension.getName());
-			checkbox.addSelectionListener(new SelectionListener() {
-				
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					updateLaunchConfigurationDialog();
-				}
-				
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {}
-			});
-			_frontends.put(extension, checkbox);
-		}
-				
-		return parent;
 	}
 }

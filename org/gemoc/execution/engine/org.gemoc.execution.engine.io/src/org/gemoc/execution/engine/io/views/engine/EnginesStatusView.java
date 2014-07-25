@@ -292,41 +292,41 @@ public class EnginesStatusView extends ViewPart implements Observer {
 			});
 	}
 
-	private void createColumn4() 
-	{
-		TreeColumn column = new TreeColumn(_viewer.getTree(), SWT.LEFT);
-//		column.setText("Details");
-		TreeViewerColumn viewerColumn = new TreeViewerColumn(_viewer, column);
-		viewerColumn.setLabelProvider(
-			new ColumnLabelProvider()
-			{				
-				@Override
-				public String getText(Object element) 
-				{
-					String result = "";
-					if (element instanceof GemocExecutionEngine)
-					{
-						GemocExecutionEngine engine = (GemocExecutionEngine)element;
-						switch(engine.getEngineStatus().getRunningStatus())
-						{
-							case Initializing : 
-								result = "Initializing";
-								break;
-							case Running:
-								result = "Running";
-								break;
-							case WaitingLogicalStepSelection:
-								result = "Waiting LogicalStep Selection";
-								break;
-							case Stopped:
-								result = "Stopped";
-								break;
-						}					
-					}
-					return result;
-				}			
-			});	
-	}
+//	private void createColumn4() 
+//	{
+//		TreeColumn column = new TreeColumn(_viewer.getTree(), SWT.LEFT);
+////		column.setText("Details");
+//		TreeViewerColumn viewerColumn = new TreeViewerColumn(_viewer, column);
+//		viewerColumn.setLabelProvider(
+//			new ColumnLabelProvider()
+//			{				
+//				@Override
+//				public String getText(Object element) 
+//				{
+//					String result = "";
+//					if (element instanceof GemocExecutionEngine)
+//					{
+//						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+//						switch(engine.getEngineStatus().getRunningStatus())
+//						{
+//							case Initializing : 
+//								result = "Initializing";
+//								break;
+//							case Running:
+//								result = "Running";
+//								break;
+//							case WaitingLogicalStepSelection:
+//								result = "Waiting LogicalStep Selection";
+//								break;
+//							case Stopped:
+//								result = "Stopped";
+//								break;
+//						}					
+//					}
+//					return result;
+//				}			
+//			});	
+//	}
 	
 	/**
 	 * Passing the focus request to the viewer's control.
