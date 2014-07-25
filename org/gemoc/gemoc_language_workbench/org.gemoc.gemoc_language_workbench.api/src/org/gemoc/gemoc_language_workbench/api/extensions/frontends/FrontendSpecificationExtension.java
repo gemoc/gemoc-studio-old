@@ -1,14 +1,20 @@
 package org.gemoc.gemoc_language_workbench.api.extensions.frontends;
 
-import org.eclipse.core.runtime.CoreException;
-import org.gemoc.gemoc_language_workbench.api.extensions.ExecutionComponentExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.DataProcessingComponentExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.DataProcessingComponentType;
 
-public class FrontendSpecificationExtension extends ExecutionComponentExtension<IFrontend>
+public class FrontendSpecificationExtension extends DataProcessingComponentExtension<IFrontend>
 {
 
-	public IFrontend instanciateFrontend() throws CoreException 
+//	public IFrontend instanciateFrontend() throws CoreException 
+//	{
+//		return instanciateCastedComponent();
+//	}
+
+	@Override
+	public DataProcessingComponentType getType() 
 	{
-		return instanciateComponent();
+		return DataProcessingComponentType.Frontend;
 	}
 
 }

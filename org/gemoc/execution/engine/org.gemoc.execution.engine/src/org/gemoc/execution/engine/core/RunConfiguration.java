@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
+import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtension;
@@ -47,12 +48,12 @@ public class RunConfiguration implements IRunConfiguration
 	private void extractInformation() throws CoreException 
 	{
 		_languageName = getAttribute(LAUNCH_SELECTED_LANGUAGE, "");
-		_isAnimatationActive = Boolean.parseBoolean(getAttribute(LAUNCH_ANIMATE, "false"));
+		_isAnimatationActive = getAttribute(LAUNCH_ANIMATE, false);
 		if (_isAnimatationActive)
 		{
-			_animationDelay = Integer.parseInt(getAttribute(LAUNCH_DELAY, "0"));
+			_animationDelay = getAttribute(LAUNCH_DELAY, 0);
 		}
-		_isTraceActive = Boolean.parseBoolean(getAttribute(LAUNCH_ACTIVE_TRACE, "false"));
+		_isTraceActive = getAttribute(LAUNCH_ACTIVE_TRACE, false);
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_modelURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
 		_animatorURIAsString = getAttribute("airdResource", "");
@@ -133,49 +134,24 @@ public class RunConfiguration implements IRunConfiguration
 	}
 
 	private HashMap<BackendSpecificationExtension, Boolean> _backends = new HashMap<>();
-	public boolean isBackendActivated(BackendSpecificationExtension extension) 
-	{
-		for (Entry<BackendSpecificationExtension, Boolean> e : _backends.entrySet())
-		{
-			if (e.getKey().getName().equals(extension.getName()))
-				return e.getValue();
-		}
-		return false;
-	}
-
-	@Override
-	public Collection<BackendSpecificationExtension> getActivatedBackendExtensions()
-	{
-		ArrayList<BackendSpecificationExtension> result = new ArrayList<BackendSpecificationExtension>();
-		for (Entry<BackendSpecificationExtension, Boolean> e : _backends.entrySet())
-		{
-			if (e.getValue())
-				result.add(e.getKey());
-		}
-		return result;
-	}
 
 	private HashMap<FrontendSpecificationExtension, Boolean> _frontends = new HashMap<>();
-	public boolean isFrontendActivated(FrontendSpecificationExtension extension) 
-	{
-		for (Entry<FrontendSpecificationExtension, Boolean> e : _frontends.entrySet())
-		{
-			if (e.getKey().getName().equals(extension.getName()))
-				return e.getValue();
-		}
-		return false;
-	}
 
 	@Override
-	public Collection<FrontendSpecificationExtension> getActivatedFrontendExtensions()
+	public Collection<IDataProcessingComponentExtension> getActivatedComponentExtensions() 
 	{
-		ArrayList<FrontendSpecificationExtension> result = new ArrayList<FrontendSpecificationExtension>();
+		ArrayList<IDataProcessingComponentExtension> result = new ArrayList<IDataProcessingComponentExtension>();
 		for (Entry<FrontendSpecificationExtension, Boolean> e : _frontends.entrySet())
 		{
 			if (e.getValue())
 				result.add(e.getKey());
 		}
-		return result;
+		for (Entry<BackendSpecificationExtension, Boolean> e : _backends.entrySet())
+		{
+			if (e.getValue())
+				result.add(e.getKey());
+		}
+		return result;	
 	}
 
 }

@@ -1,14 +1,20 @@
 package org.gemoc.gemoc_language_workbench.api.extensions.backends;
 
-import org.eclipse.core.runtime.CoreException;
-import org.gemoc.gemoc_language_workbench.api.extensions.ExecutionComponentExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.DataProcessingComponentExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.DataProcessingComponentType;
 
-public class BackendSpecificationExtension extends ExecutionComponentExtension<IBackend>
+public class BackendSpecificationExtension extends DataProcessingComponentExtension<IBackend>
 {
 
-	public IBackend instanciateBackend() throws CoreException 
+//	public IBackend instanciateBackend() throws CoreException 
+//	{
+//		return instanciateCastedComponent();
+//	}
+
+	@Override
+	public DataProcessingComponentType getType() 
 	{
-		return instanciateComponent();
+		return DataProcessingComponentType.Backend;
 	}
 
 }

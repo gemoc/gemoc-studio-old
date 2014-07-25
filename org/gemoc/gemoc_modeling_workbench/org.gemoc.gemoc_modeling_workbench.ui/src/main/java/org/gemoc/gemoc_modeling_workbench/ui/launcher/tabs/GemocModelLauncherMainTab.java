@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.launcher;
+package org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs;
 
 import java.util.ArrayList;
 
@@ -122,22 +122,23 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 				this._siriusRepresentationLocationText.getText());
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_ANIMATE,
-				Boolean.toString(this._animateButton.getSelection()));
+				_animateButton.getSelection());
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DELAY,
-				this._delayText.getText());
+				Integer.parseInt(_delayText.getText()));
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_ACTIVE_TRACE,
-				Boolean.toString(_activeTraceCheckbox.getSelection()));
+				_activeTraceCheckbox.getSelection());
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_LANGUAGE,
 						this._languageCombo.getText());
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_DECIDER,
 						this._deciderCombo.getText());
+		int depth = _deadlockDetectionDepth.getValue() == null ? 0 : Integer.valueOf(_deadlockDetectionDepth.getValue().toString());
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,
-				Integer.valueOf(_deadlockDetectionDepth.getValue().toString()));
+				depth);
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_MODELOFEXECUTION_GLML_PATH,
 						this.modelofexecutionglml_LocationText.getText());

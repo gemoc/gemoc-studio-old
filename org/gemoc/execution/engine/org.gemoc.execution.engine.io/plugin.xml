@@ -224,6 +224,7 @@
          point="org.gemoc.gemoc_language_workbench.backends">
       <Backend
             Class="org.gemoc.execution.engine.io.backends.ConsoleBackend"
+            Default="true"
             Name="Console Backend">
       </Backend>
    </extension>
@@ -231,6 +232,7 @@
          point="org.gemoc.gemoc_language_workbench.frontends">
       <Frontend
             Class="org.gemoc.execution.engine.io.frontends.PrepareViewFrontend"
+            Default="true"
             Name="GEMOC Perspective">
       </Frontend>
    </extension>	

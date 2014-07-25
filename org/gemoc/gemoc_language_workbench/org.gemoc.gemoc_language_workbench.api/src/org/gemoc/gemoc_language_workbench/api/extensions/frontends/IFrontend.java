@@ -1,11 +1,8 @@
 package org.gemoc.gemoc_language_workbench.api.extensions.frontends;
 
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
+import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponent;
 
-public interface IFrontend extends IDisposable
+public interface IFrontend extends IDataProcessingComponent
 {
-
-	void initialize(GemocExecutionEngine engine);
 
 }
