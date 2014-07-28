@@ -12,7 +12,10 @@ public class StopPlayScenario extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
+		/*
 		eventView.getCurrentEngineCache().stopPlayScenario();
+		*/
+		eventView.stopPlayScenario();
 		eventView.informationMsg("Replay", "End");
 		eventView.executeService(event, "PLAY");
 		return null;			

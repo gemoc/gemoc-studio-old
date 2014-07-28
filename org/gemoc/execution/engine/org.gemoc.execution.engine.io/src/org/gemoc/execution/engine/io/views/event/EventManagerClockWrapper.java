@@ -48,6 +48,10 @@ public class EventManagerClockWrapper {
 			setStateFutureTick(_stateForced);
 		}
 	}
+	
+	public void free(){
+		// recuperer la map du controller et remove la clock.
+	}
 
 	private String getClockQualifiedName() 
 	{

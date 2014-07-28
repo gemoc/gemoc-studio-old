@@ -6,7 +6,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.event.EventManagementCache;
+import org.gemoc.execution.engine.io.views.event.EventWrappersCache;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
 
 public class LoadScenario extends AbstractHandler /*implements IScenarioStateChangeListener*/ {

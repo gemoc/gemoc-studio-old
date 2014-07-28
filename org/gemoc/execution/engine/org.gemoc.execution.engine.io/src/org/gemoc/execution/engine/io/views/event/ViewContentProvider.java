@@ -13,8 +13,8 @@ public class ViewContentProvider implements IStructuredContentProvider {
 	}
 	public Object[] getElements(Object parent) 
 	{
-		if(parent instanceof EventManagementCache){
-			EventManagementCache cache = (EventManagementCache) parent;
+		if(parent instanceof EventWrappersCache){
+			EventWrappersCache cache = (EventWrappersCache) parent;
 			ArrayList<EventManagerClockWrapper> listeClockWrapper = new ArrayList<EventManagerClockWrapper>(cache.getFilteredWrappers(_filterStrategy));
 			return listeClockWrapper.toArray();
 		}
