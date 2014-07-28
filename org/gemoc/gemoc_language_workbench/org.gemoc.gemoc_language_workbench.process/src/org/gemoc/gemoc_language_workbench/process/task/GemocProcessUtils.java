@@ -20,6 +20,7 @@ package org.gemoc.gemoc_language_workbench.process.task;
 import fr.obeo.dsl.workspace.listener.change.resource.AbstractResourceChange;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
@@ -49,6 +50,7 @@ public final class GemocProcessUtils {
 	public static boolean isXDSMLFile(IResource resource) {
 		// TODO add isInGemocProject(resource)
 		return resource != null
+				&& resource.getAdapter(IFile.class) != null
 				&& Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION.equals(resource.getFileExtension());
 	}
 
