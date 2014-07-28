@@ -57,12 +57,12 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	
 	@Override
 	public void dispose() {
-		super.dispose();
-		_contentProvider.dispose();
-		_labelProvider.dispose();
 		disposeTimeLineProvider();
 		removeDoubleClickListener();
 		stopListeningToMotorSelectionChange();
+		super.dispose();
+		_contentProvider.dispose();
+		_labelProvider.dispose();
 	}
 
 	@Override
@@ -147,7 +147,9 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	}
 
 	private void removeDoubleClickListener() {
-		if (_mouseListener != null) 
+		if (_mouseListener != null
+			&& getTimelineViewer() != null
+			&& getTimelineViewer().getControl() != null) 
 		{
 			getTimelineViewer()
 				.getControl()
