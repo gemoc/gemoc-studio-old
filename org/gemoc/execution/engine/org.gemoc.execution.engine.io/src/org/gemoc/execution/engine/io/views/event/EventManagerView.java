@@ -43,6 +43,10 @@ import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.io.views.event.commands.CommandState;
+import org.gemoc.execution.engine.io.views.event.commands.DoInit;
+import org.gemoc.execution.engine.io.views.event.commands.StopPlayScenario;
+import org.gemoc.execution.engine.io.views.event.commands.StopRecordScenario;
+import org.gemoc.execution.engine.io.views.event.commands.UndoInit;
 import org.gemoc.execution.engine.io.views.event.filters.NoEventFilter;
 import org.gemoc.execution.engine.io.views.event.filters.RemoveAllBindingClockFilter;
 import org.gemoc.execution.engine.io.views.event.filters.RemoveLeftBindingClockFilter;
@@ -70,21 +74,57 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private Composite _parent;
 	private EnginesStatusView _enginesStatusView;
 	private ObservableBasicExecutionEngine _currentEngine;
-	private Map<ObservableBasicExecutionEngine, EventWrappersCache> _cacheEngineWrapper;
+	private Map<ObservableBasicExecutionEngine, WrapperCache> _cacheEngineWrapper;
 	private Map<ObservableBasicExecutionEngine, ScenarioManager> _cacheEngineScenario;
 	private int _strategySelectionIndex;
 	private int _progressPlayScenario;
 	private boolean _playFlag;
 	private boolean _recordFlag;
-	private EventWrappersCache _currentEngineCache;
+	private WrapperCache _currentEngineCache;
 	private ScenarioManager _scenarioManager;
 	private Scenario _scenario;
-	
+	private int _eventManagerStep;
+
+	public enum ClockStatus 
+	{
+		NOTFORCED_SET,
+		NOTFORCED_NOTSET,
+		FORCED_SET,
+		FORCED_NOTSET;
+	}
+
+	public enum FlagCommand 
+	{
+		PLAY,
+		RECORD,
+		INIT,
+		RESET;
+	}
+
+	public enum Command
+	{
+		STOP_PLAY_SCENARIO(StopPlayScenario.ID),
+		STOP_RECORD_SCENARIO(StopRecordScenario.ID),
+		DO_INIT(DoInit.ID),
+		UNDO_INIT(UndoInit.ID);
+		String id;
+
+		Command(String id)
+		{
+			this.id = id;
+		}
+
+		public String getID()
+		{
+			return id;
+		}
+	}
+
 	/**
 	 * The constructor.
 	 */
 	public EventManagerView() {
-		_cacheEngineWrapper = new HashMap<ObservableBasicExecutionEngine, EventWrappersCache>();
+		_cacheEngineWrapper = new HashMap<ObservableBasicExecutionEngine, WrapperCache>();
 		_cacheEngineScenario = new HashMap<ObservableBasicExecutionEngine, ScenarioManager>();
 		_strategySelectionIndex = 0;
 		_progressPlayScenario = 0;
@@ -132,7 +172,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		// A label on the first column
 		(new Label(filterSelectionBar, SWT.NULL)).setText("Select an event filter: ");
 		// A read only combo on the second
-		
+
 		final Combo combo = new Combo(filterSelectionBar, SWT.NULL | SWT.DROP_DOWN | SWT.READ_ONLY);
 		combo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 		String[] filters = new String[]{"All clocks","Free clocks","No left binded clocks"};
@@ -161,7 +201,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	}
 
-	
+
 	private ViewContentProvider _contentProvider;
 
 	public void createViewer(){
@@ -198,7 +238,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {}
 		};
-		
+
 		MenuItem item = new MenuItem(menu, SWT.PUSH);
 		item.setText("Force  to 1");
 		item.setID(1);
@@ -218,12 +258,12 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private void forceClock(List<String> clockToForce, int id) {
 		for(String clockName : clockToForce)
 		{
-			EventManagerClockWrapper wrapper  = _currentEngineCache.getWrapper(clockName);
+			ClockWrapper wrapper  = _currentEngineCache.getClockWrapper(clockName);
 			switch(id)
 			{
 			case 0: wrapper.setStateForced(false); break;
 			case 1: wrapper.setStateForced(true); break;
-			case 2: wrapper.setStateForced(null); break;
+			case 2: wrapper.free(); break;
 			}
 		}
 		updateView();
@@ -243,9 +283,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			public String getText(Object element) 
 			{
 				String result = new String();          
-				if (element instanceof EventManagerClockWrapper)// instance of clockwrapper
+				if (element instanceof ClockWrapper)// instance of clockwrapper
 				{
-					Clock c = ((EventManagerClockWrapper)element).getClock();
+					Clock c = ((ClockWrapper)element).getClock();
 					result = c.getName();
 				}
 				return result;
@@ -253,37 +293,39 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 			@Override
 			public Image getImage(Object element) {
-				if (element instanceof EventManagerClockWrapper) // instance of clockwrapper
+				if (element instanceof ClockWrapper) // instance of clockwrapper
 				{
-					String state = ((EventManagerClockWrapper) element).getBehavior();
+					ClockStatus state = ((ClockWrapper) element).getBehavior();
 					switch(state)
 					{
-					case "NOTFORCED_CLOCK_SET": return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_SET);
-					case "FORCED_CLOCK_SET": return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET);
-					case "NOTFORCED_CLOCK_NOTSET": return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET);
-					case "FORCED_CLOCK_NOTSET": return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET);
+					case NOTFORCED_SET: return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_SET);
+					case FORCED_SET: return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET);
+					case NOTFORCED_NOTSET: return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET);
+					case FORCED_NOTSET: return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET);
 					}
-			
-					
+
+
 				}
 				return null;
 			}
 
 			@Override
 			public Color getBackground(Object element) {
-				if (element instanceof EventManagerClockWrapper) // instance of clockwrapper
+				if (element instanceof ClockWrapper) // instance of clockwrapper
 				{
-					String state = ((EventManagerClockWrapper) element).getBehavior();
+					ClockStatus state = ((ClockWrapper) element).getBehavior();
+
 					switch(state)
 					{
-					case "NOTFORCED_CLOCK_SET": return new Color(_parent.getDisplay(), 212, 255, 141);
-					case "FORCED_CLOCK_SET": return new Color(_parent.getDisplay(), 255, 217, 142);
+					case NOTFORCED_SET: return new Color(_parent.getDisplay(), 212, 255, 141);
+					case FORCED_SET: return new Color(_parent.getDisplay(), 255, 217, 142);
+					default: break;
 					}
 				}
 				return super.getBackground(element);
 			}
-			
-			
+
+
 		});
 	}
 
@@ -293,7 +335,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			public void run() {
 				if(_currentEngine != null)
 				{
-					_currentEngineCache.disableFreeClocks();
+					_currentEngineCache.freeAllClocks();
 					saveFilter();
 				}
 				_viewer.setInput(_currentEngineCache);
@@ -320,22 +362,22 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	private void createCacheForEngine() {
 		ClockConstraintSystem system = extractSystem();
-		_currentEngineCache = new EventWrappersCache(_currentEngine);
-		
+		_currentEngineCache = new WrapperCache(_currentEngine);
+
 		if (system != null)
 		{
 			for(Element e : system.getSubBlock().get(0).getElements())
 			{
 				if (e instanceof Clock)
 				{
-					_currentEngineCache.addClock((Clock)e);
+					_currentEngineCache.add((Clock)e);
 				}
 			}
 		}
 		_currentEngineCache.configure(_currentEngine, system);
 		_cacheEngineWrapper.put(_currentEngine, _currentEngineCache);
 	}
-	
+
 	private void createCacheForScenario(){
 		_scenarioManager = new ScenarioManager();
 		_scenarioManager.setCache(_currentEngineCache);
@@ -359,18 +401,23 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	@Override
 	public void update(Observable o, Object arg) 
 	{
-		if(_currentEngineCache!= null)
+		int engineStep = (int)_currentEngine.getEngineStatus().getNbLogicalStepRun();
+		if(engineStep > _eventManagerStep)
 		{
-			if(_recordFlag)
-			{	
-				_scenarioManager.record();
-			}
-			if(_playFlag)
+			if(_currentEngineCache!= null)
 			{
-				playScenario();
+				if(_recordFlag)
+				{	
+					recordScenario();
+				}
+				_eventManagerStep = engineStep;
+				if(_playFlag)
+				{
+					playScenario();
+				}
 			}
+			updateView();
 		}
-		updateView();
 	}
 
 
@@ -385,22 +432,22 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			{
 				if(_recordFlag)
 				{
-					executeCommand("StopRecordScenario");
+					executeCommand(Command.STOP_RECORD_SCENARIO);
 				}
 				if(_playFlag)
 				{
-					executeCommand("StopPlayScenario");
+					executeCommand(Command.STOP_PLAY_SCENARIO);
 				}
 				_currentEngine.deleteObserver(this);
 				_currentEngine = null;
 				_currentEngineCache = null;
-				executeCommand("UndoInit");
+				executeCommand(Command.UNDO_INIT);
 			}
 			else
 			{
 				_currentEngine.deleteObserver(this);
 				_currentEngine.addObserver(this);
-				executeCommand("DoInit");
+				executeCommand(Command.DO_INIT);
 				if(_cacheEngineWrapper.get(_currentEngine) == null)
 				{
 					createCacheForEngine();
@@ -413,19 +460,18 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	/**
-	 * executeCommand(String command)
-	 * Call execute function of a command.
+	 * Call the execute function of a command.
 	 * @param command : the name of the wanted command to be called
 	 */
-	protected void executeCommand(String command){
+	private void executeCommand(Command command){
 		IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
 		try 
 		{
-			handlerService.executeCommand("org.gemoc.execution.engine.io.views.event.commands." + command, null);
+			handlerService.executeCommand(command.getID(), null);
 		} 
 		catch (Exception ex) 
 		{
-			throw new RuntimeException(command + " command not found");
+			throw new RuntimeException(command.getID() + " command not found");
 		}
 	}
 
@@ -474,7 +520,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_scenarioManager.startRecord();
 		_recordFlag = true;
 	}
-	
+
 	public void recordScenario()
 	{
 		_scenarioManager.record();
@@ -517,14 +563,15 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			}
 			else
 			{
-				executeCommand("StopPlayScenario");
+				executeCommand(Command.STOP_PLAY_SCENARIO);
 			}
 		}
 	}
-	
+
 	public void stopPlayScenario()
 	{
 		_scenarioManager.stop();
+		_currentEngineCache.freeAllClocks();
 	}
 
 	public void informationMsg(final String title, final String msg){
@@ -544,7 +591,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 * @param event
 	 * @param command
 	 */
-	public void executeService(ExecutionEvent event, String command)
+	public void executeService(ExecutionEvent event, FlagCommand command)
 	{
 		// Get the source provider service
 		ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
@@ -554,10 +601,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				.getSourceProvider(CommandState.ID);
 		switch(command)
 		{
-		case "PLAY": commandStateService.togglePlayEnabled(); break;
-		case "RECORD": commandStateService.toggleRecordEnabled(); break;
-		case "INIT": commandStateService.setInit(); break;
-		case "RESET": commandStateService.resetInit(); break;
+		case PLAY: commandStateService.togglePlayEnabled(); break;
+		case RECORD: commandStateService.toggleRecordEnabled(); break;
+		case INIT: commandStateService.setInit(); break;
+		case RESET: commandStateService.resetInit(); break;
+		default: break;
 		}
 	}
 
@@ -565,7 +613,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		_scenario = scenario;
 	}
-	
+
 	public Scenario getScenario()
 	{
 		return _scenario;
@@ -576,7 +624,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		return _currentEngine;
 	}
 
-	public EventWrappersCache getCurrentEngineCache()
+	public WrapperCache getCurrentEngineCache()
 	{
 		return _currentEngineCache;
 	}

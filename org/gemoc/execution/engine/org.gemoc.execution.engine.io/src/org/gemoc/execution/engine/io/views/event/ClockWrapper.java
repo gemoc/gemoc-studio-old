@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.io.views.event;
 
+import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -13,13 +14,13 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
  *	the clock and is state. In the future others features like
  *	statistics (nb of uses,etc ) will be added.
  */
-public class EventManagerClockWrapper {
+public class ClockWrapper {
 	private Clock _clock;
 	private ClockControllerInternal _clockController;
 	private Boolean _stateForced;
 	private boolean _stateFutureTick;
 
-	public EventManagerClockWrapper(Clock clock, ClockControllerInternal clockController) {
+	public ClockWrapper(Clock clock, ClockControllerInternal clockController) {
 		_clock = clock;
 		_stateForced = null;
 		_stateFutureTick = false;
@@ -47,10 +48,15 @@ public class EventManagerClockWrapper {
 			}
 			setStateFutureTick(_stateForced);
 		}
+		else
+		{
+			_clockController.resetFutureClockState(getClockQualifiedName());
+			setStateFutureTick(false);
+		}
 	}
 	
 	public void free(){
-		// recuperer la map du controller et remove la clock.
+		setStateForced(null);
 	}
 
 	private String getClockQualifiedName() 
@@ -66,15 +72,15 @@ public class EventManagerClockWrapper {
 	}
 
 
-	public String getBehavior(){
-		String result = "";
+	public ClockStatus getBehavior(){
+		ClockStatus result;
 		if(_stateForced == null)
 		{
-			result = _stateFutureTick ? "NOTFORCED_CLOCK_SET" : "NOTFORCED_CLOCK_NOTSET";
+			result = _stateFutureTick ? ClockStatus.NOTFORCED_SET : ClockStatus.NOTFORCED_NOTSET;
 		}
 		else
 		{
-			result = _stateForced ? "FORCED_CLOCK_SET" : "FORCED_CLOCK_NOTSET";
+			result = _stateForced ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
 		}
 		return result;
 	}

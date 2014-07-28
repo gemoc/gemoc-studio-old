@@ -2,12 +2,12 @@ package org.gemoc.execution.engine.io.views.event.filters;
 
 import java.util.Collection;
 
-import org.gemoc.execution.engine.io.views.event.EventManagerClockWrapper;
+import org.gemoc.execution.engine.io.views.event.ClockWrapper;
 
 public class NoEventFilter extends Filter {
 
 	@Override
-	public Collection<EventManagerClockWrapper> applyFilter() {
+	public Collection<ClockWrapper> applyFilter() {
 		addFutureTickingClocks();
 		return wrapperList;
 	}

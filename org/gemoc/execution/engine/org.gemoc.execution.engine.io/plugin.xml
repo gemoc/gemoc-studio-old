@@ -127,7 +127,7 @@
             name="Stop Play Scenario">
       </command>
       <command
-            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.doInit"
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.DoInit"
             id="org.gemoc.execution.engine.io.views.event.commands.DoInit"
             name="Do Init">
       </command>

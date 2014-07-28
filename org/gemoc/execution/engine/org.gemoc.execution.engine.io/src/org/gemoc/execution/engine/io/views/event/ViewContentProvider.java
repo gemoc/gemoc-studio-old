@@ -13,9 +13,9 @@ public class ViewContentProvider implements IStructuredContentProvider {
 	}
 	public Object[] getElements(Object parent) 
 	{
-		if(parent instanceof EventWrappersCache){
-			EventWrappersCache cache = (EventWrappersCache) parent;
-			ArrayList<EventManagerClockWrapper> listeClockWrapper = new ArrayList<EventManagerClockWrapper>(cache.getFilteredWrappers(_filterStrategy));
+		if(parent instanceof WrapperCache){
+			WrapperCache cache = (WrapperCache) parent;
+			ArrayList<ClockWrapper> listeClockWrapper = new ArrayList<ClockWrapper>(cache.getFilteredClockWrapperList(_filterStrategy));
 			return listeClockWrapper.toArray();
 		}
 		return new Object[0];

@@ -14,11 +14,12 @@ public class ScenarioTool
 	protected ScenarioManager _manager;
 	protected Resource _resource;
 	protected ScenarioFactory _factory;
-	protected Long _currentScenarioStep = null;
+	protected int _index;
 	
-	protected ScenarioTool(ScenarioManager manager)
+	protected ScenarioTool(ScenarioManager manager, int index)
 	{
-		this._manager = manager;
+		_manager = manager;
+		_index = index;
 		_scenario = null;
 		_factory = ScenarioFactoryImpl.eINSTANCE;
 	}

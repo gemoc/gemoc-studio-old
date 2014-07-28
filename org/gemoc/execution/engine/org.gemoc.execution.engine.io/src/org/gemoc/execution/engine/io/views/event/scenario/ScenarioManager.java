@@ -3,11 +3,11 @@ package org.gemoc.execution.engine.io.views.event.scenario;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gemoc.execution.engine.io.views.event.EventWrappersCache;
+import org.gemoc.execution.engine.io.views.event.WrapperCache;
 
 public class ScenarioManager 
 {
-	private EventWrappersCache cache;
+	private WrapperCache cache;
 	private List<ScenarioTool> _recorderList;
 	private List<ScenarioTool> _playerList;
 	private ScenarioRecorder currentRecorder;
@@ -21,7 +21,7 @@ public class ScenarioManager
 	
 	public void startRecord()
 	{
-		currentRecorder = new ScenarioRecorder(this);
+		currentRecorder = new ScenarioRecorder(this, _recorderList.size());
 		_recorderList.add(currentRecorder);
 		currentRecorder.startRecord();
 	}
@@ -33,14 +33,12 @@ public class ScenarioManager
 	
 	public void stopRecord()
 	{
-		currentRecorder.stopRecord();
 		currentRecorder = null;
-		return;
 	}
 	
 	public void load(final String path)
 	{
-		currentPlayer = new ScenarioPlayer(this);
+		currentPlayer = new ScenarioPlayer(this, _playerList.size());
 		_playerList.add(currentPlayer);
 		currentPlayer.load(path);
 	}
@@ -55,12 +53,12 @@ public class ScenarioManager
 		currentPlayer.stop();
 	}
 
-	public void setCache(EventWrappersCache currentEngineCache) 
+	public void setCache(WrapperCache currentEngineCache) 
 	{
 		this.cache = currentEngineCache;
 	}
 	
-	public EventWrappersCache getWrapperCache()
+	public WrapperCache getWrapperCache()
 	{
 		return cache;
 	}

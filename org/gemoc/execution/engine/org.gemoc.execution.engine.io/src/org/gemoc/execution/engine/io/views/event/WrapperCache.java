@@ -15,17 +15,17 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 
-public class EventWrappersCache 
+public class WrapperCache 
 {
-	private Map<String, EventManagerClockWrapper> _clocksCache;
+	private Map<String, ClockWrapper> _clocksCache;
 	private ClockControllerInternal _clockController;
 	private List<Relation> _relations;
 	private ObservableBasicExecutionEngine _engine;
 	private ClockConstraintSystem _system;
 	
-	public EventWrappersCache(ObservableBasicExecutionEngine engine)
+	public WrapperCache(ObservableBasicExecutionEngine engine)
 	{
-		_clocksCache = new HashMap<String, EventManagerClockWrapper>();
+		_clocksCache = new HashMap<String, ClockWrapper>();
 		_clockController = new ClockControllerInternal();
 	}
 
@@ -46,35 +46,40 @@ public class EventWrappersCache
 		}
 	}
 
-	public void addClock(Clock clock) 
+	public void add(Clock clock) 
 	{
-		EventManagerClockWrapper newClockWrapper = new EventManagerClockWrapper(clock, _clockController);
+		ClockWrapper newClockWrapper = new ClockWrapper(clock, _clockController);
 		_clocksCache.put(clock.getName(), newClockWrapper);
 	}
 
-	public Collection<EventManagerClockWrapper> getWrappers() {
+	public Collection<ClockWrapper> getClockWrapperList() 
+	{
 		return _clocksCache.values();
 	}
 	
-	public Collection<EventManagerClockWrapper> getFilteredWrappers(IEventFilterStrategy filter) {
+	public Collection<ClockWrapper> getFilteredClockWrapperList(IEventFilterStrategy filter) 
+	{
 		filter.setParamFilter(_relations, _clocksCache);
 		return filter.applyFilter();
 	}
 
-	public EventManagerClockWrapper getWrapper(String clockName) {
+	public ClockWrapper getClockWrapper(String clockName) 
+	{
 		return _clocksCache.get(clockName);
 	}
 
-	public void removeFromClockCache(String clockName){
+	public void remove(String clockName)
+	{
 		_clocksCache.remove(clockName);
 	}
 
-	public void disableFreeClocks(){
-		for(EventManagerClockWrapper wrapper: _clocksCache.values())
+	public void freeAllClocks()
+	{
+		for(ClockWrapper wrapper: _clocksCache.values())
 		{
 			if(wrapper.isForced()==null)
 			{
-				wrapper.setStateFutureTick(false);
+				wrapper.free();
 			}
 		}
 	}

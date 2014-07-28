@@ -10,7 +10,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.event.EventManagerClockWrapper;
+import org.gemoc.execution.engine.io.views.event.ClockWrapper;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
@@ -18,16 +18,16 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 
 public abstract class Filter implements IEventFilterStrategy{
 	
-	protected Map<String, EventManagerClockWrapper> cache;
-	protected Collection<EventManagerClockWrapper> wrapperList;
+	protected Map<String, ClockWrapper> cache;
+	protected Collection<ClockWrapper> wrapperList;
 	protected List<Relation> relations;
 	
 	@Override
 	public void setParamFilter(List<Relation> relations,
-			Map<String, EventManagerClockWrapper> cache) {
+			Map<String, ClockWrapper> cache) {
 		this.relations = relations;
-		this.cache = new HashMap<String, EventManagerClockWrapper>(cache);
-		wrapperList = new ArrayList<EventManagerClockWrapper>(cache.values());
+		this.cache = new HashMap<String, ClockWrapper>(cache);
+		wrapperList = new ArrayList<ClockWrapper>(cache.values());
 	}
 	
 	protected void addFutureTickingClocks(){
@@ -60,7 +60,7 @@ public abstract class Filter implements IEventFilterStrategy{
 				
 			}
 			for(String event : eventNameList){
-				EventManagerClockWrapper wrapper = cache.get(event);
+				ClockWrapper wrapper = cache.get(event);
 				if(wrapper.isForced()==null)
 				{
 					wrapper.setStateFutureTick(true);

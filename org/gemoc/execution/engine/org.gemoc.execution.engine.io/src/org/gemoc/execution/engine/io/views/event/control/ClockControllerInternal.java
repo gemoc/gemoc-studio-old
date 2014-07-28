@@ -44,6 +44,10 @@ public class ClockControllerInternal extends DefaultClockController implements I
 	{
 		_clockNextStates.put(clockQualifiedName, willTick);		
 	}
+	
+	public void resetFutureClockState(String clockQualifiedName){
+		_clockNextStates.remove(clockQualifiedName);
+	}
 
 	@Override
 	public void start() {

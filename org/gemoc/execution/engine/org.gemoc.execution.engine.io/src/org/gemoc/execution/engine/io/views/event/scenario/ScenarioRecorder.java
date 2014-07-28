@@ -7,17 +7,17 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.execution.engine.io.views.event.EventManagerClockWrapper;
+import org.gemoc.execution.engine.io.views.event.ClockWrapper;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 
 public class ScenarioRecorder extends ScenarioTool
 {
-	public ScenarioRecorder(ScenarioManager manager)
+	public ScenarioRecorder(ScenarioManager manager, int index)
 	{
-		super(manager);
+		super(manager, index);
 	}
-	
+
 	private void createResource() 
 	{
 		Runnable runnable = new Runnable() 
@@ -25,7 +25,7 @@ public class ScenarioRecorder extends ScenarioTool
 			public void run() 
 			{
 				ResourceSet rs = _manager.getWrapperCache().getSystem().eResource().getResourceSet(); 				
-				URI uri = URI.createURI("platform:/resource" + _manager.getWrapperCache().getEngine().getExecutionContext().getWorkspace().getExecutionPath().append("Scenario.scenario").toString());
+				URI uri = URI.createURI("platform:/resource" + _manager.getWrapperCache().getEngine().getExecutionContext().getWorkspace().getExecutionPath().append("fragment["+_index+"].scenario").toString());
 				_resource = rs.createResource(uri);
 			}
 		};
@@ -45,7 +45,7 @@ public class ScenarioRecorder extends ScenarioTool
 		};
 		safeModelModification(runnable);
 	}
-	
+
 	public void startRecord()
 	{
 		createResource();
@@ -55,47 +55,38 @@ public class ScenarioRecorder extends ScenarioTool
 	public void record()
 	{
 		final ObservableBasicExecutionEngine engine = _manager.getWrapperCache().getEngine();
-		if (_currentScenarioStep == null)
+		//		if (_currentScenarioStep == null)
+		//		{
+		//			_currentScenarioStep = engine.getEngineStatus().getNbLogicalStepRun() - 1;
+		//		}
+		Runnable runnable = new Runnable() 
 		{
-			_currentScenarioStep = engine.getEngineStatus().getNbLogicalStepRun() - 1;
-		}
-		if (engine.getEngineStatus().getNbLogicalStepRun() > _currentScenarioStep)
-		{
-			_currentScenarioStep++;
-			Runnable runnable = new Runnable() 
-			{
-				public void run() {
-					List<ExecutionStep> stepList =  _scenario.getStepList();
-					ExecutionStep newStep = _factory.createExecutionStep();
-					List<EventState> newListEvent = newStep.getEventList();
-					for(EventManagerClockWrapper cw: _manager.getWrapperCache().getWrappers())
+			public void run() {
+				List<ExecutionStep> stepList =  _scenario.getStepList();
+				ExecutionStep newStep = _factory.createExecutionStep();
+				List<EventState> newListEvent = newStep.getEventList();
+				for(ClockWrapper cw: _manager.getWrapperCache().getClockWrapperList())
+				{
+					Boolean state = cw.isForced();
+					if(state != null)
 					{
-						Boolean state = cw.isForced();
-						if(state != null)
-						{
-							EventState newState = _factory.createEventState();
-							newState.setClock(cw.getClock());
-							newState.setIsForced(state);
-							newListEvent.add(newState);
-						}
+						EventState newState = _factory.createEventState();
+						newState.setClock(cw.getClock());
+						newState.setIsForced(state);
+						newListEvent.add(newState);
 					}
-					if(!newListEvent.isEmpty())
-					{
-						newStep.setStep((int)engine.getEngineStatus().getNbLogicalStepRun());
-						stepList.add(newStep);
-					}
-					save();
 				}
-			};
-			safeModelModification(runnable);			
-		}		
-	}
 
-	public void stopRecord(){
-		createResource();
-		_currentScenarioStep = null;
-	}
-	
+				newStep.setStep((int)engine.getEngineStatus().getNbLogicalStepRun()-1);
+				stepList.add(newStep);
+
+				save();
+			}
+		};
+		safeModelModification(runnable);			
+	}		
+
+
 	private void save()
 	{
 		try 
