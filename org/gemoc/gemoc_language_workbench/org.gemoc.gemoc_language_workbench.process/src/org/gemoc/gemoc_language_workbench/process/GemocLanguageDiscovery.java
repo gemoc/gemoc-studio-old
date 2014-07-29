@@ -59,7 +59,9 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 			final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
 			if (isXDSMLFile && (change instanceof ResourceAdded) && getEquivalentRunner(uri) == null) {
 				
-				createProcessRunner(uri, (IFile)resource);
+				createProcessRunner(uri, (IFile)resource, change);
+				
+				
 				//updateProcessRunner(uri);
 			}
 			/*if (isXDSMLFile && (change instanceof ResourceContentChanged)) {
@@ -68,7 +70,7 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 				deleteProcessRunner(uri);
 				final IResource dest = ((ResourceMoved)change).getDestination();
 				final URI destUri = URI.createPlatformResourceURI(dest.getFullPath().toString(), true);
-				createProcessRunner(destUri, (IFile)resource);
+				createProcessRunner(destUri, (IFile)resource, change);
 
 			} else if (isXDSMLFile && change instanceof ResourceRemoved) {
 				deleteProcessRunner(uri);
@@ -91,7 +93,7 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 	}
 	
 	
-	private void createProcessRunner(final URI uri, IFile xdsmlFile) {
+	private GemocLanguageProcessRunner createProcessRunner(final URI uri, IFile xdsmlFile, IChange<?> change) {
 		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(uri, xdsmlFile);
 		//runningProcessMap.put(uri, procRunner);
 
@@ -99,7 +101,11 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
 		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).addProcessor(procRunner, true);
-		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(procRunner, true);		
+		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(procRunner, true);
+		
+		// run the first task with this change
+		procRunner.process(change);
+		return procRunner;
 	}
 
 	private void deleteProcessRunner(final URI uri) {

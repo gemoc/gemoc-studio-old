@@ -47,6 +47,7 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	
 	public void initialize(Process process, URI newUri, IFile xdsmlIFile){
 		setDefinition(process);
+		setName(newUri.toPlatformString(true));
 		this.xdsmlIFile = xdsmlIFile;
 		setXdsmlConfigURI(newUri);
 		
