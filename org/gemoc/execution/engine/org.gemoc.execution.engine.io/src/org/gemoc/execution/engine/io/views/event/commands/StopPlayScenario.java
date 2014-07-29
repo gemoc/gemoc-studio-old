@@ -7,7 +7,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
-import org.gemoc.execution.engine.io.views.event.EventManagerView.FlagCommand;
+import org.gemoc.execution.engine.io.views.event.EventManagerView.SourceProviderControls;
 
 public class StopPlayScenario extends AbstractHandler {
 	
@@ -18,7 +18,7 @@ public class StopPlayScenario extends AbstractHandler {
 		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
 		eventView.stopPlayScenario();
 		eventView.informationMsg("Replay", "End");
-		eventView.executeService(event, FlagCommand.PLAY);
+		eventView.executeService(event, SourceProviderControls.PLAY);
 		return null;			
 	}	
 }

@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.event.ClockWrapper;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
+import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.Scenario;
@@ -53,12 +54,13 @@ public class ScenarioPlayer extends ScenarioTool
 				_manager.getWrapperCache().getClockWrapperList();
 				List<EventState> eventList = stepList.get(progressPlayscenario).getEventList();
 				Clock clock = cw.getClock();
-				cw.free();
+				cw.setState(ClockStatus.NOTFORCED_NOTSET);
 				for(int i = 0; i< eventList.size(); i++)
 				{	
 					if(eventList.get(i).getClock().getName().equals(clock.getName()))
 					{
-						cw.setStateForced(eventList.get(i).isIsForced());
+						ClockStatus newState = eventList.get(i).isIsForced() ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
+						cw.setState(newState); 
 					}
 				}
 			}
@@ -75,7 +77,6 @@ public class ScenarioPlayer extends ScenarioTool
 	public void stop(){
 		_eventView.resetProgressPlayScenario();
 		_scenario = null;
-		_eventView.setScenario(null);
-		_eventView.setPlayFlag(false);
+		_eventView.setScenario(_scenario);
 	}
 }

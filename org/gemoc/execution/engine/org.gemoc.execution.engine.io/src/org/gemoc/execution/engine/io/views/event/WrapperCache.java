@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
 import org.gemoc.execution.engine.io.views.event.filters.IEventFilterStrategy;
 
@@ -17,15 +18,15 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 
 public class WrapperCache 
 {
-	private Map<String, ClockWrapper> _clocksCache;
+	private Map<String, ClockWrapper> _wrapperMap;
 	private ClockControllerInternal _clockController;
 	private List<Relation> _relations;
 	private ObservableBasicExecutionEngine _engine;
 	private ClockConstraintSystem _system;
-	
+
 	public WrapperCache(ObservableBasicExecutionEngine engine)
 	{
-		_clocksCache = new HashMap<String, ClockWrapper>();
+		_wrapperMap = new HashMap<String, ClockWrapper>();
 		_clockController = new ClockControllerInternal();
 	}
 
@@ -49,38 +50,35 @@ public class WrapperCache
 	public void add(Clock clock) 
 	{
 		ClockWrapper newClockWrapper = new ClockWrapper(clock, _clockController);
-		_clocksCache.put(clock.getName(), newClockWrapper);
+		_wrapperMap.put(clock.getName(), newClockWrapper);
 	}
 
 	public Collection<ClockWrapper> getClockWrapperList() 
 	{
-		return _clocksCache.values();
+		return _wrapperMap.values();
 	}
-	
+
 	public Collection<ClockWrapper> getFilteredClockWrapperList(IEventFilterStrategy filter) 
 	{
-		filter.setParamFilter(_relations, _clocksCache);
+		filter.setParamFilter(_relations, _wrapperMap);
 		return filter.applyFilter();
 	}
 
 	public ClockWrapper getClockWrapper(String clockName) 
 	{
-		return _clocksCache.get(clockName);
+		return _wrapperMap.get(clockName);
 	}
 
 	public void remove(String clockName)
 	{
-		_clocksCache.remove(clockName);
+		_wrapperMap.remove(clockName);
 	}
 
 	public void freeAllClocks()
 	{
-		for(ClockWrapper wrapper: _clocksCache.values())
+		for(ClockWrapper wrapper: _wrapperMap.values())
 		{
-			if(wrapper.isForced()==null)
-			{
-				wrapper.free();
-			}
+			wrapper.setState(ClockStatus.NOTFORCED_NOTSET);
 		}
 	}
 
@@ -88,9 +86,20 @@ public class WrapperCache
 	{
 		return _engine;
 	}
-	
+
 	public ClockConstraintSystem getSystem()
 	{
 		return _system;
+	}
+
+	public void refreshFutureTickingFreeClocks() 
+	{
+		for(ClockWrapper wrapper: _wrapperMap.values())
+		{
+			if(!wrapper.getState().isForced())
+			{
+				wrapper.setState(ClockStatus.NOTFORCED_NOTSET);
+			}
+		}
 	}
 }

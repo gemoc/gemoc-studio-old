@@ -14,31 +14,26 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
  *	the clock and is state. In the future others features like
  *	statistics (nb of uses,etc ) will be added.
  */
-public class ClockWrapper {
+public class ClockWrapper 
+{
 	private Clock _clock;
 	private ClockControllerInternal _clockController;
-	private Boolean _stateForced;
-	private boolean _stateFutureTick;
+	private ClockStatus _state;
 
-	public ClockWrapper(Clock clock, ClockControllerInternal clockController) {
+	public ClockWrapper(Clock clock, ClockControllerInternal clockController) 
+	{
 		_clock = clock;
-		_stateForced = null;
-		_stateFutureTick = false;
 		_clockController = clockController;
+		_state = ClockStatus.NOTFORCED_NOTSET;
 	}
-	public Boolean isForced() {
-		return _stateForced;
-	}
-
-	public void setStateFutureTick(boolean state){
-		_stateFutureTick = state;
-	}
-
-	public void setStateForced(Boolean state) {
-		_stateForced = state;		
-		if(_stateForced != null)
+	
+	public void setState(ClockStatus state){
+		_state = state;
+		boolean isForced = _state.isForced();
+		boolean tick = _state.getTick();
+		if(isForced)
 		{
-			if (_stateForced)
+			if (tick)
 			{
 				_clockController.tickInTheFuture(getClockQualifiedName());			
 			}
@@ -46,17 +41,15 @@ public class ClockWrapper {
 			{
 				_clockController.doNotTickInTheFuture(getClockQualifiedName());	
 			}
-			setStateFutureTick(_stateForced);
 		}
 		else
 		{
 			_clockController.resetFutureClockState(getClockQualifiedName());
-			setStateFutureTick(false);
 		}
 	}
 	
-	public void free(){
-		setStateForced(null);
+	public ClockStatus getState(){
+		return _state;
 	}
 
 	private String getClockQualifiedName() 
@@ -67,23 +60,8 @@ public class ClockWrapper {
 		result += _clock.getName();
 		return result;
 	}
-	public Clock getClock() {
+	public Clock getClock() 
+	{
 		return _clock;
 	}
-
-
-	public ClockStatus getBehavior(){
-		ClockStatus result;
-		if(_stateForced == null)
-		{
-			result = _stateFutureTick ? ClockStatus.NOTFORCED_SET : ClockStatus.NOTFORCED_NOTSET;
-		}
-		else
-		{
-			result = _stateForced ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
-		}
-		return result;
-	}
-
-
 }

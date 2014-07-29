@@ -7,7 +7,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
-import org.gemoc.execution.engine.io.views.event.EventManagerView.FlagCommand;
+import org.gemoc.execution.engine.io.views.event.EventManagerView.SourceProviderControls;
 
 public class LoadScenario extends AbstractHandler /*implements IScenarioStateChangeListener*/ {
 
@@ -24,7 +24,7 @@ public class LoadScenario extends AbstractHandler /*implements IScenarioStateCha
 			if(eventView.getScenario()!=null)
 			{
 				eventView.informationMsg("Replay", "Beginning");
-				eventView.executeService(event, FlagCommand.PLAY);
+				eventView.executeService(event, SourceProviderControls.PLAY);
 			}
 		}
 		else

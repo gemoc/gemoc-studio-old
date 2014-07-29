@@ -47,9 +47,10 @@ import org.gemoc.execution.engine.io.views.event.commands.DoInit;
 import org.gemoc.execution.engine.io.views.event.commands.StopPlayScenario;
 import org.gemoc.execution.engine.io.views.event.commands.StopRecordScenario;
 import org.gemoc.execution.engine.io.views.event.commands.UndoInit;
-import org.gemoc.execution.engine.io.views.event.filters.NoEventFilter;
-import org.gemoc.execution.engine.io.views.event.filters.RemoveAllBindingClockFilter;
-import org.gemoc.execution.engine.io.views.event.filters.RemoveLeftBindingClockFilter;
+import org.gemoc.execution.engine.io.views.event.filters.Filter;
+import org.gemoc.execution.engine.io.views.event.filters.NoFilter;
+import org.gemoc.execution.engine.io.views.event.filters.AllBindedClockFilter;
+import org.gemoc.execution.engine.io.views.event.filters.LeftBindedClockFilter;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.scenario.Scenario;
@@ -72,44 +73,94 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	private TableViewer _viewer;
 	private Composite _parent;
+	private ViewContentProvider _contentProvider;
 	private EnginesStatusView _enginesStatusView;
-	private ObservableBasicExecutionEngine _currentEngine;
+	private ObservableBasicExecutionEngine _engine;
 	private Map<ObservableBasicExecutionEngine, WrapperCache> _cacheEngineWrapper;
 	private Map<ObservableBasicExecutionEngine, ScenarioManager> _cacheEngineScenario;
-	private int _strategySelectionIndex;
+	private WrapperCache _wrapperCache;
+	private ScenarioManager _scenarioManager;
+	private Scenario scenario;
 	private int _progressPlayScenario;
 	private boolean _playFlag;
 	private boolean _recordFlag;
-	private WrapperCache _currentEngineCache;
-	private ScenarioManager _scenarioManager;
-	private Scenario _scenario;
 	private int _eventManagerStep;
+	private Filter _strategyFilterSelected;
 
+	/**
+	 * Store the 4 possible states of a Clock
+	 * <p> - A clock can be forced to tick or not tick in the future
+	 * <br>- A clock not forced can either tick or not tick in the future
+	 */
 	public enum ClockStatus 
 	{
-		NOTFORCED_SET,
-		NOTFORCED_NOTSET,
-		FORCED_SET,
-		FORCED_NOTSET;
-	}
+		NOTFORCED_SET(false, true),
+		NOTFORCED_NOTSET(false, false),
+		FORCED_SET(true, true),
+		FORCED_NOTSET(true, false);
 
-	public enum FlagCommand 
+		private boolean isForced;
+		private boolean tick;
+
+		ClockStatus(boolean isForced, boolean tick)
+		{
+			this.isForced = isForced;
+			this.tick = tick;
+		}
+
+		public boolean isForced()
+		{
+			return isForced;
+		}
+		
+		public boolean getTick()
+		{
+			return tick;
+		}
+	}
+	
+	/**
+	 * Store a "mapping" of all declared filters with a name
+	 */
+	public enum Filters
 	{
-		PLAY,
-		RECORD,
-		INIT,
-		RESET;
+		ALL("All Clocks", new NoFilter()),
+		NO_LEFT_BIND("No Left binded Clock", new LeftBindedClockFilter()),
+		NO_BIND("No binded Clock", new AllBindedClockFilter());
+		
+		private Filter f;
+		private String name;
+		
+		Filters(String name, Filter f)
+		{
+			this.name = name;
+			this.f = f;
+		}
+		
+		Filter getFilter()
+		{
+			return f;
+		}
+		
+		String getName()
+		{
+			return name;
+		}
 	}
 
-	public enum Command
+	/**
+	 * Player and Recorder commands
+	 */
+	public enum Commands
 	{
 		STOP_PLAY_SCENARIO(StopPlayScenario.ID),
 		STOP_RECORD_SCENARIO(StopRecordScenario.ID),
 		DO_INIT(DoInit.ID),
 		UNDO_INIT(UndoInit.ID);
+		
 		String id;
-
-		Command(String id)
+		
+		Commands(String id)
 		{
 			this.id = id;
 		}
@@ -119,23 +170,39 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			return id;
 		}
 	}
+	
+	/**
+	 * Coontrols for the source provider flags to control
+	 * wether commands handlers are enabled or not.
+	 */
+	public enum SourceProviderControls 
+	{
+		PLAY,
+		RECORD,
+		INIT,
+		RESET;
+	}
+
 
 	/**
 	 * The constructor.
 	 */
-	public EventManagerView() {
+	public EventManagerView() 
+	{
 		_cacheEngineWrapper = new HashMap<ObservableBasicExecutionEngine, WrapperCache>();
 		_cacheEngineScenario = new HashMap<ObservableBasicExecutionEngine, ScenarioManager>();
-		_strategySelectionIndex = 0;
 		_progressPlayScenario = 0;
 		_recordFlag = false;
 		_playFlag = false;
-		_currentEngineCache = null;
-		_scenario = null;
+		_wrapperCache = null;
+		scenario = null;
+		_strategyFilterSelected = new NoFilter();
 		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
-		decisionView.addSelectionListener(new ISelectionChangedListener() {
+		decisionView.addSelectionListener(new ISelectionChangedListener() 
+		{
 			@Override
-			public void selectionChanged(SelectionChangedEvent event) {
+			public void selectionChanged(SelectionChangedEvent event) 
+			{
 				updateView();
 			}
 		});
@@ -146,24 +213,27 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 * This is a callback that will allow us
 	 * to create the viewer and initialize it.
 	 */
-	public void createPartControl(Composite parent) {
+	public void createPartControl(Composite parent) 
+	{
 		// The main parent will be made of a single column
 		GridLayout layout = new GridLayout();
 		_parent = parent;	
 		_parent.setLayout(layout);
 		// In the first row there will be a 2 column gridLayout
 		createFilterSelectionBar();
-		// In the second column there will be our table with clocks
+		// In the second row there will be our table with clocks
 		createViewer();
+		// Create a menu which will show when right click is pressed on a row
+		createPopUpMenu();
 		// get the view to listen to motor selection
 		startListeningToMotorSelectionChange();
 	}
 
 	/**
-	 * createFilterSelectionBar
 	 * Generate a label and a combo to make the user able to change the filter strategy
 	 */
-	private void createFilterSelectionBar() {
+	private void createFilterSelectionBar() 
+	{
 		// The bar will be placed in the first row of the parent's grid ( which has a single column )
 		Composite filterSelectionBar = new Composite(_parent, SWT.BORDER);
 		// The bar will be made of 2 parts :
@@ -172,22 +242,32 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		// A label on the first column
 		(new Label(filterSelectionBar, SWT.NULL)).setText("Select an event filter: ");
 		// A read only combo on the second
-
 		final Combo combo = new Combo(filterSelectionBar, SWT.NULL | SWT.DROP_DOWN | SWT.READ_ONLY);
 		combo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-		String[] filters = new String[]{"All clocks","Free clocks","No left binded clocks"};
-		Arrays.sort(filters);
-		for(int i=0; i<filters.length; i++)
-			combo.add(filters[i]);
+		Filters[] strategyFilters = Filters.values();
+		Arrays.sort(strategyFilters);
+		// We add all existing filters on our combo
+		for(Filters myFilters: strategyFilters)
+		{
+			// The name of the filter will be displayed on the combo cells
+			combo.add(myFilters.getName());
+			// We map an instance of the Filter with his name
+			combo.setData(myFilters.getName(), myFilters.getFilter());
+		}
 		combo.addSelectionListener(new SelectionListener() 
 		{
-			public void widgetSelected(SelectionEvent e) {
-				// Strategy filter selection
-				_strategySelectionIndex = combo.getSelectionIndex();
+			public void widgetSelected(SelectionEvent e) 
+			{
+				// We get the name of the selected strategy
+				String filterName = combo.getItem(combo.getSelectionIndex());
+				// Thanks to our map we can select the proper instance of Filter
+				_strategyFilterSelected = (Filter) combo.getData(filterName);
+				// We refresh the view
 				updateView();
 			}
 			//If the combo is clicked but no item selected:
-			public void widgetDefaultSelected(SelectionEvent e) {
+			public void widgetDefaultSelected(SelectionEvent e) 
+			{
 				String text = combo.getText();
 				if(combo.indexOf(text) < 0) { // Not in the list yet 
 					combo.add(text);
@@ -198,78 +278,96 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				}
 			}
 		});
-
 	}
 
 
-	private ViewContentProvider _contentProvider;
 
-	public void createViewer(){
+
+	/**
+	 * Create the tableViewer and all its components like its ContentProvider or its
+	 * layout structure.
+	 */
+	private void createViewer()
+	{
 		// Define the TableViewer
-
 		_contentProvider = new ViewContentProvider();
 		_viewer = new TableViewer(_parent, SWT.BORDER| SWT.MULTI);
 		_viewer.setContentProvider(_contentProvider);
-
 		createColumn();
-		final Menu menu = new Menu(_parent.getShell(), SWT.POP_UP);
-
 		// make lines and header visible
 		final Table table = _viewer.getTable();
-		//Add the menu to the table
-		table.setMenu(menu);
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 		// The table will take all the horizontal and vertical excess space
 		GridData grid = new GridData(SWT.FILL, SWT.FILL, true, true);
 		_viewer.getControl().setLayoutData(grid);
+	}
 
-		SelectionListener listener = new SelectionListener() {
+
+	/**
+	 * Create the pop up menu which will be displayed following the right click
+	 * operation on a row of the tableViewer.
+	 * <br>The user can choose an action to realise on the selected Clock(s).
+	 */
+	private void createPopUpMenu() 
+	{
+		final Menu menu = new Menu(_parent.getShell(), SWT.POP_UP);
+		final Table table = _viewer.getTable();
+		table.setMenu(menu);
+		SelectionListener listener = new SelectionListener() 
+		{
 			@Override
-			public void widgetSelected(SelectionEvent e) {
+			public void widgetSelected(SelectionEvent e) 
+			{
 				List<String> clockToForce = new ArrayList<String>();
 				for(TableItem item : table.getSelection())
 				{
 					clockToForce.add(item.getText());
 				}
-				int s = ((MenuItem)e.getSource()).getID();
-				forceClock(clockToForce, s);	
+				ClockStatus state = (ClockStatus) ((MenuItem)e.getSource()).getData();
+				forceClock(clockToForce, state);	
 			}
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {}
 		};
 
 		MenuItem item = new MenuItem(menu, SWT.PUSH);
-		item.setText("Force  to 1");
-		item.setID(1);
+		item.setText("Force  to tick");
+		item.setData(ClockStatus.FORCED_SET);
 		item.addSelectionListener(listener);
 		new MenuItem(menu, SWT.SEPARATOR);
 		item = new MenuItem(menu, SWT.PUSH);
-		item.setText("Force  to 0");
-		item.setID(0);
+		item.setText("Force  to not tick");
+		item.setData(ClockStatus.FORCED_NOTSET);
 		item.addSelectionListener(listener);
 		new MenuItem(menu, SWT.SEPARATOR);
 		item = new MenuItem(menu, SWT.PUSH);
-		item.setText("Free the clock");
-		item.setID(2);
+		item.setText("Free the clock(s)");
+		item.setData(ClockStatus.NOTFORCED_NOTSET);
 		item.addSelectionListener(listener);
 	}
 
-	private void forceClock(List<String> clockToForce, int id) {
+	/**
+	 * Force or Free a list of clocks
+	 * @param clockToForce The clock list to force or free
+	 * @param state The future state of the clock(s) to force
+	 */
+	private void forceClock(List<String> clockToForce, ClockStatus state) 
+	{
 		for(String clockName : clockToForce)
 		{
-			ClockWrapper wrapper  = _currentEngineCache.getClockWrapper(clockName);
-			switch(id)
-			{
-			case 0: wrapper.setStateForced(false); break;
-			case 1: wrapper.setStateForced(true); break;
-			case 2: wrapper.free(); break;
-			}
+		//	TODO: if( ! map get(clocktoforce).getState() == NOTFORCED_SET ) pour pas liberer une clock libre qui va tick
+			ClockWrapper wrapper  = _wrapperCache.getClockWrapper(clockName);
+			wrapper.setState(state);
 		}
 		updateView();
 	}
 
-	public void createColumn(){		
+	/**
+	 * Create the column(s) of the tableViewer
+	 */
+	private void createColumn()
+	{		
 		TableViewerColumn viewerColumn1 = new TableViewerColumn(_viewer, SWT.LEFT);
 		TableColumn column = viewerColumn1.getColumn();
 		column.setText("Clock");
@@ -283,7 +381,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			public String getText(Object element) 
 			{
 				String result = new String();          
-				if (element instanceof ClockWrapper)// instance of clockwrapper
+				if (element instanceof ClockWrapper)
 				{
 					Clock c = ((ClockWrapper)element).getClock();
 					result = c.getName();
@@ -292,10 +390,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			}
 
 			@Override
-			public Image getImage(Object element) {
-				if (element instanceof ClockWrapper) // instance of clockwrapper
+			public Image getImage(Object element) 
+			{
+				if (element instanceof ClockWrapper) 
 				{
-					ClockStatus state = ((ClockWrapper) element).getBehavior();
+					ClockStatus state = ((ClockWrapper) element).getState();
 					switch(state)
 					{
 					case NOTFORCED_SET: return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_SET);
@@ -303,66 +402,57 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					case NOTFORCED_NOTSET: return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET);
 					case FORCED_NOTSET: return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET);
 					}
-
-
 				}
 				return null;
 			}
 
 			@Override
-			public Color getBackground(Object element) {
-				if (element instanceof ClockWrapper) // instance of clockwrapper
+			public Color getBackground(Object element) 
+			{
+				if (element instanceof ClockWrapper)
 				{
-					ClockStatus state = ((ClockWrapper) element).getBehavior();
+					ClockStatus state = ((ClockWrapper) element).getState();
 
 					switch(state)
 					{
 					case NOTFORCED_SET: return new Color(_parent.getDisplay(), 212, 255, 141);
 					case FORCED_SET: return new Color(_parent.getDisplay(), 255, 217, 142);
+					case FORCED_NOTSET: return new Color(_parent.getDisplay(), 255, 217, 142);
 					default: break;
 					}
 				}
 				return super.getBackground(element);
 			}
-
-
 		});
 	}
 
-	public void updateView(){
-		Display.getDefault().asyncExec(new Runnable() {
+	/**
+	 * Refresh the input of the ContentProvider with the selected strategy
+	 */
+	public void updateView()
+	{
+		Display.getDefault().asyncExec(new Runnable() 
+		{
 			@Override
-			public void run() {
-				if(_currentEngine != null)
+			public void run() 
+			{
+				if(_engine != null)
 				{
-					_currentEngineCache.freeAllClocks();
-					saveFilter();
+					_wrapperCache.refreshFutureTickingFreeClocks();
+					_contentProvider.setFilterStrategy(_strategyFilterSelected);
 				}
-				_viewer.setInput(_currentEngineCache);
+				_viewer.setInput(_wrapperCache);
 			}				
 		});
 	}
 
-
-	private void saveFilter() {
-		switch(_strategySelectionIndex)
-		{
-		case 0: _contentProvider.setFilterStrategy(new NoEventFilter()); break;
-		case 1: _contentProvider.setFilterStrategy(new RemoveAllBindingClockFilter()); break;
-		case 2: _contentProvider.setFilterStrategy(new RemoveLeftBindingClockFilter()); break;
-		default: break;
-		}
-	}
-
-
 	/**
-	 * createCacheForEngine
-	 * Initialize the cache for the current engine and disable all the free clocks
-	 * which has been filtered by the default strategy.
+	 * Initialize the cache of wrappers for the current engine.
 	 */
-	private void createCacheForEngine() {
+	private void createCacheForEngine() 
+	{
 		ClockConstraintSystem system = extractSystem();
-		_currentEngineCache = new WrapperCache(_currentEngine);
+		_wrapperCache = new WrapperCache(_engine);
 
 		if (system != null)
 		{
@@ -370,24 +460,27 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			{
 				if (e instanceof Clock)
 				{
-					_currentEngineCache.add((Clock)e);
+					_wrapperCache.add((Clock)e);
 				}
 			}
 		}
-		_currentEngineCache.configure(_currentEngine, system);
-		_cacheEngineWrapper.put(_currentEngine, _currentEngineCache);
+		_wrapperCache.configure(_engine, system);
+		_cacheEngineWrapper.put(_engine, _wrapperCache);
 	}
 
+	/**
+	 * Initialize the cache of ScenarioManager for the current engine.
+	 */
 	private void createCacheForScenario(){
 		_scenarioManager = new ScenarioManager();
-		_scenarioManager.setCache(_currentEngineCache);
-		_cacheEngineScenario.put(_currentEngine, _scenarioManager);
+		_scenarioManager.setCache(_wrapperCache);
+		_cacheEngineScenario.put(_engine, _scenarioManager);
 	}
 
 	private ClockConstraintSystem extractSystem() 
 	{
 		ClockConstraintSystem system = null;
-		for(Resource r : _currentEngine.getExecutionContext().getResourceModel().getResourceSet().getResources())
+		for(Resource r : _engine.getExecutionContext().getResourceModel().getResourceSet().getResources())
 		{
 			if(r.getContents().get(0) instanceof ClockConstraintSystem)
 			{
@@ -398,18 +491,23 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		return system;
 	}
 
+	/**
+	 * Listen the engine change of state.
+	 */
 	@Override
 	public void update(Observable o, Object arg) 
 	{
-		int engineStep = (int)_currentEngine.getEngineStatus().getNbLogicalStepRun();
+		int engineStep = (int)_engine.getEngineStatus().getNbLogicalStepRun();
+		//We check when the engine reach a new step
 		if(engineStep > _eventManagerStep)
 		{
-			if(_currentEngineCache!= null)
+			if(_wrapperCache!= null)
 			{
 				if(_recordFlag)
 				{	
 					recordScenario();
 				}
+				// The View step is set to the engine new step
 				_eventManagerStep = engineStep;
 				if(_playFlag)
 				{
@@ -422,38 +520,41 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 
 
+	/**
+	 * Listen the engine selection in the enginesStatusView
+	 */
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
 		if (engine != null) 
 		{
 			// Cast on engine to access the clockController
-			_currentEngine = (ObservableBasicExecutionEngine) engine;
+			_engine = (ObservableBasicExecutionEngine) engine;
 			if(engine.getEngineStatus().getRunningStatus().equals((RunStatus.Stopped)))
 			{
 				if(_recordFlag)
 				{
-					executeCommand(Command.STOP_RECORD_SCENARIO);
+					executeCommand(Commands.STOP_RECORD_SCENARIO);
 				}
 				if(_playFlag)
 				{
-					executeCommand(Command.STOP_PLAY_SCENARIO);
+					executeCommand(Commands.STOP_PLAY_SCENARIO);
 				}
-				_currentEngine.deleteObserver(this);
-				_currentEngine = null;
-				_currentEngineCache = null;
-				executeCommand(Command.UNDO_INIT);
+				_engine.deleteObserver(this);
+				_engine = null;
+				_wrapperCache = null;
+				executeCommand(Commands.UNDO_INIT);
 			}
 			else
 			{
-				_currentEngine.deleteObserver(this);
-				_currentEngine.addObserver(this);
-				executeCommand(Command.DO_INIT);
-				if(_cacheEngineWrapper.get(_currentEngine) == null)
+				_engine.deleteObserver(this);
+				_engine.addObserver(this);
+				executeCommand(Commands.DO_INIT);
+				if(_cacheEngineWrapper.get(_engine) == null)
 				{
 					createCacheForEngine();
 					createCacheForScenario();
 				}
-				_currentEngineCache = _cacheEngineWrapper.get(_currentEngine);
+				_wrapperCache = _cacheEngineWrapper.get(_engine);
 			}
 			updateView();
 		}
@@ -461,9 +562,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	/**
 	 * Call the execute function of a command.
-	 * @param command : the name of the wanted command to be called
+	 * @param command : The name of the command to be called
 	 */
-	private void executeCommand(Command command){
+	private void executeCommand(Commands command){
 		IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
 		try 
 		{
@@ -498,11 +599,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void dispose() {
 		super.dispose();
 		_contentProvider.dispose();
-		if(_currentEngine != null)
+		if(_engine != null)
 		{
-			_currentEngine.deleteObserver(this);
+			_engine.deleteObserver(this);
 		}
-		_currentEngine = null;
+		_engine = null;
 		stopListeningToMotorSelectionChange();
 	}
 
@@ -541,7 +642,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		if(path != null)
 		{
 			_scenarioManager.load(path);
-			if(_scenario != null)
+			if(scenario != null)
 			{
 				_playFlag = true;
 			}
@@ -555,15 +656,15 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	public void playScenario()
 	{
-		if(_scenario != null)
+		if(scenario != null)
 		{
-			if(_progressPlayScenario < _scenario.getStepList().size())
+			if(_progressPlayScenario < scenario.getStepList().size())
 			{
 				_scenarioManager.play();
 			}
 			else
 			{
-				executeCommand(Command.STOP_PLAY_SCENARIO);
+				executeCommand(Commands.STOP_PLAY_SCENARIO);
 			}
 		}
 	}
@@ -571,7 +672,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void stopPlayScenario()
 	{
 		_scenarioManager.stop();
-		_currentEngineCache.freeAllClocks();
+		_playFlag = false;
+		_wrapperCache.freeAllClocks();
 	}
 
 	public void informationMsg(final String title, final String msg){
@@ -591,7 +693,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 * @param event
 	 * @param command
 	 */
-	public void executeService(ExecutionEvent event, FlagCommand command)
+	public void executeService(ExecutionEvent event, SourceProviderControls command)
 	{
 		// Get the source provider service
 		ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
@@ -611,27 +713,17 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	public void setScenario(Scenario scenario)
 	{
-		_scenario = scenario;
+		this.scenario = scenario;
 	}
 
 	public Scenario getScenario()
 	{
-		return _scenario;
+		return scenario;
 	}
 
 	public GemocExecutionEngine getEngine() 
 	{
-		return _currentEngine;
-	}
-
-	public WrapperCache getCurrentEngineCache()
-	{
-		return _currentEngineCache;
-	}
-
-	public void setPlayFlag(boolean state) 
-	{
-		_playFlag = state;
+		return _engine;
 	}
 
 	public int getProgressPlayScenario() 

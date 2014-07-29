@@ -12,7 +12,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 /**
  * @author: lguillem
  */
-public class RemoveAllBindingClockFilter extends Filter {
+public class AllBindedClockFilter extends Filter {
 
 	@Override
 	public Collection<ClockWrapper> applyFilter() {

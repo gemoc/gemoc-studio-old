@@ -9,7 +9,7 @@ import org.gemoc.execution.engine.io.views.event.ClockWrapper;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Binding;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 
-public class RemoveLeftBindingClockFilter extends Filter {
+public class LeftBindedClockFilter extends Filter {
 
 	@Override
 	public Collection<ClockWrapper> applyFilter() {

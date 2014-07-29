@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.views.event.ClockWrapper;
+import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 
@@ -55,10 +56,6 @@ public class ScenarioRecorder extends ScenarioTool
 	public void record()
 	{
 		final ObservableBasicExecutionEngine engine = _manager.getWrapperCache().getEngine();
-		//		if (_currentScenarioStep == null)
-		//		{
-		//			_currentScenarioStep = engine.getEngineStatus().getNbLogicalStepRun() - 1;
-		//		}
 		Runnable runnable = new Runnable() 
 		{
 			public void run() {
@@ -67,14 +64,16 @@ public class ScenarioRecorder extends ScenarioTool
 				List<EventState> newListEvent = newStep.getEventList();
 				for(ClockWrapper cw: _manager.getWrapperCache().getClockWrapperList())
 				{
-					Boolean state = cw.isForced();
-					if(state != null)
+					ClockStatus state = cw.getState();
+					boolean isForced = state.isForced();
+					if(isForced)
 					{
 						EventState newState = _factory.createEventState();
 						newState.setClock(cw.getClock());
-						newState.setIsForced(state);
+						newState.setIsForced(isForced);
 						newListEvent.add(newState);
-					}
+					} 
+
 				}
 
 				newStep.setStep((int)engine.getEngineStatus().getNbLogicalStepRun()-1);
