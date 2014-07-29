@@ -17,6 +17,7 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process;
 
+import fr.obeo.dsl.process.Process;
 import fr.obeo.dsl.process.impl.ProcessContextImpl;
 
 import org.eclipse.core.resources.IFile;
@@ -42,6 +43,13 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 
 	public GemocLanguageProcessContext() {
 		super();
+	}
+	
+	public void initialize(Process process, URI newUri, IFile xdsmlIFile){
+		setDefinition(process);
+		this.xdsmlIFile = xdsmlIFile;
+		setXdsmlConfigURI(newUri);
+		
 	}
 	
 	public void setXdsmlConfigURI(URI newUri){
