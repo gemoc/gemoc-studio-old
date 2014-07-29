@@ -24,6 +24,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -47,10 +48,10 @@ import org.gemoc.execution.engine.io.views.event.commands.DoInit;
 import org.gemoc.execution.engine.io.views.event.commands.StopPlayScenario;
 import org.gemoc.execution.engine.io.views.event.commands.StopRecordScenario;
 import org.gemoc.execution.engine.io.views.event.commands.UndoInit;
-import org.gemoc.execution.engine.io.views.event.filters.Filter;
-import org.gemoc.execution.engine.io.views.event.filters.NoFilter;
 import org.gemoc.execution.engine.io.views.event.filters.AllBindedClockFilter;
+import org.gemoc.execution.engine.io.views.event.filters.Filter;
 import org.gemoc.execution.engine.io.views.event.filters.LeftBindedClockFilter;
+import org.gemoc.execution.engine.io.views.event.filters.NoFilter;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.scenario.Scenario;
@@ -86,6 +87,13 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private boolean _recordFlag;
 	private int _eventManagerStep;
 	private Filter _strategyFilterSelected;
+	private StateView _stateFlagsView;
+
+	private Button _quickFreeClock;
+	private Button _quickForceClock_to_1;
+	private Button _quickForceClock_to_0;
+	
+	private Label _viewStateLabel; 
 
 	/**
 	 * Store the 4 possible states of a Clock
@@ -112,36 +120,36 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		{
 			return isForced;
 		}
-		
+
 		public boolean getTick()
 		{
 			return tick;
 		}
 	}
-	
+
 	/**
 	 * Store a "mapping" of all declared filters with a name
 	 */
 	public enum Filters
 	{
 		ALL("All Clocks", new NoFilter()),
-		NO_LEFT_BIND("No Left binded Clock", new LeftBindedClockFilter()),
-		NO_BIND("No binded Clock", new AllBindedClockFilter());
-		
+		NO_LEFT_BIND("No Left binded Clocks", new LeftBindedClockFilter()),
+		NO_BIND("No binded Clocks", new AllBindedClockFilter());
+
 		private Filter f;
 		private String name;
-		
+
 		Filters(String name, Filter f)
 		{
 			this.name = name;
 			this.f = f;
 		}
-		
+
 		Filter getFilter()
 		{
 			return f;
 		}
-		
+
 		String getName()
 		{
 			return name;
@@ -157,9 +165,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		STOP_RECORD_SCENARIO(StopRecordScenario.ID),
 		DO_INIT(DoInit.ID),
 		UNDO_INIT(UndoInit.ID);
-		
+
 		String id;
-		
+
 		Commands(String id)
 		{
 			this.id = id;
@@ -170,7 +178,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			return id;
 		}
 	}
-	
+
 	/**
 	 * Coontrols for the source provider flags to control
 	 * wether commands handlers are enabled or not.
@@ -181,6 +189,27 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		RECORD,
 		INIT,
 		RESET;
+	}
+	
+	public enum StateView
+	{
+		WAITING("Waiting"),
+		RECORDING("Recording"),
+		PLAYING("Playing"),
+		STOPPED("No Engine selected");
+		
+		private String text;
+		
+		StateView(String text)
+		{
+			this.text = text;
+		}
+		
+		String getText()
+		{
+			return text;
+		}
+		
 	}
 
 
@@ -197,6 +226,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_wrapperCache = null;
 		scenario = null;
 		_strategyFilterSelected = new NoFilter();
+		_stateFlagsView = StateView.STOPPED;
 		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
 		decisionView.addSelectionListener(new ISelectionChangedListener() 
 		{
@@ -223,8 +253,12 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		createFilterSelectionBar();
 		// In the second row there will be our table with clocks
 		createViewer();
+		// Create a selection Listener for buttons and pop up menu
+		SelectionListener listener = createSelectionListener();
 		// Create a menu which will show when right click is pressed on a row
-		createPopUpMenu();
+		createPopUpMenu(listener);
+		// Create a display of the eventview status and create the buttons
+		createInformationAndButtons(listener);
 		// get the view to listen to motor selection
 		startListeningToMotorSelectionChange();
 	}
@@ -308,28 +342,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 * Create the pop up menu which will be displayed following the right click
 	 * operation on a row of the tableViewer.
 	 * <br>The user can choose an action to realise on the selected Clock(s).
+	 * @param listener
 	 */
-	private void createPopUpMenu() 
+	private void createPopUpMenu(SelectionListener listener) 
 	{
 		final Menu menu = new Menu(_parent.getShell(), SWT.POP_UP);
 		final Table table = _viewer.getTable();
 		table.setMenu(menu);
-		SelectionListener listener = new SelectionListener() 
-		{
-			@Override
-			public void widgetSelected(SelectionEvent e) 
-			{
-				List<String> clockToForce = new ArrayList<String>();
-				for(TableItem item : table.getSelection())
-				{
-					clockToForce.add(item.getText());
-				}
-				ClockStatus state = (ClockStatus) ((MenuItem)e.getSource()).getData();
-				forceClock(clockToForce, state);	
-			}
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {}
-		};
+
 
 		MenuItem item = new MenuItem(menu, SWT.PUSH);
 		item.setText("Force  to tick");
@@ -356,7 +376,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		for(String clockName : clockToForce)
 		{
-		//	TODO: if( ! map get(clocktoforce).getState() == NOTFORCED_SET ) pour pas liberer une clock libre qui va tick
+			//	TODO: if( ! map get(clocktoforce).getState() == NOTFORCED_SET ) pour pas liberer une clock libre qui va tick
 			ClockWrapper wrapper  = _wrapperCache.getClockWrapper(clockName);
 			wrapper.setState(state);
 		}
@@ -441,6 +461,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					_wrapperCache.refreshFutureTickingFreeClocks();
 					_contentProvider.setFilterStrategy(_strategyFilterSelected);
 				}
+				updateButtons();
+				updateInformationLabel();
 				_viewer.setInput(_wrapperCache);
 			}				
 		});
@@ -539,6 +561,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				{
 					executeCommand(Commands.STOP_PLAY_SCENARIO);
 				}
+				_stateFlagsView = StateView.STOPPED;
 				_engine.deleteObserver(this);
 				_engine = null;
 				_wrapperCache = null;
@@ -555,6 +578,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					createCacheForScenario();
 				}
 				_wrapperCache = _cacheEngineWrapper.get(_engine);
+				if(!(_stateFlagsView.equals(StateView.PLAYING) ||_stateFlagsView.equals(StateView.RECORDING)))
+				{
+					_stateFlagsView = StateView.WAITING;
+				}
 			}
 			updateView();
 		}
@@ -620,6 +647,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		_scenarioManager.startRecord();
 		_recordFlag = true;
+		_stateFlagsView = StateView.RECORDING;
 	}
 
 	public void recordScenario()
@@ -631,6 +659,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		_scenarioManager.stopRecord();
 		_recordFlag = false;
+		_stateFlagsView = StateView.WAITING;
 	}
 
 	/**
@@ -645,6 +674,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			if(scenario != null)
 			{
 				_playFlag = true;
+				_stateFlagsView = StateView.PLAYING;
 			}
 			playScenario();	
 		}
@@ -673,6 +703,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		_scenarioManager.stop();
 		_playFlag = false;
+		_stateFlagsView = StateView.WAITING;
 		_wrapperCache.freeAllClocks();
 	}
 
@@ -739,5 +770,93 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void incProgressPlayScenario() 
 	{
 		_progressPlayScenario++;
+	}
+
+	public void createInformationAndButtons(SelectionListener listener)
+	{
+		// The bar will be placed in the first row of the parent's grid ( which has a single column )
+		Composite informationBar = new Composite(_parent, SWT.BORDER);
+		// The bar will be made of 3 parts :
+		informationBar.setLayout(new GridLayout(3, false));
+		informationBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		informationBar.setBackground(new Color(_parent.getDisplay(), 255, 255, 255));
+		//An icon on the first column
+		Label icon = new Label(informationBar, SWT.IMAGE_PNG);
+		icon.setImage(SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON));
+		// A label on the second column
+		_viewStateLabel = new Label(informationBar, SWT.NULL);
+		// 3 buttons on the third column
+		Composite buttonBar = new Composite(informationBar, SWT.NONE);
+		buttonBar.setLayout(new GridLayout(3, false));
+		buttonBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		// Button which will freed the selected Clocks
+		_quickFreeClock = new Button(buttonBar, SWT.PUSH);
+		_quickFreeClock.setImage(SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET));
+		_quickFreeClock.setToolTipText("Free");
+		_quickFreeClock.setData(ClockStatus.NOTFORCED_NOTSET);
+		_quickFreeClock.setLayoutData(new GridData(SWT.END,SWT.NONE,true, false));
+		// Button which will forced to not tick the selected Clocks
+		_quickForceClock_to_0 = new Button(buttonBar, SWT.PUSH);
+		_quickForceClock_to_0.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET));
+		_quickForceClock_to_0.setToolTipText("Force to not tick");
+		_quickForceClock_to_0.setData(ClockStatus.FORCED_NOTSET);
+		_quickForceClock_to_0.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
+		// Button which will forced to tick the selected Clocks
+		_quickForceClock_to_1 = new Button(buttonBar, SWT.PUSH);
+		_quickForceClock_to_1.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET));
+		_quickForceClock_to_1.setToolTipText("Force to tick");
+		_quickForceClock_to_1.setData(ClockStatus.FORCED_SET);
+		_quickForceClock_to_1.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
+		
+		_quickFreeClock.addSelectionListener(listener);
+		_quickForceClock_to_0.addSelectionListener(listener);
+		_quickForceClock_to_1.addSelectionListener(listener);
+		
+		updateButtons();
+		updateInformationLabel();
+	}
+
+	public void updateButtons()
+	{
+		_quickFreeClock.setEnabled(_engine!=null);
+		_quickForceClock_to_0.setEnabled(_engine!=null);
+		_quickForceClock_to_1.setEnabled(_engine!=null);
+	}
+	
+	public void updateInformationLabel()
+	{
+		_viewStateLabel.setText(_stateFlagsView.getText()+" ...");
+	}
+
+	public SelectionListener createSelectionListener()
+	{
+		final Table table = _viewer.getTable();
+
+		SelectionListener listener = new SelectionListener() 
+		{
+			@Override
+			public void widgetSelected(SelectionEvent e) 
+			{
+				List<String> clockToForce = new ArrayList<String>();
+				ClockStatus state = ClockStatus.NOTFORCED_NOTSET;
+				for(TableItem item : table.getSelection())
+				{
+					clockToForce.add(item.getText());
+				}
+
+				if(e.getSource() instanceof MenuItem)
+				{
+					state = (ClockStatus) ((MenuItem)e.getSource()).getData();
+				}
+				if(e.getSource() instanceof Button)
+				{
+					state = (ClockStatus) ((Button)e.getSource()).getData();
+				}
+				forceClock(clockToForce, state);	
+			}
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {}
+		};
+		return listener;
 	}
 }
