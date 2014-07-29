@@ -30,6 +30,7 @@ import fr.obeo.dsl.workspace.listener.change.resource.ResourceContentChanged;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -109,7 +110,9 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 	}
 
 	public void stop() {
-		for(IProcessRunner runner : ProcessUtils.getRegisteredRunners()){
+		ArrayList<IProcessRunner> l = new ArrayList<IProcessRunner>();
+		l.addAll(ProcessUtils.getRegisteredRunners());
+		for(IProcessRunner runner :  l){
 			if(runner instanceof GemocLanguageProcessRunner){
 				GemocLanguageProcessRunner gRunner = (GemocLanguageProcessRunner)runner;
 				ProcessUtils.unregisterProcessRunner(gRunner);
