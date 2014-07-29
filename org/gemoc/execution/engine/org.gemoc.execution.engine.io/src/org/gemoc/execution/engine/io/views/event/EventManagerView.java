@@ -92,7 +92,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private Button _quickFreeClock;
 	private Button _quickForceClock_to_1;
 	private Button _quickForceClock_to_0;
-	
+
 	private Label _viewStateLabel; 
 
 	/**
@@ -190,26 +190,26 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		INIT,
 		RESET;
 	}
-	
+
 	public enum StateView
 	{
 		WAITING("Waiting"),
 		RECORDING("Recording"),
 		PLAYING("Playing"),
 		STOPPED("No Engine selected");
-		
+
 		private String text;
-		
+
 		StateView(String text)
 		{
 			this.text = text;
 		}
-		
+
 		String getText()
 		{
 			return text;
 		}
-		
+
 	}
 
 
@@ -337,52 +337,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_viewer.getControl().setLayoutData(grid);
 	}
 
-
-	/**
-	 * Create the pop up menu which will be displayed following the right click
-	 * operation on a row of the tableViewer.
-	 * <br>The user can choose an action to realise on the selected Clock(s).
-	 * @param listener
-	 */
-	private void createPopUpMenu(SelectionListener listener) 
-	{
-		final Menu menu = new Menu(_parent.getShell(), SWT.POP_UP);
-		final Table table = _viewer.getTable();
-		table.setMenu(menu);
-
-
-		MenuItem item = new MenuItem(menu, SWT.PUSH);
-		item.setText("Force  to tick");
-		item.setData(ClockStatus.FORCED_SET);
-		item.addSelectionListener(listener);
-		new MenuItem(menu, SWT.SEPARATOR);
-		item = new MenuItem(menu, SWT.PUSH);
-		item.setText("Force  to not tick");
-		item.setData(ClockStatus.FORCED_NOTSET);
-		item.addSelectionListener(listener);
-		new MenuItem(menu, SWT.SEPARATOR);
-		item = new MenuItem(menu, SWT.PUSH);
-		item.setText("Free the clock(s)");
-		item.setData(ClockStatus.NOTFORCED_NOTSET);
-		item.addSelectionListener(listener);
-	}
-
-	/**
-	 * Force or Free a list of clocks
-	 * @param clockToForce The clock list to force or free
-	 * @param state The future state of the clock(s) to force
-	 */
-	private void forceClock(List<String> clockToForce, ClockStatus state) 
-	{
-		for(String clockName : clockToForce)
-		{
-			//	TODO: if( ! map get(clocktoforce).getState() == NOTFORCED_SET ) pour pas liberer une clock libre qui va tick
-			ClockWrapper wrapper  = _wrapperCache.getClockWrapper(clockName);
-			wrapper.setState(state);
-		}
-		updateView();
-	}
-
 	/**
 	 * Create the column(s) of the tableViewer
 	 */
@@ -445,6 +399,98 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			}
 		});
 	}
+
+	/**
+	 * Create the pop up menu which will be displayed following the right click
+	 * operation on a row of the tableViewer.
+	 * <br>The user can choose an action to realize on the selected Clock(s).
+	 * @param listener
+	 */
+	private void createPopUpMenu(SelectionListener listener) 
+	{
+		final Menu menu = new Menu(_parent.getShell(), SWT.POP_UP);
+		final Table table = _viewer.getTable();
+		table.setMenu(menu);
+
+
+		MenuItem item = new MenuItem(menu, SWT.PUSH);
+		item.setText("Force  to tick");
+		item.setData(ClockStatus.FORCED_SET);
+		item.addSelectionListener(listener);
+		new MenuItem(menu, SWT.SEPARATOR);
+		item = new MenuItem(menu, SWT.PUSH);
+		item.setText("Force  to not tick");
+		item.setData(ClockStatus.FORCED_NOTSET);
+		item.addSelectionListener(listener);
+		new MenuItem(menu, SWT.SEPARATOR);
+		item = new MenuItem(menu, SWT.PUSH);
+		item.setText("Free the clock(s)");
+		item.setData(ClockStatus.NOTFORCED_NOTSET);
+		item.addSelectionListener(listener);
+	}
+
+	/**
+	 * Force or Free a list of clocks
+	 * @param clockToForce The clock list to force or free
+	 * @param state The future state of the clock(s) to force
+	 */
+	private void forceClock(List<String> clockToForce, ClockStatus state) 
+	{
+		for(String clockName : clockToForce)
+		{
+			ClockWrapper wrapper  = _wrapperCache.getClockWrapper(clockName);
+			if(! (wrapper.getState().equals(ClockStatus.NOTFORCED_SET) && state.equals(ClockStatus.NOTFORCED_NOTSET)))
+			{
+				wrapper.setState(state);
+			}
+		}
+		updateView();
+	}
+
+	public void createInformationAndButtons(SelectionListener listener)
+	{
+		// The bar will be placed in the first row of the parent's grid ( which has a single column )
+		Composite informationBar = new Composite(_parent, SWT.BORDER);
+		// The bar will be made of 3 parts :
+		informationBar.setLayout(new GridLayout(3, false));
+		informationBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		informationBar.setBackground(new Color(_parent.getDisplay(), 255, 255, 255));
+		//An icon on the first column
+		Label icon = new Label(informationBar, SWT.IMAGE_PNG);
+		icon.setImage(SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON));
+		// A label on the second column
+		_viewStateLabel = new Label(informationBar, SWT.NULL);
+		// 3 buttons on the third column
+		Composite buttonBar = new Composite(informationBar, SWT.NONE);
+		buttonBar.setLayout(new GridLayout(3, false));
+		buttonBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		// Button which will freed the selected Clocks
+		_quickFreeClock = new Button(buttonBar, SWT.PUSH);
+		_quickFreeClock.setImage(SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET));
+		_quickFreeClock.setToolTipText("Free");
+		_quickFreeClock.setData(ClockStatus.NOTFORCED_NOTSET);
+		_quickFreeClock.setLayoutData(new GridData(SWT.END,SWT.NONE,true, false));
+		// Button which will forced to not tick the selected Clocks
+		_quickForceClock_to_0 = new Button(buttonBar, SWT.PUSH);
+		_quickForceClock_to_0.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET));
+		_quickForceClock_to_0.setToolTipText("Force to not tick");
+		_quickForceClock_to_0.setData(ClockStatus.FORCED_NOTSET);
+		_quickForceClock_to_0.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
+		// Button which will forced to tick the selected Clocks
+		_quickForceClock_to_1 = new Button(buttonBar, SWT.PUSH);
+		_quickForceClock_to_1.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET));
+		_quickForceClock_to_1.setToolTipText("Force to tick");
+		_quickForceClock_to_1.setData(ClockStatus.FORCED_SET);
+		_quickForceClock_to_1.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
+
+		_quickFreeClock.addSelectionListener(listener);
+		_quickForceClock_to_0.addSelectionListener(listener);
+		_quickForceClock_to_1.addSelectionListener(listener);
+
+		updateButtons();
+		updateInformationLabel();
+	}
+
 
 	/**
 	 * Refresh the input of the ContentProvider with the selected strategy
@@ -772,49 +818,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_progressPlayScenario++;
 	}
 
-	public void createInformationAndButtons(SelectionListener listener)
-	{
-		// The bar will be placed in the first row of the parent's grid ( which has a single column )
-		Composite informationBar = new Composite(_parent, SWT.BORDER);
-		// The bar will be made of 3 parts :
-		informationBar.setLayout(new GridLayout(3, false));
-		informationBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-		informationBar.setBackground(new Color(_parent.getDisplay(), 255, 255, 255));
-		//An icon on the first column
-		Label icon = new Label(informationBar, SWT.IMAGE_PNG);
-		icon.setImage(SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON));
-		// A label on the second column
-		_viewStateLabel = new Label(informationBar, SWT.NULL);
-		// 3 buttons on the third column
-		Composite buttonBar = new Composite(informationBar, SWT.NONE);
-		buttonBar.setLayout(new GridLayout(3, false));
-		buttonBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-		// Button which will freed the selected Clocks
-		_quickFreeClock = new Button(buttonBar, SWT.PUSH);
-		_quickFreeClock.setImage(SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET));
-		_quickFreeClock.setToolTipText("Free");
-		_quickFreeClock.setData(ClockStatus.NOTFORCED_NOTSET);
-		_quickFreeClock.setLayoutData(new GridData(SWT.END,SWT.NONE,true, false));
-		// Button which will forced to not tick the selected Clocks
-		_quickForceClock_to_0 = new Button(buttonBar, SWT.PUSH);
-		_quickForceClock_to_0.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET));
-		_quickForceClock_to_0.setToolTipText("Force to not tick");
-		_quickForceClock_to_0.setData(ClockStatus.FORCED_NOTSET);
-		_quickForceClock_to_0.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
-		// Button which will forced to tick the selected Clocks
-		_quickForceClock_to_1 = new Button(buttonBar, SWT.PUSH);
-		_quickForceClock_to_1.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET));
-		_quickForceClock_to_1.setToolTipText("Force to tick");
-		_quickForceClock_to_1.setData(ClockStatus.FORCED_SET);
-		_quickForceClock_to_1.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
-		
-		_quickFreeClock.addSelectionListener(listener);
-		_quickForceClock_to_0.addSelectionListener(listener);
-		_quickForceClock_to_1.addSelectionListener(listener);
-		
-		updateButtons();
-		updateInformationLabel();
-	}
 
 	public void updateButtons()
 	{
@@ -822,7 +825,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_quickForceClock_to_0.setEnabled(_engine!=null);
 		_quickForceClock_to_1.setEnabled(_engine!=null);
 	}
-	
+
 	public void updateInformationLabel()
 	{
 		_viewStateLabel.setText(_stateFlagsView.getText()+" ...");
