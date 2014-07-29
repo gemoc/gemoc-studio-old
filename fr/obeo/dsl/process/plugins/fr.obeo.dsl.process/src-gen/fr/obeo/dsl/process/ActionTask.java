@@ -38,11 +38,9 @@ public interface ActionTask extends Task {
 	boolean isMultipleExecution();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.ActionTask#isMultipleExecution
-	 * <em>Multiple Execution</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Multiple Execution</em>' attribute.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ActionTask#isMultipleExecution <em>Multiple Execution</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Multiple Execution</em>' attribute.
 	 * @see #isMultipleExecution()
 	 * @generated
 	 */

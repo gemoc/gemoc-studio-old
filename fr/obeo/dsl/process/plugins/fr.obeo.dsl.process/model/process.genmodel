@@ -21,6 +21,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Task/precedingTasks"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Task/followingTasks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Task/precondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Task/instanceClassName"/>
     </genClasses>
     <genClasses ecoreClass="process.ecore#//ComposedTask">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ComposedTask/tasks"/>

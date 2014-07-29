@@ -58,6 +58,7 @@
         <details key="documentation" value="The precondition allowing this {@link Task} to start. If &lt;code>null&lt;/code> the {@link Task} can be started only if all its {@link fr.obeo.dsl.ProcessUtils#getPossibleTasks(Expression) possible tasks} are {@link fr.obeo.dsl.process.ProcessUtils#isDone(ProcessContext, Task) done}. {@link Task Tasks} used in the {@link Expression} must be in {@link fr.obeo.dsl.ProcessUtils#getPossibleTasks(Expression) possible tasks}."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceClassName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComposedTask" eSuperTypes="#//Task">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">

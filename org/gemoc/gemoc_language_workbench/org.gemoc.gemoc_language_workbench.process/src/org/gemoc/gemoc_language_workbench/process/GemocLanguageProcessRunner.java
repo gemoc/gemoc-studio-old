@@ -21,44 +21,21 @@ import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.Process;
 import fr.obeo.dsl.process.ProcessContext;
-import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-import org.gemoc.gemoc_language_workbench.process.task.Task1;
-import org.gemoc.gemoc_language_workbench.process.task.Task2a;
-import org.gemoc.gemoc_language_workbench.process.task.Task2b;
-import org.gemoc.gemoc_language_workbench.process.task.Task2c;
-import org.gemoc.gemoc_language_workbench.process.task.Task3a;
-import org.gemoc.gemoc_language_workbench.process.task.Task4;
-import org.gemoc.gemoc_language_workbench.process.task.Task5a;
-import org.gemoc.gemoc_language_workbench.process.task.Task5b1;
-import org.gemoc.gemoc_language_workbench.process.task.Task5b2;
-import org.gemoc.gemoc_language_workbench.process.task.Task5b3;
-import org.gemoc.gemoc_language_workbench.process.task.Task5b4;
-import org.gemoc.gemoc_language_workbench.process.task.Task5c1;
-import org.gemoc.gemoc_language_workbench.process.task.Task5d;
-import org.gemoc.gemoc_language_workbench.process.task.Task6a;
-import org.gemoc.gemoc_language_workbench.process.task.Task6b;
-import org.gemoc.gemoc_language_workbench.process.task.Task6c;
-import org.gemoc.gemoc_language_workbench.process.task.Task7a;
-import org.gemoc.gemoc_language_workbench.process.task.Task7b;
-import org.gemoc.gemoc_language_workbench.process.task.Task8a1;
-import org.gemoc.gemoc_language_workbench.process.task.Task8b;
-import org.gemoc.gemoc_language_workbench.process.task.Task8c;
-import org.gemoc.gemoc_language_workbench.process.task.Task9a;
-import org.gemoc.gemoc_language_workbench.process.task.Task9b;
+
 
 /**
  * The Gemoc language {@link IProcessRunner}.
@@ -70,22 +47,25 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 	/**
 	 * {@link List} of {@link IActionProcessor}.
 	 */
-	final Map<Task, IActionProcessor> actionProcessors = new LinkedHashMap<Task, IActionProcessor>();
+	final Map<Task, IActionProcessor> actionProcessors;
 
 	/**
-	 * The {@link List} of {@link ProcessContext}.
+	 * The  {@link ProcessContext}.
 	 */
-	final List<ProcessContext> contexts = new ArrayList<ProcessContext>();
+	final GemocLanguageProcessContext context = new GemocLanguageProcessContext();
 
 	/**
 	 * The {@link Process}.
 	 */
 	final Process process;
+	
+	final URI xdsmlUri;
 
 	/**
 	 * Constructor.
 	 */
-	public GemocLanguageProcessRunner() {
+	public GemocLanguageProcessRunner(URI xdsmlUri, IFile xdsmlFile) {
+		this.xdsmlUri = xdsmlUri;
 		Resource resource = new XMIResourceImpl();
 		try {
 			resource.load(GemocLanguageProcessRunner.class
@@ -96,55 +76,12 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 		}
 		process = (Process)resource.getContents().get(0);
 
-		final Map<String, Task> taskByIDMap = ProcessUtils.getTaskByIDMap(process);
-
-		addActionProcessor(new Task1((ActionTask)taskByIDMap.get("Task1")));
-		addActionProcessor(new Task2a((ActionTask)taskByIDMap.get("Task2.a")));
-		addActionProcessor(new Task2b((ActionTask)taskByIDMap.get("Task2.b"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task2c((ActionTask)taskByIDMap.get("Task2.c"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task3a((ActionTask)taskByIDMap.get("Task3.a"), (ActionTask)taskByIDMap
-				.get("Task1"), (ActionTask)taskByIDMap.get("Task2.b")));
-		addActionProcessor(new Task4((ActionTask)taskByIDMap.get("Task4"), (ActionTask)taskByIDMap
-				.get("Task2.b")));
-		addActionProcessor(new Task5a((ActionTask)taskByIDMap.get("Task5.a"), (ActionTask)taskByIDMap
-				.get("Task2.b")));
-		addActionProcessor(new Task5b1((ActionTask)taskByIDMap.get("Task5.b.1")));
-		addActionProcessor(new Task5b2((ActionTask)taskByIDMap.get("Task5.b.2")));
-		addActionProcessor(new Task5b3((ActionTask)taskByIDMap.get("Task5.b.3")));
-		addActionProcessor(new Task5b4((ActionTask)taskByIDMap.get("Task5.b.4")));
-		addActionProcessor(new Task5c1((ActionTask)taskByIDMap.get("Task5.c.1")));
-		addActionProcessor(new Task5d((ActionTask)taskByIDMap.get("Task5.d"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task6a((ActionTask)taskByIDMap.get("Task6.a")));
-		addActionProcessor(new Task6b((ActionTask)taskByIDMap.get("Task6.b")));
-		addActionProcessor(new Task6c((ActionTask)taskByIDMap.get("Task6.c"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task7a((ActionTask)taskByIDMap.get("Task7.a"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task7b((ActionTask)taskByIDMap.get("Task7.b"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task8a1((ActionTask)taskByIDMap.get("Task8.a.1"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task8b((ActionTask)taskByIDMap.get("Task8.b"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task8c((ActionTask)taskByIDMap.get("Task8.c"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task9a((ActionTask)taskByIDMap.get("Task9.a")));
-		addActionProcessor(new Task9b((ActionTask)taskByIDMap.get("Task9.b"), (ActionTask)taskByIDMap
-				.get("Task1")));
+		actionProcessors = new GemocLanguageProcessJavaTaskFactory().createJavaTaskForProcess(process);
+		context.setXdsmlConfigURI(xdsmlUri);
+		context.setXdsmlIFile(xdsmlFile);
 	}
 
-	/**
-	 * Adds the given {@link IActionProcessor}.
-	 * 
-	 * @param processor
-	 *            the {@link IActionProcessor}
-	 */
-	private void addActionProcessor(IActionProcessor processor) {
-		actionProcessors.put(processor.getActionTask(), processor);
-	}
+	
 
 	/**
 	 * {@inheritDoc}
@@ -156,34 +93,21 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 	}
 
 	/**
-	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.process.IProcessRunner#getContexts()
 	 */
-	public List<ProcessContext> getContexts() {
-		return contexts;
+	public GemocLanguageProcessContext getGemocLanguageProcessContext() {
+		return context;
 	}
-
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.dsl.process.IProcessRunner#startContext()
+	 * @see fr.obeo.dsl.process.IProcessRunner#getContext()
 	 */
-	public ProcessContext startContext() {
-		ProcessContext res = ProcessPackage.eINSTANCE.getProcessFactory().createProcessContext();
-		res.setDefinition(getProcess());
-		contexts.add(res);
-		return res;
+	public ProcessContext getContext() {
+		return context;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.dsl.process.IProcessRunner#stopContext(fr.obeo.dsl.process.ProcessContext)
-	 */
-	public void stopContext(ProcessContext context) {
-		contexts.remove(context);
-	}
+	
 
 	/**
 	 * {@inheritDoc}
@@ -196,6 +120,7 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 		if (ProcessUtils.canDoAction(context, task)) {
 			actionProcessors.get(task).doAction(context);
 		}
+		
 	}
 
 	/**
@@ -218,7 +143,20 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 	 */
 	public void process(IChange<?> change) {
 		for (IActionProcessor actionProcessor : actionProcessors.values()) {
-			actionProcessor.updateContexts(this, change);
+			if(ProcessUtils.evaluatePrecondition(getContext(), actionProcessor.getActionTask())){
+				boolean b = actionProcessor.checkIsDone(getContext(), change);
+				if (b){
+					Object result = actionProcessor.updateContextWhenDone(getContext(), change);
+					if(result == null) result = "DummyObject";
+					context.setDone(actionProcessor.getActionTask(), result);
+				}
+				else{
+					if(context.isDone(actionProcessor.getActionTask())){
+						context.setUndone(actionProcessor.getActionTask(),actionProcessor.updateContextWhenUndone(getContext(), change));
+					}
+					//else{ was already undone}
+				}
+			}
 		}
 	}
 

@@ -27,24 +27,25 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getName <em>Name</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getId <em>Id</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getDescription <em>Description</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getParentTask <em>Parent Task</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getPrecedingTasks <em>Preceding Tasks</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getFollowingTasks <em>Following Tasks</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getPrecondition <em>Precondition</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#isMultipleExecution <em>Multiple Execution</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getId <em>Id</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getParentTask <em>Parent Task</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getPrecedingTasks <em>Preceding Tasks</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getFollowingTasks <em>Following Tasks</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getPrecondition <em>Precondition</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getInstanceClassName <em>Instance Class Name</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#isMultipleExecution <em>Multiple Execution</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -52,9 +53,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	protected static final String NAME_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -62,9 +63,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -72,9 +73,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -92,9 +93,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -132,6 +133,26 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	protected Expression precondition;
 
 	/**
+	 * The default value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceClassName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INSTANCE_CLASS_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceClassName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String instanceClassName = INSTANCE_CLASS_NAME_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #isMultipleExecution() <em>Multiple Execution</em>}' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -153,7 +174,6 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ActionTaskImpl() {
@@ -162,7 +182,6 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -172,7 +191,6 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -181,20 +199,17 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__NAME, oldName,
-					name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -203,7 +218,6 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -215,7 +229,6 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getDescription() {
@@ -224,92 +237,77 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__DESCRIPTION,
-					oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ComposedTask getParentTask() {
-		if (eContainerFeatureID() != ProcessPackage.ACTION_TASK__PARENT_TASK)
-			return null;
-		return (ComposedTask)eContainer();
+		if (eContainerFeatureID() != ProcessPackage.ACTION_TASK__PARENT_TASK) return null;
+		return (ComposedTask)eInternalContainer();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetParentTask(ComposedTask newParentTask, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newParentTask, ProcessPackage.ACTION_TASK__PARENT_TASK,
-				msgs);
+		msgs = eBasicSetContainer((InternalEObject)newParentTask, ProcessPackage.ACTION_TASK__PARENT_TASK, msgs);
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setParentTask(ComposedTask newParentTask) {
-		if (newParentTask != eInternalContainer()
-				|| (eContainerFeatureID() != ProcessPackage.ACTION_TASK__PARENT_TASK && newParentTask != null)) {
+		if (newParentTask != eInternalContainer() || (eContainerFeatureID() != ProcessPackage.ACTION_TASK__PARENT_TASK && newParentTask != null)) {
 			if (EcoreUtil.isAncestor(this, newParentTask))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParentTask != null)
-				msgs = ((InternalEObject)newParentTask).eInverseAdd(this,
-						ProcessPackage.COMPOSED_TASK__TASKS, ComposedTask.class, msgs);
+				msgs = ((InternalEObject)newParentTask).eInverseAdd(this, ProcessPackage.COMPOSED_TASK__TASKS, ComposedTask.class, msgs);
 			msgs = basicSetParentTask(newParentTask, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__PARENT_TASK,
-					newParentTask, newParentTask));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__PARENT_TASK, newParentTask, newParentTask));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Task> getPrecedingTasks() {
 		if (precedingTasks == null) {
-			precedingTasks = new EObjectWithInverseResolvingEList.ManyInverse<Task>(Task.class, this,
-					ProcessPackage.ACTION_TASK__PRECEDING_TASKS, ProcessPackage.TASK__FOLLOWING_TASKS);
+			precedingTasks = new EObjectWithInverseResolvingEList.ManyInverse<Task>(Task.class, this, ProcessPackage.ACTION_TASK__PRECEDING_TASKS, ProcessPackage.TASK__FOLLOWING_TASKS);
 		}
 		return precedingTasks;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Task> getFollowingTasks() {
 		if (followingTasks == null) {
-			followingTasks = new EObjectWithInverseResolvingEList.ManyInverse<Task>(Task.class, this,
-					ProcessPackage.ACTION_TASK__FOLLOWING_TASKS, ProcessPackage.TASK__PRECEDING_TASKS);
+			followingTasks = new EObjectWithInverseResolvingEList.ManyInverse<Task>(Task.class, this, ProcessPackage.ACTION_TASK__FOLLOWING_TASKS, ProcessPackage.TASK__PRECEDING_TASKS);
 		}
 		return followingTasks;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Expression getPrecondition() {
@@ -318,48 +316,59 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetPrecondition(Expression newPrecondition, NotificationChain msgs) {
 		Expression oldPrecondition = precondition;
 		precondition = newPrecondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					ProcessPackage.ACTION_TASK__PRECONDITION, oldPrecondition, newPrecondition);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__PRECONDITION, oldPrecondition, newPrecondition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setPrecondition(Expression newPrecondition) {
 		if (newPrecondition != precondition) {
 			NotificationChain msgs = null;
 			if (precondition != null)
-				msgs = ((InternalEObject)precondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- ProcessPackage.ACTION_TASK__PRECONDITION, null, msgs);
+				msgs = ((InternalEObject)precondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.ACTION_TASK__PRECONDITION, null, msgs);
 			if (newPrecondition != null)
-				msgs = ((InternalEObject)newPrecondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ProcessPackage.ACTION_TASK__PRECONDITION, null, msgs);
+				msgs = ((InternalEObject)newPrecondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.ACTION_TASK__PRECONDITION, null, msgs);
 			msgs = basicSetPrecondition(newPrecondition, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__PRECONDITION,
-					newPrecondition, newPrecondition));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__PRECONDITION, newPrecondition, newPrecondition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInstanceClassName() {
+		return instanceClassName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInstanceClassName(String newInstanceClassName) {
+		String oldInstanceClassName = instanceClassName;
+		instanceClassName = newInstanceClassName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME, oldInstanceClassName, instanceClassName));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isMultipleExecution() {
@@ -368,20 +377,17 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setMultipleExecution(boolean newMultipleExecution) {
 		boolean oldMultipleExecution = multipleExecution;
 		multipleExecution = newMultipleExecution;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION, oldMultipleExecution, multipleExecution));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION, oldMultipleExecution, multipleExecution));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -393,18 +399,15 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetParentTask((ComposedTask)otherEnd, msgs);
 			case ProcessPackage.ACTION_TASK__PRECEDING_TASKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPrecedingTasks()).basicAdd(
-						otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPrecedingTasks()).basicAdd(otherEnd, msgs);
 			case ProcessPackage.ACTION_TASK__FOLLOWING_TASKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getFollowingTasks()).basicAdd(
-						otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getFollowingTasks()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -424,22 +427,19 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case ProcessPackage.ACTION_TASK__PARENT_TASK:
-				return eInternalContainer().eInverseRemove(this, ProcessPackage.COMPOSED_TASK__TASKS,
-						ComposedTask.class, msgs);
+				return eInternalContainer().eInverseRemove(this, ProcessPackage.COMPOSED_TASK__TASKS, ComposedTask.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -459,6 +459,8 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 				return getFollowingTasks();
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				return getPrecondition();
+			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
+				return getInstanceClassName();
 			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
 				return isMultipleExecution();
 		}
@@ -467,7 +469,6 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -497,6 +498,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				setPrecondition((Expression)newValue);
 				return;
+			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
+				setInstanceClassName((String)newValue);
+				return;
 			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
 				setMultipleExecution((Boolean)newValue);
 				return;
@@ -506,7 +510,6 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -533,6 +536,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				setPrecondition((Expression)null);
 				return;
+			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
+				setInstanceClassName(INSTANCE_CLASS_NAME_EDEFAULT);
+				return;
 			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
 				setMultipleExecution(MULTIPLE_EXECUTION_EDEFAULT);
 				return;
@@ -542,7 +548,6 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -553,8 +558,7 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 			case ProcessPackage.ACTION_TASK__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ProcessPackage.ACTION_TASK__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT
-						.equals(description);
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case ProcessPackage.ACTION_TASK__PARENT_TASK:
 				return getParentTask() != null;
 			case ProcessPackage.ACTION_TASK__PRECEDING_TASKS:
@@ -563,6 +567,8 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 				return followingTasks != null && !followingTasks.isEmpty();
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				return precondition != null;
+			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
+				return INSTANCE_CLASS_NAME_EDEFAULT == null ? instanceClassName != null : !INSTANCE_CLASS_NAME_EDEFAULT.equals(instanceClassName);
 			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
 				return multipleExecution != MULTIPLE_EXECUTION_EDEFAULT;
 		}
@@ -571,13 +577,11 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
@@ -586,6 +590,8 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 		result.append(id);
 		result.append(", description: ");
 		result.append(description);
+		result.append(", instanceClassName: ");
+		result.append(instanceClassName);
 		result.append(", multipleExecution: ");
 		result.append(multipleExecution);
 		result.append(')');

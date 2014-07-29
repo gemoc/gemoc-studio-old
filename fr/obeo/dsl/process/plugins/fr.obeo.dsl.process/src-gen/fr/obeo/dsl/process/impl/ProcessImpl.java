@@ -27,9 +27,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Process {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -37,9 +37,9 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 	protected static final String NAME_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -47,9 +47,9 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTask() <em>Task</em>}' containment reference. <!-- begin-user-doc
+	 * The cached value of the '{@link #getTask() <em>Task</em>}' containment reference.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getTask()
 	 * @generated
 	 * @ordered
@@ -58,7 +58,6 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ProcessImpl() {
@@ -67,7 +66,6 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -77,7 +75,6 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -86,7 +83,6 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -98,7 +94,6 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Task getTask() {
@@ -107,48 +102,38 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetTask(Task newTask, NotificationChain msgs) {
 		Task oldTask = task;
 		task = newTask;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					ProcessPackage.PROCESS__TASK, oldTask, newTask);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProcessPackage.PROCESS__TASK, oldTask, newTask);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setTask(Task newTask) {
 		if (newTask != task) {
 			NotificationChain msgs = null;
 			if (task != null)
-				msgs = ((InternalEObject)task).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- ProcessPackage.PROCESS__TASK, null, msgs);
+				msgs = ((InternalEObject)task).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.PROCESS__TASK, null, msgs);
 			if (newTask != null)
-				msgs = ((InternalEObject)newTask).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ProcessPackage.PROCESS__TASK, null, msgs);
+				msgs = ((InternalEObject)newTask).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.PROCESS__TASK, null, msgs);
 			msgs = basicSetTask(newTask, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.PROCESS__TASK, newTask,
-					newTask));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.PROCESS__TASK, newTask, newTask));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -162,7 +147,6 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -178,7 +162,6 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -196,7 +179,6 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -214,7 +196,6 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -230,13 +211,11 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

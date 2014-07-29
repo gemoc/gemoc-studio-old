@@ -28,27 +28,28 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getName <em>Name</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getId <em>Id</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getDescription <em>Description</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getParentTask <em>Parent Task</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getPrecedingTasks <em>Preceding Tasks</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getFollowingTasks <em>Following Tasks</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getPrecondition <em>Precondition</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getTasks <em>Tasks</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getInitialTasks <em>Initial Tasks</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getFinalTasks <em>Final Tasks</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getDoneExpression <em>Done Expression</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getId <em>Id</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getParentTask <em>Parent Task</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getPrecedingTasks <em>Preceding Tasks</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getFollowingTasks <em>Following Tasks</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getPrecondition <em>Precondition</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getInstanceClassName <em>Instance Class Name</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getInitialTasks <em>Initial Tasks</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getFinalTasks <em>Final Tasks</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getDoneExpression <em>Done Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -56,9 +57,9 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	protected static final String NAME_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -66,9 +67,9 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -76,9 +77,9 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -96,9 +97,9 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -136,6 +137,26 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	protected Expression precondition;
 
 	/**
+	 * The default value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceClassName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INSTANCE_CLASS_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceClassName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String instanceClassName = INSTANCE_CLASS_NAME_EDEFAULT;
+
+	/**
 	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -168,7 +189,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	/**
 	 * The cached value of the '{@link #getDoneExpression() <em>Done Expression</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getDoneExpression()
 	 * @generated
 	 * @ordered
@@ -177,7 +197,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ComposedTaskImpl() {
@@ -186,7 +205,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -196,7 +214,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -205,20 +222,17 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__NAME,
-					oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -227,7 +241,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -239,7 +252,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getDescription() {
@@ -248,92 +260,77 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__DESCRIPTION,
-					oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ComposedTask getParentTask() {
-		if (eContainerFeatureID() != ProcessPackage.COMPOSED_TASK__PARENT_TASK)
-			return null;
-		return (ComposedTask)eContainer();
+		if (eContainerFeatureID() != ProcessPackage.COMPOSED_TASK__PARENT_TASK) return null;
+		return (ComposedTask)eInternalContainer();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetParentTask(ComposedTask newParentTask, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newParentTask, ProcessPackage.COMPOSED_TASK__PARENT_TASK,
-				msgs);
+		msgs = eBasicSetContainer((InternalEObject)newParentTask, ProcessPackage.COMPOSED_TASK__PARENT_TASK, msgs);
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setParentTask(ComposedTask newParentTask) {
-		if (newParentTask != eInternalContainer()
-				|| (eContainerFeatureID() != ProcessPackage.COMPOSED_TASK__PARENT_TASK && newParentTask != null)) {
+		if (newParentTask != eInternalContainer() || (eContainerFeatureID() != ProcessPackage.COMPOSED_TASK__PARENT_TASK && newParentTask != null)) {
 			if (EcoreUtil.isAncestor(this, newParentTask))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParentTask != null)
-				msgs = ((InternalEObject)newParentTask).eInverseAdd(this,
-						ProcessPackage.COMPOSED_TASK__TASKS, ComposedTask.class, msgs);
+				msgs = ((InternalEObject)newParentTask).eInverseAdd(this, ProcessPackage.COMPOSED_TASK__TASKS, ComposedTask.class, msgs);
 			msgs = basicSetParentTask(newParentTask, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__PARENT_TASK,
-					newParentTask, newParentTask));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__PARENT_TASK, newParentTask, newParentTask));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Task> getPrecedingTasks() {
 		if (precedingTasks == null) {
-			precedingTasks = new EObjectWithInverseResolvingEList.ManyInverse<Task>(Task.class, this,
-					ProcessPackage.COMPOSED_TASK__PRECEDING_TASKS, ProcessPackage.TASK__FOLLOWING_TASKS);
+			precedingTasks = new EObjectWithInverseResolvingEList.ManyInverse<Task>(Task.class, this, ProcessPackage.COMPOSED_TASK__PRECEDING_TASKS, ProcessPackage.TASK__FOLLOWING_TASKS);
 		}
 		return precedingTasks;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Task> getFollowingTasks() {
 		if (followingTasks == null) {
-			followingTasks = new EObjectWithInverseResolvingEList.ManyInverse<Task>(Task.class, this,
-					ProcessPackage.COMPOSED_TASK__FOLLOWING_TASKS, ProcessPackage.TASK__PRECEDING_TASKS);
+			followingTasks = new EObjectWithInverseResolvingEList.ManyInverse<Task>(Task.class, this, ProcessPackage.COMPOSED_TASK__FOLLOWING_TASKS, ProcessPackage.TASK__PRECEDING_TASKS);
 		}
 		return followingTasks;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Expression getPrecondition() {
@@ -342,87 +339,92 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetPrecondition(Expression newPrecondition, NotificationChain msgs) {
 		Expression oldPrecondition = precondition;
 		precondition = newPrecondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					ProcessPackage.COMPOSED_TASK__PRECONDITION, oldPrecondition, newPrecondition);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__PRECONDITION, oldPrecondition, newPrecondition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setPrecondition(Expression newPrecondition) {
 		if (newPrecondition != precondition) {
 			NotificationChain msgs = null;
 			if (precondition != null)
-				msgs = ((InternalEObject)precondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- ProcessPackage.COMPOSED_TASK__PRECONDITION, null, msgs);
+				msgs = ((InternalEObject)precondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.COMPOSED_TASK__PRECONDITION, null, msgs);
 			if (newPrecondition != null)
-				msgs = ((InternalEObject)newPrecondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ProcessPackage.COMPOSED_TASK__PRECONDITION, null, msgs);
+				msgs = ((InternalEObject)newPrecondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.COMPOSED_TASK__PRECONDITION, null, msgs);
 			msgs = basicSetPrecondition(newPrecondition, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__PRECONDITION,
-					newPrecondition, newPrecondition));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__PRECONDITION, newPrecondition, newPrecondition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInstanceClassName() {
+		return instanceClassName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInstanceClassName(String newInstanceClassName) {
+		String oldInstanceClassName = instanceClassName;
+		instanceClassName = newInstanceClassName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME, oldInstanceClassName, instanceClassName));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Task> getTasks() {
 		if (tasks == null) {
-			tasks = new EObjectContainmentWithInverseEList<Task>(Task.class, this,
-					ProcessPackage.COMPOSED_TASK__TASKS, ProcessPackage.TASK__PARENT_TASK);
+			tasks = new EObjectContainmentWithInverseEList<Task>(Task.class, this, ProcessPackage.COMPOSED_TASK__TASKS, ProcessPackage.TASK__PARENT_TASK);
 		}
 		return tasks;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Task> getInitialTasks() {
 		if (initialTasks == null) {
-			initialTasks = new EObjectResolvingEList<Task>(Task.class, this,
-					ProcessPackage.COMPOSED_TASK__INITIAL_TASKS);
+			initialTasks = new EObjectResolvingEList<Task>(Task.class, this, ProcessPackage.COMPOSED_TASK__INITIAL_TASKS);
 		}
 		return initialTasks;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Task> getFinalTasks() {
 		if (finalTasks == null) {
-			finalTasks = new EObjectResolvingEList<Task>(Task.class, this,
-					ProcessPackage.COMPOSED_TASK__FINAL_TASKS);
+			finalTasks = new EObjectResolvingEList<Task>(Task.class, this, ProcessPackage.COMPOSED_TASK__FINAL_TASKS);
 		}
 		return finalTasks;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Expression getDoneExpression() {
@@ -431,48 +433,38 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetDoneExpression(Expression newDoneExpression, NotificationChain msgs) {
 		Expression oldDoneExpression = doneExpression;
 		doneExpression = newDoneExpression;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					ProcessPackage.COMPOSED_TASK__DONE_EXPRESSION, oldDoneExpression, newDoneExpression);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__DONE_EXPRESSION, oldDoneExpression, newDoneExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDoneExpression(Expression newDoneExpression) {
 		if (newDoneExpression != doneExpression) {
 			NotificationChain msgs = null;
 			if (doneExpression != null)
-				msgs = ((InternalEObject)doneExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-						- ProcessPackage.COMPOSED_TASK__DONE_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)doneExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.COMPOSED_TASK__DONE_EXPRESSION, null, msgs);
 			if (newDoneExpression != null)
-				msgs = ((InternalEObject)newDoneExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ProcessPackage.COMPOSED_TASK__DONE_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newDoneExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.COMPOSED_TASK__DONE_EXPRESSION, null, msgs);
 			msgs = basicSetDoneExpression(newDoneExpression, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ProcessPackage.COMPOSED_TASK__DONE_EXPRESSION, newDoneExpression, newDoneExpression));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__DONE_EXPRESSION, newDoneExpression, newDoneExpression));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -484,21 +476,17 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetParentTask((ComposedTask)otherEnd, msgs);
 			case ProcessPackage.COMPOSED_TASK__PRECEDING_TASKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPrecedingTasks()).basicAdd(
-						otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPrecedingTasks()).basicAdd(otherEnd, msgs);
 			case ProcessPackage.COMPOSED_TASK__FOLLOWING_TASKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getFollowingTasks()).basicAdd(
-						otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getFollowingTasks()).basicAdd(otherEnd, msgs);
 			case ProcessPackage.COMPOSED_TASK__TASKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks())
-						.basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -522,22 +510,19 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case ProcessPackage.COMPOSED_TASK__PARENT_TASK:
-				return eInternalContainer().eInverseRemove(this, ProcessPackage.COMPOSED_TASK__TASKS,
-						ComposedTask.class, msgs);
+				return eInternalContainer().eInverseRemove(this, ProcessPackage.COMPOSED_TASK__TASKS, ComposedTask.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -557,6 +542,8 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 				return getFollowingTasks();
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:
 				return getPrecondition();
+			case ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME:
+				return getInstanceClassName();
 			case ProcessPackage.COMPOSED_TASK__TASKS:
 				return getTasks();
 			case ProcessPackage.COMPOSED_TASK__INITIAL_TASKS:
@@ -571,7 +558,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -601,6 +587,9 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:
 				setPrecondition((Expression)newValue);
 				return;
+			case ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME:
+				setInstanceClassName((String)newValue);
+				return;
 			case ProcessPackage.COMPOSED_TASK__TASKS:
 				getTasks().clear();
 				getTasks().addAll((Collection<? extends Task>)newValue);
@@ -622,7 +611,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -649,6 +637,9 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:
 				setPrecondition((Expression)null);
 				return;
+			case ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME:
+				setInstanceClassName(INSTANCE_CLASS_NAME_EDEFAULT);
+				return;
 			case ProcessPackage.COMPOSED_TASK__TASKS:
 				getTasks().clear();
 				return;
@@ -667,7 +658,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -678,8 +668,7 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 			case ProcessPackage.COMPOSED_TASK__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ProcessPackage.COMPOSED_TASK__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT
-						.equals(description);
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case ProcessPackage.COMPOSED_TASK__PARENT_TASK:
 				return getParentTask() != null;
 			case ProcessPackage.COMPOSED_TASK__PRECEDING_TASKS:
@@ -688,6 +677,8 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 				return followingTasks != null && !followingTasks.isEmpty();
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:
 				return precondition != null;
+			case ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME:
+				return INSTANCE_CLASS_NAME_EDEFAULT == null ? instanceClassName != null : !INSTANCE_CLASS_NAME_EDEFAULT.equals(instanceClassName);
 			case ProcessPackage.COMPOSED_TASK__TASKS:
 				return tasks != null && !tasks.isEmpty();
 			case ProcessPackage.COMPOSED_TASK__INITIAL_TASKS:
@@ -702,13 +693,11 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
@@ -717,6 +706,8 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 		result.append(id);
 		result.append(", description: ");
 		result.append(description);
+		result.append(", instanceClassName: ");
+		result.append(instanceClassName);
 		result.append(')');
 		return result.toString();
 	}

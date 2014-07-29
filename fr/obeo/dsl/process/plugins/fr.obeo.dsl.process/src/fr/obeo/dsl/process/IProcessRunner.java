@@ -17,7 +17,6 @@
  *******************************************************************************/
 package fr.obeo.dsl.process;
 
-import java.util.List;
 
 /**
  * A process runner is responsible for providing {@link ProcessContext} and maintaining them.
@@ -38,14 +37,14 @@ public interface IProcessRunner {
 	 * 
 	 * @return {@link ProcessContext contexts} ran from the {@link IProcessRunner#getProcess() process}
 	 */
-	List<ProcessContext> getContexts();
+	ProcessContext getContext();
 
 	/**
 	 * Starts a new {@link ProcessContext} running the {@link IProcessRunner#getProcess() process}.
 	 * 
 	 * @return a new {@link ProcessContext} running the {@link IProcessRunner#getProcess() process}
 	 */
-	ProcessContext startContext();
+	// ProcessContext startContext();
 
 	/**
 	 * Stops the given {@link ProcessContext}.
@@ -53,7 +52,7 @@ public interface IProcessRunner {
 	 * @param context
 	 *            the {@link ProcessContext} to stop
 	 */
-	void stopContext(ProcessContext context);
+	// void stopContext(ProcessContext context);
 
 	/**
 	 * Executes the given {@link ActionTask} in the given {@link ProcessContext}.

@@ -51,9 +51,9 @@ public class Activator extends Plugin {
 	private static Activator plugin;
 
 	/**
-	 * The {@link GemocLanguageProcessRunner}.
+	 * The {@link GemocLanguageDiscovery}.
 	 */
-	private GemocLanguageProcessRunner runner;
+	private GemocLanguageDiscovery processDiscovery;
 
 	/**
 	 * Constructor.
@@ -62,12 +62,12 @@ public class Activator extends Plugin {
 	}
 
 	/**
-	 * Gets the {@link GemocLanguageProcessRunner}.
+	 * Gets the {@link GemocLanguageDiscovery}.
 	 * 
-	 * @return the {@link GemocLanguageProcessRunner}
+	 * @return the {@link GemocLanguageDiscovery}
 	 */
-	public GemocLanguageProcessRunner getRunner() {
-		return runner;
+	public GemocLanguageDiscovery getProcessDiscovery() {
+		return processDiscovery;
 	}
 
 	/**
@@ -78,12 +78,12 @@ public class Activator extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		runner = new GemocLanguageProcessRunner();
-		ProcessUtils.registerProcessRunner(runner);
+		processDiscovery = new GemocLanguageDiscovery();
 		final IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
-		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).addProcessor(runner, true);
-		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(runner, true);
+		final IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
+		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).addProcessor(processDiscovery, true);
+		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(processDiscovery, true);
+	
 	}
 
 	/**
@@ -93,7 +93,14 @@ public class Activator extends Plugin {
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
-		WorkspaceUtils.removeProcessor(runner);
+		processDiscovery.stop();
+		WorkspaceUtils.removeProcessor(processDiscovery);
+
+		final IWorkbench workbench = PlatformUI.getWorkbench();
+		final IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
+		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).removeProcessor(processDiscovery);
+		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).removeProcessor(processDiscovery);
+		
 		super.stop(context);
 	}
 

@@ -21,13 +21,13 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ProcessContext extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Name()
@@ -39,22 +39,20 @@ public interface ProcessContext extends EObject {
 	/**
 	 * Sets the value of the '{@link fr.obeo.dsl.process.ProcessContext#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Definition</b></em>' reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Definition</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Definition</em>' reference isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Definition</em>' reference.
 	 * @see #setDefinition(fr.obeo.dsl.process.Process)
 	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Definition()
@@ -64,11 +62,9 @@ public interface ProcessContext extends EObject {
 	fr.obeo.dsl.process.Process getDefinition();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.ProcessContext#getDefinition <em>Definition</em>}'
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Definition</em>' reference.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ProcessContext#getDefinition <em>Definition</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Definition</em>' reference.
 	 * @see #getDefinition()
 	 * @generated
 	 */

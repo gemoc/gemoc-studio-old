@@ -12,7 +12,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_iKLtoqnpEeO9Y-uPvVeL4Q"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_iKKfganpEeO9Y-uPvVeL4Q" fontName="Ubuntu" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iKKfgqnpEeO9Y-uPvVeL4Q" x="270" y="270"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iKKfgqnpEeO9Y-uPvVeL4Q" x="365" y="290"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_iP0bkKnpEeO9Y-uPvVeL4Q" type="2002" element="_iPwKIKnpEeO9Y-uPvVeL4Q">
             <children xmi:type="notation:Node" xmi:id="_iP1CoKnpEeO9Y-uPvVeL4Q" type="5006"/>
@@ -21,16 +21,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_iP1psqnpEeO9Y-uPvVeL4Q"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_iP0bkanpEeO9Y-uPvVeL4Q" fontName="Ubuntu" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iP0bkqnpEeO9Y-uPvVeL4Q" x="475" y="170"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_v2Xw0KnpEeO9Y-uPvVeL4Q" type="2002" element="_v2S4UKnpEeO9Y-uPvVeL4Q">
-            <children xmi:type="notation:Node" xmi:id="_v2Y-8KnpEeO9Y-uPvVeL4Q" type="5006"/>
-            <children xmi:type="notation:Node" xmi:id="_v2Y-8anpEeO9Y-uPvVeL4Q" type="7001">
-              <styles xmi:type="notation:SortingStyle" xmi:id="_v2Y-8qnpEeO9Y-uPvVeL4Q"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_v2Y-86npEeO9Y-uPvVeL4Q"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_v2Xw0anpEeO9Y-uPvVeL4Q" fontName="Ubuntu" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v2Xw0qnpEeO9Y-uPvVeL4Q" x="760" y="280"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iP0bkqnpEeO9Y-uPvVeL4Q" x="355" y="80"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_Yhy6oM7WEeOZatdxWn1FIg" type="2001" element="_YhpJoM7WEeOZatdxWn1FIg">
             <children xmi:type="notation:Node" xmi:id="_YhzhsM7WEeOZatdxWn1FIg" type="5002">
@@ -55,22 +46,6 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YhzhtM7WEeOZatdxWn1FIg" x="980" y="190" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_Yhrc8qnWEeOrSIcvb1aHbA"/>
-          <edges xmi:type="notation:Edge" xmi:id="_yqcVcMPIEeO9pvr-jFsqpA" type="4001" element="_yoaVIMPIEeO9pvr-jFsqpA" source="_iP0bkKnpEeO9Y-uPvVeL4Q" target="_v2Xw0KnpEeO9Y-uPvVeL4Q">
-            <children xmi:type="notation:Node" xmi:id="_yqeKoMPIEeO9pvr-jFsqpA" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yqeKocPIEeO9pvr-jFsqpA" y="-10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_yqexsMPIEeO9pvr-jFsqpA" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yqexscPIEeO9pvr-jFsqpA" y="10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_yqfYwMPIEeO9pvr-jFsqpA" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yqfYwcPIEeO9pvr-jFsqpA" y="10"/>
-            </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_yqcVccPIEeO9pvr-jFsqpA"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_yqcVcsPIEeO9pvr-jFsqpA" fontName="Ubuntu" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yqcVc8PIEeO9pvr-jFsqpA" points="[33, -8, -86, 25]$[120, -10, 1, 23]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yqgm4MPIEeO9pvr-jFsqpA" id="(0.78,0.5714285714285714)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yqgm4cPIEeO9pvr-jFsqpA" id="(0.16666666666666666,0.6714285714285714)"/>
-          </edges>
           <edges xmi:type="notation:Edge" xmi:id="_Yh198M7WEeOZatdxWn1FIg" type="4001" element="_YhvQQs7WEeOZatdxWn1FIg" source="_Yhy6oM7WEeOZatdxWn1FIg" target="_iKKfgKnpEeO9Y-uPvVeL4Q">
             <children xmi:type="notation:Node" xmi:id="_Yh199M7WEeOZatdxWn1FIg" type="6001">
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yh199c7WEeOZatdxWn1FIg" y="-10"/>
@@ -98,40 +73,8 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_Yh3MEM7WEeOZatdxWn1FIg"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_Yh3MEc7WEeOZatdxWn1FIg" fontName="Ubuntu"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Yh3MEs7WEeOZatdxWn1FIg" points="[15, 0, -400, -9]$[250, 0, -165, -9]$[415, 0, 0, -9]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Yh3MEs7WEeOZatdxWn1FIg" points="[15, -5, -245, 76]$[260, -81, 0, 0]"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Yh3zIc7WEeOZatdxWn1FIg" id="(0.0,0.5)"/>
-          </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_Yh5BQM7WEeOZatdxWn1FIg" type="4001" element="_YhxFcM7WEeOZatdxWn1FIg" source="_Yhzhss7WEeOZatdxWn1FIg" target="_v2Xw0KnpEeO9Y-uPvVeL4Q">
-            <children xmi:type="notation:Node" xmi:id="_Yh5BRM7WEeOZatdxWn1FIg" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yh5BRc7WEeOZatdxWn1FIg" y="-10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_Yh5BRs7WEeOZatdxWn1FIg" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yh5BR87WEeOZatdxWn1FIg" y="10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_Yh5BSM7WEeOZatdxWn1FIg" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yh5BSc7WEeOZatdxWn1FIg" y="10"/>
-            </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_Yh5BQc7WEeOZatdxWn1FIg"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_Yh5BQs7WEeOZatdxWn1FIg" fontName="Ubuntu"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Yh5BQ87WEeOZatdxWn1FIg" points="[-30, 8, 245, -71]$[-157, 45, 118, -34]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Yh5oUM7WEeOZatdxWn1FIg" id="(0.2,0.8333333333333334)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Yh5oUc7WEeOZatdxWn1FIg" id="(0.9,0.6428571428571429)"/>
-          </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_z4dvkABUEeSmQe87X_koCQ" type="4001" element="_y-t8UMPIEeO9pvr-jFsqpA" source="_iKKfgKnpEeO9Y-uPvVeL4Q" target="_iP0bkKnpEeO9Y-uPvVeL4Q">
-            <children xmi:type="notation:Node" xmi:id="_z4ioEABUEeSmQe87X_koCQ" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z4ioEQBUEeSmQe87X_koCQ" y="-10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_z4jPIABUEeSmQe87X_koCQ" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z4jPIQBUEeSmQe87X_koCQ" y="10"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_z4j2MABUEeSmQe87X_koCQ" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z4j2MQBUEeSmQe87X_koCQ" y="10"/>
-            </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_z4dvkQBUEeSmQe87X_koCQ"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_z4dvkgBUEeSmQe87X_koCQ" fontName="Ubuntu"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z4dvkwBUEeSmQe87X_koCQ" points="[310, 15, 310, 15]$[305, 200, 305, 200]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z4mScABUEeSmQe87X_koCQ" id="(0.9144736842105263,0.5714285714285714)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_z4mScQBUEeSmQe87X_koCQ" id="(0.06,0.6285714285714286)"/>
           </edges>
           <edges xmi:type="notation:Edge" xmi:id="_PALYcAv1EeScytCCWve2vg" type="4001" element="_PAFR0Av1EeScytCCWve2vg" source="_Yhzhss7WEeOZatdxWn1FIg" target="_iP0bkKnpEeO9Y-uPvVeL4Q">
             <children xmi:type="notation:Node" xmi:id="_PAL_gAv1EeScytCCWve2vg" type="6001">
@@ -149,9 +92,25 @@
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PAMmkAv1EeScytCCWve2vg" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PAMmkQv1EeScytCCWve2vg" id="(0.5,0.5)"/>
           </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_0QbkkBcGEeSdYqWHArFqCQ" type="4001" element="_0OWg8BcGEeSdYqWHArFqCQ" source="_Yhzhss7WEeOZatdxWn1FIg" target="_iKKfgKnpEeO9Y-uPvVeL4Q">
+            <children xmi:type="notation:Node" xmi:id="_0QufgBcGEeSdYqWHArFqCQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0QufgRcGEeSdYqWHArFqCQ" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_0QufghcGEeSdYqWHArFqCQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0QufgxcGEeSdYqWHArFqCQ" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_0QufhBcGEeSdYqWHArFqCQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0QufhRcGEeSdYqWHArFqCQ" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_0QbkkRcGEeSdYqWHArFqCQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_0QbkkhcGEeSdYqWHArFqCQ" fontName="Segoe UI"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0QbkkxcGEeSdYqWHArFqCQ" points="[980, 190, 980, 190]$[365, 290, 365, 290]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0Q4QgBcGEeSdYqWHArFqCQ" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0Q4QgRcGEeSdYqWHArFqCQ" id="(0.5,0.5)"/>
+          </edges>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_iKFnAKnpEeO9Y-uPvVeL4Q" name="Create a new EMF project" tooltipText="" outgoingEdges="_y-t8UMPIEeO9pvr-jFsqpA" incomingEdges="_YhvQQs7WEeOZatdxWn1FIg">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_iKFnAKnpEeO9Y-uPvVeL4Q" name="Create a new EMF project" tooltipText="" incomingEdges="_YhvQQs7WEeOZatdxWn1FIg _0OWg8BcGEeSdYqWHArFqCQ">
         <target xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.1/@tasks.0"/>
         <semanticElements xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.1/@tasks.0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -166,7 +125,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@containerMappings[name='ActionTask']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_iPwKIKnpEeO9Y-uPvVeL4Q" name="Select an existing EMF project" tooltipText="" outgoingEdges="_yoaVIMPIEeO9pvr-jFsqpA" incomingEdges="_Yhv3Us7WEeOZatdxWn1FIg _y-t8UMPIEeO9pvr-jFsqpA _PAFR0Av1EeScytCCWve2vg">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_iPwKIKnpEeO9Y-uPvVeL4Q" name="Select an existing EMF project" tooltipText="" incomingEdges="_Yhv3Us7WEeOZatdxWn1FIg _PAFR0Av1EeScytCCWve2vg">
         <target xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.1/@tasks.1"/>
         <semanticElements xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.1/@tasks.1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -180,37 +139,6 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_iPwxNKnpEeO9Y-uPvVeL4Q" red="255" green="245" blue="181"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@containerMappings[name='ActionTask']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_v2S4UKnpEeO9Y-uPvVeL4Q" name="Select project kind" tooltipText="" incomingEdges="_yoaVIMPIEeO9pvr-jFsqpA _YhxFcM7WEeOZatdxWn1FIg">
-        <target xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.1/@tasks.2"/>
-        <semanticElements xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.1/@tasks.2"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_v2S4UanpEeO9Y-uPvVeL4Q">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_v2S4UqnpEeO9Y-uPvVeL4Q"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@containerMappings[name='ActionTask']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_YhuCIc7WEeOZatdxWn1FIg" red="136" green="136" blue="136"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_v2S4VKnpEeO9Y-uPvVeL4Q" red="252" green="233" blue="79"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_v2S4VanpEeO9Y-uPvVeL4Q" red="255" green="245" blue="181"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@containerMappings[name='ActionTask']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_yoaVIMPIEeO9pvr-jFsqpA" sourceNode="_iPwKIKnpEeO9Y-uPvVeL4Q" targetNode="_v2S4UKnpEeO9Y-uPvVeL4Q">
-        <target xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.1/@tasks.1"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_bqEmMODJEeOjeKWKsnm0rg">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='FollowingTask']/@conditionnalStyles.0/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_bqEmMeDJEeOjeKWKsnm0rg" red="136" green="136" blue="136"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='FollowingTask']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_y-t8UMPIEeO9pvr-jFsqpA" sourceNode="_iKFnAKnpEeO9Y-uPvVeL4Q" targetNode="_iPwKIKnpEeO9Y-uPvVeL4Q">
-        <target xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.1/@tasks.0"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_GyX00ABVEeSmQe87X_koCQ" lineStyle="dash">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='FollowingTask']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_GyX00QBVEeSmQe87X_koCQ" red="136" green="136" blue="136"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='FollowingTask']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_YhpJoM7WEeOZatdxWn1FIg" name="Start" tooltipText="Start" outgoingEdges="_YhvQQs7WEeOZatdxWn1FIg _Yhv3Us7WEeOZatdxWn1FIg" width="3" height="3">
         <target xmi:type="process:ComposedTask" href="process/gemoc_language.process#//@task/@tasks.1"/>
@@ -226,7 +154,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@nodeMappings[name='Start']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_YhsM8M7WEeOZatdxWn1FIg" name="End" tooltipText="End" outgoingEdges="_YhxFcM7WEeOZatdxWn1FIg _PAFR0Av1EeScytCCWve2vg" width="3" height="3">
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_YhsM8M7WEeOZatdxWn1FIg" name="End" tooltipText="End" outgoingEdges="_PAFR0Av1EeScytCCWve2vg _0OWg8BcGEeSdYqWHArFqCQ" width="3" height="3">
         <target xmi:type="process:ComposedTask" href="process/gemoc_language.process#//@task/@tasks.1"/>
         <semanticElements xmi:type="process:ComposedTask" href="process/gemoc_language.process#//@task/@tasks.1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -256,19 +184,19 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='InitialTask']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_YhxFcM7WEeOZatdxWn1FIg" sourceNode="_YhsM8M7WEeOZatdxWn1FIg" targetNode="_v2S4UKnpEeO9Y-uPvVeL4Q">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PAFR0Av1EeScytCCWve2vg" sourceNode="_YhsM8M7WEeOZatdxWn1FIg" targetNode="_iPwKIKnpEeO9Y-uPvVeL4Q">
         <target xmi:type="process:ComposedTask" href="process/gemoc_language.process#//@task/@tasks.1"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_J2WM8AHmEeSdjPXVEOSeYQ" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration">
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3Yru8BcGEeSdYqWHArFqCQ" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='FinalTask']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_J2WM8QHmEeSdjPXVEOSeYQ" red="136" green="136" blue="136"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_3Yru8RcGEeSdYqWHArFqCQ" red="136" green="136" blue="136"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='FinalTask']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PAFR0Av1EeScytCCWve2vg" sourceNode="_YhsM8M7WEeOZatdxWn1FIg" targetNode="_iPwKIKnpEeO9Y-uPvVeL4Q">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_0OWg8BcGEeSdYqWHArFqCQ" sourceNode="_YhsM8M7WEeOZatdxWn1FIg" targetNode="_iKFnAKnpEeO9Y-uPvVeL4Q">
         <target xmi:type="process:ComposedTask" href="process/gemoc_language.process#//@task/@tasks.1"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_SBXRgAv1EeScytCCWve2vg" sourceArrow="InputArrow" targetArrow="NoDecoration">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='FinalTask']/@conditionnalStyles.0/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_SBXRgQv1EeScytCCWve2vg" red="136" green="136" blue="136"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_0OWg8RcGEeSdYqWHArFqCQ" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='FinalTask']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_0OWg8hcGEeSdYqWHArFqCQ" red="136" green="136" blue="136"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@edgeMappings[name='FinalTask']"/>
       </ownedDiagramElements>

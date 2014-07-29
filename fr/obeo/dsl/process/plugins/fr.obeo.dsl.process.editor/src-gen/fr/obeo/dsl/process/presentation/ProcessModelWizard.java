@@ -60,97 +60,93 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
 /**
- * This is a simple wizard for creating a new model file. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is a simple wizard for creating a new model file.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class ProcessModelWizard extends Wizard implements INewWizard {
 	/**
-	 * The supported extensions for created files. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The supported extensions for created files.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
-			.asList(ProcessEditorPlugin.INSTANCE.getString("_UI_ProcessEditorFilenameExtensions").split(
-					"\\s*,\\s*")));
+	public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays.asList(ProcessEditorPlugin.INSTANCE.getString("_UI_ProcessEditorFilenameExtensions").split("\\s*,\\s*")));
 
 	/**
-	 * A formatted list of supported file extensions, suitable for display. <!-- begin-user-doc --> <!--
+	 * A formatted list of supported file extensions, suitable for display.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	public static final String FORMATTED_FILE_EXTENSIONS = ProcessEditorPlugin.INSTANCE.getString(
-			"_UI_ProcessEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+	public static final String FORMATTED_FILE_EXTENSIONS = ProcessEditorPlugin.INSTANCE.getString("_UI_ProcessEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
 	/**
-	 * This caches an instance of the model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This caches an instance of the model package.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ProcessPackage processPackage = ProcessPackage.eINSTANCE;
 
 	/**
-	 * This caches an instance of the model factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This caches an instance of the model factory.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ProcessFactory processFactory = processPackage.getProcessFactory();
 
 	/**
-	 * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This is the file creation page.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ProcessModelWizardNewFileCreationPage newFileCreationPage;
 
 	/**
-	 * This is the initial object creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This is the initial object creation page.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ProcessModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
 	/**
-	 * Remember the selection during initialization for populating the default container. <!-- begin-user-doc
+	 * Remember the selection during initialization for populating the default container.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IStructuredSelection selection;
 
 	/**
-	 * Remember the workbench during initialization. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Remember the workbench during initialization.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected IWorkbench workbench;
 
 	/**
-	 * Caches the names of the types that can be created as the root object. <!-- begin-user-doc --> <!--
+	 * Caches the names of the types that can be created as the root object.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected List<String> initialObjectNames;
 
 	/**
-	 * This just records the information. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This just records the information.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(ProcessEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE
-				.getImageDescriptor(ProcessEditorPlugin.INSTANCE.getImage("full/wizban/NewProcess")));
+		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(ProcessEditorPlugin.INSTANCE.getImage("full/wizban/NewProcess")));
 	}
 
 	/**
-	 * Returns the names of the types that can be created as the root object. <!-- begin-user-doc --> <!--
+	 * Returns the names of the types that can be created as the root object.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Collection<String> getInitialObjectNames() {
@@ -170,20 +166,19 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * Create a new model. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Create a new model.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass)processPackage.getEClassifier(initialObjectCreationPage
-				.getInitialObjectName());
+		EClass eClass = (EClass)processPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
 		EObject rootObject = processFactory.create(eClass);
 		return rootObject;
 	}
 
 	/**
-	 * Do the work after everything is specified. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Do the work after everything is specified.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -195,41 +190,44 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 			// Do the work within an operation.
 			//
-			WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
-				@Override
-				protected void execute(IProgressMonitor progressMonitor) {
-					try {
-						// Create a resource set
-						//
-						ResourceSet resourceSet = new ResourceSetImpl();
+			WorkspaceModifyOperation operation =
+				new WorkspaceModifyOperation() {
+					@Override
+					protected void execute(IProgressMonitor progressMonitor) {
+						try {
+							// Create a resource set
+							//
+							ResourceSet resourceSet = new ResourceSetImpl();
 
-						// Get the URI of the model file.
-						//
-						URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+							// Get the URI of the model file.
+							//
+							URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
 
-						// Create a resource for this file.
-						//
-						Resource resource = resourceSet.createResource(fileURI);
+							// Create a resource for this file.
+							//
+							Resource resource = resourceSet.createResource(fileURI);
 
-						// Add the initial model object to the contents.
-						//
-						EObject rootObject = createInitialModel();
-						if (rootObject != null) {
-							resource.getContents().add(rootObject);
+							// Add the initial model object to the contents.
+							//
+							EObject rootObject = createInitialModel();
+							if (rootObject != null) {
+								resource.getContents().add(rootObject);
+							}
+
+							// Save the contents of the resource to the file system.
+							//
+							Map<Object, Object> options = new HashMap<Object, Object>();
+							options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
+							resource.save(options);
 						}
-
-						// Save the contents of the resource to the file system.
-						//
-						Map<Object, Object> options = new HashMap<Object, Object>();
-						options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
-						resource.save(options);
-					} catch (Exception exception) {
-						ProcessEditorPlugin.INSTANCE.log(exception);
-					} finally {
-						progressMonitor.done();
+						catch (Exception exception) {
+							ProcessEditorPlugin.INSTANCE.log(exception);
+						}
+						finally {
+							progressMonitor.done();
+						}
 					}
-				}
-			};
+				};
 
 			getContainer().run(false, false, operation);
 
@@ -240,40 +238,43 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 			final IWorkbenchPart activePart = page.getActivePart();
 			if (activePart instanceof ISetSelectionTarget) {
 				final ISelection targetSelection = new StructuredSelection(modelFile);
-				getShell().getDisplay().asyncExec(new Runnable() {
-					public void run() {
-						((ISetSelectionTarget)activePart).selectReveal(targetSelection);
-					}
-				});
+				getShell().getDisplay().asyncExec
+					(new Runnable() {
+						 public void run() {
+							 ((ISetSelectionTarget)activePart).selectReveal(targetSelection);
+						 }
+					 });
 			}
 
 			// Open an editor on the new file.
 			//
 			try {
-				page.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry()
-						.getDefaultEditor(modelFile.getFullPath().toString()).getId());
-			} catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(), ProcessEditorPlugin.INSTANCE
-						.getString("_UI_OpenEditorError_label"), exception.getMessage());
+				page.openEditor
+					(new FileEditorInput(modelFile),
+					 workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());					 	 
+			}
+			catch (PartInitException exception) {
+				MessageDialog.openError(workbenchWindow.getShell(), ProcessEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
 				return false;
 			}
 
 			return true;
-		} catch (Exception exception) {
+		}
+		catch (Exception exception) {
 			ProcessEditorPlugin.INSTANCE.log(exception);
 			return false;
 		}
 	}
 
 	/**
-	 * This is the one page of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This is the one page of the wizard.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public class ProcessModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 		/**
-		 * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * Pass in the selection.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		public ProcessModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
@@ -291,10 +292,8 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 			if (super.validatePage()) {
 				String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
-					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions"
-							: "_WARN_FilenameExtension";
-					setErrorMessage(ProcessEditorPlugin.INSTANCE.getString(key,
-							new Object[] {FORMATTED_FILE_EXTENSIONS }));
+					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
+					setErrorMessage(ProcessEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
 				return true;
@@ -304,25 +303,22 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public IFile getModelFile() {
-			return ResourcesPlugin.getWorkspace().getRoot().getFile(
-					getContainerFullPath().append(getFileName()));
+			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
 		}
 	}
 
 	/**
-	 * This is the page where the type of object to create is selected. <!-- begin-user-doc --> <!--
+	 * This is the page where the type of object to create is selected.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public class ProcessModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected Combo initialObjectField;
@@ -334,14 +330,13 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected Combo encodingField;
 
 		/**
-		 * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * Pass in the selection.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		public ProcessModelWizardInitialObjectCreationPage(String pageId) {
@@ -350,12 +345,10 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE);
-			{
+			Composite composite = new Composite(parent, SWT.NONE); {
 				GridLayout layout = new GridLayout();
 				layout.numColumns = 1;
 				layout.verticalSpacing = 12;
@@ -423,18 +416,16 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected ModifyListener validator = new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				setPageComplete(validatePage());
-			}
-		};
+				public void modifyText(ModifyEvent e) {
+					setPageComplete(validatePage());
+				}
+			};
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected boolean validatePage() {
@@ -443,7 +434,6 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		@Override
@@ -453,7 +443,8 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 				if (initialObjectField.getItemCount() == 1) {
 					initialObjectField.clearSelection();
 					encodingField.setFocus();
-				} else {
+				}
+				else {
 					encodingField.clearSelection();
 					initialObjectField.setFocus();
 				}
@@ -462,7 +453,6 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public String getInitialObjectName() {
@@ -478,7 +468,6 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public String getEncoding() {
@@ -486,14 +475,15 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 		}
 
 		/**
-		 * Returns the label for the specified type name. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * Returns the label for the specified type name.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		protected String getLabel(String typeName) {
 			try {
 				return ProcessEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
-			} catch (MissingResourceException mre) {
+			}
+			catch(MissingResourceException mre) {
 				ProcessEditorPlugin.INSTANCE.log(mre);
 			}
 			return typeName;
@@ -501,14 +491,12 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected Collection<String> getEncodings() {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
-				for (StringTokenizer stringTokenizer = new StringTokenizer(ProcessEditorPlugin.INSTANCE
-						.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) {
+				for (StringTokenizer stringTokenizer = new StringTokenizer(ProcessEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -517,9 +505,9 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * The framework calls this to create the contents of the wizard. <!-- begin-user-doc --> <!--
+	 * The framework calls this to create the contents of the wizard.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -528,11 +516,8 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 		//
 		newFileCreationPage = new ProcessModelWizardNewFileCreationPage("Whatever", selection);
 		newFileCreationPage.setTitle(ProcessEditorPlugin.INSTANCE.getString("_UI_ProcessModelWizard_label"));
-		newFileCreationPage.setDescription(ProcessEditorPlugin.INSTANCE
-				.getString("_UI_ProcessModelWizard_description"));
-		newFileCreationPage.setFileName(ProcessEditorPlugin.INSTANCE
-				.getString("_UI_ProcessEditorFilenameDefaultBase")
-				+ "." + FILE_EXTENSIONS.get(0));
+		newFileCreationPage.setDescription(ProcessEditorPlugin.INSTANCE.getString("_UI_ProcessModelWizard_description"));
+		newFileCreationPage.setFileName(ProcessEditorPlugin.INSTANCE.getString("_UI_ProcessEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -558,8 +543,7 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename = ProcessEditorPlugin.INSTANCE
-							.getString("_UI_ProcessEditorFilenameDefaultBase");
+					String defaultModelBaseFilename = ProcessEditorPlugin.INSTANCE.getString("_UI_ProcessEditorFilenameDefaultBase");
 					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
 					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
@@ -570,16 +554,14 @@ public class ProcessModelWizard extends Wizard implements INewWizard {
 			}
 		}
 		initialObjectCreationPage = new ProcessModelWizardInitialObjectCreationPage("Whatever2");
-		initialObjectCreationPage.setTitle(ProcessEditorPlugin.INSTANCE
-				.getString("_UI_ProcessModelWizard_label"));
-		initialObjectCreationPage.setDescription(ProcessEditorPlugin.INSTANCE
-				.getString("_UI_Wizard_initial_object_description"));
+		initialObjectCreationPage.setTitle(ProcessEditorPlugin.INSTANCE.getString("_UI_ProcessModelWizard_label"));
+		initialObjectCreationPage.setDescription(ProcessEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);
 	}
 
 	/**
-	 * Get the file from the page. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Get the file from the page.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public IFile getModelFile() {

@@ -17,7 +17,9 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process.handler;
 
+import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.ui.handler.AbstractSelectProcessHandler;
 
 import java.util.ArrayList;
@@ -38,7 +40,14 @@ public class SelectProcessHandler extends AbstractSelectProcessHandler {
 
 	@Override
 	protected List<ProcessContext> getProcessContexts(ExecutionEvent event) {
-		return new ArrayList<ProcessContext>(Activator.getDefault().getRunner().getContexts());
+		ArrayList<ProcessContext> result = new ArrayList<ProcessContext>();
+		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners())
+		{
+			result.add(runner.getContext());
+		}
+		return result;
+		
+//		return new ArrayList<ProcessContext>(Activator.getDefault().getProcessDiscovery()getRunner().getContexts());
 	}
 
 	@Override

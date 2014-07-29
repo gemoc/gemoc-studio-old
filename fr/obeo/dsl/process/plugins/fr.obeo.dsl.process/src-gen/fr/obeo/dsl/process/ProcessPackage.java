@@ -18,36 +18,35 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
  * @see fr.obeo.dsl.process.ProcessFactory
  * @model kind="package"
  * @generated
  */
 public interface ProcessPackage extends EPackage {
 	/**
-	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNAME = "process";
 
 	/**
-	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace URI.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_URI = "http://www.obeo.fr/dsl/process";
 
 	/**
-	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_PREFIX = "process";
 
 	/**
-	 * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	ProcessPackage eINSTANCE = fr.obeo.dsl.process.impl.ProcessPackageImpl.init();
@@ -63,35 +62,35 @@ public interface ProcessPackage extends EPackage {
 	int PROCESS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int PROCESS__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Task</b></em>' containment reference. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Task</b></em>' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PROCESS__TASK = 1;
 
 	/**
-	 * The number of structural features of the '<em>Process</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Process</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PROCESS_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link fr.obeo.dsl.process.Task <em>Task</em>}' class. <!-- begin-user-doc
+	 * The meta object id for the '{@link fr.obeo.dsl.process.Task <em>Task</em>}' class.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see fr.obeo.dsl.process.Task
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getTask()
 	 * @generated
@@ -99,79 +98,87 @@ public interface ProcessPackage extends EPackage {
 	int TASK = 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int TASK__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int TASK__ID = 1;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TASK__DESCRIPTION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Parent Task</b></em>' container reference. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Parent Task</b></em>' container reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TASK__PARENT_TASK = 3;
 
 	/**
-	 * The feature id for the '<em><b>Preceding Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Preceding Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TASK__PRECEDING_TASKS = 4;
 
 	/**
-	 * The feature id for the '<em><b>Following Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Following Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TASK__FOLLOWING_TASKS = 5;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference. <!-- begin-user-doc -->
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TASK__PRECONDITION = 6;
 
 	/**
-	 * The number of structural features of the '<em>Task</em>' class. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Instance Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = 7;
+	int TASK__INSTANCE_CLASS_NAME = 7;
 
 	/**
-	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ComposedTaskImpl <em>Composed Task</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The number of structural features of the '<em>Task</em>' class.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_FEATURE_COUNT = 8;
+
+	/**
+	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ComposedTaskImpl <em>Composed Task</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see fr.obeo.dsl.process.impl.ComposedTaskImpl
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getComposedTask()
 	 * @generated
@@ -179,115 +186,123 @@ public interface ProcessPackage extends EPackage {
 	int COMPOSED_TASK = 2;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__NAME = TASK__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__ID = TASK__ID;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__DESCRIPTION = TASK__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Parent Task</b></em>' container reference. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Parent Task</b></em>' container reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__PARENT_TASK = TASK__PARENT_TASK;
 
 	/**
-	 * The feature id for the '<em><b>Preceding Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Preceding Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__PRECEDING_TASKS = TASK__PRECEDING_TASKS;
 
 	/**
-	 * The feature id for the '<em><b>Following Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Following Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__FOLLOWING_TASKS = TASK__FOLLOWING_TASKS;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference. <!-- begin-user-doc -->
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__PRECONDITION = TASK__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Instance Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSED_TASK__INSTANCE_CLASS_NAME = TASK__INSTANCE_CLASS_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__TASKS = TASK_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Initial Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Initial Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__INITIAL_TASKS = TASK_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Final Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Final Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__FINAL_TASKS = TASK_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Done Expression</b></em>' containment reference. <!-- begin-user-doc -->
+	 * The feature id for the '<em><b>Done Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK__DONE_EXPRESSION = TASK_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Composed Task</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Composed Task</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMPOSED_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ActionTaskImpl <em>Action Task</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ActionTaskImpl <em>Action Task</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see fr.obeo.dsl.process.impl.ActionTaskImpl
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getActionTask()
 	 * @generated
@@ -295,79 +310,88 @@ public interface ProcessPackage extends EPackage {
 	int ACTION_TASK = 3;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int ACTION_TASK__NAME = TASK__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int ACTION_TASK__ID = TASK__ID;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ACTION_TASK__DESCRIPTION = TASK__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Parent Task</b></em>' container reference. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Parent Task</b></em>' container reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ACTION_TASK__PARENT_TASK = TASK__PARENT_TASK;
 
 	/**
-	 * The feature id for the '<em><b>Preceding Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Preceding Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ACTION_TASK__PRECEDING_TASKS = TASK__PRECEDING_TASKS;
 
 	/**
-	 * The feature id for the '<em><b>Following Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Following Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ACTION_TASK__FOLLOWING_TASKS = TASK__FOLLOWING_TASKS;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference. <!-- begin-user-doc -->
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ACTION_TASK__PRECONDITION = TASK__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Multiple Execution</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Instance Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_TASK__INSTANCE_CLASS_NAME = TASK__INSTANCE_CLASS_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Execution</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ACTION_TASK__MULTIPLE_EXECUTION = TASK_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Action Task</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Action Task</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -384,18 +408,17 @@ public interface ProcessPackage extends EPackage {
 	int EXPRESSION = 4;
 
 	/**
-	 * The number of structural features of the '<em>Expression</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Expression</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int EXPRESSION_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link fr.obeo.dsl.process.TasksExpression <em>Tasks Expression</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link fr.obeo.dsl.process.TasksExpression <em>Tasks Expression</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see fr.obeo.dsl.process.TasksExpression
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getTasksExpression()
 	 * @generated
@@ -403,18 +426,18 @@ public interface ProcessPackage extends EPackage {
 	int TASKS_EXPRESSION = 5;
 
 	/**
-	 * The feature id for the '<em><b>Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int TASKS_EXPRESSION__TASKS = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Tasks Expression</em>' class. <!-- begin-user-doc -->
+	 * The number of structural features of the '<em>Tasks Expression</em>' class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -431,18 +454,18 @@ public interface ProcessPackage extends EPackage {
 	int ALL_DONE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ALL_DONE__TASKS = TASKS_EXPRESSION__TASKS;
 
 	/**
-	 * The number of structural features of the '<em>All Done</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>All Done</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -459,18 +482,18 @@ public interface ProcessPackage extends EPackage {
 	int ANY_DONE = 7;
 
 	/**
-	 * The feature id for the '<em><b>Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ANY_DONE__TASKS = TASKS_EXPRESSION__TASKS;
 
 	/**
-	 * The number of structural features of the '<em>Any Done</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Any Done</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -487,18 +510,18 @@ public interface ProcessPackage extends EPackage {
 	int ONE_DONE = 8;
 
 	/**
-	 * The feature id for the '<em><b>Tasks</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ONE_DONE__TASKS = TASKS_EXPRESSION__TASKS;
 
 	/**
-	 * The number of structural features of the '<em>One Done</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>One Done</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -515,18 +538,18 @@ public interface ProcessPackage extends EPackage {
 	int NOT = 9;
 
 	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int NOT__EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Not</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Not</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -543,18 +566,18 @@ public interface ProcessPackage extends EPackage {
 	int AND = 10;
 
 	/**
-	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list. <!-- begin-user-doc
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int AND__EXPRESSIONS = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>And</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>And</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -571,9 +594,9 @@ public interface ProcessPackage extends EPackage {
 	int OR = 11;
 
 	/**
-	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list. <!-- begin-user-doc
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -589,9 +612,8 @@ public interface ProcessPackage extends EPackage {
 	int OR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ProcessContextImpl <em>Context</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ProcessContextImpl <em>Context</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see fr.obeo.dsl.process.impl.ProcessContextImpl
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getProcessContext()
 	 * @generated
@@ -599,34 +621,34 @@ public interface ProcessPackage extends EPackage {
 	int PROCESS_CONTEXT = 12;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int PROCESS_CONTEXT__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' reference. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Definition</b></em>' reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PROCESS_CONTEXT__DEFINITION = 1;
 
 	/**
-	 * The number of structural features of the '<em>Context</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>Context</em>' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PROCESS_CONTEXT_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '<em>Artifact</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '<em>Artifact</em>' data type.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see java.lang.Object
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getArtifact()
 	 * @generated
@@ -646,7 +668,6 @@ public interface ProcessPackage extends EPackage {
 	/**
 	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.Process#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see fr.obeo.dsl.process.Process#getName()
 	 * @see #getProcess()
@@ -655,9 +676,8 @@ public interface ProcessPackage extends EPackage {
 	EAttribute getProcess_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link fr.obeo.dsl.process.Process#getTask
-	 * <em>Task</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the containment reference '{@link fr.obeo.dsl.process.Process#getTask <em>Task</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Task</em>'.
 	 * @see fr.obeo.dsl.process.Process#getTask()
 	 * @see #getProcess()
@@ -666,9 +686,9 @@ public interface ProcessPackage extends EPackage {
 	EReference getProcess_Task();
 
 	/**
-	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Task <em>Task</em>}'. <!-- begin-user-doc
+	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Task <em>Task</em>}'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for class '<em>Task</em>'.
 	 * @see fr.obeo.dsl.process.Task
 	 * @generated
@@ -678,7 +698,6 @@ public interface ProcessPackage extends EPackage {
 	/**
 	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.Task#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see fr.obeo.dsl.process.Task#getName()
 	 * @see #getTask()
@@ -698,9 +717,8 @@ public interface ProcessPackage extends EPackage {
 	EAttribute getTask_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.Task#getDescription
-	 * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.Task#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
 	 * @see fr.obeo.dsl.process.Task#getDescription()
 	 * @see #getTask()
@@ -709,9 +727,8 @@ public interface ProcessPackage extends EPackage {
 	EAttribute getTask_Description();
 
 	/**
-	 * Returns the meta object for the container reference '{@link fr.obeo.dsl.process.Task#getParentTask
-	 * <em>Parent Task</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the container reference '{@link fr.obeo.dsl.process.Task#getParentTask <em>Parent Task</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Parent Task</em>'.
 	 * @see fr.obeo.dsl.process.Task#getParentTask()
 	 * @see #getTask()
@@ -720,9 +737,8 @@ public interface ProcessPackage extends EPackage {
 	EReference getTask_ParentTask();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.Task#getPrecedingTasks
-	 * <em>Preceding Tasks</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.Task#getPrecedingTasks <em>Preceding Tasks</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Preceding Tasks</em>'.
 	 * @see fr.obeo.dsl.process.Task#getPrecedingTasks()
 	 * @see #getTask()
@@ -731,9 +747,8 @@ public interface ProcessPackage extends EPackage {
 	EReference getTask_PrecedingTasks();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.Task#getFollowingTasks
-	 * <em>Following Tasks</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.Task#getFollowingTasks <em>Following Tasks</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Following Tasks</em>'.
 	 * @see fr.obeo.dsl.process.Task#getFollowingTasks()
 	 * @see #getTask()
@@ -742,9 +757,8 @@ public interface ProcessPackage extends EPackage {
 	EReference getTask_FollowingTasks();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link fr.obeo.dsl.process.Task#getPrecondition
-	 * <em>Precondition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the containment reference '{@link fr.obeo.dsl.process.Task#getPrecondition <em>Precondition</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Precondition</em>'.
 	 * @see fr.obeo.dsl.process.Task#getPrecondition()
 	 * @see #getTask()
@@ -753,9 +767,19 @@ public interface ProcessPackage extends EPackage {
 	EReference getTask_Precondition();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.Task#getInstanceClassName <em>Instance Class Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Instance Class Name</em>'.
+	 * @see fr.obeo.dsl.process.Task#getInstanceClassName()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EAttribute getTask_InstanceClassName();
+
+	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.ComposedTask <em>Composed Task</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for class '<em>Composed Task</em>'.
 	 * @see fr.obeo.dsl.process.ComposedTask
 	 * @generated
@@ -763,10 +787,9 @@ public interface ProcessPackage extends EPackage {
 	EClass getComposedTask();
 
 	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link fr.obeo.dsl.process.ComposedTask#getTasks <em>Tasks</em>}'. <!-- begin-user-doc --> <!--
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.dsl.process.ComposedTask#getTasks <em>Tasks</em>}'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the meta object for the containment reference list '<em>Tasks</em>'.
 	 * @see fr.obeo.dsl.process.ComposedTask#getTasks()
 	 * @see #getComposedTask()
@@ -775,10 +798,9 @@ public interface ProcessPackage extends EPackage {
 	EReference getComposedTask_Tasks();
 
 	/**
-	 * Returns the meta object for the reference list '
-	 * {@link fr.obeo.dsl.process.ComposedTask#getInitialTasks <em>Initial Tasks</em>}'. <!-- begin-user-doc
+	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.ComposedTask#getInitialTasks <em>Initial Tasks</em>}'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for the reference list '<em>Initial Tasks</em>'.
 	 * @see fr.obeo.dsl.process.ComposedTask#getInitialTasks()
 	 * @see #getComposedTask()
@@ -787,9 +809,8 @@ public interface ProcessPackage extends EPackage {
 	EReference getComposedTask_InitialTasks();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.ComposedTask#getFinalTasks
-	 * <em>Final Tasks</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.ComposedTask#getFinalTasks <em>Final Tasks</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Final Tasks</em>'.
 	 * @see fr.obeo.dsl.process.ComposedTask#getFinalTasks()
 	 * @see #getComposedTask()
@@ -820,9 +841,8 @@ public interface ProcessPackage extends EPackage {
 	EClass getActionTask();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ActionTask#isMultipleExecution
-	 * <em>Multiple Execution</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ActionTask#isMultipleExecution <em>Multiple Execution</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Multiple Execution</em>'.
 	 * @see fr.obeo.dsl.process.ActionTask#isMultipleExecution()
 	 * @see #getActionTask()
@@ -841,9 +861,8 @@ public interface ProcessPackage extends EPackage {
 	EClass getExpression();
 
 	/**
-	 * Returns the meta object for class '{@link fr.obeo.dsl.process.TasksExpression
-	 * <em>Tasks Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for class '{@link fr.obeo.dsl.process.TasksExpression <em>Tasks Expression</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Tasks Expression</em>'.
 	 * @see fr.obeo.dsl.process.TasksExpression
 	 * @generated
@@ -851,9 +870,8 @@ public interface ProcessPackage extends EPackage {
 	EClass getTasksExpression();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.TasksExpression#getTasks
-	 * <em>Tasks</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.TasksExpression#getTasks <em>Tasks</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Tasks</em>'.
 	 * @see fr.obeo.dsl.process.TasksExpression#getTasks()
 	 * @see #getTasksExpression()
@@ -892,9 +910,9 @@ public interface ProcessPackage extends EPackage {
 	EClass getOneDone();
 
 	/**
-	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Not <em>Not</em>}'. <!-- begin-user-doc
+	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Not <em>Not</em>}'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for class '<em>Not</em>'.
 	 * @see fr.obeo.dsl.process.Not
 	 * @generated
@@ -902,9 +920,8 @@ public interface ProcessPackage extends EPackage {
 	EClass getNot();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link fr.obeo.dsl.process.Not#getExpression
-	 * <em>Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the containment reference '{@link fr.obeo.dsl.process.Not#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Expression</em>'.
 	 * @see fr.obeo.dsl.process.Not#getExpression()
 	 * @see #getNot()
@@ -913,9 +930,9 @@ public interface ProcessPackage extends EPackage {
 	EReference getNot_Expression();
 
 	/**
-	 * Returns the meta object for class '{@link fr.obeo.dsl.process.And <em>And</em>}'. <!-- begin-user-doc
+	 * Returns the meta object for class '{@link fr.obeo.dsl.process.And <em>And</em>}'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for class '<em>And</em>'.
 	 * @see fr.obeo.dsl.process.And
 	 * @generated
@@ -923,10 +940,9 @@ public interface ProcessPackage extends EPackage {
 	EClass getAnd();
 
 	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link fr.obeo.dsl.process.And#getExpressions <em>Expressions</em>}'. <!-- begin-user-doc --> <!--
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.dsl.process.And#getExpressions <em>Expressions</em>}'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
 	 * @see fr.obeo.dsl.process.And#getExpressions()
 	 * @see #getAnd()
@@ -935,9 +951,9 @@ public interface ProcessPackage extends EPackage {
 	EReference getAnd_Expressions();
 
 	/**
-	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Or <em>Or</em>}'. <!-- begin-user-doc -->
+	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Or <em>Or</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for class '<em>Or</em>'.
 	 * @see fr.obeo.dsl.process.Or
 	 * @generated
@@ -945,10 +961,9 @@ public interface ProcessPackage extends EPackage {
 	EClass getOr();
 
 	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link fr.obeo.dsl.process.Or#getExpressions <em>Expressions</em>}'. <!-- begin-user-doc --> <!--
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.dsl.process.Or#getExpressions <em>Expressions</em>}'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
 	 * @see fr.obeo.dsl.process.Or#getExpressions()
 	 * @see #getOr()
@@ -967,9 +982,8 @@ public interface ProcessPackage extends EPackage {
 	EClass getProcessContext();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ProcessContext#getName
-	 * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ProcessContext#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see fr.obeo.dsl.process.ProcessContext#getName()
 	 * @see #getProcessContext()
@@ -978,9 +992,8 @@ public interface ProcessPackage extends EPackage {
 	EAttribute getProcessContext_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.obeo.dsl.process.ProcessContext#getDefinition
-	 * <em>Definition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the reference '{@link fr.obeo.dsl.process.ProcessContext#getDefinition <em>Definition</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Definition</em>'.
 	 * @see fr.obeo.dsl.process.ProcessContext#getDefinition()
 	 * @see #getProcessContext()
@@ -989,9 +1002,9 @@ public interface ProcessPackage extends EPackage {
 	EReference getProcessContext_Definition();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.Object <em>Artifact</em>}'. <!-- begin-user-doc
+	 * Returns the meta object for data type '{@link java.lang.Object <em>Artifact</em>}'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for data type '<em>Artifact</em>'.
 	 * @see java.lang.Object
 	 * @model instanceClass="java.lang.Object" serializeable="false"
@@ -1017,14 +1030,12 @@ public interface ProcessPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ProcessImpl <em>Process</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ProcessImpl <em>Process</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see fr.obeo.dsl.process.impl.ProcessImpl
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getProcess()
 		 * @generated
@@ -1032,9 +1043,9 @@ public interface ProcessPackage extends EPackage {
 		EClass PROCESS = eINSTANCE.getProcess();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc -->
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute PROCESS__NAME = eINSTANCE.getProcess_Name();
@@ -1058,17 +1069,17 @@ public interface ProcessPackage extends EPackage {
 		EClass TASK = eINSTANCE.getTask();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc -->
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute TASK__NAME = eINSTANCE.getTask_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature. <!-- begin-user-doc -->
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute TASK__ID = eINSTANCE.getTask_Id();
@@ -1114,9 +1125,16 @@ public interface ProcessPackage extends EPackage {
 		EReference TASK__PRECONDITION = eINSTANCE.getTask_Precondition();
 
 		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ComposedTaskImpl
-		 * <em>Composed Task</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Instance Class Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK__INSTANCE_CLASS_NAME = eINSTANCE.getTask_InstanceClassName();
+
+		/**
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ComposedTaskImpl <em>Composed Task</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see fr.obeo.dsl.process.impl.ComposedTaskImpl
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getComposedTask()
 		 * @generated
@@ -1150,15 +1168,13 @@ public interface ProcessPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Done Expression</b></em>' containment reference feature.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EReference COMPOSED_TASK__DONE_EXPRESSION = eINSTANCE.getComposedTask_DoneExpression();
 
 		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ActionTaskImpl
-		 * <em>Action Task</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ActionTaskImpl <em>Action Task</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see fr.obeo.dsl.process.impl.ActionTaskImpl
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getActionTask()
 		 * @generated
@@ -1176,7 +1192,6 @@ public interface ProcessPackage extends EPackage {
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.process.Expression <em>Expression</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @see fr.obeo.dsl.process.Expression
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getExpression()
 		 * @generated
@@ -1184,9 +1199,8 @@ public interface ProcessPackage extends EPackage {
 		EClass EXPRESSION = eINSTANCE.getExpression();
 
 		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.TasksExpression
-		 * <em>Tasks Expression</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.TasksExpression <em>Tasks Expression</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see fr.obeo.dsl.process.TasksExpression
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getTasksExpression()
 		 * @generated
@@ -1194,17 +1208,16 @@ public interface ProcessPackage extends EPackage {
 		EClass TASKS_EXPRESSION = eINSTANCE.getTasksExpression();
 
 		/**
-		 * The meta object literal for the '<em><b>Tasks</b></em>' reference list feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Tasks</b></em>' reference list feature.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EReference TASKS_EXPRESSION__TASKS = eINSTANCE.getTasksExpression_Tasks();
 
 		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.AllDoneImpl <em>All Done</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.AllDoneImpl <em>All Done</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see fr.obeo.dsl.process.impl.AllDoneImpl
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getAllDone()
 		 * @generated
@@ -1212,9 +1225,8 @@ public interface ProcessPackage extends EPackage {
 		EClass ALL_DONE = eINSTANCE.getAllDone();
 
 		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.AnyDoneImpl <em>Any Done</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.AnyDoneImpl <em>Any Done</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see fr.obeo.dsl.process.impl.AnyDoneImpl
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getAnyDone()
 		 * @generated
@@ -1222,9 +1234,8 @@ public interface ProcessPackage extends EPackage {
 		EClass ANY_DONE = eINSTANCE.getAnyDone();
 
 		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.OneDoneImpl <em>One Done</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.OneDoneImpl <em>One Done</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see fr.obeo.dsl.process.impl.OneDoneImpl
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getOneDone()
 		 * @generated
@@ -1262,7 +1273,6 @@ public interface ProcessPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EReference AND__EXPRESSIONS = eINSTANCE.getAnd_Expressions();
@@ -1280,15 +1290,13 @@ public interface ProcessPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EReference OR__EXPRESSIONS = eINSTANCE.getOr_Expressions();
 
 		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ProcessContextImpl
-		 * <em>Context</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ProcessContextImpl <em>Context</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see fr.obeo.dsl.process.impl.ProcessContextImpl
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getProcessContext()
 		 * @generated
@@ -1296,25 +1304,25 @@ public interface ProcessPackage extends EPackage {
 		EClass PROCESS_CONTEXT = eINSTANCE.getProcessContext();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc -->
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EAttribute PROCESS_CONTEXT__NAME = eINSTANCE.getProcessContext_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Definition</b></em>' reference feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Definition</b></em>' reference feature.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EReference PROCESS_CONTEXT__DEFINITION = eINSTANCE.getProcessContext_Definition();
 
 		/**
-		 * The meta object literal for the '<em>Artifact</em>' data type. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '<em>Artifact</em>' data type.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @see java.lang.Object
 		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getArtifact()
 		 * @generated

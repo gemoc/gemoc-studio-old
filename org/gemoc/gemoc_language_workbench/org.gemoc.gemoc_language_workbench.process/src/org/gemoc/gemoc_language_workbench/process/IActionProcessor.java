@@ -38,8 +38,26 @@ public interface IActionProcessor {
 	 *            the {@link IProcessRunner}
 	 * @param change
 	 *            the {@link IChange}
+	 * @return an object been the result of the task, can be null
 	 */
-	void updateContexts(IProcessRunner runner, IChange<?> change);
+	Object updateContextWhenDone(ProcessContext context, IChange<?> change);
+	
+	/**
+	 * reset the values in the context corresponding to this action, that is now considered as undone
+	 * @param context
+	 * @param change
+	 * @return the reason why it isn't done
+	 */
+	String updateContextWhenUndone(ProcessContext context, IChange<?> change);
+	
+	/**
+	 * Verify in the environment that the Action can be considered as done
+	 * must be run as fast as possible as it is verified on every resource change
+	 * @param context
+	 * @param change
+	 * @return
+	 */
+	boolean checkIsDone(ProcessContext context,  IChange<?> change);
 
 	/**
 	 * Executes the {@link ActionTask} in the given {@link ProcessContext}.
