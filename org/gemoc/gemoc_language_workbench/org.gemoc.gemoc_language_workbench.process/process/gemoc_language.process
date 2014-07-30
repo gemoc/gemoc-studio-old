@@ -9,9 +9,10 @@
       </tasks>
       <doneExpression xsi:type="process:AnyDone" tasks="//@task/@tasks.1/@tasks.1 //@task/@tasks.1/@tasks.0"/>
     </tasks>
-    <tasks xsi:type="process:ComposedTask" name="Define a domain model" id="Task3" precedingTasks="//@task/@tasks.1" followingTasks="//@task/@tasks.3 //@task/@tasks.4 //@task/@tasks.5 //@task/@tasks.7 //@task/@tasks.6 //@task/@tasks.8" initialTasks="//@task/@tasks.2/@tasks.0" finalTasks="//@task/@tasks.2/@tasks.0">
+    <tasks xsi:type="process:ComposedTask" name="Define a domain model" id="Task3" precedingTasks="//@task/@tasks.1" followingTasks="//@task/@tasks.3 //@task/@tasks.4 //@task/@tasks.5 //@task/@tasks.7 //@task/@tasks.6 //@task/@tasks.8" initialTasks="//@task/@tasks.2/@tasks.1" finalTasks="//@task/@tasks.2/@tasks.0">
       <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.1"/>
-      <tasks xsi:type="process:ActionTask" name="Set domain model root" id="Task3.a"/>
+      <tasks xsi:type="process:ActionTask" name="Set domain model root" id="Task3.a" precedingTasks="//@task/@tasks.2/@tasks.1"/>
+      <tasks xsi:type="process:ActionTask" name="Define some domain Classes" followingTasks="//@task/@tasks.2/@tasks.0"/>
       <doneExpression xsi:type="process:AllDone" tasks="//@task/@tasks.2/@tasks.0"/>
     </tasks>
     <tasks xsi:type="process:ActionTask" name="Show domain model" id="Task4" precedingTasks="//@task/@tasks.2" multipleExecution="true"/>

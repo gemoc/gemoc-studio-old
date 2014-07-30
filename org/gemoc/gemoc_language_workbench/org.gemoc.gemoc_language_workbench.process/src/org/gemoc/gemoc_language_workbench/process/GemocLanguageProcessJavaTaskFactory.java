@@ -28,6 +28,7 @@ import java.util.Map;
 import org.gemoc.gemoc_language_workbench.process.task.CreateNewGemocLanguageProjectTask;
 import org.gemoc.gemoc_language_workbench.process.task.CreateNewEMFProjectTask;
 import org.gemoc.gemoc_language_workbench.process.task.SelectEMFProjectTask;
+import org.gemoc.gemoc_language_workbench.process.task.SetDomainModelRootTask;
 //import org.gemoc.gemoc_language_workbench.process.task.Task2c;
 //import org.gemoc.gemoc_language_workbench.process.task.Task3a;
 //import org.gemoc.gemoc_language_workbench.process.task.Task4;
@@ -60,10 +61,9 @@ public class GemocLanguageProcessJavaTaskFactory {
 		addActionProcessor(new CreateNewEMFProjectTask((ActionTask)taskByIDMap.get("Task2.a")));
 		addActionProcessor(new SelectEMFProjectTask((ActionTask)taskByIDMap.get("Task2.b")));
 		/*addActionProcessor(new Task2c((ActionTask)taskByIDMap.get("Task2.c"), (ActionTask)taskByIDMap
-				.get("Task1")));
-		addActionProcessor(new Task3a((ActionTask)taskByIDMap.get("Task3.a"), (ActionTask)taskByIDMap
-				.get("Task1"), (ActionTask)taskByIDMap.get("Task2.b")));
-		addActionProcessor(new Task4((ActionTask)taskByIDMap.get("Task4"), (ActionTask)taskByIDMap
+				.get("Task1")));*/
+		addActionProcessor(new SetDomainModelRootTask((ActionTask)taskByIDMap.get("Task3.a")));
+		/*addActionProcessor(new Task4((ActionTask)taskByIDMap.get("Task4"), (ActionTask)taskByIDMap
 				.get("Task2.b")));
 		addActionProcessor(new Task5a((ActionTask)taskByIDMap.get("Task5.a"), (ActionTask)taskByIDMap
 				.get("Task2.b")));

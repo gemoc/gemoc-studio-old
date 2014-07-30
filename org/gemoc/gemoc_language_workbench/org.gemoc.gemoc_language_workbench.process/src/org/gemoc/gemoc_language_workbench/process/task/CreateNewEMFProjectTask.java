@@ -78,10 +78,6 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 	
 	public boolean validate(ProcessContext context) {
 		
-		// filter as much as possible to return ASAP
-		// no necessary because the current check is fast
-		
-		
 		// it exists an EMF project that is referenced by the xdsml
 		// else setUndone 
 		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
