@@ -19,12 +19,14 @@ public class ClockWrapper
 	private Clock _clock;
 	private ClockControllerInternal _clockController;
 	private ClockStatus _state;
-
+	private WrapperAdvancedControl _control;
+	
 	public ClockWrapper(Clock clock, ClockControllerInternal clockController) 
 	{
 		_clock = clock;
 		_clockController = clockController;
 		_state = ClockStatus.NOTFORCED_NOTSET;
+		_control = null;
 	}
 	
 	public void setState(ClockStatus state){
@@ -60,8 +62,18 @@ public class ClockWrapper
 		result += _clock.getName();
 		return result;
 	}
+	
 	public Clock getClock() 
 	{
 		return _clock;
 	}
+	
+	public WrapperAdvancedControl getControl() {
+		return _control;
+	}
+
+	public void setControl(WrapperAdvancedControl control) {
+		_control = control;
+	}
+
 }

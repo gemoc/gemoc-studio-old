@@ -96,32 +96,34 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private Label _viewStateLabel; 
 
 	/**
-	 * Store the 4 possible states of a Clock
-	 * <p> - A clock can be forced to tick or not tick in the future
-	 * <br>- A clock not forced can either tick or not tick in the future
+	 * Store the 4 possible states of a Clock and a fifth state for advanced control:
+	 * <p> - A clock can be forced to tick or not tick in the future;
+	 * <br>- A clock not forced can either tick or not tick in the future;
+	 * <br>- (new!) A clock can be forced to tick or not during a certain period.
 	 */
 	public enum ClockStatus 
 	{
 		NOTFORCED_SET(false, true),
 		NOTFORCED_NOTSET(false, false),
 		FORCED_SET(true, true),
-		FORCED_NOTSET(true, false);
+		FORCED_NOTSET(true, false),
+		DELAYED_CONTROL(null, null);
 
-		private boolean isForced;
-		private boolean tick;
+		private Boolean isForced;
+		private Boolean tick;
 
-		ClockStatus(boolean isForced, boolean tick)
+		ClockStatus(Boolean isForced, Boolean tick)
 		{
 			this.isForced = isForced;
 			this.tick = tick;
 		}
 
-		public boolean isForced()
+		public Boolean isForced()
 		{
 			return isForced;
 		}
 
-		public boolean getTick()
+		public Boolean getTick()
 		{
 			return tick;
 		}
@@ -341,13 +343,13 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 * Create the column(s) of the tableViewer
 	 */
 	private void createColumn()
-	{		
+	{	
 		TableViewerColumn viewerColumn1 = new TableViewerColumn(_viewer, SWT.LEFT);
-		TableColumn column = viewerColumn1.getColumn();
-		column.setText("Clock");
-		column.setWidth(100);
-		column.setResizable(true);
-		column.setMoveable(true);
+		TableColumn column1 = viewerColumn1.getColumn();
+		column1.setText("Clock");
+		column1.setWidth(100);
+		column1.setResizable(true);
+		column1.setMoveable(true);
 
 		viewerColumn1.setLabelProvider(new ColumnLabelProvider() 
 		{
@@ -375,6 +377,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					case FORCED_SET: return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET);
 					case NOTFORCED_NOTSET: return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET);
 					case FORCED_NOTSET: return SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET);
+					default: break;
 					}
 				}
 				return null;
@@ -427,24 +430,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		item.setText("Free the clock(s)");
 		item.setData(ClockStatus.NOTFORCED_NOTSET);
 		item.addSelectionListener(listener);
-	}
-
-	/**
-	 * Force or Free a list of clocks
-	 * @param clockToForce The clock list to force or free
-	 * @param state The future state of the clock(s) to force
-	 */
-	private void forceClock(List<String> clockToForce, ClockStatus state) 
-	{
-		for(String clockName : clockToForce)
-		{
-			ClockWrapper wrapper  = _wrapperCache.getClockWrapper(clockName);
-			if(! (wrapper.getState().equals(ClockStatus.NOTFORCED_SET) && state.equals(ClockStatus.NOTFORCED_NOTSET)))
-			{
-				wrapper.setState(state);
-			}
-		}
-		updateView();
+		new MenuItem(menu, SWT.SEPARATOR);
+		item = new MenuItem(menu, SWT.PUSH);
+		item.setText("Advanced settings");
+		item.setData(ClockStatus.DELAYED_CONTROL);
+		item.addSelectionListener(listener);
 	}
 
 	public void createInformationAndButtons(SelectionListener listener)
@@ -491,6 +481,66 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		updateInformationLabel();
 	}
 
+	public SelectionListener createSelectionListener()
+	{
+		final Table table = _viewer.getTable();
+
+		SelectionListener listener = new SelectionListener() 
+		{
+			@Override
+			public void widgetSelected(SelectionEvent e) 
+			{
+				List<String> clockToForce = new ArrayList<String>();
+				ClockStatus state = ClockStatus.NOTFORCED_NOTSET;
+				for(TableItem item : table.getSelection())
+				{
+					clockToForce.add(item.getText());
+				}
+
+				if(e.getSource() instanceof MenuItem)
+				{
+					state = (ClockStatus) ((MenuItem)e.getSource()).getData();
+				}
+				if(e.getSource() instanceof Button)
+				{
+					state = (ClockStatus) ((Button)e.getSource()).getData();
+				}
+
+				forceClock(clockToForce, state);	
+			}
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {}
+		};
+		return listener;
+	}
+
+	/**
+	 * Force or Free a list of clocks
+	 * @param clockToForce The clock list to force or free
+	 * @param state The future state of the clock(s) to force
+	 */
+	private void forceClock(List<String> clockToForce, ClockStatus state) 
+	{
+		switch(state)
+		{
+		case DELAYED_CONTROL: 
+			AdvancedControlDialog dialog = new AdvancedControlDialog(_parent.getShell());
+			dialog.create();
+			dialog.open();
+			break;
+		default:
+			for(String clockName : clockToForce)
+			{
+				ClockWrapper wrapper  = _wrapperCache.getClockWrapper(clockName);
+				if( ! (wrapper.getState().equals(ClockStatus.NOTFORCED_SET) && state.equals(ClockStatus.NOTFORCED_NOTSET)))
+				{
+					wrapper.setState(state);
+				}
+			}
+			updateView();
+			break;	
+		}
+	}
 
 	/**
 	 * Refresh the input of the ContentProvider with the selected strategy
@@ -829,37 +879,5 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void updateInformationLabel()
 	{
 		_viewStateLabel.setText(_stateFlagsView.getText()+" ...");
-	}
-
-	public SelectionListener createSelectionListener()
-	{
-		final Table table = _viewer.getTable();
-
-		SelectionListener listener = new SelectionListener() 
-		{
-			@Override
-			public void widgetSelected(SelectionEvent e) 
-			{
-				List<String> clockToForce = new ArrayList<String>();
-				ClockStatus state = ClockStatus.NOTFORCED_NOTSET;
-				for(TableItem item : table.getSelection())
-				{
-					clockToForce.add(item.getText());
-				}
-
-				if(e.getSource() instanceof MenuItem)
-				{
-					state = (ClockStatus) ((MenuItem)e.getSource()).getData();
-				}
-				if(e.getSource() instanceof Button)
-				{
-					state = (ClockStatus) ((Button)e.getSource()).getData();
-				}
-				forceClock(clockToForce, state);	
-			}
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {}
-		};
-		return listener;
 	}
 }
