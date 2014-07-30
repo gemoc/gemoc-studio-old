@@ -44,6 +44,7 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.process.AbstractProcessor;
+import org.gemoc.gemoc_language_workbench.process.AbstractResourceProcessor;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
@@ -53,11 +54,10 @@ import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class SelectEMFProjectTask extends AbstractProcessor {
+public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 
 
-	protected String undoneReason="";
-
+	
 	/**
 	 * Constructor.
 	 * 
@@ -109,58 +109,7 @@ public class SelectEMFProjectTask extends AbstractProcessor {
 		}
 	}
 
-	public Object updateContextWhenDone(ProcessContext context, IChange<?> change) {
-		// all test for cast are done in checkIsDone 
-		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
-		final GemocLanguageWorkbenchConfiguration config = gContext.getXdsmlConfigModel();
-		final DomainModelProject project = config.getLanguageDefinition().getDomainModelProject();
-		EMFEcoreProject emfproject = (EMFEcoreProject)project;		
-		return emfproject;
-	}
 
-	public String updateContextWhenUndone(ProcessContext context, IChange<?> change) {
-		return undoneReason;
-	}
-
-	public boolean checkIsDone(ProcessContext context, IChange<?> change) {
-		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
-		final GemocLanguageWorkbenchConfiguration config = gContext.getXdsmlConfigModel();
-		if (config != null && config.getLanguageDefinition() != null) {
-			final DomainModelProject project = config.getLanguageDefinition().getDomainModelProject();
-			if (project instanceof EMFEcoreProject) {
-				//checkEMFEcoreProject(context, (EMFEcoreProject)project);
-				EMFEcoreProject emfproject = (EMFEcoreProject)project;
-				final String projectName = project.getProjectName();
-				if (projectName != null && projectName.length() > 0) {
-					IProject p = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-					if (p != null && p.exists()) {
-						if (emfproject.getEmfGenmodel() != null && emfproject.getEmfGenmodel().getLocationURI() != null
-								&& emfproject.getEmfGenmodel().getLocationURI().length() != 0) {
-							IResource genModelFile = ResourcesPlugin.getWorkspace().getRoot().getFile(
-									new Path(emfproject.getEmfGenmodel().getLocationURI()));
-							if (genModelFile.exists()) {
-								return true;
-							} else {
-								undoneReason = "Genmodel is missing.";
-								return false;
-							}
-						}
-					} else {
-						undoneReason = "Project is missing.";
-						return false;
-					}
-				}
-				
-			} else {
-				undoneReason = "No Domain project referenced in xdsml.";
-				return false;
-			}
-		} else {
-			undoneReason = "No Language dedined in xdsml.";
-			return false;
-		}
-		return false;
-	}
 	
 	protected void addEMFProjectToConf(GemocLanguageProcessContext gContext, String projectName){
 		IFile configFile = gContext.getXdsmlIFile(); 
@@ -198,5 +147,9 @@ public class SelectEMFProjectTask extends AbstractProcessor {
 			Activator.error(e.getMessage(), e);
 		}
 	}
+
+
+
+
 
 }

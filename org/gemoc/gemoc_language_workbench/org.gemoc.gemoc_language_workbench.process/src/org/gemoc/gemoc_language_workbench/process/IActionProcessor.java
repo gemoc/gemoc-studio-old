@@ -22,6 +22,8 @@ import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 
+import org.eclipse.core.resources.IResource;
+
 /**
  * Reacts to a {@link IChange change} by updating a {@link IProcessRunner}.
  * 
@@ -40,7 +42,7 @@ public interface IActionProcessor {
 	 *            the {@link IChange}
 	 * @return an object been the result of the task, can be null
 	 */
-	Object updateContextWhenDone(ProcessContext context, IChange<?> change);
+	Object updateContextWhenDone(ProcessContext context);
 	
 	/**
 	 * reset the values in the context corresponding to this action, that is now considered as undone
@@ -48,16 +50,25 @@ public interface IActionProcessor {
 	 * @param change
 	 * @return the reason why it isn't done
 	 */
-	String updateContextWhenUndone(ProcessContext context, IChange<?> change);
+	String updateContextWhenUndone(ProcessContext context);
 	
 	/**
 	 * Verify in the environment that the Action can be considered as done
-	 * must be run as fast as possible as it is verified on every resource change
 	 * @param context
 	 * @param change
 	 * @return
 	 */
-	boolean checkIsDone(ProcessContext context,  IChange<?> change);
+	boolean validate(ProcessContext context);
+	
+	
+	
+	/**
+	 * Verify in the environment that the change is relevant for the Action
+	 * @param context
+	 * @param change
+	 * @return true if the change must be processed
+	 */
+	boolean acceptChange(ProcessContext context,  IChange<?> change);
 
 	/**
 	 * Executes the {@link ActionTask} in the given {@link ProcessContext}.

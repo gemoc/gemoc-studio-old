@@ -23,13 +23,16 @@ import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.process.AbstractProcessor;
+import org.gemoc.gemoc_language_workbench.process.AbstractResourceProcessor;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizard;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject;
@@ -39,7 +42,7 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProje
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewEMFProjectTask extends AbstractProcessor {
+public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 
 	/**
 	 * Constructor.
@@ -53,7 +56,7 @@ public class CreateNewEMFProjectTask extends AbstractProcessor {
 
 	protected String undoneReason="";
 	
-	public boolean checkIsDone(ProcessContext context, IChange<?> change) {
+	public boolean validate(ProcessContext context) {
 		
 		// filter as much as possible to return ASAP
 		// no necessary because the current check is fast
@@ -82,7 +85,7 @@ public class CreateNewEMFProjectTask extends AbstractProcessor {
 	}
 
 
-	public Object updateContextWhenDone(ProcessContext context, IChange<?> change) {
+	public Object updateContextWhenDone(ProcessContext context) {
 		// TODO Auto-generated method stub
 		// return the emf project URI
 		// setDone(void)
@@ -117,8 +120,59 @@ public class CreateNewEMFProjectTask extends AbstractProcessor {
 		// nothing to do here
 	}
 
-	public String updateContextWhenUndone(ProcessContext context, IChange<?> change) {
+	public String updateContextWhenUndone(ProcessContext context) {
 		return undoneReason;
+	}
+
+
+	@Override
+	public boolean acceptChangeForRemovedResource(ProcessContext context, IResource resource) {
+		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
+		// if the changed resource is an IProject referenced by the xdsml
+		if(resource instanceof IProject){
+			DomainModelProject dmp = gContext.getXdsmlConfigModel().getLanguageDefinition().getDomainModelProject();
+			if(dmp != null && dmp instanceof EMFEcoreProject){
+				EMFEcoreProject eep = (EMFEcoreProject)dmp;
+				String projectName = eep.getProjectName();
+				return resource.getName().equals(projectName);
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean acceptChangeForAddedResource(ProcessContext context, IResource resource) {
+		// if xdsml of the process has changed
+		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
+		final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
+		if(uri.equals(gContext.getXdsmlConfigURI())){
+			return true;
+		}
+		
+		// or if the changed resource is an IProject referenced by the xdsml
+		if(resource instanceof IProject){
+			DomainModelProject dmp = gContext.getXdsmlConfigModel().getLanguageDefinition().getDomainModelProject();
+			if(dmp != null && dmp instanceof EMFEcoreProject){
+				EMFEcoreProject eep = (EMFEcoreProject)dmp;
+				String projectName = eep.getProjectName();
+				return resource.getName().equals(projectName);
+			}
+		}
+		
+		return false;
+	}
+
+
+
+	@Override
+	public boolean acceptChangeForModifiedResource(ProcessContext context, IResource resource) {
+		// if xdsml of the process has changed
+		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
+		final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
+		if(uri.equals(gContext.getXdsmlConfigURI())){
+			return true;
+		}
+		return false;
 	}
 
 

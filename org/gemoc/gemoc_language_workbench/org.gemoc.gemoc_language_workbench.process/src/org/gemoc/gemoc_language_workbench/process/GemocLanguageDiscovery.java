@@ -59,7 +59,7 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 			final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
 			if (isXDSMLFile && (change instanceof ResourceAdded) && getEquivalentRunner(uri) == null) {
 				
-				createProcessRunner(uri, (IFile)resource, change);
+				createProcessRunner(uri, (IFile)resource);
 				
 				
 				//updateProcessRunner(uri);
@@ -70,7 +70,7 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 				deleteProcessRunner(uri);
 				final IResource dest = ((ResourceMoved)change).getDestination();
 				final URI destUri = URI.createPlatformResourceURI(dest.getFullPath().toString(), true);
-				createProcessRunner(destUri, (IFile)resource, change);
+				createProcessRunner(destUri, (IFile)resource);
 
 			} else if (isXDSMLFile && change instanceof ResourceRemoved) {
 				deleteProcessRunner(uri);
@@ -93,18 +93,16 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 	}
 	
 	
-	private GemocLanguageProcessRunner createProcessRunner(final URI uri, IFile xdsmlFile, IChange<?> change) {
+	private GemocLanguageProcessRunner createProcessRunner(final URI uri, IFile xdsmlFile) {
 		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(uri, xdsmlFile);
-		//runningProcessMap.put(uri, procRunner);
-
+		
 		ProcessUtils.registerProcessRunner(procRunner);
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
 		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).addProcessor(procRunner, true);
 		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(procRunner, true);
 		
-		// run the first task with this change
-		procRunner.process(change);
+		
 		return procRunner;
 	}
 

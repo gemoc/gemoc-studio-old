@@ -142,16 +142,16 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 	 */
 	public void process(IChange<?> change) {
 		for (IActionProcessor actionProcessor : actionProcessors.values()) {
-			if(ProcessUtils.evaluatePrecondition(getContext(), actionProcessor.getActionTask())){
-				boolean b = actionProcessor.checkIsDone(getContext(), change);
+			if(ProcessUtils.evaluatePrecondition(getContext(), actionProcessor.getActionTask()) && actionProcessor.acceptChange(context, change)){
+				boolean b = actionProcessor.validate(getContext());
 				if (b){
-					Object result = actionProcessor.updateContextWhenDone(getContext(), change);
+					Object result = actionProcessor.updateContextWhenDone(getContext());
 					if(result == null) result = "DummyObject";
 					context.setDone(actionProcessor.getActionTask(), result);
 				}
 				else{
 					if(context.isDone(actionProcessor.getActionTask())){
-						context.setUndone(actionProcessor.getActionTask(),actionProcessor.updateContextWhenUndone(getContext(), change));
+						context.setUndone(actionProcessor.getActionTask(),actionProcessor.updateContextWhenUndone(getContext()));
 					}
 					//else{ was already undone}
 				}

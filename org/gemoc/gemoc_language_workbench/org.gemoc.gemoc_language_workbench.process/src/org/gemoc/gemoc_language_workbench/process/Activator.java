@@ -98,7 +98,9 @@ public class Activator extends Plugin {
 
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		final IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
-		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).removeProcessor(processDiscovery);
+		if(activeWorkbenchWindow != null){
+			WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).removeProcessor(processDiscovery);
+		}
 		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).removeProcessor(processDiscovery);
 		
 		super.stop(context);
