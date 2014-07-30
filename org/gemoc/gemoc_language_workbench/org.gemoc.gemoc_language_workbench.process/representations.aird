@@ -2407,7 +2407,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/fr.obeo.dsl.process.design/description/process.odesign#//@ownedViewpoints[name='Process']/@ownedRepresentations[name='ComposedTask']/@defaultLayer/@containerMappings[name='ComposedTask']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_xurPVM7VEeOZatdxWn1FIg" name="Create a new Gemoc language project" tooltipText="" outgoingEdges="_xurPZs7VEeOZatdxWn1FIg" incomingEdges="_xur2U87VEeOZatdxWn1FIg">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_xurPVM7VEeOZatdxWn1FIg" name="Create a new Gemoc language project" tooltipText="This will create a new Gemoc Language Project (with an xdsml file)" outgoingEdges="_xurPZs7VEeOZatdxWn1FIg" incomingEdges="_xur2U87VEeOZatdxWn1FIg">
         <target xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.0"/>
         <semanticElements xmi:type="process:ActionTask" href="process/gemoc_language.process#//@task/@tasks.0"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_xurPVc7VEeOZatdxWn1FIg">

@@ -17,8 +17,10 @@
  *******************************************************************************/
 package fr.obeo.dsl.process.ui.view;
 
+import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ComposedTask;
 import fr.obeo.dsl.process.IProcessContextProvider;
+import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
@@ -33,6 +35,10 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TreePath;
+import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -44,7 +50,9 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.part.ViewPart;
@@ -69,7 +77,8 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	/**
 	 * The current {@link ProcessContext}.
 	 */
-	private ProcessContext processContext;
+
+	private IProcessRunner processRunner;
 
 	private TreeViewer previousTasksTreeViewer;
 
@@ -111,10 +120,25 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 				| SWT.FLAT, new PatternFilter(), true);
 		tree.getViewer().setContentProvider(getContentProvider());
 		tree.getViewer().setLabelProvider(getLabelProvider());
-		if (processContext != null) {
-			tree.getViewer().setInput(processContext);
+		if (processRunner != null) {
+			tree.getViewer().setInput(processRunner.getContext());
 		}
 		contextViewer = tree.getViewer();
+		contextViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (event.getSelection() instanceof TreeSelection) {
+					TreeSelection selection = (TreeSelection)event.getSelection();
+					if (selection.getPaths().length > 0)
+						if (selection.getPaths()[0].getLastSegment() instanceof Task) {
+							Task task = (Task)selection.getPaths()[0].getLastSegment();
+							setCurrentTask(task);
+						}
+				}
+				// fireEngineSelectionChanged();
+
+			}
+		});
 
 		final ViewerFilter taskStateFilter = new ViewerFilter() {
 
@@ -169,6 +193,23 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 		nameComposite.setLayout(new RowLayout());
 		nameLabel = new Label(nameComposite, SWT.NONE);
 		doUndoButton = new Button(nameComposite, SWT.NONE);
+		doUndoButton.setText("DO/UNDO");
+		doUndoButton.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+					case SWT.Selection:
+						ActionTask actionTask = getSelectedActionTask();
+						if (!ProcessUtils.isDone(getProcessContext(), actionTask)) {
+							processRunner.doAction(actionTask);
+						} else {
+							processRunner.undoAction(actionTask);
+						}
+						// getProcessContext().getSelectedTask();
+						System.out.println("Button pressed");
+						break;
+				}
+			}
+		});
 
 		descriptionLabel = new Label(detailComposite, SWT.NONE);
 
@@ -187,7 +228,7 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	protected void setCurrentTask(Task task) {
 		if (task != null) {
 			final boolean isComposedTask = task instanceof ComposedTask;
-			nameLabel.setText(task.getName());
+			// nameLabel.setText(task.getName());
 			doUndoButton.setVisible(!isComposedTask
 					&& ProcessUtils.evaluatePrecondition(getProcessContext(), task));
 			// TODO add a listener on the context to change the label of the button and visibility
@@ -196,7 +237,8 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			} else {
 				doUndoButton.setText("Undo");
 			}
-			descriptionLabel.setText(task.getDescription());
+			String description = task.getDescription() == null ? "" : task.getDescription();
+			descriptionLabel.setText(description);
 			childrenTasksTreeViewer.getControl().setVisible(isComposedTask);
 			detailComposite.setVisible(true);
 		} else {
@@ -214,14 +256,18 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	/**
 	 * Sets the {@link ProcessContext}.
 	 * 
-	 * @param processContext
+	 * @param processRunner
 	 *            the {@link ProcessContext}
 	 */
-	public void setProcessContext(ProcessContext processContext) {
-		this.processContext = processContext;
+	public void setProcessRunner(IProcessRunner processRunner) {
+		this.processRunner = processRunner;
 		if (contextViewer != null) {
-			contextViewer.setInput(processContext);
+			contextViewer.setInput(processRunner.getContext());
 		}
+	}
+
+	public IProcessRunner getProcessRunner() {
+		return processRunner;
 	}
 
 	/**
@@ -230,7 +276,38 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	 * @see fr.obeo.dsl.process.IProcessContextProvider#getProcessContext()
 	 */
 	public ProcessContext getProcessContext() {
-		return processContext;
+		return processRunner.getContext();
+	}
+
+	public ActionTask getSelectedActionTask() {
+		TreeSelection selection = (TreeSelection)contextViewer.getSelection();
+		if (selection.getPaths().length > 0) {
+			TreePath path = selection.getPaths()[0];
+			if (path.getLastSegment() instanceof ActionTask) {
+				return (ActionTask)path.getLastSegment();
+			}
+		}
+		return null;
+		// try {
+		// Display.getDefault().syncExec(new Runnable() {
+		// @Override
+		// public void run() {
+		// TreeSelection selection = (TreeSelection)contextViewer.getSelection();
+		// if (selection.getPaths().length > 0) {
+		// TreePath path = selection.getPaths()[0];
+		// _lastSelectedLogicalStep = null;
+		// if (path.getLastSegment() instanceof LogicalStep) {
+		// _lastSelectedLogicalStep = (LogicalStep)path.getLastSegment();
+		// } else if (path.getLastSegment() instanceof Event) {
+		// _lastSelectedLogicalStep = (LogicalStep)path.getFirstSegment();
+		// }
+		// }
+		// }
+		// });
+		// } catch (Exception e) {
+		// Activator.getDefault().error(e.getMessage(), e);
+		// }
+		// return _lastSelectedLogicalStep;
 	}
 
 	/**

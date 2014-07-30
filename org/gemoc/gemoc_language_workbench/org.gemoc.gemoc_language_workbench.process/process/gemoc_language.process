@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <process:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:process="http://www.obeo.fr/dsl/process" name="Gemoc Language">
   <task xsi:type="process:ComposedTask" name="Gemoc Language" id="Task0" description="Process driving the creation of a new Gemoc language." initialTasks="//@task/@tasks.0" finalTasks="//@task/@tasks.3 //@task/@tasks.4 //@task/@tasks.5 //@task/@tasks.6 //@task/@tasks.7 //@task/@tasks.8">
-    <tasks xsi:type="process:ActionTask" name="Create a new Gemoc language project" id="Task1" followingTasks="//@task/@tasks.1" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.CreateNewGemocLanguageProjectTask"/>
+    <tasks xsi:type="process:ActionTask" name="Create a new Gemoc language project" id="Task1" description="This will create a new Gemoc Language Project (with an xdsml file)" followingTasks="//@task/@tasks.1" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.CreateNewGemocLanguageProjectTask"/>
     <tasks xsi:type="process:ComposedTask" name="Create a new domain model project" id="Task2" precedingTasks="//@task/@tasks.0" followingTasks="//@task/@tasks.2" instanceClassName="" initialTasks="//@task/@tasks.1/@tasks.0 //@task/@tasks.1/@tasks.1" finalTasks="//@task/@tasks.1/@tasks.1 //@task/@tasks.1/@tasks.0">
       <tasks xsi:type="process:ActionTask" name="Create a new EMF project" id="Task2.a" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.CreateNewEMFProjectTask"/>
       <tasks xsi:type="process:ActionTask" name="Select an existing EMF project" id="Task2.b" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.SelectEMFProjectTask">

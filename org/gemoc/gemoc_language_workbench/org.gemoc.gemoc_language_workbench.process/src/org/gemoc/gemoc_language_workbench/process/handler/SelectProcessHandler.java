@@ -58,4 +58,13 @@ public class SelectProcessHandler extends AbstractSelectProcessHandler {
 		}
 	}
 
+	@Override
+	protected IProcessRunner getCurrentProcessRunner(ExecutionEvent event) {
+		final IWorkbenchPart part = HandlerUtil.getActivePart(event);
+		if (part instanceof ProcessView) {
+			return ((ProcessView)part).getProcessRunner();
+		}
+		return null;
+	}
+
 }
