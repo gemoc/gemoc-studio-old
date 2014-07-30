@@ -111,42 +111,7 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 
 
 	
-	protected void addEMFProjectToConf(GemocLanguageProcessContext gContext, String projectName){
-		IFile configFile = gContext.getXdsmlIFile(); 
-		if(configFile.exists()){
-			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		    Map<String, Object> m = reg.getExtensionToFactoryMap();
-		    m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
-
-		    // Obtain a new resource set
-		    ResourceSet resSet = new ResourceSetImpl();
-
-		    // get the resource
-		    Resource resource = resSet.getResource(URI.createURI(configFile.getLocationURI().toString()),true);
-		    
-		    
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
-		    // consider only one language :-/
-		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
-		    
-		    // create missing data
-		    EMFEcoreProject emfEcoreProject = confFactoryImpl.eINSTANCE.createEMFEcoreProject();
-		    emfEcoreProject.setProjectName(projectName);
-		    langage.setDomainModelProject(emfEcoreProject);
-		    			
-			
-			try {
-				resource.save(null);
-			} catch (IOException e) {
-				Activator.error(e.getMessage(), e);
-			}
-		}
-		try {
-			configFile.refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
-		} catch (CoreException e) {
-			Activator.error(e.getMessage(), e);
-		}
-	}
+	
 
 
 

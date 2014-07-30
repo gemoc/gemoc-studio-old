@@ -112,13 +112,10 @@ public class CreateNewGemocLanguageProjectTask extends AbstractResourceProcessor
 		int res = wizardDialog.open();
 		if(res == WizardDialog.OK){
 			// update context, set the URI 
-			for(IWizardPage  page : createNewGemocLanguageProjectWizard.getPages()){
-				if(page instanceof WizardNewProjectCreationPage){
-					WizardNewProjectCreationPage projectPage = (WizardNewProjectCreationPage)page;
-					final URI uri = URI.createPlatformResourceURI("/"+projectPage.getProjectName()+"/"+Activator.GEMOC_PROJECT_CONFIGURATION_FILE, true);
-					gContext.setXdsmlConfigURI(uri);
-				}
-			}
+			final URI uri = URI.createPlatformResourceURI("/"+createNewGemocLanguageProjectWizard.getCreatedProject().getName()+"/"+Activator.GEMOC_PROJECT_CONFIGURATION_FILE, true);
+			gContext.setName(uri.toString());
+			gContext.setXdsmlConfigURI(uri);
+			
 		}
 	}
 

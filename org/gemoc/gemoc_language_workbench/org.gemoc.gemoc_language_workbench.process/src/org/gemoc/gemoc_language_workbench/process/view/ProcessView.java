@@ -43,13 +43,13 @@ public class ProcessView extends AbstractProcessView {
 	 */
 	public ProcessView() {
 		super();
-		ArrayList<ProcessContext> result = new ArrayList<ProcessContext>();
+		ArrayList<IProcessRunner> result = new ArrayList<IProcessRunner>();
 		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners())
 		{
-			result.add(runner.getContext());
+			result.add(runner);
 		}
 		if (result.size() > 0) {
-			setProcessContext(result.get(0));
+			setProcessRunner(result.get(0));
 		}
 		
 	}

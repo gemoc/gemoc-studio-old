@@ -17,7 +17,6 @@
  *******************************************************************************/
 package fr.obeo.dsl.process;
 
-
 /**
  * A process runner is responsible for providing {@link ProcessContext} and maintaining them.
  * 
@@ -62,7 +61,7 @@ public interface IProcessRunner {
 	 * @param task
 	 *            the {@link ActionTask}
 	 */
-	void doAction(ProcessContext context, ActionTask task);
+	void doAction(ActionTask task);
 
 	/**
 	 * Undoes execution of the given {@link ActionTask} in the given {@link ProcessContext}.
@@ -72,6 +71,6 @@ public interface IProcessRunner {
 	 * @param task
 	 *            the {@link ActionTask}
 	 */
-	void undoAction(ProcessContext context, ActionTask task);
+	void undoAction(ActionTask task);
 
 }

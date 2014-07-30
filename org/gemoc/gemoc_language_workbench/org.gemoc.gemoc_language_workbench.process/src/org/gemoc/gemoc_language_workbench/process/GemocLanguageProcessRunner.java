@@ -27,6 +27,7 @@ import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,7 +115,7 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 	 * @see fr.obeo.dsl.process.IProcessRunner#doAction(fr.obeo.dsl.process.ProcessContext,
 	 *      fr.obeo.dsl.process.ActionTask)
 	 */
-	public void doAction(ProcessContext context, ActionTask task) {
+	public void doAction( ActionTask task) {
 		// TODO move this test to caller...
 		if (ProcessUtils.canDoAction(context, task)) {
 			actionProcessors.get(task).doAction(context);
@@ -128,7 +129,7 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 	 * @see fr.obeo.dsl.process.IProcessRunner#undoAction(fr.obeo.dsl.process.ProcessContext,
 	 *      fr.obeo.dsl.process.ActionTask)
 	 */
-	public void undoAction(ProcessContext context, ActionTask task) {
+	public void undoAction( ActionTask task) {
 		// TODO move this test to caller...
 		if (ProcessUtils.isDone(context, task)) {
 			actionProcessors.get(task).undoAction(context);
@@ -157,6 +158,35 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 				}
 			}
 		}
+	}
+	
+	/**
+	 * 
+	 * @return the task without predecessor that can start the process
+	 * TODO find a better way to identify the root action task that can start the wizard
+	 * TODO should we propose several actions (ie. there are several ways to start the process)
+	 */
+	public List<ActionTask> getStartNewProcessActionTasks(){
+		ArrayList<ActionTask> result = new ArrayList<ActionTask>();
+		for (IActionProcessor actionProcessor : actionProcessors.values()) {
+			ActionTask task = actionProcessor.getActionTask();
+			if(!hasPreceding(task)){
+				result.add(task);				
+			}
+		}
+		return result;
+	}
+	
+	public boolean hasPreceding(Task task){
+		if(task.getPrecedingTasks().isEmpty()){
+			if(task.getParentTask() == null){
+				return false;
+			}
+			else{
+				return hasPreceding(task.getParentTask());
+			}
+		}
+		return true;
 	}
 
 }
