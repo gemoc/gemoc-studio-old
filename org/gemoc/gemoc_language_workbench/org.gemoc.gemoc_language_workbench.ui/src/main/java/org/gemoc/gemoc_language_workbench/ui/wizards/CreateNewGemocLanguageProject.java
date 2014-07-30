@@ -26,6 +26,10 @@ public class CreateNewGemocLanguageProject extends Wizard implements INewWizard 
 	private AskLanguageNameWizardPage _askLanguageNamePage;
 	private ToggleNatureAction nature;
 	
+	private IProject createdProject = null; 
+	
+	
+
 	public CreateNewGemocLanguageProject() {
 		super();
 		this.nature = new ToggleNatureAction();
@@ -69,7 +73,7 @@ public class CreateNewGemocLanguageProject extends Wizard implements INewWizard 
 	public boolean performFinish() {
 		
 		try {
-			final IProject createdProject = _askProjectNamePage.getProjectHandle();
+			createdProject = _askProjectNamePage.getProjectHandle();
 			final String languageName = _askLanguageNamePage.getLanguageName();
 
 			IWorkspace workspace = ResourcesPlugin.getWorkspace(); 
@@ -101,5 +105,9 @@ public class CreateNewGemocLanguageProject extends Wizard implements INewWizard 
 
 	private void addGemocLanguageProjectNature(IProject project, String languageName) {
 		 this.nature.toggleNature(project, languageName);
+	}
+	
+	public IProject getCreatedProject() {
+		return createdProject;
 	}
 }
