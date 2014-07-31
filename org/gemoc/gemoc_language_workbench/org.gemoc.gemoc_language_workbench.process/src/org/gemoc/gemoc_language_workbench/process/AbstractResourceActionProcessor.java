@@ -27,7 +27,13 @@ import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
 
 import org.eclipse.core.resources.IResource;
 
-public abstract class AbstractResourceProcessor extends AbstractProcessor {
+/**
+ * 
+ * A processor that deals exclusively with eclipse {@link IResource}.
+ *
+ * @author ftanguy
+ */
+public abstract class AbstractResourceActionProcessor extends AbstractActionProcessor {
 
 	/**
 	 * Constructor.
@@ -35,29 +41,34 @@ public abstract class AbstractResourceProcessor extends AbstractProcessor {
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 */
-	public AbstractResourceProcessor(ActionTask task) {
+	public AbstractResourceActionProcessor(ActionTask task) {
 		super(task);
 	}
 	
-
-
-	public boolean acceptChange(ProcessContext context, IChange<?> change) {
-		if(change instanceof ResourceAdded){
+	public boolean acceptChange(GemocLanguageProcessContext context, IChange<?> change) 
+	{
+		if (change instanceof ResourceAdded)
+		{
 			return acceptChangeForAddedResource(context, (IResource)change.getObject());
-		} else if(change instanceof ResourceRemoved){
+		} 
+		else if (change instanceof ResourceRemoved)
+		{
 			return acceptChangeForRemovedResource(context, (IResource)change.getObject());
-		}  else if(change instanceof ResourceMoved){
-			return acceptChangeForAddedResource(context, (IResource)((ResourceMoved)change).getDestination()) || acceptChangeForRemovedResource(context, (IResource)change.getObject());			
-		}  else if(change instanceof ResourceContentChanged){
+		}  
+		else if(change instanceof ResourceMoved)
+		{
+			return acceptChangeForAddedResource(context, (IResource)((ResourceMoved)change).getDestination()) 
+					|| acceptChangeForRemovedResource(context, (IResource)change.getObject());			
+		}  
+		else if(change instanceof ResourceContentChanged)
+		{
 			return acceptChangeForModifiedResource(context, (IResource)change.getObject());
 		} 
 		return false;
 	}
-	
-	
-	abstract public boolean acceptChangeForRemovedResource(ProcessContext context,  IResource resource);
-	abstract public boolean acceptChangeForAddedResource(ProcessContext context,  IResource resource);
-	abstract public boolean acceptChangeForModifiedResource(ProcessContext context,  IResource resource);
-	
+		
+	abstract public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context,  IResource resource);
+	abstract public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context,  IResource resource);
+	abstract public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context,  IResource resource);
 
 }

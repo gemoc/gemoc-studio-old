@@ -27,23 +27,17 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.handlers.HandlerUtil;
-import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessRunner;
 
 public class StartNewProcessHandler extends AbstractHandler {
 
-	public Object execute(ExecutionEvent event) throws ExecutionException {
-
-		final Shell shell = HandlerUtil.getActiveShell(event);
-		
+	public Object execute(ExecutionEvent event) throws ExecutionException 
+	{
 		// start a new context with an empty URI, register it
-		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(null, null);
-		
+		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(null);		
 		ProcessUtils.registerProcessRunner(procRunner);
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
@@ -52,14 +46,14 @@ public class StartNewProcessHandler extends AbstractHandler {
 		
 		List<ActionTask> tasks = procRunner.getStartNewProcessActionTasks();
 			
-		if( tasks.size() == 1){
+		if (tasks.size() == 1)
+		{
 			procRunner.doAction( tasks.get(0));
 		}
-		else{
+		else
+		{
 			throw new ExecutionException("Not implemented");
 		}
-		
-		
 		return null;
 	}
 

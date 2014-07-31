@@ -17,7 +17,6 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process;
 
-import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
 
 import java.lang.reflect.InvocationTargetException;

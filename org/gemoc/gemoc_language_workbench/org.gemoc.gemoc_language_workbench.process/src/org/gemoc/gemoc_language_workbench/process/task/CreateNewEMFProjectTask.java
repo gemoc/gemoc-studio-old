@@ -18,9 +18,6 @@
 package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.IProcessRunner;
-import fr.obeo.dsl.process.ProcessContext;
-import fr.obeo.dsl.workspace.listener.change.IChange;
 
 import java.io.IOException;
 import java.util.Map;
@@ -49,20 +46,17 @@ import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
-import org.gemoc.gemoc_language_workbench.process.AbstractProcessor;
-import org.gemoc.gemoc_language_workbench.process.AbstractResourceProcessor;
+import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
-import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizard;
-import org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject;
 
 /**
  * Create a new EMF project.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
+public class CreateNewEMFProjectTask extends AbstractResourceActionProcessor {
 
 	/**
 	 * Constructor.
@@ -76,7 +70,8 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 
 	protected String undoneReason="";
 	
-	public boolean validate(ProcessContext context) {
+	public boolean validate(GemocLanguageProcessContext context) 
+	{
 		
 		// filter as much as possible to return ASAP
 		// no necessary because the current check is fast
@@ -84,8 +79,7 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 		
 		// it exists an EMF project that is referenced by the xdsml
 		// else setUndone 
-		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
-		DomainModelProject dmp = gContext.getXdsmlConfigModel().getLanguageDefinition().getDomainModelProject();
+		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
 		if(dmp != null && dmp instanceof EMFEcoreProject){
 			EMFEcoreProject eep = (EMFEcoreProject)dmp;
 			String projectName = eep.getProjectName();
@@ -105,13 +99,12 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 	}
 
 
-	public Object updateContextWhenDone(ProcessContext context) {
+	public Object updateContextWhenDone(GemocLanguageProcessContext context) {
 		// TODO Auto-generated method stub
 		// return the emf project URI
 		// setDone(void)
 		// or setUndone(void)
-		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
-		DomainModelProject dmp = gContext.getXdsmlConfigModel().getLanguageDefinition().getDomainModelProject();
+		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
 		
 		return dmp;
 	}
@@ -121,7 +114,7 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void doAction(ProcessContext context) {
+	public void doAction(GemocLanguageProcessContext context) {
 		// open Ecore creation wizard
 		IWizardDescriptor descriptor = WizardFinder.findNewWizardDescriptor("org.eclipse.ecoretools.emf.design.wizardID");
 		
@@ -162,7 +155,7 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 		}
 	}
 	protected void addEMFProjectToConf(GemocLanguageProcessContext gContext, String projectName){
-		IFile configFile = gContext.getXdsmlIFile(); 
+		IFile configFile = gContext.getXdsmlFile(); 
 		if(configFile.exists()){
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		    Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -204,21 +197,20 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void undoAction(ProcessContext context) {
+	public void undoAction(GemocLanguageProcessContext context) {
 		// nothing to do here
 	}
 
-	public String updateContextWhenUndone(ProcessContext context) {
+	public String updateContextWhenUndone(GemocLanguageProcessContext context) {
 		return undoneReason;
 	}
 
 
 	@Override
-	public boolean acceptChangeForRemovedResource(ProcessContext context, IResource resource) {
-		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
+	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if the changed resource is an IProject referenced by the xdsml
 		if(resource instanceof IProject){
-			DomainModelProject dmp = gContext.getXdsmlConfigModel().getLanguageDefinition().getDomainModelProject();
+			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
 			if(dmp != null && dmp instanceof EMFEcoreProject){
 				EMFEcoreProject eep = (EMFEcoreProject)dmp;
 				String projectName = eep.getProjectName();
@@ -229,17 +221,16 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 	}
 
 	@Override
-	public boolean acceptChangeForAddedResource(ProcessContext context, IResource resource) {
+	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if xdsml of the process has changed
-		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
 		final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
-		if(uri.equals(gContext.getXdsmlConfigURI())){
+		if(uri.equals(context.getXdsmlURI())){
 			return true;
 		}
 		
 		// or if the changed resource is an IProject referenced by the xdsml
 		if(resource instanceof IProject){
-			DomainModelProject dmp = gContext.getXdsmlConfigModel().getLanguageDefinition().getDomainModelProject();
+			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
 			if(dmp != null && dmp instanceof EMFEcoreProject){
 				EMFEcoreProject eep = (EMFEcoreProject)dmp;
 				String projectName = eep.getProjectName();
@@ -253,11 +244,10 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 
 
 	@Override
-	public boolean acceptChangeForModifiedResource(ProcessContext context, IResource resource) {
+	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if xdsml of the process has changed
-		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
 		final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
-		if(uri.equals(gContext.getXdsmlConfigURI())){
+		if(uri.equals(context.getXdsmlURI())){
 			return true;
 		}
 		return false;

@@ -25,7 +25,7 @@ import fr.obeo.dsl.process.ActionTask;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public abstract class AbstractProcessor implements IActionProcessor {
+public abstract class AbstractActionProcessor implements IActionProcessor<GemocLanguageProcessContext> {
 
 	/**
 	 * The corresponding {@link ActionTask}.
@@ -38,7 +38,7 @@ public abstract class AbstractProcessor implements IActionProcessor {
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 */
-	public AbstractProcessor(ActionTask task) {
+	public AbstractActionProcessor(ActionTask task) {
 		this.task = task;
 	}
 

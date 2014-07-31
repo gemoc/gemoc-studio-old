@@ -65,7 +65,7 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 	/**
 	 * Constructor.
 	 */
-	public GemocLanguageProcessRunner(URI xdsmlUri, IFile xdsmlFile) {
+	public GemocLanguageProcessRunner(URI xdsmlUri) {
 		this.xdsmlUri = xdsmlUri;
 		Resource resource = new XMIResourceImpl();
 		try {
@@ -76,7 +76,7 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 			e.printStackTrace();
 		}
 		process = (Process)resource.getContents().get(0);
-		context.initialize(process, xdsmlUri, xdsmlFile);
+		context.initialize(process, xdsmlUri);
 
 		actionProcessors = new GemocLanguageProcessJavaTaskFactory().createJavaTaskForProcess(process);
 	}
