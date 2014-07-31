@@ -124,14 +124,20 @@ public class EditEMFDomainConceptsTask extends AbstractResourceProcessor {
 			if (genModelPath == null || genModelPath.length() == 0) {
 				undoneReason = "referenced genmodel not valid";
 			}
-			final ResourceSet resourceSet = new ResourceSetImpl();
-			final Resource r = resourceSet.getResource(URI.createPlatformResourceURI("/" + genModelPath, true),
-					true);
-			if (r.getContents().size() > 0 && r.getContents().get(0) instanceof GenModel
-					&& hasClassifier((GenModel)r.getContents().get(0))) {
-				return true;
-			} else {
-				undoneReason = "No classifier defined in Domain model.";
+			else{
+				final ResourceSet resourceSet = new ResourceSetImpl();
+				try{
+					final Resource r = resourceSet.getResource(URI.createPlatformResourceURI("/" + genModelPath, true),
+							true);
+					if (r.getContents().size() > 0 && r.getContents().get(0) instanceof GenModel
+							&& hasClassifier((GenModel)r.getContents().get(0))) {
+						return true;
+					} else {
+						undoneReason = "No classifier defined in Domain model.";
+					}
+				}catch(Exception e){
+					undoneReason = "problem getting genmodel content (check the uri in the xdsml ?)";
+				}
 			}
 			return false;
 		}
@@ -155,6 +161,7 @@ public class EditEMFDomainConceptsTask extends AbstractResourceProcessor {
 			final EPackage ePkg = genPkg.getEcorePackage();
 			if (ePkg != null) {
 				if (!ePkg.getEClassifiers().isEmpty()) {
+					lastEClassName = ePkg.getEClassifiers().get(0).getName();
 					res = true;
 					break;
 				}

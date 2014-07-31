@@ -78,18 +78,36 @@ public class CreateEditorProjectWizardPage  extends WizardPage {
 	    createODProject.addListener (SWT.Selection, new Listener () {
 			public void handleEvent (Event event) {
 				// update context and potentially add new pages ?
-				context.actionToExecute = CreateEditorProjectAction.CREATE_NEW_OD_PROJECT;
+				context.actionToExecute = CreateEditorProjectAction.CREATE_NEW_SIRIUS_PROJECT;
 			}
 		});
-	    Button selectExistingEMFProject = new Button(actionSelection, SWT.RADIO);
-	    selectExistingEMFProject.setText("Select existing editor project");  
-	    selectExistingEMFProject.addListener (SWT.Selection, new Listener () {
+	    Button selectExistingEMFTreeProject = new Button(actionSelection, SWT.RADIO);
+	    selectExistingEMFTreeProject.setText("Select existing tree editor project");  
+	    selectExistingEMFTreeProject.addListener (SWT.Selection, new Listener () {
 			public void handleEvent (Event event) {
 				// update context and potentially add new pages ?
-				context.actionToExecute = CreateEditorProjectAction.SELECT_EXISTING_PROJECT;
+				context.actionToExecute = CreateEditorProjectAction.SELECT_EXISTING_EMFTREE_PROJECT;
 			}
 		}); 
 		
+	    Button selectExistingXTextProject = new Button(actionSelection, SWT.RADIO);
+	    selectExistingXTextProject.setText("Select existing Xtext editor project");  
+	    selectExistingXTextProject.addListener (SWT.Selection, new Listener () {
+			public void handleEvent (Event event) {
+				// update context and potentially add new pages ?
+				context.actionToExecute = CreateEditorProjectAction.SELECT_EXISTING_XTEXT_PROJECT;
+			}
+		});
+	    
+	    Button selectExistingSiriusProject = new Button(actionSelection, SWT.RADIO);
+	    selectExistingSiriusProject.setText("Select existing Sirius Viewpoint Specification project");  
+	    selectExistingSiriusProject.addListener (SWT.Selection, new Listener () {
+			public void handleEvent (Event event) {
+				// update context and potentially add new pages ?
+				context.actionToExecute = CreateEditorProjectAction.SELECT_EXISTING_OD_PROJECT;
+			}
+		});
+	    
 		// Required to avoid an error in the system
 		setControl(container);
 		setPageComplete(true);
