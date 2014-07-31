@@ -57,6 +57,8 @@ public class ScenarioFactoryImpl extends EFactoryImpl implements ScenarioFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ScenarioPackage.SCENARIO: return createScenario();
+			case ScenarioPackage.REFERENCE: return createReference();
+			case ScenarioPackage.FRAGMENT: return createFragment();
 			case ScenarioPackage.EXECUTION_STEP: return createExecutionStep();
 			case ScenarioPackage.EVENT_STATE: return createEventState();
 			default:
@@ -72,6 +74,26 @@ public class ScenarioFactoryImpl extends EFactoryImpl implements ScenarioFactory
 	public Scenario createScenario() {
 		ScenarioImpl scenario = new ScenarioImpl();
 		return scenario;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference createReference() {
+		ReferenceImpl reference = new ReferenceImpl();
+		return reference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Fragment createFragment() {
+		FragmentImpl fragment = new FragmentImpl();
+		return fragment;
 	}
 
 	/**

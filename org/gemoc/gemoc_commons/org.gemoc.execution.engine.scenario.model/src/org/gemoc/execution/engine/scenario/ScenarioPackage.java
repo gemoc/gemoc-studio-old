@@ -67,13 +67,13 @@ public interface ScenarioPackage extends EPackage {
 	int SCENARIO = 0;
 
 	/**
-	 * The feature id for the '<em><b>Step List</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Ref List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__STEP_LIST = 0;
+	int SCENARIO__REF_LIST = 0;
 
 	/**
 	 * The number of structural features of the '<em>Scenario</em>' class.
@@ -94,6 +94,89 @@ public interface ScenarioPackage extends EPackage {
 	int SCENARIO_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.impl.ReferenceImpl <em>Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.scenario.impl.ReferenceImpl
+	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getReference()
+	 * @generated
+	 */
+	int REFERENCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Fragment</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE__FRAGMENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Start Step</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE__START_STEP = 1;
+
+	/**
+	 * The number of structural features of the '<em>Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.impl.FragmentImpl <em>Fragment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.scenario.impl.FragmentImpl
+	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getFragment()
+	 * @generated
+	 */
+	int FRAGMENT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Step List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FRAGMENT__STEP_LIST = 0;
+
+	/**
+	 * The number of structural features of the '<em>Fragment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FRAGMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Fragment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FRAGMENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.impl.ExecutionStepImpl <em>Execution Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,7 +184,7 @@ public interface ScenarioPackage extends EPackage {
 	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getExecutionStep()
 	 * @generated
 	 */
-	int EXECUTION_STEP = 1;
+	int EXECUTION_STEP = 3;
 
 	/**
 	 * The feature id for the '<em><b>Event List</b></em>' containment reference list.
@@ -113,22 +196,13 @@ public interface ScenarioPackage extends EPackage {
 	int EXECUTION_STEP__EVENT_LIST = 0;
 
 	/**
-	 * The feature id for the '<em><b>Step</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_STEP__STEP = 1;
-
-	/**
 	 * The number of structural features of the '<em>Execution Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_STEP_FEATURE_COUNT = 2;
+	int EXECUTION_STEP_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Execution Step</em>' class.
@@ -147,16 +221,16 @@ public interface ScenarioPackage extends EPackage {
 	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getEventState()
 	 * @generated
 	 */
-	int EVENT_STATE = 2;
+	int EVENT_STATE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Is Forced</b></em>' attribute.
+	 * The feature id for the '<em><b>Tick</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_STATE__IS_FORCED = 0;
+	int EVENT_STATE__TICK = 0;
 
 	/**
 	 * The feature id for the '<em><b>Clock</b></em>' reference.
@@ -197,15 +271,68 @@ public interface ScenarioPackage extends EPackage {
 	EClass getScenario();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.scenario.Scenario#getStepList <em>Step List</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.scenario.Scenario#getRefList <em>Ref List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Step List</em>'.
-	 * @see org.gemoc.execution.engine.scenario.Scenario#getStepList()
+	 * @return the meta object for the containment reference list '<em>Ref List</em>'.
+	 * @see org.gemoc.execution.engine.scenario.Scenario#getRefList()
 	 * @see #getScenario()
 	 * @generated
 	 */
-	EReference getScenario_StepList();
+	EReference getScenario_RefList();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.Reference <em>Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reference</em>'.
+	 * @see org.gemoc.execution.engine.scenario.Reference
+	 * @generated
+	 */
+	EClass getReference();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.gemoc.execution.engine.scenario.Reference#getFragment <em>Fragment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Fragment</em>'.
+	 * @see org.gemoc.execution.engine.scenario.Reference#getFragment()
+	 * @see #getReference()
+	 * @generated
+	 */
+	EReference getReference_Fragment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.scenario.Reference#getStartStep <em>Start Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Step</em>'.
+	 * @see org.gemoc.execution.engine.scenario.Reference#getStartStep()
+	 * @see #getReference()
+	 * @generated
+	 */
+	EAttribute getReference_StartStep();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.Fragment <em>Fragment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Fragment</em>'.
+	 * @see org.gemoc.execution.engine.scenario.Fragment
+	 * @generated
+	 */
+	EClass getFragment();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.scenario.Fragment#getStepList <em>Step List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Step List</em>'.
+	 * @see org.gemoc.execution.engine.scenario.Fragment#getStepList()
+	 * @see #getFragment()
+	 * @generated
+	 */
+	EReference getFragment_StepList();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.ExecutionStep <em>Execution Step</em>}'.
@@ -229,17 +356,6 @@ public interface ScenarioPackage extends EPackage {
 	EReference getExecutionStep_EventList();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.scenario.ExecutionStep#getStep <em>Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Step</em>'.
-	 * @see org.gemoc.execution.engine.scenario.ExecutionStep#getStep()
-	 * @see #getExecutionStep()
-	 * @generated
-	 */
-	EAttribute getExecutionStep_Step();
-
-	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.EventState <em>Event State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -250,15 +366,15 @@ public interface ScenarioPackage extends EPackage {
 	EClass getEventState();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.scenario.EventState#isIsForced <em>Is Forced</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.scenario.EventState#isTick <em>Tick</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Forced</em>'.
-	 * @see org.gemoc.execution.engine.scenario.EventState#isIsForced()
+	 * @return the meta object for the attribute '<em>Tick</em>'.
+	 * @see org.gemoc.execution.engine.scenario.EventState#isTick()
 	 * @see #getEventState()
 	 * @generated
 	 */
-	EAttribute getEventState_IsForced();
+	EAttribute getEventState_Tick();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.scenario.EventState#getClock <em>Clock</em>}'.
@@ -305,12 +421,56 @@ public interface ScenarioPackage extends EPackage {
 		EClass SCENARIO = eINSTANCE.getScenario();
 
 		/**
+		 * The meta object literal for the '<em><b>Ref List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCENARIO__REF_LIST = eINSTANCE.getScenario_RefList();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.ReferenceImpl <em>Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.scenario.impl.ReferenceImpl
+		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getReference()
+		 * @generated
+		 */
+		EClass REFERENCE = eINSTANCE.getReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Fragment</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REFERENCE__FRAGMENT = eINSTANCE.getReference_Fragment();
+
+		/**
+		 * The meta object literal for the '<em><b>Start Step</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE__START_STEP = eINSTANCE.getReference_StartStep();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.FragmentImpl <em>Fragment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.scenario.impl.FragmentImpl
+		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getFragment()
+		 * @generated
+		 */
+		EClass FRAGMENT = eINSTANCE.getFragment();
+
+		/**
 		 * The meta object literal for the '<em><b>Step List</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SCENARIO__STEP_LIST = eINSTANCE.getScenario_StepList();
+		EReference FRAGMENT__STEP_LIST = eINSTANCE.getFragment_StepList();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.ExecutionStepImpl <em>Execution Step</em>}' class.
@@ -331,14 +491,6 @@ public interface ScenarioPackage extends EPackage {
 		EReference EXECUTION_STEP__EVENT_LIST = eINSTANCE.getExecutionStep_EventList();
 
 		/**
-		 * The meta object literal for the '<em><b>Step</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EXECUTION_STEP__STEP = eINSTANCE.getExecutionStep_Step();
-
-		/**
 		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl <em>Event State</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -349,12 +501,12 @@ public interface ScenarioPackage extends EPackage {
 		EClass EVENT_STATE = eINSTANCE.getEventState();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Forced</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Tick</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EVENT_STATE__IS_FORCED = eINSTANCE.getEventState_IsForced();
+		EAttribute EVENT_STATE__TICK = eINSTANCE.getEventState_Tick();
 
 		/**
 		 * The meta object literal for the '<em><b>Clock</b></em>' reference feature.

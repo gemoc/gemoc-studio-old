@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.execution.engine.scenario.EventState#isIsForced <em>Is Forced</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.scenario.EventState#isTick <em>Tick</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.scenario.EventState#getClock <em>Clock</em>}</li>
  * </ul>
  * </p>
@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface EventState extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Is Forced</b></em>' attribute.
+	 * Returns the value of the '<em><b>Tick</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Is Forced</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Tick</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Forced</em>' attribute.
-	 * @see #setIsForced(boolean)
-	 * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getEventState_IsForced()
+	 * @return the value of the '<em>Tick</em>' attribute.
+	 * @see #setTick(boolean)
+	 * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getEventState_Tick()
 	 * @model
 	 * @generated
 	 */
-	boolean isIsForced();
+	boolean isTick();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.execution.engine.scenario.EventState#isIsForced <em>Is Forced</em>}' attribute.
+	 * Sets the value of the '{@link org.gemoc.execution.engine.scenario.EventState#isTick <em>Tick</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Forced</em>' attribute.
-	 * @see #isIsForced()
+	 * @param value the new value of the '<em>Tick</em>' attribute.
+	 * @see #isTick()
 	 * @generated
 	 */
-	void setIsForced(boolean value);
+	void setTick(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Clock</b></em>' reference.

@@ -5,29 +5,36 @@ package org.gemoc.execution.engine.scenario.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.gemoc.execution.engine.scenario.ExecutionStep;
+
+import org.gemoc.execution.engine.scenario.Reference;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
 import org.gemoc.execution.engine.scenario.ScenarioPackage;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.execution.engine.scenario.ExecutionStep} object.
+ * This is the item provider adapter for a {@link org.gemoc.execution.engine.scenario.Reference} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExecutionStepItemProvider 
+public class ReferenceItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -41,7 +48,7 @@ public class ExecutionStepItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionStepItemProvider(AdapterFactory adapterFactory) {
+	public ReferenceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,8 +63,31 @@ public class ExecutionStepItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addStartStepPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Start Step feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStartStepPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Reference_startStep_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Reference_startStep_feature", "_UI_Reference_type"),
+				 ScenarioPackage.Literals.REFERENCE__START_STEP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -72,7 +102,7 @@ public class ExecutionStepItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ScenarioPackage.Literals.EXECUTION_STEP__EVENT_LIST);
+			childrenFeatures.add(ScenarioPackage.Literals.REFERENCE__FRAGMENT);
 		}
 		return childrenFeatures;
 	}
@@ -91,14 +121,14 @@ public class ExecutionStepItemProvider
 	}
 
 	/**
-	 * This returns ExecutionStep.gif.
+	 * This returns Reference.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExecutionStep"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Reference"));
 	}
 
 	/**
@@ -109,7 +139,8 @@ public class ExecutionStepItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ExecutionStep_type");
+		Reference reference = (Reference)object;
+		return getString("_UI_Reference_type") + " " + reference.getStartStep();
 	}
 	
 
@@ -124,8 +155,11 @@ public class ExecutionStepItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ExecutionStep.class)) {
-			case ScenarioPackage.EXECUTION_STEP__EVENT_LIST:
+		switch (notification.getFeatureID(Reference.class)) {
+			case ScenarioPackage.REFERENCE__START_STEP:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case ScenarioPackage.REFERENCE__FRAGMENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -145,8 +179,8 @@ public class ExecutionStepItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ScenarioPackage.Literals.EXECUTION_STEP__EVENT_LIST,
-				 ScenarioFactory.eINSTANCE.createEventState()));
+				(ScenarioPackage.Literals.REFERENCE__FRAGMENT,
+				 ScenarioFactory.eINSTANCE.createFragment()));
 	}
 
 	/**

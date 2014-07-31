@@ -22,7 +22,7 @@ import org.gemoc.execution.engine.scenario.ScenarioPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl#isIsForced <em>Is Forced</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl#isTick <em>Tick</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl#getClock <em>Clock</em>}</li>
  * </ul>
  * </p>
@@ -31,24 +31,24 @@ import org.gemoc.execution.engine.scenario.ScenarioPackage;
  */
 public class EventStateImpl extends MinimalEObjectImpl.Container implements EventState {
 	/**
-	 * The default value of the '{@link #isIsForced() <em>Is Forced</em>}' attribute.
+	 * The default value of the '{@link #isTick() <em>Tick</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsForced()
+	 * @see #isTick()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_FORCED_EDEFAULT = false;
+	protected static final boolean TICK_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsForced() <em>Is Forced</em>}' attribute.
+	 * The cached value of the '{@link #isTick() <em>Tick</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsForced()
+	 * @see #isTick()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isForced = IS_FORCED_EDEFAULT;
+	protected boolean tick = TICK_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getClock() <em>Clock</em>}' reference.
@@ -84,8 +84,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsForced() {
-		return isForced;
+	public boolean isTick() {
+		return tick;
 	}
 
 	/**
@@ -93,11 +93,11 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsForced(boolean newIsForced) {
-		boolean oldIsForced = isForced;
-		isForced = newIsForced;
+	public void setTick(boolean newTick) {
+		boolean oldTick = tick;
+		tick = newTick;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ScenarioPackage.EVENT_STATE__IS_FORCED, oldIsForced, isForced));
+			eNotify(new ENotificationImpl(this, Notification.SET, ScenarioPackage.EVENT_STATE__TICK, oldTick, tick));
 	}
 
 	/**
@@ -146,8 +146,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ScenarioPackage.EVENT_STATE__IS_FORCED:
-				return isIsForced();
+			case ScenarioPackage.EVENT_STATE__TICK:
+				return isTick();
 			case ScenarioPackage.EVENT_STATE__CLOCK:
 				if (resolve) return getClock();
 				return basicGetClock();
@@ -163,8 +163,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ScenarioPackage.EVENT_STATE__IS_FORCED:
-				setIsForced((Boolean)newValue);
+			case ScenarioPackage.EVENT_STATE__TICK:
+				setTick((Boolean)newValue);
 				return;
 			case ScenarioPackage.EVENT_STATE__CLOCK:
 				setClock((Clock)newValue);
@@ -181,8 +181,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ScenarioPackage.EVENT_STATE__IS_FORCED:
-				setIsForced(IS_FORCED_EDEFAULT);
+			case ScenarioPackage.EVENT_STATE__TICK:
+				setTick(TICK_EDEFAULT);
 				return;
 			case ScenarioPackage.EVENT_STATE__CLOCK:
 				setClock((Clock)null);
@@ -199,8 +199,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ScenarioPackage.EVENT_STATE__IS_FORCED:
-				return isForced != IS_FORCED_EDEFAULT;
+			case ScenarioPackage.EVENT_STATE__TICK:
+				return tick != TICK_EDEFAULT;
 			case ScenarioPackage.EVENT_STATE__CLOCK:
 				return clock != null;
 		}
@@ -217,8 +217,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isForced: ");
-		result.append(isForced);
+		result.append(" (tick: ");
+		result.append(tick);
 		result.append(')');
 		return result.toString();
 	}

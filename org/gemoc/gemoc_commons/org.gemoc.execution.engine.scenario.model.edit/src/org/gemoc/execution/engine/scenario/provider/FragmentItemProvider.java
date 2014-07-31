@@ -5,10 +5,14 @@ package org.gemoc.execution.engine.scenario.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -17,17 +21,18 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.gemoc.execution.engine.scenario.ExecutionStep;
+
+import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
 import org.gemoc.execution.engine.scenario.ScenarioPackage;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.execution.engine.scenario.ExecutionStep} object.
+ * This is the item provider adapter for a {@link org.gemoc.execution.engine.scenario.Fragment} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExecutionStepItemProvider 
+public class FragmentItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -41,7 +46,7 @@ public class ExecutionStepItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionStepItemProvider(AdapterFactory adapterFactory) {
+	public FragmentItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -72,7 +77,7 @@ public class ExecutionStepItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ScenarioPackage.Literals.EXECUTION_STEP__EVENT_LIST);
+			childrenFeatures.add(ScenarioPackage.Literals.FRAGMENT__STEP_LIST);
 		}
 		return childrenFeatures;
 	}
@@ -91,14 +96,14 @@ public class ExecutionStepItemProvider
 	}
 
 	/**
-	 * This returns ExecutionStep.gif.
+	 * This returns Fragment.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExecutionStep"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Fragment"));
 	}
 
 	/**
@@ -109,7 +114,7 @@ public class ExecutionStepItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ExecutionStep_type");
+		return getString("_UI_Fragment_type");
 	}
 	
 
@@ -124,8 +129,8 @@ public class ExecutionStepItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ExecutionStep.class)) {
-			case ScenarioPackage.EXECUTION_STEP__EVENT_LIST:
+		switch (notification.getFeatureID(Fragment.class)) {
+			case ScenarioPackage.FRAGMENT__STEP_LIST:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -145,8 +150,8 @@ public class ExecutionStepItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ScenarioPackage.Literals.EXECUTION_STEP__EVENT_LIST,
-				 ScenarioFactory.eINSTANCE.createEventState()));
+				(ScenarioPackage.Literals.FRAGMENT__STEP_LIST,
+				 ScenarioFactory.eINSTANCE.createExecutionStep()));
 	}
 
 	/**

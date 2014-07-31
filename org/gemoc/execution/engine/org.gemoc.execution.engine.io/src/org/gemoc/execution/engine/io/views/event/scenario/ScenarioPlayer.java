@@ -11,6 +11,7 @@ import org.gemoc.execution.engine.io.views.event.EventManagerView;
 import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
+import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.Scenario;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -19,9 +20,9 @@ public class ScenarioPlayer extends ScenarioTool
 {
 	private EventManagerView _eventView;
 
-	public ScenarioPlayer(ScenarioManager manager, int index)
+	public ScenarioPlayer(ScenarioManager manager)
 	{
-		super(manager, index);
+		super(manager);
 		_eventView = ViewHelper.retrieveView(EventManagerView.ID);
 	}
 
@@ -37,7 +38,9 @@ public class ScenarioPlayer extends ScenarioTool
 				URI uri = URI.createURI("file:/" + path); 
 				_resource = resourceSet.getResource(uri, true); 
 				_scenario = (Scenario) _resource.getContents().get(0);
-				_eventView.setScenario(_scenario);
+				//TODO: choisir dynamiquement le fragment voulu
+				_fragment = _scenario.getRefList().get(0).getFragment();
+				_eventView.setScenario(_fragment);
 			}
 		};
 		safeModelModification(runnable);
@@ -45,10 +48,10 @@ public class ScenarioPlayer extends ScenarioTool
 
 	public void play()
 	{
-		final int progressPlayscenario = _eventView.getProgressPlayScenario();
-		if(_scenario != null && _scenario instanceof Scenario)
+		final int progressPlayscenario = _manager.getProgress();
+		if(_fragment != null && _fragment instanceof Fragment)
 		{
-			List<ExecutionStep> stepList = _scenario.getStepList();
+			List<ExecutionStep> stepList = _fragment.getStepList();
 			for(ClockWrapper cw : _manager.getWrapperCache().getClockWrapperList())
 			{
 				_manager.getWrapperCache().getClockWrapperList();
@@ -59,12 +62,12 @@ public class ScenarioPlayer extends ScenarioTool
 				{	
 					if(eventList.get(i).getClock().getName().equals(clock.getName()))
 					{
-						ClockStatus newState = eventList.get(i).isIsForced() ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
+						ClockStatus newState = eventList.get(i).isTick() ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
 						cw.setState(newState); 
 					}
 				}
 			}
-			_eventView.incProgressPlayScenario();
+			_manager.incProgress();
 			_eventView.updateView();
 		}
 		else
@@ -74,9 +77,12 @@ public class ScenarioPlayer extends ScenarioTool
 
 	}
 
+	/**
+	 * Remove the fragment and reset the progress step counter.
+	 */
 	public void stop(){
-		_eventView.resetProgressPlayScenario();
-		_scenario = null;
-		_eventView.setScenario(_scenario);
+		_manager.resetProgress();
+		_fragment = null;
+		_eventView.setScenario(_fragment);
 	}
 }

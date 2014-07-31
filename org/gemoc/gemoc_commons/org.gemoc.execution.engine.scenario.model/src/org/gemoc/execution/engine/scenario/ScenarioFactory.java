@@ -31,6 +31,24 @@ public interface ScenarioFactory extends EFactory {
 	Scenario createScenario();
 
 	/**
+	 * Returns a new object of class '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Reference</em>'.
+	 * @generated
+	 */
+	Reference createReference();
+
+	/**
+	 * Returns a new object of class '<em>Fragment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fragment</em>'.
+	 * @generated
+	 */
+	Fragment createFragment();
+
+	/**
 	 * Returns a new object of class '<em>Execution Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

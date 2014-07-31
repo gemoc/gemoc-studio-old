@@ -5,18 +5,18 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.views.event.ClockWrapper;
 import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
+import org.gemoc.execution.engine.scenario.Reference;
 
 public class ScenarioRecorder extends ScenarioTool
 {
-	public ScenarioRecorder(ScenarioManager manager, int index)
+	public ScenarioRecorder(ScenarioManager manager)
 	{
-		super(manager, index);
+		super(manager);
 	}
 
 	private void createResource() 
@@ -26,7 +26,8 @@ public class ScenarioRecorder extends ScenarioTool
 			public void run() 
 			{
 				ResourceSet rs = _manager.getWrapperCache().getSystem().eResource().getResourceSet(); 				
-				URI uri = URI.createURI("platform:/resource" + _manager.getWrapperCache().getEngine().getExecutionContext().getWorkspace().getExecutionPath().append("fragment["+_index+"].scenario").toString());
+				URI uri = URI.createURI("platform:/resource" 
+						+ _manager.getWrapperCache().getEngine().getExecutionContext().getWorkspace().getExecutionPath().append("container.scenario").toString());
 				_resource = rs.createResource(uri);
 			}
 		};
@@ -49,17 +50,32 @@ public class ScenarioRecorder extends ScenarioTool
 
 	public void startRecord()
 	{
-		createResource();
-		createScenario();
+		if(_scenario == null)
+		{	
+			createResource();
+			createScenario();
+		}
+		Runnable runnable = new Runnable() 
+		{
+			public void run() {
+				List<Reference> refList = _scenario.getRefList();
+				Reference ref = _factory.createReference();
+				ref.setStartStep((int) _manager.getWrapperCache().getEngine().getEngineStatus().getNbLogicalStepRun());
+				refList.add(ref);
+				_fragment = _factory.createFragment();
+				ref.setFragment(_fragment);
+			}
+		};
+		safeModelModification(runnable);	
 	}
 
 	public void record()
 	{
-		final ObservableBasicExecutionEngine engine = _manager.getWrapperCache().getEngine();
 		Runnable runnable = new Runnable() 
 		{
 			public void run() {
-				List<ExecutionStep> stepList =  _scenario.getStepList();
+
+				List<ExecutionStep> stepList =  _fragment.getStepList();
 				ExecutionStep newStep = _factory.createExecutionStep();
 				List<EventState> newListEvent = newStep.getEventList();
 				for(ClockWrapper cw: _manager.getWrapperCache().getClockWrapperList())
@@ -70,13 +86,11 @@ public class ScenarioRecorder extends ScenarioTool
 					{
 						EventState newState = _factory.createEventState();
 						newState.setClock(cw.getClock());
-						newState.setIsForced(isForced);
+						newState.setTick(state.getTick());
 						newListEvent.add(newState);
 					} 
 
 				}
-
-				newStep.setStep((int)engine.getEngineStatus().getNbLogicalStepRun()-1);
 				stepList.add(newStep);
 
 				save();
@@ -86,7 +100,7 @@ public class ScenarioRecorder extends ScenarioTool
 	}		
 
 
-	private void save()
+	protected void save()
 	{
 		try 
 		{

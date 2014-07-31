@@ -77,7 +77,7 @@ public class ScenarioItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ScenarioPackage.Literals.SCENARIO__STEP_LIST);
+			childrenFeatures.add(ScenarioPackage.Literals.SCENARIO__REF_LIST);
 		}
 		return childrenFeatures;
 	}
@@ -130,7 +130,7 @@ public class ScenarioItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Scenario.class)) {
-			case ScenarioPackage.SCENARIO__STEP_LIST:
+			case ScenarioPackage.SCENARIO__REF_LIST:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -150,8 +150,8 @@ public class ScenarioItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ScenarioPackage.Literals.SCENARIO__STEP_LIST,
-				 ScenarioFactory.eINSTANCE.createExecutionStep()));
+				(ScenarioPackage.Literals.SCENARIO__REF_LIST,
+				 ScenarioFactory.eINSTANCE.createReference()));
 	}
 
 	/**

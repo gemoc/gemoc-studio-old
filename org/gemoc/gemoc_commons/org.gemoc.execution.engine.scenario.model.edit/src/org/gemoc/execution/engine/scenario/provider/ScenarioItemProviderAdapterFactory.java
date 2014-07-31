@@ -95,6 +95,52 @@ public class ScenarioItemProviderAdapterFactory extends ScenarioAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.scenario.Reference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReferenceItemProvider referenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.execution.engine.scenario.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReferenceAdapter() {
+		if (referenceItemProvider == null) {
+			referenceItemProvider = new ReferenceItemProvider(this);
+		}
+
+		return referenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.scenario.Fragment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FragmentItemProvider fragmentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.execution.engine.scenario.Fragment}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFragmentAdapter() {
+		if (fragmentItemProvider == null) {
+			fragmentItemProvider = new FragmentItemProvider(this);
+		}
+
+		return fragmentItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.scenario.ExecutionStep} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -240,6 +286,8 @@ public class ScenarioItemProviderAdapterFactory extends ScenarioAdapterFactory i
 	 */
 	public void dispose() {
 		if (scenarioItemProvider != null) scenarioItemProvider.dispose();
+		if (referenceItemProvider != null) referenceItemProvider.dispose();
+		if (fragmentItemProvider != null) fragmentItemProvider.dispose();
 		if (executionStepItemProvider != null) executionStepItemProvider.dispose();
 		if (eventStateItemProvider != null) eventStateItemProvider.dispose();
 	}

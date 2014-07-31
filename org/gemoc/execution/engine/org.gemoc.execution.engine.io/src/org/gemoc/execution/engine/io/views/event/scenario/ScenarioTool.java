@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
 import org.gemoc.execution.engine.scenario.impl.ScenarioFactoryImpl;
@@ -11,16 +12,16 @@ import org.gemoc.execution.engine.scenario.impl.ScenarioFactoryImpl;
 public class ScenarioTool 
 {
 	protected Scenario _scenario;
+	protected Fragment _fragment;
 	protected ScenarioManager _manager;
 	protected Resource _resource;
 	protected ScenarioFactory _factory;
-	protected int _index;
 	
-	protected ScenarioTool(ScenarioManager manager, int index)
+	protected ScenarioTool(ScenarioManager manager)
 	{
 		_manager = manager;
-		_index = index;
 		_scenario = null;
+		_fragment = null;
 		_factory = ScenarioFactoryImpl.eINSTANCE;
 	}
 	
@@ -33,5 +34,15 @@ public class ScenarioTool
 						runnable.run();
 					}
 				});		
+	}
+	
+	public Scenario getScenario()
+	{
+		return _scenario;
+	}
+	
+	public Fragment getFragment()
+	{
+		return _fragment;
 	}
 }
