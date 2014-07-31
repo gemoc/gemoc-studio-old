@@ -6,7 +6,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Shell;
 import org.gemoc.gemoc_language_workbench.utils.Activator;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.EcoreFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 /**
  * Dialog that allow to select an IProject that can be used as an EMF project
@@ -24,10 +24,10 @@ public class SelectEMFIProjectDialog extends SelectAnyIProjectDialog {
 		boolean result = super.select(resource);
 		// must contain an ecore file
 		if(resource instanceof IProject){
-			EcoreFileFinderResourceVisitor ecoreProjectVisitor = new EcoreFileFinderResourceVisitor();
+			FileFinderVisitor ecoreProjectVisitor = new FileFinderVisitor("ecore");
 			try {
 				resource.accept(ecoreProjectVisitor);
-				result = result && ecoreProjectVisitor.ecoreFiles.size() > 0;
+				result = result && ecoreProjectVisitor.getFiles().size() > 0;
 			} catch (CoreException e) {
 				Activator.error(e.getMessage(), e);
 			}

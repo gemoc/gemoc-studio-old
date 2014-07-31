@@ -27,9 +27,15 @@ import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
 public class GemocLanguageProcessContext extends ProcessContextImpl {
 
+	// convenient data that are maintained by some of the task in order to ease the search from other tasks
 	private GemocLanguageWorkbenchConfiguration _xdsmlModel;
 	
 	private URI _xdsmlURI = null;
+	
+	
+	/** this data is indirectly retreived from the xdsml (via the reference to the genmodel that in turn reference the ecore file)*/ 
+	protected IFile ecoreIFile=null;
+
 	
 
 	public GemocLanguageProcessContext() 
@@ -78,4 +84,11 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		return file;
 	}
 	
+	public IFile getEcoreIFile() {
+		return ecoreIFile;
+	}
+
+	public void setEcoreIFile(IFile ecoreIFile) {
+		this.ecoreIFile = ecoreIFile;
+	}
 }

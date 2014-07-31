@@ -22,6 +22,7 @@ import fr.obeo.dsl.process.ActionTask;
 import java.io.IOException;
 
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
@@ -63,7 +64,7 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model
-			addEMFProjectToConf(context, ((IResource)dialog.getResult()[0]).getName());
+			addEMFProjectToConf(context, (IProject)dialog.getResult()[0]);
 		}
 	}
 

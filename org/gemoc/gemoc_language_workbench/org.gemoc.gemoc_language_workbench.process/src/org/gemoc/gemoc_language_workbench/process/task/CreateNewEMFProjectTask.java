@@ -43,13 +43,17 @@ import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.commons.eclipse.ui.WizardFinder;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
+import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.process.ResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
+import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
+import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 /**
  * Create a new EMF project.
@@ -72,10 +76,6 @@ public class CreateNewEMFProjectTask extends ResourceActionProcessor {
 	
 	public boolean validate(GemocLanguageProcessContext context) 
 	{
-		
-		// filter as much as possible to return ASAP
-		// no necessary because the current check is fast
-		
 		
 		// it exists an EMF project that is referenced by the xdsml
 		// else setUndone 
@@ -105,6 +105,13 @@ public class CreateNewEMFProjectTask extends ResourceActionProcessor {
 		// setDone(void)
 		// or setUndone(void)
 		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
+		
+		// update the cache pointing to the ecore file
+		// Discussion, the ActiveFileEcore may not be the best way to retreive the ecore ?
+		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
+		ActiveFile activeFileEcore = new ActiveFileEcore(updatedGemocLanguageProject);
+		context.setEcoreIFile(activeFileEcore.getActiveFile());
+		
 		
 		return dmp;
 	}
@@ -139,10 +146,10 @@ public class CreateNewEMFProjectTask extends ResourceActionProcessor {
 					IProject createdProject = workspaceListener.getLastCreatedProject();
 					// update the project configuration model
 					if(createdProject != null){
-						addEMFProjectToConf((GemocLanguageProcessContext)context, createdProject.getName());
+						addEMFProjectToConf((GemocLanguageProcessContext)context, createdProject);
 					}
 					else{
-						addEMFProjectToConf((GemocLanguageProcessContext)context, "");
+						addEMFProjectToConf((GemocLanguageProcessContext)context, null);
 					}
 				}
 			} catch (CoreException e) {
@@ -154,7 +161,7 @@ public class CreateNewEMFProjectTask extends ResourceActionProcessor {
 			}
 		}
 	}
-	protected void addEMFProjectToConf(GemocLanguageProcessContext gContext, String projectName){
+	protected void addEMFProjectToConf(GemocLanguageProcessContext gContext, IProject ecoreIProject){
 		IFile configFile = gContext.getXdsmlFile(); 
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 	    Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -166,10 +173,27 @@ public class CreateNewEMFProjectTask extends ResourceActionProcessor {
 	    // consider only one language :-/
 	    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
 	    
-	    // create missing data
-	    EMFEcoreProject emfEcoreProject = confFactoryImpl.eINSTANCE.createEMFEcoreProject();
-	    emfEcoreProject.setProjectName(projectName);
-	    langage.setDomainModelProject(emfEcoreProject);
+		    if(ecoreIProject != null){
+			    // create missing data
+			    EMFEcoreProject emfEcoreProject = confFactoryImpl.eINSTANCE.createEMFEcoreProject();
+			    
+			    emfEcoreProject.setProjectName(ecoreIProject.getName());
+			    langage.setDomainModelProject(emfEcoreProject);
+			    
+			    FileFinderVisitor genmodelFileFinderResourceVisitor = new FileFinderVisitor("genmodel");
+			    try {
+					ecoreIProject.accept(genmodelFileFinderResourceVisitor);
+					if(!genmodelFileFinderResourceVisitor.getFiles().isEmpty()){
+						EMFGenmodel genmodel = confFactoryImpl.eINSTANCE.createEMFGenmodel();
+						genmodel.setLocationURI(genmodelFileFinderResourceVisitor.getFiles().get(0).getLocationURI().toString());
+						emfEcoreProject.setEmfGenmodel(genmodel);
+					}
+				} catch (CoreException e) {
+				}
+		    }
+		    else{
+		    	langage.setDomainModelProject(null);
+		    }
 	    					
 		try {
 			resource.getContents().add(gemocLanguageWorkbenchConfiguration);
@@ -210,6 +234,12 @@ public class CreateNewEMFProjectTask extends ResourceActionProcessor {
 				return resource.getName().equals(projectName);
 			}
 		}
+		// if the change is about the ecoreFile
+		if(resource instanceof IFile){
+			if(context.getEcoreIFile() !=  null){
+				return resource.getFullPath().toString().equals(context.getEcoreIFile().getFullPath().toString());
+			}
+		}
 		return false;
 	}
 
@@ -230,7 +260,12 @@ public class CreateNewEMFProjectTask extends ResourceActionProcessor {
 				return resource.getName().equals(projectName);
 			}
 		}
-		
+		// if the change is about the ecoreFile
+		if(resource instanceof IFile){
+			if(context.getEcoreIFile() !=  null){
+				return resource.getFullPath().toString().equals(context.getEcoreIFile().getFullPath().toString());
+			}
+		}
 		return false;
 	}
 

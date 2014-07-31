@@ -19,7 +19,9 @@ Require-Bundle: fr.obeo.dsl.process;bundle-version="1.0.0",
  fr.obeo.dsl.process.edit;bundle-version="1.0.0",
  fr.obeo.dsl.process.ui;bundle-version="1.0.0",
  org.gemoc.commons.eclipse.ui,
- org.eclipse.emf.ecoretools.design
+ org.eclipse.emf.ecoretools.design,
+ org.eclipse.core.filesystem,
+ org.gemoc.gemoc_language_workbench.utils
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Activator: org.gemoc.gemoc_language_workbench.process.Activator
 Export-Package: org.gemoc.gemoc_language_workbench.process,
