@@ -68,14 +68,14 @@ public class ActiveFileEcore extends ActiveFile {
 		    // consider only one language :-/
 		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
 		    
-		    // create missing data
+		    // get the IProject
 		    EMFEcoreProject emfEcoreProject = (EMFEcoreProject) langage.getDomainModelProject();
 		    projectEcore = ResourcesPlugin.getWorkspace().getRoot().getProject(emfEcoreProject.getProjectName());
-			try {
+			/*try {
 				resource.save(null);
 			} catch (IOException e) {
 				Activator.error(e.getMessage(), e);
-			}
+			}*/
 		}
 		try {
 			configFile.refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
