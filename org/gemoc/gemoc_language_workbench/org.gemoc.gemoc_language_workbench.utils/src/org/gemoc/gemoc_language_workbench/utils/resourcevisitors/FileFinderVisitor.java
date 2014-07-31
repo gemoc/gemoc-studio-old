@@ -1,5 +1,8 @@
 package org.gemoc.gemoc_language_workbench.utils.resourcevisitors;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
@@ -13,10 +16,22 @@ public class FileFinderVisitor implements IResourceVisitor {
 	}
 	
 	private String _fileExtension;
-	private IFile _file;
 	
+	protected List<IFile> _files = new ArrayList<IFile>();
+	
+	/**
+	 * @return the first file found, or null if not file found
+	 */
 	public IFile getFile() {
-		return _file;
+		if(_files.isEmpty()) return null;
+		return _files.get(0);
+	}
+	/** 
+	 * 
+	 * @return a list of the files found
+	 */
+	public List<IFile> getFiles() {
+		return _files;
 	}
 
 	@Override
@@ -24,7 +39,7 @@ public class FileFinderVisitor implements IResourceVisitor {
 		boolean mustVisitChild = true;
 		if(resource instanceof IFile){
 			if(resource.getFileExtension().equals(_fileExtension)){
-				_file = ((IFile) resource);
+				_files.add((IFile) resource);
 			}
 			mustVisitChild = false;
 		}
