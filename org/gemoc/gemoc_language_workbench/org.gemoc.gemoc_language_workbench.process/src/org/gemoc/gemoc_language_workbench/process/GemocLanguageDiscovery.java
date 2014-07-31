@@ -36,6 +36,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.process.task.GemocProcessUtils;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
 public class GemocLanguageDiscovery implements IChangeProcessor {
 
@@ -45,10 +46,10 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 		{
 			final IResource resource = ((AbstractResourceChange)change).getObject();
 			final boolean isXDSMLFile = GemocProcessUtils.isXDSMLFile(resource);
-			final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
+			final URI uri = EclipseResource.getUri(resource);
 			if (isXDSMLFile 
 				&& change instanceof ResourceAdded 
-				&& getEquivalentRunner(uri) == null) 
+				&& !existProcessRunner(uri)) 
 			{				
 				createProcessRunner(uri);
 			}
@@ -56,7 +57,7 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 			{
 				deleteProcessRunner(uri);
 				final IResource dest = ((ResourceMoved)change).getDestination();
-				final URI newUri = URI.createPlatformResourceURI(dest.getFullPath().toString(), true);
+				final URI newUri = EclipseResource.getUri(dest);
 				createProcessRunner(newUri);
 			} 
 			else if (isXDSMLFile && change instanceof ResourceRemoved) 
@@ -66,7 +67,12 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 		}
 	}
 
-	private GemocLanguageProcessRunner getEquivalentRunner(URI uri)
+	private boolean existProcessRunner(URI uri)
+	{
+		return getProcessRunner(uri) != null;
+	}
+	
+	private GemocLanguageProcessRunner getProcessRunner(URI uri)
 	{
 		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners())
 		{
@@ -96,7 +102,7 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 
 	private void deleteProcessRunner(final URI uri) 
 	{
-		GemocLanguageProcessRunner runner = getEquivalentRunner(uri);
+		GemocLanguageProcessRunner runner = getProcessRunner(uri);
 		if (runner != null)
 		{
 			ProcessUtils.unregisterProcessRunner(runner);

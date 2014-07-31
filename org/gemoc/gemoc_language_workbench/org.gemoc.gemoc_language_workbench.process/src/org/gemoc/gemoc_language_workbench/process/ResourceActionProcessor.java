@@ -32,7 +32,8 @@ import org.eclipse.core.resources.IResource;
  *
  * @author ftanguy
  */
-public abstract class ResourceActionProcessor extends ActionProcessor {
+public abstract class ResourceActionProcessor extends ActionProcessor 
+{
 
 	/**
 	 * Constructor.
@@ -40,7 +41,8 @@ public abstract class ResourceActionProcessor extends ActionProcessor {
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 */
-	public ResourceActionProcessor(ActionTask task) {
+	public ResourceActionProcessor(ActionTask task) 
+	{
 		super(task);
 	}
 	

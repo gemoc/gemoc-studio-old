@@ -25,17 +25,15 @@ import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
+import fr.obeo.dsl.workspace.listener.change.workbench.PartActivated;
+import fr.obeo.dsl.workspace.listener.change.workbench.PartDeactivated;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
 
 
 /**
@@ -66,20 +64,24 @@ public class GemocLanguageProcessRunner
 	 * Constructor.
 	 */
 	public GemocLanguageProcessRunner(URI xdsmlUri) 
-	{
-		Resource resource = new XMIResourceImpl();
-		try 
-		{
-			InputStream is = GemocLanguageProcessRunner.class.getResourceAsStream("/process/gemoc_language.process");
-			resource.load(is, new HashMap<String, String>());
-		} 
-		catch (IOException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		_process = (Process)resource.getContents().get(0);
-		_processContext.initialize(_process, xdsmlUri);
+	{		
+		URI processURI = URI.createPlatformPluginURI(Activator.getDefault().getBundle().getSymbolicName() + "/process/gemoc_language.process", true);
+		_process = (Process)EMFResource.getFirstContent(processURI);
+		
+//		Resource resource = new XMIResourceImpl();
+//		try 
+//		{
+//			InputStream is = GemocLanguageProcessRunner.class.getResourceAsStream("/process/gemoc_language.process");
+//			resource.load(is, new HashMap<String, String>());
+//		} 
+//		catch (IOException e) 
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		_process = (Process)resource.getContents().get(0);
+		_processContext.setDefinition(_process);
+		_processContext.initialize(xdsmlUri);
 		_actionProcessors = new GemocLanguageProcessJavaTaskFactory().createJavaTaskForProcess(_process);
 	}
 
@@ -138,24 +140,28 @@ public class GemocLanguageProcessRunner
 	public void process(IChange<?> change) {
 		for (ActionProcessor actionProcessor : _actionProcessors.values()) 
 		{
-			ActionTask actionTask = actionProcessor.getActionTask();
-			if (ProcessUtils.evaluatePrecondition(_processContext, actionTask) 
-				&& actionProcessor.acceptChange(_processContext, change))
+			if (!(change instanceof PartDeactivated)
+				&& !(change instanceof PartActivated))
 			{
-				boolean b = actionProcessor.validate(_processContext);
-				if (b)
+				ActionTask actionTask = actionProcessor.getActionTask();
+				if (ProcessUtils.evaluatePrecondition(_processContext, actionTask) 
+					&& actionProcessor.acceptChange(_processContext, change))
 				{
-					Object result = actionProcessor.updateContextWhenDone(_processContext);
-					if (result == null) 
-						result = "DummyObject";
-					_processContext.setDone(actionTask, result);
-				}
-				else
-				{
-					if (_processContext.isDone(actionTask))
+					boolean b = actionProcessor.validate(_processContext);
+					if (b)
 					{
-						String result = actionProcessor.updateContextWhenUndone(_processContext);
-						_processContext.setUndone(actionTask, result);
+						Object result = actionProcessor.updateContextWhenDone(_processContext);
+						if (result == null) 
+							result = "DummyObject";
+						_processContext.setDone(actionTask, result);
+					}
+					else
+					{
+						if (_processContext.isDone(actionTask))
+						{
+							String result = actionProcessor.updateContextWhenUndone(_processContext);
+							_processContext.setUndone(actionTask, result);
+						}
 					}
 				}
 			}

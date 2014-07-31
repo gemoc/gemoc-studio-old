@@ -17,17 +17,13 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process;
 
-import fr.obeo.dsl.process.Process;
 import fr.obeo.dsl.process.impl.ProcessContextImpl;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
 public class GemocLanguageProcessContext extends ProcessContextImpl {
 
@@ -41,9 +37,8 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		super();
 	}
 	
-	public void initialize(Process process, URI newUri)
+	public void initialize(URI newUri)
 	{
-		setDefinition(process);
 		if (newUri !=  null)
 		{
 			setName(newUri.toPlatformString(true));
@@ -56,17 +51,10 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		if (newUri != _xdsmlURI)
 		{
 			_xdsmlURI = newUri;
-			updateXdsmlConfigModel();
+			_xdsmlModel = (GemocLanguageWorkbenchConfiguration)EMFResource.getFirstContent(_xdsmlURI);
 		}
 	}
 	
-	private void updateXdsmlConfigModel()
-	{
-		final ResourceSet resourceSet = new ResourceSetImpl();
-		final Resource r = resourceSet.getResource(_xdsmlURI, true);
-		_xdsmlModel = (GemocLanguageWorkbenchConfiguration)r.getContents().get(0);
-	}
-
 	// getter and setters
 	// ------------------
 	
@@ -85,8 +73,7 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		IFile file = null;
 		if (_xdsmlURI != null)
 		{
-			IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-			file = (IFile) workspaceRoot.findMember(_xdsmlURI.toPlatformString(true));
+			file = EclipseResource.getFile(_xdsmlURI);
 		}
 		return file;
 	}

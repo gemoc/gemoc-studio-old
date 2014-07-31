@@ -27,6 +27,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.process.ResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject;
 
@@ -80,7 +81,7 @@ public class CreateNewGemocLanguageProjectTask extends ResourceActionProcessor {
 			final URI uri = URI.createPlatformResourceURI("/"+createNewGemocLanguageProjectWizard.getCreatedProject().getName()+"/"+Activator.GEMOC_PROJECT_CONFIGURATION_FILE, true);
 			context.setName(uri.toString());
 			context.setXdsmlConfigURI(uri);
-			
+			EclipseResource.touch(uri);
 		}
 	}
 
