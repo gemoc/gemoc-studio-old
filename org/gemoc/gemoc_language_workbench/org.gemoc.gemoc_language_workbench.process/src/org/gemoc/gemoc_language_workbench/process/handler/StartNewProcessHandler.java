@@ -18,18 +18,12 @@
 package org.gemoc.gemoc_language_workbench.process.handler;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ProcessUtils;
-import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
 
 import java.util.List;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessRunner;
 
 public class StartNewProcessHandler extends AbstractHandler {
@@ -37,17 +31,13 @@ public class StartNewProcessHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException 
 	{
 		// start a new context with an empty URI, register it
-		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(null);		
-		ProcessUtils.registerProcessRunner(procRunner);
-		final IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
-		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).addProcessor(procRunner, true);
-		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(procRunner, true);
-		
+		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(null);
 		List<ActionTask> tasks = procRunner.getStartNewProcessActionTasks();
 			
 		if (tasks.size() == 1)
 		{
+//			ActionProcessor processor = new GemocLanguageProcessJavaTaskFactory().createJavaTask(tasks.get(0));
+//			processor.doAction(null);
 			procRunner.doAction( tasks.get(0));
 		}
 		else

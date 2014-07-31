@@ -69,7 +69,7 @@ public class CreateNewGemocLanguageProjectTask extends ResourceActionProcessor {
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
 	 */
 	public void doAction(GemocLanguageProcessContext context) {
-		CreateNewGemocLanguageProject createNewGemocLanguageProjectWizard = new  CreateNewGemocLanguageProject();
+		CreateNewGemocLanguageProject createNewGemocLanguageProjectWizard = new CreateNewGemocLanguageProject();
 		
 		// start the XDSML wizard
 		WizardDialog wizardDialog = new WizardDialog(

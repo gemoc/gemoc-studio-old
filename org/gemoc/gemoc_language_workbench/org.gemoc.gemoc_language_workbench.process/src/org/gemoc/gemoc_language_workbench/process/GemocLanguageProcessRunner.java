@@ -25,8 +25,6 @@ import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
-import fr.obeo.dsl.workspace.listener.change.workbench.PartActivated;
-import fr.obeo.dsl.workspace.listener.change.workbench.PartDeactivated;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -140,28 +138,24 @@ public class GemocLanguageProcessRunner
 	public void process(IChange<?> change) {
 		for (ActionProcessor actionProcessor : _actionProcessors.values()) 
 		{
-			if (!(change instanceof PartDeactivated)
-				&& !(change instanceof PartActivated))
+			ActionTask actionTask = actionProcessor.getActionTask();
+			if (ProcessUtils.evaluatePrecondition(_processContext, actionTask) 
+				&& actionProcessor.acceptChange(_processContext, change))
 			{
-				ActionTask actionTask = actionProcessor.getActionTask();
-				if (ProcessUtils.evaluatePrecondition(_processContext, actionTask) 
-					&& actionProcessor.acceptChange(_processContext, change))
+				boolean b = actionProcessor.validate(_processContext);
+				if (b)
 				{
-					boolean b = actionProcessor.validate(_processContext);
-					if (b)
+					Object result = actionProcessor.updateContextWhenDone(_processContext);
+					if (result == null) 
+						result = "DummyObject";
+					_processContext.setDone(actionTask, result);
+				}
+				else
+				{
+					if (_processContext.isDone(actionTask))
 					{
-						Object result = actionProcessor.updateContextWhenDone(_processContext);
-						if (result == null) 
-							result = "DummyObject";
-						_processContext.setDone(actionTask, result);
-					}
-					else
-					{
-						if (_processContext.isDone(actionTask))
-						{
-							String result = actionProcessor.updateContextWhenUndone(_processContext);
-							_processContext.setUndone(actionTask, result);
-						}
+						String result = actionProcessor.updateContextWhenUndone(_processContext);
+						_processContext.setUndone(actionTask, result);
 					}
 				}
 			}
@@ -202,6 +196,11 @@ public class GemocLanguageProcessRunner
 			}
 		}
 		return true;
+	}
+
+	public Process getProcess() 
+	{
+		return _process;
 	}
 
 }

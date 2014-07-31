@@ -30,11 +30,7 @@ import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
 import java.util.ArrayList;
 
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.process.task.GemocProcessUtils;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
@@ -91,13 +87,7 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 	
 	private GemocLanguageProcessRunner createProcessRunner(final URI uri) 
 	{
-		GemocLanguageProcessRunner runner = new GemocLanguageProcessRunner(uri);		
-		ProcessUtils.registerProcessRunner(runner);
-		final IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
-		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).addProcessor(runner, true);
-		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(runner, true);
-		return runner;
+		return ProcessRunnerFactory.createProcessRunner(uri);
 	}
 
 	private void deleteProcessRunner(final URI uri) 

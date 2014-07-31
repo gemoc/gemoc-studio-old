@@ -17,6 +17,8 @@
  *******************************************************************************/
 package fr.obeo.dsl.workspace.listener.internal;
 
+import fr.obeo.dsl.process.Process;
+import fr.obeo.dsl.process.impl.ProcessImpl;
 import fr.obeo.dsl.workspace.listener.IListener;
 import fr.obeo.dsl.workspace.listener.IListenerFactory;
 
@@ -70,6 +72,11 @@ public class ListenerFactory implements IListenerFactory<Object> {
 		map.put(WorkbenchPage.class, new IListenerFactory<IWorkbenchPage>() {
 			public IListener createListener(IWorkbenchPage workbenchPage) {
 				return new WorkbenchPartListener(workbenchPage);
+			}
+		});
+		map.put(ProcessImpl.class, new IListenerFactory<Process>() {
+			public IListener createListener(Process process) {
+				return new ProcessListener(process);
 			}
 		});
 	}
