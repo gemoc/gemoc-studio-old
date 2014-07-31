@@ -46,7 +46,7 @@ import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
-import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.ResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
@@ -56,7 +56,7 @@ import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListen
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewEMFProjectTask extends AbstractResourceActionProcessor {
+public class CreateNewEMFProjectTask extends ResourceActionProcessor {
 
 	/**
 	 * Constructor.

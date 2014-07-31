@@ -18,7 +18,6 @@
 package org.gemoc.gemoc_language_workbench.process;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceAdded;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceContentChanged;
@@ -33,7 +32,7 @@ import org.eclipse.core.resources.IResource;
  *
  * @author ftanguy
  */
-public abstract class AbstractResourceActionProcessor extends AbstractActionProcessor {
+public abstract class ResourceActionProcessor extends ActionProcessor {
 
 	/**
 	 * Constructor.
@@ -41,7 +40,7 @@ public abstract class AbstractResourceActionProcessor extends AbstractActionProc
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 */
-	public AbstractResourceActionProcessor(ActionTask task) {
+	public ResourceActionProcessor(ActionTask task) {
 		super(task);
 	}
 	

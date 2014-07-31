@@ -25,7 +25,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.ResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject;
@@ -35,7 +35,7 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProje
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewGemocLanguageProjectTask extends AbstractResourceActionProcessor {
+public class CreateNewGemocLanguageProjectTask extends ResourceActionProcessor {
 
 	
 	/**

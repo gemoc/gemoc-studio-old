@@ -73,8 +73,8 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 			if (runner instanceof GemocLanguageProcessRunner)
 			{
 				GemocLanguageProcessRunner gRunner = (GemocLanguageProcessRunner)runner;
-				if (gRunner.getGemocLanguageProcessContext().getXdsmlURI() != null
-					&& gRunner.getGemocLanguageProcessContext().getXdsmlURI().equals(uri))
+				if (gRunner.getCastedContext().getXdsmlURI() != null
+					&& gRunner.getCastedContext().getXdsmlURI().equals(uri))
 				{
 					return gRunner;
 				}
