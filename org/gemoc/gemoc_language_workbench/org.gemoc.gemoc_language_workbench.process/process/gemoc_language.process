@@ -1,64 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <process:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:process="http://www.obeo.fr/dsl/process" name="Gemoc Language">
-  <task xsi:type="process:ComposedTask" name="Gemoc Language" id="Task0" description="Process driving the creation of a new Gemoc language." initialTasks="//@task/@tasks.0" finalTasks="//@task/@tasks.3 //@task/@tasks.4 //@task/@tasks.5 //@task/@tasks.6 //@task/@tasks.7 //@task/@tasks.8">
-    <tasks xsi:type="process:ActionTask" name="Create a new Gemoc language project" id="Task1" description="This will create a new Gemoc Language Project (with an xdsml file)" followingTasks="//@task/@tasks.1" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.CreateNewGemocLanguageProjectTask"/>
-    <tasks xsi:type="process:ComposedTask" name="Create a new domain model project" id="Task2" precedingTasks="//@task/@tasks.0" followingTasks="//@task/@tasks.2" instanceClassName="" initialTasks="//@task/@tasks.1/@tasks.0 //@task/@tasks.1/@tasks.1" finalTasks="//@task/@tasks.1/@tasks.1 //@task/@tasks.1/@tasks.0">
-      <tasks xsi:type="process:ActionTask" name="Create a new EMF project" id="Task2.a" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.CreateNewEMFProjectTask"/>
-      <tasks xsi:type="process:ActionTask" name="Select an existing EMF project" id="Task2.b" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.SelectEMFProjectTask">
-        <precondition xsi:type="process:OneDone" tasks="//@task/@tasks.0"/>
+  <task xsi:type="process:ComposedTask" name="Gemoc Language" id="Task0" description="Process driving the creation of a new Gemoc language." initialTasks="//@task/@tasks.0" finalTasks="//@task/@tasks.2 //@task/@tasks.3 //@task/@tasks.4 //@task/@tasks.6 //@task/@tasks.5">
+    <tasks xsi:type="process:ActionTask" name="Create a new Gemoc language project" id="CreateNewGemocLanguageProjectTask" description="This will create a new Gemoc Language Project (with an xdsml file)" followingTasks="//@task/@tasks.1" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.CreateNewGemocLanguageProjectTask"/>
+    <tasks xsi:type="process:ComposedTask" name="Create Domain model" id="CreateDomainModelComposedTask" description="During this task you'll create domain model (or select an existing one).&#xD;&#xA;It will contains at least one concept (Class) and must define a root element." precedingTasks="//@task/@tasks.0" followingTasks="//@task/@tasks.2 //@task/@tasks.3 //@task/@tasks.5 //@task/@tasks.4 //@task/@tasks.6" instanceClassName="CreateDomainModelComposedTask" initialTasks="//@task/@tasks.1/@tasks.0" finalTasks="//@task/@tasks.1/@tasks.1">
+      <tasks xsi:type="process:ComposedTask" name="Create a new EMF model project" id="Task2" followingTasks="//@task/@tasks.1/@tasks.1" instanceClassName="" initialTasks="//@task/@tasks.1/@tasks.0/@tasks.0 //@task/@tasks.1/@tasks.0/@tasks.1" finalTasks="//@task/@tasks.1/@tasks.0/@tasks.1 //@task/@tasks.1/@tasks.0/@tasks.0">
+        <tasks xsi:type="process:ActionTask" name="Create a new EMF project" id="CreateNewEMFProjectTask" description="Create a new EMF project that will host the domain model.&#xD;&#xA;It will contain one or many  ecore files and a genmodel file." instanceClassName="org.gemoc.gemoc_language_workbench.process.task.CreateNewEMFProjectTask"/>
+        <tasks xsi:type="process:ActionTask" name="Select an existing EMF project" id="SelectEMFProjectTask" description="Create a new EMF project that will host the domain model.&#xD;&#xA;It will contain one or many  ecore files and a genmodel file." instanceClassName="org.gemoc.gemoc_language_workbench.process.task.SelectEMFProjectTask">
+          <precondition xsi:type="process:OneDone" tasks="//@task/@tasks.0"/>
+        </tasks>
+        <doneExpression xsi:type="process:AnyDone" tasks="//@task/@tasks.1/@tasks.0/@tasks.1 //@task/@tasks.1/@tasks.0/@tasks.0"/>
       </tasks>
-      <doneExpression xsi:type="process:AnyDone" tasks="//@task/@tasks.1/@tasks.1 //@task/@tasks.1/@tasks.0"/>
-    </tasks>
-    <tasks xsi:type="process:ComposedTask" name="Define a domain model" id="Task3" precedingTasks="//@task/@tasks.1" followingTasks="//@task/@tasks.3 //@task/@tasks.4 //@task/@tasks.5 //@task/@tasks.7 //@task/@tasks.6 //@task/@tasks.8" initialTasks="//@task/@tasks.2/@tasks.1" finalTasks="//@task/@tasks.2/@tasks.0">
-      <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.1"/>
-      <tasks xsi:type="process:ActionTask" name="Set domain model root" id="Task3.a" precedingTasks="//@task/@tasks.2/@tasks.1"/>
-      <tasks xsi:type="process:ActionTask" name="Define some domain Classes" followingTasks="//@task/@tasks.2/@tasks.0"/>
-      <doneExpression xsi:type="process:AllDone" tasks="//@task/@tasks.2/@tasks.0"/>
-    </tasks>
-    <tasks xsi:type="process:ActionTask" name="Show domain model" id="Task4" precedingTasks="//@task/@tasks.2" multipleExecution="true"/>
-    <tasks xsi:type="process:ComposedTask" name="Create editor project" id="Task5" precedingTasks="//@task/@tasks.2" initialTasks="//@task/@tasks.4/@tasks.0 //@task/@tasks.4/@tasks.1 //@task/@tasks.4/@tasks.3 //@task/@tasks.4/@tasks.2" finalTasks="//@task/@tasks.4/@tasks.1">
-      <tasks xsi:type="process:ActionTask" name="CreateEMF Tree editor project" id="Task5.a" followingTasks="//@task/@tasks.4/@tasks.1"/>
-      <tasks xsi:type="process:ActionTask" name="Reference an editor project" id="Task5.d" precedingTasks="//@task/@tasks.4/@tasks.0 //@task/@tasks.4/@tasks.2 //@task/@tasks.4/@tasks.3" multipleExecution="true">
-        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.2"/>
+      <tasks xsi:type="process:ComposedTask" name="Define a domain model" id="Task3" precedingTasks="//@task/@tasks.1/@tasks.0" initialTasks="//@task/@tasks.1/@tasks.1/@tasks.0" finalTasks="//@task/@tasks.1/@tasks.1/@tasks.1">
+        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.0"/>
+        <tasks xsi:type="process:ActionTask" name="Edit EMF domain concepts" id="EditEMFDomainConceptsTask" description="In this task you edit the domain and must define at least some domain classes." followingTasks="//@task/@tasks.1/@tasks.1/@tasks.1" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.EditEMFDomainConceptsTask" multipleExecution="true"/>
+        <tasks xsi:type="process:ActionTask" name="Set domain model root" id="SelectDomainModelRootTask" description="Select the topmost concept of the domain. &#xD;&#xA;Ie. the concept that contains  all the others via containment references." precedingTasks="//@task/@tasks.1/@tasks.1/@tasks.0" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.SelectDomainModelRootTask"/>
+        <doneExpression xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.1/@tasks.1"/>
       </tasks>
-      <tasks xsi:type="process:ComposedTask" name="Create xText editor project" id="Task5.b" followingTasks="//@task/@tasks.4/@tasks.1" initialTasks="//@task/@tasks.4/@tasks.2/@tasks.1 //@task/@tasks.4/@tasks.2/@tasks.0 //@task/@tasks.4/@tasks.2/@tasks.3 //@task/@tasks.4/@tasks.2/@tasks.2" finalTasks="//@task/@tasks.4/@tasks.2/@tasks.1 //@task/@tasks.4/@tasks.2/@tasks.0 //@task/@tasks.4/@tasks.2/@tasks.3 //@task/@tasks.4/@tasks.2/@tasks.2">
+      <doneExpression xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.1"/>
+    </tasks>
+    <tasks xsi:type="process:ComposedTask" name="Create editor project" id="Task5" precedingTasks="//@task/@tasks.1" initialTasks="//@task/@tasks.2/@tasks.0 //@task/@tasks.2/@tasks.1 //@task/@tasks.2/@tasks.3 //@task/@tasks.2/@tasks.2" finalTasks="//@task/@tasks.2/@tasks.1">
+      <tasks xsi:type="process:ActionTask" name="CreateEMF Tree editor project" id="Task5.a" followingTasks="//@task/@tasks.2/@tasks.1"/>
+      <tasks xsi:type="process:ActionTask" name="Reference an editor project" id="Task5.d" precedingTasks="//@task/@tasks.2/@tasks.0 //@task/@tasks.2/@tasks.2 //@task/@tasks.2/@tasks.3" multipleExecution="true">
+        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.1"/>
+      </tasks>
+      <tasks xsi:type="process:ComposedTask" name="Create xText editor project" id="Task5.b" followingTasks="//@task/@tasks.2/@tasks.1" initialTasks="//@task/@tasks.2/@tasks.2/@tasks.1 //@task/@tasks.2/@tasks.2/@tasks.0 //@task/@tasks.2/@tasks.2/@tasks.3 //@task/@tasks.2/@tasks.2/@tasks.2" finalTasks="//@task/@tasks.2/@tasks.2/@tasks.1 //@task/@tasks.2/@tasks.2/@tasks.0 //@task/@tasks.2/@tasks.2/@tasks.3 //@task/@tasks.2/@tasks.2/@tasks.2">
         <tasks xsi:type="process:ActionTask" name="Select project kind" id="Task5.b.3"/>
         <tasks xsi:type="process:ActionTask" name="Define xtext grammar" id="Task5.b.4"/>
         <tasks xsi:type="process:ActionTask" name="Set grammar name" id="Task5.b.2"/>
         <tasks xsi:type="process:ActionTask" name="Set file extension" id="Task5.b.1"/>
       </tasks>
-      <tasks xsi:type="process:ComposedTask" name="Create sirius editor" id="Task5.c" followingTasks="//@task/@tasks.4/@tasks.1" initialTasks="//@task/@tasks.4/@tasks.3/@tasks.0" finalTasks="//@task/@tasks.4/@tasks.3/@tasks.0">
+      <tasks xsi:type="process:ComposedTask" name="Create sirius editor" id="Task5.c" followingTasks="//@task/@tasks.2/@tasks.1" initialTasks="//@task/@tasks.2/@tasks.3/@tasks.0" finalTasks="//@task/@tasks.2/@tasks.3/@tasks.0">
         <tasks xsi:type="process:ActionTask" name="Define Sirius mappings" id="Task5.c.1"/>
       </tasks>
     </tasks>
-    <tasks xsi:type="process:ComposedTask" name="Create DSA project" id="Task6" precedingTasks="//@task/@tasks.2" initialTasks="//@task/@tasks.5/@tasks.0 //@task/@tasks.5/@tasks.1 //@task/@tasks.5/@tasks.2" finalTasks="//@task/@tasks.5/@tasks.2">
-      <tasks xsi:type="process:ActionTask" name="Create K2 project" id="Task6.a" followingTasks="//@task/@tasks.5/@tasks.2"/>
-      <tasks xsi:type="process:ActionTask" name="Create K3 project" id="Task6.b" followingTasks="//@task/@tasks.5/@tasks.2"/>
-      <tasks xsi:type="process:ActionTask" name="Reference an existing project" id="Task6.c" precedingTasks="//@task/@tasks.5/@tasks.0 //@task/@tasks.5/@tasks.1">
-        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.2"/>
+    <tasks xsi:type="process:ComposedTask" name="Create DSA project" id="Task6" precedingTasks="//@task/@tasks.1" initialTasks="//@task/@tasks.3/@tasks.0 //@task/@tasks.3/@tasks.1 //@task/@tasks.3/@tasks.2" finalTasks="//@task/@tasks.3/@tasks.2">
+      <tasks xsi:type="process:ActionTask" name="Create K2 project" id="Task6.a" followingTasks="//@task/@tasks.3/@tasks.2"/>
+      <tasks xsi:type="process:ActionTask" name="Create K3 project" id="Task6.b" followingTasks="//@task/@tasks.3/@tasks.2"/>
+      <tasks xsi:type="process:ActionTask" name="Reference an existing project" id="Task6.c" precedingTasks="//@task/@tasks.3/@tasks.0 //@task/@tasks.3/@tasks.1">
+        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.1"/>
       </tasks>
     </tasks>
-    <tasks xsi:type="process:ComposedTask" name="Create DSE project" id="Task8" precedingTasks="//@task/@tasks.2" initialTasks="//@task/@tasks.6/@tasks.1 //@task/@tasks.6/@tasks.2 //@task/@tasks.6/@tasks.0" finalTasks="//@task/@tasks.6/@tasks.2">
-      <tasks xsi:type="process:ComposedTask" name="Create ECL project" id="Task8.a" followingTasks="//@task/@tasks.6/@tasks.2" initialTasks="//@task/@tasks.6/@tasks.0/@tasks.0" finalTasks="//@task/@tasks.6/@tasks.0/@tasks.0">
+    <tasks xsi:type="process:ComposedTask" name="Create DSE project" id="Task8" precedingTasks="//@task/@tasks.1" initialTasks="//@task/@tasks.4/@tasks.1 //@task/@tasks.4/@tasks.2 //@task/@tasks.4/@tasks.0" finalTasks="//@task/@tasks.4/@tasks.2">
+      <tasks xsi:type="process:ComposedTask" name="Create ECL project" id="Task8.a" followingTasks="//@task/@tasks.4/@tasks.2" initialTasks="//@task/@tasks.4/@tasks.0/@tasks.0" finalTasks="//@task/@tasks.4/@tasks.0/@tasks.0">
         <tasks xsi:type="process:ActionTask" name="Define ECL project" id="Task8.a.1"/>
       </tasks>
-      <tasks xsi:type="process:ActionTask" name="Create Modhelx project" id="Task8.b" followingTasks="//@task/@tasks.6/@tasks.2"/>
-      <tasks xsi:type="process:ActionTask" name="Reference an existing project" id="Task8.c" precedingTasks="//@task/@tasks.6/@tasks.0 //@task/@tasks.6/@tasks.1">
-        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.2"/>
+      <tasks xsi:type="process:ActionTask" name="Create Modhelx project" id="Task8.b" followingTasks="//@task/@tasks.4/@tasks.2"/>
+      <tasks xsi:type="process:ActionTask" name="Reference an existing project" id="Task8.c" precedingTasks="//@task/@tasks.4/@tasks.0 //@task/@tasks.4/@tasks.1">
+        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.1"/>
       </tasks>
     </tasks>
-    <tasks xsi:type="process:ComposedTask" name="Create animator project" id="Task9" precedingTasks="//@task/@tasks.2" initialTasks="//@task/@tasks.7/@tasks.0 //@task/@tasks.7/@tasks.1" finalTasks="//@task/@tasks.7/@tasks.0">
-      <tasks xsi:type="process:ActionTask" name="Define animator project" id="Task9.b" precedingTasks="//@task/@tasks.7/@tasks.1">
-        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.2"/>
+    <tasks xsi:type="process:ComposedTask" name="Create Moc project" id="Task7" precedingTasks="//@task/@tasks.1" initialTasks="//@task/@tasks.5/@tasks.0 //@task/@tasks.5/@tasks.1" finalTasks="//@task/@tasks.5/@tasks.0">
+      <tasks xsi:type="process:ActionTask" name="Select Moc project" id="Task7.b" precedingTasks="//@task/@tasks.5/@tasks.1">
+        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.1"/>
       </tasks>
-      <tasks xsi:type="process:ActionTask" name="Create Sirius project" id="Task9.b" followingTasks="//@task/@tasks.7/@tasks.0"/>
+      <tasks xsi:type="process:ActionTask" name="Create CCSL Moc project" id="Task7.a" followingTasks="//@task/@tasks.5/@tasks.0"/>
     </tasks>
-    <tasks xsi:type="process:ComposedTask" name="Create Moc project" id="Task7" precedingTasks="//@task/@tasks.2" initialTasks="//@task/@tasks.8/@tasks.0 //@task/@tasks.8/@tasks.1" finalTasks="//@task/@tasks.8/@tasks.0">
-      <tasks xsi:type="process:ActionTask" name="Select Moc project" id="Task7.b" precedingTasks="//@task/@tasks.8/@tasks.1">
-        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.2"/>
+    <tasks xsi:type="process:ComposedTask" name="Create animator project" id="Task9" precedingTasks="//@task/@tasks.1" initialTasks="//@task/@tasks.6/@tasks.0 //@task/@tasks.6/@tasks.1" finalTasks="//@task/@tasks.6/@tasks.0">
+      <tasks xsi:type="process:ActionTask" name="Define animator project" id="Task9.b" precedingTasks="//@task/@tasks.6/@tasks.1">
+        <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.1"/>
       </tasks>
-      <tasks xsi:type="process:ActionTask" name="Create CCSL Moc project" id="Task7.a" followingTasks="//@task/@tasks.8/@tasks.0"/>
+      <tasks xsi:type="process:ActionTask" name="Create Sirius project" id="Task9.b" followingTasks="//@task/@tasks.6/@tasks.0"/>
     </tasks>
-    <doneExpression xsi:type="process:AllDone" tasks="//@task/@tasks.8 //@task/@tasks.5 //@task/@tasks.6 //@task/@tasks.4"/>
+    <doneExpression xsi:type="process:AllDone" tasks="//@task/@tasks.5 //@task/@tasks.3 //@task/@tasks.4 //@task/@tasks.2"/>
   </task>
 </process:Process>

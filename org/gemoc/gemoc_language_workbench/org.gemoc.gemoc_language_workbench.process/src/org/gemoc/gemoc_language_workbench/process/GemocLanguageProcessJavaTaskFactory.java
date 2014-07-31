@@ -57,12 +57,11 @@ public class GemocLanguageProcessJavaTaskFactory {
 	public Map<Task, IActionProcessor> createJavaTaskForProcess(Process process){
 		Map<String, Task> taskByIDMap = ProcessUtils.getTaskByIDMap(process);
 
-		addActionProcessor(new CreateNewGemocLanguageProjectTask((ActionTask)taskByIDMap.get("Task1")));
-		addActionProcessor(new CreateNewEMFProjectTask((ActionTask)taskByIDMap.get("Task2.a")));
-		addActionProcessor(new SelectEMFProjectTask((ActionTask)taskByIDMap.get("Task2.b")));
-		/*addActionProcessor(new Task2c((ActionTask)taskByIDMap.get("Task2.c"), (ActionTask)taskByIDMap
-				.get("Task1")));*/
-		addActionProcessor(new SetDomainModelRootTask((ActionTask)taskByIDMap.get("Task3.a")));
+		addActionProcessor(new CreateNewGemocLanguageProjectTask((ActionTask)taskByIDMap.get("CreateNewGemocLanguageProjectTask")));
+		addActionProcessor(new CreateNewEMFProjectTask((ActionTask)taskByIDMap.get("CreateNewEMFProjectTask")));
+		addActionProcessor(new SelectEMFProjectTask((ActionTask)taskByIDMap.get("SelectEMFProjectTask")));
+		addActionProcessor(new EditEMFDomainConceptsTask((ActionTask)taskByIDMap.get("EditEMFDomainConceptsTask")));
+		addActionProcessor(new SetDomainModelRootTask((ActionTask)taskByIDMap.get("SelectDomainModelRootTask")));
 		/*addActionProcessor(new Task4((ActionTask)taskByIDMap.get("Task4"), (ActionTask)taskByIDMap
 				.get("Task2.b")));
 		addActionProcessor(new Task5a((ActionTask)taskByIDMap.get("Task5.a"), (ActionTask)taskByIDMap
