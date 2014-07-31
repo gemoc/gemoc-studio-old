@@ -27,7 +27,7 @@ public class SelectEMFIProjectDialog extends SelectAnyIProjectDialog {
 			EcoreFileFinderResourceVisitor ecoreProjectVisitor = new EcoreFileFinderResourceVisitor();
 			try {
 				resource.accept(ecoreProjectVisitor);
-				result = result && ecoreProjectVisitor.ecoreFiles.size() > 0;
+				result = result && ecoreProjectVisitor.getFiles().size() > 0;
 			} catch (CoreException e) {
 				Activator.error(e.getMessage(), e);
 			}

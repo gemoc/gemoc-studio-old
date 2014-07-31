@@ -27,6 +27,7 @@ import java.util.Map;
 
 import org.gemoc.gemoc_language_workbench.process.task.CreateNewGemocLanguageProjectTask;
 import org.gemoc.gemoc_language_workbench.process.task.CreateNewEMFProjectTask;
+import org.gemoc.gemoc_language_workbench.process.task.EditEMFDomainConceptsTask;
 import org.gemoc.gemoc_language_workbench.process.task.SelectEMFProjectTask;
 import org.gemoc.gemoc_language_workbench.process.task.SetDomainModelRootTask;
 //import org.gemoc.gemoc_language_workbench.process.task.Task2c;

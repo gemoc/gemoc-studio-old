@@ -40,8 +40,8 @@ public class ActiveFileEcore extends ActiveFile {
 			Activator.error(e.getMessage(), e);
 		}
 
-		if(ecoreFinder.ecoreFiles.size() > 0){
-			return ecoreFinder.ecoreFiles.get(0);
+		if(ecoreFinder.getFiles().size() > 0){
+			return ecoreFinder.getFiles().get(0);
 		} else {
 			return null;
 		}

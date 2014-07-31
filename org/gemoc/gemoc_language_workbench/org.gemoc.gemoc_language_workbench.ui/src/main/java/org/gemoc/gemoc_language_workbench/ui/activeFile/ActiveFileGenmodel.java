@@ -25,8 +25,8 @@ public class ActiveFileGenmodel extends ActiveFileEcore {
 			Activator.error(e.getMessage(), e);
 		}
 
-		if(genmodelFinder.genmodelFiles.size() > 0){
-			return genmodelFinder.genmodelFiles.get(0);
+		if(genmodelFinder.getFiles().size() > 0){
+			return genmodelFinder.getFiles().get(0);
 		} else {
 			return null;
 		}

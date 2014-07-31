@@ -85,7 +85,7 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model
-			addEMFProjectToConf(gContext, ((IResource)dialog.getResult()[0]).getName());
+			addEMFProjectToConf(gContext, ((IProject)dialog.getResult()[0]));
 		}
 	}
 

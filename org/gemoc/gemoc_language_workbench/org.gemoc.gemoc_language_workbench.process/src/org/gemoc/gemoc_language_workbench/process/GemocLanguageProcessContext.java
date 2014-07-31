@@ -30,6 +30,8 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 
 public class GemocLanguageProcessContext extends ProcessContextImpl {
 
+	
+	// convenient data that are maintained by some of the task in order to ease the search from other tasks
 	/**
 	 * cache of the xdsml model
 	 */
@@ -38,6 +40,11 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	protected URI uri=null;
 	
 	protected IFile xdsmlIFile=null;
+	
+	/** this data is indirectly retreived from the xdsml (via the reference to the genmodel that in turn reference the ecore file)*/ 
+	protected IFile ecoreIFile=null;
+
+	
 
 	
 
@@ -88,5 +95,12 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	public void setXdsmlIFile(IFile resource) {
 		xdsmlIFile = resource;
 		
+	}
+	public IFile getEcoreIFile() {
+		return ecoreIFile;
+	}
+
+	public void setEcoreIFile(IFile ecoreIFile) {
+		this.ecoreIFile = ecoreIFile;
 	}
 }
