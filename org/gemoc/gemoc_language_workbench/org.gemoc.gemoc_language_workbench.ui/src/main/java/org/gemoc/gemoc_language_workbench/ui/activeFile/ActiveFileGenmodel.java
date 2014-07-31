@@ -4,7 +4,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.GenmodelFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 public class ActiveFileGenmodel extends ActiveFileEcore {
 
@@ -16,7 +16,7 @@ public class ActiveFileGenmodel extends ActiveFileEcore {
 	@Override
 	public IFile getActiveFile() {
 		IProject projectWithGenmodel = this.getProject(this.gemocLanguageProject);
-		GenmodelFileFinderResourceVisitor genmodelFinder = new GenmodelFileFinderResourceVisitor();
+		FileFinderVisitor genmodelFinder = new FileFinderVisitor("genmodel");
 		
 		try {
 

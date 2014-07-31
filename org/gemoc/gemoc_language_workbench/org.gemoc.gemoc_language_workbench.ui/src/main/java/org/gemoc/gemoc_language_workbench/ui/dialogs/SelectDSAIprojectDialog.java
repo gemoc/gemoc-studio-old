@@ -5,8 +5,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Shell;
 import org.gemoc.gemoc_language_workbench.utils.Activator;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.KpFileFinderResourceVisitor;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.XTendFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 public class SelectDSAIprojectDialog extends SelectAnyIProjectDialog {
 
@@ -21,7 +20,7 @@ public class SelectDSAIprojectDialog extends SelectAnyIProjectDialog {
 			// must contain a kp file (meaning kermeta 2 project)
 			boolean hasKpFile = false;
 			boolean hasXTendFile = false;
-			KpFileFinderResourceVisitor kpProjectVisitor = new KpFileFinderResourceVisitor();
+			FileFinderVisitor kpProjectVisitor = new FileFinderVisitor("kp");
 			try {
 				resource.accept(kpProjectVisitor);
 				hasKpFile =  kpProjectVisitor.getFile() != null;
@@ -29,7 +28,7 @@ public class SelectDSAIprojectDialog extends SelectAnyIProjectDialog {
 				Activator.error(e.getMessage(), e);
 			}
 			// or must contains xtend files // TODO must find a more precise way to detect k3 projects
-			XTendFileFinderResourceVisitor xtendProjectVisitor = new XTendFileFinderResourceVisitor();
+			FileFinderVisitor xtendProjectVisitor = new FileFinderVisitor("xtend");
 			try {
 				resource.accept(xtendProjectVisitor);
 				hasXTendFile = xtendProjectVisitor.getFile() != null;

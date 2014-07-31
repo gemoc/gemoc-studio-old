@@ -59,7 +59,7 @@ import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizard;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.GenmodelFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 /**
  * Create a new EMF project.
@@ -193,7 +193,7 @@ public class CreateNewEMFProjectTask extends AbstractResourceProcessor {
 			    emfEcoreProject.setProjectName(ecoreIProject.getName());
 			    langage.setDomainModelProject(emfEcoreProject);
 			    
-			    GenmodelFileFinderResourceVisitor genmodelFileFinderResourceVisitor = new GenmodelFileFinderResourceVisitor();
+			    FileFinderVisitor genmodelFileFinderResourceVisitor = new FileFinderVisitor("genmodel");
 			    try {
 					ecoreIProject.accept(genmodelFileFinderResourceVisitor);
 					if(!genmodelFileFinderResourceVisitor.getFiles().isEmpty()){

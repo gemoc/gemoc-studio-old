@@ -19,7 +19,7 @@ import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.EcoreFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 public class ActiveFileEcore extends ActiveFile {
 
@@ -31,7 +31,7 @@ public class ActiveFileEcore extends ActiveFile {
 	@Override
 	public IFile getActiveFile() {
 		IProject projectWithEcore = this.getProject(this.gemocLanguageProject);
-		EcoreFileFinderResourceVisitor ecoreFinder = new EcoreFileFinderResourceVisitor();
+		FileFinderVisitor ecoreFinder = new FileFinderVisitor("ecore");
 		
 		try {
 
