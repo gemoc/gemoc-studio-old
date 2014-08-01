@@ -18,19 +18,24 @@
       </tasks>
       <doneExpression xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.1"/>
     </tasks>
-    <tasks xsi:type="process:ComposedTask" name="Create editor project" id="Task5" precedingTasks="//@task/@tasks.1" initialTasks="//@task/@tasks.2/@tasks.0 //@task/@tasks.2/@tasks.1 //@task/@tasks.2/@tasks.3 //@task/@tasks.2/@tasks.2" finalTasks="//@task/@tasks.2/@tasks.1">
-      <tasks xsi:type="process:ActionTask" name="CreateEMF Tree editor project" id="Task5.a" followingTasks="//@task/@tasks.2/@tasks.1"/>
-      <tasks xsi:type="process:ActionTask" name="Reference an editor project" id="Task5.d" precedingTasks="//@task/@tasks.2/@tasks.0 //@task/@tasks.2/@tasks.2 //@task/@tasks.2/@tasks.3" multipleExecution="true">
+    <tasks xsi:type="process:ComposedTask" name="Create editor project" id="Task5" precedingTasks="//@task/@tasks.1" initialTasks="//@task/@tasks.2/@tasks.3 //@task/@tasks.2/@tasks.0 //@task/@tasks.2/@tasks.2 //@task/@tasks.2/@tasks.1" finalTasks="//@task/@tasks.2/@tasks.0">
+      <tasks xsi:type="process:ActionTask" name="Reference an editor project" id="Task5.d" precedingTasks="//@task/@tasks.2/@tasks.1 //@task/@tasks.2/@tasks.2 //@task/@tasks.2/@tasks.3" multipleExecution="true">
         <precondition xsi:type="process:AllDone" tasks="//@task/@tasks.1/@tasks.1"/>
       </tasks>
-      <tasks xsi:type="process:ComposedTask" name="Create xText editor project" id="Task5.b" followingTasks="//@task/@tasks.2/@tasks.1" initialTasks="//@task/@tasks.2/@tasks.2/@tasks.1 //@task/@tasks.2/@tasks.2/@tasks.0 //@task/@tasks.2/@tasks.2/@tasks.3 //@task/@tasks.2/@tasks.2/@tasks.2" finalTasks="//@task/@tasks.2/@tasks.2/@tasks.1 //@task/@tasks.2/@tasks.2/@tasks.0 //@task/@tasks.2/@tasks.2/@tasks.3 //@task/@tasks.2/@tasks.2/@tasks.2">
+      <tasks xsi:type="process:ComposedTask" name="Create xText editor project" id="Task5.b" followingTasks="//@task/@tasks.2/@tasks.0" initialTasks="//@task/@tasks.2/@tasks.1/@tasks.1 //@task/@tasks.2/@tasks.1/@tasks.0 //@task/@tasks.2/@tasks.1/@tasks.3 //@task/@tasks.2/@tasks.1/@tasks.2" finalTasks="//@task/@tasks.2/@tasks.1/@tasks.1 //@task/@tasks.2/@tasks.1/@tasks.0 //@task/@tasks.2/@tasks.1/@tasks.3 //@task/@tasks.2/@tasks.1/@tasks.2">
         <tasks xsi:type="process:ActionTask" name="Select project kind" id="Task5.b.3"/>
         <tasks xsi:type="process:ActionTask" name="Define xtext grammar" id="Task5.b.4"/>
         <tasks xsi:type="process:ActionTask" name="Set grammar name" id="Task5.b.2"/>
         <tasks xsi:type="process:ActionTask" name="Set file extension" id="Task5.b.1"/>
       </tasks>
-      <tasks xsi:type="process:ComposedTask" name="Create sirius editor" id="Task5.c" followingTasks="//@task/@tasks.2/@tasks.1" initialTasks="//@task/@tasks.2/@tasks.3/@tasks.0" finalTasks="//@task/@tasks.2/@tasks.3/@tasks.0">
+      <tasks xsi:type="process:ComposedTask" name="Create sirius editor" id="Task5.c" followingTasks="//@task/@tasks.2/@tasks.0" initialTasks="//@task/@tasks.2/@tasks.2/@tasks.0" finalTasks="//@task/@tasks.2/@tasks.2/@tasks.0">
         <tasks xsi:type="process:ActionTask" name="Define Sirius mappings" id="Task5.c.1"/>
+      </tasks>
+      <tasks xsi:type="process:ComposedTask" name="Create tree editor project" id="CreateTreeEditorProjectComposedTask" followingTasks="//@task/@tasks.2/@tasks.0" initialTasks="//@task/@tasks.2/@tasks.3/@tasks.0 //@task/@tasks.2/@tasks.3/@tasks.1" finalTasks="//@task/@tasks.2/@tasks.3/@tasks.2">
+        <tasks xsi:type="process:ActionTask" name="Create New EMF Tree editor project" id="CreateNewEMFTreeEditorProjectTask" followingTasks="//@task/@tasks.2/@tasks.3/@tasks.2" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.CreateNewEMFTreeEditorProjectTask"/>
+        <tasks xsi:type="process:ActionTask" name="Select existing EMF tree editor project" id="SelectEMFTreeEditorProjectTask" followingTasks="//@task/@tasks.2/@tasks.3/@tasks.2" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.SelectEMFTreeEditorProjectTask"/>
+        <tasks xsi:type="process:ActionTask" name="Set EMF Tree editor file extension" id="SetEMFTreeEditorFileExtensionTask" precedingTasks="//@task/@tasks.2/@tasks.3/@tasks.0 //@task/@tasks.2/@tasks.3/@tasks.1" instanceClassName="org.gemoc.gemoc_language_workbench.process.task.SetEMFTreeEditorFileExtensionTask"/>
+        <doneExpression xsi:type="process:AllDone" tasks="//@task/@tasks.2/@tasks.3/@tasks.2"/>
       </tasks>
     </tasks>
     <tasks xsi:type="process:ComposedTask" name="Create DSA project" id="Task6" precedingTasks="//@task/@tasks.1" initialTasks="//@task/@tasks.3/@tasks.0 //@task/@tasks.3/@tasks.1 //@task/@tasks.3/@tasks.2" finalTasks="//@task/@tasks.3/@tasks.2">

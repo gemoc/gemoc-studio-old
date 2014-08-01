@@ -44,7 +44,7 @@ import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListen
  */
 public class CreateEditorProjectWizardContextAction {
 
-	public enum CreateEditorProjectAction {CREATE_NEW_EMFTREE_PROJECT, CREATE_NEW_XTEXT_PROJECT, CREATE_NEW_OD_PROJECT, SELECT_EXISTING_PROJECT};
+	public enum CreateEditorProjectAction {CREATE_NEW_EMFTREE_PROJECT, CREATE_NEW_XTEXT_PROJECT, CREATE_NEW_SIRIUS_PROJECT, SELECT_EXISTING_EMFTREE_PROJECT, SELECT_EXISTING_XTEXT_PROJECT, SELECT_EXISTING_OD_PROJECT};
 	
 	public CreateEditorProjectAction actionToExecute = CreateEditorProjectAction.CREATE_NEW_EMFTREE_PROJECT;
 	
@@ -63,13 +63,18 @@ public class CreateEditorProjectWizardContextAction {
 			createNewXTextProject();
 			break;
 
-		case CREATE_NEW_OD_PROJECT:
+		case CREATE_NEW_SIRIUS_PROJECT:
 			createNewODProject();
 			break;
-		case SELECT_EXISTING_PROJECT:
-			selectExistingProject();
+		case SELECT_EXISTING_EMFTREE_PROJECT:
+			selectExistingEMFTreeProject();
 			break;
-
+		case SELECT_EXISTING_XTEXT_PROJECT:
+			selectExistingXTextProject();
+			break;
+		case SELECT_EXISTING_OD_PROJECT:
+			selectExistingSiriusProject();
+			break;
 		default:
 			break;
 		}
@@ -221,7 +226,7 @@ public class CreateEditorProjectWizardContextAction {
 		}
 	}
 	
-	protected void selectExistingProject(){
+	protected void selectExistingEMFTreeProject(){
 		// launch the appropriate wizard
 		SelectAnyIProjectDialog dialog = new SelectAnyIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		int res = dialog.open();
@@ -236,6 +241,37 @@ public class CreateEditorProjectWizardContextAction {
 			TreeEditorProject editorProject = confFactoryImpl.eINSTANCE.createTreeEditorProject();
 			editorProject.setProjectName(projectName);
 			addProjectToConf(editorProject);
+		}
+	}
+	
+	protected void selectExistingXTextProject(){
+		// launch the appropriate wizard
+		SelectAnyIProjectDialog dialog = new SelectAnyIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		int res = dialog.open();
+		if(res == WizardDialog.OK){
+			// update the project model
+			String projectName = ((IResource)dialog.getResult()[0]).getName();
+			// TODO detect selected project nature to create the correct element
+			MessageDialog.openWarning(
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+					"Gemoc Language Workbench UI",
+					"Fine detection of project nature not implemented yet, considered as a tree editor for the moment :-(");
+			
+		}
+	}
+	protected void selectExistingSiriusProject(){
+		// launch the appropriate wizard
+		SelectAnyIProjectDialog dialog = new SelectAnyIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		int res = dialog.open();
+		if(res == WizardDialog.OK){
+			// update the project model
+			String projectName = ((IResource)dialog.getResult()[0]).getName();
+			// TODO detect selected project nature to create the correct element
+			MessageDialog.openWarning(
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+					"Gemoc Language Workbench UI",
+					"Fine detection of project nature not implemented yet, considered as a tree editor for the moment :-(");
+			
 		}
 	}
 	
