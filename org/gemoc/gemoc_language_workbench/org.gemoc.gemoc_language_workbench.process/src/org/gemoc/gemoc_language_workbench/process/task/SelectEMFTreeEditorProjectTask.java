@@ -18,7 +18,6 @@
 package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ProcessContext;
 
 import org.eclipse.core.resources.IProject;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
@@ -30,7 +29,8 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardCo
  * 
  * @author Didier Vojtisek</a>
  */
-public class SelectEMFTreeEditorProjectTask extends CreateNewEMFTreeEditorProjectTask {
+public class SelectEMFTreeEditorProjectTask extends CreateNewEMFTreeEditorProjectTask 
+{
 
 	/**
 	 * Constructor.
@@ -38,34 +38,32 @@ public class SelectEMFTreeEditorProjectTask extends CreateNewEMFTreeEditorProjec
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 */
-	public SelectEMFTreeEditorProjectTask(ActionTask task) {
+	public SelectEMFTreeEditorProjectTask(ActionTask task) 
+	{
 		super(task);
 	}
-
 	
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void doAction(ProcessContext context) {
-		GemocLanguageProcessContext gContext = (GemocLanguageProcessContext)context;
-		IProject updatedGemocLanguageProject = gContext.getXdsmlIFile().getProject();
-		CreateEditorProjectWizardContextAction createEditorProjectWizardContext = new CreateEditorProjectWizardContextAction(updatedGemocLanguageProject);
-		createEditorProjectWizardContext.actionToExecute = CreateEditorProjectAction.SELECT_EXISTING_EMFTREE_PROJECT;
-		createEditorProjectWizardContext.execute();	
+	public void doAction(GemocLanguageProcessContext context) 
+	{
+		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
+		CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(updatedGemocLanguageProject);
+		action.actionToExecute = CreateEditorProjectAction.SELECT_EXISTING_EMFTREE_PROJECT;
+		action.execute();	
 	}
-	
-		
-		
+			
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void undoAction(ProcessContext context) {
+	public void undoAction(GemocLanguageProcessContext context) 
+	{
 		// nothing to do here
 	}
-
 	
 }

@@ -17,85 +17,73 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process;
 
-import fr.obeo.dsl.process.Process;
 import fr.obeo.dsl.process.impl.ProcessContextImpl;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
 public class GemocLanguageProcessContext extends ProcessContextImpl {
 
-	
 	// convenient data that are maintained by some of the task in order to ease the search from other tasks
-	/**
-	 * cache of the xdsml model
-	 */
-	protected GemocLanguageWorkbenchConfiguration xdsmlConfigModel;
+	private GemocLanguageWorkbenchConfiguration _xdsmlModel;
 	
-	protected URI uri=null;
+	private URI _xdsmlURI = null;
 	
-	protected IFile xdsmlIFile=null;
 	
 	/** this data is indirectly retreived from the xdsml (via the reference to the genmodel that in turn reference the ecore file)*/ 
 	protected IFile ecoreIFile=null;
 
 	
 
-	
-
-	public GemocLanguageProcessContext() {
+	public GemocLanguageProcessContext() 
+	{
 		super();
 	}
 	
-	public void initialize(Process process, URI newUri, IFile xdsmlIFile){
-		setDefinition(process);
-		if(newUri !=  null){
+	public void initialize(URI newUri)
+	{
+		if (newUri !=  null)
+		{
 			setName(newUri.toPlatformString(true));
 			setXdsmlConfigURI(newUri);
+		}		
+	}
+	
+	public void setXdsmlConfigURI(URI newUri)
+	{
+		if (newUri != _xdsmlURI)
+		{
+			_xdsmlURI = newUri;
+			_xdsmlModel = (GemocLanguageWorkbenchConfiguration)EMFResource.getFirstContent(_xdsmlURI);
 		}
-		this.xdsmlIFile = xdsmlIFile;
-		
 	}
 	
-	public void setXdsmlConfigURI(URI newUri){
-		if(newUri != uri){
-			uri = newUri;
-			updateXdsmlConfigModel();
-		}
-	}
-	
-	
-	public void updateXdsmlConfigModel(){
-		final ResourceSet resourceSet = new ResourceSetImpl();
-		final Resource r = resourceSet.getResource(uri, true);
-		xdsmlConfigModel = (GemocLanguageWorkbenchConfiguration)r
-				.getContents().get(0);
-	}
-
-
 	// getter and setters
 	// ------------------
 	
-	public GemocLanguageWorkbenchConfiguration getXdsmlConfigModel() {
-		return xdsmlConfigModel;
+	public GemocLanguageWorkbenchConfiguration getXdsmlModel() 
+	{
+		return _xdsmlModel;
 	}
 
-	public URI getXdsmlConfigURI(){
-		return uri;
+	public URI getXdsmlURI()
+	{
+		return _xdsmlURI;
 	}
 
-	public IFile getXdsmlIFile() {
-		return xdsmlIFile;
+	public IFile getXdsmlFile() 
+	{
+		IFile file = null;
+		if (_xdsmlURI != null)
+		{
+			file = EclipseResource.getFile(_xdsmlURI);
+		}
+		return file;
 	}
-	public void setXdsmlIFile(IFile resource) {
-		xdsmlIFile = resource;
-		
-	}
+	
 	public IFile getEcoreIFile() {
 		return ecoreIFile;
 	}

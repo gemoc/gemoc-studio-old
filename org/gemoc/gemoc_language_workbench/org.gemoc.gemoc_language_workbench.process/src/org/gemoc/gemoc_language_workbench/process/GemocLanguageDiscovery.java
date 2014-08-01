@@ -18,127 +18,100 @@
 package org.gemoc.gemoc_language_workbench.process;
 
 import fr.obeo.dsl.process.IProcessRunner;
-import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessUtils;
-import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
 import fr.obeo.dsl.workspace.listener.change.resource.AbstractResourceChange;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceAdded;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceContentChanged;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.process.task.GemocProcessUtils;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
 public class GemocLanguageDiscovery implements IChangeProcessor {
 
-	
-	//Map<URI, GemocLanguageProcessRunner> runningProcessMap = new HashMap<URI, GemocLanguageProcessRunner>();
-
-	public void process(IChange<?> change) {
-		if (change instanceof AbstractResourceChange) {
+	public void process(IChange<?> change) 
+	{
+		if (change instanceof AbstractResourceChange) 
+		{
 			final IResource resource = ((AbstractResourceChange)change).getObject();
 			final boolean isXDSMLFile = GemocProcessUtils.isXDSMLFile(resource);
-			final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
-			if (isXDSMLFile && (change instanceof ResourceAdded) && getEquivalentRunner(uri) == null) {
-				
-				createProcessRunner(uri, (IFile)resource);
-				
-				
-				//updateProcessRunner(uri);
+			final URI uri = EclipseResource.getUri(resource);
+			if (isXDSMLFile 
+				&& change instanceof ResourceAdded 
+				&& !existProcessRunner(uri)) 
+			{				
+				createProcessRunner(uri);
 			}
-			/*if (isXDSMLFile && (change instanceof ResourceContentChanged)) {
-				updateProcessRunner(uri);
-			}*/ else if (change instanceof ResourceMoved) {
+			else if (change instanceof ResourceMoved) 
+			{
 				deleteProcessRunner(uri);
 				final IResource dest = ((ResourceMoved)change).getDestination();
-				final URI destUri = URI.createPlatformResourceURI(dest.getFullPath().toString(), true);
-				createProcessRunner(destUri, (IFile)resource);
-
-			} else if (isXDSMLFile && change instanceof ResourceRemoved) {
+				final URI newUri = EclipseResource.getUri(dest);
+				createProcessRunner(newUri);
+			} 
+			else if (isXDSMLFile && change instanceof ResourceRemoved) 
+			{
 				deleteProcessRunner(uri);
 			}
 		}
-
 	}
 
-	private GemocLanguageProcessRunner getEquivalentRunner(URI uri){
-		for(IProcessRunner runner : ProcessUtils.getRegisteredRunners()){
-			if(runner instanceof GemocLanguageProcessRunner){
+	private boolean existProcessRunner(URI uri)
+	{
+		return getProcessRunner(uri) != null;
+	}
+	
+	private GemocLanguageProcessRunner getProcessRunner(URI uri)
+	{
+		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners())
+		{
+			if (runner instanceof GemocLanguageProcessRunner)
+			{
 				GemocLanguageProcessRunner gRunner = (GemocLanguageProcessRunner)runner;
-				if(gRunner.getGemocLanguageProcessContext().getXdsmlConfigURI().equals(uri)){
+				if (gRunner.getCastedContext().getXdsmlURI() != null
+					&& gRunner.getCastedContext().getXdsmlURI().equals(uri))
+				{
 					return gRunner;
 				}
 			}
 		}
-		return null;
-		
+		return null;		
 	}
 	
-	
-	private GemocLanguageProcessRunner createProcessRunner(final URI uri, IFile xdsmlFile) {
-		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(uri, xdsmlFile);
-		
-		ProcessUtils.registerProcessRunner(procRunner);
-		final IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
-		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).addProcessor(procRunner, true);
-		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(procRunner, true);
-		
-		
-		return procRunner;
+	private GemocLanguageProcessRunner createProcessRunner(final URI uri) 
+	{
+		return ProcessRunnerFactory.createProcessRunner(uri);
 	}
 
-	private void deleteProcessRunner(final URI uri) {
-		GemocLanguageProcessRunner procRunner = getEquivalentRunner(uri);
-		ProcessUtils.unregisterProcessRunner(procRunner);
-		WorkspaceUtils.removeProcessor(procRunner);
-		//runningProcessMap.remove(uri);
+	private void deleteProcessRunner(final URI uri) 
+	{
+		GemocLanguageProcessRunner runner = getProcessRunner(uri);
+		if (runner != null)
+		{
+			ProcessUtils.unregisterProcessRunner(runner);
+			WorkspaceUtils.removeProcessor(runner);			
+		}
 	}
 
-	public void stop() {
-		ArrayList<IProcessRunner> l = new ArrayList<IProcessRunner>();
-		l.addAll(ProcessUtils.getRegisteredRunners());
-		for(IProcessRunner runner :  l){
-			if(runner instanceof GemocLanguageProcessRunner){
+	public void stop() 
+	{
+		ArrayList<IProcessRunner> runners = new ArrayList<IProcessRunner>();
+		runners.addAll(ProcessUtils.getRegisteredRunners());
+		for(IProcessRunner runner :  runners)
+		{
+			if(runner instanceof GemocLanguageProcessRunner)
+			{
 				GemocLanguageProcessRunner gRunner = (GemocLanguageProcessRunner)runner;
 				ProcessUtils.unregisterProcessRunner(gRunner);
 				WorkspaceUtils.removeProcessor(gRunner);
 			}
 		}
 	}
-
-	/**
-	 * Reloads the config at the given {@link URI}.
-	 * 
-	 * @param runner
-	 *            the {@link IProcessRunner}
-	 * @param uri
-	 *            the {@link URI}
-	 */
-	/*private void updateProcessRunner(final URI uri) {
-		GemocLanguageProcessRunner runner = getEquivalentRunner(uri);
-		if (runner != null) {
-			runner.getGemocLanguageProcessContext().updateXdsmlConfigModel();
-		}
-
-	}*/
-
 }

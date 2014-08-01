@@ -25,33 +25,11 @@ package fr.obeo.dsl.process;
 public interface IProcessRunner {
 
 	/**
-	 * Gets the {@link Process} associated with this runner.
-	 * 
-	 * @return the {@link Process} associated with this runner
-	 */
-	Process getProcess();
-
-	/**
 	 * Gets {@link ProcessContext contexts} ran from the {@link IProcessRunner#getProcess() process}.
 	 * 
 	 * @return {@link ProcessContext contexts} ran from the {@link IProcessRunner#getProcess() process}
 	 */
 	ProcessContext getContext();
-
-	/**
-	 * Starts a new {@link ProcessContext} running the {@link IProcessRunner#getProcess() process}.
-	 * 
-	 * @return a new {@link ProcessContext} running the {@link IProcessRunner#getProcess() process}
-	 */
-	// ProcessContext startContext();
-
-	/**
-	 * Stops the given {@link ProcessContext}.
-	 * 
-	 * @param context
-	 *            the {@link ProcessContext} to stop
-	 */
-	// void stopContext(ProcessContext context);
 
 	/**
 	 * Executes the given {@link ActionTask} in the given {@link ProcessContext}.

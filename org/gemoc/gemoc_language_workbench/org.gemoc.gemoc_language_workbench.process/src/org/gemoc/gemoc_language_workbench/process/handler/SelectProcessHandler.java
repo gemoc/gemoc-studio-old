@@ -18,7 +18,6 @@
 package org.gemoc.gemoc_language_workbench.process.handler;
 
 import fr.obeo.dsl.process.IProcessRunner;
-import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.ui.handler.AbstractSelectProcessHandler;
 
@@ -28,7 +27,6 @@ import java.util.List;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.gemoc.gemoc_language_workbench.process.Activator;
 import org.gemoc.gemoc_language_workbench.process.view.ProcessView;
 
 /**
@@ -39,29 +37,32 @@ import org.gemoc.gemoc_language_workbench.process.view.ProcessView;
 public class SelectProcessHandler extends AbstractSelectProcessHandler {
 
 	@Override
-	protected List<IProcessRunner> getProcessRunners(ExecutionEvent event) {
+	protected List<IProcessRunner> getProcessRunners(ExecutionEvent event) 
+	{
 		ArrayList<IProcessRunner> result = new ArrayList<IProcessRunner>();
 		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners())
 		{
 			result.add(runner);
 		}
 		return result;
-		
-//		return new ArrayList<ProcessContext>(Activator.getDefault().getProcessDiscovery()getRunner().getContexts());
 	}
 
 	@Override
-	protected void setProcessRunner(ExecutionEvent event, IProcessRunner processContext) {
+	protected void setProcessRunner(ExecutionEvent event, IProcessRunner processContext) 
+	{
 		final IWorkbenchPart part = HandlerUtil.getActivePart(event);
-		if (part instanceof ProcessView) {
+		if (part instanceof ProcessView) 
+		{
 			((ProcessView)part).setProcessRunner(processContext);
 		}
 	}
 
 	@Override
-	protected IProcessRunner getCurrentProcessRunner(ExecutionEvent event) {
+	protected IProcessRunner getCurrentProcessRunner(ExecutionEvent event) 
+	{
 		final IWorkbenchPart part = HandlerUtil.getActivePart(event);
-		if (part instanceof ProcessView) {
+		if (part instanceof ProcessView) 
+		{
 			return ((ProcessView)part).getProcessRunner();
 		}
 		return null;

@@ -5,8 +5,6 @@ package fr.obeo.dsl.process.impl;
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
-import fr.obeo.dsl.process.ProcessUtils;
-import fr.obeo.dsl.process.Task;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,9 +31,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -43,9 +41,9 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -53,9 +51,9 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' reference.
-	 * <!-- begin-user-doc
+	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' reference. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDefinition()
 	 * @generated
 	 * @ordered
@@ -78,6 +76,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ProcessContextImpl() {
@@ -86,6 +85,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -95,6 +95,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -103,17 +104,20 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.PROCESS_CONTEXT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.PROCESS_CONTEXT__NAME,
+					oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public fr.obeo.dsl.process.Process getDefinition() {
@@ -122,7 +126,8 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 			definition = (fr.obeo.dsl.process.Process)eResolveProxy(oldDefinition);
 			if (definition != oldDefinition) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessPackage.PROCESS_CONTEXT__DEFINITION, oldDefinition, definition));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ProcessPackage.PROCESS_CONTEXT__DEFINITION, oldDefinition, definition));
 			}
 		}
 		return definition;
@@ -130,6 +135,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public fr.obeo.dsl.process.Process basicGetDefinition() {
@@ -138,13 +144,15 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDefinition(fr.obeo.dsl.process.Process newDefinition) {
 		fr.obeo.dsl.process.Process oldDefinition = definition;
 		definition = newDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.PROCESS_CONTEXT__DEFINITION, oldDefinition, definition));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.PROCESS_CONTEXT__DEFINITION,
+					oldDefinition, definition));
 	}
 
 	/**
@@ -195,6 +203,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -203,7 +212,8 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 			case ProcessPackage.PROCESS_CONTEXT__NAME:
 				return getName();
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
-				if (resolve) return getDefinition();
+				if (resolve)
+					return getDefinition();
 				return basicGetDefinition();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -211,6 +221,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -229,6 +240,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -246,6 +258,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -261,11 +274,13 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

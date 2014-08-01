@@ -55,9 +55,9 @@ import org.gemoc.gemoc_language_workbench.process.task.SetDomainModelRootTask;
 
 public class GemocLanguageProcessJavaTaskFactory {
 
-	Map<Task, IActionProcessor> actionProcessors = new LinkedHashMap<Task, IActionProcessor>();
+	Map<Task, ActionProcessor> actionProcessors = new LinkedHashMap<Task, ActionProcessor>();
 	
-	public Map<Task, IActionProcessor> createJavaTaskForProcess(Process process){
+	public Map<Task, ActionProcessor> createJavaTaskForProcess(Process process){
 		Map<String, Task> taskByIDMap = ProcessUtils.getTaskByIDMap(process);
 
 		addActionProcessor(new CreateNewGemocLanguageProjectTask((ActionTask)taskByIDMap.get("CreateNewGemocLanguageProjectTask")));
@@ -106,7 +106,7 @@ public class GemocLanguageProcessJavaTaskFactory {
 	 * @param processor
 	 *            the {@link IActionProcessor}
 	 */
-	private void addActionProcessor(IActionProcessor processor) {
+	private void addActionProcessor(ActionProcessor processor) {
 		actionProcessors.put(processor.getActionTask(), processor);
 	}
 }
