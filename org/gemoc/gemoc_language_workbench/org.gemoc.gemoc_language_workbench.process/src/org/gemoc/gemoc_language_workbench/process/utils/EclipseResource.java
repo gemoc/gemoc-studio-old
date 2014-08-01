@@ -18,6 +18,7 @@
 package org.gemoc.gemoc_language_workbench.process.utils;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -48,6 +49,17 @@ public class EclipseResource
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static IProject getProject(String projectName)
+	{
+		IWorkspaceRoot myWorkspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+		return myWorkspaceRoot.getProject(projectName);
+	}
+	
+	public static boolean existProject(String projectName)
+	{
+		return getProject(projectName).exists();
 	}
 	
 }

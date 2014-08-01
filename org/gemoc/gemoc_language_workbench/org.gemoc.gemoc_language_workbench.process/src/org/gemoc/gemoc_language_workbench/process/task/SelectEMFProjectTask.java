@@ -21,12 +21,12 @@ import fr.obeo.dsl.process.ActionTask;
 
 import java.io.IOException;
 
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseUI;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
 
 /**
@@ -36,8 +36,6 @@ import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
  */
 public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 
-
-	
 	/**
 	 * Constructor.
 	 * 
@@ -46,23 +44,23 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 	 * @param task1
 	 *            the reference to the {@link ActionTask} corresponding to {@link CreateNewGemocLanguageProjectTask}
 	 */
-	public SelectEMFProjectTask(ActionTask task) {
+	public SelectEMFProjectTask(ActionTask task) 
+	{
 		super(task);
 	}
-
-
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void doAction(GemocLanguageProcessContext context) {
+	public void doAction(GemocLanguageProcessContext context) 
+	{
 		// create a wizard to select a .genmodel file
-		SelectEMFIProjectDialog dialog = new SelectEMFIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		SelectEMFIProjectDialog dialog = new SelectEMFIProjectDialog(EclipseUI.getActiveWorkbenchShell());
 		int res = dialog.open();
-		if(res == WizardDialog.OK){
+		if (res == WizardDialog.OK)
+		{
 			// update the project model
 			addEMFProjectToConf(context, (IProject)dialog.getResult()[0]);
 		}
@@ -73,26 +71,24 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void undoAction(GemocLanguageProcessContext context) {
+	public void undoAction(GemocLanguageProcessContext context) 
+	{
 		final GemocLanguageWorkbenchConfiguration config = context.getXdsmlModel();
-		if (config != null && config.getLanguageDefinition() != null
-				&& config.getLanguageDefinition().getDomainModelProject() != null) {
+		if (config != null 
+				&& config.getLanguageDefinition() != null
+				&& config.getLanguageDefinition().getDomainModelProject() != null) 
+		{
 			config.getLanguageDefinition().setDomainModelProject(null);
-			try {
+			try 
+			{
 				config.eResource().save(null);
-			} catch (IOException e) {
+			} 
+			catch (IOException e) 
+			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
-
-
-	
-	
-
-
-
-
 
 }
