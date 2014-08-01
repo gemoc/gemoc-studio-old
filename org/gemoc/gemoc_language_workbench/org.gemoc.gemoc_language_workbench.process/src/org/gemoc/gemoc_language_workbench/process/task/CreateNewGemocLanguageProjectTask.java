@@ -45,7 +45,7 @@ public class CreateNewGemocLanguageProjectTask extends ResourceActionProcessor
 	 */
 	public CreateNewGemocLanguageProjectTask(ActionTask task) 
 	{
-		super(task);
+		super(task, true);
 	}
 
 	public boolean validate(GemocLanguageProcessContext context) 
@@ -57,7 +57,8 @@ public class CreateNewGemocLanguageProjectTask extends ResourceActionProcessor
 	
 	public Object updateContextWhenDone(GemocLanguageProcessContext context) 
 	{
-		return context.getXdsmlFile();
+		context.loadXdsmlConfigURI();
+		return context.getXdsmlModel();
 	}
 
 	/**

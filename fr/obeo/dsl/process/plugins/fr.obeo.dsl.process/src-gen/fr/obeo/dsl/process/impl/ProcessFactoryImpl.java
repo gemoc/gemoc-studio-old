@@ -7,6 +7,7 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
 import fr.obeo.dsl.process.Or;
@@ -70,6 +71,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 			case ProcessPackage.AND: return createAnd();
 			case ProcessPackage.OR: return createOr();
 			case ProcessPackage.PROCESS_CONTEXT: return createProcessContext();
+			case ProcessPackage.CONTEXT_VARIABLE: return createContextVariable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -187,6 +189,16 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 	public ProcessContext createProcessContext() {
 		ProcessContextImpl processContext = new ProcessContextImpl();
 		return processContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContextVariable createContextVariable() {
+		ContextVariableImpl contextVariable = new ContextVariableImpl();
+		return contextVariable;
 	}
 
 	/**

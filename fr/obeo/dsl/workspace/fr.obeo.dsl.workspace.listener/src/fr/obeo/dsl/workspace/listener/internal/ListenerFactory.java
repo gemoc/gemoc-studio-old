@@ -17,8 +17,8 @@
  *******************************************************************************/
 package fr.obeo.dsl.workspace.listener.internal;
 
-import fr.obeo.dsl.process.Process;
-import fr.obeo.dsl.process.impl.ProcessImpl;
+import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.impl.ProcessContextImpl;
 import fr.obeo.dsl.workspace.listener.IListener;
 import fr.obeo.dsl.workspace.listener.IListenerFactory;
 
@@ -74,9 +74,9 @@ public class ListenerFactory implements IListenerFactory<Object> {
 				return new WorkbenchPartListener(workbenchPage);
 			}
 		});
-		map.put(ProcessImpl.class, new IListenerFactory<Process>() {
-			public IListener createListener(Process process) {
-				return new ProcessListener(process);
+		map.put(ProcessContextImpl.class, new IListenerFactory<ProcessContext>() {
+			public IListener createListener(ProcessContext processContext) {
+				return new ProcessContextListener(processContext);
 			}
 		});
 	}
@@ -87,16 +87,23 @@ public class ListenerFactory implements IListenerFactory<Object> {
 	 * @see fr.obeo.dsl.workspace.listener.IListenerFactory#createListener(java.lang.Object)
 	 */
 	public IListener createListener(Object object) {
-		final IListener res;
+		IListener res = null;
 
+		
 		@SuppressWarnings("unchecked")
 		IListenerFactory<Object> factory = (IListenerFactory<Object>)map.get(object.getClass());
+		if (factory == null) {
+			Class<?> currentClass = object.getClass().getSuperclass();
+			while(currentClass != null){
+				factory = (IListenerFactory<Object>)map.get(currentClass);
+				if(factory != null) break;
+				currentClass = currentClass.getSuperclass();
+				
+			}
+		}
 		if (factory != null) {
 			res = factory.createListener(object);
-		} else {
-			res = null;
 		}
-
 		return res;
 	}
 

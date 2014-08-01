@@ -638,22 +638,69 @@ public interface ProcessPackage extends EPackage {
 	int PROCESS_CONTEXT__DEFINITION = 1;
 
 	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CONTEXT__VARIABLES = 2;
+
+	/**
 	 * The number of structural features of the '<em>Context</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_CONTEXT_FEATURE_COUNT = 2;
+	int PROCESS_CONTEXT_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '<em>Artifact</em>' data type.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see java.lang.Object
-	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getArtifact()
+	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ContextVariableImpl <em>Context Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.obeo.dsl.process.impl.ContextVariableImpl
+	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getContextVariable()
 	 * @generated
 	 */
-	int ARTIFACT = 13;
+	int CONTEXT_VARIABLE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_VARIABLE__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Variable Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_VARIABLE__VARIABLE_VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Context Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_VARIABLE_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '<em>Object</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Object
+	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getObject()
+	 * @generated
+	 */
+	int OBJECT = 14;
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Process <em>Process</em>}'. <!--
@@ -1002,15 +1049,58 @@ public interface ProcessPackage extends EPackage {
 	EReference getProcessContext_Definition();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.Object <em>Artifact</em>}'.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Artifact</em>'.
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.dsl.process.ProcessContext#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @see fr.obeo.dsl.process.ProcessContext#getVariables()
+	 * @see #getProcessContext()
+	 * @generated
+	 */
+	EReference getProcessContext_Variables();
+
+	/**
+	 * Returns the meta object for class '{@link fr.obeo.dsl.process.ContextVariable <em>Context Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Context Variable</em>'.
+	 * @see fr.obeo.dsl.process.ContextVariable
+	 * @generated
+	 */
+	EClass getContextVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ContextVariable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see fr.obeo.dsl.process.ContextVariable#getName()
+	 * @see #getContextVariable()
+	 * @generated
+	 */
+	EAttribute getContextVariable_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ContextVariable#getVariableValue <em>Variable Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable Value</em>'.
+	 * @see fr.obeo.dsl.process.ContextVariable#getVariableValue()
+	 * @see #getContextVariable()
+	 * @generated
+	 */
+	EAttribute getContextVariable_VariableValue();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.Object <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Object</em>'.
 	 * @see java.lang.Object
 	 * @model instanceClass="java.lang.Object" serializeable="false"
 	 * @generated
 	 */
-	EDataType getArtifact();
+	EDataType getObject();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1320,14 +1410,48 @@ public interface ProcessPackage extends EPackage {
 		EReference PROCESS_CONTEXT__DEFINITION = eINSTANCE.getProcessContext_Definition();
 
 		/**
-		 * The meta object literal for the '<em>Artifact</em>' data type.
-		 * <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
-		 * @see java.lang.Object
-		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getArtifact()
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EDataType ARTIFACT = eINSTANCE.getArtifact();
+		EReference PROCESS_CONTEXT__VARIABLES = eINSTANCE.getProcessContext_Variables();
+
+		/**
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ContextVariableImpl <em>Context Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.obeo.dsl.process.impl.ContextVariableImpl
+		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getContextVariable()
+		 * @generated
+		 */
+		EClass CONTEXT_VARIABLE = eINSTANCE.getContextVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTEXT_VARIABLE__NAME = eINSTANCE.getContextVariable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTEXT_VARIABLE__VARIABLE_VALUE = eINSTANCE.getContextVariable_VariableValue();
+
+		/**
+		 * The meta object literal for the '<em>Object</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Object
+		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getObject()
+		 * @generated
+		 */
+		EDataType OBJECT = eINSTANCE.getObject();
 
 	}
 

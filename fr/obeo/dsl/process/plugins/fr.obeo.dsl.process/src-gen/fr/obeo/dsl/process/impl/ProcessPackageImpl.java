@@ -7,6 +7,7 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
@@ -111,10 +112,18 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	private EClass processContextEClass = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType artifactEDataType = null;
+	private EClass contextVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType objectEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -457,11 +466,48 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getArtifact() {
-		return artifactEDataType;
+	public EReference getProcessContext_Variables() {
+		return (EReference)processContextEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContextVariable() {
+		return contextVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContextVariable_Name() {
+		return (EAttribute)contextVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContextVariable_VariableValue() {
+		return (EAttribute)contextVariableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getObject() {
+		return objectEDataType;
 	}
 
 	/**
@@ -535,9 +581,14 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		processContextEClass = createEClass(PROCESS_CONTEXT);
 		createEAttribute(processContextEClass, PROCESS_CONTEXT__NAME);
 		createEReference(processContextEClass, PROCESS_CONTEXT__DEFINITION);
+		createEReference(processContextEClass, PROCESS_CONTEXT__VARIABLES);
+
+		contextVariableEClass = createEClass(CONTEXT_VARIABLE);
+		createEAttribute(contextVariableEClass, CONTEXT_VARIABLE__NAME);
+		createEAttribute(contextVariableEClass, CONTEXT_VARIABLE__VARIABLE_VALUE);
 
 		// Create data types
-		artifactEDataType = createEDataType(ARTIFACT);
+		objectEDataType = createEDataType(OBJECT);
 	}
 
 	/**
@@ -626,23 +677,35 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEClass(processContextEClass, ProcessContext.class, "ProcessContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessContext_Name(), ecorePackage.getEString(), "name", null, 1, 1, ProcessContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessContext_Definition(), this.getProcess(), null, "definition", null, 1, 1, ProcessContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessContext_Variables(), this.getContextVariable(), null, "variables", null, 0, -1, ProcessContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(processContextEClass, ecorePackage.getEBoolean(), "isDone", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(processContextEClass, null, "setDone", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getArtifact(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getObject(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(processContextEClass, null, "setUndone", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "reason", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(processContextEClass, this.getArtifact(), "getResult", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(processContextEClass, this.getObject(), "getResult", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(processContextEClass, null, "setVariableValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "variableName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getObject(), "variableValue", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(processContextEClass, this.getObject(), "getVariableValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "variableName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(contextVariableEClass, ContextVariable.class, "ContextVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContextVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, ContextVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContextVariable_VariableValue(), this.getObject(), "variableValue", null, 0, 1, ContextVariable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize data types
-		initEDataType(artifactEDataType, Object.class, "Artifact", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(objectEDataType, Object.class, "Object", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

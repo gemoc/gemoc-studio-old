@@ -15,24 +15,24 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process;
+package fr.obeo.dsl.workspace.listener.change.process;
 
-import fr.obeo.dsl.process.ProcessUtils;
-import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
+import fr.obeo.dsl.process.Task;
+import fr.obeo.dsl.workspace.listener.change.IChange;
 
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.emf.common.util.URI;
-
-public abstract class ProcessRunnerFactory 
+public class TaskChanged implements IChange<Task> 
 {
+	
+	private Task _task;
 
-	static public GemocLanguageProcessRunner createProcessRunner(URI uri)
+	public TaskChanged(Task task)
 	{
-		GemocLanguageProcessRunner runner = new GemocLanguageProcessRunner(uri);		
-		ProcessUtils.registerProcessRunner(runner);
-		WorkspaceUtils.createListener(runner.getContext()).addProcessor(runner, false);
-		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(runner, true);
-		return runner;
+		_task = task;
 	}
 	
+	public Task getObject() 
+	{
+		return _task;
+	}
+
 }

@@ -28,13 +28,21 @@ import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 public class GemocLanguageProcessContext extends ProcessContextImpl {
 
 	// convenient data that are maintained by some of the task in order to ease the search from other tasks
-	private GemocLanguageWorkbenchConfiguration _xdsmlModel;
+	// this
+	//private GemocLanguageWorkbenchConfiguration _xdsmlModel;
 	
-	private URI _xdsmlURI = null;
+	//private URI _xdsmlURI = null;
+	
+	/** String used to retreive an GemocLanguageWorkbenchConfiguration model element */
+	public static final String XDSML_MODEL_VAR = "XDSML_MODEL";
+	
+	/** String used to retreive the URI of the xsdml */
+	public static final String XDSML_FILE_URI_VAR = "XDSML_FILE_URI";
 	
 	
 	/** this data is indirectly retreived from the xdsml (via the reference to the genmodel that in turn reference the ecore file)*/ 
-	protected IFile ecoreIFile=null;
+	/** String used to retreive the IFile of the ecore of the domain */
+	public static final String ECORE_IFILE_VAR = "ECORE_IFILE";
 
 	
 
@@ -54,41 +62,58 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	
 	public void setXdsmlConfigURI(URI newUri)
 	{
-		if (newUri != _xdsmlURI)
+		if (newUri !=  null)		
 		{
-			_xdsmlURI = newUri;
-			_xdsmlModel = (GemocLanguageWorkbenchConfiguration)EMFResource.getFirstContent(_xdsmlURI);
+			if (!newUri.equals(getVariableValue(XDSML_FILE_URI_VAR)))
+			{
+				this.setVariableValue(XDSML_FILE_URI_VAR, newUri);
+				loadXdsmlConfigURI();
+			}
 		}
 	}
+	public void loadXdsmlConfigURI()
+	{
+		URI xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR);
+		if (xdsmlURI != null)
+		{
+			this.setVariableValue(XDSML_MODEL_VAR, EMFResource.getFirstContent(xdsmlURI));
+		}
+		else {
+			this.setVariableValue(XDSML_MODEL_VAR, null);
+		}
+	}
+	
 	
 	// getter and setters
 	// ------------------
 	
 	public GemocLanguageWorkbenchConfiguration getXdsmlModel() 
 	{
-		return _xdsmlModel;
+		return (GemocLanguageWorkbenchConfiguration)this.getVariableValue(XDSML_MODEL_VAR);
 	}
 
 	public URI getXdsmlURI()
 	{
-		return _xdsmlURI;
+		return (URI)getVariableValue(XDSML_FILE_URI_VAR);
 	}
 
 	public IFile getXdsmlFile() 
 	{
 		IFile file = null;
-		if (_xdsmlURI != null)
+		URI xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR);
+		if (xdsmlURI != null)
 		{
-			file = EclipseResource.getFile(_xdsmlURI);
+			file = EclipseResource.getFile(xdsmlURI);
 		}
 		return file;
 	}
 	
 	public IFile getEcoreIFile() {
+		IFile ecoreIFile = (IFile)getVariableValue(ECORE_IFILE_VAR);
 		return ecoreIFile;
 	}
 
 	public void setEcoreIFile(IFile ecoreIFile) {
-		this.ecoreIFile = ecoreIFile;
+		setVariableValue(ECORE_IFILE_VAR, ecoreIFile);
 	}
 }

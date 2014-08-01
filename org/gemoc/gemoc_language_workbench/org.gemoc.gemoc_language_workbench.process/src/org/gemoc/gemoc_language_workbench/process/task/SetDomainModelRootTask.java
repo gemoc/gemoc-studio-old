@@ -18,6 +18,7 @@
 package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
 
 import java.io.IOException;
@@ -77,7 +78,7 @@ public class SetDomainModelRootTask extends ResourceActionProcessor
 	 */
 	public SetDomainModelRootTask(ActionTask task) 
 	{
-		super(task);
+		super(task, false);
 	}
 
 	/**
@@ -294,14 +295,8 @@ public class SetDomainModelRootTask extends ResourceActionProcessor
 	@Override
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) 
 	{
-		// if xdsml of the process has changed
-		final URI uri = EclipseResource.getUri(resource);
-		if (uri.equals(context.getXdsmlURI()))
-		{
-			return true;
-		}
 		
-		// or if the changed resource is an IProject referenced by the xdsml
+		// if the changed resource is an IProject referenced by the xdsml
 		if (resource instanceof IProject)
 		{
 			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
@@ -331,14 +326,8 @@ public class SetDomainModelRootTask extends ResourceActionProcessor
 	@Override
 	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) 
 	{
-		// if xdsml of the process has changed
-		final URI uri = EclipseResource.getUri(resource);
-		if (uri.equals(context.getXdsmlURI()))
-		{
-			return true;
-		}
-		// or if the changed resource is the genmodel referenced by the xdsml
-		if (resource instanceof IProject)
+		// if the changed resource is the genmodel referenced by the xdsml
+		if (resource instanceof IFile)
 		{
 			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
 			if (dmp != null 
@@ -358,4 +347,12 @@ public class SetDomainModelRootTask extends ResourceActionProcessor
 		return false;
 	}
 
+	@Override
+	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,  ContextVariable variable){
+		// if the xdsml model has changed, need to reevaluate
+		if(variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)){
+			return true;
+		}
+		return false;
+	}
 }

@@ -2,6 +2,7 @@
  */
 package fr.obeo.dsl.process;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -71,6 +72,22 @@ public interface ProcessContext extends EObject {
 	void setDefinition(fr.obeo.dsl.process.Process value);
 
 	/**
+	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.obeo.dsl.process.ContextVariable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Variables</em>' containment reference list.
+	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Variables()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ContextVariable> getVariables();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Tells if the given
 	 * {@link ActionTask} is done. <!-- end-model-doc -->
 	 * 
@@ -105,5 +122,21 @@ public interface ProcessContext extends EObject {
 	 * @generated
 	 */
 	Object getResult(ActionTask task);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model variableNameRequired="true" variableValueDataType="fr.obeo.dsl.process.Object" variableValueRequired="true"
+	 * @generated
+	 */
+	void setVariableValue(String variableName, Object variableValue);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="fr.obeo.dsl.process.Object" variableNameRequired="true"
+	 * @generated
+	 */
+	Object getVariableValue(String variableName);
 
 } // ProcessContext

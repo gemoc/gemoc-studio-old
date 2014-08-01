@@ -189,7 +189,7 @@
         <details key="documentation" value="Marks the given {@link ActionTask} as done with the given value attached to it."/>
       </eAnnotations>
       <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
-      <eParameters name="value" lowerBound="1" eType="#//Artifact"/>
+      <eParameters name="value" lowerBound="1" eType="#//Object"/>
     </eOperations>
     <eOperations name="setUndone" lowerBound="1">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -198,16 +198,30 @@
       <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
       <eParameters name="reason" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="getResult" lowerBound="1" eType="#//Artifact">
+    <eOperations name="getResult" lowerBound="1" eType="#//Object">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Gets the result artifact attached to the given {@link ActionTask} if any, &lt;code>null&lt;/code> otherwise."/>
       </eAnnotations>
       <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
     </eOperations>
+    <eOperations name="setVariableValue">
+      <eParameters name="variableName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="variableValue" lowerBound="1" eType="#//Object"/>
+    </eOperations>
+    <eOperations name="getVariableValue" eType="#//Object">
+      <eParameters name="variableName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
         eType="#//Process"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//ContextVariable" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="Artifact" instanceClassName="java.lang.Object"
+  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"
       serializable="false"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextVariable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableValue" eType="#//Object"
+        transient="true"/>
+  </eClassifiers>
 </ecore:EPackage>

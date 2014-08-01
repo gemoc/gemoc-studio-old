@@ -7,6 +7,7 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
@@ -155,6 +156,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 			case ProcessPackage.PROCESS_CONTEXT: {
 				ProcessContext processContext = (ProcessContext)theEObject;
 				T result = caseProcessContext(processContext);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ProcessPackage.CONTEXT_VARIABLE: {
+				ContextVariable contextVariable = (ContextVariable)theEObject;
+				T result = caseContextVariable(contextVariable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -348,6 +355,21 @@ public class ProcessSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseProcessContext(ProcessContext object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Context Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Context Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseContextVariable(ContextVariable object) {
 		return null;
 	}
 

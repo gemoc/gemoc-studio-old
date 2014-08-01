@@ -99,6 +99,15 @@ public interface ProcessFactory extends EFactory {
 	ProcessContext createProcessContext();
 
 	/**
+	 * Returns a new object of class '<em>Context Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Context Variable</em>'.
+	 * @generated
+	 */
+	ContextVariable createContextVariable();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the package supported by this factory.

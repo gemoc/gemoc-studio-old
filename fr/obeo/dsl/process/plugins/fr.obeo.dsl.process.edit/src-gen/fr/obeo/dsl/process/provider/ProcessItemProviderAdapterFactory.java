@@ -297,6 +297,29 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.obeo.dsl.process.ContextVariable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContextVariableItemProvider contextVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.obeo.dsl.process.ContextVariable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContextVariableAdapter() {
+		if (contextVariableItemProvider == null) {
+			contextVariableItemProvider = new ContextVariableItemProvider(this);
+		}
+
+		return contextVariableItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -401,6 +424,7 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 		if (andItemProvider != null) andItemProvider.dispose();
 		if (orItemProvider != null) orItemProvider.dispose();
 		if (processContextItemProvider != null) processContextItemProvider.dispose();
+		if (contextVariableItemProvider != null) contextVariableItemProvider.dispose();
 	}
 
 }

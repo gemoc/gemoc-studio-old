@@ -3,18 +3,25 @@
 package fr.obeo.dsl.process.impl;
 
 import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.ProcessFactory;
 import fr.obeo.dsl.process.ProcessPackage;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.BasicNotifierImpl;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Context</b></em>'. <!-- end-user-doc
@@ -59,6 +66,16 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 * @ordered
 	 */
 	protected fr.obeo.dsl.process.Process definition;
+
+	/**
+	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #getVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ContextVariable> variables;
 
 	/**
 	 * The current progress of this instance of {@link Process}.
@@ -158,6 +175,19 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @generated
+	 */
+	public EList<ContextVariable> getVariables() {
+		if (variables == null) {
+			variables = new EObjectContainmentEList<ContextVariable>(ContextVariable.class, this,
+					ProcessPackage.PROCESS_CONTEXT__VARIABLES);
+		}
+		return variables;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean isDone(ActionTask task) {
@@ -204,6 +234,51 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @generated NOT
+	 */
+	public void setVariableValue(String variableName, Object variableValue) {
+		ContextVariable variable = getOrCreatecontextVariable(variableName);
+		variable.setVariableValue(variableValue);
+	}
+
+	protected ContextVariable getOrCreatecontextVariable(String name) {
+		for (ContextVariable variable : getVariables()) {
+			if (variable.getName().equals(name))
+				return variable;
+		}
+		ContextVariable variable = ProcessFactory.eINSTANCE.createContextVariable();
+		variable.setName(name);
+		getVariables().add(variable);
+		return variable;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public Object getVariableValue(String variableName) {
+		ContextVariable variable = getOrCreatecontextVariable(variableName);
+		return variable.getVariableValue();
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
+				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -215,6 +290,8 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 				if (resolve)
 					return getDefinition();
 				return basicGetDefinition();
+			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
+				return getVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -234,6 +311,10 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
 				setDefinition((fr.obeo.dsl.process.Process)newValue);
 				return;
+			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
+				getVariables().clear();
+				getVariables().addAll((Collection<? extends ContextVariable>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -252,6 +333,9 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
 				setDefinition((fr.obeo.dsl.process.Process)null);
 				return;
+			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
+				getVariables().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -268,6 +352,8 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
 				return definition != null;
+			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
+				return variables != null && !variables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

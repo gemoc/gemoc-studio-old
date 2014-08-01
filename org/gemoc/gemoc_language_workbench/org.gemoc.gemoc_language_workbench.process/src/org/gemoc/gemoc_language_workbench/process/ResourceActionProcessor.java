@@ -32,7 +32,7 @@ import org.eclipse.core.resources.IResource;
  *
  * @author ftanguy
  */
-public abstract class ResourceActionProcessor extends ActionProcessor 
+public abstract class ResourceActionProcessor extends BasicPrecedingActionProcessor 
 {
 
 	/**
@@ -41,9 +41,9 @@ public abstract class ResourceActionProcessor extends ActionProcessor
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 */
-	public ResourceActionProcessor(ActionTask task) 
+	public ResourceActionProcessor(ActionTask task, boolean acceptChangeOnPrecedingInternalChange) 
 	{
-		super(task);
+		super(task, acceptChangeOnPrecedingInternalChange);
 	}
 	
 	public boolean acceptChange(GemocLanguageProcessContext context, IChange<?> change) 
@@ -64,12 +64,24 @@ public abstract class ResourceActionProcessor extends ActionProcessor
 		else if(change instanceof ResourceContentChanged)
 		{
 			return acceptChangeForModifiedResource(context, (IResource)change.getObject());
-		} 
+		} 		
+		
+		return super.acceptChange(context, change);
+	}
+	
+	
+	 
+	
+	
+	
+	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context,  IResource resource){
 		return false;
 	}
-		
-	abstract public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context,  IResource resource);
-	abstract public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context,  IResource resource);
-	abstract public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context,  IResource resource);
+	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context,  IResource resource){
+		return false;
+	}
+	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context,  IResource resource){
+		return false;
+	}
 
 }

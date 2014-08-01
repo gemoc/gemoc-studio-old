@@ -7,6 +7,7 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
@@ -123,6 +124,10 @@ public class ProcessAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseProcessContext(ProcessContext object) {
 				return createProcessContextAdapter();
+			}
+			@Override
+			public Adapter caseContextVariable(ContextVariable object) {
+				return createContextVariableAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -304,6 +309,20 @@ public class ProcessAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProcessContextAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.obeo.dsl.process.ContextVariable <em>Context Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.obeo.dsl.process.ContextVariable
+	 * @generated
+	 */
+	public Adapter createContextVariableAdapter() {
 		return null;
 	}
 

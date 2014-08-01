@@ -18,6 +18,7 @@
 package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.ContextVariable;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -47,7 +48,7 @@ public class CreateNewEMFTreeEditorProjectTask extends ResourceActionProcessor {
 	 */
 	public CreateNewEMFTreeEditorProjectTask(ActionTask task) 
 	{
-		super(task);
+		super(task, true);
 	}
 
 	protected String undoneReason="";
@@ -173,12 +174,9 @@ public class CreateNewEMFTreeEditorProjectTask extends ResourceActionProcessor {
 
 
 	@Override
-	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) 
-	{
-		// if xdsml of the process has changed
-		final URI uri = EclipseResource.getUri(resource);
-		if (uri.equals(context.getXdsmlURI()))
-		{
+	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,  ContextVariable variable){
+		// if the xdsml model has changed, need to reevaluate
+		if(variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)){
 			return true;
 		}
 		return false;

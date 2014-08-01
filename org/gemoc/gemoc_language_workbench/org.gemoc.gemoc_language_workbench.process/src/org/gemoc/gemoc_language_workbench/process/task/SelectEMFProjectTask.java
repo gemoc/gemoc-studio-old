@@ -28,6 +28,8 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseUI;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction.CreateDomainModelAction;
 
 /**
  * Select an existing EMF project.
@@ -56,14 +58,10 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 	 */
 	public void doAction(GemocLanguageProcessContext context) 
 	{
-		// create a wizard to select a .genmodel file
-		SelectEMFIProjectDialog dialog = new SelectEMFIProjectDialog(EclipseUI.getActiveWorkbenchShell());
-		int res = dialog.open();
-		if (res == WizardDialog.OK)
-		{
-			// update the project model
-			addEMFProjectToConf(context, (IProject)dialog.getResult()[0]);
-		}
+		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
+		CreateDomainModelWizardContextAction action = new CreateDomainModelWizardContextAction(updatedGemocLanguageProject);
+		action.actionToExecute = CreateDomainModelAction.SELECT_EXISTING_EMF_PROJECT;
+		action.execute();
 	}
 
 	/**

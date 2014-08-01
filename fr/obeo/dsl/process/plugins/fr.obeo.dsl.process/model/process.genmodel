@@ -8,7 +8,7 @@
   <foreignModel>process.ecore</foreignModel>
   <genPackages prefix="Process" basePackage="fr.obeo.dsl" disposableProviderFactory="true"
       ecorePackage="process.ecore#/">
-    <genDataTypes ecoreDataType="process.ecore#//Artifact"/>
+    <genDataTypes ecoreDataType="process.ecore#//Object"/>
     <genClasses ecoreClass="process.ecore#//Process">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Process/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Process/task"/>
@@ -55,6 +55,7 @@
     <genClasses ecoreClass="process.ecore#//ProcessContext">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//ProcessContext/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessContext/definition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ProcessContext/variables"/>
       <genOperations ecoreOperation="process.ecore#//ProcessContext/isDone">
         <genParameters ecoreParameter="process.ecore#//ProcessContext/isDone/task"/>
       </genOperations>
@@ -69,6 +70,17 @@
       <genOperations ecoreOperation="process.ecore#//ProcessContext/getResult">
         <genParameters ecoreParameter="process.ecore#//ProcessContext/getResult/task"/>
       </genOperations>
+      <genOperations ecoreOperation="process.ecore#//ProcessContext/setVariableValue">
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/setVariableValue/variableName"/>
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/setVariableValue/variableValue"/>
+      </genOperations>
+      <genOperations ecoreOperation="process.ecore#//ProcessContext/getVariableValue">
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/getVariableValue/variableName"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="process.ecore#//ContextVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//ContextVariable/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute process.ecore#//ContextVariable/variableValue"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

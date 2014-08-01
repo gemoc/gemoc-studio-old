@@ -7,6 +7,7 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
@@ -121,8 +122,10 @@ public class ProcessValidator extends EObjectValidator {
 				return validateOr((Or)value, diagnostics, context);
 			case ProcessPackage.PROCESS_CONTEXT:
 				return validateProcessContext((ProcessContext)value, diagnostics, context);
-			case ProcessPackage.ARTIFACT:
-				return validateArtifact(value, diagnostics, context);
+			case ProcessPackage.CONTEXT_VARIABLE:
+				return validateContextVariable((ContextVariable)value, diagnostics, context);
+			case ProcessPackage.OBJECT:
+				return validateObject(value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -537,10 +540,20 @@ public class ProcessValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateArtifact(Object artifact, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateContextVariable(ContextVariable contextVariable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(contextVariable, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateObject(Object object, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

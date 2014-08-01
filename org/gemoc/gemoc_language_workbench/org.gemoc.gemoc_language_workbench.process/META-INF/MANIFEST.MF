@@ -27,5 +27,6 @@ Bundle-Activator: org.gemoc.gemoc_language_workbench.process.Activator
 Export-Package: org.gemoc.gemoc_language_workbench.process,
  org.gemoc.gemoc_language_workbench.process.handler,
  org.gemoc.gemoc_language_workbench.process.task,
+ org.gemoc.gemoc_language_workbench.process.utils,
  org.gemoc.gemoc_language_workbench.process.view
 Bundle-ActivationPolicy: lazy
