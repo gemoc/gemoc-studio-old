@@ -32,6 +32,8 @@ import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectXtextIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 
 //import org.eclipse.emf.ecoretools.design.wizard.EcoreModelerWizard;
@@ -228,49 +230,45 @@ public class CreateEditorProjectWizardContextAction {
 	
 	protected void selectExistingEMFTreeProject(){
 		// launch the appropriate wizard
+		// TODO filter only projects related to the current domain model
 		SelectAnyIProjectDialog dialog = new SelectAnyIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model
-			String projectName = ((IResource)dialog.getResult()[0]).getName();
-			// TODO detect selected project nature to create the correct element
-			MessageDialog.openWarning(
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-					"Gemoc Language Workbench UI",
-					"Fine detection of project nature not implemented yet, considered as a tree editor for the moment :-(");
+			String projectName = ((IResource)dialog.getResult()[0]).getName();			
 			TreeEditorProject editorProject = confFactoryImpl.eINSTANCE.createTreeEditorProject();
 			editorProject.setProjectName(projectName);
+			// TODO detection of the current extension
 			addProjectToConf(editorProject);
 		}
 	}
 	
 	protected void selectExistingXTextProject(){
 		// launch the appropriate wizard
-		SelectAnyIProjectDialog dialog = new SelectAnyIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		// TODO filter only projects related to the current domain model
+		SelectXtextIProjectDialog dialog = new SelectXtextIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model
 			String projectName = ((IResource)dialog.getResult()[0]).getName();
-			// TODO detect selected project nature to create the correct element
-			MessageDialog.openWarning(
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-					"Gemoc Language Workbench UI",
-					"Fine detection of project nature not implemented yet, considered as a tree editor for the moment :-(");
-			
+			EditorProject editorProject = confFactoryImpl.eINSTANCE.createXTextEditorProject();
+			editorProject.setProjectName(projectName);
+			// TODO detection of the current extension
+			addProjectToConf(editorProject);
 		}
 	}
 	protected void selectExistingSiriusProject(){
 		// launch the appropriate wizard
-		SelectAnyIProjectDialog dialog = new SelectAnyIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		// TODO filter only projects related to the current domain model
+		SelectAnyIProjectDialog dialog = new SelectODesignIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model
 			String projectName = ((IResource)dialog.getResult()[0]).getName();
-			// TODO detect selected project nature to create the correct element
-			MessageDialog.openWarning(
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-					"Gemoc Language Workbench UI",
-					"Fine detection of project nature not implemented yet, considered as a tree editor for the moment :-(");
+			EditorProject editorProject = confFactoryImpl.eINSTANCE.createODProject();
+			editorProject.setProjectName(projectName);
+			// TODO detection of the current extension
+			addProjectToConf(editorProject);
 			
 		}
 	}
