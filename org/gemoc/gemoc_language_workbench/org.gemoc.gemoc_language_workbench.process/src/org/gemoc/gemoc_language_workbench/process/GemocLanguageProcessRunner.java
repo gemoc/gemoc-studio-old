@@ -91,8 +91,7 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 			resource.load(GemocLanguageProcessRunner.class
 					.getResourceAsStream("/process/gemoc_language.process"), new HashMap<String, String>());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Activator.getDefault().error(e);
 		}
 		process = (Process)resource.getContents().get(0);
 

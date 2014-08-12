@@ -82,4 +82,9 @@ public class ContextComposedTaskItemProvider extends ComposedTaskItemProvider {
 		}
 	}
 
+	@Override
+	public String getText(Object object) {
+		return ((ComposedTask)object).getName();
+	}
+
 }

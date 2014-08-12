@@ -34,6 +34,7 @@ import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.process.AbstractProcessor;
+import org.gemoc.gemoc_language_workbench.process.Activator;
 
 /**
  * Select an existing EMF project.
@@ -188,8 +189,7 @@ public class Task2b extends AbstractProcessor {
 			try {
 				config.eResource().save(null);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Activator.getDefault().error(e);
 			}
 		}
 	}

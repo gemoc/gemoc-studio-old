@@ -39,6 +39,7 @@ import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.process.AbstractProcessor;
+import org.gemoc.gemoc_language_workbench.process.Activator;
 
 /**
  * Set domain model root.
@@ -228,8 +229,7 @@ public class Task3a extends AbstractProcessor {
 			try {
 				config.eResource().save(null);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Activator.getDefault().error(e);
 			}
 			context.setUndone(getActionTask(), null);
 		}
