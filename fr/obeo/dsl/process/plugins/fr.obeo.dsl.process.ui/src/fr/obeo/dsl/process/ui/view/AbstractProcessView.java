@@ -129,11 +129,12 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (event.getSelection() instanceof TreeSelection) {
 					TreeSelection selection = (TreeSelection)event.getSelection();
-					if (selection.getPaths().length > 0)
+					if (selection.getPaths().length > 0) {
 						if (selection.getPaths()[0].getLastSegment() instanceof Task) {
 							Task task = (Task)selection.getPaths()[0].getLastSegment();
 							setCurrentTask(task);
 						}
+					}
 				}
 				// fireEngineSelectionChanged();
 
@@ -207,6 +208,8 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 						// getProcessContext().getSelectedTask();
 						System.out.println("Button pressed");
 						break;
+					default:
+						break;
 				}
 			}
 		});
@@ -237,7 +240,12 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			} else {
 				doUndoButton.setText("Undo");
 			}
-			String description = task.getDescription() == null ? "" : task.getDescription();
+			String description;
+			if (task.getDescription() == null) {
+				description = "";
+			} else {
+				description = task.getDescription();
+			}
 			descriptionLabel.setText(description);
 			childrenTasksTreeViewer.getControl().setVisible(isComposedTask);
 			detailComposite.setVisible(true);

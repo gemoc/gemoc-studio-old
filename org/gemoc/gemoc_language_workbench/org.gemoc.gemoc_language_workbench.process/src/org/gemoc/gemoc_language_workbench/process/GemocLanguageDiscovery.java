@@ -36,78 +36,58 @@ import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
 public class GemocLanguageDiscovery implements IChangeProcessor {
 
-	public void process(IChange<?> change) 
-	{
-		if (change instanceof AbstractResourceChange) 
-		{
+	public void process(IChange<?> change) {
+		if (change instanceof AbstractResourceChange) {
 			final IResource resource = ((AbstractResourceChange)change).getObject();
 			final boolean isXDSMLFile = GemocProcessUtils.isXDSMLFile(resource);
 			final URI uri = EclipseResource.getUri(resource);
-			if (isXDSMLFile 
-				&& change instanceof ResourceAdded 
-				&& !existProcessRunner(uri)) 
-			{				
+			if (isXDSMLFile && change instanceof ResourceAdded && !existProcessRunner(uri)) {
 				createProcessRunner(uri);
-			}
-			else if (change instanceof ResourceMoved) 
-			{
+			} else if (change instanceof ResourceMoved) {
 				deleteProcessRunner(uri);
 				final IResource dest = ((ResourceMoved)change).getDestination();
 				final URI newUri = EclipseResource.getUri(dest);
 				createProcessRunner(newUri);
-			} 
-			else if (isXDSMLFile && change instanceof ResourceRemoved) 
-			{
+			} else if (isXDSMLFile && change instanceof ResourceRemoved) {
 				deleteProcessRunner(uri);
 			}
 		}
 	}
 
-	private boolean existProcessRunner(URI uri)
-	{
+	private boolean existProcessRunner(URI uri) {
 		return getProcessRunner(uri) != null;
 	}
-	
-	private GemocLanguageProcessRunner getProcessRunner(URI uri)
-	{
-		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners())
-		{
-			if (runner instanceof GemocLanguageProcessRunner)
-			{
+
+	private GemocLanguageProcessRunner getProcessRunner(URI uri) {
+		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners()) {
+			if (runner instanceof GemocLanguageProcessRunner) {
 				GemocLanguageProcessRunner gRunner = (GemocLanguageProcessRunner)runner;
 				if (gRunner.getCastedContext().getXdsmlURI() != null
-					&& gRunner.getCastedContext().getXdsmlURI().equals(uri))
-				{
+						&& gRunner.getCastedContext().getXdsmlURI().equals(uri)) {
 					return gRunner;
 				}
 			}
 		}
-		return null;		
-	}
-	
-	private GemocLanguageProcessRunner createProcessRunner(final URI uri) 
-	{
-		return ProcessRunnerFactory.createProcessRunner(uri);
+		return null;
 	}
 
-	private void deleteProcessRunner(final URI uri) 
-	{
+	private GemocLanguageProcessRunner createProcessRunner(final URI uri) {
+		return AbstractProcessRunnerFactory.createProcessRunner(uri);
+	}
+
+	private void deleteProcessRunner(final URI uri) {
 		GemocLanguageProcessRunner runner = getProcessRunner(uri);
-		if (runner != null)
-		{
+		if (runner != null) {
 			ProcessUtils.unregisterProcessRunner(runner);
-			WorkspaceUtils.removeProcessor(runner);			
+			WorkspaceUtils.removeProcessor(runner);
 		}
 	}
 
-	public void stop() 
-	{
+	public void stop() {
 		ArrayList<IProcessRunner> runners = new ArrayList<IProcessRunner>();
 		runners.addAll(ProcessUtils.getRegisteredRunners());
-		for(IProcessRunner runner :  runners)
-		{
-			if(runner instanceof GemocLanguageProcessRunner)
-			{
+		for (IProcessRunner runner : runners) {
+			if (runner instanceof GemocLanguageProcessRunner) {
 				GemocLanguageProcessRunner gRunner = (GemocLanguageProcessRunner)runner;
 				ProcessUtils.unregisterProcessRunner(gRunner);
 				WorkspaceUtils.removeProcessor(gRunner);

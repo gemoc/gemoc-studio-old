@@ -19,7 +19,6 @@ package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ContextVariable;
-import fr.obeo.dsl.process.ProcessContext;
 
 import java.io.File;
 
@@ -41,9 +40,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
+import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
-import org.gemoc.gemoc_language_workbench.process.ResourceActionProcessor;
-import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 
@@ -52,11 +50,11 @@ import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class EditEMFDomainConceptsTask extends ResourceActionProcessor 
-{
+public class EditEMFDomainConceptsTask extends AbstractResourceActionProcessor {
 
-	protected String undoneReason="";
-	protected String lastEClassName="";
+	protected String undoneReason = "";
+
+	protected String lastEClassName = "";
 
 	/**
 	 * Constructor.
@@ -64,12 +62,12 @@ public class EditEMFDomainConceptsTask extends ResourceActionProcessor
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 * @param task1
-	 *            the reference to the {@link ActionTask} corresponding to {@link CreateNewGemocLanguageProjectTask}
+	 *            the reference to the {@link ActionTask} corresponding to
+	 *            {@link CreateNewGemocLanguageProjectTask}
 	 * @param task2b
 	 *            the reference to the {@link ActionTask} corresponding to {@link SelectEMFProjectTask}
 	 */
-	public EditEMFDomainConceptsTask(ActionTask task) 
-	{
+	public EditEMFDomainConceptsTask(ActionTask task) {
 		super(task, true);
 	}
 
@@ -79,83 +77,67 @@ public class EditEMFDomainConceptsTask extends ResourceActionProcessor
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#updateContexts(fr.obeo.dsl.process.IProcessRunner,
 	 *      fr.obeo.dsl.workspace.listener.change.IChange)
 	 */
-	public Object updateContextWhenDone(GemocLanguageProcessContext context) 
-	{
+	public Object updateContextWhenDone(GemocLanguageProcessContext context) {
 		return lastEClassName;
 	}
-	public String updateContextWhenUndone(GemocLanguageProcessContext context) 
-	{
+
+	public String updateContextWhenUndone(GemocLanguageProcessContext context) {
 		return undoneReason;
 	}
+
 	/**
 	 * Updates the given {@link ProcessContext}.
 	 * 
 	 * @param context
 	 *            the {@link ProcessContext}
 	 */
-	public boolean validate(GemocLanguageProcessContext context) 
-	{	
+	public boolean validate(GemocLanguageProcessContext context) {
+		boolean result = false;
 		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-		if (dmp != null 
-			&& dmp instanceof EMFEcoreProject)
-		{
+		if (dmp != null && dmp instanceof EMFEcoreProject) {
 			EMFEcoreProject eep = (EMFEcoreProject)dmp;
-			if (eep.getEmfGenmodel() == null)
-			{
-				undoneReason = "genmodel not referenced in xdsml";
-				return false;
-			}
-			String genModelPath = eep.getEmfGenmodel().getLocationURI();
-			if (genModelPath == null 
-				|| genModelPath.length() == 0) 
-			{
-				undoneReason = "referenced genmodel not valid";
-			}
-			else
-			{
+			if (eep.getEmfGenmodel() == null || eep.getEmfGenmodel().getLocationURI() == null || eep.getEmfGenmodel().getLocationURI().length() == 0) {
+				undoneReason = "no valid genmodel referenced in xdsml";
+				result = false;
+			} else {
+				String genModelPath = eep.getEmfGenmodel().getLocationURI();
 				final ResourceSet resourceSet = new ResourceSetImpl();
-				try{
-					final Resource r = resourceSet.getResource(URI.createPlatformResourceURI("/" + genModelPath, true), true);
-					if (r.getContents().size() > 0 
-						&& r.getContents().get(0) instanceof GenModel
-						&& hasClassifier((GenModel)r.getContents().get(0))) 
-					{
-						return true;
-					} 
-					else 
-					{
+				try {
+					final Resource r = resourceSet.getResource(URI.createPlatformResourceURI("/"
+							+ genModelPath, true), true);
+					if (r.getContents().size() > 0 && r.getContents().get(0) instanceof GenModel
+							&& hasClassifier((GenModel)r.getContents().get(0))) {
+						result = true;
+					} else {
 						undoneReason = "No classifier defined in Domain model.";
 					}
-				}
-				catch(Exception e)
-				{
+					// CHECKSTYLE:OFF
+				} catch (Exception e) {
 					undoneReason = "problem getting genmodel content (check the uri in the xdsml ?)";
-				}
+				} // CHECKSTYLE:ON
 			}
-			return false;
+			return result;
 		}
 		undoneReason = "no EMF project referenced in xdsml";
-		return false;
+		return result;
 	}
 
 	/**
-	 * Tells if the given {@link GenModel} contains at least one {@link org.eclipse.emf.ecore.EClassifier EClassifier}.
+	 * Tells if the given {@link GenModel} contains at least one {@link org.eclipse.emf.ecore.EClassifier
+	 * EClassifier}.
 	 * 
 	 * @param genModel
 	 *            the {@link GenModel}
-	 * @return <code>true</code> if the given {@link GenModel} contains at least one {@link org.eclipse.emf.ecore.EClassifier EClassifier}, <code>false</code> otherwise
+	 * @return <code>true</code> if the given {@link GenModel} contains at least one
+	 *         {@link org.eclipse.emf.ecore.EClassifier EClassifier}, <code>false</code> otherwise
 	 */
-	private boolean hasClassifier(GenModel genModel) 
-	{
+	private boolean hasClassifier(GenModel genModel) {
 		boolean res = false;
 
-		for (GenPackage genPkg : genModel.getAllGenPackagesWithClassifiers()) 
-		{
+		for (GenPackage genPkg : genModel.getAllGenPackagesWithClassifiers()) {
 			final EPackage ePkg = genPkg.getEcorePackage();
-			if (ePkg != null) 
-			{
-				if (!ePkg.getEClassifiers().isEmpty()) 
-				{
+			if (ePkg != null) {
+				if (!ePkg.getEClassifiers().isEmpty()) {
 					lastEClassName = ePkg.getEClassifiers().get(0).getName();
 					res = true;
 					break;
@@ -170,31 +152,22 @@ public class EditEMFDomainConceptsTask extends ResourceActionProcessor
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void doAction(GemocLanguageProcessContext context) 
-	{
+	public void doAction(GemocLanguageProcessContext context) {
 		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
 		ActiveFile activeFileEcore = new ActiveFileEcore(updatedGemocLanguageProject);
 		IFile ecoreFile = activeFileEcore.getActiveFile();
-		if (ecoreFile != null) 
-		{
+		if (ecoreFile != null) {
 			File fileToOpen = new File(ecoreFile.getLocation().toOSString());
-			if (fileToOpen.exists() 
-				&& fileToOpen.isFile()) 
-			{
-			    IFileStore fileStore = EFS.getLocalFileSystem().getStore(fileToOpen.toURI());
-			    IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-			    try 
-			    {
-			        IDE.openEditorOnFileStore( page, fileStore );
-			    } 
-			    catch ( PartInitException e ) 
-			    {
-			        //Put your exception handler here if you wish to
-			    }
-			} 
-			else 
-			{
-			    //Do something if the file does not exist
+			if (fileToOpen.exists() && fileToOpen.isFile()) {
+				IFileStore fileStore = EFS.getLocalFileSystem().getStore(fileToOpen.toURI());
+				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+				try {
+					IDE.openEditorOnFileStore(page, fileStore);
+				} catch (PartInitException e) {
+					// Put your exception handler here if you wish to
+				}
+			} else {
+				// Do something if the file does not exist
 			}
 		}
 
@@ -205,130 +178,108 @@ public class EditEMFDomainConceptsTask extends ResourceActionProcessor
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void undoAction(GemocLanguageProcessContext context) 
-	{
-		
+	public void undoAction(GemocLanguageProcessContext context) {
+
 	}
-	
+
 	@Override
-	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) 
-	{
+	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
+		boolean result = false;
 		// if the changed resource is an IProject referenced by the xdsml
-		if (resource instanceof IProject)
-		{
+		if (resource instanceof IProject) {
 			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-			if (dmp != null 
-				&& dmp instanceof EMFEcoreProject)
-			{
+			if (dmp != null && dmp instanceof EMFEcoreProject) {
 				EMFEcoreProject eep = (EMFEcoreProject)dmp;
 				String projectName = eep.getProjectName();
-				if (resource.getName().equals(projectName))
-				{
-					return true;
-				}				
-			}
-		}
-		// if the change is about the ecoreFile or genmodel
-		if (resource instanceof IFile)
-		{
-			if (context.getEcoreIFile() !=  null)
-			{
-				return resource.getFullPath().toString().equals(context.getEcoreIFile().getFullPath().toString());
-			}
-			// if the change happen on the genmodel referenced by the xdsml
-			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-			if (dmp != null 
-				&& dmp instanceof EMFEcoreProject)
-			{
-				EMFEcoreProject eep = (EMFEcoreProject)dmp;
-				if (eep.getEmfGenmodel() != null)
-				{
-					if (resource.getLocationURI().toString().equals(eep.getEmfGenmodel().getLocationURI()))
-					{
-						return true;
-					}
+				if (resource.getName().equals(projectName)) {
+					result = true;
 				}
 			}
 		}
-		return false;
+		// if the change is about the ecoreFile or genmodel
+		if (!result && resource instanceof IFile) {
+			if (context.getEcoreIFile() != null) {
+				result = resource.getFullPath().toString().equals(
+						context.getEcoreIFile().getFullPath().toString());
+			} else {
+				// if the change happen on the genmodel referenced by the xdsml
+				DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition()
+						.getDomainModelProject();
+				if (dmp != null
+						&& dmp instanceof EMFEcoreProject
+						&& ((EMFEcoreProject)dmp).getEmfGenmodel() != null
+						&& resource.getLocationURI().toString().equals(
+								((EMFEcoreProject)dmp).getEmfGenmodel().getLocationURI())) {
+					result = true;
+
+				}
+			}
+		}
+		return result;
 	}
 
 	@Override
-	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) 
-	{
-		//  if the changed resource is an IProject referenced by the xdsml
-		if (resource instanceof IProject)
-		{
+	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+		boolean result = false;
+		// if the changed resource is an IProject referenced by the xdsml
+		if (resource instanceof IProject) {
 			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-			if (dmp != null 
-				&& dmp instanceof EMFEcoreProject)
-			{
+			if (dmp != null && dmp instanceof EMFEcoreProject) {
 				EMFEcoreProject eep = (EMFEcoreProject)dmp;
 				String projectName = eep.getProjectName();
-				if (resource.getName().equals(projectName))
-				{
+				if (resource.getName().equals(projectName)) {
 					return true;
 				}
 			}
 		}
 		// if the change is about the ecoreFile or genmodel
-		if (resource instanceof IFile)
-		{
-			if (context.getEcoreIFile() !=  null)
-			{
-				return resource.getFullPath().toString().equals(context.getEcoreIFile().getFullPath().toString());
-			}
-			// if the change happen on the genmodel referenced by the xdsml
-			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-			if (dmp != null 
-				&& dmp instanceof EMFEcoreProject)
-			{
-				EMFEcoreProject eep = (EMFEcoreProject)dmp;
-				if (eep.getEmfGenmodel() != null)
-				{
-					if (resource.getLocationURI().toString().equals(eep.getEmfGenmodel().getLocationURI()))
-					{
-						return true;
-					}
+		if (resource instanceof IFile) {
+			if (context.getEcoreIFile() != null) {
+				result = resource.getFullPath().toString().equals(
+						context.getEcoreIFile().getFullPath().toString());
+			} else {
+				// if the change happen on the genmodel referenced by the xdsml
+				DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition()
+						.getDomainModelProject();
+				if (dmp != null
+						&& dmp instanceof EMFEcoreProject
+						&& ((EMFEcoreProject)dmp).getEmfGenmodel() != null
+						&& resource.getLocationURI().toString().equals(
+								((EMFEcoreProject)dmp).getEmfGenmodel().getLocationURI())) {
+					result = true;
+
 				}
 			}
 		}
-		return false;
+		return result;
 	}
 
 	@Override
-	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) 
-	{
-
+	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
+		boolean result = false;
 		// if the change is about the ecoreFile or genmodel
-		if (resource instanceof IFile)
-		{
-			if (context.getEcoreIFile() !=  null)
-			{
-				return resource.getFullPath().toString().equals(context.getEcoreIFile().getFullPath().toString());
+		if (resource instanceof IFile) {
+			if (context.getEcoreIFile() != null) {
+				return resource.getFullPath().toString().equals(
+						context.getEcoreIFile().getFullPath().toString());
 			}
 			// if the change happen on the genmodel referenced by the xdsml
 			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-			if (dmp != null 
-				&& dmp instanceof EMFEcoreProject)
-			{
+			if (dmp != null && dmp instanceof EMFEcoreProject) {
 				EMFEcoreProject eep = (EMFEcoreProject)dmp;
-				if (eep.getEmfGenmodel() != null)
-				{
-					if (resource.getLocationURI().toString().equals(eep.getEmfGenmodel().getLocationURI()))
-					{
-						return true;
-					}
+				if (eep.getEmfGenmodel() != null
+						&& resource.getLocationURI().toString().equals(eep.getEmfGenmodel().getLocationURI())) {
+					result = true;
 				}
 			}
 		}
-		return false;
+		return result;
 	}
-	
+
 	@Override
-	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,  ContextVariable variable){
+	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
-		if(variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)){
+		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;
 		}
 		return false;

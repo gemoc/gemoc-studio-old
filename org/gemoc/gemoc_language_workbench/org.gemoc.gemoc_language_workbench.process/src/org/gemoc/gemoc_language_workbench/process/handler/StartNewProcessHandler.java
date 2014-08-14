@@ -28,20 +28,17 @@ import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessRunner;
 
 public class StartNewProcessHandler extends AbstractHandler {
 
-	public Object execute(ExecutionEvent event) throws ExecutionException 
-	{
+	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// start a new context with an empty URI, register it
 		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(null);
 		List<ActionTask> tasks = procRunner.getStartNewProcessActionTasks();
-			
-		if (tasks.size() == 1)
-		{
-//			ActionProcessor processor = new GemocLanguageProcessJavaTaskFactory().createJavaTask(tasks.get(0));
-//			processor.doAction(null);
-			procRunner.doAction( tasks.get(0));
-		}
-		else
-		{
+
+		if (tasks.size() == 1) {
+			// ActionProcessor processor = new
+			// GemocLanguageProcessJavaTaskFactory().createJavaTask(tasks.get(0));
+			// processor.doAction(null);
+			procRunner.doAction(tasks.get(0));
+		} else {
 			throw new ExecutionException("Not implemented");
 		}
 		return null;

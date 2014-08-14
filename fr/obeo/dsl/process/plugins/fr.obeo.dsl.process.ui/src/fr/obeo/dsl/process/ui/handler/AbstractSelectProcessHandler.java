@@ -18,7 +18,6 @@
 package fr.obeo.dsl.process.ui.handler;
 
 import fr.obeo.dsl.process.IProcessRunner;
-import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.provider.CustomProcessItemProviderAdapterFactory;
 
 import java.util.List;
@@ -79,9 +78,9 @@ public abstract class AbstractSelectProcessHandler extends AbstractHandler {
 		dialog.setMessage("Select a process:");
 		dialog.setInput(processRunners);
 		IProcessRunner currentProcessRunner = getCurrentProcessRunner(event);
-		if (currentProcessRunner != null)
+		if (currentProcessRunner != null) {
 			dialog.setInitialSelections(new IProcessRunner[] {currentProcessRunner });
-
+		}
 		// final ListDialog dialog = new ListDialog(shell, processRunners, new AdapterFactoryContentProvider(
 		// adapterFactory) {
 		// @Override
@@ -112,23 +111,23 @@ public abstract class AbstractSelectProcessHandler extends AbstractHandler {
 	}
 
 	/**
-	 * Gets the {@link List} of {@link ProcessContext} according to the given {@link ExecutionEvent}.
+	 * Gets the {@link List} of {@link IProcessRunner} according to the given {@link ExecutionEvent}.
 	 * 
 	 * @param event
 	 *            the {@link ExecutionEvent}
-	 * @return the {@link List} of {@link ProcessContext} according to the given {@link ExecutionEvent}
+	 * @return the {@link List} of {@link IProcessRunner} according to the given {@link ExecutionEvent}
 	 */
 	protected abstract List<IProcessRunner> getProcessRunners(ExecutionEvent event);
 
 	protected abstract IProcessRunner getCurrentProcessRunner(ExecutionEvent event);
 
 	/**
-	 * Sets the given {@link ProcessContext} according to the given {@link ExecutionEvent}.
+	 * Sets the given {@link IProcessRunner} according to the given {@link ExecutionEvent}.
 	 * 
 	 * @param event
 	 *            the {@link ExecutionEvent}
 	 * @param processContext
-	 *            the {@link ProcessContext}
+	 *            the {@link IProcessRunner}
 	 */
 	protected abstract void setProcessRunner(ExecutionEvent event, IProcessRunner processRunner);
 

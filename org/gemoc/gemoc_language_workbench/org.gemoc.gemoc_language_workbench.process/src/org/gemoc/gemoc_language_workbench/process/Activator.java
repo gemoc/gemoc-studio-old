@@ -80,9 +80,10 @@ public class Activator extends Plugin {
 		processDiscovery = new GemocLanguageDiscovery();
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		final IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
-		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).addProcessor(processDiscovery, true);
+		WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage())
+				.addProcessor(processDiscovery, true);
 		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(processDiscovery, true);
-	
+
 	}
 
 	/**
@@ -97,11 +98,12 @@ public class Activator extends Plugin {
 
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		final IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
-		if(activeWorkbenchWindow != null){
-			WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).removeProcessor(processDiscovery);
+		if (activeWorkbenchWindow != null) {
+			WorkspaceUtils.getListener(activeWorkbenchWindow.getActivePage()).removeProcessor(
+					processDiscovery);
 		}
 		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).removeProcessor(processDiscovery);
-		
+
 		super.stop(context);
 	}
 

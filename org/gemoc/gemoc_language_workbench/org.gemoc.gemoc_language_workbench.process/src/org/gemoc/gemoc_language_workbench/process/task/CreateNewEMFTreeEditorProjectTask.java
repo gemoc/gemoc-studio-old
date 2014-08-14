@@ -27,8 +27,8 @@ import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
+import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
-import org.gemoc.gemoc_language_workbench.process.ResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardContextAction.CreateEditorProjectAction;
@@ -38,7 +38,9 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardCo
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewEMFTreeEditorProjectTask extends ResourceActionProcessor {
+public class CreateNewEMFTreeEditorProjectTask extends AbstractResourceActionProcessor {
+
+	protected String undoneReason = "";
 
 	/**
 	 * Constructor.
@@ -46,96 +48,79 @@ public class CreateNewEMFTreeEditorProjectTask extends ResourceActionProcessor {
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 */
-	public CreateNewEMFTreeEditorProjectTask(ActionTask task) 
-	{
+	public CreateNewEMFTreeEditorProjectTask(ActionTask task) {
 		super(task, true);
 	}
 
-	protected String undoneReason="";
-	
-	public boolean validate(GemocLanguageProcessContext context) 
-	{		
+	public boolean validate(GemocLanguageProcessContext context) {
+		boolean result = false;
 		// it exists an EMF Tree editor project that is referenced by the xdsml
-		// else setUndone 	
+		// else setUndone
 		EditorProject treeEditorProjet = findTreeEditorInXDSML(context.getXdsmlModel());
-		if (treeEditorProjet != null)
-		{
+		if (treeEditorProjet != null) {
 			String projectName = treeEditorProjet.getProjectName();
-			if (EclipseResource.existProject(projectName))
-			{
-				return true;
-			}
-			else
-			{
+			if (EclipseResource.existProject(projectName)) {
+				result = true;
+			} else {
 				undoneReason = "Project " + projectName + " doesn't exist, check your xdsml file.";
 			}
-			return true;
-		}
-		else{
+			result = true;
+		} else {
 			undoneReason = "No Tree editor project referenced in your xdsml file.";
-		}		
-		return false;
+		}
+		return result;
 	}
 
-
-	public Object updateContextWhenDone(GemocLanguageProcessContext context) 
-	{
-		EditorProject treeEditorProjet = findTreeEditorInXDSML(context.getXdsmlModel());		
+	public Object updateContextWhenDone(GemocLanguageProcessContext context) {
+		EditorProject treeEditorProjet = findTreeEditorInXDSML(context.getXdsmlModel());
 		return treeEditorProjet;
 	}
-	 
-	private EditorProject findTreeEditorInXDSML(GemocLanguageWorkbenchConfiguration xdsmlModel)
-	{		
-		EList<EditorProject> editorsProjects = xdsmlModel.getLanguageDefinition().getEditorProjects();	
-		for (EditorProject editorProject : editorsProjects)
-		{
-			if (editorProject instanceof TreeEditorProject) 
+
+	private EditorProject findTreeEditorInXDSML(GemocLanguageWorkbenchConfiguration xdsmlModel) {
+		EList<EditorProject> editorsProjects = xdsmlModel.getLanguageDefinition().getEditorProjects();
+		for (EditorProject editorProject : editorsProjects) {
+			if (editorProject instanceof TreeEditorProject) {
 				return editorProject;
+			}
 		}
 		return null;
 	}
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void doAction(GemocLanguageProcessContext context) 
-	{
+	public void doAction(GemocLanguageProcessContext context) {
 		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
-		CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(updatedGemocLanguageProject);
+		CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(
+				updatedGemocLanguageProject);
 		action.actionToExecute = CreateEditorProjectAction.CREATE_NEW_EMFTREE_PROJECT;
-		action.execute();	
-	}	
-		
+		action.execute();
+	}
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void undoAction(GemocLanguageProcessContext context) 
-	{
+	public void undoAction(GemocLanguageProcessContext context) {
 		// nothing to do here
 	}
 
-	public String updateContextWhenUndone(GemocLanguageProcessContext context) 
-	{
+	public String updateContextWhenUndone(GemocLanguageProcessContext context) {
 		return undoneReason;
 	}
 
-
 	@Override
-	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) 
-	{
+	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if the changed resource is an IProject referenced by the xdsml as TreeEditor
-		if (resource instanceof IProject)
-		{
-			EList<EditorProject> editorsProjects = context.getXdsmlModel().getLanguageDefinition().getEditorProjects();			
-			for (EditorProject editorProject : editorsProjects)
-			{
-				if (editorProject instanceof TreeEditorProject)
-				{
-					if (resource.getName().equals(editorProject.getProjectName()))
-					{
+		if (resource instanceof IProject) {
+			EList<EditorProject> editorsProjects = context.getXdsmlModel().getLanguageDefinition()
+					.getEditorProjects();
+			for (EditorProject editorProject : editorsProjects) {
+				if (editorProject instanceof TreeEditorProject) {
+					if (resource.getName().equals(editorProject.getProjectName())) {
 						return true;
 					}
 				}
@@ -145,41 +130,36 @@ public class CreateNewEMFTreeEditorProjectTask extends ResourceActionProcessor {
 	}
 
 	@Override
-	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) 
-	{
+	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+		boolean result = false;
 		// if xdsml of the process has changed
 		final URI uri = EclipseResource.getUri(resource);
-		if (uri.equals(context.getXdsmlURI()))
-		{
-			return true;
-		}
-		
+		if (uri.equals(context.getXdsmlURI())) {
+			result = true;
+		} else
+
 		// or if the changed resource is an IProject referenced by the xdsml as TreeEditor
-		if (resource instanceof IProject)
-		{
-			EList<EditorProject> editorsProjects = context.getXdsmlModel().getLanguageDefinition().getEditorProjects();		
-			for (EditorProject editorProject : editorsProjects)
-			{
-				if (editorProject instanceof TreeEditorProject)
-				{
-					if (resource.getName().equals(editorProject.getProjectName()))
-					{
-						return true;
+		if (resource instanceof IProject) {
+			EList<EditorProject> editorsProjects = context.getXdsmlModel().getLanguageDefinition()
+					.getEditorProjects();
+			for (EditorProject editorProject : editorsProjects) {
+				if (editorProject instanceof TreeEditorProject) {
+					if (resource.getName().equals(editorProject.getProjectName())) {
+						result = true;
 					}
 				}
 			}
 		}
-		return false;
+		return result;
 	}
 
-
 	@Override
-	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,  ContextVariable variable){
+	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
-		if(variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)){
+		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;
 		}
 		return false;
 	}
-	
+
 }

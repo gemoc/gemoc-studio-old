@@ -20,19 +20,22 @@ package fr.obeo.dsl.workspace.listener.change.process;
 import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 
-public class VariableChanged implements IChange<ContextVariable> 
-{
-	
-	private ContextVariable _contextVariable;
+public class VariableChanged implements IChange<ContextVariable> {
 
-	public VariableChanged(ContextVariable contextVariable)
-	{
-		_contextVariable = contextVariable;
+	private ContextVariable contextVariable;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param contextVariable
+	 *            the {@link ContextVariable} that has changed
+	 */
+	public VariableChanged(ContextVariable contextVariable) {
+		this.contextVariable = contextVariable;
 	}
-	
-	public ContextVariable getObject() 
-	{
-		return _contextVariable;
+
+	public ContextVariable getObject() {
+		return contextVariable;
 	}
 
 }

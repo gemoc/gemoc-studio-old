@@ -22,9 +22,11 @@ import org.eclipse.emf.common.util.URI;
 
 public final class EMFUri {
 
-	public static URI from(IResource resource)
-	{
+	private EMFUri() {
+	}
+
+	public static URI from(IResource resource) {
 		return URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
 	}
-	
+
 }

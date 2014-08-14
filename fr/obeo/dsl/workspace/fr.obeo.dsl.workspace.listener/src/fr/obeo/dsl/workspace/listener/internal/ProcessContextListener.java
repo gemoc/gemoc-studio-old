@@ -28,63 +28,49 @@ import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 
-public class ProcessContextListener extends AbstractListener<ProcessContext> 
-{
+public class ProcessContextListener extends AbstractListener<ProcessContext> {
 
-	private EContentAdapter _adapter = null;
-	
-	public ProcessContextListener(ProcessContext observed) 
-	{
+	private EContentAdapter adapter;
+
+	public ProcessContextListener(ProcessContext observed) {
 		super(observed);
-		_adapter = new EContentAdapter()
-		{
-		    public void notifyChanged(Notification notification) 
-		    {
-		        super.notifyChanged(notification);
-		        processNotification(notification);
-		    }
+		adapter = new EContentAdapter() {
+			public void notifyChanged(Notification notification) {
+				super.notifyChanged(notification);
+				processNotification(notification);
+			}
 		};
-		observed.eAdapters().add(_adapter);
-		observed.getDefinition().eAdapters().add(_adapter);
+		observed.eAdapters().add(adapter);
+		observed.getDefinition().eAdapters().add(adapter);
 	}
 
-	public void dispose() 
-	{
-		getObserved().eAdapters().remove(_adapter);
+	public void dispose() {
+		getObserved().eAdapters().remove(adapter);
 	}
 
 	@Override
-	protected void notifyCurrentState(ProcessContext observed2, IChangeProcessor processor) 
-	{
+	protected void notifyCurrentState(ProcessContext observed2, IChangeProcessor processor) {
 		throw new RuntimeException("not supported");
 	}
 
-	private void processNotification(Notification notification) 
-	{
-		if (notification.getNotifier() instanceof Task)
-		{
+	private void processNotification(Notification notification) {
+		if (notification.getNotifier() instanceof Task) {
 			Task task = (Task)notification.getNotifier();
-			if (notification.getEventType() == Notification.SET
-				&& notification.getNewValue() != null)
-			{
-				Object newValue = notification.getNewValue();				
-				if (!newValue.equals(notification.getOldValue()))
-				{
+			if (notification.getEventType() == Notification.SET && notification.getNewValue() != null) {
+				Object newValue = notification.getNewValue();
+				if (!newValue.equals(notification.getOldValue())) {
 					TaskChanged change = new TaskChanged(task);
 					fireChange(change);
 				}
 			}
 		}
-		if (notification.getNotifier() instanceof ContextVariable)
-		{
+		if (notification.getNotifier() instanceof ContextVariable) {
 			ContextVariable variable = (ContextVariable)notification.getNotifier();
 			if (notification.getEventType() == Notification.SET
 					&& notification.getFeatureID(ContextVariable.class) == ProcessPackage.CONTEXT_VARIABLE__VARIABLE_VALUE
-					&& notification.getNewValue() != null)
-			{
-				Object newValue = notification.getNewValue();				
-				if (!newValue.equals(notification.getOldValue()))
-				{
+					&& notification.getNewValue() != null) {
+				Object newValue = notification.getNewValue();
+				if (!newValue.equals(notification.getOldValue())) {
 					VariableChanged change = new VariableChanged(variable);
 					fireChange(change);
 				}
@@ -92,74 +78,26 @@ public class ProcessContextListener extends AbstractListener<ProcessContext>
 		}
 	}
 
-	
-/*	class CustomEContentAdapter extends EContentAdapter{
-		public CustomEContentAdapter(){
-			super();
-		}
-		
-		
-	    protected boolean shouldAdapt(EStructuralFeature feature)
-	    {
-	    	if(feature.equals(ProcessPackage.eINSTANCE.getContextVariable_VariableValue()))
-	    		return true;
-	    	else return false;
-	    }
-
-	    @Override
-	    protected void setTarget(EObject target)
-	    {
-	        super.setTarget(target);
-
-	        if(target instanceof ContextVariable){
-	        	ContextVariable t = (ContextVariable)target;
-	        	addAdapter(ProcessPackage.eINSTANCE.getContextVariable_VariableValue());
-	        }
-	        for (EContentsEList.FeatureIterator<EObject> featureIterator = (EContentsEList.FeatureIterator<EObject>) target.eCrossReferences()
-	                                                                                                                       .iterator(); featureIterator.hasNext();)
-	        {
-	            Notifier notifier = featureIterator.next();
-	            EStructuralFeature feature = featureIterator.feature();
-	            if (shouldAdapt(feature))
-	            {
-	                addAdapter(notifier);
-	            }
-	        }
-	    }
-
-	    @Override
-	    protected void unsetTarget(EObject target)
-	    {
-	        super.unsetTarget(target);
-	        
-	        for (EContentsEList.FeatureIterator<EObject> featureIterator = (EContentsEList.FeatureIterator<EObject>) target.eCrossReferences()
-	                                                                                                                       .iterator(); featureIterator.hasNext();)
-	        {
-	            Notifier notifier = featureIterator.next();
-	            EStructuralFeature feature = featureIterator.feature();
-	            if (shouldAdapt(feature))
-	            {
-	                removeAdapter(notifier);
-	            }
-	        }
-	    }
-
-	    @Override
-	    protected void selfAdapt(Notification notification)
-	    {
-	        super.selfAdapt(notification);
-	        if (notification.getNotifier() instanceof EObject)
-	        {
-	            Object feature = notification.getFeature();
-	            if (feature instanceof EReference)
-	            {
-	                EReference eReference = (EReference) feature;
-	                if (!eReference.isContainment() && shouldAdapt(eReference))
-	                {
-	                    handleContainment(notification);
-	                }
-	            }
-	        }
-	    }
-	}*/
+	/*
+	 * class CustomEContentAdapter extends EContentAdapter{ public CustomEContentAdapter(){ super(); }
+	 * protected boolean shouldAdapt(EStructuralFeature feature) {
+	 * if(feature.equals(ProcessPackage.eINSTANCE.getContextVariable_VariableValue())) return true; else
+	 * return false; }
+	 * @Override protected void setTarget(EObject target) { super.setTarget(target); if(target instanceof
+	 * ContextVariable){ ContextVariable t = (ContextVariable)target;
+	 * addAdapter(ProcessPackage.eINSTANCE.getContextVariable_VariableValue()); } for
+	 * (EContentsEList.FeatureIterator<EObject> featureIterator = (EContentsEList.FeatureIterator<EObject>)
+	 * target.eCrossReferences() .iterator(); featureIterator.hasNext();) { Notifier notifier =
+	 * featureIterator.next(); EStructuralFeature feature = featureIterator.feature(); if
+	 * (shouldAdapt(feature)) { addAdapter(notifier); } } }
+	 * @Override protected void unsetTarget(EObject target) { super.unsetTarget(target); for
+	 * (EContentsEList.FeatureIterator<EObject> featureIterator = (EContentsEList.FeatureIterator<EObject>)
+	 * target.eCrossReferences() .iterator(); featureIterator.hasNext();) { Notifier notifier =
+	 * featureIterator.next(); EStructuralFeature feature = featureIterator.feature(); if
+	 * (shouldAdapt(feature)) { removeAdapter(notifier); } } }
+	 * @Override protected void selfAdapt(Notification notification) { super.selfAdapt(notification); if
+	 * (notification.getNotifier() instanceof EObject) { Object feature = notification.getFeature(); if
+	 * (feature instanceof EReference) { EReference eReference = (EReference) feature; if
+	 * (!eReference.isContainment() && shouldAdapt(eReference)) { handleContainment(notification); } } } } }
+	 */
 }

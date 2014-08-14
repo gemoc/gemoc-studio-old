@@ -17,22 +17,38 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process;
 
-import fr.obeo.dsl.process.ProcessUtils;
-import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
+import fr.obeo.dsl.process.ActionTask;
 
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.emf.common.util.URI;
+/**
+ * An abstract implementation of {@link IActionProcessor} providing a reference to the corresponding
+ * {@link ActionTask}.
+ * 
+ * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+ */
+public abstract class AbstractActionProcessor implements IActionProcessor<GemocLanguageProcessContext> {
 
-public abstract class ProcessRunnerFactory 
-{
+	/**
+	 * The corresponding {@link ActionTask}.
+	 */
+	private final ActionTask task;
 
-	static public GemocLanguageProcessRunner createProcessRunner(URI uri)
-	{
-		GemocLanguageProcessRunner runner = new GemocLanguageProcessRunner(uri);		
-		ProcessUtils.registerProcessRunner(runner);
-		WorkspaceUtils.createListener(runner.getContext()).addProcessor(runner, false);
-		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(runner, true);
-		return runner;
+	/**
+	 * Constructor.
+	 * 
+	 * @param task
+	 *            the corresponding {@link ActionTask}.
+	 */
+	public AbstractActionProcessor(ActionTask task) {
+		this.task = task;
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#getActionTask()
+	 */
+	public ActionTask getActionTask() {
+		return task;
+	}
+
 }

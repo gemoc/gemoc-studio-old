@@ -27,13 +27,11 @@ import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
 import org.eclipse.core.resources.IResource;
 
 /**
- * 
  * A processor that deals exclusively with eclipse {@link IResource}.
- *
+ * 
  * @author ftanguy
  */
-public abstract class ResourceActionProcessor extends BasicPrecedingActionProcessor 
-{
+public abstract class AbstractResourceActionProcessor extends AbstractBasicPrecedingActionProcessor {
 
 	/**
 	 * Constructor.
@@ -41,46 +39,37 @@ public abstract class ResourceActionProcessor extends BasicPrecedingActionProces
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 */
-	public ResourceActionProcessor(ActionTask task, boolean acceptChangeOnPrecedingInternalChange) 
-	{
+	public AbstractResourceActionProcessor(ActionTask task, boolean acceptChangeOnPrecedingInternalChange) {
 		super(task, acceptChangeOnPrecedingInternalChange);
 	}
-	
-	public boolean acceptChange(GemocLanguageProcessContext context, IChange<?> change) 
-	{
-		if (change instanceof ResourceAdded)
-		{
-			return acceptChangeForAddedResource(context, (IResource)change.getObject());
-		} 
-		else if (change instanceof ResourceRemoved)
-		{
-			return acceptChangeForRemovedResource(context, (IResource)change.getObject());
-		}  
-		else if(change instanceof ResourceMoved)
-		{
-			return acceptChangeForAddedResource(context, (IResource)((ResourceMoved)change).getDestination()) 
-					|| acceptChangeForRemovedResource(context, (IResource)change.getObject());			
-		}  
-		else if(change instanceof ResourceContentChanged)
-		{
-			return acceptChangeForModifiedResource(context, (IResource)change.getObject());
-		} 		
-		
-		return super.acceptChange(context, change);
+
+	public boolean acceptChange(GemocLanguageProcessContext context, IChange<?> change) {
+		boolean result = false;
+		if (change instanceof ResourceAdded) {
+			result = acceptChangeForAddedResource(context, (IResource)change.getObject());
+		} else if (change instanceof ResourceRemoved) {
+			result = acceptChangeForRemovedResource(context, (IResource)change.getObject());
+		} else if (change instanceof ResourceMoved) {
+			result = acceptChangeForAddedResource(context, (IResource)((ResourceMoved)change)
+					.getDestination())
+					|| acceptChangeForRemovedResource(context, (IResource)change.getObject());
+		} else if (change instanceof ResourceContentChanged) {
+			result = acceptChangeForModifiedResource(context, (IResource)change.getObject());
+		} else {
+			result = super.acceptChange(context, change);
+		}
+		return result;
 	}
-	
-	
-	 
-	
-	
-	
-	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context,  IResource resource){
+
+	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		return false;
 	}
-	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context,  IResource resource){
+
+	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return false;
 	}
-	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context,  IResource resource){
+
+	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		return false;
 	}
 

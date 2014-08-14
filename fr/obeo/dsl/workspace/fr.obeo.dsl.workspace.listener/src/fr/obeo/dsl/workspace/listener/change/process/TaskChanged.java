@@ -20,19 +20,16 @@ package fr.obeo.dsl.workspace.listener.change.process;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 
-public class TaskChanged implements IChange<Task> 
-{
-	
-	private Task _task;
+public class TaskChanged implements IChange<Task> {
 
-	public TaskChanged(Task task)
-	{
-		_task = task;
+	private Task task;
+
+	public TaskChanged(Task task) {
+		this.task = task;
 	}
-	
-	public Task getObject() 
-	{
-		return _task;
+
+	public Task getObject() {
+		return task;
 	}
 
 }

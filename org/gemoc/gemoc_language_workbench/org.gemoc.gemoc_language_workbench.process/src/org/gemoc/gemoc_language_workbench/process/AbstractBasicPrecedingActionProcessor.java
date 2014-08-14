@@ -25,32 +25,33 @@ import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.process.TaskChanged;
 import fr.obeo.dsl.workspace.listener.change.process.VariableChanged;
 
-public abstract class BasicPrecedingActionProcessor extends ActionProcessor {
+public abstract class AbstractBasicPrecedingActionProcessor extends AbstractActionProcessor {
 
-	
-	boolean acceptChangeOnPrecedingInternalChange= true;
-	
-	public BasicPrecedingActionProcessor(ActionTask task, boolean acceptChangeOnPrecedingInternalChange){
+	boolean acceptChangeOnPrecedingInternalChange = true;
+
+	public AbstractBasicPrecedingActionProcessor(ActionTask task, boolean acceptChangeOnPrecedingInternalChange) {
 		super(task);
 	}
-		
+
 	public boolean acceptChange(GemocLanguageProcessContext context, IChange<?> change) {
-		if( change instanceof VariableChanged){
-			return acceptChangeVariableChanged(context, (ContextVariable)change.getObject());
+		boolean result = false;
+		if (change instanceof VariableChanged) {
+			result = acceptChangeVariableChanged(context, (ContextVariable)change.getObject());
+		} else if (change instanceof TaskChanged) {
+			result = acceptChangeTaskChanged(context, (Task)change.getObject());
 		}
-		else if( change instanceof TaskChanged){
-			return acceptChangeTaskChanged(context, (Task)change.getObject());
-		}
-		return false;
+		return result;
 	}
 
-	public boolean acceptChangeTaskChanged(GemocLanguageProcessContext context,  Task task){
-		if(acceptChangeOnPrecedingInternalChange)
+	public boolean acceptChangeTaskChanged(GemocLanguageProcessContext context, Task task) {
+		if (acceptChangeOnPrecedingInternalChange) {
 			return ProcessUtils.isTaskFollowing(getActionTask(), task);
-		else return false;
+		} else {
+			return false;
+		}
 	}
-	
-	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,  ContextVariable variable){
+
+	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		return false;
 	}
 }

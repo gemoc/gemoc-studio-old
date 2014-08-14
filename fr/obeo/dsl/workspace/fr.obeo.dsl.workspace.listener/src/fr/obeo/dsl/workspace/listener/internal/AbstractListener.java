@@ -42,6 +42,11 @@ public abstract class AbstractListener<T> implements IListener {
 	 * The {@link List} of {@link IChangeProcessor}.
 	 */
 	private final List<IChangeProcessor> processors = new ArrayList<IChangeProcessor>();
+	
+	/**
+	 * The {@link Object} used as lock to prevent concurrent calls on sensitive operations.
+	 */
+	private Object lock = new Object();
 
 	/**
 	 * Constructor.
@@ -71,8 +76,7 @@ public abstract class AbstractListener<T> implements IListener {
 		return processors;
 	}
 
-	private Object _lock = new Object();
-	
+
 	/**
 	 * Fires the given change to {@link IListener#getProcessors() processors}.
 	 * 
@@ -81,9 +85,8 @@ public abstract class AbstractListener<T> implements IListener {
 	 */
 	protected void fireChange(IChange<?> change) {
 		List<IChangeProcessor> processorList = null;
-		synchronized(_lock)
-		{
-			processorList = new ArrayList<IChangeProcessor>(getProcessors());			
+		synchronized(lock) {
+			processorList = new ArrayList<IChangeProcessor>(getProcessors());
 		}
 
 		if (processorList.size() != 0) {
@@ -100,13 +103,11 @@ public abstract class AbstractListener<T> implements IListener {
 	 * @see fr.obeo.dsl.workspace.listener.IListener#addProcessor(fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor,
 	 *      boolean)
 	 */
-	public boolean addProcessor(IChangeProcessor processor, boolean notifyCurrentState) 
-	{
-		synchronized(_lock)
-		{
+	public boolean addProcessor(IChangeProcessor processor, boolean notifyCurrentState) {
+		synchronized(lock) {
 			if (notifyCurrentState) {
 				notifyCurrentState(getObserved(), processor);
-			}			
+			}
 			return getProcessors().add(processor);
 		}
 	}
@@ -127,11 +128,9 @@ public abstract class AbstractListener<T> implements IListener {
 	 * 
 	 * @see fr.obeo.dsl.workspace.listener.IListener#removeProcessor(fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor)
 	 */
-	public boolean removeProcessor(IChangeProcessor processor) 
-	{
-		synchronized(_lock)
-		{
-			return getProcessors().remove(processor);			
+	public boolean removeProcessor(IChangeProcessor processor) {
+		synchronized(lock) {
+			return getProcessors().remove(processor);
 		}
 	}
 

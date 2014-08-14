@@ -18,13 +18,10 @@
 package org.gemoc.gemoc_language_workbench.process.view;
 
 import fr.obeo.dsl.process.IProcessRunner;
-import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.ui.view.AbstractProcessView;
 
 import java.util.ArrayList;
-
-import org.gemoc.gemoc_language_workbench.process.Activator;
 
 /**
  * The {@link Process} view.
@@ -44,16 +41,13 @@ public class ProcessView extends AbstractProcessView {
 	public ProcessView() {
 		super();
 		ArrayList<IProcessRunner> result = new ArrayList<IProcessRunner>();
-		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners())
-		{
+		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners()) {
 			result.add(runner);
 		}
 		if (result.size() > 0) {
 			setProcessRunner(result.get(0));
 		}
-		
-	}
 
-	
+	}
 
 }

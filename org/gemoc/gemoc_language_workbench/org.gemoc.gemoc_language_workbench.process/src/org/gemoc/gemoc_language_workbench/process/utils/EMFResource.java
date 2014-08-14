@@ -22,16 +22,20 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
-public class EMFResource {
+public final class EMFResource {
 
-	public static Object getFirstContent(URI uri)
-	{
+	private EMFResource() {
+
+	}
+
+	public static Object getFirstContent(URI uri) {
 		final ResourceSet resourceSet = new ResourceSetImpl();
 		final Resource r = resourceSet.getResource(uri, true);
-		if (r.getContents().size() > 0)
+		if (r.getContents().size() > 0) {
 			return r.getContents().get(0);
-		else
+		} else {
 			return null;
+		}
 	}
-	
+
 }

@@ -33,54 +33,52 @@ import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
 
-
 /**
  * The Gemoc language {@link IProcessRunner}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class GemocLanguageProcessRunner 
-		implements IProcessRunner, 
-					IChangeProcessor {
+public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProcessor {
 
 	/**
 	 * {@link List} of {@link IActionProcessor}.
 	 */
-	final private Map<Task, ActionProcessor> _actionProcessors;
+	private final Map<Task, AbstractActionProcessor> actionProcessors;
 
 	/**
-	 * The  {@link ProcessContext}.
+	 * The {@link ProcessContext}.
 	 */
-	final private GemocLanguageProcessContext _processContext = new GemocLanguageProcessContext();
+	private final GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();
 
 	/**
 	 * The {@link Process}.
 	 */
-	final private Process _process;
+	private final Process process;
 
 	/**
 	 * Constructor.
 	 */
-	public GemocLanguageProcessRunner(URI xdsmlUri) 
-	{		
-		URI processURI = URI.createPlatformPluginURI(Activator.getDefault().getBundle().getSymbolicName() + "/process/gemoc_language.process", true);
-		_process = (Process)EMFResource.getFirstContent(processURI);
-		
-//		Resource resource = new XMIResourceImpl();
-//		try 
-//		{
-//			InputStream is = GemocLanguageProcessRunner.class.getResourceAsStream("/process/gemoc_language.process");
-//			resource.load(is, new HashMap<String, String>());
-//		} 
-//		catch (IOException e) 
-//		{
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		_process = (Process)resource.getContents().get(0);
-		_processContext.setDefinition(_process);
-		_processContext.initialize(xdsmlUri);
-		_actionProcessors = new GemocLanguageProcessJavaTaskFactory().createJavaTaskForProcess(_process);
+	public GemocLanguageProcessRunner(URI xdsmlUri) {
+		URI processURI = URI.createPlatformPluginURI(Activator.getDefault().getBundle().getSymbolicName()
+				+ "/process/gemoc_language.process", true);
+		process = (Process)EMFResource.getFirstContent(processURI);
+
+		// Resource resource = new XMIResourceImpl();
+		// try
+		// {
+		// InputStream is =
+		// GemocLanguageProcessRunner.class.getResourceAsStream("/process/gemoc_language.process");
+		// resource.load(is, new HashMap<String, String>());
+		// }
+		// catch (IOException e)
+		// {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// _process = (Process)resource.getContents().get(0);
+		processContext.setDefinition(process);
+		processContext.initialize(xdsmlUri);
+		actionProcessors = new GemocLanguageProcessJavaTaskFactory().createJavaTaskForProcess(process);
 	}
 
 	/**
@@ -88,17 +86,16 @@ public class GemocLanguageProcessRunner
 	 * 
 	 * @see fr.obeo.dsl.process.IProcessRunner#getContext()
 	 */
-	public ProcessContext getContext() 
-	{
-		return _processContext;
+	public ProcessContext getContext() {
+		return processContext;
 	}
-	public GemocLanguageProcessContext getCastedContext() 
-	{
-		return _processContext;
+
+	public GemocLanguageProcessContext getCastedContext() {
+		return processContext;
 	}
 
 	private IActionProcessor<GemocLanguageProcessContext> getActionProcessor(ActionTask task) {
-		return _actionProcessors.get(task);
+		return actionProcessors.get(task);
 	}
 
 	/**
@@ -107,13 +104,11 @@ public class GemocLanguageProcessRunner
 	 * @see fr.obeo.dsl.process.IProcessRunner#doAction(fr.obeo.dsl.process.ProcessContext,
 	 *      fr.obeo.dsl.process.ActionTask)
 	 */
-	public void doAction(ActionTask task) 
-	{
+	public void doAction(ActionTask task) {
 		// TODO move this test to caller...
-		if (ProcessUtils.canDoAction(_processContext, task)) 
-		{
-			getActionProcessor(task).doAction(_processContext);
-		}		
+		if (ProcessUtils.canDoAction(processContext, task)) {
+			getActionProcessor(task).doAction(processContext);
+		}
 	}
 
 	/**
@@ -124,9 +119,8 @@ public class GemocLanguageProcessRunner
 	 */
 	public void undoAction(ActionTask task) {
 		// TODO move this test to caller...
-		if (ProcessUtils.isDone(_processContext, task)) 
-		{
-			getActionProcessor(task).undoAction(_processContext);
+		if (ProcessUtils.isDone(processContext, task)) {
+			getActionProcessor(task).undoAction(processContext);
 		}
 	}
 
@@ -136,71 +130,57 @@ public class GemocLanguageProcessRunner
 	 * @see fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor#process(fr.obeo.dsl.workspace.listener.change.IChange)
 	 */
 	public void process(IChange<?> change) {
-		for (ActionProcessor actionProcessor : _actionProcessors.values()) 
-		{
+		for (AbstractActionProcessor actionProcessor : actionProcessors.values()) {
 			ActionTask actionTask = actionProcessor.getActionTask();
-			if (ProcessUtils.evaluatePrecondition(_processContext, actionTask) 
-				&& actionProcessor.acceptChange(_processContext, change))
-			{
-				boolean b = actionProcessor.validate(_processContext);
-				if (b)
-				{
-					Object result = actionProcessor.updateContextWhenDone(_processContext);
-					if (result == null) 
+			if (ProcessUtils.evaluatePrecondition(processContext, actionTask)
+					&& actionProcessor.acceptChange(processContext, change)) {
+				boolean b = actionProcessor.validate(processContext);
+				if (b) {
+					Object result = actionProcessor.updateContextWhenDone(processContext);
+					if (result == null) {
 						result = "DummyObject";
-					_processContext.setDone(actionTask, result);
-				}
-				else
-				{
-					if (_processContext.isDone(actionTask))
-					{
-						String result = actionProcessor.updateContextWhenUndone(_processContext);
-						_processContext.setUndone(actionTask, result);
+					}
+					processContext.setDone(actionTask, result);
+				} else {
+					if (processContext.isDone(actionTask)) {
+						String result = actionProcessor.updateContextWhenUndone(processContext);
+						processContext.setUndone(actionTask, result);
 					}
 				}
 			}
 		}
 	}
-	
+
 	/**
-	 * 
-	 * @return the task without predecessor that can start the process
-	 * TODO find a better way to identify the root action task that can start the wizard
-	 * TODO should we propose several actions (ie. there are several ways to start the process)
+	 * @return the task without predecessor that can start the process TODO find a better way to identify the
+	 *         root action task that can start the wizard TODO should we propose several actions (ie. there
+	 *         are several ways to start the process)
 	 */
-	public List<ActionTask> getStartNewProcessActionTasks()
-	{
+	public List<ActionTask> getStartNewProcessActionTasks() {
 		ArrayList<ActionTask> result = new ArrayList<ActionTask>();
-		for (ActionProcessor actionProcessor : _actionProcessors.values()) 
-		{
+		for (AbstractActionProcessor actionProcessor : actionProcessors.values()) {
 			ActionTask task = actionProcessor.getActionTask();
-			if (!hasPreceding(task))
-			{
-				result.add(task);				
+			if (!hasPreceding(task)) {
+				result.add(task);
 			}
 		}
 		return result;
 	}
-	
-	public boolean hasPreceding(Task task)
-	{
-		if (task.getPrecedingTasks().isEmpty())
-		{
-			if (task.getParentTask() == null)
-			{
-				return false;
-			}
-			else
-			{
-				return hasPreceding(task.getParentTask());
+
+	public boolean hasPreceding(Task task) {
+		boolean result = true;
+		if (task.getPrecedingTasks().isEmpty()) {
+			if (task.getParentTask() == null) {
+				result = false;
+			} else {
+				result = hasPreceding(task.getParentTask());
 			}
 		}
-		return true;
+		return result;
 	}
 
-	public Process getProcess() 
-	{
-		return _process;
+	public Process getProcess() {
+		return process;
 	}
 
 }

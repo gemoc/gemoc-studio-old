@@ -89,16 +89,17 @@ public class ListenerFactory implements IListenerFactory<Object> {
 	public IListener createListener(Object object) {
 		IListener res = null;
 
-		
 		@SuppressWarnings("unchecked")
 		IListenerFactory<Object> factory = (IListenerFactory<Object>)map.get(object.getClass());
 		if (factory == null) {
 			Class<?> currentClass = object.getClass().getSuperclass();
-			while(currentClass != null){
+			while (currentClass != null) {
 				factory = (IListenerFactory<Object>)map.get(currentClass);
-				if(factory != null) break;
+				if (factory != null) {
+					break;
+				}
 				currentClass = currentClass.getSuperclass();
-				
+
 			}
 		}
 		if (factory != null) {

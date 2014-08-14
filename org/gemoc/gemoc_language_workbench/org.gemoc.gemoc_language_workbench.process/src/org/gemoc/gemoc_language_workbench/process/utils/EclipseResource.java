@@ -25,24 +25,23 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 
-public class EclipseResource 
-{
+public final class EclipseResource {
 
-	public static URI getUri(IResource resource)
-	{
+	private EclipseResource() {
+
+	}
+
+	public static URI getUri(IResource resource) {
 		return EMFUri.from(resource);
 	}
-	
-	
-	public static IFile getFile(URI uri)
-	{
+
+	public static IFile getFile(URI uri) {
 		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-		IFile file = (IFile) workspaceRoot.findMember(uri.toPlatformString(true));
+		IFile file = (IFile)workspaceRoot.findMember(uri.toPlatformString(true));
 		return file;
 	}
-	
-	public static void touch(URI uri) 
-	{
+
+	public static void touch(URI uri) {
 		try {
 			EclipseResource.getFile(uri).touch(new org.eclipse.core.runtime.NullProgressMonitor());
 		} catch (CoreException e) {
@@ -50,16 +49,14 @@ public class EclipseResource
 			e.printStackTrace();
 		}
 	}
-	
-	public static IProject getProject(String projectName)
-	{
+
+	public static IProject getProject(String projectName) {
 		IWorkspaceRoot myWorkspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
 		return myWorkspaceRoot.getProject(projectName);
 	}
-	
-	public static boolean existProject(String projectName)
-	{
+
+	public static boolean existProject(String projectName) {
 		return getProject(projectName).exists();
 	}
-	
+
 }

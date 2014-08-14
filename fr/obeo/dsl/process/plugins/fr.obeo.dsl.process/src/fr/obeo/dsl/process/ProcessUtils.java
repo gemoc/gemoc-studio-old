@@ -286,16 +286,19 @@ public final class ProcessUtils {
 	 */
 	public static boolean isTaskFollowing(Task nextTask, Task possiblePreviousTask) {
 		Set<Task> precedingTasks = getPrecedingTasks(nextTask);
-		if (precedingTasks.contains(possiblePreviousTask))
-			return true;
+		boolean result = false;
+		if (precedingTasks.contains(possiblePreviousTask)) {
+			result = true;
+		}
 		for (Task t : precedingTasks) {
 			if (t instanceof ComposedTask) {
 				if (getFinalActionTasks((ComposedTask)t).contains(possiblePreviousTask)) {
-					return true;
+					result = true;
+					break;
 				}
 			}
 		}
-		return false;
+		return result;
 	}
 
 	/**

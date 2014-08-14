@@ -129,8 +129,10 @@ public class Task8c extends AbstractProcessor {
 					new Path("/" + eclFileName));
 			final IFile qvtoFile = ResourcesPlugin.getWorkspace().getRoot().getFile(
 					new Path("/" + qvtoFileName));
-			if (p != null && p.exists() && eclFile != null && eclFile.exists() && qvtoFile != null
-					&& qvtoFile.exists()) {
+			boolean pExists = p != null && p.exists();
+			boolean eclFileExists = eclFile != null && eclFile.exists();
+			boolean qvtoFileExists = qvtoFile != null && qvtoFile.exists();
+			if (pExists && eclFileExists && qvtoFileExists) {
 				context.setDone(getActionTask(), projectName);
 			} else {
 				context.setUndone(getActionTask(), "One resource doesn't exists.");

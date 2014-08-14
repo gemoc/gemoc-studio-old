@@ -37,32 +37,26 @@ import org.gemoc.gemoc_language_workbench.process.view.ProcessView;
 public class SelectProcessHandler extends AbstractSelectProcessHandler {
 
 	@Override
-	protected List<IProcessRunner> getProcessRunners(ExecutionEvent event) 
-	{
+	protected List<IProcessRunner> getProcessRunners(ExecutionEvent event) {
 		ArrayList<IProcessRunner> result = new ArrayList<IProcessRunner>();
-		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners())
-		{
+		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners()) {
 			result.add(runner);
 		}
 		return result;
 	}
 
 	@Override
-	protected void setProcessRunner(ExecutionEvent event, IProcessRunner processContext) 
-	{
+	protected void setProcessRunner(ExecutionEvent event, IProcessRunner processContext) {
 		final IWorkbenchPart part = HandlerUtil.getActivePart(event);
-		if (part instanceof ProcessView) 
-		{
+		if (part instanceof ProcessView) {
 			((ProcessView)part).setProcessRunner(processContext);
 		}
 	}
 
 	@Override
-	protected IProcessRunner getCurrentProcessRunner(ExecutionEvent event) 
-	{
+	protected IProcessRunner getCurrentProcessRunner(ExecutionEvent event) {
 		final IWorkbenchPart part = HandlerUtil.getActivePart(event);
-		if (part instanceof ProcessView) 
-		{
+		if (part instanceof ProcessView) {
 			return ((ProcessView)part).getProcessRunner();
 		}
 		return null;

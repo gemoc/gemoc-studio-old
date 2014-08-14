@@ -20,11 +20,12 @@ package org.gemoc.gemoc_language_workbench.process.utils;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
-public abstract class EclipseUI 
-{
-	
-	static public Shell getActiveWorkbenchShell()
-	{
+public final class EclipseUI {
+	private EclipseUI() {
+
+	}
+
+	public static Shell getActiveWorkbenchShell() {
 		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	}
 

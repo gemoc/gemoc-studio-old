@@ -18,7 +18,6 @@
 package org.gemoc.gemoc_language_workbench.process;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 
@@ -41,32 +40,33 @@ public interface IActionProcessor<T extends ProcessContext> {
 	 * @return an object been the result of the task, can be null
 	 */
 	Object updateContextWhenDone(T context);
-	
+
 	/**
 	 * reset the values in the context corresponding to this action, that is now considered as undone
+	 * 
 	 * @param context
 	 * @param change
 	 * @return the reason why it isn't done
 	 */
 	String updateContextWhenUndone(T context);
-	
+
 	/**
 	 * Verify in the environment that the Action can be considered as done
+	 * 
 	 * @param context
 	 * @param change
 	 * @return
 	 */
 	boolean validate(T context);
-	
-	
-	
+
 	/**
 	 * Verify in the environment that the change is relevant for the Action
+	 * 
 	 * @param context
 	 * @param change
 	 * @return true if the change must be processed
 	 */
-	boolean acceptChange(T context,  IChange<?> change);
+	boolean acceptChange(T context, IChange<?> change);
 
 	/**
 	 * Executes the {@link ActionTask} in the given {@link ProcessContext}.
