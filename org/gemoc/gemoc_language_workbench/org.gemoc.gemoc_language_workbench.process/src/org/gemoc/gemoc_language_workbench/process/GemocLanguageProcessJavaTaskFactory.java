@@ -32,6 +32,7 @@ import org.gemoc.gemoc_language_workbench.process.task.EditEMFDomainConceptsTask
 import org.gemoc.gemoc_language_workbench.process.task.SelectEMFProjectTask;
 import org.gemoc.gemoc_language_workbench.process.task.SelectEMFTreeEditorProjectTask;
 import org.gemoc.gemoc_language_workbench.process.task.SetDomainModelRootTask;
+import org.gemoc.gemoc_language_workbench.process.task.SetEMFTreeEditorFileExtensionTask;
 //import org.gemoc.gemoc_language_workbench.process.task.Task2c;
 //import org.gemoc.gemoc_language_workbench.process.task.Task3a;
 //import org.gemoc.gemoc_language_workbench.process.task.Task4;
@@ -72,6 +73,8 @@ public class GemocLanguageProcessJavaTaskFactory {
 				.get("CreateNewEMFTreeEditorProjectTask")));
 		addActionProcessor(new SelectEMFTreeEditorProjectTask((ActionTask)taskByIDMap
 				.get("SelectEMFTreeEditorProjectTask")));
+		addActionProcessor(new SetEMFTreeEditorFileExtensionTask((ActionTask)taskByIDMap
+				.get("SetEMFTreeEditorFileExtensionTask")));
 		/*
 		 * addActionProcessor(new Task4((ActionTask)taskByIDMap.get("Task4"), (ActionTask)taskByIDMap
 		 * .get("Task2.b"))); addActionProcessor(new Task5a((ActionTask)taskByIDMap.get("Task5.a"),

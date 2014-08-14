@@ -69,11 +69,6 @@ public class SetDomainModelRootTask extends AbstractResourceActionProcessor {
 	 * 
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
-	 * @param task1
-	 *            the reference to the {@link ActionTask} corresponding to
-	 *            {@link CreateNewGemocLanguageProjectTask}
-	 * @param task2b
-	 *            the reference to the {@link ActionTask} corresponding to {@link SelectEMFProjectTask}
 	 */
 	public SetDomainModelRootTask(ActionTask task) {
 		super(task, false);
