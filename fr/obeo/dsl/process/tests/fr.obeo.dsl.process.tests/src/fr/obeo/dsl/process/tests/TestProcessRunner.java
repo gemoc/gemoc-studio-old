@@ -87,4 +87,30 @@ public class TestProcessRunner implements IProcessRunner {
 		// nothing to do here
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fr.obeo.dsl.process.IProcessRunner#getContext()
+	 */
+	public ProcessContext getContext() {
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fr.obeo.dsl.process.IProcessRunner#doAction(fr.obeo.dsl.process.ActionTask)
+	 */
+	public void doAction(ActionTask task) {
+		// nothing to do here
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fr.obeo.dsl.process.IProcessRunner#undoAction(fr.obeo.dsl.process.ActionTask)
+	 */
+	public void undoAction(ActionTask task) {
+		// nothing to do here
+	}
 }
