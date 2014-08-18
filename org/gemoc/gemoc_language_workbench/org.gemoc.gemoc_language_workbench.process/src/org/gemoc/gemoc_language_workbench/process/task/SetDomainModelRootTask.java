@@ -93,8 +93,7 @@ public class SetDomainModelRootTask extends AbstractResourceActionProcessor {
 	 * 
 	 * @param context
 	 *            the {@link GemocLanguageProcessContext}
-	 * @return
-	 * 			true if the task is valid, false otherwise
+	 * @return true if the task is valid, false otherwise
 	 */
 	public boolean validate(GemocLanguageProcessContext context) {
 		boolean result = false;
@@ -117,11 +116,9 @@ public class SetDomainModelRootTask extends AbstractResourceActionProcessor {
 					result = true;
 				} else {
 					result = false;
-					undoneReason = "Root EObject doesn't exists.";
+					undoneReason = "Root EObject " + eClsName + " doesn't exists in " + genModelPath;
 				}
 			}
-			result = false;
-			undoneReason = "no EMF project referenced in xdsml";
 		} else {
 			undoneReason = "no EMF project referenced in xdsml";
 		}
