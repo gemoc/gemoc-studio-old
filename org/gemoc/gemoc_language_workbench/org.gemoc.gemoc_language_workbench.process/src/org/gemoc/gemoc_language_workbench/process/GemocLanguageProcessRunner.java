@@ -150,7 +150,7 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 					}
 					processContext.setDone(actionTask, result);
 				} else {
-					if (processContext.isDone(actionTask)) {
+					if (processContext.isDone(actionTask) || processContext.getUndoneReason(actionTask) == null) {
 						String result = actionProcessor.updateContextWhenUndone(processContext);
 						processContext.setUndone(actionTask, result);
 					}

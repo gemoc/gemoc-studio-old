@@ -139,4 +139,12 @@ public interface ProcessContext extends EObject {
 	 */
 	Object getVariableValue(String variableName);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	String getUndoneReason(ActionTask task);
+
 } // ProcessContext

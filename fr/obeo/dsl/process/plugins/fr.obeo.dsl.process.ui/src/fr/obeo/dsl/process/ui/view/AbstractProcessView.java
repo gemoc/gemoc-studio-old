@@ -460,8 +460,16 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 				doUndoButton.setText("Undo");
 				doUndoButton.pack();
 			}
+			String undoneReason = "";
+			if (!ProcessUtils.isDone(getProcessContext(), task)) {
+				undoneReason = "\nNot done due to: "
+						+ ProcessUtils.getUndoneReason(getProcessContext(), task);
+			}
 			if (task.getDescription() != null) {
-				descriptionLabel.setText(task.getDescription());
+				descriptionLabel.setText(task.getDescription() + undoneReason);
+				descriptionLabel.pack();
+			} else {
+				descriptionLabel.setText("" + undoneReason);
 				descriptionLabel.pack();
 			}
 			precedingTasksTreeViewer.setInput(ProcessUtils.getPrecedingTasks(task));

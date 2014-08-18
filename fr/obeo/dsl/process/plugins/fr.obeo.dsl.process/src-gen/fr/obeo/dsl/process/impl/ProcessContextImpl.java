@@ -265,6 +265,15 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @generated NOT
+	 */
+	public String getUndoneReason(ActionTask task) {
+		return this.reasons.get(task);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -33,18 +33,18 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link fr.obeo.dsl.process.impl.ContextVariableImpl#getName <em>Name</em>}</li>
- * <li>{@link fr.obeo.dsl.process.impl.ContextVariableImpl#getVariableValue <em>Variable Value</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ContextVariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ContextVariableImpl#getVariableValue <em>Variable Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContextVariableImpl extends EObjectImpl implements ContextVariable {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -52,9 +52,9 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -83,7 +83,6 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ContextVariableImpl() {
@@ -92,7 +91,6 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -102,7 +100,6 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -111,20 +108,17 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.CONTEXT_VARIABLE__NAME,
-					oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.CONTEXT_VARIABLE__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Object getVariableValue() {
@@ -148,7 +142,6 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -164,7 +157,6 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -182,7 +174,6 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -200,7 +191,6 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -209,21 +199,18 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 			case ProcessPackage.CONTEXT_VARIABLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ProcessPackage.CONTEXT_VARIABLE__VARIABLE_VALUE:
-				return VARIABLE_VALUE_EDEFAULT == null ? variableValue != null : !VARIABLE_VALUE_EDEFAULT
-						.equals(variableValue);
+				return VARIABLE_VALUE_EDEFAULT == null ? variableValue != null : !VARIABLE_VALUE_EDEFAULT.equals(variableValue);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

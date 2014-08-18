@@ -842,4 +842,15 @@ public final class ProcessUtils {
 
 		return res;
 	}
+
+	public static String getUndoneReason(ProcessContext processContext, Task task) {
+		String res = "";
+		if (task instanceof ActionTask) {
+			res = processContext.getUndoneReason((ActionTask)task);
+		}
+		if (task instanceof ComposedTask && !isDone(processContext, task)) {
+			res = "the condition of the composed task isn't satisfied. (check the sub tasks)";
+		}
+		return res;
+	}
 }

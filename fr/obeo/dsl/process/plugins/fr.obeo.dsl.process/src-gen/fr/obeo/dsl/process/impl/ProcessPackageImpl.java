@@ -700,6 +700,9 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		op = addEOperation(processContextEClass, this.getObject(), "getVariableValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "variableName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(processContextEClass, ecorePackage.getEString(), "getUndoneReason", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getActionTask(), "task", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(contextVariableEClass, ContextVariable.class, "ContextVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContextVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, ContextVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContextVariable_VariableValue(), this.getObject(), "variableValue", null, 0, 1, ContextVariable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

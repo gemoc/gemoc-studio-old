@@ -77,6 +77,9 @@
       <genOperations ecoreOperation="process.ecore#//ProcessContext/getVariableValue">
         <genParameters ecoreParameter="process.ecore#//ProcessContext/getVariableValue/variableName"/>
       </genOperations>
+      <genOperations ecoreOperation="process.ecore#//ProcessContext/getUndoneReason">
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/getUndoneReason/task"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="process.ecore#//ContextVariable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//ContextVariable/name"/>
