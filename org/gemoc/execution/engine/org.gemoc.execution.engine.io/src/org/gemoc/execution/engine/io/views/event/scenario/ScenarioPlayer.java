@@ -6,11 +6,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
-import org.gemoc.execution.engine.io.views.event.EventManagerClockWrapper;
+import org.gemoc.execution.engine.io.views.event.ClockWrapper;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
+import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
+import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.Scenario;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -18,13 +19,13 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 public class ScenarioPlayer extends ScenarioTool
 {
 	private EventManagerView _eventView;
-	
+
 	public ScenarioPlayer(ScenarioManager manager)
 	{
 		super(manager);
 		_eventView = ViewHelper.retrieveView(EventManagerView.ID);
 	}
-	
+
 	/**
 	 * Load a previously created scenario model.
 	 */
@@ -37,7 +38,9 @@ public class ScenarioPlayer extends ScenarioTool
 				URI uri = URI.createURI("file:/" + path); 
 				_resource = resourceSet.getResource(uri, true); 
 				_scenario = (Scenario) _resource.getContents().get(0);
-				_eventView.setScenario(_scenario);
+				//TODO: choisir dynamiquement le fragment voulu
+				_fragment = _scenario.getRefList().get(0).getFragment();
+				_eventView.setScenario(_fragment);
 			}
 		};
 		safeModelModification(runnable);
@@ -45,47 +48,41 @@ public class ScenarioPlayer extends ScenarioTool
 
 	public void play()
 	{
-		ObservableBasicExecutionEngine engine = _manager.getWrapperCache().getEngine();
-		if (_currentScenarioStep == null)
+		final int progressPlayscenario = _manager.getProgress();
+		if(_fragment != null && _fragment instanceof Fragment)
 		{
-			_currentScenarioStep = engine.getEngineStatus().getNbLogicalStepRun() - 1;
-		}
-		
-		if (engine.getEngineStatus().getNbLogicalStepRun() > _currentScenarioStep)
-		{
-			_currentScenarioStep++;
-			final int progressPlayscenario = _eventView.getProgressPlayScenario();
-			if(_scenario != null && _scenario instanceof Scenario)
+			List<ExecutionStep> stepList = _fragment.getStepList();
+			for(ClockWrapper cw : _manager.getWrapperCache().getClockWrapperList())
 			{
-				List<ExecutionStep> stepList = _scenario.getStepList();
-				for(EventManagerClockWrapper cw : _manager.getWrapperCache().getWrappers())
-				{
-					_manager.getWrapperCache().getWrappers();
-					List<EventState> eventList = stepList.get(progressPlayscenario).getEventList();
-					Clock clock = cw.getClock();
-					for(int i = 0; i< eventList.size(); i++)
-					{	
-						if(eventList.get(i).getClock().getName().equals(clock.getName()))
-						{
-							cw.setStateForced(eventList.get(i).isIsForced());
-						}
+				_manager.getWrapperCache().getClockWrapperList();
+				List<EventState> eventList = stepList.get(progressPlayscenario).getEventList();
+				Clock clock = cw.getClock();
+				cw.setState(ClockStatus.NOTFORCED_NOTSET);
+				for(int i = 0; i< eventList.size(); i++)
+				{	
+					if(eventList.get(i).getClock().getName().equals(clock.getName()))
+					{
+						ClockStatus newState = eventList.get(i).isTick() ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
+						cw.setState(newState); 
 					}
 				}
-				_eventView.incProgressPlayScenario();
-				_eventView.updateView();
 			}
-			else
-			{
-				throw new RuntimeException("The scenario loaded is null or isn't an instance of Scenario");
-			}
+			_manager.incProgress();
+			_eventView.updateView();
 		}
+		else
+		{
+			throw new RuntimeException("The scenario loaded is null or isn't an instance of Scenario");
+		}
+
 	}
 
+	/**
+	 * Remove the fragment and reset the progress step counter.
+	 */
 	public void stop(){
-		_eventView.resetProgressPlayScenario();
-		_currentScenarioStep = null;
-		_scenario = null;
-		_eventView.setScenario(null);
-		_eventView.setPlayFlag(false);
+		_manager.resetProgress();
+		_fragment = null;
+		_eventView.setScenario(_fragment);
 	}
 }

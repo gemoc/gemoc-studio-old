@@ -26,12 +26,15 @@ import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
-import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 /**
  * The Gemoc language {@link IProcessRunner}.
@@ -59,9 +62,14 @@ public class GemocLanguageProcessRunner implements IProcessRunner, IChangeProces
 	 * Constructor.
 	 */
 	public GemocLanguageProcessRunner(URI xdsmlUri) {
-		URI processURI = URI.createPlatformPluginURI(Activator.getDefault().getBundle().getSymbolicName()
-				+ "/process/gemoc_language.process", true);
-		process = (Process)EMFResource.getFirstContent(processURI);
+		Resource resource = new XMIResourceImpl();
+		try {
+			resource.load(GemocLanguageProcessRunner.class
+					.getResourceAsStream("/process/gemoc_language.process"), new HashMap<String, String>());
+		} catch (IOException e) {
+			Activator.getDefault().error(e);
+		}
+		process = (Process)resource.getContents().get(0);
 
 		// Resource resource = new XMIResourceImpl();
 		// try

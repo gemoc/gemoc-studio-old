@@ -7,6 +7,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
+import org.gemoc.execution.engine.io.views.event.EventManagerView.SourceProviderControls;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 
 public class StartRecordScenario extends AbstractHandler {
@@ -18,7 +19,7 @@ public class StartRecordScenario extends AbstractHandler {
 		{
 			eventView.informationMsg("Record Scenario", "Beginning of the operation");
 			eventView.startRecordScenario();
-			eventView.executeService(event, "RECORD");
+			eventView.executeService(event, SourceProviderControls.RECORD);
 		}
 		else
 		{

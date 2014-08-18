@@ -76,7 +76,7 @@ public class ContextActionTaskItemProvider extends ActionTaskItemProvider {
 
 	@Override
 	public String getText(Object object) {
-		return super.getText(object);
+		return ((ActionTask)object).getName();
 	}
 
 	@Override

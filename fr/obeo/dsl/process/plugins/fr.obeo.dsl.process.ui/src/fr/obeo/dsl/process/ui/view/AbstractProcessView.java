@@ -33,10 +33,15 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IContentProvider;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -45,6 +50,9 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
@@ -65,6 +73,11 @@ import org.eclipse.ui.part.ViewPart;
 public abstract class AbstractProcessView extends ViewPart implements IProcessContextProvider {
 
 	/**
+	 * Ratio for the context composite.
+	 */
+	private static final double CONTEXT_COMPOSITE_RATIO = 0.20;
+
+	/**
 	 * The {@link ComposedAdapterFactory}.
 	 */
 	private ComposedAdapterFactory adapterFactory;
@@ -80,28 +93,110 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 
 	private IProcessRunner processRunner;
 
-	private TreeViewer previousTasksTreeViewer;
+	/**
+	 * {@link TreeViewer} for {@link ProcessUtils#getPrecedingTasks(Task) preceding tasks}.
+	 */
+	private TreeViewer precedingTasksTreeViewer;
 
+	/**
+	 * {@link TreeViewer} for {@link ProcessUtils#getFollowingTasks(Task) following tasks}.
+	 */
 	private TreeViewer followingTasksTreeViewer;
 
+	/**
+	 * {@link Task#getDescription() Description} label.
+	 */
 	private Label descriptionLabel;
 
+	/**
+	 * {@link fr.obeo.dsl.process.IProcessRunner#doAction(ProcessContext, fr.obeo.dsl.process.ActionTask) Do}
+	 * or
+	 * {@link fr.obeo.dsl.process.IProcessRunner#undoAction(ProcessContext, fr.obeo.dsl.process.ActionTask)
+	 * Undo} button.
+	 */
 	private Button doUndoButton;
 
+	/**
+	 * {@link Task#getName() Name} label.
+	 */
 	private Label nameLabel;
 
+	/**
+	 * {@link TreeViewer} for {@link ComposedTask#getTasks() Children tasks}.
+	 */
 	private TreeViewer childrenTasksTreeViewer;
 
+	/**
+	 * Details {@link Composite}.
+	 */
 	private Composite detailComposite;
 
+	/**
+	 * The green task image.
+	 */
+	private final Image greenTaskImage = new Image(Display.getDefault(), AbstractProcessView.class
+			.getClassLoader().getResourceAsStream("icons/full/obj16/greenTaskButton.gif"));
+
+	/**
+	 * The grey task image.
+	 */
+	private final Image greyTaskImage = new Image(Display.getDefault(), AbstractProcessView.class
+			.getClassLoader().getResourceAsStream("icons/full/obj16/greyTaskButton.gif"));
+
+	/**
+	 * The yellow task image.
+	 */
+	private final Image yellowTaskImage = new Image(Display.getDefault(), AbstractProcessView.class
+			.getClassLoader().getResourceAsStream("icons/full/obj16/yellowTaskButton.gif"));
+
 	@Override
-	public void createPartControl(Composite parent) {
+	public void createPartControl(final Composite parent) {
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ContextProcessItemProviderAdapterFactory(this));
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
+		parent.setLayout(new GridLayout(2, false));
+		final GridData contextCompositeData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		final GridData detailCompositeData = new GridData(SWT.FILL, SWT.FILL, true, true);
+
+		final Composite contextComposite = createContextComposite(parent);
+		contextComposite.setLayoutData(contextCompositeData);
+
+		detailComposite = createDetailComposite(parent);
+		detailComposite.setLayoutData(detailCompositeData);
+		parent.addListener(SWT.Resize, new Listener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
+			 */
+			public void handleEvent(Event event) {
+				Point size = parent.getSize();
+
+				contextCompositeData.widthHint = (int)(size.x * CONTEXT_COMPOSITE_RATIO);
+				detailCompositeData.widthHint = size.x - contextCompositeData.widthHint;
+			}
+		});
+
+		IDoubleClickListener doubleClickListener = createDoubleClickListener();
+
+		contextViewer.addDoubleClickListener(doubleClickListener);
+		precedingTasksTreeViewer.addDoubleClickListener(doubleClickListener);
+		childrenTasksTreeViewer.addDoubleClickListener(doubleClickListener);
+		followingTasksTreeViewer.addDoubleClickListener(doubleClickListener);
+	}
+
+	/**
+	 * The context composite on the left.
+	 * 
+	 * @param parent
+	 *            the parent {@link Composite}
+	 * @return the context {@link Composite}
+	 */
+	protected Composite createContextComposite(Composite parent) {
 		final Composite contextComposite = new Composite(parent, SWT.NONE);
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
@@ -111,10 +206,13 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 		filterComposite.setLayout(new RowLayout());
 		final Button greenButton = new Button(filterComposite, SWT.TOGGLE);
 		greenButton.setSelection(true);
+		greenButton.setImage(greenTaskImage);
 		final Button yellowButton = new Button(filterComposite, SWT.TOGGLE);
 		yellowButton.setSelection(true);
+		yellowButton.setImage(yellowTaskImage);
 		final Button greyButton = new Button(filterComposite, SWT.TOGGLE);
 		greyButton.setSelection(true);
+		greyButton.setImage(greyTaskImage);
 
 		FilteredTree tree = new FilteredTree(contextComposite, SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL
 				| SWT.FLAT, new PatternFilter(), true);
@@ -171,6 +269,16 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 		newFilters[newFilters.length - 1] = taskStateFilter;
 		contextViewer.setFilters(newFilters);
 
+		contextViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				final Task task = getTaskFromSelection(event.getSelection());
+				if (task != null) {
+					setCurrentTask(task);
+				}
+			}
+		});
+
 		final SelectionListener listener = new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent e) {
@@ -185,16 +293,33 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 		yellowButton.addSelectionListener(listener);
 		greyButton.addSelectionListener(listener);
 
-		detailComposite = new Composite(parent, SWT.NONE);
-		gridLayout = new GridLayout();
-		gridLayout.numColumns = 1;
-		detailComposite.setLayout(gridLayout);
+		return contextComposite;
+	}
 
-		final Composite nameComposite = new Composite(detailComposite, SWT.NONE);
-		nameComposite.setLayout(new RowLayout());
+	/**
+	 * The detail composite on the right.
+	 * 
+	 * @param parent
+	 *            the parent {@link Composite}
+	 * @return the detail {@link Composite}
+	 */
+	protected Composite createDetailComposite(Composite parent) {
+		Composite res = new Composite(parent, SWT.NONE);
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 1;
+		res.setLayout(gridLayout);
+		res.setVisible(false);
+
+		final Composite nameComposite = new Composite(res, SWT.NONE);
+		gridLayout = new GridLayout(2, false);
+		nameComposite.setLayout(gridLayout);
+		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
+		nameComposite.setLayoutData(gridData);
 		nameLabel = new Label(nameComposite, SWT.NONE);
+		gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		nameLabel.setLayoutData(gridData);
 		doUndoButton = new Button(nameComposite, SWT.NONE);
-		doUndoButton.setText("DO/UNDO");
+		// doUndoButton.setText("DO/UNDO");
 		doUndoButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
@@ -213,13 +338,106 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 				}
 			}
 		});
+		gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		doUndoButton.setLayoutData(gridData);
 
-		descriptionLabel = new Label(detailComposite, SWT.NONE);
+		descriptionLabel = new Label(res, SWT.NONE);
 
+		createDetailTasksComposite(res);
+		return res;
+	}
+
+	/**
+	 * The task detail composite bottom right.
+	 * 
+	 * @param parent
+	 *            the parent {@link Composite}
+	 */
+	protected void createDetailTasksComposite(Composite parent) {
+		GridLayout gridLayout;
 		final Composite detailTasksComposite = new Composite(parent, SWT.NONE);
-		previousTasksTreeViewer = new TreeViewer(detailTasksComposite);
+		GridData gridData = new GridData();
+		gridData.verticalAlignment = GridData.FILL;
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.grabExcessVerticalSpace = true;
+		gridData.grabExcessHorizontalSpace = true;
+		detailTasksComposite.setLayoutData(gridData);
+
+		gridLayout = new GridLayout();
+		gridLayout.numColumns = 3;
+		detailTasksComposite.setLayout(gridLayout);
+		precedingTasksTreeViewer = new TreeViewer(detailTasksComposite);
+		gridData = new GridData();
+		gridData.verticalAlignment = GridData.FILL;
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.grabExcessVerticalSpace = true;
+		gridData.grabExcessHorizontalSpace = true;
+		precedingTasksTreeViewer.getTree().setLayoutData(gridData);
+		precedingTasksTreeViewer.setContentProvider(getContentProvider());
+		precedingTasksTreeViewer.setLabelProvider(getLabelProvider());
 		childrenTasksTreeViewer = new TreeViewer(detailTasksComposite);
+		gridData = new GridData();
+		gridData.verticalAlignment = GridData.FILL;
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.grabExcessVerticalSpace = true;
+		gridData.grabExcessHorizontalSpace = true;
+		childrenTasksTreeViewer.getTree().setLayoutData(gridData);
+		childrenTasksTreeViewer.setContentProvider(getContentProvider());
+		childrenTasksTreeViewer.setLabelProvider(getLabelProvider());
 		followingTasksTreeViewer = new TreeViewer(detailTasksComposite);
+		gridData = new GridData();
+		gridData.verticalAlignment = GridData.FILL;
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.grabExcessVerticalSpace = true;
+		gridData.grabExcessHorizontalSpace = true;
+		followingTasksTreeViewer.getTree().setLayoutData(gridData);
+		followingTasksTreeViewer.setContentProvider(getContentProvider());
+		followingTasksTreeViewer.setLabelProvider(getLabelProvider());
+	}
+
+	/**
+	 * Creates the {@link IDoubleClickListener} setting the current {@link Task}.
+	 * 
+	 * @return created the {@link IDoubleClickListener} setting the current {@link Task}s
+	 */
+	protected IDoubleClickListener createDoubleClickListener() {
+		IDoubleClickListener doubleClickListener = new IDoubleClickListener() {
+
+			public void doubleClick(DoubleClickEvent event) {
+				final Task task = getTaskFromSelection(event.getSelection());
+				if (task != null) {
+					if (getTaskFromSelection(contextViewer.getSelection()) != task) {
+						contextViewer.setSelection(new StructuredSelection(task), true);
+					}
+					setCurrentTask(task);
+				}
+			}
+		};
+		return doubleClickListener;
+	}
+
+	/**
+	 * Gets the first {@link Task} from the given {@link ISelection}.
+	 * 
+	 * @param selection
+	 *            the {@link ISelection}
+	 * @return the first {@link Task} from the given {@link ISelection} if any, <code>null</code> otherwise
+	 */
+	private Task getTaskFromSelection(ISelection selection) {
+		final Task res;
+
+		if (selection instanceof IStructuredSelection) {
+			Object firstElement = ((IStructuredSelection)selection).getFirstElement();
+			if (firstElement instanceof Task) {
+				res = (Task)firstElement;
+			} else {
+				res = null;
+			}
+		} else {
+			res = null;
+		}
+
+		return res;
 	}
 
 	/**
@@ -237,17 +455,24 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			// TODO add a listener on the context to change the label of the button and visibility
 			if (!ProcessUtils.isDone(getProcessContext(), task)) {
 				doUndoButton.setText("Do");
+				doUndoButton.pack();
 			} else {
 				doUndoButton.setText("Undo");
+				doUndoButton.pack();
 			}
-			String description;
-			if (task.getDescription() == null) {
-				description = "";
+			if (task.getDescription() != null) {
+				descriptionLabel.setText(task.getDescription());
+				descriptionLabel.pack();
+			}
+			precedingTasksTreeViewer.setInput(ProcessUtils.getPrecedingTasks(task));
+			if (isComposedTask) {
+				childrenTasksTreeViewer.setInput(((ComposedTask)task).getTasks());
+				childrenTasksTreeViewer.getTree().setVisible(true);
 			} else {
-				description = task.getDescription();
+				childrenTasksTreeViewer.setInput(null);
 			}
-			descriptionLabel.setText(description);
-			childrenTasksTreeViewer.getControl().setVisible(isComposedTask);
+			followingTasksTreeViewer.setInput(ProcessUtils.getFollowingTasks(task));
+			detailComposite.redraw();
 			detailComposite.setVisible(true);
 		} else {
 			detailComposite.setVisible(false);
@@ -339,6 +564,9 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	@Override
 	public void dispose() {
 		adapterFactory.dispose();
+		greenTaskImage.dispose();
+		greyTaskImage.dispose();
+		yellowTaskImage.dispose();
 		super.dispose();
 	}
 
@@ -351,8 +579,11 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 		Display.getDefault().syncExec(new Runnable() {
 
 			public void run() {
-				contextViewer.refresh(object);
+				if (!contextViewer.getControl().isDisposed()) {
+					contextViewer.refresh(object);
+				}
 			}
 		});
 	}
+
 }

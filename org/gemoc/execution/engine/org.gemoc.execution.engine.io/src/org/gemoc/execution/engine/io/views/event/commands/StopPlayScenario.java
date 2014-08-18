@@ -7,17 +7,18 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
+import org.gemoc.execution.engine.io.views.event.EventManagerView.SourceProviderControls;
 
 public class StopPlayScenario extends AbstractHandler {
+	
+	public static final String ID = "org.gemoc.execution.engine.io.views.event.commands.StopPlayScenario";
+	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
-		/*
-		eventView.getCurrentEngineCache().stopPlayScenario();
-		*/
 		eventView.stopPlayScenario();
 		eventView.informationMsg("Replay", "End");
-		eventView.executeService(event, "PLAY");
+		eventView.executeService(event, SourceProviderControls.PLAY);
 		return null;			
 	}	
 }

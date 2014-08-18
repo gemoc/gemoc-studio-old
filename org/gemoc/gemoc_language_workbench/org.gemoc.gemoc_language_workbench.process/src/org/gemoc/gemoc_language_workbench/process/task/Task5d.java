@@ -39,6 +39,7 @@ import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.process.AbstractProcessor;
+import org.gemoc.gemoc_language_workbench.process.Activator;
 
 /**
  * Reference an editor project.
@@ -131,8 +132,7 @@ public class Task5d extends AbstractProcessor {
 					removeProjectName(context, projectName);
 				}
 			} catch (CoreException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Activator.getDefault().error(e);
 			}
 		}
 	}

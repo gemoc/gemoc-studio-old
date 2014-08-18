@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.execution.engine.io.views.event.EventManagerClockWrapper;
+import org.gemoc.execution.engine.io.views.event.ClockWrapper;
+import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
+import org.gemoc.execution.engine.scenario.Reference;
 
 public class ScenarioRecorder extends ScenarioTool
 {
@@ -17,7 +18,7 @@ public class ScenarioRecorder extends ScenarioTool
 	{
 		super(manager);
 	}
-	
+
 	private void createResource() 
 	{
 		Runnable runnable = new Runnable() 
@@ -25,7 +26,8 @@ public class ScenarioRecorder extends ScenarioTool
 			public void run() 
 			{
 				ResourceSet rs = _manager.getWrapperCache().getSystem().eResource().getResourceSet(); 				
-				URI uri = URI.createURI("platform:/resource" + _manager.getWrapperCache().getEngine().getExecutionContext().getWorkspace().getExecutionPath().append("Scenario.scenario").toString());
+				URI uri = URI.createURI("platform:/resource" 
+						+ _manager.getWrapperCache().getEngine().getExecutionContext().getWorkspace().getExecutionPath().append("container.scenario").toString());
 				_resource = rs.createResource(uri);
 			}
 		};
@@ -45,58 +47,60 @@ public class ScenarioRecorder extends ScenarioTool
 		};
 		safeModelModification(runnable);
 	}
-	
+
 	public void startRecord()
 	{
-		createResource();
-		createScenario();
+		if(_scenario == null)
+		{	
+			createResource();
+			createScenario();
+		}
+		Runnable runnable = new Runnable() 
+		{
+			public void run() {
+				List<Reference> refList = _scenario.getRefList();
+				Reference ref = _factory.createReference();
+				ref.setStartStep((int) _manager.getWrapperCache().getEngine().getEngineStatus().getNbLogicalStepRun());
+				refList.add(ref);
+				_fragment = _factory.createFragment();
+				ref.setFragment(_fragment);
+			}
+		};
+		safeModelModification(runnable);	
 	}
 
 	public void record()
 	{
-		final ObservableBasicExecutionEngine engine = _manager.getWrapperCache().getEngine();
-		if (_currentScenarioStep == null)
+		Runnable runnable = new Runnable() 
 		{
-			_currentScenarioStep = engine.getEngineStatus().getNbLogicalStepRun() - 1;
-		}
-		if (engine.getEngineStatus().getNbLogicalStepRun() > _currentScenarioStep)
-		{
-			_currentScenarioStep++;
-			Runnable runnable = new Runnable() 
-			{
-				public void run() {
-					List<ExecutionStep> stepList =  _scenario.getStepList();
-					ExecutionStep newStep = _factory.createExecutionStep();
-					List<EventState> newListEvent = newStep.getEventList();
-					for(EventManagerClockWrapper cw: _manager.getWrapperCache().getWrappers())
-					{
-						Boolean state = cw.isForced();
-						if(state != null)
-						{
-							EventState newState = _factory.createEventState();
-							newState.setClock(cw.getClock());
-							newState.setIsForced(state);
-							newListEvent.add(newState);
-						}
-					}
-					if(!newListEvent.isEmpty())
-					{
-						newStep.setStep((int)engine.getEngineStatus().getNbLogicalStepRun());
-						stepList.add(newStep);
-					}
-					save();
-				}
-			};
-			safeModelModification(runnable);			
-		}		
-	}
+			public void run() {
 
-	public void stopRecord(){
-		createResource();
-		_currentScenarioStep = null;
-	}
-	
-	private void save()
+				List<ExecutionStep> stepList =  _fragment.getStepList();
+				ExecutionStep newStep = _factory.createExecutionStep();
+				List<EventState> newListEvent = newStep.getEventList();
+				for(ClockWrapper cw: _manager.getWrapperCache().getClockWrapperList())
+				{
+					ClockStatus state = cw.getState();
+					boolean isForced = state.isForced();
+					if(isForced)
+					{
+						EventState newState = _factory.createEventState();
+						newState.setClock(cw.getClock());
+						newState.setTick(state.getTick());
+						newListEvent.add(newState);
+					} 
+
+				}
+				stepList.add(newStep);
+
+				save();
+			}
+		};
+		safeModelModification(runnable);			
+	}		
+
+
+	protected void save()
 	{
 		try 
 		{

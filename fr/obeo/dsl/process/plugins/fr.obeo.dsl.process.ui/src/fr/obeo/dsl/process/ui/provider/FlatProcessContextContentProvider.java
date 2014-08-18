@@ -20,6 +20,8 @@ package fr.obeo.dsl.process.ui.provider;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessUtils;
 
+import java.util.Collection;
+
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
@@ -62,7 +64,9 @@ public class FlatProcessContextContentProvider implements ITreeContentProvider {
 	public Object[] getElements(Object inputElement) {
 		final Object[] res;
 
-		if (inputElement instanceof ProcessContext) {
+		if (inputElement instanceof Collection<?>) {
+			res = ((Collection<?>)inputElement).toArray();
+		} else if (inputElement instanceof ProcessContext) {
 			res = ProcessUtils.getAllTasks(((ProcessContext)inputElement).getDefinition()).toArray();
 		} else {
 			res = EMPTY;

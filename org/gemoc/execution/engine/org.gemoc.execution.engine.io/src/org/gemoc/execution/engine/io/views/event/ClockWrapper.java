@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.io.views.event;
 
+import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -13,31 +14,28 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
  *	the clock and is state. In the future others features like
  *	statistics (nb of uses,etc ) will be added.
  */
-public class EventManagerClockWrapper {
+public class ClockWrapper 
+{
 	private Clock _clock;
 	private ClockControllerInternal _clockController;
-	private Boolean _stateForced;
-	private boolean _stateFutureTick;
-
-	public EventManagerClockWrapper(Clock clock, ClockControllerInternal clockController) {
+	private ClockStatus _state;
+	private WrapperAdvancedControl _control;
+	
+	public ClockWrapper(Clock clock, ClockControllerInternal clockController) 
+	{
 		_clock = clock;
-		_stateForced = null;
-		_stateFutureTick = false;
 		_clockController = clockController;
+		_state = ClockStatus.NOTFORCED_NOTSET;
+		_control = null;
 	}
-	public Boolean isForced() {
-		return _stateForced;
-	}
-
-	public void setStateFutureTick(boolean state){
-		_stateFutureTick = state;
-	}
-
-	public void setStateForced(Boolean state) {
-		_stateForced = state;		
-		if(_stateForced != null)
+	
+	public void setState(ClockStatus state){
+		_state = state;
+		boolean isForced = _state.isForced();
+		boolean tick = _state.getTick();
+		if(isForced)
 		{
-			if (_stateForced)
+			if (tick)
 			{
 				_clockController.tickInTheFuture(getClockQualifiedName());			
 			}
@@ -45,12 +43,15 @@ public class EventManagerClockWrapper {
 			{
 				_clockController.doNotTickInTheFuture(getClockQualifiedName());	
 			}
-			setStateFutureTick(_stateForced);
+		}
+		else
+		{
+			_clockController.resetFutureClockState(getClockQualifiedName());
 		}
 	}
 	
-	public void free(){
-		// recuperer la map du controller et remove la clock.
+	public ClockStatus getState(){
+		return _state;
 	}
 
 	private String getClockQualifiedName() 
@@ -61,23 +62,18 @@ public class EventManagerClockWrapper {
 		result += _clock.getName();
 		return result;
 	}
-	public Clock getClock() {
+	
+	public Clock getClock() 
+	{
 		return _clock;
 	}
-
-
-	public String getBehavior(){
-		String result = "";
-		if(_stateForced == null)
-		{
-			result = _stateFutureTick ? "NOTFORCED_CLOCK_SET" : "NOTFORCED_CLOCK_NOTSET";
-		}
-		else
-		{
-			result = _stateForced ? "FORCED_CLOCK_SET" : "FORCED_CLOCK_NOTSET";
-		}
-		return result;
+	
+	public WrapperAdvancedControl getControl() {
+		return _control;
 	}
 
+	public void setControl(WrapperAdvancedControl control) {
+		_control = control;
+	}
 
 }

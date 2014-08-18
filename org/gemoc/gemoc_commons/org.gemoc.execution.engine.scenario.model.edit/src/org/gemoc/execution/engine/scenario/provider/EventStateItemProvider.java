@@ -60,26 +60,26 @@ public class EventStateItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIsForcedPropertyDescriptor(object);
+			addTickPropertyDescriptor(object);
 			addClockPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Forced feature.
+	 * This adds a property descriptor for the Tick feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIsForcedPropertyDescriptor(Object object) {
+	protected void addTickPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EventState_isForced_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EventState_isForced_feature", "_UI_EventState_type"),
-				 ScenarioPackage.Literals.EVENT_STATE__IS_FORCED,
+				 getString("_UI_EventState_tick_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EventState_tick_feature", "_UI_EventState_type"),
+				 ScenarioPackage.Literals.EVENT_STATE__TICK,
 				 true,
 				 false,
 				 false,
@@ -130,7 +130,7 @@ public class EventStateItemProvider
 	@Override
 	public String getText(Object object) {
 		EventState eventState = (EventState)object;
-		return getString("_UI_EventState_type") + " " + eventState.isIsForced();
+		return getString("_UI_EventState_type") + " " + eventState.isTick();
 	}
 	
 
@@ -146,7 +146,7 @@ public class EventStateItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EventState.class)) {
-			case ScenarioPackage.EVENT_STATE__IS_FORCED:
+			case ScenarioPackage.EVENT_STATE__TICK:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -5,25 +5,18 @@ package org.gemoc.execution.engine.scenario.provider;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
 import org.gemoc.execution.engine.scenario.ScenarioPackage;
@@ -63,31 +56,8 @@ public class ExecutionStepItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addStepPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Step feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addStepPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ExecutionStep_step_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutionStep_step_feature", "_UI_ExecutionStep_type"),
-				 ScenarioPackage.Literals.EXECUTION_STEP__STEP,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -139,8 +109,7 @@ public class ExecutionStepItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		ExecutionStep executionStep = (ExecutionStep)object;
-		return getString("_UI_ExecutionStep_type") + " " + executionStep.getStep();
+		return getString("_UI_ExecutionStep_type");
 	}
 	
 
@@ -156,9 +125,6 @@ public class ExecutionStepItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ExecutionStep.class)) {
-			case ScenarioPackage.EXECUTION_STEP__STEP:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case ScenarioPackage.EXECUTION_STEP__EVENT_LIST:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

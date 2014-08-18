@@ -13,6 +13,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
+import org.gemoc.execution.engine.scenario.Fragment;
+import org.gemoc.execution.engine.scenario.Reference;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
 import org.gemoc.execution.engine.scenario.ScenarioPackage;
@@ -30,6 +32,20 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 	 * @generated
 	 */
 	private EClass scenarioEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass referenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fragmentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,8 +139,53 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getScenario_StepList() {
+	public EReference getScenario_RefList() {
 		return (EReference)scenarioEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReference() {
+		return referenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReference_Fragment() {
+		return (EReference)referenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getReference_StartStep() {
+		return (EAttribute)referenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFragment() {
+		return fragmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFragment_StepList() {
+		return (EReference)fragmentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -150,15 +211,6 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getExecutionStep_Step() {
-		return (EAttribute)executionStepEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getEventState() {
 		return eventStateEClass;
 	}
@@ -168,7 +220,7 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEventState_IsForced() {
+	public EAttribute getEventState_Tick() {
 		return (EAttribute)eventStateEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -210,14 +262,20 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 
 		// Create classes and their features
 		scenarioEClass = createEClass(SCENARIO);
-		createEReference(scenarioEClass, SCENARIO__STEP_LIST);
+		createEReference(scenarioEClass, SCENARIO__REF_LIST);
+
+		referenceEClass = createEClass(REFERENCE);
+		createEReference(referenceEClass, REFERENCE__FRAGMENT);
+		createEAttribute(referenceEClass, REFERENCE__START_STEP);
+
+		fragmentEClass = createEClass(FRAGMENT);
+		createEReference(fragmentEClass, FRAGMENT__STEP_LIST);
 
 		executionStepEClass = createEClass(EXECUTION_STEP);
 		createEReference(executionStepEClass, EXECUTION_STEP__EVENT_LIST);
-		createEAttribute(executionStepEClass, EXECUTION_STEP__STEP);
 
 		eventStateEClass = createEClass(EVENT_STATE);
-		createEAttribute(eventStateEClass, EVENT_STATE__IS_FORCED);
+		createEAttribute(eventStateEClass, EVENT_STATE__TICK);
 		createEReference(eventStateEClass, EVENT_STATE__CLOCK);
 	}
 
@@ -255,14 +313,20 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScenario_StepList(), this.getExecutionStep(), null, "stepList", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScenario_RefList(), this.getReference(), null, "refList", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getReference_Fragment(), this.getFragment(), null, "fragment", null, 1, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReference_StartStep(), ecorePackage.getEInt(), "startStep", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(fragmentEClass, Fragment.class, "Fragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFragment_StepList(), this.getExecutionStep(), null, "stepList", null, 0, -1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(executionStepEClass, ExecutionStep.class, "ExecutionStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExecutionStep_EventList(), this.getEventState(), null, "eventList", null, 0, -1, ExecutionStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getExecutionStep_Step(), ecorePackage.getEInt(), "step", null, 0, 1, ExecutionStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventStateEClass, EventState.class, "EventState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEventState_IsForced(), ecorePackage.getEBoolean(), "isForced", null, 0, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEventState_Tick(), ecorePackage.getEBoolean(), "tick", null, 0, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventState_Clock(), theTimeModelPackage.getClock(), null, "clock", null, 1, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource

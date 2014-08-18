@@ -59,5 +59,24 @@ public class CommandState extends AbstractSourceProvider {
 		fireSourceChanged(ISources.ACTIVE_SHELL, INIT_STATE, "RESET");
 	}
 
+	public void setPlayEnabled(){
+		_playFlag = true;
+		fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, "ENABLE");
+	}
+	
+	public void setRecordEnabled(){
+		_recordFlag = true;
+		fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, "ENABLE");
+	}
+	
+	public void setPlayDisabled(){
+		_playFlag = false;
+		fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, "DISABLE");
+	}
+	
+	public void setRecordDisabled(){
+		_playFlag = false;
+		fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, "DISABLE");
+	}
 
 } 
