@@ -23,7 +23,7 @@ import java.io.IOException;
 
 import org.eclipse.core.resources.IProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
-import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction.CreateDomainModelAction;
 

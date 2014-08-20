@@ -27,7 +27,8 @@ import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
-import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
@@ -39,7 +40,7 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardCont
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewEMFProjectTask extends AbstractResourceActionProcessor {
+public class CreateNewEMFProjectTask extends AbstractActionProcessor2 {
 
 
 	protected String undoneReason = "";
@@ -113,7 +114,6 @@ public class CreateNewEMFProjectTask extends AbstractResourceActionProcessor {
 		return undoneReason;
 	}
 
-	@Override
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		// if the changed resource is an IProject referenced by the xdsml
@@ -134,7 +134,6 @@ public class CreateNewEMFProjectTask extends AbstractResourceActionProcessor {
 		return result;
 	}
 
-	@Override
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		// if xdsml of the process has changed
@@ -159,7 +158,6 @@ public class CreateNewEMFProjectTask extends AbstractResourceActionProcessor {
 		return result;
 	}
 
-	@Override
 	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {

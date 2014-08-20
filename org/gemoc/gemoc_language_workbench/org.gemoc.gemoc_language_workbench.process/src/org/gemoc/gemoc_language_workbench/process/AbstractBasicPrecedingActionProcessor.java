@@ -19,13 +19,17 @@ package org.gemoc.gemoc_language_workbench.process;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.process.TaskChanged;
 import fr.obeo.dsl.workspace.listener.change.process.VariableChanged;
 
-public abstract class AbstractBasicPrecedingActionProcessor extends AbstractActionProcessor {
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
+
+public abstract class AbstractBasicPrecedingActionProcessor<T extends ProcessContext> extends AbstractActionProcessor<T> {
 
 	boolean acceptChangeOnPrecedingInternalChange = true;
 

@@ -15,40 +15,47 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process;
+package org.gemoc.gemoc_language_workbench.process.specific;
 
-import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.IProcessRunner;
+
+import org.gemoc.gemoc_language_workbench.process.ProcessRunner;
 
 /**
- * An abstract implementation of {@link IActionProcessor} providing a reference to the corresponding
- * {@link ActionTask}.
+ * The Gemoc language {@link IProcessRunner}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public abstract class AbstractActionProcessor implements IActionProcessor<GemocLanguageProcessContext> {
-
-	/**
-	 * The corresponding {@link ActionTask}.
-	 */
-	private final ActionTask task;
+public class GemocLanguageProcessRunner extends ProcessRunner<GemocLanguageProcessContext>
+{
 
 	/**
 	 * Constructor.
-	 * 
-	 * @param task
-	 *            the corresponding {@link ActionTask}.
 	 */
-	public AbstractActionProcessor(ActionTask task) {
-		this.task = task;
+	public GemocLanguageProcessRunner(GemocLanguageProcessContext processContext) 
+	{
+		super(processContext);
+	
+		// Resource resource = new XMIResourceImpl();
+		// try
+		// {
+		// InputStream is =
+		// GemocLanguageProcessRunner.class.getResourceAsStream("/process/gemoc_language.process");
+		// resource.load(is, new HashMap<String, String>());
+		// }
+		// catch (IOException e)
+		// {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// _process = (Process)resource.getContents().get(0);
+//		GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();
+//		processContext.setDefinition(getProcess());
+//		processContext.initialize(xdsmlUri);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#getActionTask()
-	 */
-	public ActionTask getActionTask() {
-		return task;
+	public GemocLanguageProcessContext getCastedContext() {
+		return (GemocLanguageProcessContext)getContext();
 	}
 
 }

@@ -22,11 +22,15 @@ import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessRunner;
 
 public abstract class AbstractProcessRunnerFactory {
 
-	public static GemocLanguageProcessRunner createProcessRunner(URI uri) {
-		GemocLanguageProcessRunner runner = new GemocLanguageProcessRunner(uri);
+	public static GemocLanguageProcessRunner createProcessRunner(URI xdsmlURI) {
+		GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();
+		processContext.initialize(xdsmlURI);
+		GemocLanguageProcessRunner runner = new GemocLanguageProcessRunner(processContext);
 		ProcessUtils.registerProcessRunner(runner);
 		WorkspaceUtils.createListener(runner.getContext()).addProcessor(runner, false);
 		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(runner, true);

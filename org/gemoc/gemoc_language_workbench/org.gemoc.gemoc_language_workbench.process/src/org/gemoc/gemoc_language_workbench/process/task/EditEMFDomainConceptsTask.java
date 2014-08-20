@@ -41,7 +41,8 @@ import org.eclipse.ui.ide.IDE;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
-import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 
@@ -50,7 +51,7 @@ import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class EditEMFDomainConceptsTask extends AbstractResourceActionProcessor {
+public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 
 	protected String undoneReason = "";
 
@@ -182,7 +183,6 @@ public class EditEMFDomainConceptsTask extends AbstractResourceActionProcessor {
 
 	}
 
-	@Override
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		// if the changed resource is an IProject referenced by the xdsml
@@ -218,7 +218,6 @@ public class EditEMFDomainConceptsTask extends AbstractResourceActionProcessor {
 		return result;
 	}
 
-	@Override
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		// if the changed resource is an IProject referenced by the xdsml
@@ -254,7 +253,6 @@ public class EditEMFDomainConceptsTask extends AbstractResourceActionProcessor {
 		return result;
 	}
 
-	@Override
 	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		// if the change is about the ecoreFile or genmodel
@@ -276,7 +274,6 @@ public class EditEMFDomainConceptsTask extends AbstractResourceActionProcessor {
 		return result;
 	}
 
-	@Override
 	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {

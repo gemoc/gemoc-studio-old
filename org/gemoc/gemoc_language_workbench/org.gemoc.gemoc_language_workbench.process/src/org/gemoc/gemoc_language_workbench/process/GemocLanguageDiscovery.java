@@ -31,6 +31,7 @@ import java.util.ArrayList;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessRunner;
 import org.gemoc.gemoc_language_workbench.process.task.GemocProcessUtils;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 

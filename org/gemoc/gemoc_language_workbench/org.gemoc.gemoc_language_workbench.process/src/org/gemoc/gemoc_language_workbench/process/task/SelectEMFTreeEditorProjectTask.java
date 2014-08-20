@@ -20,7 +20,7 @@ package org.gemoc.gemoc_language_workbench.process.task;
 import fr.obeo.dsl.process.ActionTask;
 
 import org.eclipse.core.resources.IProject;
-import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardContextAction.CreateEditorProjectAction;
 

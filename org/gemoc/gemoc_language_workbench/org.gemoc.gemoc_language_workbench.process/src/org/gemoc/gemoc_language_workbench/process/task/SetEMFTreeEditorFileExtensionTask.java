@@ -40,14 +40,15 @@ import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
-import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 
 /**
  * Set domain model root.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class SetEMFTreeEditorFileExtensionTask extends AbstractResourceActionProcessor {
+public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 {
 
 	protected String undoneReason = "";
 
@@ -152,7 +153,6 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractResourceActionPro
 		 */
 	}
 
-	@Override
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
@@ -176,7 +176,6 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractResourceActionPro
 		return result;
 	}
 
-	@Override
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
@@ -201,7 +200,6 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractResourceActionPro
 		return result;
 	}
 
-	@Override
 	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if the changed resource is the genmodel referenced by the xdsml
 		if (resource instanceof IFile) {
@@ -225,7 +223,6 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractResourceActionPro
 		return null;
 	}
 
-	@Override
 	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {

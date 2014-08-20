@@ -28,7 +28,8 @@ import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
-import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardContextAction.CreateEditorProjectAction;
@@ -38,7 +39,7 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardCo
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewEMFTreeEditorProjectTask extends AbstractResourceActionProcessor {
+public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 {
 
 	protected String undoneReason = "";
 
@@ -112,7 +113,6 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractResourceActionPro
 		return undoneReason;
 	}
 
-	@Override
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if the changed resource is an IProject referenced by the xdsml as TreeEditor
 		if (resource instanceof IProject) {
@@ -129,7 +129,6 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractResourceActionPro
 		return false;
 	}
 
-	@Override
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		// if xdsml of the process has changed
@@ -153,7 +152,6 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractResourceActionPro
 		return result;
 	}
 
-	@Override
 	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {

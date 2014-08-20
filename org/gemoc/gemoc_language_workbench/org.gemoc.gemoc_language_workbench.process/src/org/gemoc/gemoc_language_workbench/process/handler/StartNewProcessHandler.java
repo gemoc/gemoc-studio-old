@@ -24,7 +24,7 @@ import java.util.List;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessRunner;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessRunner;
 
 public class StartNewProcessHandler extends AbstractHandler {
 
