@@ -27,8 +27,8 @@ public abstract class GemocProcessRunnerFactory {
 
 	public static GemocLanguageProcessRunner createProcessRunner(URI xdsmlURI) {
 		GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();
-		processContext.initialize(xdsmlURI);
 		GemocLanguageProcessRunner runner = new GemocLanguageProcessRunner(processContext);
+		processContext.initialize(xdsmlURI);
 		ProcessUtils.registerProcessRunner(runner);
 		WorkspaceUtils.createListener(runner.getContext()).addProcessor(runner, false);
 		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(runner, true);
