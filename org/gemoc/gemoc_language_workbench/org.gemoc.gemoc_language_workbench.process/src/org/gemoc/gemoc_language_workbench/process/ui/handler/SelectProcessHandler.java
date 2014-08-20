@@ -15,39 +15,51 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process.view;
+package org.gemoc.gemoc_language_workbench.process.ui.handler;
 
 import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.ProcessUtils;
-import fr.obeo.dsl.process.ui.view.AbstractProcessView;
+import fr.obeo.dsl.process.ui.handler.AbstractSelectProcessHandler;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.handlers.HandlerUtil;
+import org.gemoc.gemoc_language_workbench.process.ui.view.ProcessView;
 
 /**
- * The {@link Process} view.
+ * Select a {@link Process} instance.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class ProcessView extends AbstractProcessView {
+public class SelectProcessHandler extends AbstractSelectProcessHandler {
 
-	/**
-	 * The view ID.
-	 */
-	public static final String ID = "org.gemoc.gemoc_language_workbench.process.view";
-
-	/**
-	 * Constructor.
-	 */
-	public ProcessView() {
-		super();
+	@Override
+	protected List<IProcessRunner> getProcessRunners(ExecutionEvent event) {
 		ArrayList<IProcessRunner> result = new ArrayList<IProcessRunner>();
 		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners()) {
 			result.add(runner);
 		}
-		if (result.size() > 0) {
-			setProcessRunner(result.get(0));
-		}
+		return result;
+	}
 
+	@Override
+	protected void setProcessRunner(ExecutionEvent event, IProcessRunner processContext) {
+		final IWorkbenchPart part = HandlerUtil.getActivePart(event);
+		if (part instanceof ProcessView) {
+			((ProcessView)part).setProcessRunner(processContext);
+		}
+	}
+
+	@Override
+	protected IProcessRunner getCurrentProcessRunner(ExecutionEvent event) {
+		final IWorkbenchPart part = HandlerUtil.getActivePart(event);
+		if (part instanceof ProcessView) {
+			return ((ProcessView)part).getProcessRunner();
+		}
+		return null;
 	}
 
 }

@@ -26,7 +26,7 @@ import org.gemoc.gemoc_language_workbench.process.ProcessRunner;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class GemocLanguageProcessRunner extends ProcessRunner<GemocLanguageProcessContext>
+public class GemocLanguageProcessRunner extends ProcessRunner
 {
 
 	/**
@@ -34,7 +34,7 @@ public class GemocLanguageProcessRunner extends ProcessRunner<GemocLanguageProce
 	 */
 	public GemocLanguageProcessRunner(GemocLanguageProcessContext processContext) 
 	{
-		super(processContext);
+		super("/process/gemoc_language.process", processContext);
 	
 		// Resource resource = new XMIResourceImpl();
 		// try

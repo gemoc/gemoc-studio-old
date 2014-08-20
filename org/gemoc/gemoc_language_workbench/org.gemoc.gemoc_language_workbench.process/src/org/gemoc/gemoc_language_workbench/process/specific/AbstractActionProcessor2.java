@@ -18,18 +18,68 @@
 package org.gemoc.gemoc_language_workbench.process.specific;
 
 import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessContext;
 
-import org.gemoc.gemoc_language_workbench.process.PrecedingActionProcessorCaller;
-import org.gemoc.gemoc_language_workbench.process.ResourceActionProcessorCaller;
+import org.eclipse.core.resources.IResource;
+import org.gemoc.gemoc_language_workbench.process.IResourceActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.IVariableActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.support.AbstractActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.support.PreviousTaskChangeAcceptanceStategy;
+import org.gemoc.gemoc_language_workbench.process.support.ResourceChangeAcceptanceStrategy;
+import org.gemoc.gemoc_language_workbench.process.support.VariableChangeAcceptanceStrategy;
 
 public abstract class AbstractActionProcessor2 extends AbstractActionProcessor<GemocLanguageProcessContext>
+	implements IResourceActionProcessor, IVariableActionProcessor
 {
 
 	public AbstractActionProcessor2(ActionTask task, boolean acceptChangeOnPrecedingInternalChange) 
 	{
 		super(task);
-		addCaller(new ResourceActionProcessorCaller<GemocLanguageProcessContext>());
-		addCaller(new PrecedingActionProcessorCaller<GemocLanguageProcessContext>());
+		addCaller(new ResourceChangeAcceptanceStrategy());
+		addCaller(new VariableChangeAcceptanceStrategy());
+		if (acceptChangeOnPrecedingInternalChange)
+			addCaller(new PreviousTaskChangeAcceptanceStategy());
 	}
 
+	private GemocLanguageProcessContext castContext(ProcessContext context)
+	{
+		return (GemocLanguageProcessContext)context;
+	}
+
+
+	public boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable variable) 
+	{
+		return acceptChangeVariableChanged(castContext(context), variable);
+	}
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, IResource resource) 
+	{
+		return false;
+	}
+		
+	
+	public final boolean acceptChangeForRemovedResource(ProcessContext context, IResource resource) {
+		return acceptChangeForRemovedResource(castContext(context), resource);
+	}
+	protected boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
+		return false;
+	}
+
+	
+	public final boolean acceptChangeForAddedResource(ProcessContext context, IResource resource) {
+		return acceptChangeForAddedResource(castContext(context), resource);
+	}
+	protected boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+		return false;
+	}
+
+	
+	public final boolean acceptChangeForModifiedResource(ProcessContext context, IResource resource) {
+		return acceptChangeForModifiedResource(castContext(context), resource);
+	}
+	protected boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
+		return false;
+	}
+
+	
 }

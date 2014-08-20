@@ -15,36 +15,37 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process;
+package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
-import fr.obeo.dsl.process.Task;
-import fr.obeo.dsl.workspace.listener.change.IChange;
-import fr.obeo.dsl.workspace.listener.change.process.TaskChanged;
-import fr.obeo.dsl.workspace.listener.change.process.VariableChanged;
 
-public class PrecedingActionProcessorCaller<T extends ProcessContext> implements IActionProcessorCaller<T>
+import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.IVariableActionProcessor;
+
+public class VariableActionProcessorAdapter implements IVariableActionProcessor
 {
-
-	public boolean doesProcessorAcceptChange(IActionProcessor<T> actionProcessor, T context, IChange<?> change) {
-		IPrecedingActionProcessor<T> adaptedActionProcessor = new PrecedingActionProcessorAdapter<T>(actionProcessor);
-		boolean result = internalDoesProcessorAcceptChange(adaptedActionProcessor, context, change);
-		return result;
-	}
 	
-	private boolean internalDoesProcessorAcceptChange(IPrecedingActionProcessor<T> actionProcessor, T context, IChange<?> change)
+	private IVariableActionProcessor _realActionProcessor;
+
+	public VariableActionProcessorAdapter(IActionProcessor actionProcessor) {
+		if (actionProcessor instanceof IVariableActionProcessor)
+		{
+			_realActionProcessor = (IVariableActionProcessor)actionProcessor;
+		}
+	}
+
+	@Override
+	public boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable variable) 
 	{
 		boolean result = false;
-		if (change instanceof VariableChanged) 
-		{
-			result = actionProcessor.acceptChangeVariableChanged(context, (ContextVariable)change.getObject());
-		} 
-		else if (change instanceof TaskChanged) 
-		{
-			result = actionProcessor.acceptChangeTaskChanged(context, (Task)change.getObject());
-		}
-		return result;
+		if (_realActionProcessor != null)
+			_realActionProcessor.acceptChangeVariableChanged(context, variable);
+		return result;	
 	}
-	
+
+	public IActionProcessor getAdaptedProcessor() {
+		return (IActionProcessor)_realActionProcessor;
+	}
+
 }

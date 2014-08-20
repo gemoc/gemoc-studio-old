@@ -20,9 +20,9 @@ package org.gemoc.gemoc_language_workbench.process;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 
-public interface IActionProcessorCaller<T extends ProcessContext> 
+public interface IChangeAcceptanceStrategy 
 {
 
-	boolean doesProcessorAcceptChange(IActionProcessor<T> actionProcessor, T context, IChange<?> change);
+	boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context, IChange<?> change);
 	
 }

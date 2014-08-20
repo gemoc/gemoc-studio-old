@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process;
+package org.gemoc.gemoc_language_workbench.process.specific;
 
 import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.ProcessUtils;
@@ -31,7 +31,6 @@ import java.util.ArrayList;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
-import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessRunner;
 import org.gemoc.gemoc_language_workbench.process.task.GemocProcessUtils;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
@@ -73,7 +72,7 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 	}
 
 	private GemocLanguageProcessRunner createProcessRunner(final URI uri) {
-		return AbstractProcessRunnerFactory.createProcessRunner(uri);
+		return GemocProcessRunnerFactory.createProcessRunner(uri);
 	}
 
 	private void deleteProcessRunner(final URI uri) {

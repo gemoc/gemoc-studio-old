@@ -15,11 +15,10 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process;
+package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.Process;
-import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
 
@@ -28,27 +27,30 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ActionProcessorFactory<T extends ProcessContext>
+import org.gemoc.gemoc_language_workbench.process.Activator;
+import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
+
+public class ActionProcessorFactory
 {
 
-	private Map<Task, IActionProcessor<T>> actionProcessors = new LinkedHashMap<Task, IActionProcessor<T>>();
+	private Map<Task, IActionProcessor> actionProcessors = new LinkedHashMap<Task, IActionProcessor>();
 
 	private ActionProcessorFactory()
 	{}
 	
-	static public <G extends ProcessContext> Map<Task, IActionProcessor<G>> createActionProcessors(Process process) 
+	static public Map<Task, IActionProcessor> createActionProcessors(Process process) 
 	{
-		return new ActionProcessorFactory<G>().internalCreateActionProcessors(process);
+		return new ActionProcessorFactory().internalCreateActionProcessors(process);
 	}
 	
-	private Map<Task, IActionProcessor<T>> internalCreateActionProcessors(Process process) 
+	private Map<Task, IActionProcessor> internalCreateActionProcessors(Process process) 
 	{
 		for(Task t : ProcessUtils.getAllTasks(process))
 		{
 			if (t instanceof ActionTask)
 			{
 				ActionTask at = (ActionTask)t;
-				IActionProcessor<T> processor = instanciateProcessor(at);
+				IActionProcessor processor = instanciateProcessor(at);
 				if (processor != null)
 					addActionProcessor(processor);						
 			}
@@ -56,15 +58,15 @@ public class ActionProcessorFactory<T extends ProcessContext>
 		return actionProcessors;
 	}
 
-	private IActionProcessor<T> instanciateProcessor(ActionTask at) {
-		IActionProcessor<T> processor = null;
+	private IActionProcessor instanciateProcessor(ActionTask at) {
+		IActionProcessor processor = null;
 		if (at.getInstanceClassName() != null)
 		{
 			try {
 				Class<?> c = Activator.getDefault().getClass().getClassLoader().loadClass(at.getInstanceClassName());
 				Constructor<?> constructor = c.getConstructor(ActionTask.class);
 				Object newInstance = constructor.newInstance(at);
-				processor = (IActionProcessor<T>)newInstance;
+				processor = (IActionProcessor)newInstance;
 			} 
 			catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 				String message = "Property instanceClassName not correctly set for action task " + at.getName() + ".";
@@ -88,7 +90,7 @@ public class ActionProcessorFactory<T extends ProcessContext>
 	 * @param processor
 	 *            the {@link IActionProcessor}
 	 */
-	private void addActionProcessor(IActionProcessor<T> processor) 
+	private void addActionProcessor(IActionProcessor processor) 
 	{
 		actionProcessors.put(processor.getActionTask(), processor);
 	}

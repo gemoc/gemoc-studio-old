@@ -26,7 +26,8 @@ import fr.obeo.dsl.workspace.listener.change.IChange;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface IActionProcessor<T extends ProcessContext> {
+public interface IActionProcessor 
+{
 
 	/**
 	 * Updates the given {@link IProcessRunner runner} according to the given {@link IChange change}. Updates
@@ -39,7 +40,7 @@ public interface IActionProcessor<T extends ProcessContext> {
 	 *            the {@link IChange}
 	 * @return an object been the result of the task, can be null
 	 */
-	Object updateContextWhenDone(T context);
+	Object updateContextWhenDone(ProcessContext context);
 
 	/**
 	 * reset the values in the context corresponding to this action, that is now considered as undone
@@ -48,7 +49,7 @@ public interface IActionProcessor<T extends ProcessContext> {
 	 * @param change
 	 * @return the reason why it isn't done
 	 */
-	String updateContextWhenUndone(T context);
+	String updateContextWhenUndone(ProcessContext context);
 
 	/**
 	 * Verify in the environment that the Action can be considered as done
@@ -57,7 +58,7 @@ public interface IActionProcessor<T extends ProcessContext> {
 	 * @param change
 	 * @return
 	 */
-	boolean validate(T context);
+	boolean validate(ProcessContext context);
 
 	/**
 	 * Verify in the environment that the change is relevant for the Action
@@ -66,7 +67,7 @@ public interface IActionProcessor<T extends ProcessContext> {
 	 * @param change
 	 * @return true if the change must be processed
 	 */
-	boolean acceptChange(T context, IChange<?> change);
+	boolean acceptChange(ProcessContext context, IChange<?> change);
 
 	/**
 	 * Executes the {@link ActionTask} in the given {@link ProcessContext}.
@@ -74,7 +75,7 @@ public interface IActionProcessor<T extends ProcessContext> {
 	 * @param context
 	 *            the {@link ProcessContext}
 	 */
-	void doAction(T context);
+	void doAction(ProcessContext context);
 
 	/**
 	 * Undoes executes the {@link ActionTask} in the given {@link ProcessContext}.
@@ -82,7 +83,7 @@ public interface IActionProcessor<T extends ProcessContext> {
 	 * @param context
 	 *            the {@link ProcessContext}
 	 */
-	void undoAction(T context);
+	void undoAction(ProcessContext context);
 
 	/**
 	 * Gets the {@link ActionTask} associated with this processor.

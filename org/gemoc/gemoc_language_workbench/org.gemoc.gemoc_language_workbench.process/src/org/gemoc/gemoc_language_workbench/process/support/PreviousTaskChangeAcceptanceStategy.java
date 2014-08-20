@@ -15,19 +15,27 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process;
+package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.ProcessUtils;
+import fr.obeo.dsl.process.Task;
+import fr.obeo.dsl.workspace.listener.change.IChange;
+import fr.obeo.dsl.workspace.listener.change.process.TaskChanged;
 
-import org.eclipse.core.resources.IResource;
+import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.IChangeAcceptanceStrategy;
 
-public interface IResourceActionProcessor
+public class PreviousTaskChangeAcceptanceStategy implements IChangeAcceptanceStrategy
 {
 
-	boolean acceptChangeForRemovedResource(ProcessContext context, IResource resource);
-
-	boolean acceptChangeForAddedResource(ProcessContext context, IResource resource);
-	
-	boolean acceptChangeForModifiedResource(ProcessContext context, IResource resource);
+	public boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context, IChange<?> change) {
+		boolean result = false;
+		if (change instanceof TaskChanged) 
+		{
+			result = ProcessUtils.isTaskFollowing(actionProcessor.getActionTask(), (Task)change.getObject());
+		}
+		return result;
+	}
 	
 }

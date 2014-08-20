@@ -19,13 +19,10 @@ package org.gemoc.gemoc_language_workbench.process;
 
 import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
-import fr.obeo.dsl.process.Task;
 
-public interface IPrecedingActionProcessor<T extends ProcessContext>
+public interface IVariableActionProcessor
 {
 
-	boolean acceptChangeTaskChanged(T context, Task task);
-	
-	boolean acceptChangeVariableChanged(T context, ContextVariable variable);
-	
+	boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable object);
+		
 }

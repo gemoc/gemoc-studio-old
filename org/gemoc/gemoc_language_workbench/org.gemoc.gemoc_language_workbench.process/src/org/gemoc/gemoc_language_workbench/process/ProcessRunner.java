@@ -35,31 +35,32 @@ import java.util.Map;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessRunner;
+import org.gemoc.gemoc_language_workbench.process.support.ActionProcessorFactory;
 
-public abstract class ProcessRunner<T extends ProcessContext> implements IProcessRunner, IChangeProcessor 
+public abstract class ProcessRunner implements IProcessRunner, IChangeProcessor 
 {
 
 	/**
 	 * {@link List} of {@link IActionProcessor}.
 	 */
-	private final Map<Task, IActionProcessor<T>> actionProcessors;
+	private final Map<Task, IActionProcessor> actionProcessors;
 
 	/**
 	 * The {@link ProcessContext}.
 	 */
-	private final T processContext;
+	private final ProcessContext processContext;
 
 	/**
 	 * The {@link Process}.
 	 */
 	private final Process process;
 
-	public ProcessRunner(T processContext) 
+	public ProcessRunner(String processPath, ProcessContext processContext) 
 	{
 		Resource resource = new XMIResourceImpl();
 		try {
-			resource.load(GemocLanguageProcessRunner.class
-					.getResourceAsStream("/process/gemoc_language.process"), new HashMap<String, String>());
+			resource.load(	GemocLanguageProcessRunner.class.getResourceAsStream(processPath), 
+							new HashMap<String, String>());
 		} catch (IOException e) {
 			Activator.getDefault().error(e);
 		}
@@ -83,7 +84,7 @@ public abstract class ProcessRunner<T extends ProcessContext> implements IProces
 		return processContext;
 	}
 
-	private IActionProcessor<T> getActionProcessor(ActionTask task) {
+	private IActionProcessor getActionProcessor(ActionTask task) {
 		return actionProcessors.get(task);
 	}
 
@@ -119,7 +120,7 @@ public abstract class ProcessRunner<T extends ProcessContext> implements IProces
 	 * @see fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor#process(fr.obeo.dsl.workspace.listener.change.IChange)
 	 */
 	public void process(IChange<?> change) {
-		for (IActionProcessor<T> actionProcessor : actionProcessors.values()) {
+		for (IActionProcessor actionProcessor : actionProcessors.values()) {
 			ActionTask actionTask = actionProcessor.getActionTask();
 			if (ProcessUtils.evaluatePrecondition(processContext, actionTask)
 					&& actionProcessor.acceptChange(processContext, change)) {
@@ -147,7 +148,7 @@ public abstract class ProcessRunner<T extends ProcessContext> implements IProces
 	 */
 	public List<ActionTask> getStartNewProcessActionTasks() {
 		ArrayList<ActionTask> result = new ArrayList<ActionTask>();
-		for (IActionProcessor<T> actionProcessor : actionProcessors.values()) {
+		for (IActionProcessor actionProcessor : actionProcessors.values()) {
 			ActionTask task = actionProcessor.getActionTask();
 			if (!hasPreceding(task)) {
 				result.add(task);

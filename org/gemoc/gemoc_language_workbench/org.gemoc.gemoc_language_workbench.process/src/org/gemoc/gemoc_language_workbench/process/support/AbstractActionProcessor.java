@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process.specific;
+package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessContext;
@@ -24,7 +24,7 @@ import fr.obeo.dsl.workspace.listener.change.IChange;
 import java.util.ArrayList;
 
 import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
-import org.gemoc.gemoc_language_workbench.process.IActionProcessorCaller;
+import org.gemoc.gemoc_language_workbench.process.IChangeAcceptanceStrategy;
 
 /**
  * An abstract implementation of {@link IActionProcessor} providing a reference to the corresponding
@@ -32,7 +32,8 @@ import org.gemoc.gemoc_language_workbench.process.IActionProcessorCaller;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public abstract class AbstractActionProcessor<T extends ProcessContext> implements IActionProcessor<T> {
+public abstract class AbstractActionProcessor<T extends ProcessContext> implements IActionProcessor 
+{
 
 	/**
 	 * The corresponding {@link ActionTask}.
@@ -58,24 +59,67 @@ public abstract class AbstractActionProcessor<T extends ProcessContext> implemen
 		return task;
 	}
 	
-	private ArrayList<IActionProcessorCaller<T>> _callers = new ArrayList<IActionProcessorCaller<T>>();
+	private ArrayList<IChangeAcceptanceStrategy> _callers = new ArrayList<IChangeAcceptanceStrategy>();
 
-	protected void addCaller(IActionProcessorCaller<T> caller)
+	protected void addCaller(IChangeAcceptanceStrategy caller)
 	{
 		_callers.add(caller);
 	}
 	
 	@Override
-	public boolean acceptChange(T context, IChange<?> change) 
+	public final boolean acceptChange(ProcessContext context, IChange<?> change) 
 	{
 		boolean result = false;
-		for(IActionProcessorCaller<T> caller : _callers)
+		for(IChangeAcceptanceStrategy caller : _callers)
 		{
-			result = caller.doesProcessorAcceptChange(this, context, change);
+			result = caller.isChangeAccepted(this, context, change);
 			if (result)
 				break;
 		}
 		return result;
 	}
-	
+
+	private T castContext(ProcessContext context) 
+	{
+		@SuppressWarnings("unchecked")
+		T castedContext = (T)context;
+		return castedContext;
+	}
+
+	@Override
+	public final Object updateContextWhenDone(ProcessContext context)
+	{
+		return internalUpdateContextWhenDone(castContext(context));
+	}
+
+	@Override
+	public final String updateContextWhenUndone(ProcessContext context)
+	{
+		return internalUpdateContextWhenUndone(castContext(context));
+	}
+
+	@Override
+	public final boolean validate(ProcessContext context)
+	{
+		return internalValidate(castContext(context));
+	}
+
+	@Override
+	public final void doAction(ProcessContext context)
+	{
+		internalDoAction(castContext(context));
+	}
+
+	@Override
+	public final void undoAction(ProcessContext context)
+	{
+		internalUndoAction(castContext(context));
+	}
+
+	abstract protected Object internalUpdateContextWhenDone(T context);
+	abstract protected String internalUpdateContextWhenUndone(T context);
+	abstract protected boolean internalValidate(T context);
+	abstract protected void internalDoAction(T context);
+	abstract protected void internalUndoAction(T context);
+
 }

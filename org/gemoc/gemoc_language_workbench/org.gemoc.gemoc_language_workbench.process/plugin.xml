@@ -9,7 +9,7 @@
       </category>
       <view
             category="org.gemoc.gemoc_language_workbench.process.category"
-            class="org.gemoc.gemoc_language_workbench.process.view.ProcessView"
+            class="org.gemoc.gemoc_language_workbench.process.ui.view.ProcessView"
             id="org.gemoc.gemoc_language_workbench.process.view"
             name="Gemoc process"
             restorable="true">
@@ -37,12 +37,12 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.gemoc.gemoc_language_workbench.process.handler.SelectProcessHandler"
+            defaultHandler="org.gemoc.gemoc_language_workbench.process.ui.handler.SelectProcessHandler"
             id="org.gemoc.gemoc_language_workbench.process.command.selectProcess"
             name="Select process">
       </command>
       <command
-            defaultHandler="org.gemoc.gemoc_language_workbench.process.handler.StartNewProcessHandler"
+            defaultHandler="org.gemoc.gemoc_language_workbench.process.ui.handler.StartNewProcessHandler"
             id="org.gemoc.gemoc_language_workbench.process.command.startNewProcess"
             name="Start new process">
       </command>

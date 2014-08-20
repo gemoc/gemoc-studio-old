@@ -15,17 +15,15 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process;
+package org.gemoc.gemoc_language_workbench.process.specific;
 
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
-import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
-import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessRunner;
 
-public abstract class AbstractProcessRunnerFactory {
+public abstract class GemocProcessRunnerFactory {
 
 	public static GemocLanguageProcessRunner createProcessRunner(URI xdsmlURI) {
 		GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();

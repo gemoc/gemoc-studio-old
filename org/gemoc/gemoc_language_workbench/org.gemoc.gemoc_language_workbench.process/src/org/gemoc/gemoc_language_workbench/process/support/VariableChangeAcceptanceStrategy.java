@@ -15,47 +15,35 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process;
+package org.gemoc.gemoc_language_workbench.process.support;
 
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.workspace.listener.change.IChange;
+import fr.obeo.dsl.workspace.listener.change.process.VariableChanged;
 
-import org.eclipse.core.resources.IResource;
+import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.IChangeAcceptanceStrategy;
+import org.gemoc.gemoc_language_workbench.process.IVariableActionProcessor;
 
-public class ResourceActionProcessorAdapter<T extends ProcessContext> implements IResourceActionProcessor<T>
+public class VariableChangeAcceptanceStrategy implements IChangeAcceptanceStrategy
 {
-	
-	private IResourceActionProcessor<T> _realActionProcessor;
 
-	@SuppressWarnings("unchecked")
-	public ResourceActionProcessorAdapter(IActionProcessor<T> actionProcessor) {
-		if (actionProcessor instanceof IResourceActionProcessor<?>)
+	@Override
+	public boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context, IChange<?> change) 
+	{
+		IVariableActionProcessor adaptedActionProcessor = new VariableActionProcessorAdapter(actionProcessor);
+		boolean result = internalDoesProcessorAcceptChange(adaptedActionProcessor, context, change);
+		return result;
+	}
+
+	private boolean internalDoesProcessorAcceptChange(IVariableActionProcessor actionProcessor, ProcessContext context, IChange<?> change)
+	{
+		boolean result = false;
+		if (change instanceof VariableChanged) 
 		{
-			_realActionProcessor = (IResourceActionProcessor<T>)actionProcessor;
-		}
-	}
-
-	@Override
-	public boolean acceptChangeForRemovedResource(T context, IResource resource) {
-		boolean result = false;
-		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeForRemovedResource(context, resource);
+			result = actionProcessor.acceptChangeVariableChanged(context, (ContextVariable)change.getObject());
+		} 
 		return result;
 	}
-
-	@Override
-	public boolean acceptChangeForAddedResource(T context, IResource resource) {
-		boolean result = false;
-		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeForRemovedResource(context, resource);
-		return result;
-	}
-
-	@Override
-	public boolean acceptChangeForModifiedResource(T context, IResource resource) {
-		boolean result = false;
-		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeForModifiedResource(context, resource);
-		return result;
-	}
-
 }

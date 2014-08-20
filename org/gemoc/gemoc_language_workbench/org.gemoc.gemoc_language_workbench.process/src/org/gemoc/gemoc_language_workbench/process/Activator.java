@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageDiscovery;
 import org.osgi.framework.BundleContext;
 
 /**

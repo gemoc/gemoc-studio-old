@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process.handler;
+package org.gemoc.gemoc_language_workbench.process.ui.handler;
 
 import fr.obeo.dsl.process.ActionTask;
 

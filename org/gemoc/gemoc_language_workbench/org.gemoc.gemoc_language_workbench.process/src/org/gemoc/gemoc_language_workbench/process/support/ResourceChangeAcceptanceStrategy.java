@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process;
+package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.workspace.listener.change.IChange;
@@ -25,17 +25,20 @@ import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
 
 import org.eclipse.core.resources.IResource;
+import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.IChangeAcceptanceStrategy;
+import org.gemoc.gemoc_language_workbench.process.IResourceActionProcessor;
 
-public class ResourceActionProcessorCaller<T extends ProcessContext> implements IActionProcessorCaller<T>
+public class ResourceChangeAcceptanceStrategy implements IChangeAcceptanceStrategy
 {
 
-	public boolean doesProcessorAcceptChange(IActionProcessor<T> actionProcessor, T context, IChange<?> change) {
-		IResourceActionProcessor<T> adaptedActionProcessor = new ResourceActionProcessorAdapter<T>(actionProcessor);
+	public boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context, IChange<?> change) {
+		IResourceActionProcessor adaptedActionProcessor = new ResourceActionProcessorAdapter(actionProcessor);
 		boolean result = internalDoesProcessorAcceptChange(adaptedActionProcessor, context, change);
 		return result;
 	}
 	
-	private boolean internalDoesProcessorAcceptChange(IResourceActionProcessor<T> actionProcessor, T context, IChange<?> change)
+	private boolean internalDoesProcessorAcceptChange(IResourceActionProcessor actionProcessor, ProcessContext context, IChange<?> change)
 	{
 		boolean result = false;
 		if (change instanceof ResourceAdded) 
