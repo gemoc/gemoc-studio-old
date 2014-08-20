@@ -9,12 +9,14 @@ import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
 import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
+import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
 import fr.obeo.dsl.process.Or;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessUtils;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
 
@@ -32,21 +34,23 @@ import org.eclipse.emf.ecore.util.EObjectValidator;
 
 /**
  * <!-- begin-user-doc --> The <b>Validator</b> for the model. <!-- end-user-doc -->
+ * 
  * @see fr.obeo.dsl.process.ProcessPackage
  * @generated
  */
 public class ProcessValidator extends EObjectValidator {
 	/**
-	 * The cached model package
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static final ProcessValidator INSTANCE = new ProcessValidator();
 
 	/**
-	 * A constant for the {@link org.eclipse.emf.common.util.Diagnostic#getSource() source} of diagnostic {@link org.eclipse.emf.common.util.Diagnostic#getCode() codes} from this package.
-	 * <!-- begin-user-doc
+	 * A constant for the {@link org.eclipse.emf.common.util.Diagnostic#getSource() source} of diagnostic
+	 * {@link org.eclipse.emf.common.util.Diagnostic#getCode() codes} from this package. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.common.util.Diagnostic#getSource()
 	 * @see org.eclipse.emf.common.util.Diagnostic#getCode()
 	 * @generated
@@ -56,20 +60,22 @@ public class ProcessValidator extends EObjectValidator {
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
 
 	/**
-	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * A constant with a fixed name that can be used as the base value for additional hand written constants
+	 * in a derived class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected static final int DIAGNOSTIC_CODE_COUNT = GENERATED_DIAGNOSTIC_CODE_COUNT;
 
 	/**
-	 * Creates an instance of the switch.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ProcessValidator() {
@@ -77,19 +83,19 @@ public class ProcessValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Returns the package of this validator switch.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the package of this validator switch. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EPackage getEPackage() {
-	  return ProcessPackage.eINSTANCE;
+		return ProcessPackage.eINSTANCE;
 	}
 
 	/**
-	 * Calls <code>validateXXX</code> for the corresponding classifier of the model.
-	 * <!-- begin-user-doc -->
+	 * Calls <code>validateXXX</code> for the corresponding classifier of the model. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -100,6 +106,8 @@ public class ProcessValidator extends EObjectValidator {
 				return validateProcess((fr.obeo.dsl.process.Process)value, diagnostics, context);
 			case ProcessPackage.TASK:
 				return validateTask((Task)value, diagnostics, context);
+			case ProcessPackage.PROCESS_VARIABLE:
+				return validateProcessVariable((ProcessVariable)value, diagnostics, context);
 			case ProcessPackage.COMPOSED_TASK:
 				return validateComposedTask((ComposedTask)value, diagnostics, context);
 			case ProcessPackage.ACTION_TASK:
@@ -126,6 +134,9 @@ public class ProcessValidator extends EObjectValidator {
 				return validateContextVariable((ContextVariable)value, diagnostics, context);
 			case ProcessPackage.OBJECT:
 				return validateObject(value, diagnostics, context);
+			case ProcessPackage.ILLEGAL_VARIABLE_ACCESS_EXCEPTION:
+				return validateIllegalVariableAccessException((IllegalVariableAccessException)value,
+						diagnostics, context);
 			default:
 				return true;
 		}
@@ -133,6 +144,7 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateProcess(fr.obeo.dsl.process.Process process, DiagnosticChain diagnostics,
@@ -142,23 +154,37 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateTask(Task task, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(task, diagnostics, context)) return false;
+		if (!validate_NoCircularContainment(task, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_Reachable(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_DeadEnd(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_PrecedingTasksAtSameLevel(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_FollowingTasksAtSameLevel(task, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_PreconditionTasksArePreceding(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_Reachable(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_DeadEnd(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_PrecedingTasksAtSameLevel(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_FollowingTasksAtSameLevel(task, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_PreconditionTasksArePreceding(task, diagnostics, context);
 		return result;
 	}
 
@@ -297,28 +323,56 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public boolean validateProcessVariable(ProcessVariable processVariable, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(processVariable, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateComposedTask(ComposedTask composedTask, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(composedTask, diagnostics, context)) return false;
+		if (!validate_NoCircularContainment(composedTask, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_Reachable(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_DeadEnd(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_PrecedingTasksAtSameLevel(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_FollowingTasksAtSameLevel(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_PreconditionTasksArePreceding(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateComposedTask_PathExistance(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateComposedTask_InitialTasksAreContained(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateComposedTask_FinalTasksAreContained(composedTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateComposedTask_DoneTasksAreFinal(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_Reachable(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_DeadEnd(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_PrecedingTasksAtSameLevel(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_FollowingTasksAtSameLevel(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_PreconditionTasksArePreceding(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateComposedTask_PathExistance(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateComposedTask_InitialTasksAreContained(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateComposedTask_FinalTasksAreContained(composedTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateComposedTask_DoneTasksAreFinal(composedTask, diagnostics, context);
 		return result;
 	}
 
@@ -443,29 +497,44 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateActionTask(ActionTask actionTask, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(actionTask, diagnostics, context)) return false;
+		if (!validate_NoCircularContainment(actionTask, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_Reachable(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_DeadEnd(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_PrecedingTasksAtSameLevel(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_FollowingTasksAtSameLevel(actionTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_PreconditionTasksArePreceding(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_Reachable(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_DeadEnd(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_PrecedingTasksAtSameLevel(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_FollowingTasksAtSameLevel(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateTask_PreconditionTasksArePreceding(actionTask, diagnostics, context);
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateExpression(Expression expression, DiagnosticChain diagnostics,
@@ -475,6 +544,7 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateTasksExpression(TasksExpression tasksExpression, DiagnosticChain diagnostics,
@@ -484,6 +554,7 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateAllDone(AllDone allDone, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -492,6 +563,7 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateAnyDone(AnyDone anyDone, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -500,6 +572,7 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateOneDone(OneDone oneDone, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -508,6 +581,7 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateNot(Not not, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -516,6 +590,7 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateAnd(And and, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -524,6 +599,7 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateOr(Or or, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -532,6 +608,7 @@ public class ProcessValidator extends EObjectValidator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateProcessContext(ProcessContext processContext, DiagnosticChain diagnostics,
@@ -540,20 +617,32 @@ public class ProcessValidator extends EObjectValidator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public boolean validateContextVariable(ContextVariable contextVariable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateContextVariable(ContextVariable contextVariable, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(contextVariable, diagnostics, context);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean validateObject(Object object, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public boolean validateIllegalVariableAccessException(
+			IllegalVariableAccessException illegalVariableAccessException, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 

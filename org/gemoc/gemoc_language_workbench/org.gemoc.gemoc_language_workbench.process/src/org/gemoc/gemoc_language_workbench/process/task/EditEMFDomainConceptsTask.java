@@ -19,6 +19,7 @@ package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessContext;
 
 import java.io.File;
 
@@ -40,7 +41,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
@@ -78,11 +78,13 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#updateContexts(fr.obeo.dsl.process.IProcessRunner,
 	 *      fr.obeo.dsl.workspace.listener.change.IChange)
 	 */
-	public Object updateContextWhenDone(GemocLanguageProcessContext context) {
+	@Override
+	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
 		return lastEClassName;
 	}
 
-	public String updateContextWhenUndone(GemocLanguageProcessContext context) {
+	@Override
+	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
 		return undoneReason;
 	}
 
@@ -92,7 +94,8 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 	 * @param context
 	 *            the {@link ProcessContext}
 	 */
-	public boolean validate(GemocLanguageProcessContext context) {
+	@Override
+	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		boolean result = false;
 		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
 		if (dmp != null && dmp instanceof EMFEcoreProject) {
@@ -153,7 +156,8 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void doAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalDoAction(GemocLanguageProcessContext context) {
 		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
 		ActiveFile activeFileEcore = new ActiveFileEcore(updatedGemocLanguageProject);
 		IFile ecoreFile = activeFileEcore.getActiveFile();
@@ -179,7 +183,8 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void undoAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalUndoAction(GemocLanguageProcessContext context) {
 
 	}
 

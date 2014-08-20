@@ -27,7 +27,6 @@ import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
-import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
@@ -53,7 +52,8 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 
 		super(task, true);
 	}
 
-	public boolean validate(GemocLanguageProcessContext context) {
+	@Override
+	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		boolean result = false;
 		// it exists an EMF Tree editor project that is referenced by the xdsml
 		// else setUndone
@@ -72,7 +72,8 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 
 		return result;
 	}
 
-	public Object updateContextWhenDone(GemocLanguageProcessContext context) {
+	@Override
+	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
 		EditorProject treeEditorProjet = findTreeEditorInXDSML(context.getXdsmlModel());
 		return treeEditorProjet;
 	}
@@ -92,7 +93,8 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void doAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalDoAction(GemocLanguageProcessContext context) {
 		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
 		CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(
 				updatedGemocLanguageProject);
@@ -105,11 +107,13 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void undoAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalUndoAction(GemocLanguageProcessContext context) {
 		// nothing to do here
 	}
 
-	public String updateContextWhenUndone(GemocLanguageProcessContext context) {
+	@Override
+	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
 		return undoneReason;
 	}
 

@@ -47,12 +47,8 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 		super(task);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
-	 */
-	public void doAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalDoAction(GemocLanguageProcessContext context) {
 		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
 		CreateDomainModelWizardContextAction action = new CreateDomainModelWizardContextAction(
 				updatedGemocLanguageProject);
@@ -60,12 +56,8 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 		action.execute();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
-	 */
-	public void undoAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalUndoAction(GemocLanguageProcessContext context) {
 		final GemocLanguageWorkbenchConfiguration config = context.getXdsmlModel();
 		if (config != null && config.getLanguageDefinition() != null
 				&& config.getLanguageDefinition().getDomainModelProject() != null) {

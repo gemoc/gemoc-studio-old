@@ -14,6 +14,7 @@ import fr.obeo.dsl.process.OneDone;
 import fr.obeo.dsl.process.Or;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
 
@@ -78,6 +79,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 			case ProcessPackage.TASK: {
 				Task task = (Task)theEObject;
 				T result = caseTask(task);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ProcessPackage.PROCESS_VARIABLE: {
+				ProcessVariable processVariable = (ProcessVariable)theEObject;
+				T result = caseProcessVariable(processVariable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -194,6 +201,21 @@ public class ProcessSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTask(Task object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProcessVariable(ProcessVariable object) {
 		return null;
 	}
 

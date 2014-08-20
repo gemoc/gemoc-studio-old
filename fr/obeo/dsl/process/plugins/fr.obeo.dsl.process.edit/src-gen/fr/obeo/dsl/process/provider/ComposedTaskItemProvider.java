@@ -57,7 +57,6 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 			addDescriptionPropertyDescriptor(object);
 			addPrecedingTasksPropertyDescriptor(object);
 			addFollowingTasksPropertyDescriptor(object);
-			addInstanceClassNamePropertyDescriptor(object);
 			addInitialTasksPropertyDescriptor(object);
 			addFinalTasksPropertyDescriptor(object);
 		}
@@ -168,28 +167,6 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 				 false,
 				 true,
 				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Instance Class Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInstanceClassNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_instanceClassName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_instanceClassName_feature", "_UI_Task_type"),
-				 ProcessPackage.Literals.TASK__INSTANCE_CLASS_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -307,7 +284,6 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 			case ProcessPackage.COMPOSED_TASK__NAME:
 			case ProcessPackage.COMPOSED_TASK__ID:
 			case ProcessPackage.COMPOSED_TASK__DESCRIPTION:
-			case ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:

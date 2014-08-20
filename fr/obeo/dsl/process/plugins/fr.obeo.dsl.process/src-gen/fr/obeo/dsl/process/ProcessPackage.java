@@ -79,13 +79,22 @@ public interface ProcessPackage extends EPackage {
 	int PROCESS__TASK = 1;
 
 	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS__VARIABLES = 2;
+
+	/**
 	 * The number of structural features of the '<em>Process</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_FEATURE_COUNT = 2;
+	int PROCESS_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.process.Task <em>Task</em>}' class.
@@ -159,22 +168,41 @@ public interface ProcessPackage extends EPackage {
 	int TASK__PRECONDITION = 6;
 
 	/**
-	 * The feature id for the '<em><b>Instance Class Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__INSTANCE_CLASS_NAME = 7;
-
-	/**
 	 * The number of structural features of the '<em>Task</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = 8;
+	int TASK_FEATURE_COUNT = 7;
+
+	/**
+	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ProcessVariableImpl <em>Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.obeo.dsl.process.impl.ProcessVariableImpl
+	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getProcessVariable()
+	 * @generated
+	 */
+	int PROCESS_VARIABLE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_VARIABLE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_VARIABLE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ComposedTaskImpl <em>Composed Task</em>}' class.
@@ -183,7 +211,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getComposedTask()
 	 * @generated
 	 */
-	int COMPOSED_TASK = 2;
+	int COMPOSED_TASK = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -247,15 +275,6 @@ public interface ProcessPackage extends EPackage {
 	int COMPOSED_TASK__PRECONDITION = TASK__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Instance Class Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSED_TASK__INSTANCE_CLASS_NAME = TASK__INSTANCE_CLASS_NAME;
-
-	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -307,7 +326,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getActionTask()
 	 * @generated
 	 */
-	int ACTION_TASK = 3;
+	int ACTION_TASK = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -371,15 +390,6 @@ public interface ProcessPackage extends EPackage {
 	int ACTION_TASK__PRECONDITION = TASK__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Instance Class Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION_TASK__INSTANCE_CLASS_NAME = TASK__INSTANCE_CLASS_NAME;
-
-	/**
 	 * The feature id for the '<em><b>Multiple Execution</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -389,13 +399,40 @@ public interface ProcessPackage extends EPackage {
 	int ACTION_TASK__MULTIPLE_EXECUTION = TASK_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Written Variables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_TASK__WRITTEN_VARIABLES = TASK_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Observed Variables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_TASK__OBSERVED_VARIABLES = TASK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Instance Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_TASK__INSTANCE_CLASS_NAME = TASK_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Action Task</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 1;
+	int ACTION_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.process.Expression <em>Expression</em>}' class. <!--
@@ -405,7 +442,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 4;
+	int EXPRESSION = 5;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -423,7 +460,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getTasksExpression()
 	 * @generated
 	 */
-	int TASKS_EXPRESSION = 5;
+	int TASKS_EXPRESSION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
@@ -451,7 +488,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getAllDone()
 	 * @generated
 	 */
-	int ALL_DONE = 6;
+	int ALL_DONE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
@@ -479,7 +516,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getAnyDone()
 	 * @generated
 	 */
-	int ANY_DONE = 7;
+	int ANY_DONE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
@@ -507,7 +544,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getOneDone()
 	 * @generated
 	 */
-	int ONE_DONE = 8;
+	int ONE_DONE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
@@ -535,7 +572,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getNot()
 	 * @generated
 	 */
-	int NOT = 9;
+	int NOT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -563,7 +600,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 10;
+	int AND = 11;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -591,7 +628,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 11;
+	int OR = 12;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -618,7 +655,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getProcessContext()
 	 * @generated
 	 */
-	int PROCESS_CONTEXT = 12;
+	int PROCESS_CONTEXT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -638,7 +675,7 @@ public interface ProcessPackage extends EPackage {
 	int PROCESS_CONTEXT__DEFINITION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Variables</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -663,16 +700,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getContextVariable()
 	 * @generated
 	 */
-	int CONTEXT_VARIABLE = 13;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT_VARIABLE__NAME = 0;
+	int CONTEXT_VARIABLE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Variable Value</b></em>' attribute.
@@ -681,7 +709,16 @@ public interface ProcessPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_VARIABLE__VARIABLE_VALUE = 1;
+	int CONTEXT_VARIABLE__VARIABLE_VALUE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Definition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_VARIABLE__DEFINITION = 1;
 
 	/**
 	 * The number of structural features of the '<em>Context Variable</em>' class.
@@ -700,7 +737,17 @@ public interface ProcessPackage extends EPackage {
 	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 14;
+	int OBJECT = 15;
+
+	/**
+	 * The meta object id for the '<em>Illegal Variable Access Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.obeo.dsl.process.IllegalVariableAccessException
+	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getIllegalVariableAccessException()
+	 * @generated
+	 */
+	int ILLEGAL_VARIABLE_ACCESS_EXCEPTION = 16;
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Process <em>Process</em>}'. <!--
@@ -731,6 +778,17 @@ public interface ProcessPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProcess_Task();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.dsl.process.Process#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @see fr.obeo.dsl.process.Process#getVariables()
+	 * @see #getProcess()
+	 * @generated
+	 */
+	EReference getProcess_Variables();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Task <em>Task</em>}'.
@@ -814,15 +872,25 @@ public interface ProcessPackage extends EPackage {
 	EReference getTask_Precondition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.Task#getInstanceClassName <em>Instance Class Name</em>}'.
+	 * Returns the meta object for class '{@link fr.obeo.dsl.process.ProcessVariable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Instance Class Name</em>'.
-	 * @see fr.obeo.dsl.process.Task#getInstanceClassName()
-	 * @see #getTask()
+	 * @return the meta object for class '<em>Variable</em>'.
+	 * @see fr.obeo.dsl.process.ProcessVariable
 	 * @generated
 	 */
-	EAttribute getTask_InstanceClassName();
+	EClass getProcessVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ProcessVariable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see fr.obeo.dsl.process.ProcessVariable#getName()
+	 * @see #getProcessVariable()
+	 * @generated
+	 */
+	EAttribute getProcessVariable_Name();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.ComposedTask <em>Composed Task</em>}'.
@@ -896,6 +964,39 @@ public interface ProcessPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getActionTask_MultipleExecution();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.ActionTask#getWrittenVariables <em>Written Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Written Variables</em>'.
+	 * @see fr.obeo.dsl.process.ActionTask#getWrittenVariables()
+	 * @see #getActionTask()
+	 * @generated
+	 */
+	EReference getActionTask_WrittenVariables();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.obeo.dsl.process.ActionTask#getObservedVariables <em>Observed Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Observed Variables</em>'.
+	 * @see fr.obeo.dsl.process.ActionTask#getObservedVariables()
+	 * @see #getActionTask()
+	 * @generated
+	 */
+	EReference getActionTask_ObservedVariables();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ActionTask#getInstanceClassName <em>Instance Class Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Instance Class Name</em>'.
+	 * @see fr.obeo.dsl.process.ActionTask#getInstanceClassName()
+	 * @see #getActionTask()
+	 * @generated
+	 */
+	EAttribute getActionTask_InstanceClassName();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.Expression <em>Expression</em>}'. <!--
@@ -1049,15 +1150,15 @@ public interface ProcessPackage extends EPackage {
 	EReference getProcessContext_Definition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.obeo.dsl.process.ProcessContext#getVariables <em>Variables</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ProcessContext#getVariables <em>Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @return the meta object for the attribute '<em>Variables</em>'.
 	 * @see fr.obeo.dsl.process.ProcessContext#getVariables()
 	 * @see #getProcessContext()
 	 * @generated
 	 */
-	EReference getProcessContext_Variables();
+	EAttribute getProcessContext_Variables();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.ContextVariable <em>Context Variable</em>}'.
@@ -1068,17 +1169,6 @@ public interface ProcessPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getContextVariable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ContextVariable#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.obeo.dsl.process.ContextVariable#getName()
-	 * @see #getContextVariable()
-	 * @generated
-	 */
-	EAttribute getContextVariable_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ContextVariable#getVariableValue <em>Variable Value</em>}'.
@@ -1092,6 +1182,17 @@ public interface ProcessPackage extends EPackage {
 	EAttribute getContextVariable_VariableValue();
 
 	/**
+	 * Returns the meta object for the reference '{@link fr.obeo.dsl.process.ContextVariable#getDefinition <em>Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Definition</em>'.
+	 * @see fr.obeo.dsl.process.ContextVariable#getDefinition()
+	 * @see #getContextVariable()
+	 * @generated
+	 */
+	EReference getContextVariable_Definition();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Object <em>Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1101,6 +1202,17 @@ public interface ProcessPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getObject();
+
+	/**
+	 * Returns the meta object for data type '{@link fr.obeo.dsl.process.IllegalVariableAccessException <em>Illegal Variable Access Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Illegal Variable Access Exception</em>'.
+	 * @see fr.obeo.dsl.process.IllegalVariableAccessException
+	 * @model instanceClass="fr.obeo.dsl.process.IllegalVariableAccessException"
+	 * @generated
+	 */
+	EDataType getIllegalVariableAccessException();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1147,6 +1259,14 @@ public interface ProcessPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROCESS__TASK = eINSTANCE.getProcess_Task();
+
+		/**
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROCESS__VARIABLES = eINSTANCE.getProcess_Variables();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.process.Task <em>Task</em>}' class. <!--
@@ -1215,12 +1335,22 @@ public interface ProcessPackage extends EPackage {
 		EReference TASK__PRECONDITION = eINSTANCE.getTask_Precondition();
 
 		/**
-		 * The meta object literal for the '<em><b>Instance Class Name</b></em>' attribute feature.
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ProcessVariableImpl <em>Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.obeo.dsl.process.impl.ProcessVariableImpl
+		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getProcessVariable()
+		 * @generated
+		 */
+		EClass PROCESS_VARIABLE = eINSTANCE.getProcessVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TASK__INSTANCE_CLASS_NAME = eINSTANCE.getTask_InstanceClassName();
+		EAttribute PROCESS_VARIABLE__NAME = eINSTANCE.getProcessVariable_Name();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ComposedTaskImpl <em>Composed Task</em>}' class.
@@ -1278,6 +1408,30 @@ public interface ProcessPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ACTION_TASK__MULTIPLE_EXECUTION = eINSTANCE.getActionTask_MultipleExecution();
+
+		/**
+		 * The meta object literal for the '<em><b>Written Variables</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION_TASK__WRITTEN_VARIABLES = eINSTANCE.getActionTask_WrittenVariables();
+
+		/**
+		 * The meta object literal for the '<em><b>Observed Variables</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION_TASK__OBSERVED_VARIABLES = eINSTANCE.getActionTask_ObservedVariables();
+
+		/**
+		 * The meta object literal for the '<em><b>Instance Class Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTION_TASK__INSTANCE_CLASS_NAME = eINSTANCE.getActionTask_InstanceClassName();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.process.Expression <em>Expression</em>}' class.
@@ -1410,12 +1564,12 @@ public interface ProcessPackage extends EPackage {
 		EReference PROCESS_CONTEXT__DEFINITION = eINSTANCE.getProcessContext_Definition();
 
 		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Variables</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROCESS_CONTEXT__VARIABLES = eINSTANCE.getProcessContext_Variables();
+		EAttribute PROCESS_CONTEXT__VARIABLES = eINSTANCE.getProcessContext_Variables();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ContextVariableImpl <em>Context Variable</em>}' class.
@@ -1428,20 +1582,20 @@ public interface ProcessPackage extends EPackage {
 		EClass CONTEXT_VARIABLE = eINSTANCE.getContextVariable();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTEXT_VARIABLE__NAME = eINSTANCE.getContextVariable_Name();
-
-		/**
 		 * The meta object literal for the '<em><b>Variable Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute CONTEXT_VARIABLE__VARIABLE_VALUE = eINSTANCE.getContextVariable_VariableValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Definition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTEXT_VARIABLE__DEFINITION = eINSTANCE.getContextVariable_Definition();
 
 		/**
 		 * The meta object literal for the '<em>Object</em>' data type.
@@ -1452,6 +1606,16 @@ public interface ProcessPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType OBJECT = eINSTANCE.getObject();
+
+		/**
+		 * The meta object literal for the '<em>Illegal Variable Access Exception</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.obeo.dsl.process.IllegalVariableAccessException
+		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getIllegalVariableAccessException()
+		 * @generated
+		 */
+		EDataType ILLEGAL_VARIABLE_ACCESS_EXCEPTION = eINSTANCE.getIllegalVariableAccessException();
 
 	}
 

@@ -18,12 +18,12 @@
 package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.IllegalVariableAccessException;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
@@ -47,14 +47,20 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 		super(task, true);
 	}
 
-	public boolean validate(GemocLanguageProcessContext context) {
+	@Override
+	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists an xdsml IFile corresponding to the URI
 		IResource iFile = EclipseResource.getFile(context.getXdsmlURI());
 		return iFile != null;
 	}
 
-	public Object updateContextWhenDone(GemocLanguageProcessContext context) {
-		context.loadXdsmlConfigURI();
+	@Override
+	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
+		try {
+			context.loadXdsmlConfigURI(this.getActionTask());
+		} catch (IllegalVariableAccessException e) {
+			org.gemoc.gemoc_language_workbench.process.Activator.getDefault().error(e);
+		}
 		return context.getXdsmlModel();
 	}
 
@@ -63,7 +69,8 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void doAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalDoAction(GemocLanguageProcessContext context) {
 		CreateNewGemocLanguageProject createNewGemocLanguageProjectWizard = new CreateNewGemocLanguageProject();
 
 		// start the XDSML wizard
@@ -76,7 +83,11 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 					+ createNewGemocLanguageProjectWizard.getCreatedProject().getName() + "/"
 					+ Activator.GEMOC_PROJECT_CONFIGURATION_FILE, true);
 			context.setName(uri.toString());
-			context.setXdsmlConfigURI(uri);
+			try {
+				context.setXdsmlConfigURI(uri, this.getActionTask());
+			} catch (IllegalVariableAccessException e) {
+				org.gemoc.gemoc_language_workbench.process.Activator.getDefault().error(e);
+			}
 			EclipseResource.touch(uri);
 		}
 	}
@@ -86,11 +97,13 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 	 * 
 	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
 	 */
-	public void undoAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalUndoAction(GemocLanguageProcessContext context) {
 		// TODO remove the project ?
 	}
 
-	public String updateContextWhenUndone(GemocLanguageProcessContext context) {
+	@Override
+	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
 		// should never happen for first task of a process because already removed by discovery
 		return "No xdsml file";
 	}

@@ -27,6 +27,15 @@ public interface ProcessFactory extends EFactory {
 	Process createProcess();
 
 	/**
+	 * Returns a new object of class '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable</em>'.
+	 * @generated
+	 */
+	ProcessVariable createProcessVariable();
+
+	/**
 	 * Returns a new object of class '<em>Composed Task</em>'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Composed Task</em>'.

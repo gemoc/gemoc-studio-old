@@ -39,7 +39,6 @@ import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
-import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 
@@ -64,28 +63,18 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 		super(task, false);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#updateContexts(fr.obeo.dsl.process.IProcessRunner,
-	 *      fr.obeo.dsl.workspace.listener.change.IChange)
-	 */
-	public Object updateContextWhenDone(GemocLanguageProcessContext context) {
+	@Override
+	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
 		return lastExtensions;
 	}
 
-	public String updateContextWhenUndone(GemocLanguageProcessContext context) {
+	@Override
+	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
 		return undoneReason;
 	}
 
-	/**
-	 * tells if the Task is valid.
-	 * 
-	 * @param context
-	 *            the {@link GemocLanguageProcessContext}
-	 * @return true if the task is valid, false otherwise
-	 */
-	public boolean validate(GemocLanguageProcessContext context) {
+	@Override
+	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		boolean result = false;
 		// it exists an EMF Tree editor project that is referenced by the xdsml
 		// search for the file extensions
@@ -118,12 +107,8 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 		return result;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(GemocLanguageProcessContext)
-	 */
-	public void doAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalDoAction(GemocLanguageProcessContext context) {
 		/*
 		 * IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject(); ActiveFile
 		 * activeFileEcore = new ActiveFileEcore(updatedGemocLanguageProject); IFile ecoreFile =
@@ -138,12 +123,8 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 		 */
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(GemocLanguageProcessContext)
-	 */
-	public void undoAction(GemocLanguageProcessContext context) {
+	@Override
+	protected void internalUndoAction(GemocLanguageProcessContext context) {
 		/*
 		 * DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
 		 * if (dmp instanceof EMFEcoreProject) {

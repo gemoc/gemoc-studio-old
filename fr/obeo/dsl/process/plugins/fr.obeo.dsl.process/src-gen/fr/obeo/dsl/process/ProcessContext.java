@@ -2,7 +2,8 @@
  */
 package fr.obeo.dsl.process;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,13 +23,13 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ProcessContext extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Name()
@@ -40,20 +41,22 @@ public interface ProcessContext extends EObject {
 	/**
 	 * Sets the value of the '{@link fr.obeo.dsl.process.ProcessContext#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Definition</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Definition</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Definition</em>' reference isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Definition</em>' reference.
 	 * @see #setDefinition(fr.obeo.dsl.process.Process)
 	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Definition()
@@ -63,29 +66,30 @@ public interface ProcessContext extends EObject {
 	fr.obeo.dsl.process.Process getDefinition();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.ProcessContext#getDefinition <em>Definition</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Definition</em>' reference.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ProcessContext#getDefinition <em>Definition</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Definition</em>' reference.
 	 * @see #getDefinition()
 	 * @generated
 	 */
 	void setDefinition(fr.obeo.dsl.process.Process value);
 
 	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.obeo.dsl.process.ContextVariable}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Variables</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear, there really should
+	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variables</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Variables</em>' attribute.
 	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Variables()
-	 * @model containment="true"
+	 * @model transient="true" changeable="false"
 	 * @generated
 	 */
-	EList<ContextVariable> getVariables();
+	Map<ProcessVariable, ContextVariable> getVariables();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Tells if the given
@@ -124,27 +128,42 @@ public interface ProcessContext extends EObject {
 	Object getResult(ActionTask task);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model variableNameRequired="true" variableValueDataType="fr.obeo.dsl.process.Object" variableValueRequired="true"
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> sets the value for the
+	 * {@link ProcessVariable} in the current context. The set will be accepted only if the writter
+	 * {@link ActionTask} has declared himself as writter for this {@link ProcessVariable}. If writter is
+	 * null, the chek is disabled and the set will be done. <!-- end-model-doc -->
+	 * 
+	 * @model exceptions="fr.obeo.dsl.process.IllegalVariableAccessException" variableRequired="true"
+	 *        variableValueDataType="fr.obeo.dsl.process.Object" variableValueRequired="true"
 	 * @generated
 	 */
-	void setVariableValue(String variableName, Object variableValue);
+	void setVariableValue(ProcessVariable variable, Object variableValue, ActionTask writter)
+			throws IllegalVariableAccessException;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataType="fr.obeo.dsl.process.Object" variableNameRequired="true"
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> returns the value for the
+	 * {@link ProcessVariable} in the current context. <!-- end-model-doc -->
+	 * 
+	 * @model dataType="fr.obeo.dsl.process.Object" processRequired="true"
 	 * @generated
 	 */
-	Object getVariableValue(String variableName);
+	Object getVariableValue(ProcessVariable process);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
 	String getUndoneReason(ActionTask task);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> find the {@link ProcessVariable}
+	 * with the given name or null if no such variable definition exists. <!-- end-model-doc -->
+	 * 
+	 * @model variableNameRequired="true"
+	 * @generated
+	 */
+	ProcessVariable getProcessVariable(String variableName);
 
 } // ProcessContext

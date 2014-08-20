@@ -2,6 +2,7 @@
  */
 package fr.obeo.dsl.process;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -68,5 +69,21 @@ public interface Process extends EObject {
 	 * @generated
 	 */
 	void setTask(Task value);
+
+	/**
+	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.obeo.dsl.process.ProcessVariable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Variables</em>' containment reference list.
+	 * @see fr.obeo.dsl.process.ProcessPackage#getProcess_Variables()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ProcessVariable> getVariables();
 
 } // Process

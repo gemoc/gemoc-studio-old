@@ -8,12 +8,14 @@ import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
 import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
 import fr.obeo.dsl.process.Or;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessFactory;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -24,30 +26,31 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ProcessFactory init() {
 		try {
-			ProcessFactory theProcessFactory = (ProcessFactory)EPackage.Registry.INSTANCE.getEFactory(ProcessPackage.eNS_URI);
+			ProcessFactory theProcessFactory = (ProcessFactory)EPackage.Registry.INSTANCE
+					.getEFactory(ProcessPackage.eNS_URI);
 			if (theProcessFactory != null) {
 				return theProcessFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ProcessFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ProcessFactoryImpl() {
@@ -56,53 +59,77 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ProcessPackage.PROCESS: return createProcess();
-			case ProcessPackage.COMPOSED_TASK: return createComposedTask();
-			case ProcessPackage.ACTION_TASK: return createActionTask();
-			case ProcessPackage.ALL_DONE: return createAllDone();
-			case ProcessPackage.ANY_DONE: return createAnyDone();
-			case ProcessPackage.ONE_DONE: return createOneDone();
-			case ProcessPackage.NOT: return createNot();
-			case ProcessPackage.AND: return createAnd();
-			case ProcessPackage.OR: return createOr();
-			case ProcessPackage.PROCESS_CONTEXT: return createProcessContext();
-			case ProcessPackage.CONTEXT_VARIABLE: return createContextVariable();
+			case ProcessPackage.PROCESS:
+				return createProcess();
+			case ProcessPackage.PROCESS_VARIABLE:
+				return createProcessVariable();
+			case ProcessPackage.COMPOSED_TASK:
+				return createComposedTask();
+			case ProcessPackage.ACTION_TASK:
+				return createActionTask();
+			case ProcessPackage.ALL_DONE:
+				return createAllDone();
+			case ProcessPackage.ANY_DONE:
+				return createAnyDone();
+			case ProcessPackage.ONE_DONE:
+				return createOneDone();
+			case ProcessPackage.NOT:
+				return createNot();
+			case ProcessPackage.AND:
+				return createAnd();
+			case ProcessPackage.OR:
+				return createOr();
+			case ProcessPackage.PROCESS_CONTEXT:
+				return createProcessContext();
+			case ProcessPackage.CONTEXT_VARIABLE:
+				return createContextVariable();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+				throw new IllegalArgumentException("The class '" + eClass.getName()
+						+ "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case ProcessPackage.ILLEGAL_VARIABLE_ACCESS_EXCEPTION:
+				return createIllegalVariableAccessExceptionFromString(eDataType, initialValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName()
+						+ "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case ProcessPackage.ILLEGAL_VARIABLE_ACCESS_EXCEPTION:
+				return convertIllegalVariableAccessExceptionToString(eDataType, instanceValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName()
+						+ "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public fr.obeo.dsl.process.Process createProcess() {
@@ -112,6 +139,17 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public ProcessVariable createProcessVariable() {
+		ProcessVariableImpl processVariable = new ProcessVariableImpl();
+		return processVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ComposedTask createComposedTask() {
@@ -121,6 +159,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ActionTask createActionTask() {
@@ -130,6 +169,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AllDone createAllDone() {
@@ -139,6 +179,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AnyDone createAnyDone() {
@@ -148,6 +189,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OneDone createOneDone() {
@@ -157,6 +199,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Not createNot() {
@@ -166,6 +209,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public And createAnd() {
@@ -175,6 +219,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Or createOr() {
@@ -184,6 +229,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ProcessContext createProcessContext() {
@@ -192,8 +238,8 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ContextVariable createContextVariable() {
@@ -203,6 +249,26 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public IllegalVariableAccessException createIllegalVariableAccessExceptionFromString(EDataType eDataType,
+			String initialValue) {
+		return (IllegalVariableAccessException)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public String convertIllegalVariableAccessExceptionToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ProcessPackage getProcessPackage() {
@@ -211,6 +277,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */

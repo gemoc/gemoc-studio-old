@@ -25,11 +25,15 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Context Variable</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * An instance of {@link ProcessVariable}.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.obeo.dsl.process.ContextVariable#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.ContextVariable#getVariableValue <em>Variable Value</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.ContextVariable#getDefinition <em>Definition</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,32 +42,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ContextVariable extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see fr.obeo.dsl.process.ProcessPackage#getContextVariable_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.ContextVariable#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Variable Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -89,5 +67,39 @@ public interface ContextVariable extends EObject {
 	 * @generated
 	 */
 	void setVariableValue(Object value);
+
+	/**
+	 * Returns the value of the '<em><b>Definition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Definition</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Definition</em>' reference.
+	 * @see #setDefinition(ProcessVariable)
+	 * @see fr.obeo.dsl.process.ProcessPackage#getContextVariable_Definition()
+	 * @model required="true"
+	 * @generated
+	 */
+	ProcessVariable getDefinition();
+
+	/**
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ContextVariable#getDefinition <em>Definition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Definition</em>' reference.
+	 * @see #getDefinition()
+	 * @generated
+	 */
+	void setDefinition(ProcessVariable value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getName();
 
 } // ContextVariable

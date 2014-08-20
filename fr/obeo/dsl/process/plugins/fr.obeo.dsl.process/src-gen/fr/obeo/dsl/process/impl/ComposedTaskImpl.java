@@ -5,6 +5,7 @@ package fr.obeo.dsl.process.impl;
 import fr.obeo.dsl.process.ComposedTask;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 
 import java.util.Collection;
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getPrecedingTasks <em>Preceding Tasks</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getFollowingTasks <em>Following Tasks</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getPrecondition <em>Precondition</em>}</li>
- *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getInstanceClassName <em>Instance Class Name</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getTasks <em>Tasks</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getInitialTasks <em>Initial Tasks</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.impl.ComposedTaskImpl#getFinalTasks <em>Final Tasks</em>}</li>
@@ -135,26 +135,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	 * @ordered
 	 */
 	protected Expression precondition;
-
-	/**
-	 * The default value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInstanceClassName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String INSTANCE_CLASS_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInstanceClassName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String instanceClassName = INSTANCE_CLASS_NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list. <!--
@@ -370,27 +350,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getInstanceClassName() {
-		return instanceClassName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInstanceClassName(String newInstanceClassName) {
-		String oldInstanceClassName = instanceClassName;
-		instanceClassName = newInstanceClassName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME, oldInstanceClassName, instanceClassName));
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -542,8 +501,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 				return getFollowingTasks();
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:
 				return getPrecondition();
-			case ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME:
-				return getInstanceClassName();
 			case ProcessPackage.COMPOSED_TASK__TASKS:
 				return getTasks();
 			case ProcessPackage.COMPOSED_TASK__INITIAL_TASKS:
@@ -586,9 +543,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 				return;
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:
 				setPrecondition((Expression)newValue);
-				return;
-			case ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME:
-				setInstanceClassName((String)newValue);
 				return;
 			case ProcessPackage.COMPOSED_TASK__TASKS:
 				getTasks().clear();
@@ -637,9 +591,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:
 				setPrecondition((Expression)null);
 				return;
-			case ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME:
-				setInstanceClassName(INSTANCE_CLASS_NAME_EDEFAULT);
-				return;
 			case ProcessPackage.COMPOSED_TASK__TASKS:
 				getTasks().clear();
 				return;
@@ -677,8 +628,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 				return followingTasks != null && !followingTasks.isEmpty();
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:
 				return precondition != null;
-			case ProcessPackage.COMPOSED_TASK__INSTANCE_CLASS_NAME:
-				return INSTANCE_CLASS_NAME_EDEFAULT == null ? instanceClassName != null : !INSTANCE_CLASS_NAME_EDEFAULT.equals(instanceClassName);
 			case ProcessPackage.COMPOSED_TASK__TASKS:
 				return tasks != null && !tasks.isEmpty();
 			case ProcessPackage.COMPOSED_TASK__INITIAL_TASKS:
@@ -706,8 +655,6 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 		result.append(id);
 		result.append(", description: ");
 		result.append(description);
-		result.append(", instanceClassName: ");
-		result.append(instanceClassName);
 		result.append(')');
 		return result.toString();
 	}
