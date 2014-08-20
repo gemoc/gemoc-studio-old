@@ -23,39 +23,40 @@ import org.eclipse.core.resources.IResource;
 import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.IResourceActionProcessor;
 
-public class ResourceActionProcessorAdapter implements IResourceActionProcessor
-{
-	
-	private IResourceActionProcessor _realActionProcessor;
+public class ResourceActionProcessorAdapter implements IResourceActionProcessor {
+
+	private IResourceActionProcessor realActionProcessor;
 
 	public ResourceActionProcessorAdapter(IActionProcessor actionProcessor) {
-		if (actionProcessor instanceof IResourceActionProcessor)
-		{
-			_realActionProcessor = (IResourceActionProcessor)actionProcessor;
+		if (actionProcessor instanceof IResourceActionProcessor) {
+			realActionProcessor = (IResourceActionProcessor)actionProcessor;
 		}
 	}
 
 	@Override
 	public boolean acceptChangeForRemovedResource(ProcessContext context, IResource resource) {
 		boolean result = false;
-		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeForRemovedResource(context, resource);
+		if (realActionProcessor != null) {
+			realActionProcessor.acceptChangeForRemovedResource(context, resource);
+		}
 		return result;
 	}
 
 	@Override
 	public boolean acceptChangeForAddedResource(ProcessContext context, IResource resource) {
 		boolean result = false;
-		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeForRemovedResource(context, resource);
+		if (realActionProcessor != null) {
+			realActionProcessor.acceptChangeForRemovedResource(context, resource);
+		}
 		return result;
 	}
 
 	@Override
 	public boolean acceptChangeForModifiedResource(ProcessContext context, IResource resource) {
 		boolean result = false;
-		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeForModifiedResource(context, resource);
+		if (realActionProcessor != null) {
+			realActionProcessor.acceptChangeForModifiedResource(context, resource);
+		}
 		return result;
 	}
 

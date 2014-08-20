@@ -26,24 +26,23 @@ import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.IChangeAcceptanceStrategy;
 import org.gemoc.gemoc_language_workbench.process.IVariableActionProcessor;
 
-public class VariableChangeAcceptanceStrategy implements IChangeAcceptanceStrategy
-{
+public class VariableChangeAcceptanceStrategy implements IChangeAcceptanceStrategy {
 
 	@Override
-	public boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context, IChange<?> change) 
-	{
+	public boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context,
+			IChange<?> change) {
 		IVariableActionProcessor adaptedActionProcessor = new VariableActionProcessorAdapter(actionProcessor);
 		boolean result = internalDoesProcessorAcceptChange(adaptedActionProcessor, context, change);
 		return result;
 	}
 
-	private boolean internalDoesProcessorAcceptChange(IVariableActionProcessor actionProcessor, ProcessContext context, IChange<?> change)
-	{
+	private boolean internalDoesProcessorAcceptChange(IVariableActionProcessor actionProcessor,
+			ProcessContext context, IChange<?> change) {
 		boolean result = false;
-		if (change instanceof VariableChanged) 
-		{
-			result = actionProcessor.acceptChangeVariableChanged(context, (ContextVariable)change.getObject());
-		} 
+		if (change instanceof VariableChanged) {
+			result = actionProcessor
+					.acceptChangeVariableChanged(context, (ContextVariable)change.getObject());
+		}
 		return result;
 	}
 }

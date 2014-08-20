@@ -19,7 +19,6 @@ package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ContextVariable;
-import fr.obeo.dsl.process.ProcessContext;
 
 import java.io.File;
 
@@ -100,7 +99,8 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
 		if (dmp != null && dmp instanceof EMFEcoreProject) {
 			EMFEcoreProject eep = (EMFEcoreProject)dmp;
-			if (eep.getEmfGenmodel() == null || eep.getEmfGenmodel().getLocationURI() == null || eep.getEmfGenmodel().getLocationURI().length() == 0) {
+			if (eep.getEmfGenmodel() == null || eep.getEmfGenmodel().getLocationURI() == null
+					|| eep.getEmfGenmodel().getLocationURI().length() == 0) {
 				undoneReason = "no valid genmodel referenced in xdsml";
 				result = false;
 			} else {

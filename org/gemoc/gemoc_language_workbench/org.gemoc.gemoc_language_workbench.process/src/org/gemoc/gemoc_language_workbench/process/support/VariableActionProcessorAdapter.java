@@ -23,29 +23,27 @@ import fr.obeo.dsl.process.ProcessContext;
 import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.IVariableActionProcessor;
 
-public class VariableActionProcessorAdapter implements IVariableActionProcessor
-{
-	
-	private IVariableActionProcessor _realActionProcessor;
+public class VariableActionProcessorAdapter implements IVariableActionProcessor {
+
+	private IVariableActionProcessor realActionProcessor;
 
 	public VariableActionProcessorAdapter(IActionProcessor actionProcessor) {
-		if (actionProcessor instanceof IVariableActionProcessor)
-		{
-			_realActionProcessor = (IVariableActionProcessor)actionProcessor;
+		if (actionProcessor instanceof IVariableActionProcessor) {
+			realActionProcessor = (IVariableActionProcessor)actionProcessor;
 		}
 	}
 
 	@Override
-	public boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable variable) 
-	{
+	public boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable variable) {
 		boolean result = false;
-		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeVariableChanged(context, variable);
-		return result;	
+		if (realActionProcessor != null) {
+			realActionProcessor.acceptChangeVariableChanged(context, variable);
+		}
+		return result;
 	}
 
 	public IActionProcessor getAdaptedProcessor() {
-		return (IActionProcessor)_realActionProcessor;
+		return (IActionProcessor)realActionProcessor;
 	}
 
 }

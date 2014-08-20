@@ -23,7 +23,10 @@ import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 
-public abstract class GemocProcessRunnerFactory {
+public final class GemocProcessRunnerFactory {
+
+	private GemocProcessRunnerFactory() {
+	}
 
 	public static GemocLanguageProcessRunner createProcessRunner(URI xdsmlURI) {
 		GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();

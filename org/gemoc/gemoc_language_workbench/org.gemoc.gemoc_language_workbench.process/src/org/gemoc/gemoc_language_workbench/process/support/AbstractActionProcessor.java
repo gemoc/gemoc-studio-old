@@ -32,13 +32,14 @@ import org.gemoc.gemoc_language_workbench.process.IChangeAcceptanceStrategy;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public abstract class AbstractActionProcessor<T extends ProcessContext> implements IActionProcessor 
-{
+public abstract class AbstractActionProcessor<T extends ProcessContext> implements IActionProcessor {
 
 	/**
 	 * The corresponding {@link ActionTask}.
 	 */
 	private final ActionTask task;
+
+	private ArrayList<IChangeAcceptanceStrategy> callers = new ArrayList<IChangeAcceptanceStrategy>();
 
 	/**
 	 * Constructor.
@@ -58,68 +59,62 @@ public abstract class AbstractActionProcessor<T extends ProcessContext> implemen
 	public ActionTask getActionTask() {
 		return task;
 	}
-	
-	private ArrayList<IChangeAcceptanceStrategy> _callers = new ArrayList<IChangeAcceptanceStrategy>();
 
-	protected void addCaller(IChangeAcceptanceStrategy caller)
-	{
-		_callers.add(caller);
+	protected void addCaller(IChangeAcceptanceStrategy caller) {
+		callers.add(caller);
 	}
-	
+
 	@Override
-	public final boolean acceptChange(ProcessContext context, IChange<?> change) 
-	{
+	public final boolean acceptChange(ProcessContext context, IChange<?> change) {
 		boolean result = false;
-		for(IChangeAcceptanceStrategy caller : _callers)
-		{
+		for (IChangeAcceptanceStrategy caller : callers) {
 			result = caller.isChangeAccepted(this, context, change);
-			if (result)
+			if (result) {
 				break;
+			}
 		}
 		return result;
 	}
 
-	private T castContext(ProcessContext context) 
-	{
+	private T castContext(ProcessContext context) {
 		@SuppressWarnings("unchecked")
 		T castedContext = (T)context;
 		return castedContext;
 	}
 
 	@Override
-	public final Object updateContextWhenDone(ProcessContext context)
-	{
+	public final Object updateContextWhenDone(ProcessContext context) {
 		return internalUpdateContextWhenDone(castContext(context));
 	}
 
 	@Override
-	public final String updateContextWhenUndone(ProcessContext context)
-	{
+	public final String updateContextWhenUndone(ProcessContext context) {
 		return internalUpdateContextWhenUndone(castContext(context));
 	}
 
 	@Override
-	public final boolean validate(ProcessContext context)
-	{
+	public final boolean validate(ProcessContext context) {
 		return internalValidate(castContext(context));
 	}
 
 	@Override
-	public final void doAction(ProcessContext context)
-	{
+	public final void doAction(ProcessContext context) {
 		internalDoAction(castContext(context));
 	}
 
 	@Override
-	public final void undoAction(ProcessContext context)
-	{
+	public final void undoAction(ProcessContext context) {
 		internalUndoAction(castContext(context));
 	}
 
-	abstract protected Object internalUpdateContextWhenDone(T context);
-	abstract protected String internalUpdateContextWhenUndone(T context);
-	abstract protected boolean internalValidate(T context);
-	abstract protected void internalDoAction(T context);
-	abstract protected void internalUndoAction(T context);
+	protected abstract Object internalUpdateContextWhenDone(T context);
+
+	protected abstract String internalUpdateContextWhenUndone(T context);
+
+	protected abstract boolean internalValidate(T context);
+
+	protected abstract void internalDoAction(T context);
+
+	protected abstract void internalUndoAction(T context);
 
 }

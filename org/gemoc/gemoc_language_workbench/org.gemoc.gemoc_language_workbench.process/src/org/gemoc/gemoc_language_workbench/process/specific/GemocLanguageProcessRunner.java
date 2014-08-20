@@ -17,25 +17,22 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process.specific;
 
-import fr.obeo.dsl.process.IProcessRunner;
 
-import org.gemoc.gemoc_language_workbench.process.ProcessRunner;
+import org.gemoc.gemoc_language_workbench.process.AbstractProcessRunner;
 
 /**
  * The Gemoc language {@link IProcessRunner}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class GemocLanguageProcessRunner extends ProcessRunner
-{
+public class GemocLanguageProcessRunner extends AbstractProcessRunner {
 
 	/**
 	 * Constructor.
 	 */
-	public GemocLanguageProcessRunner(GemocLanguageProcessContext processContext) 
-	{
+	public GemocLanguageProcessRunner(GemocLanguageProcessContext processContext) {
 		super("/process/gemoc_language.process", processContext);
-	
+
 		// Resource resource = new XMIResourceImpl();
 		// try
 		// {
@@ -49,9 +46,9 @@ public class GemocLanguageProcessRunner extends ProcessRunner
 		// e.printStackTrace();
 		// }
 		// _process = (Process)resource.getContents().get(0);
-//		GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();
-//		processContext.setDefinition(getProcess());
-//		processContext.initialize(xdsmlUri);
+		// GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();
+		// processContext.setDefinition(getProcess());
+		// processContext.initialize(xdsmlUri);
 	}
 
 	public GemocLanguageProcessContext getCastedContext() {
