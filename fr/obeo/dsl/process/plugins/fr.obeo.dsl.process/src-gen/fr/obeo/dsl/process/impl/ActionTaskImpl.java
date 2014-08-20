@@ -6,6 +6,7 @@ import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ComposedTask;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 
 import java.util.Collection;
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -34,8 +36,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getPrecedingTasks <em>Preceding Tasks</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getFollowingTasks <em>Following Tasks</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getPrecondition <em>Precondition</em>}</li>
- *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getInstanceClassName <em>Instance Class Name</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#isMultipleExecution <em>Multiple Execution</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getWrittenVariables <em>Written Variables</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getObservedVariables <em>Observed Variables</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.impl.ActionTaskImpl#getInstanceClassName <em>Instance Class Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -133,26 +137,6 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	protected Expression precondition;
 
 	/**
-	 * The default value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInstanceClassName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String INSTANCE_CLASS_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInstanceClassName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String instanceClassName = INSTANCE_CLASS_NAME_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #isMultipleExecution() <em>Multiple Execution</em>}' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -171,6 +155,46 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	 * @ordered
 	 */
 	protected boolean multipleExecution = MULTIPLE_EXECUTION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getWrittenVariables() <em>Written Variables</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWrittenVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ProcessVariable> writtenVariables;
+
+	/**
+	 * The cached value of the '{@link #getObservedVariables() <em>Observed Variables</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObservedVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ProcessVariable> observedVariables;
+
+	/**
+	 * The default value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceClassName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INSTANCE_CLASS_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInstanceClassName() <em>Instance Class Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceClassName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String instanceClassName = INSTANCE_CLASS_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -368,6 +392,30 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ProcessVariable> getWrittenVariables() {
+		if (writtenVariables == null) {
+			writtenVariables = new EObjectResolvingEList<ProcessVariable>(ProcessVariable.class, this, ProcessPackage.ACTION_TASK__WRITTEN_VARIABLES);
+		}
+		return writtenVariables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ProcessVariable> getObservedVariables() {
+		if (observedVariables == null) {
+			observedVariables = new EObjectResolvingEList<ProcessVariable>(ProcessVariable.class, this, ProcessPackage.ACTION_TASK__OBSERVED_VARIABLES);
+		}
+		return observedVariables;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -459,10 +507,14 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 				return getFollowingTasks();
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				return getPrecondition();
-			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
-				return getInstanceClassName();
 			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
 				return isMultipleExecution();
+			case ProcessPackage.ACTION_TASK__WRITTEN_VARIABLES:
+				return getWrittenVariables();
+			case ProcessPackage.ACTION_TASK__OBSERVED_VARIABLES:
+				return getObservedVariables();
+			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
+				return getInstanceClassName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -498,11 +550,19 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				setPrecondition((Expression)newValue);
 				return;
-			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
-				setInstanceClassName((String)newValue);
-				return;
 			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
 				setMultipleExecution((Boolean)newValue);
+				return;
+			case ProcessPackage.ACTION_TASK__WRITTEN_VARIABLES:
+				getWrittenVariables().clear();
+				getWrittenVariables().addAll((Collection<? extends ProcessVariable>)newValue);
+				return;
+			case ProcessPackage.ACTION_TASK__OBSERVED_VARIABLES:
+				getObservedVariables().clear();
+				getObservedVariables().addAll((Collection<? extends ProcessVariable>)newValue);
+				return;
+			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
+				setInstanceClassName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -536,11 +596,17 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				setPrecondition((Expression)null);
 				return;
-			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
-				setInstanceClassName(INSTANCE_CLASS_NAME_EDEFAULT);
-				return;
 			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
 				setMultipleExecution(MULTIPLE_EXECUTION_EDEFAULT);
+				return;
+			case ProcessPackage.ACTION_TASK__WRITTEN_VARIABLES:
+				getWrittenVariables().clear();
+				return;
+			case ProcessPackage.ACTION_TASK__OBSERVED_VARIABLES:
+				getObservedVariables().clear();
+				return;
+			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
+				setInstanceClassName(INSTANCE_CLASS_NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -567,10 +633,14 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 				return followingTasks != null && !followingTasks.isEmpty();
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				return precondition != null;
-			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
-				return INSTANCE_CLASS_NAME_EDEFAULT == null ? instanceClassName != null : !INSTANCE_CLASS_NAME_EDEFAULT.equals(instanceClassName);
 			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
 				return multipleExecution != MULTIPLE_EXECUTION_EDEFAULT;
+			case ProcessPackage.ACTION_TASK__WRITTEN_VARIABLES:
+				return writtenVariables != null && !writtenVariables.isEmpty();
+			case ProcessPackage.ACTION_TASK__OBSERVED_VARIABLES:
+				return observedVariables != null && !observedVariables.isEmpty();
+			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
+				return INSTANCE_CLASS_NAME_EDEFAULT == null ? instanceClassName != null : !INSTANCE_CLASS_NAME_EDEFAULT.equals(instanceClassName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -590,10 +660,10 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 		result.append(id);
 		result.append(", description: ");
 		result.append(description);
-		result.append(", instanceClassName: ");
-		result.append(instanceClassName);
 		result.append(", multipleExecution: ");
 		result.append(multipleExecution);
+		result.append(", instanceClassName: ");
+		result.append(instanceClassName);
 		result.append(')');
 		return result.toString();
 	}

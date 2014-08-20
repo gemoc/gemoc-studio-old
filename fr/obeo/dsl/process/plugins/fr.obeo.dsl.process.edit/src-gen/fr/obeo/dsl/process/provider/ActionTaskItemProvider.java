@@ -57,8 +57,10 @@ public class ActionTaskItemProvider extends ItemProviderAdapter implements IEdit
 			addDescriptionPropertyDescriptor(object);
 			addPrecedingTasksPropertyDescriptor(object);
 			addFollowingTasksPropertyDescriptor(object);
-			addInstanceClassNamePropertyDescriptor(object);
 			addMultipleExecutionPropertyDescriptor(object);
+			addWrittenVariablesPropertyDescriptor(object);
+			addObservedVariablesPropertyDescriptor(object);
+			addInstanceClassNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -182,13 +184,57 @@ public class ActionTaskItemProvider extends ItemProviderAdapter implements IEdit
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Task_instanceClassName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_instanceClassName_feature", "_UI_Task_type"),
-				 ProcessPackage.Literals.TASK__INSTANCE_CLASS_NAME,
+				 getString("_UI_ActionTask_instanceClassName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ActionTask_instanceClassName_feature", "_UI_ActionTask_type"),
+				 ProcessPackage.Literals.ACTION_TASK__INSTANCE_CLASS_NAME,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Written Variables feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWrittenVariablesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ActionTask_writtenVariables_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ActionTask_writtenVariables_feature", "_UI_ActionTask_type"),
+				 ProcessPackage.Literals.ACTION_TASK__WRITTEN_VARIABLES,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Observed Variables feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addObservedVariablesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ActionTask_observedVariables_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ActionTask_observedVariables_feature", "_UI_ActionTask_type"),
+				 ProcessPackage.Literals.ACTION_TASK__OBSERVED_VARIABLES,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -282,8 +328,8 @@ public class ActionTaskItemProvider extends ItemProviderAdapter implements IEdit
 			case ProcessPackage.ACTION_TASK__NAME:
 			case ProcessPackage.ACTION_TASK__ID:
 			case ProcessPackage.ACTION_TASK__DESCRIPTION:
-			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
 			case ProcessPackage.ACTION_TASK__MULTIPLE_EXECUTION:
+			case ProcessPackage.ACTION_TASK__INSTANCE_CLASS_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ProcessPackage.ACTION_TASK__PRECONDITION:

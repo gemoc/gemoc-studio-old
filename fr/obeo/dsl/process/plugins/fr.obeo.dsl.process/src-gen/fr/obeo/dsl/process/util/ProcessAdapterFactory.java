@@ -14,6 +14,7 @@ import fr.obeo.dsl.process.OneDone;
 import fr.obeo.dsl.process.Or;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
 
@@ -80,6 +81,10 @@ public class ProcessAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTask(Task object) {
 				return createTaskAdapter();
+			}
+			@Override
+			public Adapter caseProcessVariable(ProcessVariable object) {
+				return createProcessVariableAdapter();
 			}
 			@Override
 			public Adapter caseComposedTask(ComposedTask object) {
@@ -169,6 +174,20 @@ public class ProcessAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTaskAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.obeo.dsl.process.ProcessVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.obeo.dsl.process.ProcessVariable
+	 * @generated
+	 */
+	public Adapter createProcessVariableAdapter() {
 		return null;
 	}
 

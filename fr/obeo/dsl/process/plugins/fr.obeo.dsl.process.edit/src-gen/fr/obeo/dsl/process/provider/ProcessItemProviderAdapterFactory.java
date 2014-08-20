@@ -92,6 +92,29 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.obeo.dsl.process.ProcessVariable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProcessVariableItemProvider processVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.obeo.dsl.process.ProcessVariable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProcessVariableAdapter() {
+		if (processVariableItemProvider == null) {
+			processVariableItemProvider = new ProcessVariableItemProvider(this);
+		}
+
+		return processVariableItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link fr.obeo.dsl.process.ComposedTask} instances.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -415,6 +438,7 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 	 */
 	public void dispose() {
 		if (processItemProvider != null) processItemProvider.dispose();
+		if (processVariableItemProvider != null) processVariableItemProvider.dispose();
 		if (composedTaskItemProvider != null) composedTaskItemProvider.dispose();
 		if (actionTaskItemProvider != null) actionTaskItemProvider.dispose();
 		if (allDoneItemProvider != null) allDoneItemProvider.dispose();

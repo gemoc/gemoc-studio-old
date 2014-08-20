@@ -18,6 +18,7 @@
 package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.IllegalVariableAccessException;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
@@ -53,7 +54,11 @@ public class CreateNewGemocLanguageProjectTask extends AbstractResourceActionPro
 	}
 
 	public Object updateContextWhenDone(GemocLanguageProcessContext context) {
-		context.loadXdsmlConfigURI();
+		try {
+			context.loadXdsmlConfigURI(this.getActionTask());
+		} catch (IllegalVariableAccessException e) {
+			org.gemoc.gemoc_language_workbench.process.Activator.getDefault().error(e);
+		}
 		return context.getXdsmlModel();
 	}
 
@@ -75,7 +80,11 @@ public class CreateNewGemocLanguageProjectTask extends AbstractResourceActionPro
 					+ createNewGemocLanguageProjectWizard.getCreatedProject().getName() + "/"
 					+ Activator.GEMOC_PROJECT_CONFIGURATION_FILE, true);
 			context.setName(uri.toString());
-			context.setXdsmlConfigURI(uri);
+			try {
+				context.setXdsmlConfigURI(uri, this.getActionTask());
+			} catch (IllegalVariableAccessException e) {
+				org.gemoc.gemoc_language_workbench.process.Activator.getDefault().error(e);
+			}
 			EclipseResource.touch(uri);
 		}
 	}

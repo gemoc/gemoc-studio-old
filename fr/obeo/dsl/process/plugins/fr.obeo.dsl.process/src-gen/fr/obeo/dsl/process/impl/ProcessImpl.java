@@ -3,14 +3,19 @@
 package fr.obeo.dsl.process.impl;
 
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Process</b></em>'. <!-- end-user-doc
@@ -55,6 +60,16 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 	 * @ordered
 	 */
 	protected Task task;
+
+	/**
+	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ProcessVariable> variables;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -133,6 +148,18 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ProcessVariable> getVariables() {
+		if (variables == null) {
+			variables = new EObjectContainmentEList<ProcessVariable>(ProcessVariable.class, this, ProcessPackage.PROCESS__VARIABLES);
+		}
+		return variables;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -141,6 +168,8 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 		switch (featureID) {
 			case ProcessPackage.PROCESS__TASK:
 				return basicSetTask(null, msgs);
+			case ProcessPackage.PROCESS__VARIABLES:
+				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -156,6 +185,8 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 				return getName();
 			case ProcessPackage.PROCESS__TASK:
 				return getTask();
+			case ProcessPackage.PROCESS__VARIABLES:
+				return getVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,6 +195,7 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -172,6 +204,10 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 				return;
 			case ProcessPackage.PROCESS__TASK:
 				setTask((Task)newValue);
+				return;
+			case ProcessPackage.PROCESS__VARIABLES:
+				getVariables().clear();
+				getVariables().addAll((Collection<? extends ProcessVariable>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -190,6 +226,9 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 			case ProcessPackage.PROCESS__TASK:
 				setTask((Task)null);
 				return;
+			case ProcessPackage.PROCESS__VARIABLES:
+				getVariables().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -205,6 +244,8 @@ public class ProcessImpl extends EObjectImpl implements fr.obeo.dsl.process.Proc
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ProcessPackage.PROCESS__TASK:
 				return task != null;
+			case ProcessPackage.PROCESS__VARIABLES:
+				return variables != null && !variables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

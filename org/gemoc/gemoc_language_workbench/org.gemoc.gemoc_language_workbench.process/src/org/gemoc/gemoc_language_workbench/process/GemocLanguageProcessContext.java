@@ -17,6 +17,9 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process;
 
+import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.IllegalVariableAccessException;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.impl.ProcessContextImpl;
 
 import org.eclipse.core.resources.IFile;
@@ -33,17 +36,17 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 
 	// private URI _xdsmlURI = null;
 
-	/** String used to retreive an GemocLanguageWorkbenchConfiguration model element */
+	/** String used to retrieve an GemocLanguageWorkbenchConfiguration model element */
 	public static final String XDSML_MODEL_VAR = "XDSML_MODEL";
 
-	/** String used to retreive the URI of the xsdml */
+	/** String used to retrieve the URI of the xsdml */
 	public static final String XDSML_FILE_URI_VAR = "XDSML_FILE_URI";
 
 	/**
-	 * this data is indirectly retreived from the xdsml (via the reference to the genmodel that in turn
+	 * this data is indirectly retrieved from the xdsml (via the reference to the genmodel that in turn
 	 * reference the ecore file)
 	 */
-	/** String used to retreive the IFile of the ecore of the domain */
+	/** String used to retrieve the IFile of the ecore of the domain */
 	public static final String ECORE_IFILE_VAR = "ECORE_IFILE";
 
 	public GemocLanguageProcessContext() {
@@ -53,25 +56,37 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	public void initialize(URI newUri) {
 		if (newUri != null) {
 			setName(newUri.toPlatformString(true));
-			setXdsmlConfigURI(newUri);
-		}
-	}
-
-	public void setXdsmlConfigURI(URI newUri) {
-		if (newUri != null) {
-			if (!newUri.equals(getVariableValue(XDSML_FILE_URI_VAR))) {
-				this.setVariableValue(XDSML_FILE_URI_VAR, newUri);
-				loadXdsmlConfigURI();
+			try {
+				setXdsmlConfigURI(newUri, null);
+			} catch (IllegalVariableAccessException e) {
+				Activator.getDefault().error(e);
 			}
 		}
 	}
 
-	public void loadXdsmlConfigURI() {
+	public void setXdsmlConfigURI(URI newUri, ActionTask writterTask) throws IllegalVariableAccessException {
+		if (newUri != null) {
+			if (!newUri.equals(getVariableValue(XDSML_FILE_URI_VAR))) {
+				this.setVariableValue(XDSML_FILE_URI_VAR, newUri, writterTask);
+				loadXdsmlConfigURI(writterTask);
+			}
+		}
+	}
+
+	private Object getVariableValue(String varName) throws IllegalVariableAccessException {
+		ProcessVariable processVar = getProcessVariable(varName);
+		if (processVar == null) {
+			throw new IllegalVariableAccessException("No ProcessVariable " + varName + " in current ProcessContext");
+		}
+		return getVariableValue(processVar);
+	}
+
+	public void loadXdsmlConfigURI(ActionTask writterTask) throws IllegalVariableAccessException {
 		URI xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR);
 		if (xdsmlURI != null) {
-			this.setVariableValue(XDSML_MODEL_VAR, EMFResource.getFirstContent(xdsmlURI));
+			this.setVariableValue(XDSML_MODEL_VAR, EMFResource.getFirstContent(xdsmlURI), writterTask);
 		} else {
-			this.setVariableValue(XDSML_MODEL_VAR, null);
+			this.setVariableValue(XDSML_MODEL_VAR, null, writterTask);
 		}
 	}
 
@@ -79,28 +94,58 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	// ------------------
 
 	public GemocLanguageWorkbenchConfiguration getXdsmlModel() {
-		return (GemocLanguageWorkbenchConfiguration)this.getVariableValue(XDSML_MODEL_VAR);
+		try {
+			return (GemocLanguageWorkbenchConfiguration)this.getVariableValue(XDSML_MODEL_VAR);
+		} catch (IllegalVariableAccessException e) {
+			Activator.getDefault().error(e);
+		}
+		return null;
 	}
 
 	public URI getXdsmlURI() {
-		return (URI)getVariableValue(XDSML_FILE_URI_VAR);
+		try {
+			return (URI)getVariableValue(XDSML_FILE_URI_VAR);
+		} catch (IllegalVariableAccessException e) {
+
+			Activator.getDefault().error(e);
+		}
+		return null;
 	}
 
 	public IFile getXdsmlFile() {
 		IFile file = null;
-		URI xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR);
-		if (xdsmlURI != null) {
-			file = EclipseResource.getFile(xdsmlURI);
+		URI xdsmlURI;
+		try {
+			xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR);
+			if (xdsmlURI != null) {
+				file = EclipseResource.getFile(xdsmlURI);
+			}
+		} catch (IllegalVariableAccessException e) {
+			Activator.getDefault().error(e);
 		}
 		return file;
 	}
 
 	public IFile getEcoreIFile() {
-		IFile ecoreIFile = (IFile)getVariableValue(ECORE_IFILE_VAR);
+		IFile ecoreIFile = null;
+		try {
+			ecoreIFile = (IFile)getVariableValue(ECORE_IFILE_VAR);
+		} catch (IllegalVariableAccessException e) {
+			Activator.getDefault().error(e);
+		}
 		return ecoreIFile;
 	}
 
-	public void setEcoreIFile(IFile ecoreIFile) {
-		setVariableValue(ECORE_IFILE_VAR, ecoreIFile);
+	public void setEcoreIFile(IFile ecoreIFile, ActionTask writterTask) throws IllegalVariableAccessException {
+		setVariableValue(ECORE_IFILE_VAR, ecoreIFile, writterTask);
 	}
+
+	private void setVariableValue(String varName, Object variableValue, ActionTask writterTask) throws IllegalVariableAccessException {
+		ProcessVariable processVar = getProcessVariable(varName);
+		if (processVar == null) {
+			throw new IllegalVariableAccessException("No ProcessVariable " + varName + " in current ProcessContext");
+		}
+		setVariableValue(processVar, variableValue, writterTask);
+	}
+
 }

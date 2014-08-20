@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.obeo.dsl.process.Task#getPrecedingTasks <em>Preceding Tasks</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.Task#getFollowingTasks <em>Following Tasks</em>}</li>
  *   <li>{@link fr.obeo.dsl.process.Task#getPrecondition <em>Precondition</em>}</li>
- *   <li>{@link fr.obeo.dsl.process.Task#getInstanceClassName <em>Instance Class Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -182,31 +181,5 @@ public interface Task extends EObject {
 	 * @generated
 	 */
 	void setPrecondition(Expression value);
-
-	/**
-	 * Returns the value of the '<em><b>Instance Class Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Instance Class Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Instance Class Name</em>' attribute.
-	 * @see #setInstanceClassName(String)
-	 * @see fr.obeo.dsl.process.ProcessPackage#getTask_InstanceClassName()
-	 * @model
-	 * @generated
-	 */
-	String getInstanceClassName();
-
-	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.Task#getInstanceClassName <em>Instance Class Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Instance Class Name</em>' attribute.
-	 * @see #getInstanceClassName()
-	 * @generated
-	 */
-	void setInstanceClassName(String value);
 
 } // Task

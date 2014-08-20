@@ -76,32 +76,10 @@ public class ContextVariableItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 			addVariableValuePropertyDescriptor(object);
+			addDefinitionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ContextVariable_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ContextVariable_name_feature", "_UI_ContextVariable_type"),
-				 ProcessPackage.Literals.CONTEXT_VARIABLE__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -127,6 +105,28 @@ public class ContextVariableItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Definition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefinitionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ContextVariable_definition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ContextVariable_definition_feature", "_UI_ContextVariable_type"),
+				 ProcessPackage.Literals.CONTEXT_VARIABLE__DEFINITION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns ContextVariable.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -145,7 +145,8 @@ public class ContextVariableItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ContextVariable)object).getName();
+		Object labelValue = ((ContextVariable)object).getVariableValue();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ContextVariable_type") :
 			getString("_UI_ContextVariable_type") + " " + label;
@@ -162,12 +163,6 @@ public class ContextVariableItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(ContextVariable.class)) {
-			case ProcessPackage.CONTEXT_VARIABLE__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

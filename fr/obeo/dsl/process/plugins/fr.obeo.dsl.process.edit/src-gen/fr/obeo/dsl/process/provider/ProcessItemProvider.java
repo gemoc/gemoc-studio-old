@@ -90,6 +90,7 @@ public class ProcessItemProvider extends ItemProviderAdapter implements IEditing
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ProcessPackage.Literals.PROCESS__TASK);
+			childrenFeatures.add(ProcessPackage.Literals.PROCESS__VARIABLES);
 		}
 		return childrenFeatures;
 	}
@@ -145,6 +146,7 @@ public class ProcessItemProvider extends ItemProviderAdapter implements IEditing
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ProcessPackage.PROCESS__TASK:
+			case ProcessPackage.PROCESS__VARIABLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -170,6 +172,11 @@ public class ProcessItemProvider extends ItemProviderAdapter implements IEditing
 			(createChildParameter
 				(ProcessPackage.Literals.PROCESS__TASK,
 				 ProcessFactory.eINSTANCE.createActionTask()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.PROCESS__VARIABLES,
+				 ProcessFactory.eINSTANCE.createProcessVariable()));
 	}
 
 	/**

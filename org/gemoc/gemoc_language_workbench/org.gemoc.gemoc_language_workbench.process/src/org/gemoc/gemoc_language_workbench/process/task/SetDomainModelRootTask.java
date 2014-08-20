@@ -235,64 +235,47 @@ public class SetDomainModelRootTask extends AbstractResourceActionProcessor {
 
 	@Override
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		boolean result = false;
-		// if the changed resource is an IProject referenced by the xdsml
-		if (resource instanceof IProject) {
-			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-			if (dmp != null && dmp instanceof EMFEcoreProject) {
-				EMFEcoreProject eep = (EMFEcoreProject)dmp;
-				String projectName = eep.getProjectName();
-				if (resource.getName().equals(projectName)) {
-					result = true;
-				} else
-				// if the change happen on the genmodel referenced by the xdsml
-				if (eep.getEmfGenmodel() != null
-						&& resource.getName().equals(eep.getEmfGenmodel().getLocationURI())) {
-					result = true;
-				}
-			}
-		}
-		return result;
+		return acceptChangedResource(context, resource);
 	}
 
 	@Override
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		boolean result = false;
-		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-		// if the changed resource is an IProject referenced by the xdsml
-		if (resource instanceof IProject && dmp != null && dmp instanceof EMFEcoreProject) {
-			EMFEcoreProject eep = (EMFEcoreProject)dmp;
-			String projectName = eep.getProjectName();
-			if (resource.getName().equals(projectName)) {
-				result = true;
-			} else
-			// if the change happen on the genmodel referenced by the xdsml
-			if (eep.getEmfGenmodel() != null
-					&& resource.getName().equals(eep.getEmfGenmodel().getLocationURI())) {
-				result = true;
-
-			}
-		}
-
-		return result;
+		return acceptChangedResource(context, resource);
 	}
 
 	@Override
 	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
+		return acceptChangedResource(context, resource);
+	}
+
+	protected boolean acceptChangedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if the changed resource is the genmodel referenced by the xdsml
 		if (resource instanceof IFile) {
-			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-			if (dmp != null && dmp instanceof EMFEcoreProject) {
-				EMFEcoreProject eep = (EMFEcoreProject)dmp;
+			String genmodelURI = getGenModelURIFromXDSML(context);
+			if (resource.getName().equals(genmodelURI)) {
 				// if the change happen on the genmodel referenced by the xdsml
-				if (eep.getEmfGenmodel() != null
-						&& resource.getName().equals(eep.getEmfGenmodel().getLocationURI())) {
-					return true;
-
-				}
+				return true;
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * retrieve the genmodel URI defined in the XDSML in the context variable
+	 * 
+	 * @return the URI of the genmodel or null if it cannot be retrieved in the context
+	 */
+	protected String getGenModelURIFromXDSML(GemocLanguageProcessContext context) {
+		if (context.getXdsmlModel() != null && context.getXdsmlModel().getLanguageDefinition() != null) {
+			DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
+			if (dmp != null && dmp instanceof EMFEcoreProject) {
+				EMFEcoreProject eep = (EMFEcoreProject)dmp;
+				if (eep.getEmfGenmodel() != null) {
+					return eep.getEmfGenmodel().getLocationURI();
+				}
+			}
+		}
+		return null;
 	}
 
 	@Override

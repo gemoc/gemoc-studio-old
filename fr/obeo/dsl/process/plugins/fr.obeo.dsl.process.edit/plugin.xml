@@ -10,7 +10,7 @@
       <!-- @generated process -->
       <factory
             uri="http://www.obeo.fr/dsl/process"
-            class="fr.obeo.dsl.process.provider.CustomProcessItemProviderAdapterFactory"
+            class="fr.obeo.dsl.process.provider.ProcessItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

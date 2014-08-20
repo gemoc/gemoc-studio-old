@@ -13,6 +13,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -189,7 +191,7 @@ public class ProcessContextItemProvider extends ItemProviderAdapter implements I
 		newChildDescriptors.add
 			(createChildParameter
 				(ProcessPackage.Literals.PROCESS_CONTEXT__VARIABLES,
-				 ProcessFactory.eINSTANCE.createContextVariable()));
+				 EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EMAP, null))); // TODO: ensure this is a valid literal value
 	}
 
 	/**

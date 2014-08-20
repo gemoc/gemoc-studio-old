@@ -19,6 +19,7 @@ package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.IllegalVariableAccessException;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -27,6 +28,7 @@ import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.process.AbstractResourceActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.Activator;
 import org.gemoc.gemoc_language_workbench.process.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
@@ -83,7 +85,11 @@ public class CreateNewEMFProjectTask extends AbstractResourceActionProcessor {
 		// Discussion, the ActiveFileEcore may not be the best way to retreive the ecore ?
 		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
 		ActiveFile activeFileEcore = new ActiveFileEcore(updatedGemocLanguageProject);
-		context.setEcoreIFile(activeFileEcore.getActiveFile());
+		try {
+			context.setEcoreIFile(activeFileEcore.getActiveFile(), this.getActionTask());
+		} catch (IllegalVariableAccessException e) {
+			Activator.getDefault().error(e);
+		}
 		return dmp;
 	}
 
