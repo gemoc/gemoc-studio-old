@@ -23,12 +23,14 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.commons.eclipse.ui.WizardFinder;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
+import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 //import org.eclipse.emf.ecoretools.design.wizard.EcoreModelerWizard;
 
@@ -93,10 +95,7 @@ public class CreateDomainModelWizardContextAction {
 					IProject createdProject = workspaceListener.getLastCreatedProject();
 					// update the project configuration model
 					if(createdProject != null){
-						addEMFProjectToConf(createdProject.getName());
-					}
-					else{
-						addEMFProjectToConf("");
+						addEMFProjectToConf(createdProject);
 					}
 				}
 			} catch (CoreException e) {
@@ -115,11 +114,11 @@ public class CreateDomainModelWizardContextAction {
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model
-			addEMFProjectToConf(((IResource)dialog.getResult()[0]).getName());
+			addEMFProjectToConf(((IProject)dialog.getResult()[0]));
 		}
 	}
 	
-	protected void addEMFProjectToConf(String projectName){
+	protected void addEMFProjectToConf(IProject emfProject){
 		IFile configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
 		if(configFile.exists()){
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -139,9 +138,22 @@ public class CreateDomainModelWizardContextAction {
 		    
 		    // create missing data
 		    EMFEcoreProject emfEcoreProject = confFactoryImpl.eINSTANCE.createEMFEcoreProject();
-		    emfEcoreProject.setProjectName(projectName);
+		    emfEcoreProject.setProjectName(emfProject.getName());
 		    langage.setDomainModelProject(emfEcoreProject);
-		    			
+		    	
+		    // also add the genmodel if present
+		    FileFinderVisitor ecoreProjectVisitor = new FileFinderVisitor("genmodel");
+			try {
+				emfProject.accept(ecoreProjectVisitor);
+				IFile genmodelIFile = ecoreProjectVisitor.getFile();
+				if(genmodelIFile != null){
+					EMFGenmodel genmodel = confFactoryImpl.eINSTANCE.createEMFGenmodel();
+					genmodel.setLocationURI(genmodelIFile.getFullPath().toString());
+					emfEcoreProject.setEmfGenmodel(genmodel);
+				}
+			} catch (CoreException e) {
+				Activator.error(e.getMessage(), e);
+			}
 			
 			try {
 				resource.save(null);
