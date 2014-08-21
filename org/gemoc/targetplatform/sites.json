@@ -17,7 +17,7 @@
         "http://download.eclipse.org/mmt/qvto/updates/releases/3.3.0"
         ],
     "papyrus": [
-        "http://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/0.10/SR2_RC1/main"
+        "http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/kepler"
 	],
     "acceleo": [
         "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307"
