@@ -40,7 +40,7 @@ public class VariableActionProcessorAdapter implements IVariableActionProcessor
 	{
 		boolean result = false;
 		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeVariableChanged(context, variable);
+			result = _realActionProcessor.acceptChangeVariableChanged(context, variable);
 		return result;	
 	}
 

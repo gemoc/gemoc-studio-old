@@ -39,7 +39,7 @@ public class ResourceActionProcessorAdapter implements IResourceActionProcessor
 	public boolean acceptChangeForRemovedResource(ProcessContext context, IResource resource) {
 		boolean result = false;
 		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeForRemovedResource(context, resource);
+			result = _realActionProcessor.acceptChangeForRemovedResource(context, resource);
 		return result;
 	}
 
@@ -47,7 +47,7 @@ public class ResourceActionProcessorAdapter implements IResourceActionProcessor
 	public boolean acceptChangeForAddedResource(ProcessContext context, IResource resource) {
 		boolean result = false;
 		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeForRemovedResource(context, resource);
+			result = _realActionProcessor.acceptChangeForRemovedResource(context, resource);
 		return result;
 	}
 
@@ -55,7 +55,7 @@ public class ResourceActionProcessorAdapter implements IResourceActionProcessor
 	public boolean acceptChangeForModifiedResource(ProcessContext context, IResource resource) {
 		boolean result = false;
 		if (_realActionProcessor != null)
-			_realActionProcessor.acceptChangeForModifiedResource(context, resource);
+			result = _realActionProcessor.acceptChangeForModifiedResource(context, resource);
 		return result;
 	}
 
