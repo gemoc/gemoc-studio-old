@@ -24,7 +24,8 @@ import fr.inria.aoste.timesquare.ccslkernel.explorer.CCSLConstraintState;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
-import fr.inria.aoste.timesquare.ccslkernel.solver.exception.NoBooleanSolution;
+import fr.inria.aoste.timesquare.ccslkernel.runtime.exceptions.NoBooleanSolution;
+import fr.inria.aoste.timesquare.ccslkernel.runtime.exceptions.SimulationException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.launch.CCSLKernelSolverWrapper;
 import fr.inria.aoste.timesquare.simulationpolicy.maxcardpolicy.MaxCardSimulationPolicy;
@@ -117,6 +118,11 @@ public abstract class CcslSolver implements
 			Activator.getDefault().error(errorMessage);
 			Activator.getDefault().error(errorMessage, e);
 			return null;
+		} catch (SimulationException e) {
+			String errorMessage = "SimulationException while trying to get next Ccsl step";
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
+			return null;
 		}
 	}
 
@@ -174,6 +180,10 @@ public abstract class CcslSolver implements
 			Activator.getDefault().error(errorMessage, e);
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while instantiating the CcslSolver";
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
+		} catch (SimulationException e) {
+			String errorMessage = "SimulationException while instantiating the CcslSolver";
 			Activator.getDefault().error(errorMessage);
 			Activator.getDefault().error(errorMessage, e);
 		}
@@ -330,6 +340,8 @@ public abstract class CcslSolver implements
 			Activator.getDefault().error(e.getMessage(), e);
 		} catch (SolverException e) {
 			Activator.getDefault().error(e.getMessage(), e);
+		} catch (SimulationException e) {
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 		return new ArrayList<LogicalStep>();
 	}
@@ -347,6 +359,8 @@ public abstract class CcslSolver implements
 			solverWrapper.getSolver().bddFromEnvironment.free();
 			solverWrapper.getSolver().bddFromEnvironment = solverWrapper.getSolver().getBddFactory().one();
 		} catch (SolverException e) {
+			Activator.getDefault().error(e.getMessage(), e);
+		} catch (SimulationException e) {
 			Activator.getDefault().error(e.getMessage(), e);
 		}
 	}
