@@ -1,15 +1,10 @@
 package org.gemoc.execution.engine.io.views.event.scenario;
 
+import org.gemoc.execution.engine.io.views.event.EngineCache;
 import org.gemoc.execution.engine.io.views.event.EventManagerView.CacheStatus;
-import org.gemoc.execution.engine.io.views.event.WrapperCache;
 
 public class ScenarioManager 
 {
-	/**
-	 * Link with the corresponding engine wrappers cache for recording and playing
-	 * operations.
-	 */
-	private WrapperCache cache;
 	private ScenarioRecorder _recorder;
 	private ScenarioPlayer _player;
 	/**
@@ -17,7 +12,6 @@ public class ScenarioManager
 	 * <p> Each engine possess a scenario cache and a wrapper cache. The scenario
 	 * cache commands the behavior of the event manager view.
 	 */
-	private CacheStatus _state;
 	/**
 	 * <h2>Progression of replay</h2>
 	 * <p> Increased with each new replayed step until it
@@ -26,20 +20,18 @@ public class ScenarioManager
 	 */
 	private int _progressPlay;
 	/**
-	 * Match the engine current step.
-	 * <p> Make us able to detect when there is a transition between 2 steps.
+	 * Link with the corresponding engine cache for recording and playing
+	 * operations.
 	 */
-	private int cacheStep;
+	private EngineCache _cache;
+
 	
-	
-	public ScenarioManager()
+	//TODO:
+	public ScenarioManager(EngineCache enginecache)
 	{
-		cacheStep = 0;
+		_cache = enginecache;
 		_recorder = new ScenarioRecorder(this);
 		_player = new ScenarioPlayer(this);
-		/* When created, it means a running engine had been selected so the corresponding 
-		 * state is the idle state.														*/
-		_state = CacheStatus.WAITING;
 		resetProgress();
 	}
 	
@@ -50,7 +42,7 @@ public class ScenarioManager
 	public void startRecord()
 	{
 		/* The state is set to recording mode.											*/
-		_state = CacheStatus.RECORDING;
+		_cache.setState(CacheStatus.RECORDING);
 		/* The scenario recorder begin the preparation for recording future steps.		*/
 		_recorder.startRecord();
 	}
@@ -66,7 +58,7 @@ public class ScenarioManager
 	public void stopRecord()
 	{
 		/* Recording mode is terminated,the state is set to idle mode.					*/
-		_state = CacheStatus.WAITING;
+		_cache.setState(CacheStatus.WAITING);
 	}
 	
 	
@@ -77,7 +69,7 @@ public class ScenarioManager
 	 */
 	public void load(final String path)
 	{
-		_state = CacheStatus.PLAYING;
+		_cache.setState(CacheStatus.PLAYING);
 		_player.load(path);
 	}
 	
@@ -91,26 +83,14 @@ public class ScenarioManager
 	 */
 	public void stop()
 	{
-		_state = CacheStatus.WAITING;
+		_cache.setState(CacheStatus.WAITING);
 		_player.stop();
 	}
 
-	public void setCache(WrapperCache currentEngineCache) 
-	{
-		this.cache = currentEngineCache;
-	}
 	
-	public WrapperCache getWrapperCache()
+	public EngineCache getCache()
 	{
-		return cache;
-	}
-	
-	/**
-	 * @return The current state of the cache (scenario manager).
-	 */
-	public CacheStatus getState()
-	{
-		return _state;
+		return _cache;
 	}
 	
 	public int getProgress()
@@ -126,14 +106,5 @@ public class ScenarioManager
 	public void resetProgress()
 	{
 		_progressPlay = 0;
-	}
-	
-	public void setcacheStep(int step)
-	{
-		cacheStep = step;
-	}
-	public int getCacheStep()
-	{
-		return cacheStep;
 	}
 }

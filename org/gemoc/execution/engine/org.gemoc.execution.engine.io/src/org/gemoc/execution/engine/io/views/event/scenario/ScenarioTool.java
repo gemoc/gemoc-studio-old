@@ -27,7 +27,8 @@ public class ScenarioTool
 	
 	protected void safeModelModification(final Runnable runnable)
 	{
-		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(_manager.getWrapperCache().getSystem());
+		TransactionalEditingDomain editingDomain = 
+				TransactionUtil.getEditingDomain(_manager.getCache().getSystem());
 		editingDomain.getCommandStack().execute(
 				new RecordingCommand(editingDomain) {
 					public void doExecute() {

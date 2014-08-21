@@ -9,17 +9,18 @@ import org.gemoc.execution.engine.io.views.event.filters.IEventFilterStrategy;
 public class ViewContentProvider implements IStructuredContentProvider 
 {
 	private IEventFilterStrategy filterStrategy;
-	
+
 	public void inputChanged(Viewer v, Object oldInput, Object newInput) {}
-	
+
 	public void dispose() {}
-	
+
 	public Object[] getElements(Object parent) 
 	{
 		if(parent instanceof WrapperCache)
 		{
-			WrapperCache cache = (WrapperCache) parent;
-			ArrayList<ClockWrapper> listeClockWrapper = new ArrayList<ClockWrapper>(cache.getFilteredClockWrapperList(filterStrategy));
+			WrapperCache wrapperCache = (WrapperCache) parent;
+			ArrayList<ClockWrapper> listeClockWrapper = 
+					new ArrayList<ClockWrapper>(wrapperCache.getFilteredClockWrapperList(filterStrategy));
 			return listeClockWrapper.toArray();
 		}
 		return new Object[0];

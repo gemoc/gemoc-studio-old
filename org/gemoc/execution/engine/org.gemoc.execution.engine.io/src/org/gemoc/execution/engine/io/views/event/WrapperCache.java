@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
 import org.gemoc.execution.engine.io.views.event.filters.IEventFilterStrategy;
@@ -27,30 +26,30 @@ public class WrapperCache
 	 * All the relations between clocks.
 	 */
 	private List<Relation> _relations;
-	private ObservableBasicExecutionEngine _engine;
-	private ClockConstraintSystem _system;
+	private EngineCache _cache;
 
-
-	public WrapperCache(ObservableBasicExecutionEngine engine)
+	/**
+	 * Constructor
+	 * @param cache Engine cache to link with the wrapper cache.
+	 */
+	public WrapperCache(EngineCache cache)
 	{
 		_wrapperMap = new HashMap<String, ClockWrapper>();
 		_clockController = new ClockControllerInternal();
+		_cache = cache;
 	}
-
+	
 	/**
-	 * Initialize the wrapper cache values.
-	 * @param engine the new engine selected.
-	 * @param clockConstraintSystem to get the context and relations.
+	 * initialize the wrappers values.
 	 */
-	public void configure(ObservableBasicExecutionEngine engine, ClockConstraintSystem clockConstraintSystem)
+	public void configure()
 	{
-		_engine = engine;
-		engine.get_clockControllers().add(_clockController);
-		_system = clockConstraintSystem;
-		EventInjectionContext context = new EventInjectionContext(engine.getExecutionContext().getSolver(), clockConstraintSystem);
+		_cache.getEngine().get_clockControllers().add(_clockController);
+		ClockConstraintSystem system = _cache.getSystem();
+		EventInjectionContext context = new EventInjectionContext(_cache.getEngine().getExecutionContext().getSolver(), system);
 		_clockController.initialize(context);
 		_relations = new ArrayList<Relation>();
-		for(Relation r : _system.getSubBlock().get(0).getRelations())
+		for(Relation r : system.getSubBlock().get(0).getRelations())
 		{
 			if(r instanceof Relation)
 			{
@@ -103,16 +102,6 @@ public class WrapperCache
 		{
 			wrapper.setState(ClockStatus.NOTFORCED_NOTSET);
 		}
-	}
-
-	public ObservableBasicExecutionEngine getEngine()
-	{
-		return _engine;
-	}
-
-	public ClockConstraintSystem getSystem()
-	{
-		return _system;
 	}
 
 	/**
