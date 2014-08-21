@@ -35,6 +35,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.gemoc.gemoc_language_workbench.sample.deployer.Activator;
 
 
 
@@ -148,7 +149,11 @@ public abstract class AbstractExampleWizard extends Wizard
 		String projectName = descriptor.getProjectName();
 		
 		URL interpreterZipUrl = FileLocator.find(Platform.getBundle(bundleName), new Path(zipLocation), null);
-		
+		if(interpreterZipUrl == null){
+			String message = "cannot find "+zipLocation+" in plugin "+bundleName+ ". Project "+projectName+" will not be created";
+			Activator.getDefault().error(message, new Exception(message));
+			return;
+		}
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 		
 		if (project.exists()) {
