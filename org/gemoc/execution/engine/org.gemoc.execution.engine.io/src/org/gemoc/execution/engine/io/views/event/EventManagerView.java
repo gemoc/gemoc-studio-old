@@ -10,7 +10,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -34,7 +33,7 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.services.ISourceProviderService;
@@ -59,8 +58,6 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.Element;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 
 
 
@@ -78,10 +75,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private ViewContentProvider _contentProvider;
 	private EnginesStatusView _enginesStatusView;
 	private ObservableBasicExecutionEngine _engine;
-	private Map<ObservableBasicExecutionEngine, WrapperCache> _cacheEngineWrapperMap;
-	private Map<ObservableBasicExecutionEngine, ScenarioManager> _cacheEngineScenarioMap;
-	private WrapperCache _currentWrapperCache;
-	private ScenarioManager _currentScenarioManager;
+	private Map<ObservableBasicExecutionEngine, EngineCache> _cacheMap;
+	private EngineCache _cache;
+	private WrapperCache _wrapperCache;
+	private ScenarioManager _scenarioManager;
 	private Fragment fragment;
 	private Filter _strategyFilterSelected;
 	private CacheStatus _state;
@@ -220,25 +217,17 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	public EventManagerView() 
 	{
-		_cacheEngineWrapperMap = new HashMap<ObservableBasicExecutionEngine, WrapperCache>();
-		_cacheEngineScenarioMap = new HashMap<ObservableBasicExecutionEngine, ScenarioManager>();
-		_currentWrapperCache = null;
+		super();
+		_cacheMap = new HashMap<ObservableBasicExecutionEngine, EngineCache>();
+		_wrapperCache = null;
+		_scenarioManager = null;
 		fragment = null;
 		_strategyFilterSelected = new NoFilter();
 		_commandStateService = null;
 		_state = CacheStatus.STOPPED;
-		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
-		decisionView.addSelectionListener(new ISelectionChangedListener() 
-		{
-			@Override
-			public void selectionChanged(SelectionChangedEvent event) 
-			{
-				updateView();
-			}
-		});
 	}
 
-
+	/* IHM ***********************************************************************************************/
 	/**
 	 * This is a callback that will allow us
 	 * to create the viewer and initialize it.
@@ -254,14 +243,29 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		// In the second row there will be our table with clocks
 		createViewer();
 		// Create a selection Listener for buttons and pop up menu
-		SelectionListener listener = createSelectionListener();
+		_menuAndButtonListener = createSelectionListener();
 		// Create a menu which will show when right click is pressed on a row
-		createPopUpMenu(listener);
+		createPopUpMenu();
 		// Create a display of the eventview status and create the buttons
-		createInformationAndButtons(listener);
+		createInformationAndButtons();
 		// get the view to listen to motor selection
 		startListeningToMotorSelectionChange();
+		
+		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
+		_decisionViewListener = new ISelectionChangedListener() 
+											{
+												@Override
+												public void selectionChanged(SelectionChangedEvent event) 
+												{
+													updateView();
+												}
+											};		
+		decisionView.addSelectionChangedListener(_decisionViewListener);
+
 	}
+	
+	private ISelectionChangedListener _decisionViewListener;
+	private SelectionListener _menuAndButtonListener;
 
 	/**
 	 * Generate a label and a combo to make the user able to change the filter strategy
@@ -400,14 +404,15 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			}
 		});
 	}
-
+	
+	
 	/**
 	 * Create the pop up menu which will be displayed following the right click
 	 * operation on a row of the tableViewer.
 	 * <br>The user can choose an action to realize on the selected Clock(s).
 	 * @param listener
 	 */
-	private void createPopUpMenu(SelectionListener listener) 
+	private void createPopUpMenu() 
 	{
 		final Menu menu = new Menu(_parent.getShell(), SWT.POP_UP);
 		final Table table = _viewer.getTable();
@@ -416,28 +421,28 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		MenuItem item = new MenuItem(menu, SWT.PUSH);
 		item.setText("Force  to tick");
 		item.setData(ClockStatus.FORCED_SET);
-		item.addSelectionListener(listener);
+		item.addSelectionListener(_menuAndButtonListener);
 
 		new MenuItem(menu, SWT.SEPARATOR);
 		item = new MenuItem(menu, SWT.PUSH);
 		item.setText("Force  to not tick");
 		item.setData(ClockStatus.FORCED_NOTSET);
-		item.addSelectionListener(listener);
+		item.addSelectionListener(_menuAndButtonListener);
 
 		new MenuItem(menu, SWT.SEPARATOR);
 		item = new MenuItem(menu, SWT.PUSH);
 		item.setText("Free the clock(s)");
 		item.setData(ClockStatus.NOTFORCED_NOTSET);
-		item.addSelectionListener(listener);
+		item.addSelectionListener(_menuAndButtonListener);
 
 		new MenuItem(menu, SWT.SEPARATOR);
 		item = new MenuItem(menu, SWT.PUSH);
 		item.setText("Advanced settings");
 		item.setData(ClockStatus.DELAYED_CONTROL);
-		item.addSelectionListener(listener);
+		item.addSelectionListener(_menuAndButtonListener);
 	}
 
-	public void createInformationAndButtons(SelectionListener listener)
+	private void createInformationAndButtons()
 	{
 		// The bar will be placed in the first row of the parent's grid ( which has a single column )
 		Composite informationBar = new Composite(_parent, SWT.BORDER);
@@ -473,14 +478,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_quickForceClock_to_tick.setData(ClockStatus.FORCED_SET);
 		_quickForceClock_to_tick.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
 
-		_quickFreeClock.addSelectionListener(listener);
-		_quickForceClock_to_notTick.addSelectionListener(listener);
-		_quickForceClock_to_tick.addSelectionListener(listener);
+		_quickFreeClock.addSelectionListener(_menuAndButtonListener);
+		_quickForceClock_to_notTick.addSelectionListener(_menuAndButtonListener);
+		_quickForceClock_to_tick.addSelectionListener(_menuAndButtonListener);
 
 		updateInformationAndButtons();
 	}
 
-	public SelectionListener createSelectionListener()
+	private SelectionListener createSelectionListener()
 	{
 		final Table table = _viewer.getTable();
 
@@ -512,7 +517,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		};
 		return listener;
 	}
-
+	/* ******************************************************************************************************/
+	
 	/**
 	 * Force or Free a list of clocks
 	 * @param clockToForce The clock list to force or free
@@ -530,8 +536,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		default:
 			for(String clockName : clockToForce)
 			{
-				ClockWrapper wrapper  = _currentWrapperCache.getClockWrapper(clockName);
-				if( ! (wrapper.getState().equals(ClockStatus.NOTFORCED_SET) && state.equals(ClockStatus.NOTFORCED_NOTSET)))
+				ClockWrapper wrapper  = _wrapperCache.getClockWrapper(clockName);
+				if( ! (wrapper.getState().equals(ClockStatus.NOTFORCED_SET) 
+						&& state.equals(ClockStatus.NOTFORCED_NOTSET)))
 				{
 					wrapper.setState(state);
 				}
@@ -551,14 +558,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			@Override
 			public void run() 
 			{
-				setViewBehaviorForCurrentEngine();
+				updateCommands();
 				if(!_state.equals(CacheStatus.STOPPED))
 				{
-					_currentWrapperCache.refreshFutureTickingFreeClocks();
+					_wrapperCache.refreshFutureTickingFreeClocks();
 					_contentProvider.setFilterStrategy(_strategyFilterSelected);
 				}
 				updateInformationAndButtons();
-				_viewer.setInput(_currentWrapperCache);
+				_viewer.setInput(_wrapperCache);
 			}				
 		});
 	}
@@ -566,78 +573,35 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	/**
 	 * Enable or disable commands handlers in function of the current cache state of a selected engine.
 	 */
-	private void setViewBehaviorForCurrentEngine()
+	private void updateCommands()
 	{
+		ISourceProviderService sourceProviderService = (ISourceProviderService) PlatformUI.getWorkbench().getService(ISourceProviderService.class);
+		_commandStateService = (CommandState) sourceProviderService
+				.getSourceProvider(CommandState.ID);
 		switch(_state)
 		{
 		case WAITING: // engine running without recording or playing a fragment
-			_commandStateService.setPlayDisabled();
-			_commandStateService.setRecordDisabled();
+			_commandStateService.resetPlayFLAG();
+			_commandStateService.resetRecordFLAG();
 			_commandStateService.setInit(); 
 			break;
 		case PLAYING: // engine running and playing a fragment
 			_commandStateService.setInit();
-			_commandStateService.setRecordDisabled();
-			_commandStateService.setPlayEnabled();
+			_commandStateService.resetRecordFLAG();
+			_commandStateService.setPlayFLAG();
 			break;
 		case RECORDING: // engine running and recording a fragment
 			_commandStateService.setInit();
-			_commandStateService.setPlayDisabled();
-			_commandStateService.setRecordEnabled();
+			_commandStateService.resetPlayFLAG();
+			_commandStateService.setRecordFLAG();
 			break;
 		case STOPPED: // engine stopped
-			_commandStateService.setPlayDisabled();
-			_commandStateService.setRecordDisabled();
+			_commandStateService.resetPlayFLAG();
+			_commandStateService.resetRecordFLAG();
 			_commandStateService.resetInit();
 			break;
 		default: break;	
 		}
-	}
-
-	/**
-	 * Initialize the cache of wrappers for the current engine.
-	 */
-	private void createWrapperCacheForEngine() 
-	{
-		ClockConstraintSystem system = extractSystem();
-		_currentWrapperCache = new WrapperCache(_engine);
-
-		if (system != null)
-		{
-			for(Element e : system.getSubBlock().get(0).getElements())
-			{
-				if (e instanceof Clock)
-				{
-					_currentWrapperCache.add((Clock)e);
-				}
-			}
-		}
-		_currentWrapperCache.configure(_engine, system);
-		_cacheEngineWrapperMap.put(_engine, _currentWrapperCache);
-	}
-
-	/**
-	 * Initialize the cache of ScenarioManager for the current engine.
-	 */
-	private void createScenarioCacheForEngine(){
-		_currentScenarioManager = new ScenarioManager();
-		_currentScenarioManager.setCache(_currentWrapperCache);
-		_cacheEngineScenarioMap.put(_engine, _currentScenarioManager);
-	}
-
-
-	private ClockConstraintSystem extractSystem() 
-	{
-		ClockConstraintSystem system = null;
-		for(Resource r : _engine.getExecutionContext().getResourceModel().getResourceSet().getResources())
-		{
-			if(r.getContents().get(0) instanceof ClockConstraintSystem)
-			{
-				system = (ClockConstraintSystem)r.getContents().get(0);
-				break;
-			}
-		}
-		return system;
 	}
 
 	/**
@@ -647,9 +611,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void update(Observable o, Object arg) 
 	{
 		int engineStep = (int)_engine.getEngineStatus().getNbLogicalStepRun();
-		_state = _currentScenarioManager.getState();
+		_state = _cache.getState();
 		//We check when the engine reach a new step
-		if(engineStep > _currentScenarioManager.getCacheStep())
+		if(engineStep > _cache.getCacheStep())
 		{
 			if(!_state.equals(CacheStatus.STOPPED))
 			{
@@ -658,7 +622,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					recordScenario();
 				}
 				// The View step is set to the engine new step
-				_currentScenarioManager.setcacheStep(engineStep);
+				_cache.setCacheStep(engineStep);
 				if(_state.equals(CacheStatus.PLAYING))
 				{
 					playScenario();
@@ -682,8 +646,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			// if the selected engine is stopped we clean its cache and disable all commands
 			if(engine.getEngineStatus().getRunningStatus().equals((RunStatus.Stopped)))
 			{
-				if(_cacheEngineScenarioMap.get(_engine)!=null){
-					_state = _cacheEngineScenarioMap.get(_engine).getState();
+				if(_cacheMap.get(_engine)!=null){
+					_state = _cacheMap.get(_engine).getState();
 
 					if(_state.equals(CacheStatus.RECORDING))
 					{
@@ -693,29 +657,37 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					{
 						executeCommand(Commands.STOP_PLAY_SCENARIO);
 					}
+					_engine.deleteObserver(this);
+					_cacheMap.remove(_engine);
 				}
-				_state = CacheStatus.STOPPED;
-				_engine.deleteObserver(this);
-				_currentWrapperCache = null;
-				executeCommand(Commands.UNDO_INIT);
+					_state = CacheStatus.STOPPED;
+					_wrapperCache = null;
+					_scenarioManager = null;
+					_cache = null;
+					executeCommand(Commands.UNDO_INIT);
 			}
 			else // else we set the current state according to the selected engine cache state
 			{
 				_engine.deleteObserver(this);
 				_engine.addObserver(this);
 				executeCommand(Commands.DO_INIT);
-
-				if(_cacheEngineWrapperMap.get(_engine) == null)
+				if(_cacheMap.get(_engine) == null)
 				{
-					createWrapperCacheForEngine();
-					createScenarioCacheForEngine();
+					createcache();
 				}
-				_currentWrapperCache = _cacheEngineWrapperMap.get(_engine);
-				_currentScenarioManager = _cacheEngineScenarioMap.get(_engine);
-				_state = _currentScenarioManager.getState();
+				_cache = _cacheMap.get(_engine);
+				_wrapperCache = _cache.getWrapperCache();
+				_scenarioManager = _cache.getScenarioManager();
+				_state = _cache.getState();
 			}
 			updateView();
 		}
+	}
+	
+	private void createcache()
+	{
+		EngineCache cache = new EngineCache(_engine);
+		_cacheMap.put(_engine, cache);
 	}
 
 
@@ -755,17 +727,18 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 
 	@Override
-	public void dispose() {
+	public void dispose() 
+	{
 		super.dispose();
+		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
+		decisionView.removeSelectionChangedListener(_decisionViewListener);
 		_contentProvider.dispose();
-		if(_engine != null)
-		{
+		if(_engine != null) {
 			_engine.deleteObserver(this);
 		}
-		_engine = null;
+		_engine = null;	
 		stopListeningToMotorSelectionChange();
 	}
-
 
 	/**
 	 * Passing the focus request to the viewer's control.
@@ -775,23 +748,28 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_viewer.getTable().setFocus();
 	}
 
+	private ScenarioManager getCurrentScenarioManager()
+	{
+		return _cache.getScenarioManager();
+	}
+	
 	public void startRecordScenario() 
 	{
-		_currentScenarioManager.startRecord();
-		_state = _currentScenarioManager.getState();
+		getCurrentScenarioManager().startRecord();
+		_state = _cache.getState();
 		updateView();
 
 	}
 
 	public void recordScenario()
 	{
-		_currentScenarioManager.record();
+		_scenarioManager.record();
 	}
 
 	public void stopRecordScenario()
 	{
-		_currentScenarioManager.stopRecord();
-		_state = _currentScenarioManager.getState();
+		_scenarioManager.stopRecord();
+		_state = _cache.getState();
 		updateView();	
 	}
 
@@ -803,10 +781,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		if(path != null)
 		{
-			_currentScenarioManager.load(path);
+			_scenarioManager.load(path);
 			if(fragment != null)
 			{
-				_state = _currentScenarioManager.getState();
+				_state = _cache.getState();
 				updateView();
 			}
 			playScenario();	
@@ -821,9 +799,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		if(fragment != null)
 		{
-			if(_currentScenarioManager.getProgress() < fragment.getStepList().size())
+			if(_scenarioManager.getProgress() < fragment.getStepList().size())
 			{
-				_currentScenarioManager.play();
+				_scenarioManager.play();
 			}
 			else
 			{
@@ -834,9 +812,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	public void stopPlayScenario()
 	{
-		_currentScenarioManager.stop();
-		_state = _currentScenarioManager.getState();
-		_currentWrapperCache.freeAllClocks();
+		_scenarioManager.stop();
+		_state = _cache.getState();
+		_wrapperCache.freeAllClocks();
 	}
 
 	public void informationMsg(final String title, final String msg){
@@ -858,16 +836,17 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	public void executeService(ExecutionEvent event, SourceProviderControls command)
 	{
+		ISourceProviderService sourceProviderService = (ISourceProviderService) PlatformUI.getWorkbench().getService(ISourceProviderService.class);
 		// Get the source provider service
-		ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
-				.getActiveWorkbenchWindow(event).getService(ISourceProviderService.class);
+//		ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
+	//			.getActiveWorkbenchWindow(event).getService(ISourceProviderService.class);
 		// now get my service
 		_commandStateService = (CommandState) sourceProviderService
 				.getSourceProvider(CommandState.ID);
 		switch(command)
 		{
-		case PLAY: _commandStateService.setPlayEnabled(); break;
-		case RECORD: _commandStateService.setRecordEnabled(); break;
+		case PLAY: _commandStateService.setPlayFLAG(); break;
+		case RECORD: _commandStateService.setRecordFLAG(); break;
 		case INIT: _commandStateService.setInit(); break;
 		case RESET: _commandStateService.resetInit();	
 		break;
@@ -890,8 +869,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		return _engine;
 	}
 
-	public void updateInformationAndButtons()
+	private void updateInformationAndButtons()
 	{
+		if(_quickFreeClock.isDisposed())
+		{
+		}
 		_quickFreeClock.setEnabled(_engine!=null);
 		_quickForceClock_to_notTick.setEnabled(_engine!=null);
 		_quickForceClock_to_tick.setEnabled(_engine!=null);

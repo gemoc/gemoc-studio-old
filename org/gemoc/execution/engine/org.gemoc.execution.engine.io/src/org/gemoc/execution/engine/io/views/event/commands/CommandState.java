@@ -37,20 +37,8 @@ public class CommandState extends AbstractSourceProvider {
 		map.put(RECORD_STATE, value);
 		return map;
 	}
-
-
-	public void togglePlayEnabled() {
-		_playFlag = !_playFlag ;
-		String value = _playFlag ? ENABLE : DISABLE;
-		fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, value);
-	}
-
-	public void toggleRecordEnabled() {
-		_recordFlag = !_recordFlag ;
-		String value = _recordFlag ? ENABLE : DISABLE;
-		fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, value);
-	}
 	
+	//methodes pas tres dynamiques :v
 	public void setInit() {
 		fireSourceChanged(ISources.ACTIVE_SHELL, INIT_STATE, "SET");
 	}
@@ -59,22 +47,22 @@ public class CommandState extends AbstractSourceProvider {
 		fireSourceChanged(ISources.ACTIVE_SHELL, INIT_STATE, "RESET");
 	}
 
-	public void setPlayEnabled(){
+	public void setPlayFLAG(){
 		_playFlag = true;
 		fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, "ENABLE");
 	}
 	
-	public void setRecordEnabled(){
+	public void setRecordFLAG(){
 		_recordFlag = true;
 		fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, "ENABLE");
 	}
 	
-	public void setPlayDisabled(){
+	public void resetPlayFLAG(){
 		_playFlag = false;
 		fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, "DISABLE");
 	}
 	
-	public void setRecordDisabled(){
+	public void resetRecordFLAG(){
 		_playFlag = false;
 		fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, "DISABLE");
 	}

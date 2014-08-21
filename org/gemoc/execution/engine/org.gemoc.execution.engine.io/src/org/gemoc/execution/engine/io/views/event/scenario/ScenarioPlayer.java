@@ -38,7 +38,7 @@ public class ScenarioPlayer extends ScenarioTool
 				URI uri = URI.createURI("file:/" + path); 
 				_resource = resourceSet.getResource(uri, true); 
 				_scenario = (Scenario) _resource.getContents().get(0);
-				//TODO: choisir dynamiquement le fragment voulu
+				//TODO: choisir dynamiquement le fragment voulu			
 				_fragment = _scenario.getRefList().get(0).getFragment();
 				_eventView.setScenario(_fragment);
 			}
@@ -52,9 +52,9 @@ public class ScenarioPlayer extends ScenarioTool
 		if(_fragment != null && _fragment instanceof Fragment)
 		{
 			List<ExecutionStep> stepList = _fragment.getStepList();
-			for(ClockWrapper cw : _manager.getWrapperCache().getClockWrapperList())
+			for(ClockWrapper cw : _manager.getCache().getWrapperCache().getClockWrapperList())
 			{
-				_manager.getWrapperCache().getClockWrapperList();
+				_manager.getCache().getWrapperCache().getClockWrapperList();
 				List<EventState> eventList = stepList.get(progressPlayscenario).getEventList();
 				Clock clock = cw.getClock();
 				cw.setState(ClockStatus.NOTFORCED_NOTSET);
