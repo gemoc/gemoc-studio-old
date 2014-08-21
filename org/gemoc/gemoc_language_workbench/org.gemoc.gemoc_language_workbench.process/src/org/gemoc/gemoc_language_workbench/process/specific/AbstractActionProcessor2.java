@@ -29,57 +29,51 @@ import org.gemoc.gemoc_language_workbench.process.support.PreviousTaskChangeAcce
 import org.gemoc.gemoc_language_workbench.process.support.ResourceChangeAcceptanceStrategy;
 import org.gemoc.gemoc_language_workbench.process.support.VariableChangeAcceptanceStrategy;
 
-public abstract class AbstractActionProcessor2 extends AbstractActionProcessor<GemocLanguageProcessContext>
-	implements IResourceActionProcessor, IVariableActionProcessor
-{
+public abstract class AbstractActionProcessor2 extends AbstractActionProcessor<GemocLanguageProcessContext> implements IResourceActionProcessor, IVariableActionProcessor {
 
-	public AbstractActionProcessor2(ActionTask task, boolean acceptChangeOnPrecedingInternalChange) 
-	{
+	public AbstractActionProcessor2(ActionTask task, boolean acceptChangeOnPrecedingInternalChange) {
 		super(task);
 		addCaller(new ResourceChangeAcceptanceStrategy());
 		addCaller(new VariableChangeAcceptanceStrategy());
-		if (acceptChangeOnPrecedingInternalChange)
+		if (acceptChangeOnPrecedingInternalChange) {
 			addCaller(new PreviousTaskChangeAcceptanceStategy());
+		}
 	}
 
-	private GemocLanguageProcessContext castContext(ProcessContext context)
-	{
+	private GemocLanguageProcessContext castContext(ProcessContext context) {
 		return (GemocLanguageProcessContext)context;
 	}
 
-
-	public boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable variable) 
-	{
+	public boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable variable) {
 		return acceptChangeVariableChanged(castContext(context), variable);
 	}
-	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, IResource resource) 
-	{
+
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, IResource resource) {
 		return false;
 	}
-		
-	
+
 	public final boolean acceptChangeForRemovedResource(ProcessContext context, IResource resource) {
 		return acceptChangeForRemovedResource(castContext(context), resource);
 	}
+
 	protected boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		return false;
 	}
 
-	
 	public final boolean acceptChangeForAddedResource(ProcessContext context, IResource resource) {
 		return acceptChangeForAddedResource(castContext(context), resource);
 	}
+
 	protected boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return false;
 	}
 
-	
 	public final boolean acceptChangeForModifiedResource(ProcessContext context, IResource resource) {
 		return acceptChangeForModifiedResource(castContext(context), resource);
 	}
+
 	protected boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		return false;
 	}
 
-	
 }

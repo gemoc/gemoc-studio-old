@@ -20,9 +20,8 @@ package org.gemoc.gemoc_language_workbench.process;
 import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
 
-public interface IVariableActionProcessor
-{
+public interface IVariableActionProcessor {
 
 	boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable object);
-		
+
 }

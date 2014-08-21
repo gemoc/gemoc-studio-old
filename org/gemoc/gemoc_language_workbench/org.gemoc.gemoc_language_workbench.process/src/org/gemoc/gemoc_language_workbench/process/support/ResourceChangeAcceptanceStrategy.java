@@ -29,36 +29,30 @@ import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.IChangeAcceptanceStrategy;
 import org.gemoc.gemoc_language_workbench.process.IResourceActionProcessor;
 
-public class ResourceChangeAcceptanceStrategy implements IChangeAcceptanceStrategy
-{
+public class ResourceChangeAcceptanceStrategy implements IChangeAcceptanceStrategy {
 
-	public boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context, IChange<?> change) {
+	public boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context,
+			IChange<?> change) {
 		IResourceActionProcessor adaptedActionProcessor = new ResourceActionProcessorAdapter(actionProcessor);
 		boolean result = internalDoesProcessorAcceptChange(adaptedActionProcessor, context, change);
 		return result;
 	}
-	
-	private boolean internalDoesProcessorAcceptChange(IResourceActionProcessor actionProcessor, ProcessContext context, IChange<?> change)
-	{
+
+	private boolean internalDoesProcessorAcceptChange(IResourceActionProcessor actionProcessor,
+			ProcessContext context, IChange<?> change) {
 		boolean result = false;
-		if (change instanceof ResourceAdded) 
-		{
+		if (change instanceof ResourceAdded) {
 			result = actionProcessor.acceptChangeForAddedResource(context, (IResource)change.getObject());
-		} 
-		else if (change instanceof ResourceRemoved) 
-		{
+		} else if (change instanceof ResourceRemoved) {
 			result = actionProcessor.acceptChangeForRemovedResource(context, (IResource)change.getObject());
-		} 
-		else if (change instanceof ResourceMoved) 
-		{
-			result = actionProcessor.acceptChangeForAddedResource(context, (IResource)((ResourceMoved)change).getDestination())
+		} else if (change instanceof ResourceMoved) {
+			result = actionProcessor.acceptChangeForAddedResource(context, (IResource)((ResourceMoved)change)
+					.getDestination())
 					|| actionProcessor.acceptChangeForRemovedResource(context, (IResource)change.getObject());
-		} 
-		else if (change instanceof ResourceContentChanged) 
-		{
+		} else if (change instanceof ResourceContentChanged) {
 			result = actionProcessor.acceptChangeForModifiedResource(context, (IResource)change.getObject());
-		} 			
+		}
 		return result;
 	}
-	
+
 }

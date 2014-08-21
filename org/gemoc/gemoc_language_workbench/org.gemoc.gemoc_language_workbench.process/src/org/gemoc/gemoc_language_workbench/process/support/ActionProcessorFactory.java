@@ -30,29 +30,25 @@ import java.util.Map;
 import org.gemoc.gemoc_language_workbench.process.Activator;
 import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
 
-public class ActionProcessorFactory
-{
+public final class ActionProcessorFactory {
 
 	private Map<Task, IActionProcessor> actionProcessors = new LinkedHashMap<Task, IActionProcessor>();
 
-	private ActionProcessorFactory()
-	{}
-	
-	static public Map<Task, IActionProcessor> createActionProcessors(Process process) 
-	{
+	private ActionProcessorFactory() {
+	}
+
+	public static Map<Task, IActionProcessor> createActionProcessors(Process process) {
 		return new ActionProcessorFactory().internalCreateActionProcessors(process);
 	}
-	
-	private Map<Task, IActionProcessor> internalCreateActionProcessors(Process process) 
-	{
-		for(Task t : ProcessUtils.getAllTasks(process))
-		{
-			if (t instanceof ActionTask)
-			{
+
+	private Map<Task, IActionProcessor> internalCreateActionProcessors(Process process) {
+		for (Task t : ProcessUtils.getAllTasks(process)) {
+			if (t instanceof ActionTask) {
 				ActionTask at = (ActionTask)t;
 				IActionProcessor processor = instanciateProcessor(at);
-				if (processor != null)
-					addActionProcessor(processor);						
+				if (processor != null) {
+					addActionProcessor(processor);
+				}
 			}
 		}
 		return actionProcessors;
@@ -60,26 +56,25 @@ public class ActionProcessorFactory
 
 	private IActionProcessor instanciateProcessor(ActionTask at) {
 		IActionProcessor processor = null;
-		if (at.getInstanceClassName() != null)
-		{
+		if (at.getInstanceClassName() != null) {
 			try {
-				Class<?> c = Activator.getDefault().getClass().getClassLoader().loadClass(at.getInstanceClassName());
+				Class<?> c = Activator.getDefault().getClass().getClassLoader().loadClass(
+						at.getInstanceClassName());
 				Constructor<?> constructor = c.getConstructor(ActionTask.class);
 				Object newInstance = constructor.newInstance(at);
 				processor = (IActionProcessor)newInstance;
-			} 
-			catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-				String message = "Property instanceClassName not correctly set for action task " + at.getName() + ".";
+			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+				String message = "Property instanceClassName not correctly set for action task "
+						+ at.getName() + ".";
 				Activator.getDefault().error(message, e);
-			} 		
-			catch (NoSuchMethodException | SecurityException e) {
-				String message = "Class " + at.getInstanceClassName() + " does not have a constructor taking an action task parameter.";
+			} catch (NoSuchMethodException | SecurityException e) {
+				String message = "Class " + at.getInstanceClassName()
+						+ " does not have a constructor taking an action task parameter.";
 				Activator.getDefault().error(message, e);
-			} 
-			catch (IllegalArgumentException | InvocationTargetException e) {
+			} catch (IllegalArgumentException | InvocationTargetException e) {
 				String message = "Class " + at.getInstanceClassName() + " could not be instanciated.";
 				Activator.getDefault().error(message, e);
-			} 			
+			}
 		}
 		return processor;
 	}
@@ -90,8 +85,7 @@ public class ActionProcessorFactory
 	 * @param processor
 	 *            the {@link IActionProcessor}
 	 */
-	private void addActionProcessor(IActionProcessor processor) 
-	{
+	private void addActionProcessor(IActionProcessor processor) {
 		actionProcessors.put(processor.getActionTask(), processor);
 	}
 }

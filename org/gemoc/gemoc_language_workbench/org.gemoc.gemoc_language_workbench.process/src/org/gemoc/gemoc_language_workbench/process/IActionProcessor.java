@@ -26,8 +26,7 @@ import fr.obeo.dsl.workspace.listener.change.IChange;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface IActionProcessor 
-{
+public interface IActionProcessor {
 
 	/**
 	 * Updates the given {@link IProcessRunner runner} according to the given {@link IChange change}. Updates

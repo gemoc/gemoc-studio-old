@@ -26,16 +26,15 @@ import fr.obeo.dsl.workspace.listener.change.process.TaskChanged;
 import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.IChangeAcceptanceStrategy;
 
-public class PreviousTaskChangeAcceptanceStategy implements IChangeAcceptanceStrategy
-{
+public class PreviousTaskChangeAcceptanceStategy implements IChangeAcceptanceStrategy {
 
-	public boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context, IChange<?> change) {
+	public boolean isChangeAccepted(IActionProcessor actionProcessor, ProcessContext context,
+			IChange<?> change) {
 		boolean result = false;
-		if (change instanceof TaskChanged) 
-		{
+		if (change instanceof TaskChanged) {
 			result = ProcessUtils.isTaskFollowing(actionProcessor.getActionTask(), (Task)change.getObject());
 		}
 		return result;
 	}
-	
+
 }
