@@ -25,6 +25,7 @@ import fr.obeo.dsl.process.impl.ProcessContextImpl;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
+import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
@@ -147,6 +148,24 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 			throw new IllegalVariableAccessException("No ProcessVariable " + varName + " in current ProcessContext");
 		}
 		setVariableValue(processVar, variableValue, writterTask);
+	}
+
+	public EMFEcoreProject getEcoreProject() {
+		EMFEcoreProject project = null;
+		Object o = getXdsmlModel().getLanguageDefinition().getDomainModelProject();
+		if (o instanceof EMFEcoreProject) {
+			project = (EMFEcoreProject)o;
+		}
+		return project;
+	}
+	
+	public String getEcoreProjectName() {
+		String projectName = null;
+		Object o = getXdsmlModel().getLanguageDefinition().getDomainModelProject();
+		if (o instanceof EMFEcoreProject) {
+			projectName = ((EMFEcoreProject)o).getProjectName();
+		}
+		return projectName;
 	}
 
 }

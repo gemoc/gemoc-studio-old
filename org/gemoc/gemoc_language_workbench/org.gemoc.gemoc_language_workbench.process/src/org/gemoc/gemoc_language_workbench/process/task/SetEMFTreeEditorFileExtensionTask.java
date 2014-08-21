@@ -49,8 +49,6 @@ import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessC
  */
 public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 {
 
-	protected String undoneReason = "";
-
 	protected String lastExtensions = "";
 
 	/**
@@ -66,11 +64,6 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
 		return lastExtensions;
-	}
-
-	@Override
-	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
-		return undoneReason;
 	}
 
 	@Override
@@ -135,49 +128,28 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 	}
 
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		boolean result = false;
-		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-		// if the changed resource is an IProject referenced by the xdsml as Domain model project
-		if (resource instanceof IProject && dmp != null && dmp instanceof EMFEcoreProject) {
-			EMFEcoreProject eep = (EMFEcoreProject)dmp;
-			String projectName = eep.getProjectName();
-			if (resource.getName().equals(projectName)) {
-				result = true;
-			} 
-		} else
-		if (resource instanceof IFile) {
-			EMFGenmodel emfGenModelFromXDSML = getEMFGenModelDefinedInXDSML(context);
-			// if the change happen on the genmodel referenced by the xdsml
-			if (emfGenModelFromXDSML != null
-					&& resource.getName().equals(emfGenModelFromXDSML.getLocationURI())) {
-				result = true;
-
-			}
-		}
-		return result;
+		return acceptChangeForResource(context, resource);
 	}
 
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+		return acceptChangeForResource(context, resource);
+	}
+	
+	private boolean acceptChangeForResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
-		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
+		String projectName = context.getEcoreProjectName();
 		// if the changed resource is an IProject referenced by the xdsml as Domain model project
-		if (resource instanceof IProject && dmp != null && dmp instanceof EMFEcoreProject) {
-			EMFEcoreProject eep = (EMFEcoreProject)dmp;
-			String projectName = eep.getProjectName();
-			if (resource.getName().equals(projectName)) {
-				result = true;
-			} 
-		} else
-		if (resource instanceof IFile) {
+		if (resource instanceof IProject) {
+			result = resource.getName().equals(projectName);
+		} else if (resource instanceof IFile) {
 			EMFGenmodel emfGenModelFromXDSML = getEMFGenModelDefinedInXDSML(context);
 			// if the change happen on the genmodel referenced by the xdsml
 			if (emfGenModelFromXDSML != null
-					&& resource.getName().equals(emfGenModelFromXDSML.getLocationURI())) {
+				&& resource.getName().equals(emfGenModelFromXDSML.getLocationURI())) {
 				result = true;
 
 			}
 		}
-
 		return result;
 	}
 
@@ -189,16 +161,14 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 			if (emfGenModelFromXDSML != null
 					&& resource.getName().equals(emfGenModelFromXDSML.getLocationURI())) {
 				return true;
-
 			}
 		}
 		return false;
 	}
 
 	protected EMFGenmodel getEMFGenModelDefinedInXDSML(GemocLanguageProcessContext context) {
-		DomainModelProject dmp = context.getXdsmlModel().getLanguageDefinition().getDomainModelProject();
-		if (dmp != null && dmp instanceof EMFEcoreProject) {
-			EMFEcoreProject eep = (EMFEcoreProject)dmp;
+		EMFEcoreProject eep = context.getEcoreProject();
+		if (eep != null) {
 			return eep.getEmfGenmodel();
 		}
 		return null;

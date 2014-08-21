@@ -40,8 +40,6 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardCo
  */
 public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 {
 
-	protected String undoneReason = "";
-
 	/**
 	 * Constructor.
 	 * 
@@ -96,25 +94,9 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 
 	@Override
 	protected void internalDoAction(GemocLanguageProcessContext context) {
 		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
-		CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(
-				updatedGemocLanguageProject);
+		CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(updatedGemocLanguageProject);
 		action.actionToExecute = CreateEditorProjectAction.CREATE_NEW_EMFTREE_PROJECT;
 		action.execute();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
-	 */
-	@Override
-	protected void internalUndoAction(GemocLanguageProcessContext context) {
-		// nothing to do here
-	}
-
-	@Override
-	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
-		return undoneReason;
 	}
 
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {

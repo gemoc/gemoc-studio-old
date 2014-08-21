@@ -44,15 +44,10 @@ public class SelectEMFTreeEditorProjectTask extends CreateNewEMFTreeEditorProjec
 	@Override
 	protected void internalDoAction(GemocLanguageProcessContext context) {
 		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
-		CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(
-				updatedGemocLanguageProject);
+		CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(updatedGemocLanguageProject);
 		action.actionToExecute = CreateEditorProjectAction.SELECT_EXISTING_EMFTREE_PROJECT;
 		action.execute();
 	}
 
-	@Override
-	protected void internalUndoAction(GemocLanguageProcessContext context) {
-		// nothing to do here
-	}
 
 }

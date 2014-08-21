@@ -17,7 +17,10 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process.utils;
 
+import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 public final class EclipseUI {
@@ -27,6 +30,14 @@ public final class EclipseUI {
 
 	public static Shell getActiveWorkbenchShell() {
 		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+	}
+
+	public static IWorkbenchPage getActivePage() {
+		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+	}
+
+	public static WizardDialog createWizardDialog(Wizard wizard) {
+		return new WizardDialog(EclipseUI.getActiveWorkbenchShell(), wizard);
 	}
 
 }

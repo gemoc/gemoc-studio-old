@@ -31,6 +31,8 @@ import org.gemoc.gemoc_language_workbench.process.support.VariableChangeAcceptan
 
 public abstract class AbstractActionProcessor2 extends AbstractActionProcessor<GemocLanguageProcessContext> implements IResourceActionProcessor, IVariableActionProcessor {
 
+	protected String undoneReason = "";
+	
 	public AbstractActionProcessor2(ActionTask task, boolean acceptChangeOnPrecedingInternalChange) {
 		super(task);
 		addCaller(new ResourceChangeAcceptanceStrategy());
@@ -74,6 +76,15 @@ public abstract class AbstractActionProcessor2 extends AbstractActionProcessor<G
 
 	protected boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		return false;
+	}
+
+	@Override
+	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
+		return undoneReason;
+	}
+
+	@Override
+	protected void internalUndoAction(GemocLanguageProcessContext context) {
 	}
 
 }

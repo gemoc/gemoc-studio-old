@@ -23,10 +23,10 @@ import fr.obeo.dsl.process.IllegalVariableAccessException;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseUI;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject;
 
@@ -74,8 +74,7 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 		CreateNewGemocLanguageProject createNewGemocLanguageProjectWizard = new CreateNewGemocLanguageProject();
 
 		// start the XDSML wizard
-		WizardDialog wizardDialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getShell(), createNewGemocLanguageProjectWizard);
+		WizardDialog wizardDialog = EclipseUI.createWizardDialog(createNewGemocLanguageProjectWizard);
 		int res = wizardDialog.open();
 		if (res == WizardDialog.OK) {
 			// update context, set the URI
@@ -90,16 +89,6 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 			}
 			EclipseResource.touch(uri);
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
-	 */
-	@Override
-	protected void internalUndoAction(GemocLanguageProcessContext context) {
-		// TODO remove the project ?
 	}
 
 	@Override

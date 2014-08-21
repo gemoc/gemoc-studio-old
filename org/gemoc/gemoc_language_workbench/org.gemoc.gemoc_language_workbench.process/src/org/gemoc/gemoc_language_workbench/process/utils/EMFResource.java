@@ -17,6 +17,7 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process.utils;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -28,14 +29,40 @@ public final class EMFResource {
 
 	}
 
+	public static Object getFirstContent(IFile xmiFile) {
+		return getFirstContent(getResource(xmiFile));
+	}
+
+	public static Object getFirstContent(String uriAsString) {
+		return getFirstContent(getResource(uriAsString));
+	}
+	
 	public static Object getFirstContent(URI uri) {
-		final ResourceSet resourceSet = new ResourceSetImpl();
-		final Resource r = resourceSet.getResource(uri, true);
-		if (r.getContents().size() > 0) {
-			return r.getContents().get(0);
+		return getFirstContent(getResource(uri));
+	}
+	
+	private static Object getFirstContent(Resource resource) {
+		if (resource.getContents().size() > 0) {
+			return resource.getContents().get(0);
 		} else {
 			return null;
 		}
+	}
+
+	public static Resource getResource(String uriAsString) {
+		URI uri = URI.createURI(uriAsString);
+		return getResource(uri);
+	}
+	
+	public static Resource getResource(IFile file) {
+		URI uri = URI.createURI(file.getLocationURI().toString());
+		return getResource(uri);
+	}
+	
+	public static Resource getResource(URI uri) {
+		final ResourceSet resourceSet = new ResourceSetImpl();
+		final Resource r = resourceSet.getResource(uri, true);
+		return r;
 	}
 
 }
