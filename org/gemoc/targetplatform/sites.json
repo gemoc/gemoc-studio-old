@@ -7,12 +7,7 @@
         ],
     "modeling-base": [
         "http://download.eclipse.org/modeling/mdt/ocl/updates/maintenance/4.1.2/M201401201522",
-        "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones",
-        "http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones",
         "http://download.eclipse.org/tools/gef/updates/milestones",
-		"http://download.eclipse.org/modeling/emf/validation/updates/milestones",
-		"http://download.eclipse.org/modeling/emf/transaction/updates/milestones",
-        "http://download.eclipse.org/modeling/emf/query/updates/milestones",
         "http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.1/S201401220957",
         "http://download.eclipse.org/mmt/qvto/updates/releases/3.3.0"
         ],
