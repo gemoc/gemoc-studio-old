@@ -30,20 +30,35 @@ public final class EclipseResource {
 	private EclipseResource() {
 
 	}
+	
+	private static IResource getResource(Class<?> resourceClass, String resourceFullPath) {
+		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+		return (IResource)workspaceRoot.findMember(resourceFullPath);
+	}
+	
+//	private static IResource getResource(Class<?> resourceClass, URI resourceURI) {
+//		return getResource(resourceClass, resourceURI.toPlatformString(true));
+//	}
 
 	public static URI getUri(IResource resource) {
 		return EMFUri.from(resource);
 	}
 
 	public static IFile getFile(URI uri) {
-		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-		IFile file = (IFile)workspaceRoot.findMember(uri.toPlatformString(true));
+		if (uri == null) {
+			return null;
+		}
+		return getFile(uri.toPlatformString(true));
+	}
+	
+	public static IFile getFile(String filePath) {
+		IFile file = (IFile)getResource(IFile.class, filePath);
 		return file;
 	}
 
 	public static void touch(URI uri) {
 		try {
-			EclipseResource.getFile(uri).touch(new org.eclipse.core.runtime.NullProgressMonitor());
+			getFile(uri).touch(new org.eclipse.core.runtime.NullProgressMonitor());
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,6 +72,37 @@ public final class EclipseResource {
 
 	public static boolean existProject(String projectName) {
 		return getProject(projectName).exists();
+	}
+
+	public static boolean isFile(IResource resource, String filePath) {
+		Object possibleFile = resource.getAdapter(IFile.class);
+		if (possibleFile != null) {
+			return resource.equals(getFile(filePath));
+		}
+		return false;
+	}
+	
+	public static boolean checkFile(IResource resource, URI uri) {
+		IFile file = getFile(uri);
+		if (file == null) {
+			return false;
+		}
+		return file.equals(resource);
+	}
+
+	public static boolean check(IResource resource, Class<?> resourceClass, URI resourceURI) {
+		return check(resource, resourceClass, resourceURI.toPlatformString(true));
+	}
+	
+	public static boolean check(IResource resource, Class<?> resourceClass, IResource comparedResource) {
+		return check(resource, resourceClass, comparedResource.getFullPath().toString());
+	}
+	
+	public static boolean check(IResource resource, Class<?> resourceClass, String resourceFullPath) {
+		if (resource.getAdapter(resourceClass) != null) {
+			return resource.equals(getResource(resourceClass, resourceFullPath));
+		}
+		return false;
 	}
 
 }

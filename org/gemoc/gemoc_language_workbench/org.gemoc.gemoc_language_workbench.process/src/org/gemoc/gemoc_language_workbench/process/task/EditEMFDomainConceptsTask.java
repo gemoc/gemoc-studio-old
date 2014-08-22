@@ -37,8 +37,8 @@ import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseUI;
-import org.gemoc.gemoc_language_workbench.process.utils.Path;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 
@@ -166,76 +166,39 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 	}
 
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		boolean result = false;
-		// if the changed resource is an IProject referenced by the xdsml
-		if (resource instanceof IProject) {
-			String projectName = context.getEcoreProjectName();
-			if (resource.getName().equals(projectName)) {
-				result = true;
-			}
-		}
-		// if the change is about the ecoreFile or genmodel
-		if (!result && resource instanceof IFile) {
-			if (context.getEcoreIFile() != null) {
-				result = Path.equals(resource, context.getEcoreIFile());
-			} else {
-				// if the change happen on the genmodel referenced by the xdsml
-				EMFEcoreProject eep = context.getEcoreProject();
-				if (eep != null
-					&& eep.getEmfGenmodel() != null
-					&& resource.getLocationURI().toString().equals(eep.getEmfGenmodel().getLocationURI())) {
-					result = true;
-				}
-			}
-		}
-		return result;
+		return
+				EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
+				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile())
+				|| checkFileIsGenModel(context, resource);
 	}
 
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		boolean result = false;
-		// if the changed resource is an IProject referenced by the xdsml
-		if (resource instanceof IProject) {
-			String projectName = context.getEcoreProjectName();
-			if (resource.getName().equals(projectName)) {
-				return true;
-			}
-		}
-		// if the change is about the ecoreFile or genmodel
-		if (resource instanceof IFile) {
-			if (context.getEcoreIFile() != null) {
-				result = Path.equals(resource, context.getEcoreIFile());
-			} else {
-				// if the change happen on the genmodel referenced by the xdsml
-				EMFEcoreProject eep = context.getEcoreProject();
-				if (eep != null
-						&& eep.getEmfGenmodel() != null
-						&& resource.getLocationURI().toString().equals(
-								eep.getEmfGenmodel().getLocationURI())) {
-					result = true;
-				}
-			}
-		}
-		return result;
+		return
+				EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
+				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile())
+				|| checkFileIsGenModel(context, resource);
 	}
 
 	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
-		boolean result = false;
-		// if the change is about the ecoreFile or genmodel
+		return 
+				EclipseResource.check(resource, IFile.class, context.getEcoreIFile())
+				|| checkFileIsGenModel(context, resource);
+	}
+
+	private boolean checkFileIsGenModel(GemocLanguageProcessContext context, IResource resource) {
 		if (resource instanceof IFile) {
-			if (context.getEcoreIFile() != null) {
-				return Path.equals(resource, context.getEcoreIFile());
-			}
 			// if the change happen on the genmodel referenced by the xdsml
 			EMFEcoreProject eep = context.getEcoreProject();
 			if (eep != null
-				&& eep.getEmfGenmodel() != null
-				&& resource.getLocationURI().toString().equals(eep.getEmfGenmodel().getLocationURI())) {
-				result = true;
+					&& eep.getEmfGenmodel() != null
+					&& resource.getLocationURI().toString().equals(
+							eep.getEmfGenmodel().getLocationURI())) {
+				return true;
 			}
 		}
-		return result;
+		return false;
 	}
-
+	
 	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {

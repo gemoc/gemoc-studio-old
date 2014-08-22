@@ -43,6 +43,7 @@ import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseUI;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
@@ -209,15 +210,9 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 	}
 
 	protected boolean acceptChangedResource(GemocLanguageProcessContext context, IResource resource) {
-		// if the changed resource is the genmodel referenced by the xdsml
-		if (resource instanceof IFile) {
-			String genmodelURI = getGenModelURIFromXDSML(context);
-			if (resource.getName().equals(genmodelURI)) {
-				// if the change happen on the genmodel referenced by the xdsml
-				return true;
-			}
-		}
-		return false;
+		return 
+			EclipseResource.isFile(resource, getGenModelURIFromXDSML(context))
+			|| EclipseResource.checkFile(resource, context.getXdsmlURI());
 	}
 
 	/**
@@ -231,7 +226,7 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 			EMFEcoreProject eep = context.getEcoreProject();
 			if (eep != null
 				&& eep.getEmfGenmodel() != null) {
-				return eep.getEmfGenmodel().getLocationURI();
+				return "/" + eep.getEmfGenmodel().getLocationURI();
 			}
 		}
 		return null;

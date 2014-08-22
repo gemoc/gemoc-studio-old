@@ -46,7 +46,7 @@ public class ResourceActionProcessorAdapter implements IResourceActionProcessor 
 	public boolean acceptChangeForAddedResource(ProcessContext context, IResource resource) {
 		boolean result = false;
 		if (realActionProcessor != null) {
-			result = realActionProcessor.acceptChangeForRemovedResource(context, resource);
+			result = realActionProcessor.acceptChangeForAddedResource(context, resource);
 		}
 		return result;
 	}

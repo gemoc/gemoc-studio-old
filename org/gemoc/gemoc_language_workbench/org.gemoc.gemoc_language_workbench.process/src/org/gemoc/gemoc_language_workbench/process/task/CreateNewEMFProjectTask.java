@@ -25,12 +25,10 @@ import fr.obeo.dsl.process.IllegalVariableAccessException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
-import org.gemoc.gemoc_language_workbench.process.utils.Path;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction;
@@ -54,33 +52,15 @@ public class CreateNewEMFProjectTask extends AbstractActionProcessor2 {
 	}
 
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		boolean result = false;
-		// if the changed resource is an IProject referenced by the xdsml
-		if (resource instanceof IProject) {
-			String projectName = context.getEcoreProjectName();
-			result = resource.getName().equals(projectName);
-		} else	if (resource instanceof IFile) {
-			// if the change is about the ecoreFile
-			result = Path.equals(resource, context.getEcoreIFile());
-		}
-		return result;
+		return EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
+				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile());
 	}
 
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		boolean result = false;
-		// if xdsml of the process has changed
-		final URI uri = EclipseResource.getUri(resource);
-		if (uri.equals(context.getXdsmlURI())) {
-			result = true;
-		} else if (resource instanceof IProject) {
-			// or if the changed resource is an IProject referenced by the xdsml
-			String projectName = context.getEcoreProjectName();
-			result = resource.getName().equals(projectName);
-		} else if (resource instanceof IFile) {
-			// if the change is about the ecoreFile
-			result = Path.equals(resource, context.getEcoreIFile());
-		}
-		return result;
+		return 
+				EclipseResource.check(resource, IFile.class, context.getXdsmlURI())
+				|| EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
+				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile());
 	}
 
 	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {

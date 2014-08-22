@@ -20,6 +20,7 @@ package org.gemoc.gemoc_language_workbench.process.task;
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -103,19 +104,11 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 	}
 
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		final URI uri = EclipseResource.getUri(resource);
-		if (uri.equals(context.getXdsmlURI())) {
-			return true;
-		}
-		return false;
+		return EclipseResource.check(resource, IFile.class, context.getXdsmlURI());
 	}
 
 	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
-		final URI uri = EclipseResource.getUri(resource);
-		if (uri.equals(context.getXdsmlURI())) {
-			return true;
-		}
-		return false;
+		return EclipseResource.check(resource, IFile.class, context.getXdsmlURI());
 	}
 
 }
