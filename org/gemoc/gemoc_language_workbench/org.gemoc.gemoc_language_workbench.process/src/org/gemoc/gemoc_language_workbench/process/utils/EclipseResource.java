@@ -32,6 +32,9 @@ public final class EclipseResource {
 	}
 	
 	private static IResource getResource(Class<?> resourceClass, String resourceFullPath) {
+		if (resourceFullPath == null) {
+			return null;
+		}
 		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
 		return (IResource)workspaceRoot.findMember(resourceFullPath);
 	}
@@ -91,10 +94,16 @@ public final class EclipseResource {
 	}
 
 	public static boolean check(IResource resource, Class<?> resourceClass, URI resourceURI) {
+		if (resourceURI == null) {
+			return false;
+		}
 		return check(resource, resourceClass, resourceURI.toPlatformString(true));
 	}
 	
 	public static boolean check(IResource resource, Class<?> resourceClass, IResource comparedResource) {
+		if (comparedResource == null) {
+			return false;
+		}
 		return check(resource, resourceClass, comparedResource.getFullPath().toString());
 	}
 	

@@ -24,13 +24,15 @@ import java.util.List;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessRunner;
 
 public class StartNewProcessHandler extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// start a new context with an empty URI, register it
-		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(null);
+		GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();
+		GemocLanguageProcessRunner procRunner = new GemocLanguageProcessRunner(processContext);
 		List<ActionTask> tasks = procRunner.getStartNewProcessActionTasks();
 
 		if (tasks.size() == 1) {

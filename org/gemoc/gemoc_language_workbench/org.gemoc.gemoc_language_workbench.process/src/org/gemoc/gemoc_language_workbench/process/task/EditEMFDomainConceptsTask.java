@@ -190,9 +190,9 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 			// if the change happen on the genmodel referenced by the xdsml
 			EMFEcoreProject eep = context.getEcoreProject();
 			if (eep != null
-					&& eep.getEmfGenmodel() != null
-					&& resource.getLocationURI().toString().equals(
-							eep.getEmfGenmodel().getLocationURI())) {
+				&& eep.getEmfGenmodel() != null
+				&& resource.getLocationURI() != null
+				&& resource.getLocationURI().toString().equals(eep.getEmfGenmodel().getLocationURI())) {
 				return true;
 			}
 		}
