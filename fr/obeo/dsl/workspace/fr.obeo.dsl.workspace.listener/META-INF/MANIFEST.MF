@@ -9,7 +9,6 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: fr.obeo.dsl.workspace.listener,
  fr.obeo.dsl.workspace.listener.change,
- fr.obeo.dsl.workspace.listener.change.process,
  fr.obeo.dsl.workspace.listener.change.processor,
  fr.obeo.dsl.workspace.listener.change.resource,
  fr.obeo.dsl.workspace.listener.change.workbench,
@@ -17,7 +16,6 @@ Export-Package: fr.obeo.dsl.workspace.listener,
  fr.obeo.dsl.workspace.listener.internal;x-friends:="fr.obeo.dsl.workspace.listener.tests"
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;bundle-version="3.8.1",
- org.eclipse.ui;bundle-version="3.8.2",
- fr.obeo.dsl.process
+ org.eclipse.ui;bundle-version="3.8.2"
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: fr.obeo.dsl.workspace.listener.Activator
