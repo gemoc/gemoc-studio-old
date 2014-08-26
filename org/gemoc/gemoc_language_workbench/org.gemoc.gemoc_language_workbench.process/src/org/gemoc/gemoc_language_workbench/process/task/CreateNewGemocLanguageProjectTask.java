@@ -82,7 +82,7 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 			final URI uri = URI.createPlatformResourceURI("/"
 					+ createNewGemocLanguageProjectWizard.getCreatedProject().getName() + "/"
 					+ Activator.GEMOC_PROJECT_CONFIGURATION_FILE, true);
-			context.setName(uri.toString());
+			context.setName("Gemoc process: " + uri.toString());
 			try {
 				context.setXdsmlConfigURI(uri, this.getActionTask());
 			} catch (IllegalVariableAccessException e) {

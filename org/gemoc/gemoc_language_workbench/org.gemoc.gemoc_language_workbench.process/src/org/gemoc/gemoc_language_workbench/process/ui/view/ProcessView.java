@@ -47,7 +47,6 @@ public class ProcessView extends AbstractProcessView {
 		if (result.size() > 0) {
 			setProcessRunner(result.get(0));
 		}
-
 	}
 
 }
