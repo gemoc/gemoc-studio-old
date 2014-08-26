@@ -5,12 +5,9 @@ package org.gemoc.execution.engine.scenario.provider;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -21,8 +18,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.gemoc.execution.engine.scenario.EventState;
+import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.execution.engine.scenario.ScenarioPackage;
 
 /**
@@ -60,30 +57,30 @@ public class EventStateItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTickPropertyDescriptor(object);
+			addStatePropertyDescriptor(object);
 			addClockPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Tick feature.
+	 * This adds a property descriptor for the State feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTickPropertyDescriptor(Object object) {
+	protected void addStatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EventState_tick_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EventState_tick_feature", "_UI_EventState_type"),
-				 ScenarioPackage.Literals.EVENT_STATE__TICK,
+				 getString("_UI_EventState_state_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EventState_state_feature", "_UI_EventState_type"),
+				 ScenarioPackage.Literals.EVENT_STATE__STATE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -129,8 +126,11 @@ public class EventStateItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		EventState eventState = (EventState)object;
-		return getString("_UI_EventState_type") + " " + eventState.isTick();
+		Future labelValue = ((EventState)object).getState();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_EventState_type") :
+			getString("_UI_EventState_type") + " " + label;
 	}
 	
 
@@ -146,7 +146,7 @@ public class EventStateItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EventState.class)) {
-			case ScenarioPackage.EVENT_STATE__TICK:
+			case ScenarioPackage.EVENT_STATE__STATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

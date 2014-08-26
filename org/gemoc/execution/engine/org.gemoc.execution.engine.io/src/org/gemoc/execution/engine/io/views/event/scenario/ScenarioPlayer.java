@@ -12,6 +12,7 @@ import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.Fragment;
+import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.execution.engine.scenario.Scenario;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -62,7 +63,7 @@ public class ScenarioPlayer extends ScenarioTool
 				{	
 					if(eventList.get(i).getClock().getName().equals(clock.getName()))
 					{
-						ClockStatus newState = eventList.get(i).isTick() ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
+						ClockStatus newState = eventList.get(i).getState().equals(Future.TICK) ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
 						cw.setState(newState); 
 					}
 				}

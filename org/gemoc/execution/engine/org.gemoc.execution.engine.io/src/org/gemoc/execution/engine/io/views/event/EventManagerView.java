@@ -54,6 +54,7 @@ import org.gemoc.execution.engine.io.views.event.filters.NoFilter;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.scenario.Fragment;
+import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
@@ -100,19 +101,19 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	public enum ClockStatus 
 	{
-		NOTFORCED_SET(false, true),
-		NOTFORCED_NOTSET(false, false),
-		FORCED_SET(true, true),
-		FORCED_NOTSET(true, false),
+		NOTFORCED_SET(false, Future.TICK),
+		NOTFORCED_NOTSET(false, Future.NO_TICK),
+		FORCED_SET(true, Future.TICK),
+		FORCED_NOTSET(true, Future.NO_TICK),
 		DELAYED_CONTROL(null, null);
 
 		private Boolean isForced;
-		private Boolean tick;
+		private Future future;
 
-		ClockStatus(Boolean isForced, Boolean tick)
+		ClockStatus(Boolean isForced, Future future)
 		{
 			this.isForced = isForced;
-			this.tick = tick;
+			this.future = future;
 		}
 
 		public Boolean isForced()
@@ -120,9 +121,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			return isForced;
 		}
 
-		public Boolean getTick()
+		public Future getState()
 		{
-			return tick;
+			return future;
 		}
 	}
 
@@ -131,9 +132,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	public enum Filters
 	{
-		ALL("All Clocks", new NoFilter()),
+		ALL("All Events", new NoFilter()),
 		NO_LEFT_BIND("No Left binded Clocks", new LeftBindedClockFilter()),
-		NO_BIND("No binded Clocks", new AllBindedClockFilter());
+		NO_BIND("Free Clocks", new AllBindedClockFilter());
 
 		private Filter f;
 		private String name;
@@ -362,6 +363,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				if (element instanceof ClockWrapper)
 				{
 					Clock c = ((ClockWrapper)element).getClock();
+					//result = ViewUtils.eventToString(c.getTickingEvent());
 					result = c.getName();
 				}
 				return result;

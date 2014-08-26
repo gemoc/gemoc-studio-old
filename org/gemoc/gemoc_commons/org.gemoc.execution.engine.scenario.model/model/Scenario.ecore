@@ -19,7 +19,11 @@
         eType="#//EventState" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventState">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tick" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//Future"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="clock" lowerBound="1" eType="ecore:EClass platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//Clock"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Future">
+    <eLiterals name="tick"/>
+    <eLiterals name="noTick" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

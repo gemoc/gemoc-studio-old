@@ -4,6 +4,7 @@ package org.gemoc.execution.engine.scenario;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -224,13 +225,13 @@ public interface ScenarioPackage extends EPackage {
 	int EVENT_STATE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Tick</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_STATE__TICK = 0;
+	int EVENT_STATE__STATE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Clock</b></em>' reference.
@@ -259,6 +260,16 @@ public interface ScenarioPackage extends EPackage {
 	 */
 	int EVENT_STATE_OPERATION_COUNT = 0;
 
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.Future <em>Future</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.scenario.Future
+	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getFuture()
+	 * @generated
+	 */
+	int FUTURE = 5;
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.Scenario <em>Scenario</em>}'.
@@ -366,15 +377,15 @@ public interface ScenarioPackage extends EPackage {
 	EClass getEventState();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.scenario.EventState#isTick <em>Tick</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.scenario.EventState#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Tick</em>'.
-	 * @see org.gemoc.execution.engine.scenario.EventState#isTick()
+	 * @return the meta object for the attribute '<em>State</em>'.
+	 * @see org.gemoc.execution.engine.scenario.EventState#getState()
 	 * @see #getEventState()
 	 * @generated
 	 */
-	EAttribute getEventState_Tick();
+	EAttribute getEventState_State();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.scenario.EventState#getClock <em>Clock</em>}'.
@@ -386,6 +397,16 @@ public interface ScenarioPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEventState_Clock();
+
+	/**
+	 * Returns the meta object for enum '{@link org.gemoc.execution.engine.scenario.Future <em>Future</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Future</em>'.
+	 * @see org.gemoc.execution.engine.scenario.Future
+	 * @generated
+	 */
+	EEnum getFuture();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -501,12 +522,12 @@ public interface ScenarioPackage extends EPackage {
 		EClass EVENT_STATE = eINSTANCE.getEventState();
 
 		/**
-		 * The meta object literal for the '<em><b>Tick</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EVENT_STATE__TICK = eINSTANCE.getEventState_Tick();
+		EAttribute EVENT_STATE__STATE = eINSTANCE.getEventState_State();
 
 		/**
 		 * The meta object literal for the '<em><b>Clock</b></em>' reference feature.
@@ -515,6 +536,16 @@ public interface ScenarioPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EVENT_STATE__CLOCK = eINSTANCE.getEventState_Clock();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.Future <em>Future</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.scenario.Future
+		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getFuture()
+		 * @generated
+		 */
+		EEnum FUTURE = eINSTANCE.getFuture();
 
 	}
 

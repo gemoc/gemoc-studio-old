@@ -3,17 +3,16 @@
 package org.gemoc.execution.engine.scenario.impl;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.TimeModelPackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.Fragment;
+import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.execution.engine.scenario.Reference;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
@@ -60,6 +59,13 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 	 * @generated
 	 */
 	private EClass eventStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum futureEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -220,7 +226,7 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEventState_Tick() {
+	public EAttribute getEventState_State() {
 		return (EAttribute)eventStateEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -231,6 +237,15 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 	 */
 	public EReference getEventState_Clock() {
 		return (EReference)eventStateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getFuture() {
+		return futureEEnum;
 	}
 
 	/**
@@ -275,8 +290,11 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 		createEReference(executionStepEClass, EXECUTION_STEP__EVENT_LIST);
 
 		eventStateEClass = createEClass(EVENT_STATE);
-		createEAttribute(eventStateEClass, EVENT_STATE__TICK);
+		createEAttribute(eventStateEClass, EVENT_STATE__STATE);
 		createEReference(eventStateEClass, EVENT_STATE__CLOCK);
+
+		// Create enums
+		futureEEnum = createEEnum(FUTURE);
 	}
 
 	/**
@@ -326,8 +344,13 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 		initEReference(getExecutionStep_EventList(), this.getEventState(), null, "eventList", null, 0, -1, ExecutionStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventStateEClass, EventState.class, "EventState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEventState_Tick(), ecorePackage.getEBoolean(), "tick", null, 0, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEventState_State(), this.getFuture(), "state", null, 0, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventState_Clock(), theTimeModelPackage.getClock(), null, "clock", null, 1, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(futureEEnum, Future.class, "Future");
+		addEEnumLiteral(futureEEnum, Future.TICK);
+		addEEnumLiteral(futureEEnum, Future.NO_TICK);
 
 		// Create resource
 		createResource(eNS_URI);

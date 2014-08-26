@@ -36,7 +36,7 @@
     <children xmi:type="notation:Node" xmi:id="_SRKgsAv4EeSgpMup4TwPZQ" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_SRKgsQv4EeSgpMup4TwPZQ" type="5001">
       <children xmi:type="notation:Node" xmi:id="_fC7GgAv5EeSgpMup4TwPZQ" type="2001">
-        <element xmi:type="ecore:EAttribute" href="Scenario.ecore#//EventState/tick"/>
+        <element xmi:type="ecore:EAttribute" href="Scenario.ecore#//EventState/state"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_fC7GgQv5EeSgpMup4TwPZQ"/>
       </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_SRKgsgv4EeSgpMup4TwPZQ"/>
@@ -106,6 +106,25 @@
     <styles xmi:type="notation:ShapeStyle" xmi:id="_z5RfYRfjEeSvtY5XKCBKkw" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="Scenario.ecore#//Fragment"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z5RfYhfjEeSvtY5XKCBKkw" x="228" y="144"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_dAY_ECxbEeSMNZa3q26zlg" type="1005">
+    <children xmi:type="notation:Node" xmi:id="_dAa0QCxbEeSMNZa3q26zlg" type="4010"/>
+    <children xmi:type="notation:Node" xmi:id="_dAa0QSxbEeSMNZa3q26zlg" type="5008">
+      <children xmi:type="notation:Node" xmi:id="_frQC0CxbEeSMNZa3q26zlg" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="Scenario.ecore#//Future/tick"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_frQC0SxbEeSMNZa3q26zlg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_gwDuwCxbEeSMNZa3q26zlg" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="Scenario.ecore#//Future/noTick"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_gwDuwSxbEeSMNZa3q26zlg"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_dAa0QixbEeSMNZa3q26zlg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_dAa0QyxbEeSMNZa3q26zlg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_dAa0RCxbEeSMNZa3q26zlg"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_dAY_ESxbEeSMNZa3q26zlg" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EEnum" href="Scenario.ecore#//Future"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dAY_EixbEeSMNZa3q26zlg" x="24" y="108" width="137" height="100"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_H4A7kQv4EeSgpMup4TwPZQ"/>
   <element xmi:type="ecore:EPackage" href="Scenario.ecore#/"/>

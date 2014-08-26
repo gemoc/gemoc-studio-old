@@ -86,7 +86,7 @@ public class ScenarioRecorder extends ScenarioTool
 					{
 						EventState newState = _factory.createEventState();
 						newState.setClock(cw.getClock());
-						newState.setTick(state.getTick());
+						newState.setState(state.getState());
 						newListEvent.add(newState);
 					} 
 

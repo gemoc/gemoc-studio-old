@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.execution.engine.scenario.EventState#isTick <em>Tick</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.scenario.EventState#getState <em>State</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.scenario.EventState#getClock <em>Clock</em>}</li>
  * </ul>
  * </p>
@@ -25,30 +25,33 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface EventState extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Tick</b></em>' attribute.
+	 * Returns the value of the '<em><b>State</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.gemoc.execution.engine.scenario.Future}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Tick</em>' attribute isn't clear,
+	 * If the meaning of the '<em>State</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tick</em>' attribute.
-	 * @see #setTick(boolean)
-	 * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getEventState_Tick()
+	 * @return the value of the '<em>State</em>' attribute.
+	 * @see org.gemoc.execution.engine.scenario.Future
+	 * @see #setState(Future)
+	 * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getEventState_State()
 	 * @model
 	 * @generated
 	 */
-	boolean isTick();
+	Future getState();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.execution.engine.scenario.EventState#isTick <em>Tick</em>}' attribute.
+	 * Sets the value of the '{@link org.gemoc.execution.engine.scenario.EventState#getState <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Tick</em>' attribute.
-	 * @see #isTick()
+	 * @param value the new value of the '<em>State</em>' attribute.
+	 * @see org.gemoc.execution.engine.scenario.Future
+	 * @see #getState()
 	 * @generated
 	 */
-	void setTick(boolean value);
+	void setState(Future value);
 
 	/**
 	 * Returns the value of the '<em><b>Clock</b></em>' reference.

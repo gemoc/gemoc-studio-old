@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.io.views.event;
 
 import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
+import org.gemoc.execution.engine.scenario.Future;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
@@ -32,10 +33,10 @@ public class ClockWrapper
 	public void setState(ClockStatus state){
 		_state = state;
 		boolean isForced = _state.isForced();
-		boolean tick = _state.getTick();
+		Future future = _state.getState();
 		if(isForced)
 		{
-			if (tick)
+			if (future.equals(Future.TICK))
 			{
 				_clockController.tickInTheFuture(getClockQualifiedName());			
 			}

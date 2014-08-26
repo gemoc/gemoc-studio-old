@@ -3,16 +3,13 @@
 package org.gemoc.execution.engine.scenario.impl;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.gemoc.execution.engine.scenario.EventState;
+import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.execution.engine.scenario.ScenarioPackage;
 
 /**
@@ -22,7 +19,7 @@ import org.gemoc.execution.engine.scenario.ScenarioPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl#isTick <em>Tick</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl#getState <em>State</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl#getClock <em>Clock</em>}</li>
  * </ul>
  * </p>
@@ -31,24 +28,24 @@ import org.gemoc.execution.engine.scenario.ScenarioPackage;
  */
 public class EventStateImpl extends MinimalEObjectImpl.Container implements EventState {
 	/**
-	 * The default value of the '{@link #isTick() <em>Tick</em>}' attribute.
+	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isTick()
+	 * @see #getState()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean TICK_EDEFAULT = false;
+	protected static final Future STATE_EDEFAULT = Future.TICK;
 
 	/**
-	 * The cached value of the '{@link #isTick() <em>Tick</em>}' attribute.
+	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isTick()
+	 * @see #getState()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean tick = TICK_EDEFAULT;
+	protected Future state = STATE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getClock() <em>Clock</em>}' reference.
@@ -84,8 +81,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isTick() {
-		return tick;
+	public Future getState() {
+		return state;
 	}
 
 	/**
@@ -93,11 +90,11 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTick(boolean newTick) {
-		boolean oldTick = tick;
-		tick = newTick;
+	public void setState(Future newState) {
+		Future oldState = state;
+		state = newState == null ? STATE_EDEFAULT : newState;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ScenarioPackage.EVENT_STATE__TICK, oldTick, tick));
+			eNotify(new ENotificationImpl(this, Notification.SET, ScenarioPackage.EVENT_STATE__STATE, oldState, state));
 	}
 
 	/**
@@ -146,8 +143,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ScenarioPackage.EVENT_STATE__TICK:
-				return isTick();
+			case ScenarioPackage.EVENT_STATE__STATE:
+				return getState();
 			case ScenarioPackage.EVENT_STATE__CLOCK:
 				if (resolve) return getClock();
 				return basicGetClock();
@@ -163,8 +160,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ScenarioPackage.EVENT_STATE__TICK:
-				setTick((Boolean)newValue);
+			case ScenarioPackage.EVENT_STATE__STATE:
+				setState((Future)newValue);
 				return;
 			case ScenarioPackage.EVENT_STATE__CLOCK:
 				setClock((Clock)newValue);
@@ -181,8 +178,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ScenarioPackage.EVENT_STATE__TICK:
-				setTick(TICK_EDEFAULT);
+			case ScenarioPackage.EVENT_STATE__STATE:
+				setState(STATE_EDEFAULT);
 				return;
 			case ScenarioPackage.EVENT_STATE__CLOCK:
 				setClock((Clock)null);
@@ -199,8 +196,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ScenarioPackage.EVENT_STATE__TICK:
-				return tick != TICK_EDEFAULT;
+			case ScenarioPackage.EVENT_STATE__STATE:
+				return state != STATE_EDEFAULT;
 			case ScenarioPackage.EVENT_STATE__CLOCK:
 				return clock != null;
 		}
@@ -217,8 +214,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (tick: ");
-		result.append(tick);
+		result.append(" (state: ");
+		result.append(state);
 		result.append(')');
 		return result.toString();
 	}
