@@ -2,7 +2,7 @@ package org.gemoc.execution.engine.io.views.event;
 
 import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
 
-public class WrapperAdvancedControl 
+public class AdvancedWrapperControl 
 {
 	private int _step;
 	private int _start;
@@ -12,7 +12,7 @@ public class WrapperAdvancedControl
 	private ClockWrapper wrapper;
 	private boolean _done;
 
-	public WrapperAdvancedControl(ClockWrapper wrapper, int step, int delay, int duration)
+	public AdvancedWrapperControl(ClockWrapper wrapper, int step, int delay, int duration)
 	{
 		this.wrapper = wrapper;
 		_step = step;

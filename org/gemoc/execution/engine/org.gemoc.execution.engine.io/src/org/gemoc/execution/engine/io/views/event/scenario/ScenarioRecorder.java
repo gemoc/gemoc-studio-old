@@ -25,9 +25,9 @@ public class ScenarioRecorder extends ScenarioTool
 		{
 			public void run() 
 			{
-				ResourceSet rs = _manager.getWrapperCache().getSystem().eResource().getResourceSet(); 				
+				ResourceSet rs = _manager.getCache().getSystem().eResource().getResourceSet(); 				
 				URI uri = URI.createURI("platform:/resource" 
-						+ _manager.getWrapperCache().getEngine().getExecutionContext().getWorkspace().getExecutionPath().append("container.scenario").toString());
+						+ _manager.getCache().getEngine().getExecutionContext().getWorkspace().getExecutionPath().append("container.scenario").toString());
 				_resource = rs.createResource(uri);
 			}
 		};
@@ -60,7 +60,7 @@ public class ScenarioRecorder extends ScenarioTool
 			public void run() {
 				List<Reference> refList = _scenario.getRefList();
 				Reference ref = _factory.createReference();
-				ref.setStartStep((int) _manager.getWrapperCache().getEngine().getEngineStatus().getNbLogicalStepRun());
+				ref.setStartStep((int) _manager.getCache().getEngine().getEngineStatus().getNbLogicalStepRun());
 				refList.add(ref);
 				_fragment = _factory.createFragment();
 				ref.setFragment(_fragment);
@@ -78,7 +78,7 @@ public class ScenarioRecorder extends ScenarioTool
 				List<ExecutionStep> stepList =  _fragment.getStepList();
 				ExecutionStep newStep = _factory.createExecutionStep();
 				List<EventState> newListEvent = newStep.getEventList();
-				for(ClockWrapper cw: _manager.getWrapperCache().getClockWrapperList())
+				for(ClockWrapper cw: _manager.getCache().getWrapperCache().getClockWrapperList())
 				{
 					ClockStatus state = cw.getState();
 					boolean isForced = state.isForced();

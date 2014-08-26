@@ -34,8 +34,6 @@
       <import feature="org.eclipse.emf.compare.ide.ui" version="2.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.diffmerge.sdk.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.polarion.eclipse.team.svn.connector" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.polarion.eclipse.team.svn.connector.svnkit16" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.polarion.eclipse.team.svn.connector.svnkit17" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2e.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2e.logback.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.mylyn.context_feature" version="0.0.0" match="greaterOrEqual"/>
@@ -50,6 +48,7 @@
       <import feature="org.eclipse.m2m.qvt.oml.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.sonatype.tycho.m2e.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="net.sf.eclipsecs" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.polarion.eclipse.team.svn.connector.svnkit18" version="0.0.0"/>
    </requires>
 
 </feature>

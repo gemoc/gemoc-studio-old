@@ -19,7 +19,7 @@ public class ClockWrapper
 	private Clock _clock;
 	private ClockControllerInternal _clockController;
 	private ClockStatus _state;
-	private WrapperAdvancedControl _control;
+	private AdvancedWrapperControl _control;
 	
 	public ClockWrapper(Clock clock, ClockControllerInternal clockController) 
 	{
@@ -68,11 +68,11 @@ public class ClockWrapper
 		return _clock;
 	}
 	
-	public WrapperAdvancedControl getControl() {
+	public AdvancedWrapperControl getControl() {
 		return _control;
 	}
 
-	public void setControl(WrapperAdvancedControl control) {
+	public void setControl(AdvancedWrapperControl control) {
 		_control = control;
 	}
 

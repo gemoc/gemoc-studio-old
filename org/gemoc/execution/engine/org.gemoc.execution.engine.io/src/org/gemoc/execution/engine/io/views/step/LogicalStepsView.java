@@ -203,9 +203,14 @@ public class LogicalStepsView extends DependantViewPart
 		_viewer.addDoubleClickListener(doubleClickListener);
 	}
 	
-	public void addSelectionListener(ISelectionChangedListener listener)
+	public void addSelectionChangedListener(ISelectionChangedListener listener)
 	{
 		_viewer.addSelectionChangedListener(listener);
+	}
+
+	public void removeSelectionChangedListener(ISelectionChangedListener listener)
+	{
+		_viewer.removeSelectionChangedListener(listener);
 	}
 
 	public void removeMenuListener(IMenuListener2 menuListener) 
@@ -216,11 +221,6 @@ public class LogicalStepsView extends DependantViewPart
 	public void removeDoubleClickListener(IDoubleClickListener doubleClickListener)
 	{
 		_viewer.removeDoubleClickListener(doubleClickListener);
-	}
-	
-	public void removeSelectionChangedListener(ISelectionChangedListener selectionChangedListener)
-	{
-		_viewer.removeSelectionChangedListener(selectionChangedListener);
 	}
 	
 	public TreeViewer getTreeViewer(){
