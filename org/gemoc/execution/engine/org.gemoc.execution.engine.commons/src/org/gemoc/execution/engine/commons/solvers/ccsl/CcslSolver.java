@@ -340,6 +340,8 @@ public abstract class CcslSolver implements
 			Activator.getDefault().error(e.getMessage(), e);
 		} catch (SolverException e) {
 			Activator.getDefault().error(e.getMessage(), e);
+		} catch (SimulationException e) {
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 		return new ArrayList<LogicalStep>();
 	}
