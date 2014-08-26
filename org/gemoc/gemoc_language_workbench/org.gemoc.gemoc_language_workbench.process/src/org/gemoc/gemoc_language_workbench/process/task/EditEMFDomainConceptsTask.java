@@ -101,7 +101,7 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 						&& hasClassifier((GenModel)firstContent)) {
 						result = true;
 					} else {
-						undoneReason = "No classifier defined in Domain model.";
+						undoneReason = "No classifier defined in Domain model or Genmodel is not uptodate";
 					}
 					// CHECKSTYLE:OFF
 				} catch (Exception e) {
