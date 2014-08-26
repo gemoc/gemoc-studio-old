@@ -104,11 +104,11 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 	}
 
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.check(resource, IFile.class, context.getXdsmlURI());
+		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI());
 	}
 
 	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.check(resource, IFile.class, context.getXdsmlURI());
+		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI());
 	}
 
 }

@@ -41,6 +41,7 @@ import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfigurati
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
+import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
 /**
  * Set domain model root.
@@ -134,7 +135,7 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return acceptChangeForResource(context, resource);
 	}
-	
+
 	private boolean acceptChangeForResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		String projectName = context.getEcoreProjectName();
@@ -145,7 +146,7 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 			EMFGenmodel emfGenModelFromXDSML = getEMFGenModelDefinedInXDSML(context);
 			// if the change happen on the genmodel referenced by the xdsml
 			if (emfGenModelFromXDSML != null
-				&& resource.getName().equals(emfGenModelFromXDSML.getLocationURI())) {
+					&& resource.getName().equals(emfGenModelFromXDSML.getLocationURI())) {
 				result = true;
 
 			}
@@ -159,7 +160,8 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 			EMFGenmodel emfGenModelFromXDSML = getEMFGenModelDefinedInXDSML(context);
 			// if the change happen on the genmodel referenced by the xdsml
 			if (emfGenModelFromXDSML != null
-					&& resource.getName().equals(emfGenModelFromXDSML.getLocationURI())) {
+					&& EclipseResource.matches(resource, URI.createURI(emfGenModelFromXDSML.getLocationURI(),
+							true))) {
 				return true;
 			}
 		}
@@ -188,9 +190,9 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 			EMFEcoreProject eep = (EMFEcoreProject)dmp;
 			if (eep.getEmfGenmodel() != null && eep.getEmfGenmodel().getLocationURI() != null
 					&& eep.getEmfGenmodel().getLocationURI().length() != 0) {
-				String genModelPath = eep.getEmfGenmodel().getLocationURI();
+				String genModelURI = eep.getEmfGenmodel().getLocationURI();
 				final ResourceSet resourceSet = new ResourceSetImpl();
-				return resourceSet.getResource(URI.createPlatformResourceURI("/" + genModelPath, true), true);
+				return resourceSet.getResource(URI.createURI(genModelURI, true), true);
 			}
 		}
 		return null;

@@ -94,9 +94,9 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 				undoneReason = "no valid genmodel referenced in xdsml";
 				result = false;
 			} else {
-				String genModelPath = "/" + eep.getEmfGenmodel().getLocationURI();				
+				String genModelURI =  eep.getEmfGenmodel().getLocationURI();				
 				try {
-					Object firstContent = EMFResource.getFirstContent(URI.createPlatformResourceURI(genModelPath, true));
+					Object firstContent = EMFResource.getFirstContent(URI.createURI(genModelURI, true));
 					if (firstContent instanceof GenModel
 						&& hasClassifier((GenModel)firstContent)) {
 						result = true;
@@ -167,21 +167,21 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		return
-				EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
-				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile())
+				EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
+				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
 				|| checkFileIsGenModel(context, resource);
 	}
 
 	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return
-				EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
-				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile())
+				EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
+				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
 				|| checkFileIsGenModel(context, resource);
 	}
 
 	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		return 
-				EclipseResource.check(resource, IFile.class, context.getEcoreIFile())
+				EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
 				|| checkFileIsGenModel(context, resource);
 	}
 
@@ -191,8 +191,7 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 			EMFEcoreProject eep = context.getEcoreProject();
 			if (eep != null
 				&& eep.getEmfGenmodel() != null
-				&& resource.getLocationURI() != null
-				&& resource.getLocationURI().toString().equals(eep.getEmfGenmodel().getLocationURI())) {
+				&& EclipseResource.matches(resource, URI.createURI(eep.getEmfGenmodel().getLocationURI(), true))) {
 				return true;
 			}
 		}

@@ -89,7 +89,7 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 			} else {
 				final String eClsName = eep.getDefaultRootEObjectQualifiedName();
 				String genModelPath = eep.getEmfGenmodel().getLocationURI();
-				Object firstContent = EMFResource.getFirstContent(URI.createPlatformResourceURI("/" + genModelPath, true));
+				Object firstContent = EMFResource.getFirstContent(URI.createURI(genModelPath, true));
 				if (firstContent instanceof GenModel
 					&& hasClassifier((GenModel)firstContent, eClsName)) {
 					lastEClassName = eClsName;
@@ -212,7 +212,7 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 	protected boolean acceptChangedResource(GemocLanguageProcessContext context, IResource resource) {
 		return 
 			EclipseResource.isFile(resource, getGenModelURIFromXDSML(context))
-			|| EclipseResource.checkFile(resource, context.getXdsmlURI());
+			|| EclipseResource.matches(resource, context.getXdsmlURI());
 	}
 
 	/**
@@ -226,7 +226,7 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 			EMFEcoreProject eep = context.getEcoreProject();
 			if (eep != null
 				&& eep.getEmfGenmodel() != null) {
-				return "/" + eep.getEmfGenmodel().getLocationURI();
+				return eep.getEmfGenmodel().getLocationURI();
 			}
 		}
 		return null;
