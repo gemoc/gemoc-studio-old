@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/org.gemoc.dse.feature_1.0.0.qualifier.jar" id="org.gemoc.dse.feature" version="1.0.0.qualifier">
-      <category name="gemoc_language_workbench"/>
-   </feature>
-   <category-def name="gemoc_language_workbench" label="Gemoc Language Designer"/>
-</site>
