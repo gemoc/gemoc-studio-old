@@ -148,7 +148,8 @@ public class CreateDomainModelWizardContextAction {
 				IFile genmodelIFile = ecoreProjectVisitor.getFile();
 				if(genmodelIFile != null){
 					EMFGenmodel genmodel = confFactoryImpl.eINSTANCE.createEMFGenmodel();
-					genmodel.setLocationURI(genmodelIFile.getFullPath().toString());
+					URI genmodelLocationURI = URI.createPlatformResourceURI(genmodelIFile.getFullPath().toString(),true);
+					genmodel.setLocationURI(genmodelLocationURI.toString());
 					emfEcoreProject.setEmfGenmodel(genmodel);
 				}
 			} catch (CoreException e) {
