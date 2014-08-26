@@ -20,38 +20,70 @@ package org.gemoc.gemoc_language_workbench.process.specific;
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.Task;
+import fr.obeo.dsl.workspace.listener.change.IChange;
+import fr.obeo.dsl.workspace.listener.change.resource.ResourceAdded;
+import fr.obeo.dsl.workspace.listener.change.resource.ResourceContentChanged;
+import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
+import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
 
 import org.eclipse.core.resources.IResource;
 import org.gemoc.gemoc_language_workbench.process.IResourceActionProcessor;
-import org.gemoc.gemoc_language_workbench.process.IVariableActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.ITaskChangedActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.IVariableChangedActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.support.AbstractActionProcessor;
-import org.gemoc.gemoc_language_workbench.process.support.PreviousTaskChangeAcceptanceStategy;
-import org.gemoc.gemoc_language_workbench.process.support.ResourceChangeAcceptanceStrategy;
-import org.gemoc.gemoc_language_workbench.process.support.VariableChangeAcceptanceStrategy;
 
-public abstract class AbstractActionProcessor2 extends AbstractActionProcessor<GemocLanguageProcessContext> implements IResourceActionProcessor, IVariableActionProcessor {
+public abstract class AbstractActionProcessor2 extends AbstractActionProcessor<GemocLanguageProcessContext> implements IResourceActionProcessor, IVariableChangedActionProcessor, ITaskChangedActionProcessor {
 
 	protected String undoneReason = "";
 	
-	public AbstractActionProcessor2(ActionTask task, boolean acceptChangeOnPrecedingInternalChange) {
+	public AbstractActionProcessor2(ActionTask task) {
 		super(task);
-		addCaller(new ResourceChangeAcceptanceStrategy());
-		addCaller(new VariableChangeAcceptanceStrategy());
-		if (acceptChangeOnPrecedingInternalChange) {
-			addCaller(new PreviousTaskChangeAcceptanceStategy());
-		}
 	}
 
 	private GemocLanguageProcessContext castContext(ProcessContext context) {
 		return (GemocLanguageProcessContext)context;
 	}
-
-	public boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable variable) {
-		return acceptChangeVariableChanged(castContext(context), variable);
+	
+	@Override
+	public final boolean acceptVariableChanged(ProcessContext processContext, ContextVariable variableChanged) {
+		return acceptChangeVariableChanged(castContext(processContext), variableChanged);
 	}
 
-	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, IResource resource) {
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variableChanged) {
 		return false;
+	}
+
+	@Override
+	public boolean acceptTaskChanged(ProcessContext processContext, Task changedTask) {
+		return true;
+	}
+	
+
+	@Override
+	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
+		return undoneReason;
+	}
+
+	@Override
+	protected void internalUndoAction(GemocLanguageProcessContext context) {
+	}
+
+	@Override
+	public final boolean acceptChange(ProcessContext context, IChange<?> change) {
+		boolean result = false;
+		if (change instanceof ResourceAdded) {
+				result = acceptChangeForAddedResource(context, (IResource)change.getObject());
+		} else if (change instanceof ResourceRemoved) {
+			result = acceptChangeForRemovedResource(context, (IResource)change.getObject());
+		} else if (change instanceof ResourceMoved) {
+			result = acceptChangeForAddedResource(context, (IResource)((ResourceMoved)change)
+					.getDestination())
+					|| acceptChangeForRemovedResource(context, (IResource)change.getObject());
+		} else if (change instanceof ResourceContentChanged) {
+			result = acceptChangeForModifiedResource(context, (IResource)change.getObject());
+		}
+		return result;
 	}
 
 	public final boolean acceptChangeForRemovedResource(ProcessContext context, IResource resource) {
@@ -77,14 +109,4 @@ public abstract class AbstractActionProcessor2 extends AbstractActionProcessor<G
 	protected boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		return false;
 	}
-
-	@Override
-	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
-		return undoneReason;
-	}
-
-	@Override
-	protected void internalUndoAction(GemocLanguageProcessContext context) {
-	}
-
 }

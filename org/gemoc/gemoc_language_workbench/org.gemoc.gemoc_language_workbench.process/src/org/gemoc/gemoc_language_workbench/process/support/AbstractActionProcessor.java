@@ -19,12 +19,8 @@ package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessContext;
-import fr.obeo.dsl.workspace.listener.change.IChange;
-
-import java.util.ArrayList;
 
 import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
-import org.gemoc.gemoc_language_workbench.process.IChangeAcceptanceStrategy;
 
 /**
  * An abstract implementation of {@link IActionProcessor} providing a reference to the corresponding
@@ -38,8 +34,6 @@ public abstract class AbstractActionProcessor<T extends ProcessContext> implemen
 	 * The corresponding {@link ActionTask}.
 	 */
 	private final ActionTask task;
-
-	private ArrayList<IChangeAcceptanceStrategy> callers = new ArrayList<IChangeAcceptanceStrategy>();
 
 	/**
 	 * Constructor.
@@ -58,22 +52,6 @@ public abstract class AbstractActionProcessor<T extends ProcessContext> implemen
 	 */
 	public ActionTask getActionTask() {
 		return task;
-	}
-
-	protected void addCaller(IChangeAcceptanceStrategy caller) {
-		callers.add(caller);
-	}
-
-	@Override
-	public final boolean acceptChange(ProcessContext context, IChange<?> change) {
-		boolean result = false;
-		for (IChangeAcceptanceStrategy caller : callers) {
-			result = caller.isChangeAccepted(this, context, change);
-			if (result) {
-				break;
-			}
-		}
-		return result;
 	}
 
 	private T castContext(ProcessContext context) {

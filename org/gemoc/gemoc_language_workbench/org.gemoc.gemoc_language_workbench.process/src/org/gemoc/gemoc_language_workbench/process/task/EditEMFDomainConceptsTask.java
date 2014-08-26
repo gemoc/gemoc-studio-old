@@ -63,7 +63,7 @@ public class EditEMFDomainConceptsTask extends AbstractActionProcessor2 {
 	 *            the reference to the {@link ActionTask} corresponding to {@link SelectEMFProjectTask}
 	 */
 	public EditEMFDomainConceptsTask(ActionTask task) {
-		super(task, true);
+		super(task);
 	}
 
 	/**

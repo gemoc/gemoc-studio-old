@@ -68,7 +68,7 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 	 *            the corresponding {@link ActionTask}.
 	 */
 	public SetDomainModelRootTask(ActionTask task) {
-		super(task, false);
+		super(task);
 	}
 
 	@Override
@@ -111,22 +111,32 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 	 * 
 	 * @param genModel
 	 *            the {@link GenModel}
-	 * @param eClsName
+	 * @param eClassQualifiedName
 	 *            the {@link org.eclipse.emf.ecore.EClassifier EClassifier} name
 	 * @return <code>true</code> if a {@link org.eclipse.emf.ecore.EClassifier EClassifier} with the given
 	 *         name exists in the given {@link GenModel}, <code>false</code> otherwise
 	 */
-	private boolean hasClassifier(GenModel genModel, String eClsName) {
+	private boolean hasClassifier(GenModel genModel, String eClassQualifiedName) {
 		boolean res = false;
-		for (GenPackage genPkg : genModel.getAllGenPackagesWithClassifiers()) {
-			final EPackage ePkg = genPkg.getEcorePackage();
-			if (ePkg != null) {
-				if (ePkg.getEClassifier(eClsName) != null) {
-					res = true;
-					break;
+		
+		if (eClassQualifiedName != null) {
+			int lastIndex = eClassQualifiedName.lastIndexOf("::");
+			String className = eClassQualifiedName.substring(lastIndex + 2);
+			String packageQualifiedName = eClassQualifiedName.substring(0, lastIndex);
+					
+			for (GenPackage genPkg : genModel.getAllGenPackagesWithClassifiers()) {
+				final EPackage ePkg = genPkg.getEcorePackage();
+				if (ePkg != null) {
+					LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
+					String currentPackageQualifiedName = labelProvider.getText(ePkg);
+					if (currentPackageQualifiedName.equals(packageQualifiedName)
+						&& ePkg.getEClassifier(className) != null) {
+						res = true;
+						break;
+					}
 				}
 			}
-		}
+		}		
 		return res;
 	}
 

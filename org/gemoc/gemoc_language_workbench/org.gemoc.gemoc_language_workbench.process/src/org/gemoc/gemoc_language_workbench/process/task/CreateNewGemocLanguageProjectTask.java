@@ -45,7 +45,7 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 	 *            the corresponding {@link ActionTask}.
 	 */
 	public CreateNewGemocLanguageProjectTask(ActionTask task) {
-		super(task, true);
+		super(task);
 	}
 
 	@Override

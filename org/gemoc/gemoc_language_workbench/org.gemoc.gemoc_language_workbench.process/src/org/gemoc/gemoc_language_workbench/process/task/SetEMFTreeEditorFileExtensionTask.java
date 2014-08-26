@@ -58,7 +58,7 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 	 *            the corresponding {@link ActionTask}.
 	 */
 	public SetEMFTreeEditorFileExtensionTask(ActionTask task) {
-		super(task, false);
+		super(task);
 	}
 
 	@Override

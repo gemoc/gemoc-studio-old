@@ -47,7 +47,7 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 
 	 *            the corresponding {@link ActionTask}.
 	 */
 	public CreateNewEMFTreeEditorProjectTask(ActionTask task) {
-		super(task, true);
+		super(task);
 	}
 
 	@Override

@@ -48,7 +48,7 @@ public class CreateNewEMFProjectTask extends AbstractActionProcessor2 {
 	 *            the corresponding {@link ActionTask}.
 	 */
 	public CreateNewEMFProjectTask(ActionTask task) {
-		super(task, true);
+		super(task);
 	}
 
 	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
@@ -116,5 +116,6 @@ public class CreateNewEMFProjectTask extends AbstractActionProcessor2 {
 		action.actionToExecute = CreateDomainModelAction.CREATE_NEW_EMF_PROJECT;
 		action.execute();
 	}
+
 
 }
