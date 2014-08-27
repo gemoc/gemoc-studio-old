@@ -3,6 +3,7 @@
 package fr.obeo.dsl.process.impl;
 
 import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.ComposedTask;
 import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.ProcessContext;
@@ -200,7 +201,21 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 		reasons.remove(task);
 		if (((BasicNotifierImpl)task).eNotificationRequired()) {
 			task.eNotify(new ENotificationImpl((InternalEObject)task, Notification.SET,
-					-ProcessPackage.PROCESS_FEATURE_COUNT, oldValue, value));
+					Notification.NO_FEATURE_ID, oldValue, value));
+		}
+
+		// recursively notifies the parent tasks
+		notifyParentTask(task.getParentTask(), oldValue, value);
+	}
+
+	protected void notifyParentTask(ComposedTask parentTask, Object oldValue, Object value) {
+		if (parentTask != null) {
+			if (((BasicNotifierImpl)parentTask).eNotificationRequired()) {
+				parentTask.eNotify(new ENotificationImpl((InternalEObject)parentTask, Notification.SET,
+						Notification.NO_FEATURE_ID, oldValue, value));
+			}
+			// recursively notifies the parent tasks
+			notifyParentTask(parentTask.getParentTask(), oldValue, value);
 		}
 	}
 
@@ -214,8 +229,10 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 		final Object oldValue = progress.remove(task);
 		if (((BasicNotifierImpl)task).eNotificationRequired() && oldValue != null) {
 			task.eNotify(new ENotificationImpl((InternalEObject)task, Notification.SET,
-					-ProcessPackage.PROCESS_FEATURE_COUNT, oldValue, null));
+					Notification.NO_FEATURE_ID, oldValue, null));
 		}
+		// recursively notifies the parent tasks
+		notifyParentTask(task.getParentTask(), oldValue, null);
 	}
 
 	/**
