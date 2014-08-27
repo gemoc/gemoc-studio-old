@@ -19,6 +19,7 @@ package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.Process;
+import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
 
@@ -75,6 +76,10 @@ public final class ActionProcessorFactory {
 				String message = "Class " + at.getInstanceClassName() + " could not be instanciated.";
 				Activator.getDefault().error(message, e);
 			}
+		}
+		if (processor == null) {
+			// add default implementation
+			processor = new NotImplementedTask<ProcessContext>(at);
 		}
 		return processor;
 	}

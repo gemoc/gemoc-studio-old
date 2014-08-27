@@ -81,23 +81,21 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 		boolean result = false;
 		EMFEcoreProject eep = context.getEcoreProject();
 		if (eep != null) {
-			if (eep.getEmfGenmodel() == null 
-				|| eep.getEmfGenmodel().getLocationURI() == null
-				|| eep.getEmfGenmodel().getLocationURI().length() == 0) {
+			if (eep.getEmfGenmodel() == null || eep.getEmfGenmodel().getLocationURI() == null
+					|| eep.getEmfGenmodel().getLocationURI().length() == 0) {
 				undoneReason = "no valid genmodel referenced in xdsml";
 				result = false;
 			} else {
 				final String eClsName = eep.getDefaultRootEObjectQualifiedName();
 				String genModelPath = eep.getEmfGenmodel().getLocationURI();
 				Object firstContent = EMFResource.getFirstContent(URI.createURI(genModelPath, true));
-				if (firstContent instanceof GenModel
-					&& hasClassifier((GenModel)firstContent, eClsName)) {
+				if (firstContent instanceof GenModel && hasClassifier((GenModel)firstContent, eClsName)) {
 					lastEClassName = eClsName;
 					result = true;
 				} else {
 					result = false;
 					undoneReason = "Root EObject " + eClsName + " doesn't exists in " + genModelPath;
-				}			
+				}
 			}
 		} else {
 			undoneReason = "no EMF project referenced in xdsml";
@@ -118,25 +116,28 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 	 */
 	private boolean hasClassifier(GenModel genModel, String eClassQualifiedName) {
 		boolean res = false;
-		
-		if (eClassQualifiedName != null) {
+
+		if (eClassQualifiedName != null && !eClassQualifiedName.isEmpty()) {
 			int lastIndex = eClassQualifiedName.lastIndexOf("::");
 			String className = eClassQualifiedName.substring(lastIndex + 2);
-			String packageQualifiedName = eClassQualifiedName.substring(0, lastIndex);
-					
+			String packageQualifiedName = "";
+			if (lastIndex > 0) {
+				packageQualifiedName = eClassQualifiedName.substring(0, lastIndex);
+			}
+
 			for (GenPackage genPkg : genModel.getAllGenPackagesWithClassifiers()) {
 				final EPackage ePkg = genPkg.getEcorePackage();
 				if (ePkg != null) {
 					LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
 					String currentPackageQualifiedName = labelProvider.getText(ePkg);
 					if (currentPackageQualifiedName.equals(packageQualifiedName)
-						&& ePkg.getEClassifier(className) != null) {
+							&& ePkg.getEClassifier(className) != null) {
 						res = true;
 						break;
 					}
 				}
 			}
-		}		
+		}
 		return res;
 	}
 
@@ -147,17 +148,14 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 		IFile ecoreFile = activeFileEcore.getActiveFile();
 		if (ecoreFile != null) {
 			LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
-			Resource resource = EMFResource.getResource(ecoreFile);	
-			SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(
-													EclipseUI.getActiveWorkbenchShell(), 
-													resource, 
-													labelProvider);
+			Resource resource = EMFResource.getResource(ecoreFile);
+			SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(EclipseUI
+					.getActiveWorkbenchShell(), resource, labelProvider);
 			int res = dialog.open();
 			if (res == WizardDialog.OK) {
 				// update the project model
-				setRootEObjectInConf(
-							updatedGemocLanguageProject, 
-							labelProvider.getText(dialog.getFirstResult()));
+				setRootEObjectInConf(updatedGemocLanguageProject, labelProvider.getText(dialog
+						.getFirstResult()));
 			}
 		}
 	}
@@ -183,9 +181,10 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 			Map<String, Object> m = reg.getExtensionToFactoryMap();
 			m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
-			
-			GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration)EMFResource.getFirstContent(configFile);
-			
+
+			GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration)EMFResource
+					.getFirstContent(configFile);
+
 			// consider only one language :-/
 			LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
 
@@ -223,9 +222,8 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 	}
 
 	protected boolean acceptChangedResource(GemocLanguageProcessContext context, IResource resource) {
-		return 
-			EclipseResource.isFile(resource, getGenModelURIFromXDSML(context))
-			|| EclipseResource.matches(resource, context.getXdsmlURI());
+		return EclipseResource.isFile(resource, getGenModelURIFromXDSML(context))
+				|| EclipseResource.matches(resource, context.getXdsmlURI());
 	}
 
 	/**
@@ -234,11 +232,9 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 	 * @return the URI of the genmodel or null if it cannot be retrieved in the context
 	 */
 	protected String getGenModelURIFromXDSML(GemocLanguageProcessContext context) {
-		if (context.getXdsmlModel() != null 
-			&& context.getXdsmlModel().getLanguageDefinition() != null) {
+		if (context.getXdsmlModel() != null && context.getXdsmlModel().getLanguageDefinition() != null) {
 			EMFEcoreProject eep = context.getEcoreProject();
-			if (eep != null
-				&& eep.getEmfGenmodel() != null) {
+			if (eep != null && eep.getEmfGenmodel() != null) {
 				return eep.getEmfGenmodel().getLocationURI();
 			}
 		}
@@ -246,7 +242,8 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 	}
 
 	@Override
-	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
+			ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;
