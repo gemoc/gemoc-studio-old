@@ -71,6 +71,11 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 		return null;
 	}
 
+	/**
+	 * Create a new 
+	 * @param uri
+	 * @return
+	 */
 	private GemocLanguageProcessRunner createProcessRunner(final URI uri) {
 		return GemocProcessRunnerFactory.createProcessRunner(uri);
 	}
