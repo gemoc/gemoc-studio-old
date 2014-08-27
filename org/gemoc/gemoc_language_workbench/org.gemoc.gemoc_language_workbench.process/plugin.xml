@@ -10,6 +10,7 @@
       <view
             category="org.gemoc.gemoc_language_workbench.process.category"
             class="org.gemoc.gemoc_language_workbench.process.ui.view.ProcessView"
+            icon="icons/full/obj16/GemocProcess.png"
             id="org.gemoc.gemoc_language_workbench.process.view"
             name="Gemoc process"
             restorable="true">
@@ -28,7 +29,7 @@
          </command>
          <command
                commandId="org.gemoc.gemoc_language_workbench.process.command.startNewProcess"
-               icon="icons/full/obj16/Process.gif"
+               icon="icons/full/obj16/NewGemocLanguage-16.png"
                label="Start new process"
                style="push">
          </command>
