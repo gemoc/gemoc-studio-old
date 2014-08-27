@@ -53,16 +53,16 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
-				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile());
+		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
+				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile());
 	}
 
 	@Override
 	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return 
-				EclipseResource.check(resource, IFile.class, context.getXdsmlURI())
-				|| EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
-				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile());
+				EclipseResource.matches(resource, IFile.class, context.getXdsmlURI())
+				|| EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
+				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile());
 	}
 
 	@Override

@@ -82,7 +82,7 @@ public class CreateNewGemocLanguageProjectTask extends AbstractGemocActionProces
 			final URI uri = URI.createPlatformResourceURI("/"
 					+ createNewGemocLanguageProjectWizard.getCreatedProject().getName() + "/"
 					+ Activator.GEMOC_PROJECT_CONFIGURATION_FILE, true);
-			context.setName(uri.toString());
+			context.setName("Gemoc process: " + uri.toString());
 			try {
 				context.setXdsmlConfigURI(uri, this.getActionTask());
 			} catch (IllegalVariableAccessException e) {
@@ -100,12 +100,12 @@ public class CreateNewGemocLanguageProjectTask extends AbstractGemocActionProces
 
 	@Override
 	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.check(resource, IFile.class, context.getXdsmlURI());
+		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI());
 	}
 
 	@Override
 	protected boolean internalAcceptModifiedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.check(resource, IFile.class, context.getXdsmlURI());
+		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI());
 	}
 
 }

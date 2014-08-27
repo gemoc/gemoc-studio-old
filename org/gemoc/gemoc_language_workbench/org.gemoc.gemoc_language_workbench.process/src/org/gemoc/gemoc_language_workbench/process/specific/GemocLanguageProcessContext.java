@@ -57,7 +57,7 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 
 	public void initialize(URI newUri) {
 		if (newUri != null) {
-			setName(newUri.toPlatformString(true));
+			setName("Gemoc process: " + newUri.toPlatformString(true));
 			try {
 				setXdsmlConfigURI(newUri, null);
 			} catch (IllegalVariableAccessException e) {

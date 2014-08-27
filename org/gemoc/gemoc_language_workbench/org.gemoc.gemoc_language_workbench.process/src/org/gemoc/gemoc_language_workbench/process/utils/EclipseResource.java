@@ -24,6 +24,7 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
+import org.gemoc.gemoc_language_workbench.process.Activator;
 
 public final class EclipseResource {
 
@@ -63,8 +64,7 @@ public final class EclipseResource {
 		try {
 			getFile(uri).touch(new org.eclipse.core.runtime.NullProgressMonitor());
 		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Activator.getDefault().error(e);
 		}
 	}
 
@@ -85,7 +85,13 @@ public final class EclipseResource {
 		return false;
 	}
 	
-	public static boolean checkFile(IResource resource, URI uri) {
+	/**
+	 * verifies that the provided resource corresponds to the element pointed by the uri in the workspace.
+	 * @param resource the IResource in the workspace
+	 * @param uri the URI to check
+	 * @return true if the URI corresponds to the IResource, false otherwise
+	 */
+	public static boolean matches(IResource resource, URI uri) {
 		IFile file = getFile(uri);
 		if (file == null) {
 			return false;
@@ -93,21 +99,42 @@ public final class EclipseResource {
 		return file.equals(resource);
 	}
 
-	public static boolean check(IResource resource, Class<?> resourceClass, URI resourceURI) {
+	/**
+	 * verifies that the provided resource correspond to the expected type and the given URI.
+	 * @param resource is the IResource to check
+	 * @param resourceClass is the expected concrete Class for the IResource
+	 * @param resourceURI is the expected URI for the resource. 
+	 * @return true if the IResource matches the resourceClass and URI
+	 */
+	public static boolean matches(IResource resource, Class<?> resourceClass, URI resourceURI) {
 		if (resourceURI == null) {
 			return false;
 		}
-		return check(resource, resourceClass, resourceURI.toPlatformString(true));
+		return matches(resource, resourceClass, resourceURI.toPlatformString(true));
 	}
 	
-	public static boolean check(IResource resource, Class<?> resourceClass, IResource comparedResource) {
+	/**
+	 * Verifies that both IResource are equivalent and that they are of the given type.
+	 * @param resource is the IResource to check
+	 * @param resourceClass is the expected concrete Class for the IResource
+	 * @param comparedResource is the second IResource
+	 * @return true if both IResource matches and the are of the correct kind
+	 */
+	public static boolean matches(IResource resource, Class<?> resourceClass, IResource comparedResource) {
 		if (comparedResource == null) {
 			return false;
 		}
-		return check(resource, resourceClass, comparedResource.getFullPath().toString());
+		return matches(resource, resourceClass, comparedResource.getFullPath().toString());
 	}
 	
-	public static boolean check(IResource resource, Class<?> resourceClass, String resourceFullPath) {
+	/**
+	 * verifies that the provided resource corresponds to the expected type and the given path.
+	 * @param resource is the IResource to check
+	 * @param resourceClass is the expected concrete Class for the IResource
+	 * @param resourceFullPath is the expected String of the path for the resource. It is workspace relative.
+	 * @return true if the IResource matches the resourceClass and path
+	 */
+	public static boolean matches(IResource resource, Class<?> resourceClass, String resourceFullPath) {
 		if (resource.getAdapter(resourceClass) != null) {
 			return resource.equals(getResource(resourceClass, resourceFullPath));
 		}
