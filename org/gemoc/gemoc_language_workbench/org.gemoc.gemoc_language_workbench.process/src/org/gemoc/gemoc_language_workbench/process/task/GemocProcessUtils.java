@@ -21,6 +21,7 @@ import fr.obeo.dsl.workspace.listener.change.resource.AbstractResourceChange;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
@@ -51,7 +52,8 @@ public final class GemocProcessUtils {
 		// TODO add isInGemocProject(resource)
 		return resource != null
 				&& resource.getAdapter(IFile.class) != null
-				&& Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION.equals(resource.getFileExtension());
+				&& resource.getParent() instanceof IProject
+				&& Activator.GEMOC_PROJECT_CONFIGURATION_FILE.equals(resource.getName());
 	}
 
 	/**
