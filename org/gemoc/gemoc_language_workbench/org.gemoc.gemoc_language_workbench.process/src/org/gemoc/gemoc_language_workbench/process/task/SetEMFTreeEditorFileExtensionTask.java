@@ -39,7 +39,7 @@ import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
-import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
@@ -48,7 +48,7 @@ import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 {
+public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProcessor {
 
 	protected String lastExtensions = "";
 
@@ -59,7 +59,7 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 	 *            the corresponding {@link ActionTask}.
 	 */
 	public SetEMFTreeEditorFileExtensionTask(ActionTask task) {
-		super(task, false);
+		super(task);
 	}
 
 	@Override
@@ -128,11 +128,13 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 		 */
 	}
 
-	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		return acceptChangeForResource(context, resource);
 	}
 
-	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return acceptChangeForResource(context, resource);
 	}
 
@@ -154,7 +156,8 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 		return result;
 	}
 
-	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if the changed resource is the genmodel referenced by the xdsml
 		if (resource instanceof IFile) {
 			EMFGenmodel emfGenModelFromXDSML = getEMFGenModelDefinedInXDSML(context);
@@ -176,7 +179,8 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractActionProcessor2 
 		return null;
 	}
 
-	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	@Override
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;

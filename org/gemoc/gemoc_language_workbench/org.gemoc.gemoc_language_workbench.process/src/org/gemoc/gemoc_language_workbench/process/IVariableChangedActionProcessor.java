@@ -15,27 +15,13 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.workspace.listener.change.process;
+package org.gemoc.gemoc_language_workbench.process;
 
 import fr.obeo.dsl.process.ContextVariable;
-import fr.obeo.dsl.workspace.listener.change.IChange;
+import fr.obeo.dsl.process.ProcessContext;
 
-public class VariableChanged implements IChange<ContextVariable> {
+public interface IVariableChangedActionProcessor extends IActionProcessor {
 
-	private ContextVariable contextVariable;
-
-	/**
-	 * Constructor.
-	 * 
-	 * @param contextVariable
-	 *            the {@link ContextVariable} that has changed
-	 */
-	public VariableChanged(ContextVariable contextVariable) {
-		this.contextVariable = contextVariable;
-	}
-
-	public ContextVariable getObject() {
-		return contextVariable;
-	}
+	boolean acceptVariableChanged(ProcessContext processContext, ContextVariable variableChanged);
 
 }

@@ -80,6 +80,7 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 		if (runner != null) {
 			ProcessUtils.unregisterProcessRunner(runner);
 			WorkspaceUtils.removeProcessor(runner);
+			runner.dispose();
 		}
 	}
 

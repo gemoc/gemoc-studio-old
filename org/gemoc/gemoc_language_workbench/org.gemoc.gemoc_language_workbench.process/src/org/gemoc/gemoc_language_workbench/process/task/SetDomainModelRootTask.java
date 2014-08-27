@@ -40,7 +40,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
@@ -57,7 +57,7 @@ import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyEObjectDialog;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class SetDomainModelRootTask extends AbstractActionProcessor2 {
+public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 
 	protected String lastEClassName = "";
 
@@ -68,7 +68,7 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 	 *            the corresponding {@link ActionTask}.
 	 */
 	public SetDomainModelRootTask(ActionTask task) {
-		super(task, false);
+		super(task);
 	}
 
 	@Override
@@ -111,22 +111,32 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 	 * 
 	 * @param genModel
 	 *            the {@link GenModel}
-	 * @param eClsName
+	 * @param eClassQualifiedName
 	 *            the {@link org.eclipse.emf.ecore.EClassifier EClassifier} name
 	 * @return <code>true</code> if a {@link org.eclipse.emf.ecore.EClassifier EClassifier} with the given
 	 *         name exists in the given {@link GenModel}, <code>false</code> otherwise
 	 */
-	private boolean hasClassifier(GenModel genModel, String eClsName) {
+	private boolean hasClassifier(GenModel genModel, String eClassQualifiedName) {
 		boolean res = false;
-		for (GenPackage genPkg : genModel.getAllGenPackagesWithClassifiers()) {
-			final EPackage ePkg = genPkg.getEcorePackage();
-			if (ePkg != null) {
-				if (ePkg.getEClassifier(eClsName) != null) {
-					res = true;
-					break;
+		
+		if (eClassQualifiedName != null) {
+			int lastIndex = eClassQualifiedName.lastIndexOf("::");
+			String className = eClassQualifiedName.substring(lastIndex + 2);
+			String packageQualifiedName = eClassQualifiedName.substring(0, lastIndex);
+					
+			for (GenPackage genPkg : genModel.getAllGenPackagesWithClassifiers()) {
+				final EPackage ePkg = genPkg.getEcorePackage();
+				if (ePkg != null) {
+					LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
+					String currentPackageQualifiedName = labelProvider.getText(ePkg);
+					if (currentPackageQualifiedName.equals(packageQualifiedName)
+						&& ePkg.getEClassifier(className) != null) {
+						res = true;
+						break;
+					}
 				}
 			}
-		}
+		}		
 		return res;
 	}
 
@@ -197,15 +207,18 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 		}
 	}
 
-	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		return acceptChangedResource(context, resource);
 	}
 
-	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return acceptChangedResource(context, resource);
 	}
 
-	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		return acceptChangedResource(context, resource);
 	}
 
@@ -232,7 +245,8 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 		return null;
 	}
 
-	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	@Override
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;

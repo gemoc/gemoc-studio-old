@@ -21,12 +21,12 @@ import fr.obeo.dsl.process.ProcessContext;
 
 import org.eclipse.core.resources.IResource;
 
-public interface IResourceActionProcessor {
+public interface IResourceActionProcessor extends IActionProcessor {
 
-	boolean acceptChangeForRemovedResource(ProcessContext context, IResource resource);
+	boolean acceptRemovedResource(ProcessContext context, IResource resource);
 
-	boolean acceptChangeForAddedResource(ProcessContext context, IResource resource);
+	boolean acceptAddedResource(ProcessContext context, IResource resource);
 
-	boolean acceptChangeForModifiedResource(ProcessContext context, IResource resource);
+	boolean acceptModifiedResource(ProcessContext context, IResource resource);
 
 }

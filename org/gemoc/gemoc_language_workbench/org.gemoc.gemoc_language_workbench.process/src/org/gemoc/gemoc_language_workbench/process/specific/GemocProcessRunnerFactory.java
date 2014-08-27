@@ -33,7 +33,6 @@ public final class GemocProcessRunnerFactory {
 		GemocLanguageProcessRunner runner = new GemocLanguageProcessRunner(processContext);
 		processContext.initialize(xdsmlURI);
 		ProcessUtils.registerProcessRunner(runner);
-		WorkspaceUtils.createListener(runner.getContext()).addProcessor(runner, false);
 		WorkspaceUtils.getListener(ResourcesPlugin.getWorkspace()).addProcessor(runner, true);
 		return runner;
 	}

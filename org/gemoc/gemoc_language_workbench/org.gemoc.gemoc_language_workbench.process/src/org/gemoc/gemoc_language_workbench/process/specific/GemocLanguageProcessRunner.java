@@ -32,23 +32,6 @@ public class GemocLanguageProcessRunner extends AbstractProcessRunner {
 	 */
 	public GemocLanguageProcessRunner(GemocLanguageProcessContext processContext) {
 		super("/process/gemoc_language.process", processContext);
-
-		// Resource resource = new XMIResourceImpl();
-		// try
-		// {
-		// InputStream is =
-		// GemocLanguageProcessRunner.class.getResourceAsStream("/process/gemoc_language.process");
-		// resource.load(is, new HashMap<String, String>());
-		// }
-		// catch (IOException e)
-		// {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// _process = (Process)resource.getContents().get(0);
-		// GemocLanguageProcessContext processContext = new GemocLanguageProcessContext();
-		// processContext.setDefinition(getProcess());
-		// processContext.initialize(xdsmlUri);
 	}
 
 	public GemocLanguageProcessContext getCastedContext() {
