@@ -26,7 +26,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
@@ -39,7 +39,7 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardCont
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewEMFProjectTask extends AbstractActionProcessor2 {
+public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 
 	/**
 	 * Constructor.
@@ -51,19 +51,22 @@ public class CreateNewEMFProjectTask extends AbstractActionProcessor2 {
 		super(task);
 	}
 
-	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		return EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
 				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile());
 	}
 
-	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return 
 				EclipseResource.check(resource, IFile.class, context.getXdsmlURI())
 				|| EclipseResource.check(resource, IProject.class, context.getEcoreProjectName())
 				|| EclipseResource.check(resource, IFile.class, context.getEcoreIFile());
 	}
 
-	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	@Override
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;

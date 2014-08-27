@@ -18,9 +18,20 @@
 package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.Task;
+import fr.obeo.dsl.workspace.listener.change.IChange;
+import fr.obeo.dsl.workspace.listener.change.resource.ResourceAdded;
+import fr.obeo.dsl.workspace.listener.change.resource.ResourceContentChanged;
+import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
+import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
 
+import org.eclipse.core.resources.IResource;
 import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.IResourceActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.ITaskChangedActionProcessor;
+import org.gemoc.gemoc_language_workbench.process.IVariableChangedActionProcessor;
 
 /**
  * An abstract implementation of {@link IActionProcessor} providing a reference to the corresponding
@@ -28,7 +39,7 @@ import org.gemoc.gemoc_language_workbench.process.IActionProcessor;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public abstract class AbstractActionProcessor<T extends ProcessContext> implements IActionProcessor {
+public abstract class AbstractActionProcessor<T extends ProcessContext> implements IActionProcessor, IResourceActionProcessor, IVariableChangedActionProcessor, ITaskChangedActionProcessor {
 
 	/**
 	 * The corresponding {@link ActionTask}.
@@ -94,5 +105,52 @@ public abstract class AbstractActionProcessor<T extends ProcessContext> implemen
 	protected abstract void internalDoAction(T context);
 
 	protected abstract void internalUndoAction(T context);
+	
+	
+	public final boolean acceptVariableChanged(ProcessContext processContext, ContextVariable variableChanged) {
+		return acceptChangeVariableChanged(castContext(processContext), variableChanged);
+	}
+	protected abstract boolean acceptChangeVariableChanged(T context, ContextVariable variableChanged);
+	
+	
+	public boolean acceptTaskChanged(ProcessContext processContext, Task changedTask) {
+		return acceptChangeTaskChanged(castContext(processContext), changedTask);
+	}	
+	protected abstract boolean acceptChangeTaskChanged(T context, Task changedTask);
 
+	
+	public final boolean acceptRemovedResource(ProcessContext context, IResource resource) {
+		return internalAcceptRemovedResource(castContext(context), resource);
+	}
+	protected abstract boolean internalAcceptRemovedResource(T context, IResource resource);
+
+	
+	public final boolean acceptAddedResource(ProcessContext context, IResource resource) {
+		return internalAcceptAddedResource(castContext(context), resource);
+	}
+	protected abstract boolean internalAcceptAddedResource(T context, IResource resource);
+
+	
+	public final boolean acceptModifiedResource(ProcessContext context, IResource resource) {
+		return internalAcceptModifiedResource(castContext(context), resource);
+	}
+	protected abstract boolean internalAcceptModifiedResource(T context, IResource resource);
+
+	
+	@Override
+	public final boolean acceptChange(ProcessContext context, IChange<?> change) {
+		boolean result = false;
+		if (change instanceof ResourceAdded) {
+				result = acceptAddedResource(context, (IResource)change.getObject());
+		} else if (change instanceof ResourceRemoved) {
+			result = acceptRemovedResource(context, (IResource)change.getObject());
+		} else if (change instanceof ResourceMoved) {
+			result = acceptAddedResource(context, (IResource)((ResourceMoved)change)
+					.getDestination())
+					|| acceptRemovedResource(context, (IResource)change.getObject());
+		} else if (change instanceof ResourceContentChanged) {
+			result = acceptModifiedResource(context, (IResource)change.getObject());
+		}
+		return result;
+	}
 }

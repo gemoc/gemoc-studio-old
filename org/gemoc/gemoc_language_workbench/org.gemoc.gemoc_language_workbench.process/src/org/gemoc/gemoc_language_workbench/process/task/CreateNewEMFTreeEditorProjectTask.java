@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
-import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardContextAction;
@@ -38,7 +38,7 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardCo
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 {
+public class CreateNewEMFTreeEditorProjectTask extends AbstractGemocActionProcessor {
 
 	/**
 	 * Constructor.
@@ -99,7 +99,8 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 
 		action.execute();
 	}
 
-	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if the changed resource is an IProject referenced by the xdsml as TreeEditor
 		if (resource instanceof IProject) {
 			EList<EditorProject> editorsProjects = context.getXdsmlModel().getLanguageDefinition()
@@ -115,7 +116,8 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 
 		return false;
 	}
 
-	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
 		// if xdsml of the process has changed
 		final URI uri = EclipseResource.getUri(resource);
@@ -138,7 +140,8 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractActionProcessor2 
 		return result;
 	}
 
-	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	@Override
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;

@@ -40,7 +40,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
@@ -57,7 +57,7 @@ import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyEObjectDialog;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class SetDomainModelRootTask extends AbstractActionProcessor2 {
+public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 
 	protected String lastEClassName = "";
 
@@ -207,15 +207,18 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 		}
 	}
 
-	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		return acceptChangedResource(context, resource);
 	}
 
-	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return acceptChangedResource(context, resource);
 	}
 
-	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		return acceptChangedResource(context, resource);
 	}
 
@@ -242,7 +245,8 @@ public class SetDomainModelRootTask extends AbstractActionProcessor2 {
 		return null;
 	}
 
-	public boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	@Override
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;

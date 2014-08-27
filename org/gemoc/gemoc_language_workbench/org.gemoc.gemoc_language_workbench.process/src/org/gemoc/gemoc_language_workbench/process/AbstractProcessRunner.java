@@ -83,9 +83,11 @@ public abstract class AbstractProcessRunner implements IProcessRunner, IChangePr
 		processContext.getDefinition().eAdapters().add(adapter);
 	}
 
-//	public void dispose() {
-//		getObserved().eAdapters().remove(adapter);
-//	}
+	public void dispose() {
+		if (processContext != null) {
+			processContext.eAdapters().remove(adapter);			
+		}
+	}
 
 	
 	protected Process getProcess() {

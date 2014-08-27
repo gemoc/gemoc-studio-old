@@ -24,7 +24,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.gemoc.gemoc_language_workbench.process.specific.AbstractActionProcessor2;
+import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseUI;
@@ -36,7 +36,7 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProje
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 {
+public class CreateNewGemocLanguageProjectTask extends AbstractGemocActionProcessor {
 
 	/**
 	 * Constructor.
@@ -98,16 +98,13 @@ public class CreateNewGemocLanguageProjectTask extends AbstractActionProcessor2 
 		return "No xdsml file";
 	}
 
-	public boolean acceptChangeForRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean acceptChangeForAddedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return EclipseResource.check(resource, IFile.class, context.getXdsmlURI());
 	}
 
-	public boolean acceptChangeForModifiedResource(GemocLanguageProcessContext context, IResource resource) {
+	@Override
+	protected boolean internalAcceptModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		return EclipseResource.check(resource, IFile.class, context.getXdsmlURI());
 	}
 
