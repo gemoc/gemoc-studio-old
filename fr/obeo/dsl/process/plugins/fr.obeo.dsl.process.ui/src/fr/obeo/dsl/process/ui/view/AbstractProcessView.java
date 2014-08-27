@@ -490,8 +490,11 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			}
 			String undoneReason = "";
 			if (!ProcessUtils.isDone(getProcessContext(), task)) {
-				undoneReason = "\nNot done due to: "
-						+ ProcessUtils.getUndoneReason(getProcessContext(), task);
+				String undoneReasonRaw = ProcessUtils.getUndoneReason(getProcessContext(), task);
+				if (undoneReasonRaw == null) {
+					undoneReasonRaw = "Not evaluated because preconditions Tasks aren't Done. ";
+				}
+				undoneReason = "\nNot done due to: " + undoneReasonRaw;
 				undoneReasonLabel.setText(undoneReason);
 				undoneReasonLabel.setVisible(true);
 				undoneReasonLabel.pack();
