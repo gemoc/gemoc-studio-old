@@ -44,7 +44,7 @@ public class NotImplementedTask<T extends ProcessContext> extends AbstractAction
 
 	@Override
 	protected String internalUpdateContextWhenUndone(ProcessContext context) {		
-		return "Task isn't implemented. Please ask to the persone in charge of the development of this Process";
+		return "Task isn't implemented. Please ask to the person in charge of the development of this Process";
 	}
 
 	@Override
