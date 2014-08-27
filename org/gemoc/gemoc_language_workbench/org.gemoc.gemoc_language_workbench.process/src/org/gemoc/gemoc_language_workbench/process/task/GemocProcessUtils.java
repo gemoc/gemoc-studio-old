@@ -49,10 +49,24 @@ public final class GemocProcessUtils {
 	 * @return <code>true</code> if the given {@link IResource} is an XDSML file,<code>false</code> otherwise
 	 */
 	public static boolean isXDSMLFile(IResource resource) {
-		// TODO add isInGemocProject(resource)
-		return resource != null
-				&& resource.getAdapter(IFile.class) != null
+		return resource != null && resource.getAdapter(IFile.class) != null
 				&& resource.getParent() instanceof IProject
+				&& Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION.equals(resource.getFileExtension());
+	}
+
+	/**
+	 * Tells if the given {@link IResource} is a valid XDSML file. An xdsml file is valid if it is named
+	 * "project.xdsml" and at the root of a project with the Gemoc language nature.
+	 * 
+	 * @param resource
+	 *            the {@link IResource}
+	 * @return <code>true</code> if the given {@link IResource} is a valid XDSML file,<code>false</code>
+	 *         otherwise
+	 */
+	public static boolean isValidXDSMLFile(IResource resource) {
+		return isXDSMLFile(resource)
+				&& resource.getParent() instanceof IProject
+				&& isInGemocProject(resource)
 				&& Activator.GEMOC_PROJECT_CONFIGURATION_FILE.equals(resource.getName());
 	}
 

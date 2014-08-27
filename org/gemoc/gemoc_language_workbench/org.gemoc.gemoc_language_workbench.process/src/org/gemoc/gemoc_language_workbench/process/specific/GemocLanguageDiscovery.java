@@ -39,16 +39,16 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 	public void process(IChange<?> change) {
 		if (change instanceof AbstractResourceChange) {
 			final IResource resource = ((AbstractResourceChange)change).getObject();
-			final boolean isXDSMLFile = GemocProcessUtils.isXDSMLFile(resource);
+			final boolean isValidXDSMLFile = GemocProcessUtils.isValidXDSMLFile(resource);
 			final URI uri = EclipseResource.getUri(resource);
-			if (isXDSMLFile && change instanceof ResourceAdded && !existProcessRunner(uri)) {
+			if (isValidXDSMLFile && change instanceof ResourceAdded && !existProcessRunner(uri)) {
 				createProcessRunner(uri);
 			} else if (change instanceof ResourceMoved) {
 				deleteProcessRunner(uri);
 				final IResource dest = ((ResourceMoved)change).getDestination();
 				final URI newUri = EclipseResource.getUri(dest);
 				createProcessRunner(newUri);
-			} else if (isXDSMLFile && change instanceof ResourceRemoved) {
+			} else if (isValidXDSMLFile && change instanceof ResourceRemoved) {
 				deleteProcessRunner(uri);
 			}
 		}
