@@ -15,9 +15,10 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process.handler;
+package org.gemoc.gemoc_language_workbench.process.ui.handler;
 
-import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.IProcessRunner;
+import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.ui.handler.AbstractSelectProcessHandler;
 
 import java.util.ArrayList;
@@ -26,8 +27,7 @@ import java.util.List;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.gemoc.gemoc_language_workbench.process.Activator;
-import org.gemoc.gemoc_language_workbench.process.view.ProcessView;
+import org.gemoc.gemoc_language_workbench.process.ui.view.ProcessView;
 
 /**
  * Select a {@link Process} instance.
@@ -37,16 +37,29 @@ import org.gemoc.gemoc_language_workbench.process.view.ProcessView;
 public class SelectProcessHandler extends AbstractSelectProcessHandler {
 
 	@Override
-	protected List<ProcessContext> getProcessContexts(ExecutionEvent event) {
-		return new ArrayList<ProcessContext>(Activator.getDefault().getRunner().getContexts());
+	protected List<IProcessRunner> getProcessRunners(ExecutionEvent event) {
+		ArrayList<IProcessRunner> result = new ArrayList<IProcessRunner>();
+		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners()) {
+			result.add(runner);
+		}
+		return result;
 	}
 
 	@Override
-	protected void setProcessContext(ExecutionEvent event, ProcessContext processContext) {
+	protected void setProcessRunner(ExecutionEvent event, IProcessRunner processContext) {
 		final IWorkbenchPart part = HandlerUtil.getActivePart(event);
 		if (part instanceof ProcessView) {
-			((ProcessView)part).setProcessContext(processContext);
+			((ProcessView)part).setProcessRunner(processContext);
 		}
+	}
+
+	@Override
+	protected IProcessRunner getCurrentProcessRunner(ExecutionEvent event) {
+		final IWorkbenchPart part = HandlerUtil.getActivePart(event);
+		if (part instanceof ProcessView) {
+			return ((ProcessView)part).getProcessRunner();
+		}
+		return null;
 	}
 
 }

@@ -2,6 +2,8 @@
  */
 package fr.obeo.dsl.process;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -75,6 +77,21 @@ public interface ProcessContext extends EObject {
 	void setDefinition(fr.obeo.dsl.process.Process value);
 
 	/**
+	 * Returns the value of the '<em><b>Variables</b></em>' attribute. <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear, there really should
+	 * be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the value of the '<em>Variables</em>' attribute.
+	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Variables()
+	 * @model transient="true" changeable="false"
+	 * @generated
+	 */
+	Map<ProcessVariable, ContextVariable> getVariables();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Tells if the given
 	 * {@link ActionTask} is done. <!-- end-model-doc -->
 	 * 
@@ -109,5 +126,44 @@ public interface ProcessContext extends EObject {
 	 * @generated
 	 */
 	Object getResult(ActionTask task);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> sets the value for the
+	 * {@link ProcessVariable} in the current context. The set will be accepted only if the writter
+	 * {@link ActionTask} has declared himself as writter for this {@link ProcessVariable}. If writter is
+	 * null, the chek is disabled and the set will be done. <!-- end-model-doc -->
+	 * 
+	 * @model exceptions="fr.obeo.dsl.process.IllegalVariableAccessException" variableRequired="true"
+	 *        variableValueDataType="fr.obeo.dsl.process.Object" variableValueRequired="true"
+	 * @generated
+	 */
+	void setVariableValue(ProcessVariable variable, Object variableValue, ActionTask writter)
+			throws IllegalVariableAccessException;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> returns the value for the
+	 * {@link ProcessVariable} in the current context. <!-- end-model-doc -->
+	 * 
+	 * @model dataType="fr.obeo.dsl.process.Object" processRequired="true"
+	 * @generated
+	 */
+	Object getVariableValue(ProcessVariable process);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model
+	 * @generated
+	 */
+	String getUndoneReason(ActionTask task);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> find the {@link ProcessVariable}
+	 * with the given name or null if no such variable definition exists. <!-- end-model-doc -->
+	 * 
+	 * @model variableNameRequired="true"
+	 * @generated
+	 */
+	ProcessVariable getProcessVariable(String variableName);
 
 } // ProcessContext

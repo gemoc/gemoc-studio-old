@@ -15,58 +15,38 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process.task;
+package org.gemoc.gemoc_language_workbench.process.ui.view;
 
-import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.IProcessRunner;
-import fr.obeo.dsl.process.ProcessContext;
-import fr.obeo.dsl.workspace.listener.change.IChange;
+import fr.obeo.dsl.process.ProcessUtils;
+import fr.obeo.dsl.process.ui.view.AbstractProcessView;
 
-import org.gemoc.gemoc_language_workbench.process.AbstractProcessor;
+import java.util.ArrayList;
 
 /**
- * Create a new EMF project.
+ * The {@link Process} view.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class Task2a extends AbstractProcessor {
+public class ProcessView extends AbstractProcessView {
+
+	/**
+	 * The view ID.
+	 */
+	public static final String ID = "org.gemoc.gemoc_language_workbench.process.view";
 
 	/**
 	 * Constructor.
-	 * 
-	 * @param task
-	 *            the corresponding {@link ActionTask}.
 	 */
-	public Task2a(ActionTask task) {
-		super(task);
+	public ProcessView() {
+		super();
+		ArrayList<IProcessRunner> result = new ArrayList<IProcessRunner>();
+		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners()) {
+			result.add(runner);
+		}
+		if (result.size() > 0) {
+			setProcessRunner(result.get(0));
+		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#updateContexts(fr.obeo.dsl.process.IProcessRunner,
-	 *      fr.obeo.dsl.workspace.listener.change.IChange)
-	 */
-	public void updateContexts(IProcessRunner runner, IChange<?> change) {
-		// nothing to do here
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#doAction(fr.obeo.dsl.process.ProcessContext)
-	 */
-	public void doAction(ProcessContext context) {
-		// TODO open Ecore creation wizard
-
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#undoAction(fr.obeo.dsl.process.ProcessContext)
-	 */
-	public void undoAction(ProcessContext context) {
-		// nothing to do here
-	}
 }

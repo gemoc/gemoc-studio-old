@@ -42,6 +42,11 @@ public abstract class AbstractListener<T> implements IListener {
 	 * The {@link List} of {@link IChangeProcessor}.
 	 */
 	private final List<IChangeProcessor> processors = new ArrayList<IChangeProcessor>();
+	
+	/**
+	 * The {@link Object} used as lock to prevent concurrent calls on sensitive operations.
+	 */
+	private Object lock = new Object();
 
 	/**
 	 * Constructor.
@@ -71,6 +76,7 @@ public abstract class AbstractListener<T> implements IListener {
 		return processors;
 	}
 
+
 	/**
 	 * Fires the given change to {@link IListener#getProcessors() processors}.
 	 * 
@@ -78,7 +84,10 @@ public abstract class AbstractListener<T> implements IListener {
 	 *            the {@link IChange} to fire
 	 */
 	protected void fireChange(IChange<?> change) {
-		final List<IChangeProcessor> processorList = getProcessors();
+		List<IChangeProcessor> processorList = null;
+		synchronized(lock) {
+			processorList = new ArrayList<IChangeProcessor>(getProcessors());
+		}
 
 		if (processorList.size() != 0) {
 			// TODO should be asynchronous and ran in a single other thread
@@ -95,10 +104,12 @@ public abstract class AbstractListener<T> implements IListener {
 	 *      boolean)
 	 */
 	public boolean addProcessor(IChangeProcessor processor, boolean notifyCurrentState) {
-		if (notifyCurrentState) {
-			notifyCurrentState(getObserved(), processor);
+		synchronized(lock) {
+			if (notifyCurrentState) {
+				notifyCurrentState(getObserved(), processor);
+			}
+			return getProcessors().add(processor);
 		}
-		return getProcessors().add(processor);
 	}
 
 	/**
@@ -118,7 +129,9 @@ public abstract class AbstractListener<T> implements IListener {
 	 * @see fr.obeo.dsl.workspace.listener.IListener#removeProcessor(fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor)
 	 */
 	public boolean removeProcessor(IChangeProcessor processor) {
-		return getProcessors().remove(processor);
+		synchronized(lock) {
+			return getProcessors().remove(processor);
+		}
 	}
 
 }

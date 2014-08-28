@@ -7,13 +7,16 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
+import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
 import fr.obeo.dsl.process.Or;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessFactory;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
 import fr.obeo.dsl.process.util.ProcessValidator;
@@ -21,6 +24,7 @@ import fr.obeo.dsl.process.util.ProcessValidator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -46,6 +50,13 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * @generated
 	 */
 	private EClass taskEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass processVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -129,7 +140,21 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
-	private EDataType artifactEDataType = null;
+	private EClass contextVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EDataType objectEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EDataType illegalVariableAccessExceptionEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -232,6 +257,15 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
+	public EReference getProcess_Variables() {
+		return (EReference)processEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public EClass getTask() {
 		return taskEClass;
 	}
@@ -304,6 +338,24 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
+	public EClass getProcessVariable() {
+		return processVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getProcessVariable_Name() {
+		return (EAttribute)processVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public EClass getComposedTask() {
 		return composedTaskEClass;
 	}
@@ -360,6 +412,33 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 */
 	public EAttribute getActionTask_MultipleExecution() {
 		return (EAttribute)actionTaskEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getActionTask_WrittenVariables() {
+		return (EReference)actionTaskEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getActionTask_ObservedVariables() {
+		return (EReference)actionTaskEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getActionTask_InstanceClassName() {
+		return (EAttribute)actionTaskEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -502,8 +581,53 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
-	public EDataType getArtifact() {
-		return artifactEDataType;
+	public EAttribute getProcessContext_Variables() {
+		return (EAttribute)processContextEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EClass getContextVariable() {
+		return contextVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getContextVariable_VariableValue() {
+		return (EAttribute)contextVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getContextVariable_Definition() {
+		return (EReference)contextVariableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EDataType getObject() {
+		return objectEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EDataType getIllegalVariableAccessException() {
+		return illegalVariableAccessExceptionEDataType;
 	}
 
 	/**
@@ -537,6 +661,7 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		processEClass = createEClass(PROCESS);
 		createEAttribute(processEClass, PROCESS__NAME);
 		createEReference(processEClass, PROCESS__TASK);
+		createEReference(processEClass, PROCESS__VARIABLES);
 
 		taskEClass = createEClass(TASK);
 		createEAttribute(taskEClass, TASK__NAME);
@@ -547,6 +672,9 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		createEReference(taskEClass, TASK__FOLLOWING_TASKS);
 		createEReference(taskEClass, TASK__PRECONDITION);
 
+		processVariableEClass = createEClass(PROCESS_VARIABLE);
+		createEAttribute(processVariableEClass, PROCESS_VARIABLE__NAME);
+
 		composedTaskEClass = createEClass(COMPOSED_TASK);
 		createEReference(composedTaskEClass, COMPOSED_TASK__TASKS);
 		createEReference(composedTaskEClass, COMPOSED_TASK__INITIAL_TASKS);
@@ -555,6 +683,9 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 
 		actionTaskEClass = createEClass(ACTION_TASK);
 		createEAttribute(actionTaskEClass, ACTION_TASK__MULTIPLE_EXECUTION);
+		createEReference(actionTaskEClass, ACTION_TASK__WRITTEN_VARIABLES);
+		createEReference(actionTaskEClass, ACTION_TASK__OBSERVED_VARIABLES);
+		createEAttribute(actionTaskEClass, ACTION_TASK__INSTANCE_CLASS_NAME);
 
 		expressionEClass = createEClass(EXPRESSION);
 
@@ -579,9 +710,15 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		processContextEClass = createEClass(PROCESS_CONTEXT);
 		createEAttribute(processContextEClass, PROCESS_CONTEXT__NAME);
 		createEReference(processContextEClass, PROCESS_CONTEXT__DEFINITION);
+		createEAttribute(processContextEClass, PROCESS_CONTEXT__VARIABLES);
+
+		contextVariableEClass = createEClass(CONTEXT_VARIABLE);
+		createEAttribute(contextVariableEClass, CONTEXT_VARIABLE__VARIABLE_VALUE);
+		createEReference(contextVariableEClass, CONTEXT_VARIABLE__DEFINITION);
 
 		// Create data types
-		artifactEDataType = createEDataType(ARTIFACT);
+		objectEDataType = createEDataType(OBJECT);
+		illegalVariableAccessExceptionEDataType = createEDataType(ILLEGAL_VARIABLE_ACCESS_EXCEPTION);
 	}
 
 	/**
@@ -631,6 +768,9 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEReference(getProcess_Task(), this.getTask(), null, "task", null, 1, 1,
 				fr.obeo.dsl.process.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcess_Variables(), this.getProcessVariable(), null, "variables", null, 0, -1,
+				fr.obeo.dsl.process.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTask_Name(), ecorePackage.getEString(), "name", "", 1, 1, Task.class,
@@ -654,6 +794,12 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 				Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(processVariableEClass, ProcessVariable.class, "ProcessVariable", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProcessVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1,
+				ProcessVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(composedTaskEClass, ComposedTask.class, "ComposedTask", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComposedTask_Tasks(), this.getTask(), this.getTask_ParentTask(), "tasks", null, 1,
@@ -673,6 +819,16 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getActionTask_MultipleExecution(), ecorePackage.getEBoolean(), "multipleExecution",
 				"false", 1, 1, ActionTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActionTask_WrittenVariables(), this.getProcessVariable(), null, "writtenVariables",
+				null, 0, -1, ActionTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActionTask_ObservedVariables(), this.getProcessVariable(), null,
+				"observedVariables", null, 0, -1, ActionTask.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getActionTask_InstanceClassName(), ecorePackage.getEString(), "instanceClassName",
+				null, 0, 1, ActionTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, IS_INTERFACE,
@@ -720,6 +876,14 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEReference(getProcessContext_Definition(), this.getProcess(), null, "definition", null, 1, 1,
 				ProcessContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(this.getProcessVariable());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(this.getContextVariable());
+		g1.getETypeArguments().add(g2);
+		initEAttribute(getProcessContext_Variables(), g1, "variables", null, 0, 1, ProcessContext.class,
+				IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		op = addEOperation(processContextEClass, ecorePackage.getEBoolean(), "isDone", 1, 1, IS_UNIQUE,
 				IS_ORDERED);
@@ -727,18 +891,49 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 
 		op = addEOperation(processContextEClass, null, "setDone", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getArtifact(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getObject(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(processContextEClass, null, "setUndone", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "reason", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(processContextEClass, this.getArtifact(), "getResult", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(processContextEClass, this.getObject(), "getResult", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActionTask(), "task", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(processContextEClass, null, "setVariableValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getProcessVariable(), "variable", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getObject(), "variableValue", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getActionTask(), "writter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getIllegalVariableAccessException());
+
+		op = addEOperation(processContextEClass, this.getObject(), "getVariableValue", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+		addEParameter(op, this.getProcessVariable(), "process", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(processContextEClass, ecorePackage.getEString(), "getUndoneReason", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getActionTask(), "task", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(processContextEClass, this.getProcessVariable(), "getProcessVariable", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "variableName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(contextVariableEClass, ContextVariable.class, "ContextVariable", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContextVariable_VariableValue(), this.getObject(), "variableValue", null, 0, 1,
+				ContextVariable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContextVariable_Definition(), this.getProcessVariable(), null, "definition", null,
+				1, 1, ContextVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(contextVariableEClass, ecorePackage.getEString(), "getName", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
 		// Initialize data types
-		initEDataType(artifactEDataType, Object.class, "Artifact", !IS_SERIALIZABLE,
-				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(objectEDataType, Object.class, "Object", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(illegalVariableAccessExceptionEDataType, IllegalVariableAccessException.class,
+				"IllegalVariableAccessException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -9,7 +9,8 @@
       </category>
       <view
             category="org.gemoc.gemoc_language_workbench.process.category"
-            class="org.gemoc.gemoc_language_workbench.process.view.ProcessView"
+            class="org.gemoc.gemoc_language_workbench.process.ui.view.ProcessView"
+            icon="icons/full/obj16/GemocProcess.png"
             id="org.gemoc.gemoc_language_workbench.process.view"
             name="Gemoc process"
             restorable="true">
@@ -26,14 +27,25 @@
                label="Select process"
                style="push">
          </command>
+         <command
+               commandId="org.gemoc.gemoc_language_workbench.process.command.startNewProcess"
+               icon="icons/full/obj16/NewGemocLanguage-16.png"
+               label="Start new process"
+               style="push">
+         </command>
       </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.gemoc.gemoc_language_workbench.process.handler.SelectProcessHandler"
+            defaultHandler="org.gemoc.gemoc_language_workbench.process.ui.handler.SelectProcessHandler"
             id="org.gemoc.gemoc_language_workbench.process.command.selectProcess"
             name="Select process">
+      </command>
+      <command
+            defaultHandler="org.gemoc.gemoc_language_workbench.process.ui.handler.StartNewProcessHandler"
+            id="org.gemoc.gemoc_language_workbench.process.command.startNewProcess"
+            name="Start new process">
       </command>
    </extension>
 

@@ -7,6 +7,7 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated process -->
       <factory
             uri="http://www.obeo.fr/dsl/process"
             class="fr.obeo.dsl.process.provider.CustomProcessItemProviderAdapterFactory"

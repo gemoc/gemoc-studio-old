@@ -37,7 +37,7 @@ import org.gemoc.gemoc_language_workbench.process.Activator;
 public class Task2c extends AbstractProcessor {
 
 	/**
-	 * The reference to the {@link ActionTask} corresponding to {@link Task1}.
+	 * The reference to the {@link ActionTask} corresponding to {@link CreateNewGemocLanguageProjectTask}.
 	 */
 	private final ActionTask task1;
 
@@ -47,7 +47,7 @@ public class Task2c extends AbstractProcessor {
 	 * @param task
 	 *            the corresponding {@link ActionTask}.
 	 * @param task1
-	 *            the reference to the {@link ActionTask} corresponding to {@link Task1}
+	 *            the reference to the {@link ActionTask} corresponding to {@link CreateNewGemocLanguageProjectTask}
 	 */
 	public Task2c(ActionTask task, ActionTask task1) {
 		super(task);

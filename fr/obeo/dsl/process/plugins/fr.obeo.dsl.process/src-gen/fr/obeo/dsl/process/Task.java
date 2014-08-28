@@ -7,23 +7,27 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Task</b></em>'. <!-- end-user-doc -->
- * <!-- begin-model-doc --> A task represent a function to be performed. <!-- end-model-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A task represent a function to be performed.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link fr.obeo.dsl.process.Task#getName <em>Name</em>}</li>
- * <li>{@link fr.obeo.dsl.process.Task#getId <em>Id</em>}</li>
- * <li>{@link fr.obeo.dsl.process.Task#getDescription <em>Description</em>}</li>
- * <li>{@link fr.obeo.dsl.process.Task#getParentTask <em>Parent Task</em>}</li>
- * <li>{@link fr.obeo.dsl.process.Task#getPrecedingTasks <em>Preceding Tasks</em>}</li>
- * <li>{@link fr.obeo.dsl.process.Task#getFollowingTasks <em>Following Tasks</em>}</li>
- * <li>{@link fr.obeo.dsl.process.Task#getPrecondition <em>Precondition</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.Task#getName <em>Name</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.Task#getId <em>Id</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.Task#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.Task#getParentTask <em>Parent Task</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.Task#getPrecedingTasks <em>Preceding Tasks</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.Task#getFollowingTasks <em>Following Tasks</em>}</li>
+ *   <li>{@link fr.obeo.dsl.process.Task#getPrecondition <em>Precondition</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see fr.obeo.dsl.process.ProcessPackage#getTask()
- * @model interface="true" abstract="true" annotation=
- *        "http://www.eclipse.org/emf/2002/Ecore constraints='Reachable DeadEnd PrecedingTasksAtSameLevel FollowingTasksAtSameLevel PreconditionTasksArePreceding'"
+ * @model interface="true" abstract="true"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='Reachable DeadEnd PrecedingTasksAtSameLevel FollowingTasksAtSameLevel PreconditionTasksArePreceding'"
  * @generated
  */
 public interface Task extends EObject {
@@ -52,10 +56,11 @@ public interface Task extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * <!-- begin-model-doc --> An identifier identifying the {@link Task} at its current level (not
-	 * globally). <!-- end-model-doc -->
-	 * 
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An identifier identifying the {@link Task} at its current level (not globally).
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see fr.obeo.dsl.process.ProcessPackage#getTask_Id()
@@ -91,9 +96,7 @@ public interface Task extends EObject {
 	/**
 	 * Sets the value of the '{@link fr.obeo.dsl.process.Task#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Description</em>' attribute.
+	 * @param value the new value of the '<em>Description</em>' attribute.
 	 * @see #getDescription()
 	 * @generated
 	 */
@@ -115,11 +118,9 @@ public interface Task extends EObject {
 	ComposedTask getParentTask();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.Task#getParentTask <em>Parent Task</em>}' container
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Parent Task</em>' container reference.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.Task#getParentTask <em>Parent Task</em>}' container reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent Task</em>' container reference.
 	 * @see #getParentTask()
 	 * @generated
 	 */
@@ -173,11 +174,9 @@ public interface Task extends EObject {
 	Expression getPrecondition();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.Task#getPrecondition <em>Precondition</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Precondition</em>' containment reference.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.Task#getPrecondition <em>Precondition</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Precondition</em>' containment reference.
 	 * @see #getPrecondition()
 	 * @generated
 	 */

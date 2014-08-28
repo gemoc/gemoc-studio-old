@@ -19,7 +19,6 @@ package fr.obeo.dsl.process.provider.context;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.IProcessContextProvider;
-import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.provider.ActionTaskItemProvider;
@@ -81,7 +80,7 @@ public class ContextActionTaskItemProvider extends ActionTaskItemProvider {
 
 	@Override
 	public void notifyChanged(Notification notification) {
-		if (notification.getFeatureID(ActionTask.class) == -ProcessPackage.PROCESS_FEATURE_COUNT) {
+		if (notification.getFeatureID(ActionTask.class) == Notification.NO_FEATURE_ID) {
 			provider.refresh(notification.getNotifier()); // workaround
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 		} else {

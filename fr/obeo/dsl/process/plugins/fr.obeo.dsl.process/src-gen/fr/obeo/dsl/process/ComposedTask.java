@@ -79,11 +79,9 @@ public interface ComposedTask extends Task {
 	Expression getDoneExpression();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.ComposedTask#getDoneExpression
-	 * <em>Done Expression</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Done Expression</em>' containment reference.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ComposedTask#getDoneExpression <em>Done Expression</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Done Expression</em>' containment reference.
 	 * @see #getDoneExpression()
 	 * @generated
 	 */

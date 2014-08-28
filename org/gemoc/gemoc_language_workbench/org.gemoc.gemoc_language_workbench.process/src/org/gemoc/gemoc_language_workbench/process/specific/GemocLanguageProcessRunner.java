@@ -15,32 +15,27 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package org.gemoc.gemoc_language_workbench.process.view;
+package org.gemoc.gemoc_language_workbench.process.specific;
 
-import fr.obeo.dsl.process.ui.view.AbstractProcessView;
 
-import org.gemoc.gemoc_language_workbench.process.Activator;
+import org.gemoc.gemoc_language_workbench.process.AbstractProcessRunner;
 
 /**
- * The {@link Process} view.
+ * The Gemoc language {@link IProcessRunner}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class ProcessView extends AbstractProcessView {
-
-	/**
-	 * The view ID.
-	 */
-	public static final String ID = "org.gemoc.gemoc_language_workbench.process.view";
+public class GemocLanguageProcessRunner extends AbstractProcessRunner {
 
 	/**
 	 * Constructor.
 	 */
-	public ProcessView() {
-		super();
-		if (Activator.getDefault().getRunner().getContexts().size() > 0) {
-			setProcessContext(Activator.getDefault().getRunner().getContexts().get(0));
-		}
+	public GemocLanguageProcessRunner(GemocLanguageProcessContext processContext) {
+		super("/process/gemoc_language.process", processContext);
+	}
+
+	public GemocLanguageProcessContext getCastedContext() {
+		return (GemocLanguageProcessContext)getContext();
 	}
 
 }

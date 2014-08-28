@@ -17,8 +17,6 @@
  *******************************************************************************/
 package fr.obeo.dsl.process;
 
-import java.util.List;
-
 /**
  * A process runner is responsible for providing {@link ProcessContext} and maintaining them.
  * 
@@ -27,33 +25,11 @@ import java.util.List;
 public interface IProcessRunner {
 
 	/**
-	 * Gets the {@link Process} associated with this runner.
-	 * 
-	 * @return the {@link Process} associated with this runner
-	 */
-	Process getProcess();
-
-	/**
 	 * Gets {@link ProcessContext contexts} ran from the {@link IProcessRunner#getProcess() process}.
 	 * 
 	 * @return {@link ProcessContext contexts} ran from the {@link IProcessRunner#getProcess() process}
 	 */
-	List<ProcessContext> getContexts();
-
-	/**
-	 * Starts a new {@link ProcessContext} running the {@link IProcessRunner#getProcess() process}.
-	 * 
-	 * @return a new {@link ProcessContext} running the {@link IProcessRunner#getProcess() process}
-	 */
-	ProcessContext startContext();
-
-	/**
-	 * Stops the given {@link ProcessContext}.
-	 * 
-	 * @param context
-	 *            the {@link ProcessContext} to stop
-	 */
-	void stopContext(ProcessContext context);
+	ProcessContext getContext();
 
 	/**
 	 * Executes the given {@link ActionTask} in the given {@link ProcessContext}.
@@ -63,7 +39,7 @@ public interface IProcessRunner {
 	 * @param task
 	 *            the {@link ActionTask}
 	 */
-	void doAction(ProcessContext context, ActionTask task);
+	void doAction(ActionTask task);
 
 	/**
 	 * Undoes execution of the given {@link ActionTask} in the given {@link ProcessContext}.
@@ -73,6 +49,6 @@ public interface IProcessRunner {
 	 * @param task
 	 *            the {@link ActionTask}
 	 */
-	void undoAction(ProcessContext context, ActionTask task);
+	void undoAction(ActionTask task);
 
 }

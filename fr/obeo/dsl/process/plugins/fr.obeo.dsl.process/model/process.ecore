@@ -10,6 +10,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1" eType="#//Task"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//ProcessVariable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" abstract="true" interface="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -59,6 +61,12 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessVariable">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A variable in the Process wich can be produced or consummed by Tasks."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComposedTask" eSuperTypes="#//Task">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="PathExistance InitialTasksAreContained FinalTasksAreContained DoneTasksAreFinal"/>
@@ -101,6 +109,19 @@
         <details key="documentation" value="Tells if this {@link ActionTask} can be {@link IProcessRunner#doAction(ProcessContext, ActionTask) done} many times."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="writtenVariables" upperBound="-1"
+        eType="#//ProcessVariable">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="List of {@link ProcessVariable} whose values are modified  by this {@link Task}."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="observedVariables" upperBound="-1"
+        eType="#//ProcessVariable">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="List of {@link ProcessVariable} that are read by this {@link Task}. If a change occurs on the ProcessVariable the Task is supposed to be interrested  by a notification of this change."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceClassName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" interface="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -188,7 +209,7 @@
         <details key="documentation" value="Marks the given {@link ActionTask} as done with the given value attached to it."/>
       </eAnnotations>
       <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
-      <eParameters name="value" lowerBound="1" eType="#//Artifact"/>
+      <eParameters name="value" lowerBound="1" eType="#//Object"/>
     </eOperations>
     <eOperations name="setUndone" lowerBound="1">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -197,16 +218,57 @@
       <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
       <eParameters name="reason" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="getResult" lowerBound="1" eType="#//Artifact">
+    <eOperations name="getResult" lowerBound="1" eType="#//Object">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Gets the result artifact attached to the given {@link ActionTask} if any, &lt;code>null&lt;/code> otherwise."/>
       </eAnnotations>
       <eParameters name="task" lowerBound="1" eType="#//ActionTask"/>
     </eOperations>
+    <eOperations name="setVariableValue" eExceptions="#//IllegalVariableAccessException">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="sets the value for the  {@link ProcessVariable} in the current context.&#xD;&#xA;The set will be accepted only if the writter {@link ActionTask} has declared himself as writter for this {@link ProcessVariable}. &#xD;&#xA;If writter is null, the chek is disabled and the set will be done."/>
+      </eAnnotations>
+      <eParameters name="variable" lowerBound="1" eType="#//ProcessVariable"/>
+      <eParameters name="variableValue" lowerBound="1" eType="#//Object"/>
+      <eParameters name="writter" eType="#//ActionTask"/>
+    </eOperations>
+    <eOperations name="getVariableValue" eType="#//Object">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="returns the value for the  {@link ProcessVariable} in the current context."/>
+      </eAnnotations>
+      <eParameters name="process" lowerBound="1" eType="#//ProcessVariable"/>
+    </eOperations>
+    <eOperations name="getUndoneReason" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="task" eType="#//ActionTask"/>
+    </eOperations>
+    <eOperations name="getProcessVariable" eType="#//ProcessVariable">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="find the  {@link ProcessVariable} with the given name or null if no such variable definition  exists."/>
+      </eAnnotations>
+      <eParameters name="variableName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
         eType="#//Process"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variables" changeable="false"
+        transient="true">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+        <eTypeArguments eClassifier="#//ProcessVariable"/>
+        <eTypeArguments eClassifier="#//ContextVariable"/>
+      </eGenericType>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="Artifact" instanceClassName="java.lang.Object"
+  <eClassifiers xsi:type="ecore:EClass" name="ContextVariable">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An instance of {@link ProcessVariable}."/>
+    </eAnnotations>
+    <eOperations name="getName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableValue" eType="#//Object"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
+        eType="#//ProcessVariable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"
       serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IllegalVariableAccessException" instanceClassName="fr.obeo.dsl.process.IllegalVariableAccessException"/>
 </ecore:EPackage>

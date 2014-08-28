@@ -37,5 +37,10 @@ Bundle-ClassPath: lib/jaxen-1.1.6.jar,
  lib/xercesImpl.jar,
  .
 Export-Package: org.gemoc.gemoc_language_workbench.ui,
+ org.gemoc.gemoc_language_workbench.ui.activeFile,
  org.gemoc.gemoc_language_workbench.ui.builder,
- org.gemoc.gemoc_language_workbench.ui.dialogs
+ org.gemoc.gemoc_language_workbench.ui.builder.pde,
+ org.gemoc.gemoc_language_workbench.ui.commands,
+ org.gemoc.gemoc_language_workbench.ui.dialogs,
+ org.gemoc.gemoc_language_workbench.ui.listeners,
+ org.gemoc.gemoc_language_workbench.ui.wizards

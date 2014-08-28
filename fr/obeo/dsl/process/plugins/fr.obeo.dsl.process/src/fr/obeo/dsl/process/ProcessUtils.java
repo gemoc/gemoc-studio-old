@@ -277,6 +277,50 @@ public final class ProcessUtils {
 	}
 
 	/**
+	 * tells if the possiblePreviousTask is part of the precedings task. For composite preceeding tasks, it
+	 * check if the possible previous task is a final task of the composite
+	 * 
+	 * @param nextTask
+	 * @param possiblePreviousTask
+	 * @return
+	 */
+	public static boolean isTaskFollowing(Task nextTask, Task possiblePreviousTask) {
+		Set<Task> precedingTasks = getPrecedingTasks(nextTask);
+		boolean result = false;
+		if (precedingTasks.contains(possiblePreviousTask)) {
+			result = true;
+		}
+		for (Task t : precedingTasks) {
+			if (t instanceof ComposedTask) {
+				if (getFinalActionTasks((ComposedTask)t).contains(possiblePreviousTask)) {
+					result = true;
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * recursively find the final ActionTask of the given ComposedTask
+	 * 
+	 * @param task
+	 * @return
+	 */
+	public static Set<ActionTask> getFinalActionTasks(ComposedTask task) {
+		final Set<ActionTask> res = new LinkedHashSet<ActionTask>();
+		for (Task finalTask : task.getFinalTasks()) {
+			if (finalTask instanceof ComposedTask) {
+				res.addAll(getFinalActionTasks((ComposedTask)finalTask));
+			} else {
+				res.add((ActionTask)finalTask);
+			}
+		}
+
+		return res;
+	}
+
+	/**
 	 * Gets following {@link Task tasks} for the given {@link Task}.
 	 * 
 	 * @param task
@@ -796,6 +840,17 @@ public final class ProcessUtils {
 			}
 		}
 
+		return res;
+	}
+
+	public static String getUndoneReason(ProcessContext processContext, Task task) {
+		String res = "";
+		if (task instanceof ActionTask) {
+			res = processContext.getUndoneReason((ActionTask)task);
+		}
+		if (task instanceof ComposedTask && !isDone(processContext, task)) {
+			res = "the condition of the composed task isn't satisfied. (check the sub tasks)";
+		}
 		return res;
 	}
 }

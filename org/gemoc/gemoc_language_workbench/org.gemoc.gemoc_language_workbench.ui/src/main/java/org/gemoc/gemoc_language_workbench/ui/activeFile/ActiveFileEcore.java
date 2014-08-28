@@ -19,7 +19,7 @@ import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.EcoreFileFinderResourceVisitor;
+import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 public class ActiveFileEcore extends ActiveFile {
 
@@ -31,7 +31,7 @@ public class ActiveFileEcore extends ActiveFile {
 	@Override
 	public IFile getActiveFile() {
 		IProject projectWithEcore = this.getProject(this.gemocLanguageProject);
-		EcoreFileFinderResourceVisitor ecoreFinder = new EcoreFileFinderResourceVisitor();
+		FileFinderVisitor ecoreFinder = new FileFinderVisitor("ecore");
 		
 		try {
 
@@ -40,8 +40,8 @@ public class ActiveFileEcore extends ActiveFile {
 			Activator.error(e.getMessage(), e);
 		}
 
-		if(ecoreFinder.ecoreFiles.size() > 0){
-			return ecoreFinder.ecoreFiles.get(0);
+		if(ecoreFinder.getFiles().size() > 0){
+			return ecoreFinder.getFiles().get(0);
 		} else {
 			return null;
 		}
@@ -68,14 +68,14 @@ public class ActiveFileEcore extends ActiveFile {
 		    // consider only one language :-/
 		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
 		    
-		    // create missing data
+		    // get the IProject
 		    EMFEcoreProject emfEcoreProject = (EMFEcoreProject) langage.getDomainModelProject();
 		    projectEcore = ResourcesPlugin.getWorkspace().getRoot().getProject(emfEcoreProject.getProjectName());
-			try {
+			/*try {
 				resource.save(null);
 			} catch (IOException e) {
 				Activator.error(e.getMessage(), e);
-			}
+			}*/
 		}
 		try {
 			configFile.refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());

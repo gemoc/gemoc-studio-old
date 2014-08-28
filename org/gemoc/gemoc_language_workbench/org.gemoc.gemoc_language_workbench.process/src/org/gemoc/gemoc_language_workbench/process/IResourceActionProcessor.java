@@ -17,38 +17,16 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process;
 
-import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.ProcessContext;
 
-/**
- * An abstract implementation of {@link IActionProcessor} providing a reference to the corresponding
- * {@link ActionTask}.
- * 
- * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
- */
-public abstract class AbstractProcessor implements IActionProcessor {
+import org.eclipse.core.resources.IResource;
 
-	/**
-	 * The corresponding {@link ActionTask}.
-	 */
-	private final ActionTask task;
+public interface IResourceActionProcessor extends IActionProcessor {
 
-	/**
-	 * Constructor.
-	 * 
-	 * @param task
-	 *            the corresponding {@link ActionTask}.
-	 */
-	public AbstractProcessor(ActionTask task) {
-		this.task = task;
-	}
+	boolean acceptRemovedResource(ProcessContext context, IResource resource);
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.gemoc.gemoc_language_workbench.process.IActionProcessor#getActionTask()
-	 */
-	public ActionTask getActionTask() {
-		return task;
-	}
+	boolean acceptAddedResource(ProcessContext context, IResource resource);
+
+	boolean acceptModifiedResource(ProcessContext context, IResource resource);
 
 }

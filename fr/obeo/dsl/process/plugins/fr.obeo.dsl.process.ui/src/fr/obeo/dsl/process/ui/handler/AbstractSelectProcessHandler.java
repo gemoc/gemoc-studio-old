@@ -17,7 +17,7 @@
  *******************************************************************************/
 package fr.obeo.dsl.process.ui.handler;
 
-import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.provider.CustomProcessItemProviderAdapterFactory;
 
 import java.util.List;
@@ -29,9 +29,9 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.dialogs.ListSelectionDialog;
+import org.eclipse.ui.dialogs.ListDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
@@ -55,45 +55,80 @@ public abstract class AbstractSelectProcessHandler extends AbstractHandler {
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		final Shell shell = HandlerUtil.getActiveShell(event);
-		List<ProcessContext> processContexts = getProcessContexts(event);
-		final ListSelectionDialog dialog = new ListSelectionDialog(shell, processContexts,
-				new AdapterFactoryContentProvider(adapterFactory) {
-					@Override
-					public Object[] getElements(Object object) {
-						if (object instanceof List) {
-							return ((List<?>)object).toArray();
-						} else {
-							return super.getElements(object);
-						}
-					}
-				}, new AdapterFactoryLabelProvider(adapterFactory), "Select a process:");
+		List<IProcessRunner> processRunners = getProcessRunners(event);
+
+		final ListDialog dialog = new ListDialog(shell);
+		dialog.setContentProvider(new AdapterFactoryContentProvider(adapterFactory) {
+			@Override
+			public Object[] getElements(Object object) {
+				if (object instanceof List) {
+					return ((List<?>)object).toArray();
+				} else {
+					return super.getElements(object);
+				}
+			}
+		});
+		dialog.setLabelProvider(new LabelProvider() {
+			public String getText(Object element) {
+				IProcessRunner runner = (IProcessRunner)element;
+				return runner.getContext().getName();
+			}
+
+		});
+		dialog.setMessage("Select a process:");
+		dialog.setInput(processRunners);
+		IProcessRunner currentProcessRunner = getCurrentProcessRunner(event);
+		if (currentProcessRunner != null) {
+			dialog.setInitialSelections(new IProcessRunner[] {currentProcessRunner });
+		}
+		// final ListDialog dialog = new ListDialog(shell, processRunners, new AdapterFactoryContentProvider(
+		// adapterFactory) {
+		// @Override
+		// public Object[] getElements(Object object) {
+		// if (object instanceof List) {
+		// return ((List<?>)object).toArray();
+		// } else {
+		// return super.getElements(object);
+		// }
+		// }
+		// },
+		// /* new AdapterFactoryLabelProvider(adapterFactory) */
+		// new LabelProvider() {
+		// public String getText(Object element) {
+		// IProcessRunner runner = (IProcessRunner)element;
+		// return runner.getContext().getName();
+		// }
+		//
+		// }, "Select a process:");
 		dialog.setTitle("Process");
 		dialog.open();
 		final Object[] selection = dialog.getResult();
-		if (selection != null && selection.length == 1 && selection[0] instanceof ProcessContext) {
-			setProcessContext(event, (ProcessContext)selection[0]);
+		if (selection != null && selection.length == 1 && selection[0] instanceof IProcessRunner) {
+			setProcessRunner(event, (IProcessRunner)selection[0]);
 		}
 		adapterFactory.dispose();
 		return null;
 	}
 
 	/**
-	 * Gets the {@link List} of {@link ProcessContext} according to the given {@link ExecutionEvent}.
+	 * Gets the {@link List} of {@link IProcessRunner} according to the given {@link ExecutionEvent}.
 	 * 
 	 * @param event
 	 *            the {@link ExecutionEvent}
-	 * @return the {@link List} of {@link ProcessContext} according to the given {@link ExecutionEvent}
+	 * @return the {@link List} of {@link IProcessRunner} according to the given {@link ExecutionEvent}
 	 */
-	protected abstract List<ProcessContext> getProcessContexts(ExecutionEvent event);
+	protected abstract List<IProcessRunner> getProcessRunners(ExecutionEvent event);
+
+	protected abstract IProcessRunner getCurrentProcessRunner(ExecutionEvent event);
 
 	/**
-	 * Sets the given {@link ProcessContext} according to the given {@link ExecutionEvent}.
+	 * Sets the given {@link IProcessRunner} according to the given {@link ExecutionEvent}.
 	 * 
 	 * @param event
 	 *            the {@link ExecutionEvent}
 	 * @param processContext
-	 *            the {@link ProcessContext}
+	 *            the {@link IProcessRunner}
 	 */
-	protected abstract void setProcessContext(ExecutionEvent event, ProcessContext processContext);
+	protected abstract void setProcessRunner(ExecutionEvent event, IProcessRunner processRunner);
 
 }

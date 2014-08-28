@@ -80,16 +80,24 @@ public class ListenerFactory implements IListenerFactory<Object> {
 	 * @see fr.obeo.dsl.workspace.listener.IListenerFactory#createListener(java.lang.Object)
 	 */
 	public IListener createListener(Object object) {
-		final IListener res;
+		IListener res = null;
 
 		@SuppressWarnings("unchecked")
 		IListenerFactory<Object> factory = (IListenerFactory<Object>)map.get(object.getClass());
+		if (factory == null) {
+			Class<?> currentClass = object.getClass().getSuperclass();
+			while (currentClass != null) {
+				factory = (IListenerFactory<Object>)map.get(currentClass);
+				if (factory != null) {
+					break;
+				}
+				currentClass = currentClass.getSuperclass();
+
+			}
+		}
 		if (factory != null) {
 			res = factory.createListener(object);
-		} else {
-			res = null;
 		}
-
 		return res;
 	}
 

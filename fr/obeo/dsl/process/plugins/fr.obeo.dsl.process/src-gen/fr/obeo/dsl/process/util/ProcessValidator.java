@@ -7,13 +7,16 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
+import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
+import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
 import fr.obeo.dsl.process.Or;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessUtils;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
 
@@ -103,6 +106,8 @@ public class ProcessValidator extends EObjectValidator {
 				return validateProcess((fr.obeo.dsl.process.Process)value, diagnostics, context);
 			case ProcessPackage.TASK:
 				return validateTask((Task)value, diagnostics, context);
+			case ProcessPackage.PROCESS_VARIABLE:
+				return validateProcessVariable((ProcessVariable)value, diagnostics, context);
 			case ProcessPackage.COMPOSED_TASK:
 				return validateComposedTask((ComposedTask)value, diagnostics, context);
 			case ProcessPackage.ACTION_TASK:
@@ -125,8 +130,13 @@ public class ProcessValidator extends EObjectValidator {
 				return validateOr((Or)value, diagnostics, context);
 			case ProcessPackage.PROCESS_CONTEXT:
 				return validateProcessContext((ProcessContext)value, diagnostics, context);
-			case ProcessPackage.ARTIFACT:
-				return validateArtifact(value, diagnostics, context);
+			case ProcessPackage.CONTEXT_VARIABLE:
+				return validateContextVariable((ContextVariable)value, diagnostics, context);
+			case ProcessPackage.OBJECT:
+				return validateObject(value, diagnostics, context);
+			case ProcessPackage.ILLEGAL_VARIABLE_ACCESS_EXCEPTION:
+				return validateIllegalVariableAccessException((IllegalVariableAccessException)value,
+						diagnostics, context);
 			default:
 				return true;
 		}
@@ -309,6 +319,16 @@ public class ProcessValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public boolean validateProcessVariable(ProcessVariable processVariable, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(processVariable, diagnostics, context);
 	}
 
 	/**
@@ -601,7 +621,28 @@ public class ProcessValidator extends EObjectValidator {
 	 * 
 	 * @generated
 	 */
-	public boolean validateArtifact(Object artifact, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateContextVariable(ContextVariable contextVariable, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(contextVariable, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public boolean validateObject(Object object, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public boolean validateIllegalVariableAccessException(
+			IllegalVariableAccessException illegalVariableAccessException, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return true;
 	}
 

@@ -32,6 +32,8 @@ import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectXtextIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 
 //import org.eclipse.emf.ecoretools.design.wizard.EcoreModelerWizard;
@@ -44,7 +46,7 @@ import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListen
  */
 public class CreateEditorProjectWizardContextAction {
 
-	public enum CreateEditorProjectAction {CREATE_NEW_EMFTREE_PROJECT, CREATE_NEW_XTEXT_PROJECT, CREATE_NEW_OD_PROJECT, SELECT_EXISTING_PROJECT};
+	public enum CreateEditorProjectAction {CREATE_NEW_EMFTREE_PROJECT, CREATE_NEW_XTEXT_PROJECT, CREATE_NEW_SIRIUS_PROJECT, SELECT_EXISTING_EMFTREE_PROJECT, SELECT_EXISTING_XTEXT_PROJECT, SELECT_EXISTING_OD_PROJECT};
 	
 	public CreateEditorProjectAction actionToExecute = CreateEditorProjectAction.CREATE_NEW_EMFTREE_PROJECT;
 	
@@ -63,13 +65,18 @@ public class CreateEditorProjectWizardContextAction {
 			createNewXTextProject();
 			break;
 
-		case CREATE_NEW_OD_PROJECT:
+		case CREATE_NEW_SIRIUS_PROJECT:
 			createNewODProject();
 			break;
-		case SELECT_EXISTING_PROJECT:
-			selectExistingProject();
+		case SELECT_EXISTING_EMFTREE_PROJECT:
+			selectExistingEMFTreeProject();
 			break;
-
+		case SELECT_EXISTING_XTEXT_PROJECT:
+			selectExistingXTextProject();
+			break;
+		case SELECT_EXISTING_OD_PROJECT:
+			selectExistingSiriusProject();
+			break;
 		default:
 			break;
 		}
@@ -221,21 +228,48 @@ public class CreateEditorProjectWizardContextAction {
 		}
 	}
 	
-	protected void selectExistingProject(){
+	protected void selectExistingEMFTreeProject(){
 		// launch the appropriate wizard
+		// TODO filter only projects related to the current domain model
 		SelectAnyIProjectDialog dialog = new SelectAnyIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model
-			String projectName = ((IResource)dialog.getResult()[0]).getName();
-			// TODO detect selected project nature to create the correct element
-			MessageDialog.openWarning(
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-					"Gemoc Language Workbench UI",
-					"Fine detection of project nature not implemented yet, considered as a tree editor for the moment :-(");
+			String projectName = ((IResource)dialog.getResult()[0]).getName();			
 			TreeEditorProject editorProject = confFactoryImpl.eINSTANCE.createTreeEditorProject();
 			editorProject.setProjectName(projectName);
+			// TODO detection of the current extension
 			addProjectToConf(editorProject);
+		}
+	}
+	
+	protected void selectExistingXTextProject(){
+		// launch the appropriate wizard
+		// TODO filter only projects related to the current domain model
+		SelectXtextIProjectDialog dialog = new SelectXtextIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		int res = dialog.open();
+		if(res == WizardDialog.OK){
+			// update the project model
+			String projectName = ((IResource)dialog.getResult()[0]).getName();
+			EditorProject editorProject = confFactoryImpl.eINSTANCE.createXTextEditorProject();
+			editorProject.setProjectName(projectName);
+			// TODO detection of the current extension
+			addProjectToConf(editorProject);
+		}
+	}
+	protected void selectExistingSiriusProject(){
+		// launch the appropriate wizard
+		// TODO filter only projects related to the current domain model
+		SelectAnyIProjectDialog dialog = new SelectODesignIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		int res = dialog.open();
+		if(res == WizardDialog.OK){
+			// update the project model
+			String projectName = ((IResource)dialog.getResult()[0]).getName();
+			EditorProject editorProject = confFactoryImpl.eINSTANCE.createODProject();
+			editorProject.setProjectName(projectName);
+			// TODO detection of the current extension
+			addProjectToConf(editorProject);
+			
 		}
 	}
 	

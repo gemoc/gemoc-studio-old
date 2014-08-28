@@ -17,8 +17,10 @@
  *******************************************************************************/
 package fr.obeo.dsl.process.ui.view;
 
+import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ComposedTask;
 import fr.obeo.dsl.process.IProcessContextProvider;
+import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
@@ -40,6 +42,8 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TreePath;
+import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -74,6 +78,11 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	private static final double CONTEXT_COMPOSITE_RATIO = 0.20;
 
 	/**
+	 * Ratio for the context composite.
+	 */
+	private static final double DETAIL_TASKS_RATIO = 0.30;
+
+	/**
 	 * The {@link ComposedAdapterFactory}.
 	 */
 	private ComposedAdapterFactory adapterFactory;
@@ -86,7 +95,8 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	/**
 	 * The current {@link ProcessContext}.
 	 */
-	private ProcessContext processContext;
+
+	private IProcessRunner processRunner;
 
 	/**
 	 * {@link TreeViewer} for {@link ProcessUtils#getPrecedingTasks(Task) preceding tasks}.
@@ -97,6 +107,11 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	 * {@link TreeViewer} for {@link ProcessUtils#getFollowingTasks(Task) following tasks}.
 	 */
 	private TreeViewer followingTasksTreeViewer;
+
+	/**
+	 * {@link ProcessContext#getUndoneReason(ActionTask) undone reason} label.
+	 */
+	private Label undoneReasonLabel;
 
 	/**
 	 * {@link Task#getDescription() Description} label.
@@ -182,6 +197,10 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 		precedingTasksTreeViewer.addDoubleClickListener(doubleClickListener);
 		childrenTasksTreeViewer.addDoubleClickListener(doubleClickListener);
 		followingTasksTreeViewer.addDoubleClickListener(doubleClickListener);
+
+		if (getProcessContext() != null) {
+			setPartName(getProcessContext().getName());
+		}
 	}
 
 	/**
@@ -213,10 +232,26 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 				| SWT.FLAT, new PatternFilter(), true);
 		tree.getViewer().setContentProvider(getContentProvider());
 		tree.getViewer().setLabelProvider(getLabelProvider());
-		if (processContext != null) {
-			tree.getViewer().setInput(processContext);
+		if (processRunner != null) {
+			tree.getViewer().setInput(processRunner.getContext());
 		}
 		contextViewer = tree.getViewer();
+		contextViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (event.getSelection() instanceof TreeSelection) {
+					TreeSelection selection = (TreeSelection)event.getSelection();
+					if (selection.getPaths().length > 0) {
+						if (selection.getPaths()[0].getLastSegment() instanceof Task) {
+							Task task = (Task)selection.getPaths()[0].getLastSegment();
+							setCurrentTask(task);
+						}
+					}
+				}
+				// fireEngineSelectionChanged();
+
+			}
+		});
 
 		final ViewerFilter taskStateFilter = new ViewerFilter() {
 
@@ -282,28 +317,64 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	 *            the parent {@link Composite}
 	 * @return the detail {@link Composite}
 	 */
-	protected Composite createDetailComposite(Composite parent) {
+	protected Composite createDetailComposite(final Composite parent) {
 		Composite res = new Composite(parent, SWT.NONE);
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		res.setLayout(gridLayout);
 		res.setVisible(false);
 
-		final Composite nameComposite = new Composite(res, SWT.NONE);
+		final Composite topComposite = new Composite(res, SWT.NONE);
+		gridLayout = new GridLayout();
+		gridLayout.numColumns = 1;
+		topComposite.setLayout(gridLayout);
+		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		topComposite.setLayoutData(gridData);
+		final Composite nameComposite = new Composite(topComposite, SWT.NONE);
 		gridLayout = new GridLayout(2, false);
 		nameComposite.setLayout(gridLayout);
-		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
+		gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
 		nameComposite.setLayoutData(gridData);
+		doUndoButton = new Button(nameComposite, SWT.NONE);
+		doUndoButton.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+					case SWT.Selection:
+						ActionTask actionTask = getSelectedActionTask();
+						if (!ProcessUtils.isDone(getProcessContext(), actionTask)) {
+							processRunner.doAction(actionTask);
+						} else {
+							processRunner.undoAction(actionTask);
+						}
+						// getProcessContext().getSelectedTask();
+						System.out.println("Button pressed");
+						break;
+					default:
+						break;
+				}
+			}
+		});
+		gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		doUndoButton.setLayoutData(gridData);
 		nameLabel = new Label(nameComposite, SWT.NONE);
 		gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
 		nameLabel.setLayoutData(gridData);
-		doUndoButton = new Button(nameComposite, SWT.NONE);
+
+		undoneReasonLabel = new Label(topComposite, SWT.WRAP);
 		gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
-		doUndoButton.setLayoutData(gridData);
+		undoneReasonLabel.setLayoutData(gridData);
 
-		descriptionLabel = new Label(res, SWT.NONE);
+		descriptionLabel = new Label(topComposite, SWT.WRAP);
+		gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		descriptionLabel.setLayoutData(gridData);
 
-		createDetailTasksComposite(res);
+		final Composite detailTasksComposite = createDetailTasksComposite(res);
+		final GridData detailTasksCompositeData = new GridData();
+		detailTasksCompositeData.verticalAlignment = GridData.FILL;
+		detailTasksCompositeData.horizontalAlignment = GridData.FILL;
+		detailTasksCompositeData.grabExcessVerticalSpace = true;
+		detailTasksCompositeData.grabExcessHorizontalSpace = true;
+		detailTasksComposite.setLayoutData(detailTasksCompositeData);
 
 		return res;
 	}
@@ -313,22 +384,17 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	 * 
 	 * @param parent
 	 *            the parent {@link Composite}
+	 * @return the task detail composite bottom right
 	 */
-	protected void createDetailTasksComposite(Composite parent) {
+	protected Composite createDetailTasksComposite(Composite parent) {
 		GridLayout gridLayout;
 		final Composite detailTasksComposite = new Composite(parent, SWT.NONE);
-		GridData gridData = new GridData();
-		gridData.verticalAlignment = GridData.FILL;
-		gridData.horizontalAlignment = GridData.FILL;
-		gridData.grabExcessVerticalSpace = true;
-		gridData.grabExcessHorizontalSpace = true;
-		detailTasksComposite.setLayoutData(gridData);
 
 		gridLayout = new GridLayout();
 		gridLayout.numColumns = 3;
 		detailTasksComposite.setLayout(gridLayout);
 		precedingTasksTreeViewer = new TreeViewer(detailTasksComposite);
-		gridData = new GridData();
+		GridData gridData = new GridData();
 		gridData.verticalAlignment = GridData.FILL;
 		gridData.horizontalAlignment = GridData.FILL;
 		gridData.grabExcessVerticalSpace = true;
@@ -354,6 +420,8 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 		followingTasksTreeViewer.getTree().setLayoutData(gridData);
 		followingTasksTreeViewer.setContentProvider(getContentProvider());
 		followingTasksTreeViewer.setLabelProvider(getLabelProvider());
+
+		return detailTasksComposite;
 	}
 
 	/**
@@ -413,13 +481,25 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			nameLabel.setText(task.getName());
 			doUndoButton.setVisible(!isComposedTask
 					&& ProcessUtils.evaluatePrecondition(getProcessContext(), task));
-			// TODO add a listener on the context to change the label of the button and visibility
 			if (!ProcessUtils.isDone(getProcessContext(), task)) {
 				doUndoButton.setText("Do");
 				doUndoButton.pack();
 			} else {
 				doUndoButton.setText("Undo");
 				doUndoButton.pack();
+			}
+			String undoneReason = "";
+			if (!ProcessUtils.isDone(getProcessContext(), task)) {
+				String undoneReasonRaw = ProcessUtils.getUndoneReason(getProcessContext(), task);
+				if (undoneReasonRaw == null) {
+					undoneReasonRaw = "Not evaluated because preconditions Tasks aren't Done. ";
+				}
+				undoneReason = "\nNot done due to: " + undoneReasonRaw;
+				undoneReasonLabel.setText(undoneReason);
+				undoneReasonLabel.setVisible(true);
+				undoneReasonLabel.pack();
+			} else {
+				undoneReasonLabel.setVisible(false);
 			}
 			if (task.getDescription() != null) {
 				descriptionLabel.setText(task.getDescription());
@@ -450,14 +530,19 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	/**
 	 * Sets the {@link ProcessContext}.
 	 * 
-	 * @param processContext
+	 * @param processRunner
 	 *            the {@link ProcessContext}
 	 */
-	public void setProcessContext(ProcessContext processContext) {
-		this.processContext = processContext;
+	public void setProcessRunner(IProcessRunner processRunner) {
+		this.processRunner = processRunner;
+		setPartName(processRunner.getContext().getName());
 		if (contextViewer != null) {
-			contextViewer.setInput(processContext);
+			contextViewer.setInput(processRunner.getContext());
 		}
+	}
+
+	public IProcessRunner getProcessRunner() {
+		return processRunner;
 	}
 
 	/**
@@ -466,7 +551,38 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	 * @see fr.obeo.dsl.process.IProcessContextProvider#getProcessContext()
 	 */
 	public ProcessContext getProcessContext() {
-		return processContext;
+		return processRunner.getContext();
+	}
+
+	public ActionTask getSelectedActionTask() {
+		TreeSelection selection = (TreeSelection)contextViewer.getSelection();
+		if (selection.getPaths().length > 0) {
+			TreePath path = selection.getPaths()[0];
+			if (path.getLastSegment() instanceof ActionTask) {
+				return (ActionTask)path.getLastSegment();
+			}
+		}
+		return null;
+		// try {
+		// Display.getDefault().syncExec(new Runnable() {
+		// @Override
+		// public void run() {
+		// TreeSelection selection = (TreeSelection)contextViewer.getSelection();
+		// if (selection.getPaths().length > 0) {
+		// TreePath path = selection.getPaths()[0];
+		// _lastSelectedLogicalStep = null;
+		// if (path.getLastSegment() instanceof LogicalStep) {
+		// _lastSelectedLogicalStep = (LogicalStep)path.getLastSegment();
+		// } else if (path.getLastSegment() instanceof Event) {
+		// _lastSelectedLogicalStep = (LogicalStep)path.getFirstSegment();
+		// }
+		// }
+		// }
+		// });
+		// } catch (Exception e) {
+		// Activator.getDefault().error(e.getMessage(), e);
+		// }
+		// return _lastSelectedLogicalStep;
 	}
 
 	/**
@@ -507,6 +623,7 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			public void run() {
 				if (!contextViewer.getControl().isDisposed()) {
 					contextViewer.refresh(object);
+					setCurrentTask(getTaskFromSelection(contextViewer.getSelection()));
 				}
 			}
 		});
