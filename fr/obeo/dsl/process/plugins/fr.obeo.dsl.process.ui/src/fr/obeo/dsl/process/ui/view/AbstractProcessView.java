@@ -354,10 +354,10 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 				}
 			}
 		});
-		gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		gridData = new GridData(SWT.FILL, SWT.FILL, false, true);
 		doUndoButton.setLayoutData(gridData);
 		nameLabel = new Label(nameComposite, SWT.NONE);
-		gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		gridData = new GridData(SWT.FILL, SWT.FILL, false, true);
 		nameLabel.setLayoutData(gridData);
 
 		undoneReasonLabel = new Label(topComposite, SWT.WRAP);
@@ -479,8 +479,6 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 		if (task != null) {
 			final boolean isComposedTask = task instanceof ComposedTask;
 			nameLabel.setText(task.getName());
-			doUndoButton.setVisible(!isComposedTask
-					&& ProcessUtils.evaluatePrecondition(getProcessContext(), task));
 			if (!ProcessUtils.isDone(getProcessContext(), task)) {
 				doUndoButton.setText("Do");
 				doUndoButton.pack();
@@ -488,6 +486,8 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 				doUndoButton.setText("Undo");
 				doUndoButton.pack();
 			}
+			doUndoButton.setVisible(!isComposedTask
+					&& ProcessUtils.evaluatePrecondition(getProcessContext(), task));
 			String undoneReason = "";
 			if (!ProcessUtils.isDone(getProcessContext(), task)) {
 				String undoneReasonRaw = ProcessUtils.getUndoneReason(getProcessContext(), task);
