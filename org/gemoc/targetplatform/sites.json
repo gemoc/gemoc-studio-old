@@ -46,7 +46,7 @@
         "https://ci.inria.fr/diverse-commons/job/diverse-commons.eclipse.root/lastSuccessfulBuild/artifact/commons-eclipse/fr.inria.diverse.commons.eclipse.root/p2updatesite/target/repository/"
         ],
     "timesquare": [
-        "http://timesquare.inria.fr/update_site"
+        "http://timesquare.inria.fr/update_site/experimental"
         ],
     "ocl-fork": [
         "http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/"
