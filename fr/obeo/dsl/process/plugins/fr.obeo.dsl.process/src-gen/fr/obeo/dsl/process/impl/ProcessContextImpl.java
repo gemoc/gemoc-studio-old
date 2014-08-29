@@ -3,13 +3,14 @@
 package fr.obeo.dsl.process.impl;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ComposedTask;
 import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessFactory;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.ProcessVariable;
+import fr.obeo.dsl.process.Task;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -199,23 +200,18 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	public void setDone(ActionTask task, Object value) {
 		final Object oldValue = progress.put(task, value);
 		reasons.remove(task);
-		if (((BasicNotifierImpl)task).eNotificationRequired()) {
-			task.eNotify(new ENotificationImpl((InternalEObject)task, Notification.SET,
-					Notification.NO_FEATURE_ID, oldValue, value));
-		}
-
-		// recursively notifies the parent tasks
-		notifyParentTask(task.getParentTask(), oldValue, value);
+		// recursively notifies tasks
+		notifyTasks(task, oldValue, value);
 	}
 
-	protected void notifyParentTask(ComposedTask parentTask, Object oldValue, Object value) {
-		if (parentTask != null) {
-			if (((BasicNotifierImpl)parentTask).eNotificationRequired()) {
-				parentTask.eNotify(new ENotificationImpl((InternalEObject)parentTask, Notification.SET,
-						Notification.NO_FEATURE_ID, oldValue, value));
-			}
-			// recursively notifies the parent tasks
-			notifyParentTask(parentTask.getParentTask(), oldValue, value);
+	protected void notifyTasks(Task currentTask, Object oldValue, Object value) {
+		if (((BasicNotifierImpl)currentTask).eNotificationRequired()) {
+			currentTask.eNotify(new ENotificationImpl((InternalEObject)currentTask, Notification.SET,
+					Notification.NO_FEATURE_ID, oldValue, value));
+		}
+		// recursively notifies the parent tasks
+		if (ProcessUtils.isFinalTask(currentTask)) {
+			notifyTasks(currentTask.getParentTask(), oldValue, value);
 		}
 	}
 
@@ -227,12 +223,8 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	public void setUndone(ActionTask task, String reason) {
 		reasons.put(task, reason);
 		final Object oldValue = progress.remove(task);
-		if (((BasicNotifierImpl)task).eNotificationRequired() && oldValue != null) {
-			task.eNotify(new ENotificationImpl((InternalEObject)task, Notification.SET,
-					Notification.NO_FEATURE_ID, oldValue, null));
-		}
 		// recursively notifies the parent tasks
-		notifyParentTask(task.getParentTask(), oldValue, null);
+		notifyTasks(task, oldValue, null);
 	}
 
 	/**

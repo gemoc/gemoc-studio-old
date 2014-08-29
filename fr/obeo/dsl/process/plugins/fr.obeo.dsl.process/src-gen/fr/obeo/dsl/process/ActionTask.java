@@ -40,22 +40,22 @@ public interface ActionTask extends Task {
 	boolean isMultipleExecution();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.ActionTask#isMultipleExecution <em>Multiple Execution</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Multiple Execution</em>' attribute.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ActionTask#isMultipleExecution
+	 * <em>Multiple Execution</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Multiple Execution</em>' attribute.
 	 * @see #isMultipleExecution()
 	 * @generated
 	 */
 	void setMultipleExecution(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Written Variables</b></em>' reference list.
-	 * The list contents are of type {@link fr.obeo.dsl.process.ProcessVariable}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * List of {@link ProcessVariable} whose values are modified  by this {@link Task}.
+	 * Returns the value of the '<em><b>Written Variables</b></em>' reference list. The list contents are of
+	 * type {@link fr.obeo.dsl.process.ProcessVariable}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+	 * begin-model-doc --> List of {@link ProcessVariable} whose values are modified by this {@link Task}.
 	 * <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Written Variables</em>' reference list.
 	 * @see fr.obeo.dsl.process.ProcessPackage#getActionTask_WrittenVariables()
 	 * @model
@@ -64,13 +64,12 @@ public interface ActionTask extends Task {
 	EList<ProcessVariable> getWrittenVariables();
 
 	/**
-	 * Returns the value of the '<em><b>Observed Variables</b></em>' reference list.
-	 * The list contents are of type {@link fr.obeo.dsl.process.ProcessVariable}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * List of {@link ProcessVariable} that are read by this {@link Task}. If a change occurs on the ProcessVariable the Task is supposed to be interrested  by a notification of this change.
+	 * Returns the value of the '<em><b>Observed Variables</b></em>' reference list. The list contents are of
+	 * type {@link fr.obeo.dsl.process.ProcessVariable}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+	 * begin-model-doc --> List of {@link ProcessVariable} that are read by this {@link Task}. If a change
+	 * occurs on the ProcessVariable the Task is supposed to be interrested by a notification of this change.
 	 * <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Observed Variables</em>' reference list.
 	 * @see fr.obeo.dsl.process.ProcessPackage#getActionTask_ObservedVariables()
 	 * @model
@@ -79,13 +78,13 @@ public interface ActionTask extends Task {
 	EList<ProcessVariable> getObservedVariables();
 
 	/**
-	 * Returns the value of the '<em><b>Instance Class Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Instance Class Name</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Instance Class Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Instance Class Name</em>' attribute isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Instance Class Name</em>' attribute.
 	 * @see #setInstanceClassName(String)
 	 * @see fr.obeo.dsl.process.ProcessPackage#getActionTask_InstanceClassName()
@@ -95,10 +94,11 @@ public interface ActionTask extends Task {
 	String getInstanceClassName();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.ActionTask#getInstanceClassName <em>Instance Class Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Instance Class Name</em>' attribute.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ActionTask#getInstanceClassName
+	 * <em>Instance Class Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Instance Class Name</em>' attribute.
 	 * @see #getInstanceClassName()
 	 * @generated
 	 */

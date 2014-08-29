@@ -27,20 +27,21 @@ import org.eclipse.emf.ecore.util.Switch;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the
  * model, starting with the actual class of the object and proceeding up the inheritance hierarchy until a
  * non-null result is returned, which is the result of the switch. <!-- end-user-doc -->
+ * 
  * @see fr.obeo.dsl.process.ProcessPackage
  * @generated
  */
 public class ProcessSwitch<T> extends Switch<T> {
 	/**
-	 * The cached model package
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected static ProcessPackage modelPackage;
 
 	/**
-	 * Creates an instance of the switch.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ProcessSwitch() {
@@ -50,8 +51,8 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Checks whether this is a switch for the given package.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Checks whether this is a switch for the given package. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @parameter ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
@@ -62,8 +63,9 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields
+	 * that result. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -73,115 +75,144 @@ public class ProcessSwitch<T> extends Switch<T> {
 			case ProcessPackage.PROCESS: {
 				fr.obeo.dsl.process.Process process = (fr.obeo.dsl.process.Process)theEObject;
 				T result = caseProcess(process);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.TASK: {
 				Task task = (Task)theEObject;
 				T result = caseTask(task);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.PROCESS_VARIABLE: {
 				ProcessVariable processVariable = (ProcessVariable)theEObject;
 				T result = caseProcessVariable(processVariable);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.COMPOSED_TASK: {
 				ComposedTask composedTask = (ComposedTask)theEObject;
 				T result = caseComposedTask(composedTask);
-				if (result == null) result = caseTask(composedTask);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = caseTask(composedTask);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.ACTION_TASK: {
 				ActionTask actionTask = (ActionTask)theEObject;
 				T result = caseActionTask(actionTask);
-				if (result == null) result = caseTask(actionTask);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = caseTask(actionTask);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.EXPRESSION: {
 				Expression expression = (Expression)theEObject;
 				T result = caseExpression(expression);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.TASKS_EXPRESSION: {
 				TasksExpression tasksExpression = (TasksExpression)theEObject;
 				T result = caseTasksExpression(tasksExpression);
-				if (result == null) result = caseExpression(tasksExpression);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = caseExpression(tasksExpression);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.ALL_DONE: {
 				AllDone allDone = (AllDone)theEObject;
 				T result = caseAllDone(allDone);
-				if (result == null) result = caseTasksExpression(allDone);
-				if (result == null) result = caseExpression(allDone);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = caseTasksExpression(allDone);
+				if (result == null)
+					result = caseExpression(allDone);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.ANY_DONE: {
 				AnyDone anyDone = (AnyDone)theEObject;
 				T result = caseAnyDone(anyDone);
-				if (result == null) result = caseTasksExpression(anyDone);
-				if (result == null) result = caseExpression(anyDone);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = caseTasksExpression(anyDone);
+				if (result == null)
+					result = caseExpression(anyDone);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.ONE_DONE: {
 				OneDone oneDone = (OneDone)theEObject;
 				T result = caseOneDone(oneDone);
-				if (result == null) result = caseTasksExpression(oneDone);
-				if (result == null) result = caseExpression(oneDone);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = caseTasksExpression(oneDone);
+				if (result == null)
+					result = caseExpression(oneDone);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.NOT: {
 				Not not = (Not)theEObject;
 				T result = caseNot(not);
-				if (result == null) result = caseExpression(not);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = caseExpression(not);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.AND: {
 				And and = (And)theEObject;
 				T result = caseAnd(and);
-				if (result == null) result = caseExpression(and);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = caseExpression(and);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.OR: {
 				Or or = (Or)theEObject;
 				T result = caseOr(or);
-				if (result == null) result = caseExpression(or);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = caseExpression(or);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.PROCESS_CONTEXT: {
 				ProcessContext processContext = (ProcessContext)theEObject;
 				T result = caseProcessContext(processContext);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
 			case ProcessPackage.CONTEXT_VARIABLE: {
 				ContextVariable contextVariable = (ContextVariable)theEObject;
 				T result = caseContextVariable(contextVariable);
-				if (result == null) result = defaultCase(theEObject);
+				if (result == null)
+					result = defaultCase(theEObject);
 				return result;
 			}
-			default: return defaultCase(theEObject);
+			default:
+				return defaultCase(theEObject);
 		}
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Process</em>'.
-	 * <!-- begin-user-doc
+	 * Returns the result of interpreting the object as an instance of '<em>Process</em>'. <!-- begin-user-doc
 	 * --> This implementation returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
+	 * 
+	 * @param object
+	 *            the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Process</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -191,11 +222,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Task</em>'.
-	 * <!-- begin-user-doc
+	 * Returns the result of interpreting the object as an instance of '<em>Task</em>'. <!-- begin-user-doc
 	 * --> This implementation returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
+	 * 
+	 * @param object
+	 *            the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Task</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -205,12 +237,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'. <!--
+	 * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
+	 * switch. <!-- end-user-doc -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -325,11 +357,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Not</em>'.
-	 * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Not</em>'. <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
+	 * 
+	 * @param object
+	 *            the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Not</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -339,11 +372,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>And</em>'.
-	 * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>And</em>'. <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
+	 * 
+	 * @param object
+	 *            the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>And</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -353,11 +387,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Or</em>'.
-	 * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Or</em>'. <!-- begin-user-doc -->
 	 * This implementation returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
+	 * 
+	 * @param object
+	 *            the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Or</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -367,11 +402,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Context</em>'.
-	 * <!-- begin-user-doc
+	 * Returns the result of interpreting the object as an instance of '<em>Context</em>'. <!-- begin-user-doc
 	 * --> This implementation returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
+	 * 
+	 * @param object
+	 *            the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Context</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -381,12 +417,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Context Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
+	 * Returns the result of interpreting the object as an instance of '<em>Context Variable</em>'. <!--
+	 * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
+	 * switch. <!-- end-user-doc -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Context Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
@@ -396,11 +432,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * <!-- begin-user-doc
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc
 	 * --> This implementation returns null; returning a non-null result will terminate the switch, but this
 	 * is the last case anyway. <!-- end-user-doc -->
-	 * @param object the target of the switch.
+	 * 
+	 * @param object
+	 *            the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated

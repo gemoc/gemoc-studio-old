@@ -35,11 +35,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.obeo.dsl.process.impl.ContextVariableImpl#getVariableValue <em>Variable Value</em>}</li>
- *   <li>{@link fr.obeo.dsl.process.impl.ContextVariableImpl#getDefinition <em>Definition</em>}</li>
+ * <li>{@link fr.obeo.dsl.process.impl.ContextVariableImpl#getVariableValue <em>Variable Value</em>}</li>
+ * <li>{@link fr.obeo.dsl.process.impl.ContextVariableImpl#getDefinition <em>Definition</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ContextVariableImpl extends EObjectImpl implements ContextVariable {
@@ -64,9 +64,9 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 	protected Object variableValue = VARIABLE_VALUE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' reference.
-	 * <!-- begin-user-doc
+	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' reference. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDefinition()
 	 * @generated
 	 * @ordered
@@ -75,6 +75,7 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ContextVariableImpl() {
@@ -83,6 +84,7 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -92,6 +94,7 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Object getVariableValue() {
@@ -115,6 +118,7 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ProcessVariable getDefinition() {
@@ -123,7 +127,8 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 			definition = (ProcessVariable)eResolveProxy(oldDefinition);
 			if (definition != oldDefinition) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessPackage.CONTEXT_VARIABLE__DEFINITION, oldDefinition, definition));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ProcessPackage.CONTEXT_VARIABLE__DEFINITION, oldDefinition, definition));
 			}
 		}
 		return definition;
@@ -131,6 +136,7 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ProcessVariable basicGetDefinition() {
@@ -139,17 +145,20 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDefinition(ProcessVariable newDefinition) {
 		ProcessVariable oldDefinition = definition;
 		definition = newDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.CONTEXT_VARIABLE__DEFINITION, oldDefinition, definition));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ProcessPackage.CONTEXT_VARIABLE__DEFINITION, oldDefinition, definition));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -160,6 +169,7 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -168,7 +178,8 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 			case ProcessPackage.CONTEXT_VARIABLE__VARIABLE_VALUE:
 				return getVariableValue();
 			case ProcessPackage.CONTEXT_VARIABLE__DEFINITION:
-				if (resolve) return getDefinition();
+				if (resolve)
+					return getDefinition();
 				return basicGetDefinition();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -176,6 +187,7 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -193,6 +205,7 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -210,13 +223,15 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ProcessPackage.CONTEXT_VARIABLE__VARIABLE_VALUE:
-				return VARIABLE_VALUE_EDEFAULT == null ? variableValue != null : !VARIABLE_VALUE_EDEFAULT.equals(variableValue);
+				return VARIABLE_VALUE_EDEFAULT == null ? variableValue != null : !VARIABLE_VALUE_EDEFAULT
+						.equals(variableValue);
 			case ProcessPackage.CONTEXT_VARIABLE__DEFINITION:
 				return definition != null;
 		}
@@ -225,11 +240,13 @@ public class ContextVariableImpl extends EObjectImpl implements ContextVariable 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (variableValue: ");

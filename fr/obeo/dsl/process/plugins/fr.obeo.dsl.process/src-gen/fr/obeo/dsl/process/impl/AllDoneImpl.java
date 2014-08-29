@@ -29,9 +29,9 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class AllDoneImpl extends EObjectImpl implements AllDone {
 	/**
-	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getTasks()
 	 * @generated
 	 * @ordered
@@ -40,6 +40,7 @@ public class AllDoneImpl extends EObjectImpl implements AllDone {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AllDoneImpl() {
@@ -48,6 +49,7 @@ public class AllDoneImpl extends EObjectImpl implements AllDone {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -57,6 +59,7 @@ public class AllDoneImpl extends EObjectImpl implements AllDone {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<Task> getTasks() {
@@ -86,6 +89,7 @@ public class AllDoneImpl extends EObjectImpl implements AllDone {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,6 +103,7 @@ public class AllDoneImpl extends EObjectImpl implements AllDone {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -115,6 +120,7 @@ public class AllDoneImpl extends EObjectImpl implements AllDone {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,6 +135,7 @@ public class AllDoneImpl extends EObjectImpl implements AllDone {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

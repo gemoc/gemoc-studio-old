@@ -21,35 +21,29 @@ package fr.obeo.dsl.process;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Context Variable</b></em>'.
- * <!-- end-user-doc -->
- *
- * <!-- begin-model-doc -->
- * An instance of {@link ProcessVariable}.
- * <!-- end-model-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Context Variable</b></em>'. <!--
+ * end-user-doc --> <!-- begin-model-doc --> An instance of {@link ProcessVariable}. <!-- end-model-doc -->
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.obeo.dsl.process.ContextVariable#getVariableValue <em>Variable Value</em>}</li>
- *   <li>{@link fr.obeo.dsl.process.ContextVariable#getDefinition <em>Definition</em>}</li>
+ * <li>{@link fr.obeo.dsl.process.ContextVariable#getVariableValue <em>Variable Value</em>}</li>
+ * <li>{@link fr.obeo.dsl.process.ContextVariable#getDefinition <em>Definition</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see fr.obeo.dsl.process.ProcessPackage#getContextVariable()
  * @model
  * @generated
  */
 public interface ContextVariable extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Variable Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Variable Value</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variable Value</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Variable Value</em>' reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Variable Value</em>' attribute.
 	 * @see #setVariableValue(Object)
 	 * @see fr.obeo.dsl.process.ProcessPackage#getContextVariable_VariableValue()
@@ -59,23 +53,24 @@ public interface ContextVariable extends EObject {
 	Object getVariableValue();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.ContextVariable#getVariableValue <em>Variable Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable Value</em>' attribute.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ContextVariable#getVariableValue
+	 * <em>Variable Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Variable Value</em>' attribute.
 	 * @see #getVariableValue()
 	 * @generated
 	 */
 	void setVariableValue(Object value);
 
 	/**
-	 * Returns the value of the '<em><b>Definition</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Definition</b></em>' reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Definition</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Definition</em>' reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Definition</em>' reference.
 	 * @see #setDefinition(ProcessVariable)
 	 * @see fr.obeo.dsl.process.ProcessPackage#getContextVariable_Definition()
@@ -85,18 +80,19 @@ public interface ContextVariable extends EObject {
 	ProcessVariable getDefinition();
 
 	/**
-	 * Sets the value of the '{@link fr.obeo.dsl.process.ContextVariable#getDefinition <em>Definition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Definition</em>' reference.
+	 * Sets the value of the '{@link fr.obeo.dsl.process.ContextVariable#getDefinition <em>Definition</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Definition</em>' reference.
 	 * @see #getDefinition()
 	 * @generated
 	 */
 	void setDefinition(ProcessVariable value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

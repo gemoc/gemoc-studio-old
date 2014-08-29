@@ -64,45 +64,29 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_name_feature", "_UI_Task_type"),
-				 ProcessPackage.Literals.TASK__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_Task_name_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Task_name_feature", "_UI_Task_type"),
+				ProcessPackage.Literals.TASK__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Id feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Id feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_id_feature", "_UI_Task_type"),
-				 ProcessPackage.Literals.TASK__ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_Task_id_feature"), getString(
+				"_UI_PropertyDescriptor_description", "_UI_Task_id_feature", "_UI_Task_type"),
+				ProcessPackage.Literals.TASK__ID, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -112,85 +96,54 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 	 * @generated
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_description_feature", "_UI_Task_type"),
-				 ProcessPackage.Literals.TASK__DESCRIPTION,
-				 true,
-				 true,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_Task_description_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Task_description_feature",
+						"_UI_Task_type"), ProcessPackage.Literals.TASK__DESCRIPTION, true, true, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Preceding Tasks feature.
-	 * <!-- begin-user-doc --> <!--
+	 * This adds a property descriptor for the Preceding Tasks feature. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addPrecedingTasksPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_precedingTasks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_precedingTasks_feature", "_UI_Task_type"),
-				 ProcessPackage.Literals.TASK__PRECEDING_TASKS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_Task_precedingTasks_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Task_precedingTasks_feature",
+						"_UI_Task_type"), ProcessPackage.Literals.TASK__PRECEDING_TASKS, true, false, true,
+				null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Following Tasks feature.
-	 * <!-- begin-user-doc --> <!--
+	 * This adds a property descriptor for the Following Tasks feature. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addFollowingTasksPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_followingTasks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_followingTasks_feature", "_UI_Task_type"),
-				 ProcessPackage.Literals.TASK__FOLLOWING_TASKS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_Task_followingTasks_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Task_followingTasks_feature",
+						"_UI_Task_type"), ProcessPackage.Literals.TASK__FOLLOWING_TASKS, true, false, true,
+				null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Initial Tasks feature.
-	 * <!-- begin-user-doc --> <!--
+	 * This adds a property descriptor for the Initial Tasks feature. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addInitialTasksPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ComposedTask_initialTasks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComposedTask_initialTasks_feature", "_UI_ComposedTask_type"),
-				 ProcessPackage.Literals.COMPOSED_TASK__INITIAL_TASKS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ComposedTask_initialTasks_feature"), getString(
+						"_UI_PropertyDescriptor_description", "_UI_ComposedTask_initialTasks_feature",
+						"_UI_ComposedTask_type"), ProcessPackage.Literals.COMPOSED_TASK__INITIAL_TASKS, true,
+				false, true, null, null, null));
 	}
 
 	/**
@@ -200,27 +153,20 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 	 * @generated
 	 */
 	protected void addFinalTasksPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ComposedTask_finalTasks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComposedTask_finalTasks_feature", "_UI_ComposedTask_type"),
-				 ProcessPackage.Literals.COMPOSED_TASK__FINAL_TASKS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ComposedTask_finalTasks_feature"), getString(
+						"_UI_PropertyDescriptor_description", "_UI_ComposedTask_finalTasks_feature",
+						"_UI_ComposedTask_type"), ProcessPackage.Literals.COMPOSED_TASK__FINAL_TASKS, true,
+				false, true, null, null, null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for
+	 * an {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand}
+	 * or {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -236,6 +182,7 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -247,8 +194,8 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 	}
 
 	/**
-	 * This returns ComposedTask.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This returns ComposedTask.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -257,23 +204,22 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
 		String label = ((ComposedTask)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ComposedTask_type") :
-			getString("_UI_ComposedTask_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_ComposedTask_type")
+				: getString("_UI_ComposedTask_type") + " " + label;
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and
+	 * by creating a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -284,96 +230,70 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 			case ProcessPackage.COMPOSED_TASK__NAME:
 			case ProcessPackage.COMPOSED_TASK__ID:
 			case ProcessPackage.COMPOSED_TASK__DESCRIPTION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
 				return;
 			case ProcessPackage.COMPOSED_TASK__PRECONDITION:
 			case ProcessPackage.COMPOSED_TASK__TASKS:
 			case ProcessPackage.COMPOSED_TASK__DONE_EXPRESSION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
+						false));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be
+	 * created under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.TASK__PRECONDITION,
-				 ProcessFactory.eINSTANCE.createAllDone()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.TASK__PRECONDITION,
+				ProcessFactory.eINSTANCE.createAllDone()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.TASK__PRECONDITION,
-				 ProcessFactory.eINSTANCE.createAnyDone()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.TASK__PRECONDITION,
+				ProcessFactory.eINSTANCE.createAnyDone()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.TASK__PRECONDITION,
-				 ProcessFactory.eINSTANCE.createOneDone()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.TASK__PRECONDITION,
+				ProcessFactory.eINSTANCE.createOneDone()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.TASK__PRECONDITION,
-				 ProcessFactory.eINSTANCE.createNot()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.TASK__PRECONDITION,
+				ProcessFactory.eINSTANCE.createNot()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.TASK__PRECONDITION,
-				 ProcessFactory.eINSTANCE.createAnd()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.TASK__PRECONDITION,
+				ProcessFactory.eINSTANCE.createAnd()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.TASK__PRECONDITION,
-				 ProcessFactory.eINSTANCE.createOr()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.TASK__PRECONDITION,
+				ProcessFactory.eINSTANCE.createOr()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.COMPOSED_TASK__TASKS,
-				 ProcessFactory.eINSTANCE.createComposedTask()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.COMPOSED_TASK__TASKS,
+				ProcessFactory.eINSTANCE.createComposedTask()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.COMPOSED_TASK__TASKS,
-				 ProcessFactory.eINSTANCE.createActionTask()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.COMPOSED_TASK__TASKS,
+				ProcessFactory.eINSTANCE.createActionTask()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
-				 ProcessFactory.eINSTANCE.createAllDone()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
+				ProcessFactory.eINSTANCE.createAllDone()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
-				 ProcessFactory.eINSTANCE.createAnyDone()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
+				ProcessFactory.eINSTANCE.createAnyDone()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
-				 ProcessFactory.eINSTANCE.createOneDone()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
+				ProcessFactory.eINSTANCE.createOneDone()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
-				 ProcessFactory.eINSTANCE.createNot()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
+				ProcessFactory.eINSTANCE.createNot()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
-				 ProcessFactory.eINSTANCE.createAnd()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
+				ProcessFactory.eINSTANCE.createAnd()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
-				 ProcessFactory.eINSTANCE.createOr()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION,
+				ProcessFactory.eINSTANCE.createOr()));
 	}
 
 	/**
@@ -387,22 +307,20 @@ public class ComposedTaskItemProvider extends ItemProviderAdapter implements IEd
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify =
-			childFeature == ProcessPackage.Literals.TASK__PRECONDITION ||
-			childFeature == ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION;
+		boolean qualify = childFeature == ProcessPackage.Literals.TASK__PRECONDITION
+				|| childFeature == ProcessPackage.Literals.COMPOSED_TASK__DONE_EXPRESSION;
 
 		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+			return getString("_UI_CreateChild_text2", new Object[] {getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc --> <!--
+	 * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -42,7 +42,6 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
@@ -244,7 +243,7 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 					if (selection.getPaths().length > 0) {
 						if (selection.getPaths()[0].getLastSegment() instanceof Task) {
 							Task task = (Task)selection.getPaths()[0].getLastSegment();
-							setCurrentTask(task);
+							updateDetailsTask(task);
 						}
 					}
 				}
@@ -288,7 +287,7 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			public void selectionChanged(SelectionChangedEvent event) {
 				final Task task = getTaskFromSelection(event.getSelection());
 				if (task != null) {
-					setCurrentTask(task);
+					updateDetailsTask(task);
 				}
 			}
 		});
@@ -438,7 +437,7 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 					if (getTaskFromSelection(contextViewer.getSelection()) != task) {
 						contextViewer.setSelection(new StructuredSelection(task), true);
 					}
-					setCurrentTask(task);
+					updateDetailsTask(task);
 				}
 			}
 		};
@@ -470,21 +469,21 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	}
 
 	/**
-	 * Sets the current {@link Task}.
+	 * Updates the details with the given {@link Task}.
 	 * 
 	 * @param task
 	 *            the {@link Task}
 	 */
-	protected void setCurrentTask(Task task) {
+	protected void updateDetailsTask(Task task) {
 		if (task != null) {
 			final boolean isComposedTask = task instanceof ComposedTask;
 			nameLabel.setText(task.getName());
 			if (!ProcessUtils.isDone(getProcessContext(), task)) {
 				doUndoButton.setText("Do");
-				doUndoButton.pack();
+				doUndoButton.pack(true);
 			} else {
 				doUndoButton.setText("Undo");
-				doUndoButton.pack();
+				doUndoButton.pack(true);
 			}
 			doUndoButton.setVisible(!isComposedTask
 					&& ProcessUtils.evaluatePrecondition(getProcessContext(), task));
@@ -497,13 +496,13 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 				undoneReason = "\nNot done due to: " + undoneReasonRaw;
 				undoneReasonLabel.setText(undoneReason);
 				undoneReasonLabel.setVisible(true);
-				undoneReasonLabel.pack();
+				undoneReasonLabel.pack(true);
 			} else {
 				undoneReasonLabel.setVisible(false);
 			}
 			if (task.getDescription() != null) {
 				descriptionLabel.setText(task.getDescription());
-				descriptionLabel.pack();
+				descriptionLabel.pack(true);
 			}
 			precedingTasksTreeViewer.setInput(ProcessUtils.getPrecedingTasks(task));
 			if (isComposedTask) {
@@ -551,38 +550,34 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	 * @see fr.obeo.dsl.process.IProcessContextProvider#getProcessContext()
 	 */
 	public ProcessContext getProcessContext() {
-		return processRunner.getContext();
+		final ProcessContext res;
+
+		if (processRunner != null) {
+			res = processRunner.getContext();
+		} else {
+			res = null;
+		}
+
+		return res;
 	}
 
+	/**
+	 * Gets the selected {@link ActionTask} from the {@link AbstractProcessView#contextViewer context viewer}.
+	 * 
+	 * @return the selected {@link ActionTask} from the {@link AbstractProcessView#contextViewer context
+	 *         viewer} if any, <code>null</code> otherwise
+	 */
 	public ActionTask getSelectedActionTask() {
-		TreeSelection selection = (TreeSelection)contextViewer.getSelection();
-		if (selection.getPaths().length > 0) {
-			TreePath path = selection.getPaths()[0];
-			if (path.getLastSegment() instanceof ActionTask) {
-				return (ActionTask)path.getLastSegment();
-			}
+		final ActionTask res;
+		final Task task = getTaskFromSelection(contextViewer.getSelection());
+
+		if (task instanceof ActionTask) {
+			res = (ActionTask)task;
+		} else {
+			res = null;
 		}
-		return null;
-		// try {
-		// Display.getDefault().syncExec(new Runnable() {
-		// @Override
-		// public void run() {
-		// TreeSelection selection = (TreeSelection)contextViewer.getSelection();
-		// if (selection.getPaths().length > 0) {
-		// TreePath path = selection.getPaths()[0];
-		// _lastSelectedLogicalStep = null;
-		// if (path.getLastSegment() instanceof LogicalStep) {
-		// _lastSelectedLogicalStep = (LogicalStep)path.getLastSegment();
-		// } else if (path.getLastSegment() instanceof Event) {
-		// _lastSelectedLogicalStep = (LogicalStep)path.getFirstSegment();
-		// }
-		// }
-		// }
-		// });
-		// } catch (Exception e) {
-		// Activator.getDefault().error(e.getMessage(), e);
-		// }
-		// return _lastSelectedLogicalStep;
+
+		return res;
 	}
 
 	/**
@@ -623,7 +618,10 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			public void run() {
 				if (!contextViewer.getControl().isDisposed()) {
 					contextViewer.refresh(object);
-					setCurrentTask(getTaskFromSelection(contextViewer.getSelection()));
+					final Task selectedTask = getTaskFromSelection(contextViewer.getSelection());
+					if (selectedTask == object) {
+						updateDetailsTask(selectedTask);
+					}
 				}
 			}
 		});

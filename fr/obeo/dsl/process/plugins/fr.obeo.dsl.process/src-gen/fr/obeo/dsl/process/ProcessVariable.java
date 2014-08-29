@@ -21,34 +21,29 @@ package fr.obeo.dsl.process;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Variable</b></em>'.
- * <!-- end-user-doc -->
- *
- * <!-- begin-model-doc -->
- * A variable in the Process wich can be produced or consummed by Tasks.
- * <!-- end-model-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Variable</b></em>'. <!-- end-user-doc
+ * --> <!-- begin-model-doc --> A variable in the Process wich can be produced or consummed by Tasks. <!--
+ * end-model-doc -->
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.obeo.dsl.process.ProcessVariable#getName <em>Name</em>}</li>
+ * <li>{@link fr.obeo.dsl.process.ProcessVariable#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see fr.obeo.dsl.process.ProcessPackage#getProcessVariable()
  * @model
  * @generated
  */
 public interface ProcessVariable extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessVariable_Name()
@@ -59,9 +54,10 @@ public interface ProcessVariable extends EObject {
 
 	/**
 	 * Sets the value of the '{@link fr.obeo.dsl.process.ProcessVariable#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */

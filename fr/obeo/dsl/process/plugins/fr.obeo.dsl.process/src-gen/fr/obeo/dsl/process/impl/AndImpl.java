@@ -22,16 +22,17 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.obeo.dsl.process.impl.AndImpl#getExpressions <em>Expressions</em>}</li>
+ * <li>{@link fr.obeo.dsl.process.impl.AndImpl#getExpressions <em>Expressions</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class AndImpl extends EObjectImpl implements And {
 	/**
 	 * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExpressions()
 	 * @generated
 	 * @ordered
@@ -40,6 +41,7 @@ public class AndImpl extends EObjectImpl implements And {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AndImpl() {
@@ -48,6 +50,7 @@ public class AndImpl extends EObjectImpl implements And {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -57,11 +60,13 @@ public class AndImpl extends EObjectImpl implements And {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<Expression> getExpressions() {
 		if (expressions == null) {
-			expressions = new EObjectContainmentEList<Expression>(Expression.class, this, ProcessPackage.AND__EXPRESSIONS);
+			expressions = new EObjectContainmentEList<Expression>(Expression.class, this,
+					ProcessPackage.AND__EXPRESSIONS);
 		}
 		return expressions;
 	}
@@ -86,6 +91,7 @@ public class AndImpl extends EObjectImpl implements And {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,6 +105,7 @@ public class AndImpl extends EObjectImpl implements And {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,6 +119,7 @@ public class AndImpl extends EObjectImpl implements And {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -128,6 +136,7 @@ public class AndImpl extends EObjectImpl implements And {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -142,6 +151,7 @@ public class AndImpl extends EObjectImpl implements And {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

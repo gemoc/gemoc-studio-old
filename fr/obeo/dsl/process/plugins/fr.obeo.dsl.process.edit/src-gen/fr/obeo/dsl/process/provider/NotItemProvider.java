@@ -23,9 +23,9 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link fr.obeo.dsl.process.Not} object.
- * <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link fr.obeo.dsl.process.Not} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class NotItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -55,11 +55,11 @@ public class NotItemProvider extends ItemProviderAdapter implements IEditingDoma
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for
+	 * an {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand}
+	 * or {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -73,6 +73,7 @@ public class NotItemProvider extends ItemProviderAdapter implements IEditingDoma
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -84,8 +85,8 @@ public class NotItemProvider extends ItemProviderAdapter implements IEditingDoma
 	}
 
 	/**
-	 * This returns Not.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This returns Not.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -94,8 +95,8 @@ public class NotItemProvider extends ItemProviderAdapter implements IEditingDoma
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -104,10 +105,10 @@ public class NotItemProvider extends ItemProviderAdapter implements IEditingDoma
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and
+	 * by creating a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -116,57 +117,46 @@ public class NotItemProvider extends ItemProviderAdapter implements IEditingDoma
 
 		switch (notification.getFeatureID(Not.class)) {
 			case ProcessPackage.NOT__EXPRESSION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
+						false));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be
+	 * created under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.NOT__EXPRESSION,
-				 ProcessFactory.eINSTANCE.createAllDone()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.NOT__EXPRESSION,
+				ProcessFactory.eINSTANCE.createAllDone()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.NOT__EXPRESSION,
-				 ProcessFactory.eINSTANCE.createAnyDone()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.NOT__EXPRESSION,
+				ProcessFactory.eINSTANCE.createAnyDone()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.NOT__EXPRESSION,
-				 ProcessFactory.eINSTANCE.createOneDone()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.NOT__EXPRESSION,
+				ProcessFactory.eINSTANCE.createOneDone()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.NOT__EXPRESSION,
-				 ProcessFactory.eINSTANCE.createNot()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.NOT__EXPRESSION,
+				ProcessFactory.eINSTANCE.createNot()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.NOT__EXPRESSION,
-				 ProcessFactory.eINSTANCE.createAnd()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.NOT__EXPRESSION,
+				ProcessFactory.eINSTANCE.createAnd()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ProcessPackage.Literals.NOT__EXPRESSION,
-				 ProcessFactory.eINSTANCE.createOr()));
+		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.NOT__EXPRESSION,
+				ProcessFactory.eINSTANCE.createOr()));
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc --> <!--
+	 * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
