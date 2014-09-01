@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="fr.obeo.dsl.process.ui.feature"
-      label="Process DSL UI Feature"
+      id="fr.obeo.dsl.process.feature"
+      label="Workspace DSL Feature"
       version="1.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://www.example.com/description">
-      Software development process designer and enactment.
+      This feature provides the process DSL.
    </description>
 
    <copyright url="http://www.example.com/copyright">
@@ -37,21 +37,21 @@ software and give it back to its legitimate owner.
    </license>
 
    <plugin
-         id="fr.obeo.dsl.process.editor"
+         id="fr.obeo.dsl.workspace"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="fr.obeo.dsl.process.design"
+         id="fr.obeo.dsl.workspace.listener"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="fr.obeo.dsl.process.ui"
+         id="fr.obeo.dsl.workspace.listener.emf"
          download-size="0"
          install-size="0"
          version="0.0.0"
