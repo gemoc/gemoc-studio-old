@@ -40,7 +40,7 @@
         "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.process/lastSuccessfulBuild/artifact/fr/obeo/dsl/process/releng/fr.obeo.dsl.process.repository/target/repository/"
         ],
     "workspace": [
-        "https://ci.inria.fr/gemoc/job/fr.obeo.workspace.process/lastSuccessfulBuild/artifact/fr/obeo/dsl/workspace/releng/fr.obeo.dsl.workspace.repository/target/repository/"
+        "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.workspace/lastSuccessfulBuild/artifact/fr/obeo/dsl/workspace/releng/fr.obeo.dsl.workspace.repository/target/repository/"
         ],
     "modhelx_tesl": [
     	"http://wwwdi.supelec.fr/gemoc-supelec-update_site"
