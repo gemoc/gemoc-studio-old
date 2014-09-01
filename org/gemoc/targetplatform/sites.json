@@ -51,9 +51,6 @@
     "timesquare": [
         "http://timesquare.inria.fr/update_site/experimental"
         ],
-    "ocl-fork": [
-        "http://timesquare.inria.fr/ecl/mirror_update_site/mdt-ocl-Update-N201401171411/"
-        ],
     "timesquare-ecl": [
         "http://timesquare.inria.fr/ecl/update_site"
         ],
