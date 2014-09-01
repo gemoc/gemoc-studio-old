@@ -284,7 +284,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		public void run() {
 			// register this engine using a unique name
 			String engineName = Thread.currentThread().getName();
-			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerNewEngine(engineName, ObservableBasicExecutionEngine.this);
+			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, ObservableBasicExecutionEngine.this);
 
 			if (_debugger != null) {
 				// connect the debugger to the model being executed (including
