@@ -6,9 +6,10 @@
     <relativePath>../org.gemoc.gemoc_language_workbench.root/pom.xml</relativePath>
     <groupId>org.gemoc.gemoc_language_workbench</groupId>
     <artifactId>org.gemoc.gemoc_language_workbench.root</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>org.gemoc.gemoc_language_workbench.process</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <version>1.0.0-SNAPSHOT</version>
 </project>
