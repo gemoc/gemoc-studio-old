@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="fr.obeo.dsl.process.feature"
+      id="fr.obeo.dsl.workspace.feature"
       label="Workspace DSL Feature"
       version="1.0.0.qualifier"
       provider-name="Obeo">

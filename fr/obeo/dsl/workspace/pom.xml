@@ -49,8 +49,8 @@
         <module>fr.obeo.dsl.workspace</module>
         <module>fr.obeo.dsl.workspace.listener</module>
         <module>fr.obeo.dsl.workspace.listener.emf</module>
-        <module>fr.obeo.dsl.workspace.listener.emf.tests</module>
-        <module>fr.obeo.dsl.workspace.listener.tests</module>
+       	<module>fr.obeo.dsl.workspace.listener.emf.tests</module>
+        <module>fr.obeo.dsl.workspace.listener.tests</module>  
     </modules>
 
     <repositories>
