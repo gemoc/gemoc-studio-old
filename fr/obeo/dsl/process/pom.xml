@@ -51,6 +51,7 @@
         <module>plugins/fr.obeo.dsl.process.edit</module>
         <module>plugins/fr.obeo.dsl.process.editor</module>
         <module>plugins/fr.obeo.dsl.process.design</module>
+        <module>plugins/fr.obeo.dsl.process.ui</module>
 
         <module>tests/fr.obeo.dsl.process.tests</module>
         <module>tests/fr.obeo.dsl.process.edit.tests</module>
