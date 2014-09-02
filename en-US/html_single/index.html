@@ -1,60 +1,189 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Gemoc Studio Guide</title><link rel="stylesheet" type="text/css" href="css/jbossorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><div xml:lang="en" class="book" title="Gemoc Studio Guide"><div class="titlepage"><div><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><div><h1 class="title"><a id="d0e3"/>Gemoc Studio Guide</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Francois Tanguy &lt;francois.tanguy@inria.fr&gt;, Didier Vojtisek &lt;didier.vojtisek@inria.fr&gt;</span></h3></div></div></div><hr/></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="preface"><a href="#_preface">Preface</a></span></dt><dt><span class="chapter"><a href="#_gemoc_language_workbench">1. Gemoc Language workbench</a></span></dt><dd><dl><dt><span class="section"><a href="#_language_workbench_overview">1.1. Language Workbench overview</a></span></dt><dt><span class="section"><a href="#_gemoc_language_project">1.2. Gemoc Language project</a></span></dt><dt><span class="section"><a href="#_defining_abstract_syntax_or_domain_concepts">1.3. Defining Abstract Syntax (or domain concepts)</a></span></dt><dt><span class="section"><a href="#_defining_runtime_data">1.4. Defining RunTime Data</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_actions_dsas">1.5. Defining Domain-Specific Actions (DSAs)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_constraints">1.6. Defining Domain-Specific Constraints</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax">1.7. Defining a concrete syntax</a></span></dt><dd><dl><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_xtext">1.7.1. Defining a concrete syntax with xText</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius">1.7.2. Defining a concrete syntax with Sirius</a></span></dt></dl></dd><dt><span class="section"><a href="#_defing_model_of_concurrency_moc">1.8. Defing Model of Concurrency (MoC)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_events_dse">1.9. Defining Domain Specific Events (DSE)</a></span></dt><dt><span class="section"><a href="#_defining_an_animation_view">1.10. Defining an animation view</a></span></dt><dt><span class="section"><a href="#section-process-support-view">1.11. Process support view</a></span></dt></dl></dd><dt><span class="chapter"><a href="#chapter-gemoc-modeling-workbench">2. Gemoc Modeling workbench</a></span></dt><dd><dl><dt><span class="section"><a href="#_modeling_workbench_overview">2.1. Modeling workbench overview</a></span></dt><dt><span class="section"><a href="#_editing_model">2.2. Editing model</a></span></dt><dt><span class="section"><a href="#_running_model">2.3. Running model</a></span></dt><dt><span class="section"><a href="#_engine_view">2.4. Engine view</a></span></dt><dt><span class="section"><a href="#_logical_step_view">2.5. Logical step view</a></span></dt><dt><span class="section"><a href="#_event_manager_view">2.6. Event manager view</a></span></dt><dt><span class="section"><a href="#_animation_view">2.7. Animation view</a></span></dt></dl></dd><dt><span class="bibliography"><a href="#_bibliography">Bibliography</a></span></dt><dt><span class="glossary"><a href="#_glossary">Glossary</a></span></dt><dt><span class="index"><a href="#_index">Index</a></span></dt></dl></div><div class="list-of-figures"><p><strong>List of Figures</strong></p><dl><dt>1.1. <a href="#figure-glw-screenshot-of-language_workbench">Screenshot of GEMOC Studio Language Workbench on the TFSM (Timed Finite State Machine) example.</a></dt><dt>2.1. <a href="#figure-glw-screenshot-of-modeling_workbench">Screenshot of GEMOC Studio Modeling Workbench on the TFSM example (execution and animation).</a></dt></dl></div><div class="preface" title="Preface"><div class="titlepage"><div><div><h2 class="title"><a id="_preface"/>Preface</h2></div></div></div><p>The Gemoc Studio offers 2 main usages:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">Building and composing new executable DSML. This mode is intended to be used by language designers (aka domain experts).</li><li class="listitem">Creating and executing models conformant to executable DSMLs. This mode is intended to be used by domain designers.</li></ul></div><p>Each of these usage has it own set of tools that are referenced as <span class="strong"><strong>Gemoc Language workbench</strong></span> for the tools for <span class="emphasis"><em>language designers</em></span> and <span class="strong"><strong>Gemoc Modeling Workbench</strong></span> for the tools for <span class="emphasis"><em>domain designers</em></span>.</p></div><div class="chapter" title="Chapter 1. Gemoc Language workbench"><div class="titlepage"><div><div><h2 class="title"><a id="_gemoc_language_workbench"/>Chapter 1. Gemoc Language workbench</h2></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="section"><a href="#_language_workbench_overview">1.1. Language Workbench overview</a></span></dt><dt><span class="section"><a href="#_gemoc_language_project">1.2. Gemoc Language project</a></span></dt><dt><span class="section"><a href="#_defining_abstract_syntax_or_domain_concepts">1.3. Defining Abstract Syntax (or domain concepts)</a></span></dt><dt><span class="section"><a href="#_defining_runtime_data">1.4. Defining RunTime Data</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_actions_dsas">1.5. Defining Domain-Specific Actions (DSAs)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_constraints">1.6. Defining Domain-Specific Constraints</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax">1.7. Defining a concrete syntax</a></span></dt><dd><dl><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_xtext">1.7.1. Defining a concrete syntax with xText</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius">1.7.2. Defining a concrete syntax with Sirius</a></span></dt></dl></dd><dt><span class="section"><a href="#_defing_model_of_concurrency_moc">1.8. Defing Model of Concurrency (MoC)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_events_dse">1.9. Defining Domain Specific Events (DSE)</a></span></dt><dt><span class="section"><a href="#_defining_an_animation_view">1.10. Defining an animation view</a></span></dt><dt><span class="section"><a href="#section-process-support-view">1.11. Process support view</a></span></dt></dl></div><div class="section" title="1.1. Language Workbench overview"><div class="titlepage"><div><div><h2 class="title"><a id="_language_workbench_overview"/>1.1. Language Workbench overview</h2></div></div></div><p>The GEMOC Language Workbench, intended to be used by <a id="d0e48" class="indexterm"/>language designers:  it allows building and composing new executable DSMLs.</p><div class="figure"><a id="figure-glw-screenshot-of-language_workbench"/><p class="title"><strong>Figure 1.1. Screenshot of GEMOC Studio Language Workbench on the TFSM (Timed Finite State Machine) example.</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/gemoc_language_workbench_TFSM_screenshot.png" alt="Screenshot of GEMOC Studio Language Workbench on the TFSM (Timed Finite State Machine) example"/></div></div></div><br class="figure-break"/><p><a id="d0e62" class="indexterm"/>
-<a id="d0e66" class="indexterm"/>
-<a id="d0e72" class="indexterm"/></p><p/></div><div class="section" title="1.2. Gemoc Language project"><div class="titlepage"><div><div><h2 class="title"><a id="_gemoc_language_project"/>1.2. Gemoc Language project</h2></div></div></div><p>In the menu go to: File&gt; New&gt; Projects…&gt; Gemoc Language project</p><p>This project will be the aggregator of the other Eclipse projects that will constitute the components of a Language Unit of the xDSML.</p><p>It mainly defines a project.xdsml file that references these other components.</p><p>The xDSML file isn’t supposed to be edited manually. The pop up menu on the project (available on right click) or the <a class="xref" href="#section-process-support-view" title="1.11. Process support view">Section 1.11, “Process support view”</a> provides a set of wizard to fill this file.</p><p>From these information, the project will generate additional code that will be used by the execution engine when the language will be deployed and used by the <a class="xref" href="#chapter-gemoc-modeling-workbench" title="Chapter 2. Gemoc Modeling workbench">Chapter 2, <em>Gemoc Modeling workbench</em></a>.</p></div><div class="section" title="1.3. Defining Abstract Syntax (or domain concepts)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_abstract_syntax_or_domain_concepts"/>1.3. Defining Abstract Syntax (or domain concepts)</h2></div></div></div><p>Defining the abstract syntax (AS) in the Language Workbench is done thanks to an EMF Ecore project.</p><p>All ecore editors can be used to edit the concepts in the ecore file.</p><p>TODO new project wizard (via popup, via process)
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>GEMOC Studio Guide</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><div xml:lang="en" class="book" title="GEMOC Studio Guide"><div class="titlepage"><div><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><div><h1 class="title"><a id="d5e1"/>GEMOC Studio Guide</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Francois Tanguy &lt;francois.tanguy@inria.fr&gt;, Didier Vojtisek &lt;didier.vojtisek@inria.fr&gt;</span></h3></div></div></div><hr/></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="preface"><a href="#_preface">Preface</a></span></dt><dt><span class="chapter"><a href="#_gemoc_language_workbench">1. Gemoc Language workbench</a></span></dt><dd><dl><dt><span class="section"><a href="#_language_workbench_overview">1.1. Language Workbench overview</a></span></dt><dt><span class="section"><a href="#_gemoc_language_project">1.2. Gemoc Language project</a></span></dt><dt><span class="section"><a href="#_defining_abstract_syntax_or_domain_concepts">1.3. Defining Abstract Syntax (or domain concepts)</a></span></dt><dt><span class="section"><a href="#_defining_runtime_data">1.4. Defining RunTime Data</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_actions_dsas">1.5. Defining Domain-Specific Actions (DSAs)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_constraints">1.6. Defining Domain-Specific Constraints</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax">1.7. Defining a concrete syntax</a></span></dt><dd><dl><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_xtext">1.7.1. Defining a concrete syntax with xText</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius">1.7.2. Defining a concrete syntax with Sirius</a></span></dt></dl></dd><dt><span class="section"><a href="#_defing_model_of_concurrency_moc">1.8. Defing Model of Concurrency (MoC)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_events_dse">1.9. Defining Domain Specific Events (DSE)</a></span></dt><dt><span class="section"><a href="#_defining_an_animation_view">1.10. Defining an animation view</a></span></dt><dt><span class="section"><a href="#section-process-support-view">1.11. Process support view</a></span></dt></dl></dd><dt><span class="chapter"><a href="#chapter-gemoc-modeling-workbench">2. Gemoc Modeling workbench</a></span></dt><dd><dl><dt><span class="section"><a href="#_modeling_workbench_overview">2.1. Modeling workbench overview</a></span></dt><dt><span class="section"><a href="#_editing_model">2.2. Editing model</a></span></dt><dt><span class="section"><a href="#_running_model">2.3. Running model</a></span></dt><dt><span class="section"><a href="#_engine_view">2.4. Engine view</a></span></dt><dt><span class="section"><a href="#_logical_step_view">2.5. Logical step view</a></span></dt><dt><span class="section"><a href="#_event_manager_view">2.6. Event manager view</a></span></dt><dt><span class="section"><a href="#_animation_view">2.7. Animation view</a></span></dt></dl></dd><dt><span class="bibliography"><a href="#_bibliography">Bibliography</a></span></dt><dt><span class="glossary"><a href="#_glossary">Glossary</a></span></dt><dt><span class="index"><a href="#_index">Index</a></span></dt></dl></div><div class="list-of-figures"><p><strong>List of Figures</strong></p><dl><dt>1.1. <a href="#figure-glw-screenshot-of-language_workbench">Screenshot of GEMOC Studio Language Workbench on the TFSM (Timed Finite State Machine) example.</a></dt><dt>2.1. <a href="#figure-glw-screenshot-of-modeling_workbench">Screenshot of GEMOC Studio Modeling Workbench on the TFSM example (execution and animation).</a></dt></dl></div>
+
+<div class="preface" title="Preface"><div class="titlepage"><div><div><h2 class="title"><a id="_preface"/>Preface</h2></div></div></div>
+
+<p>The GEMOC Studio offers 2 main usages:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Building and composing new executable DSML. This mode is intended to be used by language designers (aka domain experts).
+</li><li class="listitem">
+Creating and executing models conformant to executable DSMLs. This mode is intended to be used by domain designers.
+</li></ul></div>
+<p>Each of these usage has it own set of tools that are referenced as <span class="strong"><strong>Gemoc Language workbench</strong></span> for the tools for <span class="emphasis"><em>language designers</em></span> and <span class="strong"><strong>Gemoc Modeling Workbench</strong></span> for the tools for <span class="emphasis"><em>domain designers</em></span>.</p>
+</div>
+<div class="chapter" title="Chapter 1. Gemoc Language workbench"><div class="titlepage"><div><div><h2 class="title"><a id="_gemoc_language_workbench"/>Chapter 1. Gemoc Language workbench</h2></div></div></div>
+
+<div class="section" title="1.1. Language Workbench overview"><div class="titlepage"><div><div><h2 class="title"><a id="_language_workbench_overview"/>1.1. Language Workbench overview</h2></div></div></div>
+
+<p>The GEMOC Language Workbench, intended to be used by <a id="d5e27" class="indexterm"/>language designers:  it allows building and composing new executable DSMLs.</p>
+<div class="figure"><a id="figure-glw-screenshot-of-language_workbench"/><p class="title"><strong>Figure 1.1. Screenshot of GEMOC Studio Language Workbench on the TFSM (Timed Finite State Machine) example.</strong></p><div class="figure-contents">
+
+<div class="mediaobject"><img src="images/images/gemoc_language_workbench_TFSM_screenshot.png" alt="Screenshot of GEMOC Studio Language Workbench on the TFSM (Timed Finite State Machine) example"/></div>
+</div></div><br class="figure-break"/>
+<p><a id="d5e37" class="indexterm"/>
+<a id="d5e39" class="indexterm"/>
+<a id="d5e42" class="indexterm"/></p>
+<p><hr xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory"/></p>
+</div>
+<div class="section" title="1.2. Gemoc Language project"><div class="titlepage"><div><div><h2 class="title"><a id="_gemoc_language_project"/>1.2. Gemoc Language project</h2></div></div></div>
+
+<p>In the menu go to: File&gt; New&gt; Projects…​&gt; Gemoc Language project</p>
+<p>This project will be the aggregator of the other Eclipse projects that will constitute the components of a Language Unit of the xDSML.</p>
+<p>It mainly defines a project.xdsml file that references these other components.</p>
+<p>The xDSML file isn’t supposed to be edited manually. The pop up menu on the project (available on right click) or the <a class="xref" href="#section-process-support-view" title="1.11. Process support view">Section 1.11, “Process support view”</a> provides a set of wizard to fill this file.</p>
+<p>From these information, the project will generate additional code that will be used by the execution engine when the language will be deployed and used by the <a class="xref" href="#chapter-gemoc-modeling-workbench" title="Chapter 2. Gemoc Modeling workbench">Chapter 2, <em>Gemoc Modeling workbench</em></a>.</p>
+</div>
+<div class="section" title="1.3. Defining Abstract Syntax (or domain concepts)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_abstract_syntax_or_domain_concepts"/>1.3. Defining Abstract Syntax (or domain concepts)</h2></div></div></div>
+
+<p>Defining the abstract syntax (AS) in the Language Workbench is done thanks to an EMF Ecore project.</p>
+<p>All ecore editors can be used to edit the concepts in the ecore file.</p>
+<p>TODO new project wizard (via popup, via process)
 TODO select existing project
-TODO Ecore editor</p></div><div class="section" title="1.4. Defining RunTime Data"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_runtime_data"/>1.4. Defining RunTime Data</h2></div></div></div></div><div class="section" title="1.5. Defining Domain-Specific Actions (DSAs)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_actions_dsas"/>1.5. Defining Domain-Specific Actions (DSAs)</h2></div></div></div></div><div class="section" title="1.6. Defining Domain-Specific Constraints"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_constraints"/>1.6. Defining Domain-Specific Constraints</h2></div></div></div></div><div class="section" title="1.7. Defining a concrete syntax"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_concrete_syntax"/>1.7. Defining a concrete syntax</h2></div></div></div><p>The xDSML can support different concrete syntaxes. Most EMF based editors should work however Gemoc provides additional support for some editors.
-Editors explictly supported are: EMF tree editor, xText editor, Sirius editor.</p><div class="section" title="1.7.1. Defining a concrete syntax with xText"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_xtext"/>1.7.1. Defining a concrete syntax with xText</h3></div></div></div></div><div class="section" title="1.7.2. Defining a concrete syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>1.7.2. Defining a concrete syntax with <a id="d0e123" class="indexterm"/>Sirius</h3></div></div></div></div></div><div class="section" title="1.8. Defing Model of Concurrency (MoC)"><div class="titlepage"><div><div><h2 class="title"><a id="_defing_model_of_concurrency_moc"/>1.8. Defing Model of Concurrency (MoC)</h2></div></div></div></div><div class="section" title="1.9. Defining Domain Specific Events (DSE)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_events_dse"/>1.9. Defining Domain Specific Events (DSE)</h2></div></div></div></div><div class="section" title="1.10. Defining an animation view"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_an_animation_view"/>1.10. Defining an animation view</h2></div></div></div><p>The animation layer is an extension on top of a graphical editor defined with <a id="d0e138" class="indexterm"/>Sirius.</p><p>TODO Debug layer, Animation layer</p></div><div class="section" title="1.11. Process support view"><div class="titlepage"><div><div><h2 class="title"><a id="section-process-support-view"/>1.11. Process support view</h2></div></div></div><p>TODO present process view</p></div></div><div class="chapter" title="Chapter 2. Gemoc Modeling workbench"><div class="titlepage"><div><div><h2 class="title"><a id="chapter-gemoc-modeling-workbench"/>Chapter 2. Gemoc Modeling workbench</h2></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="section"><a href="#_modeling_workbench_overview">2.1. Modeling workbench overview</a></span></dt><dt><span class="section"><a href="#_editing_model">2.2. Editing model</a></span></dt><dt><span class="section"><a href="#_running_model">2.3. Running model</a></span></dt><dt><span class="section"><a href="#_engine_view">2.4. Engine view</a></span></dt><dt><span class="section"><a href="#_logical_step_view">2.5. Logical step view</a></span></dt><dt><span class="section"><a href="#_event_manager_view">2.6. Event manager view</a></span></dt><dt><span class="section"><a href="#_animation_view">2.7. Animation view</a></span></dt></dl></div><div class="section" title="2.1. Modeling workbench overview"><div class="titlepage"><div><div><h2 class="title"><a id="_modeling_workbench_overview"/>2.1. Modeling workbench overview</h2></div></div></div><p>The GEMOC Modeling Workbench, intended to be used by domain designers: it allows creating and executing models conformant to executable DSMLs.</p><div class="figure"><a id="figure-glw-screenshot-of-modeling_workbench"/><p class="title"><strong>Figure 2.1. Screenshot of GEMOC Studio Modeling Workbench on the TFSM example (execution and animation).</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/gemoc_modeling_workbench_TFSM_screenshot.png" alt="Screenshot of GEMOC Studio Modeling Workbench on the TFSM example (execution and animation)"/></div></div></div><br class="figure-break"/><p><a id="d0e167" class="indexterm"/>
-<a id="d0e171" class="indexterm"/>
-<a id="d0e177" class="indexterm"/></p><p/></div><div class="section" title="2.2. Editing model"><div class="titlepage"><div><div><h2 class="title"><a id="_editing_model"/>2.2. Editing model</h2></div></div></div></div><div class="section" title="2.3. Running model"><div class="titlepage"><div><div><h2 class="title"><a id="_running_model"/>2.3. Running model</h2></div></div></div><p>Description of the Gemoc launch configuration in Run and Debug mode.</p></div><div class="section" title="2.4. Engine view"><div class="titlepage"><div><div><h2 class="title"><a id="_engine_view"/>2.4. Engine view</h2></div></div></div></div><div class="section" title="2.5. Logical step view"><div class="titlepage"><div><div><h2 class="title"><a id="_logical_step_view"/>2.5. Logical step view</h2></div></div></div></div><div class="section" title="2.6. Event manager view"><div class="titlepage"><div><div><h2 class="title"><a id="_event_manager_view"/>2.6. Event manager view</h2></div></div></div></div><div class="section" title="2.7. Animation view"><div class="titlepage"><div><div><h2 class="title"><a id="_animation_view"/>2.7. Animation view</h2></div></div></div></div></div><div class="bibliography" title="Bibliography"><div class="titlepage"><div><div><h2 class="title"><a id="_bibliography"/>Bibliography</h2></div></div></div><p>The bibliography lists some useful external documents. For a more complete list, please refer to the publications section on <a class="ulink" href="http://gemoc.org">http://gemoc.org</a> site.</p><div class="bibliodiv" title="Articles"><h3 class="title"><a id="d0e210"/>Articles</h3><div class="bibliomixed"><a id="d0e213"/><p class="bibliomixed">
-      <span class="bibliomisc"><a id="globalizing-modeling-languages"/>[globalizing-modeling-languages] <a class="ulink" href="http://hal.inria.fr/hal-00994551">Globalizing Modeling Languages</a> (Benoit Combemale, Julien Deantoni, Benoit Baudry, Robert France, Jean-Marc Jezequel, Jeff Gray), In Computer, IEEE, 2014.</span>
-      
-    </p></div></div></div><div class="glossary" title="Glossary"><div class="titlepage"><div><div><h2 class="title"><a id="_glossary"/>Glossary</h2></div></div></div><div class="variablelist"><dl><dt><span class="term">
-      AS
-    </span></dt><dd>Abstract Syntax.</dd><dt><span class="term">
-      API
-    </span></dt><dd>Application Programming Interface.</dd><dt><span class="term">
-      Behavioral Semantics
-    </span></dt><dd>see Execution semantics.</dd><dt><span class="term">
-      CCSL
-    </span></dt><dd>Clock-Constraint Specification Language.</dd><dt><span class="term">
-      Domain Engineer
-    </span></dt><dd>user of the Modeling Workbench.</dd><dt><span class="term">
-      DSA
-    </span></dt><dd>Domain-Specific Action.</dd><dt><span class="term">
-      DSE
-    </span></dt><dd>Domain-Specific Event.</dd><dt><span class="term">
-      DSML
-    </span></dt><dd>Domain-Specific (Modeling) Language.</dd><dt><span class="term">
-      Dynamic Semantics
-    </span></dt><dd>see Execution semantics.</dd><dt><span class="term">
-      Eclipse Plugin
-    </span></dt><dd>an Eclipse plugin is a Java project with associated metadata that can be bundled and deployed as a contribution to an Eclipse-based IDE.</dd><dt><span class="term">
-      ED
-    </span></dt><dd>Execution Data.</dd><dt><span class="term">
-      Execution Semantics
-    </span></dt><dd>Defines when and how elements of a language will produce a model behavior.</dd><dt><span class="term">
-      GEMOC Studio
-    </span></dt><dd>Eclipse-based studio integrating both a language workbench and the corresponding modeling workbenches</dd><dt><span class="term">
-      Language Workbench
-    </span></dt><dd>a language workbench offers the facilities for designing and implementing modeling languages.</dd><dt><span class="term">
-      Language Designer
-    </span></dt><dd>a language designer is the user of the language workbench.</dd><dt><span class="term">
-      MoCC
-    </span></dt><dd>Model of Concurrency and Communication</dd><dt><span class="term">
-      Model
-    </span></dt><dd>model which contributes to the convent of a View</dd><dt><span class="term">
-      Modeling Workbench
-    </span></dt><dd>a modeling workbench offers all the required facilities for editing and animating domain specific models according to a given modeling language.</dd><dt><span class="term">
-      MSA
-    </span></dt><dd>Model-Specific Action.</dd><dt><span class="term">
-      MSE
-    </span></dt><dd>Model-Specific Event.</dd><dt><span class="term">
-      RTD
-    </span></dt><dd>RunTime Data.</dd><dt><span class="term">
-      Static semantics
-    </span></dt><dd>Constraints on a model that cannot be expressed in the metamodel.  For example, static semantics can be expressed as OCL invariants.</dd><dt><span class="term">
-      xDSML
-    </span></dt><dd>Executable Domain-Specific Modeling Language.</dd></dl></div></div><div class="index" title="Index"><div class="titlepage"><div><div><h2 class="title"><a id="_index"/>Index</h2></div></div></div><div class="index"><div class="indexdiv"><h3>L</h3><dl><dt>language designer, <a class="indexterm" href="#_language_workbench_overview">Language Workbench overview</a></dt><dt>Language workbench, <a class="indexterm" href="#_language_workbench_overview">Language Workbench overview</a></dt></dl></div><div class="indexdiv"><h3>M</h3><dl><dt>Modeling workbench, <a class="indexterm" href="#_modeling_workbench_overview">Modeling workbench overview</a></dt></dl></div><div class="indexdiv"><h3>S</h3><dl><dt>Sirius, <a class="indexterm" href="#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius">Defining a concrete syntax with Sirius</a>, <a class="indexterm" href="#_defining_an_animation_view">Defining an animation view</a></dt></dl></div><div class="indexdiv"><h3>T</h3><dl><dt>TFSM, <a class="indexterm" href="#_language_workbench_overview">Language Workbench overview</a>, <a class="indexterm" href="#_modeling_workbench_overview">Modeling workbench overview</a></dt><dd><dl><dt>Language workbench, <a class="indexterm" href="#_language_workbench_overview">Language Workbench overview</a></dt><dt>Modeling workbench, <a class="indexterm" href="#_modeling_workbench_overview">Modeling workbench overview</a></dt></dl></dd></dl></div></div></div></div></body></html>
+TODO Ecore editor</p>
+</div>
+<div class="section" title="1.4. Defining RunTime Data"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_runtime_data"/>1.4. Defining RunTime Data</h2></div></div></div>
+
+
+</div>
+<div class="section" title="1.5. Defining Domain-Specific Actions (DSAs)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_actions_dsas"/>1.5. Defining Domain-Specific Actions (DSAs)</h2></div></div></div>
+
+
+</div>
+<div class="section" title="1.6. Defining Domain-Specific Constraints"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_constraints"/>1.6. Defining Domain-Specific Constraints</h2></div></div></div>
+
+
+</div>
+<div class="section" title="1.7. Defining a concrete syntax"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_concrete_syntax"/>1.7. Defining a concrete syntax</h2></div></div></div>
+
+<p>The xDSML can support different concrete syntaxes. Most EMF based editors should work however Gemoc provides additional support for some editors.
+Editors explictly supported are: EMF tree editor, xText editor, Sirius editor.</p>
+<div class="section" title="1.7.1. Defining a concrete syntax with xText"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_xtext"/>1.7.1. Defining a concrete syntax with xText</h3></div></div></div>
+
+
+</div>
+<div class="section" title="1.7.2. Defining a concrete syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>1.7.2. Defining a concrete syntax with <a id="d5e72" class="indexterm"/>Sirius</h3></div></div></div>
+
+
+</div>
+</div>
+<div class="section" title="1.8. Defing Model of Concurrency (MoC)"><div class="titlepage"><div><div><h2 class="title"><a id="_defing_model_of_concurrency_moc"/>1.8. Defing Model of Concurrency (MoC)</h2></div></div></div>
+
+
+</div>
+<div class="section" title="1.9. Defining Domain Specific Events (DSE)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_events_dse"/>1.9. Defining Domain Specific Events (DSE)</h2></div></div></div>
+
+
+</div>
+<div class="section" title="1.10. Defining an animation view"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_an_animation_view"/>1.10. Defining an animation view</h2></div></div></div>
+
+<p>The animation layer is an extension on top of a graphical editor defined with <a id="d5e81" class="indexterm"/>Sirius.</p>
+<p>TODO Debug layer, Animation layer</p>
+</div>
+<div class="section" title="1.11. Process support view"><div class="titlepage"><div><div><h2 class="title"><a id="section-process-support-view"/>1.11. Process support view</h2></div></div></div>
+
+<p>TODO present process view</p>
+</div>
+</div>
+<div class="chapter" title="Chapter 2. Gemoc Modeling workbench"><div class="titlepage"><div><div><h2 class="title"><a id="chapter-gemoc-modeling-workbench"/>Chapter 2. Gemoc Modeling workbench</h2></div></div></div>
+
+<div class="section" title="2.1. Modeling workbench overview"><div class="titlepage"><div><div><h2 class="title"><a id="_modeling_workbench_overview"/>2.1. Modeling workbench overview</h2></div></div></div>
+
+<p>The GEMOC Modeling Workbench, intended to be used by domain designers: it allows creating and executing models conformant to executable DSMLs.</p>
+<div class="figure"><a id="figure-glw-screenshot-of-modeling_workbench"/><p class="title"><strong>Figure 2.1. Screenshot of GEMOC Studio Modeling Workbench on the TFSM example (execution and animation).</strong></p><div class="figure-contents">
+
+<div class="mediaobject"><img src="images/images/gemoc_modeling_workbench_TFSM_screenshot.png" alt="Screenshot of GEMOC Studio Modeling Workbench on the TFSM example (execution and animation)"/></div>
+</div></div><br class="figure-break"/>
+<p><a id="d5e100" class="indexterm"/>
+<a id="d5e102" class="indexterm"/>
+<a id="d5e105" class="indexterm"/></p>
+<p><hr xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory"/></p>
+</div>
+<div class="section" title="2.2. Editing model"><div class="titlepage"><div><div><h2 class="title"><a id="_editing_model"/>2.2. Editing model</h2></div></div></div>
+
+
+</div>
+<div class="section" title="2.3. Running model"><div class="titlepage"><div><div><h2 class="title"><a id="_running_model"/>2.3. Running model</h2></div></div></div>
+
+<p>Description of the Gemoc launch configuration in Run and Debug mode.</p>
+</div>
+<div class="section" title="2.4. Engine view"><div class="titlepage"><div><div><h2 class="title"><a id="_engine_view"/>2.4. Engine view</h2></div></div></div>
+
+
+</div>
+<div class="section" title="2.5. Logical step view"><div class="titlepage"><div><div><h2 class="title"><a id="_logical_step_view"/>2.5. Logical step view</h2></div></div></div>
+
+
+</div>
+<div class="section" title="2.6. Event manager view"><div class="titlepage"><div><div><h2 class="title"><a id="_event_manager_view"/>2.6. Event manager view</h2></div></div></div>
+
+
+</div>
+<div class="section" title="2.7. Animation view"><div class="titlepage"><div><div><h2 class="title"><a id="_animation_view"/>2.7. Animation view</h2></div></div></div>
+
+
+</div>
+</div>
+<div class="bibliography" title="Bibliography"><div class="titlepage"><div><div><h2 class="title"><a id="_bibliography"/>Bibliography</h2></div></div></div>
+
+<p>The bibliography lists some useful external documents. For a more complete list, please refer to the publications section on <a class="ulink" href="http://gemoc.org">http://gemoc.org</a> site.</p>
+<div class="bibliodiv" title="Articles">
+<h3 class="title"><a id="d5e125"/>Articles</h3>
+<div class="bibliomixed"><a id="d5e127"/><p class="bibliomixed">
+<span class="bibliomisc"><a id="globalizing-modeling-languages"/>[globalizing-modeling-languages] <a class="ulink" href="http://hal.inria.fr/hal-00994551">Globalizing Modeling Languages</a> (Benoit Combemale, Julien Deantoni, Benoit Baudry, Robert France, Jean-Marc Jezequel, Jeff Gray), In Computer, IEEE, 2014.</span>
+</p></div>
+</div>
+</div>
+<div class="glossary" title="Glossary"><div class="titlepage"><div><div><h2 class="title"><a id="_glossary"/>Glossary</h2></div></div></div>
+
+<div class="variablelist"><dl><dt><span class="term">AS</span></dt><dd>
+Abstract Syntax.
+</dd><dt><span class="term">API</span></dt><dd>
+Application Programming Interface.
+</dd><dt><span class="term">Behavioral Semantics</span></dt><dd>
+see Execution semantics.
+</dd><dt><span class="term">CCSL</span></dt><dd>
+Clock-Constraint Specification Language.
+</dd><dt><span class="term">Domain Engineer</span></dt><dd>
+user of the Modeling Workbench.
+</dd><dt><span class="term">DSA</span></dt><dd>
+Domain-Specific Action.
+</dd><dt><span class="term">DSE</span></dt><dd>
+Domain-Specific Event.
+</dd><dt><span class="term">DSML</span></dt><dd>
+Domain-Specific (Modeling) Language.
+</dd><dt><span class="term">Dynamic Semantics</span></dt><dd>
+see Execution semantics.
+</dd><dt><span class="term">Eclipse Plugin</span></dt><dd>
+an Eclipse plugin is a Java project with associated metadata that can be bundled and deployed as a contribution to an Eclipse-based IDE.
+</dd><dt><span class="term">ED</span></dt><dd>
+Execution Data.
+</dd><dt><span class="term">Execution Semantics</span></dt><dd>
+Defines when and how elements of a language will produce a model behavior.
+</dd><dt><span class="term">GEMOC Studio</span></dt><dd>
+Eclipse-based studio integrating both a language workbench and the corresponding modeling workbenches
+</dd><dt><span class="term">Language Workbench</span></dt><dd>
+a language workbench offers the facilities for designing and implementing modeling languages.
+</dd><dt><span class="term">Language Designer</span></dt><dd>
+a language designer is the user of the language workbench.
+</dd><dt><span class="term">MoCC</span></dt><dd>
+Model of Concurrency and Communication
+</dd><dt><span class="term">Model</span></dt><dd>
+model which contributes to the convent of a View
+</dd><dt><span class="term">Modeling Workbench</span></dt><dd>
+a modeling workbench offers all the required facilities for editing and animating domain specific models according to a given modeling language.
+</dd><dt><span class="term">MSA</span></dt><dd>
+Model-Specific Action.
+</dd><dt><span class="term">MSE</span></dt><dd>
+Model-Specific Event.
+</dd><dt><span class="term">RTD</span></dt><dd>
+RunTime Data.
+</dd><dt><span class="term">Static semantics</span></dt><dd>
+Constraints on a model that cannot be expressed in the metamodel.  For example, static semantics can be expressed as OCL invariants.
+</dd><dt><span class="term">xDSML</span></dt><dd>
+Executable Domain-Specific Modeling Language.
+</dd></dl></div>
+</div>
+<div class="index" title="Index"><div class="titlepage"><div><div><h2 class="title"><a id="_index"/>Index</h2></div></div></div><div class="index"><div class="indexdiv"><h3>L</h3><dl><dt>language designer, <a class="indexterm" href="#_language_workbench_overview">Language Workbench overview</a></dt><dt>Language workbench, <a class="indexterm" href="#_language_workbench_overview">Language Workbench overview</a></dt></dl></div><div class="indexdiv"><h3>M</h3><dl><dt>Modeling workbench, <a class="indexterm" href="#_modeling_workbench_overview">Modeling workbench overview</a></dt></dl></div><div class="indexdiv"><h3>S</h3><dl><dt>Sirius, <a class="indexterm" href="#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius">Defining a concrete syntax with Sirius</a>, <a class="indexterm" href="#_defining_an_animation_view">Defining an animation view</a></dt></dl></div><div class="indexdiv"><h3>T</h3><dl><dt>TFSM, <a class="indexterm" href="#_language_workbench_overview">Language Workbench overview</a>, <a class="indexterm" href="#_modeling_workbench_overview">Modeling workbench overview</a></dt><dd><dl><dt>Language workbench, <a class="indexterm" href="#_language_workbench_overview">Language Workbench overview</a></dt><dt>Modeling workbench, <a class="indexterm" href="#_modeling_workbench_overview">Modeling workbench overview</a></dt></dl></dd></dl></div></div></div>
+</div></body></html>

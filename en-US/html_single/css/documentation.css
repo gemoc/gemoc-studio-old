@@ -291,16 +291,16 @@ div.note h2, div.note p, div.tip h2, div.tip p, div.caution h2, div.caution p, d
 
 #title a.site_href {
     display:block;
-    height:89px;
+    height:166px;
     width:310px;
     float:left;
-    background:url(../images/community/jbossorglogo.png) top left no-repeat;
+    background:url(../images/gemoc-anr-logo-couleur.png) top left no-repeat;
 }
 
 #title a.doc_href {
     display:block;
-    height:89px;
-    background:transparent url(../images/community/community_doc.png) top right no-repeat;
+    height:166px;
+    background:transparent url(../images/IconeGemocStudio-large.png) top right no-repeat;
 }
 
 /* Table */
@@ -548,4 +548,15 @@ div.abstract {font-size:larger;}
 ul li p:last-child {
     margin-bottom:0em;
     padding-bottom:0em;
+}
+
+.page-break {
+    display: none;
+}
+
+@media print {
+    .page-break {
+        display: block;
+        page-break-before: always;
+    }
 }
