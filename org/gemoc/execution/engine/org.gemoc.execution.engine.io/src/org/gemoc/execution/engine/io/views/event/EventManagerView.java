@@ -496,6 +496,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			@Override
 			public void widgetSelected(SelectionEvent e) 
 			{
+				// todo
+				//				_viewer.getSelection()
+				
 				List<String> clockToForce = new ArrayList<String>();
 				ClockStatus state = ClockStatus.NOTFORCED_NOTSET;
 				for(TableItem item : table.getSelection())
@@ -873,9 +876,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	private void updateInformationAndButtons()
 	{
-		if(_quickFreeClock.isDisposed())
-		{
-		}
 		_quickFreeClock.setEnabled(_engine!=null);
 		_quickForceClock_to_notTick.setEnabled(_engine!=null);
 		_quickForceClock_to_tick.setEnabled(_engine!=null);

@@ -1,6 +1,5 @@
 package org.gemoc.execution.engine.io.views;
 
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.swt.graphics.Image;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
