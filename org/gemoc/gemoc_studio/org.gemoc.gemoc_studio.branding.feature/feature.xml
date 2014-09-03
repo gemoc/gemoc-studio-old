@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_studio.branding.feature"
       label="Gemoc Studio Main Features"
-      version="0.1.1.qualifier"
+      version="0.1.2.qualifier"
       provider-name="GEMOC"
       plugin="org.gemoc.gemoc_studio.branding">
 
@@ -55,6 +55,9 @@
       <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.gemoc.mocc.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.commons.feature" version="0.1.0.qualifier"/>
+      <import feature="fr.obeo.dsl.process.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.process.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.workspace.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/fr.obeo.dsl.process.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.process.feature" version="1.0.0.qualifier">
-      <category name="Process_DSL"/>
+   <feature url="features/fr.obeo.dsl.workspace.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.workspace.feature" version="1.0.0.qualifier">
+      <category name="Workspace_DSL"/>
    </feature>
-   <feature url="features/fr.obeo.dsl.process.ui.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.process.ui.feature" version="1.0.0.qualifier">
-      <category name="Process_DSL"/>
-   </feature>
-   <category-def name="Process_DSL" label="Process DSL"/>
-   <category-def name="fUML" label="fUML"/>
+   <category-def name="Workspace_DSL" label="Workspace DSL"/>
 </site>

@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_modeling_workbench.feature"
       label="Gemoc Modeling Workbench"
-      version="0.1.0.qualifier"
+      version="0.1.2.qualifier"
       provider-name="INRIA">
 
    <description url="http://gemoc.org/studio/">

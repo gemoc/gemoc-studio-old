@@ -9,8 +9,7 @@
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>org.gemoc.gemoc_language_workbench.feature</artifactId>
-  <packaging>eclipse-feature</packaging>
-
-  <version>0.1.2-SNAPSHOT</version>
-</project> 
+  <artifactId>org.gemoc.gemoc_language_workbench.process</artifactId>
+  <packaging>eclipse-plugin</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+</project>

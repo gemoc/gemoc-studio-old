@@ -13,6 +13,7 @@
 		<module>../org.gemoc.gemoc_language_workbench.conf.model.editor</module>
 		<module>../org.gemoc.gemoc_language_workbench.utils</module>
 		<module>../org.gemoc.gemoc_language_workbench.ui</module>
+		<module>../org.gemoc.gemoc_language_workbench.process</module>
 		<module>../org.gemoc.gemoc_language_workbench.documentation</module>
 		<module>../org.gemoc.gemoc_language_workbench.sample.deployer</module>
 		<module>../extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>

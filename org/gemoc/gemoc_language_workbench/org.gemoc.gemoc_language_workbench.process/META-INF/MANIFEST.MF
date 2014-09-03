@@ -25,6 +25,8 @@ Require-Bundle: fr.obeo.dsl.process;bundle-version="1.0.0",
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Activator: org.gemoc.gemoc_language_workbench.process.Activator
 Export-Package: org.gemoc.gemoc_language_workbench.process,
+ org.gemoc.gemoc_language_workbench.process.specific,
+ org.gemoc.gemoc_language_workbench.process.support,
  org.gemoc.gemoc_language_workbench.process.task,
  org.gemoc.gemoc_language_workbench.process.ui.handler,
  org.gemoc.gemoc_language_workbench.process.ui.view,
