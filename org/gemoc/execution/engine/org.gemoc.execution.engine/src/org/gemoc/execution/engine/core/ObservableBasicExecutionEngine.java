@@ -96,8 +96,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	private boolean _started = false;
 	private boolean terminated = false;
 
-	private Semaphore _sem = new Semaphore(0);
-
 	protected EngineStatus engineStatus = new EngineStatus();
 
 	/**
@@ -200,6 +198,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		capability.setModelExecutionContext(_executionContext);
 	}
 
+	
+	private EngineRunnable _runnable;
 	@Override
 	public void start() 
 	{
@@ -210,8 +210,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				hook.preStartEngine(this);
 			}
 			engineStatus.setNbLogicalStepRun(0);
-			Runnable execution = new EngineRunnable();
-			Thread mainThread = new Thread(execution, "Gemoc engine " + _executionContext.getRunConfiguration().getModelURIAsString());
+			_runnable = new EngineRunnable();
+			Thread mainThread = new Thread(_runnable, "Gemoc engine " + _executionContext.getRunConfiguration().getModelURIAsString());
 			mainThread.start();
 		}
 
@@ -284,21 +284,32 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	}
 	
 	public void pause(){
-		synchronized(this){
-			try {
-				_sem.acquire();
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
-			}
-		}
+		_runnable.pause();
 	}
 	
 	public void resume(){
-		_sem.release();
+		_runnable.resume();
 	}
 
 
 	class EngineRunnable implements Runnable {
+		
+		private Semaphore _sem = new Semaphore(0);
+		
+		public void pause(){
+			synchronized(this){
+				try {
+					_sem.acquire();
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		
+		public void resume(){
+			_sem.release();
+		}
+		
 		public void run() {
 			// register this engine using a unique name
 			String engineName = Thread.currentThread().getName();
@@ -310,8 +321,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				_debugger.spawnRunningThread(Thread.currentThread().getName(), _executionContext.getResourceModel().getContents().get(0));
 			}
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
-			ObservableBasicExecutionEngine.this.setChanged();
-			ObservableBasicExecutionEngine.this.notifyObservers("Starting " + engineName);
+			setChanged();
+			notifyObservers("Starting " + engineName);
 			long count = 0;
 		
 			pause();
