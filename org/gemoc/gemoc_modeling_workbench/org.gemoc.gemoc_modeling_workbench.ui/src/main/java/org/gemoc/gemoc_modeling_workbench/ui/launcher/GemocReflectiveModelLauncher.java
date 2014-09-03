@@ -3,9 +3,16 @@ package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.filesystem.EFS;
+import org.eclipse.core.filesystem.IFileStore;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
@@ -14,8 +21,20 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ide.IDE;
 import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.RunConfiguration;
@@ -44,20 +63,23 @@ public class GemocReflectiveModelLauncher
 
 	private ObservableBasicExecutionEngine _engine;
 
-	private ModelExecutionContext createModelExecutionContext(ILaunchConfiguration configuration)
-			throws CoreException, EngineContextException {
-		RunConfiguration runConfiguration = new RunConfiguration(configuration);
-		return new ModelExecutionContext(runConfiguration);
-	}
-
-
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor)
 			throws CoreException {		
 		try 
 		{
-			debug("About to initialize and run the GEMOC Execution Engine...");
-			ModelExecutionContext executionContext = createModelExecutionContext(configuration);			
+			RunConfiguration runConfiguration = new RunConfiguration(configuration);
+
+			if (ILaunchManager.DEBUG_MODE.equals(mode)
+				&& runConfiguration.getAnimatorURIAsString() != null) 
+			{
+				URI uri = URI.createPlatformResourceURI(runConfiguration.getAnimatorURIAsString(), true);
+				killPreviousSiriusSession(uri, monitor);
+				openNewSiriusSession(uri, monitor);
+			}
+			
+			debug("About to initialize and run the GEMOC Execution Engine...");			
+			ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration);			
 			throwExceptionIfEngineAlreadyRunning(executionContext);
 			ILogicalStepDecider decider = LogicalStepDeciderFactory.createDecider(executionContext.getRunConfiguration().getDeciderName(), executionContext.getSolver());
 
@@ -91,6 +113,45 @@ public class GemocReflectiveModelLauncher
 		  	throw new CoreException(new Status(Status.ERROR, Activator.PLUGIN_ID, message, e));
 		}
 	}
+
+	private void openNewSiriusSession(URI sessionResourceURI, IProgressMonitor monitor) {
+		Session session = SessionManager.INSTANCE.getSession(sessionResourceURI, monitor);
+		session.open(monitor);
+//
+//		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(sessionResourceURI.toPlatformString(true)));
+//		final IPath uriAsPath = file.getLocation();
+//		Display.getDefault().asyncExec(new Runnable() {
+//			@Override
+//			public void run() {
+//				//IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+//				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+//				IFileStore fileStore = EFS.getLocalFileSystem().getStore(uriAsPath);
+//				try {
+//					IDE.openEditorOnFileStore( page, fileStore );
+//				} catch (PartInitException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+// 			}
+//		});
+//		
+		for (DView view : session.getSelectedViews())
+		{
+			for (DRepresentation representation : view.getOwnedRepresentations())
+			{
+				DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+			}
+		}
+	}
+
+	private void killPreviousSiriusSession(URI sessionResourceURI, IProgressMonitor monitor) {
+		Session session = SessionManager.INSTANCE.getExistingSession(sessionResourceURI);
+		if (session != null) {
+			session.close(monitor);
+			SessionManager.INSTANCE.remove(session);			
+		}
+	}
+
 
 	private void throwExceptionIfEngineAlreadyRunning(ModelExecutionContext executionContext) throws CoreException 
 	{

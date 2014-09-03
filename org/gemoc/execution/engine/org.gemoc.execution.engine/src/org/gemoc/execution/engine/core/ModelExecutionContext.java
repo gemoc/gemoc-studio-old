@@ -82,9 +82,9 @@ public class ModelExecutionContext implements IExecutionContext
 	{
 		if (getRunConfiguration().isAnimationActive()) 
 		{
-			URI uri = URI.createPlatformResourceURI(sessionPath, true);
-			Session _siriusSession = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
-			return _siriusSession.getTransactionalEditingDomain().getResourceSet();
+			URI uri = URI.createPlatformResourceURI(sessionPath, true);		
+			Session siriusSession = SessionManager.INSTANCE.getExistingSession(uri);
+			return siriusSession.getTransactionalEditingDomain().getResourceSet();
 		} 
 		return new ResourceSetImpl();
 	}

@@ -226,14 +226,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	}
 
 	private void clean() {
-		if (_executionContext.getDebuggerViewModelPath() != null
-			&& !_executionContext.getDebuggerViewModelPath().toString().equals(""))
-		{
-			URI uri = URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true);
-			Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());			
-			session.close(new NullProgressMonitor());
-			SessionManager.INSTANCE.remove(session);
-		}
 		for (IAliveClockController injector : _clockControllers)
 		{
 			injector.stop();
