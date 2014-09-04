@@ -6,10 +6,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-public abstract class HelpfulModelLauncherMainTab extends AbstractLaunchConfigurationTab 
+public abstract class LaunchConfigurationTab extends AbstractLaunchConfigurationTab 
 {
 
-	public HelpfulModelLauncherMainTab() {
+	public LaunchConfigurationTab() {
 		super();
 	}
 

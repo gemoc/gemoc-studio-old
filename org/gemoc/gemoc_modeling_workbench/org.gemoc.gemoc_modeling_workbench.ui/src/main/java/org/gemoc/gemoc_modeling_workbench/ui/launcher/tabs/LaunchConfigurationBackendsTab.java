@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtensionPoint;
 
-public class ModelLauncherBackendsTab extends ModelLauncherDataProcessingTab 
+public class LaunchConfigurationBackendsTab extends LaunchConfigurationDataProcessingTab 
 {
 
 	@Override

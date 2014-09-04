@@ -4,9 +4,9 @@ import org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup;
 import org.eclipse.debug.ui.CommonTab;
 import org.eclipse.debug.ui.ILaunchConfigurationDialog;
 import org.eclipse.debug.ui.ILaunchConfigurationTab;
-import org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs.GemocModelLauncherMainTab;
-import org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs.ModelLauncherBackendsTab;
-import org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs.ModelLauncherFrontendsTab;
+import org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs.LaunchConfigurationMainTab;
+import org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs.LaunchConfigurationBackendsTab;
+import org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs.LaunchConfigurationFrontendsTab;
 
 public class GemocReflectiveModelLauncherTabGroup extends
 		AbstractLaunchConfigurationTabGroup {
@@ -18,9 +18,9 @@ public class GemocReflectiveModelLauncherTabGroup extends
 	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
 		ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] { 
-				new GemocModelLauncherMainTab(),
-                new ModelLauncherBackendsTab(),
-                new ModelLauncherFrontendsTab(),
+				new LaunchConfigurationMainTab(),
+                new LaunchConfigurationBackendsTab(),
+                new LaunchConfigurationFrontendsTab(),
                 new CommonTab()
 		};
 		setTabs(tabs);

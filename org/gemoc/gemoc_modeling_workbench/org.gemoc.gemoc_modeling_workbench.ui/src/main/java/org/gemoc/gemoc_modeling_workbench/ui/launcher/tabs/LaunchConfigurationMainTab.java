@@ -36,7 +36,7 @@ import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
-public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
+public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 
 	protected Text _modelLocationText;
 	protected Text _siriusRepresentationLocationText;
