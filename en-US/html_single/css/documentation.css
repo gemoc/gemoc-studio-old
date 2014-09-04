@@ -292,15 +292,15 @@ div.note h2, div.note p, div.tip h2, div.tip p, div.caution h2, div.caution p, d
 #title a.site_href {
     display:block;
     height:166px;
-    width:310px;
+    width:416px;
     float:left;
-    background:url(../images/gemoc-anr-logo-couleur.png) top left no-repeat;
+    background:url(../images/gemoc-logo.png) top left no-repeat;
 }
 
 #title a.doc_href {
     display:block;
     height:166px;
-    background:transparent url(../images/IconeGemocStudio-large.png) top right no-repeat;
+    background:transparent url(../images/IconeGemocStudio-text.png) top right no-repeat;
 }
 
 /* Table */
