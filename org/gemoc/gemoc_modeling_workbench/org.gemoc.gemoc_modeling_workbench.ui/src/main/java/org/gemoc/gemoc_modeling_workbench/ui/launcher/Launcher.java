@@ -127,8 +127,10 @@ public class Launcher
 					protected void doExecute() {
 						for(Layer l : diagram.getDescription().getAdditionalLayers())
 						{
-							if (l.getName().toUpperCase().contains("DEBUG")
-								|| l.getName().toUpperCase().contains("ANIMATION"))
+							boolean mustBeActive = l.getName().toUpperCase().contains("DEBUG")
+													|| l.getName().toUpperCase().contains("ANIMATION");
+							if (mustBeActive
+								&& !diagram.getActivatedLayers().contains(l))
 							{
 								ChangeLayerActivationCommand c = new ChangeLayerActivationCommand(
 										editingDomain, 
