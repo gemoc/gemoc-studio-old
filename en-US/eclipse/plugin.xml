@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<!DOCTYPE plugin
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<plugin name="DocBook Online Help Sample" id="com.example.help" version="1.0" provider-name="Example provider">
+   <extension point="org.eclipse.help.toc">
+      <toc file="toc.xml" primary="true"/>
+   </extension>
+   <extension point="org.eclipse.help.index">
+      <index file="index.xml"/>
+   </extension>
+</plugin>

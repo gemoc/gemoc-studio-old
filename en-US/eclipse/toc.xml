@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<!DOCTYPE toc
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<toc label="GEMOC Studio Guide" topic="index.html">
+   <topic label="Introduction" href="pr01.html"/>
+   <topic label="Gemoc Language workbench" href="ch01.html">
+      <topic label="Language Workbench overview" href="ch01.html#_language_workbench_overview"/>
+      <topic label="Gemoc Language project" href="ch01.html#_gemoc_language_project"/>
+      <topic label="Defining Abstract Syntax (or domain concepts)" href="ch01.html#_defining_abstract_syntax_or_domain_concepts"/>
+      <topic label="Defining RunTime Data" href="ch01.html#_defining_runtime_data"/>
+      <topic label="Defining Domain-Specific Actions (DSAs)" href="ch01.html#_defining_domain_specific_actions_dsas"/>
+      <topic label="Defining Domain-Specific Constraints" href="ch01.html#_defining_domain_specific_constraints"/>
+      <topic label="Defining a concrete syntax" href="ch01.html#_defining_a_concrete_syntax">
+         <topic label="Defining a concrete syntax with xText" href="ch01.html#_defining_a_concrete_syntax_with_xtext"/>
+         <topic label="Defining a concrete syntax with Sirius" href="ch01.html#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>
+      </topic>
+      <topic label="Defing Model of Concurrency (MoC)" href="ch01.html#_defing_model_of_concurrency_moc"/>
+      <topic label="Defining Domain Specific Events (DSE)" href="ch01.html#_defining_domain_specific_events_dse"/>
+      <topic label="Defining an animation view" href="ch01.html#_defining_an_animation_view"/>
+      <topic label="Process support view" href="ch01.html#section-process-support-view"/>
+   </topic>
+   <topic label="Gemoc Modeling workbench" href="ch02.html">
+      <topic label="Modeling workbench overview" href="ch02.html#_modeling_workbench_overview"/>
+      <topic label="Editing model" href="ch02.html#modeling-workbench-editing-model-section"/>
+      <topic label="Executing model" href="ch02.html#modeling-workbench-executing-model-section">
+         <topic label="Launch configuration" href="ch02.html#_launch_configuration">
+            <topic label="General options" href="ch02.html#_general_options"/>
+            <topic label="Run mode" href="ch02.html#_run_mode"/>
+            <topic label="Debug mode" href="ch02.html#_debug_mode"/>
+            <topic label="Backends and frontends" href="ch02.html#_backends_and_frontends"/>
+         </topic>
+         <topic label="Engine View" href="ch02.html#modeling-workbench-executing-model-engine-view-section"/>
+         <topic label="Logical Step View" href="ch02.html#modeling-workbench-executing-model-logical-step-view-section"/>
+         <topic label="Timeline View" href="ch02.html#modeling-workbench-executing-model-timeline-view-section"/>
+         <topic label="Event Manager View" href="ch02.html#modeling-workbench-executing-model-event-manager-view-section"/>
+         <topic label="Animation View" href="ch02.html#modeling-workbench-executing-model-animation-view-section"/>
+         <topic label="Debug View" href="ch02.html#modeling-workbench-executing-model-debug-view-section"/>
+         <topic label="Variable View" href="ch02.html#modeling-workbench-executing-model-variable-view-section"/>
+      </topic>
+   </topic>
+   <topic label="Bibliography" href="bi01.html">
+      <topic label="Articles" href="bi01.html#d0e379"/>
+   </topic>
+   <topic label="Glossary" href="go01.html"/>
+   <topic label="Index" href="ix01.html"/>
+</toc>
