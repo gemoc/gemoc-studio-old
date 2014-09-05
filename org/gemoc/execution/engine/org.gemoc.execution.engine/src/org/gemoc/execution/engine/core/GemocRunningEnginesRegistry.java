@@ -24,27 +24,36 @@ public class GemocRunningEnginesRegistry {
 	synchronized public String registerEngine(String baseName, GemocExecutionEngine engine){
 		int uniqueInstance = 0;
 		String engineName = Thread.currentThread().getName() + " ("+uniqueInstance+")";
-		while(runningEngines.containsKey(engineName)){
-			uniqueInstance = uniqueInstance +1;
-			engineName = Thread.currentThread().getName() + " ("+uniqueInstance+")";
+		synchronized(runningEngines)
+		{
+			while(runningEngines.containsKey(engineName)){
+				uniqueInstance = uniqueInstance +1;
+				engineName = Thread.currentThread().getName() + " ("+uniqueInstance+")";
+			}
+			runningEngines.put(engineName, engine);
 		}
-		runningEngines.put(engineName, engine);
-		notifyEngineRegistered(engine);
+		notifyEngineRegistered(engine);			
 		return engineName;
 	}
 
 	public void unregisterEngine(String engineName) 
 	{
-		GemocExecutionEngine engine = runningEngines.get(engineName);
-		runningEngines.remove(engine);
-		if (engine != null)
+		synchronized(runningEngines)
 		{
-			notifyEngineUnregistered(engine);
+			GemocExecutionEngine engine = runningEngines.get(engineName);
+			if (engine != null)
+			{
+				runningEngines.remove(engineName);
+				notifyEngineUnregistered(engine);
+			}			
 		}
 	}
 
 	public HashMap<String, GemocExecutionEngine> getRunningEngines() {
-		return runningEngines;
+		synchronized(runningEngines)
+		{
+			return new HashMap<String, GemocExecutionEngine>(runningEngines);			
+		}
 	}
 	
 	

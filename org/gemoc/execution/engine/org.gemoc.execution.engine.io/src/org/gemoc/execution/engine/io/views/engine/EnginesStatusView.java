@@ -355,22 +355,17 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 		    // we may be triggered by a registry change or by an engine change
 		    // if registry changes, then may need to observe the new engine
 //			List<String> engineStopped = new ArrayList<String>();
-		    for( Entry<String, GemocExecutionEngine> engineEntry :org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().entrySet())
+		    for (Entry<String, GemocExecutionEngine> engineEntry : org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().entrySet())
 		    {		    	  
 		    	switch(engineEntry.getValue().getEngineStatus().getRunningStatus())
 		    	{
 		    		case Stopped:
 		    			org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.unregisterEngine(engineEntry.getKey());		    			
-//		    			engineStopped.add(engineEntry.getKey());
 		    			break;
 		    		default:
 		    	}		    	
 	    	}
-//	    	for(String engine : engineStopped){
-//	    		org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().remove(engine);
-//	    	}
-	    	update(null, null);
-	    	  
+		    _viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);
 	      }
 		 });
 	}
