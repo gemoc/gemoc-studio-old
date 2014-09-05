@@ -28,4 +28,5 @@
 		</topic> 
 	</topic>
 	<topic label="Main Topic 2"/>
+ <link toc="eclipse_help/eclipse/toc.xml"/>
 </toc>

@@ -11,6 +11,9 @@
             file="testToc.xml"
             primary="true">
       </toc>
+      <toc
+            file="eclipse_help/eclipse/toc.xml">
+      </toc>
    </extension>
 
 </plugin>
