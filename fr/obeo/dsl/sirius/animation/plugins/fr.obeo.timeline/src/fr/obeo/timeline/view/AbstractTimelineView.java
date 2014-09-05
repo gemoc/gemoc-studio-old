@@ -440,7 +440,9 @@ public abstract class AbstractTimelineView extends ViewPart {
 			this.provider.removeTimelineListener(timelineWindowListener);
 		}
 		this.provider = timelineProvider;
-		this.provider.addTimelineListener(timelineWindowListener);
+		if (timelineProvider != null) {
+			this.provider.addTimelineListener(timelineWindowListener);
+		}
 		timelineWindow.setLength(getWindowLength());
 	}
 

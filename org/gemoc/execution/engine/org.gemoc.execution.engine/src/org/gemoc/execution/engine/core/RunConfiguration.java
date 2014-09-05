@@ -21,14 +21,12 @@ public class RunConfiguration implements IRunConfiguration
 	
 	// main launch parameters
 	public static final String LAUNCH_MODEL_PATH = "GEMOC_LAUNCH_MODEL_PATH";
-	public static final String LAUNCH_ANIMATE = "GEMOC_ANIMATE";
 	public static final String LAUNCH_DELAY = "GEMOC_ANIMATE_DELAY";
 	public static final String LAUNCH_SELECTED_LANGUAGE = "GEMOC_LAUNCH_SELECTED_LANGUAGE";
 	public static final String LAUNCH_SELECTED_DECIDER = "GEMOC_LAUNCH_SELECTED_DECIDER";
 	public static final String LAUNCH_ACTIVE_TRACE = "GEMOC_LAUNCH_ACTIVE_TRACE";
 	
 	// parameters that should be derived from the language in future version
-	public static final String LAUNCH_MODELOFEXECUTION_GLML_PATH = "GEMOC_LAUNCH_MODELOFEXECUTION_GLML_FILE_PATH";
 	public static final String LAUNCH_DEADLOCK_DETECTION_DEPTH = "GEMOC_LAUNCH_DEADLOCK_DETECTION_DEPTH";
 	public static final String DECIDER_SOLVER_PROPOSITION = "Solver proposition";
 	public static final String DECIDER_RANDOM = "Random";
@@ -48,11 +46,7 @@ public class RunConfiguration implements IRunConfiguration
 	private void extractInformation() throws CoreException 
 	{
 		_languageName = getAttribute(LAUNCH_SELECTED_LANGUAGE, "");
-		_isAnimatationActive = getAttribute(LAUNCH_ANIMATE, false);
-		if (_isAnimatationActive)
-		{
-			_animationDelay = getAttribute(LAUNCH_DELAY, 0);
-		}
+		_animationDelay = getAttribute(LAUNCH_DELAY, 0);
 		_isTraceActive = getAttribute(LAUNCH_ACTIVE_TRACE, false);
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_modelURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
@@ -90,12 +84,6 @@ public class RunConfiguration implements IRunConfiguration
 		return _languageName;
 	}
 	
-	private boolean _isAnimatationActive;
-	public boolean isAnimationActive() 
-	{
-		return _isAnimatationActive;
-	}
-
 	private int _animationDelay = 0;
 	public int getAnimationDelay() 
 	{

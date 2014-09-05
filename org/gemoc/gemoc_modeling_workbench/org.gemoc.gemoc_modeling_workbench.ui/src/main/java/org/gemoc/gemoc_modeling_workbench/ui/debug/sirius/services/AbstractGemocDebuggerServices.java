@@ -28,7 +28,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
-import org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncher;
+import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.LogicalStep;
@@ -591,7 +591,7 @@ public abstract class AbstractGemocDebuggerServices {
 	 * @return the debug model identifier
 	 */
 	public String getModelIdentifier() {
-		return GemocReflectiveModelLauncher.MODEL_ID;
+		return Launcher.MODEL_ID;
 	}
 
 }

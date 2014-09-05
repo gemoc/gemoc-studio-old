@@ -25,6 +25,7 @@ import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.DependantViewPart;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -147,7 +148,8 @@ public class LogicalStepsView extends DependantViewPart
 	
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
-		if (engine != null) 
+		if (engine != null
+			&&  engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug)) 
 		{
 			_currentEngine = engine;	
 			_viewer.setInput(_currentEngine);
@@ -157,10 +159,10 @@ public class LogicalStepsView extends DependantViewPart
 				_viewer.expandAll();
 				TreeViewerHelper.resizeColumns(_viewer);				
 			}
-//			else 
-//			{
-//				_viewer.setInput(null);				
-//			}
+			else 
+			{
+				_viewer.setInput(null);				
+			}
 		}
 	}
 

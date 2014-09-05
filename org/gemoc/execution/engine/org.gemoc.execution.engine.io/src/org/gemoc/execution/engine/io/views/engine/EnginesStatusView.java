@@ -38,6 +38,7 @@ import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
@@ -78,11 +79,6 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 		_viewer.addSelectionChangedListener(
 				new ISelectionChangedListener() {
 					public void selectionChanged(SelectionChangedEvent event) {
-//						if (event.getSelection() instanceof TreeSelection) {
-//							TreeSelection selection = (TreeSelection)event.getSelection();
-//							if (selection.getPaths().length > 0)
-//								_lastSelection = selection.getPaths()[0].getFirstSegment();
-//						}
 						fireEngineSelectionChanged();
 					}
 				});
@@ -383,7 +379,12 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 	public void update(final Observable o, final Object arg) {
 		Display.getDefault().syncExec(new Runnable() {
 		      public void run() {
-		    	  updateUserInterface((GemocExecutionEngine)o);
+		    	  GemocExecutionEngine engine = (GemocExecutionEngine)o;
+		    	  updateUserInterface(engine);
+		    	  if (getSelectedEngine() == engine)
+		    	  {
+		    		  fireEngineSelectionChanged();
+		    	  }
 		      }
 		 });
 	}
@@ -414,9 +415,11 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 		    	  _lastSelection = engine;
 	    		  ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
 	    		  observable.addObserver(EnginesStatusView.this);
-		    	  updateUserInterface(engine);
-		      }
-
+		    	  _viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);
+		    	  TreeViewerHelper.resizeColumns(_viewer);
+	    		  TreePath treePath = new TreePath(new Object[] {engine});
+	    		  TreeSelection newSelection = new TreeSelection(treePath);
+	    		  _viewer.setSelection(newSelection, true);			      }
 		 });
 	}
 
@@ -428,14 +431,22 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 	}
 
 	private void updateUserInterface(final GemocExecutionEngine engine) {
-		_viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);	    	  
-    	  if (_lastSelection != null)
-    	  {
-	    	  TreeViewerHelper.resizeColumns(_viewer);
-    		  TreePath treePath = new TreePath(new Object[] {engine});
-    		  TreeSelection newSelection = new TreeSelection(treePath);
-	    	  _viewer.setSelection(newSelection, true);		    		  
-    	  }
-    	  _viewer.expandAll();
+    	//TreeViewerHelper.resizeColumns(_viewer);
+//		TreePath treePath = new TreePath(new Object[] {engine});
+//		TreeSelection newSelection = new TreeSelection(treePath);
+//    	_viewer.setSelection(newSelection, true);		    		  
+
+    	_viewer.update(engine, null);
+    	
+		//_viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);	    	  
+//    	if (_lastSelection != null)
+ //   	{
+//    		if (engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Run))
+//    		{
+//    			return;
+//    		}    		  
+    		  
+//    	}
+    	//_viewer.expandAll();
 	}
 }

@@ -16,6 +16,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
@@ -32,8 +33,6 @@ import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer
 
 public class ModelExecutionContext implements IExecutionContext
 {
-
-
 	
 	private IPath _debuggerViewModelPath;
 	public IPath getDebuggerViewModelPath() {
@@ -43,9 +42,11 @@ public class ModelExecutionContext implements IExecutionContext
 	private RunConfiguration _runConfiguration;
 	private TransactionalEditingDomain _editingDomain;
 	private Resource _resourceModel;
+	private ExecutionMode _executionMode;	
 	
-	public ModelExecutionContext(RunConfiguration runConfiguration) throws EngineContextException, CoreException {
+	public ModelExecutionContext(RunConfiguration runConfiguration, ExecutionMode executionMode) throws EngineContextException, CoreException {
 		_runConfiguration = runConfiguration;
+		_executionMode = executionMode;
 		_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getModelURIAsString());
 		
 		_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
@@ -80,7 +81,7 @@ public class ModelExecutionContext implements IExecutionContext
 
 	private ResourceSet getResourceSet(String sessionPath) 
 	{
-		if (getRunConfiguration().isAnimationActive()) 
+		if (_executionMode.equals(ExecutionMode.Debug)) 
 		{
 			URI uri = URI.createPlatformResourceURI(sessionPath, true);		
 			Session siriusSession = SessionManager.INSTANCE.getExistingSession(uri);
@@ -204,6 +205,11 @@ public class ModelExecutionContext implements IExecutionContext
 	public IExecutionWorkspace getWorkspace() 
 	{
 		return _executionWorkspace;
+	}
+
+	@Override
+	public ExecutionMode getExecutionMode() {
+		return _executionMode;
 	}
 
 }
