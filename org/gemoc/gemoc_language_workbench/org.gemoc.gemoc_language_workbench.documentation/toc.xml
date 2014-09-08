@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 
-<toc label="Sample Table of Contents">
-	<topic label="GEMOC Project"  href="html/GemocProject.html"> 
-		<topic label="Language Project" href="html/GemocLanguageProject.html">
-			<topic label="AS Project" href="html/ASProject.html">
-				<topic label="EMF Project" href="html/EMFProject.html"/>
-			</topic>
-			<topic label="DSA Project" href="html/DSAProject.html">
-				<topic label="Kermeta 2 Project" href="html/K2Project.html"/>
-			</topic>
-			<topic label="Concrete Syntax Configurator" href="html/ConcreteSyntaxConfigurator.html"/>
-			<topic label="MOCC Project" href="html/MOCProject.html">
-				<topic label="Timesquare Project" href="html/TimesquareProject.html"/>
-				<topic label="NEMO Project" href="html/NEMOProject.html"/>
-			</topic>
-			<topic label="Composition Operator Project" href="html/CompositionOperator.html"/>
-			<topic label="DSE Project" href="html/DSEProject.html"/>
-		</topic>
-		<topic label="Modeling Project" href="html/GemocModelingProject.html">
-			<topic label="Modeling Editor" href="html/ModelingEditor.html">
-				<topic label="Sirius Editor" href="html/SiriusEditor.html"/>
-				<topic label="Xtext Editor" href="html/XtextEditor.html"/>
-			</topic>
-			<topic label="Modeling Animator" href="html/ModelingAnimator.html"/>
-			<topic label="Trace Editor" href="html/TraceEditor.html"/>
-		</topic> 
-	</topic>
-	<topic label="Main Topic 2"/>
- <link toc="eclipse_help/eclipse/toc.xml"/>
+<toc label="Sample Table of Contents">	
+ <link toc="eclipse_help/eclipse/toc.xml"></link>
 </toc>

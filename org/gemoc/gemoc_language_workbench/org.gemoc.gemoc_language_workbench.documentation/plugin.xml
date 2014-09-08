@@ -12,7 +12,8 @@
             primary="true">
       </toc>
       <toc
-            file="eclipse_help/eclipse/toc.xml">
+            file="eclipse_help/eclipse/toc.xml"
+            primary="false">
       </toc>
    </extension>
 
