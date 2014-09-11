@@ -18,7 +18,7 @@ public class StopPlayScenario extends AbstractHandler {
 		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
 		eventView.stopPlayScenario();
 		eventView.informationMsg("Replay", "End");
-		eventView.executeService(event, SourceProviderControls.PLAY);
+		eventView.executeService(SourceProviderControls.PLAY);
 		return null;			
 	}	
 }

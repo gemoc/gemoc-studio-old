@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -44,8 +43,10 @@ import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.io.views.event.commands.CommandState;
 import org.gemoc.execution.engine.io.views.event.commands.DoInit;
+import org.gemoc.execution.engine.io.views.event.commands.StartWait;
 import org.gemoc.execution.engine.io.views.event.commands.StopPlayScenario;
 import org.gemoc.execution.engine.io.views.event.commands.StopRecordScenario;
+import org.gemoc.execution.engine.io.views.event.commands.StopWait;
 import org.gemoc.execution.engine.io.views.event.commands.UndoInit;
 import org.gemoc.execution.engine.io.views.event.filters.AllBindedClockFilter;
 import org.gemoc.execution.engine.io.views.event.filters.Filter;
@@ -88,9 +89,12 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	private CommandState _commandStateService;
 
-	private Button _quickFreeClock;
-	private Button _quickForceClock_to_tick;
-	private Button _quickForceClock_to_notTick;
+	private Button _freeButton;
+	private Button _forceTrueButton;
+	private Button _forceFalseButton;
+	
+	private List<Button> _mseControlButtons;
+	
 	private Label _viewStateLabel; 
 
 	/**
@@ -164,7 +168,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		STOP_PLAY_SCENARIO(StopPlayScenario.ID),
 		STOP_RECORD_SCENARIO(StopRecordScenario.ID),
 		DO_INIT(DoInit.ID),
-		UNDO_INIT(UndoInit.ID);
+		UNDO_INIT(UndoInit.ID),
+		START_WAIT(StartWait.ID),
+		STOP_WAIT(StopWait.ID);
 
 		String id;
 
@@ -185,6 +191,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	public enum SourceProviderControls 
 	{
+		WAIT,
 		PLAY,
 		RECORD,
 		INIT,
@@ -193,10 +200,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	public enum CacheStatus
 	{
-		WAITING("Waiting"),
+		WAITING("Waiting validation"),
+		RUNNING("Running"),
 		RECORDING("Recording"),
 		PLAYING("Playing"),
-		STOPPED("No Engine selected");
+		STOPPED("No engine selected");
 
 		private String text;
 
@@ -456,33 +464,38 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		Label icon = new Label(informationBar, SWT.IMAGE_PNG);
 		icon.setImage(SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON));
 		// A label on the second column
-		_viewStateLabel = new Label(informationBar, SWT.NULL);
+		_viewStateLabel = new Label(informationBar, SWT.NONE);
 		// 3 buttons on the third column
 		Composite buttonBar = new Composite(informationBar, SWT.NONE);
 		buttonBar.setLayout(new GridLayout(3, false));
 		buttonBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 		// Button which will freed the selected Clocks
-		_quickFreeClock = new Button(buttonBar, SWT.PUSH);
-		_quickFreeClock.setImage(SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET));
-		_quickFreeClock.setToolTipText("Free");
-		_quickFreeClock.setData(ClockStatus.NOTFORCED_NOTSET);
-		_quickFreeClock.setLayoutData(new GridData(SWT.END,SWT.NONE,true, false));
+		_freeButton = new Button(buttonBar, SWT.PUSH);
+		_freeButton.setImage(SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET));
+		_freeButton.setToolTipText("Free");
+		_freeButton.setData(ClockStatus.NOTFORCED_NOTSET);
+		_freeButton.setLayoutData(new GridData(SWT.END,SWT.NONE,true, false));
 		// Button which will forced to not tick the selected Clocks
-		_quickForceClock_to_notTick = new Button(buttonBar, SWT.PUSH);
-		_quickForceClock_to_notTick.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET));
-		_quickForceClock_to_notTick.setToolTipText("Force to not tick");
-		_quickForceClock_to_notTick.setData(ClockStatus.FORCED_NOTSET);
-		_quickForceClock_to_notTick.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
+		_forceFalseButton = new Button(buttonBar, SWT.PUSH);
+		_forceFalseButton.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET));
+		_forceFalseButton.setToolTipText("Force to not tick");
+		_forceFalseButton.setData(ClockStatus.FORCED_NOTSET);
+		_forceFalseButton.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
 		// Button which will forced to tick the selected Clocks
-		_quickForceClock_to_tick = new Button(buttonBar, SWT.PUSH);
-		_quickForceClock_to_tick.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET));
-		_quickForceClock_to_tick.setToolTipText("Force to tick");
-		_quickForceClock_to_tick.setData(ClockStatus.FORCED_SET);
-		_quickForceClock_to_tick.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
-
-		_quickFreeClock.addSelectionListener(_menuAndButtonListener);
-		_quickForceClock_to_notTick.addSelectionListener(_menuAndButtonListener);
-		_quickForceClock_to_tick.addSelectionListener(_menuAndButtonListener);
+		_forceTrueButton = new Button(buttonBar, SWT.PUSH);
+		_forceTrueButton.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET));
+		_forceTrueButton.setToolTipText("Force to tick");
+		_forceTrueButton.setData(ClockStatus.FORCED_SET);
+		_forceTrueButton.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
+		
+		_mseControlButtons = new ArrayList<Button>();
+		_mseControlButtons.add(_freeButton);
+		_mseControlButtons.add(_forceFalseButton);
+		_mseControlButtons.add(_forceTrueButton);
+		
+		for(Button b : _mseControlButtons){
+			b.addSelectionListener(_menuAndButtonListener);
+		}
 
 		updateInformationAndButtons();
 	}
@@ -585,24 +598,33 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				.getSourceProvider(CommandState.ID);
 		switch(_state)
 		{
-		case WAITING: // engine running without recording or playing a fragment
+		case WAITING: //user must select the first forced MSE
+			_commandStateService.setInit();
+			_commandStateService.resetRecordFLAG();
+			_commandStateService.resetPlayFLAG();
+			_commandStateService.startWait();
+		case RUNNING: // engine running without recording or playing a fragment
 			_commandStateService.resetPlayFLAG();
 			_commandStateService.resetRecordFLAG();
+			_commandStateService.stopWait();
 			_commandStateService.setInit(); 
 			break;
 		case PLAYING: // engine running and playing a fragment
 			_commandStateService.setInit();
 			_commandStateService.resetRecordFLAG();
+			_commandStateService.stopWait();
 			_commandStateService.setPlayFLAG();
 			break;
 		case RECORDING: // engine running and recording a fragment
 			_commandStateService.setInit();
 			_commandStateService.resetPlayFLAG();
+			_commandStateService.stopWait();
 			_commandStateService.setRecordFLAG();
 			break;
 		case STOPPED: // engine stopped
 			_commandStateService.resetPlayFLAG();
 			_commandStateService.resetRecordFLAG();
+			_commandStateService.stopWait();
 			_commandStateService.resetInit();
 			break;
 		default: break;	
@@ -662,6 +684,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					{
 						executeCommand(Commands.STOP_PLAY_SCENARIO);
 					}
+					if(_state.equals(CacheStatus.WAITING))
+					{
+						executeCommand(Commands.STOP_WAIT);
+					}
 					_engine.deleteObserver(this);
 					_cacheMap.remove(_engine);
 				}
@@ -675,7 +701,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			{
 				_engine.deleteObserver(this);
 				_engine.addObserver(this);
-				executeCommand(Commands.DO_INIT);
+				//executeCommand(Commands.DO_INIT);
 				if(_cacheMap.get(_engine) == null)
 				{
 					createcache();
@@ -693,6 +719,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		EngineCache cache = new EngineCache(_engine);
 		_cacheMap.put(_engine, cache);
+		executeCommand(Commands.START_WAIT);
 	}
 
 
@@ -821,6 +848,12 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_state = _cache.getState();
 		_wrapperCache.freeAllClocks();
 	}
+	
+	public void validate()
+	{
+		_engine.resume();
+		_cache.setState(CacheStatus.RUNNING);
+	}
 
 	public void informationMsg(final String title, final String msg){
 		final EventManagerView eventView = this;
@@ -835,11 +868,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	/**
 	 * Set or reset variables in the SourceProvider to enable or disable command's handlers 
 	 * (to make them appear grayed).
-	 * The mapping is done in the plugin.xml
+	 * The mapping between value and command is done in the plugin.xml
 	 * @param event
 	 * @param command
 	 */
-	public void executeService(ExecutionEvent event, SourceProviderControls command)
+	public void executeService(SourceProviderControls command)
 	{
 		ISourceProviderService sourceProviderService = (ISourceProviderService) PlatformUI.getWorkbench().getService(ISourceProviderService.class);
 		// Get the source provider service
@@ -850,6 +883,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				.getSourceProvider(CommandState.ID);
 		switch(command)
 		{
+		case WAIT: _commandStateService.startWait(); break;
 		case PLAY: _commandStateService.setPlayFLAG(); break;
 		case RECORD: _commandStateService.setRecordFLAG(); break;
 		case INIT: _commandStateService.setInit(); break;
@@ -876,10 +910,18 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	private void updateInformationAndButtons()
 	{
-		_quickFreeClock.setEnabled(_engine!=null);
-		_quickForceClock_to_notTick.setEnabled(_engine!=null);
-		_quickForceClock_to_tick.setEnabled(_engine!=null);
-
+		enableOrDisableButtons(_mseControlButtons);
 		_viewStateLabel.setText(_state.getText()+" ...");
-	}	
+	}
+	
+	private void enableOrDisableButtons(List<Button> controlButtons){
+		for(Button b : controlButtons){
+			b.setEnabled(_engine!=null);
+		}
+	}
+	
+	public CacheStatus getState()
+	{
+		return _state;
+	}
 }

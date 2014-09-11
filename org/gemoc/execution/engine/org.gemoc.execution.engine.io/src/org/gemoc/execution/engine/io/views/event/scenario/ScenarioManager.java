@@ -58,7 +58,7 @@ public class ScenarioManager
 	public void stopRecord()
 	{
 		/* Recording mode is terminated,the state is set to idle mode.					*/
-		_cache.setState(CacheStatus.WAITING);
+		_cache.setState(CacheStatus.RUNNING);
 	}
 	
 	
@@ -83,7 +83,7 @@ public class ScenarioManager
 	 */
 	public void stop()
 	{
-		_cache.setState(CacheStatus.WAITING);
+		_cache.setState(CacheStatus.RUNNING);
 		_player.stop();
 	}
 

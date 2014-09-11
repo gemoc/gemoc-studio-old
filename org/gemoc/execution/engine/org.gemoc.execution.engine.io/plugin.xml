@@ -69,6 +69,12 @@
             allPopups="false"
             locationURI="toolbar:org.gemoc.execution.engine.io.views.event.EventManagerView">
          <command
+               commandId="org.gemoc.execution.engine.io.views.event.commands.StopWait"
+               icon="icons/validate-16.ico"
+               label="Validate"
+               style="push">
+         </command>
+         <command
                commandId="org.gemoc.execution.engine.io.views.event.commands.LoadScenario"
                icon="icons/play-4-16.png"
                label="Load Scenario"
@@ -136,6 +142,15 @@
             id="org.gemoc.execution.engine.io.views.event.commands.UndoInit"
             name="Undo init">
       </command>
+      <command
+            id="org.gemoc.execution.engine.io.views.event.commands.StartWait"
+            name="StartWait">
+      </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.StopWait"
+            id="org.gemoc.execution.engine.io.views.event.commands.StopWait"
+            name="StopWait">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.services">
@@ -151,6 +166,10 @@
          </variable>
          <variable
                name="INIT_STATE"
+               priorityLevel="workbench">
+         </variable>
+         <variable
+               name="WAIT_STATE"
                priorityLevel="workbench">
          </variable>
       </sourceProvider>
@@ -192,6 +211,18 @@
                   variable="org.gemoc.execution.engine.io.views.event.commands.INIT">
                <equals
                      value="SET">
+               </equals>
+            </with>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="org.gemoc.execution.engine.io.views.event.commands.StopWait"
+            commandId="org.gemoc.execution.engine.io.views.event.commands.StopWait">
+         <enabledWhen>
+            <with
+                  variable="org.gemoc.execution.engine.io.views.event.commands.WAIT">
+               <equals
+                     value="ENABLE">
                </equals>
             </with>
          </enabledWhen>
