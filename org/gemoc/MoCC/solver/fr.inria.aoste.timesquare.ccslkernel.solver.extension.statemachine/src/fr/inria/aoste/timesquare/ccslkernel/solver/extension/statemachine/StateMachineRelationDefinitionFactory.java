@@ -8,6 +8,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ExternalRelationDefinition;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDeclaration;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.AbstractConcreteMapping;
+import fr.inria.aoste.timesquare.ccslkernel.solver.ISolverElement;
 import fr.inria.aoste.timesquare.ccslkernel.solver.SolverElement;
 import fr.inria.aoste.timesquare.ccslkernel.solver.TimeModel.SolverClock;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
@@ -33,8 +34,9 @@ public class StateMachineRelationDefinitionFactory implements ISolverRelationFac
 	}
 
 	@Override
-	public AbstractWrappedRelation createRelation(RelationDeclaration declaration,
-			ExternalRelationDefinition definition, AbstractConcreteMapping<SolverElement> context)
+	public AbstractWrappedRelation  createRelation(RelationDeclaration declaration,
+			ExternalRelationDefinition definition,
+			AbstractConcreteMapping<ISolverElement> context)
 			throws SolverException {
 		
 		StateMachineRelationDefinition modelSTS = (StateMachineRelationDefinition)definition;
@@ -72,5 +74,7 @@ public class StateMachineRelationDefinitionFactory implements ISolverRelationFac
 //		}
 		return semanticSTS;
 	}
+
+
 
 }

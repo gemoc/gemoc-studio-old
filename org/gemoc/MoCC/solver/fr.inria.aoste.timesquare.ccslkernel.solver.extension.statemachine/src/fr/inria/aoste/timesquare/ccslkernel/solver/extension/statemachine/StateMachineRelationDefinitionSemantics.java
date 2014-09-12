@@ -17,7 +17,6 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Trigger;
 
 import toools.io.Serializer;
-import toools.io.Utilities;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.BasicTypeFactory;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.DiscreteClockType;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.IntegerElement;
@@ -33,10 +32,14 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalE
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.AbstractEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ConcreteEntity;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.AbstractConcreteMapping;
-import fr.inria.aoste.timesquare.ccslkernel.solver.CCSLKernelSolver;
+import fr.inria.aoste.timesquare.ccslkernel.runtime.SerializedConstraintState;
+import fr.inria.aoste.timesquare.ccslkernel.runtime.elements.RuntimeClock;
+import fr.inria.aoste.timesquare.ccslkernel.runtime.exceptions.SimulationException;
+import fr.inria.aoste.timesquare.ccslkernel.runtime.helpers.AbstractSemanticHelper;
+import fr.inria.aoste.timesquare.ccslkernel.runtime.helpers.AbstractUpdateHelper;
+import fr.inria.aoste.timesquare.ccslkernel.solver.ISolverElement;
 import fr.inria.aoste.timesquare.ccslkernel.solver.SolverElement;
 import fr.inria.aoste.timesquare.ccslkernel.solver.SolverPrimitiveElement;
-import fr.inria.aoste.timesquare.ccslkernel.solver.StepExecutor;
 import fr.inria.aoste.timesquare.ccslkernel.solver.TimeModel.SolverClock;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.helpers.SemanticHelper;
@@ -47,17 +50,17 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 
 
 	private State _currentState=null;
-	private AbstractConcreteMapping<SolverElement> _abstract2concreteMap=null;
+	private AbstractConcreteMapping<ISolverElement> _abstract2concreteMap=null;
 	private StateMachineRelationDefinition _modelSTS=null;
 	
 	private ArrayList<Transition> _sensitiveTransitition;
 
 	private List<AbstractEntity> _parameters = null;
 	private List<AbstractEntity> _clockParameters = null;
-	private List<SolverElement> _allClocks = null;
+	private List<ISolverElement> _allClocks = null;
 	private Map<ConcreteEntity, IntegerElement> _localInteger = null;
 	
-	public StateMachineRelationDefinitionSemantics(StateMachineRelationDefinition modelSTS, AbstractConcreteMapping<SolverElement> context) {
+	public StateMachineRelationDefinitionSemantics(StateMachineRelationDefinition modelSTS, AbstractConcreteMapping<ISolverElement> context) {
 		_modelSTS = modelSTS;
 		_abstract2concreteMap = context;
 		_currentState = _modelSTS.getInitialStates().get(0);
@@ -95,7 +98,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 	}
 
 	@Override
-	public void start(SemanticHelper helper) throws SolverException {
+	public void start(AbstractSemanticHelper helper) throws SolverException {
 		_currentState = _modelSTS.getInitialStates().get(0);
 		_sensitiveTransitition = new ArrayList<Transition>();
 		for (Transition t : _currentState.getOutputTransitions()) {
@@ -115,8 +118,8 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		
 	}
 
-	private List<SolverElement> getConcreteElements(List<? extends AbstractEntity> abstractTriggers){
-		ArrayList<SolverElement> triggers = new ArrayList<SolverElement>();
+	private List<ISolverElement> getConcreteElements(List<? extends AbstractEntity> abstractTriggers){
+		ArrayList<ISolverElement> triggers = new ArrayList<ISolverElement>();
 		for (AbstractEntity ae : abstractTriggers) {
 			triggers.add(_abstract2concreteMap.getLocalValue(ae));
 		}
@@ -135,7 +138,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public void semantic(SemanticHelper semanticHelper) throws SolverException {
+	public void semantic(AbstractSemanticHelper semanticHelper) throws SolverException {
 		if (semanticHelper.isSemanticDone(this)) {
 			return;
 		}
@@ -144,8 +147,9 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		BDD stateBDD =semanticHelper.createOne();
 	
 		//always possible to do nothing 
-		for (SolverElement se : _allClocks) {
-			stateBDD.andWith(semanticHelper.getFalseBDDVariable((SolverClock) se));
+		for (ISolverElement se : _allClocks) {
+			RuntimeClock rc;
+			stateBDD.andWith(semanticHelper.getFalseBDDVariable((RuntimeClock) se));
 		}
 		
 		for (Transition t : _currentState.getOutputTransitions()) {
@@ -157,9 +161,9 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 			
 			_sensitiveTransitition.add(t);
 			
-			List<SolverElement> trueTrigger = null;
-			List<SolverElement> falseTrigger = null;
-			List<SolverElement> clocksNotInTrigger = new ArrayList<SolverElement>(_allClocks);
+			List<ISolverElement> trueTrigger = null;
+			List<ISolverElement> falseTrigger = null;
+			List<ISolverElement> clocksNotInTrigger = new ArrayList<ISolverElement>(_allClocks);
 
 			if(t.getTrigger() != null){
 				trueTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getTrueTriggers());
@@ -167,14 +171,14 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 				clocksNotInTrigger.removeAll(trueTrigger);
 			
 			BDD triggersBDD =semanticHelper.createOne();
-			for (SolverElement se : trueTrigger) {
-				triggersBDD.andWith(semanticHelper.getBDDVariable((SolverClock)se));
+			for (ISolverElement se : trueTrigger) {
+				triggersBDD.andWith(semanticHelper.getBDDVariable((RuntimeClock) se));
 			}
-			for (SolverElement se : falseTrigger) {
-				triggersBDD.andWith(semanticHelper.getFalseBDDVariable((SolverClock) se));
+			for (ISolverElement se : falseTrigger) {
+				triggersBDD.andWith(semanticHelper.getFalseBDDVariable((RuntimeClock)  se));
 			}	
-			for (SolverElement se : clocksNotInTrigger) {
-				triggersBDD.andWith(semanticHelper.getFalseBDDVariable((SolverClock) se));
+			for (ISolverElement se : clocksNotInTrigger) {
+				triggersBDD.andWith(semanticHelper.getFalseBDDVariable((RuntimeClock)  se));
 			}	
 		
 			stateBDD.orWith(triggersBDD);
@@ -201,37 +205,37 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 
   
 	@Override
-	public void deathSemantic(SemanticHelper helper)
+	public void deathSemantic(AbstractSemanticHelper helper)
 			throws SolverException {
 		//TODO: take into account the final states... !
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void update(UpdateHelper updateHelper) throws SolverException {
+	public void update(AbstractUpdateHelper updateHelper) throws SolverException {
 		allTransition: for (Transition t : _sensitiveTransitition) {
 			//construct three set, the one of clock that must tick and the clock that must not tick
-			List<SolverElement> trueTrigger = null;
-			List<SolverElement> falseTrigger = null;
-			List<SolverElement> clocksNotInTrigger = new ArrayList<SolverElement>(_allClocks);
+			List<ISolverElement> trueTrigger = null;
+			List<ISolverElement> falseTrigger = null;
+			List<ISolverElement> clocksNotInTrigger = new ArrayList<ISolverElement>(_allClocks);
 
 			if(t.getTrigger() != null){
 				trueTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getTrueTriggers());
 				falseTrigger = getConcreteElements((List<? extends AbstractEntity>) ((Trigger)t.getTrigger()).getFalseTriggers());
 				clocksNotInTrigger.removeAll(trueTrigger);
 			
-			for (SolverElement se : trueTrigger) {
-				if (! updateHelper.clockHasFired((SolverClock) se)){
+			for (ISolverElement se : trueTrigger) {
+				if (! updateHelper.clockHasFired((RuntimeClock)  se)){
 					continue allTransition; //it is not a fired transition
 				}
 			}
-			for (SolverElement se : falseTrigger) {
-				if (updateHelper.clockHasFired((SolverClock) se)){
+			for (ISolverElement se : falseTrigger) {
+				if (updateHelper.clockHasFired((RuntimeClock)  se)){
 					continue allTransition; //it is not a fired transition
 				}
 			}
-			for (SolverElement se : clocksNotInTrigger) {
-				if (updateHelper.clockHasFired((SolverClock) se)){
+			for (ISolverElement se : clocksNotInTrigger) {
+				if (updateHelper.clockHasFired((RuntimeClock)  se)){
 					continue allTransition; //it is not a fired transition
 				}
 			}
@@ -360,7 +364,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 			return localLeftElement.getValue();
 		}else{
 			if(expr instanceof IntegerVariableRef){
-				SolverElement ce = _abstract2concreteMap.getLocalValue(((IntegerVariableRef)expr).getReferencedVar());
+				SolverElement ce = (SolverElement) _abstract2concreteMap.getLocalValue(((IntegerVariableRef)expr).getReferencedVar());
 				if (ce instanceof SolverPrimitiveElement){
 					try{
 						return ((IntegerElement)((SolverPrimitiveElement)ce).getPrimitiveElement()).getValue();
@@ -400,27 +404,27 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 	
 	
 	@Override
-	public ArrayList<byte[]> getState() {
+	public SerializedConstraintState dumpState() {
 		//super does not add anything in the list
-		ArrayList<byte[]> currentState = new ArrayList<byte[]>();
+		SerializedConstraintState scs = super.dumpState();
 		int currentStateIndex = _modelSTS.getStates().indexOf(_currentState);
-		currentState.add(Serializer.getDefaultSerializer().toBytes(currentStateIndex));
+		scs.dump(currentStateIndex);
 		for(IntegerElement ie : _localInteger.values()){
-			currentState.add(Serializer.getDefaultSerializer().toBytes(ie.getValue().intValue()));
+			scs.dump(ie.getValue().intValue());
 //			System.out.println("################################################################# mem:" +ie.getValue().intValue());
 		}
-		return currentState;
+		return scs;
 	}
 
 	@Override
-	public void setState(ArrayList<byte[]> state) {
-		_currentState = _modelSTS.getStates().get((Integer) Serializer.getDefaultSerializer().fromBytes(state.get(0)));
+	public void restoreState(SerializedConstraintState scs) {
+		_currentState = _modelSTS.getStates().get((Integer) scs.restore(0));
 		int i=1;
 		for(IntegerElement ie : _localInteger.values()){
-			ie.setValue((Integer) Serializer.getDefaultSerializer().fromBytes(state.get(i++)));
+			ie.setValue((Integer) scs.restore(i++));
 		}
 		return;		
 	}
-	
+
 	
 }
