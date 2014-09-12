@@ -1,5 +1,6 @@
 package fr.obeo.timeline.view;
 
+import fr.obeo.timeline.Activator;
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.editpart.TimelineEditPartFactory;
 import fr.obeo.timeline.editpart.TimelineWindowEditPart;
@@ -8,6 +9,13 @@ import fr.obeo.timeline.model.TimelineWindow;
 
 import java.util.List;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.NotEnabledException;
+import org.eclipse.core.commands.NotHandledException;
+import org.eclipse.core.commands.State;
+import org.eclipse.core.commands.common.NotDefinedException;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.geometry.Point;
@@ -42,8 +50,11 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Slider;
+import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
+import org.eclipse.ui.handlers.IHandlerService;
+import org.eclipse.ui.handlers.RegistryToggleState;
 import org.eclipse.ui.part.ViewPart;
 
 /**
@@ -202,6 +213,9 @@ public abstract class AbstractTimelineView extends ViewPart {
 						timelineSlider.setMaximum(numberOfChoices);
 						timelineSlider.setVisible(timelineWindow.getLength() < numberOfChoices);
 					}
+					if (follow && provider != null) {
+						timelineWindow.setStart(provider.getNumberOfChoices() - timelineWindow.getLength());
+					}
 				}
 			});
 		}
@@ -234,6 +248,12 @@ public abstract class AbstractTimelineView extends ViewPart {
 									.getNumberOfChoices());
 						} else {
 							timelineSlider.setVisible(false);
+						}
+					}
+					if (follow && provider != null) {
+						int start = provider.getNumberOfChoices() - length;
+						if (start >= 0) {
+							timelineWindow.setStart(start);
 						}
 					}
 				}
@@ -291,6 +311,11 @@ public abstract class AbstractTimelineView extends ViewPart {
 	 */
 	private ITimelineWindowListener timelineWindowListener;
 
+	/**
+	 * Tells if we should follow the last position or not.
+	 */
+	private boolean follow;
+
 	@Override
 	public void createPartControl(Composite parent) {
 		final Composite container;
@@ -343,13 +368,20 @@ public abstract class AbstractTimelineView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				if (follow) {
+					toggleFollow();
+				}
 				timelineWindow.setStart(timelineSlider.getSelection());
 			}
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
+				if (follow) {
+					toggleFollow();
+				}
 				timelineWindow.setStart(timelineSlider.getSelection());
 			}
+
 		});
 		timelineWindowListener = new TimelineWindowListener();
 		timelineWindow.addTimelineWindowListener(timelineWindowListener);
@@ -417,6 +449,40 @@ public abstract class AbstractTimelineView extends ViewPart {
 			}
 		});
 
+		final ICommandService cmdService = (ICommandService)getSite().getService(ICommandService.class);
+		String commandID = getFollowCommandID();
+		if (commandID != null) {
+			final Command followCommand = cmdService.getCommand(commandID);
+			if (followCommand != null) {
+				final State state = followCommand.getState(RegistryToggleState.STATE_ID);
+				follow = state != null && ((Boolean)state.getValue()).booleanValue();
+			}
+		}
+	}
+
+	/**
+	 * Toggle the follow value via the command.
+	 */
+	private void toggleFollow() {
+		final IHandlerService handlerService = (IHandlerService)getSite().getService(IHandlerService.class);
+		try {
+			final String commandId = getFollowCommandID();
+			if (commandId != null) {
+				handlerService.executeCommand(commandId, null);
+			}
+		} catch (ExecutionException e1) {
+			Activator.getDefault().getLog().log(
+					new Status(Status.ERROR, Activator.PLUGIN_ID, e1.getMessage()));
+		} catch (NotDefinedException e1) {
+			Activator.getDefault().getLog().log(
+					new Status(Status.ERROR, Activator.PLUGIN_ID, e1.getMessage()));
+		} catch (NotEnabledException e1) {
+			Activator.getDefault().getLog().log(
+					new Status(Status.ERROR, Activator.PLUGIN_ID, e1.getMessage()));
+		} catch (NotHandledException e1) {
+			Activator.getDefault().getLog().log(
+					new Status(Status.ERROR, Activator.PLUGIN_ID, e1.getMessage()));
+		}
 	}
 
 	/**
@@ -433,9 +499,11 @@ public abstract class AbstractTimelineView extends ViewPart {
 	 * 
 	 * @param timelineProvider
 	 *            the {@link ITimelineProvider}
+	 * @param start
+	 *            the new start
 	 */
-	public void setTimelineProvider(ITimelineProvider timelineProvider) {
-		timelineWindow.setProvider(timelineProvider);
+	public void setTimelineProvider(ITimelineProvider timelineProvider, int start) {
+		timelineWindow.setProvider(timelineProvider, start);
 		if (this.provider != null) {
 			this.provider.removeTimelineListener(timelineWindowListener);
 		}
@@ -444,6 +512,23 @@ public abstract class AbstractTimelineView extends ViewPart {
 			this.provider.addTimelineListener(timelineWindowListener);
 		}
 		timelineWindow.setLength(getWindowLength());
+	}
+
+	/**
+	 * Gets the start point of the displayed timeline.
+	 * 
+	 * @return the start point of the displayed timeline
+	 */
+	public int getStart() {
+		final int res;
+
+		if (timelineWindow != null) {
+			res = timelineWindow.getStart();
+		} else {
+			res = 0;
+		}
+
+		return res;
 	}
 
 	/**
@@ -539,11 +624,34 @@ public abstract class AbstractTimelineView extends ViewPart {
 	}
 
 	/**
+	 * Sets the follow last choice value.
+	 * 
+	 * @param newFollow
+	 *            the new follow value
+	 */
+	public void setFollow(boolean newFollow) {
+		this.follow = newFollow;
+		if (follow && provider != null && timelineWindow != null) {
+			int start = provider.getNumberOfChoices() - timelineWindow.getLength();
+			if (start >= 0) {
+				timelineWindow.setStart(start);
+			}
+		}
+	}
+
+	/**
 	 * Tells if the {@link AbstractTimelineView#getDetailViewer() detail viewer} exists for this view.
 	 * 
 	 * @return <code>true</code> if the {@link AbstractTimelineView#getDetailViewer() detail viewer} exists
 	 *         for this view, <code>false</code> otherwise
 	 */
 	public abstract boolean hasDetailViewer();
+
+	/**
+	 * Gets the ID of the follow toggle command if any, <code>null</code> otherwise.
+	 * 
+	 * @return the ID of the follow toggle command if any, <code>null</code> otherwise
+	 */
+	public abstract String getFollowCommandID();
 
 }

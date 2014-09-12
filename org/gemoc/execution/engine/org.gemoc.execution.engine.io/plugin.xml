@@ -105,6 +105,17 @@
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.gemoc.execution.engine.io.views.timeline.TimeLineView">
+         <command
+               commandId="org.gemoc.execution.engine.io.views.timeline.Follow"
+               icon="icons/play-4-16.png"
+               label="Follow"
+               style="toggle"
+               tooltip="Follow the last choice">
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -135,6 +146,15 @@
             defaultHandler="org.gemoc.execution.engine.io.views.event.commands.UndoInit"
             id="org.gemoc.execution.engine.io.views.event.commands.UndoInit"
             name="Undo init">
+      </command>
+      <command
+            defaultHandler="fr.obeo.timeline.command.FollowHandler"
+            id="org.gemoc.execution.engine.io.views.timeline.Follow"
+            name="Follow">
+         <state
+               class="org.eclipse.ui.handlers.RegistryToggleState:true"
+               id="org.eclipse.ui.commands.toggleState">
+         </state>
       </command>
    </extension>
    <extension
