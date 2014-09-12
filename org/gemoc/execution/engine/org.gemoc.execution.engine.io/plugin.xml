@@ -143,13 +143,13 @@
             name="Undo init">
       </command>
       <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.StartWait"
             id="org.gemoc.execution.engine.io.views.event.commands.StartWait"
             name="StartWait">
       </command>
       <command
-            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.StopWait"
             id="org.gemoc.execution.engine.io.views.event.commands.StopWait"
-            name="StopWait">
+            name="Validate">
       </command>
    </extension>
    <extension

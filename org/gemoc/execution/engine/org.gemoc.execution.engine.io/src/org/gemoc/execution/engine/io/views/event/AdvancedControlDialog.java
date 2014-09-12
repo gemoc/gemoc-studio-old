@@ -116,9 +116,6 @@ public class AdvancedControlDialog extends TitleAreaDialog{
 
 		saveInput();
 		super.okPressed();
-		EventManagerView event = ViewHelper.retrieveView(EventManagerView.ID);
-		ObservableBasicExecutionEngine engine = (ObservableBasicExecutionEngine)event.getEngine();
-		engine.resume();
 	}
 
 	public String getFirstName() {

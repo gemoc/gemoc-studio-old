@@ -234,9 +234,13 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_strategyFilterSelected = new NoFilter();
 		_commandStateService = null;
 		_state = CacheStatus.STOPPED;
+		ISourceProviderService sourceProviderService = (ISourceProviderService) PlatformUI.getWorkbench()
+				.getService(ISourceProviderService.class);
+		_commandStateService = (CommandState) sourceProviderService
+				.getSourceProvider(CommandState.ID);
 	}
 
-	/* IHM ***********************************************************************************************/
+	/* IHM *********************************************************************************************************/
 	/**
 	 * This is a callback that will allow us
 	 * to create the viewer and initialize it.
@@ -535,7 +539,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		};
 		return listener;
 	}
-	/* ******************************************************************************************************/
+	/* ***************************************************************************************************************/
 	
 	/**
 	 * Force or Free a list of clocks
@@ -593,16 +597,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	private void updateCommands()
 	{
-		ISourceProviderService sourceProviderService = (ISourceProviderService) PlatformUI.getWorkbench().getService(ISourceProviderService.class);
-		_commandStateService = (CommandState) sourceProviderService
-				.getSourceProvider(CommandState.ID);
 		switch(_state)
 		{
 		case WAITING: //user must select the first forced MSE
-			_commandStateService.setInit();
 			_commandStateService.resetRecordFLAG();
 			_commandStateService.resetPlayFLAG();
+			_commandStateService.resetInit();
 			_commandStateService.startWait();
+			break;
 		case RUNNING: // engine running without recording or playing a fragment
 			_commandStateService.resetPlayFLAG();
 			_commandStateService.resetRecordFLAG();
@@ -719,7 +721,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		EngineCache cache = new EngineCache(_engine);
 		_cacheMap.put(_engine, cache);
-		executeCommand(Commands.START_WAIT);
 	}
 
 
@@ -739,7 +740,26 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
-
+	/**
+	 * Set or reset variables in the SourceProvider to enable or disable command's handlers 
+	 * (to make them appear grayed).
+	 * The mapping between value and command is done in the plugin.xml
+	 * @param event
+	 * @param command
+	 */
+	public void executeService(SourceProviderControls command)
+	{
+		switch(command)
+		{
+		case WAIT: _commandStateService.startWait(); break;
+		case PLAY: _commandStateService.setPlayFLAG(); break;
+		case RECORD: _commandStateService.setRecordFLAG(); break;
+		case INIT: _commandStateService.setInit(); break;
+		case RESET: _commandStateService.resetInit();	
+		break;
+		default: break;
+		}
+	}
 
 
 	private void startListeningToMotorSelectionChange() {
@@ -778,6 +798,26 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void setFocus() 
 	{
 		_viewer.getTable().setFocus();
+	}
+	
+	public void setScenario(Fragment fragment)
+	{
+		this.fragment = fragment;
+	}
+
+	public Fragment getScenario()
+	{
+		return fragment;
+	}
+
+	public GemocExecutionEngine getEngine() 
+	{
+		return _engine;
+	}
+	
+	public CacheStatus getState()
+	{
+		return _state;
 	}
 
 	private ScenarioManager getCurrentScenarioManager()
@@ -865,49 +905,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		});
 	}
 
-	/**
-	 * Set or reset variables in the SourceProvider to enable or disable command's handlers 
-	 * (to make them appear grayed).
-	 * The mapping between value and command is done in the plugin.xml
-	 * @param event
-	 * @param command
-	 */
-	public void executeService(SourceProviderControls command)
-	{
-		ISourceProviderService sourceProviderService = (ISourceProviderService) PlatformUI.getWorkbench().getService(ISourceProviderService.class);
-		// Get the source provider service
-//		ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
-	//			.getActiveWorkbenchWindow(event).getService(ISourceProviderService.class);
-		// now get my service
-		_commandStateService = (CommandState) sourceProviderService
-				.getSourceProvider(CommandState.ID);
-		switch(command)
-		{
-		case WAIT: _commandStateService.startWait(); break;
-		case PLAY: _commandStateService.setPlayFLAG(); break;
-		case RECORD: _commandStateService.setRecordFLAG(); break;
-		case INIT: _commandStateService.setInit(); break;
-		case RESET: _commandStateService.resetInit();	
-		break;
-		default: break;
-		}
-	}
-
-	public void setScenario(Fragment fragment)
-	{
-		this.fragment = fragment;
-	}
-
-	public Fragment getScenario()
-	{
-		return fragment;
-	}
-
-	public GemocExecutionEngine getEngine() 
-	{
-		return _engine;
-	}
-
 	private void updateInformationAndButtons()
 	{
 		enableOrDisableButtons(_mseControlButtons);
@@ -920,8 +917,5 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 	
-	public CacheStatus getState()
-	{
-		return _state;
-	}
+	
 }
