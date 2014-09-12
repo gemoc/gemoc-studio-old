@@ -3,7 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.gemoc.gemoc_language_workbench.conf.model.editor;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ swing2swt.jar
 Bundle-Activator: org.gemoc.gemoc_language_workbench.conf.presentation.gemoc_language_workbench_confEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -14,5 +15,14 @@ Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.gemoc_language_workbench.conf.model.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
- org.eclipse.ui.ide;visibility:=reexport
+ org.eclipse.ui.ide;visibility:=reexport,
+ org.eclipse.ui.forms,
+ org.gemoc.gemoc_language_workbench.ui,
+ org.eclipse.emf.transaction,
+ org.eclipse.core.databinding,
+ org.eclipse.core.databinding.beans,
+ org.eclipse.core.databinding.observable,
+ org.eclipse.core.databinding.property,
+ org.eclipse.jface.databinding,
+ com.ibm.icu
 Bundle-ActivationPolicy: lazy
