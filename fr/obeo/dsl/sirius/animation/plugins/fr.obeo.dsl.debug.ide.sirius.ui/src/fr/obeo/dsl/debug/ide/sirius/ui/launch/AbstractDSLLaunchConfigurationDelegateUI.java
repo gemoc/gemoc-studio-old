@@ -26,9 +26,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.emf.common.util.URI;
@@ -108,13 +106,11 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends fr.obeo.d
 		return res;
 	}
 
-	@Override
-	protected void launch(EObject firstInstruction, ILaunchConfiguration configuration, String mode,
-			ILaunch launch, IProgressMonitor monitor) throws CoreException {
-		final URI sessionResourceURI = URI.createPlatformResourceURI(configuration.getAttribute(
-				SIRIUS_RESOURCE_URI, ""), true);
-		// activate the session
-		SessionManager.INSTANCE.getSession(sessionResourceURI, monitor).open(new NullProgressMonitor());
-		super.launch(firstInstruction, configuration, mode, launch, monitor);
-	}
+	// @Override
+	// protected void launch(EObject firstInstruction, ILaunchConfiguration configuration, String mode,
+	// ILaunch launch, IProgressMonitor monitor) throws CoreException {
+	// final URI sessionResourceURI = URI.createPlatformResourceURI(configuration.getAttribute(
+	// SIRIUS_RESOURCE_URI, ""), true);
+	// super.launch(firstInstruction, configuration, mode, launch, monitor);
+	// }
 }

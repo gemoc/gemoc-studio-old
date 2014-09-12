@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_studio.additions.feature"
       label="Gemoc Studio Additional Features"
-      version="0.1.1.qualifier"
+      version="0.1.2.qualifier"
       provider-name="GEMOC">
 
    <description url="http://www.gemoc.org">
@@ -45,10 +45,15 @@
       <import feature="org.eclipse.epp.mpc" version="1.2.1.v20140219-1000" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtend.m2e" version="2.4.3.v201309030823" match="greaterOrEqual"/>
       <import feature="org.obeonetwork.dsl.uml2.runtime.feature" version="4.0.0.201403071353" match="greaterOrEqual"/>
-      <import feature="org.eclipse.m2m.qvt.oml.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.sonatype.tycho.m2e.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="net.sf.eclipsecs" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.polarion.eclipse.team.svn.connector.svnkit18" version="0.0.0"/>
+      <import feature="org.eclipse.m2m.qvt.oml" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.m2m.qvt.oml.debug" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.m2m.qvt.oml.doc" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.m2m.qvt.oml.editor" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.m2m.qvt.oml.examples" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.m2m.qvt.oml.runtime" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
 </feature>

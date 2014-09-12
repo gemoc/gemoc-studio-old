@@ -12,4 +12,5 @@
   <artifactId>org.gemoc.gemoc_language_workbench.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
+  <version>0.1.2-SNAPSHOT</version>
 </project> 

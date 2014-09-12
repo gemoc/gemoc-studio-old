@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.gemoc.gemoc_studio</groupId>
         <artifactId>org.gemoc.gemoc_studio.root</artifactId>
-        <version>0.1.1-SNAPSHOT</version>
+        <version>0.1.2-SNAPSHOT</version>
         <relativePath>../org.gemoc.gemoc_studio.root</relativePath>
     </parent>
 

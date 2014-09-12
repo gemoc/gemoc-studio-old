@@ -1,6 +1,6 @@
 instructions.configure=\
-addRepository(type:0,location:http${#58}//download.eclipse.org/releases/kepler,name:Kepler);\
-addRepository(type:1,location:http${#58}//download.eclipse.org/releases/kepler,name:Kepler);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/releases/luna,name:Luna);\
+addRepository(type:1,location:http${#58}//download.eclipse.org/releases/luna,name:Luna);\
 addRepository(type:0,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
 addRepository(type:1,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
 addRepository(type:0,location:http${#58}//timesquare.inria.fr/update_site/experimental,name:Timesquare);\

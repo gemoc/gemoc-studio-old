@@ -6,24 +6,36 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.RunConfiguration;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.exceptions.EngineContextException;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
@@ -33,7 +45,7 @@ import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
 
-public class GemocReflectiveModelLauncher
+public class Launcher
 		extends
 		fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI 
 {
@@ -44,31 +56,37 @@ public class GemocReflectiveModelLauncher
 
 	private ObservableBasicExecutionEngine _engine;
 
-	private ModelExecutionContext createModelExecutionContext(ILaunchConfiguration configuration)
-			throws CoreException, EngineContextException {
-		RunConfiguration runConfiguration = new RunConfiguration(configuration);
-		return new ModelExecutionContext(runConfiguration);
-	}
-
-
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor)
 			throws CoreException {		
 		try 
 		{
-			debug("About to initialize and run the GEMOC Execution Engine...");
-			ModelExecutionContext executionContext = createModelExecutionContext(configuration);			
+			RunConfiguration runConfiguration = new RunConfiguration(configuration);
+			debug("About to initialize and run the GEMOC Execution Engine...");			
+
+			ExecutionMode executionMode = null;
+			if (ILaunchManager.DEBUG_MODE.equals(mode)
+				&& runConfiguration.getAnimatorURIAsString() != null) 
+			{
+				URI uri = URI.createPlatformResourceURI(runConfiguration.getAnimatorURIAsString(), true);
+				killPreviousSiriusSession(uri, monitor);
+				openNewSiriusSession(uri, monitor);
+				executionMode = ExecutionMode.Debug;			
+			}
+			else
+			{
+				executionMode = ExecutionMode.Run;
+			}
+			ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, executionMode);
+			
 			throwExceptionIfEngineAlreadyRunning(executionContext);
-			ILogicalStepDecider decider = LogicalStepDeciderFactory.createDecider(executionContext.getRunConfiguration().getDeciderName(), executionContext.getSolver());
+			ILogicalStepDecider decider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
 
 			_engine = new ObservableBasicExecutionEngine(decider, executionContext);
 
-			if (executionContext.getRunConfiguration().isAnimationActive()) 
-			{
-				_engine.setAnimator(AbstractGemocAnimatorServices.getAnimator());
-			}
 			// delegate for debug mode
 			if (ILaunchManager.DEBUG_MODE.equals(mode)) {
+				_engine.setAnimator(AbstractGemocAnimatorServices.getAnimator());
 				super.launch(configuration, mode, launch, monitor);
 			} else {
 				Job job = new Job(getDebugJobName(configuration,
@@ -91,6 +109,51 @@ public class GemocReflectiveModelLauncher
 		  	throw new CoreException(new Status(Status.ERROR, Activator.PLUGIN_ID, message, e));
 		}
 	}
+
+	private void openNewSiriusSession(URI sessionResourceURI, final IProgressMonitor monitor) {
+		Session session = SessionManager.INSTANCE.getSession(sessionResourceURI, monitor);
+		session.open(monitor);
+		for (DView view : session.getSelectedViews())
+		{
+			for (DRepresentation representation : view.getOwnedRepresentations())
+			{
+				final DSemanticDiagramSpec diagram = (DSemanticDiagramSpec)representation;
+				DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+				
+				final TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
+				final CommandStack commandStack = editingDomain.getCommandStack();
+				commandStack.execute(new RecordingCommand(editingDomain) {
+					@Override
+					protected void doExecute() {
+						for(Layer l : diagram.getDescription().getAdditionalLayers())
+						{
+							boolean mustBeActive = l.getName().toUpperCase().contains("DEBUG")
+													|| l.getName().toUpperCase().contains("ANIMATION");
+							if (mustBeActive
+								&& !diagram.getActivatedLayers().contains(l))
+							{
+								ChangeLayerActivationCommand c = new ChangeLayerActivationCommand(
+										editingDomain, 
+										diagram, 
+										l, 
+										monitor);
+								c.execute();															
+							}
+						}
+					}
+				});
+			}
+		}
+	}
+
+	private void killPreviousSiriusSession(URI sessionResourceURI, IProgressMonitor monitor) {
+		Session session = SessionManager.INSTANCE.getExistingSession(sessionResourceURI);
+		if (session != null) {
+			session.close(monitor);
+			SessionManager.INSTANCE.remove(session);			
+		}
+	}
+
 
 	private void throwExceptionIfEngineAlreadyRunning(ModelExecutionContext executionContext) throws CoreException 
 	{

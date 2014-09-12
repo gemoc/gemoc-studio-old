@@ -10,8 +10,6 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.nebula.widgets.formattedtext.FormattedText;
-import org.eclipse.nebula.widgets.formattedtext.NumberFormatter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -36,7 +34,7 @@ import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI;
 
-public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
+public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 
 	protected Text _modelLocationText;
 	protected Text _siriusRepresentationLocationText;
@@ -44,9 +42,7 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 	protected Text _delayText;
 	protected Combo _languageCombo;
 	protected Combo _deciderCombo;
-	protected Button _activeTraceCheckbox;
 
-	protected FormattedText _deadlockDetectionDepth;
 	protected Text modelofexecutionglml_LocationText;
 
 	public int GRID_DEFAULT_WIDTH = 200;
@@ -66,24 +62,15 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 		Group languageArea = createGroup(area, "Language:");
 		createLanguageLayout(languageArea, null);
 
-		Group prototypeArea = createGroup(area, "Engine Prototype parameters (these info will probably be removed in future version):");
-		createPrototypeLayout(prototypeArea, null);
+		Group debugArea = createGroup(area, "Debug:");
+		createDebugLayout(debugArea, null);
 	}
 	
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.setAttribute(
-				RunConfiguration.LAUNCH_ANIMATE,
-				false);
-		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DELAY,
 				1000);
-		configuration.setAttribute(
-				RunConfiguration.LAUNCH_ACTIVE_TRACE,
-				true);
-		configuration.setAttribute(
-				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,
-				10);
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_SELECTED_DECIDER,
 				RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP);
@@ -96,16 +83,14 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 		{
 			RunConfiguration runConfiguration = new RunConfiguration(configuration);
 			_modelLocationText.setText(runConfiguration.getModelURIAsString());
+
 			if (runConfiguration.getAnimatorURIAsString() != null)
 				_siriusRepresentationLocationText.setText(runConfiguration.getAnimatorURIAsString());
 			else
 				_siriusRepresentationLocationText.setText("");
-			_animateButton.setSelection(runConfiguration.isAnimationActive());
 			_delayText.setText(Integer.toString(runConfiguration.getAnimationDelay()));
-			_activeTraceCheckbox.setSelection(runConfiguration.isTraceActive());
 			_languageCombo.setText(runConfiguration.getLanguageName());
 			_deciderCombo.setText(runConfiguration.getDeciderName());
-			_deadlockDetectionDepth.setValue(runConfiguration.getDeadlockDetectionDepth());		
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
@@ -121,27 +106,14 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 				AbstractDSLLaunchConfigurationDelegateUI.SIRIUS_RESOURCE_URI,
 				this._siriusRepresentationLocationText.getText());
 		configuration.setAttribute(
-				RunConfiguration.LAUNCH_ANIMATE,
-				_animateButton.getSelection());
-		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DELAY,
 				Integer.parseInt(_delayText.getText()));
-		configuration.setAttribute(
-				RunConfiguration.LAUNCH_ACTIVE_TRACE,
-				_activeTraceCheckbox.getSelection());
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_LANGUAGE,
 						this._languageCombo.getText());
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_DECIDER,
 						this._deciderCombo.getText());
-		int depth = _deadlockDetectionDepth.getValue() == null ? 0 : Integer.valueOf(_deadlockDetectionDepth.getValue().toString());
-		configuration.setAttribute(
-				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,
-				depth);
-		configuration.setAttribute(
-						RunConfiguration.LAUNCH_MODELOFEXECUTION_GLML_PATH,
-						this.modelofexecutionglml_LocationText.getText());
 	}
 
 	@Override
@@ -172,14 +144,9 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 	 */
 	public Composite createModelLayout(Composite parent, Font font) {
 		createTextLabelLayout(parent, "Model to execute");
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		// gd.horizontalSpan = 1;
-		gd.widthHint = GRID_DEFAULT_WIDTH;
-		// Create the project selector button
-
 		// Model location text
 		_modelLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		_modelLocationText.setLayoutData(gd);
+		_modelLocationText.setLayoutData(createStandardLayout());
 		_modelLocationText.setFont(font);
 		_modelLocationText.addModifyListener(fBasicModifyListener);
 		Button modelLocationButton = createPushButton(parent, "Browse", null);
@@ -196,21 +163,18 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 					updateLaunchConfigurationDialog();
 				}
 			}
-		});
-		// return parent;
+		});	
+		return parent;
+	}
+	
+	private Composite createDebugLayout(Composite parent, Font font) {
+		createTextLabelLayout(parent, "Animator");
 
-		createTextLabelLayout(parent, "Sirius representation");
-		// GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		// gd.horizontalSpan = 1;
-		// gd.widthHint = GRID_DEFAULT_WIDTH;
-		// Create the project selector button
-		// Animation view location text
 		_siriusRepresentationLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		_siriusRepresentationLocationText.setLayoutData(gd);
+		_siriusRepresentationLocationText.setLayoutData(createStandardLayout());
 		_siriusRepresentationLocationText.setFont(font);
 		_siriusRepresentationLocationText.addModifyListener(fBasicModifyListener);
-		Button siriusRepresentationLocationButton = createPushButton(parent,
-				"Browse", null);
+		Button siriusRepresentationLocationButton = createPushButton(parent, "Browse", null);
 		siriusRepresentationLocationButton
 				.addSelectionListener(new SelectionAdapter() {
 					public void widgetSelected(SelectionEvent evt) {
@@ -226,20 +190,11 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 						}
 					}
 				});
-		Composite composite = new Composite(parent, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-		composite.setLayout(new GridLayout(3, false));
-		
-		_animateButton = new Button(composite, SWT.CHECK);
-		_animateButton.setText("animate");
-		_animateButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				updateLaunchConfigurationDialog();
-			}
-		});
-		
-		_delayText = new Text(composite, SWT.SINGLE | SWT.BORDER);
+
+
+		createTextLabelLayout(parent, "Delay");
+		_delayText = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		_delayText.setLayoutData(createStandardLayout());
 		_delayText.addModifyListener(new ModifyListener() {
 
 			@Override
@@ -247,19 +202,25 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 				updateLaunchConfigurationDialog();
 			}
 		});
-		new Label(composite, SWT.BORDER).setText("delay in millisecond");
+		createTextLabelLayout(parent, "(in milliseconds)");
 
-		_activeTraceCheckbox = new Button(composite, SWT.CHECK);
-		_activeTraceCheckbox.setText("Active trace");
-		_activeTraceCheckbox.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				updateLaunchConfigurationDialog();
-			}
-		});
-
+		createTextLabelLayout(parent, "Decider");
+		_deciderCombo = new Combo(parent, SWT.BORDER);
+		_deciderCombo.setLayoutData(createStandardLayout());
+		String[] deciderChoice = {
+				RunConfiguration.DECIDER_SOLVER_PROPOSITION,
+				RunConfiguration.DECIDER_RANDOM,
+				RunConfiguration.DECIDER_ASKUSER,
+				RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP };
+		_deciderCombo.setItems(deciderChoice);
+		_deciderCombo.select(0);
+		_deciderCombo.addModifyListener(fBasicModifyListener);
 		
 		return parent;
+	}
+
+	private GridData createStandardLayout() {
+		return new GridData(SWT.FILL, SWT.CENTER, true, false);
 	}
 
 	/***
@@ -271,13 +232,9 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 	 */
 	public Composite createLanguageLayout(Composite parent, Font font) {
 		createTextLabelLayout(parent, "xDSML");
-//		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		// gd.horizontalSpan = 1;
-//		gd.widthHint = GRID_DEFAULT_WIDTH;
-		// Create the project selector button
-
 		_languageCombo = new Combo(parent, SWT.NONE);
-
+		_languageCombo.setLayoutData(createStandardLayout());
+		
 		ArrayList<String> xdsmlNames = new ArrayList<String>();
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry()
 				.getConfigurationElementsFor(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT);
@@ -299,83 +256,21 @@ public class GemocModelLauncherMainTab extends HelpfulModelLauncherMainTab {
 		 */
 
 		// button to deal with dynamic language creation and provisionning
-		Button projectLocationButton = createPushButton(parent,
-				"Dynamic Language Variants...", null);
-		projectLocationButton.setEnabled(false);
-		projectLocationButton.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent evt) {
-				// handleModelLocationButtonSelected();
-				// TODO launch the appropriate selector
-				MessageDialog.openWarning(PlatformUI.getWorkbench()
-						.getActiveWorkbenchWindow().getShell(),
-						"Dynamic Language Variants",
-						"Action not implemented yet");
-				updateLaunchConfigurationDialog();
-			}
-		});
-
-		_deciderCombo = new Combo(parent, SWT.NONE);
-		String[] deciderChoice = {
-				RunConfiguration.DECIDER_SOLVER_PROPOSITION,
-				RunConfiguration.DECIDER_RANDOM,
-				RunConfiguration.DECIDER_ASKUSER,
-				RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP };
-		_deciderCombo.setItems(deciderChoice);
-		_deciderCombo.select(0);
-		_deciderCombo.addModifyListener(fBasicModifyListener);
-
+//		Button projectLocationButton = createPushButton(parent,
+//				"Dynamic Language Variants...", null);
+//		projectLocationButton.setEnabled(false);
+//		projectLocationButton.addSelectionListener(new SelectionAdapter() {
+//			public void widgetSelected(SelectionEvent evt) {
+//				// handleModelLocationButtonSelected();
+//				// TODO launch the appropriate selector
+//				MessageDialog.openWarning(PlatformUI.getWorkbench()
+//						.getActiveWorkbenchWindow().getShell(),
+//						"Dynamic Language Variants",
+//						"Action not implemented yet");
+//				updateLaunchConfigurationDialog();
+//			}
+//		});
 		return parent;
 	}
 
-	/***
-	 * Create the Field where user enters model to execute
-	 * 
-	 * @param parent
-	 * @param font
-	 * @return
-	 */
-	public Composite createPrototypeLayout(Composite parent, Font font) {
-
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		// gd.horizontalSpan = 1;
-		gd.widthHint = GRID_DEFAULT_WIDTH;
-
-		// --------------
-		createTextLabelLayout(parent, "used defined ModelOfExecution glml File");
-		modelofexecutionglml_LocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		modelofexecutionglml_LocationText.setLayoutData(gd);
-		modelofexecutionglml_LocationText.setFont(font);
-		modelofexecutionglml_LocationText.addModifyListener(fBasicModifyListener);
-
-		createTextLabelLayout(parent, "Deadlock detection depth");
-		Text underlyingText = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		underlyingText.setLayoutData(gd);
-		underlyingText.setFont(font);
-		underlyingText.addModifyListener(fBasicModifyListener);
-		_deadlockDetectionDepth = new FormattedText(underlyingText);
-		_deadlockDetectionDepth.setFormatter(new NumberFormatter("#####"));
-
-		return parent;
-	}
-
-	// -----------------------------------
-
-	/**
-	 * 
-	 * @param parent
-	 *            the Parent of this argument tab
-	 * @param labelString
-	 *            the label of the input text to create
-	 * @param adapter
-	 *            the event that is triggered when clicking on OK button
-	 */
-	private void createTextLabelLayout(Composite parent, String labelString) {
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		parent.setLayoutData(gd);
-		Label inputLabel = new Label(parent, SWT.NONE);
-		inputLabel.setText(labelString); //$NON-NLS-1$
-		gd = new GridData();
-		gd.horizontalSpan = 2;
-		inputLabel.setLayoutData(gd);
-	}
 }

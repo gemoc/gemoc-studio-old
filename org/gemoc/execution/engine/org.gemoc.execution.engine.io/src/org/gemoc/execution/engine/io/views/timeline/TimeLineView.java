@@ -22,6 +22,7 @@ import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
@@ -162,14 +163,39 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			_timelineProvider.dispose();
 			_timelineProvider = null;
+			setTimelineProvider(_timelineProvider);
 		}
 	}
 
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
-		configure((ObservableBasicExecutionEngine)engine);
+		if (engine != null)
+		{
+			if (canDisplayTimeline(engine))
+			{
+				configure((ObservableBasicExecutionEngine)engine);				
+			}
+			else
+			{
+				disposeTimeLineProvider();
+			}
+		}
 	}
 
+	private boolean canDisplayTimeline(GemocExecutionEngine engine)
+	{
+		if (engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Run)
+			&& engine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped))
+		{
+			return true;
+		}
+		if (engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug))
+		{
+			return true;
+		}	
+		return false;
+	}
+	
 	@Override
 	public boolean hasDetailViewer() {
 		return false;

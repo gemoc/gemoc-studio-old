@@ -2,5 +2,5 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <toc label="Gemoc workbench" topic="html/toc.html">
-	<link toc="toc.xml" />
+	<link toc="eclipse_help/eclipse/toc.xml" ></link>
 </toc>

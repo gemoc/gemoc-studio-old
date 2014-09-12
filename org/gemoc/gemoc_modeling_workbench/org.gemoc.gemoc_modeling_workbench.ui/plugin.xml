@@ -57,8 +57,8 @@
    	<extension
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
-            delegate="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncher"
-            id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID"
+            delegate="org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher"
+            id="org.gemoc.gemoc_modeling_workbench.ui.launcher"
             modes="run, debug"
             name="Gemoc eXecutable Model"
             public="true"
@@ -75,21 +75,21 @@
    <extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
     <launchConfigurationTypeImage
         icon="icons/IconeGemocModel-16.png"
-        configTypeID="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID"
-        id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherImageID">
+        configTypeID="org.gemoc.gemoc_modeling_workbench.ui.launcher"
+        id="org.gemoc.gemoc_modeling_workbench.ui.launcher.image">
     </launchConfigurationTypeImage>
 	</extension>
 	   <extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
 	    <launchConfigurationTabGroup
-	        type="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID"
-	        class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncherTabGroup"
-	        id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherTabGroupID">
+           class="org.gemoc.gemoc_modeling_workbench.ui.launcher.LauncherTabGroup"
+           id="org.gemoc.gemoc_modeling_workbench.ui.launcher.tabGroup"
+           type="org.gemoc.gemoc_modeling_workbench.ui.launcher">
 	    </launchConfigurationTabGroup>
 	</extension>
 	<extension
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
-            class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocReflectiveModelLauncher"
+            class="org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.gemoc_modeling_workbench.ui.GemocExecutableReflectiveModel"
             label="Gemoc eXecutable Model"
@@ -211,5 +211,48 @@
 
       </objectContribution>
    </extension>
+      <extension
+            point="org.eclipse.ui.commands">
+         <command
+               defaultHandler="org.gemoc.gemoc_modeling_workbench.ui.commands.AddDebugLayerHandler"
+               id="org.gemoc.gemoc_modeling_workbench.ui.addDebugLayer"
+               name="Add debug layer">
+         </command>
+      </extension>
+      <extension
+            point="org.eclipse.ui.menus">
+         <menuContribution
+               allPopups="false"
+               locationURI="popup:org.eclipse.sirius.editor.editorPlugin.SiriusEditorID">
+            <menu
+                  icon="icons/gemoc-logo-16.png"
+                  id="gemoc"
+                  label="Gemoc">
+               <command
+                     commandId="org.gemoc.gemoc_modeling_workbench.ui.addDebugLayer"
+                     icon="icons/gemoc-logo-16.png"
+                     label="Add debug layer"
+                     style="push"
+                     tooltip="Add a debug layer to the selected diagram description">
+                  <visibleWhen
+                        checkEnabled="false">
+                     <with
+                           variable="selection">
+                        <count
+                              value="1">
+                        </count>
+                        <iterate
+                              ifEmpty="false"
+                              operator="and">
+                           <instanceof
+                                 value="org.eclipse.sirius.diagram.description.DiagramDescription">
+                           </instanceof>
+                        </iterate>
+                     </with>
+                  </visibleWhen>
+               </command>
+            </menu>
+         </menuContribution>
+      </extension>
    
 </plugin>

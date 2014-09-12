@@ -15,12 +15,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
 
-public abstract class ModelLauncherDataProcessingTab extends HelpfulModelLauncherMainTab
+public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigurationTab
 {
 
 	private HashMap<IDataProcessingComponentExtension, Button> _components = new HashMap<>();
 
-	protected ModelLauncherDataProcessingTab()
+	protected LaunchConfigurationDataProcessingTab()
 	{
 		for (IDataProcessingComponentExtension extension : getExtensionSpecifications())
 		{

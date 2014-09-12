@@ -44,4 +44,6 @@ public interface IExecutionContext extends IDisposable
 
 	public Resource getResourceModel();
 
+	public ExecutionMode getExecutionMode();
+
 }

@@ -1,12 +1,13 @@
 package org.gemoc.execution.engine.core;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Observable;
+import java.util.List;
 
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
-public class GemocRunningEnginesRegistry extends Observable {
+public class GemocRunningEnginesRegistry {
 
 	/**
 	 * List of engines that have registered to be running in this eclipse
@@ -20,21 +21,77 @@ public class GemocRunningEnginesRegistry extends Observable {
 	 * @param engine
 	 * @return
 	 */
-	synchronized public String registerNewEngine(String baseName, GemocExecutionEngine engine){
+	synchronized public String registerEngine(String baseName, GemocExecutionEngine engine){
 		int uniqueInstance = 0;
 		String engineName = Thread.currentThread().getName() + " ("+uniqueInstance+")";
-		while(runningEngines.containsKey(engineName)){
-			uniqueInstance = uniqueInstance +1;
-			engineName = Thread.currentThread().getName() + " ("+uniqueInstance+")";
+		synchronized(runningEngines)
+		{
+			while(runningEngines.containsKey(engineName)){
+				uniqueInstance = uniqueInstance +1;
+				engineName = Thread.currentThread().getName() + " ("+uniqueInstance+")";
+			}
+			runningEngines.put(engineName, engine);
 		}
-		runningEngines.put(engineName, engine);
-		this.setChanged();
-		this.notifyObservers();
+		notifyEngineRegistered(engine);			
 		return engineName;
 	}
 
+	public void unregisterEngine(String engineName) 
+	{
+		synchronized(runningEngines)
+		{
+			GemocExecutionEngine engine = runningEngines.get(engineName);
+			if (engine != null)
+			{
+				runningEngines.remove(engineName);
+				notifyEngineUnregistered(engine);
+			}			
+		}
+	}
 
 	public HashMap<String, GemocExecutionEngine> getRunningEngines() {
-		return runningEngines;
+		synchronized(runningEngines)
+		{
+			return new HashMap<String, GemocExecutionEngine>(runningEngines);			
+		}
 	}
+	
+	
+	private List<IEngineRegistrationListener> _engineRegistrationListeners = new ArrayList<IEngineRegistrationListener>();
+	
+	private void notifyEngineRegistered(GemocExecutionEngine engine) {
+		synchronized (_engineRegistrationListeners) {
+			for (IEngineRegistrationListener l : _engineRegistrationListeners)
+			{
+				l.engineRegistered(engine);
+			}			
+		}
+	}
+	
+	private void notifyEngineUnregistered(GemocExecutionEngine engine) {
+		synchronized (_engineRegistrationListeners) {
+			for (IEngineRegistrationListener l : _engineRegistrationListeners)
+			{
+				l.engineUnregistered(engine);
+			}			
+		}
+	}
+
+
+	public void addEngineRegistrationListener(IEngineRegistrationListener listener) 
+	{
+		synchronized (_engineRegistrationListeners) {
+			_engineRegistrationListeners.add(listener);
+		}
+	}
+
+	public void removeEngineRegistrationListener(IEngineRegistrationListener listener) 
+	{
+		synchronized (_engineRegistrationListeners) {
+			_engineRegistrationListeners.remove(listener);
+		}
+	}
+
+
+
 }

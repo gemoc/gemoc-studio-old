@@ -226,14 +226,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	}
 
 	private void clean() {
-		if (_executionContext.getDebuggerViewModelPath() != null
-			&& !_executionContext.getDebuggerViewModelPath().toString().equals(""))
-		{
-			URI uri = URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true);
-			Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());			
-			session.close(new NullProgressMonitor());
-			SessionManager.INSTANCE.remove(session);
-		}
 		for (IAliveClockController injector : _clockControllers)
 		{
 			injector.stop();
@@ -284,7 +276,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		public void run() {
 			// register this engine using a unique name
 			String engineName = Thread.currentThread().getName();
-			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerNewEngine(engineName, ObservableBasicExecutionEngine.this);
+			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, ObservableBasicExecutionEngine.this);
 
 			if (_debugger != null) {
 				// connect the debugger to the model being executed (including

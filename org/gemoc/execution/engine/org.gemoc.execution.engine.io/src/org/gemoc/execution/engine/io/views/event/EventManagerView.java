@@ -56,6 +56,7 @@ import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -641,7 +642,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
-		if (engine != null) 
+		if (engine != null
+			&&  engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug)) 
 		{
 			// Cast on engine to access the clockController
 			_engine = (ObservableBasicExecutionEngine) engine;
@@ -683,6 +685,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				_state = _cache.getState();
 			}
 			updateView();
+		}
+		else
+		{
+			_viewer.setInput(null);
 		}
 	}
 	

@@ -2,18 +2,17 @@ package org.gemoc.execution.engine.io.views.engine.actions;
 
 import java.util.ArrayList;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
@@ -104,7 +103,16 @@ public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorS
 		{
 			action.setEngine(_currentSelectedEngine);
 		}
-		setEnabled(_currentSelectedEngine != null);
+		if (_currentSelectedEngine == null)
+		{
+			setEnabled(false);			
+		}
+		else
+		{
+			setEnabled(
+					!_currentSelectedEngine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped)
+					&& _currentSelectedEngine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug));			
+		}
 	}
 
 }

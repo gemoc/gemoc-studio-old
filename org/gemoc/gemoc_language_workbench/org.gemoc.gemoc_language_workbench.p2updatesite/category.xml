@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.gemoc.gemoc_language_workbench.feature_0.1.0.qualifier.jar" id="org.gemoc.gemoc_language_workbench.feature" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.gemoc_language_workbench.feature_0.1.2.qualifier.jar" id="org.gemoc.gemoc_language_workbench.feature" version="0.1.2.qualifier">
       <category name="gemoc_language_workbench"/>
    </feature>
    <category-def name="gemoc_language_workbench" label="Gemoc Language Workbench"/>

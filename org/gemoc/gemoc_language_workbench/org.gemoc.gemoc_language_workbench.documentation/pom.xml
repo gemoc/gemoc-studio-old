@@ -1,14 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <relativePath>../org.gemoc.gemoc_language_workbench.root/pom.xml</relativePath>
-    <groupId>org.gemoc.gemoc_language_workbench</groupId>
-    <artifactId>org.gemoc.gemoc_language_workbench.root</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
-  </parent>
+	<parent>
+		<relativePath>../org.gemoc.gemoc_language_workbench.root/pom.xml</relativePath>
+		<groupId>org.gemoc.gemoc_language_workbench</groupId>
+		<artifactId>org.gemoc.gemoc_language_workbench.root</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
 
-  <artifactId>org.gemoc.gemoc_language_workbench.documentation</artifactId>
-  <packaging>eclipse-plugin</packaging>
+	<artifactId>org.gemoc.gemoc_language_workbench.documentation</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<build>
+		<plugins>
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-dependency-plugin</artifactId> -->
+			<!-- <version>2.4</version> -->
+			<!-- <executions> -->
+			<!-- manually copy some content from dependencies -->
+			<!-- get html -->
+			<!-- <execution> -->
+			<!-- <id>unpack_dependencies_km</id> -->
+			<!-- <phase>generate-sources</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>unpack</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <artifactItems> -->
+			<!-- <artifactItem> -->
+			<!-- <groupId>org.gemoc</groupId> -->
+			<!-- <artifactId>org.gemoc.gemoc-studio-guide</artifactId> -->
+			<!-- <type>jdocbook</type> -->
+			<!-- <version>0.0.1-SNAPSHOT</version> -->
+			<!-- <outputDirectory>${project.build.directory}/html_2</outputDirectory> -->
+			<!-- <includes>html/**</includes> -->
+			<!-- </artifactItem> -->
+			<!-- </artifactItems> -->
+			<!-- other configurations here -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="${project.build.outputDirectory}/zips" />
+								<mkdir dir="eclipse_help" />
+								<get
+									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/en-US/eclipse/*zip*/eclipse.zip"
+									dest="${project.build.outputDirectory}/zips/eclipse.zip" />
+								<unzip src="${project.build.outputDirectory}/zips/eclipse.zip"
+									dest="eclipse_help" />
+								<!-- override eclipse html by html version wich is cleaner -->
+								<get
+									src="https://ci.inria.fr/gemoc/view/Documentation/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/en-US/html/*zip*/html.zip"
+									dest="${project.build.outputDirectory}/zips/html.zip" />
+								<unzip src="${project.build.outputDirectory}/zips/html.zip"
+									dest="eclipse_help" />
+								<copy todir="eclipse_help/eclipse" overwrite="true">
+									<fileset dir="eclipse_help/html"  />
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Workaround docbokk generation, the toc.xml are gerenated in the same 
+				folder and navigation fails -->
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>maven-replacer-plugin</artifactId>
+				<version>1.4.1</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+						<configuration>
+							<file>eclipse_help/eclipse/toc.xml</file>
+							<regex>false</regex>
+							<replacements>
+								<replacement>
+									<token>href="</token>
+									<value>href="eclipse_help/eclipse/</value>
+								</replacement>
+							</replacements>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>jboss</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
