@@ -58,11 +58,11 @@ public class TimelineWindow implements ITimelineListener {
 	/**
 	 * Constructor.
 	 * 
-	 * @param providier
+	 * @param provider
 	 *            the {@link ITimelineProvider} used to populate the model
 	 */
-	public TimelineWindow(ITimelineProvider providier) {
-		setProvider(providier);
+	public TimelineWindow(ITimelineProvider provider) {
+		setProvider(provider, 0);
 	}
 
 	/**
@@ -170,24 +170,28 @@ public class TimelineWindow implements ITimelineListener {
 	/**
 	 * Sets a new {@link ITimelineProvider}.
 	 * 
-	 * @param provider
+	 * @param newProvider
 	 *            the {@link ITimelineProvider}
+	 * @param newStart
+	 *            the new start
 	 */
-	public void setProvider(ITimelineProvider provider) {
-		if ((this.provider != null && !this.provider.equals(provider))
-				|| (provider != null && !provider.equals(this.provider))) {
+	public void setProvider(ITimelineProvider newProvider, int newStart) {
+		if ((this.provider != null && !this.provider.equals(newProvider))
+				|| (newProvider != null && !newProvider.equals(this.provider))) {
 			if (this.provider != null) {
 				this.provider.removeTimelineListener(this);
 			}
-			this.provider = provider;
+			this.provider = newProvider;
 			if (this.provider != null) {
 				this.provider.addTimelineListener(this);
 				for (ITimelineWindowListener listener : getListeners()) {
-					listener.providerChanged(provider);
+					listener.providerChanged(newProvider);
 				}
 				maxSelectedIndex = -1;
+				if (newStart >= 0 && newStart <= provider.getNumberOfChoices()) {
+					setStart(newStart);
+				}
 			}
-			setStart(0);
 		}
 	}
 
@@ -233,9 +237,6 @@ public class TimelineWindow implements ITimelineListener {
 			for (ITimelineWindowListener listener : getListeners()) {
 				listener.numberOfChoicesChanged(numberOfChoices);
 			}
-		}
-		if (getEnd() == numberOfChoices - 1) {
-			setStart(getStart() + 1);
 		}
 	}
 

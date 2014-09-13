@@ -32,7 +32,9 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.timeline.TimeLineView";
-	
+
+	public static final String FOLLOW_COMMAND_ID = "org.gemoc.execution.engine.io.views.timeline.Follow";
+
 	/**
 	 * The {@link AdapterFactory} created from the EMF registry.
 	 */
@@ -143,7 +145,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		if (engine != null)
 		{
 			_timelineProvider = new TimelineProvider(engine);
-			setTimelineProvider(_timelineProvider);			
+			setTimelineProvider(_timelineProvider, 0);			
 		}
 	}
 
@@ -163,7 +165,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			_timelineProvider.dispose();
 			_timelineProvider = null;
-			setTimelineProvider(_timelineProvider);
+			setTimelineProvider(_timelineProvider, 0);
 		}
 	}
 
@@ -200,5 +202,10 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	public boolean hasDetailViewer() {
 		return false;
 	}
-	
+
+	@Override
+	public String getFollowCommandID() {
+		return FOLLOW_COMMAND_ID;
+	}
+
 }
