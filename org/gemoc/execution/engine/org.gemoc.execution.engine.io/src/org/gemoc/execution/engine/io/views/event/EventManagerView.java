@@ -16,6 +16,9 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StackLayout;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -84,17 +87,18 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private Fragment fragment;
 	private Filter _strategyFilterSelected;
 	private CacheStatus _state;
-	/**
-	 * the source provider to enable/ disable command handlers.
-	 */
-	private CommandState _commandStateService;
-
+	private CommandState _commandStateService; //the source provider to enable/ disable command handlers.
+	private ISelectionChangedListener _decisionViewListener;
+	private SelectionListener _menuAndButtonListener;
 	private Button _freeButton;
 	private Button _forceTrueButton;
 	private Button _forceFalseButton;
-	
+	private Button _confirmationButton; 
+	private Composite _bottomComposite;
+	private Composite _informationBar;
+
 	private List<Button> _mseControlButtons;
-	
+
 	private Label _viewStateLabel; 
 
 	/**
@@ -204,7 +208,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		RUNNING("Running"),
 		RECORDING("Recording"),
 		PLAYING("Playing"),
-		STOPPED("No engine selected");
+		STOPPED("Engine not running");
 
 		private String text;
 
@@ -260,25 +264,32 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		// Create a menu which will show when right click is pressed on a row
 		createPopUpMenu();
 		// Create a display of the eventview status and create the buttons
+
+		_bottomComposite = new Composite(_parent, SWT.NONE);
+		_bottomComposite.setLayout(new StackLayout());
+		_bottomComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		//		_bottomComposite.setLayout(new GridLayout(1, false));
+
 		createInformationAndButtons();
+
+		//createInformationAndButtons();
 		// get the view to listen to motor selection
 		startListeningToMotorSelectionChange();
-		
+
 		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
 		_decisionViewListener = new ISelectionChangedListener() 
-											{
-												@Override
-												public void selectionChanged(SelectionChangedEvent event) 
-												{
-													updateView();
-												}
-											};		
+		{
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) 
+			{
+				updateView();
+			}
+		};		
 		decisionView.addSelectionChangedListener(_decisionViewListener);
 
 	}
-	
-	private ISelectionChangedListener _decisionViewListener;
-	private SelectionListener _menuAndButtonListener;
+
+
 
 	/**
 	 * Generate a label and a combo to make the user able to change the filter strategy
@@ -330,9 +341,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			}
 		});
 	}
-
-
-
 
 	/**
 	 * Create the tableViewer and all its components like its ContentProvider or its
@@ -418,8 +426,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			}
 		});
 	}
-	
-	
+
+
 	/**
 	 * Create the pop up menu which will be displayed following the right click
 	 * operation on a row of the tableViewer.
@@ -456,21 +464,28 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		item.addSelectionListener(_menuAndButtonListener);
 	}
 
+	/**
+	 * <p>Here two differents parts are created and added to _bottomComposite. Depending on the current
+	 * state, one on these components will be displayed by _bottomComposite<p> 
+	 * <p> The two differents parts are :<ul><li>an information panel with three MSE control buttons;</li>
+	 * <li>a validation button to resume the execution</li></ul><p>
+	 */
 	private void createInformationAndButtons()
-	{
+	{	
+		/*************************************  information bar ****************************************/
 		// The bar will be placed in the first row of the parent's grid ( which has a single column )
-		Composite informationBar = new Composite(_parent, SWT.BORDER);
+		_informationBar = new Composite(_bottomComposite, SWT.BORDER);
 		// The bar will be made of 3 parts :
-		informationBar.setLayout(new GridLayout(3, false));
-		informationBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-		informationBar.setBackground(new Color(_parent.getDisplay(), 255, 255, 255));
+		_informationBar.setLayout(new GridLayout(3, false));
+		_informationBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		_informationBar.setBackground(new Color(_parent.getDisplay(), 255, 255, 255));
 		//An icon on the first column
-		Label icon = new Label(informationBar, SWT.IMAGE_PNG);
+		Label icon = new Label(_informationBar, SWT.IMAGE_PNG);
 		icon.setImage(SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON));
 		// A label on the second column
-		_viewStateLabel = new Label(informationBar, SWT.NONE);
+		_viewStateLabel = new Label(_informationBar, SWT.NONE);
 		// 3 buttons on the third column
-		Composite buttonBar = new Composite(informationBar, SWT.NONE);
+		Composite buttonBar = new Composite(_informationBar, SWT.NONE);
 		buttonBar.setLayout(new GridLayout(3, false));
 		buttonBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 		// Button which will freed the selected Clocks
@@ -491,15 +506,31 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_forceTrueButton.setToolTipText("Force to tick");
 		_forceTrueButton.setData(ClockStatus.FORCED_SET);
 		_forceTrueButton.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
-		
+
 		_mseControlButtons = new ArrayList<Button>();
 		_mseControlButtons.add(_freeButton);
 		_mseControlButtons.add(_forceFalseButton);
 		_mseControlButtons.add(_forceTrueButton);
-		
+
 		for(Button b : _mseControlButtons){
 			b.addSelectionListener(_menuAndButtonListener);
 		}
+		/************************************  validation button ***************************************/
+
+		
+		_confirmationButton = new Button(_bottomComposite, SWT.PUSH | SWT.CENTER);
+		_confirmationButton.setText("Validate");
+		_confirmationButton.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, true));
+		_confirmationButton.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				validate();
+			}
+			@Override
+			public void mouseDown(MouseEvent e) {}
+			@Override
+			public void mouseDoubleClick(MouseEvent e) {}
+		});
 
 		updateInformationAndButtons();
 	}
@@ -515,7 +546,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			{
 				// todo
 				//				_viewer.getSelection()
-				
+
 				List<String> clockToForce = new ArrayList<String>();
 				ClockStatus state = ClockStatus.NOTFORCED_NOTSET;
 				for(TableItem item : table.getSelection())
@@ -540,7 +571,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		return listener;
 	}
 	/* ***************************************************************************************************************/
-	
+
 	/**
 	 * Force or Free a list of clocks
 	 * @param clockToForce The clock list to force or free
@@ -570,6 +601,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
+
+
 	/**
 	 * Refresh the input of the ContentProvider with the selected strategy
 	 */
@@ -586,7 +619,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					_wrapperCache.refreshFutureTickingFreeClocks();
 					_contentProvider.setFilterStrategy(_strategyFilterSelected);
 				}
-				updateInformationAndButtons();
+				updateComposites();
 				_viewer.setInput(_wrapperCache);
 			}				
 		});
@@ -688,16 +721,16 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					}
 					if(_state.equals(CacheStatus.WAITING))
 					{
-						executeCommand(Commands.STOP_WAIT);
+						executeCommand(Commands.STOP_WAIT);						
 					}
 					_engine.deleteObserver(this);
 					_cacheMap.remove(_engine);
 				}
-					_state = CacheStatus.STOPPED;
-					_wrapperCache = null;
-					_scenarioManager = null;
-					_cache = null;
-					executeCommand(Commands.UNDO_INIT);
+				_state = CacheStatus.STOPPED;
+				_wrapperCache = null;
+				_scenarioManager = null;
+				_cache = null;
+				executeCommand(Commands.UNDO_INIT);
 			}
 			else // else we set the current state according to the selected engine cache state
 			{
@@ -716,7 +749,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			updateView();
 		}
 	}
-	
+
 	private void createcache()
 	{
 		EngineCache cache = new EngineCache(_engine);
@@ -799,7 +832,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		_viewer.getTable().setFocus();
 	}
-	
+
 	public void setScenario(Fragment fragment)
 	{
 		this.fragment = fragment;
@@ -814,7 +847,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		return _engine;
 	}
-	
+
 	public CacheStatus getState()
 	{
 		return _state;
@@ -824,7 +857,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		return _cache.getScenarioManager();
 	}
-	
+
 	public void startRecordScenario() 
 	{
 		getCurrentScenarioManager().startRecord();
@@ -888,7 +921,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_state = _cache.getState();
 		_wrapperCache.freeAllClocks();
 	}
-	
+
 	public void validate()
 	{
 		_engine.resume();
@@ -905,17 +938,44 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		});
 	}
 
+	/**
+	 * switch between composites and update their content
+	 */
+	private void updateComposites()
+	{
+		StackLayout layout = (StackLayout)_bottomComposite.getLayout();
+		switch(_state)
+		{
+		case WAITING: 
+			layout.topControl = _confirmationButton;
+			_bottomComposite.layout();
+			break;
+		default: 
+			layout.topControl = _informationBar;
+			_bottomComposite.layout();
+			break;
+		}
+
+		updateInformationAndButtons();
+	}
+
 	private void updateInformationAndButtons()
 	{
-		enableOrDisableButtons(_mseControlButtons);
-		_viewStateLabel.setText(_state.getText()+" ...");
-	}
-	
-	private void enableOrDisableButtons(List<Button> controlButtons){
-		for(Button b : controlButtons){
-			b.setEnabled(_engine!=null);
+		if (_viewStateLabel != null)
+		{
+			enableOrDisableButtons(_mseControlButtons);
+			_viewStateLabel.setText(_state.getText()+" ...");			
 		}
 	}
-	
-	
+
+	private void enableOrDisableButtons(List<Button> controlButtons){
+		if (controlButtons != null)
+		{
+			for(Button b : controlButtons){
+				b.setEnabled(_cache!=null);
+			}			
+		}
+	}
+
+
 }

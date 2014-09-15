@@ -69,12 +69,6 @@
             allPopups="false"
             locationURI="toolbar:org.gemoc.execution.engine.io.views.event.EventManagerView">
          <command
-               commandId="org.gemoc.execution.engine.io.views.event.commands.StopWait"
-               icon="icons/validate-16.ico"
-               label="Validate"
-               style="push">
-         </command>
-         <command
                commandId="org.gemoc.execution.engine.io.views.event.commands.LoadScenario"
                icon="icons/play-4-16.png"
                label="Load Scenario"
