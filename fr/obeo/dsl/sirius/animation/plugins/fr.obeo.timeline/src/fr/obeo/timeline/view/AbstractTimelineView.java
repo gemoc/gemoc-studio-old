@@ -87,6 +87,9 @@ public abstract class AbstractTimelineView extends ViewPart {
 						// shift the TimelineWindow if needed
 						if (timelineWindow.getStart() > part.getModel().getChoice().getIndex() - 1
 								&& part.getModel().getChoice().getIndex() - 1 >= 0) {
+							if (follow) {
+								toggleFollow();
+							}
 							timelineWindow.setStart(timelineWindow.getStart() - 1);
 						}
 						toSelect = part.getLeftPossibleStepEditPart();
@@ -182,6 +185,9 @@ public abstract class AbstractTimelineView extends ViewPart {
 				} else {
 					multiplier = 1;
 				}
+				if (follow && shift < 0) {
+					toggleFollow();
+				}
 				if (timelineWindow.getStart() + shift * multiplier < 0) {
 					timelineWindow.setStart(0);
 				} else if (provider != null
@@ -214,7 +220,11 @@ public abstract class AbstractTimelineView extends ViewPart {
 						timelineSlider.setVisible(timelineWindow.getLength() < numberOfChoices);
 					}
 					if (follow && provider != null) {
-						timelineWindow.setStart(provider.getNumberOfChoices() - timelineWindow.getLength());
+						int start = provider.getNumberOfChoices() - timelineWindow.getLength();
+						if (start < 0) {
+							start = 0;
+						}
+						timelineWindow.setStart(start);
 					}
 				}
 			});
