@@ -13,10 +13,12 @@ public class CommandState extends AbstractSourceProvider {
 	public final static String PLAY_STATE = "org.gemoc.execution.engine.io.views.event.commands.PLAY";
 	public final static String RECORD_STATE = "org.gemoc.execution.engine.io.views.event.commands.RECORD";
 	public final static String INIT_STATE = "org.gemoc.execution.engine.io.views.event.commands.INIT";
+	public final static String WAIT_STATE = "org.gemoc.execution.engine.io.views.event.commands.WAIT";
 	public final static String ENABLE = "ENABLE";
 	public final static String DISABLE = "DISABLE";
 	private boolean _playFlag = false;
 	private boolean _recordFlag = false;
+	private boolean _waitFlag = false;
 
 
 	@Override
@@ -25,16 +27,18 @@ public class CommandState extends AbstractSourceProvider {
 
 	@Override
 	public String[] getProvidedSourceNames() {
-		return new String[] { ID, PLAY_STATE,  RECORD_STATE, INIT_STATE};
+		return new String[] { ID, PLAY_STATE,  RECORD_STATE, INIT_STATE, WAIT_STATE};
 	}
 
 	@Override
 	public Map<String, String> getCurrentState() {
-		Map<String, String> map = new HashMap<String, String>(2);
+		Map<String, String> map = new HashMap<String, String>(3);
 		String value = _playFlag ? ENABLE : DISABLE;
 		map.put(PLAY_STATE, value);
 		value = _recordFlag ? ENABLE : DISABLE;
 		map.put(RECORD_STATE, value);
+		value = _waitFlag ? ENABLE : DISABLE;
+		map.put(WAIT_STATE, value);
 		return map;
 	}
 	
@@ -49,22 +53,31 @@ public class CommandState extends AbstractSourceProvider {
 
 	public void setPlayFLAG(){
 		_playFlag = true;
-		fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, "ENABLE");
+		fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, ENABLE);
 	}
 	
 	public void setRecordFLAG(){
 		_recordFlag = true;
-		fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, "ENABLE");
+		fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, ENABLE);
 	}
 	
 	public void resetPlayFLAG(){
 		_playFlag = false;
-		fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, "DISABLE");
+		fireSourceChanged(ISources.ACTIVE_SHELL, PLAY_STATE, DISABLE);
 	}
 	
 	public void resetRecordFLAG(){
 		_playFlag = false;
-		fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, "DISABLE");
+		fireSourceChanged(ISources.ACTIVE_SHELL, RECORD_STATE, DISABLE);
 	}
-
+	
+	public void startWait() {
+		_waitFlag = true;
+		fireSourceChanged(ISources.ACTIVE_SHELL, WAIT_STATE, ENABLE);
+	}
+	
+	public void stopWait() {
+		_waitFlag = false;
+		fireSourceChanged(ISources.ACTIVE_SHELL, WAIT_STATE, DISABLE);
+	}
 } 

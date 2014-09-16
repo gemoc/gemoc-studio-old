@@ -24,7 +24,7 @@ public class LoadScenario extends AbstractHandler /*implements IScenarioStateCha
 			if(eventView.getScenario()!=null)
 			{
 				eventView.informationMsg("Replay", "Beginning");
-				eventView.executeService(event, SourceProviderControls.PLAY);
+				eventView.executeService(SourceProviderControls.PLAY);
 			}
 		}
 		else

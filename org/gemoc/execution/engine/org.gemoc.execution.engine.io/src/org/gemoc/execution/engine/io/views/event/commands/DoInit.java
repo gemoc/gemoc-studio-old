@@ -16,7 +16,7 @@ public class DoInit extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
-		eventView.executeService(event, SourceProviderControls.INIT);
+		eventView.executeService(SourceProviderControls.INIT);
 		return null;			
 	}	
 	

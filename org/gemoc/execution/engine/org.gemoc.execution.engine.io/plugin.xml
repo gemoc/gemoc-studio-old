@@ -148,6 +148,15 @@
             name="Undo init">
       </command>
       <command
+            defaultHandler="org.gemoc.execution.engine.io.views.event.commands.StartWait"
+            id="org.gemoc.execution.engine.io.views.event.commands.StartWait"
+            name="StartWait">
+      </command>
+      <command
+            id="org.gemoc.execution.engine.io.views.event.commands.StopWait"
+            name="Validate">
+      </command>
+      <command
             defaultHandler="fr.obeo.timeline.command.FollowHandler"
             id="org.gemoc.execution.engine.io.views.timeline.Follow"
             name="Follow">
@@ -171,6 +180,10 @@
          </variable>
          <variable
                name="INIT_STATE"
+               priorityLevel="workbench">
+         </variable>
+         <variable
+               name="WAIT_STATE"
                priorityLevel="workbench">
          </variable>
       </sourceProvider>
@@ -212,6 +225,18 @@
                   variable="org.gemoc.execution.engine.io.views.event.commands.INIT">
                <equals
                      value="SET">
+               </equals>
+            </with>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="org.gemoc.execution.engine.io.views.event.commands.StopWait"
+            commandId="org.gemoc.execution.engine.io.views.event.commands.StopWait">
+         <enabledWhen>
+            <with
+                  variable="org.gemoc.execution.engine.io.views.event.commands.WAIT">
+               <equals
+                     value="ENABLE">
                </equals>
             </with>
          </enabledWhen>
