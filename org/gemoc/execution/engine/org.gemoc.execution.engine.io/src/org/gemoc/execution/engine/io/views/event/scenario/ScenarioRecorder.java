@@ -31,7 +31,7 @@ public class ScenarioRecorder extends ScenarioTool
 				_resource = rs.createResource(uri);
 			}
 		};
-		safeModelModification(runnable);
+		safeModelModification(runnable, "create scenario resource");
 	}
 
 	private void createScenario()
@@ -45,7 +45,7 @@ public class ScenarioRecorder extends ScenarioTool
 				save();
 			}
 		};
-		safeModelModification(runnable);
+		safeModelModification(runnable, "create scenario");
 	}
 
 	public void startRecord()
@@ -66,7 +66,7 @@ public class ScenarioRecorder extends ScenarioTool
 				ref.setFragment(_fragment);
 			}
 		};
-		safeModelModification(runnable);	
+		safeModelModification(runnable, "start record scenario");	
 	}
 
 	public void record()
@@ -96,7 +96,7 @@ public class ScenarioRecorder extends ScenarioTool
 				save();
 			}
 		};
-		safeModelModification(runnable);			
+		safeModelModification(runnable, "record scenario");			
 	}		
 
 

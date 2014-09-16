@@ -44,7 +44,7 @@ public class ScenarioPlayer extends ScenarioTool
 				_eventView.setScenario(_fragment);
 			}
 		};
-		safeModelModification(runnable);
+		safeModelModification(runnable, "load scenario");
 	}
 
 	public void play()

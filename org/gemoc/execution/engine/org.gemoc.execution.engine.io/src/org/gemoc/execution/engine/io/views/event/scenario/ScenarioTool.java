@@ -25,12 +25,12 @@ public class ScenarioTool
 		_factory = ScenarioFactoryImpl.eINSTANCE;
 	}
 	
-	protected void safeModelModification(final Runnable runnable)
+	protected void safeModelModification(final Runnable runnable, String label)
 	{
 		TransactionalEditingDomain editingDomain = 
 				TransactionUtil.getEditingDomain(_manager.getCache().getSystem());
 		editingDomain.getCommandStack().execute(
-				new RecordingCommand(editingDomain) {
+				new RecordingCommand(editingDomain, label) {
 					public void doExecute() {
 						runnable.run();
 					}

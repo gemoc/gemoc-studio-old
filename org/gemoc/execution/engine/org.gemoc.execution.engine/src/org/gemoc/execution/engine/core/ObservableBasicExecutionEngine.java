@@ -588,7 +588,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		final TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(_executionContext.getResourceModel().getResourceSet());
 		FeedbackData res = null;
 		if (editingDomain != null) {
-			final RecordingCommand command = new RecordingCommand(editingDomain) {
+			final RecordingCommand command = new RecordingCommand(editingDomain, "execute engine event occurence " + engineEventOccurence) {
 				private List<FeedbackData> result = new ArrayList<FeedbackData>();
 
 				@Override
