@@ -1,5 +1,7 @@
 package org.gemoc.execution.engine.io.views.timeline;
 
+import java.util.WeakHashMap;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -45,6 +47,8 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private ILabelProvider _labelProvider;
 	
 	private ObservableBasicExecutionEngine _currentEngine;
+	
+	private WeakHashMap<GemocExecutionEngine, Integer> _positions = new WeakHashMap<GemocExecutionEngine, Integer>();
 	
 	public TimeLineView()
 	{
@@ -140,12 +144,37 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	
 	public void configure(ObservableBasicExecutionEngine engine)
 	{
-		_currentEngine = engine;
-		disposeTimeLineProvider();
-		if (engine != null)
+		if (_currentEngine == engine)
 		{
-			_timelineProvider = new TimelineProvider(engine);
-			setTimelineProvider(_timelineProvider, 0);			
+			_timelineProvider.notifyNumberOfChoicesChanged(_timelineProvider.getNumberOfChoices());
+		}
+		else
+		{
+			saveStartIndex();
+			_currentEngine = engine;
+			disposeTimeLineProvider();
+			if (engine != null)
+			{
+				int start = getStartIndex(engine);
+				_timelineProvider = new TimelineProvider(engine);
+				setTimelineProvider(_timelineProvider, start);			
+			}			
+		}
+	}
+
+	private int getStartIndex(ObservableBasicExecutionEngine engine) {
+		int start = 0;
+		if (_positions.containsKey(engine))
+		{
+			start = _positions.get(engine);
+		}
+		return start;
+	}
+
+	private void saveStartIndex() {
+		if (_currentEngine != null)
+		{
+			_positions.put(_currentEngine, getStart());
 		}
 	}
 
