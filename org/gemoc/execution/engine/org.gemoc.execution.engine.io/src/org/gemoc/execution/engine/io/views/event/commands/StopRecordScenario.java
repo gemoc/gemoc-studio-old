@@ -17,7 +17,6 @@ public class StopRecordScenario extends AbstractHandler {
 		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
 		eventView.informationMsg("Record Scenario", "Recording operation is completed");
 		eventView.stopRecordScenario();
-		eventView.executeService(event, SourceProviderControls.RECORD);
 		return null;			
 	}
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Observable;
+import java.util.concurrent.Semaphore;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -94,9 +95,9 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 	private boolean _started = false;
 	private boolean terminated = false;
-	
+
 	protected EngineStatus engineStatus = new EngineStatus();
-	
+
 	/**
 	 * used to detect
 	 */
@@ -131,8 +132,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * @param _executionContext
 	 */
 	public ObservableBasicExecutionEngine(ILogicalStepDecider decider, ModelExecutionContext executionContext) {
-//		if (decider == null)
-//			throw new IllegalArgumentException("decider");
+		//		if (decider == null)
+		//			throw new IllegalArgumentException("decider");
 		if (executionContext == null)
 			throw new IllegalArgumentException("executionContext");
 
@@ -144,23 +145,23 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		{
 			_logicalStepDecider = new CcslSolverDecider();
 		}
-		
+
 		for(IClockController clockController: _executionContext.getClockControllers())
 		{
 			if (clockController instanceof IAliveClockController)
 				addClockController((IAliveClockController)clockController);
 		}
-		
+
 		if (_executionContext.getRunConfiguration().isTraceActive())
 			activateTrace();
-		
+
 		try {
 			initialize();
 		} catch (CoreException e) {
 			throw new EngineNotCorrectlyInitialized(e.getMessage(), e);
 		}
 	}
-
+	
 	private void initialize() throws CoreException {
 
 		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
@@ -179,24 +180,26 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			injector.initialize(context);
 			injector.start();
 		}	
-				
+
 		for (IDataProcessingComponentExtension extension : _executionContext.getRunConfiguration().getActivatedComponentExtensions())
 		{
 			IDataProcessingComponent component = extension.instanciateComponent();
 			_executionComponents.add(component);
 			component.initialize(this);
 		}	
-		
+
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
-		
+
 	private ArrayList<IDataProcessingComponent> _executionComponents = new ArrayList<>();
-	
+
 	private void activateTrace() {
 		ModelExecutionTracingCapability capability = capability(ModelExecutionTracingCapability.class);
 		capability.setModelExecutionContext(_executionContext);
 	}
 
+	
+	private EngineRunnable _runnable;
 	@Override
 	public void start() 
 	{
@@ -207,8 +210,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				hook.preStartEngine(this);
 			}
 			engineStatus.setNbLogicalStepRun(0);
-			Runnable execution = new EngineRunnable();
-			Thread mainThread = new Thread(execution, "Gemoc engine " + _executionContext.getRunConfiguration().getModelURIAsString());
+			_runnable = new EngineRunnable();
+			Thread mainThread = new Thread(_runnable, "Gemoc engine " + _executionContext.getRunConfiguration().getModelURIAsString());
 			mainThread.start();
 		}
 
@@ -226,6 +229,14 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	}
 
 	private void clean() {
+		if (_executionContext.getDebuggerViewModelPath() != null
+				&& !_executionContext.getDebuggerViewModelPath().toString().equals(""))
+		{
+			URI uri = URI.createPlatformResourceURI(_executionContext.getDebuggerViewModelPath().toOSString(), true);
+			Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());			
+			session.close(new NullProgressMonitor());
+			SessionManager.INSTANCE.remove(session);
+		}
 		for (IAliveClockController injector : _clockControllers)
 		{
 			injector.stop();
@@ -233,7 +244,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		_clockControllers.clear();		
 		_executionContext.dispose();
 		_logicalStepDecider.dispose();
-		
+
 		if (animator != null) {
 			animator.clear(this);
 		}
@@ -242,7 +253,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		{
 			component.dispose();
 		}
-		
+
 		getEngineStatus().getCurrentLogicalStepChoice().clear();
 		getEngineStatus().setChosenLogicalStep(null);
 	}
@@ -271,8 +282,34 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 		return false;
 	}
+	
+	public void pause(){
+		_runnable.pause();
+	}
+	
+	public void resume(){
+		_runnable.resume();
+	}
+
 
 	class EngineRunnable implements Runnable {
+		
+		private Semaphore _sem = new Semaphore(0);
+		
+		public void pause(){
+			synchronized(this){
+				try {
+					_sem.acquire();
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		
+		public void resume(){
+			_sem.release();
+		}
+		
 		public void run() {
 			// register this engine using a unique name
 			String engineName = Thread.currentThread().getName();
@@ -284,10 +321,12 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 				_debugger.spawnRunningThread(Thread.currentThread().getName(), _executionContext.getResourceModel().getContents().get(0));
 			}
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
-			ObservableBasicExecutionEngine.this.setChanged();
-			ObservableBasicExecutionEngine.this.notifyObservers("Starting " + engineName); 
+			setChanged();
+			notifyObservers("Starting " + engineName);
 			long count = 0;
-
+		
+			pause();
+			
 			try 
 			{
 				while (!terminated) 
@@ -295,12 +334,12 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 					switchDeciderIfNecessary();
 					if (hasCapability(ModelExecutionTracingCapability.class))
 						updateTraceModelBeforeAskingSolver(count);
-					
+
 					for(IAliveClockController cc : _clockControllers)
 					{
 						cc.makeClocksTickOrNotTick();
 					}
-					
+
 					// 1- ask solver possible solutions for this step (set
 					// of
 					// logical steps | 1 logical step = set of simultaneous
@@ -334,7 +373,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 						if (selectedLogicalStepIndex == -1) {
 							if (hasRewindHappened()) {
-//								getCapability(ModelExecutionTracingCapability.class).getLastChoice();
+								//								getCapability(ModelExecutionTracingCapability.class).getLastChoice();
 								Activator.getDefault().debug("Back to past happened --> let the engine ignoring current steps.");
 							} else {
 								Activator.getDefault().debug("Engine cannot continue because decider did not decide anything.");
@@ -462,7 +501,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		if (_debugger != null) {
 			terminated = !_debugger.control(Thread.currentThread().getName(), logicalStepToApply);
 		}
-		
+
 		if (animator != null) {
 			animator.activate(this, logicalStepToApply);
 		}
@@ -549,7 +588,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		final TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(_executionContext.getResourceModel().getResourceSet());
 		FeedbackData res = null;
 		if (editingDomain != null) {
-			final RecordingCommand command = new RecordingCommand(editingDomain) {
+			final RecordingCommand command = new RecordingCommand(editingDomain, "execute engine event occurence " + engineEventOccurence) {
 				private List<FeedbackData> result = new ArrayList<FeedbackData>();
 
 				@Override
@@ -596,7 +635,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	{
 		_clockControllers.add(controller);
 	}
-	
+
 	private ArrayList<IExecutionEngineCapability> _capabilities = new ArrayList<IExecutionEngineCapability>();
 
 	public <T extends IExecutionEngineCapability> boolean hasCapability(Class<T> type) {
@@ -641,15 +680,15 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		return _executionContext;
 	}
 
-	
+
 	private ILogicalStepDecider _newDecider;
-	
+
 	@Override
 	public void changeLogicalStepDecider(ILogicalStepDecider newDecider) 
 	{
 		_newDecider = newDecider;
 	}
-	
+
 	private void switchDeciderIfNecessary()
 	{
 		if (_newDecider != null)
@@ -658,5 +697,5 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			_newDecider = null;
 		}
 	}
-	
+
 }

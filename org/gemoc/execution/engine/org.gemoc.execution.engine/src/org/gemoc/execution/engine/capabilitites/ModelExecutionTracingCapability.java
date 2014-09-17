@@ -70,7 +70,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		if (index != -1
 			&& index != _executionTraceModel.getChoices().size()) {
 			final CommandStack commandStack = _editingDomain.getCommandStack();
-			commandStack.execute(new RecordingCommand(_editingDomain) {
+			commandStack.execute(new RecordingCommand(_editingDomain, "Back to " + index) {
 				@Override
 				protected void doExecute() {
 					_executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size()).clear();
@@ -201,7 +201,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath().toString() + "/trace.xmi", false);
 		final Resource modelResource = rs.createResource(traceModelURI);
 		final CommandStack commandStack = _editingDomain.getCommandStack();
-		commandStack.execute(new RecordingCommand(_editingDomain) {
+		commandStack.execute(new RecordingCommand(_editingDomain, "set model execution context") {
 			@Override
 			protected void doExecute() {
 				modelResource.getContents().add(_executionTraceModel);
@@ -221,7 +221,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 
 	public void updateTraceModelBeforeAskingSolver(final long count) {
 		final CommandStack commandStack = _editingDomain.getCommandStack();
-		commandStack.execute(new RecordingCommand(_editingDomain) {
+		commandStack.execute(new RecordingCommand(_editingDomain, "save trace model") {
 
 			@Override
 			protected void doExecute() {
@@ -251,7 +251,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 
 	public void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
 		final CommandStack commandStack = _editingDomain.getCommandStack();
-		commandStack.execute(new RecordingCommand(_editingDomain) {
+		commandStack.execute(new RecordingCommand(_editingDomain, "update trace model") {
 
 			@Override
 			protected void doExecute() {
@@ -271,7 +271,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	
 	public void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) {
 		final CommandStack commandStack = _editingDomain.getCommandStack();
-		commandStack.execute(new RecordingCommand(_editingDomain) {
+		commandStack.execute(new RecordingCommand(_editingDomain, "update trace model after deciding") {
 
 			@Override
 			protected void doExecute() {

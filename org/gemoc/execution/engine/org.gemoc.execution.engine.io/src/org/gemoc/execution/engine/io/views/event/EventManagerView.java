@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -17,6 +16,9 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StackLayout;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -44,8 +46,10 @@ import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.io.views.event.commands.CommandState;
 import org.gemoc.execution.engine.io.views.event.commands.DoInit;
+import org.gemoc.execution.engine.io.views.event.commands.StartWait;
 import org.gemoc.execution.engine.io.views.event.commands.StopPlayScenario;
 import org.gemoc.execution.engine.io.views.event.commands.StopRecordScenario;
+import org.gemoc.execution.engine.io.views.event.commands.StopWait;
 import org.gemoc.execution.engine.io.views.event.commands.UndoInit;
 import org.gemoc.execution.engine.io.views.event.filters.AllBindedClockFilter;
 import org.gemoc.execution.engine.io.views.event.filters.Filter;
@@ -84,14 +88,18 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private Fragment fragment;
 	private Filter _strategyFilterSelected;
 	private CacheStatus _state;
-	/**
-	 * the source provider to enable/ disable command handlers.
-	 */
-	private CommandState _commandStateService;
+	private CommandState _commandStateService; //the source provider to enable/ disable command handlers.
+	private ISelectionChangedListener _decisionViewListener;
+	private SelectionListener _menuAndButtonListener;
+	private Button _freeButton;
+	private Button _forceTrueButton;
+	private Button _forceFalseButton;
+	private Button _confirmationButton; 
+	private Composite _bottomComposite;
+	private Composite _informationBar;
 
-	private Button _quickFreeClock;
-	private Button _quickForceClock_to_tick;
-	private Button _quickForceClock_to_notTick;
+	private List<Button> _mseControlButtons;
+
 	private Label _viewStateLabel; 
 
 	/**
@@ -165,7 +173,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		STOP_PLAY_SCENARIO(StopPlayScenario.ID),
 		STOP_RECORD_SCENARIO(StopRecordScenario.ID),
 		DO_INIT(DoInit.ID),
-		UNDO_INIT(UndoInit.ID);
+		UNDO_INIT(UndoInit.ID),
+		START_WAIT(StartWait.ID),
+		STOP_WAIT(StopWait.ID);
 
 		String id;
 
@@ -186,6 +196,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	public enum SourceProviderControls 
 	{
+		WAIT,
 		PLAY,
 		RECORD,
 		INIT,
@@ -194,10 +205,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	public enum CacheStatus
 	{
-		WAITING("Waiting"),
+		WAITING("Waiting validation"),
+		RUNNING("Running"),
 		RECORDING("Recording"),
 		PLAYING("Playing"),
-		STOPPED("No Engine selected");
+		STOPPED("Engine not running");
 
 		private String text;
 
@@ -227,9 +239,13 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_strategyFilterSelected = new NoFilter();
 		_commandStateService = null;
 		_state = CacheStatus.STOPPED;
+		ISourceProviderService sourceProviderService = (ISourceProviderService) PlatformUI.getWorkbench()
+				.getService(ISourceProviderService.class);
+		_commandStateService = (CommandState) sourceProviderService
+				.getSourceProvider(CommandState.ID);
 	}
 
-	/* IHM ***********************************************************************************************/
+	/* IHM *********************************************************************************************************/
 	/**
 	 * This is a callback that will allow us
 	 * to create the viewer and initialize it.
@@ -249,25 +265,32 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		// Create a menu which will show when right click is pressed on a row
 		createPopUpMenu();
 		// Create a display of the eventview status and create the buttons
+
+		_bottomComposite = new Composite(_parent, SWT.NONE);
+		_bottomComposite.setLayout(new StackLayout());
+		_bottomComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		//		_bottomComposite.setLayout(new GridLayout(1, false));
+
 		createInformationAndButtons();
+
+		//createInformationAndButtons();
 		// get the view to listen to motor selection
 		startListeningToMotorSelectionChange();
-		
+
 		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
 		_decisionViewListener = new ISelectionChangedListener() 
-											{
-												@Override
-												public void selectionChanged(SelectionChangedEvent event) 
-												{
-													updateView();
-												}
-											};		
+		{
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) 
+			{
+				updateView();
+			}
+		};		
 		decisionView.addSelectionChangedListener(_decisionViewListener);
 
 	}
-	
-	private ISelectionChangedListener _decisionViewListener;
-	private SelectionListener _menuAndButtonListener;
+
+
 
 	/**
 	 * Generate a label and a combo to make the user able to change the filter strategy
@@ -319,9 +342,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			}
 		});
 	}
-
-
-
 
 	/**
 	 * Create the tableViewer and all its components like its ContentProvider or its
@@ -407,8 +427,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			}
 		});
 	}
-	
-	
+
+
 	/**
 	 * Create the pop up menu which will be displayed following the right click
 	 * operation on a row of the tableViewer.
@@ -445,45 +465,73 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		item.addSelectionListener(_menuAndButtonListener);
 	}
 
+	/**
+	 * <p>Here two differents parts are created and added to _bottomComposite. Depending on the current
+	 * state, one on these components will be displayed by _bottomComposite<p> 
+	 * <p> The two differents parts are :<ul><li>an information panel with three MSE control buttons;</li>
+	 * <li>a validation button to resume the execution</li></ul><p>
+	 */
 	private void createInformationAndButtons()
-	{
+	{	
+		/*************************************  information bar ****************************************/
 		// The bar will be placed in the first row of the parent's grid ( which has a single column )
-		Composite informationBar = new Composite(_parent, SWT.BORDER);
+		_informationBar = new Composite(_bottomComposite, SWT.BORDER);
 		// The bar will be made of 3 parts :
-		informationBar.setLayout(new GridLayout(3, false));
-		informationBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-		informationBar.setBackground(new Color(_parent.getDisplay(), 255, 255, 255));
+		_informationBar.setLayout(new GridLayout(3, false));
+		_informationBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		_informationBar.setBackground(new Color(_parent.getDisplay(), 255, 255, 255));
 		//An icon on the first column
-		Label icon = new Label(informationBar, SWT.IMAGE_PNG);
+		Label icon = new Label(_informationBar, SWT.IMAGE_PNG);
 		icon.setImage(SharedIcons.getSharedImage(SharedIcons.ENGINE_ICON));
 		// A label on the second column
-		_viewStateLabel = new Label(informationBar, SWT.NULL);
+		_viewStateLabel = new Label(_informationBar, SWT.NONE);
 		// 3 buttons on the third column
-		Composite buttonBar = new Composite(informationBar, SWT.NONE);
+		Composite buttonBar = new Composite(_informationBar, SWT.NONE);
 		buttonBar.setLayout(new GridLayout(3, false));
 		buttonBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 		// Button which will freed the selected Clocks
-		_quickFreeClock = new Button(buttonBar, SWT.PUSH);
-		_quickFreeClock.setImage(SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET));
-		_quickFreeClock.setToolTipText("Free");
-		_quickFreeClock.setData(ClockStatus.NOTFORCED_NOTSET);
-		_quickFreeClock.setLayoutData(new GridData(SWT.END,SWT.NONE,true, false));
+		_freeButton = new Button(buttonBar, SWT.PUSH);
+		_freeButton.setImage(SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_NOTSET));
+		_freeButton.setToolTipText("Free");
+		_freeButton.setData(ClockStatus.NOTFORCED_NOTSET);
+		_freeButton.setLayoutData(new GridData(SWT.END,SWT.NONE,true, false));
 		// Button which will forced to not tick the selected Clocks
-		_quickForceClock_to_notTick = new Button(buttonBar, SWT.PUSH);
-		_quickForceClock_to_notTick.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET));
-		_quickForceClock_to_notTick.setToolTipText("Force to not tick");
-		_quickForceClock_to_notTick.setData(ClockStatus.FORCED_NOTSET);
-		_quickForceClock_to_notTick.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
+		_forceFalseButton = new Button(buttonBar, SWT.PUSH);
+		_forceFalseButton.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_NOTSET));
+		_forceFalseButton.setToolTipText("Force to not tick");
+		_forceFalseButton.setData(ClockStatus.FORCED_NOTSET);
+		_forceFalseButton.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
 		// Button which will forced to tick the selected Clocks
-		_quickForceClock_to_tick = new Button(buttonBar, SWT.PUSH);
-		_quickForceClock_to_tick.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET));
-		_quickForceClock_to_tick.setToolTipText("Force to tick");
-		_quickForceClock_to_tick.setData(ClockStatus.FORCED_SET);
-		_quickForceClock_to_tick.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
+		_forceTrueButton = new Button(buttonBar, SWT.PUSH);
+		_forceTrueButton.setImage(SharedIcons.getSharedImage(SharedIcons.FORCED_CLOCK_SET));
+		_forceTrueButton.setToolTipText("Force to tick");
+		_forceTrueButton.setData(ClockStatus.FORCED_SET);
+		_forceTrueButton.setLayoutData(new GridData(SWT.END,SWT.NONE,false, false));
 
-		_quickFreeClock.addSelectionListener(_menuAndButtonListener);
-		_quickForceClock_to_notTick.addSelectionListener(_menuAndButtonListener);
-		_quickForceClock_to_tick.addSelectionListener(_menuAndButtonListener);
+		_mseControlButtons = new ArrayList<Button>();
+		_mseControlButtons.add(_freeButton);
+		_mseControlButtons.add(_forceFalseButton);
+		_mseControlButtons.add(_forceTrueButton);
+
+		for(Button b : _mseControlButtons){
+			b.addSelectionListener(_menuAndButtonListener);
+		}
+		/************************************  validation button ***************************************/
+
+		
+		_confirmationButton = new Button(_bottomComposite, SWT.PUSH | SWT.CENTER);
+		_confirmationButton.setText("Validate");
+		_confirmationButton.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, true));
+		_confirmationButton.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				validate();
+			}
+			@Override
+			public void mouseDown(MouseEvent e) {}
+			@Override
+			public void mouseDoubleClick(MouseEvent e) {}
+		});
 
 		updateInformationAndButtons();
 	}
@@ -497,6 +545,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			@Override
 			public void widgetSelected(SelectionEvent e) 
 			{
+				// todo
+				//				_viewer.getSelection()
+
 				List<String> clockToForce = new ArrayList<String>();
 				ClockStatus state = ClockStatus.NOTFORCED_NOTSET;
 				for(TableItem item : table.getSelection())
@@ -520,8 +571,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		};
 		return listener;
 	}
-	/* ******************************************************************************************************/
-	
+	/* ***************************************************************************************************************/
+
 	/**
 	 * Force or Free a list of clocks
 	 * @param clockToForce The clock list to force or free
@@ -551,6 +602,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
+
+
 	/**
 	 * Refresh the input of the ContentProvider with the selected strategy
 	 */
@@ -567,7 +620,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					_wrapperCache.refreshFutureTickingFreeClocks();
 					_contentProvider.setFilterStrategy(_strategyFilterSelected);
 				}
-				updateInformationAndButtons();
+				updateComposites();
 				_viewer.setInput(_wrapperCache);
 			}				
 		});
@@ -578,29 +631,36 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	private void updateCommands()
 	{
-		ISourceProviderService sourceProviderService = (ISourceProviderService) PlatformUI.getWorkbench().getService(ISourceProviderService.class);
-		_commandStateService = (CommandState) sourceProviderService
-				.getSourceProvider(CommandState.ID);
 		switch(_state)
 		{
-		case WAITING: // engine running without recording or playing a fragment
+		case WAITING: //user must select the first forced MSE
+			_commandStateService.resetRecordFLAG();
+			_commandStateService.resetPlayFLAG();
+			_commandStateService.resetInit();
+			_commandStateService.startWait();
+			break;
+		case RUNNING: // engine running without recording or playing a fragment
 			_commandStateService.resetPlayFLAG();
 			_commandStateService.resetRecordFLAG();
+			_commandStateService.stopWait();
 			_commandStateService.setInit(); 
 			break;
 		case PLAYING: // engine running and playing a fragment
 			_commandStateService.setInit();
 			_commandStateService.resetRecordFLAG();
+			_commandStateService.stopWait();
 			_commandStateService.setPlayFLAG();
 			break;
 		case RECORDING: // engine running and recording a fragment
 			_commandStateService.setInit();
 			_commandStateService.resetPlayFLAG();
+			_commandStateService.stopWait();
 			_commandStateService.setRecordFLAG();
 			break;
 		case STOPPED: // engine stopped
 			_commandStateService.resetPlayFLAG();
 			_commandStateService.resetRecordFLAG();
+			_commandStateService.stopWait();
 			_commandStateService.resetInit();
 			break;
 		default: break;	
@@ -661,20 +721,24 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					{
 						executeCommand(Commands.STOP_PLAY_SCENARIO);
 					}
+					if(_state.equals(CacheStatus.WAITING))
+					{
+						executeCommand(Commands.STOP_WAIT);						
+					}
 					_engine.deleteObserver(this);
 					_cacheMap.remove(_engine);
 				}
-					_state = CacheStatus.STOPPED;
-					_wrapperCache = null;
-					_scenarioManager = null;
-					_cache = null;
-					executeCommand(Commands.UNDO_INIT);
+				_state = CacheStatus.STOPPED;
+				_wrapperCache = null;
+				_scenarioManager = null;
+				_cache = null;
+				executeCommand(Commands.UNDO_INIT);
 			}
 			else // else we set the current state according to the selected engine cache state
 			{
 				_engine.deleteObserver(this);
 				_engine.addObserver(this);
-				executeCommand(Commands.DO_INIT);
+				//executeCommand(Commands.DO_INIT);
 				if(_cacheMap.get(_engine) == null)
 				{
 					createcache();
@@ -691,7 +755,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			_viewer.setInput(null);
 		}
 	}
-	
+
 	private void createcache()
 	{
 		EngineCache cache = new EngineCache(_engine);
@@ -715,7 +779,26 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
-
+	/**
+	 * Set or reset variables in the SourceProvider to enable or disable command's handlers 
+	 * (to make them appear grayed).
+	 * The mapping between value and command is done in the plugin.xml
+	 * @param event
+	 * @param command
+	 */
+	public void executeService(SourceProviderControls command)
+	{
+		switch(command)
+		{
+		case WAIT: _commandStateService.startWait(); break;
+		case PLAY: _commandStateService.setPlayFLAG(); break;
+		case RECORD: _commandStateService.setRecordFLAG(); break;
+		case INIT: _commandStateService.setInit(); break;
+		case RESET: _commandStateService.resetInit();	
+		break;
+		default: break;
+		}
+	}
 
 
 	private void startListeningToMotorSelectionChange() {
@@ -756,11 +839,31 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_viewer.getTable().setFocus();
 	}
 
+	public void setScenario(Fragment fragment)
+	{
+		this.fragment = fragment;
+	}
+
+	public Fragment getScenario()
+	{
+		return fragment;
+	}
+
+	public GemocExecutionEngine getEngine() 
+	{
+		return _engine;
+	}
+
+	public CacheStatus getState()
+	{
+		return _state;
+	}
+
 	private ScenarioManager getCurrentScenarioManager()
 	{
 		return _cache.getScenarioManager();
 	}
-	
+
 	public void startRecordScenario() 
 	{
 		getCurrentScenarioManager().startRecord();
@@ -825,6 +928,12 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_wrapperCache.freeAllClocks();
 	}
 
+	public void validate()
+	{
+		_engine.resume();
+		_cache.setState(CacheStatus.RUNNING);
+	}
+
 	public void informationMsg(final String title, final String msg){
 		final EventManagerView eventView = this;
 		Display.getDefault().asyncExec(new Runnable() {
@@ -836,56 +945,43 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	/**
-	 * Set or reset variables in the SourceProvider to enable or disable command's handlers 
-	 * (to make them appear grayed).
-	 * The mapping is done in the plugin.xml
-	 * @param event
-	 * @param command
+	 * switch between composites and update their content
 	 */
-	public void executeService(ExecutionEvent event, SourceProviderControls command)
+	private void updateComposites()
 	{
-		ISourceProviderService sourceProviderService = (ISourceProviderService) PlatformUI.getWorkbench().getService(ISourceProviderService.class);
-		// Get the source provider service
-//		ISourceProviderService sourceProviderService = (ISourceProviderService) HandlerUtil
-	//			.getActiveWorkbenchWindow(event).getService(ISourceProviderService.class);
-		// now get my service
-		_commandStateService = (CommandState) sourceProviderService
-				.getSourceProvider(CommandState.ID);
-		switch(command)
+		StackLayout layout = (StackLayout)_bottomComposite.getLayout();
+		switch(_state)
 		{
-		case PLAY: _commandStateService.setPlayFLAG(); break;
-		case RECORD: _commandStateService.setRecordFLAG(); break;
-		case INIT: _commandStateService.setInit(); break;
-		case RESET: _commandStateService.resetInit();	
-		break;
-		default: break;
+		case WAITING: 
+			layout.topControl = _confirmationButton;
+			_bottomComposite.layout();
+			break;
+		default: 
+			layout.topControl = _informationBar;
+			_bottomComposite.layout();
+			break;
 		}
-	}
 
-	public void setScenario(Fragment fragment)
-	{
-		this.fragment = fragment;
-	}
-
-	public Fragment getScenario()
-	{
-		return fragment;
-	}
-
-	public GemocExecutionEngine getEngine() 
-	{
-		return _engine;
+		updateInformationAndButtons();
 	}
 
 	private void updateInformationAndButtons()
 	{
-		if(_quickFreeClock.isDisposed())
+		if (_viewStateLabel != null)
 		{
+			enableOrDisableButtons(_mseControlButtons);
+			_viewStateLabel.setText(_state.getText()+" ...");			
 		}
-		_quickFreeClock.setEnabled(_engine!=null);
-		_quickForceClock_to_notTick.setEnabled(_engine!=null);
-		_quickForceClock_to_tick.setEnabled(_engine!=null);
+	}
 
-		_viewStateLabel.setText(_state.getText()+" ...");
-	}	
+	private void enableOrDisableButtons(List<Button> controlButtons){
+		if (controlButtons != null)
+		{
+			for(Button b : controlButtons){
+				b.setEnabled(_cache!=null);
+			}			
+		}
+	}
+
+
 }

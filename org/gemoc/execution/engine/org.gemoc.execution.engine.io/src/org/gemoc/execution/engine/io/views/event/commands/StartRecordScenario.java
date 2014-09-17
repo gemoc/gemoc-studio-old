@@ -19,7 +19,7 @@ public class StartRecordScenario extends AbstractHandler {
 		{
 			eventView.informationMsg("Record Scenario", "Beginning of the operation");
 			eventView.startRecordScenario();
-			eventView.executeService(event, SourceProviderControls.RECORD);
+			eventView.executeService(SourceProviderControls.RECORD);
 		}
 		else
 		{
