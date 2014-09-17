@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.views.event.EventManagerView.CacheStatus;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.Element;
@@ -13,7 +14,7 @@ public class EngineCache {
 	
 	private ObservableBasicExecutionEngine _engine;
 	
-
+	private ExecutionMode _executionMode;
 	private WrapperCache _wrapperCache;
 
 	private ScenarioManager _scenarioManager;
@@ -32,8 +33,14 @@ public class EngineCache {
 	public EngineCache(ObservableBasicExecutionEngine engine)
 	{
 		_engine = engine;
+		_executionMode = _engine.getExecutionContext().getExecutionMode();
 		_cacheStep = (int) engine.getEngineStatus().getNbLogicalStepRun();
-		_state = CacheStatus.WAITING;
+		if(_executionMode.equals(ExecutionMode.Debug))
+		{
+			_state = CacheStatus.WAITING;
+		}
+		else
+			_state = CacheStatus.RUNNING;
 		createWrapperCache();
 		createScenarioManager();
 	}

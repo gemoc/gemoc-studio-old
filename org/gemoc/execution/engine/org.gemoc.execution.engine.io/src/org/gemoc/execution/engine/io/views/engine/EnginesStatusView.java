@@ -38,7 +38,6 @@ import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
@@ -66,7 +65,6 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 		super.dispose();
 	}
 	
-	private Object _lastSelection;
 	/**
 	 * This is a callback that will allow us
 	 * to create the viewer and initialize it.
@@ -407,7 +405,6 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 	{
 		Display.getDefault().syncExec(new Runnable() {
 		      public void run() {
-		    	  _lastSelection = engine;
 	    		  ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
 	    		  observable.addObserver(EnginesStatusView.this);
 		    	  _viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);

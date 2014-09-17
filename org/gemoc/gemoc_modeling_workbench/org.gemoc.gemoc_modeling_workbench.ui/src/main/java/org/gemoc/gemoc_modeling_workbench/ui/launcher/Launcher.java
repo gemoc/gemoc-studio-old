@@ -68,9 +68,12 @@ public class Launcher
 			if (ILaunchManager.DEBUG_MODE.equals(mode)
 				&& runConfiguration.getAnimatorURIAsString() != null) 
 			{
-				URI uri = URI.createPlatformResourceURI(runConfiguration.getAnimatorURIAsString(), true);
-				killPreviousSiriusSession(uri, monitor);
-				openNewSiriusSession(uri, monitor);
+				if (!runConfiguration.getAnimatorURIAsString().equals(""))
+				{
+					URI uri = URI.createPlatformResourceURI(runConfiguration.getAnimatorURIAsString(), true);
+					killPreviousSiriusSession(uri, monitor);
+					openNewSiriusSession(uri, monitor);					
+				}
 				executionMode = ExecutionMode.Debug;			
 			}
 			else
