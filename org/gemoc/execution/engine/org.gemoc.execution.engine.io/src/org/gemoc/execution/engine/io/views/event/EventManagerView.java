@@ -28,10 +28,12 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Decorations;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -60,6 +62,7 @@ import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -740,6 +743,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				if(_cacheMap.get(_engine) == null)
 				{
 					createcache();
+					if(_engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug))
+					{
+						bring2Top();
+					}
 				}
 				_cache = _cacheMap.get(_engine);
 				_wrapperCache = _cache.getWrapperCache();
@@ -972,13 +979,19 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
-	private void enableOrDisableButtons(List<Button> controlButtons){
+	private void enableOrDisableButtons(List<Button> controlButtons)
+	{
 		if (controlButtons != null)
 		{
 			for(Button b : controlButtons){
 				b.setEnabled(_cache!=null);
 			}			
 		}
+	}
+	
+	private void bring2Top()
+	{
+		getSite().getPage().bringToTop(this);
 	}
 
 

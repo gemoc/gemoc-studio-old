@@ -13,8 +13,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConst
 public class EngineCache {
 	
 	private ObservableBasicExecutionEngine _engine;
-	
-	private ExecutionMode _executionMode;
+
 	private WrapperCache _wrapperCache;
 
 	private ScenarioManager _scenarioManager;
@@ -33,9 +32,9 @@ public class EngineCache {
 	public EngineCache(ObservableBasicExecutionEngine engine)
 	{
 		_engine = engine;
-		_executionMode = _engine.getExecutionContext().getExecutionMode();
+		ExecutionMode executionMode = _engine.getExecutionContext().getExecutionMode();
 		_cacheStep = (int) engine.getEngineStatus().getNbLogicalStepRun();
-		if(_executionMode.equals(ExecutionMode.Debug))
+		if(executionMode.equals(ExecutionMode.Debug))
 		{
 			_state = CacheStatus.WAITING;
 		}
