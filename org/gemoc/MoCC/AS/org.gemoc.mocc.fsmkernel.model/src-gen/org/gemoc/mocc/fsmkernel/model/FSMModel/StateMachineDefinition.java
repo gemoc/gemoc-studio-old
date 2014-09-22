@@ -77,7 +77,7 @@ public interface StateMachineDefinition extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transitions</em>' containment reference list.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getStateMachineDefinition_Transitions()
-	 * @model containment="true"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<Transition> getTransitions();
@@ -93,7 +93,7 @@ public interface StateMachineDefinition extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>States</em>' containment reference list.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getStateMachineDefinition_States()
-	 * @model containment="true" required="true"
+	 * @model containment="true" keys="name" required="true"
 	 * @generated
 	 */
 	EList<State> getStates();
@@ -109,7 +109,7 @@ public interface StateMachineDefinition extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Initial States</em>' reference list.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getStateMachineDefinition_InitialStates()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	EList<State> getInitialStates();
@@ -125,7 +125,7 @@ public interface StateMachineDefinition extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Final States</em>' reference list.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getStateMachineDefinition_FinalStates()
-	 * @model
+	 * @model keys="name"
 	 * @generated
 	 */
 	EList<State> getFinalStates();

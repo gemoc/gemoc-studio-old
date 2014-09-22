@@ -52,7 +52,7 @@ public interface DeclarationBlock extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Concrete Entities</em>' containment reference list.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getDeclarationBlock_ConcreteEntities()
-	 * @model containment="true"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<ConcreteEntity> getConcreteEntities();
@@ -68,7 +68,7 @@ public interface DeclarationBlock extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Classical Expressions</em>' containment reference list.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getDeclarationBlock_ClassicalExpressions()
-	 * @model containment="true"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<ClassicalExpression> getClassicalExpressions();

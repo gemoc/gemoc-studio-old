@@ -45,7 +45,7 @@ public interface Guard extends AbstractGuard {
 	 * @return the value of the '<em>Value</em>' reference.
 	 * @see #setValue(BooleanExpression)
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getGuard_Value()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	BooleanExpression getValue();

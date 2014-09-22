@@ -20,9 +20,9 @@
       <details key="documentation" value="The concept of Transition is used to describe the relationships between the various states of the control FSM. They are used to define relations of succession and precedence between the control states. Specifically, FSMModel transitions define references source, target to denote the &lt; source > states and &lt; target > states for a given transition."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
-        eType="#//State" eOpposite="#//State/outputTransitions"/>
+        eType="#//State" eOpposite="#//State/outputTransitions" eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="#//State" eOpposite="#//State/inputTransitions"/>
+        eType="#//State" eOpposite="#//State/inputTransitions" eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//AbstractGuard"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -46,33 +46,36 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="declarationBlock" eType="#//DeclarationBlock"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
-        eType="#//Transition" containment="true"/>
+        eType="#//Transition" containment="true" eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" lowerBound="1"
-        upperBound="-1" eType="#//State" containment="true"/>
+        upperBound="-1" eType="#//State" containment="true" eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialStates" lowerBound="1"
-        upperBound="-1" eType="#//State"/>
+        upperBound="-1" eType="#//State" eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="finalStates" upperBound="-1"
-        eType="#//State"/>
+        eType="#//State" eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractTrigger" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractAction" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractGuard" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Guard" eSuperTypes="#//AbstractGuard">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/BooleanExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/BooleanExpression"
+        eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Trigger" eSuperTypes="#//AbstractTrigger">
     <eStructuralFeatures xsi:type="ecore:EReference" name="trueTriggers" upperBound="-1"
-        eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"/>
+        eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"
+        eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="falseTriggers" upperBound="-1"
-        eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"/>
+        eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/BindableEntity"
+        eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerAssignement" eSuperTypes="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/BinaryIntegerExpression #//AbstractAction"/>
   <eClassifiers xsi:type="ecore:EClass" name="DeclarationBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="concreteEntities" upperBound="-1"
         eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation/ConcreteEntity"
-        containment="true"/>
+        containment="true" eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classicalExpressions" upperBound="-1"
         eType="ecore:EClass ../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression/ClassicalExpression"
-        containment="true"/>
+        containment="true" eKeys="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//NamedElement/name"/>
   </eClassifiers>
 </ecore:EPackage>
