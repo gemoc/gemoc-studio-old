@@ -51,6 +51,9 @@
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-maven-plugin</artifactId>
                 <version>${tycho-version}</version>
+                 <configuration>
+                    <strictVersions>false</strictVersions>
+                </configuration>
                 <extensions>true</extensions>
             </plugin>
 
