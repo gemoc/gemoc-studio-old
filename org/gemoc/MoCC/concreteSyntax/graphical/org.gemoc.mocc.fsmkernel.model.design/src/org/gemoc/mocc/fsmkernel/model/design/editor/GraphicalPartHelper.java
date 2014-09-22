@@ -36,14 +36,16 @@ public class GraphicalPartHelper {
 	 * Managed host graphical edit part
 	 */
 	private IGraphicalEditPart hostEditPart;
+	private EObject semanticElement;
 	
 	
 	/**
 	 * GraphicalPartHelper
 	 * @param editPart
 	 */
-	public GraphicalPartHelper(IGraphicalEditPart editPart) {
+	public GraphicalPartHelper(IGraphicalEditPart editPart,EObject semanticElement) {
 		this.hostEditPart = editPart;
+		this.semanticElement = semanticElement;
 	}
 	
 	/**
@@ -52,12 +54,7 @@ public class GraphicalPartHelper {
 	 * @return the root semantic element
 	 */
 	public EObject resolveSemanticElement(){
-		EObject eObject = hostEditPart.resolveSemanticElement();
-		if (isDSemanticDecorator(eObject)) {
-			DSemanticDecorator semanticDecorator = (DSemanticDecorator) eObject;
-			return semanticDecorator.getTarget();
-		}
-		return 	 hostEditPart.resolveSemanticElement();
+		return ((DSemanticDecorator)semanticElement).getTarget();
 	}
 	
 	
@@ -66,7 +63,7 @@ public class GraphicalPartHelper {
 	 * @see DSemanticDecorator
 	 * @param eObject to be checked
 	 */
-	private boolean isDSemanticDecorator(EObject eObject) {
+	public boolean isDSemanticDecorator(EObject eObject) {
 		return ViewpointPackage.eINSTANCE.getDSemanticDecorator().isInstance(eObject);
 	}
 	
@@ -102,4 +99,7 @@ public class GraphicalPartHelper {
 		return hostEditPart.getViewer();
 	}
 
+	public void refresh(){
+		hostEditPart.refresh();
+	}
 }

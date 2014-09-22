@@ -48,9 +48,11 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
+ * Attempt to add undo/redo management for the pop-up editor, 
+ * useless until...
  * FIXME
  * @author creffst
- *
+ * 
  */
 public class PopupXTextEditorActionSupport {
 	

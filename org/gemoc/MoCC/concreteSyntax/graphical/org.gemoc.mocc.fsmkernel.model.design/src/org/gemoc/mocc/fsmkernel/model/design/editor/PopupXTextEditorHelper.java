@@ -16,15 +16,13 @@
 package org.gemoc.mocc.fsmkernel.model.design.editor;
 
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
+import java.io.IOException;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -37,8 +35,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.layout.FillLayout;
@@ -49,9 +45,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.ide.ResourceUtil;
+import org.eclipse.xtext.linking.impl.XtextLinkingDiagnostic;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
-//import org.eclipse.xtext.nodemodel.serialization.SerializationUtil;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
@@ -73,10 +68,14 @@ import com.google.inject.Module;
 
 /**
  * Inspired by the gmf glue example from koehnlein
- *
+ * and the xtext support from Cedric Brun
+ * @author Creffst
  * @see org.eclipse.xtext.gmf.glue
  */
 public class PopupXTextEditorHelper {
+	
+	private static int MIN_EDITOR_WIDTH = 100;
+	private static int MIN_EDITOR_HEIGHT = 20;
 	
 	/**
 	 * Helper to access to the host Edit GraphicalPart 
@@ -106,7 +105,7 @@ public class PopupXTextEditorHelper {
 	 * (hostEditPartHelper-..>diagramEditor-..>xtextEditorComposite->xtextEditor)
 	 */
 	private XtextEditor xtextEditor;
-	
+
 	/**
 	 * editor offset, 
 	 * used to set and save&close the pop up editor
@@ -145,7 +144,20 @@ public class PopupXTextEditorHelper {
 	 */
 	private String semanticElementFragment;
 	
+	/**
+	 * last stable text (without error or warning)
+	 */
+	private String stableText; 
 	
+	/**
+	 * size of the last stable document
+	 */
+	private int stableDocSize;
+	
+	/**
+	 * last stable text (without error or warning)
+	 */
+	private String textWithoutDandlingRefs; 
 
 	/**
 	 * Create new PopupXTextEditor on a given edit part to perform direct xtext edition
@@ -153,8 +165,8 @@ public class PopupXTextEditorHelper {
 	 * @param xtextInjector : the dependency tracker xtext injector
 	 * @wbp.parser.entryPoint
 	 */
-	public PopupXTextEditorHelper(IGraphicalEditPart editPart, Injector xtextInjector) {
-		this.hostEditPartHelper = new GraphicalPartHelper(editPart);
+	public PopupXTextEditorHelper(IGraphicalEditPart editPart, EObject semanticElement,Injector xtextInjector) {
+		this.hostEditPartHelper = new GraphicalPartHelper(editPart,semanticElement);
 		this.xtextInjector = xtextInjector;
 		this.resourceHelper = new ResourceHelper(xtextInjector);
 	}
@@ -183,66 +195,66 @@ public class PopupXTextEditorHelper {
 			createXtextEditor(new ResourceWorkingCopyFileEditorInput(xtextResource));
 		} catch (Exception e) {
 			Activator.logError(e);
+		} finally {
+			if (hostEditPartHelper != null) {
+				hostEditPartHelper.refresh();
+			}
 		}
 	}
 	
 	/**
 	 * Close this editor (performing a reconciliation with the host resource or not)
 	 * @param isReconcile : true if reconciliation has to be performed
-	 * @throws CoreException 
 	 */
-	public void closeEditor(boolean isReconcile) throws CoreException {
+	public void closeEditor(boolean isReconcile) {
 		if (xtextEditor != null) {
-			if (isReconcile) {
-				saveModifications();
+			try {
+				saveModifications(isReconcile);
+			} catch (Exception exc) {
+				Activator.logError(exc);
 			}
-			deleteFile();
-			xtextEditor.dispose();
+			//xtextEditor.dispose();
 			xtextEditor = null;
 			xtextEditorComposite.setVisible(false);
 			xtextEditorComposite.dispose();
-			
-			//TODO firePropertyChange(IEditorPart.PROP_DIRTY);	
+			xtextEditorComposite =null;
 		}
 	}
 	
-	public void deleteFile() throws CoreException{
-		IFile file = ResourceUtil.getFile(xtextEditor.getEditorInput());
-		file.delete(true, new NullProgressMonitor());
-		IProject activeProject = file.getProject();
-		IFolder folder= activeProject.getFolder(ResourceHelper.TEMPORARY_PROJECT_NAME);	
-		if((folder.members()==null) ||(folder.members().length==0)){
-			//remove folder
-			folder.delete(true, new NullProgressMonitor());
-		}
-	}
+	
 	
 	/**
 	 * Performs a reconciliation with the host resource whether possible (document  has no error)
 	 * and necessary (resource has been modified)
 	 */
-	public void saveModifications(){
-		try {
-			final IXtextDocument xtextDocument = xtextEditor.getDocument();
-			if (!isDocumentHasErrors(xtextDocument)) {
-				// subtract 2 for the artificial newlines
-				int documentGrowth = xtextDocument.getLength() - initialDocumentSize - 2;
-				String newText = xtextDocument.get(editorOffset + 1, initialEditorSize + documentGrowth);
-				resourceHelper.updateXtextResource(editorOffset, initialEditorSize, newText);
-			}else {
-				
-			}
-		} catch (Exception exc) {
-			Activator.logError(exc);
+	public void saveModifications(boolean isReconcile)throws IOException,BadLocationException {
+		
+		final IXtextDocument xtextDocument = xtextEditor.getDocument();
+		if (isReconcile) {
+			String newText = xtextDocument.get(0,xtextDocument.getLength());
+			resourceHelper.updateXtextResource(newText);
+		}else {
+			String newText = xtextDocument.get(0,editorOffset);
+			int documentGrowth = xtextDocument.getLength() - stableDocSize;
+			newText = newText.concat(stableText);
+			newText = newText.concat(xtextDocument.get(editorOffset +stableText.length()+documentGrowth, xtextDocument.getLength()-(editorOffset +stableText.length() + documentGrowth)));
+			resourceHelper.updateXtextResource(newText);
 		}
 	}
 	
-	//
-	private boolean isDocumentHasErrors(final IXtextDocument xtextDocument) {
+	private boolean isDocumentHasErrorsOrWarnings(final IXtextDocument xtextDocument) {
 		return (xtextDocument.readOnly(new IUnitOfWork<Boolean, XtextResource>() {
 			public Boolean exec(XtextResource state) throws Exception {
 				IParseResult parseResult = state.getParseResult();
-				return !state.getErrors().isEmpty() || parseResult == null || parseResult.hasSyntaxErrors();
+				return !state.getErrors().isEmpty() || (!state.getWarnings().isEmpty()) || parseResult == null || parseResult.hasSyntaxErrors();
+			}
+		}));
+	}
+	
+	private EList<Diagnostic> getWarnings(final IXtextDocument xtextDocument) {
+		return (xtextDocument.readOnly(new IUnitOfWork<EList<Diagnostic>, XtextResource>() {
+			public EList<Diagnostic> exec(XtextResource state) throws Exception {
+				return state.getWarnings();
 			}
 		}));
 	}
@@ -257,6 +269,7 @@ public class PopupXTextEditorHelper {
 		DiagramRootEditPart diagramEditPart = hostEditPartHelper.getRootPart();
 		
 		Composite parentComposite = (Composite) diagramEditPart.getViewer().getControl();
+
 		xtextEditorComposite = new Decorations(parentComposite, SWT.RESIZE|SWT.CLOSE); //SWT.TITLE|SWT.CLOSE|SWT.RESIZE | SWT.ON_TOP | SWT.BORDER
 		xtextEditorComposite.setLayout(new FillLayout());
 		
@@ -264,21 +277,16 @@ public class PopupXTextEditorHelper {
 			
 			//@Override
 			public void widgetDisposed(DisposeEvent e) {
-				//Don't save if no syntax error
-				try {
-				if (MessageDialog.openQuestion(xtextEditorComposite.getShell(), "Warning", "You are about to close without saving, save anyway?")) {
-					
-						closeEditor(true);
-					
-				}else {
+
+				final IXtextDocument xtextDocument = xtextEditor.getDocument();
+				if (isDocumentHasErrorsOrWarnings(xtextDocument)) {
+					showDocumentErrorsOrWarnings(xtextDocument);
 					closeEditor(false);
-				}
-				} catch (CoreException ce) {
-					Activator.logError(ce);
+				}else {
+					closeEditor(true);
 				}
 			}
 		});
-		
 		IEditorSite editorSite = diagramEditor.getEditorSite();
 		this.xtextEditor = xtextInjector.getInstance(XtextEditor.class);
 		
@@ -288,41 +296,42 @@ public class PopupXTextEditorHelper {
 			}
 		})));
 		xtextEditor.init(editorSite, editorInput);
-		xtextEditor.createPartControl(xtextEditorComposite);//xtextEditorComposite);
+		xtextEditor.createPartControl(xtextEditorComposite);
+
 		
 		registerKeyListener();
 		setEditorRegion();
 		setEditorBounds();
 		
-		PopupXTextEditorActionSupport xtextActionSupport = new PopupXTextEditorActionSupport((XtextSourceViewer)xtextEditor.getInternalSourceViewer());
+		/*PopupXTextEditorActionSupport xtextActionSupport = new PopupXTextEditorActionSupport((XtextSourceViewer)xTextEmbeddedEditor.getViewer());//xtextEditor.getInternalSourceViewer());
 		xtextActionSupport.initializeActions();
-		xtextActionSupport.installUndoRedoSupport();
+		xtextActionSupport.installUndoRedoSupport();*/
 		//}
 		xtextEditorComposite.setVisible(true);
 		xtextEditorComposite.forceFocus();
 		xtextEditor.setFocus();
 	}
 	
-	
-/*	class fileExitItemListener implements SelectionListener {
-	    public void widgetSelected(SelectionEvent event) {
-	      closeEditor(false);
-	    }
-
-	    public void widgetDefaultSelected(SelectionEvent event) {
-	      closeEditor(false);
-	    }
-	  }
-
-	  class fileSaveItemListener implements SelectionListener {
-	    public void widgetSelected(SelectionEvent event) {
-	      saveModifications();
-	    }
-
-	    public void widgetDefaultSelected(SelectionEvent event) {
-	      saveModifications();
-	    }
-	  }*/
+	private boolean showDocumentErrorsOrWarnings(final IXtextDocument xtextDocument) {
+		return (xtextDocument.readOnly(new IUnitOfWork<Boolean, XtextResource>() {
+			public Boolean exec(XtextResource state) throws Exception {
+				IParseResult parseResult = state.getParseResult();
+				if (!state.getErrors().isEmpty()) {
+					MessageDialog.openWarning(xtextEditorComposite.getShell(), "Warning", "Parsing error(s) remain(s): last stable model will be restored");
+					return !state.getErrors().isEmpty();
+				}
+				if (parseResult.hasSyntaxErrors()) {
+					MessageDialog.openWarning(xtextEditorComposite.getShell(), "Warning", "Syntax error(s) remain(s): last stable model will be restored");
+					return parseResult.hasSyntaxErrors();
+				}
+				if (!state.getWarnings().isEmpty()) {
+					MessageDialog.openWarning(xtextEditorComposite.getShell(), "Warning", "Parsing warning(s) remain(s): last stable model will be restored");
+					return parseResult.hasSyntaxErrors();
+				}
+				return !state.getErrors().isEmpty() || parseResult == null || parseResult.hasSyntaxErrors();
+			}
+		}));
+	}
 	
 	
 	/**
@@ -330,7 +339,8 @@ public class PopupXTextEditorHelper {
 	 * @see PopupXTextEditorKeyListener
 	 */
 	private void registerKeyListener() {
-		ISourceViewer sourceViewer = xtextEditor.getInternalSourceViewer();
+		ISourceViewer sourceViewer = xtextEditor.getInternalSourceViewer(); //xTextEmbeddedEditor.getViewer();
+//		xtextEditor.setAction(actionID, action);
 		final StyledText xtextTextWidget = sourceViewer.getTextWidget();
 		PopupXTextEditorKeyListener keyListener = 
 				new PopupXTextEditorKeyListener
@@ -363,10 +373,13 @@ public class PopupXTextEditorHelper {
 				editorOffset = xtextNode.getOffset();
 				initialEditorSize = xtextNode.getLength();
 				initialDocumentSize = xtextDocument.getLength();
+				stableText = xtextDocument.get(xtextNode.getOffset(), xtextNode.getLength());
+				stableDocSize = initialDocumentSize;
+				textWithoutDandlingRefs = xtextDocument.get(xtextNode.getOffset(), xtextNode.getLength());
 
 				// insert a newline directly before and after the node
-				xtextDocument.replace(editorOffset, 0, "\n");
-				xtextDocument.replace(editorOffset + 1 + initialEditorSize, 0, "\n");
+				//xtextDocument.replace(editorOffset, 0, "\n");
+				//xtextDocument.replace(editorOffset + 1 + initialEditorSize, 0, "\n");
 				return true;
 			}
 
@@ -378,13 +391,12 @@ public class PopupXTextEditorHelper {
 		}
 	}
 	
-	
-	private static int MIN_EDITOR_WIDTH = 100;
-	private static int MIN_EDITOR_HEIGHT = 20;
 	/**
 	 * Set pop up xtext editor initial bounds
 	 */
 	private void setEditorBounds() {
+		//String editString = xtextEditor.getEditablePart();
+		
 		final IXtextDocument xtextDocument = xtextEditor.getDocument();
 		// mind the added newlines
 		String editString = "";
@@ -393,12 +405,14 @@ public class PopupXTextEditorHelper {
 		} catch (BadLocationException exc) {
 			Activator.logError(exc);
 		}
+		
+
 		int numLines = StringUtil.getNumLines(editString);
 		int numColumns = StringUtil.getMaxColumns(editString);
 
 		IFigure figure = hostEditPartHelper.getFigure();
 		Rectangle bounds = figure.getBounds().getCopy();
-		DiagramRootEditPart diagramEditPart = hostEditPartHelper.getRootPart();
+		DiagramRootEditPart diagramEditPart = (DiagramRootEditPart) hostEditPartHelper.getRootPart();
 		IFigure contentPane = diagramEditPart.getContentPane();
 		contentPane.translateToAbsolute(bounds);
 		EditPartViewer viewer = hostEditPartHelper.getViewer();
@@ -418,5 +432,61 @@ public class PopupXTextEditorHelper {
 		xtextEditorComposite.setBounds(bounds.x - 200, bounds.y - 120, width + 250, height + 50);
 		
 	}
+	
+	/**
+	 * Set stable text to current state if there are
+	 * neither errors nor warnings
+	 */
+	public void setStableText() {
+		final IXtextDocument xtextDocument = xtextEditor.getDocument();
+		if (!isDocumentHasErrorsOrWarnings(xtextDocument)) {
+			int documentGrowth = xtextDocument.getLength() - initialDocumentSize;		
+			try {
+				this.stableText = xtextDocument.get(editorOffset, initialEditorSize + documentGrowth);
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
+			this.stableDocSize = xtextDocument.getLength();
+		}
+	}
+	
+	
+	/**
+	 * ui cpt to reduce warning message occurences
+	 */
+	private int cpt=0;
+	
+	synchronized public void check4DandlingCrossReferences(){
+		final IXtextDocument xtextDocument = xtextEditor.getDocument();
+		EList<Diagnostic> warnings = getWarnings(xtextDocument);
+		if (!warnings.isEmpty()) {
+			for (Diagnostic diagnostic : warnings) {
+				if( diagnostic instanceof XtextLinkingDiagnostic){
+					cpt++;
+				}
+				if (cpt==5) {
+					cpt=0;
+					MessageDialog.openWarning(xtextEditorComposite.getShell(), "Warning", "Cross-referenced elements cannot be textually modified, please perform a refactoring through the diagram editor ("+((XtextLinkingDiagnostic)diagnostic).getMessage()+")");
+				}
+			}
+			
+			try {
+				int documentGrowth = xtextDocument.getLength() - initialDocumentSize;
+				xtextEditor.getDocument().replace(editorOffset, initialEditorSize + documentGrowth, textWithoutDandlingRefs);
+			} catch (BadLocationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			try {
+				int documentGrowth = xtextDocument.getLength() - initialDocumentSize;
+				textWithoutDandlingRefs = xtextDocument.get(editorOffset, initialEditorSize + documentGrowth);
+			} catch (BadLocationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}	
+	
 
 }

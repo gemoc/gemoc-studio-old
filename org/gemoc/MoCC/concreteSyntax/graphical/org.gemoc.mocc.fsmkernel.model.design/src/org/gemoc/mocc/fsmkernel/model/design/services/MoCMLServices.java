@@ -19,9 +19,13 @@ package org.gemoc.mocc.fsmkernel.model.design.services;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 
 
-
-
+/**
+ * ODesign services
+ * @author Creffst
+ *
+ */
 public class MoCMLServices {
+	
 	public MoCMLServices() {
 		// TODO Auto-generated constructor stub
 	}
