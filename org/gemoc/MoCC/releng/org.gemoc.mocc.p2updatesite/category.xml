@@ -3,5 +3,8 @@
    <feature url="features/org.gemoc.mocc.core.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.core.feature" version="0.1.1.qualifier">
       <category name="gemoc_language_workbench"/>
    </feature>
+   <feature url="features/org.gemoc.mocc.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.feature" version="0.1.1.qualifier">
+      <category name="gemoc_language_workbench"/>
+   </feature>
    <category-def name="gemoc_language_workbench" label="Gemoc Language Workbench"/>
 </site>
