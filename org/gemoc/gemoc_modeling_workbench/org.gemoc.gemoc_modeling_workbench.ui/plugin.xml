@@ -14,7 +14,7 @@
                enablesFor="+"
                icon="icons/IconeGemocModel-16.png"
                id="org.gemoc.gemoc_modeling_workbench.ui.addRemoveNatureAction"
-               label="Add Gemoc Modeling Nature"
+               label="Add Executable Modeling Nature"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
          </action>
          <visibility>
@@ -36,7 +36,7 @@
                enablesFor="+"
                icon="icons/IconeGemocModel-16.png"
                id="org.gemoc.gemoc_modeling_workbench.ui.addRemoveNatureAction"
-               label="Remove Gemoc Modeling Nature (Reflective)"
+               label="Remove Executable Modeling Nature (Reflective)"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
          </action>
          
@@ -136,7 +136,7 @@
           class="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject"
           icon="icons/IconeGemocModel-16.png"
           id="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject"
-          name="New Gemoc Modeling Project"
+          name="New Executable Modeling Project"
           project="true">
     </wizard>
  </extension>
@@ -177,7 +177,7 @@
          <menu
                icon="icons/IconeGemocModel-16.png"
                id="org.gemoc.modeling.menu"
-               label="Gemoc"
+               label="GEMOC"
                path="additions">
             <separator
                   name="group1">
