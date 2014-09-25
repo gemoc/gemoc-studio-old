@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -28,12 +29,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Decorations;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -522,7 +521,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 		
 		_confirmationButton = new Button(_bottomComposite, SWT.PUSH | SWT.CENTER);
-		_confirmationButton.setText("Validate");
+		_confirmationButton.setText("- Resume execution -");
 		_confirmationButton.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, true));
 		_confirmationButton.addMouseListener(new MouseListener() {
 			@Override
@@ -886,14 +885,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		_scenarioManager.stopRecord();
 		_state = _cache.getState();
-		updateView();	
+		updateView();	 
 	}
 
 	/**
 	 * If the path is correct, the scenario is loaded.
 	 * @param path
 	 */
-	public void loadScenario(String path)
+	public void loadScenario(IPath path)
 	{
 		if(path != null)
 		{

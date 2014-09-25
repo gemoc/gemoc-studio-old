@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.io.views.event.scenario;
 
+import org.eclipse.core.runtime.IPath;
 import org.gemoc.execution.engine.io.views.event.EngineCache;
 import org.gemoc.execution.engine.io.views.event.EventManagerView.CacheStatus;
 
@@ -67,7 +68,7 @@ public class ScenarioManager
 	 * <p> The state is set on playing mode.
 	 * @param path The path to the scenario to be set
 	 */
-	public void load(final String path)
+	public void load(final IPath path)
 	{
 		_cache.setState(CacheStatus.PLAYING);
 		_player.load(path);
