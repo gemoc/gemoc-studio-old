@@ -595,7 +595,7 @@ public abstract class AbstractTimelineView extends ViewPart {
 			length = (int)Math
 					.floor((timelineViewer.getControl().getBounds().width - 2 * TimelineWindowEditPart.MARGIN)
 							/ baseWidth);
-			if (lastChoiceWidth != 0) {
+			if (lastChoiceWidth > PossibleStepEditPart.SIZE) {
 				nbVirtualChoices = (int)(Math.floor(lastChoiceWidth * rootEditPart.getZoomManager().getZoom()
 						/ baseWidth));
 				if (provider != null) {
