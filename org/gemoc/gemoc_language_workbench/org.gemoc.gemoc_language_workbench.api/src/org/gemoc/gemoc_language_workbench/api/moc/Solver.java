@@ -38,12 +38,18 @@ public interface Solver {
 	 *         trace metamodel.
 	 */
 	public LogicalStep getNextStep();
+
+	/**
+	 * Returns the currently possible LogicalSteps
+	 * @return a list of LogicalSteps
+	 */
+	public List<LogicalStep> computeAndGetPossibleLogicalSteps();
 	
 	/**
 	 * Returns the currently possible LogicalSteps
 	 * @return a list of LogicalSteps
 	 */
-	public List<LogicalStep> getPossibleLogicalSteps();
+	public List<LogicalStep> updatePossibleLogicalSteps();
 	
 	/**
 	 * among the currently possible LogicalStep (see {@link getPossibleLogicalSteps} ), asks the solver to choose one
@@ -128,5 +134,5 @@ public interface Solver {
 	 */
 	public void setState(byte[] serializableModel);
 
-	public void freeEnvironmentBDD();
+	public void revertForceClockEffect();
 }

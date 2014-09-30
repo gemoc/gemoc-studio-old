@@ -330,11 +330,26 @@ public abstract class CcslSolver implements
 //	}
 
 	@Override
-	public List<LogicalStep> getPossibleLogicalSteps() {
+	public List<LogicalStep> computeAndGetPossibleLogicalSteps() {
 		
 		try {
-			List<LogicalStep> result = solverWrapper.getPossibleLogicalSteps();
-			
+			List<LogicalStep> result = solverWrapper.computeAndGetPossibleLogicalSteps();			
+			return result;
+		} catch (NoBooleanSolution e) {
+			Activator.getDefault().error(e.getMessage(), e);
+		} catch (SolverException e) {
+			Activator.getDefault().error(e.getMessage(), e);
+		} catch (SimulationException e) {
+			Activator.getDefault().error(e.getMessage(), e);
+		}
+		return new ArrayList<LogicalStep>();
+	}
+
+	@Override
+	public List<LogicalStep> updatePossibleLogicalSteps() {
+		
+		try {
+			List<LogicalStep> result = solverWrapper.updatePossibleLogicalSteps();			
 			return result;
 		} catch (NoBooleanSolution e) {
 			Activator.getDefault().error(e.getMessage(), e);
@@ -356,8 +371,8 @@ public abstract class CcslSolver implements
 		try {
 			solverWrapper.applyLogicalStepByIndex(indexOfStepToApply);
 			// needed to 
-			solverWrapper.getSolver().bddFromEnvironment.free();
-			solverWrapper.getSolver().bddFromEnvironment = solverWrapper.getSolver().getBddFactory().one();
+//			solverWrapper.getSolver().bddFromEnvironment.free();
+//			solverWrapper.getSolver().bddFromEnvironment = solverWrapper.getSolver().getBddFactory().one();
 		} catch (SolverException e) {
 			Activator.getDefault().error(e.getMessage(), e);
 		} catch (SimulationException e) {
@@ -398,7 +413,12 @@ public abstract class CcslSolver implements
 	}
 	
 	@Override
-	public void freeEnvironmentBDD() {
-//		solverWrapper.freeEnvironmentBDD();
+	public void revertForceClockEffect() {
+		try {
+			solverWrapper.revertForceClockEffect();
+		} catch (SimulationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

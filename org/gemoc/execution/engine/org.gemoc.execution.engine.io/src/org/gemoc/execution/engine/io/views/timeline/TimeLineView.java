@@ -27,6 +27,7 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
+import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.view.AbstractTimelineView;
 
@@ -93,28 +94,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 			@Override
 			public void mouseDoubleClick(MouseEvent event) 
 			{
-					final ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();
-					if (selection instanceof IStructuredSelection) {
-						final Object selected = ((IStructuredSelection) selection).getFirstElement();
-						if (selected instanceof PossibleStepEditPart) 
-						{
-							Object o = ((PossibleStepEditPart) selected).getModel().getChoice2();
-							if (o instanceof Choice)
-							{								
-								if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection)
-										&& _currentEngine.hasCapability(ModelExecutionTracingCapability.class)) {
-									Choice choice = (Choice)o;
-									try 
-									{
-										_currentEngine.capability(ModelExecutionTracingCapability.class).backToPast(choice);
-									} catch (ModelExecutionTracingException e) 
-									{
-										e.printStackTrace();
-									}				
-								}
-							}
-						}
-				}
+					handleDoubleCick();
 			}
 
 		};
@@ -237,4 +217,50 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		return FOLLOW_COMMAND_ID;
 	}
 
+	private void handleDoubleCick() {
+		final ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();
+		if (selection instanceof IStructuredSelection) {
+			final Object selected = ((IStructuredSelection) selection).getFirstElement();
+			if (selected instanceof PossibleStepEditPart) 
+			{
+				Object o1 = ((PossibleStepEditPart) selected).getModel().getChoice2();
+				Object o2 = ((PossibleStepEditPart) selected).getModel().getPossibleStep();
+				if (o1 instanceof Choice
+					&& o2 instanceof LogicalStep)
+				{								
+					Choice choice = (Choice)o1;
+					LogicalStep logicalStep = (LogicalStep)o2;
+					if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection))
+					{
+						if (choice.getNextChoice() == null)
+						{
+							performExecutionStep(logicalStep);
+						}
+						else
+						{
+							backToPastIfPossible(choice);							
+						}
+					}
+				}
+			}
+		}
+	}
+
+	private void performExecutionStep(LogicalStep logicalStep) 
+	{
+		return;
+	}
+
+	private void backToPastIfPossible(Choice choice) {
+		if (_currentEngine.hasCapability(ModelExecutionTracingCapability.class)) 
+		{
+			try 
+			{
+				_currentEngine.capability(ModelExecutionTracingCapability.class).backToPast(choice);
+			} catch (ModelExecutionTracingException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	}
 }

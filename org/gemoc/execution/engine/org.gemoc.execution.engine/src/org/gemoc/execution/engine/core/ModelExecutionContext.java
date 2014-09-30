@@ -6,7 +6,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -44,37 +43,55 @@ public class ModelExecutionContext implements IExecutionContext
 	private Resource _resourceModel;
 	private ExecutionMode _executionMode;	
 	
-	public ModelExecutionContext(RunConfiguration runConfiguration, ExecutionMode executionMode) throws EngineContextException, CoreException {
+	public ModelExecutionContext(RunConfiguration runConfiguration, ExecutionMode executionMode) throws EngineContextException {
 		_runConfiguration = runConfiguration;
 		_executionMode = executionMode;
-		_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getModelURIAsString());
 		
-		_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
-		
-		if (runConfiguration.getAnimatorURIAsString() != null)
-			_debuggerViewModelPath = new Path(runConfiguration.getAnimatorURIAsString());
-		_languageDefinition = LanguageDefinitionExtensionPoint.findDefinition(_runConfiguration.getLanguageName());
-		throwExceptionIfLanguageDefinitionNull();
-		instantiateAgents();
-		generateMoC();
-
-		ResourceSet resourceSet = new ResourceSetImpl();
-		if (getDebuggerViewModelPath() != null)
+		try 
 		{
-			resourceSet = getResourceSet(getDebuggerViewModelPath().toString());
-		}
-		
-		_resourceModel = getModelResource(resourceSet, _executionWorkspace.getModelPath().toString());
+			_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getModelURIAsString());
+			_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
+			
+			if (runConfiguration.getAnimatorURIAsString() != null)
+				_debuggerViewModelPath = new Path(runConfiguration.getAnimatorURIAsString());
+			_languageDefinition = LanguageDefinitionExtensionPoint.findDefinition(_runConfiguration.getLanguageName());
+			throwExceptionIfLanguageDefinitionNull();
+			instantiateAgents();
+			generateMoC();
 
+			ResourceSet resourceSet = new ResourceSetImpl();
+			if (getDebuggerViewModelPath() != null)
+			{
+				resourceSet = getResourceSet(getDebuggerViewModelPath().toString());
+			}
+			
+			_resourceModel = getModelResource(resourceSet, _executionWorkspace.getModelPath().toString());
+
+			setUpEditingDomain(resourceSet);	
+			setUpSolver(resourceSet);						
+		} 
+		catch (CoreException e)
+		{
+			EngineContextException exception = new EngineContextException("Cannot initialize the execution context, see inner exception.", e);
+			throw exception;
+		}
+	}
+
+	private void setUpEditingDomain(ResourceSet resourceSet) 
+	{
 		_editingDomain = TransactionUtil.getEditingDomain(resourceSet);
 		if (_editingDomain == null)
 		{
 			_editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(resourceSet);			
-		}	
-		URI mocURI = URI.createPlatformResourceURI(_executionWorkspace.getMoCPath().toString(), true);
-		getSolver().setSolverInputFile(resourceSet, mocURI);			
+		}
 	}
-	
+
+	private void setUpSolver(ResourceSet resourceSet) 
+	{
+		URI mocURI = URI.createPlatformResourceURI(_executionWorkspace.getMoCPath().toString(), true);
+		getSolver().setSolverInputFile(resourceSet, mocURI);
+	}
+
 	protected Resource getModelResource(ResourceSet resourceSet, String modelPath) throws CoreException {		
 		return resourceSet.getResource(URI.createPlatformResourceURI(modelPath, true), true);
 	}

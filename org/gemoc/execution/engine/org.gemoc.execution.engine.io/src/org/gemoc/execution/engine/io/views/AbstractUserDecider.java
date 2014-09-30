@@ -27,12 +27,12 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 	private Semaphore _semaphore = null;
 
 	@Override
-	public int decide(GemocExecutionEngine engine, final List<LogicalStep> possibleLogicalSteps)
+	public int decide(final GemocExecutionEngine engine, final List<LogicalStep> possibleLogicalSteps)
 			throws InterruptedException {
 		_preemptionHappened = false;
 		_semaphore = new Semaphore(0);
 		if(!isStepByStep() 
-			&& possibleLogicalSteps.size() == 1) 
+			&& engine.getPossibleLogicalSteps().size() == 1) 
 			return 0;
 
 		decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
@@ -47,7 +47,7 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 			{
 				if (_action == null
 					&& decisionView.getSelectedLogicalStep() != null
-					&& possibleLogicalSteps.contains(decisionView.getSelectedLogicalStep())) 
+					&& engine.getPossibleLogicalSteps().contains(decisionView.getSelectedLogicalStep())) 
 				{
 					_action = createAction();
 				}
@@ -70,12 +70,13 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 			public void doubleClick(DoubleClickEvent event) 
 			{
 				if (decisionView.getSelectedLogicalStep() != null
-					&& possibleLogicalSteps.contains(decisionView.getSelectedLogicalStep())) 
+					&& engine.getPossibleLogicalSteps().contains(decisionView.getSelectedLogicalStep())) 
 				{
 					Action selectLogicalStepAction = new Action() 
 					{
 						public void run() 
 						{
+							_selectedLogicalStep = decisionView.getSelectedLogicalStep();
 							_semaphore.release();
 						}
 					};
@@ -94,10 +95,12 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 		decisionView.removeDoubleClickListener(doubleClickListener);
 		if (_preemptionHappened)
 			return -1;
-		return possibleLogicalSteps.indexOf(decisionView.getSelectedLogicalStep());
+		return engine.getPossibleLogicalSteps().indexOf(_selectedLogicalStep);
 
 	}
 
+	private LogicalStep _selectedLogicalStep;
+	
 	private LogicalStepsView decisionView;
 
 	@Override
@@ -121,6 +124,7 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 		{
 			public void run() 
 			{
+				_selectedLogicalStep = decisionView.getSelectedLogicalStep();
 				_semaphore.release();
 			}
 		};
@@ -133,4 +137,11 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 
 	public abstract boolean isStepByStep();
 
+	public void decideFromTimeLine(LogicalStep logicalStep)
+	{
+		_selectedLogicalStep = logicalStep;
+		if (_semaphore != null)
+			_semaphore.release();
+	}
+	
 }

@@ -24,7 +24,8 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.diverse.commons.eclipse.messagingsystem.ui;bundle-version="1.0.0",
  org.eclipse.emf.transaction,
  fr.inria.aoste.trace,
- org.eclipse.emf.common
+ org.eclipse.emf.common,
+ org.gemoc.execution.engine.commons;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.io,

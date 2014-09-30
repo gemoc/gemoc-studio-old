@@ -1,5 +1,9 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
+import java.util.List;
+
+import fr.inria.aoste.trace.LogicalStep;
+
 
 /**
  * The interface of the GEMOC Execution Engine. The Execution Engine is an
@@ -75,5 +79,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 //	public Solver getSolver();
 //
 //	public CodeExecutor getCodeExecutor();
+
+	public List<LogicalStep> getPossibleLogicalSteps();
 	
 }

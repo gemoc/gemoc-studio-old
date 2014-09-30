@@ -7,7 +7,7 @@ package org.gemoc.gemoc_language_workbench.api.exceptions;
  * @author flatombe
  * 
  */
-public class EventExecutionException extends Exception {
+public class EventExecutionException extends RuntimeException {
 	/**
 	 * 
 	 */
@@ -18,7 +18,7 @@ public class EventExecutionException extends Exception {
 	public EventExecutionException(Throwable e) {
 		this.cause = e;
 	}
-
+	
 	public Throwable getCause() {
 		return this.cause;
 	}

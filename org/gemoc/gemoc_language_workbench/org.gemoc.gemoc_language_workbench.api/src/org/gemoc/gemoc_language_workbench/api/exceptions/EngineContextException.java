@@ -7,4 +7,9 @@ public class EngineContextException extends Exception {
 		super(message);
 	}
 
+	public EngineContextException(String message, Exception innerException) 
+	{
+		super(message, innerException);
+	}
+
 }

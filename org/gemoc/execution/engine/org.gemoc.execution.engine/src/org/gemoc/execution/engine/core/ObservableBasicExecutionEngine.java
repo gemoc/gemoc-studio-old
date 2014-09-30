@@ -334,41 +334,20 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 					switchDeciderIfNecessary();
 					if (hasCapability(ModelExecutionTracingCapability.class))
 						updateTraceModelBeforeAskingSolver(count);
-
-					for(IAliveClockController cc : _clockControllers)
-					{
-						cc.makeClocksTickOrNotTick();
-					}
-
-					// 1- ask solver possible solutions for this step (set
-					// of
-					// logical steps | 1 logical step = set of simultaneous
-					// event occurence)
-					// TODO WARNING current implementation of
-					// getPossibleLogicalSteps() applies a LogicalStep to
-					// the
-					// solver, make sure to call it only once
-					List<LogicalStep> possibleLogicalSteps = _executionContext.getSolver().getPossibleLogicalSteps();
-
-					engineStatus.updateCurrentLogicalStepChoice(possibleLogicalSteps);
-					notifyEngineHasChanged();
-					for (IEngineHook hook : _executionContext.getHooks()) 
-					{
-						hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
-					}
+									
+					computePossibleLogicalSteps();
+					updatePossibleLogicalSteps();
 					// 2- select one solution from available logical step /
 					// select interactive vs batch
 					int selectedLogicalStepIndex;
-					if (possibleLogicalSteps.size() == 0) {
+					if (_possibleLogicalSteps.size() == 0) {
 						Activator.getDefault().debug("No more LogicalStep to run");
 						terminated = true;
 					} else {
 						Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
 						engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
-						if (hasCapability(ModelExecutionTracingCapability.class))
-							updateTraceModelBeforeDeciding(possibleLogicalSteps);
 						notifyEngineHasChanged();
-						selectedLogicalStepIndex = _logicalStepDecider.decide(ObservableBasicExecutionEngine.this, possibleLogicalSteps);
+						selectedLogicalStepIndex = _logicalStepDecider.decide(ObservableBasicExecutionEngine.this, _possibleLogicalSteps);
 						count++;
 
 						if (selectedLogicalStepIndex == -1) {
@@ -380,7 +359,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 								terminated = true;
 							}
 						} else {
-							engineStatus.setChosenLogicalStep(possibleLogicalSteps.get(selectedLogicalStepIndex));
+							engineStatus.setChosenLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
 							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
 							if (hasCapability(ModelExecutionTracingCapability.class))
 								updateTraceModelAfterDeciding(selectedLogicalStepIndex);
@@ -392,7 +371,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 							}
 
 							// 3 - run the selected logical step
-							final LogicalStep logicalStepToApply = possibleLogicalSteps.get(selectedLogicalStepIndex);
+							final LogicalStep logicalStepToApply = _possibleLogicalSteps.get(selectedLogicalStepIndex);
 							// inform the solver that we will run this step
 							_executionContext.getSolver().applyLogicalStepByIndex(selectedLogicalStepIndex);
 							// run all the event occurrences of this logical
@@ -426,6 +405,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			ObservableBasicExecutionEngine.this.notifyObservers("Stopping " + engineName);
 		}
 
+
+
 		private void applyAnimationTime() throws InterruptedException {
 			int animationDelay = _executionContext.getRunConfiguration().getAnimationDelay();								
 			if (animationDelay != 0) 
@@ -456,21 +437,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			// if queue is full, remove one
 			if (_lastStepsRun.size() > getDeadlockDetectionDepth())
 				_lastStepsRun.poll();
-		}
-
-		private void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) {
-			if (hasCapability(ModelExecutionTracingCapability.class))
-				capability(ModelExecutionTracingCapability.class).updateTraceModelAfterDeciding(selectedLogicalStepIndex);
-		}
-
-		private void updateTraceModelBeforeAskingSolver(final long count) {
-			if (hasCapability(ModelExecutionTracingCapability.class))
-				capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeAskingSolver(count);
-		}
-
-		private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
-			if (hasCapability(ModelExecutionTracingCapability.class))
-				capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeDeciding(possibleLogicalSteps);
 		}
 
 	}
@@ -696,6 +662,58 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			_logicalStepDecider = _newDecider;
 			_newDecider = null;
 		}
+	}
+
+	private List<LogicalStep> _possibleLogicalSteps;
+	private void computePossibleLogicalSteps() 
+	{
+		_possibleLogicalSteps = _executionContext.getSolver().computeAndGetPossibleLogicalSteps();
+	}
+
+	@Override
+	public List<LogicalStep> getPossibleLogicalSteps() 
+	{
+		return _possibleLogicalSteps;
+	}
+	
+	private void updatePossibleLogicalSteps()
+	{
+		for(IAliveClockController cc : _clockControllers)
+		{
+			cc.makeClocksTickOrNotTick();
+		}
+		_possibleLogicalSteps = _executionContext.getSolver().updatePossibleLogicalSteps();
+		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
+		notifyEngineHasChanged();
+		for (IEngineHook hook : _executionContext.getHooks()) 
+		{
+			hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
+		}
+		updateTraceModelBeforeDeciding(_possibleLogicalSteps);			
+	}
+	
+	public void recomputePossibleLogicalSteps()
+	{
+		_executionContext.getSolver().revertForceClockEffect();
+		updatePossibleLogicalSteps();
+	}
+	
+	private void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) 
+	{
+		if (hasCapability(ModelExecutionTracingCapability.class))
+			capability(ModelExecutionTracingCapability.class).updateTraceModelAfterDeciding(selectedLogicalStepIndex);
+	}
+
+	private void updateTraceModelBeforeAskingSolver(final long count) 
+	{
+		if (hasCapability(ModelExecutionTracingCapability.class))
+			capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeAskingSolver(count);
+	}
+
+	private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) 
+	{
+		if (hasCapability(ModelExecutionTracingCapability.class))
+			capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeDeciding(possibleLogicalSteps);
 	}
 
 }

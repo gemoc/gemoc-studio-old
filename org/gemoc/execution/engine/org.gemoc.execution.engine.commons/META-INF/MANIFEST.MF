@@ -23,14 +23,14 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  org.eclipse.emf.workspace,
  fr.inria.aoste.timesquare.simulationpolicy,
  fr.inria.aoste.timesquare.simulationpolicy.max;bundle-version="1.0.0",
+ fr.inria.aoste.timesquare.ccslkernel.runtime;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.launcher.core;bundle-version="1.4.1",
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
  org.gemoc.commons.eclipse,
  fr.inria.aoste.timesquare.javabdd.runtime;bundle-version="1.2.0",
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ccslkernel.solver.launch;bundle-version="1.0.0",
- fr.inria.aoste.timesquare.backend.manager,
- fr.inria.aoste.timesquare.ccslkernel.runtime;bundle-version="1.0.0"
+ fr.inria.aoste.timesquare.backend.manager
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.commons,

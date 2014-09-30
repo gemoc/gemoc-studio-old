@@ -255,6 +255,11 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 
 			@Override
 			protected void doExecute() {
+				if (_lastChoice.getPossibleLogicalSteps().size() != 0)
+				{
+					_lastChoice.getPossibleLogicalSteps().clear();
+					_executionTraceModel.getChoices().remove(_lastChoice);
+				}
 				_lastChoice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
 				for (LogicalStep ls : possibleLogicalSteps) {
 					LogicalStepHelper.removeNotTickedEvents(ls);

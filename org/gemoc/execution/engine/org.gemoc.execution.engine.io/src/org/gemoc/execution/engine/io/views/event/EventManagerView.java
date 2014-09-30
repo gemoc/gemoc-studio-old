@@ -597,6 +597,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					wrapper.setState(state);
 				}
 			}
+			_engine.recomputePossibleLogicalSteps();
 			updateView();
 			break;	
 		}
@@ -622,6 +623,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				}
 				updateComposites();
 				_viewer.setInput(_wrapperCache);
+				for (TableColumn c : _viewer.getTable().getColumns())
+				{
+					c.pack();
+				}
 			}				
 		});
 	}
