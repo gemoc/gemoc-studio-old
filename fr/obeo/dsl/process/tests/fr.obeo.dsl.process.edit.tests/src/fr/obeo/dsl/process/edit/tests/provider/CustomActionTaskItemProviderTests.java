@@ -19,7 +19,9 @@ package fr.obeo.dsl.process.edit.tests.provider;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ComposedTask;
+import fr.obeo.dsl.process.Process;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import java.net.URL;
 import java.util.Collection;
@@ -115,6 +117,52 @@ public class CustomActionTaskItemProviderTests {
 		Iterator<?> iterator = values.iterator();
 		assertEquals(task1, iterator.next());
 		assertEquals(task2, iterator.next());
+	}
+
+	/**
+	 * Tests the observed variables choice of value.
+	 */
+	@Test
+	public void observedVariablesChoiceOfValue() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ComposedTask composedTask = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask.setName("composedTask");
+		process.setTask(composedTask);
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		final ActionTask task3 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task3.setName("task3");
+		composedTask.getPrecedingTasks().add(task2);
+		composedTask.getTasks().add(task1);
+		composedTask.getTasks().add(task3);
+		composedTask.getInitialTasks().add(task1);
+		task1.getPrecedingTasks().add(task3);
+		final ProcessVariable variable1 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable1.setName("variable1");
+		final ProcessVariable variable2 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable2.setName("variable2");
+		final ProcessVariable variable3 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable3.setName("variable3");
+		task2.getWrittenVariables().add(variable2);
+		task3.getWrittenVariables().add(variable3);
+
+		final IItemPropertySource itemPropertySource = (IItemPropertySource)factory.adapt(task1,
+				IItemPropertySource.class);
+		final IItemPropertyDescriptor descriptor = itemPropertySource.getPropertyDescriptor(task1,
+				ProcessPackage.eINSTANCE.getActionTask_ObservedVariables());
+
+		Collection<?> values = descriptor.getChoiceOfValues(task1);
+
+		assertEquals(2, values.size());
+		Iterator<?> iterator = values.iterator();
+		assertEquals(variable3, iterator.next());
+		assertEquals(variable2, iterator.next());
 	}
 
 	/**

@@ -30,10 +30,12 @@ import fr.obeo.dsl.process.Process;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessUtils;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -2161,6 +2163,78 @@ public class ProcessUtilsTests {
 		assertEquals(task1, map.get(task1.getId()));
 		assertEquals(task2, map.get(task2.getId()));
 		assertEquals(task3, map.get(task3.getId()));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getAvailableProcessVariables(ActionTask)}.
+	 */
+	@Test(expected = java.lang.NullPointerException.class)
+	public void getAvailableProcessVariablesNoTask() {
+		ProcessUtils.getAvailableProcessVariables(null);
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getAvailableProcessVariables(ActionTask)}.
+	 */
+	@Test
+	public void getAvailableProcessVariablesNoPrecedingTasks() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ProcessVariable variable1 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable1.setName("variable1");
+		final ProcessVariable variable2 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable2.setName("variable2");
+		process.getVariables().add(variable2);
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		task1.setId("Task1");
+		process.setTask(task1);
+
+		List<ProcessVariable> variables = ProcessUtils.getAvailableProcessVariables(task1);
+
+		assertEquals(0, variables.size());
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getAvailableProcessVariables(ActionTask)}.
+	 */
+	@Test
+	public void getAvailableProcessVariablesPrecedingTasks() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ComposedTask composedTask = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask.setName("composedTask");
+		process.setTask(composedTask);
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		final ActionTask task3 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task3.setName("task3");
+		composedTask.getPrecedingTasks().add(task2);
+		composedTask.getTasks().add(task1);
+		composedTask.getTasks().add(task3);
+		composedTask.getInitialTasks().add(task1);
+		task1.getPrecedingTasks().add(task3);
+		final ProcessVariable variable1 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable1.setName("variable1");
+		final ProcessVariable variable2 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable2.setName("variable2");
+		final ProcessVariable variable3 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable3.setName("variable3");
+		task2.getWrittenVariables().add(variable2);
+		task3.getWrittenVariables().add(variable3);
+
+		List<ProcessVariable> variables = ProcessUtils.getAvailableProcessVariables(task1);
+
+		assertEquals(2, variables.size());
+		assertEquals(variable3, variables.get(0));
+		assertEquals(variable2, variables.get(1));
 	}
 
 }

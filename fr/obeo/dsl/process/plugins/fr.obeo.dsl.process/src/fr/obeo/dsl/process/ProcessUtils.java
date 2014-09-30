@@ -849,8 +849,30 @@ public final class ProcessUtils {
 			res = processContext.getUndoneReason((ActionTask)task);
 		}
 		if (task instanceof ComposedTask && !isDone(processContext, task)) {
+			// TODO combine reasons of mandatory sub tasks for better understanding
 			res = "the condition of the composed task isn't satisfied. (check the sub tasks)";
 		}
+		return res;
+	}
+
+	/**
+	 * Gets the {@link List} of {@link ProcessVariable} available for
+	 * {@link ActionTask#getObservedVariables() observation}.
+	 * 
+	 * @param task
+	 *            the {@link ActionTask} to check
+	 * @return the {@link List} of {@link ProcessVariable} available for
+	 *         {@link ActionTask#getObservedVariables() observation}
+	 */
+	public static List<ProcessVariable> getAvailableProcessVariables(ActionTask task) {
+		final List<ProcessVariable> res = new ArrayList<ProcessVariable>();
+
+		for (Task precedingTask : getPrecedingTasks(task)) {
+			if (precedingTask instanceof ActionTask) {
+				res.addAll(((ActionTask)precedingTask).getWrittenVariables());
+			}
+		}
+
 		return res;
 	}
 }
