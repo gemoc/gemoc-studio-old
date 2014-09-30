@@ -17,6 +17,7 @@
  *******************************************************************************/
 package fr.obeo.timeline.editpart;
 
+import fr.obeo.timeline.layout.LineLayout;
 import fr.obeo.timeline.model.Choice;
 import fr.obeo.timeline.model.Connection;
 import fr.obeo.timeline.model.PossibleStep;
@@ -25,8 +26,10 @@ import java.util.List;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Ellipse;
+import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.Layer;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.gef.EditPartViewer;
@@ -45,9 +48,151 @@ import org.eclipse.jface.resource.JFaceResources;
 public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 
 	/**
+	 * Possible step {@link IFigure}.
+	 *
+	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+	 */
+	private final class PossibleStepFigure extends Layer {
+
+		/**
+		 * The {@link Ellipse}.
+		 */
+		private final Ellipse ellipse;
+
+		/**
+		 * The {@link Ellipse} tool tip.
+		 */
+		private final Label toolTip;
+
+		/**
+		 * The {@link Label} for the last possible step.
+		 */
+		private final Label label;
+
+		/**
+		 * Tells if the label is in this figure.
+		 */
+		private boolean hasLabel;
+
+		/**
+		 * Constructor.
+		 */
+		public PossibleStepFigure() {
+			final LineLayout layout = new LineLayout();
+			layout.setHorizontal(true);
+			layout.setMajorAlignment(FlowLayout.ALIGN_TOPLEFT);
+			layout.setMinorAlignment(FlowLayout.ALIGN_CENTER);
+			layout.setMinorSpacing(SPACING);
+
+			setLayoutManager(layout);
+			toolTip = new Label();
+			toolTip.setFont(JFaceResources.getFont(JFaceResources.TEXT_FONT));
+			toolTip.setBackgroundColor(ColorConstants.tooltipBackground);
+			toolTip.setForegroundColor(ColorConstants.tooltipForeground);
+			ellipse = createEllipse();
+			add(ellipse);
+			label = new Label();
+			add(label);
+			hasLabel = true;
+			addMouseListener(new MouseListener.Stub() {
+
+				/**
+				 * {@inheritDoc}
+				 * 
+				 * @see org.eclipse.draw2d.MouseListener.Stub#mouseReleased(org.eclipse.draw2d.MouseEvent)
+				 */
+				@Override
+				public void mousePressed(MouseEvent me) {
+					if (me.button == 1) {
+						final EditPartViewer viewer = getViewer();
+						viewer.getSelectionManager().deselectAll();
+						viewer.getSelectionManager().appendSelection(PossibleStepEditPart.this);
+					}
+				}
+
+			});
+
+		}
+
+		/**
+		 * Creates the {@link Ellipse} of the main {@link IFigure}.
+		 * 
+		 * @return the {@link Ellipse} of the main {@link IFigure}
+		 */
+		private Ellipse createEllipse() {
+			final Ellipse res = new Ellipse();
+
+			res.setSize(SIZE, SIZE);
+			res.setForegroundColor(ColorConstants.listBackground);
+
+			return res;
+		}
+
+		/**
+		 * Tells if the label is in this figure.
+		 * 
+		 * @return <code>true</code> if the label is in this figure, <code>false</code> otherwise
+		 */
+		public boolean hasLabel() {
+			return hasLabel;
+		}
+
+		/**
+		 * Removes the label to this figure.
+		 */
+		public void removeLabel() {
+			ellipse.setToolTip(toolTip);
+			remove(label);
+			hasLabel = false;
+		}
+
+		/**
+		 * Adds the label to this figure.
+		 */
+		public void addLabel() {
+			ellipse.setToolTip(null);
+			add(label);
+			hasLabel = true;
+		}
+
+		/**
+		 * Gets the {@link Ellipse}.
+		 * 
+		 * @return the {@link Ellipse}
+		 */
+		public Ellipse getEllipse() {
+			return ellipse;
+		}
+
+		/**
+		 * Gets the {@link Ellipse} tool tip.
+		 * 
+		 * @return the {@link Ellipse} tool tip
+		 */
+		public Label getEllipseToolTip() {
+			return toolTip;
+		}
+
+		/**
+		 * Gets the {@link Label}.
+		 * 
+		 * @return the {@link Label}
+		 */
+		public Label getLabel() {
+			return label;
+		}
+
+	}
+
+	/**
 	 * The size of the circle.
 	 */
 	public static final int SIZE = 20;
+
+	/**
+	 * The spacing between the {@link Ellipse} and the {@link Label}.
+	 */
+	public static final int SPACING = 5;
 
 	/**
 	 * {@inheritDoc}
@@ -56,51 +201,33 @@ public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 	 */
 	@Override
 	protected IFigure createFigure() {
-		final Ellipse res = new Ellipse();
-		res.setSize(SIZE, SIZE);
-		res.setForegroundColor(ColorConstants.listBackground);
-		Label toolTip = new Label();
-		toolTip.setBackgroundColor(ColorConstants.tooltipBackground);
-		toolTip.setForegroundColor(ColorConstants.tooltipForeground);
-		res.setToolTip(toolTip);
-
-		res.addMouseListener(new MouseListener.Stub() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.draw2d.MouseListener.Stub#mouseReleased(org.eclipse.draw2d.MouseEvent)
-			 */
-			@Override
-			public void mousePressed(MouseEvent me) {
-				if (me.button == 1) {
-					final EditPartViewer viewer = getViewer();
-					viewer.getSelectionManager().deselectAll();
-					viewer.getSelectionManager().appendSelection(PossibleStepEditPart.this);
-				}
-			}
-
-		});
-
-		return res;
+		return new PossibleStepFigure();
 	}
 
 	@Override
 	protected void refreshVisuals() {
 		super.refreshVisuals();
-		final IFigure figure = getFigure();
+		final PossibleStepFigure figure = (PossibleStepFigure)getFigure();
 		if (!getModel().getChoice().hasSelected()) {
-			figure.setBackgroundColor(ColorConstants.orange);
+			figure.getEllipseToolTip().setVisible(false);
+			figure.getLabel().setText(getModel().getName());
+			figure.getEllipse().setBackgroundColor(ColorConstants.orange);
+			if (!figure.hasLabel()) {
+				figure.addLabel();
+				figure.invalidate();
+			}
 		} else {
+			figure.getEllipseToolTip().setText(getModel().getName());
 			if (getModel().isSelected()) {
-				figure.setBackgroundColor(ColorConstants.lightBlue);
+				figure.getEllipse().setBackgroundColor(ColorConstants.lightBlue);
 			} else {
-				figure.setBackgroundColor(ColorConstants.lightGreen);
+				figure.getEllipse().setBackgroundColor(ColorConstants.lightGreen);
+			}
+			if (figure.hasLabel()) {
+				figure.removeLabel();
+				figure.invalidate();
 			}
 		}
-		final Label toolTip = (Label)figure.getToolTip();
-		toolTip.setFont(JFaceResources.getFont(JFaceResources.TEXT_FONT));
-		toolTip.setText(getModel().getName());
 	}
 
 	/**

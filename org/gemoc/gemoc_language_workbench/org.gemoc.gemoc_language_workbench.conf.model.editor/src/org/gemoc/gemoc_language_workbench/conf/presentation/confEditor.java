@@ -219,6 +219,12 @@ public class confEditor
 	 * @generated
 	 */
 	protected TableViewer tableViewer;
+	
+	/**
+	 * Gemoc specific Viewer
+	 * presented as a form 
+	 */
+	protected GemocFormViewer gemocFormViewer;
 
 	/**
 	 * This shows how a tree view with columns works.
@@ -967,7 +973,7 @@ public class confEditor
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void createPages() {
@@ -1179,6 +1185,50 @@ public class confEditor
 				setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
 			}
 
+			// This is the page for the Gemoc Form viewer.
+			//
+			{
+				ViewerPane viewerPane =
+					new ViewerPane(getSite().getPage(), confEditor.this) {
+						@Override
+						public Viewer createViewer(Composite composite) {
+							return new GemocFormViewer(composite);
+						}
+						@Override
+						public void requestActivation() {
+							super.requestActivation();
+							setCurrentViewerPane(this);
+						}
+					};
+				viewerPane.createControl(getContainer());
+				gemocFormViewer = (GemocFormViewer)viewerPane.getViewer();
+
+			/*	Table table = gemocFormViewer.getTable();
+				TableLayout layout = new TableLayout();
+				table.setLayout(layout);
+				table.setHeaderVisible(true);
+				table.setLinesVisible(true);
+
+				TableColumn objectColumn = new TableColumn(table, SWT.NONE);
+				layout.addColumnData(new ColumnWeightData(3, 100, true));
+				objectColumn.setText(getString("_UI_ObjectColumn_label"));
+				objectColumn.setResizable(true);
+
+				TableColumn selfColumn = new TableColumn(table, SWT.NONE);
+				layout.addColumnData(new ColumnWeightData(2, 100, true));
+				selfColumn.setText(getString("_UI_SelfColumn_label"));
+				selfColumn.setResizable(true);
+
+				gemocFormViewer.setColumnProperties(new String [] {"a", "b"});*/
+				gemocFormViewer.setEditingDomain(editingDomain);
+				gemocFormViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+				//gemocFormViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
+				//createContextMenuFor(gemocFormViewer);
+				int pageIndex = addPage(viewerPane.getControl());
+				setPageText(pageIndex, getString("_UI_GemocPage_label"));
+			}
+			
 			getSite().getShell().getDisplay().asyncExec
 				(new Runnable() {
 					 public void run() {

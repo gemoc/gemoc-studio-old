@@ -57,7 +57,7 @@ public interface Transition extends NamedElement {
 	 * @see #setSource(State)
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getTransition_Source()
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.State#getOutputTransitions
-	 * @model opposite="outputTransitions" required="true"
+	 * @model opposite="outputTransitions" keys="name" required="true"
 	 * @generated
 	 */
 	State getSource();
@@ -85,7 +85,7 @@ public interface Transition extends NamedElement {
 	 * @see #setTarget(State)
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getTransition_Target()
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.State#getInputTransitions
-	 * @model opposite="inputTransitions" required="true"
+	 * @model opposite="inputTransitions" keys="name" required="true"
 	 * @generated
 	 */
 	State getTarget();

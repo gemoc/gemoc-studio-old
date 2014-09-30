@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -287,7 +288,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			}
 		};		
 		decisionView.addSelectionChangedListener(_decisionViewListener);
-
+		updateView();
 	}
 
 
@@ -520,7 +521,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 		
 		_confirmationButton = new Button(_bottomComposite, SWT.PUSH | SWT.CENTER);
-		_confirmationButton.setText("Validate");
+		_confirmationButton.setText("- Resume execution -");
 		_confirmationButton.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, true));
 		_confirmationButton.addMouseListener(new MouseListener() {
 			@Override
@@ -700,15 +701,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
-
+	
 
 	/**
 	 * Listen the engine selection in the enginesStatusView
 	 */
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
-		if (engine != null
-			&&  engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug)) 
+		if (engine != null) 
 		{
 			// Cast on engine to access the clockController
 			_engine = (ObservableBasicExecutionEngine) engine;
@@ -747,6 +747,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				if(_cacheMap.get(_engine) == null)
 				{
 					createcache();
+					if(_engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug))
+					{
+						bring2Top();
+					}
 				}
 				_cache = _cacheMap.get(_engine);
 				_wrapperCache = _cache.getWrapperCache();
@@ -886,14 +890,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		_scenarioManager.stopRecord();
 		_state = _cache.getState();
-		updateView();	
+		updateView();	 
 	}
 
 	/**
 	 * If the path is correct, the scenario is loaded.
 	 * @param path
 	 */
-	public void loadScenario(String path)
+	public void loadScenario(IPath path)
 	{
 		if(path != null)
 		{
@@ -979,13 +983,19 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 
-	private void enableOrDisableButtons(List<Button> controlButtons){
+	private void enableOrDisableButtons(List<Button> controlButtons)
+	{
 		if (controlButtons != null)
 		{
 			for(Button b : controlButtons){
 				b.setEnabled(_cache!=null);
 			}			
 		}
+	}
+	
+	private void bring2Top()
+	{
+		getSite().getPage().bringToTop(this);
 	}
 
 

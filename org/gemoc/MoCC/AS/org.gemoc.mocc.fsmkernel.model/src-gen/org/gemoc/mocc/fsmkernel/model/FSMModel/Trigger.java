@@ -48,7 +48,7 @@ public interface Trigger extends AbstractTrigger {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>True Triggers</em>' reference list.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getTrigger_TrueTriggers()
-	 * @model
+	 * @model keys="name"
 	 * @generated
 	 */
 	EList<BindableEntity> getTrueTriggers();
@@ -64,7 +64,7 @@ public interface Trigger extends AbstractTrigger {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>False Triggers</em>' reference list.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage#getTrigger_FalseTriggers()
-	 * @model
+	 * @model keys="name"
 	 * @generated
 	 */
 	EList<BindableEntity> getFalseTriggers();

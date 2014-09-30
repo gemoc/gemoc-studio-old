@@ -60,7 +60,8 @@ public class ModelExecutionContext implements IExecutionContext
 			generateMoC();
 
 			ResourceSet resourceSet = new ResourceSetImpl();
-			if (getDebuggerViewModelPath() != null)
+			if (getDebuggerViewModelPath() != null
+				&& !getDebuggerViewModelPath().isEmpty())
 			{
 				resourceSet = getResourceSet(getDebuggerViewModelPath().toString());
 			}

@@ -553,7 +553,9 @@ public class FSMModelPackageImpl extends EPackageImpl implements FSMModelPackage
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransition_Source(), this.getState(), this.getState_OutputTransitions(), "source", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getTransition_Source().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 		initEReference(getTransition_Target(), this.getState(), this.getState_InputTransitions(), "target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getTransition_Target().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 		initEReference(getTransition_Guard(), this.getAbstractGuard(), null, "guard", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransition_Trigger(), this.getAbstractTrigger(), null, "trigger", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransition_Actions(), this.getAbstractAction(), null, "actions", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -561,9 +563,13 @@ public class FSMModelPackageImpl extends EPackageImpl implements FSMModelPackage
 		initEClass(stateMachineDefinitionEClass, StateMachineDefinition.class, "StateMachineDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStateMachineDefinition_DeclarationBlock(), this.getDeclarationBlock(), null, "declarationBlock", null, 0, 1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStateMachineDefinition_Transitions(), this.getTransition(), null, "transitions", null, 0, -1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getStateMachineDefinition_Transitions().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 		initEReference(getStateMachineDefinition_States(), this.getState(), null, "states", null, 1, -1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getStateMachineDefinition_States().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 		initEReference(getStateMachineDefinition_InitialStates(), this.getState(), null, "initialStates", null, 1, -1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getStateMachineDefinition_InitialStates().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 		initEReference(getStateMachineDefinition_FinalStates(), this.getState(), null, "finalStates", null, 0, -1, StateMachineDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getStateMachineDefinition_FinalStates().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 
 		initEClass(abstractTriggerEClass, AbstractTrigger.class, "AbstractTrigger", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -573,16 +579,21 @@ public class FSMModelPackageImpl extends EPackageImpl implements FSMModelPackage
 
 		initEClass(guardEClass, Guard.class, "Guard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGuard_Value(), theClassicalExpressionPackage.getBooleanExpression(), null, "value", null, 1, 1, Guard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getGuard_Value().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 
 		initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTrigger_TrueTriggers(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "trueTriggers", null, 0, -1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getTrigger_TrueTriggers().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 		initEReference(getTrigger_FalseTriggers(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "falseTriggers", null, 0, -1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getTrigger_FalseTriggers().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 
 		initEClass(integerAssignementEClass, IntegerAssignement.class, "IntegerAssignement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(declarationBlockEClass, DeclarationBlock.class, "DeclarationBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDeclarationBlock_ConcreteEntities(), theClockExpressionAndRelationPackage.getConcreteEntity(), null, "concreteEntities", null, 0, -1, DeclarationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getDeclarationBlock_ConcreteEntities().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 		initEReference(getDeclarationBlock_ClassicalExpressions(), theClassicalExpressionPackage.getClassicalExpression(), null, "classicalExpressions", null, 0, -1, DeclarationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getDeclarationBlock_ClassicalExpressions().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 
 		// Create resource
 		createResource(eNS_URI);

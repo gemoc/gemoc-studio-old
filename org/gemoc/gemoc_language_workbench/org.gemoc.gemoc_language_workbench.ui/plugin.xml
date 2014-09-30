@@ -15,7 +15,7 @@
    </extension>
    <extension
          id="gemocLanguageDesignerNature"
-         name="Gemoc Language Designer Project Nature"
+         name="xDSML Project Nature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
@@ -38,7 +38,7 @@
                enablesFor="+"
                icon="icons/IconeGemocLanguage-16.png"
                id="org.gemoc.gemoc_language_workbench.ui.addRemoveNatureAction"
-               label="Add Gemoc Language Nature"
+               label="Add xDSML Nature"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
          </action>
          <visibility>
@@ -60,7 +60,7 @@
                enablesFor="+"
                icon="icons/IconeGemocLanguage-16.png"
                id="org.gemoc.gemoc_language_workbench.ui.addRemoveNatureAction"
-               label="Remove Gemoc Language Nature"
+               label="Remove xDSML Nature"
                menubarPath="org.eclipse.ui.projectConfigure/additions">
          </action>
          
@@ -179,7 +179,7 @@
          <menu
                icon="icons/IconeGemocLanguage-16.png"
                id="GemocLanguage.menu"
-               label="Gemoc Language">
+               label="GEMOC Language">
             <command
                   commandId="org.gemoc.gemoc_language_workbench.ui.commands.CreateDomainModelProject"
                   icon="icons/plus-16.png"
@@ -626,7 +626,7 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="org.gemoc.gemoc_language_workbench.ui"
-            name="Gemoc Project">
+            name="GEMOC Project">
       </category>
       <wizard
             category="org.gemoc.gemoc_language_workbench.ui"
@@ -634,7 +634,7 @@
             icon="icons/IconeGemocLanguage-16.png"
             finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
-            name="New Gemoc Language Project"
+            name="New xDSML Project"
             project="true">
       </wizard>
    </extension>

@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.io.views.event.scenario;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -30,7 +31,7 @@ public class ScenarioPlayer extends ScenarioTool
 	/**
 	 * Load a previously created scenario model.
 	 */
-	public void load(final String path){
+	public void load(final IPath path){
 		Runnable runnable = new Runnable() 
 		{
 			public void run() 
@@ -39,7 +40,7 @@ public class ScenarioPlayer extends ScenarioTool
 				URI uri = URI.createURI("file:/" + path); 
 				_resource = resourceSet.getResource(uri, true); 
 				_scenario = (Scenario) _resource.getContents().get(0);
-				//TODO: choisir dynamiquement le fragment voulu			
+				//TODO: choisir dynamiquement le fragment voulu	ou lire tous les fragments d'un scenario bout à bout.		
 				_fragment = _scenario.getRefList().get(0).getFragment();
 				_eventView.setScenario(_fragment);
 			}

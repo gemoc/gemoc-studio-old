@@ -25,6 +25,7 @@ import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
@@ -325,7 +326,10 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			notifyObservers("Starting " + engineName);
 			long count = 0;
 		
-			pause();
+			if(_executionContext.getExecutionMode().equals((ExecutionMode.Debug)))
+			{
+				pause();
+			}
 			
 			try 
 			{

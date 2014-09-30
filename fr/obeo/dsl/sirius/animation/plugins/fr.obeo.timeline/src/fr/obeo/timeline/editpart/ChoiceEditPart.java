@@ -77,7 +77,7 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 		final LineLayout layout = new LineLayout();
 		layout.setHorizontal(false);
 		layout.setMajorAlignment(FlowLayout.ALIGN_TOPLEFT);
-		layout.setMinorAlignment(FlowLayout.ALIGN_CENTER);
+		layout.setMinorAlignment(FlowLayout.ALIGN_TOPLEFT);
 		layout.setMinorSpacing(SPACING);
 
 		FreeformLayer res = new FreeformLayer();
@@ -91,6 +91,7 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 	protected void refreshVisuals() {
 		super.refreshVisuals();
 		if (getModel().hasSelected()) {
+			((LineLayout)getFigure().getLayoutManager()).setMinorAlignment(FlowLayout.ALIGN_CENTER);
 			align();
 		}
 		label.setText(String.valueOf(getModel().getIndex()));

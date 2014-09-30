@@ -6,7 +6,7 @@
     <relativePath>../../releng/org.gemoc.mocc.root/pom.xml</relativePath>
     <groupId>org.gemoc.mocc</groupId>
     <artifactId>org.gemoc.mocc.root</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>org.gemoc.mocc.fsmkernel.model.edit</artifactId>

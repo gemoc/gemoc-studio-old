@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.mocc.graphical.editors.feature"
       label="Gemoc MoCC Graphical Concrete Syntax Editors"
-      version="0.1.0.qualifier"
+      version="0.1.1.qualifier"
       provider-name="ENSTA Bretagne">
 
    <description>

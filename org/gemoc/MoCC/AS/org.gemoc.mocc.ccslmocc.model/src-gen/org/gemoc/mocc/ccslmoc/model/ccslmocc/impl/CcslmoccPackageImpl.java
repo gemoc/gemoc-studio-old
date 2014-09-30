@@ -16,6 +16,7 @@
 package org.gemoc.mocc.ccslmoc.model.ccslmocc.impl;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ClockExpressionAndRelationPackage;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.TimeModelPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -246,6 +247,7 @@ public class CcslmoccPackageImpl extends EPackageImpl implements CcslmoccPackage
 		// Obtain other dependent packages
 		ClockExpressionAndRelationPackage theClockExpressionAndRelationPackage = (ClockExpressionAndRelationPackage)EPackage.Registry.INSTANCE.getEPackage(ClockExpressionAndRelationPackage.eNS_URI);
 		FSMModelPackage theFSMModelPackage = (FSMModelPackage)EPackage.Registry.INSTANCE.getEPackage(FSMModelPackage.eNS_URI);
+		TimeModelPackage theTimeModelPackage = (TimeModelPackage)EPackage.Registry.INSTANCE.getEPackage(TimeModelPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -265,9 +267,11 @@ public class CcslmoccPackageImpl extends EPackageImpl implements CcslmoccPackage
 
 		initEClass(finishClockEClass, FinishClock.class, "FinishClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFinishClock_Clock(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "clock", null, 1, 1, FinishClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getFinishClock_Clock().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 
 		initEClass(startClockEClass, StartClock.class, "StartClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStartClock_Clock(), theClockExpressionAndRelationPackage.getBindableEntity(), null, "clock", null, 1, 1, StartClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getStartClock_Clock().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 
 		// Create resource
 		createResource(eNS_URI);

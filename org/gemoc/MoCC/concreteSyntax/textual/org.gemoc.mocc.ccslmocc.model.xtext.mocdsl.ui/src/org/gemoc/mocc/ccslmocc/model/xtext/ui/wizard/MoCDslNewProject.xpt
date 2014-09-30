@@ -1,14 +1,14 @@
-«IMPORT org::gemoc::mocc::ccslmocc::model::xtext::ui::wizard»
+ï¿½IMPORT org::gemoc::mocc::ccslmocc::model::xtext::ui::wizardï¿½
 
-«DEFINE main FOR MoCDslProjectInfo»
-«EXPAND model FOR this»
-«ENDDEFINE»
+ï¿½DEFINE main FOR MoCDslProjectInfoï¿½
+ï¿½EXPAND model FOR thisï¿½
+ï¿½ENDDEFINEï¿½
 
-«DEFINE model FOR MoCDslProjectInfo»
-«FILE "src/model/Model.mocdsl"-»
+ï¿½DEFINE model FOR MoCDslProjectInfoï¿½
+ï¿½FILE "src/model/Model.mocc"-ï¿½
 /*
  * This is an example model
  */
 Hello Xtext!
-«ENDFILE»
-«ENDDEFINE»
+ï¿½ENDFILEï¿½
+ï¿½ENDDEFINEï¿½

@@ -22,22 +22,16 @@
  */
 package org.gemoc.mocc.fsmkernel.model.design.editor;
 
-import java.lang.reflect.Field;
+import java.io.IOException;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jface.text.contentassist.ContentAssistEvent;
+import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
-import org.eclipse.jface.text.contentassist.ICompletionListener;
-import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.contentassist.IContentAssistant;
-import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.VerifyEvent;
-import org.gemoc.mocc.fsmkernel.model.design.Activator;
 
 /**
  * @author koehnlein
@@ -54,8 +48,6 @@ public class PopupXTextEditorKeyListener extends KeyAdapter implements VerifyKey
 	
 	private int stateMask;
 
-	//private boolean isIgnoreNextESC;
-
 	/**
 	 * This element comes from the XText/GMF integration example, and was not originally documented.
 	 * @param popupXtextEditorHelper 
@@ -64,7 +56,6 @@ public class PopupXTextEditorKeyListener extends KeyAdapter implements VerifyKey
 	public PopupXTextEditorKeyListener(PopupXTextEditorHelper popupXtextEditorHelper, IContentAssistant contentAssistant) {
 		this.popupXtextEditorHelper = popupXtextEditorHelper;
 		this.contentAssistant = contentAssistant instanceof ContentAssistant ? (ContentAssistant) contentAssistant : null;
-		//isIgnoreNextESC = false;
 		
 	}
 	
@@ -72,51 +63,36 @@ public class PopupXTextEditorKeyListener extends KeyAdapter implements VerifyKey
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int keyCode = e.keyCode;
-		/*if (((e.stateMask & SWT.CTRL) != 0 && ((keyCode == SWT.KEYPAD_CR) || (keyCode == SWT.CR)))||
-				((stateMask & SWT.CTRL) != 0 && ((keyCode == SWT.KEYPAD_CR) || (keyCode == SWT.CR)))) { //for windows
-			this.popupXtextEditorHelper.closeEditor(true);
-		}*/
-		if (keyCode == SWT.ESC) {
-			/*if (isIgnoreNextESC) {
-				isIgnoreNextESC = false;
-			} else {
-				PopupXTextEditorHelper.ignoreFocusLost = true ;*/
-				try {
-					this.popupXtextEditorHelper.closeEditor(true);
-				} catch (CoreException exc) {
-					// TODO Auto-generated catch block
-					Activator.logError(exc);
-				}
-			//}
+		
+		synchronized (popupXtextEditorHelper) {
+			this.popupXtextEditorHelper.check4DandlingCrossReferences();
 		}
+		this.popupXtextEditorHelper.setStableText();
+		
 		if((((e.stateMask & SWT.CTRL) == SWT.CTRL) && (e.keyCode == 's'))||
 				(((stateMask & SWT.CTRL) == SWT.CTRL) && (e.keyCode == 's'))){
-			this.popupXtextEditorHelper.saveModifications();
+			try {
+				this.popupXtextEditorHelper.saveModifications(true);//TODO
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (BadLocationException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
-		stateMask = keyCode;
-		/*if ((e.stateMask & SWT.CTRL) != 0 && (keyCode == ' ')) {
-			this.contentAssistant.setRepeatedInvocationMode(true) ;
-			this.contentAssistant.showPossibleCompletions() ;
-			this.isIgnoreNextESC = true ;
-			contentAssistant.addCompletionListener(new ICompletionListener() {
-				
-				public void selectionChanged(ICompletionProposal proposal, boolean smartToggle) {		
-				}
-				
-				public void assistSessionStarted(ContentAssistEvent event) {
-				}
-				
-				public void assistSessionEnded(ContentAssistEvent event) {
-					try {
-						popupXtextEditorHelper.getSourceViewerHandle().getViewer().getTextWidget().setFocus() ;
-					}
-					catch (Exception e) {
-						//ignore
-					}
-				}
-			}) ;
-		}*/
+		
+		if (e.keyCode == SWT.ESC){
+			try {
+				this.popupXtextEditorHelper.saveModifications(false);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (BadLocationException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 
 	public void verifyKey(VerifyEvent e) {

@@ -14,15 +14,12 @@ package org.gemoc.mocc.fsmkernel.model.design.actions;
 import java.util.Collection;
 import java.util.Map;
 
-
-
-
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
@@ -32,40 +29,52 @@ import org.gemoc.mocc.fsmkernel.model.design.editor.PopupXTextEditorHelper;
 
 import com.google.inject.Injector;
 
-
-
+@SuppressWarnings("restriction")
 public abstract class OpenXtextEmbeddedEditor implements IExternalJavaAction {
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction#canExecute(java.util.Collection)
+	 */
 	public boolean canExecute(Collection<? extends EObject> arg0) {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction#execute(java.util.Collection, java.util.Map)
+	 */
 	public void execute(Collection<? extends EObject> context,
 			Map<String, Object> parameters) {
 		DiagramEditPart diagramEditPart = ((DiagramEditor) getActiveEditor())
 				.getDiagramEditPart();
 		for (EObject o : context) {
-			EditPart editPart = diagramEditPart
-					.findEditPart(diagramEditPart, o);
+			EditPart editPart;
+			if (o instanceof DEdgeSpec) { //edge cannot directly be linked to edit part, opening on target node
+				editPart = diagramEditPart
+						.findEditPart(diagramEditPart, ((DEdgeSpec)o).getTargetNode());
+			}else {
+				editPart = diagramEditPart
+						.findEditPart(diagramEditPart, o);
+			}
 			if (editPart != null && (editPart instanceof IGraphicalEditPart)) {
-				openEmbeddedEditor((IGraphicalEditPart) editPart);
+				PopupXTextEditorHelper embeddedEditorHelper = new PopupXTextEditorHelper(
+						(IGraphicalEditPart) editPart/*diagramEditPart*/, o, getInjector());
+				embeddedEditorHelper.showEditor();
 				break;
 			}
 		}
+	}
 
-	}
-	
-	protected  void openEmbeddedEditor(IGraphicalEditPart graphicalEditPart) {
-		PopupXTextEditorHelper embeddedEditorHelper = new PopupXTextEditorHelper(graphicalEditPart, getInjector());
-		embeddedEditorHelper.showEditor();	
-	}
-	
 	/**
-	 * Return the injector associated to you domain model plug-in. 
+	 * Return the injector associated to you domain model plug-in.
+	 * 
 	 * @return
 	 */
 	protected abstract Injector getInjector();
-	
+
+	/**
+	 * Get the active editor part
+	 * @return the one from the active page
+	 */
 	protected IEditorPart getActiveEditor() {
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchPage page = workbench.getActiveWorkbenchWindow()

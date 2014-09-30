@@ -102,7 +102,8 @@ public class TimelineWindow implements ITimelineListener {
 		if (maxSelectedIndex < 0) {
 			final int end = Math.min(getEnd(), getProvider().getNumberOfChoices());
 			for (int choice = 0; choice < end; ++choice) {
-				maxSelectedIndex = Math.max(maxSelectedIndex, getProvider().getSelectedPossibleStep(choice));
+				final int selectedPossibleStep = getProvider().getSelectedPossibleStep(choice);
+				maxSelectedIndex = Math.max(maxSelectedIndex, selectedPossibleStep);
 			}
 		}
 		return maxSelectedIndex;
@@ -270,7 +271,9 @@ public class TimelineWindow implements ITimelineListener {
 	@Override
 	public void isSelectedChanged(int index, int possibleStep, boolean selected) {
 		if (isInWindow(index)) {
-			maxSelectedIndex = Math.max(maxSelectedIndex, possibleStep);
+			if (maxSelectedIndex >= 0) {
+				maxSelectedIndex = Math.max(maxSelectedIndex, possibleStep);
+			}
 			for (ITimelineWindowListener listener : getListeners()) {
 				listener.isSelectedChanged(index, possibleStep, selected);
 			}

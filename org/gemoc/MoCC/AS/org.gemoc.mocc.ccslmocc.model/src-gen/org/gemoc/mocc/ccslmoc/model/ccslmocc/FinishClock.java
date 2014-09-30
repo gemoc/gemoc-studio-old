@@ -47,7 +47,7 @@ public interface FinishClock extends AbstractAction {
 	 * @return the value of the '<em>Clock</em>' reference.
 	 * @see #setClock(BindableEntity)
 	 * @see org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage#getFinishClock_Clock()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	BindableEntity getClock();
