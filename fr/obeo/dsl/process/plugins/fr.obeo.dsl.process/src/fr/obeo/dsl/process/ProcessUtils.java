@@ -875,4 +875,53 @@ public final class ProcessUtils {
 
 		return res;
 	}
+
+	/**
+	 * Tells if the given {@link ProcessVariable} is {@link ActionTask#getWrittenVariables() written}.
+	 * 
+	 * @param variable
+	 *            the {@link ProcessVariable} to check
+	 * @return <code>true</code> if the given {@link ProcessVariable} is
+	 *         {@link ActionTask#getWrittenVariables() written}, <code>false</code> otherwise
+	 */
+	public static boolean isWritten(ProcessVariable variable) {
+		boolean res = false;
+		final Process process = (Process)variable.eContainer();
+		final Iterator<EObject> it = process.eAllContents();
+
+		while (it.hasNext()) {
+			final EObject eObj = it.next();
+			if (eObj instanceof ActionTask && ((ActionTask)eObj).getWrittenVariables().contains(variable)) {
+				res = true;
+				break;
+			}
+		}
+
+		return res;
+	}
+
+	/**
+	 * Tells if the given {@link ProcessVariable} is {@link ActionTask#getObservedVariables() observed}.
+	 * 
+	 * @param variable
+	 *            the {@link ProcessVariable} to check
+	 * @return <code>true</code> if the given {@link ProcessVariable} is
+	 *         {@link ActionTask#getObservedVariables() observed}, <code>false</code> otherwise
+	 */
+	public static boolean isObserved(ProcessVariable variable) {
+		boolean res = false;
+		final Process process = (Process)variable.eContainer();
+		final Iterator<EObject> it = process.eAllContents();
+
+		while (it.hasNext()) {
+			final EObject eObj = it.next();
+			if (eObj instanceof ActionTask && ((ActionTask)eObj).getObservedVariables().contains(variable)) {
+				res = true;
+				break;
+			}
+		}
+
+		return res;
+	}
+
 }

@@ -65,6 +65,9 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A variable in the Process wich can be produced or consummed by Tasks."/>
     </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="VariableIsWrittenAtLeastOnce VariableIsObservedAtLeastOnce"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComposedTask" eSuperTypes="#//Task">
@@ -100,6 +103,9 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActionTask" eSuperTypes="#//Task">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="ObservedVariableIsReachable"/>
+    </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A {@link Task} performing any action. The {@link ActionTask#getValidation() validation expression} is used to tell when the {@link ActionTask} {@link fr.obeo.dsl.process.ProcessUtils#isDone(ProcessContext, Task) is done}. Optionally an {@link ActionTask#getAction() action} can be specified to be {@link ActionTask#execute() executed} to meet the {@link ActionTask#getValidation() validation expression}."/>
     </eAnnotations>

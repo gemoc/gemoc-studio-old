@@ -38,7 +38,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 	public static ProcessFactory init() {
 		try {
 			ProcessFactory theProcessFactory = (ProcessFactory)EPackage.Registry.INSTANCE
-					.getEFactory(ProcessPackage.eNS_URI);
+					.getEFactory("http://www.obeo.fr/dsl/process");
 			if (theProcessFactory != null) {
 				return theProcessFactory;
 			}

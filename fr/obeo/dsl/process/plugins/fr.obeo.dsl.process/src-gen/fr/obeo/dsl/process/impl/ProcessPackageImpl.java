@@ -956,8 +956,11 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 				source,
 				new String[] {"constraints",
 						"Reachable DeadEnd PrecedingTasksAtSameLevel FollowingTasksAtSameLevel PreconditionTasksArePreceding" });
+		addAnnotation(processVariableEClass, source, new String[] {"constraints",
+				"VariableIsWrittenAtLeastOnce VariableIsObservedAtLeastOnce" });
 		addAnnotation(composedTaskEClass, source, new String[] {"constraints",
 				"PathExistance InitialTasksAreContained FinalTasksAreContained DoneTasksAreFinal" });
+		addAnnotation(actionTaskEClass, source, new String[] {"constraints", "ObservedVariableIsReachable" });
 	}
 
 } // ProcessPackageImpl

@@ -328,7 +328,80 @@ public class ProcessValidator extends EObjectValidator {
 	 */
 	public boolean validateProcessVariable(ProcessVariable processVariable, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(processVariable, diagnostics, context);
+		if (!validate_NoCircularContainment(processVariable, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(processVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(processVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(processVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(processVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(processVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(processVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(processVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(processVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateProcessVariable_VariableIsWrittenAtLeastOnce(processVariable, diagnostics,
+					context);
+		if (result || diagnostics != null)
+			result &= validateProcessVariable_VariableIsObservedAtLeastOnce(processVariable, diagnostics,
+					context);
+		return result;
+	}
+
+	/**
+	 * Validates the VariableIsWrittenAtLeastOnce constraint of '<em>Variable</em>'. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public boolean validateProcessVariable_VariableIsWrittenAtLeastOnce(ProcessVariable processVariable,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		final boolean isWritten = ProcessUtils.isWritten(processVariable);
+		if (!isWritten) {
+			if (diagnostics != null) {
+				final boolean isObserved = ProcessUtils.isObserved(processVariable);
+				final int status;
+				if (isObserved) {
+					status = Diagnostic.ERROR;
+				} else {
+					status = Diagnostic.WARNING;
+				}
+				diagnostics.add(createDiagnostic(status, DIAGNOSTIC_SOURCE, "VariableIsWrittenAtLeastOnce"
+						.hashCode(), "_UI_GenericConstraint_diagnostic", new Object[] {
+						"VariableIsWrittenAtLeastOnce", getObjectLabel(processVariable, context) },
+						new Object[] {processVariable }, context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the VariableIsObservedAtLeastOnce constraint of '<em>Variable</em>'. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public boolean validateProcessVariable_VariableIsObservedAtLeastOnce(ProcessVariable processVariable,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		final boolean isObserved = ProcessUtils.isObserved(processVariable);
+		if (!isObserved) {
+			if (diagnostics != null) {
+				diagnostics.add(createDiagnostic(Diagnostic.WARNING, DIAGNOSTIC_SOURCE,
+						"VariableIsObservedAtLeastOnce".hashCode(), "_UI_GenericConstraint_diagnostic",
+						new Object[] {"VariableIsObservedAtLeastOnce",
+								getObjectLabel(processVariable, context) }, new Object[] {processVariable },
+						context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -529,7 +602,37 @@ public class ProcessValidator extends EObjectValidator {
 			result &= validateTask_FollowingTasksAtSameLevel(actionTask, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateTask_PreconditionTasksArePreceding(actionTask, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActionTask_ObservedVariableIsReachable(actionTask, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * Validates the ObservedVariableIsReachable constraint of '<em>Action Task</em>'. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public boolean validateActionTask_ObservedVariableIsReachable(ActionTask actionTask,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		final List<ProcessVariable> variables = ProcessUtils.getAvailableProcessVariables(actionTask);
+		final List<ProcessVariable> observedVariables = actionTask.getObservedVariables();
+		final List<ProcessVariable> notReachable = new ArrayList<ProcessVariable>();
+		for (ProcessVariable var : observedVariables) {
+			if (!variables.contains(var)) {
+				notReachable.add(var);
+			}
+		}
+		if (notReachable.size() > 0) {
+			if (diagnostics != null) {
+				diagnostics.add(createDiagnostic(Diagnostic.ERROR, DIAGNOSTIC_SOURCE,
+						"ObservedVariableIsReachable".hashCode(), "_UI_GenericConstraint_diagnostic",
+						new Object[] {"ObservedVariableIsReachable", getObjectLabel(actionTask, context) },
+						new Object[] {actionTask, notReachable }, context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**

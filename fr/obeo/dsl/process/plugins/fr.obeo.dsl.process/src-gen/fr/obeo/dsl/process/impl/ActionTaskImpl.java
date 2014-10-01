@@ -288,7 +288,7 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	public ComposedTask getParentTask() {
 		if (eContainerFeatureID() != ProcessPackage.ACTION_TASK__PARENT_TASK)
 			return null;
-		return (ComposedTask)eInternalContainer();
+		return (ComposedTask)eContainer();
 	}
 
 	/**
