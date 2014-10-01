@@ -18,7 +18,7 @@
 package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import java.io.File;
 
@@ -78,27 +78,25 @@ public class EditEMFDomainConceptsTask extends AbstractGemocActionProcessor {
 	}
 
 	/**
-	 * Updates the given {@link ProcessContext}.
+	 * Updates the given {@link GemocLanguageProcessContext}.
 	 * 
 	 * @param context
-	 *            the {@link ProcessContext}
+	 *            the {@link GemocLanguageProcessContext}
 	 */
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		boolean result = false;
 		EMFEcoreProject eep = context.getEcoreProject();
 		if (eep != null) {
-			if (eep.getEmfGenmodel() == null 
-				|| eep.getEmfGenmodel().getLocationURI() == null
-				|| eep.getEmfGenmodel().getLocationURI().length() == 0) {
+			if (eep.getEmfGenmodel() == null || eep.getEmfGenmodel().getLocationURI() == null
+					|| eep.getEmfGenmodel().getLocationURI().length() == 0) {
 				undoneReason = "no valid genmodel referenced in xdsml";
 				result = false;
 			} else {
-				String genModelURI =  eep.getEmfGenmodel().getLocationURI();				
+				String genModelURI = eep.getEmfGenmodel().getLocationURI();
 				try {
 					Object firstContent = EMFResource.getFirstContent(URI.createURI(genModelURI, true));
-					if (firstContent instanceof GenModel
-						&& hasClassifier((GenModel)firstContent)) {
+					if (firstContent instanceof GenModel && hasClassifier((GenModel)firstContent)) {
 						result = true;
 					} else {
 						undoneReason = "No classifier defined in Domain model or Genmodel is not uptodate";
@@ -167,24 +165,21 @@ public class EditEMFDomainConceptsTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		return
-				EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
+		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
 				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
 				|| checkFileIsGenModel(context, resource);
 	}
 
 	@Override
 	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		return
-				EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
+		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
 				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
 				|| checkFileIsGenModel(context, resource);
 	}
 
 	@Override
 	protected boolean internalAcceptModifiedResource(GemocLanguageProcessContext context, IResource resource) {
-		return 
-				EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
+		return EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
 				|| checkFileIsGenModel(context, resource);
 	}
 
@@ -193,16 +188,18 @@ public class EditEMFDomainConceptsTask extends AbstractGemocActionProcessor {
 			// if the change happen on the genmodel referenced by the xdsml
 			EMFEcoreProject eep = context.getEcoreProject();
 			if (eep != null
-				&& eep.getEmfGenmodel() != null
-				&& EclipseResource.matches(resource, URI.createURI(eep.getEmfGenmodel().getLocationURI(), true))) {
+					&& eep.getEmfGenmodel() != null
+					&& EclipseResource.matches(resource, URI.createURI(eep.getEmfGenmodel().getLocationURI(),
+							true))) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	@Override
-	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
+			ProcessVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;

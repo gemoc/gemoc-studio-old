@@ -7,7 +7,6 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
@@ -17,6 +16,8 @@ import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
+
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -146,8 +147,8 @@ public class ProcessAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseContextVariable(ContextVariable object) {
-			return createContextVariableAdapter();
+		public Adapter caseProcessVariableToObjectMap(Map.Entry<ProcessVariable, Object> object) {
+			return createProcessVariableToObjectMapAdapter();
 		}
 
 		@Override
@@ -358,16 +359,16 @@ public class ProcessAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.obeo.dsl.process.ContextVariable
-	 * <em>Context Variable</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-	 * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry
+	 * <em>Variable To Object Map</em>}'. <!-- begin-user-doc --> This default implementation returns null so
+	 * that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases
 	 * anyway. <!-- end-user-doc -->
 	 * 
 	 * @return the new adapter.
-	 * @see fr.obeo.dsl.process.ContextVariable
+	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createContextVariableAdapter() {
+	public Adapter createProcessVariableToObjectMapAdapter() {
 		return null;
 	}
 

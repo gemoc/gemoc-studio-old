@@ -62,7 +62,7 @@
     <genClasses ecoreClass="process.ecore#//ProcessContext">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//ProcessContext/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessContext/definition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute process.ecore#//ProcessContext/variables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ProcessContext/variables"/>
       <genOperations ecoreOperation="process.ecore#//ProcessContext/isDone">
         <genParameters ecoreParameter="process.ecore#//ProcessContext/isDone/task"/>
       </genOperations>
@@ -92,10 +92,9 @@
         <genParameters ecoreParameter="process.ecore#//ProcessContext/getProcessVariable/variableName"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//ContextVariable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute process.ecore#//ContextVariable/variableValue"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ContextVariable/definition"/>
-      <genOperations ecoreOperation="process.ecore#//ContextVariable/getName"/>
+    <genClasses ecoreClass="process.ecore#//ProcessVariableToObjectMap">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessVariableToObjectMap/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//ProcessVariableToObjectMap/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

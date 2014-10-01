@@ -7,7 +7,6 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
@@ -17,6 +16,8 @@ import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
+
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -194,9 +195,10 @@ public class ProcessSwitch<T> extends Switch<T> {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case ProcessPackage.CONTEXT_VARIABLE: {
-				ContextVariable contextVariable = (ContextVariable)theEObject;
-				T result = caseContextVariable(contextVariable);
+			case ProcessPackage.PROCESS_VARIABLE_TO_OBJECT_MAP: {
+				@SuppressWarnings("unchecked")
+				Map.Entry<ProcessVariable, Object> processVariableToObjectMap = (Map.Entry<ProcessVariable, Object>)theEObject;
+				T result = caseProcessVariableToObjectMap(processVariableToObjectMap);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -417,17 +419,17 @@ public class ProcessSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Context Variable</em>'. <!--
+	 * Returns the result of interpreting the object as an instance of '<em>Variable To Object Map</em>'. <!--
 	 * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
 	 * switch. <!-- end-user-doc -->
 	 * 
 	 * @param object
 	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Context Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable To Object Map</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseContextVariable(ContextVariable object) {
+	public T caseProcessVariableToObjectMap(Map.Entry<ProcessVariable, Object> object) {
 		return null;
 	}
 

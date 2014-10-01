@@ -2,8 +2,7 @@
  */
 package fr.obeo.dsl.process;
 
-import java.util.Map;
-
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -77,19 +76,22 @@ public interface ProcessContext extends EObject {
 	void setDefinition(fr.obeo.dsl.process.Process value);
 
 	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Variables</b></em>' map. The key is of type
+	 * {@link fr.obeo.dsl.process.ProcessVariable}, and the value is of type {@link java.lang.Object}, <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear, there really should
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return the value of the '<em>Variables</em>' attribute.
+	 * @return the value of the '<em>Variables</em>' map.
 	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Variables()
-	 * @model transient="true" changeable="false"
+	 * @model mapType=
+	 *        "fr.obeo.dsl.process.ProcessVariableToObjectMap<fr.obeo.dsl.process.ProcessVariable, fr.obeo.dsl.process.Object>"
 	 * @generated
 	 */
-	Map<ProcessVariable, ContextVariable> getVariables();
+	EMap<ProcessVariable, Object> getVariables();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Tells if the given

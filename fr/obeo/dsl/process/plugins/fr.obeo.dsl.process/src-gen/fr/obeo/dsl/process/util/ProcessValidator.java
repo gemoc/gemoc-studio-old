@@ -7,7 +7,6 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.Not;
@@ -29,6 +28,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
@@ -130,8 +130,8 @@ public class ProcessValidator extends EObjectValidator {
 				return validateOr((Or)value, diagnostics, context);
 			case ProcessPackage.PROCESS_CONTEXT:
 				return validateProcessContext((ProcessContext)value, diagnostics, context);
-			case ProcessPackage.CONTEXT_VARIABLE:
-				return validateContextVariable((ContextVariable)value, diagnostics, context);
+			case ProcessPackage.PROCESS_VARIABLE_TO_OBJECT_MAP:
+				return validateProcessVariableToObjectMap((Map.Entry<?, ?>)value, diagnostics, context);
 			case ProcessPackage.OBJECT:
 				return validateObject(value, diagnostics, context);
 			case ProcessPackage.ILLEGAL_VARIABLE_ACCESS_EXCEPTION:
@@ -724,9 +724,9 @@ public class ProcessValidator extends EObjectValidator {
 	 * 
 	 * @generated
 	 */
-	public boolean validateContextVariable(ContextVariable contextVariable, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(contextVariable, diagnostics, context);
+	public boolean validateProcessVariableToObjectMap(Map.Entry<?, ?> processVariableToObjectMap,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)processVariableToObjectMap, diagnostics, context);
 	}
 
 	/**

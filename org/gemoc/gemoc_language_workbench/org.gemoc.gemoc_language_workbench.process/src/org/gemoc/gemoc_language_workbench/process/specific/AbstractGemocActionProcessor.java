@@ -18,7 +18,7 @@
 package org.gemoc.gemoc_language_workbench.process.specific;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 
 import org.eclipse.core.resources.IResource;
@@ -27,11 +27,11 @@ import org.gemoc.gemoc_language_workbench.process.support.AbstractActionProcesso
 public abstract class AbstractGemocActionProcessor extends AbstractActionProcessor<GemocLanguageProcessContext> {
 
 	protected String undoneReason = "";
-	
+
 	public AbstractGemocActionProcessor(ActionTask task) {
 		super(task);
 	}
-	
+
 	@Override
 	protected String internalUpdateContextWhenUndone(GemocLanguageProcessContext context) {
 		return undoneReason;
@@ -42,7 +42,8 @@ public abstract class AbstractGemocActionProcessor extends AbstractActionProcess
 	}
 
 	@Override
-	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variableChanged) {
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
+			ProcessVariable variableChanged) {
 		return false;
 	}
 

@@ -7,7 +7,6 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.Not;
 import fr.obeo.dsl.process.OneDone;
@@ -16,6 +15,8 @@ import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessFactory;
 import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessVariable;
+
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -87,8 +88,8 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 				return createOr();
 			case ProcessPackage.PROCESS_CONTEXT:
 				return createProcessContext();
-			case ProcessPackage.CONTEXT_VARIABLE:
-				return createContextVariable();
+			case ProcessPackage.PROCESS_VARIABLE_TO_OBJECT_MAP:
+				return (EObject)createProcessVariableToObjectMap();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName()
 						+ "' is not a valid classifier");
@@ -242,9 +243,9 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 	 * 
 	 * @generated
 	 */
-	public ContextVariable createContextVariable() {
-		ContextVariableImpl contextVariable = new ContextVariableImpl();
-		return contextVariable;
+	public Map.Entry<ProcessVariable, Object> createProcessVariableToObjectMap() {
+		ProcessVariableToObjectMapImpl processVariableToObjectMap = new ProcessVariableToObjectMapImpl();
+		return processVariableToObjectMap;
 	}
 
 	/**

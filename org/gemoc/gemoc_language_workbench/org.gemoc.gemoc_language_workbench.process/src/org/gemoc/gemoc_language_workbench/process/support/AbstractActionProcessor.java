@@ -18,8 +18,8 @@
 package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceAdded;
@@ -105,48 +105,46 @@ public abstract class AbstractActionProcessor<T extends ProcessContext> implemen
 	protected abstract void internalDoAction(T context);
 
 	protected abstract void internalUndoAction(T context);
-	
-	
-	public final boolean acceptVariableChanged(ProcessContext processContext, ContextVariable variableChanged) {
+
+	public final boolean acceptVariableChanged(ProcessContext processContext, ProcessVariable variableChanged) {
 		return acceptChangeVariableChanged(castContext(processContext), variableChanged);
 	}
-	protected abstract boolean acceptChangeVariableChanged(T context, ContextVariable variableChanged);
-	
-	
+
+	protected abstract boolean acceptChangeVariableChanged(T context, ProcessVariable variableChanged);
+
 	public boolean acceptTaskChanged(ProcessContext processContext, Task changedTask) {
 		return acceptChangeTaskChanged(castContext(processContext), changedTask);
-	}	
+	}
+
 	protected abstract boolean acceptChangeTaskChanged(T context, Task changedTask);
 
-	
 	public final boolean acceptRemovedResource(ProcessContext context, IResource resource) {
 		return internalAcceptRemovedResource(castContext(context), resource);
 	}
+
 	protected abstract boolean internalAcceptRemovedResource(T context, IResource resource);
 
-	
 	public final boolean acceptAddedResource(ProcessContext context, IResource resource) {
 		return internalAcceptAddedResource(castContext(context), resource);
 	}
+
 	protected abstract boolean internalAcceptAddedResource(T context, IResource resource);
 
-	
 	public final boolean acceptModifiedResource(ProcessContext context, IResource resource) {
 		return internalAcceptModifiedResource(castContext(context), resource);
 	}
+
 	protected abstract boolean internalAcceptModifiedResource(T context, IResource resource);
 
-	
 	@Override
 	public final boolean acceptChange(ProcessContext context, IChange<?> change) {
 		boolean result = false;
 		if (change instanceof ResourceAdded) {
-				result = acceptAddedResource(context, (IResource)change.getObject());
+			result = acceptAddedResource(context, (IResource)change.getObject());
 		} else if (change instanceof ResourceRemoved) {
 			result = acceptRemovedResource(context, (IResource)change.getObject());
 		} else if (change instanceof ResourceMoved) {
-			result = acceptAddedResource(context, (IResource)((ResourceMoved)change)
-					.getDestination())
+			result = acceptAddedResource(context, (IResource)((ResourceMoved)change).getDestination())
 					|| acceptRemovedResource(context, (IResource)change.getObject());
 		} else if (change instanceof ResourceContentChanged) {
 			result = acceptModifiedResource(context, (IResource)change.getObject());

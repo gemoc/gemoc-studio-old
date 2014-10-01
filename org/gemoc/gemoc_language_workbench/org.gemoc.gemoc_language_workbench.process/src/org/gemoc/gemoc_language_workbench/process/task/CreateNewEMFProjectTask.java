@@ -19,8 +19,8 @@ package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.Activator;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -59,14 +59,14 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		return 
-				EclipseResource.matches(resource, IFile.class, context.getXdsmlURI())
+		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI())
 				|| EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
 				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile());
 	}
 
 	@Override
-	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
+			ProcessVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;
@@ -110,7 +110,6 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 		return false;
 	}
 
-
 	@Override
 	protected void internalDoAction(GemocLanguageProcessContext context) {
 		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
@@ -119,6 +118,5 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 		action.actionToExecute = CreateDomainModelAction.CREATE_NEW_EMF_PROJECT;
 		action.execute();
 	}
-
 
 }

@@ -7,7 +7,6 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.And;
 import fr.obeo.dsl.process.AnyDone;
 import fr.obeo.dsl.process.ComposedTask;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.Expression;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.Not;
@@ -21,10 +20,11 @@ import fr.obeo.dsl.process.Task;
 import fr.obeo.dsl.process.TasksExpression;
 import fr.obeo.dsl.process.util.ProcessValidator;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -140,7 +140,7 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
-	private EClass contextVariableEClass = null;
+	private EClass processVariableToObjectMapEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -581,8 +581,8 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
-	public EAttribute getProcessContext_Variables() {
-		return (EAttribute)processContextEClass.getEStructuralFeatures().get(2);
+	public EReference getProcessContext_Variables() {
+		return (EReference)processContextEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -590,8 +590,8 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
-	public EClass getContextVariable() {
-		return contextVariableEClass;
+	public EClass getProcessVariableToObjectMap() {
+		return processVariableToObjectMapEClass;
 	}
 
 	/**
@@ -599,8 +599,8 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
-	public EAttribute getContextVariable_VariableValue() {
-		return (EAttribute)contextVariableEClass.getEStructuralFeatures().get(0);
+	public EReference getProcessVariableToObjectMap_Key() {
+		return (EReference)processVariableToObjectMapEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -608,8 +608,8 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
-	public EReference getContextVariable_Definition() {
-		return (EReference)contextVariableEClass.getEStructuralFeatures().get(1);
+	public EAttribute getProcessVariableToObjectMap_Value() {
+		return (EAttribute)processVariableToObjectMapEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -710,11 +710,11 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		processContextEClass = createEClass(PROCESS_CONTEXT);
 		createEAttribute(processContextEClass, PROCESS_CONTEXT__NAME);
 		createEReference(processContextEClass, PROCESS_CONTEXT__DEFINITION);
-		createEAttribute(processContextEClass, PROCESS_CONTEXT__VARIABLES);
+		createEReference(processContextEClass, PROCESS_CONTEXT__VARIABLES);
 
-		contextVariableEClass = createEClass(CONTEXT_VARIABLE);
-		createEAttribute(contextVariableEClass, CONTEXT_VARIABLE__VARIABLE_VALUE);
-		createEReference(contextVariableEClass, CONTEXT_VARIABLE__DEFINITION);
+		processVariableToObjectMapEClass = createEClass(PROCESS_VARIABLE_TO_OBJECT_MAP);
+		createEReference(processVariableToObjectMapEClass, PROCESS_VARIABLE_TO_OBJECT_MAP__KEY);
+		createEAttribute(processVariableToObjectMapEClass, PROCESS_VARIABLE_TO_OBJECT_MAP__VALUE);
 
 		// Create data types
 		objectEDataType = createEDataType(OBJECT);
@@ -876,14 +876,9 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEReference(getProcessContext_Definition(), this.getProcess(), null, "definition", null, 1, 1,
 				ProcessContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
-		EGenericType g2 = createEGenericType(this.getProcessVariable());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(this.getContextVariable());
-		g1.getETypeArguments().add(g2);
-		initEAttribute(getProcessContext_Variables(), g1, "variables", null, 0, 1, ProcessContext.class,
-				IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getProcessContext_Variables(), this.getProcessVariableToObjectMap(), null,
+				"variables", null, 0, -1, ProcessContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(processContextEClass, ecorePackage.getEBoolean(), "isDone", 1, 1, IS_UNIQUE,
 				IS_ORDERED);
@@ -918,17 +913,14 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 				IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "variableName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(contextVariableEClass, ContextVariable.class, "ContextVariable", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContextVariable_VariableValue(), this.getObject(), "variableValue", null, 0, 1,
-				ContextVariable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContextVariable_Definition(), this.getProcessVariable(), null, "definition", null,
-				1, 1, ContextVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+		initEClass(processVariableToObjectMapEClass, Map.Entry.class, "ProcessVariableToObjectMap",
+				!IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProcessVariableToObjectMap_Key(), this.getProcessVariable(), null, "key", null, 1,
+				1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(contextVariableEClass, ecorePackage.getEString(), "getName", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
+		initEAttribute(getProcessVariableToObjectMap_Value(), this.getObject(), "value", null, 0, 1,
+				Map.Entry.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(objectEDataType, Object.class, "Object", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

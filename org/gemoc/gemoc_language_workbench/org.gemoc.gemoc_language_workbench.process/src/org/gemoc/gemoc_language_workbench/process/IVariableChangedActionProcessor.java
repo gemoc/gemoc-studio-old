@@ -17,11 +17,11 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process;
 
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.ProcessVariable;
 
 public interface IVariableChangedActionProcessor extends IActionProcessor {
 
-	boolean acceptVariableChanged(ProcessContext processContext, ContextVariable variableChanged);
+	boolean acceptVariableChanged(ProcessContext processContext, ProcessVariable variableChanged);
 
 }

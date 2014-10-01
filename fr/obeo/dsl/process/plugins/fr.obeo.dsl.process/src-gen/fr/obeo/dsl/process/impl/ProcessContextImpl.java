@@ -3,10 +3,8 @@
 package fr.obeo.dsl.process.impl;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
 import fr.obeo.dsl.process.ProcessContext;
-import fr.obeo.dsl.process.ProcessFactory;
 import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.ProcessVariable;
@@ -16,11 +14,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.BasicNotifierImpl;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Context</b></em>'. <!-- end-user-doc
@@ -74,7 +77,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 * @generated
 	 * @ordered
 	 */
-	protected Map<ProcessVariable, ContextVariable> variables;
+	protected EMap<ProcessVariable, Object> variables;
 
 	/**
 	 * The current progress of this instance of {@link Process}.
@@ -174,11 +177,13 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated NOT
+	 * @generated
 	 */
-	public Map<ProcessVariable, ContextVariable> getVariables() {
+	public EMap<ProcessVariable, Object> getVariables() {
 		if (variables == null) {
-			variables = new HashMap<ProcessVariable, ContextVariable>();
+			variables = new EcoreEMap<ProcessVariable, Object>(
+					ProcessPackage.Literals.PROCESS_VARIABLE_TO_OBJECT_MAP,
+					ProcessVariableToObjectMapImpl.class, this, ProcessPackage.PROCESS_CONTEXT__VARIABLES);
 		}
 		return variables;
 	}
@@ -243,14 +248,13 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 */
 	public void setVariableValue(ProcessVariable variable, Object variableValue, ActionTask writter)
 			throws IllegalVariableAccessException {
-		ContextVariable contextVariable = getOrCreatecontextVariable(variable);
 		if (writter != null) {
-			if (!writter.getWrittenVariables().contains(contextVariable.getDefinition())) {
+			if (!writter.getWrittenVariables().contains(variable)) {
 				throw new IllegalVariableAccessException("Task " + writter.getName()
-						+ " hasn't declared to be able to writte in Variable " + contextVariable.getName());
+						+ " hasn't declared to be able to writte in Variable " + variable.getName());
 			}
 		}
-		contextVariable.setVariableValue(variableValue);
+		getVariables().put(variable, variableValue);
 	}
 
 	/**
@@ -259,19 +263,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 * @generated NOT
 	 */
 	public Object getVariableValue(ProcessVariable processVariable) {
-		ContextVariable variable = getOrCreatecontextVariable(processVariable);
-		return variable.getVariableValue();
-	}
-
-	protected ContextVariable getOrCreatecontextVariable(ProcessVariable searchedVariableDefinition) {
-		ContextVariable variable = getVariables().get(searchedVariableDefinition);
-		if (variable == null) {
-			// create the variable that has never been accessed yet in this context
-			variable = ProcessFactory.eINSTANCE.createContextVariable();
-			variable.setDefinition(searchedVariableDefinition);
-			getVariables().put(searchedVariableDefinition, variable);
-		}
-		return variable;
+		return getVariables().get(processVariable);
 	}
 
 	/**
@@ -305,6 +297,20 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
+				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ProcessPackage.PROCESS_CONTEXT__NAME:
@@ -314,7 +320,10 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 					return getDefinition();
 				return basicGetDefinition();
 			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
-				return getVariables();
+				if (coreType)
+					return getVariables();
+				else
+					return getVariables().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -334,6 +343,9 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
 				setDefinition((fr.obeo.dsl.process.Process)newValue);
 				return;
+			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
+				((EStructuralFeature.Setting)getVariables()).set(newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -352,6 +364,9 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
 				setDefinition((fr.obeo.dsl.process.Process)null);
 				return;
+			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
+				getVariables().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -369,7 +384,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 			case ProcessPackage.PROCESS_CONTEXT__DEFINITION:
 				return definition != null;
 			case ProcessPackage.PROCESS_CONTEXT__VARIABLES:
-				return variables != null;
+				return variables != null && !variables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -387,8 +402,6 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", variables: ");
-		result.append(variables);
 		result.append(')');
 		return result.toString();
 	}
