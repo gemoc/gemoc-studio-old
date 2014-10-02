@@ -18,7 +18,7 @@
 package org.gemoc.gemoc_language_workbench.guideline.process.specific;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 
 import org.eclipse.core.resources.IResource;
@@ -42,7 +42,7 @@ public abstract class AbstractGemocActionProcessor extends AbstractActionProcess
 	}
 
 	@Override
-	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variableChanged) {
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ProcessVariable variableChanged) {
 		return false;
 	}
 

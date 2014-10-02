@@ -18,7 +18,7 @@
 package org.gemoc.gemoc_language_workbench.guideline.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
@@ -45,7 +45,7 @@ public class DefineDSATask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
-			ContextVariable variable) {
+			ProcessVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;

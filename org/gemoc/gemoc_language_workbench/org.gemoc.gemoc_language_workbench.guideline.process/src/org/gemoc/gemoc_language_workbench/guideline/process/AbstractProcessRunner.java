@@ -18,13 +18,14 @@
 package org.gemoc.gemoc_language_workbench.guideline.process;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.Process;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessUtils;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
+import fr.obeo.dsl.process.impl.ProcessVariableToObjectMapImpl;
 import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
 
@@ -69,10 +70,9 @@ public abstract class AbstractProcessRunner implements IProcessRunner, IChangePr
 			Activator.getDefault().error(e);
 		}
 		process = (Process)resource.getContents().get(0);
-		actionProcessors = ActionProcessorFactory.createActionProcessors(process);
 		this.processContext = processContext;
 		this.processContext.setDefinition(getProcess());
-		
+
 		adapter = new EContentAdapter() {
 			public void notifyChanged(Notification notification) {
 				super.notifyChanged(notification);
@@ -81,15 +81,16 @@ public abstract class AbstractProcessRunner implements IProcessRunner, IChangePr
 		};
 		processContext.eAdapters().add(adapter);
 		processContext.getDefinition().eAdapters().add(adapter);
+
+		actionProcessors = ActionProcessorFactory.createActionProcessors(process);
 	}
 
 	public void dispose() {
 		if (processContext != null) {
-			processContext.eAdapters().remove(adapter);			
+			processContext.eAdapters().remove(adapter);
 		}
 	}
 
-	
 	protected Process getProcess() {
 		return process;
 	}
@@ -186,20 +187,19 @@ public abstract class AbstractProcessRunner implements IProcessRunner, IChangePr
 				}
 			}
 		}
-		if (notification.getNotifier() instanceof ContextVariable) {
-			ContextVariable variable = (ContextVariable)notification.getNotifier();
+		if (notification.getNotifier() instanceof ProcessVariableToObjectMapImpl) {
+			ProcessVariableToObjectMapImpl entry = (ProcessVariableToObjectMapImpl)notification.getNotifier();
 			if (notification.getEventType() == Notification.SET
-					&& notification.getFeatureID(ContextVariable.class) == ProcessPackage.CONTEXT_VARIABLE__VARIABLE_VALUE
+					&& notification.getFeatureID(ProcessVariableToObjectMapImpl.class) == ProcessPackage.PROCESS_VARIABLE_TO_OBJECT_MAP__VALUE
 					&& notification.getNewValue() != null) {
 				Object newValue = notification.getNewValue();
 				if (!newValue.equals(notification.getOldValue())) {
-					fireVariableChanged(variable);
+					fireVariableChanged(entry.getKey());
 				}
 			}
 		}
 	}
-	
-	
+
 	private List<ITaskChangedActionProcessor> getTaskChangedActionProcessors() {
 		ArrayList<ITaskChangedActionProcessor> l = new ArrayList<ITaskChangedActionProcessor>();
 		for (IActionProcessor p : actionProcessors.values()) {
@@ -221,7 +221,7 @@ public abstract class AbstractProcessRunner implements IProcessRunner, IChangePr
 	}
 
 	/**
-	 * Fires the given change to {@link IListener#getProcessors() processors}.
+	 * Fires the given change to {@link fr.obeo.dsl.workspace.listener.IListener#getProcessors() processors}.
 	 * 
 	 * @param change
 	 *            the {@link IChange} to fire
@@ -233,15 +233,15 @@ public abstract class AbstractProcessRunner implements IProcessRunner, IChangePr
 			for (ITaskChangedActionProcessor processor : processors) {
 				ActionTask actionTask = processor.getActionTask();
 				if (ProcessUtils.evaluatePrecondition(processContext, actionTask)
-					&& 	ProcessUtils.isTaskFollowing(processor.getActionTask(), changedTask)
-					&& processor.acceptTaskChanged(processContext, changedTask)) {			
+						&& ProcessUtils.isTaskFollowing(processor.getActionTask(), changedTask)
+						&& processor.acceptTaskChanged(processContext, changedTask)) {
 					validateAndUpdateContext(processor, actionTask);
 				}
 			}
 		}
 	}
 
-	protected void fireVariableChanged(ContextVariable variableChanged) {
+	protected void fireVariableChanged(ProcessVariable variableChanged) {
 		List<IVariableChangedActionProcessor> processors = getVariableChangedActionProcessors();
 		if (processors.size() != 0) {
 			// TODO should be asynchronous and ran in a single other thread
@@ -264,8 +264,7 @@ public abstract class AbstractProcessRunner implements IProcessRunner, IChangePr
 			}
 			processContext.setDone(actionTask, result);
 		} else {
-			if (processContext.isDone(actionTask)
-					|| processContext.getUndoneReason(actionTask) == null) {
+			if (processContext.isDone(actionTask) || processContext.getUndoneReason(actionTask) == null) {
 				String result = processor.updateContextWhenUndone(processContext);
 				processContext.setUndone(actionTask, result);
 			}
