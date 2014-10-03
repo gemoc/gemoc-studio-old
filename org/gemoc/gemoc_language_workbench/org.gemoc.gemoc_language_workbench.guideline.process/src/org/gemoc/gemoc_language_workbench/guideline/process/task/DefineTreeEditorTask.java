@@ -51,14 +51,14 @@ public class DefineTreeEditorTask extends AbstractGemocActionProcessor {
 	 */
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
-		return context.getTextualEditor();
+		return context.getTextualEditor(getActionTask());
 	}
 
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a project that is referenced by the xdsml
 		// else setUndone
-		TreeEditorProject project = context.getTreeEditor();
+		TreeEditorProject project = context.getTreeEditor(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;

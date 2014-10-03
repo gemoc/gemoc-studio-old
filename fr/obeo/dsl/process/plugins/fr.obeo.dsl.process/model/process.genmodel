@@ -80,10 +80,11 @@
       <genOperations ecoreOperation="process.ecore#//ProcessContext/setVariableValue">
         <genParameters ecoreParameter="process.ecore#//ProcessContext/setVariableValue/variable"/>
         <genParameters ecoreParameter="process.ecore#//ProcessContext/setVariableValue/variableValue"/>
-        <genParameters ecoreParameter="process.ecore#//ProcessContext/setVariableValue/writter"/>
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/setVariableValue/writer"/>
       </genOperations>
       <genOperations ecoreOperation="process.ecore#//ProcessContext/getVariableValue">
-        <genParameters ecoreParameter="process.ecore#//ProcessContext/getVariableValue/process"/>
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/getVariableValue/variable"/>
+        <genParameters ecoreParameter="process.ecore#//ProcessContext/getVariableValue/observer"/>
       </genOperations>
       <genOperations ecoreOperation="process.ecore#//ProcessContext/getUndoneReason">
         <genParameters ecoreParameter="process.ecore#//ProcessContext/getUndoneReason/task"/>

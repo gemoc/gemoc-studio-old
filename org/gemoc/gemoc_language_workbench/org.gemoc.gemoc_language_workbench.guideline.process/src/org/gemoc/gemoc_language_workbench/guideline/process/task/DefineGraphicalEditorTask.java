@@ -45,14 +45,14 @@ public class DefineGraphicalEditorTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
-		return context.getGraphicalEditor();
+		return context.getGraphicalEditor(getActionTask());
 	}
 
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a DSA project that is referenced by the xdsml
 		// else setUndone
-		ODProject project = context.getGraphicalEditor();
+		ODProject project = context.getGraphicalEditor(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;

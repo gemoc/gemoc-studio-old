@@ -34,8 +34,6 @@ public interface IProcessRunner {
 	/**
 	 * Executes the given {@link ActionTask} in the given {@link ProcessContext}.
 	 * 
-	 * @param context
-	 *            the {@link ProcessContext}
 	 * @param task
 	 *            the {@link ActionTask}
 	 */
@@ -44,8 +42,6 @@ public interface IProcessRunner {
 	/**
 	 * Undoes execution of the given {@link ActionTask} in the given {@link ProcessContext}.
 	 * 
-	 * @param context
-	 *            the {@link ProcessContext}
 	 * @param task
 	 *            the {@link ActionTask}
 	 */

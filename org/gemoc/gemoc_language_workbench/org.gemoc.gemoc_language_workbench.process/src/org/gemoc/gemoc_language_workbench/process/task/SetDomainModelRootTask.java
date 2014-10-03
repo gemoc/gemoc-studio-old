@@ -79,7 +79,7 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		boolean result = false;
-		EMFEcoreProject eep = context.getEcoreProject();
+		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
 		if (eep != null) {
 			if (eep.getEmfGenmodel() == null || eep.getEmfGenmodel().getLocationURI() == null
 					|| eep.getEmfGenmodel().getLocationURI().length() == 0) {
@@ -143,7 +143,7 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected void internalDoAction(GemocLanguageProcessContext context) {
-		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
+		IProject updatedGemocLanguageProject = context.getXdsmlFile(getActionTask()).getProject();
 		ActiveFile activeFileEcore = new ActiveFileEcore(updatedGemocLanguageProject);
 		IFile ecoreFile = activeFileEcore.getActiveFile();
 		if (ecoreFile != null) {
@@ -162,11 +162,11 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected void internalUndoAction(GemocLanguageProcessContext context) {
-		EMFEcoreProject eep = context.getEcoreProject();
+		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
 		if (eep != null) {
 			eep.setDefaultRootEObjectQualifiedName(null);
 			try {
-				context.getXdsmlModel().eResource().save(null);
+				context.getXdsmlModel(getActionTask()).eResource().save(null);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -223,7 +223,7 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 
 	protected boolean acceptChangedResource(GemocLanguageProcessContext context, IResource resource) {
 		return EclipseResource.isFile(resource, getGenModelURIFromXDSML(context))
-				|| EclipseResource.matches(resource, context.getXdsmlURI());
+				|| EclipseResource.matches(resource, context.getXdsmlURI(getActionTask()));
 	}
 
 	/**
@@ -232,8 +232,8 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 	 * @return the URI of the genmodel or null if it cannot be retrieved in the context
 	 */
 	protected String getGenModelURIFromXDSML(GemocLanguageProcessContext context) {
-		if (context.getXdsmlModel() != null && context.getXdsmlModel().getLanguageDefinition() != null) {
-			EMFEcoreProject eep = context.getEcoreProject();
+		if (context.getXdsmlModel(getActionTask()) != null && context.getXdsmlModel(getActionTask()).getLanguageDefinition() != null) {
+			EMFEcoreProject eep = context.getEcoreProject(getActionTask());
 			if (eep != null && eep.getEmfGenmodel() != null) {
 				return eep.getEmfGenmodel().getLocationURI();
 			}

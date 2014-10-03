@@ -246,15 +246,20 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 * 
 	 * @generated NOT
 	 */
-	public void setVariableValue(ProcessVariable variable, Object variableValue, ActionTask writter)
+	public void setVariableValue(ProcessVariable variable, Object variableValue, ActionTask writer)
 			throws IllegalVariableAccessException {
-		if (writter != null) {
-			if (!writter.getWrittenVariables().contains(variable)) {
-				throw new IllegalVariableAccessException("Task " + writter.getName()
-						+ " hasn't declared to be able to writte in Variable " + variable.getName());
+		if (writer != null) {
+			if (!writer.getWrittenVariables().contains(variable)) {
+				throw new IllegalVariableAccessException("Task " + writer.getName()
+						+ " hasn't declared to be able to write in Variable " + variable.getName());
+			} else {
+				getVariables().put(variable, variableValue);
 			}
+		} else {
+			throw new IllegalVariableAccessException(
+					"You need to provide a writer ActionTask in order to write to the varaible "
+							+ variable.getName());
 		}
-		getVariables().put(variable, variableValue);
 	}
 
 	/**
@@ -262,8 +267,20 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 * 
 	 * @generated NOT
 	 */
-	public Object getVariableValue(ProcessVariable processVariable) {
-		return getVariables().get(processVariable);
+	public Object getVariableValue(ProcessVariable variable, ActionTask observer) {
+		if (observer != null) {
+			if (!observer.getObservedVariables().contains(variable)
+					&& !observer.getWrittenVariables().contains(variable)) {
+				throw new IllegalVariableAccessException("Task " + observer.getName()
+						+ " hasn't declared to be able to read or write the Variable " + variable.getName());
+			} else {
+				return getVariables().get(variable);
+			}
+		} else {
+			throw new IllegalVariableAccessException(
+					"You need to provide a writer ActionTask in order to write to the varaible "
+							+ variable.getName());
+		}
 	}
 
 	/**

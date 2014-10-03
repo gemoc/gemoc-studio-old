@@ -51,14 +51,14 @@ public class DefineTextualEditorTask extends AbstractGemocActionProcessor {
 	 */
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
-		return context.getTextualEditor();
+		return context.getTextualEditor(getActionTask());
 	}
 
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a DSA project that is referenced by the xdsml
 		// else setUndone
-		XTextEditorProject project = context.getTextualEditor();
+		XTextEditorProject project = context.getTextualEditor(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;

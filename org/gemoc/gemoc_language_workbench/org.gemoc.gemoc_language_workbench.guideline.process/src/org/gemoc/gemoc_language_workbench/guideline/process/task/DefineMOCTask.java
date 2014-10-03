@@ -55,14 +55,14 @@ public class DefineMOCTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
-		return context.getMOCProject();
+		return context.getMOCProject(getActionTask());
 	}
 
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a MoC project that is referenced by the xdsml
 		// else setUndone
-		MoCProject project = context.getMOCProject();
+		MoCProject project = context.getMOCProject(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;

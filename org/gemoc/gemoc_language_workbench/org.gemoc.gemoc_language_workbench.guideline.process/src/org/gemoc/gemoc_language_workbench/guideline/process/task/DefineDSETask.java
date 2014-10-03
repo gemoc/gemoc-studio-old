@@ -55,14 +55,14 @@ public class DefineDSETask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
-		return context.getDSEProject();
+		return context.getDSEProject(getActionTask());
 	}
 
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a DSE project that is referenced by the xdsml
 		// else setUndone
-		DSEProject project = context.getDSEProject();
+		DSEProject project = context.getDSEProject(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;

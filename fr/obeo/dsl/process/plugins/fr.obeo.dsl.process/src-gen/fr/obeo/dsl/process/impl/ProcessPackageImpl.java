@@ -898,12 +898,13 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		op = addEOperation(processContextEClass, null, "setVariableValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProcessVariable(), "variable", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getObject(), "variableValue", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getActionTask(), "writter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getActionTask(), "writer", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getIllegalVariableAccessException());
 
 		op = addEOperation(processContextEClass, this.getObject(), "getVariableValue", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
-		addEParameter(op, this.getProcessVariable(), "process", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getProcessVariable(), "variable", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getActionTask(), "observer", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(processContextEClass, ecorePackage.getEString(), "getUndoneReason", 0, 1,
 				IS_UNIQUE, IS_ORDERED);

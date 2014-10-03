@@ -17,12 +17,24 @@
  *******************************************************************************/
 package fr.obeo.dsl.process;
 
-public class IllegalVariableAccessException extends Exception {
+/**
+ * {@link RuntimeException} thrown when a {@link ProcessVariable} is not modified by one of its
+ * {@link ActionTask#getWrittenVariables() writers} or doesn't exist.
+ * 
+ * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+ */
+public class IllegalVariableAccessException extends RuntimeException {
 	/**
-	 * 
+	 * The serival version UID.
 	 */
 	private static final long serialVersionUID = -3238782359054852601L;
 
+	/**
+	 * Constructor.
+	 * 
+	 * @param msg
+	 *            the message
+	 */
 	public IllegalVariableAccessException(String msg) {
 		super(msg);
 	}

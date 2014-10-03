@@ -232,17 +232,18 @@
     </eOperations>
     <eOperations name="setVariableValue" eExceptions="#//IllegalVariableAccessException">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="sets the value for the  {@link ProcessVariable} in the current context.&#xD;&#xA;The set will be accepted only if the writter {@link ActionTask} has declared himself as writter for this {@link ProcessVariable}. &#xD;&#xA;If writter is null, the chek is disabled and the set will be done."/>
+        <details key="documentation" value="sets the value for the  {@link ProcessVariable} in the current context.&#xD;&#xA;The set will be accepted only if the writer {@link ActionTask} has declared himself as writer for this {@link ProcessVariable}. &#xD;&#xA;If writer is &lt;code>null&lt;/code>, the chek is disabled and the set will be done."/>
       </eAnnotations>
       <eParameters name="variable" lowerBound="1" eType="#//ProcessVariable"/>
       <eParameters name="variableValue" lowerBound="1" eType="#//Object"/>
-      <eParameters name="writter" eType="#//ActionTask"/>
+      <eParameters name="writer" eType="#//ActionTask"/>
     </eOperations>
     <eOperations name="getVariableValue" eType="#//Object">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="returns the value for the  {@link ProcessVariable} in the current context."/>
       </eAnnotations>
-      <eParameters name="process" lowerBound="1" eType="#//ProcessVariable"/>
+      <eParameters name="variable" lowerBound="1" eType="#//ProcessVariable"/>
+      <eParameters name="observer" eType="#//ActionTask"/>
     </eOperations>
     <eOperations name="getUndoneReason" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eParameters name="task" eType="#//ActionTask"/>

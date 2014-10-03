@@ -45,14 +45,14 @@ public class DefineAnimationViewsTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
-		return context.getAnimatorEditor();
+		return context.getAnimatorEditor(getActionTask());
 	}
 
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists an animation project that is referenced by the xdsml
 		// else setUndone
-		AnimatorProject project = context.getAnimatorEditor();
+		AnimatorProject project = context.getAnimatorEditor(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;

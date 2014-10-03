@@ -86,7 +86,7 @@ public class EditEMFDomainConceptsTask extends AbstractGemocActionProcessor {
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		boolean result = false;
-		EMFEcoreProject eep = context.getEcoreProject();
+		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
 		if (eep != null) {
 			if (eep.getEmfGenmodel() == null || eep.getEmfGenmodel().getLocationURI() == null
 					|| eep.getEmfGenmodel().getLocationURI().length() == 0) {
@@ -144,7 +144,7 @@ public class EditEMFDomainConceptsTask extends AbstractGemocActionProcessor {
 	 */
 	@Override
 	protected void internalDoAction(GemocLanguageProcessContext context) {
-		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
+		IProject updatedGemocLanguageProject = context.getXdsmlFile(getActionTask()).getProject();
 		ActiveFile activeFileEcore = new ActiveFileEcore(updatedGemocLanguageProject);
 		IFile ecoreFile = activeFileEcore.getActiveFile();
 		if (ecoreFile != null) {
@@ -165,28 +165,28 @@ public class EditEMFDomainConceptsTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
-				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
+		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
+				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile(getActionTask()))
 				|| checkFileIsGenModel(context, resource);
 	}
 
 	@Override
 	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
-				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
+		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
+				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile(getActionTask()))
 				|| checkFileIsGenModel(context, resource);
 	}
 
 	@Override
 	protected boolean internalAcceptModifiedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.matches(resource, IFile.class, context.getEcoreIFile())
+		return EclipseResource.matches(resource, IFile.class, context.getEcoreIFile(getActionTask()))
 				|| checkFileIsGenModel(context, resource);
 	}
 
 	private boolean checkFileIsGenModel(GemocLanguageProcessContext context, IResource resource) {
 		if (resource instanceof IFile) {
 			// if the change happen on the genmodel referenced by the xdsml
-			EMFEcoreProject eep = context.getEcoreProject();
+			EMFEcoreProject eep = context.getEcoreProject(getActionTask());
 			if (eep != null
 					&& eep.getEmfGenmodel() != null
 					&& EclipseResource.matches(resource, URI.createURI(eep.getEmfGenmodel().getLocationURI(),
