@@ -18,33 +18,34 @@
 package fr.obeo.dsl.process;
 
 /**
- * A process runner is responsible for providing {@link ProcessContext} and maintaining them.
+ * Abstract implementation of {@link IActionTaskProcessor} providing the
+ * {@link IActionTaskProcessor#getActionTask() action task}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface IProcessRunner {
+public abstract class AbstractActionTaskProcessor implements IActionTaskProcessor {
 
 	/**
-	 * Gets {@link ProcessContext contexts} ran from the {@link IProcessRunner#getProcess() process}.
-	 * 
-	 * @return {@link ProcessContext contexts} ran from the {@link IProcessRunner#getProcess() process}
+	 * The {@link ActionTask} definition.
 	 */
-	ProcessContext getContext();
+	private final ActionTask actionTask;
 
 	/**
-	 * Executes the given {@link ActionTask} in the {@link ProcessContext}.
+	 * Contructor.
 	 * 
-	 * @param task
-	 *            the {@link ActionTask}
+	 * @param actionTask
+	 *            the {@link ActionTask} definition
 	 */
-	void doAction(ActionTask task);
+	public AbstractActionTaskProcessor(ActionTask actionTask) {
+		this.actionTask = actionTask;
+	}
 
 	/**
-	 * Undoes execution of the given {@link ActionTask} in the {@link ProcessContext}.
+	 * {@inheritDoc}
 	 * 
-	 * @param task
-	 *            the {@link ActionTask}
+	 * @see fr.obeo.dsl.process.IActionTaskProcessor#getActionTask()
 	 */
-	void undoAction(ActionTask task);
-
+	public ActionTask getActionTask() {
+		return actionTask;
+	}
 }

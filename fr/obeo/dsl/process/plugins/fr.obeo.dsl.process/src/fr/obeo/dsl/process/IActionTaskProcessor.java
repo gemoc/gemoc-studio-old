@@ -18,33 +18,44 @@
 package fr.obeo.dsl.process;
 
 /**
- * A process runner is responsible for providing {@link ProcessContext} and maintaining them.
+ * Abstract implementation of {@link ActionTask#getInstanceClassName()}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface IProcessRunner {
+public interface IActionTaskProcessor {
 
 	/**
-	 * Gets {@link ProcessContext contexts} ran from the {@link IProcessRunner#getProcess() process}.
+	 * Validates it states in the given {@link ProcessContext} by calling
+	 * {@link ProcessContext#setDone(ActionTask, Object)},
+	 * {@link ProcessContext#setUndone(ActionTask, String)}. It can also manage {@link ProcessVariable} by
+	 * calling {@link ProcessContext#setVariableValue(ProcessVariable, Object, ActionTask)}.
 	 * 
-	 * @return {@link ProcessContext contexts} ran from the {@link IProcessRunner#getProcess() process}
+	 * @param context
+	 *            the {@link ProcessContext}
 	 */
-	ProcessContext getContext();
+	void validate(ProcessContext context);
 
 	/**
-	 * Executes the given {@link ActionTask} in the {@link ProcessContext}.
+	 * Executes the {@link ActionTask} in the given{@link ProcessContext}.
 	 * 
-	 * @param task
-	 *            the {@link ActionTask}
+	 * @param context
+	 *            the {@link ProcessContext}
 	 */
-	void doAction(ActionTask task);
+	void doAction(ProcessContext context);
 
 	/**
-	 * Undoes execution of the given {@link ActionTask} in the {@link ProcessContext}.
+	 * Undoes execution of the {@link ActionTask} in the given {@link ProcessContext}.
 	 * 
-	 * @param task
-	 *            the {@link ActionTask}
+	 * @param context
+	 *            the {@link ProcessContext}
 	 */
-	void undoAction(ActionTask task);
+	void undoAction(ProcessContext context);
+
+	/**
+	 * Gets the {@link ActionTask} definition.
+	 * 
+	 * @return the {@link ActionTask} definition
+	 */
+	ActionTask getActionTask();
 
 }
