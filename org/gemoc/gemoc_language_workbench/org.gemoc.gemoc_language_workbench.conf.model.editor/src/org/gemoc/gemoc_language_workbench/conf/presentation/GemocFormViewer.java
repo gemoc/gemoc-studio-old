@@ -5,6 +5,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.jface.viewers.ContentViewer;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -33,8 +34,8 @@ public class GemocFormViewer extends ContentViewer {
 
 	@Override
 	public ISelection getSelection() {
-		// TODO Auto-generated method stub
-		return null;
+		// empty selection
+		return new StructuredSelection();
 	}
 
 	@Override

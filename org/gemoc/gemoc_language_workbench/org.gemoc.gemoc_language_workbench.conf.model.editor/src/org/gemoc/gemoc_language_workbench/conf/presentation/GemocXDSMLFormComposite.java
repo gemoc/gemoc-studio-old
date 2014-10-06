@@ -35,8 +35,11 @@ import org.eclipse.ui.forms.widgets.ColumnLayoutData;
 import org.eclipse.ui.preferences.IWorkbenchPreferenceContainer;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Button;
+import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.ODProject;
+import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction.CreateDomainModelAction;
 import org.eclipse.swt.events.ModifyListener;
@@ -421,6 +424,9 @@ public class GemocXDSMLFormComposite extends Composite {
 	
 	protected void initControlFromWrappedObject(){
 		txtLanguageName.setText(xdsmlWrappedObject.getLanguageName());
+		txtEMFProject.setText(xdsmlWrappedObject.getDomainModelProjectName());
+		txtXTextEditorProject.setText(xdsmlWrappedObject.getXTextEditorProjectName());
+		txtSiriusEditorProject.setText(xdsmlWrappedObject.getSiriusEditorProjectName());
 	}
 	
 	protected void initListeners(){
@@ -437,6 +443,53 @@ public class GemocXDSMLFormComposite extends Composite {
 						});
 			}
 		});
+		txtEMFProject.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+			    final Text text = (Text) e.widget;
+			    TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								rootModelElement.getLanguageDefinition().getDomainModelProject().setProjectName(text.getText());
+							}
+						});
+			}
+		});
+		txtXTextEditorProject.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+			    final Text text = (Text) e.widget;
+			    TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								for(EditorProject editor : rootModelElement.getLanguageDefinition().getEditorProjects()){
+							    	if(editor instanceof XTextEditorProject){
+							    		editor.setProjectName(text.getText());
+							    	}
+							    }
+							}
+						});
+			}
+		});
+		txtSiriusEditorProject.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+			    final Text text = (Text) e.widget;
+			    TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								for(EditorProject editor : rootModelElement.getLanguageDefinition().getEditorProjects()){
+							    	if(editor instanceof ODProject){
+							    		editor.setProjectName(text.getText());
+							    	}
+							    }
+							}
+						});
+			}
+		});
 	}
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
@@ -444,6 +497,18 @@ public class GemocXDSMLFormComposite extends Composite {
 		IObservableValue observeTextTxtLanguageNameObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtLanguageName);
 		IObservableValue languageNameXdsmlWrappedObjectObserveValue = BeanProperties.value("languageName").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtLanguageNameObserveWidget, languageNameXdsmlWrappedObjectObserveValue, null, null);
+		
+		IObservableValue observeTextTxtEMFProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtEMFProject);
+		IObservableValue eMFProjectXdsmlWrappedObjectObserveValue = BeanProperties.value("domainModelProject").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtEMFProjectObserveWidget, eMFProjectXdsmlWrappedObjectObserveValue, null, null);
+		
+		IObservableValue observeTextTxtXTextEditorProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtXTextEditorProject);
+		IObservableValue xTextEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties.value("xTextEditorProject").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtXTextEditorProjectObserveWidget, xTextEditorProjectXdsmlWrappedObjectObserveValue, null, null);
+		
+		IObservableValue observeTextTxtSiriusEditorProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtSiriusEditorProject);
+		IObservableValue siriusEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties.value("siriusEditorProject").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtSiriusEditorProjectObserveWidget, siriusEditorProjectXdsmlWrappedObjectObserveValue, null, null);
 		//
 		return bindingContext;
 	}
