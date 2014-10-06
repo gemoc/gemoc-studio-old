@@ -924,4 +924,47 @@ public final class ProcessUtils {
 		return res;
 	}
 
+	/**
+	 * Gets the {@link List} of initial {@link ActionTask} for the given {@link Process}.
+	 * 
+	 * @param process
+	 *            the {@link Process}
+	 * @return the {@link List} of initial {@link ActionTask} for the given {@link Process}
+	 */
+	public static List<ActionTask> getInitialActionTasks(Process process) {
+		final List<ActionTask> res = new ArrayList<ActionTask>();
+
+		if (process.getTask() instanceof ActionTask) {
+			res.add((ActionTask)process.getTask());
+		} else if (process.getTask() instanceof ComposedTask) {
+			res.addAll(getInitialActionTasks((ComposedTask)process.getTask()));
+		} else {
+			throw new IllegalStateException(DON_T_KNOW_WHAT_TO_DO_WITH + process.getTask().eClass().getName());
+		}
+
+		return res;
+	}
+
+	/**
+	 * Gets the {@link List} of initial {@link ActionTask} for the given {@link ComposedTask}.
+	 * 
+	 * @param task
+	 *            the {@link Process}
+	 * @return the {@link List} of initial {@link ActionTask} for the given {@link ComposedTask}
+	 */
+	public static List<ActionTask> getInitialActionTasks(ComposedTask task) {
+		final List<ActionTask> res = new ArrayList<ActionTask>();
+
+		for (Task child : task.getInitialTasks()) {
+			if (child instanceof ActionTask) {
+				res.add((ActionTask)child);
+			} else if (child instanceof ComposedTask) {
+				res.addAll(getInitialActionTasks((ComposedTask)child));
+			} else {
+				throw new IllegalStateException(DON_T_KNOW_WHAT_TO_DO_WITH + child.eClass().getName());
+			}
+		}
+
+		return res;
+	}
 }

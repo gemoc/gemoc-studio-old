@@ -2237,4 +2237,72 @@ public class ProcessUtilsTests {
 		assertEquals(variable2, variables.get(1));
 	}
 
+	/**
+	 * Tests {@link ProcessUtils#getInitialActionTasks(Process)}.
+	 */
+	@Test(expected = java.lang.NullPointerException.class)
+	public void getInitialActionTasksProcessNull() {
+		ProcessUtils.getInitialActionTasks((Process)null);
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getInitialActionTasks(Process)}.
+	 */
+	@Test(expected = java.lang.NullPointerException.class)
+	public void getInitialActionTasksProcesNoTask() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+
+		ProcessUtils.getInitialActionTasks(process);
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getInitialActionTasks(Process)}.
+	 */
+	@Test
+	public void getInitialActionTasksProcesActionTask() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		process.setTask(task1);
+
+		List<ActionTask> tasks = ProcessUtils.getInitialActionTasks(process);
+
+		assertEquals(1, tasks.size());
+		assertEquals(task1, tasks.get(0));
+	}
+
+	/**
+	 * Tests {@link ProcessUtils#getInitialActionTasks(Process)}.
+	 */
+	@Test
+	public void getInitialActionTasksProcesComposedTask() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ComposedTask composedTask1 = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask1.setName("composedTask1");
+		process.setTask(composedTask1);
+		final ComposedTask composedTask2 = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask2.setName("composedTask2");
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		final ActionTask task3 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task3.setName("task3");
+		composedTask1.getTasks().add(composedTask2);
+		composedTask1.getInitialTasks().add(composedTask2);
+		composedTask1.getPrecedingTasks().add(task3);
+		composedTask2.getPrecedingTasks().add(task2);
+		composedTask2.getTasks().add(task1);
+		composedTask2.getTasks().add(task3);
+		composedTask2.getInitialTasks().add(task1);
+
+		List<ActionTask> tasks = ProcessUtils.getInitialActionTasks(process);
+
+		assertEquals(1, tasks.size());
+		assertEquals(task1, tasks.get(0));
+	}
+
 }
