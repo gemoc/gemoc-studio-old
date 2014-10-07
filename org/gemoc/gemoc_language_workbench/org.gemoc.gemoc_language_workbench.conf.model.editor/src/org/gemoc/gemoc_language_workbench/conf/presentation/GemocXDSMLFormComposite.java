@@ -48,6 +48,13 @@ import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.core.databinding.beans.BeanProperties;
+import org.eclipse.core.databinding.beans.PojoProperties;
+
+/*
+ * IMPORTANT : this file has been edited using Windows builder.
+ * This is why the structure is quite "unstructured" and use long methods.
+ * The data binding is also managed via Windows Builder.
+ */
 
 public class GemocXDSMLFormComposite extends Composite {
 	private DataBindingContext m_bindingContext;
@@ -58,17 +65,18 @@ public class GemocXDSMLFormComposite extends Composite {
 	private Text txtRootContainerModelElement;
 	private Text txtXTextEditorProject;
 	private Text txtSiriusEditorProject;
-	private Text text_6;
-	private Text text_7;
-	private Text text_8;
-	private Text text_9;
-	private Text text;
+	private Text txtDSAProject;
+	private Text txtDSEProject;
+	private Text txtMoCCProject;
+	private Text txtSiriusAnimationProject;
+	private Text txtGenmodel;
 	
 	
 	GemocLanguageWorkbenchConfiguration rootModelElement;
 	AdapterFactoryEditingDomain editingDomain;
 	
-	XDSMLModelWrapper xdsmlWrappedObject = new XDSMLModelWrapper();
+	protected XDSMLModelWrapper xdsmlWrappedObject = new XDSMLModelWrapper();
+	
 
 	/**
 	 * Create the composite.
@@ -160,10 +168,10 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkGenmodel.setText("<a>genmodel</a>");
 		toolkit.adapt(linkGenmodel, true, true);
 
-		text = new Text(grpDomainModelDefinition, SWT.BORDER);
-		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1,
+		txtGenmodel = new Text(grpDomainModelDefinition, SWT.BORDER);
+		txtGenmodel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1,
 				1));
-		toolkit.adapt(text, true, true);
+		toolkit.adapt(txtGenmodel, true, true);
 
 		Button btnBrowseGenmodel = new Button(grpDomainModelDefinition,
 				SWT.NONE);
@@ -272,16 +280,16 @@ public class GemocXDSMLFormComposite extends Composite {
 				.setText("This section describes the animation views for this language.");
 		toolkit.adapt(lblThisSectionDescribes_3, true, true);
 
-		Link link_7 = new Link(grpAnimationDefinition, 0);
-		link_7.setText("<a>Sirius viewpoint design project</a>");
-		toolkit.adapt(link_7, true, true);
+		Link linkSiriusAnimatorProject = new Link(grpAnimationDefinition, 0);
+		linkSiriusAnimatorProject.setText("<a>Sirius viewpoint design project</a>");
+		toolkit.adapt(linkSiriusAnimatorProject, true, true);
 
-		text_9 = new Text(grpAnimationDefinition, SWT.BORDER);
-		GridData gd_text_9 = new GridData(SWT.LEFT, SWT.CENTER, false, false,
+		txtSiriusAnimationProject = new Text(grpAnimationDefinition, SWT.BORDER);
+		GridData gd_txtSiriusAnimationProject = new GridData(SWT.LEFT, SWT.CENTER, false, false,
 				1, 1);
-		gd_text_9.widthHint = 182;
-		text_9.setLayoutData(gd_text_9);
-		toolkit.adapt(text_9, true, true);
+		gd_txtSiriusAnimationProject.widthHint = 182;
+		txtSiriusAnimationProject.setLayoutData(gd_txtSiriusAnimationProject);
+		toolkit.adapt(txtSiriusAnimationProject, true, true);
 
 		Button button_2 = new Button(grpAnimationDefinition, SWT.NONE);
 		button_2.setText("Browse");
@@ -312,22 +320,22 @@ public class GemocXDSMLFormComposite extends Composite {
 		lblNewLabel_1
 				.setText("This section describes the execution function and data about this language.");
 
-		Link link_4 = new Link(grpDsaDefinition, SWT.NONE);
-		link_4.setBounds(0, 0, 49, 15);
-		toolkit.adapt(link_4, true, true);
-		link_4.setText("<a>K3 project</a>");
+		Link linkDSAProject = new Link(grpDsaDefinition, SWT.NONE);
+		linkDSAProject.setBounds(0, 0, 49, 15);
+		toolkit.adapt(linkDSAProject, true, true);
+		linkDSAProject.setText("<a>K3 project</a>");
 
-		text_6 = new Text(grpDsaDefinition, SWT.BORDER);
-		GridData gd_text_6 = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_text_6.widthHint = 215;
-		text_6.setLayoutData(gd_text_6);
-		text_6.setBounds(0, 0, 76, 21);
-		toolkit.adapt(text_6, true, true);
+		txtDSAProject = new Text(grpDsaDefinition, SWT.BORDER);
+		GridData gd_txtDSAProject = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_txtDSAProject.widthHint = 215;
+		txtDSAProject.setLayoutData(gd_txtDSAProject);
+		txtDSAProject.setBounds(0, 0, 76, 21);
+		toolkit.adapt(txtDSAProject, true, true);
 
-		Button btnNewButton_2 = new Button(grpDsaDefinition, SWT.NONE);
-		btnNewButton_2.setBounds(0, 0, 75, 25);
-		toolkit.adapt(btnNewButton_2, true, true);
-		btnNewButton_2.setText("browse");
+		Button btnBrowseDSAProject = new Button(grpDsaDefinition, SWT.NONE);
+		btnBrowseDSAProject.setBounds(0, 0, 75, 25);
+		toolkit.adapt(btnBrowseDSAProject, true, true);
+		btnBrowseDSAProject.setText("browse");
 
 		Group grpMocDefinitionLibrary = new Group(grpBehaviorDefinition,
 				SWT.NONE);
@@ -352,17 +360,17 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkMoCCMLProject.setBounds(0, 0, 60, 15);
 		toolkit.adapt(linkMoCCMLProject, true, true);
 
-		text_8 = new Text(grpMocDefinitionLibrary, SWT.BORDER);
-		GridData gd_text_8 = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_text_8.widthHint = 178;
-		text_8.setLayoutData(gd_text_8);
-		text_8.setBounds(0, 0, 76, 21);
-		toolkit.adapt(text_8, true, true);
+		txtMoCCProject = new Text(grpMocDefinitionLibrary, SWT.BORDER);
+		GridData gd_txtMoCCProject = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_txtMoCCProject.widthHint = 178;
+		txtMoCCProject.setLayoutData(gd_txtMoCCProject);
+		txtMoCCProject.setBounds(0, 0, 76, 21);
+		toolkit.adapt(txtMoCCProject, true, true);
 
-		Button button_1 = new Button(grpMocDefinitionLibrary, SWT.NONE);
-		button_1.setText("browse");
-		button_1.setBounds(0, 0, 50, 25);
-		toolkit.adapt(button_1, true, true);
+		Button btnBrowseMoCCProject = new Button(grpMocDefinitionLibrary, SWT.NONE);
+		btnBrowseMoCCProject.setText("browse");
+		btnBrowseMoCCProject.setBounds(0, 0, 50, 25);
+		toolkit.adapt(btnBrowseMoCCProject, true, true);
 
 		Group grpDSEDefinition = new Group(grpBehaviorDefinition, SWT.NONE);
 		grpDSEDefinition.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
@@ -380,22 +388,22 @@ public class GemocXDSMLFormComposite extends Composite {
 		lblThisSectionDescribes_1.setBounds(0, 0, 397, 15);
 		toolkit.adapt(lblThisSectionDescribes_1, true, true);
 
-		Link link_5 = new Link(grpDSEDefinition, 0);
-		link_5.setText("<a>ECL project</a>");
-		link_5.setBounds(0, 0, 53, 15);
-		toolkit.adapt(link_5, true, true);
+		Link linkDSEProject = new Link(grpDSEDefinition, 0);
+		linkDSEProject.setText("<a>ECL project</a>");
+		linkDSEProject.setBounds(0, 0, 53, 15);
+		toolkit.adapt(linkDSEProject, true, true);
 
-		text_7 = new Text(grpDSEDefinition, SWT.BORDER);
-		GridData gd_text_7 = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_text_7.widthHint = 212;
-		text_7.setLayoutData(gd_text_7);
-		text_7.setBounds(0, 0, 76, 21);
-		toolkit.adapt(text_7, true, true);
+		txtDSEProject = new Text(grpDSEDefinition, SWT.BORDER);
+		GridData gd_txtDSEProject = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_txtDSEProject.widthHint = 212;
+		txtDSEProject.setLayoutData(gd_txtDSEProject);
+		txtDSEProject.setBounds(0, 0, 76, 21);
+		toolkit.adapt(txtDSEProject, true, true);
 
-		Button button = new Button(grpDSEDefinition, SWT.NONE);
-		button.setText("browse");
-		button.setBounds(0, 0, 50, 25);
-		toolkit.adapt(button, true, true);
+		Button btnBrowseDSEProject = new Button(grpDSEDefinition, SWT.NONE);
+		btnBrowseDSEProject.setText("browse");
+		btnBrowseDSEProject.setBounds(0, 0, 50, 25);
+		toolkit.adapt(btnBrowseDSEProject, true, true);
 
 		m_bindingContext = initDataBindings();
 	}
@@ -410,8 +418,7 @@ public class GemocXDSMLFormComposite extends Composite {
 					if(eObject instanceof GemocLanguageWorkbenchConfiguration){
 						GemocLanguageWorkbenchConfiguration confModelElement = (GemocLanguageWorkbenchConfiguration)eObject;
 						rootModelElement = confModelElement;
-						//txtLanguageName.setText(confModelElement.getLanguageDefinition().getName());
-						xdsmlWrappedObject.init(confModelElement.getLanguageDefinition());
+						XDSMLModelWrapperHelper.init(xdsmlWrappedObject, confModelElement.getLanguageDefinition());
 					}
 				}
 			}
@@ -497,18 +504,22 @@ public class GemocXDSMLFormComposite extends Composite {
 		IObservableValue observeTextTxtLanguageNameObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtLanguageName);
 		IObservableValue languageNameXdsmlWrappedObjectObserveValue = BeanProperties.value("languageName").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtLanguageNameObserveWidget, languageNameXdsmlWrappedObjectObserveValue, null, null);
-		
+		//
 		IObservableValue observeTextTxtEMFProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtEMFProject);
 		IObservableValue eMFProjectXdsmlWrappedObjectObserveValue = BeanProperties.value("domainModelProject").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtEMFProjectObserveWidget, eMFProjectXdsmlWrappedObjectObserveValue, null, null);
-		
+		//
 		IObservableValue observeTextTxtXTextEditorProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtXTextEditorProject);
 		IObservableValue xTextEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties.value("xTextEditorProject").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtXTextEditorProjectObserveWidget, xTextEditorProjectXdsmlWrappedObjectObserveValue, null, null);
-		
+		//
 		IObservableValue observeTextTxtSiriusEditorProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtSiriusEditorProject);
 		IObservableValue siriusEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties.value("siriusEditorProject").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtSiriusEditorProjectObserveWidget, siriusEditorProjectXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtSiriusAnimationProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtSiriusAnimationProject);
+		IObservableValue bytesXdsmlWrappedObjectgetSiriusAnimatorProjectNameObserveValue = PojoProperties.value("bytes").observe(xdsmlWrappedObject.getSiriusAnimatorProjectName());
+		bindingContext.bindValue(observeTextTxtSiriusAnimationProjectObserveWidget, bytesXdsmlWrappedObjectgetSiriusAnimatorProjectNameObserveValue, null, null);
 		//
 		return bindingContext;
 	}

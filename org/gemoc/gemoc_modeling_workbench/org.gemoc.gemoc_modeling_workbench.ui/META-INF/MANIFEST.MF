@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Gemoc Reflective Model UI
+Bundle-Name: Gemoc Executable Modeling Workbench UI
 Bundle-SymbolicName: org.gemoc.gemoc_modeling_workbench.ui;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.gemoc_modeling_workbench.ui.Activator
