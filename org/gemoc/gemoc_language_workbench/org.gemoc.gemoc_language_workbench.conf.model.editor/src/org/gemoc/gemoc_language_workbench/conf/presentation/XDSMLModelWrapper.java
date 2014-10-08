@@ -35,7 +35,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public String getDomainModelProjectName() {
-		if (languageDefinition != null) {
+		if (languageDefinition != null && languageDefinition.getDomainModelProject() != null) {
 			return languageDefinition.getDomainModelProject().getProjectName();
 		} else
 			return "";
@@ -156,7 +156,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public String getDSAProjectName() {
-		if (languageDefinition != null) {
+		if (languageDefinition != null && languageDefinition.getDsaProject() != null) {
 			return languageDefinition.getDsaProject().getProjectName();
 		} else
 			return "";
@@ -171,7 +171,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public String getDSEProjectName() {
-		if (languageDefinition != null) {
+		if (languageDefinition != null && languageDefinition.getDSEProject() != null) {
 			return languageDefinition.getDSEProject().getProjectName();
 		} else
 			return "";
@@ -186,7 +186,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public String getMoCCProjectName() {
-		if (languageDefinition != null) {
+		if (languageDefinition != null && languageDefinition.getMoCModelProject() != null) {
 			return languageDefinition.getMoCModelProject().getProjectName();
 		} else
 			return "";
