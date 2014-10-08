@@ -1430,7 +1430,7 @@ public class confEditor
 	 * This deals with how we want selection in the outliner to affect the other views.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void handleContentOutlineSelection(ISelection selection) {
 		if (currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
@@ -1456,9 +1456,11 @@ public class confEditor
 				else {
 					// Set the input to the widget.
 					//
-					if (currentViewerPane.getViewer().getInput() != selectedElement) {
-						currentViewerPane.getViewer().setInput(selectedElement);
-						currentViewerPane.setTitle(selectedElement);
+					if(! (currentViewerPane.getViewer() instanceof GemocFormViewer)){
+						if (currentViewerPane.getViewer().getInput() != selectedElement) {
+							currentViewerPane.getViewer().setInput(selectedElement);
+							currentViewerPane.setTitle(selectedElement);
+						}
 					}
 				}
 			}

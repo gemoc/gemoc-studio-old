@@ -3,14 +3,22 @@ package org.gemoc.gemoc_language_workbench.conf.presentation;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
@@ -33,10 +41,18 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.ui.handlers.HandlerUtil;
+import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
+import org.gemoc.gemoc_language_workbench.conf.util.XDSMLModelHelper;
+import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
+import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
+import org.gemoc.gemoc_language_workbench.ui.commands.ENamedElementQualifiedNameLabelProvider;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyConcreteEClassDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyEObjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
 
@@ -155,6 +171,7 @@ public class GemocXDSMLFormComposite extends Composite {
 					if(res == WizardDialog.OK){
 						// update the project model
 						txtEMFProject.setText(((IProject)dialog.getResult()[0]).getName());
+						//xdsmlWrappedObject.setDomainModelProjectName(((IProject)dialog.getResult()[0]).getName());
 					}
 					break;
 				}
@@ -184,6 +201,7 @@ public class GemocXDSMLFormComposite extends Composite {
 					SelectAnyIFileDialog dialog = new SelectAnyIFileDialog();
 					dialog.setPattern("*.genmodel");
 					if (dialog.open() == Dialog.OK){
+						//xdsmlWrappedObject.setGenmodelLocationURI("platform:/resource" + ((IResource) dialog.getResult()[0]).getFullPath().toString());
 						txtGenmodel.setText("platform:/resource" + ((IResource) dialog.getResult()[0]).getFullPath().toString());
 					}
 					break;
@@ -212,7 +230,32 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnNewButton.setBounds(0, 0, 75, 25);
 		toolkit.adapt(btnNewButton, true, true);
 		btnNewButton.setText("Select");
+		btnNewButton.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					ActiveFile activeFileEcore = new ActiveFileEcore(getCurrentIFile().getProject());
+					IFile ecoreFile = activeFileEcore.getActiveFile();
+					if (ecoreFile != null) {
+						LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider(); 
+						ResourceSet resSet = new ResourceSetImpl();
 
+					    // get the resource
+					    Resource resource = resSet.getResource(URI.createURI(ecoreFile.getLocationURI().toString()),true);						
+						SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+								resource,
+								labelProvider);
+						int res = dialog.open();
+						if(res == WizardDialog.OK){
+							// update the project model
+							//xdsmlWrappedObject.setRootContainerModelElement(labelProvider.getText(dialog.getFirstResult()));
+							txtRootContainerModelElement.setText( labelProvider.getText(dialog.getFirstResult()));
+						}
+					}
+					break;
+				}
+			}
+		});
 		Group grpConcreteSyntaxDefinition = new Group(this, SWT.NONE);
 		grpConcreteSyntaxDefinition.setText("Concrete syntax definition");
 		toolkit.adapt(grpConcreteSyntaxDefinition);
@@ -470,6 +513,8 @@ public class GemocXDSMLFormComposite extends Composite {
 	}
 
 	protected void initListeners() {
+		// all the listeners that will really edit the model
+		
 		txtLanguageName.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				// Get the widget whose text was modified
@@ -494,9 +539,10 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								rootModelElement.getLanguageDefinition()
+								xdsmlWrappedObject.setDomainModelProjectName(text.getText());
+								/*rootModelElement.getLanguageDefinition()
 										.getDomainModelProject()
-										.setProjectName(text.getText());
+										.setProjectName(text.getText());*/
 							}
 						});
 			}
@@ -530,17 +576,107 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								for (EditorProject editor : rootModelElement
+								xdsmlWrappedObject.setSiriusEditorProjectName(text.getText());
+								/*for (EditorProject editor : rootModelElement
 										.getLanguageDefinition()
 										.getEditorProjects()) {
 									if (editor instanceof ODProject) {
 										editor.setProjectName(text.getText());
 									}
-								}
+								}*/
 							}
 						});
 			}
 		});
+		txtGenmodel.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+				final Text text = (Text) e.widget;
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								xdsmlWrappedObject.setGenmodelLocationURI(text.getText());
+							//	XDSMLModelHelper.getOrCreateEmfGenmodel(rootModelElement.getLanguageDefinition()).setLocationURI(text.getText());
+							}
+						});
+			}
+		});
+		txtRootContainerModelElement.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+				final Text text = (Text) e.widget;
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								xdsmlWrappedObject.setRootContainerModelElement(text.getText());
+								//((EMFEcoreProject)XDSMLModelHelper.getOrCreateDomainModelProject(rootModelElement.getLanguageDefinition())).setDefaultRootEObjectQualifiedName(text.getText());
+							}
+						});
+			}
+		});
+		
+		txtSiriusAnimationProject.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+				final Text text = (Text) e.widget;
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								xdsmlWrappedObject.setSiriusAnimatorProjectName(text.getText());
+							}
+						});
+			}
+		});
+		
+		txtDSAProject.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+				final Text text = (Text) e.widget;
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								xdsmlWrappedObject.setDSAProjectName(text.getText());
+							}
+						});
+			}
+		});
+		txtDSEProject.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+				final Text text = (Text) e.widget;
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								xdsmlWrappedObject.setDSEProjectName(text.getText());
+							}
+						});
+			}
+		});
+		txtMoCCProject.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+				final Text text = (Text) e.widget;
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								xdsmlWrappedObject.setMoCCProjectName(text.getText());
+							}
+						});
+			}
+		});
+		
 	}
 
 	protected DataBindingContext initDataBindings() {
@@ -556,21 +692,21 @@ public class GemocXDSMLFormComposite extends Composite {
 		IObservableValue observeTextTxtEMFProjectObserveWidget = WidgetProperties
 				.text(SWT.Modify).observe(txtEMFProject);
 		IObservableValue eMFProjectXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("domainModelProject").observe(xdsmlWrappedObject);
+				.value("domainModelProjectName").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtEMFProjectObserveWidget,
 				eMFProjectXdsmlWrappedObjectObserveValue, null, null);
 		//
 		IObservableValue observeTextTxtXTextEditorProjectObserveWidget = WidgetProperties
 				.text(SWT.Modify).observe(txtXTextEditorProject);
 		IObservableValue xTextEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("xTextEditorProject").observe(xdsmlWrappedObject);
+				.value("XTextEditorProjectName").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtXTextEditorProjectObserveWidget,
 				xTextEditorProjectXdsmlWrappedObjectObserveValue, null, null);
 		//
 		IObservableValue observeTextTxtSiriusEditorProjectObserveWidget = WidgetProperties
 				.text(SWT.Modify).observe(txtSiriusEditorProject);
 		IObservableValue siriusEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("siriusEditorProject").observe(xdsmlWrappedObject);
+				.value("siriusEditorProjectName").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(
 				observeTextTxtSiriusEditorProjectObserveWidget,
 				siriusEditorProjectXdsmlWrappedObjectObserveValue, null, null);
@@ -622,5 +758,12 @@ public class GemocXDSMLFormComposite extends Composite {
 				null);
 		//
 		return bindingContext;
+	}
+	
+	
+	protected IFile getCurrentIFile(){
+		String platformString = rootModelElement.eResource().getURI().toPlatformString(true);
+		return ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+		
 	}
 }
