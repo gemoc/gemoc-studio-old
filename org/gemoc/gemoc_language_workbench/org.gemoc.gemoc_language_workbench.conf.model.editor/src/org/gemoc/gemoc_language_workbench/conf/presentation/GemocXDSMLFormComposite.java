@@ -432,8 +432,14 @@ public class GemocXDSMLFormComposite extends Composite {
 	protected void initControlFromWrappedObject(){
 		txtLanguageName.setText(xdsmlWrappedObject.getLanguageName());
 		txtEMFProject.setText(xdsmlWrappedObject.getDomainModelProjectName());
+		txtGenmodel.setText(xdsmlWrappedObject.getGenmodelLocationURI());
+		txtRootContainerModelElement.setText(xdsmlWrappedObject.getRootContainerModelElement());
 		txtXTextEditorProject.setText(xdsmlWrappedObject.getXTextEditorProjectName());
 		txtSiriusEditorProject.setText(xdsmlWrappedObject.getSiriusEditorProjectName());
+		txtSiriusAnimationProject.setText(xdsmlWrappedObject.getSiriusAnimatorProjectName());
+		txtDSAProject.setText(xdsmlWrappedObject.getDSAProjectName());
+		txtDSEProject.setText(xdsmlWrappedObject.getDSEProjectName());
+		txtMoCCProject.setText(xdsmlWrappedObject.getMoCCProjectName());
 	}
 	
 	protected void initListeners(){
@@ -518,8 +524,28 @@ public class GemocXDSMLFormComposite extends Composite {
 		bindingContext.bindValue(observeTextTxtSiriusEditorProjectObserveWidget, siriusEditorProjectXdsmlWrappedObjectObserveValue, null, null);
 		//
 		IObservableValue observeTextTxtSiriusAnimationProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtSiriusAnimationProject);
-		IObservableValue bytesXdsmlWrappedObjectgetSiriusAnimatorProjectNameObserveValue = PojoProperties.value("bytes").observe(xdsmlWrappedObject.getSiriusAnimatorProjectName());
-		bindingContext.bindValue(observeTextTxtSiriusAnimationProjectObserveWidget, bytesXdsmlWrappedObjectgetSiriusAnimatorProjectNameObserveValue, null, null);
+		IObservableValue siriusAnimatorProjectNameXdsmlWrappedObjectObserveValue = BeanProperties.value("siriusAnimatorProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtSiriusAnimationProjectObserveWidget, siriusAnimatorProjectNameXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtGenmodelObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtGenmodel);
+		IObservableValue genmodelLocationURIXdsmlWrappedObjectObserveValue = BeanProperties.value("genmodelLocationURI").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtGenmodelObserveWidget, genmodelLocationURIXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtDSAProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtDSAProject);
+		IObservableValue dSAProjectNameXdsmlWrappedObjectObserveValue = BeanProperties.value("DSAProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtDSAProjectObserveWidget, dSAProjectNameXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtMoCCProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtMoCCProject);
+		IObservableValue moCCProjectNameXdsmlWrappedObjectObserveValue = BeanProperties.value("moCCProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtMoCCProjectObserveWidget, moCCProjectNameXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtDSEProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtDSEProject);
+		IObservableValue dSEProjectNameXdsmlWrappedObjectObserveValue = BeanProperties.value("DSEProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtDSEProjectObserveWidget, dSEProjectNameXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtRootContainerModelElementObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtRootContainerModelElement);
+		IObservableValue rootContainerModelElementXdsmlWrappedObjectObserveValue = BeanProperties.value("rootContainerModelElement").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtRootContainerModelElementObserveWidget, rootContainerModelElementXdsmlWrappedObjectObserveValue, null, null);
 		//
 		return bindingContext;
 	}
