@@ -41,6 +41,8 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
@@ -71,7 +73,6 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -88,7 +89,6 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -167,7 +167,7 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 	 * 
 	 * @generated
 	 */
-	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
+	protected PropertySheetPage propertySheetPage;
 
 	/**
 	 * This is the viewer that shadows the selection in the content outline. The parent relation must be
@@ -275,7 +275,7 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 					setCurrentViewer(contentOutlineViewer);
 				}
 			} else if (p instanceof PropertySheet) {
-				if (propertySheetPages.contains(((PropertySheet)p).getCurrentPage())) {
+				if (((PropertySheet)p).getCurrentPage() == propertySheetPage) {
 					getActionBarContributor().setActiveEditor(ProcessEditor.this);
 					handleActivate();
 				}
@@ -382,14 +382,6 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 		@Override
 		protected void unsetTarget(Resource target) {
 			basicUnsetTarget(target);
-			resourceToDiagnosticMap.remove(target);
-			if (updateProblemIndication) {
-				getSite().getShell().getDisplay().asyncExec(new Runnable() {
-					public void run() {
-						updateProblemIndication();
-					}
-				});
-			}
 		}
 	};
 
@@ -424,7 +416,6 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 									}
 								}
 							}
-							return false;
 						}
 
 						return true;
@@ -641,11 +632,8 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 						if (mostRecentCommand != null) {
 							setSelectionToViewer(mostRecentCommand.getAffectedObjects());
 						}
-
-						for (PropertySheetPage propertySheetPage : propertySheetPages) {
-							if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-								propertySheetPage.refresh();
-							}
+						if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
+							propertySheetPage.refresh();
 						}
 					}
 				});
@@ -846,8 +834,7 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[] {LocalTransfer.getInstance(),
-				LocalSelectionTransfer.getTransfer(), FileTransfer.getInstance() };
+		Transfer[] transfers = new Transfer[] {LocalTransfer.getInstance() };
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
 		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain,
 				viewer));
@@ -1286,21 +1273,22 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 	 * @generated
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
-			@Override
-			public void setSelectionToViewer(List<?> selection) {
-				ProcessEditor.this.setSelectionToViewer(selection);
-				ProcessEditor.this.setFocus();
-			}
+		if (propertySheetPage == null) {
+			propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
+				@Override
+				public void setSelectionToViewer(List<?> selection) {
+					ProcessEditor.this.setSelectionToViewer(selection);
+					ProcessEditor.this.setFocus();
+				}
 
-			@Override
-			public void setActionBars(IActionBars actionBars) {
-				super.setActionBars(actionBars);
-				getActionBarContributor().shareGlobalActions(this, actionBars);
-			}
-		};
-		propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
-		propertySheetPages.add(propertySheetPage);
+				@Override
+				public void setActionBars(IActionBars actionBars) {
+					super.setActionBars(actionBars);
+					getActionBarContributor().shareGlobalActions(this, actionBars);
+				}
+			};
+			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
+		}
 
 		return propertySheetPage;
 	}
@@ -1368,7 +1356,6 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
 		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
 				Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
-		saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
 
 		// Do the work within an operation because this is a long running activity that modifies the
 		// workbench.
@@ -1491,9 +1478,19 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 	 * @generated
 	 */
 	public void gotoMarker(IMarker marker) {
-		List<?> targetObjects = markerHelper.getTargetObjects(editingDomain, marker);
-		if (!targetObjects.isEmpty()) {
-			setSelectionToViewer(targetObjects);
+		try {
+			if (marker.getType().equals(EValidator.MARKER)) {
+				String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
+				if (uriAttribute != null) {
+					URI uri = URI.createURI(uriAttribute);
+					EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
+					if (eObject != null) {
+						setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(eObject)));
+					}
+				}
+			}
+		} catch (CoreException exception) {
+			ProcessEditorPlugin.INSTANCE.log(exception);
 		}
 	}
 
@@ -1683,7 +1680,7 @@ public class ProcessEditor extends MultiPageEditorPart implements IEditingDomain
 			getActionBarContributor().setActiveEditor(null);
 		}
 
-		for (PropertySheetPage propertySheetPage : propertySheetPages) {
+		if (propertySheetPage != null) {
 			propertySheetPage.dispose();
 		}
 

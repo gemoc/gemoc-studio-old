@@ -2,8 +2,7 @@
  */
 package fr.obeo.dsl.process;
 
-import java.util.Map;
-
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -77,19 +76,24 @@ public interface ProcessContext extends EObject {
 	void setDefinition(fr.obeo.dsl.process.Process value);
 
 	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' attribute. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Variables</b></em>' map. The key is of type
+	 * {@link fr.obeo.dsl.process.ProcessVariable}, and the value is of type {@link java.lang.Object}, <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear, there really should
-	 * be more of a description here...
+	 * If the meaning of the '<em>Variables</em>' map isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return the value of the '<em>Variables</em>' attribute.
+	 * @return the value of the '<em>Variables</em>' map.
 	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessContext_Variables()
-	 * @model transient="true" changeable="false"
-	 * @generated
+	 * @model mapType=
+	 *        "fr.obeo.dsl.process.ProcessVariableToObjectMap<fr.obeo.dsl.process.ProcessVariable, fr.obeo.dsl.process.Object>"
+	 * @generated NOT
+	 * @deprecated use {@link ProcessContext#setVariableValue(ProcessVariable, Object, ActionTask)} and
+	 *             {@link ProcessContext#getVariableValue(ProcessVariable, ActionTask)} instead
 	 */
-	Map<ProcessVariable, ContextVariable> getVariables();
+	EMap<ProcessVariable, Object> getVariables();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Tells if the given
@@ -129,15 +133,15 @@ public interface ProcessContext extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> sets the value for the
-	 * {@link ProcessVariable} in the current context. The set will be accepted only if the writter
-	 * {@link ActionTask} has declared himself as writter for this {@link ProcessVariable}. If writter is
-	 * null, the chek is disabled and the set will be done. <!-- end-model-doc -->
+	 * {@link ProcessVariable} in the current context. The set will be accepted only if the writer
+	 * {@link ActionTask} has declared himself as writer for this {@link ProcessVariable}. If writer is null,
+	 * the chek is disabled and the set will be done. <!-- end-model-doc -->
 	 * 
 	 * @model exceptions="fr.obeo.dsl.process.IllegalVariableAccessException" variableRequired="true"
 	 *        variableValueDataType="fr.obeo.dsl.process.Object" variableValueRequired="true"
 	 * @generated
 	 */
-	void setVariableValue(ProcessVariable variable, Object variableValue, ActionTask writter)
+	void setVariableValue(ProcessVariable variable, Object variableValue, ActionTask writer)
 			throws IllegalVariableAccessException;
 
 	/**
@@ -147,7 +151,7 @@ public interface ProcessContext extends EObject {
 	 * @model dataType="fr.obeo.dsl.process.Object" processRequired="true"
 	 * @generated
 	 */
-	Object getVariableValue(ProcessVariable process);
+	Object getVariableValue(ProcessVariable variable, ActionTask observer);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

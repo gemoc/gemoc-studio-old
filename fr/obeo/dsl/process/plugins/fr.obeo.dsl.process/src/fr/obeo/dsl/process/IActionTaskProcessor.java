@@ -18,24 +18,44 @@
 package fr.obeo.dsl.process;
 
 /**
- * {@link RuntimeException} thrown when a {@link ProcessVariable} is not modified by one of its
- * {@link ActionTask#getWrittenVariables() writers} or doesn't exist.
+ * Abstract implementation of {@link ActionTask#getInstanceClassName()}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class IllegalVariableAccessException extends RuntimeException {
-	/**
-	 * The serival version UID.
-	 */
-	private static final long serialVersionUID = -3238782359054852601L;
+public interface IActionTaskProcessor {
 
 	/**
-	 * Constructor.
+	 * Validates it states in the given {@link ProcessContext} by calling
+	 * {@link ProcessContext#setDone(ActionTask, Object)},
+	 * {@link ProcessContext#setUndone(ActionTask, String)}. It can also manage {@link ProcessVariable} by
+	 * calling {@link ProcessContext#setVariableValue(ProcessVariable, Object, ActionTask)}.
 	 * 
-	 * @param msg
-	 *            the message
+	 * @param context
+	 *            the {@link ProcessContext}
 	 */
-	public IllegalVariableAccessException(String msg) {
-		super(msg);
-	}
+	void validate(ProcessContext context);
+
+	/**
+	 * Executes the {@link ActionTask} in the given{@link ProcessContext}.
+	 * 
+	 * @param context
+	 *            the {@link ProcessContext}
+	 */
+	void doAction(ProcessContext context);
+
+	/**
+	 * Undoes execution of the {@link ActionTask} in the given {@link ProcessContext}.
+	 * 
+	 * @param context
+	 *            the {@link ProcessContext}
+	 */
+	void undoAction(ProcessContext context);
+
+	/**
+	 * Gets the {@link ActionTask} definition.
+	 * 
+	 * @return the {@link ActionTask} definition
+	 */
+	ActionTask getActionTask();
+
 }

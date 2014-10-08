@@ -267,7 +267,7 @@ public class ComposedTaskImpl extends EObjectImpl implements ComposedTask {
 	public ComposedTask getParentTask() {
 		if (eContainerFeatureID() != ProcessPackage.COMPOSED_TASK__PARENT_TASK)
 			return null;
-		return (ComposedTask)eInternalContainer();
+		return (ComposedTask)eContainer();
 	}
 
 	/**

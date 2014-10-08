@@ -17,6 +17,7 @@
  *******************************************************************************/
 package org.gemoc.gemoc_language_workbench.process.specific;
 
+import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.IProcessRunner;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
@@ -62,8 +63,9 @@ public class GemocLanguageDiscovery implements IChangeProcessor {
 		for (IProcessRunner runner : ProcessUtils.getRegisteredRunners()) {
 			if (runner instanceof GemocLanguageProcessRunner) {
 				GemocLanguageProcessRunner gRunner = (GemocLanguageProcessRunner)runner;
-				if (gRunner.getCastedContext().getXdsmlURI() != null
-						&& gRunner.getCastedContext().getXdsmlURI().equals(uri)) {
+				ActionTask initialTask = ProcessUtils.getInitialActionTasks(gRunner.getContext().getDefinition()).get(0);
+				if (gRunner.getCastedContext().getXdsmlURI(initialTask) != null
+						&& gRunner.getCastedContext().getXdsmlURI(initialTask).equals(uri)) {
 					return gRunner;
 				}
 			}

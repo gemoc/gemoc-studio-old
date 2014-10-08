@@ -36,6 +36,16 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 public class CustomActionTaskItemProvider extends ActionTaskItemProvider {
 
 	/**
+	 * "_UI_PropertyDescriptor_description" constant.
+	 */
+	private static final String UI_PROPERTY_DESCRIPTOR_DESCRIPTION = "_UI_PropertyDescriptor_description";
+
+	/**
+	 * "_UI_ActionTask_type" constant.
+	 */
+	private static final String UI_ACTION_TASK_TYPE = "_UI_ActionTask_type";
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param adapterFactory
@@ -49,7 +59,7 @@ public class CustomActionTaskItemProvider extends ActionTaskItemProvider {
 	protected void addPrecedingTasksPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(new ItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
 				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_Task_precedingTasks_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Task_precedingTasks_feature",
+				getString(UI_PROPERTY_DESCRIPTOR_DESCRIPTION, "_UI_Task_precedingTasks_feature",
 						"_UI_Task_type"), ProcessPackage.Literals.TASK__PRECEDING_TASKS, true, false, true,
 				null, null, null) {
 
@@ -73,7 +83,7 @@ public class CustomActionTaskItemProvider extends ActionTaskItemProvider {
 	protected void addFollowingTasksPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(new ItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
 				.getRootAdapterFactory(), getResourceLocator(), getString("_UI_Task_followingTasks_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Task_followingTasks_feature",
+				getString(UI_PROPERTY_DESCRIPTOR_DESCRIPTION, "_UI_Task_followingTasks_feature",
 						"_UI_Task_type"), ProcessPackage.Literals.TASK__FOLLOWING_TASKS, true, false, true,
 				null, null, null) {
 
@@ -87,6 +97,29 @@ public class CustomActionTaskItemProvider extends ActionTaskItemProvider {
 					res = super.getChoiceOfValues(object);
 				}
 
+				return res;
+			}
+
+		});
+	}
+
+	@Override
+	protected void addObservedVariablesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(new ItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ActionTask_observedVariables_feature"), getString(
+						UI_PROPERTY_DESCRIPTOR_DESCRIPTION, "_UI_ActionTask_observedVariables_feature",
+						UI_ACTION_TASK_TYPE), ProcessPackage.Literals.ACTION_TASK__OBSERVED_VARIABLES, true,
+				false, true, null, null, null) {
+
+			@Override
+			public Collection<?> getChoiceOfValues(Object object) {
+				final Collection<?> res;
+				if (object instanceof ActionTask) {
+					res = ProcessUtils.getAvailableProcessVariables((ActionTask)object);
+				} else {
+					res = super.getChoiceOfValues(object);
+				}
 				return res;
 			}
 
@@ -124,9 +157,9 @@ public class CustomActionTaskItemProvider extends ActionTaskItemProvider {
 		final String res;
 
 		if (label == null || label.length() == 0) {
-			res = getString("_UI_ActionTask_type") + state;
+			res = getString(UI_ACTION_TASK_TYPE) + state;
 		} else {
-			res = getString("_UI_ActionTask_type") + " " + label + state;
+			res = getString(UI_ACTION_TASK_TYPE) + " " + label + state;
 		}
 
 		return res;

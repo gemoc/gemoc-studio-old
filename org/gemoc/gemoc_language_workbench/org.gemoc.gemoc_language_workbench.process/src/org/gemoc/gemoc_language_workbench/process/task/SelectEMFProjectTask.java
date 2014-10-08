@@ -49,7 +49,7 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 
 	@Override
 	protected void internalDoAction(GemocLanguageProcessContext context) {
-		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
+		IProject updatedGemocLanguageProject = context.getXdsmlFile(getActionTask()).getProject();
 		CreateDomainModelWizardContextAction action = new CreateDomainModelWizardContextAction(updatedGemocLanguageProject);
 		action.actionToExecute = CreateDomainModelAction.SELECT_EXISTING_EMF_PROJECT;
 		action.execute();
@@ -57,7 +57,7 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 
 	@Override
 	protected void internalUndoAction(GemocLanguageProcessContext context) {
-		final GemocLanguageWorkbenchConfiguration config = context.getXdsmlModel();
+		final GemocLanguageWorkbenchConfiguration config = context.getXdsmlModel(getActionTask());
 		if (config != null 
 			&& config.getLanguageDefinition() != null
 			&& config.getLanguageDefinition().getDomainModelProject() != null) {

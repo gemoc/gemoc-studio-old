@@ -18,7 +18,7 @@
 package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,14 +73,14 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProces
 		// it exists an EMF Tree editor project that is referenced by the xdsml
 		// search for the file extensions
 		List<String> extensionsDefinedInDSML = new ArrayList<String>();
-		EditorProject treeEditorProjet = findTreeEditorInXDSML(context.getXdsmlModel());
+		EditorProject treeEditorProjet = findTreeEditorInXDSML(context.getXdsmlModel(getActionTask()));
 		if (treeEditorProjet != null) {
 			extensionsDefinedInDSML.addAll(treeEditorProjet.getFileExtension());
 		}
 
 		List<String> extensionsDefinedInGenModel = new ArrayList<String>();
 
-		GenModel genModel = getGenModel(context.getXdsmlModel());
+		GenModel genModel = getGenModel(context.getXdsmlModel(getActionTask()));
 		for (GenPackage genPkg : genModel.getAllGenPackagesWithClassifiers()) {
 			extensionsDefinedInGenModel.addAll(genPkg.getFileExtensionList());
 		}
@@ -140,7 +140,7 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProces
 
 	private boolean acceptChangeForResource(GemocLanguageProcessContext context, IResource resource) {
 		boolean result = false;
-		String projectName = context.getEcoreProjectName();
+		String projectName = context.getEcoreProjectName(getActionTask());
 		// if the changed resource is an IProject referenced by the xdsml as Domain model project
 		if (resource instanceof IProject) {
 			result = resource.getName().equals(projectName);
@@ -172,7 +172,7 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProces
 	}
 
 	protected EMFGenmodel getEMFGenModelDefinedInXDSML(GemocLanguageProcessContext context) {
-		EMFEcoreProject eep = context.getEcoreProject();
+		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
 		if (eep != null) {
 			return eep.getEmfGenmodel();
 		}
@@ -180,7 +180,8 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProces
 	}
 
 	@Override
-	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
+			ProcessVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;

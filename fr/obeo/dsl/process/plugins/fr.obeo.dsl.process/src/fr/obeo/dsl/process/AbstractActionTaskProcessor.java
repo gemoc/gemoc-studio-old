@@ -18,24 +18,34 @@
 package fr.obeo.dsl.process;
 
 /**
- * {@link RuntimeException} thrown when a {@link ProcessVariable} is not modified by one of its
- * {@link ActionTask#getWrittenVariables() writers} or doesn't exist.
+ * Abstract implementation of {@link IActionTaskProcessor} providing the
+ * {@link IActionTaskProcessor#getActionTask() action task}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class IllegalVariableAccessException extends RuntimeException {
-	/**
-	 * The serival version UID.
-	 */
-	private static final long serialVersionUID = -3238782359054852601L;
+public abstract class AbstractActionTaskProcessor implements IActionTaskProcessor {
 
 	/**
-	 * Constructor.
-	 * 
-	 * @param msg
-	 *            the message
+	 * The {@link ActionTask} definition.
 	 */
-	public IllegalVariableAccessException(String msg) {
-		super(msg);
+	private final ActionTask actionTask;
+
+	/**
+	 * Contructor.
+	 * 
+	 * @param actionTask
+	 *            the {@link ActionTask} definition
+	 */
+	public AbstractActionTaskProcessor(ActionTask actionTask) {
+		this.actionTask = actionTask;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fr.obeo.dsl.process.IActionTaskProcessor#getActionTask()
+	 */
+	public ActionTask getActionTask() {
+		return actionTask;
 	}
 }

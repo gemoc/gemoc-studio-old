@@ -697,41 +697,39 @@ public interface ProcessPackage extends EPackage {
 	int PROCESS_CONTEXT_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ContextVariableImpl
-	 * <em>Context Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ProcessVariableToObjectMapImpl
+	 * <em>Variable To Object Map</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @see fr.obeo.dsl.process.impl.ContextVariableImpl
-	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getContextVariable()
+	 * @see fr.obeo.dsl.process.impl.ProcessVariableToObjectMapImpl
+	 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getProcessVariableToObjectMap()
 	 * @generated
 	 */
-	int CONTEXT_VARIABLE = 14;
+	int PROCESS_VARIABLE_TO_OBJECT_MAP = 14;
 
 	/**
-	 * The feature id for the '<em><b>Variable Value</b></em>' attribute. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Key</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_VARIABLE__VARIABLE_VALUE = 0;
+	int PROCESS_VARIABLE_TO_OBJECT_MAP__KEY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' reference. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * The feature id for the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_VARIABLE__DEFINITION = 1;
+	int PROCESS_VARIABLE_TO_OBJECT_MAP__VALUE = 1;
 
 	/**
-	 * The number of structural features of the '<em>Context Variable</em>' class. <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Variable To Object Map</em>' class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int CONTEXT_VARIABLE_FEATURE_COUNT = 2;
+	int PROCESS_VARIABLE_TO_OBJECT_MAP_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '<em>Object</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1176,47 +1174,49 @@ public interface ProcessPackage extends EPackage {
 	EReference getProcessContext_Definition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ProcessContext#getVariables
+	 * Returns the meta object for the map '{@link fr.obeo.dsl.process.ProcessContext#getVariables
 	 * <em>Variables</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @return the meta object for the attribute '<em>Variables</em>'.
+	 * @return the meta object for the map '<em>Variables</em>'.
 	 * @see fr.obeo.dsl.process.ProcessContext#getVariables()
 	 * @see #getProcessContext()
 	 * @generated
 	 */
-	EAttribute getProcessContext_Variables();
+	EReference getProcessContext_Variables();
 
 	/**
-	 * Returns the meta object for class '{@link fr.obeo.dsl.process.ContextVariable
-	 * <em>Context Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Variable To Object Map</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @return the meta object for class '<em>Context Variable</em>'.
-	 * @see fr.obeo.dsl.process.ContextVariable
+	 * @return the meta object for class '<em>Variable To Object Map</em>'.
+	 * @see java.util.Map.Entry
+	 * @model keyType="fr.obeo.dsl.process.ProcessVariable" keyRequired="true"
+	 *        valueDataType="fr.obeo.dsl.process.Object" valueTransient="true"
 	 * @generated
 	 */
-	EClass getContextVariable();
+	EClass getProcessVariableToObjectMap();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.process.ContextVariable#getVariableValue
-	 * <em>Variable Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @return the meta object for the attribute '<em>Variable Value</em>'.
-	 * @see fr.obeo.dsl.process.ContextVariable#getVariableValue()
-	 * @see #getContextVariable()
+	 * @return the meta object for the reference '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getProcessVariableToObjectMap()
 	 * @generated
 	 */
-	EAttribute getContextVariable_VariableValue();
+	EReference getProcessVariableToObjectMap_Key();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.obeo.dsl.process.ContextVariable#getDefinition
-	 * <em>Definition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @return the meta object for the reference '<em>Definition</em>'.
-	 * @see fr.obeo.dsl.process.ContextVariable#getDefinition()
-	 * @see #getContextVariable()
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getProcessVariableToObjectMap()
 	 * @generated
 	 */
-	EReference getContextVariable_Definition();
+	EAttribute getProcessVariableToObjectMap_Value();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.Object <em>Object</em>}'. <!-- begin-user-doc
@@ -1603,38 +1603,38 @@ public interface ProcessPackage extends EPackage {
 		EReference PROCESS_CONTEXT__DEFINITION = eINSTANCE.getProcessContext_Definition();
 
 		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' attribute feature. <!-- begin-user-doc
-		 * --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Variables</b></em>' map feature. <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * 
 		 * @generated
 		 */
-		EAttribute PROCESS_CONTEXT__VARIABLES = eINSTANCE.getProcessContext_Variables();
+		EReference PROCESS_CONTEXT__VARIABLES = eINSTANCE.getProcessContext_Variables();
 
 		/**
-		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ContextVariableImpl
-		 * <em>Context Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ProcessVariableToObjectMapImpl
+		 * <em>Variable To Object Map</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * 
-		 * @see fr.obeo.dsl.process.impl.ContextVariableImpl
-		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getContextVariable()
+		 * @see fr.obeo.dsl.process.impl.ProcessVariableToObjectMapImpl
+		 * @see fr.obeo.dsl.process.impl.ProcessPackageImpl#getProcessVariableToObjectMap()
 		 * @generated
 		 */
-		EClass CONTEXT_VARIABLE = eINSTANCE.getContextVariable();
+		EClass PROCESS_VARIABLE_TO_OBJECT_MAP = eINSTANCE.getProcessVariableToObjectMap();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable Value</b></em>' attribute feature. <!--
-		 * begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Key</b></em>' reference feature. <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * 
 		 * @generated
 		 */
-		EAttribute CONTEXT_VARIABLE__VARIABLE_VALUE = eINSTANCE.getContextVariable_VariableValue();
+		EReference PROCESS_VARIABLE_TO_OBJECT_MAP__KEY = eINSTANCE.getProcessVariableToObjectMap_Key();
 
 		/**
-		 * The meta object literal for the '<em><b>Definition</b></em>' reference feature. <!-- begin-user-doc
-		 * --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature. <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * 
 		 * @generated
 		 */
-		EReference CONTEXT_VARIABLE__DEFINITION = eINSTANCE.getContextVariable_Definition();
+		EAttribute PROCESS_VARIABLE_TO_OBJECT_MAP__VALUE = eINSTANCE.getProcessVariableToObjectMap_Value();
 
 		/**
 		 * The meta object literal for the '<em>Object</em>' data type. <!-- begin-user-doc --> <!--

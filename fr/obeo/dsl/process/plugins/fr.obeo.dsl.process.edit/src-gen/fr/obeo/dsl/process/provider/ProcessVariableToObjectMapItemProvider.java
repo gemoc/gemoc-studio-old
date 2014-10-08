@@ -18,11 +18,11 @@
  */
 package fr.obeo.dsl.process.provider;
 
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessPackage;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -36,21 +36,22 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link fr.obeo.dsl.process.ContextVariable} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
+ * This is the item provider adapter for a {@link java.util.Map.Entry} object. <!-- begin-user-doc --> <!--
+ * end-user-doc -->
  * 
  * @generated
  */
-public class ContextVariableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ProcessVariableToObjectMapItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
 	 * @generated
 	 */
-	public ContextVariableItemProvider(AdapterFactory adapterFactory) {
+	public ProcessVariableToObjectMapItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -65,51 +66,50 @@ public class ContextVariableItemProvider extends ItemProviderAdapter implements 
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addVariableValuePropertyDescriptor(object);
-			addDefinitionPropertyDescriptor(object);
+			addKeyPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Variable Value feature. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * This adds a property descriptor for the Key feature. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	protected void addVariableValuePropertyDescriptor(Object object) {
+	protected void addKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
 				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ContextVariable_variableValue_feature"), getString(
-						"_UI_PropertyDescriptor_description", "_UI_ContextVariable_variableValue_feature",
-						"_UI_ContextVariable_type"),
-				ProcessPackage.Literals.CONTEXT_VARIABLE__VARIABLE_VALUE, true, false, true,
+				getString("_UI_ProcessVariableToObjectMap_key_feature"), getString(
+						"_UI_PropertyDescriptor_description", "_UI_ProcessVariableToObjectMap_key_feature",
+						"_UI_ProcessVariableToObjectMap_type"),
+				ProcessPackage.Literals.PROCESS_VARIABLE_TO_OBJECT_MAP__KEY, true, false, true, null, null,
+				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Value feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ProcessVariableToObjectMap_value_feature"), getString(
+						"_UI_PropertyDescriptor_description", "_UI_ProcessVariableToObjectMap_value_feature",
+						"_UI_ProcessVariableToObjectMap_type"),
+				ProcessPackage.Literals.PROCESS_VARIABLE_TO_OBJECT_MAP__VALUE, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Definition feature. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 */
-	protected void addDefinitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-				.getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ContextVariable_definition_feature"), getString(
-						"_UI_PropertyDescriptor_description", "_UI_ContextVariable_definition_feature",
-						"_UI_ContextVariable_type"), ProcessPackage.Literals.CONTEXT_VARIABLE__DEFINITION,
-				true, false, true, null, null, null));
-	}
-
-	/**
-	 * This returns ContextVariable.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This returns ProcessVariableToObjectMap.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ContextVariable"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProcessVariableToObjectMap"));
 	}
 
 	/**
@@ -119,10 +119,8 @@ public class ContextVariableItemProvider extends ItemProviderAdapter implements 
 	 */
 	@Override
 	public String getText(Object object) {
-		Object labelValue = ((ContextVariable)object).getVariableValue();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ? getString("_UI_ContextVariable_type")
-				: getString("_UI_ContextVariable_type") + " " + label;
+		Map.Entry<?, ?> processVariableToObjectMap = (Map.Entry<?, ?>)object;
+		return "" + processVariableToObjectMap.getKey() + " -> " + processVariableToObjectMap.getValue();
 	}
 
 	/**
@@ -135,6 +133,13 @@ public class ContextVariableItemProvider extends ItemProviderAdapter implements 
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Map.Entry.class)) {
+			case ProcessPackage.PROCESS_VARIABLE_TO_OBJECT_MAP__VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
+						true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

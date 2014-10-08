@@ -75,26 +75,26 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		}
 	}
 
-	public void setXdsmlConfigURI(URI newUri, ActionTask writterTask) throws IllegalVariableAccessException {
+	public void setXdsmlConfigURI(URI newUri, ActionTask writerTask) throws IllegalVariableAccessException {
 		if (newUri != null) {
-			if (!newUri.equals(getVariableValue(XDSML_FILE_URI_VAR))) {
-				this.setVariableValue(XDSML_FILE_URI_VAR, newUri, writterTask);
-				loadXdsmlConfigURI(writterTask);
+			if (!newUri.equals(getVariableValue(XDSML_FILE_URI_VAR, writerTask))) {
+				this.setVariableValue(XDSML_FILE_URI_VAR, newUri, writerTask);
+				loadXdsmlConfigURI(writerTask);
 			}
 		}
 	}
 
-	private Object getVariableValue(String varName) throws IllegalVariableAccessException {
+	private Object getVariableValue(String varName, ActionTask task) throws IllegalVariableAccessException {
 		ProcessVariable processVar = getProcessVariable(varName);
 		if (processVar == null) {
 			throw new IllegalVariableAccessException("No ProcessVariable " + varName
 					+ " in current ProcessContext");
 		}
-		return getVariableValue(processVar);
+		return getVariableValue(processVar, task);
 	}
 
 	public void loadXdsmlConfigURI(ActionTask writterTask) throws IllegalVariableAccessException {
-		URI xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR);
+		URI xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR, writterTask);
 		if (xdsmlURI != null) {
 			this.setVariableValue(XDSML_MODEL_VAR, EMFResource.getFirstContent(xdsmlURI), writterTask);
 		} else {
@@ -105,18 +105,18 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	// getter and setters
 	// ------------------
 
-	public GemocLanguageWorkbenchConfiguration getXdsmlModel() {
+	public GemocLanguageWorkbenchConfiguration getXdsmlModel(ActionTask task) {
 		try {
-			return (GemocLanguageWorkbenchConfiguration)this.getVariableValue(XDSML_MODEL_VAR);
+			return (GemocLanguageWorkbenchConfiguration)this.getVariableValue(XDSML_MODEL_VAR, task);
 		} catch (IllegalVariableAccessException e) {
 			Activator.getDefault().error(e);
 		}
 		return null;
 	}
 
-	public URI getXdsmlURI() {
+	public URI getXdsmlURI(ActionTask task) {
 		try {
-			return (URI)getVariableValue(XDSML_FILE_URI_VAR);
+			return (URI)getVariableValue(XDSML_FILE_URI_VAR, task);
 		} catch (IllegalVariableAccessException e) {
 
 			Activator.getDefault().error(e);
@@ -124,11 +124,11 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		return null;
 	}
 
-	public IFile getXdsmlFile() {
+	public IFile getXdsmlFile(ActionTask task) {
 		IFile file = null;
 		URI xdsmlURI;
 		try {
-			xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR);
+			xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR, task);
 			if (xdsmlURI != null) {
 				file = EclipseResource.getFile(xdsmlURI);
 			}
@@ -148,44 +148,44 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		setVariableValue(processVar, variableValue, writterTask);
 	}
 
-	public EMFEcoreProject getEcoreProject() {
+	public EMFEcoreProject getEcoreProject(ActionTask task) {
 		EMFEcoreProject project = null;
-		Object o = getXdsmlModel().getLanguageDefinition().getDomainModelProject();
+		Object o = getXdsmlModel(task).getLanguageDefinition().getDomainModelProject();
 		if (o instanceof EMFEcoreProject) {
 			project = (EMFEcoreProject)o;
 		}
 		return project;
 	}
 
-	public DSAProject getDSAProject() {
+	public DSAProject getDSAProject(ActionTask task) {
 		DSAProject project = null;
-		Object o = getXdsmlModel().getLanguageDefinition().getDsaProject();
+		Object o = getXdsmlModel(task).getLanguageDefinition().getDsaProject();
 		if (o instanceof DSAProject) {
 			project = (DSAProject)o;
 		}
 		return project;
 	}
 
-	public DSEProject getDSEProject() {
+	public DSEProject getDSEProject(ActionTask task) {
 		DSEProject project = null;
-		Object o = getXdsmlModel().getLanguageDefinition().getDSEProject();
+		Object o = getXdsmlModel(task).getLanguageDefinition().getDSEProject();
 		if (o instanceof DSEProject) {
 			project = (DSEProject)o;
 		}
 		return project;
 	}
-	public MoCProject getMOCProject() {
+	public MoCProject getMOCProject(ActionTask task) {
 		MoCProject project = null;
-		Object o = getXdsmlModel().getLanguageDefinition().getMoCModelProject();
+		Object o = getXdsmlModel(task).getLanguageDefinition().getMoCModelProject();
 		if (o instanceof MoCProject) {
 			project = (MoCProject)o;
 		}
 		return project;
 	}
 
-	public ODProject getGraphicalEditor() {
+	public ODProject getGraphicalEditor(ActionTask task) {
 		ODProject project = null;
-		List<EditorProject> editors = getXdsmlModel().getLanguageDefinition().getEditorProjects();
+		List<EditorProject> editors = getXdsmlModel(task).getLanguageDefinition().getEditorProjects();
 		for (EditorProject editor : editors) {
 			if (editor instanceof ODProject) {
 				project = (ODProject)editor;
@@ -194,9 +194,9 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		return project;
 	}
 
-	public XTextEditorProject getTextualEditor() {
+	public XTextEditorProject getTextualEditor(ActionTask task) {
 		XTextEditorProject project = null;
-		List<EditorProject> editors = getXdsmlModel().getLanguageDefinition().getEditorProjects();
+		List<EditorProject> editors = getXdsmlModel(task).getLanguageDefinition().getEditorProjects();
 		for (EditorProject editor : editors) {
 			if (editor instanceof XTextEditorProject) {
 				project = (XTextEditorProject)editor;
@@ -205,9 +205,9 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		return project;
 	}
 
-	public TreeEditorProject getTreeEditor() {
+	public TreeEditorProject getTreeEditor(ActionTask task) {
 		TreeEditorProject project = null;
-		List<EditorProject> editors = getXdsmlModel().getLanguageDefinition().getEditorProjects();
+		List<EditorProject> editors = getXdsmlModel(task).getLanguageDefinition().getEditorProjects();
 		for (EditorProject editor : editors) {
 			if (editor instanceof TreeEditorProject) {
 				project = (TreeEditorProject)editor;
@@ -216,9 +216,9 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		return project;
 	}
 
-	public AnimatorProject getAnimatorEditor() {
+	public AnimatorProject getAnimatorEditor(ActionTask task) {
 		AnimatorProject project = null;
-		List<AnimatorProject> animators = getXdsmlModel().getLanguageDefinition().getAnimatorProjects();
+		List<AnimatorProject> animators = getXdsmlModel(task).getLanguageDefinition().getAnimatorProjects();
 		if (animators.size() > 0) {
 			project = animators.get(0);
 		}

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" xmlns:modisco.xml="http://www.eclipse.org/MoDisco/Xml/0.1.incubation/XML" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_N71OcJlVEeO6xbX77yt14g" selectedViews="_ZjQfUK2zEeOsXLz8lrPnsA" version="8.1.0">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" xmlns:modisco.xml="http://www.eclipse.org/MoDisco/Xml/0.1.incubation/XML" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_N71OcJlVEeO6xbX77yt14g" selectedViews="_ZjQfUK2zEeOsXLz8lrPnsA" version="8.1.1">
   <models xmi:type="ecore:EPackage" href="model/gemoc_language_workbench_conf.ecore#/"/>
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
   <models xmi:type="genmodel:GenModel" href="model/gemoc_language_workbench_conf.genmodel#/"/>
-  <models xmi:type="modisco.xml:Root" href="plugin.xml#/"/>
-  <models xmi:type="modisco.xml:Root" href="pom.xml#/"/>
-  <models xmi:type="modisco.xml:Root" href="target/p2artifacts.xml#/"/>
-  <models xmi:type="modisco.xml:Root" href="target/p2content.xml#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_ZjQfUK2zEeOsXLz8lrPnsA" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_ZvoHYK2zEeOsXLz8lrPnsA" name="xdsml configuration class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Zwm-0K2zEeOsXLz8lrPnsA" source="GMF_DIAGRAMS">
@@ -1682,4 +1678,8 @@
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
   </ownedViews>
+  <models xmi:type="modisco.xml:Root" href="plugin.xml#/"/>
+  <models xmi:type="modisco.xml:Root" href="pom.xml#/"/>
+  <models xmi:type="modisco.xml:Root" href="target/p2artifacts.xml#/"/>
+  <models xmi:type="modisco.xml:Root" href="target/p2content.xml#/"/>
 </viewpoint:DAnalysis>

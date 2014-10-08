@@ -3,6 +3,7 @@
 package fr.obeo.dsl.process.provider;
 
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.ProcessFactory;
 import fr.obeo.dsl.process.ProcessPackage;
 
 import java.util.Collection;
@@ -12,8 +13,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -174,11 +173,7 @@ public class ProcessContextItemProvider extends ItemProviderAdapter implements I
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(ProcessPackage.Literals.PROCESS_CONTEXT__VARIABLES,
-				EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EMAP, null))); // TODO: ensure
-																								// this is a
-																								// valid
-																								// literal
-																								// value
+				ProcessFactory.eINSTANCE.create(ProcessPackage.Literals.PROCESS_VARIABLE_TO_OBJECT_MAP)));
 	}
 
 	/**

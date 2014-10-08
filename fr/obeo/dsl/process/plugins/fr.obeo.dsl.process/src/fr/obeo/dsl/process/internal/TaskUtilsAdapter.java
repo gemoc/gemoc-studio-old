@@ -23,9 +23,6 @@ import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.Task;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -64,7 +61,7 @@ public class TaskUtilsAdapter extends AdapterImpl implements ITaskUtils {
 		if (msg.getFeature() == ProcessPackage.eINSTANCE.getTask_PrecedingTasks()) {
 			update();
 			if (task instanceof ComposedTask) {
-				Set<Task> initialTasks = new HashSet<Task>();
+				// Set<Task> initialTasks = new HashSet<Task>();
 			}
 		} else if (msg.getFeature() == ProcessPackage.eINSTANCE.getComposedTask_InitialTasks()) {
 			// final ITaskUtils tool = ProcessUtils.getTool(msg.get);

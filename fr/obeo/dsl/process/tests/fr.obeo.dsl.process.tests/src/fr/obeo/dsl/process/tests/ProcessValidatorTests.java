@@ -22,7 +22,10 @@ import fr.obeo.dsl.process.AllDone;
 import fr.obeo.dsl.process.ComposedTask;
 import fr.obeo.dsl.process.Process;
 import fr.obeo.dsl.process.ProcessPackage;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.util.ProcessValidator;
+
+import java.util.List;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EValidator;
@@ -291,6 +294,144 @@ public class ProcessValidatorTests {
 		assertTrue(diag.getChildren().get(0).getCode() == "DoneTasksAreFinal".hashCode());
 		assertTrue(diag.getChildren().get(0).getData().get(0) instanceof ComposedTask);
 		assertEquals("task1", ((ComposedTask)diag.getChildren().get(0).getData().get(0)).getName());
+	}
+
+	/**
+	 * Tests <code>VariableIsWrittenAtLeastOnce</code> constraint.
+	 */
+	@Test
+	public void variableIsWrittenAtLeastOnce() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ComposedTask composedTask = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask.setName("composedTask");
+		process.setTask(composedTask);
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		composedTask.getTasks().add(task1);
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		composedTask.getTasks().add(task2);
+		task1.getFollowingTasks().add(task2);
+		composedTask.getInitialTasks().add(task1);
+		composedTask.getFinalTasks().add(task2);
+		final ProcessVariable variable1 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable1.setName("variable1");
+		final ProcessVariable variable2 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable2.setName("variable2");
+
+		process.getVariables().add(variable1);
+		process.getVariables().add(variable2);
+		task1.getWrittenVariables().add(variable2);
+		task2.getObservedVariables().add(variable2);
+
+		Diagnostic diag = Diagnostician.INSTANCE.validate(process);
+
+		assertEquals(2, diag.getChildren().size());
+
+		assertTrue(diag.getChildren().get(0).getSeverity() == Diagnostic.WARNING);
+		assertTrue(diag.getChildren().get(0).getCode() == "VariableIsWrittenAtLeastOnce".hashCode());
+		assertTrue(diag.getChildren().get(0).getData().get(0) instanceof ProcessVariable);
+		assertEquals("variable1", ((ProcessVariable)diag.getChildren().get(0).getData().get(0)).getName());
+
+		task2.getObservedVariables().add(variable1);
+
+		diag = Diagnostician.INSTANCE.validate(process);
+
+		assertEquals(2, diag.getChildren().size());
+
+		assertTrue(diag.getChildren().get(1).getSeverity() == Diagnostic.ERROR);
+		assertTrue(diag.getChildren().get(1).getCode() == "VariableIsWrittenAtLeastOnce".hashCode());
+		assertTrue(diag.getChildren().get(1).getData().get(0) instanceof ProcessVariable);
+		assertEquals("variable1", ((ProcessVariable)diag.getChildren().get(1).getData().get(0)).getName());
+	}
+
+	/**
+	 * Tests <code>VariableIsObservedAtLeastOnce</code> constraint.
+	 */
+	@Test
+	public void variableIsObservedAtLeastOnce() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ComposedTask composedTask = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask.setName("composedTask");
+		process.setTask(composedTask);
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		composedTask.getTasks().add(task1);
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		composedTask.getTasks().add(task2);
+		task1.getFollowingTasks().add(task2);
+		composedTask.getInitialTasks().add(task1);
+		composedTask.getFinalTasks().add(task2);
+		final ProcessVariable variable1 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable1.setName("variable1");
+		final ProcessVariable variable2 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable2.setName("variable2");
+
+		process.getVariables().add(variable1);
+		process.getVariables().add(variable2);
+		task1.getWrittenVariables().add(variable2);
+		task2.getObservedVariables().add(variable2);
+
+		Diagnostic diag = Diagnostician.INSTANCE.validate(process);
+
+		assertEquals(2, diag.getChildren().size());
+
+		assertTrue(diag.getChildren().get(1).getSeverity() == Diagnostic.WARNING);
+		assertTrue(diag.getChildren().get(1).getCode() == "VariableIsObservedAtLeastOnce".hashCode());
+		assertTrue(diag.getChildren().get(1).getData().get(0) instanceof ProcessVariable);
+		assertEquals("variable1", ((ProcessVariable)diag.getChildren().get(1).getData().get(0)).getName());
+	}
+
+	/**
+	 * Tests <code>ObservedVariableIsReachable</code> constraint.
+	 */
+	@Test
+	public void observedVariableIsReachable() {
+		final Process process = ProcessPackage.eINSTANCE.getProcessFactory().createProcess();
+		process.setName("process");
+		final ComposedTask composedTask = ProcessPackage.eINSTANCE.getProcessFactory().createComposedTask();
+		composedTask.setName("composedTask");
+		process.setTask(composedTask);
+		final ActionTask task1 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task1.setName("task1");
+		composedTask.getTasks().add(task1);
+		final ActionTask task2 = ProcessPackage.eINSTANCE.getProcessFactory().createActionTask();
+		task2.setName("task2");
+		composedTask.getTasks().add(task2);
+		task1.getFollowingTasks().add(task2);
+		composedTask.getInitialTasks().add(task1);
+		composedTask.getFinalTasks().add(task2);
+		final ProcessVariable variable1 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable1.setName("variable1");
+		final ProcessVariable variable2 = ProcessPackage.eINSTANCE.getProcessFactory()
+				.createProcessVariable();
+		variable2.setName("variable2");
+
+		process.getVariables().add(variable1);
+		process.getVariables().add(variable2);
+		task1.getWrittenVariables().add(variable2);
+		task2.getObservedVariables().add(variable2);
+		task2.getObservedVariables().add(variable1);
+
+		Diagnostic diag = Diagnostician.INSTANCE.validate(process);
+
+		assertEquals(2, diag.getChildren().size());
+
+		assertTrue(diag.getChildren().get(0).getSeverity() == Diagnostic.ERROR);
+		assertTrue(diag.getChildren().get(0).getCode() == "ObservedVariableIsReachable".hashCode());
+		assertTrue(diag.getChildren().get(0).getData().get(0) instanceof ActionTask);
+		assertEquals("task2", ((ActionTask)diag.getChildren().get(0).getData().get(0)).getName());
+		assertTrue(diag.getChildren().get(0).getData().get(1) instanceof List<?>);
+		assertEquals(1, ((List<?>)diag.getChildren().get(0).getData().get(1)).size());
+		assertEquals(variable1, ((List<?>)diag.getChildren().get(0).getData().get(1)).get(0));
 	}
 
 }

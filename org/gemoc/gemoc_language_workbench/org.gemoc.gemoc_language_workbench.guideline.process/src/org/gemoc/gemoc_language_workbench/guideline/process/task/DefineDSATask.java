@@ -18,7 +18,7 @@
 package org.gemoc.gemoc_language_workbench.guideline.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
@@ -45,7 +45,7 @@ public class DefineDSATask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
-			ContextVariable variable) {
+			ProcessVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;
@@ -55,7 +55,7 @@ public class DefineDSATask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
-		DSAProject projectModelElement = context.getDSAProject();
+		DSAProject projectModelElement = context.getDSAProject(getActionTask());
 
 		return projectModelElement;
 	}
@@ -64,7 +64,7 @@ public class DefineDSATask extends AbstractGemocActionProcessor {
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a DSA project that is referenced by the xdsml
 		// else setUndone
-		DSAProject project = context.getDSAProject();
+		DSAProject project = context.getDSAProject(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;

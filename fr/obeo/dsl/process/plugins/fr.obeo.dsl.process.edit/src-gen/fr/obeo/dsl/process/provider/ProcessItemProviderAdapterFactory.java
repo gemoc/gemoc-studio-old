@@ -322,26 +322,26 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.obeo.dsl.process.ContextVariable} instances.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	protected ContextVariableItemProvider contextVariableItemProvider;
+	protected ProcessVariableToObjectMapItemProvider processVariableToObjectMapItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.obeo.dsl.process.ContextVariable}. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * This creates an adapter for a {@link java.util.Map.Entry}. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
 	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter createContextVariableAdapter() {
-		if (contextVariableItemProvider == null) {
-			contextVariableItemProvider = new ContextVariableItemProvider(this);
+	public Adapter createProcessVariableToObjectMapAdapter() {
+		if (processVariableToObjectMapItemProvider == null) {
+			processVariableToObjectMapItemProvider = new ProcessVariableToObjectMapItemProvider(this);
 		}
 
-		return contextVariableItemProvider;
+		return processVariableToObjectMapItemProvider;
 	}
 
 	/**
@@ -463,8 +463,8 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 			orItemProvider.dispose();
 		if (processContextItemProvider != null)
 			processContextItemProvider.dispose();
-		if (contextVariableItemProvider != null)
-			contextVariableItemProvider.dispose();
+		if (processVariableToObjectMapItemProvider != null)
+			processVariableToObjectMapItemProvider.dispose();
 	}
 
 }

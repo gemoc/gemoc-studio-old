@@ -849,8 +849,122 @@ public final class ProcessUtils {
 			res = processContext.getUndoneReason((ActionTask)task);
 		}
 		if (task instanceof ComposedTask && !isDone(processContext, task)) {
+			// TODO combine reasons of mandatory sub tasks for better understanding
 			res = "the condition of the composed task isn't satisfied. (check the sub tasks)";
 		}
+		return res;
+	}
+
+	/**
+	 * Gets the {@link List} of {@link ProcessVariable} available for
+	 * {@link ActionTask#getObservedVariables() observation}.
+	 * 
+	 * @param task
+	 *            the {@link ActionTask} to check
+	 * @return the {@link List} of {@link ProcessVariable} available for
+	 *         {@link ActionTask#getObservedVariables() observation}
+	 */
+	public static List<ProcessVariable> getAvailableProcessVariables(ActionTask task) {
+		final List<ProcessVariable> res = new ArrayList<ProcessVariable>();
+
+		for (Task precedingTask : getPrecedingTasks(task)) {
+			if (precedingTask instanceof ActionTask) {
+				res.addAll(((ActionTask)precedingTask).getWrittenVariables());
+			}
+		}
+
+		return res;
+	}
+
+	/**
+	 * Tells if the given {@link ProcessVariable} is {@link ActionTask#getWrittenVariables() written}.
+	 * 
+	 * @param variable
+	 *            the {@link ProcessVariable} to check
+	 * @return <code>true</code> if the given {@link ProcessVariable} is
+	 *         {@link ActionTask#getWrittenVariables() written}, <code>false</code> otherwise
+	 */
+	public static boolean isWritten(ProcessVariable variable) {
+		boolean res = false;
+		final Process process = (Process)variable.eContainer();
+		final Iterator<EObject> it = process.eAllContents();
+
+		while (it.hasNext()) {
+			final EObject eObj = it.next();
+			if (eObj instanceof ActionTask && ((ActionTask)eObj).getWrittenVariables().contains(variable)) {
+				res = true;
+				break;
+			}
+		}
+
+		return res;
+	}
+
+	/**
+	 * Tells if the given {@link ProcessVariable} is {@link ActionTask#getObservedVariables() observed}.
+	 * 
+	 * @param variable
+	 *            the {@link ProcessVariable} to check
+	 * @return <code>true</code> if the given {@link ProcessVariable} is
+	 *         {@link ActionTask#getObservedVariables() observed}, <code>false</code> otherwise
+	 */
+	public static boolean isObserved(ProcessVariable variable) {
+		boolean res = false;
+		final Process process = (Process)variable.eContainer();
+		final Iterator<EObject> it = process.eAllContents();
+
+		while (it.hasNext()) {
+			final EObject eObj = it.next();
+			if (eObj instanceof ActionTask && ((ActionTask)eObj).getObservedVariables().contains(variable)) {
+				res = true;
+				break;
+			}
+		}
+
+		return res;
+	}
+
+	/**
+	 * Gets the {@link List} of initial {@link ActionTask} for the given {@link Process}.
+	 * 
+	 * @param process
+	 *            the {@link Process}
+	 * @return the {@link List} of initial {@link ActionTask} for the given {@link Process}
+	 */
+	public static List<ActionTask> getInitialActionTasks(Process process) {
+		final List<ActionTask> res = new ArrayList<ActionTask>();
+
+		if (process.getTask() instanceof ActionTask) {
+			res.add((ActionTask)process.getTask());
+		} else if (process.getTask() instanceof ComposedTask) {
+			res.addAll(getInitialActionTasks((ComposedTask)process.getTask()));
+		} else {
+			throw new IllegalStateException(DON_T_KNOW_WHAT_TO_DO_WITH + process.getTask().eClass().getName());
+		}
+
+		return res;
+	}
+
+	/**
+	 * Gets the {@link List} of initial {@link ActionTask} for the given {@link ComposedTask}.
+	 * 
+	 * @param task
+	 *            the {@link Process}
+	 * @return the {@link List} of initial {@link ActionTask} for the given {@link ComposedTask}
+	 */
+	public static List<ActionTask> getInitialActionTasks(ComposedTask task) {
+		final List<ActionTask> res = new ArrayList<ActionTask>();
+
+		for (Task child : task.getInitialTasks()) {
+			if (child instanceof ActionTask) {
+				res.add((ActionTask)child);
+			} else if (child instanceof ComposedTask) {
+				res.addAll(getInitialActionTasks((ComposedTask)child));
+			} else {
+				throw new IllegalStateException(DON_T_KNOW_WHAT_TO_DO_WITH + child.eClass().getName());
+			}
+		}
+
 		return res;
 	}
 }

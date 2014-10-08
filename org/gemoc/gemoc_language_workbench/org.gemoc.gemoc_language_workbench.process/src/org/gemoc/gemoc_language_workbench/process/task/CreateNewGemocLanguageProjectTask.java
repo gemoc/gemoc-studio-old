@@ -51,7 +51,7 @@ public class CreateNewGemocLanguageProjectTask extends AbstractGemocActionProces
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists an xdsml IFile corresponding to the URI
-		IResource iFile = EclipseResource.getFile(context.getXdsmlURI());
+		IResource iFile = EclipseResource.getFile(context.getXdsmlURI(getActionTask()));
 		return iFile != null;
 	}
 
@@ -62,7 +62,7 @@ public class CreateNewGemocLanguageProjectTask extends AbstractGemocActionProces
 		} catch (IllegalVariableAccessException e) {
 			org.gemoc.gemoc_language_workbench.process.Activator.getDefault().error(e);
 		}
-		return context.getXdsmlModel();
+		return context.getXdsmlModel(getActionTask());
 	}
 
 	/**
@@ -100,12 +100,12 @@ public class CreateNewGemocLanguageProjectTask extends AbstractGemocActionProces
 
 	@Override
 	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI());
+		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI(getActionTask()));
 	}
 
 	@Override
 	protected boolean internalAcceptModifiedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI());
+		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI(getActionTask()));
 	}
 
 }

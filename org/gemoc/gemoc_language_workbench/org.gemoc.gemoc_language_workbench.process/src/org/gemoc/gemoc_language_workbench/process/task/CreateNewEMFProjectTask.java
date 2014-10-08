@@ -19,8 +19,8 @@ package org.gemoc.gemoc_language_workbench.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.Activator;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -53,20 +53,20 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
-				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile());
+		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
+				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile(getActionTask()));
 	}
 
 	@Override
 	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		return 
-				EclipseResource.matches(resource, IFile.class, context.getXdsmlURI())
-				|| EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName())
-				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile());
+		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI(getActionTask()))
+				|| EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
+				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile(getActionTask()));
 	}
 
 	@Override
-	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context, ContextVariable variable) {
+	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
+			ProcessVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;
@@ -80,10 +80,10 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 		// return the emf project URI
 		// setDone(void)
 		// or setUndone(void)
-		EMFEcoreProject eep = context.getEcoreProject();
+		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
 		// update the cache pointing to the ecore file
 		// Discussion, the ActiveFileEcore may not be the best way to retreive the ecore ?
-		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
+		IProject updatedGemocLanguageProject = context.getXdsmlFile(getActionTask()).getProject();
 		ActiveFile activeFileEcore = new ActiveFileEcore(updatedGemocLanguageProject);
 		try {
 			context.setEcoreIFile(activeFileEcore.getActiveFile(), this.getActionTask());
@@ -97,7 +97,7 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists an EMF project that is referenced by the xdsml
 		// else setUndone
-		String projectName = context.getEcoreProjectName();
+		String projectName = context.getEcoreProjectName(getActionTask());
 		if (projectName != null) {
 			if (EclipseResource.existProject(projectName)) {
 				return true;
@@ -110,15 +110,13 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 		return false;
 	}
 
-
 	@Override
 	protected void internalDoAction(GemocLanguageProcessContext context) {
-		IProject updatedGemocLanguageProject = context.getXdsmlFile().getProject();
+		IProject updatedGemocLanguageProject = context.getXdsmlFile(getActionTask()).getProject();
 		CreateDomainModelWizardContextAction action = new CreateDomainModelWizardContextAction(
 				updatedGemocLanguageProject);
 		action.actionToExecute = CreateDomainModelAction.CREATE_NEW_EMF_PROJECT;
 		action.execute();
 	}
-
 
 }

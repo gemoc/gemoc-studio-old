@@ -32,20 +32,16 @@ public interface IProcessRunner {
 	ProcessContext getContext();
 
 	/**
-	 * Executes the given {@link ActionTask} in the given {@link ProcessContext}.
+	 * Executes the given {@link ActionTask} in the {@link ProcessContext}.
 	 * 
-	 * @param context
-	 *            the {@link ProcessContext}
 	 * @param task
 	 *            the {@link ActionTask}
 	 */
 	void doAction(ActionTask task);
 
 	/**
-	 * Undoes execution of the given {@link ActionTask} in the given {@link ProcessContext}.
+	 * Undoes execution of the given {@link ActionTask} in the {@link ProcessContext}.
 	 * 
-	 * @param context
-	 *            the {@link ProcessContext}
 	 * @param task
 	 *            the {@link ActionTask}
 	 */

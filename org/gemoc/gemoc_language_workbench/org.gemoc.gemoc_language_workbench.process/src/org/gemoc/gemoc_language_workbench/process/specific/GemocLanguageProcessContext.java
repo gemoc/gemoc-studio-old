@@ -20,6 +20,7 @@ package org.gemoc.gemoc_language_workbench.process.specific;
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.Activator;
 import fr.obeo.dsl.process.IllegalVariableAccessException;
+import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.impl.ProcessContextImpl;
 
@@ -60,7 +61,8 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 			setName("Gemoc process: " + newUri.toPlatformString(true));
 			//CHECKSTYLE:OFF
 			try {
-				setXdsmlConfigURI(newUri, null);
+				ActionTask initialTask = ProcessUtils.getInitialActionTasks(getDefinition()).get(0);
+				setXdsmlConfigURI(newUri, initialTask);
 			} catch (IllegalVariableAccessException e) {
 				Activator.getDefault().error(e);
 			//CHECKSTYLE:OFF	
@@ -74,23 +76,23 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 
 	public void setXdsmlConfigURI(URI newUri, ActionTask writterTask) throws IllegalVariableAccessException {
 		if (newUri != null) {
-			if (!newUri.equals(getVariableValue(XDSML_FILE_URI_VAR))) {
+			if (!newUri.equals(getVariableValue(XDSML_FILE_URI_VAR, writterTask))) {
 				this.setVariableValue(XDSML_FILE_URI_VAR, newUri, writterTask);
 				loadXdsmlConfigURI(writterTask);
 			}
 		}
 	}
 
-	private Object getVariableValue(String varName) throws IllegalVariableAccessException {
+	private Object getVariableValue(String varName, ActionTask task) throws IllegalVariableAccessException {
 		ProcessVariable processVar = getProcessVariable(varName);
 		if (processVar == null) {
 			throw new IllegalVariableAccessException("No ProcessVariable " + varName + " in current ProcessContext");
 		}
-		return getVariableValue(processVar);
+		return getVariableValue(processVar, task);
 	}
 
 	public void loadXdsmlConfigURI(ActionTask writterTask) throws IllegalVariableAccessException {
-		URI xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR);
+		URI xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR, writterTask);
 		if (xdsmlURI != null) {
 			this.setVariableValue(XDSML_MODEL_VAR, EMFResource.getFirstContent(xdsmlURI), writterTask);
 		} else {
@@ -101,18 +103,18 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	// getter and setters
 	// ------------------
 
-	public GemocLanguageWorkbenchConfiguration getXdsmlModel() {
+	public GemocLanguageWorkbenchConfiguration getXdsmlModel(ActionTask task) {
 		try {
-			return (GemocLanguageWorkbenchConfiguration)this.getVariableValue(XDSML_MODEL_VAR);
+			return (GemocLanguageWorkbenchConfiguration)this.getVariableValue(XDSML_MODEL_VAR, task);
 		} catch (IllegalVariableAccessException e) {
 			Activator.getDefault().error(e);
 		}
 		return null;
 	}
 
-	public URI getXdsmlURI() {
+	public URI getXdsmlURI(ActionTask task) {
 		try {
-			return (URI)getVariableValue(XDSML_FILE_URI_VAR);
+			return (URI)getVariableValue(XDSML_FILE_URI_VAR, task);
 		} catch (IllegalVariableAccessException e) {
 
 			Activator.getDefault().error(e);
@@ -120,11 +122,11 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		return null;
 	}
 
-	public IFile getXdsmlFile() {
+	public IFile getXdsmlFile(ActionTask task) {
 		IFile file = null;
 		URI xdsmlURI;
 		try {
-			xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR);
+			xdsmlURI = (URI)getVariableValue(XDSML_FILE_URI_VAR, task);
 			if (xdsmlURI != null) {
 				file = EclipseResource.getFile(xdsmlURI);
 			}
@@ -134,10 +136,10 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		return file;
 	}
 
-	public IFile getEcoreIFile() {
+	public IFile getEcoreIFile(ActionTask task) {
 		IFile ecoreIFile = null;
 		try {
-			ecoreIFile = (IFile)getVariableValue(ECORE_IFILE_VAR);
+			ecoreIFile = (IFile)getVariableValue(ECORE_IFILE_VAR, task);
 		} catch (IllegalVariableAccessException e) {
 			Activator.getDefault().error(e);
 		}
@@ -156,18 +158,18 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		setVariableValue(processVar, variableValue, writterTask);
 	}
 
-	public EMFEcoreProject getEcoreProject() {
+	public EMFEcoreProject getEcoreProject(ActionTask task) {
 		EMFEcoreProject project = null;
-		Object o = getXdsmlModel().getLanguageDefinition().getDomainModelProject();
+		Object o = getXdsmlModel(task).getLanguageDefinition().getDomainModelProject();
 		if (o instanceof EMFEcoreProject) {
 			project = (EMFEcoreProject)o;
 		}
 		return project;
 	}
 	
-	public String getEcoreProjectName() {
+	public String getEcoreProjectName(ActionTask task) {
 		String projectName = null;
-		Object o = getXdsmlModel().getLanguageDefinition().getDomainModelProject();
+		Object o = getXdsmlModel(task).getLanguageDefinition().getDomainModelProject();
 		if (o instanceof EMFEcoreProject) {
 			projectName = ((EMFEcoreProject)o).getProjectName();
 		}

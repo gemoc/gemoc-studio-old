@@ -18,7 +18,7 @@
 package org.gemoc.gemoc_language_workbench.guideline.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
@@ -32,7 +32,6 @@ import org.gemoc.gemoc_language_workbench.guideline.process.utils.EclipseResourc
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
 public class DefineTextualEditorTask extends AbstractGemocActionProcessor {
-
 
 	/**
 	 * Constructor.
@@ -52,14 +51,14 @@ public class DefineTextualEditorTask extends AbstractGemocActionProcessor {
 	 */
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
-		return context.getTextualEditor();
+		return context.getTextualEditor(getActionTask());
 	}
 
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a DSA project that is referenced by the xdsml
 		// else setUndone
-		XTextEditorProject project = context.getTextualEditor();
+		XTextEditorProject project = context.getTextualEditor(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;
@@ -82,7 +81,7 @@ public class DefineTextualEditorTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
-			ContextVariable variable) {
+			ProcessVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;

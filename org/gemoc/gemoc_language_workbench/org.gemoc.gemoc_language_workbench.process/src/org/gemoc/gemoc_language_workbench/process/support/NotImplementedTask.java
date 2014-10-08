@@ -18,16 +18,16 @@
 package org.gemoc.gemoc_language_workbench.process.support;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
 import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.Task;
 
 import org.eclipse.core.resources.IResource;
 
 /**
  * Default task for incomplete Process.
+ * 
  * @param <T>
- *
  * @author <a href="mailto:didier.vojtisek@inria.fr">Didier Vojtisek</a>
  */
 public class NotImplementedTask<T extends ProcessContext> extends AbstractActionProcessor<T> {
@@ -43,7 +43,7 @@ public class NotImplementedTask<T extends ProcessContext> extends AbstractAction
 	}
 
 	@Override
-	protected String internalUpdateContextWhenUndone(ProcessContext context) {		
+	protected String internalUpdateContextWhenUndone(ProcessContext context) {
 		return "Task isn't implemented. Please ask to the person in charge of the development of this Process";
 	}
 
@@ -61,7 +61,7 @@ public class NotImplementedTask<T extends ProcessContext> extends AbstractAction
 	}
 
 	@Override
-	protected boolean acceptChangeVariableChanged(ProcessContext context, ContextVariable variableChanged) {
+	protected boolean acceptChangeVariableChanged(ProcessContext context, ProcessVariable variableChanged) {
 		return false;
 	}
 

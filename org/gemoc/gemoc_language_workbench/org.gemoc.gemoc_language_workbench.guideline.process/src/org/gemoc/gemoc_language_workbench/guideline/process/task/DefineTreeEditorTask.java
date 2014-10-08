@@ -18,7 +18,7 @@
 package org.gemoc.gemoc_language_workbench.guideline.process.task;
 
 import fr.obeo.dsl.process.ActionTask;
-import fr.obeo.dsl.process.ContextVariable;
+import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
@@ -51,14 +51,14 @@ public class DefineTreeEditorTask extends AbstractGemocActionProcessor {
 	 */
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
-		return context.getTextualEditor();
+		return context.getTextualEditor(getActionTask());
 	}
 
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a project that is referenced by the xdsml
 		// else setUndone
-		TreeEditorProject project = context.getTreeEditor();
+		TreeEditorProject project = context.getTreeEditor(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;
@@ -81,7 +81,7 @@ public class DefineTreeEditorTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean acceptChangeVariableChanged(GemocLanguageProcessContext context,
-			ContextVariable variable) {
+			ProcessVariable variable) {
 		// if the xdsml model has changed, need to reevaluate
 		if (variable.getName().equals(GemocLanguageProcessContext.XDSML_MODEL_VAR)) {
 			return true;
