@@ -57,6 +57,7 @@ import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectPluginIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectXtextIProjectDialog;
 
 /*
@@ -491,6 +492,20 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseMoCCProject.setText("browse");
 		btnBrowseMoCCProject.setBounds(0, 0, 50, 25);
 		toolkit.adapt(btnBrowseMoCCProject, true, true);
+		btnBrowseMoCCProject.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if(res == WizardDialog.OK){
+						// update the project model
+						txtMoCCProject.setText(((IProject)dialog.getResult()[0]).getName());
+					}
+					break;
+				}
+			}
+		});
 
 		Group grpDSEDefinition = new Group(grpBehaviorDefinition, SWT.NONE);
 		grpDSEDefinition.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
@@ -525,6 +540,20 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseDSEProject.setText("browse");
 		btnBrowseDSEProject.setBounds(0, 0, 50, 25);
 		toolkit.adapt(btnBrowseDSEProject, true, true);
+		btnBrowseDSEProject.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if(res == WizardDialog.OK){
+						// update the project model
+						txtDSEProject.setText(((IProject)dialog.getResult()[0]).getName());
+					}
+					break;
+				}
+			}
+		});
 
 		m_bindingContext = initDataBindings();
 	}
