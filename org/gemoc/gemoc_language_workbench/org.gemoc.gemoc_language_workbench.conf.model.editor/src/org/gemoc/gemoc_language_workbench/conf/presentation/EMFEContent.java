@@ -12,7 +12,7 @@ import org.gemoc.gemoc_language_workbench.conf.ODProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 
 /**
-   * receive EMF notifications and call the appropriate firePropertyChange fot he corresponding
+   * receive EMF notifications and call the appropriate firePropertyChange for the corresponding property
    * @author dvojtise
    *
    */
@@ -64,8 +64,6 @@ import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 	        if (featureID == org.gemoc.gemoc_language_workbench.conf.confPackage.LANGUAGE_DEFINITION__NAME){
 	        		String oldLanguageName = n.getOldStringValue();
 	        		String newLanguageName = n.getNewStringValue();
-	        		//LanguageDefinition languageDefinition = (LanguageDefinition) n.getNotifier();
-	                //System.out.println("The name is now " + newLanguageName );
 	                this.xdsmlModelWrapper.firePropertyChange("languageName", oldLanguageName, newLanguageName);
 	        }
 		}

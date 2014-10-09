@@ -124,9 +124,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 		if (languageDefinition != null) {
 			for (AnimatorProject editor : languageDefinition
 					.getAnimatorProjects()) {
-				// if (editor instanceof ODProject) {
 				return editor.getProjectName();
-				// }
 			}
 		}
 		return "";

@@ -54,7 +54,10 @@ import org.gemoc.gemoc_language_workbench.ui.commands.ENamedElementQualifiedName
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyConcreteEClassDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyEObjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIFileDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectXtextIProjectDialog;
 
 /*
  * IMPORTANT : this file has been edited using Windows builder.
@@ -171,7 +174,6 @@ public class GemocXDSMLFormComposite extends Composite {
 					if(res == WizardDialog.OK){
 						// update the project model
 						txtEMFProject.setText(((IProject)dialog.getResult()[0]).getName());
-						//xdsmlWrappedObject.setDomainModelProjectName(((IProject)dialog.getResult()[0]).getName());
 					}
 					break;
 				}
@@ -224,13 +226,13 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtRootContainerModelElement.setBounds(0, 0, 76, 21);
 		toolkit.adapt(txtRootContainerModelElement, true, true);
 
-		Button btnNewButton = new Button(grpDomainModelDefinition, SWT.NONE);
-		btnNewButton.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false,
+		Button btSelectRootModelElement = new Button(grpDomainModelDefinition, SWT.NONE);
+		btSelectRootModelElement.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false,
 				false, 1, 1));
-		btnNewButton.setBounds(0, 0, 75, 25);
-		toolkit.adapt(btnNewButton, true, true);
-		btnNewButton.setText("Select");
-		btnNewButton.addListener(SWT.Selection, new Listener() {
+		btSelectRootModelElement.setBounds(0, 0, 75, 25);
+		toolkit.adapt(btSelectRootModelElement, true, true);
+		btSelectRootModelElement.setText("Select");
+		btSelectRootModelElement.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
@@ -287,10 +289,24 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtXTextEditorProject.setBounds(0, 0, 76, 21);
 		toolkit.adapt(txtXTextEditorProject, true, true);
 
-		Button btnNewButton_1 = new Button(grpTextualEditor, SWT.NONE);
-		btnNewButton_1.setBounds(0, 0, 75, 25);
-		toolkit.adapt(btnNewButton_1, true, true);
-		btnNewButton_1.setText("Browse");
+		Button btnBrowseXtextEditor = new Button(grpTextualEditor, SWT.NONE);
+		btnBrowseXtextEditor.setBounds(0, 0, 75, 25);
+		toolkit.adapt(btnBrowseXtextEditor, true, true);
+		btnBrowseXtextEditor.setText("Browse");
+		btnBrowseXtextEditor.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectXtextIProjectDialog dialog = new SelectXtextIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if(res == WizardDialog.OK){
+						// update the project model
+						txtXTextEditorProject.setText(((IProject)dialog.getResult()[0]).getName());
+					}
+					break;
+				}
+			}
+		});
 
 		Group grpGraphicalEditor = new Group(grpConcreteSyntaxDefinition,
 				SWT.NONE);
@@ -316,10 +332,24 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtSiriusEditorProject.setBounds(0, 0, 76, 21);
 		toolkit.adapt(txtSiriusEditorProject, true, true);
 
-		Button btnBrowse_1 = new Button(grpGraphicalEditor, SWT.NONE);
-		btnBrowse_1.setText("Browse");
-		btnBrowse_1.setBounds(0, 0, 75, 25);
-		toolkit.adapt(btnBrowse_1, true, true);
+		Button btnBrowseSiriusEditor = new Button(grpGraphicalEditor, SWT.NONE);
+		btnBrowseSiriusEditor.setText("Browse");
+		btnBrowseSiriusEditor.setBounds(0, 0, 75, 25);
+		toolkit.adapt(btnBrowseSiriusEditor, true, true);
+		btnBrowseSiriusEditor.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if(res == WizardDialog.OK){
+						// update the project model
+						txtSiriusEditorProject.setText(((IProject)dialog.getResult()[0]).getName());
+					}
+					break;
+				}
+			}
+		});
 
 		Group grpAnimationDefinition = new Group(grpConcreteSyntaxDefinition,
 				SWT.NONE);
@@ -350,9 +380,23 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtSiriusAnimationProject.setLayoutData(gd_txtSiriusAnimationProject);
 		toolkit.adapt(txtSiriusAnimationProject, true, true);
 
-		Button button_2 = new Button(grpAnimationDefinition, SWT.NONE);
-		button_2.setText("Browse");
-		toolkit.adapt(button_2, true, true);
+		Button btnBrowseSiriusAnimator = new Button(grpAnimationDefinition, SWT.NONE);
+		btnBrowseSiriusAnimator.setText("Browse");
+		btnBrowseSiriusAnimator.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if(res == WizardDialog.OK){
+						// update the project model
+						txtSiriusAnimationProject.setText(((IProject)dialog.getResult()[0]).getName());
+					}
+					break;
+				}
+			}
+		});
+		toolkit.adapt(btnBrowseSiriusAnimator, true, true);
 		new Label(grpAnimationDefinition, SWT.NONE);
 		new Label(grpAnimationDefinition, SWT.NONE);
 		new Label(grpAnimationDefinition, SWT.NONE);
@@ -396,6 +440,20 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseDSAProject.setBounds(0, 0, 75, 25);
 		toolkit.adapt(btnBrowseDSAProject, true, true);
 		btnBrowseDSAProject.setText("browse");
+		btnBrowseDSAProject.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectDSAIProjectDialog dialog = new SelectDSAIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if(res == WizardDialog.OK){
+						// update the project model
+						txtDSAProject.setText(((IProject)dialog.getResult()[0]).getName());
+					}
+					break;
+				}
+			}
+		});
 
 		Group grpMocDefinitionLibrary = new Group(grpBehaviorDefinition,
 				SWT.NONE);
@@ -495,6 +553,9 @@ public class GemocXDSMLFormComposite extends Composite {
 		initListeners();
 	}
 
+	/**
+	 * Sets the initial values of the fields when opening the view
+	 */
 	protected void initControlFromWrappedObject() {
 		txtLanguageName.setText(xdsmlWrappedObject.getLanguageName());
 		txtEMFProject.setText(xdsmlWrappedObject.getDomainModelProjectName());
@@ -512,6 +573,11 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtMoCCProject.setText(xdsmlWrappedObject.getMoCCProjectName());
 	}
 
+	/**
+	 * Initialize the modifyListener for the txt field
+	 * They are in charge of reflecting the change to the underlying model via the bean
+	 * Note that they must act in a TransactionalEditingDomain in order to be correctly handled
+	 */
 	protected void initListeners() {
 		// all the listeners that will really edit the model
 		
@@ -679,6 +745,11 @@ public class GemocXDSMLFormComposite extends Composite {
 		
 	}
 
+	/**
+	 * Data binding between the Wrapped object and the fields
+	 * This method is managed vie the Windows builder GUI
+	 * @return
+	 */
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
