@@ -17,7 +17,6 @@
  *******************************************************************************/
 package fr.obeo.dsl.workspace.listener;
 
-
 /**
  * Factory for {@link IListener}.
  * 

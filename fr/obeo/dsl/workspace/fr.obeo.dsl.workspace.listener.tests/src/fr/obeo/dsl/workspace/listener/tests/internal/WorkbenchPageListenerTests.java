@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.workspace.listener.internal;
+package fr.obeo.dsl.workspace.listener.tests.internal;
 
 import fr.obeo.dsl.workspace.listener.IListener;
 import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
@@ -34,14 +34,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Tests the {@link WorkbenchPageListener} class.
+ * Tests the {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPageListener WorkbenchPageListener}
+ * class.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
 public class WorkbenchPageListenerTests {
 
 	/**
-	 * Tests {@link WorkbenchPageListener#pageActivated(IWorkbenchPage)}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPageListener#pageActivated(IWorkbenchPage)}.
 	 * 
 	 * @throws WorkbenchException
 	 *             if the {@link IWorkbenchPage} can't be opened.
@@ -69,7 +71,7 @@ public class WorkbenchPageListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPageListener#pageClosed(IWorkbenchPage)}.
+	 * Tests {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPageListener#pageClosed(IWorkbenchPage)}.
 	 * 
 	 * @throws WorkbenchException
 	 *             if the {@link IWorkbenchPage} can't be opened.
@@ -96,7 +98,7 @@ public class WorkbenchPageListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPageListener#pageOpened(IWorkbenchPage)}.
+	 * Tests {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPageListener#pageOpened(IWorkbenchPage)}.
 	 * 
 	 * @throws WorkbenchException
 	 *             if the {@link IWorkbenchPage} can't be opened.

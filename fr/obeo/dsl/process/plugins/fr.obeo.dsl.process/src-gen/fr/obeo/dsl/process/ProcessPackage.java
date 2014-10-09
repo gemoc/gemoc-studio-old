@@ -196,13 +196,31 @@ public interface ProcessPackage extends EPackage {
 	int PROCESS_VARIABLE__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Written By</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_VARIABLE__WRITTEN_BY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Observed By</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_VARIABLE__OBSERVED_BY = 2;
+
+	/**
 	 * The number of structural features of the '<em>Variable</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_VARIABLE_FEATURE_COUNT = 1;
+	int PROCESS_VARIABLE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.process.impl.ComposedTaskImpl <em>Composed Task</em>}'
@@ -903,6 +921,30 @@ public interface ProcessPackage extends EPackage {
 	EAttribute getProcessVariable_Name();
 
 	/**
+	 * Returns the meta object for the reference list '
+	 * {@link fr.obeo.dsl.process.ProcessVariable#getWrittenBy <em>Written By</em>}'. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the reference list '<em>Written By</em>'.
+	 * @see fr.obeo.dsl.process.ProcessVariable#getWrittenBy()
+	 * @see #getProcessVariable()
+	 * @generated
+	 */
+	EReference getProcessVariable_WrittenBy();
+
+	/**
+	 * Returns the meta object for the reference list '
+	 * {@link fr.obeo.dsl.process.ProcessVariable#getObservedBy <em>Observed By</em>}'. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the reference list '<em>Observed By</em>'.
+	 * @see fr.obeo.dsl.process.ProcessVariable#getObservedBy()
+	 * @see #getProcessVariable()
+	 * @generated
+	 */
+	EReference getProcessVariable_ObservedBy();
+
+	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.process.ComposedTask <em>Composed Task</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -1379,6 +1421,22 @@ public interface ProcessPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESS_VARIABLE__NAME = eINSTANCE.getProcessVariable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Written By</b></em>' reference list feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EReference PROCESS_VARIABLE__WRITTEN_BY = eINSTANCE.getProcessVariable_WrittenBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Observed By</b></em>' reference list feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EReference PROCESS_VARIABLE__OBSERVED_BY = eINSTANCE.getProcessVariable_ObservedBy();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.process.impl.ComposedTaskImpl

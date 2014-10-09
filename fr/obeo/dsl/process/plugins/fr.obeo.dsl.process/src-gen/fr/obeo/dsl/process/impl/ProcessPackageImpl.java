@@ -356,6 +356,24 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * 
 	 * @generated
 	 */
+	public EReference getProcessVariable_WrittenBy() {
+		return (EReference)processVariableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getProcessVariable_ObservedBy() {
+		return (EReference)processVariableEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public EClass getComposedTask() {
 		return composedTaskEClass;
 	}
@@ -674,6 +692,8 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 
 		processVariableEClass = createEClass(PROCESS_VARIABLE);
 		createEAttribute(processVariableEClass, PROCESS_VARIABLE__NAME);
+		createEReference(processVariableEClass, PROCESS_VARIABLE__WRITTEN_BY);
+		createEReference(processVariableEClass, PROCESS_VARIABLE__OBSERVED_BY);
 
 		composedTaskEClass = createEClass(COMPOSED_TASK);
 		createEReference(composedTaskEClass, COMPOSED_TASK__TASKS);
@@ -799,6 +819,14 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEAttribute(getProcessVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1,
 				ProcessVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessVariable_WrittenBy(), this.getActionTask(), this
+				.getActionTask_WrittenVariables(), "writtenBy", null, 0, -1, ProcessVariable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessVariable_ObservedBy(), this.getActionTask(), this
+				.getActionTask_ObservedVariables(), "observedBy", null, 0, -1, ProcessVariable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(composedTaskEClass, ComposedTask.class, "ComposedTask", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -820,13 +848,14 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEAttribute(getActionTask_MultipleExecution(), ecorePackage.getEBoolean(), "multipleExecution",
 				"false", 1, 1, ActionTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActionTask_WrittenVariables(), this.getProcessVariable(), null, "writtenVariables",
-				null, 0, -1, ActionTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActionTask_ObservedVariables(), this.getProcessVariable(), null,
-				"observedVariables", null, 0, -1, ActionTask.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getActionTask_WrittenVariables(), this.getProcessVariable(), this
+				.getProcessVariable_WrittenBy(), "writtenVariables", null, 0, -1, ActionTask.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActionTask_ObservedVariables(), this.getProcessVariable(), this
+				.getProcessVariable_ObservedBy(), "observedVariables", null, 0, -1, ActionTask.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActionTask_InstanceClassName(), ecorePackage.getEString(), "instanceClassName",
 				null, 0, 1, ActionTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -18,6 +18,7 @@
  */
 package fr.obeo.dsl.process;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -62,5 +63,35 @@ public interface ProcessVariable extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Written By</b></em>' reference list. The list contents are of type
+	 * {@link fr.obeo.dsl.process.ActionTask}. It is bidirectional and its opposite is '
+	 * {@link fr.obeo.dsl.process.ActionTask#getWrittenVariables <em>Written Variables</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> {@link ActionTask} writing this
+	 * variable. <!-- end-model-doc -->
+	 * 
+	 * @return the value of the '<em>Written By</em>' reference list.
+	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessVariable_WrittenBy()
+	 * @see fr.obeo.dsl.process.ActionTask#getWrittenVariables
+	 * @model opposite="writtenVariables"
+	 * @generated
+	 */
+	EList<ActionTask> getWrittenBy();
+
+	/**
+	 * Returns the value of the '<em><b>Observed By</b></em>' reference list. The list contents are of type
+	 * {@link fr.obeo.dsl.process.ActionTask}. It is bidirectional and its opposite is '
+	 * {@link fr.obeo.dsl.process.ActionTask#getObservedVariables <em>Observed Variables</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> {@link ActionTask} observing this
+	 * variable. <!-- end-model-doc -->
+	 * 
+	 * @return the value of the '<em>Observed By</em>' reference list.
+	 * @see fr.obeo.dsl.process.ProcessPackage#getProcessVariable_ObservedBy()
+	 * @see fr.obeo.dsl.process.ActionTask#getObservedVariables
+	 * @model opposite="observedVariables"
+	 * @generated
+	 */
+	EList<ActionTask> getObservedBy();
 
 } // ProcessVariable

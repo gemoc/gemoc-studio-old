@@ -36,6 +36,21 @@ public interface IActionTaskProcessor {
 	void validate(ProcessContext context);
 
 	/**
+	 * The given {@link ProcessVariable} has changed from the old value to the new value in the given
+	 * {@link ProcessContext}.
+	 * 
+	 * @param context
+	 *            the {@link ProcessContext}
+	 * @param variable
+	 *            the {@link ProcessVariable}
+	 * @param oldValue
+	 *            the old value
+	 * @param newValue
+	 *            the new value
+	 */
+	void variableChanged(ProcessContext context, ProcessVariable variable, Object oldValue, Object newValue);
+
+	/**
 	 * Executes the {@link ActionTask} in the given{@link ProcessContext}.
 	 * 
 	 * @param context

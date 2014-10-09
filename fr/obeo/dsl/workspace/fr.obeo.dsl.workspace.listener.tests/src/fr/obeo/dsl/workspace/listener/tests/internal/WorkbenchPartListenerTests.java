@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.workspace.listener.internal;
+package fr.obeo.dsl.workspace.listener.tests.internal;
 
 import fr.obeo.dsl.workspace.listener.IListener;
 import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
@@ -53,7 +53,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Tests the {@link WorkbenchPartListener} class.
+ * Tests the {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPartListener WorkbenchPartListener}
+ * class.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
@@ -98,7 +99,9 @@ public class WorkbenchPartListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPartListener#partActivated(org.eclipse.ui.IWorkbenchPartReference)}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPartListener#partActivated(org.eclipse.ui.IWorkbenchPartReference)}
+	 * .
 	 * 
 	 * @throws PartInitException
 	 *             if the editor can't be opened
@@ -132,7 +135,9 @@ public class WorkbenchPartListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPartListener#partBroughtToTop(org.eclipse.ui.IWorkbenchPartReference)}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPartListener#partBroughtToTop(org.eclipse.ui.IWorkbenchPartReference)}
+	 * .
 	 * 
 	 * @throws PartInitException
 	 *             if the editor can't be opened
@@ -164,7 +169,9 @@ public class WorkbenchPartListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPartListener#partClosed(org.eclipse.ui.IWorkbenchPartReference)}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPartListener#partClosed(org.eclipse.ui.IWorkbenchPartReference)}
+	 * .
 	 * 
 	 * @throws PartInitException
 	 *             if the editor can't be opened
@@ -196,7 +203,9 @@ public class WorkbenchPartListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPartListener#partDeactivated(org.eclipse.ui.IWorkbenchPartReference)}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPartListener#partDeactivated(org.eclipse.ui.IWorkbenchPartReference)}
+	 * .
 	 * 
 	 * @throws PartInitException
 	 *             if the editor can't be opened
@@ -229,7 +238,9 @@ public class WorkbenchPartListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPartListener#partOpened(org.eclipse.ui.IWorkbenchPartReference)}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPartListener#partOpened(org.eclipse.ui.IWorkbenchPartReference)}
+	 * .
 	 * 
 	 * @throws PartInitException
 	 *             if the editor can't be opened
@@ -261,7 +272,9 @@ public class WorkbenchPartListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPartListener#partHidden(org.eclipse.ui.IWorkbenchPartReference)}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPartListener#partHidden(org.eclipse.ui.IWorkbenchPartReference)}
+	 * .
 	 * 
 	 * @throws PartInitException
 	 *             if the editor can't be opened
@@ -293,7 +306,9 @@ public class WorkbenchPartListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPartListener#partVisible(org.eclipse.ui.IWorkbenchPartReference)}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPartListener#partVisible(org.eclipse.ui.IWorkbenchPartReference)}
+	 * .
 	 * 
 	 * @throws PartInitException
 	 *             if the editor can't be opened
@@ -325,7 +340,9 @@ public class WorkbenchPartListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkbenchPartListener#partInputChanged(org.eclipse.ui.IWorkbenchPartReference)}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkbenchPartListener#partInputChanged(org.eclipse.ui.IWorkbenchPartReference)}
+	 * .
 	 * 
 	 * @throws PartInitException
 	 *             if the editor can't be opened

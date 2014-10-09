@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/fr.obeo.dsl.process.workspace/src-gen" editDirectory="/fr.obeo.dsl.process.workspace.edit/src-gen"
+    editorDirectory="/fr.obeo.dsl.process.workspace.editor/src-gen" modelPluginID="fr.obeo.dsl.process.workspace"
+    modelName="Processworkspace" testsDirectory="/fr.obeo.dsl.process.workspace.tests/src-gen"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    usedGenPackages="../../fr.obeo.dsl.process/model/process.genmodel#//process">
+  <foreignModel>processworkspace.ecore</foreignModel>
+  <genPackages prefix="Processworkspace" basePackage="fr.obeo.dsl" disposableProviderFactory="true"
+      ecorePackage="processworkspace.ecore#/">
+    <genClasses ecoreClass="processworkspace.ecore#//FileVariable"/>
+    <genClasses ecoreClass="processworkspace.ecore#//FolderVariable"/>
+    <genClasses ecoreClass="processworkspace.ecore#//ProjectVariable"/>
+  </genPackages>
+</genmodel:GenModel>

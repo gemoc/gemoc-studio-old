@@ -15,14 +15,14 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.workspace.listener.internal;
+package fr.obeo.dsl.workspace.listener.tests.internal;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * Aggregates tests for the fr.obeo.dsl.workspace.listener.internal package.
+ * Aggregates tests for the fr.obeo.dsl.workspace.listener.tests.internal package.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */

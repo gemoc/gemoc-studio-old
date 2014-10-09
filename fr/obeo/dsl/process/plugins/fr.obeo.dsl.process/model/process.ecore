@@ -2,6 +2,9 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="process" nsURI="http://www.obeo.fr/dsl/process" nsPrefix="process">
   <eClassifiers xsi:type="ecore:EClass" name="Process">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The representation of a process."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -69,6 +72,18 @@
       <details key="constraints" value="VariableIsWrittenAtLeastOnce VariableIsObservedAtLeastOnce"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="writtenBy" upperBound="-1"
+        eType="#//ActionTask" eOpposite="#//ActionTask/writtenVariables">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="{@link ActionTask} writing this variable."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="observedBy" upperBound="-1"
+        eType="#//ActionTask" eOpposite="#//ActionTask/observedVariables">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="{@link ActionTask} observing this variable."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComposedTask" eSuperTypes="#//Task">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -116,13 +131,13 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writtenVariables" upperBound="-1"
-        eType="#//ProcessVariable">
+        eType="#//ProcessVariable" eOpposite="#//ProcessVariable/writtenBy">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="List of {@link ProcessVariable} whose values are modified  by this {@link Task}."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="observedVariables" upperBound="-1"
-        eType="#//ProcessVariable">
+        eType="#//ProcessVariable" eOpposite="#//ProcessVariable/observedBy">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="List of {@link ProcessVariable} that are read by this {@link Task}. If a change occurs on the ProcessVariable the Task is supposed to be interrested  by a notification of this change."/>
       </eAnnotations>

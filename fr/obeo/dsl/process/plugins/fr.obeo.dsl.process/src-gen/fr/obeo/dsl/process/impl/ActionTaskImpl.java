@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -431,8 +430,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	 */
 	public EList<ProcessVariable> getWrittenVariables() {
 		if (writtenVariables == null) {
-			writtenVariables = new EObjectResolvingEList<ProcessVariable>(ProcessVariable.class, this,
-					ProcessPackage.ACTION_TASK__WRITTEN_VARIABLES);
+			writtenVariables = new EObjectWithInverseResolvingEList.ManyInverse<ProcessVariable>(
+					ProcessVariable.class, this, ProcessPackage.ACTION_TASK__WRITTEN_VARIABLES,
+					ProcessPackage.PROCESS_VARIABLE__WRITTEN_BY);
 		}
 		return writtenVariables;
 	}
@@ -444,8 +444,9 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 	 */
 	public EList<ProcessVariable> getObservedVariables() {
 		if (observedVariables == null) {
-			observedVariables = new EObjectResolvingEList<ProcessVariable>(ProcessVariable.class, this,
-					ProcessPackage.ACTION_TASK__OBSERVED_VARIABLES);
+			observedVariables = new EObjectWithInverseResolvingEList.ManyInverse<ProcessVariable>(
+					ProcessVariable.class, this, ProcessPackage.ACTION_TASK__OBSERVED_VARIABLES,
+					ProcessPackage.PROCESS_VARIABLE__OBSERVED_BY);
 		}
 		return observedVariables;
 	}
@@ -491,6 +492,12 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 			case ProcessPackage.ACTION_TASK__FOLLOWING_TASKS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getFollowingTasks()).basicAdd(
 						otherEnd, msgs);
+			case ProcessPackage.ACTION_TASK__WRITTEN_VARIABLES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getWrittenVariables()).basicAdd(
+						otherEnd, msgs);
+			case ProcessPackage.ACTION_TASK__OBSERVED_VARIABLES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getObservedVariables()).basicAdd(
+						otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -511,6 +518,10 @@ public class ActionTaskImpl extends EObjectImpl implements ActionTask {
 				return ((InternalEList<?>)getFollowingTasks()).basicRemove(otherEnd, msgs);
 			case ProcessPackage.ACTION_TASK__PRECONDITION:
 				return basicSetPrecondition(null, msgs);
+			case ProcessPackage.ACTION_TASK__WRITTEN_VARIABLES:
+				return ((InternalEList<?>)getWrittenVariables()).basicRemove(otherEnd, msgs);
+			case ProcessPackage.ACTION_TASK__OBSERVED_VARIABLES:
+				return ((InternalEList<?>)getObservedVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

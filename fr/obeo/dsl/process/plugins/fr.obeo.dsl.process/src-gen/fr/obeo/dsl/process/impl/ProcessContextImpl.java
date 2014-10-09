@@ -249,7 +249,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	public void setVariableValue(ProcessVariable variable, Object variableValue, ActionTask writer)
 			throws IllegalVariableAccessException {
 		if (writer != null) {
-			if (!writer.getWrittenVariables().contains(variable)) {
+			if (!variable.getWrittenBy().contains(writer)) {
 				throw new IllegalVariableAccessException("Task " + writer.getName()
 						+ " hasn't declared to be able to write in Variable " + variable.getName());
 			} else {
@@ -269,8 +269,7 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 */
 	public Object getVariableValue(ProcessVariable variable, ActionTask observer) {
 		if (observer != null) {
-			if (!observer.getObservedVariables().contains(variable)
-					&& !observer.getWrittenVariables().contains(variable)) {
+			if (!variable.getObservedBy().contains(observer) && !variable.getWrittenBy().contains(observer)) {
 				throw new IllegalVariableAccessException("Task " + observer.getName()
 						+ " hasn't declared to be able to read or write the Variable " + variable.getName());
 			} else {

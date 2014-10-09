@@ -67,6 +67,8 @@ public class ProcessVariableItemProvider extends ItemProviderAdapter implements 
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addWrittenByPropertyDescriptor(object);
+			addObservedByPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -83,6 +85,36 @@ public class ProcessVariableItemProvider extends ItemProviderAdapter implements 
 						"_UI_PropertyDescriptor_description", "_UI_ProcessVariable_name_feature",
 						"_UI_ProcessVariable_type"), ProcessPackage.Literals.PROCESS_VARIABLE__NAME, true,
 				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Written By feature. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @generated
+	 */
+	protected void addWrittenByPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ProcessVariable_writtenBy_feature"), getString(
+						"_UI_PropertyDescriptor_description", "_UI_ProcessVariable_writtenBy_feature",
+						"_UI_ProcessVariable_type"), ProcessPackage.Literals.PROCESS_VARIABLE__WRITTEN_BY,
+				true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Observed By feature. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @generated
+	 */
+	protected void addObservedByPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ProcessVariable_observedBy_feature"), getString(
+						"_UI_PropertyDescriptor_description", "_UI_ProcessVariable_observedBy_feature",
+						"_UI_ProcessVariable_type"), ProcessPackage.Literals.PROCESS_VARIABLE__OBSERVED_BY,
+				true, false, true, null, null, null));
 	}
 
 	/**
