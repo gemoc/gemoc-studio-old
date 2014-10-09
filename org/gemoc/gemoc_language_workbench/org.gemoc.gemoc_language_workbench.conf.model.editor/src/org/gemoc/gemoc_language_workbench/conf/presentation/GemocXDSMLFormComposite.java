@@ -1,8 +1,12 @@
 package org.gemoc.gemoc_language_workbench.conf.presentation;
 
+import java.io.File;
+
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.core.filesystem.EFS;
+import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -38,10 +42,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.ide.IDE;
+import org.gemoc.commons.eclipse.ui.OpenEditor;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
@@ -59,6 +67,10 @@ import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectPluginIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectXtextIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction.CreateDomainModelAction;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardContextAction;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardContextAction.CreateEditorProjectAction;
 
 /*
  * IMPORTANT : this file has been edited using Windows builder.
@@ -142,17 +154,28 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkEMFProject.setText("<a>EMF project</a>");
 		linkEMFProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				/*
-				 * IProject updatedGemocLanguageProject = context.getXdsmlFile()
-				 * .getProject(); CreateDomainModelWizardContextAction action =
-				 * new CreateDomainModelWizardContextAction(
-				 * updatedGemocLanguageProject); action.actionToExecute =
-				 * CreateDomainModelAction.CREATE_NEW_EMF_PROJECT;
-				 * action.execute();
-				 */
 				if (!txtEMFProject.getText().isEmpty()) {
-					// open the ecore or the project ?
+					// open the MANIFEST.MF of the project
+					IProject project = ResourcesPlugin.getWorkspace().getRoot()
+							.getProject(txtEMFProject.getText());
+					if (project.exists()) {
+						// open the editor on the manifest file
+						OpenEditor.openManifestForProject(project);
+						return;
+					}
 				}
+				// open the wizard to propose to create the project
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								CreateDomainModelWizardContextAction action = new CreateDomainModelWizardContextAction(rootModelElement);
+								action.actionToExecute = CreateDomainModelAction.CREATE_NEW_EMF_PROJECT;
+								action.execute();
+								initControlFromWrappedObject();
+							}
+						});
 			}
 		});
 
@@ -170,11 +193,14 @@ public class GemocXDSMLFormComposite extends Composite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					SelectEMFIProjectDialog dialog = new SelectEMFIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					SelectEMFIProjectDialog dialog = new SelectEMFIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
 					int res = dialog.open();
-					if(res == WizardDialog.OK){
+					if (res == WizardDialog.OK) {
 						// update the project model
-						txtEMFProject.setText(((IProject)dialog.getResult()[0]).getName());
+						txtEMFProject.setText(((IProject) dialog.getResult()[0])
+								.getName());
 					}
 					break;
 				}
@@ -189,6 +215,20 @@ public class GemocXDSMLFormComposite extends Composite {
 				false, 1, 1));
 		linkGenmodel.setText("<a>genmodel</a>");
 		toolkit.adapt(linkGenmodel, true, true);
+		linkGenmodel.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (!txtGenmodel.getText().isEmpty()) {
+					// open the MANIFEST.MF of the project
+					IFile file = ResourcesPlugin.getWorkspace().getRoot()
+							.getFile(new Path(txtGenmodel.getText().replaceFirst("platform:/resource", "")));
+					if (file.exists()) {
+						// open the editor on the manifest file
+						OpenEditor.openIFile(file);
+						return;
+					}
+				}
+			}
+		});
 
 		txtGenmodel = new Text(grpDomainModelDefinition, SWT.BORDER);
 		txtGenmodel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
@@ -203,9 +243,10 @@ public class GemocXDSMLFormComposite extends Composite {
 				case SWT.Selection:
 					SelectAnyIFileDialog dialog = new SelectAnyIFileDialog();
 					dialog.setPattern("*.genmodel");
-					if (dialog.open() == Dialog.OK){
-						//xdsmlWrappedObject.setGenmodelLocationURI("platform:/resource" + ((IResource) dialog.getResult()[0]).getFullPath().toString());
-						txtGenmodel.setText("platform:/resource" + ((IResource) dialog.getResult()[0]).getFullPath().toString());
+					if (dialog.open() == Dialog.OK) {
+						txtGenmodel.setText("platform:/resource"
+								+ ((IResource) dialog.getResult()[0])
+										.getFullPath().toString());
 					}
 					break;
 				}
@@ -227,9 +268,10 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtRootContainerModelElement.setBounds(0, 0, 76, 21);
 		toolkit.adapt(txtRootContainerModelElement, true, true);
 
-		Button btSelectRootModelElement = new Button(grpDomainModelDefinition, SWT.NONE);
-		btSelectRootModelElement.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false,
-				false, 1, 1));
+		Button btSelectRootModelElement = new Button(grpDomainModelDefinition,
+				SWT.NONE);
+		btSelectRootModelElement.setLayoutData(new GridData(SWT.CENTER,
+				SWT.CENTER, false, false, 1, 1));
 		btSelectRootModelElement.setBounds(0, 0, 75, 25);
 		toolkit.adapt(btSelectRootModelElement, true, true);
 		btSelectRootModelElement.setText("Select");
@@ -237,22 +279,27 @@ public class GemocXDSMLFormComposite extends Composite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					ActiveFile activeFileEcore = new ActiveFileEcore(getCurrentIFile().getProject());
+					ActiveFile activeFileEcore = new ActiveFileEcore(
+							getCurrentIFile().getProject());
 					IFile ecoreFile = activeFileEcore.getActiveFile();
 					if (ecoreFile != null) {
-						LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider(); 
+						LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
 						ResourceSet resSet = new ResourceSetImpl();
 
-					    // get the resource
-					    Resource resource = resSet.getResource(URI.createURI(ecoreFile.getLocationURI().toString()),true);						
-						SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-								resource,
-								labelProvider);
+						// get the resource
+						Resource resource = resSet.getResource(URI
+								.createURI(ecoreFile.getLocationURI()
+										.toString()), true);
+						SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(
+								PlatformUI.getWorkbench()
+										.getActiveWorkbenchWindow().getShell(),
+								resource, labelProvider);
 						int res = dialog.open();
-						if(res == WizardDialog.OK){
+						if (res == WizardDialog.OK) {
 							// update the project model
-							//xdsmlWrappedObject.setRootContainerModelElement(labelProvider.getText(dialog.getFirstResult()));
-							txtRootContainerModelElement.setText( labelProvider.getText(dialog.getFirstResult()));
+							// xdsmlWrappedObject.setRootContainerModelElement(labelProvider.getText(dialog.getFirstResult()));
+							txtRootContainerModelElement.setText(labelProvider
+									.getText(dialog.getFirstResult()));
 						}
 					}
 					break;
@@ -281,6 +328,32 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkXTextEditorProject.setBounds(0, 0, 49, 15);
 		toolkit.adapt(linkXTextEditorProject, true, true);
 		linkXTextEditorProject.setText("<a>xText project</a>");
+		linkXTextEditorProject.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (!txtXTextEditorProject.getText().isEmpty()) {
+					// open the MANIFEST.MF of the project
+					IProject project = ResourcesPlugin.getWorkspace().getRoot()
+							.getProject(txtXTextEditorProject.getText());
+					if (project.exists()) {
+						// open the editor on the manifest file
+						OpenEditor.openManifestForProject(project);
+						return;
+					}
+				}
+				// open the wizard to propose to create the project
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(rootModelElement);
+								action.actionToExecute = CreateEditorProjectAction.CREATE_NEW_XTEXT_PROJECT;
+								action.execute();
+								initControlFromWrappedObject();
+							}
+						});
+			}
+		});
 
 		txtXTextEditorProject = new Text(grpTextualEditor, SWT.BORDER);
 		GridData gd_txtXTextEditorProject = new GridData(SWT.FILL, SWT.CENTER,
@@ -298,11 +371,14 @@ public class GemocXDSMLFormComposite extends Composite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					SelectXtextIProjectDialog dialog = new SelectXtextIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					SelectXtextIProjectDialog dialog = new SelectXtextIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
 					int res = dialog.open();
-					if(res == WizardDialog.OK){
+					if (res == WizardDialog.OK) {
 						// update the project model
-						txtXTextEditorProject.setText(((IProject)dialog.getResult()[0]).getName());
+						txtXTextEditorProject.setText(((IProject) dialog
+								.getResult()[0]).getName());
 					}
 					break;
 				}
@@ -324,6 +400,32 @@ public class GemocXDSMLFormComposite extends Composite {
 				.setText("<a>Sirius viewpoint design project</a>");
 		linkSiriusEditorProject.setBounds(0, 0, 49, 15);
 		toolkit.adapt(linkSiriusEditorProject, true, true);
+		linkSiriusEditorProject.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (!txtSiriusEditorProject.getText().isEmpty()) {
+					// open the MANIFEST.MF of the project
+					IProject project = ResourcesPlugin.getWorkspace().getRoot()
+							.getProject(txtSiriusEditorProject.getText());
+					if (project.exists()) {
+						// open the editor on the manifest file
+						OpenEditor.openManifestForProject(project);
+						return;
+					}
+				}
+				// open the wizard to propose to create the project
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(rootModelElement);
+								action.actionToExecute = CreateEditorProjectAction.CREATE_NEW_SIRIUS_PROJECT;
+								action.execute();
+								initControlFromWrappedObject();
+							}
+						});
+			}
+		});
 
 		txtSiriusEditorProject = new Text(grpGraphicalEditor, SWT.BORDER);
 		GridData gd_txtSiriusEditorProject = new GridData(SWT.LEFT, SWT.CENTER,
@@ -341,11 +443,14 @@ public class GemocXDSMLFormComposite extends Composite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
 					int res = dialog.open();
-					if(res == WizardDialog.OK){
+					if (res == WizardDialog.OK) {
 						// update the project model
-						txtSiriusEditorProject.setText(((IProject)dialog.getResult()[0]).getName());
+						txtSiriusEditorProject.setText(((IProject) dialog
+								.getResult()[0]).getName());
 					}
 					break;
 				}
@@ -373,7 +478,34 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkSiriusAnimatorProject
 				.setText("<a>Sirius viewpoint design project</a>");
 		toolkit.adapt(linkSiriusAnimatorProject, true, true);
-
+		linkSiriusAnimatorProject.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (!txtSiriusAnimationProject.getText().isEmpty()) {
+					// open the MANIFEST.MF of the project
+					IProject project = ResourcesPlugin.getWorkspace().getRoot()
+							.getProject(txtSiriusAnimationProject.getText());
+					if (project.exists()) {
+						// open the editor on the manifest file
+						OpenEditor.openManifestForProject(project);
+						return;
+					}
+				}
+				// open the wizard to propose to create the project
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(rootModelElement);
+								action.actionToExecute = CreateEditorProjectAction.CREATE_NEW_SIRIUS_PROJECT;
+								action.execute();
+								initControlFromWrappedObject();
+							}
+						});
+			}
+		});
+		
+		
 		txtSiriusAnimationProject = new Text(grpAnimationDefinition, SWT.BORDER);
 		GridData gd_txtSiriusAnimationProject = new GridData(SWT.LEFT,
 				SWT.CENTER, false, false, 1, 1);
@@ -381,17 +513,21 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtSiriusAnimationProject.setLayoutData(gd_txtSiriusAnimationProject);
 		toolkit.adapt(txtSiriusAnimationProject, true, true);
 
-		Button btnBrowseSiriusAnimator = new Button(grpAnimationDefinition, SWT.NONE);
+		Button btnBrowseSiriusAnimator = new Button(grpAnimationDefinition,
+				SWT.NONE);
 		btnBrowseSiriusAnimator.setText("Browse");
 		btnBrowseSiriusAnimator.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
 					int res = dialog.open();
-					if(res == WizardDialog.OK){
+					if (res == WizardDialog.OK) {
 						// update the project model
-						txtSiriusAnimationProject.setText(((IProject)dialog.getResult()[0]).getName());
+						txtSiriusAnimationProject.setText(((IProject) dialog
+								.getResult()[0]).getName());
 					}
 					break;
 				}
@@ -445,11 +581,14 @@ public class GemocXDSMLFormComposite extends Composite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					SelectDSAIProjectDialog dialog = new SelectDSAIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					SelectDSAIProjectDialog dialog = new SelectDSAIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
 					int res = dialog.open();
-					if(res == WizardDialog.OK){
+					if (res == WizardDialog.OK) {
 						// update the project model
-						txtDSAProject.setText(((IProject)dialog.getResult()[0]).getName());
+						txtDSAProject.setText(((IProject) dialog.getResult()[0])
+								.getName());
 					}
 					break;
 				}
@@ -496,11 +635,14 @@ public class GemocXDSMLFormComposite extends Composite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
 					int res = dialog.open();
-					if(res == WizardDialog.OK){
+					if (res == WizardDialog.OK) {
 						// update the project model
-						txtMoCCProject.setText(((IProject)dialog.getResult()[0]).getName());
+						txtMoCCProject.setText(((IProject) dialog.getResult()[0])
+								.getName());
 					}
 					break;
 				}
@@ -544,11 +686,14 @@ public class GemocXDSMLFormComposite extends Composite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
 					int res = dialog.open();
-					if(res == WizardDialog.OK){
+					if (res == WizardDialog.OK) {
 						// update the project model
-						txtDSEProject.setText(((IProject)dialog.getResult()[0]).getName());
+						txtDSEProject.setText(((IProject) dialog.getResult()[0])
+								.getName());
 					}
 					break;
 				}
@@ -603,13 +748,13 @@ public class GemocXDSMLFormComposite extends Composite {
 	}
 
 	/**
-	 * Initialize the modifyListener for the txt field
-	 * They are in charge of reflecting the change to the underlying model via the bean
-	 * Note that they must act in a TransactionalEditingDomain in order to be correctly handled
+	 * Initialize the modifyListener for the txt field They are in charge of
+	 * reflecting the change to the underlying model via the bean Note that they
+	 * must act in a TransactionalEditingDomain in order to be correctly handled
 	 */
 	protected void initListeners() {
 		// all the listeners that will really edit the model
-		
+
 		txtLanguageName.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				// Get the widget whose text was modified
@@ -634,10 +779,14 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								xdsmlWrappedObject.setDomainModelProjectName(text.getText());
-								/*rootModelElement.getLanguageDefinition()
-										.getDomainModelProject()
-										.setProjectName(text.getText());*/
+								xdsmlWrappedObject
+										.setDomainModelProjectName(text
+												.getText());
+								/*
+								 * rootModelElement.getLanguageDefinition()
+								 * .getDomainModelProject()
+								 * .setProjectName(text.getText());
+								 */
 							}
 						});
 			}
@@ -671,14 +820,16 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								xdsmlWrappedObject.setSiriusEditorProjectName(text.getText());
-								/*for (EditorProject editor : rootModelElement
-										.getLanguageDefinition()
-										.getEditorProjects()) {
-									if (editor instanceof ODProject) {
-										editor.setProjectName(text.getText());
-									}
-								}*/
+								xdsmlWrappedObject
+										.setSiriusEditorProjectName(text
+												.getText());
+								/*
+								 * for (EditorProject editor : rootModelElement
+								 * .getLanguageDefinition()
+								 * .getEditorProjects()) { if (editor instanceof
+								 * ODProject) {
+								 * editor.setProjectName(text.getText()); } }
+								 */
 							}
 						});
 			}
@@ -692,8 +843,9 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								xdsmlWrappedObject.setGenmodelLocationURI(text.getText());
-							//	XDSMLModelHelper.getOrCreateEmfGenmodel(rootModelElement.getLanguageDefinition()).setLocationURI(text.getText());
+								xdsmlWrappedObject.setGenmodelLocationURI(text
+										.getText());
+								// XDSMLModelHelper.getOrCreateEmfGenmodel(rootModelElement.getLanguageDefinition()).setLocationURI(text.getText());
 							}
 						});
 			}
@@ -707,13 +859,15 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								xdsmlWrappedObject.setRootContainerModelElement(text.getText());
-								//((EMFEcoreProject)XDSMLModelHelper.getOrCreateDomainModelProject(rootModelElement.getLanguageDefinition())).setDefaultRootEObjectQualifiedName(text.getText());
+								xdsmlWrappedObject
+										.setRootContainerModelElement(text
+												.getText());
+								// ((EMFEcoreProject)XDSMLModelHelper.getOrCreateDomainModelProject(rootModelElement.getLanguageDefinition())).setDefaultRootEObjectQualifiedName(text.getText());
 							}
 						});
 			}
 		});
-		
+
 		txtSiriusAnimationProject.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				// Get the widget whose text was modified
@@ -723,12 +877,14 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								xdsmlWrappedObject.setSiriusAnimatorProjectName(text.getText());
+								xdsmlWrappedObject
+										.setSiriusAnimatorProjectName(text
+												.getText());
 							}
 						});
 			}
 		});
-		
+
 		txtDSAProject.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				// Get the widget whose text was modified
@@ -738,7 +894,8 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								xdsmlWrappedObject.setDSAProjectName(text.getText());
+								xdsmlWrappedObject.setDSAProjectName(text
+										.getText());
 							}
 						});
 			}
@@ -752,7 +909,8 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								xdsmlWrappedObject.setDSEProjectName(text.getText());
+								xdsmlWrappedObject.setDSEProjectName(text
+										.getText());
 							}
 						});
 			}
@@ -766,17 +924,19 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								xdsmlWrappedObject.setMoCCProjectName(text.getText());
+								xdsmlWrappedObject.setMoCCProjectName(text
+										.getText());
 							}
 						});
 			}
 		});
-		
+
 	}
 
 	/**
-	 * Data binding between the Wrapped object and the fields
-	 * This method is managed vie the Windows builder GUI
+	 * Data binding between the Wrapped object and the fields This method is
+	 * managed vie the Windows builder GUI
+	 * 
 	 * @return
 	 */
 	protected DataBindingContext initDataBindings() {
@@ -859,11 +1019,15 @@ public class GemocXDSMLFormComposite extends Composite {
 		//
 		return bindingContext;
 	}
-	
-	
-	protected IFile getCurrentIFile(){
-		String platformString = rootModelElement.eResource().getURI().toPlatformString(true);
-		return ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
-		
+
+	protected IFile getCurrentIFile() {
+		String platformString = rootModelElement.eResource().getURI()
+				.toPlatformString(true);
+		return ResourcesPlugin.getWorkspace().getRoot()
+				.getFile(new Path(platformString));
+
 	}
+
+	
+
 }

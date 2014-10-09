@@ -50,12 +50,17 @@ public class CreateEditorProjectWizardContextAction {
 	
 	public CreateEditorProjectAction actionToExecute = CreateEditorProjectAction.CREATE_NEW_EMFTREE_PROJECT;
 	
-	protected IProject gemocLanguageIProject; 
+	// one of these must be set, depending on it it will work on the file or directly in the model 
+	protected IProject gemocLanguageIProject = null;	
+	protected GemocLanguageWorkbenchConfiguration gemocLanguageModel = null; 
 	
 	public CreateEditorProjectWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
 	}
-
+	public CreateEditorProjectWizardContextAction(GemocLanguageWorkbenchConfiguration rootModelElement) {
+		gemocLanguageModel = rootModelElement;
+	}
+	
 	public void execute() {
 		switch (actionToExecute) {
 		case CREATE_NEW_EMFTREE_PROJECT:
@@ -273,8 +278,16 @@ public class CreateEditorProjectWizardContextAction {
 		}
 	}
 	
-	protected void addProjectToConf( EditorProject editorProject){
-		IFile configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
+	protected void addProjectToConf(EditorProject editorProject){
+		if(gemocLanguageIProject != null){
+			addProjectToConf(editorProject, gemocLanguageIProject);
+		}
+		if(gemocLanguageModel != null){
+			addProjectToConf(editorProject, gemocLanguageModel);
+		}
+	}
+	protected void addProjectToConf(EditorProject editorProject,IProject gemocProject){
+		IFile configFile = gemocProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
 		if(configFile.exists()){
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		    Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -288,13 +301,8 @@ public class CreateEditorProjectWizardContextAction {
 		    
 		    
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
-		    // consider only one language :-/
-		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
-		    
-		    // add missing data to conf
-		    
-		    language.getEditorProjects().add(editorProject);
-		    
+		    addProjectToConf(editorProject, gemocLanguageWorkbenchConfiguration);
+			
 			try {
 				resource.save(null);
 			} catch (IOException e) {
@@ -306,6 +314,17 @@ public class CreateEditorProjectWizardContextAction {
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
+	}
+	
+	protected void addProjectToConf( EditorProject editorProject, GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration){
+		// consider only one language :-/
+		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
+		    
+		    // add missing data to conf
+		    
+		    language.getEditorProjects().add(editorProject);
+		    
+			
 	}
 	
 }
