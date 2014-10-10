@@ -984,6 +984,33 @@ public class confEditor
 		// Only creates the other pages if there is something that can be edited
 		//
 		if (!getEditingDomain().getResourceSet().getResources().isEmpty()) {
+			
+			// This is the page for the Gemoc Form viewer.
+			//
+			{
+				ViewerPane viewerPane =
+					new ViewerPane(getSite().getPage(), confEditor.this) {
+						@Override
+						public Viewer createViewer(Composite composite) {
+							return new GemocFormViewer(composite);
+						}
+						@Override
+						public void requestActivation() {
+							super.requestActivation();
+							setCurrentViewerPane(this);
+						}
+					};
+				viewerPane.createControl(getContainer());
+				gemocFormViewer = (GemocFormViewer)viewerPane.getViewer();
+			
+				gemocFormViewer.setEditingDomain(editingDomain);
+				gemocFormViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+
+				//createContextMenuFor(gemocFormViewer);
+				int pageIndex = addPage(viewerPane.getControl());
+				setPageText(pageIndex, getString("_UI_GemocPage_label"));
+			}
+			
 			// Create a page for the selection tree view.
 			//
 			{
@@ -1185,49 +1212,7 @@ public class confEditor
 				setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
 			}
 
-			// This is the page for the Gemoc Form viewer.
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), confEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							return new GemocFormViewer(composite);
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-				gemocFormViewer = (GemocFormViewer)viewerPane.getViewer();
-
-			/*	Table table = gemocFormViewer.getTable();
-				TableLayout layout = new TableLayout();
-				table.setLayout(layout);
-				table.setHeaderVisible(true);
-				table.setLinesVisible(true);
-
-				TableColumn objectColumn = new TableColumn(table, SWT.NONE);
-				layout.addColumnData(new ColumnWeightData(3, 100, true));
-				objectColumn.setText(getString("_UI_ObjectColumn_label"));
-				objectColumn.setResizable(true);
-
-				TableColumn selfColumn = new TableColumn(table, SWT.NONE);
-				layout.addColumnData(new ColumnWeightData(2, 100, true));
-				selfColumn.setText(getString("_UI_SelfColumn_label"));
-				selfColumn.setResizable(true);
-
-				gemocFormViewer.setColumnProperties(new String [] {"a", "b"});*/
-				gemocFormViewer.setEditingDomain(editingDomain);
-				gemocFormViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				//gemocFormViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-				//createContextMenuFor(gemocFormViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_GemocPage_label"));
-			}
+			
 			
 			getSite().getShell().getDisplay().asyncExec
 				(new Runnable() {
