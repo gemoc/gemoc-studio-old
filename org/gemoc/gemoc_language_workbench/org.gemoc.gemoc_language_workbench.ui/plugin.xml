@@ -637,6 +637,15 @@
             name="New xDSML Project"
             project="true">
       </wizard>
+      <wizard
+            category="org.gemoc.gemoc_language_workbench.ui"
+            class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject"
+            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            icon="icons/IconeGemocLanguage-16.png"
+            id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject"
+            name="New DSE Project"
+            project="true">
+      </wizard>
    </extension>
 
 
@@ -646,6 +655,9 @@
              targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
           <newWizardShortcut
                 id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject">
+          </newWizardShortcut>
+          <newWizardShortcut
+                id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject">
           </newWizardShortcut>
        </perspectiveExtension>
     </extension>

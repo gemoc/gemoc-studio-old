@@ -23,13 +23,25 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 public class CreateDSAWizardContextBase {
 
 	protected IProject _gemocLanguageIProject;
+	protected GemocLanguageWorkbenchConfiguration _gemocLanguageModel = null;
 	
 	public CreateDSAWizardContextBase(IProject gemocLanguageIProject) {
 		_gemocLanguageIProject = gemocLanguageIProject;
 	}
+	public CreateDSAWizardContextBase(IProject gemocLanguageIProject, GemocLanguageWorkbenchConfiguration rootModelElement) {
+		_gemocLanguageIProject = gemocLanguageIProject;
+		_gemocLanguageModel = rootModelElement;
+	}
 
 	protected void addDSAProjectToConf(String projectName) {
-		IFile configFile = _gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
+		if(_gemocLanguageModel != null){
+			addDSAProjectToConf(projectName, _gemocLanguageModel);
+		} else {
+			addDSAProjectToConf(projectName, _gemocLanguageIProject);
+		}
+	}
+	protected void addDSAProjectToConf(String projectName,IProject gemocLanguageIProject) {
+		IFile configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
 		if(configFile.exists())
 		{			
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -43,14 +55,10 @@ public class CreateDSAWizardContextBase {
 		    Resource resource = resSet.getResource(URI.createURI(configFile.getLocationURI().toString()),true);
 		    
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
-		    // consider only one language :-/
-		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
 		    
-			K3DSAProject DSAProject = confFactoryImpl.eINSTANCE.createK3DSAProject();
-			DSAProject.setProjectName(projectName);
-			langage.setDsaProject(DSAProject);
-				
-			try {
+		    addDSAProjectToConf(projectName, gemocLanguageWorkbenchConfiguration);
+		    
+		    try {
 				resource.save(null);
 			} catch (IOException e) {
 				Activator.error(e.getMessage(), e);
@@ -61,6 +69,16 @@ public class CreateDSAWizardContextBase {
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
+	}
+	
+	protected void addDSAProjectToConf(String projectName, GemocLanguageWorkbenchConfiguration gemocLanguageModel) {
+		
+		    LanguageDefinition langage = gemocLanguageModel.getLanguageDefinition();
+		    
+			K3DSAProject DSAProject = confFactoryImpl.eINSTANCE.createK3DSAProject();
+			DSAProject.setProjectName(projectName);
+			langage.setDsaProject(DSAProject);
+		
 	}
 
 }
