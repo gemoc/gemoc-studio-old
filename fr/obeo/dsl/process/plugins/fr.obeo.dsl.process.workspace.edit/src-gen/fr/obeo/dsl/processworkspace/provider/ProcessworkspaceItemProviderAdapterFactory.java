@@ -151,6 +151,81 @@ public class ProcessworkspaceItemProviderAdapterFactory extends
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all
+	 * {@link fr.obeo.dsl.processworkspace.WindowVariable} instances. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected WindowVariableItemProvider windowVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a
+	 * {@link fr.obeo.dsl.processworkspace.WindowVariable}. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createWindowVariableAdapter() {
+		if (windowVariableItemProvider == null) {
+			windowVariableItemProvider = new WindowVariableItemProvider(this);
+		}
+
+		return windowVariableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all
+	 * {@link fr.obeo.dsl.processworkspace.PageVariable} instances. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected PageVariableItemProvider pageVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a
+	 * {@link fr.obeo.dsl.processworkspace.PageVariable}. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createPageVariableAdapter() {
+		if (pageVariableItemProvider == null) {
+			pageVariableItemProvider = new PageVariableItemProvider(this);
+		}
+
+		return pageVariableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all
+	 * {@link fr.obeo.dsl.processworkspace.PartVariable} instances. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected PartVariableItemProvider partVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a
+	 * {@link fr.obeo.dsl.processworkspace.PartVariable}. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createPartVariableAdapter() {
+		if (partVariableItemProvider == null) {
+			partVariableItemProvider = new PartVariableItemProvider(this);
+		}
+
+		return partVariableItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -257,6 +332,12 @@ public class ProcessworkspaceItemProviderAdapterFactory extends
 			folderVariableItemProvider.dispose();
 		if (projectVariableItemProvider != null)
 			projectVariableItemProvider.dispose();
+		if (windowVariableItemProvider != null)
+			windowVariableItemProvider.dispose();
+		if (pageVariableItemProvider != null)
+			pageVariableItemProvider.dispose();
+		if (partVariableItemProvider != null)
+			partVariableItemProvider.dispose();
 	}
 
 }

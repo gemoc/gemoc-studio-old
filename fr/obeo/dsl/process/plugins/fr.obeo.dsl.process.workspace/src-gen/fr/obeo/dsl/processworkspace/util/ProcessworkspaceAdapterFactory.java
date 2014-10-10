@@ -5,8 +5,11 @@ package fr.obeo.dsl.processworkspace.util;
 import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.processworkspace.FileVariable;
 import fr.obeo.dsl.processworkspace.FolderVariable;
+import fr.obeo.dsl.processworkspace.PageVariable;
+import fr.obeo.dsl.processworkspace.PartVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.ProjectVariable;
+import fr.obeo.dsl.processworkspace.WindowVariable;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -81,6 +84,21 @@ public class ProcessworkspaceAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseWindowVariable(WindowVariable object) {
+			return createWindowVariableAdapter();
+		}
+
+		@Override
+		public Adapter casePageVariable(PageVariable object) {
+			return createPageVariableAdapter();
+		}
+
+		@Override
+		public Adapter casePartVariable(PartVariable object) {
+			return createPartVariableAdapter();
+		}
+
+		@Override
 		public Adapter caseProcessVariable(ProcessVariable object) {
 			return createProcessVariableAdapter();
 		}
@@ -143,6 +161,48 @@ public class ProcessworkspaceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProjectVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.obeo.dsl.processworkspace.WindowVariable
+	 * <em>Window Variable</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+	 * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the new adapter.
+	 * @see fr.obeo.dsl.processworkspace.WindowVariable
+	 * @generated
+	 */
+	public Adapter createWindowVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.obeo.dsl.processworkspace.PageVariable
+	 * <em>Page Variable</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+	 * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the new adapter.
+	 * @see fr.obeo.dsl.processworkspace.PageVariable
+	 * @generated
+	 */
+	public Adapter createPageVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.obeo.dsl.processworkspace.PartVariable
+	 * <em>Part Variable</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+	 * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the new adapter.
+	 * @see fr.obeo.dsl.processworkspace.PartVariable
+	 * @generated
+	 */
+	public Adapter createPartVariableAdapter() {
 		return null;
 	}
 

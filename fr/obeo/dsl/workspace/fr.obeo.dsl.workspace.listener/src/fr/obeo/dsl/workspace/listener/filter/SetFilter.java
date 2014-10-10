@@ -18,20 +18,39 @@
 package fr.obeo.dsl.workspace.listener.filter;
 
 import fr.obeo.dsl.workspace.listener.change.IChange;
-import fr.obeo.dsl.workspace.listener.change.resource.AbstractResourceChange;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
 
-import org.eclipse.core.resources.IResource;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.eclipse.core.resources.IFolder;
 
 /**
- * {@link IFilter#keep(IChange) Keeps} an {@link IResource} is in {@link ResourceFilter#getResources()
- * resources}.
+ * {@link IFilter#keep(IChange) Keeps} an {@link Object} is in {@link SetFilter#getSet() objects}.
  * 
  * @param <T>
- *            the {@link IResource} kind
+ *            the king of {@link Object} to filter
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class ResourceFilter<T extends IResource> extends SetFilter<T> {
+public class SetFilter<T> implements IFilter {
+
+	/**
+	 * {@link IFolder} filter.
+	 * 
+	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+	 */
+	public static final class FolderFilter extends SetFilter<IFolder> {
+
+		@Override
+		protected boolean keep(IFolder resource) {
+			return super.keep(resource);
+		}
+
+	}
+
+	/**
+	 * {@link Object} to {@link IFilter#keep(IChange) keep}.
+	 */
+	private final Set<T> objects = new HashSet<T>();
 
 	/**
 	 * {@inheritDoc}
@@ -40,21 +59,9 @@ public class ResourceFilter<T extends IResource> extends SetFilter<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public IChange<?> keep(IChange<?> change) {
-		final boolean keep;
 		final IChange<?> res;
 
-		if (change instanceof AbstractResourceChange) {
-			if (change instanceof ResourceMoved) {
-				keep = keep((T)((AbstractResourceChange)change).getObject())
-						|| keep((T)((ResourceMoved)change).getDestination());
-			} else {
-				keep = keep((T)((AbstractResourceChange)change).getObject());
-			}
-		} else {
-			keep = false;
-		}
-
-		if (keep) {
+		if (keep((T)change.getObject())) {
 			res = change;
 		} else {
 			res = null;
@@ -63,4 +70,26 @@ public class ResourceFilter<T extends IResource> extends SetFilter<T> {
 		return res;
 	}
 
+	/**
+	 * Tells if we should {@link IFilter#keep(IChange) keep} the given {@link Object}.
+	 * 
+	 * @param object
+	 *            the {@link Object} to check
+	 * @return <code>true</code> if we should {@link IFilter#keep(IChange) keep} the given {@link Object},
+	 *         <code>false</code> otherwise
+	 */
+	protected boolean keep(T object) {
+		return getSet().contains(object);
+	}
+
+	/**
+	 * Gets the {@link Set} of {@link org.eclipse.core.resources.T#getFullPath() full path} to
+	 * {@link IFilter#keep(IChange) keep} .
+	 * 
+	 * @return the {@link Set} of {@link org.eclipse.core.resources.T#getFullPath() full path} to
+	 *         {@link IFilter#keep(IChange) keep}
+	 */
+	public Set<T> getSet() {
+		return objects;
+	}
 }

@@ -11,5 +11,8 @@
     <genClasses ecoreClass="processworkspace.ecore#//FileVariable"/>
     <genClasses ecoreClass="processworkspace.ecore#//FolderVariable"/>
     <genClasses ecoreClass="processworkspace.ecore#//ProjectVariable"/>
+    <genClasses ecoreClass="processworkspace.ecore#//WindowVariable"/>
+    <genClasses ecoreClass="processworkspace.ecore#//PageVariable"/>
+    <genClasses ecoreClass="processworkspace.ecore#//PartVariable"/>
   </genPackages>
 </genmodel:GenModel>

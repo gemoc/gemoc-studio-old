@@ -5,8 +5,11 @@ package fr.obeo.dsl.processworkspace.util;
 import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.processworkspace.FileVariable;
 import fr.obeo.dsl.processworkspace.FolderVariable;
+import fr.obeo.dsl.processworkspace.PageVariable;
+import fr.obeo.dsl.processworkspace.PartVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.ProjectVariable;
+import fr.obeo.dsl.processworkspace.WindowVariable;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -89,6 +92,33 @@ public class ProcessworkspaceSwitch<T> extends Switch<T> {
 					result = defaultCase(theEObject);
 				return result;
 			}
+			case ProcessworkspacePackage.WINDOW_VARIABLE: {
+				WindowVariable windowVariable = (WindowVariable)theEObject;
+				T result = caseWindowVariable(windowVariable);
+				if (result == null)
+					result = caseProcessVariable(windowVariable);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ProcessworkspacePackage.PAGE_VARIABLE: {
+				PageVariable pageVariable = (PageVariable)theEObject;
+				T result = casePageVariable(pageVariable);
+				if (result == null)
+					result = caseProcessVariable(pageVariable);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case ProcessworkspacePackage.PART_VARIABLE: {
+				PartVariable partVariable = (PartVariable)theEObject;
+				T result = casePartVariable(partVariable);
+				if (result == null)
+					result = caseProcessVariable(partVariable);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			default:
 				return defaultCase(theEObject);
 		}
@@ -136,6 +166,51 @@ public class ProcessworkspaceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseProjectVariable(ProjectVariable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Window Variable</em>'. <!--
+	 * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
+	 * switch. <!-- end-user-doc -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Window Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWindowVariable(WindowVariable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Page Variable</em>'. <!--
+	 * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
+	 * switch. <!-- end-user-doc -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Page Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePageVariable(PageVariable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Part Variable</em>'. <!--
+	 * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
+	 * switch. <!-- end-user-doc -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Part Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePartVariable(PartVariable object) {
 		return null;
 	}
 

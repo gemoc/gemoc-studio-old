@@ -5,9 +5,12 @@ package fr.obeo.dsl.processworkspace.impl;
 import fr.obeo.dsl.process.ProcessPackage;
 import fr.obeo.dsl.processworkspace.FileVariable;
 import fr.obeo.dsl.processworkspace.FolderVariable;
+import fr.obeo.dsl.processworkspace.PageVariable;
+import fr.obeo.dsl.processworkspace.PartVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspaceFactory;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.ProjectVariable;
+import fr.obeo.dsl.processworkspace.WindowVariable;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -39,6 +42,27 @@ public class ProcessworkspacePackageImpl extends EPackageImpl implements Process
 	 * @generated
 	 */
 	private EClass projectVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass windowVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass pageVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass partVariableEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -138,6 +162,33 @@ public class ProcessworkspacePackageImpl extends EPackageImpl implements Process
 	 * 
 	 * @generated
 	 */
+	public EClass getWindowVariable() {
+		return windowVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EClass getPageVariable() {
+		return pageVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EClass getPartVariable() {
+		return partVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public ProcessworkspaceFactory getProcessworkspaceFactory() {
 		return (ProcessworkspaceFactory)getEFactoryInstance();
 	}
@@ -166,6 +217,12 @@ public class ProcessworkspacePackageImpl extends EPackageImpl implements Process
 		folderVariableEClass = createEClass(FOLDER_VARIABLE);
 
 		projectVariableEClass = createEClass(PROJECT_VARIABLE);
+
+		windowVariableEClass = createEClass(WINDOW_VARIABLE);
+
+		pageVariableEClass = createEClass(PAGE_VARIABLE);
+
+		partVariableEClass = createEClass(PART_VARIABLE);
 	}
 
 	/**
@@ -203,6 +260,9 @@ public class ProcessworkspacePackageImpl extends EPackageImpl implements Process
 		fileVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
 		folderVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
 		projectVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
+		windowVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
+		pageVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
+		partVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(fileVariableEClass, FileVariable.class, "FileVariable", !IS_ABSTRACT, !IS_INTERFACE,
@@ -213,6 +273,15 @@ public class ProcessworkspacePackageImpl extends EPackageImpl implements Process
 
 		initEClass(projectVariableEClass, ProjectVariable.class, "ProjectVariable", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(windowVariableEClass, WindowVariable.class, "WindowVariable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(pageVariableEClass, PageVariable.class, "PageVariable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(partVariableEClass, PartVariable.class, "PartVariable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

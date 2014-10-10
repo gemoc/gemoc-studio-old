@@ -31,9 +31,8 @@ import fr.obeo.dsl.workspace.listener.change.processor.IChangeProcessor;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
 import fr.obeo.dsl.workspace.listener.filter.IFilter;
 import fr.obeo.dsl.workspace.listener.filter.Or;
-import fr.obeo.dsl.workspace.listener.filter.ResourceFilter.FileFilter;
-import fr.obeo.dsl.workspace.listener.filter.ResourceFilter.FolderFilter;
-import fr.obeo.dsl.workspace.listener.filter.ResourceFilter.ProjectFilter;
+import fr.obeo.dsl.workspace.listener.filter.ResourceFilter;
+import fr.obeo.dsl.workspace.listener.filter.SetFilter;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -46,6 +45,9 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
 
 /**
  * Runnes a {@link ProcessContext} according to {@link IChange}.
@@ -55,30 +57,46 @@ import org.eclipse.core.resources.IResource;
 public class WorkspaceProcessRunner extends AbstractProcessRunner implements IChangeProcessor {
 
 	/**
-	 * The {@link FileFilter}.
+	 * The {@link ResourceFilter} filtering {@link IFile}.
 	 */
-	private final FileFilter fileFilter = new FileFilter();
+	private final ResourceFilter<IFile> fileFilter = new ResourceFilter<IFile>();
 
 	/**
-	 * The {@link FolderFilter}.
+	 * The {@link ResourceFilter} filtering {@link IFolder}.
 	 */
-	private final FolderFilter folderFilter = new FolderFilter();
+	private final ResourceFilter<IFolder> folderFilter = new ResourceFilter<IFolder>();
 
 	/**
-	 * The {@link ProjectFilter}.
+	 * The {@link ResourceFilter} filtering {@link IProject}.
 	 */
-	private final ProjectFilter projectFilter = new ProjectFilter();
+	private final ResourceFilter<IProject> projectFilter = new ResourceFilter<IProject>();
+
+	/**
+	 * The filter for {@link IWorkbenchWindow}.
+	 */
+	private final SetFilter<IWorkbenchWindow> windowFilter = new SetFilter<IWorkbenchWindow>();
+
+	/**
+	 * The filter for {@link IWorkbenchPage}.
+	 */
+	private final SetFilter<IWorkbenchPage> pageFilter = new SetFilter<IWorkbenchPage>();
+
+	/**
+	 * The filter for {@link IWorkbenchPart}.
+	 */
+	private final SetFilter<IWorkbenchPart> partFilter = new SetFilter<IWorkbenchPart>();
 
 	/**
 	 * The global {@link IFilter}.
 	 */
-	private final IFilter filter = new Or(getFileFilter(), getFolderFilter(), getProjectFilter());
+	private final IFilter filter = new Or(getFileFilter(), getFolderFilter(), getProjectFilter(),
+			getPartFilter(), getPageFilter(), getWindowFilter());
 
 	/**
-	 * Mapping from {@link ActionTask#getWrittenVariables() observed} {@link IResource} to {@link ActionTask}
-	 * .
+	 * Mapping from {@link ActionTask#getWrittenVariables() observed} eclipse {@link Object} to
+	 * {@link ActionTask} .
 	 */
-	private final Map<IResource, Set<ActionTask>> observedResources = new HashMap<IResource, Set<ActionTask>>();
+	private final Map<Object, Set<ActionTask>> observedEclipseObject = new HashMap<Object, Set<ActionTask>>();
 
 	/**
 	 * Constructor.
@@ -123,12 +141,12 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 	protected Set<ActionTask> getObservingTasks(IChange<?> change) {
 		final Set<ActionTask> res = new LinkedHashSet<ActionTask>();
 
-		Set<ActionTask> tasks = observedResources.get(change.getObject());
+		Set<ActionTask> tasks = observedEclipseObject.get(change.getObject());
 		if (tasks != null) {
 			res.addAll(tasks);
 		}
 		if (change instanceof ResourceMoved) {
-			tasks = observedResources.get(((ResourceMoved)change).getDestination());
+			tasks = observedEclipseObject.get(((ResourceMoved)change).getDestination());
 			if (tasks != null) {
 				res.addAll(tasks);
 			}
@@ -144,15 +162,24 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 			if (value instanceof IResource) {
 				final IResource resource = (IResource)value;
 				if (variable instanceof FileVariable) {
-					getFileFilter().getResources().add(resource);
-					addObservedResources(resource, task);
+					getFileFilter().getSet().add((IFile)resource);
+					addObservedEclipseObject(resource, task);
 				} else if (variable instanceof FolderVariable) {
-					getFolderFilter().getResources().add(resource);
-					addObservedResources(resource, task);
+					getFolderFilter().getSet().add((IFolder)resource);
+					addObservedEclipseObject(resource, task);
 				} else if (variable instanceof ProjectVariable) {
-					getProjectFilter().getResources().add(resource);
-					addObservedResources(resource, task);
+					getProjectFilter().getSet().add((IProject)resource);
+					addObservedEclipseObject(resource, task);
 				}
+			} else if (value instanceof IWorkbenchWindow) {
+				getWindowFilter().getSet().add((IWorkbenchWindow)value);
+				addObservedEclipseObject(value, task);
+			} else if (value instanceof IWorkbenchPage) {
+				getPageFilter().getSet().add((IWorkbenchPage)value);
+				addObservedEclipseObject(value, task);
+			} else if (value instanceof IWorkbenchPart) {
+				getPartFilter().getSet().add((IWorkbenchPart)value);
+				addObservedEclipseObject(value, task);
 			}
 		}
 		super.activate(task);
@@ -166,15 +193,24 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 			if (value instanceof IResource) {
 				final IResource resource = (IResource)value;
 				if (variable instanceof FileVariable) {
-					getFileFilter().getResources().remove(resource);
-					removeObservedResources(resource, task);
+					getFileFilter().getSet().remove(resource);
+					removeObservedEclipseObject(resource, task);
 				} else if (variable instanceof FolderVariable) {
-					getFolderFilter().getResources().remove(resource);
-					removeObservedResources(resource, task);
+					getFolderFilter().getSet().remove(resource);
+					removeObservedEclipseObject(resource, task);
 				} else if (variable instanceof ProjectVariable) {
-					getProjectFilter().getResources().remove(resource);
-					removeObservedResources(resource, task);
+					getProjectFilter().getSet().remove(resource);
+					removeObservedEclipseObject(resource, task);
 				}
+			} else if (value instanceof IWorkbenchWindow) {
+				getWindowFilter().getSet().remove(value);
+				removeObservedEclipseObject(value, task);
+			} else if (value instanceof IWorkbenchPage) {
+				getPageFilter().getSet().remove(value);
+				removeObservedEclipseObject(value, task);
+			} else if (value instanceof IWorkbenchPart) {
+				getPartFilter().getSet().remove(value);
+				removeObservedEclipseObject(value, task);
 			}
 		}
 	}
@@ -182,42 +218,96 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 	@Override
 	public void variableChanged(ProcessContext context, ProcessVariable variable, Object oldValue,
 			Object newValue) {
-		if (oldValue instanceof IResource) {
-			final IResource resource = (IResource)oldValue;
-			if (oldValue instanceof IFile) {
-				getFileFilter().getResources().remove(resource);
-				for (ActionTask task : variable.getWrittenBy()) {
-					removeObservedResources(resource, task);
-				}
-			} else if (oldValue instanceof IFolder) {
-				getFolderFilter().getResources().remove(resource);
-				for (ActionTask task : variable.getWrittenBy()) {
-					removeObservedResources(resource, task);
-				}
-			} else if (oldValue instanceof IProject) {
-				getProjectFilter().getResources().remove(resource);
-				for (ActionTask task : variable.getWrittenBy()) {
-					removeObservedResources(resource, task);
-				}
-			}
-		}
+		removeOldValue(variable, oldValue);
+		addNewValue(variable, newValue);
+	}
+
+	/**
+	 * Registers the given new value for the given {@link ProcessVariable}.
+	 * 
+	 * @param variable
+	 *            the {@link ProcessVariable}
+	 * @param newValue
+	 *            the new value
+	 */
+	protected void addNewValue(ProcessVariable variable, Object newValue) {
 		if (newValue instanceof IResource) {
 			final IResource resource = (IResource)newValue;
 			if (newValue instanceof IFile) {
-				getFileFilter().getResources().add(resource);
+				getFileFilter().getSet().add((IFile)resource);
 				for (ActionTask task : variable.getWrittenBy()) {
-					addObservedResources(resource, task);
+					addObservedEclipseObject(resource, task);
 				}
 			} else if (newValue instanceof IFolder) {
-				getFolderFilter().getResources().add(resource);
+				getFolderFilter().getSet().add((IFolder)resource);
 				for (ActionTask task : variable.getWrittenBy()) {
-					addObservedResources(resource, task);
+					addObservedEclipseObject(resource, task);
 				}
 			} else if (newValue instanceof IProject) {
-				getProjectFilter().getResources().add(resource);
+				getProjectFilter().getSet().add((IProject)resource);
 				for (ActionTask task : variable.getWrittenBy()) {
-					addObservedResources(resource, task);
+					addObservedEclipseObject(resource, task);
 				}
+			}
+		} else if (newValue instanceof IWorkbenchWindow) {
+			getWindowFilter().getSet().add((IWorkbenchWindow)newValue);
+			for (ActionTask task : variable.getWrittenBy()) {
+				addObservedEclipseObject(newValue, task);
+			}
+		} else if (newValue instanceof IWorkbenchPage) {
+			getPageFilter().getSet().add((IWorkbenchPage)newValue);
+			for (ActionTask task : variable.getWrittenBy()) {
+				addObservedEclipseObject(newValue, task);
+			}
+		} else if (newValue instanceof IWorkbenchPart) {
+			getPartFilter().getSet().add((IWorkbenchPart)newValue);
+			for (ActionTask task : variable.getWrittenBy()) {
+				addObservedEclipseObject(newValue, task);
+			}
+		}
+	}
+
+	/**
+	 * Unregisters the given new value for the given {@link ProcessVariable}.
+	 * 
+	 * @param variable
+	 *            the {@link ProcessVariable}
+	 * @param oldValue
+	 *            the old value
+	 */
+	protected void removeOldValue(ProcessVariable variable, Object oldValue) {
+		if (oldValue instanceof IResource) {
+			final IResource resource = (IResource)oldValue;
+			if (oldValue instanceof IFile) {
+				getFileFilter().getSet().remove(resource);
+				for (ActionTask task : variable.getWrittenBy()) {
+					removeObservedEclipseObject(resource, task);
+				}
+			} else if (oldValue instanceof IFolder) {
+				getFolderFilter().getSet().remove(resource);
+				for (ActionTask task : variable.getWrittenBy()) {
+					removeObservedEclipseObject(resource, task);
+				}
+			} else if (oldValue instanceof IProject) {
+				getProjectFilter().getSet().remove(resource);
+				for (ActionTask task : variable.getWrittenBy()) {
+					removeObservedEclipseObject(resource, task);
+				}
+			}
+		} else if (oldValue instanceof IWorkbenchWindow) {
+			getWindowFilter().getSet().remove(oldValue);
+			for (ActionTask task : variable.getWrittenBy()) {
+				removeObservedEclipseObject(oldValue, task);
+			}
+		} else if (oldValue instanceof IWorkbenchPage) {
+			getPageFilter().getSet().remove(oldValue);
+			for (ActionTask task : variable.getWrittenBy()) {
+				removeObservedEclipseObject(oldValue, task);
+			}
+		} else if (oldValue instanceof IWorkbenchPart) {
+			getPartFilter().getSet().remove(oldValue);
+			for (ActionTask task : variable.getWrittenBy()) {
+				removeObservedEclipseObject(oldValue, task);
 			}
 		}
 	}
@@ -225,30 +315,30 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 	/**
 	 * Adds the given {@link ActionTask} as observing the given {@link IResource}.
 	 * 
-	 * @param resource
-	 *            the {@link IResource}
+	 * @param eclipseObject
+	 *            the eclipse {@link Object}
 	 * @param task
 	 *            the {@link ActionTask}
 	 */
-	protected void addObservedResources(IResource resource, ActionTask task) {
-		Set<ActionTask> tasks = observedResources.get(resource);
+	protected void addObservedEclipseObject(Object eclipseObject, ActionTask task) {
+		Set<ActionTask> tasks = observedEclipseObject.get(eclipseObject);
 		if (tasks == null) {
 			tasks = new HashSet<ActionTask>();
-			observedResources.put(resource, tasks);
+			observedEclipseObject.put(eclipseObject, tasks);
 		}
 		tasks.add(task);
 	}
 
 	/**
-	 * Removes the given {@link ActionTask} as observing the given {@link IResource}.
+	 * Removes the given {@link ActionTask} as observing the given eclipse {@link Object}.
 	 * 
-	 * @param resource
-	 *            the {@link IResource}
+	 * @param eclipseObject
+	 *            the eclipse {@link Object}
 	 * @param task
 	 *            the {@link ActionTask}
 	 */
-	private void removeObservedResources(IResource resource, ActionTask task) {
-		Set<ActionTask> tasks = observedResources.get(resource);
+	private void removeObservedEclipseObject(Object eclipseObject, ActionTask task) {
+		Set<ActionTask> tasks = observedEclipseObject.get(eclipseObject);
 		if (tasks != null) {
 			tasks.remove(task);
 		}
@@ -259,7 +349,7 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 	 * 
 	 * @return the {@link FilePathFilter}
 	 */
-	public FileFilter getFileFilter() {
+	public ResourceFilter<IFile> getFileFilter() {
 		return fileFilter;
 	}
 
@@ -268,7 +358,7 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 	 * 
 	 * @return the {@link FolderPathFilter}
 	 */
-	public FolderFilter getFolderFilter() {
+	public ResourceFilter<IFolder> getFolderFilter() {
 		return folderFilter;
 	}
 
@@ -277,8 +367,35 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 	 * 
 	 * @return the {@link ProjectPathFilter}
 	 */
-	public ProjectFilter getProjectFilter() {
+	public ResourceFilter<IProject> getProjectFilter() {
 		return projectFilter;
+	}
+
+	/**
+	 * The filter for {@link IWorkbenchWindow}.
+	 * 
+	 * @return the filter for {@link IWorkbenchWindow}
+	 */
+	public SetFilter<IWorkbenchWindow> getWindowFilter() {
+		return windowFilter;
+	}
+
+	/**
+	 * The filter for {@link IWorkbenchPage}.
+	 * 
+	 * @return the filter for {@link IWorkbenchPage}
+	 */
+	public SetFilter<IWorkbenchPage> getPageFilter() {
+		return pageFilter;
+	}
+
+	/**
+	 * The filter for {@link IWorkbenchPart}.
+	 * 
+	 * @return the filter for {@link IWorkbenchPart}
+	 */
+	public SetFilter<IWorkbenchPart> getPartFilter() {
+		return partFilter;
 	}
 
 }

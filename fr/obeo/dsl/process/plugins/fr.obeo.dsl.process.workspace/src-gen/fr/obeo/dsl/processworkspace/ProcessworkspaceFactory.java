@@ -45,6 +45,30 @@ public interface ProcessworkspaceFactory extends EFactory {
 	ProjectVariable createProjectVariable();
 
 	/**
+	 * Returns a new object of class '<em>Window Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class '<em>Window Variable</em>'.
+	 * @generated
+	 */
+	WindowVariable createWindowVariable();
+
+	/**
+	 * Returns a new object of class '<em>Page Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class '<em>Page Variable</em>'.
+	 * @generated
+	 */
+	PageVariable createPageVariable();
+
+	/**
+	 * Returns a new object of class '<em>Part Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class '<em>Part Variable</em>'.
+	 * @generated
+	 */
+	PartVariable createPartVariable();
+
+	/**
 	 * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @return the package supported by this factory.

@@ -4,9 +4,12 @@ package fr.obeo.dsl.processworkspace.impl;
 
 import fr.obeo.dsl.processworkspace.FileVariable;
 import fr.obeo.dsl.processworkspace.FolderVariable;
+import fr.obeo.dsl.processworkspace.PageVariable;
+import fr.obeo.dsl.processworkspace.PartVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspaceFactory;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.ProjectVariable;
+import fr.obeo.dsl.processworkspace.WindowVariable;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -61,6 +64,12 @@ public class ProcessworkspaceFactoryImpl extends EFactoryImpl implements Process
 				return createFolderVariable();
 			case ProcessworkspacePackage.PROJECT_VARIABLE:
 				return createProjectVariable();
+			case ProcessworkspacePackage.WINDOW_VARIABLE:
+				return createWindowVariable();
+			case ProcessworkspacePackage.PAGE_VARIABLE:
+				return createPageVariable();
+			case ProcessworkspacePackage.PART_VARIABLE:
+				return createPartVariable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName()
 						+ "' is not a valid classifier");
@@ -95,6 +104,36 @@ public class ProcessworkspaceFactoryImpl extends EFactoryImpl implements Process
 	public ProjectVariable createProjectVariable() {
 		ProjectVariableImpl projectVariable = new ProjectVariableImpl();
 		return projectVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public WindowVariable createWindowVariable() {
+		WindowVariableImpl windowVariable = new WindowVariableImpl();
+		return windowVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public PageVariable createPageVariable() {
+		PageVariableImpl pageVariable = new PageVariableImpl();
+		return pageVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public PartVariable createPartVariable() {
+		PartVariableImpl partVariable = new PartVariableImpl();
+		return partVariable;
 	}
 
 	/**
