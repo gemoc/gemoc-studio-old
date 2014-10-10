@@ -44,11 +44,11 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepAddFileKept() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.keep"));
 
-		filter.getResources().add(file);
+		filter.getSet().add(file);
 
 		final ResourceAdded change = new ResourceAdded(file);
 		assertEquals(change, filter.keep(change));
@@ -60,7 +60,7 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepAddFileNotKept() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.notkeep"));
 
@@ -74,7 +74,7 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepAddContainerNoKeptFile() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IContainer container = ResourcesPlugin.getWorkspace().getRoot().getFolder(
 				new Path("/test/folder"));
 
@@ -88,11 +88,11 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepRemoveFileKept() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.keep"));
 
-		filter.getResources().add(file);
+		filter.getSet().add(file);
 
 		filter.keep(new ResourceAdded(file));
 		final ResourceRemoved change = new ResourceRemoved(file);
@@ -105,7 +105,7 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepRemoveFileNotKept() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.notkeep"));
 
@@ -119,7 +119,7 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepRemoveContainerNoKeptFile() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IContainer container = ResourcesPlugin.getWorkspace().getRoot().getFolder(
 				new Path("/test/folder"));
 
@@ -133,14 +133,14 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepMoveFileKeptToNotExisting() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile origin = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.keep"));
 		final IFile destination = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test2/folder/test.keep"));
 
-		filter.getResources().add(origin);
-		filter.getResources().add(destination);
+		filter.getSet().add(origin);
+		filter.getSet().add(destination);
 
 		filter.keep(new ResourceAdded(origin));
 		final ResourceMoved change = new ResourceMoved(origin, destination);
@@ -153,7 +153,7 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepMoveFileNotKeptToNotExisting() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile origin = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.notkeep"));
 		final IFile destination = ResourcesPlugin.getWorkspace().getRoot().getFile(
@@ -170,13 +170,13 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepMoveFileKeptToNotKeptNotExisting() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile origin = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.keep"));
 		final IFile destination = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test2/folder/test.notkeep"));
 
-		filter.getResources().add(origin);
+		filter.getSet().add(origin);
 
 		filter.keep(new ResourceAdded(origin));
 		final ResourceMoved change = new ResourceMoved(origin, destination);
@@ -190,13 +190,13 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepMoveFileNotKeptToKeptNotExisting() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile origin = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.notkeep"));
 		final IFile destination = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test2/folder/test.keep"));
 
-		filter.getResources().add(destination);
+		filter.getSet().add(destination);
 
 		filter.keep(new ResourceAdded(origin));
 		final ResourceMoved change = new ResourceMoved(origin, destination);
@@ -210,7 +210,7 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepMoveContainerNoKeptFileToNotExisting() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IContainer origin = ResourcesPlugin.getWorkspace().getRoot()
 				.getFolder(new Path("/test/folder"));
 		final IContainer destination = ResourcesPlugin.getWorkspace().getRoot().getFolder(
@@ -227,7 +227,7 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepMoveFileKeptToExisting() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile origin = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.keep"));
 		final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(
@@ -235,9 +235,9 @@ public class ResourceFilterTests {
 		final IFile destination = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test2/folder/test.keep"));
 
-		filter.getResources().add(origin);
-		filter.getResources().add(file);
-		filter.getResources().add(destination);
+		filter.getSet().add(origin);
+		filter.getSet().add(file);
+		filter.getSet().add(destination);
 
 		filter.keep(new ResourceAdded(origin));
 		filter.keep(new ResourceAdded(file));
@@ -251,7 +251,7 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepMoveFileNotKeptToExisting() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IFile origin = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test/folder/test.notkeep"));
 		final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(
@@ -259,7 +259,7 @@ public class ResourceFilterTests {
 		final IFile destination = ResourcesPlugin.getWorkspace().getRoot().getFile(
 				new Path("/test2/folder/test.notkeep"));
 
-		filter.getResources().add(file);
+		filter.getSet().add(file);
 
 		filter.keep(new ResourceAdded(origin));
 		filter.keep(new ResourceAdded(file));
@@ -273,7 +273,7 @@ public class ResourceFilterTests {
 	 */
 	@Test
 	public void keepMoveContainerNoKeptFileToExisting() {
-		final ResourceFilter filter = new ResourceFilter();
+		final ResourceFilter<IFile> filter = new ResourceFilter<IFile>();
 		final IContainer origin = ResourcesPlugin.getWorkspace().getRoot()
 				.getFolder(new Path("/test/folder"));
 		final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(

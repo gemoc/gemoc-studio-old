@@ -253,7 +253,7 @@
       <eParameters name="variableValue" lowerBound="1" eType="#//Object"/>
       <eParameters name="writer" eType="#//ActionTask"/>
     </eOperations>
-    <eOperations name="getVariableValue" eType="#//Object">
+    <eOperations name="getVariableValue" eType="#//Object" eExceptions="#//IllegalVariableAccessException">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="returns the value for the  {@link ProcessVariable} in the current context."/>
       </eAnnotations>

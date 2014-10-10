@@ -267,7 +267,8 @@ public class ProcessContextImpl extends EObjectImpl implements ProcessContext {
 	 * 
 	 * @generated NOT
 	 */
-	public Object getVariableValue(ProcessVariable variable, ActionTask observer) {
+	public Object getVariableValue(ProcessVariable variable, ActionTask observer)
+			throws IllegalVariableAccessException {
 		if (observer != null) {
 			if (!variable.getObservedBy().contains(observer) && !variable.getWrittenBy().contains(observer)) {
 				throw new IllegalVariableAccessException("Task " + observer.getName()
