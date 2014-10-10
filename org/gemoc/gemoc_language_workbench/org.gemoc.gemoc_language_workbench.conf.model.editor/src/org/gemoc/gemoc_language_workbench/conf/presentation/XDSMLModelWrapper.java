@@ -42,6 +42,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 
 	public void setDomainModelProjectName(String domainModelProjectName) {
 		String oldName = getDomainModelProjectName();
+		firePropertyChange("domainModelProjectName", oldName, domainModelProjectName);
 		XDSMLModelHelper.getOrCreateDomainModelProject(languageDefinition)
 				.setProjectName(domainModelProjectName);
 	}
