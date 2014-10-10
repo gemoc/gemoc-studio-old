@@ -175,7 +175,7 @@ public class CreateEditorProjectWizardContextAction {
 					if(createdProject != null){
 						XTextEditorProject editorProject = confFactoryImpl.eINSTANCE.createXTextEditorProject();
 						editorProject.setProjectName(createdProject.getName());
-						addProjectToConf(editorProject);
+						addOrUpdateProjectToConf(editorProject);
 					}
 					else{
 						Activator.error("not able to detect which project was created by wizard", null);
@@ -216,7 +216,7 @@ public class CreateEditorProjectWizardContextAction {
 					if(createdProject != null){
 						ODProject editorProject = confFactoryImpl.eINSTANCE.createODProject();
 						editorProject.setProjectName(createdProject.getName());
-						addProjectToConf(editorProject);
+						addOrUpdateProjectToConf(editorProject);
 					}
 					else{
 						Activator.error("not able to detect which project was created by wizard", null);
@@ -244,7 +244,7 @@ public class CreateEditorProjectWizardContextAction {
 			TreeEditorProject editorProject = confFactoryImpl.eINSTANCE.createTreeEditorProject();
 			editorProject.setProjectName(projectName);
 			// TODO detection of the current extension
-			addProjectToConf(editorProject);
+			addOrUpdateProjectToConf(editorProject);
 		}
 	}
 	
@@ -259,7 +259,7 @@ public class CreateEditorProjectWizardContextAction {
 			EditorProject editorProject = confFactoryImpl.eINSTANCE.createXTextEditorProject();
 			editorProject.setProjectName(projectName);
 			// TODO detection of the current extension
-			addProjectToConf(editorProject);
+			addOrUpdateProjectToConf(editorProject);
 		}
 	}
 	protected void selectExistingSiriusProject(){
@@ -273,20 +273,26 @@ public class CreateEditorProjectWizardContextAction {
 			EditorProject editorProject = confFactoryImpl.eINSTANCE.createODProject();
 			editorProject.setProjectName(projectName);
 			// TODO detection of the current extension
-			addProjectToConf(editorProject);
+			addOrUpdateProjectToConf(editorProject);
 			
 		}
 	}
 	
-	protected void addProjectToConf(EditorProject editorProject){
+	
+	/**
+	 * if an editor of the same concrete kind exist, then the new one will replace it
+	 * Ie. only  one Sirius editor, one XtextEditor, etc
+	 * @param editorProject
+	 */
+	protected void addOrUpdateProjectToConf(EditorProject editorProject){
 		if(gemocLanguageIProject != null){
-			addProjectToConf(editorProject, gemocLanguageIProject);
+			addOrUpdateProjectToConf(editorProject, gemocLanguageIProject);
 		}
 		if(gemocLanguageModel != null){
-			addProjectToConf(editorProject, gemocLanguageModel);
+			addOrUpdateProjectToConf(editorProject, gemocLanguageModel);
 		}
 	}
-	protected void addProjectToConf(EditorProject editorProject,IProject gemocProject){
+	protected void addOrUpdateProjectToConf(EditorProject editorProject,IProject gemocProject){
 		IFile configFile = gemocProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
 		if(configFile.exists()){
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -301,7 +307,7 @@ public class CreateEditorProjectWizardContextAction {
 		    
 		    
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
-		    addProjectToConf(editorProject, gemocLanguageWorkbenchConfiguration);
+		    addOrUpdateProjectToConf(editorProject, gemocLanguageWorkbenchConfiguration);
 			
 			try {
 				resource.save(null);
@@ -315,16 +321,34 @@ public class CreateEditorProjectWizardContextAction {
 			Activator.error(e.getMessage(), e);
 		}
 	}
-	
-	protected void addProjectToConf( EditorProject editorProject, GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration){
+	/**
+	 * if an editor of the same concrete kind exist, then the new one will replace it
+	 * Ie. only  one Sirius editor, one XtextEditor, etc
+	 * @param editorProject
+	 */
+	protected void addOrUpdateProjectToConf( EditorProject editorProject, GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration){
 		// consider only one language :-/
 		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
 		    
 		    // add missing data to conf
-		    
-		    language.getEditorProjects().add(editorProject);
-		    
-			
+		    EditorProject existingEditor= null;
+		    String searchedClass = editorProject.getClass().getName();
+		    // search first existing editor
+		    for(EditorProject possibleExistingEditor: language.getEditorProjects()){
+		    	if(possibleExistingEditor.getClass().getName().equals(searchedClass)){
+		    		existingEditor = possibleExistingEditor;
+		    		break;		
+		    	}
+		    }
+		    if(existingEditor == null){
+		    	// simply add the new editor		    
+		    	language.getEditorProjects().add(editorProject);
+		    }
+		    else {
+		    	// replace the existing editor
+		    	int index = language.getEditorProjects().indexOf(existingEditor);
+		    	language.getEditorProjects().set(index, editorProject);
+		    }
 	}
 	
 }
