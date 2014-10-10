@@ -157,23 +157,7 @@ public class GemocXDSMLFormComposite extends Composite {
 
 		Button btnBrowseEMFProject = new Button(grpDomainModelDefinition,
 				SWT.NONE);
-		btnBrowseEMFProject.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				switch (e.type) {
-				case SWT.Selection:
-					SelectEMFIProjectDialog dialog = new SelectEMFIProjectDialog(
-							PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow().getShell());
-					int res = dialog.open();
-					if (res == WizardDialog.OK) {
-						// update the project model
-						txtEMFProject.setText(((IProject) dialog.getResult()[0])
-								.getName());
-					}
-					break;
-				}
-			}
-		});
+
 		btnBrowseEMFProject.setBounds(0, 0, 50, 25);
 		toolkit.adapt(btnBrowseEMFProject, true, true);
 		btnBrowseEMFProject.setText("Browse");
@@ -191,21 +175,7 @@ public class GemocXDSMLFormComposite extends Composite {
 
 		Button btnBrowseGenmodel = new Button(grpDomainModelDefinition,
 				SWT.NONE);
-		btnBrowseGenmodel.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				switch (e.type) {
-				case SWT.Selection:
-					SelectAnyIFileDialog dialog = new SelectAnyIFileDialog();
-					dialog.setPattern("*.genmodel");
-					if (dialog.open() == Dialog.OK) {
-						txtGenmodel.setText("platform:/resource"
-								+ ((IResource) dialog.getResult()[0])
-										.getFullPath().toString());
-					}
-					break;
-				}
-			}
-		});
+
 		btnBrowseGenmodel.setText("Browse");
 		toolkit.adapt(btnBrowseGenmodel, true, true);
 
@@ -229,37 +199,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		btSelectRootModelElement.setBounds(0, 0, 75, 25);
 		toolkit.adapt(btSelectRootModelElement, true, true);
 		btSelectRootModelElement.setText("Select");
-		btSelectRootModelElement.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				switch (e.type) {
-				case SWT.Selection:
-					ActiveFile activeFileEcore = new ActiveFileEcore(
-							getCurrentIFile().getProject());
-					IFile ecoreFile = activeFileEcore.getActiveFile();
-					if (ecoreFile != null) {
-						LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
-						ResourceSet resSet = new ResourceSetImpl();
 
-						// get the resource
-						Resource resource = resSet.getResource(URI
-								.createURI(ecoreFile.getLocationURI()
-										.toString()), true);
-						SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(
-								PlatformUI.getWorkbench()
-										.getActiveWorkbenchWindow().getShell(),
-								resource, labelProvider);
-						int res = dialog.open();
-						if (res == WizardDialog.OK) {
-							// update the project model
-							// xdsmlWrappedObject.setRootContainerModelElement(labelProvider.getText(dialog.getFirstResult()));
-							txtRootContainerModelElement.setText(labelProvider
-									.getText(dialog.getFirstResult()));
-						}
-					}
-					break;
-				}
-			}
-		});
 		Group grpConcreteSyntaxDefinition = new Group(this, SWT.NONE);
 		grpConcreteSyntaxDefinition.setText("Concrete syntax definition");
 		toolkit.adapt(grpConcreteSyntaxDefinition);
@@ -295,23 +235,6 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseXtextEditor.setBounds(0, 0, 75, 25);
 		toolkit.adapt(btnBrowseXtextEditor, true, true);
 		btnBrowseXtextEditor.setText("Browse");
-		btnBrowseXtextEditor.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				switch (e.type) {
-				case SWT.Selection:
-					SelectXtextIProjectDialog dialog = new SelectXtextIProjectDialog(
-							PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow().getShell());
-					int res = dialog.open();
-					if (res == WizardDialog.OK) {
-						// update the project model
-						txtXTextEditorProject.setText(((IProject) dialog
-								.getResult()[0]).getName());
-					}
-					break;
-				}
-			}
-		});
 
 		Group grpGraphicalEditor = new Group(grpConcreteSyntaxDefinition,
 				SWT.NONE);
@@ -341,23 +264,6 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseSiriusEditor.setText("Browse");
 		btnBrowseSiriusEditor.setBounds(0, 0, 75, 25);
 		toolkit.adapt(btnBrowseSiriusEditor, true, true);
-		btnBrowseSiriusEditor.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				switch (e.type) {
-				case SWT.Selection:
-					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(
-							PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow().getShell());
-					int res = dialog.open();
-					if (res == WizardDialog.OK) {
-						// update the project model
-						txtSiriusEditorProject.setText(((IProject) dialog
-								.getResult()[0]).getName());
-					}
-					break;
-				}
-			}
-		});
 
 		Group grpAnimationDefinition = new Group(grpConcreteSyntaxDefinition,
 				SWT.NONE);
@@ -391,23 +297,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		Button btnBrowseSiriusAnimator = new Button(grpAnimationDefinition,
 				SWT.NONE);
 		btnBrowseSiriusAnimator.setText("Browse");
-		btnBrowseSiriusAnimator.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				switch (e.type) {
-				case SWT.Selection:
-					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(
-							PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow().getShell());
-					int res = dialog.open();
-					if (res == WizardDialog.OK) {
-						// update the project model
-						txtSiriusAnimationProject.setText(((IProject) dialog
-								.getResult()[0]).getName());
-					}
-					break;
-				}
-			}
-		});
+
 		toolkit.adapt(btnBrowseSiriusAnimator, true, true);
 		new Label(grpAnimationDefinition, SWT.NONE);
 		new Label(grpAnimationDefinition, SWT.NONE);
@@ -452,23 +342,6 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseDSAProject.setBounds(0, 0, 75, 25);
 		toolkit.adapt(btnBrowseDSAProject, true, true);
 		btnBrowseDSAProject.setText("browse");
-		btnBrowseDSAProject.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				switch (e.type) {
-				case SWT.Selection:
-					SelectDSAIProjectDialog dialog = new SelectDSAIProjectDialog(
-							PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow().getShell());
-					int res = dialog.open();
-					if (res == WizardDialog.OK) {
-						// update the project model
-						txtDSAProject.setText(((IProject) dialog.getResult()[0])
-								.getName());
-					}
-					break;
-				}
-			}
-		});
 
 		Group grpMocDefinitionLibrary = new Group(grpBehaviorDefinition,
 				SWT.NONE);
@@ -506,23 +379,6 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseMoCCProject.setText("browse");
 		btnBrowseMoCCProject.setBounds(0, 0, 50, 25);
 		toolkit.adapt(btnBrowseMoCCProject, true, true);
-		btnBrowseMoCCProject.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				switch (e.type) {
-				case SWT.Selection:
-					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(
-							PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow().getShell());
-					int res = dialog.open();
-					if (res == WizardDialog.OK) {
-						// update the project model
-						txtMoCCProject.setText(((IProject) dialog.getResult()[0])
-								.getName());
-					}
-					break;
-				}
-			}
-		});
 
 		Group grpDSEDefinition = new Group(grpBehaviorDefinition, SWT.NONE);
 		grpDSEDefinition.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
@@ -557,29 +413,16 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseDSEProject.setText("browse");
 		btnBrowseDSEProject.setBounds(0, 0, 50, 25);
 		toolkit.adapt(btnBrowseDSEProject, true, true);
-		btnBrowseDSEProject.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				switch (e.type) {
-				case SWT.Selection:
-					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(
-							PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow().getShell());
-					int res = dialog.open();
-					if (res == WizardDialog.OK) {
-						// update the project model
-						txtDSEProject.setText(((IProject) dialog.getResult()[0])
-								.getName());
-					}
-					break;
-				}
-			}
-		});
 
 		m_bindingContext = initDataBindings();
 
 		initLinkListeners(linkEMFProject, linkGenmodel, linkXTextEditorProject,
 				linkSiriusEditorProject, linkSiriusAnimatorProject,
 				linkDSAProject, linkDSEProject, linkMoCCMLProject);
+		initButtonListeners(btnBrowseEMFProject, btnBrowseGenmodel,
+				btSelectRootModelElement, btnBrowseXtextEditor,
+				btnBrowseSiriusEditor, btnBrowseSiriusAnimator,
+				btnBrowseDSAProject, btnBrowseMoCCProject, btnBrowseDSEProject);
 	}
 
 	public void initControl(AdapterFactoryEditingDomain editingDomain) {
@@ -942,7 +785,7 @@ public class GemocXDSMLFormComposite extends Composite {
 						});
 			}
 		});
-		
+
 		linkDSAProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtDSAProject.getText().isEmpty()) {
@@ -961,16 +804,16 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								CreateDSAWizardContextActionDSAK3 action = new CreateDSAWizardContextActionDSAK3( 
+								CreateDSAWizardContextActionDSAK3 action = new CreateDSAWizardContextActionDSAK3(
 										getCurrentIFile().getProject(),
 										rootModelElement);
-								action.createNewDSAProject();								
+								action.createNewDSAProject();
 								initControlFromWrappedObject();
 							}
 						});
 			}
 		});
-		
+
 		linkDSEProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtDSEProject.getText().isEmpty()) {
@@ -999,7 +842,7 @@ public class GemocXDSMLFormComposite extends Composite {
 						});
 			}
 		});
-		
+
 		linkMoCCMLProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtMoCCProject.getText().isEmpty()) {
@@ -1027,7 +870,184 @@ public class GemocXDSMLFormComposite extends Composite {
 						});
 			}
 		});
-		
+
+	}
+
+	/**
+	 * Creates the listeners in charge of the behavior for the buttons
+	 */
+	protected void initButtonListeners(Button btnBrowseEMFProject,
+			Button btnBrowseGenmodel, Button btSelectRootModelElement,
+			Button btnBrowseXtextEditor, Button btnBrowseSiriusEditor,
+			Button btnBrowseSiriusAnimator, Button btnBrowseDSAProject,
+			Button btnBrowseMoCCProject, Button btnBrowseDSEProject) {
+		btnBrowseEMFProject.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectEMFIProjectDialog dialog = new SelectEMFIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if (res == WizardDialog.OK) {
+						// update the project model
+						txtEMFProject.setText(((IProject) dialog.getResult()[0])
+								.getName());
+					}
+					break;
+				}
+			}
+		});
+
+		btnBrowseGenmodel.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectAnyIFileDialog dialog = new SelectAnyIFileDialog();
+					dialog.setPattern("*.genmodel");
+					if (dialog.open() == Dialog.OK) {
+						txtGenmodel.setText("platform:/resource"
+								+ ((IResource) dialog.getResult()[0])
+										.getFullPath().toString());
+					}
+					break;
+				}
+			}
+		});
+		btSelectRootModelElement.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					ActiveFile activeFileEcore = new ActiveFileEcore(
+							getCurrentIFile().getProject());
+					IFile ecoreFile = activeFileEcore.getActiveFile();
+					if (ecoreFile != null) {
+						LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
+						ResourceSet resSet = new ResourceSetImpl();
+
+						// get the resource
+						Resource resource = resSet.getResource(URI
+								.createURI(ecoreFile.getLocationURI()
+										.toString()), true);
+						SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(
+								PlatformUI.getWorkbench()
+										.getActiveWorkbenchWindow().getShell(),
+								resource, labelProvider);
+						int res = dialog.open();
+						if (res == WizardDialog.OK) {
+							// update the project model
+							// xdsmlWrappedObject.setRootContainerModelElement(labelProvider.getText(dialog.getFirstResult()));
+							txtRootContainerModelElement.setText(labelProvider
+									.getText(dialog.getFirstResult()));
+						}
+					}
+					break;
+				}
+			}
+		});
+
+		btnBrowseXtextEditor.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectXtextIProjectDialog dialog = new SelectXtextIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if (res == WizardDialog.OK) {
+						// update the project model
+						txtXTextEditorProject.setText(((IProject) dialog
+								.getResult()[0]).getName());
+					}
+					break;
+				}
+			}
+		});
+		btnBrowseSiriusEditor.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if (res == WizardDialog.OK) {
+						// update the project model
+						txtSiriusEditorProject.setText(((IProject) dialog
+								.getResult()[0]).getName());
+					}
+					break;
+				}
+			}
+		});
+		btnBrowseSiriusAnimator.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectODesignIProjectDialog dialog = new SelectODesignIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if (res == WizardDialog.OK) {
+						// update the project model
+						txtSiriusAnimationProject.setText(((IProject) dialog
+								.getResult()[0]).getName());
+					}
+					break;
+				}
+			}
+		});
+		btnBrowseDSAProject.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectDSAIProjectDialog dialog = new SelectDSAIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if (res == WizardDialog.OK) {
+						// update the project model
+						txtDSAProject.setText(((IProject) dialog.getResult()[0])
+								.getName());
+					}
+					break;
+				}
+			}
+		});
+		btnBrowseMoCCProject.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if (res == WizardDialog.OK) {
+						// update the project model
+						txtMoCCProject.setText(((IProject) dialog.getResult()[0])
+								.getName());
+					}
+					break;
+				}
+			}
+		});
+		btnBrowseDSEProject.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(
+							PlatformUI.getWorkbench()
+									.getActiveWorkbenchWindow().getShell());
+					int res = dialog.open();
+					if (res == WizardDialog.OK) {
+						// update the project model
+						txtDSEProject.setText(((IProject) dialog.getResult()[0])
+								.getName());
+					}
+					break;
+				}
+			}
+		});
 	}
 
 	/**
