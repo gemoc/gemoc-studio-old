@@ -4,7 +4,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIprojectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIProjectDialog;
 
 public class CreateDSAWizardContextActionDSA extends CreateDSAWizardContextBase {
 
@@ -17,7 +17,7 @@ public class CreateDSAWizardContextActionDSA extends CreateDSAWizardContextBase 
 	
 	public void selectExistingDSAProject(){
 		// launch the appropriate wizard
-		SelectDSAIprojectDialog dialog = new SelectDSAIprojectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		SelectDSAIProjectDialog dialog = new SelectDSAIProjectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		int res = dialog.open();
 		if(res == WizardDialog.OK){
 			// update the project model

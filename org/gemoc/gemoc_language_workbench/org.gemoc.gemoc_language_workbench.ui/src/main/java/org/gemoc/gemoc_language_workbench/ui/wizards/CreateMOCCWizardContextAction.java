@@ -3,6 +3,7 @@ package org.gemoc.gemoc_language_workbench.ui.wizards;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
+import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 
 public class CreateMOCCWizardContextAction {
 
@@ -10,10 +11,15 @@ public class CreateMOCCWizardContextAction {
 	
 	public CreateMOCCAction actionToExecute = CreateMOCCAction.CREATE_NEW_MOCC_PROJECT;
 	
-	protected IProject gemocLanguageIProject; 
+	// one of these must be set, depending on it it will work on the file or directly in the model 
+	protected IProject gemocLanguageIProject = null;
+	protected GemocLanguageWorkbenchConfiguration gemocLanguageModel = null; 
 	
 	public CreateMOCCWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
+	}
+	public CreateMOCCWizardContextAction(GemocLanguageWorkbenchConfiguration rootModelElement) {
+		gemocLanguageModel = rootModelElement;
 	}
 
 	public void execute() {

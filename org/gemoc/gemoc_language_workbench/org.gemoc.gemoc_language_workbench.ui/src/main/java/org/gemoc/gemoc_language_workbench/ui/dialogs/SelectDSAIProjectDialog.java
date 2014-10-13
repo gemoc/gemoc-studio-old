@@ -7,9 +7,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.gemoc.gemoc_language_workbench.utils.Activator;
 import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
-public class SelectDSAIprojectDialog extends SelectAnyIProjectDialog {
+public class SelectDSAIProjectDialog extends SelectAnyIProjectDialog {
 
-	public SelectDSAIprojectDialog(Shell parentShell) {
+	public SelectDSAIProjectDialog(Shell parentShell) {
 		super(parentShell);
 	}
 

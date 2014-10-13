@@ -29,8 +29,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public void setLanguageName(String languageName) {
-		firePropertyChange("languageName", languageDefinition.getName(),
-				languageName);
+		firePropertyChange("languageName", getLanguageName(), languageName);
 		languageDefinition.setName(languageName);
 	}
 
@@ -42,10 +41,8 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public void setDomainModelProjectName(String domainModelProjectName) {
-		String oldName = languageDefinition.getDomainModelProject() != null ? languageDefinition
-				.getDomainModelProject().getProjectName() : null;
-		firePropertyChange("domainModelProjectName", oldName,
-				domainModelProjectName);
+		String oldName = getDomainModelProjectName();
+		firePropertyChange("domainModelProjectName", oldName, domainModelProjectName);
 		XDSMLModelHelper.getOrCreateDomainModelProject(languageDefinition)
 				.setProjectName(domainModelProjectName);
 	}
@@ -64,12 +61,8 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public void setRootContainerModelElement(String root) {
-		String oldName = languageDefinition.getDomainModelProject() != null
-				&& languageDefinition.getDomainModelProject() instanceof EMFEcoreProject
-				? ((EMFEcoreProject) languageDefinition
-				.getDomainModelProject()).getDefaultRootEObjectQualifiedName()
-				: null;
-		firePropertyChange("genmodelLocationURI", oldName, root);
+		String oldName = getRootContainerModelElement();
+		firePropertyChange("rootContainerModelElement", oldName, root);
 		((EMFEcoreProject)XDSMLModelHelper.getOrCreateDomainModelProject(languageDefinition)).setDefaultRootEObjectQualifiedName(root);
 	}
 
@@ -78,19 +71,14 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 			if (languageDefinition.getDomainModelProject() instanceof EMFEcoreProject) {
 				EMFEcoreProject ecoreProject = (EMFEcoreProject) languageDefinition
 						.getDomainModelProject();
-				return ecoreProject.getDefaultRootEObjectQualifiedName();
+				return ecoreProject.getDefaultRootEObjectQualifiedName() != null ? ecoreProject.getDefaultRootEObjectQualifiedName() : "";
 			}
 		}
 		return "";
 	}
 
 	public void setGenmodelLocationURI(String genmodel) {
-		String oldName = languageDefinition.getDomainModelProject() != null
-				&& languageDefinition.getDomainModelProject() instanceof EMFEcoreProject
-				&& ((EMFEcoreProject) languageDefinition
-						.getDomainModelProject()).getEmfGenmodel() != null ? ((EMFEcoreProject) languageDefinition
-				.getDomainModelProject()).getEmfGenmodel().getLocationURI()
-				: null;
+		String oldName = getGenmodelLocationURI();
 		firePropertyChange("genmodelLocationURI", oldName, genmodel);
 		XDSMLModelHelper.getOrCreateEmfGenmodel(languageDefinition)
 				.setLocationURI(genmodel);
@@ -108,8 +96,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public void setXTextEditorProjectName(String name) {
-		String oldName = languageDefinition.getDomainModelProject() != null ? languageDefinition
-				.getDomainModelProject().getProjectName() : null;
+		String oldName = getXTextEditorProjectName();
 		firePropertyChange("xTextEditorProjectName", oldName, name);
 		XDSMLModelHelper.getOrCreateXTextEditorProject(languageDefinition)
 				.setProjectName(name);
@@ -128,8 +115,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public void setSiriusEditorProjectName(String name) {
-		String oldName = languageDefinition.getDomainModelProject() != null ? languageDefinition
-				.getDomainModelProject().getProjectName() : null;
+		String oldName = getSiriusEditorProjectName();
 		firePropertyChange("xSiriusEditorProjectName", oldName, name);
 		XDSMLModelHelper.getOrCreateSiriusEditorProject(languageDefinition)
 				.setProjectName(name);
@@ -139,17 +125,14 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 		if (languageDefinition != null) {
 			for (AnimatorProject editor : languageDefinition
 					.getAnimatorProjects()) {
-				// if (editor instanceof ODProject) {
 				return editor.getProjectName();
-				// }
 			}
 		}
 		return "";
 	}
 
 	public void setSiriusAnimatorProjectName(String name) {
-		String oldName = languageDefinition.getDomainModelProject() != null ? languageDefinition
-				.getDomainModelProject().getProjectName() : null;
+		String oldName = getSiriusAnimatorProjectName();
 		firePropertyChange("xSiriusAnimatorProjectName", oldName, name);
 		XDSMLModelHelper.getOrCreateSiriusAnimatorProject(languageDefinition)
 				.setProjectName(name);
@@ -163,8 +146,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public void setDSAProjectName(String projectName) {
-		String oldName = languageDefinition.getDomainModelProject() != null ? languageDefinition
-				.getDsaProject().getProjectName() : null;
+		String oldName = getDSAProjectName();
 		firePropertyChange("dSAProjectName", oldName, projectName);
 		XDSMLModelHelper.getOrCreateDSAProject(languageDefinition)
 				.setProjectName(projectName);
@@ -178,8 +160,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public void setDSEProjectName(String projectName) {
-		String oldName = languageDefinition.getDomainModelProject() != null ? languageDefinition
-				.getDSEProject().getProjectName() : null;
+		String oldName = getDSEProjectName();
 		firePropertyChange("dSEProjectName", oldName, projectName);
 		XDSMLModelHelper.getOrCreateDSEProject(languageDefinition)
 				.setProjectName(projectName);
@@ -193,8 +174,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public void setMoCCProjectName(String projectName) {
-		String oldName = languageDefinition.getMoCModelProject() != null ? languageDefinition
-				.getMoCModelProject().getProjectName() : null;
+		String oldName = getMoCCProjectName();
 		firePropertyChange("moCCProjectName", oldName, projectName);
 		XDSMLModelHelper.getOrCreateMoCCProject(languageDefinition)
 				.setProjectName(projectName);

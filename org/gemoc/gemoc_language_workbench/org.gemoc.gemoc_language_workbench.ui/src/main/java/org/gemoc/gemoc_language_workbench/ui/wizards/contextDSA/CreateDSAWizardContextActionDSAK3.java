@@ -10,6 +10,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.commons.eclipse.ui.WizardFinder;
+import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
@@ -21,7 +22,10 @@ public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextBas
 
 	public CreateDSAWizardContextActionDSAK3(IProject gemocLanguageIProject) {
 		super(gemocLanguageIProject);
-		// TODO Auto-generated constructor stub
+	}
+	
+	public CreateDSAWizardContextActionDSAK3(IProject gemocLanguageIProject, GemocLanguageWorkbenchConfiguration rootModelElement) {
+		super(gemocLanguageIProject, rootModelElement);
 	}
 
 //	@Override

@@ -10,6 +10,7 @@ import org.gemoc.gemoc_language_workbench.conf.FileResource;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.MoCProject;
 import org.gemoc.gemoc_language_workbench.conf.ODProject;
+import org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.confFactory;
 
@@ -28,6 +29,7 @@ public class XDSMLModelHelper {
 		for(EditorProject editor : languageDefinition.getEditorProjects()){
 	    	if(editor instanceof XTextEditorProject){
 	    		xTextEditor = editor;
+	    		break;
 	    	}
 	    }
 	    
@@ -44,6 +46,7 @@ public class XDSMLModelHelper {
 		for(EditorProject editor : languageDefinition.getEditorProjects()){
 	    	if(editor instanceof ODProject){
 	    		siriusEditor = editor;
+	    		break;
 	    	}
 	    }
 	    
@@ -58,8 +61,9 @@ public class XDSMLModelHelper {
 			LanguageDefinition languageDefinition) {
 		AnimatorProject siriusEditor = null;
 		for(AnimatorProject editor : languageDefinition.getAnimatorProjects()){
-	    	if(editor instanceof ODProject){
+	    	if(editor instanceof SiriusAnimatorProject){
 	    		siriusEditor = editor;
+	    		break;
 	    	}
 	    }
 	    

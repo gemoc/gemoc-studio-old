@@ -46,10 +46,17 @@ public class CreateDomainModelWizardContextAction {
 	
 	public CreateDomainModelAction actionToExecute = CreateDomainModelAction.CREATE_NEW_EMF_PROJECT;
 	
-	protected IProject gemocLanguageIProject; 
+
+	// one of these must be set, depending on it it will work on the file or directly in the model 
+	protected IProject gemocLanguageIProject = null;	
+	protected GemocLanguageWorkbenchConfiguration gemocLanguageModel = null;
 	
 	public CreateDomainModelWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
+	}
+
+	public CreateDomainModelWizardContextAction(GemocLanguageWorkbenchConfiguration rootModelElement) {
+		gemocLanguageModel = rootModelElement;
 	}
 
 	public void execute() {
@@ -119,7 +126,15 @@ public class CreateDomainModelWizardContextAction {
 	}
 	
 	protected void addEMFProjectToConf(IProject emfProject){
-		IFile configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
+		if(gemocLanguageIProject != null){
+			addEMFProjectToConf(emfProject, gemocLanguageIProject);
+		}
+		if(gemocLanguageModel != null){
+			addEMFProjectToConf(emfProject, gemocLanguageModel);
+		}
+	}
+	protected void addEMFProjectToConf(IProject emfProject,IProject gemocProject){
+		IFile configFile = gemocProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
 		if(configFile.exists()){
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		    Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -133,28 +148,7 @@ public class CreateDomainModelWizardContextAction {
 		    
 		    
 		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
-		    // consider only one language :-/
-		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
-		    
-		    // create missing data
-		    EMFEcoreProject emfEcoreProject = confFactoryImpl.eINSTANCE.createEMFEcoreProject();
-		    emfEcoreProject.setProjectName(emfProject.getName());
-		    langage.setDomainModelProject(emfEcoreProject);
-		    	
-		    // also add the genmodel if present
-		    FileFinderVisitor ecoreProjectVisitor = new FileFinderVisitor("genmodel");
-			try {
-				emfProject.accept(ecoreProjectVisitor);
-				IFile genmodelIFile = ecoreProjectVisitor.getFile();
-				if(genmodelIFile != null){
-					EMFGenmodel genmodel = confFactoryImpl.eINSTANCE.createEMFGenmodel();
-					URI genmodelLocationURI = URI.createPlatformResourceURI(genmodelIFile.getFullPath().toString(),true);
-					genmodel.setLocationURI(genmodelLocationURI.toString());
-					emfEcoreProject.setEmfGenmodel(genmodel);
-				}
-			} catch (CoreException e) {
-				Activator.error(e.getMessage(), e);
-			}
+		    addEMFProjectToConf(emfProject, gemocLanguageWorkbenchConfiguration);
 			
 			try {
 				resource.save(null);
@@ -164,6 +158,32 @@ public class CreateDomainModelWizardContextAction {
 		}
 		try {
 			configFile.refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
+		} catch (CoreException e) {
+			Activator.error(e.getMessage(), e);
+		}
+	}
+	
+	protected void addEMFProjectToConf(IProject emfProject,GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration){
+		//GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
+	    // consider only one language :-/
+	    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
+	    
+	    // create missing data
+	    EMFEcoreProject emfEcoreProject = confFactoryImpl.eINSTANCE.createEMFEcoreProject();
+	    emfEcoreProject.setProjectName(emfProject.getName());
+	    langage.setDomainModelProject(emfEcoreProject);
+	    	
+	    // also add the genmodel if present
+	    FileFinderVisitor ecoreProjectVisitor = new FileFinderVisitor("genmodel");
+		try {
+			emfProject.accept(ecoreProjectVisitor);
+			IFile genmodelIFile = ecoreProjectVisitor.getFile();
+			if(genmodelIFile != null){
+				EMFGenmodel genmodel = confFactoryImpl.eINSTANCE.createEMFGenmodel();
+				URI genmodelLocationURI = URI.createPlatformResourceURI(genmodelIFile.getFullPath().toString(),true);
+				genmodel.setLocationURI(genmodelLocationURI.toString());
+				emfEcoreProject.setEmfGenmodel(genmodel);
+			}
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}

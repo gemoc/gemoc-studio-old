@@ -26,6 +26,8 @@
     </genClasses>
     <genClasses ecoreClass="process.ecore#//ProcessVariable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//ProcessVariable/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessVariable/writtenBy"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessVariable/observedBy"/>
     </genClasses>
     <genClasses ecoreClass="process.ecore#//ComposedTask">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ComposedTask/tasks"/>

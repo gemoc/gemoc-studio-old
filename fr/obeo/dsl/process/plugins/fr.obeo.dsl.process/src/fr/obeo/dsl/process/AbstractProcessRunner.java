@@ -94,24 +94,61 @@ public abstract class AbstractProcessRunner implements IProcessRunner {
 		@Override
 		public void notifyChanged(Notification notification) {
 			super.notifyChanged(notification);
-			if (notification.getEventType() == Notification.SET
-					&& notification.getFeatureID(ProcessVariableToObjectMapImpl.class) == ProcessPackage.PROCESS_VARIABLE_TO_OBJECT_MAP__VALUE
-					&& notification.getNewValue() != null
-					&& notification.getNotifier() instanceof ProcessVariableToObjectMapImpl) {
+			if (isAddVariablesNotifiactation(notification)) {
+				final ProcessVariableToObjectMapImpl entry = (ProcessVariableToObjectMapImpl)notification
+						.getNewValue();
+				variableChanged(getContext(), entry.getKey(), null, entry.getValue());
+				for (Entry<ActionTask, IActionTaskProcessor> activeEntry : getActiveProcessors().entrySet()) {
+					if (activeEntry.getKey().getObservedVariables().contains(entry.getKey())) {
+						activeEntry.getValue().variableChanged(getContext(), entry.getKey(), null,
+								entry.getValue());
+					}
+				}
+			} else if (isSetValueNotification(notification)) {
 				final ProcessVariableToObjectMapImpl entry = (ProcessVariableToObjectMapImpl)notification
 						.getNotifier();
 				final Object newValue = notification.getNewValue();
-				if (!newValue.equals(notification.getOldValue())) {
+				final Object oldValue = notification.getOldValue();
+				if (!newValue.equals(oldValue)) {
+					variableChanged(getContext(), entry.getKey(), oldValue, newValue);
 					for (Entry<ActionTask, IActionTaskProcessor> activeEntry : getActiveProcessors()
 							.entrySet()) {
 						if (activeEntry.getKey().getObservedVariables().contains(entry.getKey())) {
-							activeEntry.getValue().validate(getContext());
+							activeEntry.getValue().variableChanged(getContext(), entry.getKey(), oldValue,
+									newValue);
 						}
 					}
 				}
 			}
 		}
 
+		/**
+		 * Tells if the given {@link Notification} is a set value.
+		 * 
+		 * @param notification
+		 *            the {@link Notification} to check
+		 * @return <code>true</code> if the given {@link Notification} is a set value, <code>false</code>
+		 *         otherwise
+		 */
+		protected boolean isSetValueNotification(Notification notification) {
+			return notification.getEventType() == Notification.SET
+					&& notification.getFeatureID(ProcessVariableToObjectMapImpl.class) == ProcessPackage.PROCESS_VARIABLE_TO_OBJECT_MAP__VALUE
+					&& notification.getNotifier() instanceof ProcessVariableToObjectMapImpl;
+		}
+
+		/**
+		 * Tells if the given {@link Notification} is an add variables.
+		 * 
+		 * @param notification
+		 *            the {@link Notification} to check
+		 * @return <code>true</code> if the given {@link Notification} is an add variables, <code>false</code>
+		 *         otherwise
+		 */
+		protected boolean isAddVariablesNotifiactation(Notification notification) {
+			return notification.getEventType() == Notification.ADD
+					&& notification.getFeatureID(ProcessContext.class) == ProcessPackage.PROCESS_CONTEXT__VARIABLES
+					&& notification.getNotifier() instanceof ProcessContext;
+		}
 	}
 
 	/**
@@ -168,6 +205,21 @@ public abstract class AbstractProcessRunner implements IProcessRunner {
 	}
 
 	/**
+	 * Notifies that the given {@link ProcessVariable} has changed from the old value to the new value.
+	 * 
+	 * @param context
+	 *            the {@link ProcessContext}
+	 * @param variable
+	 *            the {@link ProcessVariable}
+	 * @param oldValue
+	 *            the old value
+	 * @param newValue
+	 *            the new value
+	 */
+	public abstract void variableChanged(ProcessContext context, ProcessVariable variable, Object oldValue,
+			Object newValue);
+
+	/**
 	 * Instanciates an {@link IActionTaskProcessor} for the given {@link ActionTask}.
 	 * 
 	 * @param task
@@ -179,8 +231,8 @@ public abstract class AbstractProcessRunner implements IProcessRunner {
 
 		try {
 			@SuppressWarnings("unchecked")
-			final Class<? extends IActionTaskProcessor> cls = (Class<? extends IActionTaskProcessor>)AbstractProcessRunner.class
-					.getClassLoader().loadClass(task.getInstanceClassName());
+			final Class<? extends IActionTaskProcessor> cls = (Class<? extends IActionTaskProcessor>)this
+					.getClass().getClassLoader().loadClass(task.getInstanceClassName());
 			final Constructor<? extends IActionTaskProcessor> constructor = cls
 					.getConstructor(ActionTask.class);
 			res = constructor.newInstance(task);

@@ -42,7 +42,7 @@ public abstract class AbstractListener<T> implements IListener {
 	 * The {@link List} of {@link IChangeProcessor}.
 	 */
 	private final List<IChangeProcessor> processors = new ArrayList<IChangeProcessor>();
-	
+
 	/**
 	 * The {@link Object} used as lock to prevent concurrent calls on sensitive operations.
 	 */
@@ -75,7 +75,6 @@ public abstract class AbstractListener<T> implements IListener {
 	protected List<IChangeProcessor> getProcessors() {
 		return processors;
 	}
-
 
 	/**
 	 * Fires the given change to {@link IListener#getProcessors() processors}.

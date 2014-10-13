@@ -59,8 +59,7 @@ public class GemocFormViewer extends ContentViewer {
 
 	@Override
 	public void refresh() {
-		// TODO Auto-generated method stub
-		toString();
+		viewControl.initControlFromWrappedObject();
 
 	}
 

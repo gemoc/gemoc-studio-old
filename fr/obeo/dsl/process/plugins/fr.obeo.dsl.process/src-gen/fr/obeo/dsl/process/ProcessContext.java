@@ -151,7 +151,8 @@ public interface ProcessContext extends EObject {
 	 * @model dataType="fr.obeo.dsl.process.Object" processRequired="true"
 	 * @generated
 	 */
-	Object getVariableValue(ProcessVariable variable, ActionTask observer);
+	Object getVariableValue(ProcessVariable variable, ActionTask observer)
+			throws IllegalVariableAccessException;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

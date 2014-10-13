@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.workspace.listener.internal;
+package fr.obeo.dsl.workspace.listener.tests.internal;
 
 import fr.obeo.dsl.workspace.listener.IListener;
 import fr.obeo.dsl.workspace.listener.WorkspaceUtils;
@@ -45,7 +45,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**
- * Tests the {@link WorkspaceListener} class.
+ * Tests the {@link fr.obeo.dsl.workspace.listener.internal.WorkspaceListener WorkspaceListener} class.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
@@ -67,8 +67,9 @@ public class WorkspaceListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)} adding
-	 * an {@link org.eclipse.core.resources.IResource IResource}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
+	 * adding an {@link org.eclipse.core.resources.IResource IResource}.
 	 */
 	@Test
 	public void resourceChangedAdd() {
@@ -101,7 +102,8 @@ public class WorkspaceListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
 	 * removing an {@link org.eclipse.core.resources.IResource IResource}.
 	 */
 	@Test
@@ -131,8 +133,9 @@ public class WorkspaceListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)} moving
-	 * an {@link org.eclipse.core.resources.IResource IResource}.
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
+	 * moving an {@link org.eclipse.core.resources.IResource IResource}.
 	 */
 	@Test
 	public void resourceChangedMove() {
@@ -171,7 +174,8 @@ public class WorkspaceListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
 	 * opening an {@link org.eclipse.core.resources.IResource IResource}.
 	 */
 	@Test
@@ -205,7 +209,8 @@ public class WorkspaceListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
 	 * closing an {@link org.eclipse.core.resources.IResource IResource}.
 	 */
 	@Test
@@ -240,7 +245,8 @@ public class WorkspaceListenerTests {
 	}
 
 	/**
-	 * Tests {@link WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
+	 * Tests
+	 * {@link fr.obeo.dsl.workspace.listener.internal.WorkspaceListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)}
 	 * changing description of an {@link org.eclipse.core.resources.IResource IResource}.
 	 */
 	@Test

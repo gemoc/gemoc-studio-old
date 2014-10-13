@@ -15,20 +15,16 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.workspace.listener.internal;
+package fr.obeo.dsl.process.workspace;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import fr.obeo.dsl.process.IActionTaskProcessor;
 
 /**
- * Aggregates tests for the fr.obeo.dsl.workspace.listener.internal package.
+ * Abstract implementation of {@link fr.obeo.dsl.process.ActionTask ActionTask#getInstanceClassName()} for
+ * workspace tasks.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-@RunWith(Suite.class)
-@SuiteClasses(value = {WorkbenchPageListenerTests.class, WorkbenchPartListenerTests.class,
-		WorkbenchWindowListenerTests.class, WorkspaceListenerTests.class, })
-public class InternalTests {
+public interface IWorkspaceTaskProcessor extends IActionTaskProcessor {
 
 }

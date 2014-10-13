@@ -20,7 +20,8 @@ package fr.obeo.dsl.workspace.listener.change.workbench;
 import org.eclipse.ui.IWorkbenchPartReference;
 
 /**
- * Brought to top {@link IWorkbenchPartReference} {@link fr.obeo.dsl.workspace.listener.change.IChange IChange}.
+ * Brought to top {@link IWorkbenchPartReference} {@link fr.obeo.dsl.workspace.listener.change.IChange
+ * IChange}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */

@@ -52,6 +52,13 @@ public class ProcessRunnerTests {
 	private static final class TestProcessRunner extends AbstractProcessRunner {
 
 		/**
+		 * Number of times the
+		 * {@link TestTask#variableChanged(ProcessContext, ProcessVariable, Object, Object) variable changed}
+		 * method has been called.
+		 */
+		private int nbVariableChanged;
+
+		/**
 		 * Constructor.
 		 * 
 		 * @param processContext
@@ -88,6 +95,12 @@ public class ProcessRunnerTests {
 			return getProcessors().get(task);
 		}
 
+		@Override
+		public void variableChanged(ProcessContext context, ProcessVariable variable, Object oldValue,
+				Object newValue) {
+			nbVariableChanged++;
+		}
+
 	}
 
 	/**
@@ -111,6 +124,13 @@ public class ProcessRunnerTests {
 		 * Number of times the {@link TestTask#undoAction(ProcessContext) undo action} method has been called.
 		 */
 		private int nbUndoActions;
+
+		/**
+		 * Number of times the
+		 * {@link TestTask#variableChanged(ProcessContext, ProcessVariable, Object, Object) variable changed}
+		 * method has been called.
+		 */
+		private int nbVariableChanged;
 
 		/**
 		 * Constructor.
@@ -149,6 +169,17 @@ public class ProcessRunnerTests {
 			nbUndoActions++;
 		}
 
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see fr.obeo.dsl.process.IActionTaskProcessor#variableChanged(fr.obeo.dsl.process.ProcessContext,
+		 *      fr.obeo.dsl.process.ProcessVariable, java.lang.Object, java.lang.Object)
+		 */
+		public void variableChanged(ProcessContext context, ProcessVariable variable, Object oldValue,
+				Object newValue) {
+			nbVariableChanged++;
+		}
+
 	}
 
 	/**
@@ -180,15 +211,19 @@ public class ProcessRunnerTests {
 		TestTask taskProcessor1 = (TestTask)runner.getProcessor(task1);
 		TestTask taskProcessor2 = (TestTask)runner.getProcessor(task2);
 
+		assertEquals(0, runner.nbVariableChanged);
+
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
+		assertEquals(0, taskProcessor1.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task2));
 		assertEquals(0, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 	}
 
 	/**
@@ -230,34 +265,45 @@ public class ProcessRunnerTests {
 		TestTask taskProcessor2 = (TestTask)runner.getProcessor(task2);
 		TestTask taskProcessor3 = (TestTask)runner.getProcessor(task3);
 
+		assertEquals(0, runner.nbVariableChanged);
+
 		assertEquals(false, runner.isActive(task2));
 		assertEquals(0, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task3));
 		assertEquals(0, taskProcessor3.nbValidations);
 		assertEquals(0, taskProcessor3.nbDoActions);
 		assertEquals(0, taskProcessor3.nbUndoActions);
+		assertEquals(0, taskProcessor3.nbVariableChanged);
 
 		context.setDone(task1, this);
+
+		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task2));
 		assertEquals(1, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task3));
 		assertEquals(0, taskProcessor3.nbValidations);
 		assertEquals(0, taskProcessor3.nbDoActions);
 		assertEquals(0, taskProcessor3.nbUndoActions);
+		assertEquals(0, taskProcessor3.nbVariableChanged);
 
 		context.setDone(task2, this);
+
+		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task3));
 		assertEquals(1, taskProcessor3.nbValidations);
 		assertEquals(0, taskProcessor3.nbDoActions);
 		assertEquals(0, taskProcessor3.nbUndoActions);
+		assertEquals(0, taskProcessor3.nbVariableChanged);
 	}
 
 	/**
@@ -299,48 +345,65 @@ public class ProcessRunnerTests {
 		TestTask taskProcessor2 = (TestTask)runner.getProcessor(task2);
 		TestTask taskProcessor3 = (TestTask)runner.getProcessor(task3);
 
+		assertEquals(0, runner.nbVariableChanged);
+
 		assertEquals(false, runner.isActive(task2));
 		assertEquals(0, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task3));
 		assertEquals(0, taskProcessor3.nbValidations);
 		assertEquals(0, taskProcessor3.nbDoActions);
 		assertEquals(0, taskProcessor3.nbUndoActions);
+		assertEquals(0, taskProcessor3.nbVariableChanged);
 
 		context.setDone(task1, this);
+
+		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task2));
 		assertEquals(1, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task3));
 		assertEquals(0, taskProcessor3.nbValidations);
 		assertEquals(0, taskProcessor3.nbDoActions);
 		assertEquals(0, taskProcessor3.nbUndoActions);
+		assertEquals(0, taskProcessor3.nbVariableChanged);
 
 		context.setDone(task2, this);
+
+		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task3));
 		assertEquals(1, taskProcessor3.nbValidations);
 		assertEquals(0, taskProcessor3.nbDoActions);
 		assertEquals(0, taskProcessor3.nbUndoActions);
+		assertEquals(0, taskProcessor3.nbVariableChanged);
 
 		context.setUndone(task2, "Test");
+
+		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task3));
 		assertEquals(1, taskProcessor3.nbValidations);
 		assertEquals(0, taskProcessor3.nbDoActions);
 		assertEquals(0, taskProcessor3.nbUndoActions);
+		assertEquals(0, taskProcessor3.nbVariableChanged);
 
 		context.setUndone(task1, "Test");
+
+		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task2));
 		assertEquals(1, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 	}
 
 	/**
@@ -377,51 +440,67 @@ public class ProcessRunnerTests {
 		TestTask taskProcessor1 = (TestTask)runner.getProcessor(task1);
 		TestTask taskProcessor2 = (TestTask)runner.getProcessor(task2);
 
+		assertEquals(0, runner.nbVariableChanged);
+
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
+		assertEquals(0, taskProcessor1.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task2));
 		assertEquals(0, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		context.setVariableValue(variable1, new Object(), task1);
 
+		assertEquals(0, runner.nbVariableChanged);
+
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
+		assertEquals(0, taskProcessor1.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task2));
 		assertEquals(0, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		context.setDone(task1, this);
 
+		assertEquals(0, runner.nbVariableChanged);
+
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
+		assertEquals(0, taskProcessor1.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task2));
 		assertEquals(1, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		context.setVariableValue(variable1, new Object(), task1);
 
+		assertEquals(0, runner.nbVariableChanged);
+
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
+		assertEquals(0, taskProcessor1.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task2));
 		assertEquals(1, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 	}
 
 	/**
@@ -458,51 +537,67 @@ public class ProcessRunnerTests {
 		TestTask taskProcessor1 = (TestTask)runner.getProcessor(task1);
 		TestTask taskProcessor2 = (TestTask)runner.getProcessor(task2);
 
+		assertEquals(0, runner.nbVariableChanged);
+
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
+		assertEquals(0, taskProcessor1.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task2));
 		assertEquals(0, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		context.setVariableValue(variable1, new Object(), task1);
 
+		assertEquals(1, runner.nbVariableChanged);
+
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
+		assertEquals(0, taskProcessor1.nbVariableChanged);
 
 		assertEquals(false, runner.isActive(task2));
 		assertEquals(0, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		context.setDone(task1, this);
+
+		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
+		assertEquals(0, taskProcessor1.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task2));
 		assertEquals(1, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(0, taskProcessor2.nbVariableChanged);
 
 		context.setVariableValue(variable1, new Object(), task1);
+
+		assertEquals(2, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
+		assertEquals(0, taskProcessor1.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task2));
-		assertEquals(2, taskProcessor2.nbValidations);
+		assertEquals(1, taskProcessor2.nbValidations);
 		assertEquals(0, taskProcessor2.nbDoActions);
 		assertEquals(0, taskProcessor2.nbUndoActions);
+		assertEquals(1, taskProcessor2.nbVariableChanged);
 	}
 
 }

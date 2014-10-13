@@ -17,9 +17,10 @@
  *******************************************************************************/
 package fr.obeo.dsl.workspace.listener.tests;
 
-import fr.obeo.dsl.workspace.listener.internal.InternalTests;
 import fr.obeo.dsl.workspace.listener.tests.change.processor.ProcessorTests;
 import fr.obeo.dsl.workspace.listener.tests.filter.FilterTests;
+import fr.obeo.dsl.workspace.listener.tests.filter.ResourceFilterTests;
+import fr.obeo.dsl.workspace.listener.tests.internal.InternalTests;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -32,7 +33,7 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses(value = {WorkspaceUtilsTests.class, InternalTests.class, ProcessorTests.class,
-		FilterTests.class, })
+		FilterTests.class, ResourceFilterTests.class, })
 public class AllTests {
 
 }

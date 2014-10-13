@@ -1,20 +1,13 @@
 package org.gemoc.gemoc_language_workbench.ui.wizards;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
@@ -22,52 +15,45 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.commons.eclipse.core.resources.Project;
-import org.gemoc.commons.eclipse.pde.ui.PluginConverter;
+import org.eclipse.ui.wizards.IWizardDescriptor;
+import org.gemoc.commons.eclipse.ui.WizardFinder;
 import org.gemoc.gemoc_language_workbench.conf.ECLFile;
 import org.gemoc.gemoc_language_workbench.conf.ECLProject;
 import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
 import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.confFactory;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIprojectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectECLIFileDialog;
-import org.gemoc.gemoc_language_workbench.ui.dse.GemocDSENature;
+import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 
 public class CreateDSEWizardContextAction {
 
-	public enum CreateDSEAction {CREATE_NEW_DSE_PROJECT, SELECT_EXISTING_DSE_PROJECT};
-	
+	public enum CreateDSEAction {
+		CREATE_NEW_DSE_PROJECT, SELECT_EXISTING_DSE_PROJECT
+	};
+
 	public CreateDSEAction actionToExecute = CreateDSEAction.CREATE_NEW_DSE_PROJECT;
-	
-	protected IProject gemocLanguageIProject; 
-	
+
+	// one of these must be set, depending on it it will work on the file or
+	// directly in the model
+	protected IProject gemocLanguageIProject = null;
+	protected GemocLanguageWorkbenchConfiguration gemocLanguageModel = null;
+
 	public CreateDSEWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
-		init();
 	}
-
-	private IFile configFile;
-	private LanguageDefinition _languageDefinition;
-	
-	private void init() {
-		configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)); 
-		if(configFile.exists()){
-		    // Obtain a new resource set
-		    ResourceSet resSet = new ResourceSetImpl();
-		    // get the resource
-		    Resource resource = resSet.getResource(URI.createURI(configFile.getLocationURI().toString()),true);   	    
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
-		    // consider only one language :-/
-		    _languageDefinition = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
-		}
+	public CreateDSEWizardContextAction(IProject updatedGemocLanguageProject, GemocLanguageWorkbenchConfiguration rootModelElement) {
+		gemocLanguageIProject = updatedGemocLanguageProject;
+		gemocLanguageModel = rootModelElement;
 	}
-
 	
+
 	public void execute() {
 		switch (actionToExecute) {
 		case CREATE_NEW_DSE_PROJECT:
@@ -81,118 +67,151 @@ public class CreateDSEWizardContextAction {
 			break;
 		}
 	}
-
-	protected void createNewDSEProject() {
-		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		String suffixe = ".dse";
-		
-		String projectName = getDSEProjectName(suffixe);
-		final IProject project = workspace.getRoot().getProject(projectName);
-		
-		final IProjectDescription description = workspace.newProjectDescription(projectName);
-		if (!gemocLanguageIProject.getLocation().toOSString().equals(workspace.getRoot().getLocation().toOSString()))
-			description.setLocation(new Path(gemocLanguageIProject.getLocation().toOSString() + suffixe));
-		
-		try {
-			IWorkspaceRunnable operation = new IWorkspaceRunnable() {
-				public void run(IProgressMonitor monitor) throws CoreException {
-					project.create(description, monitor);
-					project.open(monitor);
-					Project.addNature(project, GemocDSENature.NATURE_ID);
-					try {
-						PluginConverter.convert(project);
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					configureProject(project, monitor);
-					project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
-				}
-			};
-			ResourcesPlugin.getWorkspace().run(operation, null);
-		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-//		MessageDialog.openWarning(
-//				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-//				"Gemoc Language Workbench UI",
-//				"createNewDSEProject. Action not implemented yet");
-	}
-
-	private String getDSEProjectName(String suffixe) {
-		return gemocLanguageIProject.getName() + ".dse";
-	}
-
-	private void configureProject(IProject project, IProgressMonitor monitor) throws CoreException {
-		Project.createFolder(project, "ecl", monitor);
-		
-		if (_languageDefinition != null
-			&& _languageDefinition.getDomainModelProject() != null
-			&& _languageDefinition.getDomainModelProject() instanceof EMFEcoreProject) {
-			EMFEcoreProject ecoreProject = (EMFEcoreProject)_languageDefinition.getDomainModelProject();	
-			String content = "rootElement = " + ecoreProject.getDefaultRootEObjectQualifiedName();
-			Project.createFile(project, "moc2as.properties", content, monitor);
-			String filePath = "ecl/" + _languageDefinition.getName() + ".ecl";
-			IFile eclFile = Project.createFile(project, filePath, "", monitor);
-			addECLFileToConf(project.getName(), eclFile.getFullPath().toString());
-		}
-	}
 	
-	protected void selectExistingDSEProject(){
-		/*MessageDialog.openWarning(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				"Gemoc Language Workbench UI",
-				"selectExistingDSEProject. Action not implemented yet");*/
+	protected void createNewDSEProject() {
+		final IWizardDescriptor descriptor = WizardFinder.findNewWizardDescriptor("org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject");
+		// Then if we have a wizard, open it.
+		if (descriptor != null) {				
+			NewProjectWorkspaceListener workspaceListener = new NewProjectWorkspaceListener();
+			ResourcesPlugin.getWorkspace().addResourceChangeListener(workspaceListener);
+			try {
+				IWorkbenchWizard wizard;
+				wizard = descriptor.createWizard();
+				IWorkbench workbench = PlatformUI.getWorkbench();
+				CreateNewDSEProject createNewDSEProjectWizard = (CreateNewDSEProject)wizard;
+				// fine initialization
+				LanguageDefinition languageDefinition = getLanguageDefinition();
+				if(languageDefinition != null){
+					createNewDSEProjectWizard._askProjectNamePage.setInitialProjectName(gemocLanguageIProject.getName()+".dse");
+					createNewDSEProjectWizard._askDSEInfoPage.initialTemplateECLFileFieldValue = languageDefinition.getName();
+					if(languageDefinition.getDomainModelProject() != null && languageDefinition.getDomainModelProject() instanceof EMFEcoreProject){
+						createNewDSEProjectWizard._askDSEInfoPage.initialRootContainerFieldValue = ((EMFEcoreProject)languageDefinition.getDomainModelProject()).getDefaultRootEObjectQualifiedName();
+					}
+				}
+				wizard.init(workbench, null);
+				WizardDialog wd = new WizardDialog(workbench.getActiveWorkbenchWindow().getShell(), wizard);
+				wd.create();
+				wd.setTitle(wizard.getWindowTitle());
+				
+				int res = wd.open();
+				if(res == WizardDialog.OK){
+					ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
+					IProject createdProject = workspaceListener.getLastCreatedProject();
+					// update the project configuration model					
+					if(createdProject != null){
+						
+						
+						addECLFileToConf(createNewDSEProjectWizard.createdProjectName, 
+									"/"+createNewDSEProjectWizard.createdProjectName+"/ecl/"+createNewDSEProjectWizard.createdTemplateECLFile+".ecl");
+					}
+					else{
+						Activator.error("not able to detect which project was created by wizard", null);
+					}
+				}						
+			} catch (CoreException e) {
+				Activator.error(e.getMessage(), e);
+			} finally {
+				ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);						
+			}
+		}
+		else{
+			Activator.error("wizard with id=org.eclipse.sirius.ui.specificationproject.wizard not found", null);
+		}
+	}
+
+	protected void selectExistingDSEProject() {
+		/*
+		 * MessageDialog.openWarning(
+		 * PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+		 * "Gemoc Language Workbench UI",
+		 * "selectExistingDSEProject. Action not implemented yet");
+		 */
 		SelectECLIFileDialog dialog = new SelectECLIFileDialog();
 		int res = dialog.open();
-		if(res == WizardDialog.OK){
+		if (res == WizardDialog.OK) {
 			// update the project model
-			addECLFileToConf(((IResource)dialog.getResult()[0]).getProject().getName(), ((IResource)dialog.getResult()[0]).getFullPath().toString());
+			addECLFileToConf(((IResource) dialog.getResult()[0]).getProject()
+					.getName(), ((IResource) dialog.getResult()[0])
+					.getFullPath().toString());
 		}
 	}
-	
-	protected void addECLFileToConf(String projectName, String eclFileURI){
-		if (_languageDefinition != null) {
-			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		    Map<String, Object> m = reg.getExtensionToFactoryMap();
-		    m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
-
-		    
-		    ECLProject eclProject = confFactoryImpl.eINSTANCE.createECLProject();
-		    eclProject.setProjectName(projectName);
-		    ECLFile eclFile = confFactoryImpl.eINSTANCE.createECLFile();
-		    eclFile.setLocationURI(eclFileURI);
-		    eclProject.setEclFile(eclFile);
-		    
-		    _languageDefinition.setDSEProject(eclProject);
-		    
-		    try {
-		    	_languageDefinition.eResource().save(null);
-			} catch (IOException e) {
+	protected void addECLFileToConf(String projectName, String eclFileURI) {
+		
+		if(this.gemocLanguageModel != null){
+			addECLFileToConf(projectName, eclFileURI, this.gemocLanguageModel);
+		} else {
+			addECLFileToConf(projectName, eclFileURI, this.gemocLanguageIProject);
+		}
+	}
+	protected void addECLFileToConf(String projectName, String eclFileURI, IProject gemocLanguageIProject) {
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION,
+				new XMIResourceFactoryImpl());
+		ResourceSet resSet = new ResourceSetImpl();
+		// get the resource
+		IFile configFile = gemocLanguageIProject.getFile(new Path(Activator.GEMOC_PROJECT_CONFIGURATION_FILE));
+		Resource resource = resSet
+				.getResource(URI.createURI(configFile.getLocationURI()
+						.toString()), true);
+		GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource
+				.getContents().get(0);
+		
+		addECLFileToConf(projectName, eclFileURI, gemocLanguageWorkbenchConfiguration);
+		
+		try {
+			resource.save(null);
+		} catch (IOException e) {
+			Activator.error(e.getMessage(), e);
+		}
+		if (configFile != null) {
+			try {
+				configFile.refreshLocal(IResource.DEPTH_ZERO,
+						new NullProgressMonitor());
+			} catch (CoreException e) {
 				Activator.error(e.getMessage(), e);
-			}			
-		    if (configFile != null) {
-			    try {
-					configFile.refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
-				} catch (CoreException e) {
-					Activator.error(e.getMessage(), e);
-				}		    	
-		    }
+			}
 		}
 	}
 	
-	protected void addDSEProjectToConf(String projectName){
-		MessageDialog.openWarning(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				"Gemoc Language Workbench UI",
-				"addDSEProjectToConf. Action not implemented yet");
+	protected void addECLFileToConf(String projectName, String eclFileURI, GemocLanguageWorkbenchConfiguration gemocLanguageModel) {
+		ECLProject eclProject = confFactoryImpl.eINSTANCE
+				.createECLProject();
+		eclProject.setProjectName(projectName);
+		ECLFile eclFile = confFactory.eINSTANCE.createECLFile();
+		eclFile.setLocationURI(eclFileURI);
+		eclProject.setEclFile(eclFile);
+
+		LanguageDefinition languageDefinition = gemocLanguageModel.getLanguageDefinition();
+		if(languageDefinition == null){
+			languageDefinition = confFactory.eINSTANCE.createLanguageDefinition();
+			gemocLanguageModel.setLanguageDefinition(languageDefinition);
+		}
+		languageDefinition.setDSEProject(eclProject);
+			
+		
 	}
-	
 
-
+	protected LanguageDefinition getLanguageDefinition(){
+		if(this.gemocLanguageIProject != null){
+			IFile configFile = gemocLanguageIProject.getFile(new Path(
+					Activator.GEMOC_PROJECT_CONFIGURATION_FILE));
+			if (configFile.exists()) {
+				// Obtain a new resource set
+				ResourceSet resSet = new ResourceSetImpl();
+				// get the resource
+				Resource resource = resSet
+						.getResource(URI.createURI(configFile.getLocationURI()
+								.toString()), true);
+				GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource
+						.getContents().get(0);
+				
+				return gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
+			}
+		}
+		if(this.gemocLanguageModel != null){
+			return this.gemocLanguageModel.getLanguageDefinition();
+		}
+		return null;
+	}
 }
