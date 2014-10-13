@@ -7,12 +7,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.event.ClockWrapper;
+import org.gemoc.execution.engine.io.views.event.ClockStatus;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
-import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
+import org.gemoc.execution.engine.io.views.event.ModelSpecificEvent;
+import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
-import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.execution.engine.scenario.Scenario;
 
@@ -22,59 +22,72 @@ public class ScenarioPlayer extends ScenarioTool
 {
 	private EventManagerView _eventView;
 
-	public ScenarioPlayer(ScenarioManager manager)
+	public ScenarioPlayer(ModelSpecificEventContext mseContext)
 	{
-		super(manager);
+		super(mseContext);
 		_eventView = ViewHelper.retrieveView(EventManagerView.ID);
 	}
 
 	/**
 	 * Load a previously created scenario model.
 	 */
-	public void load(final IPath path){
-		Runnable runnable = new Runnable() 
-		{
-			public void run() 
-			{
-				ResourceSet resourceSet = new ResourceSetImpl(); 
-				URI uri = URI.createURI("file:/" + path); 
-				_resource = resourceSet.getResource(uri, true); 
-				_scenario = (Scenario) _resource.getContents().get(0);
-				//TODO: choisir dynamiquement le fragment voulu	ou lire tous les fragments d'un scenario bout à bout.		
-				_fragment = _scenario.getRefList().get(0).getFragment();
-				_eventView.setScenario(_fragment);
-			}
-		};
-		safeModelModification(runnable, "load scenario");
+	public void load(final IPath path)
+	{
+		ResourceSet resourceSet = new ResourceSetImpl(); 
+		URI uri = URI.createURI("file:/" + path); 
+		_resource = resourceSet.getResource(uri, true); 
+		_scenario = (Scenario) _resource.getContents().get(0);
+		//TODO: choisir dynamiquement le fragment voulu	ou lire tous les fragments d'un scenario bout à bout.		
+		_fragment = _scenario.getRefList().get(0).getFragment();
+//		Runnable runnable = new Runnable() 
+//		{
+//			public void run() 
+//			{
+//				ResourceSet resourceSet = new ResourceSetImpl(); 
+//				URI uri = URI.createURI("file:/" + path); 
+//				_resource = resourceSet.getResource(uri, true); 
+//				_scenario = (Scenario) _resource.getContents().get(0);
+//				//TODO: choisir dynamiquement le fragment voulu	ou lire tous les fragments d'un scenario bout à bout.		
+//				_fragment = _scenario.getRefList().get(0).getFragment();
+//				_eventView.setScenario(_fragment);
+//			}
+//		};
+//		safeModelModification(runnable, "load scenario");
 	}
 
-	public void play()
+	public boolean play() throws ScenarioException
 	{
-		final int progressPlayscenario = _manager.getProgress();
-		if(_fragment != null && _fragment instanceof Fragment)
+		if (_fragment != null)
 		{
 			List<ExecutionStep> stepList = _fragment.getStepList();
-			for(ClockWrapper cw : _manager.getCache().getWrapperCache().getClockWrapperList())
+			if (getPlayProgressIndex() == stepList.size())
 			{
-				_manager.getCache().getWrapperCache().getClockWrapperList();
-				List<EventState> eventList = stepList.get(progressPlayscenario).getEventList();
-				Clock clock = cw.getClock();
-				cw.setState(ClockStatus.NOTFORCED_NOTSET);
-				for(int i = 0; i< eventList.size(); i++)
-				{	
-					if(eventList.get(i).getClock().getName().equals(clock.getName()))
-					{
-						ClockStatus newState = eventList.get(i).getState().equals(Future.TICK) ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
-						cw.setState(newState); 
+				throw new ScenarioException("Current play progress index is greater than the scenario size.");
+			}
+			else
+			{
+				for(ModelSpecificEvent mse : _mseContext.getMSEs())
+				{
+					List<EventState> eventStates = stepList.get(getPlayProgressIndex()).getEventList();
+					Clock clock = mse.getClock();
+					//mse.setState(ClockStatus.NOTFORCED_NOTSET);
+					for (int i = 0; i< eventStates.size(); i++)
+					{	
+						if(eventStates.get(i).getClock().getName().equals(clock.getName()))
+						{
+							ClockStatus newState = eventStates.get(i).getState().equals(Future.TICK) ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
+							_mseContext.forceClock(mse, newState);
+						}
 					}
 				}
+				increasePlayProgressIndex();
+				_eventView.updateView();
+				return !(getPlayProgressIndex() == stepList.size());
 			}
-			_manager.incProgress();
-			_eventView.updateView();
 		}
 		else
 		{
-			throw new RuntimeException("The scenario loaded is null or isn't an instance of Scenario");
+			throw new ScenarioException("The scenario loaded is null or isn't an instance of Scenario");
 		}
 
 	}
@@ -83,8 +96,27 @@ public class ScenarioPlayer extends ScenarioTool
 	 * Remove the fragment and reset the progress step counter.
 	 */
 	public void stop(){
-		_manager.resetProgress();
+		resetPlayProgressIndex();
 		_fragment = null;
-		_eventView.setScenario(_fragment);
+		_mseContext.freeAllClocks();
+		_mseContext.getEngine().recomputePossibleLogicalSteps();
+	}
+	
+	
+	private int _playProgressIndex;
+
+	private int getPlayProgressIndex()
+	{
+		return _playProgressIndex;
+	}
+	
+	private void increasePlayProgressIndex()
+	{
+		_playProgressIndex++;
+	}
+	
+	private void resetPlayProgressIndex()
+	{
+		_playProgressIndex = 0;
 	}
 }

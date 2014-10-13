@@ -283,33 +283,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 		return false;
 	}
-	
-	public void pause(){
-		_runnable.pause();
-	}
-	
-	public void resume(){
-		_runnable.resume();
-	}
-
 
 	class EngineRunnable implements Runnable {
-		
-		private Semaphore _sem = new Semaphore(0);
-		
-		public void pause(){
-			synchronized(this){
-				try {
-					_sem.acquire();
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-			}
-		}
-		
-		public void resume(){
-			_sem.release();
-		}
 		
 		public void run() {
 			// register this engine using a unique name
@@ -325,11 +300,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			setChanged();
 			notifyObservers("Starting " + engineName);
 			long count = 0;
-		
-			if(_executionContext.getExecutionMode().equals((ExecutionMode.Debug)))
-			{
-				pause();
-			}
 			
 			try 
 			{

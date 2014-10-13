@@ -112,7 +112,7 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 //		IMenuManager dropDownMenu = actionBars.getMenuManager();
 		IToolBarManager toolBar = actionBars.getToolBarManager();
 //		dropDownMenu.add(action);
-		toolBar.add(action);		
+		toolBar.add(action);	
 	}
 
 	private void addSeparatorToToolbar()

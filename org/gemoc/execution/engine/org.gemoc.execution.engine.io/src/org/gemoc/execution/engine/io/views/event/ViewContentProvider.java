@@ -16,11 +16,11 @@ public class ViewContentProvider implements IStructuredContentProvider
 
 	public Object[] getElements(Object parent) 
 	{
-		if(parent instanceof WrapperCache)
+		if(parent instanceof ModelSpecificEventSet)
 		{
-			WrapperCache wrapperCache = (WrapperCache) parent;
-			ArrayList<ClockWrapper> listeClockWrapper = 
-					new ArrayList<ClockWrapper>(wrapperCache.getFilteredClockWrapperList(filterStrategy));
+			ModelSpecificEventSet cache = (ModelSpecificEventSet) parent;
+			ArrayList<ModelSpecificEvent> listeClockWrapper = 
+					new ArrayList<ModelSpecificEvent>(cache.getFilteredMSEs(filterStrategy));
 			return listeClockWrapper.toArray();
 		}
 		return new Object[0];

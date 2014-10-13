@@ -1,37 +1,35 @@
 package org.gemoc.execution.engine.io.views.event.scenario;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.execution.engine.io.views.event.ClockWrapper;
-import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
+import org.gemoc.execution.engine.io.views.event.ClockStatus;
+import org.gemoc.execution.engine.io.views.event.ModelSpecificEvent;
+import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.Reference;
 
 public class ScenarioRecorder extends ScenarioTool
 {
-	public ScenarioRecorder(ScenarioManager manager)
+	public ScenarioRecorder(ModelSpecificEventContext mseContext)
 	{
-		super(manager);
+		super(mseContext);
 	}
 
 	private void createResource() 
 	{
-		Runnable runnable = new Runnable() 
-		{
-			public void run() 
-			{
-				ResourceSet rs = _manager.getCache().getSystem().eResource().getResourceSet(); 				
-				URI uri = URI.createURI("platform:/resource" 
-						+ _manager.getCache().getEngine().getExecutionContext().getWorkspace().getExecutionPath().append("container.scenario").toString());
-				_resource = rs.createResource(uri);
-			}
-		};
-		safeModelModification(runnable, "create scenario resource");
+		ResourceSet rs = _mseContext.getEngine().getExecutionContext().getResourceModel().getResourceSet(); 				
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss");
+		String fileName = format.format(new Date()) + ".scenario";
+		URI uri = URI.createURI("platform:/resource" 
+				+ _mseContext.getEngine().getExecutionContext().getWorkspace().getExecutionPath().append(fileName).toString());
+		_resource = rs.createResource(uri);
 	}
 
 	private void createScenario()
@@ -60,7 +58,7 @@ public class ScenarioRecorder extends ScenarioTool
 			public void run() {
 				List<Reference> refList = _scenario.getRefList();
 				Reference ref = _factory.createReference();
-				ref.setStartStep((int) _manager.getCache().getEngine().getEngineStatus().getNbLogicalStepRun());
+				ref.setStartStep((int) _mseContext.getEngine().getEngineStatus().getNbLogicalStepRun());
 				refList.add(ref);
 				_fragment = _factory.createFragment();
 				ref.setFragment(_fragment);
@@ -78,7 +76,7 @@ public class ScenarioRecorder extends ScenarioTool
 				List<ExecutionStep> stepList =  _fragment.getStepList();
 				ExecutionStep newStep = _factory.createExecutionStep();
 				List<EventState> newListEvent = newStep.getEventList();
-				for(ClockWrapper cw: _manager.getCache().getWrapperCache().getClockWrapperList())
+				for(ModelSpecificEvent cw: _mseContext.getMSEs())
 				{
 					ClockStatus state = cw.getState();
 					boolean isForced = state.isForced();

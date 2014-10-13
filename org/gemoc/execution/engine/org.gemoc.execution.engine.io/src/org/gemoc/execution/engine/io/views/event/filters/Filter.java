@@ -10,8 +10,8 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.event.ClockWrapper;
-import org.gemoc.execution.engine.io.views.event.EventManagerView.ClockStatus;
+import org.gemoc.execution.engine.io.views.event.ClockStatus;
+import org.gemoc.execution.engine.io.views.event.ModelSpecificEvent;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
@@ -20,17 +20,17 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpre
 public abstract class Filter implements IEventFilterStrategy
 {
 	
-	protected Map<String, ClockWrapper> cache;
-	protected Collection<ClockWrapper> wrapperList;
+	protected Map<String, ModelSpecificEvent> cache;
+	protected Collection<ModelSpecificEvent> wrapperList;
 	protected List<Relation> relations;
 	
 	@Override
 	public void setParamFilter(List<Relation> relations,
-			Map<String, ClockWrapper> cache) 
+			Map<String, ModelSpecificEvent> cache) 
 	{
 		this.relations = relations;
-		this.cache = new HashMap<String, ClockWrapper>(cache);
-		wrapperList = new ArrayList<ClockWrapper>(cache.values());
+		this.cache = new HashMap<String, ModelSpecificEvent>(cache);
+		wrapperList = new ArrayList<ModelSpecificEvent>(cache.values());
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public abstract class Filter implements IEventFilterStrategy
 			}
 			for(String event : eventNameList)
 			{
-				ClockWrapper wrapper = cache.get(event);
+				ModelSpecificEvent wrapper = cache.get(event);
 				// If the current clock isn't forced to a value.
 				if(!wrapper.getState().isForced())
 				{
