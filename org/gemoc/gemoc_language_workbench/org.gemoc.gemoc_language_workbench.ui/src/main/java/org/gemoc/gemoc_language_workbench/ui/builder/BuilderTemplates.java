@@ -43,6 +43,10 @@ public class BuilderTemplates {
 "	public ${language.name.toupperfirst}CodeExecutor(){\n"+
 "	    ${constructor.content}\n"+
 "	}\n"+
+"	public String getDSAProjectName(){\n"+
+"		//TODO please implement\n"+
+"		return \"\";\n"+
+"	}\n"+
 "   ${additional.operations}\n"+
 "}";
 	

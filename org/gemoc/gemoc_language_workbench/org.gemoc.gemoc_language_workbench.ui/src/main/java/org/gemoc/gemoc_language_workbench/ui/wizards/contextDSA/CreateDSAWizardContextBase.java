@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
-import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
+import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
@@ -23,12 +22,12 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 public class CreateDSAWizardContextBase {
 
 	protected IProject _gemocLanguageIProject;
-	protected GemocLanguageWorkbenchConfiguration _gemocLanguageModel = null;
+	protected LanguageDefinition _gemocLanguageModel = null;
 	
 	public CreateDSAWizardContextBase(IProject gemocLanguageIProject) {
 		_gemocLanguageIProject = gemocLanguageIProject;
 	}
-	public CreateDSAWizardContextBase(IProject gemocLanguageIProject, GemocLanguageWorkbenchConfiguration rootModelElement) {
+	public CreateDSAWizardContextBase(IProject gemocLanguageIProject, LanguageDefinition rootModelElement) {
 		_gemocLanguageIProject = gemocLanguageIProject;
 		_gemocLanguageModel = rootModelElement;
 	}
@@ -54,7 +53,7 @@ public class CreateDSAWizardContextBase {
 		    // get the resource
 		    Resource resource = resSet.getResource(URI.createURI(configFile.getLocationURI().toString()),true);
 		    
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
+		    LanguageDefinition gemocLanguageWorkbenchConfiguration = (LanguageDefinition) resource.getContents().get(0);
 		    
 		    addDSAProjectToConf(projectName, gemocLanguageWorkbenchConfiguration);
 		    
@@ -71,13 +70,13 @@ public class CreateDSAWizardContextBase {
 		}
 	}
 	
-	protected void addDSAProjectToConf(String projectName, GemocLanguageWorkbenchConfiguration gemocLanguageModel) {
+	protected void addDSAProjectToConf(String projectName, LanguageDefinition gemocLanguageModel) {
 		
-		    LanguageDefinition langage = gemocLanguageModel.getLanguageDefinition();
 		    
-			K3DSAProject DSAProject = confFactoryImpl.eINSTANCE.createK3DSAProject();
+		    
+			DSAProject DSAProject = confFactoryImpl.eINSTANCE.createDSAProject();
 			DSAProject.setProjectName(projectName);
-			langage.setDsaProject(DSAProject);
+			gemocLanguageModel.setDsaProject(DSAProject);
 		
 	}
 

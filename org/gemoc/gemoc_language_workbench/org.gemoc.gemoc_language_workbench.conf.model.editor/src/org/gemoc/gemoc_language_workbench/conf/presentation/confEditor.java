@@ -1678,7 +1678,6 @@ public class confEditor
 		editorSelection = selection;
 
 		for (ISelectionChangedListener listener : selectionChangedListeners) {
-			
 			listener.selectionChanged(new SelectionChangedEvent(this, selection));
 		}
 		setStatusLineManager(selection);

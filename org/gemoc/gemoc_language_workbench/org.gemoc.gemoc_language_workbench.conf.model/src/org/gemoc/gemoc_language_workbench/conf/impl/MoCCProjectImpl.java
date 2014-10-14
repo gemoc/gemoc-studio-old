@@ -4,25 +4,25 @@ package org.gemoc.gemoc_language_workbench.conf.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.gemoc.gemoc_language_workbench.conf.K3DSAProject;
+import org.gemoc.gemoc_language_workbench.conf.MoCCProject;
 import org.gemoc.gemoc_language_workbench.conf.confPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>K3DSA Project</b></em>'.
+ * An implementation of the model object '<em><b>Mo CC Project</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class K3DSAProjectImpl extends DSAProjectImpl implements K3DSAProject {
+public class MoCCProjectImpl extends ProjectResourceImpl implements MoCCProject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected K3DSAProjectImpl() {
+	protected MoCCProjectImpl() {
 		super();
 	}
 
@@ -33,7 +33,7 @@ public class K3DSAProjectImpl extends DSAProjectImpl implements K3DSAProject {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return confPackage.Literals.K3DSA_PROJECT;
+		return confPackage.Literals.MO_CC_PROJECT;
 	}
 
-} //K3DSAProjectImpl
+} //MoCCProjectImpl

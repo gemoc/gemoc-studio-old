@@ -22,9 +22,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.commons.eclipse.ui.WizardFinder;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
@@ -49,13 +47,13 @@ public class CreateDomainModelWizardContextAction {
 
 	// one of these must be set, depending on it it will work on the file or directly in the model 
 	protected IProject gemocLanguageIProject = null;	
-	protected GemocLanguageWorkbenchConfiguration gemocLanguageModel = null;
+	protected LanguageDefinition gemocLanguageModel = null;
 	
 	public CreateDomainModelWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
 	}
 
-	public CreateDomainModelWizardContextAction(GemocLanguageWorkbenchConfiguration rootModelElement) {
+	public CreateDomainModelWizardContextAction(LanguageDefinition rootModelElement) {
 		gemocLanguageModel = rootModelElement;
 	}
 
@@ -147,7 +145,7 @@ public class CreateDomainModelWizardContextAction {
 		    Resource resource = resSet.getResource(URI.createURI(configFile.getLocationURI().toString()),true);
 		    
 		    
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
+		    LanguageDefinition gemocLanguageWorkbenchConfiguration = (LanguageDefinition) resource.getContents().get(0);
 		    addEMFProjectToConf(emfProject, gemocLanguageWorkbenchConfiguration);
 			
 			try {
@@ -163,13 +161,11 @@ public class CreateDomainModelWizardContextAction {
 		}
 	}
 	
-	protected void addEMFProjectToConf(IProject emfProject,GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration){
-		//GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
-	    // consider only one language :-/
-	    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
+	protected void addEMFProjectToConf(IProject emfProject,LanguageDefinition langage){
+		
 	    
 	    // create missing data
-	    EMFEcoreProject emfEcoreProject = confFactoryImpl.eINSTANCE.createEMFEcoreProject();
+		DomainModelProject emfEcoreProject = confFactoryImpl.eINSTANCE.createDomainModelProject();
 	    emfEcoreProject.setProjectName(emfProject.getName());
 	    langage.setDomainModelProject(emfEcoreProject);
 	    	
@@ -179,10 +175,7 @@ public class CreateDomainModelWizardContextAction {
 			emfProject.accept(ecoreProjectVisitor);
 			IFile genmodelIFile = ecoreProjectVisitor.getFile();
 			if(genmodelIFile != null){
-				EMFGenmodel genmodel = confFactoryImpl.eINSTANCE.createEMFGenmodel();
-				URI genmodelLocationURI = URI.createPlatformResourceURI(genmodelIFile.getFullPath().toString(),true);
-				genmodel.setLocationURI(genmodelLocationURI.toString());
-				emfEcoreProject.setEmfGenmodel(genmodel);
+				emfEcoreProject.setGenmodeluri(genmodelIFile.getFullPath().toString());
 			}
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);

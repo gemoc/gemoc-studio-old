@@ -26,8 +26,8 @@ import fr.obeo.dsl.process.impl.ProcessContextImpl;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
 
@@ -103,9 +103,9 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	// getter and setters
 	// ------------------
 
-	public GemocLanguageWorkbenchConfiguration getXdsmlModel(ActionTask task) {
+	public LanguageDefinition getXdsmlModel(ActionTask task) {
 		try {
-			return (GemocLanguageWorkbenchConfiguration)this.getVariableValue(XDSML_MODEL_VAR, task);
+			return (LanguageDefinition)this.getVariableValue(XDSML_MODEL_VAR, task);
 		} catch (IllegalVariableAccessException e) {
 			Activator.getDefault().error(e);
 		}
@@ -158,22 +158,12 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		setVariableValue(processVar, variableValue, writterTask);
 	}
 
-	public EMFEcoreProject getEcoreProject(ActionTask task) {
-		EMFEcoreProject project = null;
-		Object o = getXdsmlModel(task).getLanguageDefinition().getDomainModelProject();
-		if (o instanceof EMFEcoreProject) {
-			project = (EMFEcoreProject)o;
-		}
-		return project;
+	public DomainModelProject getEcoreProject(ActionTask task) {
+		return getXdsmlModel(task).getDomainModelProject();
 	}
 	
 	public String getEcoreProjectName(ActionTask task) {
-		String projectName = null;
-		Object o = getXdsmlModel(task).getLanguageDefinition().getDomainModelProject();
-		if (o instanceof EMFEcoreProject) {
-			projectName = ((EMFEcoreProject)o).getProjectName();
-		}
-		return projectName;
+		return getXdsmlModel(task).getDomainModelProject().getProjectName();
 	}
 
 }

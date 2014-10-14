@@ -21,7 +21,7 @@ import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.conf.MoCProject;
+import org.gemoc.gemoc_language_workbench.conf.MoCCProject;
 import org.gemoc.gemoc_language_workbench.guideline.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.guideline.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.guideline.process.utils.EclipseResource;
@@ -62,7 +62,7 @@ public class DefineMOCTask extends AbstractGemocActionProcessor {
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a MoC project that is referenced by the xdsml
 		// else setUndone
-		MoCProject project = context.getMOCProject(getActionTask());
+		MoCCProject project = context.getMOCProject(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;

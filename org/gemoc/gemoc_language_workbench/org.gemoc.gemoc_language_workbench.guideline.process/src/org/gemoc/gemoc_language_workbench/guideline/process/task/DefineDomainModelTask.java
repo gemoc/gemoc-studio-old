@@ -21,7 +21,7 @@ import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
+import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.guideline.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.guideline.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.guideline.process.utils.EclipseResource;
@@ -56,7 +56,7 @@ public class DefineDomainModelTask extends AbstractGemocActionProcessor {
 	@Override
 	protected Object internalUpdateContextWhenDone(GemocLanguageProcessContext context) {
 
-		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
+		DomainModelProject eep = context.getEcoreProject(getActionTask());
 
 		return eep;
 	}
@@ -65,7 +65,7 @@ public class DefineDomainModelTask extends AbstractGemocActionProcessor {
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists an EMF project that is referenced by the xdsml
 		// else setUndone
-		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
+		DomainModelProject eep = context.getEcoreProject(getActionTask());
 		if (eep != null) {
 			if (EclipseResource.existProject(eep.getProjectName())) {
 				return true;

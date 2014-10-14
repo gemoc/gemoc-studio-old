@@ -30,11 +30,11 @@ import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.conf.AnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DSEProject;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
+import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
-import org.gemoc.gemoc_language_workbench.conf.MoCProject;
-import org.gemoc.gemoc_language_workbench.conf.ODProject;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.MoCCProject;
+import org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.guideline.process.utils.EMFResource;
@@ -105,9 +105,9 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	// getter and setters
 	// ------------------
 
-	public GemocLanguageWorkbenchConfiguration getXdsmlModel(ActionTask task) {
+	public LanguageDefinition getXdsmlModel(ActionTask task) {
 		try {
-			return (GemocLanguageWorkbenchConfiguration)this.getVariableValue(XDSML_MODEL_VAR, task);
+			return (LanguageDefinition)this.getVariableValue(XDSML_MODEL_VAR, task);
 		} catch (IllegalVariableAccessException e) {
 			Activator.getDefault().error(e);
 		}
@@ -148,47 +148,35 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 		setVariableValue(processVar, variableValue, writterTask);
 	}
 
-	public EMFEcoreProject getEcoreProject(ActionTask task) {
-		EMFEcoreProject project = null;
-		Object o = getXdsmlModel(task).getLanguageDefinition().getDomainModelProject();
-		if (o instanceof EMFEcoreProject) {
-			project = (EMFEcoreProject)o;
-		}
+	public DomainModelProject getEcoreProject(ActionTask task) {
+		DomainModelProject project = getXdsmlModel(task).getDomainModelProject();
 		return project;
 	}
 
 	public DSAProject getDSAProject(ActionTask task) {
-		DSAProject project = null;
-		Object o = getXdsmlModel(task).getLanguageDefinition().getDsaProject();
-		if (o instanceof DSAProject) {
-			project = (DSAProject)o;
-		}
+		DSAProject project = getXdsmlModel(task).getDsaProject();
 		return project;
 	}
 
 	public DSEProject getDSEProject(ActionTask task) {
-		DSEProject project = null;
-		Object o = getXdsmlModel(task).getLanguageDefinition().getDSEProject();
-		if (o instanceof DSEProject) {
-			project = (DSEProject)o;
-		}
+		DSEProject project = getXdsmlModel(task).getDSEProject();
 		return project;
 	}
-	public MoCProject getMOCProject(ActionTask task) {
-		MoCProject project = null;
-		Object o = getXdsmlModel(task).getLanguageDefinition().getMoCModelProject();
-		if (o instanceof MoCProject) {
-			project = (MoCProject)o;
+	public MoCCProject getMOCProject(ActionTask task) {
+		MoCCProject project = null;
+		Object o = getXdsmlModel(task).getMoCModelProject();
+		if (o instanceof MoCCProject) {
+			project = (MoCCProject)o;
 		}
 		return project;
 	}
 
-	public ODProject getGraphicalEditor(ActionTask task) {
-		ODProject project = null;
-		List<EditorProject> editors = getXdsmlModel(task).getLanguageDefinition().getEditorProjects();
+	public SiriusEditorProject getGraphicalEditor(ActionTask task) {
+		SiriusEditorProject project = null;
+		List<EditorProject> editors = getXdsmlModel(task).getEditorProjects();
 		for (EditorProject editor : editors) {
-			if (editor instanceof ODProject) {
-				project = (ODProject)editor;
+			if (editor instanceof SiriusEditorProject) {
+				project = (SiriusEditorProject)editor;
 			}
 		}
 		return project;
@@ -196,7 +184,7 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 
 	public XTextEditorProject getTextualEditor(ActionTask task) {
 		XTextEditorProject project = null;
-		List<EditorProject> editors = getXdsmlModel(task).getLanguageDefinition().getEditorProjects();
+		List<EditorProject> editors = getXdsmlModel(task).getEditorProjects();
 		for (EditorProject editor : editors) {
 			if (editor instanceof XTextEditorProject) {
 				project = (XTextEditorProject)editor;
@@ -207,7 +195,7 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 
 	public TreeEditorProject getTreeEditor(ActionTask task) {
 		TreeEditorProject project = null;
-		List<EditorProject> editors = getXdsmlModel(task).getLanguageDefinition().getEditorProjects();
+		List<EditorProject> editors = getXdsmlModel(task).getEditorProjects();
 		for (EditorProject editor : editors) {
 			if (editor instanceof TreeEditorProject) {
 				project = (TreeEditorProject)editor;
@@ -218,7 +206,7 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 
 	public AnimatorProject getAnimatorEditor(ActionTask task) {
 		AnimatorProject project = null;
-		List<AnimatorProject> animators = getXdsmlModel(task).getLanguageDefinition().getAnimatorProjects();
+		List<AnimatorProject> animators = getXdsmlModel(task).getAnimatorProjects();
 		if (animators.size() > 0) {
 			project = animators.get(0);
 		}

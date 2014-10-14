@@ -8,35 +8,25 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
+
+import org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.gemoc_language_workbench.conf.EMFGenmodel} object.
+ * This is the item provider adapter for a {@link org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EMFGenmodelItemProvider
-	extends FileResourceItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class SiriusEditorProjectItemProvider extends EditorProjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMFGenmodelItemProvider(AdapterFactory adapterFactory) {
+	public SiriusEditorProjectItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,14 +46,14 @@ public class EMFGenmodelItemProvider
 	}
 
 	/**
-	 * This returns EMFGenmodel.gif.
+	 * This returns SiriusEditorProject.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EMFGenmodel"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SiriusEditorProject"));
 	}
 
 	/**
@@ -74,11 +64,12 @@ public class EMFGenmodelItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EMFGenmodel)object).getLocationURI();
+		String label = ((SiriusEditorProject)object).getProjectName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_EMFGenmodel_type") :
-			getString("_UI_EMFGenmodel_type") + " " + label;
+			getString("_UI_SiriusEditorProject_type") :
+			getString("_UI_SiriusEditorProject_type") + " " + label;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

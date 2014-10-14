@@ -43,7 +43,7 @@ import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.gemoc.commons.eclipse.ui.OpenEditor;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
@@ -87,7 +87,9 @@ public class GemocXDSMLFormComposite extends Composite {
 	private Text txtSiriusAnimationProject;
 	private Text txtGenmodel;
 
-	GemocLanguageWorkbenchConfiguration rootModelElement;
+	
+	
+	LanguageDefinition rootModelElement;
 	AdapterFactoryEditingDomain editingDomain;
 
 	protected XDSMLModelWrapper xdsmlWrappedObject = new XDSMLModelWrapper();
@@ -429,16 +431,16 @@ public class GemocXDSMLFormComposite extends Composite {
 		if (editingDomain != null) {
 			this.editingDomain = editingDomain;
 			editingDomain.toString();
-			if (editingDomain.getResourceSet().getResources().size() > 0) {
-				if (editingDomain.getResourceSet().getResources().get(0)
-						.getContents().size() > 0) {
-					EObject eObject = editingDomain.getResourceSet()
-							.getResources().get(0).getContents().get(0);
-					if (eObject instanceof GemocLanguageWorkbenchConfiguration) {
-						GemocLanguageWorkbenchConfiguration confModelElement = (GemocLanguageWorkbenchConfiguration) eObject;
-						rootModelElement = confModelElement;
-						XDSMLModelWrapperHelper.init(xdsmlWrappedObject,
-								confModelElement.getLanguageDefinition());
+
+			if(editingDomain.getResourceSet().getResources().size() > 0){
+				if(editingDomain.getResourceSet().getResources().get(0).getContents().size() > 0){
+					EObject eObject = editingDomain.getResourceSet().getResources().get(0).getContents().get(0);
+					if(eObject instanceof LanguageDefinition){
+						rootModelElement = (LanguageDefinition)eObject;
+						//txtLanguageName.setText(confModelElement.getLanguageDefinition().getName());
+						XDSMLModelWrapperHelper.init(xdsmlWrappedObject, rootModelElement);
+						
+
 					}
 				}
 			}
@@ -487,8 +489,7 @@ public class GemocXDSMLFormComposite extends Composite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								rootModelElement.getLanguageDefinition()
-										.setName(text.getText());
+								rootModelElement.setName(text.getText());
 							}
 						});
 			}
@@ -524,7 +525,6 @@ public class GemocXDSMLFormComposite extends Composite {
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
 								for (EditorProject editor : rootModelElement
-										.getLanguageDefinition()
 										.getEditorProjects()) {
 									if (editor instanceof XTextEditorProject) {
 										editor.setProjectName(text.getText());

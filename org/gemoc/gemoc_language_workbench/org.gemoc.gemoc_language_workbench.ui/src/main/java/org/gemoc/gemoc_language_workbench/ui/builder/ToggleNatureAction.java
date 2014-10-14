@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -29,11 +30,12 @@ import org.gemoc.commons.eclipse.core.resources.NatureToggling;
 import org.gemoc.commons.eclipse.core.resources.Project;
 import org.gemoc.commons.eclipse.pde.ManifestChanger;
 import org.gemoc.commons.eclipse.pde.ui.PluginConverter;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
+import org.jdom2.Element;
 import org.osgi.framework.BundleException;
 
 public class ToggleNatureAction implements IObjectActionDelegate {
@@ -163,6 +165,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			throws CoreException {
 		addAsMainNature(project, GemocLanguageDesignerNature.NATURE_ID, null);
 		addMissingResourcesToNature(project, languageName);
+		createTemplateCodeExecutorClass(project, languageName);
 	}
 
 	// add the nature making sure this will be the first
@@ -198,12 +201,9 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		    // Create the resource
 		    Resource resource = resSet.createResource(URI.createURI(configFile.getLocationURI().toString()));
 		    // Creates default root elements,
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = confFactoryImpl.eINSTANCE.createGemocLanguageWorkbenchConfiguration();
 		    LanguageDefinition ld = confFactoryImpl.eINSTANCE.createLanguageDefinition();
 		    ld.setName(languageName);
-		    gemocLanguageWorkbenchConfiguration.setLanguageDefinition(ld);
-		    gemocLanguageWorkbenchConfiguration.setBuildOptions(confFactoryImpl.eINSTANCE.createBuildOptions());
-		    resource.getContents().add(gemocLanguageWorkbenchConfiguration);	
+		    resource.getContents().add(ld);	
 			
 			try {
 				resource.save(null);
@@ -218,5 +218,96 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		}			
 	}
 	
+	
+	
+	/**
+	 * 
+	 * If no code executor is defined in the plugin.xml
+	 * create or replace existing CodeExecutorClass by an implementation that is
+	 * able to execute method from the concrete DSA
+	 * 
+	 * @param project
+	 * @param ld
+	 */
+	protected void createTemplateCodeExecutorClass(IProject project, String languageDefinitionName) {
+		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
+		if(!pluginfile.exists()) PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
+		PluginXMLHelper helper = new PluginXMLHelper();
+		helper.loadDocument(pluginfile);
+		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT);
+		String currentExecutor = helper.getXDSMLDefinitionAttributeInExtensionPointValue(gemocExtensionPoint,
+				LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
+		if(currentExecutor == null || currentExecutor.isEmpty()){
+		
+			// TODO remove possible previous classes
+			// create the java class
+			String languageToUpperFirst = GemocLanguageDesignerBuilder.getLanguageNameWithFirstUpper(languageDefinitionName);
+			String packageName = GemocLanguageDesignerBuilder.getPackageName(languageDefinitionName);
+			String folderName = GemocLanguageDesignerBuilder.getFolderName(languageDefinitionName);
+			
+			String fileContent = BuilderTemplates.CODEEXECUTOR_CLASS_TEMPLATE;
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${package.name}"), packageName);
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${language.name.toupperfirst}"),
+					languageToUpperFirst);
+			/*StringBuilder sb = new StringBuilder();
+			sb.append("// TODO\n");
+			sb.append("\t\tSystem.out.println(\"will call \"+ methodName + \" on \"+ target.toString());");
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${execute.content}"), sb.toString()); */
+			
+			
+			StringBuilder sbContent = new StringBuilder();
+			StringBuilder sbImplementContent = new StringBuilder();
+			StringBuilder sbAdditionalOperations = new StringBuilder();
+			
+			sbContent.append("// add K3 DSA specific executor\n");
+			sbContent.append("\t\taddExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor(this,\n");
+			sbContent.append("\t\t\tgetDSAProjectName()));\n");
+				
+			sbImplementContent.append("\n\t\timplements org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorClassLoader ");
+				
+			sbAdditionalOperations.append("@Override\n"+
+"	public Class<?> getClassForName(String className) throws ClassNotFoundException {\n"+
+"		return Class.forName(className);\n"+
+"	}\n"+
+"	@Override\n"+
+"	public java.io.InputStream getResourceAsStream(String resourceName) {\n"+
+"		//this.getClass().getResourceAsStream(resourceName);\n"+
+"		return Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceName);\n"+	
+"	}");
+			
+
+			
+
+			sbContent.append("\t\t// fall back executor : search classic java method\n");
+			sbContent.append("\t\taddExecutor(new org.gemoc.execution.engine.commons.dsa.executors.JavaCodeExecutor());");
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${constructor.content}"), sbContent.toString());
+			
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${implements.content}"), sbImplementContent.toString());
+			
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${additional.operations}"), sbAdditionalOperations.toString());
+			
+			IFile file = project
+					.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME
+							+ folderName + "/" + languageToUpperFirst
+							+ Activator.CODEEXECUTOR_CLASS_NAMEPART + ".java");
+			
+			GemocLanguageDesignerBuilder.writeFile(file, fileContent);
+			//ResourceUtil.writeFile(file, fileContent);
+			
+			// update plugin.xml
+			
+			helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint,
+					LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT, packageName + "."
+							+ languageToUpperFirst + Activator.CODEEXECUTOR_CLASS_NAMEPART);
+			helper.saveDocument(pluginfile);
+		}
+
+	}
 
 }

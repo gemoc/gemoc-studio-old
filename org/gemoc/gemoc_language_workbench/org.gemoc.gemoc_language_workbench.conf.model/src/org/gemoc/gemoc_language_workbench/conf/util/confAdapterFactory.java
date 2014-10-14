@@ -68,10 +68,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	protected confSwitch<Adapter> modelSwitch =
 		new confSwitch<Adapter>() {
 			@Override
-			public Adapter caseGemocLanguageWorkbenchConfiguration(GemocLanguageWorkbenchConfiguration object) {
-				return createGemocLanguageWorkbenchConfigurationAdapter();
-			}
-			@Override
 			public Adapter caseLanguageDefinition(LanguageDefinition object) {
 				return createLanguageDefinitionAdapter();
 			}
@@ -92,12 +88,8 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createDomainModelProjectAdapter();
 			}
 			@Override
-			public Adapter caseMoCProject(MoCProject object) {
-				return createMoCProjectAdapter();
-			}
-			@Override
-			public Adapter caseCCSLMoCProject(CCSLMoCProject object) {
-				return createCCSLMoCProjectAdapter();
+			public Adapter caseMoCCProject(MoCCProject object) {
+				return createMoCCProjectAdapter();
 			}
 			@Override
 			public Adapter caseAnimatorProject(AnimatorProject object) {
@@ -108,56 +100,20 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 				return createDSEProjectAdapter();
 			}
 			@Override
-			public Adapter caseEMFEcoreProject(EMFEcoreProject object) {
-				return createEMFEcoreProjectAdapter();
-			}
-			@Override
-			public Adapter caseODProject(ODProject object) {
-				return createODProjectAdapter();
+			public Adapter caseSiriusEditorProject(SiriusEditorProject object) {
+				return createSiriusEditorProjectAdapter();
 			}
 			@Override
 			public Adapter caseSiriusAnimatorProject(SiriusAnimatorProject object) {
 				return createSiriusAnimatorProjectAdapter();
 			}
 			@Override
-			public Adapter caseModHelXMoCProject(ModHelXMoCProject object) {
-				return createModHelXMoCProjectAdapter();
-			}
-			@Override
-			public Adapter caseECLProject(ECLProject object) {
-				return createECLProjectAdapter();
-			}
-			@Override
-			public Adapter caseTreeEditorProject(TreeEditorProject object) {
-				return createTreeEditorProjectAdapter();
-			}
-			@Override
-			public Adapter caseK3DSAProject(K3DSAProject object) {
-				return createK3DSAProjectAdapter();
-			}
-			@Override
-			public Adapter caseFileResource(FileResource object) {
-				return createFileResourceAdapter();
-			}
-			@Override
-			public Adapter caseEMFGenmodel(EMFGenmodel object) {
-				return createEMFGenmodelAdapter();
-			}
-			@Override
-			public Adapter caseECLFile(ECLFile object) {
-				return createECLFileAdapter();
-			}
-			@Override
-			public Adapter caseQVToFile(QVToFile object) {
-				return createQVToFileAdapter();
-			}
-			@Override
 			public Adapter caseXTextEditorProject(XTextEditorProject object) {
 				return createXTextEditorProjectAdapter();
 			}
 			@Override
-			public Adapter caseBuildOptions(BuildOptions object) {
-				return createBuildOptionsAdapter();
+			public Adapter caseTreeEditorProject(TreeEditorProject object) {
+				return createTreeEditorProjectAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -178,20 +134,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration <em>Gemoc Language Workbench Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration
-	 * @generated
-	 */
-	public Adapter createGemocLanguageWorkbenchConfigurationAdapter() {
-		return null;
-	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.ProjectResource <em>Project Resource</em>}'.
@@ -264,30 +206,16 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.MoCProject <em>Mo CProject</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.MoCCProject <em>Mo CC Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.MoCProject
+	 * @see org.gemoc.gemoc_language_workbench.conf.MoCCProject
 	 * @generated
 	 */
-	public Adapter createMoCProjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.CCSLMoCProject <em>CCSL Mo CProject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.CCSLMoCProject
-	 * @generated
-	 */
-	public Adapter createCCSLMoCProjectAdapter() {
+	public Adapter createMoCCProjectAdapter() {
 		return null;
 	}
 
@@ -306,34 +234,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject <em>EMF Ecore Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject
-	 * @generated
-	 */
-	public Adapter createEMFEcoreProjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.ODProject <em>OD Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ODProject
-	 * @generated
-	 */
-	public Adapter createODProjectAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject <em>Sirius Animator Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -344,20 +244,6 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSiriusAnimatorProjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject <em>Mod Hel XMo CProject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject
-	 * @generated
-	 */
-	public Adapter createModHelXMoCProjectAdapter() {
 		return null;
 	}
 
@@ -376,58 +262,16 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.ECLProject <em>ECL Project</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject <em>Sirius Editor Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLProject
+	 * @see org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject
 	 * @generated
 	 */
-	public Adapter createECLProjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject <em>Tree Editor Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.TreeEditorProject
-	 * @generated
-	 */
-	public Adapter createTreeEditorProjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.EMFGenmodel <em>EMF Genmodel</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.EMFGenmodel
-	 * @generated
-	 */
-	public Adapter createEMFGenmodelAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.FileResource <em>File Resource</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.FileResource
-	 * @generated
-	 */
-	public Adapter createFileResourceAdapter() {
+	public Adapter createSiriusEditorProjectAdapter() {
 		return null;
 	}
 
@@ -446,58 +290,16 @@ public class confAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject <em>K3DSA Project</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject <em>Tree Editor Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.K3DSAProject
+	 * @see org.gemoc.gemoc_language_workbench.conf.TreeEditorProject
 	 * @generated
 	 */
-	public Adapter createK3DSAProjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.ECLFile <em>ECL File</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLFile
-	 * @generated
-	 */
-	public Adapter createECLFileAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.QVToFile <em>QV To File</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.QVToFile
-	 * @generated
-	 */
-	public Adapter createQVToFileAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions <em>Build Options</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions
-	 * @generated
-	 */
-	public Adapter createBuildOptionsAdapter() {
+	public Adapter createTreeEditorProjectAdapter() {
 		return null;
 	}
 

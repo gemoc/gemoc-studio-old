@@ -106,12 +106,12 @@ public interface LanguageDefinition extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mo CModel Project</em>' containment reference.
-	 * @see #setMoCModelProject(MoCProject)
+	 * @see #setMoCModelProject(MoCCProject)
 	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_MoCModelProject()
 	 * @model containment="true"
 	 * @generated
 	 */
-	MoCProject getMoCModelProject();
+	MoCCProject getMoCModelProject();
 
 	/**
 	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProject <em>Mo CModel Project</em>}' containment reference.
@@ -121,7 +121,7 @@ public interface LanguageDefinition extends EObject {
 	 * @see #getMoCModelProject()
 	 * @generated
 	 */
-	void setMoCModelProject(MoCProject value);
+	void setMoCModelProject(MoCCProject value);
 
 	/**
 	 * Returns the value of the '<em><b>Animator Projects</b></em>' containment reference list.

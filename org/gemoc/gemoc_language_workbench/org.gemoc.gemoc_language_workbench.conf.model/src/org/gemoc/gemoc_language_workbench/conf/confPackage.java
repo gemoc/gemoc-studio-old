@@ -57,43 +57,6 @@ public interface confPackage extends EPackage {
 	confPackage eINSTANCE = org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.GemocLanguageWorkbenchConfigurationImpl <em>Gemoc Language Workbench Configuration</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.GemocLanguageWorkbenchConfigurationImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getGemocLanguageWorkbenchConfiguration()
-	 * @generated
-	 */
-	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Language Definition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Build Options</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS = 1;
-
-	/**
-	 * The number of structural features of the '<em>Gemoc Language Workbench Configuration</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION_FEATURE_COUNT = 2;
-
-	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ProjectResourceImpl <em>Project Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,7 +64,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getProjectResource()
 	 * @generated
 	 */
-	int PROJECT_RESOURCE = 2;
+	int PROJECT_RESOURCE = 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DSAProjectImpl <em>DSA Project</em>}' class.
@@ -111,7 +74,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getDSAProject()
 	 * @generated
 	 */
-	int DSA_PROJECT = 3;
+	int DSA_PROJECT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl <em>Language Definition</em>}' class.
@@ -121,7 +84,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getLanguageDefinition()
 	 * @generated
 	 */
-	int LANGUAGE_DEFINITION = 1;
+	int LANGUAGE_DEFINITION = 0;
 
 	/**
 	 * The feature id for the '<em><b>Dsa Project</b></em>' containment reference.
@@ -241,13 +204,22 @@ public interface confPackage extends EPackage {
 	int DSA_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
 
 	/**
+	 * The feature id for the '<em><b>Code Executor Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DSA_PROJECT__CODE_EXECUTOR_CLASS = PROJECT_RESOURCE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>DSA Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DSA_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
+	int DSA_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EditorProjectImpl <em>Editor Project</em>}' class.
@@ -257,7 +229,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEditorProject()
 	 * @generated
 	 */
-	int EDITOR_PROJECT = 4;
+	int EDITOR_PROJECT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -303,7 +275,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getDomainModelProject()
 	 * @generated
 	 */
-	int DOMAIN_MODEL_PROJECT = 5;
+	int DOMAIN_MODEL_PROJECT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -324,60 +296,41 @@ public interface confPackage extends EPackage {
 	int DOMAIN_MODEL_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
 
 	/**
+	 * The feature id for the '<em><b>Default Root EObject Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_MODEL_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME = PROJECT_RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Genmodeluri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_MODEL_PROJECT__GENMODELURI = PROJECT_RESOURCE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Domain Model Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_MODEL_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
+	int DOMAIN_MODEL_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.MoCProjectImpl <em>Mo CProject</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.MoCCProjectImpl <em>Mo CC Project</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.MoCProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getMoCProject()
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.MoCCProjectImpl
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getMoCCProject()
 	 * @generated
 	 */
-	int MO_CPROJECT = 6;
-
-	/**
-	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MO_CPROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MO_CPROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
-
-	/**
-	 * The number of structural features of the '<em>Mo CProject</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MO_CPROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.CCSLMoCProjectImpl <em>CCSL Mo CProject</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.CCSLMoCProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getCCSLMoCProject()
-	 * @generated
-	 */
-	int CCSL_MO_CPROJECT = 7;
+	int MO_CC_PROJECT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -386,7 +339,7 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CCSL_MO_CPROJECT__PROJECT_NAME = MO_CPROJECT__PROJECT_NAME;
+	int MO_CC_PROJECT__PROJECT_NAME = PROJECT_RESOURCE__PROJECT_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
@@ -395,16 +348,16 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CCSL_MO_CPROJECT__PROJECT_KIND = MO_CPROJECT__PROJECT_KIND;
+	int MO_CC_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
 
 	/**
-	 * The number of structural features of the '<em>CCSL Mo CProject</em>' class.
+	 * The number of structural features of the '<em>Mo CC Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CCSL_MO_CPROJECT_FEATURE_COUNT = MO_CPROJECT_FEATURE_COUNT + 0;
+	int MO_CC_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.AnimatorProjectImpl <em>Animator Project</em>}' class.
@@ -414,7 +367,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getAnimatorProject()
 	 * @generated
 	 */
-	int ANIMATOR_PROJECT = 8;
+	int ANIMATOR_PROJECT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -444,26 +397,6 @@ public interface confPackage extends EPackage {
 	int ANIMATOR_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFEcoreProjectImpl <em>EMF Ecore Project</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.EMFEcoreProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFEcoreProject()
-	 * @generated
-	 */
-	int EMF_ECORE_PROJECT = 10;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ODProjectImpl <em>OD Project</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.ODProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getODProject()
-	 * @generated
-	 */
-	int OD_PROJECT = 11;
-
-	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.SiriusAnimatorProjectImpl <em>Sirius Animator Project</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -471,17 +404,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getSiriusAnimatorProject()
 	 * @generated
 	 */
-	int SIRIUS_ANIMATOR_PROJECT = 12;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ModHelXMoCProjectImpl <em>Mod Hel XMo CProject</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.ModHelXMoCProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getModHelXMoCProject()
-	 * @generated
-	 */
-	int MOD_HEL_XMO_CPROJECT = 13;
+	int SIRIUS_ANIMATOR_PROJECT = 9;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DSEProjectImpl <em>DSE Project</em>}' class.
@@ -491,7 +414,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getDSEProject()
 	 * @generated
 	 */
-	int DSE_PROJECT = 9;
+	int DSE_PROJECT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -512,13 +435,32 @@ public interface confPackage extends EPackage {
 	int DSE_PROJECT__PROJECT_KIND = PROJECT_RESOURCE__PROJECT_KIND;
 
 	/**
+	 * The feature id for the '<em><b>Qvto URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DSE_PROJECT__QVTO_URI = PROJECT_RESOURCE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>DSE Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DSE_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 0;
+	int DSE_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.SiriusEditorProjectImpl <em>Sirius Editor Project</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.SiriusEditorProjectImpl
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getSiriusEditorProject()
+	 * @generated
+	 */
+	int SIRIUS_EDITOR_PROJECT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -527,7 +469,7 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_ECORE_PROJECT__PROJECT_NAME = DOMAIN_MODEL_PROJECT__PROJECT_NAME;
+	int SIRIUS_EDITOR_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
@@ -536,52 +478,7 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_ECORE_PROJECT__PROJECT_KIND = DOMAIN_MODEL_PROJECT__PROJECT_KIND;
-
-	/**
-	 * The feature id for the '<em><b>Emf Genmodel</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMF_ECORE_PROJECT__EMF_GENMODEL = DOMAIN_MODEL_PROJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Default Root EObject Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME = DOMAIN_MODEL_PROJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>EMF Ecore Project</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMF_ECORE_PROJECT_FEATURE_COUNT = DOMAIN_MODEL_PROJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OD_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OD_PROJECT__PROJECT_KIND = EDITOR_PROJECT__PROJECT_KIND;
+	int SIRIUS_EDITOR_PROJECT__PROJECT_KIND = EDITOR_PROJECT__PROJECT_KIND;
 
 	/**
 	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
@@ -590,16 +487,16 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OD_PROJECT__FILE_EXTENSION = EDITOR_PROJECT__FILE_EXTENSION;
+	int SIRIUS_EDITOR_PROJECT__FILE_EXTENSION = EDITOR_PROJECT__FILE_EXTENSION;
 
 	/**
-	 * The number of structural features of the '<em>OD Project</em>' class.
+	 * The number of structural features of the '<em>Sirius Editor Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OD_PROJECT_FEATURE_COUNT = EDITOR_PROJECT_FEATURE_COUNT + 0;
+	int SIRIUS_EDITOR_PROJECT_FEATURE_COUNT = EDITOR_PROJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -620,170 +517,13 @@ public interface confPackage extends EPackage {
 	int SIRIUS_ANIMATOR_PROJECT__PROJECT_KIND = ANIMATOR_PROJECT__PROJECT_KIND;
 
 	/**
-	 * The feature id for the '<em><b>OD Project</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIRIUS_ANIMATOR_PROJECT__OD_PROJECT = ANIMATOR_PROJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Sirius Animator Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIRIUS_ANIMATOR_PROJECT_FEATURE_COUNT = ANIMATOR_PROJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MOD_HEL_XMO_CPROJECT__PROJECT_NAME = MO_CPROJECT__PROJECT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MOD_HEL_XMO_CPROJECT__PROJECT_KIND = MO_CPROJECT__PROJECT_KIND;
-
-	/**
-	 * The number of structural features of the '<em>Mod Hel XMo CProject</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MOD_HEL_XMO_CPROJECT_FEATURE_COUNT = MO_CPROJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ECLProjectImpl <em>ECL Project</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.ECLProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLProject()
-	 * @generated
-	 */
-	int ECL_PROJECT = 14;
-
-	/**
-	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_PROJECT__PROJECT_NAME = DSE_PROJECT__PROJECT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_PROJECT__PROJECT_KIND = DSE_PROJECT__PROJECT_KIND;
-
-	/**
-	 * The feature id for the '<em><b>Ecl File</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_PROJECT__ECL_FILE = DSE_PROJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Qvto File</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_PROJECT__QVTO_FILE = DSE_PROJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>ECL Project</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_PROJECT_FEATURE_COUNT = DSE_PROJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl <em>Tree Editor Project</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getTreeEditorProject()
-	 * @generated
-	 */
-	int TREE_EDITOR_PROJECT = 15;
-
-	/**
-	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_EDITOR_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_EDITOR_PROJECT__PROJECT_KIND = EDITOR_PROJECT__PROJECT_KIND;
-
-	/**
-	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_EDITOR_PROJECT__FILE_EXTENSION = EDITOR_PROJECT__FILE_EXTENSION;
-
-	/**
-	 * The number of structural features of the '<em>Tree Editor Project</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_EDITOR_PROJECT_FEATURE_COUNT = EDITOR_PROJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.FileResourceImpl <em>File Resource</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.FileResourceImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getFileResource()
-	 * @generated
-	 */
-	int FILE_RESOURCE = 17;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFGenmodelImpl <em>EMF Genmodel</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.EMFGenmodelImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFGenmodel()
-	 * @generated
-	 */
-	int EMF_GENMODEL = 18;
+	int SIRIUS_ANIMATOR_PROJECT_FEATURE_COUNT = ANIMATOR_PROJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.XTextEditorProjectImpl <em>XText Editor Project</em>}' class.
@@ -793,136 +533,7 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getXTextEditorProject()
 	 * @generated
 	 */
-	int XTEXT_EDITOR_PROJECT = 21;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl <em>K3DSA Project</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getK3DSAProject()
-	 * @generated
-	 */
-	int K3DSA_PROJECT = 16;
-
-	/**
-	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int K3DSA_PROJECT__PROJECT_NAME = DSA_PROJECT__PROJECT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int K3DSA_PROJECT__PROJECT_KIND = DSA_PROJECT__PROJECT_KIND;
-
-	/**
-	 * The number of structural features of the '<em>K3DSA Project</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int K3DSA_PROJECT_FEATURE_COUNT = DSA_PROJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FILE_RESOURCE__LOCATION_URI = 0;
-
-	/**
-	 * The number of structural features of the '<em>File Resource</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FILE_RESOURCE_FEATURE_COUNT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMF_GENMODEL__LOCATION_URI = FILE_RESOURCE__LOCATION_URI;
-
-	/**
-	 * The number of structural features of the '<em>EMF Genmodel</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMF_GENMODEL_FEATURE_COUNT = FILE_RESOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ECLFileImpl <em>ECL File</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.ECLFileImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLFile()
-	 * @generated
-	 */
-	int ECL_FILE = 19;
-
-	/**
-	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_FILE__LOCATION_URI = FILE_RESOURCE__LOCATION_URI;
-
-	/**
-	 * The number of structural features of the '<em>ECL File</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_FILE_FEATURE_COUNT = FILE_RESOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.QVToFileImpl <em>QV To File</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.QVToFileImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getQVToFile()
-	 * @generated
-	 */
-	int QV_TO_FILE = 20;
-
-	/**
-	 * The feature id for the '<em><b>Location URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QV_TO_FILE__LOCATION_URI = FILE_RESOURCE__LOCATION_URI;
-
-	/**
-	 * The number of structural features of the '<em>QV To File</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QV_TO_FILE_FEATURE_COUNT = FILE_RESOURCE_FEATURE_COUNT + 0;
+	int XTEXT_EDITOR_PROJECT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -970,50 +581,50 @@ public interface confPackage extends EPackage {
 	int XTEXT_EDITOR_PROJECT_FEATURE_COUNT = EDITOR_PROJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl <em>Build Options</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl <em>Tree Editor Project</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl
-	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getBuildOptions()
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getTreeEditorProject()
 	 * @generated
 	 */
-	int BUILD_OPTIONS = 22;
+	int TREE_EDITOR_PROJECT = 11;
 
 	/**
-	 * The feature id for the '<em><b>Generate Model Loader Service</b></em>' attribute.
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE = 0;
+	int TREE_EDITOR_PROJECT__PROJECT_NAME = EDITOR_PROJECT__PROJECT_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Generate Code Executor Service</b></em>' attribute.
+	 * The feature id for the '<em><b>Project Kind</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE = 1;
+	int TREE_EDITOR_PROJECT__PROJECT_KIND = EDITOR_PROJECT__PROJECT_KIND;
 
 	/**
-	 * The feature id for the '<em><b>Generate Solver Service</b></em>' attribute.
+	 * The feature id for the '<em><b>File Extension</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_OPTIONS__GENERATE_SOLVER_SERVICE = 2;
+	int TREE_EDITOR_PROJECT__FILE_EXTENSION = EDITOR_PROJECT__FILE_EXTENSION;
 
 	/**
-	 * The number of structural features of the '<em>Build Options</em>' class.
+	 * The number of structural features of the '<em>Tree Editor Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_OPTIONS_FEATURE_COUNT = 3;
+	int TREE_EDITOR_PROJECT_FEATURE_COUNT = EDITOR_PROJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.
@@ -1023,40 +634,8 @@ public interface confPackage extends EPackage {
 	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getProjectKind()
 	 * @generated
 	 */
-	int PROJECT_KIND = 23;
+	int PROJECT_KIND = 12;
 
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration <em>Gemoc Language Workbench Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Gemoc Language Workbench Configuration</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration
-	 * @generated
-	 */
-	EClass getGemocLanguageWorkbenchConfiguration();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getLanguageDefinition <em>Language Definition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Language Definition</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getLanguageDefinition()
-	 * @see #getGemocLanguageWorkbenchConfiguration()
-	 * @generated
-	 */
-	EReference getGemocLanguageWorkbenchConfiguration_LanguageDefinition();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getBuildOptions <em>Build Options</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Build Options</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration#getBuildOptions()
-	 * @see #getGemocLanguageWorkbenchConfiguration()
-	 * @generated
-	 */
-	EReference getGemocLanguageWorkbenchConfiguration_BuildOptions();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ProjectResource <em>Project Resource</em>}'.
@@ -1099,6 +678,17 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDSAProject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.DSAProject#getCodeExecutorClass <em>Code Executor Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Code Executor Class</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.DSAProject#getCodeExecutorClass()
+	 * @see #getDSAProject()
+	 * @generated
+	 */
+	EAttribute getDSAProject_CodeExecutorClass();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition <em>Language Definition</em>}'.
@@ -1219,24 +809,36 @@ public interface confPackage extends EPackage {
 	EClass getDomainModelProject();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.MoCProject <em>Mo CProject</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.DomainModelProject#getDefaultRootEObjectQualifiedName <em>Default Root EObject Qualified Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Mo CProject</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.MoCProject
+	 * @return the meta object for the attribute '<em>Default Root EObject Qualified Name</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.DomainModelProject#getDefaultRootEObjectQualifiedName()
+	 * @see #getDomainModelProject()
 	 * @generated
 	 */
-	EClass getMoCProject();
+	EAttribute getDomainModelProject_DefaultRootEObjectQualifiedName();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.CCSLMoCProject <em>CCSL Mo CProject</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.DomainModelProject#getGenmodeluri <em>Genmodeluri</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>CCSL Mo CProject</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.CCSLMoCProject
+	 * @return the meta object for the attribute '<em>Genmodeluri</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.DomainModelProject#getGenmodeluri()
+	 * @see #getDomainModelProject()
 	 * @generated
 	 */
-	EClass getCCSLMoCProject();
+	EAttribute getDomainModelProject_Genmodeluri();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.MoCCProject <em>Mo CC Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Mo CC Project</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.MoCCProject
+	 * @generated
+	 */
+	EClass getMoCCProject();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.AnimatorProject <em>Animator Project</em>}'.
@@ -1249,48 +851,6 @@ public interface confPackage extends EPackage {
 	EClass getAnimatorProject();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject <em>EMF Ecore Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>EMF Ecore Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject
-	 * @generated
-	 */
-	EClass getEMFEcoreProject();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEmfGenmodel <em>Emf Genmodel</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Emf Genmodel</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getEmfGenmodel()
-	 * @see #getEMFEcoreProject()
-	 * @generated
-	 */
-	EReference getEMFEcoreProject_EmfGenmodel();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getDefaultRootEObjectQualifiedName <em>Default Root EObject Qualified Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Default Root EObject Qualified Name</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject#getDefaultRootEObjectQualifiedName()
-	 * @see #getEMFEcoreProject()
-	 * @generated
-	 */
-	EAttribute getEMFEcoreProject_DefaultRootEObjectQualifiedName();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ODProject <em>OD Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OD Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ODProject
-	 * @generated
-	 */
-	EClass getODProject();
-
-	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject <em>Sirius Animator Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1299,27 +859,6 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSiriusAnimatorProject();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject#getODProject <em>OD Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>OD Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject#getODProject()
-	 * @see #getSiriusAnimatorProject()
-	 * @generated
-	 */
-	EReference getSiriusAnimatorProject_ODProject();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject <em>Mod Hel XMo CProject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Mod Hel XMo CProject</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject
-	 * @generated
-	 */
-	EClass getModHelXMoCProject();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.DSEProject <em>DSE Project</em>}'.
@@ -1332,77 +871,25 @@ public interface confPackage extends EPackage {
 	EClass getDSEProject();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ECLProject <em>ECL Project</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.DSEProject#getQvtoURI <em>Qvto URI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>ECL Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLProject
+	 * @return the meta object for the attribute '<em>Qvto URI</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.DSEProject#getQvtoURI()
+	 * @see #getDSEProject()
 	 * @generated
 	 */
-	EClass getECLProject();
+	EAttribute getDSEProject_QvtoURI();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.ECLProject#getEclFile <em>Ecl File</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject <em>Sirius Editor Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Ecl File</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLProject#getEclFile()
-	 * @see #getECLProject()
+	 * @return the meta object for class '<em>Sirius Editor Project</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject
 	 * @generated
 	 */
-	EReference getECLProject_EclFile();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.ECLProject#getQvtoFile <em>Qvto File</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Qvto File</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLProject#getQvtoFile()
-	 * @see #getECLProject()
-	 * @generated
-	 */
-	EReference getECLProject_QvtoFile();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject <em>Tree Editor Project</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Tree Editor Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.TreeEditorProject
-	 * @generated
-	 */
-	EClass getTreeEditorProject();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.EMFGenmodel <em>EMF Genmodel</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>EMF Genmodel</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.EMFGenmodel
-	 * @generated
-	 */
-	EClass getEMFGenmodel();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.FileResource <em>File Resource</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>File Resource</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.FileResource
-	 * @generated
-	 */
-	EClass getFileResource();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.FileResource#getLocationURI <em>Location URI</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Location URI</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.FileResource#getLocationURI()
-	 * @see #getFileResource()
-	 * @generated
-	 */
-	EAttribute getFileResource_LocationURI();
+	EClass getSiriusEditorProject();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.XTextEditorProject <em>XText Editor Project</em>}'.
@@ -1426,77 +913,14 @@ public interface confPackage extends EPackage {
 	EAttribute getXTextEditorProject_GrammarName();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject <em>K3DSA Project</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject <em>Tree Editor Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>K3DSA Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.K3DSAProject
+	 * @return the meta object for class '<em>Tree Editor Project</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.TreeEditorProject
 	 * @generated
 	 */
-	EClass getK3DSAProject();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ECLFile <em>ECL File</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>ECL File</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.ECLFile
-	 * @generated
-	 */
-	EClass getECLFile();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.QVToFile <em>QV To File</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>QV To File</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.QVToFile
-	 * @generated
-	 */
-	EClass getQVToFile();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions <em>Build Options</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Build Options</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions
-	 * @generated
-	 */
-	EClass getBuildOptions();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateModelLoaderService <em>Generate Model Loader Service</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Generate Model Loader Service</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateModelLoaderService()
-	 * @see #getBuildOptions()
-	 * @generated
-	 */
-	EAttribute getBuildOptions_GenerateModelLoaderService();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateCodeExecutorService <em>Generate Code Executor Service</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Generate Code Executor Service</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateCodeExecutorService()
-	 * @see #getBuildOptions()
-	 * @generated
-	 */
-	EAttribute getBuildOptions_GenerateCodeExecutorService();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateSolverService <em>Generate Solver Service</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Generate Solver Service</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.BuildOptions#isGenerateSolverService()
-	 * @see #getBuildOptions()
-	 * @generated
-	 */
-	EAttribute getBuildOptions_GenerateSolverService();
+	EClass getTreeEditorProject();
 
 	/**
 	 * Returns the meta object for enum '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}'.
@@ -1530,32 +954,6 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.GemocLanguageWorkbenchConfigurationImpl <em>Gemoc Language Workbench Configuration</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.GemocLanguageWorkbenchConfigurationImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getGemocLanguageWorkbenchConfiguration()
-		 * @generated
-		 */
-		EClass GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION = eINSTANCE.getGemocLanguageWorkbenchConfiguration();
-
-		/**
-		 * The meta object literal for the '<em><b>Language Definition</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__LANGUAGE_DEFINITION = eINSTANCE.getGemocLanguageWorkbenchConfiguration_LanguageDefinition();
-
-		/**
-		 * The meta object literal for the '<em><b>Build Options</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION__BUILD_OPTIONS = eINSTANCE.getGemocLanguageWorkbenchConfiguration_BuildOptions();
-
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ProjectResourceImpl <em>Project Resource</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1591,6 +989,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DSA_PROJECT = eINSTANCE.getDSAProject();
+
+		/**
+		 * The meta object literal for the '<em><b>Code Executor Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DSA_PROJECT__CODE_EXECUTOR_CLASS = eINSTANCE.getDSAProject_CodeExecutorClass();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl <em>Language Definition</em>}' class.
@@ -1687,24 +1093,30 @@ public interface confPackage extends EPackage {
 		EClass DOMAIN_MODEL_PROJECT = eINSTANCE.getDomainModelProject();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.MoCProjectImpl <em>Mo CProject</em>}' class.
+		 * The meta object literal for the '<em><b>Default Root EObject Qualified Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.MoCProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getMoCProject()
 		 * @generated
 		 */
-		EClass MO_CPROJECT = eINSTANCE.getMoCProject();
+		EAttribute DOMAIN_MODEL_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME = eINSTANCE.getDomainModelProject_DefaultRootEObjectQualifiedName();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.CCSLMoCProjectImpl <em>CCSL Mo CProject</em>}' class.
+		 * The meta object literal for the '<em><b>Genmodeluri</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.CCSLMoCProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getCCSLMoCProject()
 		 * @generated
 		 */
-		EClass CCSL_MO_CPROJECT = eINSTANCE.getCCSLMoCProject();
+		EAttribute DOMAIN_MODEL_PROJECT__GENMODELURI = eINSTANCE.getDomainModelProject_Genmodeluri();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.MoCCProjectImpl <em>Mo CC Project</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.MoCCProjectImpl
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getMoCCProject()
+		 * @generated
+		 */
+		EClass MO_CC_PROJECT = eINSTANCE.getMoCCProject();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.AnimatorProjectImpl <em>Animator Project</em>}' class.
@@ -1717,42 +1129,6 @@ public interface confPackage extends EPackage {
 		EClass ANIMATOR_PROJECT = eINSTANCE.getAnimatorProject();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFEcoreProjectImpl <em>EMF Ecore Project</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.EMFEcoreProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFEcoreProject()
-		 * @generated
-		 */
-		EClass EMF_ECORE_PROJECT = eINSTANCE.getEMFEcoreProject();
-
-		/**
-		 * The meta object literal for the '<em><b>Emf Genmodel</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EMF_ECORE_PROJECT__EMF_GENMODEL = eINSTANCE.getEMFEcoreProject_EmfGenmodel();
-
-		/**
-		 * The meta object literal for the '<em><b>Default Root EObject Qualified Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EMF_ECORE_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME = eINSTANCE.getEMFEcoreProject_DefaultRootEObjectQualifiedName();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ODProjectImpl <em>OD Project</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.ODProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getODProject()
-		 * @generated
-		 */
-		EClass OD_PROJECT = eINSTANCE.getODProject();
-
-		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.SiriusAnimatorProjectImpl <em>Sirius Animator Project</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1761,24 +1137,6 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SIRIUS_ANIMATOR_PROJECT = eINSTANCE.getSiriusAnimatorProject();
-
-		/**
-		 * The meta object literal for the '<em><b>OD Project</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SIRIUS_ANIMATOR_PROJECT__OD_PROJECT = eINSTANCE.getSiriusAnimatorProject_ODProject();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ModHelXMoCProjectImpl <em>Mod Hel XMo CProject</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.ModHelXMoCProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getModHelXMoCProject()
-		 * @generated
-		 */
-		EClass MOD_HEL_XMO_CPROJECT = eINSTANCE.getModHelXMoCProject();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.DSEProjectImpl <em>DSE Project</em>}' class.
@@ -1791,68 +1149,22 @@ public interface confPackage extends EPackage {
 		EClass DSE_PROJECT = eINSTANCE.getDSEProject();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ECLProjectImpl <em>ECL Project</em>}' class.
+		 * The meta object literal for the '<em><b>Qvto URI</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.ECLProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLProject()
 		 * @generated
 		 */
-		EClass ECL_PROJECT = eINSTANCE.getECLProject();
+		EAttribute DSE_PROJECT__QVTO_URI = eINSTANCE.getDSEProject_QvtoURI();
 
 		/**
-		 * The meta object literal for the '<em><b>Ecl File</b></em>' containment reference feature.
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.SiriusEditorProjectImpl <em>Sirius Editor Project</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.SiriusEditorProjectImpl
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getSiriusEditorProject()
 		 * @generated
 		 */
-		EReference ECL_PROJECT__ECL_FILE = eINSTANCE.getECLProject_EclFile();
-
-		/**
-		 * The meta object literal for the '<em><b>Qvto File</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ECL_PROJECT__QVTO_FILE = eINSTANCE.getECLProject_QvtoFile();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl <em>Tree Editor Project</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getTreeEditorProject()
-		 * @generated
-		 */
-		EClass TREE_EDITOR_PROJECT = eINSTANCE.getTreeEditorProject();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EMFGenmodelImpl <em>EMF Genmodel</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.EMFGenmodelImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getEMFGenmodel()
-		 * @generated
-		 */
-		EClass EMF_GENMODEL = eINSTANCE.getEMFGenmodel();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.FileResourceImpl <em>File Resource</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.FileResourceImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getFileResource()
-		 * @generated
-		 */
-		EClass FILE_RESOURCE = eINSTANCE.getFileResource();
-
-		/**
-		 * The meta object literal for the '<em><b>Location URI</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FILE_RESOURCE__LOCATION_URI = eINSTANCE.getFileResource_LocationURI();
+		EClass SIRIUS_EDITOR_PROJECT = eINSTANCE.getSiriusEditorProject();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.XTextEditorProjectImpl <em>XText Editor Project</em>}' class.
@@ -1873,68 +1185,14 @@ public interface confPackage extends EPackage {
 		EAttribute XTEXT_EDITOR_PROJECT__GRAMMAR_NAME = eINSTANCE.getXTextEditorProject_GrammarName();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl <em>K3DSA Project</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl <em>Tree Editor Project</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.K3DSAProjectImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getK3DSAProject()
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.TreeEditorProjectImpl
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getTreeEditorProject()
 		 * @generated
 		 */
-		EClass K3DSA_PROJECT = eINSTANCE.getK3DSAProject();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.ECLFileImpl <em>ECL File</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.ECLFileImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getECLFile()
-		 * @generated
-		 */
-		EClass ECL_FILE = eINSTANCE.getECLFile();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.QVToFileImpl <em>QV To File</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.QVToFileImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getQVToFile()
-		 * @generated
-		 */
-		EClass QV_TO_FILE = eINSTANCE.getQVToFile();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl <em>Build Options</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.BuildOptionsImpl
-		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getBuildOptions()
-		 * @generated
-		 */
-		EClass BUILD_OPTIONS = eINSTANCE.getBuildOptions();
-
-		/**
-		 * The meta object literal for the '<em><b>Generate Model Loader Service</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUILD_OPTIONS__GENERATE_MODEL_LOADER_SERVICE = eINSTANCE.getBuildOptions_GenerateModelLoaderService();
-
-		/**
-		 * The meta object literal for the '<em><b>Generate Code Executor Service</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUILD_OPTIONS__GENERATE_CODE_EXECUTOR_SERVICE = eINSTANCE.getBuildOptions_GenerateCodeExecutorService();
-
-		/**
-		 * The meta object literal for the '<em><b>Generate Solver Service</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUILD_OPTIONS__GENERATE_SOLVER_SERVICE = eINSTANCE.getBuildOptions_GenerateSolverService();
+		EClass TREE_EDITOR_PROJECT = eINSTANCE.getTreeEditorProject();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.ProjectKind <em>Project Kind</em>}' enum.

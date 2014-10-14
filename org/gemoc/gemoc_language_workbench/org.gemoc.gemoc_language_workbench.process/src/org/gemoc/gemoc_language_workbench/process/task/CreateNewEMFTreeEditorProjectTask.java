@@ -25,7 +25,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
@@ -76,8 +76,8 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractGemocActionProces
 		return treeEditorProjet;
 	}
 
-	private EditorProject findTreeEditorInXDSML(GemocLanguageWorkbenchConfiguration xdsmlModel) {
-		EList<EditorProject> editorsProjects = xdsmlModel.getLanguageDefinition().getEditorProjects();
+	private EditorProject findTreeEditorInXDSML(LanguageDefinition xdsmlModel) {
+		EList<EditorProject> editorsProjects = xdsmlModel.getEditorProjects();
 		for (EditorProject editorProject : editorsProjects) {
 			if (editorProject instanceof TreeEditorProject) {
 				return editorProject;
@@ -104,8 +104,7 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractGemocActionProces
 	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if the changed resource is an IProject referenced by the xdsml as TreeEditor
 		if (resource instanceof IProject) {
-			EList<EditorProject> editorsProjects = context.getXdsmlModel(getActionTask()).getLanguageDefinition()
-					.getEditorProjects();
+			EList<EditorProject> editorsProjects = context.getXdsmlModel(getActionTask()).getEditorProjects();
 			for (EditorProject editorProject : editorsProjects) {
 				if (editorProject instanceof TreeEditorProject) {
 					if (resource.getName().equals(editorProject.getProjectName())) {
@@ -128,8 +127,7 @@ public class CreateNewEMFTreeEditorProjectTask extends AbstractGemocActionProces
 
 		// or if the changed resource is an IProject referenced by the xdsml as TreeEditor
 		if (resource instanceof IProject) {
-			EList<EditorProject> editorsProjects = context.getXdsmlModel(getActionTask()).getLanguageDefinition()
-					.getEditorProjects();
+			EList<EditorProject> editorsProjects = context.getXdsmlModel(getActionTask()).getEditorProjects();
 			for (EditorProject editorProject : editorsProjects) {
 				if (editorProject instanceof TreeEditorProject) {
 					if (resource.getName().equals(editorProject.getProjectName())) {

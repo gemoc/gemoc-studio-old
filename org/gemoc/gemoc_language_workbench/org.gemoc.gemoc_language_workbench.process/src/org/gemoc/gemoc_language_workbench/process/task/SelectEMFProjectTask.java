@@ -22,7 +22,7 @@ import fr.obeo.dsl.process.ActionTask;
 import java.io.IOException;
 
 import org.eclipse.core.resources.IProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction.CreateDomainModelAction;
@@ -50,18 +50,17 @@ public class SelectEMFProjectTask extends CreateNewEMFProjectTask {
 	@Override
 	protected void internalDoAction(GemocLanguageProcessContext context) {
 		IProject updatedGemocLanguageProject = context.getXdsmlFile(getActionTask()).getProject();
-		CreateDomainModelWizardContextAction action = new CreateDomainModelWizardContextAction(updatedGemocLanguageProject);
+		CreateDomainModelWizardContextAction action = new CreateDomainModelWizardContextAction(
+				updatedGemocLanguageProject);
 		action.actionToExecute = CreateDomainModelAction.SELECT_EXISTING_EMF_PROJECT;
 		action.execute();
 	}
 
 	@Override
 	protected void internalUndoAction(GemocLanguageProcessContext context) {
-		final GemocLanguageWorkbenchConfiguration config = context.getXdsmlModel(getActionTask());
-		if (config != null 
-			&& config.getLanguageDefinition() != null
-			&& config.getLanguageDefinition().getDomainModelProject() != null) {
-			config.getLanguageDefinition().setDomainModelProject(null);
+		final LanguageDefinition config = context.getXdsmlModel(getActionTask());
+		if (config != null && config.getDomainModelProject() != null) {
+			config.setDomainModelProject(null);
 			try {
 				config.eResource().save(null);
 			} catch (IOException e) {

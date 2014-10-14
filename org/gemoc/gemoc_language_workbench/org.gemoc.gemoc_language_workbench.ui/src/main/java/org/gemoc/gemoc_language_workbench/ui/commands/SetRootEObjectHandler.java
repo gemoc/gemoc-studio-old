@@ -20,11 +20,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
-import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
@@ -77,13 +73,10 @@ public class SetRootEObjectHandler extends AbstractGemocLanguageProjectHandler i
 		    // get the resource
 		    Resource resource = resSet.getResource(URI.createURI(configFile.getLocationURI().toString()),true);
 		    
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
-		    // consider only one language :-/
-		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
+		    LanguageDefinition language = (LanguageDefinition) resource.getContents().get(0);
 		    
-		    if(language.getDomainModelProject() instanceof EMFEcoreProject){
-		    	((EMFEcoreProject)language.getDomainModelProject()).setDefaultRootEObjectQualifiedName(rootEObjectName);
-		    }
+		    language.getDomainModelProject().setDefaultRootEObjectQualifiedName(rootEObjectName);
+		    
 		    
 			
 			try {
