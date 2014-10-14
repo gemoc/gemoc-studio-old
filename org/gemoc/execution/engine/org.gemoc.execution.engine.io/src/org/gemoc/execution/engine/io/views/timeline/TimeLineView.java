@@ -124,7 +124,8 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	
 	public void configure(ObservableBasicExecutionEngine engine)
 	{
-		if (_currentEngine == engine)
+		if (_currentEngine == engine
+			&& _timelineProvider != null)
 		{
 			_timelineProvider.notifyNumberOfChoicesChanged(_timelineProvider.getNumberOfChoices());
 		}
