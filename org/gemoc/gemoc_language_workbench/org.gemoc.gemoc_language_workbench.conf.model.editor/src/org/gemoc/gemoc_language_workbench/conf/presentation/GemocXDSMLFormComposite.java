@@ -87,12 +87,11 @@ public class GemocXDSMLFormComposite extends Composite {
 	private Text txtSiriusAnimationProject;
 	private Text txtGenmodel;
 
-	
-	
 	LanguageDefinition rootModelElement;
 	AdapterFactoryEditingDomain editingDomain;
 
 	protected XDSMLModelWrapper xdsmlWrappedObject = new XDSMLModelWrapper();
+	private Text txtCodeExecutorClass;
 
 	/**
 	 * Create the composite.
@@ -333,7 +332,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkDSAProject.setText("<a>K3 project</a>");
 
 		txtDSAProject = new Text(grpDsaDefinition, SWT.BORDER);
-		GridData gd_txtDSAProject = new GridData(SWT.LEFT, SWT.CENTER, false,
+		GridData gd_txtDSAProject = new GridData(SWT.FILL, SWT.CENTER, true,
 				false, 1, 1);
 		gd_txtDSAProject.widthHint = 215;
 		txtDSAProject.setLayoutData(gd_txtDSAProject);
@@ -343,7 +342,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		Button btnBrowseDSAProject = new Button(grpDsaDefinition, SWT.NONE);
 		btnBrowseDSAProject.setBounds(0, 0, 75, 25);
 		toolkit.adapt(btnBrowseDSAProject, true, true);
-		btnBrowseDSAProject.setText("browse");
+		btnBrowseDSAProject.setText("Browse");
 
 		Group grpMocDefinitionLibrary = new Group(grpBehaviorDefinition,
 				SWT.NONE);
@@ -378,7 +377,7 @@ public class GemocXDSMLFormComposite extends Composite {
 
 		Button btnBrowseMoCCProject = new Button(grpMocDefinitionLibrary,
 				SWT.NONE);
-		btnBrowseMoCCProject.setText("browse");
+		btnBrowseMoCCProject.setText("Browse");
 		btnBrowseMoCCProject.setBounds(0, 0, 50, 25);
 		toolkit.adapt(btnBrowseMoCCProject, true, true);
 
@@ -412,15 +411,33 @@ public class GemocXDSMLFormComposite extends Composite {
 		toolkit.adapt(txtDSEProject, true, true);
 
 		Button btnBrowseDSEProject = new Button(grpDSEDefinition, SWT.NONE);
-		btnBrowseDSEProject.setText("browse");
+		btnBrowseDSEProject.setText("Browse");
 		btnBrowseDSEProject.setBounds(0, 0, 50, 25);
 		toolkit.adapt(btnBrowseDSEProject, true, true);
 
-		m_bindingContext = initDataBindings();
 
+		Link linkCodeExecutorClass = new Link(grpDsaDefinition, SWT.NONE);
+		toolkit.adapt(linkCodeExecutorClass, true, true);
+		linkCodeExecutorClass.setText("<a>Code executor class</a>");
+
+		txtCodeExecutorClass = new Text(grpDsaDefinition, SWT.BORDER);
+		txtCodeExecutorClass.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+				true, false, 1, 1));
+		toolkit.adapt(txtCodeExecutorClass, true, true);
+
+		Button btnBrowseCodeExecutorClass = new Button(grpDsaDefinition,
+				SWT.NONE);
+		toolkit.adapt(btnBrowseCodeExecutorClass, true, true);
+		btnBrowseCodeExecutorClass.setText("Browse");
+
+		
+
+		m_bindingContext = initDataBindings();
+		
 		initLinkListeners(linkEMFProject, linkGenmodel, linkXTextEditorProject,
 				linkSiriusEditorProject, linkSiriusAnimatorProject,
 				linkDSAProject, linkDSEProject, linkMoCCMLProject);
+
 		initButtonListeners(btnBrowseEMFProject, btnBrowseGenmodel,
 				btSelectRootModelElement, btnBrowseXtextEditor,
 				btnBrowseSiriusEditor, btnBrowseSiriusAnimator,
@@ -432,14 +449,16 @@ public class GemocXDSMLFormComposite extends Composite {
 			this.editingDomain = editingDomain;
 			editingDomain.toString();
 
-			if(editingDomain.getResourceSet().getResources().size() > 0){
-				if(editingDomain.getResourceSet().getResources().get(0).getContents().size() > 0){
-					EObject eObject = editingDomain.getResourceSet().getResources().get(0).getContents().get(0);
-					if(eObject instanceof LanguageDefinition){
-						rootModelElement = (LanguageDefinition)eObject;
-						//txtLanguageName.setText(confModelElement.getLanguageDefinition().getName());
-						XDSMLModelWrapperHelper.init(xdsmlWrappedObject, rootModelElement);
-						
+			if (editingDomain.getResourceSet().getResources().size() > 0) {
+				if (editingDomain.getResourceSet().getResources().get(0)
+						.getContents().size() > 0) {
+					EObject eObject = editingDomain.getResourceSet()
+							.getResources().get(0).getContents().get(0);
+					if (eObject instanceof LanguageDefinition) {
+						rootModelElement = (LanguageDefinition) eObject;
+						// txtLanguageName.setText(confModelElement.getLanguageDefinition().getName());
+						XDSMLModelWrapperHelper.init(xdsmlWrappedObject,
+								rootModelElement);
 
 					}
 				}
@@ -468,8 +487,9 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtSiriusAnimationProject.setText(xdsmlWrappedObject
 				.getSiriusAnimatorProjectName());
 		txtDSAProject.setText(xdsmlWrappedObject.getDSAProjectName());
+		txtCodeExecutorClass.setText(xdsmlWrappedObject.getCodeExecutorClass());
 		txtDSEProject.setText(xdsmlWrappedObject.getDSEProjectName());
-		txtMoCCProject.setText(xdsmlWrappedObject.getMoCCProjectName());
+		txtMoCCProject.setText(xdsmlWrappedObject.getMoCCProjectName());		
 	}
 
 	/**
@@ -1050,93 +1070,6 @@ public class GemocXDSMLFormComposite extends Composite {
 		});
 	}
 
-	/**
-	 * Data binding between the Wrapped object and the fields This method is
-	 * managed vie the Windows builder GUI
-	 * 
-	 * @return
-	 */
-	protected DataBindingContext initDataBindings() {
-		DataBindingContext bindingContext = new DataBindingContext();
-		//
-		IObservableValue observeTextTxtLanguageNameObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtLanguageName);
-		IObservableValue languageNameXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("languageName").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(observeTextTxtLanguageNameObserveWidget,
-				languageNameXdsmlWrappedObjectObserveValue, null, null);
-		//
-		IObservableValue observeTextTxtEMFProjectObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtEMFProject);
-		IObservableValue eMFProjectXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("domainModelProjectName").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(observeTextTxtEMFProjectObserveWidget,
-				eMFProjectXdsmlWrappedObjectObserveValue, null, null);
-		//
-		IObservableValue observeTextTxtXTextEditorProjectObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtXTextEditorProject);
-		IObservableValue xTextEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("XTextEditorProjectName").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(observeTextTxtXTextEditorProjectObserveWidget,
-				xTextEditorProjectXdsmlWrappedObjectObserveValue, null, null);
-		//
-		IObservableValue observeTextTxtSiriusEditorProjectObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtSiriusEditorProject);
-		IObservableValue siriusEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("siriusEditorProjectName").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(
-				observeTextTxtSiriusEditorProjectObserveWidget,
-				siriusEditorProjectXdsmlWrappedObjectObserveValue, null, null);
-		//
-		IObservableValue observeTextTxtSiriusAnimationProjectObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtSiriusAnimationProject);
-		IObservableValue siriusAnimatorProjectNameXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("siriusAnimatorProjectName").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(
-				observeTextTxtSiriusAnimationProjectObserveWidget,
-				siriusAnimatorProjectNameXdsmlWrappedObjectObserveValue, null,
-				null);
-		//
-		IObservableValue observeTextTxtGenmodelObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtGenmodel);
-		IObservableValue genmodelLocationURIXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("genmodelLocationURI").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(observeTextTxtGenmodelObserveWidget,
-				genmodelLocationURIXdsmlWrappedObjectObserveValue, null, null);
-		//
-		IObservableValue observeTextTxtDSAProjectObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtDSAProject);
-		IObservableValue dSAProjectNameXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("DSAProjectName").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(observeTextTxtDSAProjectObserveWidget,
-				dSAProjectNameXdsmlWrappedObjectObserveValue, null, null);
-		//
-		IObservableValue observeTextTxtMoCCProjectObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtMoCCProject);
-		IObservableValue moCCProjectNameXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("moCCProjectName").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(observeTextTxtMoCCProjectObserveWidget,
-				moCCProjectNameXdsmlWrappedObjectObserveValue, null, null);
-		//
-		IObservableValue observeTextTxtDSEProjectObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtDSEProject);
-		IObservableValue dSEProjectNameXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("DSEProjectName").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(observeTextTxtDSEProjectObserveWidget,
-				dSEProjectNameXdsmlWrappedObjectObserveValue, null, null);
-		//
-		IObservableValue observeTextTxtRootContainerModelElementObserveWidget = WidgetProperties
-				.text(SWT.Modify).observe(txtRootContainerModelElement);
-		IObservableValue rootContainerModelElementXdsmlWrappedObjectObserveValue = BeanProperties
-				.value("rootContainerModelElement").observe(xdsmlWrappedObject);
-		bindingContext.bindValue(
-				observeTextTxtRootContainerModelElementObserveWidget,
-				rootContainerModelElementXdsmlWrappedObjectObserveValue, null,
-				null);
-		//
-		return bindingContext;
-	}
-
 	protected IFile getCurrentIFile() {
 		String platformString = rootModelElement.eResource().getURI()
 				.toPlatformString(true);
@@ -1145,4 +1078,53 @@ public class GemocXDSMLFormComposite extends Composite {
 
 	}
 
+	protected DataBindingContext initDataBindings() {
+		DataBindingContext bindingContext = new DataBindingContext();
+		//
+		IObservableValue observeTextTxtLanguageNameObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtLanguageName);
+		IObservableValue languageNameXdsmlWrappedObjectObserveValue = BeanProperties.value("languageName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtLanguageNameObserveWidget, languageNameXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtEMFProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtEMFProject);
+		IObservableValue eMFProjectXdsmlWrappedObjectObserveValue = BeanProperties.value("domainModelProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtEMFProjectObserveWidget, eMFProjectXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtXTextEditorProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtXTextEditorProject);
+		IObservableValue xTextEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties.value("XTextEditorProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtXTextEditorProjectObserveWidget, xTextEditorProjectXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtSiriusEditorProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtSiriusEditorProject);
+		IObservableValue siriusEditorProjectXdsmlWrappedObjectObserveValue = BeanProperties.value("siriusEditorProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtSiriusEditorProjectObserveWidget, siriusEditorProjectXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtSiriusAnimationProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtSiriusAnimationProject);
+		IObservableValue siriusAnimatorProjectNameXdsmlWrappedObjectObserveValue = BeanProperties.value("siriusAnimatorProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtSiriusAnimationProjectObserveWidget, siriusAnimatorProjectNameXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtGenmodelObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtGenmodel);
+		IObservableValue genmodelLocationURIXdsmlWrappedObjectObserveValue = BeanProperties.value("genmodelLocationURI").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtGenmodelObserveWidget, genmodelLocationURIXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtDSAProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtDSAProject);
+		IObservableValue dSAProjectNameXdsmlWrappedObjectObserveValue = BeanProperties.value("DSAProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtDSAProjectObserveWidget, dSAProjectNameXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtMoCCProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtMoCCProject);
+		IObservableValue moCCProjectNameXdsmlWrappedObjectObserveValue = BeanProperties.value("moCCProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtMoCCProjectObserveWidget, moCCProjectNameXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtDSEProjectObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtDSEProject);
+		IObservableValue dSEProjectNameXdsmlWrappedObjectObserveValue = BeanProperties.value("DSEProjectName").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtDSEProjectObserveWidget, dSEProjectNameXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtRootContainerModelElementObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtRootContainerModelElement);
+		IObservableValue rootContainerModelElementXdsmlWrappedObjectObserveValue = BeanProperties.value("rootContainerModelElement").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtRootContainerModelElementObserveWidget, rootContainerModelElementXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtCodeExecutorClassObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtCodeExecutorClass);
+		IObservableValue codeExecutorClassXdsmlWrappedObjectObserveValue = BeanProperties.value("codeExecutorClass").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtCodeExecutorClassObserveWidget, codeExecutorClassXdsmlWrappedObjectObserveValue, null, null);
+		//
+		return bindingContext;
+	}
 }

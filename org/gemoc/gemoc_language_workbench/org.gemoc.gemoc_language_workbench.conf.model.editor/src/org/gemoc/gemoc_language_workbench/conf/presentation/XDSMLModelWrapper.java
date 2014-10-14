@@ -148,6 +148,21 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 				.setProjectName(projectName);
 	}
 
+	public String getCodeExecutorClass() {
+		if (languageDefinition != null) {
+			if (languageDefinition.getDsaProject() != null) {
+				return languageDefinition.getDsaProject().getCodeExecutorClass();				
+			}
+		}
+		return "";
+	}
+	public void setCodeExecutorClass(String codeExecutorClass) {
+		String oldName = getGenmodelLocationURI();
+		firePropertyChange("codeExecutorClass", oldName, codeExecutorClass);
+		XDSMLModelHelper.getOrCreateDSAProject(languageDefinition)
+				.setCodeExecutorClass(codeExecutorClass);
+	}
+	
 	public String getDSEProjectName() {
 		if (languageDefinition != null && languageDefinition.getDSEProject() != null) {
 			return languageDefinition.getDSEProject().getProjectName();

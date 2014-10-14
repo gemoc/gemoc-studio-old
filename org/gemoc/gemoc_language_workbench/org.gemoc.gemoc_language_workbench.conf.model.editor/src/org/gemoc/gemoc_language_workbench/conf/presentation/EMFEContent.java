@@ -122,6 +122,11 @@ import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 	        		String newValue = n.getNewStringValue();
 	                this.xdsmlModelWrapper.firePropertyChange("DSAProjectName", oldValue, newValue);
 	        }
+	        if (featureID == org.gemoc.gemoc_language_workbench.conf.confPackage.DSA_PROJECT__CODE_EXECUTOR_CLASS){
+        		String oldValue = n.getOldStringValue();
+        		String newValue = n.getNewStringValue();
+                this.xdsmlModelWrapper.firePropertyChange("codeExecutorClass", oldValue, newValue);
+        }
 		}
 		private void handleDSEProjectNotification(Notification n) {
 			int featureID = n.getFeatureID(org.gemoc.gemoc_language_workbench.conf.DSEProject.class);
