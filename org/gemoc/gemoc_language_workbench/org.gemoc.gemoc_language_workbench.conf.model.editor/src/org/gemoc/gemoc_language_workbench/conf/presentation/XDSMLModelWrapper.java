@@ -157,7 +157,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 		return "";
 	}
 	public void setCodeExecutorClass(String codeExecutorClass) {
-		String oldName = getGenmodelLocationURI();
+		String oldName = getCodeExecutorClass();
 		firePropertyChange("codeExecutorClass", oldName, codeExecutorClass);
 		XDSMLModelHelper.getOrCreateDSAProject(languageDefinition)
 				.setCodeExecutorClass(codeExecutorClass);
@@ -177,6 +177,21 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 				.setProjectName(projectName);
 	}
 
+	public String getQvtoURI() {
+		if (languageDefinition != null) {
+			if (languageDefinition.getDSEProject() != null) {
+				return languageDefinition.getDSEProject().getQvtoURI();				
+			}
+		}
+		return "";
+	}
+	public void setQvtoURI(String qvtoURI) {
+		String oldName = getQvtoURI();
+		firePropertyChange("qvtoURI", oldName, qvtoURI);
+		XDSMLModelHelper.getOrCreateDSEProject(languageDefinition)
+				.setQvtoURI(qvtoURI);
+	}
+	
 	public String getMoCCProjectName() {
 		if (languageDefinition != null && languageDefinition.getMoCModelProject() != null) {
 			return languageDefinition.getMoCModelProject().getProjectName();

@@ -135,5 +135,10 @@ import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 	        		String newValue = n.getNewStringValue();
 	                this.xdsmlModelWrapper.firePropertyChange("DSEProjectName", oldValue, newValue);
 	        }
+	        if (featureID == org.gemoc.gemoc_language_workbench.conf.confPackage.DSE_PROJECT__QVTO_URI){
+        		String oldValue = n.getOldStringValue();
+        		String newValue = n.getNewStringValue();
+                this.xdsmlModelWrapper.firePropertyChange("qvtoURI", oldValue, newValue);
+        }
 		}
   }

@@ -82,7 +82,9 @@ public class GemocXDSMLFormComposite extends Composite {
 	private Text txtXTextEditorProject;
 	private Text txtSiriusEditorProject;
 	private Text txtDSAProject;
+	private Text txtCodeExecutorClass;
 	private Text txtDSEProject;
+	private Text txtQvtoURI;
 	private Text txtMoCCProject;
 	private Text txtSiriusAnimationProject;
 	private Text txtGenmodel;
@@ -91,7 +93,6 @@ public class GemocXDSMLFormComposite extends Composite {
 	AdapterFactoryEditingDomain editingDomain;
 
 	protected XDSMLModelWrapper xdsmlWrappedObject = new XDSMLModelWrapper();
-	private Text txtCodeExecutorClass;
 
 	/**
 	 * Create the composite.
@@ -344,6 +345,22 @@ public class GemocXDSMLFormComposite extends Composite {
 		toolkit.adapt(btnBrowseDSAProject, true, true);
 		btnBrowseDSAProject.setText("Browse");
 
+		Link linkCodeExecutorClass = new Link(grpDsaDefinition, SWT.NONE);
+		linkCodeExecutorClass.setToolTipText("Optional, if not set, a default K3 code executor will be generated for the DSA");
+		toolkit.adapt(linkCodeExecutorClass, true, true);
+		linkCodeExecutorClass.setText("<a>Code executor class</a>");
+
+		txtCodeExecutorClass = new Text(grpDsaDefinition, SWT.BORDER);
+		txtCodeExecutorClass.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+				true, false, 1, 1));
+		toolkit.adapt(txtCodeExecutorClass, true, true);
+
+		Button btnBrowseCodeExecutorClass = new Button(grpDsaDefinition,
+				SWT.NONE);
+		toolkit.adapt(btnBrowseCodeExecutorClass, true, true);
+		btnBrowseCodeExecutorClass.setText("Browse");
+		
+		
 		Group grpMocDefinitionLibrary = new Group(grpBehaviorDefinition,
 				SWT.NONE);
 		grpMocDefinitionLibrary.setLayoutData(new GridData(SWT.FILL,
@@ -416,19 +433,19 @@ public class GemocXDSMLFormComposite extends Composite {
 		toolkit.adapt(btnBrowseDSEProject, true, true);
 
 
-		Link linkCodeExecutorClass = new Link(grpDsaDefinition, SWT.NONE);
-		toolkit.adapt(linkCodeExecutorClass, true, true);
-		linkCodeExecutorClass.setText("<a>Code executor class</a>");
+		Link linkQvtoURI = new Link(grpDSEDefinition, SWT.NONE);
+		toolkit.adapt(linkQvtoURI, true, true);
+		linkQvtoURI.setText("<a>Qvto File</a>");
 
-		txtCodeExecutorClass = new Text(grpDsaDefinition, SWT.BORDER);
-		txtCodeExecutorClass.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+		txtQvtoURI = new Text(grpDSEDefinition, SWT.BORDER);
+		txtQvtoURI.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
 				true, false, 1, 1));
-		toolkit.adapt(txtCodeExecutorClass, true, true);
+		toolkit.adapt(txtQvtoURI, true, true);
 
-		Button btnBrowseCodeExecutorClass = new Button(grpDsaDefinition,
+		Button btnBrowseQvtoURI = new Button(grpDSEDefinition,
 				SWT.NONE);
-		toolkit.adapt(btnBrowseCodeExecutorClass, true, true);
-		btnBrowseCodeExecutorClass.setText("Browse");
+		toolkit.adapt(btnBrowseQvtoURI, true, true);
+		btnBrowseQvtoURI.setText("Browse");
 
 		
 
@@ -489,6 +506,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtDSAProject.setText(xdsmlWrappedObject.getDSAProjectName());
 		txtCodeExecutorClass.setText(xdsmlWrappedObject.getCodeExecutorClass());
 		txtDSEProject.setText(xdsmlWrappedObject.getDSEProjectName());
+		txtQvtoURI.setText(xdsmlWrappedObject.getQvtoURI());
 		txtMoCCProject.setText(xdsmlWrappedObject.getMoCCProjectName());		
 	}
 
@@ -634,6 +652,21 @@ public class GemocXDSMLFormComposite extends Composite {
 						});
 			}
 		});
+		txtCodeExecutorClass.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+				final Text text = (Text) e.widget;
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								xdsmlWrappedObject.setCodeExecutorClass(text
+										.getText());
+							}
+						});
+			}
+		});
 		txtDSEProject.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				// Get the widget whose text was modified
@@ -644,6 +677,21 @@ public class GemocXDSMLFormComposite extends Composite {
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
 								xdsmlWrappedObject.setDSEProjectName(text
+										.getText());
+							}
+						});
+			}
+		});
+		txtQvtoURI.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+				final Text text = (Text) e.widget;
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								xdsmlWrappedObject.setQvtoURI(text
 										.getText());
 							}
 						});
@@ -1077,7 +1125,6 @@ public class GemocXDSMLFormComposite extends Composite {
 				.getFile(new Path(platformString));
 
 	}
-
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
@@ -1124,6 +1171,10 @@ public class GemocXDSMLFormComposite extends Composite {
 		IObservableValue observeTextTxtCodeExecutorClassObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtCodeExecutorClass);
 		IObservableValue codeExecutorClassXdsmlWrappedObjectObserveValue = BeanProperties.value("codeExecutorClass").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtCodeExecutorClassObserveWidget, codeExecutorClassXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtQvtoURIObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtQvtoURI);
+		IObservableValue qvtoURIXdsmlWrappedObjectObserveValue = BeanProperties.value("qvtoURI").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtQvtoURIObserveWidget, qvtoURIXdsmlWrappedObjectObserveValue, null, null);
 		//
 		return bindingContext;
 	}
