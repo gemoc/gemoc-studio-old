@@ -429,7 +429,7 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 //    	_viewer.setSelection(newSelection, true);		    		  
 
     	_viewer.update(engine, null);
-    	
+    	TreeViewerHelper.resizeColumns(_viewer);    	
 		//_viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);	    	  
 //    	if (_lastSelection != null)
  //   	{
