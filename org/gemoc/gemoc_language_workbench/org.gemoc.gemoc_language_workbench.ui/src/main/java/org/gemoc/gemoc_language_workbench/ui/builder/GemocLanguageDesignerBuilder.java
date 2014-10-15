@@ -247,6 +247,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				} catch (BundleException e) {
 					Activator.error(e.getMessage(), e);				
 				} 
+				
+				// update entry in plugin.xdsml
+				setPluginLanguageNameAndFilePath(project, resource.getFullPath().toString());
 			}
 		}
 	}
@@ -356,6 +359,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				
 				// update plugin.xml with the generated codeexecutor
 				setPluginCodeExecutorValue(project, packageName + "."	+ languageToUpperFirst + Activator.CODEEXECUTOR_CLASS_NAMEPART);
+				
 			} else {
 				// update plugin.xml with the value in the xdsml
 				setPluginCodeExecutorValue(project, ld.getDsaProject().getCodeExecutorClass());
@@ -375,7 +379,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.saveDocument(pluginfile);
 	}
 	
-	protected void changePluginLanguageName(IProject project, final String languageName) {
+	protected void setPluginLanguageNameAndFilePath(IProject project, final String languageName) {
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
 		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
 		PluginXMLHelper helper = new PluginXMLHelper();
@@ -387,6 +391,8 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 						.toString() + "/project.xdsml");
 		helper.saveDocument(pluginfile);
 	}
+	
+	
 
 	protected void updateDependenciesWithDomainProject(ManifestChanger connection, DomainModelProject domainModelProject) throws BundleException, IOException, CoreException {
 		connection.addPluginDependency(domainModelProject.getProjectName());
@@ -402,7 +408,8 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			// TODO deal with maven project (ie. ensure copy of the jar and
 			// use it as internal lib in manifest)
 		}
-		if (dsaPoject instanceof DSAProject) {
+		if (dsaPoject.getCodeExecutorClass() == null || dsaPoject.getCodeExecutorClass().isEmpty()) {
+			// a k3 code executor has been generated so add the required dependency 
 			connection.addPluginDependency(org.gemoc.gemoc_language_workbench.extensions.k3.Activator.PLUGIN_ID);
 		}
 	}
