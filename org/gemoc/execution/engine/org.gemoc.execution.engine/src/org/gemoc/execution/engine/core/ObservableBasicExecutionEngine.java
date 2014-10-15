@@ -658,12 +658,12 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 		_possibleLogicalSteps = _executionContext.getSolver().updatePossibleLogicalSteps();
 		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
+		updateTraceModelBeforeDeciding(_possibleLogicalSteps);			
 		notifyEngineHasChanged();
 		for (IEngineHook hook : _executionContext.getHooks()) 
 		{
 			hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
 		}
-		updateTraceModelBeforeDeciding(_possibleLogicalSteps);			
 	}
 	
 	public void recomputePossibleLogicalSteps()
