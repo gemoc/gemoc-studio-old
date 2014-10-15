@@ -479,7 +479,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		initButtonListeners(btnBrowseEMFProject, btnBrowseGenmodel,
 				btSelectRootModelElement, btnBrowseXtextEditor,
 				btnBrowseSiriusEditor, btnBrowseSiriusAnimator,
-				btnBrowseDSAProject, btnBrowseCodeExecutorClass, btnBrowseMoCCProject, btnBrowseDSEProject);
+				btnBrowseDSAProject, btnBrowseCodeExecutorClass, btnBrowseMoCCProject, btnBrowseDSEProject, btnBrowseQvtoURI);
 	}
 
 	public void initControl(AdapterFactoryEditingDomain editingDomain) {
@@ -1035,7 +1035,8 @@ public class GemocXDSMLFormComposite extends Composite {
 			Button btnBrowseXtextEditor, Button btnBrowseSiriusEditor,
 			Button btnBrowseSiriusAnimator, Button btnBrowseDSAProject,
 			Button btnBrowseCodeExecutorClass,
-			Button btnBrowseMoCCProject, Button btnBrowseDSEProject) {
+			Button btnBrowseMoCCProject, 
+			Button btnBrowseDSEProject, Button btnBrowseQvtoFile) {
 		btnBrowseEMFProject.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
@@ -1219,6 +1220,21 @@ public class GemocXDSMLFormComposite extends Composite {
 				}
 			}
 		});
+		btnBrowseQvtoFile.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					SelectAnyIFileDialog dialog = new SelectAnyIFileDialog();
+					dialog.setPattern("*.qvto");
+					if (dialog.open() == Dialog.OK) {
+						txtQvtoURI.setText(((IResource) dialog.getResult()[0])
+										.getFullPath().toString());
+					}
+					break;
+				}
+			}
+		});
+		
 	}
 
 	protected IFile getCurrentIFile() {
