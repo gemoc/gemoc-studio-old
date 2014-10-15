@@ -1,7 +1,8 @@
 package org.gemoc.execution.engine.io.views.event;
 
-import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectSpecificFileDialog;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
+import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
+import org.gemoc.commons.eclipse.ui.dialogs.SelectSpecificFileDialog;
+
 
 public class SelectScenarioFileDialog extends SelectSpecificFileDialog {
 

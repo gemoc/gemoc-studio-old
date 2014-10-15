@@ -5,8 +5,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Shell;
+import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
+import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIProjectDialog;
 import org.gemoc.gemoc_language_workbench.utils.Activator;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 /**
  * Dialog that allow to select an IProject that can be used as an Xtext project

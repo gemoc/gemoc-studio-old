@@ -59,6 +59,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.gemoc.commons.eclipse.ui.OpenEditor;
+import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
@@ -67,7 +68,6 @@ import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.commands.ENamedElementQualifiedNameLabelProvider;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyConcreteEClassDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyEObjectDialog;
-import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
@@ -882,8 +882,8 @@ public class GemocXDSMLFormComposite extends Composite {
 					IProject project = ResourcesPlugin.getWorkspace().getRoot()
 							.getProject(txtDSAProject.getText());
 					if (project.exists()) {
-						// open the editor on the manifest file
-						OpenEditor.openManifestForProject(project);
+						// open the editor on one of the ecl files
+						OpenEditor.openPossibleFileInProject(project, "*.xtend");
 						return;
 					}
 				}
@@ -957,8 +957,8 @@ public class GemocXDSMLFormComposite extends Composite {
 					IProject project = ResourcesPlugin.getWorkspace().getRoot()
 							.getProject(txtDSEProject.getText());
 					if (project.exists()) {
-						// open the editor on the manifest file
-						OpenEditor.openManifestForProject(project);
+						// open the editor on one of the ecl files
+						OpenEditor.openPossibleFileInProject(project, "*.ecl");
 						return;
 					}
 				}
