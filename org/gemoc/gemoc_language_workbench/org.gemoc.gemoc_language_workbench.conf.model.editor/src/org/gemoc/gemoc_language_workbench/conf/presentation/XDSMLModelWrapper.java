@@ -22,7 +22,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public String getLanguageName() {
-		if (languageDefinition != null) {
+		if (languageDefinition != null && languageDefinition.getName() != null) {
 			return languageDefinition.getName();
 		} else
 			return "";
@@ -34,7 +34,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public String getDomainModelProjectName() {
-		if (languageDefinition != null && languageDefinition.getDomainModelProject() != null) {
+		if (languageDefinition != null && languageDefinition.getDomainModelProject() != null && languageDefinition.getDomainModelProject().getProjectName()!= null) {
 			return languageDefinition.getDomainModelProject().getProjectName();
 		} else
 			return "";
@@ -49,7 +49,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 
 	public String getGenmodelLocationURI() {
 		if (languageDefinition != null) {
-			if (languageDefinition.getDomainModelProject() != null) {
+			if (languageDefinition.getDomainModelProject() != null && languageDefinition.getDomainModelProject().getGenmodeluri() != null) {
 				return languageDefinition.getDomainModelProject().getGenmodeluri();				
 			}
 		}
@@ -83,7 +83,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	public String getXTextEditorProjectName() {
 		if (languageDefinition != null) {
 			for (EditorProject editor : languageDefinition.getEditorProjects()) {
-				if (editor instanceof XTextEditorProject) {
+				if (editor instanceof XTextEditorProject && editor.getProjectName() != null) {
 					return editor.getProjectName();
 				}
 			}
@@ -102,7 +102,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	public String getSiriusEditorProjectName() {
 		if (languageDefinition != null) {
 			for (EditorProject editor : languageDefinition.getEditorProjects()) {
-				if (editor instanceof SiriusEditorProject) {
+				if (editor instanceof SiriusEditorProject && editor.getProjectName() != null) {
 					return editor.getProjectName();
 				}
 			}
@@ -135,7 +135,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 
 	public String getDSAProjectName() {
-		if (languageDefinition != null && languageDefinition.getDsaProject() != null) {
+		if (languageDefinition != null && languageDefinition.getDsaProject() != null && languageDefinition.getDsaProject().getProjectName()!= null) {
 			return languageDefinition.getDsaProject().getProjectName();
 		} else
 			return "";
@@ -150,7 +150,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 
 	public String getCodeExecutorClass() {
 		if (languageDefinition != null) {
-			if (languageDefinition.getDsaProject() != null) {
+			if (languageDefinition.getDsaProject() != null && languageDefinition.getDsaProject().getCodeExecutorClass() != null) {
 				return languageDefinition.getDsaProject().getCodeExecutorClass();				
 			}
 		}
@@ -164,7 +164,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 	
 	public String getDSEProjectName() {
-		if (languageDefinition != null && languageDefinition.getDSEProject() != null) {
+		if (languageDefinition != null && languageDefinition.getDSEProject() != null && languageDefinition.getDSEProject().getProjectName() != null) {
 			return languageDefinition.getDSEProject().getProjectName();
 		} else
 			return "";
@@ -179,7 +179,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 
 	public String getQvtoURI() {
 		if (languageDefinition != null) {
-			if (languageDefinition.getDSEProject() != null) {
+			if (languageDefinition.getDSEProject() != null && languageDefinition.getDSEProject().getQvtoURI() != null) {
 				return languageDefinition.getDSEProject().getQvtoURI();				
 			}
 		}
@@ -193,7 +193,7 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 	
 	public String getMoCCProjectName() {
-		if (languageDefinition != null && languageDefinition.getMoCModelProject() != null) {
+		if (languageDefinition != null && languageDefinition.getMoCModelProject() != null && languageDefinition.getMoCModelProject().getProjectName() != null) {
 			return languageDefinition.getMoCModelProject().getProjectName();
 		} else
 			return "";
