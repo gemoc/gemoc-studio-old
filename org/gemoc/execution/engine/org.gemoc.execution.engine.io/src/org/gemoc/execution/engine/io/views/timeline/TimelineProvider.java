@@ -139,13 +139,35 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 		return result;
 	}
 
+
+	private int _numberOfChoices = 0;
+	private int _numberOfSteps = 0;
+	
 	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void update(Observable arg0, Object arg1) 
+	{
 		if (getExecutionTrace().getChoices().size() > 0)
 		{
+			boolean mustNotify = false;
+
 			Choice gemocChoice = getExecutionTrace().getChoices().get(getExecutionTrace().getChoices().size() - 1);
-			notifyIsSelectedChanged(getExecutionTrace().getChoices().size() - 1, gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()), true);
-			notifyNumberOfChoicesChanged(getExecutionTrace().getChoices().size());			
+			if (gemocChoice.getPossibleLogicalSteps().size() != _numberOfSteps)
+			{
+				_numberOfSteps = gemocChoice.getPossibleLogicalSteps().size();
+				mustNotify = true;
+			}
+			
+			if (getExecutionTrace().getChoices().size() > _numberOfChoices)
+			{
+				_numberOfChoices = getExecutionTrace().getChoices().size();
+				mustNotify = true;
+			}
+			
+			if (mustNotify)
+			{
+				notifyIsSelectedChanged(getExecutionTrace().getChoices().size() - 1, gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()), true);				
+				notifyNumberOfChoicesChanged(getExecutionTrace().getChoices().size());			
+			}
 		}
 	}
 

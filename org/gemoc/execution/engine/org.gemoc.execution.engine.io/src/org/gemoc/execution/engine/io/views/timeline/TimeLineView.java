@@ -125,12 +125,18 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	
 	public void configure(ObservableBasicExecutionEngine engine)
 	{
-		if (_currentEngine == engine
-			&& _timelineProvider != null)
-		{
-			_timelineProvider.notifyNumberOfChoicesChanged(_timelineProvider.getNumberOfChoices());
-		}
-		else
+//		if (_currentEngine == engine
+//			&& _timelineProvider != null)
+//		{
+//			if (_currentEngine.getPossibleLogicalSteps() != null
+//				&& _timelineProvider.getNumberOfChoices() != _currentEngine.getPossibleLogicalSteps().size())
+//			{
+//				_timelineProvider.notifyNumberOfChoicesChanged(_timelineProvider.getNumberOfChoices());
+//			}
+//		}
+//		else
+		if (_currentEngine != engine
+			|| _timelineProvider == null)
 		{
 			saveStartIndex();
 			_currentEngine = engine;
