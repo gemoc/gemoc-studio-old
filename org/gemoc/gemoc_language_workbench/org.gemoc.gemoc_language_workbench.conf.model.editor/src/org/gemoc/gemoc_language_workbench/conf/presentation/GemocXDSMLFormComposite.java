@@ -751,7 +751,7 @@ public class GemocXDSMLFormComposite extends Composite {
 							.getProject(txtEMFProject.getText());
 					if (project.exists()) {
 						// open the editor on one of the ecore files
-						OpenEditor.openPossibleFileInProject(project, "*.ecore");
+						OpenEditor.openPossibleFileWithExtensionInProject(project, "ecore");
 						return;
 					}
 				}
@@ -799,7 +799,7 @@ public class GemocXDSMLFormComposite extends Composite {
 							.getProject(txtXTextEditorProject.getText());
 					if (project.exists()) {
 						// open the editor on one of the xtext files
-						OpenEditor.openPossibleFileInProject(project, "*.xtext");
+						OpenEditor.openPossibleFileWithExtensionInProject(project, "xtext");
 						return;
 					}
 				}
@@ -827,7 +827,7 @@ public class GemocXDSMLFormComposite extends Composite {
 							.getProject(txtSiriusEditorProject.getText());
 					if (project.exists()) {
 						// open the editor on one of the odesign files
-						OpenEditor.openPossibleFileInProject(project, "*.odesign");
+						OpenEditor.openPossibleFileWithExtensionInProject(project, "odesign");
 						return;
 					}
 				}
@@ -855,7 +855,7 @@ public class GemocXDSMLFormComposite extends Composite {
 							.getProject(txtSiriusAnimationProject.getText());
 					if (project.exists()) {
 						// open the editor on one of the odesign files
-						OpenEditor.openPossibleFileInProject(project, "*.odesign");
+						OpenEditor.openPossibleFileWithExtensionInProject(project, "odesign");
 						return;
 					}
 				}
@@ -883,7 +883,7 @@ public class GemocXDSMLFormComposite extends Composite {
 							.getProject(txtDSAProject.getText());
 					if (project.exists()) {
 						// open the editor on one of the ecl files
-						OpenEditor.openPossibleFileInProject(project, "*.xtend");
+						OpenEditor.openPossibleFileWithExtensionInProject(project, "xtend");
 						return;
 					}
 				}
@@ -958,7 +958,7 @@ public class GemocXDSMLFormComposite extends Composite {
 							.getProject(txtDSEProject.getText());
 					if (project.exists()) {
 						// open the editor on one of the ecl files
-						OpenEditor.openPossibleFileInProject(project, "*.ecl");
+						OpenEditor.openPossibleFileWithExtensionInProject(project, "ecl");
 						return;
 					}
 				}
