@@ -165,9 +165,10 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseEMFProject.setText("Browse");
 
 		Link linkGenmodel = new Link(grpDomainModelDefinition, 0);
+		linkGenmodel.setToolTipText("URI of the main genmodel for the Domain project.");
 		linkGenmodel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false,
 				false, 1, 1));
-		linkGenmodel.setText("<a>genmodel</a>");
+		linkGenmodel.setText("<a>Genmodel URI</a>");
 		toolkit.adapt(linkGenmodel, true, true);
 
 		txtGenmodel = new Text(grpDomainModelDefinition, SWT.BORDER);
@@ -346,9 +347,9 @@ public class GemocXDSMLFormComposite extends Composite {
 		btnBrowseDSAProject.setText("Browse");
 
 		Link linkCodeExecutorClass = new Link(grpDsaDefinition, SWT.NONE);
-		linkCodeExecutorClass.setToolTipText("Optional, if not set, a default K3 code executor will be generated for the DSA");
+		linkCodeExecutorClass.setToolTipText("Optional, if not set, a default K3 code executor will be generated for the DSA.\r\nIf set, this is the name of a class in the xdsml project classpath.");
 		toolkit.adapt(linkCodeExecutorClass, true, true);
-		linkCodeExecutorClass.setText("<a>Code executor class</a>");
+		linkCodeExecutorClass.setText("<a>Code executor class name</a>");
 
 		txtCodeExecutorClass = new Text(grpDsaDefinition, SWT.BORDER);
 		txtCodeExecutorClass.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
@@ -385,7 +386,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		toolkit.adapt(linkMoCCMLProject, true, true);
 
 		txtMoCCProject = new Text(grpMocDefinitionLibrary, SWT.BORDER);
-		GridData gd_txtMoCCProject = new GridData(SWT.LEFT, SWT.CENTER, false,
+		GridData gd_txtMoCCProject = new GridData(SWT.FILL, SWT.CENTER, true,
 				false, 1, 1);
 		gd_txtMoCCProject.widthHint = 178;
 		txtMoCCProject.setLayoutData(gd_txtMoCCProject);
@@ -420,7 +421,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		toolkit.adapt(linkDSEProject, true, true);
 
 		txtDSEProject = new Text(grpDSEDefinition, SWT.BORDER);
-		GridData gd_txtDSEProject = new GridData(SWT.LEFT, SWT.CENTER, false,
+		GridData gd_txtDSEProject = new GridData(SWT.FILL, SWT.CENTER, true,
 				false, 1, 1);
 		gd_txtDSEProject.widthHint = 212;
 		txtDSEProject.setLayoutData(gd_txtDSEProject);
@@ -434,8 +435,9 @@ public class GemocXDSMLFormComposite extends Composite {
 
 
 		Link linkQvtoURI = new Link(grpDSEDefinition, SWT.NONE);
+		linkQvtoURI.setToolTipText("Path to the qvto file that is produced by the DSE project.");
 		toolkit.adapt(linkQvtoURI, true, true);
-		linkQvtoURI.setText("<a>Qvto File</a>");
+		linkQvtoURI.setText("<a>Qvto File path</a>");
 
 		txtQvtoURI = new Text(grpDSEDefinition, SWT.BORDER);
 		txtQvtoURI.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
@@ -453,7 +455,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		
 		initLinkListeners(linkEMFProject, linkGenmodel, linkXTextEditorProject,
 				linkSiriusEditorProject, linkSiriusAnimatorProject,
-				linkDSAProject, linkDSEProject, linkMoCCMLProject);
+				linkDSAProject, linkCodeExecutorClass, linkDSEProject, linkQvtoURI, linkMoCCMLProject);
 
 		initButtonListeners(btnBrowseEMFProject, btnBrowseGenmodel,
 				btSelectRootModelElement, btnBrowseXtextEditor,
@@ -720,8 +722,8 @@ public class GemocXDSMLFormComposite extends Composite {
 	 */
 	protected void initLinkListeners(Link linkEMFProject, Link linkGenmodel,
 			Link linkXTextEditorProject, Link linkSiriusEditorProject,
-			Link linkSiriusAnimatorProject, Link linkDSAProject,
-			Link linkDSEProject, Link linkMoCCMLProject) {
+			Link linkSiriusAnimatorProject, Link linkDSAProject, Link linkCodeExecutor,
+			Link linkDSEProject, Link linkQvtoFile, Link linkMoCCMLProject) {
 		linkEMFProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtEMFProject.getText().isEmpty()) {
@@ -881,6 +883,23 @@ public class GemocXDSMLFormComposite extends Composite {
 						});
 			}
 		});
+		linkCodeExecutor.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (!txtCodeExecutorClass.getText().isEmpty()) {
+					// open the MANIFEST.MF of the project
+					IFile file = ResourcesPlugin
+							.getWorkspace()
+							.getRoot()
+							.getFile(
+									new Path(txtCodeExecutorClass.getText()));
+					if (file.exists()) {
+						// open the editor on the manifest file
+						OpenEditor.openIFile(file);
+						return;
+					}
+				}
+			}
+		});
 
 		linkDSEProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -908,6 +927,24 @@ public class GemocXDSMLFormComposite extends Composite {
 								initControlFromWrappedObject();
 							}
 						});
+			}
+		});
+		
+		linkQvtoFile.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (!txtQvtoURI.getText().isEmpty()) {
+					// find the file
+					IFile file = ResourcesPlugin
+							.getWorkspace()
+							.getRoot()
+							.getFile(
+									new Path(txtQvtoURI.getText()));
+					if (file.exists()) {
+						// open the editor on the file
+						OpenEditor.openIFile(file);
+						return;
+					}
+				}
 			}
 		});
 
