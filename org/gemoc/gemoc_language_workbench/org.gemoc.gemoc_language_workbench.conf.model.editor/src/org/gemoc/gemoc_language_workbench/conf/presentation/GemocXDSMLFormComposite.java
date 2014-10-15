@@ -7,6 +7,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -16,12 +17,25 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.internal.ui.wizards.NewClassCreationWizard;
 import org.eclipse.jdt.ui.IJavaElementSearchConstants;
+import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.pde.internal.core.bundle.BundlePluginModel;
+import org.eclipse.pde.internal.ui.PDEPlugin;
+import org.eclipse.pde.internal.ui.editor.plugin.JavaAttributeValue;
+import org.eclipse.pde.internal.ui.editor.plugin.JavaAttributeWizard;
 import org.eclipse.pde.internal.ui.util.PDEJavaHelperUI;
+import org.eclipse.pde.internal.ui.util.SWTUtil;
+import org.eclipse.pde.internal.ui.util.TextUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -40,6 +54,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -67,6 +82,8 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardCo
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateMOCCWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateMOCCWizardContextAction.CreateMOCCAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA.CreateDSAWizardContextActionDSAK3;
+
+import com.sun.corba.se.spi.activation.Activator;
 
 /*
  * IMPORTANT : this file has been edited using Windows builder.
@@ -887,19 +904,49 @@ public class GemocXDSMLFormComposite extends Composite {
 		});
 		linkCodeExecutor.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				if (!txtCodeExecutorClass.getText().isEmpty()) {
-					// open the MANIFEST.MF of the project
-					IFile file = ResourcesPlugin
-							.getWorkspace()
-							.getRoot()
-							.getFile(
-									new Path(txtCodeExecutorClass.getText()));
-					if (file.exists()) {
-						// open the editor on the manifest file
-						OpenEditor.openIFile(file);
-						return;
+			//	if (!txtCodeExecutorClass.getText().isEmpty()) {
+					
+					//String value = txtCodeExecutorClass.getText();
+					IProject project = getCurrentIFile().getProject();
+					/*BundlePluginModel bmodel = new BundlePluginModel();
+					//bmodel.setBundleDescription(Activator.);
+					JavaAttributeValue javaAttributeValue = new JavaAttributeValue(project, bmodel, null, value);
+					javaAttributeValue.
+					value = PDEJavaHelperUI.createClass(value, project, javaAttributeValue, false);
+					if (value != null)
+						txtCodeExecutorClass.setText(value);
+						*/
+					String name = TextUtil.trimNonAlphaChars(txtCodeExecutorClass.getText()).replace('$', '.');
+					try {
+						if (project.hasNature(JavaCore.NATURE_ID)) {
+							IJavaProject javaProject = JavaCore.create(project);
+							IJavaElement result = null;
+							if (name.length() > 0)
+								result = javaProject.findType(name);
+							if (result != null)
+								JavaUI.openInEditor(result);
+							else {
+								NewClassCreationWizard wizard = new NewClassCreationWizard();
+								//wizard.init(Plugin., currentSelection);
+								WizardDialog dialog = new WizardDialog(PDEPlugin.getActiveWorkbenchShell(), wizard);
+								dialog.create();
+								SWTUtil.setDialogSize(dialog, 400, 500);
+								int dResult = dialog.open();
+								if (dResult == Window.OK)
+									txtCodeExecutorClass.setText(wizard.getCreatedElement().getElementName());
+							}
+						}
+					} catch (PartInitException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (JavaModelException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (CoreException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
-				}
+
 			}
 		});
 
