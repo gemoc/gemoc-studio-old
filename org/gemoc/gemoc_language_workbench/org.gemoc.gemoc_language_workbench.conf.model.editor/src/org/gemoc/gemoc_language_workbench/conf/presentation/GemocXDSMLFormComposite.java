@@ -16,10 +16,12 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jdt.ui.IJavaElementSearchConstants;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.pde.internal.ui.util.PDEJavaHelperUI;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -460,7 +462,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		initButtonListeners(btnBrowseEMFProject, btnBrowseGenmodel,
 				btSelectRootModelElement, btnBrowseXtextEditor,
 				btnBrowseSiriusEditor, btnBrowseSiriusAnimator,
-				btnBrowseDSAProject, btnBrowseMoCCProject, btnBrowseDSEProject);
+				btnBrowseDSAProject, btnBrowseCodeExecutorClass, btnBrowseMoCCProject, btnBrowseDSEProject);
 	}
 
 	public void initControl(AdapterFactoryEditingDomain editingDomain) {
@@ -985,6 +987,7 @@ public class GemocXDSMLFormComposite extends Composite {
 			Button btnBrowseGenmodel, Button btSelectRootModelElement,
 			Button btnBrowseXtextEditor, Button btnBrowseSiriusEditor,
 			Button btnBrowseSiriusAnimator, Button btnBrowseDSAProject,
+			Button btnBrowseCodeExecutorClass,
 			Button btnBrowseMoCCProject, Button btnBrowseDSEProject) {
 		btnBrowseEMFProject.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
@@ -1119,6 +1122,22 @@ public class GemocXDSMLFormComposite extends Composite {
 				}
 			}
 		});
+		btnBrowseCodeExecutorClass.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					String className = txtCodeExecutorClass.getText();
+					IResource resource = getCurrentIFile();
+					String type = PDEJavaHelperUI.selectType(resource, IJavaElementSearchConstants.CONSIDER_CLASSES, className, null);
+					if (type != null)
+						txtCodeExecutorClass.setText(type);
+									
+					break;
+				}
+			}
+		});
+		
+		
 		btnBrowseMoCCProject.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
