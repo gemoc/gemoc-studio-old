@@ -746,12 +746,12 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkEMFProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtEMFProject.getText().isEmpty()) {
-					// open the MANIFEST.MF of the project
+					// open the relevant files of the project
 					IProject project = ResourcesPlugin.getWorkspace().getRoot()
 							.getProject(txtEMFProject.getText());
 					if (project.exists()) {
-						// open the editor on the manifest file
-						OpenEditor.openManifestForProject(project);
+						// open the editor on one of the ecore files
+						OpenEditor.openPossibleFileInProject(project, "*.ecore");
 						return;
 					}
 				}
@@ -774,7 +774,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkGenmodel.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtGenmodel.getText().isEmpty()) {
-					// open the MANIFEST.MF of the project
+					// open the genmodel file
 					IFile file = ResourcesPlugin
 							.getWorkspace()
 							.getRoot()
@@ -794,12 +794,12 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkXTextEditorProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtXTextEditorProject.getText().isEmpty()) {
-					// open the MANIFEST.MF of the project
+					// open the relevant files of the project
 					IProject project = ResourcesPlugin.getWorkspace().getRoot()
 							.getProject(txtXTextEditorProject.getText());
 					if (project.exists()) {
-						// open the editor on the manifest file
-						OpenEditor.openManifestForProject(project);
+						// open the editor on one of the xtext files
+						OpenEditor.openPossibleFileInProject(project, "*.xtext");
 						return;
 					}
 				}
@@ -822,12 +822,12 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkSiriusEditorProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtSiriusEditorProject.getText().isEmpty()) {
-					// open the MANIFEST.MF of the project
+					// open the relevant files of the project
 					IProject project = ResourcesPlugin.getWorkspace().getRoot()
 							.getProject(txtSiriusEditorProject.getText());
 					if (project.exists()) {
-						// open the editor on the manifest file
-						OpenEditor.openManifestForProject(project);
+						// open the editor on one of the odesign files
+						OpenEditor.openPossibleFileInProject(project, "*.odesign");
 						return;
 					}
 				}
@@ -850,12 +850,12 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkSiriusAnimatorProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtSiriusAnimationProject.getText().isEmpty()) {
-					// open the MANIFEST.MF of the project
+					// open the relevant files of the project
 					IProject project = ResourcesPlugin.getWorkspace().getRoot()
 							.getProject(txtSiriusAnimationProject.getText());
 					if (project.exists()) {
-						// open the editor on the manifest file
-						OpenEditor.openManifestForProject(project);
+						// open the editor on one of the odesign files
+						OpenEditor.openPossibleFileInProject(project, "*.odesign");
 						return;
 					}
 				}
@@ -878,7 +878,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkDSAProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtDSAProject.getText().isEmpty()) {
-					// open the MANIFEST.MF of the project
+					// open the relevant files of the project
 					IProject project = ResourcesPlugin.getWorkspace().getRoot()
 							.getProject(txtDSAProject.getText());
 					if (project.exists()) {
@@ -953,7 +953,7 @@ public class GemocXDSMLFormComposite extends Composite {
 		linkDSEProject.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				if (!txtDSEProject.getText().isEmpty()) {
-					// open the MANIFEST.MF of the project
+					// open the relevant files of the project
 					IProject project = ResourcesPlugin.getWorkspace().getRoot()
 							.getProject(txtDSEProject.getText());
 					if (project.exists()) {
