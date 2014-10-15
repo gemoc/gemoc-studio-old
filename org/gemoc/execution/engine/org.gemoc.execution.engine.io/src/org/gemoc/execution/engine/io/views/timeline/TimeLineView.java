@@ -20,6 +20,7 @@ import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingException;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.io.views.AbstractUserDecider;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
@@ -94,7 +95,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 			@Override
 			public void mouseDoubleClick(MouseEvent event) 
 			{
-					handleDoubleCick();
+				handleDoubleCick();
 			}
 
 		};
@@ -249,6 +250,11 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 
 	private void performExecutionStep(LogicalStep logicalStep) 
 	{
+		if (_currentEngine.getLogicalStepDecider() instanceof AbstractUserDecider)
+		{
+			AbstractUserDecider decider = (AbstractUserDecider)_currentEngine.getLogicalStepDecider();
+			decider.decideFromTimeLine(logicalStep);
+		}
 		return;
 	}
 
