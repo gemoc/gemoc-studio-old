@@ -29,10 +29,7 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.pde.internal.core.bundle.BundlePluginModel;
 import org.eclipse.pde.internal.ui.PDEPlugin;
-import org.eclipse.pde.internal.ui.editor.plugin.JavaAttributeValue;
-import org.eclipse.pde.internal.ui.editor.plugin.JavaAttributeWizard;
 import org.eclipse.pde.internal.ui.util.PDEJavaHelperUI;
 import org.eclipse.pde.internal.ui.util.SWTUtil;
 import org.eclipse.pde.internal.ui.util.TextUtil;
@@ -82,8 +79,6 @@ import org.gemoc.gemoc_language_workbench.ui.wizards.CreateEditorProjectWizardCo
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateMOCCWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateMOCCWizardContextAction.CreateMOCCAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA.CreateDSAWizardContextActionDSAK3;
-
-import com.sun.corba.se.spi.activation.Activator;
 
 /*
  * IMPORTANT : this file has been edited using Windows builder.
