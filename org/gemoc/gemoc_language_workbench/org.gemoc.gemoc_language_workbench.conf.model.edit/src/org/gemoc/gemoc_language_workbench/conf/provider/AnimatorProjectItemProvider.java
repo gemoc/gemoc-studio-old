@@ -23,13 +23,7 @@ import org.gemoc.gemoc_language_workbench.conf.AnimatorProject;
  * @generated
  */
 public class AnimatorProjectItemProvider
-	extends ProjectResourceItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends ProjectResourceItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

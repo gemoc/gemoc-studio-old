@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -29,11 +30,12 @@ import org.gemoc.commons.eclipse.core.resources.NatureToggling;
 import org.gemoc.commons.eclipse.core.resources.Project;
 import org.gemoc.commons.eclipse.pde.ManifestChanger;
 import org.gemoc.commons.eclipse.pde.ui.PluginConverter;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
+import org.jdom2.Element;
 import org.osgi.framework.BundleException;
 
 public class ToggleNatureAction implements IObjectActionDelegate {
@@ -198,12 +200,9 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		    // Create the resource
 		    Resource resource = resSet.createResource(URI.createURI(configFile.getLocationURI().toString()));
 		    // Creates default root elements,
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = confFactoryImpl.eINSTANCE.createGemocLanguageWorkbenchConfiguration();
 		    LanguageDefinition ld = confFactoryImpl.eINSTANCE.createLanguageDefinition();
 		    ld.setName(languageName);
-		    gemocLanguageWorkbenchConfiguration.setLanguageDefinition(ld);
-		    gemocLanguageWorkbenchConfiguration.setBuildOptions(confFactoryImpl.eINSTANCE.createBuildOptions());
-		    resource.getContents().add(gemocLanguageWorkbenchConfiguration);	
+		    resource.getContents().add(ld);	
 			
 			try {
 				resource.save(null);

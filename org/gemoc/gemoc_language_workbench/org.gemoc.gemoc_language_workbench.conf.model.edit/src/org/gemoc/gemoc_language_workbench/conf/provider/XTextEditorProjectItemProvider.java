@@ -27,13 +27,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * @generated
  */
 public class XTextEditorProjectItemProvider
-	extends EditorProjectItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends EditorProjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

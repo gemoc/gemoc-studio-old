@@ -187,22 +187,17 @@ public class LanguageDefinitionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(confPackage.Literals.LANGUAGE_DEFINITION__DSA_PROJECT,
-				 confFactory.eINSTANCE.createK3DSAProject()));
+				 confFactory.eINSTANCE.createDSAProject()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(confPackage.Literals.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT,
-				 confFactory.eINSTANCE.createEMFEcoreProject()));
+				 confFactory.eINSTANCE.createDomainModelProject()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(confPackage.Literals.LANGUAGE_DEFINITION__EDITOR_PROJECTS,
-				 confFactory.eINSTANCE.createODProject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(confPackage.Literals.LANGUAGE_DEFINITION__EDITOR_PROJECTS,
-				 confFactory.eINSTANCE.createTreeEditorProject()));
+				 confFactory.eINSTANCE.createSiriusEditorProject()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -211,13 +206,13 @@ public class LanguageDefinitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT,
-				 confFactory.eINSTANCE.createCCSLMoCProject()));
+				(confPackage.Literals.LANGUAGE_DEFINITION__EDITOR_PROJECTS,
+				 confFactory.eINSTANCE.createTreeEditorProject()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT,
-				 confFactory.eINSTANCE.createModHelXMoCProject()));
+				 confFactory.eINSTANCE.createMoCCProject()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -227,7 +222,7 @@ public class LanguageDefinitionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(confPackage.Literals.LANGUAGE_DEFINITION__DSE_PROJECT,
-				 confFactory.eINSTANCE.createECLProject()));
+				 confFactory.eINSTANCE.createDSEProject()));
 	}
 
 	/**

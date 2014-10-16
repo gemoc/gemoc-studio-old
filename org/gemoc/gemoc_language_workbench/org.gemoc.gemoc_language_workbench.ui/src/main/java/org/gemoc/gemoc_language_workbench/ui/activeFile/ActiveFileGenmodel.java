@@ -3,8 +3,8 @@ package org.gemoc.gemoc_language_workbench.ui.activeFile;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 public class ActiveFileGenmodel extends ActiveFileEcore {
 

@@ -21,7 +21,7 @@ import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessVariable;
 
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.gemoc_language_workbench.conf.ODProject;
+import org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject;
 import org.gemoc.gemoc_language_workbench.guideline.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.guideline.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.guideline.process.utils.EclipseResource;
@@ -52,7 +52,7 @@ public class DefineGraphicalEditorTask extends AbstractGemocActionProcessor {
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		// it exists a DSA project that is referenced by the xdsml
 		// else setUndone
-		ODProject project = context.getGraphicalEditor(getActionTask());
+		SiriusEditorProject project = context.getGraphicalEditor(getActionTask());
 		if (project != null) {
 			if (EclipseResource.existProject(project.getProjectName())) {
 				return true;

@@ -66,12 +66,6 @@ public class confSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case confPackage.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION: {
-				GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration)theEObject;
-				T result = caseGemocLanguageWorkbenchConfiguration(gemocLanguageWorkbenchConfiguration);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case confPackage.LANGUAGE_DEFINITION: {
 				LanguageDefinition languageDefinition = (LanguageDefinition)theEObject;
 				T result = caseLanguageDefinition(languageDefinition);
@@ -105,18 +99,10 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case confPackage.MO_CPROJECT: {
-				MoCProject moCProject = (MoCProject)theEObject;
-				T result = caseMoCProject(moCProject);
-				if (result == null) result = caseProjectResource(moCProject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case confPackage.CCSL_MO_CPROJECT: {
-				CCSLMoCProject ccslMoCProject = (CCSLMoCProject)theEObject;
-				T result = caseCCSLMoCProject(ccslMoCProject);
-				if (result == null) result = caseMoCProject(ccslMoCProject);
-				if (result == null) result = caseProjectResource(ccslMoCProject);
+			case confPackage.MO_CC_PROJECT: {
+				MoCCProject moCCProject = (MoCCProject)theEObject;
+				T result = caseMoCCProject(moCCProject);
+				if (result == null) result = caseProjectResource(moCCProject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -134,19 +120,11 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case confPackage.EMF_ECORE_PROJECT: {
-				EMFEcoreProject emfEcoreProject = (EMFEcoreProject)theEObject;
-				T result = caseEMFEcoreProject(emfEcoreProject);
-				if (result == null) result = caseDomainModelProject(emfEcoreProject);
-				if (result == null) result = caseProjectResource(emfEcoreProject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case confPackage.OD_PROJECT: {
-				ODProject odProject = (ODProject)theEObject;
-				T result = caseODProject(odProject);
-				if (result == null) result = caseEditorProject(odProject);
-				if (result == null) result = caseProjectResource(odProject);
+			case confPackage.SIRIUS_EDITOR_PROJECT: {
+				SiriusEditorProject siriusEditorProject = (SiriusEditorProject)theEObject;
+				T result = caseSiriusEditorProject(siriusEditorProject);
+				if (result == null) result = caseEditorProject(siriusEditorProject);
+				if (result == null) result = caseProjectResource(siriusEditorProject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -158,19 +136,11 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case confPackage.MOD_HEL_XMO_CPROJECT: {
-				ModHelXMoCProject modHelXMoCProject = (ModHelXMoCProject)theEObject;
-				T result = caseModHelXMoCProject(modHelXMoCProject);
-				if (result == null) result = caseMoCProject(modHelXMoCProject);
-				if (result == null) result = caseProjectResource(modHelXMoCProject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case confPackage.ECL_PROJECT: {
-				ECLProject eclProject = (ECLProject)theEObject;
-				T result = caseECLProject(eclProject);
-				if (result == null) result = caseDSEProject(eclProject);
-				if (result == null) result = caseProjectResource(eclProject);
+			case confPackage.XTEXT_EDITOR_PROJECT: {
+				XTextEditorProject xTextEditorProject = (XTextEditorProject)theEObject;
+				T result = caseXTextEditorProject(xTextEditorProject);
+				if (result == null) result = caseEditorProject(xTextEditorProject);
+				if (result == null) result = caseProjectResource(xTextEditorProject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -182,72 +152,8 @@ public class confSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case confPackage.K3DSA_PROJECT: {
-				K3DSAProject k3DSAProject = (K3DSAProject)theEObject;
-				T result = caseK3DSAProject(k3DSAProject);
-				if (result == null) result = caseDSAProject(k3DSAProject);
-				if (result == null) result = caseProjectResource(k3DSAProject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case confPackage.FILE_RESOURCE: {
-				FileResource fileResource = (FileResource)theEObject;
-				T result = caseFileResource(fileResource);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case confPackage.EMF_GENMODEL: {
-				EMFGenmodel emfGenmodel = (EMFGenmodel)theEObject;
-				T result = caseEMFGenmodel(emfGenmodel);
-				if (result == null) result = caseFileResource(emfGenmodel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case confPackage.ECL_FILE: {
-				ECLFile eclFile = (ECLFile)theEObject;
-				T result = caseECLFile(eclFile);
-				if (result == null) result = caseFileResource(eclFile);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case confPackage.QV_TO_FILE: {
-				QVToFile qvToFile = (QVToFile)theEObject;
-				T result = caseQVToFile(qvToFile);
-				if (result == null) result = caseFileResource(qvToFile);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case confPackage.XTEXT_EDITOR_PROJECT: {
-				XTextEditorProject xTextEditorProject = (XTextEditorProject)theEObject;
-				T result = caseXTextEditorProject(xTextEditorProject);
-				if (result == null) result = caseEditorProject(xTextEditorProject);
-				if (result == null) result = caseProjectResource(xTextEditorProject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case confPackage.BUILD_OPTIONS: {
-				BuildOptions buildOptions = (BuildOptions)theEObject;
-				T result = caseBuildOptions(buildOptions);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Gemoc Language Workbench Configuration</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Gemoc Language Workbench Configuration</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseGemocLanguageWorkbenchConfiguration(GemocLanguageWorkbenchConfiguration object) {
-		return null;
 	}
 
 	/**
@@ -326,32 +232,17 @@ public class confSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mo CProject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Mo CC Project</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mo CProject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Mo CC Project</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMoCProject(MoCProject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>CCSL Mo CProject</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>CCSL Mo CProject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCCSLMoCProject(CCSLMoCProject object) {
+	public T caseMoCCProject(MoCCProject object) {
 		return null;
 	}
 
@@ -371,36 +262,6 @@ public class confSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EMF Ecore Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EMF Ecore Project</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEMFEcoreProject(EMFEcoreProject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>OD Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>OD Project</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseODProject(ODProject object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Sirius Animator Project</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -412,21 +273,6 @@ public class confSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSiriusAnimatorProject(SiriusAnimatorProject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mod Hel XMo CProject</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mod Hel XMo CProject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseModHelXMoCProject(ModHelXMoCProject object) {
 		return null;
 	}
 
@@ -446,62 +292,17 @@ public class confSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ECL Project</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Sirius Editor Project</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ECL Project</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Sirius Editor Project</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseECLProject(ECLProject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Tree Editor Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Tree Editor Project</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTreeEditorProject(TreeEditorProject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EMF Genmodel</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EMF Genmodel</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEMFGenmodel(EMFGenmodel object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>File Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>File Resource</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFileResource(FileResource object) {
+	public T caseSiriusEditorProject(SiriusEditorProject object) {
 		return null;
 	}
 
@@ -521,62 +322,17 @@ public class confSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>K3DSA Project</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Tree Editor Project</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>K3DSA Project</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Tree Editor Project</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseK3DSAProject(K3DSAProject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ECL File</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ECL File</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseECLFile(ECLFile object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>QV To File</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>QV To File</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseQVToFile(QVToFile object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Build Options</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Build Options</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBuildOptions(BuildOptions object) {
+	public T caseTreeEditorProject(TreeEditorProject object) {
 		return null;
 	}
 

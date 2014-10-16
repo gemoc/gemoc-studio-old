@@ -117,6 +117,19 @@ public class PluginXMLHelper {
 		result.setAttribute(atributeName, value);
 		return result;
 	}
+	public String getXDSMLDefinitionAttributeInExtensionPointValue(Element extensionPoint, String atributeName){
+		Element result;
+		List<Element> elements = extensionPoint.getContent(new ElementFilter(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF));
+		if(elements.size() == 0){
+			// create extension point
+			result = new Element(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF);
+			extensionPoint.addContent(result);
+		}
+		else{
+			result = elements.get(0);
+		}
+		return result.getAttributeValue(atributeName);
+	}
 	
 	public Element getOrCreateExtensionPoint(String extensionPointName){
 		Element result;

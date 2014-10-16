@@ -211,7 +211,7 @@ public class confActionBarContributor
 	 * When the active editor changes, this remembers the change and registers with it as a selection provider.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setActiveEditor(IEditorPart part) {
@@ -227,13 +227,15 @@ public class confActionBarContributor
 			selectionProvider = null;
 		}
 		else {
-			selectionProvider = part.getSite().getSelectionProvider();
-			selectionProvider.addSelectionChangedListener(this);
-
-			// Fake a selection changed event to update the menus.
-			//
-			if (selectionProvider.getSelection() != null) {
-				selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
+			if(selectionProvider != null){
+				selectionProvider = part.getSite().getSelectionProvider();
+				selectionProvider.addSelectionChangedListener(this);
+	
+				// Fake a selection changed event to update the menus.
+				//
+				if (selectionProvider.getSelection() != null) {
+					selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
+				}
 			}
 		}
 	}

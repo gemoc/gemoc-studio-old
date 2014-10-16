@@ -37,8 +37,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
@@ -79,15 +78,14 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		boolean result = false;
-		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
+		DomainModelProject eep = context.getEcoreProject(getActionTask());
 		if (eep != null) {
-			if (eep.getEmfGenmodel() == null || eep.getEmfGenmodel().getLocationURI() == null
-					|| eep.getEmfGenmodel().getLocationURI().length() == 0) {
+			if (eep.getGenmodeluri() == null || eep.getGenmodeluri().length() == 0) {
 				undoneReason = "no valid genmodel referenced in xdsml";
 				result = false;
 			} else {
 				final String eClsName = eep.getDefaultRootEObjectQualifiedName();
-				String genModelPath = eep.getEmfGenmodel().getLocationURI();
+				String genModelPath = eep.getGenmodeluri();
 				Object firstContent = EMFResource.getFirstContent(URI.createURI(genModelPath, true));
 				if (firstContent instanceof GenModel && hasClassifier((GenModel)firstContent, eClsName)) {
 					lastEClassName = eClsName;
@@ -162,7 +160,7 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected void internalUndoAction(GemocLanguageProcessContext context) {
-		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
+		DomainModelProject eep = context.getEcoreProject(getActionTask());
 		if (eep != null) {
 			eep.setDefaultRootEObjectQualifiedName(null);
 			try {
@@ -182,19 +180,15 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 			Map<String, Object> m = reg.getExtensionToFactoryMap();
 			m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
 
-			GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration)EMFResource
-					.getFirstContent(configFile);
-
 			// consider only one language :-/
-			LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
+			LanguageDefinition language = (LanguageDefinition)EMFResource.getFirstContent(configFile);
 
-			if (language.getDomainModelProject() instanceof EMFEcoreProject) {
-				((EMFEcoreProject)language.getDomainModelProject())
-						.setDefaultRootEObjectQualifiedName(rootEObjectName);
+			if (language.getDomainModelProject() != null) {
+				language.getDomainModelProject().setDefaultRootEObjectQualifiedName(rootEObjectName);
 			}
 
 			try {
-				gemocLanguageWorkbenchConfiguration.eResource().save(null);
+				language.eResource().save(null);
 			} catch (IOException e) {
 				Activator.error(e.getMessage(), e);
 			}
@@ -232,10 +226,10 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 	 * @return the URI of the genmodel or null if it cannot be retrieved in the context
 	 */
 	protected String getGenModelURIFromXDSML(GemocLanguageProcessContext context) {
-		if (context.getXdsmlModel(getActionTask()) != null && context.getXdsmlModel(getActionTask()).getLanguageDefinition() != null) {
-			EMFEcoreProject eep = context.getEcoreProject(getActionTask());
-			if (eep != null && eep.getEmfGenmodel() != null) {
-				return eep.getEmfGenmodel().getLocationURI();
+		if (context.getXdsmlModel(getActionTask()) != null) {
+			DomainModelProject eep = context.getEcoreProject(getActionTask());
+			if (eep != null) {
+				return eep.getGenmodeluri();
 			}
 		}
 		return null;

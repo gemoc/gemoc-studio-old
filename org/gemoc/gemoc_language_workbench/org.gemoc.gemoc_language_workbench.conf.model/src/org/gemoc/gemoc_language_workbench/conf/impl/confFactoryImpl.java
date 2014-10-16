@@ -57,21 +57,15 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case confPackage.GEMOC_LANGUAGE_WORKBENCH_CONFIGURATION: return createGemocLanguageWorkbenchConfiguration();
 			case confPackage.LANGUAGE_DEFINITION: return createLanguageDefinition();
-			case confPackage.CCSL_MO_CPROJECT: return createCCSLMoCProject();
-			case confPackage.EMF_ECORE_PROJECT: return createEMFEcoreProject();
-			case confPackage.OD_PROJECT: return createODProject();
+			case confPackage.DSA_PROJECT: return createDSAProject();
+			case confPackage.DOMAIN_MODEL_PROJECT: return createDomainModelProject();
+			case confPackage.MO_CC_PROJECT: return createMoCCProject();
+			case confPackage.DSE_PROJECT: return createDSEProject();
+			case confPackage.SIRIUS_EDITOR_PROJECT: return createSiriusEditorProject();
 			case confPackage.SIRIUS_ANIMATOR_PROJECT: return createSiriusAnimatorProject();
-			case confPackage.MOD_HEL_XMO_CPROJECT: return createModHelXMoCProject();
-			case confPackage.ECL_PROJECT: return createECLProject();
-			case confPackage.TREE_EDITOR_PROJECT: return createTreeEditorProject();
-			case confPackage.K3DSA_PROJECT: return createK3DSAProject();
-			case confPackage.EMF_GENMODEL: return createEMFGenmodel();
-			case confPackage.ECL_FILE: return createECLFile();
-			case confPackage.QV_TO_FILE: return createQVToFile();
 			case confPackage.XTEXT_EDITOR_PROJECT: return createXTextEditorProject();
-			case confPackage.BUILD_OPTIONS: return createBuildOptions();
+			case confPackage.TREE_EDITOR_PROJECT: return createTreeEditorProject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -112,16 +106,6 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GemocLanguageWorkbenchConfiguration createGemocLanguageWorkbenchConfiguration() {
-		GemocLanguageWorkbenchConfigurationImpl gemocLanguageWorkbenchConfiguration = new GemocLanguageWorkbenchConfigurationImpl();
-		return gemocLanguageWorkbenchConfiguration;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public LanguageDefinition createLanguageDefinition() {
 		LanguageDefinitionImpl languageDefinition = new LanguageDefinitionImpl();
 		return languageDefinition;
@@ -132,20 +116,9 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CCSLMoCProject createCCSLMoCProject() {
-		CCSLMoCProjectImpl ccslMoCProject = new CCSLMoCProjectImpl();
-		return ccslMoCProject;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EMFEcoreProject createEMFEcoreProject() {
-		EMFEcoreProjectImpl emfEcoreProject = new EMFEcoreProjectImpl();
-		return emfEcoreProject;
+	public DSAProject createDSAProject() {
+		DSAProjectImpl dsaProject = new DSAProjectImpl();
+		return dsaProject;
 	}
 
 	/**
@@ -153,9 +126,39 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ODProject createODProject() {
-		ODProjectImpl odProject = new ODProjectImpl();
-		return odProject;
+	public DomainModelProject createDomainModelProject() {
+		DomainModelProjectImpl domainModelProject = new DomainModelProjectImpl();
+		return domainModelProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MoCCProject createMoCCProject() {
+		MoCCProjectImpl moCCProject = new MoCCProjectImpl();
+		return moCCProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DSEProject createDSEProject() {
+		DSEProjectImpl dseProject = new DSEProjectImpl();
+		return dseProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SiriusEditorProject createSiriusEditorProject() {
+		SiriusEditorProjectImpl siriusEditorProject = new SiriusEditorProjectImpl();
+		return siriusEditorProject;
 	}
 
 	/**
@@ -173,46 +176,6 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModHelXMoCProject createModHelXMoCProject() {
-		ModHelXMoCProjectImpl modHelXMoCProject = new ModHelXMoCProjectImpl();
-		return modHelXMoCProject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ECLProject createECLProject() {
-		ECLProjectImpl eclProject = new ECLProjectImpl();
-		return eclProject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TreeEditorProject createTreeEditorProject() {
-		TreeEditorProjectImpl treeEditorProject = new TreeEditorProjectImpl();
-		return treeEditorProject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EMFGenmodel createEMFGenmodel() {
-		EMFGenmodelImpl emfGenmodel = new EMFGenmodelImpl();
-		return emfGenmodel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public XTextEditorProject createXTextEditorProject() {
 		XTextEditorProjectImpl xTextEditorProject = new XTextEditorProjectImpl();
 		return xTextEditorProject;
@@ -223,39 +186,9 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public K3DSAProject createK3DSAProject() {
-		K3DSAProjectImpl k3DSAProject = new K3DSAProjectImpl();
-		return k3DSAProject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ECLFile createECLFile() {
-		ECLFileImpl eclFile = new ECLFileImpl();
-		return eclFile;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public QVToFile createQVToFile() {
-		QVToFileImpl qvToFile = new QVToFileImpl();
-		return qvToFile;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BuildOptions createBuildOptions() {
-		BuildOptionsImpl buildOptions = new BuildOptionsImpl();
-		return buildOptions;
+	public TreeEditorProject createTreeEditorProject() {
+		TreeEditorProjectImpl treeEditorProject = new TreeEditorProjectImpl();
+		return treeEditorProject;
 	}
 
 	/**

@@ -1,6 +1,5 @@
 package org.gemoc.gemoc_language_workbench.ui.activeFile;
 
-import java.io.IOException;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -15,11 +14,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
+import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.utils.resourcevisitors.FileFinderVisitor;
 
 public class ActiveFileEcore extends ActiveFile {
 
@@ -64,12 +62,11 @@ public class ActiveFileEcore extends ActiveFile {
 		    Resource resource = resSet.getResource(URI.createURI(configFile.getLocationURI().toString()),true);
 		    
 		    
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
 		    // consider only one language :-/
-		    LanguageDefinition langage = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
+		    LanguageDefinition langage = (LanguageDefinition) resource.getContents().get(0);
 		    
 		    // get the IProject
-		    EMFEcoreProject emfEcoreProject = (EMFEcoreProject) langage.getDomainModelProject();
+		    DomainModelProject emfEcoreProject = langage.getDomainModelProject();
 		    projectEcore = ResourcesPlugin.getWorkspace().getRoot().getProject(emfEcoreProject.getProjectName());
 			/*try {
 				resource.save(null);

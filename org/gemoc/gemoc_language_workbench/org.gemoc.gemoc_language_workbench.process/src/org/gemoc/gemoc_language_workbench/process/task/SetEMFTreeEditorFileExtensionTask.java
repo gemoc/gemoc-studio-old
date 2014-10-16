@@ -34,10 +34,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.conf.EMFGenmodel;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
@@ -145,10 +143,9 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProces
 		if (resource instanceof IProject) {
 			result = resource.getName().equals(projectName);
 		} else if (resource instanceof IFile) {
-			EMFGenmodel emfGenModelFromXDSML = getEMFGenModelDefinedInXDSML(context);
+			String emfGenModelFromXDSML = getEMFGenModelDefinedInXDSML(context);
 			// if the change happen on the genmodel referenced by the xdsml
-			if (emfGenModelFromXDSML != null
-					&& resource.getName().equals(emfGenModelFromXDSML.getLocationURI())) {
+			if (emfGenModelFromXDSML != null && resource.getName().equals(emfGenModelFromXDSML)) {
 				result = true;
 
 			}
@@ -160,21 +157,20 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProces
 	protected boolean internalAcceptModifiedResource(GemocLanguageProcessContext context, IResource resource) {
 		// if the changed resource is the genmodel referenced by the xdsml
 		if (resource instanceof IFile) {
-			EMFGenmodel emfGenModelFromXDSML = getEMFGenModelDefinedInXDSML(context);
+			String emfGenModelFromXDSML = getEMFGenModelDefinedInXDSML(context);
 			// if the change happen on the genmodel referenced by the xdsml
 			if (emfGenModelFromXDSML != null
-					&& EclipseResource.matches(resource, URI.createURI(emfGenModelFromXDSML.getLocationURI(),
-							true))) {
+					&& EclipseResource.matches(resource, URI.createURI(emfGenModelFromXDSML, true))) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	protected EMFGenmodel getEMFGenModelDefinedInXDSML(GemocLanguageProcessContext context) {
-		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
+	protected String getEMFGenModelDefinedInXDSML(GemocLanguageProcessContext context) {
+		DomainModelProject eep = context.getEcoreProject(getActionTask());
 		if (eep != null) {
-			return eep.getEmfGenmodel();
+			return eep.getGenmodeluri();
 		}
 		return null;
 	}
@@ -189,13 +185,12 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProces
 		return false;
 	}
 
-	private Resource getGenModelResource(GemocLanguageWorkbenchConfiguration xdsmlModel) {
-		DomainModelProject dmp = xdsmlModel.getLanguageDefinition().getDomainModelProject();
-		if (dmp != null && dmp instanceof EMFEcoreProject) {
-			EMFEcoreProject eep = (EMFEcoreProject)dmp;
-			if (eep.getEmfGenmodel() != null && eep.getEmfGenmodel().getLocationURI() != null
-					&& eep.getEmfGenmodel().getLocationURI().length() != 0) {
-				String genModelURI = eep.getEmfGenmodel().getLocationURI();
+	private Resource getGenModelResource(LanguageDefinition xdsmlModel) {
+		DomainModelProject dmp = xdsmlModel.getDomainModelProject();
+		if (dmp != null) {
+
+			String genModelURI = dmp.getGenmodeluri();
+			if (genModelURI != null && genModelURI.length() != 0) {
 				final ResourceSet resourceSet = new ResourceSetImpl();
 				return resourceSet.getResource(URI.createURI(genModelURI, true), true);
 			}
@@ -203,7 +198,7 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProces
 		return null;
 	}
 
-	private GenModel getGenModel(GemocLanguageWorkbenchConfiguration xdsmlModel) {
+	private GenModel getGenModel(LanguageDefinition xdsmlModel) {
 		Resource res = getGenModelResource(xdsmlModel);
 		if (res != null) {
 			return (GenModel)res.getContents().get(0);
@@ -211,8 +206,8 @@ public class SetEMFTreeEditorFileExtensionTask extends AbstractGemocActionProces
 		return null;
 	}
 
-	private EditorProject findTreeEditorInXDSML(GemocLanguageWorkbenchConfiguration xdsmlModel) {
-		EList<EditorProject> editorsProjects = xdsmlModel.getLanguageDefinition().getEditorProjects();
+	private EditorProject findTreeEditorInXDSML(LanguageDefinition xdsmlModel) {
+		EList<EditorProject> editorsProjects = xdsmlModel.getEditorProjects();
 		for (EditorProject editorProject : editorsProjects) {
 			if (editorProject instanceof TreeEditorProject) {
 				return editorProject;

@@ -25,13 +25,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * @generated
  */
 public class SiriusAnimatorProjectItemProvider
-	extends AnimatorProjectItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends AnimatorProjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -53,31 +47,8 @@ public class SiriusAnimatorProjectItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addODProjectPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the OD Project feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addODProjectPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SiriusAnimatorProject_oDProject_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SiriusAnimatorProject_oDProject_feature", "_UI_SiriusAnimatorProject_type"),
-				 confPackage.Literals.SIRIUS_ANIMATOR_PROJECT__OD_PROJECT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

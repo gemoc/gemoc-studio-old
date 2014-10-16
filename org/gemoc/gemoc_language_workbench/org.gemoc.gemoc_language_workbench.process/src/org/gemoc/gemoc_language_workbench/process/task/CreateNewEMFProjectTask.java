@@ -25,7 +25,7 @@ import fr.obeo.dsl.process.ProcessVariable;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
+import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
@@ -53,14 +53,16 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
+		return EclipseResource
+				.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
 				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile(getActionTask()));
 	}
 
 	@Override
 	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
 		return EclipseResource.matches(resource, IFile.class, context.getXdsmlURI(getActionTask()))
-				|| EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
+				|| EclipseResource.matches(resource, IProject.class, context
+						.getEcoreProjectName(getActionTask()))
 				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile(getActionTask()));
 	}
 
@@ -80,7 +82,7 @@ public class CreateNewEMFProjectTask extends AbstractGemocActionProcessor {
 		// return the emf project URI
 		// setDone(void)
 		// or setUndone(void)
-		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
+		DomainModelProject eep = context.getEcoreProject(getActionTask());
 		// update the cache pointing to the ecore file
 		// Discussion, the ActiveFileEcore may not be the best way to retreive the ecore ?
 		IProject updatedGemocLanguageProject = context.getXdsmlFile(getActionTask()).getProject();

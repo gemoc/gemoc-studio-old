@@ -3,6 +3,7 @@ package org.gemoc.gemoc_language_workbench.ui.dialogs;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.swt.widgets.Shell;
+import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIProjectDialog;
 
 public class SelectPluginIProjectDialog extends SelectAnyIProjectDialog {
 

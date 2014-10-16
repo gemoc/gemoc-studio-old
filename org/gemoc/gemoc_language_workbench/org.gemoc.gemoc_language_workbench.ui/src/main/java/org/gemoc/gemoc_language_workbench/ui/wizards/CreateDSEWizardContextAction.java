@@ -21,12 +21,8 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.commons.eclipse.ui.WizardFinder;
-import org.gemoc.gemoc_language_workbench.conf.ECLFile;
-import org.gemoc.gemoc_language_workbench.conf.ECLProject;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
+import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.conf.confFactory;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectECLIFileDialog;
@@ -43,12 +39,12 @@ public class CreateDSEWizardContextAction {
 	// one of these must be set, depending on it it will work on the file or
 	// directly in the model
 	protected IProject gemocLanguageIProject = null;
-	protected GemocLanguageWorkbenchConfiguration gemocLanguageModel = null;
+	protected LanguageDefinition gemocLanguageModel = null;
 
 	public CreateDSEWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
 	}
-	public CreateDSEWizardContextAction(IProject updatedGemocLanguageProject, GemocLanguageWorkbenchConfiguration rootModelElement) {
+	public CreateDSEWizardContextAction(IProject updatedGemocLanguageProject, LanguageDefinition rootModelElement) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
 		gemocLanguageModel = rootModelElement;
 	}
@@ -84,8 +80,8 @@ public class CreateDSEWizardContextAction {
 				if(languageDefinition != null){
 					createNewDSEProjectWizard._askProjectNamePage.setInitialProjectName(gemocLanguageIProject.getName()+".dse");
 					createNewDSEProjectWizard._askDSEInfoPage.initialTemplateECLFileFieldValue = languageDefinition.getName();
-					if(languageDefinition.getDomainModelProject() != null && languageDefinition.getDomainModelProject() instanceof EMFEcoreProject){
-						createNewDSEProjectWizard._askDSEInfoPage.initialRootContainerFieldValue = ((EMFEcoreProject)languageDefinition.getDomainModelProject()).getDefaultRootEObjectQualifiedName();
+					if(languageDefinition.getDomainModelProject() != null){
+						createNewDSEProjectWizard._askDSEInfoPage.initialRootContainerFieldValue = languageDefinition.getDomainModelProject().getDefaultRootEObjectQualifiedName();
 					}
 				}
 				wizard.init(workbench, null);
@@ -154,7 +150,7 @@ public class CreateDSEWizardContextAction {
 		Resource resource = resSet
 				.getResource(URI.createURI(configFile.getLocationURI()
 						.toString()), true);
-		GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource
+		LanguageDefinition gemocLanguageWorkbenchConfiguration = (LanguageDefinition) resource
 				.getContents().get(0);
 		
 		addECLFileToConf(projectName, eclFileURI, gemocLanguageWorkbenchConfiguration);
@@ -174,19 +170,17 @@ public class CreateDSEWizardContextAction {
 		}
 	}
 	
-	protected void addECLFileToConf(String projectName, String eclFileURI, GemocLanguageWorkbenchConfiguration gemocLanguageModel) {
-		ECLProject eclProject = confFactoryImpl.eINSTANCE
-				.createECLProject();
+	protected void addECLFileToConf(String projectName, String eclFileURI, LanguageDefinition languageDefinition) {
+		DSEProject eclProject = confFactoryImpl.eINSTANCE
+				.createDSEProject();
 		eclProject.setProjectName(projectName);
-		ECLFile eclFile = confFactory.eINSTANCE.createECLFile();
-		eclFile.setLocationURI(eclFileURI);
-		eclProject.setEclFile(eclFile);
+		
+//		ECLFile eclFile = confFactory.eINSTANCE.createECLFile();
+//		eclFile.setLocationURI(eclFileURI);
+//		eclProject.setEclFile(eclFile);
 
-		LanguageDefinition languageDefinition = gemocLanguageModel.getLanguageDefinition();
-		if(languageDefinition == null){
-			languageDefinition = confFactory.eINSTANCE.createLanguageDefinition();
-			gemocLanguageModel.setLanguageDefinition(languageDefinition);
-		}
+		
+		
 		languageDefinition.setDSEProject(eclProject);
 			
 		
@@ -203,14 +197,14 @@ public class CreateDSEWizardContextAction {
 				Resource resource = resSet
 						.getResource(URI.createURI(configFile.getLocationURI()
 								.toString()), true);
-				GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource
-						.getContents().get(0);
 				
-				return gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
+				
+				return (LanguageDefinition) resource
+						.getContents().get(0);
 			}
 		}
 		if(this.gemocLanguageModel != null){
-			return this.gemocLanguageModel.getLanguageDefinition();
+			return this.gemocLanguageModel;
 		}
 		return null;
 	}

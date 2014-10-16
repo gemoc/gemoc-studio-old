@@ -22,15 +22,6 @@ public interface confFactory extends EFactory {
 	confFactory eINSTANCE = org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Gemoc Language Workbench Configuration</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Gemoc Language Workbench Configuration</em>'.
-	 * @generated
-	 */
-	GemocLanguageWorkbenchConfiguration createGemocLanguageWorkbenchConfiguration();
-
-	/**
 	 * Returns a new object of class '<em>Language Definition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40,33 +31,49 @@ public interface confFactory extends EFactory {
 	LanguageDefinition createLanguageDefinition();
 
 	/**
-	 * Returns a new object of class '<em>CCSL Mo CProject</em>'.
+	 * Returns a new object of class '<em>DSA Project</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>CCSL Mo CProject</em>'.
+	 * @return a new object of class '<em>DSA Project</em>'.
 	 * @generated
 	 */
-	CCSLMoCProject createCCSLMoCProject();
-
-	
+	DSAProject createDSAProject();
 
 	/**
-	 * Returns a new object of class '<em>EMF Ecore Project</em>'.
+	 * Returns a new object of class '<em>Domain Model Project</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>EMF Ecore Project</em>'.
+	 * @return a new object of class '<em>Domain Model Project</em>'.
 	 * @generated
 	 */
-	EMFEcoreProject createEMFEcoreProject();
+	DomainModelProject createDomainModelProject();
 
 	/**
-	 * Returns a new object of class '<em>OD Project</em>'.
+	 * Returns a new object of class '<em>Mo CC Project</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OD Project</em>'.
+	 * @return a new object of class '<em>Mo CC Project</em>'.
 	 * @generated
 	 */
-	ODProject createODProject();
+	MoCCProject createMoCCProject();
+
+	/**
+	 * Returns a new object of class '<em>DSE Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>DSE Project</em>'.
+	 * @generated
+	 */
+	DSEProject createDSEProject();
+
+	/**
+	 * Returns a new object of class '<em>Sirius Editor Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sirius Editor Project</em>'.
+	 * @generated
+	 */
+	SiriusEditorProject createSiriusEditorProject();
 
 	/**
 	 * Returns a new object of class '<em>Sirius Animator Project</em>'.
@@ -78,42 +85,6 @@ public interface confFactory extends EFactory {
 	SiriusAnimatorProject createSiriusAnimatorProject();
 
 	/**
-	 * Returns a new object of class '<em>Mod Hel XMo CProject</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mod Hel XMo CProject</em>'.
-	 * @generated
-	 */
-	ModHelXMoCProject createModHelXMoCProject();
-
-	/**
-	 * Returns a new object of class '<em>ECL Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ECL Project</em>'.
-	 * @generated
-	 */
-	ECLProject createECLProject();
-
-	/**
-	 * Returns a new object of class '<em>Tree Editor Project</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Tree Editor Project</em>'.
-	 * @generated
-	 */
-	TreeEditorProject createTreeEditorProject();
-
-	/**
-	 * Returns a new object of class '<em>EMF Genmodel</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>EMF Genmodel</em>'.
-	 * @generated
-	 */
-	EMFGenmodel createEMFGenmodel();
-
-	/**
 	 * Returns a new object of class '<em>XText Editor Project</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -123,40 +94,13 @@ public interface confFactory extends EFactory {
 	XTextEditorProject createXTextEditorProject();
 
 	/**
-	 * Returns a new object of class '<em>K3DSA Project</em>'.
+	 * Returns a new object of class '<em>Tree Editor Project</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>K3DSA Project</em>'.
+	 * @return a new object of class '<em>Tree Editor Project</em>'.
 	 * @generated
 	 */
-	K3DSAProject createK3DSAProject();
-
-	/**
-	 * Returns a new object of class '<em>ECL File</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ECL File</em>'.
-	 * @generated
-	 */
-	ECLFile createECLFile();
-
-	/**
-	 * Returns a new object of class '<em>QV To File</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>QV To File</em>'.
-	 * @generated
-	 */
-	QVToFile createQVToFile();
-
-	/**
-	 * Returns a new object of class '<em>Build Options</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Build Options</em>'.
-	 * @generated
-	 */
-	BuildOptions createBuildOptions();
+	TreeEditorProject createTreeEditorProject();
 
 	/**
 	 * Returns the package supported by this factory.

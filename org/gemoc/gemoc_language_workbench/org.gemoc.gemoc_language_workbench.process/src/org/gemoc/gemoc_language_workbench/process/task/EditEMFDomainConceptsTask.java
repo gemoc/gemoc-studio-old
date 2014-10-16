@@ -33,7 +33,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.ide.IDE;
-import org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject;
+import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionProcessor;
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
@@ -86,14 +86,13 @@ public class EditEMFDomainConceptsTask extends AbstractGemocActionProcessor {
 	@Override
 	protected boolean internalValidate(GemocLanguageProcessContext context) {
 		boolean result = false;
-		EMFEcoreProject eep = context.getEcoreProject(getActionTask());
+		DomainModelProject eep = context.getEcoreProject(getActionTask());
 		if (eep != null) {
-			if (eep.getEmfGenmodel() == null || eep.getEmfGenmodel().getLocationURI() == null
-					|| eep.getEmfGenmodel().getLocationURI().length() == 0) {
+			if (eep.getGenmodeluri() == null || eep.getGenmodeluri().length() == 0) {
 				undoneReason = "no valid genmodel referenced in xdsml";
 				result = false;
 			} else {
-				String genModelURI = eep.getEmfGenmodel().getLocationURI();
+				String genModelURI = eep.getGenmodeluri();
 				try {
 					Object firstContent = EMFResource.getFirstContent(URI.createURI(genModelURI, true));
 					if (firstContent instanceof GenModel && hasClassifier((GenModel)firstContent)) {
@@ -165,14 +164,16 @@ public class EditEMFDomainConceptsTask extends AbstractGemocActionProcessor {
 
 	@Override
 	protected boolean internalAcceptRemovedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
+		return EclipseResource
+				.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
 				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile(getActionTask()))
 				|| checkFileIsGenModel(context, resource);
 	}
 
 	@Override
 	protected boolean internalAcceptAddedResource(GemocLanguageProcessContext context, IResource resource) {
-		return EclipseResource.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
+		return EclipseResource
+				.matches(resource, IProject.class, context.getEcoreProjectName(getActionTask()))
 				|| EclipseResource.matches(resource, IFile.class, context.getEcoreIFile(getActionTask()))
 				|| checkFileIsGenModel(context, resource);
 	}
@@ -186,11 +187,8 @@ public class EditEMFDomainConceptsTask extends AbstractGemocActionProcessor {
 	private boolean checkFileIsGenModel(GemocLanguageProcessContext context, IResource resource) {
 		if (resource instanceof IFile) {
 			// if the change happen on the genmodel referenced by the xdsml
-			EMFEcoreProject eep = context.getEcoreProject(getActionTask());
-			if (eep != null
-					&& eep.getEmfGenmodel() != null
-					&& EclipseResource.matches(resource, URI.createURI(eep.getEmfGenmodel().getLocationURI(),
-							true))) {
+			DomainModelProject eep = context.getEcoreProject(getActionTask());
+			if (eep != null && EclipseResource.matches(resource, URI.createURI(eep.getGenmodeluri(), true))) {
 				return true;
 			}
 		}

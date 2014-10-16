@@ -23,15 +23,14 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.commons.eclipse.ui.WizardFinder;
+import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIProjectDialog;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
-import org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.conf.ODProject;
+import org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
-import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectXtextIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
@@ -52,12 +51,12 @@ public class CreateEditorProjectWizardContextAction {
 	
 	// one of these must be set, depending on it it will work on the file or directly in the model 
 	protected IProject gemocLanguageIProject = null;	
-	protected GemocLanguageWorkbenchConfiguration gemocLanguageModel = null; 
+	protected LanguageDefinition gemocLanguageModel = null; 
 	
 	public CreateEditorProjectWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
 	}
-	public CreateEditorProjectWizardContextAction(GemocLanguageWorkbenchConfiguration rootModelElement) {
+	public CreateEditorProjectWizardContextAction(LanguageDefinition rootModelElement) {
 		gemocLanguageModel = rootModelElement;
 	}
 	
@@ -214,7 +213,7 @@ public class CreateEditorProjectWizardContextAction {
 					IProject createdProject = workspaceListener.getLastCreatedProject();
 					// update the project configuration model
 					if(createdProject != null){
-						ODProject editorProject = confFactoryImpl.eINSTANCE.createODProject();
+						SiriusEditorProject editorProject = confFactoryImpl.eINSTANCE.createSiriusEditorProject();
 						editorProject.setProjectName(createdProject.getName());
 						addOrUpdateProjectToConf(editorProject);
 					}
@@ -270,7 +269,7 @@ public class CreateEditorProjectWizardContextAction {
 		if(res == WizardDialog.OK){
 			// update the project model
 			String projectName = ((IResource)dialog.getResult()[0]).getName();
-			EditorProject editorProject = confFactoryImpl.eINSTANCE.createODProject();
+			EditorProject editorProject = confFactoryImpl.eINSTANCE.createSiriusEditorProject();
 			editorProject.setProjectName(projectName);
 			// TODO detection of the current extension
 			addOrUpdateProjectToConf(editorProject);
@@ -306,7 +305,7 @@ public class CreateEditorProjectWizardContextAction {
 		    Resource resource = resSet.getResource(URI.createURI(configFile.getLocationURI().toString()),true);
 		    
 		    
-		    GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) resource.getContents().get(0);
+		    LanguageDefinition gemocLanguageWorkbenchConfiguration = (LanguageDefinition) resource.getContents().get(0);
 		    addOrUpdateProjectToConf(editorProject, gemocLanguageWorkbenchConfiguration);
 			
 			try {
@@ -326,9 +325,8 @@ public class CreateEditorProjectWizardContextAction {
 	 * Ie. only  one Sirius editor, one XtextEditor, etc
 	 * @param editorProject
 	 */
-	protected void addOrUpdateProjectToConf( EditorProject editorProject, GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration){
-		// consider only one language :-/
-		    LanguageDefinition language = gemocLanguageWorkbenchConfiguration.getLanguageDefinition();
+	protected void addOrUpdateProjectToConf( EditorProject editorProject, LanguageDefinition language){
+		
 		    
 		    // add missing data to conf
 		    EditorProject existingEditor= null;

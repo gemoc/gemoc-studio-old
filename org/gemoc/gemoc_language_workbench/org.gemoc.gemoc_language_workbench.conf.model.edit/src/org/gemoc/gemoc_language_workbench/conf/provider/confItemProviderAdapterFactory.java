@@ -70,29 +70,6 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected GemocLanguageWorkbenchConfigurationItemProvider gemocLanguageWorkbenchConfigurationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.GemocLanguageWorkbenchConfiguration}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createGemocLanguageWorkbenchConfigurationAdapter() {
-		if (gemocLanguageWorkbenchConfigurationItemProvider == null) {
-			gemocLanguageWorkbenchConfigurationItemProvider = new GemocLanguageWorkbenchConfigurationItemProvider(this);
-		}
-
-		return gemocLanguageWorkbenchConfigurationItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,72 +93,118 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.CCSLMoCProject} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.DSAProject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CCSLMoCProjectItemProvider ccslMoCProjectItemProvider;
+	protected DSAProjectItemProvider dsaProjectItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.CCSLMoCProject}.
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.DSAProject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCCSLMoCProjectAdapter() {
-		if (ccslMoCProjectItemProvider == null) {
-			ccslMoCProjectItemProvider = new CCSLMoCProjectItemProvider(this);
+	public Adapter createDSAProjectAdapter() {
+		if (dsaProjectItemProvider == null) {
+			dsaProjectItemProvider = new DSAProjectItemProvider(this);
 		}
 
-		return ccslMoCProjectItemProvider;
+		return dsaProjectItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.DomainModelProject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EMFEcoreProjectItemProvider emfEcoreProjectItemProvider;
+	protected DomainModelProjectItemProvider domainModelProjectItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.EMFEcoreProject}.
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.DomainModelProject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createEMFEcoreProjectAdapter() {
-		if (emfEcoreProjectItemProvider == null) {
-			emfEcoreProjectItemProvider = new EMFEcoreProjectItemProvider(this);
+	public Adapter createDomainModelProjectAdapter() {
+		if (domainModelProjectItemProvider == null) {
+			domainModelProjectItemProvider = new DomainModelProjectItemProvider(this);
 		}
 
-		return emfEcoreProjectItemProvider;
+		return domainModelProjectItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.ODProject} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.MoCCProject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ODProjectItemProvider odProjectItemProvider;
+	protected MoCCProjectItemProvider moCCProjectItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.ODProject}.
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.MoCCProject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createODProjectAdapter() {
-		if (odProjectItemProvider == null) {
-			odProjectItemProvider = new ODProjectItemProvider(this);
+	public Adapter createMoCCProjectAdapter() {
+		if (moCCProjectItemProvider == null) {
+			moCCProjectItemProvider = new MoCCProjectItemProvider(this);
 		}
 
-		return odProjectItemProvider;
+		return moCCProjectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.DSEProject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DSEProjectItemProvider dseProjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.DSEProject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDSEProjectAdapter() {
+		if (dseProjectItemProvider == null) {
+			dseProjectItemProvider = new DSEProjectItemProvider(this);
+		}
+
+		return dseProjectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SiriusEditorProjectItemProvider siriusEditorProjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSiriusEditorProjectAdapter() {
+		if (siriusEditorProjectItemProvider == null) {
+			siriusEditorProjectItemProvider = new SiriusEditorProjectItemProvider(this);
+		}
+
+		return siriusEditorProjectItemProvider;
 	}
 
 	/**
@@ -208,98 +231,6 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ModHelXMoCProjectItemProvider modHelXMoCProjectItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.ModHelXMoCProject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createModHelXMoCProjectAdapter() {
-		if (modHelXMoCProjectItemProvider == null) {
-			modHelXMoCProjectItemProvider = new ModHelXMoCProjectItemProvider(this);
-		}
-
-		return modHelXMoCProjectItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.ECLProject} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ECLProjectItemProvider eclProjectItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.ECLProject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createECLProjectAdapter() {
-		if (eclProjectItemProvider == null) {
-			eclProjectItemProvider = new ECLProjectItemProvider(this);
-		}
-
-		return eclProjectItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TreeEditorProjectItemProvider treeEditorProjectItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTreeEditorProjectAdapter() {
-		if (treeEditorProjectItemProvider == null) {
-			treeEditorProjectItemProvider = new TreeEditorProjectItemProvider(this);
-		}
-
-		return treeEditorProjectItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.EMFGenmodel} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EMFGenmodelItemProvider emfGenmodelItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.EMFGenmodel}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEMFGenmodelAdapter() {
-		if (emfGenmodelItemProvider == null) {
-			emfGenmodelItemProvider = new EMFGenmodelItemProvider(this);
-		}
-
-		return emfGenmodelItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.XTextEditorProject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -323,95 +254,26 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected K3DSAProjectItemProvider k3DSAProjectItemProvider;
+	protected TreeEditorProjectItemProvider treeEditorProjectItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.K3DSAProject}.
+	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.TreeEditorProject}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createK3DSAProjectAdapter() {
-		if (k3DSAProjectItemProvider == null) {
-			k3DSAProjectItemProvider = new K3DSAProjectItemProvider(this);
+	public Adapter createTreeEditorProjectAdapter() {
+		if (treeEditorProjectItemProvider == null) {
+			treeEditorProjectItemProvider = new TreeEditorProjectItemProvider(this);
 		}
 
-		return k3DSAProjectItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.ECLFile} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ECLFileItemProvider eclFileItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.ECLFile}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createECLFileAdapter() {
-		if (eclFileItemProvider == null) {
-			eclFileItemProvider = new ECLFileItemProvider(this);
-		}
-
-		return eclFileItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.QVToFile} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected QVToFileItemProvider qvToFileItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.QVToFile}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createQVToFileAdapter() {
-		if (qvToFileItemProvider == null) {
-			qvToFileItemProvider = new QVToFileItemProvider(this);
-		}
-
-		return qvToFileItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.gemoc_language_workbench.conf.BuildOptions} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BuildOptionsItemProvider buildOptionsItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.gemoc_language_workbench.conf.BuildOptions}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBuildOptionsAdapter() {
-		if (buildOptionsItemProvider == null) {
-			buildOptionsItemProvider = new BuildOptionsItemProvider(this);
-		}
-
-		return buildOptionsItemProvider;
+		return treeEditorProjectItemProvider;
 	}
 
 	/**
@@ -513,21 +375,15 @@ public class confItemProviderAdapterFactory extends confAdapterFactory implement
 	 * @generated
 	 */
 	public void dispose() {
-		if (gemocLanguageWorkbenchConfigurationItemProvider != null) gemocLanguageWorkbenchConfigurationItemProvider.dispose();
 		if (languageDefinitionItemProvider != null) languageDefinitionItemProvider.dispose();
-		if (ccslMoCProjectItemProvider != null) ccslMoCProjectItemProvider.dispose();
-		if (emfEcoreProjectItemProvider != null) emfEcoreProjectItemProvider.dispose();
-		if (odProjectItemProvider != null) odProjectItemProvider.dispose();
+		if (dsaProjectItemProvider != null) dsaProjectItemProvider.dispose();
+		if (domainModelProjectItemProvider != null) domainModelProjectItemProvider.dispose();
+		if (moCCProjectItemProvider != null) moCCProjectItemProvider.dispose();
+		if (dseProjectItemProvider != null) dseProjectItemProvider.dispose();
+		if (siriusEditorProjectItemProvider != null) siriusEditorProjectItemProvider.dispose();
 		if (siriusAnimatorProjectItemProvider != null) siriusAnimatorProjectItemProvider.dispose();
-		if (modHelXMoCProjectItemProvider != null) modHelXMoCProjectItemProvider.dispose();
-		if (eclProjectItemProvider != null) eclProjectItemProvider.dispose();
-		if (treeEditorProjectItemProvider != null) treeEditorProjectItemProvider.dispose();
-		if (k3DSAProjectItemProvider != null) k3DSAProjectItemProvider.dispose();
-		if (emfGenmodelItemProvider != null) emfGenmodelItemProvider.dispose();
-		if (eclFileItemProvider != null) eclFileItemProvider.dispose();
-		if (qvToFileItemProvider != null) qvToFileItemProvider.dispose();
 		if (xTextEditorProjectItemProvider != null) xTextEditorProjectItemProvider.dispose();
-		if (buildOptionsItemProvider != null) buildOptionsItemProvider.dispose();
+		if (treeEditorProjectItemProvider != null) treeEditorProjectItemProvider.dispose();
 	}
 
 }

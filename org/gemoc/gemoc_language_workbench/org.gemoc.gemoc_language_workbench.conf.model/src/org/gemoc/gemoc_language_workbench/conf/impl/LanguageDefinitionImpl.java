@@ -24,7 +24,7 @@ import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
-import org.gemoc.gemoc_language_workbench.conf.MoCProject;
+import org.gemoc.gemoc_language_workbench.conf.MoCCProject;
 import org.gemoc.gemoc_language_workbench.conf.confPackage;
 
 /**
@@ -85,7 +85,7 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * @generated
 	 * @ordered
 	 */
-	protected MoCProject moCModelProject;
+	protected MoCCProject moCModelProject;
 
 	/**
 	 * The cached value of the '{@link #getAnimatorProjects() <em>Animator Projects</em>}' containment reference list.
@@ -249,7 +249,7 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MoCProject getMoCModelProject() {
+	public MoCCProject getMoCModelProject() {
 		return moCModelProject;
 	}
 
@@ -258,8 +258,8 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMoCModelProject(MoCProject newMoCModelProject, NotificationChain msgs) {
-		MoCProject oldMoCModelProject = moCModelProject;
+	public NotificationChain basicSetMoCModelProject(MoCCProject newMoCModelProject, NotificationChain msgs) {
+		MoCCProject oldMoCModelProject = moCModelProject;
 		moCModelProject = newMoCModelProject;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT, oldMoCModelProject, newMoCModelProject);
@@ -273,7 +273,7 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMoCModelProject(MoCProject newMoCModelProject) {
+	public void setMoCModelProject(MoCCProject newMoCModelProject) {
 		if (newMoCModelProject != moCModelProject) {
 			NotificationChain msgs = null;
 			if (moCModelProject != null)
@@ -433,7 +433,7 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				getEditorProjects().addAll((Collection<? extends EditorProject>)newValue);
 				return;
 			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
-				setMoCModelProject((MoCProject)newValue);
+				setMoCModelProject((MoCCProject)newValue);
 				return;
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
 				getAnimatorProjects().clear();
@@ -467,7 +467,7 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				getEditorProjects().clear();
 				return;
 			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
-				setMoCModelProject((MoCProject)null);
+				setMoCModelProject((MoCCProject)null);
 				return;
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
 				getAnimatorProjects().clear();

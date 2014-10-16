@@ -26,5 +26,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jface.databinding,
  com.ibm.icu,
  org.eclipse.core.filesystem,
- org.gemoc.commons.eclipse.ui
+ org.gemoc.commons.eclipse.ui,
+ org.eclipse.pde.ui,
+ org.eclipse.jdt.ui,
+ org.eclipse.jdt.core
 Bundle-ActivationPolicy: lazy
