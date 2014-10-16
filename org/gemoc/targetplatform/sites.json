@@ -44,7 +44,7 @@
         "http://timesquare.inria.fr/update_site/experimental"
         ],
     "timesquare-ecl": [
-        "http://timesquare.inria.fr/ecl/update_site"
+        "http://timesquare.inria.fr/ecl/update_site/experimental"
         ],
     "gemoc-commons": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.commons.root/p2updatesite/target/repository/"
