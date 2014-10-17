@@ -119,6 +119,13 @@ public abstract class AbstractSelectProcessHandler extends AbstractHandler {
 	 */
 	protected abstract List<IProcessRunner> getProcessRunners(ExecutionEvent event);
 
+	/**
+	 * Gets the current {@link IProcessRunner} for the given {@link ExecutionEvent}.
+	 * 
+	 * @param event
+	 *            the {@link ExecutionEvent}
+	 * @return the current {@link IProcessRunner} for the given {@link ExecutionEvent}
+	 */
 	protected abstract IProcessRunner getCurrentProcessRunner(ExecutionEvent event);
 
 	/**
@@ -126,7 +133,7 @@ public abstract class AbstractSelectProcessHandler extends AbstractHandler {
 	 * 
 	 * @param event
 	 *            the {@link ExecutionEvent}
-	 * @param processContext
+	 * @param processRunner
 	 *            the {@link IProcessRunner}
 	 */
 	protected abstract void setProcessRunner(ExecutionEvent event, IProcessRunner processRunner);

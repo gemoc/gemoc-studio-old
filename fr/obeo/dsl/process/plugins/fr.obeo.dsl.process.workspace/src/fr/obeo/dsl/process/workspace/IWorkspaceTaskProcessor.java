@@ -18,6 +18,8 @@
 package fr.obeo.dsl.process.workspace;
 
 import fr.obeo.dsl.process.IActionTaskProcessor;
+import fr.obeo.dsl.process.ProcessContext;
+import fr.obeo.dsl.workspace.listener.change.IChange;
 
 /**
  * Abstract implementation of {@link fr.obeo.dsl.process.ActionTask ActionTask#getInstanceClassName()} for
@@ -26,5 +28,20 @@ import fr.obeo.dsl.process.IActionTaskProcessor;
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
 public interface IWorkspaceTaskProcessor extends IActionTaskProcessor {
+
+	/**
+	 * Validates it states in the given {@link ProcessContext} by calling
+	 * {@link ProcessContext#setDone(fr.obeo.dsl.process.ActionTask, Object)},
+	 * {@link ProcessContext#setUndone(fr.obeo.dsl.process.ActionTask, String)}. It can also manage
+	 * {@link fr.obeo.dsl.process.ProcessVariable ProcessVariable} by calling
+	 * {@link ProcessContext#setVariableValue(fr.obeo.dsl.process.ProcessVariable, Object, fr.obeo.dsl.process.ActionTask)}
+	 * .
+	 * 
+	 * @param context
+	 *            the {@link ProcessContext}
+	 * @param change
+	 *            the {@link IChange}
+	 */
+	void validate(ProcessContext context, IChange<?> change);
 
 }

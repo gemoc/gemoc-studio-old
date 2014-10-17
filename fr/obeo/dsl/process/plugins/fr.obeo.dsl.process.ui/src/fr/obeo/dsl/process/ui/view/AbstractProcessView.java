@@ -77,11 +77,6 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 	private static final double CONTEXT_COMPOSITE_RATIO = 0.20;
 
 	/**
-	 * Ratio for the context composite.
-	 */
-	private static final double DETAIL_TASKS_RATIO = 0.30;
-
-	/**
 	 * The {@link ComposedAdapterFactory}.
 	 */
 	private ComposedAdapterFactory adapterFactory;
@@ -478,21 +473,21 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 		if (task != null) {
 			final boolean isComposedTask = task instanceof ComposedTask;
 			nameLabel.setText(task.getName());
+			nameLabel.pack(true);
 			if (!ProcessUtils.isDone(getProcessContext(), task)) {
 				doUndoButton.setText("Do");
 				doUndoButton.pack(true);
+				doUndoButton.getParent().pack(true);
 			} else {
 				doUndoButton.setText("Undo");
 				doUndoButton.pack(true);
+				doUndoButton.getParent().pack(true);
 			}
 			doUndoButton.setVisible(!isComposedTask
 					&& ProcessUtils.evaluatePrecondition(getProcessContext(), task));
 			String undoneReason = "";
 			if (!ProcessUtils.isDone(getProcessContext(), task)) {
 				String undoneReasonRaw = ProcessUtils.getUndoneReason(getProcessContext(), task);
-				if (undoneReasonRaw == null) {
-					undoneReasonRaw = "Not evaluated because preconditions Tasks aren't Done. ";
-				}
 				undoneReason = "\nNot done due to: " + undoneReasonRaw;
 				undoneReasonLabel.setText(undoneReason);
 				undoneReasonLabel.setVisible(true);
@@ -618,6 +613,11 @@ public abstract class AbstractProcessView extends ViewPart implements IProcessCo
 			public void run() {
 				if (!contextViewer.getControl().isDisposed()) {
 					contextViewer.refresh(object);
+					if (object instanceof Task) {
+						for (Task followingTask : ProcessUtils.getFollowingTasks((Task)object)) {
+							contextViewer.refresh(followingTask);
+						}
+					}
 					final Task selectedTask = getTaskFromSelection(contextViewer.getSelection());
 					if (selectedTask == object) {
 						updateDetailsTask(selectedTask);

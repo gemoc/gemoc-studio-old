@@ -15,37 +15,24 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.process;
+package fr.obeo.dsl.process.ui.tests.view;
+
+import fr.obeo.dsl.process.ui.tests.TestProcessRunner;
+import fr.obeo.dsl.process.ui.view.AbstractProcessView;
 
 /**
- * Abstract implementation of {@link IActionTaskProcessor} providing the
- * {@link IActionTaskProcessor#getActionTask() action task}.
+ * A test implementation of {@link AbstractProcessView}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public abstract class AbstractActionTaskProcessor implements IActionTaskProcessor {
-
-	/**
-	 * The {@link ActionTask} definition.
-	 */
-	private final ActionTask actionTask;
+public class TestProcessView extends AbstractProcessView {
 
 	/**
 	 * Constructor.
-	 * 
-	 * @param actionTask
-	 *            the {@link ActionTask} definition
 	 */
-	public AbstractActionTaskProcessor(ActionTask actionTask) {
-		this.actionTask = actionTask;
+	public TestProcessView() {
+		super();
+		setProcessRunner(new TestProcessRunner());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.dsl.process.IActionTaskProcessor#getActionTask()
-	 */
-	public ActionTask getActionTask() {
-		return actionTask;
-	}
 }

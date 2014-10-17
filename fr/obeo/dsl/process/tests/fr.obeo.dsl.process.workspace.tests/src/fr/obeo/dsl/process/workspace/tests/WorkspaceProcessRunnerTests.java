@@ -30,6 +30,7 @@ import fr.obeo.dsl.processworkspace.FileVariable;
 import fr.obeo.dsl.processworkspace.FolderVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.ProjectVariable;
+import fr.obeo.dsl.workspace.listener.change.IChange;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceAdded;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceClosed;
 import fr.obeo.dsl.workspace.listener.change.resource.ResourceContentChanged;
@@ -148,6 +149,11 @@ public class WorkspaceProcessRunnerTests {
 		private int nbValidations;
 
 		/**
+		 * Number of times the {@link TestTask#validate(ProcessContext, IChange)} method has been called.
+		 */
+		private int nbWorkspaceValidations;
+
+		/**
 		 * Number of times the {@link TestTask#doAction(ProcessContext) do action} method has been called.
 		 */
 		private int nbDoActions;
@@ -177,10 +183,20 @@ public class WorkspaceProcessRunnerTests {
 		/**
 		 * {@inheritDoc}
 		 * 
-		 * @see fr.obeo.dsl.process.IActionTaskProcessor#validate(fr.obeo.dsl.process.ProcessContext)
+		 * @see fr.obeo.dsl.process.workspace.AbstractWorkspaceTaskProcessor#validate(fr.obeo.dsl.process.ProcessContext)
 		 */
 		public void validate(ProcessContext context) {
 			nbValidations++;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see fr.obeo.dsl.process.workspace.IWorkspaceTaskProcessor#validate(fr.obeo.dsl.process.ProcessContext,
+		 *      fr.obeo.dsl.workspace.listener.change.IChange)
+		 */
+		public void validate(ProcessContext context, IChange<?> change) {
+			nbWorkspaceValidations++;
 		}
 
 		/**
@@ -254,6 +270,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -272,7 +289,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -288,7 +306,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -304,7 +323,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -356,6 +376,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -374,7 +395,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -390,7 +412,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -406,7 +429,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -458,6 +482,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -478,7 +503,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -494,7 +520,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -510,7 +537,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -562,6 +590,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -580,7 +609,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -596,7 +626,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -612,7 +643,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -664,6 +696,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -683,7 +716,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -699,7 +733,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -715,7 +750,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -767,6 +803,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -786,7 +823,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -802,7 +840,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -818,7 +857,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -870,6 +910,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -891,7 +932,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -907,7 +949,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -923,7 +966,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -975,6 +1019,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -994,7 +1039,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1010,7 +1056,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1026,7 +1073,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1078,6 +1126,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1096,7 +1145,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1112,7 +1162,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1128,7 +1179,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1180,6 +1232,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1198,7 +1251,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1214,7 +1268,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1230,7 +1285,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1282,6 +1338,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1302,7 +1359,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1318,7 +1376,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1334,7 +1393,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1386,6 +1446,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1404,7 +1465,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1420,7 +1482,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1436,7 +1499,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1488,6 +1552,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1507,7 +1572,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1523,7 +1589,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1539,7 +1606,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1591,6 +1659,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1610,7 +1679,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1626,7 +1696,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1642,7 +1713,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1694,6 +1766,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1715,7 +1788,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1731,7 +1805,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1747,7 +1822,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1799,6 +1875,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1818,7 +1895,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1834,7 +1912,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1850,7 +1929,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1902,6 +1982,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1919,7 +2000,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1935,7 +2017,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -1951,7 +2034,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2003,6 +2087,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2020,7 +2105,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2036,7 +2122,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2052,7 +2139,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2104,6 +2192,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2122,7 +2211,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2138,7 +2228,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2154,7 +2245,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2206,6 +2298,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2223,7 +2316,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2239,7 +2333,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2255,7 +2350,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2307,6 +2403,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2324,7 +2421,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2340,7 +2438,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2356,7 +2455,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2408,6 +2508,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2425,7 +2526,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2441,7 +2543,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2457,7 +2560,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2509,6 +2613,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2526,7 +2631,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2542,7 +2648,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2558,7 +2665,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2610,6 +2718,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2628,7 +2737,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2644,7 +2754,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2660,7 +2771,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2712,6 +2824,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2730,7 +2843,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2746,7 +2860,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2762,7 +2877,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2814,6 +2930,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2833,7 +2950,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2849,7 +2967,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2865,7 +2984,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2917,6 +3037,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2935,7 +3056,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2951,7 +3073,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -2967,7 +3090,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3019,6 +3143,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3037,7 +3162,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3053,7 +3179,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3069,7 +3196,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3121,6 +3249,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3139,7 +3268,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3155,7 +3285,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3171,7 +3302,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3223,6 +3355,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3241,7 +3374,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3257,7 +3391,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3273,7 +3408,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3325,6 +3461,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3342,7 +3479,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3358,7 +3496,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3374,7 +3513,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3426,6 +3566,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3443,7 +3584,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3459,7 +3601,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3475,7 +3618,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3527,6 +3671,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3544,7 +3689,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3560,7 +3706,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3576,7 +3723,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3628,6 +3776,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3645,7 +3794,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3661,7 +3811,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3677,7 +3828,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3729,6 +3881,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3747,7 +3900,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3763,7 +3917,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3779,7 +3934,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3831,6 +3987,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3849,7 +4006,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3865,7 +4023,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3881,7 +4040,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3933,6 +4093,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3951,7 +4112,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3967,7 +4129,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -3983,7 +4146,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4035,6 +4199,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4053,7 +4218,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4069,7 +4235,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4085,7 +4252,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4137,6 +4305,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4154,7 +4323,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4170,7 +4340,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4186,7 +4357,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4238,6 +4410,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4255,7 +4428,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4271,7 +4445,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4287,7 +4462,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4339,6 +4515,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4356,7 +4533,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4372,7 +4550,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4388,7 +4567,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4440,6 +4620,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4458,7 +4639,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4474,7 +4656,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4490,7 +4673,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4542,6 +4726,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4560,7 +4745,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4576,7 +4762,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4592,7 +4779,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4644,6 +4832,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4662,7 +4851,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4678,7 +4868,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4694,7 +4885,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4746,6 +4938,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4764,7 +4957,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4780,7 +4974,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4796,7 +4991,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4848,6 +5044,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4866,7 +5063,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4882,7 +5080,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4898,7 +5097,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4950,6 +5150,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4968,7 +5169,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -4984,7 +5186,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5000,7 +5203,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5052,6 +5256,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5070,7 +5275,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5086,7 +5292,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5102,7 +5309,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5154,6 +5362,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5172,7 +5381,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5188,7 +5398,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5204,7 +5415,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5256,6 +5468,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5274,7 +5487,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5290,7 +5504,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5306,7 +5521,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5358,6 +5574,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5376,7 +5593,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5392,7 +5610,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5408,7 +5627,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5460,6 +5680,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5478,7 +5699,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5494,7 +5716,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5510,7 +5733,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5562,6 +5786,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5581,7 +5806,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5597,7 +5823,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5613,7 +5840,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5665,6 +5893,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5684,7 +5913,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5700,7 +5930,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5716,7 +5947,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5768,6 +6000,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5787,7 +6020,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5803,7 +6037,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5819,7 +6054,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5871,6 +6107,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5890,7 +6127,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5906,7 +6144,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5922,7 +6161,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5974,6 +6214,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -5993,7 +6234,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6009,7 +6251,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6025,7 +6268,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6077,6 +6321,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6096,7 +6341,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6112,7 +6358,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6128,7 +6375,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6180,6 +6428,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6199,7 +6448,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6215,7 +6465,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6231,7 +6482,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6283,6 +6535,7 @@ public class WorkspaceProcessRunnerTests {
 
 		assertEquals(true, runner.isActive(task1));
 		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(0, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6302,7 +6555,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(0, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6318,7 +6572,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(2, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);
@@ -6334,7 +6589,8 @@ public class WorkspaceProcessRunnerTests {
 		assertEquals(1, runner.nbVariableChanged);
 
 		assertEquals(true, runner.isActive(task1));
-		assertEquals(3, taskProcessor1.nbValidations);
+		assertEquals(1, taskProcessor1.nbValidations);
+		assertEquals(2, taskProcessor1.nbWorkspaceValidations);
 		assertEquals(0, taskProcessor1.nbDoActions);
 		assertEquals(0, taskProcessor1.nbUndoActions);
 		assertEquals(0, taskProcessor1.nbVariableChanged);

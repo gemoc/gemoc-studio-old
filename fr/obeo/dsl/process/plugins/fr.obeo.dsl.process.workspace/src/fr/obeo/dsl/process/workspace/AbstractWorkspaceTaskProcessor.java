@@ -19,6 +19,7 @@ package fr.obeo.dsl.process.workspace;
 
 import fr.obeo.dsl.process.AbstractActionTaskProcessor;
 import fr.obeo.dsl.process.ActionTask;
+import fr.obeo.dsl.process.ProcessContext;
 
 /**
  * Abstract implementation of {@link fr.obeo.dsl.process.ActionTask ActionTask#getInstanceClassName()} for
@@ -29,13 +30,23 @@ import fr.obeo.dsl.process.ActionTask;
 public abstract class AbstractWorkspaceTaskProcessor extends AbstractActionTaskProcessor implements IWorkspaceTaskProcessor {
 
 	/**
-	 * Contructor.
+	 * Constructor.
 	 * 
 	 * @param actionTask
 	 *            the {@link ActionTask} definition
 	 */
 	public AbstractWorkspaceTaskProcessor(ActionTask actionTask) {
 		super(actionTask);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see fr.obeo.dsl.process.IActionTaskProcessor#validate(fr.obeo.dsl.process.ProcessContext)
+	 * @see IWorkspaceTaskProcessor#validate(ProcessContext, fr.obeo.dsl.workspace.listener.change.IChange)
+	 */
+	public void validate(ProcessContext context) {
+		// nothing to do here.
 	}
 
 }

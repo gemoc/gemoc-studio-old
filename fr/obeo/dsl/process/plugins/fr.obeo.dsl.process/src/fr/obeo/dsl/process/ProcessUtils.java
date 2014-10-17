@@ -302,10 +302,13 @@ public final class ProcessUtils {
 	}
 
 	/**
-	 * recursively find the final ActionTask of the given ComposedTask
+	 * Gets the recursive {@link Set} of the {@link ComposedTask#getFinalTasks() final} {@link ActionTask} of
+	 * the given {@link ComposedTask}.
 	 * 
 	 * @param task
-	 * @return
+	 *            the {@link ComposedTask}
+	 * @return the recursive {@link Set} of the {@link ComposedTask#getFinalTasks() final} {@link ActionTask}
+	 *         of the given {@link ComposedTask}
 	 */
 	public static Set<ActionTask> getFinalActionTasks(ComposedTask task) {
 		final Set<ActionTask> res = new LinkedHashSet<ActionTask>();
@@ -843,10 +846,28 @@ public final class ProcessUtils {
 		return res;
 	}
 
+	/**
+	 * Gets the {@link ProcessContext#setUndone(ActionTask, String) undone} reason in the given
+	 * {@link ProcessContext} for the given {@link Task}.
+	 * 
+	 * @param processContext
+	 *            the {@link ProcessContext}
+	 * @param task
+	 *            the {@link Task}
+	 * @return the {@link ProcessContext#setUndone(ActionTask, String) undone} reason in the given
+	 *         {@link ProcessContext} for the given {@link Task} if any, an empty {@link String} otherwise
+	 */
 	public static String getUndoneReason(ProcessContext processContext, Task task) {
 		String res = "";
 		if (task instanceof ActionTask) {
 			res = processContext.getUndoneReason((ActionTask)task);
+			if (res == null) {
+				if (evaluatePrecondition(processContext, task)) {
+					res = "Not ran yet.";
+				} else {
+					res = "Not evaluated because preconditions Tasks aren't Done.";
+				}
+			}
 		}
 		if (task instanceof ComposedTask && !isDone(processContext, task)) {
 			// TODO combine reasons of mandatory sub tasks for better understanding

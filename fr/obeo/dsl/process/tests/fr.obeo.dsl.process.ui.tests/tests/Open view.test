@@ -1,0 +1,23 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _K_8_4FUVEeSFKPWAb6JyAw,_PKMywFUVEeSFKPWAb6JyAw
+Element-Name: Open view
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _YCMhwFOiEeSWeZxjaS99tg
+Runtime-Version: 1.5.0.201406151150
+Save-Time: 10/16/14 11:34 AM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-menu "Window/Show View/Other..." | click
+with [get-window "Show View"] {
+    get-tree | select "Other/Test Process View"
+    get-button OK | click
+}
+get-tab-folder -index 3 | get-property activePage | equals Test | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
