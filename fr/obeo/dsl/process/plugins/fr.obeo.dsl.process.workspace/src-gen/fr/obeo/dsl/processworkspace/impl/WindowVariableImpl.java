@@ -2,7 +2,6 @@
  */
 package fr.obeo.dsl.processworkspace.impl;
 
-import fr.obeo.dsl.process.impl.ProcessVariableImpl;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.WindowVariable;
 
@@ -16,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
  * 
  * @generated
  */
-public class WindowVariableImpl extends ProcessVariableImpl implements WindowVariable {
+public class WindowVariableImpl extends WorkspaceVariableImpl implements WindowVariable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 

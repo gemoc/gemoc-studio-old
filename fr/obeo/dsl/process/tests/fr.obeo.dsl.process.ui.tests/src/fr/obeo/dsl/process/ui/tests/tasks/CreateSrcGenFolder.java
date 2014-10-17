@@ -21,12 +21,7 @@ import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.workspace.AbstractWorkspaceTaskProcessor;
-import fr.obeo.dsl.workspace.listener.change.IChange;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceAdded;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceClosed;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceOpened;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
+import fr.obeo.dsl.processworkspace.FolderVariable;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -56,46 +51,56 @@ public class CreateSrcGenFolder extends AbstractWorkspaceTaskProcessor {
 		super(actionTask);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.dsl.process.workspace.IWorkspaceTaskProcessor#validate(fr.obeo.dsl.process.ProcessContext,
-	 *      fr.obeo.dsl.workspace.listener.change.IChange)
-	 */
-	public void validate(ProcessContext context, IChange<?> change) {
-		final ProcessVariable folderVariable = getActionTask().getWrittenVariables().get(0);
-		final IFolder knownFolder = (IFolder)context.getVariableValue(folderVariable, getActionTask());
+	@Override
+	protected void knownFolderRemoved(ProcessContext context, IFolder folder, FolderVariable variable) {
+		context.setVariableValue(variable, null, getActionTask());
+		context.setUndone(getActionTask(), folder.getName() + " removed.");
+	}
+
+	@Override
+	protected void knownFolderClosed(ProcessContext context, IFolder folder, FolderVariable variable) {
+		context.setVariableValue(variable, null, getActionTask());
+		context.setUndone(getActionTask(), folder.getName() + " closed.");
+	}
+
+	@Override
+	protected void knownFolderMoved(ProcessContext context, IFolder folder, FolderVariable variable,
+			IFolder destination) {
+		context.setVariableValue(variable, null, getActionTask());
+		context.setUndone(getActionTask(), folder.getName() + " moved to " + destination.getName() + ".");
+	}
+
+	@Override
+	protected void unknownFolderAdded(ProcessContext context, IFolder folder, FolderVariable variable) {
 		final ProcessVariable fileVariable = getActionTask().getObservedVariables().get(0);
 		final IFile file = (IFile)context.getVariableValue(fileVariable, getActionTask());
-		if (change.getObject() instanceof IFolder) {
-			IFolder folder = (IFolder)change.getObject();
-			if (folder.equals(knownFolder)) {
-				if (change instanceof ResourceRemoved) {
-					context.setVariableValue(folderVariable, null, getActionTask());
-					context.setUndone(getActionTask(), knownFolder.getName() + " removed.");
-				} else if (change instanceof ResourceClosed) {
-					context.setVariableValue(folderVariable, null, getActionTask());
-					context.setUndone(getActionTask(), knownFolder.getName() + " closed.");
-				} else if (change instanceof ResourceMoved) {
-					context.setVariableValue(folderVariable, null, getActionTask());
-					context.setUndone(getActionTask(), knownFolder.getName() + " moved to "
-							+ ((ResourceMoved)change).getDestination().getName() + ".");
-				}
-			} else if (knownFolder == null) {
-				final String folderName = getFolderName(file);
-				if ((change instanceof ResourceAdded || change instanceof ResourceOpened)
-						&& folder.getName().equals(folderName)
-						&& ((IFolder)change.getObject()).getParent().equals(file.getParent())) {
-					context.setVariableValue(folderVariable, folder, getActionTask());
-					context.setDone(getActionTask(), folder);
-				} else if (change instanceof ResourceMoved
-						&& ((ResourceMoved)change).getDestination().getName().equals(folderName)
-						&& ((IFolder)change.getObject()).getParent().equals(file.getParent())) {
-					context.setVariableValue(folderVariable, ((ResourceMoved)change).getDestination(),
-							getActionTask());
-					context.setDone(getActionTask(), ((ResourceMoved)change).getDestination());
-				}
-			}
+		final String folderName = getFolderName(file);
+		if (folder.getName().equals(folderName) && folder.getParent().equals(file.getParent())) {
+			context.setVariableValue(variable, folder, getActionTask());
+			context.setDone(getActionTask(), folder);
+		}
+	}
+
+	@Override
+	protected void unknownFolderOpened(ProcessContext context, IFolder folder, FolderVariable variable) {
+		final ProcessVariable fileVariable = getActionTask().getObservedVariables().get(0);
+		final IFile file = (IFile)context.getVariableValue(fileVariable, getActionTask());
+		final String folderName = getFolderName(file);
+		if (folder.getName().equals(folderName) && folder.getParent().equals(file.getParent())) {
+			context.setVariableValue(variable, folder, getActionTask());
+			context.setDone(getActionTask(), folder);
+		}
+	}
+
+	@Override
+	protected void unknownFolderMoved(ProcessContext context, IFolder folder, FolderVariable variable,
+			IFolder destination) {
+		final ProcessVariable fileVariable = getActionTask().getObservedVariables().get(0);
+		final IFile file = (IFile)context.getVariableValue(fileVariable, getActionTask());
+		final String folderName = getFolderName(file);
+		if (destination.getName().equals(folderName) && folder.getParent().equals(file.getParent())) {
+			context.setVariableValue(variable, destination, getActionTask());
+			context.setDone(getActionTask(), destination);
 		}
 	}
 

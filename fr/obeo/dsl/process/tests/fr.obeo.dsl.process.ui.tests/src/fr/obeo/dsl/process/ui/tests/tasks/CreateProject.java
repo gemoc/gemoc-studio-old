@@ -21,12 +21,7 @@ import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.workspace.AbstractWorkspaceTaskProcessor;
-import fr.obeo.dsl.workspace.listener.change.IChange;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceAdded;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceClosed;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceOpened;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
+import fr.obeo.dsl.processworkspace.ProjectVariable;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -50,37 +45,35 @@ public class CreateProject extends AbstractWorkspaceTaskProcessor {
 		super(actionTask);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.dsl.process.workspace.IWorkspaceTaskProcessor#validate(fr.obeo.dsl.process.ProcessContext,
-	 *      fr.obeo.dsl.workspace.listener.change.IChange)
-	 */
-	public void validate(ProcessContext context, IChange<?> change) {
-		if (change.getObject() instanceof IProject) {
-			final ProcessVariable projectVariable = getActionTask().getWrittenVariables().get(0);
-			final IProject knownProject = (IProject)context
-					.getVariableValue(projectVariable, getActionTask());
-			final IProject project = (IProject)change.getObject();
-			if (project.equals(knownProject)) {
-				if (change instanceof ResourceRemoved) {
-					context.setVariableValue(projectVariable, null, getActionTask());
-					context.setUndone(getActionTask(), "Project " + knownProject.getName() + " removed.");
-				} else if (change instanceof ResourceClosed) {
-					context.setVariableValue(projectVariable, null, getActionTask());
-					context.setUndone(getActionTask(), "Project " + knownProject.getName() + " closed.");
-				} else if (change instanceof ResourceMoved) {
-					context.setVariableValue(projectVariable, ((ResourceMoved)change).getDestination(),
-							getActionTask());
-					context.setDone(getActionTask(), ((ResourceMoved)change).getDestination());
-				}
-			} else if (knownProject == null) {
-				if (change instanceof ResourceAdded || change instanceof ResourceOpened) {
-					context.setVariableValue(projectVariable, project, getActionTask());
-					context.setDone(getActionTask(), project);
-				}
-			}
-		}
+	@Override
+	protected void knownProjectRemoved(ProcessContext context, IProject project, ProjectVariable variable) {
+		context.setVariableValue(variable, null, getActionTask());
+		context.setUndone(getActionTask(), "Project " + project.getName() + " removed.");
+	}
+
+	@Override
+	protected void knownProjectClosed(ProcessContext context, IProject project, ProjectVariable variable) {
+		context.setVariableValue(variable, null, getActionTask());
+		context.setUndone(getActionTask(), "Project " + project.getName() + " closed.");
+	}
+
+	@Override
+	protected void knownProjectMoved(ProcessContext context, IProject project, ProjectVariable variable,
+			IProject destination) {
+		context.setVariableValue(variable, destination, getActionTask());
+		context.setDone(getActionTask(), destination);
+	}
+
+	@Override
+	protected void unknownProjectAdded(ProcessContext context, IProject project, ProjectVariable variable) {
+		context.setVariableValue(variable, project, getActionTask());
+		context.setDone(getActionTask(), project);
+	}
+
+	@Override
+	protected void unknownProjectOpened(ProcessContext context, IProject project, ProjectVariable variable) {
+		context.setVariableValue(variable, project, getActionTask());
+		context.setDone(getActionTask(), project);
 	}
 
 	/**

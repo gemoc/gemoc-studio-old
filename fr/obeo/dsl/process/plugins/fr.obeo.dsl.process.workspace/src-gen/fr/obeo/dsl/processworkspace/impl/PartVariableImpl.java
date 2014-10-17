@@ -2,7 +2,6 @@
  */
 package fr.obeo.dsl.processworkspace.impl;
 
-import fr.obeo.dsl.process.impl.ProcessVariableImpl;
 import fr.obeo.dsl.processworkspace.PartVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 
@@ -16,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
  * 
  * @generated
  */
-public class PartVariableImpl extends ProcessVariableImpl implements PartVariable {
+public class PartVariableImpl extends WorkspaceVariableImpl implements PartVariable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 

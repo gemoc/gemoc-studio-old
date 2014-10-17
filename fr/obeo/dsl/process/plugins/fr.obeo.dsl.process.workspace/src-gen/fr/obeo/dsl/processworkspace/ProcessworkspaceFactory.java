@@ -20,6 +20,15 @@ public interface ProcessworkspaceFactory extends EFactory {
 	ProcessworkspaceFactory eINSTANCE = fr.obeo.dsl.processworkspace.impl.ProcessworkspaceFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Workspace Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @return a new object of class '<em>Workspace Variable</em>'.
+	 * @generated
+	 */
+	WorkspaceVariable createWorkspaceVariable();
+
+	/**
 	 * Returns a new object of class '<em>File Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @return a new object of class '<em>File Variable</em>'.

@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package fr.obeo.dsl.processworkspace.provider;
 
@@ -7,6 +11,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -14,16 +19,17 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import fr.obeo.dsl.processworkspace.WindowVariable;
+import fr.obeo.dsl.process.provider.ProcessVariableItemProvider;
+import fr.obeo.dsl.processworkspace.WorkspaceVariable;
 
 /**
  * This is the item provider adapter for a
- * {@link fr.obeo.dsl.processworkspace.WindowVariable} object. <!--
+ * {@link fr.obeo.dsl.processworkspace.WorkspaceVariable} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class WindowVariableItemProvider extends WorkspaceVariableItemProvider
+public class WorkspaceVariableItemProvider extends ProcessVariableItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
@@ -32,7 +38,7 @@ public class WindowVariableItemProvider extends WorkspaceVariableItemProvider
 	 * 
 	 * @generated
 	 */
-	public WindowVariableItemProvider(AdapterFactory adapterFactory) {
+	public WorkspaceVariableItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -52,7 +58,7 @@ public class WindowVariableItemProvider extends WorkspaceVariableItemProvider
 	}
 
 	/**
-	 * This returns WindowVariable.gif. <!-- begin-user-doc --> <!--
+	 * This returns WorkspaceVariable.gif. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated
@@ -60,7 +66,7 @@ public class WindowVariableItemProvider extends WorkspaceVariableItemProvider
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/WindowVariable"));
+				getResourceLocator().getImage("full/obj16/WorkspaceVariable"));
 	}
 
 	/**
@@ -71,9 +77,9 @@ public class WindowVariableItemProvider extends WorkspaceVariableItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((WindowVariable) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_WindowVariable_type")
-				: getString("_UI_WindowVariable_type") + " " + label;
+		String label = ((WorkspaceVariable) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_WorkspaceVariable_type")
+				: getString("_UI_WorkspaceVariable_type") + " " + label;
 	}
 
 	/**
@@ -101,6 +107,17 @@ public class WindowVariableItemProvider extends WorkspaceVariableItemProvider
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return ProcessworkspaceEditPlugin.INSTANCE;
 	}
 
 }

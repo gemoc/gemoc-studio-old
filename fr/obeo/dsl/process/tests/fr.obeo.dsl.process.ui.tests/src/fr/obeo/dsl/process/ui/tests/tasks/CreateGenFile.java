@@ -21,18 +21,12 @@ import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.process.workspace.AbstractWorkspaceTaskProcessor;
-import fr.obeo.dsl.workspace.listener.change.IChange;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceAdded;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceClosed;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceMoved;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceOpened;
-import fr.obeo.dsl.workspace.listener.change.resource.ResourceRemoved;
+import fr.obeo.dsl.processworkspace.FileVariable;
 
 import java.io.ByteArrayInputStream;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 
@@ -58,73 +52,60 @@ public class CreateGenFile extends AbstractWorkspaceTaskProcessor {
 		super(actionTask);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.dsl.process.workspace.IWorkspaceTaskProcessor#validate(fr.obeo.dsl.process.ProcessContext,
-	 *      fr.obeo.dsl.workspace.listener.change.IChange)
-	 */
-	public void validate(ProcessContext context, IChange<?> change) {
-		if (change.getObject() instanceof IFile) {
-			final ProcessVariable projectVariable = getActionTask().getObservedVariables().get(0);
-			final IProject knownProject = (IProject)context
-					.getVariableValue(projectVariable, getActionTask());
-			final ProcessVariable fileVariable = getActionTask().getWrittenVariables().get(0);
-			final IFile knownFile = (IFile)context.getVariableValue(fileVariable, getActionTask());
-			final IFile file = (IFile)change.getObject();
+	@Override
+	protected void knownFileRemoved(ProcessContext context, IFile file, FileVariable variable) {
+		context.setVariableValue(variable, null, getActionTask());
+		context.setUndone(getActionTask(), file.getName() + " removed.");
+	}
 
-			if (file.equals(knownFile)) {
-				if (change instanceof ResourceRemoved) {
-					context.setVariableValue(fileVariable, null, getActionTask());
-					context.setUndone(getActionTask(), knownFile.getName() + " removed.");
-				} else if (change instanceof ResourceClosed) {
-					context.setVariableValue(fileVariable, null, getActionTask());
-					context.setUndone(getActionTask(), knownFile.getName() + " closed.");
-				} else if (change instanceof ResourceMoved) {
-					knownFileMoved(context, change, knownProject, fileVariable, knownFile, file);
-				}
-			} else if (knownFile == null) {
-				if ((change instanceof ResourceAdded || change instanceof ResourceOpened)
-						&& file.getName().endsWith(EXTENSION) && file.getProject().equals(knownProject)) {
-					context.setVariableValue(fileVariable, file, getActionTask());
-					context.setDone(getActionTask(), file);
-				} else if (change instanceof ResourceMoved
-						&& ((ResourceMoved)change).getDestination().getName().endsWith(EXTENSION)
-						&& file.getProject().equals(knownProject)) {
-					context.setVariableValue(fileVariable, ((ResourceMoved)change).getDestination(),
-							getActionTask());
-					context.setDone(getActionTask(), ((ResourceMoved)change).getDestination());
-				}
-			}
+	@Override
+	protected void knownFileClosed(ProcessContext context, IFile file, FileVariable variable) {
+		context.setVariableValue(variable, null, getActionTask());
+		context.setUndone(getActionTask(), file.getName() + " closed.");
+	}
+
+	@Override
+	protected void knownFileMoved(ProcessContext context, IFile file, FileVariable variable, IFile destination) {
+		final ProcessVariable projectVariable = getActionTask().getObservedVariables().get(0);
+		final IProject knownProject = (IProject)context.getVariableValue(projectVariable, getActionTask());
+		if (destination.getName().endsWith(EXTENSION) && file.getProject().equals(knownProject)) {
+			context.setVariableValue(variable, destination, getActionTask());
+			context.setDone(getActionTask(), destination);
+		} else {
+			context.setVariableValue(variable, null, getActionTask());
+			context.setUndone(getActionTask(), file.getFullPath() + " renamed to "
+					+ destination.getFullPath() + " a non gen file.");
 		}
 	}
 
-	/**
-	 * The known {@link IFile} has been moved.
-	 * 
-	 * @param context
-	 *            the {@link ProcessContext}
-	 * @param change
-	 *            the {@link IChange}
-	 * @param knownProject
-	 *            the known {@link IProject}
-	 * @param fileVariable
-	 *            the {@link IFile} {@link ProcessVariable}
-	 * @param knownFile
-	 *            the known {@link IFile}
-	 * @param file
-	 *            the changed {@link IFile}
-	 */
-	private void knownFileMoved(ProcessContext context, IChange<?> change, final IProject knownProject,
-			final ProcessVariable fileVariable, final IFile knownFile, final IFile file) {
-		IResource destination = ((ResourceMoved)change).getDestination();
+	@Override
+	protected void unknownFileAdded(ProcessContext context, IFile file, FileVariable variable) {
+		final ProcessVariable projectVariable = getActionTask().getObservedVariables().get(0);
+		final IProject knownProject = (IProject)context.getVariableValue(projectVariable, getActionTask());
+		if (file.getName().endsWith(EXTENSION) && file.getProject().equals(knownProject)) {
+			context.setVariableValue(variable, file, getActionTask());
+			context.setDone(getActionTask(), file);
+		}
+	}
+
+	@Override
+	protected void unknownFileOpened(ProcessContext context, IFile file, FileVariable variable) {
+		final ProcessVariable projectVariable = getActionTask().getObservedVariables().get(0);
+		final IProject knownProject = (IProject)context.getVariableValue(projectVariable, getActionTask());
+		if (file.getName().endsWith(EXTENSION) && file.getProject().equals(knownProject)) {
+			context.setVariableValue(variable, file, getActionTask());
+			context.setDone(getActionTask(), file);
+		}
+	}
+
+	@Override
+	protected void unknownFileMoved(ProcessContext context, IFile file, FileVariable variable,
+			IFile destination) {
+		final ProcessVariable projectVariable = getActionTask().getObservedVariables().get(0);
+		final IProject knownProject = (IProject)context.getVariableValue(projectVariable, getActionTask());
 		if (destination.getName().endsWith(EXTENSION) && file.getProject().equals(knownProject)) {
-			context.setVariableValue(fileVariable, destination, getActionTask());
+			context.setVariableValue(variable, destination, getActionTask());
 			context.setDone(getActionTask(), destination);
-		} else {
-			context.setVariableValue(fileVariable, null, getActionTask());
-			context.setUndone(getActionTask(), knownFile.getFullPath() + " renamed to "
-					+ destination.getFullPath() + " a non gen file.");
 		}
 	}
 
