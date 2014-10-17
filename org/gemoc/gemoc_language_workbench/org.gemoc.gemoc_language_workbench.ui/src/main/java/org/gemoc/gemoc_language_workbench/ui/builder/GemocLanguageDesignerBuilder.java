@@ -224,6 +224,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
 				// Create the resource
 				Resource modelresource = resSet.getResource(URI.createURI(file.getLocationURI().toString()), true);
+				LanguageDefinition languageDef =  (LanguageDefinition) modelresource.getContents().get(0);
 				// get buil option first
 //				GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) modelresource.getContents().get(0);
 //			    BuildOptions buildOptions = gemocLanguageWorkbenchConfiguration.getBuildOptions();
@@ -249,7 +250,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				} 
 				
 				// update entry in plugin.xdsml
-				setPluginLanguageNameAndFilePath(project, resource.getFullPath().toString());
+				setPluginLanguageNameAndFilePath(project, languageDef.getName());
 			}
 		}
 	}
