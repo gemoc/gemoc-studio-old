@@ -1,13 +1,17 @@
 package org.gemoc.execution.engine.core;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionFinishedCondition;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionResultCondition;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ComparisonOperator;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.Condition;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.Force;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ForceKind;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
@@ -18,7 +22,7 @@ public class ASynchroneExecution extends OperationExecution
 	
 	private Collection<When> _whenStatements;
 	private IClockController _clockController;
-	private Collection<Force> _forces;
+	private HashMap<Force, When> _forces;
 	
 	public ASynchroneExecution(ModelSpecificEvent mse, Collection<When> whenStatements, IClockController clockController, GemocExecutionEngine engine) 
 	{
@@ -31,7 +35,7 @@ public class ASynchroneExecution extends OperationExecution
 	{
 		collectForces();
 		// forbid
-		for (Force force : _forces)
+		for (Force force : _forces.keySet())
 		{						
 			if (force.getKind().equals(ForceKind.PRESENCE))
 			{
@@ -52,16 +56,16 @@ public class ASynchroneExecution extends OperationExecution
 
 	private void collectForces() 
 	{
-		_forces = new ArrayList<>();
+		_forces = new HashMap<>();
 		for (When statement : _whenStatements)
 		{
-			if (statement.getCondition() instanceof ActionFinishedCondition)
+//			if (statement.getCondition() instanceof ActionFinishedCondition)
+//			{
+//			}
+			if (statement.getAction() instanceof Force)
 			{
-				if (statement.getAction() instanceof Force)
-				{
-					Force a = (Force)statement.getAction();
-					_forces.add(a);								
-				}
+				Force a = (Force)statement.getAction();
+				_forces.put(a, statement);								
 			}
 		}	
 	}
@@ -73,16 +77,84 @@ public class ASynchroneExecution extends OperationExecution
 			Thread.sleep(5000);
 			executeMSESynchronously();
 			// free
-			for (Force force : _forces)
+			for (Entry<Force, When> entry : _forces.entrySet())
 			{						
-				
-				_clockController.freeInTheFuture(force.getEventToBeForced());
+				Condition condition = entry.getValue().getCondition();
+				if (condition instanceof ActionFinishedCondition)
+				{
+					_clockController.freeInTheFuture(entry.getKey().getEventToBeForced());					
+				}
+				else if (condition instanceof ActionResultCondition)
+				{
+					ActionResultCondition resultCondition = (ActionResultCondition)condition;
+					boolean goOn = false;
+					
+					switch(resultCondition.getOperator().getValue())
+					{
+						case ComparisonOperator.DIFFERENT_VALUE:
+							goOn = getResult() != resultCondition.getComparisonValue();
+							break;
+						case ComparisonOperator.EQUALS_VALUE:
+							goOn = getResult().equals(resultCondition.getComparisonValue());
+							break;
+						default:
+							goOn = tryNumber(resultCondition.getOperator(), getResult(), resultCondition.getComparisonValue());
+							break;
+					}
+					if (goOn)
+					{
+						if (entry.getKey().getOnTrigger() == null)
+						{
+							_clockController.freeInTheFuture(entry.getKey().getEventToBeForced());						
+						}
+						else
+						{
+							FreeClockFutureAction action = new FreeClockFutureAction(entry.getKey().getEventToBeForced(), entry.getKey().getOnTrigger(), _clockController);
+							getEngine().addFutureAction(action);
+						}
+					}
+				}
 			}
 		}
 		catch (Exception e)
 		{
 			Activator.getDefault().error("Exception received " + e.getMessage(), e);
 		}
+	}
+
+	private boolean  tryNumber(ComparisonOperator operator, Object result, Object comparisonValue) throws Exception 
+	{
+		Double s1 = null;
+		Double s2 = null;				
+		if (result instanceof Number
+			&& comparisonValue instanceof Number)
+		{
+			s1 = ((Number)result).doubleValue();
+			s2 = ((Number)comparisonValue).doubleValue();
+		}
+		if (s1 == null
+			|| s2 == null)
+		{
+			throw new Exception("Cannot convert result or comparison value to double.");
+		}
+		boolean goOn = false;
+		int comparisonResult = Double.compare(s1.doubleValue(), s2.doubleValue());
+		switch(operator.getValue())
+		{
+			case ComparisonOperator.INF_EQUALS_VALUE:
+				goOn = comparisonResult <= 0;
+				break;
+			case ComparisonOperator.INF_VALUE:
+				goOn = comparisonResult < 0;
+				break;
+			case ComparisonOperator.SUP_EQUALS_VALUE:
+				goOn = comparisonResult >= 0;
+				break;
+			case ComparisonOperator.SUP_VALUE:
+				goOn = comparisonResult > 0;
+				break;
+		}	
+		return goOn;
 	}
 
 	private void executeMSESynchronously() 

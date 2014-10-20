@@ -81,5 +81,7 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, Ge
 //	public CodeExecutor getCodeExecutor();
 
 	public List<LogicalStep> getPossibleLogicalSteps();
+
+	public void addFutureAction(IFutureAction action);
 	
 }

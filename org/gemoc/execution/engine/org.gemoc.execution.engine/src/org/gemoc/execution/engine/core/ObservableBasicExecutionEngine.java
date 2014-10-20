@@ -22,6 +22,7 @@ import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
+import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponent;
@@ -449,14 +450,32 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			{
 				terminated = !_debugger.control(Thread.currentThread().getName(), mse.getCaller());
 			}
+			executeAssociatedActions(mse);
 			executeModelSpecificEvent(mse);
+		}
+	}
+	
+	private void executeAssociatedActions(ModelSpecificEvent mse)
+	{
+		synchronized(_futureActionsLock)
+		{
+			ArrayList<IFutureAction> actionsToRemove = new ArrayList<IFutureAction>();
+			for (IFutureAction action : _futureActions)
+			{
+				if (action.getTriggeringMSE() == mse)
+				{
+					actionsToRemove.add(action);
+					action.perform();
+				}
+			}
+			_futureActions.removeAll(actionsToRemove);
 		}
 	}
 	
 	private void executeModelSpecificEvent(ModelSpecificEvent mse)
 	{
 		if (mse.getAction() != null) 
-		{
+		{			
 			ActionModel feedbackModel = _executionContext.getFeedbackModel();
 			ArrayList<When> whenStatements = new ArrayList<When>();
 			for (When w : feedbackModel.getWhenStatements())
@@ -610,6 +629,18 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	{
 		if (hasCapability(ModelExecutionTracingCapability.class))
 			capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeDeciding(possibleLogicalSteps);
+	}
+
+	
+	private ArrayList<IFutureAction> _futureActions = new ArrayList<>();
+	private Object _futureActionsLock = new Object();
+	@Override
+	public void addFutureAction(IFutureAction action) 
+	{
+		synchronized(_futureActionsLock)
+		{
+			_futureActions.add(action);
+		}
 	}
 
 }
