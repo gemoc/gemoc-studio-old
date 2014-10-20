@@ -8,7 +8,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
@@ -34,8 +33,6 @@ public interface IExecutionContext extends IDisposable
 	
 	public Collection<IEngineHook> getHooks();
 	
-	public FeedbackPolicy getFeedbackPolicy();
-
 	public Collection<IClockController> getClockControllers();
 
 	public IRunConfiguration getRunConfiguration();

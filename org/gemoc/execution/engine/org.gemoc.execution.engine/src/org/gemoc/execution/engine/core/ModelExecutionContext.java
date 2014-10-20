@@ -26,7 +26,6 @@ import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EngineContextException;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 
@@ -128,7 +127,6 @@ public class ModelExecutionContext implements IExecutionContext
 	private CodeExecutor _codeExecutor;
 	private EventExecutor _eventExecutor;
 	private Collection<IEngineHook> _hooks;
-	private FeedbackPolicy _feedbackPolicy;
 	private Collection<IClockController> _clockControllers;
 	
 	private void instantiateAgents() throws CoreException {
@@ -136,7 +134,6 @@ public class ModelExecutionContext implements IExecutionContext
 		_codeExecutor = _languageDefinition.instanciateCodeExecutor();
 		_eventExecutor = _languageDefinition.instanciateEventExecutor();
 		_hooks = _languageDefinition.instanciateEngineHooks();
-		_feedbackPolicy = _languageDefinition.instanciateFeedbackPolicy();
 		_clockControllers = _languageDefinition.instanciateClockControllers();
 	}
 
@@ -195,12 +192,6 @@ public class ModelExecutionContext implements IExecutionContext
 	public Collection<IEngineHook> getHooks() 
 	{
 		return _hooks;
-	}
-
-	@Override
-	public FeedbackPolicy getFeedbackPolicy() 
-	{
-		return _feedbackPolicy;
 	}
 
 	@Override

@@ -3,7 +3,6 @@ package org.gemoc.gemoc_language_workbench.api.dsa;
 
 
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 
@@ -39,7 +38,7 @@ public interface EventExecutor {
 	 * @return the FeedbackData representing the result of the
 	 *         ModelSpecificAction execution.
 	 */
-	public FeedbackData execute(ActionCall call)
+	public Object execute(ActionCall call)
 			throws EventExecutionException;
 
 

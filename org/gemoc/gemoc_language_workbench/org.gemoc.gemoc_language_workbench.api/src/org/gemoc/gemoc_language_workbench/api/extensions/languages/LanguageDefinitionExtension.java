@@ -10,7 +10,6 @@ import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 
@@ -46,17 +45,6 @@ public class LanguageDefinitionExtension extends Extension
 		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
 		if (instance instanceof Solver) {
 			return (Solver) instance;
-		}
-		throwInstanciationCoreException();
-		return null;
-	}
-	
-	final public FeedbackPolicy instanciateFeedbackPolicy() 
-			throws CoreException 
-	{
-		Object oFeedbackPolicy = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_FEEDBACKPOLICY_ATT);
-		if (oFeedbackPolicy instanceof FeedbackPolicy) {
-			return(FeedbackPolicy) oFeedbackPolicy;
 		}
 		throwInstanciationCoreException();
 		return null;

@@ -10,7 +10,6 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackFactory;
@@ -27,12 +26,8 @@ public class SynchroneExecution extends OperationExecution
 	@Override
 	public void run() 
 	{
-		FeedbackData res = callExecutor();
+		Object res = callExecutor();
 		setResult(res);
-		if (res != null) 
-		{
-			getExecutionContext().getFeedbackPolicy().processFeedback(res, getEngine());
-		}
 	}
 
 	/**
@@ -43,15 +38,15 @@ public class SynchroneExecution extends OperationExecution
 	 *            the {@link EngineEventOccurence} to execute
 	 * @return the {@link FeedbackData} if any, <code>null</code> other wise
 	 */
-	private FeedbackData callExecutor() 
+	private Object callExecutor() 
 	{
 		final TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(getExecutionContext().getResourceModel().getResourceSet());
-		FeedbackData res = null;
+		Object res = null;
 		final ActionCall call = FeedbackFactory.eINSTANCE.createActionCall();
 		call.setTriggeringEvent(getMSE());
 		if (editingDomain != null) {
 			final RecordingCommand command = new RecordingCommand(editingDomain, "execute engine event occurence " + getMSE()) {
-				private List<FeedbackData> result = new ArrayList<FeedbackData>();
+				private List<Object> result = new ArrayList<Object>();
 
 				@Override
 				protected void doExecute() {
@@ -68,7 +63,7 @@ public class SynchroneExecution extends OperationExecution
 				}
 			};
 			editingDomain.getCommandStack().execute(command);
-			res = (FeedbackData) command.getResult().iterator().next();
+			res = (Object) command.getResult().iterator().next();
 		} else {
 			try {
 				res = getExecutionContext().getEventExecutor().execute(call);

@@ -21,6 +21,5 @@ Export-Package: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.gemoc_language_workbench.api.extensions.deciders,
  org.gemoc.gemoc_language_workbench.api.extensions.frontends,
  org.gemoc.gemoc_language_workbench.api.extensions.languages,
- org.gemoc.gemoc_language_workbench.api.feedback,
  org.gemoc.gemoc_language_workbench.api.moc,
  org.gemoc.gemoc_language_workbench.api.utils
