@@ -2,8 +2,7 @@
  */
 package org.gemoc.execution.engine.scenario;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.gemoc.execution.engine.scenario.EventState#getState <em>State</em>}</li>
- *   <li>{@link org.gemoc.execution.engine.scenario.EventState#getClock <em>Clock</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.scenario.EventState#getMse <em>Mse</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,29 +53,29 @@ public interface EventState extends EObject {
 	void setState(Future value);
 
 	/**
-	 * Returns the value of the '<em><b>Clock</b></em>' reference.
+	 * Returns the value of the '<em><b>Mse</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Clock</em>' reference isn't clear,
+	 * If the meaning of the '<em>Mse</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Clock</em>' reference.
-	 * @see #setClock(Clock)
-	 * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getEventState_Clock()
+	 * @return the value of the '<em>Mse</em>' reference.
+	 * @see #setMse(ModelSpecificEvent)
+	 * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getEventState_Mse()
 	 * @model required="true"
 	 * @generated
 	 */
-	Clock getClock();
+	ModelSpecificEvent getMse();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.execution.engine.scenario.EventState#getClock <em>Clock</em>}' reference.
+	 * Sets the value of the '{@link org.gemoc.execution.engine.scenario.EventState#getMse <em>Mse</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Clock</em>' reference.
-	 * @see #getClock()
+	 * @param value the new value of the '<em>Mse</em>' reference.
+	 * @see #getMse()
 	 * @generated
 	 */
-	void setClock(Clock value);
+	void setMse(ModelSpecificEvent value);
 
 } // EventState

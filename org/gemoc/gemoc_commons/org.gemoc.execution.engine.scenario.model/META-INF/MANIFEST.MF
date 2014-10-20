@@ -12,5 +12,6 @@ Export-Package: org.gemoc.execution.engine.scenario,
  org.gemoc.execution.engine.scenario.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
+ fr.inria.aoste.timesquare.ecl.feedback.model;visibility:=reexport,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -11,7 +11,7 @@ public class ChooseQVTOAndGenerateTimeModelFile extends ChooseQVTOAndGenerateExt
 	}
 
 	@Override
-	protected String getFileExtension() {
+	protected String getMoCFileExtension() {
 		return "timemodel";
 	}
 	

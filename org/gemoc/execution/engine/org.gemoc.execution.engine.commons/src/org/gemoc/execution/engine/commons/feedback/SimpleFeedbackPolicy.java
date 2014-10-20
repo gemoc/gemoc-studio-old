@@ -34,7 +34,7 @@ public class SimpleFeedbackPolicy implements FeedbackPolicy {
 			Activator.getDefault().warn("Please don't return a Double in your DSA");
 		} else if (o instanceof Boolean) {
 			Activator.getDefault().debug("Caught a Boolean as feedback from event: "
-							+ feedbackData.getContextEngineEventOccurence().toString());
+							+ feedbackData.getCall().toString());
 			//
 			// if
 			// (causalEvent.getAction().getTargetQualifiedName().equals("guardIsDay")

@@ -42,7 +42,8 @@ public class QvtoTransformationPerformer {
 		ExtendedCCSLStandaloneSetup.doSetup();
 	}
 	
-	public String run(String transformationPath, String modelPath, String outputPath) {		
+	public void run(String transformationPath, String modelPath, String outputMoCPath, String outputFeedbackPath) 
+	{		
 	    URI transformationURI = URI.createURI(transformationPath, true);
 	    URI modelURI = URI.createURI(modelPath, true);
 		IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(modelURI);
@@ -64,34 +65,33 @@ public class QvtoTransformationPerformer {
 		TransformationExecutor executor = new TransformationExecutor(transformationURI);
 		//inResource have the vaule of inModel
 		ModelExtent input = new BasicModelExtent(modelResource.getContents());
-		ModelExtent output = new BasicModelExtent();
+		ModelExtent outputMoC = new BasicModelExtent();
+		ModelExtent outputFeedback = new BasicModelExtent();
 
 		ExecutionContextImpl context = new ExecutionContextImpl();
 
-		ExecutionDiagnostic diagnostic = executor.execute(context, input, output);
+		ExecutionDiagnostic diagnostic = executor.execute(context, input, outputMoC, outputFeedback);
 		System.out.println(diagnostic);
 		//output resource saving
 	    
-	    URI outputUri = URI.createURI(outputPath, true);
-	    Resource outputResource = null;
-	    try{
-	    	outputResource = outputResourceSet.createResource(outputUri);
-	    }catch( Exception e){
-	    	System.out.println(e);
-	    	outputResource = outputResourceSet.createResource(outputUri);
-
-	    //	outputResource = outputResourceSet.getResource(outputUri,true);
+	    URI outputMoCUri = URI.createURI(outputMoCPath, true);
+	    URI outputFeedbackUri = URI.createURI(outputFeedbackPath, true);
+	    Resource outputMoCResource = null;
+	    Resource outputFeedbackResource = null;
+	    try
+	    {
+	    	outputMoCResource = outputResourceSet.createResource(outputMoCUri);
+	    	outputFeedbackResource = outputResourceSet.createResource(outputFeedbackUri);
+		    outputMoCResource.getContents().addAll(outputMoC.getContents());
+		    outputFeedbackResource.getContents().addAll(outputFeedback.getContents());
+		    hackImportStatements(modelURI, outputMoC);		    
+			outputMoCResource.save(null);
+			outputFeedbackResource.save(null);
+	    }
+	    catch (Exception e)
+	    {
+	    	e.printStackTrace();
 	    };
-	    outputResource.getContents().addAll(output.getContents());
-	    hackImportStatements(modelURI, output);
-	    
-	    try {
-			outputResource.save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    return outputPath;
 	}
 
 	private void hackImportStatements(URI modelURI, ModelExtent output) {

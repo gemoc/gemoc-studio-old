@@ -8,48 +8,44 @@ import java.util.Map;
 
 import org.gemoc.execution.engine.io.views.event.filters.IEventFilterStrategy;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.Element;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public class ModelSpecificEventSet 
 {
 	
-	private Map<String, ModelSpecificEvent> _mseMap = new HashMap<String, ModelSpecificEvent>();
+	private Map<String, ModelSpecificEventWrapper> _mseMap = new HashMap<String, ModelSpecificEventWrapper>();
 
 	private List<Relation> _relations = new ArrayList<Relation>();
 
 	
-	public ModelSpecificEventSet(ClockConstraintSystem clockConstraintSystem) 
+	public ModelSpecificEventSet(ActionModel model) 
 	{
-		for(Relation r : clockConstraintSystem.getSubBlock().get(0).getRelations())
+//		for(Relation r : clockConstraintSystem.getSubBlock().get(0).getRelations())
+//		{
+//			if (r instanceof Relation)
+//			{
+//				_relations.add((Relation)r);
+//			}
+//		}
+		if (model != null)
 		{
-			if (r instanceof Relation)
+			for (ModelSpecificEvent mse : model.getEvents())
 			{
-				_relations.add((Relation)r);
-			}
-		}
-		if (clockConstraintSystem != null)
-		{
-			for (Element e : clockConstraintSystem.getSubBlock().get(0).getElements())
-			{
-				if (e instanceof Clock)
-				{
-					add((Clock)e);
-				}
+				add(mse);
 			}
 		}
 	}
 
 	/**
 	 * Wrap a clock and add it to the wrapper amp. 
-	 * @param clock the clock to be 'wrapped' 
+	 * @param mse the clock to be 'wrapped' 
 	 */
-	private void add(Clock clock) 
+	private void add(ModelSpecificEvent mse) 
 	{
-		ModelSpecificEvent mse = new ModelSpecificEvent(clock);
-		_mseMap.put(clock.getName(), mse);
+		ModelSpecificEventWrapper wrapper = new ModelSpecificEventWrapper(mse);
+		_mseMap.put(mse.getName(), wrapper);
 	}
 	
 	/**
@@ -57,18 +53,18 @@ public class ModelSpecificEventSet
 	 * @param filter the strategy to applied on the wrapper map
 	 * @return The filtered wrappers for the current cache
 	 */
-	public Collection<ModelSpecificEvent> getFilteredMSEs(IEventFilterStrategy filter) 
+	public Collection<ModelSpecificEventWrapper> getFilteredMSEs(IEventFilterStrategy filter) 
 	{
 		filter.setParamFilter(_relations, _mseMap);
 		return filter.applyFilter();
 	}
 	
-	public ModelSpecificEvent getMSE(String clockName) 
+	public ModelSpecificEventWrapper getMSE(String clockName) 
 	{
 		return _mseMap.get(clockName);
 	}
 
-	public Collection<ModelSpecificEvent> getMSEs() 
+	public Collection<ModelSpecificEventWrapper> getMSEs() 
 	{
 		return _mseMap.values();
 	}

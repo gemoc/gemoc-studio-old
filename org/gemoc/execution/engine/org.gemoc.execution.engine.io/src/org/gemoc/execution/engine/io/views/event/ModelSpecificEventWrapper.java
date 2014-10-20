@@ -1,7 +1,7 @@
 package org.gemoc.execution.engine.io.views.event;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 
 /**
@@ -11,14 +11,14 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
  *	the clock and is state. In the future others features like
  *	statistics (nb of uses,etc ) will be added.
  */
-public class ModelSpecificEvent 
+public class ModelSpecificEventWrapper 
 {
-	private Clock _clock;
+	private ModelSpecificEvent _mse;
 	private ClockStatus _state;
 	
-	public ModelSpecificEvent(Clock clock) 
+	public ModelSpecificEventWrapper(ModelSpecificEvent mse) 
 	{
-		_clock = clock;
+		_mse = mse;
 		_state = ClockStatus.NOTFORCED_NOTSET;
 	}
 	
@@ -34,15 +34,15 @@ public class ModelSpecificEvent
 
 	public String getClockQualifiedName() 
 	{
-		Block block = (Block)_clock.eContainer();
+		Block block = (Block)_mse.eContainer();
 		String result = block.getName();
 		result += "::";
-		result += _clock.getName();
+		result += _mse.getName();
 		return result;
 	}
 	
-	public Clock getClock() 
+	public ModelSpecificEvent getMSE() 
 	{
-		return _clock;
+		return _mse;
 	}
 }

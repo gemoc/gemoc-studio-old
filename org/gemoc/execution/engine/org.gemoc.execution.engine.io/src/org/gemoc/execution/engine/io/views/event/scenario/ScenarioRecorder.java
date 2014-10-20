@@ -9,7 +9,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.views.event.ClockStatus;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEvent;
+import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
@@ -76,14 +76,14 @@ public class ScenarioRecorder extends ScenarioTool
 				List<ExecutionStep> stepList =  _fragment.getStepList();
 				ExecutionStep newStep = _factory.createExecutionStep();
 				List<EventState> newListEvent = newStep.getEventList();
-				for(ModelSpecificEvent cw: _mseContext.getMSEs())
+				for(ModelSpecificEventWrapper cw: _mseContext.getMSEs())
 				{
 					ClockStatus state = cw.getState();
 					boolean isForced = state.isForced();
 					if(isForced)
 					{
 						EventState newState = _factory.createEventState();
-						newState.setClock(cw.getClock());
+						newState.setMse(cw.getMSE());
 						newState.setState(state.getState());
 						newListEvent.add(newState);
 					} 

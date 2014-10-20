@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.core;
 
+import java.io.IOException;
 import java.util.Collection;
 
 import org.eclipse.core.resources.IFile;
@@ -28,6 +29,8 @@ import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefin
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
+
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 
 
 public class ModelExecutionContext implements IExecutionContext
@@ -70,6 +73,7 @@ public class ModelExecutionContext implements IExecutionContext
 
 			setUpEditingDomain(resourceSet);	
 			setUpSolver(resourceSet);						
+			setUpFeedbackModel(resourceSet);
 		} 
 		catch (CoreException e)
 		{
@@ -93,6 +97,18 @@ public class ModelExecutionContext implements IExecutionContext
 		getSolver().setSolverInputFile(resourceSet, mocURI);
 	}
 
+	private void setUpFeedbackModel(ResourceSet resourceSet) 
+	{
+		URI feedbackURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
+		Resource resource = resourceSet.createResource(feedbackURI);
+		try {
+			resource.load(null);
+			_feedbackModel = (ActionModel)resource.getContents().get(0);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	protected Resource getModelResource(ResourceSet resourceSet, String modelPath) throws CoreException {		
 		return resourceSet.getResource(URI.createPlatformResourceURI(modelPath, true), true);
 	}
@@ -135,8 +151,6 @@ public class ModelExecutionContext implements IExecutionContext
 		}
 	}
 	
-
-
 	private void generateMoC() 
 	{
 		String transformationPath = _languageDefinition.getQVTOPath();
@@ -154,7 +168,8 @@ public class ModelExecutionContext implements IExecutionContext
 			performer.run(
 						"platform:/plugin" + transformationPath, 
 						"platform:/resource" + _executionWorkspace.getModelPath().toString(), 
-						"platform:/resource" + _executionWorkspace.getMoCPath().toString());			
+						"platform:/resource" + _executionWorkspace.getMoCPath().toString(),
+						"platform:/resource" + _executionWorkspace.getFeedbackModelPath().toString());			
 		}		
 	}
 		
@@ -228,6 +243,13 @@ public class ModelExecutionContext implements IExecutionContext
 	@Override
 	public ExecutionMode getExecutionMode() {
 		return _executionMode;
+	}
+
+	private ActionModel _feedbackModel;
+	@Override
+	public ActionModel getFeedbackModel() 
+	{
+		return _feedbackModel;
 	}
 
 }

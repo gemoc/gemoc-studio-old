@@ -8,22 +8,13 @@ public class EventInjectionContext
 {
 
 	private Solver _solver;
-	private ClockConstraintSystem _clockConstraintSystem;
 
-	public EventInjectionContext(Solver solver, ClockConstraintSystem clockConstraintSystem)
+	public EventInjectionContext(Solver solver)
 	{
 		if (solver == null)
 			throw new IllegalArgumentException("solver");
 		_solver = solver;
-		if (clockConstraintSystem == null)
-			throw new IllegalArgumentException("clockConstraintSystem");
-		_clockConstraintSystem = clockConstraintSystem;
 	}	
-	
-	public ClockConstraintSystem getClockConstraintSystem()
-	{
-		return _clockConstraintSystem;
-	}
 	
 	public Solver getSolver()
 	{

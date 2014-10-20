@@ -20,7 +20,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventState">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//Future"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" lowerBound="1" eType="ecore:EClass platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//Clock"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mse" lowerBound="1" eType="ecore:EClass platform:/plugin/fr.inria.aoste.timesquare.ecl.feedback.model/model/feedback.ecore#//ModelSpecificEvent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Future">
     <eLiterals name="tick"/>

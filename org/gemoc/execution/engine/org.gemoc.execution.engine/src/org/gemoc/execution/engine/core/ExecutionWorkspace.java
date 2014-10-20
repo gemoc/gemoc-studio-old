@@ -84,4 +84,11 @@ public class ExecutionWorkspace implements IExecutionWorkspace
 	{
 		copyFileTo(sourcePath, _executionPath);
 	}
+
+	@Override
+	public IPath getFeedbackModelPath() 
+	{
+		IPath mocPath= new Path(getModelPath().removeFileExtension().lastSegment()).addFileExtension("feedback");
+		return _executionTopParentPath.append(mocPath);
+	}
 }

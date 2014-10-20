@@ -234,13 +234,13 @@ public interface ScenarioPackage extends EPackage {
 	int EVENT_STATE__STATE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Clock</b></em>' reference.
+	 * The feature id for the '<em><b>Mse</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_STATE__CLOCK = 1;
+	int EVENT_STATE__MSE = 1;
 
 	/**
 	 * The number of structural features of the '<em>Event State</em>' class.
@@ -388,15 +388,15 @@ public interface ScenarioPackage extends EPackage {
 	EAttribute getEventState_State();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.scenario.EventState#getClock <em>Clock</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.scenario.EventState#getMse <em>Mse</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Clock</em>'.
-	 * @see org.gemoc.execution.engine.scenario.EventState#getClock()
+	 * @return the meta object for the reference '<em>Mse</em>'.
+	 * @see org.gemoc.execution.engine.scenario.EventState#getMse()
 	 * @see #getEventState()
 	 * @generated
 	 */
-	EReference getEventState_Clock();
+	EReference getEventState_Mse();
 
 	/**
 	 * Returns the meta object for enum '{@link org.gemoc.execution.engine.scenario.Future <em>Future</em>}'.
@@ -530,12 +530,12 @@ public interface ScenarioPackage extends EPackage {
 		EAttribute EVENT_STATE__STATE = eINSTANCE.getEventState_State();
 
 		/**
-		 * The meta object literal for the '<em><b>Clock</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Mse</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EVENT_STATE__CLOCK = eINSTANCE.getEventState_Clock();
+		EReference EVENT_STATE__MSE = eINSTANCE.getEventState_Mse();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.Future <em>Future</em>}' enum.

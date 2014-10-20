@@ -2,45 +2,35 @@ package org.gemoc.execution.engine.core;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Observable;
-import java.util.concurrent.Semaphore;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
+import org.gemoc.execution.engine.commons.dsa.DefaultClockController;
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.commons.dsa.IAliveClockController;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
-import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
 import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
-import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponent;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
-import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.When;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
 
@@ -116,6 +106,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 	private IExecutionContext _executionContext;
 
+	private IAliveClockController _clockController;
+	
 	/**
 	 * The constructor takes in all the language-specific elements. Creates the
 	 * internal map of Domain-Specific Events and initializes the languages used
@@ -152,6 +144,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			if (clockController instanceof IAliveClockController)
 				addClockController((IAliveClockController)clockController);
 		}
+		_clockController = new DefaultClockController();
+		addClockController(_clockController);
 
 		if (_executionContext.getRunConfiguration().isTraceActive())
 			activateTrace();
@@ -165,19 +159,9 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	
 	private void initialize() throws CoreException {
 
-		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
-		ClockConstraintSystem clockConstraintSystem = null;
-		for(Resource r : rs.getResources())
-		{
-			if (r.getContents().get(0) instanceof ClockConstraintSystem) 
-			{
-				clockConstraintSystem = (ClockConstraintSystem)r.getContents().get(0);
-				break;
-			}			
-		}
 		for (IAliveClockController injector : _clockControllers)
 		{
-			EventInjectionContext context = new EventInjectionContext(_executionContext.getSolver(), clockConstraintSystem);
+			EventInjectionContext context = new EventInjectionContext(_executionContext.getSolver());
 			injector.initialize(context);
 			injector.start();
 		}	
@@ -350,7 +334,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 							_executionContext.getSolver().applyLogicalStepByIndex(selectedLogicalStepIndex);
 							// run all the event occurrences of this logical
 							// step
-							doLogicalStep(logicalStepToApply);
+							executeLogicalStep(logicalStepToApply);
 							// if not debugging wait if needed
 							applyAnimationTime();
 							terminateIfLastStepsSimilar(logicalStepToApply);
@@ -429,7 +413,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * 
 	 * @param logicalStepToApply
 	 */
-	public void doLogicalStep(LogicalStep logicalStepToApply) {
+	private void executeLogicalStep(LogicalStep logicalStepToApply) {
 		// = step in debug mode, goes to next logical step
 		// -> run all event occurrences of the logical step
 		// step into / open internal thread and pause them
@@ -446,115 +430,53 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			animator.activate(this, logicalStepToApply);
 		}
 
-		List<EngineEventOccurence> engineEventOccurences = new ArrayList<EngineEventOccurence>();
-		for (Event event : LogicalStepHelper.getTickedEvents(logicalStepToApply)) {
-			/*
-			 * for (EventOccurrence eventOccurrence : logicalStepToApply
-			 * .getEventOccurrences()) { if (eventOccurrence.getFState() ==
-			 * FiredStateKind.TICK && eventOccurrence.getReferedElement() !=
-			 * null) { if (eventOccurrence.getReferedElement() instanceof
-			 * ModelElementReference) { ModelElementReference mer =
-			 * (ModelElementReference) eventOccurrence .getReferedElement();
-			 * if(mer.getElementRef().size() ==1 && mer.getElementRef().get(0)
-			 * instanceof Event){ Event event = (Event)
-			 * mer.getElementRef().get(0);
-			 */
-			if (event.getReferencedObjectRefs().size() == 2) {
-				if (event.getReferencedObjectRefs().get(1) instanceof EOperation) {
-					EObject targetModelElement = event.getReferencedObjectRefs().get(0);
-					EOperation targetOperation = (EOperation) event.getReferencedObjectRefs().get(1);
-					// TODO verify that solver and engine work on the same
-					// resource ...
-
-					// build the list of simplified eventOccurence from solver
-					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(targetModelElement, targetOperation);
-					engineEventOccurences.add(engineEventOccurence);
-				} else {
-					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
-					engineEventOccurences.add(engineEventOccurence);
+		ArrayList<ModelSpecificEvent> mses = new ArrayList<ModelSpecificEvent>();
+		for (Event event : LogicalStepHelper.getTickedEvents(logicalStepToApply))
+		{
+			for (ModelSpecificEvent mse : _executionContext.getFeedbackModel().getEvents())
+			{
+				if (mse.getName().replace("MSE_", "").equals(event.getName().replace("evt_", "")))
+				{
+					mses.add(mse);
+					break;
 				}
-			} else {
-				if (event.getReferencedObjectRefs().size() == 1) {
-					EngineEventOccurence engineEventOccurence = new EngineEventOccurence(event.getReferencedObjectRefs().get(0), null);
-					engineEventOccurences.add(engineEventOccurence);
-				} 
 			}
-			// }
-			// else{
-			// String stringOfTheECLEventCorrespondingToTheTickingClock = mer
-			// .getElementRef().get(0).toString();
-			// Activator.getMessagingSystem().debug(
-			// "event occurence: TICK target="
-			// + stringOfTheECLEventCorrespondingToTheTickingClock,
-			// Activator.PLUGIN_ID);
-			// }
 		}
-		// TODO verify if we need to pause on this LogicalStep due to breakpoint
-		// on one of the eventOccurence
-
-		// run the event
-		for (final EngineEventOccurence engineEventOccurence : engineEventOccurences) {
-			// FIXME can pause on each eventoccurence, should be done in
-			// separate threads if we support step into or globally at the
-			// LogicalStep level
-			if (_debugger != null) {
-				terminated = !_debugger.control(Thread.currentThread().getName(), engineEventOccurence.getTargetObject());
+		
+		for (final ModelSpecificEvent mse : mses) 
+		{
+			if (_debugger != null) 
+			{
+				terminated = !_debugger.control(Thread.currentThread().getName(), mse.getCaller());
 			}
-
-			if (engineEventOccurence.getTargetOperation() != null) {
-				final FeedbackData res = callExecutor(engineEventOccurence);
-				// send result as feedback to the solver
-				// process feedback may influence the solver results for
-				// next step
-				// FeedbackData feedbackData = new FeedbackData(res,
-				// engineEventOccurence);
-				if (res != null) {
-					_executionContext.getFeedbackPolicy().processFeedback(res, ObservableBasicExecutionEngine.this);
-				}
-			}
-
+			executeModelSpecificEvent(mse);
 		}
 	}
-
-	/**
-	 * Calls the {@link EventExecutor} for the given
-	 * {@link EngineEventOccurence}.
-	 * 
-	 * @param engineEventOccurence
-	 *            the {@link EngineEventOccurence} to execute
-	 * @return the {@link FeedbackData} if any, <code>null</code> other wise
-	 */
-	protected FeedbackData callExecutor(final EngineEventOccurence engineEventOccurence) {
-		final TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(_executionContext.getResourceModel().getResourceSet());
-		FeedbackData res = null;
-		if (editingDomain != null) {
-			final RecordingCommand command = new RecordingCommand(editingDomain, "execute engine event occurence " + engineEventOccurence) {
-				private List<FeedbackData> result = new ArrayList<FeedbackData>();
-
-				@Override
-				protected void doExecute() {
-					try {
-						result.add(_executionContext.getEventExecutor().execute(engineEventOccurence));
-					} catch (EventExecutionException e) {
-						Activator.getDefault().error("Exception received " + e.getMessage(), e);
-					}
+	
+	private void executeModelSpecificEvent(ModelSpecificEvent mse)
+	{
+		if (mse.getAction() != null) 
+		{
+			ActionModel feedbackModel = _executionContext.getFeedbackModel();
+			ArrayList<When> whenStatements = new ArrayList<When>();
+			for (When w : feedbackModel.getWhenStatements())
+			{
+				if (w.getSource() == mse)
+				{
+					whenStatements.add(w);
 				}
-
-				@Override
-				public Collection<?> getResult() {
-					return result;
-				}
-			};
-			editingDomain.getCommandStack().execute(command);
-			res = (FeedbackData) command.getResult().iterator().next();
-		} else {
-			try {
-				res = _executionContext.getEventExecutor().execute(engineEventOccurence);
-			} catch (EventExecutionException e) { 
-				Activator.getDefault().error("Exception received " + e.getMessage(), e);
+			}	
+			OperationExecution execution = null;
+			if (whenStatements.size() == 0)
+			{
+				execution = new SynchroneExecution(mse, this);				
 			}
+			else
+			{
+				execution = new ASynchroneExecution(mse, whenStatements, _clockController, this);
+			}
+			execution.run();
 		}
-		return res;
 	}
 
 	@Override

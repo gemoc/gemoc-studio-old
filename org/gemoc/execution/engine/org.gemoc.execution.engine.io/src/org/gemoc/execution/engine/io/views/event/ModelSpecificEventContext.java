@@ -3,14 +3,11 @@ package org.gemoc.execution.engine.io.views.event;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.eclipse.emf.ecore.resource.Resource;
+import org.gemoc.execution.engine.commons.dsa.DefaultClockController;
 import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
-import org.gemoc.execution.engine.io.views.event.control.ClockControllerInternal;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.scenario.Future;
-
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
 
 public class ModelSpecificEventContext 
 {
@@ -19,7 +16,7 @@ public class ModelSpecificEventContext
 	
 	private ModelSpecificEventSet _mseSet;
 	
-	private ClockControllerInternal _clockController = new ClockControllerInternal();
+	private DefaultClockController _clockController = new DefaultClockController();
 
 	private ScenarioManager _scenarioManager;
 
@@ -34,37 +31,22 @@ public class ModelSpecificEventContext
 
 	private void configure()
 	{
-		ClockConstraintSystem clockConstraintSystem = extractClockConstraintSystem();
-		_mseSet = new ModelSpecificEventSet(clockConstraintSystem);
-		EventInjectionContext context = new EventInjectionContext(_engine.getExecutionContext().getSolver(), clockConstraintSystem);
+		_mseSet = new ModelSpecificEventSet(_engine.getExecutionContext().getFeedbackModel());
+		EventInjectionContext context = new EventInjectionContext(_engine.getExecutionContext().getSolver());
 		_clockController.initialize(context);
 		_engine.get_clockControllers().add(_clockController);
 	}
 
-	private ClockConstraintSystem extractClockConstraintSystem() 
+	public void forceClock(ModelSpecificEventWrapper mse, ClockStatus state) 
 	{
-		ClockConstraintSystem system = null;
-		for(Resource r : _engine.getExecutionContext().getResourceModel().getResourceSet().getResources())
-		{
-			if(r.getContents().get(0) instanceof ClockConstraintSystem)
-			{
-				system = (ClockConstraintSystem)r.getContents().get(0);
-				break;
-			}
-		}
-		return system;
-	}
-
-	public void forceClock(ModelSpecificEvent mse, ClockStatus state) 
-	{
-		ArrayList<ModelSpecificEvent> c = new ArrayList<ModelSpecificEvent>();
+		ArrayList<ModelSpecificEventWrapper> c = new ArrayList<ModelSpecificEventWrapper>();
 		c.add(mse);
 		forceClocks(c, state);
 	}
 	
-	public void forceClocks(Collection<ModelSpecificEvent> mses, ClockStatus state) 
+	public void forceClocks(Collection<ModelSpecificEventWrapper> mses, ClockStatus state) 
 	{
-		for(ModelSpecificEvent mse : mses)
+		for(ModelSpecificEventWrapper mse : mses)
 		{
 			if (mse.getState() != state)
 			{
@@ -74,30 +56,30 @@ public class ModelSpecificEventContext
 		_engine.recomputePossibleLogicalSteps();
 	}
 	
-	public ModelSpecificEvent getMSE(String clockName) 
+	public ModelSpecificEventWrapper getMSE(String clockName) 
 	{
 		return _mseSet.getMSE(clockName);
 	}
 	
-	private void setState(ModelSpecificEvent mse, ClockStatus state)
+	private void setState(ModelSpecificEventWrapper wrapper, ClockStatus state)
 	{
-		mse.setState(state);
+		wrapper.setState(state);
 		boolean isForced = state.isForced();
 		Future future = state.getState();
 		if (isForced)
 		{
 			if (future.equals(Future.TICK))
 			{
-				_clockController.tickInTheFuture(mse.getClockQualifiedName());			
+				_clockController.tickInTheFuture(wrapper.getMSE());			
 			}
 			else
 			{
-				_clockController.doNotTickInTheFuture(mse.getClockQualifiedName());	
+				_clockController.doNotTickInTheFuture(wrapper.getMSE());	
 			}
 		}
 		else
 		{
-			_clockController.resetFutureClockState(mse.getClockQualifiedName());
+			_clockController.freeInTheFuture(wrapper.getMSE());
 		}
 	}
 	
@@ -107,7 +89,7 @@ public class ModelSpecificEventContext
 	 */
 	public void refreshFutureTickingFreeClocks() 
 	{
-		for(ModelSpecificEvent mse: _mseSet.getMSEs())
+		for(ModelSpecificEventWrapper mse: _mseSet.getMSEs())
 		{
 			if(!mse.getState().isForced())
 			{
@@ -138,13 +120,13 @@ public class ModelSpecificEventContext
 	 */
 	public void freeAllClocks()
 	{
-		for(ModelSpecificEvent mse : _mseSet.getMSEs())
+		for(ModelSpecificEventWrapper mse : _mseSet.getMSEs())
 		{
 			setState(mse, ClockStatus.NOTFORCED_NOTSET);
 		}
 	}
 
-	public Collection<ModelSpecificEvent> getMSEs() 
+	public Collection<ModelSpecificEventWrapper> getMSEs() 
 	{
 		return _mseSet.getMSEs();
 	}

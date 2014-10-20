@@ -2,7 +2,7 @@
  */
 package org.gemoc.execution.engine.scenario.impl;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -20,7 +20,7 @@ import org.gemoc.execution.engine.scenario.ScenarioPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl#getState <em>State</em>}</li>
- *   <li>{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl#getClock <em>Clock</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl#getMse <em>Mse</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,14 +48,14 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	protected Future state = STATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getClock() <em>Clock</em>}' reference.
+	 * The cached value of the '{@link #getMse() <em>Mse</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getClock()
+	 * @see #getMse()
 	 * @generated
 	 * @ordered
 	 */
-	protected Clock clock;
+	protected ModelSpecificEvent mse;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,16 +102,16 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Clock getClock() {
-		if (clock != null && clock.eIsProxy()) {
-			InternalEObject oldClock = (InternalEObject)clock;
-			clock = (Clock)eResolveProxy(oldClock);
-			if (clock != oldClock) {
+	public ModelSpecificEvent getMse() {
+		if (mse != null && mse.eIsProxy()) {
+			InternalEObject oldMse = (InternalEObject)mse;
+			mse = (ModelSpecificEvent)eResolveProxy(oldMse);
+			if (mse != oldMse) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ScenarioPackage.EVENT_STATE__CLOCK, oldClock, clock));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ScenarioPackage.EVENT_STATE__MSE, oldMse, mse));
 			}
 		}
-		return clock;
+		return mse;
 	}
 
 	/**
@@ -119,8 +119,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Clock basicGetClock() {
-		return clock;
+	public ModelSpecificEvent basicGetMse() {
+		return mse;
 	}
 
 	/**
@@ -128,11 +128,11 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setClock(Clock newClock) {
-		Clock oldClock = clock;
-		clock = newClock;
+	public void setMse(ModelSpecificEvent newMse) {
+		ModelSpecificEvent oldMse = mse;
+		mse = newMse;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ScenarioPackage.EVENT_STATE__CLOCK, oldClock, clock));
+			eNotify(new ENotificationImpl(this, Notification.SET, ScenarioPackage.EVENT_STATE__MSE, oldMse, mse));
 	}
 
 	/**
@@ -145,9 +145,9 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 		switch (featureID) {
 			case ScenarioPackage.EVENT_STATE__STATE:
 				return getState();
-			case ScenarioPackage.EVENT_STATE__CLOCK:
-				if (resolve) return getClock();
-				return basicGetClock();
+			case ScenarioPackage.EVENT_STATE__MSE:
+				if (resolve) return getMse();
+				return basicGetMse();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,8 +163,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 			case ScenarioPackage.EVENT_STATE__STATE:
 				setState((Future)newValue);
 				return;
-			case ScenarioPackage.EVENT_STATE__CLOCK:
-				setClock((Clock)newValue);
+			case ScenarioPackage.EVENT_STATE__MSE:
+				setMse((ModelSpecificEvent)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -181,8 +181,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 			case ScenarioPackage.EVENT_STATE__STATE:
 				setState(STATE_EDEFAULT);
 				return;
-			case ScenarioPackage.EVENT_STATE__CLOCK:
-				setClock((Clock)null);
+			case ScenarioPackage.EVENT_STATE__MSE:
+				setMse((ModelSpecificEvent)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -198,8 +198,8 @@ public class EventStateImpl extends MinimalEObjectImpl.Container implements Even
 		switch (featureID) {
 			case ScenarioPackage.EVENT_STATE__STATE:
 				return state != STATE_EDEFAULT;
-			case ScenarioPackage.EVENT_STATE__CLOCK:
-				return clock != null;
+			case ScenarioPackage.EVENT_STATE__MSE:
+				return mse != null;
 		}
 		return super.eIsSet(featureID);
 	}

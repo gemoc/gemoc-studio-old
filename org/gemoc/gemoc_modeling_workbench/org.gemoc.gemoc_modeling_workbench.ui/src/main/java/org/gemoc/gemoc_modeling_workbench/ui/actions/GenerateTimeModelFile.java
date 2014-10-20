@@ -13,7 +13,7 @@ public class GenerateTimeModelFile extends GenerateExtendedCCSLFile
 	}
 
 	@Override
-	protected String getFileExtension() {
+	protected String getMoCFileExtension() {
 		return "timemodel";
 	}
 

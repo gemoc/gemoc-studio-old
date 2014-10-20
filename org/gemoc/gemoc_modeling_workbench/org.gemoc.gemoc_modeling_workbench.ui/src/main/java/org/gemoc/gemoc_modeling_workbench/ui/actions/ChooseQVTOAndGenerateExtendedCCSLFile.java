@@ -24,7 +24,7 @@ public class ChooseQVTOAndGenerateExtendedCCSLFile extends GenerateExtendedCCSLF
 	}
 	
 	@Override
-	protected String getFileExtension() {
+	protected String getMoCFileExtension() {
 		return "extendedCCSL";
 	}
 

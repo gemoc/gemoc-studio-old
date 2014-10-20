@@ -58,6 +58,7 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 /**
  * @author lguillem
@@ -277,11 +278,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			public String getText(Object element) 
 			{
 				String result = new String();          
-				if (element instanceof ModelSpecificEvent)
+				if (element instanceof ModelSpecificEventWrapper)
 				{
-					Clock c = ((ModelSpecificEvent)element).getClock();
+					ModelSpecificEvent mse = ((ModelSpecificEventWrapper)element).getMSE();
 					//result = ViewUtils.eventToString(c.getTickingEvent());
-					result = c.getName();
+					result = mse.getName();
 				}
 				return result;
 			}
@@ -289,9 +290,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			@Override
 			public Image getImage(Object element) 
 			{
-				if (element instanceof ModelSpecificEvent) 
+				if (element instanceof ModelSpecificEventWrapper) 
 				{
-					ClockStatus state = ((ModelSpecificEvent) element).getState();
+					ClockStatus state = ((ModelSpecificEventWrapper) element).getState();
 					switch(state)
 					{
 					case NOTFORCED_SET: return SharedIcons.getSharedImage(SharedIcons.NOTFORCED_CLOCK_SET);
@@ -307,9 +308,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			@Override
 			public Color getBackground(Object element) 
 			{
-				if (element instanceof ModelSpecificEvent)
+				if (element instanceof ModelSpecificEventWrapper)
 				{
-					ClockStatus state = ((ModelSpecificEvent) element).getState();
+					ClockStatus state = ((ModelSpecificEventWrapper) element).getState();
 
 					switch(state)
 					{
@@ -417,10 +418,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			public void widgetSelected(SelectionEvent e) 
 			{
 				StructuredSelection selection = (StructuredSelection)_viewer.getSelection();
-				ArrayList<ModelSpecificEvent> mses = new ArrayList<ModelSpecificEvent>();
+				ArrayList<ModelSpecificEventWrapper> mses = new ArrayList<ModelSpecificEventWrapper>();
 				for (Object o : selection.toList())
 				{
-					mses.add((ModelSpecificEvent)o);
+					mses.add((ModelSpecificEventWrapper)o);
 				}
 								
 				ClockStatus state = ClockStatus.NOTFORCED_NOTSET;
@@ -448,7 +449,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 * @param clockToForce The clock list to force or free
 	 * @param state The future state of the clock(s) to force
 	 */
-	private void forceClocks(Collection<ModelSpecificEvent> mses, ClockStatus state) 
+	private void forceClocks(Collection<ModelSpecificEventWrapper> mses, ClockStatus state) 
 	{
 		getMSEContext().forceClocks(mses, state);
 		updateView();

@@ -12,6 +12,8 @@ public interface IExecutionWorkspace
 	
 	public IPath getMoCPath();
 
+	public IPath getFeedbackModelPath();
+
 	public IPath getExecutionPath();
 
 	public void copyFileToExecutionFolder(IPath filePath) throws CoreException;

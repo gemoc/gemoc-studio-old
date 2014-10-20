@@ -9,14 +9,14 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.event.ClockStatus;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEvent;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
+import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.execution.engine.scenario.Scenario;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public class ScenarioPlayer extends ScenarioTool
 {
@@ -66,17 +66,17 @@ public class ScenarioPlayer extends ScenarioTool
 			}
 			else
 			{
-				for(ModelSpecificEvent mse : _mseContext.getMSEs())
+				for(ModelSpecificEventWrapper wrapper : _mseContext.getMSEs())
 				{
 					List<EventState> eventStates = stepList.get(getPlayProgressIndex()).getEventList();
-					Clock clock = mse.getClock();
+					ModelSpecificEvent mse = wrapper.getMSE();
 					//mse.setState(ClockStatus.NOTFORCED_NOTSET);
 					for (int i = 0; i< eventStates.size(); i++)
 					{	
-						if(eventStates.get(i).getClock().getName().equals(clock.getName()))
+						if(eventStates.get(i).getMse().getName().equals(mse.getName()))
 						{
 							ClockStatus newState = eventStates.get(i).getState().equals(Future.TICK) ? ClockStatus.FORCED_SET : ClockStatus.FORCED_NOTSET;
-							_mseContext.forceClock(mse, newState);
+							_mseContext.forceClock(wrapper, newState);
 						}
 					}
 				}

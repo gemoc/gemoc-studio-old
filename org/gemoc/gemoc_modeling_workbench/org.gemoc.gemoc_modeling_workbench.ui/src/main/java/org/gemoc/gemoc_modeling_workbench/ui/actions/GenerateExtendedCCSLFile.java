@@ -43,9 +43,8 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 	}
 
 	@Override
-	protected String getFileExtension() {
+	protected String getMoCFileExtension() {
 		return "extendedCCSL";
 	}
-
 
 }

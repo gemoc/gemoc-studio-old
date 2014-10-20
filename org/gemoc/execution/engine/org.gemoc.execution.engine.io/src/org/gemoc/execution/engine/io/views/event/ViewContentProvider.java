@@ -19,8 +19,8 @@ public class ViewContentProvider implements IStructuredContentProvider
 		if(parent instanceof ModelSpecificEventSet)
 		{
 			ModelSpecificEventSet cache = (ModelSpecificEventSet) parent;
-			ArrayList<ModelSpecificEvent> listeClockWrapper = 
-					new ArrayList<ModelSpecificEvent>(cache.getFilteredMSEs(filterStrategy));
+			ArrayList<ModelSpecificEventWrapper> listeClockWrapper = 
+					new ArrayList<ModelSpecificEventWrapper>(cache.getFilteredMSEs(filterStrategy));
 			return listeClockWrapper.toArray();
 		}
 		return new Object[0];

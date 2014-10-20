@@ -11,6 +11,8 @@ import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackPolicy;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
+
 public interface IExecutionContext extends IDisposable
 {
 
@@ -46,4 +48,5 @@ public interface IExecutionContext extends IDisposable
 
 	public ExecutionMode getExecutionMode();
 
+	public ActionModel getFeedbackModel();
 }

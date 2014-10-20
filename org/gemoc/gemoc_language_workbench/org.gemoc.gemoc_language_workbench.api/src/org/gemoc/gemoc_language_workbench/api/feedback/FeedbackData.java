@@ -1,6 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api.feedback;
 
-import org.gemoc.gemoc_language_workbench.api.dsa.EngineEventOccurence;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 
 
 /**
@@ -16,16 +16,14 @@ public class FeedbackData {
 	 * Can be "anything". A good start is probably to be able to wrap and unwrap
 	 * all the primitive types.
 	 */
-	private Object data;
-	private EngineEventOccurence contextEngineEventOccurence;
+	private Object _data;
+	private ActionCall _call;
 	
-	
-
-	public FeedbackData(Object data,
-			EngineEventOccurence contextEngineEventOccurence) {
+	public FeedbackData(Object data, ActionCall call) 
+	{
 		super();
-		this.data = data;
-		this.contextEngineEventOccurence = contextEngineEventOccurence;
+		_data = data;
+		_call = call;
 	}
 
 	/**
@@ -34,8 +32,9 @@ public class FeedbackData {
 	 * @return the original object returned by the MSA which created this
 	 *         FeedbackData.
 	 */
-	public Object getData(){
-		return data;
+	public Object getData()
+	{
+		return _data;
 	}
 
 	/**
@@ -43,12 +42,13 @@ public class FeedbackData {
 	 * 
 	 * @return the EngineEventOccurence that caused this feedback.
 	 */
-	public EngineEventOccurence getContextEngineEventOccurence(){
-		return contextEngineEventOccurence;
+	public ActionCall getCall()
+	{
+		return _call;
 	}
 
 
 	public String toString() {
-		return this.getClass().getName() + "@[" + this.data + "]";
+		return this.getClass().getName() + "@[" + this._data + "]";
 	}
 }

@@ -210,7 +210,7 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 
 			    final String qvtoFileName = eclFile.getFullPath()
 			    					.removeFileExtension()
-			    					.addFileExtension("toCCSL.qvto")
+			    					.addFileExtension(".qvto")
 			    					.lastSegment();
 //			    uri.lastSegment().replace(".ecl",	"_toCCSL.qvto");
 //			    final IFile modelingFile = modelingFolder.getFile(new )

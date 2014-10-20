@@ -5,6 +5,8 @@ package org.gemoc.gemoc_language_workbench.api.dsa;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
 import org.gemoc.gemoc_language_workbench.api.feedback.FeedbackData;
 
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
+
 /**
  * An EventExecutor is responsible for executing the action in EngineEventOccurence
  * referenced by Domain-Specific Event(s). In particular, it is responsible for
@@ -28,7 +30,7 @@ public interface EventExecutor {
 	 * converted into a FeedbackData that can be interpreted by the
 	 * FeedbackPolicy.
 	 * 
-	 * @param msa
+	 * @param mse
 	 *            the ModelSpecificAction to execute.
 	 * @exception EventExecutionException
 	 *                if there has been any problem locating the method or the
@@ -37,7 +39,7 @@ public interface EventExecutor {
 	 * @return the FeedbackData representing the result of the
 	 *         ModelSpecificAction execution.
 	 */
-	public FeedbackData execute(EngineEventOccurence msa)
+	public FeedbackData execute(ActionCall call)
 			throws EventExecutionException;
 
 

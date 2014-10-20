@@ -2,7 +2,7 @@
  */
 package org.gemoc.execution.engine.scenario.impl;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.TimeModelPackage;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -114,7 +114,7 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		TimeModelPackage.eINSTANCE.eClass();
+		FeedbackPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theScenarioPackage.createPackageContents();
@@ -235,7 +235,7 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEventState_Clock() {
+	public EReference getEventState_Mse() {
 		return (EReference)eventStateEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -291,7 +291,7 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 
 		eventStateEClass = createEClass(EVENT_STATE);
 		createEAttribute(eventStateEClass, EVENT_STATE__STATE);
-		createEReference(eventStateEClass, EVENT_STATE__CLOCK);
+		createEReference(eventStateEClass, EVENT_STATE__MSE);
 
 		// Create enums
 		futureEEnum = createEEnum(FUTURE);
@@ -321,7 +321,7 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		TimeModelPackage theTimeModelPackage = (TimeModelPackage)EPackage.Registry.INSTANCE.getEPackage(TimeModelPackage.eNS_URI);
+		FeedbackPackage theFeedbackPackage = (FeedbackPackage)EPackage.Registry.INSTANCE.getEPackage(FeedbackPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -345,7 +345,7 @@ public class ScenarioPackageImpl extends EPackageImpl implements ScenarioPackage
 
 		initEClass(eventStateEClass, EventState.class, "EventState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEventState_State(), this.getFuture(), "state", null, 0, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEventState_Clock(), theTimeModelPackage.getClock(), null, "clock", null, 1, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventState_Mse(), theFeedbackPackage.getModelSpecificEvent(), null, "mse", null, 1, 1, EventState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(futureEEnum, Future.class, "Future");
