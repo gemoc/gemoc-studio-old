@@ -51,7 +51,7 @@
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
             <element ref="Engine_hook_Definition"/>
-            <element ref="Event_Occurence_Injector_Definition"/>
+            <element ref="MSE_State_Controller_Definition"/>
          </sequence>
          <attribute name="name" type="string" use="required">
             <annotation>
@@ -159,15 +159,15 @@ This is optional, if not set, the engine will ignore it.
       </complexType>
    </element>
 
-   <element name="Event_Occurence_Injector_Definition">
+   <element name="MSE_State_Controller_Definition">
       <complexType>
-         <attribute name="Event_Occurence_Injector_Class" type="string">
+         <attribute name="MSE_State_Controller_Class" type="string">
             <annotation>
                <documentation>
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dsa.IAliveEventOccurrenceInjector"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController"/>
                </appinfo>
             </annotation>
          </attribute>

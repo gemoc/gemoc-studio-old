@@ -5,9 +5,8 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
+import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
+import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
@@ -27,13 +26,11 @@ public interface IExecutionContext extends IDisposable
 	 * 
 	 * @return The code executor to use for the model execution.
 	 */
-	public CodeExecutor getCodeExecutor();
-	
-	public EventExecutor getEventExecutor();
-	
+	public ICodeExecutor getCodeExecutor();
+		
 	public Collection<IEngineHook> getHooks();
 	
-	public Collection<IClockController> getClockControllers();
+	public Collection<IMSEStateController> getMSEStateControllers();
 
 	public IRunConfiguration getRunConfiguration();
 

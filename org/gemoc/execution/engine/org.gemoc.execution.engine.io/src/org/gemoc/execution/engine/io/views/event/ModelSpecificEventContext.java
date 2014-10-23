@@ -3,8 +3,7 @@ package org.gemoc.execution.engine.io.views.event;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.gemoc.execution.engine.commons.dsa.DefaultClockController;
-import org.gemoc.execution.engine.commons.dsa.EventInjectionContext;
+import org.gemoc.execution.engine.commons.dsa.DefaultMSEStateController;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.scenario.Future;
@@ -16,7 +15,7 @@ public class ModelSpecificEventContext
 	
 	private ModelSpecificEventSet _mseSet;
 	
-	private DefaultClockController _clockController = new DefaultClockController();
+	private DefaultMSEStateController _clockController = new DefaultMSEStateController();
 
 	private ScenarioManager _scenarioManager;
 
@@ -32,8 +31,6 @@ public class ModelSpecificEventContext
 	private void configure()
 	{
 		_mseSet = new ModelSpecificEventSet(_engine.getExecutionContext().getFeedbackModel());
-		EventInjectionContext context = new EventInjectionContext(_engine.getExecutionContext().getSolver());
-		_clockController.initialize(context);
 		_engine.get_clockControllers().add(_clockController);
 	}
 
@@ -70,11 +67,11 @@ public class ModelSpecificEventContext
 		{
 			if (future.equals(Future.TICK))
 			{
-				_clockController.tickInTheFuture(wrapper.getMSE());			
+				_clockController.forcePresenceInTheFuture(wrapper.getMSE());			
 			}
 			else
 			{
-				_clockController.doNotTickInTheFuture(wrapper.getMSE());	
+				_clockController.forceAbsenceTickInTheFuture(wrapper.getMSE());	
 			}
 		}
 		else

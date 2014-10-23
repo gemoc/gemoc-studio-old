@@ -1,7 +1,6 @@
 package org.gemoc.execution.engine.capabilitites;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +35,8 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
+import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.trace.EventOccurrence;
@@ -109,28 +109,19 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 			{
 				// if attribute, modify value on the aspect side that will modify the model in return.
 				AttributeChangeSpec asc = (AttributeChangeSpec)diff;
-				CodeExecutor codeExecutor = _engine.getExecutionContext().getCodeExecutor();
+				ICodeExecutor codeExecutor = _engine.getExecutionContext().getCodeExecutor();
 				EObject target = diff.getMatch().getRight();
 				String methodName = asc.getAttribute().getName();
-				ArrayList parameters = new ArrayList();
+				ArrayList<Object> parameters = new ArrayList<Object>();
 				parameters.add(asc.getValue());
 				try {
 					System.out.println("Begin setting " + target.toString() + "." + methodName + " = " + asc.getValue());
-					codeExecutor.invoke(target, methodName, parameters);
+					codeExecutor.execute(target, methodName, parameters);
 					System.out.println("End setting " + target.toString() + "." + methodName + " = " + asc.getValue());
-				} catch (NoSuchMethodException e) {
+				} catch (CodeExecutionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				} 
 			} else {
 				// if reference, use the merger.
 				merger.copyLeftToRight(

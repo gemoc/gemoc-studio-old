@@ -1,7 +1,7 @@
 package org.gemoc.execution.engine.core;
 
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
-import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
+import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
@@ -10,9 +10,9 @@ public class FreeClockFutureAction implements IFutureAction
 
 	private ModelSpecificEvent _mseToBeForced;
 	private ModelSpecificEvent _triggeringMSE;
-	private IClockController _clockController;
+	private IMSEStateController _clockController;
 	
-	public FreeClockFutureAction(ModelSpecificEvent mseToBeForced, ModelSpecificEvent triggeringMSE, IClockController clockController) 
+	public FreeClockFutureAction(ModelSpecificEvent mseToBeForced, ModelSpecificEvent triggeringMSE, IMSEStateController clockController) 
 	{
 		_mseToBeForced = mseToBeForced;
 		_triggeringMSE = triggeringMSE;

@@ -1,8 +1,8 @@
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
+
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 
 /**
  * A blob containing all the informations of a method call : an object, a
@@ -14,28 +14,8 @@ import java.util.List;
  * @author flatombe
  * 
  */
-public interface MethodCall {
-
-	/**
-	 * 
-	 * 
-	 * @return The object targeted for this method call.
-	 */
-	public Object getTarget();
-
-	/**
-	 * 
-	 * 
-	 * @return The method of this method call.
-	 */
-	public Method getMethod();
-
-	/**
-	 * 
-	 * 
-	 * @return The parameters of this method call.
-	 */
-	public List<Object> getParameters();
+public interface MethodCall 
+{
 
 	/**
 	 * Invokes the method on the object with the given parameters. Returns the
@@ -46,7 +26,7 @@ public interface MethodCall {
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
 	 */
-	public Object invoke() throws IllegalAccessException,
+	public Object invoke(ActionCall actionCall) throws IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException;
 
 }

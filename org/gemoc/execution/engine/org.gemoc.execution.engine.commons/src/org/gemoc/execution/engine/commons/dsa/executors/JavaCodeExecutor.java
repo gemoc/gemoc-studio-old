@@ -3,89 +3,56 @@ package org.gemoc.execution.engine.commons.dsa.executors;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.MethodCall;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
+import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 
-public class JavaCodeExecutor implements CodeExecutor {
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
+
+public class JavaCodeExecutor implements ICodeExecutor {
 
 	public JavaCodeExecutor() {
 
 	}
 
 	@Override
-	public Object invoke(Object target, String methodName,
-			List<Object> parameters) throws NoSuchMethodException,
-			IllegalArgumentException, InvocationTargetException,
-			IllegalAccessException {
-
-		// Retrieving the methodCall. Can fail with NoSuchMethodException or
-		// IllegalArgumentException.
-		MethodCall methodCall = this.getMethodCall(target, methodName,
-				parameters);
-
-		// Invoking the methodCall. Can fail with IllegalAccessException,
-		// IllegalArgumentException or InvocationTargetException.
-		return methodCall.invoke();
+	public Object execute(ActionCall call) throws CodeExecutionException
+	{
+		return execute(call.getTriggeringEvent().getCaller(), 
+				call.getTriggeringEvent().getAction().getName(), 
+				call.getParameters(), 
+				call);
 	}
 
 	@Override
-	public MethodCall getMethodCall(Object target, String methodName,
-			List<Object> parameters) throws NoSuchMethodException,
-			IllegalArgumentException {
-
+	public Object execute(Object caller, String methodName,
+			Collection<Object> parameters) throws CodeExecutionException {
+		return execute(caller,
+						methodName, 
+						parameters, 
+						null);
+	}
+	
+	private Object execute(Object caller, String methodName, Collection<Object> parameters, ActionCall call) throws CodeExecutionException {
 		Class<?>[] parameterTypes = null;
 		ArrayList<Class<?>> parameterTypesList = new ArrayList<Class<?>>();
-		if (parameters != null) {
-			for (Object param : parameters) {
+		if (call.getParameters() != null) 
+		{
+			for (Object param : call.getParameters()) 
+			{
 				parameterTypesList.add(param.getClass());
 			}
 		}
-		Method method = target.getClass().getMethod(methodName, parameterTypes);
-
-		return new JavaMethodCall(target, method, parameters);
-
-	}
-
-	public class JavaMethodCall implements MethodCall {
-
-		protected Method method;
-		protected Object target;
-		protected List<Object> parameters;
-
-		public JavaMethodCall(Object target, Method method,
-				List<Object> parameters) {
-			this.target = target;
-			this.method = method;
-			this.parameters = parameters;
+		Method method;
+		Object result = null;
+		try {
+			method = caller.getClass().getMethod(methodName, parameterTypes);
+			result =  method.invoke(caller, call.getParameters());
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			throw new CodeExecutionException("Could not perform action call, see inner exception.", e, call);
 		}
-
-		@Override
-		public Object invoke() throws IllegalAccessException,
-				IllegalArgumentException, InvocationTargetException {
-			Object[] args = new Object[0];
-			if (parameters != null) {
-				args = parameters.toArray();
-			}
-			return method.invoke(target, args);
-		}
-
-		@Override
-		public Object getTarget() {
-			return this.target;
-		}
-
-		@Override
-		public Method getMethod() {
-			return this.method;
-		}
-
-		@Override
-		public List<Object> getParameters() {
-			return this.parameters;
-		}
-
+		return result;
 	}
 
 }

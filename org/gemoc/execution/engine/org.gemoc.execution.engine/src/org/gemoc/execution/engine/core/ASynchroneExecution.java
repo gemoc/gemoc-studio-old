@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
+import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionFinishedCondition;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionResultCondition;
@@ -21,10 +21,10 @@ public class ASynchroneExecution extends OperationExecution
 {
 	
 	private Collection<When> _whenStatements;
-	private IClockController _clockController;
+	private IMSEStateController _clockController;
 	private HashMap<Force, When> _forces;
 	
-	public ASynchroneExecution(ModelSpecificEvent mse, Collection<When> whenStatements, IClockController clockController, GemocExecutionEngine engine) 
+	public ASynchroneExecution(ModelSpecificEvent mse, Collection<When> whenStatements, IMSEStateController clockController, GemocExecutionEngine engine) 
 	{
 		super(mse, engine);
 		_whenStatements = whenStatements;
@@ -39,7 +39,7 @@ public class ASynchroneExecution extends OperationExecution
 		{						
 			if (force.getKind().equals(ForceKind.PRESENCE))
 			{
-				_clockController.doNotTickInTheFuture(force.getEventToBeForced());
+				_clockController.forceAbsenceTickInTheFuture(force.getEventToBeForced());
 			}
 		}
 		Runnable runnable = new Runnable() {

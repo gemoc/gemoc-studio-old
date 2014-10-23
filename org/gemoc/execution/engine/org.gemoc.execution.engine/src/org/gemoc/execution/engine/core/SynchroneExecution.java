@@ -8,8 +8,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
-import org.gemoc.gemoc_language_workbench.api.exceptions.EventExecutionException;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackFactory;
@@ -28,8 +27,13 @@ public class SynchroneExecution extends OperationExecution
 	{
 		Object res = callExecutor();
 		setResult(res);
+		try {
+			applyAnimationTime();
+		} catch (InterruptedException e) {
+			Activator.getDefault().error("Exception received " + e.getMessage(), e);
+		}
 	}
-
+	
 	/**
 	 * Calls the {@link EventExecutor} for the given
 	 * {@link EngineEventOccurence}.
@@ -51,8 +55,8 @@ public class SynchroneExecution extends OperationExecution
 				@Override
 				protected void doExecute() {
 					try {
-						result.add(getExecutionContext().getEventExecutor().execute(call));
-					} catch (EventExecutionException e) {
+						result.add(getExecutionContext().getCodeExecutor().execute(call));
+					} catch (CodeExecutionException e) {
 						Activator.getDefault().error("Exception received " + e.getMessage(), e);
 					}
 				}
@@ -66,12 +70,20 @@ public class SynchroneExecution extends OperationExecution
 			res = (Object) command.getResult().iterator().next();
 		} else {
 			try {
-				res = getExecutionContext().getEventExecutor().execute(call);
-			} catch (EventExecutionException e) { 
+				res = getExecutionContext().getCodeExecutor().execute(call);
+			} catch (CodeExecutionException e) { 
 				Activator.getDefault().error("Exception received " + e.getMessage(), e);
 			}
 		}
 		return res;
 	}
 	
+	private void applyAnimationTime() throws InterruptedException {
+		int animationDelay = getEngine().getExecutionContext().getRunConfiguration().getAnimationDelay();								
+		if (animationDelay != 0) 
+		{
+			Thread.sleep(animationDelay);
+		}
+	}
+
 }

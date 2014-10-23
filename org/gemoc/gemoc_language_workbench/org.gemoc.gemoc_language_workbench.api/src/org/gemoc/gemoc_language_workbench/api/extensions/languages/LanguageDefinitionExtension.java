@@ -6,9 +6,8 @@ import java.util.HashSet;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
+import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
+import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
@@ -17,28 +16,17 @@ public class LanguageDefinitionExtension extends Extension
 {
 
 	
-	final public CodeExecutor instanciateCodeExecutor() 
+	final public ICodeExecutor instanciateCodeExecutor() 
 			throws CoreException 
 	{
 		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
-		if (instance instanceof CodeExecutor) {
-			return(CodeExecutor) instance;
+		if (instance instanceof ICodeExecutor) {
+			return(ICodeExecutor) instance;
 		}
 		throwInstanciationCoreException();
 		return null;
 	}
-	
-	final public EventExecutor instanciateEventExecutor() 
-			throws CoreException 
-	{
-		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_EVENTEXECUTOR_ATT);
-		if (instance instanceof EventExecutor) {
-			return(EventExecutor) instance;
-		}
-		throwInstanciationCoreException();
-		return null;
-	}
-	
+		
 	final public Solver instanciateSolver() 
 			throws CoreException 
 	{
@@ -69,18 +57,18 @@ public class LanguageDefinitionExtension extends Extension
 		return engineHooks;
 	}
 
-	final public Collection<IClockController> instanciateClockControllers() 
+	final public Collection<IMSEStateController> instanciateMSEStateControllers() 
 			throws CoreException 
 	{
-		HashSet<IClockController> eventOccurenceInjectors = new HashSet<IClockController>();
-		for(IConfigurationElement childConfElement : _configurationElement.getChildren(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_DEFINITION)){
+		HashSet<IMSEStateController> controllers = new HashSet<IMSEStateController>();
+		for(IConfigurationElement childConfElement : _configurationElement.getChildren(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_MSE_STATE_CONTROLLER_DEFINITION)){
 			childConfElement.getName();				
-			final Object injector = childConfElement.createExecutableExtension(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_EVENT_OCCURENCE_INJECTOR_CLASS_DEFINITION);
-			if(injector instanceof IClockController){
-				eventOccurenceInjectors.add((IClockController) injector);
+			final Object c = childConfElement.createExecutableExtension(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_MSE_STATE_CONTROLLER_CLASS_DEFINITION);
+			if(c instanceof IMSEStateController){
+				controllers.add((IMSEStateController) c);
 			}
 		}
-		return eventOccurenceInjectors;
+		return controllers;
 	}
 
 	public String getName() 

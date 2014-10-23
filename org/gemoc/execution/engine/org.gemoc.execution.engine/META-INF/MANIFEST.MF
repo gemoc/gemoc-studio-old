@@ -26,7 +26,7 @@ Require-Bundle: fr.inria.aoste.trace,
  org.eclipse.debug.core,
  org.eclipse.sirius;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.launcher.core,
- org.gemoc.execution.engine.commons;bundle-version="0.1.0",
+ org.gemoc.execution.engine.commons;bundle-version="0.1.0";visibility:=reexport,
  fr.inria.aoste.timesquare.ecl.feedback.model;bundle-version="1.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

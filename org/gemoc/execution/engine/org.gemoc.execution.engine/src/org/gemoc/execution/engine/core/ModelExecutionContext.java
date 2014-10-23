@@ -20,9 +20,8 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.EventExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.IClockController;
+import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
+import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EngineContextException;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
@@ -124,17 +123,15 @@ public class ModelExecutionContext implements IExecutionContext
 	}
 	
 	private Solver _solver;
-	private CodeExecutor _codeExecutor;
-	private EventExecutor _eventExecutor;
+	private ICodeExecutor _codeExecutor;
 	private Collection<IEngineHook> _hooks;
-	private Collection<IClockController> _clockControllers;
+	private Collection<IMSEStateController> _clockControllers;
 	
 	private void instantiateAgents() throws CoreException {
 		_solver = _languageDefinition.instanciateSolver();
 		_codeExecutor = _languageDefinition.instanciateCodeExecutor();
-		_eventExecutor = _languageDefinition.instanciateEventExecutor();
 		_hooks = _languageDefinition.instanciateEngineHooks();
-		_clockControllers = _languageDefinition.instanciateClockControllers();
+		_clockControllers = _languageDefinition.instanciateMSEStateControllers();
 	}
 
 	private LanguageDefinitionExtension _languageDefinition;
@@ -177,15 +174,9 @@ public class ModelExecutionContext implements IExecutionContext
 	}
 
 	@Override
-	public CodeExecutor getCodeExecutor() 
+	public ICodeExecutor getCodeExecutor() 
 	{
 		return _codeExecutor;
-	}
-
-	@Override
-	public EventExecutor getEventExecutor() 
-	{
-		return _eventExecutor;
 	}
 
 	@Override
@@ -195,7 +186,7 @@ public class ModelExecutionContext implements IExecutionContext
 	}
 
 	@Override
-	public Collection<IClockController> getClockControllers() 
+	public Collection<IMSEStateController> getMSEStateControllers() 
 	{
 		return _clockControllers;
 	}

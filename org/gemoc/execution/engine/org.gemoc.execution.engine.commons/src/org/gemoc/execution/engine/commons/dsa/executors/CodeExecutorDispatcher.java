@@ -1,11 +1,13 @@
 package org.gemoc.execution.engine.commons.dsa.executors;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.MethodCall;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
+import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
+
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 
 /**
  * An aggregation of several CodeExecutors.
@@ -14,50 +16,63 @@ import org.gemoc.gemoc_language_workbench.api.dsa.MethodCall;
  * @author flatombe
  * 
  */
-public class CodeExecutorDispatcher implements CodeExecutor {
+public class CodeExecutorDispatcher implements ICodeExecutor 
+{
 
-	protected List<CodeExecutor> availableExecutors = null;
+	protected List<ICodeExecutor> _executors = null;
 
-	public CodeExecutorDispatcher() {
-		this.availableExecutors = new ArrayList<CodeExecutor>();
+	public CodeExecutorDispatcher() 
+	{
+		_executors = new ArrayList<ICodeExecutor>();
 	}
 
-	public CodeExecutorDispatcher(CodeExecutor codeExecutor) {
+	public CodeExecutorDispatcher(ICodeExecutor codeExecutor) 
+	{
 		this();
-		this.addExecutor(codeExecutor);
+		addExecutor(codeExecutor);
 	}
 
-	public CodeExecutorDispatcher(List<CodeExecutor> codeExecutors) {
+	public CodeExecutorDispatcher(List<ICodeExecutor> codeExecutors) 
+	{
 		this();
-		for (CodeExecutor codeExecutor : codeExecutors) {
-			this.addExecutor(codeExecutor);
+		for (ICodeExecutor codeExecutor : codeExecutors) 
+		{
+			addExecutor(codeExecutor);
 		}
 	}
 
-	@Override
-	public Object invoke(Object target, String methodName,
-			List<Object> parameters) throws NoSuchMethodException,
-			IllegalArgumentException, InvocationTargetException,
-			IllegalAccessException {
-
-		MethodCall command = this.getMethodCall(target, methodName, parameters);
-		return command.invoke();
+	public void addExecutor(ICodeExecutor executor) 
+	{
+		_executors.add(executor);
 	}
 
 	@Override
-	public MethodCall getMethodCall(Object target, String methodName,
-			List<Object> parameters) throws NoSuchMethodException,
-			IllegalArgumentException {
-		for (CodeExecutor executor : this.availableExecutors) {
-			MethodCall command = executor.getMethodCall(target, methodName,
-					parameters);
-			if (command != null)
-				return command;
+	public Object execute(ActionCall call) throws CodeExecutionException 
+	{		
+		for (ICodeExecutor executor : _executors) 
+		{
+			try {
+				return executor.execute(call);
+			} catch (CodeExecutionException e) 
+			{
+				e.printStackTrace();
+			}
 		}
-		return null;
+		throw new CodeExecutionException("No code executor could perform the action call", call);
 	}
 
-	public void addExecutor(CodeExecutor newexecutor) {
-		this.availableExecutors.add(newexecutor);
+	@Override
+	public Object execute(Object caller, String methodName,
+			Collection<Object> parameters) throws CodeExecutionException {
+		for (ICodeExecutor executor : _executors) 
+		{
+			try {
+				return executor.execute(caller, methodName, parameters);
+			} catch (CodeExecutionException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		throw new CodeExecutionException("No code executor could perform the action call", null);
 	}
 }

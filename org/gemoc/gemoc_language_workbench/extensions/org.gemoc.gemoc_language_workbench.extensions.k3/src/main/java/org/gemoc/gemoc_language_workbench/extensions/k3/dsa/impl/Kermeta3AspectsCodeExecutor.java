@@ -5,16 +5,19 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dsa.MethodCall;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
+import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.extensions.k3.Activator;
 import org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorClassLoader;
+
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 
 /**
  * Executor that is able to find the helper class associated with a given object
@@ -24,7 +27,7 @@ import org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorCl
  * @author dvojtise
  * 
  */
-public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
+public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 
 	// protected ClassLoader classLoader;
 	protected IK3DSAExecutorClassLoader k3DSAExecutorClassLoader;
@@ -38,59 +41,51 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 		this.bundleSymbolicName = bundleSymbolicName;
 	}
 
+	
 	@Override
-	public Object invoke(Object target, String methodName,
-			List<Object> parameters) throws NoSuchMethodException,
-			IllegalArgumentException, InvocationTargetException,
-			IllegalAccessException {
-		MethodCall command = this.getMethodCall(target, methodName, parameters);
-		if (command != null) {
-			try {
-				return command.invoke();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		NoSuchMethodException e = new NoSuchMethodException(
-				"cannot find applicable method " + methodName
-						+ " and matching parameters on " + target);
-		e.printStackTrace();
-		// TODO should return the fact that it cannot be executed via an
-		// exception (NoSuchMethodException ? or custom ?)
-		return null;
+	public Object execute(ActionCall call) throws CodeExecutionException 
+	{
+		Object caller = call.getTriggeringEvent().getCaller();
+		String methodName = call.getTriggeringEvent().getAction().getName();
+		return internal_execute(caller, methodName, call.getParameters(), call);
 	}
 
 	@Override
-	public MethodCall getMethodCall(Object target, String methodName,
-			List<Object> parameters) throws NoSuchMethodException,
-			IllegalArgumentException {
-
-		Class<?> staticHelperClass = getStaticHelperClass(target);
+	public Object execute(Object caller, String methodName, Collection<Object> parameters) throws CodeExecutionException 
+	{
+		return internal_execute(caller, methodName, parameters, null);
+	}
+	
+	private Object internal_execute(Object caller, String methodName, Collection<Object> parameters, ActionCall call) throws CodeExecutionException 
+	{
+		Class<?> staticHelperClass = getStaticHelperClass(caller);
 		if (staticHelperClass == null)
-			return null; // no applicable static class found
-
+			throw new CodeExecutionException("No static class found for the call.", call); 
+		
 		ArrayList<Object> staticParameters = new ArrayList<Object>();
-		staticParameters.add(target);
-		if (parameters != null) {
+		staticParameters.add(caller);
+		if (parameters != null) 
+		{
 			staticParameters.addAll(parameters);
 		}
-		Method bestApplicableMethod = getFirstApplicableMethod(
-				staticHelperClass, methodName, staticParameters);
-		if (bestApplicableMethod != null)
-			return new Kermeta3AspectsMethodCall(staticHelperClass,
-					bestApplicableMethod, staticParameters);
-		else
-			return null;
+		Method bestApplicableMethod = getFirstApplicableMethod(staticHelperClass, methodName, staticParameters);
 
+		Object[] args = new Object[0];
+		if (staticParameters != null) 
+		{
+			args = staticParameters.toArray();
+		}
+		Object result = null;
+		try {
+			result = bestApplicableMethod.invoke(null, args);
+		} catch (IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) 
+		{
+			throw new CodeExecutionException("Exception caught during execution of a call, see inner exception.", e, call);
+		}
+		return result;
 	}
-
+	
 	/**
 	 * return the first compatible method, goes up the inheritance hierarchy
 	 * 
@@ -207,7 +202,7 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 	 * @param o
 	 * @return
 	 */
-	public List<Class<?>> getInterfacesClassOfEObjectOrClass(Object o) {
+	protected List<Class<?>> getInterfacesClassOfEObjectOrClass(Object o) {
 		List<Class<?>> possibleInterfaces = new ArrayList<Class<?>>();
 		if (o instanceof EObject) {
 			/*
@@ -247,7 +242,7 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
 	}
 
 	// The two following methods are copied from org.apache.commons.lang.ClassUtils
-	public static List<Class<?>> getAllInterfaces(Class<?> cls) {
+	private static List<Class<?>> getAllInterfaces(Class<?> cls) {
         if (cls == null) {
             return null;
         }
@@ -271,50 +266,5 @@ public class Kermeta3AspectsCodeExecutor implements CodeExecutor {
             cls = cls.getSuperclass();
          }
      }
-
-	/**
-	 * Command that is able to execute the required method
-	 * 
-	 */
-	public class Kermeta3AspectsMethodCall implements MethodCall {
-
-		protected Class<?> staticHelperClass;
-		protected Method method;
-		protected List<Object> staticParameters;
-
-		public Kermeta3AspectsMethodCall(Class<?> staticHelperClass,
-				Method method, List<Object> staticParameters) {
-			this.staticHelperClass = staticHelperClass;
-			this.method = method;
-			this.staticParameters = staticParameters;
-		}
-
-		@Override
-		public Object invoke() throws IllegalAccessException,
-				IllegalArgumentException, InvocationTargetException {
-			Object[] args = new Object[0];
-			if (staticParameters != null) {
-				args = staticParameters.toArray();
-			}
-			Object res = method.invoke(null, args);
-			return res;
-		}
-
-		@Override
-		public Object getTarget() {
-			return staticParameters.get(0);
-		}
-
-		@Override
-		public Method getMethod() {
-			return this.method;
-		}
-
-		@Override
-		public List<Object> getParameters() {
-			return staticParameters.subList(1, staticParameters.size() - 1);
-		}
-
-	}
 
 }
