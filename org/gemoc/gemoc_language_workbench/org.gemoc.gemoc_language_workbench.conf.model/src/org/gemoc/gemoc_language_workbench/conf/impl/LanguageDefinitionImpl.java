@@ -524,4 +524,10 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 		return result.toString();
 	}
 
+	@Override
+	public void setMoCProject(MoCCProject mocProject) {
+		// TODO Auto-generated method stub
+		
+	}
+
 } //LanguageDefinitionImpl

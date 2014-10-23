@@ -191,4 +191,6 @@ public interface LanguageDefinition extends EObject {
 	 */
 	void setName(String value);
 
+	void setMoCProject(MoCCProject mocProject);
+
 } // LanguageDefinition

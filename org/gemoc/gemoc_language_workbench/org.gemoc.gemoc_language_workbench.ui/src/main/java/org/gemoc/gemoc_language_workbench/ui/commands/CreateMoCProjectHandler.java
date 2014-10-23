@@ -1,15 +1,13 @@
 package org.gemoc.gemoc_language_workbench.ui.commands;
 
-
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.gemoc.gemoc_language_workbench.ui.wizards.CreateMOCCWizard;
-
-import org.gemoc.gemoc_language_workbench.ui.wizards.CreateMOCCWizardContextAction;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateMoCWizard;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateMoCWizardContextAction;
 
 public class CreateMoCProjectHandler extends AbstractGemocLanguageProjectHandler implements IHandler {
 
@@ -21,7 +19,7 @@ public class CreateMoCProjectHandler extends AbstractGemocLanguageProjectHandler
 
 		// launch the wizard that will select the action and do the job
 		WizardDialog wizardDialog = new WizardDialog(HandlerUtil.getActiveWorkbenchWindow(event).getShell(),
-													 new CreateMOCCWizard(new CreateMOCCWizardContextAction(updatedGemocLanguageProject)));
+													 new CreateMoCWizard(new CreateMoCWizardContextAction(updatedGemocLanguageProject)));
 		wizardDialog.open();
 		
 		return null;
