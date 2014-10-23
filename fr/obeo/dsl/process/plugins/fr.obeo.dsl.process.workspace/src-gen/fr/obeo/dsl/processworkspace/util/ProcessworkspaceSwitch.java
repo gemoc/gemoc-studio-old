@@ -10,6 +10,7 @@ import fr.obeo.dsl.processworkspace.PartVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.ProjectVariable;
 import fr.obeo.dsl.processworkspace.WindowVariable;
+import fr.obeo.dsl.processworkspace.WorkspaceVariable;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -65,9 +66,20 @@ public class ProcessworkspaceSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case ProcessworkspacePackage.WORKSPACE_VARIABLE: {
+				WorkspaceVariable workspaceVariable = (WorkspaceVariable)theEObject;
+				T result = caseWorkspaceVariable(workspaceVariable);
+				if (result == null)
+					result = caseProcessVariable(workspaceVariable);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			case ProcessworkspacePackage.FILE_VARIABLE: {
 				FileVariable fileVariable = (FileVariable)theEObject;
 				T result = caseFileVariable(fileVariable);
+				if (result == null)
+					result = caseWorkspaceVariable(fileVariable);
 				if (result == null)
 					result = caseProcessVariable(fileVariable);
 				if (result == null)
@@ -78,6 +90,8 @@ public class ProcessworkspaceSwitch<T> extends Switch<T> {
 				FolderVariable folderVariable = (FolderVariable)theEObject;
 				T result = caseFolderVariable(folderVariable);
 				if (result == null)
+					result = caseWorkspaceVariable(folderVariable);
+				if (result == null)
 					result = caseProcessVariable(folderVariable);
 				if (result == null)
 					result = defaultCase(theEObject);
@@ -86,6 +100,8 @@ public class ProcessworkspaceSwitch<T> extends Switch<T> {
 			case ProcessworkspacePackage.PROJECT_VARIABLE: {
 				ProjectVariable projectVariable = (ProjectVariable)theEObject;
 				T result = caseProjectVariable(projectVariable);
+				if (result == null)
+					result = caseWorkspaceVariable(projectVariable);
 				if (result == null)
 					result = caseProcessVariable(projectVariable);
 				if (result == null)
@@ -96,6 +112,8 @@ public class ProcessworkspaceSwitch<T> extends Switch<T> {
 				WindowVariable windowVariable = (WindowVariable)theEObject;
 				T result = caseWindowVariable(windowVariable);
 				if (result == null)
+					result = caseWorkspaceVariable(windowVariable);
+				if (result == null)
 					result = caseProcessVariable(windowVariable);
 				if (result == null)
 					result = defaultCase(theEObject);
@@ -104,6 +122,8 @@ public class ProcessworkspaceSwitch<T> extends Switch<T> {
 			case ProcessworkspacePackage.PAGE_VARIABLE: {
 				PageVariable pageVariable = (PageVariable)theEObject;
 				T result = casePageVariable(pageVariable);
+				if (result == null)
+					result = caseWorkspaceVariable(pageVariable);
 				if (result == null)
 					result = caseProcessVariable(pageVariable);
 				if (result == null)
@@ -114,6 +134,8 @@ public class ProcessworkspaceSwitch<T> extends Switch<T> {
 				PartVariable partVariable = (PartVariable)theEObject;
 				T result = casePartVariable(partVariable);
 				if (result == null)
+					result = caseWorkspaceVariable(partVariable);
+				if (result == null)
 					result = caseProcessVariable(partVariable);
 				if (result == null)
 					result = defaultCase(theEObject);
@@ -122,6 +144,21 @@ public class ProcessworkspaceSwitch<T> extends Switch<T> {
 			default:
 				return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Workspace Variable</em>'. <!--
+	 * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
+	 * switch. <!-- end-user-doc -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Workspace Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWorkspaceVariable(WorkspaceVariable object) {
+		return null;
 	}
 
 	/**

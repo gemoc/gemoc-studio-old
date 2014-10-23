@@ -14,5 +14,5 @@ import fr.obeo.dsl.process.ProcessVariable;
  * @model
  * @generated
  */
-public interface PartVariable extends ProcessVariable {
+public interface PartVariable extends WorkspaceVariable {
 } // PartVariable

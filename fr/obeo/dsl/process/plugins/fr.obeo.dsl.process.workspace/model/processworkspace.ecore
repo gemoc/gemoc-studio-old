@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="processworkspace" nsURI="http://www.obeo.fr/dsl/processworkspace"
-    nsPrefix="processworkspace">
-  <eClassifiers xsi:type="ecore:EClass" name="FileVariable" eSuperTypes="../../fr.obeo.dsl.process/model/process.ecore#//ProcessVariable">
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="processworkspace"
+    nsURI="http://www.obeo.fr/dsl/processworkspace" nsPrefix="processworkspace">
+  <eClassifiers xsi:type="ecore:EClass" name="WorkspaceVariable" eSuperTypes="../../fr.obeo.dsl.process/model/process.ecore#//ProcessVariable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A {@link ProcessVariable} wich {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.core.resources.IFile IFile}."/>
+      <details key="documentation" value="A {@link ProcessVariable} managed by the workspace listener."/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FolderVariable" eSuperTypes="../../fr.obeo.dsl.process/model/process.ecore#//ProcessVariable">
+  <eClassifiers xsi:type="ecore:EClass" name="FileVariable" eSuperTypes="#//WorkspaceVariable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A {@link ProcessVariable} wich {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.core.resources.IFolder IFolder}."/>
+      <details key="documentation" value="A {@link ProcessVariable} which {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.core.resources.IFile IFile}."/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProjectVariable" eSuperTypes="../../fr.obeo.dsl.process/model/process.ecore#//ProcessVariable">
+  <eClassifiers xsi:type="ecore:EClass" name="FolderVariable" eSuperTypes="#//WorkspaceVariable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A {@link ProcessVariable} wich {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.core.resources.IProject IProject}."/>
+      <details key="documentation" value="A {@link ProcessVariable} which {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.core.resources.IFolder IFolder}."/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WindowVariable" eSuperTypes="../../fr.obeo.dsl.process/model/process.ecore#//ProcessVariable">
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectVariable" eSuperTypes="#//WorkspaceVariable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A {@link ProcessVariable} wich {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.ui.IWorkbenchWindow IWorkbenchWindow}."/>
+      <details key="documentation" value="A {@link ProcessVariable} which {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.core.resources.IProject IProject}."/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PageVariable" eSuperTypes="../../fr.obeo.dsl.process/model/process.ecore#//ProcessVariable">
+  <eClassifiers xsi:type="ecore:EClass" name="WindowVariable" eSuperTypes="#//WorkspaceVariable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A {@link ProcessVariable} wich {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.ui.IWorkbenchPage IWorkbenchPage}."/>
+      <details key="documentation" value="A {@link ProcessVariable} which {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.ui.IWorkbenchWindow IWorkbenchWindow}."/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PartVariable" eSuperTypes="../../fr.obeo.dsl.process/model/process.ecore#//ProcessVariable">
+  <eClassifiers xsi:type="ecore:EClass" name="PageVariable" eSuperTypes="#//WorkspaceVariable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A {@link ProcessVariable} wich {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.ui.IWorkbenchPart IWorkbenchPart}."/>
+      <details key="documentation" value="A {@link ProcessVariable} which {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.ui.IWorkbenchPage IWorkbenchPage}."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartVariable" eSuperTypes="#//WorkspaceVariable">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A {@link ProcessVariable} which {@link fr.obeo.dsl.process.ProcessContext#getVariableValue(fr.obeo.dsl.process.ActionTask) value} is an {@link  org.eclipse.ui.IWorkbenchPart IWorkbenchPart}."/>
     </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

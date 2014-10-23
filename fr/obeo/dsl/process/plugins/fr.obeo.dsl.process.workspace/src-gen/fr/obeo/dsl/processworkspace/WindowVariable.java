@@ -14,5 +14,5 @@ import fr.obeo.dsl.process.ProcessVariable;
  * @model
  * @generated
  */
-public interface WindowVariable extends ProcessVariable {
+public interface WindowVariable extends WorkspaceVariable {
 } // WindowVariable

@@ -52,14 +52,14 @@ public interface ProcessworkspacePackage extends EPackage {
 	ProcessworkspacePackage eINSTANCE = fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link fr.obeo.dsl.processworkspace.impl.FileVariableImpl
-	 * <em>File Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link fr.obeo.dsl.processworkspace.impl.WorkspaceVariableImpl
+	 * <em>Workspace Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @see fr.obeo.dsl.processworkspace.impl.FileVariableImpl
-	 * @see fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl#getFileVariable()
+	 * @see fr.obeo.dsl.processworkspace.impl.WorkspaceVariableImpl
+	 * @see fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl#getWorkspaceVariable()
 	 * @generated
 	 */
-	int FILE_VARIABLE = 0;
+	int WORKSPACE_VARIABLE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -67,7 +67,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_VARIABLE__NAME = ProcessPackage.PROCESS_VARIABLE__NAME;
+	int WORKSPACE_VARIABLE__NAME = ProcessPackage.PROCESS_VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Written By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -76,7 +76,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_VARIABLE__WRITTEN_BY = ProcessPackage.PROCESS_VARIABLE__WRITTEN_BY;
+	int WORKSPACE_VARIABLE__WRITTEN_BY = ProcessPackage.PROCESS_VARIABLE__WRITTEN_BY;
 
 	/**
 	 * The feature id for the '<em><b>Observed By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -85,7 +85,52 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_VARIABLE__OBSERVED_BY = ProcessPackage.PROCESS_VARIABLE__OBSERVED_BY;
+	int WORKSPACE_VARIABLE__OBSERVED_BY = ProcessPackage.PROCESS_VARIABLE__OBSERVED_BY;
+
+	/**
+	 * The number of structural features of the '<em>Workspace Variable</em>' class. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSPACE_VARIABLE_FEATURE_COUNT = ProcessPackage.PROCESS_VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.obeo.dsl.processworkspace.impl.FileVariableImpl
+	 * <em>File Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see fr.obeo.dsl.processworkspace.impl.FileVariableImpl
+	 * @see fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl#getFileVariable()
+	 * @generated
+	 */
+	int FILE_VARIABLE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_VARIABLE__NAME = WORKSPACE_VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Written By</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_VARIABLE__WRITTEN_BY = WORKSPACE_VARIABLE__WRITTEN_BY;
+
+	/**
+	 * The feature id for the '<em><b>Observed By</b></em>' reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_VARIABLE__OBSERVED_BY = WORKSPACE_VARIABLE__OBSERVED_BY;
 
 	/**
 	 * The number of structural features of the '<em>File Variable</em>' class. <!-- begin-user-doc --> <!--
@@ -94,7 +139,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_VARIABLE_FEATURE_COUNT = ProcessPackage.PROCESS_VARIABLE_FEATURE_COUNT + 0;
+	int FILE_VARIABLE_FEATURE_COUNT = WORKSPACE_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.processworkspace.impl.FolderVariableImpl
@@ -104,7 +149,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @see fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl#getFolderVariable()
 	 * @generated
 	 */
-	int FOLDER_VARIABLE = 1;
+	int FOLDER_VARIABLE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -112,7 +157,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER_VARIABLE__NAME = ProcessPackage.PROCESS_VARIABLE__NAME;
+	int FOLDER_VARIABLE__NAME = WORKSPACE_VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Written By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -121,7 +166,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER_VARIABLE__WRITTEN_BY = ProcessPackage.PROCESS_VARIABLE__WRITTEN_BY;
+	int FOLDER_VARIABLE__WRITTEN_BY = WORKSPACE_VARIABLE__WRITTEN_BY;
 
 	/**
 	 * The feature id for the '<em><b>Observed By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -130,7 +175,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER_VARIABLE__OBSERVED_BY = ProcessPackage.PROCESS_VARIABLE__OBSERVED_BY;
+	int FOLDER_VARIABLE__OBSERVED_BY = WORKSPACE_VARIABLE__OBSERVED_BY;
 
 	/**
 	 * The number of structural features of the '<em>Folder Variable</em>' class. <!-- begin-user-doc --> <!--
@@ -139,7 +184,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER_VARIABLE_FEATURE_COUNT = ProcessPackage.PROCESS_VARIABLE_FEATURE_COUNT + 0;
+	int FOLDER_VARIABLE_FEATURE_COUNT = WORKSPACE_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.processworkspace.impl.ProjectVariableImpl
@@ -149,7 +194,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @see fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl#getProjectVariable()
 	 * @generated
 	 */
-	int PROJECT_VARIABLE = 2;
+	int PROJECT_VARIABLE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -157,7 +202,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_VARIABLE__NAME = ProcessPackage.PROCESS_VARIABLE__NAME;
+	int PROJECT_VARIABLE__NAME = WORKSPACE_VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Written By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -166,7 +211,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_VARIABLE__WRITTEN_BY = ProcessPackage.PROCESS_VARIABLE__WRITTEN_BY;
+	int PROJECT_VARIABLE__WRITTEN_BY = WORKSPACE_VARIABLE__WRITTEN_BY;
 
 	/**
 	 * The feature id for the '<em><b>Observed By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -175,7 +220,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_VARIABLE__OBSERVED_BY = ProcessPackage.PROCESS_VARIABLE__OBSERVED_BY;
+	int PROJECT_VARIABLE__OBSERVED_BY = WORKSPACE_VARIABLE__OBSERVED_BY;
 
 	/**
 	 * The number of structural features of the '<em>Project Variable</em>' class. <!-- begin-user-doc -->
@@ -184,7 +229,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_VARIABLE_FEATURE_COUNT = ProcessPackage.PROCESS_VARIABLE_FEATURE_COUNT + 0;
+	int PROJECT_VARIABLE_FEATURE_COUNT = WORKSPACE_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.processworkspace.impl.WindowVariableImpl
@@ -194,7 +239,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @see fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl#getWindowVariable()
 	 * @generated
 	 */
-	int WINDOW_VARIABLE = 3;
+	int WINDOW_VARIABLE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -202,7 +247,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WINDOW_VARIABLE__NAME = ProcessPackage.PROCESS_VARIABLE__NAME;
+	int WINDOW_VARIABLE__NAME = WORKSPACE_VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Written By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -211,7 +256,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WINDOW_VARIABLE__WRITTEN_BY = ProcessPackage.PROCESS_VARIABLE__WRITTEN_BY;
+	int WINDOW_VARIABLE__WRITTEN_BY = WORKSPACE_VARIABLE__WRITTEN_BY;
 
 	/**
 	 * The feature id for the '<em><b>Observed By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -220,7 +265,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WINDOW_VARIABLE__OBSERVED_BY = ProcessPackage.PROCESS_VARIABLE__OBSERVED_BY;
+	int WINDOW_VARIABLE__OBSERVED_BY = WORKSPACE_VARIABLE__OBSERVED_BY;
 
 	/**
 	 * The number of structural features of the '<em>Window Variable</em>' class. <!-- begin-user-doc --> <!--
@@ -229,7 +274,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WINDOW_VARIABLE_FEATURE_COUNT = ProcessPackage.PROCESS_VARIABLE_FEATURE_COUNT + 0;
+	int WINDOW_VARIABLE_FEATURE_COUNT = WORKSPACE_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.processworkspace.impl.PageVariableImpl
@@ -239,7 +284,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @see fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl#getPageVariable()
 	 * @generated
 	 */
-	int PAGE_VARIABLE = 4;
+	int PAGE_VARIABLE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -247,7 +292,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_VARIABLE__NAME = ProcessPackage.PROCESS_VARIABLE__NAME;
+	int PAGE_VARIABLE__NAME = WORKSPACE_VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Written By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -256,7 +301,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_VARIABLE__WRITTEN_BY = ProcessPackage.PROCESS_VARIABLE__WRITTEN_BY;
+	int PAGE_VARIABLE__WRITTEN_BY = WORKSPACE_VARIABLE__WRITTEN_BY;
 
 	/**
 	 * The feature id for the '<em><b>Observed By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -265,7 +310,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_VARIABLE__OBSERVED_BY = ProcessPackage.PROCESS_VARIABLE__OBSERVED_BY;
+	int PAGE_VARIABLE__OBSERVED_BY = WORKSPACE_VARIABLE__OBSERVED_BY;
 
 	/**
 	 * The number of structural features of the '<em>Page Variable</em>' class. <!-- begin-user-doc --> <!--
@@ -274,7 +319,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_VARIABLE_FEATURE_COUNT = ProcessPackage.PROCESS_VARIABLE_FEATURE_COUNT + 0;
+	int PAGE_VARIABLE_FEATURE_COUNT = WORKSPACE_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.processworkspace.impl.PartVariableImpl
@@ -284,7 +329,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @see fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl#getPartVariable()
 	 * @generated
 	 */
-	int PART_VARIABLE = 5;
+	int PART_VARIABLE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -292,7 +337,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_VARIABLE__NAME = ProcessPackage.PROCESS_VARIABLE__NAME;
+	int PART_VARIABLE__NAME = WORKSPACE_VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Written By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -301,7 +346,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_VARIABLE__WRITTEN_BY = ProcessPackage.PROCESS_VARIABLE__WRITTEN_BY;
+	int PART_VARIABLE__WRITTEN_BY = WORKSPACE_VARIABLE__WRITTEN_BY;
 
 	/**
 	 * The feature id for the '<em><b>Observed By</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -310,7 +355,7 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_VARIABLE__OBSERVED_BY = ProcessPackage.PROCESS_VARIABLE__OBSERVED_BY;
+	int PART_VARIABLE__OBSERVED_BY = WORKSPACE_VARIABLE__OBSERVED_BY;
 
 	/**
 	 * The number of structural features of the '<em>Part Variable</em>' class. <!-- begin-user-doc --> <!--
@@ -319,7 +364,17 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PART_VARIABLE_FEATURE_COUNT = ProcessPackage.PROCESS_VARIABLE_FEATURE_COUNT + 0;
+	int PART_VARIABLE_FEATURE_COUNT = WORKSPACE_VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * Returns the meta object for class '{@link fr.obeo.dsl.processworkspace.WorkspaceVariable
+	 * <em>Workspace Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class '<em>Workspace Variable</em>'.
+	 * @see fr.obeo.dsl.processworkspace.WorkspaceVariable
+	 * @generated
+	 */
+	EClass getWorkspaceVariable();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.processworkspace.FileVariable
@@ -403,6 +458,16 @@ public interface ProcessworkspacePackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link fr.obeo.dsl.processworkspace.impl.WorkspaceVariableImpl
+		 * <em>Workspace Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
+		 * @see fr.obeo.dsl.processworkspace.impl.WorkspaceVariableImpl
+		 * @see fr.obeo.dsl.processworkspace.impl.ProcessworkspacePackageImpl#getWorkspaceVariable()
+		 * @generated
+		 */
+		EClass WORKSPACE_VARIABLE = eINSTANCE.getWorkspaceVariable();
+
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.processworkspace.impl.FileVariableImpl
 		 * <em>File Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->

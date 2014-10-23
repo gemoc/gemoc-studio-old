@@ -10,6 +10,7 @@ import fr.obeo.dsl.processworkspace.PartVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.ProjectVariable;
 import fr.obeo.dsl.processworkspace.WindowVariable;
+import fr.obeo.dsl.processworkspace.WorkspaceVariable;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -69,6 +70,11 @@ public class ProcessworkspaceAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected ProcessworkspaceSwitch<Adapter> modelSwitch = new ProcessworkspaceSwitch<Adapter>() {
 		@Override
+		public Adapter caseWorkspaceVariable(WorkspaceVariable object) {
+			return createWorkspaceVariableAdapter();
+		}
+
+		@Override
 		public Adapter caseFileVariable(FileVariable object) {
 			return createFileVariableAdapter();
 		}
@@ -120,6 +126,20 @@ public class ProcessworkspaceAdapterFactory extends AdapterFactoryImpl {
 	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject)target);
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.obeo.dsl.processworkspace.WorkspaceVariable
+	 * <em>Workspace Variable</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
+	 * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases
+	 * anyway. <!-- end-user-doc -->
+	 * 
+	 * @return the new adapter.
+	 * @see fr.obeo.dsl.processworkspace.WorkspaceVariable
+	 * @generated
+	 */
+	public Adapter createWorkspaceVariableAdapter() {
+		return null;
 	}
 
 	/**

@@ -62,7 +62,7 @@
         "https://ci.inria.fr/gemoc/job/org.gemoc.mocc.root/lastSuccessfulBuild/artifact/org/gemoc/MoCC/releng/org.gemoc.mocc.p2updatesite/target/repository/"
         ],
     "kermeta3": [
-		"https://ci.inria.fr/k3al/job/k3.eclipse/lastSuccessfulBuild/artifact/k3.eclipse/fr.inria.diverse.k3.p2updatesite/target/site/"
+		"http://www.kermeta.org/k3/update/"
         ],
     "devtools": [
         "http://community.polarion.com/projects/subversive/download/eclipse/4.0/luna-site/",

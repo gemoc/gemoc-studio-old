@@ -77,6 +77,32 @@ public class ProcessworkspaceItemProviderAdapterFactory extends
 
 	/**
 	 * This keeps track of the one adapter used for all
+	 * {@link fr.obeo.dsl.processworkspace.WorkspaceVariable} instances. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected WorkspaceVariableItemProvider workspaceVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a
+	 * {@link fr.obeo.dsl.processworkspace.WorkspaceVariable}. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createWorkspaceVariableAdapter() {
+		if (workspaceVariableItemProvider == null) {
+			workspaceVariableItemProvider = new WorkspaceVariableItemProvider(
+					this);
+		}
+
+		return workspaceVariableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all
 	 * {@link fr.obeo.dsl.processworkspace.FileVariable} instances. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -326,6 +352,8 @@ public class ProcessworkspaceItemProviderAdapterFactory extends
 	 * @generated
 	 */
 	public void dispose() {
+		if (workspaceVariableItemProvider != null)
+			workspaceVariableItemProvider.dispose();
 		if (fileVariableItemProvider != null)
 			fileVariableItemProvider.dispose();
 		if (folderVariableItemProvider != null)

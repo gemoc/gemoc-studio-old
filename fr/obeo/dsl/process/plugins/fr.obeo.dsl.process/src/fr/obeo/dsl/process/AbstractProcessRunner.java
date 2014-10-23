@@ -109,7 +109,7 @@ public abstract class AbstractProcessRunner implements IProcessRunner {
 						.getNotifier();
 				final Object newValue = notification.getNewValue();
 				final Object oldValue = notification.getOldValue();
-				if (!newValue.equals(oldValue)) {
+				if ((newValue == null && oldValue != null) || !newValue.equals(oldValue)) {
 					variableChanged(getContext(), entry.getKey(), oldValue, newValue);
 					for (Entry<ActionTask, IActionTaskProcessor> activeEntry : getActiveProcessors()
 							.entrySet()) {

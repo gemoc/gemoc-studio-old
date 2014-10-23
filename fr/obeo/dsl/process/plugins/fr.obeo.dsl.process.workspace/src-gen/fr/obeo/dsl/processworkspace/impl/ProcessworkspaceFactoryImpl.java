@@ -10,6 +10,7 @@ import fr.obeo.dsl.processworkspace.ProcessworkspaceFactory;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.ProjectVariable;
 import fr.obeo.dsl.processworkspace.WindowVariable;
+import fr.obeo.dsl.processworkspace.WorkspaceVariable;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -58,6 +59,8 @@ public class ProcessworkspaceFactoryImpl extends EFactoryImpl implements Process
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case ProcessworkspacePackage.WORKSPACE_VARIABLE:
+				return createWorkspaceVariable();
 			case ProcessworkspacePackage.FILE_VARIABLE:
 				return createFileVariable();
 			case ProcessworkspacePackage.FOLDER_VARIABLE:
@@ -74,6 +77,16 @@ public class ProcessworkspaceFactoryImpl extends EFactoryImpl implements Process
 				throw new IllegalArgumentException("The class '" + eClass.getName()
 						+ "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public WorkspaceVariable createWorkspaceVariable() {
+		WorkspaceVariableImpl workspaceVariable = new WorkspaceVariableImpl();
+		return workspaceVariable;
 	}
 
 	/**

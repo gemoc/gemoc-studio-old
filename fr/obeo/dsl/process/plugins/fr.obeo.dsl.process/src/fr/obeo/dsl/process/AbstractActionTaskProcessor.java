@@ -31,7 +31,7 @@ public abstract class AbstractActionTaskProcessor implements IActionTaskProcesso
 	private final ActionTask actionTask;
 
 	/**
-	 * Contructor.
+	 * Constructor.
 	 * 
 	 * @param actionTask
 	 *            the {@link ActionTask} definition

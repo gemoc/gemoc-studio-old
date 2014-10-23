@@ -11,6 +11,7 @@ import fr.obeo.dsl.processworkspace.ProcessworkspaceFactory;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 import fr.obeo.dsl.processworkspace.ProjectVariable;
 import fr.obeo.dsl.processworkspace.WindowVariable;
+import fr.obeo.dsl.processworkspace.WorkspaceVariable;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -22,6 +23,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class ProcessworkspacePackageImpl extends EPackageImpl implements ProcessworkspacePackage {
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass workspaceVariableEClass = null;
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -135,6 +143,15 @@ public class ProcessworkspacePackageImpl extends EPackageImpl implements Process
 	 * 
 	 * @generated
 	 */
+	public EClass getWorkspaceVariable() {
+		return workspaceVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public EClass getFileVariable() {
 		return fileVariableEClass;
 	}
@@ -212,6 +229,8 @@ public class ProcessworkspacePackageImpl extends EPackageImpl implements Process
 		isCreated = true;
 
 		// Create classes and their features
+		workspaceVariableEClass = createEClass(WORKSPACE_VARIABLE);
+
 		fileVariableEClass = createEClass(FILE_VARIABLE);
 
 		folderVariableEClass = createEClass(FOLDER_VARIABLE);
@@ -257,14 +276,18 @@ public class ProcessworkspacePackageImpl extends EPackageImpl implements Process
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		fileVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
-		folderVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
-		projectVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
-		windowVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
-		pageVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
-		partVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
+		workspaceVariableEClass.getESuperTypes().add(theProcessPackage.getProcessVariable());
+		fileVariableEClass.getESuperTypes().add(this.getWorkspaceVariable());
+		folderVariableEClass.getESuperTypes().add(this.getWorkspaceVariable());
+		projectVariableEClass.getESuperTypes().add(this.getWorkspaceVariable());
+		windowVariableEClass.getESuperTypes().add(this.getWorkspaceVariable());
+		pageVariableEClass.getESuperTypes().add(this.getWorkspaceVariable());
+		partVariableEClass.getESuperTypes().add(this.getWorkspaceVariable());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(workspaceVariableEClass, WorkspaceVariable.class, "WorkspaceVariable", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(fileVariableEClass, FileVariable.class, "FileVariable", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 

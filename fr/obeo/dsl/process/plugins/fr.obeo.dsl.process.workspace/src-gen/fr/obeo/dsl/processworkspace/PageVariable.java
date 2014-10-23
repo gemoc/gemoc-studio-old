@@ -14,5 +14,5 @@ import fr.obeo.dsl.process.ProcessVariable;
  * @model
  * @generated
  */
-public interface PageVariable extends ProcessVariable {
+public interface PageVariable extends WorkspaceVariable {
 } // PageVariable

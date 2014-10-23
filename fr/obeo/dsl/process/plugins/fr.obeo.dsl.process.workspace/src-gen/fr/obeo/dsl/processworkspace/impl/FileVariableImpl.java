@@ -2,7 +2,6 @@
  */
 package fr.obeo.dsl.processworkspace.impl;
 
-import fr.obeo.dsl.process.impl.ProcessVariableImpl;
 import fr.obeo.dsl.processworkspace.FileVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 
@@ -16,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
  * 
  * @generated
  */
-public class FileVariableImpl extends ProcessVariableImpl implements FileVariable {
+public class FileVariableImpl extends WorkspaceVariableImpl implements FileVariable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 

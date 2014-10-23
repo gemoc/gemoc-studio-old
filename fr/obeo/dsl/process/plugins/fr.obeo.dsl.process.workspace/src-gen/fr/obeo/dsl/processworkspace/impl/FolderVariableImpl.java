@@ -2,7 +2,6 @@
  */
 package fr.obeo.dsl.processworkspace.impl;
 
-import fr.obeo.dsl.process.impl.ProcessVariableImpl;
 import fr.obeo.dsl.processworkspace.FolderVariable;
 import fr.obeo.dsl.processworkspace.ProcessworkspacePackage;
 
@@ -16,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
  * 
  * @generated
  */
-public class FolderVariableImpl extends ProcessVariableImpl implements FolderVariable {
+public class FolderVariableImpl extends WorkspaceVariableImpl implements FolderVariable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 

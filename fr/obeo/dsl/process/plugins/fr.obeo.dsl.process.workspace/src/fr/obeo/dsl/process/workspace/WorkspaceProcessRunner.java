@@ -21,7 +21,6 @@ import fr.obeo.dsl.process.AbstractProcessRunner;
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.IActionTaskProcessor;
 import fr.obeo.dsl.process.ProcessContext;
-import fr.obeo.dsl.process.ProcessUtils;
 import fr.obeo.dsl.process.ProcessVariable;
 import fr.obeo.dsl.processworkspace.FileVariable;
 import fr.obeo.dsl.processworkspace.FolderVariable;
@@ -108,6 +107,13 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 		super(processContext, true);
 	}
 
+	@Override
+	protected IActionTaskProcessor instanciate(ActionTask task) {
+		IActionTaskProcessor res = super.instanciate(task);
+		assert res instanceof IWorkspaceTaskProcessor;
+		return res;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -119,12 +125,13 @@ public class WorkspaceProcessRunner extends AbstractProcessRunner implements ICh
 		if (filtered != null) {
 			tasks = getObservingTasks(filtered);
 		} else {
-			tasks = ProcessUtils.getInitialActionTasks(getContext().getDefinition());
+			tasks = new LinkedHashSet<ActionTask>(getActiveProcessors().keySet());
 		}
-		for (ActionTask initialTask : tasks) {
-			final IActionTaskProcessor processor = getActiveProcessors().get(initialTask);
+		for (ActionTask task : tasks) {
+			final IWorkspaceTaskProcessor processor = (IWorkspaceTaskProcessor)getActiveProcessors()
+					.get(task);
 			if (processor != null) {
-				processor.validate(getContext());
+				processor.validate(getContext(), change);
 			}
 		}
 	}
