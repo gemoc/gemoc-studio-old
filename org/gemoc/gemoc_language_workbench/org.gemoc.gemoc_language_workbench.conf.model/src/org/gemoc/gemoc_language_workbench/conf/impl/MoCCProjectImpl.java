@@ -20,31 +20,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * @generated
  */
 public class MoCCProjectImpl extends ProjectResourceImpl implements MoCCProject {
-	/**
-	 * The default value of the '{@link #getQvtoURI() <em>Qvto URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQvtoURI()
-	 * @generated
-	 * @ordered
-	 */
-	//protected static final String QVTO_URI_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getQvtoURI() <em>Qvto URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQvtoURI()
-	 * @generated
-	 * @ordered
-	 */
-	//protected String qvtoURI = QVTO_URI_EDEFAULT;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MoCCProjectImpl() {
+		protected MoCCProjectImpl() {
 		super();
 	}
 
@@ -79,8 +55,7 @@ public class MoCCProjectImpl extends ProjectResourceImpl implements MoCCProject 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			//case confPackage.DSE_PROJECT__QVTO_URI:
-				//return getQvtoURI();
+			//TODO
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -93,9 +68,7 @@ public class MoCCProjectImpl extends ProjectResourceImpl implements MoCCProject 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			//case confPackage.DSE_PROJECT__QVTO_URI:
-				//setQvtoURI((String)newValue);
-				//return;
+			//TODO
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -108,9 +81,7 @@ public class MoCCProjectImpl extends ProjectResourceImpl implements MoCCProject 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			//case confPackage.DSE_PROJECT__QVTO_URI:
-				//setQvtoURI(QVTO_URI_EDEFAULT);
-				//return;
+			//TODO
 		}
 		super.eUnset(featureID);
 	}
@@ -123,8 +94,7 @@ public class MoCCProjectImpl extends ProjectResourceImpl implements MoCCProject 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			//case confPackage.DSE_PROJECT__QVTO_URI:
-				//return QVTO_URI_EDEFAULT == null ? qvtoURI != null : !QVTO_URI_EDEFAULT.equals(qvtoURI);
+			//TODO
 		}
 		return super.eIsSet(featureID);
 	}
@@ -139,10 +109,9 @@ public class MoCCProjectImpl extends ProjectResourceImpl implements MoCCProject 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (qvtoURI: ");
-		//result.append(qvtoURI);
-		result.append(')');
+		result.append("");
+		//TODO
 		return result.toString();
 	}
 
-} //DSEProjectImpl
+} //MoCCProjectImpl

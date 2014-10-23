@@ -39,7 +39,7 @@ public class CreateMoCWizardContextAction {
 	// one of these must be set, depending on it it will work on the file or
 	// directly in the model
 	protected IProject gemocLanguageIProject = null;
-	protected LanguageDefinition gemocLanguageModel = null; // What is it ????
+	protected LanguageDefinition gemocLanguageModel = null; 
 
 	public CreateMoCWizardContextAction(IProject updatedGemocLanguageProject) {
 		gemocLanguageIProject = updatedGemocLanguageProject;
@@ -80,9 +80,6 @@ public class CreateMoCWizardContextAction {
 				if(languageDefinition != null){ // Customize
 					createNewMoCProjectWizard._askProjectNamePage.setInitialProjectName(gemocLanguageIProject.getName()+".mocc.lib");
 					createNewMoCProjectWizard._askMoCInfoPage.initialTemplateMoCFileFieldValue = languageDefinition.getName();
-					//if(languageDefinition.getDomainModelProject() != null){
-					//	createNewMoCProjectWizard._askMoCInfoPage.initialRootContainerFieldValue = languageDefinition.getDomainModelProject().getDefaultRootEObjectQualifiedName();
-					//}
 				}
 				wizard.init(workbench, null);
 				WizardDialog wd = new WizardDialog(workbench.getActiveWorkbenchWindow().getShell(), wizard);
@@ -100,7 +97,7 @@ public class CreateMoCWizardContextAction {
 						addMoCFileToConf(createNewMoCProjectWizard.createdProjectName, 
 									"/"+createNewMoCProjectWizard.createdProjectName+"/mocc/"+createNewMoCProjectWizard.createdTemplateMoCFile+".moccml"); 
 					}
-					// We should add a first description of the file content StateBasedRelationDef
+					
 					else{
 						Activator.error("not able to detect which project was created by wizard", null);
 					}

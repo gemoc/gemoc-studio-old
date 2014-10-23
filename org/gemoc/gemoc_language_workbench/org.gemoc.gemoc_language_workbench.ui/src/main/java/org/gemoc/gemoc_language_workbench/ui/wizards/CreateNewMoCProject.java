@@ -104,11 +104,7 @@ public class CreateNewMoCProject extends Wizard implements INewWizard {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					 }
-					 //Project.createFolder(createdProject, "mocclib", monitor);
-
-					// String content = "rootElement = "
-					//			+ _askMoCInfoPage.getRootContainerModelElement();
-					// Project.createFile(createdProject, "moc2as.properties", content, monitor);
+					
 					 String filePath = "mocc/" + _askMoCInfoPage.getTemplateMoCFileNameFile() + ".moccml";
 					 Project.createFile(createdProject, filePath, "StateRelationBasedLibrary "+_askMoCInfoPage.getTemplateMoCFileNameFile().toString()+"{ \n\n}", monitor);
 //						
@@ -132,10 +128,6 @@ public class CreateNewMoCProject extends Wizard implements INewWizard {
 
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 	}
-
-	//private void addDSEProjectNature(IProject project) throws CoreException {
-	//	 this.nature.toggleNature(project);
-	//}
 	
 	public IProject getCreatedProject() {
 		return createdProject;
