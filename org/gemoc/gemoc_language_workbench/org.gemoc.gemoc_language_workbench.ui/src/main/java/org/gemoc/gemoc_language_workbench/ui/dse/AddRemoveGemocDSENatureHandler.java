@@ -1,6 +1,7 @@
 package org.gemoc.gemoc_language_workbench.ui.dse;
 
 import java.util.Iterator;
+
 import org.eclipse.core.commands.*;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -9,6 +10,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.gemoc.commons.eclipse.core.resources.Project;
 
 public class AddRemoveGemocDSENatureHandler extends AbstractHandler {
 
@@ -70,6 +72,12 @@ public class AddRemoveGemocDSENatureHandler extends AbstractHandler {
 		newNatures[natures.length] = GemocDSENature.NATURE_ID;
 		description.setNatureIds(newNatures);
 		project.setDescription(description, null);
+		
+		if(!project.getFile("moc2as.properties").exists()){
+			String content = "rootElement = ";
+		 Project.createFile(project, "moc2as.properties", content, null);
+		}
+
 	}
 
 }
