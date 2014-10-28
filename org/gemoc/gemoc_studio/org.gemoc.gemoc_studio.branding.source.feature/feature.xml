@@ -19,7 +19,8 @@
 
    <requires>
       <import feature="org.gemoc.execution.engine.feature.source" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gemoc_language_workbench.feature.source" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.commons.feature.source" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.gemoc_modeling_workbench.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_modeling_workbench.feature.source" version="0.0.0" match="greaterOrEqual"/>
       
    </requires>
