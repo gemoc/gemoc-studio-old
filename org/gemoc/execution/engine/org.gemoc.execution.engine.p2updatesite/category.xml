@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature url="features/org.gemoc.execution.engine.feature_0.1.0.qualifier.jar" id="org.gemoc.execution.engine.feature" version="0.1.0.qualifier"/>
-   <feature url="features/org.gemoc.execution.engine.source.feature_0.1.0.qualifier.jar" id="org.gemoc.execution.engine.source.feature" version="0.1.0.qualifier"/>
+   <feature url="features/org.gemoc.execution.engine.feature.source_0.1.0.qualifier.jar" id="org.gemoc.execution.engine.feature.source" version="0.1.0.qualifier"/>
    <category-def name="gemoc_modeling_workbench" label="Gemoc Modeling Workbench"/>
 </site>
