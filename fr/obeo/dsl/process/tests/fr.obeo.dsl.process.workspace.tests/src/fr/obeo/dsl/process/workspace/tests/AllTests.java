@@ -27,7 +27,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
 @RunWith(Suite.class)
-@SuiteClasses(value = {WorkspaceProcessRunnerTests.class, })
+@SuiteClasses(value = {WorkspaceTaskProcessorTest.class, WorkspaceProcessRunnerTests.class, })
 public class AllTests {
 
 }

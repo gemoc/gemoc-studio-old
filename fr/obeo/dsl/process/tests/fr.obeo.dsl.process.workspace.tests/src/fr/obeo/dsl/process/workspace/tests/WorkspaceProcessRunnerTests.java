@@ -19,7 +19,6 @@ package fr.obeo.dsl.process.workspace.tests;
 
 import fr.obeo.dsl.process.ActionTask;
 import fr.obeo.dsl.process.ComposedTask;
-import fr.obeo.dsl.process.IActionTaskProcessor;
 import fr.obeo.dsl.process.Process;
 import fr.obeo.dsl.process.ProcessContext;
 import fr.obeo.dsl.process.ProcessPackage;
@@ -79,62 +78,6 @@ public class WorkspaceProcessRunnerTests {
 	 */
 	private static final String INSTANCE_CLASS_NAME = WorkspaceProcessRunnerTests.class.getCanonicalName()
 			+ "$" + TestTask.class.getSimpleName();
-
-	/**
-	 * A test implementation that does nothing more.
-	 * 
-	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
-	 */
-	private static final class TestProcessRunner extends WorkspaceProcessRunner {
-
-		/**
-		 * Number of times the
-		 * {@link TestTask#variableChanged(ProcessContext, ProcessVariable, Object, Object) variable changed}
-		 * method has been called.
-		 */
-		private int nbVariableChanged;
-
-		/**
-		 * Constructor.
-		 * 
-		 * @param processContext
-		 *            the {@link ProcessContext}
-		 */
-		public TestProcessRunner(ProcessContext processContext) {
-			super(processContext);
-		}
-
-		/**
-		 * Tells if the given {@link ActionTask} is active.
-		 * 
-		 * @param task
-		 *            the {@link ActionTask}
-		 * @return <code>true</code> if the given {@link ActionTask} is active, <code>false</code> otherwise
-		 */
-		public boolean isActive(ActionTask task) {
-			return getActiveProcessors().containsKey(task);
-		}
-
-		/**
-		 * Gets the {@link IActionTaskProcessor} for the given {@link ActionTask}.
-		 * 
-		 * @param task
-		 *            the {@link ActionTask}
-		 * @return the {@link IActionTaskProcessor} for the given {@link ActionTask} if any, <code>null</code>
-		 *         otherwise
-		 */
-		public IActionTaskProcessor getProcessor(ActionTask task) {
-			return getProcessors().get(task);
-		}
-
-		@Override
-		public void variableChanged(ProcessContext context, ProcessVariable variable, Object oldValue,
-				Object newValue) {
-			super.variableChanged(context, variable, oldValue, newValue);
-			nbVariableChanged++;
-		}
-
-	}
 
 	/**
 	 * Test implementation of {@link AbstractWorkspaceTaskProcessor}.
