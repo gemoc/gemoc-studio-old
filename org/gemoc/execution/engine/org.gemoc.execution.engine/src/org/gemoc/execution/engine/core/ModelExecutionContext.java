@@ -11,11 +11,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
@@ -44,7 +41,7 @@ public class ModelExecutionContext implements IExecutionContext
 	private Resource _resourceModel;
 	private ExecutionMode _executionMode;	
 	
-	public ModelExecutionContext(RunConfiguration runConfiguration, ExecutionMode executionMode) throws EngineContextException {
+	public ModelExecutionContext(RunConfiguration runConfiguration, ResourceSet resourceSet, ExecutionMode executionMode) throws EngineContextException {
 		_runConfiguration = runConfiguration;
 		_executionMode = executionMode;
 		
@@ -60,13 +57,6 @@ public class ModelExecutionContext implements IExecutionContext
 			instantiateAgents();
 			generateMoC();
 
-			ResourceSet resourceSet = new ResourceSetImpl();
-			if (getDebuggerViewModelPath() != null
-				&& !getDebuggerViewModelPath().isEmpty())
-			{
-				resourceSet = getResourceSet(getDebuggerViewModelPath().toString());
-			}
-			
 			_resourceModel = getModelResource(resourceSet, _executionWorkspace.getModelPath().toString());
 
 			setUpEditingDomain(resourceSet);	
@@ -109,17 +99,6 @@ public class ModelExecutionContext implements IExecutionContext
 	
 	protected Resource getModelResource(ResourceSet resourceSet, String modelPath) throws CoreException {		
 		return resourceSet.getResource(URI.createPlatformResourceURI(modelPath, true), true);
-	}
-
-	private ResourceSet getResourceSet(String sessionPath) 
-	{
-		if (_executionMode.equals(ExecutionMode.Debug)) 
-		{
-			URI uri = URI.createPlatformResourceURI(sessionPath, true);		
-			Session siriusSession = SessionManager.INSTANCE.getExistingSession(uri);
-			return siriusSession.getTransactionalEditingDomain().getResourceSet();
-		} 
-		return new ResourceSetImpl();
 	}
 	
 	private Solver _solver;
