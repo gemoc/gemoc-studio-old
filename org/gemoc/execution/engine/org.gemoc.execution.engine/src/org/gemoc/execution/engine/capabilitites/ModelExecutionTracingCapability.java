@@ -154,7 +154,10 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 
 	private TransactionalEditingDomain _editingDomain;
 	
-	public void saveTraceModel(long stepNumber) throws CoreException, IOException {
+	
+	private boolean _cannotSaveTrace = false;
+	
+	public void saveTraceModel(long stepNumber) {
 		Resource traceResource = _executionTraceModel.eResource();
 		if (traceResource.getContents().size() > 0) 
 		{			
@@ -179,7 +182,18 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 				contextState.setModelState(modelState);
 				contextState.setSolverState(solverState);
 				traceModel.getChoices().get(traceModel.getChoices().size()-1).setContextState(contextState);
-			}
+
+				if (!_cannotSaveTrace)
+				{
+					try 
+					{
+						traceResource.save(null);
+					} catch (IOException e) {
+						e.printStackTrace();
+						_cannotSaveTrace = true;
+					}					
+				}
+			}			
 		}
 	}
 
@@ -189,7 +203,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	public void setModelExecutionContext(IExecutionContext executionContext) {
 		_executionContext = executionContext;
 		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
-		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath().toString() + "/trace.xmi", false);
+		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath().toString() + "/execution.trace", false);
 		final Resource modelResource = rs.createResource(traceModelURI);
 		final CommandStack commandStack = _editingDomain.getCommandStack();
 		commandStack.execute(new RecordingCommand(_editingDomain, "set model execution context") {
@@ -222,15 +236,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 				}
 				_lastChoice = newChoice;
 				_executionTraceModel.getChoices().add(_lastChoice);
-				try {
-					saveTraceModel(count);
-				} catch (CoreException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				saveTraceModel(count);
 			}
 		});
 	}
