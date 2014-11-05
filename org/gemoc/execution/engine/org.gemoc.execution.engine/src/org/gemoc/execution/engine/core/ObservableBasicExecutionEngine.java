@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.core;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Observable;
 
@@ -23,6 +24,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponent;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
 
@@ -404,27 +406,15 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			animator.activate(this, logicalStepToApply);
 		}
 
-		ArrayList<ModelSpecificEvent> mses = new ArrayList<ModelSpecificEvent>();
-		for (Event event : LogicalStepHelper.getTickedEvents(logicalStepToApply))
-		{
-			for (ModelSpecificEvent mse : _executionContext.getFeedbackModel().getEvents())
-			{
-				if (mse.getName().replace("MSE_", "").equals(event.getName().replace("evt_", "")))
-				{
-					mses.add(mse);
-					break;
-				}
-			}
-		}
-		
-		for (final ModelSpecificEvent mse : mses) 
+		Collection<IMSEOccurrence> mseOccurences = MSEOccurrenceFactory.createMSEOccurrences(logicalStepToApply, _executionContext.getFeedbackModel());	
+		for (final IMSEOccurrence mseOccurence : mseOccurences) 
 		{
 			if (_debugger != null) 
 			{
-				terminated = !_debugger.control(Thread.currentThread().getName(), mse.getCaller());
+				terminated = !_debugger.control(Thread.currentThread().getName(), mseOccurence.getMSE().getCaller());
 			}
-			executeAssociatedActions(mse);
-			executeModelSpecificEvent(mse);
+			executeAssociatedActions(mseOccurence.getMSE());
+			executeModelSpecificEvent(mseOccurence.getMSE());
 		}
 	}
 	

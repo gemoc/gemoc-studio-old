@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
@@ -27,7 +28,7 @@ public class JavaCodeExecutor implements ICodeExecutor {
 
 	@Override
 	public Object execute(Object caller, String methodName,
-			Collection<Object> parameters) throws CodeExecutionException {
+			List<Object> parameters) throws CodeExecutionException {
 		return execute(caller,
 						methodName, 
 						parameters, 

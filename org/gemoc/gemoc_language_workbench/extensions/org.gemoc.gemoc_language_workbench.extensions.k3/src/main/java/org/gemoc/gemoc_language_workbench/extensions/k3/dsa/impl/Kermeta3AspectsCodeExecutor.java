@@ -51,25 +51,23 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 	}
 
 	@Override
-	public Object execute(Object caller, String methodName, Collection<Object> parameters) throws CodeExecutionException 
+	public Object execute(Object caller, String methodName, List<Object> parameters) throws CodeExecutionException 
 	{
 		return internal_execute(caller, methodName, parameters, null);
 	}
 	
 	private Object internal_execute(Object caller, String methodName, Collection<Object> parameters, ActionCall call) throws CodeExecutionException 
 	{
-		Class<?> staticHelperClass = getStaticHelperClass(caller);
-		if (staticHelperClass == null)
-			throw new CodeExecutionException("No static class found for the call.", call); 
-		
 		ArrayList<Object> staticParameters = new ArrayList<Object>();
 		staticParameters.add(caller);
 		if (parameters != null) 
 		{
 			staticParameters.addAll(parameters);
 		}
-		Method bestApplicableMethod = getFirstApplicableMethod(staticHelperClass, methodName, staticParameters);
-
+		Method bestApplicableMethod = getBestApplicableMethod(caller, methodName, staticParameters, call);
+		if (bestApplicableMethod == null)
+			throw new CodeExecutionException("No static class found or no method founc call: " + call, call); 
+		
 		Object[] args = new Object[0];
 		if (staticParameters != null) 
 		{
@@ -86,6 +84,20 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		return result;
 	}
 	
+	private Method getBestApplicableMethod(Object caller, 
+											String methodName,
+											List<Object> parameters,
+											ActionCall call)
+	{
+		Class<?> staticHelperClass = getStaticHelperClass(caller);
+		if (staticHelperClass == null)
+		{
+			return null;
+		}
+		return getFirstApplicableMethod(staticHelperClass, methodName, parameters);	
+	}
+
+
 	/**
 	 * return the first compatible method, goes up the inheritance hierarchy
 	 * 
@@ -95,7 +107,7 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 	 * @return
 	 */
 	protected Method getFirstApplicableMethod(Class<?> staticHelperClass,
-			String methodName, ArrayList<Object> parameters) {
+			String methodName, List<Object> parameters) {
 
 		Method[] methods = staticHelperClass.getDeclaredMethods();
 		for (Method method : methods) {
@@ -266,5 +278,25 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
             cls = cls.getSuperclass();
          }
      }
+
+
+//	@Override
+//	public boolean canExecute(ActionCall call) 
+//	{
+//		return getBestApplicableMethod(call.getTriggeringEvent().getCaller(), 
+//										call.getTriggeringEvent().getAction().getName(), 
+//										call.getParameters(), 
+//										call) != null;
+//	}
+//
+//
+//	@Override
+//	public boolean canExecute(Object caller, String methodName, List<Object> parameters) 
+//	{
+//		return getBestApplicableMethod(caller, 
+//										methodName, 
+//										parameters, 
+//										null) != null;
+//	}
 
 }

@@ -1,6 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api.dsa;
 
-import java.util.Collection;
+import java.util.List;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 
@@ -14,7 +14,7 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 public interface ICodeExecutor 
 {
 	
-	public Object execute(ActionCall call) throws CodeExecutionException;
-	public Object execute(Object caller, String methodName, Collection<Object> parameters) throws CodeExecutionException;
+	Object execute(ActionCall call) throws CodeExecutionException;
+	Object execute(Object caller, String methodName, List<Object> parameters) throws CodeExecutionException;
 
 }

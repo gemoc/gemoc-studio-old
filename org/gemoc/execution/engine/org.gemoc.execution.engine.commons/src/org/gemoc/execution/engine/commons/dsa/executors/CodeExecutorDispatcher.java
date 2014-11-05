@@ -1,7 +1,6 @@
 package org.gemoc.execution.engine.commons.dsa.executors;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
@@ -63,7 +62,7 @@ public class CodeExecutorDispatcher implements ICodeExecutor
 
 	@Override
 	public Object execute(Object caller, String methodName,
-			Collection<Object> parameters) throws CodeExecutionException {
+			List<Object> parameters) throws CodeExecutionException {
 		for (ICodeExecutor executor : _executors) 
 		{
 			try {
