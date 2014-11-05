@@ -6,7 +6,6 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
@@ -45,6 +44,9 @@ import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
 
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackFactory;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
@@ -88,37 +90,53 @@ public class Launcher
 			{
 				executionMode = ExecutionMode.Run;
 			}
-			ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, resourceSet, executionMode);
-			
+			ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, resourceSet, executionMode);			
 			throwExceptionIfEngineAlreadyRunning(executionContext);
-			ILogicalStepDecider decider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
 
-			_engine = new ObservableBasicExecutionEngine(decider, executionContext);
+			if (executionContext.isExecutionWithSolver())
+			{
+				ILogicalStepDecider decider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
+				_engine = new ObservableBasicExecutionEngine(decider, executionContext);				
+				launchEngine(_engine);
+				// delegate for debug mode
+				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
+					_engine.setAnimator(AbstractGemocAnimatorServices.getAnimator());
+					super.launch(configuration, mode, launch, monitor);
+				} else {
+					Job job = new Job(getDebugJobName(configuration,
+							getFirstInstruction(configuration))) {
 
-			// delegate for debug mode
-			if (ILaunchManager.DEBUG_MODE.equals(mode)) {
-				_engine.setAnimator(AbstractGemocAnimatorServices.getAnimator());
-				super.launch(configuration, mode, launch, monitor);
-			} else {
-				Job job = new Job(getDebugJobName(configuration,
-						getFirstInstruction(configuration))) {
-
-					@Override
-					protected IStatus run(IProgressMonitor monitor) {
-						_engine.start();
-						return new Status(IStatus.OK, getPluginID(),
-								"Execution was successfull");
-					}
-				};
-				job.schedule();
+						@Override
+						protected IStatus run(IProgressMonitor monitor) {
+							_engine.start();
+							return new Status(IStatus.OK, getPluginID(),
+									"Execution was successfull");
+						}
+					};
+					job.schedule();
+				}
+			}
+			else
+			{
+				ActionCall call = FeedbackFactory.eINSTANCE.createActionCall();
+				ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
+				call.setTriggeringEvent(mse);
+				mse.setCaller(executionContext.getResourceModel().getContents().get(0));
+				executionContext.getCodeExecutor().execute(call);
 			}
 		} 
 		catch (Exception e)
 		{
-			String message = "Error occured when starting execution engine, see inner exception.";
+			String message = "Error occured when starting execution engine: " + e.getMessage() +  " (see inner exception).";
 		  	//error(message);
+			e.printStackTrace();
 		  	throw new CoreException(new Status(Status.ERROR, Activator.PLUGIN_ID, message, e));
 		}
+	}
+
+	private void launchEngine(ObservableBasicExecutionEngine _engine2) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private Session openNewSiriusSession(URI sessionResourceURI, final IProgressMonitor monitor) throws CoreException {

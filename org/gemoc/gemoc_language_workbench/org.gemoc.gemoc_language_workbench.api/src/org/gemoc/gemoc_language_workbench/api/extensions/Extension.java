@@ -26,7 +26,7 @@ public class Extension
 		}
 		catch(CoreException e)
 		{
-			String message = "Instanciation of one agent failed (see inner exception).";
+			String message = "Instanciation of one agent failed: " + e.getMessage() + " (see inner exception for more detail).";
 			CoreException exception = new CoreException(new Status(Status.ERROR, Activator.PLUGIN_ID, message, e));
 			throw exception;
 		}

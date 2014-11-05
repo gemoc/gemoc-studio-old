@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.gemoc.execution.engine.commons.solvers.ccsl.SolverMock;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
@@ -55,7 +56,10 @@ public class ModelExecutionContext implements IExecutionContext
 			_languageDefinition = LanguageDefinitionExtensionPoint.findDefinition(_runConfiguration.getLanguageName());
 			throwExceptionIfLanguageDefinitionNull();
 			instantiateAgents();
-			generateMoC();
+			if (isExecutionWithSolver())
+			{
+				generateMoC();				
+			}
 
 			_resourceModel = getModelResource(resourceSet, _executionWorkspace.getModelPath().toString());
 
@@ -211,6 +215,11 @@ public class ModelExecutionContext implements IExecutionContext
 	public ActionModel getFeedbackModel() 
 	{
 		return _feedbackModel;
+	}
+
+	public boolean isExecutionWithSolver() 
+	{
+		return _solver != null && !(_solver instanceof SolverMock);
 	}
 
 }
