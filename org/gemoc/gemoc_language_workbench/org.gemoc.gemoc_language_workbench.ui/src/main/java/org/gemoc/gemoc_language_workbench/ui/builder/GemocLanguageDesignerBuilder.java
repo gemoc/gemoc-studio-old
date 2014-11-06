@@ -521,45 +521,6 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		return getPackageName(languageDefinitionName).replaceAll("\\.", "/");
 	}
 
-	/**
-	 * create or replace existing InitializerClass by an implementation that is
-	 * able to initialize all required components
-	 * 
-	 * @param project
-	 * @param ld
-	 */
-	protected void updateInitializerClass(IProject project, LanguageDefinition ld) {
-		// TODO remove possible previous classes
-		// create the java class
-		String languageToUpperFirst = getLanguageNameWithFirstUpper(ld.getName());
-		String packageName = getPackageName(ld.getName());
-		String folderName = getFolderName(ld.getName());
-		if (ld.getDomainModelProject() != null) {
-			String fileContent = BuilderTemplates.INITIALIZER_CLASS_TEMPLATE;
-			fileContent = fileContent.replaceAll(Pattern.quote("${package.name}"), packageName);
-			fileContent = fileContent.replaceAll(Pattern.quote("${language.name.toupperfirst}"), languageToUpperFirst);
-			StringBuilder sb = new StringBuilder();
-			sb.append("// TODO\n");
-			fileContent = fileContent.replaceAll(Pattern.quote("${initializer.content}"), sb.toString());
-			IFile file = project.getFile(Activator.EXTENSION_GENERATED_CLASS_FOLDER_NAME + folderName + "/"
-					+ languageToUpperFirst + Activator.INITIALIZER_CLASS_NAMEPART + ".java");
-			writeFile(file, fileContent);
-		}
-		// update plugin.xml
-		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
-		PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
-		PluginXMLHelper helper = new PluginXMLHelper();
-		helper.loadDocument(pluginfile);
-		Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT);
-		helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint,
-				LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_INITIALIZER_ATT, packageName + "."
-						+ languageToUpperFirst + Activator.INITIALIZER_CLASS_NAMEPART);
-		helper.saveDocument(pluginfile);
-
-	}
-	
-
-
 	public static void writeFile(IFile file, String fileContent) {
 		try {
 			GFile.writeFile(file, fileContent);

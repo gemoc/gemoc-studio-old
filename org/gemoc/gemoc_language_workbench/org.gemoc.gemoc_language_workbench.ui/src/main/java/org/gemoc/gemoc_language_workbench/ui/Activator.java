@@ -30,10 +30,8 @@ public class Activator extends AbstractUIPlugin {
 	
 
 	public static final String MODEL_LOADER_CLASS_NAMEPART = "ModelLoader";
-	public static final String INITIALIZER_CLASS_NAMEPART = "Initializer";
 	public static final String CODEEXECUTOR_CLASS_NAMEPART = "CodeExecutor";
 	public static final String SOLVER_CLASS_NAMEPART = "Solver";
-	public static final String EVENTEXECUTOR_CLASS_NAMEPART = "DSAExecutor";
 	public static final String EXTENSION_GENERATED_CLASS_FOLDER_NAME = "src/main/xdsml-java-gen/";
 
 	// The shared instance
