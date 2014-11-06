@@ -3,6 +3,11 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="conf" nsURI="http://www.gemoc.org/gemoc_language_workbench_conf"
     nsPrefix="conf">
   <eClassifiers xsi:type="ecore:EClass" name="LanguageDefinition">
+    <eOperations name="getFileExtensions" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Provides a convenient access to all file extensions declared. This includes both the files extensions declared in the genmodel of the DomainModelProject and the ones declared in the editors"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dsaProject" eType="#//DSAProject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainModelProject" lowerBound="1"
@@ -23,28 +28,28 @@
         eType="#//ProjectKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DSAProject" eSuperTypes="#//ProjectResource">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="codeExecutorClass" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="codeExecutorClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="URI of the class that implement the code excutor required by the engine.&#xD;&#xA;If null or empty, a default K3 code executor will be generated and used."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EditorProject" abstract="true" eSuperTypes="#//ProjectResource">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainModelProject" eSuperTypes="#//ProjectResource">
     <eOperations name="getEcoreURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultRootEObjectQualifiedName"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="genmodeluri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelLoaderClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MoCCProject" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="AnimatorProject" abstract="true" eSuperTypes="#//ProjectResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="DSEProject" eSuperTypes="#//ProjectResource">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qvtoURI" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qvtoURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="solverClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SiriusEditorProject" eSuperTypes="#//EditorProject"/>
   <eClassifiers xsi:type="ecore:EClass" name="SiriusAnimatorProject" eSuperTypes="#//AnimatorProject"/>

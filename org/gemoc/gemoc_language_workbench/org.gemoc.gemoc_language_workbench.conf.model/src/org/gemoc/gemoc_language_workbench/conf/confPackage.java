@@ -314,13 +314,22 @@ public interface confPackage extends EPackage {
 	int DOMAIN_MODEL_PROJECT__GENMODELURI = PROJECT_RESOURCE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Model Loader Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS = PROJECT_RESOURCE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Domain Model Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_MODEL_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 2;
+	int DOMAIN_MODEL_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.MoCCProjectImpl <em>Mo CC Project</em>}' class.
@@ -444,13 +453,22 @@ public interface confPackage extends EPackage {
 	int DSE_PROJECT__QVTO_URI = PROJECT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Solver Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DSE_PROJECT__SOLVER_CLASS = PROJECT_RESOURCE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>DSE Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DSE_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 1;
+	int DSE_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.SiriusEditorProjectImpl <em>Sirius Editor Project</em>}' class.
@@ -831,6 +849,17 @@ public interface confPackage extends EPackage {
 	EAttribute getDomainModelProject_Genmodeluri();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.DomainModelProject#getModelLoaderClass <em>Model Loader Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Model Loader Class</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.DomainModelProject#getModelLoaderClass()
+	 * @see #getDomainModelProject()
+	 * @generated
+	 */
+	EAttribute getDomainModelProject_ModelLoaderClass();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.MoCCProject <em>Mo CC Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -880,6 +909,17 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDSEProject_QvtoURI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.DSEProject#getSolverClass <em>Solver Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Solver Class</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.DSEProject#getSolverClass()
+	 * @see #getDSEProject()
+	 * @generated
+	 */
+	EAttribute getDSEProject_SolverClass();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject <em>Sirius Editor Project</em>}'.
@@ -1109,6 +1149,14 @@ public interface confPackage extends EPackage {
 		EAttribute DOMAIN_MODEL_PROJECT__GENMODELURI = eINSTANCE.getDomainModelProject_Genmodeluri();
 
 		/**
+		 * The meta object literal for the '<em><b>Model Loader Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS = eINSTANCE.getDomainModelProject_ModelLoaderClass();
+
+		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.MoCCProjectImpl <em>Mo CC Project</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1155,6 +1203,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DSE_PROJECT__QVTO_URI = eINSTANCE.getDSEProject_QvtoURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Solver Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DSE_PROJECT__SOLVER_CLASS = eINSTANCE.getDSEProject_SolverClass();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.SiriusEditorProjectImpl <em>Sirius Editor Project</em>}' class.

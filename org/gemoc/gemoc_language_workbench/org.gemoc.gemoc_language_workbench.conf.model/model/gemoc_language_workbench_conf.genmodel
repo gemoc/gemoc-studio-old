@@ -18,6 +18,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/animatorProjects"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gemoc_language_workbench_conf.ecore#//LanguageDefinition/dSEProject"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//LanguageDefinition/name"/>
+      <genOperations ecoreOperation="gemoc_language_workbench_conf.ecore#//LanguageDefinition/getFileExtensions"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//ProjectResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//ProjectResource/projectName"/>
@@ -32,12 +33,14 @@
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//DomainModelProject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//DomainModelProject/defaultRootEObjectQualifiedName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//DomainModelProject/genmodeluri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//DomainModelProject/modelLoaderClass"/>
       <genOperations ecoreOperation="gemoc_language_workbench_conf.ecore#//DomainModelProject/getEcoreURI"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//MoCCProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//AnimatorProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//DSEProject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//DSEProject/qvtoURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//DSEProject/solverClass"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//SiriusEditorProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//SiriusAnimatorProject"/>
