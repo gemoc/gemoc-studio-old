@@ -9,7 +9,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -22,9 +21,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.execution.engine.core.RunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
@@ -82,10 +79,10 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		try 
 		{
 			RunConfiguration runConfiguration = new RunConfiguration(configuration);
-			_modelLocationText.setText(runConfiguration.getModelURIAsString());
+			_modelLocationText.setText(runConfiguration.getExecutedModelURI().toString());
 
-			if (runConfiguration.getAnimatorURIAsString() != null)
-				_siriusRepresentationLocationText.setText(runConfiguration.getAnimatorURIAsString());
+			if (runConfiguration.getAnimatorURI() != null)
+				_siriusRepresentationLocationText.setText(runConfiguration.getAnimatorURI().toString());
 			else
 				_siriusRepresentationLocationText.setText("");
 			_delayText.setText(Integer.toString(runConfiguration.getAnimationDelay()));

@@ -2,9 +2,7 @@ package org.gemoc.gemoc_language_workbench.api.core;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
@@ -34,8 +32,6 @@ public interface IExecutionContext extends IDisposable
 
 	IRunConfiguration getRunConfiguration();
 
-	TransactionalEditingDomain getEditingDomain();
-
 	Resource getResourceModel();
 
 	ExecutionMode getExecutionMode();
@@ -43,8 +39,6 @@ public interface IExecutionContext extends IDisposable
 	ActionModel getFeedbackModel();
 	
 	IModelLoader getModelLoader();
-
-	URI getExecutedModelURI();
 
 	String getQVTOPath();
 }

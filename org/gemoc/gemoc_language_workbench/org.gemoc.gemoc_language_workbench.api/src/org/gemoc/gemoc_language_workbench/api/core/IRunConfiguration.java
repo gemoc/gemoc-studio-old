@@ -2,22 +2,23 @@ package org.gemoc.gemoc_language_workbench.api.core;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
 
 public interface IRunConfiguration {
 
-	public String getModelURIAsString();
+	String getLanguageName();
+
+	URI getExecutedModelURI();
 	
-	public int getAnimationDelay();
+	URI getAnimatorURI();
 
-	public boolean isTraceActive();
+	int getAnimationDelay();
+
+	boolean isTraceActive();
 	
-	public int getDeadlockDetectionDepth();
+	int getDeadlockDetectionDepth();
 
-	public Collection<IDataProcessingComponentExtension> getActivatedComponentExtensions();
-
-	public String getAnimatorURIAsString();
-
-	public String getLanguageName();
+	Collection<IDataProcessingComponentExtension> getActivatedComponentExtensions();
 	
 }

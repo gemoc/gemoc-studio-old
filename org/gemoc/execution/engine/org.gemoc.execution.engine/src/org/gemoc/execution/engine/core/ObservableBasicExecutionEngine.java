@@ -8,7 +8,6 @@ import java.util.Observable;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.gemoc.execution.engine.Activator;
@@ -23,8 +22,8 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
+import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponent;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
 
@@ -188,7 +187,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			}
 			engineStatus.setNbLogicalStepRun(0);
 			_runnable = new EngineRunnable();
-			Thread mainThread = new Thread(_runnable, "Gemoc engine " + _executionContext.getRunConfiguration().getModelURIAsString());
+			Thread mainThread = new Thread(_runnable, "Gemoc engine " + _executionContext.getRunConfiguration().getExecutedModelURI());
 			mainThread.start();
 		}
 
@@ -206,11 +205,9 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	}
 
 	private void clean() {
-		if (_executionContext.getRunConfiguration().getAnimatorURIAsString() != null
-				&& !_executionContext.getRunConfiguration().getAnimatorURIAsString().equals(""))
+		if (_executionContext.getRunConfiguration().getAnimatorURI() != null)
 		{
-			URI uri = URI.createPlatformResourceURI(_executionContext.getRunConfiguration().getAnimatorURIAsString(), true);
-			Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());			
+			Session session = SessionManager.INSTANCE.getSession(_executionContext.getRunConfiguration().getAnimatorURI(), new NullProgressMonitor());			
 			session.close(new NullProgressMonitor());
 			SessionManager.INSTANCE.remove(session);
 		}

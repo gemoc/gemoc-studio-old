@@ -30,7 +30,6 @@ public class ModelExecutionContext implements IExecutionContext
 {
 	
 	private IRunConfiguration _runConfiguration;
-	private TransactionalEditingDomain _editingDomain;
 	private Resource _resourceModel;
 	private ExecutionMode _executionMode;	
 	
@@ -40,19 +39,13 @@ public class ModelExecutionContext implements IExecutionContext
 		
 		try 
 		{
-			_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getModelURIAsString());
+			_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getExecutedModelURI());
 			_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
 			
 			_languageDefinition = LanguageDefinitionExtensionPoint.findDefinition(_runConfiguration.getLanguageName());
 			throwExceptionIfLanguageDefinitionNull();
 			instantiateAgents();
-//			if (isExecutionWithSolver())
-//			{
-//				generateMoC();				
-//			}
-
-			_resourceModel = _modelLoader.loadModel(this);
-					
+			_resourceModel = _modelLoader.loadModel(this);					
 			setUpEditingDomain();	
 			setUpSolver();						
 			setUpFeedbackModel();
@@ -70,10 +63,10 @@ public class ModelExecutionContext implements IExecutionContext
 
 	private void setUpEditingDomain() 
 	{
-		_editingDomain = TransactionUtil.getEditingDomain(getResourceSet());
-		if (_editingDomain == null)
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(getResourceSet());
+		if (editingDomain == null)
 		{
-			_editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(getResourceSet());			
+			editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(getResourceSet());			
 		}
 	}
 
@@ -172,12 +165,6 @@ public class ModelExecutionContext implements IExecutionContext
 	}
 
 	@Override
-	public TransactionalEditingDomain getEditingDomain() 
-	{
-		return _editingDomain;
-	}
-
-	@Override
 	public Resource getResourceModel() 
 	{
 		return _resourceModel;
@@ -220,12 +207,6 @@ public class ModelExecutionContext implements IExecutionContext
 	public IModelLoader getModelLoader() 
 	{
 		return _modelLoader;
-	}
-
-	@Override
-	public URI getExecutedModelURI() 
-	{
-		return URI.createPlatformResourceURI(_runConfiguration.getModelURIAsString(), true);
 	}
 
 	@Override

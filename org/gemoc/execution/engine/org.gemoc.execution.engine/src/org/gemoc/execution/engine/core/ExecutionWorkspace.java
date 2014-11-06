@@ -9,14 +9,15 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
 
 public class ExecutionWorkspace implements IExecutionWorkspace
 {
 
-	public ExecutionWorkspace(String modelURI) throws CoreException
+	public ExecutionWorkspace(URI modelURI) throws CoreException
 	{
-		_modelPath = new Path(modelURI);
+		_modelPath = new Path(modelURI.toPlatformString(true));
 		_projectPath = _modelPath.removeLastSegments(_modelPath.segmentCount() - 1);
 		_executionTopParentPath = _projectPath.append("gemoc-gen");			
 		_executionPath = _executionTopParentPath

@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtension;
@@ -46,11 +47,20 @@ public class RunConfiguration implements IRunConfiguration
 	private void extractInformation() throws CoreException 
 	{
 		_languageName = getAttribute(LAUNCH_SELECTED_LANGUAGE, "");
-		_animationDelay = getAttribute(LAUNCH_DELAY, 0);
+		_modelURI = URI.createPlatformResourceURI(
+				getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, ""),
+				true);
+		String animatorURIAsString = getAttribute("airdResource", "");
+		if (animatorURIAsString != null
+			&& !animatorURIAsString.equals(""))
+		{
+			_animatorURI = URI.createPlatformResourceURI(
+					animatorURIAsString,
+					true);
+			_animationDelay = getAttribute(LAUNCH_DELAY, 0);
+		}
 		_isTraceActive = getAttribute(LAUNCH_ACTIVE_TRACE, false);
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
-		_modelURIAsString = getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
-		_animatorURIAsString = getAttribute("airdResource", "");
 		_deadlockDetectionDepth = getAttribute(LAUNCH_DEADLOCK_DETECTION_DEPTH, 10);
 		
 		for (BackendSpecificationExtension extension : BackendSpecificationExtensionPoint.getSpecifications())
@@ -102,16 +112,16 @@ public class RunConfiguration implements IRunConfiguration
 		return _deciderName;
 	}
 
-	private String _modelURIAsString;
-	public String getModelURIAsString() 
+	private URI _modelURI;
+	public URI getExecutedModelURI() 
 	{
-		return _modelURIAsString;
+		return _modelURI;
 	}
 
-	private String _animatorURIAsString;
-	public String getAnimatorURIAsString() 
+	private URI _animatorURI;
+	public URI getAnimatorURI() 
 	{
-		return _animatorURIAsString;
+		return _animatorURI;
 	}
 	
 	private int _deadlockDetectionDepth = 10;

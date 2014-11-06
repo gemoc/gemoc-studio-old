@@ -57,7 +57,7 @@ public class Launcher
 
 			ExecutionMode executionMode = null;
 			if (ILaunchManager.DEBUG_MODE.equals(mode)
-				&& runConfiguration.getAnimatorURIAsString() != null) 
+				&& runConfiguration.getAnimatorURI() != null) 
 			{
 				executionMode = ExecutionMode.Debug;			
 			}

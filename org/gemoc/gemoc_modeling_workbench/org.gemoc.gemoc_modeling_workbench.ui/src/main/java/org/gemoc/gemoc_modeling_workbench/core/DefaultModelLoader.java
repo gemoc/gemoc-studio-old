@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.gemoc.execution.engine.core.DebugSessionFactory;
 import org.gemoc.execution.engine.core.DebugURIHandler;
+import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 
@@ -32,14 +33,13 @@ public class DefaultModelLoader implements IModelLoader {
 	{
 		Resource resource = null;
 		ResourceSet resourceSet;
-		if (context.getRunConfiguration().getAnimatorURIAsString() != null 
-			&& !context.getRunConfiguration().getAnimatorURIAsString().equals(""))
+		if (context.getExecutionMode().equals(ExecutionMode.Debug)
+			&& context.getRunConfiguration().getAnimatorURI() != null)
 		{
-			URI uri = URI.createPlatformResourceURI(context.getRunConfiguration().getAnimatorURIAsString(), true);
-			killPreviousSiriusSession(uri);
+			killPreviousSiriusSession(context.getRunConfiguration().getAnimatorURI());
 			Session session;
 			try {
-				session = openNewSiriusSession(uri);
+				session = openNewSiriusSession(context.getRunConfiguration().getAnimatorURI());
 				resourceSet = session.getTransactionalEditingDomain().getResourceSet();
 			} catch (CoreException e) {
 				throw new RuntimeException(e);
@@ -49,7 +49,7 @@ public class DefaultModelLoader implements IModelLoader {
 		{
 			resourceSet = new ResourceSetImpl();
 		}
-		resource = resourceSet.getResource(context.getExecutedModelURI(), true);		
+		resource = resourceSet.getResource(context.getRunConfiguration().getExecutedModelURI(), true);		
 		return resource;
 	}
 

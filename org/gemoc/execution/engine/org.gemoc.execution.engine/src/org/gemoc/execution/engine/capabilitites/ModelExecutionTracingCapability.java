@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
@@ -49,7 +50,11 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	@Override
 	public void initialize(GemocExecutionEngine engine) {
 		_engine = engine;
-		_editingDomain = _engine.getExecutionContext().getEditingDomain();
+	}
+	
+	private TransactionalEditingDomain getEditingDomain()
+	{
+		return  TransactionUtil.getEditingDomain(_engine.getExecutionContext().getResourceModel());
 	}
 
 	private boolean _backToPastHappened = false;
@@ -69,8 +74,8 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		final int index = _executionTraceModel.getChoices().indexOf(choice);
 		if (index != -1
 			&& index != _executionTraceModel.getChoices().size()) {
-			final CommandStack commandStack = _editingDomain.getCommandStack();
-			commandStack.execute(new RecordingCommand(_editingDomain, "Back to " + index) {
+			final CommandStack commandStack = getEditingDomain().getCommandStack();
+			commandStack.execute(new RecordingCommand(getEditingDomain(), "Back to " + index) {
 				@Override
 				protected void doExecute() {
 					_executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size()).clear();
@@ -152,9 +157,6 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		return result;
 	}
 
-	private TransactionalEditingDomain _editingDomain;
-	
-	
 	private boolean _cannotSaveTrace = false;
 	
 	public void saveTraceModel(long stepNumber) {
@@ -205,8 +207,8 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
 		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath().toString() + "/execution.trace", false);
 		final Resource modelResource = rs.createResource(traceModelURI);
-		final CommandStack commandStack = _editingDomain.getCommandStack();
-		commandStack.execute(new RecordingCommand(_editingDomain, "set model execution context") {
+		final CommandStack commandStack = getEditingDomain().getCommandStack();
+		commandStack.execute(new RecordingCommand(getEditingDomain(), "set model execution context") {
 			@Override
 			protected void doExecute() {
 				modelResource.getContents().add(_executionTraceModel);
@@ -225,8 +227,8 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	private Choice _lastChoice;
 
 	public void updateTraceModelBeforeAskingSolver(final long count) {
-		final CommandStack commandStack = _editingDomain.getCommandStack();
-		commandStack.execute(new RecordingCommand(_editingDomain, "save trace model") {
+		final CommandStack commandStack = getEditingDomain().getCommandStack();
+		commandStack.execute(new RecordingCommand(getEditingDomain(), "save trace model") {
 
 			@Override
 			protected void doExecute() {
@@ -247,8 +249,8 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	}
 
 	public void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
-		final CommandStack commandStack = _editingDomain.getCommandStack();
-		commandStack.execute(new RecordingCommand(_editingDomain, "update trace model") {
+		final CommandStack commandStack = getEditingDomain().getCommandStack();
+		commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model") {
 
 			@Override
 			protected void doExecute() {
@@ -272,8 +274,8 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	}
 	
 	public void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) {
-		final CommandStack commandStack = _editingDomain.getCommandStack();
-		commandStack.execute(new RecordingCommand(_editingDomain, "update trace model after deciding") {
+		final CommandStack commandStack = getEditingDomain().getCommandStack();
+		commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model after deciding") {
 
 			@Override
 			protected void doExecute() {
