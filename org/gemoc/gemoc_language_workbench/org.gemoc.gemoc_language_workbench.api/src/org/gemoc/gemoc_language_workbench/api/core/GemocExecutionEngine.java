@@ -15,7 +15,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author didier.vojtisek@inria.fr
  * 
  */
-public interface GemocExecutionEngine extends GemocExecutionEngineRunControl, GemocExecutionEngineEventControl {
+public interface GemocExecutionEngine extends GemocExecutionEngineRunControl {
 
 	/** --------------- Initialization --------------- **/
 	/**

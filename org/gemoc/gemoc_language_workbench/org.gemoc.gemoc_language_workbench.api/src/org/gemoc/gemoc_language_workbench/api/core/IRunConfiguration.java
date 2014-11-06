@@ -20,5 +20,5 @@ public interface IRunConfiguration {
 	int getDeadlockDetectionDepth();
 
 	Collection<IDataProcessingComponentExtension> getActivatedComponentExtensions();
-	
+		
 }

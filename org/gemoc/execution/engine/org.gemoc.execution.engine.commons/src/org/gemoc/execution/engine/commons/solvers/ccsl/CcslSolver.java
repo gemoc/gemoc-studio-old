@@ -47,7 +47,7 @@ import fr.inria.aoste.trace.Reference;
  * 
  */
 public abstract class CcslSolver implements
-		org.gemoc.gemoc_language_workbench.api.moc.Solver {
+		org.gemoc.gemoc_language_workbench.api.moc.ISolver {
 
 	private CCSLKernelSolverWrapper solverWrapper = null;
 	private URI solverInputURI = null;
@@ -439,7 +439,7 @@ public abstract class CcslSolver implements
 	private void generateMoC(IExecutionContext context) 
 	{
 		IExecutionWorkspace workspace = context.getWorkspace();
-		String transformationPath = context.getQVTOPath();
+		String transformationPath = context.getLanguageDefinitionExtension().getQVTOPath();
 		boolean mustGenerate = true;
 		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(context.getWorkspace().getMoCPath());
 		if (mocFile.exists()

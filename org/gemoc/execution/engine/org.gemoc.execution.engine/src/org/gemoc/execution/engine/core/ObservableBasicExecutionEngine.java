@@ -27,7 +27,7 @@ import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponent;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
@@ -84,7 +84,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 	private IDSLDebugger _debugger;
 
-	private IGemocModelAnimator 	animator;
+	private IModelAnimator 	animator;
 
 	private boolean _started = false;
 	private boolean terminated = false;
@@ -469,7 +469,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		_debugger = debugger;
 	}
 
-	public void setAnimator(IGemocModelAnimator animator) {
+	public void setAnimator(IModelAnimator animator) {
 		this.animator = animator;
 	}
 
@@ -605,7 +605,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 	}
 
-	private Solver getSolver()
+	private ISolver getSolver()
 	{
 		return _executionContext.getExecutionPlatform().getSolver();
 	}

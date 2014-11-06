@@ -9,12 +9,12 @@ import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 public class DefaultExecutionPlatform implements IExecutionPlatform {
 	
 	private IModelLoader _modelLoader;
-	private Solver _solver;
+	private ISolver _solver;
 	private ICodeExecutor _codeExecutor;
 	private Collection<IEngineHook> _hooks;
 	private Collection<IMSEStateController> _clockControllers;
@@ -35,7 +35,7 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	}
 
 	@Override
-	public Solver getSolver() 
+	public ISolver getSolver() 
 	{
 		return _solver;
 	}

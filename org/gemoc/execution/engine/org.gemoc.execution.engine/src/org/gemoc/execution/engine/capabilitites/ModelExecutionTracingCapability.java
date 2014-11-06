@@ -37,7 +37,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
@@ -140,7 +140,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	byte[] _lastRestoredSolverState;
 	private void restoreSolverState(Choice choice) 
 	{
-		Solver solver = _executionContext.getExecutionPlatform().getSolver();
+		ISolver solver = _executionContext.getExecutionPlatform().getSolver();
 		Activator.getDefault().debug("restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
 		solver.setState(choice.getContextState().getSolverState().getSerializableModel());
 		boolean b = Arrays.equals(solver.getState(), choice.getContextState().getSolverState().getSerializableModel());

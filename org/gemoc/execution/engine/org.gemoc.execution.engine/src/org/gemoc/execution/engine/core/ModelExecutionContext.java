@@ -133,17 +133,17 @@ public class ModelExecutionContext implements IExecutionContext
 		return _executionPlatform.getSolver() != null 
 				&& !(_executionPlatform.getSolver() instanceof SolverMock);
 	}
-
-	@Override
-	public String getQVTOPath() 
-	{
-		return _languageDefinition.getQVTOPath();
-	}
 	
 	private IExecutionPlatform _executionPlatform;	
 	@Override
 	public IExecutionPlatform getExecutionPlatform() {
 		return _executionPlatform;
+	}
+
+	@Override
+	public LanguageDefinitionExtension getLanguageDefinitionExtension() 
+	{
+		return _languageDefinition;
 	}
 
 }

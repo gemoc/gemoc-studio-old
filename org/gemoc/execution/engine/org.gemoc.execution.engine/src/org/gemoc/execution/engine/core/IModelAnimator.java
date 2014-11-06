@@ -8,7 +8,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  * 
  */
-public interface IGemocModelAnimator {
+public interface IModelAnimator {
 
 	/**
 	 * Activates the given {@link LogicalStep}.
@@ -21,7 +21,7 @@ public interface IGemocModelAnimator {
 	void activate(Object context, LogicalStep step);
 
 	/**
-	 * Clears {@link IGemocModelAnimator#activate(LogicalStep) activated}
+	 * Clears {@link IModelAnimator#activate(LogicalStep) activated}
 	 * {@link LogicalStep}.
 	 * 
 	 * @param context

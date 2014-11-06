@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.EventOccurrence;
@@ -15,12 +15,12 @@ import fr.inria.aoste.trace.TraceFactory;
 public class DefaultMSEStateController implements IMSEStateController
 {
 
-	private void applyForcePresence(Solver solver, EventOccurrence eventOccurrence) 
+	private void applyForcePresence(ISolver solver, EventOccurrence eventOccurrence) 
 	{
 		solver.forceEventOccurrence(eventOccurrence);
 	}
 	
-	private void applyForceAbsence(Solver solver, EventOccurrence eventOccurrence) 
+	private void applyForceAbsence(ISolver solver, EventOccurrence eventOccurrence) 
 	{
 		solver.forbidEventOccurrence(eventOccurrence);
 	}
@@ -36,7 +36,7 @@ public class DefaultMSEStateController implements IMSEStateController
 		return eo;
 	}
 
-	public void applyMSEFutureStates(Solver solver) 
+	public void applyMSEFutureStates(ISolver solver) 
 	{
 		for(Entry<ModelSpecificEvent, Boolean> entry : _mseNextStates.entrySet())
 		{

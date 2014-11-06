@@ -22,7 +22,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.gemoc.execution.engine.core.IGemocModelAnimator;
+import org.gemoc.execution.engine.core.IModelAnimator;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices.BreakpointListener;
 
@@ -82,7 +82,7 @@ public abstract class AbstractGemocAnimatorServices {
 	}
 
 	private final static class GemocModelAnimator implements
-			IGemocModelAnimator {
+			IModelAnimator {
 
 		/**
 		 * Any layer {@link Set}, means always refresh the given
@@ -99,7 +99,7 @@ public abstract class AbstractGemocAnimatorServices {
 		private final Map<String, Set<String>> representationToRefresh = new HashMap<String, Set<String>>();
 
 		/**
-		 * {@link IGemocModelAnimator#activate(LogicalStep) Activated}
+		 * {@link IModelAnimator#activate(LogicalStep) Activated}
 		 * instructions.
 		 */
 		private final Map<Object, Set<URI>> activatedInstructions = new HashMap<Object, Set<URI>>();
@@ -268,11 +268,11 @@ public abstract class AbstractGemocAnimatorServices {
 	}
 
 	/**
-	 * Gets the {@link IGemocModelAnimator}.
+	 * Gets the {@link IModelAnimator}.
 	 * 
-	 * @return the {@link IGemocModelAnimator}
+	 * @return the {@link IModelAnimator}
 	 */
-	public static IGemocModelAnimator getAnimator() {
+	public static IModelAnimator getAnimator() {
 		return ANIMATOR;
 	}
 
@@ -291,12 +291,12 @@ public abstract class AbstractGemocAnimatorServices {
 
 	/**
 	 * Tells if the given {@link EObject instruction} is a currently
-	 * {@link IGemocModelAnimator#activate(LogicalStep) activated}.
+	 * {@link IModelAnimator#activate(LogicalStep) activated}.
 	 * 
 	 * @param instruction
 	 *            the {@link EObject instruction}
 	 * @return <code>true</code> if the given {@link EObject instruction} is a
-	 *         currently {@link IGemocModelAnimator#activate(LogicalStep)
+	 *         currently {@link IModelAnimator#activate(LogicalStep)
 	 *         activated}, <code>false</code> otherwise
 	 */
 	public boolean hasBeenActivated(EObject instruction) {

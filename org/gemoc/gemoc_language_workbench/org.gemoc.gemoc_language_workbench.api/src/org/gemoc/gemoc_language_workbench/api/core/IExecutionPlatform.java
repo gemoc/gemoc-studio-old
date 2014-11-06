@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 public interface IExecutionPlatform extends IDisposable
 {
@@ -12,7 +12,7 @@ public interface IExecutionPlatform extends IDisposable
 	/**
 	 * @return The solver to use for the model execution.
 	 */
-	Solver getSolver();
+	ISolver getSolver();
 
 	/**
 	 * @return The code executor to use for the model execution.

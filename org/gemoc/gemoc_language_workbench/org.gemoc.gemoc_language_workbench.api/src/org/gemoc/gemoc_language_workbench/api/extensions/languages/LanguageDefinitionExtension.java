@@ -10,7 +10,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
+import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 
 public class LanguageDefinitionExtension extends Extension
@@ -28,12 +28,12 @@ public class LanguageDefinitionExtension extends Extension
 		return null;
 	}
 		
-	final public Solver instanciateSolver() 
+	final public ISolver instanciateSolver() 
 			throws CoreException 
 	{
 		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
-		if (instance instanceof Solver) {
-			return (Solver) instance;
+		if (instance instanceof ISolver) {
+			return (ISolver) instance;
 		}
 		throwInstanciationCoreException();
 		return null;

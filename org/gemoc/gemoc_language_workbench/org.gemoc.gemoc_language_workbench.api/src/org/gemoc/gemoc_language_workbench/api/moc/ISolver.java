@@ -18,7 +18,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * 
  * @author flatombe
  */
-public interface Solver {
+public interface ISolver {
 	/**
 	 * Forces the underlying MoC structure to forbid the given EventOccurrence
 	 * from ticking in the next step.
