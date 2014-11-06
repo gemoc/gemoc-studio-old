@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -19,6 +21,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.commons.Activator;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
+import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 
 import fr.inria.aoste.timesquare.ccslkernel.explorer.CCSLConstraintState;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -420,5 +425,37 @@ public abstract class CcslSolver implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	
+	@Override
+	public void setUp(IExecutionContext context) 
+	{
+		URI mocURI = URI.createPlatformResourceURI(context.getWorkspace().getMoCPath().toString(), true);
+		setSolverInputFile(context.getResourceModel().getResourceSet(), mocURI);
+		generateMoC(context);
+	}
+	
+	private void generateMoC(IExecutionContext context) 
+	{
+		IExecutionWorkspace workspace = context.getWorkspace();
+		String transformationPath = context.getQVTOPath();
+		boolean mustGenerate = true;
+		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(context.getWorkspace().getMoCPath());
+		if (mocFile.exists()
+			&& workspace.getModelPath().toFile().lastModified() > workspace.getMoCPath().toFile().lastModified()) 
+		{
+			mustGenerate = true;
+		}
+		
+		if (mustGenerate)
+		{
+			QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
+			performer.run(
+						"platform:/plugin" + transformationPath, 
+						"platform:/resource" + workspace.getModelPath().toString(), 
+						"platform:/resource" + workspace.getMoCPath().toString(),
+						"platform:/resource" + workspace.getFeedbackModelPath().toString());			
+		}		
 	}
 }

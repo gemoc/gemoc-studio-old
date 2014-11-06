@@ -3,11 +3,7 @@ package org.gemoc.execution.engine.core;
 import java.io.IOException;
 import java.util.Collection;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -18,13 +14,14 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
+import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
+import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EngineContextException;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
-import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 
@@ -32,17 +29,12 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 public class ModelExecutionContext implements IExecutionContext
 {
 	
-	private IPath _debuggerViewModelPath;
-	public IPath getDebuggerViewModelPath() {
-		return _debuggerViewModelPath;
-	}
-	
-	private RunConfiguration _runConfiguration;
+	private IRunConfiguration _runConfiguration;
 	private TransactionalEditingDomain _editingDomain;
 	private Resource _resourceModel;
 	private ExecutionMode _executionMode;	
 	
-	public ModelExecutionContext(RunConfiguration runConfiguration, ResourceSet resourceSet, ExecutionMode executionMode) throws EngineContextException {
+	public ModelExecutionContext(IRunConfiguration runConfiguration, ExecutionMode executionMode) throws EngineContextException {
 		_runConfiguration = runConfiguration;
 		_executionMode = executionMode;
 		
@@ -51,21 +43,19 @@ public class ModelExecutionContext implements IExecutionContext
 			_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getModelURIAsString());
 			_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
 			
-			if (runConfiguration.getAnimatorURIAsString() != null)
-				_debuggerViewModelPath = new Path(runConfiguration.getAnimatorURIAsString());
 			_languageDefinition = LanguageDefinitionExtensionPoint.findDefinition(_runConfiguration.getLanguageName());
 			throwExceptionIfLanguageDefinitionNull();
 			instantiateAgents();
-			if (isExecutionWithSolver())
-			{
-				generateMoC();				
-			}
+//			if (isExecutionWithSolver())
+//			{
+//				generateMoC();				
+//			}
 
-			_resourceModel = getModelResource(resourceSet, _executionWorkspace.getModelPath().toString());
-
-			setUpEditingDomain(resourceSet);	
-			setUpSolver(resourceSet);						
-			setUpFeedbackModel(resourceSet);
+			_resourceModel = _modelLoader.loadModel(this);
+					
+			setUpEditingDomain();	
+			setUpSolver();						
+			setUpFeedbackModel();
 		} 
 		catch (CoreException e)
 		{
@@ -74,25 +64,28 @@ public class ModelExecutionContext implements IExecutionContext
 		}
 	}
 
-	private void setUpEditingDomain(ResourceSet resourceSet) 
+	private ResourceSet getResourceSet() {
+		return _resourceModel.getResourceSet();
+	}
+
+	private void setUpEditingDomain() 
 	{
-		_editingDomain = TransactionUtil.getEditingDomain(resourceSet);
+		_editingDomain = TransactionUtil.getEditingDomain(getResourceSet());
 		if (_editingDomain == null)
 		{
-			_editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(resourceSet);			
+			_editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(getResourceSet());			
 		}
 	}
 
-	private void setUpSolver(ResourceSet resourceSet) 
+	private void setUpSolver() 
 	{
-		URI mocURI = URI.createPlatformResourceURI(_executionWorkspace.getMoCPath().toString(), true);
-		getSolver().setSolverInputFile(resourceSet, mocURI);
+		getSolver().setUp(this);
 	}
 
-	private void setUpFeedbackModel(ResourceSet resourceSet) 
+	private void setUpFeedbackModel() 
 	{
 		URI feedbackURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
-		Resource resource = resourceSet.createResource(feedbackURI);
+		Resource resource = getResourceSet().createResource(feedbackURI);
 		try {
 			resource.load(null);
 			_feedbackModel = (ActionModel)resource.getContents().get(0);
@@ -101,16 +94,14 @@ public class ModelExecutionContext implements IExecutionContext
 		}
 	}
 	
-	protected Resource getModelResource(ResourceSet resourceSet, String modelPath) throws CoreException {		
-		return resourceSet.getResource(URI.createPlatformResourceURI(modelPath, true), true);
-	}
-	
 	private Solver _solver;
 	private ICodeExecutor _codeExecutor;
 	private Collection<IEngineHook> _hooks;
 	private Collection<IMSEStateController> _clockControllers;
 	
-	private void instantiateAgents() throws CoreException {
+	private void instantiateAgents() throws CoreException 
+	{
+		_modelLoader = _languageDefinition.instanciateModelLoader();
 		_solver = _languageDefinition.instanciateSolver();
 		_codeExecutor = _languageDefinition.instanciateCodeExecutor();
 		_hooks = _languageDefinition.instanciateEngineHooks();
@@ -128,27 +119,27 @@ public class ModelExecutionContext implements IExecutionContext
 		}
 	}
 	
-	private void generateMoC() 
-	{
-		String transformationPath = _languageDefinition.getQVTOPath();
-		boolean mustGenerate = true;
-		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(_executionWorkspace.getMoCPath());
-		if (mocFile.exists()
-			&& _executionWorkspace.getModelPath().toFile().lastModified() > _executionWorkspace.getMoCPath().toFile().lastModified()) 
-		{
-			mustGenerate = true;
-		}
-		
-		if (mustGenerate)
-		{
-			QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
-			performer.run(
-						"platform:/plugin" + transformationPath, 
-						"platform:/resource" + _executionWorkspace.getModelPath().toString(), 
-						"platform:/resource" + _executionWorkspace.getMoCPath().toString(),
-						"platform:/resource" + _executionWorkspace.getFeedbackModelPath().toString());			
-		}		
-	}
+//	private void generateMoC() 
+//	{
+//		String transformationPath = _languageDefinition.getQVTOPath();
+//		boolean mustGenerate = true;
+//		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(_executionWorkspace.getMoCPath());
+//		if (mocFile.exists()
+//			&& _executionWorkspace.getModelPath().toFile().lastModified() > _executionWorkspace.getMoCPath().toFile().lastModified()) 
+//		{
+//			mustGenerate = true;
+//		}
+//		
+//		if (mustGenerate)
+//		{
+//			QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
+//			performer.run(
+//						"platform:/plugin" + transformationPath, 
+//						"platform:/resource" + _executionWorkspace.getModelPath().toString(), 
+//						"platform:/resource" + _executionWorkspace.getMoCPath().toString(),
+//						"platform:/resource" + _executionWorkspace.getFeedbackModelPath().toString());			
+//		}		
+//	}
 		
 	@Override
 	public Solver getSolver() 
@@ -174,7 +165,8 @@ public class ModelExecutionContext implements IExecutionContext
 		return _clockControllers;
 	}
 
-	public RunConfiguration getRunConfiguration() 
+	@Override
+	public IRunConfiguration getRunConfiguration() 
 	{
 		return _runConfiguration;
 	}
@@ -220,6 +212,26 @@ public class ModelExecutionContext implements IExecutionContext
 	public boolean isExecutionWithSolver() 
 	{
 		return _solver != null && !(_solver instanceof SolverMock);
+	}
+
+
+	private IModelLoader _modelLoader;
+	@Override
+	public IModelLoader getModelLoader() 
+	{
+		return _modelLoader;
+	}
+
+	@Override
+	public URI getExecutedModelURI() 
+	{
+		return URI.createPlatformResourceURI(_runConfiguration.getModelURIAsString(), true);
+	}
+
+	@Override
+	public String getQVTOPath() 
+	{
+		return _languageDefinition.getQVTOPath();
 	}
 
 }

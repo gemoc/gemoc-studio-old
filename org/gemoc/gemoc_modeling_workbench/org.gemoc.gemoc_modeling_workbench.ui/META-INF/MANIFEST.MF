@@ -36,7 +36,8 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.execution.engine.commons
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.gemoc.gemoc_modeling_workbench.ui,
+Export-Package: org.gemoc.gemoc_modeling_workbench.core,
+ org.gemoc.gemoc_modeling_workbench.ui,
  org.gemoc.gemoc_modeling_workbench.ui.commands,
  org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action,
  org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services,

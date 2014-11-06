@@ -6,6 +6,7 @@ import java.util.HashSet;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
+import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
@@ -33,6 +34,17 @@ public class LanguageDefinitionExtension extends Extension
 		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
 		if (instance instanceof Solver) {
 			return (Solver) instance;
+		}
+		throwInstanciationCoreException();
+		return null;
+	}
+	
+	final public IModelLoader instanciateModelLoader() 
+			throws CoreException 
+	{
+		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
+		if (instance instanceof IModelLoader) {
+			return (IModelLoader) instance;
 		}
 		throwInstanciationCoreException();
 		return null;

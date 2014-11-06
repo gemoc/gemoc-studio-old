@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.trace.EventOccurrence;
@@ -85,6 +86,12 @@ public class SolverMock implements Solver {
 
 	@Override
 	public void revertForceClockEffect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setUp(IExecutionContext context) {
 		// TODO Auto-generated method stub
 		
 	}

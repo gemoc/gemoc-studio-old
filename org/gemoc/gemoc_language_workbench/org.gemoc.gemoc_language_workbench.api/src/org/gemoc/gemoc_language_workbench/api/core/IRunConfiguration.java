@@ -15,5 +15,9 @@ public interface IRunConfiguration {
 	public int getDeadlockDetectionDepth();
 
 	public Collection<IDataProcessingComponentExtension> getActivatedComponentExtensions();
+
+	public String getAnimatorURIAsString();
+
+	public String getLanguageName();
 	
 }

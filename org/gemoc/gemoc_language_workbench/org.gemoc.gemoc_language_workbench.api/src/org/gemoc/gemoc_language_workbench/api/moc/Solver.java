@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
@@ -135,4 +136,6 @@ public interface Solver {
 	public void setState(byte[] serializableModel);
 
 	public void revertForceClockEffect();
+
+	public void setUp(IExecutionContext context);
 }

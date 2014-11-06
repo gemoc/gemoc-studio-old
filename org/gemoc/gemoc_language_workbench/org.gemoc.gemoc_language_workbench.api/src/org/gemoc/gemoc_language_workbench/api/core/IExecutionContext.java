@@ -2,7 +2,7 @@ package org.gemoc.gemoc_language_workbench.api.core;
 
 import java.util.Collection;
 
-import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
@@ -14,33 +14,37 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 public interface IExecutionContext extends IDisposable
 {
 
-	public IExecutionWorkspace getWorkspace();
+	IExecutionWorkspace getWorkspace();
 	
 	/**
 	 * 
 	 * @return The solver to use for the model execution.
 	 */
-	public Solver getSolver();
+	Solver getSolver();
 
 	/**
 	 * 
 	 * @return The code executor to use for the model execution.
 	 */
-	public ICodeExecutor getCodeExecutor();
+	ICodeExecutor getCodeExecutor();
 		
-	public Collection<IEngineHook> getHooks();
+	Collection<IEngineHook> getHooks();
 	
-	public Collection<IMSEStateController> getMSEStateControllers();
+	Collection<IMSEStateController> getMSEStateControllers();
 
-	public IRunConfiguration getRunConfiguration();
+	IRunConfiguration getRunConfiguration();
 
-	public IPath getDebuggerViewModelPath();
+	TransactionalEditingDomain getEditingDomain();
 
-	public TransactionalEditingDomain getEditingDomain();
+	Resource getResourceModel();
 
-	public Resource getResourceModel();
+	ExecutionMode getExecutionMode();
 
-	public ExecutionMode getExecutionMode();
+	ActionModel getFeedbackModel();
+	
+	IModelLoader getModelLoader();
 
-	public ActionModel getFeedbackModel();
+	URI getExecutedModelURI();
+
+	String getQVTOPath();
 }

@@ -11,27 +11,11 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
-import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
-import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.ui.IEditorPart;
-import org.gemoc.execution.engine.core.DebugSessionFactory;
-import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.RunConfiguration;
@@ -66,7 +50,6 @@ public class Launcher
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor)
 			throws CoreException {	
-	    ResourceSet resourceSet = new ResourceSetImpl();
 		try 
 		{
 			RunConfiguration runConfiguration = new RunConfiguration(configuration);
@@ -76,21 +59,13 @@ public class Launcher
 			if (ILaunchManager.DEBUG_MODE.equals(mode)
 				&& runConfiguration.getAnimatorURIAsString() != null) 
 			{
-				if (!runConfiguration.getAnimatorURIAsString().equals(""))
-				{
-					URI uri = URI.createPlatformResourceURI(runConfiguration.getAnimatorURIAsString(), true);
-					killPreviousSiriusSession(uri, monitor);
-					final Session session = openNewSiriusSession(uri, monitor);
-					resourceSet = session.getTransactionalEditingDomain().getResourceSet();
-					
-				}
 				executionMode = ExecutionMode.Debug;			
 			}
 			else
 			{
 				executionMode = ExecutionMode.Run;
 			}
-			ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, resourceSet, executionMode);			
+			ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, executionMode);			
 			throwExceptionIfEngineAlreadyRunning(executionContext);
 
 			if (executionContext.isExecutionWithSolver())
@@ -139,53 +114,53 @@ public class Launcher
 		
 	}
 
-	private Session openNewSiriusSession(URI sessionResourceURI, final IProgressMonitor monitor) throws CoreException {
-		final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionResourceURI);
-		set.getURIConverter().getURIHandlers().add(0, new DebugURIHandler());
-		final Session session = DebugSessionFactory.INSTANCE.createSession(set, sessionResourceURI);
-		session.open(monitor);
-		for (DView view : session.getSelectedViews())
-		{
-			for (DRepresentation representation : view.getOwnedRepresentations())
-			{
-				final DSemanticDiagramSpec diagram = (DSemanticDiagramSpec)representation;
-				DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+//	private Session openNewSiriusSession(URI sessionResourceURI, final IProgressMonitor monitor) throws CoreException {
+//		final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionResourceURI);
+//		set.getURIConverter().getURIHandlers().add(0, new DebugURIHandler());
+//		final Session session = DebugSessionFactory.INSTANCE.createSession(set, sessionResourceURI);
+//		session.open(monitor);
+//		for (DView view : session.getSelectedViews())
+//		{
+//			for (DRepresentation representation : view.getOwnedRepresentations())
+//			{
+//				final DSemanticDiagramSpec diagram = (DSemanticDiagramSpec)representation;
+//				DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+//
+//				final TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
+//				final CommandStack commandStack = editingDomain.getCommandStack();
+//				commandStack.execute(new RecordingCommand(editingDomain) {
+//					@Override
+//					protected void doExecute() {
+//						for(Layer l : diagram.getDescription().getAdditionalLayers())
+//						{
+//							boolean mustBeActive = l.getName().toUpperCase().contains("DEBUG")
+//									|| l.getName().toUpperCase().contains("ANIMATION");
+//							if (mustBeActive
+//									&& !diagram.getActivatedLayers().contains(l))
+//							{
+//								ChangeLayerActivationCommand c = new ChangeLayerActivationCommand(
+//										editingDomain, 
+//										diagram, 
+//										l, 
+//										monitor);
+//								c.execute();															
+//							}
+//						}
+//					}
+//				});
+//			}
+//		}
+//
+//		return session;
+//	}
 
-				final TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
-				final CommandStack commandStack = editingDomain.getCommandStack();
-				commandStack.execute(new RecordingCommand(editingDomain) {
-					@Override
-					protected void doExecute() {
-						for(Layer l : diagram.getDescription().getAdditionalLayers())
-						{
-							boolean mustBeActive = l.getName().toUpperCase().contains("DEBUG")
-									|| l.getName().toUpperCase().contains("ANIMATION");
-							if (mustBeActive
-									&& !diagram.getActivatedLayers().contains(l))
-							{
-								ChangeLayerActivationCommand c = new ChangeLayerActivationCommand(
-										editingDomain, 
-										diagram, 
-										l, 
-										monitor);
-								c.execute();															
-							}
-						}
-					}
-				});
-			}
-		}
-
-		return session;
-	}
-
-	private void killPreviousSiriusSession(URI sessionResourceURI, IProgressMonitor monitor) {
-		Session session = SessionManager.INSTANCE.getExistingSession(sessionResourceURI);
-		if (session != null) {
-			session.close(monitor);
-			SessionManager.INSTANCE.remove(session);			
-		}
-	}
+//	private void killPreviousSiriusSession(URI sessionResourceURI, IProgressMonitor monitor) {
+//		Session session = SessionManager.INSTANCE.getExistingSession(sessionResourceURI);
+//		if (session != null) {
+//			session.close(monitor);
+//			SessionManager.INSTANCE.remove(session);			
+//		}
+//	}
 
 
 	private void throwExceptionIfEngineAlreadyRunning(ModelExecutionContext executionContext) throws CoreException 
