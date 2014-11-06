@@ -74,7 +74,6 @@ public class ASynchroneExecution extends OperationExecution
 	{
 		try
 		{	
-			Thread.sleep(5000);
 			executeMSESynchronously();
 			// free
 			for (Entry<Force, When> entry : _forces.entrySet())

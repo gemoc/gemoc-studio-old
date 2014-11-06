@@ -22,10 +22,12 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponent;
 import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
+import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
@@ -316,7 +318,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 							// 3 - run the selected logical step
 							final LogicalStep logicalStepToApply = _possibleLogicalSteps.get(selectedLogicalStepIndex);
 							// inform the solver that we will run this step
-							_executionContext.getSolver().applyLogicalStepByIndex(selectedLogicalStepIndex);
+							getSolver().applyLogicalStepByIndex(selectedLogicalStepIndex);
 							// run all the event occurrences of this logical
 							// step
 							executeLogicalStep(logicalStepToApply);
@@ -460,7 +462,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 	@Override
 	public String toString() {
-		return this.getClass().getName() + "@[Executor=" + _executionContext.getCodeExecutor() + " ; Solver=" + _executionContext.getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
+		return this.getClass().getName() + "@[Executor=" + getCodeExecutor() + " ; Solver=" + getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
 	}
 
 	public void setDebugger(GemocModelDebugger debugger) {
@@ -542,7 +544,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	private List<LogicalStep> _possibleLogicalSteps;
 	private void computePossibleLogicalSteps() 
 	{
-		_possibleLogicalSteps = _executionContext.getSolver().computeAndGetPossibleLogicalSteps();
+		_possibleLogicalSteps = getSolver().computeAndGetPossibleLogicalSteps();
 	}
 
 	@Override
@@ -555,9 +557,9 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	{
 		for(IMSEStateController c : _mseStateControllers)
 		{
-			c.applyMSEFutureStates(_executionContext.getSolver());
+			c.applyMSEFutureStates(getSolver());
 		}
-		_possibleLogicalSteps = _executionContext.getSolver().updatePossibleLogicalSteps();
+		_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
 		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
 		updateTraceModelBeforeDeciding(_possibleLogicalSteps);			
 		notifyEngineHasChanged();
@@ -569,7 +571,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	
 	public void recomputePossibleLogicalSteps()
 	{
-		_executionContext.getSolver().revertForceClockEffect();
+		getSolver().revertForceClockEffect();
 		updatePossibleLogicalSteps();
 	}
 	
@@ -603,4 +605,13 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 	}
 
+	private Solver getSolver()
+	{
+		return _executionContext.getExecutionPlatform().getSolver();
+	}
+	
+	private ICodeExecutor getCodeExecutor()
+	{
+		return _executionContext.getExecutionPlatform().getCodeExecutor();		
+	}
 }

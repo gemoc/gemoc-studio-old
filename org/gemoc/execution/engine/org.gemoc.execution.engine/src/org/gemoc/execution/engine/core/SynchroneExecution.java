@@ -55,7 +55,7 @@ public class SynchroneExecution extends OperationExecution
 				@Override
 				protected void doExecute() {
 					try {
-						result.add(getExecutionContext().getCodeExecutor().execute(call));
+						result.add(getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(call));
 					} catch (CodeExecutionException e) {
 						Activator.getDefault().error("Exception received " + e.getMessage(), e);
 					}
@@ -70,7 +70,7 @@ public class SynchroneExecution extends OperationExecution
 			res = (Object) command.getResult().iterator().next();
 		} else {
 			try {
-				res = getExecutionContext().getCodeExecutor().execute(call);
+				res = getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(call);
 			} catch (CodeExecutionException e) { 
 				Activator.getDefault().error("Exception received " + e.getMessage(), e);
 			}

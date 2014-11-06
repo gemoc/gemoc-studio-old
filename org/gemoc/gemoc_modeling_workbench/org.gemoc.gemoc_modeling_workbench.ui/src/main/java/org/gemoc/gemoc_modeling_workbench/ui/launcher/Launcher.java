@@ -97,7 +97,7 @@ public class Launcher
 				ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
 				call.setTriggeringEvent(mse);
 				mse.setCaller(executionContext.getResourceModel().getContents().get(0));
-				executionContext.getCodeExecutor().execute(call);
+				executionContext.getExecutionPlatform().getCodeExecutor().execute(call);
 			}
 		} 
 		catch (Exception e)

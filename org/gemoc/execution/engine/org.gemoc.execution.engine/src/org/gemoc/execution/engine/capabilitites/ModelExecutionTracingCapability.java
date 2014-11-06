@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -46,15 +45,16 @@ import fr.inria.aoste.trace.LogicalStep;
 public class ModelExecutionTracingCapability implements IExecutionEngineCapability {
 
 	private GemocExecutionEngine _engine;
-	
+		
 	@Override
 	public void initialize(GemocExecutionEngine engine) {
 		_engine = engine;
+		
 	}
 	
 	private TransactionalEditingDomain getEditingDomain()
 	{
-		return  TransactionUtil.getEditingDomain(_engine.getExecutionContext().getResourceModel());
+		return  TransactionUtil.getEditingDomain(_executionContext.getResourceModel());
 	}
 
 	private boolean _backToPastHappened = false;
@@ -114,7 +114,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 			{
 				// if attribute, modify value on the aspect side that will modify the model in return.
 				AttributeChangeSpec asc = (AttributeChangeSpec)diff;
-				ICodeExecutor codeExecutor = _engine.getExecutionContext().getCodeExecutor();
+				ICodeExecutor codeExecutor = _executionContext.getExecutionPlatform().getCodeExecutor();
 				EObject target = diff.getMatch().getRight();
 				String methodName = asc.getAttribute().getName();
 				ArrayList<Object> parameters = new ArrayList<Object>();
@@ -140,7 +140,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	byte[] _lastRestoredSolverState;
 	private void restoreSolverState(Choice choice) 
 	{
-		Solver solver = _engine.getExecutionContext().getSolver();
+		Solver solver = _executionContext.getExecutionPlatform().getSolver();
 		Activator.getDefault().debug("restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
 		solver.setState(choice.getContextState().getSolverState().getSerializableModel());
 		boolean b = Arrays.equals(solver.getState(), choice.getContextState().getSolverState().getSerializableModel());
@@ -176,7 +176,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 				modelState.setModel(result);
 				
 				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();									
-				solverState.setSerializableModel(_engine.getExecutionContext().getSolver().getState());
+				solverState.setSerializableModel(_executionContext.getExecutionPlatform().getSolver().getState());
 				Activator.getDefault().debug("step" + stepNumber + ", saving solver state: " 
 						 + solverState.getSerializableModel());
 				

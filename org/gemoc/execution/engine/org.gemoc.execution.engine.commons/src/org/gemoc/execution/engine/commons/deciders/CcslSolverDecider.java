@@ -15,7 +15,7 @@ public class CcslSolverDecider implements ILogicalStepDecider {
 
 	@Override
 	public int decide(GemocExecutionEngine engine, List<LogicalStep> possibleLogicalSteps) {
-		return engine.getExecutionContext().getSolver().proposeLogicalStepByIndex();
+		return engine.getExecutionContext().getExecutionPlatform().getSolver().proposeLogicalStepByIndex();
 	}
 
 	@Override

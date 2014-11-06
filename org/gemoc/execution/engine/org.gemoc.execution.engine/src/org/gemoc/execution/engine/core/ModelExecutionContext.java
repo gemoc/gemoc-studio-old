@@ -13,15 +13,13 @@ import org.gemoc.execution.engine.commons.solvers.ccsl.SolverMock;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionPlatform;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
-import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
-import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EngineContextException;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
-import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 
@@ -45,9 +43,9 @@ public class ModelExecutionContext implements IExecutionContext
 			_languageDefinition = LanguageDefinitionExtensionPoint.findDefinition(_runConfiguration.getLanguageName());
 			throwExceptionIfLanguageDefinitionNull();
 			instantiateAgents();
-			_resourceModel = _modelLoader.loadModel(this);					
+			_resourceModel = _executionPlatform.getModelLoader().loadModel(this);					
 			setUpEditingDomain();	
-			setUpSolver();						
+			_executionPlatform.getSolver().setUp(this);
 			setUpFeedbackModel();
 		} 
 		catch (CoreException e)
@@ -70,11 +68,6 @@ public class ModelExecutionContext implements IExecutionContext
 		}
 	}
 
-	private void setUpSolver() 
-	{
-		getSolver().setUp(this);
-	}
-
 	private void setUpFeedbackModel() 
 	{
 		URI feedbackURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
@@ -87,16 +80,12 @@ public class ModelExecutionContext implements IExecutionContext
 		}
 	}
 	
-	private Solver _solver;
-	private ICodeExecutor _codeExecutor;
 	private Collection<IEngineHook> _hooks;
 	private Collection<IMSEStateController> _clockControllers;
 	
 	private void instantiateAgents() throws CoreException 
 	{
-		_modelLoader = _languageDefinition.instanciateModelLoader();
-		_solver = _languageDefinition.instanciateSolver();
-		_codeExecutor = _languageDefinition.instanciateCodeExecutor();
+		_executionPlatform = new DefaultExecutionPlatform(_languageDefinition);
 		_hooks = _languageDefinition.instanciateEngineHooks();
 		_clockControllers = _languageDefinition.instanciateMSEStateControllers();
 	}
@@ -112,40 +101,6 @@ public class ModelExecutionContext implements IExecutionContext
 		}
 	}
 	
-//	private void generateMoC() 
-//	{
-//		String transformationPath = _languageDefinition.getQVTOPath();
-//		boolean mustGenerate = true;
-//		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(_executionWorkspace.getMoCPath());
-//		if (mocFile.exists()
-//			&& _executionWorkspace.getModelPath().toFile().lastModified() > _executionWorkspace.getMoCPath().toFile().lastModified()) 
-//		{
-//			mustGenerate = true;
-//		}
-//		
-//		if (mustGenerate)
-//		{
-//			QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
-//			performer.run(
-//						"platform:/plugin" + transformationPath, 
-//						"platform:/resource" + _executionWorkspace.getModelPath().toString(), 
-//						"platform:/resource" + _executionWorkspace.getMoCPath().toString(),
-//						"platform:/resource" + _executionWorkspace.getFeedbackModelPath().toString());			
-//		}		
-//	}
-		
-	@Override
-	public Solver getSolver() 
-	{
-		return _solver;
-	}
-
-	@Override
-	public ICodeExecutor getCodeExecutor() 
-	{
-		return _codeExecutor;
-	}
-
 	@Override
 	public Collection<IEngineHook> getHooks() 
 	{
@@ -198,21 +153,20 @@ public class ModelExecutionContext implements IExecutionContext
 
 	public boolean isExecutionWithSolver() 
 	{
-		return _solver != null && !(_solver instanceof SolverMock);
-	}
-
-
-	private IModelLoader _modelLoader;
-	@Override
-	public IModelLoader getModelLoader() 
-	{
-		return _modelLoader;
+		return _executionPlatform.getSolver() != null 
+				&& !(_executionPlatform.getSolver() instanceof SolverMock);
 	}
 
 	@Override
 	public String getQVTOPath() 
 	{
 		return _languageDefinition.getQVTOPath();
+	}
+	
+	private IExecutionPlatform _executionPlatform;	
+	@Override
+	public IExecutionPlatform getExecutionPlatform() {
+		return _executionPlatform;
 	}
 
 }
