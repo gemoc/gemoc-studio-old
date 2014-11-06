@@ -140,7 +140,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 			_logicalStepDecider = new CcslSolverDecider();
 		}
 
-		for(IMSEStateController c: _executionContext.getMSEStateControllers())
+		for(IMSEStateController c: _executionContext.getExecutionPlatform().getMSEStateControllers())
 		{
 			addMSEStateController(c);
 		}
@@ -183,7 +183,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	{
 		if (!_started) 
 		{
-			for (IEngineHook hook : _executionContext.getHooks()) 
+			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 			{
 				hook.preStartEngine(this);
 			}
@@ -200,7 +200,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	{
 		_logicalStepDecider.dispose();
 		terminated = true;
-		for (IEngineHook hook : _executionContext.getHooks()) 
+		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 		{
 			hook.postStopEngine(this);
 		}
@@ -310,7 +310,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 								updateTraceModelAfterDeciding(selectedLogicalStepIndex);
 
 							notifyEngineHasChanged();
-							for (IEngineHook hook : _executionContext.getHooks()) 
+							for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 							{
 								hook.postLogicalStepSelection(ObservableBasicExecutionEngine.this);
 							}
@@ -563,7 +563,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
 		updateTraceModelBeforeDeciding(_possibleLogicalSteps);			
 		notifyEngineHasChanged();
-		for (IEngineHook hook : _executionContext.getHooks()) 
+		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 		{
 			hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
 		}

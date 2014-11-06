@@ -1,9 +1,13 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
+import java.util.Collection;
+
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
+import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.moc.Solver;
 
-public interface IExecutionPlatform {
+public interface IExecutionPlatform extends IDisposable
+{
 
 	/**
 	 * @return The solver to use for the model execution.
@@ -19,5 +23,9 @@ public interface IExecutionPlatform {
 	 * @return The model loader used to load the model to be executed.
 	 */
 	IModelLoader getModelLoader();
+
+	Collection<IEngineHook> getHooks();
+	
+	Collection<IMSEStateController> getMSEStateControllers();
 
 }
