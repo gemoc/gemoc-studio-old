@@ -2,6 +2,8 @@
  */
 package org.gemoc.gemoc_language_workbench.conf;
 
+import org.eclipse.emf.ecore.EObject;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -108,4 +110,12 @@ public interface DomainModelProject extends ProjectResource {
 	 * @generated
 	 */
 	String getEcoreURI();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EObject getGenmodel();
 } // DomainModelProject

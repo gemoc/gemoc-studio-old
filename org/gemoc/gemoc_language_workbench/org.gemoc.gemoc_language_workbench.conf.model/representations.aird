@@ -31,6 +31,9 @@
               <children xmi:type="notation:Node" xmi:id="_9aQDslOqEeSWNp0imfIMnQ" type="3010" element="_9ZAGgFOqEeSWNp0imfIMnQ">
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_9aQDs1OqEeSWNp0imfIMnQ"/>
               </children>
+              <children xmi:type="notation:Node" xmi:id="_HbCsIGXTEeSAMvMTvx_G7w" type="3010" element="_HZ6qwGXTEeSAMvMTvx_G7w">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_HbCsIWXTEeSAMvMTvx_G7w"/>
+              </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_9aIH4lOqEeSWNp0imfIMnQ"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_9aIH41OqEeSWNp0imfIMnQ"/>
             </children>
@@ -609,7 +612,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DD-gsGWQEeS-j7bazOkrIA" name="modelLoaderClass : EString" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@628e2122{platform:/resource/org.gemoc.gemoc_language_workbench.conf.model/model/gemoc_language_workbench_conf.ecore#//LanguageDefinition/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DD-gsGWQEeS-j7bazOkrIA" name="modelLoaderClass : EString" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="model/gemoc_language_workbench_conf.ecore#//DomainModelProject/modelLoaderClass"/>
           <semanticElements xmi:type="ecore:EAttribute" href="model/gemoc_language_workbench_conf.ecore#//DomainModelProject/modelLoaderClass"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_FhnAwGWQEeS-j7bazOkrIA" labelAlignment="LEFT">
@@ -628,6 +631,17 @@
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9ZB7slOqEeSWNp0imfIMnQ"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_9ZB7s1OqEeSWNp0imfIMnQ"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_HZ6qwGXTEeSAMvMTvx_G7w" name="getGenmodel() : EObject" tooltipText="getGenmodel() : EObject">
+          <target xmi:type="ecore:EOperation" href="model/gemoc_language_workbench_conf.ecore#//DomainModelProject/getGenmodel"/>
+          <semanticElements xmi:type="ecore:EOperation" href="model/gemoc_language_workbench_conf.ecore#//DomainModelProject/getGenmodel"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_HZ9HAGXTEeSAMvMTvx_G7w" labelAlignment="LEFT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_HZ9HAWXTEeSAMvMTvx_G7w"/>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_HZ9HAmXTEeSAMvMTvx_G7w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_HZ9HA2XTEeSAMvMTvx_G7w"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
@@ -677,7 +691,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_hB_zoGWQEeS-j7bazOkrIA" name="solverClass : EString" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@7825e123{platform:/resource/org.gemoc.gemoc_language_workbench.conf.model/model/gemoc_language_workbench_conf.ecore#//DSEProject/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_hB_zoGWQEeS-j7bazOkrIA" name="solverClass : EString" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="model/gemoc_language_workbench_conf.ecore#//DSEProject/solverClass"/>
           <semanticElements xmi:type="ecore:EAttribute" href="model/gemoc_language_workbench_conf.ecore#//DSEProject/solverClass"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_nCVlcGWQEeS-j7bazOkrIA" labelAlignment="LEFT">

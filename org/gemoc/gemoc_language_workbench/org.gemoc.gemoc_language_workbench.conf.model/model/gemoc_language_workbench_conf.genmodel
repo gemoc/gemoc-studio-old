@@ -35,6 +35,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//DomainModelProject/genmodeluri"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gemoc_language_workbench_conf.ecore#//DomainModelProject/modelLoaderClass"/>
       <genOperations ecoreOperation="gemoc_language_workbench_conf.ecore#//DomainModelProject/getEcoreURI"/>
+      <genOperations ecoreOperation="gemoc_language_workbench_conf.ecore#//DomainModelProject/getGenmodel"/>
     </genClasses>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//MoCCProject"/>
     <genClasses ecoreClass="gemoc_language_workbench_conf.ecore#//AnimatorProject"/>

@@ -2,10 +2,16 @@
  */
 package org.gemoc.gemoc_language_workbench.conf.impl;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.confPackage;
 
@@ -172,6 +178,38 @@ public class DomainModelProjectImpl extends ProjectResourceImpl implements Domai
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EObject getGenmodel() {
+		try{
+			if (getGenmodeluri() != null || !getGenmodeluri().isEmpty()) {
+				String genModeluri = getGenmodeluri().replace("platform:/plugin", "platform:/resource");
+				final ResourceSet resourceSet = new ResourceSetImpl();
+				
+				Resource resource = null;
+				try{
+					// try first in workspace
+					resource = resourceSet.getResource(URI.createURI(genModeluri), true);
+				}catch(Exception e){
+					// if fail then try as platform:/plugin
+					genModeluri = genModeluri.replace("platform:/resource", "platform:/plugin");
+					resource = resourceSet.getResource(URI.createURI(genModeluri), true);
+				}
+				if (resource.getContents().size() > 0) {
+					Object firstContent = resource.getContents().get(0);
+					if (firstContent instanceof GenModel){
+						GenModel genModel = (GenModel)firstContent;	
+						return genModel;
+					}
+				}
+			}		
+		} catch (Throwable e){	}
+		return null;
 	}
 
 	/**

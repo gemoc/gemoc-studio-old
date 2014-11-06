@@ -40,6 +40,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainModelProject" eSuperTypes="#//ProjectResource">
     <eOperations name="getEcoreURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getGenmodel" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultRootEObjectQualifiedName"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="genmodeluri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

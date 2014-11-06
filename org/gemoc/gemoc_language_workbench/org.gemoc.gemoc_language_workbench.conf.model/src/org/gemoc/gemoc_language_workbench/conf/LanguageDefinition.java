@@ -195,7 +195,7 @@ public interface LanguageDefinition extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Provides a convenient access to all file extensions declared. This includes both the files exetznsions declared in the genmodel of the DomainModelProject and the ones declared in the editors
+	 * Provides a convenient access to all file extensions declared. This includes both the files extensions declared in the genmodel of the DomainModelProject and the ones declared in the editors
 	 * <!-- end-model-doc -->
 	 * @model kind="operation"
 	 * @generated

@@ -377,30 +377,21 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 		try{
 			DomainModelProject eep = this.getDomainModelProject();
 			if (eep != null) {
-				if (eep.getGenmodeluri() != null || !eep.getGenmodeluri().isEmpty()) {
-					final String eClsName = eep.getDefaultRootEObjectQualifiedName();
-					String genModelPath = eep.getGenmodeluri();
-					final ResourceSet resourceSet = new ResourceSetImpl();
-					final Resource resource = resourceSet.getResource(URI.createURI(genModelPath), true);
-					if (resource.getContents().size() > 0) {
-						Object firstContent = resource.getContents().get(0);
-						if (firstContent instanceof GenModel){
-							GenModel genModel = (GenModel)firstContent;
-							// search extension in direct packages
-							for(GenPackage genPackage : genModel.getGenPackages()){
-								for(String fileExtension : genPackage.getFileExtensionList()){
-									if(!result.contains(fileExtension)){
-										result.add(fileExtension);
-									}
-								}
+				GenModel genModel = (GenModel)eep.getGenmodel();
+				if (genModel != null) {
+					// search extension in direct packages
+					for(GenPackage genPackage : genModel.getGenPackages()){
+						for(String fileExtension : genPackage.getFileExtensionList()){
+							if(!result.contains(fileExtension)){
+								result.add(fileExtension);
 							}
-							// search extension in used packages
-							for(GenPackage genPackage : genModel.getAllGenAndUsedGenPackagesWithClassifiers()){
-								for(String fileExtension : genPackage.getFileExtensionList()){
-									if(!result.contains(fileExtension)){
-										result.add(fileExtension);
-									}
-								}
+						}
+					}
+					// search extension in used packages
+					for(GenPackage genPackage : genModel.getAllGenAndUsedGenPackagesWithClassifiers()){
+						for(String fileExtension : genPackage.getFileExtensionList()){
+							if(!result.contains(fileExtension)){
+								result.add(fileExtension);
 							}
 						}
 					}

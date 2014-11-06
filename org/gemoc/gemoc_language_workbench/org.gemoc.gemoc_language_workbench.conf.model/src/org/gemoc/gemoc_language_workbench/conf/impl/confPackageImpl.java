@@ -596,6 +596,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		addEOperation(domainModelProjectEClass, ecorePackage.getEString(), "getEcoreURI", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(domainModelProjectEClass, ecorePackage.getEObject(), "getGenmodel", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(moCCProjectEClass, MoCCProject.class, "MoCCProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(animatorProjectEClass, AnimatorProject.class, "AnimatorProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
