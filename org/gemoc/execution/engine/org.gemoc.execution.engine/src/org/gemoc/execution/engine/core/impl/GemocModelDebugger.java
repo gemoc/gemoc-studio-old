@@ -4,13 +4,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.AbstractDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
-public class GemocModelDebugger extends AbstractDSLDebugger {
+public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHook {
 
 	/**
 	 * A fake instruction to prevent the stepping return to stop on each event.
@@ -45,7 +48,6 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 	public GemocModelDebugger(IDSLDebugEventProcessor target, ObservableBasicExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
-		engine.setDebugger(this);
 	}
 
 	@Override
@@ -147,6 +149,55 @@ public class GemocModelDebugger extends AbstractDSLDebugger {
 			res= super.getNextInstruction(threadName, currentInstruction, stepping);
 		}
 		return res;
+	}
+
+	@Override
+	public void engineAboutToStart(GemocExecutionEngine engine) 
+	{
+	}
+	
+	@Override
+	public void engineStarted(GemocExecutionEngine executionEngine) 
+	{
+		spawnRunningThread(Thread.currentThread().getName(), engine.getExecutionContext().getResourceModel().getContents().get(0));
+	}
+
+
+	@Override
+	public void preLogicalStepSelection(GemocExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void postLogicalStepSelection(GemocExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void postStopEngine(GemocExecutionEngine engine) 
+	{
+		if (!isTerminated(Thread.currentThread().getName())) 
+		{
+			terminated(Thread.currentThread().getName());
+		}
+	}
+
+	@Override
+	public void aboutToExecuteLogicalStep(GemocExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
+	{
+		if (!control(Thread.currentThread().getName(), logicalStepToApply))
+		{
+			throw new RuntimeException("Debug thread has stopped.");
+		}
+	}
+
+	@Override
+	public void aboutToExecuteMSE(GemocExecutionEngine executionEngine, ModelSpecificEvent mse) 
+	{
+		if (!control(Thread.currentThread().getName(), mse.getCaller()))
+		{
+			throw new RuntimeException("Debug thread has stopped.");			
+		}
 	}
 	
 }

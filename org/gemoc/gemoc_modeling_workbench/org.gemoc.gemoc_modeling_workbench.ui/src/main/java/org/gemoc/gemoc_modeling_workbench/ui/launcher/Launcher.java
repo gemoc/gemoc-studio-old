@@ -226,7 +226,7 @@ public class Launcher
 			DSLDebugEventDispatcher dispatcher, EObject firstInstruction,
 			IProgressMonitor monitor) {
 		GemocModelDebugger res = new GemocModelDebugger(dispatcher, _engine);
-		_engine.setDebugger(res);
+		_engine.getExecutionContext().getExecutionPlatform().getHooks().add(res);
 		return res;
 	}
 

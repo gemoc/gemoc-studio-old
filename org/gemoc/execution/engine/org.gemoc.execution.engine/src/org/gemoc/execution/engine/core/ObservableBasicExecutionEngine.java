@@ -12,7 +12,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
-import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
@@ -32,7 +31,6 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.When;
 import fr.inria.aoste.trace.LogicalStep;
-import fr.obeo.dsl.debug.ide.IDSLDebugger;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -79,8 +77,6 @@ import fr.obeo.dsl.debug.ide.IDSLDebugger;
  * 
  */
 public abstract class ObservableBasicExecutionEngine extends Observable implements GemocExecutionEngine {
-
-	private IDSLDebugger _debugger;
 
 	private IModelAnimator 	animator;
 
@@ -170,7 +166,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		{
 			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 			{
-				hook.preStartEngine(this);
+				hook.engineAboutToStart(this);
 			}
 			engineStatus.setNbLogicalStepRun(0);
 			_runnable = new EngineRunnable();
@@ -247,15 +243,16 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	class EngineRunnable implements Runnable {
 		
 		public void run() {
+			
+			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+			{
+				hook.engineStarted(ObservableBasicExecutionEngine.this);
+			}
+			
 			// register this engine using a unique name
 			String engineName = Thread.currentThread().getName();
 			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, ObservableBasicExecutionEngine.this);
 
-			if (_debugger != null) {
-				// connect the debugger to the model being executed (including
-				// dynamic data)
-				_debugger.spawnRunningThread(Thread.currentThread().getName(), _executionContext.getResourceModel().getContents().get(0));
-			}
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
 			setChanged();
 			notifyObservers("Starting " + engineName);
@@ -326,12 +323,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 				clean();
 			}
 
-			// inform the debugger UI that the thread is terminated
-			if (_debugger != null && !_debugger.isTerminated(Thread.currentThread().getName())) {
-				_debugger.terminated(Thread.currentThread().getName());
-				setDebugger(null); // make sure to release handles
-			}
-
 			engineStatus.setRunningStatus(EngineStatus.RunStatus.Stopped);
 			ObservableBasicExecutionEngine.this.setChanged();
 			ObservableBasicExecutionEngine.this.notifyObservers("Stopping " + engineName);
@@ -386,8 +377,9 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		// execution feedback is sent to the solver so it can take internal
 		// event into account
 
-		if (_debugger != null) {
-			terminated = !_debugger.control(Thread.currentThread().getName(), logicalStepToApply);
+		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+		{
+			hook.aboutToExecuteLogicalStep(this, logicalStepToApply);
 		}
 
 		if (animator != null) {
@@ -397,10 +389,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		Collection<IMSEOccurrence> mseOccurences = MSEOccurrenceFactory.createMSEOccurrences(logicalStepToApply, _executionContext.getFeedbackModel());	
 		for (final IMSEOccurrence mseOccurence : mseOccurences) 
 		{
-			if (_debugger != null) 
-			{
-				terminated = !_debugger.control(Thread.currentThread().getName(), mseOccurence.getMSE().getCaller());
-			}
 			executeAssociatedActions(mseOccurence.getMSE());
 			executeModelSpecificEvent(mseOccurence.getMSE());
 		}
@@ -427,6 +415,10 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	{
 		if (mse.getAction() != null) 
 		{			
+			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+			{
+				hook.aboutToExecuteMSE(this, mse);
+			}
 			ActionModel feedbackModel = _executionContext.getFeedbackModel();
 			ArrayList<When> whenStatements = new ArrayList<When>();
 			for (When w : feedbackModel.getWhenStatements())
@@ -452,10 +444,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	@Override
 	public String toString() {
 		return this.getClass().getName() + "@[Executor=" + getCodeExecutor() + " ; Solver=" + getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
-	}
-
-	public void setDebugger(GemocModelDebugger debugger) {
-		_debugger = debugger;
 	}
 
 	public void setAnimator(IModelAnimator animator) {

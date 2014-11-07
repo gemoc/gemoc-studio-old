@@ -23,7 +23,7 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	{
 		_modelLoader = _languageDefinition.instanciateModelLoader();
 		_solver = _languageDefinition.instanciateSolver();
-		_codeExecutor = _languageDefinition.instanciateCodeExecutor();
+		_codeExecutor = _languageDefinition.instanciateCodeExecutor();		
 		_hooks = _languageDefinition.instanciateEngineHooks();
 		_clockControllers = _languageDefinition.instanciateMSEStateControllers();
 	}
