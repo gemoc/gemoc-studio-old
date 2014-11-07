@@ -43,4 +43,15 @@ public class DeciderSpecificationExtensionPoint extends ExtensionPoint<DeciderSp
 		return GEMOC_DECIDER_EXTENSION_POINT;
 	}
 	
+	static public DeciderSpecificationExtension findDefinition(String deciderName)
+	{
+		for (DeciderSpecificationExtension extension : getSpecifications())
+		{
+			if (extension.getName().equals(deciderName))
+			{
+				return extension;
+			}
+		}
+		return null;
+	}
 }

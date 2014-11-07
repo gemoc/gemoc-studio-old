@@ -8,11 +8,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.gemoc.execution.engine.commons.solvers.ccsl.SolverMock;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionPlatform;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
+import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.exceptions.EngineContextException;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
@@ -43,6 +43,7 @@ public class ModelExecutionContext implements IExecutionContext
 			_languageDefinition = getLanguageDefinition(_runConfiguration.getLanguageName());
 			_executionPlatform = new DefaultExecutionPlatform(_languageDefinition);
 			_resourceModel = _executionPlatform.getModelLoader().loadModel(this);					
+			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
 			setUpEditingDomain();	
 			_executionPlatform.getSolver().setUp(this);
 			setUpFeedbackModel();
@@ -107,6 +108,7 @@ public class ModelExecutionContext implements IExecutionContext
 	public void dispose() 
 	{
 		_executionPlatform.dispose();
+		_logicalStepDecider.dispose();
 	}
 
 	private IExecutionWorkspace _executionWorkspace;
@@ -128,12 +130,6 @@ public class ModelExecutionContext implements IExecutionContext
 		return _feedbackModel;
 	}
 
-	public boolean isExecutionWithSolver() 
-	{
-		return _executionPlatform.getSolver() != null 
-				&& !(_executionPlatform.getSolver() instanceof SolverMock);
-	}
-	
 	private IExecutionPlatform _executionPlatform;	
 	@Override
 	public IExecutionPlatform getExecutionPlatform() {
@@ -144,6 +140,19 @@ public class ModelExecutionContext implements IExecutionContext
 	public LanguageDefinitionExtension getLanguageDefinitionExtension() 
 	{
 		return _languageDefinition;
+	}
+
+	protected ILogicalStepDecider _logicalStepDecider;
+	@Override
+	public ILogicalStepDecider getLogicalStepDecider() 
+	{
+		return _logicalStepDecider;
+	}
+
+	@Override
+	public void changeLogicalStepDecider(ILogicalStepDecider newDecider) 
+	{
+		_logicalStepDecider = newDecider;
 	}
 
 }

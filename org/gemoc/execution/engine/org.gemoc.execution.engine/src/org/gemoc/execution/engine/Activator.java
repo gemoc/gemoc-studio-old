@@ -5,6 +5,9 @@ import org.gemoc.commons.eclipse.pde.GemocPlugin;
 import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
 import org.osgi.framework.BundleContext;
 
+import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;
+import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
+
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -67,10 +70,23 @@ public class Activator extends GemocPlugin {
 		return PLUGIN_ID;
 	}
 
+//	@Override
+//	public DefaultLoggingBackend resolveLoggingBackend() {
+//		return org.gemoc.execution.engine.commons.Activator.getDefault().resolveLoggingBackend();
+//	}
+
+	private DefaultLoggingBackend _loggingBackend;
 	@Override
 	public DefaultLoggingBackend resolveLoggingBackend() {
-		return org.gemoc.execution.engine.commons.Activator.getDefault().resolveLoggingBackend();
+		if (_loggingBackend == null)
+		{
+			_loggingBackend = new DefaultLoggingBackend(this);
+			MessagingSystemManager msm = new MessagingSystemManager();
+			MessagingSystem ms = msm.createBestPlatformMessagingSystem("org.gemoc.execution.engine", "Execution Engine");
+			_loggingBackend.setMessagingSystem(ms);
+		}
+		return _loggingBackend;
 	}
-	
+
 
 }

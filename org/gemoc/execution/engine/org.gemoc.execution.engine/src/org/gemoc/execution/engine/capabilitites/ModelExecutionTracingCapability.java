@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.gemoc.execution.engine.commons.Activator;
+import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
@@ -64,9 +64,9 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 			return;
 		backInTraceModelTo(choice);
 		_backToPastHappened = true;
-		if (_engine.getLogicalStepDecider() != null) 
+		if (_executionContext.getLogicalStepDecider() != null) 
 		{
-			_engine.getLogicalStepDecider().preempt();
+			_executionContext.getLogicalStepDecider().preempt();
 		}
 	}
 

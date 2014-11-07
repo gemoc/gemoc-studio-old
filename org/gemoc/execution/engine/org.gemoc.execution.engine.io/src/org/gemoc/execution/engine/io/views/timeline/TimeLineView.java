@@ -256,9 +256,9 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 
 	private void performExecutionStep(LogicalStep logicalStep) 
 	{
-		if (_currentEngine.getLogicalStepDecider() instanceof AbstractUserDecider)
+		if (_currentEngine.getExecutionContext().getLogicalStepDecider() instanceof AbstractUserDecider)
 		{
-			AbstractUserDecider decider = (AbstractUserDecider)_currentEngine.getLogicalStepDecider();
+			AbstractUserDecider decider = (AbstractUserDecider)_currentEngine.getExecutionContext().getLogicalStepDecider();
 			decider.decideFromTimeLine(logicalStep);
 		}
 		return;

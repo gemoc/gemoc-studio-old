@@ -213,7 +213,7 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 						GemocExecutionEngine engine = (GemocExecutionEngine)element;
 						for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
 						{
-							if (engine.getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
+							if (engine.getExecutionContext().getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
 							{
 								imageDescriptor = ImageDescriptor.createFromURL(spec.getIconURL());
 								break;

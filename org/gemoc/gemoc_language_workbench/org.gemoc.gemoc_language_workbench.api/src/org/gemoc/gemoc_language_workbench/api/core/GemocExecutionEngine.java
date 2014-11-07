@@ -17,30 +17,6 @@ import fr.inria.aoste.trace.LogicalStep;
  */
 public interface GemocExecutionEngine extends GemocExecutionEngineRunControl {
 
-	/** --------------- Initialization --------------- **/
-	/**
-	 * While the constructor of the engine initializes the engine with the
-	 * components used for the whole LANGUAGE, this method initializes the
-	 * engine for a given model conforming to the language used, most notably by
-	 * loading the model (using the given ModelLoader), creating the Model Of
-	 * Execution (Model Specific Events) and the Solver Input.
-	 * 
-	 * @param resource
-	 *            the {@link Resource} containing the model to execute.
-	 */
-	//void initialize(Resource resource);
-
-	/**
-	 * Retrieve the model being executed.
-	 * 
-	 * @return the EMF Resource corresponding to the model being executed.
-	 */
-//	public Resource getModelUnderExecutionResource();
-	
-	public ILogicalStepDecider getLogicalStepDecider();
-	
-	public void changeLogicalStepDecider(ILogicalStepDecider newDecider);
-	
 	/**
 	 * allows to add a  hook to the engine
 	 * @param newEngineHook

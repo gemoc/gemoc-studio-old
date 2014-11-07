@@ -12,8 +12,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
-import org.gemoc.execution.engine.commons.deciders.CcslSolverDecider;
-import org.gemoc.execution.engine.commons.dsa.DefaultMSEStateController;
 import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
@@ -80,7 +78,7 @@ import fr.obeo.dsl.debug.ide.IDSLDebugger;
  * @param <T>
  * 
  */
-public class ObservableBasicExecutionEngine extends Observable implements GemocExecutionEngine {
+public abstract class ObservableBasicExecutionEngine extends Observable implements GemocExecutionEngine {
 
 	private IDSLDebugger _debugger;
 
@@ -95,16 +93,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * used to detect
 	 */
 	protected ArrayDeque<LogicalStep> _lastStepsRun;
-
-	/**
-	 * Given at the language-level initialization.
-	 */
-
-	protected ILogicalStepDecider _logicalStepDecider = null;
-
-	public ILogicalStepDecider getLogicalStepDecider() {
-		return _logicalStepDecider;
-	}
 
 	private IExecutionContext _executionContext;
 
@@ -126,7 +114,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
-	public ObservableBasicExecutionEngine(ILogicalStepDecider decider, ModelExecutionContext executionContext) {
+	public ObservableBasicExecutionEngine(ModelExecutionContext executionContext) {
 		//		if (decider == null)
 		//			throw new IllegalArgumentException("decider");
 		if (executionContext == null)
@@ -134,17 +122,12 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 
 		_executionContext = executionContext;
 		_lastStepsRun = new ArrayDeque<LogicalStep>(getDeadlockDetectionDepth());
-		_logicalStepDecider = decider;
-		if (_logicalStepDecider == null) 
-		{
-			_logicalStepDecider = new CcslSolverDecider();
-		}
 
 		for(IMSEStateController c: _executionContext.getExecutionPlatform().getMSEStateControllers())
 		{
 			addMSEStateController(c);
 		}
-		_mseStateController = new DefaultMSEStateController();
+		_mseStateController = createEngineMSEStateController();
 		addMSEStateController(_mseStateController);
 
 		if (_executionContext.getRunConfiguration().isTraceActive())
@@ -157,6 +140,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 	}
 	
+	protected abstract IMSEStateController createEngineMSEStateController();
+
 	private void initialize() throws CoreException 
 	{
 		for (IDataProcessingComponentExtension extension : _executionContext.getRunConfiguration().getActivatedComponentExtensions())
@@ -198,8 +183,11 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 	@Override
 	public void stop() 
 	{
-		_logicalStepDecider.dispose();
 		terminated = true;
+		if (_logicalStepDecider != null)
+		{
+			_logicalStepDecider.preempt();
+		}
 		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 		{
 			hook.postStopEngine(this);
@@ -215,7 +203,6 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		}
 		_mseStateControllers.clear();		
 		_executionContext.dispose();
-		_logicalStepDecider.dispose();
 
 		if (animator != null) {
 			animator.clear(this);
@@ -255,6 +242,8 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		return false;
 	}
 
+	private ILogicalStepDecider _logicalStepDecider;
+	
 	class EngineRunnable implements Runnable {
 		
 		public void run() {
@@ -292,7 +281,7 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 						Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
 						engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
 						notifyEngineHasChanged();
-						selectedLogicalStepIndex = _logicalStepDecider.decide(ObservableBasicExecutionEngine.this, _possibleLogicalSteps);
+						selectedLogicalStepIndex = _executionContext.getLogicalStepDecider().decide(ObservableBasicExecutionEngine.this, _possibleLogicalSteps);
 						count++;
 
 						if (selectedLogicalStepIndex == -1) {
@@ -523,21 +512,12 @@ public class ObservableBasicExecutionEngine extends Observable implements GemocE
 		return _executionContext;
 	}
 
-
-	private ILogicalStepDecider _newDecider;
-
-	@Override
-	public void changeLogicalStepDecider(ILogicalStepDecider newDecider) 
-	{
-		_newDecider = newDecider;
-	}
-
 	private void switchDeciderIfNecessary()
 	{
-		if (_newDecider != null)
+		if (_executionContext.getLogicalStepDecider() != null
+			&& _executionContext.getLogicalStepDecider() != _logicalStepDecider)
 		{
-			_logicalStepDecider = _newDecider;
-			_newDecider = null;
+			_logicalStepDecider = _executionContext.getLogicalStepDecider();
 		}
 	}
 

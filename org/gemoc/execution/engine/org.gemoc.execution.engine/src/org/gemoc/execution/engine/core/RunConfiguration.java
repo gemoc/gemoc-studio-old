@@ -106,19 +106,22 @@ public class RunConfiguration implements IRunConfiguration
 		return _isTraceActive;
 	}
 
-	private String _deciderName;
+	private String _deciderName;	
+	@Override
 	public String getDeciderName()
 	{
 		return _deciderName;
 	}
 
 	private URI _modelURI;
+	@Override
 	public URI getExecutedModelURI() 
 	{
 		return _modelURI;
 	}
 
 	private URI _animatorURI;
+	@Override
 	public URI getAnimatorURI() 
 	{
 		return _animatorURI;

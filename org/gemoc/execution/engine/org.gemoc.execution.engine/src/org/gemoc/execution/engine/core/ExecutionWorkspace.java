@@ -10,6 +10,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
+import org.gemoc.commons.eclipse.emf.URIHelper;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
 
 public class ExecutionWorkspace implements IExecutionWorkspace
@@ -17,7 +18,7 @@ public class ExecutionWorkspace implements IExecutionWorkspace
 
 	public ExecutionWorkspace(URI modelURI) throws CoreException
 	{
-		_modelPath = new Path(modelURI.toPlatformString(true));
+		_modelPath = new Path(URIHelper.removePlatformResource(modelURI));
 		_projectPath = _modelPath.removeLastSegments(_modelPath.segmentCount() - 1);
 		_executionTopParentPath = _projectPath.append("gemoc-gen");			
 		_executionPath = _executionTopParentPath

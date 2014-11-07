@@ -21,5 +21,9 @@ public interface IExecutionContext extends IDisposable
 	ExecutionMode getExecutionMode();
 
 	ActionModel getFeedbackModel();
+
+	ILogicalStepDecider getLogicalStepDecider();
 	
+	 void changeLogicalStepDecider(ILogicalStepDecider newDecider);
+	 
 }

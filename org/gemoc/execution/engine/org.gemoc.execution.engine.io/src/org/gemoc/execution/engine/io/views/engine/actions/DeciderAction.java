@@ -27,7 +27,7 @@ public class DeciderAction extends Action
 		ILogicalStepDecider newDecider;
 		try {
 			newDecider = _specification.instanciateDecider();
-			_engine.changeLogicalStepDecider(newDecider);
+			_engine.getExecutionContext().changeLogicalStepDecider(newDecider);
 		} catch (CoreException e) {
 			Activator.getDefault().error(e.getMessage(), e);
 			e.printStackTrace();

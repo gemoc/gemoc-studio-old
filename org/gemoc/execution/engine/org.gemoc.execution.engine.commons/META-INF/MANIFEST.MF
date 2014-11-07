@@ -31,7 +31,8 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ccslkernel.solver.launch;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.backend.manager,
- fr.inria.aoste.timesquare.ecl.feedback.model;bundle-version="1.0.0"
+ fr.inria.aoste.timesquare.ecl.feedback.model;bundle-version="1.0.0",
+ org.gemoc.execution.engine;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.commons,

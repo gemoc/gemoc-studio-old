@@ -22,8 +22,11 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+import org.gemoc.commons.eclipse.emf.URIHelper;
 import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.execution.engine.core.RunConfiguration;
+import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
@@ -79,10 +82,10 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		try 
 		{
 			RunConfiguration runConfiguration = new RunConfiguration(configuration);
-			_modelLocationText.setText(runConfiguration.getExecutedModelURI().toString());
+			_modelLocationText.setText(URIHelper.removePlatformResource(runConfiguration.getExecutedModelURI()));
 
 			if (runConfiguration.getAnimatorURI() != null)
-				_siriusRepresentationLocationText.setText(runConfiguration.getAnimatorURI().toString());
+				_siriusRepresentationLocationText.setText(URIHelper.removePlatformResource(runConfiguration.getAnimatorURI()));
 			else
 				_siriusRepresentationLocationText.setText("");
 			_delayText.setText(Integer.toString(runConfiguration.getAnimationDelay()));
@@ -204,12 +207,19 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		createTextLabelLayout(parent, "Decider");
 		_deciderCombo = new Combo(parent, SWT.BORDER);
 		_deciderCombo.setLayoutData(createStandardLayout());
-		String[] deciderChoice = {
-				RunConfiguration.DECIDER_SOLVER_PROPOSITION,
-				RunConfiguration.DECIDER_RANDOM,
-				RunConfiguration.DECIDER_ASKUSER,
-				RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP };
-		_deciderCombo.setItems(deciderChoice);
+		
+		ArrayList<String> deciders = new ArrayList<>();
+		for (DeciderSpecificationExtension definition : DeciderSpecificationExtensionPoint.getSpecifications())
+		{
+			deciders.add(definition.getName());
+		}
+//		String[] deciderChoice = {
+//				RunConfiguration.DECIDER_SOLVER_PROPOSITION,
+//				RunConfiguration.DECIDER_RANDOM,
+//				RunConfiguration.DECIDER_ASKUSER,
+//				RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP };
+		String[] a = new String[deciders.size()];
+		_deciderCombo.setItems(deciders.toArray(a));
 		_deciderCombo.select(0);
 		_deciderCombo.addModifyListener(fBasicModifyListener);
 		

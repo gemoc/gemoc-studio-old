@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
+import org.gemoc.execution.engine.commons.CCSLExecutionEngine;
 import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.RunConfiguration;
@@ -23,7 +24,6 @@ import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
@@ -68,10 +68,9 @@ public class Launcher
 			ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, executionMode);			
 			throwExceptionIfEngineAlreadyRunning(executionContext);
 
-			if (executionContext.isExecutionWithSolver())
+			if (executionContext.getFeedbackModel() != null) // hack to find out if execution involves a solver
 			{
-				ILogicalStepDecider decider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
-				_engine = new ObservableBasicExecutionEngine(decider, executionContext);				
+				_engine = new CCSLExecutionEngine(executionContext);				
 				launchEngine(_engine);
 				// delegate for debug mode
 				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
