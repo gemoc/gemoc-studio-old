@@ -17,6 +17,10 @@
       [Enter License Description here.]
    </license>
 
+   <requires>
+      <import feature="org.gemoc.commons.feature" version="0.0.0" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="org.gemoc.gemoc_language_workbench.ui"
          download-size="0"
@@ -52,13 +56,6 @@
 
    <plugin
          id="org.gemoc.gemoc_language_workbench.utils"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.gemoc_language_workbench.api"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -51,6 +51,7 @@ public class DomainModelProjectItemProvider
 
 			addDefaultRootEObjectQualifiedNamePropertyDescriptor(object);
 			addGenmodeluriPropertyDescriptor(object);
+			addModelLoaderClassPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -100,6 +101,28 @@ public class DomainModelProjectItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Model Loader Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addModelLoaderClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DomainModelProject_modelLoaderClass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DomainModelProject_modelLoaderClass_feature", "_UI_DomainModelProject_type"),
+				 confPackage.Literals.DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns DomainModelProject.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,6 +161,7 @@ public class DomainModelProjectItemProvider
 		switch (notification.getFeatureID(DomainModelProject.class)) {
 			case confPackage.DOMAIN_MODEL_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME:
 			case confPackage.DOMAIN_MODEL_PROJECT__GENMODELURI:
+			case confPackage.DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

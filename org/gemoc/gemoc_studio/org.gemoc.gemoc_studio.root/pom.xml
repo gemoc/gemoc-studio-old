@@ -4,7 +4,7 @@
     <name>Gemoc Studio root build</name>
     <groupId>org.gemoc.gemoc_studio</groupId>
     <artifactId>org.gemoc.gemoc_studio.root</artifactId>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.2</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -15,7 +15,8 @@
     <modules>
         <module>../org.gemoc.gemoc_studio.product</module>
         <module>../org.gemoc.gemoc_studio.branding</module>
-        <module>../org.gemoc.gemoc_studio.branding.feature</module>		
+        <module>../org.gemoc.gemoc_studio.branding.feature</module>	
+        <module>../org.gemoc.gemoc_studio.branding.source.feature</module>		
         <module>../org.gemoc.gemoc_studio.additions.feature</module>	
     </modules>
 

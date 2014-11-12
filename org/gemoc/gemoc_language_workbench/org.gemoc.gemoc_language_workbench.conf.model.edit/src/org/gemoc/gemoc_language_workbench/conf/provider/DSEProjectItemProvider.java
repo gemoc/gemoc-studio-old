@@ -50,6 +50,7 @@ public class DSEProjectItemProvider
 			super.getPropertyDescriptors(object);
 
 			addQvtoURIPropertyDescriptor(object);
+			addSolverClassPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -68,6 +69,28 @@ public class DSEProjectItemProvider
 				 getString("_UI_DSEProject_qvtoURI_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_DSEProject_qvtoURI_feature", "_UI_DSEProject_type"),
 				 confPackage.Literals.DSE_PROJECT__QVTO_URI,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Solver Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSolverClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DSEProject_solverClass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DSEProject_solverClass_feature", "_UI_DSEProject_type"),
+				 confPackage.Literals.DSE_PROJECT__SOLVER_CLASS,
 				 true,
 				 false,
 				 false,
@@ -114,6 +137,7 @@ public class DSEProjectItemProvider
 
 		switch (notification.getFeatureID(DSEProject.class)) {
 			case confPackage.DSE_PROJECT__QVTO_URI:
+			case confPackage.DSE_PROJECT__SOLVER_CLASS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

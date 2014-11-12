@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_7QrFIBDDEeOtGvNHrBKqcw" name="Gemoc Studio Architecture">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_7QrFIBDDEeOtGvNHrBKqcw" name="Gemoc Studio Architecture">
   <packagedElement xmi:type="uml:Usage" xmi:id="_mGLA0BDEEeOtGvNHrBKqcw" name="OperatorDefinition ModelToComposition Operator Applicator" supplier="_e5mFYBDEEeOtGvNHrBKqcw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_vc44kBDEEeOtGvNHrBKqcw" name="MOCC ModelToDSA-MOCC Map Editor" client="_tZlkEBDEEeOtGvNHrBKqcw _wAet0BDEEeOtGvNHrBKqcw" supplier="_rWiHMBDEEeOtGvNHrBKqcw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_BSEKYBDFEeOtGvNHrBKqcw" name="DSA ModelToDSA Compiler" client="_9BV8EBDEEeOtGvNHrBKqcw _DUriYBDFEeOtGvNHrBKqcw" supplier="_65OZABDEEeOtGvNHrBKqcw"/>
@@ -12,7 +12,7 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_L7iOABDGEeOtGvNHrBKqcw" name="Domain Specific Event ModelToExecution Engine" client="_dhaVABDFEeOtGvNHrBKqcw _XGFa4BDGEeOtGvNHrBKqcw" supplier="__Ye9IBDFEeOtGvNHrBKqcw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_yDif0BDGEeOtGvNHrBKqcw" name="Runtime ControllerToDomain Specific Graphical AnimatedEditor" client="_uwezoBDGEeOtGvNHrBKqcw _5f1SQBDGEeOtGvNHrBKqcw" supplier="_kYco0BDGEeOtGvNHrBKqcw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_1a8ggBDGEeOtGvNHrBKqcw" name="Domain Specific ModelToDomain Specific Graphical AnimatedEditor" client="_uwezoBDGEeOtGvNHrBKqcw" supplier="_EtUwUBDFEeOtGvNHrBKqcw"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_--8mUBDGEeOtGvNHrBKqcw" clientDependency="_AB7GQBDHEeOtGvNHrBKqcw" name="Trace Editor">
+  <packagedElement xmi:type="uml:Component" xmi:id="_--8mUBDGEeOtGvNHrBKqcw" name="Trace Editor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_AjGgsRDHEeOtGvNHrBKqcw" name="Trace EditorPort" type="_--8mUBDGEeOtGvNHrBKqcw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_AB7GQBDHEeOtGvNHrBKqcw" name="Trace ModelToTrace Editor" client="_--8mUBDGEeOtGvNHrBKqcw _AjGgsBDHEeOtGvNHrBKqcw" supplier="_nGs-0BDGEeOtGvNHrBKqcw"/>
@@ -78,9 +78,9 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Interface" xmi:id="_H0t_EBDFEeOtGvNHrBKqcw" name="DSE Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_rWiHMBDEEeOtGvNHrBKqcw" name="MOCC Model"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_mBhU4BDFEeOtGvNHrBKqcw" clientDependency="_Pgqu8BFFEeOtGvNHrBKqcw" name="Execution Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_mBhU4BDFEeOtGvNHrBKqcw" name="Execution Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_65OZABDEEeOtGvNHrBKqcw" name="DSA Model"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_EtUwUBDFEeOtGvNHrBKqcw" clientDependency="_RG-lcBFFEeOtGvNHrBKqcw" name="Domain Specific Model"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_EtUwUBDFEeOtGvNHrBKqcw" name="Domain Specific Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_tWXbgBDFEeOtGvNHrBKqcw" name="Domain Specific Event Vector Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="__Ye9IBDFEeOtGvNHrBKqcw" name="Domain Specific Event Model"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_e5mFYBDEEeOtGvNHrBKqcw" name="OperatorDefinition Model"/>
@@ -110,14 +110,14 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hJ7rsRFFEeOtGvNHrBKqcw" value="*"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_Na2cgBFGEeOtGvNHrBKqcw" clientDependency="_SRXFMRFWEeOxUY4x8ZHOcA" name="Modeling Workbench">
-    <nestedClassifier xmi:type="uml:Component" xmi:id="_uwezoBDGEeOtGvNHrBKqcw" clientDependency="_yDif0BDGEeOtGvNHrBKqcw _1a8ggBDGEeOtGvNHrBKqcw _M_r9MBDHEeOtGvNHrBKqcw _NlSkoBDHEeOtGvNHrBKqcw _OMMMkBDHEeOtGvNHrBKqcw _Php8sBFhEeOxUY4x8ZHOcA" name="Model Animator">
+  <packagedElement xmi:type="uml:Component" xmi:id="_Na2cgBFGEeOtGvNHrBKqcw" name="Modeling Workbench">
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_uwezoBDGEeOtGvNHrBKqcw" name="Model Animator">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_5f1SQhDGEeOtGvNHrBKqcw" name="Domain Specific Graphical AnimatedEditorPort" type="_uwezoBDGEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_4kxY8BFaEeOxUY4x8ZHOcA" clientDependency="_huwDcBFaEeOxUY4x8ZHOcA _OMMMkBDHEeOtGvNHrBKqcw" name="Debug User Interface_Debug User Interface_connector">
+      <ownedConnector xmi:id="_4kxY8BFaEeOxUY4x8ZHOcA" name="Debug User Interface_Debug User Interface_connector">
         <end xmi:id="_4kyAABFaEeOxUY4x8ZHOcA" role="_4kxY8RFaEeOxUY4x8ZHOcA"/>
         <end xmi:id="_4kyAARFaEeOxUY4x8ZHOcA" role="_5f1SQhDGEeOtGvNHrBKqcw"/>
       </ownedConnector>
-      <ownedConnector xmi:id="_5Sh20BFaEeOxUY4x8ZHOcA" clientDependency="_hQLREBFaEeOxUY4x8ZHOcA _NlSkoBDHEeOtGvNHrBKqcw" name="Launch Utilities_Launch Utilities_connector">
+      <ownedConnector xmi:id="_5Sh20BFaEeOxUY4x8ZHOcA" name="Launch Utilities_Launch Utilities_connector">
         <end xmi:id="_5Sh20RFaEeOxUY4x8ZHOcA" role="_4kxY8RFaEeOxUY4x8ZHOcA"/>
         <end xmi:id="_5Sh20hFaEeOxUY4x8ZHOcA" role="_5f1SQhDGEeOtGvNHrBKqcw"/>
       </ownedConnector>
@@ -125,44 +125,44 @@
       <interfaceRealization xmi:id="_NlSkoBDHEeOtGvNHrBKqcw" name="Domain Specific Graphical AnimatedEditorToLaunch Utilities" client="_uwezoBDGEeOtGvNHrBKqcw _5Sh20BFaEeOxUY4x8ZHOcA" supplier="_CZzjoBDHEeOtGvNHrBKqcw" contract="_CZzjoBDHEeOtGvNHrBKqcw"/>
       <interfaceRealization xmi:id="_OMMMkBDHEeOtGvNHrBKqcw" name="Domain Specific Graphical AnimatedEditorToDebug User Interface" client="_uwezoBDGEeOtGvNHrBKqcw _4kxY8BFaEeOxUY4x8ZHOcA" supplier="_JId0ABDHEeOtGvNHrBKqcw" contract="_JId0ABDHEeOtGvNHrBKqcw"/>
       <interfaceRealization xmi:id="_Php8sBFhEeOxUY4x8ZHOcA" name="Domain Specific Graphical Animated EditorToDomain Specific Graphical Animated Editor" client="_uwezoBDGEeOtGvNHrBKqcw" supplier="_LK5wYBDIEeOtGvNHrBKqcw" contract="_LK5wYBDIEeOtGvNHrBKqcw"/>
-      <nestedClassifier xmi:type="uml:Component" xmi:id="_mm4akBFbEeOxUY4x8ZHOcA" clientDependency="_5jICIBFbEeOxUY4x8ZHOcA _VLMxYBFcEeOxUY4x8ZHOcA _c_BTABFcEeOxUY4x8ZHOcA _y8srQBFcEeOxUY4x8ZHOcA _FaXrABFeEeOxUY4x8ZHOcA _F9Sx4BFeEeOxUY4x8ZHOcA" name="Sirius Framework">
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_mm4akBFbEeOxUY4x8ZHOcA" name="Sirius Framework">
         <ownedAttribute xmi:type="uml:Port" xmi:id="_61MG8RFbEeOxUY4x8ZHOcA" name="Sirius FrameworkPort" type="_mm4akBFbEeOxUY4x8ZHOcA"/>
         <interfaceRealization xmi:id="_FaXrABFeEeOxUY4x8ZHOcA" name="Sirius FrameworkToDomain Specific Graphical Animator" client="_mm4akBFbEeOxUY4x8ZHOcA" supplier="_WlrVIBDJEeOtGvNHrBKqcw" contract="_WlrVIBDJEeOtGvNHrBKqcw"/>
         <interfaceRealization xmi:id="_F9Sx4BFeEeOxUY4x8ZHOcA" name="Sirius FrameworkToDomain Specific Graphical Animated Editor" client="_mm4akBFbEeOxUY4x8ZHOcA" supplier="_LK5wYBDIEeOtGvNHrBKqcw" contract="_LK5wYBDIEeOtGvNHrBKqcw"/>
-        <packagedElement xmi:type="uml:Component" xmi:id="_ofyc8BFbEeOxUY4x8ZHOcA" clientDependency="_vHkCMBFbEeOxUY4x8ZHOcA _NLihQBFeEeOxUY4x8ZHOcA" name="Sirius Animator Framework">
+        <packagedElement xmi:type="uml:Component" xmi:id="_ofyc8BFbEeOxUY4x8ZHOcA" name="Sirius Animator Framework">
           <interfaceRealization xmi:id="_NLihQBFeEeOxUY4x8ZHOcA" name="Sirius Animator FrameworkToDomain Specific Graphical Animator" client="_ofyc8BFbEeOxUY4x8ZHOcA" supplier="_WlrVIBDJEeOtGvNHrBKqcw" contract="_WlrVIBDJEeOtGvNHrBKqcw"/>
         </packagedElement>
       </nestedClassifier>
-      <packagedElement xmi:type="uml:Component" xmi:id="_UX9gYBDJEeOtGvNHrBKqcw" clientDependency="_Z74b8BDJEeOtGvNHrBKqcw _nRiH0BFgEeOxUY4x8ZHOcA _n0AiwBFgEeOxUY4x8ZHOcA _3yJacBFgEeOxUY4x8ZHOcA _4v9tkBFgEeOxUY4x8ZHOcA" name="Domain Specific Graphical Animator">
+      <packagedElement xmi:type="uml:Component" xmi:id="_UX9gYBDJEeOtGvNHrBKqcw" name="Domain Specific Graphical Animator">
         <interfaceRealization xmi:id="_Z74b8BDJEeOtGvNHrBKqcw" name="Domain Specific Graphical AnimatorToDomain Specific Graphical Animator" client="_UX9gYBDJEeOtGvNHrBKqcw" supplier="_WlrVIBDJEeOtGvNHrBKqcw" contract="_WlrVIBDJEeOtGvNHrBKqcw"/>
         <interfaceRealization xmi:id="_3yJacBFgEeOxUY4x8ZHOcA" name="Domain Specific Graphical AnimatorToDebug User Interface" client="_UX9gYBDJEeOtGvNHrBKqcw" supplier="_JId0ABDHEeOtGvNHrBKqcw" contract="_JId0ABDHEeOtGvNHrBKqcw"/>
         <interfaceRealization xmi:id="_4v9tkBFgEeOxUY4x8ZHOcA" name="Domain Specific Graphical AnimatorToLaunch Utilities" client="_UX9gYBDJEeOtGvNHrBKqcw" supplier="_CZzjoBDHEeOtGvNHrBKqcw" contract="_CZzjoBDHEeOtGvNHrBKqcw"/>
       </packagedElement>
     </nestedClassifier>
-    <packagedElement xmi:type="uml:Component" xmi:id="_-bqlABDEEeOtGvNHrBKqcw" clientDependency="_GqYS4BDFEeOtGvNHrBKqcw" name="Model Editor">
+    <packagedElement xmi:type="uml:Component" xmi:id="_-bqlABDEEeOtGvNHrBKqcw" name="Model Editor">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_WYfKgxDFEeOtGvNHrBKqcw" name="Domain Specific EditorPort" type="_-bqlABDEEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_WYfKgBDFEeOtGvNHrBKqcw" clientDependency="_VuXPcBDFEeOtGvNHrBKqcw _GqYS4BDFEeOtGvNHrBKqcw" name="Domain Specific Model_Domain Specific Model_connector">
+      <ownedConnector xmi:id="_WYfKgBDFEeOtGvNHrBKqcw" name="Domain Specific Model_Domain Specific Model_connector">
         <end xmi:id="_WYfKghDFEeOtGvNHrBKqcw"/>
         <end xmi:id="_WYfKhBDFEeOtGvNHrBKqcw" role="_WYfKgxDFEeOtGvNHrBKqcw"/>
       </ownedConnector>
       <interfaceRealization xmi:id="_GqYS4BDFEeOtGvNHrBKqcw" name="Domain Specific EditorToDomain Specific Model" client="_-bqlABDEEeOtGvNHrBKqcw _WYfKgBDFEeOtGvNHrBKqcw" supplier="_EtUwUBDFEeOtGvNHrBKqcw" contract="_EtUwUBDFEeOtGvNHrBKqcw"/>
-      <nestedClassifier xmi:type="uml:Component" xmi:id="_sZKQUBFdEeOxUY4x8ZHOcA" clientDependency="_vqdpABFdEeOxUY4x8ZHOcA _1FLlQBFdEeOxUY4x8ZHOcA _5Cd6MBFdEeOxUY4x8ZHOcA" name="Xtext">
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_sZKQUBFdEeOxUY4x8ZHOcA" name="Xtext">
         <interfaceRealization xmi:id="_5Cd6MBFdEeOxUY4x8ZHOcA" name="XtextToDomain Text Editor" client="_sZKQUBFdEeOxUY4x8ZHOcA" supplier="_rJdiQBDJEeOtGvNHrBKqcw" contract="_rJdiQBDJEeOtGvNHrBKqcw"/>
       </nestedClassifier>
-      <packagedElement xmi:type="uml:Component" xmi:id="_pkE40BDJEeOtGvNHrBKqcw" clientDependency="_ulBDIBDJEeOtGvNHrBKqcw" name="Domain Specific Text Editor">
+      <packagedElement xmi:type="uml:Component" xmi:id="_pkE40BDJEeOtGvNHrBKqcw" name="Domain Specific Text Editor">
         <interfaceRealization xmi:id="_ulBDIBDJEeOtGvNHrBKqcw" name="Domain Specific Text EditorToDomain Text Editor" client="_pkE40BDJEeOtGvNHrBKqcw" supplier="_rJdiQBDJEeOtGvNHrBKqcw" contract="_rJdiQBDJEeOtGvNHrBKqcw"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Component" xmi:id="_IFFZgBDJEeOtGvNHrBKqcw" clientDependency="_PIbgcBDJEeOtGvNHrBKqcw _nWX70BFxEeOxUY4x8ZHOcA" name="Domain Specific Tree Editor">
+      <packagedElement xmi:type="uml:Component" xmi:id="_IFFZgBDJEeOtGvNHrBKqcw" name="Domain Specific Tree Editor">
         <interfaceRealization xmi:id="_PIbgcBDJEeOtGvNHrBKqcw" name="Domain Specific Tree EditorToDomain Specific Tree Editor" client="_IFFZgBDJEeOtGvNHrBKqcw" supplier="_LM3CwBDJEeOtGvNHrBKqcw" contract="_LM3CwBDJEeOtGvNHrBKqcw"/>
         <interfaceRealization xmi:id="_nWX70BFxEeOxUY4x8ZHOcA" name="Domain Specific Tree EditorToDomain Specific Model" client="_IFFZgBDJEeOtGvNHrBKqcw" supplier="_EtUwUBDFEeOtGvNHrBKqcw" contract="_EtUwUBDFEeOtGvNHrBKqcw"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Component" xmi:id="_a5rMkBFbEeOxUY4x8ZHOcA" clientDependency="_eI13QBFbEeOxUY4x8ZHOcA _jHsW4BFbEeOxUY4x8ZHOcA _jov1gBFbEeOxUY4x8ZHOcA" name="Sirius Editor">
+      <packagedElement xmi:type="uml:Component" xmi:id="_a5rMkBFbEeOxUY4x8ZHOcA" name="Sirius Editor">
         <ownedAttribute xmi:type="uml:Port" xmi:id="_61MuARFbEeOxUY4x8ZHOcA" name="Sirius EditorPort" type="_a5rMkBFbEeOxUY4x8ZHOcA"/>
-        <ownedConnector xmi:id="_61MG8BFbEeOxUY4x8ZHOcA" clientDependency="_5jICIBFbEeOxUY4x8ZHOcA _jHsW4BFbEeOxUY4x8ZHOcA" name="Domain Specific Representation Definition Extension Model_Domain Specific Representation Definition Extension Model_connector">
+        <ownedConnector xmi:id="_61MG8BFbEeOxUY4x8ZHOcA" name="Domain Specific Representation Definition Extension Model_Domain Specific Representation Definition Extension Model_connector">
           <end xmi:id="_61MuABFbEeOxUY4x8ZHOcA" role="_61MG8RFbEeOxUY4x8ZHOcA"/>
           <end xmi:id="_61MuAhFbEeOxUY4x8ZHOcA" role="_61MuARFbEeOxUY4x8ZHOcA"/>
         </ownedConnector>
-        <ownedConnector xmi:id="_Xq7jMBFcEeOxUY4x8ZHOcA" clientDependency="_VLMxYBFcEeOxUY4x8ZHOcA _jov1gBFbEeOxUY4x8ZHOcA" name="Domain Specific Representation Definition Model_Domain Specific Representation Definition Model_connector">
+        <ownedConnector xmi:id="_Xq7jMBFcEeOxUY4x8ZHOcA" name="Domain Specific Representation Definition Model_Domain Specific Representation Definition Model_connector">
           <end xmi:id="_Xq7jMRFcEeOxUY4x8ZHOcA" role="_61MG8RFbEeOxUY4x8ZHOcA"/>
           <end xmi:id="_Xq7jMhFcEeOxUY4x8ZHOcA" role="_61MuARFbEeOxUY4x8ZHOcA"/>
         </ownedConnector>
@@ -170,20 +170,20 @@
         <interfaceRealization xmi:id="_jov1gBFbEeOxUY4x8ZHOcA" name="Sirius EditorToDomain Specific Representation Definition Model" client="_a5rMkBFbEeOxUY4x8ZHOcA _Xq7jMBFcEeOxUY4x8ZHOcA" supplier="_376rMBFEEeOtGvNHrBKqcw" contract="_376rMBFEEeOtGvNHrBKqcw"/>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Component" xmi:id="_dRpTUBDIEeOtGvNHrBKqcw" clientDependency="_fXgXIBDJEeOtGvNHrBKqcw" name="Domain Specific Metamodel Byte Code">
+    <packagedElement xmi:type="uml:Component" xmi:id="_dRpTUBDIEeOtGvNHrBKqcw" name="Domain Specific Metamodel Byte Code">
       <interfaceRealization xmi:id="_fXgXIBDJEeOtGvNHrBKqcw" name="Domain Specific Metamodel Byte CodeToDomain Specific Metamodel Byte Code" client="_dRpTUBDIEeOtGvNHrBKqcw" supplier="_h_AhsBDFEeOtGvNHrBKqcw" contract="_h_AhsBDFEeOtGvNHrBKqcw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_SRXFMRFWEeOxUY4x8ZHOcA" name="&lt;&lt;dependency>>" client="_Na2cgBFGEeOtGvNHrBKqcw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_yKd_EBFGEeOtGvNHrBKqcw" clientDependency="_YGTfUBFWEeOxUY4x8ZHOcA _Y3iH8BFWEeOxUY4x8ZHOcA" name="Execution Engine">
+  <packagedElement xmi:type="uml:Component" xmi:id="_yKd_EBFGEeOtGvNHrBKqcw" name="Execution Platform">
     <nestedClassifier xmi:type="uml:Component" xmi:id="_EQk78BFfEeOxUY4x8ZHOcA" name="NEMO"/>
-    <packagedElement xmi:type="uml:Component" xmi:id="_1OnFgBFGEeOtGvNHrBKqcw" clientDependency="_6IZBUBotEeOaHLOAfwB0Bw _Fc3JwBovEeOaHLOAfwB0Bw" name="Composition Operator Applicator">
+    <packagedElement xmi:type="uml:Component" xmi:id="_1OnFgBFGEeOtGvNHrBKqcw" name="Composition Operator Applicator">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_HPASQBouEeOaHLOAfwB0Bw" name="Composition Operator ApplicatorPort" type="_1OnFgBFGEeOtGvNHrBKqcw"/>
       <nestedClassifier xmi:type="uml:Component" xmi:id="_CgCLYBFfEeOxUY4x8ZHOcA" name="CEP Engine"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Component" xmi:id="_fZBW4BDFEeOtGvNHrBKqcw" clientDependency="_w6ELwBDFEeOtGvNHrBKqcw _VsoUoBDGEeOtGvNHrBKqcw" name="Policy">
+    <packagedElement xmi:type="uml:Component" xmi:id="_fZBW4BDFEeOtGvNHrBKqcw" name="Policy">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_0qJyMhDFEeOtGvNHrBKqcw" name="PolicyPort" type="_fZBW4BDFEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_XGFa4BDGEeOtGvNHrBKqcw" clientDependency="_KkUjcBDGEeOtGvNHrBKqcw _L7iOABDGEeOtGvNHrBKqcw _VsoUoBDGEeOtGvNHrBKqcw" name="Domain Specific Event Model_Domain Specific Event Model_connector">
+      <ownedConnector xmi:id="_XGFa4BDGEeOtGvNHrBKqcw" name="Domain Specific Event Model_Domain Specific Event Model_connector">
         <end xmi:id="_XGGB8BDGEeOtGvNHrBKqcw" role="_0qJyNBDFEeOtGvNHrBKqcw"/>
         <end xmi:id="_XGGB8RDGEeOtGvNHrBKqcw" role="_p5x_4BDFEeOtGvNHrBKqcw"/>
         <end xmi:id="_XGGB8hDGEeOtGvNHrBKqcw" role="_0qJyMhDFEeOtGvNHrBKqcw"/>
@@ -191,37 +191,37 @@
       <interfaceRealization xmi:id="_VsoUoBDGEeOtGvNHrBKqcw" name="PolicyToDomain Specific Event Model" client="_fZBW4BDFEeOtGvNHrBKqcw _XGFa4BDGEeOtGvNHrBKqcw" supplier="__Ye9IBDFEeOtGvNHrBKqcw" contract="__Ye9IBDFEeOtGvNHrBKqcw"/>
       <nestedClassifier xmi:type="uml:Component" xmi:id="_8j6VwBFfEeOxUY4x8ZHOcA" name="Interactive Policy"/>
       <nestedClassifier xmi:type="uml:Component" xmi:id="_967MABFfEeOxUY4x8ZHOcA" name="Random Policy"/>
-      <nestedClassifier xmi:type="uml:Component" xmi:id="__5oUYBFfEeOxUY4x8ZHOcA" clientDependency="_VxfYgBFgEeOxUY4x8ZHOcA" name="Scenario Policy"/>
-      <nestedClassifier xmi:type="uml:Component" xmi:id="_KXvSABFgEeOxUY4x8ZHOcA" clientDependency="_OZID0BFgEeOxUY4x8ZHOcA" name="Replay Policy"/>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="__5oUYBFfEeOxUY4x8ZHOcA" name="Scenario Policy"/>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_KXvSABFgEeOxUY4x8ZHOcA" name="Replay Policy"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Component" xmi:id="_gYAHoBDFEeOtGvNHrBKqcw" clientDependency="_0LGesBDFEeOtGvNHrBKqcw _KkUjcBDGEeOtGvNHrBKqcw _MY2DkBFfEeOxUY4x8ZHOcA" name="Solver">
+    <packagedElement xmi:type="uml:Component" xmi:id="_gYAHoBDFEeOtGvNHrBKqcw" name="Solver">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_0qJyNBDFEeOtGvNHrBKqcw" name="SolverPort" type="_gYAHoBDFEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_0qJyMBDFEeOtGvNHrBKqcw" clientDependency="_xTweIBDFEeOtGvNHrBKqcw _w6ELwBDFEeOtGvNHrBKqcw _0LGesBDFEeOtGvNHrBKqcw" name="Domain Specific Event Vector Model_Domain Specific Event Vector Model_connector">
+      <ownedConnector xmi:id="_0qJyMBDFEeOtGvNHrBKqcw" name="Domain Specific Event Vector Model_Domain Specific Event Vector Model_connector">
         <end xmi:id="_0qJyMRDFEeOtGvNHrBKqcw" role="_p5x_4BDFEeOtGvNHrBKqcw"/>
         <end xmi:id="_0qJyMxDFEeOtGvNHrBKqcw" role="_0qJyMhDFEeOtGvNHrBKqcw"/>
         <end xmi:id="_0qKZQBDFEeOtGvNHrBKqcw" role="_0qJyNBDFEeOtGvNHrBKqcw"/>
       </ownedConnector>
       <interfaceRealization xmi:id="_0LGesBDFEeOtGvNHrBKqcw" name="SolverToDomain Specific Event Vector Model" client="_gYAHoBDFEeOtGvNHrBKqcw _0qJyMBDFEeOtGvNHrBKqcw" supplier="_tWXbgBDFEeOtGvNHrBKqcw" contract="_tWXbgBDFEeOtGvNHrBKqcw"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_o3i9ABFYEeOxUY4x8ZHOcA" clientDependency="_rVrMUBFYEeOxUY4x8ZHOcA _xBoCgBFYEeOxUY4x8ZHOcA _-MKxMBFYEeOxUY4x8ZHOcA" name="Timesquare Solver">
+      <packagedElement xmi:type="uml:Component" xmi:id="_o3i9ABFYEeOxUY4x8ZHOcA" name="Timesquare Solver">
         <ownedAttribute xmi:type="uml:Port" xmi:id="_sh-nYRFYEeOxUY4x8ZHOcA" name="Timesquare SolverPort" type="_o3i9ABFYEeOxUY4x8ZHOcA"/>
         <interfaceRealization xmi:id="_-MKxMBFYEeOxUY4x8ZHOcA" name="Timesquare SolverToDomain Specific Event Vector Model" client="_o3i9ABFYEeOxUY4x8ZHOcA" supplier="_tWXbgBDFEeOtGvNHrBKqcw" contract="_tWXbgBDFEeOtGvNHrBKqcw"/>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Component" xmi:id="_dhaVABDFEeOtGvNHrBKqcw" clientDependency="_lmQ8QBDFEeOtGvNHrBKqcw _nROCMBDFEeOtGvNHrBKqcw _oAgxIBDFEeOtGvNHrBKqcw _xTweIBDFEeOtGvNHrBKqcw _L7iOABDGEeOtGvNHrBKqcw _q36moBDGEeOtGvNHrBKqcw _r7dHQBDGEeOtGvNHrBKqcw _tkUigBDGEeOtGvNHrBKqcw" name="DSE Engine">
+    <packagedElement xmi:type="uml:Component" xmi:id="_dhaVABDFEeOtGvNHrBKqcw" name="MSE Engine">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_p5x_4BDFEeOtGvNHrBKqcw" name="Execution EnginePort" type="_dhaVABDFEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_p5xY0BDFEeOtGvNHrBKqcw" clientDependency="_oAgxIBDFEeOtGvNHrBKqcw _nROCMBDFEeOtGvNHrBKqcw" name="Execution Model_Execution Model_connector">
+      <ownedConnector xmi:id="_p5xY0BDFEeOtGvNHrBKqcw" name="Execution Model_Execution Model_connector">
         <end xmi:id="_p5x_4RDFEeOtGvNHrBKqcw" role="_p5x_4BDFEeOtGvNHrBKqcw"/>
         <end xmi:id="_p5x_4hDFEeOtGvNHrBKqcw" role="_p5x_4BDFEeOtGvNHrBKqcw"/>
       </ownedConnector>
-      <ownedConnector xmi:id="_5f1SQBDGEeOtGvNHrBKqcw" clientDependency="_q36moBDGEeOtGvNHrBKqcw _yDif0BDGEeOtGvNHrBKqcw" name="Runtime Controller_Runtime Controller_connector">
+      <ownedConnector xmi:id="_5f1SQBDGEeOtGvNHrBKqcw" name="Runtime Controller_Runtime Controller_connector">
         <end xmi:id="_5f1SQRDGEeOtGvNHrBKqcw" role="_p5x_4BDFEeOtGvNHrBKqcw"/>
         <end xmi:id="_5f1SQxDGEeOtGvNHrBKqcw" role="_5f1SQhDGEeOtGvNHrBKqcw"/>
       </ownedConnector>
-      <ownedConnector xmi:id="_AjGgsBDHEeOtGvNHrBKqcw" clientDependency="_AB7GQBDHEeOtGvNHrBKqcw _tkUigBDGEeOtGvNHrBKqcw" name="Trace Model_Trace Model_connector">
+      <ownedConnector xmi:id="_AjGgsBDHEeOtGvNHrBKqcw" name="Trace Model_Trace Model_connector">
         <end xmi:id="_AjGgshDHEeOtGvNHrBKqcw" role="_AjGgsRDHEeOtGvNHrBKqcw"/>
         <end xmi:id="_AjHHwBDHEeOtGvNHrBKqcw" role="_p5x_4BDFEeOtGvNHrBKqcw"/>
       </ownedConnector>
-      <ownedConnector xmi:id="_KKMpcBFZEeOxUY4x8ZHOcA" clientDependency="_xBoCgBFYEeOxUY4x8ZHOcA _r7dHQBDGEeOtGvNHrBKqcw" name="Trigger Event Request_Trigger Event Request_connector">
+      <ownedConnector xmi:id="_KKMpcBFZEeOxUY4x8ZHOcA" name="Trigger Event Request_Trigger Event Request_connector">
         <end xmi:id="_KKMpcRFZEeOxUY4x8ZHOcA" role="_sh-nYRFYEeOxUY4x8ZHOcA"/>
         <end xmi:id="_KKMpchFZEeOxUY4x8ZHOcA" role="_p5x_4BDFEeOtGvNHrBKqcw"/>
       </ownedConnector>
@@ -232,71 +232,88 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_YGTfUBFWEeOxUY4x8ZHOcA" name="&lt;&lt;dependency>>" client="_yKd_EBFGEeOtGvNHrBKqcw" supplier="_Na2cgBFGEeOtGvNHrBKqcw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_Y3iH8BFWEeOxUY4x8ZHOcA" name="&lt;&lt;dependency>>" client="_yKd_EBFGEeOtGvNHrBKqcw" supplier="_F3wCABFHEeOtGvNHrBKqcw"/>
-    <packagedElement xmi:type="uml:Component" xmi:id="_sWOvkBFGEeOtGvNHrBKqcw" name="MOCC Compiler"/>
-    <packagedElement xmi:type="uml:Component" xmi:id="_CzLIsBVjEeOeDs3L_rCPGQ" clientDependency="_VuXPcBDFEeOtGvNHrBKqcw _U84IIBDFEeOtGvNHrBKqcw _YBStYBFfEeOxUY4x8ZHOcA" name="DSE Compiler">
-      <ownedAttribute xmi:type="uml:Port" xmi:id="_CRDkARVsEeO67uClPmZg-Q" name="DSE CompilerPort" type="_CzLIsBVjEeOeDs3L_rCPGQ"/>
-      <ownedConnector xmi:id="_CRDkABVsEeO67uClPmZg-Q" clientDependency="_YBStYBFfEeOxUY4x8ZHOcA _MY2DkBFfEeOxUY4x8ZHOcA" name="Concurrency Execution Model_Concurrency Execution Model_connector">
-        <end xmi:id="_CRDkAhVsEeO67uClPmZg-Q" role="_CRDkARVsEeO67uClPmZg-Q"/>
-        <end xmi:id="_CRDkAxVsEeO67uClPmZg-Q" role="_0qJyNBDFEeOtGvNHrBKqcw"/>
-      </ownedConnector>
-      <interfaceRealization xmi:id="_YBStYBFfEeOxUY4x8ZHOcA" name="Domain Specific MOCC To Execution ModelToConcurrency Execution Model" client="_CzLIsBVjEeOeDs3L_rCPGQ _CRDkABVsEeO67uClPmZg-Q" supplier="_lZiVIBFEEeOtGvNHrBKqcw" contract="_lZiVIBFEEeOtGvNHrBKqcw"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_VuXPcBDFEeOtGvNHrBKqcw" name="Domain Specific ModelToDomain Specific MOCC To Execution Model" client="_WYfKgBDFEeOtGvNHrBKqcw _CzLIsBVjEeOeDs3L_rCPGQ" supplier="_EtUwUBDFEeOtGvNHrBKqcw"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_U84IIBDFEeOtGvNHrBKqcw" name="DSE ModelToDomain Specific MOCC To Execution Model" client="_W2G6oBDFEeOtGvNHrBKqcw _CzLIsBVjEeOeDs3L_rCPGQ" supplier="_H0t_EBDFEeOtGvNHrBKqcw"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_nVKZsBFXEeOxUY4x8ZHOcA" clientDependency="_qJMnkBFXEeOxUY4x8ZHOcA _rDIgQBFXEeOxUY4x8ZHOcA _Cq-7UBFYEeOxUY4x8ZHOcA" name="Timesquare MOCC To Execution Model">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_sh_OcRFYEeOxUY4x8ZHOcA" name="Timesquare MOCC To Execution ModelPort" type="_nVKZsBFXEeOxUY4x8ZHOcA"/>
-        <interfaceRealization xmi:id="_Cq-7UBFYEeOxUY4x8ZHOcA" name="Timesquare MOCC To Execution ModelToCCSL Model" client="_nVKZsBFXEeOxUY4x8ZHOcA _sh-nYBFYEeOxUY4x8ZHOcA" supplier="_jLyEIBFEEeOtGvNHrBKqcw" contract="_jLyEIBFEEeOtGvNHrBKqcw"/>
-      </packagedElement>
-    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_sWOvkBFGEeOtGvNHrBKqcw" name="MOCC/DSE Compiler"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_F3wCABFHEeOtGvNHrBKqcw" name="Language Workbench">
-    <nestedClassifier xmi:type="uml:Component" xmi:id="_tZlkEBDEEeOtGvNHrBKqcw" clientDependency="_vc44kBDEEeOtGvNHrBKqcw _B5IxcBDFEeOtGvNHrBKqcw _JzLP0BDFEeOtGvNHrBKqcw" name="DSE Editor">
-      <ownedAttribute xmi:type="uml:Port" xmi:id="_wAet0RDEEeOtGvNHrBKqcw" name="DSA-MOCC Map EditorPort" type="_tZlkEBDEEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_W2G6oBDFEeOtGvNHrBKqcw" clientDependency="_JzLP0BDFEeOtGvNHrBKqcw _U84IIBDFEeOtGvNHrBKqcw" name="DSE Model_DSE Model_connector">
-        <end xmi:id="_W2G6oRDFEeOtGvNHrBKqcw" role="_wAet0RDEEeOtGvNHrBKqcw"/>
-        <end xmi:id="_W2G6ohDFEeOtGvNHrBKqcw"/>
-      </ownedConnector>
-      <interfaceRealization xmi:id="_JzLP0BDFEeOtGvNHrBKqcw" name="DSA-MOCC Map EditorToDSE Model" client="_tZlkEBDEEeOtGvNHrBKqcw _W2G6oBDFEeOtGvNHrBKqcw" supplier="_H0t_EBDFEeOtGvNHrBKqcw" contract="_H0t_EBDFEeOtGvNHrBKqcw"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_Z-MDgBVzEeO67uClPmZg-Q" name="ECL Editor"/>
-    </nestedClassifier>
-    <nestedClassifier xmi:type="uml:Component" xmi:id="_IzHP0BFbEeOxUY4x8ZHOcA" clientDependency="_OrIzIBFbEeOxUY4x8ZHOcA" name="AS Editor">
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_IzHP0BFbEeOxUY4x8ZHOcA" name="AS Editor">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_RoTiMBVpEeO67uClPmZg-Q" name="AS EditorPort" type="_IzHP0BFbEeOxUY4x8ZHOcA"/>
-      <ownedConnector xmi:id="_RoS7IBVpEeO67uClPmZg-Q" clientDependency="_OrIzIBFbEeOxUY4x8ZHOcA" name="Domain Specific Metamodel_Domain Specific Metamodel_connector">
+      <ownedConnector xmi:id="_RoS7IBVpEeO67uClPmZg-Q" name="Domain Specific Metamodel_Domain Specific Metamodel_connector">
         <end xmi:id="_RoUJQBVpEeO67uClPmZg-Q" role="_RoTiMBVpEeO67uClPmZg-Q"/>
       </ownedConnector>
-      <ownedConnector xmi:id="_y4Ay4BVqEeO67uClPmZg-Q" clientDependency="_OrIzIBFbEeOxUY4x8ZHOcA _xJsP4BVqEeO67uClPmZg-Q" name="Domain Specific Metamodel_Domain Specific Metamodel_connector">
+      <ownedConnector xmi:id="_y4Ay4BVqEeO67uClPmZg-Q" name="Domain Specific Metamodel_Domain Specific Metamodel_connector">
         <end xmi:id="_y4Ay4RVqEeO67uClPmZg-Q" role="_RoTiMBVpEeO67uClPmZg-Q"/>
         <end xmi:id="_y4BZ8RVqEeO67uClPmZg-Q" role="_y4BZ8BVqEeO67uClPmZg-Q"/>
       </ownedConnector>
       <interfaceRealization xmi:id="_OrIzIBFbEeOxUY4x8ZHOcA" name="AS EditorToDomain Specific Metamodel" client="_IzHP0BFbEeOxUY4x8ZHOcA _RoS7IBVpEeO67uClPmZg-Q _y4Ay4BVqEeO67uClPmZg-Q" supplier="_bveqoBFEEeOtGvNHrBKqcw" contract="_bveqoBFEEeOtGvNHrBKqcw"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_3_ZX0BFWEeOxUY4x8ZHOcA" clientDependency="_lvus8BFXEeOxUY4x8ZHOcA" name="Ecore Editor">
+      <packagedElement xmi:type="uml:Component" xmi:id="_3_ZX0BFWEeOxUY4x8ZHOcA" name="Ecore Editor">
         <ownedAttribute xmi:type="uml:Port" xmi:id="_VJlkoRFYEeOxUY4x8ZHOcA" name="Ecore EditorPort" type="_3_ZX0BFWEeOxUY4x8ZHOcA"/>
-        <ownedConnector xmi:id="_VJlkoBFYEeOxUY4x8ZHOcA" clientDependency="_lvus8BFXEeOxUY4x8ZHOcA _Un-sYBFYEeOxUY4x8ZHOcA" name="Domain Specific Metamodel_Domain Specific Metamodel_connector">
+        <ownedConnector xmi:id="_VJlkoBFYEeOxUY4x8ZHOcA" name="Domain Specific Metamodel_Domain Specific Metamodel_connector">
           <end xmi:id="_VJlkohFYEeOxUY4x8ZHOcA" role="_VJlkoRFYEeOxUY4x8ZHOcA"/>
           <end xmi:id="_VJlkoxFYEeOxUY4x8ZHOcA" role="_PA02oRFYEeOxUY4x8ZHOcA"/>
         </ownedConnector>
         <interfaceRealization xmi:id="_lvus8BFXEeOxUY4x8ZHOcA" name="Ecore EditorToDomain Specific Metamodel" client="_3_ZX0BFWEeOxUY4x8ZHOcA _VJlkoBFYEeOxUY4x8ZHOcA" supplier="_bveqoBFEEeOtGvNHrBKqcw" contract="_bveqoBFEEeOtGvNHrBKqcw"/>
       </packagedElement>
     </nestedClassifier>
-    <nestedClassifier xmi:type="uml:Component" xmi:id="_vJKU8BFsEeOxUY4x8ZHOcA" clientDependency="_2Zz4EBFsEeOxUY4x8ZHOcA _8gwoMBFsEeOxUY4x8ZHOcA" name="xDSML Design Assistant"/>
-    <packagedElement xmi:type="uml:Component" xmi:id="_HoHMYBFHEeOtGvNHrBKqcw" clientDependency="_FIYkABouEeOaHLOAfwB0Bw" name="Composition Operator Editor">
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_vJKU8BFsEeOxUY4x8ZHOcA" name="xDSML Design Assistant"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_CzLIsBVjEeOeDs3L_rCPGQ" name="MOCC/DSE Compiler generator">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_CRDkARVsEeO67uClPmZg-Q" name="DSE CompilerPort" type="_CzLIsBVjEeOeDs3L_rCPGQ"/>
+      <ownedConnector xmi:id="_CRDkABVsEeO67uClPmZg-Q" name="Concurrency Execution Model_Concurrency Execution Model_connector">
+        <end xmi:id="_CRDkAhVsEeO67uClPmZg-Q" role="_CRDkARVsEeO67uClPmZg-Q"/>
+        <end xmi:id="_CRDkAxVsEeO67uClPmZg-Q" role="_0qJyNBDFEeOtGvNHrBKqcw"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_YBStYBFfEeOxUY4x8ZHOcA" name="Domain Specific MOCC To Execution ModelToConcurrency Execution Model" client="_CzLIsBVjEeOeDs3L_rCPGQ _CRDkABVsEeO67uClPmZg-Q" supplier="_lZiVIBFEEeOtGvNHrBKqcw" contract="_lZiVIBFEEeOtGvNHrBKqcw"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_VuXPcBDFEeOtGvNHrBKqcw" name="Domain Specific ModelToDomain Specific MOCC To Execution Model" client="_WYfKgBDFEeOtGvNHrBKqcw _CzLIsBVjEeOeDs3L_rCPGQ" supplier="_EtUwUBDFEeOtGvNHrBKqcw"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_U84IIBDFEeOtGvNHrBKqcw" name="DSE ModelToDomain Specific MOCC To Execution Model" client="_W2G6oBDFEeOtGvNHrBKqcw _CzLIsBVjEeOeDs3L_rCPGQ" supplier="_H0t_EBDFEeOtGvNHrBKqcw"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_nVKZsBFXEeOxUY4x8ZHOcA" name="Timesquare MOCC To Execution Model">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_sh_OcRFYEeOxUY4x8ZHOcA" name="Timesquare MOCC To Execution ModelPort" type="_nVKZsBFXEeOxUY4x8ZHOcA"/>
+        <interfaceRealization xmi:id="_Cq-7UBFYEeOxUY4x8ZHOcA" name="Timesquare MOCC To Execution ModelToCCSL Model" client="_nVKZsBFXEeOxUY4x8ZHOcA _sh-nYBFYEeOxUY4x8ZHOcA" supplier="_jLyEIBFEEeOtGvNHrBKqcw" contract="_jLyEIBFEEeOtGvNHrBKqcw"/>
+      </packagedElement>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_prIVUBDEEeOtGvNHrBKqcw" name="MOCC Editor">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_wAet0xDEEeOtGvNHrBKqcw" name="MOCC EditorPort" type="_prIVUBDEEeOtGvNHrBKqcw"/>
+      <ownedConnector xmi:id="_wAet0BDEEeOtGvNHrBKqcw" name="MOCC Model_MOCC Model_connector">
+        <end xmi:id="_wAet0hDEEeOtGvNHrBKqcw" role="_wAet0RDEEeOtGvNHrBKqcw"/>
+        <end xmi:id="_wAfU4BDEEeOtGvNHrBKqcw" role="_wAet0xDEEeOtGvNHrBKqcw"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_srcEoBDEEeOtGvNHrBKqcw" name="MOCC EditorToMOCC Model" client="_prIVUBDEEeOtGvNHrBKqcw _wAet0BDEEeOtGvNHrBKqcw" supplier="_rWiHMBDEEeOtGvNHrBKqcw" contract="_rWiHMBDEEeOtGvNHrBKqcw"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_u2rDUBFXEeOxUY4x8ZHOcA" name="CCSL Library Editor">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_sh-nYxFYEeOxUY4x8ZHOcA" name="CCSL Library EditorPort" type="_u2rDUBFXEeOxUY4x8ZHOcA"/>
+        <ownedConnector xmi:id="_sh-nYBFYEeOxUY4x8ZHOcA" name="CCSL Model_CCSL Model_connector">
+          <end xmi:id="_sh-nYhFYEeOxUY4x8ZHOcA" role="_sh-nYRFYEeOxUY4x8ZHOcA"/>
+          <end xmi:id="_sh_OcBFYEeOxUY4x8ZHOcA" role="_sh-nYxFYEeOxUY4x8ZHOcA"/>
+          <end xmi:id="_sh_OchFYEeOxUY4x8ZHOcA" role="_sh_OcRFYEeOxUY4x8ZHOcA"/>
+        </ownedConnector>
+        <interfaceRealization xmi:id="_DBIxgBFYEeOxUY4x8ZHOcA" name="CCSL Library EditorToCCSL Model" client="_u2rDUBFXEeOxUY4x8ZHOcA _sh-nYBFYEeOxUY4x8ZHOcA" supplier="_jLyEIBFEEeOtGvNHrBKqcw" contract="_jLyEIBFEEeOtGvNHrBKqcw"/>
+      </packagedElement>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_tZlkEBDEEeOtGvNHrBKqcw" name="DSE Editor">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_wAet0RDEEeOtGvNHrBKqcw" name="DSA-MOCC Map EditorPort" type="_tZlkEBDEEeOtGvNHrBKqcw"/>
+      <ownedConnector xmi:id="_W2G6oBDFEeOtGvNHrBKqcw" name="DSE Model_DSE Model_connector">
+        <end xmi:id="_W2G6oRDFEeOtGvNHrBKqcw" role="_wAet0RDEEeOtGvNHrBKqcw"/>
+        <end xmi:id="_W2G6ohDFEeOtGvNHrBKqcw"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_JzLP0BDFEeOtGvNHrBKqcw" name="DSA-MOCC Map EditorToDSE Model" client="_tZlkEBDEEeOtGvNHrBKqcw _W2G6oBDFEeOtGvNHrBKqcw" supplier="_H0t_EBDFEeOtGvNHrBKqcw" contract="_H0t_EBDFEeOtGvNHrBKqcw"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_Z-MDgBVzEeO67uClPmZg-Q" name="ECL Editor"/>
+    </nestedClassifier>
+    <packagedElement xmi:type="uml:Component" xmi:id="_HoHMYBFHEeOtGvNHrBKqcw" name="Composition Operator Editor">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_HO_EIBouEeOaHLOAfwB0Bw" name="Composition Operator EditorPort" type="_HoHMYBFHEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_HO-dEBouEeOaHLOAfwB0Bw" clientDependency="_FIYkABouEeOaHLOAfwB0Bw _6IZBUBotEeOaHLOAfwB0Bw" name="OperatorDefinition Model_OperatorDefinition Model_connector">
+      <ownedConnector xmi:id="_HO-dEBouEeOaHLOAfwB0Bw" name="OperatorDefinition Model_OperatorDefinition Model_connector">
         <end xmi:id="_HO_rMBouEeOaHLOAfwB0Bw" role="_HO_EIBouEeOaHLOAfwB0Bw"/>
         <end xmi:id="_HPA5UBouEeOaHLOAfwB0Bw" role="_HPASQBouEeOaHLOAfwB0Bw"/>
       </ownedConnector>
       <interfaceRealization xmi:id="_FIYkABouEeOaHLOAfwB0Bw" name="Composition Operator EditorToOperatorDefinition Model" client="_HoHMYBFHEeOtGvNHrBKqcw _HO-dEBouEeOaHLOAfwB0Bw" supplier="_e5mFYBDEEeOtGvNHrBKqcw" contract="_e5mFYBDEEeOtGvNHrBKqcw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Component" xmi:id="_w1zzUBDEEeOtGvNHrBKqcw" clientDependency="_8ZJ6sBDEEeOtGvNHrBKqcw" name="DSA Editor">
+    <packagedElement xmi:type="uml:Component" xmi:id="_w1zzUBDEEeOtGvNHrBKqcw" name="DSA Editor">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_DUsJcBDFEeOtGvNHrBKqcw" name="DSA EditorPort" type="_w1zzUBDEEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_DUriYBDFEeOtGvNHrBKqcw" clientDependency="_B5IxcBDFEeOtGvNHrBKqcw _8ZJ6sBDEEeOtGvNHrBKqcw _BSEKYBDFEeOtGvNHrBKqcw" name="DSA Model_DSA Model_connector">
+      <ownedConnector xmi:id="_DUriYBDFEeOtGvNHrBKqcw" name="DSA Model_DSA Model_connector">
         <end xmi:id="_DUriYRDFEeOtGvNHrBKqcw" role="_wAet0RDEEeOtGvNHrBKqcw"/>
         <end xmi:id="_DUsJcRDFEeOtGvNHrBKqcw" role="_DUsJcBDFEeOtGvNHrBKqcw"/>
         <end xmi:id="_DUsJcxDFEeOtGvNHrBKqcw" role="_DUsJchDFEeOtGvNHrBKqcw"/>
       </ownedConnector>
       <interfaceRealization xmi:id="_8ZJ6sBDEEeOtGvNHrBKqcw" name="DSA EditorToDSA Model" client="_w1zzUBDEEeOtGvNHrBKqcw _DUriYBDFEeOtGvNHrBKqcw" supplier="_65OZABDEEeOtGvNHrBKqcw" contract="_65OZABDEEeOtGvNHrBKqcw"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_5DQBgBFWEeOxUY4x8ZHOcA" clientDependency="_mNsbUBFXEeOxUY4x8ZHOcA" name="Kermeta Editor">
+      <packagedElement xmi:type="uml:Component" xmi:id="_5DQBgBFWEeOxUY4x8ZHOcA" name="Kermeta Editor">
         <ownedAttribute xmi:type="uml:Port" xmi:id="_PA1dsBFYEeOxUY4x8ZHOcA" name="Kermeta EditorPort" type="_5DQBgBFWEeOxUY4x8ZHOcA"/>
-        <ownedConnector xmi:id="_PA02oBFYEeOxUY4x8ZHOcA" clientDependency="_N_mDIBFYEeOxUY4x8ZHOcA _mNsbUBFXEeOxUY4x8ZHOcA" name="Kermeta Model_Kermeta Model_connector">
+        <ownedConnector xmi:id="_PA02oBFYEeOxUY4x8ZHOcA" name="Kermeta Model_Kermeta Model_connector">
           <end xmi:id="_PA02ohFYEeOxUY4x8ZHOcA" role="_PA02oRFYEeOxUY4x8ZHOcA"/>
           <end xmi:id="_PA1dsRFYEeOxUY4x8ZHOcA" role="_PA1dsBFYEeOxUY4x8ZHOcA"/>
         </ownedConnector>
@@ -304,35 +321,18 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_SnXvQBFHEeOtGvNHrBKqcw" name="Concrete Syntax Configurator"/>
-    <packagedElement xmi:type="uml:Component" xmi:id="_prIVUBDEEeOtGvNHrBKqcw" clientDependency="_srcEoBDEEeOtGvNHrBKqcw" name="MOCC Editor">
-      <ownedAttribute xmi:type="uml:Port" xmi:id="_wAet0xDEEeOtGvNHrBKqcw" name="MOCC EditorPort" type="_prIVUBDEEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_wAet0BDEEeOtGvNHrBKqcw" clientDependency="_vc44kBDEEeOtGvNHrBKqcw _srcEoBDEEeOtGvNHrBKqcw" name="MOCC Model_MOCC Model_connector">
-        <end xmi:id="_wAet0hDEEeOtGvNHrBKqcw" role="_wAet0RDEEeOtGvNHrBKqcw"/>
-        <end xmi:id="_wAfU4BDEEeOtGvNHrBKqcw" role="_wAet0xDEEeOtGvNHrBKqcw"/>
-      </ownedConnector>
-      <interfaceRealization xmi:id="_srcEoBDEEeOtGvNHrBKqcw" name="MOCC EditorToMOCC Model" client="_prIVUBDEEeOtGvNHrBKqcw _wAet0BDEEeOtGvNHrBKqcw" supplier="_rWiHMBDEEeOtGvNHrBKqcw" contract="_rWiHMBDEEeOtGvNHrBKqcw"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_u2rDUBFXEeOxUY4x8ZHOcA" clientDependency="_DBIxgBFYEeOxUY4x8ZHOcA" name="CCSL Library Editor">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_sh-nYxFYEeOxUY4x8ZHOcA" name="CCSL Library EditorPort" type="_u2rDUBFXEeOxUY4x8ZHOcA"/>
-        <ownedConnector xmi:id="_sh-nYBFYEeOxUY4x8ZHOcA" clientDependency="_rVrMUBFYEeOxUY4x8ZHOcA _DBIxgBFYEeOxUY4x8ZHOcA _Cq-7UBFYEeOxUY4x8ZHOcA" name="CCSL Model_CCSL Model_connector">
-          <end xmi:id="_sh-nYhFYEeOxUY4x8ZHOcA" role="_sh-nYRFYEeOxUY4x8ZHOcA"/>
-          <end xmi:id="_sh_OcBFYEeOxUY4x8ZHOcA" role="_sh-nYxFYEeOxUY4x8ZHOcA"/>
-          <end xmi:id="_sh_OchFYEeOxUY4x8ZHOcA" role="_sh_OcRFYEeOxUY4x8ZHOcA"/>
-        </ownedConnector>
-        <interfaceRealization xmi:id="_DBIxgBFYEeOxUY4x8ZHOcA" name="CCSL Library EditorToCCSL Model" client="_u2rDUBFXEeOxUY4x8ZHOcA _sh-nYBFYEeOxUY4x8ZHOcA" supplier="_jLyEIBFEEeOtGvNHrBKqcw" contract="_jLyEIBFEEeOtGvNHrBKqcw"/>
-      </packagedElement>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Component" xmi:id="_oHRb0BFGEeOtGvNHrBKqcw" clientDependency="_xJsP4BVqEeO67uClPmZg-Q _FDBx0BVrEeO67uClPmZg-Q" name="AS Compiler">
+    <packagedElement xmi:type="uml:Component" xmi:id="_oHRb0BFGEeOtGvNHrBKqcw" name="AS Compiler">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_y4BZ8BVqEeO67uClPmZg-Q" name="AS CompilerPort" type="_oHRb0BFGEeOtGvNHrBKqcw"/>
-      <ownedConnector xmi:id="_G5Sv4BVrEeO67uClPmZg-Q" clientDependency="_lmQ8QBDFEeOtGvNHrBKqcw _FDBx0BVrEeO67uClPmZg-Q" name="Domain Specific Metamodel Byte Code_Domain Specific Metamodel Byte Code_connector">
+      <ownedConnector xmi:id="_G5Sv4BVrEeO67uClPmZg-Q" name="Domain Specific Metamodel Byte Code_Domain Specific Metamodel Byte Code_connector">
         <end xmi:id="_G5Sv4RVrEeO67uClPmZg-Q" role="_p5x_4BDFEeOtGvNHrBKqcw"/>
         <end xmi:id="_G5Sv4hVrEeO67uClPmZg-Q" role="_y4BZ8BVqEeO67uClPmZg-Q"/>
       </ownedConnector>
       <interfaceRealization xmi:id="_FDBx0BVrEeO67uClPmZg-Q" name="AS CompilerToDomain Specific Metamodel Byte Code" client="_oHRb0BFGEeOtGvNHrBKqcw _G5Sv4BVrEeO67uClPmZg-Q" supplier="_h_AhsBDFEeOtGvNHrBKqcw" contract="_h_AhsBDFEeOtGvNHrBKqcw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Component" xmi:id="_9BV8EBDEEeOtGvNHrBKqcw" clientDependency="_BSEKYBDFEeOtGvNHrBKqcw _Pa5GQBDFEeOtGvNHrBKqcw _dYeSsBVrEeO67uClPmZg-Q" name="DSA Compiler">
+    <packagedElement xmi:type="uml:Component" xmi:id="_9BV8EBDEEeOtGvNHrBKqcw" name="DSA Compiler">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_DUsJchDFEeOtGvNHrBKqcw" name="DSA CompilerPort" type="_9BV8EBDEEeOtGvNHrBKqcw"/>
       <interfaceRealization xmi:id="_Pa5GQBDFEeOtGvNHrBKqcw" name="DSA CompilerToDomain Specific Metamodel Byte Code Extension" client="_9BV8EBDEEeOtGvNHrBKqcw" supplier="_LICJ8BDFEeOtGvNHrBKqcw" contract="_LICJ8BDFEeOtGvNHrBKqcw"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_Iuk1cBFYEeOxUY4x8ZHOcA" clientDependency="_N_mDIBFYEeOxUY4x8ZHOcA _Un-sYBFYEeOxUY4x8ZHOcA _di0gcBFYEeOxUY4x8ZHOcA _j5MzsBFYEeOxUY4x8ZHOcA" name="Kermeta Compiler">
+      <packagedElement xmi:type="uml:Component" xmi:id="_Iuk1cBFYEeOxUY4x8ZHOcA" name="Kermeta Compiler">
         <ownedAttribute xmi:type="uml:Port" xmi:id="_PA02oRFYEeOxUY4x8ZHOcA" name="Kermeta CompilerPort" type="_Iuk1cBFYEeOxUY4x8ZHOcA"/>
         <interfaceRealization xmi:id="_j5MzsBFYEeOxUY4x8ZHOcA" name="Kermeta CompilerToDomain Specific Metamodel Byte Code Extension" client="_Iuk1cBFYEeOxUY4x8ZHOcA" supplier="_LICJ8BDFEeOtGvNHrBKqcw" contract="_LICJ8BDFEeOtGvNHrBKqcw"/>
       </packagedElement>
@@ -345,7 +345,7 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_di0gcBFYEeOxUY4x8ZHOcA" name="Domain Specific Metamodel Byte CodeToKermeta Compiler" client="_Iuk1cBFYEeOxUY4x8ZHOcA" supplier="_h_AhsBDFEeOtGvNHrBKqcw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_rVrMUBFYEeOxUY4x8ZHOcA" name="CCSL ModelToTimesquare Solver" client="_o3i9ABFYEeOxUY4x8ZHOcA _sh-nYBFYEeOxUY4x8ZHOcA" supplier="_jLyEIBFEEeOtGvNHrBKqcw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_xBoCgBFYEeOxUY4x8ZHOcA" name="Trigger Event RequestToTimesquare Solver" client="_o3i9ABFYEeOxUY4x8ZHOcA _KKMpcBFZEeOxUY4x8ZHOcA" supplier="_lpOUMBDGEeOtGvNHrBKqcw"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_ZA1REBFaEeOxUY4x8ZHOcA" clientDependency="_hQLREBFaEeOxUY4x8ZHOcA _huwDcBFaEeOxUY4x8ZHOcA" name="Eclipse Debug">
+  <packagedElement xmi:type="uml:Component" xmi:id="_ZA1REBFaEeOxUY4x8ZHOcA" name="Eclipse Debug">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_4kxY8RFaEeOxUY4x8ZHOcA" name="Eclipse DebugPort" type="_ZA1REBFaEeOxUY4x8ZHOcA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_hQLREBFaEeOxUY4x8ZHOcA" name="Launch UtilitiesToEclipse Debug" client="_ZA1REBFaEeOxUY4x8ZHOcA _5Sh20BFaEeOxUY4x8ZHOcA" supplier="_CZzjoBDHEeOtGvNHrBKqcw"/>
@@ -356,7 +356,7 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_VLMxYBFcEeOxUY4x8ZHOcA" name="Domain Specific Representation Definition ModelToSirius Framework" client="_mm4akBFbEeOxUY4x8ZHOcA _Xq7jMBFcEeOxUY4x8ZHOcA" supplier="_376rMBFEEeOtGvNHrBKqcw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_c_BTABFcEeOxUY4x8ZHOcA" name="Domain Specific MetamodelToSirius Framework" client="_mm4akBFbEeOxUY4x8ZHOcA" supplier="_bveqoBFEEeOtGvNHrBKqcw"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_y8srQBFcEeOxUY4x8ZHOcA" name="Domain Specific Metamodel Byte CodeToSirius Framework" client="_mm4akBFbEeOxUY4x8ZHOcA" supplier="_h_AhsBDFEeOtGvNHrBKqcw"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_fnfUoBFdEeOxUY4x8ZHOcA" clientDependency="_kaTjYBFdEeOxUY4x8ZHOcA _qOehcBFdEeOxUY4x8ZHOcA" name="EMF Tree Editor Generator">
+  <packagedElement xmi:type="uml:Component" xmi:id="_fnfUoBFdEeOxUY4x8ZHOcA" name="EMF Tree Editor Generator">
     <interfaceRealization xmi:id="_qOehcBFdEeOxUY4x8ZHOcA" name="EMF Tree Editor GeneratorToDomain Specific Tree Editor" client="_fnfUoBFdEeOxUY4x8ZHOcA" supplier="_LM3CwBDJEeOtGvNHrBKqcw" contract="_LM3CwBDJEeOtGvNHrBKqcw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_kaTjYBFdEeOxUY4x8ZHOcA" name="Domain Specific MetamodelToEMF Tree Editor Generator" client="_fnfUoBFdEeOxUY4x8ZHOcA" supplier="_bveqoBFEEeOtGvNHrBKqcw"/>
@@ -377,13 +377,13 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_p_oQUBFhEeOxUY4x8ZHOcA" name="Kermeta"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_q_Wn8BFhEeOxUY4x8ZHOcA" name="ECL"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_OCFK4BFiEeOxUY4x8ZHOcA" clientDependency="_Tb5vQBFiEeOxUY4x8ZHOcA" name="User Text Editor">
+  <packagedElement xmi:type="uml:Class" xmi:id="_OCFK4BFiEeOxUY4x8ZHOcA" name="User Text Editor">
     <interfaceRealization xmi:id="_Tb5vQBFiEeOxUY4x8ZHOcA" client="_OCFK4BFiEeOxUY4x8ZHOcA" supplier="_rJdiQBDJEeOtGvNHrBKqcw" contract="_rJdiQBDJEeOtGvNHrBKqcw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_fuHHwBFiEeOxUY4x8ZHOcA" clientDependency="_iMhq8BFiEeOxUY4x8ZHOcA" name="UML Tree Editor">
+  <packagedElement xmi:type="uml:Class" xmi:id="_fuHHwBFiEeOxUY4x8ZHOcA" name="UML Tree Editor">
     <interfaceRealization xmi:id="_iMhq8BFiEeOxUY4x8ZHOcA" client="_fuHHwBFiEeOxUY4x8ZHOcA" supplier="_LM3CwBDJEeOtGvNHrBKqcw" contract="_LM3CwBDJEeOtGvNHrBKqcw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_pckxIBFiEeOxUY4x8ZHOcA" clientDependency="_sd2w0BFiEeOxUY4x8ZHOcA" name="Metamodel Byte Code Extension">
+  <packagedElement xmi:type="uml:Class" xmi:id="_pckxIBFiEeOxUY4x8ZHOcA" name="Metamodel Byte Code Extension">
     <interfaceRealization xmi:id="_sd2w0BFiEeOxUY4x8ZHOcA" client="_pckxIBFiEeOxUY4x8ZHOcA" supplier="_LICJ8BDFEeOtGvNHrBKqcw" contract="_LICJ8BDFEeOtGvNHrBKqcw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_hPC5kBFjEeOxUY4x8ZHOcA" name="Eclipse"/>

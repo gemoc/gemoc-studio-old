@@ -352,6 +352,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDomainModelProject_ModelLoaderClass() {
+		return (EAttribute)domainModelProjectEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMoCCProject() {
 		return moCCProjectEClass;
 	}
@@ -390,6 +399,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 */
 	public EAttribute getDSEProject_QvtoURI() {
 		return (EAttribute)dseProjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDSEProject_SolverClass() {
+		return (EAttribute)dseProjectEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -487,6 +505,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		domainModelProjectEClass = createEClass(DOMAIN_MODEL_PROJECT);
 		createEAttribute(domainModelProjectEClass, DOMAIN_MODEL_PROJECT__DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME);
 		createEAttribute(domainModelProjectEClass, DOMAIN_MODEL_PROJECT__GENMODELURI);
+		createEAttribute(domainModelProjectEClass, DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS);
 
 		moCCProjectEClass = createEClass(MO_CC_PROJECT);
 
@@ -494,6 +513,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		dseProjectEClass = createEClass(DSE_PROJECT);
 		createEAttribute(dseProjectEClass, DSE_PROJECT__QVTO_URI);
+		createEAttribute(dseProjectEClass, DSE_PROJECT__SOLVER_CLASS);
 
 		siriusEditorProjectEClass = createEClass(SIRIUS_EDITOR_PROJECT);
 
@@ -557,28 +577,34 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEReference(getLanguageDefinition_DSEProject(), this.getDSEProject(), null, "dSEProject", null, 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLanguageDefinition_Name(), ecorePackage.getEString(), "name", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(languageDefinitionEClass, ecorePackage.getEString(), "getFileExtensions", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(projectResourceEClass, ProjectResource.class, "ProjectResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProjectResource_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProjectResource_ProjectKind(), this.getProjectKind(), "projectKind", null, 1, 1, ProjectResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dsaProjectEClass, DSAProject.class, "DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDSAProject_CodeExecutorClass(), ecorePackage.getEString(), "codeExecutorClass", null, 1, 1, DSAProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDSAProject_CodeExecutorClass(), ecorePackage.getEString(), "codeExecutorClass", null, 0, 1, DSAProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(editorProjectEClass, EditorProject.class, "EditorProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEditorProject_FileExtension(), ecorePackage.getEString(), "fileExtension", null, 1, -1, EditorProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEditorProject_FileExtension(), ecorePackage.getEString(), "fileExtension", null, 0, -1, EditorProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(domainModelProjectEClass, DomainModelProject.class, "DomainModelProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDomainModelProject_DefaultRootEObjectQualifiedName(), ecorePackage.getEString(), "defaultRootEObjectQualifiedName", null, 0, 1, DomainModelProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDomainModelProject_Genmodeluri(), ecorePackage.getEString(), "genmodeluri", null, 0, 1, DomainModelProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomainModelProject_ModelLoaderClass(), ecorePackage.getEString(), "modelLoaderClass", null, 0, 1, DomainModelProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(domainModelProjectEClass, ecorePackage.getEString(), "getEcoreURI", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(domainModelProjectEClass, ecorePackage.getEObject(), "getGenmodel", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(moCCProjectEClass, MoCCProject.class, "MoCCProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(animatorProjectEClass, AnimatorProject.class, "AnimatorProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dseProjectEClass, DSEProject.class, "DSEProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDSEProject_QvtoURI(), ecorePackage.getEString(), "qvtoURI", null, 1, 1, DSEProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDSEProject_QvtoURI(), ecorePackage.getEString(), "qvtoURI", null, 0, 1, DSEProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDSEProject_SolverClass(), ecorePackage.getEString(), "solverClass", null, 0, 1, DSEProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(siriusEditorProjectEClass, SiriusEditorProject.class, "SiriusEditorProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

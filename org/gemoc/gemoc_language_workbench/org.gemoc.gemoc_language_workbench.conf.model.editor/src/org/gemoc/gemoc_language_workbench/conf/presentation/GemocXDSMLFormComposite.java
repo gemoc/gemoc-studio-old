@@ -107,6 +107,7 @@ public class GemocXDSMLFormComposite extends Composite {
 	AdapterFactoryEditingDomain editingDomain;
 
 	protected XDSMLModelWrapper xdsmlWrappedObject = new XDSMLModelWrapper();
+	private Label lblSupportedFileExtensions;
 
 	/**
 	 * Create the composite.
@@ -222,6 +223,10 @@ public class GemocXDSMLFormComposite extends Composite {
 		toolkit.adapt(grpConcreteSyntaxDefinition);
 		toolkit.paintBordersFor(grpConcreteSyntaxDefinition);
 		grpConcreteSyntaxDefinition.setLayout(new GridLayout(1, false));
+		
+		lblSupportedFileExtensions = new Label(grpConcreteSyntaxDefinition, SWT.NONE);
+		toolkit.adapt(lblSupportedFileExtensions, true, true);
+		lblSupportedFileExtensions.setText("Supported file extensions :");
 
 		Group grpTextualEditor = new Group(grpConcreteSyntaxDefinition,
 				SWT.NONE);
@@ -523,7 +528,8 @@ public class GemocXDSMLFormComposite extends Composite {
 		txtCodeExecutorClass.setText(xdsmlWrappedObject.getCodeExecutorClass());
 		txtDSEProject.setText(xdsmlWrappedObject.getDSEProjectName());
 		txtQvtoURI.setText(xdsmlWrappedObject.getQvtoURI());
-		txtMoCCProject.setText(xdsmlWrappedObject.getMoCCProjectName());		
+		txtMoCCProject.setText(xdsmlWrappedObject.getMoCCProjectName());	
+		lblSupportedFileExtensions.setText(xdsmlWrappedObject.getSupportedFileExtension());
 	}
 
 	/**
@@ -1289,6 +1295,10 @@ public class GemocXDSMLFormComposite extends Composite {
 		IObservableValue observeTextTxtQvtoURIObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtQvtoURI);
 		IObservableValue qvtoURIXdsmlWrappedObjectObserveValue = BeanProperties.value("qvtoURI").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtQvtoURIObserveWidget, qvtoURIXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextLblSupportedFileExtensionsObserveWidget = WidgetProperties.text().observe(lblSupportedFileExtensions);
+		IObservableValue supportedFileExtensionXdsmlWrappedObjectObserveValue = BeanProperties.value("supportedFileExtension").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextLblSupportedFileExtensionsObserveWidget, supportedFileExtensionXdsmlWrappedObjectObserveValue, null, null);
 		//
 		return bindingContext;
 	}

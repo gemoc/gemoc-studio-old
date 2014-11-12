@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Gemoc Studio" uid="gemoc_studio" id="org.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="0.1.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Gemoc Studio" uid="gemoc_studio" id="org.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="0.1.2" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.gemoc.gemoc_studio.branding/images/GemocStudioAboutImage.png"/>
@@ -15,11 +15,14 @@
 
    <launcherArgs>
       <programArgs>--launcher.XXMaxPermSize
-256m</programArgs>
+256m
+      </programArgs>
       <vmArgs>-Xms256m
 -Xmx1024m
--XX:MaxPermSize=256m</vmArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+-XX:MaxPermSize=256m
+      </vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
    </launcherArgs>
 
    <windowImages i16="images/icons/IconeGemocStudio/png/IconeGemocStudio_16x16x32.png" i32="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_32x32x32.png" i48="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_48x48x32.png" i64="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_64x64x32.png" i128="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_128x128x32.png"/>
@@ -52,6 +55,7 @@
    <features>
       <feature id="org.gemoc.gemoc_studio.branding.feature"/>
       <feature id="org.gemoc.gemoc_studio.additions.feature"/>
+      <feature id="org.gemoc.gemoc_studio.branding.source.feature"/>
    </features>
 
    <configurations>

@@ -25,6 +25,7 @@ Require-Bundle: fr.inria.aoste.trace,
  org.eclipse.emf.compare.rcp;bundle-version="2.1.2",
  org.eclipse.debug.core,
  org.eclipse.sirius;bundle-version="1.0.0",
+ org.eclipse.sirius.common,
  fr.inria.aoste.timesquare.launcher.core,
  org.gemoc.execution.engine.commons;bundle-version="0.1.0";visibility:=reexport,
  fr.inria.aoste.timesquare.ecl.feedback.model;bundle-version="1.0.0";visibility:=reexport

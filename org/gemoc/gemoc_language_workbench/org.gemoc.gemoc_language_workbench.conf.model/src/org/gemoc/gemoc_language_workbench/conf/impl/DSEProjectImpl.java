@@ -17,6 +17,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.DSEProjectImpl#getQvtoURI <em>Qvto URI</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.DSEProjectImpl#getSolverClass <em>Solver Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,6 +42,25 @@ public class DSEProjectImpl extends ProjectResourceImpl implements DSEProject {
 	 * @ordered
 	 */
 	protected String qvtoURI = QVTO_URI_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSolverClass() <em>Solver Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSolverClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SOLVER_CLASS_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getSolverClass() <em>Solver Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSolverClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String solverClass = SOLVER_CLASS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,11 +107,34 @@ public class DSEProjectImpl extends ProjectResourceImpl implements DSEProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getSolverClass() {
+		return solverClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSolverClass(String newSolverClass) {
+		String oldSolverClass = solverClass;
+		solverClass = newSolverClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.DSE_PROJECT__SOLVER_CLASS, oldSolverClass, solverClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case confPackage.DSE_PROJECT__QVTO_URI:
 				return getQvtoURI();
+			case confPackage.DSE_PROJECT__SOLVER_CLASS:
+				return getSolverClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,6 +149,9 @@ public class DSEProjectImpl extends ProjectResourceImpl implements DSEProject {
 		switch (featureID) {
 			case confPackage.DSE_PROJECT__QVTO_URI:
 				setQvtoURI((String)newValue);
+				return;
+			case confPackage.DSE_PROJECT__SOLVER_CLASS:
+				setSolverClass((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,6 +168,9 @@ public class DSEProjectImpl extends ProjectResourceImpl implements DSEProject {
 			case confPackage.DSE_PROJECT__QVTO_URI:
 				setQvtoURI(QVTO_URI_EDEFAULT);
 				return;
+			case confPackage.DSE_PROJECT__SOLVER_CLASS:
+				setSolverClass(SOLVER_CLASS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -136,6 +185,8 @@ public class DSEProjectImpl extends ProjectResourceImpl implements DSEProject {
 		switch (featureID) {
 			case confPackage.DSE_PROJECT__QVTO_URI:
 				return QVTO_URI_EDEFAULT == null ? qvtoURI != null : !QVTO_URI_EDEFAULT.equals(qvtoURI);
+			case confPackage.DSE_PROJECT__SOLVER_CLASS:
+				return SOLVER_CLASS_EDEFAULT == null ? solverClass != null : !SOLVER_CLASS_EDEFAULT.equals(solverClass);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -152,6 +203,8 @@ public class DSEProjectImpl extends ProjectResourceImpl implements DSEProject {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (qvtoURI: ");
 		result.append(qvtoURI);
+		result.append(", solverClass: ");
+		result.append(solverClass);
 		result.append(')');
 		return result.toString();
 	}
