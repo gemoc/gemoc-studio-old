@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.Observable;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
@@ -77,8 +74,6 @@ import fr.inria.aoste.trace.LogicalStep;
  * 
  */
 public abstract class ObservableBasicExecutionEngine extends Observable implements GemocExecutionEngine {
-
-	private IModelAnimator 	animator;
 
 	private boolean _started = false;
 	private boolean terminated = false;
@@ -184,25 +179,15 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		{
 			_logicalStepDecider.preempt();
 		}
+	}
+
+	private void clean() {
 		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 		{
 			hook.postStopEngine(this);
 		}
-	}
-
-	private void clean() {
-		if (_executionContext.getRunConfiguration().getAnimatorURI() != null)
-		{
-			Session session = SessionManager.INSTANCE.getSession(_executionContext.getRunConfiguration().getAnimatorURI(), new NullProgressMonitor());			
-			session.close(new NullProgressMonitor());
-			SessionManager.INSTANCE.remove(session);
-		}
 		_mseStateControllers.clear();		
 		_executionContext.dispose();
-
-		if (animator != null) {
-			animator.clear(this);
-		}
 
 		for (IDataProcessingComponent component : _executionComponents)
 		{
@@ -382,10 +367,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 			hook.aboutToExecuteLogicalStep(this, logicalStepToApply);
 		}
 
-		if (animator != null) {
-			animator.activate(this, logicalStepToApply);
-		}
-
 		Collection<IMSEOccurrence> mseOccurences = MSEOccurrenceFactory.createMSEOccurrences(logicalStepToApply, _executionContext.getFeedbackModel());	
 		for (final IMSEOccurrence mseOccurence : mseOccurences) 
 		{
@@ -444,10 +425,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	@Override
 	public String toString() {
 		return this.getClass().getName() + "@[Executor=" + getCodeExecutor() + " ; Solver=" + getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
-	}
-
-	public void setAnimator(IModelAnimator animator) {
-		this.animator = animator;
 	}
 
 	private ArrayList<IMSEStateController> _mseStateControllers = new ArrayList<IMSEStateController>();

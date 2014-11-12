@@ -19,7 +19,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivati
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
-import org.gemoc.execution.engine.core.DebugSessionFactory;
 import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;

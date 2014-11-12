@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -24,9 +26,11 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.core.IModelAnimator;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices.BreakpointListener;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 
@@ -244,6 +248,55 @@ public abstract class AbstractGemocAnimatorServices {
 						oldInstructions);
 				notifySirius(tmpInstructions);
 			}
+		}
+
+		@Override
+		public void engineAboutToStart(GemocExecutionEngine engine) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void engineStarted(GemocExecutionEngine executionEngine) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void preLogicalStepSelection(GemocExecutionEngine engine) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void postLogicalStepSelection(GemocExecutionEngine engine) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void postStopEngine(GemocExecutionEngine engine)
+		{
+			clear(engine);
+			if (engine.getExecutionContext().getRunConfiguration().getAnimatorURI() != null)
+			{
+				Session session = SessionManager.INSTANCE.getSession(engine.getExecutionContext().getRunConfiguration().getAnimatorURI(), new NullProgressMonitor());			
+				session.close(new NullProgressMonitor());
+				SessionManager.INSTANCE.remove(session);
+			}
+		}
+
+		@Override
+		public void aboutToExecuteLogicalStep(GemocExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
+		{
+			activate(executionEngine, logicalStepToApply);
+		}
+
+		@Override
+		public void aboutToExecuteMSE(GemocExecutionEngine executionEngine,
+				ModelSpecificEvent mse) {
+			// TODO Auto-generated method stub
+			
 		}
 
 	}

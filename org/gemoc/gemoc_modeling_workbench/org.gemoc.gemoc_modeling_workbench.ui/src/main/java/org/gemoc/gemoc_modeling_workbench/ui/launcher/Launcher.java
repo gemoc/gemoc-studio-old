@@ -20,11 +20,12 @@ import org.gemoc.execution.engine.commons.CCSLExecutionEngine;
 import org.gemoc.execution.engine.core.ModelExecutionContext;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.core.RunConfiguration;
-import org.gemoc.execution.engine.core.impl.GemocModelDebugger;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
+import org.gemoc.gemoc_modeling_workbench.ui.debug.GemocModelDebugger;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
 
@@ -74,7 +75,8 @@ public class Launcher
 				launchEngine(_engine);
 				// delegate for debug mode
 				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
-					_engine.setAnimator(AbstractGemocAnimatorServices.getAnimator());
+					IEngineHook animator = AbstractGemocAnimatorServices.getAnimator();
+					_engine.getExecutionContext().getExecutionPlatform().getHooks().add(animator);
 					super.launch(configuration, mode, launch, monitor);
 				} else {
 					Job job = new Job(getDebugJobName(configuration,

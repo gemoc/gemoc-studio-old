@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.gemoc.execution.engine.core;
+package org.gemoc.gemoc_modeling_workbench.core;
 
 import java.io.IOException;
 import java.io.InputStream;

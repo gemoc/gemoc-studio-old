@@ -1,5 +1,7 @@
 package org.gemoc.execution.engine.core;
 
+import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
+
 import fr.inria.aoste.trace.LogicalStep;
 
 /**
@@ -8,7 +10,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  * 
  */
-public interface IModelAnimator {
+public interface IModelAnimator extends IEngineHook {
 
 	/**
 	 * Activates the given {@link LogicalStep}.

@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core.impl;
+package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
