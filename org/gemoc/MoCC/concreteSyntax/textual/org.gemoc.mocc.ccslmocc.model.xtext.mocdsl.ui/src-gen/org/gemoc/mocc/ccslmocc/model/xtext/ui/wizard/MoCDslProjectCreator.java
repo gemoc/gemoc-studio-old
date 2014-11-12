@@ -17,8 +17,8 @@ import com.google.common.collect.Lists;
 
 public class MoCDslProjectCreator extends org.eclipse.xtext.ui.wizard.AbstractPluginProjectCreator {
 
-	protected static final String DSL_GENERATOR_PROJECT_NAME = "org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.generator";
-
+	//protected static final String DSL_GENERATOR_PROJECT_NAME = "org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.generator";
+	protected static final String DSL_GENERATOR_PROJECT_NAME = "org.gemoc.mocc.ccslmocc.model.xtext.mocdsl";
 	protected static final String SRC_ROOT = "src";
 	protected static final String SRC_GEN_ROOT = "src-gen";
 	protected final List<String> SRC_FOLDER_LIST = ImmutableList.of(SRC_ROOT, SRC_GEN_ROOT);

@@ -36,7 +36,7 @@ import org.eclipse.ui.ide.IDE;
  * (a folder or a project) is selected in the workspace 
  * when the wizard is opened, it will accept it as the target
  * container. The wizard creates one file with the extension
- * "mocc". If a sample multi-page editor (also available
+ * "moccml". If a sample multi-page editor (also available
  * as a template) is registered for the same extension, it will
  * be able to open it.
  */

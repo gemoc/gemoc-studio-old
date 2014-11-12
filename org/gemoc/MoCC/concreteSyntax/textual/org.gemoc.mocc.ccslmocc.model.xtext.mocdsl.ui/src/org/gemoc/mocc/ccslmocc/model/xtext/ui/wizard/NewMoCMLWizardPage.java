@@ -38,12 +38,12 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 /**
  * The "New" wizard page allows setting the container for the new file as well
  * as the file name. The page will only accept file name without the extension
- * OR with the extension that matches the expected one (mocc).
+ * OR with the extension that matches the expected one (moccml).
  */
 
 public class NewMoCMLWizardPage extends WizardPage {
 	
-	public static String FILE_EXTENSION = "mocc";
+	public static String FILE_EXTENSION = "moccml";
 	
 	private Text containerText;
 

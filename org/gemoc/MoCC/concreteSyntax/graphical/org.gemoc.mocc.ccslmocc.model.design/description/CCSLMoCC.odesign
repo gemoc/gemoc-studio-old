@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="CCSLMoCC" version="8.1.0">
-  <ownedViewpoints name="CCSLMoCC" modelFileExtension="ccslmocc xmi mocdsl mocc">
+  <ownedViewpoints name="CCSLMoCC" modelFileExtension="ccslmocc xmi mocdsl moccml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="State-Based Library Diagram" domainClass="ccslmocc.StateRelationBasedLibrary" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.gemoc.mocc.ccslmocc.model/model/Ccslmocc.ecore#/"/>
       <metamodel href="platform:/plugin/org.gemoc.mocc.fsmkernel.model/model/FSMModel.ecore#/"/>
@@ -427,22 +427,6 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <containerMappings name="TypeContainer" semanticCandidatesExpression="[predefinedTypes->first()/]" domainClass="BasicType.Type" childrenPresentation="List">
-          <subNodeMappings name="TypeDeclaration" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.2/@ownedTools[name='LabelType']" semanticCandidatesExpression="[eContainer().oclAsType(StateRelationBasedLibrary).predefinedTypes/]" domainClass="BasicType.Type">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.eClass().name+': '+self.name/]" labelAlignment="LEFT" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" labelFormat="bold_italic" showIcon="false" labelExpression="Predefined Types" roundedCorner="true" backgroundStyle="GradientTopToBottom">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
-            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
-          </style>
-        </containerMappings>
         <containerMappings name="ImportedTypeContainer" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.1/@ownedTools[name='DeleteImportedTypes']" semanticCandidatesExpression="[getImportedTypes()->first()/]" domainClass="BasicType.Type" childrenPresentation="List">
           <subNodeMappings name="ImportedTypeDeclaration" deletionDescription="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.1/@ownedTools[name='DeleteImportedTypes']" semanticCandidatesExpression="[containerView.eContainer(viewpoint::DSemanticDecorator).target.oclAsType(StateRelationBasedLibrary).getImportedTypes()/]" synchronizationLock="true" domainClass="BasicType.Type">
             <style xsi:type="style:SquareDescription" labelFormat="italic" showIcon="false" labelExpression="[self.eClass().name+': '+self.name/]" labelAlignment="LEFT" resizeKind="NSEW">
@@ -459,7 +443,100 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
+        <containerMappings name="TypeContainer" semanticCandidatesExpression="[predefinedTypes->first()/]" domainClass="BasicType.Type" childrenPresentation="List">
+          <subNodeMappings name="TypeDeclaration" labelDirectEdit="//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.2/@ownedTools[name='LabelType']" semanticCandidatesExpression="[eContainer().oclAsType(StateRelationBasedLibrary).predefinedTypes/]" domainClass="BasicType.Type">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.eClass().name+': '+self.name/]" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" labelFormat="bold_italic" showIcon="false" labelExpression="Predefined Types" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
         <toolSections name="LibraryBasicsTools" label="Types &amp; Imports">
+          <ownedTools xsi:type="tool:ToolGroup" name="URICreationTools">
+            <tools xsi:type="tool_1:ToolDescription" name="CreateURI" label="Import Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Switch">
+                  <cases conditionExpression="[element.oclIsTypeOf(StateRelationBasedLibrary)/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="['NewAlias'+self.eContainer(StateRelationBasedLibrary).imports->size()/]"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="todo"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                  <cases conditionExpression="[element.oclIsTypeOf(ImportStatement)/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.eContainer(StateRelationBasedLibrary)/]">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="['NewAlias'+self.eContainer(StateRelationBasedLibrary).imports->size()/]"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="todo"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                  <default/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" name="CreateKernelURI" label="Import Kernel Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Switch">
+                  <cases conditionExpression="[element.oclIsTypeOf(StateRelationBasedLibrary)/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="kernel"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                  <cases conditionExpression="[element.oclIsTypeOf(ImportStatement)/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.eContainer(StateRelationBasedLibrary)/]">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="kernel"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                  <default/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" name="CreateCCSLURI" label="Import CCSL Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:Switch">
+                  <cases conditionExpression="[element.oclIsTypeOf(StateRelationBasedLibrary)/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="ccsl"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                  <cases conditionExpression="[element.oclIsTypeOf(ImportStatement)/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.eContainer(StateRelationBasedLibrary)/]">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="ccsl"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                  <default/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="TypeCreationGroup">
             <tools xsi:type="tool_1:ToolDescription" name="CreateIntegerDeclaration" label="New Integer Type Declaration" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or (container.oclIsKindOf(BasicType::Type)and(container.eContainer().oclIsTypeOf(StateRelationBasedLibrary)))/]" forceRefresh="true">
               <element name="element"/>
@@ -570,83 +647,6 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="URICreationTools">
-            <tools xsi:type="tool_1:ToolDescription" name="CreateURI" label="Import Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:Switch">
-                  <cases conditionExpression="[element.oclIsTypeOf(StateRelationBasedLibrary)/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="['NewAlias'+self.eContainer(StateRelationBasedLibrary).imports->size()/]"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="todo"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </cases>
-                  <cases conditionExpression="[element.oclIsTypeOf(ImportStatement)/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.eContainer(StateRelationBasedLibrary)/]">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="['NewAlias'+self.eContainer(StateRelationBasedLibrary).imports->size()/]"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="todo"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </cases>
-                  <default/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="CreateKernelURI" label="Import Kernel Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:Switch">
-                  <cases conditionExpression="[element.oclIsTypeOf(StateRelationBasedLibrary)/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="kernel"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </cases>
-                  <cases conditionExpression="[element.oclIsTypeOf(ImportStatement)/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.eContainer(StateRelationBasedLibrary)/]">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="kernel"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </cases>
-                  <default/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="CreateCCSLURI" label="Import CCSL Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:Switch">
-                  <cases conditionExpression="[element.oclIsTypeOf(StateRelationBasedLibrary)/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="ccsl"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </cases>
-                  <cases conditionExpression="[element.oclIsTypeOf(ImportStatement)/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.eContainer(StateRelationBasedLibrary)/]">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ImportStatement" referenceName="imports">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="ccsl"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </cases>
-                  <default/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
         </toolSections>
         <toolSections name="LibraryBasicsToolsModification">
           <ownedTools xsi:type="tool_1:ExternalJavaAction" name="DeleteNotAllowed" precondition="[self.oclIsTypeOf(BasicType::Type)/]" forceRefresh="true" id="org.gemoc.mocc.ccslmocc.model.design.actions.DeleteNotAllowedID"/>
@@ -676,6 +676,22 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <subSections name="LibraryBasicsToolsLabelEdition">
+            <ownedTools xsi:type="tool:DirectEditLabel" name="LabelType">
+              <mask mask="{0}: {1}"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg1"/>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:DirectEditLabel" name="LabelImport">
+              <mask mask="import &quot;{0}&quot; as {1}"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="var:arg1">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="var:arg0"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
         </toolSections>
       </additionalLayers>
     </ownedRepresentations>
