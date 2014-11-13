@@ -87,4 +87,9 @@ public class LanguageDefinitionExtension extends Extension
 	{
 		return getAttribute(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_NAME_ATT);
 	}
+	
+	public String getXDSMLFilePath(){
+		return getAttribute(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_XDSML_FILE_PATH_ATT);
+	}
+	
 }

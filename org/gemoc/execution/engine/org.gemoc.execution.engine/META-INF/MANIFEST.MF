@@ -4,29 +4,22 @@ Bundle-Name: Gemoc Engine
 Bundle-SymbolicName: org.gemoc.execution.engine;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.execution.engine.Activator
-Require-Bundle: fr.inria.aoste.trace,
- fr.inria.aoste.timesquare.ccslkernel.modelunfolding,
- fr.inria.aoste.timesquare.trace.util,
- org.gemoc.gemoc_language_workbench.api,
- fr.inria.aoste.trace;visibility:=reexport,
- fr.inria.aoste.timesquare.ccslkernel.modelunfolding,
- fr.inria.aoste.timesquare.trace.util,
+Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
  org.eclipse.emf.ecore,
- org.gemoc.gemoc_language_workbench.utils,
  org.eclipse.emf.common,
  org.eclipse.emf.compare;bundle-version="3.0.2",
  org.gemoc.commons.eclipse,
  com.google.guava;bundle-version="11.0.2",
- fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
  org.eclipse.core.runtime;bundle-version="3.9.100",
  org.eclipse.emf.transaction;bundle-version="1.4.0",
- org.eclipse.debug.core,
- fr.inria.aoste.timesquare.launcher.core,
  fr.inria.aoste.timesquare.ecl.feedback.model;bundle-version="1.0.0";visibility:=reexport,
  fr.inria.diverse.commons.eclipse.messagingsystem.api,
  fr.obeo.dsl.debug.ide;bundle-version="1.0.0",
- org.eclipse.emf.compare.rcp;bundle-version="2.2.0"
+ org.eclipse.emf.compare.rcp;bundle-version="2.2.0",
+ fr.inria.aoste.trace;visibility:=reexport,
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
+ org.eclipse.debug.core
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine,

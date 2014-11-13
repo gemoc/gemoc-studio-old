@@ -80,6 +80,22 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 				.setGenmodeluri(genmodel);
 	}
 
+	public String getSupportedFileExtension(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("Supported file extensions: ");
+		int i = 0;
+		for(String s : languageDefinition.getFileExtensions()){
+
+			if(i > 0) {sb.append(", ");}
+			sb.append(s);
+			i++;
+		}
+		return sb.toString();
+	}
+	public void setSupportedFileExtension(String supportedFileExtensions){
+		
+	}
+	
 	public String getXTextEditorProjectName() {
 		if (languageDefinition != null) {
 			for (EditorProject editor : languageDefinition.getEditorProjects()) {

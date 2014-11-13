@@ -29,10 +29,14 @@ public interface DSAProject extends ProjectResource {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * URI of the class that implement the code excutor required by the engine.
+	 * If null or empty, a default K3 code executor will be generated and used.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Code Executor Class</em>' attribute.
 	 * @see #setCodeExecutorClass(String)
 	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getDSAProject_CodeExecutorClass()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getCodeExecutorClass();

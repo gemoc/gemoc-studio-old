@@ -34,7 +34,7 @@ public interface EditorProject extends ProjectResource {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>File Extension</em>' attribute list.
 	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getEditorProject_FileExtension()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	EList<String> getFileExtension();

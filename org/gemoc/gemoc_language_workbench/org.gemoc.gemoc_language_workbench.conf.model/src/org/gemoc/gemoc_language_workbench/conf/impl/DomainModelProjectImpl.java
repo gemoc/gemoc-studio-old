@@ -2,10 +2,16 @@
  */
 package org.gemoc.gemoc_language_workbench.conf.impl;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.confPackage;
 
@@ -18,6 +24,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * <ul>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.DomainModelProjectImpl#getDefaultRootEObjectQualifiedName <em>Default Root EObject Qualified Name</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.DomainModelProjectImpl#getGenmodeluri <em>Genmodeluri</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.DomainModelProjectImpl#getModelLoaderClass <em>Model Loader Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,6 +67,25 @@ public class DomainModelProjectImpl extends ProjectResourceImpl implements Domai
 	 * @ordered
 	 */
 	protected String genmodeluri = GENMODELURI_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getModelLoaderClass() <em>Model Loader Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModelLoaderClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MODEL_LOADER_CLASS_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getModelLoaderClass() <em>Model Loader Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModelLoaderClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String modelLoaderClass = MODEL_LOADER_CLASS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,10 +153,63 @@ public class DomainModelProjectImpl extends ProjectResourceImpl implements Domai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getModelLoaderClass() {
+		return modelLoaderClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setModelLoaderClass(String newModelLoaderClass) {
+		String oldModelLoaderClass = modelLoaderClass;
+		modelLoaderClass = newModelLoaderClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS, oldModelLoaderClass, modelLoaderClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getEcoreURI() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EObject getGenmodel() {
+		try{
+			if (getGenmodeluri() != null || !getGenmodeluri().isEmpty()) {
+				String genModeluri = getGenmodeluri().replace("platform:/plugin", "platform:/resource");
+				final ResourceSet resourceSet = new ResourceSetImpl();
+				
+				Resource resource = null;
+				try{
+					// try first in workspace
+					resource = resourceSet.getResource(URI.createURI(genModeluri), true);
+				}catch(Exception e){
+					// if fail then try as platform:/plugin
+					genModeluri = genModeluri.replace("platform:/resource", "platform:/plugin");
+					resource = resourceSet.getResource(URI.createURI(genModeluri), true);
+				}
+				if (resource.getContents().size() > 0) {
+					Object firstContent = resource.getContents().get(0);
+					if (firstContent instanceof GenModel){
+						GenModel genModel = (GenModel)firstContent;	
+						return genModel;
+					}
+				}
+			}		
+		} catch (Throwable e){	}
+		return null;
 	}
 
 	/**
@@ -145,6 +224,8 @@ public class DomainModelProjectImpl extends ProjectResourceImpl implements Domai
 				return getDefaultRootEObjectQualifiedName();
 			case confPackage.DOMAIN_MODEL_PROJECT__GENMODELURI:
 				return getGenmodeluri();
+			case confPackage.DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS:
+				return getModelLoaderClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -162,6 +243,9 @@ public class DomainModelProjectImpl extends ProjectResourceImpl implements Domai
 				return;
 			case confPackage.DOMAIN_MODEL_PROJECT__GENMODELURI:
 				setGenmodeluri((String)newValue);
+				return;
+			case confPackage.DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS:
+				setModelLoaderClass((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -181,6 +265,9 @@ public class DomainModelProjectImpl extends ProjectResourceImpl implements Domai
 			case confPackage.DOMAIN_MODEL_PROJECT__GENMODELURI:
 				setGenmodeluri(GENMODELURI_EDEFAULT);
 				return;
+			case confPackage.DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS:
+				setModelLoaderClass(MODEL_LOADER_CLASS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -197,6 +284,8 @@ public class DomainModelProjectImpl extends ProjectResourceImpl implements Domai
 				return DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME_EDEFAULT == null ? defaultRootEObjectQualifiedName != null : !DEFAULT_ROOT_EOBJECT_QUALIFIED_NAME_EDEFAULT.equals(defaultRootEObjectQualifiedName);
 			case confPackage.DOMAIN_MODEL_PROJECT__GENMODELURI:
 				return GENMODELURI_EDEFAULT == null ? genmodeluri != null : !GENMODELURI_EDEFAULT.equals(genmodeluri);
+			case confPackage.DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS:
+				return MODEL_LOADER_CLASS_EDEFAULT == null ? modelLoaderClass != null : !MODEL_LOADER_CLASS_EDEFAULT.equals(modelLoaderClass);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -215,6 +304,8 @@ public class DomainModelProjectImpl extends ProjectResourceImpl implements Domai
 		result.append(defaultRootEObjectQualifiedName);
 		result.append(", genmodeluri: ");
 		result.append(genmodeluri);
+		result.append(", modelLoaderClass: ");
+		result.append(modelLoaderClass);
 		result.append(')');
 		return result.toString();
 	}

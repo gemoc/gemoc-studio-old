@@ -4,20 +4,22 @@ package org.gemoc.gemoc_language_workbench.conf.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.gemoc.gemoc_language_workbench.conf.AnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DSEProject;
@@ -361,6 +363,50 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<String> getFileExtensions() {
+		EList<String> result = new BasicEList<String>();
+		
+		// search for a genmodel and possibly file extension in it
+		try{
+			DomainModelProject eep = this.getDomainModelProject();
+			if (eep != null) {
+				GenModel genModel = (GenModel)eep.getGenmodel();
+				if (genModel != null) {
+					// search extension in direct packages
+					for(GenPackage genPackage : genModel.getGenPackages()){
+						for(String fileExtension : genPackage.getFileExtensionList()){
+							if(!result.contains(fileExtension)){
+								result.add(fileExtension);
+							}
+						}
+					}
+					// search extension in used packages
+					for(GenPackage genPackage : genModel.getAllGenAndUsedGenPackagesWithClassifiers()){
+						for(String fileExtension : genPackage.getFileExtensionList()){
+							if(!result.contains(fileExtension)){
+								result.add(fileExtension);
+							}
+						}
+					}
+				}
+			}
+		} catch (Throwable e){	}
+		// aggregate with the other declared files extensions for the editors
+		for(EditorProject editorProject : editorProjects){
+			for(String fileExtension : editorProject.getFileExtension()){
+				if(!result.contains(fileExtension)){
+					result.add(fileExtension);
+				}
+			}
+		}		
+		return result;
 	}
 
 	/**
