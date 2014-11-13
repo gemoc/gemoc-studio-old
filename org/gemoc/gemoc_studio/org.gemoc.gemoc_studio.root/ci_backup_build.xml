@@ -62,10 +62,10 @@
 				 keyfile="${key.file}"
 				 passphrase=""
 			     trust="yes"
-			     command="mkdir ${deploy.month.path};"/>
+			     command="mkdir ${deploy.day_of_week.path};"/>
 		
-		<echo>Uploading to ${deploy.server}:${deploy.month.path}</echo>
-		<scp todir="${deploy.user}@${deploy.server}:${deploy.month.path}"
+		<echo>Uploading to ${deploy.server}:${deploy.day_of_week.path}</echo>
+		<scp todir="${deploy.user}@${deploy.server}:${deploy.day_of_week.path}"
 			keyfile="${key.file}"
 			passphrase=""
 		    trust="yes" verbose="yes">
@@ -79,20 +79,20 @@
 								 keyfile="${key.file}"
 								 passphrase=""
 							     trust="yes"
-							     command="cp -r ${deploy.month.path}  ${deploy.day_of_month.path};"/>
+							     command="cp -r ${deploy.day_of_week.path}  ${deploy.day_of_month.path};"/>
 		-->							
 		<sshexec host="${deploy.server}"
 						         username="${deploy.user}"
 								 keyfile="${key.file}"
 								 passphrase=""
 							     trust="yes"
-							     command="cp -r ${deploy.month.path}  ${deploy.day_of_week.path};"/>
+							     command="cp -r ${deploy.day_of_week.path} ${deploy.month.path};"/>
 		<sshexec host="${deploy.server}"
 						         username="${deploy.user}"
 								 keyfile="${key.file}"
 								 passphrase=""
 							     trust="yes"
-							     command="cp -r ${deploy.month.path}  ${deploy.week_of_month.path};"/>		
+							     command="cp -r ${deploy.day_of_week.path}  ${deploy.week_of_month.path};"/>		
 	</target>
 	
 	<target name="dowload" >
