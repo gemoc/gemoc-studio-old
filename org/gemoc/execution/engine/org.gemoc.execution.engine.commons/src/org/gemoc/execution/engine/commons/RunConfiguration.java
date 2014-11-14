@@ -1,11 +1,15 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.execution.engine.commons;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import org.eclipse.core.internal.registry.IRegistryConstants;
+import org.eclipse.core.internal.registry.RegistryMessages;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
@@ -26,6 +30,7 @@ public class RunConfiguration implements IRunConfiguration
 	public static final String LAUNCH_SELECTED_LANGUAGE = "GEMOC_LAUNCH_SELECTED_LANGUAGE";
 	public static final String LAUNCH_SELECTED_DECIDER = "GEMOC_LAUNCH_SELECTED_DECIDER";
 	public static final String LAUNCH_ACTIVE_TRACE = "GEMOC_LAUNCH_ACTIVE_TRACE";
+	public static final String LAUNCH_ENTRY_POINT = "GEMOC_LAUNCH_ENTRY_POINT";
 	
 	// parameters that should be derived from the language in future version
 	public static final String LAUNCH_DEADLOCK_DETECTION_DEPTH = "GEMOC_LAUNCH_DEADLOCK_DETECTION_DEPTH";
@@ -62,6 +67,7 @@ public class RunConfiguration implements IRunConfiguration
 		_isTraceActive = getAttribute(LAUNCH_ACTIVE_TRACE, false);
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_deadlockDetectionDepth = getAttribute(LAUNCH_DEADLOCK_DETECTION_DEPTH, 10);
+		_entryPoint = getAttribute(LAUNCH_ENTRY_POINT, "");
 		
 		for (BackendSpecificationExtension extension : BackendSpecificationExtensionPoint.getSpecifications())
 		{
@@ -154,5 +160,36 @@ public class RunConfiguration implements IRunConfiguration
 		}
 		return result;	
 	}
+
+
+	private String _entryPoint;
+	@Override
+	public String getExecutionEntryPoint() 
+	{
+		return _entryPoint;
+	}
+
+
+	@Override
+	final public Object instanciateJavaEntryPoint() throws CoreException 
+	{
+		Object result = null;
+		Class classInstance = null;
+		try {
+			classInstance = Class.forName(getExecutionEntryPoint());
+		} catch (ClassNotFoundException e1) {
+			String message = "Unable to find class " + getExecutionEntryPoint();
+			throw new CoreException(new Status(IStatus.ERROR, RegistryMessages.OWNER_NAME, IRegistryConstants.PLUGIN_ERROR, message, e1));
+		}
+
+		try {
+			result = classInstance.newInstance();
+		} catch (Exception e) {
+			String message = "Unable to instanciate class " + getExecutionEntryPoint();
+			throw new CoreException(new Status(IStatus.ERROR, RegistryMessages.OWNER_NAME, IRegistryConstants.PLUGIN_ERROR, message, e));
+		}
+		return result;
+	}
+
 
 }

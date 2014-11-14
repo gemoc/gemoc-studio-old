@@ -17,7 +17,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-import org.gemoc.execution.engine.core.RunConfiguration;
+import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
 public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab 

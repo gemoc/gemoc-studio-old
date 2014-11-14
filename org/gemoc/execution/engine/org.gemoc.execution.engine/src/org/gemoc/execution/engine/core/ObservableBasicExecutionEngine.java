@@ -105,7 +105,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
-	public ObservableBasicExecutionEngine(ModelExecutionContext executionContext) {
+	public ObservableBasicExecutionEngine(IExecutionContext executionContext) {
 		//		if (decider == null)
 		//			throw new IllegalArgumentException("decider");
 		if (executionContext == null)

@@ -1,8 +1,9 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.execution.engine.commons;
 
 import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
+import org.gemoc.execution.engine.commons.solvers.ccsl.SolverMock;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionPlatform;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
@@ -18,11 +19,19 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	private ICodeExecutor _codeExecutor;
 	private Collection<IEngineHook> _hooks;
 	private Collection<IMSEStateController> _clockControllers;
+	private Object _javaEntryPoint;
 	
 	public DefaultExecutionPlatform(LanguageDefinitionExtension _languageDefinition) throws CoreException 
 	{
 		_modelLoader = _languageDefinition.instanciateModelLoader();
-		_solver = _languageDefinition.instanciateSolver();
+		try
+		{
+			_solver = _languageDefinition.instanciateSolver();			
+		}
+		catch (CoreException e)
+		{
+			_solver = new SolverMock();
+		}
 		_codeExecutor = _languageDefinition.instanciateCodeExecutor();		
 		_hooks = _languageDefinition.instanciateEngineHooks();
 		_clockControllers = _languageDefinition.instanciateMSEStateControllers();
@@ -65,4 +74,6 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 		_hooks.clear();
 	}
 	
+	// 			_javaEntryPoint = _languageDefinition.instanciateJavaEntryPoint();
+
 }

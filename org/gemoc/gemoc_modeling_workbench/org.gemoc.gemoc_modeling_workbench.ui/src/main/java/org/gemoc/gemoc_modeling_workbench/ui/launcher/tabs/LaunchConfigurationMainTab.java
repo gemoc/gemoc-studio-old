@@ -1,14 +1,31 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.core.search.IJavaSearchScope;
+import org.eclipse.jdt.internal.ui.jarpackager.JarPackagerUtil;
+import org.eclipse.jdt.internal.ui.search.JavaSearchScopeFactory;
+import org.eclipse.jdt.internal.ui.util.BusyIndicatorRunnableContext;
+import org.eclipse.jdt.ui.IJavaElementSearchConstants;
+import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.operation.IRunnableContext;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.pde.internal.ui.util.PDEJavaHelperUI;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -22,12 +39,16 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.dialogs.SelectionDialog;
 import org.gemoc.commons.eclipse.emf.URIHelper;
 import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIFileDialog;
-import org.gemoc.execution.engine.core.RunConfiguration;
+import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
@@ -36,12 +57,17 @@ import fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDele
 
 public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 
+	protected Composite _parent;
+	
 	protected Text _modelLocationText;
 	protected Text _siriusRepresentationLocationText;
 	protected Button _animateButton;
 	protected Text _delayText;
 	protected Combo _languageCombo;
 	protected Combo _deciderCombo;
+	
+	protected Group _k3Area;
+	protected Text _entryPointText;
 
 	protected Text modelofexecutionglml_LocationText;
 
@@ -49,6 +75,7 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 
 	@Override
 	public void createControl(Composite parent) {
+		_parent = parent;
 		Composite area = new Composite(parent, SWT.NULL);
 		GridLayout gl = new GridLayout(1, false);
 		gl.marginHeight = 0;
@@ -64,6 +91,9 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 
 		Group debugArea = createGroup(area, "Debug:");
 		createDebugLayout(debugArea, null);
+
+		_k3Area = createGroup(area, "Pure K3 execution:");
+		createK3Layout(_k3Area, null);
 	}
 	
 	@Override
@@ -74,6 +104,9 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_SELECTED_DECIDER,
 				RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP);
+		configuration.setAttribute(
+				RunConfiguration.LAUNCH_ENTRY_POINT,
+				"");
 	}
 
 	@Override
@@ -91,6 +124,9 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 			_delayText.setText(Integer.toString(runConfiguration.getAnimationDelay()));
 			_languageCombo.setText(runConfiguration.getLanguageName());
 			_deciderCombo.setText(runConfiguration.getDeciderName());
+			
+			_entryPointText.setText(runConfiguration.getExecutionEntryPoint());
+			
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
 		}
@@ -114,6 +150,9 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_DECIDER,
 						this._deciderCombo.getText());
+		configuration.setAttribute(
+				RunConfiguration.LAUNCH_ENTRY_POINT,
+				_entryPointText.getText());
 	}
 
 	@Override
@@ -280,4 +319,92 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		return parent;
 	}
 
+	private Composite createK3Layout(Composite parent, Font font) {
+		createTextLabelLayout(parent, "Entry point");
+
+		_entryPointText = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		_entryPointText.setLayoutData(createStandardLayout());
+		_entryPointText.setFont(font);
+		_entryPointText.addModifyListener(fBasicModifyListener);
+		Button javaMethodBrowseButton = createPushButton(parent, "Browse", null);
+		javaMethodBrowseButton
+				.addSelectionListener(new SelectionAdapter() {
+					public void widgetSelected(SelectionEvent e) {
+//						List<IResource> resources= JarPackagerUtil.asResources(fJarPackage.getElements());
+						List<IResource> resources = new ArrayList<>();
+						IPath path = new Path(_modelLocationText.getText());
+						resources.add(ResourcesPlugin.getWorkspace().getRoot().getFile(path).getProject());
+						IJavaSearchScope searchScope = JavaSearchScopeFactory.getInstance().createJavaSearchScope(resources.toArray(new IResource[resources.size()]), true);
+
+/*						IRunnableContext c = new IRunnableContext() {
+							
+							@Override
+							public void run(boolean fork, boolean cancelable,
+									IRunnableWithProgress runnable) throws InvocationTargetException,
+									InterruptedException {
+								// TODO Auto-generated method stub
+								
+							}
+						};*/
+						IRunnableContext c = new BusyIndicatorRunnableContext();
+						
+						SelectionDialog dialog;
+						try {
+							dialog = JavaUI.createTypeDialog(_parent.getShell(), c, searchScope, IJavaElementSearchConstants.CONSIDER_CLASSES, false);
+							dialog.open();
+							if (dialog.getReturnCode() == Dialog.OK)
+							{
+								IType type = (IType)dialog.getResult()[0];
+								_entryPointText.setText(type.getFullyQualifiedName());
+							}
+						} catch (JavaModelException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+//						SelectionDialog dialog = JavaUI.createMainTypeDialog(_parent.getShell(), c, searchScope, 0, false);
+						
+						
+//						String className = _entryPointText.getText();
+//						IResource resource = getCurrentIFile();
+//						String type = PDEJavaHelperUI.selectType(resource, IJavaElementSearchConstants.CONSIDER_CLASSES, className, null);
+//						if (type != null)
+//							_entryPointText.setText(type);
+						// handleModelLocationButtonSelected();
+						// TODO launch the appropriate selector
+
+//						SelectAIRDIFileDialog dialog = new SelectAIRDIFileDialog();
+//						if (dialog.open() == Dialog.OK) {
+//							String modelPath = ((IResource) dialog.getResult()[0])
+//									.getFullPath().toPortableString();
+//							_siriusRepresentationLocationText.setText(modelPath);
+//							updateLaunchConfigurationDialog();
+//						}
+					}
+				});
+		return parent;
+	}
+	
+//	protected IFile getCurrentIFile() {
+//		String platformString = rootModelElement.eResource().getURI()
+//				.toPlatformString(true);
+//		return ResourcesPlugin.getWorkspace().getRoot()
+//				.getFile(new Path(platformString));
+//
+//	}
+	
+	@Override
+	protected void updateLaunchConfigurationDialog() 
+	{
+		super.updateLaunchConfigurationDialog();
+		LanguageDefinitionExtension extension = LanguageDefinitionExtensionPoint.findDefinition(_languageCombo.getText());
+		if (extension != null)
+		{
+			try {
+				ISolver solver = extension.instanciateSolver();
+				_k3Area.setVisible(false);
+			} catch (CoreException e) {
+				_k3Area.setVisible(true);
+			}					
+		}
+	}
 }

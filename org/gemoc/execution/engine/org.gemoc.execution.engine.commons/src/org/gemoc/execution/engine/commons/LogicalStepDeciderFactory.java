@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.execution.engine.commons;
 
 import org.eclipse.core.runtime.CoreException;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;

@@ -15,11 +15,9 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  org.eclipse.emf.transaction;bundle-version="1.4.0",
  fr.inria.aoste.timesquare.ecl.feedback.model;bundle-version="1.0.0";visibility:=reexport,
  fr.inria.diverse.commons.eclipse.messagingsystem.api,
- fr.obeo.dsl.debug.ide;bundle-version="1.0.0",
  org.eclipse.emf.compare.rcp;bundle-version="2.2.0",
  fr.inria.aoste.trace;visibility:=reexport,
- fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
- org.eclipse.debug.core
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine,

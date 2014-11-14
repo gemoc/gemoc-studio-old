@@ -1,11 +1,20 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.internal.registry.osgi.OSGIUtils;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
@@ -14,16 +23,32 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IMethod;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.core.search.IJavaSearchConstants;
+import org.eclipse.jdt.core.search.IJavaSearchResultCollector;
+import org.eclipse.jdt.core.search.IJavaSearchScope;
+import org.eclipse.jdt.core.search.ISearchPattern;
+import org.eclipse.jdt.core.search.SearchEngine;
+import org.eclipse.jdt.core.search.SearchMatch;
+import org.eclipse.jdt.core.search.SearchParticipant;
+import org.eclipse.jdt.core.search.SearchPattern;
+import org.eclipse.jdt.core.search.SearchRequestor;
+import org.eclipse.jdt.internal.core.ResolvedBinaryType;
+import org.eclipse.jdt.internal.ui.search.JavaSearchScopeFactory;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.pde.core.plugin.PluginRegistry;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.commons.CCSLExecutionEngine;
-import org.gemoc.execution.engine.core.ModelExecutionContext;
+import org.gemoc.execution.engine.commons.ModelExecutionContext;
+import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
-import org.gemoc.execution.engine.core.RunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
+import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.GemocModelDebugger;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
@@ -66,7 +91,7 @@ public class Launcher
 			{
 				executionMode = ExecutionMode.Run;
 			}
-			ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, executionMode);			
+			final ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, executionMode);			
 			throwExceptionIfEngineAlreadyRunning(executionContext);
 
 			if (executionContext.getFeedbackModel() != null) // hack to find out if execution involves a solver
@@ -94,11 +119,103 @@ public class Launcher
 			}
 			else
 			{
-				ActionCall call = FeedbackFactory.eINSTANCE.createActionCall();
-				ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
-				call.setTriggeringEvent(mse);
-				mse.setCaller(executionContext.getResourceModel().getContents().get(0));
-				executionContext.getExecutionPlatform().getCodeExecutor().execute(call);
+				Job job = new Job("exec")
+				{
+
+					@Override
+					protected IStatus run(IProgressMonitor monitor) {
+						ActionCall call = FeedbackFactory.eINSTANCE.createActionCall();
+						ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
+						call.setTriggeringEvent(mse);
+						mse.setCaller(executionContext.getResourceModel().getContents().get(0));
+//						executionContext.getExecutionPlatform().getCodeExecutor().execute(call);
+						ArrayList<Object> parameters = new ArrayList<>();
+						parameters.add(executionContext.getResourceModel().getContents().get(0));
+						try {
+							executionContext.getExecutionPlatform().getCodeExecutor().execute(
+																						executionContext.getRunConfiguration().getExecutionEntryPoint(), 
+																						"main", 
+																						parameters);
+							return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
+						} catch (CodeExecutionException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
+					}
+					
+				};
+				job.schedule();
+//				String className =  executionContext.getRunConfiguration().getExecutionEntryPoint();
+//				//IProject project = ResourcesPlugin.getWorkspace().ge;
+//
+//				List<IResource> resources = new ArrayList<>();
+//				IPath path = executionContext.getWorkspace().getProjectPath();
+//				resources.add(ResourcesPlugin.getWorkspace().getRoot().getProject(path.toString()));
+//				
+//				SearchPattern pattern = SearchPattern.createPattern(className,
+//																	IJavaSearchConstants.CLASS, 
+//																	IJavaSearchConstants.DECLARATIONS,
+//																	SearchPattern.R_EXACT_MATCH);
+//				IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
+//				ResolvedBinaryType type = null;
+//				DefaultSearchRequestor requestor = new DefaultSearchRequestor();				
+//				SearchEngine engine = new SearchEngine();
+//				engine.search(pattern, 
+//							new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() }, 
+//							scope, 
+//							requestor,
+//							null);
+				
+//				IMethod constructor = null;
+//				IMethod main = null;
+//				Class.forName(requestor._binaryType.);
+//				for (IMethod m : requestor._binaryType.getMethods())
+//				{
+////					if (m.get)
+//				}
+				
+				
+//				IJavaSearchScope searchScope = JavaSearchScopeFactory.getInstance().createJavaSearchScope(resources.toArray(new IResource[resources.size()]), true);
+//				ISearchPattern searchPattern = SearchEngine.createSearchPattern(className, IJavaSearchConstants.CLASS, IJavaSearchConstants.DECLARATIONS, false);
+//				IJavaSearchResultCollector resultCollector = new IJavaSearchResultCollector() {
+//					
+//					@Override
+//					public IProgressMonitor getProgressMonitor() {
+//						// TODO Auto-generated method stub
+//						return null;
+//					}
+//					
+//					@Override
+//					public void done() {
+//						return;
+//					}
+//					
+//					@Override
+//					public void accept(IResource resource, int start, int end,
+//							IJavaElement enclosingElement, int accuracy) throws CoreException {
+//						return;
+//					}
+//					
+//					@Override
+//					public void aboutToStart() {
+//						return;
+//					}
+//				};
+//				new SearchEngine().search(ResourcesPlugin.getWorkspace(),
+//		                   				searchPattern,
+//		                   				searchScope,
+//		                   				resultCollector);
+				
+//				String bundleName = executionContext.getWorkspace().getProjectPath().toString().replace("/", "");
+//				Platform.getBundle(bundleName);
+//				Class modelRootClass = OSGIUtils.getDefault().getBundle(bundleName).loadClass(className);
+//				Object o = modelRootClass.newInstance();
+				
+//				Object o = executionContext.getRunConfiguration().instanciateJavaEntryPoint();
+//				Class modelRootClass = executionContext.getResourceModel().getContents().get(0).getClass();
+//				Method m = o.getClass().getMethod("main", modelRootClass);
+//				m.invoke(o, executionContext.getResourceModel().getContents().get(0));
 			}
 		} 
 		catch (Exception e)
@@ -262,5 +379,18 @@ public class Launcher
 	protected String getModelIdentifier() 
 	{
 		return MODEL_ID;
+	}
+	
+	class DefaultSearchRequestor extends SearchRequestor
+	{
+		
+		public ResolvedBinaryType _binaryType;
+
+		@Override
+		public void acceptSearchMatch(SearchMatch match) throws CoreException {
+			_binaryType = (ResolvedBinaryType)match.getElement();
+			System.out.println(match.getElement());
+		}
+		
 	}
 }
