@@ -80,13 +80,13 @@
 								 passphrase=""
 							     trust="yes"
 							     command="cp -r ${deploy.day_of_week.path}  ${deploy.day_of_month.path};"/>
-		-->							
 		<sshexec host="${deploy.server}"
 						         username="${deploy.user}"
 								 keyfile="${key.file}"
 								 passphrase=""
 							     trust="yes"
 							     command="cp -r ${deploy.day_of_week.path} ${deploy.month.path};"/>
+		-->							   
 		<sshexec host="${deploy.server}"
 						         username="${deploy.user}"
 								 keyfile="${key.file}"
