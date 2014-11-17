@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="SigPML" version="8.1.0">
+  <ownedViewpoints name="SigPML" modelFileExtension="*.sigpml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SigPML" domainClass="System">
+      <metamodel href="../../org.gemoc.sigpml.k3dsa/model/SigPMLExtended.ecore#/"/>
+      <defaultLayer name="SigPML">
+        <edgeMappings name="Place" sourceMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']" targetMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']" targetFinderExpression="[self.itsInputPort/]" sourceFinderExpression="[self.itsOutputPort/]" domainClass="Place" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="[self.size/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="AgentAllocation" sourceMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource']" targetMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']" targetFinderExpression="[self.allocatedAgents/]">
+          <style lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="PlaceAllocation" sourceMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources']" targetMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']" targetFinderExpression="[self.allocatedPlaces/]">
+          <style lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="HWPlateform" domainClass="sigpml.HWPlatform">
+          <subNodeMappings name="HWComputationalResource" semanticCandidatesExpression="feature:eAllContents" domainClass="sigpml.HWComputationalResource">
+            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="2" showIcon="false" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+            <conditionnalStyles predicateExpression="service:self.isCurrentInstruction">
+              <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="2" showIcon="false" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='MyPalette']/@entries[name='current%20instruction']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <subNodeMappings name="HWStorageResources" semanticCandidatesExpression="feature:eAllContents" domainClass="sigpml.HWStorageResource">
+            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="2" showIcon="false" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            </style>
+            <conditionnalStyles predicateExpression="service:self.isCurrentInstruction">
+              <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="2" showIcon="false" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='MyPalette']/@entries[name='current%20instruction']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <subNodeMappings name="HWCommunicationResource" semanticCandidatesExpression="feature:eAllContents" domainClass="sigpml.HWCommunicationResource">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+            <conditionnalStyles predicateExpression="service:self.isCurrentInstruction">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" resizeKind="NSEW" color="//@userColorsPalettes[name='MyPalette']/@entries[name='current%20instruction']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <style xsi:type="style:ShapeContainerStyleDescription" showIcon="false">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Application" domainClass="Application">
+          <subNodeMappings name="Agent" domainClass="Agent">
+            <borderedNodeMappings name="InputPort" semanticCandidatesExpression="[self.ownedPorts/]" domainClass="InputPort">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.rate/]" sizeComputationExpression="2" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+              <conditionnalStyles predicateExpression="[self.oclIsKindOf(InputPort)/]">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="5" labelFormat="bold" showIcon="false" labelExpression="[self.rate/]" sizeComputationExpression="2" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                </style>
+              </conditionnalStyles>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="OutputPort" semanticCandidatesExpression="[self.ownedPorts/]" domainClass="OutputPort">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="[self.rate/]" sizeComputationExpression="2" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+              <conditionnalStyles predicateExpression="[self.oclIsKindOf(OutputPort)/]">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelSize="5" labelFormat="bold" showIcon="false" labelExpression="[self.rate/]" sizeComputationExpression="2" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+                </style>
+              </conditionnalStyles>
+            </borderedNodeMappings>
+            <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="1" labelFormat="bold" showIcon="false" labelExpression="[self.name + '\n execTime:' + (self.cycles-1)/]" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+            <conditionnalStyles predicateExpression="service:self.isCurrentInstruction">
+              <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="1" labelFormat="bold" showIcon="false" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='MyPalette']/@entries[name='current%20instruction']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.name/]" backgroundColor="//@userColorsPalettes[name='MyPalette']/@entries[name='veryPaleYellow']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="CreationTool">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Agent" nodeMappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Agent" referenceName="ownedAgents"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="InputPort" nodeMappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="InputPort" referenceName="ownedPorts"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="OutputPort" nodeMappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="OutputPort" referenceName="ownedPorts"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Place" edgeMappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.oclAsType(Port).owner.owner/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Place" referenceName="ownedPlaces">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="itsInputPort" valueExpression="[source.oclAsType(InputPort)/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="itsOutputPort" valueExpression="[target.oclAsType(OutputPort)/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="HWCommunicationResource" nodeMappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWCommunicationResource']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="HWCommunicationResource" referenceName="ownedHWResources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="HWComputationalResource" nodeMappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="HWComputationalResource" referenceName="ownedHWResources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="HWStorageResources" nodeMappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="HWStorageResource" referenceName="ownedHWResources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="AgentAllocation" edgeMappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='AgentAllocation']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="allocatedAgents" valueExpression="[/target]">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target/]">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedTo" valueExpression="[source/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="PlaceAllocation" edgeMappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='PlaceAllocation']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="allocatedPlaces" valueExpression="[/target]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="SigPMLDebug" label="SigPML Debug">
+        <toolSections name="Debug">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Gemoc">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Debug" icon="/org.gemoc.sigpml.concrete.design/icons/debug_exc.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Debug" icon="/org.gemoc.sigpml.concrete.design/icons/debug_exc.gif" id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocDebugAs"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Toggle breakpoint" icon="/org.gemoc.sigpml.concrete.design/icons/breakpoint.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Toggle Gemoc breakpoint" icon="/org.gemoc.sigpml.concrete.design/icons/breakpoint.gif" id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocToggleBreakpoint"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Enabled breakpoint" position="WEST" decoratorPath="/org.gemoc.sigpml.model.design/icons/breakpoint_enabled.gif" preconditionExpression="service:self.hasEnabledBreakpoint" mappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='AgentAllocation'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWCommunicationResource'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='PlaceAllocation']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Disabled breakpoint" position="WEST" decoratorPath="/org.gemoc.sigpml.model.design/icons/breakpoint_disabled.gif" preconditionExpression="service:self.hasDisabledBreakpoint" mappings="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='AgentAllocation'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWCommunicationResource'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place'] //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='PlaceAllocation']"/>
+        </decorationDescriptionsSet>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.isCurrentInstruction">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWCommunicationResource']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWCommunicationResource']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@conditionnalStyles.0/@style" applyOnAll="true" referenceName="color" value="//@userColorsPalettes[name='MyPalette']/@entries[name='current%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWCommunicationResource']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWCommunicationResource']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@conditionnalStyles.0/@style" applyOnAll="true" referenceName="borderColor" value="//@userColorsPalettes[name='MyPalette']/@entries[name='current%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='AgentAllocation']/@style/@centerLabelStyleDescription //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='PlaceAllocation']/@style/@centerLabelStyleDescription //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']/@style/@centerLabelStyleDescription //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='AgentAllocation']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='PlaceAllocation']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWStorageResources']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWCommunicationResource']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWCommunicationResource']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@conditionnalStyles.0/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@conditionnalStyles.0/@style" applyOnAll="true" referenceName="backgroundColor" value="//@userColorsPalettes[name='MyPalette']/@entries[name='current%20instruction']"/>
+          </vsmElementCustomizations>
+        </customization>
+      </additionalLayers>
+      <additionalLayers name="SigPMLAnimation" label="SigPML Animation">
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']/@style/@centerLabelStyleDescription" attributeName="labelExpression" value="[self.currentSize + ' / ' + self.size/]"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@conditionnalStyles.0/@style" attributeName="labelExpression" value="[self.name + ' (' +self.sizeToread+')' /]"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@conditionnalStyles.0/@style" attributeName="labelExpression" value="[self.name + ' (' +self.sizeWritten+')' /]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.gemoc.sigpml.concrete.design.services.SigPMLDebuggerServices"/>
+  </ownedViewpoints>
+  <userColorsPalettes name="MyPalette">
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="128" name="current instruction"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="230" name="veryPaleYellow"/>
+  </userColorsPalettes>
+</description:Group>

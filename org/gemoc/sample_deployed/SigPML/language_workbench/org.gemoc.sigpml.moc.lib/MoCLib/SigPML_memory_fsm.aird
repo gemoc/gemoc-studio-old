@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ccslmocc="http://org.gemoc.mocc.ccslmocc/1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation="http://fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.gemoc.mocc.fsmmodel="http://org.gemoc.mocc.fsmmodel/1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation http://fr.inria.aoste.timemodel#//CCSLModel/ClockExpressionAndRelation http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_AidW0MTJEeOY48rmag3Nyw" selectedViews="_BPNvIMTJEeOY48rmag3Nyw" version="8.1.0">
+  <models xmi:type="ccslmocc:StateRelationBasedLibrary" href="SigPML_memory_fsm.mocdsl#/"/>
+  <models xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:Library" href="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib#/"/>
+  <models xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:Library" href="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_BPNvIMTJEeOY48rmag3Nyw" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_DcLV8MTJEeOY48rmag3Nyw" name="new State-Based Library Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Dcoo8MTJEeOY48rmag3Nyw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_Dcoo8cTJEeOY48rmag3Nyw" type="Sirius" element="_DcLV8MTJEeOY48rmag3Nyw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_Dc1dQMTJEeOY48rmag3Nyw" type="2002" element="_DcLV8cTJEeOY48rmag3Nyw">
+            <children xmi:type="notation:Node" xmi:id="_DdEGwMTJEeOY48rmag3Nyw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_DdFU4MTJEeOY48rmag3Nyw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_DdK0cMTJEeOY48rmag3Nyw" type="3008" element="_DcLV98TJEeOY48rmag3Nyw">
+                <children xmi:type="notation:Node" xmi:id="_DdLbgMTJEeOY48rmag3Nyw" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_DdMCkMTJEeOY48rmag3Nyw" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_DdMCkcTJEeOY48rmag3Nyw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_DdMCksTJEeOY48rmag3Nyw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_DdK0ccTJEeOY48rmag3Nyw" fontName="Sans Serif" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DdK0csTJEeOY48rmag3Nyw" x="31" y="210"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_DdMpoMTJEeOY48rmag3Nyw" type="3009" element="_DcLV_cTJEeOY48rmag3Nyw">
+                <children xmi:type="notation:Node" xmi:id="_DdN3wMTJEeOY48rmag3Nyw" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_DdOe0MTJEeOY48rmag3Nyw" type="7003">
+                  <children xmi:type="notation:Node" xmi:id="_DdPF4MTJEeOY48rmag3Nyw" type="3010" element="_DcLWAsTJEeOY48rmag3Nyw">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_DdPF4cTJEeOY48rmag3Nyw"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_DdPF4sTJEeOY48rmag3Nyw" type="3010" element="_DcLWB8TJEeOY48rmag3Nyw">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_DdPF48TJEeOY48rmag3Nyw"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_DdOe0cTJEeOY48rmag3Nyw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_DdOe0sTJEeOY48rmag3Nyw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_DdMpocTJEeOY48rmag3Nyw" fontName="Sans Serif" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DdMposTJEeOY48rmag3Nyw" x="31" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_DdFU4cTJEeOY48rmag3Nyw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_DdFU4sTJEeOY48rmag3Nyw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Dc1dQcTJEeOY48rmag3Nyw" fontName="Sans Serif" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dc1dQsTJEeOY48rmag3Nyw" width="993"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_Dcoo8sTJEeOY48rmag3Nyw"/>
+          <edges xmi:type="notation:Edge" xmi:id="_DdlEIMTJEeOY48rmag3Nyw" type="4001" element="_DcL9L8TJEeOY48rmag3Nyw" source="_DdK0cMTJEeOY48rmag3Nyw" target="_DdMpoMTJEeOY48rmag3Nyw">
+            <children xmi:type="notation:Node" xmi:id="_DdmSQMTJEeOY48rmag3Nyw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DdmSQcTJEeOY48rmag3Nyw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Dewv4MTJEeOY48rmag3Nyw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dewv4cTJEeOY48rmag3Nyw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_DexW8MTJEeOY48rmag3Nyw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DexW8cTJEeOY48rmag3Nyw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_DdlEIcTJEeOY48rmag3Nyw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_DdlEIsTJEeOY48rmag3Nyw" fontName="Sans Serif" fontHeight="8" italic="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_DdlEI8TJEeOY48rmag3Nyw" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_De-yUMTJEeOY48rmag3Nyw" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_De-yUcTJEeOY48rmag3Nyw" id="(0.4987405541561713,1.0)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_DcLV8cTJEeOY48rmag3Nyw" name="newRelationLib1">
+        <target xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:RelationLibrary" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0"/>
+        <semanticElements xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:RelationLibrary" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_DcLV8sTJEeOY48rmag3Nyw" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/RelationLibrary.jpg" backgroundStyle="Liquid">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLV88TJEeOY48rmag3Nyw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLV9MTJEeOY48rmag3Nyw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLV9cTJEeOY48rmag3Nyw" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLV9sTJEeOY48rmag3Nyw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_DcLV98TJEeOY48rmag3Nyw" name="AlternateSateDefinition" outgoingEdges="_DcL9L8TJEeOY48rmag3Nyw">
+          <target xmi:type="ccslmocc:StateMachineRelationDefinition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0"/>
+          <semanticElements xmi:type="ccslmocc:StateMachineRelationDefinition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_DcLV-MTJEeOY48rmag3Nyw" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/FSM.gif" backgroundStyle="Liquid">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pTExIOfdEeOF6tgsLaugiA"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLV-sTJEeOY48rmag3Nyw" red="114" green="159" blue="207"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLV-8TJEeOY48rmag3Nyw" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLV_MTJEeOY48rmag3Nyw" red="194" green="239" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_DcLV_cTJEeOY48rmag3Nyw" name="Alternate" incomingEdges="_DcL9L8TJEeOY48rmag3Nyw">
+          <target xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:RelationDeclaration" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDeclarations.0"/>
+          <semanticElements xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:RelationDeclaration" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDeclarations.0"/>
+          <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_DcLV_sTJEeOY48rmag3Nyw" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Variable.gif">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLV_8TJEeOY48rmag3Nyw"/>
+            <description xmi:type="style:ShapeContainerStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLWAMTJEeOY48rmag3Nyw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLWAcTJEeOY48rmag3Nyw" red="204" green="242" blue="166"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DcLWAsTJEeOY48rmag3Nyw" name="leftclock: clock">
+            <target xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:AbstractEntity" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
+            <semanticElements xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:AbstractEntity" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDeclarations.0/@parameters.0"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_DcLWA8TJEeOY48rmag3Nyw" labelFormat="italic" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Parameter.gif" labelAlignment="LEFT">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLWBMTJEeOY48rmag3Nyw"/>
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']/@subNodeMappings[name='AbstractEntity']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLWBcTJEeOY48rmag3Nyw"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_DcLWBsTJEeOY48rmag3Nyw" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']/@subNodeMappings[name='AbstractEntity']"/>
+          </ownedElements>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DcLWB8TJEeOY48rmag3Nyw" name="rightclock: clock">
+            <target xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:AbstractEntity" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
+            <semanticElements xmi:type="fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation:AbstractEntity" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDeclarations.0/@parameters.1"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_DcLWCMTJEeOY48rmag3Nyw" labelFormat="italic" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Parameter.gif" labelAlignment="LEFT">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLWCcTJEeOY48rmag3Nyw"/>
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']/@subNodeMappings[name='AbstractEntity']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_DcLWCsTJEeOY48rmag3Nyw"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_DcLWC8TJEeOY48rmag3Nyw" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']/@subNodeMappings[name='AbstractEntity']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_DcL9L8TJEeOY48rmag3Nyw" name="defines" sourceNode="_DcLV98TJEeOY48rmag3Nyw" targetNode="_DcLV_cTJEeOY48rmag3Nyw">
+        <target xmi:type="ccslmocc:StateMachineRelationDefinition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_DcL9MMTJEeOY48rmag3Nyw" lineStyle="dash" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@edgeMappings[name='RelationDefToDeclaration']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_DcL9McTJEeOY48rmag3Nyw" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_DcL9MsTJEeOY48rmag3Nyw" labelFormat="italic" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_DcL9M8TJEeOY48rmag3Nyw"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@edgeMappings[name='RelationDefToDeclaration']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_DcL9NMTJEeOY48rmag3Nyw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer"/>
+      <target xmi:type="ccslmocc:StateRelationBasedLibrary" href="SigPML_memory_fsm.mocdsl#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g68hEMTJEeOY48rmag3Nyw" name="new State Machine Relation Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_g6_kYMTJEeOY48rmag3Nyw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_g6_kYcTJEeOY48rmag3Nyw" type="Sirius" element="_g68hEMTJEeOY48rmag3Nyw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_g7ALcMTJEeOY48rmag3Nyw" type="2001" element="_g68hEcTJEeOY48rmag3Nyw">
+            <children xmi:type="notation:Node" xmi:id="_g7BZkMTJEeOY48rmag3Nyw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_g7BZkcTJEeOY48rmag3Nyw" x="38"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_thMM0OfcEeOF6tgsLaugiA" type="3004" element="_tg88QOfcEeOF6tgsLaugiA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_thMM0efcEeOF6tgsLaugiA" fontName="Sans Serif"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_thMM0ufcEeOF6tgsLaugiA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_g7ALccTJEeOY48rmag3Nyw" fontColor="7490599" fontName="Sans Serif" fontHeight="8" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g7ALcsTJEeOY48rmag3Nyw" x="252" y="126" width="37" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_OU6hkOfdEeOF6tgsLaugiA" type="2001" element="_OUqC4OfdEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_OU6hk-fdEeOF6tgsLaugiA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_OU6hlOfdEeOF6tgsLaugiA" x="-112" y="120"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OU8WwOfdEeOF6tgsLaugiA" type="3004" element="_OUqp8OfdEeOF6tgsLaugiA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_OU8WwefdEeOF6tgsLaugiA" fontName="Sans Serif"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OU8WwufdEeOF6tgsLaugiA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_OU6hkefdEeOF6tgsLaugiA" fontColor="7490599" fontName="Sans Serif" fontHeight="8" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OU6hkufdEeOF6tgsLaugiA" x="324" y="216" width="174" height="138"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_OU7IoOfdEeOF6tgsLaugiA" type="2001" element="_OUrRAOfdEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_OU7vsOfdEeOF6tgsLaugiA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_OU7vsefdEeOF6tgsLaugiA" x="146"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OU8Ww-fdEeOF6tgsLaugiA" type="3004" element="_OUr4EOfdEeOF6tgsLaugiA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_OU8WxOfdEeOF6tgsLaugiA" fontName="Sans Serif"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OU8WxefdEeOF6tgsLaugiA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_OU7IoefdEeOF6tgsLaugiA" fontColor="7490599" fontName="Sans Serif" fontHeight="8" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OU7IoufdEeOF6tgsLaugiA" x="756" y="216" width="145" height="138"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_g6_kYsTJEeOY48rmag3Nyw"/>
+          <edges xmi:type="notation:Edge" xmi:id="_OVoTQOfdEeOF6tgsLaugiA" type="4001" element="_OUvicOfdEeOF6tgsLaugiA" source="_g7ALcMTJEeOY48rmag3Nyw" target="_OU6hkOfdEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_OVoTROfdEeOF6tgsLaugiA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OVoTRefdEeOF6tgsLaugiA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OVo6UOfdEeOF6tgsLaugiA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OVo6UefdEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OVo6UufdEeOF6tgsLaugiA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OVo6U-fdEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_OVoTQefdEeOF6tgsLaugiA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_OVoTQufdEeOF6tgsLaugiA" fontName="Sans Serif" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OVoTQ-fdEeOF6tgsLaugiA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVo6VOfdEeOF6tgsLaugiA" id="(0.4972375690607735,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVo6VefdEeOF6tgsLaugiA" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_OVo6VufdEeOF6tgsLaugiA" type="4001" element="_OUwJgOfdEeOF6tgsLaugiA" source="_OU6hkOfdEeOF6tgsLaugiA" target="_OU7IoOfdEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_OVphYOfdEeOF6tgsLaugiA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OVphYefdEeOF6tgsLaugiA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OVphYufdEeOF6tgsLaugiA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OVphY-fdEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OVphZOfdEeOF6tgsLaugiA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OVphZefdEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_OVo6V-fdEeOF6tgsLaugiA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_OVo6WOfdEeOF6tgsLaugiA" fontName="Sans Serif" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OVo6WefdEeOF6tgsLaugiA" points="[5, 6, -271, 14]$[47, 60, -229, 68]$[254, 60, -22, 68]$[263, 32, -13, 40]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVphZufdEeOF6tgsLaugiA" id="(0.9712643678160919,0.7101449275362319)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVphZ-fdEeOF6tgsLaugiA" id="(0.0896551724137931,0.6521739130434783)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_OVphaOfdEeOF6tgsLaugiA" type="4001" element="_OUwJhefdEeOF6tgsLaugiA" source="_OU7IoOfdEeOF6tgsLaugiA" target="_OU6hkOfdEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_OVqIcOfdEeOF6tgsLaugiA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OVqIcefdEeOF6tgsLaugiA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OVqIcufdEeOF6tgsLaugiA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OVqIc-fdEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OVqIdOfdEeOF6tgsLaugiA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OVqIdefdEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_OVphaefdEeOF6tgsLaugiA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_OVphaufdEeOF6tgsLaugiA" fontName="Sans Serif" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OVpha-fdEeOF6tgsLaugiA" points="[-23, -7, 328, -17]$[-81, -25, 270, -35]$[-297, -25, 54, -35]$[-325, -7, 26, -17]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVqIdufdEeOF6tgsLaugiA" id="(0.43448275862068964,0.050724637681159424)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVqId-fdEeOF6tgsLaugiA" id="(0.8275862068965517,0.12318840579710146)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_g68hEcTJEeOY48rmag3Nyw" name="initialState" outgoingEdges="_OUvicOfdEeOF6tgsLaugiA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@states.0"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@states.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_tg88QOfcEeOF6tgsLaugiA" labelFormat="bold" showIcon="false" shape="dot">
+          <customFeatures>color</customFeatures>
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tg88QefcEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']/@conditionnalStyles.0/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tg88QufcEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_DcLV-cTJEeOY48rmag3Nyw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_OUqC4OfdEeOF6tgsLaugiA" name="alternate_S1" outgoingEdges="_OUwJgOfdEeOF6tgsLaugiA" incomingEdges="_OUvicOfdEeOF6tgsLaugiA _OUwJhefdEeOF6tgsLaugiA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@states.1"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@states.1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_OUqp8OfdEeOF6tgsLaugiA" labelFormat="bold" showIcon="false" shape="dot">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_OUqp8efdEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_OUqp8ufdEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_OUqp8-fdEeOF6tgsLaugiA" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_OUrRAOfdEeOF6tgsLaugiA" name="alternate_S2" outgoingEdges="_OUwJhefdEeOF6tgsLaugiA" incomingEdges="_OUwJgOfdEeOF6tgsLaugiA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@states.2"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@states.2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_OUr4EOfdEeOF6tgsLaugiA" labelFormat="bold" showIcon="false" shape="dot">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_OUr4EefdEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_OUr4EufdEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_OUr4E-fdEeOF6tgsLaugiA" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_OUvicOfdEeOF6tgsLaugiA" name="doInit" sourceNode="_g68hEcTJEeOY48rmag3Nyw" targetNode="_OUqC4OfdEeOF6tgsLaugiA">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@transitions.0"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@transitions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_OUvicefdEeOF6tgsLaugiA" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_OUvicufdEeOF6tgsLaugiA" red="69" green="69" blue="69"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_OUvic-fdEeOF6tgsLaugiA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_OUvidOfdEeOF6tgsLaugiA"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_OUwJgOfdEeOF6tgsLaugiA" name="leftclock" sourceNode="_OUqC4OfdEeOF6tgsLaugiA" targetNode="_OUrRAOfdEeOF6tgsLaugiA">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@transitions.1"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@transitions.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_OUwJgefdEeOF6tgsLaugiA" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_OUwJgufdEeOF6tgsLaugiA" red="69" green="69" blue="69"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_OUwJg-fdEeOF6tgsLaugiA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_OUwJhOfdEeOF6tgsLaugiA"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_OUwJhefdEeOF6tgsLaugiA" name="rightclock" sourceNode="_OUrRAOfdEeOF6tgsLaugiA" targetNode="_OUqC4OfdEeOF6tgsLaugiA">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@transitions.2"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0/@transitions.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_OUwJhufdEeOF6tgsLaugiA" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_OUwJh-fdEeOF6tgsLaugiA" red="69" green="69" blue="69"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_OUwJiOfdEeOF6tgsLaugiA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_OUwJiefdEeOF6tgsLaugiA"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g68hcMTJEeOY48rmag3Nyw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer"/>
+      <target xmi:type="ccslmocc:StateMachineRelationDefinition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.0"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_s6n8EOfcEeOF6tgsLaugiA" name="AlternateStateBasedDefinition">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_s6upwOfcEeOF6tgsLaugiA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_s6upwefcEeOF6tgsLaugiA" type="Sirius" element="_s6n8EOfcEeOF6tgsLaugiA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_thGtQOfcEeOF6tgsLaugiA" type="2001" element="_tghecOfcEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_thHUUOfcEeOF6tgsLaugiA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_thHUUefcEeOF6tgsLaugiA" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_thJJgOfcEeOF6tgsLaugiA" type="3004" element="_tgoMIOfcEeOF6tgsLaugiA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_thJJgefcEeOF6tgsLaugiA" fontName="Sans Serif"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_thJJgufcEeOF6tgsLaugiA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_thGtQefcEeOF6tgsLaugiA" fontColor="7490599" fontName="Sans Serif" fontHeight="8" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_thGtQufcEeOF6tgsLaugiA" x="203" y="135" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_t_gggOfcEeOF6tgsLaugiA" type="2001" element="_t-xgsOfcEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_t_hHkOfcEeOF6tgsLaugiA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_t_hHkefcEeOF6tgsLaugiA" x="96"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_t_huoOfcEeOF6tgsLaugiA" type="3004" element="_t_BYUOfcEeOF6tgsLaugiA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_t_huoefcEeOF6tgsLaugiA" fontName="Sans Serif"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_t_huoufcEeOF6tgsLaugiA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_t_gggefcEeOF6tgsLaugiA" fontColor="7490599" fontName="Sans Serif" fontHeight="8" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_t_gggufcEeOF6tgsLaugiA" x="414" y="198" width="95" height="81"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_0shLEOfcEeOF6tgsLaugiA" type="2001" element="_0r_moOfcEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_0shLE-fcEeOF6tgsLaugiA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_0shLFOfcEeOF6tgsLaugiA" x="110"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_0shyIOfcEeOF6tgsLaugiA" type="3004" element="_0sA0wOfcEeOF6tgsLaugiA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_0shyIefcEeOF6tgsLaugiA" fontName="Sans Serif"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0shyIufcEeOF6tgsLaugiA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_0shLEefcEeOF6tgsLaugiA" fontColor="7490599" fontName="Sans Serif" fontHeight="8" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0shLEufcEeOF6tgsLaugiA" x="792" y="216" width="109" height="90"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_s6upwufcEeOF6tgsLaugiA"/>
+          <edges xmi:type="notation:Edge" xmi:id="_xwI5gOfcEeOF6tgsLaugiA" type="4001" element="_xvIz8OfcEeOF6tgsLaugiA" source="_thGtQOfcEeOF6tgsLaugiA" target="_t_gggOfcEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_xwJgkOfcEeOF6tgsLaugiA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xwJgkefcEeOF6tgsLaugiA" x="-38" y="34"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xwJgkufcEeOF6tgsLaugiA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xwJgk-fcEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xwJglOfcEeOF6tgsLaugiA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xwJglefcEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_xwI5gefcEeOF6tgsLaugiA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_xwI5gufcEeOF6tgsLaugiA" fontName="Sans Serif" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xwI5g-fcEeOF6tgsLaugiA" points="[15, 4, -228, -84]$[241, 48, -2, -40]"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_7_tE0OfcEeOF6tgsLaugiA" type="4001" element="_7_Px0OfcEeOF6tgsLaugiA" source="_t_gggOfcEeOF6tgsLaugiA" target="_0shLEOfcEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_7_tE1OfcEeOF6tgsLaugiA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7_tE1efcEeOF6tgsLaugiA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_7_tE1ufcEeOF6tgsLaugiA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7_tE1-fcEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_7_tr4OfcEeOF6tgsLaugiA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7_tr4efcEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_7_tE0efcEeOF6tgsLaugiA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_7_tE0ufcEeOF6tgsLaugiA" fontName="Sans Serif" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7_tE0-fcEeOF6tgsLaugiA" points="[0, -8, -372, -37]$[0, -26, -372, -55]$[365, -26, -7, -55]$[365, 10, -7, -19]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7_tr4ufcEeOF6tgsLaugiA" id="(0.5157894736842106,0.09876543209876543)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7_tr4-fcEeOF6tgsLaugiA" id="(0.3944954128440367,0.2111111111111111)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_Cu45oOfdEeOF6tgsLaugiA" type="4001" element="_CuScsOfdEeOF6tgsLaugiA" source="_0shLEOfcEeOF6tgsLaugiA" target="_t_gggOfcEeOF6tgsLaugiA">
+            <children xmi:type="notation:Node" xmi:id="_Cu45pOfdEeOF6tgsLaugiA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cu45pefdEeOF6tgsLaugiA" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Cu45pufdEeOF6tgsLaugiA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cu45p-fdEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Cu5gsOfdEeOF6tgsLaugiA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cu5gsefdEeOF6tgsLaugiA" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_Cu45oefdEeOF6tgsLaugiA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_Cu45oufdEeOF6tgsLaugiA" fontName="Sans Serif" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Cu45o-fdEeOF6tgsLaugiA" points="[-20, -5, 313, 0]$[-327, 6, 6, 11]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Cu5gsufdEeOF6tgsLaugiA" id="(0.1834862385321101,0.6333333333333333)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Cu5gs-fdEeOF6tgsLaugiA" id="(0.6842105263157895,0.8641975308641975)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_tghecOfcEeOF6tgsLaugiA" name="initialState" outgoingEdges="_xvIz8OfcEeOF6tgsLaugiA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@states.0"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@states.0"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_tgoMIOfcEeOF6tgsLaugiA" labelFormat="bold" showIcon="false" shape="dot">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tgoMIefcEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']/@conditionnalStyles.0/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tgoMIufcEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_tgoMI-fcEeOF6tgsLaugiA" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_t-xgsOfcEeOF6tgsLaugiA" name="alternate_S1" outgoingEdges="_7_Px0OfcEeOF6tgsLaugiA" incomingEdges="_xvIz8OfcEeOF6tgsLaugiA _CuScsOfdEeOF6tgsLaugiA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@states.1"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@states.1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_t_BYUOfcEeOF6tgsLaugiA" labelFormat="bold" showIcon="false" shape="dot">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_t_BYUefcEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_t_BYUufcEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_t_BYU-fcEeOF6tgsLaugiA" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_0r_moOfcEeOF6tgsLaugiA" name="alternate_S2" outgoingEdges="_CuScsOfdEeOF6tgsLaugiA" incomingEdges="_7_Px0OfcEeOF6tgsLaugiA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@states.2"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:State" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@states.2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_0sA0wOfcEeOF6tgsLaugiA" labelFormat="bold" showIcon="false" shape="dot">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0sA0wefcEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_0sA0wufcEeOF6tgsLaugiA" red="39" green="76" blue="114"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_0sA0w-fcEeOF6tgsLaugiA" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_xvIz8OfcEeOF6tgsLaugiA" name="FSM2_S1ToFSM2_S2" sourceNode="_tghecOfcEeOF6tgsLaugiA" targetNode="_t-xgsOfcEeOF6tgsLaugiA">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@transitions.0"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@transitions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_xvJbAOfcEeOF6tgsLaugiA" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_xvJbAefcEeOF6tgsLaugiA" red="69" green="69" blue="69"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_xvJbAufcEeOF6tgsLaugiA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_xvJbA-fcEeOF6tgsLaugiA"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_7_Px0OfcEeOF6tgsLaugiA" name="leftClock" sourceNode="_t-xgsOfcEeOF6tgsLaugiA" targetNode="_0r_moOfcEeOF6tgsLaugiA">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@transitions.1"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@transitions.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_7_Px0efcEeOF6tgsLaugiA" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_7_Px0ufcEeOF6tgsLaugiA" red="69" green="69" blue="69"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_7_Px0-fcEeOF6tgsLaugiA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7_Px1OfcEeOF6tgsLaugiA"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_CuScsOfdEeOF6tgsLaugiA" name="rightClock" sourceNode="_0r_moOfcEeOF6tgsLaugiA" targetNode="_t-xgsOfcEeOF6tgsLaugiA">
+        <target xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@transitions.2"/>
+        <semanticElements xmi:type="org.gemoc.mocc.fsmmodel:Transition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1/@transitions.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_CuTDwOfdEeOF6tgsLaugiA" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_CuTDwefdEeOF6tgsLaugiA" red="69" green="69" blue="69"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_CuTDwufdEeOF6tgsLaugiA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_CuTDw-fdEeOF6tgsLaugiA"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@edgeMappings[name='FSMTransition']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_s6n8EefcEeOF6tgsLaugiA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer"/>
+      <target xmi:type="ccslmocc:StateMachineRelationDefinition" href="SigPML_memory_fsm.mocdsl#//@relationLibraries.0/@relationDefinitions.1"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.mocc.ccslmocc.model.design/description/CCSLMoCC.odesign#//@ownedViewpoints[name='CCSLMoCC']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

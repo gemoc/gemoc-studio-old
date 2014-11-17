@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sigpml:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sigpml="http://org.gemoc.sigpml.model/1.0" name="Appli1">
+  <ownedAgents name="a1">
+    <ownedPorts xsi:type="sigpml:OutputPort" name="pout" rate="4"/>
+  </ownedAgents>
+  <ownedAgents name="a2">
+    <ownedPorts xsi:type="sigpml:InputPort" name="p1" rate="1"/>
+  </ownedAgents>
+  <ownedPlaces name="place" itsOutputPort="//@ownedAgents.0/@ownedPorts.0" itsInputPort="//@ownedAgents.1/@ownedPorts.0"/>
+</sigpml:Application>

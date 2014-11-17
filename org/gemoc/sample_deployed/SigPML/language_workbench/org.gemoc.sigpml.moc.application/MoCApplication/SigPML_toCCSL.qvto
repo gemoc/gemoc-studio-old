@@ -1,0 +1,1436 @@
+import fr.inria.aoste.timesquare.ecl.EclQVToHelper;
+ 
+	
+modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
+//modeltype pivot uses 'http://www.eclipse.org/ocl/3.1.0/Pivot';
+
+	modeltype inMM1 uses 'http://org.gemoc.sigpml.model/1.0/extended';
+
+//modeltype inMM uses 'http://org.gemoc.sigpml.model/1.0/extended';
+modeltype QVT uses 'http://www.eclipse.org/QVT/1.0.0/Operational';//http://www.eclipse.org/m2m/qvt/oml/1.0.0/Stdlib';//http://www.eclipse.org/qvt/1.0/ImperativeOCL'; 
+modeltype TimeModel uses 'http://fr.inria.aoste.timemodel';
+
+modeltype FeedBack uses 'http://timesquare.inria.fr/feedback';
+
+transformation doSigPMLExtended_ecore_To_CCSL(in inM : inMM1, out ccsl : TimeModel, out feedback : FeedBack);
+property theFeedBackSpec		:FeedBack::ActionModel = null;
+property seqOfMSE :	Sequence(FeedBack::ModelSpecificEvent)    = Sequence{};
+
+property theCCSLSpec			:TimeModel::CCSLModel::ClockConstraintSystem = null;
+property theMainBlock			:TimeModel::CCSLModel::Block				 = null;
+
+property Kernel_Integer 	: TimeModel::BasicType::Type		= null;
+property Kernel_Clock_Type 	: TimeModel::BasicType::Type		= null;
+
+property seqOfRelationDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration)    = Sequence{};
+property seqOfAbstractEntity :		Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)    = Sequence{};
+property seqOfExpressionDeclaration :	Sequence(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration)    = Sequence{};
+
+
+query identifyUserRelations() {
+	var kernelTypes :  	Sequence(TimeModel::BasicType::Type) := Sequence{};
+	seqOfRelationDeclaration		+= getLibObjects("platform:/resource/org.gemoc.sigpml.moc.lib/MoCLib/SigPML.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+	seqOfAbstractEntity				+= getLibObjects("platform:/resource/org.gemoc.sigpml.moc.lib/MoCLib/SigPML.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+	seqOfExpressionDeclaration		+= getLibObjects("platform:/resource/org.gemoc.sigpml.moc.lib/MoCLib/SigPML.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+	kernelTypes 					+= getLibObjects("platform:/resource/org.gemoc.sigpml.moc.lib/MoCLib/SigPML.ccslLib")[TimeModel::BasicType::Type];
+	seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+	kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib")[TimeModel::BasicType::Type];
+	seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+	kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::BasicType::Type];
+
+	Kernel_Integer 					:= kernelTypes[name='int']->asSequence()->first();
+	Kernel_Clock_Type				:= kernelTypes[name='clock']->asSequence()->first();	
+	return;
+}
+
+
+//usefull function :)
+	mapping Real::Real2Integer(n: String) :TimeModel::BasicType::IntegerElement {
+		name:= n;
+		type:= Kernel_Integer;
+		value := self.round();
+
+		end{
+			theMainBlock.elements += result;
+		}
+	}
+
+main() {
+	identifyUserRelations();
+	inM.rootObjects()[inMM1::Package]->asSequence()->first()-> map sigpmlextended2CCSL();
+	inM.rootObjects()[inMM1::Package]->asSequence()->first()-> map sigpmlextended2FeedBack();
+
+	}
+
+			
+	mapping inMM1::Package::sigpmlextended2CCSL() : TimeModel::CCSLModel::ClockConstraintSystem {
+	    theCCSLSpec := result;
+	    name := self.name;
+	    theMainBlock :=object TimeModel::CCSLModel::Block{
+	    	name := "mainBlock";
+	    };
+	    subBlock += theMainBlock;
+	    result.superBlock := theMainBlock;
+
+		imports+= object TimeModel::ImportStatement{
+			importURI := 'platform:/resource/org.gemoc.sigpml.moc.lib/MoCLib/SigPML.ccslLib';
+			alias := 'SigPML';
+			
+		}; 
+		imports+= object TimeModel::ImportStatement{
+			importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib';
+			alias := 'kernel';
+			
+		}; 
+		imports+= object TimeModel::ImportStatement{
+			importURI := 'platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib';
+			alias := 'CCSL';
+			
+		}; 
+	
+		imports+= object TimeModel::ImportStatement{
+			importURI := getModelPath(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			alias := getModelAlias(inM.rootObjects()->asSequence()->first().oclAsType(EObject));
+			
+		};
+
+		
+
+		inM.rootObjects().allSubobjects()->including(self)[ Agent ]->map start2Clock();
+		inM.rootObjects().allSubobjects()->including(self)[ Agent ]->map stop2Clock();
+		inM.rootObjects().allSubobjects()->including(self)[ Agent ]->map isExecuting2Clock();
+		
+
+
+		
+
+		inM.rootObjects().allSubobjects()->including(self)[ InputPort ]->map ratePlusOne2Integer();
+		inM.rootObjects().allSubobjects()->including(self)[ InputPort ]->map read2Clock();
+		
+
+
+		
+
+		inM.rootObjects().allSubobjects()->including(self)[ OutputPort ]->map write2Clock();
+		
+
+
+		
+
+		inM.rootObjects().allSubobjects()->including(self)[ Place ]->map push2Clock();
+		inM.rootObjects().allSubobjects()->including(self)[ Place ]->map pop2Clock();
+		inM.rootObjects().allSubobjects()->including(self)[ Place ]->map sizePlusOne2Integer();
+		inM.rootObjects().allSubobjects()->including(self)[ Place ]->map delayPlusOne2Integer();
+		
+
+
+		
+
+		inM.rootObjects().allSubobjects()->including(self)[ HWComputationalResource ]->map isExecuting2Clock();
+		inM.rootObjects().allSubobjects()->including(self)[ HWComputationalResource ]->map idle2Clock();
+		
+
+
+		
+
+		inM.rootObjects().allSubobjects()->including(self)[ HWStorageResource ]->map isReading2Clock();
+		inM.rootObjects().allSubobjects()->including(self)[ HWStorageResource ]->map isWriting2Clock();
+		
+
+
+		
+
+		
+
+
+		
+		inM.rootObjects().allSubobjects()->including(self)[ Place ]->map BoundedPlaces402BoundedPlaces();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ Place ]->map TokenConstraint72TokenConstraint();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ Place ]->map waitEnoughData92waitEnoughData();
+		
+		
+
+		
+
+
+		
+		inM.rootObjects().allSubobjects()->including(self)[ InputPort ]->map AgentInputConstraint72AgentInputConstraint();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ InputPort ]->map portReadInPlace292portReadInPlace();
+		
+		
+
+		
+
+
+		
+		inM.rootObjects().allSubobjects()->including(self)[ OutputPort ]->map AgentOutputConstraint72AgentOutputConstraint();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ OutputPort ]->map portWriteInPlace292portWriteInPlace();
+		
+		
+
+		
+
+
+		
+		inM.rootObjects().allSubobjects()->including(self)[ Agent ]->map ComputationDelay72ComputationDelay();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ Agent ]->map NonReentrantAgent12NonReentrantAgent();
+		
+		
+
+		
+
+
+		
+		inM.rootObjects().allSubobjects()->including(self)[ HWComputationalResource ]->map IsExecutingXorIdle12IsExecutingXorIdle();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ HWComputationalResource ]->map oneAgentAtATime12oneAgentAtATime();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ HWComputationalResource ]->map ExecutesItsAllocatedAgents142ExecutesItsAllocatedAgents();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ HWComputationalResource ]->map NonPreemptiveExecution332NonPreemptiveExecution();
+		
+		
+
+		
+
+
+		
+		inM.rootObjects().allSubobjects()->including(self)[ HWStorageResource ]->map IsReadingXorWriting12IsReadingXorWriting();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ HWStorageResource ]->map oneWriteAtATime12oneWriteAtATime();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ HWStorageResource ]->map isReadingAccordingToPortRead162isReadingAccordingToPortRead();
+		
+		
+		inM.rootObjects().allSubobjects()->including(self)[ HWStorageResource ]->map isWritingAccordingToPortWrite162isWritingAccordingToPortWrite();
+		
+	}
+
+
+
+
+
+//create the expressions...
+	mapping inMM1::Place::NwriteInAdvance2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		name := self.name+'_invalid_NwriteInAdvance';
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = (self.itsOutputPort.oclAsType(OutputPort)).name+'_write']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = (self.itsOutputPort.oclAsType(OutputPort)).name+'_write']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_sizePlusOne']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+	
+	
+//Create an intermediate expression
+//create the expressions... 
+	mapping inMM1::HWComputationalResource::intermediate_allAgentsExecutions2Expression(an1 : Agent, an2 : Agent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{ 
+		name := self.name+'intermediate_allAgentsExecutions'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				 
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an1.name+'_isExecuting']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	mapping inMM1::HWComputationalResource::intermediate_allAgentsExecutions2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Agent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		name := self.name+'intermediate_allAgentsExecutions'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.expressions[name = expr.name]->first();
+					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+	
+	mapping inMM1::HWComputationalResource::allAgentsExecutions2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		init{
+		var sources : Sequence(Agent) := self.allocatedAgents.oclAsType(Agent)->asSequence();
+		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
+		var i : Integer := 3;
+		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
+		var size : Integer = sources->size(); 
+		if(size = 1)then{
+			result := self.map intermediate_allAgentsExecutions2Expression(sources->at(1),sources->at(1), 1);
+		}else{
+			lastExpr := self.map intermediate_allAgentsExecutions2Expression(sources->at(1),sources->at(2), 1);
+			while (i <= size){
+				newExpr := self.map intermediate_allAgentsExecutions2Expression(lastExpr,sources->at(i), i);
+				lastExpr := newExpr;
+				i := i + 1;
+			};
+			result := lastExpr;
+		}
+		endif;
+		}
+		
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	
+	
+//Create an intermediate expression
+//create the expressions... 
+	mapping inMM1::HWComputationalResource::intermediate_allAgentStarts2Expression(an1 : Agent, an2 : Agent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{ 
+		name := self.name+'intermediate_allAgentStarts'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				 
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an1.name+'_start']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	mapping inMM1::HWComputationalResource::intermediate_allAgentStarts2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Agent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		name := self.name+'intermediate_allAgentStarts'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.expressions[name = expr.name]->first();
+					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+	
+	mapping inMM1::HWComputationalResource::allAgentStarts2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		init{
+		var sources : Sequence(Agent) := self.allocatedAgents.oclAsType(Agent)->asSequence();
+		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
+		var i : Integer := 3;
+		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
+		var size : Integer = sources->size(); 
+		if(size = 1)then{
+			result := self.map intermediate_allAgentStarts2Expression(sources->at(1),sources->at(1), 1);
+		}else{
+			lastExpr := self.map intermediate_allAgentStarts2Expression(sources->at(1),sources->at(2), 1);
+			while (i <= size){
+				newExpr := self.map intermediate_allAgentStarts2Expression(lastExpr,sources->at(i), i);
+				lastExpr := newExpr;
+				i := i + 1;
+			};
+			result := lastExpr;
+		}
+		endif;
+		}
+		
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	
+	
+//Create an intermediate expression
+//create the expressions... 
+	mapping inMM1::HWComputationalResource::intermediate_allAgentStops2Expression(an1 : Agent, an2 : Agent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{ 
+		name := self.name+'intermediate_allAgentStops'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				 
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an1.name+'_stop']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	mapping inMM1::HWComputationalResource::intermediate_allAgentStops2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Agent, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		name := self.name+'intermediate_allAgentStops'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.expressions[name = expr.name]->first();
+					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+	
+	mapping inMM1::HWComputationalResource::allAgentStops2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		init{
+		var sources : Sequence(Agent) := self.allocatedAgents.oclAsType(Agent)->asSequence();
+		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
+		var i : Integer := 3;
+		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
+		var size : Integer = sources->size(); 
+		if(size = 1)then{
+			result := self.map intermediate_allAgentStops2Expression(sources->at(1),sources->at(1), 1);
+		}else{
+			lastExpr := self.map intermediate_allAgentStops2Expression(sources->at(1),sources->at(2), 1);
+			while (i <= size){
+				newExpr := self.map intermediate_allAgentStops2Expression(lastExpr,sources->at(i), i);
+				lastExpr := newExpr;
+				i := i + 1;
+			};
+			result := lastExpr;
+		}
+		endif;
+		}
+		
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	
+	
+//Create an intermediate expression
+//create the expressions... 
+	mapping inMM1::HWStorageResource::intermediate_allPortReads2Expression(an1 : InputPort, an2 : InputPort, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{ 
+		name := self.name+'intermediate_allPortReads'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				 
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an1.name+'_read']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	mapping inMM1::HWStorageResource::intermediate_allPortReads2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : InputPort, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		name := self.name+'intermediate_allPortReads'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.expressions[name = expr.name]->first();
+					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+	
+	mapping inMM1::HWStorageResource::allPortReads2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		init{
+		var sources : Sequence(InputPort) := self.allocatedPlaces.itsInputPort.oclAsType(InputPort)->asSequence();
+		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
+		var i : Integer := 3;
+		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
+		var size : Integer = sources->size(); 
+		if(size = 1)then{
+			result := self.map intermediate_allPortReads2Expression(sources->at(1),sources->at(1), 1);
+		}else{
+			lastExpr := self.map intermediate_allPortReads2Expression(sources->at(1),sources->at(2), 1);
+			while (i <= size){
+				newExpr := self.map intermediate_allPortReads2Expression(lastExpr,sources->at(i), i);
+				lastExpr := newExpr;
+				i := i + 1;
+			};
+			result := lastExpr;
+		}
+		endif;
+		}
+		
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	
+	
+//Create an intermediate expression
+//create the expressions... 
+	mapping inMM1::HWStorageResource::intermediate_allPortWrites2Expression(an1 : OutputPort, an2 : OutputPort, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{ 
+		name := self.name+'intermediate_allPortWrites'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				 
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an1.name+'_write']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+				};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+	mapping inMM1::HWStorageResource::intermediate_allPortWrites2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : OutputPort, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		name := self.name+'intermediate_allPortWrites'+nb.toString();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.expressions[name = expr.name]->first();
+					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+	
+	mapping inMM1::HWStorageResource::allPortWrites2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	{
+		init{
+		var sources : Sequence(OutputPort) := self.allocatedPlaces.itsOutputPort.oclAsType(OutputPort)->asSequence();
+		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
+		var i : Integer := 3;
+		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
+		var size : Integer = sources->size(); 
+		if(size = 1)then{
+			result := self.map intermediate_allPortWrites2Expression(sources->at(1),sources->at(1), 1);
+		}else{
+			lastExpr := self.map intermediate_allPortWrites2Expression(sources->at(1),sources->at(2), 1);
+			while (i <= size){
+				newExpr := self.map intermediate_allPortWrites2Expression(lastExpr,sources->at(i), i);
+				lastExpr := newExpr;
+				i := i + 1;
+			};
+			result := lastExpr;
+		}
+		endif;
+		}
+		
+		end{
+			theMainBlock.expressions += result;
+		}
+	}
+
+
+
+
+	 	mapping inMM1::Agent::start2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_start';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "execute")->first().oclAsType(EObject);
+			
+				name := 'evt_'+self.name+'_start';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM1::Agent::stop2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_stop';
+			tickingEvent := object TimeModel::Event{
+			
+				name := 'evt_'+self.name+'_stop';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM1::Agent::isExecuting2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_isExecuting';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "isExecuting")->first().oclAsType(EObject);
+			
+				name := 'evt_'+self.name+'_isExecuting';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+		mapping inMM1::InputPort::ratePlusOne2Integer() :TimeModel::BasicType::IntegerElement {
+			name:= self.name + '_ratePlusOne';
+			type:= Kernel_Integer;
+			value := self.rate+1;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM1::InputPort::read2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_read';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "read")->first().oclAsType(EObject);
+			
+				name := 'evt_'+self.name+'_read';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+	 	mapping inMM1::OutputPort::write2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_write';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "write")->first().oclAsType(EObject);
+			
+				name := 'evt_'+self.name+'_write';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+	 	mapping inMM1::Place::push2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_push';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "push")->first().oclAsType(EObject);
+			
+				name := 'evt_'+self.name+'_push';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM1::Place::pop2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_pop';
+			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
+				//referencedObjectRefs += self.oclAsType(EObject);
+				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "pop")->first().oclAsType(EObject);
+			
+				name := 'evt_'+self.name+'_pop';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+		mapping inMM1::Place::sizePlusOne2Integer() :TimeModel::BasicType::IntegerElement {
+			name:= self.name + '_sizePlusOne';
+			type:= Kernel_Integer;
+			value := self.size+1;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+		mapping inMM1::Place::delayPlusOne2Integer() :TimeModel::BasicType::IntegerElement {
+			name:= self.name + '_delayPlusOne';
+			type:= Kernel_Integer;
+			value := self.delay +1;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+	 	mapping inMM1::HWComputationalResource::isExecuting2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_isExecuting';
+			tickingEvent := object TimeModel::Event{
+			
+				name := 'evt_'+self.name+'_isExecuting';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM1::HWComputationalResource::idle2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_idle';
+			tickingEvent := object TimeModel::Event{
+			
+				name := 'evt_'+self.name+'_idle';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+	 	mapping inMM1::HWStorageResource::isReading2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_isReading';
+			tickingEvent := object TimeModel::Event{
+			
+				name := 'evt_'+self.name+'_isReading';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+	 	mapping inMM1::HWStorageResource::isWriting2Clock() :TimeModel::Clock 
+			when {  }
+		{
+			name:= self.name+'_isWriting';
+			tickingEvent := object TimeModel::Event{
+			
+				name := 'evt_'+self.name+'_isWriting';
+				kind := TimeModel::EventKind::undefined;
+						
+			};
+			type:= Kernel_Clock_Type;
+
+			end{
+				theMainBlock.elements += result;
+			}
+		}
+
+//relation stuff		
+
+//relation stuff		
+	
+		mapping inMM1::Place::BoundedPlaces402BoundedPlaces(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+				(self.size > 0) 
+				
+}
+		{
+		 	name := self.name+"invalid_BoundedPlaces";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = (self.itsInputPort.oclAsType(InputPort)).name+'_read']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self -> map NwriteInAdvance2Expression()->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM1::Place::TokenConstraint72TokenConstraint(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_TokenConstraint";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+					var itsDelay : Integer := self.delay;
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = ((self).itsOutputPort.oclAsType(OutputPort)).name+'_write']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = ((self).itsInputPort.oclAsType(InputPort)).name+'_read']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self.delay -> map Real2Integer(self.name+self.name+"itsDelay"+"_delay")->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM1::Place::waitEnoughData92waitEnoughData(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_waitEnoughData";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+					var itsInputPortRate : Integer := self.itsInputPort.rate;
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.itsInputPort.oclAsType(InputPort).name+'_read']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_push']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self.itsInputPort.rate -> map Real2Integer(self.name+self.itsInputPort.name+"itsInputPortRate"+"_rate")->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_delayPlusOne']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+
+//relation stuff		
+	
+		mapping inMM1::InputPort::AgentInputConstraint72AgentInputConstraint(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_AgentInputConstraint";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+					var itsRate : Integer := self.rate;
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.owner.oclAsType(Agent).name+'_start']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_read']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_ratePlusOne']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self.rate -> map Real2Integer(self.name+self.name+"itsRate"+"_rate")->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM1::InputPort::portReadInPlace292portReadInPlace(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_portReadInPlace";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+					var associatedIPlace : Place := self.owner.owner.ownedPlaces->select(p | (p).itsInputPort = self)->first().oclAsType(Place);
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_read']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = (associatedIPlace).name+'_pop']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+
+//relation stuff		
+	
+		mapping inMM1::OutputPort::AgentOutputConstraint72AgentOutputConstraint(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_AgentOutputConstraint";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+					var itsORate : Integer := self.rate;
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.owner.oclAsType(Agent).name+'_stop']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_write']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self.rate -> map Real2Integer(self.name+self.name+"itsORate"+"_rate")->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM1::OutputPort::portWriteInPlace292portWriteInPlace(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_portWriteInPlace";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+					var associatedOPlace : Place := self.owner.owner.ownedPlaces->select(p | (p).itsOutputPort = self)->first().oclAsType(Place);
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_write']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = (associatedOPlace).name+'_push']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+
+//relation stuff		
+	
+		mapping inMM1::Agent::ComputationDelay72ComputationDelay(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_ComputationDelay";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+					var itsExecTime : Integer := self.cycles;
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_start']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_stop']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_isExecuting']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self.cycles -> map Real2Integer(self.name+self.name+"itsExecTime"+"_cycles")->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM1::Agent::NonReentrantAgent12NonReentrantAgent(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_NonReentrantAgent";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_start']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_stop']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+
+//relation stuff		
+	
+		mapping inMM1::HWComputationalResource::IsExecutingXorIdle12IsExecutingXorIdle(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_IsExecutingXorIdle";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_isExecuting']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_idle']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+
+//Create an intermediate relation
+	mapping inMM1::HWComputationalResource::intermediate_oneAgentAtATime12oneAgentAtATime(an1 : Agent, an2 : Agent, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	{
+		name := self.name+'intermediate_oneAgentAtATime'+nbi.toString()+"_"+nbj.toString();
+		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
+		type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an1.name+'_isExecuting']->first();
+					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an2.name+'_isExecuting']->first();
+					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+		end{
+			theMainBlock.relations += result;
+		}
+	}
+	
+	mapping inMM1::HWComputationalResource::oneAgentAtATime12oneAgentAtATime()
+	{
+		init{
+			var sources : Sequence(Agent) := self.allocatedAgents.oclAsType(Agent)->asSequence();
+			var i : Integer := 1;
+			var j : Integer := 1;
+			var size : Integer = sources->size(); 
+			while (i <= size){
+				j := i+1;
+				while (j <= size){
+					theMainBlock.relations +=  self.map intermediate_oneAgentAtATime12oneAgentAtATime(sources->at(i),sources->at(j), i, j);
+					j := j + 1;
+				};
+				i := i + 1;
+			};
+		}
+	}
+
+		
+	
+		mapping inMM1::HWComputationalResource::ExecutesItsAllocatedAgents142ExecutesItsAllocatedAgents(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_ExecutesItsAllocatedAgents";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_isExecuting']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self -> map allAgentsExecutions2Expression()->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM1::HWComputationalResource::NonPreemptiveExecution332NonPreemptiveExecution(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+			when { 
+				(self.isUnderPreemptiveManagement) 
+				
+}
+		{
+		 	name := self.name+"invalid_NonPreemptiveExecution";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self -> map allAgentStarts2Expression()->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self -> map allAgentStops2Expression()->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+
+//relation stuff		
+	
+		mapping inMM1::HWStorageResource::IsReadingXorWriting12IsReadingXorWriting(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_IsReadingXorWriting";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_isReading']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_isWriting']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+
+//Create an intermediate relation
+	mapping inMM1::HWStorageResource::intermediate_oneWriteAtATime12oneWriteAtATime(an1 : OutputPort, an2 : OutputPort, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	{
+		name := self.name+'intermediate_oneWriteAtATime'+nbi.toString()+"_"+nbj.toString();
+		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
+		type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an1.name+'_write']->first();
+					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an2.name+'_write']->first();
+					_abstract := seqAbstract->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+		end{
+			theMainBlock.relations += result;
+		}
+	}
+	
+	mapping inMM1::HWStorageResource::oneWriteAtATime12oneWriteAtATime()
+	{
+		init{
+			var sources : Sequence(OutputPort) := self.allocatedPlaces.itsOutputPort.oclAsType(OutputPort)->asSequence();
+			var i : Integer := 1;
+			var j : Integer := 1;
+			var size : Integer = sources->size(); 
+			while (i <= size){
+				j := i+1;
+				while (j <= size){
+					theMainBlock.relations +=  self.map intermediate_oneWriteAtATime12oneWriteAtATime(sources->at(i),sources->at(j), i, j);
+					j := j + 1;
+				};
+				i := i + 1;
+			};
+		}
+	}
+
+		
+	
+		mapping inMM1::HWStorageResource::isReadingAccordingToPortRead162isReadingAccordingToPortRead(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_isReadingAccordingToPortRead";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_isReading']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self -> map allPortReads2Expression()->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+	
+		mapping inMM1::HWStorageResource::isWritingAccordingToPortWrite162isWritingAccordingToPortWrite(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		{
+		 	name := self.name+"invalid_isWritingAccordingToPortWrite";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = self.name+'_isWriting']->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+				
+						bindable := self -> map allPortWrites2Expression()->asSequence()->first();
+					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+				};
+		
+		theMainBlock.relations += result;
+		}
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mapping inMM1::Package::sigpmlextended2FeedBack() : FeedBack::ActionModel {
+	    theFeedBackSpec := result;
+		importStatements+= object FeedBack::ImportStatement{
+			importURI := getModelPath(ccsl.objectsOfType(Clock)->asSequence()->first().oclAsType(EObject));
+		}; 
+		
+
+	inM.rootObjects().allSubobjects()->including(self)[ Agent ]->map start2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ Agent ]->map stop2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ Agent ]->map isExecuting2MSE();
+
+
+
+
+		
+
+	inM.rootObjects().allSubobjects()->including(self)[ InputPort ]->map read2MSE();
+
+
+
+
+		
+
+	inM.rootObjects().allSubobjects()->including(self)[ OutputPort ]->map write2MSE();
+
+
+
+
+		
+
+	inM.rootObjects().allSubobjects()->including(self)[ Place ]->map push2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ Place ]->map pop2MSE();
+
+
+
+
+		
+
+	inM.rootObjects().allSubobjects()->including(self)[ HWComputationalResource ]->map isExecuting2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ HWComputationalResource ]->map idle2MSE();
+
+
+
+
+		
+
+	inM.rootObjects().allSubobjects()->including(self)[ HWStorageResource ]->map isReading2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ HWStorageResource ]->map isWriting2MSE();
+
+
+
+
+		
+
+
+
+
+
+		
+
+
+
+
+
+		
+
+
+
+
+
+		
+
+
+
+
+
+		
+
+
+
+
+
+		
+
+
+
+
+
+
+	}		
+
+
+	 	mapping inMM1::Agent::start2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_start';
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "execute")->first();
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_start')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::Agent::stop2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_stop';
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_stop')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::Agent::isExecuting2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_isExecuting';
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "isExecuting")->first();
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_isExecuting')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::InputPort::read2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_read';
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "read")->first();
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_read')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::OutputPort::write2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_write';
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "write")->first();
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_write')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::Place::push2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_push';
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "push")->first();
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_push')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::Place::pop2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_pop';
+				caller := self.oclAsType(EObject);
+				action := self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "pop")->first();
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_pop')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::HWComputationalResource::isExecuting2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_isExecuting';
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_isExecuting')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::HWComputationalResource::idle2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_idle';
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_idle')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::HWStorageResource::isReading2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_isReading';
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_isReading')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+	 	mapping inMM1::HWStorageResource::isWriting2MSE() :FeedBack::ModelSpecificEvent 
+			when {  }
+		{
+			name:= 'MSE_'+self.name+'_isWriting';
+				solverEvent := theMainBlock.elements[Clock]->select(c|c.name=self.name+'_isWriting')->first().oclAsType(EObject);
+				
+			end{
+				theFeedBackSpec.events += result;
+				seqOfMSE += result
+			}
+		}
+			
+		
+
+
+
+
+
+
+
+
+
+

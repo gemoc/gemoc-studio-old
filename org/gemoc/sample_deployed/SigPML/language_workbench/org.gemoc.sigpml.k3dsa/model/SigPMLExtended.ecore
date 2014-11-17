@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sigpmlextended" nsURI="http://org.gemoc.sigpml.model/1.0/extended" nsPrefix="sigpmlextended">
+  <eClassifiers xsi:type="ecore:EClass" name="Application">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//Application"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Agent">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//Agent"/>
+    <eSuperTypes href="#//NamedElement"/>
+    <eOperations name="isExecuting">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eOperations name="execute">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="plotter" eType="//SwingPlotter">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="frame" eType="//JFrame">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="figure" eType="//Figure">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentExecCycle">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//Port"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputPort">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//InputPort"/>
+    <eSuperTypes href="#//NamedElement"/>
+    <eOperations name="read">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="logSizeToReadWhenZero">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eOperations name="logSizeToReadWhenNotZero">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeToread">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputPort">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//OutputPort"/>
+    <eSuperTypes href="#//NamedElement"/>
+    <eOperations name="write">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeWritten">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Place">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//Place"/>
+    <eSuperTypes href="#//NamedElement"/>
+    <eOperations name="push">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eOperations name="pop">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifo" eType="//ArrayList">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitialized">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentSize">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//NamedElement"/>
+    <eOperations name="sharedMemory" eType="//LinkedListMultimap">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWRessource" abstract="true">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//HWRessource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWComputationalResource">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//HWComputationalResource"/>
+    <eOperations name="incCycle">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentExecCycle">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWStorageResource">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//HWStorageResource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWCommunicationResource">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//HWCommunicationResource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWPlatform">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//HWPlatform"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="System">
+    <eSuperTypes href="../../org.gemoc.sigpml.model/model/sigpml.ecore#//System"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sharedMemory" eType="//LinkedListMultimap">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="SwingPlotter" instanceClassName="cnrs.luchogie.up.SwingPlotter"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JFrame" instanceClassName="javax.swing.JFrame"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Figure" instanceClassName="cnrs.luchogie.up.data.Figure"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ArrayList" instanceClassName="java.util.ArrayList"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="LinkedListMultimap" instanceClassName="com.google.common.collect.LinkedListMultimap"/>
+</ecore:EPackage>

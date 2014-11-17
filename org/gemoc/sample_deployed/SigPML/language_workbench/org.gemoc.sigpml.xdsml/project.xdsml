@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<conf:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:conf="http://www.gemoc.org/gemoc_language_workbench_conf" name="sigpml">
+  <dsaProject projectName="org.gemoc.sigpml.k3dsa" codeExecutorClass="org.gemoc.sigpml.xdsml.executor.SigpmlCodeExecutor"/>
+  <domainModelProject projectName="org.gemoc.sigpml.model" defaultRootEObjectQualifiedName="sigpml::Application" genmodeluri="platform:/resource/org.gemoc.sigpml.model/model/sigpml.genmodel"/>
+  <editorProjects xsi:type="conf:SiriusEditorProject" projectName="org.gemoc.sigpml.model.design">
+    <fileExtension>sigpml</fileExtension>
+    <fileExtension>SigPML</fileExtension>
+  </editorProjects>
+  <moCModelProject projectName="org.gemoc.sigpml.moc.lib"/>
+  <dSEProject projectName="org.gemoc.sigpml.moc.application" qvtoURI="/org.gemoc.sigpml.moc.application/qvto-gen/modeling/SigPML.qvto"/>
+</conf:LanguageDefinition>
