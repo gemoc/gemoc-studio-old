@@ -124,6 +124,29 @@ public class Launcher
 
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
+//						String className =  executionContext.getRunConfiguration().getExecutionEntryPoint();
+//						SearchPattern pattern = SearchPattern.createPattern(className,
+//						IJavaSearchConstants.CLASS, 
+//						IJavaSearchConstants.DECLARATIONS,
+//						SearchPattern.R_EXACT_MATCH);
+//							IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
+//							ResolvedBinaryType type = null;
+//							DefaultSearchRequestor requestor = new DefaultSearchRequestor();				
+//							SearchEngine engine = new SearchEngine();
+//						try {
+//							engine.search(pattern, 
+//							new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() }, 
+//							scope, 
+//							requestor,
+//							null);
+//							Class c = MyClassLoader.getClass(requestor._binaryType);
+//							return null;
+//						} catch (CoreException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+
+						
 						ActionCall call = FeedbackFactory.eINSTANCE.createActionCall();
 						ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
 						call.setTriggeringEvent(mse);
