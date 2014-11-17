@@ -4,8 +4,8 @@
 
     <properties>
         <sample_root>${basedir}/../../sample</sample_root>
-        <tfsm_sample_language_root>${basedir}/../../sample/TFSM_GEMOC/language_workbench</tfsm_sample_language_root>
-        <sigpml_sample_language_root>${basedir}/../../sample/SigPML/language_workbench</sigpml_sample_language_root>
+        <tfsm_sample_language_root>${basedir}/../../sample_deployed/TFSM/language_workbench</tfsm_sample_language_root>
+        <sigpml_sample_language_root>${basedir}/../../sample_deployed/SigPML/language_workbench</sigpml_sample_language_root>
     </properties>
     
 	<parent>

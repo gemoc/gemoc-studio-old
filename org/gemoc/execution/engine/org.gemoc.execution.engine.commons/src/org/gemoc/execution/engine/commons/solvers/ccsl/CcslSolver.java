@@ -432,8 +432,8 @@ public abstract class CcslSolver implements
 	public void setUp(IExecutionContext context) 
 	{
 		URI mocURI = URI.createPlatformResourceURI(context.getWorkspace().getMoCPath().toString(), true);
-		setSolverInputFile(context.getResourceModel().getResourceSet(), mocURI);
 		generateMoC(context);
+		setSolverInputFile(context.getResourceModel().getResourceSet(), mocURI);
 	}
 	
 	private void generateMoC(IExecutionContext context) 

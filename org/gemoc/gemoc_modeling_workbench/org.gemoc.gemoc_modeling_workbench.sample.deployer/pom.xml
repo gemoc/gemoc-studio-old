@@ -4,8 +4,8 @@
 
     <properties>
         <sample_root>${basedir}/../../sample</sample_root>
-        <tfsm_sample_modeling_root>${basedir}/../../sample/TFSM_GEMOC/modeling_workbench</tfsm_sample_modeling_root>
-        <sigpml_sample_modeling_root>${basedir}/../../sample/SigPML/modeling_workbench</sigpml_sample_modeling_root>
+        <tfsm_sample_modeling_root>${basedir}/../../sample_deployed/TFSM/modeling_workbench</tfsm_sample_modeling_root>
+        <sigpml_sample_modeling_root>${basedir}/../../sample_deployed/SigPML/modeling_workbench</sigpml_sample_modeling_root>
     </properties>
     
 	<parent>

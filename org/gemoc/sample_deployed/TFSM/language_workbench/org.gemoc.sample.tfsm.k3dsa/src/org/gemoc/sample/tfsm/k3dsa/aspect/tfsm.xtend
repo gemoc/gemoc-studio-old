@@ -26,7 +26,7 @@ import static extension org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect.*
 import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
 import fr.inria.diverse.k3.al.annotationprocessor.TransactionSupport
 
-@Aspect(className=typeof(TFSM), transactionSupport=TransactionSupport.EMF)
+@Aspect(className=typeof(TFSM))
 class TFSMAspect extends NamedElementAspect {
 	// should be added automatically by the dsa, currently introduced directly in the ecore
 	// public State currentState;
