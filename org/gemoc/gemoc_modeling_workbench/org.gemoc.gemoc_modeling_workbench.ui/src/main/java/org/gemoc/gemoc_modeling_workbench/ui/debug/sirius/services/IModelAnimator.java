@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services;
 
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 
