@@ -223,26 +223,6 @@ public class ModelExecutionTracingHook extends DefaultEngineHook {
 		else 
 			return null;
 	}
-
-
-//	private Choice _lastChoice;
-
-//	public void updateTraceModelBeforeAskingSolver(final long count) {
-//		final CommandStack commandStack = getEditingDomain().getCommandStack();
-//		commandStack.execute(new RecordingCommand(getEditingDomain(), "save trace model") {
-//
-//			@Override
-//			protected void doExecute() {
-//				Choice newChoice = createChoice();
-//				if (_lastChoice != null) {
-//					_lastChoice.setNextChoice(newChoice);
-//				}
-//				_lastChoice = newChoice;
-//				_executionTraceModel.getChoices().add(_lastChoice);
-//				saveTraceModel(count);
-//			}
-//		});
-//	}
 		
 	private Choice createChoice() {
 		Choice choice = Gemoc_execution_traceFactory.eINSTANCE.createChoice();
@@ -258,22 +238,10 @@ public class ModelExecutionTracingHook extends DefaultEngineHook {
 				Choice lastChoice = getLastChoice();
 				Choice choice = createChoice();
 				_executionTraceModel.getChoices().add(choice);
-//				if (lastChoice != null 
-//					&& lastChoice.getChosenLogicalStep() == null) // choice is not complete
-//				{
-//					_executionTraceModel.getChoices().remove(lastChoice);
-//					lastChoice = lastChoice.getPreviousChoice();
-//				}
 				if (lastChoice != null)
 				{
 					lastChoice.setNextChoice(choice);
 				}		
-				
-//				if (_lastChoice.getPossibleLogicalSteps().size() != 0)
-//				{
-//					_lastChoice.getPossibleLogicalSteps().clear();
-//					_executionTraceModel.getChoices().remove(_lastChoice);
-//				}
 				choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
 				for (LogicalStep ls : possibleLogicalSteps) {
 					LogicalStepHelper.removeNotTickedEvents(ls);

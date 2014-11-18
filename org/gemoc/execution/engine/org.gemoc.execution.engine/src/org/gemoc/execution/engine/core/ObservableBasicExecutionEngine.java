@@ -104,8 +104,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	 * @param _executionContext
 	 */
 	public ObservableBasicExecutionEngine(IExecutionContext executionContext) {
-		//		if (decider == null)
-		//			throw new IllegalArgumentException("decider");
 		if (executionContext == null)
 			throw new IllegalArgumentException("executionContext");
 
@@ -238,8 +236,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 				while (!terminated) 
 				{
 					switchDeciderIfNecessary();
-//					if (hasCapability(ModelExecutionTracingCapability.class))
-//						updateTraceModelBeforeAskingSolver(count);
 									
 					computePossibleLogicalSteps();
 					updatePossibleLogicalSteps();
@@ -261,8 +257,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 							_selectedLogicalStep = _possibleLogicalSteps.get(selectedLogicalStepIndex);
 							engineStatus.setChosenLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
 							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
-//							if (hasCapability(ModelExecutionTracingCapability.class))
-//								updateTraceModelAfterDeciding(selectedLogicalStepIndex);
 
 							notifyEngineHasChanged();
 							for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
@@ -279,17 +273,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 							executeLogicalStep(logicalStepToApply);
 							terminateIfLastStepsSimilar(logicalStepToApply);							
 						}						
-						
-//						if (selectedLogicalStepIndex == -1) {
-//							if (hasRewindHappened()) {
-//								//								getCapability(ModelExecutionTracingCapability.class).getLastChoice();
-//								Activator.getDefault().debug("Back to past happened --> let the engine ignoring current steps.");
-//							} else {
-//								Activator.getDefault().debug("Engine cannot continue because decider did not decide anything.");
-//								terminated = true;
-//							}
-//						} else {
-//						}
 					}
 
 					notifyEngineHasChanged();
@@ -307,13 +290,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 			ObservableBasicExecutionEngine.this.setChanged();
 			ObservableBasicExecutionEngine.this.notifyObservers("Stopping " + engineName);
 		}
-
-//		private boolean hasRewindHappened() {
-//			if (hasCapability(ModelExecutionTracingCapability.class)) {
-//				return capability(ModelExecutionTracingCapability.class).hasRewindHappened(true);
-//			}
-//			return false;
-//		}
 
 		private void terminateIfLastStepsSimilar(final LogicalStep logicalStepToApply) {
 			// if all lastStepsRun are the same, then we may have reached the
@@ -507,7 +483,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		}
 		_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
 		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
-//		updateTraceModelBeforeDeciding(_possibleLogicalSteps);			
 		notifyEngineHasChanged();
 		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 		{
@@ -520,25 +495,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		getSolver().revertForceClockEffect();
 		updatePossibleLogicalSteps();
 	}
-	
-//	private void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) 
-//	{
-//		if (hasCapability(ModelExecutionTracingCapability.class))
-//			capability(ModelExecutionTracingCapability.class).updateTraceModelAfterDeciding(selectedLogicalStepIndex);
-//	}
-
-//	private void updateTraceModelBeforeAskingSolver(final long count) 
-//	{
-//		if (hasCapability(ModelExecutionTracingCapability.class))
-//			capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeAskingSolver(count);
-//	}
-
-//	private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) 
-//	{
-//		if (hasCapability(ModelExecutionTracingCapability.class))
-//			capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeDeciding(possibleLogicalSteps);
-//	}
-
 	
 	private ArrayList<IFutureAction> _futureActions = new ArrayList<>();
 	private Object _futureActionsLock = new Object();
