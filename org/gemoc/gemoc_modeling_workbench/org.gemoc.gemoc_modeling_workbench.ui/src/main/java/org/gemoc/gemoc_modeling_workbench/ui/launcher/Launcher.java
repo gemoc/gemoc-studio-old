@@ -82,8 +82,8 @@ public class Launcher
 			debug("About to initialize and run the GEMOC Execution Engine...");			
 
 			ExecutionMode executionMode = null;
-			if (ILaunchManager.DEBUG_MODE.equals(mode)
-				&& runConfiguration.getAnimatorURI() != null) 
+			if (ILaunchManager.DEBUG_MODE.equals(mode))
+				//&& runConfiguration.getAnimatorURI() != null) 
 			{
 				executionMode = ExecutionMode.Animation;			
 			}

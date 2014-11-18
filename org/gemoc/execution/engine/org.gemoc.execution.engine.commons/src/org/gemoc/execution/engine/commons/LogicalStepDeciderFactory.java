@@ -13,7 +13,7 @@ public class LogicalStepDeciderFactory {
 		ILogicalStepDecider decider = null;
 		if (executionMode.equals(ExecutionMode.Run))
 		{
-			DeciderSpecificationExtension extension = DeciderSpecificationExtensionPoint.findDefinition(RunConfiguration.DECIDER_SOLVER_PROPOSITION);
+			DeciderSpecificationExtension extension = DeciderSpecificationExtensionPoint.findDefinition(RunConfiguration.DECIDER_SOLVER);
 			decider = extension.instanciateDecider();
 		}
 		else 

@@ -34,10 +34,8 @@ public class RunConfiguration implements IRunConfiguration
 	
 	// parameters that should be derived from the language in future version
 	public static final String LAUNCH_DEADLOCK_DETECTION_DEPTH = "GEMOC_LAUNCH_DEADLOCK_DETECTION_DEPTH";
-	public static final String DECIDER_SOLVER_PROPOSITION = "Solver proposition";
-	public static final String DECIDER_RANDOM = "Random";
-	public static final String DECIDER_ASKUSER = "Ask user";
-	public static final String DECIDER_ASKUSER_STEP_BY_STEP = "Ask user (step by step)";
+	public static final String DECIDER_SOLVER = "Solver decider";
+	public static final String DECIDER_ASKUSER_STEP_BY_STEP = "Step by step user decider";
 	
 	
 	private ILaunchConfiguration _launchConfiguration;
