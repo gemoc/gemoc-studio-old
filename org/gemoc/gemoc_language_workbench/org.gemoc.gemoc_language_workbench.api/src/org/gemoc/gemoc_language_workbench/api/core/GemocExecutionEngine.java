@@ -15,22 +15,20 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author didier.vojtisek@inria.fr
  * 
  */
-public interface GemocExecutionEngine extends GemocExecutionEngineRunControl {
+public interface GemocExecutionEngine {
 
 	/**
-	 * allows to add a  hook to the engine
-	 * @param newEngineHook
+	 * Starts the {@link GemocExecutionEngine}.
 	 */
-	//public void addEngineHook(IEngineHook newEngineHook);
+	public void start();
 	
 	/**
-	 * allows to remove a hook to the engine
-	 * @param removedEngineHook
+	 * Asks the engine to stop
 	 */
-	//public void removeEngineHook(IEngineHook removedEngineHook);
-
-//	void initialize(Resource resource, TransactionalEditingDomain editingDomain);
-
+	public void stop();
+	
+	public EngineStatus getEngineStatus();
+	
 	/**
 	 * 
 	 * @param type
@@ -52,9 +50,6 @@ public interface GemocExecutionEngine extends GemocExecutionEngineRunControl {
 	public <T extends IExecutionEngineCapability> T capability(Class<T> type);
 
 	public IExecutionContext getExecutionContext();
-//	public Solver getSolver();
-//
-//	public CodeExecutor getCodeExecutor();
 
 	public List<LogicalStep> getPossibleLogicalSteps();
 
