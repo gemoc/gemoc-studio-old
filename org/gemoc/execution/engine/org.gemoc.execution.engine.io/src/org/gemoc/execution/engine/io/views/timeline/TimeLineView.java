@@ -17,8 +17,8 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
-import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingException;
+import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingHook;
+import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingException;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.views.AbstractUserDecider;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
@@ -265,11 +265,11 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	}
 
 	private void backToPastIfPossible(Choice choice) {
-		if (_currentEngine.hasCapability(ModelExecutionTracingCapability.class)) 
+		if (_currentEngine.hasCapability(ModelExecutionTracingHook.class)) 
 		{
 			try 
 			{
-				_currentEngine.capability(ModelExecutionTracingCapability.class).backToPast(choice);
+				_currentEngine.capability(ModelExecutionTracingHook.class).backToPast(choice);
 			} catch (ModelExecutionTracingException e) 
 			{
 				e.printStackTrace();

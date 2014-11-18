@@ -57,8 +57,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 
 	@Override
 	public void disconnect() {
-		// TODO Auto-generated method stub
-
+		return;
 	}
 
 	@Override
@@ -200,4 +199,10 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 		}
 	}
 	
+	@Override
+	public void terminate() 
+	{
+		super.terminate();
+		engine.stop();
+	}
 }

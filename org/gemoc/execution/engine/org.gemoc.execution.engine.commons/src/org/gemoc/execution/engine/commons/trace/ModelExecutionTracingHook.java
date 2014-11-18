@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.capabilitites;
+package org.gemoc.execution.engine.commons.trace;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 
-public class ModelExecutionTracingCapability extends DefaultEngineHook {
+public class ModelExecutionTracingHook extends DefaultEngineHook {
 	
 	private TransactionalEditingDomain getEditingDomain()
 	{

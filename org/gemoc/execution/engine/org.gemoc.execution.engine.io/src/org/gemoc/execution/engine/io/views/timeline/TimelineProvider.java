@@ -3,7 +3,7 @@ package org.gemoc.execution.engine.io.views.timeline;
 import java.util.Observable;
 import java.util.Observer;
 
-import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
+import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingHook;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
@@ -29,9 +29,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	
 	private ExecutionTraceModel getExecutionTrace() {
 		ExecutionTraceModel traceModel = null;;
-		if (_engine.hasCapability(ModelExecutionTracingCapability.class))
+		if (_engine.hasCapability(ModelExecutionTracingHook.class))
 		{
-			traceModel = _engine.getCapability(ModelExecutionTracingCapability.class).getExecutionTrace();			
+			traceModel = _engine.getCapability(ModelExecutionTracingHook.class).getExecutionTrace();			
 		}
 		else
 		{

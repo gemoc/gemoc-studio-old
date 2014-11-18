@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.capabilitites;
+package org.gemoc.execution.engine.commons.trace;
 
 import java.util.ArrayList;
 import java.util.List;
